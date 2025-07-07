@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -25,8 +26,8 @@ func GetAdsValueAdjustmentRuleCollectionTools() []mcp.Tool {
 	// adsvalueadjustmentrulecollection_get_rules tool
 	adsvalueadjustmentrulecollection_get_rulesTool := mcp.NewTool("adsvalueadjustmentrulecollection_get_rules",
 		mcp.WithDescription("GET rules for AdsValueAdjustmentRuleCollection"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -44,8 +45,8 @@ func GetAdsValueAdjustmentRuleCollectionTools() []mcp.Tool {
 	// Available fields for AdsValueAdjustmentRuleCollection: id, is_default_setting, name, product_type, status
 	adsvalueadjustmentrulecollection_get_Tool := mcp.NewTool("adsvalueadjustmentrulecollection_get_",
 		mcp.WithDescription("GET  for AdsValueAdjustmentRuleCollection"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for AdsValueAdjustmentRuleCollection objects. Available fields: id, is_default_setting, name, product_type, status"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for AdsValueAdjustmentRuleCollection objects. Available fields: id, is_default_setting, name, product_type, status"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -60,18 +61,29 @@ func GetAdsValueAdjustmentRuleCollectionTools() []mcp.Tool {
 	tools = append(tools, adsvalueadjustmentrulecollection_get_Tool)
 
 	// adsvalueadjustmentrulecollection_post_ tool
+	// Params object accepts: is_default_setting (bool), name (string), rules (list<map>)
 	adsvalueadjustmentrulecollection_post_Tool := mcp.NewTool("adsvalueadjustmentrulecollection_post_",
 		mcp.WithDescription("POST  for AdsValueAdjustmentRuleCollection"),
-		mcp.WithBoolean("is_default_setting",
-			mcp.Description("is_default_setting parameter for "),
-		),
-		mcp.WithString("name",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("name parameter for "),
-		),
-		mcp.WithString("rules",
-			mcp.Required(),
-			mcp.Description("rules parameter for "),
+			mcp.Properties(map[string]any{
+				"is_default_setting": map[string]any{
+					"type":        "boolean",
+					"description": "is_default_setting parameter",
+				},
+				"name": map[string]any{
+					"type":        "string",
+					"description": "name parameter",
+					"required":    true,
+				},
+				"rules": map[string]any{
+					"type":        "array",
+					"description": "rules parameter",
+					"required":    true,
+					"items":       map[string]any{"type": "object"},
+				},
+			}),
+			mcp.Description("Parameters object containing: is_default_setting (boolean), name (string) [required], rules (array<object>) [required]"),
 		),
 	)
 	tools = append(tools, adsvalueadjustmentrulecollection_post_Tool)
@@ -125,8 +137,13 @@ func HandleAdsvalueadjustmentrulecollection_get_rules(ctx context.Context, reque
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -174,8 +191,13 @@ func HandleAdsvalueadjustmentrulecollection_get_(ctx context.Context, request mc
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -222,24 +244,19 @@ func HandleAdsvalueadjustmentrulecollection_post_(ctx context.Context, request m
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: is_default_setting
-	if val := request.GetBool("is_default_setting", false); val {
-		args["is_default_setting"] = val
-	}
-
-	// Required: name
-	name, err := request.RequireString("name")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter name: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["name"] = name
-
-	// Required: rules
-	rules, err := request.RequireString("rules")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter rules: %v", err)), nil
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
-	args["rules"] = rules
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Adsvalueadjustmentrulecollection_post_(args)

@@ -33,10 +33,10 @@ func (c *StoriesClient) Stories_get_insights(args map[string]interface{}) (inter
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["metric"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("metric", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {

@@ -100,16 +100,10 @@ func (c *VehicleClient) Vehicle_get_override_details(args map[string]interface{}
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["keys"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("keys", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["type"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("type", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -313,178 +307,10 @@ func (c *VehicleClient) Vehicle_post_(args map[string]interface{}) (interface{},
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["address"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("address", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["applinks"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("applinks", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["availability"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("availability", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["body_style"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("body_style", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["condition"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("condition", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["currency"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("currency", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["date_first_on_lot"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("date_first_on_lot", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["dealer_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("dealer_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["dealer_name"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("dealer_name", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["dealer_phone"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("dealer_phone", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["description"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("description", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["drivetrain"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("drivetrain", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["exterior_color"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("exterior_color", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["fb_page_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("fb_page_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["fuel_type"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("fuel_type", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["images"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("images", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["interior_color"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("interior_color", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["make"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("make", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["mileage"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("mileage", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["model"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("model", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["price"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("price", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["state_of_vehicle"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("state_of_vehicle", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["title"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("title", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["transmission"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("transmission", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["trim"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("trim", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["url"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("url", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["vehicle_type"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("vehicle_type", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["vin"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("vin", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["year"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("year", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 

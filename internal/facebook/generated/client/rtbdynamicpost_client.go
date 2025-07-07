@@ -33,28 +33,10 @@ func (c *RTBDynamicPostClient) Rtbdynamicpost_get_comments(args map[string]inter
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["filter"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("filter", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["live_filter"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("live_filter", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["order"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("order", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["since"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("since", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {

@@ -158,11 +158,11 @@ func (c *VideoPollClient) Videopoll_get_(args map[string]interface{}) (interface
 // videopoll_post_ POST  for VideoPoll
 func (c *VideoPollClient) Videopoll_post_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	action, ok := args["action"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: action")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = action // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -172,34 +172,10 @@ func (c *VideoPollClient) Videopoll_post_(args map[string]interface{}) (interfac
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["action"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("action", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["close_after_voting"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("close_after_voting", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["default_open"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("default_open", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["show_gradient"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("show_gradient", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["show_results"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("show_results", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 

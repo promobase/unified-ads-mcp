@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -20,8 +21,8 @@ func GetHomeListingTools() []mcp.Tool {
 	// Available fields for CatalogItemChannelsToIntegrityStatus: channels, rejection_information
 	homelisting_get_channels_to_integrity_statusTool := mcp.NewTool("homelisting_get_channels_to_integrity_status",
 		mcp.WithDescription("GET channels_to_integrity_status for HomeListing"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for CatalogItemChannelsToIntegrityStatus objects. Available fields: channels, rejection_information"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for CatalogItemChannelsToIntegrityStatus objects. Available fields: channels, rejection_information"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -37,17 +38,26 @@ func GetHomeListingTools() []mcp.Tool {
 
 	// homelisting_get_override_details tool
 	// Available fields for OverrideDetails: key, type, values
+	// Params object accepts: keys (list<string>), type (homelistingoverride_details_type_enum_param)
 	homelisting_get_override_detailsTool := mcp.NewTool("homelisting_get_override_details",
 		mcp.WithDescription("GET override_details for HomeListing"),
-		mcp.WithString("keys",
-			mcp.Description("keys parameter for override_details"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"keys": map[string]any{
+					"type":        "array",
+					"description": "keys parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+				"type": map[string]any{
+					"type":        "string",
+					"description": "type parameter",
+					"enum":        []string{"COUNTRY", "LANGUAGE", "LANGUAGE_AND_COUNTRY"},
+				},
+			}),
+			mcp.Description("Parameters object containing: keys (array<string>), type (enum) [COUNTRY, LANGUAGE, LANGUAGE_AND_COUNTRY]"),
 		),
-		mcp.WithString("type",
-			mcp.Description("type parameter for override_details"),
-			mcp.Enum("COUNTRY", "LANGUAGE", "LANGUAGE_AND_COUNTRY"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for OverrideDetails objects. Available fields: key, type, values"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for OverrideDetails objects. Available fields: key, type, values"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -65,8 +75,8 @@ func GetHomeListingTools() []mcp.Tool {
 	// Available fields for DynamicVideoMetadata: id, tags, url, video
 	homelisting_get_videos_metadataTool := mcp.NewTool("homelisting_get_videos_metadata",
 		mcp.WithDescription("GET videos_metadata for HomeListing"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for DynamicVideoMetadata objects. Available fields: id, tags, url, video"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for DynamicVideoMetadata objects. Available fields: id, tags, url, video"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -90,8 +100,8 @@ func GetHomeListingTools() []mcp.Tool {
 	// Available fields for HomeListing: ac_type, additional_fees_description, address, agent_company, agent_email, agent_fb_page_id, agent_name, agent_phone, applinks, area_size, area_unit, availability, category_specific_fields, co_2_emission_rating_eu, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0, custom_number_1, custom_number_2, custom_number_3, custom_number_4, days_on_market, description, energy_rating_eu, furnish_type, group_id, heating_type, home_listing_id, id, image_fetch_status, images, laundry_type, listing_type, max_currency, max_price, min_currency, min_price, name, num_baths, num_beds, num_rooms, num_units, parking_type, partner_verification, pet_policy, price, property_type, sanitized_images, securitydeposit_currency, securitydeposit_price, tags, unit_price, url, visibility, year_built
 	homelisting_get_Tool := mcp.NewTool("homelisting_get_",
 		mcp.WithDescription("GET  for HomeListing"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for HomeListing objects. Available fields: ac_type, additional_fees_description, address, agent_company, agent_email, agent_fb_page_id, agent_name, agent_phone, applinks, area_size, area_unit, availability, category_specific_fields, co_2_emission_rating_eu, currency (and 44 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for HomeListing objects. Available fields: ac_type, additional_fees_description, address, agent_company, agent_email, agent_fb_page_id, agent_name, agent_phone, applinks, area_size, area_unit, availability, category_specific_fields, co_2_emission_rating_eu, currency (and 44 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -106,49 +116,70 @@ func GetHomeListingTools() []mcp.Tool {
 	tools = append(tools, homelisting_get_Tool)
 
 	// homelisting_post_ tool
+	// Params object accepts: address (Object), availability (string), currency (string), description (string), images (list<Object>), listing_type (string), name (string), num_baths (float), num_beds (float), num_units (float), price (float), property_type (string), url (string), year_built (unsigned int)
 	homelisting_post_Tool := mcp.NewTool("homelisting_post_",
 		mcp.WithDescription("POST  for HomeListing"),
-		mcp.WithString("address",
-			mcp.Description("address parameter for "),
-		),
-		mcp.WithString("availability",
-			mcp.Description("availability parameter for "),
-		),
-		mcp.WithString("currency",
-			mcp.Description("currency parameter for "),
-		),
-		mcp.WithString("description",
-			mcp.Description("description parameter for "),
-		),
-		mcp.WithString("images",
-			mcp.Description("images parameter for "),
-		),
-		mcp.WithString("listing_type",
-			mcp.Description("listing_type parameter for "),
-		),
-		mcp.WithString("name",
-			mcp.Description("name parameter for "),
-		),
-		mcp.WithNumber("num_baths",
-			mcp.Description("num_baths parameter for "),
-		),
-		mcp.WithNumber("num_beds",
-			mcp.Description("num_beds parameter for "),
-		),
-		mcp.WithNumber("num_units",
-			mcp.Description("num_units parameter for "),
-		),
-		mcp.WithNumber("price",
-			mcp.Description("price parameter for "),
-		),
-		mcp.WithString("property_type",
-			mcp.Description("property_type parameter for "),
-		),
-		mcp.WithString("url",
-			mcp.Description("url parameter for "),
-		),
-		mcp.WithNumber("year_built",
-			mcp.Description("year_built parameter for "),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"address": map[string]any{
+					"type":        "object",
+					"description": "address parameter",
+				},
+				"availability": map[string]any{
+					"type":        "string",
+					"description": "availability parameter",
+				},
+				"currency": map[string]any{
+					"type":        "string",
+					"description": "currency parameter",
+				},
+				"description": map[string]any{
+					"type":        "string",
+					"description": "description parameter",
+				},
+				"images": map[string]any{
+					"type":        "array",
+					"description": "images parameter",
+					"items":       map[string]any{"type": "object"},
+				},
+				"listing_type": map[string]any{
+					"type":        "string",
+					"description": "listing_type parameter",
+				},
+				"name": map[string]any{
+					"type":        "string",
+					"description": "name parameter",
+				},
+				"num_baths": map[string]any{
+					"type":        "number",
+					"description": "num_baths parameter",
+				},
+				"num_beds": map[string]any{
+					"type":        "number",
+					"description": "num_beds parameter",
+				},
+				"num_units": map[string]any{
+					"type":        "number",
+					"description": "num_units parameter",
+				},
+				"price": map[string]any{
+					"type":        "number",
+					"description": "price parameter",
+				},
+				"property_type": map[string]any{
+					"type":        "string",
+					"description": "property_type parameter",
+				},
+				"url": map[string]any{
+					"type":        "string",
+					"description": "url parameter",
+				},
+				"year_built": map[string]any{
+					"type":        "integer",
+					"description": "year_built parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: address (object), availability (string), currency (string), description (string), images (array<object>), listing_type (string), name (string), num_baths (number), num_beds (number), num_units (number), price (number), property_type (string), url (string), year_built (integer)"),
 		),
 	)
 	tools = append(tools, homelisting_post_Tool)
@@ -173,8 +204,13 @@ func HandleHomelisting_get_channels_to_integrity_status(ctx context.Context, req
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -221,20 +257,26 @@ func HandleHomelisting_get_override_details(ctx context.Context, request mcp.Cal
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: keys
-	// array type - using string
-	if val := request.GetString("keys", ""); val != "" {
-		args["keys"] = val
-	}
-
-	// Optional: type
-	if val := request.GetString("type", ""); val != "" {
-		args["type"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -282,8 +324,13 @@ func HandleHomelisting_get_videos_metadata(ctx context.Context, request mcp.Call
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -360,8 +407,13 @@ func HandleHomelisting_get_(ctx context.Context, request mcp.CallToolRequest) (*
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -408,76 +460,16 @@ func HandleHomelisting_post_(ctx context.Context, request mcp.CallToolRequest) (
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: address
-	// object type - using string
-	if val := request.GetString("address", ""); val != "" {
-		args["address"] = val
-	}
-
-	// Optional: availability
-	if val := request.GetString("availability", ""); val != "" {
-		args["availability"] = val
-	}
-
-	// Optional: currency
-	if val := request.GetString("currency", ""); val != "" {
-		args["currency"] = val
-	}
-
-	// Optional: description
-	if val := request.GetString("description", ""); val != "" {
-		args["description"] = val
-	}
-
-	// Optional: images
-	// array type - using string
-	if val := request.GetString("images", ""); val != "" {
-		args["images"] = val
-	}
-
-	// Optional: listing_type
-	if val := request.GetString("listing_type", ""); val != "" {
-		args["listing_type"] = val
-	}
-
-	// Optional: name
-	if val := request.GetString("name", ""); val != "" {
-		args["name"] = val
-	}
-
-	// Optional: num_baths
-	if val := request.GetFloat("num_baths", 0); val != 0 {
-		args["num_baths"] = val
-	}
-
-	// Optional: num_beds
-	if val := request.GetFloat("num_beds", 0); val != 0 {
-		args["num_beds"] = val
-	}
-
-	// Optional: num_units
-	if val := request.GetFloat("num_units", 0); val != 0 {
-		args["num_units"] = val
-	}
-
-	// Optional: price
-	if val := request.GetFloat("price", 0); val != 0 {
-		args["price"] = val
-	}
-
-	// Optional: property_type
-	if val := request.GetString("property_type", ""); val != "" {
-		args["property_type"] = val
-	}
-
-	// Optional: url
-	if val := request.GetString("url", ""); val != "" {
-		args["url"] = val
-	}
-
-	// Optional: year_built
-	if val := request.GetInt("year_built", 0); val != 0 {
-		args["year_built"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method

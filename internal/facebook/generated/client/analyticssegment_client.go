@@ -33,22 +33,10 @@ func (c *AnalyticsSegmentClient) Analyticssegment_get_(args map[string]interface
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["async_task_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("async_task_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["end_date"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("end_date", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["start_date"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("start_date", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {

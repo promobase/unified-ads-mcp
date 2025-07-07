@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -17,11 +18,19 @@ func GetProductCatalogTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// productcatalog_delete_agencies tool
+	// Params object accepts: business (string)
 	productcatalog_delete_agenciesTool := mcp.NewTool("productcatalog_delete_agencies",
 		mcp.WithDescription("DELETE agencies for ProductCatalog"),
-		mcp.WithString("business",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("business parameter for agencies"),
+			mcp.Properties(map[string]any{
+				"business": map[string]any{
+					"type":        "string",
+					"description": "business parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: business (string) [required]"),
 		),
 	)
 	tools = append(tools, productcatalog_delete_agenciesTool)
@@ -30,8 +39,8 @@ func GetProductCatalogTools() []mcp.Tool {
 	// Available fields for Business: block_offline_analytics, collaborative_ads_managed_partner_business_info, collaborative_ads_managed_partner_eligibility, collaborative_ads_partner_premium_options, created_by, created_time, extended_updated_time, id, is_hidden, link, name, payment_account_id, primary_page, profile_picture_uri, timezone_id, two_factor_type, updated_by, updated_time, user_access_expire_time, verification_status, vertical, vertical_id
 	productcatalog_get_agenciesTool := mcp.NewTool("productcatalog_get_agencies",
 		mcp.WithDescription("GET agencies for ProductCatalog"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for Business objects. Available fields: block_offline_analytics, collaborative_ads_managed_partner_business_info, collaborative_ads_managed_partner_eligibility, collaborative_ads_partner_premium_options, created_by, created_time, extended_updated_time, id, is_hidden, link, name, payment_account_id, primary_page, profile_picture_uri, timezone_id (and 7 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for Business objects. Available fields: block_offline_analytics, collaborative_ads_managed_partner_business_info, collaborative_ads_managed_partner_eligibility, collaborative_ads_partner_premium_options, created_by, created_time, extended_updated_time, id, is_hidden, link, name, payment_account_id, primary_page, profile_picture_uri, timezone_id (and 7 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -46,49 +55,79 @@ func GetProductCatalogTools() []mcp.Tool {
 	tools = append(tools, productcatalog_get_agenciesTool)
 
 	// productcatalog_post_agencies tool
+	// Params object accepts: business (string), permitted_roles (list<productcatalogagencies_permitted_roles_enum_param>), permitted_tasks (list<productcatalogagencies_permitted_tasks_enum_param>), skip_defaults (bool), utm_settings (map)
 	productcatalog_post_agenciesTool := mcp.NewTool("productcatalog_post_agencies",
 		mcp.WithDescription("POST agencies for ProductCatalog"),
-		mcp.WithString("business",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("business parameter for agencies"),
-		),
-		mcp.WithString("permitted_roles",
-			mcp.Description("permitted_roles parameter for agencies"),
-			mcp.Enum("ADMIN", "ADVERTISER"),
-		),
-		mcp.WithString("permitted_tasks",
-			mcp.Description("permitted_tasks parameter for agencies"),
-			mcp.Enum("AA_ANALYZE", "ADVERTISE", "MANAGE", "MANAGE_AR"),
-		),
-		mcp.WithBoolean("skip_defaults",
-			mcp.Description("skip_defaults parameter for agencies"),
-		),
-		mcp.WithString("utm_settings",
-			mcp.Description("utm_settings parameter for agencies"),
+			mcp.Properties(map[string]any{
+				"business": map[string]any{
+					"type":        "string",
+					"description": "business parameter",
+					"required":    true,
+				},
+				"permitted_roles": map[string]any{
+					"type":        "array",
+					"description": "permitted_roles parameter",
+					"enum":        []string{"ADMIN", "ADVERTISER"},
+					"items":       map[string]any{"type": "string"},
+				},
+				"permitted_tasks": map[string]any{
+					"type":        "array",
+					"description": "permitted_tasks parameter",
+					"enum":        []string{"AA_ANALYZE", "ADVERTISE", "MANAGE", "MANAGE_AR"},
+					"items":       map[string]any{"type": "string"},
+				},
+				"skip_defaults": map[string]any{
+					"type":        "boolean",
+					"description": "skip_defaults parameter",
+				},
+				"utm_settings": map[string]any{
+					"type":        "object",
+					"description": "utm_settings parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: business (string) [required], permitted_roles (array<enum>) [ADMIN, ADVERTISER], permitted_tasks (array<enum>) [AA_ANALYZE, ADVERTISE, MANAGE, MANAGE_AR], skip_defaults (boolean), utm_settings (object)"),
 		),
 	)
 	tools = append(tools, productcatalog_post_agenciesTool)
 
 	// productcatalog_delete_assigned_users tool
+	// Params object accepts: user (int)
 	productcatalog_delete_assigned_usersTool := mcp.NewTool("productcatalog_delete_assigned_users",
 		mcp.WithDescription("DELETE assigned_users for ProductCatalog"),
-		mcp.WithNumber("user",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("user parameter for assigned_users"),
+			mcp.Properties(map[string]any{
+				"user": map[string]any{
+					"type":        "integer",
+					"description": "user parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: user (integer) [required]"),
 		),
 	)
 	tools = append(tools, productcatalog_delete_assigned_usersTool)
 
 	// productcatalog_get_assigned_users tool
 	// Available fields for AssignedUser: business, id, name, user_type
+	// Params object accepts: business (string)
 	productcatalog_get_assigned_usersTool := mcp.NewTool("productcatalog_get_assigned_users",
 		mcp.WithDescription("GET assigned_users for ProductCatalog"),
-		mcp.WithString("business",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("business parameter for assigned_users"),
+			mcp.Properties(map[string]any{
+				"business": map[string]any{
+					"type":        "string",
+					"description": "business parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: business (string) [required]"),
 		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for AssignedUser objects. Available fields: business, id, name, user_type"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for AssignedUser objects. Available fields: business, id, name, user_type"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -103,32 +142,50 @@ func GetProductCatalogTools() []mcp.Tool {
 	tools = append(tools, productcatalog_get_assigned_usersTool)
 
 	// productcatalog_post_assigned_users tool
+	// Params object accepts: tasks (list<productcatalogassigned_users_tasks_enum_param>), user (int)
 	productcatalog_post_assigned_usersTool := mcp.NewTool("productcatalog_post_assigned_users",
 		mcp.WithDescription("POST assigned_users for ProductCatalog"),
-		mcp.WithString("tasks",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("tasks parameter for assigned_users"),
-			mcp.Enum("AA_ANALYZE", "ADVERTISE", "MANAGE", "MANAGE_AR"),
-		),
-		mcp.WithNumber("user",
-			mcp.Required(),
-			mcp.Description("user parameter for assigned_users"),
+			mcp.Properties(map[string]any{
+				"tasks": map[string]any{
+					"type":        "array",
+					"description": "tasks parameter",
+					"required":    true,
+					"enum":        []string{"AA_ANALYZE", "ADVERTISE", "MANAGE", "MANAGE_AR"},
+					"items":       map[string]any{"type": "string"},
+				},
+				"user": map[string]any{
+					"type":        "integer",
+					"description": "user parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: tasks (array<enum>) [AA_ANALYZE, ADVERTISE, MANAGE, MANAGE_AR] [required], user (integer) [required]"),
 		),
 	)
 	tools = append(tools, productcatalog_post_assigned_usersTool)
 
 	// productcatalog_get_automotive_models tool
 	// Available fields for AutomotiveModel: applinks, automotive_model_id, availability, body_style, category_specific_fields, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0, custom_number_1, custom_number_2, custom_number_3, custom_number_4, description, drivetrain, exterior_color, finance_description, finance_type, fuel_type, generation, id, image_fetch_status, images, interior_color, interior_upholstery, make, model, price, sanitized_images, title, transmission, trim, unit_price, url, visibility, year
+	// Params object accepts: bulk_pagination (bool), filter (Object)
 	productcatalog_get_automotive_modelsTool := mcp.NewTool("productcatalog_get_automotive_models",
 		mcp.WithDescription("GET automotive_models for ProductCatalog"),
-		mcp.WithBoolean("bulk_pagination",
-			mcp.Description("bulk_pagination parameter for automotive_models"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"bulk_pagination": map[string]any{
+					"type":        "boolean",
+					"description": "bulk_pagination parameter",
+				},
+				"filter": map[string]any{
+					"type":        "object",
+					"description": "filter parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: bulk_pagination (boolean), filter (object)"),
 		),
-		mcp.WithString("filter",
-			mcp.Description("filter parameter for automotive_models"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for AutomotiveModel objects. Available fields: applinks, automotive_model_id, availability, body_style, category_specific_fields, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0, custom_number_1, custom_number_2, custom_number_3 (and 24 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for AutomotiveModel objects. Available fields: applinks, automotive_model_id, availability, body_style, category_specific_fields, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0, custom_number_1, custom_number_2, custom_number_3 (and 24 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -143,48 +200,77 @@ func GetProductCatalogTools() []mcp.Tool {
 	tools = append(tools, productcatalog_get_automotive_modelsTool)
 
 	// productcatalog_post_batch tool
+	// Params object accepts: allow_upsert (bool), fbe_external_business_id (string), requests (list<map>), version (unsigned int)
 	productcatalog_post_batchTool := mcp.NewTool("productcatalog_post_batch",
 		mcp.WithDescription("POST batch for ProductCatalog"),
-		mcp.WithBoolean("allow_upsert",
-			mcp.Description("allow_upsert parameter for batch"),
-		),
-		mcp.WithString("fbe_external_business_id",
-			mcp.Description("fbe_external_business_id parameter for batch"),
-		),
-		mcp.WithString("requests",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("requests parameter for batch"),
-		),
-		mcp.WithNumber("version",
-			mcp.Description("version parameter for batch"),
+			mcp.Properties(map[string]any{
+				"allow_upsert": map[string]any{
+					"type":        "boolean",
+					"description": "allow_upsert parameter",
+				},
+				"fbe_external_business_id": map[string]any{
+					"type":        "string",
+					"description": "fbe_external_business_id parameter",
+				},
+				"requests": map[string]any{
+					"type":        "array",
+					"description": "requests parameter",
+					"required":    true,
+					"items":       map[string]any{"type": "object"},
+				},
+				"version": map[string]any{
+					"type":        "integer",
+					"description": "version parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: allow_upsert (boolean), fbe_external_business_id (string), requests (array<object>) [required], version (integer)"),
 		),
 	)
 	tools = append(tools, productcatalog_post_batchTool)
 
 	// productcatalog_post_catalog_store tool
+	// Params object accepts: page (string)
 	productcatalog_post_catalog_storeTool := mcp.NewTool("productcatalog_post_catalog_store",
 		mcp.WithDescription("POST catalog_store for ProductCatalog"),
-		mcp.WithString("page",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("page parameter for catalog_store"),
+			mcp.Properties(map[string]any{
+				"page": map[string]any{
+					"type":        "string",
+					"description": "page parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: page (string) [required]"),
 		),
 	)
 	tools = append(tools, productcatalog_post_catalog_storeTool)
 
 	// productcatalog_get_categories tool
 	// Available fields for ProductCatalogCategory: criteria_value, description, destination_uri, image_url, name, num_items, tokens
+	// Params object accepts: categorization_criteria (productcatalogcategories_categorization_criteria_enum_param), filter (Object)
 	productcatalog_get_categoriesTool := mcp.NewTool("productcatalog_get_categories",
 		mcp.WithDescription("GET categories for ProductCatalog"),
-		mcp.WithString("categorization_criteria",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("categorization_criteria parameter for categories"),
-			mcp.Enum("BRAND", "CATEGORY", "PRODUCT_TYPE"),
+			mcp.Properties(map[string]any{
+				"categorization_criteria": map[string]any{
+					"type":        "string",
+					"description": "categorization_criteria parameter",
+					"required":    true,
+					"enum":        []string{"BRAND", "CATEGORY", "PRODUCT_TYPE"},
+				},
+				"filter": map[string]any{
+					"type":        "object",
+					"description": "filter parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: categorization_criteria (enum) [BRAND, CATEGORY, PRODUCT_TYPE] [required], filter (object)"),
 		),
-		mcp.WithString("filter",
-			mcp.Description("filter parameter for categories"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for ProductCatalogCategory objects. Available fields: criteria_value, description, destination_uri, image_url, name, num_items, tokens"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for ProductCatalogCategory objects. Available fields: criteria_value, description, destination_uri, image_url, name, num_items, tokens"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -199,32 +285,51 @@ func GetProductCatalogTools() []mcp.Tool {
 	tools = append(tools, productcatalog_get_categoriesTool)
 
 	// productcatalog_post_categories tool
+	// Params object accepts: data (list<map>)
 	productcatalog_post_categoriesTool := mcp.NewTool("productcatalog_post_categories",
 		mcp.WithDescription("POST categories for ProductCatalog"),
-		mcp.WithString("data",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("data parameter for categories"),
+			mcp.Properties(map[string]any{
+				"data": map[string]any{
+					"type":        "array",
+					"description": "data parameter",
+					"required":    true,
+					"items":       map[string]any{"type": "object"},
+				},
+			}),
+			mcp.Description("Parameters object containing: data (array<object>) [required]"),
 		),
 	)
 	tools = append(tools, productcatalog_post_categoriesTool)
 
 	// productcatalog_get_check_batch_request_status tool
 	// Available fields for CheckBatchRequestStatus: errors, errors_total_count, handle, ids_of_invalid_requests, status, warnings, warnings_total_count
+	// Params object accepts: error_priority (productcatalogcheck_batch_request_status_error_priority_enum_param), handle (string), load_ids_of_invalid_requests (bool)
 	productcatalog_get_check_batch_request_statusTool := mcp.NewTool("productcatalog_get_check_batch_request_status",
 		mcp.WithDescription("GET check_batch_request_status for ProductCatalog"),
-		mcp.WithString("error_priority",
-			mcp.Description("error_priority parameter for check_batch_request_status"),
-			mcp.Enum("HIGH", "LOW", "MEDIUM"),
-		),
-		mcp.WithString("handle",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("handle parameter for check_batch_request_status"),
+			mcp.Properties(map[string]any{
+				"error_priority": map[string]any{
+					"type":        "string",
+					"description": "error_priority parameter",
+					"enum":        []string{"HIGH", "LOW", "MEDIUM"},
+				},
+				"handle": map[string]any{
+					"type":        "string",
+					"description": "handle parameter",
+					"required":    true,
+				},
+				"load_ids_of_invalid_requests": map[string]any{
+					"type":        "boolean",
+					"description": "load_ids_of_invalid_requests parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: error_priority (enum) [HIGH, LOW, MEDIUM], handle (string) [required], load_ids_of_invalid_requests (boolean)"),
 		),
-		mcp.WithBoolean("load_ids_of_invalid_requests",
-			mcp.Description("load_ids_of_invalid_requests parameter for check_batch_request_status"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for CheckBatchRequestStatus objects. Available fields: errors, errors_total_count, handle, ids_of_invalid_requests, status, warnings, warnings_total_count"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for CheckBatchRequestStatus objects. Available fields: errors, errors_total_count, handle, ids_of_invalid_requests, status, warnings, warnings_total_count"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -240,14 +345,22 @@ func GetProductCatalogTools() []mcp.Tool {
 
 	// productcatalog_get_check_marketplace_partner_sellers_status tool
 	// Available fields for ProductCatalogCheckMarketplacePartnerSellersStatus: sample_errors, session_id, status
+	// Params object accepts: session_id (string)
 	productcatalog_get_check_marketplace_partner_sellers_statusTool := mcp.NewTool("productcatalog_get_check_marketplace_partner_sellers_status",
 		mcp.WithDescription("GET check_marketplace_partner_sellers_status for ProductCatalog"),
-		mcp.WithString("session_id",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("session_id parameter for check_marketplace_partner_sellers_status"),
+			mcp.Properties(map[string]any{
+				"session_id": map[string]any{
+					"type":        "string",
+					"description": "session_id parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: session_id (string) [required]"),
 		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for ProductCatalogCheckMarketplacePartnerSellersStatus objects. Available fields: sample_errors, session_id, status"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for ProductCatalogCheckMarketplacePartnerSellersStatus objects. Available fields: sample_errors, session_id, status"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -265,8 +378,8 @@ func GetProductCatalogTools() []mcp.Tool {
 	// Available fields for CPASLsbImageBank: ad_group_id, catalog_segment_proxy_id, id
 	productcatalog_get_collaborative_ads_lsb_image_bankTool := mcp.NewTool("productcatalog_get_collaborative_ads_lsb_image_bank",
 		mcp.WithDescription("GET collaborative_ads_lsb_image_bank for ProductCatalog"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for CPASLsbImageBank objects. Available fields: ad_group_id, catalog_segment_proxy_id, id"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for CPASLsbImageBank objects. Available fields: ad_group_id, catalog_segment_proxy_id, id"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -284,8 +397,8 @@ func GetProductCatalogTools() []mcp.Tool {
 	// Available fields for CollaborativeAdsShareSettings: agency_business, id, product_catalog_proxy_id, utm_campaign, utm_medium, utm_source
 	productcatalog_get_collaborative_ads_share_settingsTool := mcp.NewTool("productcatalog_get_collaborative_ads_share_settings",
 		mcp.WithDescription("GET collaborative_ads_share_settings for ProductCatalog"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for CollaborativeAdsShareSettings objects. Available fields: agency_business, id, product_catalog_proxy_id, utm_campaign, utm_medium, utm_source"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for CollaborativeAdsShareSettings objects. Available fields: agency_business, id, product_catalog_proxy_id, utm_campaign, utm_medium, utm_source"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -300,31 +413,49 @@ func GetProductCatalogTools() []mcp.Tool {
 	tools = append(tools, productcatalog_get_collaborative_ads_share_settingsTool)
 
 	// productcatalog_post_cpas_lsb_image_bank tool
+	// Params object accepts: ad_group_id (unsigned int), agency_business_id (unsigned int), backup_image_urls (list<string>)
 	productcatalog_post_cpas_lsb_image_bankTool := mcp.NewTool("productcatalog_post_cpas_lsb_image_bank",
 		mcp.WithDescription("POST cpas_lsb_image_bank for ProductCatalog"),
-		mcp.WithNumber("ad_group_id",
-			mcp.Description("ad_group_id parameter for cpas_lsb_image_bank"),
-		),
-		mcp.WithNumber("agency_business_id",
-			mcp.Description("agency_business_id parameter for cpas_lsb_image_bank"),
-		),
-		mcp.WithString("backup_image_urls",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("backup_image_urls parameter for cpas_lsb_image_bank"),
+			mcp.Properties(map[string]any{
+				"ad_group_id": map[string]any{
+					"type":        "integer",
+					"description": "ad_group_id parameter",
+				},
+				"agency_business_id": map[string]any{
+					"type":        "integer",
+					"description": "agency_business_id parameter",
+				},
+				"backup_image_urls": map[string]any{
+					"type":        "array",
+					"description": "backup_image_urls parameter",
+					"required":    true,
+					"items":       map[string]any{"type": "string"},
+				},
+			}),
+			mcp.Description("Parameters object containing: ad_group_id (integer), agency_business_id (integer), backup_image_urls (array<string>) [required]"),
 		),
 	)
 	tools = append(tools, productcatalog_post_cpas_lsb_image_bankTool)
 
 	// productcatalog_get_creator_asset_creatives tool
 	// Available fields for CreatorAssetCreative: id, image_url, moderation_status, product_item_retailer_id, product_url, retailer_id, video_url
+	// Params object accepts: moderation_status (productcatalogcreator_asset_creatives_moderation_status_enum_param)
 	productcatalog_get_creator_asset_creativesTool := mcp.NewTool("productcatalog_get_creator_asset_creatives",
 		mcp.WithDescription("GET creator_asset_creatives for ProductCatalog"),
-		mcp.WithString("moderation_status",
-			mcp.Description("moderation_status parameter for creator_asset_creatives"),
-			mcp.Enum("ARCHIVED", "ELIGIBLE", "EXPIRED", "INELIGIBLE", "IN_REVIEW", "PAUSED", "UNKNOWN"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"moderation_status": map[string]any{
+					"type":        "string",
+					"description": "moderation_status parameter",
+					"enum":        []string{"ARCHIVED", "ELIGIBLE", "EXPIRED", "INELIGIBLE", "IN_REVIEW", "PAUSED", "UNKNOWN"},
+				},
+			}),
+			mcp.Description("Parameters object containing: moderation_status (enum) [ARCHIVED, ELIGIBLE, EXPIRED, INELIGIBLE, IN_REVIEW, ...]"),
 		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for CreatorAssetCreative objects. Available fields: id, image_url, moderation_status, product_item_retailer_id, product_url, retailer_id, video_url"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for CreatorAssetCreative objects. Available fields: id, image_url, moderation_status, product_item_retailer_id, product_url, retailer_id, video_url"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -340,14 +471,21 @@ func GetProductCatalogTools() []mcp.Tool {
 
 	// productcatalog_get_data_sources tool
 	// Available fields for ProductCatalogDataSource: app_id, id, ingestion_source_type, name, upload_type
+	// Params object accepts: ingestion_source_type (productcatalogdata_sources_ingestion_source_type_enum_param)
 	productcatalog_get_data_sourcesTool := mcp.NewTool("productcatalog_get_data_sources",
 		mcp.WithDescription("GET data_sources for ProductCatalog"),
-		mcp.WithString("ingestion_source_type",
-			mcp.Description("ingestion_source_type parameter for data_sources"),
-			mcp.Enum("ALL", "PRIMARY", "SUPPLEMENTARY"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"ingestion_source_type": map[string]any{
+					"type":        "string",
+					"description": "ingestion_source_type parameter",
+					"enum":        []string{"ALL", "PRIMARY", "SUPPLEMENTARY"},
+				},
+			}),
+			mcp.Description("Parameters object containing: ingestion_source_type (enum) [ALL, PRIMARY, SUPPLEMENTARY]"),
 		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for ProductCatalogDataSource objects. Available fields: app_id, id, ingestion_source_type, name, upload_type"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for ProductCatalogDataSource objects. Available fields: app_id, id, ingestion_source_type, name, upload_type"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -363,16 +501,24 @@ func GetProductCatalogTools() []mcp.Tool {
 
 	// productcatalog_get_destinations tool
 	// Available fields for Destination: address, applinks, category_specific_fields, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0, custom_number_1, custom_number_2, custom_number_3, custom_number_4, description, destination_id, id, image_fetch_status, images, name, price, price_change, sanitized_images, tags, types, unit_price, url, visibility
+	// Params object accepts: bulk_pagination (bool), filter (Object)
 	productcatalog_get_destinationsTool := mcp.NewTool("productcatalog_get_destinations",
 		mcp.WithDescription("GET destinations for ProductCatalog"),
-		mcp.WithBoolean("bulk_pagination",
-			mcp.Description("bulk_pagination parameter for destinations"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"bulk_pagination": map[string]any{
+					"type":        "boolean",
+					"description": "bulk_pagination parameter",
+				},
+				"filter": map[string]any{
+					"type":        "object",
+					"description": "filter parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: bulk_pagination (boolean), filter (object)"),
 		),
-		mcp.WithString("filter",
-			mcp.Description("filter parameter for destinations"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for Destination objects. Available fields: address, applinks, category_specific_fields, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0, custom_number_1, custom_number_2, custom_number_3, custom_number_4, description (and 13 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for Destination objects. Available fields: address, applinks, category_specific_fields, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0, custom_number_1, custom_number_2, custom_number_3, custom_number_4, description (and 13 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -388,30 +534,46 @@ func GetProductCatalogTools() []mcp.Tool {
 
 	// productcatalog_get_diagnostics tool
 	// Available fields for ProductCatalogDiagnosticGroup: affected_channels, affected_entity, affected_features, diagnostics, error_code, number_of_affected_entities, number_of_affected_items, severity, subtitle, title, type
+	// Params object accepts: affected_channels (list<productcatalogdiagnostics_affected_channels_enum_param>), affected_entities (list<productcatalogdiagnostics_affected_entities_enum_param>), affected_features (list<productcatalogdiagnostics_affected_features_enum_param>), severities (list<productcatalogdiagnostics_severities_enum_param>), types (list<productcatalogdiagnostics_types_enum_param>)
 	productcatalog_get_diagnosticsTool := mcp.NewTool("productcatalog_get_diagnostics",
 		mcp.WithDescription("GET diagnostics for ProductCatalog"),
-		mcp.WithString("affected_channels",
-			mcp.Description("affected_channels parameter for diagnostics"),
-			mcp.Enum("b2c_marketplace", "c2c_marketplace", "da", "daily_deals", "daily_deals_legacy", "ig_product_tagging", "marketplace", "marketplace_ads_deprecated", "marketplace_shops", "mini_shops", "offline_conversions", "shops", "universal_checkout", "whatsapp"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"affected_channels": map[string]any{
+					"type":        "array",
+					"description": "affected_channels parameter",
+					"enum":        []string{"b2c_marketplace", "c2c_marketplace", "da", "daily_deals", "daily_deals_legacy", "ig_product_tagging", "marketplace", "marketplace_ads_deprecated", "marketplace_shops", "mini_shops", "offline_conversions", "shops", "universal_checkout", "whatsapp"},
+					"items":       map[string]any{"type": "string"},
+				},
+				"affected_entities": map[string]any{
+					"type":        "array",
+					"description": "affected_entities parameter",
+					"enum":        []string{"product_catalog", "product_event", "product_item", "product_set"},
+					"items":       map[string]any{"type": "string"},
+				},
+				"affected_features": map[string]any{
+					"type":        "array",
+					"description": "affected_features parameter",
+					"enum":        []string{"augmented_reality", "checkout"},
+					"items":       map[string]any{"type": "string"},
+				},
+				"severities": map[string]any{
+					"type":        "array",
+					"description": "severities parameter",
+					"enum":        []string{"MUST_FIX", "OPPORTUNITY"},
+					"items":       map[string]any{"type": "string"},
+				},
+				"types": map[string]any{
+					"type":        "array",
+					"description": "types parameter",
+					"enum":        []string{"AR_VISIBILITY_ISSUES", "ATTRIBUTES_INVALID", "ATTRIBUTES_MISSING", "CATEGORY", "CHECKOUT", "DA_VISIBILITY_ISSUES", "EVENT_SOURCE_ISSUES", "IMAGE_QUALITY", "LOW_QUALITY_TITLE_AND_DESCRIPTION", "POLICY_VIOLATION", "SHOPS_VISIBILITY_ISSUES"},
+					"items":       map[string]any{"type": "string"},
+				},
+			}),
+			mcp.Description("Parameters object containing: affected_channels (array<enum>) [b2c_marketplace, c2c_marketplace, da, daily_deals, daily_deals_legacy, ...], affected_entities (array<enum>) [product_catalog, product_event, product_item, product_set], affected_features (array<enum>) [augmented_reality, checkout], severities (array<enum>) [MUST_FIX, OPPORTUNITY], types (array<enum>) [AR_VISIBILITY_ISSUES, ATTRIBUTES_INVALID, ATTRIBUTES_MISSING, CATEGORY, CHECKOUT, ...]"),
 		),
-		mcp.WithString("affected_entities",
-			mcp.Description("affected_entities parameter for diagnostics"),
-			mcp.Enum("product_catalog", "product_event", "product_item", "product_set"),
-		),
-		mcp.WithString("affected_features",
-			mcp.Description("affected_features parameter for diagnostics"),
-			mcp.Enum("augmented_reality", "checkout"),
-		),
-		mcp.WithString("severities",
-			mcp.Description("severities parameter for diagnostics"),
-			mcp.Enum("MUST_FIX", "OPPORTUNITY"),
-		),
-		mcp.WithString("types",
-			mcp.Description("types parameter for diagnostics"),
-			mcp.Enum("AR_VISIBILITY_ISSUES", "ATTRIBUTES_INVALID", "ATTRIBUTES_MISSING", "CATEGORY", "CHECKOUT", "DA_VISIBILITY_ISSUES", "EVENT_SOURCE_ISSUES", "IMAGE_QUALITY", "LOW_QUALITY_TITLE_AND_DESCRIPTION", "POLICY_VIOLATION", "SHOPS_VISIBILITY_ISSUES"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for ProductCatalogDiagnosticGroup objects. Available fields: affected_channels, affected_entity, affected_features, diagnostics, error_code, number_of_affected_entities, number_of_affected_items, severity, subtitle, title, type"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for ProductCatalogDiagnosticGroup objects. Available fields: affected_channels, affected_entity, affected_features, diagnostics, error_code, number_of_affected_entities, number_of_affected_items, severity, subtitle, title, type"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -427,14 +589,22 @@ func GetProductCatalogTools() []mcp.Tool {
 
 	// productcatalog_get_event_stats tool
 	// Available fields for ProductEventStat: date_start, date_stop, device_type, event, event_source, total_content_ids_matched_other_catalogs, total_matched_content_ids, total_unmatched_content_ids, unique_content_ids_matched_other_catalogs, unique_matched_content_ids, unique_unmatched_content_ids
+	// Params object accepts: breakdowns (list<productcatalogevent_stats_breakdowns_enum_param>)
 	productcatalog_get_event_statsTool := mcp.NewTool("productcatalog_get_event_stats",
 		mcp.WithDescription("GET event_stats for ProductCatalog"),
-		mcp.WithString("breakdowns",
-			mcp.Description("breakdowns parameter for event_stats"),
-			mcp.Enum("DEVICE_TYPE"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"breakdowns": map[string]any{
+					"type":        "array",
+					"description": "breakdowns parameter",
+					"enum":        []string{"DEVICE_TYPE"},
+					"items":       map[string]any{"type": "string"},
+				},
+			}),
+			mcp.Description("Parameters object containing: breakdowns (array<enum>) [DEVICE_TYPE]"),
 		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for ProductEventStat objects. Available fields: date_start, date_stop, device_type, event, event_source, total_content_ids_matched_other_catalogs, total_matched_content_ids, total_unmatched_content_ids, unique_content_ids_matched_other_catalogs, unique_matched_content_ids, unique_unmatched_content_ids"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for ProductEventStat objects. Available fields: date_start, date_stop, device_type, event, event_source, total_content_ids_matched_other_catalogs, total_matched_content_ids, total_unmatched_content_ids, unique_content_ids_matched_other_catalogs, unique_matched_content_ids, unique_unmatched_content_ids"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -449,10 +619,17 @@ func GetProductCatalogTools() []mcp.Tool {
 	tools = append(tools, productcatalog_get_event_statsTool)
 
 	// productcatalog_delete_external_event_sources tool
+	// Params object accepts: external_event_sources (Object)
 	productcatalog_delete_external_event_sourcesTool := mcp.NewTool("productcatalog_delete_external_event_sources",
 		mcp.WithDescription("DELETE external_event_sources for ProductCatalog"),
-		mcp.WithString("external_event_sources",
-			mcp.Description("external_event_sources parameter for external_event_sources"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"external_event_sources": map[string]any{
+					"type":        "object",
+					"description": "external_event_sources parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: external_event_sources (object)"),
 		),
 	)
 	tools = append(tools, productcatalog_delete_external_event_sourcesTool)
@@ -461,8 +638,8 @@ func GetProductCatalogTools() []mcp.Tool {
 	// Available fields for ExternalEventSource: id, name, source_type
 	productcatalog_get_external_event_sourcesTool := mcp.NewTool("productcatalog_get_external_event_sources",
 		mcp.WithDescription("GET external_event_sources for ProductCatalog"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for ExternalEventSource objects. Available fields: id, name, source_type"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for ExternalEventSource objects. Available fields: id, name, source_type"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -477,26 +654,41 @@ func GetProductCatalogTools() []mcp.Tool {
 	tools = append(tools, productcatalog_get_external_event_sourcesTool)
 
 	// productcatalog_post_external_event_sources tool
+	// Params object accepts: external_event_sources (Object)
 	productcatalog_post_external_event_sourcesTool := mcp.NewTool("productcatalog_post_external_event_sources",
 		mcp.WithDescription("POST external_event_sources for ProductCatalog"),
-		mcp.WithString("external_event_sources",
-			mcp.Description("external_event_sources parameter for external_event_sources"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"external_event_sources": map[string]any{
+					"type":        "object",
+					"description": "external_event_sources parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: external_event_sources (object)"),
 		),
 	)
 	tools = append(tools, productcatalog_post_external_event_sourcesTool)
 
 	// productcatalog_get_flights tool
 	// Available fields for Flight: applinks, category_specific_fields, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0, custom_number_1, custom_number_2, custom_number_3, custom_number_4, description, destination_airport, destination_city, flight_id, id, image_fetch_status, images, oneway_currency, oneway_price, origin_airport, origin_city, price, product_priority_0, product_priority_1, product_priority_2, product_priority_3, product_priority_4, sanitized_images, tags, unit_price, url, visibility
+	// Params object accepts: bulk_pagination (bool), filter (Object)
 	productcatalog_get_flightsTool := mcp.NewTool("productcatalog_get_flights",
 		mcp.WithDescription("GET flights for ProductCatalog"),
-		mcp.WithBoolean("bulk_pagination",
-			mcp.Description("bulk_pagination parameter for flights"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"bulk_pagination": map[string]any{
+					"type":        "boolean",
+					"description": "bulk_pagination parameter",
+				},
+				"filter": map[string]any{
+					"type":        "object",
+					"description": "filter parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: bulk_pagination (boolean), filter (object)"),
 		),
-		mcp.WithString("filter",
-			mcp.Description("filter parameter for flights"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for Flight objects. Available fields: applinks, category_specific_fields, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0, custom_number_1, custom_number_2, custom_number_3, custom_number_4, description, destination_airport (and 20 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for Flight objects. Available fields: applinks, category_specific_fields, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0, custom_number_1, custom_number_2, custom_number_3, custom_number_4, description, destination_airport (and 20 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -511,34 +703,52 @@ func GetProductCatalogTools() []mcp.Tool {
 	tools = append(tools, productcatalog_get_flightsTool)
 
 	// productcatalog_post_geolocated_items_batch tool
+	// Params object accepts: allow_upsert (bool), item_type (string), requests (map)
 	productcatalog_post_geolocated_items_batchTool := mcp.NewTool("productcatalog_post_geolocated_items_batch",
 		mcp.WithDescription("POST geolocated_items_batch for ProductCatalog"),
-		mcp.WithBoolean("allow_upsert",
-			mcp.Description("allow_upsert parameter for geolocated_items_batch"),
-		),
-		mcp.WithString("item_type",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("item_type parameter for geolocated_items_batch"),
-		),
-		mcp.WithString("requests",
-			mcp.Required(),
-			mcp.Description("requests parameter for geolocated_items_batch"),
+			mcp.Properties(map[string]any{
+				"allow_upsert": map[string]any{
+					"type":        "boolean",
+					"description": "allow_upsert parameter",
+				},
+				"item_type": map[string]any{
+					"type":        "string",
+					"description": "item_type parameter",
+					"required":    true,
+				},
+				"requests": map[string]any{
+					"type":        "object",
+					"description": "requests parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: allow_upsert (boolean), item_type (string) [required], requests (object) [required]"),
 		),
 	)
 	tools = append(tools, productcatalog_post_geolocated_items_batchTool)
 
 	// productcatalog_get_home_listings tool
 	// Available fields for HomeListing: ac_type, additional_fees_description, address, agent_company, agent_email, agent_fb_page_id, agent_name, agent_phone, applinks, area_size, area_unit, availability, category_specific_fields, co_2_emission_rating_eu, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0, custom_number_1, custom_number_2, custom_number_3, custom_number_4, days_on_market, description, energy_rating_eu, furnish_type, group_id, heating_type, home_listing_id, id, image_fetch_status, images, laundry_type, listing_type, max_currency, max_price, min_currency, min_price, name, num_baths, num_beds, num_rooms, num_units, parking_type, partner_verification, pet_policy, price, property_type, sanitized_images, securitydeposit_currency, securitydeposit_price, tags, unit_price, url, visibility, year_built
+	// Params object accepts: bulk_pagination (bool), filter (Object)
 	productcatalog_get_home_listingsTool := mcp.NewTool("productcatalog_get_home_listings",
 		mcp.WithDescription("GET home_listings for ProductCatalog"),
-		mcp.WithBoolean("bulk_pagination",
-			mcp.Description("bulk_pagination parameter for home_listings"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"bulk_pagination": map[string]any{
+					"type":        "boolean",
+					"description": "bulk_pagination parameter",
+				},
+				"filter": map[string]any{
+					"type":        "object",
+					"description": "filter parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: bulk_pagination (boolean), filter (object)"),
 		),
-		mcp.WithString("filter",
-			mcp.Description("filter parameter for home_listings"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for HomeListing objects. Available fields: ac_type, additional_fees_description, address, agent_company, agent_email, agent_fb_page_id, agent_name, agent_phone, applinks, area_size, area_unit, availability, category_specific_fields, co_2_emission_rating_eu, currency (and 44 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for HomeListing objects. Available fields: ac_type, additional_fees_description, address, agent_company, agent_email, agent_fb_page_id, agent_name, agent_phone, applinks, area_size, area_unit, availability, category_specific_fields, co_2_emission_rating_eu, currency (and 44 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -553,75 +763,106 @@ func GetProductCatalogTools() []mcp.Tool {
 	tools = append(tools, productcatalog_get_home_listingsTool)
 
 	// productcatalog_post_home_listings tool
+	// Params object accepts: address (Object), availability (string), currency (string), description (string), home_listing_id (string), images (list<Object>), listing_type (string), name (string), num_baths (float), num_beds (float), num_units (float), price (float), property_type (string), url (string), year_built (unsigned int)
 	productcatalog_post_home_listingsTool := mcp.NewTool("productcatalog_post_home_listings",
 		mcp.WithDescription("POST home_listings for ProductCatalog"),
-		mcp.WithString("address",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("address parameter for home_listings"),
-		),
-		mcp.WithString("availability",
-			mcp.Required(),
-			mcp.Description("availability parameter for home_listings"),
-		),
-		mcp.WithString("currency",
-			mcp.Required(),
-			mcp.Description("currency parameter for home_listings"),
-		),
-		mcp.WithString("description",
-			mcp.Description("description parameter for home_listings"),
-		),
-		mcp.WithString("home_listing_id",
-			mcp.Required(),
-			mcp.Description("home_listing_id parameter for home_listings"),
-		),
-		mcp.WithString("images",
-			mcp.Required(),
-			mcp.Description("images parameter for home_listings"),
-		),
-		mcp.WithString("listing_type",
-			mcp.Description("listing_type parameter for home_listings"),
-		),
-		mcp.WithString("name",
-			mcp.Required(),
-			mcp.Description("name parameter for home_listings"),
-		),
-		mcp.WithNumber("num_baths",
-			mcp.Description("num_baths parameter for home_listings"),
-		),
-		mcp.WithNumber("num_beds",
-			mcp.Description("num_beds parameter for home_listings"),
-		),
-		mcp.WithNumber("num_units",
-			mcp.Description("num_units parameter for home_listings"),
-		),
-		mcp.WithNumber("price",
-			mcp.Required(),
-			mcp.Description("price parameter for home_listings"),
-		),
-		mcp.WithString("property_type",
-			mcp.Description("property_type parameter for home_listings"),
-		),
-		mcp.WithString("url",
-			mcp.Required(),
-			mcp.Description("url parameter for home_listings"),
-		),
-		mcp.WithNumber("year_built",
-			mcp.Required(),
-			mcp.Description("year_built parameter for home_listings"),
+			mcp.Properties(map[string]any{
+				"address": map[string]any{
+					"type":        "object",
+					"description": "address parameter",
+					"required":    true,
+				},
+				"availability": map[string]any{
+					"type":        "string",
+					"description": "availability parameter",
+					"required":    true,
+				},
+				"currency": map[string]any{
+					"type":        "string",
+					"description": "currency parameter",
+					"required":    true,
+				},
+				"description": map[string]any{
+					"type":        "string",
+					"description": "description parameter",
+				},
+				"home_listing_id": map[string]any{
+					"type":        "string",
+					"description": "home_listing_id parameter",
+					"required":    true,
+				},
+				"images": map[string]any{
+					"type":        "array",
+					"description": "images parameter",
+					"required":    true,
+					"items":       map[string]any{"type": "object"},
+				},
+				"listing_type": map[string]any{
+					"type":        "string",
+					"description": "listing_type parameter",
+				},
+				"name": map[string]any{
+					"type":        "string",
+					"description": "name parameter",
+					"required":    true,
+				},
+				"num_baths": map[string]any{
+					"type":        "number",
+					"description": "num_baths parameter",
+				},
+				"num_beds": map[string]any{
+					"type":        "number",
+					"description": "num_beds parameter",
+				},
+				"num_units": map[string]any{
+					"type":        "number",
+					"description": "num_units parameter",
+				},
+				"price": map[string]any{
+					"type":        "number",
+					"description": "price parameter",
+					"required":    true,
+				},
+				"property_type": map[string]any{
+					"type":        "string",
+					"description": "property_type parameter",
+				},
+				"url": map[string]any{
+					"type":        "string",
+					"description": "url parameter",
+					"required":    true,
+				},
+				"year_built": map[string]any{
+					"type":        "integer",
+					"description": "year_built parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: address (object) [required], availability (string) [required], currency (string) [required], description (string), home_listing_id (string) [required], images (array<object>) [required], listing_type (string), name (string) [required], num_baths (number), num_beds (number), num_units (number), price (number) [required], property_type (string), url (string) [required], year_built (integer) [required]"),
 		),
 	)
 	tools = append(tools, productcatalog_post_home_listingsTool)
 
 	// productcatalog_get_hotel_rooms_batch tool
 	// Available fields for ProductCatalogHotelRoomsBatch: errors, errors_total_count, handle, status
+	// Params object accepts: handle (string)
 	productcatalog_get_hotel_rooms_batchTool := mcp.NewTool("productcatalog_get_hotel_rooms_batch",
 		mcp.WithDescription("GET hotel_rooms_batch for ProductCatalog"),
-		mcp.WithString("handle",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("handle parameter for hotel_rooms_batch"),
+			mcp.Properties(map[string]any{
+				"handle": map[string]any{
+					"type":        "string",
+					"description": "handle parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: handle (string) [required]"),
 		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for ProductCatalogHotelRoomsBatch objects. Available fields: errors, errors_total_count, handle, status"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for ProductCatalogHotelRoomsBatch objects. Available fields: errors, errors_total_count, handle, status"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -636,43 +877,64 @@ func GetProductCatalogTools() []mcp.Tool {
 	tools = append(tools, productcatalog_get_hotel_rooms_batchTool)
 
 	// productcatalog_post_hotel_rooms_batch tool
+	// Params object accepts: file (file), password (string), standard (productcataloghotel_rooms_batch_standard_enum_param), update_only (bool), url (string), username (string)
 	productcatalog_post_hotel_rooms_batchTool := mcp.NewTool("productcatalog_post_hotel_rooms_batch",
 		mcp.WithDescription("POST hotel_rooms_batch for ProductCatalog"),
-		mcp.WithString("file",
-			mcp.Description("file parameter for hotel_rooms_batch"),
-		),
-		mcp.WithString("password",
-			mcp.Description("password parameter for hotel_rooms_batch"),
-		),
-		mcp.WithString("standard",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("standard parameter for hotel_rooms_batch"),
-			mcp.Enum("google"),
-		),
-		mcp.WithBoolean("update_only",
-			mcp.Description("update_only parameter for hotel_rooms_batch"),
-		),
-		mcp.WithString("url",
-			mcp.Description("url parameter for hotel_rooms_batch"),
-		),
-		mcp.WithString("username",
-			mcp.Description("username parameter for hotel_rooms_batch"),
+			mcp.Properties(map[string]any{
+				"file": map[string]any{
+					"type":        "string",
+					"description": "file parameter",
+				},
+				"password": map[string]any{
+					"type":        "string",
+					"description": "password parameter",
+				},
+				"standard": map[string]any{
+					"type":        "string",
+					"description": "standard parameter",
+					"required":    true,
+					"enum":        []string{"google"},
+				},
+				"update_only": map[string]any{
+					"type":        "boolean",
+					"description": "update_only parameter",
+				},
+				"url": map[string]any{
+					"type":        "string",
+					"description": "url parameter",
+				},
+				"username": map[string]any{
+					"type":        "string",
+					"description": "username parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: file (file), password (string), standard (enum) [google] [required], update_only (boolean), url (string), username (string)"),
 		),
 	)
 	tools = append(tools, productcatalog_post_hotel_rooms_batchTool)
 
 	// productcatalog_get_hotels tool
 	// Available fields for Hotel: address, applinks, brand, category, category_specific_fields, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0, custom_number_1, custom_number_2, custom_number_3, custom_number_4, description, guest_ratings, hotel_id, id, image_fetch_status, images, lowest_base_price, loyalty_program, margin_level, name, phone, product_priority_0, product_priority_1, product_priority_2, product_priority_3, product_priority_4, sale_price, sanitized_images, star_rating, tags, unit_price, url, visibility
+	// Params object accepts: bulk_pagination (bool), filter (Object)
 	productcatalog_get_hotelsTool := mcp.NewTool("productcatalog_get_hotels",
 		mcp.WithDescription("GET hotels for ProductCatalog"),
-		mcp.WithBoolean("bulk_pagination",
-			mcp.Description("bulk_pagination parameter for hotels"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"bulk_pagination": map[string]any{
+					"type":        "boolean",
+					"description": "bulk_pagination parameter",
+				},
+				"filter": map[string]any{
+					"type":        "object",
+					"description": "filter parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: bulk_pagination (boolean), filter (object)"),
 		),
-		mcp.WithString("filter",
-			mcp.Description("filter parameter for hotels"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for Hotel objects. Available fields: address, applinks, brand, category, category_specific_fields, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0, custom_number_1, custom_number_2, custom_number_3 (and 24 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for Hotel objects. Available fields: address, applinks, brand, category, category_specific_fields, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0, custom_number_1, custom_number_2, custom_number_3 (and 24 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -687,144 +949,217 @@ func GetProductCatalogTools() []mcp.Tool {
 	tools = append(tools, productcatalog_get_hotelsTool)
 
 	// productcatalog_post_hotels tool
+	// Params object accepts: address (Object), applinks (Object), base_price (unsigned int), brand (string), currency (string), description (string), guest_ratings (list<Object>), hotel_id (string), images (list<Object>), name (string), phone (string), star_rating (float), url (string)
 	productcatalog_post_hotelsTool := mcp.NewTool("productcatalog_post_hotels",
 		mcp.WithDescription("POST hotels for ProductCatalog"),
-		mcp.WithString("address",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("address parameter for hotels"),
-		),
-		mcp.WithString("applinks",
-			mcp.Description("applinks parameter for hotels"),
-		),
-		mcp.WithNumber("base_price",
-			mcp.Description("base_price parameter for hotels"),
-		),
-		mcp.WithString("brand",
-			mcp.Description("brand parameter for hotels"),
-		),
-		mcp.WithString("currency",
-			mcp.Description("currency parameter for hotels"),
-		),
-		mcp.WithString("description",
-			mcp.Required(),
-			mcp.Description("description parameter for hotels"),
-		),
-		mcp.WithString("guest_ratings",
-			mcp.Description("guest_ratings parameter for hotels"),
-		),
-		mcp.WithString("hotel_id",
-			mcp.Description("hotel_id parameter for hotels"),
-		),
-		mcp.WithString("images",
-			mcp.Required(),
-			mcp.Description("images parameter for hotels"),
-		),
-		mcp.WithString("name",
-			mcp.Required(),
-			mcp.Description("name parameter for hotels"),
-		),
-		mcp.WithString("phone",
-			mcp.Description("phone parameter for hotels"),
-		),
-		mcp.WithNumber("star_rating",
-			mcp.Description("star_rating parameter for hotels"),
-		),
-		mcp.WithString("url",
-			mcp.Required(),
-			mcp.Description("url parameter for hotels"),
+			mcp.Properties(map[string]any{
+				"address": map[string]any{
+					"type":        "object",
+					"description": "address parameter",
+					"required":    true,
+				},
+				"applinks": map[string]any{
+					"type":        "object",
+					"description": "applinks parameter",
+				},
+				"base_price": map[string]any{
+					"type":        "integer",
+					"description": "base_price parameter",
+				},
+				"brand": map[string]any{
+					"type":        "string",
+					"description": "brand parameter",
+				},
+				"currency": map[string]any{
+					"type":        "string",
+					"description": "currency parameter",
+				},
+				"description": map[string]any{
+					"type":        "string",
+					"description": "description parameter",
+					"required":    true,
+				},
+				"guest_ratings": map[string]any{
+					"type":        "array",
+					"description": "guest_ratings parameter",
+					"items":       map[string]any{"type": "object"},
+				},
+				"hotel_id": map[string]any{
+					"type":        "string",
+					"description": "hotel_id parameter",
+				},
+				"images": map[string]any{
+					"type":        "array",
+					"description": "images parameter",
+					"required":    true,
+					"items":       map[string]any{"type": "object"},
+				},
+				"name": map[string]any{
+					"type":        "string",
+					"description": "name parameter",
+					"required":    true,
+				},
+				"phone": map[string]any{
+					"type":        "string",
+					"description": "phone parameter",
+				},
+				"star_rating": map[string]any{
+					"type":        "number",
+					"description": "star_rating parameter",
+				},
+				"url": map[string]any{
+					"type":        "string",
+					"description": "url parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: address (object) [required], applinks (object), base_price (integer), brand (string), currency (string), description (string) [required], guest_ratings (array<object>), hotel_id (string), images (array<object>) [required], name (string) [required], phone (string), star_rating (number), url (string) [required]"),
 		),
 	)
 	tools = append(tools, productcatalog_post_hotelsTool)
 
 	// productcatalog_post_items_batch tool
+	// Params object accepts: allow_upsert (bool), item_sub_type (productcatalogitems_batch_item_sub_type_enum_param), item_type (string), requests (map), version (unsigned int)
 	productcatalog_post_items_batchTool := mcp.NewTool("productcatalog_post_items_batch",
 		mcp.WithDescription("POST items_batch for ProductCatalog"),
-		mcp.WithBoolean("allow_upsert",
-			mcp.Description("allow_upsert parameter for items_batch"),
-		),
-		mcp.WithString("item_sub_type",
-			mcp.Description("item_sub_type parameter for items_batch"),
-			mcp.Enum("APPLIANCES", "BABY_FEEDING", "BABY_TRANSPORT", "BEAUTY", "BEDDING", "CAMERAS", "CELL_PHONES_AND_SMART_WATCHES", "CLEANING_SUPPLIES", "CLOTHING", "CLOTHING_ACCESSORIES", "COMPUTERS_AND_TABLETS", "DIAPERING_AND_POTTY_TRAINING", "ELECTRONICS_ACCESSORIES", "FURNITURE", "HEALTH", "HOME_GOODS", "JEWELRY", "NURSERY", "PRINTERS_AND_SCANNERS", "PROJECTORS", "SHOES_AND_FOOTWEAR", "SOFTWARE", "TOYS", "TVS_AND_MONITORS", "VIDEO_GAME_CONSOLES_AND_VIDEO_GAMES", "WATCHES"),
-		),
-		mcp.WithString("item_type",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("item_type parameter for items_batch"),
-		),
-		mcp.WithString("requests",
-			mcp.Required(),
-			mcp.Description("requests parameter for items_batch"),
-		),
-		mcp.WithNumber("version",
-			mcp.Description("version parameter for items_batch"),
+			mcp.Properties(map[string]any{
+				"allow_upsert": map[string]any{
+					"type":        "boolean",
+					"description": "allow_upsert parameter",
+				},
+				"item_sub_type": map[string]any{
+					"type":        "string",
+					"description": "item_sub_type parameter",
+					"enum":        []string{"APPLIANCES", "BABY_FEEDING", "BABY_TRANSPORT", "BEAUTY", "BEDDING", "CAMERAS", "CELL_PHONES_AND_SMART_WATCHES", "CLEANING_SUPPLIES", "CLOTHING", "CLOTHING_ACCESSORIES", "COMPUTERS_AND_TABLETS", "DIAPERING_AND_POTTY_TRAINING", "ELECTRONICS_ACCESSORIES", "FURNITURE", "HEALTH", "HOME_GOODS", "JEWELRY", "NURSERY", "PRINTERS_AND_SCANNERS", "PROJECTORS", "SHOES_AND_FOOTWEAR", "SOFTWARE", "TOYS", "TVS_AND_MONITORS", "VIDEO_GAME_CONSOLES_AND_VIDEO_GAMES", "WATCHES"},
+				},
+				"item_type": map[string]any{
+					"type":        "string",
+					"description": "item_type parameter",
+					"required":    true,
+				},
+				"requests": map[string]any{
+					"type":        "object",
+					"description": "requests parameter",
+					"required":    true,
+				},
+				"version": map[string]any{
+					"type":        "integer",
+					"description": "version parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: allow_upsert (boolean), item_sub_type (enum) [APPLIANCES, BABY_FEEDING, BABY_TRANSPORT, BEAUTY, BEDDING, ...], item_type (string) [required], requests (object) [required], version (integer)"),
 		),
 	)
 	tools = append(tools, productcatalog_post_items_batchTool)
 
 	// productcatalog_post_localized_items_batch tool
+	// Params object accepts: allow_upsert (bool), item_type (string), requests (map), version (unsigned int)
 	productcatalog_post_localized_items_batchTool := mcp.NewTool("productcatalog_post_localized_items_batch",
 		mcp.WithDescription("POST localized_items_batch for ProductCatalog"),
-		mcp.WithBoolean("allow_upsert",
-			mcp.Description("allow_upsert parameter for localized_items_batch"),
-		),
-		mcp.WithString("item_type",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("item_type parameter for localized_items_batch"),
-		),
-		mcp.WithString("requests",
-			mcp.Required(),
-			mcp.Description("requests parameter for localized_items_batch"),
-		),
-		mcp.WithNumber("version",
-			mcp.Description("version parameter for localized_items_batch"),
+			mcp.Properties(map[string]any{
+				"allow_upsert": map[string]any{
+					"type":        "boolean",
+					"description": "allow_upsert parameter",
+				},
+				"item_type": map[string]any{
+					"type":        "string",
+					"description": "item_type parameter",
+					"required":    true,
+				},
+				"requests": map[string]any{
+					"type":        "object",
+					"description": "requests parameter",
+					"required":    true,
+				},
+				"version": map[string]any{
+					"type":        "integer",
+					"description": "version parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: allow_upsert (boolean), item_type (string) [required], requests (object) [required], version (integer)"),
 		),
 	)
 	tools = append(tools, productcatalog_post_localized_items_batchTool)
 
 	// productcatalog_post_marketplace_partner_sellers_details tool
+	// Params object accepts: requests (map)
 	productcatalog_post_marketplace_partner_sellers_detailsTool := mcp.NewTool("productcatalog_post_marketplace_partner_sellers_details",
 		mcp.WithDescription("POST marketplace_partner_sellers_details for ProductCatalog"),
-		mcp.WithString("requests",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("requests parameter for marketplace_partner_sellers_details"),
+			mcp.Properties(map[string]any{
+				"requests": map[string]any{
+					"type":        "object",
+					"description": "requests parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: requests (object) [required]"),
 		),
 	)
 	tools = append(tools, productcatalog_post_marketplace_partner_sellers_detailsTool)
 
 	// productcatalog_post_marketplace_partner_signals tool
+	// Params object accepts: event_name (productcatalogmarketplace_partner_signals_event_name_enum_param), event_source_url (string), event_time (datetime), order_data (map), user_data (map)
 	productcatalog_post_marketplace_partner_signalsTool := mcp.NewTool("productcatalog_post_marketplace_partner_signals",
 		mcp.WithDescription("POST marketplace_partner_signals for ProductCatalog"),
-		mcp.WithString("event_name",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("event_name parameter for marketplace_partner_signals"),
-			mcp.Enum("ADD_TO_CART", "PURCHASE", "TEST", "VIEW_ITEM"),
-		),
-		mcp.WithString("event_source_url",
-			mcp.Description("event_source_url parameter for marketplace_partner_signals"),
-		),
-		mcp.WithString("event_time",
-			mcp.Required(),
-			mcp.Description("event_time parameter for marketplace_partner_signals"),
-		),
-		mcp.WithString("order_data",
-			mcp.Description("order_data parameter for marketplace_partner_signals"),
-		),
-		mcp.WithString("user_data",
-			mcp.Required(),
-			mcp.Description("user_data parameter for marketplace_partner_signals"),
+			mcp.Properties(map[string]any{
+				"event_name": map[string]any{
+					"type":        "string",
+					"description": "event_name parameter",
+					"required":    true,
+					"enum":        []string{"ADD_TO_CART", "PURCHASE", "TEST", "VIEW_ITEM"},
+				},
+				"event_source_url": map[string]any{
+					"type":        "string",
+					"description": "event_source_url parameter",
+				},
+				"event_time": map[string]any{
+					"type":        "string",
+					"description": "event_time parameter",
+					"required":    true,
+				},
+				"order_data": map[string]any{
+					"type":        "object",
+					"description": "order_data parameter",
+				},
+				"user_data": map[string]any{
+					"type":        "object",
+					"description": "user_data parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: event_name (enum) [ADD_TO_CART, PURCHASE, TEST, VIEW_ITEM] [required], event_source_url (string), event_time (datetime) [required], order_data (object), user_data (object) [required]"),
 		),
 	)
 	tools = append(tools, productcatalog_post_marketplace_partner_signalsTool)
 
 	// productcatalog_get_pricing_variables_batch tool
 	// Available fields for ProductCatalogPricingVariablesBatch: errors, errors_total_count, handle, status
+	// Params object accepts: handle (string)
 	productcatalog_get_pricing_variables_batchTool := mcp.NewTool("productcatalog_get_pricing_variables_batch",
 		mcp.WithDescription("GET pricing_variables_batch for ProductCatalog"),
-		mcp.WithString("handle",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("handle parameter for pricing_variables_batch"),
+			mcp.Properties(map[string]any{
+				"handle": map[string]any{
+					"type":        "string",
+					"description": "handle parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: handle (string) [required]"),
 		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for ProductCatalogPricingVariablesBatch objects. Available fields: errors, errors_total_count, handle, status"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for ProductCatalogPricingVariablesBatch objects. Available fields: errors, errors_total_count, handle, status"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -839,27 +1174,40 @@ func GetProductCatalogTools() []mcp.Tool {
 	tools = append(tools, productcatalog_get_pricing_variables_batchTool)
 
 	// productcatalog_post_pricing_variables_batch tool
+	// Params object accepts: file (file), password (string), standard (productcatalogpricing_variables_batch_standard_enum_param), update_only (bool), url (string), username (string)
 	productcatalog_post_pricing_variables_batchTool := mcp.NewTool("productcatalog_post_pricing_variables_batch",
 		mcp.WithDescription("POST pricing_variables_batch for ProductCatalog"),
-		mcp.WithString("file",
-			mcp.Description("file parameter for pricing_variables_batch"),
-		),
-		mcp.WithString("password",
-			mcp.Description("password parameter for pricing_variables_batch"),
-		),
-		mcp.WithString("standard",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("standard parameter for pricing_variables_batch"),
-			mcp.Enum("google"),
-		),
-		mcp.WithBoolean("update_only",
-			mcp.Description("update_only parameter for pricing_variables_batch"),
-		),
-		mcp.WithString("url",
-			mcp.Description("url parameter for pricing_variables_batch"),
-		),
-		mcp.WithString("username",
-			mcp.Description("username parameter for pricing_variables_batch"),
+			mcp.Properties(map[string]any{
+				"file": map[string]any{
+					"type":        "string",
+					"description": "file parameter",
+				},
+				"password": map[string]any{
+					"type":        "string",
+					"description": "password parameter",
+				},
+				"standard": map[string]any{
+					"type":        "string",
+					"description": "standard parameter",
+					"required":    true,
+					"enum":        []string{"google"},
+				},
+				"update_only": map[string]any{
+					"type":        "boolean",
+					"description": "update_only parameter",
+				},
+				"url": map[string]any{
+					"type":        "string",
+					"description": "url parameter",
+				},
+				"username": map[string]any{
+					"type":        "string",
+					"description": "username parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: file (file), password (string), standard (enum) [google] [required], update_only (boolean), url (string), username (string)"),
 		),
 	)
 	tools = append(tools, productcatalog_post_pricing_variables_batchTool)
@@ -868,8 +1216,8 @@ func GetProductCatalogTools() []mcp.Tool {
 	// Available fields for ProductFeed: country, created_time, default_currency, deletion_enabled, delimiter, encoding, file_name, id, ingestion_source_type, item_sub_type, latest_upload, migrated_from_feed_id, name, override_type, primary_feeds, product_count, quoted_fields_mode, schedule, supplementary_feeds, update_schedule
 	productcatalog_get_product_feedsTool := mcp.NewTool("productcatalog_get_product_feeds",
 		mcp.WithDescription("GET product_feeds for ProductCatalog"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for ProductFeed objects. Available fields: country, created_time, default_currency, deletion_enabled, delimiter, encoding, file_name, id, ingestion_source_type, item_sub_type, latest_upload, migrated_from_feed_id, name, override_type, primary_feeds (and 5 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for ProductFeed objects. Available fields: country, created_time, default_currency, deletion_enabled, delimiter, encoding, file_name, id, ingestion_source_type, item_sub_type, latest_upload, migrated_from_feed_id, name, override_type, primary_feeds (and 5 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -884,71 +1232,99 @@ func GetProductCatalogTools() []mcp.Tool {
 	tools = append(tools, productcatalog_get_product_feedsTool)
 
 	// productcatalog_post_product_feeds tool
+	// Params object accepts: country (string), default_currency (string), deletion_enabled (bool), delimiter (productcatalogproduct_feeds_delimiter_enum_param), encoding (productcatalogproduct_feeds_encoding_enum_param), feed_type (productcatalogproduct_feeds_feed_type_enum_param), file_name (string), ingestion_source_type (productcatalogproduct_feeds_ingestion_source_type_enum_param), item_sub_type (productcatalogproduct_feeds_item_sub_type_enum_param), migrated_from_feed_id (string), name (string), override_type (productcatalogproduct_feeds_override_type_enum_param), override_value (string), primary_feed_ids (list<string>), quoted_fields_mode (productcatalogproduct_feeds_quoted_fields_mode_enum_param), rules (list<string>), schedule (string), selected_override_fields (list<string>), update_schedule (string)
 	productcatalog_post_product_feedsTool := mcp.NewTool("productcatalog_post_product_feeds",
 		mcp.WithDescription("POST product_feeds for ProductCatalog"),
-		mcp.WithString("country",
-			mcp.Description("country parameter for product_feeds"),
-		),
-		mcp.WithString("default_currency",
-			mcp.Description("default_currency parameter for product_feeds"),
-		),
-		mcp.WithBoolean("deletion_enabled",
-			mcp.Description("deletion_enabled parameter for product_feeds"),
-		),
-		mcp.WithString("delimiter",
-			mcp.Description("delimiter parameter for product_feeds"),
-			mcp.Enum("AUTODETECT", "BAR", "COMMA", "SEMICOLON", "TAB", "TILDE"),
-		),
-		mcp.WithString("encoding",
-			mcp.Description("encoding parameter for product_feeds"),
-			mcp.Enum("AUTODETECT", "LATIN1", "UTF16BE", "UTF16LE", "UTF32BE", "UTF32LE", "UTF8"),
-		),
-		mcp.WithString("feed_type",
-			mcp.Description("feed_type parameter for product_feeds"),
-			mcp.Enum("AUTOMOTIVE_MODEL", "COLLECTION", "DESTINATION", "FLIGHT", "HOME_LISTING", "HOTEL", "HOTEL_ROOM", "LOCAL_INVENTORY", "MEDIA_TITLE", "OFFER", "PRODUCTS", "PRODUCT_RATINGS_AND_REVIEWS", "TRANSACTABLE_ITEMS", "VEHICLES", "VEHICLE_OFFER"),
-		),
-		mcp.WithString("file_name",
-			mcp.Description("file_name parameter for product_feeds"),
-		),
-		mcp.WithString("ingestion_source_type",
-			mcp.Description("ingestion_source_type parameter for product_feeds"),
-			mcp.Enum("PRIMARY_FEED", "SUPPLEMENTARY_FEED"),
-		),
-		mcp.WithString("item_sub_type",
-			mcp.Description("item_sub_type parameter for product_feeds"),
-			mcp.Enum("APPLIANCES", "BABY_FEEDING", "BABY_TRANSPORT", "BEAUTY", "BEDDING", "CAMERAS", "CELL_PHONES_AND_SMART_WATCHES", "CLEANING_SUPPLIES", "CLOTHING", "CLOTHING_ACCESSORIES", "COMPUTERS_AND_TABLETS", "DIAPERING_AND_POTTY_TRAINING", "ELECTRONICS_ACCESSORIES", "FURNITURE", "HEALTH", "HOME_GOODS", "JEWELRY", "NURSERY", "PRINTERS_AND_SCANNERS", "PROJECTORS", "SHOES_AND_FOOTWEAR", "SOFTWARE", "TOYS", "TVS_AND_MONITORS", "VIDEO_GAME_CONSOLES_AND_VIDEO_GAMES", "WATCHES"),
-		),
-		mcp.WithString("migrated_from_feed_id",
-			mcp.Description("migrated_from_feed_id parameter for product_feeds"),
-		),
-		mcp.WithString("name",
-			mcp.Description("name parameter for product_feeds"),
-		),
-		mcp.WithString("override_type",
-			mcp.Description("override_type parameter for product_feeds"),
-			mcp.Enum("BATCH_API_LANGUAGE_OR_COUNTRY", "CATALOG_SEGMENT_CUSTOMIZE_DEFAULT", "COUNTRY", "LANGUAGE", "LANGUAGE_AND_COUNTRY", "LOCAL", "SMART_PIXEL_LANGUAGE_OR_COUNTRY", "VERSION"),
-		),
-		mcp.WithString("override_value",
-			mcp.Description("override_value parameter for product_feeds"),
-		),
-		mcp.WithString("primary_feed_ids",
-			mcp.Description("primary_feed_ids parameter for product_feeds"),
-		),
-		mcp.WithString("quoted_fields_mode",
-			mcp.Description("quoted_fields_mode parameter for product_feeds"),
-			mcp.Enum("autodetect", "off", "on"),
-		),
-		mcp.WithString("rules",
-			mcp.Description("rules parameter for product_feeds"),
-		),
-		mcp.WithString("schedule",
-			mcp.Description("schedule parameter for product_feeds"),
-		),
-		mcp.WithString("selected_override_fields",
-			mcp.Description("selected_override_fields parameter for product_feeds"),
-		),
-		mcp.WithString("update_schedule",
-			mcp.Description("update_schedule parameter for product_feeds"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"country": map[string]any{
+					"type":        "string",
+					"description": "country parameter",
+				},
+				"default_currency": map[string]any{
+					"type":        "string",
+					"description": "default_currency parameter",
+				},
+				"deletion_enabled": map[string]any{
+					"type":        "boolean",
+					"description": "deletion_enabled parameter",
+				},
+				"delimiter": map[string]any{
+					"type":        "string",
+					"description": "delimiter parameter",
+					"enum":        []string{"AUTODETECT", "BAR", "COMMA", "SEMICOLON", "TAB", "TILDE"},
+				},
+				"encoding": map[string]any{
+					"type":        "string",
+					"description": "encoding parameter",
+					"enum":        []string{"AUTODETECT", "LATIN1", "UTF16BE", "UTF16LE", "UTF32BE", "UTF32LE", "UTF8"},
+				},
+				"feed_type": map[string]any{
+					"type":        "string",
+					"description": "feed_type parameter",
+					"enum":        []string{"AUTOMOTIVE_MODEL", "COLLECTION", "DESTINATION", "FLIGHT", "HOME_LISTING", "HOTEL", "HOTEL_ROOM", "LOCAL_INVENTORY", "MEDIA_TITLE", "OFFER", "PRODUCTS", "PRODUCT_RATINGS_AND_REVIEWS", "TRANSACTABLE_ITEMS", "VEHICLES", "VEHICLE_OFFER"},
+				},
+				"file_name": map[string]any{
+					"type":        "string",
+					"description": "file_name parameter",
+				},
+				"ingestion_source_type": map[string]any{
+					"type":        "string",
+					"description": "ingestion_source_type parameter",
+					"enum":        []string{"PRIMARY_FEED", "SUPPLEMENTARY_FEED"},
+				},
+				"item_sub_type": map[string]any{
+					"type":        "string",
+					"description": "item_sub_type parameter",
+					"enum":        []string{"APPLIANCES", "BABY_FEEDING", "BABY_TRANSPORT", "BEAUTY", "BEDDING", "CAMERAS", "CELL_PHONES_AND_SMART_WATCHES", "CLEANING_SUPPLIES", "CLOTHING", "CLOTHING_ACCESSORIES", "COMPUTERS_AND_TABLETS", "DIAPERING_AND_POTTY_TRAINING", "ELECTRONICS_ACCESSORIES", "FURNITURE", "HEALTH", "HOME_GOODS", "JEWELRY", "NURSERY", "PRINTERS_AND_SCANNERS", "PROJECTORS", "SHOES_AND_FOOTWEAR", "SOFTWARE", "TOYS", "TVS_AND_MONITORS", "VIDEO_GAME_CONSOLES_AND_VIDEO_GAMES", "WATCHES"},
+				},
+				"migrated_from_feed_id": map[string]any{
+					"type":        "string",
+					"description": "migrated_from_feed_id parameter",
+				},
+				"name": map[string]any{
+					"type":        "string",
+					"description": "name parameter",
+				},
+				"override_type": map[string]any{
+					"type":        "string",
+					"description": "override_type parameter",
+					"enum":        []string{"BATCH_API_LANGUAGE_OR_COUNTRY", "CATALOG_SEGMENT_CUSTOMIZE_DEFAULT", "COUNTRY", "LANGUAGE", "LANGUAGE_AND_COUNTRY", "LOCAL", "SMART_PIXEL_LANGUAGE_OR_COUNTRY", "VERSION"},
+				},
+				"override_value": map[string]any{
+					"type":        "string",
+					"description": "override_value parameter",
+				},
+				"primary_feed_ids": map[string]any{
+					"type":        "array",
+					"description": "primary_feed_ids parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+				"quoted_fields_mode": map[string]any{
+					"type":        "string",
+					"description": "quoted_fields_mode parameter",
+					"enum":        []string{"autodetect", "off", "on"},
+				},
+				"rules": map[string]any{
+					"type":        "array",
+					"description": "rules parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+				"schedule": map[string]any{
+					"type":        "string",
+					"description": "schedule parameter",
+				},
+				"selected_override_fields": map[string]any{
+					"type":        "array",
+					"description": "selected_override_fields parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+				"update_schedule": map[string]any{
+					"type":        "string",
+					"description": "update_schedule parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: country (string), default_currency (string), deletion_enabled (boolean), delimiter (enum) [AUTODETECT, BAR, COMMA, SEMICOLON, TAB, ...], encoding (enum) [AUTODETECT, LATIN1, UTF16BE, UTF16LE, UTF32BE, ...], feed_type (enum) [AUTOMOTIVE_MODEL, COLLECTION, DESTINATION, FLIGHT, HOME_LISTING, ...], file_name (string), ingestion_source_type (enum) [PRIMARY_FEED, SUPPLEMENTARY_FEED], item_sub_type (enum) [APPLIANCES, BABY_FEEDING, BABY_TRANSPORT, BEAUTY, BEDDING, ...], migrated_from_feed_id (string), name (string), override_type (enum) [BATCH_API_LANGUAGE_OR_COUNTRY, CATALOG_SEGMENT_CUSTOMIZE_DEFAULT, COUNTRY, LANGUAGE, LANGUAGE_AND_COUNTRY, ...], override_value (string), primary_feed_ids (array<string>), quoted_fields_mode (enum) [autodetect, off, on], rules (array<string>), schedule (string), selected_override_fields (array<string>), update_schedule (string)"),
 		),
 	)
 	tools = append(tools, productcatalog_post_product_feedsTool)
@@ -957,8 +1333,8 @@ func GetProductCatalogTools() []mcp.Tool {
 	// Available fields for ProductGroup: id, product_catalog, retailer_id, variants
 	productcatalog_get_product_groupsTool := mcp.NewTool("productcatalog_get_product_groups",
 		mcp.WithDescription("GET product_groups for ProductCatalog"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for ProductGroup objects. Available fields: id, product_catalog, retailer_id, variants"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for ProductGroup objects. Available fields: id, product_catalog, retailer_id, variants"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -973,35 +1349,54 @@ func GetProductCatalogTools() []mcp.Tool {
 	tools = append(tools, productcatalog_get_product_groupsTool)
 
 	// productcatalog_post_product_groups tool
+	// Params object accepts: retailer_id (string), variants (list<Object>)
 	productcatalog_post_product_groupsTool := mcp.NewTool("productcatalog_post_product_groups",
 		mcp.WithDescription("POST product_groups for ProductCatalog"),
-		mcp.WithString("retailer_id",
-			mcp.Description("retailer_id parameter for product_groups"),
-		),
-		mcp.WithString("variants",
-			mcp.Description("variants parameter for product_groups"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"retailer_id": map[string]any{
+					"type":        "string",
+					"description": "retailer_id parameter",
+				},
+				"variants": map[string]any{
+					"type":        "array",
+					"description": "variants parameter",
+					"items":       map[string]any{"type": "object"},
+				},
+			}),
+			mcp.Description("Parameters object containing: retailer_id (string), variants (array<object>)"),
 		),
 	)
 	tools = append(tools, productcatalog_post_product_groupsTool)
 
 	// productcatalog_get_product_sets tool
 	// Available fields for ProductSet: auto_creation_url, filter, id, latest_metadata, live_metadata, name, ordering_info, product_catalog, product_count, retailer_id
+	// Params object accepts: ancestor_id (string), has_children (bool), parent_id (string), retailer_id (string)
 	productcatalog_get_product_setsTool := mcp.NewTool("productcatalog_get_product_sets",
 		mcp.WithDescription("GET product_sets for ProductCatalog"),
-		mcp.WithString("ancestor_id",
-			mcp.Description("ancestor_id parameter for product_sets"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"ancestor_id": map[string]any{
+					"type":        "string",
+					"description": "ancestor_id parameter",
+				},
+				"has_children": map[string]any{
+					"type":        "boolean",
+					"description": "has_children parameter",
+				},
+				"parent_id": map[string]any{
+					"type":        "string",
+					"description": "parent_id parameter",
+				},
+				"retailer_id": map[string]any{
+					"type":        "string",
+					"description": "retailer_id parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: ancestor_id (string), has_children (boolean), parent_id (string), retailer_id (string)"),
 		),
-		mcp.WithBoolean("has_children",
-			mcp.Description("has_children parameter for product_sets"),
-		),
-		mcp.WithString("parent_id",
-			mcp.Description("parent_id parameter for product_sets"),
-		),
-		mcp.WithString("retailer_id",
-			mcp.Description("retailer_id parameter for product_sets"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for ProductSet objects. Available fields: auto_creation_url, filter, id, latest_metadata, live_metadata, name, ordering_info, product_catalog, product_count, retailer_id"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for ProductSet objects. Available fields: auto_creation_url, filter, id, latest_metadata, live_metadata, name, ordering_info, product_catalog, product_count, retailer_id"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -1016,40 +1411,63 @@ func GetProductCatalogTools() []mcp.Tool {
 	tools = append(tools, productcatalog_get_product_setsTool)
 
 	// productcatalog_post_product_sets tool
+	// Params object accepts: filter (Object), metadata (map), name (string), ordering_info (list<unsigned int>), publish_to_shops (list<map>), retailer_id (string)
 	productcatalog_post_product_setsTool := mcp.NewTool("productcatalog_post_product_sets",
 		mcp.WithDescription("POST product_sets for ProductCatalog"),
-		mcp.WithString("filter",
-			mcp.Description("filter parameter for product_sets"),
-		),
-		mcp.WithString("metadata",
-			mcp.Description("metadata parameter for product_sets"),
-		),
-		mcp.WithString("name",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("name parameter for product_sets"),
-		),
-		mcp.WithString("ordering_info",
-			mcp.Description("ordering_info parameter for product_sets"),
-		),
-		mcp.WithString("publish_to_shops",
-			mcp.Description("publish_to_shops parameter for product_sets"),
-		),
-		mcp.WithString("retailer_id",
-			mcp.Description("retailer_id parameter for product_sets"),
+			mcp.Properties(map[string]any{
+				"filter": map[string]any{
+					"type":        "object",
+					"description": "filter parameter",
+				},
+				"metadata": map[string]any{
+					"type":        "object",
+					"description": "metadata parameter",
+				},
+				"name": map[string]any{
+					"type":        "string",
+					"description": "name parameter",
+					"required":    true,
+				},
+				"ordering_info": map[string]any{
+					"type":        "array",
+					"description": "ordering_info parameter",
+					"items":       map[string]any{"type": "integer"},
+				},
+				"publish_to_shops": map[string]any{
+					"type":        "array",
+					"description": "publish_to_shops parameter",
+					"items":       map[string]any{"type": "object"},
+				},
+				"retailer_id": map[string]any{
+					"type":        "string",
+					"description": "retailer_id parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: filter (object), metadata (object), name (string) [required], ordering_info (array<integer>), publish_to_shops (array<object>), retailer_id (string)"),
 		),
 	)
 	tools = append(tools, productcatalog_post_product_setsTool)
 
 	// productcatalog_get_product_sets_batch tool
 	// Available fields for ProductCatalogProductSetsBatch: errors, errors_total_count, handle, status
+	// Params object accepts: handle (string)
 	productcatalog_get_product_sets_batchTool := mcp.NewTool("productcatalog_get_product_sets_batch",
 		mcp.WithDescription("GET product_sets_batch for ProductCatalog"),
-		mcp.WithString("handle",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("handle parameter for product_sets_batch"),
+			mcp.Properties(map[string]any{
+				"handle": map[string]any{
+					"type":        "string",
+					"description": "handle parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: handle (string) [required]"),
 		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for ProductCatalogProductSetsBatch objects. Available fields: errors, errors_total_count, handle, status"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for ProductCatalogProductSetsBatch objects. Available fields: errors, errors_total_count, handle, status"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -1065,27 +1483,38 @@ func GetProductCatalogTools() []mcp.Tool {
 
 	// productcatalog_get_products tool
 	// Available fields for ProductItem: additional_image_cdn_urls, additional_image_urls, additional_variant_attributes, age_group, applinks, availability, brand, bundle_items, bundle_retailer_ids, capability_to_review_status, category, category_specific_fields, color, commerce_insights, condition, currency, custom_data, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0, custom_number_1, custom_number_2, custom_number_3, custom_number_4, description, errors, expiration_date, fb_product_category, gender, generated_background_images, generated_background_images_ad_usage, gtin, id, image_cdn_urls, image_fetch_status, image_url, images, importer_address, importer_name, invalidation_errors, inventory, is_bundle_hero, manufacturer_info, manufacturer_part_number, marked_for_product_launch, material, mobile_link, name, ordering_index, origin_country, parent_product_id, pattern, post_conversion_signal_based_enforcement_appeal_eligibility, price, product_catalog, product_feed, product_group, product_local_info, product_relationship, product_type, quantity_to_sell_on_facebook, retailer_id, retailer_product_group_id, review_rejection_reasons, review_status, sale_price, sale_price_end_date, sale_price_start_date, shipping_weight_unit, shipping_weight_value, short_description, size, start_date, tags, url, vendor_id, video_fetch_status, videos, visibility, wa_compliance_category
+	// Params object accepts: bulk_pagination (bool), error_priority (productcatalogproducts_error_priority_enum_param), error_type (productcatalogproducts_error_type_enum_param), filter (Object), return_only_approved_products (bool)
 	productcatalog_get_productsTool := mcp.NewTool("productcatalog_get_products",
 		mcp.WithDescription("GET products for ProductCatalog"),
-		mcp.WithBoolean("bulk_pagination",
-			mcp.Description("bulk_pagination parameter for products"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"bulk_pagination": map[string]any{
+					"type":        "boolean",
+					"description": "bulk_pagination parameter",
+				},
+				"error_priority": map[string]any{
+					"type":        "string",
+					"description": "error_priority parameter",
+					"enum":        []string{"HIGH", "LOW", "MEDIUM"},
+				},
+				"error_type": map[string]any{
+					"type":        "string",
+					"description": "error_type parameter",
+					"enum":        []string{"ADDRESS_BLOCKLISTED_IN_MARKET", "AGGREGATED_LOCALIZATION_ISSUES", "APP_HAS_NO_AEM_SETUP", "AR_DELETED_DUE_TO_UPDATE", "AR_POLICY_VIOLATED", "AVAILABLE", "BAD_QUALITY_IMAGE", "BIG_CATALOG_WITH_ALL_ITEMS_IN_STOCK", "BIZ_MSG_AI_AGENT_DISABLED_BY_USER", "BIZ_MSG_GEN_AI_POLICY_VIOLATED", "CANNOT_EDIT_SUBSCRIPTION_PRODUCTS", "CATALOG_NOT_CONNECTED_TO_EVENT_SOURCE", "CHECKOUT_DISABLED_BY_USER", "COMMERCE_ACCOUNT_LEGAL_ADDRESS_INVALID", "COMMERCE_ACCOUNT_NOT_LEGALLY_COMPLIANT", "CRAWLED_AVAILABILITY_MISMATCH", "DA_DISABLED_BY_USER", "DA_POLICY_UNFIT_FOR_AUDIENCE", "DA_POLICY_VIOLATION", "DELETED_ITEM", "DIGITAL_GOODS_NOT_AVAILABLE_FOR_CHECKOUT", "DUPLICATE_IMAGES", "DUPLICATE_TITLE_AND_DESCRIPTION", "EMPTY_AVAILABILITY", "EMPTY_CONDITION", "EMPTY_DESCRIPTION", "EMPTY_IMAGE_URL", "EMPTY_PRICE", "EMPTY_PRODUCT_URL", "EMPTY_SELLER_DESCRIPTION", "EMPTY_TITLE", "EXTERNAL_MERCHANT_ID_MISMATCH", "GENERIC_INVALID_FIELD", "GROUPS_DISABLED_BY_USER", "HIDDEN_UNTIL_PRODUCT_LAUNCH", "ILLEGAL_PRODUCT_CATEGORY", "IMAGE_FETCH_FAILED", "IMAGE_FETCH_FAILED_BAD_GATEWAY", "IMAGE_FETCH_FAILED_FILE_SIZE_EXCEEDED", "IMAGE_FETCH_FAILED_FORBIDDEN", "IMAGE_FETCH_FAILED_LINK_BROKEN", "IMAGE_FETCH_FAILED_TIMED_OUT", "IMAGE_RESOLUTION_LOW", "INACTIVE_SHOPIFY_PRODUCT", "INVALID_COMMERCE_TAX_CATEGORY", "INVALID_CONSOLIDATED_LOCALITY_INFORMATION", "INVALID_CONTENT_ID", "INVALID_DEALER_COMMUNICATION_PARAMETERS", "INVALID_DMA_CODES", "INVALID_FB_PAGE_ID", "INVALID_IMAGES", "INVALID_MONETIZER_RETURN_POLICY", "INVALID_OFFER_DISCLAIMER_URL", "INVALID_OFFER_END_DATE", "INVALID_PRE_ORDER_PARAMS", "INVALID_RANGE_FOR_AREA_SIZE", "INVALID_RANGE_FOR_BUILT_UP_AREA_SIZE", "INVALID_RANGE_FOR_NUM_OF_BATHS", "INVALID_RANGE_FOR_NUM_OF_BEDS", "INVALID_RANGE_FOR_NUM_OF_ROOMS", "INVALID_RANGE_FOR_PARKING_SPACES", "INVALID_SHELTER_PAGE_ID", "INVALID_SHIPPING_PROFILE_PARAMS", "INVALID_SUBSCRIPTION_DISABLE_PARAMS", "INVALID_SUBSCRIPTION_ENABLE_PARAMS", "INVALID_SUBSCRIPTION_PARAMS", "INVALID_TAX_EXTENSION_STATE", "INVALID_VEHICLE_STATE", "INVALID_VIRTUAL_TOUR_URL_DOMAIN", "INVENTORY_ZERO_AVAILABILITY_IN_STOCK", "IN_ANOTHER_PRODUCT_LAUNCH", "ITEM_GROUP_NOT_SPECIFIED", "ITEM_NOT_SHIPPABLE_FOR_SCA_SHOP", "ITEM_OVERRIDE_EMPTY_AVAILABILITY", "ITEM_OVERRIDE_EMPTY_PRICE", "ITEM_OVERRIDE_NOT_VISIBLE", "ITEM_PRICE_NOT_POSITIVE", "ITEM_STALE_OUT_OF_STOCK", "MARKETPLACE_DISABLED_BY_USER", "MARKETPLACE_PARTNER_AUCTION_NO_BID_CLOSE_TIME", "MARKETPLACE_PARTNER_CURRENCY_NOT_VALID", "MARKETPLACE_PARTNER_LISTING_COUNTRY_NOT_MATCH_CATALOG", "MARKETPLACE_PARTNER_LISTING_LIMIT_EXCEEDED", "MARKETPLACE_PARTNER_MISSING_LATLONG", "MARKETPLACE_PARTNER_MISSING_SHIPPING_COST", "MARKETPLACE_PARTNER_NOT_LOCAL_ITEM", "MARKETPLACE_PARTNER_NOT_SHIPPED_ITEM", "MARKETPLACE_PARTNER_POLICY_VIOLATION", "MARKETPLACE_PARTNER_RULE_LISTING_LIMIT_EXCEEDED", "MARKETPLACE_PARTNER_SELLER_BANNED", "MARKETPLACE_PARTNER_SELLER_NOT_VALID", "MINI_SHOPS_DISABLED_BY_USER", "MISSING_CHECKOUT", "MISSING_CHECKOUT_CURRENCY", "MISSING_COLOR", "MISSING_COUNTRY_OVERRIDE_IN_SHIPPING_PROFILE", "MISSING_EVENT", "MISSING_INDIA_COMPLIANCE_FIELDS", "MISSING_SHIPPING_PROFILE", "MISSING_SIZE", "MISSING_TAX_CATEGORY", "NEGATIVE_COMMUNITY_FEEDBACK", "NEGATIVE_PRICE", "NOT_ENOUGH_IMAGES", "NOT_ENOUGH_UNIQUE_PRODUCTS", "NO_CONTENT_ID", "OVERLAY_DISCLAIMER_EXCEEDED_MAX_LENGTH", "PART_OF_PRODUCT_LAUNCH", "PASSING_MULTIPLE_CONTENT_IDS", "PRODUCT_DOMINANT_CURRENCY_MISMATCH", "PRODUCT_EXPIRED", "PRODUCT_ITEM_HIDDEN_FROM_ALL_SHOPS", "PRODUCT_ITEM_INVALID_PARTNER_TOKENS", "PRODUCT_ITEM_NOT_INCLUDED_IN_ANY_SHOP", "PRODUCT_ITEM_NOT_VISIBLE", "PRODUCT_NOT_APPROVED", "PRODUCT_NOT_DOMINANT_CURRENCY", "PRODUCT_OUT_OF_STOCK", "PRODUCT_URL_EQUALS_DOMAIN", "PROPERTY_PRICE_CURRENCY_NOT_SUPPORTED", "PROPERTY_PRICE_TOO_HIGH", "PROPERTY_PRICE_TOO_LOW", "PROPERTY_UNIT_PRICE_CURRENCY_MISMATCH_ITEM_PRICE_CURRENCY", "PROPERTY_VALUE_CONTAINS_HTML_TAGS", "PROPERTY_VALUE_DESCRIPTION_CONTAINS_OFF_PLATFORM_LINK", "PROPERTY_VALUE_FORMAT", "PROPERTY_VALUE_MISSING", "PROPERTY_VALUE_MISSING_WARNING", "PROPERTY_VALUE_NON_POSITIVE", "PROPERTY_VALUE_STRING_EXCEEDS_LENGTH", "PROPERTY_VALUE_STRING_TOO_SHORT", "PROPERTY_VALUE_UPPERCASE", "PROPERTY_VALUE_UPPERCASE_WARNING", "PURCHASE_RATE_BELOW_ADDTOCART", "PURCHASE_RATE_BELOW_VIEWCONTENT", "QUALITY_DUPLICATED_DESCRIPTION", "QUALITY_ITEM_LINK_BROKEN", "QUALITY_ITEM_LINK_REDIRECTING", "RETAILER_ID_NOT_PROVIDED", "SHOPIFY_INVALID_RETAILER_ID", "SHOPIFY_ITEM_MISSING_SHIPPING_PROFILE", "SHOPS_POLICY_VIOLATION", "SUBSCRIPTION_INFO_NOT_ENABLED_FOR_FEED", "TAX_CATEGORY_NOT_SUPPORTED_IN_UK", "UNIQUE_PRODUCT_IDENTIFIER_MISSING", "UNMATCHED_EVENTS", "UNSUPPORTED_PRODUCT_CATEGORY", "VARIANT_ATTRIBUTE_ISSUE", "VIDEO_FETCH_FAILED", "VIDEO_FETCH_FAILED_BAD_GATEWAY", "VIDEO_FETCH_FAILED_FILE_SIZE_EXCEEDED", "VIDEO_FETCH_FAILED_FORBIDDEN", "VIDEO_FETCH_FAILED_LINK_BROKEN", "VIDEO_FETCH_FAILED_TIMED_OUT", "VIDEO_NOT_DOWNLOADABLE", "WHATSAPP_DISABLED_BY_USER", "WHATSAPP_MARKETING_MESSAGE_DISABLED_BY_USER", "WHATSAPP_MARKETING_MESSAGE_POLICY_VIOLATION", "WHATSAPP_POLICY_VIOLATION"},
+				},
+				"filter": map[string]any{
+					"type":        "object",
+					"description": "filter parameter",
+				},
+				"return_only_approved_products": map[string]any{
+					"type":        "boolean",
+					"description": "return_only_approved_products parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: bulk_pagination (boolean), error_priority (enum) [HIGH, LOW, MEDIUM], error_type (enum) [ADDRESS_BLOCKLISTED_IN_MARKET, AGGREGATED_LOCALIZATION_ISSUES, APP_HAS_NO_AEM_SETUP, AR_DELETED_DUE_TO_UPDATE, AR_POLICY_VIOLATED, ...], filter (object), return_only_approved_products (boolean)"),
 		),
-		mcp.WithString("error_priority",
-			mcp.Description("error_priority parameter for products"),
-			mcp.Enum("HIGH", "LOW", "MEDIUM"),
-		),
-		mcp.WithString("error_type",
-			mcp.Description("error_type parameter for products"),
-			mcp.Enum("ADDRESS_BLOCKLISTED_IN_MARKET", "AGGREGATED_LOCALIZATION_ISSUES", "APP_HAS_NO_AEM_SETUP", "AR_DELETED_DUE_TO_UPDATE", "AR_POLICY_VIOLATED", "AVAILABLE", "BAD_QUALITY_IMAGE", "BIG_CATALOG_WITH_ALL_ITEMS_IN_STOCK", "BIZ_MSG_AI_AGENT_DISABLED_BY_USER", "BIZ_MSG_GEN_AI_POLICY_VIOLATED", "CANNOT_EDIT_SUBSCRIPTION_PRODUCTS", "CATALOG_NOT_CONNECTED_TO_EVENT_SOURCE", "CHECKOUT_DISABLED_BY_USER", "COMMERCE_ACCOUNT_LEGAL_ADDRESS_INVALID", "COMMERCE_ACCOUNT_NOT_LEGALLY_COMPLIANT", "CRAWLED_AVAILABILITY_MISMATCH", "DA_DISABLED_BY_USER", "DA_POLICY_UNFIT_FOR_AUDIENCE", "DA_POLICY_VIOLATION", "DELETED_ITEM", "DIGITAL_GOODS_NOT_AVAILABLE_FOR_CHECKOUT", "DUPLICATE_IMAGES", "DUPLICATE_TITLE_AND_DESCRIPTION", "EMPTY_AVAILABILITY", "EMPTY_CONDITION", "EMPTY_DESCRIPTION", "EMPTY_IMAGE_URL", "EMPTY_PRICE", "EMPTY_PRODUCT_URL", "EMPTY_SELLER_DESCRIPTION", "EMPTY_TITLE", "EXTERNAL_MERCHANT_ID_MISMATCH", "GENERIC_INVALID_FIELD", "GROUPS_DISABLED_BY_USER", "HIDDEN_UNTIL_PRODUCT_LAUNCH", "ILLEGAL_PRODUCT_CATEGORY", "IMAGE_FETCH_FAILED", "IMAGE_FETCH_FAILED_BAD_GATEWAY", "IMAGE_FETCH_FAILED_FILE_SIZE_EXCEEDED", "IMAGE_FETCH_FAILED_FORBIDDEN", "IMAGE_FETCH_FAILED_LINK_BROKEN", "IMAGE_FETCH_FAILED_TIMED_OUT", "IMAGE_RESOLUTION_LOW", "INACTIVE_SHOPIFY_PRODUCT", "INVALID_COMMERCE_TAX_CATEGORY", "INVALID_CONSOLIDATED_LOCALITY_INFORMATION", "INVALID_CONTENT_ID", "INVALID_DEALER_COMMUNICATION_PARAMETERS", "INVALID_DMA_CODES", "INVALID_FB_PAGE_ID", "INVALID_IMAGES", "INVALID_MONETIZER_RETURN_POLICY", "INVALID_OFFER_DISCLAIMER_URL", "INVALID_OFFER_END_DATE", "INVALID_PRE_ORDER_PARAMS", "INVALID_RANGE_FOR_AREA_SIZE", "INVALID_RANGE_FOR_BUILT_UP_AREA_SIZE", "INVALID_RANGE_FOR_NUM_OF_BATHS", "INVALID_RANGE_FOR_NUM_OF_BEDS", "INVALID_RANGE_FOR_NUM_OF_ROOMS", "INVALID_RANGE_FOR_PARKING_SPACES", "INVALID_SHELTER_PAGE_ID", "INVALID_SHIPPING_PROFILE_PARAMS", "INVALID_SUBSCRIPTION_DISABLE_PARAMS", "INVALID_SUBSCRIPTION_ENABLE_PARAMS", "INVALID_SUBSCRIPTION_PARAMS", "INVALID_TAX_EXTENSION_STATE", "INVALID_VEHICLE_STATE", "INVALID_VIRTUAL_TOUR_URL_DOMAIN", "INVENTORY_ZERO_AVAILABILITY_IN_STOCK", "IN_ANOTHER_PRODUCT_LAUNCH", "ITEM_GROUP_NOT_SPECIFIED", "ITEM_NOT_SHIPPABLE_FOR_SCA_SHOP", "ITEM_OVERRIDE_EMPTY_AVAILABILITY", "ITEM_OVERRIDE_EMPTY_PRICE", "ITEM_OVERRIDE_NOT_VISIBLE", "ITEM_PRICE_NOT_POSITIVE", "ITEM_STALE_OUT_OF_STOCK", "MARKETPLACE_DISABLED_BY_USER", "MARKETPLACE_PARTNER_AUCTION_NO_BID_CLOSE_TIME", "MARKETPLACE_PARTNER_CURRENCY_NOT_VALID", "MARKETPLACE_PARTNER_LISTING_COUNTRY_NOT_MATCH_CATALOG", "MARKETPLACE_PARTNER_LISTING_LIMIT_EXCEEDED", "MARKETPLACE_PARTNER_MISSING_LATLONG", "MARKETPLACE_PARTNER_MISSING_SHIPPING_COST", "MARKETPLACE_PARTNER_NOT_LOCAL_ITEM", "MARKETPLACE_PARTNER_NOT_SHIPPED_ITEM", "MARKETPLACE_PARTNER_POLICY_VIOLATION", "MARKETPLACE_PARTNER_RULE_LISTING_LIMIT_EXCEEDED", "MARKETPLACE_PARTNER_SELLER_BANNED", "MARKETPLACE_PARTNER_SELLER_NOT_VALID", "MINI_SHOPS_DISABLED_BY_USER", "MISSING_CHECKOUT", "MISSING_CHECKOUT_CURRENCY", "MISSING_COLOR", "MISSING_COUNTRY_OVERRIDE_IN_SHIPPING_PROFILE", "MISSING_EVENT", "MISSING_INDIA_COMPLIANCE_FIELDS", "MISSING_SHIPPING_PROFILE", "MISSING_SIZE", "MISSING_TAX_CATEGORY", "NEGATIVE_COMMUNITY_FEEDBACK", "NEGATIVE_PRICE", "NOT_ENOUGH_IMAGES", "NOT_ENOUGH_UNIQUE_PRODUCTS", "NO_CONTENT_ID", "OVERLAY_DISCLAIMER_EXCEEDED_MAX_LENGTH", "PART_OF_PRODUCT_LAUNCH", "PASSING_MULTIPLE_CONTENT_IDS", "PRODUCT_DOMINANT_CURRENCY_MISMATCH", "PRODUCT_EXPIRED", "PRODUCT_ITEM_HIDDEN_FROM_ALL_SHOPS", "PRODUCT_ITEM_INVALID_PARTNER_TOKENS", "PRODUCT_ITEM_NOT_INCLUDED_IN_ANY_SHOP", "PRODUCT_ITEM_NOT_VISIBLE", "PRODUCT_NOT_APPROVED", "PRODUCT_NOT_DOMINANT_CURRENCY", "PRODUCT_OUT_OF_STOCK", "PRODUCT_URL_EQUALS_DOMAIN", "PROPERTY_PRICE_CURRENCY_NOT_SUPPORTED", "PROPERTY_PRICE_TOO_HIGH", "PROPERTY_PRICE_TOO_LOW", "PROPERTY_UNIT_PRICE_CURRENCY_MISMATCH_ITEM_PRICE_CURRENCY", "PROPERTY_VALUE_CONTAINS_HTML_TAGS", "PROPERTY_VALUE_DESCRIPTION_CONTAINS_OFF_PLATFORM_LINK", "PROPERTY_VALUE_FORMAT", "PROPERTY_VALUE_MISSING", "PROPERTY_VALUE_MISSING_WARNING", "PROPERTY_VALUE_NON_POSITIVE", "PROPERTY_VALUE_STRING_EXCEEDS_LENGTH", "PROPERTY_VALUE_STRING_TOO_SHORT", "PROPERTY_VALUE_UPPERCASE", "PROPERTY_VALUE_UPPERCASE_WARNING", "PURCHASE_RATE_BELOW_ADDTOCART", "PURCHASE_RATE_BELOW_VIEWCONTENT", "QUALITY_DUPLICATED_DESCRIPTION", "QUALITY_ITEM_LINK_BROKEN", "QUALITY_ITEM_LINK_REDIRECTING", "RETAILER_ID_NOT_PROVIDED", "SHOPIFY_INVALID_RETAILER_ID", "SHOPIFY_ITEM_MISSING_SHIPPING_PROFILE", "SHOPS_POLICY_VIOLATION", "SUBSCRIPTION_INFO_NOT_ENABLED_FOR_FEED", "TAX_CATEGORY_NOT_SUPPORTED_IN_UK", "UNIQUE_PRODUCT_IDENTIFIER_MISSING", "UNMATCHED_EVENTS", "UNSUPPORTED_PRODUCT_CATEGORY", "VARIANT_ATTRIBUTE_ISSUE", "VIDEO_FETCH_FAILED", "VIDEO_FETCH_FAILED_BAD_GATEWAY", "VIDEO_FETCH_FAILED_FILE_SIZE_EXCEEDED", "VIDEO_FETCH_FAILED_FORBIDDEN", "VIDEO_FETCH_FAILED_LINK_BROKEN", "VIDEO_FETCH_FAILED_TIMED_OUT", "VIDEO_NOT_DOWNLOADABLE", "WHATSAPP_DISABLED_BY_USER", "WHATSAPP_MARKETING_MESSAGE_DISABLED_BY_USER", "WHATSAPP_MARKETING_MESSAGE_POLICY_VIOLATION", "WHATSAPP_POLICY_VIOLATION"),
-		),
-		mcp.WithString("filter",
-			mcp.Description("filter parameter for products"),
-		),
-		mcp.WithBoolean("return_only_approved_products",
-			mcp.Description("return_only_approved_products parameter for products"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for ProductItem objects. Available fields: additional_image_cdn_urls, additional_image_urls, additional_variant_attributes, age_group, applinks, availability, brand, bundle_items, bundle_retailer_ids, capability_to_review_status, category, category_specific_fields, color, commerce_insights, condition (and 68 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for ProductItem objects. Available fields: additional_image_cdn_urls, additional_image_urls, additional_variant_attributes, age_group, applinks, availability, brand, bundle_items, bundle_retailer_ids, capability_to_review_status, category, category_specific_fields, color, commerce_insights, condition (and 68 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -1100,279 +1529,382 @@ func GetProductCatalogTools() []mcp.Tool {
 	tools = append(tools, productcatalog_get_productsTool)
 
 	// productcatalog_post_products tool
+	// Params object accepts: additional_image_urls (list<string>), additional_variant_attributes (map), age_group (productcatalogproducts_age_group_enum_param), android_app_name (string), android_class (string), android_package (string), android_url (string), availability (productcatalogproducts_availability_enum_param), brand (string), category (string), category_specific_fields (map), checkout_url (string), color (string), commerce_tax_category (productcatalogproducts_commerce_tax_category_enum_param), condition (productcatalogproducts_condition_enum_param), currency (string), custom_data (map), custom_label_0 (string), custom_label_1 (string), custom_label_2 (string), custom_label_3 (string), custom_label_4 (string), custom_number_0 (unsigned int), custom_number_1 (unsigned int), custom_number_2 (unsigned int), custom_number_3 (unsigned int), custom_number_4 (unsigned int), description (string), expiration_date (string), fb_product_category (string), gender (productcatalogproducts_gender_enum_param), gtin (string), image_url (string), importer_address (map), importer_name (string), inventory (unsigned int), ios_app_name (string), ios_app_store_id (unsigned int), ios_url (string), ipad_app_name (string), ipad_app_store_id (unsigned int), ipad_url (string), iphone_app_name (string), iphone_app_store_id (unsigned int), iphone_url (string), launch_date (string), manufacturer_info (string), manufacturer_part_number (string), marked_for_product_launch (productcatalogproducts_marked_for_product_launch_enum_param), material (string), mobile_link (string), name (string), ordering_index (unsigned int), origin_country (productcatalogproducts_origin_country_enum_param), pattern (string), price (unsigned int), product_priority_0 (float), product_priority_1 (float), product_priority_2 (float), product_priority_3 (float), product_priority_4 (float), product_type (string), quantity_to_sell_on_facebook (unsigned int), retailer_id (string), retailer_product_group_id (string), return_policy_days (unsigned int), sale_price (unsigned int), sale_price_end_date (datetime), sale_price_start_date (datetime), short_description (string), size (string), start_date (string), url (string), visibility (productcatalogproducts_visibility_enum_param), wa_compliance_category (productcatalogproducts_wa_compliance_category_enum_param), windows_phone_app_id (string), windows_phone_app_name (string), windows_phone_url (string)
 	productcatalog_post_productsTool := mcp.NewTool("productcatalog_post_products",
 		mcp.WithDescription("POST products for ProductCatalog"),
-		mcp.WithString("additional_image_urls",
-			mcp.Description("additional_image_urls parameter for products"),
-		),
-		mcp.WithString("additional_variant_attributes",
-			mcp.Description("additional_variant_attributes parameter for products"),
-		),
-		mcp.WithString("age_group",
-			mcp.Description("age_group parameter for products"),
-			mcp.Enum("adult", "all ages", "infant", "kids", "newborn", "teen", "toddler"),
-		),
-		mcp.WithString("android_app_name",
-			mcp.Description("android_app_name parameter for products"),
-		),
-		mcp.WithString("android_class",
-			mcp.Description("android_class parameter for products"),
-		),
-		mcp.WithString("android_package",
-			mcp.Description("android_package parameter for products"),
-		),
-		mcp.WithString("android_url",
-			mcp.Description("android_url parameter for products"),
-		),
-		mcp.WithString("availability",
-			mcp.Description("availability parameter for products"),
-			mcp.Enum("available for order", "discontinued", "in stock", "mark_as_sold", "out of stock", "pending", "preorder"),
-		),
-		mcp.WithString("brand",
-			mcp.Description("brand parameter for products"),
-		),
-		mcp.WithString("category",
-			mcp.Description("category parameter for products"),
-		),
-		mcp.WithString("category_specific_fields",
-			mcp.Description("category_specific_fields parameter for products"),
-		),
-		mcp.WithString("checkout_url",
-			mcp.Description("checkout_url parameter for products"),
-		),
-		mcp.WithString("color",
-			mcp.Description("color parameter for products"),
-		),
-		mcp.WithString("commerce_tax_category",
-			mcp.Description("commerce_tax_category parameter for products"),
-			mcp.Enum("FB_ANIMAL", "FB_ANIMAL_SUPP", "FB_APRL", "FB_APRL_ACCESSORIES", "FB_APRL_ATHL_UNIF", "FB_APRL_CASES", "FB_APRL_CLOTHING", "FB_APRL_COSTUME", "FB_APRL_CSTM", "FB_APRL_FORMAL", "FB_APRL_HANDBAG", "FB_APRL_JEWELRY", "FB_APRL_SHOE", "FB_APRL_SHOE_ACC", "FB_APRL_SWIM", "FB_APRL_SWIM_CHIL", "FB_APRL_SWIM_CVR", "FB_ARTS", "FB_ARTS_HOBBY", "FB_ARTS_PARTY", "FB_ARTS_PARTY_GIFT_CARD", "FB_ARTS_TICKET", "FB_BABY", "FB_BABY_BATH", "FB_BABY_BLANKET", "FB_BABY_DIAPER", "FB_BABY_GIFT_SET", "FB_BABY_HEALTH", "FB_BABY_NURSING", "FB_BABY_POTTY_TRN", "FB_BABY_SAFE", "FB_BABY_TOYS", "FB_BABY_TRANSPORT", "FB_BABY_TRANSPORT_ACC", "FB_BAGS", "FB_BAGS_BKPK", "FB_BAGS_BOXES", "FB_BAGS_BRFCS", "FB_BAGS_CSMT_BAG", "FB_BAGS_DFFL", "FB_BAGS_DIPR", "FB_BAGS_FNNY", "FB_BAGS_GRMT", "FB_BAGS_LUGG", "FB_BAGS_LUG_ACC", "FB_BAGS_MSGR", "FB_BAGS_TOTE", "FB_BAGS_TRN_CAS", "FB_BLDG", "FB_BLDG_ACC", "FB_BLDG_CNSMB", "FB_BLDG_FENCE", "FB_BLDG_FUEL_TNK", "FB_BLDG_HT_VNT", "FB_BLDG_LOCK", "FB_BLDG_MATRL", "FB_BLDG_PLMB", "FB_BLDG_PUMP", "FB_BLDG_PWRS", "FB_BLDG_STR_TANK", "FB_BLDG_S_ENG", "FB_BLDG_TL_ACC", "FB_BLDG_TOOL", "FB_BUSIND", "FB_BUSIND_ADVERTISING", "FB_BUSIND_AGRICULTURE", "FB_BUSIND_AUTOMATION", "FB_BUSIND_HEAVY_MACH", "FB_BUSIND_LAB", "FB_BUSIND_MEDICAL", "FB_BUSIND_RETAIL", "FB_BUSIND_SANITARY_CT", "FB_BUSIND_SIGN", "FB_BUSIND_STORAGE", "FB_BUSIND_STORAGE_ACC", "FB_BUSIND_WORK_GEAR", "FB_CAMERA_ACC", "FB_CAMERA_CAMERA", "FB_CAMERA_OPTIC", "FB_CAMERA_OPTICS", "FB_CAMERA_PHOTO", "FB_ELEC", "FB_ELEC_ACC", "FB_ELEC_ARCDADE", "FB_ELEC_AUDIO", "FB_ELEC_CIRCUIT", "FB_ELEC_COMM", "FB_ELEC_COMPUTER", "FB_ELEC_GPS_ACC", "FB_ELEC_GPS_NAV", "FB_ELEC_GPS_TRK", "FB_ELEC_MARINE", "FB_ELEC_NETWORK", "FB_ELEC_PART", "FB_ELEC_PRINT", "FB_ELEC_RADAR", "FB_ELEC_SFTWR", "FB_ELEC_SPEED_RDR", "FB_ELEC_TELEVISION", "FB_ELEC_TOLL", "FB_ELEC_VIDEO", "FB_ELEC_VID_GM_ACC", "FB_ELEC_VID_GM_CNSL", "FB_FOOD", "FB_FURN", "FB_FURN_BABY", "FB_FURN_BENCH", "FB_FURN_CART", "FB_FURN_CHAIR", "FB_FURN_CHAIR_ACC", "FB_FURN_DIVIDE", "FB_FURN_DIVIDE_ACC", "FB_FURN_ENT_CTR", "FB_FURN_FUTN", "FB_FURN_FUTN_PAD", "FB_FURN_OFFICE", "FB_FURN_OFFICE_ACC", "FB_FURN_OTTO", "FB_FURN_OUTDOOR", "FB_FURN_OUTDOOR_ACC", "FB_FURN_SETS", "FB_FURN_SHELVE_ACC", "FB_FURN_SHLF", "FB_FURN_SOFA", "FB_FURN_SOFA_ACC", "FB_FURN_STORAGE", "FB_FURN_TABL", "FB_FURN_TABL_ACC", "FB_GENERIC_TAXABLE", "FB_HLTH", "FB_HLTH_HLTH", "FB_HLTH_JWL_CR", "FB_HLTH_LILP_BLM", "FB_HLTH_LTN_SPF", "FB_HLTH_PRSL_CR", "FB_HLTH_SKN_CR", "FB_HMGN", "FB_HMGN_BATH", "FB_HMGN_DCOR", "FB_HMGN_EMGY", "FB_HMGN_FPLC", "FB_HMGN_FPLC_ACC", "FB_HMGN_GS_SFT", "FB_HMGN_HS_ACC", "FB_HMGN_HS_APP", "FB_HMGN_HS_SPL", "FB_HMGN_KTCN", "FB_HMGN_LAWN", "FB_HMGN_LGHT", "FB_HMGN_LINN", "FB_HMGN_LT_ACC", "FB_HMGN_OTDR", "FB_HMGN_POOL", "FB_HMGN_SCTY", "FB_HMGN_SMK_ACC", "FB_HMGN_UMBR", "FB_HMGN_UMBR_ACC", "FB_MDIA", "FB_MDIA_BOOK", "FB_MDIA_DVDS", "FB_MDIA_MAG", "FB_MDIA_MANL", "FB_MDIA_MUSC", "FB_MDIA_PRJ_PLN", "FB_MDIA_SHT_MUS", "FB_OFFC", "FB_OFFC_BKAC", "FB_OFFC_CRTS", "FB_OFFC_DSKP", "FB_OFFC_EQIP", "FB_OFFC_FLNG", "FB_OFFC_GNRL", "FB_OFFC_INSTM", "FB_OFFC_LP_DSK", "FB_OFFC_MATS", "FB_OFFC_NM_PLT", "FB_OFFC_PPR_HNDL", "FB_OFFC_PRSNT_SPL", "FB_OFFC_SEALR", "FB_OFFC_SHIP_SPL", "FB_RLGN", "FB_RLGN_CMNY", "FB_RLGN_ITEM", "FB_RLGN_WEDD", "FB_SFTWR", "FB_SFWR_CMPTR", "FB_SFWR_DGTL_GD", "FB_SFWR_GAME", "FB_SHIPPING", "FB_SPOR", "FB_SPORT_ATHL", "FB_SPORT_ATHL_CLTH", "FB_SPORT_ATHL_SHOE", "FB_SPORT_ATHL_SPRT", "FB_SPORT_EXRCS", "FB_SPORT_INDR_GM", "FB_SPORT_OTDR_GM", "FB_TOYS", "FB_TOYS_EQIP", "FB_TOYS_GAME", "FB_TOYS_PZZL", "FB_TOYS_TMRS", "FB_TOYS_TOYS", "FB_VEHI", "FB_VEHI_PART"),
-		),
-		mcp.WithString("condition",
-			mcp.Description("condition parameter for products"),
-			mcp.Enum("cpo", "new", "open_box_new", "refurbished", "used", "used_fair", "used_good", "used_like_new"),
-		),
-		mcp.WithString("currency",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("currency parameter for products"),
-		),
-		mcp.WithString("custom_data",
-			mcp.Description("custom_data parameter for products"),
-		),
-		mcp.WithString("custom_label_0",
-			mcp.Description("custom_label_0 parameter for products"),
-		),
-		mcp.WithString("custom_label_1",
-			mcp.Description("custom_label_1 parameter for products"),
-		),
-		mcp.WithString("custom_label_2",
-			mcp.Description("custom_label_2 parameter for products"),
-		),
-		mcp.WithString("custom_label_3",
-			mcp.Description("custom_label_3 parameter for products"),
-		),
-		mcp.WithString("custom_label_4",
-			mcp.Description("custom_label_4 parameter for products"),
-		),
-		mcp.WithNumber("custom_number_0",
-			mcp.Description("custom_number_0 parameter for products"),
-		),
-		mcp.WithNumber("custom_number_1",
-			mcp.Description("custom_number_1 parameter for products"),
-		),
-		mcp.WithNumber("custom_number_2",
-			mcp.Description("custom_number_2 parameter for products"),
-		),
-		mcp.WithNumber("custom_number_3",
-			mcp.Description("custom_number_3 parameter for products"),
-		),
-		mcp.WithNumber("custom_number_4",
-			mcp.Description("custom_number_4 parameter for products"),
-		),
-		mcp.WithString("description",
-			mcp.Description("description parameter for products"),
-		),
-		mcp.WithString("expiration_date",
-			mcp.Description("expiration_date parameter for products"),
-		),
-		mcp.WithString("fb_product_category",
-			mcp.Description("fb_product_category parameter for products"),
-		),
-		mcp.WithString("gender",
-			mcp.Description("gender parameter for products"),
-			mcp.Enum("female", "male", "unisex"),
-		),
-		mcp.WithString("gtin",
-			mcp.Description("gtin parameter for products"),
-		),
-		mcp.WithString("image_url",
-			mcp.Description("image_url parameter for products"),
-		),
-		mcp.WithString("importer_address",
-			mcp.Description("importer_address parameter for products"),
-		),
-		mcp.WithString("importer_name",
-			mcp.Description("importer_name parameter for products"),
-		),
-		mcp.WithNumber("inventory",
-			mcp.Description("inventory parameter for products"),
-		),
-		mcp.WithString("ios_app_name",
-			mcp.Description("ios_app_name parameter for products"),
-		),
-		mcp.WithNumber("ios_app_store_id",
-			mcp.Description("ios_app_store_id parameter for products"),
-		),
-		mcp.WithString("ios_url",
-			mcp.Description("ios_url parameter for products"),
-		),
-		mcp.WithString("ipad_app_name",
-			mcp.Description("ipad_app_name parameter for products"),
-		),
-		mcp.WithNumber("ipad_app_store_id",
-			mcp.Description("ipad_app_store_id parameter for products"),
-		),
-		mcp.WithString("ipad_url",
-			mcp.Description("ipad_url parameter for products"),
-		),
-		mcp.WithString("iphone_app_name",
-			mcp.Description("iphone_app_name parameter for products"),
-		),
-		mcp.WithNumber("iphone_app_store_id",
-			mcp.Description("iphone_app_store_id parameter for products"),
-		),
-		mcp.WithString("iphone_url",
-			mcp.Description("iphone_url parameter for products"),
-		),
-		mcp.WithString("launch_date",
-			mcp.Description("launch_date parameter for products"),
-		),
-		mcp.WithString("manufacturer_info",
-			mcp.Description("manufacturer_info parameter for products"),
-		),
-		mcp.WithString("manufacturer_part_number",
-			mcp.Description("manufacturer_part_number parameter for products"),
-		),
-		mcp.WithString("marked_for_product_launch",
-			mcp.Description("marked_for_product_launch parameter for products"),
-			mcp.Enum("default", "marked", "not_marked"),
-		),
-		mcp.WithString("material",
-			mcp.Description("material parameter for products"),
-		),
-		mcp.WithString("mobile_link",
-			mcp.Description("mobile_link parameter for products"),
-		),
-		mcp.WithString("name",
-			mcp.Required(),
-			mcp.Description("name parameter for products"),
-		),
-		mcp.WithNumber("ordering_index",
-			mcp.Description("ordering_index parameter for products"),
-		),
-		mcp.WithString("origin_country",
-			mcp.Description("origin_country parameter for products"),
-			mcp.Enum("AD", "AE", "AF", "AG", "AI", "AL", "AM", "AN", "AO", "AQ", "AR", "AS", "AT", "AU", "AW", "AX", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BL", "BM", "BN", "BO", "BQ", "BR", "BS", "BT", "BV", "BW", "BY", "BZ", "CA", "CC", "CD", "CF", "CG", "CH", "CI", "CK", "CL", "CM", "CN", "CO", "CR", "CU", "CV", "CW", "CX", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "EH", "ER", "ES", "ET", "FI", "FJ", "FK", "FM", "FO", "FR", "GA", "GB", "GD", "GE", "GF", "GG", "GH", "GI", "GL", "GM", "GN", "GP", "GQ", "GR", "GS", "GT", "GU", "GW", "GY", "HK", "HM", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IM", "IN", "IO", "IQ", "IR", "IS", "IT", "JE", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KP", "KR", "KW", "KY", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MF", "MG", "MH", "MK", "ML", "MM", "MN", "MO", "MP", "MQ", "MR", "MS", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NC", "NE", "NF", "NG", "NI", "NL", "NO", "NP", "NR", "NU", "NZ", "OM", "PA", "PE", "PF", "PG", "PH", "PK", "PL", "PM", "PN", "PR", "PS", "PT", "PW", "PY", "QA", "RE", "RO", "RS", "RU", "RW", "SA", "SB", "SC", "SD", "SE", "SG", "SH", "SI", "SJ", "SK", "SL", "SM", "SN", "SO", "SR", "SS", "ST", "SV", "SX", "SY", "SZ", "TC", "TD", "TF", "TG", "TH", "TJ", "TK", "TL", "TM", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "UM", "US", "UY", "UZ", "VA", "VC", "VE", "VG", "VI", "VN", "VU", "WF", "WS", "XK", "YE", "YT", "ZA", "ZM", "ZW"),
-		),
-		mcp.WithString("pattern",
-			mcp.Description("pattern parameter for products"),
-		),
-		mcp.WithNumber("price",
-			mcp.Required(),
-			mcp.Description("price parameter for products"),
-		),
-		mcp.WithNumber("product_priority_0",
-			mcp.Description("product_priority_0 parameter for products"),
-		),
-		mcp.WithNumber("product_priority_1",
-			mcp.Description("product_priority_1 parameter for products"),
-		),
-		mcp.WithNumber("product_priority_2",
-			mcp.Description("product_priority_2 parameter for products"),
-		),
-		mcp.WithNumber("product_priority_3",
-			mcp.Description("product_priority_3 parameter for products"),
-		),
-		mcp.WithNumber("product_priority_4",
-			mcp.Description("product_priority_4 parameter for products"),
-		),
-		mcp.WithString("product_type",
-			mcp.Description("product_type parameter for products"),
-		),
-		mcp.WithNumber("quantity_to_sell_on_facebook",
-			mcp.Description("quantity_to_sell_on_facebook parameter for products"),
-		),
-		mcp.WithString("retailer_id",
-			mcp.Description("retailer_id parameter for products"),
-		),
-		mcp.WithString("retailer_product_group_id",
-			mcp.Description("retailer_product_group_id parameter for products"),
-		),
-		mcp.WithNumber("return_policy_days",
-			mcp.Description("return_policy_days parameter for products"),
-		),
-		mcp.WithNumber("sale_price",
-			mcp.Description("sale_price parameter for products"),
-		),
-		mcp.WithString("sale_price_end_date",
-			mcp.Description("sale_price_end_date parameter for products"),
-		),
-		mcp.WithString("sale_price_start_date",
-			mcp.Description("sale_price_start_date parameter for products"),
-		),
-		mcp.WithString("short_description",
-			mcp.Description("short_description parameter for products"),
-		),
-		mcp.WithString("size",
-			mcp.Description("size parameter for products"),
-		),
-		mcp.WithString("start_date",
-			mcp.Description("start_date parameter for products"),
-		),
-		mcp.WithString("url",
-			mcp.Description("url parameter for products"),
-		),
-		mcp.WithString("visibility",
-			mcp.Description("visibility parameter for products"),
-			mcp.Enum("published", "staging"),
-		),
-		mcp.WithString("wa_compliance_category",
-			mcp.Description("wa_compliance_category parameter for products"),
-			mcp.Enum("COUNTRY_ORIGIN_EXEMPT", "DEFAULT"),
-		),
-		mcp.WithString("windows_phone_app_id",
-			mcp.Description("windows_phone_app_id parameter for products"),
-		),
-		mcp.WithString("windows_phone_app_name",
-			mcp.Description("windows_phone_app_name parameter for products"),
-		),
-		mcp.WithString("windows_phone_url",
-			mcp.Description("windows_phone_url parameter for products"),
+			mcp.Properties(map[string]any{
+				"additional_image_urls": map[string]any{
+					"type":        "array",
+					"description": "additional_image_urls parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+				"additional_variant_attributes": map[string]any{
+					"type":        "object",
+					"description": "additional_variant_attributes parameter",
+				},
+				"age_group": map[string]any{
+					"type":        "string",
+					"description": "age_group parameter",
+					"enum":        []string{"adult", "all ages", "infant", "kids", "newborn", "teen", "toddler"},
+				},
+				"android_app_name": map[string]any{
+					"type":        "string",
+					"description": "android_app_name parameter",
+				},
+				"android_class": map[string]any{
+					"type":        "string",
+					"description": "android_class parameter",
+				},
+				"android_package": map[string]any{
+					"type":        "string",
+					"description": "android_package parameter",
+				},
+				"android_url": map[string]any{
+					"type":        "string",
+					"description": "android_url parameter",
+				},
+				"availability": map[string]any{
+					"type":        "string",
+					"description": "availability parameter",
+					"enum":        []string{"available for order", "discontinued", "in stock", "mark_as_sold", "out of stock", "pending", "preorder"},
+				},
+				"brand": map[string]any{
+					"type":        "string",
+					"description": "brand parameter",
+				},
+				"category": map[string]any{
+					"type":        "string",
+					"description": "category parameter",
+				},
+				"category_specific_fields": map[string]any{
+					"type":        "object",
+					"description": "category_specific_fields parameter",
+				},
+				"checkout_url": map[string]any{
+					"type":        "string",
+					"description": "checkout_url parameter",
+				},
+				"color": map[string]any{
+					"type":        "string",
+					"description": "color parameter",
+				},
+				"commerce_tax_category": map[string]any{
+					"type":        "string",
+					"description": "commerce_tax_category parameter",
+					"enum":        []string{"FB_ANIMAL", "FB_ANIMAL_SUPP", "FB_APRL", "FB_APRL_ACCESSORIES", "FB_APRL_ATHL_UNIF", "FB_APRL_CASES", "FB_APRL_CLOTHING", "FB_APRL_COSTUME", "FB_APRL_CSTM", "FB_APRL_FORMAL", "FB_APRL_HANDBAG", "FB_APRL_JEWELRY", "FB_APRL_SHOE", "FB_APRL_SHOE_ACC", "FB_APRL_SWIM", "FB_APRL_SWIM_CHIL", "FB_APRL_SWIM_CVR", "FB_ARTS", "FB_ARTS_HOBBY", "FB_ARTS_PARTY", "FB_ARTS_PARTY_GIFT_CARD", "FB_ARTS_TICKET", "FB_BABY", "FB_BABY_BATH", "FB_BABY_BLANKET", "FB_BABY_DIAPER", "FB_BABY_GIFT_SET", "FB_BABY_HEALTH", "FB_BABY_NURSING", "FB_BABY_POTTY_TRN", "FB_BABY_SAFE", "FB_BABY_TOYS", "FB_BABY_TRANSPORT", "FB_BABY_TRANSPORT_ACC", "FB_BAGS", "FB_BAGS_BKPK", "FB_BAGS_BOXES", "FB_BAGS_BRFCS", "FB_BAGS_CSMT_BAG", "FB_BAGS_DFFL", "FB_BAGS_DIPR", "FB_BAGS_FNNY", "FB_BAGS_GRMT", "FB_BAGS_LUGG", "FB_BAGS_LUG_ACC", "FB_BAGS_MSGR", "FB_BAGS_TOTE", "FB_BAGS_TRN_CAS", "FB_BLDG", "FB_BLDG_ACC", "FB_BLDG_CNSMB", "FB_BLDG_FENCE", "FB_BLDG_FUEL_TNK", "FB_BLDG_HT_VNT", "FB_BLDG_LOCK", "FB_BLDG_MATRL", "FB_BLDG_PLMB", "FB_BLDG_PUMP", "FB_BLDG_PWRS", "FB_BLDG_STR_TANK", "FB_BLDG_S_ENG", "FB_BLDG_TL_ACC", "FB_BLDG_TOOL", "FB_BUSIND", "FB_BUSIND_ADVERTISING", "FB_BUSIND_AGRICULTURE", "FB_BUSIND_AUTOMATION", "FB_BUSIND_HEAVY_MACH", "FB_BUSIND_LAB", "FB_BUSIND_MEDICAL", "FB_BUSIND_RETAIL", "FB_BUSIND_SANITARY_CT", "FB_BUSIND_SIGN", "FB_BUSIND_STORAGE", "FB_BUSIND_STORAGE_ACC", "FB_BUSIND_WORK_GEAR", "FB_CAMERA_ACC", "FB_CAMERA_CAMERA", "FB_CAMERA_OPTIC", "FB_CAMERA_OPTICS", "FB_CAMERA_PHOTO", "FB_ELEC", "FB_ELEC_ACC", "FB_ELEC_ARCDADE", "FB_ELEC_AUDIO", "FB_ELEC_CIRCUIT", "FB_ELEC_COMM", "FB_ELEC_COMPUTER", "FB_ELEC_GPS_ACC", "FB_ELEC_GPS_NAV", "FB_ELEC_GPS_TRK", "FB_ELEC_MARINE", "FB_ELEC_NETWORK", "FB_ELEC_PART", "FB_ELEC_PRINT", "FB_ELEC_RADAR", "FB_ELEC_SFTWR", "FB_ELEC_SPEED_RDR", "FB_ELEC_TELEVISION", "FB_ELEC_TOLL", "FB_ELEC_VIDEO", "FB_ELEC_VID_GM_ACC", "FB_ELEC_VID_GM_CNSL", "FB_FOOD", "FB_FURN", "FB_FURN_BABY", "FB_FURN_BENCH", "FB_FURN_CART", "FB_FURN_CHAIR", "FB_FURN_CHAIR_ACC", "FB_FURN_DIVIDE", "FB_FURN_DIVIDE_ACC", "FB_FURN_ENT_CTR", "FB_FURN_FUTN", "FB_FURN_FUTN_PAD", "FB_FURN_OFFICE", "FB_FURN_OFFICE_ACC", "FB_FURN_OTTO", "FB_FURN_OUTDOOR", "FB_FURN_OUTDOOR_ACC", "FB_FURN_SETS", "FB_FURN_SHELVE_ACC", "FB_FURN_SHLF", "FB_FURN_SOFA", "FB_FURN_SOFA_ACC", "FB_FURN_STORAGE", "FB_FURN_TABL", "FB_FURN_TABL_ACC", "FB_GENERIC_TAXABLE", "FB_HLTH", "FB_HLTH_HLTH", "FB_HLTH_JWL_CR", "FB_HLTH_LILP_BLM", "FB_HLTH_LTN_SPF", "FB_HLTH_PRSL_CR", "FB_HLTH_SKN_CR", "FB_HMGN", "FB_HMGN_BATH", "FB_HMGN_DCOR", "FB_HMGN_EMGY", "FB_HMGN_FPLC", "FB_HMGN_FPLC_ACC", "FB_HMGN_GS_SFT", "FB_HMGN_HS_ACC", "FB_HMGN_HS_APP", "FB_HMGN_HS_SPL", "FB_HMGN_KTCN", "FB_HMGN_LAWN", "FB_HMGN_LGHT", "FB_HMGN_LINN", "FB_HMGN_LT_ACC", "FB_HMGN_OTDR", "FB_HMGN_POOL", "FB_HMGN_SCTY", "FB_HMGN_SMK_ACC", "FB_HMGN_UMBR", "FB_HMGN_UMBR_ACC", "FB_MDIA", "FB_MDIA_BOOK", "FB_MDIA_DVDS", "FB_MDIA_MAG", "FB_MDIA_MANL", "FB_MDIA_MUSC", "FB_MDIA_PRJ_PLN", "FB_MDIA_SHT_MUS", "FB_OFFC", "FB_OFFC_BKAC", "FB_OFFC_CRTS", "FB_OFFC_DSKP", "FB_OFFC_EQIP", "FB_OFFC_FLNG", "FB_OFFC_GNRL", "FB_OFFC_INSTM", "FB_OFFC_LP_DSK", "FB_OFFC_MATS", "FB_OFFC_NM_PLT", "FB_OFFC_PPR_HNDL", "FB_OFFC_PRSNT_SPL", "FB_OFFC_SEALR", "FB_OFFC_SHIP_SPL", "FB_RLGN", "FB_RLGN_CMNY", "FB_RLGN_ITEM", "FB_RLGN_WEDD", "FB_SFTWR", "FB_SFWR_CMPTR", "FB_SFWR_DGTL_GD", "FB_SFWR_GAME", "FB_SHIPPING", "FB_SPOR", "FB_SPORT_ATHL", "FB_SPORT_ATHL_CLTH", "FB_SPORT_ATHL_SHOE", "FB_SPORT_ATHL_SPRT", "FB_SPORT_EXRCS", "FB_SPORT_INDR_GM", "FB_SPORT_OTDR_GM", "FB_TOYS", "FB_TOYS_EQIP", "FB_TOYS_GAME", "FB_TOYS_PZZL", "FB_TOYS_TMRS", "FB_TOYS_TOYS", "FB_VEHI", "FB_VEHI_PART"},
+				},
+				"condition": map[string]any{
+					"type":        "string",
+					"description": "condition parameter",
+					"enum":        []string{"cpo", "new", "open_box_new", "refurbished", "used", "used_fair", "used_good", "used_like_new"},
+				},
+				"currency": map[string]any{
+					"type":        "string",
+					"description": "currency parameter",
+					"required":    true,
+				},
+				"custom_data": map[string]any{
+					"type":        "object",
+					"description": "custom_data parameter",
+				},
+				"custom_label_0": map[string]any{
+					"type":        "string",
+					"description": "custom_label_0 parameter",
+				},
+				"custom_label_1": map[string]any{
+					"type":        "string",
+					"description": "custom_label_1 parameter",
+				},
+				"custom_label_2": map[string]any{
+					"type":        "string",
+					"description": "custom_label_2 parameter",
+				},
+				"custom_label_3": map[string]any{
+					"type":        "string",
+					"description": "custom_label_3 parameter",
+				},
+				"custom_label_4": map[string]any{
+					"type":        "string",
+					"description": "custom_label_4 parameter",
+				},
+				"custom_number_0": map[string]any{
+					"type":        "integer",
+					"description": "custom_number_0 parameter",
+				},
+				"custom_number_1": map[string]any{
+					"type":        "integer",
+					"description": "custom_number_1 parameter",
+				},
+				"custom_number_2": map[string]any{
+					"type":        "integer",
+					"description": "custom_number_2 parameter",
+				},
+				"custom_number_3": map[string]any{
+					"type":        "integer",
+					"description": "custom_number_3 parameter",
+				},
+				"custom_number_4": map[string]any{
+					"type":        "integer",
+					"description": "custom_number_4 parameter",
+				},
+				"description": map[string]any{
+					"type":        "string",
+					"description": "description parameter",
+				},
+				"expiration_date": map[string]any{
+					"type":        "string",
+					"description": "expiration_date parameter",
+				},
+				"fb_product_category": map[string]any{
+					"type":        "string",
+					"description": "fb_product_category parameter",
+				},
+				"gender": map[string]any{
+					"type":        "string",
+					"description": "gender parameter",
+					"enum":        []string{"female", "male", "unisex"},
+				},
+				"gtin": map[string]any{
+					"type":        "string",
+					"description": "gtin parameter",
+				},
+				"image_url": map[string]any{
+					"type":        "string",
+					"description": "image_url parameter",
+				},
+				"importer_address": map[string]any{
+					"type":        "object",
+					"description": "importer_address parameter",
+				},
+				"importer_name": map[string]any{
+					"type":        "string",
+					"description": "importer_name parameter",
+				},
+				"inventory": map[string]any{
+					"type":        "integer",
+					"description": "inventory parameter",
+				},
+				"ios_app_name": map[string]any{
+					"type":        "string",
+					"description": "ios_app_name parameter",
+				},
+				"ios_app_store_id": map[string]any{
+					"type":        "integer",
+					"description": "ios_app_store_id parameter",
+				},
+				"ios_url": map[string]any{
+					"type":        "string",
+					"description": "ios_url parameter",
+				},
+				"ipad_app_name": map[string]any{
+					"type":        "string",
+					"description": "ipad_app_name parameter",
+				},
+				"ipad_app_store_id": map[string]any{
+					"type":        "integer",
+					"description": "ipad_app_store_id parameter",
+				},
+				"ipad_url": map[string]any{
+					"type":        "string",
+					"description": "ipad_url parameter",
+				},
+				"iphone_app_name": map[string]any{
+					"type":        "string",
+					"description": "iphone_app_name parameter",
+				},
+				"iphone_app_store_id": map[string]any{
+					"type":        "integer",
+					"description": "iphone_app_store_id parameter",
+				},
+				"iphone_url": map[string]any{
+					"type":        "string",
+					"description": "iphone_url parameter",
+				},
+				"launch_date": map[string]any{
+					"type":        "string",
+					"description": "launch_date parameter",
+				},
+				"manufacturer_info": map[string]any{
+					"type":        "string",
+					"description": "manufacturer_info parameter",
+				},
+				"manufacturer_part_number": map[string]any{
+					"type":        "string",
+					"description": "manufacturer_part_number parameter",
+				},
+				"marked_for_product_launch": map[string]any{
+					"type":        "string",
+					"description": "marked_for_product_launch parameter",
+					"enum":        []string{"default", "marked", "not_marked"},
+				},
+				"material": map[string]any{
+					"type":        "string",
+					"description": "material parameter",
+				},
+				"mobile_link": map[string]any{
+					"type":        "string",
+					"description": "mobile_link parameter",
+				},
+				"name": map[string]any{
+					"type":        "string",
+					"description": "name parameter",
+					"required":    true,
+				},
+				"ordering_index": map[string]any{
+					"type":        "integer",
+					"description": "ordering_index parameter",
+				},
+				"origin_country": map[string]any{
+					"type":        "string",
+					"description": "origin_country parameter",
+					"enum":        []string{"AD", "AE", "AF", "AG", "AI", "AL", "AM", "AN", "AO", "AQ", "AR", "AS", "AT", "AU", "AW", "AX", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BL", "BM", "BN", "BO", "BQ", "BR", "BS", "BT", "BV", "BW", "BY", "BZ", "CA", "CC", "CD", "CF", "CG", "CH", "CI", "CK", "CL", "CM", "CN", "CO", "CR", "CU", "CV", "CW", "CX", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "EH", "ER", "ES", "ET", "FI", "FJ", "FK", "FM", "FO", "FR", "GA", "GB", "GD", "GE", "GF", "GG", "GH", "GI", "GL", "GM", "GN", "GP", "GQ", "GR", "GS", "GT", "GU", "GW", "GY", "HK", "HM", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IM", "IN", "IO", "IQ", "IR", "IS", "IT", "JE", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KP", "KR", "KW", "KY", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MF", "MG", "MH", "MK", "ML", "MM", "MN", "MO", "MP", "MQ", "MR", "MS", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NC", "NE", "NF", "NG", "NI", "NL", "NO", "NP", "NR", "NU", "NZ", "OM", "PA", "PE", "PF", "PG", "PH", "PK", "PL", "PM", "PN", "PR", "PS", "PT", "PW", "PY", "QA", "RE", "RO", "RS", "RU", "RW", "SA", "SB", "SC", "SD", "SE", "SG", "SH", "SI", "SJ", "SK", "SL", "SM", "SN", "SO", "SR", "SS", "ST", "SV", "SX", "SY", "SZ", "TC", "TD", "TF", "TG", "TH", "TJ", "TK", "TL", "TM", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "UM", "US", "UY", "UZ", "VA", "VC", "VE", "VG", "VI", "VN", "VU", "WF", "WS", "XK", "YE", "YT", "ZA", "ZM", "ZW"},
+				},
+				"pattern": map[string]any{
+					"type":        "string",
+					"description": "pattern parameter",
+				},
+				"price": map[string]any{
+					"type":        "integer",
+					"description": "price parameter",
+					"required":    true,
+				},
+				"product_priority_0": map[string]any{
+					"type":        "number",
+					"description": "product_priority_0 parameter",
+				},
+				"product_priority_1": map[string]any{
+					"type":        "number",
+					"description": "product_priority_1 parameter",
+				},
+				"product_priority_2": map[string]any{
+					"type":        "number",
+					"description": "product_priority_2 parameter",
+				},
+				"product_priority_3": map[string]any{
+					"type":        "number",
+					"description": "product_priority_3 parameter",
+				},
+				"product_priority_4": map[string]any{
+					"type":        "number",
+					"description": "product_priority_4 parameter",
+				},
+				"product_type": map[string]any{
+					"type":        "string",
+					"description": "product_type parameter",
+				},
+				"quantity_to_sell_on_facebook": map[string]any{
+					"type":        "integer",
+					"description": "quantity_to_sell_on_facebook parameter",
+				},
+				"retailer_id": map[string]any{
+					"type":        "string",
+					"description": "retailer_id parameter",
+				},
+				"retailer_product_group_id": map[string]any{
+					"type":        "string",
+					"description": "retailer_product_group_id parameter",
+				},
+				"return_policy_days": map[string]any{
+					"type":        "integer",
+					"description": "return_policy_days parameter",
+				},
+				"sale_price": map[string]any{
+					"type":        "integer",
+					"description": "sale_price parameter",
+				},
+				"sale_price_end_date": map[string]any{
+					"type":        "string",
+					"description": "sale_price_end_date parameter",
+				},
+				"sale_price_start_date": map[string]any{
+					"type":        "string",
+					"description": "sale_price_start_date parameter",
+				},
+				"short_description": map[string]any{
+					"type":        "string",
+					"description": "short_description parameter",
+				},
+				"size": map[string]any{
+					"type":        "string",
+					"description": "size parameter",
+				},
+				"start_date": map[string]any{
+					"type":        "string",
+					"description": "start_date parameter",
+				},
+				"url": map[string]any{
+					"type":        "string",
+					"description": "url parameter",
+				},
+				"visibility": map[string]any{
+					"type":        "string",
+					"description": "visibility parameter",
+					"enum":        []string{"published", "staging"},
+				},
+				"wa_compliance_category": map[string]any{
+					"type":        "string",
+					"description": "wa_compliance_category parameter",
+					"enum":        []string{"COUNTRY_ORIGIN_EXEMPT", "DEFAULT"},
+				},
+				"windows_phone_app_id": map[string]any{
+					"type":        "string",
+					"description": "windows_phone_app_id parameter",
+				},
+				"windows_phone_app_name": map[string]any{
+					"type":        "string",
+					"description": "windows_phone_app_name parameter",
+				},
+				"windows_phone_url": map[string]any{
+					"type":        "string",
+					"description": "windows_phone_url parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: additional_image_urls (array<string>), additional_variant_attributes (object), age_group (enum) [adult, all ages, infant, kids, newborn, ...], android_app_name (string), android_class (string), android_package (string), android_url (string), availability (enum) [available for order, discontinued, in stock, mark_as_sold, out of stock, ...], brand (string), category (string), category_specific_fields (object), checkout_url (string), color (string), commerce_tax_category (enum) [FB_ANIMAL, FB_ANIMAL_SUPP, FB_APRL, FB_APRL_ACCESSORIES, FB_APRL_ATHL_UNIF, ...], condition (enum) [cpo, new, open_box_new, refurbished, used, ...], currency (string) [required], custom_data (object), custom_label_0 (string), custom_label_1 (string), custom_label_2 (string), custom_label_3 (string), custom_label_4 (string), custom_number_0 (integer), custom_number_1 (integer), custom_number_2 (integer), custom_number_3 (integer), custom_number_4 (integer), description (string), expiration_date (string), fb_product_category (string), gender (enum) [female, male, unisex], gtin (string), image_url (string), importer_address (object), importer_name (string), inventory (integer), ios_app_name (string), ios_app_store_id (integer), ios_url (string), ipad_app_name (string), ipad_app_store_id (integer), ipad_url (string), iphone_app_name (string), iphone_app_store_id (integer), iphone_url (string), launch_date (string), manufacturer_info (string), manufacturer_part_number (string), marked_for_product_launch (enum) [default, marked, not_marked], material (string), mobile_link (string), name (string) [required], ordering_index (integer), origin_country (enum) [AD, AE, AF, AG, AI, ...], pattern (string), price (integer) [required], product_priority_0 (number), product_priority_1 (number), product_priority_2 (number), product_priority_3 (number), product_priority_4 (number), product_type (string), quantity_to_sell_on_facebook (integer), retailer_id (string), retailer_product_group_id (string), return_policy_days (integer), sale_price (integer), sale_price_end_date (datetime), sale_price_start_date (datetime), short_description (string), size (string), start_date (string), url (string), visibility (enum) [published, staging], wa_compliance_category (enum) [COUNTRY_ORIGIN_EXEMPT, DEFAULT], windows_phone_app_id (string), windows_phone_app_name (string), windows_phone_url (string)"),
 		),
 	)
 	tools = append(tools, productcatalog_post_productsTool)
 
 	// productcatalog_post_update_generated_image_config tool
+	// Params object accepts: data (list<Object>)
 	productcatalog_post_update_generated_image_configTool := mcp.NewTool("productcatalog_post_update_generated_image_config",
 		mcp.WithDescription("POST update_generated_image_config for ProductCatalog"),
-		mcp.WithString("data",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("data parameter for update_generated_image_config"),
+			mcp.Properties(map[string]any{
+				"data": map[string]any{
+					"type":        "array",
+					"description": "data parameter",
+					"required":    true,
+					"items":       map[string]any{"type": "object"},
+				},
+			}),
+			mcp.Description("Parameters object containing: data (array<object>) [required]"),
 		),
 	)
 	tools = append(tools, productcatalog_post_update_generated_image_configTool)
 
 	// productcatalog_get_vehicle_offers tool
 	// Available fields for VehicleOffer: amount_currency, amount_percentage, amount_price, amount_qualifier, applinks, availability, body_style, cashback_currency, cashback_price, category_specific_fields, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0, custom_number_1, custom_number_2, custom_number_3, custom_number_4, dma_codes, downpayment_currency, downpayment_price, downpayment_qualifier, drivetrain, end_date, end_time, exterior_color, fuel_type, generation, id, image_fetch_status, images, interior_color, interior_upholstery, make, model, offer_description, offer_disclaimer, offer_type, price, product_priority_0, product_priority_1, product_priority_2, product_priority_3, product_priority_4, sanitized_images, start_date, start_time, tags, term_length, term_qualifier, title, transmission, trim, unit_price, url, vehicle_offer_id, visibility, year
+	// Params object accepts: bulk_pagination (bool), filter (Object)
 	productcatalog_get_vehicle_offersTool := mcp.NewTool("productcatalog_get_vehicle_offers",
 		mcp.WithDescription("GET vehicle_offers for ProductCatalog"),
-		mcp.WithBoolean("bulk_pagination",
-			mcp.Description("bulk_pagination parameter for vehicle_offers"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"bulk_pagination": map[string]any{
+					"type":        "boolean",
+					"description": "bulk_pagination parameter",
+				},
+				"filter": map[string]any{
+					"type":        "object",
+					"description": "filter parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: bulk_pagination (boolean), filter (object)"),
 		),
-		mcp.WithString("filter",
-			mcp.Description("filter parameter for vehicle_offers"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for VehicleOffer objects. Available fields: amount_currency, amount_percentage, amount_price, amount_qualifier, applinks, availability, body_style, cashback_currency, cashback_price, category_specific_fields, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3 (and 46 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for VehicleOffer objects. Available fields: amount_currency, amount_percentage, amount_price, amount_qualifier, applinks, availability, body_style, cashback_currency, cashback_price, category_specific_fields, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3 (and 46 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -1388,16 +1920,24 @@ func GetProductCatalogTools() []mcp.Tool {
 
 	// productcatalog_get_vehicles tool
 	// Available fields for Vehicle: address, applinks, availability, availability_circle_radius, availability_circle_radius_unit, body_style, category_specific_fields, condition, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0, custom_number_1, custom_number_2, custom_number_3, custom_number_4, date_first_on_lot, dealer_communication_channel, dealer_email, dealer_id, dealer_name, dealer_phone, dealer_privacy_policy_url, description, drivetrain, exterior_color, fb_page_id, features, fuel_type, id, image_fetch_status, images, interior_color, legal_disclosure_impressum_url, make, mileage, model, previous_currency, previous_price, price, product_priority_0, product_priority_1, product_priority_2, product_priority_3, product_priority_4, sale_currency, sale_price, sanitized_images, state_of_vehicle, tags, title, transmission, trim, unit_price, url, vehicle_id, vehicle_registration_plate, vehicle_specifications, vehicle_type, vin, visibility, year
+	// Params object accepts: bulk_pagination (bool), filter (Object)
 	productcatalog_get_vehiclesTool := mcp.NewTool("productcatalog_get_vehicles",
 		mcp.WithDescription("GET vehicles for ProductCatalog"),
-		mcp.WithBoolean("bulk_pagination",
-			mcp.Description("bulk_pagination parameter for vehicles"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"bulk_pagination": map[string]any{
+					"type":        "boolean",
+					"description": "bulk_pagination parameter",
+				},
+				"filter": map[string]any{
+					"type":        "object",
+					"description": "filter parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: bulk_pagination (boolean), filter (object)"),
 		),
-		mcp.WithString("filter",
-			mcp.Description("filter parameter for vehicles"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for Vehicle objects. Available fields: address, applinks, availability, availability_circle_radius, availability_circle_radius_unit, body_style, category_specific_fields, condition, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0 (and 50 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for Vehicle objects. Available fields: address, applinks, availability, availability_circle_radius, availability_circle_radius_unit, body_style, category_specific_fields, condition, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0 (and 50 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -1412,121 +1952,159 @@ func GetProductCatalogTools() []mcp.Tool {
 	tools = append(tools, productcatalog_get_vehiclesTool)
 
 	// productcatalog_post_vehicles tool
+	// Params object accepts: address (map), applinks (Object), availability (productcatalogvehicles_availability_enum_param), body_style (productcatalogvehicles_body_style_enum_param), condition (productcatalogvehicles_condition_enum_param), currency (string), date_first_on_lot (string), dealer_id (string), dealer_name (string), dealer_phone (string), description (string), drivetrain (productcatalogvehicles_drivetrain_enum_param), exterior_color (string), fb_page_id (string), fuel_type (productcatalogvehicles_fuel_type_enum_param), images (list<Object>), interior_color (string), make (string), mileage (map), model (string), price (unsigned int), state_of_vehicle (productcatalogvehicles_state_of_vehicle_enum_param), title (string), transmission (productcatalogvehicles_transmission_enum_param), trim (string), url (string), vehicle_id (string), vehicle_type (productcatalogvehicles_vehicle_type_enum_param), vin (string), year (unsigned int)
 	productcatalog_post_vehiclesTool := mcp.NewTool("productcatalog_post_vehicles",
 		mcp.WithDescription("POST vehicles for ProductCatalog"),
-		mcp.WithString("address",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("address parameter for vehicles"),
-		),
-		mcp.WithString("applinks",
-			mcp.Description("applinks parameter for vehicles"),
-		),
-		mcp.WithString("availability",
-			mcp.Description("availability parameter for vehicles"),
-			mcp.Enum("AVAILABLE", "NOT_AVAILABLE", "PENDING", "UNKNOWN"),
-		),
-		mcp.WithString("body_style",
-			mcp.Required(),
-			mcp.Description("body_style parameter for vehicles"),
-			mcp.Enum("CONVERTIBLE", "COUPE", "CROSSOVER", "ESTATE", "GRANDTOURER", "HATCHBACK", "MINIBUS", "MINIVAN", "MPV", "NONE", "OTHER", "PICKUP", "ROADSTER", "SALOON", "SEDAN", "SMALL_CAR", "SPORTSCAR", "SUPERCAR", "SUPERMINI", "SUV", "TRUCK", "VAN", "WAGON"),
-		),
-		mcp.WithString("condition",
-			mcp.Description("condition parameter for vehicles"),
-			mcp.Enum("EXCELLENT", "FAIR", "GOOD", "NONE", "OTHER", "POOR", "VERY_GOOD"),
-		),
-		mcp.WithString("currency",
-			mcp.Required(),
-			mcp.Description("currency parameter for vehicles"),
-		),
-		mcp.WithString("date_first_on_lot",
-			mcp.Description("date_first_on_lot parameter for vehicles"),
-		),
-		mcp.WithString("dealer_id",
-			mcp.Description("dealer_id parameter for vehicles"),
-		),
-		mcp.WithString("dealer_name",
-			mcp.Description("dealer_name parameter for vehicles"),
-		),
-		mcp.WithString("dealer_phone",
-			mcp.Description("dealer_phone parameter for vehicles"),
-		),
-		mcp.WithString("description",
-			mcp.Required(),
-			mcp.Description("description parameter for vehicles"),
-		),
-		mcp.WithString("drivetrain",
-			mcp.Description("drivetrain parameter for vehicles"),
-			mcp.Enum("AWD", "FOUR_WD", "FWD", "NONE", "OTHER", "RWD", "TWO_WD"),
-		),
-		mcp.WithString("exterior_color",
-			mcp.Required(),
-			mcp.Description("exterior_color parameter for vehicles"),
-		),
-		mcp.WithString("fb_page_id",
-			mcp.Description("fb_page_id parameter for vehicles"),
-		),
-		mcp.WithString("fuel_type",
-			mcp.Description("fuel_type parameter for vehicles"),
-			mcp.Enum("DIESEL", "ELECTRIC", "FLEX", "GASOLINE", "HYBRID", "NONE", "OTHER", "PETROL", "PLUGIN_HYBRID"),
-		),
-		mcp.WithString("images",
-			mcp.Required(),
-			mcp.Description("images parameter for vehicles"),
-		),
-		mcp.WithString("interior_color",
-			mcp.Description("interior_color parameter for vehicles"),
-		),
-		mcp.WithString("make",
-			mcp.Required(),
-			mcp.Description("make parameter for vehicles"),
-		),
-		mcp.WithString("mileage",
-			mcp.Required(),
-			mcp.Description("mileage parameter for vehicles"),
-		),
-		mcp.WithString("model",
-			mcp.Required(),
-			mcp.Description("model parameter for vehicles"),
-		),
-		mcp.WithNumber("price",
-			mcp.Required(),
-			mcp.Description("price parameter for vehicles"),
-		),
-		mcp.WithString("state_of_vehicle",
-			mcp.Required(),
-			mcp.Description("state_of_vehicle parameter for vehicles"),
-			mcp.Enum("CPO", "NEW", "USED"),
-		),
-		mcp.WithString("title",
-			mcp.Required(),
-			mcp.Description("title parameter for vehicles"),
-		),
-		mcp.WithString("transmission",
-			mcp.Description("transmission parameter for vehicles"),
-			mcp.Enum("AUTOMATIC", "MANUAL", "NONE", "OTHER"),
-		),
-		mcp.WithString("trim",
-			mcp.Description("trim parameter for vehicles"),
-		),
-		mcp.WithString("url",
-			mcp.Required(),
-			mcp.Description("url parameter for vehicles"),
-		),
-		mcp.WithString("vehicle_id",
-			mcp.Required(),
-			mcp.Description("vehicle_id parameter for vehicles"),
-		),
-		mcp.WithString("vehicle_type",
-			mcp.Description("vehicle_type parameter for vehicles"),
-			mcp.Enum("BOAT", "CAR_TRUCK", "COMMERCIAL", "MOTORCYCLE", "OTHER", "POWERSPORT", "RV_CAMPER", "TRAILER"),
-		),
-		mcp.WithString("vin",
-			mcp.Required(),
-			mcp.Description("vin parameter for vehicles"),
-		),
-		mcp.WithNumber("year",
-			mcp.Required(),
-			mcp.Description("year parameter for vehicles"),
+			mcp.Properties(map[string]any{
+				"address": map[string]any{
+					"type":        "object",
+					"description": "address parameter",
+					"required":    true,
+				},
+				"applinks": map[string]any{
+					"type":        "object",
+					"description": "applinks parameter",
+				},
+				"availability": map[string]any{
+					"type":        "string",
+					"description": "availability parameter",
+					"enum":        []string{"AVAILABLE", "NOT_AVAILABLE", "PENDING", "UNKNOWN"},
+				},
+				"body_style": map[string]any{
+					"type":        "string",
+					"description": "body_style parameter",
+					"required":    true,
+					"enum":        []string{"CONVERTIBLE", "COUPE", "CROSSOVER", "ESTATE", "GRANDTOURER", "HATCHBACK", "MINIBUS", "MINIVAN", "MPV", "NONE", "OTHER", "PICKUP", "ROADSTER", "SALOON", "SEDAN", "SMALL_CAR", "SPORTSCAR", "SUPERCAR", "SUPERMINI", "SUV", "TRUCK", "VAN", "WAGON"},
+				},
+				"condition": map[string]any{
+					"type":        "string",
+					"description": "condition parameter",
+					"enum":        []string{"EXCELLENT", "FAIR", "GOOD", "NONE", "OTHER", "POOR", "VERY_GOOD"},
+				},
+				"currency": map[string]any{
+					"type":        "string",
+					"description": "currency parameter",
+					"required":    true,
+				},
+				"date_first_on_lot": map[string]any{
+					"type":        "string",
+					"description": "date_first_on_lot parameter",
+				},
+				"dealer_id": map[string]any{
+					"type":        "string",
+					"description": "dealer_id parameter",
+				},
+				"dealer_name": map[string]any{
+					"type":        "string",
+					"description": "dealer_name parameter",
+				},
+				"dealer_phone": map[string]any{
+					"type":        "string",
+					"description": "dealer_phone parameter",
+				},
+				"description": map[string]any{
+					"type":        "string",
+					"description": "description parameter",
+					"required":    true,
+				},
+				"drivetrain": map[string]any{
+					"type":        "string",
+					"description": "drivetrain parameter",
+					"enum":        []string{"AWD", "FOUR_WD", "FWD", "NONE", "OTHER", "RWD", "TWO_WD"},
+				},
+				"exterior_color": map[string]any{
+					"type":        "string",
+					"description": "exterior_color parameter",
+					"required":    true,
+				},
+				"fb_page_id": map[string]any{
+					"type":        "string",
+					"description": "fb_page_id parameter",
+				},
+				"fuel_type": map[string]any{
+					"type":        "string",
+					"description": "fuel_type parameter",
+					"enum":        []string{"DIESEL", "ELECTRIC", "FLEX", "GASOLINE", "HYBRID", "NONE", "OTHER", "PETROL", "PLUGIN_HYBRID"},
+				},
+				"images": map[string]any{
+					"type":        "array",
+					"description": "images parameter",
+					"required":    true,
+					"items":       map[string]any{"type": "object"},
+				},
+				"interior_color": map[string]any{
+					"type":        "string",
+					"description": "interior_color parameter",
+				},
+				"make": map[string]any{
+					"type":        "string",
+					"description": "make parameter",
+					"required":    true,
+				},
+				"mileage": map[string]any{
+					"type":        "object",
+					"description": "mileage parameter",
+					"required":    true,
+				},
+				"model": map[string]any{
+					"type":        "string",
+					"description": "model parameter",
+					"required":    true,
+				},
+				"price": map[string]any{
+					"type":        "integer",
+					"description": "price parameter",
+					"required":    true,
+				},
+				"state_of_vehicle": map[string]any{
+					"type":        "string",
+					"description": "state_of_vehicle parameter",
+					"required":    true,
+					"enum":        []string{"CPO", "NEW", "USED"},
+				},
+				"title": map[string]any{
+					"type":        "string",
+					"description": "title parameter",
+					"required":    true,
+				},
+				"transmission": map[string]any{
+					"type":        "string",
+					"description": "transmission parameter",
+					"enum":        []string{"AUTOMATIC", "MANUAL", "NONE", "OTHER"},
+				},
+				"trim": map[string]any{
+					"type":        "string",
+					"description": "trim parameter",
+				},
+				"url": map[string]any{
+					"type":        "string",
+					"description": "url parameter",
+					"required":    true,
+				},
+				"vehicle_id": map[string]any{
+					"type":        "string",
+					"description": "vehicle_id parameter",
+					"required":    true,
+				},
+				"vehicle_type": map[string]any{
+					"type":        "string",
+					"description": "vehicle_type parameter",
+					"enum":        []string{"BOAT", "CAR_TRUCK", "COMMERCIAL", "MOTORCYCLE", "OTHER", "POWERSPORT", "RV_CAMPER", "TRAILER"},
+				},
+				"vin": map[string]any{
+					"type":        "string",
+					"description": "vin parameter",
+					"required":    true,
+				},
+				"year": map[string]any{
+					"type":        "integer",
+					"description": "year parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: address (object) [required], applinks (object), availability (enum) [AVAILABLE, NOT_AVAILABLE, PENDING, UNKNOWN], body_style (enum) [CONVERTIBLE, COUPE, CROSSOVER, ESTATE, GRANDTOURER, ...] [required], condition (enum) [EXCELLENT, FAIR, GOOD, NONE, OTHER, ...], currency (string) [required], date_first_on_lot (string), dealer_id (string), dealer_name (string), dealer_phone (string), description (string) [required], drivetrain (enum) [AWD, FOUR_WD, FWD, NONE, OTHER, ...], exterior_color (string) [required], fb_page_id (string), fuel_type (enum) [DIESEL, ELECTRIC, FLEX, GASOLINE, HYBRID, ...], images (array<object>) [required], interior_color (string), make (string) [required], mileage (object) [required], model (string) [required], price (integer) [required], state_of_vehicle (enum) [CPO, NEW, USED] [required], title (string) [required], transmission (enum) [AUTOMATIC, MANUAL, NONE, OTHER], trim (string), url (string) [required], vehicle_id (string) [required], vehicle_type (enum) [BOAT, CAR_TRUCK, COMMERCIAL, MOTORCYCLE, OTHER, ...], vin (string) [required], year (integer) [required]"),
 		),
 	)
 	tools = append(tools, productcatalog_post_vehiclesTool)
@@ -1535,8 +2113,8 @@ func GetProductCatalogTools() []mcp.Tool {
 	// Available fields for CatalogContentVersionConfig: id, name, version
 	productcatalog_get_version_configsTool := mcp.NewTool("productcatalog_get_version_configs",
 		mcp.WithDescription("GET version_configs for ProductCatalog"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for CatalogContentVersionConfig objects. Available fields: id, name, version"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for CatalogContentVersionConfig objects. Available fields: id, name, version"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -1551,48 +2129,75 @@ func GetProductCatalogTools() []mcp.Tool {
 	tools = append(tools, productcatalog_get_version_configsTool)
 
 	// productcatalog_post_version_items_batch tool
+	// Params object accepts: allow_upsert (bool), item_type (string), item_version (string), requests (map), version (unsigned int)
 	productcatalog_post_version_items_batchTool := mcp.NewTool("productcatalog_post_version_items_batch",
 		mcp.WithDescription("POST version_items_batch for ProductCatalog"),
-		mcp.WithBoolean("allow_upsert",
-			mcp.Description("allow_upsert parameter for version_items_batch"),
-		),
-		mcp.WithString("item_type",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("item_type parameter for version_items_batch"),
-		),
-		mcp.WithString("item_version",
-			mcp.Required(),
-			mcp.Description("item_version parameter for version_items_batch"),
-		),
-		mcp.WithString("requests",
-			mcp.Required(),
-			mcp.Description("requests parameter for version_items_batch"),
-		),
-		mcp.WithNumber("version",
-			mcp.Description("version parameter for version_items_batch"),
+			mcp.Properties(map[string]any{
+				"allow_upsert": map[string]any{
+					"type":        "boolean",
+					"description": "allow_upsert parameter",
+				},
+				"item_type": map[string]any{
+					"type":        "string",
+					"description": "item_type parameter",
+					"required":    true,
+				},
+				"item_version": map[string]any{
+					"type":        "string",
+					"description": "item_version parameter",
+					"required":    true,
+				},
+				"requests": map[string]any{
+					"type":        "object",
+					"description": "requests parameter",
+					"required":    true,
+				},
+				"version": map[string]any{
+					"type":        "integer",
+					"description": "version parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: allow_upsert (boolean), item_type (string) [required], item_version (string) [required], requests (object) [required], version (integer)"),
 		),
 	)
 	tools = append(tools, productcatalog_post_version_items_batchTool)
 
 	// productcatalog_delete_ tool
+	// Params object accepts: allow_delete_catalog_with_live_product_set (bool)
 	productcatalog_delete_Tool := mcp.NewTool("productcatalog_delete_",
 		mcp.WithDescription("DELETE  for ProductCatalog"),
-		mcp.WithBoolean("allow_delete_catalog_with_live_product_set",
-			mcp.Description("allow_delete_catalog_with_live_product_set parameter for "),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"allow_delete_catalog_with_live_product_set": map[string]any{
+					"type":        "boolean",
+					"description": "allow_delete_catalog_with_live_product_set parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: allow_delete_catalog_with_live_product_set (boolean)"),
 		),
 	)
 	tools = append(tools, productcatalog_delete_Tool)
 
 	// productcatalog_get_ tool
 	// Available fields for ProductCatalog: ad_account_to_collaborative_ads_share_settings, agency_collaborative_ads_share_settings, business, catalog_store, commerce_merchant_settings, creator_user, da_display_settings, default_image_url, fallback_image_url, feed_count, id, is_catalog_segment, is_local_catalog, name, owner_business, product_count, store_catalog_settings, user_access_expire_time, vertical
+	// Params object accepts: segment_use_cases (list<productcatalog_segment_use_cases>)
 	productcatalog_get_Tool := mcp.NewTool("productcatalog_get_",
 		mcp.WithDescription("GET  for ProductCatalog"),
-		mcp.WithString("segment_use_cases",
-			mcp.Description("segment_use_cases parameter for "),
-			mcp.Enum("AFFILIATE_SELLER_STOREFRONT", "AFFILIATE_TAGGED_ONLY_DEPRECATED", "COLLAB_ADS", "COLLAB_ADS_FOR_MARKETPLACE_PARTNER", "COLLAB_ADS_SEGMENT_WITHOUT_SEGMENT_SYNCING", "DIGITAL_CIRCULARS", "FB_LIVE_SHOPPING", "IG_SHOPPING", "IG_SHOPPING_SUGGESTED_PRODUCTS", "MARKETPLACE_SHOPS", "TEST"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"segment_use_cases": map[string]any{
+					"type":        "array",
+					"description": "segment_use_cases parameter",
+					"enum":        []string{"AFFILIATE_SELLER_STOREFRONT", "AFFILIATE_TAGGED_ONLY_DEPRECATED", "COLLAB_ADS", "COLLAB_ADS_FOR_MARKETPLACE_PARTNER", "COLLAB_ADS_SEGMENT_WITHOUT_SEGMENT_SYNCING", "DIGITAL_CIRCULARS", "FB_LIVE_SHOPPING", "IG_SHOPPING", "IG_SHOPPING_SUGGESTED_PRODUCTS", "MARKETPLACE_SHOPS", "TEST"},
+					"items":       map[string]any{"type": "string"},
+				},
+			}),
+			mcp.Description("Parameters object containing: segment_use_cases (array<productcatalog_segment_use_cases>) [AFFILIATE_SELLER_STOREFRONT, AFFILIATE_TAGGED_ONLY_DEPRECATED, COLLAB_ADS, COLLAB_ADS_FOR_MARKETPLACE_PARTNER, COLLAB_ADS_SEGMENT_WITHOUT_SEGMENT_SYNCING, ...]"),
 		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for ProductCatalog objects. Available fields: ad_account_to_collaborative_ads_share_settings, agency_collaborative_ads_share_settings, business, catalog_store, commerce_merchant_settings, creator_user, da_display_settings, default_image_url, fallback_image_url, feed_count, id, is_catalog_segment, is_local_catalog, name, owner_business (and 4 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for ProductCatalog objects. Available fields: ad_account_to_collaborative_ads_share_settings, agency_collaborative_ads_share_settings, business, catalog_store, commerce_merchant_settings, creator_user, da_display_settings, default_image_url, fallback_image_url, feed_count, id, is_catalog_segment, is_local_catalog, name, owner_business (and 4 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -1607,35 +2212,50 @@ func GetProductCatalogTools() []mcp.Tool {
 	tools = append(tools, productcatalog_get_Tool)
 
 	// productcatalog_post_ tool
+	// Params object accepts: additional_vertical_option (productcatalog_additional_vertical_option), da_display_settings (Object), default_image_url (string), destination_catalog_settings (map), fallback_image_url (string), flight_catalog_settings (map), name (string), partner_integration (map), store_catalog_settings (map)
 	productcatalog_post_Tool := mcp.NewTool("productcatalog_post_",
 		mcp.WithDescription("POST  for ProductCatalog"),
-		mcp.WithString("additional_vertical_option",
-			mcp.Description("additional_vertical_option parameter for "),
-			mcp.Enum("LOCAL_DA_CATALOG", "LOCAL_PRODUCTS"),
-		),
-		mcp.WithString("da_display_settings",
-			mcp.Description("da_display_settings parameter for "),
-		),
-		mcp.WithString("default_image_url",
-			mcp.Description("default_image_url parameter for "),
-		),
-		mcp.WithString("destination_catalog_settings",
-			mcp.Description("destination_catalog_settings parameter for "),
-		),
-		mcp.WithString("fallback_image_url",
-			mcp.Description("fallback_image_url parameter for "),
-		),
-		mcp.WithString("flight_catalog_settings",
-			mcp.Description("flight_catalog_settings parameter for "),
-		),
-		mcp.WithString("name",
-			mcp.Description("name parameter for "),
-		),
-		mcp.WithString("partner_integration",
-			mcp.Description("partner_integration parameter for "),
-		),
-		mcp.WithString("store_catalog_settings",
-			mcp.Description("store_catalog_settings parameter for "),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"additional_vertical_option": map[string]any{
+					"type":        "string",
+					"description": "additional_vertical_option parameter",
+					"enum":        []string{"LOCAL_DA_CATALOG", "LOCAL_PRODUCTS"},
+				},
+				"da_display_settings": map[string]any{
+					"type":        "object",
+					"description": "da_display_settings parameter",
+				},
+				"default_image_url": map[string]any{
+					"type":        "string",
+					"description": "default_image_url parameter",
+				},
+				"destination_catalog_settings": map[string]any{
+					"type":        "object",
+					"description": "destination_catalog_settings parameter",
+				},
+				"fallback_image_url": map[string]any{
+					"type":        "string",
+					"description": "fallback_image_url parameter",
+				},
+				"flight_catalog_settings": map[string]any{
+					"type":        "object",
+					"description": "flight_catalog_settings parameter",
+				},
+				"name": map[string]any{
+					"type":        "string",
+					"description": "name parameter",
+				},
+				"partner_integration": map[string]any{
+					"type":        "object",
+					"description": "partner_integration parameter",
+				},
+				"store_catalog_settings": map[string]any{
+					"type":        "object",
+					"description": "store_catalog_settings parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: additional_vertical_option (productcatalog_additional_vertical_option) [LOCAL_DA_CATALOG, LOCAL_PRODUCTS], da_display_settings (object), default_image_url (string), destination_catalog_settings (object), fallback_image_url (string), flight_catalog_settings (object), name (string), partner_integration (object), store_catalog_settings (object)"),
 		),
 	)
 	tools = append(tools, productcatalog_post_Tool)
@@ -1659,12 +2279,19 @@ func HandleProductcatalog_delete_agencies(ctx context.Context, request mcp.CallT
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: business
-	business, err := request.RequireString("business")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter business: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["business"] = business
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Productcatalog_delete_agencies(args)
@@ -1696,8 +2323,13 @@ func HandleProductcatalog_get_agencies(ctx context.Context, request mcp.CallTool
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -1744,33 +2376,18 @@ func HandleProductcatalog_post_agencies(ctx context.Context, request mcp.CallToo
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: business
-	business, err := request.RequireString("business")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter business: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["business"] = business
-
-	// Optional: permitted_roles
-	// array type - using string
-	if val := request.GetString("permitted_roles", ""); val != "" {
-		args["permitted_roles"] = val
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
-
-	// Optional: permitted_tasks
-	// array type - using string
-	if val := request.GetString("permitted_tasks", ""); val != "" {
-		args["permitted_tasks"] = val
-	}
-
-	// Optional: skip_defaults
-	if val := request.GetBool("skip_defaults", false); val {
-		args["skip_defaults"] = val
-	}
-
-	// Optional: utm_settings
-	if val := request.GetString("utm_settings", ""); val != "" {
-		args["utm_settings"] = val
+	for key, value := range paramsObj {
+		args[key] = value
 	}
 
 	// Call the client method
@@ -1802,12 +2419,19 @@ func HandleProductcatalog_delete_assigned_users(ctx context.Context, request mcp
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: user
-	user, err := request.RequireInt("user")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter user: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["user"] = user
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Productcatalog_delete_assigned_users(args)
@@ -1838,16 +2462,28 @@ func HandleProductcatalog_get_assigned_users(ctx context.Context, request mcp.Ca
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: business
-	business, err := request.RequireString("business")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter business: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["business"] = business
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -1894,19 +2530,19 @@ func HandleProductcatalog_post_assigned_users(ctx context.Context, request mcp.C
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: tasks
-	tasks, err := request.RequireString("tasks")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter tasks: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["tasks"] = tasks
-
-	// Required: user
-	user, err := request.RequireInt("user")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter user: %v", err)), nil
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
-	args["user"] = user
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Productcatalog_post_assigned_users(args)
@@ -1937,20 +2573,26 @@ func HandleProductcatalog_get_automotive_models(ctx context.Context, request mcp
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: bulk_pagination
-	if val := request.GetBool("bulk_pagination", false); val {
-		args["bulk_pagination"] = val
-	}
-
-	// Optional: filter
-	// object type - using string
-	if val := request.GetString("filter", ""); val != "" {
-		args["filter"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -1997,26 +2639,18 @@ func HandleProductcatalog_post_batch(ctx context.Context, request mcp.CallToolRe
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: allow_upsert
-	if val := request.GetBool("allow_upsert", false); val {
-		args["allow_upsert"] = val
-	}
-
-	// Optional: fbe_external_business_id
-	if val := request.GetString("fbe_external_business_id", ""); val != "" {
-		args["fbe_external_business_id"] = val
-	}
-
-	// Required: requests
-	requests, err := request.RequireString("requests")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter requests: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["requests"] = requests
-
-	// Optional: version
-	if val := request.GetInt("version", 0); val != 0 {
-		args["version"] = val
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
 	}
 
 	// Call the client method
@@ -2048,12 +2682,19 @@ func HandleProductcatalog_post_catalog_store(ctx context.Context, request mcp.Ca
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: page
-	page, err := request.RequireString("page")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter page: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["page"] = page
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Productcatalog_post_catalog_store(args)
@@ -2084,22 +2725,28 @@ func HandleProductcatalog_get_categories(ctx context.Context, request mcp.CallTo
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: categorization_criteria
-	categorization_criteria, err := request.RequireString("categorization_criteria")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter categorization_criteria: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["categorization_criteria"] = categorization_criteria
-
-	// Optional: filter
-	// object type - using string
-	if val := request.GetString("filter", ""); val != "" {
-		args["filter"] = val
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -2146,12 +2793,19 @@ func HandleProductcatalog_post_categories(ctx context.Context, request mcp.CallT
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: data
-	data, err := request.RequireString("data")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter data: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["data"] = data
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Productcatalog_post_categories(args)
@@ -2182,26 +2836,28 @@ func HandleProductcatalog_get_check_batch_request_status(ctx context.Context, re
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: error_priority
-	if val := request.GetString("error_priority", ""); val != "" {
-		args["error_priority"] = val
-	}
-
-	// Required: handle
-	handle, err := request.RequireString("handle")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter handle: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["handle"] = handle
-
-	// Optional: load_ids_of_invalid_requests
-	if val := request.GetBool("load_ids_of_invalid_requests", false); val {
-		args["load_ids_of_invalid_requests"] = val
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -2248,16 +2904,28 @@ func HandleProductcatalog_get_check_marketplace_partner_sellers_status(ctx conte
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: session_id
-	session_id, err := request.RequireString("session_id")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter session_id: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["session_id"] = session_id
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -2305,8 +2973,13 @@ func HandleProductcatalog_get_collaborative_ads_lsb_image_bank(ctx context.Conte
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -2354,8 +3027,13 @@ func HandleProductcatalog_get_collaborative_ads_share_settings(ctx context.Conte
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -2402,22 +3080,19 @@ func HandleProductcatalog_post_cpas_lsb_image_bank(ctx context.Context, request 
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: ad_group_id
-	if val := request.GetInt("ad_group_id", 0); val != 0 {
-		args["ad_group_id"] = val
-	}
-
-	// Optional: agency_business_id
-	if val := request.GetInt("agency_business_id", 0); val != 0 {
-		args["agency_business_id"] = val
-	}
-
-	// Required: backup_image_urls
-	backup_image_urls, err := request.RequireString("backup_image_urls")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter backup_image_urls: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["backup_image_urls"] = backup_image_urls
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Productcatalog_post_cpas_lsb_image_bank(args)
@@ -2448,14 +3123,26 @@ func HandleProductcatalog_get_creator_asset_creatives(ctx context.Context, reque
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: moderation_status
-	if val := request.GetString("moderation_status", ""); val != "" {
-		args["moderation_status"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -2502,14 +3189,26 @@ func HandleProductcatalog_get_data_sources(ctx context.Context, request mcp.Call
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: ingestion_source_type
-	if val := request.GetString("ingestion_source_type", ""); val != "" {
-		args["ingestion_source_type"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -2556,20 +3255,26 @@ func HandleProductcatalog_get_destinations(ctx context.Context, request mcp.Call
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: bulk_pagination
-	if val := request.GetBool("bulk_pagination", false); val {
-		args["bulk_pagination"] = val
-	}
-
-	// Optional: filter
-	// object type - using string
-	if val := request.GetString("filter", ""); val != "" {
-		args["filter"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -2616,39 +3321,26 @@ func HandleProductcatalog_get_diagnostics(ctx context.Context, request mcp.CallT
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: affected_channels
-	// array type - using string
-	if val := request.GetString("affected_channels", ""); val != "" {
-		args["affected_channels"] = val
-	}
-
-	// Optional: affected_entities
-	// array type - using string
-	if val := request.GetString("affected_entities", ""); val != "" {
-		args["affected_entities"] = val
-	}
-
-	// Optional: affected_features
-	// array type - using string
-	if val := request.GetString("affected_features", ""); val != "" {
-		args["affected_features"] = val
-	}
-
-	// Optional: severities
-	// array type - using string
-	if val := request.GetString("severities", ""); val != "" {
-		args["severities"] = val
-	}
-
-	// Optional: types
-	// array type - using string
-	if val := request.GetString("types", ""); val != "" {
-		args["types"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -2695,15 +3387,26 @@ func HandleProductcatalog_get_event_stats(ctx context.Context, request mcp.CallT
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: breakdowns
-	// array type - using string
-	if val := request.GetString("breakdowns", ""); val != "" {
-		args["breakdowns"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -2750,10 +3453,16 @@ func HandleProductcatalog_delete_external_event_sources(ctx context.Context, req
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: external_event_sources
-	// object type - using string
-	if val := request.GetString("external_event_sources", ""); val != "" {
-		args["external_event_sources"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method
@@ -2786,8 +3495,13 @@ func HandleProductcatalog_get_external_event_sources(ctx context.Context, reques
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -2834,10 +3548,16 @@ func HandleProductcatalog_post_external_event_sources(ctx context.Context, reque
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: external_event_sources
-	// object type - using string
-	if val := request.GetString("external_event_sources", ""); val != "" {
-		args["external_event_sources"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method
@@ -2869,20 +3589,26 @@ func HandleProductcatalog_get_flights(ctx context.Context, request mcp.CallToolR
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: bulk_pagination
-	if val := request.GetBool("bulk_pagination", false); val {
-		args["bulk_pagination"] = val
-	}
-
-	// Optional: filter
-	// object type - using string
-	if val := request.GetString("filter", ""); val != "" {
-		args["filter"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -2929,24 +3655,19 @@ func HandleProductcatalog_post_geolocated_items_batch(ctx context.Context, reque
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: allow_upsert
-	if val := request.GetBool("allow_upsert", false); val {
-		args["allow_upsert"] = val
-	}
-
-	// Required: item_type
-	item_type, err := request.RequireString("item_type")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter item_type: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["item_type"] = item_type
-
-	// Required: requests
-	requests, err := request.RequireString("requests")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter requests: %v", err)), nil
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
-	args["requests"] = requests
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Productcatalog_post_geolocated_items_batch(args)
@@ -2977,20 +3698,26 @@ func HandleProductcatalog_get_home_listings(ctx context.Context, request mcp.Cal
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: bulk_pagination
-	if val := request.GetBool("bulk_pagination", false); val {
-		args["bulk_pagination"] = val
-	}
-
-	// Optional: filter
-	// object type - using string
-	if val := request.GetString("filter", ""); val != "" {
-		args["filter"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -3037,98 +3764,19 @@ func HandleProductcatalog_post_home_listings(ctx context.Context, request mcp.Ca
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: address
-	address, err := request.RequireString("address")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter address: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["address"] = address
-
-	// Required: availability
-	availability, err := request.RequireString("availability")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter availability: %v", err)), nil
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
-	args["availability"] = availability
-
-	// Required: currency
-	currency, err := request.RequireString("currency")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter currency: %v", err)), nil
+	for key, value := range paramsObj {
+		args[key] = value
 	}
-	args["currency"] = currency
-
-	// Optional: description
-	if val := request.GetString("description", ""); val != "" {
-		args["description"] = val
-	}
-
-	// Required: home_listing_id
-	home_listing_id, err := request.RequireString("home_listing_id")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter home_listing_id: %v", err)), nil
-	}
-	args["home_listing_id"] = home_listing_id
-
-	// Required: images
-	images, err := request.RequireString("images")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter images: %v", err)), nil
-	}
-	args["images"] = images
-
-	// Optional: listing_type
-	if val := request.GetString("listing_type", ""); val != "" {
-		args["listing_type"] = val
-	}
-
-	// Required: name
-	name, err := request.RequireString("name")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter name: %v", err)), nil
-	}
-	args["name"] = name
-
-	// Optional: num_baths
-	if val := request.GetFloat("num_baths", 0); val != 0 {
-		args["num_baths"] = val
-	}
-
-	// Optional: num_beds
-	if val := request.GetFloat("num_beds", 0); val != 0 {
-		args["num_beds"] = val
-	}
-
-	// Optional: num_units
-	if val := request.GetFloat("num_units", 0); val != 0 {
-		args["num_units"] = val
-	}
-
-	// Required: price
-	price, err := request.RequireFloat("price")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter price: %v", err)), nil
-	}
-	args["price"] = price
-
-	// Optional: property_type
-	if val := request.GetString("property_type", ""); val != "" {
-		args["property_type"] = val
-	}
-
-	// Required: url
-	url_, err := request.RequireString("url")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter url: %v", err)), nil
-	}
-	args["url"] = url_
-
-	// Required: year_built
-	year_built, err := request.RequireInt("year_built")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter year_built: %v", err)), nil
-	}
-	args["year_built"] = year_built
 
 	// Call the client method
 	result, err := client.Productcatalog_post_home_listings(args)
@@ -3159,16 +3807,28 @@ func HandleProductcatalog_get_hotel_rooms_batch(ctx context.Context, request mcp
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: handle
-	handle, err := request.RequireString("handle")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter handle: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["handle"] = handle
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -3215,36 +3875,18 @@ func HandleProductcatalog_post_hotel_rooms_batch(ctx context.Context, request mc
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: file
-	if val := request.GetString("file", ""); val != "" {
-		args["file"] = val
-	}
-
-	// Optional: password
-	if val := request.GetString("password", ""); val != "" {
-		args["password"] = val
-	}
-
-	// Required: standard
-	standard, err := request.RequireString("standard")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter standard: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["standard"] = standard
-
-	// Optional: update_only
-	if val := request.GetBool("update_only", false); val {
-		args["update_only"] = val
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
-
-	// Optional: url
-	if val := request.GetString("url", ""); val != "" {
-		args["url"] = val
-	}
-
-	// Optional: username
-	if val := request.GetString("username", ""); val != "" {
-		args["username"] = val
+	for key, value := range paramsObj {
+		args[key] = value
 	}
 
 	// Call the client method
@@ -3276,20 +3918,26 @@ func HandleProductcatalog_get_hotels(ctx context.Context, request mcp.CallToolRe
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: bulk_pagination
-	if val := request.GetBool("bulk_pagination", false); val {
-		args["bulk_pagination"] = val
-	}
-
-	// Optional: filter
-	// object type - using string
-	if val := request.GetString("filter", ""); val != "" {
-		args["filter"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -3336,82 +3984,19 @@ func HandleProductcatalog_post_hotels(ctx context.Context, request mcp.CallToolR
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: address
-	address, err := request.RequireString("address")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter address: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["address"] = address
-
-	// Optional: applinks
-	// object type - using string
-	if val := request.GetString("applinks", ""); val != "" {
-		args["applinks"] = val
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
-
-	// Optional: base_price
-	if val := request.GetInt("base_price", 0); val != 0 {
-		args["base_price"] = val
+	for key, value := range paramsObj {
+		args[key] = value
 	}
-
-	// Optional: brand
-	if val := request.GetString("brand", ""); val != "" {
-		args["brand"] = val
-	}
-
-	// Optional: currency
-	if val := request.GetString("currency", ""); val != "" {
-		args["currency"] = val
-	}
-
-	// Required: description
-	description, err := request.RequireString("description")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter description: %v", err)), nil
-	}
-	args["description"] = description
-
-	// Optional: guest_ratings
-	// array type - using string
-	if val := request.GetString("guest_ratings", ""); val != "" {
-		args["guest_ratings"] = val
-	}
-
-	// Optional: hotel_id
-	if val := request.GetString("hotel_id", ""); val != "" {
-		args["hotel_id"] = val
-	}
-
-	// Required: images
-	images, err := request.RequireString("images")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter images: %v", err)), nil
-	}
-	args["images"] = images
-
-	// Required: name
-	name, err := request.RequireString("name")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter name: %v", err)), nil
-	}
-	args["name"] = name
-
-	// Optional: phone
-	if val := request.GetString("phone", ""); val != "" {
-		args["phone"] = val
-	}
-
-	// Optional: star_rating
-	if val := request.GetFloat("star_rating", 0); val != 0 {
-		args["star_rating"] = val
-	}
-
-	// Required: url
-	url_, err := request.RequireString("url")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter url: %v", err)), nil
-	}
-	args["url"] = url_
 
 	// Call the client method
 	result, err := client.Productcatalog_post_hotels(args)
@@ -3442,33 +4027,18 @@ func HandleProductcatalog_post_items_batch(ctx context.Context, request mcp.Call
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: allow_upsert
-	if val := request.GetBool("allow_upsert", false); val {
-		args["allow_upsert"] = val
-	}
-
-	// Optional: item_sub_type
-	if val := request.GetString("item_sub_type", ""); val != "" {
-		args["item_sub_type"] = val
-	}
-
-	// Required: item_type
-	item_type, err := request.RequireString("item_type")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter item_type: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["item_type"] = item_type
-
-	// Required: requests
-	requests, err := request.RequireString("requests")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter requests: %v", err)), nil
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
-	args["requests"] = requests
-
-	// Optional: version
-	if val := request.GetInt("version", 0); val != 0 {
-		args["version"] = val
+	for key, value := range paramsObj {
+		args[key] = value
 	}
 
 	// Call the client method
@@ -3500,28 +4070,18 @@ func HandleProductcatalog_post_localized_items_batch(ctx context.Context, reques
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: allow_upsert
-	if val := request.GetBool("allow_upsert", false); val {
-		args["allow_upsert"] = val
-	}
-
-	// Required: item_type
-	item_type, err := request.RequireString("item_type")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter item_type: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["item_type"] = item_type
-
-	// Required: requests
-	requests, err := request.RequireString("requests")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter requests: %v", err)), nil
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
-	args["requests"] = requests
-
-	// Optional: version
-	if val := request.GetInt("version", 0); val != 0 {
-		args["version"] = val
+	for key, value := range paramsObj {
+		args[key] = value
 	}
 
 	// Call the client method
@@ -3553,12 +4113,19 @@ func HandleProductcatalog_post_marketplace_partner_sellers_details(ctx context.C
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: requests
-	requests, err := request.RequireString("requests")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter requests: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["requests"] = requests
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Productcatalog_post_marketplace_partner_sellers_details(args)
@@ -3589,36 +4156,19 @@ func HandleProductcatalog_post_marketplace_partner_signals(ctx context.Context, 
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: event_name
-	event_name, err := request.RequireString("event_name")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter event_name: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["event_name"] = event_name
-
-	// Optional: event_source_url
-	if val := request.GetString("event_source_url", ""); val != "" {
-		args["event_source_url"] = val
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
-
-	// Required: event_time
-	event_time, err := request.RequireString("event_time")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter event_time: %v", err)), nil
+	for key, value := range paramsObj {
+		args[key] = value
 	}
-	args["event_time"] = event_time
-
-	// Optional: order_data
-	if val := request.GetString("order_data", ""); val != "" {
-		args["order_data"] = val
-	}
-
-	// Required: user_data
-	user_data, err := request.RequireString("user_data")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter user_data: %v", err)), nil
-	}
-	args["user_data"] = user_data
 
 	// Call the client method
 	result, err := client.Productcatalog_post_marketplace_partner_signals(args)
@@ -3649,16 +4199,28 @@ func HandleProductcatalog_get_pricing_variables_batch(ctx context.Context, reque
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: handle
-	handle, err := request.RequireString("handle")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter handle: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["handle"] = handle
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -3705,36 +4267,18 @@ func HandleProductcatalog_post_pricing_variables_batch(ctx context.Context, requ
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: file
-	if val := request.GetString("file", ""); val != "" {
-		args["file"] = val
-	}
-
-	// Optional: password
-	if val := request.GetString("password", ""); val != "" {
-		args["password"] = val
-	}
-
-	// Required: standard
-	standard, err := request.RequireString("standard")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter standard: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["standard"] = standard
-
-	// Optional: update_only
-	if val := request.GetBool("update_only", false); val {
-		args["update_only"] = val
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
-
-	// Optional: url
-	if val := request.GetString("url", ""); val != "" {
-		args["url"] = val
-	}
-
-	// Optional: username
-	if val := request.GetString("username", ""); val != "" {
-		args["username"] = val
+	for key, value := range paramsObj {
+		args[key] = value
 	}
 
 	// Call the client method
@@ -3767,8 +4311,13 @@ func HandleProductcatalog_get_product_feeds(ctx context.Context, request mcp.Cal
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -3815,102 +4364,16 @@ func HandleProductcatalog_post_product_feeds(ctx context.Context, request mcp.Ca
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: country
-	if val := request.GetString("country", ""); val != "" {
-		args["country"] = val
-	}
-
-	// Optional: default_currency
-	if val := request.GetString("default_currency", ""); val != "" {
-		args["default_currency"] = val
-	}
-
-	// Optional: deletion_enabled
-	if val := request.GetBool("deletion_enabled", false); val {
-		args["deletion_enabled"] = val
-	}
-
-	// Optional: delimiter
-	if val := request.GetString("delimiter", ""); val != "" {
-		args["delimiter"] = val
-	}
-
-	// Optional: encoding
-	if val := request.GetString("encoding", ""); val != "" {
-		args["encoding"] = val
-	}
-
-	// Optional: feed_type
-	if val := request.GetString("feed_type", ""); val != "" {
-		args["feed_type"] = val
-	}
-
-	// Optional: file_name
-	if val := request.GetString("file_name", ""); val != "" {
-		args["file_name"] = val
-	}
-
-	// Optional: ingestion_source_type
-	if val := request.GetString("ingestion_source_type", ""); val != "" {
-		args["ingestion_source_type"] = val
-	}
-
-	// Optional: item_sub_type
-	if val := request.GetString("item_sub_type", ""); val != "" {
-		args["item_sub_type"] = val
-	}
-
-	// Optional: migrated_from_feed_id
-	if val := request.GetString("migrated_from_feed_id", ""); val != "" {
-		args["migrated_from_feed_id"] = val
-	}
-
-	// Optional: name
-	if val := request.GetString("name", ""); val != "" {
-		args["name"] = val
-	}
-
-	// Optional: override_type
-	if val := request.GetString("override_type", ""); val != "" {
-		args["override_type"] = val
-	}
-
-	// Optional: override_value
-	if val := request.GetString("override_value", ""); val != "" {
-		args["override_value"] = val
-	}
-
-	// Optional: primary_feed_ids
-	// array type - using string
-	if val := request.GetString("primary_feed_ids", ""); val != "" {
-		args["primary_feed_ids"] = val
-	}
-
-	// Optional: quoted_fields_mode
-	if val := request.GetString("quoted_fields_mode", ""); val != "" {
-		args["quoted_fields_mode"] = val
-	}
-
-	// Optional: rules
-	// array type - using string
-	if val := request.GetString("rules", ""); val != "" {
-		args["rules"] = val
-	}
-
-	// Optional: schedule
-	if val := request.GetString("schedule", ""); val != "" {
-		args["schedule"] = val
-	}
-
-	// Optional: selected_override_fields
-	// array type - using string
-	if val := request.GetString("selected_override_fields", ""); val != "" {
-		args["selected_override_fields"] = val
-	}
-
-	// Optional: update_schedule
-	if val := request.GetString("update_schedule", ""); val != "" {
-		args["update_schedule"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method
@@ -3943,8 +4406,13 @@ func HandleProductcatalog_get_product_groups(ctx context.Context, request mcp.Ca
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -3991,15 +4459,16 @@ func HandleProductcatalog_post_product_groups(ctx context.Context, request mcp.C
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: retailer_id
-	if val := request.GetString("retailer_id", ""); val != "" {
-		args["retailer_id"] = val
-	}
-
-	// Optional: variants
-	// array type - using string
-	if val := request.GetString("variants", ""); val != "" {
-		args["variants"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method
@@ -4031,29 +4500,26 @@ func HandleProductcatalog_get_product_sets(ctx context.Context, request mcp.Call
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: ancestor_id
-	if val := request.GetString("ancestor_id", ""); val != "" {
-		args["ancestor_id"] = val
-	}
-
-	// Optional: has_children
-	if val := request.GetBool("has_children", false); val {
-		args["has_children"] = val
-	}
-
-	// Optional: parent_id
-	if val := request.GetString("parent_id", ""); val != "" {
-		args["parent_id"] = val
-	}
-
-	// Optional: retailer_id
-	if val := request.GetString("retailer_id", ""); val != "" {
-		args["retailer_id"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -4100,39 +4566,18 @@ func HandleProductcatalog_post_product_sets(ctx context.Context, request mcp.Cal
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: filter
-	// object type - using string
-	if val := request.GetString("filter", ""); val != "" {
-		args["filter"] = val
-	}
-
-	// Optional: metadata
-	if val := request.GetString("metadata", ""); val != "" {
-		args["metadata"] = val
-	}
-
-	// Required: name
-	name, err := request.RequireString("name")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter name: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["name"] = name
-
-	// Optional: ordering_info
-	// array type - using string
-	if val := request.GetString("ordering_info", ""); val != "" {
-		args["ordering_info"] = val
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
-
-	// Optional: publish_to_shops
-	// array type - using string
-	if val := request.GetString("publish_to_shops", ""); val != "" {
-		args["publish_to_shops"] = val
-	}
-
-	// Optional: retailer_id
-	if val := request.GetString("retailer_id", ""); val != "" {
-		args["retailer_id"] = val
+	for key, value := range paramsObj {
+		args[key] = value
 	}
 
 	// Call the client method
@@ -4164,16 +4609,28 @@ func HandleProductcatalog_get_product_sets_batch(ctx context.Context, request mc
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: handle
-	handle, err := request.RequireString("handle")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter handle: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["handle"] = handle
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -4220,35 +4677,26 @@ func HandleProductcatalog_get_products(ctx context.Context, request mcp.CallTool
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: bulk_pagination
-	if val := request.GetBool("bulk_pagination", false); val {
-		args["bulk_pagination"] = val
-	}
-
-	// Optional: error_priority
-	if val := request.GetString("error_priority", ""); val != "" {
-		args["error_priority"] = val
-	}
-
-	// Optional: error_type
-	if val := request.GetString("error_type", ""); val != "" {
-		args["error_type"] = val
-	}
-
-	// Optional: filter
-	// object type - using string
-	if val := request.GetString("filter", ""); val != "" {
-		args["filter"] = val
-	}
-
-	// Optional: return_only_approved_products
-	if val := request.GetBool("return_only_approved_products", false); val {
-		args["return_only_approved_products"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -4295,401 +4743,18 @@ func HandleProductcatalog_post_products(ctx context.Context, request mcp.CallToo
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: additional_image_urls
-	// array type - using string
-	if val := request.GetString("additional_image_urls", ""); val != "" {
-		args["additional_image_urls"] = val
-	}
-
-	// Optional: additional_variant_attributes
-	if val := request.GetString("additional_variant_attributes", ""); val != "" {
-		args["additional_variant_attributes"] = val
-	}
-
-	// Optional: age_group
-	if val := request.GetString("age_group", ""); val != "" {
-		args["age_group"] = val
-	}
-
-	// Optional: android_app_name
-	if val := request.GetString("android_app_name", ""); val != "" {
-		args["android_app_name"] = val
-	}
-
-	// Optional: android_class
-	if val := request.GetString("android_class", ""); val != "" {
-		args["android_class"] = val
-	}
-
-	// Optional: android_package
-	if val := request.GetString("android_package", ""); val != "" {
-		args["android_package"] = val
-	}
-
-	// Optional: android_url
-	if val := request.GetString("android_url", ""); val != "" {
-		args["android_url"] = val
-	}
-
-	// Optional: availability
-	if val := request.GetString("availability", ""); val != "" {
-		args["availability"] = val
-	}
-
-	// Optional: brand
-	if val := request.GetString("brand", ""); val != "" {
-		args["brand"] = val
-	}
-
-	// Optional: category
-	if val := request.GetString("category", ""); val != "" {
-		args["category"] = val
-	}
-
-	// Optional: category_specific_fields
-	if val := request.GetString("category_specific_fields", ""); val != "" {
-		args["category_specific_fields"] = val
-	}
-
-	// Optional: checkout_url
-	if val := request.GetString("checkout_url", ""); val != "" {
-		args["checkout_url"] = val
-	}
-
-	// Optional: color
-	if val := request.GetString("color", ""); val != "" {
-		args["color"] = val
-	}
-
-	// Optional: commerce_tax_category
-	if val := request.GetString("commerce_tax_category", ""); val != "" {
-		args["commerce_tax_category"] = val
-	}
-
-	// Optional: condition
-	if val := request.GetString("condition", ""); val != "" {
-		args["condition"] = val
-	}
-
-	// Required: currency
-	currency, err := request.RequireString("currency")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter currency: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["currency"] = currency
-
-	// Optional: custom_data
-	if val := request.GetString("custom_data", ""); val != "" {
-		args["custom_data"] = val
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
-
-	// Optional: custom_label_0
-	if val := request.GetString("custom_label_0", ""); val != "" {
-		args["custom_label_0"] = val
-	}
-
-	// Optional: custom_label_1
-	if val := request.GetString("custom_label_1", ""); val != "" {
-		args["custom_label_1"] = val
-	}
-
-	// Optional: custom_label_2
-	if val := request.GetString("custom_label_2", ""); val != "" {
-		args["custom_label_2"] = val
-	}
-
-	// Optional: custom_label_3
-	if val := request.GetString("custom_label_3", ""); val != "" {
-		args["custom_label_3"] = val
-	}
-
-	// Optional: custom_label_4
-	if val := request.GetString("custom_label_4", ""); val != "" {
-		args["custom_label_4"] = val
-	}
-
-	// Optional: custom_number_0
-	if val := request.GetInt("custom_number_0", 0); val != 0 {
-		args["custom_number_0"] = val
-	}
-
-	// Optional: custom_number_1
-	if val := request.GetInt("custom_number_1", 0); val != 0 {
-		args["custom_number_1"] = val
-	}
-
-	// Optional: custom_number_2
-	if val := request.GetInt("custom_number_2", 0); val != 0 {
-		args["custom_number_2"] = val
-	}
-
-	// Optional: custom_number_3
-	if val := request.GetInt("custom_number_3", 0); val != 0 {
-		args["custom_number_3"] = val
-	}
-
-	// Optional: custom_number_4
-	if val := request.GetInt("custom_number_4", 0); val != 0 {
-		args["custom_number_4"] = val
-	}
-
-	// Optional: description
-	if val := request.GetString("description", ""); val != "" {
-		args["description"] = val
-	}
-
-	// Optional: expiration_date
-	if val := request.GetString("expiration_date", ""); val != "" {
-		args["expiration_date"] = val
-	}
-
-	// Optional: fb_product_category
-	if val := request.GetString("fb_product_category", ""); val != "" {
-		args["fb_product_category"] = val
-	}
-
-	// Optional: gender
-	if val := request.GetString("gender", ""); val != "" {
-		args["gender"] = val
-	}
-
-	// Optional: gtin
-	if val := request.GetString("gtin", ""); val != "" {
-		args["gtin"] = val
-	}
-
-	// Optional: image_url
-	if val := request.GetString("image_url", ""); val != "" {
-		args["image_url"] = val
-	}
-
-	// Optional: importer_address
-	if val := request.GetString("importer_address", ""); val != "" {
-		args["importer_address"] = val
-	}
-
-	// Optional: importer_name
-	if val := request.GetString("importer_name", ""); val != "" {
-		args["importer_name"] = val
-	}
-
-	// Optional: inventory
-	if val := request.GetInt("inventory", 0); val != 0 {
-		args["inventory"] = val
-	}
-
-	// Optional: ios_app_name
-	if val := request.GetString("ios_app_name", ""); val != "" {
-		args["ios_app_name"] = val
-	}
-
-	// Optional: ios_app_store_id
-	if val := request.GetInt("ios_app_store_id", 0); val != 0 {
-		args["ios_app_store_id"] = val
-	}
-
-	// Optional: ios_url
-	if val := request.GetString("ios_url", ""); val != "" {
-		args["ios_url"] = val
-	}
-
-	// Optional: ipad_app_name
-	if val := request.GetString("ipad_app_name", ""); val != "" {
-		args["ipad_app_name"] = val
-	}
-
-	// Optional: ipad_app_store_id
-	if val := request.GetInt("ipad_app_store_id", 0); val != 0 {
-		args["ipad_app_store_id"] = val
-	}
-
-	// Optional: ipad_url
-	if val := request.GetString("ipad_url", ""); val != "" {
-		args["ipad_url"] = val
-	}
-
-	// Optional: iphone_app_name
-	if val := request.GetString("iphone_app_name", ""); val != "" {
-		args["iphone_app_name"] = val
-	}
-
-	// Optional: iphone_app_store_id
-	if val := request.GetInt("iphone_app_store_id", 0); val != 0 {
-		args["iphone_app_store_id"] = val
-	}
-
-	// Optional: iphone_url
-	if val := request.GetString("iphone_url", ""); val != "" {
-		args["iphone_url"] = val
-	}
-
-	// Optional: launch_date
-	if val := request.GetString("launch_date", ""); val != "" {
-		args["launch_date"] = val
-	}
-
-	// Optional: manufacturer_info
-	if val := request.GetString("manufacturer_info", ""); val != "" {
-		args["manufacturer_info"] = val
-	}
-
-	// Optional: manufacturer_part_number
-	if val := request.GetString("manufacturer_part_number", ""); val != "" {
-		args["manufacturer_part_number"] = val
-	}
-
-	// Optional: marked_for_product_launch
-	if val := request.GetString("marked_for_product_launch", ""); val != "" {
-		args["marked_for_product_launch"] = val
-	}
-
-	// Optional: material
-	if val := request.GetString("material", ""); val != "" {
-		args["material"] = val
-	}
-
-	// Optional: mobile_link
-	if val := request.GetString("mobile_link", ""); val != "" {
-		args["mobile_link"] = val
-	}
-
-	// Required: name
-	name, err := request.RequireString("name")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter name: %v", err)), nil
-	}
-	args["name"] = name
-
-	// Optional: ordering_index
-	if val := request.GetInt("ordering_index", 0); val != 0 {
-		args["ordering_index"] = val
-	}
-
-	// Optional: origin_country
-	if val := request.GetString("origin_country", ""); val != "" {
-		args["origin_country"] = val
-	}
-
-	// Optional: pattern
-	if val := request.GetString("pattern", ""); val != "" {
-		args["pattern"] = val
-	}
-
-	// Required: price
-	price, err := request.RequireInt("price")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter price: %v", err)), nil
-	}
-	args["price"] = price
-
-	// Optional: product_priority_0
-	if val := request.GetFloat("product_priority_0", 0); val != 0 {
-		args["product_priority_0"] = val
-	}
-
-	// Optional: product_priority_1
-	if val := request.GetFloat("product_priority_1", 0); val != 0 {
-		args["product_priority_1"] = val
-	}
-
-	// Optional: product_priority_2
-	if val := request.GetFloat("product_priority_2", 0); val != 0 {
-		args["product_priority_2"] = val
-	}
-
-	// Optional: product_priority_3
-	if val := request.GetFloat("product_priority_3", 0); val != 0 {
-		args["product_priority_3"] = val
-	}
-
-	// Optional: product_priority_4
-	if val := request.GetFloat("product_priority_4", 0); val != 0 {
-		args["product_priority_4"] = val
-	}
-
-	// Optional: product_type
-	if val := request.GetString("product_type", ""); val != "" {
-		args["product_type"] = val
-	}
-
-	// Optional: quantity_to_sell_on_facebook
-	if val := request.GetInt("quantity_to_sell_on_facebook", 0); val != 0 {
-		args["quantity_to_sell_on_facebook"] = val
-	}
-
-	// Optional: retailer_id
-	if val := request.GetString("retailer_id", ""); val != "" {
-		args["retailer_id"] = val
-	}
-
-	// Optional: retailer_product_group_id
-	if val := request.GetString("retailer_product_group_id", ""); val != "" {
-		args["retailer_product_group_id"] = val
-	}
-
-	// Optional: return_policy_days
-	if val := request.GetInt("return_policy_days", 0); val != 0 {
-		args["return_policy_days"] = val
-	}
-
-	// Optional: sale_price
-	if val := request.GetInt("sale_price", 0); val != 0 {
-		args["sale_price"] = val
-	}
-
-	// Optional: sale_price_end_date
-	if val := request.GetString("sale_price_end_date", ""); val != "" {
-		args["sale_price_end_date"] = val
-	}
-
-	// Optional: sale_price_start_date
-	if val := request.GetString("sale_price_start_date", ""); val != "" {
-		args["sale_price_start_date"] = val
-	}
-
-	// Optional: short_description
-	if val := request.GetString("short_description", ""); val != "" {
-		args["short_description"] = val
-	}
-
-	// Optional: size
-	if val := request.GetString("size", ""); val != "" {
-		args["size"] = val
-	}
-
-	// Optional: start_date
-	if val := request.GetString("start_date", ""); val != "" {
-		args["start_date"] = val
-	}
-
-	// Optional: url
-	if val := request.GetString("url", ""); val != "" {
-		args["url"] = val
-	}
-
-	// Optional: visibility
-	if val := request.GetString("visibility", ""); val != "" {
-		args["visibility"] = val
-	}
-
-	// Optional: wa_compliance_category
-	if val := request.GetString("wa_compliance_category", ""); val != "" {
-		args["wa_compliance_category"] = val
-	}
-
-	// Optional: windows_phone_app_id
-	if val := request.GetString("windows_phone_app_id", ""); val != "" {
-		args["windows_phone_app_id"] = val
-	}
-
-	// Optional: windows_phone_app_name
-	if val := request.GetString("windows_phone_app_name", ""); val != "" {
-		args["windows_phone_app_name"] = val
-	}
-
-	// Optional: windows_phone_url
-	if val := request.GetString("windows_phone_url", ""); val != "" {
-		args["windows_phone_url"] = val
+	for key, value := range paramsObj {
+		args[key] = value
 	}
 
 	// Call the client method
@@ -4721,12 +4786,19 @@ func HandleProductcatalog_post_update_generated_image_config(ctx context.Context
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: data
-	data, err := request.RequireString("data")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter data: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["data"] = data
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Productcatalog_post_update_generated_image_config(args)
@@ -4757,20 +4829,26 @@ func HandleProductcatalog_get_vehicle_offers(ctx context.Context, request mcp.Ca
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: bulk_pagination
-	if val := request.GetBool("bulk_pagination", false); val {
-		args["bulk_pagination"] = val
-	}
-
-	// Optional: filter
-	// object type - using string
-	if val := request.GetString("filter", ""); val != "" {
-		args["filter"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -4817,20 +4895,26 @@ func HandleProductcatalog_get_vehicles(ctx context.Context, request mcp.CallTool
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: bulk_pagination
-	if val := request.GetBool("bulk_pagination", false); val {
-		args["bulk_pagination"] = val
-	}
-
-	// Optional: filter
-	// object type - using string
-	if val := request.GetString("filter", ""); val != "" {
-		args["filter"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -4877,188 +4961,19 @@ func HandleProductcatalog_post_vehicles(ctx context.Context, request mcp.CallToo
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: address
-	address, err := request.RequireString("address")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter address: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["address"] = address
-
-	// Optional: applinks
-	// object type - using string
-	if val := request.GetString("applinks", ""); val != "" {
-		args["applinks"] = val
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
-
-	// Optional: availability
-	if val := request.GetString("availability", ""); val != "" {
-		args["availability"] = val
+	for key, value := range paramsObj {
+		args[key] = value
 	}
-
-	// Required: body_style
-	body_style, err := request.RequireString("body_style")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter body_style: %v", err)), nil
-	}
-	args["body_style"] = body_style
-
-	// Optional: condition
-	if val := request.GetString("condition", ""); val != "" {
-		args["condition"] = val
-	}
-
-	// Required: currency
-	currency, err := request.RequireString("currency")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter currency: %v", err)), nil
-	}
-	args["currency"] = currency
-
-	// Optional: date_first_on_lot
-	if val := request.GetString("date_first_on_lot", ""); val != "" {
-		args["date_first_on_lot"] = val
-	}
-
-	// Optional: dealer_id
-	if val := request.GetString("dealer_id", ""); val != "" {
-		args["dealer_id"] = val
-	}
-
-	// Optional: dealer_name
-	if val := request.GetString("dealer_name", ""); val != "" {
-		args["dealer_name"] = val
-	}
-
-	// Optional: dealer_phone
-	if val := request.GetString("dealer_phone", ""); val != "" {
-		args["dealer_phone"] = val
-	}
-
-	// Required: description
-	description, err := request.RequireString("description")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter description: %v", err)), nil
-	}
-	args["description"] = description
-
-	// Optional: drivetrain
-	if val := request.GetString("drivetrain", ""); val != "" {
-		args["drivetrain"] = val
-	}
-
-	// Required: exterior_color
-	exterior_color, err := request.RequireString("exterior_color")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter exterior_color: %v", err)), nil
-	}
-	args["exterior_color"] = exterior_color
-
-	// Optional: fb_page_id
-	if val := request.GetString("fb_page_id", ""); val != "" {
-		args["fb_page_id"] = val
-	}
-
-	// Optional: fuel_type
-	if val := request.GetString("fuel_type", ""); val != "" {
-		args["fuel_type"] = val
-	}
-
-	// Required: images
-	images, err := request.RequireString("images")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter images: %v", err)), nil
-	}
-	args["images"] = images
-
-	// Optional: interior_color
-	if val := request.GetString("interior_color", ""); val != "" {
-		args["interior_color"] = val
-	}
-
-	// Required: make
-	make, err := request.RequireString("make")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter make: %v", err)), nil
-	}
-	args["make"] = make
-
-	// Required: mileage
-	mileage, err := request.RequireString("mileage")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter mileage: %v", err)), nil
-	}
-	args["mileage"] = mileage
-
-	// Required: model
-	model, err := request.RequireString("model")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter model: %v", err)), nil
-	}
-	args["model"] = model
-
-	// Required: price
-	price, err := request.RequireInt("price")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter price: %v", err)), nil
-	}
-	args["price"] = price
-
-	// Required: state_of_vehicle
-	state_of_vehicle, err := request.RequireString("state_of_vehicle")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter state_of_vehicle: %v", err)), nil
-	}
-	args["state_of_vehicle"] = state_of_vehicle
-
-	// Required: title
-	title, err := request.RequireString("title")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter title: %v", err)), nil
-	}
-	args["title"] = title
-
-	// Optional: transmission
-	if val := request.GetString("transmission", ""); val != "" {
-		args["transmission"] = val
-	}
-
-	// Optional: trim
-	if val := request.GetString("trim", ""); val != "" {
-		args["trim"] = val
-	}
-
-	// Required: url
-	url_, err := request.RequireString("url")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter url: %v", err)), nil
-	}
-	args["url"] = url_
-
-	// Required: vehicle_id
-	vehicle_id, err := request.RequireString("vehicle_id")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter vehicle_id: %v", err)), nil
-	}
-	args["vehicle_id"] = vehicle_id
-
-	// Optional: vehicle_type
-	if val := request.GetString("vehicle_type", ""); val != "" {
-		args["vehicle_type"] = val
-	}
-
-	// Required: vin
-	vin, err := request.RequireString("vin")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter vin: %v", err)), nil
-	}
-	args["vin"] = vin
-
-	// Required: year
-	year, err := request.RequireInt("year")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter year: %v", err)), nil
-	}
-	args["year"] = year
 
 	// Call the client method
 	result, err := client.Productcatalog_post_vehicles(args)
@@ -5090,8 +5005,13 @@ func HandleProductcatalog_get_version_configs(ctx context.Context, request mcp.C
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -5138,35 +5058,18 @@ func HandleProductcatalog_post_version_items_batch(ctx context.Context, request 
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: allow_upsert
-	if val := request.GetBool("allow_upsert", false); val {
-		args["allow_upsert"] = val
-	}
-
-	// Required: item_type
-	item_type, err := request.RequireString("item_type")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter item_type: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["item_type"] = item_type
-
-	// Required: item_version
-	item_version, err := request.RequireString("item_version")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter item_version: %v", err)), nil
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
-	args["item_version"] = item_version
-
-	// Required: requests
-	requests, err := request.RequireString("requests")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter requests: %v", err)), nil
-	}
-	args["requests"] = requests
-
-	// Optional: version
-	if val := request.GetInt("version", 0); val != 0 {
-		args["version"] = val
+	for key, value := range paramsObj {
+		args[key] = value
 	}
 
 	// Call the client method
@@ -5198,9 +5101,16 @@ func HandleProductcatalog_delete_(ctx context.Context, request mcp.CallToolReque
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: allow_delete_catalog_with_live_product_set
-	if val := request.GetBool("allow_delete_catalog_with_live_product_set", false); val {
-		args["allow_delete_catalog_with_live_product_set"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method
@@ -5232,15 +5142,26 @@ func HandleProductcatalog_get_(ctx context.Context, request mcp.CallToolRequest)
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: segment_use_cases
-	// array type - using string
-	if val := request.GetString("segment_use_cases", ""); val != "" {
-		args["segment_use_cases"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -5287,50 +5208,16 @@ func HandleProductcatalog_post_(ctx context.Context, request mcp.CallToolRequest
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: additional_vertical_option
-	if val := request.GetString("additional_vertical_option", ""); val != "" {
-		args["additional_vertical_option"] = val
-	}
-
-	// Optional: da_display_settings
-	// object type - using string
-	if val := request.GetString("da_display_settings", ""); val != "" {
-		args["da_display_settings"] = val
-	}
-
-	// Optional: default_image_url
-	if val := request.GetString("default_image_url", ""); val != "" {
-		args["default_image_url"] = val
-	}
-
-	// Optional: destination_catalog_settings
-	if val := request.GetString("destination_catalog_settings", ""); val != "" {
-		args["destination_catalog_settings"] = val
-	}
-
-	// Optional: fallback_image_url
-	if val := request.GetString("fallback_image_url", ""); val != "" {
-		args["fallback_image_url"] = val
-	}
-
-	// Optional: flight_catalog_settings
-	if val := request.GetString("flight_catalog_settings", ""); val != "" {
-		args["flight_catalog_settings"] = val
-	}
-
-	// Optional: name
-	if val := request.GetString("name", ""); val != "" {
-		args["name"] = val
-	}
-
-	// Optional: partner_integration
-	if val := request.GetString("partner_integration", ""); val != "" {
-		args["partner_integration"] = val
-	}
-
-	// Optional: store_catalog_settings
-	if val := request.GetString("store_catalog_settings", ""); val != "" {
-		args["store_catalog_settings"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method

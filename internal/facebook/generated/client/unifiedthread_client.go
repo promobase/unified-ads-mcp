@@ -33,10 +33,10 @@ func (c *UnifiedThreadClient) Unifiedthread_get_messages(args map[string]interfa
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["source"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("source", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {

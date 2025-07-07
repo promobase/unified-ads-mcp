@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -18,14 +19,22 @@ func GetStoriesTools() []mcp.Tool {
 
 	// stories_get_insights tool
 	// Available fields for InsightsResult: description, description_from_api_doc, id, name, period, title, values
+	// Params object accepts: metric (list<storiesinsights_metric_enum_param>)
 	stories_get_insightsTool := mcp.NewTool("stories_get_insights",
 		mcp.WithDescription("GET insights for Stories"),
-		mcp.WithString("metric",
-			mcp.Description("metric parameter for insights"),
-			mcp.Enum("PAGES_FB_STORY_REPLIES", "PAGES_FB_STORY_SHARES", "PAGES_FB_STORY_STICKER_INTERACTIONS", "PAGES_FB_STORY_THREAD_LIGHTWEIGHT_REACTIONS", "PAGE_STORY_IMPRESSIONS_BY_STORY_ID", "PAGE_STORY_IMPRESSIONS_BY_STORY_ID_UNIQUE", "STORY_INTERACTION"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"metric": map[string]any{
+					"type":        "array",
+					"description": "metric parameter",
+					"enum":        []string{"PAGES_FB_STORY_REPLIES", "PAGES_FB_STORY_SHARES", "PAGES_FB_STORY_STICKER_INTERACTIONS", "PAGES_FB_STORY_THREAD_LIGHTWEIGHT_REACTIONS", "PAGE_STORY_IMPRESSIONS_BY_STORY_ID", "PAGE_STORY_IMPRESSIONS_BY_STORY_ID_UNIQUE", "STORY_INTERACTION"},
+					"items":       map[string]any{"type": "string"},
+				},
+			}),
+			mcp.Description("Parameters object containing: metric (array<enum>) [PAGES_FB_STORY_REPLIES, PAGES_FB_STORY_SHARES, PAGES_FB_STORY_STICKER_INTERACTIONS, PAGES_FB_STORY_THREAD_LIGHTWEIGHT_REACTIONS, PAGE_STORY_IMPRESSIONS_BY_STORY_ID, ...]"),
 		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for InsightsResult objects. Available fields: description, description_from_api_doc, id, name, period, title, values"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for InsightsResult objects. Available fields: description, description_from_api_doc, id, name, period, title, values"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -43,8 +52,8 @@ func GetStoriesTools() []mcp.Tool {
 	// Available fields for Stories: creation_time, media_id, media_type, post_id, status, url
 	stories_get_Tool := mcp.NewTool("stories_get_",
 		mcp.WithDescription("GET  for Stories"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for Stories objects. Available fields: creation_time, media_id, media_type, post_id, status, url"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for Stories objects. Available fields: creation_time, media_id, media_type, post_id, status, url"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -77,15 +86,26 @@ func HandleStories_get_insights(ctx context.Context, request mcp.CallToolRequest
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: metric
-	// array type - using string
-	if val := request.GetString("metric", ""); val != "" {
-		args["metric"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -133,8 +153,13 @@ func HandleStories_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit

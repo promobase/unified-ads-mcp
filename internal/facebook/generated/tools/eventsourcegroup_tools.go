@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -20,8 +21,8 @@ func GetEventSourceGroupTools() []mcp.Tool {
 	// Available fields for AdAccount: account_id, account_status, ad_account_promotable_objects, age, agency_client_declaration, all_capabilities, amount_spent, attribution_spec, balance, brand_safety_content_filter_levels, business, business_city, business_country_code, business_name, business_state, business_street, business_street2, business_zip, can_create_brand_lift_study, capabilities, created_time, currency, custom_audience_info, default_dsa_beneficiary, default_dsa_payor, disable_reason, end_advertiser, end_advertiser_name, existing_customers, expired_funding_source_details, extended_credit_invoice_group, failed_delivery_checks, fb_entity, funding_source, funding_source_details, has_migrated_permissions, has_page_authorized_adaccount, id, io_number, is_attribution_spec_system_default, is_ba_skip_delayed_eligible, is_direct_deals_enabled, is_in_3ds_authorization_enabled_market, is_notifications_enabled, is_personal, is_prepay_account, is_tax_id_required, liable_address, line_numbers, media_agency, min_campaign_group_spend_cap, min_daily_budget, name, offsite_pixels_tos_accepted, owner, owner_business, partner, rf_spec, send_bill_to_address, show_checkout_experience, sold_to_address, spend_cap, tax_id, tax_id_status, tax_id_type, timezone_id, timezone_name, timezone_offset_hours_utc, tos_accepted, user_access_expire_time, user_tasks, user_tos_accepted, viewable_business
 	eventsourcegroup_get_shared_accountsTool := mcp.NewTool("eventsourcegroup_get_shared_accounts",
 		mcp.WithDescription("GET shared_accounts for EventSourceGroup"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for AdAccount objects. Available fields: account_id, account_status, ad_account_promotable_objects, age, agency_client_declaration, all_capabilities, amount_spent, attribution_spec, balance, brand_safety_content_filter_levels, business, business_city, business_country_code, business_name, business_state (and 58 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for AdAccount objects. Available fields: account_id, account_status, ad_account_promotable_objects, age, agency_client_declaration, all_capabilities, amount_spent, attribution_spec, balance, brand_safety_content_filter_levels, business, business_city, business_country_code, business_name, business_state (and 58 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -36,11 +37,20 @@ func GetEventSourceGroupTools() []mcp.Tool {
 	tools = append(tools, eventsourcegroup_get_shared_accountsTool)
 
 	// eventsourcegroup_post_shared_accounts tool
+	// Params object accepts: accounts (list<string>)
 	eventsourcegroup_post_shared_accountsTool := mcp.NewTool("eventsourcegroup_post_shared_accounts",
 		mcp.WithDescription("POST shared_accounts for EventSourceGroup"),
-		mcp.WithString("accounts",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("accounts parameter for shared_accounts"),
+			mcp.Properties(map[string]any{
+				"accounts": map[string]any{
+					"type":        "array",
+					"description": "accounts parameter",
+					"required":    true,
+					"items":       map[string]any{"type": "string"},
+				},
+			}),
+			mcp.Description("Parameters object containing: accounts (array<string>) [required]"),
 		),
 	)
 	tools = append(tools, eventsourcegroup_post_shared_accountsTool)
@@ -49,8 +59,8 @@ func GetEventSourceGroupTools() []mcp.Tool {
 	// Available fields for EventSourceGroup: business, event_sources, id, name, owner_business
 	eventsourcegroup_get_Tool := mcp.NewTool("eventsourcegroup_get_",
 		mcp.WithDescription("GET  for EventSourceGroup"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for EventSourceGroup objects. Available fields: business, event_sources, id, name, owner_business"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for EventSourceGroup objects. Available fields: business, event_sources, id, name, owner_business"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -65,15 +75,25 @@ func GetEventSourceGroupTools() []mcp.Tool {
 	tools = append(tools, eventsourcegroup_get_Tool)
 
 	// eventsourcegroup_post_ tool
+	// Params object accepts: event_sources (list<string>), name (string)
 	eventsourcegroup_post_Tool := mcp.NewTool("eventsourcegroup_post_",
 		mcp.WithDescription("POST  for EventSourceGroup"),
-		mcp.WithString("event_sources",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("event_sources parameter for "),
-		),
-		mcp.WithString("name",
-			mcp.Required(),
-			mcp.Description("name parameter for "),
+			mcp.Properties(map[string]any{
+				"event_sources": map[string]any{
+					"type":        "array",
+					"description": "event_sources parameter",
+					"required":    true,
+					"items":       map[string]any{"type": "string"},
+				},
+				"name": map[string]any{
+					"type":        "string",
+					"description": "name parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: event_sources (array<string>) [required], name (string) [required]"),
 		),
 	)
 	tools = append(tools, eventsourcegroup_post_Tool)
@@ -98,8 +118,13 @@ func HandleEventsourcegroup_get_shared_accounts(ctx context.Context, request mcp
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -146,12 +171,19 @@ func HandleEventsourcegroup_post_shared_accounts(ctx context.Context, request mc
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: accounts
-	accounts, err := request.RequireString("accounts")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter accounts: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["accounts"] = accounts
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Eventsourcegroup_post_shared_accounts(args)
@@ -183,8 +215,13 @@ func HandleEventsourcegroup_get_(ctx context.Context, request mcp.CallToolReques
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -231,19 +268,19 @@ func HandleEventsourcegroup_post_(ctx context.Context, request mcp.CallToolReque
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: event_sources
-	event_sources, err := request.RequireString("event_sources")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter event_sources: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["event_sources"] = event_sources
-
-	// Required: name
-	name, err := request.RequireString("name")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter name: %v", err)), nil
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
-	args["name"] = name
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Eventsourcegroup_post_(args)

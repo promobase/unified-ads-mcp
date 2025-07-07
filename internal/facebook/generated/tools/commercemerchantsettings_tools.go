@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -17,39 +18,61 @@ func GetCommerceMerchantSettingsTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// commercemerchantsettings_post_acknowledge_orders tool
+	// Params object accepts: idempotency_key (string), orders (list<map>)
 	commercemerchantsettings_post_acknowledge_ordersTool := mcp.NewTool("commercemerchantsettings_post_acknowledge_orders",
 		mcp.WithDescription("POST acknowledge_orders for CommerceMerchantSettings"),
-		mcp.WithString("idempotency_key",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("idempotency_key parameter for acknowledge_orders"),
-		),
-		mcp.WithString("orders",
-			mcp.Required(),
-			mcp.Description("orders parameter for acknowledge_orders"),
+			mcp.Properties(map[string]any{
+				"idempotency_key": map[string]any{
+					"type":        "string",
+					"description": "idempotency_key parameter",
+					"required":    true,
+				},
+				"orders": map[string]any{
+					"type":        "array",
+					"description": "orders parameter",
+					"required":    true,
+					"items":       map[string]any{"type": "object"},
+				},
+			}),
+			mcp.Description("Parameters object containing: idempotency_key (string) [required], orders (array<object>) [required]"),
 		),
 	)
 	tools = append(tools, commercemerchantsettings_post_acknowledge_ordersTool)
 
 	// commercemerchantsettings_get_commerce_orders tool
 	// Available fields for CommerceOrder: buyer_details, channel, contains_bopis_items, created, estimated_payment_details, id, is_group_buy, is_test_order, last_updated, merchant_order_id, order_status, pre_order_details, selected_shipping_option, ship_by_date, shipping_address
+	// Params object accepts: filters (list<commercemerchantsettingscommerce_orders_filters_enum_param>), state (list<commercemerchantsettingscommerce_orders_state_enum_param>), updated_after (datetime), updated_before (datetime)
 	commercemerchantsettings_get_commerce_ordersTool := mcp.NewTool("commercemerchantsettings_get_commerce_orders",
 		mcp.WithDescription("GET commerce_orders for CommerceMerchantSettings"),
-		mcp.WithString("filters",
-			mcp.Description("filters parameter for commerce_orders"),
-			mcp.Enum("HAS_CANCELLATIONS", "HAS_FULFILLMENTS", "HAS_REFUNDS", "NO_CANCELLATIONS", "NO_REFUNDS", "NO_SHIPMENTS"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"filters": map[string]any{
+					"type":        "array",
+					"description": "filters parameter",
+					"enum":        []string{"HAS_CANCELLATIONS", "HAS_FULFILLMENTS", "HAS_REFUNDS", "NO_CANCELLATIONS", "NO_REFUNDS", "NO_SHIPMENTS"},
+					"items":       map[string]any{"type": "string"},
+				},
+				"state": map[string]any{
+					"type":        "array",
+					"description": "state parameter",
+					"enum":        []string{"COMPLETED", "CREATED", "FB_PROCESSING", "IN_PROGRESS"},
+					"items":       map[string]any{"type": "string"},
+				},
+				"updated_after": map[string]any{
+					"type":        "string",
+					"description": "updated_after parameter",
+				},
+				"updated_before": map[string]any{
+					"type":        "string",
+					"description": "updated_before parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: filters (array<enum>) [HAS_CANCELLATIONS, HAS_FULFILLMENTS, HAS_REFUNDS, NO_CANCELLATIONS, NO_REFUNDS, ...], state (array<enum>) [COMPLETED, CREATED, FB_PROCESSING, IN_PROGRESS], updated_after (datetime), updated_before (datetime)"),
 		),
-		mcp.WithString("state",
-			mcp.Description("state parameter for commerce_orders"),
-			mcp.Enum("COMPLETED", "CREATED", "FB_PROCESSING", "IN_PROGRESS"),
-		),
-		mcp.WithString("updated_after",
-			mcp.Description("updated_after parameter for commerce_orders"),
-		),
-		mcp.WithString("updated_before",
-			mcp.Description("updated_before parameter for commerce_orders"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for CommerceOrder objects. Available fields: buyer_details, channel, contains_bopis_items, created, estimated_payment_details, id, is_group_buy, is_test_order, last_updated, merchant_order_id, order_status, pre_order_details, selected_shipping_option, ship_by_date, shipping_address"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for CommerceOrder objects. Available fields: buyer_details, channel, contains_bopis_items, created, estimated_payment_details, id, is_group_buy, is_test_order, last_updated, merchant_order_id, order_status, pre_order_details, selected_shipping_option, ship_by_date, shipping_address"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -65,16 +88,24 @@ func GetCommerceMerchantSettingsTools() []mcp.Tool {
 
 	// commercemerchantsettings_get_commerce_payouts tool
 	// Available fields for CommercePayout: amount, payout_date, payout_reference_id, status, transfer_id
+	// Params object accepts: end_time (datetime), start_time (datetime)
 	commercemerchantsettings_get_commerce_payoutsTool := mcp.NewTool("commercemerchantsettings_get_commerce_payouts",
 		mcp.WithDescription("GET commerce_payouts for CommerceMerchantSettings"),
-		mcp.WithString("end_time",
-			mcp.Description("end_time parameter for commerce_payouts"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"end_time": map[string]any{
+					"type":        "string",
+					"description": "end_time parameter",
+				},
+				"start_time": map[string]any{
+					"type":        "string",
+					"description": "start_time parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: end_time (datetime), start_time (datetime)"),
 		),
-		mcp.WithString("start_time",
-			mcp.Description("start_time parameter for commerce_payouts"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for CommercePayout objects. Available fields: amount, payout_date, payout_reference_id, status, transfer_id"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for CommercePayout objects. Available fields: amount, payout_date, payout_reference_id, status, transfer_id"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -90,19 +121,28 @@ func GetCommerceMerchantSettingsTools() []mcp.Tool {
 
 	// commercemerchantsettings_get_commerce_transactions tool
 	// Available fields for CommerceOrderTransactionDetail: merchant_order_id, net_payment_amount, order_created, order_details, order_id, payout_reference_id, postal_code, processing_fee, state, tax_rate, transaction_date, transaction_type, transfer_id
+	// Params object accepts: end_time (datetime), payout_reference_id (string), start_time (datetime)
 	commercemerchantsettings_get_commerce_transactionsTool := mcp.NewTool("commercemerchantsettings_get_commerce_transactions",
 		mcp.WithDescription("GET commerce_transactions for CommerceMerchantSettings"),
-		mcp.WithString("end_time",
-			mcp.Description("end_time parameter for commerce_transactions"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"end_time": map[string]any{
+					"type":        "string",
+					"description": "end_time parameter",
+				},
+				"payout_reference_id": map[string]any{
+					"type":        "string",
+					"description": "payout_reference_id parameter",
+				},
+				"start_time": map[string]any{
+					"type":        "string",
+					"description": "start_time parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: end_time (datetime), payout_reference_id (string), start_time (datetime)"),
 		),
-		mcp.WithString("payout_reference_id",
-			mcp.Description("payout_reference_id parameter for commerce_transactions"),
-		),
-		mcp.WithString("start_time",
-			mcp.Description("start_time parameter for commerce_transactions"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for CommerceOrderTransactionDetail objects. Available fields: merchant_order_id, net_payment_amount, order_created, order_details, order_id, payout_reference_id, postal_code, processing_fee, state, tax_rate, transaction_date, transaction_type, transfer_id"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for CommerceOrderTransactionDetail objects. Available fields: merchant_order_id, net_payment_amount, order_created, order_details, order_id, payout_reference_id, postal_code, processing_fee, state, tax_rate, transaction_date, transaction_type, transfer_id"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -120,8 +160,8 @@ func GetCommerceMerchantSettingsTools() []mcp.Tool {
 	// Available fields for Application: aam_rules, an_ad_space_limit, an_platforms, android_key_hash, android_sdk_error_categories, app_domains, app_events_config, app_events_feature_bitmask, app_events_session_timeout, app_install_tracked, app_name, app_signals_binding_ios, app_type, auth_dialog_data_help_url, auth_dialog_headline, auth_dialog_perms_explanation, auth_referral_default_activity_privacy, auth_referral_enabled, auth_referral_extended_perms, auth_referral_friend_perms, auth_referral_response_type, auth_referral_user_perms, auto_event_mapping_android, auto_event_mapping_ios, auto_event_setup_enabled, auto_log_app_events_default, auto_log_app_events_enabled, business, canvas_fluid_height, canvas_fluid_width, canvas_url, category, client_config, company, configured_ios_sso, contact_email, created_time, creator_uid, daily_active_users, daily_active_users_rank, deauth_callback_url, default_share_mode, description, enigma_config, financial_id, gdpv4_chrome_custom_tabs_enabled, gdpv4_enabled, gdpv4_nux_content, gdpv4_nux_enabled, has_messenger_product, hosting_url, icon_url, id, ios_bundle_id, ios_sdk_dialog_flows, ios_sdk_error_categories, ios_sfvc_attr, ios_supports_native_proxy_auth_flow, ios_supports_system_auth, ipad_app_store_id, iphone_app_store_id, latest_sdk_version, link, logging_token, logo_url, migrations, mobile_profile_section_url, mobile_web_url, monthly_active_users, monthly_active_users_rank, name, namespace, object_store_urls, owner_business, page_tab_default_name, page_tab_url, photo_url, privacy_policy_url, profile_section_url, property_id, protected_mode_rules, real_time_mode_devices, restrictions, restrictive_data_filter_params, restrictive_data_filter_rules, sdk_update_message, seamless_login, secure_canvas_url, secure_page_tab_url, server_ip_whitelist, smart_login_bookmark_icon_url, smart_login_menu_icon_url, social_discovery, subcategory, suggested_events_setting, supported_platforms, supports_apprequests_fast_app_switch, supports_attribution, supports_implicit_sdk_logging, suppress_native_ios_gdp, terms_of_service_url, url_scheme_suffix, user_support_email, user_support_url, website_url, weekly_active_users
 	commercemerchantsettings_get_order_management_appsTool := mcp.NewTool("commercemerchantsettings_get_order_management_apps",
 		mcp.WithDescription("GET order_management_apps for CommerceMerchantSettings"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for Application objects. Available fields: aam_rules, an_ad_space_limit, an_platforms, android_key_hash, android_sdk_error_categories, app_domains, app_events_config, app_events_feature_bitmask, app_events_session_timeout, app_install_tracked, app_name, app_signals_binding_ios, app_type, auth_dialog_data_help_url, auth_dialog_headline (and 91 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for Application objects. Available fields: aam_rules, an_ad_space_limit, an_platforms, android_key_hash, android_sdk_error_categories, app_domains, app_events_config, app_events_feature_bitmask, app_events_session_timeout, app_install_tracked, app_name, app_signals_binding_ios, app_type, auth_dialog_data_help_url, auth_dialog_headline (and 91 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -145,8 +185,8 @@ func GetCommerceMerchantSettingsTools() []mcp.Tool {
 	// Available fields for ProductCatalog: ad_account_to_collaborative_ads_share_settings, agency_collaborative_ads_share_settings, business, catalog_store, commerce_merchant_settings, creator_user, da_display_settings, default_image_url, fallback_image_url, feed_count, id, is_catalog_segment, is_local_catalog, name, owner_business, product_count, store_catalog_settings, user_access_expire_time, vertical
 	commercemerchantsettings_get_product_catalogsTool := mcp.NewTool("commercemerchantsettings_get_product_catalogs",
 		mcp.WithDescription("GET product_catalogs for CommerceMerchantSettings"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for ProductCatalog objects. Available fields: ad_account_to_collaborative_ads_share_settings, agency_collaborative_ads_share_settings, business, catalog_store, commerce_merchant_settings, creator_user, da_display_settings, default_image_url, fallback_image_url, feed_count, id, is_catalog_segment, is_local_catalog, name, owner_business (and 4 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for ProductCatalog objects. Available fields: ad_account_to_collaborative_ads_share_settings, agency_collaborative_ads_share_settings, business, catalog_store, commerce_merchant_settings, creator_user, da_display_settings, default_image_url, fallback_image_url, feed_count, id, is_catalog_segment, is_local_catalog, name, owner_business (and 4 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -161,23 +201,34 @@ func GetCommerceMerchantSettingsTools() []mcp.Tool {
 	tools = append(tools, commercemerchantsettings_get_product_catalogsTool)
 
 	// commercemerchantsettings_get_returns tool
+	// Params object accepts: end_time_created (datetime), merchant_return_id (string), start_time_created (datetime), statuses (list<commercemerchantsettingsreturns_statuses_enum_param>)
 	commercemerchantsettings_get_returnsTool := mcp.NewTool("commercemerchantsettings_get_returns",
 		mcp.WithDescription("GET returns for CommerceMerchantSettings"),
-		mcp.WithString("end_time_created",
-			mcp.Description("end_time_created parameter for returns"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"end_time_created": map[string]any{
+					"type":        "string",
+					"description": "end_time_created parameter",
+				},
+				"merchant_return_id": map[string]any{
+					"type":        "string",
+					"description": "merchant_return_id parameter",
+				},
+				"start_time_created": map[string]any{
+					"type":        "string",
+					"description": "start_time_created parameter",
+				},
+				"statuses": map[string]any{
+					"type":        "array",
+					"description": "statuses parameter",
+					"enum":        []string{"APPROVED", "DISAPPROVED", "MERCHANT_MARKED_COMPLETED", "REFUNDED", "REQUESTED"},
+					"items":       map[string]any{"type": "string"},
+				},
+			}),
+			mcp.Description("Parameters object containing: end_time_created (datetime), merchant_return_id (string), start_time_created (datetime), statuses (array<enum>) [APPROVED, DISAPPROVED, MERCHANT_MARKED_COMPLETED, REFUNDED, REQUESTED]"),
 		),
-		mcp.WithString("merchant_return_id",
-			mcp.Description("merchant_return_id parameter for returns"),
-		),
-		mcp.WithString("start_time_created",
-			mcp.Description("start_time_created parameter for returns"),
-		),
-		mcp.WithString("statuses",
-			mcp.Description("statuses parameter for returns"),
-			mcp.Enum("APPROVED", "DISAPPROVED", "MERCHANT_MARKED_COMPLETED", "REFUNDED", "REQUESTED"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -195,8 +246,8 @@ func GetCommerceMerchantSettingsTools() []mcp.Tool {
 	// Available fields for CommerceMerchantSettingsSetupStatus: deals_setup, marketplace_approval_status, marketplace_approval_status_details, payment_setup, review_status, shop_setup
 	commercemerchantsettings_get_setup_statusTool := mcp.NewTool("commercemerchantsettings_get_setup_status",
 		mcp.WithDescription("GET setup_status for CommerceMerchantSettings"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for CommerceMerchantSettingsSetupStatus objects. Available fields: deals_setup, marketplace_approval_status, marketplace_approval_status_details, payment_setup, review_status, shop_setup"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for CommerceMerchantSettingsSetupStatus objects. Available fields: deals_setup, marketplace_approval_status, marketplace_approval_status_details, payment_setup, review_status, shop_setup"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -211,13 +262,20 @@ func GetCommerceMerchantSettingsTools() []mcp.Tool {
 	tools = append(tools, commercemerchantsettings_get_setup_statusTool)
 
 	// commercemerchantsettings_get_shipping_profiles tool
+	// Params object accepts: reference_id (string)
 	commercemerchantsettings_get_shipping_profilesTool := mcp.NewTool("commercemerchantsettings_get_shipping_profiles",
 		mcp.WithDescription("GET shipping_profiles for CommerceMerchantSettings"),
-		mcp.WithString("reference_id",
-			mcp.Description("reference_id parameter for shipping_profiles"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"reference_id": map[string]any{
+					"type":        "string",
+					"description": "reference_id parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: reference_id (string)"),
 		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -232,27 +290,41 @@ func GetCommerceMerchantSettingsTools() []mcp.Tool {
 	tools = append(tools, commercemerchantsettings_get_shipping_profilesTool)
 
 	// commercemerchantsettings_post_shipping_profiles tool
+	// Params object accepts: handling_time (map), is_default (bool), is_default_shipping_profile (bool), name (string), reference_id (string), shipping_destinations (list<map>)
 	commercemerchantsettings_post_shipping_profilesTool := mcp.NewTool("commercemerchantsettings_post_shipping_profiles",
 		mcp.WithDescription("POST shipping_profiles for CommerceMerchantSettings"),
-		mcp.WithString("handling_time",
-			mcp.Description("handling_time parameter for shipping_profiles"),
-		),
-		mcp.WithBoolean("is_default",
-			mcp.Description("is_default parameter for shipping_profiles"),
-		),
-		mcp.WithBoolean("is_default_shipping_profile",
-			mcp.Description("is_default_shipping_profile parameter for shipping_profiles"),
-		),
-		mcp.WithString("name",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("name parameter for shipping_profiles"),
-		),
-		mcp.WithString("reference_id",
-			mcp.Description("reference_id parameter for shipping_profiles"),
-		),
-		mcp.WithString("shipping_destinations",
-			mcp.Required(),
-			mcp.Description("shipping_destinations parameter for shipping_profiles"),
+			mcp.Properties(map[string]any{
+				"handling_time": map[string]any{
+					"type":        "object",
+					"description": "handling_time parameter",
+				},
+				"is_default": map[string]any{
+					"type":        "boolean",
+					"description": "is_default parameter",
+				},
+				"is_default_shipping_profile": map[string]any{
+					"type":        "boolean",
+					"description": "is_default_shipping_profile parameter",
+				},
+				"name": map[string]any{
+					"type":        "string",
+					"description": "name parameter",
+					"required":    true,
+				},
+				"reference_id": map[string]any{
+					"type":        "string",
+					"description": "reference_id parameter",
+				},
+				"shipping_destinations": map[string]any{
+					"type":        "array",
+					"description": "shipping_destinations parameter",
+					"required":    true,
+					"items":       map[string]any{"type": "object"},
+				},
+			}),
+			mcp.Description("Parameters object containing: handling_time (object), is_default (boolean), is_default_shipping_profile (boolean), name (string) [required], reference_id (string), shipping_destinations (array<object>) [required]"),
 		),
 	)
 	tools = append(tools, commercemerchantsettings_post_shipping_profilesTool)
@@ -261,8 +333,8 @@ func GetCommerceMerchantSettingsTools() []mcp.Tool {
 	// Available fields for Shop: commerce_merchant_settings, fb_sales_channel, id, ig_sales_channel, is_onsite_enabled, shop_status, workspace
 	commercemerchantsettings_get_shopsTool := mcp.NewTool("commercemerchantsettings_get_shops",
 		mcp.WithDescription("GET shops for CommerceMerchantSettings"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for Shop objects. Available fields: commerce_merchant_settings, fb_sales_channel, id, ig_sales_channel, is_onsite_enabled, shop_status, workspace"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for Shop objects. Available fields: commerce_merchant_settings, fb_sales_channel, id, ig_sales_channel, is_onsite_enabled, shop_status, workspace"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -279,8 +351,8 @@ func GetCommerceMerchantSettingsTools() []mcp.Tool {
 	// commercemerchantsettings_get_tax_settings tool
 	commercemerchantsettings_get_tax_settingsTool := mcp.NewTool("commercemerchantsettings_get_tax_settings",
 		mcp.WithDescription("GET tax_settings for CommerceMerchantSettings"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -298,8 +370,8 @@ func GetCommerceMerchantSettingsTools() []mcp.Tool {
 	// Available fields for CommerceMerchantSettings: checkout_config, checkout_message, contact_email, cta, display_name, facebook_channel, id, instagram_channel, korea_ftc_listing, merchant_page, merchant_status, onsite_commerce_merchant, payment_provider, privacy_policy_localized, return_policy_localized, review_rejection_messages, review_rejection_reasons, terms
 	commercemerchantsettings_get_Tool := mcp.NewTool("commercemerchantsettings_get_",
 		mcp.WithDescription("GET  for CommerceMerchantSettings"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for CommerceMerchantSettings objects. Available fields: checkout_config, checkout_message, contact_email, cta, display_name, facebook_channel, id, instagram_channel, korea_ftc_listing, merchant_page, merchant_status, onsite_commerce_merchant, payment_provider, privacy_policy_localized, return_policy_localized (and 3 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for CommerceMerchantSettings objects. Available fields: checkout_config, checkout_message, contact_email, cta, display_name, facebook_channel, id, instagram_channel, korea_ftc_listing, merchant_page, merchant_status, onsite_commerce_merchant, payment_provider, privacy_policy_localized, return_policy_localized (and 3 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -332,19 +404,19 @@ func HandleCommercemerchantsettings_post_acknowledge_orders(ctx context.Context,
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: idempotency_key
-	idempotency_key, err := request.RequireString("idempotency_key")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter idempotency_key: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["idempotency_key"] = idempotency_key
-
-	// Required: orders
-	orders, err := request.RequireString("orders")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter orders: %v", err)), nil
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
-	args["orders"] = orders
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Commercemerchantsettings_post_acknowledge_orders(args)
@@ -375,31 +447,26 @@ func HandleCommercemerchantsettings_get_commerce_orders(ctx context.Context, req
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: filters
-	// array type - using string
-	if val := request.GetString("filters", ""); val != "" {
-		args["filters"] = val
-	}
-
-	// Optional: state
-	// array type - using string
-	if val := request.GetString("state", ""); val != "" {
-		args["state"] = val
-	}
-
-	// Optional: updated_after
-	if val := request.GetString("updated_after", ""); val != "" {
-		args["updated_after"] = val
-	}
-
-	// Optional: updated_before
-	if val := request.GetString("updated_before", ""); val != "" {
-		args["updated_before"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -446,19 +513,26 @@ func HandleCommercemerchantsettings_get_commerce_payouts(ctx context.Context, re
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: end_time
-	if val := request.GetString("end_time", ""); val != "" {
-		args["end_time"] = val
-	}
-
-	// Optional: start_time
-	if val := request.GetString("start_time", ""); val != "" {
-		args["start_time"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -505,24 +579,26 @@ func HandleCommercemerchantsettings_get_commerce_transactions(ctx context.Contex
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: end_time
-	if val := request.GetString("end_time", ""); val != "" {
-		args["end_time"] = val
-	}
-
-	// Optional: payout_reference_id
-	if val := request.GetString("payout_reference_id", ""); val != "" {
-		args["payout_reference_id"] = val
-	}
-
-	// Optional: start_time
-	if val := request.GetString("start_time", ""); val != "" {
-		args["start_time"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -570,8 +646,13 @@ func HandleCommercemerchantsettings_get_order_management_apps(ctx context.Contex
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -648,8 +729,13 @@ func HandleCommercemerchantsettings_get_product_catalogs(ctx context.Context, re
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -696,30 +782,26 @@ func HandleCommercemerchantsettings_get_returns(ctx context.Context, request mcp
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: end_time_created
-	if val := request.GetString("end_time_created", ""); val != "" {
-		args["end_time_created"] = val
-	}
-
-	// Optional: merchant_return_id
-	if val := request.GetString("merchant_return_id", ""); val != "" {
-		args["merchant_return_id"] = val
-	}
-
-	// Optional: start_time_created
-	if val := request.GetString("start_time_created", ""); val != "" {
-		args["start_time_created"] = val
-	}
-
-	// Optional: statuses
-	// array type - using string
-	if val := request.GetString("statuses", ""); val != "" {
-		args["statuses"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -767,8 +849,13 @@ func HandleCommercemerchantsettings_get_setup_status(ctx context.Context, reques
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -815,14 +902,26 @@ func HandleCommercemerchantsettings_get_shipping_profiles(ctx context.Context, r
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: reference_id
-	if val := request.GetString("reference_id", ""); val != "" {
-		args["reference_id"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -869,39 +968,19 @@ func HandleCommercemerchantsettings_post_shipping_profiles(ctx context.Context, 
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: handling_time
-	if val := request.GetString("handling_time", ""); val != "" {
-		args["handling_time"] = val
-	}
-
-	// Optional: is_default
-	if val := request.GetBool("is_default", false); val {
-		args["is_default"] = val
-	}
-
-	// Optional: is_default_shipping_profile
-	if val := request.GetBool("is_default_shipping_profile", false); val {
-		args["is_default_shipping_profile"] = val
-	}
-
-	// Required: name
-	name, err := request.RequireString("name")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter name: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["name"] = name
-
-	// Optional: reference_id
-	if val := request.GetString("reference_id", ""); val != "" {
-		args["reference_id"] = val
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
-
-	// Required: shipping_destinations
-	shipping_destinations, err := request.RequireString("shipping_destinations")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter shipping_destinations: %v", err)), nil
+	for key, value := range paramsObj {
+		args[key] = value
 	}
-	args["shipping_destinations"] = shipping_destinations
 
 	// Call the client method
 	result, err := client.Commercemerchantsettings_post_shipping_profiles(args)
@@ -933,8 +1012,13 @@ func HandleCommercemerchantsettings_get_shops(ctx context.Context, request mcp.C
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -982,8 +1066,13 @@ func HandleCommercemerchantsettings_get_tax_settings(ctx context.Context, reques
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -1031,8 +1120,13 @@ func HandleCommercemerchantsettings_get_(ctx context.Context, request mcp.CallTo
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit

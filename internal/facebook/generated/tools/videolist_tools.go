@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -20,8 +21,8 @@ func GetVideoListTools() []mcp.Tool {
 	// Available fields for AdVideo: ad_breaks, admin_creator, audio_isrc, backdated_time, backdated_time_granularity, boost_eligibility_info, content_category, content_tags, copyright, copyright_check_information, copyright_monitoring_status, created_time, custom_labels, description, embed_html, embeddable, event, expiration, format, from, icon, id, is_crosspost_video, is_crossposting_eligible, is_episode, is_instagram_eligible, is_reference_only, length, live_audience_count, live_status, music_video_copyright, permalink_url, picture, place, post_id, post_views, premiere_living_room_status, privacy, published, scheduled_publish_time, source, spherical, status, title, universal_video_id, updated_time, views
 	videolist_get_videosTool := mcp.NewTool("videolist_get_videos",
 		mcp.WithDescription("GET videos for VideoList"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for AdVideo objects. Available fields: ad_breaks, admin_creator, audio_isrc, backdated_time, backdated_time_granularity, boost_eligibility_info, content_category, content_tags, copyright, copyright_check_information, copyright_monitoring_status, created_time, custom_labels, description, embed_html (and 32 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for AdVideo objects. Available fields: ad_breaks, admin_creator, audio_isrc, backdated_time, backdated_time_granularity, boost_eligibility_info, content_category, content_tags, copyright, copyright_check_information, copyright_monitoring_status, created_time, custom_labels, description, embed_html (and 32 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -39,8 +40,8 @@ func GetVideoListTools() []mcp.Tool {
 	// Available fields for VideoList: creation_time, description, id, last_modified, owner, season_number, thumbnail, title, videos_count
 	videolist_get_Tool := mcp.NewTool("videolist_get_",
 		mcp.WithDescription("GET  for VideoList"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for VideoList objects. Available fields: creation_time, description, id, last_modified, owner, season_number, thumbnail, title, videos_count"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for VideoList objects. Available fields: creation_time, description, id, last_modified, owner, season_number, thumbnail, title, videos_count"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -74,8 +75,13 @@ func HandleVideolist_get_videos(ctx context.Context, request mcp.CallToolRequest
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -123,8 +129,13 @@ func HandleVideolist_get_(ctx context.Context, request mcp.CallToolRequest) (*mc
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit

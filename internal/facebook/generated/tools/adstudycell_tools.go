@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -20,8 +21,8 @@ func GetAdStudyCellTools() []mcp.Tool {
 	// Available fields for AdAccount: account_id, account_status, ad_account_promotable_objects, age, agency_client_declaration, all_capabilities, amount_spent, attribution_spec, balance, brand_safety_content_filter_levels, business, business_city, business_country_code, business_name, business_state, business_street, business_street2, business_zip, can_create_brand_lift_study, capabilities, created_time, currency, custom_audience_info, default_dsa_beneficiary, default_dsa_payor, disable_reason, end_advertiser, end_advertiser_name, existing_customers, expired_funding_source_details, extended_credit_invoice_group, failed_delivery_checks, fb_entity, funding_source, funding_source_details, has_migrated_permissions, has_page_authorized_adaccount, id, io_number, is_attribution_spec_system_default, is_ba_skip_delayed_eligible, is_direct_deals_enabled, is_in_3ds_authorization_enabled_market, is_notifications_enabled, is_personal, is_prepay_account, is_tax_id_required, liable_address, line_numbers, media_agency, min_campaign_group_spend_cap, min_daily_budget, name, offsite_pixels_tos_accepted, owner, owner_business, partner, rf_spec, send_bill_to_address, show_checkout_experience, sold_to_address, spend_cap, tax_id, tax_id_status, tax_id_type, timezone_id, timezone_name, timezone_offset_hours_utc, tos_accepted, user_access_expire_time, user_tasks, user_tos_accepted, viewable_business
 	adstudycell_get_adaccountsTool := mcp.NewTool("adstudycell_get_adaccounts",
 		mcp.WithDescription("GET adaccounts for AdStudyCell"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for AdAccount objects. Available fields: account_id, account_status, ad_account_promotable_objects, age, agency_client_declaration, all_capabilities, amount_spent, attribution_spec, balance, brand_safety_content_filter_levels, business, business_city, business_country_code, business_name, business_state (and 58 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for AdAccount objects. Available fields: account_id, account_status, ad_account_promotable_objects, age, agency_client_declaration, all_capabilities, amount_spent, attribution_spec, balance, brand_safety_content_filter_levels, business, business_city, business_country_code, business_name, business_state (and 58 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -39,8 +40,8 @@ func GetAdStudyCellTools() []mcp.Tool {
 	// Available fields for AdSet: account_id, adlabels, adset_schedule, asset_feed_id, attribution_spec, bid_adjustments, bid_amount, bid_constraints, bid_info, bid_strategy, billing_event, brand_safety_config, budget_remaining, campaign, campaign_active_time, campaign_attribution, campaign_id, configured_status, created_time, creative_sequence, creative_sequence_repetition_pattern, daily_budget, daily_min_spend_target, daily_spend_cap, destination_type, dsa_beneficiary, dsa_payor, effective_status, end_time, existing_customer_budget_percentage, frequency_control_specs, full_funnel_exploration_mode, id, instagram_user_id, is_ba_skip_delayed_eligible, is_budget_schedule_enabled, is_dynamic_creative, is_incremental_attribution_enabled, issues_info, learning_stage_info, lifetime_budget, lifetime_imps, lifetime_min_spend_target, lifetime_spend_cap, max_budget_spend_percentage, min_budget_spend_percentage, multi_optimization_goal_weight, name, optimization_goal, optimization_sub_event, pacing_type, promoted_object, recommendations, recurring_budget_semantics, regional_regulated_categories, regional_regulation_identities, review_feedback, rf_prediction_id, source_adset, source_adset_id, start_time, status, targeting, targeting_optimization_types, time_based_ad_rotation_id_blocks, time_based_ad_rotation_intervals, updated_time, use_new_app_click
 	adstudycell_get_adsetsTool := mcp.NewTool("adstudycell_get_adsets",
 		mcp.WithDescription("GET adsets for AdStudyCell"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for AdSet objects. Available fields: account_id, adlabels, adset_schedule, asset_feed_id, attribution_spec, bid_adjustments, bid_amount, bid_constraints, bid_info, bid_strategy, billing_event, brand_safety_config, budget_remaining, campaign, campaign_active_time (and 53 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for AdSet objects. Available fields: account_id, adlabels, adset_schedule, asset_feed_id, attribution_spec, bid_adjustments, bid_amount, bid_constraints, bid_info, bid_strategy, billing_event, brand_safety_config, budget_remaining, campaign, campaign_active_time (and 53 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -58,8 +59,8 @@ func GetAdStudyCellTools() []mcp.Tool {
 	// Available fields for Campaign: account_id, adlabels, advantage_state_info, bid_strategy, boosted_object_id, brand_lift_studies, budget_rebalance_flag, budget_remaining, buying_type, campaign_group_active_time, can_create_brand_lift_study, can_use_spend_cap, configured_status, created_time, daily_budget, effective_status, has_secondary_skadnetwork_reporting, id, is_budget_schedule_enabled, is_skadnetwork_attribution, issues_info, last_budget_toggling_time, lifetime_budget, name, objective, pacing_type, primary_attribution, promoted_object, recommendations, smart_promotion_type, source_campaign, source_campaign_id, source_recommendation_type, special_ad_categories, special_ad_category, special_ad_category_country, spend_cap, start_time, status, stop_time, topline_id, updated_time
 	adstudycell_get_campaignsTool := mcp.NewTool("adstudycell_get_campaigns",
 		mcp.WithDescription("GET campaigns for AdStudyCell"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for Campaign objects. Available fields: account_id, adlabels, advantage_state_info, bid_strategy, boosted_object_id, brand_lift_studies, budget_rebalance_flag, budget_remaining, buying_type, campaign_group_active_time, can_create_brand_lift_study, can_use_spend_cap, configured_status, created_time, daily_budget (and 27 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for Campaign objects. Available fields: account_id, adlabels, advantage_state_info, bid_strategy, boosted_object_id, brand_lift_studies, budget_rebalance_flag, budget_remaining, buying_type, campaign_group_active_time, can_create_brand_lift_study, can_use_spend_cap, configured_status, created_time, daily_budget (and 27 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -77,8 +78,8 @@ func GetAdStudyCellTools() []mcp.Tool {
 	// Available fields for AdStudyCell: ad_entities_count, control_percentage, id, name, treatment_percentage
 	adstudycell_get_Tool := mcp.NewTool("adstudycell_get_",
 		mcp.WithDescription("GET  for AdStudyCell"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for AdStudyCell objects. Available fields: ad_entities_count, control_percentage, id, name, treatment_percentage"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for AdStudyCell objects. Available fields: ad_entities_count, control_percentage, id, name, treatment_percentage"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -93,26 +94,41 @@ func GetAdStudyCellTools() []mcp.Tool {
 	tools = append(tools, adstudycell_get_Tool)
 
 	// adstudycell_post_ tool
+	// Params object accepts: adaccounts (list<unsigned int>), adsets (list<string>), campaigns (list<string>), creation_template (adstudycell_creation_template), description (string), name (string)
 	adstudycell_post_Tool := mcp.NewTool("adstudycell_post_",
 		mcp.WithDescription("POST  for AdStudyCell"),
-		mcp.WithString("adaccounts",
-			mcp.Description("adaccounts parameter for "),
-		),
-		mcp.WithString("adsets",
-			mcp.Description("adsets parameter for "),
-		),
-		mcp.WithString("campaigns",
-			mcp.Description("campaigns parameter for "),
-		),
-		mcp.WithString("creation_template",
-			mcp.Description("creation_template parameter for "),
-			mcp.Enum("AUTOMATIC_PLACEMENTS", "BRAND_AWARENESS", "FACEBOOK", "FACEBOOK_AUDIENCE_NETWORK", "FACEBOOK_INSTAGRAM", "FACEBOOK_NEWS_FEED", "FACEBOOK_NEWS_FEED_IN_STREAM_VIDEO", "HIGH_FREQUENCY", "INSTAGRAM", "IN_STREAM_VIDEO", "LOW_FREQUENCY", "MEDIUM_FREQUENCY", "MOBILE_OPTIMIZED_VIDEO", "PAGE_POST_ENGAGEMENT", "REACH", "TV_COMMERCIAL", "TV_FACEBOOK", "VIDEO_VIEW_OPTIMIZATION"),
-		),
-		mcp.WithString("description",
-			mcp.Description("description parameter for "),
-		),
-		mcp.WithString("name",
-			mcp.Description("name parameter for "),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"adaccounts": map[string]any{
+					"type":        "array",
+					"description": "adaccounts parameter",
+					"items":       map[string]any{"type": "integer"},
+				},
+				"adsets": map[string]any{
+					"type":        "array",
+					"description": "adsets parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+				"campaigns": map[string]any{
+					"type":        "array",
+					"description": "campaigns parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+				"creation_template": map[string]any{
+					"type":        "string",
+					"description": "creation_template parameter",
+					"enum":        []string{"AUTOMATIC_PLACEMENTS", "BRAND_AWARENESS", "FACEBOOK", "FACEBOOK_AUDIENCE_NETWORK", "FACEBOOK_INSTAGRAM", "FACEBOOK_NEWS_FEED", "FACEBOOK_NEWS_FEED_IN_STREAM_VIDEO", "HIGH_FREQUENCY", "INSTAGRAM", "IN_STREAM_VIDEO", "LOW_FREQUENCY", "MEDIUM_FREQUENCY", "MOBILE_OPTIMIZED_VIDEO", "PAGE_POST_ENGAGEMENT", "REACH", "TV_COMMERCIAL", "TV_FACEBOOK", "VIDEO_VIEW_OPTIMIZATION"},
+				},
+				"description": map[string]any{
+					"type":        "string",
+					"description": "description parameter",
+				},
+				"name": map[string]any{
+					"type":        "string",
+					"description": "name parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: adaccounts (array<integer>), adsets (array<string>), campaigns (array<string>), creation_template (adstudycell_creation_template) [AUTOMATIC_PLACEMENTS, BRAND_AWARENESS, FACEBOOK, FACEBOOK_AUDIENCE_NETWORK, FACEBOOK_INSTAGRAM, ...], description (string), name (string)"),
 		),
 	)
 	tools = append(tools, adstudycell_post_Tool)
@@ -137,8 +153,13 @@ func HandleAdstudycell_get_adaccounts(ctx context.Context, request mcp.CallToolR
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -186,8 +207,13 @@ func HandleAdstudycell_get_adsets(ctx context.Context, request mcp.CallToolReque
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -235,8 +261,13 @@ func HandleAdstudycell_get_campaigns(ctx context.Context, request mcp.CallToolRe
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -284,8 +315,13 @@ func HandleAdstudycell_get_(ctx context.Context, request mcp.CallToolRequest) (*
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -332,37 +368,16 @@ func HandleAdstudycell_post_(ctx context.Context, request mcp.CallToolRequest) (
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: adaccounts
-	// array type - using string
-	if val := request.GetString("adaccounts", ""); val != "" {
-		args["adaccounts"] = val
-	}
-
-	// Optional: adsets
-	// array type - using string
-	if val := request.GetString("adsets", ""); val != "" {
-		args["adsets"] = val
-	}
-
-	// Optional: campaigns
-	// array type - using string
-	if val := request.GetString("campaigns", ""); val != "" {
-		args["campaigns"] = val
-	}
-
-	// Optional: creation_template
-	if val := request.GetString("creation_template", ""); val != "" {
-		args["creation_template"] = val
-	}
-
-	// Optional: description
-	if val := request.GetString("description", ""); val != "" {
-		args["description"] = val
-	}
-
-	// Optional: name
-	if val := request.GetString("name", ""); val != "" {
-		args["name"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method

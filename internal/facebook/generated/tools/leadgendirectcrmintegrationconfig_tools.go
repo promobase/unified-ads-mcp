@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -20,8 +21,8 @@ func GetLeadGenDirectCRMIntegrationConfigTools() []mcp.Tool {
 	// Available fields for LeadGenDirectCRMIntegrationConfig: auth_id, creation_time, id, lead_gen_data, matched_fields, matched_fields_labels, resources, third_party_app_id
 	leadgendirectcrmintegrationconfig_get_Tool := mcp.NewTool("leadgendirectcrmintegrationconfig_get_",
 		mcp.WithDescription("GET  for LeadGenDirectCRMIntegrationConfig"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for LeadGenDirectCRMIntegrationConfig objects. Available fields: auth_id, creation_time, id, lead_gen_data, matched_fields, matched_fields_labels, resources, third_party_app_id"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for LeadGenDirectCRMIntegrationConfig objects. Available fields: auth_id, creation_time, id, lead_gen_data, matched_fields, matched_fields_labels, resources, third_party_app_id"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -55,8 +56,13 @@ func HandleLeadgendirectcrmintegrationconfig_get_(ctx context.Context, request m
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit

@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -19,8 +20,8 @@ func GetAdsConversionGoalTools() []mcp.Tool {
 	// adsconversiongoal_get_conversion_events tool
 	adsconversiongoal_get_conversion_eventsTool := mcp.NewTool("adsconversiongoal_get_conversion_events",
 		mcp.WithDescription("GET conversion_events for AdsConversionGoal"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -38,8 +39,8 @@ func GetAdsConversionGoalTools() []mcp.Tool {
 	// Available fields for AdsConversionGoal: ad_account_id, conversion_event_value_source, description, goal_creation_method, id, name, performance_goal, update_status
 	adsconversiongoal_get_Tool := mcp.NewTool("adsconversiongoal_get_",
 		mcp.WithDescription("GET  for AdsConversionGoal"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for AdsConversionGoal objects. Available fields: ad_account_id, conversion_event_value_source, description, goal_creation_method, id, name, performance_goal, update_status"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for AdsConversionGoal objects. Available fields: ad_account_id, conversion_event_value_source, description, goal_creation_method, id, name, performance_goal, update_status"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -73,8 +74,13 @@ func HandleAdsconversiongoal_get_conversion_events(ctx context.Context, request 
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -122,8 +128,13 @@ func HandleAdsconversiongoal_get_(ctx context.Context, request mcp.CallToolReque
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit

@@ -24,11 +24,11 @@ func NewAdsPixelClient(accessToken string) *AdsPixelClient {
 // adspixel_get_adaccounts GET adaccounts for AdsPixel
 func (c *AdsPixelClient) Adspixel_get_adaccounts(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	business, ok := args["business"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: business")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = business // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -38,10 +38,10 @@ func (c *AdsPixelClient) Adspixel_get_adaccounts(args map[string]interface{}) (i
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["business"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("business", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -102,11 +102,11 @@ func (c *AdsPixelClient) Adspixel_get_adaccounts(args map[string]interface{}) (i
 // adspixel_delete_agencies DELETE agencies for AdsPixel
 func (c *AdsPixelClient) Adspixel_delete_agencies(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	business, ok := args["business"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: business")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = business // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -116,10 +116,10 @@ func (c *AdsPixelClient) Adspixel_delete_agencies(args map[string]interface{}) (
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["business"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("business", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -223,16 +223,11 @@ func (c *AdsPixelClient) Adspixel_get_agencies(args map[string]interface{}) (int
 // adspixel_post_agencies POST agencies for AdsPixel
 func (c *AdsPixelClient) Adspixel_post_agencies(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	business, ok := args["business"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: business")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = business // Suppress unused variable warning
-	permitted_tasks, ok := args["permitted_tasks"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: permitted_tasks")
-	}
-	_ = permitted_tasks // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -242,16 +237,10 @@ func (c *AdsPixelClient) Adspixel_post_agencies(args map[string]interface{}) (in
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["business"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("business", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["permitted_tasks"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("permitted_tasks", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -288,11 +277,11 @@ func (c *AdsPixelClient) Adspixel_post_agencies(args map[string]interface{}) (in
 // adspixel_post_ahp_configs POST ahp_configs for AdsPixel
 func (c *AdsPixelClient) Adspixel_post_ahp_configs(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	applink_autosetup, ok := args["applink_autosetup"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: applink_autosetup")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = applink_autosetup // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -302,10 +291,10 @@ func (c *AdsPixelClient) Adspixel_post_ahp_configs(args map[string]interface{}) 
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["applink_autosetup"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("applink_autosetup", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -342,11 +331,11 @@ func (c *AdsPixelClient) Adspixel_post_ahp_configs(args map[string]interface{}) 
 // adspixel_get_assigned_users GET assigned_users for AdsPixel
 func (c *AdsPixelClient) Adspixel_get_assigned_users(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	business, ok := args["business"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: business")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = business // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -356,10 +345,10 @@ func (c *AdsPixelClient) Adspixel_get_assigned_users(args map[string]interface{}
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["business"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("business", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -420,16 +409,11 @@ func (c *AdsPixelClient) Adspixel_get_assigned_users(args map[string]interface{}
 // adspixel_post_assigned_users POST assigned_users for AdsPixel
 func (c *AdsPixelClient) Adspixel_post_assigned_users(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	tasks, ok := args["tasks"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: tasks")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = tasks // Suppress unused variable warning
-	user, ok := args["user"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: user")
-	}
-	_ = user // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -439,16 +423,10 @@ func (c *AdsPixelClient) Adspixel_post_assigned_users(args map[string]interface{
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["tasks"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("tasks", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["user"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("user", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -494,16 +472,10 @@ func (c *AdsPixelClient) Adspixel_get_da_checks(args map[string]interface{}) (in
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["checks"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("checks", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["connection_method"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("connection_method", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -564,11 +536,11 @@ func (c *AdsPixelClient) Adspixel_get_da_checks(args map[string]interface{}) (in
 // adspixel_post_events POST events for AdsPixel
 func (c *AdsPixelClient) Adspixel_post_events(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	data, ok := args["data"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: data")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = data // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -578,64 +550,10 @@ func (c *AdsPixelClient) Adspixel_post_events(args map[string]interface{}) (inte
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["data"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("data", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["namespace_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("namespace_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["partner_agent"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("partner_agent", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["platforms"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("platforms", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["progress"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("progress", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["test_event_code"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("test_event_code", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["trace"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("trace", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["upload_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("upload_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["upload_source"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("upload_source", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["upload_tag"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("upload_tag", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -681,34 +599,10 @@ func (c *AdsPixelClient) Adspixel_get_offline_event_uploads(args map[string]inte
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["end_time"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("end_time", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["order"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("order", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["sort_by"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("sort_by", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["start_time"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("start_time", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["upload_tag"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("upload_tag", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -878,16 +772,11 @@ func (c *AdsPixelClient) Adspixel_post_shadowtraffichelper(args map[string]inter
 // adspixel_delete_shared_accounts DELETE shared_accounts for AdsPixel
 func (c *AdsPixelClient) Adspixel_delete_shared_accounts(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	account_id, ok := args["account_id"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = account_id // Suppress unused variable warning
-	business, ok := args["business"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: business")
-	}
-	_ = business // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -897,16 +786,10 @@ func (c *AdsPixelClient) Adspixel_delete_shared_accounts(args map[string]interfa
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["account_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("account_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["business"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("business", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -943,11 +826,11 @@ func (c *AdsPixelClient) Adspixel_delete_shared_accounts(args map[string]interfa
 // adspixel_get_shared_accounts GET shared_accounts for AdsPixel
 func (c *AdsPixelClient) Adspixel_get_shared_accounts(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	business, ok := args["business"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: business")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = business // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -957,10 +840,10 @@ func (c *AdsPixelClient) Adspixel_get_shared_accounts(args map[string]interface{
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["business"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("business", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -1021,16 +904,11 @@ func (c *AdsPixelClient) Adspixel_get_shared_accounts(args map[string]interface{
 // adspixel_post_shared_accounts POST shared_accounts for AdsPixel
 func (c *AdsPixelClient) Adspixel_post_shared_accounts(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	account_id, ok := args["account_id"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = account_id // Suppress unused variable warning
-	business, ok := args["business"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: business")
-	}
-	_ = business // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -1040,16 +918,10 @@ func (c *AdsPixelClient) Adspixel_post_shared_accounts(args map[string]interface
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["account_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("account_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["business"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("business", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -1162,34 +1034,10 @@ func (c *AdsPixelClient) Adspixel_get_stats(args map[string]interface{}) (interf
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["aggregation"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("aggregation", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["end_time"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("end_time", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["event"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("event", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["event_source"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("event_source", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["start_time"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("start_time", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -1326,40 +1174,10 @@ func (c *AdsPixelClient) Adspixel_post_(args map[string]interface{}) (interface{
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["automatic_matching_fields"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("automatic_matching_fields", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["data_use_setting"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("data_use_setting", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["enable_automatic_matching"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("enable_automatic_matching", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["first_party_cookie_status"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("first_party_cookie_status", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["name"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("name", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["server_events_business_ids"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("server_events_business_ids", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 

@@ -75,22 +75,10 @@ func (c *AdRuleClient) Adrule_get_history(args map[string]interface{}) (interfac
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["action"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("action", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["hide_no_changes"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("hide_no_changes", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["object_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("object_id", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -311,34 +299,10 @@ func (c *AdRuleClient) Adrule_post_(args map[string]interface{}) (interface{}, e
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["evaluation_spec"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("evaluation_spec", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["execution_spec"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("execution_spec", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["name"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("name", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["schedule_spec"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("schedule_spec", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["status"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("status", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 

@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -17,18 +18,27 @@ func GetIGRefreshAccessTokenForIGOnlyAPITools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// igrefreshaccesstokenforigonlyapi_get_ tool
+	// Params object accepts: access_token (string), grant_type (string)
 	igrefreshaccesstokenforigonlyapi_get_Tool := mcp.NewTool("igrefreshaccesstokenforigonlyapi_get_",
 		mcp.WithDescription("GET  for IGRefreshAccessTokenForIGOnlyAPI"),
-		mcp.WithString("access_token",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("access_token parameter for "),
+			mcp.Properties(map[string]any{
+				"access_token": map[string]any{
+					"type":        "string",
+					"description": "access_token parameter",
+					"required":    true,
+				},
+				"grant_type": map[string]any{
+					"type":        "string",
+					"description": "grant_type parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: access_token (string) [required], grant_type (string) [required]"),
 		),
-		mcp.WithString("grant_type",
-			mcp.Required(),
-			mcp.Description("grant_type parameter for "),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -61,23 +71,28 @@ func HandleIgrefreshaccesstokenforigonlyapi_get_(ctx context.Context, request mc
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: access_token
-	access_token, err := request.RequireString("access_token")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter access_token: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["access_token"] = access_token
-
-	// Required: grant_type
-	grant_type, err := request.RequireString("grant_type")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter grant_type: %v", err)), nil
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
-	args["grant_type"] = grant_type
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit

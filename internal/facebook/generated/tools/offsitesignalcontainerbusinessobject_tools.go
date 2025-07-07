@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -20,8 +21,8 @@ func GetOffsiteSignalContainerBusinessObjectTools() []mcp.Tool {
 	// Available fields for AdsDataset: can_proxy, collection_rate, config, creation_time, creator, dataset_id, description, duplicate_entries, enable_auto_assign_to_accounts, enable_automatic_events, enable_automatic_matching, enable_real_time_event_log, event_stats, event_time_max, event_time_min, first_party_cookie_status, has_bapi_domains, has_catalog_microdata_activity, has_ofa_redacted_keys, has_sent_pii, id, is_consolidated_container, is_created_by_business, is_crm, is_eligible_for_sharing_to_ad_account, is_eligible_for_sharing_to_business, is_eligible_for_value_optimization, is_mta_use, is_restricted_use, is_unavailable, last_fired_time, last_upload_app, last_upload_app_changed_time, last_upload_time, late_upload_reminder_eligibility, match_rate_approx, matched_entries, name, no_ads_tracked_for_weekly_uploaded_events_reminder_eligibility, num_active_ad_set_tracked, num_recent_offline_conversions_uploaded, num_uploads, owner_ad_account, owner_business, percentage_of_late_uploads_in_external_suboptimal_window, permissions, server_last_fired_time, show_automatic_events, upload_rate, upload_reminder_eligibility, usage, valid_entries
 	offsitesignalcontainerbusinessobject_get_linked_applicationTool := mcp.NewTool("offsitesignalcontainerbusinessobject_get_linked_application",
 		mcp.WithDescription("GET linked_application for OffsiteSignalContainerBusinessObject"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for AdsDataset objects. Available fields: can_proxy, collection_rate, config, creation_time, creator, dataset_id, description, duplicate_entries, enable_auto_assign_to_accounts, enable_automatic_events, enable_automatic_matching, enable_real_time_event_log, event_stats, event_time_max, event_time_min (and 37 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for AdsDataset objects. Available fields: can_proxy, collection_rate, config, creation_time, creator, dataset_id, description, duplicate_entries, enable_auto_assign_to_accounts, enable_automatic_events, enable_automatic_matching, enable_real_time_event_log, event_stats, event_time_max, event_time_min (and 37 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -39,8 +40,8 @@ func GetOffsiteSignalContainerBusinessObjectTools() []mcp.Tool {
 	// Available fields for Page: about, access_token, ad_campaign, affiliation, app_id, artists_we_like, attire, available_promo_offer_ids, awards, band_interests, band_members, best_page, bio, birthday, booking_agent, breaking_news_usage, built, business, can_checkin, can_post, category, category_list, checkins, company_overview, connected_instagram_account, connected_page_backed_instagram_account, contact_address, copyright_whitelisted_ig_partners, country_page_likes, cover, culinary_team, current_location, delivery_and_pickup_option_info, description, description_html, differently_open_offerings, directed_by, display_subtext, displayed_message_response_time, does_viewer_have_page_permission_link_ig, emails, engagement, fan_count, featured_video, features, followers_count, food_styles, founded, general_info, general_manager, genre, global_brand_page_name, global_brand_root_id, has_added_app, has_lead_access, has_transitioned_to_new_page_experience, has_whatsapp_business_number, has_whatsapp_number, hometown, hours, id, impressum, influences, instagram_business_account, is_always_open, is_calling_eligible, is_chain, is_community_page, is_eligible_for_branded_content, is_eligible_for_disable_connect_ig_btn_for_non_page_admin_am_web, is_messenger_bot_get_started_enabled, is_messenger_platform_bot, is_owned, is_permanently_closed, is_published, is_unclaimed, is_verified, is_webhooks_subscribed, keywords, leadgen_tos_acceptance_time, leadgen_tos_accepted, leadgen_tos_accepting_user, link, location, members, merchant_id, merchant_review_status, messaging_feature_status, messenger_ads_default_icebreakers, messenger_ads_default_quick_replies, messenger_ads_quick_replies_type, mini_shop_storefront, mission, mpg, name, name_with_location_descriptor, network, new_like_count, offer_eligible, overall_star_rating, owner_business, page_token, parent_page, parking, payment_options, personal_info, personal_interests, pharma_safety_info, phone, pickup_options, place_type, plot_outline, preferred_audience, press_contact, price_range, privacy_info_url, produced_by, products, promotion_eligible, promotion_ineligible_reason, public_transit, rating_count, recipient, record_label, release_date, restaurant_services, restaurant_specialties, schedule, screenplay_by, season, single_line_address, starring, start_info, store_code, store_location_descriptor, store_number, studio, supports_donate_button_in_live_video, talking_about_count, temporary_status, unread_message_count, unread_notif_count, unseen_message_count, user_access_expire_time, username, verification_status, voip_info, website, were_here_count, whatsapp_number, written_by
 	offsitesignalcontainerbusinessobject_get_linked_pageTool := mcp.NewTool("offsitesignalcontainerbusinessobject_get_linked_page",
 		mcp.WithDescription("GET linked_page for OffsiteSignalContainerBusinessObject"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for Page objects. Available fields: about, access_token, ad_campaign, affiliation, app_id, artists_we_like, attire, available_promo_offer_ids, awards, band_interests, band_members, best_page, bio, birthday, booking_agent (and 136 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for Page objects. Available fields: about, access_token, ad_campaign, affiliation, app_id, artists_we_like, attire, available_promo_offer_ids, awards, band_interests, band_members, best_page, bio, birthday, booking_agent (and 136 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -58,8 +59,8 @@ func GetOffsiteSignalContainerBusinessObjectTools() []mcp.Tool {
 	// Available fields for OffsiteSignalContainerBusinessObject: business, id, is_eligible_for_sharing_to_ad_account, is_eligible_for_sharing_to_business, is_unavailable, name, primary_container_id
 	offsitesignalcontainerbusinessobject_get_Tool := mcp.NewTool("offsitesignalcontainerbusinessobject_get_",
 		mcp.WithDescription("GET  for OffsiteSignalContainerBusinessObject"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for OffsiteSignalContainerBusinessObject objects. Available fields: business, id, is_eligible_for_sharing_to_ad_account, is_eligible_for_sharing_to_business, is_unavailable, name, primary_container_id"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for OffsiteSignalContainerBusinessObject objects. Available fields: business, id, is_eligible_for_sharing_to_ad_account, is_eligible_for_sharing_to_business, is_unavailable, name, primary_container_id"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -93,8 +94,13 @@ func HandleOffsitesignalcontainerbusinessobject_get_linked_application(ctx conte
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -142,8 +148,13 @@ func HandleOffsitesignalcontainerbusinessobject_get_linked_page(ctx context.Cont
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -191,8 +202,13 @@ func HandleOffsitesignalcontainerbusinessobject_get_(ctx context.Context, reques
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit

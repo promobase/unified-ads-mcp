@@ -91,16 +91,11 @@ func (c *WhatsAppBusinessPreVerifiedPhoneNumberClient) Whatsappbusinesspreverifi
 // whatsappbusinesspreverifiedphonenumber_post_request_code POST request_code for WhatsAppBusinessPreVerifiedPhoneNumber
 func (c *WhatsAppBusinessPreVerifiedPhoneNumberClient) Whatsappbusinesspreverifiedphonenumber_post_request_code(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	code_method, ok := args["code_method"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: code_method")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = code_method // Suppress unused variable warning
-	language, ok := args["language"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: language")
-	}
-	_ = language // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -110,16 +105,10 @@ func (c *WhatsAppBusinessPreVerifiedPhoneNumberClient) Whatsappbusinesspreverifi
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["code_method"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("code_method", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["language"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("language", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -156,11 +145,11 @@ func (c *WhatsAppBusinessPreVerifiedPhoneNumberClient) Whatsappbusinesspreverifi
 // whatsappbusinesspreverifiedphonenumber_post_verify_code POST verify_code for WhatsAppBusinessPreVerifiedPhoneNumber
 func (c *WhatsAppBusinessPreVerifiedPhoneNumberClient) Whatsappbusinesspreverifiedphonenumber_post_verify_code(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	code, ok := args["code"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: code")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = code // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -170,10 +159,10 @@ func (c *WhatsAppBusinessPreVerifiedPhoneNumberClient) Whatsappbusinesspreverifi
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["code"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("code", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 

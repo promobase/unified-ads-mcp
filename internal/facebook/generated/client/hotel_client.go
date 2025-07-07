@@ -167,16 +167,10 @@ func (c *HotelClient) Hotel_get_override_details(args map[string]interface{}) (i
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["keys"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("keys", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["type"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("type", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -422,76 +416,10 @@ func (c *HotelClient) Hotel_post_(args map[string]interface{}) (interface{}, err
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["address"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("address", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["applinks"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("applinks", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["base_price"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("base_price", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["brand"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("brand", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["currency"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("currency", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["description"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("description", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["guest_ratings"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("guest_ratings", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["images"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("images", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["name"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("name", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["phone"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("phone", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["star_rating"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("star_rating", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["url"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("url", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 

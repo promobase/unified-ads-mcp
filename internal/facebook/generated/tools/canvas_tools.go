@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -20,8 +21,8 @@ func GetCanvasTools() []mcp.Tool {
 	// Available fields for CanvasPreview: body
 	canvas_get_previewTool := mcp.NewTool("canvas_get_preview",
 		mcp.WithDescription("GET preview for Canvas"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for CanvasPreview objects. Available fields: body"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for CanvasPreview objects. Available fields: body"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -37,13 +38,21 @@ func GetCanvasTools() []mcp.Tool {
 
 	// canvas_get_previews tool
 	// Available fields for TextWithEntities: text
+	// Params object accepts: user_ids (list<int>)
 	canvas_get_previewsTool := mcp.NewTool("canvas_get_previews",
 		mcp.WithDescription("GET previews for Canvas"),
-		mcp.WithString("user_ids",
-			mcp.Description("user_ids parameter for previews"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"user_ids": map[string]any{
+					"type":        "array",
+					"description": "user_ids parameter",
+					"items":       map[string]any{"type": "integer"},
+				},
+			}),
+			mcp.Description("Parameters object containing: user_ids (array<integer>)"),
 		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for TextWithEntities objects. Available fields: text"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for TextWithEntities objects. Available fields: text"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -61,8 +70,8 @@ func GetCanvasTools() []mcp.Tool {
 	// Available fields for Canvas: background_color, body_elements, business_id, canvas_link, collection_hero_image, collection_hero_video, collection_thumbnails, dynamic_setting, element_payload, elements, fb_body_elements, id, is_hidden, is_published, last_editor, linked_documents, name, owner, property_list, source_template, store_url, style_list, tags, ui_property_list, unused_body_elements, update_time, use_retailer_item_ids
 	canvas_get_Tool := mcp.NewTool("canvas_get_",
 		mcp.WithDescription("GET  for Canvas"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for Canvas objects. Available fields: background_color, body_elements, business_id, canvas_link, collection_hero_image, collection_hero_video, collection_thumbnails, dynamic_setting, element_payload, elements, fb_body_elements, id, is_hidden, is_published, last_editor (and 12 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for Canvas objects. Available fields: background_color, body_elements, business_id, canvas_link, collection_hero_image, collection_hero_video, collection_thumbnails, dynamic_setting, element_payload, elements, fb_body_elements, id, is_hidden, is_published, last_editor (and 12 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -77,28 +86,42 @@ func GetCanvasTools() []mcp.Tool {
 	tools = append(tools, canvas_get_Tool)
 
 	// canvas_post_ tool
+	// Params object accepts: background_color (string), body_element_ids (list<string>), enable_swipe_to_open (bool), is_hidden (bool), is_published (bool), name (string), source_template_id (string)
 	canvas_post_Tool := mcp.NewTool("canvas_post_",
 		mcp.WithDescription("POST  for Canvas"),
-		mcp.WithString("background_color",
-			mcp.Description("background_color parameter for "),
-		),
-		mcp.WithString("body_element_ids",
-			mcp.Description("body_element_ids parameter for "),
-		),
-		mcp.WithBoolean("enable_swipe_to_open",
-			mcp.Description("enable_swipe_to_open parameter for "),
-		),
-		mcp.WithBoolean("is_hidden",
-			mcp.Description("is_hidden parameter for "),
-		),
-		mcp.WithBoolean("is_published",
-			mcp.Description("is_published parameter for "),
-		),
-		mcp.WithString("name",
-			mcp.Description("name parameter for "),
-		),
-		mcp.WithString("source_template_id",
-			mcp.Description("source_template_id parameter for "),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"background_color": map[string]any{
+					"type":        "string",
+					"description": "background_color parameter",
+				},
+				"body_element_ids": map[string]any{
+					"type":        "array",
+					"description": "body_element_ids parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+				"enable_swipe_to_open": map[string]any{
+					"type":        "boolean",
+					"description": "enable_swipe_to_open parameter",
+				},
+				"is_hidden": map[string]any{
+					"type":        "boolean",
+					"description": "is_hidden parameter",
+				},
+				"is_published": map[string]any{
+					"type":        "boolean",
+					"description": "is_published parameter",
+				},
+				"name": map[string]any{
+					"type":        "string",
+					"description": "name parameter",
+				},
+				"source_template_id": map[string]any{
+					"type":        "string",
+					"description": "source_template_id parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: background_color (string), body_element_ids (array<string>), enable_swipe_to_open (boolean), is_hidden (boolean), is_published (boolean), name (string), source_template_id (string)"),
 		),
 	)
 	tools = append(tools, canvas_post_Tool)
@@ -123,8 +146,13 @@ func HandleCanvas_get_preview(ctx context.Context, request mcp.CallToolRequest) 
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -171,15 +199,26 @@ func HandleCanvas_get_previews(ctx context.Context, request mcp.CallToolRequest)
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: user_ids
-	// array type - using string
-	if val := request.GetString("user_ids", ""); val != "" {
-		args["user_ids"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -227,8 +266,13 @@ func HandleCanvas_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.C
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -275,40 +319,16 @@ func HandleCanvas_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: background_color
-	if val := request.GetString("background_color", ""); val != "" {
-		args["background_color"] = val
-	}
-
-	// Optional: body_element_ids
-	// array type - using string
-	if val := request.GetString("body_element_ids", ""); val != "" {
-		args["body_element_ids"] = val
-	}
-
-	// Optional: enable_swipe_to_open
-	if val := request.GetBool("enable_swipe_to_open", false); val {
-		args["enable_swipe_to_open"] = val
-	}
-
-	// Optional: is_hidden
-	if val := request.GetBool("is_hidden", false); val {
-		args["is_hidden"] = val
-	}
-
-	// Optional: is_published
-	if val := request.GetBool("is_published", false); val {
-		args["is_published"] = val
-	}
-
-	// Optional: name
-	if val := request.GetString("name", ""); val != "" {
-		args["name"] = val
-	}
-
-	// Optional: source_template_id
-	if val := request.GetString("source_template_id", ""); val != "" {
-		args["source_template_id"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method

@@ -122,11 +122,11 @@ func (c *CampaignClient) Campaign_post_adlabels(args map[string]interface{}) (in
 		return nil, fmt.Errorf("missing required parameter: campaign_id")
 	}
 	_ = campaign_id // Suppress unused variable warning
-	adlabels, ok := args["adlabels"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: adlabels")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = adlabels // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -149,19 +149,11 @@ func (c *CampaignClient) Campaign_post_adlabels(args map[string]interface{}) (in
 		}
 
 	}
-	if val, ok := args["adlabels"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		if "adlabels" != "campaign_id" {
-			urlParams.Set("adlabels", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["execution_options"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "execution_options" != "campaign_id" {
-			urlParams.Set("execution_options", fmt.Sprintf("%v", val))
+		if "params" != "campaign_id" {
+			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
 
 	}
@@ -226,11 +218,11 @@ func (c *CampaignClient) Campaign_get_adrules_governed(args map[string]interface
 		}
 
 	}
-	if val, ok := args["pass_evaluation"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		if "pass_evaluation" != "campaign_id" {
-			urlParams.Set("pass_evaluation", fmt.Sprintf("%v", val))
+		if "params" != "campaign_id" {
+			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
 
 	}
@@ -327,35 +319,11 @@ func (c *CampaignClient) Campaign_get_ads(args map[string]interface{}) (interfac
 		}
 
 	}
-	if val, ok := args["date_preset"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		if "date_preset" != "campaign_id" {
-			urlParams.Set("date_preset", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["effective_status"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "effective_status" != "campaign_id" {
-			urlParams.Set("effective_status", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["time_range"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "time_range" != "campaign_id" {
-			urlParams.Set("time_range", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["updated_since"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "updated_since" != "campaign_id" {
-			urlParams.Set("updated_since", fmt.Sprintf("%v", val))
+		if "params" != "campaign_id" {
+			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
 
 	}
@@ -452,35 +420,11 @@ func (c *CampaignClient) Campaign_get_adsets(args map[string]interface{}) (inter
 		}
 
 	}
-	if val, ok := args["date_preset"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		if "date_preset" != "campaign_id" {
-			urlParams.Set("date_preset", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["effective_status"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "effective_status" != "campaign_id" {
-			urlParams.Set("effective_status", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["is_completed"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "is_completed" != "campaign_id" {
-			urlParams.Set("is_completed", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["time_range"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "time_range" != "campaign_id" {
-			urlParams.Set("time_range", fmt.Sprintf("%v", val))
+		if "params" != "campaign_id" {
+			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
 
 	}
@@ -555,26 +499,11 @@ func (c *CampaignClient) Campaign_post_budget_schedules(args map[string]interfac
 		return nil, fmt.Errorf("missing required parameter: campaign_id")
 	}
 	_ = campaign_id // Suppress unused variable warning
-	budget_value, ok := args["budget_value"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: budget_value")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = budget_value // Suppress unused variable warning
-	budget_value_type, ok := args["budget_value_type"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: budget_value_type")
-	}
-	_ = budget_value_type // Suppress unused variable warning
-	time_end, ok := args["time_end"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: time_end")
-	}
-	_ = time_end // Suppress unused variable warning
-	time_start, ok := args["time_start"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: time_start")
-	}
-	_ = time_start // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -597,35 +526,11 @@ func (c *CampaignClient) Campaign_post_budget_schedules(args map[string]interfac
 		}
 
 	}
-	if val, ok := args["budget_value"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		if "budget_value" != "campaign_id" {
-			urlParams.Set("budget_value", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["budget_value_type"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "budget_value_type" != "campaign_id" {
-			urlParams.Set("budget_value_type", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["time_end"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "time_end" != "campaign_id" {
-			urlParams.Set("time_end", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["time_start"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "time_start" != "campaign_id" {
-			urlParams.Set("time_start", fmt.Sprintf("%v", val))
+		if "params" != "campaign_id" {
+			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
 
 	}
@@ -690,35 +595,11 @@ func (c *CampaignClient) Campaign_get_copies(args map[string]interface{}) (inter
 		}
 
 	}
-	if val, ok := args["date_preset"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		if "date_preset" != "campaign_id" {
-			urlParams.Set("date_preset", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["effective_status"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "effective_status" != "campaign_id" {
-			urlParams.Set("effective_status", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["is_completed"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "is_completed" != "campaign_id" {
-			urlParams.Set("is_completed", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["time_range"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "time_range" != "campaign_id" {
-			urlParams.Set("time_range", fmt.Sprintf("%v", val))
+		if "params" != "campaign_id" {
+			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
 
 	}
@@ -815,43 +696,11 @@ func (c *CampaignClient) Campaign_post_copies(args map[string]interface{}) (inte
 		}
 
 	}
-	if val, ok := args["deep_copy"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		if "deep_copy" != "campaign_id" {
-			urlParams.Set("deep_copy", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["end_time"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "end_time" != "campaign_id" {
-			urlParams.Set("end_time", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["rename_options"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "rename_options" != "campaign_id" {
-			urlParams.Set("rename_options", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["start_time"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "start_time" != "campaign_id" {
-			urlParams.Set("start_time", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["status_option"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "status_option" != "campaign_id" {
-			urlParams.Set("status_option", fmt.Sprintf("%v", val))
+		if "params" != "campaign_id" {
+			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
 
 	}
@@ -916,179 +765,11 @@ func (c *CampaignClient) Campaign_get_insights(args map[string]interface{}) (int
 		}
 
 	}
-	if val, ok := args["action_attribution_windows"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		if "action_attribution_windows" != "campaign_id" {
-			urlParams.Set("action_attribution_windows", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["action_breakdowns"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "action_breakdowns" != "campaign_id" {
-			urlParams.Set("action_breakdowns", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["action_report_time"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "action_report_time" != "campaign_id" {
-			urlParams.Set("action_report_time", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["breakdowns"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "breakdowns" != "campaign_id" {
-			urlParams.Set("breakdowns", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["date_preset"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "date_preset" != "campaign_id" {
-			urlParams.Set("date_preset", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["default_summary"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "default_summary" != "campaign_id" {
-			urlParams.Set("default_summary", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["export_columns"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "export_columns" != "campaign_id" {
-			urlParams.Set("export_columns", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["export_format"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "export_format" != "campaign_id" {
-			urlParams.Set("export_format", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["export_name"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "export_name" != "campaign_id" {
-			urlParams.Set("export_name", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["fields"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "fields" != "campaign_id" {
-			urlParams.Set("fields", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["filtering"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "filtering" != "campaign_id" {
-			urlParams.Set("filtering", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["level"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "level" != "campaign_id" {
-			urlParams.Set("level", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["limit"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "limit" != "campaign_id" {
-			urlParams.Set("limit", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["product_id_limit"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "product_id_limit" != "campaign_id" {
-			urlParams.Set("product_id_limit", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["sort"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "sort" != "campaign_id" {
-			urlParams.Set("sort", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["summary"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "summary" != "campaign_id" {
-			urlParams.Set("summary", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["summary_action_breakdowns"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "summary_action_breakdowns" != "campaign_id" {
-			urlParams.Set("summary_action_breakdowns", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["time_increment"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "time_increment" != "campaign_id" {
-			urlParams.Set("time_increment", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["time_range"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "time_range" != "campaign_id" {
-			urlParams.Set("time_range", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["time_ranges"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "time_ranges" != "campaign_id" {
-			urlParams.Set("time_ranges", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["use_account_attribution_setting"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "use_account_attribution_setting" != "campaign_id" {
-			urlParams.Set("use_account_attribution_setting", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["use_unified_attribution_setting"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "use_unified_attribution_setting" != "campaign_id" {
-			urlParams.Set("use_unified_attribution_setting", fmt.Sprintf("%v", val))
+		if "params" != "campaign_id" {
+			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
 
 	}
@@ -1185,179 +866,11 @@ func (c *CampaignClient) Campaign_post_insights(args map[string]interface{}) (in
 		}
 
 	}
-	if val, ok := args["action_attribution_windows"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		if "action_attribution_windows" != "campaign_id" {
-			urlParams.Set("action_attribution_windows", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["action_breakdowns"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "action_breakdowns" != "campaign_id" {
-			urlParams.Set("action_breakdowns", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["action_report_time"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "action_report_time" != "campaign_id" {
-			urlParams.Set("action_report_time", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["breakdowns"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "breakdowns" != "campaign_id" {
-			urlParams.Set("breakdowns", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["date_preset"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "date_preset" != "campaign_id" {
-			urlParams.Set("date_preset", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["default_summary"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "default_summary" != "campaign_id" {
-			urlParams.Set("default_summary", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["export_columns"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "export_columns" != "campaign_id" {
-			urlParams.Set("export_columns", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["export_format"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "export_format" != "campaign_id" {
-			urlParams.Set("export_format", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["export_name"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "export_name" != "campaign_id" {
-			urlParams.Set("export_name", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["fields"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "fields" != "campaign_id" {
-			urlParams.Set("fields", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["filtering"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "filtering" != "campaign_id" {
-			urlParams.Set("filtering", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["level"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "level" != "campaign_id" {
-			urlParams.Set("level", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["limit"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "limit" != "campaign_id" {
-			urlParams.Set("limit", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["product_id_limit"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "product_id_limit" != "campaign_id" {
-			urlParams.Set("product_id_limit", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["sort"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "sort" != "campaign_id" {
-			urlParams.Set("sort", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["summary"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "summary" != "campaign_id" {
-			urlParams.Set("summary", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["summary_action_breakdowns"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "summary_action_breakdowns" != "campaign_id" {
-			urlParams.Set("summary_action_breakdowns", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["time_increment"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "time_increment" != "campaign_id" {
-			urlParams.Set("time_increment", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["time_range"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "time_range" != "campaign_id" {
-			urlParams.Set("time_range", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["time_ranges"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "time_ranges" != "campaign_id" {
-			urlParams.Set("time_ranges", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["use_account_attribution_setting"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "use_account_attribution_setting" != "campaign_id" {
-			urlParams.Set("use_account_attribution_setting", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["use_unified_attribution_setting"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "use_unified_attribution_setting" != "campaign_id" {
-			urlParams.Set("use_unified_attribution_setting", fmt.Sprintf("%v", val))
+		if "params" != "campaign_id" {
+			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
 
 	}
@@ -1483,35 +996,11 @@ func (c *CampaignClient) Campaign_get_(args map[string]interface{}) (interface{}
 		}
 
 	}
-	if val, ok := args["am_call_tags"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		if "am_call_tags" != "campaign_id" {
-			urlParams.Set("am_call_tags", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["date_preset"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "date_preset" != "campaign_id" {
-			urlParams.Set("date_preset", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["from_adtable"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "from_adtable" != "campaign_id" {
-			urlParams.Set("from_adtable", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["time_range"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "time_range" != "campaign_id" {
-			urlParams.Set("time_range", fmt.Sprintf("%v", val))
+		if "params" != "campaign_id" {
+			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
 
 	}
@@ -1608,179 +1097,11 @@ func (c *CampaignClient) Campaign_post_(args map[string]interface{}) (interface{
 		}
 
 	}
-	if val, ok := args["adlabels"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		if "adlabels" != "campaign_id" {
-			urlParams.Set("adlabels", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["adset_bid_amounts"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "adset_bid_amounts" != "campaign_id" {
-			urlParams.Set("adset_bid_amounts", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["adset_budgets"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "adset_budgets" != "campaign_id" {
-			urlParams.Set("adset_budgets", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["bid_strategy"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "bid_strategy" != "campaign_id" {
-			urlParams.Set("bid_strategy", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["budget_rebalance_flag"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "budget_rebalance_flag" != "campaign_id" {
-			urlParams.Set("budget_rebalance_flag", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["daily_budget"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "daily_budget" != "campaign_id" {
-			urlParams.Set("daily_budget", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["execution_options"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "execution_options" != "campaign_id" {
-			urlParams.Set("execution_options", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["is_skadnetwork_attribution"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "is_skadnetwork_attribution" != "campaign_id" {
-			urlParams.Set("is_skadnetwork_attribution", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["iterative_split_test_configs"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "iterative_split_test_configs" != "campaign_id" {
-			urlParams.Set("iterative_split_test_configs", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["lifetime_budget"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "lifetime_budget" != "campaign_id" {
-			urlParams.Set("lifetime_budget", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["name"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "name" != "campaign_id" {
-			urlParams.Set("name", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["objective"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "objective" != "campaign_id" {
-			urlParams.Set("objective", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["pacing_type"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "pacing_type" != "campaign_id" {
-			urlParams.Set("pacing_type", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["promoted_object"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "promoted_object" != "campaign_id" {
-			urlParams.Set("promoted_object", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["smart_promotion_type"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "smart_promotion_type" != "campaign_id" {
-			urlParams.Set("smart_promotion_type", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["special_ad_categories"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "special_ad_categories" != "campaign_id" {
-			urlParams.Set("special_ad_categories", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["special_ad_category"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "special_ad_category" != "campaign_id" {
-			urlParams.Set("special_ad_category", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["special_ad_category_country"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "special_ad_category_country" != "campaign_id" {
-			urlParams.Set("special_ad_category_country", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["spend_cap"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "spend_cap" != "campaign_id" {
-			urlParams.Set("spend_cap", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["start_time"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "start_time" != "campaign_id" {
-			urlParams.Set("start_time", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["status"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "status" != "campaign_id" {
-			urlParams.Set("status", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["stop_time"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "stop_time" != "campaign_id" {
-			urlParams.Set("stop_time", fmt.Sprintf("%v", val))
+		if "params" != "campaign_id" {
+			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
 
 	}

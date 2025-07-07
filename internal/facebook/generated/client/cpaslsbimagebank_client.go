@@ -158,11 +158,11 @@ func (c *CPASLsbImageBankClient) Cpaslsbimagebank_get_(args map[string]interface
 // cpaslsbimagebank_post_ POST  for CPASLsbImageBank
 func (c *CPASLsbImageBankClient) Cpaslsbimagebank_post_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	backup_image_urls, ok := args["backup_image_urls"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: backup_image_urls")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = backup_image_urls // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -172,10 +172,10 @@ func (c *CPASLsbImageBankClient) Cpaslsbimagebank_post_(args map[string]interfac
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["backup_image_urls"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("backup_image_urls", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 

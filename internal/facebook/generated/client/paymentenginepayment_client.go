@@ -24,11 +24,11 @@ func NewPaymentEnginePaymentClient(accessToken string) *PaymentEnginePaymentClie
 // paymentenginepayment_post_dispute POST dispute for PaymentEnginePayment
 func (c *PaymentEnginePaymentClient) Paymentenginepayment_post_dispute(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	reason, ok := args["reason"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: reason")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = reason // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -38,10 +38,10 @@ func (c *PaymentEnginePaymentClient) Paymentenginepayment_post_dispute(args map[
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["reason"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("reason", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -78,16 +78,11 @@ func (c *PaymentEnginePaymentClient) Paymentenginepayment_post_dispute(args map[
 // paymentenginepayment_post_refunds POST refunds for PaymentEnginePayment
 func (c *PaymentEnginePaymentClient) Paymentenginepayment_post_refunds(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	amount, ok := args["amount"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: amount")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = amount // Suppress unused variable warning
-	currency, ok := args["currency"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: currency")
-	}
-	_ = currency // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -97,22 +92,10 @@ func (c *PaymentEnginePaymentClient) Paymentenginepayment_post_refunds(args map[
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["amount"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("amount", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["currency"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("currency", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["reason"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("reason", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 

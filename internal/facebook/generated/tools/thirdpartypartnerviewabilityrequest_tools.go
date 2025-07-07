@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -20,8 +21,8 @@ func GetThirdPartyPartnerViewabilityRequestTools() []mcp.Tool {
 	// Available fields for ThirdPartyPartnerViewabilityRequest: created_time, description, ds, hour, id, metric, modified_time, owner_instance_id, platform, status, total_file_count
 	thirdpartypartnerviewabilityrequest_get_Tool := mcp.NewTool("thirdpartypartnerviewabilityrequest_get_",
 		mcp.WithDescription("GET  for ThirdPartyPartnerViewabilityRequest"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for ThirdPartyPartnerViewabilityRequest objects. Available fields: created_time, description, ds, hour, id, metric, modified_time, owner_instance_id, platform, status, total_file_count"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for ThirdPartyPartnerViewabilityRequest objects. Available fields: created_time, description, ds, hour, id, metric, modified_time, owner_instance_id, platform, status, total_file_count"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -55,8 +56,13 @@ func HandleThirdpartypartnerviewabilityrequest_get_(ctx context.Context, request
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit

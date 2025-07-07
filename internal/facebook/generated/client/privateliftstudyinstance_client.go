@@ -100,16 +100,10 @@ func (c *PrivateLiftStudyInstanceClient) Privateliftstudyinstance_post_(args map
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["operation"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("operation", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["run_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("run_id", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 

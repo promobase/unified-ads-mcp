@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -20,8 +21,8 @@ func GetOwnedDomainTools() []mcp.Tool {
 	// Available fields for OwnedDomain: domain_name, id, owner_business, status, verification_code
 	owneddomain_get_Tool := mcp.NewTool("owneddomain_get_",
 		mcp.WithDescription("GET  for OwnedDomain"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for OwnedDomain objects. Available fields: domain_name, id, owner_business, status, verification_code"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for OwnedDomain objects. Available fields: domain_name, id, owner_business, status, verification_code"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -55,8 +56,13 @@ func HandleOwneddomain_get_(ctx context.Context, request mcp.CallToolRequest) (*
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit

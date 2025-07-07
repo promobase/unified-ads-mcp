@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -20,8 +21,8 @@ func GetAdCustomDerivedMetricsTools() []mcp.Tool {
 	// Available fields for AdCustomDerivedMetrics: ad_account_id, business, creation_time, creator, custom_derived_metric_type, deletion_time, deletor, description, format_type, formula, has_attribution_windows, has_inline_attribution_window, id, name, permission, saved_report_id, scope
 	adcustomderivedmetrics_get_Tool := mcp.NewTool("adcustomderivedmetrics_get_",
 		mcp.WithDescription("GET  for AdCustomDerivedMetrics"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for AdCustomDerivedMetrics objects. Available fields: ad_account_id, business, creation_time, creator, custom_derived_metric_type, deletion_time, deletor, description, format_type, formula, has_attribution_windows, has_inline_attribution_window, id, name, permission (and 2 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for AdCustomDerivedMetrics objects. Available fields: ad_account_id, business, creation_time, creator, custom_derived_metric_type, deletion_time, deletor, description, format_type, formula, has_attribution_windows, has_inline_attribution_window, id, name, permission (and 2 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -55,8 +56,13 @@ func HandleAdcustomderivedmetrics_get_(ctx context.Context, request mcp.CallTool
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit

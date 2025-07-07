@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -19,8 +20,8 @@ func GetPostTools() []mcp.Tool {
 	// post_get_attachments tool
 	post_get_attachmentsTool := mcp.NewTool("post_get_attachments",
 		mcp.WithDescription("GET attachments for Post"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -36,25 +37,35 @@ func GetPostTools() []mcp.Tool {
 
 	// post_get_comments tool
 	// Available fields for Comment: admin_creator, application, attachment, can_comment, can_hide, can_like, can_remove, can_reply_privately, comment_count, created_time, from, id, is_hidden, is_private, like_count, live_broadcast_timestamp, message, message_tags, object, parent, permalink_url, private_reply_conversation, user_likes
+	// Params object accepts: filter (postcomments_filter_enum_param), live_filter (postcomments_live_filter_enum_param), order (postcomments_order_enum_param), since (datetime)
 	post_get_commentsTool := mcp.NewTool("post_get_comments",
 		mcp.WithDescription("GET comments for Post"),
-		mcp.WithString("filter",
-			mcp.Description("filter parameter for comments"),
-			mcp.Enum("stream", "toplevel"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"filter": map[string]any{
+					"type":        "string",
+					"description": "filter parameter",
+					"enum":        []string{"stream", "toplevel"},
+				},
+				"live_filter": map[string]any{
+					"type":        "string",
+					"description": "live_filter parameter",
+					"enum":        []string{"filter_low_quality", "no_filter"},
+				},
+				"order": map[string]any{
+					"type":        "string",
+					"description": "order parameter",
+					"enum":        []string{"chronological", "reverse_chronological"},
+				},
+				"since": map[string]any{
+					"type":        "string",
+					"description": "since parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: filter (enum) [stream, toplevel], live_filter (enum) [filter_low_quality, no_filter], order (enum) [chronological, reverse_chronological], since (datetime)"),
 		),
-		mcp.WithString("live_filter",
-			mcp.Description("live_filter parameter for comments"),
-			mcp.Enum("filter_low_quality", "no_filter"),
-		),
-		mcp.WithString("order",
-			mcp.Description("order parameter for comments"),
-			mcp.Enum("chronological", "reverse_chronological"),
-		),
-		mcp.WithString("since",
-			mcp.Description("since parameter for comments"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for Comment objects. Available fields: admin_creator, application, attachment, can_comment, can_hide, can_like, can_remove, can_reply_privately, comment_count, created_time, from, id, is_hidden, is_private, like_count (and 8 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for Comment objects. Available fields: admin_creator, application, attachment, can_comment, can_hide, can_like, can_remove, can_reply_privately, comment_count, created_time, from, id, is_hidden, is_private, like_count (and 8 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -69,41 +80,58 @@ func GetPostTools() []mcp.Tool {
 	tools = append(tools, post_get_commentsTool)
 
 	// post_post_comments tool
+	// Params object accepts: attachment_id (string), attachment_share_url (string), attachment_url (string), comment (string), comment_privacy_value (postcomments_comment_privacy_value_enum_param), feedback_source (string), message (string), nectar_module (string), parent_comment_id (Object), post_id (string), tracking (string)
 	post_post_commentsTool := mcp.NewTool("post_post_comments",
 		mcp.WithDescription("POST comments for Post"),
-		mcp.WithString("attachment_id",
-			mcp.Description("attachment_id parameter for comments"),
-		),
-		mcp.WithString("attachment_share_url",
-			mcp.Description("attachment_share_url parameter for comments"),
-		),
-		mcp.WithString("attachment_url",
-			mcp.Description("attachment_url parameter for comments"),
-		),
-		mcp.WithString("comment",
-			mcp.Description("comment parameter for comments"),
-		),
-		mcp.WithString("comment_privacy_value",
-			mcp.Description("comment_privacy_value parameter for comments"),
-			mcp.Enum("DECLINED_BY_ADMIN_ASSISTANT", "DEFAULT_PRIVACY", "FRIENDS_AND_POST_OWNER", "FRIENDS_ONLY", "GRAPHQL_MULTIPLE_VALUE_HACK_DO_NOT_USE", "OWNER_OR_COMMENTER", "PENDING_APPROVAL", "REMOVED_BY_ADMIN_ASSISTANT", "SIDE_CONVERSATION", "SIDE_CONVERSATION_AND_POST_OWNER", "SPOTLIGHT_TAB"),
-		),
-		mcp.WithString("feedback_source",
-			mcp.Description("feedback_source parameter for comments"),
-		),
-		mcp.WithString("message",
-			mcp.Description("message parameter for comments"),
-		),
-		mcp.WithString("nectar_module",
-			mcp.Description("nectar_module parameter for comments"),
-		),
-		mcp.WithString("parent_comment_id",
-			mcp.Description("parent_comment_id parameter for comments"),
-		),
-		mcp.WithString("post_id",
-			mcp.Description("post_id parameter for comments"),
-		),
-		mcp.WithString("tracking",
-			mcp.Description("tracking parameter for comments"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"attachment_id": map[string]any{
+					"type":        "string",
+					"description": "attachment_id parameter",
+				},
+				"attachment_share_url": map[string]any{
+					"type":        "string",
+					"description": "attachment_share_url parameter",
+				},
+				"attachment_url": map[string]any{
+					"type":        "string",
+					"description": "attachment_url parameter",
+				},
+				"comment": map[string]any{
+					"type":        "string",
+					"description": "comment parameter",
+				},
+				"comment_privacy_value": map[string]any{
+					"type":        "string",
+					"description": "comment_privacy_value parameter",
+					"enum":        []string{"DECLINED_BY_ADMIN_ASSISTANT", "DEFAULT_PRIVACY", "FRIENDS_AND_POST_OWNER", "FRIENDS_ONLY", "GRAPHQL_MULTIPLE_VALUE_HACK_DO_NOT_USE", "OWNER_OR_COMMENTER", "PENDING_APPROVAL", "REMOVED_BY_ADMIN_ASSISTANT", "SIDE_CONVERSATION", "SIDE_CONVERSATION_AND_POST_OWNER", "SPOTLIGHT_TAB"},
+				},
+				"feedback_source": map[string]any{
+					"type":        "string",
+					"description": "feedback_source parameter",
+				},
+				"message": map[string]any{
+					"type":        "string",
+					"description": "message parameter",
+				},
+				"nectar_module": map[string]any{
+					"type":        "string",
+					"description": "nectar_module parameter",
+				},
+				"parent_comment_id": map[string]any{
+					"type":        "object",
+					"description": "parent_comment_id parameter",
+				},
+				"post_id": map[string]any{
+					"type":        "string",
+					"description": "post_id parameter",
+				},
+				"tracking": map[string]any{
+					"type":        "string",
+					"description": "tracking parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: attachment_id (string), attachment_share_url (string), attachment_url (string), comment (string), comment_privacy_value (enum) [DECLINED_BY_ADMIN_ASSISTANT, DEFAULT_PRIVACY, FRIENDS_AND_POST_OWNER, FRIENDS_ONLY, GRAPHQL_MULTIPLE_VALUE_HACK_DO_NOT_USE, ...], feedback_source (string), message (string), nectar_module (string), parent_comment_id (object), post_id (string), tracking (string)"),
 		),
 	)
 	tools = append(tools, post_post_commentsTool)
@@ -112,8 +140,8 @@ func GetPostTools() []mcp.Tool {
 	// Available fields for RTBDynamicPost: child_attachments, created, description, id, image_url, link, message, owner_id, place_id, product_id, title
 	post_get_dynamic_postsTool := mcp.NewTool("post_get_dynamic_posts",
 		mcp.WithDescription("GET dynamic_posts for Post"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for RTBDynamicPost objects. Available fields: child_attachments, created, description, id, image_url, link, message, owner_id, place_id, product_id, title"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for RTBDynamicPost objects. Available fields: child_attachments, created, description, id, image_url, link, message, owner_id, place_id, product_id, title"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -129,27 +157,39 @@ func GetPostTools() []mcp.Tool {
 
 	// post_get_insights tool
 	// Available fields for InsightsResult: description, description_from_api_doc, id, name, period, title, values
+	// Params object accepts: date_preset (postinsights_date_preset_enum_param), metric (list<Object>), period (postinsights_period_enum_param), since (datetime), until (datetime)
 	post_get_insightsTool := mcp.NewTool("post_get_insights",
 		mcp.WithDescription("GET insights for Post"),
-		mcp.WithString("date_preset",
-			mcp.Description("date_preset parameter for insights"),
-			mcp.Enum("data_maximum", "last_14d", "last_28d", "last_30d", "last_3d", "last_7d", "last_90d", "last_month", "last_quarter", "last_week_mon_sun", "last_week_sun_sat", "last_year", "maximum", "this_month", "this_quarter", "this_week_mon_today", "this_week_sun_today", "this_year", "today", "yesterday"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"date_preset": map[string]any{
+					"type":        "string",
+					"description": "date_preset parameter",
+					"enum":        []string{"data_maximum", "last_14d", "last_28d", "last_30d", "last_3d", "last_7d", "last_90d", "last_month", "last_quarter", "last_week_mon_sun", "last_week_sun_sat", "last_year", "maximum", "this_month", "this_quarter", "this_week_mon_today", "this_week_sun_today", "this_year", "today", "yesterday"},
+				},
+				"metric": map[string]any{
+					"type":        "array",
+					"description": "metric parameter",
+					"items":       map[string]any{"type": "object"},
+				},
+				"period": map[string]any{
+					"type":        "string",
+					"description": "period parameter",
+					"enum":        []string{"day", "days_28", "lifetime", "month", "total_over_range", "week"},
+				},
+				"since": map[string]any{
+					"type":        "string",
+					"description": "since parameter",
+				},
+				"until": map[string]any{
+					"type":        "string",
+					"description": "until parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: date_preset (enum) [data_maximum, last_14d, last_28d, last_30d, last_3d, ...], metric (array<object>), period (enum) [day, days_28, lifetime, month, total_over_range, ...], since (datetime), until (datetime)"),
 		),
-		mcp.WithString("metric",
-			mcp.Description("metric parameter for insights"),
-		),
-		mcp.WithString("period",
-			mcp.Description("period parameter for insights"),
-			mcp.Enum("day", "days_28", "lifetime", "month", "total_over_range", "week"),
-		),
-		mcp.WithString("since",
-			mcp.Description("since parameter for insights"),
-		),
-		mcp.WithString("until",
-			mcp.Description("until parameter for insights"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for InsightsResult objects. Available fields: description, description_from_api_doc, id, name, period, title, values"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for InsightsResult objects. Available fields: description, description_from_api_doc, id, name, period, title, values"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -164,42 +204,66 @@ func GetPostTools() []mcp.Tool {
 	tools = append(tools, post_get_insightsTool)
 
 	// post_delete_likes tool
+	// Params object accepts: nectar_module (string), tracking (string)
 	post_delete_likesTool := mcp.NewTool("post_delete_likes",
 		mcp.WithDescription("DELETE likes for Post"),
-		mcp.WithString("nectar_module",
-			mcp.Description("nectar_module parameter for likes"),
-		),
-		mcp.WithString("tracking",
-			mcp.Description("tracking parameter for likes"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"nectar_module": map[string]any{
+					"type":        "string",
+					"description": "nectar_module parameter",
+				},
+				"tracking": map[string]any{
+					"type":        "string",
+					"description": "tracking parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: nectar_module (string), tracking (string)"),
 		),
 	)
 	tools = append(tools, post_delete_likesTool)
 
 	// post_post_likes tool
+	// Params object accepts: feedback_source (string), nectar_module (string), tracking (string)
 	post_post_likesTool := mcp.NewTool("post_post_likes",
 		mcp.WithDescription("POST likes for Post"),
-		mcp.WithString("feedback_source",
-			mcp.Description("feedback_source parameter for likes"),
-		),
-		mcp.WithString("nectar_module",
-			mcp.Description("nectar_module parameter for likes"),
-		),
-		mcp.WithString("tracking",
-			mcp.Description("tracking parameter for likes"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"feedback_source": map[string]any{
+					"type":        "string",
+					"description": "feedback_source parameter",
+				},
+				"nectar_module": map[string]any{
+					"type":        "string",
+					"description": "nectar_module parameter",
+				},
+				"tracking": map[string]any{
+					"type":        "string",
+					"description": "tracking parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: feedback_source (string), nectar_module (string), tracking (string)"),
 		),
 	)
 	tools = append(tools, post_post_likesTool)
 
 	// post_get_reactions tool
 	// Available fields for Profile: can_post, id, link, name, pic, pic_crop, pic_large, pic_small, pic_square, profile_type, username
+	// Params object accepts: type (postreactions_type_enum_param)
 	post_get_reactionsTool := mcp.NewTool("post_get_reactions",
 		mcp.WithDescription("GET reactions for Post"),
-		mcp.WithString("type",
-			mcp.Description("type parameter for reactions"),
-			mcp.Enum("ANGRY", "CARE", "FIRE", "HAHA", "HUNDRED", "LIKE", "LOVE", "NONE", "PRIDE", "SAD", "THANKFUL", "WOW"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"type": map[string]any{
+					"type":        "string",
+					"description": "type parameter",
+					"enum":        []string{"ANGRY", "CARE", "FIRE", "HAHA", "HUNDRED", "LIKE", "LOVE", "NONE", "PRIDE", "SAD", "THANKFUL", "WOW"},
+				},
+			}),
+			mcp.Description("Parameters object containing: type (enum) [ANGRY, CARE, FIRE, HAHA, HUNDRED, ...]"),
 		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for Profile objects. Available fields: can_post, id, link, name, pic, pic_crop, pic_large, pic_small, pic_square, profile_type, username"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for Profile objects. Available fields: can_post, id, link, name, pic, pic_crop, pic_large, pic_small, pic_square, profile_type, username"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -217,8 +281,8 @@ func GetPostTools() []mcp.Tool {
 	// Available fields for Post: actions, admin_creator, allowed_advertising_objectives, application, backdated_time, call_to_action, can_reply_privately, caption, child_attachments, comments_mirroring_domain, coordinates, created_time, description, event, expanded_height, expanded_width, feed_targeting, from, full_picture, height, icon, id, instagram_eligibility, is_app_share, is_eligible_for_promotion, is_expired, is_hidden, is_inline_created, is_instagram_eligible, is_popular, is_published, is_spherical, link, message, message_tags, multi_share_end_card, multi_share_optimized, name, object_id, parent_id, permalink_url, picture, place, privacy, promotable_id, promotion_status, properties, scheduled_publish_time, shares, source, status_type, story, story_tags, subscribed, target, targeting, timeline_visibility, type, updated_time, via, video_buying_eligibility, width
 	post_get_sharedpostsTool := mcp.NewTool("post_get_sharedposts",
 		mcp.WithDescription("GET sharedposts for Post"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for Post objects. Available fields: actions, admin_creator, allowed_advertising_objectives, application, backdated_time, call_to_action, can_reply_privately, caption, child_attachments, comments_mirroring_domain, coordinates, created_time, description, event, expanded_height (and 47 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for Post objects. Available fields: actions, admin_creator, allowed_advertising_objectives, application, backdated_time, call_to_action, can_reply_privately, caption, child_attachments, comments_mirroring_domain, coordinates, created_time, description, event, expanded_height (and 47 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -236,8 +300,8 @@ func GetPostTools() []mcp.Tool {
 	// Available fields for Page: about, access_token, ad_campaign, affiliation, app_id, artists_we_like, attire, available_promo_offer_ids, awards, band_interests, band_members, best_page, bio, birthday, booking_agent, breaking_news_usage, built, business, can_checkin, can_post, category, category_list, checkins, company_overview, connected_instagram_account, connected_page_backed_instagram_account, contact_address, copyright_whitelisted_ig_partners, country_page_likes, cover, culinary_team, current_location, delivery_and_pickup_option_info, description, description_html, differently_open_offerings, directed_by, display_subtext, displayed_message_response_time, does_viewer_have_page_permission_link_ig, emails, engagement, fan_count, featured_video, features, followers_count, food_styles, founded, general_info, general_manager, genre, global_brand_page_name, global_brand_root_id, has_added_app, has_lead_access, has_transitioned_to_new_page_experience, has_whatsapp_business_number, has_whatsapp_number, hometown, hours, id, impressum, influences, instagram_business_account, is_always_open, is_calling_eligible, is_chain, is_community_page, is_eligible_for_branded_content, is_eligible_for_disable_connect_ig_btn_for_non_page_admin_am_web, is_messenger_bot_get_started_enabled, is_messenger_platform_bot, is_owned, is_permanently_closed, is_published, is_unclaimed, is_verified, is_webhooks_subscribed, keywords, leadgen_tos_acceptance_time, leadgen_tos_accepted, leadgen_tos_accepting_user, link, location, members, merchant_id, merchant_review_status, messaging_feature_status, messenger_ads_default_icebreakers, messenger_ads_default_quick_replies, messenger_ads_quick_replies_type, mini_shop_storefront, mission, mpg, name, name_with_location_descriptor, network, new_like_count, offer_eligible, overall_star_rating, owner_business, page_token, parent_page, parking, payment_options, personal_info, personal_interests, pharma_safety_info, phone, pickup_options, place_type, plot_outline, preferred_audience, press_contact, price_range, privacy_info_url, produced_by, products, promotion_eligible, promotion_ineligible_reason, public_transit, rating_count, recipient, record_label, release_date, restaurant_services, restaurant_specialties, schedule, screenplay_by, season, single_line_address, starring, start_info, store_code, store_location_descriptor, store_number, studio, supports_donate_button_in_live_video, talking_about_count, temporary_status, unread_message_count, unread_notif_count, unseen_message_count, user_access_expire_time, username, verification_status, voip_info, website, were_here_count, whatsapp_number, written_by
 	post_get_sponsor_tagsTool := mcp.NewTool("post_get_sponsor_tags",
 		mcp.WithDescription("GET sponsor_tags for Post"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for Page objects. Available fields: about, access_token, ad_campaign, affiliation, app_id, artists_we_like, attire, available_promo_offer_ids, awards, band_interests, band_members, best_page, bio, birthday, booking_agent (and 136 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for Page objects. Available fields: about, access_token, ad_campaign, affiliation, app_id, artists_we_like, attire, available_promo_offer_ids, awards, band_interests, band_members, best_page, bio, birthday, booking_agent (and 136 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -255,8 +319,8 @@ func GetPostTools() []mcp.Tool {
 	// Available fields for Profile: can_post, id, link, name, pic, pic_crop, pic_large, pic_small, pic_square, profile_type, username
 	post_get_toTool := mcp.NewTool("post_get_to",
 		mcp.WithDescription("GET to for Post"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for Profile objects. Available fields: can_post, id, link, name, pic, pic_crop, pic_large, pic_small, pic_square, profile_type, username"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for Profile objects. Available fields: can_post, id, link, name, pic, pic_crop, pic_large, pic_small, pic_square, profile_type, username"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -278,16 +342,24 @@ func GetPostTools() []mcp.Tool {
 
 	// post_get_ tool
 	// Available fields for Post: actions, admin_creator, allowed_advertising_objectives, application, backdated_time, call_to_action, can_reply_privately, caption, child_attachments, comments_mirroring_domain, coordinates, created_time, description, event, expanded_height, expanded_width, feed_targeting, from, full_picture, height, icon, id, instagram_eligibility, is_app_share, is_eligible_for_promotion, is_expired, is_hidden, is_inline_created, is_instagram_eligible, is_popular, is_published, is_spherical, link, message, message_tags, multi_share_end_card, multi_share_optimized, name, object_id, parent_id, permalink_url, picture, place, privacy, promotable_id, promotion_status, properties, scheduled_publish_time, shares, source, status_type, story, story_tags, subscribed, target, targeting, timeline_visibility, type, updated_time, via, video_buying_eligibility, width
+	// Params object accepts: primary_fb_page_id (string), primary_ig_user_id (string)
 	post_get_Tool := mcp.NewTool("post_get_",
 		mcp.WithDescription("GET  for Post"),
-		mcp.WithString("primary_fb_page_id",
-			mcp.Description("primary_fb_page_id parameter for "),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"primary_fb_page_id": map[string]any{
+					"type":        "string",
+					"description": "primary_fb_page_id parameter",
+				},
+				"primary_ig_user_id": map[string]any{
+					"type":        "string",
+					"description": "primary_ig_user_id parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: primary_fb_page_id (string), primary_ig_user_id (string)"),
 		),
-		mcp.WithString("primary_ig_user_id",
-			mcp.Description("primary_ig_user_id parameter for "),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for Post objects. Available fields: actions, admin_creator, allowed_advertising_objectives, application, backdated_time, call_to_action, can_reply_privately, caption, child_attachments, comments_mirroring_domain, coordinates, created_time, description, event, expanded_height (and 47 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for Post objects. Available fields: actions, admin_creator, allowed_advertising_objectives, application, backdated_time, call_to_action, can_reply_privately, caption, child_attachments, comments_mirroring_domain, coordinates, created_time, description, event, expanded_height (and 47 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -302,103 +374,143 @@ func GetPostTools() []mcp.Tool {
 	tools = append(tools, post_get_Tool)
 
 	// post_post_ tool
+	// Params object accepts: attached_media (list<Object>), backdated_time (datetime), backdated_time_granularity (post_backdated_time_granularity), composer_session_id (string), direct_share_status (unsigned int), explicitly_added_mentionee_ids (list<unsigned int>), feed_story_visibility (post_feed_story_visibility), is_explicit_location (bool), is_hidden (bool), is_pinned (bool), is_published (bool), message (string), og_action_type_id (string), og_hide_object_attachment (bool), og_icon_id (string), og_object_id (string), og_phrase (string), og_set_profile_badge (bool), og_suggestion_mechanism (string), place (Object), privacy (string), product_item (Object), scheduled_publish_time (unsigned int), should_sync_product_edit (bool), source_type (string), sponsor_id (string), sponsor_relationship (unsigned int), tags (list<int>), text_format_preset_id (string), timeline_visibility (post_timeline_visibility), tracking (string)
 	post_post_Tool := mcp.NewTool("post_post_",
 		mcp.WithDescription("POST  for Post"),
-		mcp.WithString("attached_media",
-			mcp.Description("attached_media parameter for "),
-		),
-		mcp.WithString("backdated_time",
-			mcp.Description("backdated_time parameter for "),
-		),
-		mcp.WithString("backdated_time_granularity",
-			mcp.Description("backdated_time_granularity parameter for "),
-			mcp.Enum("day", "hour", "min", "month", "none", "year"),
-		),
-		mcp.WithString("composer_session_id",
-			mcp.Description("composer_session_id parameter for "),
-		),
-		mcp.WithNumber("direct_share_status",
-			mcp.Description("direct_share_status parameter for "),
-		),
-		mcp.WithString("explicitly_added_mentionee_ids",
-			mcp.Description("explicitly_added_mentionee_ids parameter for "),
-		),
-		mcp.WithString("feed_story_visibility",
-			mcp.Description("feed_story_visibility parameter for "),
-			mcp.Enum("hidden", "visible"),
-		),
-		mcp.WithBoolean("is_explicit_location",
-			mcp.Description("is_explicit_location parameter for "),
-		),
-		mcp.WithBoolean("is_hidden",
-			mcp.Description("is_hidden parameter for "),
-		),
-		mcp.WithBoolean("is_pinned",
-			mcp.Description("is_pinned parameter for "),
-		),
-		mcp.WithBoolean("is_published",
-			mcp.Description("is_published parameter for "),
-		),
-		mcp.WithString("message",
-			mcp.Description("message parameter for "),
-		),
-		mcp.WithString("og_action_type_id",
-			mcp.Description("og_action_type_id parameter for "),
-		),
-		mcp.WithBoolean("og_hide_object_attachment",
-			mcp.Description("og_hide_object_attachment parameter for "),
-		),
-		mcp.WithString("og_icon_id",
-			mcp.Description("og_icon_id parameter for "),
-		),
-		mcp.WithString("og_object_id",
-			mcp.Description("og_object_id parameter for "),
-		),
-		mcp.WithString("og_phrase",
-			mcp.Description("og_phrase parameter for "),
-		),
-		mcp.WithBoolean("og_set_profile_badge",
-			mcp.Description("og_set_profile_badge parameter for "),
-		),
-		mcp.WithString("og_suggestion_mechanism",
-			mcp.Description("og_suggestion_mechanism parameter for "),
-		),
-		mcp.WithString("place",
-			mcp.Description("place parameter for "),
-		),
-		mcp.WithString("privacy",
-			mcp.Description("privacy parameter for "),
-		),
-		mcp.WithString("product_item",
-			mcp.Description("product_item parameter for "),
-		),
-		mcp.WithNumber("scheduled_publish_time",
-			mcp.Description("scheduled_publish_time parameter for "),
-		),
-		mcp.WithBoolean("should_sync_product_edit",
-			mcp.Description("should_sync_product_edit parameter for "),
-		),
-		mcp.WithString("source_type",
-			mcp.Description("source_type parameter for "),
-		),
-		mcp.WithString("sponsor_id",
-			mcp.Description("sponsor_id parameter for "),
-		),
-		mcp.WithNumber("sponsor_relationship",
-			mcp.Description("sponsor_relationship parameter for "),
-		),
-		mcp.WithString("tags",
-			mcp.Description("tags parameter for "),
-		),
-		mcp.WithString("text_format_preset_id",
-			mcp.Description("text_format_preset_id parameter for "),
-		),
-		mcp.WithString("timeline_visibility",
-			mcp.Description("timeline_visibility parameter for "),
-			mcp.Enum("forced_allow", "hidden", "normal"),
-		),
-		mcp.WithString("tracking",
-			mcp.Description("tracking parameter for "),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"attached_media": map[string]any{
+					"type":        "array",
+					"description": "attached_media parameter",
+					"items":       map[string]any{"type": "object"},
+				},
+				"backdated_time": map[string]any{
+					"type":        "string",
+					"description": "backdated_time parameter",
+				},
+				"backdated_time_granularity": map[string]any{
+					"type":        "string",
+					"description": "backdated_time_granularity parameter",
+					"enum":        []string{"day", "hour", "min", "month", "none", "year"},
+				},
+				"composer_session_id": map[string]any{
+					"type":        "string",
+					"description": "composer_session_id parameter",
+				},
+				"direct_share_status": map[string]any{
+					"type":        "integer",
+					"description": "direct_share_status parameter",
+				},
+				"explicitly_added_mentionee_ids": map[string]any{
+					"type":        "array",
+					"description": "explicitly_added_mentionee_ids parameter",
+					"items":       map[string]any{"type": "integer"},
+				},
+				"feed_story_visibility": map[string]any{
+					"type":        "string",
+					"description": "feed_story_visibility parameter",
+					"enum":        []string{"hidden", "visible"},
+				},
+				"is_explicit_location": map[string]any{
+					"type":        "boolean",
+					"description": "is_explicit_location parameter",
+				},
+				"is_hidden": map[string]any{
+					"type":        "boolean",
+					"description": "is_hidden parameter",
+				},
+				"is_pinned": map[string]any{
+					"type":        "boolean",
+					"description": "is_pinned parameter",
+				},
+				"is_published": map[string]any{
+					"type":        "boolean",
+					"description": "is_published parameter",
+				},
+				"message": map[string]any{
+					"type":        "string",
+					"description": "message parameter",
+				},
+				"og_action_type_id": map[string]any{
+					"type":        "string",
+					"description": "og_action_type_id parameter",
+				},
+				"og_hide_object_attachment": map[string]any{
+					"type":        "boolean",
+					"description": "og_hide_object_attachment parameter",
+				},
+				"og_icon_id": map[string]any{
+					"type":        "string",
+					"description": "og_icon_id parameter",
+				},
+				"og_object_id": map[string]any{
+					"type":        "string",
+					"description": "og_object_id parameter",
+				},
+				"og_phrase": map[string]any{
+					"type":        "string",
+					"description": "og_phrase parameter",
+				},
+				"og_set_profile_badge": map[string]any{
+					"type":        "boolean",
+					"description": "og_set_profile_badge parameter",
+				},
+				"og_suggestion_mechanism": map[string]any{
+					"type":        "string",
+					"description": "og_suggestion_mechanism parameter",
+				},
+				"place": map[string]any{
+					"type":        "object",
+					"description": "place parameter",
+				},
+				"privacy": map[string]any{
+					"type":        "string",
+					"description": "privacy parameter",
+				},
+				"product_item": map[string]any{
+					"type":        "object",
+					"description": "product_item parameter",
+				},
+				"scheduled_publish_time": map[string]any{
+					"type":        "integer",
+					"description": "scheduled_publish_time parameter",
+				},
+				"should_sync_product_edit": map[string]any{
+					"type":        "boolean",
+					"description": "should_sync_product_edit parameter",
+				},
+				"source_type": map[string]any{
+					"type":        "string",
+					"description": "source_type parameter",
+				},
+				"sponsor_id": map[string]any{
+					"type":        "string",
+					"description": "sponsor_id parameter",
+				},
+				"sponsor_relationship": map[string]any{
+					"type":        "integer",
+					"description": "sponsor_relationship parameter",
+				},
+				"tags": map[string]any{
+					"type":        "array",
+					"description": "tags parameter",
+					"items":       map[string]any{"type": "integer"},
+				},
+				"text_format_preset_id": map[string]any{
+					"type":        "string",
+					"description": "text_format_preset_id parameter",
+				},
+				"timeline_visibility": map[string]any{
+					"type":        "string",
+					"description": "timeline_visibility parameter",
+					"enum":        []string{"forced_allow", "hidden", "normal"},
+				},
+				"tracking": map[string]any{
+					"type":        "string",
+					"description": "tracking parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: attached_media (array<object>), backdated_time (datetime), backdated_time_granularity (post_backdated_time_granularity) [day, hour, min, month, none, ...], composer_session_id (string), direct_share_status (integer), explicitly_added_mentionee_ids (array<integer>), feed_story_visibility (post_feed_story_visibility) [hidden, visible], is_explicit_location (boolean), is_hidden (boolean), is_pinned (boolean), is_published (boolean), message (string), og_action_type_id (string), og_hide_object_attachment (boolean), og_icon_id (string), og_object_id (string), og_phrase (string), og_set_profile_badge (boolean), og_suggestion_mechanism (string), place (object), privacy (string), product_item (object), scheduled_publish_time (integer), should_sync_product_edit (boolean), source_type (string), sponsor_id (string), sponsor_relationship (integer), tags (array<integer>), text_format_preset_id (string), timeline_visibility (post_timeline_visibility) [forced_allow, hidden, normal], tracking (string)"),
 		),
 	)
 	tools = append(tools, post_post_Tool)
@@ -423,8 +535,13 @@ func HandlePost_get_attachments(ctx context.Context, request mcp.CallToolRequest
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -471,29 +588,26 @@ func HandlePost_get_comments(ctx context.Context, request mcp.CallToolRequest) (
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: filter
-	if val := request.GetString("filter", ""); val != "" {
-		args["filter"] = val
-	}
-
-	// Optional: live_filter
-	if val := request.GetString("live_filter", ""); val != "" {
-		args["live_filter"] = val
-	}
-
-	// Optional: order
-	if val := request.GetString("order", ""); val != "" {
-		args["order"] = val
-	}
-
-	// Optional: since
-	if val := request.GetString("since", ""); val != "" {
-		args["since"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -540,60 +654,16 @@ func HandlePost_post_comments(ctx context.Context, request mcp.CallToolRequest) 
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: attachment_id
-	if val := request.GetString("attachment_id", ""); val != "" {
-		args["attachment_id"] = val
-	}
-
-	// Optional: attachment_share_url
-	if val := request.GetString("attachment_share_url", ""); val != "" {
-		args["attachment_share_url"] = val
-	}
-
-	// Optional: attachment_url
-	if val := request.GetString("attachment_url", ""); val != "" {
-		args["attachment_url"] = val
-	}
-
-	// Optional: comment
-	if val := request.GetString("comment", ""); val != "" {
-		args["comment"] = val
-	}
-
-	// Optional: comment_privacy_value
-	if val := request.GetString("comment_privacy_value", ""); val != "" {
-		args["comment_privacy_value"] = val
-	}
-
-	// Optional: feedback_source
-	if val := request.GetString("feedback_source", ""); val != "" {
-		args["feedback_source"] = val
-	}
-
-	// Optional: message
-	if val := request.GetString("message", ""); val != "" {
-		args["message"] = val
-	}
-
-	// Optional: nectar_module
-	if val := request.GetString("nectar_module", ""); val != "" {
-		args["nectar_module"] = val
-	}
-
-	// Optional: parent_comment_id
-	// object type - using string
-	if val := request.GetString("parent_comment_id", ""); val != "" {
-		args["parent_comment_id"] = val
-	}
-
-	// Optional: post_id
-	if val := request.GetString("post_id", ""); val != "" {
-		args["post_id"] = val
-	}
-
-	// Optional: tracking
-	if val := request.GetString("tracking", ""); val != "" {
-		args["tracking"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method
@@ -626,8 +696,13 @@ func HandlePost_get_dynamic_posts(ctx context.Context, request mcp.CallToolReque
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -674,35 +749,26 @@ func HandlePost_get_insights(ctx context.Context, request mcp.CallToolRequest) (
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: date_preset
-	if val := request.GetString("date_preset", ""); val != "" {
-		args["date_preset"] = val
-	}
-
-	// Optional: metric
-	// array type - using string
-	if val := request.GetString("metric", ""); val != "" {
-		args["metric"] = val
-	}
-
-	// Optional: period
-	if val := request.GetString("period", ""); val != "" {
-		args["period"] = val
-	}
-
-	// Optional: since
-	if val := request.GetString("since", ""); val != "" {
-		args["since"] = val
-	}
-
-	// Optional: until
-	if val := request.GetString("until", ""); val != "" {
-		args["until"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -749,14 +815,16 @@ func HandlePost_delete_likes(ctx context.Context, request mcp.CallToolRequest) (
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: nectar_module
-	if val := request.GetString("nectar_module", ""); val != "" {
-		args["nectar_module"] = val
-	}
-
-	// Optional: tracking
-	if val := request.GetString("tracking", ""); val != "" {
-		args["tracking"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method
@@ -788,19 +856,16 @@ func HandlePost_post_likes(ctx context.Context, request mcp.CallToolRequest) (*m
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: feedback_source
-	if val := request.GetString("feedback_source", ""); val != "" {
-		args["feedback_source"] = val
-	}
-
-	// Optional: nectar_module
-	if val := request.GetString("nectar_module", ""); val != "" {
-		args["nectar_module"] = val
-	}
-
-	// Optional: tracking
-	if val := request.GetString("tracking", ""); val != "" {
-		args["tracking"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method
@@ -832,14 +897,26 @@ func HandlePost_get_reactions(ctx context.Context, request mcp.CallToolRequest) 
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: type
-	if val := request.GetString("type", ""); val != "" {
-		args["type"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -887,8 +964,13 @@ func HandlePost_get_sharedposts(ctx context.Context, request mcp.CallToolRequest
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -936,8 +1018,13 @@ func HandlePost_get_sponsor_tags(ctx context.Context, request mcp.CallToolReques
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -985,8 +1072,13 @@ func HandlePost_get_to(ctx context.Context, request mcp.CallToolRequest) (*mcp.C
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -1062,19 +1154,26 @@ func HandlePost_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Cal
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: primary_fb_page_id
-	if val := request.GetString("primary_fb_page_id", ""); val != "" {
-		args["primary_fb_page_id"] = val
-	}
-
-	// Optional: primary_ig_user_id
-	if val := request.GetString("primary_ig_user_id", ""); val != "" {
-		args["primary_ig_user_id"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -1121,164 +1220,16 @@ func HandlePost_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Ca
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: attached_media
-	// array type - using string
-	if val := request.GetString("attached_media", ""); val != "" {
-		args["attached_media"] = val
-	}
-
-	// Optional: backdated_time
-	if val := request.GetString("backdated_time", ""); val != "" {
-		args["backdated_time"] = val
-	}
-
-	// Optional: backdated_time_granularity
-	if val := request.GetString("backdated_time_granularity", ""); val != "" {
-		args["backdated_time_granularity"] = val
-	}
-
-	// Optional: composer_session_id
-	if val := request.GetString("composer_session_id", ""); val != "" {
-		args["composer_session_id"] = val
-	}
-
-	// Optional: direct_share_status
-	if val := request.GetInt("direct_share_status", 0); val != 0 {
-		args["direct_share_status"] = val
-	}
-
-	// Optional: explicitly_added_mentionee_ids
-	// array type - using string
-	if val := request.GetString("explicitly_added_mentionee_ids", ""); val != "" {
-		args["explicitly_added_mentionee_ids"] = val
-	}
-
-	// Optional: feed_story_visibility
-	if val := request.GetString("feed_story_visibility", ""); val != "" {
-		args["feed_story_visibility"] = val
-	}
-
-	// Optional: is_explicit_location
-	if val := request.GetBool("is_explicit_location", false); val {
-		args["is_explicit_location"] = val
-	}
-
-	// Optional: is_hidden
-	if val := request.GetBool("is_hidden", false); val {
-		args["is_hidden"] = val
-	}
-
-	// Optional: is_pinned
-	if val := request.GetBool("is_pinned", false); val {
-		args["is_pinned"] = val
-	}
-
-	// Optional: is_published
-	if val := request.GetBool("is_published", false); val {
-		args["is_published"] = val
-	}
-
-	// Optional: message
-	if val := request.GetString("message", ""); val != "" {
-		args["message"] = val
-	}
-
-	// Optional: og_action_type_id
-	if val := request.GetString("og_action_type_id", ""); val != "" {
-		args["og_action_type_id"] = val
-	}
-
-	// Optional: og_hide_object_attachment
-	if val := request.GetBool("og_hide_object_attachment", false); val {
-		args["og_hide_object_attachment"] = val
-	}
-
-	// Optional: og_icon_id
-	if val := request.GetString("og_icon_id", ""); val != "" {
-		args["og_icon_id"] = val
-	}
-
-	// Optional: og_object_id
-	if val := request.GetString("og_object_id", ""); val != "" {
-		args["og_object_id"] = val
-	}
-
-	// Optional: og_phrase
-	if val := request.GetString("og_phrase", ""); val != "" {
-		args["og_phrase"] = val
-	}
-
-	// Optional: og_set_profile_badge
-	if val := request.GetBool("og_set_profile_badge", false); val {
-		args["og_set_profile_badge"] = val
-	}
-
-	// Optional: og_suggestion_mechanism
-	if val := request.GetString("og_suggestion_mechanism", ""); val != "" {
-		args["og_suggestion_mechanism"] = val
-	}
-
-	// Optional: place
-	// object type - using string
-	if val := request.GetString("place", ""); val != "" {
-		args["place"] = val
-	}
-
-	// Optional: privacy
-	if val := request.GetString("privacy", ""); val != "" {
-		args["privacy"] = val
-	}
-
-	// Optional: product_item
-	// object type - using string
-	if val := request.GetString("product_item", ""); val != "" {
-		args["product_item"] = val
-	}
-
-	// Optional: scheduled_publish_time
-	if val := request.GetInt("scheduled_publish_time", 0); val != 0 {
-		args["scheduled_publish_time"] = val
-	}
-
-	// Optional: should_sync_product_edit
-	if val := request.GetBool("should_sync_product_edit", false); val {
-		args["should_sync_product_edit"] = val
-	}
-
-	// Optional: source_type
-	if val := request.GetString("source_type", ""); val != "" {
-		args["source_type"] = val
-	}
-
-	// Optional: sponsor_id
-	if val := request.GetString("sponsor_id", ""); val != "" {
-		args["sponsor_id"] = val
-	}
-
-	// Optional: sponsor_relationship
-	if val := request.GetInt("sponsor_relationship", 0); val != 0 {
-		args["sponsor_relationship"] = val
-	}
-
-	// Optional: tags
-	// array type - using string
-	if val := request.GetString("tags", ""); val != "" {
-		args["tags"] = val
-	}
-
-	// Optional: text_format_preset_id
-	if val := request.GetString("text_format_preset_id", ""); val != "" {
-		args["text_format_preset_id"] = val
-	}
-
-	// Optional: timeline_visibility
-	if val := request.GetString("timeline_visibility", ""); val != "" {
-		args["timeline_visibility"] = val
-	}
-
-	// Optional: tracking
-	if val := request.GetString("tracking", ""); val != "" {
-		args["tracking"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method

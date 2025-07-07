@@ -100,10 +100,10 @@ func (c *BusinessUserClient) Businessuser_get_assigned_business_asset_groups(arg
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["contained_asset_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("contained_asset_id", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -173,10 +173,10 @@ func (c *BusinessUserClient) Businessuser_get_assigned_pages(args map[string]int
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["pages"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("pages", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -422,58 +422,10 @@ func (c *BusinessUserClient) Businessuser_post_(args map[string]interface{}) (in
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["clear_pending_email"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("clear_pending_email", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["email"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("email", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["first_name"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("first_name", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["last_name"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("last_name", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["pending_email"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("pending_email", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["role"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("role", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["skip_verification_email"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("skip_verification_email", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["tasks"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("tasks", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["title"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("title", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 

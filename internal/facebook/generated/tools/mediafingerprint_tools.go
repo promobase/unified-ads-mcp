@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -20,8 +21,8 @@ func GetMediaFingerprintTools() []mcp.Tool {
 	// Available fields for MediaFingerprint: duration_in_sec, fingerprint_content_type, fingerprint_type, id, metadata, title, universal_content_id
 	mediafingerprint_get_Tool := mcp.NewTool("mediafingerprint_get_",
 		mcp.WithDescription("GET  for MediaFingerprint"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for MediaFingerprint objects. Available fields: duration_in_sec, fingerprint_content_type, fingerprint_type, id, metadata, title, universal_content_id"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for MediaFingerprint objects. Available fields: duration_in_sec, fingerprint_content_type, fingerprint_type, id, metadata, title, universal_content_id"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -36,19 +37,29 @@ func GetMediaFingerprintTools() []mcp.Tool {
 	tools = append(tools, mediafingerprint_get_Tool)
 
 	// mediafingerprint_post_ tool
+	// Params object accepts: metadata (list), source (file), title (string), universal_content_id (string)
 	mediafingerprint_post_Tool := mcp.NewTool("mediafingerprint_post_",
 		mcp.WithDescription("POST  for MediaFingerprint"),
-		mcp.WithString("metadata",
-			mcp.Description("metadata parameter for "),
-		),
-		mcp.WithString("source",
-			mcp.Description("source parameter for "),
-		),
-		mcp.WithString("title",
-			mcp.Description("title parameter for "),
-		),
-		mcp.WithString("universal_content_id",
-			mcp.Description("universal_content_id parameter for "),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"metadata": map[string]any{
+					"type":        "string",
+					"description": "metadata parameter",
+				},
+				"source": map[string]any{
+					"type":        "string",
+					"description": "source parameter",
+				},
+				"title": map[string]any{
+					"type":        "string",
+					"description": "title parameter",
+				},
+				"universal_content_id": map[string]any{
+					"type":        "string",
+					"description": "universal_content_id parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: metadata (list), source (file), title (string), universal_content_id (string)"),
 		),
 	)
 	tools = append(tools, mediafingerprint_post_Tool)
@@ -73,8 +84,13 @@ func HandleMediafingerprint_get_(ctx context.Context, request mcp.CallToolReques
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -121,24 +137,16 @@ func HandleMediafingerprint_post_(ctx context.Context, request mcp.CallToolReque
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: metadata
-	if val := request.GetString("metadata", ""); val != "" {
-		args["metadata"] = val
-	}
-
-	// Optional: source
-	if val := request.GetString("source", ""); val != "" {
-		args["source"] = val
-	}
-
-	// Optional: title
-	if val := request.GetString("title", ""); val != "" {
-		args["title"] = val
-	}
-
-	// Optional: universal_content_id
-	if val := request.GetString("universal_content_id", ""); val != "" {
-		args["universal_content_id"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method

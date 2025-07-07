@@ -158,16 +158,11 @@ func (c *IGMediaClient) Igmedia_get_branded_content_partner_promote(args map[str
 // igmedia_post_branded_content_partner_promote POST branded_content_partner_promote for IGMedia
 func (c *IGMediaClient) Igmedia_post_branded_content_partner_promote(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	permission, ok := args["permission"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: permission")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = permission // Suppress unused variable warning
-	sponsor_id, ok := args["sponsor_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: sponsor_id")
-	}
-	_ = sponsor_id // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -177,16 +172,10 @@ func (c *IGMediaClient) Igmedia_post_branded_content_partner_promote(args map[st
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["permission"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("permission", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["sponsor_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("sponsor_id", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -433,16 +422,10 @@ func (c *IGMediaClient) Igmedia_post_comments(args map[string]interface{}) (inte
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["ad_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("ad_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["message"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("message", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -479,11 +462,11 @@ func (c *IGMediaClient) Igmedia_post_comments(args map[string]interface{}) (inte
 // igmedia_get_insights GET insights for IGMedia
 func (c *IGMediaClient) Igmedia_get_insights(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	metric, ok := args["metric"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: metric")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = metric // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -493,22 +476,10 @@ func (c *IGMediaClient) Igmedia_get_insights(args map[string]interface{}) (inter
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["breakdown"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("breakdown", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["metric"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("metric", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["period"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("period", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -720,11 +691,11 @@ func (c *IGMediaClient) Igmedia_get_product_tags(args map[string]interface{}) (i
 // igmedia_post_product_tags POST product_tags for IGMedia
 func (c *IGMediaClient) Igmedia_post_product_tags(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	updated_tags, ok := args["updated_tags"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: updated_tags")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = updated_tags // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -734,16 +705,10 @@ func (c *IGMediaClient) Igmedia_post_product_tags(args map[string]interface{}) (
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["child_index"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("child_index", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["updated_tags"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("updated_tags", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -789,46 +754,10 @@ func (c *IGMediaClient) Igmedia_get_(args map[string]interface{}) (interface{}, 
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["ad_account_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("ad_account_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["boostable_media_callsite"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("boostable_media_callsite", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["business_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("business_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["primary_fb_page_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("primary_fb_page_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["primary_ig_user_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("primary_ig_user_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["secondary_fb_page_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("secondary_fb_page_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["secondary_ig_user_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("secondary_ig_user_id", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -889,11 +818,11 @@ func (c *IGMediaClient) Igmedia_get_(args map[string]interface{}) (interface{}, 
 // igmedia_post_ POST  for IGMedia
 func (c *IGMediaClient) Igmedia_post_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	comment_enabled, ok := args["comment_enabled"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: comment_enabled")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = comment_enabled // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -903,10 +832,10 @@ func (c *IGMediaClient) Igmedia_post_(args map[string]interface{}) (interface{},
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["comment_enabled"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("comment_enabled", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 

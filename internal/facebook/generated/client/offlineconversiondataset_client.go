@@ -24,11 +24,11 @@ func NewOfflineConversionDataSetClient(accessToken string) *OfflineConversionDat
 // offlineconversiondataset_get_adaccounts GET adaccounts for OfflineConversionDataSet
 func (c *OfflineConversionDataSetClient) Offlineconversiondataset_get_adaccounts(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	business, ok := args["business"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: business")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = business // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -38,10 +38,10 @@ func (c *OfflineConversionDataSetClient) Offlineconversiondataset_get_adaccounts
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["business"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("business", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -178,16 +178,10 @@ func (c *OfflineConversionDataSetClient) Offlineconversiondataset_get_audiences(
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["action_source"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("action_source", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["ad_account"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("ad_account", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -257,10 +251,10 @@ func (c *OfflineConversionDataSetClient) Offlineconversiondataset_get_customconv
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["ad_account"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("ad_account", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -388,16 +382,11 @@ func (c *OfflineConversionDataSetClient) Offlineconversiondataset_get_server_eve
 // offlineconversiondataset_get_shared_accounts GET shared_accounts for OfflineConversionDataSet
 func (c *OfflineConversionDataSetClient) Offlineconversiondataset_get_shared_accounts(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	action_source, ok := args["action_source"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: action_source")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = action_source // Suppress unused variable warning
-	business, ok := args["business"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: business")
-	}
-	_ = business // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -407,16 +396,10 @@ func (c *OfflineConversionDataSetClient) Offlineconversiondataset_get_shared_acc
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["action_source"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("action_source", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["business"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("business", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -477,11 +460,11 @@ func (c *OfflineConversionDataSetClient) Offlineconversiondataset_get_shared_acc
 // offlineconversiondataset_get_shared_agencies GET shared_agencies for OfflineConversionDataSet
 func (c *OfflineConversionDataSetClient) Offlineconversiondataset_get_shared_agencies(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	action_source, ok := args["action_source"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: action_source")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = action_source // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -491,10 +474,10 @@ func (c *OfflineConversionDataSetClient) Offlineconversiondataset_get_shared_age
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["action_source"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("action_source", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -564,40 +547,10 @@ func (c *OfflineConversionDataSetClient) Offlineconversiondataset_get_stats(args
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["aggr_time"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("aggr_time", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["end"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("end", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["granularity"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("granularity", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["skip_empty_values"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("skip_empty_values", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["start"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("start", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["user_timezone_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("user_timezone_id", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -667,34 +620,10 @@ func (c *OfflineConversionDataSetClient) Offlineconversiondataset_get_uploads(ar
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["end_time"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("end_time", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["order"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("order", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["sort_by"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("sort_by", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["start_time"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("start_time", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["upload_tag"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("upload_tag", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {

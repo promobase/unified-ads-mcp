@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -17,21 +18,37 @@ func GetPageUserMessageThreadLabelTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// pageusermessagethreadlabel_delete_label tool
+	// Params object accepts: user (int)
 	pageusermessagethreadlabel_delete_labelTool := mcp.NewTool("pageusermessagethreadlabel_delete_label",
 		mcp.WithDescription("DELETE label for PageUserMessageThreadLabel"),
-		mcp.WithNumber("user",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("user parameter for label"),
+			mcp.Properties(map[string]any{
+				"user": map[string]any{
+					"type":        "integer",
+					"description": "user parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: user (integer) [required]"),
 		),
 	)
 	tools = append(tools, pageusermessagethreadlabel_delete_labelTool)
 
 	// pageusermessagethreadlabel_post_label tool
+	// Params object accepts: user (int)
 	pageusermessagethreadlabel_post_labelTool := mcp.NewTool("pageusermessagethreadlabel_post_label",
 		mcp.WithDescription("POST label for PageUserMessageThreadLabel"),
-		mcp.WithNumber("user",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("user parameter for label"),
+			mcp.Properties(map[string]any{
+				"user": map[string]any{
+					"type":        "integer",
+					"description": "user parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: user (integer) [required]"),
 		),
 	)
 	tools = append(tools, pageusermessagethreadlabel_post_labelTool)
@@ -46,8 +63,8 @@ func GetPageUserMessageThreadLabelTools() []mcp.Tool {
 	// Available fields for PageUserMessageThreadLabel: id, page_label_name
 	pageusermessagethreadlabel_get_Tool := mcp.NewTool("pageusermessagethreadlabel_get_",
 		mcp.WithDescription("GET  for PageUserMessageThreadLabel"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for PageUserMessageThreadLabel objects. Available fields: id, page_label_name"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for PageUserMessageThreadLabel objects. Available fields: id, page_label_name"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -80,12 +97,19 @@ func HandlePageusermessagethreadlabel_delete_label(ctx context.Context, request 
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: user
-	user, err := request.RequireInt("user")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter user: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["user"] = user
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Pageusermessagethreadlabel_delete_label(args)
@@ -116,12 +140,19 @@ func HandlePageusermessagethreadlabel_post_label(ctx context.Context, request mc
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: user
-	user, err := request.RequireInt("user")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter user: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["user"] = user
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Pageusermessagethreadlabel_post_label(args)
@@ -182,8 +213,13 @@ func HandlePageusermessagethreadlabel_get_(ctx context.Context, request mcp.Call
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit

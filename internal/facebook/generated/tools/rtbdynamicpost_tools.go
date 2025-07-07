@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -18,25 +19,35 @@ func GetRTBDynamicPostTools() []mcp.Tool {
 
 	// rtbdynamicpost_get_comments tool
 	// Available fields for Comment: admin_creator, application, attachment, can_comment, can_hide, can_like, can_remove, can_reply_privately, comment_count, created_time, from, id, is_hidden, is_private, like_count, live_broadcast_timestamp, message, message_tags, object, parent, permalink_url, private_reply_conversation, user_likes
+	// Params object accepts: filter (rtbdynamicpostcomments_filter_enum_param), live_filter (rtbdynamicpostcomments_live_filter_enum_param), order (rtbdynamicpostcomments_order_enum_param), since (datetime)
 	rtbdynamicpost_get_commentsTool := mcp.NewTool("rtbdynamicpost_get_comments",
 		mcp.WithDescription("GET comments for RTBDynamicPost"),
-		mcp.WithString("filter",
-			mcp.Description("filter parameter for comments"),
-			mcp.Enum("stream", "toplevel"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"filter": map[string]any{
+					"type":        "string",
+					"description": "filter parameter",
+					"enum":        []string{"stream", "toplevel"},
+				},
+				"live_filter": map[string]any{
+					"type":        "string",
+					"description": "live_filter parameter",
+					"enum":        []string{"filter_low_quality", "no_filter"},
+				},
+				"order": map[string]any{
+					"type":        "string",
+					"description": "order parameter",
+					"enum":        []string{"chronological", "reverse_chronological"},
+				},
+				"since": map[string]any{
+					"type":        "string",
+					"description": "since parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: filter (enum) [stream, toplevel], live_filter (enum) [filter_low_quality, no_filter], order (enum) [chronological, reverse_chronological], since (datetime)"),
 		),
-		mcp.WithString("live_filter",
-			mcp.Description("live_filter parameter for comments"),
-			mcp.Enum("filter_low_quality", "no_filter"),
-		),
-		mcp.WithString("order",
-			mcp.Description("order parameter for comments"),
-			mcp.Enum("chronological", "reverse_chronological"),
-		),
-		mcp.WithString("since",
-			mcp.Description("since parameter for comments"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for Comment objects. Available fields: admin_creator, application, attachment, can_comment, can_hide, can_like, can_remove, can_reply_privately, comment_count, created_time, from, id, is_hidden, is_private, like_count (and 8 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for Comment objects. Available fields: admin_creator, application, attachment, can_comment, can_hide, can_like, can_remove, can_reply_privately, comment_count, created_time, from, id, is_hidden, is_private, like_count (and 8 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -54,8 +65,8 @@ func GetRTBDynamicPostTools() []mcp.Tool {
 	// Available fields for Profile: can_post, id, link, name, pic, pic_crop, pic_large, pic_small, pic_square, profile_type, username
 	rtbdynamicpost_get_likesTool := mcp.NewTool("rtbdynamicpost_get_likes",
 		mcp.WithDescription("GET likes for RTBDynamicPost"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for Profile objects. Available fields: can_post, id, link, name, pic, pic_crop, pic_large, pic_small, pic_square, profile_type, username"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for Profile objects. Available fields: can_post, id, link, name, pic, pic_crop, pic_large, pic_small, pic_square, profile_type, username"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -73,8 +84,8 @@ func GetRTBDynamicPostTools() []mcp.Tool {
 	// Available fields for RTBDynamicPost: child_attachments, created, description, id, image_url, link, message, owner_id, place_id, product_id, title
 	rtbdynamicpost_get_Tool := mcp.NewTool("rtbdynamicpost_get_",
 		mcp.WithDescription("GET  for RTBDynamicPost"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for RTBDynamicPost objects. Available fields: child_attachments, created, description, id, image_url, link, message, owner_id, place_id, product_id, title"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for RTBDynamicPost objects. Available fields: child_attachments, created, description, id, image_url, link, message, owner_id, place_id, product_id, title"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -107,29 +118,26 @@ func HandleRtbdynamicpost_get_comments(ctx context.Context, request mcp.CallTool
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: filter
-	if val := request.GetString("filter", ""); val != "" {
-		args["filter"] = val
-	}
-
-	// Optional: live_filter
-	if val := request.GetString("live_filter", ""); val != "" {
-		args["live_filter"] = val
-	}
-
-	// Optional: order
-	if val := request.GetString("order", ""); val != "" {
-		args["order"] = val
-	}
-
-	// Optional: since
-	if val := request.GetString("since", ""); val != "" {
-		args["since"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -177,8 +185,13 @@ func HandleRtbdynamicpost_get_likes(ctx context.Context, request mcp.CallToolReq
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -226,8 +239,13 @@ func HandleRtbdynamicpost_get_(ctx context.Context, request mcp.CallToolRequest)
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit

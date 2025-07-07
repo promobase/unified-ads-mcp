@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -20,8 +21,8 @@ func GetAREffectTools() []mcp.Tool {
 	// Available fields for AREffect: creation_time, id, last_modified_time, name, status, surfaces
 	areffect_get_Tool := mcp.NewTool("areffect_get_",
 		mcp.WithDescription("GET  for AREffect"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for AREffect objects. Available fields: creation_time, id, last_modified_time, name, status, surfaces"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for AREffect objects. Available fields: creation_time, id, last_modified_time, name, status, surfaces"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -55,8 +56,13 @@ func HandleAreffect_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit

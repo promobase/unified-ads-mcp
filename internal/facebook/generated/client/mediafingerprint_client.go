@@ -100,28 +100,10 @@ func (c *MediaFingerprintClient) Mediafingerprint_post_(args map[string]interfac
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["metadata"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("metadata", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["source"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("source", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["title"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("title", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["universal_content_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("universal_content_id", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 

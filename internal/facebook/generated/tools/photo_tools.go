@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -18,25 +19,35 @@ func GetPhotoTools() []mcp.Tool {
 
 	// photo_get_comments tool
 	// Available fields for Comment: admin_creator, application, attachment, can_comment, can_hide, can_like, can_remove, can_reply_privately, comment_count, created_time, from, id, is_hidden, is_private, like_count, live_broadcast_timestamp, message, message_tags, object, parent, permalink_url, private_reply_conversation, user_likes
+	// Params object accepts: filter (photocomments_filter_enum_param), live_filter (photocomments_live_filter_enum_param), order (photocomments_order_enum_param), since (datetime)
 	photo_get_commentsTool := mcp.NewTool("photo_get_comments",
 		mcp.WithDescription("GET comments for Photo"),
-		mcp.WithString("filter",
-			mcp.Description("filter parameter for comments"),
-			mcp.Enum("stream", "toplevel"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"filter": map[string]any{
+					"type":        "string",
+					"description": "filter parameter",
+					"enum":        []string{"stream", "toplevel"},
+				},
+				"live_filter": map[string]any{
+					"type":        "string",
+					"description": "live_filter parameter",
+					"enum":        []string{"filter_low_quality", "no_filter"},
+				},
+				"order": map[string]any{
+					"type":        "string",
+					"description": "order parameter",
+					"enum":        []string{"chronological", "reverse_chronological"},
+				},
+				"since": map[string]any{
+					"type":        "string",
+					"description": "since parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: filter (enum) [stream, toplevel], live_filter (enum) [filter_low_quality, no_filter], order (enum) [chronological, reverse_chronological], since (datetime)"),
 		),
-		mcp.WithString("live_filter",
-			mcp.Description("live_filter parameter for comments"),
-			mcp.Enum("filter_low_quality", "no_filter"),
-		),
-		mcp.WithString("order",
-			mcp.Description("order parameter for comments"),
-			mcp.Enum("chronological", "reverse_chronological"),
-		),
-		mcp.WithString("since",
-			mcp.Description("since parameter for comments"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for Comment objects. Available fields: admin_creator, application, attachment, can_comment, can_hide, can_like, can_remove, can_reply_privately, comment_count, created_time, from, id, is_hidden, is_private, like_count (and 8 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for Comment objects. Available fields: admin_creator, application, attachment, can_comment, can_hide, can_like, can_remove, can_reply_privately, comment_count, created_time, from, id, is_hidden, is_private, like_count (and 8 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -51,74 +62,106 @@ func GetPhotoTools() []mcp.Tool {
 	tools = append(tools, photo_get_commentsTool)
 
 	// photo_post_comments tool
+	// Params object accepts: attachment_id (string), attachment_share_url (string), attachment_url (string), comment_privacy_value (photocomments_comment_privacy_value_enum_param), facepile_mentioned_ids (list<string>), feedback_source (string), is_offline (bool), message (string), nectar_module (string), object_id (string), parent_comment_id (Object), text (string), tracking (string)
 	photo_post_commentsTool := mcp.NewTool("photo_post_comments",
 		mcp.WithDescription("POST comments for Photo"),
-		mcp.WithString("attachment_id",
-			mcp.Description("attachment_id parameter for comments"),
-		),
-		mcp.WithString("attachment_share_url",
-			mcp.Description("attachment_share_url parameter for comments"),
-		),
-		mcp.WithString("attachment_url",
-			mcp.Description("attachment_url parameter for comments"),
-		),
-		mcp.WithString("comment_privacy_value",
-			mcp.Description("comment_privacy_value parameter for comments"),
-			mcp.Enum("DECLINED_BY_ADMIN_ASSISTANT", "DEFAULT_PRIVACY", "FRIENDS_AND_POST_OWNER", "FRIENDS_ONLY", "GRAPHQL_MULTIPLE_VALUE_HACK_DO_NOT_USE", "OWNER_OR_COMMENTER", "PENDING_APPROVAL", "REMOVED_BY_ADMIN_ASSISTANT", "SIDE_CONVERSATION", "SIDE_CONVERSATION_AND_POST_OWNER", "SPOTLIGHT_TAB"),
-		),
-		mcp.WithString("facepile_mentioned_ids",
-			mcp.Description("facepile_mentioned_ids parameter for comments"),
-		),
-		mcp.WithString("feedback_source",
-			mcp.Description("feedback_source parameter for comments"),
-		),
-		mcp.WithBoolean("is_offline",
-			mcp.Description("is_offline parameter for comments"),
-		),
-		mcp.WithString("message",
-			mcp.Description("message parameter for comments"),
-		),
-		mcp.WithString("nectar_module",
-			mcp.Description("nectar_module parameter for comments"),
-		),
-		mcp.WithString("object_id",
-			mcp.Description("object_id parameter for comments"),
-		),
-		mcp.WithString("parent_comment_id",
-			mcp.Description("parent_comment_id parameter for comments"),
-		),
-		mcp.WithString("text",
-			mcp.Description("text parameter for comments"),
-		),
-		mcp.WithString("tracking",
-			mcp.Description("tracking parameter for comments"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"attachment_id": map[string]any{
+					"type":        "string",
+					"description": "attachment_id parameter",
+				},
+				"attachment_share_url": map[string]any{
+					"type":        "string",
+					"description": "attachment_share_url parameter",
+				},
+				"attachment_url": map[string]any{
+					"type":        "string",
+					"description": "attachment_url parameter",
+				},
+				"comment_privacy_value": map[string]any{
+					"type":        "string",
+					"description": "comment_privacy_value parameter",
+					"enum":        []string{"DECLINED_BY_ADMIN_ASSISTANT", "DEFAULT_PRIVACY", "FRIENDS_AND_POST_OWNER", "FRIENDS_ONLY", "GRAPHQL_MULTIPLE_VALUE_HACK_DO_NOT_USE", "OWNER_OR_COMMENTER", "PENDING_APPROVAL", "REMOVED_BY_ADMIN_ASSISTANT", "SIDE_CONVERSATION", "SIDE_CONVERSATION_AND_POST_OWNER", "SPOTLIGHT_TAB"},
+				},
+				"facepile_mentioned_ids": map[string]any{
+					"type":        "array",
+					"description": "facepile_mentioned_ids parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+				"feedback_source": map[string]any{
+					"type":        "string",
+					"description": "feedback_source parameter",
+				},
+				"is_offline": map[string]any{
+					"type":        "boolean",
+					"description": "is_offline parameter",
+				},
+				"message": map[string]any{
+					"type":        "string",
+					"description": "message parameter",
+				},
+				"nectar_module": map[string]any{
+					"type":        "string",
+					"description": "nectar_module parameter",
+				},
+				"object_id": map[string]any{
+					"type":        "string",
+					"description": "object_id parameter",
+				},
+				"parent_comment_id": map[string]any{
+					"type":        "object",
+					"description": "parent_comment_id parameter",
+				},
+				"text": map[string]any{
+					"type":        "string",
+					"description": "text parameter",
+				},
+				"tracking": map[string]any{
+					"type":        "string",
+					"description": "tracking parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: attachment_id (string), attachment_share_url (string), attachment_url (string), comment_privacy_value (enum) [DECLINED_BY_ADMIN_ASSISTANT, DEFAULT_PRIVACY, FRIENDS_AND_POST_OWNER, FRIENDS_ONLY, GRAPHQL_MULTIPLE_VALUE_HACK_DO_NOT_USE, ...], facepile_mentioned_ids (array<string>), feedback_source (string), is_offline (boolean), message (string), nectar_module (string), object_id (string), parent_comment_id (object), text (string), tracking (string)"),
 		),
 	)
 	tools = append(tools, photo_post_commentsTool)
 
 	// photo_get_insights tool
 	// Available fields for InsightsResult: description, description_from_api_doc, id, name, period, title, values
+	// Params object accepts: date_preset (photoinsights_date_preset_enum_param), metric (list<Object>), period (photoinsights_period_enum_param), since (datetime), until (datetime)
 	photo_get_insightsTool := mcp.NewTool("photo_get_insights",
 		mcp.WithDescription("GET insights for Photo"),
-		mcp.WithString("date_preset",
-			mcp.Description("date_preset parameter for insights"),
-			mcp.Enum("data_maximum", "last_14d", "last_28d", "last_30d", "last_3d", "last_7d", "last_90d", "last_month", "last_quarter", "last_week_mon_sun", "last_week_sun_sat", "last_year", "maximum", "this_month", "this_quarter", "this_week_mon_today", "this_week_sun_today", "this_year", "today", "yesterday"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"date_preset": map[string]any{
+					"type":        "string",
+					"description": "date_preset parameter",
+					"enum":        []string{"data_maximum", "last_14d", "last_28d", "last_30d", "last_3d", "last_7d", "last_90d", "last_month", "last_quarter", "last_week_mon_sun", "last_week_sun_sat", "last_year", "maximum", "this_month", "this_quarter", "this_week_mon_today", "this_week_sun_today", "this_year", "today", "yesterday"},
+				},
+				"metric": map[string]any{
+					"type":        "array",
+					"description": "metric parameter",
+					"items":       map[string]any{"type": "object"},
+				},
+				"period": map[string]any{
+					"type":        "string",
+					"description": "period parameter",
+					"enum":        []string{"day", "days_28", "lifetime", "month", "total_over_range", "week"},
+				},
+				"since": map[string]any{
+					"type":        "string",
+					"description": "since parameter",
+				},
+				"until": map[string]any{
+					"type":        "string",
+					"description": "until parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: date_preset (enum) [data_maximum, last_14d, last_28d, last_30d, last_3d, ...], metric (array<object>), period (enum) [day, days_28, lifetime, month, total_over_range, ...], since (datetime), until (datetime)"),
 		),
-		mcp.WithString("metric",
-			mcp.Description("metric parameter for insights"),
-		),
-		mcp.WithString("period",
-			mcp.Description("period parameter for insights"),
-			mcp.Enum("day", "days_28", "lifetime", "month", "total_over_range", "week"),
-		),
-		mcp.WithString("since",
-			mcp.Description("since parameter for insights"),
-		),
-		mcp.WithString("until",
-			mcp.Description("until parameter for insights"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for InsightsResult objects. Available fields: description, description_from_api_doc, id, name, period, title, values"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for InsightsResult objects. Available fields: description, description_from_api_doc, id, name, period, title, values"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -136,8 +179,8 @@ func GetPhotoTools() []mcp.Tool {
 	// Available fields for Profile: can_post, id, link, name, pic, pic_crop, pic_large, pic_small, pic_square, profile_type, username
 	photo_get_likesTool := mcp.NewTool("photo_get_likes",
 		mcp.WithDescription("GET likes for Photo"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for Profile objects. Available fields: can_post, id, link, name, pic, pic_crop, pic_large, pic_small, pic_square, profile_type, username"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for Profile objects. Available fields: can_post, id, link, name, pic, pic_crop, pic_large, pic_small, pic_square, profile_type, username"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -152,19 +195,29 @@ func GetPhotoTools() []mcp.Tool {
 	tools = append(tools, photo_get_likesTool)
 
 	// photo_post_likes tool
+	// Params object accepts: feedback_source (string), nectar_module (string), notify (bool), tracking (string)
 	photo_post_likesTool := mcp.NewTool("photo_post_likes",
 		mcp.WithDescription("POST likes for Photo"),
-		mcp.WithString("feedback_source",
-			mcp.Description("feedback_source parameter for likes"),
-		),
-		mcp.WithString("nectar_module",
-			mcp.Description("nectar_module parameter for likes"),
-		),
-		mcp.WithBoolean("notify",
-			mcp.Description("notify parameter for likes"),
-		),
-		mcp.WithString("tracking",
-			mcp.Description("tracking parameter for likes"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"feedback_source": map[string]any{
+					"type":        "string",
+					"description": "feedback_source parameter",
+				},
+				"nectar_module": map[string]any{
+					"type":        "string",
+					"description": "nectar_module parameter",
+				},
+				"notify": map[string]any{
+					"type":        "boolean",
+					"description": "notify parameter",
+				},
+				"tracking": map[string]any{
+					"type":        "string",
+					"description": "tracking parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: feedback_source (string), nectar_module (string), notify (boolean), tracking (string)"),
 		),
 	)
 	tools = append(tools, photo_post_likesTool)
@@ -173,8 +226,8 @@ func GetPhotoTools() []mcp.Tool {
 	// Available fields for Page: about, access_token, ad_campaign, affiliation, app_id, artists_we_like, attire, available_promo_offer_ids, awards, band_interests, band_members, best_page, bio, birthday, booking_agent, breaking_news_usage, built, business, can_checkin, can_post, category, category_list, checkins, company_overview, connected_instagram_account, connected_page_backed_instagram_account, contact_address, copyright_whitelisted_ig_partners, country_page_likes, cover, culinary_team, current_location, delivery_and_pickup_option_info, description, description_html, differently_open_offerings, directed_by, display_subtext, displayed_message_response_time, does_viewer_have_page_permission_link_ig, emails, engagement, fan_count, featured_video, features, followers_count, food_styles, founded, general_info, general_manager, genre, global_brand_page_name, global_brand_root_id, has_added_app, has_lead_access, has_transitioned_to_new_page_experience, has_whatsapp_business_number, has_whatsapp_number, hometown, hours, id, impressum, influences, instagram_business_account, is_always_open, is_calling_eligible, is_chain, is_community_page, is_eligible_for_branded_content, is_eligible_for_disable_connect_ig_btn_for_non_page_admin_am_web, is_messenger_bot_get_started_enabled, is_messenger_platform_bot, is_owned, is_permanently_closed, is_published, is_unclaimed, is_verified, is_webhooks_subscribed, keywords, leadgen_tos_acceptance_time, leadgen_tos_accepted, leadgen_tos_accepting_user, link, location, members, merchant_id, merchant_review_status, messaging_feature_status, messenger_ads_default_icebreakers, messenger_ads_default_quick_replies, messenger_ads_quick_replies_type, mini_shop_storefront, mission, mpg, name, name_with_location_descriptor, network, new_like_count, offer_eligible, overall_star_rating, owner_business, page_token, parent_page, parking, payment_options, personal_info, personal_interests, pharma_safety_info, phone, pickup_options, place_type, plot_outline, preferred_audience, press_contact, price_range, privacy_info_url, produced_by, products, promotion_eligible, promotion_ineligible_reason, public_transit, rating_count, recipient, record_label, release_date, restaurant_services, restaurant_specialties, schedule, screenplay_by, season, single_line_address, starring, start_info, store_code, store_location_descriptor, store_number, studio, supports_donate_button_in_live_video, talking_about_count, temporary_status, unread_message_count, unread_notif_count, unseen_message_count, user_access_expire_time, username, verification_status, voip_info, website, were_here_count, whatsapp_number, written_by
 	photo_get_sponsor_tagsTool := mcp.NewTool("photo_get_sponsor_tags",
 		mcp.WithDescription("GET sponsor_tags for Photo"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for Page objects. Available fields: about, access_token, ad_campaign, affiliation, app_id, artists_we_like, attire, available_promo_offer_ids, awards, band_interests, band_members, best_page, bio, birthday, booking_agent (and 136 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for Page objects. Available fields: about, access_token, ad_campaign, affiliation, app_id, artists_we_like, attire, available_promo_offer_ids, awards, band_interests, band_members, best_page, bio, birthday, booking_agent (and 136 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -198,8 +251,8 @@ func GetPhotoTools() []mcp.Tool {
 	// Available fields for Photo: album, alt_text, alt_text_custom, backdated_time, backdated_time_granularity, can_backdate, can_delete, can_tag, created_time, event, from, height, icon, id, images, link, name, name_tags, page_story_id, picture, place, position, source, target, updated_time, webp_images, width
 	photo_get_Tool := mcp.NewTool("photo_get_",
 		mcp.WithDescription("GET  for Photo"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for Photo objects. Available fields: album, alt_text, alt_text_custom, backdated_time, backdated_time_granularity, can_backdate, can_delete, can_tag, created_time, event, from, height, icon, id, images (and 12 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for Photo objects. Available fields: album, alt_text, alt_text_custom, backdated_time, backdated_time_granularity, can_backdate, can_delete, can_tag, created_time, event, from, height, icon, id, images (and 12 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -232,29 +285,26 @@ func HandlePhoto_get_comments(ctx context.Context, request mcp.CallToolRequest) 
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: filter
-	if val := request.GetString("filter", ""); val != "" {
-		args["filter"] = val
-	}
-
-	// Optional: live_filter
-	if val := request.GetString("live_filter", ""); val != "" {
-		args["live_filter"] = val
-	}
-
-	// Optional: order
-	if val := request.GetString("order", ""); val != "" {
-		args["order"] = val
-	}
-
-	// Optional: since
-	if val := request.GetString("since", ""); val != "" {
-		args["since"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -301,71 +351,16 @@ func HandlePhoto_post_comments(ctx context.Context, request mcp.CallToolRequest)
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: attachment_id
-	if val := request.GetString("attachment_id", ""); val != "" {
-		args["attachment_id"] = val
-	}
-
-	// Optional: attachment_share_url
-	if val := request.GetString("attachment_share_url", ""); val != "" {
-		args["attachment_share_url"] = val
-	}
-
-	// Optional: attachment_url
-	if val := request.GetString("attachment_url", ""); val != "" {
-		args["attachment_url"] = val
-	}
-
-	// Optional: comment_privacy_value
-	if val := request.GetString("comment_privacy_value", ""); val != "" {
-		args["comment_privacy_value"] = val
-	}
-
-	// Optional: facepile_mentioned_ids
-	// array type - using string
-	if val := request.GetString("facepile_mentioned_ids", ""); val != "" {
-		args["facepile_mentioned_ids"] = val
-	}
-
-	// Optional: feedback_source
-	if val := request.GetString("feedback_source", ""); val != "" {
-		args["feedback_source"] = val
-	}
-
-	// Optional: is_offline
-	if val := request.GetBool("is_offline", false); val {
-		args["is_offline"] = val
-	}
-
-	// Optional: message
-	if val := request.GetString("message", ""); val != "" {
-		args["message"] = val
-	}
-
-	// Optional: nectar_module
-	if val := request.GetString("nectar_module", ""); val != "" {
-		args["nectar_module"] = val
-	}
-
-	// Optional: object_id
-	if val := request.GetString("object_id", ""); val != "" {
-		args["object_id"] = val
-	}
-
-	// Optional: parent_comment_id
-	// object type - using string
-	if val := request.GetString("parent_comment_id", ""); val != "" {
-		args["parent_comment_id"] = val
-	}
-
-	// Optional: text
-	if val := request.GetString("text", ""); val != "" {
-		args["text"] = val
-	}
-
-	// Optional: tracking
-	if val := request.GetString("tracking", ""); val != "" {
-		args["tracking"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method
@@ -397,35 +392,26 @@ func HandlePhoto_get_insights(ctx context.Context, request mcp.CallToolRequest) 
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: date_preset
-	if val := request.GetString("date_preset", ""); val != "" {
-		args["date_preset"] = val
-	}
-
-	// Optional: metric
-	// array type - using string
-	if val := request.GetString("metric", ""); val != "" {
-		args["metric"] = val
-	}
-
-	// Optional: period
-	if val := request.GetString("period", ""); val != "" {
-		args["period"] = val
-	}
-
-	// Optional: since
-	if val := request.GetString("since", ""); val != "" {
-		args["since"] = val
-	}
-
-	// Optional: until
-	if val := request.GetString("until", ""); val != "" {
-		args["until"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -473,8 +459,13 @@ func HandlePhoto_get_likes(ctx context.Context, request mcp.CallToolRequest) (*m
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -521,24 +512,16 @@ func HandlePhoto_post_likes(ctx context.Context, request mcp.CallToolRequest) (*
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: feedback_source
-	if val := request.GetString("feedback_source", ""); val != "" {
-		args["feedback_source"] = val
-	}
-
-	// Optional: nectar_module
-	if val := request.GetString("nectar_module", ""); val != "" {
-		args["nectar_module"] = val
-	}
-
-	// Optional: notify
-	if val := request.GetBool("notify", false); val {
-		args["notify"] = val
-	}
-
-	// Optional: tracking
-	if val := request.GetString("tracking", ""); val != "" {
-		args["tracking"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method
@@ -571,8 +554,13 @@ func HandlePhoto_get_sponsor_tags(ctx context.Context, request mcp.CallToolReque
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -649,8 +637,13 @@ func HandlePhoto_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Ca
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit

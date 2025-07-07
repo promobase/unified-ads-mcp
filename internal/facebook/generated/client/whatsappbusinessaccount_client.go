@@ -91,11 +91,11 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_activities(a
 // whatsappbusinessaccount_delete_assigned_users DELETE assigned_users for WhatsAppBusinessAccount
 func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_delete_assigned_users(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	user, ok := args["user"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: user")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = user // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -105,10 +105,10 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_delete_assigned_
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["user"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("user", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -145,11 +145,11 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_delete_assigned_
 // whatsappbusinessaccount_get_assigned_users GET assigned_users for WhatsAppBusinessAccount
 func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_assigned_users(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	business, ok := args["business"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: business")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = business // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -159,10 +159,10 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_assigned_use
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["business"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("business", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -223,16 +223,11 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_assigned_use
 // whatsappbusinessaccount_post_assigned_users POST assigned_users for WhatsAppBusinessAccount
 func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_assigned_users(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	tasks, ok := args["tasks"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: tasks")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = tasks // Suppress unused variable warning
-	user, ok := args["user"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: user")
-	}
-	_ = user // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -242,16 +237,10 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_assigned_us
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["tasks"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("tasks", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["user"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("user", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -355,21 +344,11 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_audiences(ar
 // whatsappbusinessaccount_get_call_analytics GET call_analytics for WhatsAppBusinessAccount
 func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_call_analytics(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	end, ok := args["end"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: end")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = end // Suppress unused variable warning
-	granularity, ok := args["granularity"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: granularity")
-	}
-	_ = granularity // Suppress unused variable warning
-	start, ok := args["start"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: start")
-	}
-	_ = start // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -379,52 +358,10 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_call_analyti
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["country_codes"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("country_codes", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["dimensions"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("dimensions", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["directions"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("directions", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["end"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("end", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["granularity"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("granularity", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["metric_types"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("metric_types", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["phone_numbers"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("phone_numbers", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["start"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("start", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -485,21 +422,11 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_call_analyti
 // whatsappbusinessaccount_get_conversation_analytics GET conversation_analytics for WhatsAppBusinessAccount
 func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_conversation_analytics(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	end, ok := args["end"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: end")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = end // Suppress unused variable warning
-	granularity, ok := args["granularity"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: granularity")
-	}
-	_ = granularity // Suppress unused variable warning
-	start, ok := args["start"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: start")
-	}
-	_ = start // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -509,64 +436,10 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_conversation
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["conversation_categories"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("conversation_categories", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["conversation_directions"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("conversation_directions", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["conversation_types"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("conversation_types", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["country_codes"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("country_codes", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["dimensions"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("dimensions", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["end"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("end", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["granularity"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("granularity", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["metric_types"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("metric_types", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["phone_numbers"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("phone_numbers", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["start"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("start", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -703,10 +576,10 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_dataset(arg
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["dataset_name"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("dataset_name", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -810,16 +683,11 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_flows(args m
 // whatsappbusinessaccount_post_flows POST flows for WhatsAppBusinessAccount
 func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_flows(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	categories, ok := args["categories"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: categories")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = categories // Suppress unused variable warning
-	name, ok := args["name"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: name")
-	}
-	_ = name // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -829,40 +697,10 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_flows(args 
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["categories"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("categories", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["clone_flow_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("clone_flow_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["endpoint_uri"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("endpoint_uri", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["flow_json"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("flow_json", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["name"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("name", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["publish"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("publish", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -899,11 +737,11 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_flows(args 
 // whatsappbusinessaccount_post_generate_payment_configuration_oauth_link POST generate_payment_configuration_oauth_link for WhatsAppBusinessAccount
 func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_generate_payment_configuration_oauth_link(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	configuration_name, ok := args["configuration_name"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: configuration_name")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = configuration_name // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -913,16 +751,10 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_generate_pa
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["configuration_name"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("configuration_name", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["redirect_url"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("redirect_url", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -1026,11 +858,11 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_message_camp
 // whatsappbusinessaccount_get_message_template_previews GET message_template_previews for WhatsAppBusinessAccount
 func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_message_template_previews(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	category, ok := args["category"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: category")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = category // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -1040,34 +872,10 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_message_temp
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["add_security_recommendation"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("add_security_recommendation", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["button_types"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("button_types", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["category"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("category", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["code_expiration_minutes"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("code_expiration_minutes", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["languages"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("languages", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -1128,11 +936,11 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_message_temp
 // whatsappbusinessaccount_delete_message_templates DELETE message_templates for WhatsAppBusinessAccount
 func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_delete_message_templates(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	name, ok := args["name"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: name")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = name // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -1142,16 +950,10 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_delete_message_t
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["hsm_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("hsm_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["name"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("name", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -1197,46 +999,10 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_message_temp
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["category"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("category", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["content"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("content", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["language"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("language", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["name"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("name", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["name_or_content"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("name_or_content", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["quality_score"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("quality_score", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["status"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("status", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -1297,21 +1063,11 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_message_temp
 // whatsappbusinessaccount_post_message_templates POST message_templates for WhatsAppBusinessAccount
 func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_message_templates(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	category, ok := args["category"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: category")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = category // Suppress unused variable warning
-	language, ok := args["language"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: language")
-	}
-	_ = language // Suppress unused variable warning
-	name, ok := args["name"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: name")
-	}
-	_ = name // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -1321,88 +1077,10 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_message_tem
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["allow_category_change"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("allow_category_change", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["category"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("category", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["components"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("components", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["cta_url_link_tracking_opted_out"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("cta_url_link_tracking_opted_out", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["degrees_of_freedom_spec"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("degrees_of_freedom_spec", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["display_format"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("display_format", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["language"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("language", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["library_template_body_inputs"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("library_template_body_inputs", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["library_template_button_inputs"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("library_template_button_inputs", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["library_template_name"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("library_template_name", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["message_send_ttl_seconds"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("message_send_ttl_seconds", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["name"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("name", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["parameter_format"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("parameter_format", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["sub_category"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("sub_category", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -1439,11 +1117,11 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_message_tem
 // whatsappbusinessaccount_post_migrate_flows POST migrate_flows for WhatsAppBusinessAccount
 func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_migrate_flows(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	source_waba_id, ok := args["source_waba_id"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: source_waba_id")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = source_waba_id // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -1453,16 +1131,10 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_migrate_flo
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["source_flow_names"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("source_flow_names", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["source_waba_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("source_waba_id", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -1499,11 +1171,11 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_migrate_flo
 // whatsappbusinessaccount_post_migrate_message_templates POST migrate_message_templates for WhatsAppBusinessAccount
 func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_migrate_message_templates(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	source_waba_id, ok := args["source_waba_id"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: source_waba_id")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = source_waba_id // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -1513,16 +1185,10 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_migrate_mes
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["page_number"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("page_number", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["source_waba_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("source_waba_id", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -1559,11 +1225,11 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_migrate_mes
 // whatsappbusinessaccount_delete_payment_configuration DELETE payment_configuration for WhatsAppBusinessAccount
 func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_delete_payment_configuration(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	configuration_name, ok := args["configuration_name"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: configuration_name")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = configuration_name // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -1573,10 +1239,10 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_delete_payment_c
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["configuration_name"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("configuration_name", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -1613,11 +1279,11 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_delete_payment_c
 // whatsappbusinessaccount_get_payment_configuration GET payment_configuration for WhatsAppBusinessAccount
 func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_payment_configuration(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	configuration_name, ok := args["configuration_name"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: configuration_name")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = configuration_name // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -1627,10 +1293,10 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_payment_conf
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["configuration_name"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("configuration_name", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -1691,11 +1357,11 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_payment_conf
 // whatsappbusinessaccount_post_payment_configuration POST payment_configuration for WhatsAppBusinessAccount
 func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_payment_configuration(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	configuration_name, ok := args["configuration_name"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: configuration_name")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = configuration_name // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -1705,46 +1371,10 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_payment_con
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["configuration_name"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("configuration_name", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["data_endpoint_url"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("data_endpoint_url", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["merchant_category_code"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("merchant_category_code", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["merchant_vpa"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("merchant_vpa", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["provider_name"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("provider_name", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["purpose_code"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("purpose_code", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["redirect_url"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("redirect_url", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -1924,34 +1554,10 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_phone_numbe
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["cc"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("cc", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["migrate_phone_number"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("migrate_phone_number", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["phone_number"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("phone_number", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["preverified_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("preverified_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["verified_name"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("verified_name", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -1988,21 +1594,11 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_phone_numbe
 // whatsappbusinessaccount_get_pricing_analytics GET pricing_analytics for WhatsAppBusinessAccount
 func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_pricing_analytics(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	end, ok := args["end"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: end")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = end // Suppress unused variable warning
-	granularity, ok := args["granularity"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: granularity")
-	}
-	_ = granularity // Suppress unused variable warning
-	start, ok := args["start"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: start")
-	}
-	_ = start // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -2012,64 +1608,10 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_pricing_anal
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["country_codes"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("country_codes", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["dimensions"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("dimensions", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["end"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("end", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["granularity"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("granularity", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["metric_types"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("metric_types", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["phone_numbers"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("phone_numbers", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["pricing_categories"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("pricing_categories", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["pricing_types"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("pricing_types", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["start"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("start", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["tiers"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("tiers", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -2130,11 +1672,11 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_pricing_anal
 // whatsappbusinessaccount_delete_product_catalogs DELETE product_catalogs for WhatsAppBusinessAccount
 func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_delete_product_catalogs(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	catalog_id, ok := args["catalog_id"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: catalog_id")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = catalog_id // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -2144,10 +1686,10 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_delete_product_c
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["catalog_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("catalog_id", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -2251,11 +1793,11 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_product_cata
 // whatsappbusinessaccount_post_product_catalogs POST product_catalogs for WhatsAppBusinessAccount
 func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_product_catalogs(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	catalog_id, ok := args["catalog_id"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: catalog_id")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = catalog_id // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -2265,10 +1807,10 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_product_cat
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["catalog_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("catalog_id", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -2381,10 +1923,10 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_set_obo_mob
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["solution_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("solution_id", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -2430,16 +1972,10 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_set_solutio
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["app_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("app_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["solution_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("solution_id", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -2661,16 +2197,10 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_subscribed_
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["override_callback_uri"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("override_callback_uri", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["verify_token"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("verify_token", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -2707,26 +2237,11 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_subscribed_
 // whatsappbusinessaccount_get_template_analytics GET template_analytics for WhatsAppBusinessAccount
 func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_template_analytics(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	end, ok := args["end"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: end")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = end // Suppress unused variable warning
-	granularity, ok := args["granularity"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: granularity")
-	}
-	_ = granularity // Suppress unused variable warning
-	start, ok := args["start"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: start")
-	}
-	_ = start // Suppress unused variable warning
-	template_ids, ok := args["template_ids"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: template_ids")
-	}
-	_ = template_ids // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -2736,40 +2251,10 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_template_ana
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["end"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("end", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["granularity"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("granularity", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["metric_types"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("metric_types", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["product_type"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("product_type", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["start"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("start", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["template_ids"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("template_ids", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -2830,26 +2315,11 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_template_ana
 // whatsappbusinessaccount_get_template_group_analytics GET template_group_analytics for WhatsAppBusinessAccount
 func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_template_group_analytics(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	end, ok := args["end"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: end")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = end // Suppress unused variable warning
-	granularity, ok := args["granularity"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: granularity")
-	}
-	_ = granularity // Suppress unused variable warning
-	start, ok := args["start"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: start")
-	}
-	_ = start // Suppress unused variable warning
-	template_group_ids, ok := args["template_group_ids"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: template_group_ids")
-	}
-	_ = template_group_ids // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -2859,34 +2329,10 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_template_gro
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["end"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("end", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["granularity"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("granularity", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["metric_types"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("metric_types", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["start"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("start", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["template_group_ids"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("template_group_ids", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -3014,21 +2460,11 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_template_gro
 // whatsappbusinessaccount_post_template_groups POST template_groups for WhatsAppBusinessAccount
 func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_template_groups(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	description, ok := args["description"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: description")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = description // Suppress unused variable warning
-	name, ok := args["name"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: name")
-	}
-	_ = name // Suppress unused variable warning
-	whatsapp_business_templates, ok := args["whatsapp_business_templates"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: whatsapp_business_templates")
-	}
-	_ = whatsapp_business_templates // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -3038,22 +2474,10 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_template_gr
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["description"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("description", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["name"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("name", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["whatsapp_business_templates"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("whatsapp_business_templates", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -3099,16 +2523,10 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_template_per
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["name"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("name", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["template_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("template_id", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -3169,26 +2587,11 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_template_per
 // whatsappbusinessaccount_post_upsert_message_templates POST upsert_message_templates for WhatsAppBusinessAccount
 func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_upsert_message_templates(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	category, ok := args["category"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: category")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = category // Suppress unused variable warning
-	components, ok := args["components"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: components")
-	}
-	_ = components // Suppress unused variable warning
-	languages, ok := args["languages"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: languages")
-	}
-	_ = languages // Suppress unused variable warning
-	name, ok := args["name"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: name")
-	}
-	_ = name // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -3198,34 +2601,10 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_upsert_mess
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["category"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("category", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["components"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("components", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["languages"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("languages", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["message_send_ttl_seconds"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("message_send_ttl_seconds", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["name"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("name", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -3271,16 +2650,10 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_welcome_mess
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["app_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("app_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["sequence_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("sequence_id", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -3417,10 +2790,10 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_(args map[s
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["is_enabled_for_insights"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("is_enabled_for_insights", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 

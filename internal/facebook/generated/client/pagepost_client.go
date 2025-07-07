@@ -100,28 +100,10 @@ func (c *PagePostClient) Pagepost_get_comments(args map[string]interface{}) (int
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["filter"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("filter", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["live_filter"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("live_filter", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["order"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("order", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["since"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("since", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -191,70 +173,10 @@ func (c *PagePostClient) Pagepost_post_comments(args map[string]interface{}) (in
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["attachment_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("attachment_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["attachment_share_url"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("attachment_share_url", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["attachment_url"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("attachment_url", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["comment"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("comment", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["comment_privacy_value"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("comment_privacy_value", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["feedback_source"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("feedback_source", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["message"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("message", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["nectar_module"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("nectar_module", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["parent_comment_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("parent_comment_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["post_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("post_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["tracking"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("tracking", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -367,34 +289,10 @@ func (c *PagePostClient) Pagepost_get_insights(args map[string]interface{}) (int
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["date_preset"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("date_preset", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["metric"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("metric", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["period"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("period", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["since"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("since", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["until"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("until", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -464,16 +362,10 @@ func (c *PagePostClient) Pagepost_delete_likes(args map[string]interface{}) (int
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["nectar_module"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("nectar_module", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["tracking"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("tracking", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -586,22 +478,10 @@ func (c *PagePostClient) Pagepost_post_likes(args map[string]interface{}) (inter
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["feedback_source"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("feedback_source", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["nectar_module"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("nectar_module", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["tracking"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("tracking", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -647,10 +527,10 @@ func (c *PagePostClient) Pagepost_get_reactions(args map[string]interface{}) (in
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["type"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("type", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -963,16 +843,10 @@ func (c *PagePostClient) Pagepost_get_(args map[string]interface{}) (interface{}
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["primary_fb_page_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("primary_fb_page_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["primary_ig_user_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("primary_ig_user_id", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -1042,190 +916,10 @@ func (c *PagePostClient) Pagepost_post_(args map[string]interface{}) (interface{
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["attached_media"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("attached_media", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["backdated_time"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("backdated_time", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["backdated_time_granularity"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("backdated_time_granularity", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["composer_session_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("composer_session_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["direct_share_status"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("direct_share_status", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["explicitly_added_mentionee_ids"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("explicitly_added_mentionee_ids", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["feed_story_visibility"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("feed_story_visibility", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["is_explicit_location"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("is_explicit_location", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["is_hidden"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("is_hidden", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["is_pinned"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("is_pinned", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["is_published"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("is_published", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["message"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("message", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["og_action_type_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("og_action_type_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["og_hide_object_attachment"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("og_hide_object_attachment", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["og_icon_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("og_icon_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["og_object_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("og_object_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["og_phrase"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("og_phrase", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["og_set_profile_badge"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("og_set_profile_badge", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["og_suggestion_mechanism"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("og_suggestion_mechanism", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["place"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("place", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["privacy"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("privacy", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["product_item"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("product_item", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["scheduled_publish_time"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("scheduled_publish_time", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["should_sync_product_edit"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("should_sync_product_edit", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["source_type"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("source_type", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["sponsor_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("sponsor_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["sponsor_relationship"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("sponsor_relationship", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["tags"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("tags", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["text_format_preset_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("text_format_preset_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["timeline_visibility"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("timeline_visibility", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["tracking"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("tracking", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 

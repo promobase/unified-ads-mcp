@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -17,23 +18,38 @@ func GetCustomAudienceTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// customaudience_delete_adaccounts tool
+	// Params object accepts: adaccounts (list<string>)
 	customaudience_delete_adaccountsTool := mcp.NewTool("customaudience_delete_adaccounts",
 		mcp.WithDescription("DELETE adaccounts for CustomAudience"),
-		mcp.WithString("adaccounts",
-			mcp.Description("adaccounts parameter for adaccounts"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"adaccounts": map[string]any{
+					"type":        "array",
+					"description": "adaccounts parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+			}),
+			mcp.Description("Parameters object containing: adaccounts (array<string>)"),
 		),
 	)
 	tools = append(tools, customaudience_delete_adaccountsTool)
 
 	// customaudience_get_adaccounts tool
 	// Available fields for CustomAudienceAdAccount: id
+	// Params object accepts: permissions (string)
 	customaudience_get_adaccountsTool := mcp.NewTool("customaudience_get_adaccounts",
 		mcp.WithDescription("GET adaccounts for CustomAudience"),
-		mcp.WithString("permissions",
-			mcp.Description("permissions parameter for adaccounts"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"permissions": map[string]any{
+					"type":        "string",
+					"description": "permissions parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: permissions (string)"),
 		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for CustomAudienceAdAccount objects. Available fields: id"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for CustomAudienceAdAccount objects. Available fields: id"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -48,35 +64,57 @@ func GetCustomAudienceTools() []mcp.Tool {
 	tools = append(tools, customaudience_get_adaccountsTool)
 
 	// customaudience_post_adaccounts tool
+	// Params object accepts: adaccounts (list<string>), permissions (string), relationship_type (list<string>), replace (bool)
 	customaudience_post_adaccountsTool := mcp.NewTool("customaudience_post_adaccounts",
 		mcp.WithDescription("POST adaccounts for CustomAudience"),
-		mcp.WithString("adaccounts",
-			mcp.Description("adaccounts parameter for adaccounts"),
-		),
-		mcp.WithString("permissions",
-			mcp.Description("permissions parameter for adaccounts"),
-		),
-		mcp.WithString("relationship_type",
-			mcp.Description("relationship_type parameter for adaccounts"),
-		),
-		mcp.WithBoolean("replace",
-			mcp.Description("replace parameter for adaccounts"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"adaccounts": map[string]any{
+					"type":        "array",
+					"description": "adaccounts parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+				"permissions": map[string]any{
+					"type":        "string",
+					"description": "permissions parameter",
+				},
+				"relationship_type": map[string]any{
+					"type":        "array",
+					"description": "relationship_type parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+				"replace": map[string]any{
+					"type":        "boolean",
+					"description": "replace parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: adaccounts (array<string>), permissions (string), relationship_type (array<string>), replace (boolean)"),
 		),
 	)
 	tools = append(tools, customaudience_post_adaccountsTool)
 
 	// customaudience_get_ads tool
 	// Available fields for Ad: account_id, ad_active_time, ad_review_feedback, ad_schedule_end_time, ad_schedule_start_time, adlabels, adset, adset_id, bid_amount, bid_info, bid_type, campaign, campaign_id, configured_status, conversion_domain, conversion_specs, created_time, creative, creative_asset_groups_spec, demolink_hash, display_sequence, effective_status, engagement_audience, failed_delivery_checks, id, issues_info, last_updated_by_app_id, name, placement, preview_shareable_link, priority, recommendations, source_ad, source_ad_id, status, targeting, tracking_and_conversion_with_defaults, tracking_specs, updated_time
+	// Params object accepts: effective_status (list<string>), status (list<string>)
 	customaudience_get_adsTool := mcp.NewTool("customaudience_get_ads",
 		mcp.WithDescription("GET ads for CustomAudience"),
-		mcp.WithString("effective_status",
-			mcp.Description("effective_status parameter for ads"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"effective_status": map[string]any{
+					"type":        "array",
+					"description": "effective_status parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+				"status": map[string]any{
+					"type":        "array",
+					"description": "status parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+			}),
+			mcp.Description("Parameters object containing: effective_status (array<string>), status (array<string>)"),
 		),
-		mcp.WithString("status",
-			mcp.Description("status parameter for ads"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for Ad objects. Available fields: account_id, ad_active_time, ad_review_feedback, ad_schedule_end_time, ad_schedule_start_time, adlabels, adset, adset_id, bid_amount, bid_info, bid_type, campaign, campaign_id, configured_status, conversion_domain (and 24 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for Ad objects. Available fields: account_id, ad_active_time, ad_review_feedback, ad_schedule_end_time, ad_schedule_start_time, adlabels, adset, adset_id, bid_amount, bid_info, bid_type, campaign, campaign_id, configured_status, conversion_domain (and 24 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -92,28 +130,40 @@ func GetCustomAudienceTools() []mcp.Tool {
 
 	// customaudience_get_health tool
 	// Available fields for CustomAudienceHealth: health
+	// Params object accepts: calculated_date (string), processed_date (string), value_aggregation_duration (unsigned int), value_country (string), value_currency (string), value_version (unsigned int)
 	customaudience_get_healthTool := mcp.NewTool("customaudience_get_health",
 		mcp.WithDescription("GET health for CustomAudience"),
-		mcp.WithString("calculated_date",
-			mcp.Description("calculated_date parameter for health"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"calculated_date": map[string]any{
+					"type":        "string",
+					"description": "calculated_date parameter",
+				},
+				"processed_date": map[string]any{
+					"type":        "string",
+					"description": "processed_date parameter",
+				},
+				"value_aggregation_duration": map[string]any{
+					"type":        "integer",
+					"description": "value_aggregation_duration parameter",
+				},
+				"value_country": map[string]any{
+					"type":        "string",
+					"description": "value_country parameter",
+				},
+				"value_currency": map[string]any{
+					"type":        "string",
+					"description": "value_currency parameter",
+				},
+				"value_version": map[string]any{
+					"type":        "integer",
+					"description": "value_version parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: calculated_date (string), processed_date (string), value_aggregation_duration (integer), value_country (string), value_currency (string), value_version (integer)"),
 		),
-		mcp.WithString("processed_date",
-			mcp.Description("processed_date parameter for health"),
-		),
-		mcp.WithNumber("value_aggregation_duration",
-			mcp.Description("value_aggregation_duration parameter for health"),
-		),
-		mcp.WithString("value_country",
-			mcp.Description("value_country parameter for health"),
-		),
-		mcp.WithString("value_currency",
-			mcp.Description("value_currency parameter for health"),
-		),
-		mcp.WithNumber("value_version",
-			mcp.Description("value_version parameter for health"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for CustomAudienceHealth objects. Available fields: health"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for CustomAudienceHealth objects. Available fields: health"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -129,13 +179,21 @@ func GetCustomAudienceTools() []mcp.Tool {
 
 	// customaudience_get_salts tool
 	// Available fields for CustomAudienceSalts: app_id, public_key, salts, user_id
+	// Params object accepts: params (list<string>)
 	customaudience_get_saltsTool := mcp.NewTool("customaudience_get_salts",
 		mcp.WithDescription("GET salts for CustomAudience"),
-		mcp.WithString("params",
-			mcp.Description("params parameter for salts"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"params": map[string]any{
+					"type":        "array",
+					"description": "params parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+			}),
+			mcp.Description("Parameters object containing: params (array<string>)"),
 		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for CustomAudienceSalts objects. Available fields: app_id, public_key, salts, user_id"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for CustomAudienceSalts objects. Available fields: app_id, public_key, salts, user_id"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -150,32 +208,49 @@ func GetCustomAudienceTools() []mcp.Tool {
 	tools = append(tools, customaudience_get_saltsTool)
 
 	// customaudience_post_salts tool
+	// Params object accepts: salt (string), valid_from (datetime), valid_to (datetime)
 	customaudience_post_saltsTool := mcp.NewTool("customaudience_post_salts",
 		mcp.WithDescription("POST salts for CustomAudience"),
-		mcp.WithString("salt",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("salt parameter for salts"),
-		),
-		mcp.WithString("valid_from",
-			mcp.Required(),
-			mcp.Description("valid_from parameter for salts"),
-		),
-		mcp.WithString("valid_to",
-			mcp.Required(),
-			mcp.Description("valid_to parameter for salts"),
+			mcp.Properties(map[string]any{
+				"salt": map[string]any{
+					"type":        "string",
+					"description": "salt parameter",
+					"required":    true,
+				},
+				"valid_from": map[string]any{
+					"type":        "string",
+					"description": "valid_from parameter",
+					"required":    true,
+				},
+				"valid_to": map[string]any{
+					"type":        "string",
+					"description": "valid_to parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: salt (string) [required], valid_from (datetime) [required], valid_to (datetime) [required]"),
 		),
 	)
 	tools = append(tools, customaudience_post_saltsTool)
 
 	// customaudience_get_sessions tool
 	// Available fields for CustomAudienceSession: end_time, num_invalid_entries, num_matched, num_received, progress, session_id, stage, start_time
+	// Params object accepts: session_id (unsigned int)
 	customaudience_get_sessionsTool := mcp.NewTool("customaudience_get_sessions",
 		mcp.WithDescription("GET sessions for CustomAudience"),
-		mcp.WithNumber("session_id",
-			mcp.Description("session_id parameter for sessions"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"session_id": map[string]any{
+					"type":        "integer",
+					"description": "session_id parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: session_id (integer)"),
 		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for CustomAudienceSession objects. Available fields: end_time, num_invalid_entries, num_matched, num_received, progress, session_id, stage, start_time"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for CustomAudienceSession objects. Available fields: end_time, num_invalid_entries, num_matched, num_received, progress, session_id, stage, start_time"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -193,8 +268,8 @@ func GetCustomAudienceTools() []mcp.Tool {
 	// Available fields for CustomAudiencesharedAccountInfo: account_id, account_name, business_id, business_name, sharing_status
 	customaudience_get_shared_account_infoTool := mcp.NewTool("customaudience_get_shared_account_info",
 		mcp.WithDescription("GET shared_account_info for CustomAudience"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for CustomAudiencesharedAccountInfo objects. Available fields: account_id, account_name, business_id, business_name, sharing_status"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for CustomAudiencesharedAccountInfo objects. Available fields: account_id, account_name, business_id, business_name, sharing_status"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -209,48 +284,76 @@ func GetCustomAudienceTools() []mcp.Tool {
 	tools = append(tools, customaudience_get_shared_account_infoTool)
 
 	// customaudience_delete_users tool
+	// Params object accepts: namespace (string), payload (Object), session (Object)
 	customaudience_delete_usersTool := mcp.NewTool("customaudience_delete_users",
 		mcp.WithDescription("DELETE users for CustomAudience"),
-		mcp.WithString("namespace",
-			mcp.Description("namespace parameter for users"),
-		),
-		mcp.WithString("payload",
-			mcp.Description("payload parameter for users"),
-		),
-		mcp.WithString("session",
-			mcp.Description("session parameter for users"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"namespace": map[string]any{
+					"type":        "string",
+					"description": "namespace parameter",
+				},
+				"payload": map[string]any{
+					"type":        "object",
+					"description": "payload parameter",
+				},
+				"session": map[string]any{
+					"type":        "object",
+					"description": "session parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: namespace (string), payload (object), session (object)"),
 		),
 	)
 	tools = append(tools, customaudience_delete_usersTool)
 
 	// customaudience_post_users tool
+	// Params object accepts: namespace (string), payload (Object), session (Object)
 	customaudience_post_usersTool := mcp.NewTool("customaudience_post_users",
 		mcp.WithDescription("POST users for CustomAudience"),
-		mcp.WithString("namespace",
-			mcp.Description("namespace parameter for users"),
-		),
-		mcp.WithString("payload",
-			mcp.Description("payload parameter for users"),
-		),
-		mcp.WithString("session",
-			mcp.Description("session parameter for users"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"namespace": map[string]any{
+					"type":        "string",
+					"description": "namespace parameter",
+				},
+				"payload": map[string]any{
+					"type":        "object",
+					"description": "payload parameter",
+				},
+				"session": map[string]any{
+					"type":        "object",
+					"description": "session parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: namespace (string), payload (object), session (object)"),
 		),
 	)
 	tools = append(tools, customaudience_post_usersTool)
 
 	// customaudience_post_usersreplace tool
+	// Params object accepts: namespace (string), payload (Object), session (Object)
 	customaudience_post_usersreplaceTool := mcp.NewTool("customaudience_post_usersreplace",
 		mcp.WithDescription("POST usersreplace for CustomAudience"),
-		mcp.WithString("namespace",
-			mcp.Description("namespace parameter for usersreplace"),
-		),
-		mcp.WithString("payload",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("payload parameter for usersreplace"),
-		),
-		mcp.WithString("session",
-			mcp.Required(),
-			mcp.Description("session parameter for usersreplace"),
+			mcp.Properties(map[string]any{
+				"namespace": map[string]any{
+					"type":        "string",
+					"description": "namespace parameter",
+				},
+				"payload": map[string]any{
+					"type":        "object",
+					"description": "payload parameter",
+					"required":    true,
+				},
+				"session": map[string]any{
+					"type":        "object",
+					"description": "session parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: namespace (string), payload (object) [required], session (object) [required]"),
 		),
 	)
 	tools = append(tools, customaudience_post_usersreplaceTool)
@@ -263,22 +366,35 @@ func GetCustomAudienceTools() []mcp.Tool {
 
 	// customaudience_get_ tool
 	// Available fields for CustomAudience: account_id, approximate_count_lower_bound, approximate_count_upper_bound, customer_file_source, data_source, data_source_types, datafile_custom_audience_uploading_status, delete_time, delivery_status, description, excluded_custom_audiences, external_event_source, household_audience, id, included_custom_audiences, is_eligible_for_sac_campaigns, is_household, is_snapshot, is_value_based, lookalike_audience_ids, lookalike_spec, name, operation_status, opt_out_link, owner_business, page_deletion_marked_delete_time, permission_for_actions, pixel_id, regulated_audience_spec, retention_days, rev_share_policy_id, rule, rule_aggregation, rule_v2, seed_audience, sharing_status, subtype, time_content_updated, time_created, time_updated
+	// Params object accepts: ad_account_id (string), special_ad_categories (list<string>), special_ad_category_countries (list<string>), target_countries (list<string>)
 	customaudience_get_Tool := mcp.NewTool("customaudience_get_",
 		mcp.WithDescription("GET  for CustomAudience"),
-		mcp.WithString("ad_account_id",
-			mcp.Description("ad_account_id parameter for "),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"ad_account_id": map[string]any{
+					"type":        "string",
+					"description": "ad_account_id parameter",
+				},
+				"special_ad_categories": map[string]any{
+					"type":        "array",
+					"description": "special_ad_categories parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+				"special_ad_category_countries": map[string]any{
+					"type":        "array",
+					"description": "special_ad_category_countries parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+				"target_countries": map[string]any{
+					"type":        "array",
+					"description": "target_countries parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+			}),
+			mcp.Description("Parameters object containing: ad_account_id (string), special_ad_categories (array<string>), special_ad_category_countries (array<string>), target_countries (array<string>)"),
 		),
-		mcp.WithString("special_ad_categories",
-			mcp.Description("special_ad_categories parameter for "),
-		),
-		mcp.WithString("special_ad_category_countries",
-			mcp.Description("special_ad_category_countries parameter for "),
-		),
-		mcp.WithString("target_countries",
-			mcp.Description("target_countries parameter for "),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for CustomAudience objects. Available fields: account_id, approximate_count_lower_bound, approximate_count_upper_bound, customer_file_source, data_source, data_source_types, datafile_custom_audience_uploading_status, delete_time, delivery_status, description, excluded_custom_audiences, external_event_source, household_audience, id, included_custom_audiences (and 25 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for CustomAudience objects. Available fields: account_id, approximate_count_lower_bound, approximate_count_upper_bound, customer_file_source, data_source, data_source_types, datafile_custom_audience_uploading_status, delete_time, delivery_status, description, excluded_custom_audiences, external_event_source, household_audience, id, included_custom_audiences (and 25 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -293,76 +409,109 @@ func GetCustomAudienceTools() []mcp.Tool {
 	tools = append(tools, customaudience_get_Tool)
 
 	// customaudience_post_ tool
+	// Params object accepts: allowed_domains (list<string>), claim_objective (customaudience_claim_objective), content_type (customaudience_content_type), countries (string), customer_file_source (customaudience_customer_file_source), description (string), enable_fetch_or_create (bool), event_source_group (string), event_sources (list<map>), exclusions (list<Object>), inclusions (list<Object>), lookalike_spec (string), name (string), opt_out_link (string), parent_audience_id (unsigned int), product_set_id (string), retention_days (unsigned int), rev_share_policy_id (unsigned int), rule (string), rule_aggregation (string), tags (list<string>), use_in_campaigns (bool)
 	customaudience_post_Tool := mcp.NewTool("customaudience_post_",
 		mcp.WithDescription("POST  for CustomAudience"),
-		mcp.WithString("allowed_domains",
-			mcp.Description("allowed_domains parameter for "),
-		),
-		mcp.WithString("claim_objective",
-			mcp.Description("claim_objective parameter for "),
-			mcp.Enum("AUTOMOTIVE_MODEL", "COLLABORATIVE_ADS", "HOME_LISTING", "MEDIA_TITLE", "PRODUCT", "TRAVEL", "VEHICLE", "VEHICLE_OFFER"),
-		),
-		mcp.WithString("content_type",
-			mcp.Description("content_type parameter for "),
-			mcp.Enum("AUTOMOTIVE_MODEL", "DESTINATION", "FLIGHT", "GENERIC", "HOME_LISTING", "HOTEL", "LOCAL_SERVICE_BUSINESS", "MEDIA_TITLE", "OFFLINE_PRODUCT", "PRODUCT", "VEHICLE", "VEHICLE_OFFER"),
-		),
-		mcp.WithString("countries",
-			mcp.Description("countries parameter for "),
-		),
-		mcp.WithString("customer_file_source",
-			mcp.Description("customer_file_source parameter for "),
-			mcp.Enum("BOTH_USER_AND_PARTNER_PROVIDED", "PARTNER_PROVIDED_ONLY", "USER_PROVIDED_ONLY"),
-		),
-		mcp.WithString("description",
-			mcp.Description("description parameter for "),
-		),
-		mcp.WithBoolean("enable_fetch_or_create",
-			mcp.Description("enable_fetch_or_create parameter for "),
-		),
-		mcp.WithString("event_source_group",
-			mcp.Description("event_source_group parameter for "),
-		),
-		mcp.WithString("event_sources",
-			mcp.Description("event_sources parameter for "),
-		),
-		mcp.WithString("exclusions",
-			mcp.Description("exclusions parameter for "),
-		),
-		mcp.WithString("inclusions",
-			mcp.Description("inclusions parameter for "),
-		),
-		mcp.WithString("lookalike_spec",
-			mcp.Description("lookalike_spec parameter for "),
-		),
-		mcp.WithString("name",
-			mcp.Description("name parameter for "),
-		),
-		mcp.WithString("opt_out_link",
-			mcp.Description("opt_out_link parameter for "),
-		),
-		mcp.WithNumber("parent_audience_id",
-			mcp.Description("parent_audience_id parameter for "),
-		),
-		mcp.WithString("product_set_id",
-			mcp.Description("product_set_id parameter for "),
-		),
-		mcp.WithNumber("retention_days",
-			mcp.Description("retention_days parameter for "),
-		),
-		mcp.WithNumber("rev_share_policy_id",
-			mcp.Description("rev_share_policy_id parameter for "),
-		),
-		mcp.WithString("rule",
-			mcp.Description("rule parameter for "),
-		),
-		mcp.WithString("rule_aggregation",
-			mcp.Description("rule_aggregation parameter for "),
-		),
-		mcp.WithString("tags",
-			mcp.Description("tags parameter for "),
-		),
-		mcp.WithBoolean("use_in_campaigns",
-			mcp.Description("use_in_campaigns parameter for "),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"allowed_domains": map[string]any{
+					"type":        "array",
+					"description": "allowed_domains parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+				"claim_objective": map[string]any{
+					"type":        "string",
+					"description": "claim_objective parameter",
+					"enum":        []string{"AUTOMOTIVE_MODEL", "COLLABORATIVE_ADS", "HOME_LISTING", "MEDIA_TITLE", "PRODUCT", "TRAVEL", "VEHICLE", "VEHICLE_OFFER"},
+				},
+				"content_type": map[string]any{
+					"type":        "string",
+					"description": "content_type parameter",
+					"enum":        []string{"AUTOMOTIVE_MODEL", "DESTINATION", "FLIGHT", "GENERIC", "HOME_LISTING", "HOTEL", "LOCAL_SERVICE_BUSINESS", "MEDIA_TITLE", "OFFLINE_PRODUCT", "PRODUCT", "VEHICLE", "VEHICLE_OFFER"},
+				},
+				"countries": map[string]any{
+					"type":        "string",
+					"description": "countries parameter",
+				},
+				"customer_file_source": map[string]any{
+					"type":        "string",
+					"description": "customer_file_source parameter",
+					"enum":        []string{"BOTH_USER_AND_PARTNER_PROVIDED", "PARTNER_PROVIDED_ONLY", "USER_PROVIDED_ONLY"},
+				},
+				"description": map[string]any{
+					"type":        "string",
+					"description": "description parameter",
+				},
+				"enable_fetch_or_create": map[string]any{
+					"type":        "boolean",
+					"description": "enable_fetch_or_create parameter",
+				},
+				"event_source_group": map[string]any{
+					"type":        "string",
+					"description": "event_source_group parameter",
+				},
+				"event_sources": map[string]any{
+					"type":        "array",
+					"description": "event_sources parameter",
+					"items":       map[string]any{"type": "object"},
+				},
+				"exclusions": map[string]any{
+					"type":        "array",
+					"description": "exclusions parameter",
+					"items":       map[string]any{"type": "object"},
+				},
+				"inclusions": map[string]any{
+					"type":        "array",
+					"description": "inclusions parameter",
+					"items":       map[string]any{"type": "object"},
+				},
+				"lookalike_spec": map[string]any{
+					"type":        "string",
+					"description": "lookalike_spec parameter",
+				},
+				"name": map[string]any{
+					"type":        "string",
+					"description": "name parameter",
+				},
+				"opt_out_link": map[string]any{
+					"type":        "string",
+					"description": "opt_out_link parameter",
+				},
+				"parent_audience_id": map[string]any{
+					"type":        "integer",
+					"description": "parent_audience_id parameter",
+				},
+				"product_set_id": map[string]any{
+					"type":        "string",
+					"description": "product_set_id parameter",
+				},
+				"retention_days": map[string]any{
+					"type":        "integer",
+					"description": "retention_days parameter",
+				},
+				"rev_share_policy_id": map[string]any{
+					"type":        "integer",
+					"description": "rev_share_policy_id parameter",
+				},
+				"rule": map[string]any{
+					"type":        "string",
+					"description": "rule parameter",
+				},
+				"rule_aggregation": map[string]any{
+					"type":        "string",
+					"description": "rule_aggregation parameter",
+				},
+				"tags": map[string]any{
+					"type":        "array",
+					"description": "tags parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+				"use_in_campaigns": map[string]any{
+					"type":        "boolean",
+					"description": "use_in_campaigns parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: allowed_domains (array<string>), claim_objective (customaudience_claim_objective) [AUTOMOTIVE_MODEL, COLLABORATIVE_ADS, HOME_LISTING, MEDIA_TITLE, PRODUCT, ...], content_type (customaudience_content_type) [AUTOMOTIVE_MODEL, DESTINATION, FLIGHT, GENERIC, HOME_LISTING, ...], countries (string), customer_file_source (customaudience_customer_file_source) [BOTH_USER_AND_PARTNER_PROVIDED, PARTNER_PROVIDED_ONLY, USER_PROVIDED_ONLY], description (string), enable_fetch_or_create (boolean), event_source_group (string), event_sources (array<object>), exclusions (array<object>), inclusions (array<object>), lookalike_spec (string), name (string), opt_out_link (string), parent_audience_id (integer), product_set_id (string), retention_days (integer), rev_share_policy_id (integer), rule (string), rule_aggregation (string), tags (array<string>), use_in_campaigns (boolean)"),
 		),
 	)
 	tools = append(tools, customaudience_post_Tool)
@@ -386,10 +535,16 @@ func HandleCustomaudience_delete_adaccounts(ctx context.Context, request mcp.Cal
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: adaccounts
-	// array type - using string
-	if val := request.GetString("adaccounts", ""); val != "" {
-		args["adaccounts"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method
@@ -421,14 +576,26 @@ func HandleCustomaudience_get_adaccounts(ctx context.Context, request mcp.CallTo
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: permissions
-	if val := request.GetString("permissions", ""); val != "" {
-		args["permissions"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -475,26 +642,16 @@ func HandleCustomaudience_post_adaccounts(ctx context.Context, request mcp.CallT
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: adaccounts
-	// array type - using string
-	if val := request.GetString("adaccounts", ""); val != "" {
-		args["adaccounts"] = val
-	}
-
-	// Optional: permissions
-	if val := request.GetString("permissions", ""); val != "" {
-		args["permissions"] = val
-	}
-
-	// Optional: relationship_type
-	// array type - using string
-	if val := request.GetString("relationship_type", ""); val != "" {
-		args["relationship_type"] = val
-	}
-
-	// Optional: replace
-	if val := request.GetBool("replace", false); val {
-		args["replace"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method
@@ -526,21 +683,26 @@ func HandleCustomaudience_get_ads(ctx context.Context, request mcp.CallToolReque
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: effective_status
-	// array type - using string
-	if val := request.GetString("effective_status", ""); val != "" {
-		args["effective_status"] = val
-	}
-
-	// Optional: status
-	// array type - using string
-	if val := request.GetString("status", ""); val != "" {
-		args["status"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -587,39 +749,26 @@ func HandleCustomaudience_get_health(ctx context.Context, request mcp.CallToolRe
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: calculated_date
-	if val := request.GetString("calculated_date", ""); val != "" {
-		args["calculated_date"] = val
-	}
-
-	// Optional: processed_date
-	if val := request.GetString("processed_date", ""); val != "" {
-		args["processed_date"] = val
-	}
-
-	// Optional: value_aggregation_duration
-	if val := request.GetInt("value_aggregation_duration", 0); val != 0 {
-		args["value_aggregation_duration"] = val
-	}
-
-	// Optional: value_country
-	if val := request.GetString("value_country", ""); val != "" {
-		args["value_country"] = val
-	}
-
-	// Optional: value_currency
-	if val := request.GetString("value_currency", ""); val != "" {
-		args["value_currency"] = val
-	}
-
-	// Optional: value_version
-	if val := request.GetInt("value_version", 0); val != 0 {
-		args["value_version"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -667,14 +816,25 @@ func HandleCustomaudience_get_salts(ctx context.Context, request mcp.CallToolReq
 	args := make(map[string]interface{})
 
 	// Optional: params
-	// array type - using string
+	// Object parameter - expecting JSON string
 	if val := request.GetString("params", ""); val != "" {
-		args["params"] = val
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -721,26 +881,19 @@ func HandleCustomaudience_post_salts(ctx context.Context, request mcp.CallToolRe
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: salt
-	salt, err := request.RequireString("salt")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter salt: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["salt"] = salt
-
-	// Required: valid_from
-	valid_from, err := request.RequireString("valid_from")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter valid_from: %v", err)), nil
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
-	args["valid_from"] = valid_from
-
-	// Required: valid_to
-	valid_to, err := request.RequireString("valid_to")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter valid_to: %v", err)), nil
+	for key, value := range paramsObj {
+		args[key] = value
 	}
-	args["valid_to"] = valid_to
 
 	// Call the client method
 	result, err := client.Customaudience_post_salts(args)
@@ -771,14 +924,26 @@ func HandleCustomaudience_get_sessions(ctx context.Context, request mcp.CallTool
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: session_id
-	if val := request.GetInt("session_id", 0); val != 0 {
-		args["session_id"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -826,8 +991,13 @@ func HandleCustomaudience_get_shared_account_info(ctx context.Context, request m
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -874,21 +1044,16 @@ func HandleCustomaudience_delete_users(ctx context.Context, request mcp.CallTool
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: namespace
-	if val := request.GetString("namespace", ""); val != "" {
-		args["namespace"] = val
-	}
-
-	// Optional: payload
-	// object type - using string
-	if val := request.GetString("payload", ""); val != "" {
-		args["payload"] = val
-	}
-
-	// Optional: session
-	// object type - using string
-	if val := request.GetString("session", ""); val != "" {
-		args["session"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method
@@ -920,21 +1085,16 @@ func HandleCustomaudience_post_users(ctx context.Context, request mcp.CallToolRe
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: namespace
-	if val := request.GetString("namespace", ""); val != "" {
-		args["namespace"] = val
-	}
-
-	// Optional: payload
-	// object type - using string
-	if val := request.GetString("payload", ""); val != "" {
-		args["payload"] = val
-	}
-
-	// Optional: session
-	// object type - using string
-	if val := request.GetString("session", ""); val != "" {
-		args["session"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method
@@ -966,24 +1126,19 @@ func HandleCustomaudience_post_usersreplace(ctx context.Context, request mcp.Cal
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: namespace
-	if val := request.GetString("namespace", ""); val != "" {
-		args["namespace"] = val
-	}
-
-	// Required: payload
-	payload, err := request.RequireString("payload")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter payload: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["payload"] = payload
-
-	// Required: session
-	session, err := request.RequireString("session")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter session: %v", err)), nil
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
-	args["session"] = session
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Customaudience_post_usersreplace(args)
@@ -1043,32 +1198,26 @@ func HandleCustomaudience_get_(ctx context.Context, request mcp.CallToolRequest)
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: ad_account_id
-	if val := request.GetString("ad_account_id", ""); val != "" {
-		args["ad_account_id"] = val
-	}
-
-	// Optional: special_ad_categories
-	// array type - using string
-	if val := request.GetString("special_ad_categories", ""); val != "" {
-		args["special_ad_categories"] = val
-	}
-
-	// Optional: special_ad_category_countries
-	// array type - using string
-	if val := request.GetString("special_ad_category_countries", ""); val != "" {
-		args["special_ad_category_countries"] = val
-	}
-
-	// Optional: target_countries
-	// array type - using string
-	if val := request.GetString("target_countries", ""); val != "" {
-		args["target_countries"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -1115,119 +1264,16 @@ func HandleCustomaudience_post_(ctx context.Context, request mcp.CallToolRequest
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: allowed_domains
-	// array type - using string
-	if val := request.GetString("allowed_domains", ""); val != "" {
-		args["allowed_domains"] = val
-	}
-
-	// Optional: claim_objective
-	if val := request.GetString("claim_objective", ""); val != "" {
-		args["claim_objective"] = val
-	}
-
-	// Optional: content_type
-	if val := request.GetString("content_type", ""); val != "" {
-		args["content_type"] = val
-	}
-
-	// Optional: countries
-	if val := request.GetString("countries", ""); val != "" {
-		args["countries"] = val
-	}
-
-	// Optional: customer_file_source
-	if val := request.GetString("customer_file_source", ""); val != "" {
-		args["customer_file_source"] = val
-	}
-
-	// Optional: description
-	if val := request.GetString("description", ""); val != "" {
-		args["description"] = val
-	}
-
-	// Optional: enable_fetch_or_create
-	if val := request.GetBool("enable_fetch_or_create", false); val {
-		args["enable_fetch_or_create"] = val
-	}
-
-	// Optional: event_source_group
-	if val := request.GetString("event_source_group", ""); val != "" {
-		args["event_source_group"] = val
-	}
-
-	// Optional: event_sources
-	// array type - using string
-	if val := request.GetString("event_sources", ""); val != "" {
-		args["event_sources"] = val
-	}
-
-	// Optional: exclusions
-	// array type - using string
-	if val := request.GetString("exclusions", ""); val != "" {
-		args["exclusions"] = val
-	}
-
-	// Optional: inclusions
-	// array type - using string
-	if val := request.GetString("inclusions", ""); val != "" {
-		args["inclusions"] = val
-	}
-
-	// Optional: lookalike_spec
-	if val := request.GetString("lookalike_spec", ""); val != "" {
-		args["lookalike_spec"] = val
-	}
-
-	// Optional: name
-	if val := request.GetString("name", ""); val != "" {
-		args["name"] = val
-	}
-
-	// Optional: opt_out_link
-	if val := request.GetString("opt_out_link", ""); val != "" {
-		args["opt_out_link"] = val
-	}
-
-	// Optional: parent_audience_id
-	if val := request.GetInt("parent_audience_id", 0); val != 0 {
-		args["parent_audience_id"] = val
-	}
-
-	// Optional: product_set_id
-	if val := request.GetString("product_set_id", ""); val != "" {
-		args["product_set_id"] = val
-	}
-
-	// Optional: retention_days
-	if val := request.GetInt("retention_days", 0); val != 0 {
-		args["retention_days"] = val
-	}
-
-	// Optional: rev_share_policy_id
-	if val := request.GetInt("rev_share_policy_id", 0); val != 0 {
-		args["rev_share_policy_id"] = val
-	}
-
-	// Optional: rule
-	if val := request.GetString("rule", ""); val != "" {
-		args["rule"] = val
-	}
-
-	// Optional: rule_aggregation
-	if val := request.GetString("rule_aggregation", ""); val != "" {
-		args["rule_aggregation"] = val
-	}
-
-	// Optional: tags
-	// array type - using string
-	if val := request.GetString("tags", ""); val != "" {
-		args["tags"] = val
-	}
-
-	// Optional: use_in_campaigns
-	if val := request.GetBool("use_in_campaigns", false); val {
-		args["use_in_campaigns"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method

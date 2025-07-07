@@ -401,11 +401,11 @@ func (c *AdLabelClient) Adlabel_get_(args map[string]interface{}) (interface{}, 
 // adlabel_post_ POST  for AdLabel
 func (c *AdLabelClient) Adlabel_post_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	name, ok := args["name"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: name")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = name // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -415,10 +415,10 @@ func (c *AdLabelClient) Adlabel_post_(args map[string]interface{}) (interface{},
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["name"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("name", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 

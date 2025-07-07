@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -20,8 +21,8 @@ func GetURLTools() []mcp.Tool {
 	// Available fields for URL: engagement, id, og_object, ownership_permissions, scopes
 	url_get_Tool := mcp.NewTool("url_get_",
 		mcp.WithDescription("GET  for URL"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for URL objects. Available fields: engagement, id, og_object, ownership_permissions, scopes"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for URL objects. Available fields: engagement, id, og_object, ownership_permissions, scopes"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -36,26 +37,40 @@ func GetURLTools() []mcp.Tool {
 	tools = append(tools, url_get_Tool)
 
 	// url_post_ tool
+	// Params object accepts: blacklist (bool), denylist (bool), hmac (string), locale (list<string>), scopes (list<url_scopes>), ts (datetime)
 	url_post_Tool := mcp.NewTool("url_post_",
 		mcp.WithDescription("POST  for URL"),
-		mcp.WithBoolean("blacklist",
-			mcp.Description("blacklist parameter for "),
-		),
-		mcp.WithBoolean("denylist",
-			mcp.Description("denylist parameter for "),
-		),
-		mcp.WithString("hmac",
-			mcp.Description("hmac parameter for "),
-		),
-		mcp.WithString("locale",
-			mcp.Description("locale parameter for "),
-		),
-		mcp.WithString("scopes",
-			mcp.Description("scopes parameter for "),
-			mcp.Enum("NEWS_TAB", "NEWS_TAB_DEV_ENV"),
-		),
-		mcp.WithString("ts",
-			mcp.Description("ts parameter for "),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"blacklist": map[string]any{
+					"type":        "boolean",
+					"description": "blacklist parameter",
+				},
+				"denylist": map[string]any{
+					"type":        "boolean",
+					"description": "denylist parameter",
+				},
+				"hmac": map[string]any{
+					"type":        "string",
+					"description": "hmac parameter",
+				},
+				"locale": map[string]any{
+					"type":        "array",
+					"description": "locale parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+				"scopes": map[string]any{
+					"type":        "array",
+					"description": "scopes parameter",
+					"enum":        []string{"NEWS_TAB", "NEWS_TAB_DEV_ENV"},
+					"items":       map[string]any{"type": "string"},
+				},
+				"ts": map[string]any{
+					"type":        "string",
+					"description": "ts parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: blacklist (boolean), denylist (boolean), hmac (string), locale (array<string>), scopes (array<url_scopes>) [NEWS_TAB, NEWS_TAB_DEV_ENV], ts (datetime)"),
 		),
 	)
 	tools = append(tools, url_post_Tool)
@@ -80,8 +95,13 @@ func HandleUrl_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Call
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -128,36 +148,16 @@ func HandleUrl_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Cal
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: blacklist
-	if val := request.GetBool("blacklist", false); val {
-		args["blacklist"] = val
-	}
-
-	// Optional: denylist
-	if val := request.GetBool("denylist", false); val {
-		args["denylist"] = val
-	}
-
-	// Optional: hmac
-	if val := request.GetString("hmac", ""); val != "" {
-		args["hmac"] = val
-	}
-
-	// Optional: locale
-	// array type - using string
-	if val := request.GetString("locale", ""); val != "" {
-		args["locale"] = val
-	}
-
-	// Optional: scopes
-	// array type - using string
-	if val := request.GetString("scopes", ""); val != "" {
-		args["scopes"] = val
-	}
-
-	// Optional: ts
-	if val := request.GetString("ts", ""); val != "" {
-		args["ts"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method

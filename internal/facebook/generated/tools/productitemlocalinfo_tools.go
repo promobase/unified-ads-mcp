@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -20,8 +21,8 @@ func GetProductItemLocalInfoTools() []mcp.Tool {
 	// Available fields for ProductItemLocalInfo: availability_circle_origin, availability_circle_radius, availability_circle_radius_unit, availability_polygon_coordinates, availability_postal_codes, availability_source, id, inferred_circle_origin, inferred_circle_radius
 	productitemlocalinfo_get_Tool := mcp.NewTool("productitemlocalinfo_get_",
 		mcp.WithDescription("GET  for ProductItemLocalInfo"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for ProductItemLocalInfo objects. Available fields: availability_circle_origin, availability_circle_radius, availability_circle_radius_unit, availability_polygon_coordinates, availability_postal_codes, availability_source, id, inferred_circle_origin, inferred_circle_radius"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for ProductItemLocalInfo objects. Available fields: availability_circle_origin, availability_circle_radius, availability_circle_radius_unit, availability_polygon_coordinates, availability_postal_codes, availability_source, id, inferred_circle_origin, inferred_circle_radius"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -55,8 +56,13 @@ func HandleProductitemlocalinfo_get_(ctx context.Context, request mcp.CallToolRe
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit

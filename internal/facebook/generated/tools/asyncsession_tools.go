@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -20,8 +21,8 @@ func GetAsyncSessionTools() []mcp.Tool {
 	// Available fields for AsyncSession: app, complete_time, error_code, exception, id, method, name, page, percent_completed, platform_version, result, start_time, status, uri, user
 	asyncsession_get_Tool := mcp.NewTool("asyncsession_get_",
 		mcp.WithDescription("GET  for AsyncSession"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for AsyncSession objects. Available fields: app, complete_time, error_code, exception, id, method, name, page, percent_completed, platform_version, result, start_time, status, uri, user"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for AsyncSession objects. Available fields: app, complete_time, error_code, exception, id, method, name, page, percent_completed, platform_version, result, start_time, status, uri, user"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -55,8 +56,13 @@ func HandleAsyncsession_get_(ctx context.Context, request mcp.CallToolRequest) (
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit

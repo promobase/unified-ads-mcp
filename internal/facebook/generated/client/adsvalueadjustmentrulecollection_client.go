@@ -200,16 +200,11 @@ func (c *AdsValueAdjustmentRuleCollectionClient) Adsvalueadjustmentrulecollectio
 // adsvalueadjustmentrulecollection_post_ POST  for AdsValueAdjustmentRuleCollection
 func (c *AdsValueAdjustmentRuleCollectionClient) Adsvalueadjustmentrulecollection_post_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	name, ok := args["name"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: name")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = name // Suppress unused variable warning
-	rules, ok := args["rules"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: rules")
-	}
-	_ = rules // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -219,22 +214,10 @@ func (c *AdsValueAdjustmentRuleCollectionClient) Adsvalueadjustmentrulecollectio
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["is_default_setting"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("is_default_setting", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["name"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("name", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["rules"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("rules", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 

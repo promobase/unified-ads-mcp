@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -24,14 +25,21 @@ func GetProductFeedUploadTools() []mcp.Tool {
 
 	// productfeedupload_get_errors tool
 	// Available fields for ProductFeedUploadError: affected_surfaces, description, error_type, id, severity, summary, total_count
+	// Params object accepts: error_priority (productfeeduploaderrors_error_priority_enum_param)
 	productfeedupload_get_errorsTool := mcp.NewTool("productfeedupload_get_errors",
 		mcp.WithDescription("GET errors for ProductFeedUpload"),
-		mcp.WithString("error_priority",
-			mcp.Description("error_priority parameter for errors"),
-			mcp.Enum("HIGH", "LOW", "MEDIUM"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"error_priority": map[string]any{
+					"type":        "string",
+					"description": "error_priority parameter",
+					"enum":        []string{"HIGH", "LOW", "MEDIUM"},
+				},
+			}),
+			mcp.Description("Parameters object containing: error_priority (enum) [HIGH, LOW, MEDIUM]"),
 		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for ProductFeedUploadError objects. Available fields: affected_surfaces, description, error_type, id, severity, summary, total_count"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for ProductFeedUploadError objects. Available fields: affected_surfaces, description, error_type, id, severity, summary, total_count"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -49,8 +57,8 @@ func GetProductFeedUploadTools() []mcp.Tool {
 	// Available fields for ProductFeedUpload: end_time, error_count, error_report, filename, id, input_method, num_deleted_items, num_detected_items, num_invalid_items, num_persisted_items, start_time, url, warning_count
 	productfeedupload_get_Tool := mcp.NewTool("productfeedupload_get_",
 		mcp.WithDescription("GET  for ProductFeedUpload"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for ProductFeedUpload objects. Available fields: end_time, error_count, error_report, filename, id, input_method, num_deleted_items, num_detected_items, num_invalid_items, num_persisted_items, start_time, url, warning_count"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for ProductFeedUpload objects. Available fields: end_time, error_count, error_report, filename, id, input_method, num_deleted_items, num_detected_items, num_invalid_items, num_persisted_items, start_time, url, warning_count"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -112,14 +120,26 @@ func HandleProductfeedupload_get_errors(ctx context.Context, request mcp.CallToo
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: error_priority
-	if val := request.GetString("error_priority", ""); val != "" {
-		args["error_priority"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -167,8 +187,13 @@ func HandleProductfeedupload_get_(ctx context.Context, request mcp.CallToolReque
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit

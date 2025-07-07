@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -19,8 +20,8 @@ func GetFundraiserPersonToCharityTools() []mcp.Tool {
 	// fundraiserpersontocharity_get_donations tool
 	fundraiserpersontocharity_get_donationsTool := mcp.NewTool("fundraiserpersontocharity_get_donations",
 		mcp.WithDescription("GET donations for FundraiserPersonToCharity"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -43,8 +44,8 @@ func GetFundraiserPersonToCharityTools() []mcp.Tool {
 	// fundraiserpersontocharity_get_external_donations tool
 	fundraiserpersontocharity_get_external_donationsTool := mcp.NewTool("fundraiserpersontocharity_get_external_donations",
 		mcp.WithDescription("GET external_donations for FundraiserPersonToCharity"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -59,27 +60,39 @@ func GetFundraiserPersonToCharityTools() []mcp.Tool {
 	tools = append(tools, fundraiserpersontocharity_get_external_donationsTool)
 
 	// fundraiserpersontocharity_post_external_donations tool
+	// Params object accepts: amount_received (unsigned int), currency (string), donation_id_hash (string), donation_time (unsigned int), donor_id_hash (string)
 	fundraiserpersontocharity_post_external_donationsTool := mcp.NewTool("fundraiserpersontocharity_post_external_donations",
 		mcp.WithDescription("POST external_donations for FundraiserPersonToCharity"),
-		mcp.WithNumber("amount_received",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("amount_received parameter for external_donations"),
-		),
-		mcp.WithString("currency",
-			mcp.Required(),
-			mcp.Description("currency parameter for external_donations"),
-		),
-		mcp.WithString("donation_id_hash",
-			mcp.Required(),
-			mcp.Description("donation_id_hash parameter for external_donations"),
-		),
-		mcp.WithNumber("donation_time",
-			mcp.Required(),
-			mcp.Description("donation_time parameter for external_donations"),
-		),
-		mcp.WithString("donor_id_hash",
-			mcp.Required(),
-			mcp.Description("donor_id_hash parameter for external_donations"),
+			mcp.Properties(map[string]any{
+				"amount_received": map[string]any{
+					"type":        "integer",
+					"description": "amount_received parameter",
+					"required":    true,
+				},
+				"currency": map[string]any{
+					"type":        "string",
+					"description": "currency parameter",
+					"required":    true,
+				},
+				"donation_id_hash": map[string]any{
+					"type":        "string",
+					"description": "donation_id_hash parameter",
+					"required":    true,
+				},
+				"donation_time": map[string]any{
+					"type":        "integer",
+					"description": "donation_time parameter",
+					"required":    true,
+				},
+				"donor_id_hash": map[string]any{
+					"type":        "string",
+					"description": "donor_id_hash parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: amount_received (integer) [required], currency (string) [required], donation_id_hash (string) [required], donation_time (integer) [required], donor_id_hash (string) [required]"),
 		),
 	)
 	tools = append(tools, fundraiserpersontocharity_post_external_donationsTool)
@@ -88,8 +101,8 @@ func GetFundraiserPersonToCharityTools() []mcp.Tool {
 	// Available fields for FundraiserPersonToCharity: amount_raised, charity_id, currency, description, donations_count, donors_count, end_time, external_amount_raised, external_donations_count, external_donors_count, external_event_name, external_event_start_time, external_event_uri, external_fundraiser_uri, external_id, goal_amount, id, internal_amount_raised, internal_donations_count, internal_donors_count, name, uri
 	fundraiserpersontocharity_get_Tool := mcp.NewTool("fundraiserpersontocharity_get_",
 		mcp.WithDescription("GET  for FundraiserPersonToCharity"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for FundraiserPersonToCharity objects. Available fields: amount_raised, charity_id, currency, description, donations_count, donors_count, end_time, external_amount_raised, external_donations_count, external_donors_count, external_event_name, external_event_start_time, external_event_uri, external_fundraiser_uri, external_id (and 7 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for FundraiserPersonToCharity objects. Available fields: amount_raised, charity_id, currency, description, donations_count, donors_count, end_time, external_amount_raised, external_donations_count, external_donors_count, external_event_name, external_event_start_time, external_event_uri, external_fundraiser_uri, external_id (and 7 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -104,34 +117,49 @@ func GetFundraiserPersonToCharityTools() []mcp.Tool {
 	tools = append(tools, fundraiserpersontocharity_get_Tool)
 
 	// fundraiserpersontocharity_post_ tool
+	// Params object accepts: description (string), end_time (datetime), external_event_name (string), external_event_start_time (datetime), external_event_uri (string), external_fundraiser_uri (string), external_id (string), goal_amount (unsigned int), name (string)
 	fundraiserpersontocharity_post_Tool := mcp.NewTool("fundraiserpersontocharity_post_",
 		mcp.WithDescription("POST  for FundraiserPersonToCharity"),
-		mcp.WithString("description",
-			mcp.Description("description parameter for "),
-		),
-		mcp.WithString("end_time",
-			mcp.Description("end_time parameter for "),
-		),
-		mcp.WithString("external_event_name",
-			mcp.Description("external_event_name parameter for "),
-		),
-		mcp.WithString("external_event_start_time",
-			mcp.Description("external_event_start_time parameter for "),
-		),
-		mcp.WithString("external_event_uri",
-			mcp.Description("external_event_uri parameter for "),
-		),
-		mcp.WithString("external_fundraiser_uri",
-			mcp.Description("external_fundraiser_uri parameter for "),
-		),
-		mcp.WithString("external_id",
-			mcp.Description("external_id parameter for "),
-		),
-		mcp.WithNumber("goal_amount",
-			mcp.Description("goal_amount parameter for "),
-		),
-		mcp.WithString("name",
-			mcp.Description("name parameter for "),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"description": map[string]any{
+					"type":        "string",
+					"description": "description parameter",
+				},
+				"end_time": map[string]any{
+					"type":        "string",
+					"description": "end_time parameter",
+				},
+				"external_event_name": map[string]any{
+					"type":        "string",
+					"description": "external_event_name parameter",
+				},
+				"external_event_start_time": map[string]any{
+					"type":        "string",
+					"description": "external_event_start_time parameter",
+				},
+				"external_event_uri": map[string]any{
+					"type":        "string",
+					"description": "external_event_uri parameter",
+				},
+				"external_fundraiser_uri": map[string]any{
+					"type":        "string",
+					"description": "external_fundraiser_uri parameter",
+				},
+				"external_id": map[string]any{
+					"type":        "string",
+					"description": "external_id parameter",
+				},
+				"goal_amount": map[string]any{
+					"type":        "integer",
+					"description": "goal_amount parameter",
+				},
+				"name": map[string]any{
+					"type":        "string",
+					"description": "name parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: description (string), end_time (datetime), external_event_name (string), external_event_start_time (datetime), external_event_uri (string), external_fundraiser_uri (string), external_id (string), goal_amount (integer), name (string)"),
 		),
 	)
 	tools = append(tools, fundraiserpersontocharity_post_Tool)
@@ -156,8 +184,13 @@ func HandleFundraiserpersontocharity_get_donations(ctx context.Context, request 
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -234,8 +267,13 @@ func HandleFundraiserpersontocharity_get_external_donations(ctx context.Context,
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -282,40 +320,19 @@ func HandleFundraiserpersontocharity_post_external_donations(ctx context.Context
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: amount_received
-	amount_received, err := request.RequireInt("amount_received")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter amount_received: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["amount_received"] = amount_received
-
-	// Required: currency
-	currency, err := request.RequireString("currency")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter currency: %v", err)), nil
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
-	args["currency"] = currency
-
-	// Required: donation_id_hash
-	donation_id_hash, err := request.RequireString("donation_id_hash")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter donation_id_hash: %v", err)), nil
+	for key, value := range paramsObj {
+		args[key] = value
 	}
-	args["donation_id_hash"] = donation_id_hash
-
-	// Required: donation_time
-	donation_time, err := request.RequireInt("donation_time")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter donation_time: %v", err)), nil
-	}
-	args["donation_time"] = donation_time
-
-	// Required: donor_id_hash
-	donor_id_hash, err := request.RequireString("donor_id_hash")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter donor_id_hash: %v", err)), nil
-	}
-	args["donor_id_hash"] = donor_id_hash
 
 	// Call the client method
 	result, err := client.Fundraiserpersontocharity_post_external_donations(args)
@@ -347,8 +364,13 @@ func HandleFundraiserpersontocharity_get_(ctx context.Context, request mcp.CallT
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -395,49 +417,16 @@ func HandleFundraiserpersontocharity_post_(ctx context.Context, request mcp.Call
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: description
-	if val := request.GetString("description", ""); val != "" {
-		args["description"] = val
-	}
-
-	// Optional: end_time
-	if val := request.GetString("end_time", ""); val != "" {
-		args["end_time"] = val
-	}
-
-	// Optional: external_event_name
-	if val := request.GetString("external_event_name", ""); val != "" {
-		args["external_event_name"] = val
-	}
-
-	// Optional: external_event_start_time
-	if val := request.GetString("external_event_start_time", ""); val != "" {
-		args["external_event_start_time"] = val
-	}
-
-	// Optional: external_event_uri
-	if val := request.GetString("external_event_uri", ""); val != "" {
-		args["external_event_uri"] = val
-	}
-
-	// Optional: external_fundraiser_uri
-	if val := request.GetString("external_fundraiser_uri", ""); val != "" {
-		args["external_fundraiser_uri"] = val
-	}
-
-	// Optional: external_id
-	if val := request.GetString("external_id", ""); val != "" {
-		args["external_id"] = val
-	}
-
-	// Optional: goal_amount
-	if val := request.GetInt("goal_amount", 0); val != 0 {
-		args["goal_amount"] = val
-	}
-
-	// Optional: name
-	if val := request.GetString("name", ""); val != "" {
-		args["name"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method

@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -19,8 +20,8 @@ func GetOfflineConversionDataSetUploadTools() []mcp.Tool {
 	// offlineconversiondatasetupload_get_progress tool
 	offlineconversiondatasetupload_get_progressTool := mcp.NewTool("offlineconversiondatasetupload_get_progress",
 		mcp.WithDescription("GET progress for OfflineConversionDataSetUpload"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -37,8 +38,8 @@ func GetOfflineConversionDataSetUploadTools() []mcp.Tool {
 	// offlineconversiondatasetupload_get_pull_sessions tool
 	offlineconversiondatasetupload_get_pull_sessionsTool := mcp.NewTool("offlineconversiondatasetupload_get_pull_sessions",
 		mcp.WithDescription("GET pull_sessions for OfflineConversionDataSetUpload"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -56,8 +57,8 @@ func GetOfflineConversionDataSetUploadTools() []mcp.Tool {
 	// Available fields for OfflineConversionDataSetUpload: api_calls, creation_time, duplicate_entries, event_stats, event_time_max, event_time_min, first_upload_time, id, is_excluded_for_lift, last_upload_time, match_rate_approx, matched_entries, upload_tag, valid_entries
 	offlineconversiondatasetupload_get_Tool := mcp.NewTool("offlineconversiondatasetupload_get_",
 		mcp.WithDescription("GET  for OfflineConversionDataSetUpload"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for OfflineConversionDataSetUpload objects. Available fields: api_calls, creation_time, duplicate_entries, event_stats, event_time_max, event_time_min, first_upload_time, id, is_excluded_for_lift, last_upload_time, match_rate_approx, matched_entries, upload_tag, valid_entries"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for OfflineConversionDataSetUpload objects. Available fields: api_calls, creation_time, duplicate_entries, event_stats, event_time_max, event_time_min, first_upload_time, id, is_excluded_for_lift, last_upload_time, match_rate_approx, matched_entries, upload_tag, valid_entries"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -91,8 +92,13 @@ func HandleOfflineconversiondatasetupload_get_progress(ctx context.Context, requ
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -140,8 +146,13 @@ func HandleOfflineconversiondatasetupload_get_pull_sessions(ctx context.Context,
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -189,8 +200,13 @@ func HandleOfflineconversiondatasetupload_get_(ctx context.Context, request mcp.
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit

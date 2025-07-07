@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -20,8 +21,8 @@ func GetVideoCopyrightTools() []mcp.Tool {
 	// Available fields for MediaCopyrightUpdateRecord: action_types, actor, actor_type, creation_time, id, ownership_countries, whitelisted_accounts
 	videocopyright_get_update_recordsTool := mcp.NewTool("videocopyright_get_update_records",
 		mcp.WithDescription("GET update_records for VideoCopyright"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for MediaCopyrightUpdateRecord objects. Available fields: action_types, actor, actor_type, creation_time, id, ownership_countries, whitelisted_accounts"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for MediaCopyrightUpdateRecord objects. Available fields: action_types, actor, actor_type, creation_time, id, ownership_countries, whitelisted_accounts"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -39,8 +40,8 @@ func GetVideoCopyrightTools() []mcp.Tool {
 	// Available fields for VideoCopyright: content_category, copyright_content_id, creator, excluded_ownership_segments, id, in_conflict, monitoring_status, monitoring_type, ownership_countries, reference_file, reference_file_disabled, reference_file_disabled_by_ops, reference_owner_id, rule_ids, tags, whitelisted_ids
 	videocopyright_get_Tool := mcp.NewTool("videocopyright_get_",
 		mcp.WithDescription("GET  for VideoCopyright"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for VideoCopyright objects. Available fields: content_category, copyright_content_id, creator, excluded_ownership_segments, id, in_conflict, monitoring_status, monitoring_type, ownership_countries, reference_file, reference_file_disabled, reference_file_disabled_by_ops, reference_owner_id, rule_ids, tags (and 1 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for VideoCopyright objects. Available fields: content_category, copyright_content_id, creator, excluded_ownership_segments, id, in_conflict, monitoring_status, monitoring_type, ownership_countries, reference_file, reference_file_disabled, reference_file_disabled_by_ops, reference_owner_id, rule_ids, tags (and 1 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -55,42 +56,64 @@ func GetVideoCopyrightTools() []mcp.Tool {
 	tools = append(tools, videocopyright_get_Tool)
 
 	// videocopyright_post_ tool
+	// Params object accepts: append_excluded_ownership_segments (bool), attribution_id (string), content_category (videocopyright_content_category), excluded_ownership_countries (list<string>), excluded_ownership_segments (list<Object>), is_reference_disabled (bool), monitoring_type (videocopyright_monitoring_type), ownership_countries (list<string>), rule_id (string), whitelisted_ids (list<string>), whitelisted_ig_user_ids (list<string>)
 	videocopyright_post_Tool := mcp.NewTool("videocopyright_post_",
 		mcp.WithDescription("POST  for VideoCopyright"),
-		mcp.WithBoolean("append_excluded_ownership_segments",
-			mcp.Description("append_excluded_ownership_segments parameter for "),
-		),
-		mcp.WithString("attribution_id",
-			mcp.Description("attribution_id parameter for "),
-		),
-		mcp.WithString("content_category",
-			mcp.Description("content_category parameter for "),
-			mcp.Enum("episode", "movie", "web"),
-		),
-		mcp.WithString("excluded_ownership_countries",
-			mcp.Description("excluded_ownership_countries parameter for "),
-		),
-		mcp.WithString("excluded_ownership_segments",
-			mcp.Description("excluded_ownership_segments parameter for "),
-		),
-		mcp.WithBoolean("is_reference_disabled",
-			mcp.Description("is_reference_disabled parameter for "),
-		),
-		mcp.WithString("monitoring_type",
-			mcp.Description("monitoring_type parameter for "),
-			mcp.Enum("AUDIO_ONLY", "VIDEO_AND_AUDIO", "VIDEO_ONLY"),
-		),
-		mcp.WithString("ownership_countries",
-			mcp.Description("ownership_countries parameter for "),
-		),
-		mcp.WithString("rule_id",
-			mcp.Description("rule_id parameter for "),
-		),
-		mcp.WithString("whitelisted_ids",
-			mcp.Description("whitelisted_ids parameter for "),
-		),
-		mcp.WithString("whitelisted_ig_user_ids",
-			mcp.Description("whitelisted_ig_user_ids parameter for "),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"append_excluded_ownership_segments": map[string]any{
+					"type":        "boolean",
+					"description": "append_excluded_ownership_segments parameter",
+				},
+				"attribution_id": map[string]any{
+					"type":        "string",
+					"description": "attribution_id parameter",
+				},
+				"content_category": map[string]any{
+					"type":        "string",
+					"description": "content_category parameter",
+					"enum":        []string{"episode", "movie", "web"},
+				},
+				"excluded_ownership_countries": map[string]any{
+					"type":        "array",
+					"description": "excluded_ownership_countries parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+				"excluded_ownership_segments": map[string]any{
+					"type":        "array",
+					"description": "excluded_ownership_segments parameter",
+					"items":       map[string]any{"type": "object"},
+				},
+				"is_reference_disabled": map[string]any{
+					"type":        "boolean",
+					"description": "is_reference_disabled parameter",
+				},
+				"monitoring_type": map[string]any{
+					"type":        "string",
+					"description": "monitoring_type parameter",
+					"enum":        []string{"AUDIO_ONLY", "VIDEO_AND_AUDIO", "VIDEO_ONLY"},
+				},
+				"ownership_countries": map[string]any{
+					"type":        "array",
+					"description": "ownership_countries parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+				"rule_id": map[string]any{
+					"type":        "string",
+					"description": "rule_id parameter",
+				},
+				"whitelisted_ids": map[string]any{
+					"type":        "array",
+					"description": "whitelisted_ids parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+				"whitelisted_ig_user_ids": map[string]any{
+					"type":        "array",
+					"description": "whitelisted_ig_user_ids parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+			}),
+			mcp.Description("Parameters object containing: append_excluded_ownership_segments (boolean), attribution_id (string), content_category (videocopyright_content_category) [episode, movie, web], excluded_ownership_countries (array<string>), excluded_ownership_segments (array<object>), is_reference_disabled (boolean), monitoring_type (videocopyright_monitoring_type) [AUDIO_ONLY, VIDEO_AND_AUDIO, VIDEO_ONLY], ownership_countries (array<string>), rule_id (string), whitelisted_ids (array<string>), whitelisted_ig_user_ids (array<string>)"),
 		),
 	)
 	tools = append(tools, videocopyright_post_Tool)
@@ -115,8 +138,13 @@ func HandleVideocopyright_get_update_records(ctx context.Context, request mcp.Ca
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -164,8 +192,13 @@ func HandleVideocopyright_get_(ctx context.Context, request mcp.CallToolRequest)
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -212,64 +245,16 @@ func HandleVideocopyright_post_(ctx context.Context, request mcp.CallToolRequest
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: append_excluded_ownership_segments
-	if val := request.GetBool("append_excluded_ownership_segments", false); val {
-		args["append_excluded_ownership_segments"] = val
-	}
-
-	// Optional: attribution_id
-	if val := request.GetString("attribution_id", ""); val != "" {
-		args["attribution_id"] = val
-	}
-
-	// Optional: content_category
-	if val := request.GetString("content_category", ""); val != "" {
-		args["content_category"] = val
-	}
-
-	// Optional: excluded_ownership_countries
-	// array type - using string
-	if val := request.GetString("excluded_ownership_countries", ""); val != "" {
-		args["excluded_ownership_countries"] = val
-	}
-
-	// Optional: excluded_ownership_segments
-	// array type - using string
-	if val := request.GetString("excluded_ownership_segments", ""); val != "" {
-		args["excluded_ownership_segments"] = val
-	}
-
-	// Optional: is_reference_disabled
-	if val := request.GetBool("is_reference_disabled", false); val {
-		args["is_reference_disabled"] = val
-	}
-
-	// Optional: monitoring_type
-	if val := request.GetString("monitoring_type", ""); val != "" {
-		args["monitoring_type"] = val
-	}
-
-	// Optional: ownership_countries
-	// array type - using string
-	if val := request.GetString("ownership_countries", ""); val != "" {
-		args["ownership_countries"] = val
-	}
-
-	// Optional: rule_id
-	if val := request.GetString("rule_id", ""); val != "" {
-		args["rule_id"] = val
-	}
-
-	// Optional: whitelisted_ids
-	// array type - using string
-	if val := request.GetString("whitelisted_ids", ""); val != "" {
-		args["whitelisted_ids"] = val
-	}
-
-	// Optional: whitelisted_ig_user_ids
-	// array type - using string
-	if val := request.GetString("whitelisted_ig_user_ids", ""); val != "" {
-		args["whitelisted_ig_user_ids"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method

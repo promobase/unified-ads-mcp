@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -18,25 +19,35 @@ func GetCommentTools() []mcp.Tool {
 
 	// comment_get_comments tool
 	// Available fields for Comment: admin_creator, application, attachment, can_comment, can_hide, can_like, can_remove, can_reply_privately, comment_count, created_time, from, id, is_hidden, is_private, like_count, live_broadcast_timestamp, message, message_tags, object, parent, permalink_url, private_reply_conversation, user_likes
+	// Params object accepts: filter (commentcomments_filter_enum_param), live_filter (commentcomments_live_filter_enum_param), order (commentcomments_order_enum_param), since (datetime)
 	comment_get_commentsTool := mcp.NewTool("comment_get_comments",
 		mcp.WithDescription("GET comments for Comment"),
-		mcp.WithString("filter",
-			mcp.Description("filter parameter for comments"),
-			mcp.Enum("stream", "toplevel"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"filter": map[string]any{
+					"type":        "string",
+					"description": "filter parameter",
+					"enum":        []string{"stream", "toplevel"},
+				},
+				"live_filter": map[string]any{
+					"type":        "string",
+					"description": "live_filter parameter",
+					"enum":        []string{"filter_low_quality", "no_filter"},
+				},
+				"order": map[string]any{
+					"type":        "string",
+					"description": "order parameter",
+					"enum":        []string{"chronological", "reverse_chronological"},
+				},
+				"since": map[string]any{
+					"type":        "string",
+					"description": "since parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: filter (enum) [stream, toplevel], live_filter (enum) [filter_low_quality, no_filter], order (enum) [chronological, reverse_chronological], since (datetime)"),
 		),
-		mcp.WithString("live_filter",
-			mcp.Description("live_filter parameter for comments"),
-			mcp.Enum("filter_low_quality", "no_filter"),
-		),
-		mcp.WithString("order",
-			mcp.Description("order parameter for comments"),
-			mcp.Enum("chronological", "reverse_chronological"),
-		),
-		mcp.WithString("since",
-			mcp.Description("since parameter for comments"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for Comment objects. Available fields: admin_creator, application, attachment, can_comment, can_hide, can_like, can_remove, can_reply_privately, comment_count, created_time, from, id, is_hidden, is_private, like_count (and 8 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for Comment objects. Available fields: admin_creator, application, attachment, can_comment, can_hide, can_like, can_remove, can_reply_privately, comment_count, created_time, from, id, is_hidden, is_private, like_count (and 8 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -51,62 +62,91 @@ func GetCommentTools() []mcp.Tool {
 	tools = append(tools, comment_get_commentsTool)
 
 	// comment_post_comments tool
+	// Params object accepts: attachment_id (string), attachment_share_url (string), attachment_url (string), comment_privacy_value (commentcomments_comment_privacy_value_enum_param), facepile_mentioned_ids (list<string>), feedback_source (string), is_offline (bool), message (string), nectar_module (string), object_id (string), parent_comment_id (Object), text (string), tracking (string)
 	comment_post_commentsTool := mcp.NewTool("comment_post_comments",
 		mcp.WithDescription("POST comments for Comment"),
-		mcp.WithString("attachment_id",
-			mcp.Description("attachment_id parameter for comments"),
-		),
-		mcp.WithString("attachment_share_url",
-			mcp.Description("attachment_share_url parameter for comments"),
-		),
-		mcp.WithString("attachment_url",
-			mcp.Description("attachment_url parameter for comments"),
-		),
-		mcp.WithString("comment_privacy_value",
-			mcp.Description("comment_privacy_value parameter for comments"),
-			mcp.Enum("DECLINED_BY_ADMIN_ASSISTANT", "DEFAULT_PRIVACY", "FRIENDS_AND_POST_OWNER", "FRIENDS_ONLY", "GRAPHQL_MULTIPLE_VALUE_HACK_DO_NOT_USE", "OWNER_OR_COMMENTER", "PENDING_APPROVAL", "REMOVED_BY_ADMIN_ASSISTANT", "SIDE_CONVERSATION", "SIDE_CONVERSATION_AND_POST_OWNER", "SPOTLIGHT_TAB"),
-		),
-		mcp.WithString("facepile_mentioned_ids",
-			mcp.Description("facepile_mentioned_ids parameter for comments"),
-		),
-		mcp.WithString("feedback_source",
-			mcp.Description("feedback_source parameter for comments"),
-		),
-		mcp.WithBoolean("is_offline",
-			mcp.Description("is_offline parameter for comments"),
-		),
-		mcp.WithString("message",
-			mcp.Description("message parameter for comments"),
-		),
-		mcp.WithString("nectar_module",
-			mcp.Description("nectar_module parameter for comments"),
-		),
-		mcp.WithString("object_id",
-			mcp.Description("object_id parameter for comments"),
-		),
-		mcp.WithString("parent_comment_id",
-			mcp.Description("parent_comment_id parameter for comments"),
-		),
-		mcp.WithString("text",
-			mcp.Description("text parameter for comments"),
-		),
-		mcp.WithString("tracking",
-			mcp.Description("tracking parameter for comments"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"attachment_id": map[string]any{
+					"type":        "string",
+					"description": "attachment_id parameter",
+				},
+				"attachment_share_url": map[string]any{
+					"type":        "string",
+					"description": "attachment_share_url parameter",
+				},
+				"attachment_url": map[string]any{
+					"type":        "string",
+					"description": "attachment_url parameter",
+				},
+				"comment_privacy_value": map[string]any{
+					"type":        "string",
+					"description": "comment_privacy_value parameter",
+					"enum":        []string{"DECLINED_BY_ADMIN_ASSISTANT", "DEFAULT_PRIVACY", "FRIENDS_AND_POST_OWNER", "FRIENDS_ONLY", "GRAPHQL_MULTIPLE_VALUE_HACK_DO_NOT_USE", "OWNER_OR_COMMENTER", "PENDING_APPROVAL", "REMOVED_BY_ADMIN_ASSISTANT", "SIDE_CONVERSATION", "SIDE_CONVERSATION_AND_POST_OWNER", "SPOTLIGHT_TAB"},
+				},
+				"facepile_mentioned_ids": map[string]any{
+					"type":        "array",
+					"description": "facepile_mentioned_ids parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+				"feedback_source": map[string]any{
+					"type":        "string",
+					"description": "feedback_source parameter",
+				},
+				"is_offline": map[string]any{
+					"type":        "boolean",
+					"description": "is_offline parameter",
+				},
+				"message": map[string]any{
+					"type":        "string",
+					"description": "message parameter",
+				},
+				"nectar_module": map[string]any{
+					"type":        "string",
+					"description": "nectar_module parameter",
+				},
+				"object_id": map[string]any{
+					"type":        "string",
+					"description": "object_id parameter",
+				},
+				"parent_comment_id": map[string]any{
+					"type":        "object",
+					"description": "parent_comment_id parameter",
+				},
+				"text": map[string]any{
+					"type":        "string",
+					"description": "text parameter",
+				},
+				"tracking": map[string]any{
+					"type":        "string",
+					"description": "tracking parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: attachment_id (string), attachment_share_url (string), attachment_url (string), comment_privacy_value (enum) [DECLINED_BY_ADMIN_ASSISTANT, DEFAULT_PRIVACY, FRIENDS_AND_POST_OWNER, FRIENDS_ONLY, GRAPHQL_MULTIPLE_VALUE_HACK_DO_NOT_USE, ...], facepile_mentioned_ids (array<string>), feedback_source (string), is_offline (boolean), message (string), nectar_module (string), object_id (string), parent_comment_id (object), text (string), tracking (string)"),
 		),
 	)
 	tools = append(tools, comment_post_commentsTool)
 
 	// comment_delete_likes tool
+	// Params object accepts: feedback_source (string), nectar_module (string), tracking (string)
 	comment_delete_likesTool := mcp.NewTool("comment_delete_likes",
 		mcp.WithDescription("DELETE likes for Comment"),
-		mcp.WithString("feedback_source",
-			mcp.Description("feedback_source parameter for likes"),
-		),
-		mcp.WithString("nectar_module",
-			mcp.Description("nectar_module parameter for likes"),
-		),
-		mcp.WithString("tracking",
-			mcp.Description("tracking parameter for likes"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"feedback_source": map[string]any{
+					"type":        "string",
+					"description": "feedback_source parameter",
+				},
+				"nectar_module": map[string]any{
+					"type":        "string",
+					"description": "nectar_module parameter",
+				},
+				"tracking": map[string]any{
+					"type":        "string",
+					"description": "tracking parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: feedback_source (string), nectar_module (string), tracking (string)"),
 		),
 	)
 	tools = append(tools, comment_delete_likesTool)
@@ -115,8 +155,8 @@ func GetCommentTools() []mcp.Tool {
 	// Available fields for Profile: can_post, id, link, name, pic, pic_crop, pic_large, pic_small, pic_square, profile_type, username
 	comment_get_likesTool := mcp.NewTool("comment_get_likes",
 		mcp.WithDescription("GET likes for Comment"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for Profile objects. Available fields: can_post, id, link, name, pic, pic_crop, pic_large, pic_small, pic_square, profile_type, username"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for Profile objects. Available fields: can_post, id, link, name, pic, pic_crop, pic_large, pic_small, pic_square, profile_type, username"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -131,30 +171,46 @@ func GetCommentTools() []mcp.Tool {
 	tools = append(tools, comment_get_likesTool)
 
 	// comment_post_likes tool
+	// Params object accepts: feedback_source (string), nectar_module (string), tracking (string)
 	comment_post_likesTool := mcp.NewTool("comment_post_likes",
 		mcp.WithDescription("POST likes for Comment"),
-		mcp.WithString("feedback_source",
-			mcp.Description("feedback_source parameter for likes"),
-		),
-		mcp.WithString("nectar_module",
-			mcp.Description("nectar_module parameter for likes"),
-		),
-		mcp.WithString("tracking",
-			mcp.Description("tracking parameter for likes"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"feedback_source": map[string]any{
+					"type":        "string",
+					"description": "feedback_source parameter",
+				},
+				"nectar_module": map[string]any{
+					"type":        "string",
+					"description": "nectar_module parameter",
+				},
+				"tracking": map[string]any{
+					"type":        "string",
+					"description": "tracking parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: feedback_source (string), nectar_module (string), tracking (string)"),
 		),
 	)
 	tools = append(tools, comment_post_likesTool)
 
 	// comment_get_reactions tool
 	// Available fields for Profile: can_post, id, link, name, pic, pic_crop, pic_large, pic_small, pic_square, profile_type, username
+	// Params object accepts: type (commentreactions_type_enum_param)
 	comment_get_reactionsTool := mcp.NewTool("comment_get_reactions",
 		mcp.WithDescription("GET reactions for Comment"),
-		mcp.WithString("type",
-			mcp.Description("type parameter for reactions"),
-			mcp.Enum("ANGRY", "CARE", "FIRE", "HAHA", "HUNDRED", "LIKE", "LOVE", "NONE", "PRIDE", "SAD", "THANKFUL", "WOW"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"type": map[string]any{
+					"type":        "string",
+					"description": "type parameter",
+					"enum":        []string{"ANGRY", "CARE", "FIRE", "HAHA", "HUNDRED", "LIKE", "LOVE", "NONE", "PRIDE", "SAD", "THANKFUL", "WOW"},
+				},
+			}),
+			mcp.Description("Parameters object containing: type (enum) [ANGRY, CARE, FIRE, HAHA, HUNDRED, ...]"),
 		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for Profile objects. Available fields: can_post, id, link, name, pic, pic_crop, pic_large, pic_small, pic_square, profile_type, username"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for Profile objects. Available fields: can_post, id, link, name, pic, pic_crop, pic_large, pic_small, pic_square, profile_type, username"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -178,8 +234,8 @@ func GetCommentTools() []mcp.Tool {
 	// Available fields for Comment: admin_creator, application, attachment, can_comment, can_hide, can_like, can_remove, can_reply_privately, comment_count, created_time, from, id, is_hidden, is_private, like_count, live_broadcast_timestamp, message, message_tags, object, parent, permalink_url, private_reply_conversation, user_likes
 	comment_get_Tool := mcp.NewTool("comment_get_",
 		mcp.WithDescription("GET  for Comment"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for Comment objects. Available fields: admin_creator, application, attachment, can_comment, can_hide, can_like, can_remove, can_reply_privately, comment_count, created_time, from, id, is_hidden, is_private, like_count (and 8 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for Comment objects. Available fields: admin_creator, application, attachment, can_comment, can_hide, can_like, can_remove, can_reply_privately, comment_count, created_time, from, id, is_hidden, is_private, like_count (and 8 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -194,22 +250,33 @@ func GetCommentTools() []mcp.Tool {
 	tools = append(tools, comment_get_Tool)
 
 	// comment_post_ tool
+	// Params object accepts: attachment_id (string), attachment_share_url (string), attachment_url (string), is_hidden (bool), message (string)
 	comment_post_Tool := mcp.NewTool("comment_post_",
 		mcp.WithDescription("POST  for Comment"),
-		mcp.WithString("attachment_id",
-			mcp.Description("attachment_id parameter for "),
-		),
-		mcp.WithString("attachment_share_url",
-			mcp.Description("attachment_share_url parameter for "),
-		),
-		mcp.WithString("attachment_url",
-			mcp.Description("attachment_url parameter for "),
-		),
-		mcp.WithBoolean("is_hidden",
-			mcp.Description("is_hidden parameter for "),
-		),
-		mcp.WithString("message",
-			mcp.Description("message parameter for "),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"attachment_id": map[string]any{
+					"type":        "string",
+					"description": "attachment_id parameter",
+				},
+				"attachment_share_url": map[string]any{
+					"type":        "string",
+					"description": "attachment_share_url parameter",
+				},
+				"attachment_url": map[string]any{
+					"type":        "string",
+					"description": "attachment_url parameter",
+				},
+				"is_hidden": map[string]any{
+					"type":        "boolean",
+					"description": "is_hidden parameter",
+				},
+				"message": map[string]any{
+					"type":        "string",
+					"description": "message parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: attachment_id (string), attachment_share_url (string), attachment_url (string), is_hidden (boolean), message (string)"),
 		),
 	)
 	tools = append(tools, comment_post_Tool)
@@ -233,29 +300,26 @@ func HandleComment_get_comments(ctx context.Context, request mcp.CallToolRequest
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: filter
-	if val := request.GetString("filter", ""); val != "" {
-		args["filter"] = val
-	}
-
-	// Optional: live_filter
-	if val := request.GetString("live_filter", ""); val != "" {
-		args["live_filter"] = val
-	}
-
-	// Optional: order
-	if val := request.GetString("order", ""); val != "" {
-		args["order"] = val
-	}
-
-	// Optional: since
-	if val := request.GetString("since", ""); val != "" {
-		args["since"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -302,71 +366,16 @@ func HandleComment_post_comments(ctx context.Context, request mcp.CallToolReques
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: attachment_id
-	if val := request.GetString("attachment_id", ""); val != "" {
-		args["attachment_id"] = val
-	}
-
-	// Optional: attachment_share_url
-	if val := request.GetString("attachment_share_url", ""); val != "" {
-		args["attachment_share_url"] = val
-	}
-
-	// Optional: attachment_url
-	if val := request.GetString("attachment_url", ""); val != "" {
-		args["attachment_url"] = val
-	}
-
-	// Optional: comment_privacy_value
-	if val := request.GetString("comment_privacy_value", ""); val != "" {
-		args["comment_privacy_value"] = val
-	}
-
-	// Optional: facepile_mentioned_ids
-	// array type - using string
-	if val := request.GetString("facepile_mentioned_ids", ""); val != "" {
-		args["facepile_mentioned_ids"] = val
-	}
-
-	// Optional: feedback_source
-	if val := request.GetString("feedback_source", ""); val != "" {
-		args["feedback_source"] = val
-	}
-
-	// Optional: is_offline
-	if val := request.GetBool("is_offline", false); val {
-		args["is_offline"] = val
-	}
-
-	// Optional: message
-	if val := request.GetString("message", ""); val != "" {
-		args["message"] = val
-	}
-
-	// Optional: nectar_module
-	if val := request.GetString("nectar_module", ""); val != "" {
-		args["nectar_module"] = val
-	}
-
-	// Optional: object_id
-	if val := request.GetString("object_id", ""); val != "" {
-		args["object_id"] = val
-	}
-
-	// Optional: parent_comment_id
-	// object type - using string
-	if val := request.GetString("parent_comment_id", ""); val != "" {
-		args["parent_comment_id"] = val
-	}
-
-	// Optional: text
-	if val := request.GetString("text", ""); val != "" {
-		args["text"] = val
-	}
-
-	// Optional: tracking
-	if val := request.GetString("tracking", ""); val != "" {
-		args["tracking"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method
@@ -398,19 +407,16 @@ func HandleComment_delete_likes(ctx context.Context, request mcp.CallToolRequest
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: feedback_source
-	if val := request.GetString("feedback_source", ""); val != "" {
-		args["feedback_source"] = val
-	}
-
-	// Optional: nectar_module
-	if val := request.GetString("nectar_module", ""); val != "" {
-		args["nectar_module"] = val
-	}
-
-	// Optional: tracking
-	if val := request.GetString("tracking", ""); val != "" {
-		args["tracking"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method
@@ -443,8 +449,13 @@ func HandleComment_get_likes(ctx context.Context, request mcp.CallToolRequest) (
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -491,19 +502,16 @@ func HandleComment_post_likes(ctx context.Context, request mcp.CallToolRequest) 
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: feedback_source
-	if val := request.GetString("feedback_source", ""); val != "" {
-		args["feedback_source"] = val
-	}
-
-	// Optional: nectar_module
-	if val := request.GetString("nectar_module", ""); val != "" {
-		args["nectar_module"] = val
-	}
-
-	// Optional: tracking
-	if val := request.GetString("tracking", ""); val != "" {
-		args["tracking"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method
@@ -535,14 +543,26 @@ func HandleComment_get_reactions(ctx context.Context, request mcp.CallToolReques
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: type
-	if val := request.GetString("type", ""); val != "" {
-		args["type"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -619,8 +639,13 @@ func HandleComment_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -667,29 +692,16 @@ func HandleComment_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: attachment_id
-	if val := request.GetString("attachment_id", ""); val != "" {
-		args["attachment_id"] = val
-	}
-
-	// Optional: attachment_share_url
-	if val := request.GetString("attachment_share_url", ""); val != "" {
-		args["attachment_share_url"] = val
-	}
-
-	// Optional: attachment_url
-	if val := request.GetString("attachment_url", ""); val != "" {
-		args["attachment_url"] = val
-	}
-
-	// Optional: is_hidden
-	if val := request.GetBool("is_hidden", false); val {
-		args["is_hidden"] = val
-	}
-
-	// Optional: message
-	if val := request.GetString("message", ""); val != "" {
-		args["message"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method

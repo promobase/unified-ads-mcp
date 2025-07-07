@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -19,8 +20,8 @@ func GetPagePostExperimentTools() []mcp.Tool {
 	// pagepostexperiment_get_video_insights tool
 	pagepostexperiment_get_video_insightsTool := mcp.NewTool("pagepostexperiment_get_video_insights",
 		mcp.WithDescription("GET video_insights for PagePostExperiment"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -44,8 +45,8 @@ func GetPagePostExperimentTools() []mcp.Tool {
 	// Available fields for PagePostExperiment: auto_resolve_settings, control_video_id, creation_time, creator, declared_winning_time, declared_winning_video_id, description, experiment_video_ids, id, insight_snapshots, name, optimization_goal, publish_status, publish_time, scheduled_experiment_timestamp, updated_time
 	pagepostexperiment_get_Tool := mcp.NewTool("pagepostexperiment_get_",
 		mcp.WithDescription("GET  for PagePostExperiment"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for PagePostExperiment objects. Available fields: auto_resolve_settings, control_video_id, creation_time, creator, declared_winning_time, declared_winning_video_id, description, experiment_video_ids, id, insight_snapshots, name, optimization_goal, publish_status, publish_time, scheduled_experiment_timestamp (and 1 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for PagePostExperiment objects. Available fields: auto_resolve_settings, control_video_id, creation_time, creator, declared_winning_time, declared_winning_video_id, description, experiment_video_ids, id, insight_snapshots, name, optimization_goal, publish_status, publish_time, scheduled_experiment_timestamp (and 1 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -79,8 +80,13 @@ func HandlePagepostexperiment_get_video_insights(ctx context.Context, request mc
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -157,8 +163,13 @@ func HandlePagepostexperiment_get_(ctx context.Context, request mcp.CallToolRequ
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit

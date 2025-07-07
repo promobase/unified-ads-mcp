@@ -33,28 +33,10 @@ func (c *CommentClient) Comment_get_comments(args map[string]interface{}) (inter
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["filter"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("filter", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["live_filter"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("live_filter", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["order"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("order", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["since"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("since", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -124,82 +106,10 @@ func (c *CommentClient) Comment_post_comments(args map[string]interface{}) (inte
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["attachment_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("attachment_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["attachment_share_url"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("attachment_share_url", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["attachment_url"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("attachment_url", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["comment_privacy_value"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("comment_privacy_value", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["facepile_mentioned_ids"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("facepile_mentioned_ids", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["feedback_source"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("feedback_source", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["is_offline"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("is_offline", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["message"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("message", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["nectar_module"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("nectar_module", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["object_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("object_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["parent_comment_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("parent_comment_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["text"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("text", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["tracking"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("tracking", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -245,22 +155,10 @@ func (c *CommentClient) Comment_delete_likes(args map[string]interface{}) (inter
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["feedback_source"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("feedback_source", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["nectar_module"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("nectar_module", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["tracking"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("tracking", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -373,22 +271,10 @@ func (c *CommentClient) Comment_post_likes(args map[string]interface{}) (interfa
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["feedback_source"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("feedback_source", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["nectar_module"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("nectar_module", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["tracking"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("tracking", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -434,10 +320,10 @@ func (c *CommentClient) Comment_get_reactions(args map[string]interface{}) (inte
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["type"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("type", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -616,34 +502,10 @@ func (c *CommentClient) Comment_post_(args map[string]interface{}) (interface{},
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["attachment_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("attachment_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["attachment_share_url"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("attachment_share_url", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["attachment_url"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("attachment_url", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["is_hidden"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("is_hidden", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["message"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("message", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 

@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -20,8 +21,8 @@ func GetHotelTools() []mcp.Tool {
 	// Available fields for CatalogItemChannelsToIntegrityStatus: channels, rejection_information
 	hotel_get_channels_to_integrity_statusTool := mcp.NewTool("hotel_get_channels_to_integrity_status",
 		mcp.WithDescription("GET channels_to_integrity_status for Hotel"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for CatalogItemChannelsToIntegrityStatus objects. Available fields: channels, rejection_information"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for CatalogItemChannelsToIntegrityStatus objects. Available fields: channels, rejection_information"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -39,8 +40,8 @@ func GetHotelTools() []mcp.Tool {
 	// Available fields for HotelRoom: applinks, base_price, currency, description, id, images, margin_level, name, room_id, sale_price, url
 	hotel_get_hotel_roomsTool := mcp.NewTool("hotel_get_hotel_rooms",
 		mcp.WithDescription("GET hotel_rooms for Hotel"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for HotelRoom objects. Available fields: applinks, base_price, currency, description, id, images, margin_level, name, room_id, sale_price, url"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for HotelRoom objects. Available fields: applinks, base_price, currency, description, id, images, margin_level, name, room_id, sale_price, url"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -56,17 +57,26 @@ func GetHotelTools() []mcp.Tool {
 
 	// hotel_get_override_details tool
 	// Available fields for OverrideDetails: key, type, values
+	// Params object accepts: keys (list<string>), type (hoteloverride_details_type_enum_param)
 	hotel_get_override_detailsTool := mcp.NewTool("hotel_get_override_details",
 		mcp.WithDescription("GET override_details for Hotel"),
-		mcp.WithString("keys",
-			mcp.Description("keys parameter for override_details"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"keys": map[string]any{
+					"type":        "array",
+					"description": "keys parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+				"type": map[string]any{
+					"type":        "string",
+					"description": "type parameter",
+					"enum":        []string{"COUNTRY", "LANGUAGE", "LANGUAGE_AND_COUNTRY"},
+				},
+			}),
+			mcp.Description("Parameters object containing: keys (array<string>), type (enum) [COUNTRY, LANGUAGE, LANGUAGE_AND_COUNTRY]"),
 		),
-		mcp.WithString("type",
-			mcp.Description("type parameter for override_details"),
-			mcp.Enum("COUNTRY", "LANGUAGE", "LANGUAGE_AND_COUNTRY"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for OverrideDetails objects. Available fields: key, type, values"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for OverrideDetails objects. Available fields: key, type, values"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -84,8 +94,8 @@ func GetHotelTools() []mcp.Tool {
 	// Available fields for DynamicVideoMetadata: id, tags, url, video
 	hotel_get_videos_metadataTool := mcp.NewTool("hotel_get_videos_metadata",
 		mcp.WithDescription("GET videos_metadata for Hotel"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for DynamicVideoMetadata objects. Available fields: id, tags, url, video"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for DynamicVideoMetadata objects. Available fields: id, tags, url, video"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -109,8 +119,8 @@ func GetHotelTools() []mcp.Tool {
 	// Available fields for Hotel: address, applinks, brand, category, category_specific_fields, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0, custom_number_1, custom_number_2, custom_number_3, custom_number_4, description, guest_ratings, hotel_id, id, image_fetch_status, images, lowest_base_price, loyalty_program, margin_level, name, phone, product_priority_0, product_priority_1, product_priority_2, product_priority_3, product_priority_4, sale_price, sanitized_images, star_rating, tags, unit_price, url, visibility
 	hotel_get_Tool := mcp.NewTool("hotel_get_",
 		mcp.WithDescription("GET  for Hotel"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for Hotel objects. Available fields: address, applinks, brand, category, category_specific_fields, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0, custom_number_1, custom_number_2, custom_number_3 (and 24 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for Hotel objects. Available fields: address, applinks, brand, category, category_specific_fields, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0, custom_number_1, custom_number_2, custom_number_3 (and 24 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -125,43 +135,63 @@ func GetHotelTools() []mcp.Tool {
 	tools = append(tools, hotel_get_Tool)
 
 	// hotel_post_ tool
+	// Params object accepts: address (Object), applinks (Object), base_price (unsigned int), brand (string), currency (string), description (string), guest_ratings (list<Object>), images (list<Object>), name (string), phone (string), star_rating (float), url (string)
 	hotel_post_Tool := mcp.NewTool("hotel_post_",
 		mcp.WithDescription("POST  for Hotel"),
-		mcp.WithString("address",
-			mcp.Description("address parameter for "),
-		),
-		mcp.WithString("applinks",
-			mcp.Description("applinks parameter for "),
-		),
-		mcp.WithNumber("base_price",
-			mcp.Description("base_price parameter for "),
-		),
-		mcp.WithString("brand",
-			mcp.Description("brand parameter for "),
-		),
-		mcp.WithString("currency",
-			mcp.Description("currency parameter for "),
-		),
-		mcp.WithString("description",
-			mcp.Description("description parameter for "),
-		),
-		mcp.WithString("guest_ratings",
-			mcp.Description("guest_ratings parameter for "),
-		),
-		mcp.WithString("images",
-			mcp.Description("images parameter for "),
-		),
-		mcp.WithString("name",
-			mcp.Description("name parameter for "),
-		),
-		mcp.WithString("phone",
-			mcp.Description("phone parameter for "),
-		),
-		mcp.WithNumber("star_rating",
-			mcp.Description("star_rating parameter for "),
-		),
-		mcp.WithString("url",
-			mcp.Description("url parameter for "),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"address": map[string]any{
+					"type":        "object",
+					"description": "address parameter",
+				},
+				"applinks": map[string]any{
+					"type":        "object",
+					"description": "applinks parameter",
+				},
+				"base_price": map[string]any{
+					"type":        "integer",
+					"description": "base_price parameter",
+				},
+				"brand": map[string]any{
+					"type":        "string",
+					"description": "brand parameter",
+				},
+				"currency": map[string]any{
+					"type":        "string",
+					"description": "currency parameter",
+				},
+				"description": map[string]any{
+					"type":        "string",
+					"description": "description parameter",
+				},
+				"guest_ratings": map[string]any{
+					"type":        "array",
+					"description": "guest_ratings parameter",
+					"items":       map[string]any{"type": "object"},
+				},
+				"images": map[string]any{
+					"type":        "array",
+					"description": "images parameter",
+					"items":       map[string]any{"type": "object"},
+				},
+				"name": map[string]any{
+					"type":        "string",
+					"description": "name parameter",
+				},
+				"phone": map[string]any{
+					"type":        "string",
+					"description": "phone parameter",
+				},
+				"star_rating": map[string]any{
+					"type":        "number",
+					"description": "star_rating parameter",
+				},
+				"url": map[string]any{
+					"type":        "string",
+					"description": "url parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: address (object), applinks (object), base_price (integer), brand (string), currency (string), description (string), guest_ratings (array<object>), images (array<object>), name (string), phone (string), star_rating (number), url (string)"),
 		),
 	)
 	tools = append(tools, hotel_post_Tool)
@@ -186,8 +216,13 @@ func HandleHotel_get_channels_to_integrity_status(ctx context.Context, request m
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -235,8 +270,13 @@ func HandleHotel_get_hotel_rooms(ctx context.Context, request mcp.CallToolReques
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -283,20 +323,26 @@ func HandleHotel_get_override_details(ctx context.Context, request mcp.CallToolR
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: keys
-	// array type - using string
-	if val := request.GetString("keys", ""); val != "" {
-		args["keys"] = val
-	}
-
-	// Optional: type
-	if val := request.GetString("type", ""); val != "" {
-		args["type"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -344,8 +390,13 @@ func HandleHotel_get_videos_metadata(ctx context.Context, request mcp.CallToolRe
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -422,8 +473,13 @@ func HandleHotel_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Ca
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -470,68 +526,16 @@ func HandleHotel_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.C
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: address
-	// object type - using string
-	if val := request.GetString("address", ""); val != "" {
-		args["address"] = val
-	}
-
-	// Optional: applinks
-	// object type - using string
-	if val := request.GetString("applinks", ""); val != "" {
-		args["applinks"] = val
-	}
-
-	// Optional: base_price
-	if val := request.GetInt("base_price", 0); val != 0 {
-		args["base_price"] = val
-	}
-
-	// Optional: brand
-	if val := request.GetString("brand", ""); val != "" {
-		args["brand"] = val
-	}
-
-	// Optional: currency
-	if val := request.GetString("currency", ""); val != "" {
-		args["currency"] = val
-	}
-
-	// Optional: description
-	if val := request.GetString("description", ""); val != "" {
-		args["description"] = val
-	}
-
-	// Optional: guest_ratings
-	// array type - using string
-	if val := request.GetString("guest_ratings", ""); val != "" {
-		args["guest_ratings"] = val
-	}
-
-	// Optional: images
-	// array type - using string
-	if val := request.GetString("images", ""); val != "" {
-		args["images"] = val
-	}
-
-	// Optional: name
-	if val := request.GetString("name", ""); val != "" {
-		args["name"] = val
-	}
-
-	// Optional: phone
-	if val := request.GetString("phone", ""); val != "" {
-		args["phone"] = val
-	}
-
-	// Optional: star_rating
-	if val := request.GetFloat("star_rating", 0); val != 0 {
-		args["star_rating"] = val
-	}
-
-	// Optional: url
-	if val := request.GetString("url", ""); val != "" {
-		args["url"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method

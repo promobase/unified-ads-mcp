@@ -24,11 +24,11 @@ func NewPublisherBlockListClient(accessToken string) *PublisherBlockListClient {
 // publisherblocklist_post_append_publisher_urls POST append_publisher_urls for PublisherBlockList
 func (c *PublisherBlockListClient) Publisherblocklist_post_append_publisher_urls(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	publisher_urls, ok := args["publisher_urls"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: publisher_urls")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = publisher_urls // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -38,10 +38,10 @@ func (c *PublisherBlockListClient) Publisherblocklist_post_append_publisher_urls
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["publisher_urls"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("publisher_urls", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -87,10 +87,10 @@ func (c *PublisherBlockListClient) Publisherblocklist_get_paged_web_publishers(a
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["draft_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("draft_id", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -202,22 +202,10 @@ func (c *PublisherBlockListClient) Publisherblocklist_get_(args map[string]inter
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["account_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("account_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["business_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("business_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["draft_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("draft_id", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -278,11 +266,11 @@ func (c *PublisherBlockListClient) Publisherblocklist_get_(args map[string]inter
 // publisherblocklist_post_ POST  for PublisherBlockList
 func (c *PublisherBlockListClient) Publisherblocklist_post_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	spec, ok := args["spec"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: spec")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = spec // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -292,10 +280,10 @@ func (c *PublisherBlockListClient) Publisherblocklist_post_(args map[string]inte
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["spec"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("spec", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 

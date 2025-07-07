@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -19,8 +20,8 @@ func GetVideoPollTools() []mcp.Tool {
 	// videopoll_get_poll_options tool
 	videopoll_get_poll_optionsTool := mcp.NewTool("videopoll_get_poll_options",
 		mcp.WithDescription("GET poll_options for VideoPoll"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -38,8 +39,8 @@ func GetVideoPollTools() []mcp.Tool {
 	// Available fields for VideoPoll: close_after_voting, default_open, id, question, show_gradient, show_results, status
 	videopoll_get_Tool := mcp.NewTool("videopoll_get_",
 		mcp.WithDescription("GET  for VideoPoll"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for VideoPoll objects. Available fields: close_after_voting, default_open, id, question, show_gradient, show_results, status"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for VideoPoll objects. Available fields: close_after_voting, default_open, id, question, show_gradient, show_results, status"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -54,24 +55,36 @@ func GetVideoPollTools() []mcp.Tool {
 	tools = append(tools, videopoll_get_Tool)
 
 	// videopoll_post_ tool
+	// Params object accepts: action (videopoll_action), close_after_voting (bool), default_open (bool), show_gradient (bool), show_results (bool)
 	videopoll_post_Tool := mcp.NewTool("videopoll_post_",
 		mcp.WithDescription("POST  for VideoPoll"),
-		mcp.WithString("action",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("action parameter for "),
-			mcp.Enum("ATTACH_TO_VIDEO", "CLOSE", "DELETE_POLL", "SHOW_RESULTS", "SHOW_VOTING"),
-		),
-		mcp.WithBoolean("close_after_voting",
-			mcp.Description("close_after_voting parameter for "),
-		),
-		mcp.WithBoolean("default_open",
-			mcp.Description("default_open parameter for "),
-		),
-		mcp.WithBoolean("show_gradient",
-			mcp.Description("show_gradient parameter for "),
-		),
-		mcp.WithBoolean("show_results",
-			mcp.Description("show_results parameter for "),
+			mcp.Properties(map[string]any{
+				"action": map[string]any{
+					"type":        "string",
+					"description": "action parameter",
+					"required":    true,
+					"enum":        []string{"ATTACH_TO_VIDEO", "CLOSE", "DELETE_POLL", "SHOW_RESULTS", "SHOW_VOTING"},
+				},
+				"close_after_voting": map[string]any{
+					"type":        "boolean",
+					"description": "close_after_voting parameter",
+				},
+				"default_open": map[string]any{
+					"type":        "boolean",
+					"description": "default_open parameter",
+				},
+				"show_gradient": map[string]any{
+					"type":        "boolean",
+					"description": "show_gradient parameter",
+				},
+				"show_results": map[string]any{
+					"type":        "boolean",
+					"description": "show_results parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: action (videopoll_action) [ATTACH_TO_VIDEO, CLOSE, DELETE_POLL, SHOW_RESULTS, SHOW_VOTING] [required], close_after_voting (boolean), default_open (boolean), show_gradient (boolean), show_results (boolean)"),
 		),
 	)
 	tools = append(tools, videopoll_post_Tool)
@@ -96,8 +109,13 @@ func HandleVideopoll_get_poll_options(ctx context.Context, request mcp.CallToolR
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -145,8 +163,13 @@ func HandleVideopoll_get_(ctx context.Context, request mcp.CallToolRequest) (*mc
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -193,31 +216,18 @@ func HandleVideopoll_post_(ctx context.Context, request mcp.CallToolRequest) (*m
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: action
-	action, err := request.RequireString("action")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter action: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["action"] = action
-
-	// Optional: close_after_voting
-	if val := request.GetBool("close_after_voting", false); val {
-		args["close_after_voting"] = val
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
-
-	// Optional: default_open
-	if val := request.GetBool("default_open", false); val {
-		args["default_open"] = val
-	}
-
-	// Optional: show_gradient
-	if val := request.GetBool("show_gradient", false); val {
-		args["show_gradient"] = val
-	}
-
-	// Optional: show_results
-	if val := request.GetBool("show_results", false); val {
-		args["show_results"] = val
+	for key, value := range paramsObj {
+		args[key] = value
 	}
 
 	// Call the client method

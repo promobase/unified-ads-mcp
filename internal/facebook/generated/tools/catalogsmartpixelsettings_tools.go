@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -20,8 +21,8 @@ func GetCatalogSmartPixelSettingsTools() []mcp.Tool {
 	// Available fields for CatalogSmartPixelSettings: allowed_domains, available_property_filters, catalog, cbb_custom_override_filters, cbb_default_filter, defaults, filters, id, is_cbb_enabled, is_create_enabled, is_delete_enabled, is_update_enabled, microdata_format_precedence, pixel, property_filter, trusted_domains
 	catalogsmartpixelsettings_get_Tool := mcp.NewTool("catalogsmartpixelsettings_get_",
 		mcp.WithDescription("GET  for CatalogSmartPixelSettings"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for CatalogSmartPixelSettings objects. Available fields: allowed_domains, available_property_filters, catalog, cbb_custom_override_filters, cbb_default_filter, defaults, filters, id, is_cbb_enabled, is_create_enabled, is_delete_enabled, is_update_enabled, microdata_format_precedence, pixel, property_filter (and 1 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for CatalogSmartPixelSettings objects. Available fields: allowed_domains, available_property_filters, catalog, cbb_custom_override_filters, cbb_default_filter, defaults, filters, id, is_cbb_enabled, is_create_enabled, is_delete_enabled, is_update_enabled, microdata_format_precedence, pixel, property_filter (and 1 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -55,8 +56,13 @@ func HandleCatalogsmartpixelsettings_get_(ctx context.Context, request mcp.CallT
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit

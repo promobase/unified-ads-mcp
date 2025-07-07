@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -26,8 +27,8 @@ func GetStoreCatalogSettingsTools() []mcp.Tool {
 	// Available fields for StoreCatalogSettings: id, page
 	storecatalogsettings_get_Tool := mcp.NewTool("storecatalogsettings_get_",
 		mcp.WithDescription("GET  for StoreCatalogSettings"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for StoreCatalogSettings objects. Available fields: id, page"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for StoreCatalogSettings objects. Available fields: id, page"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -90,8 +91,13 @@ func HandleStorecatalogsettings_get_(ctx context.Context, request mcp.CallToolRe
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit

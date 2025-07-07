@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -18,46 +19,66 @@ func GetAdMonetizationPropertyTools() []mcp.Tool {
 
 	// admonetizationproperty_get_adnetworkanalytics tool
 	// Available fields for AdNetworkAnalyticsSyncQueryResult: omitted_results, query_id, results
+	// Params object accepts: aggregation_period (admonetizationpropertyadnetworkanalytics_aggregation_period_enum_param), breakdowns (list<admonetizationpropertyadnetworkanalytics_breakdowns_enum_param>), filters (list<map>), limit (unsigned int), metrics (list<admonetizationpropertyadnetworkanalytics_metrics_enum_param>), ordering_column (admonetizationpropertyadnetworkanalytics_ordering_column_enum_param), ordering_type (admonetizationpropertyadnetworkanalytics_ordering_type_enum_param), should_include_until (bool), since (datetime), until (datetime)
 	admonetizationproperty_get_adnetworkanalyticsTool := mcp.NewTool("admonetizationproperty_get_adnetworkanalytics",
 		mcp.WithDescription("GET adnetworkanalytics for AdMonetizationProperty"),
-		mcp.WithString("aggregation_period",
-			mcp.Description("aggregation_period parameter for adnetworkanalytics"),
-			mcp.Enum("DAY", "TOTAL"),
-		),
-		mcp.WithString("breakdowns",
-			mcp.Description("breakdowns parameter for adnetworkanalytics"),
-			mcp.Enum("AD_SERVER_CAMPAIGN_ID", "AD_SPACE", "AGE", "APP", "CLICKED_VIEW_TAG", "COUNTRY", "DEAL", "DEAL_AD", "DEAL_PAGE", "DELIVERY_METHOD", "DISPLAY_FORMAT", "FAIL_REASON", "GENDER", "INSTANT_ARTICLE_ID", "INSTANT_ARTICLE_PAGE_ID", "IS_DEAL_BACKFILL", "PLACEMENT", "PLACEMENT_NAME", "PLATFORM", "PROPERTY", "SDK_VERSION"),
-		),
-		mcp.WithString("filters",
-			mcp.Description("filters parameter for adnetworkanalytics"),
-		),
-		mcp.WithNumber("limit",
-			mcp.Description("limit parameter for adnetworkanalytics"),
-		),
-		mcp.WithString("metrics",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("metrics parameter for adnetworkanalytics"),
-			mcp.Enum("FB_AD_NETWORK_BIDDING_BID_RATE", "FB_AD_NETWORK_BIDDING_REQUEST", "FB_AD_NETWORK_BIDDING_RESPONSE", "FB_AD_NETWORK_BIDDING_REVENUE", "FB_AD_NETWORK_BIDDING_WIN_RATE", "FB_AD_NETWORK_CLICK", "FB_AD_NETWORK_CPM", "FB_AD_NETWORK_CTR", "FB_AD_NETWORK_FILLED_REQUEST", "FB_AD_NETWORK_FILL_RATE", "FB_AD_NETWORK_IMP", "FB_AD_NETWORK_IMPRESSION_RATE", "FB_AD_NETWORK_REQUEST", "FB_AD_NETWORK_REVENUE", "FB_AD_NETWORK_SHOW_RATE", "FB_AD_NETWORK_VIDEO_GUARANTEE_REVENUE", "FB_AD_NETWORK_VIDEO_MRC", "FB_AD_NETWORK_VIDEO_MRC_RATE", "FB_AD_NETWORK_VIDEO_VIEW", "FB_AD_NETWORK_VIDEO_VIEW_RATE"),
+			mcp.Properties(map[string]any{
+				"aggregation_period": map[string]any{
+					"type":        "string",
+					"description": "aggregation_period parameter",
+					"enum":        []string{"DAY", "TOTAL"},
+				},
+				"breakdowns": map[string]any{
+					"type":        "array",
+					"description": "breakdowns parameter",
+					"enum":        []string{"AD_SERVER_CAMPAIGN_ID", "AD_SPACE", "AGE", "APP", "CLICKED_VIEW_TAG", "COUNTRY", "DEAL", "DEAL_AD", "DEAL_PAGE", "DELIVERY_METHOD", "DISPLAY_FORMAT", "FAIL_REASON", "GENDER", "INSTANT_ARTICLE_ID", "INSTANT_ARTICLE_PAGE_ID", "IS_DEAL_BACKFILL", "PLACEMENT", "PLACEMENT_NAME", "PLATFORM", "PROPERTY", "SDK_VERSION"},
+					"items":       map[string]any{"type": "string"},
+				},
+				"filters": map[string]any{
+					"type":        "array",
+					"description": "filters parameter",
+					"items":       map[string]any{"type": "object"},
+				},
+				"limit": map[string]any{
+					"type":        "integer",
+					"description": "limit parameter",
+				},
+				"metrics": map[string]any{
+					"type":        "array",
+					"description": "metrics parameter",
+					"required":    true,
+					"enum":        []string{"FB_AD_NETWORK_BIDDING_BID_RATE", "FB_AD_NETWORK_BIDDING_REQUEST", "FB_AD_NETWORK_BIDDING_RESPONSE", "FB_AD_NETWORK_BIDDING_REVENUE", "FB_AD_NETWORK_BIDDING_WIN_RATE", "FB_AD_NETWORK_CLICK", "FB_AD_NETWORK_CPM", "FB_AD_NETWORK_CTR", "FB_AD_NETWORK_FILLED_REQUEST", "FB_AD_NETWORK_FILL_RATE", "FB_AD_NETWORK_IMP", "FB_AD_NETWORK_IMPRESSION_RATE", "FB_AD_NETWORK_REQUEST", "FB_AD_NETWORK_REVENUE", "FB_AD_NETWORK_SHOW_RATE", "FB_AD_NETWORK_VIDEO_GUARANTEE_REVENUE", "FB_AD_NETWORK_VIDEO_MRC", "FB_AD_NETWORK_VIDEO_MRC_RATE", "FB_AD_NETWORK_VIDEO_VIEW", "FB_AD_NETWORK_VIDEO_VIEW_RATE"},
+					"items":       map[string]any{"type": "string"},
+				},
+				"ordering_column": map[string]any{
+					"type":        "string",
+					"description": "ordering_column parameter",
+					"enum":        []string{"METRIC", "TIME", "VALUE"},
+				},
+				"ordering_type": map[string]any{
+					"type":        "string",
+					"description": "ordering_type parameter",
+					"enum":        []string{"ASCENDING", "DESCENDING"},
+				},
+				"should_include_until": map[string]any{
+					"type":        "boolean",
+					"description": "should_include_until parameter",
+				},
+				"since": map[string]any{
+					"type":        "string",
+					"description": "since parameter",
+				},
+				"until": map[string]any{
+					"type":        "string",
+					"description": "until parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: aggregation_period (enum) [DAY, TOTAL], breakdowns (array<enum>) [AD_SERVER_CAMPAIGN_ID, AD_SPACE, AGE, APP, CLICKED_VIEW_TAG, ...], filters (array<object>), limit (integer), metrics (array<enum>) [FB_AD_NETWORK_BIDDING_BID_RATE, FB_AD_NETWORK_BIDDING_REQUEST, FB_AD_NETWORK_BIDDING_RESPONSE, FB_AD_NETWORK_BIDDING_REVENUE, FB_AD_NETWORK_BIDDING_WIN_RATE, ...] [required], ordering_column (enum) [METRIC, TIME, VALUE], ordering_type (enum) [ASCENDING, DESCENDING], should_include_until (boolean), since (datetime), until (datetime)"),
 		),
-		mcp.WithString("ordering_column",
-			mcp.Description("ordering_column parameter for adnetworkanalytics"),
-			mcp.Enum("METRIC", "TIME", "VALUE"),
-		),
-		mcp.WithString("ordering_type",
-			mcp.Description("ordering_type parameter for adnetworkanalytics"),
-			mcp.Enum("ASCENDING", "DESCENDING"),
-		),
-		mcp.WithBoolean("should_include_until",
-			mcp.Description("should_include_until parameter for adnetworkanalytics"),
-		),
-		mcp.WithString("since",
-			mcp.Description("since parameter for adnetworkanalytics"),
-		),
-		mcp.WithString("until",
-			mcp.Description("until parameter for adnetworkanalytics"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for AdNetworkAnalyticsSyncQueryResult objects. Available fields: omitted_results, query_id, results"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for AdNetworkAnalyticsSyncQueryResult objects. Available fields: omitted_results, query_id, results"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -72,53 +93,80 @@ func GetAdMonetizationPropertyTools() []mcp.Tool {
 	tools = append(tools, admonetizationproperty_get_adnetworkanalyticsTool)
 
 	// admonetizationproperty_post_adnetworkanalytics tool
+	// Params object accepts: aggregation_period (admonetizationpropertyadnetworkanalytics_aggregation_period_enum_param), breakdowns (list<admonetizationpropertyadnetworkanalytics_breakdowns_enum_param>), filters (list<Object>), limit (int), metrics (list<admonetizationpropertyadnetworkanalytics_metrics_enum_param>), ordering_column (admonetizationpropertyadnetworkanalytics_ordering_column_enum_param), ordering_type (admonetizationpropertyadnetworkanalytics_ordering_type_enum_param), since (datetime), until (datetime)
 	admonetizationproperty_post_adnetworkanalyticsTool := mcp.NewTool("admonetizationproperty_post_adnetworkanalytics",
 		mcp.WithDescription("POST adnetworkanalytics for AdMonetizationProperty"),
-		mcp.WithString("aggregation_period",
-			mcp.Description("aggregation_period parameter for adnetworkanalytics"),
-			mcp.Enum("DAY", "TOTAL"),
-		),
-		mcp.WithString("breakdowns",
-			mcp.Description("breakdowns parameter for adnetworkanalytics"),
-			mcp.Enum("AD_SERVER_CAMPAIGN_ID", "AD_SPACE", "AGE", "APP", "CLICKED_VIEW_TAG", "COUNTRY", "DEAL", "DEAL_AD", "DEAL_PAGE", "DELIVERY_METHOD", "DISPLAY_FORMAT", "FAIL_REASON", "GENDER", "INSTANT_ARTICLE_ID", "INSTANT_ARTICLE_PAGE_ID", "IS_DEAL_BACKFILL", "PLACEMENT", "PLACEMENT_NAME", "PLATFORM", "PROPERTY", "SDK_VERSION"),
-		),
-		mcp.WithString("filters",
-			mcp.Description("filters parameter for adnetworkanalytics"),
-		),
-		mcp.WithNumber("limit",
-			mcp.Description("limit parameter for adnetworkanalytics"),
-		),
-		mcp.WithString("metrics",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("metrics parameter for adnetworkanalytics"),
-			mcp.Enum("FB_AD_NETWORK_BIDDING_BID_RATE", "FB_AD_NETWORK_BIDDING_REQUEST", "FB_AD_NETWORK_BIDDING_RESPONSE", "FB_AD_NETWORK_BIDDING_REVENUE", "FB_AD_NETWORK_BIDDING_WIN_RATE", "FB_AD_NETWORK_CLICK", "FB_AD_NETWORK_CPM", "FB_AD_NETWORK_CTR", "FB_AD_NETWORK_FILLED_REQUEST", "FB_AD_NETWORK_FILL_RATE", "FB_AD_NETWORK_IMP", "FB_AD_NETWORK_IMPRESSION_RATE", "FB_AD_NETWORK_REQUEST", "FB_AD_NETWORK_REVENUE", "FB_AD_NETWORK_SHOW_RATE", "FB_AD_NETWORK_VIDEO_GUARANTEE_REVENUE", "FB_AD_NETWORK_VIDEO_MRC", "FB_AD_NETWORK_VIDEO_MRC_RATE", "FB_AD_NETWORK_VIDEO_VIEW", "FB_AD_NETWORK_VIDEO_VIEW_RATE"),
-		),
-		mcp.WithString("ordering_column",
-			mcp.Description("ordering_column parameter for adnetworkanalytics"),
-			mcp.Enum("METRIC", "TIME", "VALUE"),
-		),
-		mcp.WithString("ordering_type",
-			mcp.Description("ordering_type parameter for adnetworkanalytics"),
-			mcp.Enum("ASCENDING", "DESCENDING"),
-		),
-		mcp.WithString("since",
-			mcp.Description("since parameter for adnetworkanalytics"),
-		),
-		mcp.WithString("until",
-			mcp.Description("until parameter for adnetworkanalytics"),
+			mcp.Properties(map[string]any{
+				"aggregation_period": map[string]any{
+					"type":        "string",
+					"description": "aggregation_period parameter",
+					"enum":        []string{"DAY", "TOTAL"},
+				},
+				"breakdowns": map[string]any{
+					"type":        "array",
+					"description": "breakdowns parameter",
+					"enum":        []string{"AD_SERVER_CAMPAIGN_ID", "AD_SPACE", "AGE", "APP", "CLICKED_VIEW_TAG", "COUNTRY", "DEAL", "DEAL_AD", "DEAL_PAGE", "DELIVERY_METHOD", "DISPLAY_FORMAT", "FAIL_REASON", "GENDER", "INSTANT_ARTICLE_ID", "INSTANT_ARTICLE_PAGE_ID", "IS_DEAL_BACKFILL", "PLACEMENT", "PLACEMENT_NAME", "PLATFORM", "PROPERTY", "SDK_VERSION"},
+					"items":       map[string]any{"type": "string"},
+				},
+				"filters": map[string]any{
+					"type":        "array",
+					"description": "filters parameter",
+					"items":       map[string]any{"type": "object"},
+				},
+				"limit": map[string]any{
+					"type":        "integer",
+					"description": "limit parameter",
+				},
+				"metrics": map[string]any{
+					"type":        "array",
+					"description": "metrics parameter",
+					"required":    true,
+					"enum":        []string{"FB_AD_NETWORK_BIDDING_BID_RATE", "FB_AD_NETWORK_BIDDING_REQUEST", "FB_AD_NETWORK_BIDDING_RESPONSE", "FB_AD_NETWORK_BIDDING_REVENUE", "FB_AD_NETWORK_BIDDING_WIN_RATE", "FB_AD_NETWORK_CLICK", "FB_AD_NETWORK_CPM", "FB_AD_NETWORK_CTR", "FB_AD_NETWORK_FILLED_REQUEST", "FB_AD_NETWORK_FILL_RATE", "FB_AD_NETWORK_IMP", "FB_AD_NETWORK_IMPRESSION_RATE", "FB_AD_NETWORK_REQUEST", "FB_AD_NETWORK_REVENUE", "FB_AD_NETWORK_SHOW_RATE", "FB_AD_NETWORK_VIDEO_GUARANTEE_REVENUE", "FB_AD_NETWORK_VIDEO_MRC", "FB_AD_NETWORK_VIDEO_MRC_RATE", "FB_AD_NETWORK_VIDEO_VIEW", "FB_AD_NETWORK_VIDEO_VIEW_RATE"},
+					"items":       map[string]any{"type": "string"},
+				},
+				"ordering_column": map[string]any{
+					"type":        "string",
+					"description": "ordering_column parameter",
+					"enum":        []string{"METRIC", "TIME", "VALUE"},
+				},
+				"ordering_type": map[string]any{
+					"type":        "string",
+					"description": "ordering_type parameter",
+					"enum":        []string{"ASCENDING", "DESCENDING"},
+				},
+				"since": map[string]any{
+					"type":        "string",
+					"description": "since parameter",
+				},
+				"until": map[string]any{
+					"type":        "string",
+					"description": "until parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: aggregation_period (enum) [DAY, TOTAL], breakdowns (array<enum>) [AD_SERVER_CAMPAIGN_ID, AD_SPACE, AGE, APP, CLICKED_VIEW_TAG, ...], filters (array<object>), limit (integer), metrics (array<enum>) [FB_AD_NETWORK_BIDDING_BID_RATE, FB_AD_NETWORK_BIDDING_REQUEST, FB_AD_NETWORK_BIDDING_RESPONSE, FB_AD_NETWORK_BIDDING_REVENUE, FB_AD_NETWORK_BIDDING_WIN_RATE, ...] [required], ordering_column (enum) [METRIC, TIME, VALUE], ordering_type (enum) [ASCENDING, DESCENDING], since (datetime), until (datetime)"),
 		),
 	)
 	tools = append(tools, admonetizationproperty_post_adnetworkanalyticsTool)
 
 	// admonetizationproperty_get_adnetworkanalytics_results tool
 	// Available fields for AdNetworkAnalyticsAsyncQueryResult: data, omitted_results, query_id, results, status
+	// Params object accepts: query_ids (list<string>)
 	admonetizationproperty_get_adnetworkanalytics_resultsTool := mcp.NewTool("admonetizationproperty_get_adnetworkanalytics_results",
 		mcp.WithDescription("GET adnetworkanalytics_results for AdMonetizationProperty"),
-		mcp.WithString("query_ids",
-			mcp.Description("query_ids parameter for adnetworkanalytics_results"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"query_ids": map[string]any{
+					"type":        "array",
+					"description": "query_ids parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+			}),
+			mcp.Description("Parameters object containing: query_ids (array<string>)"),
 		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for AdNetworkAnalyticsAsyncQueryResult objects. Available fields: data, omitted_results, query_id, results, status"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for AdNetworkAnalyticsAsyncQueryResult objects. Available fields: data, omitted_results, query_id, results, status"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -136,8 +184,8 @@ func GetAdMonetizationPropertyTools() []mcp.Tool {
 	// Available fields for AdMonetizationProperty: owner_business
 	admonetizationproperty_get_Tool := mcp.NewTool("admonetizationproperty_get_",
 		mcp.WithDescription("GET  for AdMonetizationProperty"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for AdMonetizationProperty objects. Available fields: owner_business"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for AdMonetizationProperty objects. Available fields: owner_business"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -170,63 +218,28 @@ func HandleAdmonetizationproperty_get_adnetworkanalytics(ctx context.Context, re
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: aggregation_period
-	if val := request.GetString("aggregation_period", ""); val != "" {
-		args["aggregation_period"] = val
-	}
-
-	// Optional: breakdowns
-	// array type - using string
-	if val := request.GetString("breakdowns", ""); val != "" {
-		args["breakdowns"] = val
-	}
-
-	// Optional: filters
-	// array type - using string
-	if val := request.GetString("filters", ""); val != "" {
-		args["filters"] = val
-	}
-
-	// Optional: limit
-	if val := request.GetInt("limit", 0); val != 0 {
-		args["limit"] = val
-	}
-
-	// Required: metrics
-	metrics, err := request.RequireString("metrics")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter metrics: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["metrics"] = metrics
-
-	// Optional: ordering_column
-	if val := request.GetString("ordering_column", ""); val != "" {
-		args["ordering_column"] = val
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
-
-	// Optional: ordering_type
-	if val := request.GetString("ordering_type", ""); val != "" {
-		args["ordering_type"] = val
-	}
-
-	// Optional: should_include_until
-	if val := request.GetBool("should_include_until", false); val {
-		args["should_include_until"] = val
-	}
-
-	// Optional: since
-	if val := request.GetString("since", ""); val != "" {
-		args["since"] = val
-	}
-
-	// Optional: until
-	if val := request.GetString("until", ""); val != "" {
-		args["until"] = val
+	for key, value := range paramsObj {
+		args[key] = value
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -273,53 +286,18 @@ func HandleAdmonetizationproperty_post_adnetworkanalytics(ctx context.Context, r
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: aggregation_period
-	if val := request.GetString("aggregation_period", ""); val != "" {
-		args["aggregation_period"] = val
-	}
-
-	// Optional: breakdowns
-	// array type - using string
-	if val := request.GetString("breakdowns", ""); val != "" {
-		args["breakdowns"] = val
-	}
-
-	// Optional: filters
-	// array type - using string
-	if val := request.GetString("filters", ""); val != "" {
-		args["filters"] = val
-	}
-
-	// Optional: limit
-	if val := request.GetInt("limit", 0); val != 0 {
-		args["limit"] = val
-	}
-
-	// Required: metrics
-	metrics, err := request.RequireString("metrics")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter metrics: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["metrics"] = metrics
-
-	// Optional: ordering_column
-	if val := request.GetString("ordering_column", ""); val != "" {
-		args["ordering_column"] = val
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
-
-	// Optional: ordering_type
-	if val := request.GetString("ordering_type", ""); val != "" {
-		args["ordering_type"] = val
-	}
-
-	// Optional: since
-	if val := request.GetString("since", ""); val != "" {
-		args["since"] = val
-	}
-
-	// Optional: until
-	if val := request.GetString("until", ""); val != "" {
-		args["until"] = val
+	for key, value := range paramsObj {
+		args[key] = value
 	}
 
 	// Call the client method
@@ -351,15 +329,26 @@ func HandleAdmonetizationproperty_get_adnetworkanalytics_results(ctx context.Con
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: query_ids
-	// array type - using string
-	if val := request.GetString("query_ids", ""); val != "" {
-		args["query_ids"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -407,8 +396,13 @@ func HandleAdmonetizationproperty_get_(ctx context.Context, request mcp.CallTool
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit

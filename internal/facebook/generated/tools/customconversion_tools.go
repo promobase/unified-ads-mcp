@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -18,20 +19,29 @@ func GetCustomConversionTools() []mcp.Tool {
 
 	// customconversion_get_stats tool
 	// Available fields for CustomConversionStatsResult: aggregation, data, timestamp
+	// Params object accepts: aggregation (customconversionstats_aggregation_enum_param), end_time (datetime), start_time (datetime)
 	customconversion_get_statsTool := mcp.NewTool("customconversion_get_stats",
 		mcp.WithDescription("GET stats for CustomConversion"),
-		mcp.WithString("aggregation",
-			mcp.Description("aggregation parameter for stats"),
-			mcp.Enum("count", "device_type", "host", "pixel_fire", "unmatched_count", "unmatched_usd_amount", "url", "usd_amount"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"aggregation": map[string]any{
+					"type":        "string",
+					"description": "aggregation parameter",
+					"enum":        []string{"count", "device_type", "host", "pixel_fire", "unmatched_count", "unmatched_usd_amount", "url", "usd_amount"},
+				},
+				"end_time": map[string]any{
+					"type":        "string",
+					"description": "end_time parameter",
+				},
+				"start_time": map[string]any{
+					"type":        "string",
+					"description": "start_time parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: aggregation (enum) [count, device_type, host, pixel_fire, unmatched_count, ...], end_time (datetime), start_time (datetime)"),
 		),
-		mcp.WithString("end_time",
-			mcp.Description("end_time parameter for stats"),
-		),
-		mcp.WithString("start_time",
-			mcp.Description("start_time parameter for stats"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for CustomConversionStatsResult objects. Available fields: aggregation, data, timestamp"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for CustomConversionStatsResult objects. Available fields: aggregation, data, timestamp"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -55,8 +65,8 @@ func GetCustomConversionTools() []mcp.Tool {
 	// Available fields for CustomConversion: account_id, aggregation_rule, business, creation_time, custom_event_type, data_sources, default_conversion_value, description, event_source_type, first_fired_time, id, is_archived, is_unavailable, last_fired_time, name, offline_conversion_data_set, pixel, retention_days, rule
 	customconversion_get_Tool := mcp.NewTool("customconversion_get_",
 		mcp.WithDescription("GET  for CustomConversion"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for CustomConversion objects. Available fields: account_id, aggregation_rule, business, creation_time, custom_event_type, data_sources, default_conversion_value, description, event_source_type, first_fired_time, id, is_archived, is_unavailable, last_fired_time, name (and 4 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for CustomConversion objects. Available fields: account_id, aggregation_rule, business, creation_time, custom_event_type, data_sources, default_conversion_value, description, event_source_type, first_fired_time, id, is_archived, is_unavailable, last_fired_time, name (and 4 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -71,16 +81,25 @@ func GetCustomConversionTools() []mcp.Tool {
 	tools = append(tools, customconversion_get_Tool)
 
 	// customconversion_post_ tool
+	// Params object accepts: default_conversion_value (float), description (string), name (string)
 	customconversion_post_Tool := mcp.NewTool("customconversion_post_",
 		mcp.WithDescription("POST  for CustomConversion"),
-		mcp.WithNumber("default_conversion_value",
-			mcp.Description("default_conversion_value parameter for "),
-		),
-		mcp.WithString("description",
-			mcp.Description("description parameter for "),
-		),
-		mcp.WithString("name",
-			mcp.Description("name parameter for "),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"default_conversion_value": map[string]any{
+					"type":        "number",
+					"description": "default_conversion_value parameter",
+				},
+				"description": map[string]any{
+					"type":        "string",
+					"description": "description parameter",
+				},
+				"name": map[string]any{
+					"type":        "string",
+					"description": "name parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: default_conversion_value (number), description (string), name (string)"),
 		),
 	)
 	tools = append(tools, customconversion_post_Tool)
@@ -104,24 +123,26 @@ func HandleCustomconversion_get_stats(ctx context.Context, request mcp.CallToolR
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: aggregation
-	if val := request.GetString("aggregation", ""); val != "" {
-		args["aggregation"] = val
-	}
-
-	// Optional: end_time
-	if val := request.GetString("end_time", ""); val != "" {
-		args["end_time"] = val
-	}
-
-	// Optional: start_time
-	if val := request.GetString("start_time", ""); val != "" {
-		args["start_time"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -198,8 +219,13 @@ func HandleCustomconversion_get_(ctx context.Context, request mcp.CallToolReques
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -246,19 +272,16 @@ func HandleCustomconversion_post_(ctx context.Context, request mcp.CallToolReque
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: default_conversion_value
-	if val := request.GetFloat("default_conversion_value", 0); val != 0 {
-		args["default_conversion_value"] = val
-	}
-
-	// Optional: description
-	if val := request.GetString("description", ""); val != "" {
-		args["description"] = val
-	}
-
-	// Optional: name
-	if val := request.GetString("name", ""); val != "" {
-		args["name"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method

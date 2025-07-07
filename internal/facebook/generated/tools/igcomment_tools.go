@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -20,8 +21,8 @@ func GetIGCommentTools() []mcp.Tool {
 	// Available fields for IGComment: from, hidden, id, legacy_instagram_comment_id, like_count, media, parent_id, text, timestamp, user, username
 	igcomment_get_repliesTool := mcp.NewTool("igcomment_get_replies",
 		mcp.WithDescription("GET replies for IGComment"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for IGComment objects. Available fields: from, hidden, id, legacy_instagram_comment_id, like_count, media, parent_id, text, timestamp, user, username"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for IGComment objects. Available fields: from, hidden, id, legacy_instagram_comment_id, like_count, media, parent_id, text, timestamp, user, username"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -36,19 +37,33 @@ func GetIGCommentTools() []mcp.Tool {
 	tools = append(tools, igcomment_get_repliesTool)
 
 	// igcomment_post_replies tool
+	// Params object accepts: message (string)
 	igcomment_post_repliesTool := mcp.NewTool("igcomment_post_replies",
 		mcp.WithDescription("POST replies for IGComment"),
-		mcp.WithString("message",
-			mcp.Description("message parameter for replies"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"message": map[string]any{
+					"type":        "string",
+					"description": "message parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: message (string)"),
 		),
 	)
 	tools = append(tools, igcomment_post_repliesTool)
 
 	// igcomment_delete_ tool
+	// Params object accepts: ad_id (string)
 	igcomment_delete_Tool := mcp.NewTool("igcomment_delete_",
 		mcp.WithDescription("DELETE  for IGComment"),
-		mcp.WithString("ad_id",
-			mcp.Description("ad_id parameter for "),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"ad_id": map[string]any{
+					"type":        "string",
+					"description": "ad_id parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: ad_id (string)"),
 		),
 	)
 	tools = append(tools, igcomment_delete_Tool)
@@ -57,8 +72,8 @@ func GetIGCommentTools() []mcp.Tool {
 	// Available fields for IGComment: from, hidden, id, legacy_instagram_comment_id, like_count, media, parent_id, text, timestamp, user, username
 	igcomment_get_Tool := mcp.NewTool("igcomment_get_",
 		mcp.WithDescription("GET  for IGComment"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for IGComment objects. Available fields: from, hidden, id, legacy_instagram_comment_id, like_count, media, parent_id, text, timestamp, user, username"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for IGComment objects. Available fields: from, hidden, id, legacy_instagram_comment_id, like_count, media, parent_id, text, timestamp, user, username"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -73,14 +88,23 @@ func GetIGCommentTools() []mcp.Tool {
 	tools = append(tools, igcomment_get_Tool)
 
 	// igcomment_post_ tool
+	// Params object accepts: ad_id (string), hide (bool)
 	igcomment_post_Tool := mcp.NewTool("igcomment_post_",
 		mcp.WithDescription("POST  for IGComment"),
-		mcp.WithString("ad_id",
-			mcp.Description("ad_id parameter for "),
-		),
-		mcp.WithBoolean("hide",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("hide parameter for "),
+			mcp.Properties(map[string]any{
+				"ad_id": map[string]any{
+					"type":        "string",
+					"description": "ad_id parameter",
+				},
+				"hide": map[string]any{
+					"type":        "boolean",
+					"description": "hide parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: ad_id (string), hide (boolean) [required]"),
 		),
 	)
 	tools = append(tools, igcomment_post_Tool)
@@ -105,8 +129,13 @@ func HandleIgcomment_get_replies(ctx context.Context, request mcp.CallToolReques
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -153,9 +182,16 @@ func HandleIgcomment_post_replies(ctx context.Context, request mcp.CallToolReque
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: message
-	if val := request.GetString("message", ""); val != "" {
-		args["message"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method
@@ -187,9 +223,16 @@ func HandleIgcomment_delete_(ctx context.Context, request mcp.CallToolRequest) (
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: ad_id
-	if val := request.GetString("ad_id", ""); val != "" {
-		args["ad_id"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method
@@ -222,8 +265,13 @@ func HandleIgcomment_get_(ctx context.Context, request mcp.CallToolRequest) (*mc
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -270,17 +318,19 @@ func HandleIgcomment_post_(ctx context.Context, request mcp.CallToolRequest) (*m
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: ad_id
-	if val := request.GetString("ad_id", ""); val != "" {
-		args["ad_id"] = val
-	}
-
-	// Required: hide
-	hide, err := request.RequireBool("hide")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter hide: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["hide"] = hide
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Igcomment_post_(args)

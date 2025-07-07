@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -18,14 +19,22 @@ func GetAdsPixelTools() []mcp.Tool {
 
 	// adspixel_get_adaccounts tool
 	// Available fields for AdAccount: account_id, account_status, ad_account_promotable_objects, age, agency_client_declaration, all_capabilities, amount_spent, attribution_spec, balance, brand_safety_content_filter_levels, business, business_city, business_country_code, business_name, business_state, business_street, business_street2, business_zip, can_create_brand_lift_study, capabilities, created_time, currency, custom_audience_info, default_dsa_beneficiary, default_dsa_payor, disable_reason, end_advertiser, end_advertiser_name, existing_customers, expired_funding_source_details, extended_credit_invoice_group, failed_delivery_checks, fb_entity, funding_source, funding_source_details, has_migrated_permissions, has_page_authorized_adaccount, id, io_number, is_attribution_spec_system_default, is_ba_skip_delayed_eligible, is_direct_deals_enabled, is_in_3ds_authorization_enabled_market, is_notifications_enabled, is_personal, is_prepay_account, is_tax_id_required, liable_address, line_numbers, media_agency, min_campaign_group_spend_cap, min_daily_budget, name, offsite_pixels_tos_accepted, owner, owner_business, partner, rf_spec, send_bill_to_address, show_checkout_experience, sold_to_address, spend_cap, tax_id, tax_id_status, tax_id_type, timezone_id, timezone_name, timezone_offset_hours_utc, tos_accepted, user_access_expire_time, user_tasks, user_tos_accepted, viewable_business
+	// Params object accepts: business (string)
 	adspixel_get_adaccountsTool := mcp.NewTool("adspixel_get_adaccounts",
 		mcp.WithDescription("GET adaccounts for AdsPixel"),
-		mcp.WithString("business",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("business parameter for adaccounts"),
+			mcp.Properties(map[string]any{
+				"business": map[string]any{
+					"type":        "string",
+					"description": "business parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: business (string) [required]"),
 		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for AdAccount objects. Available fields: account_id, account_status, ad_account_promotable_objects, age, agency_client_declaration, all_capabilities, amount_spent, attribution_spec, balance, brand_safety_content_filter_levels, business, business_city, business_country_code, business_name, business_state (and 58 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for AdAccount objects. Available fields: account_id, account_status, ad_account_promotable_objects, age, agency_client_declaration, all_capabilities, amount_spent, attribution_spec, balance, brand_safety_content_filter_levels, business, business_city, business_country_code, business_name, business_state (and 58 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -40,11 +49,19 @@ func GetAdsPixelTools() []mcp.Tool {
 	tools = append(tools, adspixel_get_adaccountsTool)
 
 	// adspixel_delete_agencies tool
+	// Params object accepts: business (string)
 	adspixel_delete_agenciesTool := mcp.NewTool("adspixel_delete_agencies",
 		mcp.WithDescription("DELETE agencies for AdsPixel"),
-		mcp.WithString("business",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("business parameter for agencies"),
+			mcp.Properties(map[string]any{
+				"business": map[string]any{
+					"type":        "string",
+					"description": "business parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: business (string) [required]"),
 		),
 	)
 	tools = append(tools, adspixel_delete_agenciesTool)
@@ -53,8 +70,8 @@ func GetAdsPixelTools() []mcp.Tool {
 	// Available fields for Business: block_offline_analytics, collaborative_ads_managed_partner_business_info, collaborative_ads_managed_partner_eligibility, collaborative_ads_partner_premium_options, created_by, created_time, extended_updated_time, id, is_hidden, link, name, payment_account_id, primary_page, profile_picture_uri, timezone_id, two_factor_type, updated_by, updated_time, user_access_expire_time, verification_status, vertical, vertical_id
 	adspixel_get_agenciesTool := mcp.NewTool("adspixel_get_agencies",
 		mcp.WithDescription("GET agencies for AdsPixel"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for Business objects. Available fields: block_offline_analytics, collaborative_ads_managed_partner_business_info, collaborative_ads_managed_partner_eligibility, collaborative_ads_partner_premium_options, created_by, created_time, extended_updated_time, id, is_hidden, link, name, payment_account_id, primary_page, profile_picture_uri, timezone_id (and 7 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for Business objects. Available fields: block_offline_analytics, collaborative_ads_managed_partner_business_info, collaborative_ads_managed_partner_eligibility, collaborative_ads_partner_premium_options, created_by, created_time, extended_updated_time, id, is_hidden, link, name, payment_account_id, primary_page, profile_picture_uri, timezone_id (and 7 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -69,40 +86,66 @@ func GetAdsPixelTools() []mcp.Tool {
 	tools = append(tools, adspixel_get_agenciesTool)
 
 	// adspixel_post_agencies tool
+	// Params object accepts: business (string), permitted_tasks (list<adspixelagencies_permitted_tasks_enum_param>)
 	adspixel_post_agenciesTool := mcp.NewTool("adspixel_post_agencies",
 		mcp.WithDescription("POST agencies for AdsPixel"),
-		mcp.WithString("business",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("business parameter for agencies"),
-		),
-		mcp.WithString("permitted_tasks",
-			mcp.Required(),
-			mcp.Description("permitted_tasks parameter for agencies"),
-			mcp.Enum("ADVERTISE", "ANALYZE", "EDIT", "UPLOAD"),
+			mcp.Properties(map[string]any{
+				"business": map[string]any{
+					"type":        "string",
+					"description": "business parameter",
+					"required":    true,
+				},
+				"permitted_tasks": map[string]any{
+					"type":        "array",
+					"description": "permitted_tasks parameter",
+					"required":    true,
+					"enum":        []string{"ADVERTISE", "ANALYZE", "EDIT", "UPLOAD"},
+					"items":       map[string]any{"type": "string"},
+				},
+			}),
+			mcp.Description("Parameters object containing: business (string) [required], permitted_tasks (array<enum>) [ADVERTISE, ANALYZE, EDIT, UPLOAD] [required]"),
 		),
 	)
 	tools = append(tools, adspixel_post_agenciesTool)
 
 	// adspixel_post_ahp_configs tool
+	// Params object accepts: applink_autosetup (bool)
 	adspixel_post_ahp_configsTool := mcp.NewTool("adspixel_post_ahp_configs",
 		mcp.WithDescription("POST ahp_configs for AdsPixel"),
-		mcp.WithBoolean("applink_autosetup",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("applink_autosetup parameter for ahp_configs"),
+			mcp.Properties(map[string]any{
+				"applink_autosetup": map[string]any{
+					"type":        "boolean",
+					"description": "applink_autosetup parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: applink_autosetup (boolean) [required]"),
 		),
 	)
 	tools = append(tools, adspixel_post_ahp_configsTool)
 
 	// adspixel_get_assigned_users tool
 	// Available fields for AssignedUser: business, id, name, user_type
+	// Params object accepts: business (string)
 	adspixel_get_assigned_usersTool := mcp.NewTool("adspixel_get_assigned_users",
 		mcp.WithDescription("GET assigned_users for AdsPixel"),
-		mcp.WithString("business",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("business parameter for assigned_users"),
+			mcp.Properties(map[string]any{
+				"business": map[string]any{
+					"type":        "string",
+					"description": "business parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: business (string) [required]"),
 		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for AssignedUser objects. Available fields: business, id, name, user_type"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for AssignedUser objects. Available fields: business, id, name, user_type"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -117,33 +160,52 @@ func GetAdsPixelTools() []mcp.Tool {
 	tools = append(tools, adspixel_get_assigned_usersTool)
 
 	// adspixel_post_assigned_users tool
+	// Params object accepts: tasks (list<adspixelassigned_users_tasks_enum_param>), user (int)
 	adspixel_post_assigned_usersTool := mcp.NewTool("adspixel_post_assigned_users",
 		mcp.WithDescription("POST assigned_users for AdsPixel"),
-		mcp.WithString("tasks",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("tasks parameter for assigned_users"),
-			mcp.Enum("AA_ANALYZE", "ADVERTISE", "ANALYZE", "EDIT", "UPLOAD"),
-		),
-		mcp.WithNumber("user",
-			mcp.Required(),
-			mcp.Description("user parameter for assigned_users"),
+			mcp.Properties(map[string]any{
+				"tasks": map[string]any{
+					"type":        "array",
+					"description": "tasks parameter",
+					"required":    true,
+					"enum":        []string{"AA_ANALYZE", "ADVERTISE", "ANALYZE", "EDIT", "UPLOAD"},
+					"items":       map[string]any{"type": "string"},
+				},
+				"user": map[string]any{
+					"type":        "integer",
+					"description": "user parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: tasks (array<enum>) [AA_ANALYZE, ADVERTISE, ANALYZE, EDIT, UPLOAD] [required], user (integer) [required]"),
 		),
 	)
 	tools = append(tools, adspixel_post_assigned_usersTool)
 
 	// adspixel_get_da_checks tool
 	// Available fields for DACheck: action_uri, description, key, result, title, user_message
+	// Params object accepts: checks (list<string>), connection_method (adspixelda_checks_connection_method_enum_param)
 	adspixel_get_da_checksTool := mcp.NewTool("adspixel_get_da_checks",
 		mcp.WithDescription("GET da_checks for AdsPixel"),
-		mcp.WithString("checks",
-			mcp.Description("checks parameter for da_checks"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"checks": map[string]any{
+					"type":        "array",
+					"description": "checks parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+				"connection_method": map[string]any{
+					"type":        "string",
+					"description": "connection_method parameter",
+					"enum":        []string{"ALL", "APP", "BROWSER", "SERVER"},
+				},
+			}),
+			mcp.Description("Parameters object containing: checks (array<string>), connection_method (enum) [ALL, APP, BROWSER, SERVER]"),
 		),
-		mcp.WithString("connection_method",
-			mcp.Description("connection_method parameter for da_checks"),
-			mcp.Enum("ALL", "APP", "BROWSER", "SERVER"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for DACheck objects. Available fields: action_uri, description, key, result, title, user_message"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for DACheck objects. Available fields: action_uri, description, key, result, title, user_message"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -158,65 +220,95 @@ func GetAdsPixelTools() []mcp.Tool {
 	tools = append(tools, adspixel_get_da_checksTool)
 
 	// adspixel_post_events tool
+	// Params object accepts: data (list<string>), namespace_id (string), partner_agent (string), platforms (list<map>), progress (Object), test_event_code (string), trace (unsigned int), upload_id (string), upload_source (string), upload_tag (string)
 	adspixel_post_eventsTool := mcp.NewTool("adspixel_post_events",
 		mcp.WithDescription("POST events for AdsPixel"),
-		mcp.WithString("data",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("data parameter for events"),
-		),
-		mcp.WithString("namespace_id",
-			mcp.Description("namespace_id parameter for events"),
-		),
-		mcp.WithString("partner_agent",
-			mcp.Description("partner_agent parameter for events"),
-		),
-		mcp.WithString("platforms",
-			mcp.Description("platforms parameter for events"),
-		),
-		mcp.WithString("progress",
-			mcp.Description("progress parameter for events"),
-		),
-		mcp.WithString("test_event_code",
-			mcp.Description("test_event_code parameter for events"),
-		),
-		mcp.WithNumber("trace",
-			mcp.Description("trace parameter for events"),
-		),
-		mcp.WithString("upload_id",
-			mcp.Description("upload_id parameter for events"),
-		),
-		mcp.WithString("upload_source",
-			mcp.Description("upload_source parameter for events"),
-		),
-		mcp.WithString("upload_tag",
-			mcp.Description("upload_tag parameter for events"),
+			mcp.Properties(map[string]any{
+				"data": map[string]any{
+					"type":        "array",
+					"description": "data parameter",
+					"required":    true,
+					"items":       map[string]any{"type": "string"},
+				},
+				"namespace_id": map[string]any{
+					"type":        "string",
+					"description": "namespace_id parameter",
+				},
+				"partner_agent": map[string]any{
+					"type":        "string",
+					"description": "partner_agent parameter",
+				},
+				"platforms": map[string]any{
+					"type":        "array",
+					"description": "platforms parameter",
+					"items":       map[string]any{"type": "object"},
+				},
+				"progress": map[string]any{
+					"type":        "object",
+					"description": "progress parameter",
+				},
+				"test_event_code": map[string]any{
+					"type":        "string",
+					"description": "test_event_code parameter",
+				},
+				"trace": map[string]any{
+					"type":        "integer",
+					"description": "trace parameter",
+				},
+				"upload_id": map[string]any{
+					"type":        "string",
+					"description": "upload_id parameter",
+				},
+				"upload_source": map[string]any{
+					"type":        "string",
+					"description": "upload_source parameter",
+				},
+				"upload_tag": map[string]any{
+					"type":        "string",
+					"description": "upload_tag parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: data (array<string>) [required], namespace_id (string), partner_agent (string), platforms (array<object>), progress (object), test_event_code (string), trace (integer), upload_id (string), upload_source (string), upload_tag (string)"),
 		),
 	)
 	tools = append(tools, adspixel_post_eventsTool)
 
 	// adspixel_get_offline_event_uploads tool
 	// Available fields for OfflineConversionDataSetUpload: api_calls, creation_time, duplicate_entries, event_stats, event_time_max, event_time_min, first_upload_time, id, is_excluded_for_lift, last_upload_time, match_rate_approx, matched_entries, upload_tag, valid_entries
+	// Params object accepts: end_time (datetime), order (adspixeloffline_event_uploads_order_enum_param), sort_by (adspixeloffline_event_uploads_sort_by_enum_param), start_time (datetime), upload_tag (string)
 	adspixel_get_offline_event_uploadsTool := mcp.NewTool("adspixel_get_offline_event_uploads",
 		mcp.WithDescription("GET offline_event_uploads for AdsPixel"),
-		mcp.WithString("end_time",
-			mcp.Description("end_time parameter for offline_event_uploads"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"end_time": map[string]any{
+					"type":        "string",
+					"description": "end_time parameter",
+				},
+				"order": map[string]any{
+					"type":        "string",
+					"description": "order parameter",
+					"enum":        []string{"ASCENDING", "DESCENDING"},
+				},
+				"sort_by": map[string]any{
+					"type":        "string",
+					"description": "sort_by parameter",
+					"enum":        []string{"API_CALLS", "CREATION_TIME", "EVENT_TIME_MAX", "EVENT_TIME_MIN", "FIRST_UPLOAD_TIME", "IS_EXCLUDED_FOR_LIFT", "LAST_UPLOAD_TIME"},
+				},
+				"start_time": map[string]any{
+					"type":        "string",
+					"description": "start_time parameter",
+				},
+				"upload_tag": map[string]any{
+					"type":        "string",
+					"description": "upload_tag parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: end_time (datetime), order (enum) [ASCENDING, DESCENDING], sort_by (enum) [API_CALLS, CREATION_TIME, EVENT_TIME_MAX, EVENT_TIME_MIN, FIRST_UPLOAD_TIME, ...], start_time (datetime), upload_tag (string)"),
 		),
-		mcp.WithString("order",
-			mcp.Description("order parameter for offline_event_uploads"),
-			mcp.Enum("ASCENDING", "DESCENDING"),
-		),
-		mcp.WithString("sort_by",
-			mcp.Description("sort_by parameter for offline_event_uploads"),
-			mcp.Enum("API_CALLS", "CREATION_TIME", "EVENT_TIME_MAX", "EVENT_TIME_MIN", "FIRST_UPLOAD_TIME", "IS_EXCLUDED_FOR_LIFT", "LAST_UPLOAD_TIME"),
-		),
-		mcp.WithString("start_time",
-			mcp.Description("start_time parameter for offline_event_uploads"),
-		),
-		mcp.WithString("upload_tag",
-			mcp.Description("upload_tag parameter for offline_event_uploads"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for OfflineConversionDataSetUpload objects. Available fields: api_calls, creation_time, duplicate_entries, event_stats, event_time_max, event_time_min, first_upload_time, id, is_excluded_for_lift, last_upload_time, match_rate_approx, matched_entries, upload_tag, valid_entries"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for OfflineConversionDataSetUpload objects. Available fields: api_calls, creation_time, duplicate_entries, event_stats, event_time_max, event_time_min, first_upload_time, id, is_excluded_for_lift, last_upload_time, match_rate_approx, matched_entries, upload_tag, valid_entries"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -234,8 +326,8 @@ func GetAdsPixelTools() []mcp.Tool {
 	// Available fields for OpenBridgeConfiguration: active, cloud_provider, cloud_region, destination_id, endpoint, fallback_domain, first_party_domain, host_business_id, id, instance_id, instance_version, is_sgw_instance, is_sgw_pixel_from_meta_pixel, partner_name, pixel_id, sgw_account_id, sgw_instance_url, sgw_pixel_id
 	adspixel_get_openbridge_configurationsTool := mcp.NewTool("adspixel_get_openbridge_configurations",
 		mcp.WithDescription("GET openbridge_configurations for AdsPixel"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for OpenBridgeConfiguration objects. Available fields: active, cloud_provider, cloud_region, destination_id, endpoint, fallback_domain, first_party_domain, host_business_id, id, instance_id, instance_version, is_sgw_instance, is_sgw_pixel_from_meta_pixel, partner_name, pixel_id (and 3 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for OpenBridgeConfiguration objects. Available fields: active, cloud_provider, cloud_region, destination_id, endpoint, fallback_domain, first_party_domain, host_business_id, id, instance_id, instance_version, is_sgw_instance, is_sgw_pixel_from_meta_pixel, partner_name, pixel_id (and 3 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -256,29 +348,46 @@ func GetAdsPixelTools() []mcp.Tool {
 	tools = append(tools, adspixel_post_shadowtraffichelperTool)
 
 	// adspixel_delete_shared_accounts tool
+	// Params object accepts: account_id (string), business (string)
 	adspixel_delete_shared_accountsTool := mcp.NewTool("adspixel_delete_shared_accounts",
 		mcp.WithDescription("DELETE shared_accounts for AdsPixel"),
-		mcp.WithString("account_id",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("account_id parameter for shared_accounts"),
-		),
-		mcp.WithString("business",
-			mcp.Required(),
-			mcp.Description("business parameter for shared_accounts"),
+			mcp.Properties(map[string]any{
+				"account_id": map[string]any{
+					"type":        "string",
+					"description": "account_id parameter",
+					"required":    true,
+				},
+				"business": map[string]any{
+					"type":        "string",
+					"description": "business parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: account_id (string) [required], business (string) [required]"),
 		),
 	)
 	tools = append(tools, adspixel_delete_shared_accountsTool)
 
 	// adspixel_get_shared_accounts tool
 	// Available fields for AdAccount: account_id, account_status, ad_account_promotable_objects, age, agency_client_declaration, all_capabilities, amount_spent, attribution_spec, balance, brand_safety_content_filter_levels, business, business_city, business_country_code, business_name, business_state, business_street, business_street2, business_zip, can_create_brand_lift_study, capabilities, created_time, currency, custom_audience_info, default_dsa_beneficiary, default_dsa_payor, disable_reason, end_advertiser, end_advertiser_name, existing_customers, expired_funding_source_details, extended_credit_invoice_group, failed_delivery_checks, fb_entity, funding_source, funding_source_details, has_migrated_permissions, has_page_authorized_adaccount, id, io_number, is_attribution_spec_system_default, is_ba_skip_delayed_eligible, is_direct_deals_enabled, is_in_3ds_authorization_enabled_market, is_notifications_enabled, is_personal, is_prepay_account, is_tax_id_required, liable_address, line_numbers, media_agency, min_campaign_group_spend_cap, min_daily_budget, name, offsite_pixels_tos_accepted, owner, owner_business, partner, rf_spec, send_bill_to_address, show_checkout_experience, sold_to_address, spend_cap, tax_id, tax_id_status, tax_id_type, timezone_id, timezone_name, timezone_offset_hours_utc, tos_accepted, user_access_expire_time, user_tasks, user_tos_accepted, viewable_business
+	// Params object accepts: business (string)
 	adspixel_get_shared_accountsTool := mcp.NewTool("adspixel_get_shared_accounts",
 		mcp.WithDescription("GET shared_accounts for AdsPixel"),
-		mcp.WithString("business",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("business parameter for shared_accounts"),
+			mcp.Properties(map[string]any{
+				"business": map[string]any{
+					"type":        "string",
+					"description": "business parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: business (string) [required]"),
 		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for AdAccount objects. Available fields: account_id, account_status, ad_account_promotable_objects, age, agency_client_declaration, all_capabilities, amount_spent, attribution_spec, balance, brand_safety_content_filter_levels, business, business_city, business_country_code, business_name, business_state (and 58 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for AdAccount objects. Available fields: account_id, account_status, ad_account_promotable_objects, age, agency_client_declaration, all_capabilities, amount_spent, attribution_spec, balance, brand_safety_content_filter_levels, business, business_city, business_country_code, business_name, business_state (and 58 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -293,15 +402,24 @@ func GetAdsPixelTools() []mcp.Tool {
 	tools = append(tools, adspixel_get_shared_accountsTool)
 
 	// adspixel_post_shared_accounts tool
+	// Params object accepts: account_id (string), business (string)
 	adspixel_post_shared_accountsTool := mcp.NewTool("adspixel_post_shared_accounts",
 		mcp.WithDescription("POST shared_accounts for AdsPixel"),
-		mcp.WithString("account_id",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("account_id parameter for shared_accounts"),
-		),
-		mcp.WithString("business",
-			mcp.Required(),
-			mcp.Description("business parameter for shared_accounts"),
+			mcp.Properties(map[string]any{
+				"account_id": map[string]any{
+					"type":        "string",
+					"description": "account_id parameter",
+					"required":    true,
+				},
+				"business": map[string]any{
+					"type":        "string",
+					"description": "business parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: account_id (string) [required], business (string) [required]"),
 		),
 	)
 	tools = append(tools, adspixel_post_shared_accountsTool)
@@ -310,8 +428,8 @@ func GetAdsPixelTools() []mcp.Tool {
 	// Available fields for Business: block_offline_analytics, collaborative_ads_managed_partner_business_info, collaborative_ads_managed_partner_eligibility, collaborative_ads_partner_premium_options, created_by, created_time, extended_updated_time, id, is_hidden, link, name, payment_account_id, primary_page, profile_picture_uri, timezone_id, two_factor_type, updated_by, updated_time, user_access_expire_time, verification_status, vertical, vertical_id
 	adspixel_get_shared_agenciesTool := mcp.NewTool("adspixel_get_shared_agencies",
 		mcp.WithDescription("GET shared_agencies for AdsPixel"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for Business objects. Available fields: block_offline_analytics, collaborative_ads_managed_partner_business_info, collaborative_ads_managed_partner_eligibility, collaborative_ads_partner_premium_options, created_by, created_time, extended_updated_time, id, is_hidden, link, name, payment_account_id, primary_page, profile_picture_uri, timezone_id (and 7 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for Business objects. Available fields: block_offline_analytics, collaborative_ads_managed_partner_business_info, collaborative_ads_managed_partner_eligibility, collaborative_ads_partner_premium_options, created_by, created_time, extended_updated_time, id, is_hidden, link, name, payment_account_id, primary_page, profile_picture_uri, timezone_id (and 7 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -327,26 +445,37 @@ func GetAdsPixelTools() []mcp.Tool {
 
 	// adspixel_get_stats tool
 	// Available fields for AdsPixelStatsResult: aggregation, data, start_time
+	// Params object accepts: aggregation (adspixelstats_aggregation_enum_param), end_time (datetime), event (string), event_source (string), start_time (datetime)
 	adspixel_get_statsTool := mcp.NewTool("adspixel_get_stats",
 		mcp.WithDescription("GET stats for AdsPixel"),
-		mcp.WithString("aggregation",
-			mcp.Description("aggregation parameter for stats"),
-			mcp.Enum("browser_type", "custom_data_field", "device_os", "device_type", "event", "event_detection_method", "event_processing_results", "event_source", "event_total_counts", "event_value_count", "had_pii", "host", "match_keys", "pixel_fire", "url", "url_by_rule"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"aggregation": map[string]any{
+					"type":        "string",
+					"description": "aggregation parameter",
+					"enum":        []string{"browser_type", "custom_data_field", "device_os", "device_type", "event", "event_detection_method", "event_processing_results", "event_source", "event_total_counts", "event_value_count", "had_pii", "host", "match_keys", "pixel_fire", "url", "url_by_rule"},
+				},
+				"end_time": map[string]any{
+					"type":        "string",
+					"description": "end_time parameter",
+				},
+				"event": map[string]any{
+					"type":        "string",
+					"description": "event parameter",
+				},
+				"event_source": map[string]any{
+					"type":        "string",
+					"description": "event_source parameter",
+				},
+				"start_time": map[string]any{
+					"type":        "string",
+					"description": "start_time parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: aggregation (enum) [browser_type, custom_data_field, device_os, device_type, event, ...], end_time (datetime), event (string), event_source (string), start_time (datetime)"),
 		),
-		mcp.WithString("end_time",
-			mcp.Description("end_time parameter for stats"),
-		),
-		mcp.WithString("event",
-			mcp.Description("event parameter for stats"),
-		),
-		mcp.WithString("event_source",
-			mcp.Description("event_source parameter for stats"),
-		),
-		mcp.WithString("start_time",
-			mcp.Description("start_time parameter for stats"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for AdsPixelStatsResult objects. Available fields: aggregation, data, start_time"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for AdsPixelStatsResult objects. Available fields: aggregation, data, start_time"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -364,8 +493,8 @@ func GetAdsPixelTools() []mcp.Tool {
 	// Available fields for AdsPixel: automatic_matching_fields, can_proxy, code, config, creation_time, creator, data_use_setting, description, duplicate_entries, enable_auto_assign_to_accounts, enable_automatic_matching, event_stats, event_time_max, event_time_min, first_party_cookie_status, has_1p_pixel_event, id, is_consolidated_container, is_created_by_business, is_crm, is_mta_use, is_restricted_use, is_unavailable, last_fired_time, last_upload_app, last_upload_app_changed_time, match_rate_approx, matched_entries, name, owner_ad_account, owner_business, usage, user_access_expire_time, valid_entries
 	adspixel_get_Tool := mcp.NewTool("adspixel_get_",
 		mcp.WithDescription("GET  for AdsPixel"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for AdsPixel objects. Available fields: automatic_matching_fields, can_proxy, code, config, creation_time, creator, data_use_setting, description, duplicate_entries, enable_auto_assign_to_accounts, enable_automatic_matching, event_stats, event_time_max, event_time_min, first_party_cookie_status (and 19 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for AdsPixel objects. Available fields: automatic_matching_fields, can_proxy, code, config, creation_time, creator, data_use_setting, description, duplicate_entries, enable_auto_assign_to_accounts, enable_automatic_matching, event_stats, event_time_max, event_time_min, first_party_cookie_status (and 19 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -380,28 +509,42 @@ func GetAdsPixelTools() []mcp.Tool {
 	tools = append(tools, adspixel_get_Tool)
 
 	// adspixel_post_ tool
+	// Params object accepts: automatic_matching_fields (list<adspixel_automatic_matching_fields>), data_use_setting (adspixel_data_use_setting), enable_automatic_matching (bool), first_party_cookie_status (adspixel_first_party_cookie_status), name (string), server_events_business_ids (list<string>)
 	adspixel_post_Tool := mcp.NewTool("adspixel_post_",
 		mcp.WithDescription("POST  for AdsPixel"),
-		mcp.WithString("automatic_matching_fields",
-			mcp.Description("automatic_matching_fields parameter for "),
-			mcp.Enum("country", "ct", "db", "em", "external_id", "fn", "ge", "ln", "ph", "st", "zp"),
-		),
-		mcp.WithString("data_use_setting",
-			mcp.Description("data_use_setting parameter for "),
-			mcp.Enum("ADVERTISING_AND_ANALYTICS", "ANALYTICS_ONLY", "EMPTY"),
-		),
-		mcp.WithBoolean("enable_automatic_matching",
-			mcp.Description("enable_automatic_matching parameter for "),
-		),
-		mcp.WithString("first_party_cookie_status",
-			mcp.Description("first_party_cookie_status parameter for "),
-			mcp.Enum("EMPTY", "FIRST_PARTY_COOKIE_DISABLED", "FIRST_PARTY_COOKIE_ENABLED"),
-		),
-		mcp.WithString("name",
-			mcp.Description("name parameter for "),
-		),
-		mcp.WithString("server_events_business_ids",
-			mcp.Description("server_events_business_ids parameter for "),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"automatic_matching_fields": map[string]any{
+					"type":        "array",
+					"description": "automatic_matching_fields parameter",
+					"enum":        []string{"country", "ct", "db", "em", "external_id", "fn", "ge", "ln", "ph", "st", "zp"},
+					"items":       map[string]any{"type": "string"},
+				},
+				"data_use_setting": map[string]any{
+					"type":        "string",
+					"description": "data_use_setting parameter",
+					"enum":        []string{"ADVERTISING_AND_ANALYTICS", "ANALYTICS_ONLY", "EMPTY"},
+				},
+				"enable_automatic_matching": map[string]any{
+					"type":        "boolean",
+					"description": "enable_automatic_matching parameter",
+				},
+				"first_party_cookie_status": map[string]any{
+					"type":        "string",
+					"description": "first_party_cookie_status parameter",
+					"enum":        []string{"EMPTY", "FIRST_PARTY_COOKIE_DISABLED", "FIRST_PARTY_COOKIE_ENABLED"},
+				},
+				"name": map[string]any{
+					"type":        "string",
+					"description": "name parameter",
+				},
+				"server_events_business_ids": map[string]any{
+					"type":        "array",
+					"description": "server_events_business_ids parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+			}),
+			mcp.Description("Parameters object containing: automatic_matching_fields (array<adspixel_automatic_matching_fields>) [country, ct, db, em, external_id, ...], data_use_setting (adspixel_data_use_setting) [ADVERTISING_AND_ANALYTICS, ANALYTICS_ONLY, EMPTY], enable_automatic_matching (boolean), first_party_cookie_status (adspixel_first_party_cookie_status) [EMPTY, FIRST_PARTY_COOKIE_DISABLED, FIRST_PARTY_COOKIE_ENABLED], name (string), server_events_business_ids (array<string>)"),
 		),
 	)
 	tools = append(tools, adspixel_post_Tool)
@@ -425,16 +568,28 @@ func HandleAdspixel_get_adaccounts(ctx context.Context, request mcp.CallToolRequ
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: business
-	business, err := request.RequireString("business")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter business: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["business"] = business
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -481,12 +636,19 @@ func HandleAdspixel_delete_agencies(ctx context.Context, request mcp.CallToolReq
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: business
-	business, err := request.RequireString("business")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter business: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["business"] = business
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Adspixel_delete_agencies(args)
@@ -518,8 +680,13 @@ func HandleAdspixel_get_agencies(ctx context.Context, request mcp.CallToolReques
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -566,19 +733,19 @@ func HandleAdspixel_post_agencies(ctx context.Context, request mcp.CallToolReque
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: business
-	business, err := request.RequireString("business")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter business: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["business"] = business
-
-	// Required: permitted_tasks
-	permitted_tasks, err := request.RequireString("permitted_tasks")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter permitted_tasks: %v", err)), nil
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
-	args["permitted_tasks"] = permitted_tasks
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Adspixel_post_agencies(args)
@@ -609,12 +776,19 @@ func HandleAdspixel_post_ahp_configs(ctx context.Context, request mcp.CallToolRe
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: applink_autosetup
-	applink_autosetup, err := request.RequireBool("applink_autosetup")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter applink_autosetup: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["applink_autosetup"] = applink_autosetup
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Adspixel_post_ahp_configs(args)
@@ -645,16 +819,28 @@ func HandleAdspixel_get_assigned_users(ctx context.Context, request mcp.CallTool
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: business
-	business, err := request.RequireString("business")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter business: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["business"] = business
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -701,19 +887,19 @@ func HandleAdspixel_post_assigned_users(ctx context.Context, request mcp.CallToo
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: tasks
-	tasks, err := request.RequireString("tasks")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter tasks: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["tasks"] = tasks
-
-	// Required: user
-	user, err := request.RequireInt("user")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter user: %v", err)), nil
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
-	args["user"] = user
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Adspixel_post_assigned_users(args)
@@ -744,20 +930,26 @@ func HandleAdspixel_get_da_checks(ctx context.Context, request mcp.CallToolReque
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: checks
-	// array type - using string
-	if val := request.GetString("checks", ""); val != "" {
-		args["checks"] = val
-	}
-
-	// Optional: connection_method
-	if val := request.GetString("connection_method", ""); val != "" {
-		args["connection_method"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -804,58 +996,18 @@ func HandleAdspixel_post_events(ctx context.Context, request mcp.CallToolRequest
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: data
-	data, err := request.RequireString("data")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter data: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["data"] = data
-
-	// Optional: namespace_id
-	if val := request.GetString("namespace_id", ""); val != "" {
-		args["namespace_id"] = val
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
-
-	// Optional: partner_agent
-	if val := request.GetString("partner_agent", ""); val != "" {
-		args["partner_agent"] = val
-	}
-
-	// Optional: platforms
-	// array type - using string
-	if val := request.GetString("platforms", ""); val != "" {
-		args["platforms"] = val
-	}
-
-	// Optional: progress
-	// object type - using string
-	if val := request.GetString("progress", ""); val != "" {
-		args["progress"] = val
-	}
-
-	// Optional: test_event_code
-	if val := request.GetString("test_event_code", ""); val != "" {
-		args["test_event_code"] = val
-	}
-
-	// Optional: trace
-	if val := request.GetInt("trace", 0); val != 0 {
-		args["trace"] = val
-	}
-
-	// Optional: upload_id
-	if val := request.GetString("upload_id", ""); val != "" {
-		args["upload_id"] = val
-	}
-
-	// Optional: upload_source
-	if val := request.GetString("upload_source", ""); val != "" {
-		args["upload_source"] = val
-	}
-
-	// Optional: upload_tag
-	if val := request.GetString("upload_tag", ""); val != "" {
-		args["upload_tag"] = val
+	for key, value := range paramsObj {
+		args[key] = value
 	}
 
 	// Call the client method
@@ -887,34 +1039,26 @@ func HandleAdspixel_get_offline_event_uploads(ctx context.Context, request mcp.C
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: end_time
-	if val := request.GetString("end_time", ""); val != "" {
-		args["end_time"] = val
-	}
-
-	// Optional: order
-	if val := request.GetString("order", ""); val != "" {
-		args["order"] = val
-	}
-
-	// Optional: sort_by
-	if val := request.GetString("sort_by", ""); val != "" {
-		args["sort_by"] = val
-	}
-
-	// Optional: start_time
-	if val := request.GetString("start_time", ""); val != "" {
-		args["start_time"] = val
-	}
-
-	// Optional: upload_tag
-	if val := request.GetString("upload_tag", ""); val != "" {
-		args["upload_tag"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -962,8 +1106,13 @@ func HandleAdspixel_get_openbridge_configurations(ctx context.Context, request m
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -1039,19 +1188,19 @@ func HandleAdspixel_delete_shared_accounts(ctx context.Context, request mcp.Call
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: account_id
-	account_id, err := request.RequireString("account_id")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter account_id: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["account_id"] = account_id
-
-	// Required: business
-	business, err := request.RequireString("business")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter business: %v", err)), nil
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
-	args["business"] = business
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Adspixel_delete_shared_accounts(args)
@@ -1082,16 +1231,28 @@ func HandleAdspixel_get_shared_accounts(ctx context.Context, request mcp.CallToo
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: business
-	business, err := request.RequireString("business")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter business: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["business"] = business
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -1138,19 +1299,19 @@ func HandleAdspixel_post_shared_accounts(ctx context.Context, request mcp.CallTo
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: account_id
-	account_id, err := request.RequireString("account_id")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter account_id: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["account_id"] = account_id
-
-	// Required: business
-	business, err := request.RequireString("business")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter business: %v", err)), nil
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
-	args["business"] = business
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Adspixel_post_shared_accounts(args)
@@ -1182,8 +1343,13 @@ func HandleAdspixel_get_shared_agencies(ctx context.Context, request mcp.CallToo
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -1230,34 +1396,26 @@ func HandleAdspixel_get_stats(ctx context.Context, request mcp.CallToolRequest) 
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: aggregation
-	if val := request.GetString("aggregation", ""); val != "" {
-		args["aggregation"] = val
-	}
-
-	// Optional: end_time
-	if val := request.GetString("end_time", ""); val != "" {
-		args["end_time"] = val
-	}
-
-	// Optional: event
-	if val := request.GetString("event", ""); val != "" {
-		args["event"] = val
-	}
-
-	// Optional: event_source
-	if val := request.GetString("event_source", ""); val != "" {
-		args["event_source"] = val
-	}
-
-	// Optional: start_time
-	if val := request.GetString("start_time", ""); val != "" {
-		args["start_time"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -1305,8 +1463,13 @@ func HandleAdspixel_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -1353,36 +1516,16 @@ func HandleAdspixel_post_(ctx context.Context, request mcp.CallToolRequest) (*mc
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: automatic_matching_fields
-	// array type - using string
-	if val := request.GetString("automatic_matching_fields", ""); val != "" {
-		args["automatic_matching_fields"] = val
-	}
-
-	// Optional: data_use_setting
-	if val := request.GetString("data_use_setting", ""); val != "" {
-		args["data_use_setting"] = val
-	}
-
-	// Optional: enable_automatic_matching
-	if val := request.GetBool("enable_automatic_matching", false); val {
-		args["enable_automatic_matching"] = val
-	}
-
-	// Optional: first_party_cookie_status
-	if val := request.GetString("first_party_cookie_status", ""); val != "" {
-		args["first_party_cookie_status"] = val
-	}
-
-	// Optional: name
-	if val := request.GetString("name", ""); val != "" {
-		args["name"] = val
-	}
-
-	// Optional: server_events_business_ids
-	// array type - using string
-	if val := request.GetString("server_events_business_ids", ""); val != "" {
-		args["server_events_business_ids"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method

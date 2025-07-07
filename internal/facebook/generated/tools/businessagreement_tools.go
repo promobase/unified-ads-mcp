@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -20,8 +21,8 @@ func GetBusinessAgreementTools() []mcp.Tool {
 	// Available fields for BusinessAgreement: id, request_status
 	businessagreement_get_Tool := mcp.NewTool("businessagreement_get_",
 		mcp.WithDescription("GET  for BusinessAgreement"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for BusinessAgreement objects. Available fields: id, request_status"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for BusinessAgreement objects. Available fields: id, request_status"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -36,14 +37,22 @@ func GetBusinessAgreementTools() []mcp.Tool {
 	tools = append(tools, businessagreement_get_Tool)
 
 	// businessagreement_post_ tool
+	// Params object accepts: asset_id (unsigned int), request_status (businessagreement_request_status)
 	businessagreement_post_Tool := mcp.NewTool("businessagreement_post_",
 		mcp.WithDescription("POST  for BusinessAgreement"),
-		mcp.WithNumber("asset_id",
-			mcp.Description("asset_id parameter for "),
-		),
-		mcp.WithString("request_status",
-			mcp.Description("request_status parameter for "),
-			mcp.Enum("APPROVE", "CANCELED", "DECLINE", "EXPIRED", "IN_PROGRESS", "PENDING", "PENDING_EMAIL_VERIFICATION", "PENDING_INTEGRITY_REVIEW"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"asset_id": map[string]any{
+					"type":        "integer",
+					"description": "asset_id parameter",
+				},
+				"request_status": map[string]any{
+					"type":        "string",
+					"description": "request_status parameter",
+					"enum":        []string{"APPROVE", "CANCELED", "DECLINE", "EXPIRED", "IN_PROGRESS", "PENDING", "PENDING_EMAIL_VERIFICATION", "PENDING_INTEGRITY_REVIEW"},
+				},
+			}),
+			mcp.Description("Parameters object containing: asset_id (integer), request_status (businessagreement_request_status) [APPROVE, CANCELED, DECLINE, EXPIRED, IN_PROGRESS, ...]"),
 		),
 	)
 	tools = append(tools, businessagreement_post_Tool)
@@ -68,8 +77,13 @@ func HandleBusinessagreement_get_(ctx context.Context, request mcp.CallToolReque
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -116,14 +130,16 @@ func HandleBusinessagreement_post_(ctx context.Context, request mcp.CallToolRequ
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: asset_id
-	if val := request.GetInt("asset_id", 0); val != 0 {
-		args["asset_id"] = val
-	}
-
-	// Optional: request_status
-	if val := request.GetString("request_status", ""); val != "" {
-		args["request_status"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method

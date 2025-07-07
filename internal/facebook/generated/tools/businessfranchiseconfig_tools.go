@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -20,8 +21,8 @@ func GetBusinessFranchiseConfigTools() []mcp.Tool {
 	// Available fields for BusinessFranchiseConfig: active_partner_count, agency_business, agency_business_asset_group, brand_name, business, business_vertical, id, partner_count, pending_agency_business, program_count, shared_business_asset_group, shared_creative_folder_count, shared_custom_audience_count
 	businessfranchiseconfig_get_Tool := mcp.NewTool("businessfranchiseconfig_get_",
 		mcp.WithDescription("GET  for BusinessFranchiseConfig"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for BusinessFranchiseConfig objects. Available fields: active_partner_count, agency_business, agency_business_asset_group, brand_name, business, business_vertical, id, partner_count, pending_agency_business, program_count, shared_business_asset_group, shared_creative_folder_count, shared_custom_audience_count"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for BusinessFranchiseConfig objects. Available fields: active_partner_count, agency_business, agency_business_asset_group, brand_name, business, business_vertical, id, partner_count, pending_agency_business, program_count, shared_business_asset_group, shared_creative_folder_count, shared_custom_audience_count"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -55,8 +56,13 @@ func HandleBusinessfranchiseconfig_get_(ctx context.Context, request mcp.CallToo
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit

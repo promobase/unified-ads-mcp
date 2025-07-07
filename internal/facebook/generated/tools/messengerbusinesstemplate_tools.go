@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -20,8 +21,8 @@ func GetMessengerBusinessTemplateTools() []mcp.Tool {
 	// Available fields for MessengerBusinessTemplate: category, components, creation_time, id, language, language_count, last_updated_time, library_template_name, name, rejected_reason, rejection_reasons, specific_rejection_reasons, status
 	messengerbusinesstemplate_get_Tool := mcp.NewTool("messengerbusinesstemplate_get_",
 		mcp.WithDescription("GET  for MessengerBusinessTemplate"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for MessengerBusinessTemplate objects. Available fields: category, components, creation_time, id, language, language_count, last_updated_time, library_template_name, name, rejected_reason, rejection_reasons, specific_rejection_reasons, status"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for MessengerBusinessTemplate objects. Available fields: category, components, creation_time, id, language, language_count, last_updated_time, library_template_name, name, rejected_reason, rejection_reasons, specific_rejection_reasons, status"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -36,10 +37,18 @@ func GetMessengerBusinessTemplateTools() []mcp.Tool {
 	tools = append(tools, messengerbusinesstemplate_get_Tool)
 
 	// messengerbusinesstemplate_post_ tool
+	// Params object accepts: components (list<map>)
 	messengerbusinesstemplate_post_Tool := mcp.NewTool("messengerbusinesstemplate_post_",
 		mcp.WithDescription("POST  for MessengerBusinessTemplate"),
-		mcp.WithString("components",
-			mcp.Description("components parameter for "),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"components": map[string]any{
+					"type":        "array",
+					"description": "components parameter",
+					"items":       map[string]any{"type": "object"},
+				},
+			}),
+			mcp.Description("Parameters object containing: components (array<object>)"),
 		),
 	)
 	tools = append(tools, messengerbusinesstemplate_post_Tool)
@@ -64,8 +73,13 @@ func HandleMessengerbusinesstemplate_get_(ctx context.Context, request mcp.CallT
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -112,10 +126,16 @@ func HandleMessengerbusinesstemplate_post_(ctx context.Context, request mcp.Call
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: components
-	// array type - using string
-	if val := request.GetString("components", ""); val != "" {
-		args["components"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method

@@ -167,16 +167,10 @@ func (c *LeadgenFormClient) Leadgenform_post_test_leads(args map[string]interfac
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["custom_disclaimer_responses"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("custom_disclaimer_responses", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["field_data"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("field_data", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -289,10 +283,10 @@ func (c *LeadgenFormClient) Leadgenform_post_(args map[string]interface{}) (inte
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["status"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("status", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 

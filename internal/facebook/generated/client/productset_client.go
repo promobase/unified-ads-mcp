@@ -33,16 +33,10 @@ func (c *ProductSetClient) Productset_get_automotive_models(args map[string]inte
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["bulk_pagination"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("bulk_pagination", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["filter"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("filter", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -112,16 +106,10 @@ func (c *ProductSetClient) Productset_get_destinations(args map[string]interface
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["bulk_pagination"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("bulk_pagination", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["filter"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("filter", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -191,16 +179,10 @@ func (c *ProductSetClient) Productset_get_flights(args map[string]interface{}) (
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["bulk_pagination"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("bulk_pagination", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["filter"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("filter", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -270,16 +252,10 @@ func (c *ProductSetClient) Productset_get_home_listings(args map[string]interfac
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["bulk_pagination"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("bulk_pagination", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["filter"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("filter", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -349,16 +325,10 @@ func (c *ProductSetClient) Productset_get_hotels(args map[string]interface{}) (i
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["bulk_pagination"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("bulk_pagination", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["filter"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("filter", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -428,16 +398,10 @@ func (c *ProductSetClient) Productset_get_media_titles(args map[string]interface
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["bulk_pagination"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("bulk_pagination", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["filter"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("filter", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -507,28 +471,10 @@ func (c *ProductSetClient) Productset_get_products(args map[string]interface{}) 
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["bulk_pagination"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("bulk_pagination", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["error_priority"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("error_priority", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["error_type"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("error_type", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["filter"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("filter", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -598,16 +544,10 @@ func (c *ProductSetClient) Productset_get_vehicle_offers(args map[string]interfa
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["bulk_pagination"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("bulk_pagination", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["filter"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("filter", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -677,16 +617,10 @@ func (c *ProductSetClient) Productset_get_vehicles(args map[string]interface{}) 
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["bulk_pagination"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("bulk_pagination", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["filter"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("filter", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -756,10 +690,10 @@ func (c *ProductSetClient) Productset_delete_(args map[string]interface{}) (inte
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["allow_live_product_set_deletion"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("allow_live_product_set_deletion", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -872,40 +806,10 @@ func (c *ProductSetClient) Productset_post_(args map[string]interface{}) (interf
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["filter"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("filter", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["metadata"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("metadata", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["name"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("name", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["ordering_info"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("ordering_info", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["publish_to_shops"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("publish_to_shops", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["retailer_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("retailer_id", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 

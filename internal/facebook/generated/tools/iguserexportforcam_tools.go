@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -19,8 +20,8 @@ func GetIGUserExportForCAMTools() []mcp.Tool {
 	// iguserexportforcam_get_branded_content_media tool
 	iguserexportforcam_get_branded_content_mediaTool := mcp.NewTool("iguserexportforcam_get_branded_content_media",
 		mcp.WithDescription("GET branded_content_media for IGUserExportForCAM"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -35,26 +36,37 @@ func GetIGUserExportForCAMTools() []mcp.Tool {
 	tools = append(tools, iguserexportforcam_get_branded_content_mediaTool)
 
 	// iguserexportforcam_get_insights tool
+	// Params object accepts: breakdown (iguserexportforcaminsights_breakdown_enum_param), metrics (list<iguserexportforcaminsights_metrics_enum_param>), period (iguserexportforcaminsights_period_enum_param), time_range (iguserexportforcaminsights_time_range_enum_param)
 	iguserexportforcam_get_insightsTool := mcp.NewTool("iguserexportforcam_get_insights",
 		mcp.WithDescription("GET insights for IGUserExportForCAM"),
-		mcp.WithString("breakdown",
-			mcp.Description("breakdown parameter for insights"),
-			mcp.Enum("AGE", "FOLLOW_TYPE", "GENDER", "MEDIA_TYPE", "TOP_CITIES", "TOP_COUNTRIES"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"breakdown": map[string]any{
+					"type":        "string",
+					"description": "breakdown parameter",
+					"enum":        []string{"AGE", "FOLLOW_TYPE", "GENDER", "MEDIA_TYPE", "TOP_CITIES", "TOP_COUNTRIES"},
+				},
+				"metrics": map[string]any{
+					"type":        "array",
+					"description": "metrics parameter",
+					"enum":        []string{"CREATOR_ENGAGED_ACCOUNTS", "CREATOR_REACH", "REELS_HOOK_RATE", "REELS_INTERACTION_RATE", "TOTAL_FOLLOWERS"},
+					"items":       map[string]any{"type": "string"},
+				},
+				"period": map[string]any{
+					"type":        "string",
+					"description": "period parameter",
+					"enum":        []string{"DAY", "OVERALL"},
+				},
+				"time_range": map[string]any{
+					"type":        "string",
+					"description": "time_range parameter",
+					"enum":        []string{"LAST_14_DAYS", "LAST_90_DAYS", "LIFETIME", "THIS_MONTH", "THIS_WEEK"},
+				},
+			}),
+			mcp.Description("Parameters object containing: breakdown (enum) [AGE, FOLLOW_TYPE, GENDER, MEDIA_TYPE, TOP_CITIES, ...], metrics (array<enum>) [CREATOR_ENGAGED_ACCOUNTS, CREATOR_REACH, REELS_HOOK_RATE, REELS_INTERACTION_RATE, TOTAL_FOLLOWERS], period (enum) [DAY, OVERALL], time_range (enum) [LAST_14_DAYS, LAST_90_DAYS, LIFETIME, THIS_MONTH, THIS_WEEK]"),
 		),
-		mcp.WithString("metrics",
-			mcp.Description("metrics parameter for insights"),
-			mcp.Enum("CREATOR_ENGAGED_ACCOUNTS", "CREATOR_REACH", "REELS_HOOK_RATE", "REELS_INTERACTION_RATE", "TOTAL_FOLLOWERS"),
-		),
-		mcp.WithString("period",
-			mcp.Description("period parameter for insights"),
-			mcp.Enum("DAY", "OVERALL"),
-		),
-		mcp.WithString("time_range",
-			mcp.Description("time_range parameter for insights"),
-			mcp.Enum("LAST_14_DAYS", "LAST_90_DAYS", "LIFETIME", "THIS_MONTH", "THIS_WEEK"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -71,8 +83,8 @@ func GetIGUserExportForCAMTools() []mcp.Tool {
 	// iguserexportforcam_get_recent_media tool
 	iguserexportforcam_get_recent_mediaTool := mcp.NewTool("iguserexportforcam_get_recent_media",
 		mcp.WithDescription("GET recent_media for IGUserExportForCAM"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -90,8 +102,8 @@ func GetIGUserExportForCAMTools() []mcp.Tool {
 	// Available fields for IGUserExportForCAM: age_bucket, biography, country, email, gender, id, is_account_verified, is_paid_partnership_messages_enabled, messaging_id, onboarded_status, portfolio_url, username
 	iguserexportforcam_get_Tool := mcp.NewTool("iguserexportforcam_get_",
 		mcp.WithDescription("GET  for IGUserExportForCAM"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for IGUserExportForCAM objects. Available fields: age_bucket, biography, country, email, gender, id, is_account_verified, is_paid_partnership_messages_enabled, messaging_id, onboarded_status, portfolio_url, username"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for IGUserExportForCAM objects. Available fields: age_bucket, biography, country, email, gender, id, is_account_verified, is_paid_partnership_messages_enabled, messaging_id, onboarded_status, portfolio_url, username"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -125,8 +137,13 @@ func HandleIguserexportforcam_get_branded_content_media(ctx context.Context, req
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -173,30 +190,26 @@ func HandleIguserexportforcam_get_insights(ctx context.Context, request mcp.Call
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: breakdown
-	if val := request.GetString("breakdown", ""); val != "" {
-		args["breakdown"] = val
-	}
-
-	// Optional: metrics
-	// array type - using string
-	if val := request.GetString("metrics", ""); val != "" {
-		args["metrics"] = val
-	}
-
-	// Optional: period
-	if val := request.GetString("period", ""); val != "" {
-		args["period"] = val
-	}
-
-	// Optional: time_range
-	if val := request.GetString("time_range", ""); val != "" {
-		args["time_range"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -244,8 +257,13 @@ func HandleIguserexportforcam_get_recent_media(ctx context.Context, request mcp.
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -293,8 +311,13 @@ func HandleIguserexportforcam_get_(ctx context.Context, request mcp.CallToolRequ
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit

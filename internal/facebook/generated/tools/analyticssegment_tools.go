@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -18,19 +19,28 @@ func GetAnalyticsSegmentTools() []mcp.Tool {
 
 	// analyticssegment_get_ tool
 	// Available fields for AnalyticsSegment: custom_audience_ineligiblity_reasons, description, estimated_custom_audience_size, event_info_rules, event_rules, filter_set, has_demographic_rules, id, is_all_user, is_eligible_for_push_campaign, is_internal, name, percentile_rules, time_last_seen, time_last_updated, user_property_rules, web_param_rules
+	// Params object accepts: async_task_id (string), end_date (int), start_date (int)
 	analyticssegment_get_Tool := mcp.NewTool("analyticssegment_get_",
 		mcp.WithDescription("GET  for AnalyticsSegment"),
-		mcp.WithString("async_task_id",
-			mcp.Description("async_task_id parameter for "),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"async_task_id": map[string]any{
+					"type":        "string",
+					"description": "async_task_id parameter",
+				},
+				"end_date": map[string]any{
+					"type":        "integer",
+					"description": "end_date parameter",
+				},
+				"start_date": map[string]any{
+					"type":        "integer",
+					"description": "start_date parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: async_task_id (string), end_date (integer), start_date (integer)"),
 		),
-		mcp.WithNumber("end_date",
-			mcp.Description("end_date parameter for "),
-		),
-		mcp.WithNumber("start_date",
-			mcp.Description("start_date parameter for "),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for AnalyticsSegment objects. Available fields: custom_audience_ineligiblity_reasons, description, estimated_custom_audience_size, event_info_rules, event_rules, filter_set, has_demographic_rules, id, is_all_user, is_eligible_for_push_campaign, is_internal, name, percentile_rules, time_last_seen, time_last_updated (and 2 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for AnalyticsSegment objects. Available fields: custom_audience_ineligiblity_reasons, description, estimated_custom_audience_size, event_info_rules, event_rules, filter_set, has_demographic_rules, id, is_all_user, is_eligible_for_push_campaign, is_internal, name, percentile_rules, time_last_seen, time_last_updated (and 2 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -63,24 +73,26 @@ func HandleAnalyticssegment_get_(ctx context.Context, request mcp.CallToolReques
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: async_task_id
-	if val := request.GetString("async_task_id", ""); val != "" {
-		args["async_task_id"] = val
-	}
-
-	// Optional: end_date
-	if val := request.GetInt("end_date", 0); val != 0 {
-		args["end_date"] = val
-	}
-
-	// Optional: start_date
-	if val := request.GetInt("start_date", 0); val != 0 {
-		args["start_date"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit

@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -26,8 +27,8 @@ func GetHighDemandPeriodTools() []mcp.Tool {
 	// Available fields for HighDemandPeriod: ad_object_id, budget_value, budget_value_type, id, recurrence_type, time_end, time_start, weekly_schedule
 	highdemandperiod_get_Tool := mcp.NewTool("highdemandperiod_get_",
 		mcp.WithDescription("GET  for HighDemandPeriod"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for HighDemandPeriod objects. Available fields: ad_object_id, budget_value, budget_value_type, id, recurrence_type, time_end, time_start, weekly_schedule"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for HighDemandPeriod objects. Available fields: ad_object_id, budget_value, budget_value_type, id, recurrence_type, time_end, time_start, weekly_schedule"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -42,20 +43,30 @@ func GetHighDemandPeriodTools() []mcp.Tool {
 	tools = append(tools, highdemandperiod_get_Tool)
 
 	// highdemandperiod_post_ tool
+	// Params object accepts: budget_value (unsigned int), budget_value_type (highdemandperiod_budget_value_type), time_end (unsigned int), time_start (unsigned int)
 	highdemandperiod_post_Tool := mcp.NewTool("highdemandperiod_post_",
 		mcp.WithDescription("POST  for HighDemandPeriod"),
-		mcp.WithNumber("budget_value",
-			mcp.Description("budget_value parameter for "),
-		),
-		mcp.WithString("budget_value_type",
-			mcp.Description("budget_value_type parameter for "),
-			mcp.Enum("ABSOLUTE", "MULTIPLIER"),
-		),
-		mcp.WithNumber("time_end",
-			mcp.Description("time_end parameter for "),
-		),
-		mcp.WithNumber("time_start",
-			mcp.Description("time_start parameter for "),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"budget_value": map[string]any{
+					"type":        "integer",
+					"description": "budget_value parameter",
+				},
+				"budget_value_type": map[string]any{
+					"type":        "string",
+					"description": "budget_value_type parameter",
+					"enum":        []string{"ABSOLUTE", "MULTIPLIER"},
+				},
+				"time_end": map[string]any{
+					"type":        "integer",
+					"description": "time_end parameter",
+				},
+				"time_start": map[string]any{
+					"type":        "integer",
+					"description": "time_start parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: budget_value (integer), budget_value_type (highdemandperiod_budget_value_type) [ABSOLUTE, MULTIPLIER], time_end (integer), time_start (integer)"),
 		),
 	)
 	tools = append(tools, highdemandperiod_post_Tool)
@@ -109,8 +120,13 @@ func HandleHighdemandperiod_get_(ctx context.Context, request mcp.CallToolReques
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -157,24 +173,16 @@ func HandleHighdemandperiod_post_(ctx context.Context, request mcp.CallToolReque
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: budget_value
-	if val := request.GetInt("budget_value", 0); val != 0 {
-		args["budget_value"] = val
-	}
-
-	// Optional: budget_value_type
-	if val := request.GetString("budget_value_type", ""); val != "" {
-		args["budget_value_type"] = val
-	}
-
-	// Optional: time_end
-	if val := request.GetInt("time_end", 0); val != 0 {
-		args["time_end"] = val
-	}
-
-	// Optional: time_start
-	if val := request.GetInt("time_start", 0); val != 0 {
-		args["time_start"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method

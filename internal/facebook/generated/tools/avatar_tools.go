@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -17,32 +18,46 @@ func GetAvatarTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// avatar_get_models tool
+	// Params object accepts: client_name (string), client_version (string), config_id (string), force_generate (bool), platform (string), profile (string), sdk_version (string)
 	avatar_get_modelsTool := mcp.NewTool("avatar_get_models",
 		mcp.WithDescription("GET models for Avatar"),
-		mcp.WithString("client_name",
-			mcp.Description("client_name parameter for models"),
-		),
-		mcp.WithString("client_version",
-			mcp.Description("client_version parameter for models"),
-		),
-		mcp.WithString("config_id",
-			mcp.Description("config_id parameter for models"),
-		),
-		mcp.WithBoolean("force_generate",
-			mcp.Description("force_generate parameter for models"),
-		),
-		mcp.WithString("platform",
-			mcp.Description("platform parameter for models"),
-		),
-		mcp.WithString("profile",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("profile parameter for models"),
+			mcp.Properties(map[string]any{
+				"client_name": map[string]any{
+					"type":        "string",
+					"description": "client_name parameter",
+				},
+				"client_version": map[string]any{
+					"type":        "string",
+					"description": "client_version parameter",
+				},
+				"config_id": map[string]any{
+					"type":        "string",
+					"description": "config_id parameter",
+				},
+				"force_generate": map[string]any{
+					"type":        "boolean",
+					"description": "force_generate parameter",
+				},
+				"platform": map[string]any{
+					"type":        "string",
+					"description": "platform parameter",
+				},
+				"profile": map[string]any{
+					"type":        "string",
+					"description": "profile parameter",
+					"required":    true,
+				},
+				"sdk_version": map[string]any{
+					"type":        "string",
+					"description": "sdk_version parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: client_name (string), client_version (string), config_id (string), force_generate (boolean), platform (string), profile (string) [required], sdk_version (string)"),
 		),
-		mcp.WithString("sdk_version",
-			mcp.Description("sdk_version parameter for models"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -60,8 +75,8 @@ func GetAvatarTools() []mcp.Tool {
 	// Available fields for Avatar: id
 	avatar_get_Tool := mcp.NewTool("avatar_get_",
 		mcp.WithDescription("GET  for Avatar"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for Avatar objects. Available fields: id"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for Avatar objects. Available fields: id"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -94,46 +109,28 @@ func HandleAvatar_get_models(ctx context.Context, request mcp.CallToolRequest) (
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: client_name
-	if val := request.GetString("client_name", ""); val != "" {
-		args["client_name"] = val
-	}
-
-	// Optional: client_version
-	if val := request.GetString("client_version", ""); val != "" {
-		args["client_version"] = val
-	}
-
-	// Optional: config_id
-	if val := request.GetString("config_id", ""); val != "" {
-		args["config_id"] = val
-	}
-
-	// Optional: force_generate
-	if val := request.GetBool("force_generate", false); val {
-		args["force_generate"] = val
-	}
-
-	// Optional: platform
-	if val := request.GetString("platform", ""); val != "" {
-		args["platform"] = val
-	}
-
-	// Required: profile
-	profile, err := request.RequireString("profile")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter profile: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["profile"] = profile
-
-	// Optional: sdk_version
-	if val := request.GetString("sdk_version", ""); val != "" {
-		args["sdk_version"] = val
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -181,8 +178,13 @@ func HandleAvatar_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.C
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit

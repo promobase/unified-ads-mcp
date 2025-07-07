@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -20,8 +21,8 @@ func GetCloudGameTools() []mcp.Tool {
 	// Available fields for CloudGame: id, name, owner, playable_ad_file_size, playable_ad_orientation, playable_ad_package_name, playable_ad_reject_reason, playable_ad_status, playable_ad_upload_time
 	cloudgame_get_Tool := mcp.NewTool("cloudgame_get_",
 		mcp.WithDescription("GET  for CloudGame"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for CloudGame objects. Available fields: id, name, owner, playable_ad_file_size, playable_ad_orientation, playable_ad_package_name, playable_ad_reject_reason, playable_ad_status, playable_ad_upload_time"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for CloudGame objects. Available fields: id, name, owner, playable_ad_file_size, playable_ad_orientation, playable_ad_package_name, playable_ad_reject_reason, playable_ad_status, playable_ad_upload_time"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -55,8 +56,13 @@ func HandleCloudgame_get_(ctx context.Context, request mcp.CallToolRequest) (*mc
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit

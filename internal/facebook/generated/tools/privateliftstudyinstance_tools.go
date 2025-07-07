@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -20,8 +21,8 @@ func GetPrivateLiftStudyInstanceTools() []mcp.Tool {
 	// Available fields for PrivateLiftStudyInstance: breakdown_key, created_time, feature_list, id, issuer_certificate, latest_status_update_time, run_id, server_hostnames, server_ips, status, tier
 	privateliftstudyinstance_get_Tool := mcp.NewTool("privateliftstudyinstance_get_",
 		mcp.WithDescription("GET  for PrivateLiftStudyInstance"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for PrivateLiftStudyInstance objects. Available fields: breakdown_key, created_time, feature_list, id, issuer_certificate, latest_status_update_time, run_id, server_hostnames, server_ips, status, tier"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for PrivateLiftStudyInstance objects. Available fields: breakdown_key, created_time, feature_list, id, issuer_certificate, latest_status_update_time, run_id, server_hostnames, server_ips, status, tier"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -36,14 +37,22 @@ func GetPrivateLiftStudyInstanceTools() []mcp.Tool {
 	tools = append(tools, privateliftstudyinstance_get_Tool)
 
 	// privateliftstudyinstance_post_ tool
+	// Params object accepts: operation (privateliftstudyinstance_operation), run_id (string)
 	privateliftstudyinstance_post_Tool := mcp.NewTool("privateliftstudyinstance_post_",
 		mcp.WithDescription("POST  for PrivateLiftStudyInstance"),
-		mcp.WithString("operation",
-			mcp.Description("operation parameter for "),
-			mcp.Enum("AGGREGATE", "CANCEL", "COMPUTE", "ID_MATCH", "NEXT", "NONE"),
-		),
-		mcp.WithString("run_id",
-			mcp.Description("run_id parameter for "),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"operation": map[string]any{
+					"type":        "string",
+					"description": "operation parameter",
+					"enum":        []string{"AGGREGATE", "CANCEL", "COMPUTE", "ID_MATCH", "NEXT", "NONE"},
+				},
+				"run_id": map[string]any{
+					"type":        "string",
+					"description": "run_id parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: operation (privateliftstudyinstance_operation) [AGGREGATE, CANCEL, COMPUTE, ID_MATCH, NEXT, ...], run_id (string)"),
 		),
 	)
 	tools = append(tools, privateliftstudyinstance_post_Tool)
@@ -68,8 +77,13 @@ func HandlePrivateliftstudyinstance_get_(ctx context.Context, request mcp.CallTo
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -116,14 +130,16 @@ func HandlePrivateliftstudyinstance_post_(ctx context.Context, request mcp.CallT
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: operation
-	if val := request.GetString("operation", ""); val != "" {
-		args["operation"] = val
-	}
-
-	// Optional: run_id
-	if val := request.GetString("run_id", ""); val != "" {
-		args["run_id"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method

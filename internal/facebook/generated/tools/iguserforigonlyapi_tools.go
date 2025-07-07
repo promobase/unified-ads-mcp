@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -17,14 +18,22 @@ func GetIGUserForIGOnlyAPITools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// iguserforigonlyapi_get_business_messaging_feature_status tool
+	// Params object accepts: feature (string)
 	iguserforigonlyapi_get_business_messaging_feature_statusTool := mcp.NewTool("iguserforigonlyapi_get_business_messaging_feature_status",
 		mcp.WithDescription("GET business_messaging_feature_status for IGUserForIGOnlyAPI"),
-		mcp.WithString("feature",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("feature parameter for business_messaging_feature_status"),
+			mcp.Properties(map[string]any{
+				"feature": map[string]any{
+					"type":        "string",
+					"description": "feature parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: feature (string) [required]"),
 		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -40,13 +49,20 @@ func GetIGUserForIGOnlyAPITools() []mcp.Tool {
 
 	// iguserforigonlyapi_get_content_publishing_limit tool
 	// Available fields for ContentPublishingLimitResponse: config, quota_usage
+	// Params object accepts: since (datetime)
 	iguserforigonlyapi_get_content_publishing_limitTool := mcp.NewTool("iguserforigonlyapi_get_content_publishing_limit",
 		mcp.WithDescription("GET content_publishing_limit for IGUserForIGOnlyAPI"),
-		mcp.WithString("since",
-			mcp.Description("since parameter for content_publishing_limit"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"since": map[string]any{
+					"type":        "string",
+					"description": "since parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: since (datetime)"),
 		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for ContentPublishingLimitResponse objects. Available fields: config, quota_usage"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for ContentPublishingLimitResponse objects. Available fields: config, quota_usage"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -62,23 +78,34 @@ func GetIGUserForIGOnlyAPITools() []mcp.Tool {
 
 	// iguserforigonlyapi_get_conversations tool
 	// Available fields for UnifiedThread: can_reply, folder, former_participants, id, is_subscribed, link, linked_group, message_count, name, participants, scoped_thread_key, senders, snippet, subject, unread_count, updated_time, wallpaper
+	// Params object accepts: folder (string), platform (userconversations_platform_enum_param), tags (list<string>), user_id (string)
 	iguserforigonlyapi_get_conversationsTool := mcp.NewTool("iguserforigonlyapi_get_conversations",
 		mcp.WithDescription("GET conversations for IGUserForIGOnlyAPI"),
-		mcp.WithString("folder",
-			mcp.Description("folder parameter for conversations"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"folder": map[string]any{
+					"type":        "string",
+					"description": "folder parameter",
+				},
+				"platform": map[string]any{
+					"type":        "string",
+					"description": "platform parameter",
+					"enum":        []string{"INSTAGRAM", "MESSENGER"},
+				},
+				"tags": map[string]any{
+					"type":        "array",
+					"description": "tags parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+				"user_id": map[string]any{
+					"type":        "string",
+					"description": "user_id parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: folder (string), platform (enum) [INSTAGRAM, MESSENGER], tags (array<string>), user_id (string)"),
 		),
-		mcp.WithString("platform",
-			mcp.Description("platform parameter for conversations"),
-			mcp.Enum("INSTAGRAM", "MESSENGER"),
-		),
-		mcp.WithString("tags",
-			mcp.Description("tags parameter for conversations"),
-		),
-		mcp.WithString("user_id",
-			mcp.Description("user_id parameter for conversations"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for UnifiedThread objects. Available fields: can_reply, folder, former_participants, id, is_subscribed, link, linked_group, message_count, name, participants, scoped_thread_key, senders, snippet, subject, unread_count (and 2 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for UnifiedThread objects. Available fields: can_reply, folder, former_participants, id, is_subscribed, link, linked_group, message_count, name, participants, scoped_thread_key, senders, snippet, subject, unread_count (and 2 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -94,38 +121,55 @@ func GetIGUserForIGOnlyAPITools() []mcp.Tool {
 
 	// iguserforigonlyapi_get_insights tool
 	// Available fields for InsightsResult: description, description_from_api_doc, id, name, period, title, values
+	// Params object accepts: breakdown (list<userinsights_breakdown_enum_param>), metric (list<userinsights_metric_enum_param>), metric_type (userinsights_metric_type_enum_param), period (list<userinsights_period_enum_param>), since (datetime), timeframe (userinsights_timeframe_enum_param), until (datetime)
 	iguserforigonlyapi_get_insightsTool := mcp.NewTool("iguserforigonlyapi_get_insights",
 		mcp.WithDescription("GET insights for IGUserForIGOnlyAPI"),
-		mcp.WithString("breakdown",
-			mcp.Description("breakdown parameter for insights"),
-			mcp.Enum("age", "city", "contact_button_type", "country", "follow_type", "gender", "media_product_type"),
-		),
-		mcp.WithString("metric",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("metric parameter for insights"),
-			mcp.Enum("accounts_engaged", "comments", "content_views", "engaged_audience_demographics", "follower_count", "follower_demographics", "follows_and_unfollows", "impressions", "likes", "online_followers", "profile_links_taps", "profile_views", "quotes", "reach", "reached_audience_demographics", "replies", "reposts", "saves", "shares", "threads_follower_demographics", "threads_followers", "threads_likes", "threads_replies", "threads_views", "total_interactions", "views", "website_clicks"),
+			mcp.Properties(map[string]any{
+				"breakdown": map[string]any{
+					"type":        "array",
+					"description": "breakdown parameter",
+					"enum":        []string{"age", "city", "contact_button_type", "country", "follow_type", "gender", "media_product_type"},
+					"items":       map[string]any{"type": "string"},
+				},
+				"metric": map[string]any{
+					"type":        "array",
+					"description": "metric parameter",
+					"required":    true,
+					"enum":        []string{"accounts_engaged", "comments", "content_views", "engaged_audience_demographics", "follower_count", "follower_demographics", "follows_and_unfollows", "impressions", "likes", "online_followers", "profile_links_taps", "profile_views", "quotes", "reach", "reached_audience_demographics", "replies", "reposts", "saves", "shares", "threads_follower_demographics", "threads_followers", "threads_likes", "threads_replies", "threads_views", "total_interactions", "views", "website_clicks"},
+					"items":       map[string]any{"type": "string"},
+				},
+				"metric_type": map[string]any{
+					"type":        "string",
+					"description": "metric_type parameter",
+					"enum":        []string{"default", "time_series", "total_value"},
+				},
+				"period": map[string]any{
+					"type":        "array",
+					"description": "period parameter",
+					"required":    true,
+					"enum":        []string{"day", "days_28", "lifetime", "month", "total_over_range", "week"},
+					"items":       map[string]any{"type": "string"},
+				},
+				"since": map[string]any{
+					"type":        "string",
+					"description": "since parameter",
+				},
+				"timeframe": map[string]any{
+					"type":        "string",
+					"description": "timeframe parameter",
+					"enum":        []string{"last_14_days", "last_30_days", "last_90_days", "prev_month", "this_month", "this_week"},
+				},
+				"until": map[string]any{
+					"type":        "string",
+					"description": "until parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: breakdown (array<enum>) [age, city, contact_button_type, country, follow_type, ...], metric (array<enum>) [accounts_engaged, comments, content_views, engaged_audience_demographics, follower_count, ...] [required], metric_type (enum) [default, time_series, total_value], period (array<enum>) [day, days_28, lifetime, month, total_over_range, ...] [required], since (datetime), timeframe (enum) [last_14_days, last_30_days, last_90_days, prev_month, this_month, ...], until (datetime)"),
 		),
-		mcp.WithString("metric_type",
-			mcp.Description("metric_type parameter for insights"),
-			mcp.Enum("default", "time_series", "total_value"),
-		),
-		mcp.WithString("period",
-			mcp.Required(),
-			mcp.Description("period parameter for insights"),
-			mcp.Enum("day", "days_28", "lifetime", "month", "total_over_range", "week"),
-		),
-		mcp.WithString("since",
-			mcp.Description("since parameter for insights"),
-		),
-		mcp.WithString("timeframe",
-			mcp.Description("timeframe parameter for insights"),
-			mcp.Enum("last_14_days", "last_30_days", "last_90_days", "prev_month", "this_month", "this_week"),
-		),
-		mcp.WithString("until",
-			mcp.Description("until parameter for insights"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for InsightsResult objects. Available fields: description, description_from_api_doc, id, name, period, title, values"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for InsightsResult objects. Available fields: description, description_from_api_doc, id, name, period, title, values"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -142,8 +186,8 @@ func GetIGUserForIGOnlyAPITools() []mcp.Tool {
 	// iguserforigonlyapi_get_live_media tool
 	iguserforigonlyapi_get_live_mediaTool := mcp.NewTool("iguserforigonlyapi_get_live_media",
 		mcp.WithDescription("GET live_media for IGUserForIGOnlyAPI"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -158,16 +202,24 @@ func GetIGUserForIGOnlyAPITools() []mcp.Tool {
 	tools = append(tools, iguserforigonlyapi_get_live_mediaTool)
 
 	// iguserforigonlyapi_get_media tool
+	// Params object accepts: since (datetime), until (datetime)
 	iguserforigonlyapi_get_mediaTool := mcp.NewTool("iguserforigonlyapi_get_media",
 		mcp.WithDescription("GET media for IGUserForIGOnlyAPI"),
-		mcp.WithString("since",
-			mcp.Description("since parameter for media"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"since": map[string]any{
+					"type":        "string",
+					"description": "since parameter",
+				},
+				"until": map[string]any{
+					"type":        "string",
+					"description": "until parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: since (datetime), until (datetime)"),
 		),
-		mcp.WithString("until",
-			mcp.Description("until parameter for media"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -182,132 +234,206 @@ func GetIGUserForIGOnlyAPITools() []mcp.Tool {
 	tools = append(tools, iguserforigonlyapi_get_mediaTool)
 
 	// iguserforigonlyapi_post_media tool
+	// Params object accepts: alt_text (string), audio_name (string), caption (string), children (list<string>), collaborators (list<string>), cover_url (string), image_url (string), is_carousel_item (bool), location_id (string), media_type (string), product_tags (list<map>), share_to_feed (bool), thumb_offset (string), upload_type (string), user_tags (list<map>), video_url (string)
 	iguserforigonlyapi_post_mediaTool := mcp.NewTool("iguserforigonlyapi_post_media",
 		mcp.WithDescription("POST media for IGUserForIGOnlyAPI"),
-		mcp.WithString("alt_text",
-			mcp.Description("alt_text parameter for media"),
-		),
-		mcp.WithString("audio_name",
-			mcp.Description("audio_name parameter for media"),
-		),
-		mcp.WithString("caption",
-			mcp.Description("caption parameter for media"),
-		),
-		mcp.WithString("children",
-			mcp.Description("children parameter for media"),
-		),
-		mcp.WithString("collaborators",
-			mcp.Description("collaborators parameter for media"),
-		),
-		mcp.WithString("cover_url",
-			mcp.Description("cover_url parameter for media"),
-		),
-		mcp.WithString("image_url",
-			mcp.Description("image_url parameter for media"),
-		),
-		mcp.WithBoolean("is_carousel_item",
-			mcp.Description("is_carousel_item parameter for media"),
-		),
-		mcp.WithString("location_id",
-			mcp.Description("location_id parameter for media"),
-		),
-		mcp.WithString("media_type",
-			mcp.Description("media_type parameter for media"),
-		),
-		mcp.WithString("product_tags",
-			mcp.Description("product_tags parameter for media"),
-		),
-		mcp.WithBoolean("share_to_feed",
-			mcp.Description("share_to_feed parameter for media"),
-		),
-		mcp.WithString("thumb_offset",
-			mcp.Description("thumb_offset parameter for media"),
-		),
-		mcp.WithString("upload_type",
-			mcp.Description("upload_type parameter for media"),
-		),
-		mcp.WithString("user_tags",
-			mcp.Description("user_tags parameter for media"),
-		),
-		mcp.WithString("video_url",
-			mcp.Description("video_url parameter for media"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"alt_text": map[string]any{
+					"type":        "string",
+					"description": "alt_text parameter",
+				},
+				"audio_name": map[string]any{
+					"type":        "string",
+					"description": "audio_name parameter",
+				},
+				"caption": map[string]any{
+					"type":        "string",
+					"description": "caption parameter",
+				},
+				"children": map[string]any{
+					"type":        "array",
+					"description": "children parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+				"collaborators": map[string]any{
+					"type":        "array",
+					"description": "collaborators parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+				"cover_url": map[string]any{
+					"type":        "string",
+					"description": "cover_url parameter",
+				},
+				"image_url": map[string]any{
+					"type":        "string",
+					"description": "image_url parameter",
+				},
+				"is_carousel_item": map[string]any{
+					"type":        "boolean",
+					"description": "is_carousel_item parameter",
+				},
+				"location_id": map[string]any{
+					"type":        "string",
+					"description": "location_id parameter",
+				},
+				"media_type": map[string]any{
+					"type":        "string",
+					"description": "media_type parameter",
+				},
+				"product_tags": map[string]any{
+					"type":        "array",
+					"description": "product_tags parameter",
+					"items":       map[string]any{"type": "object"},
+				},
+				"share_to_feed": map[string]any{
+					"type":        "boolean",
+					"description": "share_to_feed parameter",
+				},
+				"thumb_offset": map[string]any{
+					"type":        "string",
+					"description": "thumb_offset parameter",
+				},
+				"upload_type": map[string]any{
+					"type":        "string",
+					"description": "upload_type parameter",
+				},
+				"user_tags": map[string]any{
+					"type":        "array",
+					"description": "user_tags parameter",
+					"items":       map[string]any{"type": "object"},
+				},
+				"video_url": map[string]any{
+					"type":        "string",
+					"description": "video_url parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: alt_text (string), audio_name (string), caption (string), children (array<string>), collaborators (array<string>), cover_url (string), image_url (string), is_carousel_item (boolean), location_id (string), media_type (string), product_tags (array<object>), share_to_feed (boolean), thumb_offset (string), upload_type (string), user_tags (array<object>), video_url (string)"),
 		),
 	)
 	tools = append(tools, iguserforigonlyapi_post_mediaTool)
 
 	// iguserforigonlyapi_post_mediapublish tool
+	// Params object accepts: creation_id (unsigned int)
 	iguserforigonlyapi_post_mediapublishTool := mcp.NewTool("iguserforigonlyapi_post_mediapublish",
 		mcp.WithDescription("POST mediapublish for IGUserForIGOnlyAPI"),
-		mcp.WithNumber("creation_id",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("creation_id parameter for mediapublish"),
+			mcp.Properties(map[string]any{
+				"creation_id": map[string]any{
+					"type":        "integer",
+					"description": "creation_id parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: creation_id (integer) [required]"),
 		),
 	)
 	tools = append(tools, iguserforigonlyapi_post_mediapublishTool)
 
 	// iguserforigonlyapi_post_mentions tool
+	// Params object accepts: comment_id (string), media_id (string), message (string)
 	iguserforigonlyapi_post_mentionsTool := mcp.NewTool("iguserforigonlyapi_post_mentions",
 		mcp.WithDescription("POST mentions for IGUserForIGOnlyAPI"),
-		mcp.WithString("comment_id",
-			mcp.Description("comment_id parameter for mentions"),
-		),
-		mcp.WithString("media_id",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("media_id parameter for mentions"),
-		),
-		mcp.WithString("message",
-			mcp.Required(),
-			mcp.Description("message parameter for mentions"),
+			mcp.Properties(map[string]any{
+				"comment_id": map[string]any{
+					"type":        "string",
+					"description": "comment_id parameter",
+				},
+				"media_id": map[string]any{
+					"type":        "string",
+					"description": "media_id parameter",
+					"required":    true,
+				},
+				"message": map[string]any{
+					"type":        "string",
+					"description": "message parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: comment_id (string), media_id (string) [required], message (string) [required]"),
 		),
 	)
 	tools = append(tools, iguserforigonlyapi_post_mentionsTool)
 
 	// iguserforigonlyapi_post_messageattachments tool
+	// Params object accepts: message (Object)
 	iguserforigonlyapi_post_messageattachmentsTool := mcp.NewTool("iguserforigonlyapi_post_messageattachments",
 		mcp.WithDescription("POST messageattachments for IGUserForIGOnlyAPI"),
-		mcp.WithString("message",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("message parameter for messageattachments"),
+			mcp.Properties(map[string]any{
+				"message": map[string]any{
+					"type":        "object",
+					"description": "message parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: message (object) [required]"),
 		),
 	)
 	tools = append(tools, iguserforigonlyapi_post_messageattachmentsTool)
 
 	// iguserforigonlyapi_post_messages tool
+	// Params object accepts: message (Object), messaging_type (iggraphusermessages_messaging_type_enum_param), payload (string), recipient (Object), sender_action (iggraphusermessages_sender_action_enum_param), tag (Object), thread_control (Object)
 	iguserforigonlyapi_post_messagesTool := mcp.NewTool("iguserforigonlyapi_post_messages",
 		mcp.WithDescription("POST messages for IGUserForIGOnlyAPI"),
-		mcp.WithString("message",
-			mcp.Description("message parameter for messages"),
-		),
-		mcp.WithString("messaging_type",
-			mcp.Description("messaging_type parameter for messages"),
-			mcp.Enum("MESSAGE_TAG", "RESPONSE", "UPDATE", "UTILITY"),
-		),
-		mcp.WithString("payload",
-			mcp.Description("payload parameter for messages"),
-		),
-		mcp.WithString("recipient",
-			mcp.Description("recipient parameter for messages"),
-		),
-		mcp.WithString("sender_action",
-			mcp.Description("sender_action parameter for messages"),
-			mcp.Enum("MARK_SEEN", "REACT", "TYPING_OFF", "TYPING_ON", "UNREACT"),
-		),
-		mcp.WithString("tag",
-			mcp.Description("tag parameter for messages"),
-		),
-		mcp.WithString("thread_control",
-			mcp.Description("thread_control parameter for messages"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"message": map[string]any{
+					"type":        "object",
+					"description": "message parameter",
+				},
+				"messaging_type": map[string]any{
+					"type":        "string",
+					"description": "messaging_type parameter",
+					"enum":        []string{"MESSAGE_TAG", "RESPONSE", "UPDATE", "UTILITY"},
+				},
+				"payload": map[string]any{
+					"type":        "string",
+					"description": "payload parameter",
+				},
+				"recipient": map[string]any{
+					"type":        "object",
+					"description": "recipient parameter",
+				},
+				"sender_action": map[string]any{
+					"type":        "string",
+					"description": "sender_action parameter",
+					"enum":        []string{"MARK_SEEN", "REACT", "TYPING_OFF", "TYPING_ON", "UNREACT"},
+				},
+				"tag": map[string]any{
+					"type":        "object",
+					"description": "tag parameter",
+				},
+				"thread_control": map[string]any{
+					"type":        "object",
+					"description": "thread_control parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: message (object), messaging_type (enum) [MESSAGE_TAG, RESPONSE, UPDATE, UTILITY], payload (string), recipient (object), sender_action (enum) [MARK_SEEN, REACT, TYPING_OFF, TYPING_ON, UNREACT], tag (object), thread_control (object)"),
 		),
 	)
 	tools = append(tools, iguserforigonlyapi_post_messagesTool)
 
 	// iguserforigonlyapi_delete_messenger_profile tool
+	// Params object accepts: fields (list<iggraphusermessenger_profile_fields_enum_param>)
 	iguserforigonlyapi_delete_messenger_profileTool := mcp.NewTool("iguserforigonlyapi_delete_messenger_profile",
 		mcp.WithDescription("DELETE messenger_profile for IGUserForIGOnlyAPI"),
-		mcp.WithString("fields",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("fields parameter for messenger_profile"),
-			mcp.Enum("ACCOUNT_LINKING_URL", "COMMANDS", "DESCRIPTION", "GET_STARTED", "GREETING", "HOME_URL", "ICE_BREAKERS", "PERSISTENT_MENU", "PLATFORM", "SUBJECT_TO_NEW_EU_PRIVACY_RULES", "TITLE", "WHITELISTED_DOMAINS"),
+			mcp.Properties(map[string]any{
+				"fields": map[string]any{
+					"type":        "array",
+					"description": "fields parameter",
+					"required":    true,
+					"enum":        []string{"ACCOUNT_LINKING_URL", "COMMANDS", "DESCRIPTION", "GET_STARTED", "GREETING", "HOME_URL", "ICE_BREAKERS", "PERSISTENT_MENU", "PLATFORM", "SUBJECT_TO_NEW_EU_PRIVACY_RULES", "TITLE", "WHITELISTED_DOMAINS"},
+					"items":       map[string]any{"type": "string"},
+				},
+			}),
+			mcp.Description("Parameters object containing: fields (array<enum>) [ACCOUNT_LINKING_URL, COMMANDS, DESCRIPTION, GET_STARTED, GREETING, ...] [required]"),
 		),
 	)
 	tools = append(tools, iguserforigonlyapi_delete_messenger_profileTool)
@@ -315,8 +441,8 @@ func GetIGUserForIGOnlyAPITools() []mcp.Tool {
 	// iguserforigonlyapi_get_messenger_profile tool
 	iguserforigonlyapi_get_messenger_profileTool := mcp.NewTool("iguserforigonlyapi_get_messenger_profile",
 		mcp.WithDescription("GET messenger_profile for IGUserForIGOnlyAPI"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -331,13 +457,23 @@ func GetIGUserForIGOnlyAPITools() []mcp.Tool {
 	tools = append(tools, iguserforigonlyapi_get_messenger_profileTool)
 
 	// iguserforigonlyapi_post_messenger_profile tool
+	// Params object accepts: ice_breakers (list<map>), persistent_menu (list<Object>)
 	iguserforigonlyapi_post_messenger_profileTool := mcp.NewTool("iguserforigonlyapi_post_messenger_profile",
 		mcp.WithDescription("POST messenger_profile for IGUserForIGOnlyAPI"),
-		mcp.WithString("ice_breakers",
-			mcp.Description("ice_breakers parameter for messenger_profile"),
-		),
-		mcp.WithString("persistent_menu",
-			mcp.Description("persistent_menu parameter for messenger_profile"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"ice_breakers": map[string]any{
+					"type":        "array",
+					"description": "ice_breakers parameter",
+					"items":       map[string]any{"type": "object"},
+				},
+				"persistent_menu": map[string]any{
+					"type":        "array",
+					"description": "persistent_menu parameter",
+					"items":       map[string]any{"type": "object"},
+				},
+			}),
+			mcp.Description("Parameters object containing: ice_breakers (array<object>), persistent_menu (array<object>)"),
 		),
 	)
 	tools = append(tools, iguserforigonlyapi_post_messenger_profileTool)
@@ -345,8 +481,8 @@ func GetIGUserForIGOnlyAPITools() []mcp.Tool {
 	// iguserforigonlyapi_get_stories tool
 	iguserforigonlyapi_get_storiesTool := mcp.NewTool("iguserforigonlyapi_get_stories",
 		mcp.WithDescription("GET stories for IGUserForIGOnlyAPI"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -369,8 +505,8 @@ func GetIGUserForIGOnlyAPITools() []mcp.Tool {
 	// iguserforigonlyapi_get_subscribed_apps tool
 	iguserforigonlyapi_get_subscribed_appsTool := mcp.NewTool("iguserforigonlyapi_get_subscribed_apps",
 		mcp.WithDescription("GET subscribed_apps for IGUserForIGOnlyAPI"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -385,12 +521,21 @@ func GetIGUserForIGOnlyAPITools() []mcp.Tool {
 	tools = append(tools, iguserforigonlyapi_get_subscribed_appsTool)
 
 	// iguserforigonlyapi_post_subscribed_apps tool
+	// Params object accepts: subscribed_fields (list<iggraphusersubscribed_apps_subscribed_fields_enum_param>)
 	iguserforigonlyapi_post_subscribed_appsTool := mcp.NewTool("iguserforigonlyapi_post_subscribed_apps",
 		mcp.WithDescription("POST subscribed_apps for IGUserForIGOnlyAPI"),
-		mcp.WithString("subscribed_fields",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("subscribed_fields parameter for subscribed_apps"),
-			mcp.Enum("comment_poll_response", "comments", "creator_marketplace_invited_creator_onboarding", "creator_marketplace_projects", "delta", "follow", "live_comments", "mentions", "message_reactions", "messages", "messaging_handover", "messaging_optins", "messaging_postbacks", "messaging_referral", "messaging_seen", "onboarding_welcome_message_series", "standby", "story_insights", "story_poll_response", "story_reactions", "story_share"),
+			mcp.Properties(map[string]any{
+				"subscribed_fields": map[string]any{
+					"type":        "array",
+					"description": "subscribed_fields parameter",
+					"required":    true,
+					"enum":        []string{"comment_poll_response", "comments", "creator_marketplace_invited_creator_onboarding", "creator_marketplace_projects", "delta", "follow", "live_comments", "mentions", "message_reactions", "messages", "messaging_handover", "messaging_optins", "messaging_postbacks", "messaging_referral", "messaging_seen", "onboarding_welcome_message_series", "standby", "story_insights", "story_poll_response", "story_reactions", "story_share"},
+					"items":       map[string]any{"type": "string"},
+				},
+			}),
+			mcp.Description("Parameters object containing: subscribed_fields (array<enum>) [comment_poll_response, comments, creator_marketplace_invited_creator_onboarding, creator_marketplace_projects, delta, ...] [required]"),
 		),
 	)
 	tools = append(tools, iguserforigonlyapi_post_subscribed_appsTool)
@@ -398,8 +543,8 @@ func GetIGUserForIGOnlyAPITools() []mcp.Tool {
 	// iguserforigonlyapi_get_tags tool
 	iguserforigonlyapi_get_tagsTool := mcp.NewTool("iguserforigonlyapi_get_tags",
 		mcp.WithDescription("GET tags for IGUserForIGOnlyAPI"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -414,26 +559,41 @@ func GetIGUserForIGOnlyAPITools() []mcp.Tool {
 	tools = append(tools, iguserforigonlyapi_get_tagsTool)
 
 	// iguserforigonlyapi_delete_welcome_message_flows tool
+	// Params object accepts: flow_id (string)
 	iguserforigonlyapi_delete_welcome_message_flowsTool := mcp.NewTool("iguserforigonlyapi_delete_welcome_message_flows",
 		mcp.WithDescription("DELETE welcome_message_flows for IGUserForIGOnlyAPI"),
-		mcp.WithString("flow_id",
-			mcp.Description("flow_id parameter for welcome_message_flows"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"flow_id": map[string]any{
+					"type":        "string",
+					"description": "flow_id parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: flow_id (string)"),
 		),
 	)
 	tools = append(tools, iguserforigonlyapi_delete_welcome_message_flowsTool)
 
 	// iguserforigonlyapi_get_welcome_message_flows tool
 	// Available fields for CTXPartnerAppWelcomeMessageFlow: compatible_platforms, eligible_platforms, id, is_ig_only_flow, is_used_in_ad, last_update_time, name, welcome_message_flow, welcome_message_sequence
+	// Params object accepts: app_id (string), flow_id (string)
 	iguserforigonlyapi_get_welcome_message_flowsTool := mcp.NewTool("iguserforigonlyapi_get_welcome_message_flows",
 		mcp.WithDescription("GET welcome_message_flows for IGUserForIGOnlyAPI"),
-		mcp.WithString("app_id",
-			mcp.Description("app_id parameter for welcome_message_flows"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"app_id": map[string]any{
+					"type":        "string",
+					"description": "app_id parameter",
+				},
+				"flow_id": map[string]any{
+					"type":        "string",
+					"description": "flow_id parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: app_id (string), flow_id (string)"),
 		),
-		mcp.WithString("flow_id",
-			mcp.Description("flow_id parameter for welcome_message_flows"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for CTXPartnerAppWelcomeMessageFlow objects. Available fields: compatible_platforms, eligible_platforms, id, is_ig_only_flow, is_used_in_ad, last_update_time, name, welcome_message_flow, welcome_message_sequence"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for CTXPartnerAppWelcomeMessageFlow objects. Available fields: compatible_platforms, eligible_platforms, id, is_ig_only_flow, is_used_in_ad, last_update_time, name, welcome_message_flow, welcome_message_sequence"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -448,20 +608,32 @@ func GetIGUserForIGOnlyAPITools() []mcp.Tool {
 	tools = append(tools, iguserforigonlyapi_get_welcome_message_flowsTool)
 
 	// iguserforigonlyapi_post_welcome_message_flows tool
+	// Params object accepts: eligible_platforms (list<iggraphuserwelcome_message_flows_eligible_platforms_enum_param>), flow_id (string), name (string), welcome_message_flow (list<Object>)
 	iguserforigonlyapi_post_welcome_message_flowsTool := mcp.NewTool("iguserforigonlyapi_post_welcome_message_flows",
 		mcp.WithDescription("POST welcome_message_flows for IGUserForIGOnlyAPI"),
-		mcp.WithString("eligible_platforms",
-			mcp.Description("eligible_platforms parameter for welcome_message_flows"),
-			mcp.Enum("INSTAGRAM", "MESSENGER", "WHATSAPP"),
-		),
-		mcp.WithString("flow_id",
-			mcp.Description("flow_id parameter for welcome_message_flows"),
-		),
-		mcp.WithString("name",
-			mcp.Description("name parameter for welcome_message_flows"),
-		),
-		mcp.WithString("welcome_message_flow",
-			mcp.Description("welcome_message_flow parameter for welcome_message_flows"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"eligible_platforms": map[string]any{
+					"type":        "array",
+					"description": "eligible_platforms parameter",
+					"enum":        []string{"INSTAGRAM", "MESSENGER", "WHATSAPP"},
+					"items":       map[string]any{"type": "string"},
+				},
+				"flow_id": map[string]any{
+					"type":        "string",
+					"description": "flow_id parameter",
+				},
+				"name": map[string]any{
+					"type":        "string",
+					"description": "name parameter",
+				},
+				"welcome_message_flow": map[string]any{
+					"type":        "array",
+					"description": "welcome_message_flow parameter",
+					"items":       map[string]any{"type": "object"},
+				},
+			}),
+			mcp.Description("Parameters object containing: eligible_platforms (array<enum>) [INSTAGRAM, MESSENGER, WHATSAPP], flow_id (string), name (string), welcome_message_flow (array<object>)"),
 		),
 	)
 	tools = append(tools, iguserforigonlyapi_post_welcome_message_flowsTool)
@@ -470,8 +642,8 @@ func GetIGUserForIGOnlyAPITools() []mcp.Tool {
 	// Available fields for User: about, age_range, avatar_2d_profile_picture, birthday, client_business_id, community, cover, currency, education, email, favorite_athletes, favorite_teams, first_name, gender, hometown, id, id_for_avatars, inspirational_people, install_type, installed, is_guest_user, is_work_account, languages, last_name, link, local_news_megaphone_dismiss_status, local_news_subscription_status, locale, location, meeting_for, middle_name, name, name_format, payment_pricepoints, political, profile_pic, quotes, relationship_status, religion, shared_login_upgrade_required_by, short_name, significant_other, sports, supports_donate_button_in_live_video, third_party_id, timezone, token_for_business, updated_time, verified, video_upload_limits, website
 	iguserforigonlyapi_get_Tool := mcp.NewTool("iguserforigonlyapi_get_",
 		mcp.WithDescription("GET  for IGUserForIGOnlyAPI"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for User objects. Available fields: about, age_range, avatar_2d_profile_picture, birthday, client_business_id, community, cover, currency, education, email, favorite_athletes, favorite_teams, first_name, gender, hometown (and 36 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for User objects. Available fields: about, age_range, avatar_2d_profile_picture, birthday, client_business_id, community, cover, currency, education, email, favorite_athletes, favorite_teams, first_name, gender, hometown (and 36 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -504,16 +676,28 @@ func HandleIguserforigonlyapi_get_business_messaging_feature_status(ctx context.
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: feature
-	feature, err := request.RequireString("feature")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter feature: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["feature"] = feature
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -560,14 +744,26 @@ func HandleIguserforigonlyapi_get_content_publishing_limit(ctx context.Context, 
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: since
-	if val := request.GetString("since", ""); val != "" {
-		args["since"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -614,30 +810,26 @@ func HandleIguserforigonlyapi_get_conversations(ctx context.Context, request mcp
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: folder
-	if val := request.GetString("folder", ""); val != "" {
-		args["folder"] = val
-	}
-
-	// Optional: platform
-	if val := request.GetString("platform", ""); val != "" {
-		args["platform"] = val
-	}
-
-	// Optional: tags
-	// array type - using string
-	if val := request.GetString("tags", ""); val != "" {
-		args["tags"] = val
-	}
-
-	// Optional: user_id
-	if val := request.GetString("user_id", ""); val != "" {
-		args["user_id"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -684,49 +876,28 @@ func HandleIguserforigonlyapi_get_insights(ctx context.Context, request mcp.Call
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: breakdown
-	// array type - using string
-	if val := request.GetString("breakdown", ""); val != "" {
-		args["breakdown"] = val
-	}
-
-	// Required: metric
-	metric, err := request.RequireString("metric")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter metric: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["metric"] = metric
-
-	// Optional: metric_type
-	if val := request.GetString("metric_type", ""); val != "" {
-		args["metric_type"] = val
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
-
-	// Required: period
-	period, err := request.RequireString("period")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter period: %v", err)), nil
-	}
-	args["period"] = period
-
-	// Optional: since
-	if val := request.GetString("since", ""); val != "" {
-		args["since"] = val
-	}
-
-	// Optional: timeframe
-	if val := request.GetString("timeframe", ""); val != "" {
-		args["timeframe"] = val
-	}
-
-	// Optional: until
-	if val := request.GetString("until", ""); val != "" {
-		args["until"] = val
+	for key, value := range paramsObj {
+		args[key] = value
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -774,8 +945,13 @@ func HandleIguserforigonlyapi_get_live_media(ctx context.Context, request mcp.Ca
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -822,19 +998,26 @@ func HandleIguserforigonlyapi_get_media(ctx context.Context, request mcp.CallToo
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: since
-	if val := request.GetString("since", ""); val != "" {
-		args["since"] = val
-	}
-
-	// Optional: until
-	if val := request.GetString("until", ""); val != "" {
-		args["until"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -881,88 +1064,16 @@ func HandleIguserforigonlyapi_post_media(ctx context.Context, request mcp.CallTo
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: alt_text
-	if val := request.GetString("alt_text", ""); val != "" {
-		args["alt_text"] = val
-	}
-
-	// Optional: audio_name
-	if val := request.GetString("audio_name", ""); val != "" {
-		args["audio_name"] = val
-	}
-
-	// Optional: caption
-	if val := request.GetString("caption", ""); val != "" {
-		args["caption"] = val
-	}
-
-	// Optional: children
-	// array type - using string
-	if val := request.GetString("children", ""); val != "" {
-		args["children"] = val
-	}
-
-	// Optional: collaborators
-	// array type - using string
-	if val := request.GetString("collaborators", ""); val != "" {
-		args["collaborators"] = val
-	}
-
-	// Optional: cover_url
-	if val := request.GetString("cover_url", ""); val != "" {
-		args["cover_url"] = val
-	}
-
-	// Optional: image_url
-	if val := request.GetString("image_url", ""); val != "" {
-		args["image_url"] = val
-	}
-
-	// Optional: is_carousel_item
-	if val := request.GetBool("is_carousel_item", false); val {
-		args["is_carousel_item"] = val
-	}
-
-	// Optional: location_id
-	if val := request.GetString("location_id", ""); val != "" {
-		args["location_id"] = val
-	}
-
-	// Optional: media_type
-	if val := request.GetString("media_type", ""); val != "" {
-		args["media_type"] = val
-	}
-
-	// Optional: product_tags
-	// array type - using string
-	if val := request.GetString("product_tags", ""); val != "" {
-		args["product_tags"] = val
-	}
-
-	// Optional: share_to_feed
-	if val := request.GetBool("share_to_feed", false); val {
-		args["share_to_feed"] = val
-	}
-
-	// Optional: thumb_offset
-	if val := request.GetString("thumb_offset", ""); val != "" {
-		args["thumb_offset"] = val
-	}
-
-	// Optional: upload_type
-	if val := request.GetString("upload_type", ""); val != "" {
-		args["upload_type"] = val
-	}
-
-	// Optional: user_tags
-	// array type - using string
-	if val := request.GetString("user_tags", ""); val != "" {
-		args["user_tags"] = val
-	}
-
-	// Optional: video_url
-	if val := request.GetString("video_url", ""); val != "" {
-		args["video_url"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method
@@ -994,12 +1105,19 @@ func HandleIguserforigonlyapi_post_mediapublish(ctx context.Context, request mcp
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: creation_id
-	creation_id, err := request.RequireInt("creation_id")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter creation_id: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["creation_id"] = creation_id
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Iguserforigonlyapi_post_mediapublish(args)
@@ -1030,24 +1148,19 @@ func HandleIguserforigonlyapi_post_mentions(ctx context.Context, request mcp.Cal
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: comment_id
-	if val := request.GetString("comment_id", ""); val != "" {
-		args["comment_id"] = val
-	}
-
-	// Required: media_id
-	media_id, err := request.RequireString("media_id")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter media_id: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["media_id"] = media_id
-
-	// Required: message
-	message, err := request.RequireString("message")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter message: %v", err)), nil
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
-	args["message"] = message
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Iguserforigonlyapi_post_mentions(args)
@@ -1078,12 +1191,19 @@ func HandleIguserforigonlyapi_post_messageattachments(ctx context.Context, reque
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: message
-	message, err := request.RequireString("message")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter message: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["message"] = message
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Iguserforigonlyapi_post_messageattachments(args)
@@ -1114,43 +1234,16 @@ func HandleIguserforigonlyapi_post_messages(ctx context.Context, request mcp.Cal
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: message
-	// object type - using string
-	if val := request.GetString("message", ""); val != "" {
-		args["message"] = val
-	}
-
-	// Optional: messaging_type
-	if val := request.GetString("messaging_type", ""); val != "" {
-		args["messaging_type"] = val
-	}
-
-	// Optional: payload
-	if val := request.GetString("payload", ""); val != "" {
-		args["payload"] = val
-	}
-
-	// Optional: recipient
-	// object type - using string
-	if val := request.GetString("recipient", ""); val != "" {
-		args["recipient"] = val
-	}
-
-	// Optional: sender_action
-	if val := request.GetString("sender_action", ""); val != "" {
-		args["sender_action"] = val
-	}
-
-	// Optional: tag
-	// object type - using string
-	if val := request.GetString("tag", ""); val != "" {
-		args["tag"] = val
-	}
-
-	// Optional: thread_control
-	// object type - using string
-	if val := request.GetString("thread_control", ""); val != "" {
-		args["thread_control"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method
@@ -1182,12 +1275,19 @@ func HandleIguserforigonlyapi_delete_messenger_profile(ctx context.Context, requ
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: fields
-	fields, err := request.RequireString("fields")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter fields: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["fields"] = fields
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Iguserforigonlyapi_delete_messenger_profile(args)
@@ -1219,8 +1319,13 @@ func HandleIguserforigonlyapi_get_messenger_profile(ctx context.Context, request
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -1267,16 +1372,16 @@ func HandleIguserforigonlyapi_post_messenger_profile(ctx context.Context, reques
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: ice_breakers
-	// array type - using string
-	if val := request.GetString("ice_breakers", ""); val != "" {
-		args["ice_breakers"] = val
-	}
-
-	// Optional: persistent_menu
-	// array type - using string
-	if val := request.GetString("persistent_menu", ""); val != "" {
-		args["persistent_menu"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method
@@ -1309,8 +1414,13 @@ func HandleIguserforigonlyapi_get_stories(ctx context.Context, request mcp.CallT
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -1387,8 +1497,13 @@ func HandleIguserforigonlyapi_get_subscribed_apps(ctx context.Context, request m
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -1435,12 +1550,19 @@ func HandleIguserforigonlyapi_post_subscribed_apps(ctx context.Context, request 
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: subscribed_fields
-	subscribed_fields, err := request.RequireString("subscribed_fields")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter subscribed_fields: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["subscribed_fields"] = subscribed_fields
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Iguserforigonlyapi_post_subscribed_apps(args)
@@ -1472,8 +1594,13 @@ func HandleIguserforigonlyapi_get_tags(ctx context.Context, request mcp.CallTool
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -1520,9 +1647,16 @@ func HandleIguserforigonlyapi_delete_welcome_message_flows(ctx context.Context, 
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: flow_id
-	if val := request.GetString("flow_id", ""); val != "" {
-		args["flow_id"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method
@@ -1554,19 +1688,26 @@ func HandleIguserforigonlyapi_get_welcome_message_flows(ctx context.Context, req
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: app_id
-	if val := request.GetString("app_id", ""); val != "" {
-		args["app_id"] = val
-	}
-
-	// Optional: flow_id
-	if val := request.GetString("flow_id", ""); val != "" {
-		args["flow_id"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -1613,26 +1754,16 @@ func HandleIguserforigonlyapi_post_welcome_message_flows(ctx context.Context, re
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: eligible_platforms
-	// array type - using string
-	if val := request.GetString("eligible_platforms", ""); val != "" {
-		args["eligible_platforms"] = val
-	}
-
-	// Optional: flow_id
-	if val := request.GetString("flow_id", ""); val != "" {
-		args["flow_id"] = val
-	}
-
-	// Optional: name
-	if val := request.GetString("name", ""); val != "" {
-		args["name"] = val
-	}
-
-	// Optional: welcome_message_flow
-	// array type - using string
-	if val := request.GetString("welcome_message_flow", ""); val != "" {
-		args["welcome_message_flow"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method
@@ -1665,8 +1796,13 @@ func HandleIguserforigonlyapi_get_(ctx context.Context, request mcp.CallToolRequ
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit

@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -26,8 +27,8 @@ func GetOpenBridgeConfigurationTools() []mcp.Tool {
 	// Available fields for OpenBridgeConfiguration: active, cloud_provider, cloud_region, destination_id, endpoint, fallback_domain, first_party_domain, host_business_id, id, instance_id, instance_version, is_sgw_instance, is_sgw_pixel_from_meta_pixel, partner_name, pixel_id, sgw_account_id, sgw_instance_url, sgw_pixel_id
 	openbridgeconfiguration_get_Tool := mcp.NewTool("openbridgeconfiguration_get_",
 		mcp.WithDescription("GET  for OpenBridgeConfiguration"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for OpenBridgeConfiguration objects. Available fields: active, cloud_provider, cloud_region, destination_id, endpoint, fallback_domain, first_party_domain, host_business_id, id, instance_id, instance_version, is_sgw_instance, is_sgw_pixel_from_meta_pixel, partner_name, pixel_id (and 3 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for OpenBridgeConfiguration objects. Available fields: active, cloud_provider, cloud_region, destination_id, endpoint, fallback_domain, first_party_domain, host_business_id, id, instance_id, instance_version, is_sgw_instance, is_sgw_pixel_from_meta_pixel, partner_name, pixel_id (and 3 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -42,55 +43,77 @@ func GetOpenBridgeConfigurationTools() []mcp.Tool {
 	tools = append(tools, openbridgeconfiguration_get_Tool)
 
 	// openbridgeconfiguration_post_ tool
+	// Params object accepts: active (bool), cloud_provider (string), cloud_region (string), destination_id (string), endpoint (string), fallback_domain (string), first_party_domain (string), host_business_id (unsigned int), instance_id (string), instance_version (string), is_sgw_instance (bool), is_sgw_pixel_from_meta_pixel (bool), partner_name (string), sgw_account_id (string), sgw_instance_url (string), sgw_pixel_id (unsigned int)
 	openbridgeconfiguration_post_Tool := mcp.NewTool("openbridgeconfiguration_post_",
 		mcp.WithDescription("POST  for OpenBridgeConfiguration"),
-		mcp.WithBoolean("active",
-			mcp.Description("active parameter for "),
-		),
-		mcp.WithString("cloud_provider",
-			mcp.Description("cloud_provider parameter for "),
-		),
-		mcp.WithString("cloud_region",
-			mcp.Description("cloud_region parameter for "),
-		),
-		mcp.WithString("destination_id",
-			mcp.Description("destination_id parameter for "),
-		),
-		mcp.WithString("endpoint",
-			mcp.Description("endpoint parameter for "),
-		),
-		mcp.WithString("fallback_domain",
-			mcp.Description("fallback_domain parameter for "),
-		),
-		mcp.WithString("first_party_domain",
-			mcp.Description("first_party_domain parameter for "),
-		),
-		mcp.WithNumber("host_business_id",
-			mcp.Description("host_business_id parameter for "),
-		),
-		mcp.WithString("instance_id",
-			mcp.Description("instance_id parameter for "),
-		),
-		mcp.WithString("instance_version",
-			mcp.Description("instance_version parameter for "),
-		),
-		mcp.WithBoolean("is_sgw_instance",
-			mcp.Description("is_sgw_instance parameter for "),
-		),
-		mcp.WithBoolean("is_sgw_pixel_from_meta_pixel",
-			mcp.Description("is_sgw_pixel_from_meta_pixel parameter for "),
-		),
-		mcp.WithString("partner_name",
-			mcp.Description("partner_name parameter for "),
-		),
-		mcp.WithString("sgw_account_id",
-			mcp.Description("sgw_account_id parameter for "),
-		),
-		mcp.WithString("sgw_instance_url",
-			mcp.Description("sgw_instance_url parameter for "),
-		),
-		mcp.WithNumber("sgw_pixel_id",
-			mcp.Description("sgw_pixel_id parameter for "),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"active": map[string]any{
+					"type":        "boolean",
+					"description": "active parameter",
+				},
+				"cloud_provider": map[string]any{
+					"type":        "string",
+					"description": "cloud_provider parameter",
+				},
+				"cloud_region": map[string]any{
+					"type":        "string",
+					"description": "cloud_region parameter",
+				},
+				"destination_id": map[string]any{
+					"type":        "string",
+					"description": "destination_id parameter",
+				},
+				"endpoint": map[string]any{
+					"type":        "string",
+					"description": "endpoint parameter",
+				},
+				"fallback_domain": map[string]any{
+					"type":        "string",
+					"description": "fallback_domain parameter",
+				},
+				"first_party_domain": map[string]any{
+					"type":        "string",
+					"description": "first_party_domain parameter",
+				},
+				"host_business_id": map[string]any{
+					"type":        "integer",
+					"description": "host_business_id parameter",
+				},
+				"instance_id": map[string]any{
+					"type":        "string",
+					"description": "instance_id parameter",
+				},
+				"instance_version": map[string]any{
+					"type":        "string",
+					"description": "instance_version parameter",
+				},
+				"is_sgw_instance": map[string]any{
+					"type":        "boolean",
+					"description": "is_sgw_instance parameter",
+				},
+				"is_sgw_pixel_from_meta_pixel": map[string]any{
+					"type":        "boolean",
+					"description": "is_sgw_pixel_from_meta_pixel parameter",
+				},
+				"partner_name": map[string]any{
+					"type":        "string",
+					"description": "partner_name parameter",
+				},
+				"sgw_account_id": map[string]any{
+					"type":        "string",
+					"description": "sgw_account_id parameter",
+				},
+				"sgw_instance_url": map[string]any{
+					"type":        "string",
+					"description": "sgw_instance_url parameter",
+				},
+				"sgw_pixel_id": map[string]any{
+					"type":        "integer",
+					"description": "sgw_pixel_id parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: active (boolean), cloud_provider (string), cloud_region (string), destination_id (string), endpoint (string), fallback_domain (string), first_party_domain (string), host_business_id (integer), instance_id (string), instance_version (string), is_sgw_instance (boolean), is_sgw_pixel_from_meta_pixel (boolean), partner_name (string), sgw_account_id (string), sgw_instance_url (string), sgw_pixel_id (integer)"),
 		),
 	)
 	tools = append(tools, openbridgeconfiguration_post_Tool)
@@ -144,8 +167,13 @@ func HandleOpenbridgeconfiguration_get_(ctx context.Context, request mcp.CallToo
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -192,84 +220,16 @@ func HandleOpenbridgeconfiguration_post_(ctx context.Context, request mcp.CallTo
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: active
-	if val := request.GetBool("active", false); val {
-		args["active"] = val
-	}
-
-	// Optional: cloud_provider
-	if val := request.GetString("cloud_provider", ""); val != "" {
-		args["cloud_provider"] = val
-	}
-
-	// Optional: cloud_region
-	if val := request.GetString("cloud_region", ""); val != "" {
-		args["cloud_region"] = val
-	}
-
-	// Optional: destination_id
-	if val := request.GetString("destination_id", ""); val != "" {
-		args["destination_id"] = val
-	}
-
-	// Optional: endpoint
-	if val := request.GetString("endpoint", ""); val != "" {
-		args["endpoint"] = val
-	}
-
-	// Optional: fallback_domain
-	if val := request.GetString("fallback_domain", ""); val != "" {
-		args["fallback_domain"] = val
-	}
-
-	// Optional: first_party_domain
-	if val := request.GetString("first_party_domain", ""); val != "" {
-		args["first_party_domain"] = val
-	}
-
-	// Optional: host_business_id
-	if val := request.GetInt("host_business_id", 0); val != 0 {
-		args["host_business_id"] = val
-	}
-
-	// Optional: instance_id
-	if val := request.GetString("instance_id", ""); val != "" {
-		args["instance_id"] = val
-	}
-
-	// Optional: instance_version
-	if val := request.GetString("instance_version", ""); val != "" {
-		args["instance_version"] = val
-	}
-
-	// Optional: is_sgw_instance
-	if val := request.GetBool("is_sgw_instance", false); val {
-		args["is_sgw_instance"] = val
-	}
-
-	// Optional: is_sgw_pixel_from_meta_pixel
-	if val := request.GetBool("is_sgw_pixel_from_meta_pixel", false); val {
-		args["is_sgw_pixel_from_meta_pixel"] = val
-	}
-
-	// Optional: partner_name
-	if val := request.GetString("partner_name", ""); val != "" {
-		args["partner_name"] = val
-	}
-
-	// Optional: sgw_account_id
-	if val := request.GetString("sgw_account_id", ""); val != "" {
-		args["sgw_account_id"] = val
-	}
-
-	// Optional: sgw_instance_url
-	if val := request.GetString("sgw_instance_url", ""); val != "" {
-		args["sgw_instance_url"] = val
-	}
-
-	// Optional: sgw_pixel_id
-	if val := request.GetInt("sgw_pixel_id", 0); val != 0 {
-		args["sgw_pixel_id"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method

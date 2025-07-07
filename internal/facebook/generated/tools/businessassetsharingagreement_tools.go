@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -20,8 +21,8 @@ func GetBusinessAssetSharingAgreementTools() []mcp.Tool {
 	// Available fields for BusinessAssetSharingAgreement: id, initiator, recipient, relationship_type, request_status, request_type
 	businessassetsharingagreement_get_Tool := mcp.NewTool("businessassetsharingagreement_get_",
 		mcp.WithDescription("GET  for BusinessAssetSharingAgreement"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for BusinessAssetSharingAgreement objects. Available fields: id, initiator, recipient, relationship_type, request_status, request_type"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for BusinessAssetSharingAgreement objects. Available fields: id, initiator, recipient, relationship_type, request_status, request_type"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -36,10 +37,17 @@ func GetBusinessAssetSharingAgreementTools() []mcp.Tool {
 	tools = append(tools, businessassetsharingagreement_get_Tool)
 
 	// businessassetsharingagreement_post_ tool
+	// Params object accepts: request_response (string)
 	businessassetsharingagreement_post_Tool := mcp.NewTool("businessassetsharingagreement_post_",
 		mcp.WithDescription("POST  for BusinessAssetSharingAgreement"),
-		mcp.WithString("request_response",
-			mcp.Description("request_response parameter for "),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"request_response": map[string]any{
+					"type":        "string",
+					"description": "request_response parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: request_response (string)"),
 		),
 	)
 	tools = append(tools, businessassetsharingagreement_post_Tool)
@@ -64,8 +72,13 @@ func HandleBusinessassetsharingagreement_get_(ctx context.Context, request mcp.C
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -112,9 +125,16 @@ func HandleBusinessassetsharingagreement_post_(ctx context.Context, request mcp.
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: request_response
-	if val := request.GetString("request_response", ""); val != "" {
-		args["request_response"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method

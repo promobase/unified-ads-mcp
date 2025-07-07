@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -24,20 +25,29 @@ func GetAdRuleTools() []mcp.Tool {
 
 	// adrule_get_history tool
 	// Available fields for AdRuleHistory: evaluation_spec, exception_code, exception_message, execution_spec, is_manual, results, schedule_spec, timestamp
+	// Params object accepts: action (adrulehistory_action_enum_param), hide_no_changes (bool), object_id (string)
 	adrule_get_historyTool := mcp.NewTool("adrule_get_history",
 		mcp.WithDescription("GET history for AdRule"),
-		mcp.WithString("action",
-			mcp.Description("action parameter for history"),
-			mcp.Enum("BUDGET_NOT_REDISTRIBUTED", "CHANGED_BID", "CHANGED_BUDGET", "CONSOLIDATE_ASC_FRAGMENTATION", "CONSOLIDATE_FRAGMENTATION", "CONVERT_ASC_CP_SINGLE_INSTANCE", "EMAIL", "ENABLE_ADVANTAGE_CAMPAIGN_BUDGET", "ENABLE_ADVANTAGE_PLUS_AUDIENCE", "ENABLE_ADVANTAGE_PLUS_CREATIVE", "ENABLE_ADVANTAGE_PLUS_PLACEMENTS", "ENABLE_AUTOFLOW", "ENABLE_GEN_UNCROP", "ENABLE_LANDING_PAGE_VIEWS", "ENABLE_MUSIC", "ENABLE_REELS_PLACEMENTS", "ENABLE_SEMANTIC_BASED_AUDIENCE_EXPANSION", "ENABLE_SHOPS_ADS", "ENDPOINT_PINGED", "ERROR", "FACEBOOK_NOTIFICATION_SENT", "MESSAGE_SENT", "NOT_CHANGED", "PAUSED", "UNPAUSED"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"action": map[string]any{
+					"type":        "string",
+					"description": "action parameter",
+					"enum":        []string{"BUDGET_NOT_REDISTRIBUTED", "CHANGED_BID", "CHANGED_BUDGET", "CONSOLIDATE_ASC_FRAGMENTATION", "CONSOLIDATE_FRAGMENTATION", "CONVERT_ASC_CP_SINGLE_INSTANCE", "EMAIL", "ENABLE_ADVANTAGE_CAMPAIGN_BUDGET", "ENABLE_ADVANTAGE_PLUS_AUDIENCE", "ENABLE_ADVANTAGE_PLUS_CREATIVE", "ENABLE_ADVANTAGE_PLUS_PLACEMENTS", "ENABLE_AUTOFLOW", "ENABLE_GEN_UNCROP", "ENABLE_LANDING_PAGE_VIEWS", "ENABLE_MUSIC", "ENABLE_REELS_PLACEMENTS", "ENABLE_SEMANTIC_BASED_AUDIENCE_EXPANSION", "ENABLE_SHOPS_ADS", "ENDPOINT_PINGED", "ERROR", "FACEBOOK_NOTIFICATION_SENT", "MESSAGE_SENT", "NOT_CHANGED", "PAUSED", "UNPAUSED"},
+				},
+				"hide_no_changes": map[string]any{
+					"type":        "boolean",
+					"description": "hide_no_changes parameter",
+				},
+				"object_id": map[string]any{
+					"type":        "string",
+					"description": "object_id parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: action (enum) [BUDGET_NOT_REDISTRIBUTED, CHANGED_BID, CHANGED_BUDGET, CONSOLIDATE_ASC_FRAGMENTATION, CONSOLIDATE_FRAGMENTATION, ...], hide_no_changes (boolean), object_id (string)"),
 		),
-		mcp.WithBoolean("hide_no_changes",
-			mcp.Description("hide_no_changes parameter for history"),
-		),
-		mcp.WithString("object_id",
-			mcp.Description("object_id parameter for history"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for AdRuleHistory objects. Available fields: evaluation_spec, exception_code, exception_message, execution_spec, is_manual, results, schedule_spec, timestamp"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for AdRuleHistory objects. Available fields: evaluation_spec, exception_code, exception_message, execution_spec, is_manual, results, schedule_spec, timestamp"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -67,8 +77,8 @@ func GetAdRuleTools() []mcp.Tool {
 	// Available fields for AdRule: account_id, created_by, created_time, disable_error_code, evaluation_spec, execution_spec, id, name, schedule_spec, status, updated_time
 	adrule_get_Tool := mcp.NewTool("adrule_get_",
 		mcp.WithDescription("GET  for AdRule"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for AdRule objects. Available fields: account_id, created_by, created_time, disable_error_code, evaluation_spec, execution_spec, id, name, schedule_spec, status, updated_time"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for AdRule objects. Available fields: account_id, created_by, created_time, disable_error_code, evaluation_spec, execution_spec, id, name, schedule_spec, status, updated_time"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -83,23 +93,34 @@ func GetAdRuleTools() []mcp.Tool {
 	tools = append(tools, adrule_get_Tool)
 
 	// adrule_post_ tool
+	// Params object accepts: evaluation_spec (Object), execution_spec (Object), name (string), schedule_spec (Object), status (adrule_status)
 	adrule_post_Tool := mcp.NewTool("adrule_post_",
 		mcp.WithDescription("POST  for AdRule"),
-		mcp.WithString("evaluation_spec",
-			mcp.Description("evaluation_spec parameter for "),
-		),
-		mcp.WithString("execution_spec",
-			mcp.Description("execution_spec parameter for "),
-		),
-		mcp.WithString("name",
-			mcp.Description("name parameter for "),
-		),
-		mcp.WithString("schedule_spec",
-			mcp.Description("schedule_spec parameter for "),
-		),
-		mcp.WithString("status",
-			mcp.Description("status parameter for "),
-			mcp.Enum("DELETED", "DISABLED", "ENABLED", "HAS_ISSUES"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"evaluation_spec": map[string]any{
+					"type":        "object",
+					"description": "evaluation_spec parameter",
+				},
+				"execution_spec": map[string]any{
+					"type":        "object",
+					"description": "execution_spec parameter",
+				},
+				"name": map[string]any{
+					"type":        "string",
+					"description": "name parameter",
+				},
+				"schedule_spec": map[string]any{
+					"type":        "object",
+					"description": "schedule_spec parameter",
+				},
+				"status": map[string]any{
+					"type":        "string",
+					"description": "status parameter",
+					"enum":        []string{"DELETED", "DISABLED", "ENABLED", "HAS_ISSUES"},
+				},
+			}),
+			mcp.Description("Parameters object containing: evaluation_spec (object), execution_spec (object), name (string), schedule_spec (object), status (adrule_status) [DELETED, DISABLED, ENABLED, HAS_ISSUES]"),
 		),
 	)
 	tools = append(tools, adrule_post_Tool)
@@ -152,24 +173,26 @@ func HandleAdrule_get_history(ctx context.Context, request mcp.CallToolRequest) 
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: action
-	if val := request.GetString("action", ""); val != "" {
-		args["action"] = val
-	}
-
-	// Optional: hide_no_changes
-	if val := request.GetBool("hide_no_changes", false); val {
-		args["hide_no_changes"] = val
-	}
-
-	// Optional: object_id
-	if val := request.GetString("object_id", ""); val != "" {
-		args["object_id"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -275,8 +298,13 @@ func HandleAdrule_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.C
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -323,32 +351,16 @@ func HandleAdrule_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: evaluation_spec
-	// object type - using string
-	if val := request.GetString("evaluation_spec", ""); val != "" {
-		args["evaluation_spec"] = val
-	}
-
-	// Optional: execution_spec
-	// object type - using string
-	if val := request.GetString("execution_spec", ""); val != "" {
-		args["execution_spec"] = val
-	}
-
-	// Optional: name
-	if val := request.GetString("name", ""); val != "" {
-		args["name"] = val
-	}
-
-	// Optional: schedule_spec
-	// object type - using string
-	if val := request.GetString("schedule_spec", ""); val != "" {
-		args["schedule_spec"] = val
-	}
-
-	// Optional: status
-	if val := request.GetString("status", ""); val != "" {
-		args["status"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method

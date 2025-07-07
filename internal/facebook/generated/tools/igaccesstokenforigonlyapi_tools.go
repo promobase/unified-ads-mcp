@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -17,22 +18,32 @@ func GetIGAccessTokenForIGOnlyAPITools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// igaccesstokenforigonlyapi_get_ tool
+	// Params object accepts: access_token (string), client_secret (string), grant_type (string)
 	igaccesstokenforigonlyapi_get_Tool := mcp.NewTool("igaccesstokenforigonlyapi_get_",
 		mcp.WithDescription("GET  for IGAccessTokenForIGOnlyAPI"),
-		mcp.WithString("access_token",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("access_token parameter for "),
+			mcp.Properties(map[string]any{
+				"access_token": map[string]any{
+					"type":        "string",
+					"description": "access_token parameter",
+					"required":    true,
+				},
+				"client_secret": map[string]any{
+					"type":        "string",
+					"description": "client_secret parameter",
+					"required":    true,
+				},
+				"grant_type": map[string]any{
+					"type":        "string",
+					"description": "grant_type parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: access_token (string) [required], client_secret (string) [required], grant_type (string) [required]"),
 		),
-		mcp.WithString("client_secret",
-			mcp.Required(),
-			mcp.Description("client_secret parameter for "),
-		),
-		mcp.WithString("grant_type",
-			mcp.Required(),
-			mcp.Description("grant_type parameter for "),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -65,30 +76,28 @@ func HandleIgaccesstokenforigonlyapi_get_(ctx context.Context, request mcp.CallT
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: access_token
-	access_token, err := request.RequireString("access_token")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter access_token: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["access_token"] = access_token
-
-	// Required: client_secret
-	client_secret, err := request.RequireString("client_secret")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter client_secret: %v", err)), nil
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
-	args["client_secret"] = client_secret
-
-	// Required: grant_type
-	grant_type, err := request.RequireString("grant_type")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter grant_type: %v", err)), nil
+	for key, value := range paramsObj {
+		args[key] = value
 	}
-	args["grant_type"] = grant_type
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit

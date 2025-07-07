@@ -33,10 +33,10 @@ func (c *AdAsyncRequestSetClient) Adasyncrequestset_get_requests(args map[string
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["statuses"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("statuses", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -215,22 +215,10 @@ func (c *AdAsyncRequestSetClient) Adasyncrequestset_post_(args map[string]interf
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["name"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("name", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["notification_mode"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("notification_mode", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["notification_uri"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("notification_uri", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 

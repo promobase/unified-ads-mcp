@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -20,8 +21,8 @@ func GetWorkSkillTools() []mcp.Tool {
 	// Available fields for User: about, age_range, avatar_2d_profile_picture, birthday, client_business_id, community, cover, currency, education, email, favorite_athletes, favorite_teams, first_name, gender, hometown, id, id_for_avatars, inspirational_people, install_type, installed, is_guest_user, is_work_account, languages, last_name, link, local_news_megaphone_dismiss_status, local_news_subscription_status, locale, location, meeting_for, middle_name, name, name_format, payment_pricepoints, political, profile_pic, quotes, relationship_status, religion, shared_login_upgrade_required_by, short_name, significant_other, sports, supports_donate_button_in_live_video, third_party_id, timezone, token_for_business, updated_time, verified, video_upload_limits, website
 	workskill_get_usersTool := mcp.NewTool("workskill_get_users",
 		mcp.WithDescription("GET users for WorkSkill"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for User objects. Available fields: about, age_range, avatar_2d_profile_picture, birthday, client_business_id, community, cover, currency, education, email, favorite_athletes, favorite_teams, first_name, gender, hometown (and 36 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for User objects. Available fields: about, age_range, avatar_2d_profile_picture, birthday, client_business_id, community, cover, currency, education, email, favorite_athletes, favorite_teams, first_name, gender, hometown (and 36 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -39,8 +40,8 @@ func GetWorkSkillTools() []mcp.Tool {
 	// Available fields for WorkSkill: id, name
 	workskill_get_Tool := mcp.NewTool("workskill_get_",
 		mcp.WithDescription("GET  for WorkSkill"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for WorkSkill objects. Available fields: id, name"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for WorkSkill objects. Available fields: id, name"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -74,8 +75,13 @@ func HandleWorkskill_get_users(ctx context.Context, request mcp.CallToolRequest)
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -123,8 +129,13 @@ func HandleWorkskill_get_(ctx context.Context, request mcp.CallToolRequest) (*mc
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit

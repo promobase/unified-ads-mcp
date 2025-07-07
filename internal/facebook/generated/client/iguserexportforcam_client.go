@@ -100,28 +100,10 @@ func (c *IGUserExportForCAMClient) Iguserexportforcam_get_insights(args map[stri
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["breakdown"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("breakdown", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["metrics"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("metrics", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["period"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("period", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["time_range"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("time_range", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {

@@ -142,28 +142,10 @@ func (c *HighDemandPeriodClient) Highdemandperiod_post_(args map[string]interfac
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["budget_value"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("budget_value", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["budget_value_type"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("budget_value_type", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["time_end"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("time_end", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["time_start"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("time_start", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 

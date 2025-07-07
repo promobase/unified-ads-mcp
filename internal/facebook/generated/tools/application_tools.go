@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -17,28 +18,44 @@ func GetApplicationTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// application_delete_accounts tool
+	// Params object accepts: type (applicationaccounts_type_enum_param), uid (int)
 	application_delete_accountsTool := mcp.NewTool("application_delete_accounts",
 		mcp.WithDescription("DELETE accounts for Application"),
-		mcp.WithString("type",
-			mcp.Description("type parameter for accounts"),
-			mcp.Enum("test-users"),
-		),
-		mcp.WithNumber("uid",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("uid parameter for accounts"),
+			mcp.Properties(map[string]any{
+				"type": map[string]any{
+					"type":        "string",
+					"description": "type parameter",
+					"enum":        []string{"test-users"},
+				},
+				"uid": map[string]any{
+					"type":        "integer",
+					"description": "uid parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: type (enum) [test-users], uid (integer) [required]"),
 		),
 	)
 	tools = append(tools, application_delete_accountsTool)
 
 	// application_get_accounts tool
+	// Params object accepts: type (applicationaccounts_type_enum_param)
 	application_get_accountsTool := mcp.NewTool("application_get_accounts",
 		mcp.WithDescription("GET accounts for Application"),
-		mcp.WithString("type",
-			mcp.Description("type parameter for accounts"),
-			mcp.Enum("test-users"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"type": map[string]any{
+					"type":        "string",
+					"description": "type parameter",
+					"enum":        []string{"test-users"},
+				},
+			}),
+			mcp.Description("Parameters object containing: type (enum) [test-users]"),
 		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -53,176 +70,248 @@ func GetApplicationTools() []mcp.Tool {
 	tools = append(tools, application_get_accountsTool)
 
 	// application_post_accounts tool
+	// Params object accepts: installed (bool), minor (bool), name (string), owner_access_token (string), permissions (list<Permission>), type (applicationaccounts_type_enum_param), uid (int)
 	application_post_accountsTool := mcp.NewTool("application_post_accounts",
 		mcp.WithDescription("POST accounts for Application"),
-		mcp.WithBoolean("installed",
-			mcp.Description("installed parameter for accounts"),
-		),
-		mcp.WithBoolean("minor",
-			mcp.Description("minor parameter for accounts"),
-		),
-		mcp.WithString("name",
-			mcp.Description("name parameter for accounts"),
-		),
-		mcp.WithString("owner_access_token",
-			mcp.Description("owner_access_token parameter for accounts"),
-		),
-		mcp.WithString("permissions",
-			mcp.Description("permissions parameter for accounts"),
-		),
-		mcp.WithString("type",
-			mcp.Description("type parameter for accounts"),
-			mcp.Enum("test-users"),
-		),
-		mcp.WithNumber("uid",
-			mcp.Description("uid parameter for accounts"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"installed": map[string]any{
+					"type":        "boolean",
+					"description": "installed parameter",
+				},
+				"minor": map[string]any{
+					"type":        "boolean",
+					"description": "minor parameter",
+				},
+				"name": map[string]any{
+					"type":        "string",
+					"description": "name parameter",
+				},
+				"owner_access_token": map[string]any{
+					"type":        "string",
+					"description": "owner_access_token parameter",
+				},
+				"permissions": map[string]any{
+					"type":        "array",
+					"description": "permissions parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+				"type": map[string]any{
+					"type":        "string",
+					"description": "type parameter",
+					"enum":        []string{"test-users"},
+				},
+				"uid": map[string]any{
+					"type":        "integer",
+					"description": "uid parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: installed (boolean), minor (boolean), name (string), owner_access_token (string), permissions (array<Permission>), type (enum) [test-users], uid (integer)"),
 		),
 	)
 	tools = append(tools, application_post_accountsTool)
 
 	// application_post_activities tool
+	// Params object accepts: advertiser_id (string), advertiser_tracking_enabled (bool), anon_id (string), app_user_id (string), application_tracking_enabled (bool), attribution (string), attribution_referrer (string), attribution_sources (list<map>), auto_publish (bool), bundle_id (string), bundle_short_version (string), bundle_version (string), campaign_ids (string), click_id (string), consider_views (bool), custom_events (list<Object>), custom_events_file (file), data_processing_options (list<string>), data_processing_options_country (unsigned int), data_processing_options_state (unsigned int), device_token (string), event (applicationactivities_event_enum_param), event_id (string), extinfo (Object), google_install_referrer (string), include_dwell_data (bool), include_video_data (bool), install_id (string), install_referrer (string), install_timestamp (unsigned int), installer_package (string), is_fb (bool), limited_data_use (bool), meta_install_referrer (string), migration_bundle (string), operational_parameters (list<map>), page_id (unsigned int), page_scoped_user_id (unsigned int), receipt_data (string), sdk_version (string), ud (map), url_schemes (list<string>), user_id (string), user_id_type (applicationactivities_user_id_type_enum_param), vendor_id (string), windows_attribution_id (string)
 	application_post_activitiesTool := mcp.NewTool("application_post_activities",
 		mcp.WithDescription("POST activities for Application"),
-		mcp.WithString("advertiser_id",
-			mcp.Description("advertiser_id parameter for activities"),
-		),
-		mcp.WithBoolean("advertiser_tracking_enabled",
-			mcp.Description("advertiser_tracking_enabled parameter for activities"),
-		),
-		mcp.WithString("anon_id",
-			mcp.Description("anon_id parameter for activities"),
-		),
-		mcp.WithString("app_user_id",
-			mcp.Description("app_user_id parameter for activities"),
-		),
-		mcp.WithBoolean("application_tracking_enabled",
-			mcp.Description("application_tracking_enabled parameter for activities"),
-		),
-		mcp.WithString("attribution",
-			mcp.Description("attribution parameter for activities"),
-		),
-		mcp.WithString("attribution_referrer",
-			mcp.Description("attribution_referrer parameter for activities"),
-		),
-		mcp.WithString("attribution_sources",
-			mcp.Description("attribution_sources parameter for activities"),
-		),
-		mcp.WithBoolean("auto_publish",
-			mcp.Description("auto_publish parameter for activities"),
-		),
-		mcp.WithString("bundle_id",
-			mcp.Description("bundle_id parameter for activities"),
-		),
-		mcp.WithString("bundle_short_version",
-			mcp.Description("bundle_short_version parameter for activities"),
-		),
-		mcp.WithString("bundle_version",
-			mcp.Description("bundle_version parameter for activities"),
-		),
-		mcp.WithString("campaign_ids",
-			mcp.Description("campaign_ids parameter for activities"),
-		),
-		mcp.WithString("click_id",
-			mcp.Description("click_id parameter for activities"),
-		),
-		mcp.WithBoolean("consider_views",
-			mcp.Description("consider_views parameter for activities"),
-		),
-		mcp.WithString("custom_events",
-			mcp.Description("custom_events parameter for activities"),
-		),
-		mcp.WithString("custom_events_file",
-			mcp.Description("custom_events_file parameter for activities"),
-		),
-		mcp.WithString("data_processing_options",
-			mcp.Description("data_processing_options parameter for activities"),
-		),
-		mcp.WithNumber("data_processing_options_country",
-			mcp.Description("data_processing_options_country parameter for activities"),
-		),
-		mcp.WithNumber("data_processing_options_state",
-			mcp.Description("data_processing_options_state parameter for activities"),
-		),
-		mcp.WithString("device_token",
-			mcp.Description("device_token parameter for activities"),
-		),
-		mcp.WithString("event",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("event parameter for activities"),
-			mcp.Enum("CUSTOM_APP_EVENTS", "DEFERRED_APP_LINK", "MOBILE_APP_INSTALL"),
-		),
-		mcp.WithString("event_id",
-			mcp.Description("event_id parameter for activities"),
-		),
-		mcp.WithString("extinfo",
-			mcp.Description("extinfo parameter for activities"),
-		),
-		mcp.WithString("google_install_referrer",
-			mcp.Description("google_install_referrer parameter for activities"),
-		),
-		mcp.WithBoolean("include_dwell_data",
-			mcp.Description("include_dwell_data parameter for activities"),
-		),
-		mcp.WithBoolean("include_video_data",
-			mcp.Description("include_video_data parameter for activities"),
-		),
-		mcp.WithString("install_id",
-			mcp.Description("install_id parameter for activities"),
-		),
-		mcp.WithString("install_referrer",
-			mcp.Description("install_referrer parameter for activities"),
-		),
-		mcp.WithNumber("install_timestamp",
-			mcp.Description("install_timestamp parameter for activities"),
-		),
-		mcp.WithString("installer_package",
-			mcp.Description("installer_package parameter for activities"),
-		),
-		mcp.WithBoolean("is_fb",
-			mcp.Description("is_fb parameter for activities"),
-		),
-		mcp.WithBoolean("limited_data_use",
-			mcp.Description("limited_data_use parameter for activities"),
-		),
-		mcp.WithString("meta_install_referrer",
-			mcp.Description("meta_install_referrer parameter for activities"),
-		),
-		mcp.WithString("migration_bundle",
-			mcp.Description("migration_bundle parameter for activities"),
-		),
-		mcp.WithString("operational_parameters",
-			mcp.Description("operational_parameters parameter for activities"),
-		),
-		mcp.WithNumber("page_id",
-			mcp.Description("page_id parameter for activities"),
-		),
-		mcp.WithNumber("page_scoped_user_id",
-			mcp.Description("page_scoped_user_id parameter for activities"),
-		),
-		mcp.WithString("receipt_data",
-			mcp.Description("receipt_data parameter for activities"),
-		),
-		mcp.WithString("sdk_version",
-			mcp.Description("sdk_version parameter for activities"),
-		),
-		mcp.WithString("ud",
-			mcp.Description("ud parameter for activities"),
-		),
-		mcp.WithString("url_schemes",
-			mcp.Description("url_schemes parameter for activities"),
-		),
-		mcp.WithString("user_id",
-			mcp.Description("user_id parameter for activities"),
-		),
-		mcp.WithString("user_id_type",
-			mcp.Description("user_id_type parameter for activities"),
-			mcp.Enum("INSTANT_GAMES_PLAYER_ID"),
-		),
-		mcp.WithString("vendor_id",
-			mcp.Description("vendor_id parameter for activities"),
-		),
-		mcp.WithString("windows_attribution_id",
-			mcp.Description("windows_attribution_id parameter for activities"),
+			mcp.Properties(map[string]any{
+				"advertiser_id": map[string]any{
+					"type":        "string",
+					"description": "advertiser_id parameter",
+				},
+				"advertiser_tracking_enabled": map[string]any{
+					"type":        "boolean",
+					"description": "advertiser_tracking_enabled parameter",
+				},
+				"anon_id": map[string]any{
+					"type":        "string",
+					"description": "anon_id parameter",
+				},
+				"app_user_id": map[string]any{
+					"type":        "string",
+					"description": "app_user_id parameter",
+				},
+				"application_tracking_enabled": map[string]any{
+					"type":        "boolean",
+					"description": "application_tracking_enabled parameter",
+				},
+				"attribution": map[string]any{
+					"type":        "string",
+					"description": "attribution parameter",
+				},
+				"attribution_referrer": map[string]any{
+					"type":        "string",
+					"description": "attribution_referrer parameter",
+				},
+				"attribution_sources": map[string]any{
+					"type":        "array",
+					"description": "attribution_sources parameter",
+					"items":       map[string]any{"type": "object"},
+				},
+				"auto_publish": map[string]any{
+					"type":        "boolean",
+					"description": "auto_publish parameter",
+				},
+				"bundle_id": map[string]any{
+					"type":        "string",
+					"description": "bundle_id parameter",
+				},
+				"bundle_short_version": map[string]any{
+					"type":        "string",
+					"description": "bundle_short_version parameter",
+				},
+				"bundle_version": map[string]any{
+					"type":        "string",
+					"description": "bundle_version parameter",
+				},
+				"campaign_ids": map[string]any{
+					"type":        "string",
+					"description": "campaign_ids parameter",
+				},
+				"click_id": map[string]any{
+					"type":        "string",
+					"description": "click_id parameter",
+				},
+				"consider_views": map[string]any{
+					"type":        "boolean",
+					"description": "consider_views parameter",
+				},
+				"custom_events": map[string]any{
+					"type":        "array",
+					"description": "custom_events parameter",
+					"items":       map[string]any{"type": "object"},
+				},
+				"custom_events_file": map[string]any{
+					"type":        "string",
+					"description": "custom_events_file parameter",
+				},
+				"data_processing_options": map[string]any{
+					"type":        "array",
+					"description": "data_processing_options parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+				"data_processing_options_country": map[string]any{
+					"type":        "integer",
+					"description": "data_processing_options_country parameter",
+				},
+				"data_processing_options_state": map[string]any{
+					"type":        "integer",
+					"description": "data_processing_options_state parameter",
+				},
+				"device_token": map[string]any{
+					"type":        "string",
+					"description": "device_token parameter",
+				},
+				"event": map[string]any{
+					"type":        "string",
+					"description": "event parameter",
+					"required":    true,
+					"enum":        []string{"CUSTOM_APP_EVENTS", "DEFERRED_APP_LINK", "MOBILE_APP_INSTALL"},
+				},
+				"event_id": map[string]any{
+					"type":        "string",
+					"description": "event_id parameter",
+				},
+				"extinfo": map[string]any{
+					"type":        "object",
+					"description": "extinfo parameter",
+				},
+				"google_install_referrer": map[string]any{
+					"type":        "string",
+					"description": "google_install_referrer parameter",
+				},
+				"include_dwell_data": map[string]any{
+					"type":        "boolean",
+					"description": "include_dwell_data parameter",
+				},
+				"include_video_data": map[string]any{
+					"type":        "boolean",
+					"description": "include_video_data parameter",
+				},
+				"install_id": map[string]any{
+					"type":        "string",
+					"description": "install_id parameter",
+				},
+				"install_referrer": map[string]any{
+					"type":        "string",
+					"description": "install_referrer parameter",
+				},
+				"install_timestamp": map[string]any{
+					"type":        "integer",
+					"description": "install_timestamp parameter",
+				},
+				"installer_package": map[string]any{
+					"type":        "string",
+					"description": "installer_package parameter",
+				},
+				"is_fb": map[string]any{
+					"type":        "boolean",
+					"description": "is_fb parameter",
+				},
+				"limited_data_use": map[string]any{
+					"type":        "boolean",
+					"description": "limited_data_use parameter",
+				},
+				"meta_install_referrer": map[string]any{
+					"type":        "string",
+					"description": "meta_install_referrer parameter",
+				},
+				"migration_bundle": map[string]any{
+					"type":        "string",
+					"description": "migration_bundle parameter",
+				},
+				"operational_parameters": map[string]any{
+					"type":        "array",
+					"description": "operational_parameters parameter",
+					"items":       map[string]any{"type": "object"},
+				},
+				"page_id": map[string]any{
+					"type":        "integer",
+					"description": "page_id parameter",
+				},
+				"page_scoped_user_id": map[string]any{
+					"type":        "integer",
+					"description": "page_scoped_user_id parameter",
+				},
+				"receipt_data": map[string]any{
+					"type":        "string",
+					"description": "receipt_data parameter",
+				},
+				"sdk_version": map[string]any{
+					"type":        "string",
+					"description": "sdk_version parameter",
+				},
+				"ud": map[string]any{
+					"type":        "object",
+					"description": "ud parameter",
+				},
+				"url_schemes": map[string]any{
+					"type":        "array",
+					"description": "url_schemes parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+				"user_id": map[string]any{
+					"type":        "string",
+					"description": "user_id parameter",
+				},
+				"user_id_type": map[string]any{
+					"type":        "string",
+					"description": "user_id_type parameter",
+					"enum":        []string{"INSTANT_GAMES_PLAYER_ID"},
+				},
+				"vendor_id": map[string]any{
+					"type":        "string",
+					"description": "vendor_id parameter",
+				},
+				"windows_attribution_id": map[string]any{
+					"type":        "string",
+					"description": "windows_attribution_id parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: advertiser_id (string), advertiser_tracking_enabled (boolean), anon_id (string), app_user_id (string), application_tracking_enabled (boolean), attribution (string), attribution_referrer (string), attribution_sources (array<object>), auto_publish (boolean), bundle_id (string), bundle_short_version (string), bundle_version (string), campaign_ids (string), click_id (string), consider_views (boolean), custom_events (array<object>), custom_events_file (file), data_processing_options (array<string>), data_processing_options_country (integer), data_processing_options_state (integer), device_token (string), event (enum) [CUSTOM_APP_EVENTS, DEFERRED_APP_LINK, MOBILE_APP_INSTALL] [required], event_id (string), extinfo (object), google_install_referrer (string), include_dwell_data (boolean), include_video_data (boolean), install_id (string), install_referrer (string), install_timestamp (integer), installer_package (string), is_fb (boolean), limited_data_use (boolean), meta_install_referrer (string), migration_bundle (string), operational_parameters (array<object>), page_id (integer), page_scoped_user_id (integer), receipt_data (string), sdk_version (string), ud (object), url_schemes (array<string>), user_id (string), user_id_type (enum) [INSTANT_GAMES_PLAYER_ID], vendor_id (string), windows_attribution_id (string)"),
 		),
 	)
 	tools = append(tools, application_post_activitiesTool)
@@ -230,8 +319,8 @@ func GetApplicationTools() []mcp.Tool {
 	// application_get_ad_placement_groups tool
 	application_get_ad_placement_groupsTool := mcp.NewTool("application_get_ad_placement_groups",
 		mcp.WithDescription("GET ad_placement_groups for Application"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -247,13 +336,20 @@ func GetApplicationTools() []mcp.Tool {
 
 	// application_get_adnetwork_placements tool
 	// Available fields for AdPlacement: bundle_id, display_format, external_placement_id, google_display_format, id, name, placement_group, platform, status
+	// Params object accepts: request_id (string)
 	application_get_adnetwork_placementsTool := mcp.NewTool("application_get_adnetwork_placements",
 		mcp.WithDescription("GET adnetwork_placements for Application"),
-		mcp.WithString("request_id",
-			mcp.Description("request_id parameter for adnetwork_placements"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"request_id": map[string]any{
+					"type":        "string",
+					"description": "request_id parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: request_id (string)"),
 		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for AdPlacement objects. Available fields: bundle_id, display_format, external_placement_id, google_display_format, id, name, placement_group, platform, status"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for AdPlacement objects. Available fields: bundle_id, display_format, external_placement_id, google_display_format, id, name, placement_group, platform, status"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -269,46 +365,66 @@ func GetApplicationTools() []mcp.Tool {
 
 	// application_get_adnetworkanalytics tool
 	// Available fields for AdNetworkAnalyticsSyncQueryResult: omitted_results, query_id, results
+	// Params object accepts: aggregation_period (applicationadnetworkanalytics_aggregation_period_enum_param), breakdowns (list<applicationadnetworkanalytics_breakdowns_enum_param>), filters (list<map>), limit (unsigned int), metrics (list<applicationadnetworkanalytics_metrics_enum_param>), ordering_column (applicationadnetworkanalytics_ordering_column_enum_param), ordering_type (applicationadnetworkanalytics_ordering_type_enum_param), should_include_until (bool), since (datetime), until (datetime)
 	application_get_adnetworkanalyticsTool := mcp.NewTool("application_get_adnetworkanalytics",
 		mcp.WithDescription("GET adnetworkanalytics for Application"),
-		mcp.WithString("aggregation_period",
-			mcp.Description("aggregation_period parameter for adnetworkanalytics"),
-			mcp.Enum("DAY", "TOTAL"),
-		),
-		mcp.WithString("breakdowns",
-			mcp.Description("breakdowns parameter for adnetworkanalytics"),
-			mcp.Enum("AD_SERVER_CAMPAIGN_ID", "AD_SPACE", "AGE", "APP", "CLICKED_VIEW_TAG", "COUNTRY", "DEAL", "DEAL_AD", "DEAL_PAGE", "DELIVERY_METHOD", "DISPLAY_FORMAT", "FAIL_REASON", "GENDER", "INSTANT_ARTICLE_ID", "INSTANT_ARTICLE_PAGE_ID", "IS_DEAL_BACKFILL", "PLACEMENT", "PLACEMENT_NAME", "PLATFORM", "PROPERTY", "SDK_VERSION"),
-		),
-		mcp.WithString("filters",
-			mcp.Description("filters parameter for adnetworkanalytics"),
-		),
-		mcp.WithNumber("limit",
-			mcp.Description("limit parameter for adnetworkanalytics"),
-		),
-		mcp.WithString("metrics",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("metrics parameter for adnetworkanalytics"),
-			mcp.Enum("FB_AD_NETWORK_BIDDING_BID_RATE", "FB_AD_NETWORK_BIDDING_REQUEST", "FB_AD_NETWORK_BIDDING_RESPONSE", "FB_AD_NETWORK_BIDDING_REVENUE", "FB_AD_NETWORK_BIDDING_WIN_RATE", "FB_AD_NETWORK_CLICK", "FB_AD_NETWORK_CPM", "FB_AD_NETWORK_CTR", "FB_AD_NETWORK_FILLED_REQUEST", "FB_AD_NETWORK_FILL_RATE", "FB_AD_NETWORK_IMP", "FB_AD_NETWORK_IMPRESSION_RATE", "FB_AD_NETWORK_REQUEST", "FB_AD_NETWORK_REVENUE", "FB_AD_NETWORK_SHOW_RATE", "FB_AD_NETWORK_VIDEO_GUARANTEE_REVENUE", "FB_AD_NETWORK_VIDEO_MRC", "FB_AD_NETWORK_VIDEO_MRC_RATE", "FB_AD_NETWORK_VIDEO_VIEW", "FB_AD_NETWORK_VIDEO_VIEW_RATE"),
+			mcp.Properties(map[string]any{
+				"aggregation_period": map[string]any{
+					"type":        "string",
+					"description": "aggregation_period parameter",
+					"enum":        []string{"DAY", "TOTAL"},
+				},
+				"breakdowns": map[string]any{
+					"type":        "array",
+					"description": "breakdowns parameter",
+					"enum":        []string{"AD_SERVER_CAMPAIGN_ID", "AD_SPACE", "AGE", "APP", "CLICKED_VIEW_TAG", "COUNTRY", "DEAL", "DEAL_AD", "DEAL_PAGE", "DELIVERY_METHOD", "DISPLAY_FORMAT", "FAIL_REASON", "GENDER", "INSTANT_ARTICLE_ID", "INSTANT_ARTICLE_PAGE_ID", "IS_DEAL_BACKFILL", "PLACEMENT", "PLACEMENT_NAME", "PLATFORM", "PROPERTY", "SDK_VERSION"},
+					"items":       map[string]any{"type": "string"},
+				},
+				"filters": map[string]any{
+					"type":        "array",
+					"description": "filters parameter",
+					"items":       map[string]any{"type": "object"},
+				},
+				"limit": map[string]any{
+					"type":        "integer",
+					"description": "limit parameter",
+				},
+				"metrics": map[string]any{
+					"type":        "array",
+					"description": "metrics parameter",
+					"required":    true,
+					"enum":        []string{"FB_AD_NETWORK_BIDDING_BID_RATE", "FB_AD_NETWORK_BIDDING_REQUEST", "FB_AD_NETWORK_BIDDING_RESPONSE", "FB_AD_NETWORK_BIDDING_REVENUE", "FB_AD_NETWORK_BIDDING_WIN_RATE", "FB_AD_NETWORK_CLICK", "FB_AD_NETWORK_CPM", "FB_AD_NETWORK_CTR", "FB_AD_NETWORK_FILLED_REQUEST", "FB_AD_NETWORK_FILL_RATE", "FB_AD_NETWORK_IMP", "FB_AD_NETWORK_IMPRESSION_RATE", "FB_AD_NETWORK_REQUEST", "FB_AD_NETWORK_REVENUE", "FB_AD_NETWORK_SHOW_RATE", "FB_AD_NETWORK_VIDEO_GUARANTEE_REVENUE", "FB_AD_NETWORK_VIDEO_MRC", "FB_AD_NETWORK_VIDEO_MRC_RATE", "FB_AD_NETWORK_VIDEO_VIEW", "FB_AD_NETWORK_VIDEO_VIEW_RATE"},
+					"items":       map[string]any{"type": "string"},
+				},
+				"ordering_column": map[string]any{
+					"type":        "string",
+					"description": "ordering_column parameter",
+					"enum":        []string{"METRIC", "TIME", "VALUE"},
+				},
+				"ordering_type": map[string]any{
+					"type":        "string",
+					"description": "ordering_type parameter",
+					"enum":        []string{"ASCENDING", "DESCENDING"},
+				},
+				"should_include_until": map[string]any{
+					"type":        "boolean",
+					"description": "should_include_until parameter",
+				},
+				"since": map[string]any{
+					"type":        "string",
+					"description": "since parameter",
+				},
+				"until": map[string]any{
+					"type":        "string",
+					"description": "until parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: aggregation_period (enum) [DAY, TOTAL], breakdowns (array<enum>) [AD_SERVER_CAMPAIGN_ID, AD_SPACE, AGE, APP, CLICKED_VIEW_TAG, ...], filters (array<object>), limit (integer), metrics (array<enum>) [FB_AD_NETWORK_BIDDING_BID_RATE, FB_AD_NETWORK_BIDDING_REQUEST, FB_AD_NETWORK_BIDDING_RESPONSE, FB_AD_NETWORK_BIDDING_REVENUE, FB_AD_NETWORK_BIDDING_WIN_RATE, ...] [required], ordering_column (enum) [METRIC, TIME, VALUE], ordering_type (enum) [ASCENDING, DESCENDING], should_include_until (boolean), since (datetime), until (datetime)"),
 		),
-		mcp.WithString("ordering_column",
-			mcp.Description("ordering_column parameter for adnetworkanalytics"),
-			mcp.Enum("METRIC", "TIME", "VALUE"),
-		),
-		mcp.WithString("ordering_type",
-			mcp.Description("ordering_type parameter for adnetworkanalytics"),
-			mcp.Enum("ASCENDING", "DESCENDING"),
-		),
-		mcp.WithBoolean("should_include_until",
-			mcp.Description("should_include_until parameter for adnetworkanalytics"),
-		),
-		mcp.WithString("since",
-			mcp.Description("since parameter for adnetworkanalytics"),
-		),
-		mcp.WithString("until",
-			mcp.Description("until parameter for adnetworkanalytics"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for AdNetworkAnalyticsSyncQueryResult objects. Available fields: omitted_results, query_id, results"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for AdNetworkAnalyticsSyncQueryResult objects. Available fields: omitted_results, query_id, results"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -323,53 +439,80 @@ func GetApplicationTools() []mcp.Tool {
 	tools = append(tools, application_get_adnetworkanalyticsTool)
 
 	// application_post_adnetworkanalytics tool
+	// Params object accepts: aggregation_period (applicationadnetworkanalytics_aggregation_period_enum_param), breakdowns (list<applicationadnetworkanalytics_breakdowns_enum_param>), filters (list<Object>), limit (int), metrics (list<applicationadnetworkanalytics_metrics_enum_param>), ordering_column (applicationadnetworkanalytics_ordering_column_enum_param), ordering_type (applicationadnetworkanalytics_ordering_type_enum_param), since (datetime), until (datetime)
 	application_post_adnetworkanalyticsTool := mcp.NewTool("application_post_adnetworkanalytics",
 		mcp.WithDescription("POST adnetworkanalytics for Application"),
-		mcp.WithString("aggregation_period",
-			mcp.Description("aggregation_period parameter for adnetworkanalytics"),
-			mcp.Enum("DAY", "TOTAL"),
-		),
-		mcp.WithString("breakdowns",
-			mcp.Description("breakdowns parameter for adnetworkanalytics"),
-			mcp.Enum("AD_SERVER_CAMPAIGN_ID", "AD_SPACE", "AGE", "APP", "CLICKED_VIEW_TAG", "COUNTRY", "DEAL", "DEAL_AD", "DEAL_PAGE", "DELIVERY_METHOD", "DISPLAY_FORMAT", "FAIL_REASON", "GENDER", "INSTANT_ARTICLE_ID", "INSTANT_ARTICLE_PAGE_ID", "IS_DEAL_BACKFILL", "PLACEMENT", "PLACEMENT_NAME", "PLATFORM", "PROPERTY", "SDK_VERSION"),
-		),
-		mcp.WithString("filters",
-			mcp.Description("filters parameter for adnetworkanalytics"),
-		),
-		mcp.WithNumber("limit",
-			mcp.Description("limit parameter for adnetworkanalytics"),
-		),
-		mcp.WithString("metrics",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("metrics parameter for adnetworkanalytics"),
-			mcp.Enum("FB_AD_NETWORK_BIDDING_BID_RATE", "FB_AD_NETWORK_BIDDING_REQUEST", "FB_AD_NETWORK_BIDDING_RESPONSE", "FB_AD_NETWORK_BIDDING_REVENUE", "FB_AD_NETWORK_BIDDING_WIN_RATE", "FB_AD_NETWORK_CLICK", "FB_AD_NETWORK_CPM", "FB_AD_NETWORK_CTR", "FB_AD_NETWORK_FILLED_REQUEST", "FB_AD_NETWORK_FILL_RATE", "FB_AD_NETWORK_IMP", "FB_AD_NETWORK_IMPRESSION_RATE", "FB_AD_NETWORK_REQUEST", "FB_AD_NETWORK_REVENUE", "FB_AD_NETWORK_SHOW_RATE", "FB_AD_NETWORK_VIDEO_GUARANTEE_REVENUE", "FB_AD_NETWORK_VIDEO_MRC", "FB_AD_NETWORK_VIDEO_MRC_RATE", "FB_AD_NETWORK_VIDEO_VIEW", "FB_AD_NETWORK_VIDEO_VIEW_RATE"),
-		),
-		mcp.WithString("ordering_column",
-			mcp.Description("ordering_column parameter for adnetworkanalytics"),
-			mcp.Enum("METRIC", "TIME", "VALUE"),
-		),
-		mcp.WithString("ordering_type",
-			mcp.Description("ordering_type parameter for adnetworkanalytics"),
-			mcp.Enum("ASCENDING", "DESCENDING"),
-		),
-		mcp.WithString("since",
-			mcp.Description("since parameter for adnetworkanalytics"),
-		),
-		mcp.WithString("until",
-			mcp.Description("until parameter for adnetworkanalytics"),
+			mcp.Properties(map[string]any{
+				"aggregation_period": map[string]any{
+					"type":        "string",
+					"description": "aggregation_period parameter",
+					"enum":        []string{"DAY", "TOTAL"},
+				},
+				"breakdowns": map[string]any{
+					"type":        "array",
+					"description": "breakdowns parameter",
+					"enum":        []string{"AD_SERVER_CAMPAIGN_ID", "AD_SPACE", "AGE", "APP", "CLICKED_VIEW_TAG", "COUNTRY", "DEAL", "DEAL_AD", "DEAL_PAGE", "DELIVERY_METHOD", "DISPLAY_FORMAT", "FAIL_REASON", "GENDER", "INSTANT_ARTICLE_ID", "INSTANT_ARTICLE_PAGE_ID", "IS_DEAL_BACKFILL", "PLACEMENT", "PLACEMENT_NAME", "PLATFORM", "PROPERTY", "SDK_VERSION"},
+					"items":       map[string]any{"type": "string"},
+				},
+				"filters": map[string]any{
+					"type":        "array",
+					"description": "filters parameter",
+					"items":       map[string]any{"type": "object"},
+				},
+				"limit": map[string]any{
+					"type":        "integer",
+					"description": "limit parameter",
+				},
+				"metrics": map[string]any{
+					"type":        "array",
+					"description": "metrics parameter",
+					"required":    true,
+					"enum":        []string{"FB_AD_NETWORK_BIDDING_BID_RATE", "FB_AD_NETWORK_BIDDING_REQUEST", "FB_AD_NETWORK_BIDDING_RESPONSE", "FB_AD_NETWORK_BIDDING_REVENUE", "FB_AD_NETWORK_BIDDING_WIN_RATE", "FB_AD_NETWORK_CLICK", "FB_AD_NETWORK_CPM", "FB_AD_NETWORK_CTR", "FB_AD_NETWORK_FILLED_REQUEST", "FB_AD_NETWORK_FILL_RATE", "FB_AD_NETWORK_IMP", "FB_AD_NETWORK_IMPRESSION_RATE", "FB_AD_NETWORK_REQUEST", "FB_AD_NETWORK_REVENUE", "FB_AD_NETWORK_SHOW_RATE", "FB_AD_NETWORK_VIDEO_GUARANTEE_REVENUE", "FB_AD_NETWORK_VIDEO_MRC", "FB_AD_NETWORK_VIDEO_MRC_RATE", "FB_AD_NETWORK_VIDEO_VIEW", "FB_AD_NETWORK_VIDEO_VIEW_RATE"},
+					"items":       map[string]any{"type": "string"},
+				},
+				"ordering_column": map[string]any{
+					"type":        "string",
+					"description": "ordering_column parameter",
+					"enum":        []string{"METRIC", "TIME", "VALUE"},
+				},
+				"ordering_type": map[string]any{
+					"type":        "string",
+					"description": "ordering_type parameter",
+					"enum":        []string{"ASCENDING", "DESCENDING"},
+				},
+				"since": map[string]any{
+					"type":        "string",
+					"description": "since parameter",
+				},
+				"until": map[string]any{
+					"type":        "string",
+					"description": "until parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: aggregation_period (enum) [DAY, TOTAL], breakdowns (array<enum>) [AD_SERVER_CAMPAIGN_ID, AD_SPACE, AGE, APP, CLICKED_VIEW_TAG, ...], filters (array<object>), limit (integer), metrics (array<enum>) [FB_AD_NETWORK_BIDDING_BID_RATE, FB_AD_NETWORK_BIDDING_REQUEST, FB_AD_NETWORK_BIDDING_RESPONSE, FB_AD_NETWORK_BIDDING_REVENUE, FB_AD_NETWORK_BIDDING_WIN_RATE, ...] [required], ordering_column (enum) [METRIC, TIME, VALUE], ordering_type (enum) [ASCENDING, DESCENDING], since (datetime), until (datetime)"),
 		),
 	)
 	tools = append(tools, application_post_adnetworkanalyticsTool)
 
 	// application_get_adnetworkanalytics_results tool
 	// Available fields for AdNetworkAnalyticsAsyncQueryResult: data, omitted_results, query_id, results, status
+	// Params object accepts: query_ids (list<string>)
 	application_get_adnetworkanalytics_resultsTool := mcp.NewTool("application_get_adnetworkanalytics_results",
 		mcp.WithDescription("GET adnetworkanalytics_results for Application"),
-		mcp.WithString("query_ids",
-			mcp.Description("query_ids parameter for adnetworkanalytics_results"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"query_ids": map[string]any{
+					"type":        "array",
+					"description": "query_ids parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+			}),
+			mcp.Description("Parameters object containing: query_ids (array<string>)"),
 		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for AdNetworkAnalyticsAsyncQueryResult objects. Available fields: data, omitted_results, query_id, results, status"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for AdNetworkAnalyticsAsyncQueryResult objects. Available fields: data, omitted_results, query_id, results, status"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -384,16 +527,25 @@ func GetApplicationTools() []mcp.Tool {
 	tools = append(tools, application_get_adnetworkanalytics_resultsTool)
 
 	// application_get_aem_attribution tool
+	// Params object accepts: advertiser_ids (list<string>), fb_content_data (string)
 	application_get_aem_attributionTool := mcp.NewTool("application_get_aem_attribution",
 		mcp.WithDescription("GET aem_attribution for Application"),
-		mcp.WithString("advertiser_ids",
-			mcp.Description("advertiser_ids parameter for aem_attribution"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"advertiser_ids": map[string]any{
+					"type":        "array",
+					"description": "advertiser_ids parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+				"fb_content_data": map[string]any{
+					"type":        "string",
+					"description": "fb_content_data parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: advertiser_ids (array<string>), fb_content_data (string)"),
 		),
-		mcp.WithString("fb_content_data",
-			mcp.Description("fb_content_data parameter for aem_attribution"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -408,13 +560,21 @@ func GetApplicationTools() []mcp.Tool {
 	tools = append(tools, application_get_aem_attributionTool)
 
 	// application_get_aem_conversion_configs tool
+	// Params object accepts: advertiser_ids (list<string>)
 	application_get_aem_conversion_configsTool := mcp.NewTool("application_get_aem_conversion_configs",
 		mcp.WithDescription("GET aem_conversion_configs for Application"),
-		mcp.WithString("advertiser_ids",
-			mcp.Description("advertiser_ids parameter for aem_conversion_configs"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"advertiser_ids": map[string]any{
+					"type":        "array",
+					"description": "advertiser_ids parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+			}),
+			mcp.Description("Parameters object containing: advertiser_ids (array<string>)"),
 		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -429,16 +589,24 @@ func GetApplicationTools() []mcp.Tool {
 	tools = append(tools, application_get_aem_conversion_configsTool)
 
 	// application_get_aem_conversion_filter tool
+	// Params object accepts: catalog_id (string), fb_content_ids (string)
 	application_get_aem_conversion_filterTool := mcp.NewTool("application_get_aem_conversion_filter",
 		mcp.WithDescription("GET aem_conversion_filter for Application"),
-		mcp.WithString("catalog_id",
-			mcp.Description("catalog_id parameter for aem_conversion_filter"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"catalog_id": map[string]any{
+					"type":        "string",
+					"description": "catalog_id parameter",
+				},
+				"fb_content_ids": map[string]any{
+					"type":        "string",
+					"description": "fb_content_ids parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: catalog_id (string), fb_content_ids (string)"),
 		),
-		mcp.WithString("fb_content_ids",
-			mcp.Description("fb_content_ids parameter for aem_conversion_filter"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -453,36 +621,58 @@ func GetApplicationTools() []mcp.Tool {
 	tools = append(tools, application_get_aem_conversion_filterTool)
 
 	// application_post_aem_conversions tool
+	// Params object accepts: aem_conversions (list<map>)
 	application_post_aem_conversionsTool := mcp.NewTool("application_post_aem_conversions",
 		mcp.WithDescription("POST aem_conversions for Application"),
-		mcp.WithString("aem_conversions",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("aem_conversions parameter for aem_conversions"),
+			mcp.Properties(map[string]any{
+				"aem_conversions": map[string]any{
+					"type":        "array",
+					"description": "aem_conversions parameter",
+					"required":    true,
+					"items":       map[string]any{"type": "object"},
+				},
+			}),
+			mcp.Description("Parameters object containing: aem_conversions (array<object>) [required]"),
 		),
 	)
 	tools = append(tools, application_post_aem_conversionsTool)
 
 	// application_post_aem_skan_readiness tool
+	// Params object accepts: app_id (int), is_aem_ready (bool), is_app_aem_install_ready (bool), is_app_aem_ready (bool), is_skan_ready (bool), message (string)
 	application_post_aem_skan_readinessTool := mcp.NewTool("application_post_aem_skan_readiness",
 		mcp.WithDescription("POST aem_skan_readiness for Application"),
-		mcp.WithNumber("app_id",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("app_id parameter for aem_skan_readiness"),
-		),
-		mcp.WithBoolean("is_aem_ready",
-			mcp.Description("is_aem_ready parameter for aem_skan_readiness"),
-		),
-		mcp.WithBoolean("is_app_aem_install_ready",
-			mcp.Description("is_app_aem_install_ready parameter for aem_skan_readiness"),
-		),
-		mcp.WithBoolean("is_app_aem_ready",
-			mcp.Description("is_app_aem_ready parameter for aem_skan_readiness"),
-		),
-		mcp.WithBoolean("is_skan_ready",
-			mcp.Description("is_skan_ready parameter for aem_skan_readiness"),
-		),
-		mcp.WithString("message",
-			mcp.Description("message parameter for aem_skan_readiness"),
+			mcp.Properties(map[string]any{
+				"app_id": map[string]any{
+					"type":        "integer",
+					"description": "app_id parameter",
+					"required":    true,
+				},
+				"is_aem_ready": map[string]any{
+					"type":        "boolean",
+					"description": "is_aem_ready parameter",
+				},
+				"is_app_aem_install_ready": map[string]any{
+					"type":        "boolean",
+					"description": "is_app_aem_install_ready parameter",
+				},
+				"is_app_aem_ready": map[string]any{
+					"type":        "boolean",
+					"description": "is_app_aem_ready parameter",
+				},
+				"is_skan_ready": map[string]any{
+					"type":        "boolean",
+					"description": "is_skan_ready parameter",
+				},
+				"message": map[string]any{
+					"type":        "string",
+					"description": "message parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: app_id (integer) [required], is_aem_ready (boolean), is_app_aem_install_ready (boolean), is_app_aem_ready (boolean), is_skan_ready (boolean), message (string)"),
 		),
 	)
 	tools = append(tools, application_post_aem_skan_readinessTool)
@@ -491,8 +681,8 @@ func GetApplicationTools() []mcp.Tool {
 	// Available fields for Business: block_offline_analytics, collaborative_ads_managed_partner_business_info, collaborative_ads_managed_partner_eligibility, collaborative_ads_partner_premium_options, created_by, created_time, extended_updated_time, id, is_hidden, link, name, payment_account_id, primary_page, profile_picture_uri, timezone_id, two_factor_type, updated_by, updated_time, user_access_expire_time, verification_status, vertical, vertical_id
 	application_get_agenciesTool := mcp.NewTool("application_get_agencies",
 		mcp.WithDescription("GET agencies for Application"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for Business objects. Available fields: block_offline_analytics, collaborative_ads_managed_partner_business_info, collaborative_ads_managed_partner_eligibility, collaborative_ads_partner_premium_options, created_by, created_time, extended_updated_time, id, is_hidden, link, name, payment_account_id, primary_page, profile_picture_uri, timezone_id (and 7 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for Business objects. Available fields: block_offline_analytics, collaborative_ads_managed_partner_business_info, collaborative_ads_managed_partner_eligibility, collaborative_ads_partner_premium_options, created_by, created_time, extended_updated_time, id, is_hidden, link, name, payment_account_id, primary_page, profile_picture_uri, timezone_id (and 7 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -507,19 +697,31 @@ func GetApplicationTools() []mcp.Tool {
 	tools = append(tools, application_get_agenciesTool)
 
 	// application_post_aggregate_revenue tool
+	// Params object accepts: ecpms (list<string>), query_ids (list<string>), request_id (string), sync_api (bool)
 	application_post_aggregate_revenueTool := mcp.NewTool("application_post_aggregate_revenue",
 		mcp.WithDescription("POST aggregate_revenue for Application"),
-		mcp.WithString("ecpms",
-			mcp.Description("ecpms parameter for aggregate_revenue"),
-		),
-		mcp.WithString("query_ids",
-			mcp.Description("query_ids parameter for aggregate_revenue"),
-		),
-		mcp.WithString("request_id",
-			mcp.Description("request_id parameter for aggregate_revenue"),
-		),
-		mcp.WithBoolean("sync_api",
-			mcp.Description("sync_api parameter for aggregate_revenue"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"ecpms": map[string]any{
+					"type":        "array",
+					"description": "ecpms parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+				"query_ids": map[string]any{
+					"type":        "array",
+					"description": "query_ids parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+				"request_id": map[string]any{
+					"type":        "string",
+					"description": "request_id parameter",
+				},
+				"sync_api": map[string]any{
+					"type":        "boolean",
+					"description": "sync_api parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: ecpms (array<string>), query_ids (array<string>), request_id (string), sync_api (boolean)"),
 		),
 	)
 	tools = append(tools, application_post_aggregate_revenueTool)
@@ -527,8 +729,8 @@ func GetApplicationTools() []mcp.Tool {
 	// application_get_android_dialog_configs tool
 	application_get_android_dialog_configsTool := mcp.NewTool("application_get_android_dialog_configs",
 		mcp.WithDescription("GET android_dialog_configs for Application"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -545,8 +747,8 @@ func GetApplicationTools() []mcp.Tool {
 	// application_get_app_capi_settings tool
 	application_get_app_capi_settingsTool := mcp.NewTool("application_get_app_capi_settings",
 		mcp.WithDescription("GET app_capi_settings for Application"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -563,8 +765,8 @@ func GetApplicationTools() []mcp.Tool {
 	// application_get_app_event_types tool
 	application_get_app_event_typesTool := mcp.NewTool("application_get_app_event_types",
 		mcp.WithDescription("GET app_event_types for Application"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -579,56 +781,85 @@ func GetApplicationTools() []mcp.Tool {
 	tools = append(tools, application_get_app_event_typesTool)
 
 	// application_post_app_indexing tool
+	// Params object accepts: app_version (string), device_session_id (string), extra_info (string), platform (applicationapp_indexing_platform_enum_param), request_type (applicationapp_indexing_request_type_enum_param), tree (map)
 	application_post_app_indexingTool := mcp.NewTool("application_post_app_indexing",
 		mcp.WithDescription("POST app_indexing for Application"),
-		mcp.WithString("app_version",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("app_version parameter for app_indexing"),
-		),
-		mcp.WithString("device_session_id",
-			mcp.Description("device_session_id parameter for app_indexing"),
-		),
-		mcp.WithString("extra_info",
-			mcp.Description("extra_info parameter for app_indexing"),
-		),
-		mcp.WithString("platform",
-			mcp.Required(),
-			mcp.Description("platform parameter for app_indexing"),
-			mcp.Enum("ANDROID", "IOS"),
-		),
-		mcp.WithString("request_type",
-			mcp.Description("request_type parameter for app_indexing"),
-			mcp.Enum("APP_INDEXING", "BUTTON_SAMPLING", "PLUGIN"),
-		),
-		mcp.WithString("tree",
-			mcp.Required(),
-			mcp.Description("tree parameter for app_indexing"),
+			mcp.Properties(map[string]any{
+				"app_version": map[string]any{
+					"type":        "string",
+					"description": "app_version parameter",
+					"required":    true,
+				},
+				"device_session_id": map[string]any{
+					"type":        "string",
+					"description": "device_session_id parameter",
+				},
+				"extra_info": map[string]any{
+					"type":        "string",
+					"description": "extra_info parameter",
+				},
+				"platform": map[string]any{
+					"type":        "string",
+					"description": "platform parameter",
+					"required":    true,
+					"enum":        []string{"ANDROID", "IOS"},
+				},
+				"request_type": map[string]any{
+					"type":        "string",
+					"description": "request_type parameter",
+					"enum":        []string{"APP_INDEXING", "BUTTON_SAMPLING", "PLUGIN"},
+				},
+				"tree": map[string]any{
+					"type":        "object",
+					"description": "tree parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: app_version (string) [required], device_session_id (string), extra_info (string), platform (enum) [ANDROID, IOS] [required], request_type (enum) [APP_INDEXING, BUTTON_SAMPLING, PLUGIN], tree (object) [required]"),
 		),
 	)
 	tools = append(tools, application_post_app_indexingTool)
 
 	// application_post_app_indexing_session tool
+	// Params object accepts: device_session_id (string), extinfo (string)
 	application_post_app_indexing_sessionTool := mcp.NewTool("application_post_app_indexing_session",
 		mcp.WithDescription("POST app_indexing_session for Application"),
-		mcp.WithString("device_session_id",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("device_session_id parameter for app_indexing_session"),
-		),
-		mcp.WithString("extinfo",
-			mcp.Description("extinfo parameter for app_indexing_session"),
+			mcp.Properties(map[string]any{
+				"device_session_id": map[string]any{
+					"type":        "string",
+					"description": "device_session_id parameter",
+					"required":    true,
+				},
+				"extinfo": map[string]any{
+					"type":        "string",
+					"description": "extinfo parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: device_session_id (string) [required], extinfo (string)"),
 		),
 	)
 	tools = append(tools, application_post_app_indexing_sessionTool)
 
 	// application_get_app_installed_groups tool
 	// Available fields for Group: archived, cover, created_time, description, email, icon, id, install, link, member_count, member_request_count, name, parent, permissions, privacy, purpose, subdomain, updated_time, venue
+	// Params object accepts: group_id (string)
 	application_get_app_installed_groupsTool := mcp.NewTool("application_get_app_installed_groups",
 		mcp.WithDescription("GET app_installed_groups for Application"),
-		mcp.WithString("group_id",
-			mcp.Description("group_id parameter for app_installed_groups"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"group_id": map[string]any{
+					"type":        "string",
+					"description": "group_id parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: group_id (string)"),
 		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for Group objects. Available fields: archived, cover, created_time, description, email, icon, id, install, link, member_count, member_request_count, name, parent, permissions, privacy (and 4 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for Group objects. Available fields: archived, cover, created_time, description, email, icon, id, install, link, member_count, member_request_count, name, parent, permissions, privacy (and 4 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -643,19 +874,29 @@ func GetApplicationTools() []mcp.Tool {
 	tools = append(tools, application_get_app_installed_groupsTool)
 
 	// application_post_app_push_device_token tool
+	// Params object accepts: device_id (string), device_token (string), platform (applicationapp_push_device_token_platform_enum_param)
 	application_post_app_push_device_tokenTool := mcp.NewTool("application_post_app_push_device_token",
 		mcp.WithDescription("POST app_push_device_token for Application"),
-		mcp.WithString("device_id",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("device_id parameter for app_push_device_token"),
-		),
-		mcp.WithString("device_token",
-			mcp.Required(),
-			mcp.Description("device_token parameter for app_push_device_token"),
-		),
-		mcp.WithString("platform",
-			mcp.Description("platform parameter for app_push_device_token"),
-			mcp.Enum("ANDROID", "IOS", "UNKNOWN"),
+			mcp.Properties(map[string]any{
+				"device_id": map[string]any{
+					"type":        "string",
+					"description": "device_id parameter",
+					"required":    true,
+				},
+				"device_token": map[string]any{
+					"type":        "string",
+					"description": "device_token parameter",
+					"required":    true,
+				},
+				"platform": map[string]any{
+					"type":        "string",
+					"description": "platform parameter",
+					"enum":        []string{"ANDROID", "IOS", "UNKNOWN"},
+				},
+			}),
+			mcp.Description("Parameters object containing: device_id (string) [required], device_token (string) [required], platform (enum) [ANDROID, IOS, UNKNOWN]"),
 		),
 	)
 	tools = append(tools, application_post_app_push_device_tokenTool)
@@ -663,8 +904,8 @@ func GetApplicationTools() []mcp.Tool {
 	// application_get_appassets tool
 	application_get_appassetsTool := mcp.NewTool("application_get_appassets",
 		mcp.WithDescription("GET appassets for Application"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -679,31 +920,48 @@ func GetApplicationTools() []mcp.Tool {
 	tools = append(tools, application_get_appassetsTool)
 
 	// application_post_assets tool
+	// Params object accepts: asset (file), comment (string), type (string)
 	application_post_assetsTool := mcp.NewTool("application_post_assets",
 		mcp.WithDescription("POST assets for Application"),
-		mcp.WithString("asset",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("asset parameter for assets"),
-		),
-		mcp.WithString("comment",
-			mcp.Description("comment parameter for assets"),
-		),
-		mcp.WithString("type",
-			mcp.Required(),
-			mcp.Description("type parameter for assets"),
+			mcp.Properties(map[string]any{
+				"asset": map[string]any{
+					"type":        "string",
+					"description": "asset parameter",
+					"required":    true,
+				},
+				"comment": map[string]any{
+					"type":        "string",
+					"description": "comment parameter",
+				},
+				"type": map[string]any{
+					"type":        "string",
+					"description": "type parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: asset (file) [required], comment (string), type (string) [required]"),
 		),
 	)
 	tools = append(tools, application_post_assetsTool)
 
 	// application_get_authorized_adaccounts tool
 	// Available fields for AdAccount: account_id, account_status, ad_account_promotable_objects, age, agency_client_declaration, all_capabilities, amount_spent, attribution_spec, balance, brand_safety_content_filter_levels, business, business_city, business_country_code, business_name, business_state, business_street, business_street2, business_zip, can_create_brand_lift_study, capabilities, created_time, currency, custom_audience_info, default_dsa_beneficiary, default_dsa_payor, disable_reason, end_advertiser, end_advertiser_name, existing_customers, expired_funding_source_details, extended_credit_invoice_group, failed_delivery_checks, fb_entity, funding_source, funding_source_details, has_migrated_permissions, has_page_authorized_adaccount, id, io_number, is_attribution_spec_system_default, is_ba_skip_delayed_eligible, is_direct_deals_enabled, is_in_3ds_authorization_enabled_market, is_notifications_enabled, is_personal, is_prepay_account, is_tax_id_required, liable_address, line_numbers, media_agency, min_campaign_group_spend_cap, min_daily_budget, name, offsite_pixels_tos_accepted, owner, owner_business, partner, rf_spec, send_bill_to_address, show_checkout_experience, sold_to_address, spend_cap, tax_id, tax_id_status, tax_id_type, timezone_id, timezone_name, timezone_offset_hours_utc, tos_accepted, user_access_expire_time, user_tasks, user_tos_accepted, viewable_business
+	// Params object accepts: business (string)
 	application_get_authorized_adaccountsTool := mcp.NewTool("application_get_authorized_adaccounts",
 		mcp.WithDescription("GET authorized_adaccounts for Application"),
-		mcp.WithString("business",
-			mcp.Description("business parameter for authorized_adaccounts"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"business": map[string]any{
+					"type":        "string",
+					"description": "business parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: business (string)"),
 		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for AdAccount objects. Available fields: account_id, account_status, ad_account_promotable_objects, age, agency_client_declaration, all_capabilities, amount_spent, attribution_spec, balance, brand_safety_content_filter_levels, business, business_city, business_country_code, business_name, business_state (and 58 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for AdAccount objects. Available fields: account_id, account_status, ad_account_promotable_objects, age, agency_client_declaration, all_capabilities, amount_spent, attribution_spec, balance, brand_safety_content_filter_levels, business, business_city, business_country_code, business_name, business_state (and 58 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -718,13 +976,20 @@ func GetApplicationTools() []mcp.Tool {
 	tools = append(tools, application_get_authorized_adaccountsTool)
 
 	// application_get_button_auto_detection_device_selection tool
+	// Params object accepts: device_id (string)
 	application_get_button_auto_detection_device_selectionTool := mcp.NewTool("application_get_button_auto_detection_device_selection",
 		mcp.WithDescription("GET button_auto_detection_device_selection for Application"),
-		mcp.WithString("device_id",
-			mcp.Description("device_id parameter for button_auto_detection_device_selection"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"device_id": map[string]any{
+					"type":        "string",
+					"description": "device_id parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: device_id (string)"),
 		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -741,8 +1006,8 @@ func GetApplicationTools() []mcp.Tool {
 	// application_get_cloudbridge_settings tool
 	application_get_cloudbridge_settingsTool := mcp.NewTool("application_get_cloudbridge_settings",
 		mcp.WithDescription("GET cloudbridge_settings for Application"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -757,25 +1022,37 @@ func GetApplicationTools() []mcp.Tool {
 	tools = append(tools, application_get_cloudbridge_settingsTool)
 
 	// application_post_codeless_event_mappings tool
+	// Params object accepts: mappings (list<map>), mutation_method (applicationcodeless_event_mappings_mutation_method_enum_param), platform (applicationcodeless_event_mappings_platform_enum_param), post_method (applicationcodeless_event_mappings_post_method_enum_param)
 	application_post_codeless_event_mappingsTool := mcp.NewTool("application_post_codeless_event_mappings",
 		mcp.WithDescription("POST codeless_event_mappings for Application"),
-		mcp.WithString("mappings",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("mappings parameter for codeless_event_mappings"),
-		),
-		mcp.WithString("mutation_method",
-			mcp.Required(),
-			mcp.Description("mutation_method parameter for codeless_event_mappings"),
-			mcp.Enum("ADD", "DELETE", "REPLACE"),
-		),
-		mcp.WithString("platform",
-			mcp.Required(),
-			mcp.Description("platform parameter for codeless_event_mappings"),
-			mcp.Enum("ANDROID", "IOS"),
-		),
-		mcp.WithString("post_method",
-			mcp.Description("post_method parameter for codeless_event_mappings"),
-			mcp.Enum("CODELESS", "EYMT"),
+			mcp.Properties(map[string]any{
+				"mappings": map[string]any{
+					"type":        "array",
+					"description": "mappings parameter",
+					"required":    true,
+					"items":       map[string]any{"type": "object"},
+				},
+				"mutation_method": map[string]any{
+					"type":        "string",
+					"description": "mutation_method parameter",
+					"required":    true,
+					"enum":        []string{"ADD", "DELETE", "REPLACE"},
+				},
+				"platform": map[string]any{
+					"type":        "string",
+					"description": "platform parameter",
+					"required":    true,
+					"enum":        []string{"ANDROID", "IOS"},
+				},
+				"post_method": map[string]any{
+					"type":        "string",
+					"description": "post_method parameter",
+					"enum":        []string{"CODELESS", "EYMT"},
+				},
+			}),
+			mcp.Description("Parameters object containing: mappings (array<object>) [required], mutation_method (enum) [ADD, DELETE, REPLACE] [required], platform (enum) [ANDROID, IOS] [required], post_method (enum) [CODELESS, EYMT]"),
 		),
 	)
 	tools = append(tools, application_post_codeless_event_mappingsTool)
@@ -784,8 +1061,8 @@ func GetApplicationTools() []mcp.Tool {
 	// Available fields for Business: block_offline_analytics, collaborative_ads_managed_partner_business_info, collaborative_ads_managed_partner_eligibility, collaborative_ads_partner_premium_options, created_by, created_time, extended_updated_time, id, is_hidden, link, name, payment_account_id, primary_page, profile_picture_uri, timezone_id, two_factor_type, updated_by, updated_time, user_access_expire_time, verification_status, vertical, vertical_id
 	application_get_connected_client_businessesTool := mcp.NewTool("application_get_connected_client_businesses",
 		mcp.WithDescription("GET connected_client_businesses for Application"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for Business objects. Available fields: block_offline_analytics, collaborative_ads_managed_partner_business_info, collaborative_ads_managed_partner_eligibility, collaborative_ads_partner_premium_options, created_by, created_time, extended_updated_time, id, is_hidden, link, name, payment_account_id, primary_page, profile_picture_uri, timezone_id (and 7 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for Business objects. Available fields: block_offline_analytics, collaborative_ads_managed_partner_business_info, collaborative_ads_managed_partner_eligibility, collaborative_ads_partner_premium_options, created_by, created_time, extended_updated_time, id, is_hidden, link, name, payment_account_id, primary_page, profile_picture_uri, timezone_id (and 7 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -801,17 +1078,26 @@ func GetApplicationTools() []mcp.Tool {
 
 	// application_get_da_checks tool
 	// Available fields for DACheck: action_uri, description, key, result, title, user_message
+	// Params object accepts: checks (list<string>), connection_method (applicationda_checks_connection_method_enum_param)
 	application_get_da_checksTool := mcp.NewTool("application_get_da_checks",
 		mcp.WithDescription("GET da_checks for Application"),
-		mcp.WithString("checks",
-			mcp.Description("checks parameter for da_checks"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"checks": map[string]any{
+					"type":        "array",
+					"description": "checks parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+				"connection_method": map[string]any{
+					"type":        "string",
+					"description": "connection_method parameter",
+					"enum":        []string{"ALL", "APP", "BROWSER", "SERVER"},
+				},
+			}),
+			mcp.Description("Parameters object containing: checks (array<string>), connection_method (enum) [ALL, APP, BROWSER, SERVER]"),
 		),
-		mcp.WithString("connection_method",
-			mcp.Description("connection_method parameter for da_checks"),
-			mcp.Enum("ALL", "APP", "BROWSER", "SERVER"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for DACheck objects. Available fields: action_uri, description, key, result, title, user_message"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for DACheck objects. Available fields: action_uri, description, key, result, title, user_message"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -826,24 +1112,41 @@ func GetApplicationTools() []mcp.Tool {
 	tools = append(tools, application_get_da_checksTool)
 
 	// application_post_domain_reports tool
+	// Params object accepts: tracking_domains (list<string>)
 	application_post_domain_reportsTool := mcp.NewTool("application_post_domain_reports",
 		mcp.WithDescription("POST domain_reports for Application"),
-		mcp.WithString("tracking_domains",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("tracking_domains parameter for domain_reports"),
+			mcp.Properties(map[string]any{
+				"tracking_domains": map[string]any{
+					"type":        "array",
+					"description": "tracking_domains parameter",
+					"required":    true,
+					"items":       map[string]any{"type": "string"},
+				},
+			}),
+			mcp.Description("Parameters object containing: tracking_domains (array<string>) [required]"),
 		),
 	)
 	tools = append(tools, application_post_domain_reportsTool)
 
 	// application_get_iap_purchases tool
+	// Params object accepts: order_id (string)
 	application_get_iap_purchasesTool := mcp.NewTool("application_get_iap_purchases",
 		mcp.WithDescription("GET iap_purchases for Application"),
-		mcp.WithString("order_id",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("order_id parameter for iap_purchases"),
+			mcp.Properties(map[string]any{
+				"order_id": map[string]any{
+					"type":        "string",
+					"description": "order_id parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: order_id (string) [required]"),
 		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -860,8 +1163,8 @@ func GetApplicationTools() []mcp.Tool {
 	// application_get_ios_dialog_configs tool
 	application_get_ios_dialog_configsTool := mcp.NewTool("application_get_ios_dialog_configs",
 		mcp.WithDescription("GET ios_dialog_configs for Application"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -879,8 +1182,8 @@ func GetApplicationTools() []mcp.Tool {
 	// Available fields for AdsDataset: can_proxy, collection_rate, config, creation_time, creator, dataset_id, description, duplicate_entries, enable_auto_assign_to_accounts, enable_automatic_events, enable_automatic_matching, enable_real_time_event_log, event_stats, event_time_max, event_time_min, first_party_cookie_status, has_bapi_domains, has_catalog_microdata_activity, has_ofa_redacted_keys, has_sent_pii, id, is_consolidated_container, is_created_by_business, is_crm, is_eligible_for_sharing_to_ad_account, is_eligible_for_sharing_to_business, is_eligible_for_value_optimization, is_mta_use, is_restricted_use, is_unavailable, last_fired_time, last_upload_app, last_upload_app_changed_time, last_upload_time, late_upload_reminder_eligibility, match_rate_approx, matched_entries, name, no_ads_tracked_for_weekly_uploaded_events_reminder_eligibility, num_active_ad_set_tracked, num_recent_offline_conversions_uploaded, num_uploads, owner_ad_account, owner_business, percentage_of_late_uploads_in_external_suboptimal_window, permissions, server_last_fired_time, show_automatic_events, upload_rate, upload_reminder_eligibility, usage, valid_entries
 	application_get_linked_datasetTool := mcp.NewTool("application_get_linked_dataset",
 		mcp.WithDescription("GET linked_dataset for Application"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for AdsDataset objects. Available fields: can_proxy, collection_rate, config, creation_time, creator, dataset_id, description, duplicate_entries, enable_auto_assign_to_accounts, enable_automatic_events, enable_automatic_matching, enable_real_time_event_log, event_stats, event_time_max, event_time_min (and 37 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for AdsDataset objects. Available fields: can_proxy, collection_rate, config, creation_time, creator, dataset_id, description, duplicate_entries, enable_auto_assign_to_accounts, enable_automatic_events, enable_automatic_matching, enable_real_time_event_log, event_stats, event_time_max, event_time_min (and 37 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -895,13 +1198,20 @@ func GetApplicationTools() []mcp.Tool {
 	tools = append(tools, application_get_linked_datasetTool)
 
 	// application_get_message_templates tool
+	// Params object accepts: template_id (string)
 	application_get_message_templatesTool := mcp.NewTool("application_get_message_templates",
 		mcp.WithDescription("GET message_templates for Application"),
-		mcp.WithString("template_id",
-			mcp.Description("template_id parameter for message_templates"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"template_id": map[string]any{
+					"type":        "string",
+					"description": "template_id parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: template_id (string)"),
 		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -916,111 +1226,156 @@ func GetApplicationTools() []mcp.Tool {
 	tools = append(tools, application_get_message_templatesTool)
 
 	// application_post_mmp_auditing tool
+	// Params object accepts: advertiser_id (string), attribution (string), attribution_method (string), attribution_model (string), attribution_referrer (string), auditing_token (string), click_attr_window (unsigned int), custom_events (list<Object>), decline_reason (string), device_os (string), engagement_type (string), event (string), event_id (string), event_reported_time (unsigned int), fb_ad_id (unsigned int), fb_adgroup_id (unsigned int), fb_click_time (unsigned int), fb_view_time (unsigned int), google_install_referrer (string), inactivity_window_hours (unsigned int), install_id (string), is_fb (bool), meta_install_referrer (string), used_install_referrer (bool), view_attr_window (unsigned int)
 	application_post_mmp_auditingTool := mcp.NewTool("application_post_mmp_auditing",
 		mcp.WithDescription("POST mmp_auditing for Application"),
-		mcp.WithString("advertiser_id",
-			mcp.Description("advertiser_id parameter for mmp_auditing"),
-		),
-		mcp.WithString("attribution",
-			mcp.Description("attribution parameter for mmp_auditing"),
-		),
-		mcp.WithString("attribution_method",
-			mcp.Description("attribution_method parameter for mmp_auditing"),
-		),
-		mcp.WithString("attribution_model",
-			mcp.Description("attribution_model parameter for mmp_auditing"),
-		),
-		mcp.WithString("attribution_referrer",
-			mcp.Description("attribution_referrer parameter for mmp_auditing"),
-		),
-		mcp.WithString("auditing_token",
-			mcp.Description("auditing_token parameter for mmp_auditing"),
-		),
-		mcp.WithNumber("click_attr_window",
-			mcp.Description("click_attr_window parameter for mmp_auditing"),
-		),
-		mcp.WithString("custom_events",
-			mcp.Description("custom_events parameter for mmp_auditing"),
-		),
-		mcp.WithString("decline_reason",
-			mcp.Description("decline_reason parameter for mmp_auditing"),
-		),
-		mcp.WithString("device_os",
-			mcp.Description("device_os parameter for mmp_auditing"),
-		),
-		mcp.WithString("engagement_type",
-			mcp.Description("engagement_type parameter for mmp_auditing"),
-		),
-		mcp.WithString("event",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("event parameter for mmp_auditing"),
-		),
-		mcp.WithString("event_id",
-			mcp.Description("event_id parameter for mmp_auditing"),
-		),
-		mcp.WithNumber("event_reported_time",
-			mcp.Description("event_reported_time parameter for mmp_auditing"),
-		),
-		mcp.WithNumber("fb_ad_id",
-			mcp.Description("fb_ad_id parameter for mmp_auditing"),
-		),
-		mcp.WithNumber("fb_adgroup_id",
-			mcp.Description("fb_adgroup_id parameter for mmp_auditing"),
-		),
-		mcp.WithNumber("fb_click_time",
-			mcp.Description("fb_click_time parameter for mmp_auditing"),
-		),
-		mcp.WithNumber("fb_view_time",
-			mcp.Description("fb_view_time parameter for mmp_auditing"),
-		),
-		mcp.WithString("google_install_referrer",
-			mcp.Description("google_install_referrer parameter for mmp_auditing"),
-		),
-		mcp.WithNumber("inactivity_window_hours",
-			mcp.Description("inactivity_window_hours parameter for mmp_auditing"),
-		),
-		mcp.WithString("install_id",
-			mcp.Description("install_id parameter for mmp_auditing"),
-		),
-		mcp.WithBoolean("is_fb",
-			mcp.Required(),
-			mcp.Description("is_fb parameter for mmp_auditing"),
-		),
-		mcp.WithString("meta_install_referrer",
-			mcp.Description("meta_install_referrer parameter for mmp_auditing"),
-		),
-		mcp.WithBoolean("used_install_referrer",
-			mcp.Description("used_install_referrer parameter for mmp_auditing"),
-		),
-		mcp.WithNumber("view_attr_window",
-			mcp.Description("view_attr_window parameter for mmp_auditing"),
+			mcp.Properties(map[string]any{
+				"advertiser_id": map[string]any{
+					"type":        "string",
+					"description": "advertiser_id parameter",
+				},
+				"attribution": map[string]any{
+					"type":        "string",
+					"description": "attribution parameter",
+				},
+				"attribution_method": map[string]any{
+					"type":        "string",
+					"description": "attribution_method parameter",
+				},
+				"attribution_model": map[string]any{
+					"type":        "string",
+					"description": "attribution_model parameter",
+				},
+				"attribution_referrer": map[string]any{
+					"type":        "string",
+					"description": "attribution_referrer parameter",
+				},
+				"auditing_token": map[string]any{
+					"type":        "string",
+					"description": "auditing_token parameter",
+				},
+				"click_attr_window": map[string]any{
+					"type":        "integer",
+					"description": "click_attr_window parameter",
+				},
+				"custom_events": map[string]any{
+					"type":        "array",
+					"description": "custom_events parameter",
+					"items":       map[string]any{"type": "object"},
+				},
+				"decline_reason": map[string]any{
+					"type":        "string",
+					"description": "decline_reason parameter",
+				},
+				"device_os": map[string]any{
+					"type":        "string",
+					"description": "device_os parameter",
+				},
+				"engagement_type": map[string]any{
+					"type":        "string",
+					"description": "engagement_type parameter",
+				},
+				"event": map[string]any{
+					"type":        "string",
+					"description": "event parameter",
+					"required":    true,
+				},
+				"event_id": map[string]any{
+					"type":        "string",
+					"description": "event_id parameter",
+				},
+				"event_reported_time": map[string]any{
+					"type":        "integer",
+					"description": "event_reported_time parameter",
+				},
+				"fb_ad_id": map[string]any{
+					"type":        "integer",
+					"description": "fb_ad_id parameter",
+				},
+				"fb_adgroup_id": map[string]any{
+					"type":        "integer",
+					"description": "fb_adgroup_id parameter",
+				},
+				"fb_click_time": map[string]any{
+					"type":        "integer",
+					"description": "fb_click_time parameter",
+				},
+				"fb_view_time": map[string]any{
+					"type":        "integer",
+					"description": "fb_view_time parameter",
+				},
+				"google_install_referrer": map[string]any{
+					"type":        "string",
+					"description": "google_install_referrer parameter",
+				},
+				"inactivity_window_hours": map[string]any{
+					"type":        "integer",
+					"description": "inactivity_window_hours parameter",
+				},
+				"install_id": map[string]any{
+					"type":        "string",
+					"description": "install_id parameter",
+				},
+				"is_fb": map[string]any{
+					"type":        "boolean",
+					"description": "is_fb parameter",
+					"required":    true,
+				},
+				"meta_install_referrer": map[string]any{
+					"type":        "string",
+					"description": "meta_install_referrer parameter",
+				},
+				"used_install_referrer": map[string]any{
+					"type":        "boolean",
+					"description": "used_install_referrer parameter",
+				},
+				"view_attr_window": map[string]any{
+					"type":        "integer",
+					"description": "view_attr_window parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: advertiser_id (string), attribution (string), attribution_method (string), attribution_model (string), attribution_referrer (string), auditing_token (string), click_attr_window (integer), custom_events (array<object>), decline_reason (string), device_os (string), engagement_type (string), event (string) [required], event_id (string), event_reported_time (integer), fb_ad_id (integer), fb_adgroup_id (integer), fb_click_time (integer), fb_view_time (integer), google_install_referrer (string), inactivity_window_hours (integer), install_id (string), is_fb (boolean) [required], meta_install_referrer (string), used_install_referrer (boolean), view_attr_window (integer)"),
 		),
 	)
 	tools = append(tools, application_post_mmp_auditingTool)
 
 	// application_get_mobile_sdk_gk tool
+	// Params object accepts: device_id (string), extinfo (Object), os_version (string), platform (applicationmobile_sdk_gk_platform_enum_param), sdk_version (string)
 	application_get_mobile_sdk_gkTool := mcp.NewTool("application_get_mobile_sdk_gk",
 		mcp.WithDescription("GET mobile_sdk_gk for Application"),
-		mcp.WithString("device_id",
-			mcp.Description("device_id parameter for mobile_sdk_gk"),
-		),
-		mcp.WithString("extinfo",
-			mcp.Description("extinfo parameter for mobile_sdk_gk"),
-		),
-		mcp.WithString("os_version",
-			mcp.Description("os_version parameter for mobile_sdk_gk"),
-		),
-		mcp.WithString("platform",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("platform parameter for mobile_sdk_gk"),
-			mcp.Enum("ANDROID", "IOS"),
+			mcp.Properties(map[string]any{
+				"device_id": map[string]any{
+					"type":        "string",
+					"description": "device_id parameter",
+				},
+				"extinfo": map[string]any{
+					"type":        "object",
+					"description": "extinfo parameter",
+				},
+				"os_version": map[string]any{
+					"type":        "string",
+					"description": "os_version parameter",
+				},
+				"platform": map[string]any{
+					"type":        "string",
+					"description": "platform parameter",
+					"required":    true,
+					"enum":        []string{"ANDROID", "IOS"},
+				},
+				"sdk_version": map[string]any{
+					"type":        "string",
+					"description": "sdk_version parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: device_id (string), extinfo (object), os_version (string), platform (enum) [ANDROID, IOS] [required], sdk_version (string) [required]"),
 		),
-		mcp.WithString("sdk_version",
-			mcp.Required(),
-			mcp.Description("sdk_version parameter for mobile_sdk_gk"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -1037,8 +1392,8 @@ func GetApplicationTools() []mcp.Tool {
 	// application_get_monetized_digital_store_objects tool
 	application_get_monetized_digital_store_objectsTool := mcp.NewTool("application_get_monetized_digital_store_objects",
 		mcp.WithDescription("GET monetized_digital_store_objects for Application"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -1053,15 +1408,24 @@ func GetApplicationTools() []mcp.Tool {
 	tools = append(tools, application_get_monetized_digital_store_objectsTool)
 
 	// application_post_monetized_digital_store_objects tool
+	// Params object accepts: content_id (string), store (string)
 	application_post_monetized_digital_store_objectsTool := mcp.NewTool("application_post_monetized_digital_store_objects",
 		mcp.WithDescription("POST monetized_digital_store_objects for Application"),
-		mcp.WithString("content_id",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("content_id parameter for monetized_digital_store_objects"),
-		),
-		mcp.WithString("store",
-			mcp.Required(),
-			mcp.Description("store parameter for monetized_digital_store_objects"),
+			mcp.Properties(map[string]any{
+				"content_id": map[string]any{
+					"type":        "string",
+					"description": "content_id parameter",
+					"required":    true,
+				},
+				"store": map[string]any{
+					"type":        "string",
+					"description": "store parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: content_id (string) [required], store (string) [required]"),
 		),
 	)
 	tools = append(tools, application_post_monetized_digital_store_objectsTool)
@@ -1069,8 +1433,8 @@ func GetApplicationTools() []mcp.Tool {
 	// application_get_object_types tool
 	application_get_object_typesTool := mcp.NewTool("application_get_object_types",
 		mcp.WithDescription("GET object_types for Application"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -1087,8 +1451,8 @@ func GetApplicationTools() []mcp.Tool {
 	// application_get_objects tool
 	application_get_objectsTool := mcp.NewTool("application_get_objects",
 		mcp.WithDescription("GET objects for Application"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -1103,38 +1467,59 @@ func GetApplicationTools() []mcp.Tool {
 	tools = append(tools, application_get_objectsTool)
 
 	// application_post_occludespopups tool
+	// Params object accepts: flash (bool), unity (bool)
 	application_post_occludespopupsTool := mcp.NewTool("application_post_occludespopups",
 		mcp.WithDescription("POST occludespopups for Application"),
-		mcp.WithBoolean("flash",
-			mcp.Description("flash parameter for occludespopups"),
-		),
-		mcp.WithBoolean("unity",
-			mcp.Description("unity parameter for occludespopups"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"flash": map[string]any{
+					"type":        "boolean",
+					"description": "flash parameter",
+				},
+				"unity": map[string]any{
+					"type":        "boolean",
+					"description": "unity parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: flash (boolean), unity (boolean)"),
 		),
 	)
 	tools = append(tools, application_post_occludespopupsTool)
 
 	// application_get_permissions tool
+	// Params object accepts: android_key_hash (string), ios_bundle_id (string), permission (list<Permission>), proxied_app_id (int), status (list<applicationpermissions_status_enum_param>)
 	application_get_permissionsTool := mcp.NewTool("application_get_permissions",
 		mcp.WithDescription("GET permissions for Application"),
-		mcp.WithString("android_key_hash",
-			mcp.Description("android_key_hash parameter for permissions"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"android_key_hash": map[string]any{
+					"type":        "string",
+					"description": "android_key_hash parameter",
+				},
+				"ios_bundle_id": map[string]any{
+					"type":        "string",
+					"description": "ios_bundle_id parameter",
+				},
+				"permission": map[string]any{
+					"type":        "array",
+					"description": "permission parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+				"proxied_app_id": map[string]any{
+					"type":        "integer",
+					"description": "proxied_app_id parameter",
+				},
+				"status": map[string]any{
+					"type":        "array",
+					"description": "status parameter",
+					"enum":        []string{"live", "unapproved"},
+					"items":       map[string]any{"type": "string"},
+				},
+			}),
+			mcp.Description("Parameters object containing: android_key_hash (string), ios_bundle_id (string), permission (array<Permission>), proxied_app_id (integer), status (array<enum>) [live, unapproved]"),
 		),
-		mcp.WithString("ios_bundle_id",
-			mcp.Description("ios_bundle_id parameter for permissions"),
-		),
-		mcp.WithString("permission",
-			mcp.Description("permission parameter for permissions"),
-		),
-		mcp.WithNumber("proxied_app_id",
-			mcp.Description("proxied_app_id parameter for permissions"),
-		),
-		mcp.WithString("status",
-			mcp.Description("status parameter for permissions"),
-			mcp.Enum("live", "unapproved"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -1149,13 +1534,21 @@ func GetApplicationTools() []mcp.Tool {
 	tools = append(tools, application_get_permissionsTool)
 
 	// application_get_products tool
+	// Params object accepts: product_ids (list<string>)
 	application_get_productsTool := mcp.NewTool("application_get_products",
 		mcp.WithDescription("GET products for Application"),
-		mcp.WithString("product_ids",
-			mcp.Description("product_ids parameter for products"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"product_ids": map[string]any{
+					"type":        "array",
+					"description": "product_ids parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+			}),
+			mcp.Description("Parameters object containing: product_ids (array<string>)"),
 		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -1172,8 +1565,8 @@ func GetApplicationTools() []mcp.Tool {
 	// application_get_purchases tool
 	application_get_purchasesTool := mcp.NewTool("application_get_purchases",
 		mcp.WithDescription("GET purchases for Application"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -1190,8 +1583,8 @@ func GetApplicationTools() []mcp.Tool {
 	// application_get_roles tool
 	application_get_rolesTool := mcp.NewTool("application_get_roles",
 		mcp.WithDescription("GET roles for Application"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -1208,8 +1601,8 @@ func GetApplicationTools() []mcp.Tool {
 	// application_get_server_domain_infos tool
 	application_get_server_domain_infosTool := mcp.NewTool("application_get_server_domain_infos",
 		mcp.WithDescription("GET server_domain_infos for Application"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -1224,14 +1617,22 @@ func GetApplicationTools() []mcp.Tool {
 	tools = append(tools, application_get_server_domain_infosTool)
 
 	// application_get_sgw_dataset_status tool
+	// Params object accepts: dataset_id (unsigned int)
 	application_get_sgw_dataset_statusTool := mcp.NewTool("application_get_sgw_dataset_status",
 		mcp.WithDescription("GET sgw_dataset_status for Application"),
-		mcp.WithNumber("dataset_id",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("dataset_id parameter for sgw_dataset_status"),
+			mcp.Properties(map[string]any{
+				"dataset_id": map[string]any{
+					"type":        "integer",
+					"description": "dataset_id parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: dataset_id (integer) [required]"),
 		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -1246,17 +1647,26 @@ func GetApplicationTools() []mcp.Tool {
 	tools = append(tools, application_get_sgw_dataset_statusTool)
 
 	// application_get_sgw_install_deferral_link tool
+	// Params object accepts: client_ip (string), dataset_id (unsigned int)
 	application_get_sgw_install_deferral_linkTool := mcp.NewTool("application_get_sgw_install_deferral_link",
 		mcp.WithDescription("GET sgw_install_deferral_link for Application"),
-		mcp.WithString("client_ip",
-			mcp.Description("client_ip parameter for sgw_install_deferral_link"),
-		),
-		mcp.WithNumber("dataset_id",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("dataset_id parameter for sgw_install_deferral_link"),
+			mcp.Properties(map[string]any{
+				"client_ip": map[string]any{
+					"type":        "string",
+					"description": "client_ip parameter",
+				},
+				"dataset_id": map[string]any{
+					"type":        "integer",
+					"description": "dataset_id parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: client_ip (string), dataset_id (integer) [required]"),
 		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -1273,8 +1683,8 @@ func GetApplicationTools() []mcp.Tool {
 	// application_get_subscribed_domains tool
 	application_get_subscribed_domainsTool := mcp.NewTool("application_get_subscribed_domains",
 		mcp.WithDescription("GET subscribed_domains for Application"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -1289,13 +1699,23 @@ func GetApplicationTools() []mcp.Tool {
 	tools = append(tools, application_get_subscribed_domainsTool)
 
 	// application_post_subscribed_domains tool
+	// Params object accepts: subscribe (list<string>), unsubscribe (list<string>)
 	application_post_subscribed_domainsTool := mcp.NewTool("application_post_subscribed_domains",
 		mcp.WithDescription("POST subscribed_domains for Application"),
-		mcp.WithString("subscribe",
-			mcp.Description("subscribe parameter for subscribed_domains"),
-		),
-		mcp.WithString("unsubscribe",
-			mcp.Description("unsubscribe parameter for subscribed_domains"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"subscribe": map[string]any{
+					"type":        "array",
+					"description": "subscribe parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+				"unsubscribe": map[string]any{
+					"type":        "array",
+					"description": "unsubscribe parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+			}),
+			mcp.Description("Parameters object containing: subscribe (array<string>), unsubscribe (array<string>)"),
 		),
 	)
 	tools = append(tools, application_post_subscribed_domainsTool)
@@ -1303,8 +1723,8 @@ func GetApplicationTools() []mcp.Tool {
 	// application_get_subscribed_domains_phishing tool
 	application_get_subscribed_domains_phishingTool := mcp.NewTool("application_get_subscribed_domains_phishing",
 		mcp.WithDescription("GET subscribed_domains_phishing for Application"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -1319,25 +1739,44 @@ func GetApplicationTools() []mcp.Tool {
 	tools = append(tools, application_get_subscribed_domains_phishingTool)
 
 	// application_post_subscribed_domains_phishing tool
+	// Params object accepts: subscribe (list<string>), unsubscribe (list<string>)
 	application_post_subscribed_domains_phishingTool := mcp.NewTool("application_post_subscribed_domains_phishing",
 		mcp.WithDescription("POST subscribed_domains_phishing for Application"),
-		mcp.WithString("subscribe",
-			mcp.Description("subscribe parameter for subscribed_domains_phishing"),
-		),
-		mcp.WithString("unsubscribe",
-			mcp.Description("unsubscribe parameter for subscribed_domains_phishing"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"subscribe": map[string]any{
+					"type":        "array",
+					"description": "subscribe parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+				"unsubscribe": map[string]any{
+					"type":        "array",
+					"description": "unsubscribe parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+			}),
+			mcp.Description("Parameters object containing: subscribe (array<string>), unsubscribe (array<string>)"),
 		),
 	)
 	tools = append(tools, application_post_subscribed_domains_phishingTool)
 
 	// application_delete_subscriptions tool
+	// Params object accepts: fields (list<string>), object (string)
 	application_delete_subscriptionsTool := mcp.NewTool("application_delete_subscriptions",
 		mcp.WithDescription("DELETE subscriptions for Application"),
-		mcp.WithString("fields",
-			mcp.Description("fields parameter for subscriptions"),
-		),
-		mcp.WithString("object",
-			mcp.Description("object parameter for subscriptions"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"fields": map[string]any{
+					"type":        "array",
+					"description": "fields parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+				"object": map[string]any{
+					"type":        "string",
+					"description": "object parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: fields (array<string>), object (string)"),
 		),
 	)
 	tools = append(tools, application_delete_subscriptionsTool)
@@ -1345,8 +1784,8 @@ func GetApplicationTools() []mcp.Tool {
 	// application_get_subscriptions tool
 	application_get_subscriptionsTool := mcp.NewTool("application_get_subscriptions",
 		mcp.WithDescription("GET subscriptions for Application"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -1361,79 +1800,122 @@ func GetApplicationTools() []mcp.Tool {
 	tools = append(tools, application_get_subscriptionsTool)
 
 	// application_post_subscriptions tool
+	// Params object accepts: callback_url (string), fields (list<string>), include_values (bool), object (string), verify_token (string)
 	application_post_subscriptionsTool := mcp.NewTool("application_post_subscriptions",
 		mcp.WithDescription("POST subscriptions for Application"),
-		mcp.WithString("callback_url",
-			mcp.Description("callback_url parameter for subscriptions"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("fields parameter for subscriptions"),
-		),
-		mcp.WithBoolean("include_values",
-			mcp.Description("include_values parameter for subscriptions"),
-		),
-		mcp.WithString("object",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("object parameter for subscriptions"),
-		),
-		mcp.WithString("verify_token",
-			mcp.Description("verify_token parameter for subscriptions"),
+			mcp.Properties(map[string]any{
+				"callback_url": map[string]any{
+					"type":        "string",
+					"description": "callback_url parameter",
+				},
+				"fields": map[string]any{
+					"type":        "array",
+					"description": "fields parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+				"include_values": map[string]any{
+					"type":        "boolean",
+					"description": "include_values parameter",
+				},
+				"object": map[string]any{
+					"type":        "string",
+					"description": "object parameter",
+					"required":    true,
+				},
+				"verify_token": map[string]any{
+					"type":        "string",
+					"description": "verify_token parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: callback_url (string), fields (array<string>), include_values (boolean), object (string) [required], verify_token (string)"),
 		),
 	)
 	tools = append(tools, application_post_subscriptionsTool)
 
 	// application_post_uploads tool
+	// Params object accepts: file_length (unsigned int), file_name (Object), file_type (Object), session_type (applicationuploads_session_type_enum_param)
 	application_post_uploadsTool := mcp.NewTool("application_post_uploads",
 		mcp.WithDescription("POST uploads for Application"),
-		mcp.WithNumber("file_length",
-			mcp.Description("file_length parameter for uploads"),
-		),
-		mcp.WithString("file_name",
-			mcp.Description("file_name parameter for uploads"),
-		),
-		mcp.WithString("file_type",
-			mcp.Description("file_type parameter for uploads"),
-		),
-		mcp.WithString("session_type",
-			mcp.Description("session_type parameter for uploads"),
-			mcp.Enum("attachment"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"file_length": map[string]any{
+					"type":        "integer",
+					"description": "file_length parameter",
+				},
+				"file_name": map[string]any{
+					"type":        "object",
+					"description": "file_name parameter",
+				},
+				"file_type": map[string]any{
+					"type":        "object",
+					"description": "file_type parameter",
+				},
+				"session_type": map[string]any{
+					"type":        "string",
+					"description": "session_type parameter",
+					"enum":        []string{"attachment"},
+				},
+			}),
+			mcp.Description("Parameters object containing: file_length (integer), file_name (object), file_type (object), session_type (enum) [attachment]"),
 		),
 	)
 	tools = append(tools, application_post_uploadsTool)
 
 	// application_post_whatsapp_business_solution tool
+	// Params object accepts: owner_permissions (list<applicationwhatsapp_business_solution_owner_permissions_enum_param>), partner_app_id (string), partner_permissions (list<applicationwhatsapp_business_solution_partner_permissions_enum_param>), solution_name (string)
 	application_post_whatsapp_business_solutionTool := mcp.NewTool("application_post_whatsapp_business_solution",
 		mcp.WithDescription("POST whatsapp_business_solution for Application"),
-		mcp.WithString("owner_permissions",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("owner_permissions parameter for whatsapp_business_solution"),
-			mcp.Enum("DEVELOP", "MANAGE", "MANAGE_EXTENSIONS", "MANAGE_PHONE", "MANAGE_PHONE_ASSETS", "MANAGE_TEMPLATES", "MESSAGING", "VIEW_COST", "VIEW_PHONE_ASSETS", "VIEW_TEMPLATES"),
-		),
-		mcp.WithString("partner_app_id",
-			mcp.Required(),
-			mcp.Description("partner_app_id parameter for whatsapp_business_solution"),
-		),
-		mcp.WithString("partner_permissions",
-			mcp.Required(),
-			mcp.Description("partner_permissions parameter for whatsapp_business_solution"),
-			mcp.Enum("DEVELOP", "MANAGE", "MANAGE_EXTENSIONS", "MANAGE_PHONE", "MANAGE_PHONE_ASSETS", "MANAGE_TEMPLATES", "MESSAGING", "VIEW_COST", "VIEW_PHONE_ASSETS", "VIEW_TEMPLATES"),
-		),
-		mcp.WithString("solution_name",
-			mcp.Required(),
-			mcp.Description("solution_name parameter for whatsapp_business_solution"),
+			mcp.Properties(map[string]any{
+				"owner_permissions": map[string]any{
+					"type":        "array",
+					"description": "owner_permissions parameter",
+					"required":    true,
+					"enum":        []string{"DEVELOP", "MANAGE", "MANAGE_EXTENSIONS", "MANAGE_PHONE", "MANAGE_PHONE_ASSETS", "MANAGE_TEMPLATES", "MESSAGING", "VIEW_COST", "VIEW_PHONE_ASSETS", "VIEW_TEMPLATES"},
+					"items":       map[string]any{"type": "string"},
+				},
+				"partner_app_id": map[string]any{
+					"type":        "string",
+					"description": "partner_app_id parameter",
+					"required":    true,
+				},
+				"partner_permissions": map[string]any{
+					"type":        "array",
+					"description": "partner_permissions parameter",
+					"required":    true,
+					"enum":        []string{"DEVELOP", "MANAGE", "MANAGE_EXTENSIONS", "MANAGE_PHONE", "MANAGE_PHONE_ASSETS", "MANAGE_TEMPLATES", "MESSAGING", "VIEW_COST", "VIEW_PHONE_ASSETS", "VIEW_TEMPLATES"},
+					"items":       map[string]any{"type": "string"},
+				},
+				"solution_name": map[string]any{
+					"type":        "string",
+					"description": "solution_name parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: owner_permissions (array<enum>) [DEVELOP, MANAGE, MANAGE_EXTENSIONS, MANAGE_PHONE, MANAGE_PHONE_ASSETS, ...] [required], partner_app_id (string) [required], partner_permissions (array<enum>) [DEVELOP, MANAGE, MANAGE_EXTENSIONS, MANAGE_PHONE, MANAGE_PHONE_ASSETS, ...] [required], solution_name (string) [required]"),
 		),
 	)
 	tools = append(tools, application_post_whatsapp_business_solutionTool)
 
 	// application_get_whatsapp_business_solutions tool
+	// Params object accepts: role (applicationwhatsapp_business_solutions_role_enum_param)
 	application_get_whatsapp_business_solutionsTool := mcp.NewTool("application_get_whatsapp_business_solutions",
 		mcp.WithDescription("GET whatsapp_business_solutions for Application"),
-		mcp.WithString("role",
-			mcp.Description("role parameter for whatsapp_business_solutions"),
-			mcp.Enum("OWNER", "PARTNER"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"role": map[string]any{
+					"type":        "string",
+					"description": "role parameter",
+					"enum":        []string{"OWNER", "PARTNER"},
+				},
+			}),
+			mcp.Description("Parameters object containing: role (enum) [OWNER, PARTNER]"),
 		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -1449,13 +1931,20 @@ func GetApplicationTools() []mcp.Tool {
 
 	// application_get_ tool
 	// Available fields for Application: aam_rules, an_ad_space_limit, an_platforms, android_key_hash, android_sdk_error_categories, app_domains, app_events_config, app_events_feature_bitmask, app_events_session_timeout, app_install_tracked, app_name, app_signals_binding_ios, app_type, auth_dialog_data_help_url, auth_dialog_headline, auth_dialog_perms_explanation, auth_referral_default_activity_privacy, auth_referral_enabled, auth_referral_extended_perms, auth_referral_friend_perms, auth_referral_response_type, auth_referral_user_perms, auto_event_mapping_android, auto_event_mapping_ios, auto_event_setup_enabled, auto_log_app_events_default, auto_log_app_events_enabled, business, canvas_fluid_height, canvas_fluid_width, canvas_url, category, client_config, company, configured_ios_sso, contact_email, created_time, creator_uid, daily_active_users, daily_active_users_rank, deauth_callback_url, default_share_mode, description, enigma_config, financial_id, gdpv4_chrome_custom_tabs_enabled, gdpv4_enabled, gdpv4_nux_content, gdpv4_nux_enabled, has_messenger_product, hosting_url, icon_url, id, ios_bundle_id, ios_sdk_dialog_flows, ios_sdk_error_categories, ios_sfvc_attr, ios_supports_native_proxy_auth_flow, ios_supports_system_auth, ipad_app_store_id, iphone_app_store_id, latest_sdk_version, link, logging_token, logo_url, migrations, mobile_profile_section_url, mobile_web_url, monthly_active_users, monthly_active_users_rank, name, namespace, object_store_urls, owner_business, page_tab_default_name, page_tab_url, photo_url, privacy_policy_url, profile_section_url, property_id, protected_mode_rules, real_time_mode_devices, restrictions, restrictive_data_filter_params, restrictive_data_filter_rules, sdk_update_message, seamless_login, secure_canvas_url, secure_page_tab_url, server_ip_whitelist, smart_login_bookmark_icon_url, smart_login_menu_icon_url, social_discovery, subcategory, suggested_events_setting, supported_platforms, supports_apprequests_fast_app_switch, supports_attribution, supports_implicit_sdk_logging, suppress_native_ios_gdp, terms_of_service_url, url_scheme_suffix, user_support_email, user_support_url, website_url, weekly_active_users
+	// Params object accepts: advertiser_id (string)
 	application_get_Tool := mcp.NewTool("application_get_",
 		mcp.WithDescription("GET  for Application"),
-		mcp.WithString("advertiser_id",
-			mcp.Description("advertiser_id parameter for "),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"advertiser_id": map[string]any{
+					"type":        "string",
+					"description": "advertiser_id parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: advertiser_id (string)"),
 		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for Application objects. Available fields: aam_rules, an_ad_space_limit, an_platforms, android_key_hash, android_sdk_error_categories, app_domains, app_events_config, app_events_feature_bitmask, app_events_session_timeout, app_install_tracked, app_name, app_signals_binding_ios, app_type, auth_dialog_data_help_url, auth_dialog_headline (and 91 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for Application objects. Available fields: aam_rules, an_ad_space_limit, an_platforms, android_key_hash, android_sdk_error_categories, app_domains, app_events_config, app_events_feature_bitmask, app_events_session_timeout, app_install_tracked, app_name, app_signals_binding_ios, app_type, auth_dialog_data_help_url, auth_dialog_headline (and 91 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -1470,98 +1959,140 @@ func GetApplicationTools() []mcp.Tool {
 	tools = append(tools, application_get_Tool)
 
 	// application_post_ tool
+	// Params object accepts: allow_cycle_app_secret (bool), an_platforms (list<application_an_platforms>), app_domains (list<string>), app_name (string), app_type (bool), auth_dialog_headline (string), auth_dialog_perms_explanation (string), auth_referral_enabled (bool), auth_referral_extended_perms (list<string>), auth_referral_friend_perms (list<string>), auth_referral_response_type (string), auth_referral_user_perms (list<string>), canvas_fluid_height (bool), canvas_fluid_width (bool), canvas_url (string), contact_email (string), deauth_callback_url (string), mobile_web_url (string), namespace (string), page_tab_default_name (string), privacy_policy_url (string), restrictions (string), secure_canvas_url (string), secure_page_tab_url (string), server_ip_whitelist (list<string>), terms_of_service_url (string), url_scheme_suffix (string), user_support_email (string), user_support_url (string), website_url (string)
 	application_post_Tool := mcp.NewTool("application_post_",
 		mcp.WithDescription("POST  for Application"),
-		mcp.WithBoolean("allow_cycle_app_secret",
-			mcp.Description("allow_cycle_app_secret parameter for "),
-		),
-		mcp.WithString("an_platforms",
-			mcp.Description("an_platforms parameter for "),
-			mcp.Enum("ANDROID", "DESKTOP", "GALAXY", "INSTANT_ARTICLES", "IOS", "MOBILE_WEB", "OCULUS", "UNKNOWN", "XIAOMI"),
-		),
-		mcp.WithString("app_domains",
-			mcp.Description("app_domains parameter for "),
-		),
-		mcp.WithString("app_name",
-			mcp.Description("app_name parameter for "),
-		),
-		mcp.WithBoolean("app_type",
-			mcp.Description("app_type parameter for "),
-		),
-		mcp.WithString("auth_dialog_headline",
-			mcp.Description("auth_dialog_headline parameter for "),
-		),
-		mcp.WithString("auth_dialog_perms_explanation",
-			mcp.Description("auth_dialog_perms_explanation parameter for "),
-		),
-		mcp.WithBoolean("auth_referral_enabled",
-			mcp.Description("auth_referral_enabled parameter for "),
-		),
-		mcp.WithString("auth_referral_extended_perms",
-			mcp.Description("auth_referral_extended_perms parameter for "),
-		),
-		mcp.WithString("auth_referral_friend_perms",
-			mcp.Description("auth_referral_friend_perms parameter for "),
-		),
-		mcp.WithString("auth_referral_response_type",
-			mcp.Description("auth_referral_response_type parameter for "),
-		),
-		mcp.WithString("auth_referral_user_perms",
-			mcp.Description("auth_referral_user_perms parameter for "),
-		),
-		mcp.WithBoolean("canvas_fluid_height",
-			mcp.Description("canvas_fluid_height parameter for "),
-		),
-		mcp.WithBoolean("canvas_fluid_width",
-			mcp.Description("canvas_fluid_width parameter for "),
-		),
-		mcp.WithString("canvas_url",
-			mcp.Description("canvas_url parameter for "),
-		),
-		mcp.WithString("contact_email",
-			mcp.Description("contact_email parameter for "),
-		),
-		mcp.WithString("deauth_callback_url",
-			mcp.Description("deauth_callback_url parameter for "),
-		),
-		mcp.WithString("mobile_web_url",
-			mcp.Description("mobile_web_url parameter for "),
-		),
-		mcp.WithString("namespace",
-			mcp.Description("namespace parameter for "),
-		),
-		mcp.WithString("page_tab_default_name",
-			mcp.Description("page_tab_default_name parameter for "),
-		),
-		mcp.WithString("privacy_policy_url",
-			mcp.Description("privacy_policy_url parameter for "),
-		),
-		mcp.WithString("restrictions",
-			mcp.Description("restrictions parameter for "),
-		),
-		mcp.WithString("secure_canvas_url",
-			mcp.Description("secure_canvas_url parameter for "),
-		),
-		mcp.WithString("secure_page_tab_url",
-			mcp.Description("secure_page_tab_url parameter for "),
-		),
-		mcp.WithString("server_ip_whitelist",
-			mcp.Description("server_ip_whitelist parameter for "),
-		),
-		mcp.WithString("terms_of_service_url",
-			mcp.Description("terms_of_service_url parameter for "),
-		),
-		mcp.WithString("url_scheme_suffix",
-			mcp.Description("url_scheme_suffix parameter for "),
-		),
-		mcp.WithString("user_support_email",
-			mcp.Description("user_support_email parameter for "),
-		),
-		mcp.WithString("user_support_url",
-			mcp.Description("user_support_url parameter for "),
-		),
-		mcp.WithString("website_url",
-			mcp.Description("website_url parameter for "),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"allow_cycle_app_secret": map[string]any{
+					"type":        "boolean",
+					"description": "allow_cycle_app_secret parameter",
+				},
+				"an_platforms": map[string]any{
+					"type":        "array",
+					"description": "an_platforms parameter",
+					"enum":        []string{"ANDROID", "DESKTOP", "GALAXY", "INSTANT_ARTICLES", "IOS", "MOBILE_WEB", "OCULUS", "UNKNOWN", "XIAOMI"},
+					"items":       map[string]any{"type": "string"},
+				},
+				"app_domains": map[string]any{
+					"type":        "array",
+					"description": "app_domains parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+				"app_name": map[string]any{
+					"type":        "string",
+					"description": "app_name parameter",
+				},
+				"app_type": map[string]any{
+					"type":        "boolean",
+					"description": "app_type parameter",
+				},
+				"auth_dialog_headline": map[string]any{
+					"type":        "string",
+					"description": "auth_dialog_headline parameter",
+				},
+				"auth_dialog_perms_explanation": map[string]any{
+					"type":        "string",
+					"description": "auth_dialog_perms_explanation parameter",
+				},
+				"auth_referral_enabled": map[string]any{
+					"type":        "boolean",
+					"description": "auth_referral_enabled parameter",
+				},
+				"auth_referral_extended_perms": map[string]any{
+					"type":        "array",
+					"description": "auth_referral_extended_perms parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+				"auth_referral_friend_perms": map[string]any{
+					"type":        "array",
+					"description": "auth_referral_friend_perms parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+				"auth_referral_response_type": map[string]any{
+					"type":        "string",
+					"description": "auth_referral_response_type parameter",
+				},
+				"auth_referral_user_perms": map[string]any{
+					"type":        "array",
+					"description": "auth_referral_user_perms parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+				"canvas_fluid_height": map[string]any{
+					"type":        "boolean",
+					"description": "canvas_fluid_height parameter",
+				},
+				"canvas_fluid_width": map[string]any{
+					"type":        "boolean",
+					"description": "canvas_fluid_width parameter",
+				},
+				"canvas_url": map[string]any{
+					"type":        "string",
+					"description": "canvas_url parameter",
+				},
+				"contact_email": map[string]any{
+					"type":        "string",
+					"description": "contact_email parameter",
+				},
+				"deauth_callback_url": map[string]any{
+					"type":        "string",
+					"description": "deauth_callback_url parameter",
+				},
+				"mobile_web_url": map[string]any{
+					"type":        "string",
+					"description": "mobile_web_url parameter",
+				},
+				"namespace": map[string]any{
+					"type":        "string",
+					"description": "namespace parameter",
+				},
+				"page_tab_default_name": map[string]any{
+					"type":        "string",
+					"description": "page_tab_default_name parameter",
+				},
+				"privacy_policy_url": map[string]any{
+					"type":        "string",
+					"description": "privacy_policy_url parameter",
+				},
+				"restrictions": map[string]any{
+					"type":        "string",
+					"description": "restrictions parameter",
+				},
+				"secure_canvas_url": map[string]any{
+					"type":        "string",
+					"description": "secure_canvas_url parameter",
+				},
+				"secure_page_tab_url": map[string]any{
+					"type":        "string",
+					"description": "secure_page_tab_url parameter",
+				},
+				"server_ip_whitelist": map[string]any{
+					"type":        "array",
+					"description": "server_ip_whitelist parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+				"terms_of_service_url": map[string]any{
+					"type":        "string",
+					"description": "terms_of_service_url parameter",
+				},
+				"url_scheme_suffix": map[string]any{
+					"type":        "string",
+					"description": "url_scheme_suffix parameter",
+				},
+				"user_support_email": map[string]any{
+					"type":        "string",
+					"description": "user_support_email parameter",
+				},
+				"user_support_url": map[string]any{
+					"type":        "string",
+					"description": "user_support_url parameter",
+				},
+				"website_url": map[string]any{
+					"type":        "string",
+					"description": "website_url parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: allow_cycle_app_secret (boolean), an_platforms (array<application_an_platforms>) [ANDROID, DESKTOP, GALAXY, INSTANT_ARTICLES, IOS, ...], app_domains (array<string>), app_name (string), app_type (boolean), auth_dialog_headline (string), auth_dialog_perms_explanation (string), auth_referral_enabled (boolean), auth_referral_extended_perms (array<string>), auth_referral_friend_perms (array<string>), auth_referral_response_type (string), auth_referral_user_perms (array<string>), canvas_fluid_height (boolean), canvas_fluid_width (boolean), canvas_url (string), contact_email (string), deauth_callback_url (string), mobile_web_url (string), namespace (string), page_tab_default_name (string), privacy_policy_url (string), restrictions (string), secure_canvas_url (string), secure_page_tab_url (string), server_ip_whitelist (array<string>), terms_of_service_url (string), url_scheme_suffix (string), user_support_email (string), user_support_url (string), website_url (string)"),
 		),
 	)
 	tools = append(tools, application_post_Tool)
@@ -1585,17 +2116,19 @@ func HandleApplication_delete_accounts(ctx context.Context, request mcp.CallTool
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: type
-	if val := request.GetString("type", ""); val != "" {
-		args["type"] = val
-	}
-
-	// Required: uid
-	uid, err := request.RequireInt("uid")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter uid: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["uid"] = uid
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Application_delete_accounts(args)
@@ -1626,14 +2159,26 @@ func HandleApplication_get_accounts(ctx context.Context, request mcp.CallToolReq
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: type
-	if val := request.GetString("type", ""); val != "" {
-		args["type"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -1680,40 +2225,16 @@ func HandleApplication_post_accounts(ctx context.Context, request mcp.CallToolRe
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: installed
-	if val := request.GetBool("installed", false); val {
-		args["installed"] = val
-	}
-
-	// Optional: minor
-	if val := request.GetBool("minor", false); val {
-		args["minor"] = val
-	}
-
-	// Optional: name
-	if val := request.GetString("name", ""); val != "" {
-		args["name"] = val
-	}
-
-	// Optional: owner_access_token
-	if val := request.GetString("owner_access_token", ""); val != "" {
-		args["owner_access_token"] = val
-	}
-
-	// Optional: permissions
-	// array type - using string
-	if val := request.GetString("permissions", ""); val != "" {
-		args["permissions"] = val
-	}
-
-	// Optional: type
-	if val := request.GetString("type", ""); val != "" {
-		args["type"] = val
-	}
-
-	// Optional: uid
-	if val := request.GetInt("uid", 0); val != 0 {
-		args["uid"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method
@@ -1745,242 +2266,18 @@ func HandleApplication_post_activities(ctx context.Context, request mcp.CallTool
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: advertiser_id
-	if val := request.GetString("advertiser_id", ""); val != "" {
-		args["advertiser_id"] = val
-	}
-
-	// Optional: advertiser_tracking_enabled
-	if val := request.GetBool("advertiser_tracking_enabled", false); val {
-		args["advertiser_tracking_enabled"] = val
-	}
-
-	// Optional: anon_id
-	if val := request.GetString("anon_id", ""); val != "" {
-		args["anon_id"] = val
-	}
-
-	// Optional: app_user_id
-	if val := request.GetString("app_user_id", ""); val != "" {
-		args["app_user_id"] = val
-	}
-
-	// Optional: application_tracking_enabled
-	if val := request.GetBool("application_tracking_enabled", false); val {
-		args["application_tracking_enabled"] = val
-	}
-
-	// Optional: attribution
-	if val := request.GetString("attribution", ""); val != "" {
-		args["attribution"] = val
-	}
-
-	// Optional: attribution_referrer
-	if val := request.GetString("attribution_referrer", ""); val != "" {
-		args["attribution_referrer"] = val
-	}
-
-	// Optional: attribution_sources
-	// array type - using string
-	if val := request.GetString("attribution_sources", ""); val != "" {
-		args["attribution_sources"] = val
-	}
-
-	// Optional: auto_publish
-	if val := request.GetBool("auto_publish", false); val {
-		args["auto_publish"] = val
-	}
-
-	// Optional: bundle_id
-	if val := request.GetString("bundle_id", ""); val != "" {
-		args["bundle_id"] = val
-	}
-
-	// Optional: bundle_short_version
-	if val := request.GetString("bundle_short_version", ""); val != "" {
-		args["bundle_short_version"] = val
-	}
-
-	// Optional: bundle_version
-	if val := request.GetString("bundle_version", ""); val != "" {
-		args["bundle_version"] = val
-	}
-
-	// Optional: campaign_ids
-	if val := request.GetString("campaign_ids", ""); val != "" {
-		args["campaign_ids"] = val
-	}
-
-	// Optional: click_id
-	if val := request.GetString("click_id", ""); val != "" {
-		args["click_id"] = val
-	}
-
-	// Optional: consider_views
-	if val := request.GetBool("consider_views", false); val {
-		args["consider_views"] = val
-	}
-
-	// Optional: custom_events
-	// array type - using string
-	if val := request.GetString("custom_events", ""); val != "" {
-		args["custom_events"] = val
-	}
-
-	// Optional: custom_events_file
-	if val := request.GetString("custom_events_file", ""); val != "" {
-		args["custom_events_file"] = val
-	}
-
-	// Optional: data_processing_options
-	// array type - using string
-	if val := request.GetString("data_processing_options", ""); val != "" {
-		args["data_processing_options"] = val
-	}
-
-	// Optional: data_processing_options_country
-	if val := request.GetInt("data_processing_options_country", 0); val != 0 {
-		args["data_processing_options_country"] = val
-	}
-
-	// Optional: data_processing_options_state
-	if val := request.GetInt("data_processing_options_state", 0); val != 0 {
-		args["data_processing_options_state"] = val
-	}
-
-	// Optional: device_token
-	if val := request.GetString("device_token", ""); val != "" {
-		args["device_token"] = val
-	}
-
-	// Required: event
-	event, err := request.RequireString("event")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter event: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["event"] = event
-
-	// Optional: event_id
-	if val := request.GetString("event_id", ""); val != "" {
-		args["event_id"] = val
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
-
-	// Optional: extinfo
-	// object type - using string
-	if val := request.GetString("extinfo", ""); val != "" {
-		args["extinfo"] = val
-	}
-
-	// Optional: google_install_referrer
-	if val := request.GetString("google_install_referrer", ""); val != "" {
-		args["google_install_referrer"] = val
-	}
-
-	// Optional: include_dwell_data
-	if val := request.GetBool("include_dwell_data", false); val {
-		args["include_dwell_data"] = val
-	}
-
-	// Optional: include_video_data
-	if val := request.GetBool("include_video_data", false); val {
-		args["include_video_data"] = val
-	}
-
-	// Optional: install_id
-	if val := request.GetString("install_id", ""); val != "" {
-		args["install_id"] = val
-	}
-
-	// Optional: install_referrer
-	if val := request.GetString("install_referrer", ""); val != "" {
-		args["install_referrer"] = val
-	}
-
-	// Optional: install_timestamp
-	if val := request.GetInt("install_timestamp", 0); val != 0 {
-		args["install_timestamp"] = val
-	}
-
-	// Optional: installer_package
-	if val := request.GetString("installer_package", ""); val != "" {
-		args["installer_package"] = val
-	}
-
-	// Optional: is_fb
-	if val := request.GetBool("is_fb", false); val {
-		args["is_fb"] = val
-	}
-
-	// Optional: limited_data_use
-	if val := request.GetBool("limited_data_use", false); val {
-		args["limited_data_use"] = val
-	}
-
-	// Optional: meta_install_referrer
-	if val := request.GetString("meta_install_referrer", ""); val != "" {
-		args["meta_install_referrer"] = val
-	}
-
-	// Optional: migration_bundle
-	if val := request.GetString("migration_bundle", ""); val != "" {
-		args["migration_bundle"] = val
-	}
-
-	// Optional: operational_parameters
-	// array type - using string
-	if val := request.GetString("operational_parameters", ""); val != "" {
-		args["operational_parameters"] = val
-	}
-
-	// Optional: page_id
-	if val := request.GetInt("page_id", 0); val != 0 {
-		args["page_id"] = val
-	}
-
-	// Optional: page_scoped_user_id
-	if val := request.GetInt("page_scoped_user_id", 0); val != 0 {
-		args["page_scoped_user_id"] = val
-	}
-
-	// Optional: receipt_data
-	if val := request.GetString("receipt_data", ""); val != "" {
-		args["receipt_data"] = val
-	}
-
-	// Optional: sdk_version
-	if val := request.GetString("sdk_version", ""); val != "" {
-		args["sdk_version"] = val
-	}
-
-	// Optional: ud
-	if val := request.GetString("ud", ""); val != "" {
-		args["ud"] = val
-	}
-
-	// Optional: url_schemes
-	// array type - using string
-	if val := request.GetString("url_schemes", ""); val != "" {
-		args["url_schemes"] = val
-	}
-
-	// Optional: user_id
-	if val := request.GetString("user_id", ""); val != "" {
-		args["user_id"] = val
-	}
-
-	// Optional: user_id_type
-	if val := request.GetString("user_id_type", ""); val != "" {
-		args["user_id_type"] = val
-	}
-
-	// Optional: vendor_id
-	if val := request.GetString("vendor_id", ""); val != "" {
-		args["vendor_id"] = val
-	}
-
-	// Optional: windows_attribution_id
-	if val := request.GetString("windows_attribution_id", ""); val != "" {
-		args["windows_attribution_id"] = val
+	for key, value := range paramsObj {
+		args[key] = value
 	}
 
 	// Call the client method
@@ -2013,8 +2310,13 @@ func HandleApplication_get_ad_placement_groups(ctx context.Context, request mcp.
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -2061,14 +2363,26 @@ func HandleApplication_get_adnetwork_placements(ctx context.Context, request mcp
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: request_id
-	if val := request.GetString("request_id", ""); val != "" {
-		args["request_id"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -2115,63 +2429,28 @@ func HandleApplication_get_adnetworkanalytics(ctx context.Context, request mcp.C
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: aggregation_period
-	if val := request.GetString("aggregation_period", ""); val != "" {
-		args["aggregation_period"] = val
-	}
-
-	// Optional: breakdowns
-	// array type - using string
-	if val := request.GetString("breakdowns", ""); val != "" {
-		args["breakdowns"] = val
-	}
-
-	// Optional: filters
-	// array type - using string
-	if val := request.GetString("filters", ""); val != "" {
-		args["filters"] = val
-	}
-
-	// Optional: limit
-	if val := request.GetInt("limit", 0); val != 0 {
-		args["limit"] = val
-	}
-
-	// Required: metrics
-	metrics, err := request.RequireString("metrics")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter metrics: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["metrics"] = metrics
-
-	// Optional: ordering_column
-	if val := request.GetString("ordering_column", ""); val != "" {
-		args["ordering_column"] = val
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
-
-	// Optional: ordering_type
-	if val := request.GetString("ordering_type", ""); val != "" {
-		args["ordering_type"] = val
-	}
-
-	// Optional: should_include_until
-	if val := request.GetBool("should_include_until", false); val {
-		args["should_include_until"] = val
-	}
-
-	// Optional: since
-	if val := request.GetString("since", ""); val != "" {
-		args["since"] = val
-	}
-
-	// Optional: until
-	if val := request.GetString("until", ""); val != "" {
-		args["until"] = val
+	for key, value := range paramsObj {
+		args[key] = value
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -2218,53 +2497,18 @@ func HandleApplication_post_adnetworkanalytics(ctx context.Context, request mcp.
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: aggregation_period
-	if val := request.GetString("aggregation_period", ""); val != "" {
-		args["aggregation_period"] = val
-	}
-
-	// Optional: breakdowns
-	// array type - using string
-	if val := request.GetString("breakdowns", ""); val != "" {
-		args["breakdowns"] = val
-	}
-
-	// Optional: filters
-	// array type - using string
-	if val := request.GetString("filters", ""); val != "" {
-		args["filters"] = val
-	}
-
-	// Optional: limit
-	if val := request.GetInt("limit", 0); val != 0 {
-		args["limit"] = val
-	}
-
-	// Required: metrics
-	metrics, err := request.RequireString("metrics")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter metrics: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["metrics"] = metrics
-
-	// Optional: ordering_column
-	if val := request.GetString("ordering_column", ""); val != "" {
-		args["ordering_column"] = val
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
-
-	// Optional: ordering_type
-	if val := request.GetString("ordering_type", ""); val != "" {
-		args["ordering_type"] = val
-	}
-
-	// Optional: since
-	if val := request.GetString("since", ""); val != "" {
-		args["since"] = val
-	}
-
-	// Optional: until
-	if val := request.GetString("until", ""); val != "" {
-		args["until"] = val
+	for key, value := range paramsObj {
+		args[key] = value
 	}
 
 	// Call the client method
@@ -2296,15 +2540,26 @@ func HandleApplication_get_adnetworkanalytics_results(ctx context.Context, reque
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: query_ids
-	// array type - using string
-	if val := request.GetString("query_ids", ""); val != "" {
-		args["query_ids"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -2351,20 +2606,26 @@ func HandleApplication_get_aem_attribution(ctx context.Context, request mcp.Call
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: advertiser_ids
-	// array type - using string
-	if val := request.GetString("advertiser_ids", ""); val != "" {
-		args["advertiser_ids"] = val
-	}
-
-	// Optional: fb_content_data
-	if val := request.GetString("fb_content_data", ""); val != "" {
-		args["fb_content_data"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -2411,15 +2672,26 @@ func HandleApplication_get_aem_conversion_configs(ctx context.Context, request m
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: advertiser_ids
-	// array type - using string
-	if val := request.GetString("advertiser_ids", ""); val != "" {
-		args["advertiser_ids"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -2466,19 +2738,26 @@ func HandleApplication_get_aem_conversion_filter(ctx context.Context, request mc
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: catalog_id
-	if val := request.GetString("catalog_id", ""); val != "" {
-		args["catalog_id"] = val
-	}
-
-	// Optional: fb_content_ids
-	if val := request.GetString("fb_content_ids", ""); val != "" {
-		args["fb_content_ids"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -2525,12 +2804,19 @@ func HandleApplication_post_aem_conversions(ctx context.Context, request mcp.Cal
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: aem_conversions
-	aem_conversions, err := request.RequireString("aem_conversions")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter aem_conversions: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["aem_conversions"] = aem_conversions
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Application_post_aem_conversions(args)
@@ -2561,36 +2847,18 @@ func HandleApplication_post_aem_skan_readiness(ctx context.Context, request mcp.
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: app_id
-	app_id, err := request.RequireInt("app_id")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter app_id: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["app_id"] = app_id
-
-	// Optional: is_aem_ready
-	if val := request.GetBool("is_aem_ready", false); val {
-		args["is_aem_ready"] = val
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
-
-	// Optional: is_app_aem_install_ready
-	if val := request.GetBool("is_app_aem_install_ready", false); val {
-		args["is_app_aem_install_ready"] = val
-	}
-
-	// Optional: is_app_aem_ready
-	if val := request.GetBool("is_app_aem_ready", false); val {
-		args["is_app_aem_ready"] = val
-	}
-
-	// Optional: is_skan_ready
-	if val := request.GetBool("is_skan_ready", false); val {
-		args["is_skan_ready"] = val
-	}
-
-	// Optional: message
-	if val := request.GetString("message", ""); val != "" {
-		args["message"] = val
+	for key, value := range paramsObj {
+		args[key] = value
 	}
 
 	// Call the client method
@@ -2623,8 +2891,13 @@ func HandleApplication_get_agencies(ctx context.Context, request mcp.CallToolReq
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -2671,26 +2944,16 @@ func HandleApplication_post_aggregate_revenue(ctx context.Context, request mcp.C
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: ecpms
-	// array type - using string
-	if val := request.GetString("ecpms", ""); val != "" {
-		args["ecpms"] = val
-	}
-
-	// Optional: query_ids
-	// array type - using string
-	if val := request.GetString("query_ids", ""); val != "" {
-		args["query_ids"] = val
-	}
-
-	// Optional: request_id
-	if val := request.GetString("request_id", ""); val != "" {
-		args["request_id"] = val
-	}
-
-	// Optional: sync_api
-	if val := request.GetBool("sync_api", false); val {
-		args["sync_api"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method
@@ -2723,8 +2986,13 @@ func HandleApplication_get_android_dialog_configs(ctx context.Context, request m
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -2772,8 +3040,13 @@ func HandleApplication_get_app_capi_settings(ctx context.Context, request mcp.Ca
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -2821,8 +3094,13 @@ func HandleApplication_get_app_event_types(ctx context.Context, request mcp.Call
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -2869,41 +3147,19 @@ func HandleApplication_post_app_indexing(ctx context.Context, request mcp.CallTo
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: app_version
-	app_version, err := request.RequireString("app_version")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter app_version: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["app_version"] = app_version
-
-	// Optional: device_session_id
-	if val := request.GetString("device_session_id", ""); val != "" {
-		args["device_session_id"] = val
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
-
-	// Optional: extra_info
-	if val := request.GetString("extra_info", ""); val != "" {
-		args["extra_info"] = val
+	for key, value := range paramsObj {
+		args[key] = value
 	}
-
-	// Required: platform
-	platform, err := request.RequireString("platform")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter platform: %v", err)), nil
-	}
-	args["platform"] = platform
-
-	// Optional: request_type
-	if val := request.GetString("request_type", ""); val != "" {
-		args["request_type"] = val
-	}
-
-	// Required: tree
-	tree, err := request.RequireString("tree")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter tree: %v", err)), nil
-	}
-	args["tree"] = tree
 
 	// Call the client method
 	result, err := client.Application_post_app_indexing(args)
@@ -2934,16 +3190,18 @@ func HandleApplication_post_app_indexing_session(ctx context.Context, request mc
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: device_session_id
-	device_session_id, err := request.RequireString("device_session_id")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter device_session_id: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["device_session_id"] = device_session_id
-
-	// Optional: extinfo
-	if val := request.GetString("extinfo", ""); val != "" {
-		args["extinfo"] = val
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
 	}
 
 	// Call the client method
@@ -2975,14 +3233,26 @@ func HandleApplication_get_app_installed_groups(ctx context.Context, request mcp
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: group_id
-	if val := request.GetString("group_id", ""); val != "" {
-		args["group_id"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -3029,23 +3299,18 @@ func HandleApplication_post_app_push_device_token(ctx context.Context, request m
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: device_id
-	device_id, err := request.RequireString("device_id")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter device_id: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["device_id"] = device_id
-
-	// Required: device_token
-	device_token, err := request.RequireString("device_token")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter device_token: %v", err)), nil
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
-	args["device_token"] = device_token
-
-	// Optional: platform
-	if val := request.GetString("platform", ""); val != "" {
-		args["platform"] = val
+	for key, value := range paramsObj {
+		args[key] = value
 	}
 
 	// Call the client method
@@ -3078,8 +3343,13 @@ func HandleApplication_get_appassets(ctx context.Context, request mcp.CallToolRe
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -3126,24 +3396,19 @@ func HandleApplication_post_assets(ctx context.Context, request mcp.CallToolRequ
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: asset
-	asset, err := request.RequireString("asset")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter asset: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["asset"] = asset
-
-	// Optional: comment
-	if val := request.GetString("comment", ""); val != "" {
-		args["comment"] = val
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
-
-	// Required: type
-	type_, err := request.RequireString("type")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter type: %v", err)), nil
+	for key, value := range paramsObj {
+		args[key] = value
 	}
-	args["type"] = type_
 
 	// Call the client method
 	result, err := client.Application_post_assets(args)
@@ -3174,14 +3439,26 @@ func HandleApplication_get_authorized_adaccounts(ctx context.Context, request mc
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: business
-	if val := request.GetString("business", ""); val != "" {
-		args["business"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -3228,14 +3505,26 @@ func HandleApplication_get_button_auto_detection_device_selection(ctx context.Co
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: device_id
-	if val := request.GetString("device_id", ""); val != "" {
-		args["device_id"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -3283,8 +3572,13 @@ func HandleApplication_get_cloudbridge_settings(ctx context.Context, request mcp
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -3331,30 +3625,18 @@ func HandleApplication_post_codeless_event_mappings(ctx context.Context, request
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: mappings
-	mappings, err := request.RequireString("mappings")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter mappings: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["mappings"] = mappings
-
-	// Required: mutation_method
-	mutation_method, err := request.RequireString("mutation_method")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter mutation_method: %v", err)), nil
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
-	args["mutation_method"] = mutation_method
-
-	// Required: platform
-	platform, err := request.RequireString("platform")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter platform: %v", err)), nil
-	}
-	args["platform"] = platform
-
-	// Optional: post_method
-	if val := request.GetString("post_method", ""); val != "" {
-		args["post_method"] = val
+	for key, value := range paramsObj {
+		args[key] = value
 	}
 
 	// Call the client method
@@ -3387,8 +3669,13 @@ func HandleApplication_get_connected_client_businesses(ctx context.Context, requ
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -3435,20 +3722,26 @@ func HandleApplication_get_da_checks(ctx context.Context, request mcp.CallToolRe
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: checks
-	// array type - using string
-	if val := request.GetString("checks", ""); val != "" {
-		args["checks"] = val
-	}
-
-	// Optional: connection_method
-	if val := request.GetString("connection_method", ""); val != "" {
-		args["connection_method"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -3495,12 +3788,19 @@ func HandleApplication_post_domain_reports(ctx context.Context, request mcp.Call
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: tracking_domains
-	tracking_domains, err := request.RequireString("tracking_domains")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter tracking_domains: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["tracking_domains"] = tracking_domains
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Application_post_domain_reports(args)
@@ -3531,16 +3831,28 @@ func HandleApplication_get_iap_purchases(ctx context.Context, request mcp.CallTo
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: order_id
-	order_id, err := request.RequireString("order_id")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter order_id: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["order_id"] = order_id
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -3588,8 +3900,13 @@ func HandleApplication_get_ios_dialog_configs(ctx context.Context, request mcp.C
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -3637,8 +3954,13 @@ func HandleApplication_get_linked_dataset(ctx context.Context, request mcp.CallT
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -3685,14 +4007,26 @@ func HandleApplication_get_message_templates(ctx context.Context, request mcp.Ca
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: template_id
-	if val := request.GetString("template_id", ""); val != "" {
-		args["template_id"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -3739,134 +4073,18 @@ func HandleApplication_post_mmp_auditing(ctx context.Context, request mcp.CallTo
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: advertiser_id
-	if val := request.GetString("advertiser_id", ""); val != "" {
-		args["advertiser_id"] = val
-	}
-
-	// Optional: attribution
-	if val := request.GetString("attribution", ""); val != "" {
-		args["attribution"] = val
-	}
-
-	// Optional: attribution_method
-	if val := request.GetString("attribution_method", ""); val != "" {
-		args["attribution_method"] = val
-	}
-
-	// Optional: attribution_model
-	if val := request.GetString("attribution_model", ""); val != "" {
-		args["attribution_model"] = val
-	}
-
-	// Optional: attribution_referrer
-	if val := request.GetString("attribution_referrer", ""); val != "" {
-		args["attribution_referrer"] = val
-	}
-
-	// Optional: auditing_token
-	if val := request.GetString("auditing_token", ""); val != "" {
-		args["auditing_token"] = val
-	}
-
-	// Optional: click_attr_window
-	if val := request.GetInt("click_attr_window", 0); val != 0 {
-		args["click_attr_window"] = val
-	}
-
-	// Optional: custom_events
-	// array type - using string
-	if val := request.GetString("custom_events", ""); val != "" {
-		args["custom_events"] = val
-	}
-
-	// Optional: decline_reason
-	if val := request.GetString("decline_reason", ""); val != "" {
-		args["decline_reason"] = val
-	}
-
-	// Optional: device_os
-	if val := request.GetString("device_os", ""); val != "" {
-		args["device_os"] = val
-	}
-
-	// Optional: engagement_type
-	if val := request.GetString("engagement_type", ""); val != "" {
-		args["engagement_type"] = val
-	}
-
-	// Required: event
-	event, err := request.RequireString("event")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter event: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["event"] = event
-
-	// Optional: event_id
-	if val := request.GetString("event_id", ""); val != "" {
-		args["event_id"] = val
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
-
-	// Optional: event_reported_time
-	if val := request.GetInt("event_reported_time", 0); val != 0 {
-		args["event_reported_time"] = val
-	}
-
-	// Optional: fb_ad_id
-	if val := request.GetInt("fb_ad_id", 0); val != 0 {
-		args["fb_ad_id"] = val
-	}
-
-	// Optional: fb_adgroup_id
-	if val := request.GetInt("fb_adgroup_id", 0); val != 0 {
-		args["fb_adgroup_id"] = val
-	}
-
-	// Optional: fb_click_time
-	if val := request.GetInt("fb_click_time", 0); val != 0 {
-		args["fb_click_time"] = val
-	}
-
-	// Optional: fb_view_time
-	if val := request.GetInt("fb_view_time", 0); val != 0 {
-		args["fb_view_time"] = val
-	}
-
-	// Optional: google_install_referrer
-	if val := request.GetString("google_install_referrer", ""); val != "" {
-		args["google_install_referrer"] = val
-	}
-
-	// Optional: inactivity_window_hours
-	if val := request.GetInt("inactivity_window_hours", 0); val != 0 {
-		args["inactivity_window_hours"] = val
-	}
-
-	// Optional: install_id
-	if val := request.GetString("install_id", ""); val != "" {
-		args["install_id"] = val
-	}
-
-	// Required: is_fb
-	is_fb, err := request.RequireBool("is_fb")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter is_fb: %v", err)), nil
-	}
-	args["is_fb"] = is_fb
-
-	// Optional: meta_install_referrer
-	if val := request.GetString("meta_install_referrer", ""); val != "" {
-		args["meta_install_referrer"] = val
-	}
-
-	// Optional: used_install_referrer
-	if val := request.GetBool("used_install_referrer", false); val {
-		args["used_install_referrer"] = val
-	}
-
-	// Optional: view_attr_window
-	if val := request.GetInt("view_attr_window", 0); val != 0 {
-		args["view_attr_window"] = val
+	for key, value := range paramsObj {
+		args[key] = value
 	}
 
 	// Call the client method
@@ -3898,39 +4116,28 @@ func HandleApplication_get_mobile_sdk_gk(ctx context.Context, request mcp.CallTo
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: device_id
-	if val := request.GetString("device_id", ""); val != "" {
-		args["device_id"] = val
-	}
-
-	// Optional: extinfo
-	// object type - using string
-	if val := request.GetString("extinfo", ""); val != "" {
-		args["extinfo"] = val
-	}
-
-	// Optional: os_version
-	if val := request.GetString("os_version", ""); val != "" {
-		args["os_version"] = val
-	}
-
-	// Required: platform
-	platform, err := request.RequireString("platform")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter platform: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["platform"] = platform
-
-	// Required: sdk_version
-	sdk_version, err := request.RequireString("sdk_version")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter sdk_version: %v", err)), nil
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
-	args["sdk_version"] = sdk_version
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -3978,8 +4185,13 @@ func HandleApplication_get_monetized_digital_store_objects(ctx context.Context, 
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -4026,19 +4238,19 @@ func HandleApplication_post_monetized_digital_store_objects(ctx context.Context,
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: content_id
-	content_id, err := request.RequireString("content_id")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter content_id: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["content_id"] = content_id
-
-	// Required: store
-	store, err := request.RequireString("store")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter store: %v", err)), nil
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
-	args["store"] = store
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Application_post_monetized_digital_store_objects(args)
@@ -4070,8 +4282,13 @@ func HandleApplication_get_object_types(ctx context.Context, request mcp.CallToo
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -4119,8 +4336,13 @@ func HandleApplication_get_objects(ctx context.Context, request mcp.CallToolRequ
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -4167,14 +4389,16 @@ func HandleApplication_post_occludespopups(ctx context.Context, request mcp.Call
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: flash
-	if val := request.GetBool("flash", false); val {
-		args["flash"] = val
-	}
-
-	// Optional: unity
-	if val := request.GetBool("unity", false); val {
-		args["unity"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method
@@ -4206,36 +4430,26 @@ func HandleApplication_get_permissions(ctx context.Context, request mcp.CallTool
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: android_key_hash
-	if val := request.GetString("android_key_hash", ""); val != "" {
-		args["android_key_hash"] = val
-	}
-
-	// Optional: ios_bundle_id
-	if val := request.GetString("ios_bundle_id", ""); val != "" {
-		args["ios_bundle_id"] = val
-	}
-
-	// Optional: permission
-	// array type - using string
-	if val := request.GetString("permission", ""); val != "" {
-		args["permission"] = val
-	}
-
-	// Optional: proxied_app_id
-	if val := request.GetInt("proxied_app_id", 0); val != 0 {
-		args["proxied_app_id"] = val
-	}
-
-	// Optional: status
-	// array type - using string
-	if val := request.GetString("status", ""); val != "" {
-		args["status"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -4282,15 +4496,26 @@ func HandleApplication_get_products(ctx context.Context, request mcp.CallToolReq
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: product_ids
-	// array type - using string
-	if val := request.GetString("product_ids", ""); val != "" {
-		args["product_ids"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -4338,8 +4563,13 @@ func HandleApplication_get_purchases(ctx context.Context, request mcp.CallToolRe
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -4387,8 +4617,13 @@ func HandleApplication_get_roles(ctx context.Context, request mcp.CallToolReques
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -4436,8 +4671,13 @@ func HandleApplication_get_server_domain_infos(ctx context.Context, request mcp.
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -4484,16 +4724,28 @@ func HandleApplication_get_sgw_dataset_status(ctx context.Context, request mcp.C
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: dataset_id
-	dataset_id, err := request.RequireInt("dataset_id")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter dataset_id: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["dataset_id"] = dataset_id
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -4540,21 +4792,28 @@ func HandleApplication_get_sgw_install_deferral_link(ctx context.Context, reques
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: client_ip
-	if val := request.GetString("client_ip", ""); val != "" {
-		args["client_ip"] = val
-	}
-
-	// Required: dataset_id
-	dataset_id, err := request.RequireInt("dataset_id")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter dataset_id: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["dataset_id"] = dataset_id
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -4602,8 +4861,13 @@ func HandleApplication_get_subscribed_domains(ctx context.Context, request mcp.C
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -4650,16 +4914,16 @@ func HandleApplication_post_subscribed_domains(ctx context.Context, request mcp.
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: subscribe
-	// array type - using string
-	if val := request.GetString("subscribe", ""); val != "" {
-		args["subscribe"] = val
-	}
-
-	// Optional: unsubscribe
-	// array type - using string
-	if val := request.GetString("unsubscribe", ""); val != "" {
-		args["unsubscribe"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method
@@ -4692,8 +4956,13 @@ func HandleApplication_get_subscribed_domains_phishing(ctx context.Context, requ
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -4740,16 +5009,16 @@ func HandleApplication_post_subscribed_domains_phishing(ctx context.Context, req
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: subscribe
-	// array type - using string
-	if val := request.GetString("subscribe", ""); val != "" {
-		args["subscribe"] = val
-	}
-
-	// Optional: unsubscribe
-	// array type - using string
-	if val := request.GetString("unsubscribe", ""); val != "" {
-		args["unsubscribe"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method
@@ -4781,15 +5050,16 @@ func HandleApplication_delete_subscriptions(ctx context.Context, request mcp.Cal
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: fields
-	// array type - using string
-	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
-	}
-
-	// Optional: object
-	if val := request.GetString("object", ""); val != "" {
-		args["object"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method
@@ -4822,8 +5092,13 @@ func HandleApplication_get_subscriptions(ctx context.Context, request mcp.CallTo
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -4870,32 +5145,18 @@ func HandleApplication_post_subscriptions(ctx context.Context, request mcp.CallT
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: callback_url
-	if val := request.GetString("callback_url", ""); val != "" {
-		args["callback_url"] = val
-	}
-
-	// Optional: fields
-	// array type - using string
-	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
-	}
-
-	// Optional: include_values
-	if val := request.GetBool("include_values", false); val {
-		args["include_values"] = val
-	}
-
-	// Required: object
-	object, err := request.RequireString("object")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter object: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["object"] = object
-
-	// Optional: verify_token
-	if val := request.GetString("verify_token", ""); val != "" {
-		args["verify_token"] = val
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
 	}
 
 	// Call the client method
@@ -4927,26 +5188,16 @@ func HandleApplication_post_uploads(ctx context.Context, request mcp.CallToolReq
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: file_length
-	if val := request.GetInt("file_length", 0); val != 0 {
-		args["file_length"] = val
-	}
-
-	// Optional: file_name
-	// object type - using string
-	if val := request.GetString("file_name", ""); val != "" {
-		args["file_name"] = val
-	}
-
-	// Optional: file_type
-	// object type - using string
-	if val := request.GetString("file_type", ""); val != "" {
-		args["file_type"] = val
-	}
-
-	// Optional: session_type
-	if val := request.GetString("session_type", ""); val != "" {
-		args["session_type"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method
@@ -4978,33 +5229,19 @@ func HandleApplication_post_whatsapp_business_solution(ctx context.Context, requ
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: owner_permissions
-	owner_permissions, err := request.RequireString("owner_permissions")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter owner_permissions: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["owner_permissions"] = owner_permissions
-
-	// Required: partner_app_id
-	partner_app_id, err := request.RequireString("partner_app_id")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter partner_app_id: %v", err)), nil
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
-	args["partner_app_id"] = partner_app_id
-
-	// Required: partner_permissions
-	partner_permissions, err := request.RequireString("partner_permissions")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter partner_permissions: %v", err)), nil
+	for key, value := range paramsObj {
+		args[key] = value
 	}
-	args["partner_permissions"] = partner_permissions
-
-	// Required: solution_name
-	solution_name, err := request.RequireString("solution_name")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter solution_name: %v", err)), nil
-	}
-	args["solution_name"] = solution_name
 
 	// Call the client method
 	result, err := client.Application_post_whatsapp_business_solution(args)
@@ -5035,14 +5272,26 @@ func HandleApplication_get_whatsapp_business_solutions(ctx context.Context, requ
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: role
-	if val := request.GetString("role", ""); val != "" {
-		args["role"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -5089,14 +5338,26 @@ func HandleApplication_get_(ctx context.Context, request mcp.CallToolRequest) (*
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: advertiser_id
-	if val := request.GetString("advertiser_id", ""); val != "" {
-		args["advertiser_id"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -5143,160 +5404,16 @@ func HandleApplication_post_(ctx context.Context, request mcp.CallToolRequest) (
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: allow_cycle_app_secret
-	if val := request.GetBool("allow_cycle_app_secret", false); val {
-		args["allow_cycle_app_secret"] = val
-	}
-
-	// Optional: an_platforms
-	// array type - using string
-	if val := request.GetString("an_platforms", ""); val != "" {
-		args["an_platforms"] = val
-	}
-
-	// Optional: app_domains
-	// array type - using string
-	if val := request.GetString("app_domains", ""); val != "" {
-		args["app_domains"] = val
-	}
-
-	// Optional: app_name
-	if val := request.GetString("app_name", ""); val != "" {
-		args["app_name"] = val
-	}
-
-	// Optional: app_type
-	if val := request.GetBool("app_type", false); val {
-		args["app_type"] = val
-	}
-
-	// Optional: auth_dialog_headline
-	if val := request.GetString("auth_dialog_headline", ""); val != "" {
-		args["auth_dialog_headline"] = val
-	}
-
-	// Optional: auth_dialog_perms_explanation
-	if val := request.GetString("auth_dialog_perms_explanation", ""); val != "" {
-		args["auth_dialog_perms_explanation"] = val
-	}
-
-	// Optional: auth_referral_enabled
-	if val := request.GetBool("auth_referral_enabled", false); val {
-		args["auth_referral_enabled"] = val
-	}
-
-	// Optional: auth_referral_extended_perms
-	// array type - using string
-	if val := request.GetString("auth_referral_extended_perms", ""); val != "" {
-		args["auth_referral_extended_perms"] = val
-	}
-
-	// Optional: auth_referral_friend_perms
-	// array type - using string
-	if val := request.GetString("auth_referral_friend_perms", ""); val != "" {
-		args["auth_referral_friend_perms"] = val
-	}
-
-	// Optional: auth_referral_response_type
-	if val := request.GetString("auth_referral_response_type", ""); val != "" {
-		args["auth_referral_response_type"] = val
-	}
-
-	// Optional: auth_referral_user_perms
-	// array type - using string
-	if val := request.GetString("auth_referral_user_perms", ""); val != "" {
-		args["auth_referral_user_perms"] = val
-	}
-
-	// Optional: canvas_fluid_height
-	if val := request.GetBool("canvas_fluid_height", false); val {
-		args["canvas_fluid_height"] = val
-	}
-
-	// Optional: canvas_fluid_width
-	if val := request.GetBool("canvas_fluid_width", false); val {
-		args["canvas_fluid_width"] = val
-	}
-
-	// Optional: canvas_url
-	if val := request.GetString("canvas_url", ""); val != "" {
-		args["canvas_url"] = val
-	}
-
-	// Optional: contact_email
-	if val := request.GetString("contact_email", ""); val != "" {
-		args["contact_email"] = val
-	}
-
-	// Optional: deauth_callback_url
-	if val := request.GetString("deauth_callback_url", ""); val != "" {
-		args["deauth_callback_url"] = val
-	}
-
-	// Optional: mobile_web_url
-	if val := request.GetString("mobile_web_url", ""); val != "" {
-		args["mobile_web_url"] = val
-	}
-
-	// Optional: namespace
-	if val := request.GetString("namespace", ""); val != "" {
-		args["namespace"] = val
-	}
-
-	// Optional: page_tab_default_name
-	if val := request.GetString("page_tab_default_name", ""); val != "" {
-		args["page_tab_default_name"] = val
-	}
-
-	// Optional: privacy_policy_url
-	if val := request.GetString("privacy_policy_url", ""); val != "" {
-		args["privacy_policy_url"] = val
-	}
-
-	// Optional: restrictions
-	if val := request.GetString("restrictions", ""); val != "" {
-		args["restrictions"] = val
-	}
-
-	// Optional: secure_canvas_url
-	if val := request.GetString("secure_canvas_url", ""); val != "" {
-		args["secure_canvas_url"] = val
-	}
-
-	// Optional: secure_page_tab_url
-	if val := request.GetString("secure_page_tab_url", ""); val != "" {
-		args["secure_page_tab_url"] = val
-	}
-
-	// Optional: server_ip_whitelist
-	// array type - using string
-	if val := request.GetString("server_ip_whitelist", ""); val != "" {
-		args["server_ip_whitelist"] = val
-	}
-
-	// Optional: terms_of_service_url
-	if val := request.GetString("terms_of_service_url", ""); val != "" {
-		args["terms_of_service_url"] = val
-	}
-
-	// Optional: url_scheme_suffix
-	if val := request.GetString("url_scheme_suffix", ""); val != "" {
-		args["url_scheme_suffix"] = val
-	}
-
-	// Optional: user_support_email
-	if val := request.GetString("user_support_email", ""); val != "" {
-		args["user_support_email"] = val
-	}
-
-	// Optional: user_support_url
-	if val := request.GetString("user_support_url", ""); val != "" {
-		args["user_support_url"] = val
-	}
-
-	// Optional: website_url
-	if val := request.GetString("website_url", ""); val != "" {
-		args["website_url"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method

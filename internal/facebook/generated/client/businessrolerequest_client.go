@@ -142,16 +142,10 @@ func (c *BusinessRoleRequestClient) Businessrolerequest_post_(args map[string]in
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["role"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("role", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["tasks"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("tasks", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 

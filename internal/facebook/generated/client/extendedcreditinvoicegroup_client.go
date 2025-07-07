@@ -24,11 +24,11 @@ func NewExtendedCreditInvoiceGroupClient(accessToken string) *ExtendedCreditInvo
 // extendedcreditinvoicegroup_delete_ad_accounts DELETE ad_accounts for ExtendedCreditInvoiceGroup
 func (c *ExtendedCreditInvoiceGroupClient) Extendedcreditinvoicegroup_delete_ad_accounts(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	ad_account_id, ok := args["ad_account_id"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: ad_account_id")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = ad_account_id // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -38,10 +38,10 @@ func (c *ExtendedCreditInvoiceGroupClient) Extendedcreditinvoicegroup_delete_ad_
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["ad_account_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("ad_account_id", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -145,11 +145,11 @@ func (c *ExtendedCreditInvoiceGroupClient) Extendedcreditinvoicegroup_get_ad_acc
 // extendedcreditinvoicegroup_post_ad_accounts POST ad_accounts for ExtendedCreditInvoiceGroup
 func (c *ExtendedCreditInvoiceGroupClient) Extendedcreditinvoicegroup_post_ad_accounts(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	ad_account_id, ok := args["ad_account_id"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: ad_account_id")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = ad_account_id // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -159,10 +159,10 @@ func (c *ExtendedCreditInvoiceGroupClient) Extendedcreditinvoicegroup_post_ad_ac
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["ad_account_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("ad_account_id", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -317,16 +317,10 @@ func (c *ExtendedCreditInvoiceGroupClient) Extendedcreditinvoicegroup_post_(args
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["emails"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("emails", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["name"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("name", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 

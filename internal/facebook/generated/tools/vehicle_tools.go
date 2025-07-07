@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -20,8 +21,8 @@ func GetVehicleTools() []mcp.Tool {
 	// Available fields for CatalogItemChannelsToIntegrityStatus: channels, rejection_information
 	vehicle_get_channels_to_integrity_statusTool := mcp.NewTool("vehicle_get_channels_to_integrity_status",
 		mcp.WithDescription("GET channels_to_integrity_status for Vehicle"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for CatalogItemChannelsToIntegrityStatus objects. Available fields: channels, rejection_information"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for CatalogItemChannelsToIntegrityStatus objects. Available fields: channels, rejection_information"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -37,17 +38,26 @@ func GetVehicleTools() []mcp.Tool {
 
 	// vehicle_get_override_details tool
 	// Available fields for OverrideDetails: key, type, values
+	// Params object accepts: keys (list<string>), type (vehicleoverride_details_type_enum_param)
 	vehicle_get_override_detailsTool := mcp.NewTool("vehicle_get_override_details",
 		mcp.WithDescription("GET override_details for Vehicle"),
-		mcp.WithString("keys",
-			mcp.Description("keys parameter for override_details"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"keys": map[string]any{
+					"type":        "array",
+					"description": "keys parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+				"type": map[string]any{
+					"type":        "string",
+					"description": "type parameter",
+					"enum":        []string{"COUNTRY", "LANGUAGE", "LANGUAGE_AND_COUNTRY"},
+				},
+			}),
+			mcp.Description("Parameters object containing: keys (array<string>), type (enum) [COUNTRY, LANGUAGE, LANGUAGE_AND_COUNTRY]"),
 		),
-		mcp.WithString("type",
-			mcp.Description("type parameter for override_details"),
-			mcp.Enum("COUNTRY", "LANGUAGE", "LANGUAGE_AND_COUNTRY"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for OverrideDetails objects. Available fields: key, type, values"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for OverrideDetails objects. Available fields: key, type, values"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -65,8 +75,8 @@ func GetVehicleTools() []mcp.Tool {
 	// Available fields for DynamicVideoMetadata: id, tags, url, video
 	vehicle_get_videos_metadataTool := mcp.NewTool("vehicle_get_videos_metadata",
 		mcp.WithDescription("GET videos_metadata for Vehicle"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for DynamicVideoMetadata objects. Available fields: id, tags, url, video"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for DynamicVideoMetadata objects. Available fields: id, tags, url, video"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -84,8 +94,8 @@ func GetVehicleTools() []mcp.Tool {
 	// Available fields for Vehicle: address, applinks, availability, availability_circle_radius, availability_circle_radius_unit, body_style, category_specific_fields, condition, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0, custom_number_1, custom_number_2, custom_number_3, custom_number_4, date_first_on_lot, dealer_communication_channel, dealer_email, dealer_id, dealer_name, dealer_phone, dealer_privacy_policy_url, description, drivetrain, exterior_color, fb_page_id, features, fuel_type, id, image_fetch_status, images, interior_color, legal_disclosure_impressum_url, make, mileage, model, previous_currency, previous_price, price, product_priority_0, product_priority_1, product_priority_2, product_priority_3, product_priority_4, sale_currency, sale_price, sanitized_images, state_of_vehicle, tags, title, transmission, trim, unit_price, url, vehicle_id, vehicle_registration_plate, vehicle_specifications, vehicle_type, vin, visibility, year
 	vehicle_get_Tool := mcp.NewTool("vehicle_get_",
 		mcp.WithDescription("GET  for Vehicle"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for Vehicle objects. Available fields: address, applinks, availability, availability_circle_radius, availability_circle_radius_unit, body_style, category_specific_fields, condition, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0 (and 50 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for Vehicle objects. Available fields: address, applinks, availability, availability_circle_radius, availability_circle_radius_unit, body_style, category_specific_fields, condition, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0 (and 50 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -100,102 +110,138 @@ func GetVehicleTools() []mcp.Tool {
 	tools = append(tools, vehicle_get_Tool)
 
 	// vehicle_post_ tool
+	// Params object accepts: address (map), applinks (Object), availability (vehicle_availability), body_style (vehicle_body_style), condition (vehicle_condition), currency (string), date_first_on_lot (string), dealer_id (string), dealer_name (string), dealer_phone (string), description (string), drivetrain (vehicle_drivetrain), exterior_color (string), fb_page_id (string), fuel_type (vehicle_fuel_type), images (list<Object>), interior_color (string), make (string), mileage (map), model (string), price (unsigned int), state_of_vehicle (vehicle_state_of_vehicle), title (string), transmission (vehicle_transmission), trim (string), url (string), vehicle_type (vehicle_vehicle_type), vin (string), year (unsigned int)
 	vehicle_post_Tool := mcp.NewTool("vehicle_post_",
 		mcp.WithDescription("POST  for Vehicle"),
-		mcp.WithString("address",
-			mcp.Description("address parameter for "),
-		),
-		mcp.WithString("applinks",
-			mcp.Description("applinks parameter for "),
-		),
-		mcp.WithString("availability",
-			mcp.Description("availability parameter for "),
-			mcp.Enum("AVAILABLE", "NOT_AVAILABLE", "PENDING", "UNKNOWN"),
-		),
-		mcp.WithString("body_style",
-			mcp.Description("body_style parameter for "),
-			mcp.Enum("CONVERTIBLE", "COUPE", "CROSSOVER", "ESTATE", "GRANDTOURER", "HATCHBACK", "MINIBUS", "MINIVAN", "MPV", "NONE", "OTHER", "PICKUP", "ROADSTER", "SALOON", "SEDAN", "SMALL_CAR", "SPORTSCAR", "SUPERCAR", "SUPERMINI", "SUV", "TRUCK", "VAN", "WAGON"),
-		),
-		mcp.WithString("condition",
-			mcp.Description("condition parameter for "),
-			mcp.Enum("EXCELLENT", "FAIR", "GOOD", "NONE", "OTHER", "POOR", "VERY_GOOD"),
-		),
-		mcp.WithString("currency",
-			mcp.Description("currency parameter for "),
-		),
-		mcp.WithString("date_first_on_lot",
-			mcp.Description("date_first_on_lot parameter for "),
-		),
-		mcp.WithString("dealer_id",
-			mcp.Description("dealer_id parameter for "),
-		),
-		mcp.WithString("dealer_name",
-			mcp.Description("dealer_name parameter for "),
-		),
-		mcp.WithString("dealer_phone",
-			mcp.Description("dealer_phone parameter for "),
-		),
-		mcp.WithString("description",
-			mcp.Description("description parameter for "),
-		),
-		mcp.WithString("drivetrain",
-			mcp.Description("drivetrain parameter for "),
-			mcp.Enum("AWD", "FOUR_WD", "FWD", "NONE", "OTHER", "RWD", "TWO_WD"),
-		),
-		mcp.WithString("exterior_color",
-			mcp.Description("exterior_color parameter for "),
-		),
-		mcp.WithString("fb_page_id",
-			mcp.Description("fb_page_id parameter for "),
-		),
-		mcp.WithString("fuel_type",
-			mcp.Description("fuel_type parameter for "),
-			mcp.Enum("DIESEL", "ELECTRIC", "FLEX", "GASOLINE", "HYBRID", "NONE", "OTHER", "PETROL", "PLUGIN_HYBRID"),
-		),
-		mcp.WithString("images",
-			mcp.Description("images parameter for "),
-		),
-		mcp.WithString("interior_color",
-			mcp.Description("interior_color parameter for "),
-		),
-		mcp.WithString("make",
-			mcp.Description("make parameter for "),
-		),
-		mcp.WithString("mileage",
-			mcp.Description("mileage parameter for "),
-		),
-		mcp.WithString("model",
-			mcp.Description("model parameter for "),
-		),
-		mcp.WithNumber("price",
-			mcp.Description("price parameter for "),
-		),
-		mcp.WithString("state_of_vehicle",
-			mcp.Description("state_of_vehicle parameter for "),
-			mcp.Enum("CPO", "NEW", "USED"),
-		),
-		mcp.WithString("title",
-			mcp.Description("title parameter for "),
-		),
-		mcp.WithString("transmission",
-			mcp.Description("transmission parameter for "),
-			mcp.Enum("AUTOMATIC", "MANUAL", "NONE", "OTHER"),
-		),
-		mcp.WithString("trim",
-			mcp.Description("trim parameter for "),
-		),
-		mcp.WithString("url",
-			mcp.Description("url parameter for "),
-		),
-		mcp.WithString("vehicle_type",
-			mcp.Description("vehicle_type parameter for "),
-			mcp.Enum("BOAT", "CAR_TRUCK", "COMMERCIAL", "MOTORCYCLE", "OTHER", "POWERSPORT", "RV_CAMPER", "TRAILER"),
-		),
-		mcp.WithString("vin",
-			mcp.Description("vin parameter for "),
-		),
-		mcp.WithNumber("year",
-			mcp.Description("year parameter for "),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"address": map[string]any{
+					"type":        "object",
+					"description": "address parameter",
+				},
+				"applinks": map[string]any{
+					"type":        "object",
+					"description": "applinks parameter",
+				},
+				"availability": map[string]any{
+					"type":        "string",
+					"description": "availability parameter",
+					"enum":        []string{"AVAILABLE", "NOT_AVAILABLE", "PENDING", "UNKNOWN"},
+				},
+				"body_style": map[string]any{
+					"type":        "string",
+					"description": "body_style parameter",
+					"enum":        []string{"CONVERTIBLE", "COUPE", "CROSSOVER", "ESTATE", "GRANDTOURER", "HATCHBACK", "MINIBUS", "MINIVAN", "MPV", "NONE", "OTHER", "PICKUP", "ROADSTER", "SALOON", "SEDAN", "SMALL_CAR", "SPORTSCAR", "SUPERCAR", "SUPERMINI", "SUV", "TRUCK", "VAN", "WAGON"},
+				},
+				"condition": map[string]any{
+					"type":        "string",
+					"description": "condition parameter",
+					"enum":        []string{"EXCELLENT", "FAIR", "GOOD", "NONE", "OTHER", "POOR", "VERY_GOOD"},
+				},
+				"currency": map[string]any{
+					"type":        "string",
+					"description": "currency parameter",
+				},
+				"date_first_on_lot": map[string]any{
+					"type":        "string",
+					"description": "date_first_on_lot parameter",
+				},
+				"dealer_id": map[string]any{
+					"type":        "string",
+					"description": "dealer_id parameter",
+				},
+				"dealer_name": map[string]any{
+					"type":        "string",
+					"description": "dealer_name parameter",
+				},
+				"dealer_phone": map[string]any{
+					"type":        "string",
+					"description": "dealer_phone parameter",
+				},
+				"description": map[string]any{
+					"type":        "string",
+					"description": "description parameter",
+				},
+				"drivetrain": map[string]any{
+					"type":        "string",
+					"description": "drivetrain parameter",
+					"enum":        []string{"AWD", "FOUR_WD", "FWD", "NONE", "OTHER", "RWD", "TWO_WD"},
+				},
+				"exterior_color": map[string]any{
+					"type":        "string",
+					"description": "exterior_color parameter",
+				},
+				"fb_page_id": map[string]any{
+					"type":        "string",
+					"description": "fb_page_id parameter",
+				},
+				"fuel_type": map[string]any{
+					"type":        "string",
+					"description": "fuel_type parameter",
+					"enum":        []string{"DIESEL", "ELECTRIC", "FLEX", "GASOLINE", "HYBRID", "NONE", "OTHER", "PETROL", "PLUGIN_HYBRID"},
+				},
+				"images": map[string]any{
+					"type":        "array",
+					"description": "images parameter",
+					"items":       map[string]any{"type": "object"},
+				},
+				"interior_color": map[string]any{
+					"type":        "string",
+					"description": "interior_color parameter",
+				},
+				"make": map[string]any{
+					"type":        "string",
+					"description": "make parameter",
+				},
+				"mileage": map[string]any{
+					"type":        "object",
+					"description": "mileage parameter",
+				},
+				"model": map[string]any{
+					"type":        "string",
+					"description": "model parameter",
+				},
+				"price": map[string]any{
+					"type":        "integer",
+					"description": "price parameter",
+				},
+				"state_of_vehicle": map[string]any{
+					"type":        "string",
+					"description": "state_of_vehicle parameter",
+					"enum":        []string{"CPO", "NEW", "USED"},
+				},
+				"title": map[string]any{
+					"type":        "string",
+					"description": "title parameter",
+				},
+				"transmission": map[string]any{
+					"type":        "string",
+					"description": "transmission parameter",
+					"enum":        []string{"AUTOMATIC", "MANUAL", "NONE", "OTHER"},
+				},
+				"trim": map[string]any{
+					"type":        "string",
+					"description": "trim parameter",
+				},
+				"url": map[string]any{
+					"type":        "string",
+					"description": "url parameter",
+				},
+				"vehicle_type": map[string]any{
+					"type":        "string",
+					"description": "vehicle_type parameter",
+					"enum":        []string{"BOAT", "CAR_TRUCK", "COMMERCIAL", "MOTORCYCLE", "OTHER", "POWERSPORT", "RV_CAMPER", "TRAILER"},
+				},
+				"vin": map[string]any{
+					"type":        "string",
+					"description": "vin parameter",
+				},
+				"year": map[string]any{
+					"type":        "integer",
+					"description": "year parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: address (object), applinks (object), availability (vehicle_availability) [AVAILABLE, NOT_AVAILABLE, PENDING, UNKNOWN], body_style (vehicle_body_style) [CONVERTIBLE, COUPE, CROSSOVER, ESTATE, GRANDTOURER, ...], condition (vehicle_condition) [EXCELLENT, FAIR, GOOD, NONE, OTHER, ...], currency (string), date_first_on_lot (string), dealer_id (string), dealer_name (string), dealer_phone (string), description (string), drivetrain (vehicle_drivetrain) [AWD, FOUR_WD, FWD, NONE, OTHER, ...], exterior_color (string), fb_page_id (string), fuel_type (vehicle_fuel_type) [DIESEL, ELECTRIC, FLEX, GASOLINE, HYBRID, ...], images (array<object>), interior_color (string), make (string), mileage (object), model (string), price (integer), state_of_vehicle (vehicle_state_of_vehicle) [CPO, NEW, USED], title (string), transmission (vehicle_transmission) [AUTOMATIC, MANUAL, NONE, OTHER], trim (string), url (string), vehicle_type (vehicle_vehicle_type) [BOAT, CAR_TRUCK, COMMERCIAL, MOTORCYCLE, OTHER, ...], vin (string), year (integer)"),
 		),
 	)
 	tools = append(tools, vehicle_post_Tool)
@@ -220,8 +266,13 @@ func HandleVehicle_get_channels_to_integrity_status(ctx context.Context, request
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -268,20 +319,26 @@ func HandleVehicle_get_override_details(ctx context.Context, request mcp.CallToo
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: keys
-	// array type - using string
-	if val := request.GetString("keys", ""); val != "" {
-		args["keys"] = val
-	}
-
-	// Optional: type
-	if val := request.GetString("type", ""); val != "" {
-		args["type"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -329,8 +386,13 @@ func HandleVehicle_get_videos_metadata(ctx context.Context, request mcp.CallTool
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -378,8 +440,13 @@ func HandleVehicle_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -426,151 +493,16 @@ func HandleVehicle_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: address
-	if val := request.GetString("address", ""); val != "" {
-		args["address"] = val
-	}
-
-	// Optional: applinks
-	// object type - using string
-	if val := request.GetString("applinks", ""); val != "" {
-		args["applinks"] = val
-	}
-
-	// Optional: availability
-	if val := request.GetString("availability", ""); val != "" {
-		args["availability"] = val
-	}
-
-	// Optional: body_style
-	if val := request.GetString("body_style", ""); val != "" {
-		args["body_style"] = val
-	}
-
-	// Optional: condition
-	if val := request.GetString("condition", ""); val != "" {
-		args["condition"] = val
-	}
-
-	// Optional: currency
-	if val := request.GetString("currency", ""); val != "" {
-		args["currency"] = val
-	}
-
-	// Optional: date_first_on_lot
-	if val := request.GetString("date_first_on_lot", ""); val != "" {
-		args["date_first_on_lot"] = val
-	}
-
-	// Optional: dealer_id
-	if val := request.GetString("dealer_id", ""); val != "" {
-		args["dealer_id"] = val
-	}
-
-	// Optional: dealer_name
-	if val := request.GetString("dealer_name", ""); val != "" {
-		args["dealer_name"] = val
-	}
-
-	// Optional: dealer_phone
-	if val := request.GetString("dealer_phone", ""); val != "" {
-		args["dealer_phone"] = val
-	}
-
-	// Optional: description
-	if val := request.GetString("description", ""); val != "" {
-		args["description"] = val
-	}
-
-	// Optional: drivetrain
-	if val := request.GetString("drivetrain", ""); val != "" {
-		args["drivetrain"] = val
-	}
-
-	// Optional: exterior_color
-	if val := request.GetString("exterior_color", ""); val != "" {
-		args["exterior_color"] = val
-	}
-
-	// Optional: fb_page_id
-	if val := request.GetString("fb_page_id", ""); val != "" {
-		args["fb_page_id"] = val
-	}
-
-	// Optional: fuel_type
-	if val := request.GetString("fuel_type", ""); val != "" {
-		args["fuel_type"] = val
-	}
-
-	// Optional: images
-	// array type - using string
-	if val := request.GetString("images", ""); val != "" {
-		args["images"] = val
-	}
-
-	// Optional: interior_color
-	if val := request.GetString("interior_color", ""); val != "" {
-		args["interior_color"] = val
-	}
-
-	// Optional: make
-	if val := request.GetString("make", ""); val != "" {
-		args["make"] = val
-	}
-
-	// Optional: mileage
-	if val := request.GetString("mileage", ""); val != "" {
-		args["mileage"] = val
-	}
-
-	// Optional: model
-	if val := request.GetString("model", ""); val != "" {
-		args["model"] = val
-	}
-
-	// Optional: price
-	if val := request.GetInt("price", 0); val != 0 {
-		args["price"] = val
-	}
-
-	// Optional: state_of_vehicle
-	if val := request.GetString("state_of_vehicle", ""); val != "" {
-		args["state_of_vehicle"] = val
-	}
-
-	// Optional: title
-	if val := request.GetString("title", ""); val != "" {
-		args["title"] = val
-	}
-
-	// Optional: transmission
-	if val := request.GetString("transmission", ""); val != "" {
-		args["transmission"] = val
-	}
-
-	// Optional: trim
-	if val := request.GetString("trim", ""); val != "" {
-		args["trim"] = val
-	}
-
-	// Optional: url
-	if val := request.GetString("url", ""); val != "" {
-		args["url"] = val
-	}
-
-	// Optional: vehicle_type
-	if val := request.GetString("vehicle_type", ""); val != "" {
-		args["vehicle_type"] = val
-	}
-
-	// Optional: vin
-	if val := request.GetString("vin", ""); val != "" {
-		args["vin"] = val
-	}
-
-	// Optional: year
-	if val := request.GetInt("year", 0); val != 0 {
-		args["year"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method

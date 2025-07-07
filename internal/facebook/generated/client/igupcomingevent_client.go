@@ -91,16 +91,11 @@ func (c *IGUpcomingEventClient) Igupcomingevent_get_(args map[string]interface{}
 // igupcomingevent_post_ POST  for IGUpcomingEvent
 func (c *IGUpcomingEventClient) Igupcomingevent_post_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	start_time, ok := args["start_time"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: start_time")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = start_time // Suppress unused variable warning
-	title, ok := args["title"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: title")
-	}
-	_ = title // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -110,34 +105,10 @@ func (c *IGUpcomingEventClient) Igupcomingevent_post_(args map[string]interface{
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["end_time"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("end_time", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["notification_subtypes"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("notification_subtypes", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["notification_target_time"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("notification_target_time", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["start_time"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("start_time", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["title"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("title", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 

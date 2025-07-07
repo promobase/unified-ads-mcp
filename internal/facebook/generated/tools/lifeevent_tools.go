@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -20,8 +21,8 @@ func GetLifeEventTools() []mcp.Tool {
 	// Available fields for Profile: can_post, id, link, name, pic, pic_crop, pic_large, pic_small, pic_square, profile_type, username
 	lifeevent_get_likesTool := mcp.NewTool("lifeevent_get_likes",
 		mcp.WithDescription("GET likes for LifeEvent"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for Profile objects. Available fields: can_post, id, link, name, pic, pic_crop, pic_large, pic_small, pic_square, profile_type, username"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for Profile objects. Available fields: can_post, id, link, name, pic, pic_crop, pic_large, pic_small, pic_square, profile_type, username"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -39,8 +40,8 @@ func GetLifeEventTools() []mcp.Tool {
 	// Available fields for LifeEvent: description, end_time, from, id, is_hidden, start_time, title, updated_time
 	lifeevent_get_Tool := mcp.NewTool("lifeevent_get_",
 		mcp.WithDescription("GET  for LifeEvent"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for LifeEvent objects. Available fields: description, end_time, from, id, is_hidden, start_time, title, updated_time"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for LifeEvent objects. Available fields: description, end_time, from, id, is_hidden, start_time, title, updated_time"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -74,8 +75,13 @@ func HandleLifeevent_get_likes(ctx context.Context, request mcp.CallToolRequest)
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -123,8 +129,13 @@ func HandleLifeevent_get_(ctx context.Context, request mcp.CallToolRequest) (*mc
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit

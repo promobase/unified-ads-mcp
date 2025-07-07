@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -17,11 +18,20 @@ func GetAppRequestTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// apprequest_delete_ tool
+	// Params object accepts: ids (list<string>)
 	apprequest_delete_Tool := mcp.NewTool("apprequest_delete_",
 		mcp.WithDescription("DELETE  for AppRequest"),
-		mcp.WithString("ids",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("ids parameter for "),
+			mcp.Properties(map[string]any{
+				"ids": map[string]any{
+					"type":        "array",
+					"description": "ids parameter",
+					"required":    true,
+					"items":       map[string]any{"type": "string"},
+				},
+			}),
+			mcp.Description("Parameters object containing: ids (array<string>) [required]"),
 		),
 	)
 	tools = append(tools, apprequest_delete_Tool)
@@ -30,8 +40,8 @@ func GetAppRequestTools() []mcp.Tool {
 	// Available fields for AppRequest: action_type, application, created_time, data, from, id, message, object, to
 	apprequest_get_Tool := mcp.NewTool("apprequest_get_",
 		mcp.WithDescription("GET  for AppRequest"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for AppRequest objects. Available fields: action_type, application, created_time, data, from, id, message, object, to"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for AppRequest objects. Available fields: action_type, application, created_time, data, from, id, message, object, to"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -64,12 +74,19 @@ func HandleApprequest_delete_(ctx context.Context, request mcp.CallToolRequest) 
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: ids
-	ids, err := request.RequireString("ids")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter ids: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["ids"] = ids
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Apprequest_delete_(args)
@@ -101,8 +118,13 @@ func HandleApprequest_get_(ctx context.Context, request mcp.CallToolRequest) (*m
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit

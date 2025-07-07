@@ -24,11 +24,11 @@ func NewAdMonetizationPropertyClient(accessToken string) *AdMonetizationProperty
 // admonetizationproperty_get_adnetworkanalytics GET adnetworkanalytics for AdMonetizationProperty
 func (c *AdMonetizationPropertyClient) Admonetizationproperty_get_adnetworkanalytics(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	metrics, ok := args["metrics"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: metrics")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = metrics // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -38,64 +38,10 @@ func (c *AdMonetizationPropertyClient) Admonetizationproperty_get_adnetworkanaly
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["aggregation_period"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("aggregation_period", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["breakdowns"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("breakdowns", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["filters"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("filters", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["limit"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("limit", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["metrics"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("metrics", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["ordering_column"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("ordering_column", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["ordering_type"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("ordering_type", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["should_include_until"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("should_include_until", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["since"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("since", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["until"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("until", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -156,11 +102,11 @@ func (c *AdMonetizationPropertyClient) Admonetizationproperty_get_adnetworkanaly
 // admonetizationproperty_post_adnetworkanalytics POST adnetworkanalytics for AdMonetizationProperty
 func (c *AdMonetizationPropertyClient) Admonetizationproperty_post_adnetworkanalytics(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	metrics, ok := args["metrics"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: metrics")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = metrics // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -170,58 +116,10 @@ func (c *AdMonetizationPropertyClient) Admonetizationproperty_post_adnetworkanal
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["aggregation_period"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("aggregation_period", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["breakdowns"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("breakdowns", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["filters"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("filters", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["limit"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("limit", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["metrics"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("metrics", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["ordering_column"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("ordering_column", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["ordering_type"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("ordering_type", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["since"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("since", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["until"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("until", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -267,10 +165,10 @@ func (c *AdMonetizationPropertyClient) Admonetizationproperty_get_adnetworkanaly
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["query_ids"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("query_ids", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {

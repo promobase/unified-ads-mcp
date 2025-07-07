@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -20,8 +21,8 @@ func GetWhatsAppBusinessPreVerifiedPhoneNumberTools() []mcp.Tool {
 	// Available fields for Business: block_offline_analytics, collaborative_ads_managed_partner_business_info, collaborative_ads_managed_partner_eligibility, collaborative_ads_partner_premium_options, created_by, created_time, extended_updated_time, id, is_hidden, link, name, payment_account_id, primary_page, profile_picture_uri, timezone_id, two_factor_type, updated_by, updated_time, user_access_expire_time, verification_status, vertical, vertical_id
 	whatsappbusinesspreverifiedphonenumber_get_partnersTool := mcp.NewTool("whatsappbusinesspreverifiedphonenumber_get_partners",
 		mcp.WithDescription("GET partners for WhatsAppBusinessPreVerifiedPhoneNumber"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for Business objects. Available fields: block_offline_analytics, collaborative_ads_managed_partner_business_info, collaborative_ads_managed_partner_eligibility, collaborative_ads_partner_premium_options, created_by, created_time, extended_updated_time, id, is_hidden, link, name, payment_account_id, primary_page, profile_picture_uri, timezone_id (and 7 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for Business objects. Available fields: block_offline_analytics, collaborative_ads_managed_partner_business_info, collaborative_ads_managed_partner_eligibility, collaborative_ads_partner_premium_options, created_by, created_time, extended_updated_time, id, is_hidden, link, name, payment_account_id, primary_page, profile_picture_uri, timezone_id (and 7 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -36,26 +37,43 @@ func GetWhatsAppBusinessPreVerifiedPhoneNumberTools() []mcp.Tool {
 	tools = append(tools, whatsappbusinesspreverifiedphonenumber_get_partnersTool)
 
 	// whatsappbusinesspreverifiedphonenumber_post_request_code tool
+	// Params object accepts: code_method (whatsappbusinesspreverifiedphonenumberrequest_code_code_method_enum_param), language (string)
 	whatsappbusinesspreverifiedphonenumber_post_request_codeTool := mcp.NewTool("whatsappbusinesspreverifiedphonenumber_post_request_code",
 		mcp.WithDescription("POST request_code for WhatsAppBusinessPreVerifiedPhoneNumber"),
-		mcp.WithString("code_method",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("code_method parameter for request_code"),
-			mcp.Enum("SMS", "VOICE"),
-		),
-		mcp.WithString("language",
-			mcp.Required(),
-			mcp.Description("language parameter for request_code"),
+			mcp.Properties(map[string]any{
+				"code_method": map[string]any{
+					"type":        "string",
+					"description": "code_method parameter",
+					"required":    true,
+					"enum":        []string{"SMS", "VOICE"},
+				},
+				"language": map[string]any{
+					"type":        "string",
+					"description": "language parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: code_method (enum) [SMS, VOICE] [required], language (string) [required]"),
 		),
 	)
 	tools = append(tools, whatsappbusinesspreverifiedphonenumber_post_request_codeTool)
 
 	// whatsappbusinesspreverifiedphonenumber_post_verify_code tool
+	// Params object accepts: code (string)
 	whatsappbusinesspreverifiedphonenumber_post_verify_codeTool := mcp.NewTool("whatsappbusinesspreverifiedphonenumber_post_verify_code",
 		mcp.WithDescription("POST verify_code for WhatsAppBusinessPreVerifiedPhoneNumber"),
-		mcp.WithString("code",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("code parameter for verify_code"),
+			mcp.Properties(map[string]any{
+				"code": map[string]any{
+					"type":        "string",
+					"description": "code parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: code (string) [required]"),
 		),
 	)
 	tools = append(tools, whatsappbusinesspreverifiedphonenumber_post_verify_codeTool)
@@ -70,8 +88,8 @@ func GetWhatsAppBusinessPreVerifiedPhoneNumberTools() []mcp.Tool {
 	// Available fields for WhatsAppBusinessPreVerifiedPhoneNumber: code_verification_status, code_verification_time, id, owner_business, phone_number, verification_expiry_time
 	whatsappbusinesspreverifiedphonenumber_get_Tool := mcp.NewTool("whatsappbusinesspreverifiedphonenumber_get_",
 		mcp.WithDescription("GET  for WhatsAppBusinessPreVerifiedPhoneNumber"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for WhatsAppBusinessPreVerifiedPhoneNumber objects. Available fields: code_verification_status, code_verification_time, id, owner_business, phone_number, verification_expiry_time"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for WhatsAppBusinessPreVerifiedPhoneNumber objects. Available fields: code_verification_status, code_verification_time, id, owner_business, phone_number, verification_expiry_time"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -105,8 +123,13 @@ func HandleWhatsappbusinesspreverifiedphonenumber_get_partners(ctx context.Conte
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -153,19 +176,19 @@ func HandleWhatsappbusinesspreverifiedphonenumber_post_request_code(ctx context.
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: code_method
-	code_method, err := request.RequireString("code_method")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter code_method: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["code_method"] = code_method
-
-	// Required: language
-	language, err := request.RequireString("language")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter language: %v", err)), nil
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
-	args["language"] = language
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Whatsappbusinesspreverifiedphonenumber_post_request_code(args)
@@ -196,12 +219,19 @@ func HandleWhatsappbusinesspreverifiedphonenumber_post_verify_code(ctx context.C
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: code
-	code, err := request.RequireString("code")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter code: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["code"] = code
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Whatsappbusinesspreverifiedphonenumber_post_verify_code(args)
@@ -262,8 +292,13 @@ func HandleWhatsappbusinesspreverifiedphonenumber_get_(ctx context.Context, requ
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit

@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -18,14 +19,22 @@ func GetShadowIGHashtagTools() []mcp.Tool {
 
 	// shadowighashtag_get_recent_media tool
 	// Available fields for IGMedia: alt_text, boost_eligibility_info, caption, comments_count, copyright_check_information, id, ig_id, is_comment_enabled, is_shared_to_feed, legacy_instagram_media_id, like_count, media_product_type, media_type, media_url, owner, permalink, shortcode, thumbnail_url, timestamp, username, view_count
+	// Params object accepts: user_id (string)
 	shadowighashtag_get_recent_mediaTool := mcp.NewTool("shadowighashtag_get_recent_media",
 		mcp.WithDescription("GET recent_media for ShadowIGHashtag"),
-		mcp.WithString("user_id",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("user_id parameter for recent_media"),
+			mcp.Properties(map[string]any{
+				"user_id": map[string]any{
+					"type":        "string",
+					"description": "user_id parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: user_id (string) [required]"),
 		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for IGMedia objects. Available fields: alt_text, boost_eligibility_info, caption, comments_count, copyright_check_information, id, ig_id, is_comment_enabled, is_shared_to_feed, legacy_instagram_media_id, like_count, media_product_type, media_type, media_url, owner (and 6 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for IGMedia objects. Available fields: alt_text, boost_eligibility_info, caption, comments_count, copyright_check_information, id, ig_id, is_comment_enabled, is_shared_to_feed, legacy_instagram_media_id, like_count, media_product_type, media_type, media_url, owner (and 6 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -41,14 +50,22 @@ func GetShadowIGHashtagTools() []mcp.Tool {
 
 	// shadowighashtag_get_top_media tool
 	// Available fields for IGMedia: alt_text, boost_eligibility_info, caption, comments_count, copyright_check_information, id, ig_id, is_comment_enabled, is_shared_to_feed, legacy_instagram_media_id, like_count, media_product_type, media_type, media_url, owner, permalink, shortcode, thumbnail_url, timestamp, username, view_count
+	// Params object accepts: user_id (string)
 	shadowighashtag_get_top_mediaTool := mcp.NewTool("shadowighashtag_get_top_media",
 		mcp.WithDescription("GET top_media for ShadowIGHashtag"),
-		mcp.WithString("user_id",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("user_id parameter for top_media"),
+			mcp.Properties(map[string]any{
+				"user_id": map[string]any{
+					"type":        "string",
+					"description": "user_id parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: user_id (string) [required]"),
 		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for IGMedia objects. Available fields: alt_text, boost_eligibility_info, caption, comments_count, copyright_check_information, id, ig_id, is_comment_enabled, is_shared_to_feed, legacy_instagram_media_id, like_count, media_product_type, media_type, media_url, owner (and 6 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for IGMedia objects. Available fields: alt_text, boost_eligibility_info, caption, comments_count, copyright_check_information, id, ig_id, is_comment_enabled, is_shared_to_feed, legacy_instagram_media_id, like_count, media_product_type, media_type, media_url, owner (and 6 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -66,8 +83,8 @@ func GetShadowIGHashtagTools() []mcp.Tool {
 	// Available fields for ShadowIGHashtag: id, name
 	shadowighashtag_get_Tool := mcp.NewTool("shadowighashtag_get_",
 		mcp.WithDescription("GET  for ShadowIGHashtag"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for ShadowIGHashtag objects. Available fields: id, name"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for ShadowIGHashtag objects. Available fields: id, name"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -100,16 +117,28 @@ func HandleShadowighashtag_get_recent_media(ctx context.Context, request mcp.Cal
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: user_id
-	user_id, err := request.RequireString("user_id")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter user_id: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["user_id"] = user_id
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -156,16 +185,28 @@ func HandleShadowighashtag_get_top_media(ctx context.Context, request mcp.CallTo
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: user_id
-	user_id, err := request.RequireString("user_id")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter user_id: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["user_id"] = user_id
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -213,8 +254,13 @@ func HandleShadowighashtag_get_(ctx context.Context, request mcp.CallToolRequest
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit

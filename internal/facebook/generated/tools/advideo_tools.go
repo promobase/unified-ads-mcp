@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -19,8 +20,8 @@ func GetAdVideoTools() []mcp.Tool {
 	// advideo_get_boost_ads_list tool
 	advideo_get_boost_ads_listTool := mcp.NewTool("advideo_get_boost_ads_list",
 		mcp.WithDescription("GET boost_ads_list for AdVideo"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -37,8 +38,8 @@ func GetAdVideoTools() []mcp.Tool {
 	// advideo_get_captions tool
 	advideo_get_captionsTool := mcp.NewTool("advideo_get_captions",
 		mcp.WithDescription("GET captions for AdVideo"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -53,16 +54,26 @@ func GetAdVideoTools() []mcp.Tool {
 	tools = append(tools, advideo_get_captionsTool)
 
 	// advideo_post_captions tool
+	// Params object accepts: captions_file (file), default_locale (string), locales_to_delete (list<string>)
 	advideo_post_captionsTool := mcp.NewTool("advideo_post_captions",
 		mcp.WithDescription("POST captions for AdVideo"),
-		mcp.WithString("captions_file",
-			mcp.Description("captions_file parameter for captions"),
-		),
-		mcp.WithString("default_locale",
-			mcp.Description("default_locale parameter for captions"),
-		),
-		mcp.WithString("locales_to_delete",
-			mcp.Description("locales_to_delete parameter for captions"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"captions_file": map[string]any{
+					"type":        "string",
+					"description": "captions_file parameter",
+				},
+				"default_locale": map[string]any{
+					"type":        "string",
+					"description": "default_locale parameter",
+				},
+				"locales_to_delete": map[string]any{
+					"type":        "array",
+					"description": "locales_to_delete parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+			}),
+			mcp.Description("Parameters object containing: captions_file (file), default_locale (string), locales_to_delete (array<string>)"),
 		),
 	)
 	tools = append(tools, advideo_post_captionsTool)
@@ -70,8 +81,8 @@ func GetAdVideoTools() []mcp.Tool {
 	// advideo_get_collaborators tool
 	advideo_get_collaboratorsTool := mcp.NewTool("advideo_get_collaborators",
 		mcp.WithDescription("GET collaborators for AdVideo"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -86,36 +97,54 @@ func GetAdVideoTools() []mcp.Tool {
 	tools = append(tools, advideo_get_collaboratorsTool)
 
 	// advideo_post_collaborators tool
+	// Params object accepts: target_id (string)
 	advideo_post_collaboratorsTool := mcp.NewTool("advideo_post_collaborators",
 		mcp.WithDescription("POST collaborators for AdVideo"),
-		mcp.WithString("target_id",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("target_id parameter for collaborators"),
+			mcp.Properties(map[string]any{
+				"target_id": map[string]any{
+					"type":        "string",
+					"description": "target_id parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: target_id (string) [required]"),
 		),
 	)
 	tools = append(tools, advideo_post_collaboratorsTool)
 
 	// advideo_get_comments tool
 	// Available fields for Comment: admin_creator, application, attachment, can_comment, can_hide, can_like, can_remove, can_reply_privately, comment_count, created_time, from, id, is_hidden, is_private, like_count, live_broadcast_timestamp, message, message_tags, object, parent, permalink_url, private_reply_conversation, user_likes
+	// Params object accepts: filter (videocomments_filter_enum_param), live_filter (videocomments_live_filter_enum_param), order (videocomments_order_enum_param), since (datetime)
 	advideo_get_commentsTool := mcp.NewTool("advideo_get_comments",
 		mcp.WithDescription("GET comments for AdVideo"),
-		mcp.WithString("filter",
-			mcp.Description("filter parameter for comments"),
-			mcp.Enum("stream", "toplevel"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"filter": map[string]any{
+					"type":        "string",
+					"description": "filter parameter",
+					"enum":        []string{"stream", "toplevel"},
+				},
+				"live_filter": map[string]any{
+					"type":        "string",
+					"description": "live_filter parameter",
+					"enum":        []string{"filter_low_quality", "no_filter"},
+				},
+				"order": map[string]any{
+					"type":        "string",
+					"description": "order parameter",
+					"enum":        []string{"chronological", "reverse_chronological"},
+				},
+				"since": map[string]any{
+					"type":        "string",
+					"description": "since parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: filter (enum) [stream, toplevel], live_filter (enum) [filter_low_quality, no_filter], order (enum) [chronological, reverse_chronological], since (datetime)"),
 		),
-		mcp.WithString("live_filter",
-			mcp.Description("live_filter parameter for comments"),
-			mcp.Enum("filter_low_quality", "no_filter"),
-		),
-		mcp.WithString("order",
-			mcp.Description("order parameter for comments"),
-			mcp.Enum("chronological", "reverse_chronological"),
-		),
-		mcp.WithString("since",
-			mcp.Description("since parameter for comments"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for Comment objects. Available fields: admin_creator, application, attachment, can_comment, can_hide, can_like, can_remove, can_reply_privately, comment_count, created_time, from, id, is_hidden, is_private, like_count (and 8 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for Comment objects. Available fields: admin_creator, application, attachment, can_comment, can_hide, can_like, can_remove, can_reply_privately, comment_count, created_time, from, id, is_hidden, is_private, like_count (and 8 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -130,47 +159,67 @@ func GetAdVideoTools() []mcp.Tool {
 	tools = append(tools, advideo_get_commentsTool)
 
 	// advideo_post_comments tool
+	// Params object accepts: attachment_id (string), attachment_share_url (string), attachment_url (string), comment_privacy_value (videocomments_comment_privacy_value_enum_param), facepile_mentioned_ids (list<string>), feedback_source (string), is_offline (bool), message (string), nectar_module (string), object_id (string), parent_comment_id (Object), text (string), tracking (string)
 	advideo_post_commentsTool := mcp.NewTool("advideo_post_comments",
 		mcp.WithDescription("POST comments for AdVideo"),
-		mcp.WithString("attachment_id",
-			mcp.Description("attachment_id parameter for comments"),
-		),
-		mcp.WithString("attachment_share_url",
-			mcp.Description("attachment_share_url parameter for comments"),
-		),
-		mcp.WithString("attachment_url",
-			mcp.Description("attachment_url parameter for comments"),
-		),
-		mcp.WithString("comment_privacy_value",
-			mcp.Description("comment_privacy_value parameter for comments"),
-			mcp.Enum("DECLINED_BY_ADMIN_ASSISTANT", "DEFAULT_PRIVACY", "FRIENDS_AND_POST_OWNER", "FRIENDS_ONLY", "GRAPHQL_MULTIPLE_VALUE_HACK_DO_NOT_USE", "OWNER_OR_COMMENTER", "PENDING_APPROVAL", "REMOVED_BY_ADMIN_ASSISTANT", "SIDE_CONVERSATION", "SIDE_CONVERSATION_AND_POST_OWNER", "SPOTLIGHT_TAB"),
-		),
-		mcp.WithString("facepile_mentioned_ids",
-			mcp.Description("facepile_mentioned_ids parameter for comments"),
-		),
-		mcp.WithString("feedback_source",
-			mcp.Description("feedback_source parameter for comments"),
-		),
-		mcp.WithBoolean("is_offline",
-			mcp.Description("is_offline parameter for comments"),
-		),
-		mcp.WithString("message",
-			mcp.Description("message parameter for comments"),
-		),
-		mcp.WithString("nectar_module",
-			mcp.Description("nectar_module parameter for comments"),
-		),
-		mcp.WithString("object_id",
-			mcp.Description("object_id parameter for comments"),
-		),
-		mcp.WithString("parent_comment_id",
-			mcp.Description("parent_comment_id parameter for comments"),
-		),
-		mcp.WithString("text",
-			mcp.Description("text parameter for comments"),
-		),
-		mcp.WithString("tracking",
-			mcp.Description("tracking parameter for comments"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"attachment_id": map[string]any{
+					"type":        "string",
+					"description": "attachment_id parameter",
+				},
+				"attachment_share_url": map[string]any{
+					"type":        "string",
+					"description": "attachment_share_url parameter",
+				},
+				"attachment_url": map[string]any{
+					"type":        "string",
+					"description": "attachment_url parameter",
+				},
+				"comment_privacy_value": map[string]any{
+					"type":        "string",
+					"description": "comment_privacy_value parameter",
+					"enum":        []string{"DECLINED_BY_ADMIN_ASSISTANT", "DEFAULT_PRIVACY", "FRIENDS_AND_POST_OWNER", "FRIENDS_ONLY", "GRAPHQL_MULTIPLE_VALUE_HACK_DO_NOT_USE", "OWNER_OR_COMMENTER", "PENDING_APPROVAL", "REMOVED_BY_ADMIN_ASSISTANT", "SIDE_CONVERSATION", "SIDE_CONVERSATION_AND_POST_OWNER", "SPOTLIGHT_TAB"},
+				},
+				"facepile_mentioned_ids": map[string]any{
+					"type":        "array",
+					"description": "facepile_mentioned_ids parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+				"feedback_source": map[string]any{
+					"type":        "string",
+					"description": "feedback_source parameter",
+				},
+				"is_offline": map[string]any{
+					"type":        "boolean",
+					"description": "is_offline parameter",
+				},
+				"message": map[string]any{
+					"type":        "string",
+					"description": "message parameter",
+				},
+				"nectar_module": map[string]any{
+					"type":        "string",
+					"description": "nectar_module parameter",
+				},
+				"object_id": map[string]any{
+					"type":        "string",
+					"description": "object_id parameter",
+				},
+				"parent_comment_id": map[string]any{
+					"type":        "object",
+					"description": "parent_comment_id parameter",
+				},
+				"text": map[string]any{
+					"type":        "string",
+					"description": "text parameter",
+				},
+				"tracking": map[string]any{
+					"type":        "string",
+					"description": "tracking parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: attachment_id (string), attachment_share_url (string), attachment_url (string), comment_privacy_value (enum) [DECLINED_BY_ADMIN_ASSISTANT, DEFAULT_PRIVACY, FRIENDS_AND_POST_OWNER, FRIENDS_ONLY, GRAPHQL_MULTIPLE_VALUE_HACK_DO_NOT_USE, ...], facepile_mentioned_ids (array<string>), feedback_source (string), is_offline (boolean), message (string), nectar_module (string), object_id (string), parent_comment_id (object), text (string), tracking (string)"),
 		),
 	)
 	tools = append(tools, advideo_post_commentsTool)
@@ -179,8 +228,8 @@ func GetAdVideoTools() []mcp.Tool {
 	// Available fields for Page: about, access_token, ad_campaign, affiliation, app_id, artists_we_like, attire, available_promo_offer_ids, awards, band_interests, band_members, best_page, bio, birthday, booking_agent, breaking_news_usage, built, business, can_checkin, can_post, category, category_list, checkins, company_overview, connected_instagram_account, connected_page_backed_instagram_account, contact_address, copyright_whitelisted_ig_partners, country_page_likes, cover, culinary_team, current_location, delivery_and_pickup_option_info, description, description_html, differently_open_offerings, directed_by, display_subtext, displayed_message_response_time, does_viewer_have_page_permission_link_ig, emails, engagement, fan_count, featured_video, features, followers_count, food_styles, founded, general_info, general_manager, genre, global_brand_page_name, global_brand_root_id, has_added_app, has_lead_access, has_transitioned_to_new_page_experience, has_whatsapp_business_number, has_whatsapp_number, hometown, hours, id, impressum, influences, instagram_business_account, is_always_open, is_calling_eligible, is_chain, is_community_page, is_eligible_for_branded_content, is_eligible_for_disable_connect_ig_btn_for_non_page_admin_am_web, is_messenger_bot_get_started_enabled, is_messenger_platform_bot, is_owned, is_permanently_closed, is_published, is_unclaimed, is_verified, is_webhooks_subscribed, keywords, leadgen_tos_acceptance_time, leadgen_tos_accepted, leadgen_tos_accepting_user, link, location, members, merchant_id, merchant_review_status, messaging_feature_status, messenger_ads_default_icebreakers, messenger_ads_default_quick_replies, messenger_ads_quick_replies_type, mini_shop_storefront, mission, mpg, name, name_with_location_descriptor, network, new_like_count, offer_eligible, overall_star_rating, owner_business, page_token, parent_page, parking, payment_options, personal_info, personal_interests, pharma_safety_info, phone, pickup_options, place_type, plot_outline, preferred_audience, press_contact, price_range, privacy_info_url, produced_by, products, promotion_eligible, promotion_ineligible_reason, public_transit, rating_count, recipient, record_label, release_date, restaurant_services, restaurant_specialties, schedule, screenplay_by, season, single_line_address, starring, start_info, store_code, store_location_descriptor, store_number, studio, supports_donate_button_in_live_video, talking_about_count, temporary_status, unread_message_count, unread_notif_count, unseen_message_count, user_access_expire_time, username, verification_status, voip_info, website, were_here_count, whatsapp_number, written_by
 	advideo_get_crosspost_shared_pagesTool := mcp.NewTool("advideo_get_crosspost_shared_pages",
 		mcp.WithDescription("GET crosspost_shared_pages for AdVideo"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for Page objects. Available fields: about, access_token, ad_campaign, affiliation, app_id, artists_we_like, attire, available_promo_offer_ids, awards, band_interests, band_members, best_page, bio, birthday, booking_agent (and 136 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for Page objects. Available fields: about, access_token, ad_campaign, affiliation, app_id, artists_we_like, attire, available_promo_offer_ids, awards, band_interests, band_members, best_page, bio, birthday, booking_agent (and 136 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -195,10 +244,17 @@ func GetAdVideoTools() []mcp.Tool {
 	tools = append(tools, advideo_get_crosspost_shared_pagesTool)
 
 	// advideo_post_gaming_clip_create tool
+	// Params object accepts: duration_seconds (float)
 	advideo_post_gaming_clip_createTool := mcp.NewTool("advideo_post_gaming_clip_create",
 		mcp.WithDescription("POST gaming_clip_create for AdVideo"),
-		mcp.WithNumber("duration_seconds",
-			mcp.Description("duration_seconds parameter for gaming_clip_create"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"duration_seconds": map[string]any{
+					"type":        "number",
+					"description": "duration_seconds parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: duration_seconds (number)"),
 		),
 	)
 	tools = append(tools, advideo_post_gaming_clip_createTool)
@@ -207,8 +263,8 @@ func GetAdVideoTools() []mcp.Tool {
 	// Available fields for Profile: can_post, id, link, name, pic, pic_crop, pic_large, pic_small, pic_square, profile_type, username
 	advideo_get_likesTool := mcp.NewTool("advideo_get_likes",
 		mcp.WithDescription("GET likes for AdVideo"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for Profile objects. Available fields: can_post, id, link, name, pic, pic_crop, pic_large, pic_small, pic_square, profile_type, username"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for Profile objects. Available fields: can_post, id, link, name, pic, pic_crop, pic_large, pic_small, pic_square, profile_type, username"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -223,19 +279,29 @@ func GetAdVideoTools() []mcp.Tool {
 	tools = append(tools, advideo_get_likesTool)
 
 	// advideo_post_likes tool
+	// Params object accepts: feedback_source (string), nectar_module (string), notify (bool), tracking (string)
 	advideo_post_likesTool := mcp.NewTool("advideo_post_likes",
 		mcp.WithDescription("POST likes for AdVideo"),
-		mcp.WithString("feedback_source",
-			mcp.Description("feedback_source parameter for likes"),
-		),
-		mcp.WithString("nectar_module",
-			mcp.Description("nectar_module parameter for likes"),
-		),
-		mcp.WithBoolean("notify",
-			mcp.Description("notify parameter for likes"),
-		),
-		mcp.WithString("tracking",
-			mcp.Description("tracking parameter for likes"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"feedback_source": map[string]any{
+					"type":        "string",
+					"description": "feedback_source parameter",
+				},
+				"nectar_module": map[string]any{
+					"type":        "string",
+					"description": "nectar_module parameter",
+				},
+				"notify": map[string]any{
+					"type":        "boolean",
+					"description": "notify parameter",
+				},
+				"tracking": map[string]any{
+					"type":        "string",
+					"description": "tracking parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: feedback_source (string), nectar_module (string), notify (boolean), tracking (string)"),
 		),
 	)
 	tools = append(tools, advideo_post_likesTool)
@@ -243,8 +309,8 @@ func GetAdVideoTools() []mcp.Tool {
 	// advideo_get_poll_settings tool
 	advideo_get_poll_settingsTool := mcp.NewTool("advideo_get_poll_settings",
 		mcp.WithDescription("GET poll_settings for AdVideo"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -262,8 +328,8 @@ func GetAdVideoTools() []mcp.Tool {
 	// Available fields for VideoPoll: close_after_voting, default_open, id, question, show_gradient, show_results, status
 	advideo_get_pollsTool := mcp.NewTool("advideo_get_polls",
 		mcp.WithDescription("GET polls for AdVideo"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for VideoPoll objects. Available fields: close_after_voting, default_open, id, question, show_gradient, show_results, status"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for VideoPoll objects. Available fields: close_after_voting, default_open, id, question, show_gradient, show_results, status"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -278,30 +344,45 @@ func GetAdVideoTools() []mcp.Tool {
 	tools = append(tools, advideo_get_pollsTool)
 
 	// advideo_post_polls tool
+	// Params object accepts: close_after_voting (bool), correct_option (unsigned int), default_open (bool), options (list<string>), question (string), show_gradient (bool), show_results (bool)
 	advideo_post_pollsTool := mcp.NewTool("advideo_post_polls",
 		mcp.WithDescription("POST polls for AdVideo"),
-		mcp.WithBoolean("close_after_voting",
-			mcp.Description("close_after_voting parameter for polls"),
-		),
-		mcp.WithNumber("correct_option",
-			mcp.Description("correct_option parameter for polls"),
-		),
-		mcp.WithBoolean("default_open",
-			mcp.Description("default_open parameter for polls"),
-		),
-		mcp.WithString("options",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("options parameter for polls"),
-		),
-		mcp.WithString("question",
-			mcp.Required(),
-			mcp.Description("question parameter for polls"),
-		),
-		mcp.WithBoolean("show_gradient",
-			mcp.Description("show_gradient parameter for polls"),
-		),
-		mcp.WithBoolean("show_results",
-			mcp.Description("show_results parameter for polls"),
+			mcp.Properties(map[string]any{
+				"close_after_voting": map[string]any{
+					"type":        "boolean",
+					"description": "close_after_voting parameter",
+				},
+				"correct_option": map[string]any{
+					"type":        "integer",
+					"description": "correct_option parameter",
+				},
+				"default_open": map[string]any{
+					"type":        "boolean",
+					"description": "default_open parameter",
+				},
+				"options": map[string]any{
+					"type":        "array",
+					"description": "options parameter",
+					"required":    true,
+					"items":       map[string]any{"type": "string"},
+				},
+				"question": map[string]any{
+					"type":        "string",
+					"description": "question parameter",
+					"required":    true,
+				},
+				"show_gradient": map[string]any{
+					"type":        "boolean",
+					"description": "show_gradient parameter",
+				},
+				"show_results": map[string]any{
+					"type":        "boolean",
+					"description": "show_results parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: close_after_voting (boolean), correct_option (integer), default_open (boolean), options (array<string>) [required], question (string) [required], show_gradient (boolean), show_results (boolean)"),
 		),
 	)
 	tools = append(tools, advideo_post_pollsTool)
@@ -310,8 +391,8 @@ func GetAdVideoTools() []mcp.Tool {
 	// Available fields for Page: about, access_token, ad_campaign, affiliation, app_id, artists_we_like, attire, available_promo_offer_ids, awards, band_interests, band_members, best_page, bio, birthday, booking_agent, breaking_news_usage, built, business, can_checkin, can_post, category, category_list, checkins, company_overview, connected_instagram_account, connected_page_backed_instagram_account, contact_address, copyright_whitelisted_ig_partners, country_page_likes, cover, culinary_team, current_location, delivery_and_pickup_option_info, description, description_html, differently_open_offerings, directed_by, display_subtext, displayed_message_response_time, does_viewer_have_page_permission_link_ig, emails, engagement, fan_count, featured_video, features, followers_count, food_styles, founded, general_info, general_manager, genre, global_brand_page_name, global_brand_root_id, has_added_app, has_lead_access, has_transitioned_to_new_page_experience, has_whatsapp_business_number, has_whatsapp_number, hometown, hours, id, impressum, influences, instagram_business_account, is_always_open, is_calling_eligible, is_chain, is_community_page, is_eligible_for_branded_content, is_eligible_for_disable_connect_ig_btn_for_non_page_admin_am_web, is_messenger_bot_get_started_enabled, is_messenger_platform_bot, is_owned, is_permanently_closed, is_published, is_unclaimed, is_verified, is_webhooks_subscribed, keywords, leadgen_tos_acceptance_time, leadgen_tos_accepted, leadgen_tos_accepting_user, link, location, members, merchant_id, merchant_review_status, messaging_feature_status, messenger_ads_default_icebreakers, messenger_ads_default_quick_replies, messenger_ads_quick_replies_type, mini_shop_storefront, mission, mpg, name, name_with_location_descriptor, network, new_like_count, offer_eligible, overall_star_rating, owner_business, page_token, parent_page, parking, payment_options, personal_info, personal_interests, pharma_safety_info, phone, pickup_options, place_type, plot_outline, preferred_audience, press_contact, price_range, privacy_info_url, produced_by, products, promotion_eligible, promotion_ineligible_reason, public_transit, rating_count, recipient, record_label, release_date, restaurant_services, restaurant_specialties, schedule, screenplay_by, season, single_line_address, starring, start_info, store_code, store_location_descriptor, store_number, studio, supports_donate_button_in_live_video, talking_about_count, temporary_status, unread_message_count, unread_notif_count, unseen_message_count, user_access_expire_time, username, verification_status, voip_info, website, were_here_count, whatsapp_number, written_by
 	advideo_get_sponsor_tagsTool := mcp.NewTool("advideo_get_sponsor_tags",
 		mcp.WithDescription("GET sponsor_tags for AdVideo"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for Page objects. Available fields: about, access_token, ad_campaign, affiliation, app_id, artists_we_like, attire, available_promo_offer_ids, awards, band_interests, band_members, best_page, bio, birthday, booking_agent (and 136 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for Page objects. Available fields: about, access_token, ad_campaign, affiliation, app_id, artists_we_like, attire, available_promo_offer_ids, awards, band_interests, band_members, best_page, bio, birthday, booking_agent (and 136 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -329,8 +410,8 @@ func GetAdVideoTools() []mcp.Tool {
 	// Available fields for TaggableSubject: id, name
 	advideo_get_tagsTool := mcp.NewTool("advideo_get_tags",
 		mcp.WithDescription("GET tags for AdVideo"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for TaggableSubject objects. Available fields: id, name"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for TaggableSubject objects. Available fields: id, name"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -348,8 +429,8 @@ func GetAdVideoTools() []mcp.Tool {
 	// Available fields for VideoThumbnail: height, id, is_preferred, name, scale, uri, width
 	advideo_get_thumbnailsTool := mcp.NewTool("advideo_get_thumbnails",
 		mcp.WithDescription("GET thumbnails for AdVideo"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for VideoThumbnail objects. Available fields: height, id, is_preferred, name, scale, uri, width"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for VideoThumbnail objects. Available fields: height, id, is_preferred, name, scale, uri, width"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -364,37 +445,57 @@ func GetAdVideoTools() []mcp.Tool {
 	tools = append(tools, advideo_get_thumbnailsTool)
 
 	// advideo_post_thumbnails tool
+	// Params object accepts: is_preferred (bool), source (file)
 	advideo_post_thumbnailsTool := mcp.NewTool("advideo_post_thumbnails",
 		mcp.WithDescription("POST thumbnails for AdVideo"),
-		mcp.WithBoolean("is_preferred",
-			mcp.Description("is_preferred parameter for thumbnails"),
-		),
-		mcp.WithString("source",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("source parameter for thumbnails"),
+			mcp.Properties(map[string]any{
+				"is_preferred": map[string]any{
+					"type":        "boolean",
+					"description": "is_preferred parameter",
+				},
+				"source": map[string]any{
+					"type":        "string",
+					"description": "source parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: is_preferred (boolean), source (file) [required]"),
 		),
 	)
 	tools = append(tools, advideo_post_thumbnailsTool)
 
 	// advideo_get_video_insights tool
 	// Available fields for InsightsResult: description, description_from_api_doc, id, name, period, title, values
+	// Params object accepts: metric (list<Object>), period (videovideo_insights_period_enum_param), since (datetime), until (datetime)
 	advideo_get_video_insightsTool := mcp.NewTool("advideo_get_video_insights",
 		mcp.WithDescription("GET video_insights for AdVideo"),
-		mcp.WithString("metric",
-			mcp.Description("metric parameter for video_insights"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"metric": map[string]any{
+					"type":        "array",
+					"description": "metric parameter",
+					"items":       map[string]any{"type": "object"},
+				},
+				"period": map[string]any{
+					"type":        "string",
+					"description": "period parameter",
+					"enum":        []string{"day", "days_28", "lifetime", "month", "total_over_range", "week"},
+				},
+				"since": map[string]any{
+					"type":        "string",
+					"description": "since parameter",
+				},
+				"until": map[string]any{
+					"type":        "string",
+					"description": "until parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: metric (array<object>), period (enum) [day, days_28, lifetime, month, total_over_range, ...], since (datetime), until (datetime)"),
 		),
-		mcp.WithString("period",
-			mcp.Description("period parameter for video_insights"),
-			mcp.Enum("day", "days_28", "lifetime", "month", "total_over_range", "week"),
-		),
-		mcp.WithString("since",
-			mcp.Description("since parameter for video_insights"),
-		),
-		mcp.WithString("until",
-			mcp.Description("until parameter for video_insights"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for InsightsResult objects. Available fields: description, description_from_api_doc, id, name, period, title, values"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for InsightsResult objects. Available fields: description, description_from_api_doc, id, name, period, title, values"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -418,8 +519,8 @@ func GetAdVideoTools() []mcp.Tool {
 	// Available fields for AdVideo: ad_breaks, admin_creator, audio_isrc, backdated_time, backdated_time_granularity, boost_eligibility_info, content_category, content_tags, copyright, copyright_check_information, copyright_monitoring_status, created_time, custom_labels, description, embed_html, embeddable, event, expiration, format, from, icon, id, is_crosspost_video, is_crossposting_eligible, is_episode, is_instagram_eligible, is_reference_only, length, live_audience_count, live_status, music_video_copyright, permalink_url, picture, place, post_id, post_views, premiere_living_room_status, privacy, published, scheduled_publish_time, source, spherical, status, title, universal_video_id, updated_time, views
 	advideo_get_Tool := mcp.NewTool("advideo_get_",
 		mcp.WithDescription("GET  for AdVideo"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for AdVideo objects. Available fields: ad_breaks, admin_creator, audio_isrc, backdated_time, backdated_time_granularity, boost_eligibility_info, content_category, content_tags, copyright, copyright_check_information, copyright_monitoring_status, created_time, custom_labels, description, embed_html (and 32 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for AdVideo objects. Available fields: ad_breaks, admin_creator, audio_isrc, backdated_time, backdated_time_granularity, boost_eligibility_info, content_category, content_tags, copyright, copyright_check_information, copyright_monitoring_status, created_time, custom_labels, description, embed_html (and 32 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -434,93 +535,131 @@ func GetAdVideoTools() []mcp.Tool {
 	tools = append(tools, advideo_get_Tool)
 
 	// advideo_post_ tool
+	// Params object accepts: ad_breaks (list), allow_bm_crossposting (bool), allow_crossposting_for_pages (list<Object>), backdated_time (datetime), backdated_time_granularity (video_backdated_time_granularity), call_to_action (Object), content_category (video_content_category), content_tags (list<string>), custom_labels (list<string>), description (string), direct_share_status (unsigned int), embeddable (bool), expiration (Object), expire_now (bool), increment_play_count (bool), name (string), preferred_thumbnail_id (string), privacy (string), publish_to_news_feed (bool), publish_to_videos_tab (bool), published (bool), scheduled_publish_time (unsigned int), social_actions (bool), sponsor_id (string), sponsor_relationship (unsigned int), tags (list<string>), target (string), universal_video_id (string)
 	advideo_post_Tool := mcp.NewTool("advideo_post_",
 		mcp.WithDescription("POST  for AdVideo"),
-		mcp.WithString("ad_breaks",
-			mcp.Description("ad_breaks parameter for "),
-		),
-		mcp.WithBoolean("allow_bm_crossposting",
-			mcp.Description("allow_bm_crossposting parameter for "),
-		),
-		mcp.WithString("allow_crossposting_for_pages",
-			mcp.Description("allow_crossposting_for_pages parameter for "),
-		),
-		mcp.WithString("backdated_time",
-			mcp.Description("backdated_time parameter for "),
-		),
-		mcp.WithString("backdated_time_granularity",
-			mcp.Description("backdated_time_granularity parameter for "),
-			mcp.Enum("day", "hour", "min", "month", "none", "year"),
-		),
-		mcp.WithString("call_to_action",
-			mcp.Description("call_to_action parameter for "),
-		),
-		mcp.WithString("content_category",
-			mcp.Description("content_category parameter for "),
-			mcp.Enum("BEAUTY_FASHION", "BUSINESS", "CARS_TRUCKS", "COMEDY", "CUTE_ANIMALS", "ENTERTAINMENT", "FAMILY", "FOOD_HEALTH", "HOME", "LIFESTYLE", "MUSIC", "NEWS", "OTHER", "POLITICS", "SCIENCE", "SPORTS", "TECHNOLOGY", "VIDEO_GAMING"),
-		),
-		mcp.WithString("content_tags",
-			mcp.Description("content_tags parameter for "),
-		),
-		mcp.WithString("custom_labels",
-			mcp.Description("custom_labels parameter for "),
-		),
-		mcp.WithString("description",
-			mcp.Description("description parameter for "),
-		),
-		mcp.WithNumber("direct_share_status",
-			mcp.Description("direct_share_status parameter for "),
-		),
-		mcp.WithBoolean("embeddable",
-			mcp.Description("embeddable parameter for "),
-		),
-		mcp.WithString("expiration",
-			mcp.Description("expiration parameter for "),
-		),
-		mcp.WithBoolean("expire_now",
-			mcp.Description("expire_now parameter for "),
-		),
-		mcp.WithBoolean("increment_play_count",
-			mcp.Description("increment_play_count parameter for "),
-		),
-		mcp.WithString("name",
-			mcp.Description("name parameter for "),
-		),
-		mcp.WithString("preferred_thumbnail_id",
-			mcp.Description("preferred_thumbnail_id parameter for "),
-		),
-		mcp.WithString("privacy",
-			mcp.Description("privacy parameter for "),
-		),
-		mcp.WithBoolean("publish_to_news_feed",
-			mcp.Description("publish_to_news_feed parameter for "),
-		),
-		mcp.WithBoolean("publish_to_videos_tab",
-			mcp.Description("publish_to_videos_tab parameter for "),
-		),
-		mcp.WithBoolean("published",
-			mcp.Description("published parameter for "),
-		),
-		mcp.WithNumber("scheduled_publish_time",
-			mcp.Description("scheduled_publish_time parameter for "),
-		),
-		mcp.WithBoolean("social_actions",
-			mcp.Description("social_actions parameter for "),
-		),
-		mcp.WithString("sponsor_id",
-			mcp.Description("sponsor_id parameter for "),
-		),
-		mcp.WithNumber("sponsor_relationship",
-			mcp.Description("sponsor_relationship parameter for "),
-		),
-		mcp.WithString("tags",
-			mcp.Description("tags parameter for "),
-		),
-		mcp.WithString("target",
-			mcp.Description("target parameter for "),
-		),
-		mcp.WithString("universal_video_id",
-			mcp.Description("universal_video_id parameter for "),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"ad_breaks": map[string]any{
+					"type":        "string",
+					"description": "ad_breaks parameter",
+				},
+				"allow_bm_crossposting": map[string]any{
+					"type":        "boolean",
+					"description": "allow_bm_crossposting parameter",
+				},
+				"allow_crossposting_for_pages": map[string]any{
+					"type":        "array",
+					"description": "allow_crossposting_for_pages parameter",
+					"items":       map[string]any{"type": "object"},
+				},
+				"backdated_time": map[string]any{
+					"type":        "string",
+					"description": "backdated_time parameter",
+				},
+				"backdated_time_granularity": map[string]any{
+					"type":        "string",
+					"description": "backdated_time_granularity parameter",
+					"enum":        []string{"day", "hour", "min", "month", "none", "year"},
+				},
+				"call_to_action": map[string]any{
+					"type":        "object",
+					"description": "call_to_action parameter",
+				},
+				"content_category": map[string]any{
+					"type":        "string",
+					"description": "content_category parameter",
+					"enum":        []string{"BEAUTY_FASHION", "BUSINESS", "CARS_TRUCKS", "COMEDY", "CUTE_ANIMALS", "ENTERTAINMENT", "FAMILY", "FOOD_HEALTH", "HOME", "LIFESTYLE", "MUSIC", "NEWS", "OTHER", "POLITICS", "SCIENCE", "SPORTS", "TECHNOLOGY", "VIDEO_GAMING"},
+				},
+				"content_tags": map[string]any{
+					"type":        "array",
+					"description": "content_tags parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+				"custom_labels": map[string]any{
+					"type":        "array",
+					"description": "custom_labels parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+				"description": map[string]any{
+					"type":        "string",
+					"description": "description parameter",
+				},
+				"direct_share_status": map[string]any{
+					"type":        "integer",
+					"description": "direct_share_status parameter",
+				},
+				"embeddable": map[string]any{
+					"type":        "boolean",
+					"description": "embeddable parameter",
+				},
+				"expiration": map[string]any{
+					"type":        "object",
+					"description": "expiration parameter",
+				},
+				"expire_now": map[string]any{
+					"type":        "boolean",
+					"description": "expire_now parameter",
+				},
+				"increment_play_count": map[string]any{
+					"type":        "boolean",
+					"description": "increment_play_count parameter",
+				},
+				"name": map[string]any{
+					"type":        "string",
+					"description": "name parameter",
+				},
+				"preferred_thumbnail_id": map[string]any{
+					"type":        "string",
+					"description": "preferred_thumbnail_id parameter",
+				},
+				"privacy": map[string]any{
+					"type":        "string",
+					"description": "privacy parameter",
+				},
+				"publish_to_news_feed": map[string]any{
+					"type":        "boolean",
+					"description": "publish_to_news_feed parameter",
+				},
+				"publish_to_videos_tab": map[string]any{
+					"type":        "boolean",
+					"description": "publish_to_videos_tab parameter",
+				},
+				"published": map[string]any{
+					"type":        "boolean",
+					"description": "published parameter",
+				},
+				"scheduled_publish_time": map[string]any{
+					"type":        "integer",
+					"description": "scheduled_publish_time parameter",
+				},
+				"social_actions": map[string]any{
+					"type":        "boolean",
+					"description": "social_actions parameter",
+				},
+				"sponsor_id": map[string]any{
+					"type":        "string",
+					"description": "sponsor_id parameter",
+				},
+				"sponsor_relationship": map[string]any{
+					"type":        "integer",
+					"description": "sponsor_relationship parameter",
+				},
+				"tags": map[string]any{
+					"type":        "array",
+					"description": "tags parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+				"target": map[string]any{
+					"type":        "string",
+					"description": "target parameter",
+				},
+				"universal_video_id": map[string]any{
+					"type":        "string",
+					"description": "universal_video_id parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: ad_breaks (list), allow_bm_crossposting (boolean), allow_crossposting_for_pages (array<object>), backdated_time (datetime), backdated_time_granularity (video_backdated_time_granularity) [day, hour, min, month, none, ...], call_to_action (object), content_category (video_content_category) [BEAUTY_FASHION, BUSINESS, CARS_TRUCKS, COMEDY, CUTE_ANIMALS, ...], content_tags (array<string>), custom_labels (array<string>), description (string), direct_share_status (integer), embeddable (boolean), expiration (object), expire_now (boolean), increment_play_count (boolean), name (string), preferred_thumbnail_id (string), privacy (string), publish_to_news_feed (boolean), publish_to_videos_tab (boolean), published (boolean), scheduled_publish_time (integer), social_actions (boolean), sponsor_id (string), sponsor_relationship (integer), tags (array<string>), target (string), universal_video_id (string)"),
 		),
 	)
 	tools = append(tools, advideo_post_Tool)
@@ -545,8 +684,13 @@ func HandleAdvideo_get_boost_ads_list(ctx context.Context, request mcp.CallToolR
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -594,8 +738,13 @@ func HandleAdvideo_get_captions(ctx context.Context, request mcp.CallToolRequest
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -642,20 +791,16 @@ func HandleAdvideo_post_captions(ctx context.Context, request mcp.CallToolReques
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: captions_file
-	if val := request.GetString("captions_file", ""); val != "" {
-		args["captions_file"] = val
-	}
-
-	// Optional: default_locale
-	if val := request.GetString("default_locale", ""); val != "" {
-		args["default_locale"] = val
-	}
-
-	// Optional: locales_to_delete
-	// array type - using string
-	if val := request.GetString("locales_to_delete", ""); val != "" {
-		args["locales_to_delete"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method
@@ -688,8 +833,13 @@ func HandleAdvideo_get_collaborators(ctx context.Context, request mcp.CallToolRe
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -736,12 +886,19 @@ func HandleAdvideo_post_collaborators(ctx context.Context, request mcp.CallToolR
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: target_id
-	target_id, err := request.RequireString("target_id")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter target_id: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["target_id"] = target_id
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Advideo_post_collaborators(args)
@@ -772,29 +929,26 @@ func HandleAdvideo_get_comments(ctx context.Context, request mcp.CallToolRequest
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: filter
-	if val := request.GetString("filter", ""); val != "" {
-		args["filter"] = val
-	}
-
-	// Optional: live_filter
-	if val := request.GetString("live_filter", ""); val != "" {
-		args["live_filter"] = val
-	}
-
-	// Optional: order
-	if val := request.GetString("order", ""); val != "" {
-		args["order"] = val
-	}
-
-	// Optional: since
-	if val := request.GetString("since", ""); val != "" {
-		args["since"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -841,71 +995,16 @@ func HandleAdvideo_post_comments(ctx context.Context, request mcp.CallToolReques
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: attachment_id
-	if val := request.GetString("attachment_id", ""); val != "" {
-		args["attachment_id"] = val
-	}
-
-	// Optional: attachment_share_url
-	if val := request.GetString("attachment_share_url", ""); val != "" {
-		args["attachment_share_url"] = val
-	}
-
-	// Optional: attachment_url
-	if val := request.GetString("attachment_url", ""); val != "" {
-		args["attachment_url"] = val
-	}
-
-	// Optional: comment_privacy_value
-	if val := request.GetString("comment_privacy_value", ""); val != "" {
-		args["comment_privacy_value"] = val
-	}
-
-	// Optional: facepile_mentioned_ids
-	// array type - using string
-	if val := request.GetString("facepile_mentioned_ids", ""); val != "" {
-		args["facepile_mentioned_ids"] = val
-	}
-
-	// Optional: feedback_source
-	if val := request.GetString("feedback_source", ""); val != "" {
-		args["feedback_source"] = val
-	}
-
-	// Optional: is_offline
-	if val := request.GetBool("is_offline", false); val {
-		args["is_offline"] = val
-	}
-
-	// Optional: message
-	if val := request.GetString("message", ""); val != "" {
-		args["message"] = val
-	}
-
-	// Optional: nectar_module
-	if val := request.GetString("nectar_module", ""); val != "" {
-		args["nectar_module"] = val
-	}
-
-	// Optional: object_id
-	if val := request.GetString("object_id", ""); val != "" {
-		args["object_id"] = val
-	}
-
-	// Optional: parent_comment_id
-	// object type - using string
-	if val := request.GetString("parent_comment_id", ""); val != "" {
-		args["parent_comment_id"] = val
-	}
-
-	// Optional: text
-	if val := request.GetString("text", ""); val != "" {
-		args["text"] = val
-	}
-
-	// Optional: tracking
-	if val := request.GetString("tracking", ""); val != "" {
-		args["tracking"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method
@@ -938,8 +1037,13 @@ func HandleAdvideo_get_crosspost_shared_pages(ctx context.Context, request mcp.C
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -986,9 +1090,16 @@ func HandleAdvideo_post_gaming_clip_create(ctx context.Context, request mcp.Call
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: duration_seconds
-	if val := request.GetFloat("duration_seconds", 0); val != 0 {
-		args["duration_seconds"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method
@@ -1021,8 +1132,13 @@ func HandleAdvideo_get_likes(ctx context.Context, request mcp.CallToolRequest) (
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -1069,24 +1185,16 @@ func HandleAdvideo_post_likes(ctx context.Context, request mcp.CallToolRequest) 
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: feedback_source
-	if val := request.GetString("feedback_source", ""); val != "" {
-		args["feedback_source"] = val
-	}
-
-	// Optional: nectar_module
-	if val := request.GetString("nectar_module", ""); val != "" {
-		args["nectar_module"] = val
-	}
-
-	// Optional: notify
-	if val := request.GetBool("notify", false); val {
-		args["notify"] = val
-	}
-
-	// Optional: tracking
-	if val := request.GetString("tracking", ""); val != "" {
-		args["tracking"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method
@@ -1119,8 +1227,13 @@ func HandleAdvideo_get_poll_settings(ctx context.Context, request mcp.CallToolRe
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -1168,8 +1281,13 @@ func HandleAdvideo_get_polls(ctx context.Context, request mcp.CallToolRequest) (
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -1216,43 +1334,18 @@ func HandleAdvideo_post_polls(ctx context.Context, request mcp.CallToolRequest) 
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: close_after_voting
-	if val := request.GetBool("close_after_voting", false); val {
-		args["close_after_voting"] = val
-	}
-
-	// Optional: correct_option
-	if val := request.GetInt("correct_option", 0); val != 0 {
-		args["correct_option"] = val
-	}
-
-	// Optional: default_open
-	if val := request.GetBool("default_open", false); val {
-		args["default_open"] = val
-	}
-
-	// Required: options
-	options, err := request.RequireString("options")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter options: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["options"] = options
-
-	// Required: question
-	question, err := request.RequireString("question")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter question: %v", err)), nil
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
-	args["question"] = question
-
-	// Optional: show_gradient
-	if val := request.GetBool("show_gradient", false); val {
-		args["show_gradient"] = val
-	}
-
-	// Optional: show_results
-	if val := request.GetBool("show_results", false); val {
-		args["show_results"] = val
+	for key, value := range paramsObj {
+		args[key] = value
 	}
 
 	// Call the client method
@@ -1285,8 +1378,13 @@ func HandleAdvideo_get_sponsor_tags(ctx context.Context, request mcp.CallToolReq
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -1334,8 +1432,13 @@ func HandleAdvideo_get_tags(ctx context.Context, request mcp.CallToolRequest) (*
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -1383,8 +1486,13 @@ func HandleAdvideo_get_thumbnails(ctx context.Context, request mcp.CallToolReque
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -1431,17 +1539,19 @@ func HandleAdvideo_post_thumbnails(ctx context.Context, request mcp.CallToolRequ
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: is_preferred
-	if val := request.GetBool("is_preferred", false); val {
-		args["is_preferred"] = val
-	}
-
-	// Required: source
-	source, err := request.RequireString("source")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter source: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["source"] = source
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Advideo_post_thumbnails(args)
@@ -1472,30 +1582,26 @@ func HandleAdvideo_get_video_insights(ctx context.Context, request mcp.CallToolR
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: metric
-	// array type - using string
-	if val := request.GetString("metric", ""); val != "" {
-		args["metric"] = val
-	}
-
-	// Optional: period
-	if val := request.GetString("period", ""); val != "" {
-		args["period"] = val
-	}
-
-	// Optional: since
-	if val := request.GetString("since", ""); val != "" {
-		args["since"] = val
-	}
-
-	// Optional: until
-	if val := request.GetString("until", ""); val != "" {
-		args["until"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -1572,8 +1678,13 @@ func HandleAdvideo_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -1620,150 +1731,16 @@ func HandleAdvideo_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: ad_breaks
-	if val := request.GetString("ad_breaks", ""); val != "" {
-		args["ad_breaks"] = val
-	}
-
-	// Optional: allow_bm_crossposting
-	if val := request.GetBool("allow_bm_crossposting", false); val {
-		args["allow_bm_crossposting"] = val
-	}
-
-	// Optional: allow_crossposting_for_pages
-	// array type - using string
-	if val := request.GetString("allow_crossposting_for_pages", ""); val != "" {
-		args["allow_crossposting_for_pages"] = val
-	}
-
-	// Optional: backdated_time
-	if val := request.GetString("backdated_time", ""); val != "" {
-		args["backdated_time"] = val
-	}
-
-	// Optional: backdated_time_granularity
-	if val := request.GetString("backdated_time_granularity", ""); val != "" {
-		args["backdated_time_granularity"] = val
-	}
-
-	// Optional: call_to_action
-	// object type - using string
-	if val := request.GetString("call_to_action", ""); val != "" {
-		args["call_to_action"] = val
-	}
-
-	// Optional: content_category
-	if val := request.GetString("content_category", ""); val != "" {
-		args["content_category"] = val
-	}
-
-	// Optional: content_tags
-	// array type - using string
-	if val := request.GetString("content_tags", ""); val != "" {
-		args["content_tags"] = val
-	}
-
-	// Optional: custom_labels
-	// array type - using string
-	if val := request.GetString("custom_labels", ""); val != "" {
-		args["custom_labels"] = val
-	}
-
-	// Optional: description
-	if val := request.GetString("description", ""); val != "" {
-		args["description"] = val
-	}
-
-	// Optional: direct_share_status
-	if val := request.GetInt("direct_share_status", 0); val != 0 {
-		args["direct_share_status"] = val
-	}
-
-	// Optional: embeddable
-	if val := request.GetBool("embeddable", false); val {
-		args["embeddable"] = val
-	}
-
-	// Optional: expiration
-	// object type - using string
-	if val := request.GetString("expiration", ""); val != "" {
-		args["expiration"] = val
-	}
-
-	// Optional: expire_now
-	if val := request.GetBool("expire_now", false); val {
-		args["expire_now"] = val
-	}
-
-	// Optional: increment_play_count
-	if val := request.GetBool("increment_play_count", false); val {
-		args["increment_play_count"] = val
-	}
-
-	// Optional: name
-	if val := request.GetString("name", ""); val != "" {
-		args["name"] = val
-	}
-
-	// Optional: preferred_thumbnail_id
-	if val := request.GetString("preferred_thumbnail_id", ""); val != "" {
-		args["preferred_thumbnail_id"] = val
-	}
-
-	// Optional: privacy
-	if val := request.GetString("privacy", ""); val != "" {
-		args["privacy"] = val
-	}
-
-	// Optional: publish_to_news_feed
-	if val := request.GetBool("publish_to_news_feed", false); val {
-		args["publish_to_news_feed"] = val
-	}
-
-	// Optional: publish_to_videos_tab
-	if val := request.GetBool("publish_to_videos_tab", false); val {
-		args["publish_to_videos_tab"] = val
-	}
-
-	// Optional: published
-	if val := request.GetBool("published", false); val {
-		args["published"] = val
-	}
-
-	// Optional: scheduled_publish_time
-	if val := request.GetInt("scheduled_publish_time", 0); val != 0 {
-		args["scheduled_publish_time"] = val
-	}
-
-	// Optional: social_actions
-	if val := request.GetBool("social_actions", false); val {
-		args["social_actions"] = val
-	}
-
-	// Optional: sponsor_id
-	if val := request.GetString("sponsor_id", ""); val != "" {
-		args["sponsor_id"] = val
-	}
-
-	// Optional: sponsor_relationship
-	if val := request.GetInt("sponsor_relationship", 0); val != 0 {
-		args["sponsor_relationship"] = val
-	}
-
-	// Optional: tags
-	// array type - using string
-	if val := request.GetString("tags", ""); val != "" {
-		args["tags"] = val
-	}
-
-	// Optional: target
-	if val := request.GetString("target", ""); val != "" {
-		args["target"] = val
-	}
-
-	// Optional: universal_video_id
-	if val := request.GetString("universal_video_id", ""); val != "" {
-		args["universal_video_id"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method

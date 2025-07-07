@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -20,8 +21,8 @@ func GetEventTicketTierTools() []mcp.Tool {
 	// Available fields for EventTicketTier: currency, description, end_sales_time, end_show_time, fee_settings, id, maximum_quantity, metadata, minimum_quantity, name, price, priority, retailer_id, seating_map_image_url, start_sales_time, start_show_time, status, total_quantity
 	eventtickettier_get_Tool := mcp.NewTool("eventtickettier_get_",
 		mcp.WithDescription("GET  for EventTicketTier"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for EventTicketTier objects. Available fields: currency, description, end_sales_time, end_show_time, fee_settings, id, maximum_quantity, metadata, minimum_quantity, name, price, priority, retailer_id, seating_map_image_url, start_sales_time (and 3 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for EventTicketTier objects. Available fields: currency, description, end_sales_time, end_show_time, fee_settings, id, maximum_quantity, metadata, minimum_quantity, name, price, priority, retailer_id, seating_map_image_url, start_sales_time (and 3 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -55,8 +56,13 @@ func HandleEventtickettier_get_(ctx context.Context, request mcp.CallToolRequest
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit

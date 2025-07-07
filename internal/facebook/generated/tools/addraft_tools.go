@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -20,8 +21,8 @@ func GetAdDraftTools() []mcp.Tool {
 	// Available fields for AdDraft: account_id, api_version, async_request_set, author_id, created_by, draft_version, id, is_active, name, ownership_type, publish_status, state, summary, time_created, time_updated
 	addraft_get_Tool := mcp.NewTool("addraft_get_",
 		mcp.WithDescription("GET  for AdDraft"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for AdDraft objects. Available fields: account_id, api_version, async_request_set, author_id, created_by, draft_version, id, is_active, name, ownership_type, publish_status, state, summary, time_created, time_updated"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for AdDraft objects. Available fields: account_id, api_version, async_request_set, author_id, created_by, draft_version, id, is_active, name, ownership_type, publish_status, state, summary, time_created, time_updated"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -55,8 +56,13 @@ func HandleAddraft_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit

@@ -33,28 +33,10 @@ func (c *StatusClient) Status_post_likes(args map[string]interface{}) (interface
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["feedback_source"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("feedback_source", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["nectar_module"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("nectar_module", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["notify"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("notify", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["tracking"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("tracking", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 

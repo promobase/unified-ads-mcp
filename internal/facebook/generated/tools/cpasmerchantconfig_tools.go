@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -20,8 +21,8 @@ func GetCPASMerchantConfigTools() []mcp.Tool {
 	// Available fields for CPASMerchantConfig: accepted_tos, beta_features, business_outcomes_status, id, is_test_merchant, outcomes_compliance_status, qualified_to_onboard
 	cpasmerchantconfig_get_Tool := mcp.NewTool("cpasmerchantconfig_get_",
 		mcp.WithDescription("GET  for CPASMerchantConfig"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for CPASMerchantConfig objects. Available fields: accepted_tos, beta_features, business_outcomes_status, id, is_test_merchant, outcomes_compliance_status, qualified_to_onboard"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for CPASMerchantConfig objects. Available fields: accepted_tos, beta_features, business_outcomes_status, id, is_test_merchant, outcomes_compliance_status, qualified_to_onboard"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -55,8 +56,13 @@ func HandleCpasmerchantconfig_get_(ctx context.Context, request mcp.CallToolRequ
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit

@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -17,14 +18,23 @@ func GetCommerceOrderTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// commerceorder_post_acknowledge_order tool
+	// Params object accepts: idempotency_key (string), merchant_order_reference (string)
 	commerceorder_post_acknowledge_orderTool := mcp.NewTool("commerceorder_post_acknowledge_order",
 		mcp.WithDescription("POST acknowledge_order for CommerceOrder"),
-		mcp.WithString("idempotency_key",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("idempotency_key parameter for acknowledge_order"),
-		),
-		mcp.WithString("merchant_order_reference",
-			mcp.Description("merchant_order_reference parameter for acknowledge_order"),
+			mcp.Properties(map[string]any{
+				"idempotency_key": map[string]any{
+					"type":        "string",
+					"description": "idempotency_key parameter",
+					"required":    true,
+				},
+				"merchant_order_reference": map[string]any{
+					"type":        "string",
+					"description": "merchant_order_reference parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: idempotency_key (string) [required], merchant_order_reference (string)"),
 		),
 	)
 	tools = append(tools, commerceorder_post_acknowledge_orderTool)
@@ -32,8 +42,8 @@ func GetCommerceOrderTools() []mcp.Tool {
 	// commerceorder_get_cancellations tool
 	commerceorder_get_cancellationsTool := mcp.NewTool("commerceorder_get_cancellations",
 		mcp.WithDescription("GET cancellations for CommerceOrder"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -48,34 +58,56 @@ func GetCommerceOrderTools() []mcp.Tool {
 	tools = append(tools, commerceorder_get_cancellationsTool)
 
 	// commerceorder_post_cancellations tool
+	// Params object accepts: cancel_reason (map), idempotency_key (string), items (list<map>), restock_items (bool)
 	commerceorder_post_cancellationsTool := mcp.NewTool("commerceorder_post_cancellations",
 		mcp.WithDescription("POST cancellations for CommerceOrder"),
-		mcp.WithString("cancel_reason",
-			mcp.Description("cancel_reason parameter for cancellations"),
-		),
-		mcp.WithString("idempotency_key",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("idempotency_key parameter for cancellations"),
-		),
-		mcp.WithString("items",
-			mcp.Description("items parameter for cancellations"),
-		),
-		mcp.WithBoolean("restock_items",
-			mcp.Description("restock_items parameter for cancellations"),
+			mcp.Properties(map[string]any{
+				"cancel_reason": map[string]any{
+					"type":        "object",
+					"description": "cancel_reason parameter",
+				},
+				"idempotency_key": map[string]any{
+					"type":        "string",
+					"description": "idempotency_key parameter",
+					"required":    true,
+				},
+				"items": map[string]any{
+					"type":        "array",
+					"description": "items parameter",
+					"items":       map[string]any{"type": "object"},
+				},
+				"restock_items": map[string]any{
+					"type":        "boolean",
+					"description": "restock_items parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: cancel_reason (object), idempotency_key (string) [required], items (array<object>), restock_items (boolean)"),
 		),
 	)
 	tools = append(tools, commerceorder_post_cancellationsTool)
 
 	// commerceorder_post_item_updates tool
+	// Params object accepts: items (list<map>), merchant_order_reference (string)
 	commerceorder_post_item_updatesTool := mcp.NewTool("commerceorder_post_item_updates",
 		mcp.WithDescription("POST item_updates for CommerceOrder"),
-		mcp.WithString("items",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("items parameter for item_updates"),
-		),
-		mcp.WithString("merchant_order_reference",
-			mcp.Required(),
-			mcp.Description("merchant_order_reference parameter for item_updates"),
+			mcp.Properties(map[string]any{
+				"items": map[string]any{
+					"type":        "array",
+					"description": "items parameter",
+					"required":    true,
+					"items":       map[string]any{"type": "object"},
+				},
+				"merchant_order_reference": map[string]any{
+					"type":        "string",
+					"description": "merchant_order_reference parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: items (array<object>) [required], merchant_order_reference (string) [required]"),
 		),
 	)
 	tools = append(tools, commerceorder_post_item_updatesTool)
@@ -83,8 +115,8 @@ func GetCommerceOrderTools() []mcp.Tool {
 	// commerceorder_get_items tool
 	commerceorder_get_itemsTool := mcp.NewTool("commerceorder_get_items",
 		mcp.WithDescription("GET items for CommerceOrder"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -101,8 +133,8 @@ func GetCommerceOrderTools() []mcp.Tool {
 	// commerceorder_get_payments tool
 	commerceorder_get_paymentsTool := mcp.NewTool("commerceorder_get_payments",
 		mcp.WithDescription("GET payments for CommerceOrder"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -119,8 +151,8 @@ func GetCommerceOrderTools() []mcp.Tool {
 	// commerceorder_get_promotion_details tool
 	commerceorder_get_promotion_detailsTool := mcp.NewTool("commerceorder_get_promotion_details",
 		mcp.WithDescription("GET promotion_details for CommerceOrder"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -137,8 +169,8 @@ func GetCommerceOrderTools() []mcp.Tool {
 	// commerceorder_get_promotions tool
 	commerceorder_get_promotionsTool := mcp.NewTool("commerceorder_get_promotions",
 		mcp.WithDescription("GET promotions for CommerceOrder"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -155,8 +187,8 @@ func GetCommerceOrderTools() []mcp.Tool {
 	// commerceorder_get_refunds tool
 	commerceorder_get_refundsTool := mcp.NewTool("commerceorder_get_refunds",
 		mcp.WithDescription("GET refunds for CommerceOrder"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -171,50 +203,76 @@ func GetCommerceOrderTools() []mcp.Tool {
 	tools = append(tools, commerceorder_get_refundsTool)
 
 	// commerceorder_post_refunds tool
+	// Params object accepts: adjustment_amount (map), deductions (list<map>), idempotency_key (string), items (list<map>), reason_code (commerceorderrefunds_reason_code_enum_param), reason_text (string), return_id (string), shipping (map)
 	commerceorder_post_refundsTool := mcp.NewTool("commerceorder_post_refunds",
 		mcp.WithDescription("POST refunds for CommerceOrder"),
-		mcp.WithString("adjustment_amount",
-			mcp.Description("adjustment_amount parameter for refunds"),
-		),
-		mcp.WithString("deductions",
-			mcp.Description("deductions parameter for refunds"),
-		),
-		mcp.WithString("idempotency_key",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("idempotency_key parameter for refunds"),
-		),
-		mcp.WithString("items",
-			mcp.Description("items parameter for refunds"),
-		),
-		mcp.WithString("reason_code",
-			mcp.Required(),
-			mcp.Description("reason_code parameter for refunds"),
-			mcp.Enum("BUYERS_REMORSE", "DAMAGED_GOODS", "FACEBOOK_INITIATED", "NOT_AS_DESCRIBED", "QUALITY_ISSUE", "REFUND_COMPROMISED", "REFUND_FOR_RETURN", "REFUND_REASON_OTHER", "REFUND_SFI_FAKE", "REFUND_SFI_REAL", "WRONG_ITEM"),
-		),
-		mcp.WithString("reason_text",
-			mcp.Description("reason_text parameter for refunds"),
-		),
-		mcp.WithString("return_id",
-			mcp.Description("return_id parameter for refunds"),
-		),
-		mcp.WithString("shipping",
-			mcp.Description("shipping parameter for refunds"),
+			mcp.Properties(map[string]any{
+				"adjustment_amount": map[string]any{
+					"type":        "object",
+					"description": "adjustment_amount parameter",
+				},
+				"deductions": map[string]any{
+					"type":        "array",
+					"description": "deductions parameter",
+					"items":       map[string]any{"type": "object"},
+				},
+				"idempotency_key": map[string]any{
+					"type":        "string",
+					"description": "idempotency_key parameter",
+					"required":    true,
+				},
+				"items": map[string]any{
+					"type":        "array",
+					"description": "items parameter",
+					"items":       map[string]any{"type": "object"},
+				},
+				"reason_code": map[string]any{
+					"type":        "string",
+					"description": "reason_code parameter",
+					"required":    true,
+					"enum":        []string{"BUYERS_REMORSE", "DAMAGED_GOODS", "FACEBOOK_INITIATED", "NOT_AS_DESCRIBED", "QUALITY_ISSUE", "REFUND_COMPROMISED", "REFUND_FOR_RETURN", "REFUND_REASON_OTHER", "REFUND_SFI_FAKE", "REFUND_SFI_REAL", "WRONG_ITEM"},
+				},
+				"reason_text": map[string]any{
+					"type":        "string",
+					"description": "reason_text parameter",
+				},
+				"return_id": map[string]any{
+					"type":        "string",
+					"description": "return_id parameter",
+				},
+				"shipping": map[string]any{
+					"type":        "object",
+					"description": "shipping parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: adjustment_amount (object), deductions (array<object>), idempotency_key (string) [required], items (array<object>), reason_code (enum) [BUYERS_REMORSE, DAMAGED_GOODS, FACEBOOK_INITIATED, NOT_AS_DESCRIBED, QUALITY_ISSUE, ...] [required], reason_text (string), return_id (string), shipping (object)"),
 		),
 	)
 	tools = append(tools, commerceorder_post_refundsTool)
 
 	// commerceorder_get_returns tool
+	// Params object accepts: merchant_return_id (string), statuses (list<commerceorderreturns_statuses_enum_param>)
 	commerceorder_get_returnsTool := mcp.NewTool("commerceorder_get_returns",
 		mcp.WithDescription("GET returns for CommerceOrder"),
-		mcp.WithString("merchant_return_id",
-			mcp.Description("merchant_return_id parameter for returns"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"merchant_return_id": map[string]any{
+					"type":        "string",
+					"description": "merchant_return_id parameter",
+				},
+				"statuses": map[string]any{
+					"type":        "array",
+					"description": "statuses parameter",
+					"enum":        []string{"APPROVED", "DISAPPROVED", "MERCHANT_MARKED_COMPLETED", "REFUNDED", "REQUESTED"},
+					"items":       map[string]any{"type": "string"},
+				},
+			}),
+			mcp.Description("Parameters object containing: merchant_return_id (string), statuses (array<enum>) [APPROVED, DISAPPROVED, MERCHANT_MARKED_COMPLETED, REFUNDED, REQUESTED]"),
 		),
-		mcp.WithString("statuses",
-			mcp.Description("statuses parameter for returns"),
-			mcp.Enum("APPROVED", "DISAPPROVED", "MERCHANT_MARKED_COMPLETED", "REFUNDED", "REQUESTED"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -229,20 +287,32 @@ func GetCommerceOrderTools() []mcp.Tool {
 	tools = append(tools, commerceorder_get_returnsTool)
 
 	// commerceorder_post_returns tool
+	// Params object accepts: items (list<map>), merchant_return_id (string), return_message (string), update (map)
 	commerceorder_post_returnsTool := mcp.NewTool("commerceorder_post_returns",
 		mcp.WithDescription("POST returns for CommerceOrder"),
-		mcp.WithString("items",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("items parameter for returns"),
-		),
-		mcp.WithString("merchant_return_id",
-			mcp.Description("merchant_return_id parameter for returns"),
-		),
-		mcp.WithString("return_message",
-			mcp.Description("return_message parameter for returns"),
-		),
-		mcp.WithString("update",
-			mcp.Description("update parameter for returns"),
+			mcp.Properties(map[string]any{
+				"items": map[string]any{
+					"type":        "array",
+					"description": "items parameter",
+					"required":    true,
+					"items":       map[string]any{"type": "object"},
+				},
+				"merchant_return_id": map[string]any{
+					"type":        "string",
+					"description": "merchant_return_id parameter",
+				},
+				"return_message": map[string]any{
+					"type":        "string",
+					"description": "return_message parameter",
+				},
+				"update": map[string]any{
+					"type":        "object",
+					"description": "update parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: items (array<object>) [required], merchant_return_id (string), return_message (string), update (object)"),
 		),
 	)
 	tools = append(tools, commerceorder_post_returnsTool)
@@ -250,8 +320,8 @@ func GetCommerceOrderTools() []mcp.Tool {
 	// commerceorder_get_shipments tool
 	commerceorder_get_shipmentsTool := mcp.NewTool("commerceorder_get_shipments",
 		mcp.WithDescription("GET shipments for CommerceOrder"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -266,61 +336,91 @@ func GetCommerceOrderTools() []mcp.Tool {
 	tools = append(tools, commerceorder_get_shipmentsTool)
 
 	// commerceorder_post_shipments tool
+	// Params object accepts: external_redemption_link (string), external_shipment_id (string), fulfillment (map), idempotency_key (string), items (list<map>), merchant_order_reference (string), shipment_origin_postal_code (string), shipping_tax_details (map), should_use_default_fulfillment_location (bool), tracking_info (map)
 	commerceorder_post_shipmentsTool := mcp.NewTool("commerceorder_post_shipments",
 		mcp.WithDescription("POST shipments for CommerceOrder"),
-		mcp.WithString("external_redemption_link",
-			mcp.Description("external_redemption_link parameter for shipments"),
-		),
-		mcp.WithString("external_shipment_id",
-			mcp.Description("external_shipment_id parameter for shipments"),
-		),
-		mcp.WithString("fulfillment",
-			mcp.Description("fulfillment parameter for shipments"),
-		),
-		mcp.WithString("idempotency_key",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("idempotency_key parameter for shipments"),
-		),
-		mcp.WithString("items",
-			mcp.Description("items parameter for shipments"),
-		),
-		mcp.WithString("merchant_order_reference",
-			mcp.Description("merchant_order_reference parameter for shipments"),
-		),
-		mcp.WithString("shipment_origin_postal_code",
-			mcp.Description("shipment_origin_postal_code parameter for shipments"),
-		),
-		mcp.WithString("shipping_tax_details",
-			mcp.Description("shipping_tax_details parameter for shipments"),
-		),
-		mcp.WithBoolean("should_use_default_fulfillment_location",
-			mcp.Description("should_use_default_fulfillment_location parameter for shipments"),
-		),
-		mcp.WithString("tracking_info",
-			mcp.Description("tracking_info parameter for shipments"),
+			mcp.Properties(map[string]any{
+				"external_redemption_link": map[string]any{
+					"type":        "string",
+					"description": "external_redemption_link parameter",
+				},
+				"external_shipment_id": map[string]any{
+					"type":        "string",
+					"description": "external_shipment_id parameter",
+				},
+				"fulfillment": map[string]any{
+					"type":        "object",
+					"description": "fulfillment parameter",
+				},
+				"idempotency_key": map[string]any{
+					"type":        "string",
+					"description": "idempotency_key parameter",
+					"required":    true,
+				},
+				"items": map[string]any{
+					"type":        "array",
+					"description": "items parameter",
+					"items":       map[string]any{"type": "object"},
+				},
+				"merchant_order_reference": map[string]any{
+					"type":        "string",
+					"description": "merchant_order_reference parameter",
+				},
+				"shipment_origin_postal_code": map[string]any{
+					"type":        "string",
+					"description": "shipment_origin_postal_code parameter",
+				},
+				"shipping_tax_details": map[string]any{
+					"type":        "object",
+					"description": "shipping_tax_details parameter",
+				},
+				"should_use_default_fulfillment_location": map[string]any{
+					"type":        "boolean",
+					"description": "should_use_default_fulfillment_location parameter",
+				},
+				"tracking_info": map[string]any{
+					"type":        "object",
+					"description": "tracking_info parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: external_redemption_link (string), external_shipment_id (string), fulfillment (object), idempotency_key (string) [required], items (array<object>), merchant_order_reference (string), shipment_origin_postal_code (string), shipping_tax_details (object), should_use_default_fulfillment_location (boolean), tracking_info (object)"),
 		),
 	)
 	tools = append(tools, commerceorder_post_shipmentsTool)
 
 	// commerceorder_post_update_shipment tool
+	// Params object accepts: external_shipment_id (string), fulfillment_id (string), idempotency_key (string), shipment_id (string), tracking_info (map)
 	commerceorder_post_update_shipmentTool := mcp.NewTool("commerceorder_post_update_shipment",
 		mcp.WithDescription("POST update_shipment for CommerceOrder"),
-		mcp.WithString("external_shipment_id",
-			mcp.Description("external_shipment_id parameter for update_shipment"),
-		),
-		mcp.WithString("fulfillment_id",
-			mcp.Description("fulfillment_id parameter for update_shipment"),
-		),
-		mcp.WithString("idempotency_key",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("idempotency_key parameter for update_shipment"),
-		),
-		mcp.WithString("shipment_id",
-			mcp.Description("shipment_id parameter for update_shipment"),
-		),
-		mcp.WithString("tracking_info",
-			mcp.Required(),
-			mcp.Description("tracking_info parameter for update_shipment"),
+			mcp.Properties(map[string]any{
+				"external_shipment_id": map[string]any{
+					"type":        "string",
+					"description": "external_shipment_id parameter",
+				},
+				"fulfillment_id": map[string]any{
+					"type":        "string",
+					"description": "fulfillment_id parameter",
+				},
+				"idempotency_key": map[string]any{
+					"type":        "string",
+					"description": "idempotency_key parameter",
+					"required":    true,
+				},
+				"shipment_id": map[string]any{
+					"type":        "string",
+					"description": "shipment_id parameter",
+				},
+				"tracking_info": map[string]any{
+					"type":        "object",
+					"description": "tracking_info parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: external_shipment_id (string), fulfillment_id (string), idempotency_key (string) [required], shipment_id (string), tracking_info (object) [required]"),
 		),
 	)
 	tools = append(tools, commerceorder_post_update_shipmentTool)
@@ -329,8 +429,8 @@ func GetCommerceOrderTools() []mcp.Tool {
 	// Available fields for CommerceOrder: buyer_details, channel, contains_bopis_items, created, estimated_payment_details, id, is_group_buy, is_test_order, last_updated, merchant_order_id, order_status, pre_order_details, selected_shipping_option, ship_by_date, shipping_address
 	commerceorder_get_Tool := mcp.NewTool("commerceorder_get_",
 		mcp.WithDescription("GET  for CommerceOrder"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for CommerceOrder objects. Available fields: buyer_details, channel, contains_bopis_items, created, estimated_payment_details, id, is_group_buy, is_test_order, last_updated, merchant_order_id, order_status, pre_order_details, selected_shipping_option, ship_by_date, shipping_address"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for CommerceOrder objects. Available fields: buyer_details, channel, contains_bopis_items, created, estimated_payment_details, id, is_group_buy, is_test_order, last_updated, merchant_order_id, order_status, pre_order_details, selected_shipping_option, ship_by_date, shipping_address"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -363,16 +463,18 @@ func HandleCommerceorder_post_acknowledge_order(ctx context.Context, request mcp
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: idempotency_key
-	idempotency_key, err := request.RequireString("idempotency_key")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter idempotency_key: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["idempotency_key"] = idempotency_key
-
-	// Optional: merchant_order_reference
-	if val := request.GetString("merchant_order_reference", ""); val != "" {
-		args["merchant_order_reference"] = val
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
 	}
 
 	// Call the client method
@@ -405,8 +507,13 @@ func HandleCommerceorder_get_cancellations(ctx context.Context, request mcp.Call
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -453,27 +560,18 @@ func HandleCommerceorder_post_cancellations(ctx context.Context, request mcp.Cal
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: cancel_reason
-	if val := request.GetString("cancel_reason", ""); val != "" {
-		args["cancel_reason"] = val
-	}
-
-	// Required: idempotency_key
-	idempotency_key, err := request.RequireString("idempotency_key")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter idempotency_key: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["idempotency_key"] = idempotency_key
-
-	// Optional: items
-	// array type - using string
-	if val := request.GetString("items", ""); val != "" {
-		args["items"] = val
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
-
-	// Optional: restock_items
-	if val := request.GetBool("restock_items", false); val {
-		args["restock_items"] = val
+	for key, value := range paramsObj {
+		args[key] = value
 	}
 
 	// Call the client method
@@ -505,19 +603,19 @@ func HandleCommerceorder_post_item_updates(ctx context.Context, request mcp.Call
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: items
-	items, err := request.RequireString("items")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter items: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["items"] = items
-
-	// Required: merchant_order_reference
-	merchant_order_reference, err := request.RequireString("merchant_order_reference")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter merchant_order_reference: %v", err)), nil
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
-	args["merchant_order_reference"] = merchant_order_reference
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Commerceorder_post_item_updates(args)
@@ -549,8 +647,13 @@ func HandleCommerceorder_get_items(ctx context.Context, request mcp.CallToolRequ
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -598,8 +701,13 @@ func HandleCommerceorder_get_payments(ctx context.Context, request mcp.CallToolR
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -647,8 +755,13 @@ func HandleCommerceorder_get_promotion_details(ctx context.Context, request mcp.
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -696,8 +809,13 @@ func HandleCommerceorder_get_promotions(ctx context.Context, request mcp.CallToo
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -745,8 +863,13 @@ func HandleCommerceorder_get_refunds(ctx context.Context, request mcp.CallToolRe
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -793,50 +916,18 @@ func HandleCommerceorder_post_refunds(ctx context.Context, request mcp.CallToolR
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: adjustment_amount
-	if val := request.GetString("adjustment_amount", ""); val != "" {
-		args["adjustment_amount"] = val
-	}
-
-	// Optional: deductions
-	// array type - using string
-	if val := request.GetString("deductions", ""); val != "" {
-		args["deductions"] = val
-	}
-
-	// Required: idempotency_key
-	idempotency_key, err := request.RequireString("idempotency_key")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter idempotency_key: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["idempotency_key"] = idempotency_key
-
-	// Optional: items
-	// array type - using string
-	if val := request.GetString("items", ""); val != "" {
-		args["items"] = val
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
-
-	// Required: reason_code
-	reason_code, err := request.RequireString("reason_code")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter reason_code: %v", err)), nil
-	}
-	args["reason_code"] = reason_code
-
-	// Optional: reason_text
-	if val := request.GetString("reason_text", ""); val != "" {
-		args["reason_text"] = val
-	}
-
-	// Optional: return_id
-	if val := request.GetString("return_id", ""); val != "" {
-		args["return_id"] = val
-	}
-
-	// Optional: shipping
-	if val := request.GetString("shipping", ""); val != "" {
-		args["shipping"] = val
+	for key, value := range paramsObj {
+		args[key] = value
 	}
 
 	// Call the client method
@@ -868,20 +959,26 @@ func HandleCommerceorder_get_returns(ctx context.Context, request mcp.CallToolRe
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: merchant_return_id
-	if val := request.GetString("merchant_return_id", ""); val != "" {
-		args["merchant_return_id"] = val
-	}
-
-	// Optional: statuses
-	// array type - using string
-	if val := request.GetString("statuses", ""); val != "" {
-		args["statuses"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -928,26 +1025,18 @@ func HandleCommerceorder_post_returns(ctx context.Context, request mcp.CallToolR
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: items
-	items, err := request.RequireString("items")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter items: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["items"] = items
-
-	// Optional: merchant_return_id
-	if val := request.GetString("merchant_return_id", ""); val != "" {
-		args["merchant_return_id"] = val
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
-
-	// Optional: return_message
-	if val := request.GetString("return_message", ""); val != "" {
-		args["return_message"] = val
-	}
-
-	// Optional: update
-	if val := request.GetString("update", ""); val != "" {
-		args["update"] = val
+	for key, value := range paramsObj {
+		args[key] = value
 	}
 
 	// Call the client method
@@ -980,8 +1069,13 @@ func HandleCommerceorder_get_shipments(ctx context.Context, request mcp.CallTool
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -1028,57 +1122,18 @@ func HandleCommerceorder_post_shipments(ctx context.Context, request mcp.CallToo
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: external_redemption_link
-	if val := request.GetString("external_redemption_link", ""); val != "" {
-		args["external_redemption_link"] = val
-	}
-
-	// Optional: external_shipment_id
-	if val := request.GetString("external_shipment_id", ""); val != "" {
-		args["external_shipment_id"] = val
-	}
-
-	// Optional: fulfillment
-	if val := request.GetString("fulfillment", ""); val != "" {
-		args["fulfillment"] = val
-	}
-
-	// Required: idempotency_key
-	idempotency_key, err := request.RequireString("idempotency_key")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter idempotency_key: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["idempotency_key"] = idempotency_key
-
-	// Optional: items
-	// array type - using string
-	if val := request.GetString("items", ""); val != "" {
-		args["items"] = val
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
-
-	// Optional: merchant_order_reference
-	if val := request.GetString("merchant_order_reference", ""); val != "" {
-		args["merchant_order_reference"] = val
-	}
-
-	// Optional: shipment_origin_postal_code
-	if val := request.GetString("shipment_origin_postal_code", ""); val != "" {
-		args["shipment_origin_postal_code"] = val
-	}
-
-	// Optional: shipping_tax_details
-	if val := request.GetString("shipping_tax_details", ""); val != "" {
-		args["shipping_tax_details"] = val
-	}
-
-	// Optional: should_use_default_fulfillment_location
-	if val := request.GetBool("should_use_default_fulfillment_location", false); val {
-		args["should_use_default_fulfillment_location"] = val
-	}
-
-	// Optional: tracking_info
-	if val := request.GetString("tracking_info", ""); val != "" {
-		args["tracking_info"] = val
+	for key, value := range paramsObj {
+		args[key] = value
 	}
 
 	// Call the client method
@@ -1110,34 +1165,19 @@ func HandleCommerceorder_post_update_shipment(ctx context.Context, request mcp.C
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: external_shipment_id
-	if val := request.GetString("external_shipment_id", ""); val != "" {
-		args["external_shipment_id"] = val
-	}
-
-	// Optional: fulfillment_id
-	if val := request.GetString("fulfillment_id", ""); val != "" {
-		args["fulfillment_id"] = val
-	}
-
-	// Required: idempotency_key
-	idempotency_key, err := request.RequireString("idempotency_key")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter idempotency_key: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["idempotency_key"] = idempotency_key
-
-	// Optional: shipment_id
-	if val := request.GetString("shipment_id", ""); val != "" {
-		args["shipment_id"] = val
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
-
-	// Required: tracking_info
-	tracking_info, err := request.RequireString("tracking_info")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter tracking_info: %v", err)), nil
+	for key, value := range paramsObj {
+		args[key] = value
 	}
-	args["tracking_info"] = tracking_info
 
 	// Call the client method
 	result, err := client.Commerceorder_post_update_shipment(args)
@@ -1169,8 +1209,13 @@ func HandleCommerceorder_get_(ctx context.Context, request mcp.CallToolRequest) 
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit

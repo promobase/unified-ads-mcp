@@ -200,31 +200,11 @@ func (c *FundraiserPersonToCharityClient) Fundraiserpersontocharity_get_external
 // fundraiserpersontocharity_post_external_donations POST external_donations for FundraiserPersonToCharity
 func (c *FundraiserPersonToCharityClient) Fundraiserpersontocharity_post_external_donations(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	amount_received, ok := args["amount_received"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: amount_received")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = amount_received // Suppress unused variable warning
-	currency, ok := args["currency"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: currency")
-	}
-	_ = currency // Suppress unused variable warning
-	donation_id_hash, ok := args["donation_id_hash"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: donation_id_hash")
-	}
-	_ = donation_id_hash // Suppress unused variable warning
-	donation_time, ok := args["donation_time"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: donation_time")
-	}
-	_ = donation_time // Suppress unused variable warning
-	donor_id_hash, ok := args["donor_id_hash"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: donor_id_hash")
-	}
-	_ = donor_id_hash // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -234,34 +214,10 @@ func (c *FundraiserPersonToCharityClient) Fundraiserpersontocharity_post_externa
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["amount_received"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("amount_received", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["currency"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("currency", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["donation_id_hash"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("donation_id_hash", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["donation_time"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("donation_time", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["donor_id_hash"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("donor_id_hash", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -374,58 +330,10 @@ func (c *FundraiserPersonToCharityClient) Fundraiserpersontocharity_post_(args m
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["description"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("description", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["end_time"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("end_time", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["external_event_name"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("external_event_name", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["external_event_start_time"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("external_event_start_time", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["external_event_uri"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("external_event_uri", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["external_fundraiser_uri"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("external_fundraiser_uri", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["external_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("external_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["goal_amount"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("goal_amount", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["name"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("name", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 

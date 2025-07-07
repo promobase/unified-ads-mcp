@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -20,8 +21,8 @@ func GetBusinessUserTools() []mcp.Tool {
 	// Available fields for AdAccount: account_id, account_status, ad_account_promotable_objects, age, agency_client_declaration, all_capabilities, amount_spent, attribution_spec, balance, brand_safety_content_filter_levels, business, business_city, business_country_code, business_name, business_state, business_street, business_street2, business_zip, can_create_brand_lift_study, capabilities, created_time, currency, custom_audience_info, default_dsa_beneficiary, default_dsa_payor, disable_reason, end_advertiser, end_advertiser_name, existing_customers, expired_funding_source_details, extended_credit_invoice_group, failed_delivery_checks, fb_entity, funding_source, funding_source_details, has_migrated_permissions, has_page_authorized_adaccount, id, io_number, is_attribution_spec_system_default, is_ba_skip_delayed_eligible, is_direct_deals_enabled, is_in_3ds_authorization_enabled_market, is_notifications_enabled, is_personal, is_prepay_account, is_tax_id_required, liable_address, line_numbers, media_agency, min_campaign_group_spend_cap, min_daily_budget, name, offsite_pixels_tos_accepted, owner, owner_business, partner, rf_spec, send_bill_to_address, show_checkout_experience, sold_to_address, spend_cap, tax_id, tax_id_status, tax_id_type, timezone_id, timezone_name, timezone_offset_hours_utc, tos_accepted, user_access_expire_time, user_tasks, user_tos_accepted, viewable_business
 	businessuser_get_assigned_ad_accountsTool := mcp.NewTool("businessuser_get_assigned_ad_accounts",
 		mcp.WithDescription("GET assigned_ad_accounts for BusinessUser"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for AdAccount objects. Available fields: account_id, account_status, ad_account_promotable_objects, age, agency_client_declaration, all_capabilities, amount_spent, attribution_spec, balance, brand_safety_content_filter_levels, business, business_city, business_country_code, business_name, business_state (and 58 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for AdAccount objects. Available fields: account_id, account_status, ad_account_promotable_objects, age, agency_client_declaration, all_capabilities, amount_spent, attribution_spec, balance, brand_safety_content_filter_levels, business, business_city, business_country_code, business_name, business_state (and 58 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -37,13 +38,20 @@ func GetBusinessUserTools() []mcp.Tool {
 
 	// businessuser_get_assigned_business_asset_groups tool
 	// Available fields for BusinessAssetGroup: id, name, owner_business
+	// Params object accepts: contained_asset_id (string)
 	businessuser_get_assigned_business_asset_groupsTool := mcp.NewTool("businessuser_get_assigned_business_asset_groups",
 		mcp.WithDescription("GET assigned_business_asset_groups for BusinessUser"),
-		mcp.WithString("contained_asset_id",
-			mcp.Description("contained_asset_id parameter for assigned_business_asset_groups"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"contained_asset_id": map[string]any{
+					"type":        "string",
+					"description": "contained_asset_id parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: contained_asset_id (string)"),
 		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for BusinessAssetGroup objects. Available fields: id, name, owner_business"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for BusinessAssetGroup objects. Available fields: id, name, owner_business"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -59,13 +67,21 @@ func GetBusinessUserTools() []mcp.Tool {
 
 	// businessuser_get_assigned_pages tool
 	// Available fields for Page: about, access_token, ad_campaign, affiliation, app_id, artists_we_like, attire, available_promo_offer_ids, awards, band_interests, band_members, best_page, bio, birthday, booking_agent, breaking_news_usage, built, business, can_checkin, can_post, category, category_list, checkins, company_overview, connected_instagram_account, connected_page_backed_instagram_account, contact_address, copyright_whitelisted_ig_partners, country_page_likes, cover, culinary_team, current_location, delivery_and_pickup_option_info, description, description_html, differently_open_offerings, directed_by, display_subtext, displayed_message_response_time, does_viewer_have_page_permission_link_ig, emails, engagement, fan_count, featured_video, features, followers_count, food_styles, founded, general_info, general_manager, genre, global_brand_page_name, global_brand_root_id, has_added_app, has_lead_access, has_transitioned_to_new_page_experience, has_whatsapp_business_number, has_whatsapp_number, hometown, hours, id, impressum, influences, instagram_business_account, is_always_open, is_calling_eligible, is_chain, is_community_page, is_eligible_for_branded_content, is_eligible_for_disable_connect_ig_btn_for_non_page_admin_am_web, is_messenger_bot_get_started_enabled, is_messenger_platform_bot, is_owned, is_permanently_closed, is_published, is_unclaimed, is_verified, is_webhooks_subscribed, keywords, leadgen_tos_acceptance_time, leadgen_tos_accepted, leadgen_tos_accepting_user, link, location, members, merchant_id, merchant_review_status, messaging_feature_status, messenger_ads_default_icebreakers, messenger_ads_default_quick_replies, messenger_ads_quick_replies_type, mini_shop_storefront, mission, mpg, name, name_with_location_descriptor, network, new_like_count, offer_eligible, overall_star_rating, owner_business, page_token, parent_page, parking, payment_options, personal_info, personal_interests, pharma_safety_info, phone, pickup_options, place_type, plot_outline, preferred_audience, press_contact, price_range, privacy_info_url, produced_by, products, promotion_eligible, promotion_ineligible_reason, public_transit, rating_count, recipient, record_label, release_date, restaurant_services, restaurant_specialties, schedule, screenplay_by, season, single_line_address, starring, start_info, store_code, store_location_descriptor, store_number, studio, supports_donate_button_in_live_video, talking_about_count, temporary_status, unread_message_count, unread_notif_count, unseen_message_count, user_access_expire_time, username, verification_status, voip_info, website, were_here_count, whatsapp_number, written_by
+	// Params object accepts: pages (list<unsigned int>)
 	businessuser_get_assigned_pagesTool := mcp.NewTool("businessuser_get_assigned_pages",
 		mcp.WithDescription("GET assigned_pages for BusinessUser"),
-		mcp.WithString("pages",
-			mcp.Description("pages parameter for assigned_pages"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"pages": map[string]any{
+					"type":        "array",
+					"description": "pages parameter",
+					"items":       map[string]any{"type": "integer"},
+				},
+			}),
+			mcp.Description("Parameters object containing: pages (array<integer>)"),
 		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for Page objects. Available fields: about, access_token, ad_campaign, affiliation, app_id, artists_we_like, attire, available_promo_offer_ids, awards, band_interests, band_members, best_page, bio, birthday, booking_agent (and 136 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for Page objects. Available fields: about, access_token, ad_campaign, affiliation, app_id, artists_we_like, attire, available_promo_offer_ids, awards, band_interests, band_members, best_page, bio, birthday, booking_agent (and 136 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -83,8 +99,8 @@ func GetBusinessUserTools() []mcp.Tool {
 	// Available fields for ProductCatalog: ad_account_to_collaborative_ads_share_settings, agency_collaborative_ads_share_settings, business, catalog_store, commerce_merchant_settings, creator_user, da_display_settings, default_image_url, fallback_image_url, feed_count, id, is_catalog_segment, is_local_catalog, name, owner_business, product_count, store_catalog_settings, user_access_expire_time, vertical
 	businessuser_get_assigned_product_catalogsTool := mcp.NewTool("businessuser_get_assigned_product_catalogs",
 		mcp.WithDescription("GET assigned_product_catalogs for BusinessUser"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for ProductCatalog objects. Available fields: ad_account_to_collaborative_ads_share_settings, agency_collaborative_ads_share_settings, business, catalog_store, commerce_merchant_settings, creator_user, da_display_settings, default_image_url, fallback_image_url, feed_count, id, is_catalog_segment, is_local_catalog, name, owner_business (and 4 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for ProductCatalog objects. Available fields: ad_account_to_collaborative_ads_share_settings, agency_collaborative_ads_share_settings, business, catalog_store, commerce_merchant_settings, creator_user, da_display_settings, default_image_url, fallback_image_url, feed_count, id, is_catalog_segment, is_local_catalog, name, owner_business (and 4 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -108,8 +124,8 @@ func GetBusinessUserTools() []mcp.Tool {
 	// Available fields for BusinessUser: business, business_role_request, email, finance_permission, first_name, id, ip_permission, last_name, marked_for_removal, name, pending_email, role, tasks, title, two_fac_status
 	businessuser_get_Tool := mcp.NewTool("businessuser_get_",
 		mcp.WithDescription("GET  for BusinessUser"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for BusinessUser objects. Available fields: business, business_role_request, email, finance_permission, first_name, id, ip_permission, last_name, marked_for_removal, name, pending_email, role, tasks, title, two_fac_status"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for BusinessUser objects. Available fields: business, business_role_request, email, finance_permission, first_name, id, ip_permission, last_name, marked_for_removal, name, pending_email, role, tasks, title, two_fac_status"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -124,36 +140,52 @@ func GetBusinessUserTools() []mcp.Tool {
 	tools = append(tools, businessuser_get_Tool)
 
 	// businessuser_post_ tool
+	// Params object accepts: clear_pending_email (bool), email (string), first_name (string), last_name (string), pending_email (string), role (businessuser_role), skip_verification_email (bool), tasks (list<businessuser_tasks>), title (string)
 	businessuser_post_Tool := mcp.NewTool("businessuser_post_",
 		mcp.WithDescription("POST  for BusinessUser"),
-		mcp.WithBoolean("clear_pending_email",
-			mcp.Description("clear_pending_email parameter for "),
-		),
-		mcp.WithString("email",
-			mcp.Description("email parameter for "),
-		),
-		mcp.WithString("first_name",
-			mcp.Description("first_name parameter for "),
-		),
-		mcp.WithString("last_name",
-			mcp.Description("last_name parameter for "),
-		),
-		mcp.WithString("pending_email",
-			mcp.Description("pending_email parameter for "),
-		),
-		mcp.WithString("role",
-			mcp.Description("role parameter for "),
-			mcp.Enum("ADMIN", "ADS_RIGHTS_REVIEWER", "DEFAULT", "DEVELOPER", "EMPLOYEE", "FINANCE_ANALYST", "FINANCE_EDIT", "FINANCE_EDITOR", "FINANCE_VIEW", "MANAGE", "PARTNER_CENTER_ADMIN", "PARTNER_CENTER_ANALYST", "PARTNER_CENTER_EDUCATION", "PARTNER_CENTER_MARKETING", "PARTNER_CENTER_OPERATIONS"),
-		),
-		mcp.WithBoolean("skip_verification_email",
-			mcp.Description("skip_verification_email parameter for "),
-		),
-		mcp.WithString("tasks",
-			mcp.Description("tasks parameter for "),
-			mcp.Enum("ADMIN", "ADS_RIGHTS_REVIEWER", "DEFAULT", "DEVELOPER", "EMPLOYEE", "FINANCE_ANALYST", "FINANCE_EDIT", "FINANCE_EDITOR", "FINANCE_VIEW", "MANAGE", "PARTNER_CENTER_ADMIN", "PARTNER_CENTER_ANALYST", "PARTNER_CENTER_EDUCATION", "PARTNER_CENTER_MARKETING", "PARTNER_CENTER_OPERATIONS"),
-		),
-		mcp.WithString("title",
-			mcp.Description("title parameter for "),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"clear_pending_email": map[string]any{
+					"type":        "boolean",
+					"description": "clear_pending_email parameter",
+				},
+				"email": map[string]any{
+					"type":        "string",
+					"description": "email parameter",
+				},
+				"first_name": map[string]any{
+					"type":        "string",
+					"description": "first_name parameter",
+				},
+				"last_name": map[string]any{
+					"type":        "string",
+					"description": "last_name parameter",
+				},
+				"pending_email": map[string]any{
+					"type":        "string",
+					"description": "pending_email parameter",
+				},
+				"role": map[string]any{
+					"type":        "string",
+					"description": "role parameter",
+					"enum":        []string{"ADMIN", "ADS_RIGHTS_REVIEWER", "DEFAULT", "DEVELOPER", "EMPLOYEE", "FINANCE_ANALYST", "FINANCE_EDIT", "FINANCE_EDITOR", "FINANCE_VIEW", "MANAGE", "PARTNER_CENTER_ADMIN", "PARTNER_CENTER_ANALYST", "PARTNER_CENTER_EDUCATION", "PARTNER_CENTER_MARKETING", "PARTNER_CENTER_OPERATIONS"},
+				},
+				"skip_verification_email": map[string]any{
+					"type":        "boolean",
+					"description": "skip_verification_email parameter",
+				},
+				"tasks": map[string]any{
+					"type":        "array",
+					"description": "tasks parameter",
+					"enum":        []string{"ADMIN", "ADS_RIGHTS_REVIEWER", "DEFAULT", "DEVELOPER", "EMPLOYEE", "FINANCE_ANALYST", "FINANCE_EDIT", "FINANCE_EDITOR", "FINANCE_VIEW", "MANAGE", "PARTNER_CENTER_ADMIN", "PARTNER_CENTER_ANALYST", "PARTNER_CENTER_EDUCATION", "PARTNER_CENTER_MARKETING", "PARTNER_CENTER_OPERATIONS"},
+					"items":       map[string]any{"type": "string"},
+				},
+				"title": map[string]any{
+					"type":        "string",
+					"description": "title parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: clear_pending_email (boolean), email (string), first_name (string), last_name (string), pending_email (string), role (businessuser_role) [ADMIN, ADS_RIGHTS_REVIEWER, DEFAULT, DEVELOPER, EMPLOYEE, ...], skip_verification_email (boolean), tasks (array<businessuser_tasks>) [ADMIN, ADS_RIGHTS_REVIEWER, DEFAULT, DEVELOPER, EMPLOYEE, ...], title (string)"),
 		),
 	)
 	tools = append(tools, businessuser_post_Tool)
@@ -178,8 +210,13 @@ func HandleBusinessuser_get_assigned_ad_accounts(ctx context.Context, request mc
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -226,14 +263,26 @@ func HandleBusinessuser_get_assigned_business_asset_groups(ctx context.Context, 
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: contained_asset_id
-	if val := request.GetString("contained_asset_id", ""); val != "" {
-		args["contained_asset_id"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -280,15 +329,26 @@ func HandleBusinessuser_get_assigned_pages(ctx context.Context, request mcp.Call
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: pages
-	// array type - using string
-	if val := request.GetString("pages", ""); val != "" {
-		args["pages"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -336,8 +396,13 @@ func HandleBusinessuser_get_assigned_product_catalogs(ctx context.Context, reque
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -414,8 +479,13 @@ func HandleBusinessuser_get_(ctx context.Context, request mcp.CallToolRequest) (
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -462,50 +532,16 @@ func HandleBusinessuser_post_(ctx context.Context, request mcp.CallToolRequest) 
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: clear_pending_email
-	if val := request.GetBool("clear_pending_email", false); val {
-		args["clear_pending_email"] = val
-	}
-
-	// Optional: email
-	if val := request.GetString("email", ""); val != "" {
-		args["email"] = val
-	}
-
-	// Optional: first_name
-	if val := request.GetString("first_name", ""); val != "" {
-		args["first_name"] = val
-	}
-
-	// Optional: last_name
-	if val := request.GetString("last_name", ""); val != "" {
-		args["last_name"] = val
-	}
-
-	// Optional: pending_email
-	if val := request.GetString("pending_email", ""); val != "" {
-		args["pending_email"] = val
-	}
-
-	// Optional: role
-	if val := request.GetString("role", ""); val != "" {
-		args["role"] = val
-	}
-
-	// Optional: skip_verification_email
-	if val := request.GetBool("skip_verification_email", false); val {
-		args["skip_verification_email"] = val
-	}
-
-	// Optional: tasks
-	// array type - using string
-	if val := request.GetString("tasks", ""); val != "" {
-		args["tasks"] = val
-	}
-
-	// Optional: title
-	if val := request.GetString("title", ""); val != "" {
-		args["title"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method

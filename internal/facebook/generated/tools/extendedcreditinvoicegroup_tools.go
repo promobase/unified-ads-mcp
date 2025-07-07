@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -17,11 +18,19 @@ func GetExtendedCreditInvoiceGroupTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// extendedcreditinvoicegroup_delete_ad_accounts tool
+	// Params object accepts: ad_account_id (string)
 	extendedcreditinvoicegroup_delete_ad_accountsTool := mcp.NewTool("extendedcreditinvoicegroup_delete_ad_accounts",
 		mcp.WithDescription("DELETE ad_accounts for ExtendedCreditInvoiceGroup"),
-		mcp.WithString("ad_account_id",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("ad_account_id parameter for ad_accounts"),
+			mcp.Properties(map[string]any{
+				"ad_account_id": map[string]any{
+					"type":        "string",
+					"description": "ad_account_id parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: ad_account_id (string) [required]"),
 		),
 	)
 	tools = append(tools, extendedcreditinvoicegroup_delete_ad_accountsTool)
@@ -30,8 +39,8 @@ func GetExtendedCreditInvoiceGroupTools() []mcp.Tool {
 	// Available fields for AdAccount: account_id, account_status, ad_account_promotable_objects, age, agency_client_declaration, all_capabilities, amount_spent, attribution_spec, balance, brand_safety_content_filter_levels, business, business_city, business_country_code, business_name, business_state, business_street, business_street2, business_zip, can_create_brand_lift_study, capabilities, created_time, currency, custom_audience_info, default_dsa_beneficiary, default_dsa_payor, disable_reason, end_advertiser, end_advertiser_name, existing_customers, expired_funding_source_details, extended_credit_invoice_group, failed_delivery_checks, fb_entity, funding_source, funding_source_details, has_migrated_permissions, has_page_authorized_adaccount, id, io_number, is_attribution_spec_system_default, is_ba_skip_delayed_eligible, is_direct_deals_enabled, is_in_3ds_authorization_enabled_market, is_notifications_enabled, is_personal, is_prepay_account, is_tax_id_required, liable_address, line_numbers, media_agency, min_campaign_group_spend_cap, min_daily_budget, name, offsite_pixels_tos_accepted, owner, owner_business, partner, rf_spec, send_bill_to_address, show_checkout_experience, sold_to_address, spend_cap, tax_id, tax_id_status, tax_id_type, timezone_id, timezone_name, timezone_offset_hours_utc, tos_accepted, user_access_expire_time, user_tasks, user_tos_accepted, viewable_business
 	extendedcreditinvoicegroup_get_ad_accountsTool := mcp.NewTool("extendedcreditinvoicegroup_get_ad_accounts",
 		mcp.WithDescription("GET ad_accounts for ExtendedCreditInvoiceGroup"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for AdAccount objects. Available fields: account_id, account_status, ad_account_promotable_objects, age, agency_client_declaration, all_capabilities, amount_spent, attribution_spec, balance, brand_safety_content_filter_levels, business, business_city, business_country_code, business_name, business_state (and 58 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for AdAccount objects. Available fields: account_id, account_status, ad_account_promotable_objects, age, agency_client_declaration, all_capabilities, amount_spent, attribution_spec, balance, brand_safety_content_filter_levels, business, business_city, business_country_code, business_name, business_state (and 58 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -46,11 +55,19 @@ func GetExtendedCreditInvoiceGroupTools() []mcp.Tool {
 	tools = append(tools, extendedcreditinvoicegroup_get_ad_accountsTool)
 
 	// extendedcreditinvoicegroup_post_ad_accounts tool
+	// Params object accepts: ad_account_id (string)
 	extendedcreditinvoicegroup_post_ad_accountsTool := mcp.NewTool("extendedcreditinvoicegroup_post_ad_accounts",
 		mcp.WithDescription("POST ad_accounts for ExtendedCreditInvoiceGroup"),
-		mcp.WithString("ad_account_id",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("ad_account_id parameter for ad_accounts"),
+			mcp.Properties(map[string]any{
+				"ad_account_id": map[string]any{
+					"type":        "string",
+					"description": "ad_account_id parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: ad_account_id (string) [required]"),
 		),
 	)
 	tools = append(tools, extendedcreditinvoicegroup_post_ad_accountsTool)
@@ -65,8 +82,8 @@ func GetExtendedCreditInvoiceGroupTools() []mcp.Tool {
 	// Available fields for ExtendedCreditInvoiceGroup: auto_enroll, bill_to_address, customer_po_number, email, emails, id, liable_address, name, sold_to_address
 	extendedcreditinvoicegroup_get_Tool := mcp.NewTool("extendedcreditinvoicegroup_get_",
 		mcp.WithDescription("GET  for ExtendedCreditInvoiceGroup"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for ExtendedCreditInvoiceGroup objects. Available fields: auto_enroll, bill_to_address, customer_po_number, email, emails, id, liable_address, name, sold_to_address"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for ExtendedCreditInvoiceGroup objects. Available fields: auto_enroll, bill_to_address, customer_po_number, email, emails, id, liable_address, name, sold_to_address"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -81,13 +98,22 @@ func GetExtendedCreditInvoiceGroupTools() []mcp.Tool {
 	tools = append(tools, extendedcreditinvoicegroup_get_Tool)
 
 	// extendedcreditinvoicegroup_post_ tool
+	// Params object accepts: emails (list<string>), name (string)
 	extendedcreditinvoicegroup_post_Tool := mcp.NewTool("extendedcreditinvoicegroup_post_",
 		mcp.WithDescription("POST  for ExtendedCreditInvoiceGroup"),
-		mcp.WithString("emails",
-			mcp.Description("emails parameter for "),
-		),
-		mcp.WithString("name",
-			mcp.Description("name parameter for "),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"emails": map[string]any{
+					"type":        "array",
+					"description": "emails parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+				"name": map[string]any{
+					"type":        "string",
+					"description": "name parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: emails (array<string>), name (string)"),
 		),
 	)
 	tools = append(tools, extendedcreditinvoicegroup_post_Tool)
@@ -111,12 +137,19 @@ func HandleExtendedcreditinvoicegroup_delete_ad_accounts(ctx context.Context, re
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: ad_account_id
-	ad_account_id, err := request.RequireString("ad_account_id")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter ad_account_id: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["ad_account_id"] = ad_account_id
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Extendedcreditinvoicegroup_delete_ad_accounts(args)
@@ -148,8 +181,13 @@ func HandleExtendedcreditinvoicegroup_get_ad_accounts(ctx context.Context, reque
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -196,12 +234,19 @@ func HandleExtendedcreditinvoicegroup_post_ad_accounts(ctx context.Context, requ
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: ad_account_id
-	ad_account_id, err := request.RequireString("ad_account_id")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter ad_account_id: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["ad_account_id"] = ad_account_id
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Extendedcreditinvoicegroup_post_ad_accounts(args)
@@ -262,8 +307,13 @@ func HandleExtendedcreditinvoicegroup_get_(ctx context.Context, request mcp.Call
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -310,15 +360,16 @@ func HandleExtendedcreditinvoicegroup_post_(ctx context.Context, request mcp.Cal
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: emails
-	// array type - using string
-	if val := request.GetString("emails", ""); val != "" {
-		args["emails"] = val
-	}
-
-	// Optional: name
-	if val := request.GetString("name", ""); val != "" {
-		args["name"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method

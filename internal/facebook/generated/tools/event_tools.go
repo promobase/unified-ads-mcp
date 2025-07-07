@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -19,8 +20,8 @@ func GetEventTools() []mcp.Tool {
 	// event_get_comments tool
 	event_get_commentsTool := mcp.NewTool("event_get_comments",
 		mcp.WithDescription("GET comments for Event"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -37,8 +38,8 @@ func GetEventTools() []mcp.Tool {
 	// event_get_feed tool
 	event_get_feedTool := mcp.NewTool("event_get_feed",
 		mcp.WithDescription("GET feed for Event"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -55,8 +56,8 @@ func GetEventTools() []mcp.Tool {
 	// event_get_live_videos tool
 	event_get_live_videosTool := mcp.NewTool("event_get_live_videos",
 		mcp.WithDescription("GET live_videos for Event"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -71,72 +72,99 @@ func GetEventTools() []mcp.Tool {
 	tools = append(tools, event_get_live_videosTool)
 
 	// event_post_live_videos tool
+	// Params object accepts: content_tags (list<string>), description (string), enable_backup_ingest (bool), encoding_settings (string), event_params (Object), fisheye_video_cropped (bool), front_z_rotation (float), is_audio_only (bool), is_spherical (bool), original_fov (unsigned int), privacy (string), projection (eventlive_videos_projection_enum_param), published (bool), schedule_custom_profile_image (file), spatial_audio_format (eventlive_videos_spatial_audio_format_enum_param), status (eventlive_videos_status_enum_param), stereoscopic_mode (eventlive_videos_stereoscopic_mode_enum_param), stop_on_delete_stream (bool), stream_type (eventlive_videos_stream_type_enum_param), title (string)
 	event_post_live_videosTool := mcp.NewTool("event_post_live_videos",
 		mcp.WithDescription("POST live_videos for Event"),
-		mcp.WithString("content_tags",
-			mcp.Description("content_tags parameter for live_videos"),
-		),
-		mcp.WithString("description",
-			mcp.Description("description parameter for live_videos"),
-		),
-		mcp.WithBoolean("enable_backup_ingest",
-			mcp.Description("enable_backup_ingest parameter for live_videos"),
-		),
-		mcp.WithString("encoding_settings",
-			mcp.Description("encoding_settings parameter for live_videos"),
-		),
-		mcp.WithString("event_params",
-			mcp.Description("event_params parameter for live_videos"),
-		),
-		mcp.WithBoolean("fisheye_video_cropped",
-			mcp.Description("fisheye_video_cropped parameter for live_videos"),
-		),
-		mcp.WithNumber("front_z_rotation",
-			mcp.Description("front_z_rotation parameter for live_videos"),
-		),
-		mcp.WithBoolean("is_audio_only",
-			mcp.Description("is_audio_only parameter for live_videos"),
-		),
-		mcp.WithBoolean("is_spherical",
-			mcp.Description("is_spherical parameter for live_videos"),
-		),
-		mcp.WithNumber("original_fov",
-			mcp.Description("original_fov parameter for live_videos"),
-		),
-		mcp.WithString("privacy",
-			mcp.Description("privacy parameter for live_videos"),
-		),
-		mcp.WithString("projection",
-			mcp.Description("projection parameter for live_videos"),
-			mcp.Enum("CUBEMAP", "EQUIRECTANGULAR", "HALF_EQUIRECTANGULAR"),
-		),
-		mcp.WithBoolean("published",
-			mcp.Description("published parameter for live_videos"),
-		),
-		mcp.WithString("schedule_custom_profile_image",
-			mcp.Description("schedule_custom_profile_image parameter for live_videos"),
-		),
-		mcp.WithString("spatial_audio_format",
-			mcp.Description("spatial_audio_format parameter for live_videos"),
-			mcp.Enum("ambiX_4"),
-		),
-		mcp.WithString("status",
-			mcp.Description("status parameter for live_videos"),
-			mcp.Enum("LIVE_NOW", "SCHEDULED_CANCELED", "SCHEDULED_LIVE", "SCHEDULED_UNPUBLISHED", "UNPUBLISHED"),
-		),
-		mcp.WithString("stereoscopic_mode",
-			mcp.Description("stereoscopic_mode parameter for live_videos"),
-			mcp.Enum("LEFT_RIGHT", "MONO", "TOP_BOTTOM"),
-		),
-		mcp.WithBoolean("stop_on_delete_stream",
-			mcp.Description("stop_on_delete_stream parameter for live_videos"),
-		),
-		mcp.WithString("stream_type",
-			mcp.Description("stream_type parameter for live_videos"),
-			mcp.Enum("AMBIENT", "REGULAR"),
-		),
-		mcp.WithString("title",
-			mcp.Description("title parameter for live_videos"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"content_tags": map[string]any{
+					"type":        "array",
+					"description": "content_tags parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+				"description": map[string]any{
+					"type":        "string",
+					"description": "description parameter",
+				},
+				"enable_backup_ingest": map[string]any{
+					"type":        "boolean",
+					"description": "enable_backup_ingest parameter",
+				},
+				"encoding_settings": map[string]any{
+					"type":        "string",
+					"description": "encoding_settings parameter",
+				},
+				"event_params": map[string]any{
+					"type":        "object",
+					"description": "event_params parameter",
+				},
+				"fisheye_video_cropped": map[string]any{
+					"type":        "boolean",
+					"description": "fisheye_video_cropped parameter",
+				},
+				"front_z_rotation": map[string]any{
+					"type":        "number",
+					"description": "front_z_rotation parameter",
+				},
+				"is_audio_only": map[string]any{
+					"type":        "boolean",
+					"description": "is_audio_only parameter",
+				},
+				"is_spherical": map[string]any{
+					"type":        "boolean",
+					"description": "is_spherical parameter",
+				},
+				"original_fov": map[string]any{
+					"type":        "integer",
+					"description": "original_fov parameter",
+				},
+				"privacy": map[string]any{
+					"type":        "string",
+					"description": "privacy parameter",
+				},
+				"projection": map[string]any{
+					"type":        "string",
+					"description": "projection parameter",
+					"enum":        []string{"CUBEMAP", "EQUIRECTANGULAR", "HALF_EQUIRECTANGULAR"},
+				},
+				"published": map[string]any{
+					"type":        "boolean",
+					"description": "published parameter",
+				},
+				"schedule_custom_profile_image": map[string]any{
+					"type":        "string",
+					"description": "schedule_custom_profile_image parameter",
+				},
+				"spatial_audio_format": map[string]any{
+					"type":        "string",
+					"description": "spatial_audio_format parameter",
+					"enum":        []string{"ambiX_4"},
+				},
+				"status": map[string]any{
+					"type":        "string",
+					"description": "status parameter",
+					"enum":        []string{"LIVE_NOW", "SCHEDULED_CANCELED", "SCHEDULED_LIVE", "SCHEDULED_UNPUBLISHED", "UNPUBLISHED"},
+				},
+				"stereoscopic_mode": map[string]any{
+					"type":        "string",
+					"description": "stereoscopic_mode parameter",
+					"enum":        []string{"LEFT_RIGHT", "MONO", "TOP_BOTTOM"},
+				},
+				"stop_on_delete_stream": map[string]any{
+					"type":        "boolean",
+					"description": "stop_on_delete_stream parameter",
+				},
+				"stream_type": map[string]any{
+					"type":        "string",
+					"description": "stream_type parameter",
+					"enum":        []string{"AMBIENT", "REGULAR"},
+				},
+				"title": map[string]any{
+					"type":        "string",
+					"description": "title parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: content_tags (array<string>), description (string), enable_backup_ingest (boolean), encoding_settings (string), event_params (object), fisheye_video_cropped (boolean), front_z_rotation (number), is_audio_only (boolean), is_spherical (boolean), original_fov (integer), privacy (string), projection (enum) [CUBEMAP, EQUIRECTANGULAR, HALF_EQUIRECTANGULAR], published (boolean), schedule_custom_profile_image (file), spatial_audio_format (enum) [ambiX_4], status (enum) [LIVE_NOW, SCHEDULED_CANCELED, SCHEDULED_LIVE, SCHEDULED_UNPUBLISHED, UNPUBLISHED], stereoscopic_mode (enum) [LEFT_RIGHT, MONO, TOP_BOTTOM], stop_on_delete_stream (boolean), stream_type (enum) [AMBIENT, REGULAR], title (string)"),
 		),
 	)
 	tools = append(tools, event_post_live_videosTool)
@@ -144,8 +172,8 @@ func GetEventTools() []mcp.Tool {
 	// event_get_photos tool
 	event_get_photosTool := mcp.NewTool("event_get_photos",
 		mcp.WithDescription("GET photos for Event"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -162,8 +190,8 @@ func GetEventTools() []mcp.Tool {
 	// event_get_picture tool
 	event_get_pictureTool := mcp.NewTool("event_get_picture",
 		mcp.WithDescription("GET picture for Event"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -180,8 +208,8 @@ func GetEventTools() []mcp.Tool {
 	// event_get_posts tool
 	event_get_postsTool := mcp.NewTool("event_get_posts",
 		mcp.WithDescription("GET posts for Event"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -199,8 +227,8 @@ func GetEventTools() []mcp.Tool {
 	// Available fields for Profile: can_post, id, link, name, pic, pic_crop, pic_large, pic_small, pic_square, profile_type, username
 	event_get_rolesTool := mcp.NewTool("event_get_roles",
 		mcp.WithDescription("GET roles for Event"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for Profile objects. Available fields: can_post, id, link, name, pic, pic_crop, pic_large, pic_small, pic_square, profile_type, username"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for Profile objects. Available fields: can_post, id, link, name, pic, pic_crop, pic_large, pic_small, pic_square, profile_type, username"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -218,8 +246,8 @@ func GetEventTools() []mcp.Tool {
 	// Available fields for EventTicketTier: currency, description, end_sales_time, end_show_time, fee_settings, id, maximum_quantity, metadata, minimum_quantity, name, price, priority, retailer_id, seating_map_image_url, start_sales_time, start_show_time, status, total_quantity
 	event_get_ticket_tiersTool := mcp.NewTool("event_get_ticket_tiers",
 		mcp.WithDescription("GET ticket_tiers for Event"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for EventTicketTier objects. Available fields: currency, description, end_sales_time, end_show_time, fee_settings, id, maximum_quantity, metadata, minimum_quantity, name, price, priority, retailer_id, seating_map_image_url, start_sales_time (and 3 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for EventTicketTier objects. Available fields: currency, description, end_sales_time, end_show_time, fee_settings, id, maximum_quantity, metadata, minimum_quantity, name, price, priority, retailer_id, seating_map_image_url, start_sales_time (and 3 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -236,8 +264,8 @@ func GetEventTools() []mcp.Tool {
 	// event_get_videos tool
 	event_get_videosTool := mcp.NewTool("event_get_videos",
 		mcp.WithDescription("GET videos for Event"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -255,8 +283,8 @@ func GetEventTools() []mcp.Tool {
 	// Available fields for Event: attending_count, can_guests_invite, category, cover, created_time, declined_count, description, discount_code_enabled, end_time, event_times, guest_list_enabled, id, interested_count, is_canceled, is_draft, is_online, is_page_owned, maybe_count, name, noreply_count, online_event_format, online_event_third_party_url, owner, parent_group, place, registration_setting, scheduled_publish_time, start_time, sub_categories, ticket_selling_status, ticket_setting, ticket_uri, ticket_uri_start_sales_time, ticketing_privacy_uri, ticketing_terms_uri, timezone, type, updated_time
 	event_get_Tool := mcp.NewTool("event_get_",
 		mcp.WithDescription("GET  for Event"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for Event objects. Available fields: attending_count, can_guests_invite, category, cover, created_time, declined_count, description, discount_code_enabled, end_time, event_times, guest_list_enabled, id, interested_count, is_canceled, is_draft (and 23 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for Event objects. Available fields: attending_count, can_guests_invite, category, cover, created_time, declined_count, description, discount_code_enabled, end_time, event_times, guest_list_enabled, id, interested_count, is_canceled, is_draft (and 23 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -290,8 +318,13 @@ func HandleEvent_get_comments(ctx context.Context, request mcp.CallToolRequest) 
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -339,8 +372,13 @@ func HandleEvent_get_feed(ctx context.Context, request mcp.CallToolRequest) (*mc
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -388,8 +426,13 @@ func HandleEvent_get_live_videos(ctx context.Context, request mcp.CallToolReques
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -436,106 +479,16 @@ func HandleEvent_post_live_videos(ctx context.Context, request mcp.CallToolReque
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: content_tags
-	// array type - using string
-	if val := request.GetString("content_tags", ""); val != "" {
-		args["content_tags"] = val
-	}
-
-	// Optional: description
-	if val := request.GetString("description", ""); val != "" {
-		args["description"] = val
-	}
-
-	// Optional: enable_backup_ingest
-	if val := request.GetBool("enable_backup_ingest", false); val {
-		args["enable_backup_ingest"] = val
-	}
-
-	// Optional: encoding_settings
-	if val := request.GetString("encoding_settings", ""); val != "" {
-		args["encoding_settings"] = val
-	}
-
-	// Optional: event_params
-	// object type - using string
-	if val := request.GetString("event_params", ""); val != "" {
-		args["event_params"] = val
-	}
-
-	// Optional: fisheye_video_cropped
-	if val := request.GetBool("fisheye_video_cropped", false); val {
-		args["fisheye_video_cropped"] = val
-	}
-
-	// Optional: front_z_rotation
-	if val := request.GetFloat("front_z_rotation", 0); val != 0 {
-		args["front_z_rotation"] = val
-	}
-
-	// Optional: is_audio_only
-	if val := request.GetBool("is_audio_only", false); val {
-		args["is_audio_only"] = val
-	}
-
-	// Optional: is_spherical
-	if val := request.GetBool("is_spherical", false); val {
-		args["is_spherical"] = val
-	}
-
-	// Optional: original_fov
-	if val := request.GetInt("original_fov", 0); val != 0 {
-		args["original_fov"] = val
-	}
-
-	// Optional: privacy
-	if val := request.GetString("privacy", ""); val != "" {
-		args["privacy"] = val
-	}
-
-	// Optional: projection
-	if val := request.GetString("projection", ""); val != "" {
-		args["projection"] = val
-	}
-
-	// Optional: published
-	if val := request.GetBool("published", false); val {
-		args["published"] = val
-	}
-
-	// Optional: schedule_custom_profile_image
-	if val := request.GetString("schedule_custom_profile_image", ""); val != "" {
-		args["schedule_custom_profile_image"] = val
-	}
-
-	// Optional: spatial_audio_format
-	if val := request.GetString("spatial_audio_format", ""); val != "" {
-		args["spatial_audio_format"] = val
-	}
-
-	// Optional: status
-	if val := request.GetString("status", ""); val != "" {
-		args["status"] = val
-	}
-
-	// Optional: stereoscopic_mode
-	if val := request.GetString("stereoscopic_mode", ""); val != "" {
-		args["stereoscopic_mode"] = val
-	}
-
-	// Optional: stop_on_delete_stream
-	if val := request.GetBool("stop_on_delete_stream", false); val {
-		args["stop_on_delete_stream"] = val
-	}
-
-	// Optional: stream_type
-	if val := request.GetString("stream_type", ""); val != "" {
-		args["stream_type"] = val
-	}
-
-	// Optional: title
-	if val := request.GetString("title", ""); val != "" {
-		args["title"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method
@@ -568,8 +521,13 @@ func HandleEvent_get_photos(ctx context.Context, request mcp.CallToolRequest) (*
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -617,8 +575,13 @@ func HandleEvent_get_picture(ctx context.Context, request mcp.CallToolRequest) (
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -666,8 +629,13 @@ func HandleEvent_get_posts(ctx context.Context, request mcp.CallToolRequest) (*m
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -715,8 +683,13 @@ func HandleEvent_get_roles(ctx context.Context, request mcp.CallToolRequest) (*m
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -764,8 +737,13 @@ func HandleEvent_get_ticket_tiers(ctx context.Context, request mcp.CallToolReque
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -813,8 +791,13 @@ func HandleEvent_get_videos(ctx context.Context, request mcp.CallToolRequest) (*
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -862,8 +845,13 @@ func HandleEvent_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Ca
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit

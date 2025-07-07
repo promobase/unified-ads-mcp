@@ -100,16 +100,10 @@ func (c *BusinessAgreementClient) Businessagreement_post_(args map[string]interf
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["asset_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("asset_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["request_status"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("request_status", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 

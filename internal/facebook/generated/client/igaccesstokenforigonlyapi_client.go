@@ -24,21 +24,11 @@ func NewIGAccessTokenForIGOnlyAPIClient(accessToken string) *IGAccessTokenForIGO
 // igaccesstokenforigonlyapi_get_ GET  for IGAccessTokenForIGOnlyAPI
 func (c *IGAccessTokenForIGOnlyAPIClient) Igaccesstokenforigonlyapi_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	access_token, ok := args["access_token"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: access_token")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = access_token // Suppress unused variable warning
-	client_secret, ok := args["client_secret"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: client_secret")
-	}
-	_ = client_secret // Suppress unused variable warning
-	grant_type, ok := args["grant_type"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: grant_type")
-	}
-	_ = grant_type // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -48,22 +38,10 @@ func (c *IGAccessTokenForIGOnlyAPIClient) Igaccesstokenforigonlyapi_get_(args ma
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["access_token"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("access_token", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["client_secret"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("client_secret", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["grant_type"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("grant_type", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {

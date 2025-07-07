@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -20,8 +21,8 @@ func GetMediaTitleTools() []mcp.Tool {
 	// Available fields for CatalogItemChannelsToIntegrityStatus: channels, rejection_information
 	mediatitle_get_channels_to_integrity_statusTool := mcp.NewTool("mediatitle_get_channels_to_integrity_status",
 		mcp.WithDescription("GET channels_to_integrity_status for MediaTitle"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for CatalogItemChannelsToIntegrityStatus objects. Available fields: channels, rejection_information"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for CatalogItemChannelsToIntegrityStatus objects. Available fields: channels, rejection_information"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -37,17 +38,26 @@ func GetMediaTitleTools() []mcp.Tool {
 
 	// mediatitle_get_override_details tool
 	// Available fields for OverrideDetails: key, type, values
+	// Params object accepts: keys (list<string>), type (mediatitleoverride_details_type_enum_param)
 	mediatitle_get_override_detailsTool := mcp.NewTool("mediatitle_get_override_details",
 		mcp.WithDescription("GET override_details for MediaTitle"),
-		mcp.WithString("keys",
-			mcp.Description("keys parameter for override_details"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"keys": map[string]any{
+					"type":        "array",
+					"description": "keys parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+				"type": map[string]any{
+					"type":        "string",
+					"description": "type parameter",
+					"enum":        []string{"COUNTRY", "LANGUAGE", "LANGUAGE_AND_COUNTRY"},
+				},
+			}),
+			mcp.Description("Parameters object containing: keys (array<string>), type (enum) [COUNTRY, LANGUAGE, LANGUAGE_AND_COUNTRY]"),
 		),
-		mcp.WithString("type",
-			mcp.Description("type parameter for override_details"),
-			mcp.Enum("COUNTRY", "LANGUAGE", "LANGUAGE_AND_COUNTRY"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for OverrideDetails objects. Available fields: key, type, values"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for OverrideDetails objects. Available fields: key, type, values"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -65,8 +75,8 @@ func GetMediaTitleTools() []mcp.Tool {
 	// Available fields for DynamicVideoMetadata: id, tags, url, video
 	mediatitle_get_videos_metadataTool := mcp.NewTool("mediatitle_get_videos_metadata",
 		mcp.WithDescription("GET videos_metadata for MediaTitle"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for DynamicVideoMetadata objects. Available fields: id, tags, url, video"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for DynamicVideoMetadata objects. Available fields: id, tags, url, video"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -90,8 +100,8 @@ func GetMediaTitleTools() []mcp.Tool {
 	// Available fields for MediaTitle: applinks, category_specific_fields, content_category, currency, description, fb_page_alias, fb_page_id, genres, id, image_fetch_status, images, kg_fb_id, media_title_id, price, sanitized_images, title, title_display_name, unit_price, url, visibility, wiki_data_item
 	mediatitle_get_Tool := mcp.NewTool("mediatitle_get_",
 		mcp.WithDescription("GET  for MediaTitle"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for MediaTitle objects. Available fields: applinks, category_specific_fields, content_category, currency, description, fb_page_alias, fb_page_id, genres, id, image_fetch_status, images, kg_fb_id, media_title_id, price, sanitized_images (and 6 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for MediaTitle objects. Available fields: applinks, category_specific_fields, content_category, currency, description, fb_page_alias, fb_page_id, genres, id, image_fetch_status, images, kg_fb_id, media_title_id, price, sanitized_images (and 6 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -106,44 +116,64 @@ func GetMediaTitleTools() []mcp.Tool {
 	tools = append(tools, mediatitle_get_Tool)
 
 	// mediatitle_post_ tool
+	// Params object accepts: applinks (Object), content_category (mediatitle_content_category), currency (string), description (string), fb_page_id (string), genres (list<string>), images (list<Object>), kg_fb_id (string), price (unsigned int), title (string), title_display_name (string), url (string)
 	mediatitle_post_Tool := mcp.NewTool("mediatitle_post_",
 		mcp.WithDescription("POST  for MediaTitle"),
-		mcp.WithString("applinks",
-			mcp.Description("applinks parameter for "),
-		),
-		mcp.WithString("content_category",
-			mcp.Description("content_category parameter for "),
-			mcp.Enum("MOVIE", "MUSIC", "TV_SHOW"),
-		),
-		mcp.WithString("currency",
-			mcp.Description("currency parameter for "),
-		),
-		mcp.WithString("description",
-			mcp.Description("description parameter for "),
-		),
-		mcp.WithString("fb_page_id",
-			mcp.Description("fb_page_id parameter for "),
-		),
-		mcp.WithString("genres",
-			mcp.Description("genres parameter for "),
-		),
-		mcp.WithString("images",
-			mcp.Description("images parameter for "),
-		),
-		mcp.WithString("kg_fb_id",
-			mcp.Description("kg_fb_id parameter for "),
-		),
-		mcp.WithNumber("price",
-			mcp.Description("price parameter for "),
-		),
-		mcp.WithString("title",
-			mcp.Description("title parameter for "),
-		),
-		mcp.WithString("title_display_name",
-			mcp.Description("title_display_name parameter for "),
-		),
-		mcp.WithString("url",
-			mcp.Description("url parameter for "),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"applinks": map[string]any{
+					"type":        "object",
+					"description": "applinks parameter",
+				},
+				"content_category": map[string]any{
+					"type":        "string",
+					"description": "content_category parameter",
+					"enum":        []string{"MOVIE", "MUSIC", "TV_SHOW"},
+				},
+				"currency": map[string]any{
+					"type":        "string",
+					"description": "currency parameter",
+				},
+				"description": map[string]any{
+					"type":        "string",
+					"description": "description parameter",
+				},
+				"fb_page_id": map[string]any{
+					"type":        "string",
+					"description": "fb_page_id parameter",
+				},
+				"genres": map[string]any{
+					"type":        "array",
+					"description": "genres parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+				"images": map[string]any{
+					"type":        "array",
+					"description": "images parameter",
+					"items":       map[string]any{"type": "object"},
+				},
+				"kg_fb_id": map[string]any{
+					"type":        "string",
+					"description": "kg_fb_id parameter",
+				},
+				"price": map[string]any{
+					"type":        "integer",
+					"description": "price parameter",
+				},
+				"title": map[string]any{
+					"type":        "string",
+					"description": "title parameter",
+				},
+				"title_display_name": map[string]any{
+					"type":        "string",
+					"description": "title_display_name parameter",
+				},
+				"url": map[string]any{
+					"type":        "string",
+					"description": "url parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: applinks (object), content_category (mediatitle_content_category) [MOVIE, MUSIC, TV_SHOW], currency (string), description (string), fb_page_id (string), genres (array<string>), images (array<object>), kg_fb_id (string), price (integer), title (string), title_display_name (string), url (string)"),
 		),
 	)
 	tools = append(tools, mediatitle_post_Tool)
@@ -168,8 +198,13 @@ func HandleMediatitle_get_channels_to_integrity_status(ctx context.Context, requ
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -216,20 +251,26 @@ func HandleMediatitle_get_override_details(ctx context.Context, request mcp.Call
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: keys
-	// array type - using string
-	if val := request.GetString("keys", ""); val != "" {
-		args["keys"] = val
-	}
-
-	// Optional: type
-	if val := request.GetString("type", ""); val != "" {
-		args["type"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -277,8 +318,13 @@ func HandleMediatitle_get_videos_metadata(ctx context.Context, request mcp.CallT
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -355,8 +401,13 @@ func HandleMediatitle_get_(ctx context.Context, request mcp.CallToolRequest) (*m
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -403,67 +454,16 @@ func HandleMediatitle_post_(ctx context.Context, request mcp.CallToolRequest) (*
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: applinks
-	// object type - using string
-	if val := request.GetString("applinks", ""); val != "" {
-		args["applinks"] = val
-	}
-
-	// Optional: content_category
-	if val := request.GetString("content_category", ""); val != "" {
-		args["content_category"] = val
-	}
-
-	// Optional: currency
-	if val := request.GetString("currency", ""); val != "" {
-		args["currency"] = val
-	}
-
-	// Optional: description
-	if val := request.GetString("description", ""); val != "" {
-		args["description"] = val
-	}
-
-	// Optional: fb_page_id
-	if val := request.GetString("fb_page_id", ""); val != "" {
-		args["fb_page_id"] = val
-	}
-
-	// Optional: genres
-	// array type - using string
-	if val := request.GetString("genres", ""); val != "" {
-		args["genres"] = val
-	}
-
-	// Optional: images
-	// array type - using string
-	if val := request.GetString("images", ""); val != "" {
-		args["images"] = val
-	}
-
-	// Optional: kg_fb_id
-	if val := request.GetString("kg_fb_id", ""); val != "" {
-		args["kg_fb_id"] = val
-	}
-
-	// Optional: price
-	if val := request.GetInt("price", 0); val != 0 {
-		args["price"] = val
-	}
-
-	// Optional: title
-	if val := request.GetString("title", ""); val != "" {
-		args["title"] = val
-	}
-
-	// Optional: title_display_name
-	if val := request.GetString("title_display_name", ""); val != "" {
-		args["title_display_name"] = val
-	}
-
-	// Optional: url
-	if val := request.GetString("url", ""); val != "" {
-		args["url"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method

@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -20,8 +21,8 @@ func GetFlightTools() []mcp.Tool {
 	// Available fields for CatalogItemChannelsToIntegrityStatus: channels, rejection_information
 	flight_get_channels_to_integrity_statusTool := mcp.NewTool("flight_get_channels_to_integrity_status",
 		mcp.WithDescription("GET channels_to_integrity_status for Flight"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for CatalogItemChannelsToIntegrityStatus objects. Available fields: channels, rejection_information"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for CatalogItemChannelsToIntegrityStatus objects. Available fields: channels, rejection_information"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -37,17 +38,26 @@ func GetFlightTools() []mcp.Tool {
 
 	// flight_get_override_details tool
 	// Available fields for OverrideDetails: key, type, values
+	// Params object accepts: keys (list<string>), type (flightoverride_details_type_enum_param)
 	flight_get_override_detailsTool := mcp.NewTool("flight_get_override_details",
 		mcp.WithDescription("GET override_details for Flight"),
-		mcp.WithString("keys",
-			mcp.Description("keys parameter for override_details"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"keys": map[string]any{
+					"type":        "array",
+					"description": "keys parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+				"type": map[string]any{
+					"type":        "string",
+					"description": "type parameter",
+					"enum":        []string{"COUNTRY", "LANGUAGE", "LANGUAGE_AND_COUNTRY"},
+				},
+			}),
+			mcp.Description("Parameters object containing: keys (array<string>), type (enum) [COUNTRY, LANGUAGE, LANGUAGE_AND_COUNTRY]"),
 		),
-		mcp.WithString("type",
-			mcp.Description("type parameter for override_details"),
-			mcp.Enum("COUNTRY", "LANGUAGE", "LANGUAGE_AND_COUNTRY"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for OverrideDetails objects. Available fields: key, type, values"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for OverrideDetails objects. Available fields: key, type, values"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -65,8 +75,8 @@ func GetFlightTools() []mcp.Tool {
 	// Available fields for DynamicVideoMetadata: id, tags, url, video
 	flight_get_videos_metadataTool := mcp.NewTool("flight_get_videos_metadata",
 		mcp.WithDescription("GET videos_metadata for Flight"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for DynamicVideoMetadata objects. Available fields: id, tags, url, video"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for DynamicVideoMetadata objects. Available fields: id, tags, url, video"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -84,8 +94,8 @@ func GetFlightTools() []mcp.Tool {
 	// Available fields for Flight: applinks, category_specific_fields, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0, custom_number_1, custom_number_2, custom_number_3, custom_number_4, description, destination_airport, destination_city, flight_id, id, image_fetch_status, images, oneway_currency, oneway_price, origin_airport, origin_city, price, product_priority_0, product_priority_1, product_priority_2, product_priority_3, product_priority_4, sanitized_images, tags, unit_price, url, visibility
 	flight_get_Tool := mcp.NewTool("flight_get_",
 		mcp.WithDescription("GET  for Flight"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for Flight objects. Available fields: applinks, category_specific_fields, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0, custom_number_1, custom_number_2, custom_number_3, custom_number_4, description, destination_airport (and 20 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for Flight objects. Available fields: applinks, category_specific_fields, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0, custom_number_1, custom_number_2, custom_number_3, custom_number_4, description, destination_airport (and 20 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -100,34 +110,50 @@ func GetFlightTools() []mcp.Tool {
 	tools = append(tools, flight_get_Tool)
 
 	// flight_post_ tool
+	// Params object accepts: currency (string), description (string), destination_airport (string), destination_city (string), images (list<Object>), origin_airport (string), origin_city (string), price (unsigned int), url (string)
 	flight_post_Tool := mcp.NewTool("flight_post_",
 		mcp.WithDescription("POST  for Flight"),
-		mcp.WithString("currency",
-			mcp.Description("currency parameter for "),
-		),
-		mcp.WithString("description",
-			mcp.Description("description parameter for "),
-		),
-		mcp.WithString("destination_airport",
-			mcp.Description("destination_airport parameter for "),
-		),
-		mcp.WithString("destination_city",
-			mcp.Description("destination_city parameter for "),
-		),
-		mcp.WithString("images",
-			mcp.Description("images parameter for "),
-		),
-		mcp.WithString("origin_airport",
-			mcp.Description("origin_airport parameter for "),
-		),
-		mcp.WithString("origin_city",
-			mcp.Description("origin_city parameter for "),
-		),
-		mcp.WithNumber("price",
-			mcp.Description("price parameter for "),
-		),
-		mcp.WithString("url",
-			mcp.Description("url parameter for "),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"currency": map[string]any{
+					"type":        "string",
+					"description": "currency parameter",
+				},
+				"description": map[string]any{
+					"type":        "string",
+					"description": "description parameter",
+				},
+				"destination_airport": map[string]any{
+					"type":        "string",
+					"description": "destination_airport parameter",
+				},
+				"destination_city": map[string]any{
+					"type":        "string",
+					"description": "destination_city parameter",
+				},
+				"images": map[string]any{
+					"type":        "array",
+					"description": "images parameter",
+					"items":       map[string]any{"type": "object"},
+				},
+				"origin_airport": map[string]any{
+					"type":        "string",
+					"description": "origin_airport parameter",
+				},
+				"origin_city": map[string]any{
+					"type":        "string",
+					"description": "origin_city parameter",
+				},
+				"price": map[string]any{
+					"type":        "integer",
+					"description": "price parameter",
+				},
+				"url": map[string]any{
+					"type":        "string",
+					"description": "url parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: currency (string), description (string), destination_airport (string), destination_city (string), images (array<object>), origin_airport (string), origin_city (string), price (integer), url (string)"),
 		),
 	)
 	tools = append(tools, flight_post_Tool)
@@ -152,8 +178,13 @@ func HandleFlight_get_channels_to_integrity_status(ctx context.Context, request 
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -200,20 +231,26 @@ func HandleFlight_get_override_details(ctx context.Context, request mcp.CallTool
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: keys
-	// array type - using string
-	if val := request.GetString("keys", ""); val != "" {
-		args["keys"] = val
-	}
-
-	// Optional: type
-	if val := request.GetString("type", ""); val != "" {
-		args["type"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -261,8 +298,13 @@ func HandleFlight_get_videos_metadata(ctx context.Context, request mcp.CallToolR
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -310,8 +352,13 @@ func HandleFlight_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.C
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -358,50 +405,16 @@ func HandleFlight_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: currency
-	if val := request.GetString("currency", ""); val != "" {
-		args["currency"] = val
-	}
-
-	// Optional: description
-	if val := request.GetString("description", ""); val != "" {
-		args["description"] = val
-	}
-
-	// Optional: destination_airport
-	if val := request.GetString("destination_airport", ""); val != "" {
-		args["destination_airport"] = val
-	}
-
-	// Optional: destination_city
-	if val := request.GetString("destination_city", ""); val != "" {
-		args["destination_city"] = val
-	}
-
-	// Optional: images
-	// array type - using string
-	if val := request.GetString("images", ""); val != "" {
-		args["images"] = val
-	}
-
-	// Optional: origin_airport
-	if val := request.GetString("origin_airport", ""); val != "" {
-		args["origin_airport"] = val
-	}
-
-	// Optional: origin_city
-	if val := request.GetString("origin_city", ""); val != "" {
-		args["origin_city"] = val
-	}
-
-	// Optional: price
-	if val := request.GetInt("price", 0); val != 0 {
-		args["price"] = val
-	}
-
-	// Optional: url
-	if val := request.GetString("url", ""); val != "" {
-		args["url"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method

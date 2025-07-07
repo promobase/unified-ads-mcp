@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -18,16 +19,24 @@ func GetProductSetTools() []mcp.Tool {
 
 	// productset_get_automotive_models tool
 	// Available fields for AutomotiveModel: applinks, automotive_model_id, availability, body_style, category_specific_fields, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0, custom_number_1, custom_number_2, custom_number_3, custom_number_4, description, drivetrain, exterior_color, finance_description, finance_type, fuel_type, generation, id, image_fetch_status, images, interior_color, interior_upholstery, make, model, price, sanitized_images, title, transmission, trim, unit_price, url, visibility, year
+	// Params object accepts: bulk_pagination (bool), filter (Object)
 	productset_get_automotive_modelsTool := mcp.NewTool("productset_get_automotive_models",
 		mcp.WithDescription("GET automotive_models for ProductSet"),
-		mcp.WithBoolean("bulk_pagination",
-			mcp.Description("bulk_pagination parameter for automotive_models"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"bulk_pagination": map[string]any{
+					"type":        "boolean",
+					"description": "bulk_pagination parameter",
+				},
+				"filter": map[string]any{
+					"type":        "object",
+					"description": "filter parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: bulk_pagination (boolean), filter (object)"),
 		),
-		mcp.WithString("filter",
-			mcp.Description("filter parameter for automotive_models"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for AutomotiveModel objects. Available fields: applinks, automotive_model_id, availability, body_style, category_specific_fields, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0, custom_number_1, custom_number_2, custom_number_3 (and 24 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for AutomotiveModel objects. Available fields: applinks, automotive_model_id, availability, body_style, category_specific_fields, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0, custom_number_1, custom_number_2, custom_number_3 (and 24 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -43,16 +52,24 @@ func GetProductSetTools() []mcp.Tool {
 
 	// productset_get_destinations tool
 	// Available fields for Destination: address, applinks, category_specific_fields, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0, custom_number_1, custom_number_2, custom_number_3, custom_number_4, description, destination_id, id, image_fetch_status, images, name, price, price_change, sanitized_images, tags, types, unit_price, url, visibility
+	// Params object accepts: bulk_pagination (bool), filter (Object)
 	productset_get_destinationsTool := mcp.NewTool("productset_get_destinations",
 		mcp.WithDescription("GET destinations for ProductSet"),
-		mcp.WithBoolean("bulk_pagination",
-			mcp.Description("bulk_pagination parameter for destinations"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"bulk_pagination": map[string]any{
+					"type":        "boolean",
+					"description": "bulk_pagination parameter",
+				},
+				"filter": map[string]any{
+					"type":        "object",
+					"description": "filter parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: bulk_pagination (boolean), filter (object)"),
 		),
-		mcp.WithString("filter",
-			mcp.Description("filter parameter for destinations"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for Destination objects. Available fields: address, applinks, category_specific_fields, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0, custom_number_1, custom_number_2, custom_number_3, custom_number_4, description (and 13 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for Destination objects. Available fields: address, applinks, category_specific_fields, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0, custom_number_1, custom_number_2, custom_number_3, custom_number_4, description (and 13 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -68,16 +85,24 @@ func GetProductSetTools() []mcp.Tool {
 
 	// productset_get_flights tool
 	// Available fields for Flight: applinks, category_specific_fields, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0, custom_number_1, custom_number_2, custom_number_3, custom_number_4, description, destination_airport, destination_city, flight_id, id, image_fetch_status, images, oneway_currency, oneway_price, origin_airport, origin_city, price, product_priority_0, product_priority_1, product_priority_2, product_priority_3, product_priority_4, sanitized_images, tags, unit_price, url, visibility
+	// Params object accepts: bulk_pagination (bool), filter (Object)
 	productset_get_flightsTool := mcp.NewTool("productset_get_flights",
 		mcp.WithDescription("GET flights for ProductSet"),
-		mcp.WithBoolean("bulk_pagination",
-			mcp.Description("bulk_pagination parameter for flights"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"bulk_pagination": map[string]any{
+					"type":        "boolean",
+					"description": "bulk_pagination parameter",
+				},
+				"filter": map[string]any{
+					"type":        "object",
+					"description": "filter parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: bulk_pagination (boolean), filter (object)"),
 		),
-		mcp.WithString("filter",
-			mcp.Description("filter parameter for flights"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for Flight objects. Available fields: applinks, category_specific_fields, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0, custom_number_1, custom_number_2, custom_number_3, custom_number_4, description, destination_airport (and 20 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for Flight objects. Available fields: applinks, category_specific_fields, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0, custom_number_1, custom_number_2, custom_number_3, custom_number_4, description, destination_airport (and 20 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -93,16 +118,24 @@ func GetProductSetTools() []mcp.Tool {
 
 	// productset_get_home_listings tool
 	// Available fields for HomeListing: ac_type, additional_fees_description, address, agent_company, agent_email, agent_fb_page_id, agent_name, agent_phone, applinks, area_size, area_unit, availability, category_specific_fields, co_2_emission_rating_eu, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0, custom_number_1, custom_number_2, custom_number_3, custom_number_4, days_on_market, description, energy_rating_eu, furnish_type, group_id, heating_type, home_listing_id, id, image_fetch_status, images, laundry_type, listing_type, max_currency, max_price, min_currency, min_price, name, num_baths, num_beds, num_rooms, num_units, parking_type, partner_verification, pet_policy, price, property_type, sanitized_images, securitydeposit_currency, securitydeposit_price, tags, unit_price, url, visibility, year_built
+	// Params object accepts: bulk_pagination (bool), filter (Object)
 	productset_get_home_listingsTool := mcp.NewTool("productset_get_home_listings",
 		mcp.WithDescription("GET home_listings for ProductSet"),
-		mcp.WithBoolean("bulk_pagination",
-			mcp.Description("bulk_pagination parameter for home_listings"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"bulk_pagination": map[string]any{
+					"type":        "boolean",
+					"description": "bulk_pagination parameter",
+				},
+				"filter": map[string]any{
+					"type":        "object",
+					"description": "filter parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: bulk_pagination (boolean), filter (object)"),
 		),
-		mcp.WithString("filter",
-			mcp.Description("filter parameter for home_listings"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for HomeListing objects. Available fields: ac_type, additional_fees_description, address, agent_company, agent_email, agent_fb_page_id, agent_name, agent_phone, applinks, area_size, area_unit, availability, category_specific_fields, co_2_emission_rating_eu, currency (and 44 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for HomeListing objects. Available fields: ac_type, additional_fees_description, address, agent_company, agent_email, agent_fb_page_id, agent_name, agent_phone, applinks, area_size, area_unit, availability, category_specific_fields, co_2_emission_rating_eu, currency (and 44 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -118,16 +151,24 @@ func GetProductSetTools() []mcp.Tool {
 
 	// productset_get_hotels tool
 	// Available fields for Hotel: address, applinks, brand, category, category_specific_fields, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0, custom_number_1, custom_number_2, custom_number_3, custom_number_4, description, guest_ratings, hotel_id, id, image_fetch_status, images, lowest_base_price, loyalty_program, margin_level, name, phone, product_priority_0, product_priority_1, product_priority_2, product_priority_3, product_priority_4, sale_price, sanitized_images, star_rating, tags, unit_price, url, visibility
+	// Params object accepts: bulk_pagination (bool), filter (Object)
 	productset_get_hotelsTool := mcp.NewTool("productset_get_hotels",
 		mcp.WithDescription("GET hotels for ProductSet"),
-		mcp.WithBoolean("bulk_pagination",
-			mcp.Description("bulk_pagination parameter for hotels"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"bulk_pagination": map[string]any{
+					"type":        "boolean",
+					"description": "bulk_pagination parameter",
+				},
+				"filter": map[string]any{
+					"type":        "object",
+					"description": "filter parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: bulk_pagination (boolean), filter (object)"),
 		),
-		mcp.WithString("filter",
-			mcp.Description("filter parameter for hotels"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for Hotel objects. Available fields: address, applinks, brand, category, category_specific_fields, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0, custom_number_1, custom_number_2, custom_number_3 (and 24 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for Hotel objects. Available fields: address, applinks, brand, category, category_specific_fields, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0, custom_number_1, custom_number_2, custom_number_3 (and 24 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -143,16 +184,24 @@ func GetProductSetTools() []mcp.Tool {
 
 	// productset_get_media_titles tool
 	// Available fields for MediaTitle: applinks, category_specific_fields, content_category, currency, description, fb_page_alias, fb_page_id, genres, id, image_fetch_status, images, kg_fb_id, media_title_id, price, sanitized_images, title, title_display_name, unit_price, url, visibility, wiki_data_item
+	// Params object accepts: bulk_pagination (bool), filter (Object)
 	productset_get_media_titlesTool := mcp.NewTool("productset_get_media_titles",
 		mcp.WithDescription("GET media_titles for ProductSet"),
-		mcp.WithBoolean("bulk_pagination",
-			mcp.Description("bulk_pagination parameter for media_titles"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"bulk_pagination": map[string]any{
+					"type":        "boolean",
+					"description": "bulk_pagination parameter",
+				},
+				"filter": map[string]any{
+					"type":        "object",
+					"description": "filter parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: bulk_pagination (boolean), filter (object)"),
 		),
-		mcp.WithString("filter",
-			mcp.Description("filter parameter for media_titles"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for MediaTitle objects. Available fields: applinks, category_specific_fields, content_category, currency, description, fb_page_alias, fb_page_id, genres, id, image_fetch_status, images, kg_fb_id, media_title_id, price, sanitized_images (and 6 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for MediaTitle objects. Available fields: applinks, category_specific_fields, content_category, currency, description, fb_page_alias, fb_page_id, genres, id, image_fetch_status, images, kg_fb_id, media_title_id, price, sanitized_images (and 6 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -168,24 +217,34 @@ func GetProductSetTools() []mcp.Tool {
 
 	// productset_get_products tool
 	// Available fields for ProductItem: additional_image_cdn_urls, additional_image_urls, additional_variant_attributes, age_group, applinks, availability, brand, bundle_items, bundle_retailer_ids, capability_to_review_status, category, category_specific_fields, color, commerce_insights, condition, currency, custom_data, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0, custom_number_1, custom_number_2, custom_number_3, custom_number_4, description, errors, expiration_date, fb_product_category, gender, generated_background_images, generated_background_images_ad_usage, gtin, id, image_cdn_urls, image_fetch_status, image_url, images, importer_address, importer_name, invalidation_errors, inventory, is_bundle_hero, manufacturer_info, manufacturer_part_number, marked_for_product_launch, material, mobile_link, name, ordering_index, origin_country, parent_product_id, pattern, post_conversion_signal_based_enforcement_appeal_eligibility, price, product_catalog, product_feed, product_group, product_local_info, product_relationship, product_type, quantity_to_sell_on_facebook, retailer_id, retailer_product_group_id, review_rejection_reasons, review_status, sale_price, sale_price_end_date, sale_price_start_date, shipping_weight_unit, shipping_weight_value, short_description, size, start_date, tags, url, vendor_id, video_fetch_status, videos, visibility, wa_compliance_category
+	// Params object accepts: bulk_pagination (bool), error_priority (productsetproducts_error_priority_enum_param), error_type (productsetproducts_error_type_enum_param), filter (Object)
 	productset_get_productsTool := mcp.NewTool("productset_get_products",
 		mcp.WithDescription("GET products for ProductSet"),
-		mcp.WithBoolean("bulk_pagination",
-			mcp.Description("bulk_pagination parameter for products"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"bulk_pagination": map[string]any{
+					"type":        "boolean",
+					"description": "bulk_pagination parameter",
+				},
+				"error_priority": map[string]any{
+					"type":        "string",
+					"description": "error_priority parameter",
+					"enum":        []string{"HIGH", "LOW", "MEDIUM"},
+				},
+				"error_type": map[string]any{
+					"type":        "string",
+					"description": "error_type parameter",
+					"enum":        []string{"ADDRESS_BLOCKLISTED_IN_MARKET", "AGGREGATED_LOCALIZATION_ISSUES", "APP_HAS_NO_AEM_SETUP", "AR_DELETED_DUE_TO_UPDATE", "AR_POLICY_VIOLATED", "AVAILABLE", "BAD_QUALITY_IMAGE", "BIG_CATALOG_WITH_ALL_ITEMS_IN_STOCK", "BIZ_MSG_AI_AGENT_DISABLED_BY_USER", "BIZ_MSG_GEN_AI_POLICY_VIOLATED", "CANNOT_EDIT_SUBSCRIPTION_PRODUCTS", "CATALOG_NOT_CONNECTED_TO_EVENT_SOURCE", "CHECKOUT_DISABLED_BY_USER", "COMMERCE_ACCOUNT_LEGAL_ADDRESS_INVALID", "COMMERCE_ACCOUNT_NOT_LEGALLY_COMPLIANT", "CRAWLED_AVAILABILITY_MISMATCH", "DA_DISABLED_BY_USER", "DA_POLICY_UNFIT_FOR_AUDIENCE", "DA_POLICY_VIOLATION", "DELETED_ITEM", "DIGITAL_GOODS_NOT_AVAILABLE_FOR_CHECKOUT", "DUPLICATE_IMAGES", "DUPLICATE_TITLE_AND_DESCRIPTION", "EMPTY_AVAILABILITY", "EMPTY_CONDITION", "EMPTY_DESCRIPTION", "EMPTY_IMAGE_URL", "EMPTY_PRICE", "EMPTY_PRODUCT_URL", "EMPTY_SELLER_DESCRIPTION", "EMPTY_TITLE", "EXTERNAL_MERCHANT_ID_MISMATCH", "GENERIC_INVALID_FIELD", "GROUPS_DISABLED_BY_USER", "HIDDEN_UNTIL_PRODUCT_LAUNCH", "ILLEGAL_PRODUCT_CATEGORY", "IMAGE_FETCH_FAILED", "IMAGE_FETCH_FAILED_BAD_GATEWAY", "IMAGE_FETCH_FAILED_FILE_SIZE_EXCEEDED", "IMAGE_FETCH_FAILED_FORBIDDEN", "IMAGE_FETCH_FAILED_LINK_BROKEN", "IMAGE_FETCH_FAILED_TIMED_OUT", "IMAGE_RESOLUTION_LOW", "INACTIVE_SHOPIFY_PRODUCT", "INVALID_COMMERCE_TAX_CATEGORY", "INVALID_CONSOLIDATED_LOCALITY_INFORMATION", "INVALID_CONTENT_ID", "INVALID_DEALER_COMMUNICATION_PARAMETERS", "INVALID_DMA_CODES", "INVALID_FB_PAGE_ID", "INVALID_IMAGES", "INVALID_MONETIZER_RETURN_POLICY", "INVALID_OFFER_DISCLAIMER_URL", "INVALID_OFFER_END_DATE", "INVALID_PRE_ORDER_PARAMS", "INVALID_RANGE_FOR_AREA_SIZE", "INVALID_RANGE_FOR_BUILT_UP_AREA_SIZE", "INVALID_RANGE_FOR_NUM_OF_BATHS", "INVALID_RANGE_FOR_NUM_OF_BEDS", "INVALID_RANGE_FOR_NUM_OF_ROOMS", "INVALID_RANGE_FOR_PARKING_SPACES", "INVALID_SHELTER_PAGE_ID", "INVALID_SHIPPING_PROFILE_PARAMS", "INVALID_SUBSCRIPTION_DISABLE_PARAMS", "INVALID_SUBSCRIPTION_ENABLE_PARAMS", "INVALID_SUBSCRIPTION_PARAMS", "INVALID_TAX_EXTENSION_STATE", "INVALID_VEHICLE_STATE", "INVALID_VIRTUAL_TOUR_URL_DOMAIN", "INVENTORY_ZERO_AVAILABILITY_IN_STOCK", "IN_ANOTHER_PRODUCT_LAUNCH", "ITEM_GROUP_NOT_SPECIFIED", "ITEM_NOT_SHIPPABLE_FOR_SCA_SHOP", "ITEM_OVERRIDE_EMPTY_AVAILABILITY", "ITEM_OVERRIDE_EMPTY_PRICE", "ITEM_OVERRIDE_NOT_VISIBLE", "ITEM_PRICE_NOT_POSITIVE", "ITEM_STALE_OUT_OF_STOCK", "MARKETPLACE_DISABLED_BY_USER", "MARKETPLACE_PARTNER_AUCTION_NO_BID_CLOSE_TIME", "MARKETPLACE_PARTNER_CURRENCY_NOT_VALID", "MARKETPLACE_PARTNER_LISTING_COUNTRY_NOT_MATCH_CATALOG", "MARKETPLACE_PARTNER_LISTING_LIMIT_EXCEEDED", "MARKETPLACE_PARTNER_MISSING_LATLONG", "MARKETPLACE_PARTNER_MISSING_SHIPPING_COST", "MARKETPLACE_PARTNER_NOT_LOCAL_ITEM", "MARKETPLACE_PARTNER_NOT_SHIPPED_ITEM", "MARKETPLACE_PARTNER_POLICY_VIOLATION", "MARKETPLACE_PARTNER_RULE_LISTING_LIMIT_EXCEEDED", "MARKETPLACE_PARTNER_SELLER_BANNED", "MARKETPLACE_PARTNER_SELLER_NOT_VALID", "MINI_SHOPS_DISABLED_BY_USER", "MISSING_CHECKOUT", "MISSING_CHECKOUT_CURRENCY", "MISSING_COLOR", "MISSING_COUNTRY_OVERRIDE_IN_SHIPPING_PROFILE", "MISSING_EVENT", "MISSING_INDIA_COMPLIANCE_FIELDS", "MISSING_SHIPPING_PROFILE", "MISSING_SIZE", "MISSING_TAX_CATEGORY", "NEGATIVE_COMMUNITY_FEEDBACK", "NEGATIVE_PRICE", "NOT_ENOUGH_IMAGES", "NOT_ENOUGH_UNIQUE_PRODUCTS", "NO_CONTENT_ID", "OVERLAY_DISCLAIMER_EXCEEDED_MAX_LENGTH", "PART_OF_PRODUCT_LAUNCH", "PASSING_MULTIPLE_CONTENT_IDS", "PRODUCT_DOMINANT_CURRENCY_MISMATCH", "PRODUCT_EXPIRED", "PRODUCT_ITEM_HIDDEN_FROM_ALL_SHOPS", "PRODUCT_ITEM_INVALID_PARTNER_TOKENS", "PRODUCT_ITEM_NOT_INCLUDED_IN_ANY_SHOP", "PRODUCT_ITEM_NOT_VISIBLE", "PRODUCT_NOT_APPROVED", "PRODUCT_NOT_DOMINANT_CURRENCY", "PRODUCT_OUT_OF_STOCK", "PRODUCT_URL_EQUALS_DOMAIN", "PROPERTY_PRICE_CURRENCY_NOT_SUPPORTED", "PROPERTY_PRICE_TOO_HIGH", "PROPERTY_PRICE_TOO_LOW", "PROPERTY_UNIT_PRICE_CURRENCY_MISMATCH_ITEM_PRICE_CURRENCY", "PROPERTY_VALUE_CONTAINS_HTML_TAGS", "PROPERTY_VALUE_DESCRIPTION_CONTAINS_OFF_PLATFORM_LINK", "PROPERTY_VALUE_FORMAT", "PROPERTY_VALUE_MISSING", "PROPERTY_VALUE_MISSING_WARNING", "PROPERTY_VALUE_NON_POSITIVE", "PROPERTY_VALUE_STRING_EXCEEDS_LENGTH", "PROPERTY_VALUE_STRING_TOO_SHORT", "PROPERTY_VALUE_UPPERCASE", "PROPERTY_VALUE_UPPERCASE_WARNING", "PURCHASE_RATE_BELOW_ADDTOCART", "PURCHASE_RATE_BELOW_VIEWCONTENT", "QUALITY_DUPLICATED_DESCRIPTION", "QUALITY_ITEM_LINK_BROKEN", "QUALITY_ITEM_LINK_REDIRECTING", "RETAILER_ID_NOT_PROVIDED", "SHOPIFY_INVALID_RETAILER_ID", "SHOPIFY_ITEM_MISSING_SHIPPING_PROFILE", "SHOPS_POLICY_VIOLATION", "SUBSCRIPTION_INFO_NOT_ENABLED_FOR_FEED", "TAX_CATEGORY_NOT_SUPPORTED_IN_UK", "UNIQUE_PRODUCT_IDENTIFIER_MISSING", "UNMATCHED_EVENTS", "UNSUPPORTED_PRODUCT_CATEGORY", "VARIANT_ATTRIBUTE_ISSUE", "VIDEO_FETCH_FAILED", "VIDEO_FETCH_FAILED_BAD_GATEWAY", "VIDEO_FETCH_FAILED_FILE_SIZE_EXCEEDED", "VIDEO_FETCH_FAILED_FORBIDDEN", "VIDEO_FETCH_FAILED_LINK_BROKEN", "VIDEO_FETCH_FAILED_TIMED_OUT", "VIDEO_NOT_DOWNLOADABLE", "WHATSAPP_DISABLED_BY_USER", "WHATSAPP_MARKETING_MESSAGE_DISABLED_BY_USER", "WHATSAPP_MARKETING_MESSAGE_POLICY_VIOLATION", "WHATSAPP_POLICY_VIOLATION"},
+				},
+				"filter": map[string]any{
+					"type":        "object",
+					"description": "filter parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: bulk_pagination (boolean), error_priority (enum) [HIGH, LOW, MEDIUM], error_type (enum) [ADDRESS_BLOCKLISTED_IN_MARKET, AGGREGATED_LOCALIZATION_ISSUES, APP_HAS_NO_AEM_SETUP, AR_DELETED_DUE_TO_UPDATE, AR_POLICY_VIOLATED, ...], filter (object)"),
 		),
-		mcp.WithString("error_priority",
-			mcp.Description("error_priority parameter for products"),
-			mcp.Enum("HIGH", "LOW", "MEDIUM"),
-		),
-		mcp.WithString("error_type",
-			mcp.Description("error_type parameter for products"),
-			mcp.Enum("ADDRESS_BLOCKLISTED_IN_MARKET", "AGGREGATED_LOCALIZATION_ISSUES", "APP_HAS_NO_AEM_SETUP", "AR_DELETED_DUE_TO_UPDATE", "AR_POLICY_VIOLATED", "AVAILABLE", "BAD_QUALITY_IMAGE", "BIG_CATALOG_WITH_ALL_ITEMS_IN_STOCK", "BIZ_MSG_AI_AGENT_DISABLED_BY_USER", "BIZ_MSG_GEN_AI_POLICY_VIOLATED", "CANNOT_EDIT_SUBSCRIPTION_PRODUCTS", "CATALOG_NOT_CONNECTED_TO_EVENT_SOURCE", "CHECKOUT_DISABLED_BY_USER", "COMMERCE_ACCOUNT_LEGAL_ADDRESS_INVALID", "COMMERCE_ACCOUNT_NOT_LEGALLY_COMPLIANT", "CRAWLED_AVAILABILITY_MISMATCH", "DA_DISABLED_BY_USER", "DA_POLICY_UNFIT_FOR_AUDIENCE", "DA_POLICY_VIOLATION", "DELETED_ITEM", "DIGITAL_GOODS_NOT_AVAILABLE_FOR_CHECKOUT", "DUPLICATE_IMAGES", "DUPLICATE_TITLE_AND_DESCRIPTION", "EMPTY_AVAILABILITY", "EMPTY_CONDITION", "EMPTY_DESCRIPTION", "EMPTY_IMAGE_URL", "EMPTY_PRICE", "EMPTY_PRODUCT_URL", "EMPTY_SELLER_DESCRIPTION", "EMPTY_TITLE", "EXTERNAL_MERCHANT_ID_MISMATCH", "GENERIC_INVALID_FIELD", "GROUPS_DISABLED_BY_USER", "HIDDEN_UNTIL_PRODUCT_LAUNCH", "ILLEGAL_PRODUCT_CATEGORY", "IMAGE_FETCH_FAILED", "IMAGE_FETCH_FAILED_BAD_GATEWAY", "IMAGE_FETCH_FAILED_FILE_SIZE_EXCEEDED", "IMAGE_FETCH_FAILED_FORBIDDEN", "IMAGE_FETCH_FAILED_LINK_BROKEN", "IMAGE_FETCH_FAILED_TIMED_OUT", "IMAGE_RESOLUTION_LOW", "INACTIVE_SHOPIFY_PRODUCT", "INVALID_COMMERCE_TAX_CATEGORY", "INVALID_CONSOLIDATED_LOCALITY_INFORMATION", "INVALID_CONTENT_ID", "INVALID_DEALER_COMMUNICATION_PARAMETERS", "INVALID_DMA_CODES", "INVALID_FB_PAGE_ID", "INVALID_IMAGES", "INVALID_MONETIZER_RETURN_POLICY", "INVALID_OFFER_DISCLAIMER_URL", "INVALID_OFFER_END_DATE", "INVALID_PRE_ORDER_PARAMS", "INVALID_RANGE_FOR_AREA_SIZE", "INVALID_RANGE_FOR_BUILT_UP_AREA_SIZE", "INVALID_RANGE_FOR_NUM_OF_BATHS", "INVALID_RANGE_FOR_NUM_OF_BEDS", "INVALID_RANGE_FOR_NUM_OF_ROOMS", "INVALID_RANGE_FOR_PARKING_SPACES", "INVALID_SHELTER_PAGE_ID", "INVALID_SHIPPING_PROFILE_PARAMS", "INVALID_SUBSCRIPTION_DISABLE_PARAMS", "INVALID_SUBSCRIPTION_ENABLE_PARAMS", "INVALID_SUBSCRIPTION_PARAMS", "INVALID_TAX_EXTENSION_STATE", "INVALID_VEHICLE_STATE", "INVALID_VIRTUAL_TOUR_URL_DOMAIN", "INVENTORY_ZERO_AVAILABILITY_IN_STOCK", "IN_ANOTHER_PRODUCT_LAUNCH", "ITEM_GROUP_NOT_SPECIFIED", "ITEM_NOT_SHIPPABLE_FOR_SCA_SHOP", "ITEM_OVERRIDE_EMPTY_AVAILABILITY", "ITEM_OVERRIDE_EMPTY_PRICE", "ITEM_OVERRIDE_NOT_VISIBLE", "ITEM_PRICE_NOT_POSITIVE", "ITEM_STALE_OUT_OF_STOCK", "MARKETPLACE_DISABLED_BY_USER", "MARKETPLACE_PARTNER_AUCTION_NO_BID_CLOSE_TIME", "MARKETPLACE_PARTNER_CURRENCY_NOT_VALID", "MARKETPLACE_PARTNER_LISTING_COUNTRY_NOT_MATCH_CATALOG", "MARKETPLACE_PARTNER_LISTING_LIMIT_EXCEEDED", "MARKETPLACE_PARTNER_MISSING_LATLONG", "MARKETPLACE_PARTNER_MISSING_SHIPPING_COST", "MARKETPLACE_PARTNER_NOT_LOCAL_ITEM", "MARKETPLACE_PARTNER_NOT_SHIPPED_ITEM", "MARKETPLACE_PARTNER_POLICY_VIOLATION", "MARKETPLACE_PARTNER_RULE_LISTING_LIMIT_EXCEEDED", "MARKETPLACE_PARTNER_SELLER_BANNED", "MARKETPLACE_PARTNER_SELLER_NOT_VALID", "MINI_SHOPS_DISABLED_BY_USER", "MISSING_CHECKOUT", "MISSING_CHECKOUT_CURRENCY", "MISSING_COLOR", "MISSING_COUNTRY_OVERRIDE_IN_SHIPPING_PROFILE", "MISSING_EVENT", "MISSING_INDIA_COMPLIANCE_FIELDS", "MISSING_SHIPPING_PROFILE", "MISSING_SIZE", "MISSING_TAX_CATEGORY", "NEGATIVE_COMMUNITY_FEEDBACK", "NEGATIVE_PRICE", "NOT_ENOUGH_IMAGES", "NOT_ENOUGH_UNIQUE_PRODUCTS", "NO_CONTENT_ID", "OVERLAY_DISCLAIMER_EXCEEDED_MAX_LENGTH", "PART_OF_PRODUCT_LAUNCH", "PASSING_MULTIPLE_CONTENT_IDS", "PRODUCT_DOMINANT_CURRENCY_MISMATCH", "PRODUCT_EXPIRED", "PRODUCT_ITEM_HIDDEN_FROM_ALL_SHOPS", "PRODUCT_ITEM_INVALID_PARTNER_TOKENS", "PRODUCT_ITEM_NOT_INCLUDED_IN_ANY_SHOP", "PRODUCT_ITEM_NOT_VISIBLE", "PRODUCT_NOT_APPROVED", "PRODUCT_NOT_DOMINANT_CURRENCY", "PRODUCT_OUT_OF_STOCK", "PRODUCT_URL_EQUALS_DOMAIN", "PROPERTY_PRICE_CURRENCY_NOT_SUPPORTED", "PROPERTY_PRICE_TOO_HIGH", "PROPERTY_PRICE_TOO_LOW", "PROPERTY_UNIT_PRICE_CURRENCY_MISMATCH_ITEM_PRICE_CURRENCY", "PROPERTY_VALUE_CONTAINS_HTML_TAGS", "PROPERTY_VALUE_DESCRIPTION_CONTAINS_OFF_PLATFORM_LINK", "PROPERTY_VALUE_FORMAT", "PROPERTY_VALUE_MISSING", "PROPERTY_VALUE_MISSING_WARNING", "PROPERTY_VALUE_NON_POSITIVE", "PROPERTY_VALUE_STRING_EXCEEDS_LENGTH", "PROPERTY_VALUE_STRING_TOO_SHORT", "PROPERTY_VALUE_UPPERCASE", "PROPERTY_VALUE_UPPERCASE_WARNING", "PURCHASE_RATE_BELOW_ADDTOCART", "PURCHASE_RATE_BELOW_VIEWCONTENT", "QUALITY_DUPLICATED_DESCRIPTION", "QUALITY_ITEM_LINK_BROKEN", "QUALITY_ITEM_LINK_REDIRECTING", "RETAILER_ID_NOT_PROVIDED", "SHOPIFY_INVALID_RETAILER_ID", "SHOPIFY_ITEM_MISSING_SHIPPING_PROFILE", "SHOPS_POLICY_VIOLATION", "SUBSCRIPTION_INFO_NOT_ENABLED_FOR_FEED", "TAX_CATEGORY_NOT_SUPPORTED_IN_UK", "UNIQUE_PRODUCT_IDENTIFIER_MISSING", "UNMATCHED_EVENTS", "UNSUPPORTED_PRODUCT_CATEGORY", "VARIANT_ATTRIBUTE_ISSUE", "VIDEO_FETCH_FAILED", "VIDEO_FETCH_FAILED_BAD_GATEWAY", "VIDEO_FETCH_FAILED_FILE_SIZE_EXCEEDED", "VIDEO_FETCH_FAILED_FORBIDDEN", "VIDEO_FETCH_FAILED_LINK_BROKEN", "VIDEO_FETCH_FAILED_TIMED_OUT", "VIDEO_NOT_DOWNLOADABLE", "WHATSAPP_DISABLED_BY_USER", "WHATSAPP_MARKETING_MESSAGE_DISABLED_BY_USER", "WHATSAPP_MARKETING_MESSAGE_POLICY_VIOLATION", "WHATSAPP_POLICY_VIOLATION"),
-		),
-		mcp.WithString("filter",
-			mcp.Description("filter parameter for products"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for ProductItem objects. Available fields: additional_image_cdn_urls, additional_image_urls, additional_variant_attributes, age_group, applinks, availability, brand, bundle_items, bundle_retailer_ids, capability_to_review_status, category, category_specific_fields, color, commerce_insights, condition (and 68 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for ProductItem objects. Available fields: additional_image_cdn_urls, additional_image_urls, additional_variant_attributes, age_group, applinks, availability, brand, bundle_items, bundle_retailer_ids, capability_to_review_status, category, category_specific_fields, color, commerce_insights, condition (and 68 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -201,16 +260,24 @@ func GetProductSetTools() []mcp.Tool {
 
 	// productset_get_vehicle_offers tool
 	// Available fields for VehicleOffer: amount_currency, amount_percentage, amount_price, amount_qualifier, applinks, availability, body_style, cashback_currency, cashback_price, category_specific_fields, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0, custom_number_1, custom_number_2, custom_number_3, custom_number_4, dma_codes, downpayment_currency, downpayment_price, downpayment_qualifier, drivetrain, end_date, end_time, exterior_color, fuel_type, generation, id, image_fetch_status, images, interior_color, interior_upholstery, make, model, offer_description, offer_disclaimer, offer_type, price, product_priority_0, product_priority_1, product_priority_2, product_priority_3, product_priority_4, sanitized_images, start_date, start_time, tags, term_length, term_qualifier, title, transmission, trim, unit_price, url, vehicle_offer_id, visibility, year
+	// Params object accepts: bulk_pagination (bool), filter (Object)
 	productset_get_vehicle_offersTool := mcp.NewTool("productset_get_vehicle_offers",
 		mcp.WithDescription("GET vehicle_offers for ProductSet"),
-		mcp.WithBoolean("bulk_pagination",
-			mcp.Description("bulk_pagination parameter for vehicle_offers"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"bulk_pagination": map[string]any{
+					"type":        "boolean",
+					"description": "bulk_pagination parameter",
+				},
+				"filter": map[string]any{
+					"type":        "object",
+					"description": "filter parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: bulk_pagination (boolean), filter (object)"),
 		),
-		mcp.WithString("filter",
-			mcp.Description("filter parameter for vehicle_offers"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for VehicleOffer objects. Available fields: amount_currency, amount_percentage, amount_price, amount_qualifier, applinks, availability, body_style, cashback_currency, cashback_price, category_specific_fields, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3 (and 46 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for VehicleOffer objects. Available fields: amount_currency, amount_percentage, amount_price, amount_qualifier, applinks, availability, body_style, cashback_currency, cashback_price, category_specific_fields, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3 (and 46 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -226,16 +293,24 @@ func GetProductSetTools() []mcp.Tool {
 
 	// productset_get_vehicles tool
 	// Available fields for Vehicle: address, applinks, availability, availability_circle_radius, availability_circle_radius_unit, body_style, category_specific_fields, condition, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0, custom_number_1, custom_number_2, custom_number_3, custom_number_4, date_first_on_lot, dealer_communication_channel, dealer_email, dealer_id, dealer_name, dealer_phone, dealer_privacy_policy_url, description, drivetrain, exterior_color, fb_page_id, features, fuel_type, id, image_fetch_status, images, interior_color, legal_disclosure_impressum_url, make, mileage, model, previous_currency, previous_price, price, product_priority_0, product_priority_1, product_priority_2, product_priority_3, product_priority_4, sale_currency, sale_price, sanitized_images, state_of_vehicle, tags, title, transmission, trim, unit_price, url, vehicle_id, vehicle_registration_plate, vehicle_specifications, vehicle_type, vin, visibility, year
+	// Params object accepts: bulk_pagination (bool), filter (Object)
 	productset_get_vehiclesTool := mcp.NewTool("productset_get_vehicles",
 		mcp.WithDescription("GET vehicles for ProductSet"),
-		mcp.WithBoolean("bulk_pagination",
-			mcp.Description("bulk_pagination parameter for vehicles"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"bulk_pagination": map[string]any{
+					"type":        "boolean",
+					"description": "bulk_pagination parameter",
+				},
+				"filter": map[string]any{
+					"type":        "object",
+					"description": "filter parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: bulk_pagination (boolean), filter (object)"),
 		),
-		mcp.WithString("filter",
-			mcp.Description("filter parameter for vehicles"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for Vehicle objects. Available fields: address, applinks, availability, availability_circle_radius, availability_circle_radius_unit, body_style, category_specific_fields, condition, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0 (and 50 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for Vehicle objects. Available fields: address, applinks, availability, availability_circle_radius, availability_circle_radius_unit, body_style, category_specific_fields, condition, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0 (and 50 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -250,10 +325,17 @@ func GetProductSetTools() []mcp.Tool {
 	tools = append(tools, productset_get_vehiclesTool)
 
 	// productset_delete_ tool
+	// Params object accepts: allow_live_product_set_deletion (bool)
 	productset_delete_Tool := mcp.NewTool("productset_delete_",
 		mcp.WithDescription("DELETE  for ProductSet"),
-		mcp.WithBoolean("allow_live_product_set_deletion",
-			mcp.Description("allow_live_product_set_deletion parameter for "),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"allow_live_product_set_deletion": map[string]any{
+					"type":        "boolean",
+					"description": "allow_live_product_set_deletion parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: allow_live_product_set_deletion (boolean)"),
 		),
 	)
 	tools = append(tools, productset_delete_Tool)
@@ -262,8 +344,8 @@ func GetProductSetTools() []mcp.Tool {
 	// Available fields for ProductSet: auto_creation_url, filter, id, latest_metadata, live_metadata, name, ordering_info, product_catalog, product_count, retailer_id
 	productset_get_Tool := mcp.NewTool("productset_get_",
 		mcp.WithDescription("GET  for ProductSet"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for ProductSet objects. Available fields: auto_creation_url, filter, id, latest_metadata, live_metadata, name, ordering_info, product_catalog, product_count, retailer_id"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for ProductSet objects. Available fields: auto_creation_url, filter, id, latest_metadata, live_metadata, name, ordering_info, product_catalog, product_count, retailer_id"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -278,25 +360,39 @@ func GetProductSetTools() []mcp.Tool {
 	tools = append(tools, productset_get_Tool)
 
 	// productset_post_ tool
+	// Params object accepts: filter (Object), metadata (map), name (string), ordering_info (list<unsigned int>), publish_to_shops (list<map>), retailer_id (string)
 	productset_post_Tool := mcp.NewTool("productset_post_",
 		mcp.WithDescription("POST  for ProductSet"),
-		mcp.WithString("filter",
-			mcp.Description("filter parameter for "),
-		),
-		mcp.WithString("metadata",
-			mcp.Description("metadata parameter for "),
-		),
-		mcp.WithString("name",
-			mcp.Description("name parameter for "),
-		),
-		mcp.WithString("ordering_info",
-			mcp.Description("ordering_info parameter for "),
-		),
-		mcp.WithString("publish_to_shops",
-			mcp.Description("publish_to_shops parameter for "),
-		),
-		mcp.WithString("retailer_id",
-			mcp.Description("retailer_id parameter for "),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"filter": map[string]any{
+					"type":        "object",
+					"description": "filter parameter",
+				},
+				"metadata": map[string]any{
+					"type":        "object",
+					"description": "metadata parameter",
+				},
+				"name": map[string]any{
+					"type":        "string",
+					"description": "name parameter",
+				},
+				"ordering_info": map[string]any{
+					"type":        "array",
+					"description": "ordering_info parameter",
+					"items":       map[string]any{"type": "integer"},
+				},
+				"publish_to_shops": map[string]any{
+					"type":        "array",
+					"description": "publish_to_shops parameter",
+					"items":       map[string]any{"type": "object"},
+				},
+				"retailer_id": map[string]any{
+					"type":        "string",
+					"description": "retailer_id parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: filter (object), metadata (object), name (string), ordering_info (array<integer>), publish_to_shops (array<object>), retailer_id (string)"),
 		),
 	)
 	tools = append(tools, productset_post_Tool)
@@ -320,20 +416,26 @@ func HandleProductset_get_automotive_models(ctx context.Context, request mcp.Cal
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: bulk_pagination
-	if val := request.GetBool("bulk_pagination", false); val {
-		args["bulk_pagination"] = val
-	}
-
-	// Optional: filter
-	// object type - using string
-	if val := request.GetString("filter", ""); val != "" {
-		args["filter"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -380,20 +482,26 @@ func HandleProductset_get_destinations(ctx context.Context, request mcp.CallTool
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: bulk_pagination
-	if val := request.GetBool("bulk_pagination", false); val {
-		args["bulk_pagination"] = val
-	}
-
-	// Optional: filter
-	// object type - using string
-	if val := request.GetString("filter", ""); val != "" {
-		args["filter"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -440,20 +548,26 @@ func HandleProductset_get_flights(ctx context.Context, request mcp.CallToolReque
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: bulk_pagination
-	if val := request.GetBool("bulk_pagination", false); val {
-		args["bulk_pagination"] = val
-	}
-
-	// Optional: filter
-	// object type - using string
-	if val := request.GetString("filter", ""); val != "" {
-		args["filter"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -500,20 +614,26 @@ func HandleProductset_get_home_listings(ctx context.Context, request mcp.CallToo
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: bulk_pagination
-	if val := request.GetBool("bulk_pagination", false); val {
-		args["bulk_pagination"] = val
-	}
-
-	// Optional: filter
-	// object type - using string
-	if val := request.GetString("filter", ""); val != "" {
-		args["filter"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -560,20 +680,26 @@ func HandleProductset_get_hotels(ctx context.Context, request mcp.CallToolReques
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: bulk_pagination
-	if val := request.GetBool("bulk_pagination", false); val {
-		args["bulk_pagination"] = val
-	}
-
-	// Optional: filter
-	// object type - using string
-	if val := request.GetString("filter", ""); val != "" {
-		args["filter"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -620,20 +746,26 @@ func HandleProductset_get_media_titles(ctx context.Context, request mcp.CallTool
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: bulk_pagination
-	if val := request.GetBool("bulk_pagination", false); val {
-		args["bulk_pagination"] = val
-	}
-
-	// Optional: filter
-	// object type - using string
-	if val := request.GetString("filter", ""); val != "" {
-		args["filter"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -680,30 +812,26 @@ func HandleProductset_get_products(ctx context.Context, request mcp.CallToolRequ
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: bulk_pagination
-	if val := request.GetBool("bulk_pagination", false); val {
-		args["bulk_pagination"] = val
-	}
-
-	// Optional: error_priority
-	if val := request.GetString("error_priority", ""); val != "" {
-		args["error_priority"] = val
-	}
-
-	// Optional: error_type
-	if val := request.GetString("error_type", ""); val != "" {
-		args["error_type"] = val
-	}
-
-	// Optional: filter
-	// object type - using string
-	if val := request.GetString("filter", ""); val != "" {
-		args["filter"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -750,20 +878,26 @@ func HandleProductset_get_vehicle_offers(ctx context.Context, request mcp.CallTo
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: bulk_pagination
-	if val := request.GetBool("bulk_pagination", false); val {
-		args["bulk_pagination"] = val
-	}
-
-	// Optional: filter
-	// object type - using string
-	if val := request.GetString("filter", ""); val != "" {
-		args["filter"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -810,20 +944,26 @@ func HandleProductset_get_vehicles(ctx context.Context, request mcp.CallToolRequ
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: bulk_pagination
-	if val := request.GetBool("bulk_pagination", false); val {
-		args["bulk_pagination"] = val
-	}
-
-	// Optional: filter
-	// object type - using string
-	if val := request.GetString("filter", ""); val != "" {
-		args["filter"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -870,9 +1010,16 @@ func HandleProductset_delete_(ctx context.Context, request mcp.CallToolRequest) 
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: allow_live_product_set_deletion
-	if val := request.GetBool("allow_live_product_set_deletion", false); val {
-		args["allow_live_product_set_deletion"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method
@@ -905,8 +1052,13 @@ func HandleProductset_get_(ctx context.Context, request mcp.CallToolRequest) (*m
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -953,37 +1105,16 @@ func HandleProductset_post_(ctx context.Context, request mcp.CallToolRequest) (*
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: filter
-	// object type - using string
-	if val := request.GetString("filter", ""); val != "" {
-		args["filter"] = val
-	}
-
-	// Optional: metadata
-	if val := request.GetString("metadata", ""); val != "" {
-		args["metadata"] = val
-	}
-
-	// Optional: name
-	if val := request.GetString("name", ""); val != "" {
-		args["name"] = val
-	}
-
-	// Optional: ordering_info
-	// array type - using string
-	if val := request.GetString("ordering_info", ""); val != "" {
-		args["ordering_info"] = val
-	}
-
-	// Optional: publish_to_shops
-	// array type - using string
-	if val := request.GetString("publish_to_shops", ""); val != "" {
-		args["publish_to_shops"] = val
-	}
-
-	// Optional: retailer_id
-	if val := request.GetString("retailer_id", ""); val != "" {
-		args["retailer_id"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method

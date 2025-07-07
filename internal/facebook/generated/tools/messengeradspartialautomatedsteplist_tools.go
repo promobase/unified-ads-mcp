@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -19,8 +20,8 @@ func GetMessengerAdsPartialAutomatedStepListTools() []mcp.Tool {
 	// messengeradspartialautomatedsteplist_get_steps tool
 	messengeradspartialautomatedsteplist_get_stepsTool := mcp.NewTool("messengeradspartialautomatedsteplist_get_steps",
 		mcp.WithDescription("GET steps for MessengerAdsPartialAutomatedStepList"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -38,8 +39,8 @@ func GetMessengerAdsPartialAutomatedStepListTools() []mcp.Tool {
 	// Available fields for MessengerAdsPartialAutomatedStepList: fblead_form, first_step_id, id, page, privacy_url, reminder_text, stop_question_message
 	messengeradspartialautomatedsteplist_get_Tool := mcp.NewTool("messengeradspartialautomatedsteplist_get_",
 		mcp.WithDescription("GET  for MessengerAdsPartialAutomatedStepList"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for MessengerAdsPartialAutomatedStepList objects. Available fields: fblead_form, first_step_id, id, page, privacy_url, reminder_text, stop_question_message"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for MessengerAdsPartialAutomatedStepList objects. Available fields: fblead_form, first_step_id, id, page, privacy_url, reminder_text, stop_question_message"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -73,8 +74,13 @@ func HandleMessengeradspartialautomatedsteplist_get_steps(ctx context.Context, r
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -122,8 +128,13 @@ func HandleMessengeradspartialautomatedsteplist_get_(ctx context.Context, reques
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit

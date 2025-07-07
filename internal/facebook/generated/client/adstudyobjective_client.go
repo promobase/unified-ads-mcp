@@ -502,16 +502,10 @@ func (c *AdStudyObjectiveClient) Adstudyobjective_get_(args map[string]interface
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["breakdowns"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("breakdowns", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["ds"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("ds", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -581,64 +575,10 @@ func (c *AdStudyObjectiveClient) Adstudyobjective_post_(args map[string]interfac
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["adspixels"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("adspixels", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["applications"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("applications", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["customconversions"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("customconversions", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["is_primary"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("is_primary", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["name"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("name", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["offline_conversion_data_sets"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("offline_conversion_data_sets", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["offsite_datasets"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("offsite_datasets", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["product_catalogs"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("product_catalogs", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["product_sets"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("product_sets", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["type"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("type", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 

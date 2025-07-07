@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -20,8 +21,8 @@ func GetAdStudyObjectiveTools() []mcp.Tool {
 	// Available fields for AdsPixel: automatic_matching_fields, can_proxy, code, config, creation_time, creator, data_use_setting, description, duplicate_entries, enable_auto_assign_to_accounts, enable_automatic_matching, event_stats, event_time_max, event_time_min, first_party_cookie_status, has_1p_pixel_event, id, is_consolidated_container, is_created_by_business, is_crm, is_mta_use, is_restricted_use, is_unavailable, last_fired_time, last_upload_app, last_upload_app_changed_time, match_rate_approx, matched_entries, name, owner_ad_account, owner_business, usage, user_access_expire_time, valid_entries
 	adstudyobjective_get_adspixelsTool := mcp.NewTool("adstudyobjective_get_adspixels",
 		mcp.WithDescription("GET adspixels for AdStudyObjective"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for AdsPixel objects. Available fields: automatic_matching_fields, can_proxy, code, config, creation_time, creator, data_use_setting, description, duplicate_entries, enable_auto_assign_to_accounts, enable_automatic_matching, event_stats, event_time_max, event_time_min, first_party_cookie_status (and 19 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for AdsPixel objects. Available fields: automatic_matching_fields, can_proxy, code, config, creation_time, creator, data_use_setting, description, duplicate_entries, enable_auto_assign_to_accounts, enable_automatic_matching, event_stats, event_time_max, event_time_min, first_party_cookie_status (and 19 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -39,8 +40,8 @@ func GetAdStudyObjectiveTools() []mcp.Tool {
 	// Available fields for Application: aam_rules, an_ad_space_limit, an_platforms, android_key_hash, android_sdk_error_categories, app_domains, app_events_config, app_events_feature_bitmask, app_events_session_timeout, app_install_tracked, app_name, app_signals_binding_ios, app_type, auth_dialog_data_help_url, auth_dialog_headline, auth_dialog_perms_explanation, auth_referral_default_activity_privacy, auth_referral_enabled, auth_referral_extended_perms, auth_referral_friend_perms, auth_referral_response_type, auth_referral_user_perms, auto_event_mapping_android, auto_event_mapping_ios, auto_event_setup_enabled, auto_log_app_events_default, auto_log_app_events_enabled, business, canvas_fluid_height, canvas_fluid_width, canvas_url, category, client_config, company, configured_ios_sso, contact_email, created_time, creator_uid, daily_active_users, daily_active_users_rank, deauth_callback_url, default_share_mode, description, enigma_config, financial_id, gdpv4_chrome_custom_tabs_enabled, gdpv4_enabled, gdpv4_nux_content, gdpv4_nux_enabled, has_messenger_product, hosting_url, icon_url, id, ios_bundle_id, ios_sdk_dialog_flows, ios_sdk_error_categories, ios_sfvc_attr, ios_supports_native_proxy_auth_flow, ios_supports_system_auth, ipad_app_store_id, iphone_app_store_id, latest_sdk_version, link, logging_token, logo_url, migrations, mobile_profile_section_url, mobile_web_url, monthly_active_users, monthly_active_users_rank, name, namespace, object_store_urls, owner_business, page_tab_default_name, page_tab_url, photo_url, privacy_policy_url, profile_section_url, property_id, protected_mode_rules, real_time_mode_devices, restrictions, restrictive_data_filter_params, restrictive_data_filter_rules, sdk_update_message, seamless_login, secure_canvas_url, secure_page_tab_url, server_ip_whitelist, smart_login_bookmark_icon_url, smart_login_menu_icon_url, social_discovery, subcategory, suggested_events_setting, supported_platforms, supports_apprequests_fast_app_switch, supports_attribution, supports_implicit_sdk_logging, suppress_native_ios_gdp, terms_of_service_url, url_scheme_suffix, user_support_email, user_support_url, website_url, weekly_active_users
 	adstudyobjective_get_applicationsTool := mcp.NewTool("adstudyobjective_get_applications",
 		mcp.WithDescription("GET applications for AdStudyObjective"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for Application objects. Available fields: aam_rules, an_ad_space_limit, an_platforms, android_key_hash, android_sdk_error_categories, app_domains, app_events_config, app_events_feature_bitmask, app_events_session_timeout, app_install_tracked, app_name, app_signals_binding_ios, app_type, auth_dialog_data_help_url, auth_dialog_headline (and 91 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for Application objects. Available fields: aam_rules, an_ad_space_limit, an_platforms, android_key_hash, android_sdk_error_categories, app_domains, app_events_config, app_events_feature_bitmask, app_events_session_timeout, app_install_tracked, app_name, app_signals_binding_ios, app_type, auth_dialog_data_help_url, auth_dialog_headline (and 91 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -58,8 +59,8 @@ func GetAdStudyObjectiveTools() []mcp.Tool {
 	// Available fields for BrandRequest: ad_countries, additional_contacts, approval_level, cells, countries, deny_reason, end_time, estimated_reach, id, is_multicell, locale, max_age, min_age, questions, region, request_status, review_date, start_time, status, submit_date, total_budget
 	adstudyobjective_get_brand_requestsTool := mcp.NewTool("adstudyobjective_get_brand_requests",
 		mcp.WithDescription("GET brand_requests for AdStudyObjective"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for BrandRequest objects. Available fields: ad_countries, additional_contacts, approval_level, cells, countries, deny_reason, end_time, estimated_reach, id, is_multicell, locale, max_age, min_age, questions, region (and 6 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for BrandRequest objects. Available fields: ad_countries, additional_contacts, approval_level, cells, countries, deny_reason, end_time, estimated_reach, id, is_multicell, locale, max_age, min_age, questions, region (and 6 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -77,8 +78,8 @@ func GetAdStudyObjectiveTools() []mcp.Tool {
 	// Available fields for CustomConversion: account_id, aggregation_rule, business, creation_time, custom_event_type, data_sources, default_conversion_value, description, event_source_type, first_fired_time, id, is_archived, is_unavailable, last_fired_time, name, offline_conversion_data_set, pixel, retention_days, rule
 	adstudyobjective_get_customconversionsTool := mcp.NewTool("adstudyobjective_get_customconversions",
 		mcp.WithDescription("GET customconversions for AdStudyObjective"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for CustomConversion objects. Available fields: account_id, aggregation_rule, business, creation_time, custom_event_type, data_sources, default_conversion_value, description, event_source_type, first_fired_time, id, is_archived, is_unavailable, last_fired_time, name (and 4 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for CustomConversion objects. Available fields: account_id, aggregation_rule, business, creation_time, custom_event_type, data_sources, default_conversion_value, description, event_source_type, first_fired_time, id, is_archived, is_unavailable, last_fired_time, name (and 4 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -96,8 +97,8 @@ func GetAdStudyObjectiveTools() []mcp.Tool {
 	// Available fields for OfflineConversionDataSet: automatic_matching_fields, business, can_proxy, config, creation_time, creator, data_use_setting, description, duplicate_entries, enable_auto_assign_to_accounts, enable_automatic_matching, event_stats, event_time_max, event_time_min, first_party_cookie_status, id, is_consolidated_container, is_created_by_business, is_crm, is_mta_use, is_restricted_use, is_unavailable, last_fired_time, last_upload_app, last_upload_app_changed_time, match_rate_approx, matched_entries, name, owner_ad_account, owner_business, usage, valid_entries
 	adstudyobjective_get_offline_conversion_data_setsTool := mcp.NewTool("adstudyobjective_get_offline_conversion_data_sets",
 		mcp.WithDescription("GET offline_conversion_data_sets for AdStudyObjective"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for OfflineConversionDataSet objects. Available fields: automatic_matching_fields, business, can_proxy, config, creation_time, creator, data_use_setting, description, duplicate_entries, enable_auto_assign_to_accounts, enable_automatic_matching, event_stats, event_time_max, event_time_min, first_party_cookie_status (and 17 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for OfflineConversionDataSet objects. Available fields: automatic_matching_fields, business, can_proxy, config, creation_time, creator, data_use_setting, description, duplicate_entries, enable_auto_assign_to_accounts, enable_automatic_matching, event_stats, event_time_max, event_time_min, first_party_cookie_status (and 17 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -115,8 +116,8 @@ func GetAdStudyObjectiveTools() []mcp.Tool {
 	// Available fields for Business: block_offline_analytics, collaborative_ads_managed_partner_business_info, collaborative_ads_managed_partner_eligibility, collaborative_ads_partner_premium_options, created_by, created_time, extended_updated_time, id, is_hidden, link, name, payment_account_id, primary_page, profile_picture_uri, timezone_id, two_factor_type, updated_by, updated_time, user_access_expire_time, verification_status, vertical, vertical_id
 	adstudyobjective_get_partner_private_studiesTool := mcp.NewTool("adstudyobjective_get_partner_private_studies",
 		mcp.WithDescription("GET partner_private_studies for AdStudyObjective"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for Business objects. Available fields: block_offline_analytics, collaborative_ads_managed_partner_business_info, collaborative_ads_managed_partner_eligibility, collaborative_ads_partner_premium_options, created_by, created_time, extended_updated_time, id, is_hidden, link, name, payment_account_id, primary_page, profile_picture_uri, timezone_id (and 7 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for Business objects. Available fields: block_offline_analytics, collaborative_ads_managed_partner_business_info, collaborative_ads_managed_partner_eligibility, collaborative_ads_partner_premium_options, created_by, created_time, extended_updated_time, id, is_hidden, link, name, payment_account_id, primary_page, profile_picture_uri, timezone_id (and 7 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -134,8 +135,8 @@ func GetAdStudyObjectiveTools() []mcp.Tool {
 	// Available fields for PartnerStudy: additional_info, brand, client_name, emails, id, input_ids, is_export, lift_study, location, match_file_ds, name, partner_defined_id, partner_household_graph_dataset_id, status, study_end_date, study_start_date, study_type, submit_date
 	adstudyobjective_get_partnerstudiesTool := mcp.NewTool("adstudyobjective_get_partnerstudies",
 		mcp.WithDescription("GET partnerstudies for AdStudyObjective"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for PartnerStudy objects. Available fields: additional_info, brand, client_name, emails, id, input_ids, is_export, lift_study, location, match_file_ds, name, partner_defined_id, partner_household_graph_dataset_id, status, study_end_date (and 3 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for PartnerStudy objects. Available fields: additional_info, brand, client_name, emails, id, input_ids, is_export, lift_study, location, match_file_ds, name, partner_defined_id, partner_household_graph_dataset_id, status, study_end_date (and 3 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -151,17 +152,26 @@ func GetAdStudyObjectiveTools() []mcp.Tool {
 
 	// adstudyobjective_get_ tool
 	// Available fields for AdStudyObjective: id, is_primary, last_updated_results, name, results, type
+	// Params object accepts: breakdowns (list<adstudyobjective_breakdowns>), ds (string)
 	adstudyobjective_get_Tool := mcp.NewTool("adstudyobjective_get_",
 		mcp.WithDescription("GET  for AdStudyObjective"),
-		mcp.WithString("breakdowns",
-			mcp.Description("breakdowns parameter for "),
-			mcp.Enum("age", "cell_id", "country", "gender"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"breakdowns": map[string]any{
+					"type":        "array",
+					"description": "breakdowns parameter",
+					"enum":        []string{"age", "cell_id", "country", "gender"},
+					"items":       map[string]any{"type": "string"},
+				},
+				"ds": map[string]any{
+					"type":        "string",
+					"description": "ds parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: breakdowns (array<adstudyobjective_breakdowns>) [age, cell_id, country, gender], ds (string)"),
 		),
-		mcp.WithString("ds",
-			mcp.Description("ds parameter for "),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for AdStudyObjective objects. Available fields: id, is_primary, last_updated_results, name, results, type"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for AdStudyObjective objects. Available fields: id, is_primary, last_updated_results, name, results, type"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -176,38 +186,61 @@ func GetAdStudyObjectiveTools() []mcp.Tool {
 	tools = append(tools, adstudyobjective_get_Tool)
 
 	// adstudyobjective_post_ tool
+	// Params object accepts: adspixels (list<Object>), applications (list<Object>), customconversions (list<Object>), is_primary (bool), name (string), offline_conversion_data_sets (list<Object>), offsite_datasets (list<Object>), product_catalogs (list<Object>), product_sets (list<Object>), type (adstudyobjective_type)
 	adstudyobjective_post_Tool := mcp.NewTool("adstudyobjective_post_",
 		mcp.WithDescription("POST  for AdStudyObjective"),
-		mcp.WithString("adspixels",
-			mcp.Description("adspixels parameter for "),
-		),
-		mcp.WithString("applications",
-			mcp.Description("applications parameter for "),
-		),
-		mcp.WithString("customconversions",
-			mcp.Description("customconversions parameter for "),
-		),
-		mcp.WithBoolean("is_primary",
-			mcp.Description("is_primary parameter for "),
-		),
-		mcp.WithString("name",
-			mcp.Description("name parameter for "),
-		),
-		mcp.WithString("offline_conversion_data_sets",
-			mcp.Description("offline_conversion_data_sets parameter for "),
-		),
-		mcp.WithString("offsite_datasets",
-			mcp.Description("offsite_datasets parameter for "),
-		),
-		mcp.WithString("product_catalogs",
-			mcp.Description("product_catalogs parameter for "),
-		),
-		mcp.WithString("product_sets",
-			mcp.Description("product_sets parameter for "),
-		),
-		mcp.WithString("type",
-			mcp.Description("type parameter for "),
-			mcp.Enum("BRAND", "BRANDLIFT", "CONVERSIONS", "FTL", "MAE", "MAI", "MPC_CONVERSION", "NONSALES", "PARTNER", "SALES", "TELCO"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"adspixels": map[string]any{
+					"type":        "array",
+					"description": "adspixels parameter",
+					"items":       map[string]any{"type": "object"},
+				},
+				"applications": map[string]any{
+					"type":        "array",
+					"description": "applications parameter",
+					"items":       map[string]any{"type": "object"},
+				},
+				"customconversions": map[string]any{
+					"type":        "array",
+					"description": "customconversions parameter",
+					"items":       map[string]any{"type": "object"},
+				},
+				"is_primary": map[string]any{
+					"type":        "boolean",
+					"description": "is_primary parameter",
+				},
+				"name": map[string]any{
+					"type":        "string",
+					"description": "name parameter",
+				},
+				"offline_conversion_data_sets": map[string]any{
+					"type":        "array",
+					"description": "offline_conversion_data_sets parameter",
+					"items":       map[string]any{"type": "object"},
+				},
+				"offsite_datasets": map[string]any{
+					"type":        "array",
+					"description": "offsite_datasets parameter",
+					"items":       map[string]any{"type": "object"},
+				},
+				"product_catalogs": map[string]any{
+					"type":        "array",
+					"description": "product_catalogs parameter",
+					"items":       map[string]any{"type": "object"},
+				},
+				"product_sets": map[string]any{
+					"type":        "array",
+					"description": "product_sets parameter",
+					"items":       map[string]any{"type": "object"},
+				},
+				"type": map[string]any{
+					"type":        "string",
+					"description": "type parameter",
+					"enum":        []string{"BRAND", "BRANDLIFT", "CONVERSIONS", "FTL", "MAE", "MAI", "MPC_CONVERSION", "NONSALES", "PARTNER", "SALES", "TELCO"},
+				},
+			}),
+			mcp.Description("Parameters object containing: adspixels (array<object>), applications (array<object>), customconversions (array<object>), is_primary (boolean), name (string), offline_conversion_data_sets (array<object>), offsite_datasets (array<object>), product_catalogs (array<object>), product_sets (array<object>), type (adstudyobjective_type) [BRAND, BRANDLIFT, CONVERSIONS, FTL, MAE, ...]"),
 		),
 	)
 	tools = append(tools, adstudyobjective_post_Tool)
@@ -232,8 +265,13 @@ func HandleAdstudyobjective_get_adspixels(ctx context.Context, request mcp.CallT
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -281,8 +319,13 @@ func HandleAdstudyobjective_get_applications(ctx context.Context, request mcp.Ca
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -330,8 +373,13 @@ func HandleAdstudyobjective_get_brand_requests(ctx context.Context, request mcp.
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -379,8 +427,13 @@ func HandleAdstudyobjective_get_customconversions(ctx context.Context, request m
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -428,8 +481,13 @@ func HandleAdstudyobjective_get_offline_conversion_data_sets(ctx context.Context
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -477,8 +535,13 @@ func HandleAdstudyobjective_get_partner_private_studies(ctx context.Context, req
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -526,8 +589,13 @@ func HandleAdstudyobjective_get_partnerstudies(ctx context.Context, request mcp.
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -574,20 +642,26 @@ func HandleAdstudyobjective_get_(ctx context.Context, request mcp.CallToolReques
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: breakdowns
-	// array type - using string
-	if val := request.GetString("breakdowns", ""); val != "" {
-		args["breakdowns"] = val
-	}
-
-	// Optional: ds
-	if val := request.GetString("ds", ""); val != "" {
-		args["ds"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -634,61 +708,16 @@ func HandleAdstudyobjective_post_(ctx context.Context, request mcp.CallToolReque
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: adspixels
-	// array type - using string
-	if val := request.GetString("adspixels", ""); val != "" {
-		args["adspixels"] = val
-	}
-
-	// Optional: applications
-	// array type - using string
-	if val := request.GetString("applications", ""); val != "" {
-		args["applications"] = val
-	}
-
-	// Optional: customconversions
-	// array type - using string
-	if val := request.GetString("customconversions", ""); val != "" {
-		args["customconversions"] = val
-	}
-
-	// Optional: is_primary
-	if val := request.GetBool("is_primary", false); val {
-		args["is_primary"] = val
-	}
-
-	// Optional: name
-	if val := request.GetString("name", ""); val != "" {
-		args["name"] = val
-	}
-
-	// Optional: offline_conversion_data_sets
-	// array type - using string
-	if val := request.GetString("offline_conversion_data_sets", ""); val != "" {
-		args["offline_conversion_data_sets"] = val
-	}
-
-	// Optional: offsite_datasets
-	// array type - using string
-	if val := request.GetString("offsite_datasets", ""); val != "" {
-		args["offsite_datasets"] = val
-	}
-
-	// Optional: product_catalogs
-	// array type - using string
-	if val := request.GetString("product_catalogs", ""); val != "" {
-		args["product_catalogs"] = val
-	}
-
-	// Optional: product_sets
-	// array type - using string
-	if val := request.GetString("product_sets", ""); val != "" {
-		args["product_sets"] = val
-	}
-
-	// Optional: type
-	if val := request.GetString("type", ""); val != "" {
-		args["type"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method

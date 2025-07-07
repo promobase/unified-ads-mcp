@@ -32,9 +32,11 @@ type APIEndpoint struct {
 
 // Parameter represents a parameter for an API endpoint
 type Parameter struct {
-	Name     string `json:"name"`
-	Required bool   `json:"required"`
-	Type     string `json:"type"`
+	Name        string   `json:"name"`
+	Required    bool     `json:"required"`
+	Type        string   `json:"type"`
+	Description string   `json:"description,omitempty"`
+	EnumValues  []string `json:"enum_values,omitempty"`
 }
 
 // Field represents a field definition
@@ -68,7 +70,8 @@ type MCPTool struct {
 	Return          string
 	Parameters      []MCPParameter
 	NodeType        string
-	AvailableFields []string // For GET endpoints, the fields that can be requested
+	AvailableFields []string     // For GET endpoints, the fields that can be requested
+	APIParams       []Parameter  // Original API parameters for params object generation
 }
 
 // MCPParameter represents a parameter for an MCP tool
@@ -78,6 +81,7 @@ type MCPParameter struct {
 	Required    bool
 	Description string
 	EnumValues  []string
+	APIParams   []Parameter // For params object, holds the nested parameters
 }
 
 // TypeDefinition represents a Go type definition
@@ -237,31 +241,65 @@ func generateTools(ctx *CodegenContext) {
 				tool.Parameters = append(tool.Parameters, campaignIdParam)
 			}
 
-			// Convert parameters
-			for _, param := range api.Params {
-				mcpParam := MCPParameter{
-					Name:        param.Name,
-					Type:        convertTypeForMCP(param.Type),
-					Required:    param.Required,
-					Description: fmt.Sprintf("%s parameter for %s", param.Name, api.Endpoint),
+			// For endpoints with parameters, create a params object
+			if len(api.Params) > 0 {
+				// Build detailed description of params object
+				paramDescriptions := []string{}
+				requiredParams := []string{}
+				
+				// Enhance API params with descriptions and enum values
+				enhancedParams := make([]Parameter, len(api.Params))
+				for i, param := range api.Params {
+					enhancedParams[i] = param
+					
+					// Build description for display
+					paramDesc := fmt.Sprintf("%s (%s)", param.Name, convertTypeForDisplay(param.Type))
+					
+					// Add enum values if available
+					if enumValues := findEnumValues(ctx, param.Type); len(enumValues) > 0 {
+						enhancedParams[i].EnumValues = enumValues
+						if len(enumValues) <= 5 {
+							paramDesc += fmt.Sprintf(" [%s]", strings.Join(enumValues, ", "))
+						} else {
+							paramDesc += fmt.Sprintf(" [%s, ...]", strings.Join(enumValues[:5], ", "))
+						}
+					}
+					
+					// Set description
+					enhancedParams[i].Description = fmt.Sprintf("%s parameter", param.Name)
+					
+					if param.Required {
+						paramDesc += " [required]"
+						requiredParams = append(requiredParams, param.Name)
+					}
+					paramDescriptions = append(paramDescriptions, paramDesc)
 				}
-
-				// Check if this parameter has enum values
-				if enumValues := findEnumValues(ctx, param.Type); len(enumValues) > 0 {
-					mcpParam.EnumValues = enumValues
+				
+				description := fmt.Sprintf("Parameters object containing: %s", strings.Join(paramDescriptions, ", "))
+				
+				// Create a params object that contains all API-specific parameters
+				paramsParam := MCPParameter{
+					Name:        "params",
+					Type:        "object",
+					Required:    len(requiredParams) > 0, // Required if any param is required
+					Description: description,
+					APIParams:   enhancedParams,
 				}
-
-				tool.Parameters = append(tool.Parameters, mcpParam)
+				tool.Parameters = append(tool.Parameters, paramsParam)
+				
+				
+				// Store the API params for later use in handler generation
+				tool.APIParams = enhancedParams
 			}
 
 			// Add common parameters for GET endpoints
 			if api.Method == "GET" {
-				// Add fields parameter with type-safe enum values
+				// Add fields parameter as an array
 				fieldsParam := MCPParameter{
 					Name:        "fields",
-					Type:        "string", // Comma-separated string of field names
+					Type:        "array",
 					Required:    false,
-					Description: fmt.Sprintf("Comma-separated list of fields to return for %s objects", api.Return),
+					Description: fmt.Sprintf("Array of fields to return for %s objects", api.Return),
 				}
 				
 				// Get available fields from the return type spec
@@ -293,7 +331,7 @@ func generateTools(ctx *CodegenContext) {
 						if len(fieldNames) > 15 {
 							displayFields = fieldNames[:15]
 						}
-						fieldsParam.Description = fmt.Sprintf("Comma-separated list of fields to return for %s objects. Available fields: %s", 
+						fieldsParam.Description = fmt.Sprintf("Array of fields to return for %s objects. Available fields: %s", 
 							targetType, strings.Join(displayFields, ", "))
 						if len(fieldNames) > 15 {
 							fieldsParam.Description += fmt.Sprintf(" (and %d more)", len(fieldNames)-15)
@@ -303,7 +341,7 @@ func generateTools(ctx *CodegenContext) {
 					}
 				} else {
 					// If no fields found, still add the parameter but with a generic description
-					fieldsParam.Description = "Comma-separated list of fields to return"
+					fieldsParam.Description = "Array of fields to return"
 					tool.Parameters = append(tool.Parameters, fieldsParam)
 				}
 
@@ -458,6 +496,82 @@ func findEnumValues(ctx *CodegenContext, paramType string) []string {
 		}
 	}
 	return nil
+}
+
+func convertTypeForDisplay(fbType string) string {
+	// Handle list types
+	if strings.HasPrefix(fbType, "list<") && strings.HasSuffix(fbType, ">") {
+		innerType := fbType[5 : len(fbType)-1]
+		return "array<" + convertTypeForDisplay(innerType) + ">"
+	}
+
+	// Handle basic types
+	switch fbType {
+	case "string":
+		return "string"
+	case "int", "unsigned int":
+		return "integer"
+	case "float":
+		return "number"
+	case "bool":
+		return "boolean"
+	case "datetime":
+		return "datetime"
+	case "Object":
+		return "object"
+	case "map":
+		return "object"
+	default:
+		// Check if it's an enum type
+		if strings.Contains(fbType, "_enum_param") {
+			// Extract the base name for display
+			parts := strings.Split(fbType, "_")
+			if len(parts) > 0 {
+				return "enum"
+			}
+		}
+		// Keep original type for display
+		return fbType
+	}
+}
+
+func convertTypeToJSONSchema(fbType string) string {
+	// Handle list types
+	if strings.HasPrefix(fbType, "list<") && strings.HasSuffix(fbType, ">") {
+		return "array"
+	}
+
+	// Handle basic types
+	switch fbType {
+	case "string":
+		return "string"
+	case "int", "unsigned int":
+		return "integer"
+	case "float":
+		return "number"
+	case "bool":
+		return "boolean"
+	case "datetime":
+		return "string" // datetime represented as string in JSON Schema
+	case "Object", "map":
+		return "object"
+	default:
+		// Check if it's an enum type
+		if strings.Contains(fbType, "_enum_param") {
+			return "string"
+		}
+		// Default to string for unknown types
+		return "string"
+	}
+}
+
+func extractItemType(listType string) string {
+	// Extract inner type from list<Type> format
+	if strings.HasPrefix(listType, "list<") && strings.HasSuffix(listType, ">") {
+		innerType := listType[5 : len(listType)-1]
+		return convertTypeToJSONSchema(innerType)
+	}
+	return "string"
 }
 
 func capitalizeFirst(s string) string {
@@ -970,6 +1084,8 @@ func (c *{{$.NodeName}}Client) {{capitalizeFirst .Name}}(args map[string]interfa
 	}
 	defer file.Close()
 
+	
+	
 	return t.Execute(file, map[string]interface{}{
 		"NodeName":   nodeName,
 		"Tools":      tools,
@@ -988,7 +1104,7 @@ func generateMCPToolsFiles(ctx *CodegenContext, outputDir string) error {
 
 	// Generate tool definition files grouped by node type
 	for nodeName, tools := range toolsByNode {
-		if err := generateNodeToolsFile(toolsDir, nodeName, tools); err != nil {
+		if err := generateNodeToolsFile(toolsDir, nodeName, tools, ctx); err != nil {
 			return fmt.Errorf("failed to generate tools for %s: %w", nodeName, err)
 		}
 	}
@@ -1001,7 +1117,7 @@ func generateMCPToolsFiles(ctx *CodegenContext, outputDir string) error {
 	return nil
 }
 
-func generateNodeToolsFile(toolsDir string, nodeName string, tools []MCPTool) error {
+func generateNodeToolsFile(toolsDir string, nodeName string, tools []MCPTool, ctx *CodegenContext) error {
 	tmpl := `// Code generated by Facebook Business API codegen. DO NOT EDIT.
 
 package tools
@@ -1010,6 +1126,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -1020,18 +1137,36 @@ import (
 func Get{{.NodeName}}Tools() []mcp.Tool {
 	var tools []mcp.Tool
 
-{{range .Tools}}
-	// {{.Name}} tool{{if .AvailableFields}}
-	// Available fields for {{.Return}}: {{range $i, $field := .AvailableFields}}{{if $i}}, {{end}}{{$field}}{{end}}{{end}}
-	{{sanitizeVarName .Name}}Tool := mcp.NewTool("{{.Name}}",
-		mcp.WithDescription("{{.Description}}"),
-{{range .Parameters}}		mcp.With{{paramType .Type}}("{{.Name}}",
-{{if .Required}}			mcp.Required(),
-{{end}}			mcp.Description("{{.Description}}"),
-{{if .EnumValues}}			mcp.Enum({{range $i, $val := .EnumValues}}{{if $i}}, {{end}}"{{$val}}"{{end}}),
+{{range $tool := .Tools}}
+	// {{$tool.Name}} tool{{if $tool.AvailableFields}}
+	// Available fields for {{$tool.Return}}: {{range $i, $field := $tool.AvailableFields}}{{if $i}}, {{end}}{{$field}}{{end}}{{end}}{{if $tool.APIParams}}
+	// Params object accepts: {{range $i, $param := $tool.APIParams}}{{if $i}}, {{end}}{{$param.Name}} ({{$param.Type}}){{end}}{{end}}
+	{{sanitizeVarName $tool.Name}}Tool := mcp.NewTool("{{$tool.Name}}",
+		mcp.WithDescription("{{$tool.Description}}"),
+{{range $param := $tool.Parameters}}{{if eq $param.Name "params"}}{{if gt (len $param.APIParams) 0}}		mcp.WithObject("{{$param.Name}}",
+{{if $param.Required}}			mcp.Required(),
+{{end}}			mcp.Properties(map[string]any{
+{{range $apiParam := $param.APIParams}}				"{{$apiParam.Name}}": map[string]any{
+					"type": "{{convertTypeToJSONSchema $apiParam.Type}}",
+					"description": "{{$apiParam.Description}}",
+{{if $apiParam.Required}}					"required": true,
+{{end}}{{if $apiParam.EnumValues}}					"enum": []string{ {{range $i, $val := $apiParam.EnumValues}}{{if $i}}, {{end}}"{{$val}}"{{end}} },
+{{end}}{{if hasPrefix $apiParam.Type "list<"}}					"items": map[string]any{"type": "{{extractItemType $apiParam.Type}}"},
+{{end}}				},
+{{end}}			}),
+			mcp.Description("{{$param.Description}}"),
+		),
+{{else}}		mcp.WithObject("{{$param.Name}}",
+{{if $param.Required}}			mcp.Required(),
+{{end}}			mcp.Description("{{$param.Description}}"),
+		),
+{{end}}{{else}}		mcp.With{{paramType $param.Type}}("{{$param.Name}}",
+{{if $param.Required}}			mcp.Required(),
+{{end}}			mcp.Description("{{$param.Description}}"),
+{{if $param.EnumValues}}			mcp.Enum({{range $i, $val := $param.EnumValues}}{{if $i}}, {{end}}"{{$val}}"{{end}}),
 {{end}}		),
-{{end}}	)
-	tools = append(tools, {{sanitizeVarName .Name}}Tool)
+{{end}}{{end}}	)
+	tools = append(tools, {{sanitizeVarName $tool.Name}}Tool)
 {{end}}
 
 	return tools
@@ -1039,9 +1174,9 @@ func Get{{.NodeName}}Tools() []mcp.Tool {
 
 // {{.NodeName}} handlers
 
-{{range .Tools}}
-// Handle{{capitalizeFirst .Name}} handles the {{.Name}} tool with context-based auth
-func Handle{{capitalizeFirst .Name}}(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+{{range $tool := .Tools}}
+// Handle{{capitalizeFirst $tool.Name}} handles the {{$tool.Name}} tool with context-based auth
+func Handle{{capitalizeFirst $tool.Name}}(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {
@@ -1054,36 +1189,84 @@ func Handle{{capitalizeFirst .Name}}(ctx context.Context, request mcp.CallToolRe
 	// Build arguments map
 	args := make(map[string]interface{})
 
-{{range .Parameters}}{{if .Required}}	// Required: {{.Name}}
-	{{sanitizeVarName .Name}}, err := request.{{requireMethod .Type}}("{{.Name}}")
+{{range $param := $tool.Parameters}}{{if $param.Required}}	// Required: {{$param.Name}}
+	{{sanitizeVarName $param.Name}}, err := request.{{requireMethod $param.Type}}("{{$param.Name}}")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter {{.Name}}: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter {{$param.Name}}: %v", err)), nil
 	}
-	args["{{.Name}}"] = {{sanitizeVarName .Name}}
-{{else}}	// Optional: {{.Name}}
-{{if eq .Type "string"}}	if val := request.GetString("{{.Name}}", ""); val != "" {
-		args["{{.Name}}"] = val
+	{{if eq $param.Type "object"}}{{if eq $param.Name "params"}}// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte({{sanitizeVarName $param.Name}}), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
-{{else if eq .Type "integer"}}	if val := request.GetInt("{{.Name}}", 0); val != 0 {
-		args["{{.Name}}"] = val
+	for key, value := range paramsObj {
+		args[key] = value
+	}{{else}}// Parse as JSON object
+	var obj map[string]interface{}
+	if err := json.Unmarshal([]byte({{sanitizeVarName $param.Name}}), &obj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid {{$param.Name}} object: %v", err)), nil
 	}
-{{else if eq .Type "number"}}	if val := request.GetFloat("{{.Name}}", 0); val != 0 {
-		args["{{.Name}}"] = val
+	args["{{$param.Name}}"] = obj{{end}}{{else if eq $param.Type "array"}}{{if eq $param.Name "fields"}}// Parse required fields array
+	var fields []string
+	if err := json.Unmarshal([]byte({{sanitizeVarName $param.Name}}), &fields); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid fields array: %v", err)), nil
 	}
-{{else if eq .Type "boolean"}}	if val := request.GetBool("{{.Name}}", false); val {
-		args["{{.Name}}"] = val
+	args["{{$param.Name}}"] = strings.Join(fields, ","){{else}}// Parse as JSON array
+	var arr []interface{}
+	if err := json.Unmarshal([]byte({{sanitizeVarName $param.Name}}), &arr); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid {{$param.Name}} array: %v", err)), nil
 	}
-{{else}}	// {{.Type}} type - using string
-	if val := request.GetString("{{.Name}}", ""); val != "" {
-		args["{{.Name}}"] = val
+	args["{{$param.Name}}"] = arr{{end}}{{else}}args["{{$param.Name}}"] = {{sanitizeVarName $param.Name}}{{end}}
+{{else}}	// Optional: {{$param.Name}}
+{{if eq $param.Type "string"}}	if val := request.GetString("{{$param.Name}}", ""); val != "" {
+		args["{{$param.Name}}"] = val
+	}
+{{else if eq $param.Type "integer"}}	if val := request.GetInt("{{$param.Name}}", 0); val != 0 {
+		args["{{$param.Name}}"] = val
+	}
+{{else if eq $param.Type "number"}}	if val := request.GetFloat("{{$param.Name}}", 0); val != 0 {
+		args["{{$param.Name}}"] = val
+	}
+{{else if eq $param.Type "boolean"}}	if val := request.GetBool("{{$param.Name}}", false); val {
+		args["{{$param.Name}}"] = val
+	}
+{{else if eq $param.Type "array"}}	// Array parameter - expecting JSON string
+	if val := request.GetString("{{$param.Name}}", ""); val != "" {
+		{{if eq $param.Name "fields"}}// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["{{$param.Name}}"] = strings.Join(fields, ",")
+		}{{else}}// Parse as JSON array
+		var arr []interface{}
+		if err := json.Unmarshal([]byte(val), &arr); err == nil {
+			args["{{$param.Name}}"] = arr
+		}{{end}}
+	}
+{{else if eq $param.Type "object"}}	// Object parameter - expecting JSON string
+	if val := request.GetString("{{$param.Name}}", ""); val != "" {
+		{{if eq $param.Name "params"}}// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}{{else}}// Parse as JSON object
+		var obj map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &obj); err == nil {
+			args["{{$param.Name}}"] = obj
+		}{{end}}
+	}
+{{else}}	// {{$param.Type}} type - using string
+	if val := request.GetString("{{$param.Name}}", ""); val != "" {
+		args["{{$param.Name}}"] = val
 	}
 {{end}}{{end}}
 {{end}}
 
 	// Call the client method
-	result, err := client.{{capitalizeFirst .Name}}(args)
+	result, err := client.{{capitalizeFirst $tool.Name}}(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute {{.Name}}: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute {{$tool.Name}}: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -1111,9 +1294,9 @@ func Handle{{capitalizeFirst .Name}}(ctx context.Context, request mcp.CallToolRe
 			case "boolean":
 				return "Boolean"
 			case "array":
-				return "String" // Arrays passed as JSON strings
+				return "Array"
 			case "object":
-				return "String" // Objects passed as JSON strings
+				return "Object"
 			default:
 				return "String"
 			}
@@ -1136,6 +1319,9 @@ func Handle{{capitalizeFirst .Name}}(ctx context.Context, request mcp.CallToolRe
 				return "RequireString"
 			}
 		},
+		"convertTypeToJSONSchema": convertTypeToJSONSchema,
+		"extractItemType": extractItemType,
+		"hasPrefix": strings.HasPrefix,
 		"varName": func(name string) string {
 			return sanitizeVarName(name)
 		},

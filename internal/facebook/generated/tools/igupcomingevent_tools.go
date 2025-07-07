@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -20,8 +21,8 @@ func GetIGUpcomingEventTools() []mcp.Tool {
 	// Available fields for IGUpcomingEvent: end_time, id, notification_subtypes, notification_target_time, start_time, title
 	igupcomingevent_get_Tool := mcp.NewTool("igupcomingevent_get_",
 		mcp.WithDescription("GET  for IGUpcomingEvent"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for IGUpcomingEvent objects. Available fields: end_time, id, notification_subtypes, notification_target_time, start_time, title"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for IGUpcomingEvent objects. Available fields: end_time, id, notification_subtypes, notification_target_time, start_time, title"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -36,26 +37,39 @@ func GetIGUpcomingEventTools() []mcp.Tool {
 	tools = append(tools, igupcomingevent_get_Tool)
 
 	// igupcomingevent_post_ tool
+	// Params object accepts: end_time (datetime), notification_subtypes (list<igupcomingevent_notification_subtypes>), notification_target_time (igupcomingevent_notification_target_time), start_time (datetime), title (string)
 	igupcomingevent_post_Tool := mcp.NewTool("igupcomingevent_post_",
 		mcp.WithDescription("POST  for IGUpcomingEvent"),
-		mcp.WithString("end_time",
-			mcp.Description("end_time parameter for "),
-		),
-		mcp.WithString("notification_subtypes",
-			mcp.Description("notification_subtypes parameter for "),
-			mcp.Enum("AFTER_EVENT_1DAY", "AFTER_EVENT_2DAY", "AFTER_EVENT_3DAY", "AFTER_EVENT_4DAY", "AFTER_EVENT_5DAY", "AFTER_EVENT_6DAY", "AFTER_EVENT_7DAY", "BEFORE_EVENT_15MIN", "BEFORE_EVENT_1DAY", "BEFORE_EVENT_1HOUR", "BEFORE_EVENT_2DAY", "EVENT_START", "RESCHEDULED"),
-		),
-		mcp.WithString("notification_target_time",
-			mcp.Description("notification_target_time parameter for "),
-			mcp.Enum("EVENT_END", "EVENT_START"),
-		),
-		mcp.WithString("start_time",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("start_time parameter for "),
-		),
-		mcp.WithString("title",
-			mcp.Required(),
-			mcp.Description("title parameter for "),
+			mcp.Properties(map[string]any{
+				"end_time": map[string]any{
+					"type":        "string",
+					"description": "end_time parameter",
+				},
+				"notification_subtypes": map[string]any{
+					"type":        "array",
+					"description": "notification_subtypes parameter",
+					"enum":        []string{"AFTER_EVENT_1DAY", "AFTER_EVENT_2DAY", "AFTER_EVENT_3DAY", "AFTER_EVENT_4DAY", "AFTER_EVENT_5DAY", "AFTER_EVENT_6DAY", "AFTER_EVENT_7DAY", "BEFORE_EVENT_15MIN", "BEFORE_EVENT_1DAY", "BEFORE_EVENT_1HOUR", "BEFORE_EVENT_2DAY", "EVENT_START", "RESCHEDULED"},
+					"items":       map[string]any{"type": "string"},
+				},
+				"notification_target_time": map[string]any{
+					"type":        "string",
+					"description": "notification_target_time parameter",
+					"enum":        []string{"EVENT_END", "EVENT_START"},
+				},
+				"start_time": map[string]any{
+					"type":        "string",
+					"description": "start_time parameter",
+					"required":    true,
+				},
+				"title": map[string]any{
+					"type":        "string",
+					"description": "title parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: end_time (datetime), notification_subtypes (array<igupcomingevent_notification_subtypes>) [AFTER_EVENT_1DAY, AFTER_EVENT_2DAY, AFTER_EVENT_3DAY, AFTER_EVENT_4DAY, AFTER_EVENT_5DAY, ...], notification_target_time (igupcomingevent_notification_target_time) [EVENT_END, EVENT_START], start_time (datetime) [required], title (string) [required]"),
 		),
 	)
 	tools = append(tools, igupcomingevent_post_Tool)
@@ -80,8 +94,13 @@ func HandleIgupcomingevent_get_(ctx context.Context, request mcp.CallToolRequest
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -128,35 +147,19 @@ func HandleIgupcomingevent_post_(ctx context.Context, request mcp.CallToolReques
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: end_time
-	if val := request.GetString("end_time", ""); val != "" {
-		args["end_time"] = val
-	}
-
-	// Optional: notification_subtypes
-	// array type - using string
-	if val := request.GetString("notification_subtypes", ""); val != "" {
-		args["notification_subtypes"] = val
-	}
-
-	// Optional: notification_target_time
-	if val := request.GetString("notification_target_time", ""); val != "" {
-		args["notification_target_time"] = val
-	}
-
-	// Required: start_time
-	start_time, err := request.RequireString("start_time")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter start_time: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["start_time"] = start_time
-
-	// Required: title
-	title, err := request.RequireString("title")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter title: %v", err)), nil
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
-	args["title"] = title
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Igupcomingevent_post_(args)

@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -20,8 +21,8 @@ func GetAudioAssetTools() []mcp.Tool {
 	// Available fields for AudioAsset: all_ddex_featured_artists, all_ddex_main_artists, audio_cluster_id, cover_image_source, display_artist, download_hd_url, download_sd_url, duration_in_ms, freeform_genre, grid, id, is_test, original_release_date, owner, parental_warning_type, subtitle, title, title_with_featured_artists, upc
 	audioasset_get_Tool := mcp.NewTool("audioasset_get_",
 		mcp.WithDescription("GET  for AudioAsset"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for AudioAsset objects. Available fields: all_ddex_featured_artists, all_ddex_main_artists, audio_cluster_id, cover_image_source, display_artist, download_hd_url, download_sd_url, duration_in_ms, freeform_genre, grid, id, is_test, original_release_date, owner, parental_warning_type (and 4 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for AudioAsset objects. Available fields: all_ddex_featured_artists, all_ddex_main_artists, audio_cluster_id, cover_image_source, display_artist, download_hd_url, download_sd_url, duration_in_ms, freeform_genre, grid, id, is_test, original_release_date, owner, parental_warning_type (and 4 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -55,8 +56,13 @@ func HandleAudioasset_get_(ctx context.Context, request mcp.CallToolRequest) (*m
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit

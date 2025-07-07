@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -17,19 +18,29 @@ func GetStatusTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// status_post_likes tool
+	// Params object accepts: feedback_source (string), nectar_module (string), notify (bool), tracking (string)
 	status_post_likesTool := mcp.NewTool("status_post_likes",
 		mcp.WithDescription("POST likes for Status"),
-		mcp.WithString("feedback_source",
-			mcp.Description("feedback_source parameter for likes"),
-		),
-		mcp.WithString("nectar_module",
-			mcp.Description("nectar_module parameter for likes"),
-		),
-		mcp.WithBoolean("notify",
-			mcp.Description("notify parameter for likes"),
-		),
-		mcp.WithString("tracking",
-			mcp.Description("tracking parameter for likes"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"feedback_source": map[string]any{
+					"type":        "string",
+					"description": "feedback_source parameter",
+				},
+				"nectar_module": map[string]any{
+					"type":        "string",
+					"description": "nectar_module parameter",
+				},
+				"notify": map[string]any{
+					"type":        "boolean",
+					"description": "notify parameter",
+				},
+				"tracking": map[string]any{
+					"type":        "string",
+					"description": "tracking parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: feedback_source (string), nectar_module (string), notify (boolean), tracking (string)"),
 		),
 	)
 	tools = append(tools, status_post_likesTool)
@@ -38,8 +49,8 @@ func GetStatusTools() []mcp.Tool {
 	// Available fields for Status: event, from, id, message, place, updated_time
 	status_get_Tool := mcp.NewTool("status_get_",
 		mcp.WithDescription("GET  for Status"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for Status objects. Available fields: event, from, id, message, place, updated_time"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for Status objects. Available fields: event, from, id, message, place, updated_time"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -72,24 +83,16 @@ func HandleStatus_post_likes(ctx context.Context, request mcp.CallToolRequest) (
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: feedback_source
-	if val := request.GetString("feedback_source", ""); val != "" {
-		args["feedback_source"] = val
-	}
-
-	// Optional: nectar_module
-	if val := request.GetString("nectar_module", ""); val != "" {
-		args["nectar_module"] = val
-	}
-
-	// Optional: notify
-	if val := request.GetBool("notify", false); val {
-		args["notify"] = val
-	}
-
-	// Optional: tracking
-	if val := request.GetString("tracking", ""); val != "" {
-		args["tracking"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method
@@ -122,8 +125,13 @@ func HandleStatus_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.C
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit

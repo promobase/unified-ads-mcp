@@ -100,16 +100,10 @@ func (c *HomeListingClient) Homelisting_get_override_details(args map[string]int
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["keys"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("keys", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["type"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("type", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -355,88 +349,10 @@ func (c *HomeListingClient) Homelisting_post_(args map[string]interface{}) (inte
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["address"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("address", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["availability"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("availability", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["currency"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("currency", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["description"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("description", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["images"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("images", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["listing_type"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("listing_type", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["name"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("name", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["num_baths"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("num_baths", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["num_beds"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("num_beds", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["num_units"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("num_units", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["price"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("price", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["property_type"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("property_type", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["url"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("url", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["year_built"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("year_built", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 

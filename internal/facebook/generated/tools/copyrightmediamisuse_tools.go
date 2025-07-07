@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -20,8 +21,8 @@ func GetCopyrightMediaMisuseTools() []mcp.Tool {
 	// Available fields for CopyrightMediaMisuse: audio_segments, creation_time, disabled_audio_segments, disabled_video_segments, entire_file_issue, entire_file_issue_reasons, expiration_time, id, media_asset_id, reasons, requested_audio_segments, requested_video_segments, resolution_type, status, update_time, video_copyright, video_segments
 	copyrightmediamisuse_get_Tool := mcp.NewTool("copyrightmediamisuse_get_",
 		mcp.WithDescription("GET  for CopyrightMediaMisuse"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for CopyrightMediaMisuse objects. Available fields: audio_segments, creation_time, disabled_audio_segments, disabled_video_segments, entire_file_issue, entire_file_issue_reasons, expiration_time, id, media_asset_id, reasons, requested_audio_segments, requested_video_segments, resolution_type, status, update_time (and 2 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for CopyrightMediaMisuse objects. Available fields: audio_segments, creation_time, disabled_audio_segments, disabled_video_segments, entire_file_issue, entire_file_issue_reasons, expiration_time, id, media_asset_id, reasons, requested_audio_segments, requested_video_segments, resolution_type, status, update_time (and 2 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -55,8 +56,13 @@ func HandleCopyrightmediamisuse_get_(ctx context.Context, request mcp.CallToolRe
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit

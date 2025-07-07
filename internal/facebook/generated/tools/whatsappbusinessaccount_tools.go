@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -19,8 +20,8 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 	// whatsappbusinessaccount_get_activities tool
 	whatsappbusinessaccount_get_activitiesTool := mcp.NewTool("whatsappbusinessaccount_get_activities",
 		mcp.WithDescription("GET activities for WhatsAppBusinessAccount"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -35,25 +36,41 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 	tools = append(tools, whatsappbusinessaccount_get_activitiesTool)
 
 	// whatsappbusinessaccount_delete_assigned_users tool
+	// Params object accepts: user (int)
 	whatsappbusinessaccount_delete_assigned_usersTool := mcp.NewTool("whatsappbusinessaccount_delete_assigned_users",
 		mcp.WithDescription("DELETE assigned_users for WhatsAppBusinessAccount"),
-		mcp.WithNumber("user",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("user parameter for assigned_users"),
+			mcp.Properties(map[string]any{
+				"user": map[string]any{
+					"type":        "integer",
+					"description": "user parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: user (integer) [required]"),
 		),
 	)
 	tools = append(tools, whatsappbusinessaccount_delete_assigned_usersTool)
 
 	// whatsappbusinessaccount_get_assigned_users tool
 	// Available fields for AssignedUser: business, id, name, user_type
+	// Params object accepts: business (string)
 	whatsappbusinessaccount_get_assigned_usersTool := mcp.NewTool("whatsappbusinessaccount_get_assigned_users",
 		mcp.WithDescription("GET assigned_users for WhatsAppBusinessAccount"),
-		mcp.WithString("business",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("business parameter for assigned_users"),
+			mcp.Properties(map[string]any{
+				"business": map[string]any{
+					"type":        "string",
+					"description": "business parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: business (string) [required]"),
 		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for AssignedUser objects. Available fields: business, id, name, user_type"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for AssignedUser objects. Available fields: business, id, name, user_type"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -68,16 +85,26 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 	tools = append(tools, whatsappbusinessaccount_get_assigned_usersTool)
 
 	// whatsappbusinessaccount_post_assigned_users tool
+	// Params object accepts: tasks (list<whatsappbusinessaccountassigned_users_tasks_enum_param>), user (int)
 	whatsappbusinessaccount_post_assigned_usersTool := mcp.NewTool("whatsappbusinessaccount_post_assigned_users",
 		mcp.WithDescription("POST assigned_users for WhatsAppBusinessAccount"),
-		mcp.WithString("tasks",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("tasks parameter for assigned_users"),
-			mcp.Enum("DEVELOP", "MANAGE", "MANAGE_EXTENSIONS", "MANAGE_PHONE", "MANAGE_PHONE_ASSETS", "MANAGE_TEMPLATES", "MESSAGING", "VIEW_COST", "VIEW_PHONE_ASSETS", "VIEW_TEMPLATES"),
-		),
-		mcp.WithNumber("user",
-			mcp.Required(),
-			mcp.Description("user parameter for assigned_users"),
+			mcp.Properties(map[string]any{
+				"tasks": map[string]any{
+					"type":        "array",
+					"description": "tasks parameter",
+					"required":    true,
+					"enum":        []string{"DEVELOP", "MANAGE", "MANAGE_EXTENSIONS", "MANAGE_PHONE", "MANAGE_PHONE_ASSETS", "MANAGE_TEMPLATES", "MESSAGING", "VIEW_COST", "VIEW_PHONE_ASSETS", "VIEW_TEMPLATES"},
+					"items":       map[string]any{"type": "string"},
+				},
+				"user": map[string]any{
+					"type":        "integer",
+					"description": "user parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: tasks (array<enum>) [DEVELOP, MANAGE, MANAGE_EXTENSIONS, MANAGE_PHONE, MANAGE_PHONE_ASSETS, ...] [required], user (integer) [required]"),
 		),
 	)
 	tools = append(tools, whatsappbusinessaccount_post_assigned_usersTool)
@@ -85,8 +112,8 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 	// whatsappbusinessaccount_get_audiences tool
 	whatsappbusinessaccount_get_audiencesTool := mcp.NewTool("whatsappbusinessaccount_get_audiences",
 		mcp.WithDescription("GET audiences for WhatsAppBusinessAccount"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -101,41 +128,61 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 	tools = append(tools, whatsappbusinessaccount_get_audiencesTool)
 
 	// whatsappbusinessaccount_get_call_analytics tool
+	// Params object accepts: country_codes (list<string>), dimensions (list<whatsappbusinessaccountcall_analytics_dimensions_enum_param>), directions (list<whatsappbusinessaccountcall_analytics_directions_enum_param>), end (unsigned int), granularity (whatsappbusinessaccountcall_analytics_granularity_enum_param), metric_types (list<whatsappbusinessaccountcall_analytics_metric_types_enum_param>), phone_numbers (list<string>), start (unsigned int)
 	whatsappbusinessaccount_get_call_analyticsTool := mcp.NewTool("whatsappbusinessaccount_get_call_analytics",
 		mcp.WithDescription("GET call_analytics for WhatsAppBusinessAccount"),
-		mcp.WithString("country_codes",
-			mcp.Description("country_codes parameter for call_analytics"),
-		),
-		mcp.WithString("dimensions",
-			mcp.Description("dimensions parameter for call_analytics"),
-			mcp.Enum("COUNTRY", "DIRECTION", "PHONE", "TIER", "UNKNOWN"),
-		),
-		mcp.WithString("directions",
-			mcp.Description("directions parameter for call_analytics"),
-			mcp.Enum("BUSINESS_INITIATED", "UNKNOWN", "USER_INITIATED"),
-		),
-		mcp.WithNumber("end",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("end parameter for call_analytics"),
+			mcp.Properties(map[string]any{
+				"country_codes": map[string]any{
+					"type":        "array",
+					"description": "country_codes parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+				"dimensions": map[string]any{
+					"type":        "array",
+					"description": "dimensions parameter",
+					"enum":        []string{"COUNTRY", "DIRECTION", "PHONE", "TIER", "UNKNOWN"},
+					"items":       map[string]any{"type": "string"},
+				},
+				"directions": map[string]any{
+					"type":        "array",
+					"description": "directions parameter",
+					"enum":        []string{"BUSINESS_INITIATED", "UNKNOWN", "USER_INITIATED"},
+					"items":       map[string]any{"type": "string"},
+				},
+				"end": map[string]any{
+					"type":        "integer",
+					"description": "end parameter",
+					"required":    true,
+				},
+				"granularity": map[string]any{
+					"type":        "string",
+					"description": "granularity parameter",
+					"required":    true,
+					"enum":        []string{"DAILY", "HALF_HOUR", "MONTHLY"},
+				},
+				"metric_types": map[string]any{
+					"type":        "array",
+					"description": "metric_types parameter",
+					"enum":        []string{"AVERAGE_DURATION", "COST", "COUNT", "UNKNOWN"},
+					"items":       map[string]any{"type": "string"},
+				},
+				"phone_numbers": map[string]any{
+					"type":        "array",
+					"description": "phone_numbers parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+				"start": map[string]any{
+					"type":        "integer",
+					"description": "start parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: country_codes (array<string>), dimensions (array<enum>) [COUNTRY, DIRECTION, PHONE, TIER, UNKNOWN], directions (array<enum>) [BUSINESS_INITIATED, UNKNOWN, USER_INITIATED], end (integer) [required], granularity (enum) [DAILY, HALF_HOUR, MONTHLY] [required], metric_types (array<enum>) [AVERAGE_DURATION, COST, COUNT, UNKNOWN], phone_numbers (array<string>), start (integer) [required]"),
 		),
-		mcp.WithString("granularity",
-			mcp.Required(),
-			mcp.Description("granularity parameter for call_analytics"),
-			mcp.Enum("DAILY", "HALF_HOUR", "MONTHLY"),
-		),
-		mcp.WithString("metric_types",
-			mcp.Description("metric_types parameter for call_analytics"),
-			mcp.Enum("AVERAGE_DURATION", "COST", "COUNT", "UNKNOWN"),
-		),
-		mcp.WithString("phone_numbers",
-			mcp.Description("phone_numbers parameter for call_analytics"),
-		),
-		mcp.WithNumber("start",
-			mcp.Required(),
-			mcp.Description("start parameter for call_analytics"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -150,49 +197,73 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 	tools = append(tools, whatsappbusinessaccount_get_call_analyticsTool)
 
 	// whatsappbusinessaccount_get_conversation_analytics tool
+	// Params object accepts: conversation_categories (list<whatsappbusinessaccountconversation_analytics_conversation_categories_enum_param>), conversation_directions (list<whatsappbusinessaccountconversation_analytics_conversation_directions_enum_param>), conversation_types (list<whatsappbusinessaccountconversation_analytics_conversation_types_enum_param>), country_codes (list<string>), dimensions (list<whatsappbusinessaccountconversation_analytics_dimensions_enum_param>), end (unsigned int), granularity (whatsappbusinessaccountconversation_analytics_granularity_enum_param), metric_types (list<whatsappbusinessaccountconversation_analytics_metric_types_enum_param>), phone_numbers (list<string>), start (unsigned int)
 	whatsappbusinessaccount_get_conversation_analyticsTool := mcp.NewTool("whatsappbusinessaccount_get_conversation_analytics",
 		mcp.WithDescription("GET conversation_analytics for WhatsAppBusinessAccount"),
-		mcp.WithString("conversation_categories",
-			mcp.Description("conversation_categories parameter for conversation_analytics"),
-			mcp.Enum("AUTHENTICATION", "AUTHENTICATION_INTERNATIONAL", "MARKETING", "MARKETING_LITE", "SERVICE", "UTILITY"),
-		),
-		mcp.WithString("conversation_directions",
-			mcp.Description("conversation_directions parameter for conversation_analytics"),
-			mcp.Enum("BUSINESS_INITIATED", "UNKNOWN", "USER_INITIATED"),
-		),
-		mcp.WithString("conversation_types",
-			mcp.Description("conversation_types parameter for conversation_analytics"),
-			mcp.Enum("FREE_ENTRY_POINT", "FREE_TIER", "REGULAR", "UNKNOWN"),
-		),
-		mcp.WithString("country_codes",
-			mcp.Description("country_codes parameter for conversation_analytics"),
-		),
-		mcp.WithString("dimensions",
-			mcp.Description("dimensions parameter for conversation_analytics"),
-			mcp.Enum("CONVERSATION_CATEGORY", "CONVERSATION_DIRECTION", "CONVERSATION_TYPE", "COUNTRY", "PHONE", "UNKNOWN"),
-		),
-		mcp.WithNumber("end",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("end parameter for conversation_analytics"),
+			mcp.Properties(map[string]any{
+				"conversation_categories": map[string]any{
+					"type":        "array",
+					"description": "conversation_categories parameter",
+					"enum":        []string{"AUTHENTICATION", "AUTHENTICATION_INTERNATIONAL", "MARKETING", "MARKETING_LITE", "SERVICE", "UTILITY"},
+					"items":       map[string]any{"type": "string"},
+				},
+				"conversation_directions": map[string]any{
+					"type":        "array",
+					"description": "conversation_directions parameter",
+					"enum":        []string{"BUSINESS_INITIATED", "UNKNOWN", "USER_INITIATED"},
+					"items":       map[string]any{"type": "string"},
+				},
+				"conversation_types": map[string]any{
+					"type":        "array",
+					"description": "conversation_types parameter",
+					"enum":        []string{"FREE_ENTRY_POINT", "FREE_TIER", "REGULAR", "UNKNOWN"},
+					"items":       map[string]any{"type": "string"},
+				},
+				"country_codes": map[string]any{
+					"type":        "array",
+					"description": "country_codes parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+				"dimensions": map[string]any{
+					"type":        "array",
+					"description": "dimensions parameter",
+					"enum":        []string{"CONVERSATION_CATEGORY", "CONVERSATION_DIRECTION", "CONVERSATION_TYPE", "COUNTRY", "PHONE", "UNKNOWN"},
+					"items":       map[string]any{"type": "string"},
+				},
+				"end": map[string]any{
+					"type":        "integer",
+					"description": "end parameter",
+					"required":    true,
+				},
+				"granularity": map[string]any{
+					"type":        "string",
+					"description": "granularity parameter",
+					"required":    true,
+					"enum":        []string{"DAILY", "HALF_HOUR", "MONTHLY"},
+				},
+				"metric_types": map[string]any{
+					"type":        "array",
+					"description": "metric_types parameter",
+					"enum":        []string{"CONVERSATION", "COST", "UNKNOWN"},
+					"items":       map[string]any{"type": "string"},
+				},
+				"phone_numbers": map[string]any{
+					"type":        "array",
+					"description": "phone_numbers parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+				"start": map[string]any{
+					"type":        "integer",
+					"description": "start parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: conversation_categories (array<enum>) [AUTHENTICATION, AUTHENTICATION_INTERNATIONAL, MARKETING, MARKETING_LITE, SERVICE, ...], conversation_directions (array<enum>) [BUSINESS_INITIATED, UNKNOWN, USER_INITIATED], conversation_types (array<enum>) [FREE_ENTRY_POINT, FREE_TIER, REGULAR, UNKNOWN], country_codes (array<string>), dimensions (array<enum>) [CONVERSATION_CATEGORY, CONVERSATION_DIRECTION, CONVERSATION_TYPE, COUNTRY, PHONE, ...], end (integer) [required], granularity (enum) [DAILY, HALF_HOUR, MONTHLY] [required], metric_types (array<enum>) [CONVERSATION, COST, UNKNOWN], phone_numbers (array<string>), start (integer) [required]"),
 		),
-		mcp.WithString("granularity",
-			mcp.Required(),
-			mcp.Description("granularity parameter for conversation_analytics"),
-			mcp.Enum("DAILY", "HALF_HOUR", "MONTHLY"),
-		),
-		mcp.WithString("metric_types",
-			mcp.Description("metric_types parameter for conversation_analytics"),
-			mcp.Enum("CONVERSATION", "COST", "UNKNOWN"),
-		),
-		mcp.WithString("phone_numbers",
-			mcp.Description("phone_numbers parameter for conversation_analytics"),
-		),
-		mcp.WithNumber("start",
-			mcp.Required(),
-			mcp.Description("start parameter for conversation_analytics"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -210,8 +281,8 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 	// Available fields for Dataset: id, name
 	whatsappbusinessaccount_get_datasetTool := mcp.NewTool("whatsappbusinessaccount_get_dataset",
 		mcp.WithDescription("GET dataset for WhatsAppBusinessAccount"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for Dataset objects. Available fields: id, name"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for Dataset objects. Available fields: id, name"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -226,10 +297,17 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 	tools = append(tools, whatsappbusinessaccount_get_datasetTool)
 
 	// whatsappbusinessaccount_post_dataset tool
+	// Params object accepts: dataset_name (string)
 	whatsappbusinessaccount_post_datasetTool := mcp.NewTool("whatsappbusinessaccount_post_dataset",
 		mcp.WithDescription("POST dataset for WhatsAppBusinessAccount"),
-		mcp.WithString("dataset_name",
-			mcp.Description("dataset_name parameter for dataset"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"dataset_name": map[string]any{
+					"type":        "string",
+					"description": "dataset_name parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: dataset_name (string)"),
 		),
 	)
 	tools = append(tools, whatsappbusinessaccount_post_datasetTool)
@@ -237,8 +315,8 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 	// whatsappbusinessaccount_get_flows tool
 	whatsappbusinessaccount_get_flowsTool := mcp.NewTool("whatsappbusinessaccount_get_flows",
 		mcp.WithDescription("GET flows for WhatsAppBusinessAccount"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -253,41 +331,64 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 	tools = append(tools, whatsappbusinessaccount_get_flowsTool)
 
 	// whatsappbusinessaccount_post_flows tool
+	// Params object accepts: categories (list<whatsappbusinessaccountflows_categories_enum_param>), clone_flow_id (string), endpoint_uri (string), flow_json (string), name (string), publish (bool)
 	whatsappbusinessaccount_post_flowsTool := mcp.NewTool("whatsappbusinessaccount_post_flows",
 		mcp.WithDescription("POST flows for WhatsAppBusinessAccount"),
-		mcp.WithString("categories",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("categories parameter for flows"),
-			mcp.Enum("APPOINTMENT_BOOKING", "CONTACT_US", "CUSTOMER_SUPPORT", "LEAD_GENERATION", "OTHER", "SHOPPING", "SIGN_IN", "SIGN_UP", "SURVEY"),
-		),
-		mcp.WithString("clone_flow_id",
-			mcp.Description("clone_flow_id parameter for flows"),
-		),
-		mcp.WithString("endpoint_uri",
-			mcp.Description("endpoint_uri parameter for flows"),
-		),
-		mcp.WithString("flow_json",
-			mcp.Description("flow_json parameter for flows"),
-		),
-		mcp.WithString("name",
-			mcp.Required(),
-			mcp.Description("name parameter for flows"),
-		),
-		mcp.WithBoolean("publish",
-			mcp.Description("publish parameter for flows"),
+			mcp.Properties(map[string]any{
+				"categories": map[string]any{
+					"type":        "array",
+					"description": "categories parameter",
+					"required":    true,
+					"enum":        []string{"APPOINTMENT_BOOKING", "CONTACT_US", "CUSTOMER_SUPPORT", "LEAD_GENERATION", "OTHER", "SHOPPING", "SIGN_IN", "SIGN_UP", "SURVEY"},
+					"items":       map[string]any{"type": "string"},
+				},
+				"clone_flow_id": map[string]any{
+					"type":        "string",
+					"description": "clone_flow_id parameter",
+				},
+				"endpoint_uri": map[string]any{
+					"type":        "string",
+					"description": "endpoint_uri parameter",
+				},
+				"flow_json": map[string]any{
+					"type":        "string",
+					"description": "flow_json parameter",
+				},
+				"name": map[string]any{
+					"type":        "string",
+					"description": "name parameter",
+					"required":    true,
+				},
+				"publish": map[string]any{
+					"type":        "boolean",
+					"description": "publish parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: categories (array<enum>) [APPOINTMENT_BOOKING, CONTACT_US, CUSTOMER_SUPPORT, LEAD_GENERATION, OTHER, ...] [required], clone_flow_id (string), endpoint_uri (string), flow_json (string), name (string) [required], publish (boolean)"),
 		),
 	)
 	tools = append(tools, whatsappbusinessaccount_post_flowsTool)
 
 	// whatsappbusinessaccount_post_generate_payment_configuration_oauth_link tool
+	// Params object accepts: configuration_name (string), redirect_url (string)
 	whatsappbusinessaccount_post_generate_payment_configuration_oauth_linkTool := mcp.NewTool("whatsappbusinessaccount_post_generate_payment_configuration_oauth_link",
 		mcp.WithDescription("POST generate_payment_configuration_oauth_link for WhatsAppBusinessAccount"),
-		mcp.WithString("configuration_name",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("configuration_name parameter for generate_payment_configuration_oauth_link"),
-		),
-		mcp.WithString("redirect_url",
-			mcp.Description("redirect_url parameter for generate_payment_configuration_oauth_link"),
+			mcp.Properties(map[string]any{
+				"configuration_name": map[string]any{
+					"type":        "string",
+					"description": "configuration_name parameter",
+					"required":    true,
+				},
+				"redirect_url": map[string]any{
+					"type":        "string",
+					"description": "redirect_url parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: configuration_name (string) [required], redirect_url (string)"),
 		),
 	)
 	tools = append(tools, whatsappbusinessaccount_post_generate_payment_configuration_oauth_linkTool)
@@ -295,8 +396,8 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 	// whatsappbusinessaccount_get_message_campaigns tool
 	whatsappbusinessaccount_get_message_campaignsTool := mcp.NewTool("whatsappbusinessaccount_get_message_campaigns",
 		mcp.WithDescription("GET message_campaigns for WhatsAppBusinessAccount"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -311,28 +412,42 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 	tools = append(tools, whatsappbusinessaccount_get_message_campaignsTool)
 
 	// whatsappbusinessaccount_get_message_template_previews tool
+	// Params object accepts: add_security_recommendation (bool), button_types (list<whatsappbusinessaccountmessage_template_previews_button_types_enum_param>), category (whatsappbusinessaccountmessage_template_previews_category_enum_param), code_expiration_minutes (unsigned int), languages (list<string>)
 	whatsappbusinessaccount_get_message_template_previewsTool := mcp.NewTool("whatsappbusinessaccount_get_message_template_previews",
 		mcp.WithDescription("GET message_template_previews for WhatsAppBusinessAccount"),
-		mcp.WithBoolean("add_security_recommendation",
-			mcp.Description("add_security_recommendation parameter for message_template_previews"),
-		),
-		mcp.WithString("button_types",
-			mcp.Description("button_types parameter for message_template_previews"),
-			mcp.Enum("OTP"),
-		),
-		mcp.WithString("category",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("category parameter for message_template_previews"),
-			mcp.Enum("AUTHENTICATION"),
+			mcp.Properties(map[string]any{
+				"add_security_recommendation": map[string]any{
+					"type":        "boolean",
+					"description": "add_security_recommendation parameter",
+				},
+				"button_types": map[string]any{
+					"type":        "array",
+					"description": "button_types parameter",
+					"enum":        []string{"OTP"},
+					"items":       map[string]any{"type": "string"},
+				},
+				"category": map[string]any{
+					"type":        "string",
+					"description": "category parameter",
+					"required":    true,
+					"enum":        []string{"AUTHENTICATION"},
+				},
+				"code_expiration_minutes": map[string]any{
+					"type":        "integer",
+					"description": "code_expiration_minutes parameter",
+				},
+				"languages": map[string]any{
+					"type":        "array",
+					"description": "languages parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+			}),
+			mcp.Description("Parameters object containing: add_security_recommendation (boolean), button_types (array<enum>) [OTP], category (enum) [AUTHENTICATION] [required], code_expiration_minutes (integer), languages (array<string>)"),
 		),
-		mcp.WithNumber("code_expiration_minutes",
-			mcp.Description("code_expiration_minutes parameter for message_template_previews"),
-		),
-		mcp.WithString("languages",
-			mcp.Description("languages parameter for message_template_previews"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -347,47 +462,73 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 	tools = append(tools, whatsappbusinessaccount_get_message_template_previewsTool)
 
 	// whatsappbusinessaccount_delete_message_templates tool
+	// Params object accepts: hsm_id (string), name (string)
 	whatsappbusinessaccount_delete_message_templatesTool := mcp.NewTool("whatsappbusinessaccount_delete_message_templates",
 		mcp.WithDescription("DELETE message_templates for WhatsAppBusinessAccount"),
-		mcp.WithString("hsm_id",
-			mcp.Description("hsm_id parameter for message_templates"),
-		),
-		mcp.WithString("name",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("name parameter for message_templates"),
+			mcp.Properties(map[string]any{
+				"hsm_id": map[string]any{
+					"type":        "string",
+					"description": "hsm_id parameter",
+				},
+				"name": map[string]any{
+					"type":        "string",
+					"description": "name parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: hsm_id (string), name (string) [required]"),
 		),
 	)
 	tools = append(tools, whatsappbusinessaccount_delete_message_templatesTool)
 
 	// whatsappbusinessaccount_get_message_templates tool
+	// Params object accepts: category (list<whatsappbusinessaccountmessage_templates_category_enum_param>), content (string), language (list<string>), name (string), name_or_content (string), quality_score (list<whatsappbusinessaccountmessage_templates_quality_score_enum_param>), status (list<whatsappbusinessaccountmessage_templates_status_enum_param>)
 	whatsappbusinessaccount_get_message_templatesTool := mcp.NewTool("whatsappbusinessaccount_get_message_templates",
 		mcp.WithDescription("GET message_templates for WhatsAppBusinessAccount"),
-		mcp.WithString("category",
-			mcp.Description("category parameter for message_templates"),
-			mcp.Enum("AUTHENTICATION", "MARKETING", "UTILITY"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"category": map[string]any{
+					"type":        "array",
+					"description": "category parameter",
+					"enum":        []string{"AUTHENTICATION", "MARKETING", "UTILITY"},
+					"items":       map[string]any{"type": "string"},
+				},
+				"content": map[string]any{
+					"type":        "string",
+					"description": "content parameter",
+				},
+				"language": map[string]any{
+					"type":        "array",
+					"description": "language parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+				"name": map[string]any{
+					"type":        "string",
+					"description": "name parameter",
+				},
+				"name_or_content": map[string]any{
+					"type":        "string",
+					"description": "name_or_content parameter",
+				},
+				"quality_score": map[string]any{
+					"type":        "array",
+					"description": "quality_score parameter",
+					"enum":        []string{"GREEN", "RED", "UNKNOWN", "YELLOW"},
+					"items":       map[string]any{"type": "string"},
+				},
+				"status": map[string]any{
+					"type":        "array",
+					"description": "status parameter",
+					"enum":        []string{"APPROVED", "ARCHIVED", "DELETED", "DISABLED", "IN_APPEAL", "LIMIT_EXCEEDED", "PAUSED", "PENDING", "PENDING_DELETION", "REJECTED"},
+					"items":       map[string]any{"type": "string"},
+				},
+			}),
+			mcp.Description("Parameters object containing: category (array<enum>) [AUTHENTICATION, MARKETING, UTILITY], content (string), language (array<string>), name (string), name_or_content (string), quality_score (array<enum>) [GREEN, RED, UNKNOWN, YELLOW], status (array<enum>) [APPROVED, ARCHIVED, DELETED, DISABLED, IN_APPEAL, ...]"),
 		),
-		mcp.WithString("content",
-			mcp.Description("content parameter for message_templates"),
-		),
-		mcp.WithString("language",
-			mcp.Description("language parameter for message_templates"),
-		),
-		mcp.WithString("name",
-			mcp.Description("name parameter for message_templates"),
-		),
-		mcp.WithString("name_or_content",
-			mcp.Description("name_or_content parameter for message_templates"),
-		),
-		mcp.WithString("quality_score",
-			mcp.Description("quality_score parameter for message_templates"),
-			mcp.Enum("GREEN", "RED", "UNKNOWN", "YELLOW"),
-		),
-		mcp.WithString("status",
-			mcp.Description("status parameter for message_templates"),
-			mcp.Enum("APPROVED", "ARCHIVED", "DELETED", "DISABLED", "IN_APPEAL", "LIMIT_EXCEEDED", "PAUSED", "PENDING", "PENDING_DELETION", "REJECTED"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -402,105 +543,163 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 	tools = append(tools, whatsappbusinessaccount_get_message_templatesTool)
 
 	// whatsappbusinessaccount_post_message_templates tool
+	// Params object accepts: allow_category_change (bool), category (whatsappbusinessaccountmessage_templates_category_enum_param), components (list<map>), cta_url_link_tracking_opted_out (bool), degrees_of_freedom_spec (map), display_format (whatsappbusinessaccountmessage_templates_display_format_enum_param), language (string), library_template_body_inputs (map), library_template_button_inputs (list<map>), library_template_name (string), message_send_ttl_seconds (unsigned int), name (string), parameter_format (whatsappbusinessaccountmessage_templates_parameter_format_enum_param), sub_category (whatsappbusinessaccountmessage_templates_sub_category_enum_param)
 	whatsappbusinessaccount_post_message_templatesTool := mcp.NewTool("whatsappbusinessaccount_post_message_templates",
 		mcp.WithDescription("POST message_templates for WhatsAppBusinessAccount"),
-		mcp.WithBoolean("allow_category_change",
-			mcp.Description("allow_category_change parameter for message_templates"),
-		),
-		mcp.WithString("category",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("category parameter for message_templates"),
-			mcp.Enum("AUTHENTICATION", "MARKETING", "UTILITY"),
-		),
-		mcp.WithString("components",
-			mcp.Description("components parameter for message_templates"),
-		),
-		mcp.WithBoolean("cta_url_link_tracking_opted_out",
-			mcp.Description("cta_url_link_tracking_opted_out parameter for message_templates"),
-		),
-		mcp.WithString("degrees_of_freedom_spec",
-			mcp.Description("degrees_of_freedom_spec parameter for message_templates"),
-		),
-		mcp.WithString("display_format",
-			mcp.Description("display_format parameter for message_templates"),
-			mcp.Enum("ORDER_DETAILS"),
-		),
-		mcp.WithString("language",
-			mcp.Required(),
-			mcp.Description("language parameter for message_templates"),
-		),
-		mcp.WithString("library_template_body_inputs",
-			mcp.Description("library_template_body_inputs parameter for message_templates"),
-		),
-		mcp.WithString("library_template_button_inputs",
-			mcp.Description("library_template_button_inputs parameter for message_templates"),
-		),
-		mcp.WithString("library_template_name",
-			mcp.Description("library_template_name parameter for message_templates"),
-		),
-		mcp.WithNumber("message_send_ttl_seconds",
-			mcp.Description("message_send_ttl_seconds parameter for message_templates"),
-		),
-		mcp.WithString("name",
-			mcp.Required(),
-			mcp.Description("name parameter for message_templates"),
-		),
-		mcp.WithString("parameter_format",
-			mcp.Description("parameter_format parameter for message_templates"),
-			mcp.Enum("NAMED", "POSITIONAL"),
-		),
-		mcp.WithString("sub_category",
-			mcp.Description("sub_category parameter for message_templates"),
-			mcp.Enum("ORDER_DETAILS", "ORDER_STATUS"),
+			mcp.Properties(map[string]any{
+				"allow_category_change": map[string]any{
+					"type":        "boolean",
+					"description": "allow_category_change parameter",
+				},
+				"category": map[string]any{
+					"type":        "string",
+					"description": "category parameter",
+					"required":    true,
+					"enum":        []string{"AUTHENTICATION", "MARKETING", "UTILITY"},
+				},
+				"components": map[string]any{
+					"type":        "array",
+					"description": "components parameter",
+					"items":       map[string]any{"type": "object"},
+				},
+				"cta_url_link_tracking_opted_out": map[string]any{
+					"type":        "boolean",
+					"description": "cta_url_link_tracking_opted_out parameter",
+				},
+				"degrees_of_freedom_spec": map[string]any{
+					"type":        "object",
+					"description": "degrees_of_freedom_spec parameter",
+				},
+				"display_format": map[string]any{
+					"type":        "string",
+					"description": "display_format parameter",
+					"enum":        []string{"ORDER_DETAILS"},
+				},
+				"language": map[string]any{
+					"type":        "string",
+					"description": "language parameter",
+					"required":    true,
+				},
+				"library_template_body_inputs": map[string]any{
+					"type":        "object",
+					"description": "library_template_body_inputs parameter",
+				},
+				"library_template_button_inputs": map[string]any{
+					"type":        "array",
+					"description": "library_template_button_inputs parameter",
+					"items":       map[string]any{"type": "object"},
+				},
+				"library_template_name": map[string]any{
+					"type":        "string",
+					"description": "library_template_name parameter",
+				},
+				"message_send_ttl_seconds": map[string]any{
+					"type":        "integer",
+					"description": "message_send_ttl_seconds parameter",
+				},
+				"name": map[string]any{
+					"type":        "string",
+					"description": "name parameter",
+					"required":    true,
+				},
+				"parameter_format": map[string]any{
+					"type":        "string",
+					"description": "parameter_format parameter",
+					"enum":        []string{"NAMED", "POSITIONAL"},
+				},
+				"sub_category": map[string]any{
+					"type":        "string",
+					"description": "sub_category parameter",
+					"enum":        []string{"ORDER_DETAILS", "ORDER_STATUS"},
+				},
+			}),
+			mcp.Description("Parameters object containing: allow_category_change (boolean), category (enum) [AUTHENTICATION, MARKETING, UTILITY] [required], components (array<object>), cta_url_link_tracking_opted_out (boolean), degrees_of_freedom_spec (object), display_format (enum) [ORDER_DETAILS], language (string) [required], library_template_body_inputs (object), library_template_button_inputs (array<object>), library_template_name (string), message_send_ttl_seconds (integer), name (string) [required], parameter_format (enum) [NAMED, POSITIONAL], sub_category (enum) [ORDER_DETAILS, ORDER_STATUS]"),
 		),
 	)
 	tools = append(tools, whatsappbusinessaccount_post_message_templatesTool)
 
 	// whatsappbusinessaccount_post_migrate_flows tool
+	// Params object accepts: source_flow_names (list<string>), source_waba_id (string)
 	whatsappbusinessaccount_post_migrate_flowsTool := mcp.NewTool("whatsappbusinessaccount_post_migrate_flows",
 		mcp.WithDescription("POST migrate_flows for WhatsAppBusinessAccount"),
-		mcp.WithString("source_flow_names",
-			mcp.Description("source_flow_names parameter for migrate_flows"),
-		),
-		mcp.WithString("source_waba_id",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("source_waba_id parameter for migrate_flows"),
+			mcp.Properties(map[string]any{
+				"source_flow_names": map[string]any{
+					"type":        "array",
+					"description": "source_flow_names parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+				"source_waba_id": map[string]any{
+					"type":        "string",
+					"description": "source_waba_id parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: source_flow_names (array<string>), source_waba_id (string) [required]"),
 		),
 	)
 	tools = append(tools, whatsappbusinessaccount_post_migrate_flowsTool)
 
 	// whatsappbusinessaccount_post_migrate_message_templates tool
+	// Params object accepts: page_number (unsigned int), source_waba_id (string)
 	whatsappbusinessaccount_post_migrate_message_templatesTool := mcp.NewTool("whatsappbusinessaccount_post_migrate_message_templates",
 		mcp.WithDescription("POST migrate_message_templates for WhatsAppBusinessAccount"),
-		mcp.WithNumber("page_number",
-			mcp.Description("page_number parameter for migrate_message_templates"),
-		),
-		mcp.WithString("source_waba_id",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("source_waba_id parameter for migrate_message_templates"),
+			mcp.Properties(map[string]any{
+				"page_number": map[string]any{
+					"type":        "integer",
+					"description": "page_number parameter",
+				},
+				"source_waba_id": map[string]any{
+					"type":        "string",
+					"description": "source_waba_id parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: page_number (integer), source_waba_id (string) [required]"),
 		),
 	)
 	tools = append(tools, whatsappbusinessaccount_post_migrate_message_templatesTool)
 
 	// whatsappbusinessaccount_delete_payment_configuration tool
+	// Params object accepts: configuration_name (string)
 	whatsappbusinessaccount_delete_payment_configurationTool := mcp.NewTool("whatsappbusinessaccount_delete_payment_configuration",
 		mcp.WithDescription("DELETE payment_configuration for WhatsAppBusinessAccount"),
-		mcp.WithString("configuration_name",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("configuration_name parameter for payment_configuration"),
+			mcp.Properties(map[string]any{
+				"configuration_name": map[string]any{
+					"type":        "string",
+					"description": "configuration_name parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: configuration_name (string) [required]"),
 		),
 	)
 	tools = append(tools, whatsappbusinessaccount_delete_payment_configurationTool)
 
 	// whatsappbusinessaccount_get_payment_configuration tool
+	// Params object accepts: configuration_name (string)
 	whatsappbusinessaccount_get_payment_configurationTool := mcp.NewTool("whatsappbusinessaccount_get_payment_configuration",
 		mcp.WithDescription("GET payment_configuration for WhatsAppBusinessAccount"),
-		mcp.WithString("configuration_name",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("configuration_name parameter for payment_configuration"),
+			mcp.Properties(map[string]any{
+				"configuration_name": map[string]any{
+					"type":        "string",
+					"description": "configuration_name parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: configuration_name (string) [required]"),
 		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -515,30 +714,44 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 	tools = append(tools, whatsappbusinessaccount_get_payment_configurationTool)
 
 	// whatsappbusinessaccount_post_payment_configuration tool
+	// Params object accepts: configuration_name (string), data_endpoint_url (string), merchant_category_code (string), merchant_vpa (string), provider_name (whatsappbusinessaccountpayment_configuration_provider_name_enum_param), purpose_code (string), redirect_url (string)
 	whatsappbusinessaccount_post_payment_configurationTool := mcp.NewTool("whatsappbusinessaccount_post_payment_configuration",
 		mcp.WithDescription("POST payment_configuration for WhatsAppBusinessAccount"),
-		mcp.WithString("configuration_name",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("configuration_name parameter for payment_configuration"),
-		),
-		mcp.WithString("data_endpoint_url",
-			mcp.Description("data_endpoint_url parameter for payment_configuration"),
-		),
-		mcp.WithString("merchant_category_code",
-			mcp.Description("merchant_category_code parameter for payment_configuration"),
-		),
-		mcp.WithString("merchant_vpa",
-			mcp.Description("merchant_vpa parameter for payment_configuration"),
-		),
-		mcp.WithString("provider_name",
-			mcp.Description("provider_name parameter for payment_configuration"),
-			mcp.Enum("BILLDESK", "PAYU", "RAZORPAY", "UPI_VPA", "ZAAKPAY"),
-		),
-		mcp.WithString("purpose_code",
-			mcp.Description("purpose_code parameter for payment_configuration"),
-		),
-		mcp.WithString("redirect_url",
-			mcp.Description("redirect_url parameter for payment_configuration"),
+			mcp.Properties(map[string]any{
+				"configuration_name": map[string]any{
+					"type":        "string",
+					"description": "configuration_name parameter",
+					"required":    true,
+				},
+				"data_endpoint_url": map[string]any{
+					"type":        "string",
+					"description": "data_endpoint_url parameter",
+				},
+				"merchant_category_code": map[string]any{
+					"type":        "string",
+					"description": "merchant_category_code parameter",
+				},
+				"merchant_vpa": map[string]any{
+					"type":        "string",
+					"description": "merchant_vpa parameter",
+				},
+				"provider_name": map[string]any{
+					"type":        "string",
+					"description": "provider_name parameter",
+					"enum":        []string{"BILLDESK", "PAYU", "RAZORPAY", "UPI_VPA", "ZAAKPAY"},
+				},
+				"purpose_code": map[string]any{
+					"type":        "string",
+					"description": "purpose_code parameter",
+				},
+				"redirect_url": map[string]any{
+					"type":        "string",
+					"description": "redirect_url parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: configuration_name (string) [required], data_endpoint_url (string), merchant_category_code (string), merchant_vpa (string), provider_name (enum) [BILLDESK, PAYU, RAZORPAY, UPI_VPA, ZAAKPAY], purpose_code (string), redirect_url (string)"),
 		),
 	)
 	tools = append(tools, whatsappbusinessaccount_post_payment_configurationTool)
@@ -546,8 +759,8 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 	// whatsappbusinessaccount_get_payment_configurations tool
 	whatsappbusinessaccount_get_payment_configurationsTool := mcp.NewTool("whatsappbusinessaccount_get_payment_configurations",
 		mcp.WithDescription("GET payment_configurations for WhatsAppBusinessAccount"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -564,8 +777,8 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 	// whatsappbusinessaccount_get_phone_numbers tool
 	whatsappbusinessaccount_get_phone_numbersTool := mcp.NewTool("whatsappbusinessaccount_get_phone_numbers",
 		mcp.WithDescription("GET phone_numbers for WhatsAppBusinessAccount"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -580,69 +793,104 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 	tools = append(tools, whatsappbusinessaccount_get_phone_numbersTool)
 
 	// whatsappbusinessaccount_post_phone_numbers tool
+	// Params object accepts: cc (string), migrate_phone_number (bool), phone_number (string), preverified_id (string), verified_name (string)
 	whatsappbusinessaccount_post_phone_numbersTool := mcp.NewTool("whatsappbusinessaccount_post_phone_numbers",
 		mcp.WithDescription("POST phone_numbers for WhatsAppBusinessAccount"),
-		mcp.WithString("cc",
-			mcp.Description("cc parameter for phone_numbers"),
-		),
-		mcp.WithBoolean("migrate_phone_number",
-			mcp.Description("migrate_phone_number parameter for phone_numbers"),
-		),
-		mcp.WithString("phone_number",
-			mcp.Description("phone_number parameter for phone_numbers"),
-		),
-		mcp.WithString("preverified_id",
-			mcp.Description("preverified_id parameter for phone_numbers"),
-		),
-		mcp.WithString("verified_name",
-			mcp.Description("verified_name parameter for phone_numbers"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"cc": map[string]any{
+					"type":        "string",
+					"description": "cc parameter",
+				},
+				"migrate_phone_number": map[string]any{
+					"type":        "boolean",
+					"description": "migrate_phone_number parameter",
+				},
+				"phone_number": map[string]any{
+					"type":        "string",
+					"description": "phone_number parameter",
+				},
+				"preverified_id": map[string]any{
+					"type":        "string",
+					"description": "preverified_id parameter",
+				},
+				"verified_name": map[string]any{
+					"type":        "string",
+					"description": "verified_name parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: cc (string), migrate_phone_number (boolean), phone_number (string), preverified_id (string), verified_name (string)"),
 		),
 	)
 	tools = append(tools, whatsappbusinessaccount_post_phone_numbersTool)
 
 	// whatsappbusinessaccount_get_pricing_analytics tool
+	// Params object accepts: country_codes (list<string>), dimensions (list<whatsappbusinessaccountpricing_analytics_dimensions_enum_param>), end (unsigned int), granularity (whatsappbusinessaccountpricing_analytics_granularity_enum_param), metric_types (list<whatsappbusinessaccountpricing_analytics_metric_types_enum_param>), phone_numbers (list<string>), pricing_categories (list<whatsappbusinessaccountpricing_analytics_pricing_categories_enum_param>), pricing_types (list<whatsappbusinessaccountpricing_analytics_pricing_types_enum_param>), start (unsigned int), tiers (list<string>)
 	whatsappbusinessaccount_get_pricing_analyticsTool := mcp.NewTool("whatsappbusinessaccount_get_pricing_analytics",
 		mcp.WithDescription("GET pricing_analytics for WhatsAppBusinessAccount"),
-		mcp.WithString("country_codes",
-			mcp.Description("country_codes parameter for pricing_analytics"),
-		),
-		mcp.WithString("dimensions",
-			mcp.Description("dimensions parameter for pricing_analytics"),
-			mcp.Enum("COUNTRY", "PHONE", "PRICING_CATEGORY", "PRICING_TYPE", "TIER"),
-		),
-		mcp.WithNumber("end",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("end parameter for pricing_analytics"),
+			mcp.Properties(map[string]any{
+				"country_codes": map[string]any{
+					"type":        "array",
+					"description": "country_codes parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+				"dimensions": map[string]any{
+					"type":        "array",
+					"description": "dimensions parameter",
+					"enum":        []string{"COUNTRY", "PHONE", "PRICING_CATEGORY", "PRICING_TYPE", "TIER"},
+					"items":       map[string]any{"type": "string"},
+				},
+				"end": map[string]any{
+					"type":        "integer",
+					"description": "end parameter",
+					"required":    true,
+				},
+				"granularity": map[string]any{
+					"type":        "string",
+					"description": "granularity parameter",
+					"required":    true,
+					"enum":        []string{"DAILY", "HALF_HOUR", "MONTHLY"},
+				},
+				"metric_types": map[string]any{
+					"type":        "array",
+					"description": "metric_types parameter",
+					"enum":        []string{"COST", "VOLUME"},
+					"items":       map[string]any{"type": "string"},
+				},
+				"phone_numbers": map[string]any{
+					"type":        "array",
+					"description": "phone_numbers parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+				"pricing_categories": map[string]any{
+					"type":        "array",
+					"description": "pricing_categories parameter",
+					"enum":        []string{"AUTHENTICATION", "AUTHENTICATION_INTERNATIONAL", "GROUP_MARKETING", "GROUP_SERVICE", "GROUP_UTILITY", "MARKETING", "MARKETING_LITE", "SERVICE", "UTILITY"},
+					"items":       map[string]any{"type": "string"},
+				},
+				"pricing_types": map[string]any{
+					"type":        "array",
+					"description": "pricing_types parameter",
+					"enum":        []string{"FREE_CUSTOMER_SERVICE", "FREE_ENTRY_POINT", "REGULAR"},
+					"items":       map[string]any{"type": "string"},
+				},
+				"start": map[string]any{
+					"type":        "integer",
+					"description": "start parameter",
+					"required":    true,
+				},
+				"tiers": map[string]any{
+					"type":        "array",
+					"description": "tiers parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+			}),
+			mcp.Description("Parameters object containing: country_codes (array<string>), dimensions (array<enum>) [COUNTRY, PHONE, PRICING_CATEGORY, PRICING_TYPE, TIER], end (integer) [required], granularity (enum) [DAILY, HALF_HOUR, MONTHLY] [required], metric_types (array<enum>) [COST, VOLUME], phone_numbers (array<string>), pricing_categories (array<enum>) [AUTHENTICATION, AUTHENTICATION_INTERNATIONAL, GROUP_MARKETING, GROUP_SERVICE, GROUP_UTILITY, ...], pricing_types (array<enum>) [FREE_CUSTOMER_SERVICE, FREE_ENTRY_POINT, REGULAR], start (integer) [required], tiers (array<string>)"),
 		),
-		mcp.WithString("granularity",
-			mcp.Required(),
-			mcp.Description("granularity parameter for pricing_analytics"),
-			mcp.Enum("DAILY", "HALF_HOUR", "MONTHLY"),
-		),
-		mcp.WithString("metric_types",
-			mcp.Description("metric_types parameter for pricing_analytics"),
-			mcp.Enum("COST", "VOLUME"),
-		),
-		mcp.WithString("phone_numbers",
-			mcp.Description("phone_numbers parameter for pricing_analytics"),
-		),
-		mcp.WithString("pricing_categories",
-			mcp.Description("pricing_categories parameter for pricing_analytics"),
-			mcp.Enum("AUTHENTICATION", "AUTHENTICATION_INTERNATIONAL", "GROUP_MARKETING", "GROUP_SERVICE", "GROUP_UTILITY", "MARKETING", "MARKETING_LITE", "SERVICE", "UTILITY"),
-		),
-		mcp.WithString("pricing_types",
-			mcp.Description("pricing_types parameter for pricing_analytics"),
-			mcp.Enum("FREE_CUSTOMER_SERVICE", "FREE_ENTRY_POINT", "REGULAR"),
-		),
-		mcp.WithNumber("start",
-			mcp.Required(),
-			mcp.Description("start parameter for pricing_analytics"),
-		),
-		mcp.WithString("tiers",
-			mcp.Description("tiers parameter for pricing_analytics"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -657,11 +905,19 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 	tools = append(tools, whatsappbusinessaccount_get_pricing_analyticsTool)
 
 	// whatsappbusinessaccount_delete_product_catalogs tool
+	// Params object accepts: catalog_id (string)
 	whatsappbusinessaccount_delete_product_catalogsTool := mcp.NewTool("whatsappbusinessaccount_delete_product_catalogs",
 		mcp.WithDescription("DELETE product_catalogs for WhatsAppBusinessAccount"),
-		mcp.WithString("catalog_id",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("catalog_id parameter for product_catalogs"),
+			mcp.Properties(map[string]any{
+				"catalog_id": map[string]any{
+					"type":        "string",
+					"description": "catalog_id parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: catalog_id (string) [required]"),
 		),
 	)
 	tools = append(tools, whatsappbusinessaccount_delete_product_catalogsTool)
@@ -670,8 +926,8 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 	// Available fields for ProductCatalog: ad_account_to_collaborative_ads_share_settings, agency_collaborative_ads_share_settings, business, catalog_store, commerce_merchant_settings, creator_user, da_display_settings, default_image_url, fallback_image_url, feed_count, id, is_catalog_segment, is_local_catalog, name, owner_business, product_count, store_catalog_settings, user_access_expire_time, vertical
 	whatsappbusinessaccount_get_product_catalogsTool := mcp.NewTool("whatsappbusinessaccount_get_product_catalogs",
 		mcp.WithDescription("GET product_catalogs for WhatsAppBusinessAccount"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for ProductCatalog objects. Available fields: ad_account_to_collaborative_ads_share_settings, agency_collaborative_ads_share_settings, business, catalog_store, commerce_merchant_settings, creator_user, da_display_settings, default_image_url, fallback_image_url, feed_count, id, is_catalog_segment, is_local_catalog, name, owner_business (and 4 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for ProductCatalog objects. Available fields: ad_account_to_collaborative_ads_share_settings, agency_collaborative_ads_share_settings, business, catalog_store, commerce_merchant_settings, creator_user, da_display_settings, default_image_url, fallback_image_url, feed_count, id, is_catalog_segment, is_local_catalog, name, owner_business (and 4 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -686,11 +942,19 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 	tools = append(tools, whatsappbusinessaccount_get_product_catalogsTool)
 
 	// whatsappbusinessaccount_post_product_catalogs tool
+	// Params object accepts: catalog_id (string)
 	whatsappbusinessaccount_post_product_catalogsTool := mcp.NewTool("whatsappbusinessaccount_post_product_catalogs",
 		mcp.WithDescription("POST product_catalogs for WhatsAppBusinessAccount"),
-		mcp.WithString("catalog_id",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("catalog_id parameter for product_catalogs"),
+			mcp.Properties(map[string]any{
+				"catalog_id": map[string]any{
+					"type":        "string",
+					"description": "catalog_id parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: catalog_id (string) [required]"),
 		),
 	)
 	tools = append(tools, whatsappbusinessaccount_post_product_catalogsTool)
@@ -698,8 +962,8 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 	// whatsappbusinessaccount_get_schedules tool
 	whatsappbusinessaccount_get_schedulesTool := mcp.NewTool("whatsappbusinessaccount_get_schedules",
 		mcp.WithDescription("GET schedules for WhatsAppBusinessAccount"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -714,22 +978,37 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 	tools = append(tools, whatsappbusinessaccount_get_schedulesTool)
 
 	// whatsappbusinessaccount_post_set_obo_mobility_intent tool
+	// Params object accepts: solution_id (string)
 	whatsappbusinessaccount_post_set_obo_mobility_intentTool := mcp.NewTool("whatsappbusinessaccount_post_set_obo_mobility_intent",
 		mcp.WithDescription("POST set_obo_mobility_intent for WhatsAppBusinessAccount"),
-		mcp.WithString("solution_id",
-			mcp.Description("solution_id parameter for set_obo_mobility_intent"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"solution_id": map[string]any{
+					"type":        "string",
+					"description": "solution_id parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: solution_id (string)"),
 		),
 	)
 	tools = append(tools, whatsappbusinessaccount_post_set_obo_mobility_intentTool)
 
 	// whatsappbusinessaccount_post_set_solution_migration_intent tool
+	// Params object accepts: app_id (string), solution_id (string)
 	whatsappbusinessaccount_post_set_solution_migration_intentTool := mcp.NewTool("whatsappbusinessaccount_post_set_solution_migration_intent",
 		mcp.WithDescription("POST set_solution_migration_intent for WhatsAppBusinessAccount"),
-		mcp.WithString("app_id",
-			mcp.Description("app_id parameter for set_solution_migration_intent"),
-		),
-		mcp.WithString("solution_id",
-			mcp.Description("solution_id parameter for set_solution_migration_intent"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"app_id": map[string]any{
+					"type":        "string",
+					"description": "app_id parameter",
+				},
+				"solution_id": map[string]any{
+					"type":        "string",
+					"description": "solution_id parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: app_id (string), solution_id (string)"),
 		),
 	)
 	tools = append(tools, whatsappbusinessaccount_post_set_solution_migration_intentTool)
@@ -737,8 +1016,8 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 	// whatsappbusinessaccount_get_solutions tool
 	whatsappbusinessaccount_get_solutionsTool := mcp.NewTool("whatsappbusinessaccount_get_solutions",
 		mcp.WithDescription("GET solutions for WhatsAppBusinessAccount"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -761,8 +1040,8 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 	// whatsappbusinessaccount_get_subscribed_apps tool
 	whatsappbusinessaccount_get_subscribed_appsTool := mcp.NewTool("whatsappbusinessaccount_get_subscribed_apps",
 		mcp.WithDescription("GET subscribed_apps for WhatsAppBusinessAccount"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -777,47 +1056,70 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 	tools = append(tools, whatsappbusinessaccount_get_subscribed_appsTool)
 
 	// whatsappbusinessaccount_post_subscribed_apps tool
+	// Params object accepts: override_callback_uri (string), verify_token (string)
 	whatsappbusinessaccount_post_subscribed_appsTool := mcp.NewTool("whatsappbusinessaccount_post_subscribed_apps",
 		mcp.WithDescription("POST subscribed_apps for WhatsAppBusinessAccount"),
-		mcp.WithString("override_callback_uri",
-			mcp.Description("override_callback_uri parameter for subscribed_apps"),
-		),
-		mcp.WithString("verify_token",
-			mcp.Description("verify_token parameter for subscribed_apps"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"override_callback_uri": map[string]any{
+					"type":        "string",
+					"description": "override_callback_uri parameter",
+				},
+				"verify_token": map[string]any{
+					"type":        "string",
+					"description": "verify_token parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: override_callback_uri (string), verify_token (string)"),
 		),
 	)
 	tools = append(tools, whatsappbusinessaccount_post_subscribed_appsTool)
 
 	// whatsappbusinessaccount_get_template_analytics tool
+	// Params object accepts: end (datetime), granularity (whatsappbusinessaccounttemplate_analytics_granularity_enum_param), metric_types (list<whatsappbusinessaccounttemplate_analytics_metric_types_enum_param>), product_type (whatsappbusinessaccounttemplate_analytics_product_type_enum_param), start (datetime), template_ids (list<string>)
 	whatsappbusinessaccount_get_template_analyticsTool := mcp.NewTool("whatsappbusinessaccount_get_template_analytics",
 		mcp.WithDescription("GET template_analytics for WhatsAppBusinessAccount"),
-		mcp.WithString("end",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("end parameter for template_analytics"),
+			mcp.Properties(map[string]any{
+				"end": map[string]any{
+					"type":        "string",
+					"description": "end parameter",
+					"required":    true,
+				},
+				"granularity": map[string]any{
+					"type":        "string",
+					"description": "granularity parameter",
+					"required":    true,
+					"enum":        []string{"DAILY"},
+				},
+				"metric_types": map[string]any{
+					"type":        "array",
+					"description": "metric_types parameter",
+					"enum":        []string{"CLICKED", "COST", "DELIVERED", "READ", "REPLIED", "SENT"},
+					"items":       map[string]any{"type": "string"},
+				},
+				"product_type": map[string]any{
+					"type":        "string",
+					"description": "product_type parameter",
+					"enum":        []string{"CLOUD_API", "MARKETING_MESSAGES_LITE_API"},
+				},
+				"start": map[string]any{
+					"type":        "string",
+					"description": "start parameter",
+					"required":    true,
+				},
+				"template_ids": map[string]any{
+					"type":        "array",
+					"description": "template_ids parameter",
+					"required":    true,
+					"items":       map[string]any{"type": "string"},
+				},
+			}),
+			mcp.Description("Parameters object containing: end (datetime) [required], granularity (enum) [DAILY] [required], metric_types (array<enum>) [CLICKED, COST, DELIVERED, READ, REPLIED, ...], product_type (enum) [CLOUD_API, MARKETING_MESSAGES_LITE_API], start (datetime) [required], template_ids (array<string>) [required]"),
 		),
-		mcp.WithString("granularity",
-			mcp.Required(),
-			mcp.Description("granularity parameter for template_analytics"),
-			mcp.Enum("DAILY"),
-		),
-		mcp.WithString("metric_types",
-			mcp.Description("metric_types parameter for template_analytics"),
-			mcp.Enum("CLICKED", "COST", "DELIVERED", "READ", "REPLIED", "SENT"),
-		),
-		mcp.WithString("product_type",
-			mcp.Description("product_type parameter for template_analytics"),
-			mcp.Enum("CLOUD_API", "MARKETING_MESSAGES_LITE_API"),
-		),
-		mcp.WithString("start",
-			mcp.Required(),
-			mcp.Description("start parameter for template_analytics"),
-		),
-		mcp.WithString("template_ids",
-			mcp.Required(),
-			mcp.Description("template_ids parameter for template_analytics"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -832,31 +1134,45 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 	tools = append(tools, whatsappbusinessaccount_get_template_analyticsTool)
 
 	// whatsappbusinessaccount_get_template_group_analytics tool
+	// Params object accepts: end (datetime), granularity (whatsappbusinessaccounttemplate_group_analytics_granularity_enum_param), metric_types (list<whatsappbusinessaccounttemplate_group_analytics_metric_types_enum_param>), start (datetime), template_group_ids (list<string>)
 	whatsappbusinessaccount_get_template_group_analyticsTool := mcp.NewTool("whatsappbusinessaccount_get_template_group_analytics",
 		mcp.WithDescription("GET template_group_analytics for WhatsAppBusinessAccount"),
-		mcp.WithString("end",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("end parameter for template_group_analytics"),
+			mcp.Properties(map[string]any{
+				"end": map[string]any{
+					"type":        "string",
+					"description": "end parameter",
+					"required":    true,
+				},
+				"granularity": map[string]any{
+					"type":        "string",
+					"description": "granularity parameter",
+					"required":    true,
+					"enum":        []string{"DAILY"},
+				},
+				"metric_types": map[string]any{
+					"type":        "array",
+					"description": "metric_types parameter",
+					"enum":        []string{"CLICKED", "COST", "DELIVERED", "READ", "REPLIED", "SENT"},
+					"items":       map[string]any{"type": "string"},
+				},
+				"start": map[string]any{
+					"type":        "string",
+					"description": "start parameter",
+					"required":    true,
+				},
+				"template_group_ids": map[string]any{
+					"type":        "array",
+					"description": "template_group_ids parameter",
+					"required":    true,
+					"items":       map[string]any{"type": "string"},
+				},
+			}),
+			mcp.Description("Parameters object containing: end (datetime) [required], granularity (enum) [DAILY] [required], metric_types (array<enum>) [CLICKED, COST, DELIVERED, READ, REPLIED, ...], start (datetime) [required], template_group_ids (array<string>) [required]"),
 		),
-		mcp.WithString("granularity",
-			mcp.Required(),
-			mcp.Description("granularity parameter for template_group_analytics"),
-			mcp.Enum("DAILY"),
-		),
-		mcp.WithString("metric_types",
-			mcp.Description("metric_types parameter for template_group_analytics"),
-			mcp.Enum("CLICKED", "COST", "DELIVERED", "READ", "REPLIED", "SENT"),
-		),
-		mcp.WithString("start",
-			mcp.Required(),
-			mcp.Description("start parameter for template_group_analytics"),
-		),
-		mcp.WithString("template_group_ids",
-			mcp.Required(),
-			mcp.Description("template_group_ids parameter for template_group_analytics"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -873,8 +1189,8 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 	// whatsappbusinessaccount_get_template_groups tool
 	whatsappbusinessaccount_get_template_groupsTool := mcp.NewTool("whatsappbusinessaccount_get_template_groups",
 		mcp.WithDescription("GET template_groups for WhatsAppBusinessAccount"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -889,34 +1205,53 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 	tools = append(tools, whatsappbusinessaccount_get_template_groupsTool)
 
 	// whatsappbusinessaccount_post_template_groups tool
+	// Params object accepts: description (string), name (string), whatsapp_business_templates (list<string>)
 	whatsappbusinessaccount_post_template_groupsTool := mcp.NewTool("whatsappbusinessaccount_post_template_groups",
 		mcp.WithDescription("POST template_groups for WhatsAppBusinessAccount"),
-		mcp.WithString("description",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("description parameter for template_groups"),
-		),
-		mcp.WithString("name",
-			mcp.Required(),
-			mcp.Description("name parameter for template_groups"),
-		),
-		mcp.WithString("whatsapp_business_templates",
-			mcp.Required(),
-			mcp.Description("whatsapp_business_templates parameter for template_groups"),
+			mcp.Properties(map[string]any{
+				"description": map[string]any{
+					"type":        "string",
+					"description": "description parameter",
+					"required":    true,
+				},
+				"name": map[string]any{
+					"type":        "string",
+					"description": "name parameter",
+					"required":    true,
+				},
+				"whatsapp_business_templates": map[string]any{
+					"type":        "array",
+					"description": "whatsapp_business_templates parameter",
+					"required":    true,
+					"items":       map[string]any{"type": "string"},
+				},
+			}),
+			mcp.Description("Parameters object containing: description (string) [required], name (string) [required], whatsapp_business_templates (array<string>) [required]"),
 		),
 	)
 	tools = append(tools, whatsappbusinessaccount_post_template_groupsTool)
 
 	// whatsappbusinessaccount_get_template_performance_metrics tool
+	// Params object accepts: name (string), template_id (string)
 	whatsappbusinessaccount_get_template_performance_metricsTool := mcp.NewTool("whatsappbusinessaccount_get_template_performance_metrics",
 		mcp.WithDescription("GET template_performance_metrics for WhatsAppBusinessAccount"),
-		mcp.WithString("name",
-			mcp.Description("name parameter for template_performance_metrics"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"name": map[string]any{
+					"type":        "string",
+					"description": "name parameter",
+				},
+				"template_id": map[string]any{
+					"type":        "string",
+					"description": "template_id parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: name (string), template_id (string)"),
 		),
-		mcp.WithString("template_id",
-			mcp.Description("template_id parameter for template_performance_metrics"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -931,43 +1266,65 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 	tools = append(tools, whatsappbusinessaccount_get_template_performance_metricsTool)
 
 	// whatsappbusinessaccount_post_upsert_message_templates tool
+	// Params object accepts: category (whatsappbusinessaccountupsert_message_templates_category_enum_param), components (list<map>), languages (list<string>), message_send_ttl_seconds (unsigned int), name (string)
 	whatsappbusinessaccount_post_upsert_message_templatesTool := mcp.NewTool("whatsappbusinessaccount_post_upsert_message_templates",
 		mcp.WithDescription("POST upsert_message_templates for WhatsAppBusinessAccount"),
-		mcp.WithString("category",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("category parameter for upsert_message_templates"),
-			mcp.Enum("AUTHENTICATION"),
-		),
-		mcp.WithString("components",
-			mcp.Required(),
-			mcp.Description("components parameter for upsert_message_templates"),
-		),
-		mcp.WithString("languages",
-			mcp.Required(),
-			mcp.Description("languages parameter for upsert_message_templates"),
-		),
-		mcp.WithNumber("message_send_ttl_seconds",
-			mcp.Description("message_send_ttl_seconds parameter for upsert_message_templates"),
-		),
-		mcp.WithString("name",
-			mcp.Required(),
-			mcp.Description("name parameter for upsert_message_templates"),
+			mcp.Properties(map[string]any{
+				"category": map[string]any{
+					"type":        "string",
+					"description": "category parameter",
+					"required":    true,
+					"enum":        []string{"AUTHENTICATION"},
+				},
+				"components": map[string]any{
+					"type":        "array",
+					"description": "components parameter",
+					"required":    true,
+					"items":       map[string]any{"type": "object"},
+				},
+				"languages": map[string]any{
+					"type":        "array",
+					"description": "languages parameter",
+					"required":    true,
+					"items":       map[string]any{"type": "string"},
+				},
+				"message_send_ttl_seconds": map[string]any{
+					"type":        "integer",
+					"description": "message_send_ttl_seconds parameter",
+				},
+				"name": map[string]any{
+					"type":        "string",
+					"description": "name parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: category (enum) [AUTHENTICATION] [required], components (array<object>) [required], languages (array<string>) [required], message_send_ttl_seconds (integer), name (string) [required]"),
 		),
 	)
 	tools = append(tools, whatsappbusinessaccount_post_upsert_message_templatesTool)
 
 	// whatsappbusinessaccount_get_welcome_message_sequences tool
 	// Available fields for CTXPartnerAppWelcomeMessageFlow: compatible_platforms, eligible_platforms, id, is_ig_only_flow, is_used_in_ad, last_update_time, name, welcome_message_flow, welcome_message_sequence
+	// Params object accepts: app_id (string), sequence_id (string)
 	whatsappbusinessaccount_get_welcome_message_sequencesTool := mcp.NewTool("whatsappbusinessaccount_get_welcome_message_sequences",
 		mcp.WithDescription("GET welcome_message_sequences for WhatsAppBusinessAccount"),
-		mcp.WithString("app_id",
-			mcp.Description("app_id parameter for welcome_message_sequences"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"app_id": map[string]any{
+					"type":        "string",
+					"description": "app_id parameter",
+				},
+				"sequence_id": map[string]any{
+					"type":        "string",
+					"description": "sequence_id parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: app_id (string), sequence_id (string)"),
 		),
-		mcp.WithString("sequence_id",
-			mcp.Description("sequence_id parameter for welcome_message_sequences"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for CTXPartnerAppWelcomeMessageFlow objects. Available fields: compatible_platforms, eligible_platforms, id, is_ig_only_flow, is_used_in_ad, last_update_time, name, welcome_message_flow, welcome_message_sequence"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for CTXPartnerAppWelcomeMessageFlow objects. Available fields: compatible_platforms, eligible_platforms, id, is_ig_only_flow, is_used_in_ad, last_update_time, name, welcome_message_flow, welcome_message_sequence"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -985,8 +1342,8 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 	// Available fields for WhatsAppBusinessAccount: account_review_status, analytics, auth_international_rate_eligibility, business_verification_status, country, creation_time, currency, health_status, id, is_enabled_for_insights, is_shared_with_partners, linked_commerce_account, marketing_messages_lite_api_status, message_template_namespace, name, on_behalf_of_business_info, owner_business, owner_business_info, ownership_type, primary_business_location, primary_funding_id, purchase_order_number, status, timezone_id
 	whatsappbusinessaccount_get_Tool := mcp.NewTool("whatsappbusinessaccount_get_",
 		mcp.WithDescription("GET  for WhatsAppBusinessAccount"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for WhatsAppBusinessAccount objects. Available fields: account_review_status, analytics, auth_international_rate_eligibility, business_verification_status, country, creation_time, currency, health_status, id, is_enabled_for_insights, is_shared_with_partners, linked_commerce_account, marketing_messages_lite_api_status, message_template_namespace, name (and 9 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for WhatsAppBusinessAccount objects. Available fields: account_review_status, analytics, auth_international_rate_eligibility, business_verification_status, country, creation_time, currency, health_status, id, is_enabled_for_insights, is_shared_with_partners, linked_commerce_account, marketing_messages_lite_api_status, message_template_namespace, name (and 9 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -1001,10 +1358,17 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 	tools = append(tools, whatsappbusinessaccount_get_Tool)
 
 	// whatsappbusinessaccount_post_ tool
+	// Params object accepts: is_enabled_for_insights (bool)
 	whatsappbusinessaccount_post_Tool := mcp.NewTool("whatsappbusinessaccount_post_",
 		mcp.WithDescription("POST  for WhatsAppBusinessAccount"),
-		mcp.WithBoolean("is_enabled_for_insights",
-			mcp.Description("is_enabled_for_insights parameter for "),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"is_enabled_for_insights": map[string]any{
+					"type":        "boolean",
+					"description": "is_enabled_for_insights parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: is_enabled_for_insights (boolean)"),
 		),
 	)
 	tools = append(tools, whatsappbusinessaccount_post_Tool)
@@ -1029,8 +1393,13 @@ func HandleWhatsappbusinessaccount_get_activities(ctx context.Context, request m
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -1077,12 +1446,19 @@ func HandleWhatsappbusinessaccount_delete_assigned_users(ctx context.Context, re
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: user
-	user, err := request.RequireInt("user")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter user: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["user"] = user
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_delete_assigned_users(args)
@@ -1113,16 +1489,28 @@ func HandleWhatsappbusinessaccount_get_assigned_users(ctx context.Context, reque
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: business
-	business, err := request.RequireString("business")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter business: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["business"] = business
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -1169,19 +1557,19 @@ func HandleWhatsappbusinessaccount_post_assigned_users(ctx context.Context, requ
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: tasks
-	tasks, err := request.RequireString("tasks")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter tasks: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["tasks"] = tasks
-
-	// Required: user
-	user, err := request.RequireInt("user")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter user: %v", err)), nil
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
-	args["user"] = user
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_post_assigned_users(args)
@@ -1213,8 +1601,13 @@ func HandleWhatsappbusinessaccount_get_audiences(ctx context.Context, request mc
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -1261,60 +1654,28 @@ func HandleWhatsappbusinessaccount_get_call_analytics(ctx context.Context, reque
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: country_codes
-	// array type - using string
-	if val := request.GetString("country_codes", ""); val != "" {
-		args["country_codes"] = val
-	}
-
-	// Optional: dimensions
-	// array type - using string
-	if val := request.GetString("dimensions", ""); val != "" {
-		args["dimensions"] = val
-	}
-
-	// Optional: directions
-	// array type - using string
-	if val := request.GetString("directions", ""); val != "" {
-		args["directions"] = val
-	}
-
-	// Required: end
-	end, err := request.RequireInt("end")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter end: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["end"] = end
-
-	// Required: granularity
-	granularity, err := request.RequireString("granularity")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter granularity: %v", err)), nil
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
-	args["granularity"] = granularity
-
-	// Optional: metric_types
-	// array type - using string
-	if val := request.GetString("metric_types", ""); val != "" {
-		args["metric_types"] = val
+	for key, value := range paramsObj {
+		args[key] = value
 	}
-
-	// Optional: phone_numbers
-	// array type - using string
-	if val := request.GetString("phone_numbers", ""); val != "" {
-		args["phone_numbers"] = val
-	}
-
-	// Required: start
-	start, err := request.RequireInt("start")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter start: %v", err)), nil
-	}
-	args["start"] = start
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -1361,72 +1722,28 @@ func HandleWhatsappbusinessaccount_get_conversation_analytics(ctx context.Contex
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: conversation_categories
-	// array type - using string
-	if val := request.GetString("conversation_categories", ""); val != "" {
-		args["conversation_categories"] = val
-	}
-
-	// Optional: conversation_directions
-	// array type - using string
-	if val := request.GetString("conversation_directions", ""); val != "" {
-		args["conversation_directions"] = val
-	}
-
-	// Optional: conversation_types
-	// array type - using string
-	if val := request.GetString("conversation_types", ""); val != "" {
-		args["conversation_types"] = val
-	}
-
-	// Optional: country_codes
-	// array type - using string
-	if val := request.GetString("country_codes", ""); val != "" {
-		args["country_codes"] = val
-	}
-
-	// Optional: dimensions
-	// array type - using string
-	if val := request.GetString("dimensions", ""); val != "" {
-		args["dimensions"] = val
-	}
-
-	// Required: end
-	end, err := request.RequireInt("end")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter end: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["end"] = end
-
-	// Required: granularity
-	granularity, err := request.RequireString("granularity")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter granularity: %v", err)), nil
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
-	args["granularity"] = granularity
-
-	// Optional: metric_types
-	// array type - using string
-	if val := request.GetString("metric_types", ""); val != "" {
-		args["metric_types"] = val
+	for key, value := range paramsObj {
+		args[key] = value
 	}
-
-	// Optional: phone_numbers
-	// array type - using string
-	if val := request.GetString("phone_numbers", ""); val != "" {
-		args["phone_numbers"] = val
-	}
-
-	// Required: start
-	start, err := request.RequireInt("start")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter start: %v", err)), nil
-	}
-	args["start"] = start
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -1474,8 +1791,13 @@ func HandleWhatsappbusinessaccount_get_dataset(ctx context.Context, request mcp.
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -1522,9 +1844,16 @@ func HandleWhatsappbusinessaccount_post_dataset(ctx context.Context, request mcp
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: dataset_name
-	if val := request.GetString("dataset_name", ""); val != "" {
-		args["dataset_name"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method
@@ -1557,8 +1886,13 @@ func HandleWhatsappbusinessaccount_get_flows(ctx context.Context, request mcp.Ca
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -1605,38 +1939,18 @@ func HandleWhatsappbusinessaccount_post_flows(ctx context.Context, request mcp.C
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: categories
-	categories, err := request.RequireString("categories")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter categories: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["categories"] = categories
-
-	// Optional: clone_flow_id
-	if val := request.GetString("clone_flow_id", ""); val != "" {
-		args["clone_flow_id"] = val
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
-
-	// Optional: endpoint_uri
-	if val := request.GetString("endpoint_uri", ""); val != "" {
-		args["endpoint_uri"] = val
-	}
-
-	// Optional: flow_json
-	if val := request.GetString("flow_json", ""); val != "" {
-		args["flow_json"] = val
-	}
-
-	// Required: name
-	name, err := request.RequireString("name")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter name: %v", err)), nil
-	}
-	args["name"] = name
-
-	// Optional: publish
-	if val := request.GetBool("publish", false); val {
-		args["publish"] = val
+	for key, value := range paramsObj {
+		args[key] = value
 	}
 
 	// Call the client method
@@ -1668,16 +1982,18 @@ func HandleWhatsappbusinessaccount_post_generate_payment_configuration_oauth_lin
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: configuration_name
-	configuration_name, err := request.RequireString("configuration_name")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter configuration_name: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["configuration_name"] = configuration_name
-
-	// Optional: redirect_url
-	if val := request.GetString("redirect_url", ""); val != "" {
-		args["redirect_url"] = val
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
 	}
 
 	// Call the client method
@@ -1710,8 +2026,13 @@ func HandleWhatsappbusinessaccount_get_message_campaigns(ctx context.Context, re
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -1758,38 +2079,28 @@ func HandleWhatsappbusinessaccount_get_message_template_previews(ctx context.Con
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: add_security_recommendation
-	if val := request.GetBool("add_security_recommendation", false); val {
-		args["add_security_recommendation"] = val
-	}
-
-	// Optional: button_types
-	// array type - using string
-	if val := request.GetString("button_types", ""); val != "" {
-		args["button_types"] = val
-	}
-
-	// Required: category
-	category, err := request.RequireString("category")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter category: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["category"] = category
-
-	// Optional: code_expiration_minutes
-	if val := request.GetInt("code_expiration_minutes", 0); val != 0 {
-		args["code_expiration_minutes"] = val
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
-
-	// Optional: languages
-	// array type - using string
-	if val := request.GetString("languages", ""); val != "" {
-		args["languages"] = val
+	for key, value := range paramsObj {
+		args[key] = value
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -1836,17 +2147,19 @@ func HandleWhatsappbusinessaccount_delete_message_templates(ctx context.Context,
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: hsm_id
-	if val := request.GetString("hsm_id", ""); val != "" {
-		args["hsm_id"] = val
-	}
-
-	// Required: name
-	name, err := request.RequireString("name")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter name: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["name"] = name
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_delete_message_templates(args)
@@ -1877,48 +2190,26 @@ func HandleWhatsappbusinessaccount_get_message_templates(ctx context.Context, re
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: category
-	// array type - using string
-	if val := request.GetString("category", ""); val != "" {
-		args["category"] = val
-	}
-
-	// Optional: content
-	if val := request.GetString("content", ""); val != "" {
-		args["content"] = val
-	}
-
-	// Optional: language
-	// array type - using string
-	if val := request.GetString("language", ""); val != "" {
-		args["language"] = val
-	}
-
-	// Optional: name
-	if val := request.GetString("name", ""); val != "" {
-		args["name"] = val
-	}
-
-	// Optional: name_or_content
-	if val := request.GetString("name_or_content", ""); val != "" {
-		args["name_or_content"] = val
-	}
-
-	// Optional: quality_score
-	// array type - using string
-	if val := request.GetString("quality_score", ""); val != "" {
-		args["quality_score"] = val
-	}
-
-	// Optional: status
-	// array type - using string
-	if val := request.GetString("status", ""); val != "" {
-		args["status"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -1965,82 +2256,18 @@ func HandleWhatsappbusinessaccount_post_message_templates(ctx context.Context, r
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: allow_category_change
-	if val := request.GetBool("allow_category_change", false); val {
-		args["allow_category_change"] = val
-	}
-
-	// Required: category
-	category, err := request.RequireString("category")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter category: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["category"] = category
-
-	// Optional: components
-	// array type - using string
-	if val := request.GetString("components", ""); val != "" {
-		args["components"] = val
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
-
-	// Optional: cta_url_link_tracking_opted_out
-	if val := request.GetBool("cta_url_link_tracking_opted_out", false); val {
-		args["cta_url_link_tracking_opted_out"] = val
-	}
-
-	// Optional: degrees_of_freedom_spec
-	if val := request.GetString("degrees_of_freedom_spec", ""); val != "" {
-		args["degrees_of_freedom_spec"] = val
-	}
-
-	// Optional: display_format
-	if val := request.GetString("display_format", ""); val != "" {
-		args["display_format"] = val
-	}
-
-	// Required: language
-	language, err := request.RequireString("language")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter language: %v", err)), nil
-	}
-	args["language"] = language
-
-	// Optional: library_template_body_inputs
-	if val := request.GetString("library_template_body_inputs", ""); val != "" {
-		args["library_template_body_inputs"] = val
-	}
-
-	// Optional: library_template_button_inputs
-	// array type - using string
-	if val := request.GetString("library_template_button_inputs", ""); val != "" {
-		args["library_template_button_inputs"] = val
-	}
-
-	// Optional: library_template_name
-	if val := request.GetString("library_template_name", ""); val != "" {
-		args["library_template_name"] = val
-	}
-
-	// Optional: message_send_ttl_seconds
-	if val := request.GetInt("message_send_ttl_seconds", 0); val != 0 {
-		args["message_send_ttl_seconds"] = val
-	}
-
-	// Required: name
-	name, err := request.RequireString("name")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter name: %v", err)), nil
-	}
-	args["name"] = name
-
-	// Optional: parameter_format
-	if val := request.GetString("parameter_format", ""); val != "" {
-		args["parameter_format"] = val
-	}
-
-	// Optional: sub_category
-	if val := request.GetString("sub_category", ""); val != "" {
-		args["sub_category"] = val
+	for key, value := range paramsObj {
+		args[key] = value
 	}
 
 	// Call the client method
@@ -2072,18 +2299,19 @@ func HandleWhatsappbusinessaccount_post_migrate_flows(ctx context.Context, reque
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: source_flow_names
-	// array type - using string
-	if val := request.GetString("source_flow_names", ""); val != "" {
-		args["source_flow_names"] = val
-	}
-
-	// Required: source_waba_id
-	source_waba_id, err := request.RequireString("source_waba_id")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter source_waba_id: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["source_waba_id"] = source_waba_id
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_post_migrate_flows(args)
@@ -2114,17 +2342,19 @@ func HandleWhatsappbusinessaccount_post_migrate_message_templates(ctx context.Co
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: page_number
-	if val := request.GetInt("page_number", 0); val != 0 {
-		args["page_number"] = val
-	}
-
-	// Required: source_waba_id
-	source_waba_id, err := request.RequireString("source_waba_id")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter source_waba_id: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["source_waba_id"] = source_waba_id
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_post_migrate_message_templates(args)
@@ -2155,12 +2385,19 @@ func HandleWhatsappbusinessaccount_delete_payment_configuration(ctx context.Cont
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: configuration_name
-	configuration_name, err := request.RequireString("configuration_name")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter configuration_name: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["configuration_name"] = configuration_name
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_delete_payment_configuration(args)
@@ -2191,16 +2428,28 @@ func HandleWhatsappbusinessaccount_get_payment_configuration(ctx context.Context
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: configuration_name
-	configuration_name, err := request.RequireString("configuration_name")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter configuration_name: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["configuration_name"] = configuration_name
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -2247,41 +2496,18 @@ func HandleWhatsappbusinessaccount_post_payment_configuration(ctx context.Contex
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: configuration_name
-	configuration_name, err := request.RequireString("configuration_name")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter configuration_name: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["configuration_name"] = configuration_name
-
-	// Optional: data_endpoint_url
-	if val := request.GetString("data_endpoint_url", ""); val != "" {
-		args["data_endpoint_url"] = val
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
-
-	// Optional: merchant_category_code
-	if val := request.GetString("merchant_category_code", ""); val != "" {
-		args["merchant_category_code"] = val
-	}
-
-	// Optional: merchant_vpa
-	if val := request.GetString("merchant_vpa", ""); val != "" {
-		args["merchant_vpa"] = val
-	}
-
-	// Optional: provider_name
-	if val := request.GetString("provider_name", ""); val != "" {
-		args["provider_name"] = val
-	}
-
-	// Optional: purpose_code
-	if val := request.GetString("purpose_code", ""); val != "" {
-		args["purpose_code"] = val
-	}
-
-	// Optional: redirect_url
-	if val := request.GetString("redirect_url", ""); val != "" {
-		args["redirect_url"] = val
+	for key, value := range paramsObj {
+		args[key] = value
 	}
 
 	// Call the client method
@@ -2314,8 +2540,13 @@ func HandleWhatsappbusinessaccount_get_payment_configurations(ctx context.Contex
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -2363,8 +2594,13 @@ func HandleWhatsappbusinessaccount_get_phone_numbers(ctx context.Context, reques
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -2411,29 +2647,16 @@ func HandleWhatsappbusinessaccount_post_phone_numbers(ctx context.Context, reque
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: cc
-	if val := request.GetString("cc", ""); val != "" {
-		args["cc"] = val
-	}
-
-	// Optional: migrate_phone_number
-	if val := request.GetBool("migrate_phone_number", false); val {
-		args["migrate_phone_number"] = val
-	}
-
-	// Optional: phone_number
-	if val := request.GetString("phone_number", ""); val != "" {
-		args["phone_number"] = val
-	}
-
-	// Optional: preverified_id
-	if val := request.GetString("preverified_id", ""); val != "" {
-		args["preverified_id"] = val
-	}
-
-	// Optional: verified_name
-	if val := request.GetString("verified_name", ""); val != "" {
-		args["verified_name"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method
@@ -2465,72 +2688,28 @@ func HandleWhatsappbusinessaccount_get_pricing_analytics(ctx context.Context, re
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: country_codes
-	// array type - using string
-	if val := request.GetString("country_codes", ""); val != "" {
-		args["country_codes"] = val
-	}
-
-	// Optional: dimensions
-	// array type - using string
-	if val := request.GetString("dimensions", ""); val != "" {
-		args["dimensions"] = val
-	}
-
-	// Required: end
-	end, err := request.RequireInt("end")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter end: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["end"] = end
-
-	// Required: granularity
-	granularity, err := request.RequireString("granularity")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter granularity: %v", err)), nil
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
-	args["granularity"] = granularity
-
-	// Optional: metric_types
-	// array type - using string
-	if val := request.GetString("metric_types", ""); val != "" {
-		args["metric_types"] = val
-	}
-
-	// Optional: phone_numbers
-	// array type - using string
-	if val := request.GetString("phone_numbers", ""); val != "" {
-		args["phone_numbers"] = val
-	}
-
-	// Optional: pricing_categories
-	// array type - using string
-	if val := request.GetString("pricing_categories", ""); val != "" {
-		args["pricing_categories"] = val
-	}
-
-	// Optional: pricing_types
-	// array type - using string
-	if val := request.GetString("pricing_types", ""); val != "" {
-		args["pricing_types"] = val
-	}
-
-	// Required: start
-	start, err := request.RequireInt("start")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter start: %v", err)), nil
-	}
-	args["start"] = start
-
-	// Optional: tiers
-	// array type - using string
-	if val := request.GetString("tiers", ""); val != "" {
-		args["tiers"] = val
+	for key, value := range paramsObj {
+		args[key] = value
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -2577,12 +2756,19 @@ func HandleWhatsappbusinessaccount_delete_product_catalogs(ctx context.Context, 
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: catalog_id
-	catalog_id, err := request.RequireString("catalog_id")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter catalog_id: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["catalog_id"] = catalog_id
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_delete_product_catalogs(args)
@@ -2614,8 +2800,13 @@ func HandleWhatsappbusinessaccount_get_product_catalogs(ctx context.Context, req
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -2662,12 +2853,19 @@ func HandleWhatsappbusinessaccount_post_product_catalogs(ctx context.Context, re
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: catalog_id
-	catalog_id, err := request.RequireString("catalog_id")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter catalog_id: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["catalog_id"] = catalog_id
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_post_product_catalogs(args)
@@ -2699,8 +2897,13 @@ func HandleWhatsappbusinessaccount_get_schedules(ctx context.Context, request mc
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -2747,9 +2950,16 @@ func HandleWhatsappbusinessaccount_post_set_obo_mobility_intent(ctx context.Cont
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: solution_id
-	if val := request.GetString("solution_id", ""); val != "" {
-		args["solution_id"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method
@@ -2781,14 +2991,16 @@ func HandleWhatsappbusinessaccount_post_set_solution_migration_intent(ctx contex
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: app_id
-	if val := request.GetString("app_id", ""); val != "" {
-		args["app_id"] = val
-	}
-
-	// Optional: solution_id
-	if val := request.GetString("solution_id", ""); val != "" {
-		args["solution_id"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method
@@ -2821,8 +3033,13 @@ func HandleWhatsappbusinessaccount_get_solutions(ctx context.Context, request mc
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -2899,8 +3116,13 @@ func HandleWhatsappbusinessaccount_get_subscribed_apps(ctx context.Context, requ
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -2947,14 +3169,16 @@ func HandleWhatsappbusinessaccount_post_subscribed_apps(ctx context.Context, req
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: override_callback_uri
-	if val := request.GetString("override_callback_uri", ""); val != "" {
-		args["override_callback_uri"] = val
-	}
-
-	// Optional: verify_token
-	if val := request.GetString("verify_token", ""); val != "" {
-		args["verify_token"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method
@@ -2986,48 +3210,28 @@ func HandleWhatsappbusinessaccount_get_template_analytics(ctx context.Context, r
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: end
-	end, err := request.RequireString("end")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter end: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["end"] = end
-
-	// Required: granularity
-	granularity, err := request.RequireString("granularity")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter granularity: %v", err)), nil
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
-	args["granularity"] = granularity
-
-	// Optional: metric_types
-	// array type - using string
-	if val := request.GetString("metric_types", ""); val != "" {
-		args["metric_types"] = val
+	for key, value := range paramsObj {
+		args[key] = value
 	}
-
-	// Optional: product_type
-	if val := request.GetString("product_type", ""); val != "" {
-		args["product_type"] = val
-	}
-
-	// Required: start
-	start, err := request.RequireString("start")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter start: %v", err)), nil
-	}
-	args["start"] = start
-
-	// Required: template_ids
-	template_ids, err := request.RequireString("template_ids")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter template_ids: %v", err)), nil
-	}
-	args["template_ids"] = template_ids
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -3074,43 +3278,28 @@ func HandleWhatsappbusinessaccount_get_template_group_analytics(ctx context.Cont
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: end
-	end, err := request.RequireString("end")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter end: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["end"] = end
-
-	// Required: granularity
-	granularity, err := request.RequireString("granularity")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter granularity: %v", err)), nil
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
-	args["granularity"] = granularity
-
-	// Optional: metric_types
-	// array type - using string
-	if val := request.GetString("metric_types", ""); val != "" {
-		args["metric_types"] = val
+	for key, value := range paramsObj {
+		args[key] = value
 	}
-
-	// Required: start
-	start, err := request.RequireString("start")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter start: %v", err)), nil
-	}
-	args["start"] = start
-
-	// Required: template_group_ids
-	template_group_ids, err := request.RequireString("template_group_ids")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter template_group_ids: %v", err)), nil
-	}
-	args["template_group_ids"] = template_group_ids
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -3158,8 +3347,13 @@ func HandleWhatsappbusinessaccount_get_template_groups(ctx context.Context, requ
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -3206,26 +3400,19 @@ func HandleWhatsappbusinessaccount_post_template_groups(ctx context.Context, req
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: description
-	description, err := request.RequireString("description")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter description: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["description"] = description
-
-	// Required: name
-	name, err := request.RequireString("name")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter name: %v", err)), nil
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
-	args["name"] = name
-
-	// Required: whatsapp_business_templates
-	whatsapp_business_templates, err := request.RequireString("whatsapp_business_templates")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter whatsapp_business_templates: %v", err)), nil
+	for key, value := range paramsObj {
+		args[key] = value
 	}
-	args["whatsapp_business_templates"] = whatsapp_business_templates
 
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_post_template_groups(args)
@@ -3256,19 +3443,26 @@ func HandleWhatsappbusinessaccount_get_template_performance_metrics(ctx context.
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: name
-	if val := request.GetString("name", ""); val != "" {
-		args["name"] = val
-	}
-
-	// Optional: template_id
-	if val := request.GetString("template_id", ""); val != "" {
-		args["template_id"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -3315,38 +3509,19 @@ func HandleWhatsappbusinessaccount_post_upsert_message_templates(ctx context.Con
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: category
-	category, err := request.RequireString("category")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter category: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["category"] = category
-
-	// Required: components
-	components, err := request.RequireString("components")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter components: %v", err)), nil
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
-	args["components"] = components
-
-	// Required: languages
-	languages, err := request.RequireString("languages")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter languages: %v", err)), nil
+	for key, value := range paramsObj {
+		args[key] = value
 	}
-	args["languages"] = languages
-
-	// Optional: message_send_ttl_seconds
-	if val := request.GetInt("message_send_ttl_seconds", 0); val != 0 {
-		args["message_send_ttl_seconds"] = val
-	}
-
-	// Required: name
-	name, err := request.RequireString("name")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter name: %v", err)), nil
-	}
-	args["name"] = name
 
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_post_upsert_message_templates(args)
@@ -3377,19 +3552,26 @@ func HandleWhatsappbusinessaccount_get_welcome_message_sequences(ctx context.Con
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: app_id
-	if val := request.GetString("app_id", ""); val != "" {
-		args["app_id"] = val
-	}
-
-	// Optional: sequence_id
-	if val := request.GetString("sequence_id", ""); val != "" {
-		args["sequence_id"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -3437,8 +3619,13 @@ func HandleWhatsappbusinessaccount_get_(ctx context.Context, request mcp.CallToo
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -3485,9 +3672,16 @@ func HandleWhatsappbusinessaccount_post_(ctx context.Context, request mcp.CallTo
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: is_enabled_for_insights
-	if val := request.GetBool("is_enabled_for_insights", false); val {
-		args["is_enabled_for_insights"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method

@@ -29,11 +29,11 @@ func (c *AdCreativeClient) Adcreative_post_adlabels(args map[string]interface{})
 		return nil, fmt.Errorf("missing required parameter: ad_creative_id")
 	}
 	_ = ad_creative_id // Suppress unused variable warning
-	adlabels, ok := args["adlabels"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: adlabels")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = adlabels // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -56,11 +56,11 @@ func (c *AdCreativeClient) Adcreative_post_adlabels(args map[string]interface{})
 		}
 
 	}
-	if val, ok := args["adlabels"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		if "adlabels" != "ad_creative_id" {
-			urlParams.Set("adlabels", fmt.Sprintf("%v", val))
+		if "params" != "ad_creative_id" {
+			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
 
 	}
@@ -196,11 +196,11 @@ func (c *AdCreativeClient) Adcreative_get_previews(args map[string]interface{}) 
 		return nil, fmt.Errorf("missing required parameter: ad_creative_id")
 	}
 	_ = ad_creative_id // Suppress unused variable warning
-	ad_format, ok := args["ad_format"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: ad_format")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = ad_format // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -223,115 +223,11 @@ func (c *AdCreativeClient) Adcreative_get_previews(args map[string]interface{}) 
 		}
 
 	}
-	if val, ok := args["ad_format"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		if "ad_format" != "ad_creative_id" {
-			urlParams.Set("ad_format", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["creative_feature"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "creative_feature" != "ad_creative_id" {
-			urlParams.Set("creative_feature", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["dynamic_asset_label"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "dynamic_asset_label" != "ad_creative_id" {
-			urlParams.Set("dynamic_asset_label", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["dynamic_creative_spec"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "dynamic_creative_spec" != "ad_creative_id" {
-			urlParams.Set("dynamic_creative_spec", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["dynamic_customization"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "dynamic_customization" != "ad_creative_id" {
-			urlParams.Set("dynamic_customization", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["end_date"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "end_date" != "ad_creative_id" {
-			urlParams.Set("end_date", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["height"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "height" != "ad_creative_id" {
-			urlParams.Set("height", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["locale"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "locale" != "ad_creative_id" {
-			urlParams.Set("locale", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["place_page_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "place_page_id" != "ad_creative_id" {
-			urlParams.Set("place_page_id", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["post"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "post" != "ad_creative_id" {
-			urlParams.Set("post", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["product_item_ids"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "product_item_ids" != "ad_creative_id" {
-			urlParams.Set("product_item_ids", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["render_type"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "render_type" != "ad_creative_id" {
-			urlParams.Set("render_type", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["start_date"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "start_date" != "ad_creative_id" {
-			urlParams.Set("start_date", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["width"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "width" != "ad_creative_id" {
-			urlParams.Set("width", fmt.Sprintf("%v", val))
+		if "params" != "ad_creative_id" {
+			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
 
 	}
@@ -428,35 +324,11 @@ func (c *AdCreativeClient) Adcreative_delete_(args map[string]interface{}) (inte
 		}
 
 	}
-	if val, ok := args["account_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		if "account_id" != "ad_creative_id" {
-			urlParams.Set("account_id", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["adlabels"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "adlabels" != "ad_creative_id" {
-			urlParams.Set("adlabels", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["name"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "name" != "ad_creative_id" {
-			urlParams.Set("name", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["status"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "status" != "ad_creative_id" {
-			urlParams.Set("status", fmt.Sprintf("%v", val))
+		if "params" != "ad_creative_id" {
+			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
 
 	}
@@ -521,19 +393,11 @@ func (c *AdCreativeClient) Adcreative_get_(args map[string]interface{}) (interfa
 		}
 
 	}
-	if val, ok := args["thumbnail_height"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		if "thumbnail_height" != "ad_creative_id" {
-			urlParams.Set("thumbnail_height", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["thumbnail_width"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "thumbnail_width" != "ad_creative_id" {
-			urlParams.Set("thumbnail_width", fmt.Sprintf("%v", val))
+		if "params" != "ad_creative_id" {
+			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
 
 	}
@@ -630,35 +494,11 @@ func (c *AdCreativeClient) Adcreative_post_(args map[string]interface{}) (interf
 		}
 
 	}
-	if val, ok := args["account_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		if "account_id" != "ad_creative_id" {
-			urlParams.Set("account_id", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["adlabels"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "adlabels" != "ad_creative_id" {
-			urlParams.Set("adlabels", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["name"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "name" != "ad_creative_id" {
-			urlParams.Set("name", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["status"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "status" != "ad_creative_id" {
-			urlParams.Set("status", fmt.Sprintf("%v", val))
+		if "params" != "ad_creative_id" {
+			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
 
 	}

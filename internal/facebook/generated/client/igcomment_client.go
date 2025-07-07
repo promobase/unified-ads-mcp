@@ -100,10 +100,10 @@ func (c *IGCommentClient) Igcomment_post_replies(args map[string]interface{}) (i
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["message"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("message", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -149,10 +149,10 @@ func (c *IGCommentClient) Igcomment_delete_(args map[string]interface{}) (interf
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["ad_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("ad_id", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -256,11 +256,11 @@ func (c *IGCommentClient) Igcomment_get_(args map[string]interface{}) (interface
 // igcomment_post_ POST  for IGComment
 func (c *IGCommentClient) Igcomment_post_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	hide, ok := args["hide"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: hide")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = hide // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -270,16 +270,10 @@ func (c *IGCommentClient) Igcomment_post_(args map[string]interface{}) (interfac
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["ad_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("ad_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["hide"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("hide", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 

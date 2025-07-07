@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -26,8 +27,8 @@ func GetExtendedCreditAllocationConfigTools() []mcp.Tool {
 	// Available fields for ExtendedCreditAllocationConfig: currency_amount, id, liability_type, owning_business, owning_credential, partition_type, receiving_business, receiving_credential, request_status, send_bill_to
 	extendedcreditallocationconfig_get_Tool := mcp.NewTool("extendedcreditallocationconfig_get_",
 		mcp.WithDescription("GET  for ExtendedCreditAllocationConfig"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for ExtendedCreditAllocationConfig objects. Available fields: currency_amount, id, liability_type, owning_business, owning_credential, partition_type, receiving_business, receiving_credential, request_status, send_bill_to"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for ExtendedCreditAllocationConfig objects. Available fields: currency_amount, id, liability_type, owning_business, owning_credential, partition_type, receiving_business, receiving_credential, request_status, send_bill_to"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -42,10 +43,17 @@ func GetExtendedCreditAllocationConfigTools() []mcp.Tool {
 	tools = append(tools, extendedcreditallocationconfig_get_Tool)
 
 	// extendedcreditallocationconfig_post_ tool
+	// Params object accepts: amount (Object)
 	extendedcreditallocationconfig_post_Tool := mcp.NewTool("extendedcreditallocationconfig_post_",
 		mcp.WithDescription("POST  for ExtendedCreditAllocationConfig"),
-		mcp.WithString("amount",
-			mcp.Description("amount parameter for "),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"amount": map[string]any{
+					"type":        "object",
+					"description": "amount parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: amount (object)"),
 		),
 	)
 	tools = append(tools, extendedcreditallocationconfig_post_Tool)
@@ -99,8 +107,13 @@ func HandleExtendedcreditallocationconfig_get_(ctx context.Context, request mcp.
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -147,10 +160,16 @@ func HandleExtendedcreditallocationconfig_post_(ctx context.Context, request mcp
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: amount
-	// object type - using string
-	if val := request.GetString("amount", ""); val != "" {
-		args["amount"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method

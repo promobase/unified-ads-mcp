@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -18,16 +19,24 @@ func GetProductFeedTools() []mcp.Tool {
 
 	// productfeed_get_automotive_models tool
 	// Available fields for AutomotiveModel: applinks, automotive_model_id, availability, body_style, category_specific_fields, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0, custom_number_1, custom_number_2, custom_number_3, custom_number_4, description, drivetrain, exterior_color, finance_description, finance_type, fuel_type, generation, id, image_fetch_status, images, interior_color, interior_upholstery, make, model, price, sanitized_images, title, transmission, trim, unit_price, url, visibility, year
+	// Params object accepts: bulk_pagination (bool), filter (Object)
 	productfeed_get_automotive_modelsTool := mcp.NewTool("productfeed_get_automotive_models",
 		mcp.WithDescription("GET automotive_models for ProductFeed"),
-		mcp.WithBoolean("bulk_pagination",
-			mcp.Description("bulk_pagination parameter for automotive_models"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"bulk_pagination": map[string]any{
+					"type":        "boolean",
+					"description": "bulk_pagination parameter",
+				},
+				"filter": map[string]any{
+					"type":        "object",
+					"description": "filter parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: bulk_pagination (boolean), filter (object)"),
 		),
-		mcp.WithString("filter",
-			mcp.Description("filter parameter for automotive_models"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for AutomotiveModel objects. Available fields: applinks, automotive_model_id, availability, body_style, category_specific_fields, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0, custom_number_1, custom_number_2, custom_number_3 (and 24 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for AutomotiveModel objects. Available fields: applinks, automotive_model_id, availability, body_style, category_specific_fields, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0, custom_number_1, custom_number_2, custom_number_3 (and 24 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -43,16 +52,24 @@ func GetProductFeedTools() []mcp.Tool {
 
 	// productfeed_get_destinations tool
 	// Available fields for Destination: address, applinks, category_specific_fields, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0, custom_number_1, custom_number_2, custom_number_3, custom_number_4, description, destination_id, id, image_fetch_status, images, name, price, price_change, sanitized_images, tags, types, unit_price, url, visibility
+	// Params object accepts: bulk_pagination (bool), filter (Object)
 	productfeed_get_destinationsTool := mcp.NewTool("productfeed_get_destinations",
 		mcp.WithDescription("GET destinations for ProductFeed"),
-		mcp.WithBoolean("bulk_pagination",
-			mcp.Description("bulk_pagination parameter for destinations"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"bulk_pagination": map[string]any{
+					"type":        "boolean",
+					"description": "bulk_pagination parameter",
+				},
+				"filter": map[string]any{
+					"type":        "object",
+					"description": "filter parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: bulk_pagination (boolean), filter (object)"),
 		),
-		mcp.WithString("filter",
-			mcp.Description("filter parameter for destinations"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for Destination objects. Available fields: address, applinks, category_specific_fields, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0, custom_number_1, custom_number_2, custom_number_3, custom_number_4, description (and 13 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for Destination objects. Available fields: address, applinks, category_specific_fields, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0, custom_number_1, custom_number_2, custom_number_3, custom_number_4, description (and 13 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -68,16 +85,24 @@ func GetProductFeedTools() []mcp.Tool {
 
 	// productfeed_get_flights tool
 	// Available fields for Flight: applinks, category_specific_fields, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0, custom_number_1, custom_number_2, custom_number_3, custom_number_4, description, destination_airport, destination_city, flight_id, id, image_fetch_status, images, oneway_currency, oneway_price, origin_airport, origin_city, price, product_priority_0, product_priority_1, product_priority_2, product_priority_3, product_priority_4, sanitized_images, tags, unit_price, url, visibility
+	// Params object accepts: bulk_pagination (bool), filter (Object)
 	productfeed_get_flightsTool := mcp.NewTool("productfeed_get_flights",
 		mcp.WithDescription("GET flights for ProductFeed"),
-		mcp.WithBoolean("bulk_pagination",
-			mcp.Description("bulk_pagination parameter for flights"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"bulk_pagination": map[string]any{
+					"type":        "boolean",
+					"description": "bulk_pagination parameter",
+				},
+				"filter": map[string]any{
+					"type":        "object",
+					"description": "filter parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: bulk_pagination (boolean), filter (object)"),
 		),
-		mcp.WithString("filter",
-			mcp.Description("filter parameter for flights"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for Flight objects. Available fields: applinks, category_specific_fields, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0, custom_number_1, custom_number_2, custom_number_3, custom_number_4, description, destination_airport (and 20 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for Flight objects. Available fields: applinks, category_specific_fields, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0, custom_number_1, custom_number_2, custom_number_3, custom_number_4, description, destination_airport (and 20 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -93,16 +118,24 @@ func GetProductFeedTools() []mcp.Tool {
 
 	// productfeed_get_home_listings tool
 	// Available fields for HomeListing: ac_type, additional_fees_description, address, agent_company, agent_email, agent_fb_page_id, agent_name, agent_phone, applinks, area_size, area_unit, availability, category_specific_fields, co_2_emission_rating_eu, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0, custom_number_1, custom_number_2, custom_number_3, custom_number_4, days_on_market, description, energy_rating_eu, furnish_type, group_id, heating_type, home_listing_id, id, image_fetch_status, images, laundry_type, listing_type, max_currency, max_price, min_currency, min_price, name, num_baths, num_beds, num_rooms, num_units, parking_type, partner_verification, pet_policy, price, property_type, sanitized_images, securitydeposit_currency, securitydeposit_price, tags, unit_price, url, visibility, year_built
+	// Params object accepts: bulk_pagination (bool), filter (Object)
 	productfeed_get_home_listingsTool := mcp.NewTool("productfeed_get_home_listings",
 		mcp.WithDescription("GET home_listings for ProductFeed"),
-		mcp.WithBoolean("bulk_pagination",
-			mcp.Description("bulk_pagination parameter for home_listings"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"bulk_pagination": map[string]any{
+					"type":        "boolean",
+					"description": "bulk_pagination parameter",
+				},
+				"filter": map[string]any{
+					"type":        "object",
+					"description": "filter parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: bulk_pagination (boolean), filter (object)"),
 		),
-		mcp.WithString("filter",
-			mcp.Description("filter parameter for home_listings"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for HomeListing objects. Available fields: ac_type, additional_fees_description, address, agent_company, agent_email, agent_fb_page_id, agent_name, agent_phone, applinks, area_size, area_unit, availability, category_specific_fields, co_2_emission_rating_eu, currency (and 44 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for HomeListing objects. Available fields: ac_type, additional_fees_description, address, agent_company, agent_email, agent_fb_page_id, agent_name, agent_phone, applinks, area_size, area_unit, availability, category_specific_fields, co_2_emission_rating_eu, currency (and 44 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -118,16 +151,24 @@ func GetProductFeedTools() []mcp.Tool {
 
 	// productfeed_get_hotels tool
 	// Available fields for Hotel: address, applinks, brand, category, category_specific_fields, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0, custom_number_1, custom_number_2, custom_number_3, custom_number_4, description, guest_ratings, hotel_id, id, image_fetch_status, images, lowest_base_price, loyalty_program, margin_level, name, phone, product_priority_0, product_priority_1, product_priority_2, product_priority_3, product_priority_4, sale_price, sanitized_images, star_rating, tags, unit_price, url, visibility
+	// Params object accepts: bulk_pagination (bool), filter (Object)
 	productfeed_get_hotelsTool := mcp.NewTool("productfeed_get_hotels",
 		mcp.WithDescription("GET hotels for ProductFeed"),
-		mcp.WithBoolean("bulk_pagination",
-			mcp.Description("bulk_pagination parameter for hotels"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"bulk_pagination": map[string]any{
+					"type":        "boolean",
+					"description": "bulk_pagination parameter",
+				},
+				"filter": map[string]any{
+					"type":        "object",
+					"description": "filter parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: bulk_pagination (boolean), filter (object)"),
 		),
-		mcp.WithString("filter",
-			mcp.Description("filter parameter for hotels"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for Hotel objects. Available fields: address, applinks, brand, category, category_specific_fields, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0, custom_number_1, custom_number_2, custom_number_3 (and 24 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for Hotel objects. Available fields: address, applinks, brand, category, category_specific_fields, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0, custom_number_1, custom_number_2, custom_number_3 (and 24 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -143,16 +184,24 @@ func GetProductFeedTools() []mcp.Tool {
 
 	// productfeed_get_media_titles tool
 	// Available fields for MediaTitle: applinks, category_specific_fields, content_category, currency, description, fb_page_alias, fb_page_id, genres, id, image_fetch_status, images, kg_fb_id, media_title_id, price, sanitized_images, title, title_display_name, unit_price, url, visibility, wiki_data_item
+	// Params object accepts: bulk_pagination (bool), filter (Object)
 	productfeed_get_media_titlesTool := mcp.NewTool("productfeed_get_media_titles",
 		mcp.WithDescription("GET media_titles for ProductFeed"),
-		mcp.WithBoolean("bulk_pagination",
-			mcp.Description("bulk_pagination parameter for media_titles"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"bulk_pagination": map[string]any{
+					"type":        "boolean",
+					"description": "bulk_pagination parameter",
+				},
+				"filter": map[string]any{
+					"type":        "object",
+					"description": "filter parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: bulk_pagination (boolean), filter (object)"),
 		),
-		mcp.WithString("filter",
-			mcp.Description("filter parameter for media_titles"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for MediaTitle objects. Available fields: applinks, category_specific_fields, content_category, currency, description, fb_page_alias, fb_page_id, genres, id, image_fetch_status, images, kg_fb_id, media_title_id, price, sanitized_images (and 6 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for MediaTitle objects. Available fields: applinks, category_specific_fields, content_category, currency, description, fb_page_alias, fb_page_id, genres, id, image_fetch_status, images, kg_fb_id, media_title_id, price, sanitized_images (and 6 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -168,24 +217,34 @@ func GetProductFeedTools() []mcp.Tool {
 
 	// productfeed_get_products tool
 	// Available fields for ProductItem: additional_image_cdn_urls, additional_image_urls, additional_variant_attributes, age_group, applinks, availability, brand, bundle_items, bundle_retailer_ids, capability_to_review_status, category, category_specific_fields, color, commerce_insights, condition, currency, custom_data, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0, custom_number_1, custom_number_2, custom_number_3, custom_number_4, description, errors, expiration_date, fb_product_category, gender, generated_background_images, generated_background_images_ad_usage, gtin, id, image_cdn_urls, image_fetch_status, image_url, images, importer_address, importer_name, invalidation_errors, inventory, is_bundle_hero, manufacturer_info, manufacturer_part_number, marked_for_product_launch, material, mobile_link, name, ordering_index, origin_country, parent_product_id, pattern, post_conversion_signal_based_enforcement_appeal_eligibility, price, product_catalog, product_feed, product_group, product_local_info, product_relationship, product_type, quantity_to_sell_on_facebook, retailer_id, retailer_product_group_id, review_rejection_reasons, review_status, sale_price, sale_price_end_date, sale_price_start_date, shipping_weight_unit, shipping_weight_value, short_description, size, start_date, tags, url, vendor_id, video_fetch_status, videos, visibility, wa_compliance_category
+	// Params object accepts: bulk_pagination (bool), error_priority (productfeedproducts_error_priority_enum_param), error_type (productfeedproducts_error_type_enum_param), filter (Object)
 	productfeed_get_productsTool := mcp.NewTool("productfeed_get_products",
 		mcp.WithDescription("GET products for ProductFeed"),
-		mcp.WithBoolean("bulk_pagination",
-			mcp.Description("bulk_pagination parameter for products"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"bulk_pagination": map[string]any{
+					"type":        "boolean",
+					"description": "bulk_pagination parameter",
+				},
+				"error_priority": map[string]any{
+					"type":        "string",
+					"description": "error_priority parameter",
+					"enum":        []string{"HIGH", "LOW", "MEDIUM"},
+				},
+				"error_type": map[string]any{
+					"type":        "string",
+					"description": "error_type parameter",
+					"enum":        []string{"ADDRESS_BLOCKLISTED_IN_MARKET", "AGGREGATED_LOCALIZATION_ISSUES", "APP_HAS_NO_AEM_SETUP", "AR_DELETED_DUE_TO_UPDATE", "AR_POLICY_VIOLATED", "AVAILABLE", "BAD_QUALITY_IMAGE", "BIG_CATALOG_WITH_ALL_ITEMS_IN_STOCK", "BIZ_MSG_AI_AGENT_DISABLED_BY_USER", "BIZ_MSG_GEN_AI_POLICY_VIOLATED", "CANNOT_EDIT_SUBSCRIPTION_PRODUCTS", "CATALOG_NOT_CONNECTED_TO_EVENT_SOURCE", "CHECKOUT_DISABLED_BY_USER", "COMMERCE_ACCOUNT_LEGAL_ADDRESS_INVALID", "COMMERCE_ACCOUNT_NOT_LEGALLY_COMPLIANT", "CRAWLED_AVAILABILITY_MISMATCH", "DA_DISABLED_BY_USER", "DA_POLICY_UNFIT_FOR_AUDIENCE", "DA_POLICY_VIOLATION", "DELETED_ITEM", "DIGITAL_GOODS_NOT_AVAILABLE_FOR_CHECKOUT", "DUPLICATE_IMAGES", "DUPLICATE_TITLE_AND_DESCRIPTION", "EMPTY_AVAILABILITY", "EMPTY_CONDITION", "EMPTY_DESCRIPTION", "EMPTY_IMAGE_URL", "EMPTY_PRICE", "EMPTY_PRODUCT_URL", "EMPTY_SELLER_DESCRIPTION", "EMPTY_TITLE", "EXTERNAL_MERCHANT_ID_MISMATCH", "GENERIC_INVALID_FIELD", "GROUPS_DISABLED_BY_USER", "HIDDEN_UNTIL_PRODUCT_LAUNCH", "ILLEGAL_PRODUCT_CATEGORY", "IMAGE_FETCH_FAILED", "IMAGE_FETCH_FAILED_BAD_GATEWAY", "IMAGE_FETCH_FAILED_FILE_SIZE_EXCEEDED", "IMAGE_FETCH_FAILED_FORBIDDEN", "IMAGE_FETCH_FAILED_LINK_BROKEN", "IMAGE_FETCH_FAILED_TIMED_OUT", "IMAGE_RESOLUTION_LOW", "INACTIVE_SHOPIFY_PRODUCT", "INVALID_COMMERCE_TAX_CATEGORY", "INVALID_CONSOLIDATED_LOCALITY_INFORMATION", "INVALID_CONTENT_ID", "INVALID_DEALER_COMMUNICATION_PARAMETERS", "INVALID_DMA_CODES", "INVALID_FB_PAGE_ID", "INVALID_IMAGES", "INVALID_MONETIZER_RETURN_POLICY", "INVALID_OFFER_DISCLAIMER_URL", "INVALID_OFFER_END_DATE", "INVALID_PRE_ORDER_PARAMS", "INVALID_RANGE_FOR_AREA_SIZE", "INVALID_RANGE_FOR_BUILT_UP_AREA_SIZE", "INVALID_RANGE_FOR_NUM_OF_BATHS", "INVALID_RANGE_FOR_NUM_OF_BEDS", "INVALID_RANGE_FOR_NUM_OF_ROOMS", "INVALID_RANGE_FOR_PARKING_SPACES", "INVALID_SHELTER_PAGE_ID", "INVALID_SHIPPING_PROFILE_PARAMS", "INVALID_SUBSCRIPTION_DISABLE_PARAMS", "INVALID_SUBSCRIPTION_ENABLE_PARAMS", "INVALID_SUBSCRIPTION_PARAMS", "INVALID_TAX_EXTENSION_STATE", "INVALID_VEHICLE_STATE", "INVALID_VIRTUAL_TOUR_URL_DOMAIN", "INVENTORY_ZERO_AVAILABILITY_IN_STOCK", "IN_ANOTHER_PRODUCT_LAUNCH", "ITEM_GROUP_NOT_SPECIFIED", "ITEM_NOT_SHIPPABLE_FOR_SCA_SHOP", "ITEM_OVERRIDE_EMPTY_AVAILABILITY", "ITEM_OVERRIDE_EMPTY_PRICE", "ITEM_OVERRIDE_NOT_VISIBLE", "ITEM_PRICE_NOT_POSITIVE", "ITEM_STALE_OUT_OF_STOCK", "MARKETPLACE_DISABLED_BY_USER", "MARKETPLACE_PARTNER_AUCTION_NO_BID_CLOSE_TIME", "MARKETPLACE_PARTNER_CURRENCY_NOT_VALID", "MARKETPLACE_PARTNER_LISTING_COUNTRY_NOT_MATCH_CATALOG", "MARKETPLACE_PARTNER_LISTING_LIMIT_EXCEEDED", "MARKETPLACE_PARTNER_MISSING_LATLONG", "MARKETPLACE_PARTNER_MISSING_SHIPPING_COST", "MARKETPLACE_PARTNER_NOT_LOCAL_ITEM", "MARKETPLACE_PARTNER_NOT_SHIPPED_ITEM", "MARKETPLACE_PARTNER_POLICY_VIOLATION", "MARKETPLACE_PARTNER_RULE_LISTING_LIMIT_EXCEEDED", "MARKETPLACE_PARTNER_SELLER_BANNED", "MARKETPLACE_PARTNER_SELLER_NOT_VALID", "MINI_SHOPS_DISABLED_BY_USER", "MISSING_CHECKOUT", "MISSING_CHECKOUT_CURRENCY", "MISSING_COLOR", "MISSING_COUNTRY_OVERRIDE_IN_SHIPPING_PROFILE", "MISSING_EVENT", "MISSING_INDIA_COMPLIANCE_FIELDS", "MISSING_SHIPPING_PROFILE", "MISSING_SIZE", "MISSING_TAX_CATEGORY", "NEGATIVE_COMMUNITY_FEEDBACK", "NEGATIVE_PRICE", "NOT_ENOUGH_IMAGES", "NOT_ENOUGH_UNIQUE_PRODUCTS", "NO_CONTENT_ID", "OVERLAY_DISCLAIMER_EXCEEDED_MAX_LENGTH", "PART_OF_PRODUCT_LAUNCH", "PASSING_MULTIPLE_CONTENT_IDS", "PRODUCT_DOMINANT_CURRENCY_MISMATCH", "PRODUCT_EXPIRED", "PRODUCT_ITEM_HIDDEN_FROM_ALL_SHOPS", "PRODUCT_ITEM_INVALID_PARTNER_TOKENS", "PRODUCT_ITEM_NOT_INCLUDED_IN_ANY_SHOP", "PRODUCT_ITEM_NOT_VISIBLE", "PRODUCT_NOT_APPROVED", "PRODUCT_NOT_DOMINANT_CURRENCY", "PRODUCT_OUT_OF_STOCK", "PRODUCT_URL_EQUALS_DOMAIN", "PROPERTY_PRICE_CURRENCY_NOT_SUPPORTED", "PROPERTY_PRICE_TOO_HIGH", "PROPERTY_PRICE_TOO_LOW", "PROPERTY_UNIT_PRICE_CURRENCY_MISMATCH_ITEM_PRICE_CURRENCY", "PROPERTY_VALUE_CONTAINS_HTML_TAGS", "PROPERTY_VALUE_DESCRIPTION_CONTAINS_OFF_PLATFORM_LINK", "PROPERTY_VALUE_FORMAT", "PROPERTY_VALUE_MISSING", "PROPERTY_VALUE_MISSING_WARNING", "PROPERTY_VALUE_NON_POSITIVE", "PROPERTY_VALUE_STRING_EXCEEDS_LENGTH", "PROPERTY_VALUE_STRING_TOO_SHORT", "PROPERTY_VALUE_UPPERCASE", "PROPERTY_VALUE_UPPERCASE_WARNING", "PURCHASE_RATE_BELOW_ADDTOCART", "PURCHASE_RATE_BELOW_VIEWCONTENT", "QUALITY_DUPLICATED_DESCRIPTION", "QUALITY_ITEM_LINK_BROKEN", "QUALITY_ITEM_LINK_REDIRECTING", "RETAILER_ID_NOT_PROVIDED", "SHOPIFY_INVALID_RETAILER_ID", "SHOPIFY_ITEM_MISSING_SHIPPING_PROFILE", "SHOPS_POLICY_VIOLATION", "SUBSCRIPTION_INFO_NOT_ENABLED_FOR_FEED", "TAX_CATEGORY_NOT_SUPPORTED_IN_UK", "UNIQUE_PRODUCT_IDENTIFIER_MISSING", "UNMATCHED_EVENTS", "UNSUPPORTED_PRODUCT_CATEGORY", "VARIANT_ATTRIBUTE_ISSUE", "VIDEO_FETCH_FAILED", "VIDEO_FETCH_FAILED_BAD_GATEWAY", "VIDEO_FETCH_FAILED_FILE_SIZE_EXCEEDED", "VIDEO_FETCH_FAILED_FORBIDDEN", "VIDEO_FETCH_FAILED_LINK_BROKEN", "VIDEO_FETCH_FAILED_TIMED_OUT", "VIDEO_NOT_DOWNLOADABLE", "WHATSAPP_DISABLED_BY_USER", "WHATSAPP_MARKETING_MESSAGE_DISABLED_BY_USER", "WHATSAPP_MARKETING_MESSAGE_POLICY_VIOLATION", "WHATSAPP_POLICY_VIOLATION"},
+				},
+				"filter": map[string]any{
+					"type":        "object",
+					"description": "filter parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: bulk_pagination (boolean), error_priority (enum) [HIGH, LOW, MEDIUM], error_type (enum) [ADDRESS_BLOCKLISTED_IN_MARKET, AGGREGATED_LOCALIZATION_ISSUES, APP_HAS_NO_AEM_SETUP, AR_DELETED_DUE_TO_UPDATE, AR_POLICY_VIOLATED, ...], filter (object)"),
 		),
-		mcp.WithString("error_priority",
-			mcp.Description("error_priority parameter for products"),
-			mcp.Enum("HIGH", "LOW", "MEDIUM"),
-		),
-		mcp.WithString("error_type",
-			mcp.Description("error_type parameter for products"),
-			mcp.Enum("ADDRESS_BLOCKLISTED_IN_MARKET", "AGGREGATED_LOCALIZATION_ISSUES", "APP_HAS_NO_AEM_SETUP", "AR_DELETED_DUE_TO_UPDATE", "AR_POLICY_VIOLATED", "AVAILABLE", "BAD_QUALITY_IMAGE", "BIG_CATALOG_WITH_ALL_ITEMS_IN_STOCK", "BIZ_MSG_AI_AGENT_DISABLED_BY_USER", "BIZ_MSG_GEN_AI_POLICY_VIOLATED", "CANNOT_EDIT_SUBSCRIPTION_PRODUCTS", "CATALOG_NOT_CONNECTED_TO_EVENT_SOURCE", "CHECKOUT_DISABLED_BY_USER", "COMMERCE_ACCOUNT_LEGAL_ADDRESS_INVALID", "COMMERCE_ACCOUNT_NOT_LEGALLY_COMPLIANT", "CRAWLED_AVAILABILITY_MISMATCH", "DA_DISABLED_BY_USER", "DA_POLICY_UNFIT_FOR_AUDIENCE", "DA_POLICY_VIOLATION", "DELETED_ITEM", "DIGITAL_GOODS_NOT_AVAILABLE_FOR_CHECKOUT", "DUPLICATE_IMAGES", "DUPLICATE_TITLE_AND_DESCRIPTION", "EMPTY_AVAILABILITY", "EMPTY_CONDITION", "EMPTY_DESCRIPTION", "EMPTY_IMAGE_URL", "EMPTY_PRICE", "EMPTY_PRODUCT_URL", "EMPTY_SELLER_DESCRIPTION", "EMPTY_TITLE", "EXTERNAL_MERCHANT_ID_MISMATCH", "GENERIC_INVALID_FIELD", "GROUPS_DISABLED_BY_USER", "HIDDEN_UNTIL_PRODUCT_LAUNCH", "ILLEGAL_PRODUCT_CATEGORY", "IMAGE_FETCH_FAILED", "IMAGE_FETCH_FAILED_BAD_GATEWAY", "IMAGE_FETCH_FAILED_FILE_SIZE_EXCEEDED", "IMAGE_FETCH_FAILED_FORBIDDEN", "IMAGE_FETCH_FAILED_LINK_BROKEN", "IMAGE_FETCH_FAILED_TIMED_OUT", "IMAGE_RESOLUTION_LOW", "INACTIVE_SHOPIFY_PRODUCT", "INVALID_COMMERCE_TAX_CATEGORY", "INVALID_CONSOLIDATED_LOCALITY_INFORMATION", "INVALID_CONTENT_ID", "INVALID_DEALER_COMMUNICATION_PARAMETERS", "INVALID_DMA_CODES", "INVALID_FB_PAGE_ID", "INVALID_IMAGES", "INVALID_MONETIZER_RETURN_POLICY", "INVALID_OFFER_DISCLAIMER_URL", "INVALID_OFFER_END_DATE", "INVALID_PRE_ORDER_PARAMS", "INVALID_RANGE_FOR_AREA_SIZE", "INVALID_RANGE_FOR_BUILT_UP_AREA_SIZE", "INVALID_RANGE_FOR_NUM_OF_BATHS", "INVALID_RANGE_FOR_NUM_OF_BEDS", "INVALID_RANGE_FOR_NUM_OF_ROOMS", "INVALID_RANGE_FOR_PARKING_SPACES", "INVALID_SHELTER_PAGE_ID", "INVALID_SHIPPING_PROFILE_PARAMS", "INVALID_SUBSCRIPTION_DISABLE_PARAMS", "INVALID_SUBSCRIPTION_ENABLE_PARAMS", "INVALID_SUBSCRIPTION_PARAMS", "INVALID_TAX_EXTENSION_STATE", "INVALID_VEHICLE_STATE", "INVALID_VIRTUAL_TOUR_URL_DOMAIN", "INVENTORY_ZERO_AVAILABILITY_IN_STOCK", "IN_ANOTHER_PRODUCT_LAUNCH", "ITEM_GROUP_NOT_SPECIFIED", "ITEM_NOT_SHIPPABLE_FOR_SCA_SHOP", "ITEM_OVERRIDE_EMPTY_AVAILABILITY", "ITEM_OVERRIDE_EMPTY_PRICE", "ITEM_OVERRIDE_NOT_VISIBLE", "ITEM_PRICE_NOT_POSITIVE", "ITEM_STALE_OUT_OF_STOCK", "MARKETPLACE_DISABLED_BY_USER", "MARKETPLACE_PARTNER_AUCTION_NO_BID_CLOSE_TIME", "MARKETPLACE_PARTNER_CURRENCY_NOT_VALID", "MARKETPLACE_PARTNER_LISTING_COUNTRY_NOT_MATCH_CATALOG", "MARKETPLACE_PARTNER_LISTING_LIMIT_EXCEEDED", "MARKETPLACE_PARTNER_MISSING_LATLONG", "MARKETPLACE_PARTNER_MISSING_SHIPPING_COST", "MARKETPLACE_PARTNER_NOT_LOCAL_ITEM", "MARKETPLACE_PARTNER_NOT_SHIPPED_ITEM", "MARKETPLACE_PARTNER_POLICY_VIOLATION", "MARKETPLACE_PARTNER_RULE_LISTING_LIMIT_EXCEEDED", "MARKETPLACE_PARTNER_SELLER_BANNED", "MARKETPLACE_PARTNER_SELLER_NOT_VALID", "MINI_SHOPS_DISABLED_BY_USER", "MISSING_CHECKOUT", "MISSING_CHECKOUT_CURRENCY", "MISSING_COLOR", "MISSING_COUNTRY_OVERRIDE_IN_SHIPPING_PROFILE", "MISSING_EVENT", "MISSING_INDIA_COMPLIANCE_FIELDS", "MISSING_SHIPPING_PROFILE", "MISSING_SIZE", "MISSING_TAX_CATEGORY", "NEGATIVE_COMMUNITY_FEEDBACK", "NEGATIVE_PRICE", "NOT_ENOUGH_IMAGES", "NOT_ENOUGH_UNIQUE_PRODUCTS", "NO_CONTENT_ID", "OVERLAY_DISCLAIMER_EXCEEDED_MAX_LENGTH", "PART_OF_PRODUCT_LAUNCH", "PASSING_MULTIPLE_CONTENT_IDS", "PRODUCT_DOMINANT_CURRENCY_MISMATCH", "PRODUCT_EXPIRED", "PRODUCT_ITEM_HIDDEN_FROM_ALL_SHOPS", "PRODUCT_ITEM_INVALID_PARTNER_TOKENS", "PRODUCT_ITEM_NOT_INCLUDED_IN_ANY_SHOP", "PRODUCT_ITEM_NOT_VISIBLE", "PRODUCT_NOT_APPROVED", "PRODUCT_NOT_DOMINANT_CURRENCY", "PRODUCT_OUT_OF_STOCK", "PRODUCT_URL_EQUALS_DOMAIN", "PROPERTY_PRICE_CURRENCY_NOT_SUPPORTED", "PROPERTY_PRICE_TOO_HIGH", "PROPERTY_PRICE_TOO_LOW", "PROPERTY_UNIT_PRICE_CURRENCY_MISMATCH_ITEM_PRICE_CURRENCY", "PROPERTY_VALUE_CONTAINS_HTML_TAGS", "PROPERTY_VALUE_DESCRIPTION_CONTAINS_OFF_PLATFORM_LINK", "PROPERTY_VALUE_FORMAT", "PROPERTY_VALUE_MISSING", "PROPERTY_VALUE_MISSING_WARNING", "PROPERTY_VALUE_NON_POSITIVE", "PROPERTY_VALUE_STRING_EXCEEDS_LENGTH", "PROPERTY_VALUE_STRING_TOO_SHORT", "PROPERTY_VALUE_UPPERCASE", "PROPERTY_VALUE_UPPERCASE_WARNING", "PURCHASE_RATE_BELOW_ADDTOCART", "PURCHASE_RATE_BELOW_VIEWCONTENT", "QUALITY_DUPLICATED_DESCRIPTION", "QUALITY_ITEM_LINK_BROKEN", "QUALITY_ITEM_LINK_REDIRECTING", "RETAILER_ID_NOT_PROVIDED", "SHOPIFY_INVALID_RETAILER_ID", "SHOPIFY_ITEM_MISSING_SHIPPING_PROFILE", "SHOPS_POLICY_VIOLATION", "SUBSCRIPTION_INFO_NOT_ENABLED_FOR_FEED", "TAX_CATEGORY_NOT_SUPPORTED_IN_UK", "UNIQUE_PRODUCT_IDENTIFIER_MISSING", "UNMATCHED_EVENTS", "UNSUPPORTED_PRODUCT_CATEGORY", "VARIANT_ATTRIBUTE_ISSUE", "VIDEO_FETCH_FAILED", "VIDEO_FETCH_FAILED_BAD_GATEWAY", "VIDEO_FETCH_FAILED_FILE_SIZE_EXCEEDED", "VIDEO_FETCH_FAILED_FORBIDDEN", "VIDEO_FETCH_FAILED_LINK_BROKEN", "VIDEO_FETCH_FAILED_TIMED_OUT", "VIDEO_NOT_DOWNLOADABLE", "WHATSAPP_DISABLED_BY_USER", "WHATSAPP_MARKETING_MESSAGE_DISABLED_BY_USER", "WHATSAPP_MARKETING_MESSAGE_POLICY_VIOLATION", "WHATSAPP_POLICY_VIOLATION"),
-		),
-		mcp.WithString("filter",
-			mcp.Description("filter parameter for products"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for ProductItem objects. Available fields: additional_image_cdn_urls, additional_image_urls, additional_variant_attributes, age_group, applinks, availability, brand, bundle_items, bundle_retailer_ids, capability_to_review_status, category, category_specific_fields, color, commerce_insights, condition (and 68 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for ProductItem objects. Available fields: additional_image_cdn_urls, additional_image_urls, additional_variant_attributes, age_group, applinks, availability, brand, bundle_items, bundle_retailer_ids, capability_to_review_status, category, category_specific_fields, color, commerce_insights, condition (and 68 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -203,8 +262,8 @@ func GetProductFeedTools() []mcp.Tool {
 	// Available fields for ProductFeedRule: attribute, id, params, rule_type
 	productfeed_get_rulesTool := mcp.NewTool("productfeed_get_rules",
 		mcp.WithDescription("GET rules for ProductFeed"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for ProductFeedRule objects. Available fields: attribute, id, params, rule_type"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for ProductFeedRule objects. Available fields: attribute, id, params, rule_type"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -219,29 +278,48 @@ func GetProductFeedTools() []mcp.Tool {
 	tools = append(tools, productfeed_get_rulesTool)
 
 	// productfeed_post_rules tool
+	// Params object accepts: attribute (string), params (map), rule_type (productfeedrules_rule_type_enum_param)
 	productfeed_post_rulesTool := mcp.NewTool("productfeed_post_rules",
 		mcp.WithDescription("POST rules for ProductFeed"),
-		mcp.WithString("attribute",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("attribute parameter for rules"),
-		),
-		mcp.WithString("params",
-			mcp.Description("params parameter for rules"),
-		),
-		mcp.WithString("rule_type",
-			mcp.Required(),
-			mcp.Description("rule_type parameter for rules"),
-			mcp.Enum("fallback_rule", "letter_case_rule", "mapping_rule", "regex_replace_rule", "value_mapping_rule"),
+			mcp.Properties(map[string]any{
+				"attribute": map[string]any{
+					"type":        "string",
+					"description": "attribute parameter",
+					"required":    true,
+				},
+				"params": map[string]any{
+					"type":        "object",
+					"description": "params parameter",
+				},
+				"rule_type": map[string]any{
+					"type":        "string",
+					"description": "rule_type parameter",
+					"required":    true,
+					"enum":        []string{"fallback_rule", "letter_case_rule", "mapping_rule", "regex_replace_rule", "value_mapping_rule"},
+				},
+			}),
+			mcp.Description("Parameters object containing: attribute (string) [required], params (object), rule_type (enum) [fallback_rule, letter_case_rule, mapping_rule, regex_replace_rule, value_mapping_rule] [required]"),
 		),
 	)
 	tools = append(tools, productfeed_post_rulesTool)
 
 	// productfeed_post_supplementary_feed_assocs tool
+	// Params object accepts: assoc_data (list<map>)
 	productfeed_post_supplementary_feed_assocsTool := mcp.NewTool("productfeed_post_supplementary_feed_assocs",
 		mcp.WithDescription("POST supplementary_feed_assocs for ProductFeed"),
-		mcp.WithString("assoc_data",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("assoc_data parameter for supplementary_feed_assocs"),
+			mcp.Properties(map[string]any{
+				"assoc_data": map[string]any{
+					"type":        "array",
+					"description": "assoc_data parameter",
+					"required":    true,
+					"items":       map[string]any{"type": "object"},
+				},
+			}),
+			mcp.Description("Parameters object containing: assoc_data (array<object>) [required]"),
 		),
 	)
 	tools = append(tools, productfeed_post_supplementary_feed_assocsTool)
@@ -250,8 +328,8 @@ func GetProductFeedTools() []mcp.Tool {
 	// Available fields for ProductFeedSchedule: day_of_month, day_of_week, hour, id, interval, interval_count, minute, timezone, url, username
 	productfeed_get_upload_schedulesTool := mcp.NewTool("productfeed_get_upload_schedules",
 		mcp.WithDescription("GET upload_schedules for ProductFeed"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for ProductFeedSchedule objects. Available fields: day_of_month, day_of_week, hour, id, interval, interval_count, minute, timezone, url, username"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for ProductFeedSchedule objects. Available fields: day_of_month, day_of_week, hour, id, interval, interval_count, minute, timezone, url, username"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -266,10 +344,17 @@ func GetProductFeedTools() []mcp.Tool {
 	tools = append(tools, productfeed_get_upload_schedulesTool)
 
 	// productfeed_post_upload_schedules tool
+	// Params object accepts: upload_schedule (string)
 	productfeed_post_upload_schedulesTool := mcp.NewTool("productfeed_post_upload_schedules",
 		mcp.WithDescription("POST upload_schedules for ProductFeed"),
-		mcp.WithString("upload_schedule",
-			mcp.Description("upload_schedule parameter for upload_schedules"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"upload_schedule": map[string]any{
+					"type":        "string",
+					"description": "upload_schedule parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: upload_schedule (string)"),
 		),
 	)
 	tools = append(tools, productfeed_post_upload_schedulesTool)
@@ -278,8 +363,8 @@ func GetProductFeedTools() []mcp.Tool {
 	// Available fields for ProductFeedUpload: end_time, error_count, error_report, filename, id, input_method, num_deleted_items, num_detected_items, num_invalid_items, num_persisted_items, start_time, url, warning_count
 	productfeed_get_uploadsTool := mcp.NewTool("productfeed_get_uploads",
 		mcp.WithDescription("GET uploads for ProductFeed"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for ProductFeedUpload objects. Available fields: end_time, error_count, error_report, filename, id, input_method, num_deleted_items, num_detected_items, num_invalid_items, num_persisted_items, start_time, url, warning_count"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for ProductFeedUpload objects. Available fields: end_time, error_count, error_report, filename, id, input_method, num_deleted_items, num_detected_items, num_invalid_items, num_persisted_items, start_time, url, warning_count"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -294,41 +379,61 @@ func GetProductFeedTools() []mcp.Tool {
 	tools = append(tools, productfeed_get_uploadsTool)
 
 	// productfeed_post_uploads tool
+	// Params object accepts: fbe_external_business_id (string), file (file), password (string), update_only (bool), url (string), username (string)
 	productfeed_post_uploadsTool := mcp.NewTool("productfeed_post_uploads",
 		mcp.WithDescription("POST uploads for ProductFeed"),
-		mcp.WithString("fbe_external_business_id",
-			mcp.Description("fbe_external_business_id parameter for uploads"),
-		),
-		mcp.WithString("file",
-			mcp.Description("file parameter for uploads"),
-		),
-		mcp.WithString("password",
-			mcp.Description("password parameter for uploads"),
-		),
-		mcp.WithBoolean("update_only",
-			mcp.Description("update_only parameter for uploads"),
-		),
-		mcp.WithString("url",
-			mcp.Description("url parameter for uploads"),
-		),
-		mcp.WithString("username",
-			mcp.Description("username parameter for uploads"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"fbe_external_business_id": map[string]any{
+					"type":        "string",
+					"description": "fbe_external_business_id parameter",
+				},
+				"file": map[string]any{
+					"type":        "string",
+					"description": "file parameter",
+				},
+				"password": map[string]any{
+					"type":        "string",
+					"description": "password parameter",
+				},
+				"update_only": map[string]any{
+					"type":        "boolean",
+					"description": "update_only parameter",
+				},
+				"url": map[string]any{
+					"type":        "string",
+					"description": "url parameter",
+				},
+				"username": map[string]any{
+					"type":        "string",
+					"description": "username parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: fbe_external_business_id (string), file (file), password (string), update_only (boolean), url (string), username (string)"),
 		),
 	)
 	tools = append(tools, productfeed_post_uploadsTool)
 
 	// productfeed_get_vehicle_offers tool
 	// Available fields for VehicleOffer: amount_currency, amount_percentage, amount_price, amount_qualifier, applinks, availability, body_style, cashback_currency, cashback_price, category_specific_fields, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0, custom_number_1, custom_number_2, custom_number_3, custom_number_4, dma_codes, downpayment_currency, downpayment_price, downpayment_qualifier, drivetrain, end_date, end_time, exterior_color, fuel_type, generation, id, image_fetch_status, images, interior_color, interior_upholstery, make, model, offer_description, offer_disclaimer, offer_type, price, product_priority_0, product_priority_1, product_priority_2, product_priority_3, product_priority_4, sanitized_images, start_date, start_time, tags, term_length, term_qualifier, title, transmission, trim, unit_price, url, vehicle_offer_id, visibility, year
+	// Params object accepts: bulk_pagination (bool), filter (Object)
 	productfeed_get_vehicle_offersTool := mcp.NewTool("productfeed_get_vehicle_offers",
 		mcp.WithDescription("GET vehicle_offers for ProductFeed"),
-		mcp.WithBoolean("bulk_pagination",
-			mcp.Description("bulk_pagination parameter for vehicle_offers"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"bulk_pagination": map[string]any{
+					"type":        "boolean",
+					"description": "bulk_pagination parameter",
+				},
+				"filter": map[string]any{
+					"type":        "object",
+					"description": "filter parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: bulk_pagination (boolean), filter (object)"),
 		),
-		mcp.WithString("filter",
-			mcp.Description("filter parameter for vehicle_offers"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for VehicleOffer objects. Available fields: amount_currency, amount_percentage, amount_price, amount_qualifier, applinks, availability, body_style, cashback_currency, cashback_price, category_specific_fields, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3 (and 46 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for VehicleOffer objects. Available fields: amount_currency, amount_percentage, amount_price, amount_qualifier, applinks, availability, body_style, cashback_currency, cashback_price, category_specific_fields, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3 (and 46 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -344,16 +449,24 @@ func GetProductFeedTools() []mcp.Tool {
 
 	// productfeed_get_vehicles tool
 	// Available fields for Vehicle: address, applinks, availability, availability_circle_radius, availability_circle_radius_unit, body_style, category_specific_fields, condition, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0, custom_number_1, custom_number_2, custom_number_3, custom_number_4, date_first_on_lot, dealer_communication_channel, dealer_email, dealer_id, dealer_name, dealer_phone, dealer_privacy_policy_url, description, drivetrain, exterior_color, fb_page_id, features, fuel_type, id, image_fetch_status, images, interior_color, legal_disclosure_impressum_url, make, mileage, model, previous_currency, previous_price, price, product_priority_0, product_priority_1, product_priority_2, product_priority_3, product_priority_4, sale_currency, sale_price, sanitized_images, state_of_vehicle, tags, title, transmission, trim, unit_price, url, vehicle_id, vehicle_registration_plate, vehicle_specifications, vehicle_type, vin, visibility, year
+	// Params object accepts: bulk_pagination (bool), filter (Object)
 	productfeed_get_vehiclesTool := mcp.NewTool("productfeed_get_vehicles",
 		mcp.WithDescription("GET vehicles for ProductFeed"),
-		mcp.WithBoolean("bulk_pagination",
-			mcp.Description("bulk_pagination parameter for vehicles"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"bulk_pagination": map[string]any{
+					"type":        "boolean",
+					"description": "bulk_pagination parameter",
+				},
+				"filter": map[string]any{
+					"type":        "object",
+					"description": "filter parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: bulk_pagination (boolean), filter (object)"),
 		),
-		mcp.WithString("filter",
-			mcp.Description("filter parameter for vehicles"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for Vehicle objects. Available fields: address, applinks, availability, availability_circle_radius, availability_circle_radius_unit, body_style, category_specific_fields, condition, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0 (and 50 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for Vehicle objects. Available fields: address, applinks, availability, availability_circle_radius, availability_circle_radius_unit, body_style, category_specific_fields, condition, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0 (and 50 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -377,8 +490,8 @@ func GetProductFeedTools() []mcp.Tool {
 	// Available fields for ProductFeed: country, created_time, default_currency, deletion_enabled, delimiter, encoding, file_name, id, ingestion_source_type, item_sub_type, latest_upload, migrated_from_feed_id, name, override_type, primary_feeds, product_count, quoted_fields_mode, schedule, supplementary_feeds, update_schedule
 	productfeed_get_Tool := mcp.NewTool("productfeed_get_",
 		mcp.WithDescription("GET  for ProductFeed"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for ProductFeed objects. Available fields: country, created_time, default_currency, deletion_enabled, delimiter, encoding, file_name, id, ingestion_source_type, item_sub_type, latest_upload, migrated_from_feed_id, name, override_type, primary_feeds (and 5 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for ProductFeed objects. Available fields: country, created_time, default_currency, deletion_enabled, delimiter, encoding, file_name, id, ingestion_source_type, item_sub_type, latest_upload, migrated_from_feed_id, name, override_type, primary_feeds (and 5 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -393,37 +506,52 @@ func GetProductFeedTools() []mcp.Tool {
 	tools = append(tools, productfeed_get_Tool)
 
 	// productfeed_post_ tool
+	// Params object accepts: default_currency (string), deletion_enabled (bool), delimiter (productfeed_delimiter), encoding (productfeed_encoding), migrated_from_feed_id (string), name (string), quoted_fields_mode (productfeed_quoted_fields_mode), schedule (string), update_schedule (string)
 	productfeed_post_Tool := mcp.NewTool("productfeed_post_",
 		mcp.WithDescription("POST  for ProductFeed"),
-		mcp.WithString("default_currency",
-			mcp.Description("default_currency parameter for "),
-		),
-		mcp.WithBoolean("deletion_enabled",
-			mcp.Description("deletion_enabled parameter for "),
-		),
-		mcp.WithString("delimiter",
-			mcp.Description("delimiter parameter for "),
-			mcp.Enum("AUTODETECT", "BAR", "COMMA", "SEMICOLON", "TAB", "TILDE"),
-		),
-		mcp.WithString("encoding",
-			mcp.Description("encoding parameter for "),
-			mcp.Enum("AUTODETECT", "LATIN1", "UTF16BE", "UTF16LE", "UTF32BE", "UTF32LE", "UTF8"),
-		),
-		mcp.WithString("migrated_from_feed_id",
-			mcp.Description("migrated_from_feed_id parameter for "),
-		),
-		mcp.WithString("name",
-			mcp.Description("name parameter for "),
-		),
-		mcp.WithString("quoted_fields_mode",
-			mcp.Description("quoted_fields_mode parameter for "),
-			mcp.Enum("autodetect", "off", "on"),
-		),
-		mcp.WithString("schedule",
-			mcp.Description("schedule parameter for "),
-		),
-		mcp.WithString("update_schedule",
-			mcp.Description("update_schedule parameter for "),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"default_currency": map[string]any{
+					"type":        "string",
+					"description": "default_currency parameter",
+				},
+				"deletion_enabled": map[string]any{
+					"type":        "boolean",
+					"description": "deletion_enabled parameter",
+				},
+				"delimiter": map[string]any{
+					"type":        "string",
+					"description": "delimiter parameter",
+					"enum":        []string{"AUTODETECT", "BAR", "COMMA", "SEMICOLON", "TAB", "TILDE"},
+				},
+				"encoding": map[string]any{
+					"type":        "string",
+					"description": "encoding parameter",
+					"enum":        []string{"AUTODETECT", "LATIN1", "UTF16BE", "UTF16LE", "UTF32BE", "UTF32LE", "UTF8"},
+				},
+				"migrated_from_feed_id": map[string]any{
+					"type":        "string",
+					"description": "migrated_from_feed_id parameter",
+				},
+				"name": map[string]any{
+					"type":        "string",
+					"description": "name parameter",
+				},
+				"quoted_fields_mode": map[string]any{
+					"type":        "string",
+					"description": "quoted_fields_mode parameter",
+					"enum":        []string{"autodetect", "off", "on"},
+				},
+				"schedule": map[string]any{
+					"type":        "string",
+					"description": "schedule parameter",
+				},
+				"update_schedule": map[string]any{
+					"type":        "string",
+					"description": "update_schedule parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: default_currency (string), deletion_enabled (boolean), delimiter (productfeed_delimiter) [AUTODETECT, BAR, COMMA, SEMICOLON, TAB, ...], encoding (productfeed_encoding) [AUTODETECT, LATIN1, UTF16BE, UTF16LE, UTF32BE, ...], migrated_from_feed_id (string), name (string), quoted_fields_mode (productfeed_quoted_fields_mode) [autodetect, off, on], schedule (string), update_schedule (string)"),
 		),
 	)
 	tools = append(tools, productfeed_post_Tool)
@@ -447,20 +575,26 @@ func HandleProductfeed_get_automotive_models(ctx context.Context, request mcp.Ca
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: bulk_pagination
-	if val := request.GetBool("bulk_pagination", false); val {
-		args["bulk_pagination"] = val
-	}
-
-	// Optional: filter
-	// object type - using string
-	if val := request.GetString("filter", ""); val != "" {
-		args["filter"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -507,20 +641,26 @@ func HandleProductfeed_get_destinations(ctx context.Context, request mcp.CallToo
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: bulk_pagination
-	if val := request.GetBool("bulk_pagination", false); val {
-		args["bulk_pagination"] = val
-	}
-
-	// Optional: filter
-	// object type - using string
-	if val := request.GetString("filter", ""); val != "" {
-		args["filter"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -567,20 +707,26 @@ func HandleProductfeed_get_flights(ctx context.Context, request mcp.CallToolRequ
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: bulk_pagination
-	if val := request.GetBool("bulk_pagination", false); val {
-		args["bulk_pagination"] = val
-	}
-
-	// Optional: filter
-	// object type - using string
-	if val := request.GetString("filter", ""); val != "" {
-		args["filter"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -627,20 +773,26 @@ func HandleProductfeed_get_home_listings(ctx context.Context, request mcp.CallTo
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: bulk_pagination
-	if val := request.GetBool("bulk_pagination", false); val {
-		args["bulk_pagination"] = val
-	}
-
-	// Optional: filter
-	// object type - using string
-	if val := request.GetString("filter", ""); val != "" {
-		args["filter"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -687,20 +839,26 @@ func HandleProductfeed_get_hotels(ctx context.Context, request mcp.CallToolReque
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: bulk_pagination
-	if val := request.GetBool("bulk_pagination", false); val {
-		args["bulk_pagination"] = val
-	}
-
-	// Optional: filter
-	// object type - using string
-	if val := request.GetString("filter", ""); val != "" {
-		args["filter"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -747,20 +905,26 @@ func HandleProductfeed_get_media_titles(ctx context.Context, request mcp.CallToo
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: bulk_pagination
-	if val := request.GetBool("bulk_pagination", false); val {
-		args["bulk_pagination"] = val
-	}
-
-	// Optional: filter
-	// object type - using string
-	if val := request.GetString("filter", ""); val != "" {
-		args["filter"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -807,30 +971,26 @@ func HandleProductfeed_get_products(ctx context.Context, request mcp.CallToolReq
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: bulk_pagination
-	if val := request.GetBool("bulk_pagination", false); val {
-		args["bulk_pagination"] = val
-	}
-
-	// Optional: error_priority
-	if val := request.GetString("error_priority", ""); val != "" {
-		args["error_priority"] = val
-	}
-
-	// Optional: error_type
-	if val := request.GetString("error_type", ""); val != "" {
-		args["error_type"] = val
-	}
-
-	// Optional: filter
-	// object type - using string
-	if val := request.GetString("filter", ""); val != "" {
-		args["filter"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -878,8 +1038,13 @@ func HandleProductfeed_get_rules(ctx context.Context, request mcp.CallToolReques
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -926,24 +1091,19 @@ func HandleProductfeed_post_rules(ctx context.Context, request mcp.CallToolReque
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: attribute
-	attribute, err := request.RequireString("attribute")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter attribute: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["attribute"] = attribute
-
-	// Optional: params
-	if val := request.GetString("params", ""); val != "" {
-		args["params"] = val
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
-
-	// Required: rule_type
-	rule_type, err := request.RequireString("rule_type")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter rule_type: %v", err)), nil
+	for key, value := range paramsObj {
+		args[key] = value
 	}
-	args["rule_type"] = rule_type
 
 	// Call the client method
 	result, err := client.Productfeed_post_rules(args)
@@ -974,12 +1134,19 @@ func HandleProductfeed_post_supplementary_feed_assocs(ctx context.Context, reque
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: assoc_data
-	assoc_data, err := request.RequireString("assoc_data")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter assoc_data: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["assoc_data"] = assoc_data
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Productfeed_post_supplementary_feed_assocs(args)
@@ -1011,8 +1178,13 @@ func HandleProductfeed_get_upload_schedules(ctx context.Context, request mcp.Cal
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -1059,9 +1231,16 @@ func HandleProductfeed_post_upload_schedules(ctx context.Context, request mcp.Ca
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: upload_schedule
-	if val := request.GetString("upload_schedule", ""); val != "" {
-		args["upload_schedule"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method
@@ -1094,8 +1273,13 @@ func HandleProductfeed_get_uploads(ctx context.Context, request mcp.CallToolRequ
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -1142,34 +1326,16 @@ func HandleProductfeed_post_uploads(ctx context.Context, request mcp.CallToolReq
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: fbe_external_business_id
-	if val := request.GetString("fbe_external_business_id", ""); val != "" {
-		args["fbe_external_business_id"] = val
-	}
-
-	// Optional: file
-	if val := request.GetString("file", ""); val != "" {
-		args["file"] = val
-	}
-
-	// Optional: password
-	if val := request.GetString("password", ""); val != "" {
-		args["password"] = val
-	}
-
-	// Optional: update_only
-	if val := request.GetBool("update_only", false); val {
-		args["update_only"] = val
-	}
-
-	// Optional: url
-	if val := request.GetString("url", ""); val != "" {
-		args["url"] = val
-	}
-
-	// Optional: username
-	if val := request.GetString("username", ""); val != "" {
-		args["username"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method
@@ -1201,20 +1367,26 @@ func HandleProductfeed_get_vehicle_offers(ctx context.Context, request mcp.CallT
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: bulk_pagination
-	if val := request.GetBool("bulk_pagination", false); val {
-		args["bulk_pagination"] = val
-	}
-
-	// Optional: filter
-	// object type - using string
-	if val := request.GetString("filter", ""); val != "" {
-		args["filter"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -1261,20 +1433,26 @@ func HandleProductfeed_get_vehicles(ctx context.Context, request mcp.CallToolReq
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: bulk_pagination
-	if val := request.GetBool("bulk_pagination", false); val {
-		args["bulk_pagination"] = val
-	}
-
-	// Optional: filter
-	// object type - using string
-	if val := request.GetString("filter", ""); val != "" {
-		args["filter"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -1351,8 +1529,13 @@ func HandleProductfeed_get_(ctx context.Context, request mcp.CallToolRequest) (*
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -1399,49 +1582,16 @@ func HandleProductfeed_post_(ctx context.Context, request mcp.CallToolRequest) (
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: default_currency
-	if val := request.GetString("default_currency", ""); val != "" {
-		args["default_currency"] = val
-	}
-
-	// Optional: deletion_enabled
-	if val := request.GetBool("deletion_enabled", false); val {
-		args["deletion_enabled"] = val
-	}
-
-	// Optional: delimiter
-	if val := request.GetString("delimiter", ""); val != "" {
-		args["delimiter"] = val
-	}
-
-	// Optional: encoding
-	if val := request.GetString("encoding", ""); val != "" {
-		args["encoding"] = val
-	}
-
-	// Optional: migrated_from_feed_id
-	if val := request.GetString("migrated_from_feed_id", ""); val != "" {
-		args["migrated_from_feed_id"] = val
-	}
-
-	// Optional: name
-	if val := request.GetString("name", ""); val != "" {
-		args["name"] = val
-	}
-
-	// Optional: quoted_fields_mode
-	if val := request.GetString("quoted_fields_mode", ""); val != "" {
-		args["quoted_fields_mode"] = val
-	}
-
-	// Optional: schedule
-	if val := request.GetString("schedule", ""); val != "" {
-		args["schedule"] = val
-	}
-
-	// Optional: update_schedule
-	if val := request.GetString("update_schedule", ""); val != "" {
-		args["update_schedule"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method

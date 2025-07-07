@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -20,8 +21,8 @@ func GetRightsManagerDataExportTools() []mcp.Tool {
 	// Available fields for RightsManagerDataExport: download_uri, export_scope, id, name, record_type, time_range_end, time_range_start
 	rightsmanagerdataexport_get_Tool := mcp.NewTool("rightsmanagerdataexport_get_",
 		mcp.WithDescription("GET  for RightsManagerDataExport"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for RightsManagerDataExport objects. Available fields: download_uri, export_scope, id, name, record_type, time_range_end, time_range_start"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for RightsManagerDataExport objects. Available fields: download_uri, export_scope, id, name, record_type, time_range_end, time_range_start"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -55,8 +56,13 @@ func HandleRightsmanagerdataexport_get_(ctx context.Context, request mcp.CallToo
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit

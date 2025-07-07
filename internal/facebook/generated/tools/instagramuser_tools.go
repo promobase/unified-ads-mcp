@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -20,8 +21,8 @@ func GetInstagramUserTools() []mcp.Tool {
 	// Available fields for Business: block_offline_analytics, collaborative_ads_managed_partner_business_info, collaborative_ads_managed_partner_eligibility, collaborative_ads_partner_premium_options, created_by, created_time, extended_updated_time, id, is_hidden, link, name, payment_account_id, primary_page, profile_picture_uri, timezone_id, two_factor_type, updated_by, updated_time, user_access_expire_time, verification_status, vertical, vertical_id
 	instagramuser_get_agenciesTool := mcp.NewTool("instagramuser_get_agencies",
 		mcp.WithDescription("GET agencies for InstagramUser"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for Business objects. Available fields: block_offline_analytics, collaborative_ads_managed_partner_business_info, collaborative_ads_managed_partner_eligibility, collaborative_ads_partner_premium_options, created_by, created_time, extended_updated_time, id, is_hidden, link, name, payment_account_id, primary_page, profile_picture_uri, timezone_id (and 7 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for Business objects. Available fields: block_offline_analytics, collaborative_ads_managed_partner_business_info, collaborative_ads_managed_partner_eligibility, collaborative_ads_partner_premium_options, created_by, created_time, extended_updated_time, id, is_hidden, link, name, payment_account_id, primary_page, profile_picture_uri, timezone_id (and 7 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -39,8 +40,8 @@ func GetInstagramUserTools() []mcp.Tool {
 	// Available fields for AREffect: creation_time, id, last_modified_time, name, status, surfaces
 	instagramuser_get_ar_effectsTool := mcp.NewTool("instagramuser_get_ar_effects",
 		mcp.WithDescription("GET ar_effects for InstagramUser"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for AREffect objects. Available fields: creation_time, id, last_modified_time, name, status, surfaces"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for AREffect objects. Available fields: creation_time, id, last_modified_time, name, status, surfaces"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -56,14 +57,22 @@ func GetInstagramUserTools() []mcp.Tool {
 
 	// instagramuser_get_authorized_adaccounts tool
 	// Available fields for AdAccount: account_id, account_status, ad_account_promotable_objects, age, agency_client_declaration, all_capabilities, amount_spent, attribution_spec, balance, brand_safety_content_filter_levels, business, business_city, business_country_code, business_name, business_state, business_street, business_street2, business_zip, can_create_brand_lift_study, capabilities, created_time, currency, custom_audience_info, default_dsa_beneficiary, default_dsa_payor, disable_reason, end_advertiser, end_advertiser_name, existing_customers, expired_funding_source_details, extended_credit_invoice_group, failed_delivery_checks, fb_entity, funding_source, funding_source_details, has_migrated_permissions, has_page_authorized_adaccount, id, io_number, is_attribution_spec_system_default, is_ba_skip_delayed_eligible, is_direct_deals_enabled, is_in_3ds_authorization_enabled_market, is_notifications_enabled, is_personal, is_prepay_account, is_tax_id_required, liable_address, line_numbers, media_agency, min_campaign_group_spend_cap, min_daily_budget, name, offsite_pixels_tos_accepted, owner, owner_business, partner, rf_spec, send_bill_to_address, show_checkout_experience, sold_to_address, spend_cap, tax_id, tax_id_status, tax_id_type, timezone_id, timezone_name, timezone_offset_hours_utc, tos_accepted, user_access_expire_time, user_tasks, user_tos_accepted, viewable_business
+	// Params object accepts: business (string)
 	instagramuser_get_authorized_adaccountsTool := mcp.NewTool("instagramuser_get_authorized_adaccounts",
 		mcp.WithDescription("GET authorized_adaccounts for InstagramUser"),
-		mcp.WithString("business",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("business parameter for authorized_adaccounts"),
+			mcp.Properties(map[string]any{
+				"business": map[string]any{
+					"type":        "string",
+					"description": "business parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: business (string) [required]"),
 		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for AdAccount objects. Available fields: account_id, account_status, ad_account_promotable_objects, age, agency_client_declaration, all_capabilities, amount_spent, attribution_spec, balance, brand_safety_content_filter_levels, business, business_city, business_country_code, business_name, business_state (and 58 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for AdAccount objects. Available fields: account_id, account_status, ad_account_promotable_objects, age, agency_client_declaration, all_capabilities, amount_spent, attribution_spec, balance, brand_safety_content_filter_levels, business, business_city, business_country_code, business_name, business_state (and 58 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -81,8 +90,8 @@ func GetInstagramUserTools() []mcp.Tool {
 	// Available fields for IGUpcomingEvent: end_time, id, notification_subtypes, notification_target_time, start_time, title
 	instagramuser_get_upcoming_eventsTool := mcp.NewTool("instagramuser_get_upcoming_events",
 		mcp.WithDescription("GET upcoming_events for InstagramUser"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for IGUpcomingEvent objects. Available fields: end_time, id, notification_subtypes, notification_target_time, start_time, title"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for IGUpcomingEvent objects. Available fields: end_time, id, notification_subtypes, notification_target_time, start_time, title"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -98,13 +107,20 @@ func GetInstagramUserTools() []mcp.Tool {
 
 	// instagramuser_get_ tool
 	// Available fields for InstagramUser: follow_count, followed_by_count, has_profile_picture, id, ig_user_id, is_private, is_published, media_count, mini_shop_storefront, owner_business, profile_pic, username
+	// Params object accepts: adgroup_id (string)
 	instagramuser_get_Tool := mcp.NewTool("instagramuser_get_",
 		mcp.WithDescription("GET  for InstagramUser"),
-		mcp.WithString("adgroup_id",
-			mcp.Description("adgroup_id parameter for "),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"adgroup_id": map[string]any{
+					"type":        "string",
+					"description": "adgroup_id parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: adgroup_id (string)"),
 		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for InstagramUser objects. Available fields: follow_count, followed_by_count, has_profile_picture, id, ig_user_id, is_private, is_published, media_count, mini_shop_storefront, owner_business, profile_pic, username"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for InstagramUser objects. Available fields: follow_count, followed_by_count, has_profile_picture, id, ig_user_id, is_private, is_published, media_count, mini_shop_storefront, owner_business, profile_pic, username"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -138,8 +154,13 @@ func HandleInstagramuser_get_agencies(ctx context.Context, request mcp.CallToolR
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -187,8 +208,13 @@ func HandleInstagramuser_get_ar_effects(ctx context.Context, request mcp.CallToo
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -235,16 +261,28 @@ func HandleInstagramuser_get_authorized_adaccounts(ctx context.Context, request 
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: business
-	business, err := request.RequireString("business")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter business: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["business"] = business
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -292,8 +330,13 @@ func HandleInstagramuser_get_upcoming_events(ctx context.Context, request mcp.Ca
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -340,14 +383,26 @@ func HandleInstagramuser_get_(ctx context.Context, request mcp.CallToolRequest) 
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: adgroup_id
-	if val := request.GetString("adgroup_id", ""); val != "" {
-		args["adgroup_id"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit

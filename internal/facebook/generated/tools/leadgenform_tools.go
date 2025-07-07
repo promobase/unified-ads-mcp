@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -20,8 +21,8 @@ func GetLeadgenFormTools() []mcp.Tool {
 	// Available fields for Lead: ad_id, ad_name, adset_id, adset_name, campaign_id, campaign_name, created_time, custom_disclaimer_responses, field_data, form_id, home_listing, id, is_organic, partner_name, platform, post, post_submission_check_result, retailer_item_id, vehicle
 	leadgenform_get_leadsTool := mcp.NewTool("leadgenform_get_leads",
 		mcp.WithDescription("GET leads for LeadgenForm"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for Lead objects. Available fields: ad_id, ad_name, adset_id, adset_name, campaign_id, campaign_name, created_time, custom_disclaimer_responses, field_data, form_id, home_listing, id, is_organic, partner_name, platform (and 4 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for Lead objects. Available fields: ad_id, ad_name, adset_id, adset_name, campaign_id, campaign_name, created_time, custom_disclaimer_responses, field_data, form_id, home_listing, id, is_organic, partner_name, platform (and 4 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -39,8 +40,8 @@ func GetLeadgenFormTools() []mcp.Tool {
 	// Available fields for Lead: ad_id, ad_name, adset_id, adset_name, campaign_id, campaign_name, created_time, custom_disclaimer_responses, field_data, form_id, home_listing, id, is_organic, partner_name, platform, post, post_submission_check_result, retailer_item_id, vehicle
 	leadgenform_get_test_leadsTool := mcp.NewTool("leadgenform_get_test_leads",
 		mcp.WithDescription("GET test_leads for LeadgenForm"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for Lead objects. Available fields: ad_id, ad_name, adset_id, adset_name, campaign_id, campaign_name, created_time, custom_disclaimer_responses, field_data, form_id, home_listing, id, is_organic, partner_name, platform (and 4 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for Lead objects. Available fields: ad_id, ad_name, adset_id, adset_name, campaign_id, campaign_name, created_time, custom_disclaimer_responses, field_data, form_id, home_listing, id, is_organic, partner_name, platform (and 4 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -55,13 +56,23 @@ func GetLeadgenFormTools() []mcp.Tool {
 	tools = append(tools, leadgenform_get_test_leadsTool)
 
 	// leadgenform_post_test_leads tool
+	// Params object accepts: custom_disclaimer_responses (list<Object>), field_data (list<Object>)
 	leadgenform_post_test_leadsTool := mcp.NewTool("leadgenform_post_test_leads",
 		mcp.WithDescription("POST test_leads for LeadgenForm"),
-		mcp.WithString("custom_disclaimer_responses",
-			mcp.Description("custom_disclaimer_responses parameter for test_leads"),
-		),
-		mcp.WithString("field_data",
-			mcp.Description("field_data parameter for test_leads"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"custom_disclaimer_responses": map[string]any{
+					"type":        "array",
+					"description": "custom_disclaimer_responses parameter",
+					"items":       map[string]any{"type": "object"},
+				},
+				"field_data": map[string]any{
+					"type":        "array",
+					"description": "field_data parameter",
+					"items":       map[string]any{"type": "object"},
+				},
+			}),
+			mcp.Description("Parameters object containing: custom_disclaimer_responses (array<object>), field_data (array<object>)"),
 		),
 	)
 	tools = append(tools, leadgenform_post_test_leadsTool)
@@ -70,8 +81,8 @@ func GetLeadgenFormTools() []mcp.Tool {
 	// Available fields for LeadgenForm: allow_organic_lead, block_display_for_non_targeted_viewer, context_card, created_time, creator, expired_leads_count, follow_up_action_text, follow_up_action_url, id, is_optimized_for_quality, leads_count, legal_content, locale, name, organic_leads_count, page, page_id, privacy_policy_url, question_page_custom_headline, questions, status, thank_you_page, tracking_parameters
 	leadgenform_get_Tool := mcp.NewTool("leadgenform_get_",
 		mcp.WithDescription("GET  for LeadgenForm"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for LeadgenForm objects. Available fields: allow_organic_lead, block_display_for_non_targeted_viewer, context_card, created_time, creator, expired_leads_count, follow_up_action_text, follow_up_action_url, id, is_optimized_for_quality, leads_count, legal_content, locale, name, organic_leads_count (and 8 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for LeadgenForm objects. Available fields: allow_organic_lead, block_display_for_non_targeted_viewer, context_card, created_time, creator, expired_leads_count, follow_up_action_text, follow_up_action_url, id, is_optimized_for_quality, leads_count, legal_content, locale, name, organic_leads_count (and 8 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -86,11 +97,18 @@ func GetLeadgenFormTools() []mcp.Tool {
 	tools = append(tools, leadgenform_get_Tool)
 
 	// leadgenform_post_ tool
+	// Params object accepts: status (leadgendata_status)
 	leadgenform_post_Tool := mcp.NewTool("leadgenform_post_",
 		mcp.WithDescription("POST  for LeadgenForm"),
-		mcp.WithString("status",
-			mcp.Description("status parameter for "),
-			mcp.Enum("ACTIVE", "ARCHIVED", "DELETED", "DRAFT"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"status": map[string]any{
+					"type":        "string",
+					"description": "status parameter",
+					"enum":        []string{"ACTIVE", "ARCHIVED", "DELETED", "DRAFT"},
+				},
+			}),
+			mcp.Description("Parameters object containing: status (leadgendata_status) [ACTIVE, ARCHIVED, DELETED, DRAFT]"),
 		),
 	)
 	tools = append(tools, leadgenform_post_Tool)
@@ -115,8 +133,13 @@ func HandleLeadgenform_get_leads(ctx context.Context, request mcp.CallToolReques
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -164,8 +187,13 @@ func HandleLeadgenform_get_test_leads(ctx context.Context, request mcp.CallToolR
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -212,16 +240,16 @@ func HandleLeadgenform_post_test_leads(ctx context.Context, request mcp.CallTool
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: custom_disclaimer_responses
-	// array type - using string
-	if val := request.GetString("custom_disclaimer_responses", ""); val != "" {
-		args["custom_disclaimer_responses"] = val
-	}
-
-	// Optional: field_data
-	// array type - using string
-	if val := request.GetString("field_data", ""); val != "" {
-		args["field_data"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method
@@ -254,8 +282,13 @@ func HandleLeadgenform_get_(ctx context.Context, request mcp.CallToolRequest) (*
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -302,9 +335,16 @@ func HandleLeadgenform_post_(ctx context.Context, request mcp.CallToolRequest) (
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: status
-	if val := request.GetString("status", ""); val != "" {
-		args["status"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method

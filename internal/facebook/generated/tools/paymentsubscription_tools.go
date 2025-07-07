@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -20,8 +21,8 @@ func GetPaymentSubscriptionTools() []mcp.Tool {
 	// Available fields for PaymentSubscription: amount, app_param_data, application, billing_period, canceled_reason, created_time, currency, id, last_payment, next_bill_time, next_period_amount, next_period_currency, next_period_product, payment_status, pending_cancel, period_start_time, product, status, test, trial_amount, trial_currency, trial_expiry_time, updated_time, user
 	paymentsubscription_get_Tool := mcp.NewTool("paymentsubscription_get_",
 		mcp.WithDescription("GET  for PaymentSubscription"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for PaymentSubscription objects. Available fields: amount, app_param_data, application, billing_period, canceled_reason, created_time, currency, id, last_payment, next_bill_time, next_period_amount, next_period_currency, next_period_product, payment_status, pending_cancel (and 9 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for PaymentSubscription objects. Available fields: amount, app_param_data, application, billing_period, canceled_reason, created_time, currency, id, last_payment, next_bill_time, next_period_amount, next_period_currency, next_period_product, payment_status, pending_cancel (and 9 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -55,8 +56,13 @@ func HandlePaymentsubscription_get_(ctx context.Context, request mcp.CallToolReq
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit

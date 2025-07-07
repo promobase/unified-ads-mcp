@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -20,8 +21,8 @@ func GetDynamicARMetadataTools() []mcp.Tool {
 	// Available fields for DynamicARMetadata: anchor_point, container_effect_enum, effect_icon_url, effect_id, id, platforms, scale_factor, shadow_texture_url, source_url, state, tags, variant_picker_url
 	dynamicarmetadata_get_Tool := mcp.NewTool("dynamicarmetadata_get_",
 		mcp.WithDescription("GET  for DynamicARMetadata"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for DynamicARMetadata objects. Available fields: anchor_point, container_effect_enum, effect_icon_url, effect_id, id, platforms, scale_factor, shadow_texture_url, source_url, state, tags, variant_picker_url"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for DynamicARMetadata objects. Available fields: anchor_point, container_effect_enum, effect_icon_url, effect_id, id, platforms, scale_factor, shadow_texture_url, source_url, state, tags, variant_picker_url"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -55,8 +56,13 @@ func HandleDynamicarmetadata_get_(ctx context.Context, request mcp.CallToolReque
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit

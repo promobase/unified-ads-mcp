@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -20,8 +21,8 @@ func GetChinaBusinessOnboardingVettingRequestTools() []mcp.Tool {
 	// Available fields for ChinaBusinessOnboardingVettingRequest: ad_account_creation_request_status, ad_account_limit, ad_account_number, ad_accounts_info, advertiser_business_id, advertiser_business_name, business_manager_id, business_registration, business_registration_id, business_verification_status, chinese_address, chinese_legal_entity_name, city, contact, coupon_code, disapprove_reason, english_business_name, id, official_website_url, org_ad_account_count, payment_type, planning_agency_id, planning_agency_name, promotable_app_ids, promotable_page_ids, promotable_pages, promotable_urls, request_changes_reason, reviewed_user, spend_limit, status, subvertical, subvertical_v2, supporting_document, time_changes_requested, time_created, time_updated, time_zone, used_reseller_link, user_id, user_name, vertical, vertical_v2, viewed_by_reseller, zip_code
 	chinabusinessonboardingvettingrequest_get_Tool := mcp.NewTool("chinabusinessonboardingvettingrequest_get_",
 		mcp.WithDescription("GET  for ChinaBusinessOnboardingVettingRequest"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for ChinaBusinessOnboardingVettingRequest objects. Available fields: ad_account_creation_request_status, ad_account_limit, ad_account_number, ad_accounts_info, advertiser_business_id, advertiser_business_name, business_manager_id, business_registration, business_registration_id, business_verification_status, chinese_address, chinese_legal_entity_name, city, contact, coupon_code (and 30 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for ChinaBusinessOnboardingVettingRequest objects. Available fields: ad_account_creation_request_status, ad_account_limit, ad_account_number, ad_accounts_info, advertiser_business_id, advertiser_business_name, business_manager_id, business_registration, business_registration_id, business_verification_status, chinese_address, chinese_legal_entity_name, city, contact, coupon_code (and 30 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -55,8 +56,13 @@ func HandleChinabusinessonboardingvettingrequest_get_(ctx context.Context, reque
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit

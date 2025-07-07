@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -26,8 +27,8 @@ func GetPageCallToActionTools() []mcp.Tool {
 	// Available fields for PageCallToAction: android_app, android_deeplink, android_destination_type, android_package_name, android_url, created_time, email_address, from, id, intl_number_with_plus, iphone_app, iphone_deeplink, iphone_destination_type, iphone_url, status, type, updated_time, web_destination_type, web_url
 	pagecalltoaction_get_Tool := mcp.NewTool("pagecalltoaction_get_",
 		mcp.WithDescription("GET  for PageCallToAction"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for PageCallToAction objects. Available fields: android_app, android_deeplink, android_destination_type, android_package_name, android_url, created_time, email_address, from, id, intl_number_with_plus, iphone_app, iphone_deeplink, iphone_destination_type, iphone_url, status (and 4 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for PageCallToAction objects. Available fields: android_app, android_deeplink, android_destination_type, android_package_name, android_url, created_time, email_address, from, id, intl_number_with_plus, iphone_app, iphone_deeplink, iphone_destination_type, iphone_url, status (and 4 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -42,47 +43,65 @@ func GetPageCallToActionTools() []mcp.Tool {
 	tools = append(tools, pagecalltoaction_get_Tool)
 
 	// pagecalltoaction_post_ tool
+	// Params object accepts: android_app_id (int), android_destination_type (pagecalltoaction_android_destination_type), android_package_name (string), android_url (string), email_address (string), intl_number_with_plus (string), iphone_app_id (int), iphone_destination_type (pagecalltoaction_iphone_destination_type), iphone_url (string), type (pagecalltoaction_type), web_destination_type (pagecalltoaction_web_destination_type), web_url (string)
 	pagecalltoaction_post_Tool := mcp.NewTool("pagecalltoaction_post_",
 		mcp.WithDescription("POST  for PageCallToAction"),
-		mcp.WithNumber("android_app_id",
-			mcp.Description("android_app_id parameter for "),
-		),
-		mcp.WithString("android_destination_type",
-			mcp.Description("android_destination_type parameter for "),
-			mcp.Enum("APP_DEEPLINK", "BECOME_A_VOLUNTEER", "EMAIL", "FACEBOOK_APP", "FOLLOW", "MARKETPLACE_INVENTORY_PAGE", "MENU_ON_FACEBOOK", "MESSENGER", "MINI_SHOP", "MOBILE_CENTER", "NONE", "PHONE_CALL", "SHOP_ON_FACEBOOK", "WEBSITE"),
-		),
-		mcp.WithString("android_package_name",
-			mcp.Description("android_package_name parameter for "),
-		),
-		mcp.WithString("android_url",
-			mcp.Description("android_url parameter for "),
-		),
-		mcp.WithString("email_address",
-			mcp.Description("email_address parameter for "),
-		),
-		mcp.WithString("intl_number_with_plus",
-			mcp.Description("intl_number_with_plus parameter for "),
-		),
-		mcp.WithNumber("iphone_app_id",
-			mcp.Description("iphone_app_id parameter for "),
-		),
-		mcp.WithString("iphone_destination_type",
-			mcp.Description("iphone_destination_type parameter for "),
-			mcp.Enum("APP_DEEPLINK", "BECOME_A_VOLUNTEER", "EMAIL", "FACEBOOK_APP", "FOLLOW", "MARKETPLACE_INVENTORY_PAGE", "MENU_ON_FACEBOOK", "MESSENGER", "MINI_SHOP", "NONE", "PHONE_CALL", "SHOP_ON_FACEBOOK", "WEBSITE"),
-		),
-		mcp.WithString("iphone_url",
-			mcp.Description("iphone_url parameter for "),
-		),
-		mcp.WithString("type",
-			mcp.Description("type parameter for "),
-			mcp.Enum("BECOME_A_VOLUNTEER", "BOOK_APPOINTMENT", "BOOK_NOW", "BUY_TICKETS", "CALL_NOW", "CHARITY_DONATE", "CHECK_IN", "CONTACT_US", "CREATOR_STOREFRONT", "DONATE_NOW", "EMAIL", "FOLLOW_PAGE", "GET_DIRECTIONS", "GET_OFFER", "GET_OFFER_VIEW", "INTERESTED", "LEARN_MORE", "LISTEN", "LOCAL_DEV_PLATFORM", "MESSAGE", "MOBILE_CENTER", "OPEN_APP", "ORDER_FOOD", "PLAY_MUSIC", "PLAY_NOW", "PURCHASE_GIFT_CARDS", "REQUEST_APPOINTMENT", "REQUEST_QUOTE", "SHOP_NOW", "SHOP_ON_FACEBOOK", "SIGN_UP", "VIEW_INVENTORY", "VIEW_MENU", "VIEW_SHOP", "VISIT_GROUP", "WATCH_NOW", "WOODHENGE_SUPPORT"),
-		),
-		mcp.WithString("web_destination_type",
-			mcp.Description("web_destination_type parameter for "),
-			mcp.Enum("BECOME_A_VOLUNTEER", "BECOME_SUPPORTER", "EMAIL", "FOLLOW", "MESSENGER", "MOBILE_CENTER", "NONE", "SHOP_ON_FACEBOOK", "WEBSITE"),
-		),
-		mcp.WithString("web_url",
-			mcp.Description("web_url parameter for "),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"android_app_id": map[string]any{
+					"type":        "integer",
+					"description": "android_app_id parameter",
+				},
+				"android_destination_type": map[string]any{
+					"type":        "string",
+					"description": "android_destination_type parameter",
+					"enum":        []string{"APP_DEEPLINK", "BECOME_A_VOLUNTEER", "EMAIL", "FACEBOOK_APP", "FOLLOW", "MARKETPLACE_INVENTORY_PAGE", "MENU_ON_FACEBOOK", "MESSENGER", "MINI_SHOP", "MOBILE_CENTER", "NONE", "PHONE_CALL", "SHOP_ON_FACEBOOK", "WEBSITE"},
+				},
+				"android_package_name": map[string]any{
+					"type":        "string",
+					"description": "android_package_name parameter",
+				},
+				"android_url": map[string]any{
+					"type":        "string",
+					"description": "android_url parameter",
+				},
+				"email_address": map[string]any{
+					"type":        "string",
+					"description": "email_address parameter",
+				},
+				"intl_number_with_plus": map[string]any{
+					"type":        "string",
+					"description": "intl_number_with_plus parameter",
+				},
+				"iphone_app_id": map[string]any{
+					"type":        "integer",
+					"description": "iphone_app_id parameter",
+				},
+				"iphone_destination_type": map[string]any{
+					"type":        "string",
+					"description": "iphone_destination_type parameter",
+					"enum":        []string{"APP_DEEPLINK", "BECOME_A_VOLUNTEER", "EMAIL", "FACEBOOK_APP", "FOLLOW", "MARKETPLACE_INVENTORY_PAGE", "MENU_ON_FACEBOOK", "MESSENGER", "MINI_SHOP", "NONE", "PHONE_CALL", "SHOP_ON_FACEBOOK", "WEBSITE"},
+				},
+				"iphone_url": map[string]any{
+					"type":        "string",
+					"description": "iphone_url parameter",
+				},
+				"type": map[string]any{
+					"type":        "string",
+					"description": "type parameter",
+					"enum":        []string{"BECOME_A_VOLUNTEER", "BOOK_APPOINTMENT", "BOOK_NOW", "BUY_TICKETS", "CALL_NOW", "CHARITY_DONATE", "CHECK_IN", "CONTACT_US", "CREATOR_STOREFRONT", "DONATE_NOW", "EMAIL", "FOLLOW_PAGE", "GET_DIRECTIONS", "GET_OFFER", "GET_OFFER_VIEW", "INTERESTED", "LEARN_MORE", "LISTEN", "LOCAL_DEV_PLATFORM", "MESSAGE", "MOBILE_CENTER", "OPEN_APP", "ORDER_FOOD", "PLAY_MUSIC", "PLAY_NOW", "PURCHASE_GIFT_CARDS", "REQUEST_APPOINTMENT", "REQUEST_QUOTE", "SHOP_NOW", "SHOP_ON_FACEBOOK", "SIGN_UP", "VIEW_INVENTORY", "VIEW_MENU", "VIEW_SHOP", "VISIT_GROUP", "WATCH_NOW", "WOODHENGE_SUPPORT"},
+				},
+				"web_destination_type": map[string]any{
+					"type":        "string",
+					"description": "web_destination_type parameter",
+					"enum":        []string{"BECOME_A_VOLUNTEER", "BECOME_SUPPORTER", "EMAIL", "FOLLOW", "MESSENGER", "MOBILE_CENTER", "NONE", "SHOP_ON_FACEBOOK", "WEBSITE"},
+				},
+				"web_url": map[string]any{
+					"type":        "string",
+					"description": "web_url parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: android_app_id (integer), android_destination_type (pagecalltoaction_android_destination_type) [APP_DEEPLINK, BECOME_A_VOLUNTEER, EMAIL, FACEBOOK_APP, FOLLOW, ...], android_package_name (string), android_url (string), email_address (string), intl_number_with_plus (string), iphone_app_id (integer), iphone_destination_type (pagecalltoaction_iphone_destination_type) [APP_DEEPLINK, BECOME_A_VOLUNTEER, EMAIL, FACEBOOK_APP, FOLLOW, ...], iphone_url (string), type (pagecalltoaction_type) [BECOME_A_VOLUNTEER, BOOK_APPOINTMENT, BOOK_NOW, BUY_TICKETS, CALL_NOW, ...], web_destination_type (pagecalltoaction_web_destination_type) [BECOME_A_VOLUNTEER, BECOME_SUPPORTER, EMAIL, FOLLOW, MESSENGER, ...], web_url (string)"),
 		),
 	)
 	tools = append(tools, pagecalltoaction_post_Tool)
@@ -136,8 +155,13 @@ func HandlePagecalltoaction_get_(ctx context.Context, request mcp.CallToolReques
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -184,64 +208,16 @@ func HandlePagecalltoaction_post_(ctx context.Context, request mcp.CallToolReque
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: android_app_id
-	if val := request.GetInt("android_app_id", 0); val != 0 {
-		args["android_app_id"] = val
-	}
-
-	// Optional: android_destination_type
-	if val := request.GetString("android_destination_type", ""); val != "" {
-		args["android_destination_type"] = val
-	}
-
-	// Optional: android_package_name
-	if val := request.GetString("android_package_name", ""); val != "" {
-		args["android_package_name"] = val
-	}
-
-	// Optional: android_url
-	if val := request.GetString("android_url", ""); val != "" {
-		args["android_url"] = val
-	}
-
-	// Optional: email_address
-	if val := request.GetString("email_address", ""); val != "" {
-		args["email_address"] = val
-	}
-
-	// Optional: intl_number_with_plus
-	if val := request.GetString("intl_number_with_plus", ""); val != "" {
-		args["intl_number_with_plus"] = val
-	}
-
-	// Optional: iphone_app_id
-	if val := request.GetInt("iphone_app_id", 0); val != 0 {
-		args["iphone_app_id"] = val
-	}
-
-	// Optional: iphone_destination_type
-	if val := request.GetString("iphone_destination_type", ""); val != "" {
-		args["iphone_destination_type"] = val
-	}
-
-	// Optional: iphone_url
-	if val := request.GetString("iphone_url", ""); val != "" {
-		args["iphone_url"] = val
-	}
-
-	// Optional: type
-	if val := request.GetString("type", ""); val != "" {
-		args["type"] = val
-	}
-
-	// Optional: web_destination_type
-	if val := request.GetString("web_destination_type", ""); val != "" {
-		args["web_destination_type"] = val
-	}
-
-	// Optional: web_url
-	if val := request.GetString("web_url", ""); val != "" {
-		args["web_url"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method

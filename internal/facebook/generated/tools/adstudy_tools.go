@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -20,8 +21,8 @@ func GetAdStudyTools() []mcp.Tool {
 	// Available fields for AdStudyCell: ad_entities_count, control_percentage, id, name, treatment_percentage
 	adstudy_get_cellsTool := mcp.NewTool("adstudy_get_cells",
 		mcp.WithDescription("GET cells for AdStudy"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for AdStudyCell objects. Available fields: ad_entities_count, control_percentage, id, name, treatment_percentage"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for AdStudyCell objects. Available fields: ad_entities_count, control_percentage, id, name, treatment_percentage"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -36,25 +37,37 @@ func GetAdStudyTools() []mcp.Tool {
 	tools = append(tools, adstudy_get_cellsTool)
 
 	// adstudy_post_checkpoint tool
+	// Params object accepts: checkpoint_data (string), checkpoint_name (string), component (string), instance_id (string), run_id (string)
 	adstudy_post_checkpointTool := mcp.NewTool("adstudy_post_checkpoint",
 		mcp.WithDescription("POST checkpoint for AdStudy"),
-		mcp.WithString("checkpoint_data",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("checkpoint_data parameter for checkpoint"),
-		),
-		mcp.WithString("checkpoint_name",
-			mcp.Required(),
-			mcp.Description("checkpoint_name parameter for checkpoint"),
-		),
-		mcp.WithString("component",
-			mcp.Required(),
-			mcp.Description("component parameter for checkpoint"),
-		),
-		mcp.WithString("instance_id",
-			mcp.Description("instance_id parameter for checkpoint"),
-		),
-		mcp.WithString("run_id",
-			mcp.Description("run_id parameter for checkpoint"),
+			mcp.Properties(map[string]any{
+				"checkpoint_data": map[string]any{
+					"type":        "string",
+					"description": "checkpoint_data parameter",
+					"required":    true,
+				},
+				"checkpoint_name": map[string]any{
+					"type":        "string",
+					"description": "checkpoint_name parameter",
+					"required":    true,
+				},
+				"component": map[string]any{
+					"type":        "string",
+					"description": "component parameter",
+					"required":    true,
+				},
+				"instance_id": map[string]any{
+					"type":        "string",
+					"description": "instance_id parameter",
+				},
+				"run_id": map[string]any{
+					"type":        "string",
+					"description": "run_id parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: checkpoint_data (string) [required], checkpoint_name (string) [required], component (string) [required], instance_id (string), run_id (string)"),
 		),
 	)
 	tools = append(tools, adstudy_post_checkpointTool)
@@ -63,8 +76,8 @@ func GetAdStudyTools() []mcp.Tool {
 	// Available fields for PrivateLiftStudyInstance: breakdown_key, created_time, feature_list, id, issuer_certificate, latest_status_update_time, run_id, server_hostnames, server_ips, status, tier
 	adstudy_get_instancesTool := mcp.NewTool("adstudy_get_instances",
 		mcp.WithDescription("GET instances for AdStudy"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for PrivateLiftStudyInstance objects. Available fields: breakdown_key, created_time, feature_list, id, issuer_certificate, latest_status_update_time, run_id, server_hostnames, server_ips, status, tier"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for PrivateLiftStudyInstance objects. Available fields: breakdown_key, created_time, feature_list, id, issuer_certificate, latest_status_update_time, run_id, server_hostnames, server_ips, status, tier"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -79,14 +92,23 @@ func GetAdStudyTools() []mcp.Tool {
 	tools = append(tools, adstudy_get_instancesTool)
 
 	// adstudy_post_instances tool
+	// Params object accepts: breakdown_key (map), run_id (string)
 	adstudy_post_instancesTool := mcp.NewTool("adstudy_post_instances",
 		mcp.WithDescription("POST instances for AdStudy"),
-		mcp.WithString("breakdown_key",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("breakdown_key parameter for instances"),
-		),
-		mcp.WithString("run_id",
-			mcp.Description("run_id parameter for instances"),
+			mcp.Properties(map[string]any{
+				"breakdown_key": map[string]any{
+					"type":        "object",
+					"description": "breakdown_key parameter",
+					"required":    true,
+				},
+				"run_id": map[string]any{
+					"type":        "string",
+					"description": "run_id parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: breakdown_key (object) [required], run_id (string)"),
 		),
 	)
 	tools = append(tools, adstudy_post_instancesTool)
@@ -95,8 +117,8 @@ func GetAdStudyTools() []mcp.Tool {
 	// Available fields for AdStudyObjective: id, is_primary, last_updated_results, name, results, type
 	adstudy_get_objectivesTool := mcp.NewTool("adstudy_get_objectives",
 		mcp.WithDescription("GET objectives for AdStudy"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for AdStudyObjective objects. Available fields: id, is_primary, last_updated_results, name, results, type"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for AdStudyObjective objects. Available fields: id, is_primary, last_updated_results, name, results, type"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -120,8 +142,8 @@ func GetAdStudyTools() []mcp.Tool {
 	// Available fields for AdStudy: business, canceled_time, client_business, cooldown_start_time, created_by, created_time, description, end_time, id, measurement_contact, name, observation_end_time, results_first_available_date, sales_contact, start_time, type, updated_by, updated_time
 	adstudy_get_Tool := mcp.NewTool("adstudy_get_",
 		mcp.WithDescription("GET  for AdStudy"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for AdStudy objects. Available fields: business, canceled_time, client_business, cooldown_start_time, created_by, created_time, description, end_time, id, measurement_contact, name, observation_end_time, results_first_available_date, sales_contact, start_time (and 3 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for AdStudy objects. Available fields: business, canceled_time, client_business, cooldown_start_time, created_by, created_time, description, end_time, id, measurement_contact, name, observation_end_time, results_first_available_date, sales_contact, start_time (and 3 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -136,44 +158,65 @@ func GetAdStudyTools() []mcp.Tool {
 	tools = append(tools, adstudy_get_Tool)
 
 	// adstudy_post_ tool
+	// Params object accepts: cells (list<Object>), client_business (string), confidence_level (float), cooldown_start_time (int), description (string), end_time (int), name (string), objectives (list<Object>), observation_end_time (int), start_time (int), type (adstudy_type), viewers (list<int>)
 	adstudy_post_Tool := mcp.NewTool("adstudy_post_",
 		mcp.WithDescription("POST  for AdStudy"),
-		mcp.WithString("cells",
-			mcp.Description("cells parameter for "),
-		),
-		mcp.WithString("client_business",
-			mcp.Description("client_business parameter for "),
-		),
-		mcp.WithNumber("confidence_level",
-			mcp.Description("confidence_level parameter for "),
-		),
-		mcp.WithNumber("cooldown_start_time",
-			mcp.Description("cooldown_start_time parameter for "),
-		),
-		mcp.WithString("description",
-			mcp.Description("description parameter for "),
-		),
-		mcp.WithNumber("end_time",
-			mcp.Description("end_time parameter for "),
-		),
-		mcp.WithString("name",
-			mcp.Description("name parameter for "),
-		),
-		mcp.WithString("objectives",
-			mcp.Description("objectives parameter for "),
-		),
-		mcp.WithNumber("observation_end_time",
-			mcp.Description("observation_end_time parameter for "),
-		),
-		mcp.WithNumber("start_time",
-			mcp.Description("start_time parameter for "),
-		),
-		mcp.WithString("type",
-			mcp.Description("type parameter for "),
-			mcp.Enum("BACKEND_AB_TESTING", "CONTINUOUS_LIFT_CONFIG", "GEO_LIFT", "LIFT", "SPLIT_TEST"),
-		),
-		mcp.WithString("viewers",
-			mcp.Description("viewers parameter for "),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"cells": map[string]any{
+					"type":        "array",
+					"description": "cells parameter",
+					"items":       map[string]any{"type": "object"},
+				},
+				"client_business": map[string]any{
+					"type":        "string",
+					"description": "client_business parameter",
+				},
+				"confidence_level": map[string]any{
+					"type":        "number",
+					"description": "confidence_level parameter",
+				},
+				"cooldown_start_time": map[string]any{
+					"type":        "integer",
+					"description": "cooldown_start_time parameter",
+				},
+				"description": map[string]any{
+					"type":        "string",
+					"description": "description parameter",
+				},
+				"end_time": map[string]any{
+					"type":        "integer",
+					"description": "end_time parameter",
+				},
+				"name": map[string]any{
+					"type":        "string",
+					"description": "name parameter",
+				},
+				"objectives": map[string]any{
+					"type":        "array",
+					"description": "objectives parameter",
+					"items":       map[string]any{"type": "object"},
+				},
+				"observation_end_time": map[string]any{
+					"type":        "integer",
+					"description": "observation_end_time parameter",
+				},
+				"start_time": map[string]any{
+					"type":        "integer",
+					"description": "start_time parameter",
+				},
+				"type": map[string]any{
+					"type":        "string",
+					"description": "type parameter",
+					"enum":        []string{"BACKEND_AB_TESTING", "CONTINUOUS_LIFT_CONFIG", "GEO_LIFT", "LIFT", "SPLIT_TEST"},
+				},
+				"viewers": map[string]any{
+					"type":        "array",
+					"description": "viewers parameter",
+					"items":       map[string]any{"type": "integer"},
+				},
+			}),
+			mcp.Description("Parameters object containing: cells (array<object>), client_business (string), confidence_level (number), cooldown_start_time (integer), description (string), end_time (integer), name (string), objectives (array<object>), observation_end_time (integer), start_time (integer), type (adstudy_type) [BACKEND_AB_TESTING, CONTINUOUS_LIFT_CONFIG, GEO_LIFT, LIFT, SPLIT_TEST], viewers (array<integer>)"),
 		),
 	)
 	tools = append(tools, adstudy_post_Tool)
@@ -198,8 +241,13 @@ func HandleAdstudy_get_cells(ctx context.Context, request mcp.CallToolRequest) (
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -246,35 +294,18 @@ func HandleAdstudy_post_checkpoint(ctx context.Context, request mcp.CallToolRequ
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: checkpoint_data
-	checkpoint_data, err := request.RequireString("checkpoint_data")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter checkpoint_data: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["checkpoint_data"] = checkpoint_data
-
-	// Required: checkpoint_name
-	checkpoint_name, err := request.RequireString("checkpoint_name")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter checkpoint_name: %v", err)), nil
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
-	args["checkpoint_name"] = checkpoint_name
-
-	// Required: component
-	component, err := request.RequireString("component")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter component: %v", err)), nil
-	}
-	args["component"] = component
-
-	// Optional: instance_id
-	if val := request.GetString("instance_id", ""); val != "" {
-		args["instance_id"] = val
-	}
-
-	// Optional: run_id
-	if val := request.GetString("run_id", ""); val != "" {
-		args["run_id"] = val
+	for key, value := range paramsObj {
+		args[key] = value
 	}
 
 	// Call the client method
@@ -307,8 +338,13 @@ func HandleAdstudy_get_instances(ctx context.Context, request mcp.CallToolReques
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -355,16 +391,18 @@ func HandleAdstudy_post_instances(ctx context.Context, request mcp.CallToolReque
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: breakdown_key
-	breakdown_key, err := request.RequireString("breakdown_key")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter breakdown_key: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["breakdown_key"] = breakdown_key
-
-	// Optional: run_id
-	if val := request.GetString("run_id", ""); val != "" {
-		args["run_id"] = val
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
 	}
 
 	// Call the client method
@@ -397,8 +435,13 @@ func HandleAdstudy_get_objectives(ctx context.Context, request mcp.CallToolReque
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -475,8 +518,13 @@ func HandleAdstudy_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -523,67 +571,16 @@ func HandleAdstudy_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: cells
-	// array type - using string
-	if val := request.GetString("cells", ""); val != "" {
-		args["cells"] = val
-	}
-
-	// Optional: client_business
-	if val := request.GetString("client_business", ""); val != "" {
-		args["client_business"] = val
-	}
-
-	// Optional: confidence_level
-	if val := request.GetFloat("confidence_level", 0); val != 0 {
-		args["confidence_level"] = val
-	}
-
-	// Optional: cooldown_start_time
-	if val := request.GetInt("cooldown_start_time", 0); val != 0 {
-		args["cooldown_start_time"] = val
-	}
-
-	// Optional: description
-	if val := request.GetString("description", ""); val != "" {
-		args["description"] = val
-	}
-
-	// Optional: end_time
-	if val := request.GetInt("end_time", 0); val != 0 {
-		args["end_time"] = val
-	}
-
-	// Optional: name
-	if val := request.GetString("name", ""); val != "" {
-		args["name"] = val
-	}
-
-	// Optional: objectives
-	// array type - using string
-	if val := request.GetString("objectives", ""); val != "" {
-		args["objectives"] = val
-	}
-
-	// Optional: observation_end_time
-	if val := request.GetInt("observation_end_time", 0); val != 0 {
-		args["observation_end_time"] = val
-	}
-
-	// Optional: start_time
-	if val := request.GetInt("start_time", 0); val != 0 {
-		args["start_time"] = val
-	}
-
-	// Optional: type
-	if val := request.GetString("type", ""); val != "" {
-		args["type"] = val
-	}
-
-	// Optional: viewers
-	// array type - using string
-	if val := request.GetString("viewers", ""); val != "" {
-		args["viewers"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method

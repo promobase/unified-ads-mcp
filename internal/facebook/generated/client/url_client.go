@@ -100,40 +100,10 @@ func (c *URLClient) Url_post_(args map[string]interface{}) (interface{}, error) 
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["blacklist"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("blacklist", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["denylist"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("denylist", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["hmac"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("hmac", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["locale"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("locale", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["scopes"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("scopes", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["ts"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("ts", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 

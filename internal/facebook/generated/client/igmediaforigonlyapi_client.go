@@ -167,10 +167,10 @@ func (c *IGMediaForIGOnlyAPIClient) Igmediaforigonlyapi_post_comments(args map[s
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["message"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("message", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -207,11 +207,11 @@ func (c *IGMediaForIGOnlyAPIClient) Igmediaforigonlyapi_post_comments(args map[s
 // igmediaforigonlyapi_get_insights GET insights for IGMediaForIGOnlyAPI
 func (c *IGMediaForIGOnlyAPIClient) Igmediaforigonlyapi_get_insights(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	metric, ok := args["metric"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: metric")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = metric // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -221,22 +221,10 @@ func (c *IGMediaForIGOnlyAPIClient) Igmediaforigonlyapi_get_insights(args map[st
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["breakdown"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("breakdown", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["metric"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("metric", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["period"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("period", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -364,11 +352,11 @@ func (c *IGMediaForIGOnlyAPIClient) Igmediaforigonlyapi_get_(args map[string]int
 // igmediaforigonlyapi_post_ POST  for IGMediaForIGOnlyAPI
 func (c *IGMediaForIGOnlyAPIClient) Igmediaforigonlyapi_post_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	comment_enabled, ok := args["comment_enabled"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: comment_enabled")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = comment_enabled // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -378,10 +366,10 @@ func (c *IGMediaForIGOnlyAPIClient) Igmediaforigonlyapi_post_(args map[string]in
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["comment_enabled"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("comment_enabled", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 

@@ -24,16 +24,11 @@ func NewCommerceMerchantSettingsClient(accessToken string) *CommerceMerchantSett
 // commercemerchantsettings_post_acknowledge_orders POST acknowledge_orders for CommerceMerchantSettings
 func (c *CommerceMerchantSettingsClient) Commercemerchantsettings_post_acknowledge_orders(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	idempotency_key, ok := args["idempotency_key"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: idempotency_key")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = idempotency_key // Suppress unused variable warning
-	orders, ok := args["orders"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: orders")
-	}
-	_ = orders // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -43,16 +38,10 @@ func (c *CommerceMerchantSettingsClient) Commercemerchantsettings_post_acknowled
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["idempotency_key"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("idempotency_key", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["orders"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("orders", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -98,28 +87,10 @@ func (c *CommerceMerchantSettingsClient) Commercemerchantsettings_get_commerce_o
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["filters"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("filters", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["state"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("state", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["updated_after"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("updated_after", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["updated_before"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("updated_before", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -189,16 +160,10 @@ func (c *CommerceMerchantSettingsClient) Commercemerchantsettings_get_commerce_p
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["end_time"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("end_time", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["start_time"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("start_time", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -268,22 +233,10 @@ func (c *CommerceMerchantSettingsClient) Commercemerchantsettings_get_commerce_t
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["end_time"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("end_time", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["payout_reference_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("payout_reference_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["start_time"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("start_time", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -529,28 +482,10 @@ func (c *CommerceMerchantSettingsClient) Commercemerchantsettings_get_returns(ar
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["end_time_created"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("end_time_created", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["merchant_return_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("merchant_return_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["start_time_created"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("start_time_created", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["statuses"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("statuses", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -687,10 +622,10 @@ func (c *CommerceMerchantSettingsClient) Commercemerchantsettings_get_shipping_p
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["reference_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("reference_id", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -751,16 +686,11 @@ func (c *CommerceMerchantSettingsClient) Commercemerchantsettings_get_shipping_p
 // commercemerchantsettings_post_shipping_profiles POST shipping_profiles for CommerceMerchantSettings
 func (c *CommerceMerchantSettingsClient) Commercemerchantsettings_post_shipping_profiles(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	name, ok := args["name"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: name")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = name // Suppress unused variable warning
-	shipping_destinations, ok := args["shipping_destinations"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: shipping_destinations")
-	}
-	_ = shipping_destinations // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -770,40 +700,10 @@ func (c *CommerceMerchantSettingsClient) Commercemerchantsettings_post_shipping_
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["handling_time"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("handling_time", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["is_default"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("is_default", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["is_default_shipping_profile"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("is_default_shipping_profile", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["name"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("name", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["reference_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("reference_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["shipping_destinations"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("shipping_destinations", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 

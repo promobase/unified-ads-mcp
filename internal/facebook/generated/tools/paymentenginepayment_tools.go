@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -17,30 +18,48 @@ func GetPaymentEnginePaymentTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// paymentenginepayment_post_dispute tool
+	// Params object accepts: reason (paymentenginepaymentdispute_reason_enum_param)
 	paymentenginepayment_post_disputeTool := mcp.NewTool("paymentenginepayment_post_dispute",
 		mcp.WithDescription("POST dispute for PaymentEnginePayment"),
-		mcp.WithString("reason",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("reason parameter for dispute"),
-			mcp.Enum("BANNED_USER", "DENIED_REFUND", "GRANTED_REPLACEMENT_ITEM"),
+			mcp.Properties(map[string]any{
+				"reason": map[string]any{
+					"type":        "string",
+					"description": "reason parameter",
+					"required":    true,
+					"enum":        []string{"BANNED_USER", "DENIED_REFUND", "GRANTED_REPLACEMENT_ITEM"},
+				},
+			}),
+			mcp.Description("Parameters object containing: reason (enum) [BANNED_USER, DENIED_REFUND, GRANTED_REPLACEMENT_ITEM] [required]"),
 		),
 	)
 	tools = append(tools, paymentenginepayment_post_disputeTool)
 
 	// paymentenginepayment_post_refunds tool
+	// Params object accepts: amount (float), currency (string), reason (paymentenginepaymentrefunds_reason_enum_param)
 	paymentenginepayment_post_refundsTool := mcp.NewTool("paymentenginepayment_post_refunds",
 		mcp.WithDescription("POST refunds for PaymentEnginePayment"),
-		mcp.WithNumber("amount",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("amount parameter for refunds"),
-		),
-		mcp.WithString("currency",
-			mcp.Required(),
-			mcp.Description("currency parameter for refunds"),
-		),
-		mcp.WithString("reason",
-			mcp.Description("reason parameter for refunds"),
-			mcp.Enum("CUSTOMER_SERVICE", "FRIENDLY_FRAUD", "MALICIOUS_FRAUD"),
+			mcp.Properties(map[string]any{
+				"amount": map[string]any{
+					"type":        "number",
+					"description": "amount parameter",
+					"required":    true,
+				},
+				"currency": map[string]any{
+					"type":        "string",
+					"description": "currency parameter",
+					"required":    true,
+				},
+				"reason": map[string]any{
+					"type":        "string",
+					"description": "reason parameter",
+					"enum":        []string{"CUSTOMER_SERVICE", "FRIENDLY_FRAUD", "MALICIOUS_FRAUD"},
+				},
+			}),
+			mcp.Description("Parameters object containing: amount (number) [required], currency (string) [required], reason (enum) [CUSTOMER_SERVICE, FRIENDLY_FRAUD, MALICIOUS_FRAUD]"),
 		),
 	)
 	tools = append(tools, paymentenginepayment_post_refundsTool)
@@ -49,8 +68,8 @@ func GetPaymentEnginePaymentTools() []mcp.Tool {
 	// Available fields for PaymentEnginePayment: actions, application, country, created_time, disputes, fraud_status, fulfillment_status, id, is_from_ad, is_from_page_post, items, payout_foreign_exchange_rate, phone_support_eligible, platform, refundable_amount, request_id, tax, tax_country, test, user
 	paymentenginepayment_get_Tool := mcp.NewTool("paymentenginepayment_get_",
 		mcp.WithDescription("GET  for PaymentEnginePayment"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for PaymentEnginePayment objects. Available fields: actions, application, country, created_time, disputes, fraud_status, fulfillment_status, id, is_from_ad, is_from_page_post, items, payout_foreign_exchange_rate, phone_support_eligible, platform, refundable_amount (and 5 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for PaymentEnginePayment objects. Available fields: actions, application, country, created_time, disputes, fraud_status, fulfillment_status, id, is_from_ad, is_from_page_post, items, payout_foreign_exchange_rate, phone_support_eligible, platform, refundable_amount (and 5 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -83,12 +102,19 @@ func HandlePaymentenginepayment_post_dispute(ctx context.Context, request mcp.Ca
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: reason
-	reason, err := request.RequireString("reason")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter reason: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["reason"] = reason
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Paymentenginepayment_post_dispute(args)
@@ -119,23 +145,18 @@ func HandlePaymentenginepayment_post_refunds(ctx context.Context, request mcp.Ca
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: amount
-	amount, err := request.RequireFloat("amount")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter amount: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["amount"] = amount
-
-	// Required: currency
-	currency, err := request.RequireString("currency")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter currency: %v", err)), nil
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
-	args["currency"] = currency
-
-	// Optional: reason
-	if val := request.GetString("reason", ""); val != "" {
-		args["reason"] = val
+	for key, value := range paramsObj {
+		args[key] = value
 	}
 
 	// Call the client method
@@ -168,8 +189,13 @@ func HandlePaymentenginepayment_get_(ctx context.Context, request mcp.CallToolRe
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit

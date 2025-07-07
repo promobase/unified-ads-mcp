@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -20,8 +21,8 @@ func GetProductItemTools() []mcp.Tool {
 	// Available fields for CatalogItemChannelsToIntegrityStatus: channels, rejection_information
 	productitem_get_channels_to_integrity_statusTool := mcp.NewTool("productitem_get_channels_to_integrity_status",
 		mcp.WithDescription("GET channels_to_integrity_status for ProductItem"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for CatalogItemChannelsToIntegrityStatus objects. Available fields: channels, rejection_information"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for CatalogItemChannelsToIntegrityStatus objects. Available fields: channels, rejection_information"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -37,17 +38,26 @@ func GetProductItemTools() []mcp.Tool {
 
 	// productitem_get_override_details tool
 	// Available fields for OverrideDetails: key, type, values
+	// Params object accepts: keys (list<string>), type (productitemoverride_details_type_enum_param)
 	productitem_get_override_detailsTool := mcp.NewTool("productitem_get_override_details",
 		mcp.WithDescription("GET override_details for ProductItem"),
-		mcp.WithString("keys",
-			mcp.Description("keys parameter for override_details"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"keys": map[string]any{
+					"type":        "array",
+					"description": "keys parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+				"type": map[string]any{
+					"type":        "string",
+					"description": "type parameter",
+					"enum":        []string{"COUNTRY", "LANGUAGE", "LANGUAGE_AND_COUNTRY"},
+				},
+			}),
+			mcp.Description("Parameters object containing: keys (array<string>), type (enum) [COUNTRY, LANGUAGE, LANGUAGE_AND_COUNTRY]"),
 		),
-		mcp.WithString("type",
-			mcp.Description("type parameter for override_details"),
-			mcp.Enum("COUNTRY", "LANGUAGE", "LANGUAGE_AND_COUNTRY"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for OverrideDetails objects. Available fields: key, type, values"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for OverrideDetails objects. Available fields: key, type, values"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -65,8 +75,8 @@ func GetProductItemTools() []mcp.Tool {
 	// Available fields for ProductSet: auto_creation_url, filter, id, latest_metadata, live_metadata, name, ordering_info, product_catalog, product_count, retailer_id
 	productitem_get_product_setsTool := mcp.NewTool("productitem_get_product_sets",
 		mcp.WithDescription("GET product_sets for ProductItem"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for ProductSet objects. Available fields: auto_creation_url, filter, id, latest_metadata, live_metadata, name, ordering_info, product_catalog, product_count, retailer_id"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for ProductSet objects. Available fields: auto_creation_url, filter, id, latest_metadata, live_metadata, name, ordering_info, product_catalog, product_count, retailer_id"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -84,8 +94,8 @@ func GetProductItemTools() []mcp.Tool {
 	// Available fields for DynamicVideoMetadata: id, tags, url, video
 	productitem_get_videos_metadataTool := mcp.NewTool("productitem_get_videos_metadata",
 		mcp.WithDescription("GET videos_metadata for ProductItem"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for DynamicVideoMetadata objects. Available fields: id, tags, url, video"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for DynamicVideoMetadata objects. Available fields: id, tags, url, video"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -107,25 +117,36 @@ func GetProductItemTools() []mcp.Tool {
 
 	// productitem_get_ tool
 	// Available fields for ProductItem: additional_image_cdn_urls, additional_image_urls, additional_variant_attributes, age_group, applinks, availability, brand, bundle_items, bundle_retailer_ids, capability_to_review_status, category, category_specific_fields, color, commerce_insights, condition, currency, custom_data, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0, custom_number_1, custom_number_2, custom_number_3, custom_number_4, description, errors, expiration_date, fb_product_category, gender, generated_background_images, generated_background_images_ad_usage, gtin, id, image_cdn_urls, image_fetch_status, image_url, images, importer_address, importer_name, invalidation_errors, inventory, is_bundle_hero, manufacturer_info, manufacturer_part_number, marked_for_product_launch, material, mobile_link, name, ordering_index, origin_country, parent_product_id, pattern, post_conversion_signal_based_enforcement_appeal_eligibility, price, product_catalog, product_feed, product_group, product_local_info, product_relationship, product_type, quantity_to_sell_on_facebook, retailer_id, retailer_product_group_id, review_rejection_reasons, review_status, sale_price, sale_price_end_date, sale_price_start_date, shipping_weight_unit, shipping_weight_value, short_description, size, start_date, tags, url, vendor_id, video_fetch_status, videos, visibility, wa_compliance_category
+	// Params object accepts: catalog_id (string), image_height (unsigned int), image_width (unsigned int), override_country (string), override_language (string)
 	productitem_get_Tool := mcp.NewTool("productitem_get_",
 		mcp.WithDescription("GET  for ProductItem"),
-		mcp.WithString("catalog_id",
-			mcp.Description("catalog_id parameter for "),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"catalog_id": map[string]any{
+					"type":        "string",
+					"description": "catalog_id parameter",
+				},
+				"image_height": map[string]any{
+					"type":        "integer",
+					"description": "image_height parameter",
+				},
+				"image_width": map[string]any{
+					"type":        "integer",
+					"description": "image_width parameter",
+				},
+				"override_country": map[string]any{
+					"type":        "string",
+					"description": "override_country parameter",
+				},
+				"override_language": map[string]any{
+					"type":        "string",
+					"description": "override_language parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: catalog_id (string), image_height (integer), image_width (integer), override_country (string), override_language (string)"),
 		),
-		mcp.WithNumber("image_height",
-			mcp.Description("image_height parameter for "),
-		),
-		mcp.WithNumber("image_width",
-			mcp.Description("image_width parameter for "),
-		),
-		mcp.WithString("override_country",
-			mcp.Description("override_country parameter for "),
-		),
-		mcp.WithString("override_language",
-			mcp.Description("override_language parameter for "),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for ProductItem objects. Available fields: additional_image_cdn_urls, additional_image_urls, additional_variant_attributes, age_group, applinks, availability, brand, bundle_items, bundle_retailer_ids, capability_to_review_status, category, category_specific_fields, color, commerce_insights, condition (and 68 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for ProductItem objects. Available fields: additional_image_cdn_urls, additional_image_urls, additional_variant_attributes, age_group, applinks, availability, brand, bundle_items, bundle_retailer_ids, capability_to_review_status, category, category_specific_fields, color, commerce_insights, condition (and 68 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -140,247 +161,331 @@ func GetProductItemTools() []mcp.Tool {
 	tools = append(tools, productitem_get_Tool)
 
 	// productitem_post_ tool
+	// Params object accepts: additional_image_urls (list<string>), additional_variant_attributes (map), age_group (productitem_age_group), android_app_name (string), android_class (string), android_package (string), android_url (string), availability (productitem_availability), brand (string), category (string), category_specific_fields (map), checkout_url (string), color (string), commerce_tax_category (productitem_commerce_tax_category), condition (productitem_condition), currency (string), custom_data (map), custom_label_0 (string), custom_label_1 (string), custom_label_2 (string), custom_label_3 (string), custom_label_4 (string), custom_number_0 (unsigned int), custom_number_1 (unsigned int), custom_number_2 (unsigned int), custom_number_3 (unsigned int), custom_number_4 (unsigned int), description (string), expiration_date (string), fb_product_category (string), gender (productitem_gender), gtin (string), image_url (string), importer_address (map), importer_name (string), inventory (unsigned int), ios_app_name (string), ios_app_store_id (unsigned int), ios_url (string), ipad_app_name (string), ipad_app_store_id (unsigned int), ipad_url (string), iphone_app_name (string), iphone_app_store_id (unsigned int), iphone_url (string), launch_date (string), manufacturer_info (string), manufacturer_part_number (string), marked_for_product_launch (productitem_marked_for_product_launch), material (string), mobile_link (string), name (string), ordering_index (unsigned int), origin_country (productitem_origin_country), pattern (string), price (unsigned int), product_priority_0 (float), product_priority_1 (float), product_priority_2 (float), product_priority_3 (float), product_priority_4 (float), product_type (string), quantity_to_sell_on_facebook (unsigned int), retailer_id (string), return_policy_days (unsigned int), sale_price (unsigned int), sale_price_end_date (datetime), sale_price_start_date (datetime), short_description (string), size (string), start_date (string), url (string), visibility (productitem_visibility), wa_compliance_category (productitem_wa_compliance_category), windows_phone_app_id (string), windows_phone_app_name (string), windows_phone_url (string)
 	productitem_post_Tool := mcp.NewTool("productitem_post_",
 		mcp.WithDescription("POST  for ProductItem"),
-		mcp.WithString("additional_image_urls",
-			mcp.Description("additional_image_urls parameter for "),
-		),
-		mcp.WithString("additional_variant_attributes",
-			mcp.Description("additional_variant_attributes parameter for "),
-		),
-		mcp.WithString("age_group",
-			mcp.Description("age_group parameter for "),
-			mcp.Enum("adult", "all ages", "infant", "kids", "newborn", "teen", "toddler"),
-		),
-		mcp.WithString("android_app_name",
-			mcp.Description("android_app_name parameter for "),
-		),
-		mcp.WithString("android_class",
-			mcp.Description("android_class parameter for "),
-		),
-		mcp.WithString("android_package",
-			mcp.Description("android_package parameter for "),
-		),
-		mcp.WithString("android_url",
-			mcp.Description("android_url parameter for "),
-		),
-		mcp.WithString("availability",
-			mcp.Description("availability parameter for "),
-			mcp.Enum("available for order", "discontinued", "in stock", "mark_as_sold", "out of stock", "pending", "preorder"),
-		),
-		mcp.WithString("brand",
-			mcp.Description("brand parameter for "),
-		),
-		mcp.WithString("category",
-			mcp.Description("category parameter for "),
-		),
-		mcp.WithString("category_specific_fields",
-			mcp.Description("category_specific_fields parameter for "),
-		),
-		mcp.WithString("checkout_url",
-			mcp.Description("checkout_url parameter for "),
-		),
-		mcp.WithString("color",
-			mcp.Description("color parameter for "),
-		),
-		mcp.WithString("commerce_tax_category",
-			mcp.Description("commerce_tax_category parameter for "),
-			mcp.Enum("FB_ANIMAL", "FB_ANIMAL_SUPP", "FB_APRL", "FB_APRL_ACCESSORIES", "FB_APRL_ATHL_UNIF", "FB_APRL_CASES", "FB_APRL_CLOTHING", "FB_APRL_COSTUME", "FB_APRL_CSTM", "FB_APRL_FORMAL", "FB_APRL_HANDBAG", "FB_APRL_JEWELRY", "FB_APRL_SHOE", "FB_APRL_SHOE_ACC", "FB_APRL_SWIM", "FB_APRL_SWIM_CHIL", "FB_APRL_SWIM_CVR", "FB_ARTS", "FB_ARTS_HOBBY", "FB_ARTS_PARTY", "FB_ARTS_PARTY_GIFT_CARD", "FB_ARTS_TICKET", "FB_BABY", "FB_BABY_BATH", "FB_BABY_BLANKET", "FB_BABY_DIAPER", "FB_BABY_GIFT_SET", "FB_BABY_HEALTH", "FB_BABY_NURSING", "FB_BABY_POTTY_TRN", "FB_BABY_SAFE", "FB_BABY_TOYS", "FB_BABY_TRANSPORT", "FB_BABY_TRANSPORT_ACC", "FB_BAGS", "FB_BAGS_BKPK", "FB_BAGS_BOXES", "FB_BAGS_BRFCS", "FB_BAGS_CSMT_BAG", "FB_BAGS_DFFL", "FB_BAGS_DIPR", "FB_BAGS_FNNY", "FB_BAGS_GRMT", "FB_BAGS_LUGG", "FB_BAGS_LUG_ACC", "FB_BAGS_MSGR", "FB_BAGS_TOTE", "FB_BAGS_TRN_CAS", "FB_BLDG", "FB_BLDG_ACC", "FB_BLDG_CNSMB", "FB_BLDG_FENCE", "FB_BLDG_FUEL_TNK", "FB_BLDG_HT_VNT", "FB_BLDG_LOCK", "FB_BLDG_MATRL", "FB_BLDG_PLMB", "FB_BLDG_PUMP", "FB_BLDG_PWRS", "FB_BLDG_STR_TANK", "FB_BLDG_S_ENG", "FB_BLDG_TL_ACC", "FB_BLDG_TOOL", "FB_BUSIND", "FB_BUSIND_ADVERTISING", "FB_BUSIND_AGRICULTURE", "FB_BUSIND_AUTOMATION", "FB_BUSIND_HEAVY_MACH", "FB_BUSIND_LAB", "FB_BUSIND_MEDICAL", "FB_BUSIND_RETAIL", "FB_BUSIND_SANITARY_CT", "FB_BUSIND_SIGN", "FB_BUSIND_STORAGE", "FB_BUSIND_STORAGE_ACC", "FB_BUSIND_WORK_GEAR", "FB_CAMERA_ACC", "FB_CAMERA_CAMERA", "FB_CAMERA_OPTIC", "FB_CAMERA_OPTICS", "FB_CAMERA_PHOTO", "FB_ELEC", "FB_ELEC_ACC", "FB_ELEC_ARCDADE", "FB_ELEC_AUDIO", "FB_ELEC_CIRCUIT", "FB_ELEC_COMM", "FB_ELEC_COMPUTER", "FB_ELEC_GPS_ACC", "FB_ELEC_GPS_NAV", "FB_ELEC_GPS_TRK", "FB_ELEC_MARINE", "FB_ELEC_NETWORK", "FB_ELEC_PART", "FB_ELEC_PRINT", "FB_ELEC_RADAR", "FB_ELEC_SFTWR", "FB_ELEC_SPEED_RDR", "FB_ELEC_TELEVISION", "FB_ELEC_TOLL", "FB_ELEC_VIDEO", "FB_ELEC_VID_GM_ACC", "FB_ELEC_VID_GM_CNSL", "FB_FOOD", "FB_FURN", "FB_FURN_BABY", "FB_FURN_BENCH", "FB_FURN_CART", "FB_FURN_CHAIR", "FB_FURN_CHAIR_ACC", "FB_FURN_DIVIDE", "FB_FURN_DIVIDE_ACC", "FB_FURN_ENT_CTR", "FB_FURN_FUTN", "FB_FURN_FUTN_PAD", "FB_FURN_OFFICE", "FB_FURN_OFFICE_ACC", "FB_FURN_OTTO", "FB_FURN_OUTDOOR", "FB_FURN_OUTDOOR_ACC", "FB_FURN_SETS", "FB_FURN_SHELVE_ACC", "FB_FURN_SHLF", "FB_FURN_SOFA", "FB_FURN_SOFA_ACC", "FB_FURN_STORAGE", "FB_FURN_TABL", "FB_FURN_TABL_ACC", "FB_GENERIC_TAXABLE", "FB_HLTH", "FB_HLTH_HLTH", "FB_HLTH_JWL_CR", "FB_HLTH_LILP_BLM", "FB_HLTH_LTN_SPF", "FB_HLTH_PRSL_CR", "FB_HLTH_SKN_CR", "FB_HMGN", "FB_HMGN_BATH", "FB_HMGN_DCOR", "FB_HMGN_EMGY", "FB_HMGN_FPLC", "FB_HMGN_FPLC_ACC", "FB_HMGN_GS_SFT", "FB_HMGN_HS_ACC", "FB_HMGN_HS_APP", "FB_HMGN_HS_SPL", "FB_HMGN_KTCN", "FB_HMGN_LAWN", "FB_HMGN_LGHT", "FB_HMGN_LINN", "FB_HMGN_LT_ACC", "FB_HMGN_OTDR", "FB_HMGN_POOL", "FB_HMGN_SCTY", "FB_HMGN_SMK_ACC", "FB_HMGN_UMBR", "FB_HMGN_UMBR_ACC", "FB_MDIA", "FB_MDIA_BOOK", "FB_MDIA_DVDS", "FB_MDIA_MAG", "FB_MDIA_MANL", "FB_MDIA_MUSC", "FB_MDIA_PRJ_PLN", "FB_MDIA_SHT_MUS", "FB_OFFC", "FB_OFFC_BKAC", "FB_OFFC_CRTS", "FB_OFFC_DSKP", "FB_OFFC_EQIP", "FB_OFFC_FLNG", "FB_OFFC_GNRL", "FB_OFFC_INSTM", "FB_OFFC_LP_DSK", "FB_OFFC_MATS", "FB_OFFC_NM_PLT", "FB_OFFC_PPR_HNDL", "FB_OFFC_PRSNT_SPL", "FB_OFFC_SEALR", "FB_OFFC_SHIP_SPL", "FB_RLGN", "FB_RLGN_CMNY", "FB_RLGN_ITEM", "FB_RLGN_WEDD", "FB_SFTWR", "FB_SFWR_CMPTR", "FB_SFWR_DGTL_GD", "FB_SFWR_GAME", "FB_SHIPPING", "FB_SPOR", "FB_SPORT_ATHL", "FB_SPORT_ATHL_CLTH", "FB_SPORT_ATHL_SHOE", "FB_SPORT_ATHL_SPRT", "FB_SPORT_EXRCS", "FB_SPORT_INDR_GM", "FB_SPORT_OTDR_GM", "FB_TOYS", "FB_TOYS_EQIP", "FB_TOYS_GAME", "FB_TOYS_PZZL", "FB_TOYS_TMRS", "FB_TOYS_TOYS", "FB_VEHI", "FB_VEHI_PART"),
-		),
-		mcp.WithString("condition",
-			mcp.Description("condition parameter for "),
-			mcp.Enum("cpo", "new", "open_box_new", "refurbished", "used", "used_fair", "used_good", "used_like_new"),
-		),
-		mcp.WithString("currency",
-			mcp.Description("currency parameter for "),
-		),
-		mcp.WithString("custom_data",
-			mcp.Description("custom_data parameter for "),
-		),
-		mcp.WithString("custom_label_0",
-			mcp.Description("custom_label_0 parameter for "),
-		),
-		mcp.WithString("custom_label_1",
-			mcp.Description("custom_label_1 parameter for "),
-		),
-		mcp.WithString("custom_label_2",
-			mcp.Description("custom_label_2 parameter for "),
-		),
-		mcp.WithString("custom_label_3",
-			mcp.Description("custom_label_3 parameter for "),
-		),
-		mcp.WithString("custom_label_4",
-			mcp.Description("custom_label_4 parameter for "),
-		),
-		mcp.WithNumber("custom_number_0",
-			mcp.Description("custom_number_0 parameter for "),
-		),
-		mcp.WithNumber("custom_number_1",
-			mcp.Description("custom_number_1 parameter for "),
-		),
-		mcp.WithNumber("custom_number_2",
-			mcp.Description("custom_number_2 parameter for "),
-		),
-		mcp.WithNumber("custom_number_3",
-			mcp.Description("custom_number_3 parameter for "),
-		),
-		mcp.WithNumber("custom_number_4",
-			mcp.Description("custom_number_4 parameter for "),
-		),
-		mcp.WithString("description",
-			mcp.Description("description parameter for "),
-		),
-		mcp.WithString("expiration_date",
-			mcp.Description("expiration_date parameter for "),
-		),
-		mcp.WithString("fb_product_category",
-			mcp.Description("fb_product_category parameter for "),
-		),
-		mcp.WithString("gender",
-			mcp.Description("gender parameter for "),
-			mcp.Enum("female", "male", "unisex"),
-		),
-		mcp.WithString("gtin",
-			mcp.Description("gtin parameter for "),
-		),
-		mcp.WithString("image_url",
-			mcp.Description("image_url parameter for "),
-		),
-		mcp.WithString("importer_address",
-			mcp.Description("importer_address parameter for "),
-		),
-		mcp.WithString("importer_name",
-			mcp.Description("importer_name parameter for "),
-		),
-		mcp.WithNumber("inventory",
-			mcp.Description("inventory parameter for "),
-		),
-		mcp.WithString("ios_app_name",
-			mcp.Description("ios_app_name parameter for "),
-		),
-		mcp.WithNumber("ios_app_store_id",
-			mcp.Description("ios_app_store_id parameter for "),
-		),
-		mcp.WithString("ios_url",
-			mcp.Description("ios_url parameter for "),
-		),
-		mcp.WithString("ipad_app_name",
-			mcp.Description("ipad_app_name parameter for "),
-		),
-		mcp.WithNumber("ipad_app_store_id",
-			mcp.Description("ipad_app_store_id parameter for "),
-		),
-		mcp.WithString("ipad_url",
-			mcp.Description("ipad_url parameter for "),
-		),
-		mcp.WithString("iphone_app_name",
-			mcp.Description("iphone_app_name parameter for "),
-		),
-		mcp.WithNumber("iphone_app_store_id",
-			mcp.Description("iphone_app_store_id parameter for "),
-		),
-		mcp.WithString("iphone_url",
-			mcp.Description("iphone_url parameter for "),
-		),
-		mcp.WithString("launch_date",
-			mcp.Description("launch_date parameter for "),
-		),
-		mcp.WithString("manufacturer_info",
-			mcp.Description("manufacturer_info parameter for "),
-		),
-		mcp.WithString("manufacturer_part_number",
-			mcp.Description("manufacturer_part_number parameter for "),
-		),
-		mcp.WithString("marked_for_product_launch",
-			mcp.Description("marked_for_product_launch parameter for "),
-			mcp.Enum("default", "marked", "not_marked"),
-		),
-		mcp.WithString("material",
-			mcp.Description("material parameter for "),
-		),
-		mcp.WithString("mobile_link",
-			mcp.Description("mobile_link parameter for "),
-		),
-		mcp.WithString("name",
-			mcp.Description("name parameter for "),
-		),
-		mcp.WithNumber("ordering_index",
-			mcp.Description("ordering_index parameter for "),
-		),
-		mcp.WithString("origin_country",
-			mcp.Description("origin_country parameter for "),
-			mcp.Enum("AD", "AE", "AF", "AG", "AI", "AL", "AM", "AN", "AO", "AQ", "AR", "AS", "AT", "AU", "AW", "AX", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BL", "BM", "BN", "BO", "BQ", "BR", "BS", "BT", "BV", "BW", "BY", "BZ", "CA", "CC", "CD", "CF", "CG", "CH", "CI", "CK", "CL", "CM", "CN", "CO", "CR", "CU", "CV", "CW", "CX", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "EH", "ER", "ES", "ET", "FI", "FJ", "FK", "FM", "FO", "FR", "GA", "GB", "GD", "GE", "GF", "GG", "GH", "GI", "GL", "GM", "GN", "GP", "GQ", "GR", "GS", "GT", "GU", "GW", "GY", "HK", "HM", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IM", "IN", "IO", "IQ", "IR", "IS", "IT", "JE", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KP", "KR", "KW", "KY", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MF", "MG", "MH", "MK", "ML", "MM", "MN", "MO", "MP", "MQ", "MR", "MS", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NC", "NE", "NF", "NG", "NI", "NL", "NO", "NP", "NR", "NU", "NZ", "OM", "PA", "PE", "PF", "PG", "PH", "PK", "PL", "PM", "PN", "PR", "PS", "PT", "PW", "PY", "QA", "RE", "RO", "RS", "RU", "RW", "SA", "SB", "SC", "SD", "SE", "SG", "SH", "SI", "SJ", "SK", "SL", "SM", "SN", "SO", "SR", "SS", "ST", "SV", "SX", "SY", "SZ", "TC", "TD", "TF", "TG", "TH", "TJ", "TK", "TL", "TM", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "UM", "US", "UY", "UZ", "VA", "VC", "VE", "VG", "VI", "VN", "VU", "WF", "WS", "XK", "YE", "YT", "ZA", "ZM", "ZW"),
-		),
-		mcp.WithString("pattern",
-			mcp.Description("pattern parameter for "),
-		),
-		mcp.WithNumber("price",
-			mcp.Description("price parameter for "),
-		),
-		mcp.WithNumber("product_priority_0",
-			mcp.Description("product_priority_0 parameter for "),
-		),
-		mcp.WithNumber("product_priority_1",
-			mcp.Description("product_priority_1 parameter for "),
-		),
-		mcp.WithNumber("product_priority_2",
-			mcp.Description("product_priority_2 parameter for "),
-		),
-		mcp.WithNumber("product_priority_3",
-			mcp.Description("product_priority_3 parameter for "),
-		),
-		mcp.WithNumber("product_priority_4",
-			mcp.Description("product_priority_4 parameter for "),
-		),
-		mcp.WithString("product_type",
-			mcp.Description("product_type parameter for "),
-		),
-		mcp.WithNumber("quantity_to_sell_on_facebook",
-			mcp.Description("quantity_to_sell_on_facebook parameter for "),
-		),
-		mcp.WithString("retailer_id",
-			mcp.Description("retailer_id parameter for "),
-		),
-		mcp.WithNumber("return_policy_days",
-			mcp.Description("return_policy_days parameter for "),
-		),
-		mcp.WithNumber("sale_price",
-			mcp.Description("sale_price parameter for "),
-		),
-		mcp.WithString("sale_price_end_date",
-			mcp.Description("sale_price_end_date parameter for "),
-		),
-		mcp.WithString("sale_price_start_date",
-			mcp.Description("sale_price_start_date parameter for "),
-		),
-		mcp.WithString("short_description",
-			mcp.Description("short_description parameter for "),
-		),
-		mcp.WithString("size",
-			mcp.Description("size parameter for "),
-		),
-		mcp.WithString("start_date",
-			mcp.Description("start_date parameter for "),
-		),
-		mcp.WithString("url",
-			mcp.Description("url parameter for "),
-		),
-		mcp.WithString("visibility",
-			mcp.Description("visibility parameter for "),
-			mcp.Enum("published", "staging"),
-		),
-		mcp.WithString("wa_compliance_category",
-			mcp.Description("wa_compliance_category parameter for "),
-			mcp.Enum("COUNTRY_ORIGIN_EXEMPT", "DEFAULT"),
-		),
-		mcp.WithString("windows_phone_app_id",
-			mcp.Description("windows_phone_app_id parameter for "),
-		),
-		mcp.WithString("windows_phone_app_name",
-			mcp.Description("windows_phone_app_name parameter for "),
-		),
-		mcp.WithString("windows_phone_url",
-			mcp.Description("windows_phone_url parameter for "),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"additional_image_urls": map[string]any{
+					"type":        "array",
+					"description": "additional_image_urls parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+				"additional_variant_attributes": map[string]any{
+					"type":        "object",
+					"description": "additional_variant_attributes parameter",
+				},
+				"age_group": map[string]any{
+					"type":        "string",
+					"description": "age_group parameter",
+					"enum":        []string{"adult", "all ages", "infant", "kids", "newborn", "teen", "toddler"},
+				},
+				"android_app_name": map[string]any{
+					"type":        "string",
+					"description": "android_app_name parameter",
+				},
+				"android_class": map[string]any{
+					"type":        "string",
+					"description": "android_class parameter",
+				},
+				"android_package": map[string]any{
+					"type":        "string",
+					"description": "android_package parameter",
+				},
+				"android_url": map[string]any{
+					"type":        "string",
+					"description": "android_url parameter",
+				},
+				"availability": map[string]any{
+					"type":        "string",
+					"description": "availability parameter",
+					"enum":        []string{"available for order", "discontinued", "in stock", "mark_as_sold", "out of stock", "pending", "preorder"},
+				},
+				"brand": map[string]any{
+					"type":        "string",
+					"description": "brand parameter",
+				},
+				"category": map[string]any{
+					"type":        "string",
+					"description": "category parameter",
+				},
+				"category_specific_fields": map[string]any{
+					"type":        "object",
+					"description": "category_specific_fields parameter",
+				},
+				"checkout_url": map[string]any{
+					"type":        "string",
+					"description": "checkout_url parameter",
+				},
+				"color": map[string]any{
+					"type":        "string",
+					"description": "color parameter",
+				},
+				"commerce_tax_category": map[string]any{
+					"type":        "string",
+					"description": "commerce_tax_category parameter",
+					"enum":        []string{"FB_ANIMAL", "FB_ANIMAL_SUPP", "FB_APRL", "FB_APRL_ACCESSORIES", "FB_APRL_ATHL_UNIF", "FB_APRL_CASES", "FB_APRL_CLOTHING", "FB_APRL_COSTUME", "FB_APRL_CSTM", "FB_APRL_FORMAL", "FB_APRL_HANDBAG", "FB_APRL_JEWELRY", "FB_APRL_SHOE", "FB_APRL_SHOE_ACC", "FB_APRL_SWIM", "FB_APRL_SWIM_CHIL", "FB_APRL_SWIM_CVR", "FB_ARTS", "FB_ARTS_HOBBY", "FB_ARTS_PARTY", "FB_ARTS_PARTY_GIFT_CARD", "FB_ARTS_TICKET", "FB_BABY", "FB_BABY_BATH", "FB_BABY_BLANKET", "FB_BABY_DIAPER", "FB_BABY_GIFT_SET", "FB_BABY_HEALTH", "FB_BABY_NURSING", "FB_BABY_POTTY_TRN", "FB_BABY_SAFE", "FB_BABY_TOYS", "FB_BABY_TRANSPORT", "FB_BABY_TRANSPORT_ACC", "FB_BAGS", "FB_BAGS_BKPK", "FB_BAGS_BOXES", "FB_BAGS_BRFCS", "FB_BAGS_CSMT_BAG", "FB_BAGS_DFFL", "FB_BAGS_DIPR", "FB_BAGS_FNNY", "FB_BAGS_GRMT", "FB_BAGS_LUGG", "FB_BAGS_LUG_ACC", "FB_BAGS_MSGR", "FB_BAGS_TOTE", "FB_BAGS_TRN_CAS", "FB_BLDG", "FB_BLDG_ACC", "FB_BLDG_CNSMB", "FB_BLDG_FENCE", "FB_BLDG_FUEL_TNK", "FB_BLDG_HT_VNT", "FB_BLDG_LOCK", "FB_BLDG_MATRL", "FB_BLDG_PLMB", "FB_BLDG_PUMP", "FB_BLDG_PWRS", "FB_BLDG_STR_TANK", "FB_BLDG_S_ENG", "FB_BLDG_TL_ACC", "FB_BLDG_TOOL", "FB_BUSIND", "FB_BUSIND_ADVERTISING", "FB_BUSIND_AGRICULTURE", "FB_BUSIND_AUTOMATION", "FB_BUSIND_HEAVY_MACH", "FB_BUSIND_LAB", "FB_BUSIND_MEDICAL", "FB_BUSIND_RETAIL", "FB_BUSIND_SANITARY_CT", "FB_BUSIND_SIGN", "FB_BUSIND_STORAGE", "FB_BUSIND_STORAGE_ACC", "FB_BUSIND_WORK_GEAR", "FB_CAMERA_ACC", "FB_CAMERA_CAMERA", "FB_CAMERA_OPTIC", "FB_CAMERA_OPTICS", "FB_CAMERA_PHOTO", "FB_ELEC", "FB_ELEC_ACC", "FB_ELEC_ARCDADE", "FB_ELEC_AUDIO", "FB_ELEC_CIRCUIT", "FB_ELEC_COMM", "FB_ELEC_COMPUTER", "FB_ELEC_GPS_ACC", "FB_ELEC_GPS_NAV", "FB_ELEC_GPS_TRK", "FB_ELEC_MARINE", "FB_ELEC_NETWORK", "FB_ELEC_PART", "FB_ELEC_PRINT", "FB_ELEC_RADAR", "FB_ELEC_SFTWR", "FB_ELEC_SPEED_RDR", "FB_ELEC_TELEVISION", "FB_ELEC_TOLL", "FB_ELEC_VIDEO", "FB_ELEC_VID_GM_ACC", "FB_ELEC_VID_GM_CNSL", "FB_FOOD", "FB_FURN", "FB_FURN_BABY", "FB_FURN_BENCH", "FB_FURN_CART", "FB_FURN_CHAIR", "FB_FURN_CHAIR_ACC", "FB_FURN_DIVIDE", "FB_FURN_DIVIDE_ACC", "FB_FURN_ENT_CTR", "FB_FURN_FUTN", "FB_FURN_FUTN_PAD", "FB_FURN_OFFICE", "FB_FURN_OFFICE_ACC", "FB_FURN_OTTO", "FB_FURN_OUTDOOR", "FB_FURN_OUTDOOR_ACC", "FB_FURN_SETS", "FB_FURN_SHELVE_ACC", "FB_FURN_SHLF", "FB_FURN_SOFA", "FB_FURN_SOFA_ACC", "FB_FURN_STORAGE", "FB_FURN_TABL", "FB_FURN_TABL_ACC", "FB_GENERIC_TAXABLE", "FB_HLTH", "FB_HLTH_HLTH", "FB_HLTH_JWL_CR", "FB_HLTH_LILP_BLM", "FB_HLTH_LTN_SPF", "FB_HLTH_PRSL_CR", "FB_HLTH_SKN_CR", "FB_HMGN", "FB_HMGN_BATH", "FB_HMGN_DCOR", "FB_HMGN_EMGY", "FB_HMGN_FPLC", "FB_HMGN_FPLC_ACC", "FB_HMGN_GS_SFT", "FB_HMGN_HS_ACC", "FB_HMGN_HS_APP", "FB_HMGN_HS_SPL", "FB_HMGN_KTCN", "FB_HMGN_LAWN", "FB_HMGN_LGHT", "FB_HMGN_LINN", "FB_HMGN_LT_ACC", "FB_HMGN_OTDR", "FB_HMGN_POOL", "FB_HMGN_SCTY", "FB_HMGN_SMK_ACC", "FB_HMGN_UMBR", "FB_HMGN_UMBR_ACC", "FB_MDIA", "FB_MDIA_BOOK", "FB_MDIA_DVDS", "FB_MDIA_MAG", "FB_MDIA_MANL", "FB_MDIA_MUSC", "FB_MDIA_PRJ_PLN", "FB_MDIA_SHT_MUS", "FB_OFFC", "FB_OFFC_BKAC", "FB_OFFC_CRTS", "FB_OFFC_DSKP", "FB_OFFC_EQIP", "FB_OFFC_FLNG", "FB_OFFC_GNRL", "FB_OFFC_INSTM", "FB_OFFC_LP_DSK", "FB_OFFC_MATS", "FB_OFFC_NM_PLT", "FB_OFFC_PPR_HNDL", "FB_OFFC_PRSNT_SPL", "FB_OFFC_SEALR", "FB_OFFC_SHIP_SPL", "FB_RLGN", "FB_RLGN_CMNY", "FB_RLGN_ITEM", "FB_RLGN_WEDD", "FB_SFTWR", "FB_SFWR_CMPTR", "FB_SFWR_DGTL_GD", "FB_SFWR_GAME", "FB_SHIPPING", "FB_SPOR", "FB_SPORT_ATHL", "FB_SPORT_ATHL_CLTH", "FB_SPORT_ATHL_SHOE", "FB_SPORT_ATHL_SPRT", "FB_SPORT_EXRCS", "FB_SPORT_INDR_GM", "FB_SPORT_OTDR_GM", "FB_TOYS", "FB_TOYS_EQIP", "FB_TOYS_GAME", "FB_TOYS_PZZL", "FB_TOYS_TMRS", "FB_TOYS_TOYS", "FB_VEHI", "FB_VEHI_PART"},
+				},
+				"condition": map[string]any{
+					"type":        "string",
+					"description": "condition parameter",
+					"enum":        []string{"cpo", "new", "open_box_new", "refurbished", "used", "used_fair", "used_good", "used_like_new"},
+				},
+				"currency": map[string]any{
+					"type":        "string",
+					"description": "currency parameter",
+				},
+				"custom_data": map[string]any{
+					"type":        "object",
+					"description": "custom_data parameter",
+				},
+				"custom_label_0": map[string]any{
+					"type":        "string",
+					"description": "custom_label_0 parameter",
+				},
+				"custom_label_1": map[string]any{
+					"type":        "string",
+					"description": "custom_label_1 parameter",
+				},
+				"custom_label_2": map[string]any{
+					"type":        "string",
+					"description": "custom_label_2 parameter",
+				},
+				"custom_label_3": map[string]any{
+					"type":        "string",
+					"description": "custom_label_3 parameter",
+				},
+				"custom_label_4": map[string]any{
+					"type":        "string",
+					"description": "custom_label_4 parameter",
+				},
+				"custom_number_0": map[string]any{
+					"type":        "integer",
+					"description": "custom_number_0 parameter",
+				},
+				"custom_number_1": map[string]any{
+					"type":        "integer",
+					"description": "custom_number_1 parameter",
+				},
+				"custom_number_2": map[string]any{
+					"type":        "integer",
+					"description": "custom_number_2 parameter",
+				},
+				"custom_number_3": map[string]any{
+					"type":        "integer",
+					"description": "custom_number_3 parameter",
+				},
+				"custom_number_4": map[string]any{
+					"type":        "integer",
+					"description": "custom_number_4 parameter",
+				},
+				"description": map[string]any{
+					"type":        "string",
+					"description": "description parameter",
+				},
+				"expiration_date": map[string]any{
+					"type":        "string",
+					"description": "expiration_date parameter",
+				},
+				"fb_product_category": map[string]any{
+					"type":        "string",
+					"description": "fb_product_category parameter",
+				},
+				"gender": map[string]any{
+					"type":        "string",
+					"description": "gender parameter",
+					"enum":        []string{"female", "male", "unisex"},
+				},
+				"gtin": map[string]any{
+					"type":        "string",
+					"description": "gtin parameter",
+				},
+				"image_url": map[string]any{
+					"type":        "string",
+					"description": "image_url parameter",
+				},
+				"importer_address": map[string]any{
+					"type":        "object",
+					"description": "importer_address parameter",
+				},
+				"importer_name": map[string]any{
+					"type":        "string",
+					"description": "importer_name parameter",
+				},
+				"inventory": map[string]any{
+					"type":        "integer",
+					"description": "inventory parameter",
+				},
+				"ios_app_name": map[string]any{
+					"type":        "string",
+					"description": "ios_app_name parameter",
+				},
+				"ios_app_store_id": map[string]any{
+					"type":        "integer",
+					"description": "ios_app_store_id parameter",
+				},
+				"ios_url": map[string]any{
+					"type":        "string",
+					"description": "ios_url parameter",
+				},
+				"ipad_app_name": map[string]any{
+					"type":        "string",
+					"description": "ipad_app_name parameter",
+				},
+				"ipad_app_store_id": map[string]any{
+					"type":        "integer",
+					"description": "ipad_app_store_id parameter",
+				},
+				"ipad_url": map[string]any{
+					"type":        "string",
+					"description": "ipad_url parameter",
+				},
+				"iphone_app_name": map[string]any{
+					"type":        "string",
+					"description": "iphone_app_name parameter",
+				},
+				"iphone_app_store_id": map[string]any{
+					"type":        "integer",
+					"description": "iphone_app_store_id parameter",
+				},
+				"iphone_url": map[string]any{
+					"type":        "string",
+					"description": "iphone_url parameter",
+				},
+				"launch_date": map[string]any{
+					"type":        "string",
+					"description": "launch_date parameter",
+				},
+				"manufacturer_info": map[string]any{
+					"type":        "string",
+					"description": "manufacturer_info parameter",
+				},
+				"manufacturer_part_number": map[string]any{
+					"type":        "string",
+					"description": "manufacturer_part_number parameter",
+				},
+				"marked_for_product_launch": map[string]any{
+					"type":        "string",
+					"description": "marked_for_product_launch parameter",
+					"enum":        []string{"default", "marked", "not_marked"},
+				},
+				"material": map[string]any{
+					"type":        "string",
+					"description": "material parameter",
+				},
+				"mobile_link": map[string]any{
+					"type":        "string",
+					"description": "mobile_link parameter",
+				},
+				"name": map[string]any{
+					"type":        "string",
+					"description": "name parameter",
+				},
+				"ordering_index": map[string]any{
+					"type":        "integer",
+					"description": "ordering_index parameter",
+				},
+				"origin_country": map[string]any{
+					"type":        "string",
+					"description": "origin_country parameter",
+					"enum":        []string{"AD", "AE", "AF", "AG", "AI", "AL", "AM", "AN", "AO", "AQ", "AR", "AS", "AT", "AU", "AW", "AX", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BL", "BM", "BN", "BO", "BQ", "BR", "BS", "BT", "BV", "BW", "BY", "BZ", "CA", "CC", "CD", "CF", "CG", "CH", "CI", "CK", "CL", "CM", "CN", "CO", "CR", "CU", "CV", "CW", "CX", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "EH", "ER", "ES", "ET", "FI", "FJ", "FK", "FM", "FO", "FR", "GA", "GB", "GD", "GE", "GF", "GG", "GH", "GI", "GL", "GM", "GN", "GP", "GQ", "GR", "GS", "GT", "GU", "GW", "GY", "HK", "HM", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IM", "IN", "IO", "IQ", "IR", "IS", "IT", "JE", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KP", "KR", "KW", "KY", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MF", "MG", "MH", "MK", "ML", "MM", "MN", "MO", "MP", "MQ", "MR", "MS", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NC", "NE", "NF", "NG", "NI", "NL", "NO", "NP", "NR", "NU", "NZ", "OM", "PA", "PE", "PF", "PG", "PH", "PK", "PL", "PM", "PN", "PR", "PS", "PT", "PW", "PY", "QA", "RE", "RO", "RS", "RU", "RW", "SA", "SB", "SC", "SD", "SE", "SG", "SH", "SI", "SJ", "SK", "SL", "SM", "SN", "SO", "SR", "SS", "ST", "SV", "SX", "SY", "SZ", "TC", "TD", "TF", "TG", "TH", "TJ", "TK", "TL", "TM", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "UM", "US", "UY", "UZ", "VA", "VC", "VE", "VG", "VI", "VN", "VU", "WF", "WS", "XK", "YE", "YT", "ZA", "ZM", "ZW"},
+				},
+				"pattern": map[string]any{
+					"type":        "string",
+					"description": "pattern parameter",
+				},
+				"price": map[string]any{
+					"type":        "integer",
+					"description": "price parameter",
+				},
+				"product_priority_0": map[string]any{
+					"type":        "number",
+					"description": "product_priority_0 parameter",
+				},
+				"product_priority_1": map[string]any{
+					"type":        "number",
+					"description": "product_priority_1 parameter",
+				},
+				"product_priority_2": map[string]any{
+					"type":        "number",
+					"description": "product_priority_2 parameter",
+				},
+				"product_priority_3": map[string]any{
+					"type":        "number",
+					"description": "product_priority_3 parameter",
+				},
+				"product_priority_4": map[string]any{
+					"type":        "number",
+					"description": "product_priority_4 parameter",
+				},
+				"product_type": map[string]any{
+					"type":        "string",
+					"description": "product_type parameter",
+				},
+				"quantity_to_sell_on_facebook": map[string]any{
+					"type":        "integer",
+					"description": "quantity_to_sell_on_facebook parameter",
+				},
+				"retailer_id": map[string]any{
+					"type":        "string",
+					"description": "retailer_id parameter",
+				},
+				"return_policy_days": map[string]any{
+					"type":        "integer",
+					"description": "return_policy_days parameter",
+				},
+				"sale_price": map[string]any{
+					"type":        "integer",
+					"description": "sale_price parameter",
+				},
+				"sale_price_end_date": map[string]any{
+					"type":        "string",
+					"description": "sale_price_end_date parameter",
+				},
+				"sale_price_start_date": map[string]any{
+					"type":        "string",
+					"description": "sale_price_start_date parameter",
+				},
+				"short_description": map[string]any{
+					"type":        "string",
+					"description": "short_description parameter",
+				},
+				"size": map[string]any{
+					"type":        "string",
+					"description": "size parameter",
+				},
+				"start_date": map[string]any{
+					"type":        "string",
+					"description": "start_date parameter",
+				},
+				"url": map[string]any{
+					"type":        "string",
+					"description": "url parameter",
+				},
+				"visibility": map[string]any{
+					"type":        "string",
+					"description": "visibility parameter",
+					"enum":        []string{"published", "staging"},
+				},
+				"wa_compliance_category": map[string]any{
+					"type":        "string",
+					"description": "wa_compliance_category parameter",
+					"enum":        []string{"COUNTRY_ORIGIN_EXEMPT", "DEFAULT"},
+				},
+				"windows_phone_app_id": map[string]any{
+					"type":        "string",
+					"description": "windows_phone_app_id parameter",
+				},
+				"windows_phone_app_name": map[string]any{
+					"type":        "string",
+					"description": "windows_phone_app_name parameter",
+				},
+				"windows_phone_url": map[string]any{
+					"type":        "string",
+					"description": "windows_phone_url parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: additional_image_urls (array<string>), additional_variant_attributes (object), age_group (productitem_age_group) [adult, all ages, infant, kids, newborn, ...], android_app_name (string), android_class (string), android_package (string), android_url (string), availability (productitem_availability) [available for order, discontinued, in stock, mark_as_sold, out of stock, ...], brand (string), category (string), category_specific_fields (object), checkout_url (string), color (string), commerce_tax_category (productitem_commerce_tax_category) [FB_ANIMAL, FB_ANIMAL_SUPP, FB_APRL, FB_APRL_ACCESSORIES, FB_APRL_ATHL_UNIF, ...], condition (productitem_condition) [cpo, new, open_box_new, refurbished, used, ...], currency (string), custom_data (object), custom_label_0 (string), custom_label_1 (string), custom_label_2 (string), custom_label_3 (string), custom_label_4 (string), custom_number_0 (integer), custom_number_1 (integer), custom_number_2 (integer), custom_number_3 (integer), custom_number_4 (integer), description (string), expiration_date (string), fb_product_category (string), gender (productitem_gender) [female, male, unisex], gtin (string), image_url (string), importer_address (object), importer_name (string), inventory (integer), ios_app_name (string), ios_app_store_id (integer), ios_url (string), ipad_app_name (string), ipad_app_store_id (integer), ipad_url (string), iphone_app_name (string), iphone_app_store_id (integer), iphone_url (string), launch_date (string), manufacturer_info (string), manufacturer_part_number (string), marked_for_product_launch (productitem_marked_for_product_launch) [default, marked, not_marked], material (string), mobile_link (string), name (string), ordering_index (integer), origin_country (productitem_origin_country) [AD, AE, AF, AG, AI, ...], pattern (string), price (integer), product_priority_0 (number), product_priority_1 (number), product_priority_2 (number), product_priority_3 (number), product_priority_4 (number), product_type (string), quantity_to_sell_on_facebook (integer), retailer_id (string), return_policy_days (integer), sale_price (integer), sale_price_end_date (datetime), sale_price_start_date (datetime), short_description (string), size (string), start_date (string), url (string), visibility (productitem_visibility) [published, staging], wa_compliance_category (productitem_wa_compliance_category) [COUNTRY_ORIGIN_EXEMPT, DEFAULT], windows_phone_app_id (string), windows_phone_app_name (string), windows_phone_url (string)"),
 		),
 	)
 	tools = append(tools, productitem_post_Tool)
@@ -405,8 +510,13 @@ func HandleProductitem_get_channels_to_integrity_status(ctx context.Context, req
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -453,20 +563,26 @@ func HandleProductitem_get_override_details(ctx context.Context, request mcp.Cal
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: keys
-	// array type - using string
-	if val := request.GetString("keys", ""); val != "" {
-		args["keys"] = val
-	}
-
-	// Optional: type
-	if val := request.GetString("type", ""); val != "" {
-		args["type"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -514,8 +630,13 @@ func HandleProductitem_get_product_sets(ctx context.Context, request mcp.CallToo
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -563,8 +684,13 @@ func HandleProductitem_get_videos_metadata(ctx context.Context, request mcp.Call
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -640,34 +766,26 @@ func HandleProductitem_get_(ctx context.Context, request mcp.CallToolRequest) (*
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: catalog_id
-	if val := request.GetString("catalog_id", ""); val != "" {
-		args["catalog_id"] = val
-	}
-
-	// Optional: image_height
-	if val := request.GetInt("image_height", 0); val != 0 {
-		args["image_height"] = val
-	}
-
-	// Optional: image_width
-	if val := request.GetInt("image_width", 0); val != 0 {
-		args["image_width"] = val
-	}
-
-	// Optional: override_country
-	if val := request.GetString("override_country", ""); val != "" {
-		args["override_country"] = val
-	}
-
-	// Optional: override_language
-	if val := request.GetString("override_language", ""); val != "" {
-		args["override_language"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -714,390 +832,16 @@ func HandleProductitem_post_(ctx context.Context, request mcp.CallToolRequest) (
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: additional_image_urls
-	// array type - using string
-	if val := request.GetString("additional_image_urls", ""); val != "" {
-		args["additional_image_urls"] = val
-	}
-
-	// Optional: additional_variant_attributes
-	if val := request.GetString("additional_variant_attributes", ""); val != "" {
-		args["additional_variant_attributes"] = val
-	}
-
-	// Optional: age_group
-	if val := request.GetString("age_group", ""); val != "" {
-		args["age_group"] = val
-	}
-
-	// Optional: android_app_name
-	if val := request.GetString("android_app_name", ""); val != "" {
-		args["android_app_name"] = val
-	}
-
-	// Optional: android_class
-	if val := request.GetString("android_class", ""); val != "" {
-		args["android_class"] = val
-	}
-
-	// Optional: android_package
-	if val := request.GetString("android_package", ""); val != "" {
-		args["android_package"] = val
-	}
-
-	// Optional: android_url
-	if val := request.GetString("android_url", ""); val != "" {
-		args["android_url"] = val
-	}
-
-	// Optional: availability
-	if val := request.GetString("availability", ""); val != "" {
-		args["availability"] = val
-	}
-
-	// Optional: brand
-	if val := request.GetString("brand", ""); val != "" {
-		args["brand"] = val
-	}
-
-	// Optional: category
-	if val := request.GetString("category", ""); val != "" {
-		args["category"] = val
-	}
-
-	// Optional: category_specific_fields
-	if val := request.GetString("category_specific_fields", ""); val != "" {
-		args["category_specific_fields"] = val
-	}
-
-	// Optional: checkout_url
-	if val := request.GetString("checkout_url", ""); val != "" {
-		args["checkout_url"] = val
-	}
-
-	// Optional: color
-	if val := request.GetString("color", ""); val != "" {
-		args["color"] = val
-	}
-
-	// Optional: commerce_tax_category
-	if val := request.GetString("commerce_tax_category", ""); val != "" {
-		args["commerce_tax_category"] = val
-	}
-
-	// Optional: condition
-	if val := request.GetString("condition", ""); val != "" {
-		args["condition"] = val
-	}
-
-	// Optional: currency
-	if val := request.GetString("currency", ""); val != "" {
-		args["currency"] = val
-	}
-
-	// Optional: custom_data
-	if val := request.GetString("custom_data", ""); val != "" {
-		args["custom_data"] = val
-	}
-
-	// Optional: custom_label_0
-	if val := request.GetString("custom_label_0", ""); val != "" {
-		args["custom_label_0"] = val
-	}
-
-	// Optional: custom_label_1
-	if val := request.GetString("custom_label_1", ""); val != "" {
-		args["custom_label_1"] = val
-	}
-
-	// Optional: custom_label_2
-	if val := request.GetString("custom_label_2", ""); val != "" {
-		args["custom_label_2"] = val
-	}
-
-	// Optional: custom_label_3
-	if val := request.GetString("custom_label_3", ""); val != "" {
-		args["custom_label_3"] = val
-	}
-
-	// Optional: custom_label_4
-	if val := request.GetString("custom_label_4", ""); val != "" {
-		args["custom_label_4"] = val
-	}
-
-	// Optional: custom_number_0
-	if val := request.GetInt("custom_number_0", 0); val != 0 {
-		args["custom_number_0"] = val
-	}
-
-	// Optional: custom_number_1
-	if val := request.GetInt("custom_number_1", 0); val != 0 {
-		args["custom_number_1"] = val
-	}
-
-	// Optional: custom_number_2
-	if val := request.GetInt("custom_number_2", 0); val != 0 {
-		args["custom_number_2"] = val
-	}
-
-	// Optional: custom_number_3
-	if val := request.GetInt("custom_number_3", 0); val != 0 {
-		args["custom_number_3"] = val
-	}
-
-	// Optional: custom_number_4
-	if val := request.GetInt("custom_number_4", 0); val != 0 {
-		args["custom_number_4"] = val
-	}
-
-	// Optional: description
-	if val := request.GetString("description", ""); val != "" {
-		args["description"] = val
-	}
-
-	// Optional: expiration_date
-	if val := request.GetString("expiration_date", ""); val != "" {
-		args["expiration_date"] = val
-	}
-
-	// Optional: fb_product_category
-	if val := request.GetString("fb_product_category", ""); val != "" {
-		args["fb_product_category"] = val
-	}
-
-	// Optional: gender
-	if val := request.GetString("gender", ""); val != "" {
-		args["gender"] = val
-	}
-
-	// Optional: gtin
-	if val := request.GetString("gtin", ""); val != "" {
-		args["gtin"] = val
-	}
-
-	// Optional: image_url
-	if val := request.GetString("image_url", ""); val != "" {
-		args["image_url"] = val
-	}
-
-	// Optional: importer_address
-	if val := request.GetString("importer_address", ""); val != "" {
-		args["importer_address"] = val
-	}
-
-	// Optional: importer_name
-	if val := request.GetString("importer_name", ""); val != "" {
-		args["importer_name"] = val
-	}
-
-	// Optional: inventory
-	if val := request.GetInt("inventory", 0); val != 0 {
-		args["inventory"] = val
-	}
-
-	// Optional: ios_app_name
-	if val := request.GetString("ios_app_name", ""); val != "" {
-		args["ios_app_name"] = val
-	}
-
-	// Optional: ios_app_store_id
-	if val := request.GetInt("ios_app_store_id", 0); val != 0 {
-		args["ios_app_store_id"] = val
-	}
-
-	// Optional: ios_url
-	if val := request.GetString("ios_url", ""); val != "" {
-		args["ios_url"] = val
-	}
-
-	// Optional: ipad_app_name
-	if val := request.GetString("ipad_app_name", ""); val != "" {
-		args["ipad_app_name"] = val
-	}
-
-	// Optional: ipad_app_store_id
-	if val := request.GetInt("ipad_app_store_id", 0); val != 0 {
-		args["ipad_app_store_id"] = val
-	}
-
-	// Optional: ipad_url
-	if val := request.GetString("ipad_url", ""); val != "" {
-		args["ipad_url"] = val
-	}
-
-	// Optional: iphone_app_name
-	if val := request.GetString("iphone_app_name", ""); val != "" {
-		args["iphone_app_name"] = val
-	}
-
-	// Optional: iphone_app_store_id
-	if val := request.GetInt("iphone_app_store_id", 0); val != 0 {
-		args["iphone_app_store_id"] = val
-	}
-
-	// Optional: iphone_url
-	if val := request.GetString("iphone_url", ""); val != "" {
-		args["iphone_url"] = val
-	}
-
-	// Optional: launch_date
-	if val := request.GetString("launch_date", ""); val != "" {
-		args["launch_date"] = val
-	}
-
-	// Optional: manufacturer_info
-	if val := request.GetString("manufacturer_info", ""); val != "" {
-		args["manufacturer_info"] = val
-	}
-
-	// Optional: manufacturer_part_number
-	if val := request.GetString("manufacturer_part_number", ""); val != "" {
-		args["manufacturer_part_number"] = val
-	}
-
-	// Optional: marked_for_product_launch
-	if val := request.GetString("marked_for_product_launch", ""); val != "" {
-		args["marked_for_product_launch"] = val
-	}
-
-	// Optional: material
-	if val := request.GetString("material", ""); val != "" {
-		args["material"] = val
-	}
-
-	// Optional: mobile_link
-	if val := request.GetString("mobile_link", ""); val != "" {
-		args["mobile_link"] = val
-	}
-
-	// Optional: name
-	if val := request.GetString("name", ""); val != "" {
-		args["name"] = val
-	}
-
-	// Optional: ordering_index
-	if val := request.GetInt("ordering_index", 0); val != 0 {
-		args["ordering_index"] = val
-	}
-
-	// Optional: origin_country
-	if val := request.GetString("origin_country", ""); val != "" {
-		args["origin_country"] = val
-	}
-
-	// Optional: pattern
-	if val := request.GetString("pattern", ""); val != "" {
-		args["pattern"] = val
-	}
-
-	// Optional: price
-	if val := request.GetInt("price", 0); val != 0 {
-		args["price"] = val
-	}
-
-	// Optional: product_priority_0
-	if val := request.GetFloat("product_priority_0", 0); val != 0 {
-		args["product_priority_0"] = val
-	}
-
-	// Optional: product_priority_1
-	if val := request.GetFloat("product_priority_1", 0); val != 0 {
-		args["product_priority_1"] = val
-	}
-
-	// Optional: product_priority_2
-	if val := request.GetFloat("product_priority_2", 0); val != 0 {
-		args["product_priority_2"] = val
-	}
-
-	// Optional: product_priority_3
-	if val := request.GetFloat("product_priority_3", 0); val != 0 {
-		args["product_priority_3"] = val
-	}
-
-	// Optional: product_priority_4
-	if val := request.GetFloat("product_priority_4", 0); val != 0 {
-		args["product_priority_4"] = val
-	}
-
-	// Optional: product_type
-	if val := request.GetString("product_type", ""); val != "" {
-		args["product_type"] = val
-	}
-
-	// Optional: quantity_to_sell_on_facebook
-	if val := request.GetInt("quantity_to_sell_on_facebook", 0); val != 0 {
-		args["quantity_to_sell_on_facebook"] = val
-	}
-
-	// Optional: retailer_id
-	if val := request.GetString("retailer_id", ""); val != "" {
-		args["retailer_id"] = val
-	}
-
-	// Optional: return_policy_days
-	if val := request.GetInt("return_policy_days", 0); val != 0 {
-		args["return_policy_days"] = val
-	}
-
-	// Optional: sale_price
-	if val := request.GetInt("sale_price", 0); val != 0 {
-		args["sale_price"] = val
-	}
-
-	// Optional: sale_price_end_date
-	if val := request.GetString("sale_price_end_date", ""); val != "" {
-		args["sale_price_end_date"] = val
-	}
-
-	// Optional: sale_price_start_date
-	if val := request.GetString("sale_price_start_date", ""); val != "" {
-		args["sale_price_start_date"] = val
-	}
-
-	// Optional: short_description
-	if val := request.GetString("short_description", ""); val != "" {
-		args["short_description"] = val
-	}
-
-	// Optional: size
-	if val := request.GetString("size", ""); val != "" {
-		args["size"] = val
-	}
-
-	// Optional: start_date
-	if val := request.GetString("start_date", ""); val != "" {
-		args["start_date"] = val
-	}
-
-	// Optional: url
-	if val := request.GetString("url", ""); val != "" {
-		args["url"] = val
-	}
-
-	// Optional: visibility
-	if val := request.GetString("visibility", ""); val != "" {
-		args["visibility"] = val
-	}
-
-	// Optional: wa_compliance_category
-	if val := request.GetString("wa_compliance_category", ""); val != "" {
-		args["wa_compliance_category"] = val
-	}
-
-	// Optional: windows_phone_app_id
-	if val := request.GetString("windows_phone_app_id", ""); val != "" {
-		args["windows_phone_app_id"] = val
-	}
-
-	// Optional: windows_phone_app_name
-	if val := request.GetString("windows_phone_app_name", ""); val != "" {
-		args["windows_phone_app_name"] = val
-	}
-
-	// Optional: windows_phone_url
-	if val := request.GetString("windows_phone_url", ""); val != "" {
-		args["windows_phone_url"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method

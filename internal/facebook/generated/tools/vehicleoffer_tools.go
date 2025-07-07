@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -20,8 +21,8 @@ func GetVehicleOfferTools() []mcp.Tool {
 	// Available fields for CatalogItemChannelsToIntegrityStatus: channels, rejection_information
 	vehicleoffer_get_channels_to_integrity_statusTool := mcp.NewTool("vehicleoffer_get_channels_to_integrity_status",
 		mcp.WithDescription("GET channels_to_integrity_status for VehicleOffer"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for CatalogItemChannelsToIntegrityStatus objects. Available fields: channels, rejection_information"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for CatalogItemChannelsToIntegrityStatus objects. Available fields: channels, rejection_information"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -37,17 +38,26 @@ func GetVehicleOfferTools() []mcp.Tool {
 
 	// vehicleoffer_get_override_details tool
 	// Available fields for OverrideDetails: key, type, values
+	// Params object accepts: keys (list<string>), type (vehicleofferoverride_details_type_enum_param)
 	vehicleoffer_get_override_detailsTool := mcp.NewTool("vehicleoffer_get_override_details",
 		mcp.WithDescription("GET override_details for VehicleOffer"),
-		mcp.WithString("keys",
-			mcp.Description("keys parameter for override_details"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"keys": map[string]any{
+					"type":        "array",
+					"description": "keys parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+				"type": map[string]any{
+					"type":        "string",
+					"description": "type parameter",
+					"enum":        []string{"COUNTRY", "LANGUAGE", "LANGUAGE_AND_COUNTRY"},
+				},
+			}),
+			mcp.Description("Parameters object containing: keys (array<string>), type (enum) [COUNTRY, LANGUAGE, LANGUAGE_AND_COUNTRY]"),
 		),
-		mcp.WithString("type",
-			mcp.Description("type parameter for override_details"),
-			mcp.Enum("COUNTRY", "LANGUAGE", "LANGUAGE_AND_COUNTRY"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for OverrideDetails objects. Available fields: key, type, values"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for OverrideDetails objects. Available fields: key, type, values"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -65,8 +75,8 @@ func GetVehicleOfferTools() []mcp.Tool {
 	// Available fields for DynamicVideoMetadata: id, tags, url, video
 	vehicleoffer_get_videos_metadataTool := mcp.NewTool("vehicleoffer_get_videos_metadata",
 		mcp.WithDescription("GET videos_metadata for VehicleOffer"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for DynamicVideoMetadata objects. Available fields: id, tags, url, video"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for DynamicVideoMetadata objects. Available fields: id, tags, url, video"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -84,8 +94,8 @@ func GetVehicleOfferTools() []mcp.Tool {
 	// Available fields for VehicleOffer: amount_currency, amount_percentage, amount_price, amount_qualifier, applinks, availability, body_style, cashback_currency, cashback_price, category_specific_fields, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0, custom_number_1, custom_number_2, custom_number_3, custom_number_4, dma_codes, downpayment_currency, downpayment_price, downpayment_qualifier, drivetrain, end_date, end_time, exterior_color, fuel_type, generation, id, image_fetch_status, images, interior_color, interior_upholstery, make, model, offer_description, offer_disclaimer, offer_type, price, product_priority_0, product_priority_1, product_priority_2, product_priority_3, product_priority_4, sanitized_images, start_date, start_time, tags, term_length, term_qualifier, title, transmission, trim, unit_price, url, vehicle_offer_id, visibility, year
 	vehicleoffer_get_Tool := mcp.NewTool("vehicleoffer_get_",
 		mcp.WithDescription("GET  for VehicleOffer"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for VehicleOffer objects. Available fields: amount_currency, amount_percentage, amount_price, amount_qualifier, applinks, availability, body_style, cashback_currency, cashback_price, category_specific_fields, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3 (and 46 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for VehicleOffer objects. Available fields: amount_currency, amount_percentage, amount_price, amount_qualifier, applinks, availability, body_style, cashback_currency, cashback_price, category_specific_fields, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3 (and 46 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -119,8 +129,13 @@ func HandleVehicleoffer_get_channels_to_integrity_status(ctx context.Context, re
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -167,20 +182,26 @@ func HandleVehicleoffer_get_override_details(ctx context.Context, request mcp.Ca
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: keys
-	// array type - using string
-	if val := request.GetString("keys", ""); val != "" {
-		args["keys"] = val
-	}
-
-	// Optional: type
-	if val := request.GetString("type", ""); val != "" {
-		args["type"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -228,8 +249,13 @@ func HandleVehicleoffer_get_videos_metadata(ctx context.Context, request mcp.Cal
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -277,8 +303,13 @@ func HandleVehicleoffer_get_(ctx context.Context, request mcp.CallToolRequest) (
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit

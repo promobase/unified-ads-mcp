@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -20,8 +21,8 @@ func GetIGMediaTools() []mcp.Tool {
 	// Available fields for IGBoostMediaAd: ad_id, ad_status
 	igmedia_get_boost_ads_listTool := mcp.NewTool("igmedia_get_boost_ads_list",
 		mcp.WithDescription("GET boost_ads_list for IGMedia"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for IGBoostMediaAd objects. Available fields: ad_id, ad_status"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for IGBoostMediaAd objects. Available fields: ad_id, ad_status"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -39,8 +40,8 @@ func GetIGMediaTools() []mcp.Tool {
 	// Available fields for BrandedContentShadowIGUserID: id
 	igmedia_get_branded_content_partner_promoteTool := mcp.NewTool("igmedia_get_branded_content_partner_promote",
 		mcp.WithDescription("GET branded_content_partner_promote for IGMedia"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for BrandedContentShadowIGUserID objects. Available fields: id"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for BrandedContentShadowIGUserID objects. Available fields: id"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -55,15 +56,24 @@ func GetIGMediaTools() []mcp.Tool {
 	tools = append(tools, igmedia_get_branded_content_partner_promoteTool)
 
 	// igmedia_post_branded_content_partner_promote tool
+	// Params object accepts: permission (bool), sponsor_id (unsigned int)
 	igmedia_post_branded_content_partner_promoteTool := mcp.NewTool("igmedia_post_branded_content_partner_promote",
 		mcp.WithDescription("POST branded_content_partner_promote for IGMedia"),
-		mcp.WithBoolean("permission",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("permission parameter for branded_content_partner_promote"),
-		),
-		mcp.WithNumber("sponsor_id",
-			mcp.Required(),
-			mcp.Description("sponsor_id parameter for branded_content_partner_promote"),
+			mcp.Properties(map[string]any{
+				"permission": map[string]any{
+					"type":        "boolean",
+					"description": "permission parameter",
+					"required":    true,
+				},
+				"sponsor_id": map[string]any{
+					"type":        "integer",
+					"description": "sponsor_id parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: permission (boolean) [required], sponsor_id (integer) [required]"),
 		),
 	)
 	tools = append(tools, igmedia_post_branded_content_partner_promoteTool)
@@ -72,8 +82,8 @@ func GetIGMediaTools() []mcp.Tool {
 	// Available fields for IGMedia: alt_text, boost_eligibility_info, caption, comments_count, copyright_check_information, id, ig_id, is_comment_enabled, is_shared_to_feed, legacy_instagram_media_id, like_count, media_product_type, media_type, media_url, owner, permalink, shortcode, thumbnail_url, timestamp, username, view_count
 	igmedia_get_childrenTool := mcp.NewTool("igmedia_get_children",
 		mcp.WithDescription("GET children for IGMedia"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for IGMedia objects. Available fields: alt_text, boost_eligibility_info, caption, comments_count, copyright_check_information, id, ig_id, is_comment_enabled, is_shared_to_feed, legacy_instagram_media_id, like_count, media_product_type, media_type, media_url, owner (and 6 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for IGMedia objects. Available fields: alt_text, boost_eligibility_info, caption, comments_count, copyright_check_information, id, ig_id, is_comment_enabled, is_shared_to_feed, legacy_instagram_media_id, like_count, media_product_type, media_type, media_url, owner (and 6 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -91,8 +101,8 @@ func GetIGMediaTools() []mcp.Tool {
 	// Available fields for ShadowIGMediaCollaborators: id, invite_status, username
 	igmedia_get_collaboratorsTool := mcp.NewTool("igmedia_get_collaborators",
 		mcp.WithDescription("GET collaborators for IGMedia"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for ShadowIGMediaCollaborators objects. Available fields: id, invite_status, username"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for ShadowIGMediaCollaborators objects. Available fields: id, invite_status, username"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -110,8 +120,8 @@ func GetIGMediaTools() []mcp.Tool {
 	// Available fields for IGComment: from, hidden, id, legacy_instagram_comment_id, like_count, media, parent_id, text, timestamp, user, username
 	igmedia_get_commentsTool := mcp.NewTool("igmedia_get_comments",
 		mcp.WithDescription("GET comments for IGMedia"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for IGComment objects. Available fields: from, hidden, id, legacy_instagram_comment_id, like_count, media, parent_id, text, timestamp, user, username"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for IGComment objects. Available fields: from, hidden, id, legacy_instagram_comment_id, like_count, media, parent_id, text, timestamp, user, username"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -126,36 +136,57 @@ func GetIGMediaTools() []mcp.Tool {
 	tools = append(tools, igmedia_get_commentsTool)
 
 	// igmedia_post_comments tool
+	// Params object accepts: ad_id (string), message (string)
 	igmedia_post_commentsTool := mcp.NewTool("igmedia_post_comments",
 		mcp.WithDescription("POST comments for IGMedia"),
-		mcp.WithString("ad_id",
-			mcp.Description("ad_id parameter for comments"),
-		),
-		mcp.WithString("message",
-			mcp.Description("message parameter for comments"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"ad_id": map[string]any{
+					"type":        "string",
+					"description": "ad_id parameter",
+				},
+				"message": map[string]any{
+					"type":        "string",
+					"description": "message parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: ad_id (string), message (string)"),
 		),
 	)
 	tools = append(tools, igmedia_post_commentsTool)
 
 	// igmedia_get_insights tool
 	// Available fields for InstagramInsightsResult: description, id, name, period, title, total_value, values
+	// Params object accepts: breakdown (list<shadowigmediainsights_breakdown_enum_param>), metric (list<shadowigmediainsights_metric_enum_param>), period (list<shadowigmediainsights_period_enum_param>)
 	igmedia_get_insightsTool := mcp.NewTool("igmedia_get_insights",
 		mcp.WithDescription("GET insights for IGMedia"),
-		mcp.WithString("breakdown",
-			mcp.Description("breakdown parameter for insights"),
-			mcp.Enum("action_type", "follow_type", "story_navigation_action_type", "surface_type"),
-		),
-		mcp.WithString("metric",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("metric parameter for insights"),
-			mcp.Enum("clips_replays_count", "comments", "content_views", "follows", "ig_reels_aggregated_all_plays_count", "ig_reels_avg_watch_time", "ig_reels_video_view_total_time", "impressions", "likes", "navigation", "plays", "profile_activity", "profile_visits", "quotes", "reach", "replies", "reposts", "saved", "shares", "thread_replies", "thread_shares", "threads_media_clicks", "threads_views", "total_interactions", "views"),
+			mcp.Properties(map[string]any{
+				"breakdown": map[string]any{
+					"type":        "array",
+					"description": "breakdown parameter",
+					"enum":        []string{"action_type", "follow_type", "story_navigation_action_type", "surface_type"},
+					"items":       map[string]any{"type": "string"},
+				},
+				"metric": map[string]any{
+					"type":        "array",
+					"description": "metric parameter",
+					"required":    true,
+					"enum":        []string{"clips_replays_count", "comments", "content_views", "follows", "ig_reels_aggregated_all_plays_count", "ig_reels_avg_watch_time", "ig_reels_video_view_total_time", "impressions", "likes", "navigation", "plays", "profile_activity", "profile_visits", "quotes", "reach", "replies", "reposts", "saved", "shares", "thread_replies", "thread_shares", "threads_media_clicks", "threads_views", "total_interactions", "views"},
+					"items":       map[string]any{"type": "string"},
+				},
+				"period": map[string]any{
+					"type":        "array",
+					"description": "period parameter",
+					"enum":        []string{"day", "days_28", "lifetime", "month", "total_over_range", "week"},
+					"items":       map[string]any{"type": "string"},
+				},
+			}),
+			mcp.Description("Parameters object containing: breakdown (array<enum>) [action_type, follow_type, story_navigation_action_type, surface_type], metric (array<enum>) [clips_replays_count, comments, content_views, follows, ig_reels_aggregated_all_plays_count, ...] [required], period (array<enum>) [day, days_28, lifetime, month, total_over_range, ...]"),
 		),
-		mcp.WithString("period",
-			mcp.Description("period parameter for insights"),
-			mcp.Enum("day", "days_28", "lifetime", "month", "total_over_range", "week"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for InstagramInsightsResult objects. Available fields: description, id, name, period, title, total_value, values"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for InstagramInsightsResult objects. Available fields: description, id, name, period, title, total_value, values"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -185,8 +216,8 @@ func GetIGMediaTools() []mcp.Tool {
 	// Available fields for ShadowIGMediaProductTags: image_url, is_checkout, merchant_id, name, price_string, product_id, review_status, stripped_price_string, stripped_sale_price_string, x, y
 	igmedia_get_product_tagsTool := mcp.NewTool("igmedia_get_product_tags",
 		mcp.WithDescription("GET product_tags for IGMedia"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for ShadowIGMediaProductTags objects. Available fields: image_url, is_checkout, merchant_id, name, price_string, product_id, review_status, stripped_price_string, stripped_sale_price_string, x, y"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for ShadowIGMediaProductTags objects. Available fields: image_url, is_checkout, merchant_id, name, price_string, product_id, review_status, stripped_price_string, stripped_sale_price_string, x, y"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -201,46 +232,69 @@ func GetIGMediaTools() []mcp.Tool {
 	tools = append(tools, igmedia_get_product_tagsTool)
 
 	// igmedia_post_product_tags tool
+	// Params object accepts: child_index (unsigned int), updated_tags (list<map>)
 	igmedia_post_product_tagsTool := mcp.NewTool("igmedia_post_product_tags",
 		mcp.WithDescription("POST product_tags for IGMedia"),
-		mcp.WithNumber("child_index",
-			mcp.Description("child_index parameter for product_tags"),
-		),
-		mcp.WithString("updated_tags",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("updated_tags parameter for product_tags"),
+			mcp.Properties(map[string]any{
+				"child_index": map[string]any{
+					"type":        "integer",
+					"description": "child_index parameter",
+				},
+				"updated_tags": map[string]any{
+					"type":        "array",
+					"description": "updated_tags parameter",
+					"required":    true,
+					"items":       map[string]any{"type": "object"},
+				},
+			}),
+			mcp.Description("Parameters object containing: child_index (integer), updated_tags (array<object>) [required]"),
 		),
 	)
 	tools = append(tools, igmedia_post_product_tagsTool)
 
 	// igmedia_get_ tool
 	// Available fields for IGMedia: alt_text, boost_eligibility_info, caption, comments_count, copyright_check_information, id, ig_id, is_comment_enabled, is_shared_to_feed, legacy_instagram_media_id, like_count, media_product_type, media_type, media_url, owner, permalink, shortcode, thumbnail_url, timestamp, username, view_count
+	// Params object accepts: ad_account_id (unsigned int), boostable_media_callsite (shadowigmedia_boostable_media_callsite), business_id (string), primary_fb_page_id (string), primary_ig_user_id (string), secondary_fb_page_id (string), secondary_ig_user_id (string)
 	igmedia_get_Tool := mcp.NewTool("igmedia_get_",
 		mcp.WithDescription("GET  for IGMedia"),
-		mcp.WithNumber("ad_account_id",
-			mcp.Description("ad_account_id parameter for "),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"ad_account_id": map[string]any{
+					"type":        "integer",
+					"description": "ad_account_id parameter",
+				},
+				"boostable_media_callsite": map[string]any{
+					"type":        "string",
+					"description": "boostable_media_callsite parameter",
+					"enum":        []string{"ADS_MANAGER_L1_EDITOR_DYNAMIC_ADS_WITH_EXISTING_POST"},
+				},
+				"business_id": map[string]any{
+					"type":        "string",
+					"description": "business_id parameter",
+				},
+				"primary_fb_page_id": map[string]any{
+					"type":        "string",
+					"description": "primary_fb_page_id parameter",
+				},
+				"primary_ig_user_id": map[string]any{
+					"type":        "string",
+					"description": "primary_ig_user_id parameter",
+				},
+				"secondary_fb_page_id": map[string]any{
+					"type":        "string",
+					"description": "secondary_fb_page_id parameter",
+				},
+				"secondary_ig_user_id": map[string]any{
+					"type":        "string",
+					"description": "secondary_ig_user_id parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: ad_account_id (integer), boostable_media_callsite (shadowigmedia_boostable_media_callsite) [ADS_MANAGER_L1_EDITOR_DYNAMIC_ADS_WITH_EXISTING_POST], business_id (string), primary_fb_page_id (string), primary_ig_user_id (string), secondary_fb_page_id (string), secondary_ig_user_id (string)"),
 		),
-		mcp.WithString("boostable_media_callsite",
-			mcp.Description("boostable_media_callsite parameter for "),
-			mcp.Enum("ADS_MANAGER_L1_EDITOR_DYNAMIC_ADS_WITH_EXISTING_POST"),
-		),
-		mcp.WithString("business_id",
-			mcp.Description("business_id parameter for "),
-		),
-		mcp.WithString("primary_fb_page_id",
-			mcp.Description("primary_fb_page_id parameter for "),
-		),
-		mcp.WithString("primary_ig_user_id",
-			mcp.Description("primary_ig_user_id parameter for "),
-		),
-		mcp.WithString("secondary_fb_page_id",
-			mcp.Description("secondary_fb_page_id parameter for "),
-		),
-		mcp.WithString("secondary_ig_user_id",
-			mcp.Description("secondary_ig_user_id parameter for "),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for IGMedia objects. Available fields: alt_text, boost_eligibility_info, caption, comments_count, copyright_check_information, id, ig_id, is_comment_enabled, is_shared_to_feed, legacy_instagram_media_id, like_count, media_product_type, media_type, media_url, owner (and 6 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for IGMedia objects. Available fields: alt_text, boost_eligibility_info, caption, comments_count, copyright_check_information, id, ig_id, is_comment_enabled, is_shared_to_feed, legacy_instagram_media_id, like_count, media_product_type, media_type, media_url, owner (and 6 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -255,11 +309,19 @@ func GetIGMediaTools() []mcp.Tool {
 	tools = append(tools, igmedia_get_Tool)
 
 	// igmedia_post_ tool
+	// Params object accepts: comment_enabled (bool)
 	igmedia_post_Tool := mcp.NewTool("igmedia_post_",
 		mcp.WithDescription("POST  for IGMedia"),
-		mcp.WithBoolean("comment_enabled",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("comment_enabled parameter for "),
+			mcp.Properties(map[string]any{
+				"comment_enabled": map[string]any{
+					"type":        "boolean",
+					"description": "comment_enabled parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: comment_enabled (boolean) [required]"),
 		),
 	)
 	tools = append(tools, igmedia_post_Tool)
@@ -284,8 +346,13 @@ func HandleIgmedia_get_boost_ads_list(ctx context.Context, request mcp.CallToolR
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -333,8 +400,13 @@ func HandleIgmedia_get_branded_content_partner_promote(ctx context.Context, requ
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -381,19 +453,19 @@ func HandleIgmedia_post_branded_content_partner_promote(ctx context.Context, req
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: permission
-	permission, err := request.RequireBool("permission")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter permission: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["permission"] = permission
-
-	// Required: sponsor_id
-	sponsor_id, err := request.RequireInt("sponsor_id")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter sponsor_id: %v", err)), nil
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
-	args["sponsor_id"] = sponsor_id
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Igmedia_post_branded_content_partner_promote(args)
@@ -425,8 +497,13 @@ func HandleIgmedia_get_children(ctx context.Context, request mcp.CallToolRequest
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -474,8 +551,13 @@ func HandleIgmedia_get_collaborators(ctx context.Context, request mcp.CallToolRe
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -523,8 +605,13 @@ func HandleIgmedia_get_comments(ctx context.Context, request mcp.CallToolRequest
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -571,14 +658,16 @@ func HandleIgmedia_post_comments(ctx context.Context, request mcp.CallToolReques
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: ad_id
-	if val := request.GetString("ad_id", ""); val != "" {
-		args["ad_id"] = val
-	}
-
-	// Optional: message
-	if val := request.GetString("message", ""); val != "" {
-		args["message"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method
@@ -610,28 +699,28 @@ func HandleIgmedia_get_insights(ctx context.Context, request mcp.CallToolRequest
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: breakdown
-	// array type - using string
-	if val := request.GetString("breakdown", ""); val != "" {
-		args["breakdown"] = val
-	}
-
-	// Required: metric
-	metric, err := request.RequireString("metric")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter metric: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["metric"] = metric
-
-	// Optional: period
-	// array type - using string
-	if val := request.GetString("period", ""); val != "" {
-		args["period"] = val
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -737,8 +826,13 @@ func HandleIgmedia_get_product_tags(ctx context.Context, request mcp.CallToolReq
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -785,17 +879,19 @@ func HandleIgmedia_post_product_tags(ctx context.Context, request mcp.CallToolRe
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: child_index
-	if val := request.GetInt("child_index", 0); val != 0 {
-		args["child_index"] = val
-	}
-
-	// Required: updated_tags
-	updated_tags, err := request.RequireString("updated_tags")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter updated_tags: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["updated_tags"] = updated_tags
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Igmedia_post_product_tags(args)
@@ -826,44 +922,26 @@ func HandleIgmedia_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: ad_account_id
-	if val := request.GetInt("ad_account_id", 0); val != 0 {
-		args["ad_account_id"] = val
-	}
-
-	// Optional: boostable_media_callsite
-	if val := request.GetString("boostable_media_callsite", ""); val != "" {
-		args["boostable_media_callsite"] = val
-	}
-
-	// Optional: business_id
-	if val := request.GetString("business_id", ""); val != "" {
-		args["business_id"] = val
-	}
-
-	// Optional: primary_fb_page_id
-	if val := request.GetString("primary_fb_page_id", ""); val != "" {
-		args["primary_fb_page_id"] = val
-	}
-
-	// Optional: primary_ig_user_id
-	if val := request.GetString("primary_ig_user_id", ""); val != "" {
-		args["primary_ig_user_id"] = val
-	}
-
-	// Optional: secondary_fb_page_id
-	if val := request.GetString("secondary_fb_page_id", ""); val != "" {
-		args["secondary_fb_page_id"] = val
-	}
-
-	// Optional: secondary_ig_user_id
-	if val := request.GetString("secondary_ig_user_id", ""); val != "" {
-		args["secondary_ig_user_id"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -910,12 +988,19 @@ func HandleIgmedia_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: comment_enabled
-	comment_enabled, err := request.RequireBool("comment_enabled")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter comment_enabled: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["comment_enabled"] = comment_enabled
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Igmedia_post_(args)

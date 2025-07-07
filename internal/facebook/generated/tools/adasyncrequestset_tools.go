@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -18,14 +19,22 @@ func GetAdAsyncRequestSetTools() []mcp.Tool {
 
 	// adasyncrequestset_get_requests tool
 	// Available fields for AdAsyncRequest: async_request_set, created_time, id, input, result, scope_object_id, status, type, updated_time
+	// Params object accepts: statuses (list<adasyncrequestsetrequests_statuses_enum_param>)
 	adasyncrequestset_get_requestsTool := mcp.NewTool("adasyncrequestset_get_requests",
 		mcp.WithDescription("GET requests for AdAsyncRequestSet"),
-		mcp.WithString("statuses",
-			mcp.Description("statuses parameter for requests"),
-			mcp.Enum("CANCELED", "CANCELED_DEPENDENCY", "ERROR", "ERROR_CONFLICTS", "ERROR_DEPENDENCY", "INITIAL", "IN_PROGRESS", "PENDING_DEPENDENCY", "PROCESS_BY_AD_ASYNC_ENGINE", "PROCESS_BY_EVENT_PROCESSOR", "SUCCESS", "USER_CANCELED", "USER_CANCELED_DEPENDENCY"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"statuses": map[string]any{
+					"type":        "array",
+					"description": "statuses parameter",
+					"enum":        []string{"CANCELED", "CANCELED_DEPENDENCY", "ERROR", "ERROR_CONFLICTS", "ERROR_DEPENDENCY", "INITIAL", "IN_PROGRESS", "PENDING_DEPENDENCY", "PROCESS_BY_AD_ASYNC_ENGINE", "PROCESS_BY_EVENT_PROCESSOR", "SUCCESS", "USER_CANCELED", "USER_CANCELED_DEPENDENCY"},
+					"items":       map[string]any{"type": "string"},
+				},
+			}),
+			mcp.Description("Parameters object containing: statuses (array<enum>) [CANCELED, CANCELED_DEPENDENCY, ERROR, ERROR_CONFLICTS, ERROR_DEPENDENCY, ...]"),
 		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for AdAsyncRequest objects. Available fields: async_request_set, created_time, id, input, result, scope_object_id, status, type, updated_time"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for AdAsyncRequest objects. Available fields: async_request_set, created_time, id, input, result, scope_object_id, status, type, updated_time"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -49,8 +58,8 @@ func GetAdAsyncRequestSetTools() []mcp.Tool {
 	// Available fields for AdAsyncRequestSet: canceled_count, created_time, error_count, id, in_progress_count, initial_count, is_completed, name, notification_mode, notification_result, notification_status, notification_uri, owner_id, success_count, total_count, updated_time
 	adasyncrequestset_get_Tool := mcp.NewTool("adasyncrequestset_get_",
 		mcp.WithDescription("GET  for AdAsyncRequestSet"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for AdAsyncRequestSet objects. Available fields: canceled_count, created_time, error_count, id, in_progress_count, initial_count, is_completed, name, notification_mode, notification_result, notification_status, notification_uri, owner_id, success_count, total_count (and 1 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for AdAsyncRequestSet objects. Available fields: canceled_count, created_time, error_count, id, in_progress_count, initial_count, is_completed, name, notification_mode, notification_result, notification_status, notification_uri, owner_id, success_count, total_count (and 1 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -65,17 +74,26 @@ func GetAdAsyncRequestSetTools() []mcp.Tool {
 	tools = append(tools, adasyncrequestset_get_Tool)
 
 	// adasyncrequestset_post_ tool
+	// Params object accepts: name (string), notification_mode (adasyncrequestset_notification_mode), notification_uri (string)
 	adasyncrequestset_post_Tool := mcp.NewTool("adasyncrequestset_post_",
 		mcp.WithDescription("POST  for AdAsyncRequestSet"),
-		mcp.WithString("name",
-			mcp.Description("name parameter for "),
-		),
-		mcp.WithString("notification_mode",
-			mcp.Description("notification_mode parameter for "),
-			mcp.Enum("OFF", "ON_COMPLETE"),
-		),
-		mcp.WithString("notification_uri",
-			mcp.Description("notification_uri parameter for "),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"name": map[string]any{
+					"type":        "string",
+					"description": "name parameter",
+				},
+				"notification_mode": map[string]any{
+					"type":        "string",
+					"description": "notification_mode parameter",
+					"enum":        []string{"OFF", "ON_COMPLETE"},
+				},
+				"notification_uri": map[string]any{
+					"type":        "string",
+					"description": "notification_uri parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: name (string), notification_mode (adasyncrequestset_notification_mode) [OFF, ON_COMPLETE], notification_uri (string)"),
 		),
 	)
 	tools = append(tools, adasyncrequestset_post_Tool)
@@ -99,15 +117,26 @@ func HandleAdasyncrequestset_get_requests(ctx context.Context, request mcp.CallT
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: statuses
-	// array type - using string
-	if val := request.GetString("statuses", ""); val != "" {
-		args["statuses"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -184,8 +213,13 @@ func HandleAdasyncrequestset_get_(ctx context.Context, request mcp.CallToolReque
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -232,19 +266,16 @@ func HandleAdasyncrequestset_post_(ctx context.Context, request mcp.CallToolRequ
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: name
-	if val := request.GetString("name", ""); val != "" {
-		args["name"] = val
-	}
-
-	// Optional: notification_mode
-	if val := request.GetString("notification_mode", ""); val != "" {
-		args["notification_mode"] = val
-	}
-
-	// Optional: notification_uri
-	if val := request.GetString("notification_uri", ""); val != "" {
-		args["notification_uri"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method

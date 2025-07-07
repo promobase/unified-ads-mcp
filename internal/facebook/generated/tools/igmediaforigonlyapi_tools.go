@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -19,8 +20,8 @@ func GetIGMediaForIGOnlyAPITools() []mcp.Tool {
 	// igmediaforigonlyapi_get_children tool
 	igmediaforigonlyapi_get_childrenTool := mcp.NewTool("igmediaforigonlyapi_get_children",
 		mcp.WithDescription("GET children for IGMediaForIGOnlyAPI"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -38,8 +39,8 @@ func GetIGMediaForIGOnlyAPITools() []mcp.Tool {
 	// Available fields for Comment: admin_creator, application, attachment, can_comment, can_hide, can_like, can_remove, can_reply_privately, comment_count, created_time, from, id, is_hidden, is_private, like_count, live_broadcast_timestamp, message, message_tags, object, parent, permalink_url, private_reply_conversation, user_likes
 	igmediaforigonlyapi_get_commentsTool := mcp.NewTool("igmediaforigonlyapi_get_comments",
 		mcp.WithDescription("GET comments for IGMediaForIGOnlyAPI"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for Comment objects. Available fields: admin_creator, application, attachment, can_comment, can_hide, can_like, can_remove, can_reply_privately, comment_count, created_time, from, id, is_hidden, is_private, like_count (and 8 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for Comment objects. Available fields: admin_creator, application, attachment, can_comment, can_hide, can_like, can_remove, can_reply_privately, comment_count, created_time, from, id, is_hidden, is_private, like_count (and 8 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -54,33 +55,53 @@ func GetIGMediaForIGOnlyAPITools() []mcp.Tool {
 	tools = append(tools, igmediaforigonlyapi_get_commentsTool)
 
 	// igmediaforigonlyapi_post_comments tool
+	// Params object accepts: message (string)
 	igmediaforigonlyapi_post_commentsTool := mcp.NewTool("igmediaforigonlyapi_post_comments",
 		mcp.WithDescription("POST comments for IGMediaForIGOnlyAPI"),
-		mcp.WithString("message",
-			mcp.Description("message parameter for comments"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"message": map[string]any{
+					"type":        "string",
+					"description": "message parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: message (string)"),
 		),
 	)
 	tools = append(tools, igmediaforigonlyapi_post_commentsTool)
 
 	// igmediaforigonlyapi_get_insights tool
 	// Available fields for InsightsResult: description, description_from_api_doc, id, name, period, title, values
+	// Params object accepts: breakdown (list<mediainsights_breakdown_enum_param>), metric (list<mediainsights_metric_enum_param>), period (list<mediainsights_period_enum_param>)
 	igmediaforigonlyapi_get_insightsTool := mcp.NewTool("igmediaforigonlyapi_get_insights",
 		mcp.WithDescription("GET insights for IGMediaForIGOnlyAPI"),
-		mcp.WithString("breakdown",
-			mcp.Description("breakdown parameter for insights"),
-			mcp.Enum("action_type", "follow_type", "story_navigation_action_type", "surface_type"),
-		),
-		mcp.WithString("metric",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("metric parameter for insights"),
-			mcp.Enum("clips_replays_count", "comments", "content_views", "follows", "ig_reels_aggregated_all_plays_count", "ig_reels_avg_watch_time", "ig_reels_video_view_total_time", "impressions", "likes", "navigation", "plays", "profile_activity", "profile_visits", "quotes", "reach", "replies", "reposts", "saved", "shares", "thread_replies", "thread_shares", "threads_media_clicks", "threads_views", "total_interactions", "views"),
+			mcp.Properties(map[string]any{
+				"breakdown": map[string]any{
+					"type":        "array",
+					"description": "breakdown parameter",
+					"enum":        []string{"action_type", "follow_type", "story_navigation_action_type", "surface_type"},
+					"items":       map[string]any{"type": "string"},
+				},
+				"metric": map[string]any{
+					"type":        "array",
+					"description": "metric parameter",
+					"required":    true,
+					"enum":        []string{"clips_replays_count", "comments", "content_views", "follows", "ig_reels_aggregated_all_plays_count", "ig_reels_avg_watch_time", "ig_reels_video_view_total_time", "impressions", "likes", "navigation", "plays", "profile_activity", "profile_visits", "quotes", "reach", "replies", "reposts", "saved", "shares", "thread_replies", "thread_shares", "threads_media_clicks", "threads_views", "total_interactions", "views"},
+					"items":       map[string]any{"type": "string"},
+				},
+				"period": map[string]any{
+					"type":        "array",
+					"description": "period parameter",
+					"enum":        []string{"day", "days_28", "lifetime", "month", "total_over_range", "week"},
+					"items":       map[string]any{"type": "string"},
+				},
+			}),
+			mcp.Description("Parameters object containing: breakdown (array<enum>) [action_type, follow_type, story_navigation_action_type, surface_type], metric (array<enum>) [clips_replays_count, comments, content_views, follows, ig_reels_aggregated_all_plays_count, ...] [required], period (array<enum>) [day, days_28, lifetime, month, total_over_range, ...]"),
 		),
-		mcp.WithString("period",
-			mcp.Description("period parameter for insights"),
-			mcp.Enum("day", "days_28", "lifetime", "month", "total_over_range", "week"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for InsightsResult objects. Available fields: description, description_from_api_doc, id, name, period, title, values"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for InsightsResult objects. Available fields: description, description_from_api_doc, id, name, period, title, values"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -97,8 +118,8 @@ func GetIGMediaForIGOnlyAPITools() []mcp.Tool {
 	// igmediaforigonlyapi_get_ tool
 	igmediaforigonlyapi_get_Tool := mcp.NewTool("igmediaforigonlyapi_get_",
 		mcp.WithDescription("GET  for IGMediaForIGOnlyAPI"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -113,11 +134,19 @@ func GetIGMediaForIGOnlyAPITools() []mcp.Tool {
 	tools = append(tools, igmediaforigonlyapi_get_Tool)
 
 	// igmediaforigonlyapi_post_ tool
+	// Params object accepts: comment_enabled (bool)
 	igmediaforigonlyapi_post_Tool := mcp.NewTool("igmediaforigonlyapi_post_",
 		mcp.WithDescription("POST  for IGMediaForIGOnlyAPI"),
-		mcp.WithBoolean("comment_enabled",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("comment_enabled parameter for "),
+			mcp.Properties(map[string]any{
+				"comment_enabled": map[string]any{
+					"type":        "boolean",
+					"description": "comment_enabled parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: comment_enabled (boolean) [required]"),
 		),
 	)
 	tools = append(tools, igmediaforigonlyapi_post_Tool)
@@ -142,8 +171,13 @@ func HandleIgmediaforigonlyapi_get_children(ctx context.Context, request mcp.Cal
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -191,8 +225,13 @@ func HandleIgmediaforigonlyapi_get_comments(ctx context.Context, request mcp.Cal
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -239,9 +278,16 @@ func HandleIgmediaforigonlyapi_post_comments(ctx context.Context, request mcp.Ca
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: message
-	if val := request.GetString("message", ""); val != "" {
-		args["message"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method
@@ -273,28 +319,28 @@ func HandleIgmediaforigonlyapi_get_insights(ctx context.Context, request mcp.Cal
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: breakdown
-	// array type - using string
-	if val := request.GetString("breakdown", ""); val != "" {
-		args["breakdown"] = val
-	}
-
-	// Required: metric
-	metric, err := request.RequireString("metric")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter metric: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["metric"] = metric
-
-	// Optional: period
-	// array type - using string
-	if val := request.GetString("period", ""); val != "" {
-		args["period"] = val
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -342,8 +388,13 @@ func HandleIgmediaforigonlyapi_get_(ctx context.Context, request mcp.CallToolReq
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -390,12 +441,19 @@ func HandleIgmediaforigonlyapi_post_(ctx context.Context, request mcp.CallToolRe
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: comment_enabled
-	comment_enabled, err := request.RequireBool("comment_enabled")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter comment_enabled: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["comment_enabled"] = comment_enabled
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Igmediaforigonlyapi_post_(args)

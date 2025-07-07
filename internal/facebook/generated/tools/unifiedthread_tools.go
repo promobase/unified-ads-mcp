@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -17,14 +18,21 @@ func GetUnifiedThreadTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// unifiedthread_get_messages tool
+	// Params object accepts: source (unifiedthreadmessages_source_enum_param)
 	unifiedthread_get_messagesTool := mcp.NewTool("unifiedthread_get_messages",
 		mcp.WithDescription("GET messages for UnifiedThread"),
-		mcp.WithString("source",
-			mcp.Description("source parameter for messages"),
-			mcp.Enum("ALL", "PARTICIPANTS"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"source": map[string]any{
+					"type":        "string",
+					"description": "source parameter",
+					"enum":        []string{"ALL", "PARTICIPANTS"},
+				},
+			}),
+			mcp.Description("Parameters object containing: source (enum) [ALL, PARTICIPANTS]"),
 		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -42,8 +50,8 @@ func GetUnifiedThreadTools() []mcp.Tool {
 	// Available fields for UnifiedThread: can_reply, folder, former_participants, id, is_subscribed, link, linked_group, message_count, name, participants, scoped_thread_key, senders, snippet, subject, unread_count, updated_time, wallpaper
 	unifiedthread_get_Tool := mcp.NewTool("unifiedthread_get_",
 		mcp.WithDescription("GET  for UnifiedThread"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for UnifiedThread objects. Available fields: can_reply, folder, former_participants, id, is_subscribed, link, linked_group, message_count, name, participants, scoped_thread_key, senders, snippet, subject, unread_count (and 2 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for UnifiedThread objects. Available fields: can_reply, folder, former_participants, id, is_subscribed, link, linked_group, message_count, name, participants, scoped_thread_key, senders, snippet, subject, unread_count (and 2 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -76,14 +84,26 @@ func HandleUnifiedthread_get_messages(ctx context.Context, request mcp.CallToolR
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: source
-	if val := request.GetString("source", ""); val != "" {
-		args["source"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -131,8 +151,13 @@ func HandleUnifiedthread_get_(ctx context.Context, request mcp.CallToolRequest) 
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit

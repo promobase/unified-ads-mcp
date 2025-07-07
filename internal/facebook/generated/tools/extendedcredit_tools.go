@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -20,8 +21,8 @@ func GetExtendedCreditTools() []mcp.Tool {
 	// Available fields for ExtendedCreditInvoiceGroup: auto_enroll, bill_to_address, customer_po_number, email, emails, id, liable_address, name, sold_to_address
 	extendedcredit_get_extended_credit_invoice_groupsTool := mcp.NewTool("extendedcredit_get_extended_credit_invoice_groups",
 		mcp.WithDescription("GET extended_credit_invoice_groups for ExtendedCredit"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for ExtendedCreditInvoiceGroup objects. Available fields: auto_enroll, bill_to_address, customer_po_number, email, emails, id, liable_address, name, sold_to_address"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for ExtendedCreditInvoiceGroup objects. Available fields: auto_enroll, bill_to_address, customer_po_number, email, emails, id, liable_address, name, sold_to_address"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -36,28 +37,45 @@ func GetExtendedCreditTools() []mcp.Tool {
 	tools = append(tools, extendedcredit_get_extended_credit_invoice_groupsTool)
 
 	// extendedcredit_post_extended_credit_invoice_groups tool
+	// Params object accepts: emails (list<string>), name (string)
 	extendedcredit_post_extended_credit_invoice_groupsTool := mcp.NewTool("extendedcredit_post_extended_credit_invoice_groups",
 		mcp.WithDescription("POST extended_credit_invoice_groups for ExtendedCredit"),
-		mcp.WithString("emails",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("emails parameter for extended_credit_invoice_groups"),
-		),
-		mcp.WithString("name",
-			mcp.Required(),
-			mcp.Description("name parameter for extended_credit_invoice_groups"),
+			mcp.Properties(map[string]any{
+				"emails": map[string]any{
+					"type":        "array",
+					"description": "emails parameter",
+					"required":    true,
+					"items":       map[string]any{"type": "string"},
+				},
+				"name": map[string]any{
+					"type":        "string",
+					"description": "name parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: emails (array<string>) [required], name (string) [required]"),
 		),
 	)
 	tools = append(tools, extendedcredit_post_extended_credit_invoice_groupsTool)
 
 	// extendedcredit_get_owning_credit_allocation_configs tool
 	// Available fields for ExtendedCreditAllocationConfig: currency_amount, id, liability_type, owning_business, owning_credential, partition_type, receiving_business, receiving_credential, request_status, send_bill_to
+	// Params object accepts: receiving_business_id (string)
 	extendedcredit_get_owning_credit_allocation_configsTool := mcp.NewTool("extendedcredit_get_owning_credit_allocation_configs",
 		mcp.WithDescription("GET owning_credit_allocation_configs for ExtendedCredit"),
-		mcp.WithString("receiving_business_id",
-			mcp.Description("receiving_business_id parameter for owning_credit_allocation_configs"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"receiving_business_id": map[string]any{
+					"type":        "string",
+					"description": "receiving_business_id parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: receiving_business_id (string)"),
 		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for ExtendedCreditAllocationConfig objects. Available fields: currency_amount, id, liability_type, owning_business, owning_credential, partition_type, receiving_business, receiving_credential, request_status, send_bill_to"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for ExtendedCreditAllocationConfig objects. Available fields: currency_amount, id, liability_type, owning_business, owning_credential, partition_type, receiving_business, receiving_credential, request_status, send_bill_to"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -72,64 +90,102 @@ func GetExtendedCreditTools() []mcp.Tool {
 	tools = append(tools, extendedcredit_get_owning_credit_allocation_configsTool)
 
 	// extendedcredit_post_owning_credit_allocation_configs tool
+	// Params object accepts: amount (Object), liability_type (extendedcreditowning_credit_allocation_configs_liability_type_enum_param), partition_type (extendedcreditowning_credit_allocation_configs_partition_type_enum_param), receiving_business_id (string), send_bill_to (extendedcreditowning_credit_allocation_configs_send_bill_to_enum_param)
 	extendedcredit_post_owning_credit_allocation_configsTool := mcp.NewTool("extendedcredit_post_owning_credit_allocation_configs",
 		mcp.WithDescription("POST owning_credit_allocation_configs for ExtendedCredit"),
-		mcp.WithString("amount",
-			mcp.Description("amount parameter for owning_credit_allocation_configs"),
-		),
-		mcp.WithString("liability_type",
-			mcp.Description("liability_type parameter for owning_credit_allocation_configs"),
-			mcp.Enum("", "MSA", "Normal", "Sequential"),
-		),
-		mcp.WithString("partition_type",
-			mcp.Description("partition_type parameter for owning_credit_allocation_configs"),
-			mcp.Enum("AUTH", "FIXED", "FIXED_WITHOUT_PARTITION"),
-		),
-		mcp.WithString("receiving_business_id",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("receiving_business_id parameter for owning_credit_allocation_configs"),
-		),
-		mcp.WithString("send_bill_to",
-			mcp.Description("send_bill_to parameter for owning_credit_allocation_configs"),
-			mcp.Enum("", "Advertiser", "Agency"),
+			mcp.Properties(map[string]any{
+				"amount": map[string]any{
+					"type":        "object",
+					"description": "amount parameter",
+				},
+				"liability_type": map[string]any{
+					"type":        "string",
+					"description": "liability_type parameter",
+					"enum":        []string{"", "MSA", "Normal", "Sequential"},
+				},
+				"partition_type": map[string]any{
+					"type":        "string",
+					"description": "partition_type parameter",
+					"enum":        []string{"AUTH", "FIXED", "FIXED_WITHOUT_PARTITION"},
+				},
+				"receiving_business_id": map[string]any{
+					"type":        "string",
+					"description": "receiving_business_id parameter",
+					"required":    true,
+				},
+				"send_bill_to": map[string]any{
+					"type":        "string",
+					"description": "send_bill_to parameter",
+					"enum":        []string{"", "Advertiser", "Agency"},
+				},
+			}),
+			mcp.Description("Parameters object containing: amount (object), liability_type (enum) [, MSA, Normal, Sequential], partition_type (enum) [AUTH, FIXED, FIXED_WITHOUT_PARTITION], receiving_business_id (string) [required], send_bill_to (enum) [, Advertiser, Agency]"),
 		),
 	)
 	tools = append(tools, extendedcredit_post_owning_credit_allocation_configsTool)
 
 	// extendedcredit_post_whatsapp_credit_attach tool
+	// Params object accepts: waba_currency (string), waba_id (string)
 	extendedcredit_post_whatsapp_credit_attachTool := mcp.NewTool("extendedcredit_post_whatsapp_credit_attach",
 		mcp.WithDescription("POST whatsapp_credit_attach for ExtendedCredit"),
-		mcp.WithString("waba_currency",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("waba_currency parameter for whatsapp_credit_attach"),
-		),
-		mcp.WithString("waba_id",
-			mcp.Required(),
-			mcp.Description("waba_id parameter for whatsapp_credit_attach"),
+			mcp.Properties(map[string]any{
+				"waba_currency": map[string]any{
+					"type":        "string",
+					"description": "waba_currency parameter",
+					"required":    true,
+				},
+				"waba_id": map[string]any{
+					"type":        "string",
+					"description": "waba_id parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: waba_currency (string) [required], waba_id (string) [required]"),
 		),
 	)
 	tools = append(tools, extendedcredit_post_whatsapp_credit_attachTool)
 
 	// extendedcredit_post_whatsapp_credit_sharing tool
+	// Params object accepts: receiving_business_id (string)
 	extendedcredit_post_whatsapp_credit_sharingTool := mcp.NewTool("extendedcredit_post_whatsapp_credit_sharing",
 		mcp.WithDescription("POST whatsapp_credit_sharing for ExtendedCredit"),
-		mcp.WithString("receiving_business_id",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("receiving_business_id parameter for whatsapp_credit_sharing"),
+			mcp.Properties(map[string]any{
+				"receiving_business_id": map[string]any{
+					"type":        "string",
+					"description": "receiving_business_id parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: receiving_business_id (string) [required]"),
 		),
 	)
 	tools = append(tools, extendedcredit_post_whatsapp_credit_sharingTool)
 
 	// extendedcredit_post_whatsapp_credit_sharing_and_attach tool
+	// Params object accepts: waba_currency (string), waba_id (string)
 	extendedcredit_post_whatsapp_credit_sharing_and_attachTool := mcp.NewTool("extendedcredit_post_whatsapp_credit_sharing_and_attach",
 		mcp.WithDescription("POST whatsapp_credit_sharing_and_attach for ExtendedCredit"),
-		mcp.WithString("waba_currency",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("waba_currency parameter for whatsapp_credit_sharing_and_attach"),
-		),
-		mcp.WithString("waba_id",
-			mcp.Required(),
-			mcp.Description("waba_id parameter for whatsapp_credit_sharing_and_attach"),
+			mcp.Properties(map[string]any{
+				"waba_currency": map[string]any{
+					"type":        "string",
+					"description": "waba_currency parameter",
+					"required":    true,
+				},
+				"waba_id": map[string]any{
+					"type":        "string",
+					"description": "waba_id parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: waba_currency (string) [required], waba_id (string) [required]"),
 		),
 	)
 	tools = append(tools, extendedcredit_post_whatsapp_credit_sharing_and_attachTool)
@@ -138,8 +194,8 @@ func GetExtendedCreditTools() []mcp.Tool {
 	// Available fields for ExtendedCredit: allocated_amount, balance, credit_available, credit_type, id, is_access_revoked, is_automated_experience, legal_entity_name, liable_address, liable_biz_name, max_balance, online_max_balance, owner_business, owner_business_name, partition_from, receiving_credit_allocation_config, send_bill_to_address, send_bill_to_biz_name, sold_to_address
 	extendedcredit_get_Tool := mcp.NewTool("extendedcredit_get_",
 		mcp.WithDescription("GET  for ExtendedCredit"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for ExtendedCredit objects. Available fields: allocated_amount, balance, credit_available, credit_type, id, is_access_revoked, is_automated_experience, legal_entity_name, liable_address, liable_biz_name, max_balance, online_max_balance, owner_business, owner_business_name, partition_from (and 4 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for ExtendedCredit objects. Available fields: allocated_amount, balance, credit_available, credit_type, id, is_access_revoked, is_automated_experience, legal_entity_name, liable_address, liable_biz_name, max_balance, online_max_balance, owner_business, owner_business_name, partition_from (and 4 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -173,8 +229,13 @@ func HandleExtendedcredit_get_extended_credit_invoice_groups(ctx context.Context
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -221,19 +282,19 @@ func HandleExtendedcredit_post_extended_credit_invoice_groups(ctx context.Contex
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: emails
-	emails, err := request.RequireString("emails")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter emails: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["emails"] = emails
-
-	// Required: name
-	name, err := request.RequireString("name")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter name: %v", err)), nil
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
-	args["name"] = name
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Extendedcredit_post_extended_credit_invoice_groups(args)
@@ -264,14 +325,26 @@ func HandleExtendedcredit_get_owning_credit_allocation_configs(ctx context.Conte
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: receiving_business_id
-	if val := request.GetString("receiving_business_id", ""); val != "" {
-		args["receiving_business_id"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -318,32 +391,18 @@ func HandleExtendedcredit_post_owning_credit_allocation_configs(ctx context.Cont
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: amount
-	// object type - using string
-	if val := request.GetString("amount", ""); val != "" {
-		args["amount"] = val
-	}
-
-	// Optional: liability_type
-	if val := request.GetString("liability_type", ""); val != "" {
-		args["liability_type"] = val
-	}
-
-	// Optional: partition_type
-	if val := request.GetString("partition_type", ""); val != "" {
-		args["partition_type"] = val
-	}
-
-	// Required: receiving_business_id
-	receiving_business_id, err := request.RequireString("receiving_business_id")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter receiving_business_id: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["receiving_business_id"] = receiving_business_id
-
-	// Optional: send_bill_to
-	if val := request.GetString("send_bill_to", ""); val != "" {
-		args["send_bill_to"] = val
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
 	}
 
 	// Call the client method
@@ -375,19 +434,19 @@ func HandleExtendedcredit_post_whatsapp_credit_attach(ctx context.Context, reque
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: waba_currency
-	waba_currency, err := request.RequireString("waba_currency")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter waba_currency: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["waba_currency"] = waba_currency
-
-	// Required: waba_id
-	waba_id, err := request.RequireString("waba_id")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter waba_id: %v", err)), nil
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
-	args["waba_id"] = waba_id
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Extendedcredit_post_whatsapp_credit_attach(args)
@@ -418,12 +477,19 @@ func HandleExtendedcredit_post_whatsapp_credit_sharing(ctx context.Context, requ
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: receiving_business_id
-	receiving_business_id, err := request.RequireString("receiving_business_id")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter receiving_business_id: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["receiving_business_id"] = receiving_business_id
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Extendedcredit_post_whatsapp_credit_sharing(args)
@@ -454,19 +520,19 @@ func HandleExtendedcredit_post_whatsapp_credit_sharing_and_attach(ctx context.Co
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: waba_currency
-	waba_currency, err := request.RequireString("waba_currency")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter waba_currency: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["waba_currency"] = waba_currency
-
-	// Required: waba_id
-	waba_id, err := request.RequireString("waba_id")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter waba_id: %v", err)), nil
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
-	args["waba_id"] = waba_id
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Extendedcredit_post_whatsapp_credit_sharing_and_attach(args)
@@ -498,8 +564,13 @@ func HandleExtendedcredit_get_(ctx context.Context, request mcp.CallToolRequest)
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit

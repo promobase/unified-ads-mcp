@@ -24,11 +24,11 @@ func NewShadowIGHashtagClient(accessToken string) *ShadowIGHashtagClient {
 // shadowighashtag_get_recent_media GET recent_media for ShadowIGHashtag
 func (c *ShadowIGHashtagClient) Shadowighashtag_get_recent_media(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	user_id, ok := args["user_id"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: user_id")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = user_id // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -38,10 +38,10 @@ func (c *ShadowIGHashtagClient) Shadowighashtag_get_recent_media(args map[string
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["user_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("user_id", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -102,11 +102,11 @@ func (c *ShadowIGHashtagClient) Shadowighashtag_get_recent_media(args map[string
 // shadowighashtag_get_top_media GET top_media for ShadowIGHashtag
 func (c *ShadowIGHashtagClient) Shadowighashtag_get_top_media(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	user_id, ok := args["user_id"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: user_id")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = user_id // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -116,10 +116,10 @@ func (c *ShadowIGHashtagClient) Shadowighashtag_get_top_media(args map[string]in
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["user_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("user_id", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {

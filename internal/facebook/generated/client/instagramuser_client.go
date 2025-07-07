@@ -158,11 +158,11 @@ func (c *InstagramUserClient) Instagramuser_get_ar_effects(args map[string]inter
 // instagramuser_get_authorized_adaccounts GET authorized_adaccounts for InstagramUser
 func (c *InstagramUserClient) Instagramuser_get_authorized_adaccounts(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	business, ok := args["business"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: business")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = business // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -172,10 +172,10 @@ func (c *InstagramUserClient) Instagramuser_get_authorized_adaccounts(args map[s
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["business"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("business", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -312,10 +312,10 @@ func (c *InstagramUserClient) Instagramuser_get_(args map[string]interface{}) (i
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["adgroup_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("adgroup_id", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {

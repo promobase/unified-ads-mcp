@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -20,8 +21,8 @@ func GetProductFeedUploadErrorTools() []mcp.Tool {
 	// Available fields for ProductFeedUploadErrorSample: id, retailer_id, row_number
 	productfeeduploaderror_get_samplesTool := mcp.NewTool("productfeeduploaderror_get_samples",
 		mcp.WithDescription("GET samples for ProductFeedUploadError"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for ProductFeedUploadErrorSample objects. Available fields: id, retailer_id, row_number"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for ProductFeedUploadErrorSample objects. Available fields: id, retailer_id, row_number"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -39,8 +40,8 @@ func GetProductFeedUploadErrorTools() []mcp.Tool {
 	// Available fields for ProductFeedRuleSuggestion: attribute, params, type
 	productfeeduploaderror_get_suggested_rulesTool := mcp.NewTool("productfeeduploaderror_get_suggested_rules",
 		mcp.WithDescription("GET suggested_rules for ProductFeedUploadError"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for ProductFeedRuleSuggestion objects. Available fields: attribute, params, type"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for ProductFeedRuleSuggestion objects. Available fields: attribute, params, type"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -58,8 +59,8 @@ func GetProductFeedUploadErrorTools() []mcp.Tool {
 	// Available fields for ProductFeedUploadError: affected_surfaces, description, error_type, id, severity, summary, total_count
 	productfeeduploaderror_get_Tool := mcp.NewTool("productfeeduploaderror_get_",
 		mcp.WithDescription("GET  for ProductFeedUploadError"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for ProductFeedUploadError objects. Available fields: affected_surfaces, description, error_type, id, severity, summary, total_count"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for ProductFeedUploadError objects. Available fields: affected_surfaces, description, error_type, id, severity, summary, total_count"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -93,8 +94,13 @@ func HandleProductfeeduploaderror_get_samples(ctx context.Context, request mcp.C
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -142,8 +148,13 @@ func HandleProductfeeduploaderror_get_suggested_rules(ctx context.Context, reque
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -191,8 +202,13 @@ func HandleProductfeeduploaderror_get_(ctx context.Context, request mcp.CallTool
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit

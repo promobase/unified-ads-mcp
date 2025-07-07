@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -20,8 +21,8 @@ func GetHotelRoomTools() []mcp.Tool {
 	// Available fields for DynamicPriceConfigByDate: checkin_date, prices, prices_pretty
 	hotelroom_get_pricing_variablesTool := mcp.NewTool("hotelroom_get_pricing_variables",
 		mcp.WithDescription("GET pricing_variables for HotelRoom"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for DynamicPriceConfigByDate objects. Available fields: checkin_date, prices, prices_pretty"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for DynamicPriceConfigByDate objects. Available fields: checkin_date, prices, prices_pretty"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -39,8 +40,8 @@ func GetHotelRoomTools() []mcp.Tool {
 	// Available fields for HotelRoom: applinks, base_price, currency, description, id, images, margin_level, name, room_id, sale_price, url
 	hotelroom_get_Tool := mcp.NewTool("hotelroom_get_",
 		mcp.WithDescription("GET  for HotelRoom"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for HotelRoom objects. Available fields: applinks, base_price, currency, description, id, images, margin_level, name, room_id, sale_price, url"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for HotelRoom objects. Available fields: applinks, base_price, currency, description, id, images, margin_level, name, room_id, sale_price, url"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -74,8 +75,13 @@ func HandleHotelroom_get_pricing_variables(ctx context.Context, request mcp.Call
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -123,8 +129,13 @@ func HandleHotelroom_get_(ctx context.Context, request mcp.CallToolRequest) (*mc
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit

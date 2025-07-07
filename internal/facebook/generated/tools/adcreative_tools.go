@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -17,15 +18,24 @@ func GetAdCreativeTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// adcreative_post_adlabels tool
+	// Params object accepts: adlabels (list<Object>)
 	adcreative_post_adlabelsTool := mcp.NewTool("adcreative_post_adlabels",
 		mcp.WithDescription("POST adlabels for AdCreative"),
 		mcp.WithString("ad_creative_id",
 			mcp.Required(),
 			mcp.Description("Facebook Ad Creative ID"),
 		),
-		mcp.WithString("adlabels",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("adlabels parameter for adlabels"),
+			mcp.Properties(map[string]any{
+				"adlabels": map[string]any{
+					"type":        "array",
+					"description": "adlabels parameter",
+					"required":    true,
+					"items":       map[string]any{"type": "object"},
+				},
+			}),
+			mcp.Description("Parameters object containing: adlabels (array<object>) [required]"),
 		),
 	)
 	tools = append(tools, adcreative_post_adlabelsTool)
@@ -38,8 +48,8 @@ func GetAdCreativeTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Description("Facebook Ad Creative ID"),
 		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for AdCreativeInsights objects. Available fields: aesthetics"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for AdCreativeInsights objects. Available fields: aesthetics"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -55,60 +65,82 @@ func GetAdCreativeTools() []mcp.Tool {
 
 	// adcreative_get_previews tool
 	// Available fields for AdPreview: body, transformation_spec
+	// Params object accepts: ad_format (adcreativepreviews_ad_format_enum_param), creative_feature (adcreativepreviews_creative_feature_enum_param), dynamic_asset_label (string), dynamic_creative_spec (Object), dynamic_customization (Object), end_date (datetime), height (unsigned int), locale (string), place_page_id (int), post (Object), product_item_ids (list<string>), render_type (adcreativepreviews_render_type_enum_param), start_date (datetime), width (unsigned int)
 	adcreative_get_previewsTool := mcp.NewTool("adcreative_get_previews",
 		mcp.WithDescription("GET previews for AdCreative"),
 		mcp.WithString("ad_creative_id",
 			mcp.Required(),
 			mcp.Description("Facebook Ad Creative ID"),
 		),
-		mcp.WithString("ad_format",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("ad_format parameter for previews"),
-			mcp.Enum("AUDIENCE_NETWORK_INSTREAM_VIDEO", "AUDIENCE_NETWORK_INSTREAM_VIDEO_MOBILE", "AUDIENCE_NETWORK_OUTSTREAM_VIDEO", "AUDIENCE_NETWORK_REWARDED_VIDEO", "BIZ_DISCO_FEED_MOBILE", "DESKTOP_FEED_STANDARD", "FACEBOOK_PROFILE_FEED_DESKTOP", "FACEBOOK_PROFILE_FEED_MOBILE", "FACEBOOK_PROFILE_REELS_MOBILE", "FACEBOOK_REELS_BANNER", "FACEBOOK_REELS_BANNER_DESKTOP", "FACEBOOK_REELS_BANNER_FULLSCREEN_IOS", "FACEBOOK_REELS_BANNER_FULLSCREEN_MOBILE", "FACEBOOK_REELS_MOBILE", "FACEBOOK_REELS_POSTLOOP", "FACEBOOK_REELS_STICKER", "FACEBOOK_STORY_MOBILE", "FACEBOOK_STORY_STICKER_MOBILE", "INSTAGRAM_EXPLORE_CONTEXTUAL", "INSTAGRAM_EXPLORE_GRID_HOME", "INSTAGRAM_EXPLORE_IMMERSIVE", "INSTAGRAM_FEED_WEB", "INSTAGRAM_FEED_WEB_M_SITE", "INSTAGRAM_LEAD_GEN_MULTI_SUBMIT_ADS", "INSTAGRAM_PROFILE_FEED", "INSTAGRAM_PROFILE_REELS", "INSTAGRAM_REELS", "INSTAGRAM_REELS_OVERLAY", "INSTAGRAM_SEARCH_CHAIN", "INSTAGRAM_SEARCH_GRID", "INSTAGRAM_STANDARD", "INSTAGRAM_STORY", "INSTAGRAM_STORY_EFFECT_TRAY", "INSTAGRAM_STORY_WEB", "INSTAGRAM_STORY_WEB_M_SITE", "INSTANT_ARTICLE_RECIRCULATION_AD", "INSTANT_ARTICLE_STANDARD", "INSTREAM_BANNER_DESKTOP", "INSTREAM_BANNER_FULLSCREEN_IOS", "INSTREAM_BANNER_FULLSCREEN_MOBILE", "INSTREAM_BANNER_IMMERSIVE_MOBILE", "INSTREAM_BANNER_MOBILE", "INSTREAM_VIDEO_DESKTOP", "INSTREAM_VIDEO_FULLSCREEN_IOS", "INSTREAM_VIDEO_FULLSCREEN_MOBILE", "INSTREAM_VIDEO_IMAGE", "INSTREAM_VIDEO_IMMERSIVE_MOBILE", "INSTREAM_VIDEO_MOBILE", "JOB_BROWSER_DESKTOP", "JOB_BROWSER_MOBILE", "MARKETPLACE_MOBILE", "MESSENGER_MOBILE_INBOX_MEDIA", "MESSENGER_MOBILE_STORY_MEDIA", "MOBILE_BANNER", "MOBILE_FEED_BASIC", "MOBILE_FEED_STANDARD", "MOBILE_FULLWIDTH", "MOBILE_INTERSTITIAL", "MOBILE_MEDIUM_RECTANGLE", "MOBILE_NATIVE", "RIGHT_COLUMN_STANDARD", "SUGGESTED_VIDEO_DESKTOP", "SUGGESTED_VIDEO_FULLSCREEN_MOBILE", "SUGGESTED_VIDEO_IMMERSIVE_MOBILE", "SUGGESTED_VIDEO_MOBILE", "WATCH_FEED_HOME", "WATCH_FEED_MOBILE"),
+			mcp.Properties(map[string]any{
+				"ad_format": map[string]any{
+					"type":        "string",
+					"description": "ad_format parameter",
+					"required":    true,
+					"enum":        []string{"AUDIENCE_NETWORK_INSTREAM_VIDEO", "AUDIENCE_NETWORK_INSTREAM_VIDEO_MOBILE", "AUDIENCE_NETWORK_OUTSTREAM_VIDEO", "AUDIENCE_NETWORK_REWARDED_VIDEO", "BIZ_DISCO_FEED_MOBILE", "DESKTOP_FEED_STANDARD", "FACEBOOK_PROFILE_FEED_DESKTOP", "FACEBOOK_PROFILE_FEED_MOBILE", "FACEBOOK_PROFILE_REELS_MOBILE", "FACEBOOK_REELS_BANNER", "FACEBOOK_REELS_BANNER_DESKTOP", "FACEBOOK_REELS_BANNER_FULLSCREEN_IOS", "FACEBOOK_REELS_BANNER_FULLSCREEN_MOBILE", "FACEBOOK_REELS_MOBILE", "FACEBOOK_REELS_POSTLOOP", "FACEBOOK_REELS_STICKER", "FACEBOOK_STORY_MOBILE", "FACEBOOK_STORY_STICKER_MOBILE", "INSTAGRAM_EXPLORE_CONTEXTUAL", "INSTAGRAM_EXPLORE_GRID_HOME", "INSTAGRAM_EXPLORE_IMMERSIVE", "INSTAGRAM_FEED_WEB", "INSTAGRAM_FEED_WEB_M_SITE", "INSTAGRAM_LEAD_GEN_MULTI_SUBMIT_ADS", "INSTAGRAM_PROFILE_FEED", "INSTAGRAM_PROFILE_REELS", "INSTAGRAM_REELS", "INSTAGRAM_REELS_OVERLAY", "INSTAGRAM_SEARCH_CHAIN", "INSTAGRAM_SEARCH_GRID", "INSTAGRAM_STANDARD", "INSTAGRAM_STORY", "INSTAGRAM_STORY_EFFECT_TRAY", "INSTAGRAM_STORY_WEB", "INSTAGRAM_STORY_WEB_M_SITE", "INSTANT_ARTICLE_RECIRCULATION_AD", "INSTANT_ARTICLE_STANDARD", "INSTREAM_BANNER_DESKTOP", "INSTREAM_BANNER_FULLSCREEN_IOS", "INSTREAM_BANNER_FULLSCREEN_MOBILE", "INSTREAM_BANNER_IMMERSIVE_MOBILE", "INSTREAM_BANNER_MOBILE", "INSTREAM_VIDEO_DESKTOP", "INSTREAM_VIDEO_FULLSCREEN_IOS", "INSTREAM_VIDEO_FULLSCREEN_MOBILE", "INSTREAM_VIDEO_IMAGE", "INSTREAM_VIDEO_IMMERSIVE_MOBILE", "INSTREAM_VIDEO_MOBILE", "JOB_BROWSER_DESKTOP", "JOB_BROWSER_MOBILE", "MARKETPLACE_MOBILE", "MESSENGER_MOBILE_INBOX_MEDIA", "MESSENGER_MOBILE_STORY_MEDIA", "MOBILE_BANNER", "MOBILE_FEED_BASIC", "MOBILE_FEED_STANDARD", "MOBILE_FULLWIDTH", "MOBILE_INTERSTITIAL", "MOBILE_MEDIUM_RECTANGLE", "MOBILE_NATIVE", "RIGHT_COLUMN_STANDARD", "SUGGESTED_VIDEO_DESKTOP", "SUGGESTED_VIDEO_FULLSCREEN_MOBILE", "SUGGESTED_VIDEO_IMMERSIVE_MOBILE", "SUGGESTED_VIDEO_MOBILE", "WATCH_FEED_HOME", "WATCH_FEED_MOBILE"},
+				},
+				"creative_feature": map[string]any{
+					"type":        "string",
+					"description": "creative_feature parameter",
+					"enum":        []string{"product_metadata_automation", "profile_card", "standard_enhancements_catalog", "video_to_image"},
+				},
+				"dynamic_asset_label": map[string]any{
+					"type":        "string",
+					"description": "dynamic_asset_label parameter",
+				},
+				"dynamic_creative_spec": map[string]any{
+					"type":        "object",
+					"description": "dynamic_creative_spec parameter",
+				},
+				"dynamic_customization": map[string]any{
+					"type":        "object",
+					"description": "dynamic_customization parameter",
+				},
+				"end_date": map[string]any{
+					"type":        "string",
+					"description": "end_date parameter",
+				},
+				"height": map[string]any{
+					"type":        "integer",
+					"description": "height parameter",
+				},
+				"locale": map[string]any{
+					"type":        "string",
+					"description": "locale parameter",
+				},
+				"place_page_id": map[string]any{
+					"type":        "integer",
+					"description": "place_page_id parameter",
+				},
+				"post": map[string]any{
+					"type":        "object",
+					"description": "post parameter",
+				},
+				"product_item_ids": map[string]any{
+					"type":        "array",
+					"description": "product_item_ids parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+				"render_type": map[string]any{
+					"type":        "string",
+					"description": "render_type parameter",
+					"enum":        []string{"FALLBACK"},
+				},
+				"start_date": map[string]any{
+					"type":        "string",
+					"description": "start_date parameter",
+				},
+				"width": map[string]any{
+					"type":        "integer",
+					"description": "width parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: ad_format (enum) [AUDIENCE_NETWORK_INSTREAM_VIDEO, AUDIENCE_NETWORK_INSTREAM_VIDEO_MOBILE, AUDIENCE_NETWORK_OUTSTREAM_VIDEO, AUDIENCE_NETWORK_REWARDED_VIDEO, BIZ_DISCO_FEED_MOBILE, ...] [required], creative_feature (enum) [product_metadata_automation, profile_card, standard_enhancements_catalog, video_to_image], dynamic_asset_label (string), dynamic_creative_spec (object), dynamic_customization (object), end_date (datetime), height (integer), locale (string), place_page_id (integer), post (object), product_item_ids (array<string>), render_type (enum) [FALLBACK], start_date (datetime), width (integer)"),
 		),
-		mcp.WithString("creative_feature",
-			mcp.Description("creative_feature parameter for previews"),
-			mcp.Enum("product_metadata_automation", "profile_card", "standard_enhancements_catalog", "video_to_image"),
-		),
-		mcp.WithString("dynamic_asset_label",
-			mcp.Description("dynamic_asset_label parameter for previews"),
-		),
-		mcp.WithString("dynamic_creative_spec",
-			mcp.Description("dynamic_creative_spec parameter for previews"),
-		),
-		mcp.WithString("dynamic_customization",
-			mcp.Description("dynamic_customization parameter for previews"),
-		),
-		mcp.WithString("end_date",
-			mcp.Description("end_date parameter for previews"),
-		),
-		mcp.WithNumber("height",
-			mcp.Description("height parameter for previews"),
-		),
-		mcp.WithString("locale",
-			mcp.Description("locale parameter for previews"),
-		),
-		mcp.WithNumber("place_page_id",
-			mcp.Description("place_page_id parameter for previews"),
-		),
-		mcp.WithString("post",
-			mcp.Description("post parameter for previews"),
-		),
-		mcp.WithString("product_item_ids",
-			mcp.Description("product_item_ids parameter for previews"),
-		),
-		mcp.WithString("render_type",
-			mcp.Description("render_type parameter for previews"),
-			mcp.Enum("FALLBACK"),
-		),
-		mcp.WithString("start_date",
-			mcp.Description("start_date parameter for previews"),
-		),
-		mcp.WithNumber("width",
-			mcp.Description("width parameter for previews"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for AdPreview objects. Available fields: body, transformation_spec"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for AdPreview objects. Available fields: body, transformation_spec"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -123,44 +155,63 @@ func GetAdCreativeTools() []mcp.Tool {
 	tools = append(tools, adcreative_get_previewsTool)
 
 	// adcreative_delete_ tool
+	// Params object accepts: account_id (string), adlabels (list<Object>), name (string), status (adcreative_status)
 	adcreative_delete_Tool := mcp.NewTool("adcreative_delete_",
 		mcp.WithDescription("DELETE  for AdCreative"),
 		mcp.WithString("ad_creative_id",
 			mcp.Required(),
 			mcp.Description("Facebook Ad Creative ID"),
 		),
-		mcp.WithString("account_id",
-			mcp.Description("account_id parameter for "),
-		),
-		mcp.WithString("adlabels",
-			mcp.Description("adlabels parameter for "),
-		),
-		mcp.WithString("name",
-			mcp.Description("name parameter for "),
-		),
-		mcp.WithString("status",
-			mcp.Description("status parameter for "),
-			mcp.Enum("ACTIVE", "DELETED", "IN_PROCESS", "WITH_ISSUES"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"account_id": map[string]any{
+					"type":        "string",
+					"description": "account_id parameter",
+				},
+				"adlabels": map[string]any{
+					"type":        "array",
+					"description": "adlabels parameter",
+					"items":       map[string]any{"type": "object"},
+				},
+				"name": map[string]any{
+					"type":        "string",
+					"description": "name parameter",
+				},
+				"status": map[string]any{
+					"type":        "string",
+					"description": "status parameter",
+					"enum":        []string{"ACTIVE", "DELETED", "IN_PROCESS", "WITH_ISSUES"},
+				},
+			}),
+			mcp.Description("Parameters object containing: account_id (string), adlabels (array<object>), name (string), status (adcreative_status) [ACTIVE, DELETED, IN_PROCESS, WITH_ISSUES]"),
 		),
 	)
 	tools = append(tools, adcreative_delete_Tool)
 
 	// adcreative_get_ tool
 	// Available fields for AdCreative: account_id, actor_id, ad_disclaimer_spec, adlabels, applink_treatment, asset_feed_spec, authorization_category, auto_update, body, branded_content, branded_content_sponsor_page_id, bundle_folder_id, call_to_action, call_to_action_type, categorization_criteria, category_media_source, collaborative_ads_lsb_image_bank_id, contextual_multi_ads, creative_sourcing_spec, degrees_of_freedom_spec, destination_set_id, dynamic_ad_voice, effective_authorization_category, effective_instagram_media_id, effective_object_story_id, enable_direct_install, enable_launch_instant_app, facebook_branded_content, id, image_crops, image_hash, image_url, instagram_branded_content, instagram_permalink_url, instagram_user_id, interactive_components_spec, link_deep_link_url, link_destination_display_url, link_og_id, link_url, messenger_sponsored_message, name, object_id, object_store_url, object_story_id, object_story_spec, object_type, object_url, omnichannel_link_spec, page_welcome_message, photo_album_source_object_story_id, place_page_set_id, platform_customizations, playable_asset_id, portrait_customizations, product_data, product_set_id, recommender_settings, regional_regulation_disclaimer_spec, source_facebook_post_id, source_instagram_media_id, status, template_url, template_url_spec, thumbnail_id, thumbnail_url, title, url_tags, use_page_actor_override, video_id
+	// Params object accepts: thumbnail_height (unsigned int), thumbnail_width (unsigned int)
 	adcreative_get_Tool := mcp.NewTool("adcreative_get_",
 		mcp.WithDescription("GET  for AdCreative"),
 		mcp.WithString("ad_creative_id",
 			mcp.Required(),
 			mcp.Description("Facebook Ad Creative ID"),
 		),
-		mcp.WithNumber("thumbnail_height",
-			mcp.Description("thumbnail_height parameter for "),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"thumbnail_height": map[string]any{
+					"type":        "integer",
+					"description": "thumbnail_height parameter",
+				},
+				"thumbnail_width": map[string]any{
+					"type":        "integer",
+					"description": "thumbnail_width parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: thumbnail_height (integer), thumbnail_width (integer)"),
 		),
-		mcp.WithNumber("thumbnail_width",
-			mcp.Description("thumbnail_width parameter for "),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for AdCreative objects. Available fields: account_id, actor_id, ad_disclaimer_spec, adlabels, applink_treatment, asset_feed_spec, authorization_category, auto_update, body, branded_content, branded_content_sponsor_page_id, bundle_folder_id, call_to_action, call_to_action_type, categorization_criteria (and 55 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for AdCreative objects. Available fields: account_id, actor_id, ad_disclaimer_spec, adlabels, applink_treatment, asset_feed_spec, authorization_category, auto_update, body, branded_content, branded_content_sponsor_page_id, bundle_folder_id, call_to_action, call_to_action_type, categorization_criteria (and 55 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -175,24 +226,35 @@ func GetAdCreativeTools() []mcp.Tool {
 	tools = append(tools, adcreative_get_Tool)
 
 	// adcreative_post_ tool
+	// Params object accepts: account_id (string), adlabels (list<Object>), name (string), status (adcreative_status)
 	adcreative_post_Tool := mcp.NewTool("adcreative_post_",
 		mcp.WithDescription("POST  for AdCreative"),
 		mcp.WithString("ad_creative_id",
 			mcp.Required(),
 			mcp.Description("Facebook Ad Creative ID"),
 		),
-		mcp.WithString("account_id",
-			mcp.Description("account_id parameter for "),
-		),
-		mcp.WithString("adlabels",
-			mcp.Description("adlabels parameter for "),
-		),
-		mcp.WithString("name",
-			mcp.Description("name parameter for "),
-		),
-		mcp.WithString("status",
-			mcp.Description("status parameter for "),
-			mcp.Enum("ACTIVE", "DELETED", "IN_PROCESS", "WITH_ISSUES"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"account_id": map[string]any{
+					"type":        "string",
+					"description": "account_id parameter",
+				},
+				"adlabels": map[string]any{
+					"type":        "array",
+					"description": "adlabels parameter",
+					"items":       map[string]any{"type": "object"},
+				},
+				"name": map[string]any{
+					"type":        "string",
+					"description": "name parameter",
+				},
+				"status": map[string]any{
+					"type":        "string",
+					"description": "status parameter",
+					"enum":        []string{"ACTIVE", "DELETED", "IN_PROCESS", "WITH_ISSUES"},
+				},
+			}),
+			mcp.Description("Parameters object containing: account_id (string), adlabels (array<object>), name (string), status (adcreative_status) [ACTIVE, DELETED, IN_PROCESS, WITH_ISSUES]"),
 		),
 	)
 	tools = append(tools, adcreative_post_Tool)
@@ -223,12 +285,19 @@ func HandleAdcreative_post_adlabels(ctx context.Context, request mcp.CallToolReq
 	}
 	args["ad_creative_id"] = ad_creative_id
 
-	// Required: adlabels
-	adlabels, err := request.RequireString("adlabels")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter adlabels: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["adlabels"] = adlabels
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Adcreative_post_adlabels(args)
@@ -267,8 +336,13 @@ func HandleAdcreative_get_creative_insights(ctx context.Context, request mcp.Cal
 	args["ad_creative_id"] = ad_creative_id
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -322,85 +396,28 @@ func HandleAdcreative_get_previews(ctx context.Context, request mcp.CallToolRequ
 	}
 	args["ad_creative_id"] = ad_creative_id
 
-	// Required: ad_format
-	ad_format, err := request.RequireString("ad_format")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter ad_format: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["ad_format"] = ad_format
-
-	// Optional: creative_feature
-	if val := request.GetString("creative_feature", ""); val != "" {
-		args["creative_feature"] = val
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
-
-	// Optional: dynamic_asset_label
-	if val := request.GetString("dynamic_asset_label", ""); val != "" {
-		args["dynamic_asset_label"] = val
-	}
-
-	// Optional: dynamic_creative_spec
-	// object type - using string
-	if val := request.GetString("dynamic_creative_spec", ""); val != "" {
-		args["dynamic_creative_spec"] = val
-	}
-
-	// Optional: dynamic_customization
-	// object type - using string
-	if val := request.GetString("dynamic_customization", ""); val != "" {
-		args["dynamic_customization"] = val
-	}
-
-	// Optional: end_date
-	if val := request.GetString("end_date", ""); val != "" {
-		args["end_date"] = val
-	}
-
-	// Optional: height
-	if val := request.GetInt("height", 0); val != 0 {
-		args["height"] = val
-	}
-
-	// Optional: locale
-	if val := request.GetString("locale", ""); val != "" {
-		args["locale"] = val
-	}
-
-	// Optional: place_page_id
-	if val := request.GetInt("place_page_id", 0); val != 0 {
-		args["place_page_id"] = val
-	}
-
-	// Optional: post
-	// object type - using string
-	if val := request.GetString("post", ""); val != "" {
-		args["post"] = val
-	}
-
-	// Optional: product_item_ids
-	// array type - using string
-	if val := request.GetString("product_item_ids", ""); val != "" {
-		args["product_item_ids"] = val
-	}
-
-	// Optional: render_type
-	if val := request.GetString("render_type", ""); val != "" {
-		args["render_type"] = val
-	}
-
-	// Optional: start_date
-	if val := request.GetString("start_date", ""); val != "" {
-		args["start_date"] = val
-	}
-
-	// Optional: width
-	if val := request.GetInt("width", 0); val != 0 {
-		args["width"] = val
+	for key, value := range paramsObj {
+		args[key] = value
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -454,25 +471,16 @@ func HandleAdcreative_delete_(ctx context.Context, request mcp.CallToolRequest) 
 	}
 	args["ad_creative_id"] = ad_creative_id
 
-	// Optional: account_id
-	if val := request.GetString("account_id", ""); val != "" {
-		args["account_id"] = val
-	}
-
-	// Optional: adlabels
-	// array type - using string
-	if val := request.GetString("adlabels", ""); val != "" {
-		args["adlabels"] = val
-	}
-
-	// Optional: name
-	if val := request.GetString("name", ""); val != "" {
-		args["name"] = val
-	}
-
-	// Optional: status
-	if val := request.GetString("status", ""); val != "" {
-		args["status"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method
@@ -511,19 +519,26 @@ func HandleAdcreative_get_(ctx context.Context, request mcp.CallToolRequest) (*m
 	}
 	args["ad_creative_id"] = ad_creative_id
 
-	// Optional: thumbnail_height
-	if val := request.GetInt("thumbnail_height", 0); val != 0 {
-		args["thumbnail_height"] = val
-	}
-
-	// Optional: thumbnail_width
-	if val := request.GetInt("thumbnail_width", 0); val != 0 {
-		args["thumbnail_width"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -577,25 +592,16 @@ func HandleAdcreative_post_(ctx context.Context, request mcp.CallToolRequest) (*
 	}
 	args["ad_creative_id"] = ad_creative_id
 
-	// Optional: account_id
-	if val := request.GetString("account_id", ""); val != "" {
-		args["account_id"] = val
-	}
-
-	// Optional: adlabels
-	// array type - using string
-	if val := request.GetString("adlabels", ""); val != "" {
-		args["adlabels"] = val
-	}
-
-	// Optional: name
-	if val := request.GetString("name", ""); val != "" {
-		args["name"] = val
-	}
-
-	// Optional: status
-	if val := request.GetString("status", ""); val != "" {
-		args["status"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method

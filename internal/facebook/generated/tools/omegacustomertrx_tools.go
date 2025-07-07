@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -19,8 +20,8 @@ func GetOmegaCustomerTrxTools() []mcp.Tool {
 	// omegacustomertrx_get_campaigns tool
 	omegacustomertrx_get_campaignsTool := mcp.NewTool("omegacustomertrx_get_campaigns",
 		mcp.WithDescription("GET campaigns for OmegaCustomerTrx"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -38,8 +39,8 @@ func GetOmegaCustomerTrxTools() []mcp.Tool {
 	// Available fields for OmegaCustomerTrx: ad_account_ids, advertiser_name, amount, amount_due, billed_amount_details, billing_period, cdn_download_uri, currency, download_uri, due_date, entity, id, invoice_date, invoice_id, invoice_type, liability_type, payment_status, payment_term, type
 	omegacustomertrx_get_Tool := mcp.NewTool("omegacustomertrx_get_",
 		mcp.WithDescription("GET  for OmegaCustomerTrx"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for OmegaCustomerTrx objects. Available fields: ad_account_ids, advertiser_name, amount, amount_due, billed_amount_details, billing_period, cdn_download_uri, currency, download_uri, due_date, entity, id, invoice_date, invoice_id, invoice_type (and 4 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for OmegaCustomerTrx objects. Available fields: ad_account_ids, advertiser_name, amount, amount_due, billed_amount_details, billing_period, cdn_download_uri, currency, download_uri, due_date, entity, id, invoice_date, invoice_id, invoice_type (and 4 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -73,8 +74,13 @@ func HandleOmegacustomertrx_get_campaigns(ctx context.Context, request mcp.CallT
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -122,8 +128,13 @@ func HandleOmegacustomertrx_get_(ctx context.Context, request mcp.CallToolReques
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit

@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -17,25 +18,41 @@ func GetBusinessAssetGroupTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// businessassetgroup_delete_assigned_users tool
+	// Params object accepts: user (int)
 	businessassetgroup_delete_assigned_usersTool := mcp.NewTool("businessassetgroup_delete_assigned_users",
 		mcp.WithDescription("DELETE assigned_users for BusinessAssetGroup"),
-		mcp.WithNumber("user",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("user parameter for assigned_users"),
+			mcp.Properties(map[string]any{
+				"user": map[string]any{
+					"type":        "integer",
+					"description": "user parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: user (integer) [required]"),
 		),
 	)
 	tools = append(tools, businessassetgroup_delete_assigned_usersTool)
 
 	// businessassetgroup_get_assigned_users tool
 	// Available fields for AssignedUser: business, id, name, user_type
+	// Params object accepts: business (string)
 	businessassetgroup_get_assigned_usersTool := mcp.NewTool("businessassetgroup_get_assigned_users",
 		mcp.WithDescription("GET assigned_users for BusinessAssetGroup"),
-		mcp.WithString("business",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("business parameter for assigned_users"),
+			mcp.Properties(map[string]any{
+				"business": map[string]any{
+					"type":        "string",
+					"description": "business parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: business (string) [required]"),
 		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for AssignedUser objects. Available fields: business, id, name, user_type"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for AssignedUser objects. Available fields: business, id, name, user_type"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -50,37 +67,61 @@ func GetBusinessAssetGroupTools() []mcp.Tool {
 	tools = append(tools, businessassetgroup_get_assigned_usersTool)
 
 	// businessassetgroup_post_assigned_users tool
+	// Params object accepts: adaccount_tasks (list<businessassetgroupassigned_users_adaccount_tasks_enum_param>), offline_conversion_data_set_tasks (list<businessassetgroupassigned_users_offline_conversion_data_set_tasks_enum_param>), page_tasks (list<businessassetgroupassigned_users_page_tasks_enum_param>), pixel_tasks (list<businessassetgroupassigned_users_pixel_tasks_enum_param>), user (int)
 	businessassetgroup_post_assigned_usersTool := mcp.NewTool("businessassetgroup_post_assigned_users",
 		mcp.WithDescription("POST assigned_users for BusinessAssetGroup"),
-		mcp.WithString("adaccount_tasks",
-			mcp.Description("adaccount_tasks parameter for assigned_users"),
-			mcp.Enum("AA_ANALYZE", "ADVERTISE", "ANALYZE", "DRAFT", "MANAGE"),
-		),
-		mcp.WithString("offline_conversion_data_set_tasks",
-			mcp.Description("offline_conversion_data_set_tasks parameter for assigned_users"),
-			mcp.Enum("AA_ANALYZE", "ADVERTISE", "MANAGE", "UPLOAD", "VIEW"),
-		),
-		mcp.WithString("page_tasks",
-			mcp.Description("page_tasks parameter for assigned_users"),
-			mcp.Enum("ADVERTISE", "ANALYZE", "CASHIER_ROLE", "CREATE_CONTENT", "GLOBAL_STRUCTURE_MANAGEMENT", "MANAGE", "MANAGE_JOBS", "MANAGE_LEADS", "MESSAGING", "MODERATE", "MODERATE_COMMUNITY", "PAGES_MESSAGING", "PAGES_MESSAGING_SUBSCRIPTIONS", "PROFILE_PLUS_ADVERTISE", "PROFILE_PLUS_ANALYZE", "PROFILE_PLUS_CREATE_CONTENT", "PROFILE_PLUS_FACEBOOK_ACCESS", "PROFILE_PLUS_FULL_CONTROL", "PROFILE_PLUS_MANAGE", "PROFILE_PLUS_MANAGE_LEADS", "PROFILE_PLUS_MESSAGING", "PROFILE_PLUS_MODERATE", "PROFILE_PLUS_MODERATE_DELEGATE_COMMUNITY", "PROFILE_PLUS_REVENUE", "READ_PAGE_MAILBOXES", "VIEW_MONETIZATION_INSIGHTS"),
-		),
-		mcp.WithString("pixel_tasks",
-			mcp.Description("pixel_tasks parameter for assigned_users"),
-			mcp.Enum("AA_ANALYZE", "ADVERTISE", "ANALYZE", "EDIT", "UPLOAD"),
-		),
-		mcp.WithNumber("user",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("user parameter for assigned_users"),
+			mcp.Properties(map[string]any{
+				"adaccount_tasks": map[string]any{
+					"type":        "array",
+					"description": "adaccount_tasks parameter",
+					"enum":        []string{"AA_ANALYZE", "ADVERTISE", "ANALYZE", "DRAFT", "MANAGE"},
+					"items":       map[string]any{"type": "string"},
+				},
+				"offline_conversion_data_set_tasks": map[string]any{
+					"type":        "array",
+					"description": "offline_conversion_data_set_tasks parameter",
+					"enum":        []string{"AA_ANALYZE", "ADVERTISE", "MANAGE", "UPLOAD", "VIEW"},
+					"items":       map[string]any{"type": "string"},
+				},
+				"page_tasks": map[string]any{
+					"type":        "array",
+					"description": "page_tasks parameter",
+					"enum":        []string{"ADVERTISE", "ANALYZE", "CASHIER_ROLE", "CREATE_CONTENT", "GLOBAL_STRUCTURE_MANAGEMENT", "MANAGE", "MANAGE_JOBS", "MANAGE_LEADS", "MESSAGING", "MODERATE", "MODERATE_COMMUNITY", "PAGES_MESSAGING", "PAGES_MESSAGING_SUBSCRIPTIONS", "PROFILE_PLUS_ADVERTISE", "PROFILE_PLUS_ANALYZE", "PROFILE_PLUS_CREATE_CONTENT", "PROFILE_PLUS_FACEBOOK_ACCESS", "PROFILE_PLUS_FULL_CONTROL", "PROFILE_PLUS_MANAGE", "PROFILE_PLUS_MANAGE_LEADS", "PROFILE_PLUS_MESSAGING", "PROFILE_PLUS_MODERATE", "PROFILE_PLUS_MODERATE_DELEGATE_COMMUNITY", "PROFILE_PLUS_REVENUE", "READ_PAGE_MAILBOXES", "VIEW_MONETIZATION_INSIGHTS"},
+					"items":       map[string]any{"type": "string"},
+				},
+				"pixel_tasks": map[string]any{
+					"type":        "array",
+					"description": "pixel_tasks parameter",
+					"enum":        []string{"AA_ANALYZE", "ADVERTISE", "ANALYZE", "EDIT", "UPLOAD"},
+					"items":       map[string]any{"type": "string"},
+				},
+				"user": map[string]any{
+					"type":        "integer",
+					"description": "user parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: adaccount_tasks (array<enum>) [AA_ANALYZE, ADVERTISE, ANALYZE, DRAFT, MANAGE], offline_conversion_data_set_tasks (array<enum>) [AA_ANALYZE, ADVERTISE, MANAGE, UPLOAD, VIEW], page_tasks (array<enum>) [ADVERTISE, ANALYZE, CASHIER_ROLE, CREATE_CONTENT, GLOBAL_STRUCTURE_MANAGEMENT, ...], pixel_tasks (array<enum>) [AA_ANALYZE, ADVERTISE, ANALYZE, EDIT, UPLOAD], user (integer) [required]"),
 		),
 	)
 	tools = append(tools, businessassetgroup_post_assigned_usersTool)
 
 	// businessassetgroup_delete_contained_adaccounts tool
+	// Params object accepts: asset_id (string)
 	businessassetgroup_delete_contained_adaccountsTool := mcp.NewTool("businessassetgroup_delete_contained_adaccounts",
 		mcp.WithDescription("DELETE contained_adaccounts for BusinessAssetGroup"),
-		mcp.WithString("asset_id",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("asset_id parameter for contained_adaccounts"),
+			mcp.Properties(map[string]any{
+				"asset_id": map[string]any{
+					"type":        "string",
+					"description": "asset_id parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: asset_id (string) [required]"),
 		),
 	)
 	tools = append(tools, businessassetgroup_delete_contained_adaccountsTool)
@@ -89,8 +130,8 @@ func GetBusinessAssetGroupTools() []mcp.Tool {
 	// Available fields for AdAccount: account_id, account_status, ad_account_promotable_objects, age, agency_client_declaration, all_capabilities, amount_spent, attribution_spec, balance, brand_safety_content_filter_levels, business, business_city, business_country_code, business_name, business_state, business_street, business_street2, business_zip, can_create_brand_lift_study, capabilities, created_time, currency, custom_audience_info, default_dsa_beneficiary, default_dsa_payor, disable_reason, end_advertiser, end_advertiser_name, existing_customers, expired_funding_source_details, extended_credit_invoice_group, failed_delivery_checks, fb_entity, funding_source, funding_source_details, has_migrated_permissions, has_page_authorized_adaccount, id, io_number, is_attribution_spec_system_default, is_ba_skip_delayed_eligible, is_direct_deals_enabled, is_in_3ds_authorization_enabled_market, is_notifications_enabled, is_personal, is_prepay_account, is_tax_id_required, liable_address, line_numbers, media_agency, min_campaign_group_spend_cap, min_daily_budget, name, offsite_pixels_tos_accepted, owner, owner_business, partner, rf_spec, send_bill_to_address, show_checkout_experience, sold_to_address, spend_cap, tax_id, tax_id_status, tax_id_type, timezone_id, timezone_name, timezone_offset_hours_utc, tos_accepted, user_access_expire_time, user_tasks, user_tos_accepted, viewable_business
 	businessassetgroup_get_contained_adaccountsTool := mcp.NewTool("businessassetgroup_get_contained_adaccounts",
 		mcp.WithDescription("GET contained_adaccounts for BusinessAssetGroup"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for AdAccount objects. Available fields: account_id, account_status, ad_account_promotable_objects, age, agency_client_declaration, all_capabilities, amount_spent, attribution_spec, balance, brand_safety_content_filter_levels, business, business_city, business_country_code, business_name, business_state (and 58 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for AdAccount objects. Available fields: account_id, account_status, ad_account_promotable_objects, age, agency_client_declaration, all_capabilities, amount_spent, attribution_spec, balance, brand_safety_content_filter_levels, business, business_city, business_country_code, business_name, business_state (and 58 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -105,21 +146,37 @@ func GetBusinessAssetGroupTools() []mcp.Tool {
 	tools = append(tools, businessassetgroup_get_contained_adaccountsTool)
 
 	// businessassetgroup_post_contained_adaccounts tool
+	// Params object accepts: asset_id (string)
 	businessassetgroup_post_contained_adaccountsTool := mcp.NewTool("businessassetgroup_post_contained_adaccounts",
 		mcp.WithDescription("POST contained_adaccounts for BusinessAssetGroup"),
-		mcp.WithString("asset_id",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("asset_id parameter for contained_adaccounts"),
+			mcp.Properties(map[string]any{
+				"asset_id": map[string]any{
+					"type":        "string",
+					"description": "asset_id parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: asset_id (string) [required]"),
 		),
 	)
 	tools = append(tools, businessassetgroup_post_contained_adaccountsTool)
 
 	// businessassetgroup_delete_contained_applications tool
+	// Params object accepts: asset_id (string)
 	businessassetgroup_delete_contained_applicationsTool := mcp.NewTool("businessassetgroup_delete_contained_applications",
 		mcp.WithDescription("DELETE contained_applications for BusinessAssetGroup"),
-		mcp.WithString("asset_id",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("asset_id parameter for contained_applications"),
+			mcp.Properties(map[string]any{
+				"asset_id": map[string]any{
+					"type":        "string",
+					"description": "asset_id parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: asset_id (string) [required]"),
 		),
 	)
 	tools = append(tools, businessassetgroup_delete_contained_applicationsTool)
@@ -128,8 +185,8 @@ func GetBusinessAssetGroupTools() []mcp.Tool {
 	// Available fields for Application: aam_rules, an_ad_space_limit, an_platforms, android_key_hash, android_sdk_error_categories, app_domains, app_events_config, app_events_feature_bitmask, app_events_session_timeout, app_install_tracked, app_name, app_signals_binding_ios, app_type, auth_dialog_data_help_url, auth_dialog_headline, auth_dialog_perms_explanation, auth_referral_default_activity_privacy, auth_referral_enabled, auth_referral_extended_perms, auth_referral_friend_perms, auth_referral_response_type, auth_referral_user_perms, auto_event_mapping_android, auto_event_mapping_ios, auto_event_setup_enabled, auto_log_app_events_default, auto_log_app_events_enabled, business, canvas_fluid_height, canvas_fluid_width, canvas_url, category, client_config, company, configured_ios_sso, contact_email, created_time, creator_uid, daily_active_users, daily_active_users_rank, deauth_callback_url, default_share_mode, description, enigma_config, financial_id, gdpv4_chrome_custom_tabs_enabled, gdpv4_enabled, gdpv4_nux_content, gdpv4_nux_enabled, has_messenger_product, hosting_url, icon_url, id, ios_bundle_id, ios_sdk_dialog_flows, ios_sdk_error_categories, ios_sfvc_attr, ios_supports_native_proxy_auth_flow, ios_supports_system_auth, ipad_app_store_id, iphone_app_store_id, latest_sdk_version, link, logging_token, logo_url, migrations, mobile_profile_section_url, mobile_web_url, monthly_active_users, monthly_active_users_rank, name, namespace, object_store_urls, owner_business, page_tab_default_name, page_tab_url, photo_url, privacy_policy_url, profile_section_url, property_id, protected_mode_rules, real_time_mode_devices, restrictions, restrictive_data_filter_params, restrictive_data_filter_rules, sdk_update_message, seamless_login, secure_canvas_url, secure_page_tab_url, server_ip_whitelist, smart_login_bookmark_icon_url, smart_login_menu_icon_url, social_discovery, subcategory, suggested_events_setting, supported_platforms, supports_apprequests_fast_app_switch, supports_attribution, supports_implicit_sdk_logging, suppress_native_ios_gdp, terms_of_service_url, url_scheme_suffix, user_support_email, user_support_url, website_url, weekly_active_users
 	businessassetgroup_get_contained_applicationsTool := mcp.NewTool("businessassetgroup_get_contained_applications",
 		mcp.WithDescription("GET contained_applications for BusinessAssetGroup"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for Application objects. Available fields: aam_rules, an_ad_space_limit, an_platforms, android_key_hash, android_sdk_error_categories, app_domains, app_events_config, app_events_feature_bitmask, app_events_session_timeout, app_install_tracked, app_name, app_signals_binding_ios, app_type, auth_dialog_data_help_url, auth_dialog_headline (and 91 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for Application objects. Available fields: aam_rules, an_ad_space_limit, an_platforms, android_key_hash, android_sdk_error_categories, app_domains, app_events_config, app_events_feature_bitmask, app_events_session_timeout, app_install_tracked, app_name, app_signals_binding_ios, app_type, auth_dialog_data_help_url, auth_dialog_headline (and 91 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -144,21 +201,37 @@ func GetBusinessAssetGroupTools() []mcp.Tool {
 	tools = append(tools, businessassetgroup_get_contained_applicationsTool)
 
 	// businessassetgroup_post_contained_applications tool
+	// Params object accepts: asset_id (string)
 	businessassetgroup_post_contained_applicationsTool := mcp.NewTool("businessassetgroup_post_contained_applications",
 		mcp.WithDescription("POST contained_applications for BusinessAssetGroup"),
-		mcp.WithString("asset_id",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("asset_id parameter for contained_applications"),
+			mcp.Properties(map[string]any{
+				"asset_id": map[string]any{
+					"type":        "string",
+					"description": "asset_id parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: asset_id (string) [required]"),
 		),
 	)
 	tools = append(tools, businessassetgroup_post_contained_applicationsTool)
 
 	// businessassetgroup_delete_contained_custom_conversions tool
+	// Params object accepts: asset_id (string)
 	businessassetgroup_delete_contained_custom_conversionsTool := mcp.NewTool("businessassetgroup_delete_contained_custom_conversions",
 		mcp.WithDescription("DELETE contained_custom_conversions for BusinessAssetGroup"),
-		mcp.WithString("asset_id",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("asset_id parameter for contained_custom_conversions"),
+			mcp.Properties(map[string]any{
+				"asset_id": map[string]any{
+					"type":        "string",
+					"description": "asset_id parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: asset_id (string) [required]"),
 		),
 	)
 	tools = append(tools, businessassetgroup_delete_contained_custom_conversionsTool)
@@ -167,8 +240,8 @@ func GetBusinessAssetGroupTools() []mcp.Tool {
 	// Available fields for CustomConversion: account_id, aggregation_rule, business, creation_time, custom_event_type, data_sources, default_conversion_value, description, event_source_type, first_fired_time, id, is_archived, is_unavailable, last_fired_time, name, offline_conversion_data_set, pixel, retention_days, rule
 	businessassetgroup_get_contained_custom_conversionsTool := mcp.NewTool("businessassetgroup_get_contained_custom_conversions",
 		mcp.WithDescription("GET contained_custom_conversions for BusinessAssetGroup"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for CustomConversion objects. Available fields: account_id, aggregation_rule, business, creation_time, custom_event_type, data_sources, default_conversion_value, description, event_source_type, first_fired_time, id, is_archived, is_unavailable, last_fired_time, name (and 4 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for CustomConversion objects. Available fields: account_id, aggregation_rule, business, creation_time, custom_event_type, data_sources, default_conversion_value, description, event_source_type, first_fired_time, id, is_archived, is_unavailable, last_fired_time, name (and 4 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -183,21 +256,37 @@ func GetBusinessAssetGroupTools() []mcp.Tool {
 	tools = append(tools, businessassetgroup_get_contained_custom_conversionsTool)
 
 	// businessassetgroup_post_contained_custom_conversions tool
+	// Params object accepts: asset_id (string)
 	businessassetgroup_post_contained_custom_conversionsTool := mcp.NewTool("businessassetgroup_post_contained_custom_conversions",
 		mcp.WithDescription("POST contained_custom_conversions for BusinessAssetGroup"),
-		mcp.WithString("asset_id",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("asset_id parameter for contained_custom_conversions"),
+			mcp.Properties(map[string]any{
+				"asset_id": map[string]any{
+					"type":        "string",
+					"description": "asset_id parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: asset_id (string) [required]"),
 		),
 	)
 	tools = append(tools, businessassetgroup_post_contained_custom_conversionsTool)
 
 	// businessassetgroup_delete_contained_instagram_accounts tool
+	// Params object accepts: asset_id (string)
 	businessassetgroup_delete_contained_instagram_accountsTool := mcp.NewTool("businessassetgroup_delete_contained_instagram_accounts",
 		mcp.WithDescription("DELETE contained_instagram_accounts for BusinessAssetGroup"),
-		mcp.WithString("asset_id",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("asset_id parameter for contained_instagram_accounts"),
+			mcp.Properties(map[string]any{
+				"asset_id": map[string]any{
+					"type":        "string",
+					"description": "asset_id parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: asset_id (string) [required]"),
 		),
 	)
 	tools = append(tools, businessassetgroup_delete_contained_instagram_accountsTool)
@@ -206,8 +295,8 @@ func GetBusinessAssetGroupTools() []mcp.Tool {
 	// Available fields for InstagramUser: follow_count, followed_by_count, has_profile_picture, id, ig_user_id, is_private, is_published, media_count, mini_shop_storefront, owner_business, profile_pic, username
 	businessassetgroup_get_contained_instagram_accountsTool := mcp.NewTool("businessassetgroup_get_contained_instagram_accounts",
 		mcp.WithDescription("GET contained_instagram_accounts for BusinessAssetGroup"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for InstagramUser objects. Available fields: follow_count, followed_by_count, has_profile_picture, id, ig_user_id, is_private, is_published, media_count, mini_shop_storefront, owner_business, profile_pic, username"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for InstagramUser objects. Available fields: follow_count, followed_by_count, has_profile_picture, id, ig_user_id, is_private, is_published, media_count, mini_shop_storefront, owner_business, profile_pic, username"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -222,21 +311,37 @@ func GetBusinessAssetGroupTools() []mcp.Tool {
 	tools = append(tools, businessassetgroup_get_contained_instagram_accountsTool)
 
 	// businessassetgroup_post_contained_instagram_accounts tool
+	// Params object accepts: asset_id (string)
 	businessassetgroup_post_contained_instagram_accountsTool := mcp.NewTool("businessassetgroup_post_contained_instagram_accounts",
 		mcp.WithDescription("POST contained_instagram_accounts for BusinessAssetGroup"),
-		mcp.WithString("asset_id",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("asset_id parameter for contained_instagram_accounts"),
+			mcp.Properties(map[string]any{
+				"asset_id": map[string]any{
+					"type":        "string",
+					"description": "asset_id parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: asset_id (string) [required]"),
 		),
 	)
 	tools = append(tools, businessassetgroup_post_contained_instagram_accountsTool)
 
 	// businessassetgroup_delete_contained_pages tool
+	// Params object accepts: asset_id (string)
 	businessassetgroup_delete_contained_pagesTool := mcp.NewTool("businessassetgroup_delete_contained_pages",
 		mcp.WithDescription("DELETE contained_pages for BusinessAssetGroup"),
-		mcp.WithString("asset_id",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("asset_id parameter for contained_pages"),
+			mcp.Properties(map[string]any{
+				"asset_id": map[string]any{
+					"type":        "string",
+					"description": "asset_id parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: asset_id (string) [required]"),
 		),
 	)
 	tools = append(tools, businessassetgroup_delete_contained_pagesTool)
@@ -245,8 +350,8 @@ func GetBusinessAssetGroupTools() []mcp.Tool {
 	// Available fields for Page: about, access_token, ad_campaign, affiliation, app_id, artists_we_like, attire, available_promo_offer_ids, awards, band_interests, band_members, best_page, bio, birthday, booking_agent, breaking_news_usage, built, business, can_checkin, can_post, category, category_list, checkins, company_overview, connected_instagram_account, connected_page_backed_instagram_account, contact_address, copyright_whitelisted_ig_partners, country_page_likes, cover, culinary_team, current_location, delivery_and_pickup_option_info, description, description_html, differently_open_offerings, directed_by, display_subtext, displayed_message_response_time, does_viewer_have_page_permission_link_ig, emails, engagement, fan_count, featured_video, features, followers_count, food_styles, founded, general_info, general_manager, genre, global_brand_page_name, global_brand_root_id, has_added_app, has_lead_access, has_transitioned_to_new_page_experience, has_whatsapp_business_number, has_whatsapp_number, hometown, hours, id, impressum, influences, instagram_business_account, is_always_open, is_calling_eligible, is_chain, is_community_page, is_eligible_for_branded_content, is_eligible_for_disable_connect_ig_btn_for_non_page_admin_am_web, is_messenger_bot_get_started_enabled, is_messenger_platform_bot, is_owned, is_permanently_closed, is_published, is_unclaimed, is_verified, is_webhooks_subscribed, keywords, leadgen_tos_acceptance_time, leadgen_tos_accepted, leadgen_tos_accepting_user, link, location, members, merchant_id, merchant_review_status, messaging_feature_status, messenger_ads_default_icebreakers, messenger_ads_default_quick_replies, messenger_ads_quick_replies_type, mini_shop_storefront, mission, mpg, name, name_with_location_descriptor, network, new_like_count, offer_eligible, overall_star_rating, owner_business, page_token, parent_page, parking, payment_options, personal_info, personal_interests, pharma_safety_info, phone, pickup_options, place_type, plot_outline, preferred_audience, press_contact, price_range, privacy_info_url, produced_by, products, promotion_eligible, promotion_ineligible_reason, public_transit, rating_count, recipient, record_label, release_date, restaurant_services, restaurant_specialties, schedule, screenplay_by, season, single_line_address, starring, start_info, store_code, store_location_descriptor, store_number, studio, supports_donate_button_in_live_video, talking_about_count, temporary_status, unread_message_count, unread_notif_count, unseen_message_count, user_access_expire_time, username, verification_status, voip_info, website, were_here_count, whatsapp_number, written_by
 	businessassetgroup_get_contained_pagesTool := mcp.NewTool("businessassetgroup_get_contained_pages",
 		mcp.WithDescription("GET contained_pages for BusinessAssetGroup"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for Page objects. Available fields: about, access_token, ad_campaign, affiliation, app_id, artists_we_like, attire, available_promo_offer_ids, awards, band_interests, band_members, best_page, bio, birthday, booking_agent (and 136 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for Page objects. Available fields: about, access_token, ad_campaign, affiliation, app_id, artists_we_like, attire, available_promo_offer_ids, awards, band_interests, band_members, best_page, bio, birthday, booking_agent (and 136 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -261,21 +366,37 @@ func GetBusinessAssetGroupTools() []mcp.Tool {
 	tools = append(tools, businessassetgroup_get_contained_pagesTool)
 
 	// businessassetgroup_post_contained_pages tool
+	// Params object accepts: asset_id (string)
 	businessassetgroup_post_contained_pagesTool := mcp.NewTool("businessassetgroup_post_contained_pages",
 		mcp.WithDescription("POST contained_pages for BusinessAssetGroup"),
-		mcp.WithString("asset_id",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("asset_id parameter for contained_pages"),
+			mcp.Properties(map[string]any{
+				"asset_id": map[string]any{
+					"type":        "string",
+					"description": "asset_id parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: asset_id (string) [required]"),
 		),
 	)
 	tools = append(tools, businessassetgroup_post_contained_pagesTool)
 
 	// businessassetgroup_delete_contained_pixels tool
+	// Params object accepts: asset_id (string)
 	businessassetgroup_delete_contained_pixelsTool := mcp.NewTool("businessassetgroup_delete_contained_pixels",
 		mcp.WithDescription("DELETE contained_pixels for BusinessAssetGroup"),
-		mcp.WithString("asset_id",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("asset_id parameter for contained_pixels"),
+			mcp.Properties(map[string]any{
+				"asset_id": map[string]any{
+					"type":        "string",
+					"description": "asset_id parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: asset_id (string) [required]"),
 		),
 	)
 	tools = append(tools, businessassetgroup_delete_contained_pixelsTool)
@@ -284,8 +405,8 @@ func GetBusinessAssetGroupTools() []mcp.Tool {
 	// Available fields for AdsPixel: automatic_matching_fields, can_proxy, code, config, creation_time, creator, data_use_setting, description, duplicate_entries, enable_auto_assign_to_accounts, enable_automatic_matching, event_stats, event_time_max, event_time_min, first_party_cookie_status, has_1p_pixel_event, id, is_consolidated_container, is_created_by_business, is_crm, is_mta_use, is_restricted_use, is_unavailable, last_fired_time, last_upload_app, last_upload_app_changed_time, match_rate_approx, matched_entries, name, owner_ad_account, owner_business, usage, user_access_expire_time, valid_entries
 	businessassetgroup_get_contained_pixelsTool := mcp.NewTool("businessassetgroup_get_contained_pixels",
 		mcp.WithDescription("GET contained_pixels for BusinessAssetGroup"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for AdsPixel objects. Available fields: automatic_matching_fields, can_proxy, code, config, creation_time, creator, data_use_setting, description, duplicate_entries, enable_auto_assign_to_accounts, enable_automatic_matching, event_stats, event_time_max, event_time_min, first_party_cookie_status (and 19 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for AdsPixel objects. Available fields: automatic_matching_fields, can_proxy, code, config, creation_time, creator, data_use_setting, description, duplicate_entries, enable_auto_assign_to_accounts, enable_automatic_matching, event_stats, event_time_max, event_time_min, first_party_cookie_status (and 19 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -300,21 +421,37 @@ func GetBusinessAssetGroupTools() []mcp.Tool {
 	tools = append(tools, businessassetgroup_get_contained_pixelsTool)
 
 	// businessassetgroup_post_contained_pixels tool
+	// Params object accepts: asset_id (string)
 	businessassetgroup_post_contained_pixelsTool := mcp.NewTool("businessassetgroup_post_contained_pixels",
 		mcp.WithDescription("POST contained_pixels for BusinessAssetGroup"),
-		mcp.WithString("asset_id",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("asset_id parameter for contained_pixels"),
+			mcp.Properties(map[string]any{
+				"asset_id": map[string]any{
+					"type":        "string",
+					"description": "asset_id parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: asset_id (string) [required]"),
 		),
 	)
 	tools = append(tools, businessassetgroup_post_contained_pixelsTool)
 
 	// businessassetgroup_delete_contained_product_catalogs tool
+	// Params object accepts: asset_id (string)
 	businessassetgroup_delete_contained_product_catalogsTool := mcp.NewTool("businessassetgroup_delete_contained_product_catalogs",
 		mcp.WithDescription("DELETE contained_product_catalogs for BusinessAssetGroup"),
-		mcp.WithString("asset_id",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("asset_id parameter for contained_product_catalogs"),
+			mcp.Properties(map[string]any{
+				"asset_id": map[string]any{
+					"type":        "string",
+					"description": "asset_id parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: asset_id (string) [required]"),
 		),
 	)
 	tools = append(tools, businessassetgroup_delete_contained_product_catalogsTool)
@@ -323,8 +460,8 @@ func GetBusinessAssetGroupTools() []mcp.Tool {
 	// Available fields for ProductCatalog: ad_account_to_collaborative_ads_share_settings, agency_collaborative_ads_share_settings, business, catalog_store, commerce_merchant_settings, creator_user, da_display_settings, default_image_url, fallback_image_url, feed_count, id, is_catalog_segment, is_local_catalog, name, owner_business, product_count, store_catalog_settings, user_access_expire_time, vertical
 	businessassetgroup_get_contained_product_catalogsTool := mcp.NewTool("businessassetgroup_get_contained_product_catalogs",
 		mcp.WithDescription("GET contained_product_catalogs for BusinessAssetGroup"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for ProductCatalog objects. Available fields: ad_account_to_collaborative_ads_share_settings, agency_collaborative_ads_share_settings, business, catalog_store, commerce_merchant_settings, creator_user, da_display_settings, default_image_url, fallback_image_url, feed_count, id, is_catalog_segment, is_local_catalog, name, owner_business (and 4 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for ProductCatalog objects. Available fields: ad_account_to_collaborative_ads_share_settings, agency_collaborative_ads_share_settings, business, catalog_store, commerce_merchant_settings, creator_user, da_display_settings, default_image_url, fallback_image_url, feed_count, id, is_catalog_segment, is_local_catalog, name, owner_business (and 4 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -339,11 +476,19 @@ func GetBusinessAssetGroupTools() []mcp.Tool {
 	tools = append(tools, businessassetgroup_get_contained_product_catalogsTool)
 
 	// businessassetgroup_post_contained_product_catalogs tool
+	// Params object accepts: asset_id (string)
 	businessassetgroup_post_contained_product_catalogsTool := mcp.NewTool("businessassetgroup_post_contained_product_catalogs",
 		mcp.WithDescription("POST contained_product_catalogs for BusinessAssetGroup"),
-		mcp.WithString("asset_id",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("asset_id parameter for contained_product_catalogs"),
+			mcp.Properties(map[string]any{
+				"asset_id": map[string]any{
+					"type":        "string",
+					"description": "asset_id parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: asset_id (string) [required]"),
 		),
 	)
 	tools = append(tools, businessassetgroup_post_contained_product_catalogsTool)
@@ -352,8 +497,8 @@ func GetBusinessAssetGroupTools() []mcp.Tool {
 	// Available fields for BusinessAssetGroup: id, name, owner_business
 	businessassetgroup_get_Tool := mcp.NewTool("businessassetgroup_get_",
 		mcp.WithDescription("GET  for BusinessAssetGroup"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for BusinessAssetGroup objects. Available fields: id, name, owner_business"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for BusinessAssetGroup objects. Available fields: id, name, owner_business"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -368,10 +513,17 @@ func GetBusinessAssetGroupTools() []mcp.Tool {
 	tools = append(tools, businessassetgroup_get_Tool)
 
 	// businessassetgroup_post_ tool
+	// Params object accepts: name (string)
 	businessassetgroup_post_Tool := mcp.NewTool("businessassetgroup_post_",
 		mcp.WithDescription("POST  for BusinessAssetGroup"),
-		mcp.WithString("name",
-			mcp.Description("name parameter for "),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"name": map[string]any{
+					"type":        "string",
+					"description": "name parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: name (string)"),
 		),
 	)
 	tools = append(tools, businessassetgroup_post_Tool)
@@ -395,12 +547,19 @@ func HandleBusinessassetgroup_delete_assigned_users(ctx context.Context, request
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: user
-	user, err := request.RequireInt("user")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter user: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["user"] = user
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Businessassetgroup_delete_assigned_users(args)
@@ -431,16 +590,28 @@ func HandleBusinessassetgroup_get_assigned_users(ctx context.Context, request mc
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: business
-	business, err := request.RequireString("business")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter business: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["business"] = business
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -487,36 +658,19 @@ func HandleBusinessassetgroup_post_assigned_users(ctx context.Context, request m
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: adaccount_tasks
-	// array type - using string
-	if val := request.GetString("adaccount_tasks", ""); val != "" {
-		args["adaccount_tasks"] = val
-	}
-
-	// Optional: offline_conversion_data_set_tasks
-	// array type - using string
-	if val := request.GetString("offline_conversion_data_set_tasks", ""); val != "" {
-		args["offline_conversion_data_set_tasks"] = val
-	}
-
-	// Optional: page_tasks
-	// array type - using string
-	if val := request.GetString("page_tasks", ""); val != "" {
-		args["page_tasks"] = val
-	}
-
-	// Optional: pixel_tasks
-	// array type - using string
-	if val := request.GetString("pixel_tasks", ""); val != "" {
-		args["pixel_tasks"] = val
-	}
-
-	// Required: user
-	user, err := request.RequireInt("user")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter user: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["user"] = user
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Businessassetgroup_post_assigned_users(args)
@@ -547,12 +701,19 @@ func HandleBusinessassetgroup_delete_contained_adaccounts(ctx context.Context, r
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: asset_id
-	asset_id, err := request.RequireString("asset_id")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter asset_id: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["asset_id"] = asset_id
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Businessassetgroup_delete_contained_adaccounts(args)
@@ -584,8 +745,13 @@ func HandleBusinessassetgroup_get_contained_adaccounts(ctx context.Context, requ
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -632,12 +798,19 @@ func HandleBusinessassetgroup_post_contained_adaccounts(ctx context.Context, req
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: asset_id
-	asset_id, err := request.RequireString("asset_id")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter asset_id: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["asset_id"] = asset_id
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Businessassetgroup_post_contained_adaccounts(args)
@@ -668,12 +841,19 @@ func HandleBusinessassetgroup_delete_contained_applications(ctx context.Context,
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: asset_id
-	asset_id, err := request.RequireString("asset_id")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter asset_id: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["asset_id"] = asset_id
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Businessassetgroup_delete_contained_applications(args)
@@ -705,8 +885,13 @@ func HandleBusinessassetgroup_get_contained_applications(ctx context.Context, re
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -753,12 +938,19 @@ func HandleBusinessassetgroup_post_contained_applications(ctx context.Context, r
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: asset_id
-	asset_id, err := request.RequireString("asset_id")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter asset_id: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["asset_id"] = asset_id
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Businessassetgroup_post_contained_applications(args)
@@ -789,12 +981,19 @@ func HandleBusinessassetgroup_delete_contained_custom_conversions(ctx context.Co
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: asset_id
-	asset_id, err := request.RequireString("asset_id")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter asset_id: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["asset_id"] = asset_id
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Businessassetgroup_delete_contained_custom_conversions(args)
@@ -826,8 +1025,13 @@ func HandleBusinessassetgroup_get_contained_custom_conversions(ctx context.Conte
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -874,12 +1078,19 @@ func HandleBusinessassetgroup_post_contained_custom_conversions(ctx context.Cont
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: asset_id
-	asset_id, err := request.RequireString("asset_id")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter asset_id: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["asset_id"] = asset_id
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Businessassetgroup_post_contained_custom_conversions(args)
@@ -910,12 +1121,19 @@ func HandleBusinessassetgroup_delete_contained_instagram_accounts(ctx context.Co
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: asset_id
-	asset_id, err := request.RequireString("asset_id")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter asset_id: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["asset_id"] = asset_id
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Businessassetgroup_delete_contained_instagram_accounts(args)
@@ -947,8 +1165,13 @@ func HandleBusinessassetgroup_get_contained_instagram_accounts(ctx context.Conte
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -995,12 +1218,19 @@ func HandleBusinessassetgroup_post_contained_instagram_accounts(ctx context.Cont
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: asset_id
-	asset_id, err := request.RequireString("asset_id")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter asset_id: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["asset_id"] = asset_id
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Businessassetgroup_post_contained_instagram_accounts(args)
@@ -1031,12 +1261,19 @@ func HandleBusinessassetgroup_delete_contained_pages(ctx context.Context, reques
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: asset_id
-	asset_id, err := request.RequireString("asset_id")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter asset_id: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["asset_id"] = asset_id
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Businessassetgroup_delete_contained_pages(args)
@@ -1068,8 +1305,13 @@ func HandleBusinessassetgroup_get_contained_pages(ctx context.Context, request m
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -1116,12 +1358,19 @@ func HandleBusinessassetgroup_post_contained_pages(ctx context.Context, request 
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: asset_id
-	asset_id, err := request.RequireString("asset_id")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter asset_id: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["asset_id"] = asset_id
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Businessassetgroup_post_contained_pages(args)
@@ -1152,12 +1401,19 @@ func HandleBusinessassetgroup_delete_contained_pixels(ctx context.Context, reque
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: asset_id
-	asset_id, err := request.RequireString("asset_id")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter asset_id: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["asset_id"] = asset_id
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Businessassetgroup_delete_contained_pixels(args)
@@ -1189,8 +1445,13 @@ func HandleBusinessassetgroup_get_contained_pixels(ctx context.Context, request 
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -1237,12 +1498,19 @@ func HandleBusinessassetgroup_post_contained_pixels(ctx context.Context, request
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: asset_id
-	asset_id, err := request.RequireString("asset_id")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter asset_id: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["asset_id"] = asset_id
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Businessassetgroup_post_contained_pixels(args)
@@ -1273,12 +1541,19 @@ func HandleBusinessassetgroup_delete_contained_product_catalogs(ctx context.Cont
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: asset_id
-	asset_id, err := request.RequireString("asset_id")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter asset_id: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["asset_id"] = asset_id
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Businessassetgroup_delete_contained_product_catalogs(args)
@@ -1310,8 +1585,13 @@ func HandleBusinessassetgroup_get_contained_product_catalogs(ctx context.Context
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -1358,12 +1638,19 @@ func HandleBusinessassetgroup_post_contained_product_catalogs(ctx context.Contex
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: asset_id
-	asset_id, err := request.RequireString("asset_id")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter asset_id: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["asset_id"] = asset_id
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Businessassetgroup_post_contained_product_catalogs(args)
@@ -1395,8 +1682,13 @@ func HandleBusinessassetgroup_get_(ctx context.Context, request mcp.CallToolRequ
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -1443,9 +1735,16 @@ func HandleBusinessassetgroup_post_(ctx context.Context, request mcp.CallToolReq
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: name
-	if val := request.GetString("name", ""); val != "" {
-		args["name"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method

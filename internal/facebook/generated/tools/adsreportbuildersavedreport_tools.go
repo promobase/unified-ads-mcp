@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -20,8 +21,8 @@ func GetAdsReportBuilderSavedReportTools() []mcp.Tool {
 	// Available fields for AdsReportBuilderSavedReport: action_report_time, ad_account_id, attribution_windows, comparison_date_interval, creation_source, creation_time, currency, date_interval, date_preset, default_attribution_windows, dimension_groups, dimensions, filtering, formatting, id, last_access_by, last_access_time, last_report_snapshot_id, last_report_snapshot_time, last_shared_report_expiration, limit, locked_dimensions, metrics, report_name, report_snapshot_async_percent_completion, report_snapshot_async_status, schedule_frequency, scope, show_deprecate_aw_banner, sorting, start_date, status, subscribers, update_by, update_time, user, user_dimensions, user_metrics, view_type
 	adsreportbuildersavedreport_get_Tool := mcp.NewTool("adsreportbuildersavedreport_get_",
 		mcp.WithDescription("GET  for AdsReportBuilderSavedReport"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for AdsReportBuilderSavedReport objects. Available fields: action_report_time, ad_account_id, attribution_windows, comparison_date_interval, creation_source, creation_time, currency, date_interval, date_preset, default_attribution_windows, dimension_groups, dimensions, filtering, formatting, id (and 24 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for AdsReportBuilderSavedReport objects. Available fields: action_report_time, ad_account_id, attribution_windows, comparison_date_interval, creation_source, creation_time, currency, date_interval, date_preset, default_attribution_windows, dimension_groups, dimensions, filtering, formatting, id (and 24 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -55,8 +56,13 @@ func HandleAdsreportbuildersavedreport_get_(ctx context.Context, request mcp.Cal
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit

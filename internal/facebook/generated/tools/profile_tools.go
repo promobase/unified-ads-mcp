@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -18,23 +19,33 @@ func GetProfileTools() []mcp.Tool {
 
 	// profile_get_picture tool
 	// Available fields for ProfilePictureSource: bottom, cache_key, height, is_silhouette, left, right, top, url, width
+	// Params object accepts: height (int), redirect (bool), type (profilepicture_type_enum_param), width (int)
 	profile_get_pictureTool := mcp.NewTool("profile_get_picture",
 		mcp.WithDescription("GET picture for Profile"),
-		mcp.WithNumber("height",
-			mcp.Description("height parameter for picture"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"height": map[string]any{
+					"type":        "integer",
+					"description": "height parameter",
+				},
+				"redirect": map[string]any{
+					"type":        "boolean",
+					"description": "redirect parameter",
+				},
+				"type": map[string]any{
+					"type":        "string",
+					"description": "type parameter",
+					"enum":        []string{"album", "large", "normal", "small", "square"},
+				},
+				"width": map[string]any{
+					"type":        "integer",
+					"description": "width parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: height (integer), redirect (boolean), type (enum) [album, large, normal, small, square], width (integer)"),
 		),
-		mcp.WithBoolean("redirect",
-			mcp.Description("redirect parameter for picture"),
-		),
-		mcp.WithString("type",
-			mcp.Description("type parameter for picture"),
-			mcp.Enum("album", "large", "normal", "small", "square"),
-		),
-		mcp.WithNumber("width",
-			mcp.Description("width parameter for picture"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for ProfilePictureSource objects. Available fields: bottom, cache_key, height, is_silhouette, left, right, top, url, width"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for ProfilePictureSource objects. Available fields: bottom, cache_key, height, is_silhouette, left, right, top, url, width"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -52,8 +63,8 @@ func GetProfileTools() []mcp.Tool {
 	// Available fields for Profile: can_post, id, link, name, pic, pic_crop, pic_large, pic_small, pic_square, profile_type, username
 	profile_get_Tool := mcp.NewTool("profile_get_",
 		mcp.WithDescription("GET  for Profile"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for Profile objects. Available fields: can_post, id, link, name, pic, pic_crop, pic_large, pic_small, pic_square, profile_type, username"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for Profile objects. Available fields: can_post, id, link, name, pic, pic_crop, pic_large, pic_small, pic_square, profile_type, username"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -86,29 +97,26 @@ func HandleProfile_get_picture(ctx context.Context, request mcp.CallToolRequest)
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: height
-	if val := request.GetInt("height", 0); val != 0 {
-		args["height"] = val
-	}
-
-	// Optional: redirect
-	if val := request.GetBool("redirect", false); val {
-		args["redirect"] = val
-	}
-
-	// Optional: type
-	if val := request.GetString("type", ""); val != "" {
-		args["type"] = val
-	}
-
-	// Optional: width
-	if val := request.GetInt("width", 0); val != 0 {
-		args["width"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -156,8 +164,13 @@ func HandleProfile_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit

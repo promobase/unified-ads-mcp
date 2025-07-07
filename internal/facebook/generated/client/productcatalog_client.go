@@ -24,11 +24,11 @@ func NewProductCatalogClient(accessToken string) *ProductCatalogClient {
 // productcatalog_delete_agencies DELETE agencies for ProductCatalog
 func (c *ProductCatalogClient) Productcatalog_delete_agencies(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	business, ok := args["business"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: business")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = business // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -38,10 +38,10 @@ func (c *ProductCatalogClient) Productcatalog_delete_agencies(args map[string]in
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["business"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("business", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -145,11 +145,11 @@ func (c *ProductCatalogClient) Productcatalog_get_agencies(args map[string]inter
 // productcatalog_post_agencies POST agencies for ProductCatalog
 func (c *ProductCatalogClient) Productcatalog_post_agencies(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	business, ok := args["business"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: business")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = business // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -159,34 +159,10 @@ func (c *ProductCatalogClient) Productcatalog_post_agencies(args map[string]inte
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["business"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("business", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["permitted_roles"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("permitted_roles", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["permitted_tasks"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("permitted_tasks", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["skip_defaults"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("skip_defaults", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["utm_settings"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("utm_settings", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -223,11 +199,11 @@ func (c *ProductCatalogClient) Productcatalog_post_agencies(args map[string]inte
 // productcatalog_delete_assigned_users DELETE assigned_users for ProductCatalog
 func (c *ProductCatalogClient) Productcatalog_delete_assigned_users(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	user, ok := args["user"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: user")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = user // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -237,10 +213,10 @@ func (c *ProductCatalogClient) Productcatalog_delete_assigned_users(args map[str
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["user"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("user", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -277,11 +253,11 @@ func (c *ProductCatalogClient) Productcatalog_delete_assigned_users(args map[str
 // productcatalog_get_assigned_users GET assigned_users for ProductCatalog
 func (c *ProductCatalogClient) Productcatalog_get_assigned_users(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	business, ok := args["business"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: business")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = business // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -291,10 +267,10 @@ func (c *ProductCatalogClient) Productcatalog_get_assigned_users(args map[string
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["business"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("business", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -355,16 +331,11 @@ func (c *ProductCatalogClient) Productcatalog_get_assigned_users(args map[string
 // productcatalog_post_assigned_users POST assigned_users for ProductCatalog
 func (c *ProductCatalogClient) Productcatalog_post_assigned_users(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	tasks, ok := args["tasks"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: tasks")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = tasks // Suppress unused variable warning
-	user, ok := args["user"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: user")
-	}
-	_ = user // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -374,16 +345,10 @@ func (c *ProductCatalogClient) Productcatalog_post_assigned_users(args map[strin
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["tasks"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("tasks", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["user"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("user", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -429,16 +394,10 @@ func (c *ProductCatalogClient) Productcatalog_get_automotive_models(args map[str
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["bulk_pagination"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("bulk_pagination", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["filter"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("filter", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -499,11 +458,11 @@ func (c *ProductCatalogClient) Productcatalog_get_automotive_models(args map[str
 // productcatalog_post_batch POST batch for ProductCatalog
 func (c *ProductCatalogClient) Productcatalog_post_batch(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	requests, ok := args["requests"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: requests")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = requests // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -513,28 +472,10 @@ func (c *ProductCatalogClient) Productcatalog_post_batch(args map[string]interfa
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["allow_upsert"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("allow_upsert", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["fbe_external_business_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("fbe_external_business_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["requests"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("requests", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["version"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("version", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -571,11 +512,11 @@ func (c *ProductCatalogClient) Productcatalog_post_batch(args map[string]interfa
 // productcatalog_post_catalog_store POST catalog_store for ProductCatalog
 func (c *ProductCatalogClient) Productcatalog_post_catalog_store(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	page, ok := args["page"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: page")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = page // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -585,10 +526,10 @@ func (c *ProductCatalogClient) Productcatalog_post_catalog_store(args map[string
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["page"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("page", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -625,11 +566,11 @@ func (c *ProductCatalogClient) Productcatalog_post_catalog_store(args map[string
 // productcatalog_get_categories GET categories for ProductCatalog
 func (c *ProductCatalogClient) Productcatalog_get_categories(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	categorization_criteria, ok := args["categorization_criteria"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: categorization_criteria")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = categorization_criteria // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -639,16 +580,10 @@ func (c *ProductCatalogClient) Productcatalog_get_categories(args map[string]int
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["categorization_criteria"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("categorization_criteria", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["filter"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("filter", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -709,11 +644,11 @@ func (c *ProductCatalogClient) Productcatalog_get_categories(args map[string]int
 // productcatalog_post_categories POST categories for ProductCatalog
 func (c *ProductCatalogClient) Productcatalog_post_categories(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	data, ok := args["data"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: data")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = data // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -723,10 +658,10 @@ func (c *ProductCatalogClient) Productcatalog_post_categories(args map[string]in
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["data"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("data", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -763,11 +698,11 @@ func (c *ProductCatalogClient) Productcatalog_post_categories(args map[string]in
 // productcatalog_get_check_batch_request_status GET check_batch_request_status for ProductCatalog
 func (c *ProductCatalogClient) Productcatalog_get_check_batch_request_status(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	handle, ok := args["handle"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: handle")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = handle // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -777,22 +712,10 @@ func (c *ProductCatalogClient) Productcatalog_get_check_batch_request_status(arg
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["error_priority"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("error_priority", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["handle"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("handle", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["load_ids_of_invalid_requests"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("load_ids_of_invalid_requests", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -853,11 +776,11 @@ func (c *ProductCatalogClient) Productcatalog_get_check_batch_request_status(arg
 // productcatalog_get_check_marketplace_partner_sellers_status GET check_marketplace_partner_sellers_status for ProductCatalog
 func (c *ProductCatalogClient) Productcatalog_get_check_marketplace_partner_sellers_status(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	session_id, ok := args["session_id"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: session_id")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = session_id // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -867,10 +790,10 @@ func (c *ProductCatalogClient) Productcatalog_get_check_marketplace_partner_sell
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["session_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("session_id", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -1065,11 +988,11 @@ func (c *ProductCatalogClient) Productcatalog_get_collaborative_ads_share_settin
 // productcatalog_post_cpas_lsb_image_bank POST cpas_lsb_image_bank for ProductCatalog
 func (c *ProductCatalogClient) Productcatalog_post_cpas_lsb_image_bank(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	backup_image_urls, ok := args["backup_image_urls"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: backup_image_urls")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = backup_image_urls // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -1079,22 +1002,10 @@ func (c *ProductCatalogClient) Productcatalog_post_cpas_lsb_image_bank(args map[
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["ad_group_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("ad_group_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["agency_business_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("agency_business_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["backup_image_urls"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("backup_image_urls", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -1140,10 +1051,10 @@ func (c *ProductCatalogClient) Productcatalog_get_creator_asset_creatives(args m
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["moderation_status"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("moderation_status", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -1213,10 +1124,10 @@ func (c *ProductCatalogClient) Productcatalog_get_data_sources(args map[string]i
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["ingestion_source_type"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("ingestion_source_type", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -1286,16 +1197,10 @@ func (c *ProductCatalogClient) Productcatalog_get_destinations(args map[string]i
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["bulk_pagination"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("bulk_pagination", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["filter"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("filter", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -1365,34 +1270,10 @@ func (c *ProductCatalogClient) Productcatalog_get_diagnostics(args map[string]in
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["affected_channels"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("affected_channels", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["affected_entities"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("affected_entities", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["affected_features"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("affected_features", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["severities"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("severities", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["types"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("types", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -1462,10 +1343,10 @@ func (c *ProductCatalogClient) Productcatalog_get_event_stats(args map[string]in
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["breakdowns"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("breakdowns", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -1535,10 +1416,10 @@ func (c *ProductCatalogClient) Productcatalog_delete_external_event_sources(args
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["external_event_sources"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("external_event_sources", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -1651,10 +1532,10 @@ func (c *ProductCatalogClient) Productcatalog_post_external_event_sources(args m
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["external_event_sources"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("external_event_sources", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -1700,16 +1581,10 @@ func (c *ProductCatalogClient) Productcatalog_get_flights(args map[string]interf
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["bulk_pagination"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("bulk_pagination", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["filter"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("filter", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -1770,16 +1645,11 @@ func (c *ProductCatalogClient) Productcatalog_get_flights(args map[string]interf
 // productcatalog_post_geolocated_items_batch POST geolocated_items_batch for ProductCatalog
 func (c *ProductCatalogClient) Productcatalog_post_geolocated_items_batch(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	item_type, ok := args["item_type"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: item_type")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = item_type // Suppress unused variable warning
-	requests, ok := args["requests"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: requests")
-	}
-	_ = requests // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -1789,22 +1659,10 @@ func (c *ProductCatalogClient) Productcatalog_post_geolocated_items_batch(args m
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["allow_upsert"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("allow_upsert", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["item_type"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("item_type", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["requests"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("requests", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -1850,16 +1708,10 @@ func (c *ProductCatalogClient) Productcatalog_get_home_listings(args map[string]
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["bulk_pagination"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("bulk_pagination", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["filter"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("filter", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -1920,51 +1772,11 @@ func (c *ProductCatalogClient) Productcatalog_get_home_listings(args map[string]
 // productcatalog_post_home_listings POST home_listings for ProductCatalog
 func (c *ProductCatalogClient) Productcatalog_post_home_listings(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	address, ok := args["address"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: address")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = address // Suppress unused variable warning
-	availability, ok := args["availability"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: availability")
-	}
-	_ = availability // Suppress unused variable warning
-	currency, ok := args["currency"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: currency")
-	}
-	_ = currency // Suppress unused variable warning
-	home_listing_id, ok := args["home_listing_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: home_listing_id")
-	}
-	_ = home_listing_id // Suppress unused variable warning
-	images, ok := args["images"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: images")
-	}
-	_ = images // Suppress unused variable warning
-	name, ok := args["name"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: name")
-	}
-	_ = name // Suppress unused variable warning
-	price, ok := args["price"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: price")
-	}
-	_ = price // Suppress unused variable warning
-	url_, ok := args["url"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: url")
-	}
-	_ = url_ // Suppress unused variable warning
-	year_built, ok := args["year_built"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: year_built")
-	}
-	_ = year_built // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -1974,94 +1786,10 @@ func (c *ProductCatalogClient) Productcatalog_post_home_listings(args map[string
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["address"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("address", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["availability"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("availability", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["currency"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("currency", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["description"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("description", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["home_listing_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("home_listing_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["images"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("images", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["listing_type"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("listing_type", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["name"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("name", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["num_baths"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("num_baths", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["num_beds"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("num_beds", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["num_units"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("num_units", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["price"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("price", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["property_type"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("property_type", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["url"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("url", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["year_built"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("year_built", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -2098,11 +1826,11 @@ func (c *ProductCatalogClient) Productcatalog_post_home_listings(args map[string
 // productcatalog_get_hotel_rooms_batch GET hotel_rooms_batch for ProductCatalog
 func (c *ProductCatalogClient) Productcatalog_get_hotel_rooms_batch(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	handle, ok := args["handle"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: handle")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = handle // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -2112,10 +1840,10 @@ func (c *ProductCatalogClient) Productcatalog_get_hotel_rooms_batch(args map[str
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["handle"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("handle", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -2176,11 +1904,11 @@ func (c *ProductCatalogClient) Productcatalog_get_hotel_rooms_batch(args map[str
 // productcatalog_post_hotel_rooms_batch POST hotel_rooms_batch for ProductCatalog
 func (c *ProductCatalogClient) Productcatalog_post_hotel_rooms_batch(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	standard, ok := args["standard"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: standard")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = standard // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -2190,40 +1918,10 @@ func (c *ProductCatalogClient) Productcatalog_post_hotel_rooms_batch(args map[st
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["file"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("file", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["password"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("password", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["standard"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("standard", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["update_only"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("update_only", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["url"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("url", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["username"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("username", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -2269,16 +1967,10 @@ func (c *ProductCatalogClient) Productcatalog_get_hotels(args map[string]interfa
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["bulk_pagination"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("bulk_pagination", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["filter"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("filter", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -2339,31 +2031,11 @@ func (c *ProductCatalogClient) Productcatalog_get_hotels(args map[string]interfa
 // productcatalog_post_hotels POST hotels for ProductCatalog
 func (c *ProductCatalogClient) Productcatalog_post_hotels(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	address, ok := args["address"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: address")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = address // Suppress unused variable warning
-	description, ok := args["description"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: description")
-	}
-	_ = description // Suppress unused variable warning
-	images, ok := args["images"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: images")
-	}
-	_ = images // Suppress unused variable warning
-	name, ok := args["name"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: name")
-	}
-	_ = name // Suppress unused variable warning
-	url_, ok := args["url"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: url")
-	}
-	_ = url_ // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -2373,82 +2045,10 @@ func (c *ProductCatalogClient) Productcatalog_post_hotels(args map[string]interf
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["address"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("address", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["applinks"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("applinks", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["base_price"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("base_price", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["brand"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("brand", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["currency"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("currency", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["description"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("description", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["guest_ratings"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("guest_ratings", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["hotel_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("hotel_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["images"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("images", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["name"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("name", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["phone"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("phone", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["star_rating"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("star_rating", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["url"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("url", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -2485,16 +2085,11 @@ func (c *ProductCatalogClient) Productcatalog_post_hotels(args map[string]interf
 // productcatalog_post_items_batch POST items_batch for ProductCatalog
 func (c *ProductCatalogClient) Productcatalog_post_items_batch(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	item_type, ok := args["item_type"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: item_type")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = item_type // Suppress unused variable warning
-	requests, ok := args["requests"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: requests")
-	}
-	_ = requests // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -2504,34 +2099,10 @@ func (c *ProductCatalogClient) Productcatalog_post_items_batch(args map[string]i
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["allow_upsert"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("allow_upsert", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["item_sub_type"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("item_sub_type", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["item_type"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("item_type", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["requests"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("requests", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["version"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("version", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -2568,16 +2139,11 @@ func (c *ProductCatalogClient) Productcatalog_post_items_batch(args map[string]i
 // productcatalog_post_localized_items_batch POST localized_items_batch for ProductCatalog
 func (c *ProductCatalogClient) Productcatalog_post_localized_items_batch(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	item_type, ok := args["item_type"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: item_type")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = item_type // Suppress unused variable warning
-	requests, ok := args["requests"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: requests")
-	}
-	_ = requests // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -2587,28 +2153,10 @@ func (c *ProductCatalogClient) Productcatalog_post_localized_items_batch(args ma
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["allow_upsert"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("allow_upsert", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["item_type"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("item_type", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["requests"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("requests", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["version"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("version", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -2645,11 +2193,11 @@ func (c *ProductCatalogClient) Productcatalog_post_localized_items_batch(args ma
 // productcatalog_post_marketplace_partner_sellers_details POST marketplace_partner_sellers_details for ProductCatalog
 func (c *ProductCatalogClient) Productcatalog_post_marketplace_partner_sellers_details(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	requests, ok := args["requests"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: requests")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = requests // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -2659,10 +2207,10 @@ func (c *ProductCatalogClient) Productcatalog_post_marketplace_partner_sellers_d
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["requests"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("requests", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -2699,21 +2247,11 @@ func (c *ProductCatalogClient) Productcatalog_post_marketplace_partner_sellers_d
 // productcatalog_post_marketplace_partner_signals POST marketplace_partner_signals for ProductCatalog
 func (c *ProductCatalogClient) Productcatalog_post_marketplace_partner_signals(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	event_name, ok := args["event_name"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: event_name")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = event_name // Suppress unused variable warning
-	event_time, ok := args["event_time"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: event_time")
-	}
-	_ = event_time // Suppress unused variable warning
-	user_data, ok := args["user_data"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: user_data")
-	}
-	_ = user_data // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -2723,34 +2261,10 @@ func (c *ProductCatalogClient) Productcatalog_post_marketplace_partner_signals(a
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["event_name"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("event_name", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["event_source_url"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("event_source_url", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["event_time"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("event_time", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["order_data"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("order_data", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["user_data"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("user_data", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -2787,11 +2301,11 @@ func (c *ProductCatalogClient) Productcatalog_post_marketplace_partner_signals(a
 // productcatalog_get_pricing_variables_batch GET pricing_variables_batch for ProductCatalog
 func (c *ProductCatalogClient) Productcatalog_get_pricing_variables_batch(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	handle, ok := args["handle"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: handle")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = handle // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -2801,10 +2315,10 @@ func (c *ProductCatalogClient) Productcatalog_get_pricing_variables_batch(args m
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["handle"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("handle", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -2865,11 +2379,11 @@ func (c *ProductCatalogClient) Productcatalog_get_pricing_variables_batch(args m
 // productcatalog_post_pricing_variables_batch POST pricing_variables_batch for ProductCatalog
 func (c *ProductCatalogClient) Productcatalog_post_pricing_variables_batch(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	standard, ok := args["standard"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: standard")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = standard // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -2879,40 +2393,10 @@ func (c *ProductCatalogClient) Productcatalog_post_pricing_variables_batch(args 
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["file"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("file", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["password"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("password", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["standard"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("standard", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["update_only"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("update_only", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["url"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("url", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["username"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("username", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -3025,118 +2509,10 @@ func (c *ProductCatalogClient) Productcatalog_post_product_feeds(args map[string
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["country"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("country", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["default_currency"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("default_currency", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["deletion_enabled"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("deletion_enabled", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["delimiter"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("delimiter", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["encoding"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("encoding", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["feed_type"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("feed_type", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["file_name"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("file_name", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["ingestion_source_type"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("ingestion_source_type", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["item_sub_type"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("item_sub_type", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["migrated_from_feed_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("migrated_from_feed_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["name"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("name", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["override_type"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("override_type", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["override_value"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("override_value", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["primary_feed_ids"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("primary_feed_ids", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["quoted_fields_mode"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("quoted_fields_mode", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["rules"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("rules", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["schedule"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("schedule", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["selected_override_fields"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("selected_override_fields", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["update_schedule"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("update_schedule", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -3249,16 +2625,10 @@ func (c *ProductCatalogClient) Productcatalog_post_product_groups(args map[strin
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["retailer_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("retailer_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["variants"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("variants", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -3304,28 +2674,10 @@ func (c *ProductCatalogClient) Productcatalog_get_product_sets(args map[string]i
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["ancestor_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("ancestor_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["has_children"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("has_children", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["parent_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("parent_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["retailer_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("retailer_id", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -3386,11 +2738,11 @@ func (c *ProductCatalogClient) Productcatalog_get_product_sets(args map[string]i
 // productcatalog_post_product_sets POST product_sets for ProductCatalog
 func (c *ProductCatalogClient) Productcatalog_post_product_sets(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	name, ok := args["name"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: name")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = name // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -3400,40 +2752,10 @@ func (c *ProductCatalogClient) Productcatalog_post_product_sets(args map[string]
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["filter"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("filter", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["metadata"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("metadata", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["name"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("name", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["ordering_info"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("ordering_info", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["publish_to_shops"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("publish_to_shops", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["retailer_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("retailer_id", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -3470,11 +2792,11 @@ func (c *ProductCatalogClient) Productcatalog_post_product_sets(args map[string]
 // productcatalog_get_product_sets_batch GET product_sets_batch for ProductCatalog
 func (c *ProductCatalogClient) Productcatalog_get_product_sets_batch(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	handle, ok := args["handle"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: handle")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = handle // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -3484,10 +2806,10 @@ func (c *ProductCatalogClient) Productcatalog_get_product_sets_batch(args map[st
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["handle"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("handle", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -3557,34 +2879,10 @@ func (c *ProductCatalogClient) Productcatalog_get_products(args map[string]inter
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["bulk_pagination"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("bulk_pagination", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["error_priority"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("error_priority", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["error_type"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("error_type", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["filter"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("filter", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["return_only_approved_products"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("return_only_approved_products", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -3645,21 +2943,11 @@ func (c *ProductCatalogClient) Productcatalog_get_products(args map[string]inter
 // productcatalog_post_products POST products for ProductCatalog
 func (c *ProductCatalogClient) Productcatalog_post_products(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	currency, ok := args["currency"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: currency")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = currency // Suppress unused variable warning
-	name, ok := args["name"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: name")
-	}
-	_ = name // Suppress unused variable warning
-	price, ok := args["price"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: price")
-	}
-	_ = price // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -3669,472 +2957,10 @@ func (c *ProductCatalogClient) Productcatalog_post_products(args map[string]inte
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["additional_image_urls"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("additional_image_urls", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["additional_variant_attributes"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("additional_variant_attributes", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["age_group"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("age_group", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["android_app_name"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("android_app_name", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["android_class"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("android_class", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["android_package"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("android_package", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["android_url"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("android_url", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["availability"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("availability", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["brand"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("brand", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["category"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("category", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["category_specific_fields"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("category_specific_fields", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["checkout_url"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("checkout_url", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["color"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("color", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["commerce_tax_category"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("commerce_tax_category", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["condition"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("condition", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["currency"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("currency", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["custom_data"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("custom_data", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["custom_label_0"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("custom_label_0", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["custom_label_1"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("custom_label_1", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["custom_label_2"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("custom_label_2", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["custom_label_3"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("custom_label_3", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["custom_label_4"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("custom_label_4", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["custom_number_0"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("custom_number_0", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["custom_number_1"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("custom_number_1", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["custom_number_2"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("custom_number_2", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["custom_number_3"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("custom_number_3", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["custom_number_4"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("custom_number_4", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["description"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("description", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["expiration_date"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("expiration_date", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["fb_product_category"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("fb_product_category", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["gender"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("gender", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["gtin"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("gtin", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["image_url"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("image_url", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["importer_address"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("importer_address", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["importer_name"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("importer_name", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["inventory"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("inventory", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["ios_app_name"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("ios_app_name", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["ios_app_store_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("ios_app_store_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["ios_url"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("ios_url", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["ipad_app_name"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("ipad_app_name", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["ipad_app_store_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("ipad_app_store_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["ipad_url"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("ipad_url", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["iphone_app_name"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("iphone_app_name", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["iphone_app_store_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("iphone_app_store_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["iphone_url"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("iphone_url", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["launch_date"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("launch_date", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["manufacturer_info"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("manufacturer_info", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["manufacturer_part_number"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("manufacturer_part_number", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["marked_for_product_launch"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("marked_for_product_launch", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["material"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("material", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["mobile_link"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("mobile_link", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["name"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("name", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["ordering_index"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("ordering_index", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["origin_country"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("origin_country", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["pattern"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("pattern", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["price"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("price", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["product_priority_0"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("product_priority_0", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["product_priority_1"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("product_priority_1", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["product_priority_2"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("product_priority_2", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["product_priority_3"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("product_priority_3", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["product_priority_4"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("product_priority_4", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["product_type"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("product_type", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["quantity_to_sell_on_facebook"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("quantity_to_sell_on_facebook", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["retailer_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("retailer_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["retailer_product_group_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("retailer_product_group_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["return_policy_days"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("return_policy_days", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["sale_price"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("sale_price", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["sale_price_end_date"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("sale_price_end_date", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["sale_price_start_date"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("sale_price_start_date", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["short_description"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("short_description", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["size"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("size", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["start_date"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("start_date", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["url"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("url", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["visibility"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("visibility", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["wa_compliance_category"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("wa_compliance_category", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["windows_phone_app_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("windows_phone_app_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["windows_phone_app_name"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("windows_phone_app_name", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["windows_phone_url"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("windows_phone_url", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -4171,11 +2997,11 @@ func (c *ProductCatalogClient) Productcatalog_post_products(args map[string]inte
 // productcatalog_post_update_generated_image_config POST update_generated_image_config for ProductCatalog
 func (c *ProductCatalogClient) Productcatalog_post_update_generated_image_config(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	data, ok := args["data"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: data")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = data // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -4185,10 +3011,10 @@ func (c *ProductCatalogClient) Productcatalog_post_update_generated_image_config
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["data"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("data", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -4234,16 +3060,10 @@ func (c *ProductCatalogClient) Productcatalog_get_vehicle_offers(args map[string
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["bulk_pagination"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("bulk_pagination", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["filter"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("filter", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -4313,16 +3133,10 @@ func (c *ProductCatalogClient) Productcatalog_get_vehicles(args map[string]inter
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["bulk_pagination"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("bulk_pagination", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["filter"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("filter", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -4383,86 +3197,11 @@ func (c *ProductCatalogClient) Productcatalog_get_vehicles(args map[string]inter
 // productcatalog_post_vehicles POST vehicles for ProductCatalog
 func (c *ProductCatalogClient) Productcatalog_post_vehicles(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	address, ok := args["address"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: address")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = address // Suppress unused variable warning
-	body_style, ok := args["body_style"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: body_style")
-	}
-	_ = body_style // Suppress unused variable warning
-	currency, ok := args["currency"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: currency")
-	}
-	_ = currency // Suppress unused variable warning
-	description, ok := args["description"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: description")
-	}
-	_ = description // Suppress unused variable warning
-	exterior_color, ok := args["exterior_color"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: exterior_color")
-	}
-	_ = exterior_color // Suppress unused variable warning
-	images, ok := args["images"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: images")
-	}
-	_ = images // Suppress unused variable warning
-	make, ok := args["make"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: make")
-	}
-	_ = make // Suppress unused variable warning
-	mileage, ok := args["mileage"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: mileage")
-	}
-	_ = mileage // Suppress unused variable warning
-	model, ok := args["model"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: model")
-	}
-	_ = model // Suppress unused variable warning
-	price, ok := args["price"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: price")
-	}
-	_ = price // Suppress unused variable warning
-	state_of_vehicle, ok := args["state_of_vehicle"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: state_of_vehicle")
-	}
-	_ = state_of_vehicle // Suppress unused variable warning
-	title, ok := args["title"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: title")
-	}
-	_ = title // Suppress unused variable warning
-	url_, ok := args["url"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: url")
-	}
-	_ = url_ // Suppress unused variable warning
-	vehicle_id, ok := args["vehicle_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: vehicle_id")
-	}
-	_ = vehicle_id // Suppress unused variable warning
-	vin, ok := args["vin"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: vin")
-	}
-	_ = vin // Suppress unused variable warning
-	year, ok := args["year"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: year")
-	}
-	_ = year // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -4472,184 +3211,10 @@ func (c *ProductCatalogClient) Productcatalog_post_vehicles(args map[string]inte
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["address"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("address", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["applinks"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("applinks", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["availability"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("availability", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["body_style"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("body_style", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["condition"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("condition", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["currency"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("currency", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["date_first_on_lot"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("date_first_on_lot", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["dealer_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("dealer_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["dealer_name"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("dealer_name", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["dealer_phone"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("dealer_phone", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["description"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("description", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["drivetrain"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("drivetrain", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["exterior_color"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("exterior_color", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["fb_page_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("fb_page_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["fuel_type"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("fuel_type", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["images"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("images", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["interior_color"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("interior_color", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["make"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("make", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["mileage"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("mileage", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["model"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("model", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["price"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("price", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["state_of_vehicle"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("state_of_vehicle", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["title"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("title", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["transmission"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("transmission", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["trim"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("trim", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["url"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("url", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["vehicle_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("vehicle_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["vehicle_type"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("vehicle_type", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["vin"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("vin", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["year"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("year", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -4753,21 +3318,11 @@ func (c *ProductCatalogClient) Productcatalog_get_version_configs(args map[strin
 // productcatalog_post_version_items_batch POST version_items_batch for ProductCatalog
 func (c *ProductCatalogClient) Productcatalog_post_version_items_batch(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	item_type, ok := args["item_type"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: item_type")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = item_type // Suppress unused variable warning
-	item_version, ok := args["item_version"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: item_version")
-	}
-	_ = item_version // Suppress unused variable warning
-	requests, ok := args["requests"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: requests")
-	}
-	_ = requests // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -4777,34 +3332,10 @@ func (c *ProductCatalogClient) Productcatalog_post_version_items_batch(args map[
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["allow_upsert"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("allow_upsert", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["item_type"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("item_type", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["item_version"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("item_version", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["requests"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("requests", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["version"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("version", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -4850,10 +3381,10 @@ func (c *ProductCatalogClient) Productcatalog_delete_(args map[string]interface{
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["allow_delete_catalog_with_live_product_set"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("allow_delete_catalog_with_live_product_set", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -4899,10 +3430,10 @@ func (c *ProductCatalogClient) Productcatalog_get_(args map[string]interface{}) 
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["segment_use_cases"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("segment_use_cases", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -4972,58 +3503,10 @@ func (c *ProductCatalogClient) Productcatalog_post_(args map[string]interface{})
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["additional_vertical_option"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("additional_vertical_option", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["da_display_settings"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("da_display_settings", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["default_image_url"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("default_image_url", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["destination_catalog_settings"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("destination_catalog_settings", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["fallback_image_url"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("fallback_image_url", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["flight_catalog_settings"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("flight_catalog_settings", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["name"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("name", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["partner_integration"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("partner_integration", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["store_catalog_settings"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("store_catalog_settings", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 

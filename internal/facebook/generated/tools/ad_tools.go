@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -24,8 +25,8 @@ func GetAdTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Description("Facebook Ad ID"),
 		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for AdCreative objects. Available fields: account_id, actor_id, ad_disclaimer_spec, adlabels, applink_treatment, asset_feed_spec, authorization_category, auto_update, body, branded_content, branded_content_sponsor_page_id, bundle_folder_id, call_to_action, call_to_action_type, categorization_criteria (and 55 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for AdCreative objects. Available fields: account_id, actor_id, ad_disclaimer_spec, adlabels, applink_treatment, asset_feed_spec, authorization_category, auto_update, body, branded_content, branded_content_sponsor_page_id, bundle_folder_id, call_to_action, call_to_action_type, categorization_criteria (and 55 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -40,36 +41,54 @@ func GetAdTools() []mcp.Tool {
 	tools = append(tools, ad_get_adcreativesTool)
 
 	// ad_post_adlabels tool
+	// Params object accepts: adlabels (list<Object>), execution_options (list<adgroupadlabels_execution_options_enum_param>)
 	ad_post_adlabelsTool := mcp.NewTool("ad_post_adlabels",
 		mcp.WithDescription("POST adlabels for Ad"),
 		mcp.WithString("ad_id",
 			mcp.Required(),
 			mcp.Description("Facebook Ad ID"),
 		),
-		mcp.WithString("adlabels",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("adlabels parameter for adlabels"),
-		),
-		mcp.WithString("execution_options",
-			mcp.Description("execution_options parameter for adlabels"),
-			mcp.Enum("validate_only"),
+			mcp.Properties(map[string]any{
+				"adlabels": map[string]any{
+					"type":        "array",
+					"description": "adlabels parameter",
+					"required":    true,
+					"items":       map[string]any{"type": "object"},
+				},
+				"execution_options": map[string]any{
+					"type":        "array",
+					"description": "execution_options parameter",
+					"enum":        []string{"validate_only"},
+					"items":       map[string]any{"type": "string"},
+				},
+			}),
+			mcp.Description("Parameters object containing: adlabels (array<object>) [required], execution_options (array<enum>) [validate_only]"),
 		),
 	)
 	tools = append(tools, ad_post_adlabelsTool)
 
 	// ad_get_adrules_governed tool
 	// Available fields for AdRule: account_id, created_by, created_time, disable_error_code, evaluation_spec, execution_spec, id, name, schedule_spec, status, updated_time
+	// Params object accepts: pass_evaluation (bool)
 	ad_get_adrules_governedTool := mcp.NewTool("ad_get_adrules_governed",
 		mcp.WithDescription("GET adrules_governed for Ad"),
 		mcp.WithString("ad_id",
 			mcp.Required(),
 			mcp.Description("Facebook Ad ID"),
 		),
-		mcp.WithBoolean("pass_evaluation",
-			mcp.Description("pass_evaluation parameter for adrules_governed"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"pass_evaluation": map[string]any{
+					"type":        "boolean",
+					"description": "pass_evaluation parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: pass_evaluation (boolean)"),
 		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for AdRule objects. Available fields: account_id, created_by, created_time, disable_error_code, evaluation_spec, execution_spec, id, name, schedule_spec, status, updated_time"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for AdRule objects. Available fields: account_id, created_by, created_time, disable_error_code, evaluation_spec, execution_spec, id, name, schedule_spec, status, updated_time"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -85,27 +104,38 @@ func GetAdTools() []mcp.Tool {
 
 	// ad_get_copies tool
 	// Available fields for Ad: account_id, ad_active_time, ad_review_feedback, ad_schedule_end_time, ad_schedule_start_time, adlabels, adset, adset_id, bid_amount, bid_info, bid_type, campaign, campaign_id, configured_status, conversion_domain, conversion_specs, created_time, creative, creative_asset_groups_spec, demolink_hash, display_sequence, effective_status, engagement_audience, failed_delivery_checks, id, issues_info, last_updated_by_app_id, name, placement, preview_shareable_link, priority, recommendations, source_ad, source_ad_id, status, targeting, tracking_and_conversion_with_defaults, tracking_specs, updated_time
+	// Params object accepts: date_preset (adgroupcopies_date_preset_enum_param), effective_status (list<string>), time_range (map), updated_since (int)
 	ad_get_copiesTool := mcp.NewTool("ad_get_copies",
 		mcp.WithDescription("GET copies for Ad"),
 		mcp.WithString("ad_id",
 			mcp.Required(),
 			mcp.Description("Facebook Ad ID"),
 		),
-		mcp.WithString("date_preset",
-			mcp.Description("date_preset parameter for copies"),
-			mcp.Enum("data_maximum", "last_14d", "last_28d", "last_30d", "last_3d", "last_7d", "last_90d", "last_month", "last_quarter", "last_week_mon_sun", "last_week_sun_sat", "last_year", "maximum", "this_month", "this_quarter", "this_week_mon_today", "this_week_sun_today", "this_year", "today", "yesterday"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"date_preset": map[string]any{
+					"type":        "string",
+					"description": "date_preset parameter",
+					"enum":        []string{"data_maximum", "last_14d", "last_28d", "last_30d", "last_3d", "last_7d", "last_90d", "last_month", "last_quarter", "last_week_mon_sun", "last_week_sun_sat", "last_year", "maximum", "this_month", "this_quarter", "this_week_mon_today", "this_week_sun_today", "this_year", "today", "yesterday"},
+				},
+				"effective_status": map[string]any{
+					"type":        "array",
+					"description": "effective_status parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+				"time_range": map[string]any{
+					"type":        "object",
+					"description": "time_range parameter",
+				},
+				"updated_since": map[string]any{
+					"type":        "integer",
+					"description": "updated_since parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: date_preset (enum) [data_maximum, last_14d, last_28d, last_30d, last_3d, ...], effective_status (array<string>), time_range (object), updated_since (integer)"),
 		),
-		mcp.WithString("effective_status",
-			mcp.Description("effective_status parameter for copies"),
-		),
-		mcp.WithString("time_range",
-			mcp.Description("time_range parameter for copies"),
-		),
-		mcp.WithNumber("updated_since",
-			mcp.Description("updated_since parameter for copies"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for Ad objects. Available fields: account_id, ad_active_time, ad_review_feedback, ad_schedule_end_time, ad_schedule_start_time, adlabels, adset, adset_id, bid_amount, bid_info, bid_type, campaign, campaign_id, configured_status, conversion_domain (and 24 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for Ad objects. Available fields: account_id, ad_active_time, ad_review_feedback, ad_schedule_end_time, ad_schedule_start_time, adlabels, adset, adset_id, bid_amount, bid_info, bid_type, campaign, campaign_id, configured_status, conversion_domain (and 24 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -120,111 +150,159 @@ func GetAdTools() []mcp.Tool {
 	tools = append(tools, ad_get_copiesTool)
 
 	// ad_post_copies tool
+	// Params object accepts: adset_id (string), creative_parameters (AdCreative), rename_options (Object), status_option (adgroupcopies_status_option_enum_param)
 	ad_post_copiesTool := mcp.NewTool("ad_post_copies",
 		mcp.WithDescription("POST copies for Ad"),
 		mcp.WithString("ad_id",
 			mcp.Required(),
 			mcp.Description("Facebook Ad ID"),
 		),
-		mcp.WithString("adset_id",
-			mcp.Description("adset_id parameter for copies"),
-		),
-		mcp.WithString("creative_parameters",
-			mcp.Description("creative_parameters parameter for copies"),
-		),
-		mcp.WithString("rename_options",
-			mcp.Description("rename_options parameter for copies"),
-		),
-		mcp.WithString("status_option",
-			mcp.Description("status_option parameter for copies"),
-			mcp.Enum("ACTIVE", "INHERITED_FROM_SOURCE", "PAUSED"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"adset_id": map[string]any{
+					"type":        "string",
+					"description": "adset_id parameter",
+				},
+				"creative_parameters": map[string]any{
+					"type":        "string",
+					"description": "creative_parameters parameter",
+				},
+				"rename_options": map[string]any{
+					"type":        "object",
+					"description": "rename_options parameter",
+				},
+				"status_option": map[string]any{
+					"type":        "string",
+					"description": "status_option parameter",
+					"enum":        []string{"ACTIVE", "INHERITED_FROM_SOURCE", "PAUSED"},
+				},
+			}),
+			mcp.Description("Parameters object containing: adset_id (string), creative_parameters (AdCreative), rename_options (object), status_option (enum) [ACTIVE, INHERITED_FROM_SOURCE, PAUSED]"),
 		),
 	)
 	tools = append(tools, ad_post_copiesTool)
 
 	// ad_get_insights tool
 	// Available fields for AdsInsights: account_currency, account_id, account_name, action_values, actions, ad_click_actions, ad_id, ad_impression_actions, ad_name, adset_end, adset_id, adset_name, adset_start, age_targeting, attribution_setting, auction_bid, auction_competitiveness, auction_max_competitor_bid, average_purchases_conversion_value, buying_type, campaign_id, campaign_name, canvas_avg_view_percent, canvas_avg_view_time, catalog_segment_actions, catalog_segment_value, catalog_segment_value_mobile_purchase_roas, catalog_segment_value_omni_purchase_roas, catalog_segment_value_website_purchase_roas, clicks, conversion_lead_rate, conversion_leads, conversion_rate_ranking, conversion_values, conversions, converted_product_app_custom_event_fb_mobile_purchase, converted_product_app_custom_event_fb_mobile_purchase_value, converted_product_offline_purchase, converted_product_offline_purchase_value, converted_product_omni_purchase, converted_product_omni_purchase_values, converted_product_quantity, converted_product_value, converted_product_website_pixel_purchase, converted_product_website_pixel_purchase_value, converted_promoted_product_app_custom_event_fb_mobile_purchase, converted_promoted_product_app_custom_event_fb_mobile_purchase_value, converted_promoted_product_offline_purchase, converted_promoted_product_offline_purchase_value, converted_promoted_product_omni_purchase, converted_promoted_product_omni_purchase_values, converted_promoted_product_quantity, converted_promoted_product_value, converted_promoted_product_website_pixel_purchase, converted_promoted_product_website_pixel_purchase_value, cost_per_15_sec_video_view, cost_per_2_sec_continuous_video_view, cost_per_action_type, cost_per_ad_click, cost_per_conversion, cost_per_conversion_lead, cost_per_dda_countby_convs, cost_per_estimated_ad_recallers, cost_per_inline_link_click, cost_per_inline_post_engagement, cost_per_objective_result, cost_per_one_thousand_ad_impression, cost_per_outbound_click, cost_per_result, cost_per_thruplay, cost_per_unique_action_type, cost_per_unique_click, cost_per_unique_conversion, cost_per_unique_inline_link_click, cost_per_unique_outbound_click, cpc, cpm, cpp, created_time, creative_media_type, ctr, date_start, date_stop, dda_countby_convs, dda_results, engagement_rate_ranking, estimated_ad_recall_rate, estimated_ad_recall_rate_lower_bound, estimated_ad_recall_rate_upper_bound, estimated_ad_recallers, estimated_ad_recallers_lower_bound, estimated_ad_recallers_upper_bound, frequency, full_view_impressions, full_view_reach, gender_targeting, impressions, inline_link_click_ctr, inline_link_clicks, inline_post_engagement, instagram_upcoming_event_reminders_set, instant_experience_clicks_to_open, instant_experience_clicks_to_start, instant_experience_outbound_clicks, interactive_component_tap, labels, landing_page_view_actions_per_link_click, landing_page_view_per_link_click, landing_page_view_per_purchase_rate, location, marketing_messages_click_rate_benchmark, marketing_messages_cost_per_delivered, marketing_messages_cost_per_link_btn_click, marketing_messages_delivered, marketing_messages_delivery_rate, marketing_messages_link_btn_click, marketing_messages_link_btn_click_rate, marketing_messages_media_view_rate, marketing_messages_phone_call_btn_click_rate, marketing_messages_quick_reply_btn_click, marketing_messages_quick_reply_btn_click_rate, marketing_messages_read, marketing_messages_read_rate, marketing_messages_read_rate_benchmark, marketing_messages_sent, marketing_messages_spend, marketing_messages_spend_currency, marketing_messages_website_add_to_cart, marketing_messages_website_initiate_checkout, marketing_messages_website_purchase, marketing_messages_website_purchase_values, mobile_app_purchase_roas, objective, objective_result_rate, objective_results, onsite_conversion_messaging_detected_purchase_deduped, optimization_goal, outbound_clicks, outbound_clicks_ctr, place_page_name, product_brand, product_category, product_content_id, product_custom_label_0, product_custom_label_1, product_custom_label_2, product_custom_label_3, product_custom_label_4, product_group_content_id, product_group_retailer_id, product_name, product_retailer_id, purchase_per_landing_page_view, purchase_roas, purchases_per_link_click, qualifying_question_qualify_answer_rate, quality_ranking, reach, result_rate, result_values_performance_indicator, results, shops_assisted_purchases, social_spend, spend, total_postbacks, total_postbacks_detailed, total_postbacks_detailed_v4, unique_actions, unique_clicks, unique_conversions, unique_ctr, unique_inline_link_click_ctr, unique_inline_link_clicks, unique_link_clicks_ctr, unique_outbound_clicks, unique_outbound_clicks_ctr, unique_video_continuous_2_sec_watched_actions, unique_video_view_15_sec, updated_time, video_15_sec_watched_actions, video_30_sec_watched_actions, video_avg_time_watched_actions, video_continuous_2_sec_watched_actions, video_p100_watched_actions, video_p25_watched_actions, video_p50_watched_actions, video_p75_watched_actions, video_p95_watched_actions, video_play_actions, video_play_curve_actions, video_play_retention_0_to_15s_actions, video_play_retention_20_to_60s_actions, video_play_retention_graph_actions, video_thruplay_watched_actions, video_time_watched_actions, video_view_per_impression, website_ctr, website_purchase_roas, wish_bid
+	// Params object accepts: action_attribution_windows (list<adgroupinsights_action_attribution_windows_enum_param>), action_breakdowns (list<adgroupinsights_action_breakdowns_enum_param>), action_report_time (adgroupinsights_action_report_time_enum_param), breakdowns (list<adgroupinsights_breakdowns_enum_param>), date_preset (adgroupinsights_date_preset_enum_param), default_summary (bool), export_columns (list<string>), export_format (string), export_name (string), fields (list<string>), filtering (list<Object>), level (adgroupinsights_level_enum_param), limit (int), product_id_limit (int), sort (list<string>), summary (list<string>), summary_action_breakdowns (list<adgroupinsights_summary_action_breakdowns_enum_param>), time_increment (string), time_range (map), time_ranges (list<map>), use_account_attribution_setting (bool), use_unified_attribution_setting (bool)
 	ad_get_insightsTool := mcp.NewTool("ad_get_insights",
 		mcp.WithDescription("GET insights for Ad"),
 		mcp.WithString("ad_id",
 			mcp.Required(),
 			mcp.Description("Facebook Ad ID"),
 		),
-		mcp.WithString("action_attribution_windows",
-			mcp.Description("action_attribution_windows parameter for insights"),
-			mcp.Enum("1d_click", "1d_ev", "1d_view", "28d_click", "28d_view", "28d_view_all_conversions", "28d_view_first_conversion", "7d_click", "7d_view", "7d_view_all_conversions", "7d_view_first_conversion", "dda", "default", "skan_click", "skan_click_second_postback", "skan_click_third_postback", "skan_view", "skan_view_second_postback", "skan_view_third_postback"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"action_attribution_windows": map[string]any{
+					"type":        "array",
+					"description": "action_attribution_windows parameter",
+					"enum":        []string{"1d_click", "1d_ev", "1d_view", "28d_click", "28d_view", "28d_view_all_conversions", "28d_view_first_conversion", "7d_click", "7d_view", "7d_view_all_conversions", "7d_view_first_conversion", "dda", "default", "skan_click", "skan_click_second_postback", "skan_click_third_postback", "skan_view", "skan_view_second_postback", "skan_view_third_postback"},
+					"items":       map[string]any{"type": "string"},
+				},
+				"action_breakdowns": map[string]any{
+					"type":        "array",
+					"description": "action_breakdowns parameter",
+					"enum":        []string{"action_canvas_component_name", "action_carousel_card_id", "action_carousel_card_name", "action_destination", "action_device", "action_reaction", "action_target_id", "action_type", "action_video_sound", "action_video_type", "conversion_destination", "matched_persona_id", "matched_persona_name", "signal_source_bucket", "standard_event_content_type"},
+					"items":       map[string]any{"type": "string"},
+				},
+				"action_report_time": map[string]any{
+					"type":        "string",
+					"description": "action_report_time parameter",
+					"enum":        []string{"conversion", "impression", "lifetime", "mixed"},
+				},
+				"breakdowns": map[string]any{
+					"type":        "array",
+					"description": "breakdowns parameter",
+					"enum":        []string{"ad_extension_domain", "ad_extension_url", "ad_format_asset", "age", "app_id", "body_asset", "breakdown_ad_objective", "breakdown_reporting_ad_id", "call_to_action_asset", "coarse_conversion_value", "comscore_market", "comscore_market_code", "conversion_destination", "country", "creative_relaxation_asset_type", "description_asset", "device_platform", "dma", "fidelity_type", "flexible_format_asset_type", "frequency_value", "gen_ai_asset_type", "gender", "hourly_stats_aggregated_by_advertiser_time_zone", "hourly_stats_aggregated_by_audience_time_zone", "hsid", "image_asset", "impression_device", "impression_view_time_advertiser_hour_v2", "is_auto_advance", "is_conversion_id_modeled", "is_rendered_as_delayed_skip_ad", "landing_destination", "link_url_asset", "marketing_messages_btn_name", "mdsa_landing_destination", "media_asset_url", "media_creator", "media_destination_url", "media_format", "media_origin_url", "media_text_content", "media_type", "mmm", "place_page_id", "platform_position", "postback_sequence_index", "product_id", "publisher_platform", "redownload", "region", "signal_source_bucket", "skan_campaign_id", "skan_conversion_id", "skan_version", "sot_attribution_model_type", "sot_attribution_window", "sot_channel", "sot_event_type", "sot_source", "standard_event_content_type", "title_asset", "user_persona_id", "user_persona_name", "video_asset"},
+					"items":       map[string]any{"type": "string"},
+				},
+				"date_preset": map[string]any{
+					"type":        "string",
+					"description": "date_preset parameter",
+					"enum":        []string{"data_maximum", "last_14d", "last_28d", "last_30d", "last_3d", "last_7d", "last_90d", "last_month", "last_quarter", "last_week_mon_sun", "last_week_sun_sat", "last_year", "maximum", "this_month", "this_quarter", "this_week_mon_today", "this_week_sun_today", "this_year", "today", "yesterday"},
+				},
+				"default_summary": map[string]any{
+					"type":        "boolean",
+					"description": "default_summary parameter",
+				},
+				"export_columns": map[string]any{
+					"type":        "array",
+					"description": "export_columns parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+				"export_format": map[string]any{
+					"type":        "string",
+					"description": "export_format parameter",
+				},
+				"export_name": map[string]any{
+					"type":        "string",
+					"description": "export_name parameter",
+				},
+				"fields": map[string]any{
+					"type":        "array",
+					"description": "fields parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+				"filtering": map[string]any{
+					"type":        "array",
+					"description": "filtering parameter",
+					"items":       map[string]any{"type": "object"},
+				},
+				"level": map[string]any{
+					"type":        "string",
+					"description": "level parameter",
+					"enum":        []string{"account", "ad", "adset", "campaign"},
+				},
+				"limit": map[string]any{
+					"type":        "integer",
+					"description": "limit parameter",
+				},
+				"product_id_limit": map[string]any{
+					"type":        "integer",
+					"description": "product_id_limit parameter",
+				},
+				"sort": map[string]any{
+					"type":        "array",
+					"description": "sort parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+				"summary": map[string]any{
+					"type":        "array",
+					"description": "summary parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+				"summary_action_breakdowns": map[string]any{
+					"type":        "array",
+					"description": "summary_action_breakdowns parameter",
+					"enum":        []string{"action_canvas_component_name", "action_carousel_card_id", "action_carousel_card_name", "action_destination", "action_device", "action_reaction", "action_target_id", "action_type", "action_video_sound", "action_video_type", "conversion_destination", "matched_persona_id", "matched_persona_name", "signal_source_bucket", "standard_event_content_type"},
+					"items":       map[string]any{"type": "string"},
+				},
+				"time_increment": map[string]any{
+					"type":        "string",
+					"description": "time_increment parameter",
+				},
+				"time_range": map[string]any{
+					"type":        "object",
+					"description": "time_range parameter",
+				},
+				"time_ranges": map[string]any{
+					"type":        "array",
+					"description": "time_ranges parameter",
+					"items":       map[string]any{"type": "object"},
+				},
+				"use_account_attribution_setting": map[string]any{
+					"type":        "boolean",
+					"description": "use_account_attribution_setting parameter",
+				},
+				"use_unified_attribution_setting": map[string]any{
+					"type":        "boolean",
+					"description": "use_unified_attribution_setting parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: action_attribution_windows (array<enum>) [1d_click, 1d_ev, 1d_view, 28d_click, 28d_view, ...], action_breakdowns (array<enum>) [action_canvas_component_name, action_carousel_card_id, action_carousel_card_name, action_destination, action_device, ...], action_report_time (enum) [conversion, impression, lifetime, mixed], breakdowns (array<enum>) [ad_extension_domain, ad_extension_url, ad_format_asset, age, app_id, ...], date_preset (enum) [data_maximum, last_14d, last_28d, last_30d, last_3d, ...], default_summary (boolean), export_columns (array<string>), export_format (string), export_name (string), fields (array<string>), filtering (array<object>), level (enum) [account, ad, adset, campaign], limit (integer), product_id_limit (integer), sort (array<string>), summary (array<string>), summary_action_breakdowns (array<enum>) [action_canvas_component_name, action_carousel_card_id, action_carousel_card_name, action_destination, action_device, ...], time_increment (string), time_range (object), time_ranges (array<object>), use_account_attribution_setting (boolean), use_unified_attribution_setting (boolean)"),
 		),
-		mcp.WithString("action_breakdowns",
-			mcp.Description("action_breakdowns parameter for insights"),
-			mcp.Enum("action_canvas_component_name", "action_carousel_card_id", "action_carousel_card_name", "action_destination", "action_device", "action_reaction", "action_target_id", "action_type", "action_video_sound", "action_video_type", "conversion_destination", "matched_persona_id", "matched_persona_name", "signal_source_bucket", "standard_event_content_type"),
-		),
-		mcp.WithString("action_report_time",
-			mcp.Description("action_report_time parameter for insights"),
-			mcp.Enum("conversion", "impression", "lifetime", "mixed"),
-		),
-		mcp.WithString("breakdowns",
-			mcp.Description("breakdowns parameter for insights"),
-			mcp.Enum("ad_extension_domain", "ad_extension_url", "ad_format_asset", "age", "app_id", "body_asset", "breakdown_ad_objective", "breakdown_reporting_ad_id", "call_to_action_asset", "coarse_conversion_value", "comscore_market", "comscore_market_code", "conversion_destination", "country", "creative_relaxation_asset_type", "description_asset", "device_platform", "dma", "fidelity_type", "flexible_format_asset_type", "frequency_value", "gen_ai_asset_type", "gender", "hourly_stats_aggregated_by_advertiser_time_zone", "hourly_stats_aggregated_by_audience_time_zone", "hsid", "image_asset", "impression_device", "impression_view_time_advertiser_hour_v2", "is_auto_advance", "is_conversion_id_modeled", "is_rendered_as_delayed_skip_ad", "landing_destination", "link_url_asset", "marketing_messages_btn_name", "mdsa_landing_destination", "media_asset_url", "media_creator", "media_destination_url", "media_format", "media_origin_url", "media_text_content", "media_type", "mmm", "place_page_id", "platform_position", "postback_sequence_index", "product_id", "publisher_platform", "redownload", "region", "signal_source_bucket", "skan_campaign_id", "skan_conversion_id", "skan_version", "sot_attribution_model_type", "sot_attribution_window", "sot_channel", "sot_event_type", "sot_source", "standard_event_content_type", "title_asset", "user_persona_id", "user_persona_name", "video_asset"),
-		),
-		mcp.WithString("date_preset",
-			mcp.Description("date_preset parameter for insights"),
-			mcp.Enum("data_maximum", "last_14d", "last_28d", "last_30d", "last_3d", "last_7d", "last_90d", "last_month", "last_quarter", "last_week_mon_sun", "last_week_sun_sat", "last_year", "maximum", "this_month", "this_quarter", "this_week_mon_today", "this_week_sun_today", "this_year", "today", "yesterday"),
-		),
-		mcp.WithBoolean("default_summary",
-			mcp.Description("default_summary parameter for insights"),
-		),
-		mcp.WithString("export_columns",
-			mcp.Description("export_columns parameter for insights"),
-		),
-		mcp.WithString("export_format",
-			mcp.Description("export_format parameter for insights"),
-		),
-		mcp.WithString("export_name",
-			mcp.Description("export_name parameter for insights"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("fields parameter for insights"),
-		),
-		mcp.WithString("filtering",
-			mcp.Description("filtering parameter for insights"),
-		),
-		mcp.WithString("level",
-			mcp.Description("level parameter for insights"),
-			mcp.Enum("account", "ad", "adset", "campaign"),
-		),
-		mcp.WithNumber("limit",
-			mcp.Description("limit parameter for insights"),
-		),
-		mcp.WithNumber("product_id_limit",
-			mcp.Description("product_id_limit parameter for insights"),
-		),
-		mcp.WithString("sort",
-			mcp.Description("sort parameter for insights"),
-		),
-		mcp.WithString("summary",
-			mcp.Description("summary parameter for insights"),
-		),
-		mcp.WithString("summary_action_breakdowns",
-			mcp.Description("summary_action_breakdowns parameter for insights"),
-			mcp.Enum("action_canvas_component_name", "action_carousel_card_id", "action_carousel_card_name", "action_destination", "action_device", "action_reaction", "action_target_id", "action_type", "action_video_sound", "action_video_type", "conversion_destination", "matched_persona_id", "matched_persona_name", "signal_source_bucket", "standard_event_content_type"),
-		),
-		mcp.WithString("time_increment",
-			mcp.Description("time_increment parameter for insights"),
-		),
-		mcp.WithString("time_range",
-			mcp.Description("time_range parameter for insights"),
-		),
-		mcp.WithString("time_ranges",
-			mcp.Description("time_ranges parameter for insights"),
-		),
-		mcp.WithBoolean("use_account_attribution_setting",
-			mcp.Description("use_account_attribution_setting parameter for insights"),
-		),
-		mcp.WithBoolean("use_unified_attribution_setting",
-			mcp.Description("use_unified_attribution_setting parameter for insights"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for AdsInsights objects. Available fields: account_currency, account_id, account_name, action_values, actions, ad_click_actions, ad_id, ad_impression_actions, ad_name, adset_end, adset_id, adset_name, adset_start, age_targeting, attribution_setting (and 184 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for AdsInsights objects. Available fields: account_currency, account_id, account_name, action_values, actions, ad_click_actions, ad_id, ad_impression_actions, ad_name, adset_end, adset_id, adset_name, adset_start, age_targeting, attribution_setting (and 184 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -239,84 +317,122 @@ func GetAdTools() []mcp.Tool {
 	tools = append(tools, ad_get_insightsTool)
 
 	// ad_post_insights tool
+	// Params object accepts: action_attribution_windows (list<adgroupinsights_action_attribution_windows_enum_param>), action_breakdowns (list<adgroupinsights_action_breakdowns_enum_param>), action_report_time (adgroupinsights_action_report_time_enum_param), breakdowns (list<adgroupinsights_breakdowns_enum_param>), date_preset (adgroupinsights_date_preset_enum_param), default_summary (bool), export_columns (list<string>), export_format (string), export_name (string), fields (list<string>), filtering (list<Object>), level (adgroupinsights_level_enum_param), limit (int), product_id_limit (int), sort (list<string>), summary (list<string>), summary_action_breakdowns (list<adgroupinsights_summary_action_breakdowns_enum_param>), time_increment (string), time_range (map), time_ranges (list<map>), use_account_attribution_setting (bool), use_unified_attribution_setting (bool)
 	ad_post_insightsTool := mcp.NewTool("ad_post_insights",
 		mcp.WithDescription("POST insights for Ad"),
 		mcp.WithString("ad_id",
 			mcp.Required(),
 			mcp.Description("Facebook Ad ID"),
 		),
-		mcp.WithString("action_attribution_windows",
-			mcp.Description("action_attribution_windows parameter for insights"),
-			mcp.Enum("1d_click", "1d_ev", "1d_view", "28d_click", "28d_view", "28d_view_all_conversions", "28d_view_first_conversion", "7d_click", "7d_view", "7d_view_all_conversions", "7d_view_first_conversion", "dda", "default", "skan_click", "skan_click_second_postback", "skan_click_third_postback", "skan_view", "skan_view_second_postback", "skan_view_third_postback"),
-		),
-		mcp.WithString("action_breakdowns",
-			mcp.Description("action_breakdowns parameter for insights"),
-			mcp.Enum("action_canvas_component_name", "action_carousel_card_id", "action_carousel_card_name", "action_destination", "action_device", "action_reaction", "action_target_id", "action_type", "action_video_sound", "action_video_type", "conversion_destination", "matched_persona_id", "matched_persona_name", "signal_source_bucket", "standard_event_content_type"),
-		),
-		mcp.WithString("action_report_time",
-			mcp.Description("action_report_time parameter for insights"),
-			mcp.Enum("conversion", "impression", "lifetime", "mixed"),
-		),
-		mcp.WithString("breakdowns",
-			mcp.Description("breakdowns parameter for insights"),
-			mcp.Enum("ad_extension_domain", "ad_extension_url", "ad_format_asset", "age", "app_id", "body_asset", "breakdown_ad_objective", "breakdown_reporting_ad_id", "call_to_action_asset", "coarse_conversion_value", "comscore_market", "comscore_market_code", "conversion_destination", "country", "creative_relaxation_asset_type", "description_asset", "device_platform", "dma", "fidelity_type", "flexible_format_asset_type", "frequency_value", "gen_ai_asset_type", "gender", "hourly_stats_aggregated_by_advertiser_time_zone", "hourly_stats_aggregated_by_audience_time_zone", "hsid", "image_asset", "impression_device", "impression_view_time_advertiser_hour_v2", "is_auto_advance", "is_conversion_id_modeled", "is_rendered_as_delayed_skip_ad", "landing_destination", "link_url_asset", "marketing_messages_btn_name", "mdsa_landing_destination", "media_asset_url", "media_creator", "media_destination_url", "media_format", "media_origin_url", "media_text_content", "media_type", "mmm", "place_page_id", "platform_position", "postback_sequence_index", "product_id", "publisher_platform", "redownload", "region", "signal_source_bucket", "skan_campaign_id", "skan_conversion_id", "skan_version", "sot_attribution_model_type", "sot_attribution_window", "sot_channel", "sot_event_type", "sot_source", "standard_event_content_type", "title_asset", "user_persona_id", "user_persona_name", "video_asset"),
-		),
-		mcp.WithString("date_preset",
-			mcp.Description("date_preset parameter for insights"),
-			mcp.Enum("data_maximum", "last_14d", "last_28d", "last_30d", "last_3d", "last_7d", "last_90d", "last_month", "last_quarter", "last_week_mon_sun", "last_week_sun_sat", "last_year", "maximum", "this_month", "this_quarter", "this_week_mon_today", "this_week_sun_today", "this_year", "today", "yesterday"),
-		),
-		mcp.WithBoolean("default_summary",
-			mcp.Description("default_summary parameter for insights"),
-		),
-		mcp.WithString("export_columns",
-			mcp.Description("export_columns parameter for insights"),
-		),
-		mcp.WithString("export_format",
-			mcp.Description("export_format parameter for insights"),
-		),
-		mcp.WithString("export_name",
-			mcp.Description("export_name parameter for insights"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("fields parameter for insights"),
-		),
-		mcp.WithString("filtering",
-			mcp.Description("filtering parameter for insights"),
-		),
-		mcp.WithString("level",
-			mcp.Description("level parameter for insights"),
-			mcp.Enum("account", "ad", "adset", "campaign"),
-		),
-		mcp.WithNumber("limit",
-			mcp.Description("limit parameter for insights"),
-		),
-		mcp.WithNumber("product_id_limit",
-			mcp.Description("product_id_limit parameter for insights"),
-		),
-		mcp.WithString("sort",
-			mcp.Description("sort parameter for insights"),
-		),
-		mcp.WithString("summary",
-			mcp.Description("summary parameter for insights"),
-		),
-		mcp.WithString("summary_action_breakdowns",
-			mcp.Description("summary_action_breakdowns parameter for insights"),
-			mcp.Enum("action_canvas_component_name", "action_carousel_card_id", "action_carousel_card_name", "action_destination", "action_device", "action_reaction", "action_target_id", "action_type", "action_video_sound", "action_video_type", "conversion_destination", "matched_persona_id", "matched_persona_name", "signal_source_bucket", "standard_event_content_type"),
-		),
-		mcp.WithString("time_increment",
-			mcp.Description("time_increment parameter for insights"),
-		),
-		mcp.WithString("time_range",
-			mcp.Description("time_range parameter for insights"),
-		),
-		mcp.WithString("time_ranges",
-			mcp.Description("time_ranges parameter for insights"),
-		),
-		mcp.WithBoolean("use_account_attribution_setting",
-			mcp.Description("use_account_attribution_setting parameter for insights"),
-		),
-		mcp.WithBoolean("use_unified_attribution_setting",
-			mcp.Description("use_unified_attribution_setting parameter for insights"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"action_attribution_windows": map[string]any{
+					"type":        "array",
+					"description": "action_attribution_windows parameter",
+					"enum":        []string{"1d_click", "1d_ev", "1d_view", "28d_click", "28d_view", "28d_view_all_conversions", "28d_view_first_conversion", "7d_click", "7d_view", "7d_view_all_conversions", "7d_view_first_conversion", "dda", "default", "skan_click", "skan_click_second_postback", "skan_click_third_postback", "skan_view", "skan_view_second_postback", "skan_view_third_postback"},
+					"items":       map[string]any{"type": "string"},
+				},
+				"action_breakdowns": map[string]any{
+					"type":        "array",
+					"description": "action_breakdowns parameter",
+					"enum":        []string{"action_canvas_component_name", "action_carousel_card_id", "action_carousel_card_name", "action_destination", "action_device", "action_reaction", "action_target_id", "action_type", "action_video_sound", "action_video_type", "conversion_destination", "matched_persona_id", "matched_persona_name", "signal_source_bucket", "standard_event_content_type"},
+					"items":       map[string]any{"type": "string"},
+				},
+				"action_report_time": map[string]any{
+					"type":        "string",
+					"description": "action_report_time parameter",
+					"enum":        []string{"conversion", "impression", "lifetime", "mixed"},
+				},
+				"breakdowns": map[string]any{
+					"type":        "array",
+					"description": "breakdowns parameter",
+					"enum":        []string{"ad_extension_domain", "ad_extension_url", "ad_format_asset", "age", "app_id", "body_asset", "breakdown_ad_objective", "breakdown_reporting_ad_id", "call_to_action_asset", "coarse_conversion_value", "comscore_market", "comscore_market_code", "conversion_destination", "country", "creative_relaxation_asset_type", "description_asset", "device_platform", "dma", "fidelity_type", "flexible_format_asset_type", "frequency_value", "gen_ai_asset_type", "gender", "hourly_stats_aggregated_by_advertiser_time_zone", "hourly_stats_aggregated_by_audience_time_zone", "hsid", "image_asset", "impression_device", "impression_view_time_advertiser_hour_v2", "is_auto_advance", "is_conversion_id_modeled", "is_rendered_as_delayed_skip_ad", "landing_destination", "link_url_asset", "marketing_messages_btn_name", "mdsa_landing_destination", "media_asset_url", "media_creator", "media_destination_url", "media_format", "media_origin_url", "media_text_content", "media_type", "mmm", "place_page_id", "platform_position", "postback_sequence_index", "product_id", "publisher_platform", "redownload", "region", "signal_source_bucket", "skan_campaign_id", "skan_conversion_id", "skan_version", "sot_attribution_model_type", "sot_attribution_window", "sot_channel", "sot_event_type", "sot_source", "standard_event_content_type", "title_asset", "user_persona_id", "user_persona_name", "video_asset"},
+					"items":       map[string]any{"type": "string"},
+				},
+				"date_preset": map[string]any{
+					"type":        "string",
+					"description": "date_preset parameter",
+					"enum":        []string{"data_maximum", "last_14d", "last_28d", "last_30d", "last_3d", "last_7d", "last_90d", "last_month", "last_quarter", "last_week_mon_sun", "last_week_sun_sat", "last_year", "maximum", "this_month", "this_quarter", "this_week_mon_today", "this_week_sun_today", "this_year", "today", "yesterday"},
+				},
+				"default_summary": map[string]any{
+					"type":        "boolean",
+					"description": "default_summary parameter",
+				},
+				"export_columns": map[string]any{
+					"type":        "array",
+					"description": "export_columns parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+				"export_format": map[string]any{
+					"type":        "string",
+					"description": "export_format parameter",
+				},
+				"export_name": map[string]any{
+					"type":        "string",
+					"description": "export_name parameter",
+				},
+				"fields": map[string]any{
+					"type":        "array",
+					"description": "fields parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+				"filtering": map[string]any{
+					"type":        "array",
+					"description": "filtering parameter",
+					"items":       map[string]any{"type": "object"},
+				},
+				"level": map[string]any{
+					"type":        "string",
+					"description": "level parameter",
+					"enum":        []string{"account", "ad", "adset", "campaign"},
+				},
+				"limit": map[string]any{
+					"type":        "integer",
+					"description": "limit parameter",
+				},
+				"product_id_limit": map[string]any{
+					"type":        "integer",
+					"description": "product_id_limit parameter",
+				},
+				"sort": map[string]any{
+					"type":        "array",
+					"description": "sort parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+				"summary": map[string]any{
+					"type":        "array",
+					"description": "summary parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+				"summary_action_breakdowns": map[string]any{
+					"type":        "array",
+					"description": "summary_action_breakdowns parameter",
+					"enum":        []string{"action_canvas_component_name", "action_carousel_card_id", "action_carousel_card_name", "action_destination", "action_device", "action_reaction", "action_target_id", "action_type", "action_video_sound", "action_video_type", "conversion_destination", "matched_persona_id", "matched_persona_name", "signal_source_bucket", "standard_event_content_type"},
+					"items":       map[string]any{"type": "string"},
+				},
+				"time_increment": map[string]any{
+					"type":        "string",
+					"description": "time_increment parameter",
+				},
+				"time_range": map[string]any{
+					"type":        "object",
+					"description": "time_range parameter",
+				},
+				"time_ranges": map[string]any{
+					"type":        "array",
+					"description": "time_ranges parameter",
+					"items":       map[string]any{"type": "object"},
+				},
+				"use_account_attribution_setting": map[string]any{
+					"type":        "boolean",
+					"description": "use_account_attribution_setting parameter",
+				},
+				"use_unified_attribution_setting": map[string]any{
+					"type":        "boolean",
+					"description": "use_unified_attribution_setting parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: action_attribution_windows (array<enum>) [1d_click, 1d_ev, 1d_view, 28d_click, 28d_view, ...], action_breakdowns (array<enum>) [action_canvas_component_name, action_carousel_card_id, action_carousel_card_name, action_destination, action_device, ...], action_report_time (enum) [conversion, impression, lifetime, mixed], breakdowns (array<enum>) [ad_extension_domain, ad_extension_url, ad_format_asset, age, app_id, ...], date_preset (enum) [data_maximum, last_14d, last_28d, last_30d, last_3d, ...], default_summary (boolean), export_columns (array<string>), export_format (string), export_name (string), fields (array<string>), filtering (array<object>), level (enum) [account, ad, adset, campaign], limit (integer), product_id_limit (integer), sort (array<string>), summary (array<string>), summary_action_breakdowns (array<enum>) [action_canvas_component_name, action_carousel_card_id, action_carousel_card_name, action_destination, action_device, ...], time_increment (string), time_range (object), time_ranges (array<object>), use_account_attribution_setting (boolean), use_unified_attribution_setting (boolean)"),
 		),
 	)
 	tools = append(tools, ad_post_insightsTool)
@@ -329,8 +445,8 @@ func GetAdTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Description("Facebook Ad ID"),
 		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for Lead objects. Available fields: ad_id, ad_name, adset_id, adset_name, campaign_id, campaign_name, created_time, custom_disclaimer_responses, field_data, form_id, home_listing, id, is_organic, partner_name, platform (and 4 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for Lead objects. Available fields: ad_id, ad_name, adset_id, adset_name, campaign_id, campaign_name, created_time, custom_disclaimer_responses, field_data, form_id, home_listing, id, is_organic, partner_name, platform (and 4 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -346,60 +462,82 @@ func GetAdTools() []mcp.Tool {
 
 	// ad_get_previews tool
 	// Available fields for AdPreview: body, transformation_spec
+	// Params object accepts: ad_format (adgrouppreviews_ad_format_enum_param), creative_feature (adgrouppreviews_creative_feature_enum_param), dynamic_asset_label (string), dynamic_creative_spec (Object), dynamic_customization (Object), end_date (datetime), height (unsigned int), locale (string), place_page_id (int), post (Object), product_item_ids (list<string>), render_type (adgrouppreviews_render_type_enum_param), start_date (datetime), width (unsigned int)
 	ad_get_previewsTool := mcp.NewTool("ad_get_previews",
 		mcp.WithDescription("GET previews for Ad"),
 		mcp.WithString("ad_id",
 			mcp.Required(),
 			mcp.Description("Facebook Ad ID"),
 		),
-		mcp.WithString("ad_format",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("ad_format parameter for previews"),
-			mcp.Enum("AUDIENCE_NETWORK_INSTREAM_VIDEO", "AUDIENCE_NETWORK_INSTREAM_VIDEO_MOBILE", "AUDIENCE_NETWORK_OUTSTREAM_VIDEO", "AUDIENCE_NETWORK_REWARDED_VIDEO", "BIZ_DISCO_FEED_MOBILE", "DESKTOP_FEED_STANDARD", "FACEBOOK_PROFILE_FEED_DESKTOP", "FACEBOOK_PROFILE_FEED_MOBILE", "FACEBOOK_PROFILE_REELS_MOBILE", "FACEBOOK_REELS_BANNER", "FACEBOOK_REELS_BANNER_DESKTOP", "FACEBOOK_REELS_BANNER_FULLSCREEN_IOS", "FACEBOOK_REELS_BANNER_FULLSCREEN_MOBILE", "FACEBOOK_REELS_MOBILE", "FACEBOOK_REELS_POSTLOOP", "FACEBOOK_REELS_STICKER", "FACEBOOK_STORY_MOBILE", "FACEBOOK_STORY_STICKER_MOBILE", "INSTAGRAM_EXPLORE_CONTEXTUAL", "INSTAGRAM_EXPLORE_GRID_HOME", "INSTAGRAM_EXPLORE_IMMERSIVE", "INSTAGRAM_FEED_WEB", "INSTAGRAM_FEED_WEB_M_SITE", "INSTAGRAM_LEAD_GEN_MULTI_SUBMIT_ADS", "INSTAGRAM_PROFILE_FEED", "INSTAGRAM_PROFILE_REELS", "INSTAGRAM_REELS", "INSTAGRAM_REELS_OVERLAY", "INSTAGRAM_SEARCH_CHAIN", "INSTAGRAM_SEARCH_GRID", "INSTAGRAM_STANDARD", "INSTAGRAM_STORY", "INSTAGRAM_STORY_EFFECT_TRAY", "INSTAGRAM_STORY_WEB", "INSTAGRAM_STORY_WEB_M_SITE", "INSTANT_ARTICLE_RECIRCULATION_AD", "INSTANT_ARTICLE_STANDARD", "INSTREAM_BANNER_DESKTOP", "INSTREAM_BANNER_FULLSCREEN_IOS", "INSTREAM_BANNER_FULLSCREEN_MOBILE", "INSTREAM_BANNER_IMMERSIVE_MOBILE", "INSTREAM_BANNER_MOBILE", "INSTREAM_VIDEO_DESKTOP", "INSTREAM_VIDEO_FULLSCREEN_IOS", "INSTREAM_VIDEO_FULLSCREEN_MOBILE", "INSTREAM_VIDEO_IMAGE", "INSTREAM_VIDEO_IMMERSIVE_MOBILE", "INSTREAM_VIDEO_MOBILE", "JOB_BROWSER_DESKTOP", "JOB_BROWSER_MOBILE", "MARKETPLACE_MOBILE", "MESSENGER_MOBILE_INBOX_MEDIA", "MESSENGER_MOBILE_STORY_MEDIA", "MOBILE_BANNER", "MOBILE_FEED_BASIC", "MOBILE_FEED_STANDARD", "MOBILE_FULLWIDTH", "MOBILE_INTERSTITIAL", "MOBILE_MEDIUM_RECTANGLE", "MOBILE_NATIVE", "RIGHT_COLUMN_STANDARD", "SUGGESTED_VIDEO_DESKTOP", "SUGGESTED_VIDEO_FULLSCREEN_MOBILE", "SUGGESTED_VIDEO_IMMERSIVE_MOBILE", "SUGGESTED_VIDEO_MOBILE", "WATCH_FEED_HOME", "WATCH_FEED_MOBILE"),
+			mcp.Properties(map[string]any{
+				"ad_format": map[string]any{
+					"type":        "string",
+					"description": "ad_format parameter",
+					"required":    true,
+					"enum":        []string{"AUDIENCE_NETWORK_INSTREAM_VIDEO", "AUDIENCE_NETWORK_INSTREAM_VIDEO_MOBILE", "AUDIENCE_NETWORK_OUTSTREAM_VIDEO", "AUDIENCE_NETWORK_REWARDED_VIDEO", "BIZ_DISCO_FEED_MOBILE", "DESKTOP_FEED_STANDARD", "FACEBOOK_PROFILE_FEED_DESKTOP", "FACEBOOK_PROFILE_FEED_MOBILE", "FACEBOOK_PROFILE_REELS_MOBILE", "FACEBOOK_REELS_BANNER", "FACEBOOK_REELS_BANNER_DESKTOP", "FACEBOOK_REELS_BANNER_FULLSCREEN_IOS", "FACEBOOK_REELS_BANNER_FULLSCREEN_MOBILE", "FACEBOOK_REELS_MOBILE", "FACEBOOK_REELS_POSTLOOP", "FACEBOOK_REELS_STICKER", "FACEBOOK_STORY_MOBILE", "FACEBOOK_STORY_STICKER_MOBILE", "INSTAGRAM_EXPLORE_CONTEXTUAL", "INSTAGRAM_EXPLORE_GRID_HOME", "INSTAGRAM_EXPLORE_IMMERSIVE", "INSTAGRAM_FEED_WEB", "INSTAGRAM_FEED_WEB_M_SITE", "INSTAGRAM_LEAD_GEN_MULTI_SUBMIT_ADS", "INSTAGRAM_PROFILE_FEED", "INSTAGRAM_PROFILE_REELS", "INSTAGRAM_REELS", "INSTAGRAM_REELS_OVERLAY", "INSTAGRAM_SEARCH_CHAIN", "INSTAGRAM_SEARCH_GRID", "INSTAGRAM_STANDARD", "INSTAGRAM_STORY", "INSTAGRAM_STORY_EFFECT_TRAY", "INSTAGRAM_STORY_WEB", "INSTAGRAM_STORY_WEB_M_SITE", "INSTANT_ARTICLE_RECIRCULATION_AD", "INSTANT_ARTICLE_STANDARD", "INSTREAM_BANNER_DESKTOP", "INSTREAM_BANNER_FULLSCREEN_IOS", "INSTREAM_BANNER_FULLSCREEN_MOBILE", "INSTREAM_BANNER_IMMERSIVE_MOBILE", "INSTREAM_BANNER_MOBILE", "INSTREAM_VIDEO_DESKTOP", "INSTREAM_VIDEO_FULLSCREEN_IOS", "INSTREAM_VIDEO_FULLSCREEN_MOBILE", "INSTREAM_VIDEO_IMAGE", "INSTREAM_VIDEO_IMMERSIVE_MOBILE", "INSTREAM_VIDEO_MOBILE", "JOB_BROWSER_DESKTOP", "JOB_BROWSER_MOBILE", "MARKETPLACE_MOBILE", "MESSENGER_MOBILE_INBOX_MEDIA", "MESSENGER_MOBILE_STORY_MEDIA", "MOBILE_BANNER", "MOBILE_FEED_BASIC", "MOBILE_FEED_STANDARD", "MOBILE_FULLWIDTH", "MOBILE_INTERSTITIAL", "MOBILE_MEDIUM_RECTANGLE", "MOBILE_NATIVE", "RIGHT_COLUMN_STANDARD", "SUGGESTED_VIDEO_DESKTOP", "SUGGESTED_VIDEO_FULLSCREEN_MOBILE", "SUGGESTED_VIDEO_IMMERSIVE_MOBILE", "SUGGESTED_VIDEO_MOBILE", "WATCH_FEED_HOME", "WATCH_FEED_MOBILE"},
+				},
+				"creative_feature": map[string]any{
+					"type":        "string",
+					"description": "creative_feature parameter",
+					"enum":        []string{"product_metadata_automation", "profile_card", "standard_enhancements_catalog", "video_to_image"},
+				},
+				"dynamic_asset_label": map[string]any{
+					"type":        "string",
+					"description": "dynamic_asset_label parameter",
+				},
+				"dynamic_creative_spec": map[string]any{
+					"type":        "object",
+					"description": "dynamic_creative_spec parameter",
+				},
+				"dynamic_customization": map[string]any{
+					"type":        "object",
+					"description": "dynamic_customization parameter",
+				},
+				"end_date": map[string]any{
+					"type":        "string",
+					"description": "end_date parameter",
+				},
+				"height": map[string]any{
+					"type":        "integer",
+					"description": "height parameter",
+				},
+				"locale": map[string]any{
+					"type":        "string",
+					"description": "locale parameter",
+				},
+				"place_page_id": map[string]any{
+					"type":        "integer",
+					"description": "place_page_id parameter",
+				},
+				"post": map[string]any{
+					"type":        "object",
+					"description": "post parameter",
+				},
+				"product_item_ids": map[string]any{
+					"type":        "array",
+					"description": "product_item_ids parameter",
+					"items":       map[string]any{"type": "string"},
+				},
+				"render_type": map[string]any{
+					"type":        "string",
+					"description": "render_type parameter",
+					"enum":        []string{"FALLBACK"},
+				},
+				"start_date": map[string]any{
+					"type":        "string",
+					"description": "start_date parameter",
+				},
+				"width": map[string]any{
+					"type":        "integer",
+					"description": "width parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: ad_format (enum) [AUDIENCE_NETWORK_INSTREAM_VIDEO, AUDIENCE_NETWORK_INSTREAM_VIDEO_MOBILE, AUDIENCE_NETWORK_OUTSTREAM_VIDEO, AUDIENCE_NETWORK_REWARDED_VIDEO, BIZ_DISCO_FEED_MOBILE, ...] [required], creative_feature (enum) [product_metadata_automation, profile_card, standard_enhancements_catalog, video_to_image], dynamic_asset_label (string), dynamic_creative_spec (object), dynamic_customization (object), end_date (datetime), height (integer), locale (string), place_page_id (integer), post (object), product_item_ids (array<string>), render_type (enum) [FALLBACK], start_date (datetime), width (integer)"),
 		),
-		mcp.WithString("creative_feature",
-			mcp.Description("creative_feature parameter for previews"),
-			mcp.Enum("product_metadata_automation", "profile_card", "standard_enhancements_catalog", "video_to_image"),
-		),
-		mcp.WithString("dynamic_asset_label",
-			mcp.Description("dynamic_asset_label parameter for previews"),
-		),
-		mcp.WithString("dynamic_creative_spec",
-			mcp.Description("dynamic_creative_spec parameter for previews"),
-		),
-		mcp.WithString("dynamic_customization",
-			mcp.Description("dynamic_customization parameter for previews"),
-		),
-		mcp.WithString("end_date",
-			mcp.Description("end_date parameter for previews"),
-		),
-		mcp.WithNumber("height",
-			mcp.Description("height parameter for previews"),
-		),
-		mcp.WithString("locale",
-			mcp.Description("locale parameter for previews"),
-		),
-		mcp.WithNumber("place_page_id",
-			mcp.Description("place_page_id parameter for previews"),
-		),
-		mcp.WithString("post",
-			mcp.Description("post parameter for previews"),
-		),
-		mcp.WithString("product_item_ids",
-			mcp.Description("product_item_ids parameter for previews"),
-		),
-		mcp.WithString("render_type",
-			mcp.Description("render_type parameter for previews"),
-			mcp.Enum("FALLBACK"),
-		),
-		mcp.WithString("start_date",
-			mcp.Description("start_date parameter for previews"),
-		),
-		mcp.WithNumber("width",
-			mcp.Description("width parameter for previews"),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for AdPreview objects. Available fields: body, transformation_spec"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for AdPreview objects. Available fields: body, transformation_spec"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -421,8 +559,8 @@ func GetAdTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Description("Facebook Ad ID"),
 		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for TargetingSentenceLine objects. Available fields: id, params, targetingsentencelines"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for TargetingSentenceLine objects. Available fields: id, params, targetingsentencelines"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -448,30 +586,41 @@ func GetAdTools() []mcp.Tool {
 
 	// ad_get_ tool
 	// Available fields for Ad: account_id, ad_active_time, ad_review_feedback, ad_schedule_end_time, ad_schedule_start_time, adlabels, adset, adset_id, bid_amount, bid_info, bid_type, campaign, campaign_id, configured_status, conversion_domain, conversion_specs, created_time, creative, creative_asset_groups_spec, demolink_hash, display_sequence, effective_status, engagement_audience, failed_delivery_checks, id, issues_info, last_updated_by_app_id, name, placement, preview_shareable_link, priority, recommendations, source_ad, source_ad_id, status, targeting, tracking_and_conversion_with_defaults, tracking_specs, updated_time
+	// Params object accepts: am_call_tags (map), date_preset (adgroup_date_preset), from_adtable (bool), review_feedback_breakdown (bool), time_range (map)
 	ad_get_Tool := mcp.NewTool("ad_get_",
 		mcp.WithDescription("GET  for Ad"),
 		mcp.WithString("ad_id",
 			mcp.Required(),
 			mcp.Description("Facebook Ad ID"),
 		),
-		mcp.WithString("am_call_tags",
-			mcp.Description("am_call_tags parameter for "),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"am_call_tags": map[string]any{
+					"type":        "object",
+					"description": "am_call_tags parameter",
+				},
+				"date_preset": map[string]any{
+					"type":        "string",
+					"description": "date_preset parameter",
+					"enum":        []string{"data_maximum", "last_14d", "last_28d", "last_30d", "last_3d", "last_7d", "last_90d", "last_month", "last_quarter", "last_week_mon_sun", "last_week_sun_sat", "last_year", "maximum", "this_month", "this_quarter", "this_week_mon_today", "this_week_sun_today", "this_year", "today", "yesterday"},
+				},
+				"from_adtable": map[string]any{
+					"type":        "boolean",
+					"description": "from_adtable parameter",
+				},
+				"review_feedback_breakdown": map[string]any{
+					"type":        "boolean",
+					"description": "review_feedback_breakdown parameter",
+				},
+				"time_range": map[string]any{
+					"type":        "object",
+					"description": "time_range parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: am_call_tags (object), date_preset (adgroup_date_preset) [data_maximum, last_14d, last_28d, last_30d, last_3d, ...], from_adtable (boolean), review_feedback_breakdown (boolean), time_range (object)"),
 		),
-		mcp.WithString("date_preset",
-			mcp.Description("date_preset parameter for "),
-			mcp.Enum("data_maximum", "last_14d", "last_28d", "last_30d", "last_3d", "last_7d", "last_90d", "last_month", "last_quarter", "last_week_mon_sun", "last_week_sun_sat", "last_year", "maximum", "this_month", "this_quarter", "this_week_mon_today", "this_week_sun_today", "this_year", "today", "yesterday"),
-		),
-		mcp.WithBoolean("from_adtable",
-			mcp.Description("from_adtable parameter for "),
-		),
-		mcp.WithBoolean("review_feedback_breakdown",
-			mcp.Description("review_feedback_breakdown parameter for "),
-		),
-		mcp.WithString("time_range",
-			mcp.Description("time_range parameter for "),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for Ad objects. Available fields: account_id, ad_active_time, ad_review_feedback, ad_schedule_end_time, ad_schedule_start_time, adlabels, adset, adset_id, bid_amount, bid_info, bid_type, campaign, campaign_id, configured_status, conversion_domain (and 24 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for Ad objects. Available fields: account_id, ad_active_time, ad_review_feedback, ad_schedule_end_time, ad_schedule_start_time, adlabels, adset, adset_id, bid_amount, bid_info, bid_type, campaign, campaign_id, configured_status, conversion_domain (and 24 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -486,67 +635,93 @@ func GetAdTools() []mcp.Tool {
 	tools = append(tools, ad_get_Tool)
 
 	// ad_post_ tool
+	// Params object accepts: ad_schedule_end_time (datetime), ad_schedule_start_time (datetime), adlabels (list<Object>), adset_spec (AdSet), audience_id (string), bid_amount (int), conversion_domain (string), creative (AdCreative), creative_asset_groups_spec (Object), display_sequence (unsigned int), draft_adgroup_id (string), engagement_audience (bool), execution_options (list<adgroup_execution_options>), include_demolink_hashes (bool), name (string), priority (unsigned int), status (adgroup_status), tracking_specs (Object)
 	ad_post_Tool := mcp.NewTool("ad_post_",
 		mcp.WithDescription("POST  for Ad"),
 		mcp.WithString("ad_id",
 			mcp.Required(),
 			mcp.Description("Facebook Ad ID"),
 		),
-		mcp.WithString("ad_schedule_end_time",
-			mcp.Description("ad_schedule_end_time parameter for "),
-		),
-		mcp.WithString("ad_schedule_start_time",
-			mcp.Description("ad_schedule_start_time parameter for "),
-		),
-		mcp.WithString("adlabels",
-			mcp.Description("adlabels parameter for "),
-		),
-		mcp.WithString("adset_spec",
-			mcp.Description("adset_spec parameter for "),
-		),
-		mcp.WithString("audience_id",
-			mcp.Description("audience_id parameter for "),
-		),
-		mcp.WithNumber("bid_amount",
-			mcp.Description("bid_amount parameter for "),
-		),
-		mcp.WithString("conversion_domain",
-			mcp.Description("conversion_domain parameter for "),
-		),
-		mcp.WithString("creative",
-			mcp.Description("creative parameter for "),
-		),
-		mcp.WithString("creative_asset_groups_spec",
-			mcp.Description("creative_asset_groups_spec parameter for "),
-		),
-		mcp.WithNumber("display_sequence",
-			mcp.Description("display_sequence parameter for "),
-		),
-		mcp.WithString("draft_adgroup_id",
-			mcp.Description("draft_adgroup_id parameter for "),
-		),
-		mcp.WithBoolean("engagement_audience",
-			mcp.Description("engagement_audience parameter for "),
-		),
-		mcp.WithString("execution_options",
-			mcp.Description("execution_options parameter for "),
-			mcp.Enum("include_recommendations", "synchronous_ad_review", "validate_only"),
-		),
-		mcp.WithBoolean("include_demolink_hashes",
-			mcp.Description("include_demolink_hashes parameter for "),
-		),
-		mcp.WithString("name",
-			mcp.Description("name parameter for "),
-		),
-		mcp.WithNumber("priority",
-			mcp.Description("priority parameter for "),
-		),
-		mcp.WithString("status",
-			mcp.Description("status parameter for "),
-			mcp.Enum("ACTIVE", "ARCHIVED", "DELETED", "PAUSED"),
-		),
-		mcp.WithString("tracking_specs",
-			mcp.Description("tracking_specs parameter for "),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"ad_schedule_end_time": map[string]any{
+					"type":        "string",
+					"description": "ad_schedule_end_time parameter",
+				},
+				"ad_schedule_start_time": map[string]any{
+					"type":        "string",
+					"description": "ad_schedule_start_time parameter",
+				},
+				"adlabels": map[string]any{
+					"type":        "array",
+					"description": "adlabels parameter",
+					"items":       map[string]any{"type": "object"},
+				},
+				"adset_spec": map[string]any{
+					"type":        "string",
+					"description": "adset_spec parameter",
+				},
+				"audience_id": map[string]any{
+					"type":        "string",
+					"description": "audience_id parameter",
+				},
+				"bid_amount": map[string]any{
+					"type":        "integer",
+					"description": "bid_amount parameter",
+				},
+				"conversion_domain": map[string]any{
+					"type":        "string",
+					"description": "conversion_domain parameter",
+				},
+				"creative": map[string]any{
+					"type":        "string",
+					"description": "creative parameter",
+				},
+				"creative_asset_groups_spec": map[string]any{
+					"type":        "object",
+					"description": "creative_asset_groups_spec parameter",
+				},
+				"display_sequence": map[string]any{
+					"type":        "integer",
+					"description": "display_sequence parameter",
+				},
+				"draft_adgroup_id": map[string]any{
+					"type":        "string",
+					"description": "draft_adgroup_id parameter",
+				},
+				"engagement_audience": map[string]any{
+					"type":        "boolean",
+					"description": "engagement_audience parameter",
+				},
+				"execution_options": map[string]any{
+					"type":        "array",
+					"description": "execution_options parameter",
+					"enum":        []string{"include_recommendations", "synchronous_ad_review", "validate_only"},
+					"items":       map[string]any{"type": "string"},
+				},
+				"include_demolink_hashes": map[string]any{
+					"type":        "boolean",
+					"description": "include_demolink_hashes parameter",
+				},
+				"name": map[string]any{
+					"type":        "string",
+					"description": "name parameter",
+				},
+				"priority": map[string]any{
+					"type":        "integer",
+					"description": "priority parameter",
+				},
+				"status": map[string]any{
+					"type":        "string",
+					"description": "status parameter",
+					"enum":        []string{"ACTIVE", "ARCHIVED", "DELETED", "PAUSED"},
+				},
+				"tracking_specs": map[string]any{
+					"type":        "object",
+					"description": "tracking_specs parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: ad_schedule_end_time (datetime), ad_schedule_start_time (datetime), adlabels (array<object>), adset_spec (AdSet), audience_id (string), bid_amount (integer), conversion_domain (string), creative (AdCreative), creative_asset_groups_spec (object), display_sequence (integer), draft_adgroup_id (string), engagement_audience (boolean), execution_options (array<adgroup_execution_options>) [include_recommendations, synchronous_ad_review, validate_only], include_demolink_hashes (boolean), name (string), priority (integer), status (adgroup_status) [ACTIVE, ARCHIVED, DELETED, PAUSED], tracking_specs (object)"),
 		),
 	)
 	tools = append(tools, ad_post_Tool)
@@ -578,8 +753,13 @@ func HandleAd_get_adcreatives(ctx context.Context, request mcp.CallToolRequest) 
 	args["ad_id"] = ad_id
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -633,17 +813,18 @@ func HandleAd_post_adlabels(ctx context.Context, request mcp.CallToolRequest) (*
 	}
 	args["ad_id"] = ad_id
 
-	// Required: adlabels
-	adlabels, err := request.RequireString("adlabels")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter adlabels: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["adlabels"] = adlabels
-
-	// Optional: execution_options
-	// array type - using string
-	if val := request.GetString("execution_options", ""); val != "" {
-		args["execution_options"] = val
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
 	}
 
 	// Call the client method
@@ -682,14 +863,26 @@ func HandleAd_get_adrules_governed(ctx context.Context, request mcp.CallToolRequ
 	}
 	args["ad_id"] = ad_id
 
-	// Optional: pass_evaluation
-	if val := request.GetBool("pass_evaluation", false); val {
-		args["pass_evaluation"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -743,30 +936,26 @@ func HandleAd_get_copies(ctx context.Context, request mcp.CallToolRequest) (*mcp
 	}
 	args["ad_id"] = ad_id
 
-	// Optional: date_preset
-	if val := request.GetString("date_preset", ""); val != "" {
-		args["date_preset"] = val
-	}
-
-	// Optional: effective_status
-	// array type - using string
-	if val := request.GetString("effective_status", ""); val != "" {
-		args["effective_status"] = val
-	}
-
-	// Optional: time_range
-	if val := request.GetString("time_range", ""); val != "" {
-		args["time_range"] = val
-	}
-
-	// Optional: updated_since
-	if val := request.GetInt("updated_since", 0); val != 0 {
-		args["updated_since"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -820,25 +1009,16 @@ func HandleAd_post_copies(ctx context.Context, request mcp.CallToolRequest) (*mc
 	}
 	args["ad_id"] = ad_id
 
-	// Optional: adset_id
-	if val := request.GetString("adset_id", ""); val != "" {
-		args["adset_id"] = val
-	}
-
-	// Optional: creative_parameters
-	if val := request.GetString("creative_parameters", ""); val != "" {
-		args["creative_parameters"] = val
-	}
-
-	// Optional: rename_options
-	// object type - using string
-	if val := request.GetString("rename_options", ""); val != "" {
-		args["rename_options"] = val
-	}
-
-	// Optional: status_option
-	if val := request.GetString("status_option", ""); val != "" {
-		args["status_option"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method
@@ -877,129 +1057,26 @@ func HandleAd_get_insights(ctx context.Context, request mcp.CallToolRequest) (*m
 	}
 	args["ad_id"] = ad_id
 
-	// Optional: action_attribution_windows
-	// array type - using string
-	if val := request.GetString("action_attribution_windows", ""); val != "" {
-		args["action_attribution_windows"] = val
-	}
-
-	// Optional: action_breakdowns
-	// array type - using string
-	if val := request.GetString("action_breakdowns", ""); val != "" {
-		args["action_breakdowns"] = val
-	}
-
-	// Optional: action_report_time
-	if val := request.GetString("action_report_time", ""); val != "" {
-		args["action_report_time"] = val
-	}
-
-	// Optional: breakdowns
-	// array type - using string
-	if val := request.GetString("breakdowns", ""); val != "" {
-		args["breakdowns"] = val
-	}
-
-	// Optional: date_preset
-	if val := request.GetString("date_preset", ""); val != "" {
-		args["date_preset"] = val
-	}
-
-	// Optional: default_summary
-	if val := request.GetBool("default_summary", false); val {
-		args["default_summary"] = val
-	}
-
-	// Optional: export_columns
-	// array type - using string
-	if val := request.GetString("export_columns", ""); val != "" {
-		args["export_columns"] = val
-	}
-
-	// Optional: export_format
-	if val := request.GetString("export_format", ""); val != "" {
-		args["export_format"] = val
-	}
-
-	// Optional: export_name
-	if val := request.GetString("export_name", ""); val != "" {
-		args["export_name"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
-	// array type - using string
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
-	}
-
-	// Optional: filtering
-	// array type - using string
-	if val := request.GetString("filtering", ""); val != "" {
-		args["filtering"] = val
-	}
-
-	// Optional: level
-	if val := request.GetString("level", ""); val != "" {
-		args["level"] = val
-	}
-
-	// Optional: limit
-	if val := request.GetInt("limit", 0); val != 0 {
-		args["limit"] = val
-	}
-
-	// Optional: product_id_limit
-	if val := request.GetInt("product_id_limit", 0); val != 0 {
-		args["product_id_limit"] = val
-	}
-
-	// Optional: sort
-	// array type - using string
-	if val := request.GetString("sort", ""); val != "" {
-		args["sort"] = val
-	}
-
-	// Optional: summary
-	// array type - using string
-	if val := request.GetString("summary", ""); val != "" {
-		args["summary"] = val
-	}
-
-	// Optional: summary_action_breakdowns
-	// array type - using string
-	if val := request.GetString("summary_action_breakdowns", ""); val != "" {
-		args["summary_action_breakdowns"] = val
-	}
-
-	// Optional: time_increment
-	if val := request.GetString("time_increment", ""); val != "" {
-		args["time_increment"] = val
-	}
-
-	// Optional: time_range
-	if val := request.GetString("time_range", ""); val != "" {
-		args["time_range"] = val
-	}
-
-	// Optional: time_ranges
-	// array type - using string
-	if val := request.GetString("time_ranges", ""); val != "" {
-		args["time_ranges"] = val
-	}
-
-	// Optional: use_account_attribution_setting
-	if val := request.GetBool("use_account_attribution_setting", false); val {
-		args["use_account_attribution_setting"] = val
-	}
-
-	// Optional: use_unified_attribution_setting
-	if val := request.GetBool("use_unified_attribution_setting", false); val {
-		args["use_unified_attribution_setting"] = val
-	}
-
-	// Optional: fields
-	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -1053,124 +1130,16 @@ func HandleAd_post_insights(ctx context.Context, request mcp.CallToolRequest) (*
 	}
 	args["ad_id"] = ad_id
 
-	// Optional: action_attribution_windows
-	// array type - using string
-	if val := request.GetString("action_attribution_windows", ""); val != "" {
-		args["action_attribution_windows"] = val
-	}
-
-	// Optional: action_breakdowns
-	// array type - using string
-	if val := request.GetString("action_breakdowns", ""); val != "" {
-		args["action_breakdowns"] = val
-	}
-
-	// Optional: action_report_time
-	if val := request.GetString("action_report_time", ""); val != "" {
-		args["action_report_time"] = val
-	}
-
-	// Optional: breakdowns
-	// array type - using string
-	if val := request.GetString("breakdowns", ""); val != "" {
-		args["breakdowns"] = val
-	}
-
-	// Optional: date_preset
-	if val := request.GetString("date_preset", ""); val != "" {
-		args["date_preset"] = val
-	}
-
-	// Optional: default_summary
-	if val := request.GetBool("default_summary", false); val {
-		args["default_summary"] = val
-	}
-
-	// Optional: export_columns
-	// array type - using string
-	if val := request.GetString("export_columns", ""); val != "" {
-		args["export_columns"] = val
-	}
-
-	// Optional: export_format
-	if val := request.GetString("export_format", ""); val != "" {
-		args["export_format"] = val
-	}
-
-	// Optional: export_name
-	if val := request.GetString("export_name", ""); val != "" {
-		args["export_name"] = val
-	}
-
-	// Optional: fields
-	// array type - using string
-	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
-	}
-
-	// Optional: filtering
-	// array type - using string
-	if val := request.GetString("filtering", ""); val != "" {
-		args["filtering"] = val
-	}
-
-	// Optional: level
-	if val := request.GetString("level", ""); val != "" {
-		args["level"] = val
-	}
-
-	// Optional: limit
-	if val := request.GetInt("limit", 0); val != 0 {
-		args["limit"] = val
-	}
-
-	// Optional: product_id_limit
-	if val := request.GetInt("product_id_limit", 0); val != 0 {
-		args["product_id_limit"] = val
-	}
-
-	// Optional: sort
-	// array type - using string
-	if val := request.GetString("sort", ""); val != "" {
-		args["sort"] = val
-	}
-
-	// Optional: summary
-	// array type - using string
-	if val := request.GetString("summary", ""); val != "" {
-		args["summary"] = val
-	}
-
-	// Optional: summary_action_breakdowns
-	// array type - using string
-	if val := request.GetString("summary_action_breakdowns", ""); val != "" {
-		args["summary_action_breakdowns"] = val
-	}
-
-	// Optional: time_increment
-	if val := request.GetString("time_increment", ""); val != "" {
-		args["time_increment"] = val
-	}
-
-	// Optional: time_range
-	if val := request.GetString("time_range", ""); val != "" {
-		args["time_range"] = val
-	}
-
-	// Optional: time_ranges
-	// array type - using string
-	if val := request.GetString("time_ranges", ""); val != "" {
-		args["time_ranges"] = val
-	}
-
-	// Optional: use_account_attribution_setting
-	if val := request.GetBool("use_account_attribution_setting", false); val {
-		args["use_account_attribution_setting"] = val
-	}
-
-	// Optional: use_unified_attribution_setting
-	if val := request.GetBool("use_unified_attribution_setting", false); val {
-		args["use_unified_attribution_setting"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method
@@ -1210,8 +1179,13 @@ func HandleAd_get_leads(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 	args["ad_id"] = ad_id
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -1265,85 +1239,28 @@ func HandleAd_get_previews(ctx context.Context, request mcp.CallToolRequest) (*m
 	}
 	args["ad_id"] = ad_id
 
-	// Required: ad_format
-	ad_format, err := request.RequireString("ad_format")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter ad_format: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["ad_format"] = ad_format
-
-	// Optional: creative_feature
-	if val := request.GetString("creative_feature", ""); val != "" {
-		args["creative_feature"] = val
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
-
-	// Optional: dynamic_asset_label
-	if val := request.GetString("dynamic_asset_label", ""); val != "" {
-		args["dynamic_asset_label"] = val
-	}
-
-	// Optional: dynamic_creative_spec
-	// object type - using string
-	if val := request.GetString("dynamic_creative_spec", ""); val != "" {
-		args["dynamic_creative_spec"] = val
-	}
-
-	// Optional: dynamic_customization
-	// object type - using string
-	if val := request.GetString("dynamic_customization", ""); val != "" {
-		args["dynamic_customization"] = val
-	}
-
-	// Optional: end_date
-	if val := request.GetString("end_date", ""); val != "" {
-		args["end_date"] = val
-	}
-
-	// Optional: height
-	if val := request.GetInt("height", 0); val != 0 {
-		args["height"] = val
-	}
-
-	// Optional: locale
-	if val := request.GetString("locale", ""); val != "" {
-		args["locale"] = val
-	}
-
-	// Optional: place_page_id
-	if val := request.GetInt("place_page_id", 0); val != 0 {
-		args["place_page_id"] = val
-	}
-
-	// Optional: post
-	// object type - using string
-	if val := request.GetString("post", ""); val != "" {
-		args["post"] = val
-	}
-
-	// Optional: product_item_ids
-	// array type - using string
-	if val := request.GetString("product_item_ids", ""); val != "" {
-		args["product_item_ids"] = val
-	}
-
-	// Optional: render_type
-	if val := request.GetString("render_type", ""); val != "" {
-		args["render_type"] = val
-	}
-
-	// Optional: start_date
-	if val := request.GetString("start_date", ""); val != "" {
-		args["start_date"] = val
-	}
-
-	// Optional: width
-	if val := request.GetInt("width", 0); val != 0 {
-		args["width"] = val
+	for key, value := range paramsObj {
+		args[key] = value
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -1398,8 +1315,13 @@ func HandleAd_get_targetingsentencelines(ctx context.Context, request mcp.CallTo
 	args["ad_id"] = ad_id
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -1489,34 +1411,26 @@ func HandleAd_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallT
 	}
 	args["ad_id"] = ad_id
 
-	// Optional: am_call_tags
-	if val := request.GetString("am_call_tags", ""); val != "" {
-		args["am_call_tags"] = val
-	}
-
-	// Optional: date_preset
-	if val := request.GetString("date_preset", ""); val != "" {
-		args["date_preset"] = val
-	}
-
-	// Optional: from_adtable
-	if val := request.GetBool("from_adtable", false); val {
-		args["from_adtable"] = val
-	}
-
-	// Optional: review_feedback_breakdown
-	if val := request.GetBool("review_feedback_breakdown", false); val {
-		args["review_feedback_breakdown"] = val
-	}
-
-	// Optional: time_range
-	if val := request.GetString("time_range", ""); val != "" {
-		args["time_range"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -1570,98 +1484,16 @@ func HandleAd_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Call
 	}
 	args["ad_id"] = ad_id
 
-	// Optional: ad_schedule_end_time
-	if val := request.GetString("ad_schedule_end_time", ""); val != "" {
-		args["ad_schedule_end_time"] = val
-	}
-
-	// Optional: ad_schedule_start_time
-	if val := request.GetString("ad_schedule_start_time", ""); val != "" {
-		args["ad_schedule_start_time"] = val
-	}
-
-	// Optional: adlabels
-	// array type - using string
-	if val := request.GetString("adlabels", ""); val != "" {
-		args["adlabels"] = val
-	}
-
-	// Optional: adset_spec
-	if val := request.GetString("adset_spec", ""); val != "" {
-		args["adset_spec"] = val
-	}
-
-	// Optional: audience_id
-	if val := request.GetString("audience_id", ""); val != "" {
-		args["audience_id"] = val
-	}
-
-	// Optional: bid_amount
-	if val := request.GetInt("bid_amount", 0); val != 0 {
-		args["bid_amount"] = val
-	}
-
-	// Optional: conversion_domain
-	if val := request.GetString("conversion_domain", ""); val != "" {
-		args["conversion_domain"] = val
-	}
-
-	// Optional: creative
-	if val := request.GetString("creative", ""); val != "" {
-		args["creative"] = val
-	}
-
-	// Optional: creative_asset_groups_spec
-	// object type - using string
-	if val := request.GetString("creative_asset_groups_spec", ""); val != "" {
-		args["creative_asset_groups_spec"] = val
-	}
-
-	// Optional: display_sequence
-	if val := request.GetInt("display_sequence", 0); val != 0 {
-		args["display_sequence"] = val
-	}
-
-	// Optional: draft_adgroup_id
-	if val := request.GetString("draft_adgroup_id", ""); val != "" {
-		args["draft_adgroup_id"] = val
-	}
-
-	// Optional: engagement_audience
-	if val := request.GetBool("engagement_audience", false); val {
-		args["engagement_audience"] = val
-	}
-
-	// Optional: execution_options
-	// array type - using string
-	if val := request.GetString("execution_options", ""); val != "" {
-		args["execution_options"] = val
-	}
-
-	// Optional: include_demolink_hashes
-	if val := request.GetBool("include_demolink_hashes", false); val {
-		args["include_demolink_hashes"] = val
-	}
-
-	// Optional: name
-	if val := request.GetString("name", ""); val != "" {
-		args["name"] = val
-	}
-
-	// Optional: priority
-	if val := request.GetInt("priority", 0); val != 0 {
-		args["priority"] = val
-	}
-
-	// Optional: status
-	if val := request.GetString("status", ""); val != "" {
-		args["status"] = val
-	}
-
-	// Optional: tracking_specs
-	// object type - using string
-	if val := request.GetString("tracking_specs", ""); val != "" {
-		args["tracking_specs"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method

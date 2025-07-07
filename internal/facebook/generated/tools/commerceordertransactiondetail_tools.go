@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -19,8 +20,8 @@ func GetCommerceOrderTransactionDetailTools() []mcp.Tool {
 	// commerceordertransactiondetail_get_items tool
 	commerceordertransactiondetail_get_itemsTool := mcp.NewTool("commerceordertransactiondetail_get_items",
 		mcp.WithDescription("GET items for CommerceOrderTransactionDetail"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -37,8 +38,8 @@ func GetCommerceOrderTransactionDetailTools() []mcp.Tool {
 	// commerceordertransactiondetail_get_tax_details tool
 	commerceordertransactiondetail_get_tax_detailsTool := mcp.NewTool("commerceordertransactiondetail_get_tax_details",
 		mcp.WithDescription("GET tax_details for CommerceOrderTransactionDetail"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -72,8 +73,13 @@ func HandleCommerceordertransactiondetail_get_items(ctx context.Context, request
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -121,8 +127,13 @@ func HandleCommerceordertransactiondetail_get_tax_details(ctx context.Context, r
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit

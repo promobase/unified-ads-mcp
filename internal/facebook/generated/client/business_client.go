@@ -24,16 +24,11 @@ func NewBusinessClient(accessToken string) *BusinessClient {
 // business_post_access_token POST access_token for Business
 func (c *BusinessClient) Business_post_access_token(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	app_id, ok := args["app_id"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: app_id")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = app_id // Suppress unused variable warning
-	scope, ok := args["scope"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: scope")
-	}
-	_ = scope // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -43,28 +38,10 @@ func (c *BusinessClient) Business_post_access_token(args map[string]interface{})
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["app_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("app_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["fbe_external_business_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("fbe_external_business_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["scope"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("scope", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["system_user_name"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("system_user_name", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -110,22 +87,10 @@ func (c *BusinessClient) Business_get_ad_account_infos(args map[string]interface
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["ad_account_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("ad_account_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["parent_advertiser_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("parent_advertiser_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["user_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("user_id", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -186,11 +151,11 @@ func (c *BusinessClient) Business_get_ad_account_infos(args map[string]interface
 // business_delete_ad_accounts DELETE ad_accounts for Business
 func (c *BusinessClient) Business_delete_ad_accounts(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	adaccount_id, ok := args["adaccount_id"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: adaccount_id")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = adaccount_id // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -200,10 +165,10 @@ func (c *BusinessClient) Business_delete_ad_accounts(args map[string]interface{}
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["adaccount_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("adaccount_id", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -249,10 +214,10 @@ func (c *BusinessClient) Business_post_ad_review_requests(args map[string]interf
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["ad_account_ids"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("ad_account_ids", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -356,26 +321,11 @@ func (c *BusinessClient) Business_get_ad_studies(args map[string]interface{}) (i
 // business_post_ad_studies POST ad_studies for Business
 func (c *BusinessClient) Business_post_ad_studies(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	cells, ok := args["cells"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: cells")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = cells // Suppress unused variable warning
-	end_time, ok := args["end_time"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: end_time")
-	}
-	_ = end_time // Suppress unused variable warning
-	name, ok := args["name"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: name")
-	}
-	_ = name // Suppress unused variable warning
-	start_time, ok := args["start_time"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: start_time")
-	}
-	_ = start_time // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -385,76 +335,10 @@ func (c *BusinessClient) Business_post_ad_studies(args map[string]interface{}) (
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["cells"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("cells", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["client_business"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("client_business", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["confidence_level"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("confidence_level", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["cooldown_start_time"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("cooldown_start_time", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["description"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("description", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["end_time"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("end_time", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["name"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("name", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["objectives"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("objectives", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["observation_end_time"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("observation_end_time", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["start_time"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("start_time", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["type"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("type", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["viewers"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("viewers", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -491,36 +375,11 @@ func (c *BusinessClient) Business_post_ad_studies(args map[string]interface{}) (
 // business_post_adaccount POST adaccount for Business
 func (c *BusinessClient) Business_post_adaccount(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	currency, ok := args["currency"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: currency")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = currency // Suppress unused variable warning
-	end_advertiser, ok := args["end_advertiser"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: end_advertiser")
-	}
-	_ = end_advertiser // Suppress unused variable warning
-	media_agency, ok := args["media_agency"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: media_agency")
-	}
-	_ = media_agency // Suppress unused variable warning
-	name, ok := args["name"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: name")
-	}
-	_ = name // Suppress unused variable warning
-	partner, ok := args["partner"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: partner")
-	}
-	_ = partner // Suppress unused variable warning
-	timezone_id, ok := args["timezone_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: timezone_id")
-	}
-	_ = timezone_id // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -530,82 +389,10 @@ func (c *BusinessClient) Business_post_adaccount(args map[string]interface{}) (i
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["ad_account_created_from_bm_flag"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("ad_account_created_from_bm_flag", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["currency"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("currency", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["end_advertiser"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("end_advertiser", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["funding_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("funding_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["invoice"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("invoice", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["invoice_group_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("invoice_group_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["invoicing_emails"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("invoicing_emails", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["io"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("io", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["media_agency"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("media_agency", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["name"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("name", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["partner"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("partner", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["po_number"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("po_number", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["timezone_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("timezone_id", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -642,11 +429,11 @@ func (c *BusinessClient) Business_post_adaccount(args map[string]interface{}) (i
 // business_post_add_phone_numbers POST add_phone_numbers for Business
 func (c *BusinessClient) Business_post_add_phone_numbers(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	phone_number, ok := args["phone_number"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: phone_number")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = phone_number // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -656,10 +443,10 @@ func (c *BusinessClient) Business_post_add_phone_numbers(args map[string]interfa
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["phone_number"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("phone_number", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -696,11 +483,11 @@ func (c *BusinessClient) Business_post_add_phone_numbers(args map[string]interfa
 // business_post_adnetwork_applications POST adnetwork_applications for Business
 func (c *BusinessClient) Business_post_adnetwork_applications(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	name, ok := args["name"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: name")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = name // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -710,10 +497,10 @@ func (c *BusinessClient) Business_post_adnetwork_applications(args map[string]in
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["name"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("name", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -750,11 +537,11 @@ func (c *BusinessClient) Business_post_adnetwork_applications(args map[string]in
 // business_get_adnetworkanalytics GET adnetworkanalytics for Business
 func (c *BusinessClient) Business_get_adnetworkanalytics(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	metrics, ok := args["metrics"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: metrics")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = metrics // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -764,64 +551,10 @@ func (c *BusinessClient) Business_get_adnetworkanalytics(args map[string]interfa
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["aggregation_period"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("aggregation_period", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["breakdowns"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("breakdowns", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["filters"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("filters", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["limit"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("limit", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["metrics"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("metrics", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["ordering_column"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("ordering_column", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["ordering_type"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("ordering_type", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["should_include_until"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("should_include_until", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["since"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("since", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["until"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("until", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -882,11 +615,11 @@ func (c *BusinessClient) Business_get_adnetworkanalytics(args map[string]interfa
 // business_post_adnetworkanalytics POST adnetworkanalytics for Business
 func (c *BusinessClient) Business_post_adnetworkanalytics(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	metrics, ok := args["metrics"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: metrics")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = metrics // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -896,58 +629,10 @@ func (c *BusinessClient) Business_post_adnetworkanalytics(args map[string]interf
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["aggregation_period"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("aggregation_period", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["breakdowns"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("breakdowns", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["filters"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("filters", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["limit"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("limit", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["metrics"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("metrics", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["ordering_column"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("ordering_column", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["ordering_type"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("ordering_type", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["since"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("since", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["until"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("until", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -993,10 +678,10 @@ func (c *BusinessClient) Business_get_adnetworkanalytics_results(args map[string
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["query_ids"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("query_ids", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -1066,22 +751,10 @@ func (c *BusinessClient) Business_get_ads_dataset(args map[string]interface{}) (
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["id_filter"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("id_filter", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["name_filter"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("name_filter", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["sort_by"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("sort_by", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -1142,11 +815,11 @@ func (c *BusinessClient) Business_get_ads_dataset(args map[string]interface{}) (
 // business_post_ads_dataset POST ads_dataset for Business
 func (c *BusinessClient) Business_post_ads_dataset(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	name, ok := args["name"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: name")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = name // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -1156,28 +829,10 @@ func (c *BusinessClient) Business_post_ads_dataset(args map[string]interface{}) 
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["ad_account_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("ad_account_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["app_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("app_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["is_crm"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("is_crm", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["name"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("name", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -1223,10 +878,10 @@ func (c *BusinessClient) Business_get_ads_reporting_mmm_reports(args map[string]
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["filtering"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("filtering", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -1363,22 +1018,10 @@ func (c *BusinessClient) Business_get_adspixels(args map[string]interface{}) (in
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["id_filter"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("id_filter", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["name_filter"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("name_filter", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["sort_by"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("sort_by", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -1439,11 +1082,11 @@ func (c *BusinessClient) Business_get_adspixels(args map[string]interface{}) (in
 // business_post_adspixels POST adspixels for Business
 func (c *BusinessClient) Business_post_adspixels(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	name, ok := args["name"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: name")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = name // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -1453,16 +1096,10 @@ func (c *BusinessClient) Business_post_adspixels(args map[string]interface{}) (i
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["is_crm"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("is_crm", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["name"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("name", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -1499,11 +1136,11 @@ func (c *BusinessClient) Business_post_adspixels(args map[string]interface{}) (i
 // business_delete_agencies DELETE agencies for Business
 func (c *BusinessClient) Business_delete_agencies(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	business, ok := args["business"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: business")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = business // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -1513,10 +1150,10 @@ func (c *BusinessClient) Business_delete_agencies(args map[string]interface{}) (
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["business"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("business", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -1687,11 +1324,11 @@ func (c *BusinessClient) Business_get_an_placements(args map[string]interface{})
 // business_post_block_list_drafts POST block_list_drafts for Business
 func (c *BusinessClient) Business_post_block_list_drafts(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	publisher_urls_file, ok := args["publisher_urls_file"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: publisher_urls_file")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = publisher_urls_file // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -1701,10 +1338,10 @@ func (c *BusinessClient) Business_post_block_list_drafts(args map[string]interfa
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["publisher_urls_file"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("publisher_urls_file", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -1741,11 +1378,11 @@ func (c *BusinessClient) Business_post_block_list_drafts(args map[string]interfa
 // business_post_bm_review_requests POST bm_review_requests for Business
 func (c *BusinessClient) Business_post_bm_review_requests(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	business_manager_ids, ok := args["business_manager_ids"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: business_manager_ids")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = business_manager_ids // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -1755,10 +1392,10 @@ func (c *BusinessClient) Business_post_bm_review_requests(args map[string]interf
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["business_manager_ids"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("business_manager_ids", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -1871,46 +1508,10 @@ func (c *BusinessClient) Business_get_business_invoices(args map[string]interfac
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["end_date"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("end_date", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["invoice_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("invoice_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["issue_end_date"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("issue_end_date", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["issue_start_date"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("issue_start_date", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["root_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("root_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["start_date"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("start_date", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["type"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("type", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -2038,11 +1639,11 @@ func (c *BusinessClient) Business_get_business_users(args map[string]interface{}
 // business_post_business_users POST business_users for Business
 func (c *BusinessClient) Business_post_business_users(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	email, ok := args["email"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: email")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = email // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -2052,28 +1653,10 @@ func (c *BusinessClient) Business_post_business_users(args map[string]interface{
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["email"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("email", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["invited_user_type"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("invited_user_type", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["role"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("role", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["tasks"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("tasks", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -2177,11 +1760,11 @@ func (c *BusinessClient) Business_get_businessprojects(args map[string]interface
 // business_post_claim_custom_conversions POST claim_custom_conversions for Business
 func (c *BusinessClient) Business_post_claim_custom_conversions(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	custom_conversion_id, ok := args["custom_conversion_id"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: custom_conversion_id")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = custom_conversion_id // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -2191,10 +1774,10 @@ func (c *BusinessClient) Business_post_claim_custom_conversions(args map[string]
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["custom_conversion_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("custom_conversion_id", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -2240,10 +1823,10 @@ func (c *BusinessClient) Business_get_client_ad_accounts(args map[string]interfa
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["search_query"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("search_query", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -2371,11 +1954,11 @@ func (c *BusinessClient) Business_get_client_apps(args map[string]interface{}) (
 // business_post_client_apps POST client_apps for Business
 func (c *BusinessClient) Business_post_client_apps(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	app_id, ok := args["app_id"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: app_id")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = app_id // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -2385,10 +1968,10 @@ func (c *BusinessClient) Business_post_client_apps(args map[string]interface{}) 
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["app_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("app_id", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -2559,11 +2142,11 @@ func (c *BusinessClient) Business_get_client_pages(args map[string]interface{}) 
 // business_post_client_pages POST client_pages for Business
 func (c *BusinessClient) Business_post_client_pages(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	page_id, ok := args["page_id"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: page_id")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = page_id // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -2573,16 +2156,10 @@ func (c *BusinessClient) Business_post_client_pages(args map[string]interface{})
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["page_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("page_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["permitted_tasks"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("permitted_tasks", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -2820,11 +2397,11 @@ func (c *BusinessClient) Business_get_client_whatsapp_business_accounts(args map
 // business_delete_clients DELETE clients for Business
 func (c *BusinessClient) Business_delete_clients(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	business, ok := args["business"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: business")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = business // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -2834,10 +2411,10 @@ func (c *BusinessClient) Business_delete_clients(args map[string]interface{}) (i
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["business"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("business", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -2950,10 +2527,10 @@ func (c *BusinessClient) Business_get_collaborative_ads_collaboration_requests(a
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["status"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("status", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -3014,36 +2591,11 @@ func (c *BusinessClient) Business_get_collaborative_ads_collaboration_requests(a
 // business_post_collaborative_ads_collaboration_requests POST collaborative_ads_collaboration_requests for Business
 func (c *BusinessClient) Business_post_collaborative_ads_collaboration_requests(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	brands, ok := args["brands"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: brands")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = brands // Suppress unused variable warning
-	contact_email, ok := args["contact_email"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: contact_email")
-	}
-	_ = contact_email // Suppress unused variable warning
-	contact_first_name, ok := args["contact_first_name"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: contact_first_name")
-	}
-	_ = contact_first_name // Suppress unused variable warning
-	contact_last_name, ok := args["contact_last_name"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: contact_last_name")
-	}
-	_ = contact_last_name // Suppress unused variable warning
-	receiver_business, ok := args["receiver_business"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: receiver_business")
-	}
-	_ = receiver_business // Suppress unused variable warning
-	requester_agency_or_brand, ok := args["requester_agency_or_brand"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: requester_agency_or_brand")
-	}
-	_ = requester_agency_or_brand // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -3053,52 +2605,10 @@ func (c *BusinessClient) Business_post_collaborative_ads_collaboration_requests(
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["brands"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("brands", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["contact_email"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("contact_email", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["contact_first_name"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("contact_first_name", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["contact_last_name"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("contact_last_name", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["phone_number"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("phone_number", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["receiver_business"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("receiver_business", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["requester_agency_or_brand"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("requester_agency_or_brand", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["sender_client_business"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("sender_client_business", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -3345,28 +2855,10 @@ func (c *BusinessClient) Business_post_cpas_business_setup_config(args map[strin
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["accepted_collab_ads_tos"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("accepted_collab_ads_tos", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["ad_accounts"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("ad_accounts", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["business_capabilities_status"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("business_capabilities_status", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["capabilities_compliance_status"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("capabilities_compliance_status", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -3470,11 +2962,11 @@ func (c *BusinessClient) Business_get_cpas_merchant_config(args map[string]inter
 // business_post_creative_folders POST creative_folders for Business
 func (c *BusinessClient) Business_post_creative_folders(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	name, ok := args["name"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: name")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = name // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -3484,22 +2976,10 @@ func (c *BusinessClient) Business_post_creative_folders(args map[string]interfac
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["description"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("description", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["name"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("name", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["parent_folder_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("parent_folder_id", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -3603,16 +3083,11 @@ func (c *BusinessClient) Business_get_creditcards(args map[string]interface{}) (
 // business_post_customconversions POST customconversions for Business
 func (c *BusinessClient) Business_post_customconversions(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	custom_event_type, ok := args["custom_event_type"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: custom_event_type")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = custom_event_type // Suppress unused variable warning
-	name, ok := args["name"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: name")
-	}
-	_ = name // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -3622,52 +3097,10 @@ func (c *BusinessClient) Business_post_customconversions(args map[string]interfa
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["action_source_type"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("action_source_type", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["advanced_rule"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("advanced_rule", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["custom_event_type"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("custom_event_type", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["default_conversion_value"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("default_conversion_value", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["description"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("description", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["event_source_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("event_source_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["name"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("name", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["rule"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("rule", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -3771,16 +3204,11 @@ func (c *BusinessClient) Business_get_event_source_groups(args map[string]interf
 // business_post_event_source_groups POST event_source_groups for Business
 func (c *BusinessClient) Business_post_event_source_groups(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	event_sources, ok := args["event_sources"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: event_sources")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = event_sources // Suppress unused variable warning
-	name, ok := args["name"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: name")
-	}
-	_ = name // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -3790,16 +3218,10 @@ func (c *BusinessClient) Business_post_event_source_groups(args map[string]inter
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["event_sources"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("event_sources", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["name"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("name", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -3845,10 +3267,10 @@ func (c *BusinessClient) Business_get_extendedcreditapplications(args map[string
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["only_show_pending"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("only_show_pending", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -3918,10 +3340,10 @@ func (c *BusinessClient) Business_get_extendedcredits(args map[string]interface{
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["order_by_is_owned_credential"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("order_by_is_owned_credential", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -3982,11 +3404,11 @@ func (c *BusinessClient) Business_get_extendedcredits(args map[string]interface{
 // business_post_images POST images for Business
 func (c *BusinessClient) Business_post_images(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	creative_folder_id, ok := args["creative_folder_id"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: creative_folder_id")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = creative_folder_id // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -3996,34 +3418,10 @@ func (c *BusinessClient) Business_post_images(args map[string]interface{}) (inte
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["ad_placements_validation_only"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("ad_placements_validation_only", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["bytes"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("bytes", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["creative_folder_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("creative_folder_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["name"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("name", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["validation_ad_placements"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("validation_ad_placements", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -4069,16 +3467,10 @@ func (c *BusinessClient) Business_get_initiated_audience_sharing_requests(args m
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["recipient_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("recipient_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["request_status"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("request_status", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -4139,11 +3531,11 @@ func (c *BusinessClient) Business_get_initiated_audience_sharing_requests(args m
 // business_delete_instagram_accounts DELETE instagram_accounts for Business
 func (c *BusinessClient) Business_delete_instagram_accounts(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	instagram_account, ok := args["instagram_account"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: instagram_account")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = instagram_account // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -4153,10 +3545,10 @@ func (c *BusinessClient) Business_delete_instagram_accounts(args map[string]inte
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["instagram_account"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("instagram_account", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -4327,11 +3719,11 @@ func (c *BusinessClient) Business_get_instagram_business_accounts(args map[strin
 // business_delete_managed_businesses DELETE managed_businesses for Business
 func (c *BusinessClient) Business_delete_managed_businesses(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	existing_client_business_id, ok := args["existing_client_business_id"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: existing_client_business_id")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = existing_client_business_id // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -4341,10 +3733,10 @@ func (c *BusinessClient) Business_delete_managed_businesses(args map[string]inte
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["existing_client_business_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("existing_client_business_id", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -4390,58 +3782,10 @@ func (c *BusinessClient) Business_post_managed_businesses(args map[string]interf
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["child_business_external_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("child_business_external_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["existing_client_business_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("existing_client_business_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["name"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("name", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["sales_rep_email"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("sales_rep_email", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["survey_business_type"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("survey_business_type", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["survey_num_assets"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("survey_num_assets", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["survey_num_people"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("survey_num_people", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["timezone_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("timezone_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["vertical"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("vertical", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -4487,10 +3831,10 @@ func (c *BusinessClient) Business_get_managed_partner_ads_funding_source_details
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["year_quarter"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("year_quarter", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -4560,46 +3904,10 @@ func (c *BusinessClient) Business_post_managed_partner_business_setup(args map[s
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["active_ad_account_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("active_ad_account_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["active_page_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("active_page_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["partner_facebook_page_url"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("partner_facebook_page_url", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["partner_registration_countries"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("partner_registration_countries", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["seller_email_address"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("seller_email_address", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["seller_external_website_url"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("seller_external_website_url", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["template"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("template", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -4645,16 +3953,10 @@ func (c *BusinessClient) Business_delete_managed_partner_businesses(args map[str
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["child_business_external_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("child_business_external_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["child_business_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("child_business_id", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -4691,31 +3993,11 @@ func (c *BusinessClient) Business_delete_managed_partner_businesses(args map[str
 // business_post_managed_partner_businesses POST managed_partner_businesses for Business
 func (c *BusinessClient) Business_post_managed_partner_businesses(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	catalog_id, ok := args["catalog_id"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: catalog_id")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = catalog_id // Suppress unused variable warning
-	name, ok := args["name"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: name")
-	}
-	_ = name // Suppress unused variable warning
-	seller_external_website_url, ok := args["seller_external_website_url"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: seller_external_website_url")
-	}
-	_ = seller_external_website_url // Suppress unused variable warning
-	seller_targeting_countries, ok := args["seller_targeting_countries"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: seller_targeting_countries")
-	}
-	_ = seller_targeting_countries // Suppress unused variable warning
-	vertical, ok := args["vertical"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: vertical")
-	}
-	_ = vertical // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -4725,130 +4007,10 @@ func (c *BusinessClient) Business_post_managed_partner_businesses(args map[strin
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["ad_account_currency"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("ad_account_currency", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["catalog_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("catalog_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["child_business_external_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("child_business_external_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["credit_limit"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("credit_limit", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["line_of_credit_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("line_of_credit_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["name"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("name", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["no_ad_account"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("no_ad_account", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["page_name"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("page_name", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["page_profile_image_url"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("page_profile_image_url", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["partition_type"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("partition_type", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["partner_facebook_page_url"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("partner_facebook_page_url", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["partner_registration_countries"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("partner_registration_countries", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["sales_rep_email"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("sales_rep_email", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["seller_external_website_url"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("seller_external_website_url", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["seller_targeting_countries"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("seller_targeting_countries", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["skip_partner_page_creation"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("skip_partner_page_creation", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["survey_business_type"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("survey_business_type", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["survey_num_assets"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("survey_num_assets", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["survey_num_people"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("survey_num_people", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["timezone_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("timezone_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["vertical"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("vertical", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -4894,10 +4056,10 @@ func (c *BusinessClient) Business_post_onboard_partners_to_mm_lite(args map[stri
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["solution_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("solution_id", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -5001,11 +4163,11 @@ func (c *BusinessClient) Business_get_openbridge_configurations(args map[string]
 // business_post_openbridge_configurations POST openbridge_configurations for Business
 func (c *BusinessClient) Business_post_openbridge_configurations(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	pixel_id, ok := args["pixel_id"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: pixel_id")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = pixel_id // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -5015,106 +4177,10 @@ func (c *BusinessClient) Business_post_openbridge_configurations(args map[string
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["active"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("active", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["cloud_provider"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("cloud_provider", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["cloud_region"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("cloud_region", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["destination_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("destination_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["endpoint"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("endpoint", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["fallback_domain"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("fallback_domain", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["first_party_domain"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("first_party_domain", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["host_business_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("host_business_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["instance_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("instance_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["instance_version"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("instance_version", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["is_sgw_instance"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("is_sgw_instance", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["is_sgw_pixel_from_meta_pixel"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("is_sgw_pixel_from_meta_pixel", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["partner_name"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("partner_name", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["pixel_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("pixel_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["sgw_account_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("sgw_account_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["sgw_instance_url"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("sgw_instance_url", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["sgw_pixel_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("sgw_pixel_id", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -5160,10 +4226,10 @@ func (c *BusinessClient) Business_get_owned_ad_accounts(args map[string]interfac
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["search_query"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("search_query", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -5224,11 +4290,11 @@ func (c *BusinessClient) Business_get_owned_ad_accounts(args map[string]interfac
 // business_post_owned_ad_accounts POST owned_ad_accounts for Business
 func (c *BusinessClient) Business_post_owned_ad_accounts(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	adaccount_id, ok := args["adaccount_id"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: adaccount_id")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = adaccount_id // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -5238,10 +4304,10 @@ func (c *BusinessClient) Business_post_owned_ad_accounts(args map[string]interfa
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["adaccount_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("adaccount_id", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -5345,11 +4411,11 @@ func (c *BusinessClient) Business_get_owned_apps(args map[string]interface{}) (i
 // business_post_owned_apps POST owned_apps for Business
 func (c *BusinessClient) Business_post_owned_apps(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	app_id, ok := args["app_id"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: app_id")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = app_id // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -5359,10 +4425,10 @@ func (c *BusinessClient) Business_post_owned_apps(args map[string]interface{}) (
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["app_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("app_id", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -5399,11 +4465,11 @@ func (c *BusinessClient) Business_post_owned_apps(args map[string]interface{}) (
 // business_delete_owned_businesses DELETE owned_businesses for Business
 func (c *BusinessClient) Business_delete_owned_businesses(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	client_id, ok := args["client_id"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: client_id")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = client_id // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -5413,10 +4479,10 @@ func (c *BusinessClient) Business_delete_owned_businesses(args map[string]interf
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["client_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("client_id", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -5462,16 +4528,10 @@ func (c *BusinessClient) Business_get_owned_businesses(args map[string]interface
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["child_business_external_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("child_business_external_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["client_user_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("client_user_id", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -5532,16 +4592,11 @@ func (c *BusinessClient) Business_get_owned_businesses(args map[string]interface
 // business_post_owned_businesses POST owned_businesses for Business
 func (c *BusinessClient) Business_post_owned_businesses(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	name, ok := args["name"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: name")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = name // Suppress unused variable warning
-	vertical, ok := args["vertical"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: vertical")
-	}
-	_ = vertical // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -5551,70 +4606,10 @@ func (c *BusinessClient) Business_post_owned_businesses(args map[string]interfac
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["child_business_external_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("child_business_external_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["name"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("name", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["page_permitted_tasks"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("page_permitted_tasks", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["sales_rep_email"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("sales_rep_email", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["shared_page_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("shared_page_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["should_generate_name"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("should_generate_name", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["survey_business_type"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("survey_business_type", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["survey_num_assets"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("survey_num_assets", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["survey_num_people"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("survey_num_people", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["timezone_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("timezone_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["vertical"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("vertical", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -5852,11 +4847,11 @@ func (c *BusinessClient) Business_get_owned_pages(args map[string]interface{}) (
 // business_post_owned_pages POST owned_pages for Business
 func (c *BusinessClient) Business_post_owned_pages(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	page_id, ok := args["page_id"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: page_id")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = page_id // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -5866,22 +4861,10 @@ func (c *BusinessClient) Business_post_owned_pages(args map[string]interface{}) 
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["code"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("code", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["entry_point"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("entry_point", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["page_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("page_id", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -6052,11 +5035,11 @@ func (c *BusinessClient) Business_get_owned_product_catalogs(args map[string]int
 // business_post_owned_product_catalogs POST owned_product_catalogs for Business
 func (c *BusinessClient) Business_post_owned_product_catalogs(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	name, ok := args["name"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: name")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = name // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -6066,76 +5049,10 @@ func (c *BusinessClient) Business_post_owned_product_catalogs(args map[string]in
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["additional_vertical_option"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("additional_vertical_option", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["business_metadata"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("business_metadata", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["catalog_segment_filter"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("catalog_segment_filter", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["catalog_segment_product_set_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("catalog_segment_product_set_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["da_display_settings"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("da_display_settings", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["destination_catalog_settings"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("destination_catalog_settings", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["flight_catalog_settings"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("flight_catalog_settings", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["name"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("name", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["parent_catalog_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("parent_catalog_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["partner_integration"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("partner_integration", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["store_catalog_settings"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("store_catalog_settings", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["vertical"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("vertical", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -6239,11 +5156,11 @@ func (c *BusinessClient) Business_get_owned_whatsapp_business_accounts(args map[
 // business_delete_pages DELETE pages for Business
 func (c *BusinessClient) Business_delete_pages(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	page_id, ok := args["page_id"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: page_id")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = page_id // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -6253,10 +5170,10 @@ func (c *BusinessClient) Business_delete_pages(args map[string]interface{}) (int
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["page_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("page_id", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -6360,26 +5277,11 @@ func (c *BusinessClient) Business_get_partner_account_linking(args map[string]in
 // business_post_partner_premium_options POST partner_premium_options for Business
 func (c *BusinessClient) Business_post_partner_premium_options(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	enable_basket_insight, ok := args["enable_basket_insight"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: enable_basket_insight")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = enable_basket_insight // Suppress unused variable warning
-	enable_extended_audience_retargeting, ok := args["enable_extended_audience_retargeting"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: enable_extended_audience_retargeting")
-	}
-	_ = enable_extended_audience_retargeting // Suppress unused variable warning
-	partner_business_id, ok := args["partner_business_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: partner_business_id")
-	}
-	_ = partner_business_id // Suppress unused variable warning
-	retailer_custom_audience_config, ok := args["retailer_custom_audience_config"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: retailer_custom_audience_config")
-	}
-	_ = retailer_custom_audience_config // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -6389,40 +5291,10 @@ func (c *BusinessClient) Business_post_partner_premium_options(args map[string]i
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["catalog_segment_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("catalog_segment_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["enable_basket_insight"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("enable_basket_insight", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["enable_extended_audience_retargeting"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("enable_extended_audience_retargeting", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["partner_business_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("partner_business_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["retailer_custom_audience_config"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("retailer_custom_audience_config", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["vendor_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("vendor_id", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -6937,10 +5809,10 @@ func (c *BusinessClient) Business_get_pending_users(args map[string]interface{})
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["email"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("email", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -7010,28 +5882,10 @@ func (c *BusinessClient) Business_get_picture(args map[string]interface{}) (inte
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["height"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("height", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["redirect"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("redirect", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["type"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("type", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["width"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("width", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -7143,16 +5997,10 @@ func (c *BusinessClient) Business_get_preverified_numbers(args map[string]interf
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["code_verification_status"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("code_verification_status", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["phone_number"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("phone_number", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -7222,16 +6070,10 @@ func (c *BusinessClient) Business_get_received_audience_sharing_requests(args ma
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["initiator_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("initiator_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["request_status"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("request_status", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -7368,10 +6210,10 @@ func (c *BusinessClient) Business_get_self_certified_whatsapp_business_submissio
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["end_business_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("end_business_id", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -7432,16 +6274,11 @@ func (c *BusinessClient) Business_get_self_certified_whatsapp_business_submissio
 // business_post_self_certify_whatsapp_business POST self_certify_whatsapp_business for Business
 func (c *BusinessClient) Business_post_self_certify_whatsapp_business(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	business_documents, ok := args["business_documents"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: business_documents")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = business_documents // Suppress unused variable warning
-	end_business_id, ok := args["end_business_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: end_business_id")
-	}
-	_ = end_business_id // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -7451,58 +6288,10 @@ func (c *BusinessClient) Business_post_self_certify_whatsapp_business(args map[s
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["average_monthly_revenue_spend_with_partner"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("average_monthly_revenue_spend_with_partner", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["business_documents"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("business_documents", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["business_vertical"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("business_vertical", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["end_business_address"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("end_business_address", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["end_business_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("end_business_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["end_business_legal_name"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("end_business_legal_name", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["end_business_trade_names"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("end_business_trade_names", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["end_business_website"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("end_business_website", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["num_billing_cycles_with_partner"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("num_billing_cycles_with_partner", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -7539,31 +6328,11 @@ func (c *BusinessClient) Business_post_self_certify_whatsapp_business(args map[s
 // business_post_setup_managed_partner_adaccounts POST setup_managed_partner_adaccounts for Business
 func (c *BusinessClient) Business_post_setup_managed_partner_adaccounts(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	credit_line_id, ok := args["credit_line_id"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: credit_line_id")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = credit_line_id // Suppress unused variable warning
-	marketplace_business_id, ok := args["marketplace_business_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: marketplace_business_id")
-	}
-	_ = marketplace_business_id // Suppress unused variable warning
-	subvertical_v2, ok := args["subvertical_v2"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: subvertical_v2")
-	}
-	_ = subvertical_v2 // Suppress unused variable warning
-	vendor_id, ok := args["vendor_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: vendor_id")
-	}
-	_ = vendor_id // Suppress unused variable warning
-	vertical_v2, ok := args["vertical_v2"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: vertical_v2")
-	}
-	_ = vertical_v2 // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -7573,34 +6342,10 @@ func (c *BusinessClient) Business_post_setup_managed_partner_adaccounts(args map
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["credit_line_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("credit_line_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["marketplace_business_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("marketplace_business_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["subvertical_v2"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("subvertical_v2", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["vendor_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("vendor_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["vertical_v2"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("vertical_v2", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -7637,16 +6382,11 @@ func (c *BusinessClient) Business_post_setup_managed_partner_adaccounts(args map
 // business_delete_share_preverified_numbers DELETE share_preverified_numbers for Business
 func (c *BusinessClient) Business_delete_share_preverified_numbers(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	partner_business_id, ok := args["partner_business_id"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: partner_business_id")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = partner_business_id // Suppress unused variable warning
-	preverified_id, ok := args["preverified_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: preverified_id")
-	}
-	_ = preverified_id // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -7656,16 +6396,10 @@ func (c *BusinessClient) Business_delete_share_preverified_numbers(args map[stri
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["partner_business_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("partner_business_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["preverified_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("preverified_id", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -7702,16 +6436,11 @@ func (c *BusinessClient) Business_delete_share_preverified_numbers(args map[stri
 // business_post_share_preverified_numbers POST share_preverified_numbers for Business
 func (c *BusinessClient) Business_post_share_preverified_numbers(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	partner_business_id, ok := args["partner_business_id"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: partner_business_id")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = partner_business_id // Suppress unused variable warning
-	preverified_id, ok := args["preverified_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: preverified_id")
-	}
-	_ = preverified_id // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -7721,16 +6450,10 @@ func (c *BusinessClient) Business_post_share_preverified_numbers(args map[string
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["partner_business_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("partner_business_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["preverified_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("preverified_id", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -7776,34 +6499,10 @@ func (c *BusinessClient) Business_post_system_user_access_tokens(args map[string
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["asset"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("asset", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["fetch_only"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("fetch_only", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["scope"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("scope", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["set_token_expires_in_60_days"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("set_token_expires_in_60_days", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["system_user_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("system_user_id", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -7907,11 +6606,11 @@ func (c *BusinessClient) Business_get_system_users(args map[string]interface{}) 
 // business_post_system_users POST system_users for Business
 func (c *BusinessClient) Business_post_system_users(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	name, ok := args["name"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: name")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = name // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -7921,22 +6620,10 @@ func (c *BusinessClient) Business_post_system_users(args map[string]interface{})
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["name"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("name", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["role"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("role", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["system_user_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("system_user_id", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -8040,11 +6727,11 @@ func (c *BusinessClient) Business_get_third_party_measurement_report_dataset(arg
 // business_post_videos POST videos for Business
 func (c *BusinessClient) Business_post_videos(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	creative_folder_id, ok := args["creative_folder_id"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: creative_folder_id")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = creative_folder_id // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -8054,418 +6741,10 @@ func (c *BusinessClient) Business_post_videos(args map[string]interface{}) (inte
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["ad_placements_validation_only"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("ad_placements_validation_only", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["application_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("application_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["asked_fun_fact_prompt_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("asked_fun_fact_prompt_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["audio_story_wave_animation_handle"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("audio_story_wave_animation_handle", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["chunk_session_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("chunk_session_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["composer_entry_picker"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("composer_entry_picker", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["composer_entry_point"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("composer_entry_point", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["composer_entry_time"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("composer_entry_time", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["composer_session_events_log"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("composer_session_events_log", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["composer_session_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("composer_session_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["composer_source_surface"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("composer_source_surface", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["composer_type"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("composer_type", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["container_type"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("container_type", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["content_category"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("content_category", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["creative_folder_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("creative_folder_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["creative_tools"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("creative_tools", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["description"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("description", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["embeddable"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("embeddable", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["end_offset"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("end_offset", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["fbuploader_video_file_chunk"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("fbuploader_video_file_chunk", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["file_size"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("file_size", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["file_url"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("file_url", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["fisheye_video_cropped"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("fisheye_video_cropped", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["formatting"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("formatting", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["fov"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("fov", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["front_z_rotation"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("front_z_rotation", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["fun_fact_prompt_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("fun_fact_prompt_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["fun_fact_toastee_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("fun_fact_toastee_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["guide"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("guide", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["guide_enabled"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("guide_enabled", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["initial_heading"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("initial_heading", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["initial_pitch"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("initial_pitch", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["instant_game_entry_point_data"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("instant_game_entry_point_data", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["is_boost_intended"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("is_boost_intended", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["is_group_linking_post"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("is_group_linking_post", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["is_partnership_ad"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("is_partnership_ad", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["is_voice_clip"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("is_voice_clip", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["location_source_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("location_source_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["og_action_type_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("og_action_type_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["og_icon_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("og_icon_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["og_object_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("og_object_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["og_phrase"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("og_phrase", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["og_suggestion_mechanism"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("og_suggestion_mechanism", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["original_fov"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("original_fov", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["original_projection_type"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("original_projection_type", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["partnership_ad_ad_code"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("partnership_ad_ad_code", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["publish_event_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("publish_event_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["referenced_sticker_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("referenced_sticker_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["replace_video_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("replace_video_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["slideshow_spec"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("slideshow_spec", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["source"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("source", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["source_instagram_media_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("source_instagram_media_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["spherical"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("spherical", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["start_offset"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("start_offset", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["swap_mode"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("swap_mode", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["text_format_metadata"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("text_format_metadata", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["thumb"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("thumb", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["time_since_original_post"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("time_since_original_post", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["title"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("title", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["transcode_setting_properties"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("transcode_setting_properties", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["unpublished_content_type"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("unpublished_content_type", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["upload_phase"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("upload_phase", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["upload_session_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("upload_session_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["upload_setting_properties"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("upload_setting_properties", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["validation_ad_placements"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("validation_ad_placements", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["video_file_chunk"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("video_file_chunk", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["video_id_original"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("video_id_original", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["video_start_time_ms"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("video_start_time_ms", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["waterfall_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("waterfall_id", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -8578,40 +6857,10 @@ func (c *BusinessClient) Business_post_(args map[string]interface{}) (interface{
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["entry_point"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("entry_point", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["name"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("name", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["primary_page"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("primary_page", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["timezone_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("timezone_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["two_factor_type"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("two_factor_type", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["vertical"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("vertical", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 

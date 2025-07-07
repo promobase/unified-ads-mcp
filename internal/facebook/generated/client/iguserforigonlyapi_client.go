@@ -24,11 +24,11 @@ func NewIGUserForIGOnlyAPIClient(accessToken string) *IGUserForIGOnlyAPIClient {
 // iguserforigonlyapi_get_business_messaging_feature_status GET business_messaging_feature_status for IGUserForIGOnlyAPI
 func (c *IGUserForIGOnlyAPIClient) Iguserforigonlyapi_get_business_messaging_feature_status(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	feature, ok := args["feature"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: feature")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = feature // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -38,10 +38,10 @@ func (c *IGUserForIGOnlyAPIClient) Iguserforigonlyapi_get_business_messaging_fea
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["feature"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("feature", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -111,10 +111,10 @@ func (c *IGUserForIGOnlyAPIClient) Iguserforigonlyapi_get_content_publishing_lim
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["since"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("since", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -184,28 +184,10 @@ func (c *IGUserForIGOnlyAPIClient) Iguserforigonlyapi_get_conversations(args map
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["folder"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("folder", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["platform"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("platform", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["tags"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("tags", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["user_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("user_id", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -266,16 +248,11 @@ func (c *IGUserForIGOnlyAPIClient) Iguserforigonlyapi_get_conversations(args map
 // iguserforigonlyapi_get_insights GET insights for IGUserForIGOnlyAPI
 func (c *IGUserForIGOnlyAPIClient) Iguserforigonlyapi_get_insights(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	metric, ok := args["metric"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: metric")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = metric // Suppress unused variable warning
-	period, ok := args["period"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: period")
-	}
-	_ = period // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -285,46 +262,10 @@ func (c *IGUserForIGOnlyAPIClient) Iguserforigonlyapi_get_insights(args map[stri
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["breakdown"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("breakdown", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["metric"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("metric", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["metric_type"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("metric_type", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["period"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("period", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["since"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("since", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["timeframe"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("timeframe", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["until"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("until", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -461,16 +402,10 @@ func (c *IGUserForIGOnlyAPIClient) Iguserforigonlyapi_get_media(args map[string]
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["since"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("since", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["until"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("until", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -540,100 +475,10 @@ func (c *IGUserForIGOnlyAPIClient) Iguserforigonlyapi_post_media(args map[string
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["alt_text"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("alt_text", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["audio_name"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("audio_name", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["caption"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("caption", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["children"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("children", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["collaborators"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("collaborators", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["cover_url"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("cover_url", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["image_url"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("image_url", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["is_carousel_item"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("is_carousel_item", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["location_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("location_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["media_type"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("media_type", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["product_tags"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("product_tags", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["share_to_feed"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("share_to_feed", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["thumb_offset"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("thumb_offset", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["upload_type"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("upload_type", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["user_tags"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("user_tags", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["video_url"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("video_url", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -670,11 +515,11 @@ func (c *IGUserForIGOnlyAPIClient) Iguserforigonlyapi_post_media(args map[string
 // iguserforigonlyapi_post_mediapublish POST mediapublish for IGUserForIGOnlyAPI
 func (c *IGUserForIGOnlyAPIClient) Iguserforigonlyapi_post_mediapublish(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	creation_id, ok := args["creation_id"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: creation_id")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = creation_id // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -684,10 +529,10 @@ func (c *IGUserForIGOnlyAPIClient) Iguserforigonlyapi_post_mediapublish(args map
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["creation_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("creation_id", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -724,16 +569,11 @@ func (c *IGUserForIGOnlyAPIClient) Iguserforigonlyapi_post_mediapublish(args map
 // iguserforigonlyapi_post_mentions POST mentions for IGUserForIGOnlyAPI
 func (c *IGUserForIGOnlyAPIClient) Iguserforigonlyapi_post_mentions(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	media_id, ok := args["media_id"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: media_id")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = media_id // Suppress unused variable warning
-	message, ok := args["message"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: message")
-	}
-	_ = message // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -743,22 +583,10 @@ func (c *IGUserForIGOnlyAPIClient) Iguserforigonlyapi_post_mentions(args map[str
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["comment_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("comment_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["media_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("media_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["message"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("message", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -795,11 +623,11 @@ func (c *IGUserForIGOnlyAPIClient) Iguserforigonlyapi_post_mentions(args map[str
 // iguserforigonlyapi_post_messageattachments POST messageattachments for IGUserForIGOnlyAPI
 func (c *IGUserForIGOnlyAPIClient) Iguserforigonlyapi_post_messageattachments(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	message, ok := args["message"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: message")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = message // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -809,10 +637,10 @@ func (c *IGUserForIGOnlyAPIClient) Iguserforigonlyapi_post_messageattachments(ar
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["message"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("message", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -858,46 +686,10 @@ func (c *IGUserForIGOnlyAPIClient) Iguserforigonlyapi_post_messages(args map[str
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["message"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("message", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["messaging_type"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("messaging_type", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["payload"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("payload", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["recipient"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("recipient", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["sender_action"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("sender_action", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["tag"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("tag", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["thread_control"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("thread_control", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -934,11 +726,11 @@ func (c *IGUserForIGOnlyAPIClient) Iguserforigonlyapi_post_messages(args map[str
 // iguserforigonlyapi_delete_messenger_profile DELETE messenger_profile for IGUserForIGOnlyAPI
 func (c *IGUserForIGOnlyAPIClient) Iguserforigonlyapi_delete_messenger_profile(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	fields, ok := args["fields"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: fields")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = fields // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -948,10 +740,10 @@ func (c *IGUserForIGOnlyAPIClient) Iguserforigonlyapi_delete_messenger_profile(a
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["fields"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("fields", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -1064,16 +856,10 @@ func (c *IGUserForIGOnlyAPIClient) Iguserforigonlyapi_post_messenger_profile(arg
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["ice_breakers"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("ice_breakers", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["persistent_menu"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("persistent_menu", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -1286,11 +1072,11 @@ func (c *IGUserForIGOnlyAPIClient) Iguserforigonlyapi_get_subscribed_apps(args m
 // iguserforigonlyapi_post_subscribed_apps POST subscribed_apps for IGUserForIGOnlyAPI
 func (c *IGUserForIGOnlyAPIClient) Iguserforigonlyapi_post_subscribed_apps(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	subscribed_fields, ok := args["subscribed_fields"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: subscribed_fields")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = subscribed_fields // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -1300,10 +1086,10 @@ func (c *IGUserForIGOnlyAPIClient) Iguserforigonlyapi_post_subscribed_apps(args 
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["subscribed_fields"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("subscribed_fields", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -1416,10 +1202,10 @@ func (c *IGUserForIGOnlyAPIClient) Iguserforigonlyapi_delete_welcome_message_flo
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["flow_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("flow_id", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -1465,16 +1251,10 @@ func (c *IGUserForIGOnlyAPIClient) Iguserforigonlyapi_get_welcome_message_flows(
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["app_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("app_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["flow_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("flow_id", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -1544,28 +1324,10 @@ func (c *IGUserForIGOnlyAPIClient) Iguserforigonlyapi_post_welcome_message_flows
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["eligible_platforms"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("eligible_platforms", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["flow_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("flow_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["name"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("name", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["welcome_message_flow"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("welcome_message_flow", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 

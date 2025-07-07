@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -20,8 +21,8 @@ func GetCPASAdvertiserPartnershipRecommendationTools() []mcp.Tool {
 	// Available fields for CPASAdvertiserPartnershipRecommendation: advertiser_business_id, brand_business_id, brands, countries, id, merchant_business_id, merchant_categories, status, status_reason
 	cpasadvertiserpartnershiprecommendation_get_Tool := mcp.NewTool("cpasadvertiserpartnershiprecommendation_get_",
 		mcp.WithDescription("GET  for CPASAdvertiserPartnershipRecommendation"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for CPASAdvertiserPartnershipRecommendation objects. Available fields: advertiser_business_id, brand_business_id, brands, countries, id, merchant_business_id, merchant_categories, status, status_reason"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for CPASAdvertiserPartnershipRecommendation objects. Available fields: advertiser_business_id, brand_business_id, brands, countries, id, merchant_business_id, merchant_categories, status, status_reason"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -55,8 +56,13 @@ func HandleCpasadvertiserpartnershiprecommendation_get_(ctx context.Context, req
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit

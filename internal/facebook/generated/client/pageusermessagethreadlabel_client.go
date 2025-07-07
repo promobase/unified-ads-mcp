@@ -24,11 +24,11 @@ func NewPageUserMessageThreadLabelClient(accessToken string) *PageUserMessageThr
 // pageusermessagethreadlabel_delete_label DELETE label for PageUserMessageThreadLabel
 func (c *PageUserMessageThreadLabelClient) Pageusermessagethreadlabel_delete_label(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	user, ok := args["user"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: user")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = user // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -38,10 +38,10 @@ func (c *PageUserMessageThreadLabelClient) Pageusermessagethreadlabel_delete_lab
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["user"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("user", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -78,11 +78,11 @@ func (c *PageUserMessageThreadLabelClient) Pageusermessagethreadlabel_delete_lab
 // pageusermessagethreadlabel_post_label POST label for PageUserMessageThreadLabel
 func (c *PageUserMessageThreadLabelClient) Pageusermessagethreadlabel_post_label(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	user, ok := args["user"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: user")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = user // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -92,10 +92,10 @@ func (c *PageUserMessageThreadLabelClient) Pageusermessagethreadlabel_post_label
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["user"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("user", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 

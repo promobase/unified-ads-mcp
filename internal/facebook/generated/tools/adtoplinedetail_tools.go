@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -20,8 +21,8 @@ func GetAdToplineDetailTools() []mcp.Tool {
 	// Available fields for AdToplineDetail: active_status, ad_account_id, flight_end_date, flight_start_date, id, io_number, line_number, price, quantity, sf_detail_line_id, subline_id, targets, time_created, time_updated
 	adtoplinedetail_get_Tool := mcp.NewTool("adtoplinedetail_get_",
 		mcp.WithDescription("GET  for AdToplineDetail"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for AdToplineDetail objects. Available fields: active_status, ad_account_id, flight_end_date, flight_start_date, id, io_number, line_number, price, quantity, sf_detail_line_id, subline_id, targets, time_created, time_updated"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for AdToplineDetail objects. Available fields: active_status, ad_account_id, flight_end_date, flight_start_date, id, io_number, line_number, price, quantity, sf_detail_line_id, subline_id, targets, time_created, time_updated"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -55,8 +56,13 @@ func HandleAdtoplinedetail_get_(ctx context.Context, request mcp.CallToolRequest
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit

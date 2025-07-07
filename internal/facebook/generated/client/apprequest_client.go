@@ -24,11 +24,11 @@ func NewAppRequestClient(accessToken string) *AppRequestClient {
 // apprequest_delete_ DELETE  for AppRequest
 func (c *AppRequestClient) Apprequest_delete_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	ids, ok := args["ids"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: ids")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = ids // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -38,10 +38,10 @@ func (c *AppRequestClient) Apprequest_delete_(args map[string]interface{}) (inte
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["ids"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("ids", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 

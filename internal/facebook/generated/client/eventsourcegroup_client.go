@@ -91,11 +91,11 @@ func (c *EventSourceGroupClient) Eventsourcegroup_get_shared_accounts(args map[s
 // eventsourcegroup_post_shared_accounts POST shared_accounts for EventSourceGroup
 func (c *EventSourceGroupClient) Eventsourcegroup_post_shared_accounts(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	accounts, ok := args["accounts"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: accounts")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = accounts // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -105,10 +105,10 @@ func (c *EventSourceGroupClient) Eventsourcegroup_post_shared_accounts(args map[
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["accounts"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("accounts", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -212,16 +212,11 @@ func (c *EventSourceGroupClient) Eventsourcegroup_get_(args map[string]interface
 // eventsourcegroup_post_ POST  for EventSourceGroup
 func (c *EventSourceGroupClient) Eventsourcegroup_post_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	event_sources, ok := args["event_sources"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: event_sources")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = event_sources // Suppress unused variable warning
-	name, ok := args["name"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: name")
-	}
-	_ = name // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -231,16 +226,10 @@ func (c *EventSourceGroupClient) Eventsourcegroup_post_(args map[string]interfac
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["event_sources"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("event_sources", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["name"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("name", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 

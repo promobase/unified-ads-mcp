@@ -24,11 +24,11 @@ func NewAvatarClient(accessToken string) *AvatarClient {
 // avatar_get_models GET models for Avatar
 func (c *AvatarClient) Avatar_get_models(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	profile, ok := args["profile"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: profile")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = profile // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -38,46 +38,10 @@ func (c *AvatarClient) Avatar_get_models(args map[string]interface{}) (interface
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["client_name"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("client_name", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["client_version"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("client_version", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["config_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("config_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["force_generate"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("force_generate", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["platform"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("platform", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["profile"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("profile", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["sdk_version"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("sdk_version", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {

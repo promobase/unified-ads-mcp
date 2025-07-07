@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -26,8 +27,8 @@ func GetBusinessRoleRequestTools() []mcp.Tool {
 	// Available fields for BusinessRoleRequest: created_by, created_time, email, expiration_time, expiry_time, finance_role, id, invite_link, invited_user_type, ip_role, owner, role, status, tasks, updated_by, updated_time
 	businessrolerequest_get_Tool := mcp.NewTool("businessrolerequest_get_",
 		mcp.WithDescription("GET  for BusinessRoleRequest"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for BusinessRoleRequest objects. Available fields: created_by, created_time, email, expiration_time, expiry_time, finance_role, id, invite_link, invited_user_type, ip_role, owner, role, status, tasks, updated_by (and 1 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for BusinessRoleRequest objects. Available fields: created_by, created_time, email, expiration_time, expiry_time, finance_role, id, invite_link, invited_user_type, ip_role, owner, role, status, tasks, updated_by (and 1 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -42,15 +43,24 @@ func GetBusinessRoleRequestTools() []mcp.Tool {
 	tools = append(tools, businessrolerequest_get_Tool)
 
 	// businessrolerequest_post_ tool
+	// Params object accepts: role (businessrolerequest_role), tasks (list<businessrolerequest_tasks>)
 	businessrolerequest_post_Tool := mcp.NewTool("businessrolerequest_post_",
 		mcp.WithDescription("POST  for BusinessRoleRequest"),
-		mcp.WithString("role",
-			mcp.Description("role parameter for "),
-			mcp.Enum("ADMIN", "ADS_RIGHTS_REVIEWER", "DEFAULT", "DEVELOPER", "EMPLOYEE", "FINANCE_ANALYST", "FINANCE_EDIT", "FINANCE_EDITOR", "FINANCE_VIEW", "MANAGE", "PARTNER_CENTER_ADMIN", "PARTNER_CENTER_ANALYST", "PARTNER_CENTER_EDUCATION", "PARTNER_CENTER_MARKETING", "PARTNER_CENTER_OPERATIONS"),
-		),
-		mcp.WithString("tasks",
-			mcp.Description("tasks parameter for "),
-			mcp.Enum("ADMIN", "ADS_RIGHTS_REVIEWER", "DEFAULT", "DEVELOPER", "EMPLOYEE", "FINANCE_ANALYST", "FINANCE_EDIT", "FINANCE_EDITOR", "FINANCE_VIEW", "MANAGE", "PARTNER_CENTER_ADMIN", "PARTNER_CENTER_ANALYST", "PARTNER_CENTER_EDUCATION", "PARTNER_CENTER_MARKETING", "PARTNER_CENTER_OPERATIONS"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"role": map[string]any{
+					"type":        "string",
+					"description": "role parameter",
+					"enum":        []string{"ADMIN", "ADS_RIGHTS_REVIEWER", "DEFAULT", "DEVELOPER", "EMPLOYEE", "FINANCE_ANALYST", "FINANCE_EDIT", "FINANCE_EDITOR", "FINANCE_VIEW", "MANAGE", "PARTNER_CENTER_ADMIN", "PARTNER_CENTER_ANALYST", "PARTNER_CENTER_EDUCATION", "PARTNER_CENTER_MARKETING", "PARTNER_CENTER_OPERATIONS"},
+				},
+				"tasks": map[string]any{
+					"type":        "array",
+					"description": "tasks parameter",
+					"enum":        []string{"ADMIN", "ADS_RIGHTS_REVIEWER", "DEFAULT", "DEVELOPER", "EMPLOYEE", "FINANCE_ANALYST", "FINANCE_EDIT", "FINANCE_EDITOR", "FINANCE_VIEW", "MANAGE", "PARTNER_CENTER_ADMIN", "PARTNER_CENTER_ANALYST", "PARTNER_CENTER_EDUCATION", "PARTNER_CENTER_MARKETING", "PARTNER_CENTER_OPERATIONS"},
+					"items":       map[string]any{"type": "string"},
+				},
+			}),
+			mcp.Description("Parameters object containing: role (businessrolerequest_role) [ADMIN, ADS_RIGHTS_REVIEWER, DEFAULT, DEVELOPER, EMPLOYEE, ...], tasks (array<businessrolerequest_tasks>) [ADMIN, ADS_RIGHTS_REVIEWER, DEFAULT, DEVELOPER, EMPLOYEE, ...]"),
 		),
 	)
 	tools = append(tools, businessrolerequest_post_Tool)
@@ -104,8 +114,13 @@ func HandleBusinessrolerequest_get_(ctx context.Context, request mcp.CallToolReq
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -152,15 +167,16 @@ func HandleBusinessrolerequest_post_(ctx context.Context, request mcp.CallToolRe
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: role
-	if val := request.GetString("role", ""); val != "" {
-		args["role"] = val
-	}
-
-	// Optional: tasks
-	// array type - using string
-	if val := request.GetString("tasks", ""); val != "" {
-		args["tasks"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Call the client method

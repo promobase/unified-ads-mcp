@@ -91,16 +91,11 @@ func (c *ExtendedCreditClient) Extendedcredit_get_extended_credit_invoice_groups
 // extendedcredit_post_extended_credit_invoice_groups POST extended_credit_invoice_groups for ExtendedCredit
 func (c *ExtendedCreditClient) Extendedcredit_post_extended_credit_invoice_groups(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	emails, ok := args["emails"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: emails")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = emails // Suppress unused variable warning
-	name, ok := args["name"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: name")
-	}
-	_ = name // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -110,16 +105,10 @@ func (c *ExtendedCreditClient) Extendedcredit_post_extended_credit_invoice_group
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["emails"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("emails", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["name"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("name", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -165,10 +154,10 @@ func (c *ExtendedCreditClient) Extendedcredit_get_owning_credit_allocation_confi
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["receiving_business_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("receiving_business_id", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -229,11 +218,11 @@ func (c *ExtendedCreditClient) Extendedcredit_get_owning_credit_allocation_confi
 // extendedcredit_post_owning_credit_allocation_configs POST owning_credit_allocation_configs for ExtendedCredit
 func (c *ExtendedCreditClient) Extendedcredit_post_owning_credit_allocation_configs(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	receiving_business_id, ok := args["receiving_business_id"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: receiving_business_id")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = receiving_business_id // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -243,34 +232,10 @@ func (c *ExtendedCreditClient) Extendedcredit_post_owning_credit_allocation_conf
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["amount"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("amount", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["liability_type"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("liability_type", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["partition_type"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("partition_type", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["receiving_business_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("receiving_business_id", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["send_bill_to"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("send_bill_to", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -307,16 +272,11 @@ func (c *ExtendedCreditClient) Extendedcredit_post_owning_credit_allocation_conf
 // extendedcredit_post_whatsapp_credit_attach POST whatsapp_credit_attach for ExtendedCredit
 func (c *ExtendedCreditClient) Extendedcredit_post_whatsapp_credit_attach(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	waba_currency, ok := args["waba_currency"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: waba_currency")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = waba_currency // Suppress unused variable warning
-	waba_id, ok := args["waba_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: waba_id")
-	}
-	_ = waba_id // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -326,16 +286,10 @@ func (c *ExtendedCreditClient) Extendedcredit_post_whatsapp_credit_attach(args m
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["waba_currency"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("waba_currency", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["waba_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("waba_id", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -372,11 +326,11 @@ func (c *ExtendedCreditClient) Extendedcredit_post_whatsapp_credit_attach(args m
 // extendedcredit_post_whatsapp_credit_sharing POST whatsapp_credit_sharing for ExtendedCredit
 func (c *ExtendedCreditClient) Extendedcredit_post_whatsapp_credit_sharing(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	receiving_business_id, ok := args["receiving_business_id"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: receiving_business_id")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = receiving_business_id // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -386,10 +340,10 @@ func (c *ExtendedCreditClient) Extendedcredit_post_whatsapp_credit_sharing(args 
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["receiving_business_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("receiving_business_id", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -426,16 +380,11 @@ func (c *ExtendedCreditClient) Extendedcredit_post_whatsapp_credit_sharing(args 
 // extendedcredit_post_whatsapp_credit_sharing_and_attach POST whatsapp_credit_sharing_and_attach for ExtendedCredit
 func (c *ExtendedCreditClient) Extendedcredit_post_whatsapp_credit_sharing_and_attach(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	waba_currency, ok := args["waba_currency"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: waba_currency")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = waba_currency // Suppress unused variable warning
-	waba_id, ok := args["waba_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: waba_id")
-	}
-	_ = waba_id // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -445,16 +394,10 @@ func (c *ExtendedCreditClient) Extendedcredit_post_whatsapp_credit_sharing_and_a
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["waba_currency"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("waba_currency", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["waba_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("waba_id", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 

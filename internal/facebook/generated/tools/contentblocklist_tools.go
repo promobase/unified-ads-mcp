@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -20,8 +21,8 @@ func GetContentBlockListTools() []mcp.Tool {
 	// Available fields for AdAccount: account_id, account_status, ad_account_promotable_objects, age, agency_client_declaration, all_capabilities, amount_spent, attribution_spec, balance, brand_safety_content_filter_levels, business, business_city, business_country_code, business_name, business_state, business_street, business_street2, business_zip, can_create_brand_lift_study, capabilities, created_time, currency, custom_audience_info, default_dsa_beneficiary, default_dsa_payor, disable_reason, end_advertiser, end_advertiser_name, existing_customers, expired_funding_source_details, extended_credit_invoice_group, failed_delivery_checks, fb_entity, funding_source, funding_source_details, has_migrated_permissions, has_page_authorized_adaccount, id, io_number, is_attribution_spec_system_default, is_ba_skip_delayed_eligible, is_direct_deals_enabled, is_in_3ds_authorization_enabled_market, is_notifications_enabled, is_personal, is_prepay_account, is_tax_id_required, liable_address, line_numbers, media_agency, min_campaign_group_spend_cap, min_daily_budget, name, offsite_pixels_tos_accepted, owner, owner_business, partner, rf_spec, send_bill_to_address, show_checkout_experience, sold_to_address, spend_cap, tax_id, tax_id_status, tax_id_type, timezone_id, timezone_name, timezone_offset_hours_utc, tos_accepted, user_access_expire_time, user_tasks, user_tos_accepted, viewable_business
 	contentblocklist_get_applied_ad_accountsTool := mcp.NewTool("contentblocklist_get_applied_ad_accounts",
 		mcp.WithDescription("GET applied_ad_accounts for ContentBlockList"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for AdAccount objects. Available fields: account_id, account_status, ad_account_promotable_objects, age, agency_client_declaration, all_capabilities, amount_spent, attribution_spec, balance, brand_safety_content_filter_levels, business, business_city, business_country_code, business_name, business_state (and 58 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for AdAccount objects. Available fields: account_id, account_status, ad_account_promotable_objects, age, agency_client_declaration, all_capabilities, amount_spent, attribution_spec, balance, brand_safety_content_filter_levels, business, business_city, business_country_code, business_name, business_state (and 58 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -38,8 +39,8 @@ func GetContentBlockListTools() []mcp.Tool {
 	// contentblocklist_get_facebook_content tool
 	contentblocklist_get_facebook_contentTool := mcp.NewTool("contentblocklist_get_facebook_content",
 		mcp.WithDescription("GET facebook_content for ContentBlockList"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -57,8 +58,8 @@ func GetContentBlockListTools() []mcp.Tool {
 	// Available fields for IGMedia: alt_text, boost_eligibility_info, caption, comments_count, copyright_check_information, id, ig_id, is_comment_enabled, is_shared_to_feed, legacy_instagram_media_id, like_count, media_product_type, media_type, media_url, owner, permalink, shortcode, thumbnail_url, timestamp, username, view_count
 	contentblocklist_get_instagram_contentTool := mcp.NewTool("contentblocklist_get_instagram_content",
 		mcp.WithDescription("GET instagram_content for ContentBlockList"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for IGMedia objects. Available fields: alt_text, boost_eligibility_info, caption, comments_count, copyright_check_information, id, ig_id, is_comment_enabled, is_shared_to_feed, legacy_instagram_media_id, like_count, media_product_type, media_type, media_url, owner (and 6 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for IGMedia objects. Available fields: alt_text, boost_eligibility_info, caption, comments_count, copyright_check_information, id, ig_id, is_comment_enabled, is_shared_to_feed, legacy_instagram_media_id, like_count, media_product_type, media_type, media_url, owner (and 6 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -76,8 +77,8 @@ func GetContentBlockListTools() []mcp.Tool {
 	// Available fields for ContentBlockList: business, id, name
 	contentblocklist_get_Tool := mcp.NewTool("contentblocklist_get_",
 		mcp.WithDescription("GET  for ContentBlockList"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for ContentBlockList objects. Available fields: business, id, name"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for ContentBlockList objects. Available fields: business, id, name"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -111,8 +112,13 @@ func HandleContentblocklist_get_applied_ad_accounts(ctx context.Context, request
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -160,8 +166,13 @@ func HandleContentblocklist_get_facebook_content(ctx context.Context, request mc
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -209,8 +220,13 @@ func HandleContentblocklist_get_instagram_content(ctx context.Context, request m
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -258,8 +274,13 @@ func HandleContentblocklist_get_(ctx context.Context, request mcp.CallToolReques
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit

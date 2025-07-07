@@ -24,11 +24,11 @@ func NewBusinessAssetGroupClient(accessToken string) *BusinessAssetGroupClient {
 // businessassetgroup_delete_assigned_users DELETE assigned_users for BusinessAssetGroup
 func (c *BusinessAssetGroupClient) Businessassetgroup_delete_assigned_users(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	user, ok := args["user"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: user")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = user // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -38,10 +38,10 @@ func (c *BusinessAssetGroupClient) Businessassetgroup_delete_assigned_users(args
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["user"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("user", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -78,11 +78,11 @@ func (c *BusinessAssetGroupClient) Businessassetgroup_delete_assigned_users(args
 // businessassetgroup_get_assigned_users GET assigned_users for BusinessAssetGroup
 func (c *BusinessAssetGroupClient) Businessassetgroup_get_assigned_users(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	business, ok := args["business"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: business")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = business // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -92,10 +92,10 @@ func (c *BusinessAssetGroupClient) Businessassetgroup_get_assigned_users(args ma
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["business"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("business", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 	if val, ok := args["fields"]; ok {
@@ -156,11 +156,11 @@ func (c *BusinessAssetGroupClient) Businessassetgroup_get_assigned_users(args ma
 // businessassetgroup_post_assigned_users POST assigned_users for BusinessAssetGroup
 func (c *BusinessAssetGroupClient) Businessassetgroup_post_assigned_users(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	user, ok := args["user"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: user")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = user // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -170,34 +170,10 @@ func (c *BusinessAssetGroupClient) Businessassetgroup_post_assigned_users(args m
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["adaccount_tasks"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("adaccount_tasks", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["offline_conversion_data_set_tasks"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("offline_conversion_data_set_tasks", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["page_tasks"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("page_tasks", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["pixel_tasks"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("pixel_tasks", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["user"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("user", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -234,11 +210,11 @@ func (c *BusinessAssetGroupClient) Businessassetgroup_post_assigned_users(args m
 // businessassetgroup_delete_contained_adaccounts DELETE contained_adaccounts for BusinessAssetGroup
 func (c *BusinessAssetGroupClient) Businessassetgroup_delete_contained_adaccounts(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	asset_id, ok := args["asset_id"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: asset_id")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = asset_id // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -248,10 +224,10 @@ func (c *BusinessAssetGroupClient) Businessassetgroup_delete_contained_adaccount
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["asset_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("asset_id", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -355,11 +331,11 @@ func (c *BusinessAssetGroupClient) Businessassetgroup_get_contained_adaccounts(a
 // businessassetgroup_post_contained_adaccounts POST contained_adaccounts for BusinessAssetGroup
 func (c *BusinessAssetGroupClient) Businessassetgroup_post_contained_adaccounts(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	asset_id, ok := args["asset_id"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: asset_id")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = asset_id // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -369,10 +345,10 @@ func (c *BusinessAssetGroupClient) Businessassetgroup_post_contained_adaccounts(
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["asset_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("asset_id", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -409,11 +385,11 @@ func (c *BusinessAssetGroupClient) Businessassetgroup_post_contained_adaccounts(
 // businessassetgroup_delete_contained_applications DELETE contained_applications for BusinessAssetGroup
 func (c *BusinessAssetGroupClient) Businessassetgroup_delete_contained_applications(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	asset_id, ok := args["asset_id"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: asset_id")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = asset_id // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -423,10 +399,10 @@ func (c *BusinessAssetGroupClient) Businessassetgroup_delete_contained_applicati
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["asset_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("asset_id", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -530,11 +506,11 @@ func (c *BusinessAssetGroupClient) Businessassetgroup_get_contained_applications
 // businessassetgroup_post_contained_applications POST contained_applications for BusinessAssetGroup
 func (c *BusinessAssetGroupClient) Businessassetgroup_post_contained_applications(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	asset_id, ok := args["asset_id"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: asset_id")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = asset_id // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -544,10 +520,10 @@ func (c *BusinessAssetGroupClient) Businessassetgroup_post_contained_application
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["asset_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("asset_id", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -584,11 +560,11 @@ func (c *BusinessAssetGroupClient) Businessassetgroup_post_contained_application
 // businessassetgroup_delete_contained_custom_conversions DELETE contained_custom_conversions for BusinessAssetGroup
 func (c *BusinessAssetGroupClient) Businessassetgroup_delete_contained_custom_conversions(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	asset_id, ok := args["asset_id"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: asset_id")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = asset_id // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -598,10 +574,10 @@ func (c *BusinessAssetGroupClient) Businessassetgroup_delete_contained_custom_co
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["asset_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("asset_id", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -705,11 +681,11 @@ func (c *BusinessAssetGroupClient) Businessassetgroup_get_contained_custom_conve
 // businessassetgroup_post_contained_custom_conversions POST contained_custom_conversions for BusinessAssetGroup
 func (c *BusinessAssetGroupClient) Businessassetgroup_post_contained_custom_conversions(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	asset_id, ok := args["asset_id"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: asset_id")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = asset_id // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -719,10 +695,10 @@ func (c *BusinessAssetGroupClient) Businessassetgroup_post_contained_custom_conv
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["asset_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("asset_id", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -759,11 +735,11 @@ func (c *BusinessAssetGroupClient) Businessassetgroup_post_contained_custom_conv
 // businessassetgroup_delete_contained_instagram_accounts DELETE contained_instagram_accounts for BusinessAssetGroup
 func (c *BusinessAssetGroupClient) Businessassetgroup_delete_contained_instagram_accounts(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	asset_id, ok := args["asset_id"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: asset_id")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = asset_id // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -773,10 +749,10 @@ func (c *BusinessAssetGroupClient) Businessassetgroup_delete_contained_instagram
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["asset_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("asset_id", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -880,11 +856,11 @@ func (c *BusinessAssetGroupClient) Businessassetgroup_get_contained_instagram_ac
 // businessassetgroup_post_contained_instagram_accounts POST contained_instagram_accounts for BusinessAssetGroup
 func (c *BusinessAssetGroupClient) Businessassetgroup_post_contained_instagram_accounts(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	asset_id, ok := args["asset_id"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: asset_id")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = asset_id // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -894,10 +870,10 @@ func (c *BusinessAssetGroupClient) Businessassetgroup_post_contained_instagram_a
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["asset_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("asset_id", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -934,11 +910,11 @@ func (c *BusinessAssetGroupClient) Businessassetgroup_post_contained_instagram_a
 // businessassetgroup_delete_contained_pages DELETE contained_pages for BusinessAssetGroup
 func (c *BusinessAssetGroupClient) Businessassetgroup_delete_contained_pages(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	asset_id, ok := args["asset_id"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: asset_id")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = asset_id // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -948,10 +924,10 @@ func (c *BusinessAssetGroupClient) Businessassetgroup_delete_contained_pages(arg
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["asset_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("asset_id", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -1055,11 +1031,11 @@ func (c *BusinessAssetGroupClient) Businessassetgroup_get_contained_pages(args m
 // businessassetgroup_post_contained_pages POST contained_pages for BusinessAssetGroup
 func (c *BusinessAssetGroupClient) Businessassetgroup_post_contained_pages(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	asset_id, ok := args["asset_id"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: asset_id")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = asset_id // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -1069,10 +1045,10 @@ func (c *BusinessAssetGroupClient) Businessassetgroup_post_contained_pages(args 
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["asset_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("asset_id", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -1109,11 +1085,11 @@ func (c *BusinessAssetGroupClient) Businessassetgroup_post_contained_pages(args 
 // businessassetgroup_delete_contained_pixels DELETE contained_pixels for BusinessAssetGroup
 func (c *BusinessAssetGroupClient) Businessassetgroup_delete_contained_pixels(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	asset_id, ok := args["asset_id"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: asset_id")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = asset_id // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -1123,10 +1099,10 @@ func (c *BusinessAssetGroupClient) Businessassetgroup_delete_contained_pixels(ar
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["asset_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("asset_id", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -1230,11 +1206,11 @@ func (c *BusinessAssetGroupClient) Businessassetgroup_get_contained_pixels(args 
 // businessassetgroup_post_contained_pixels POST contained_pixels for BusinessAssetGroup
 func (c *BusinessAssetGroupClient) Businessassetgroup_post_contained_pixels(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	asset_id, ok := args["asset_id"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: asset_id")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = asset_id // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -1244,10 +1220,10 @@ func (c *BusinessAssetGroupClient) Businessassetgroup_post_contained_pixels(args
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["asset_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("asset_id", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -1284,11 +1260,11 @@ func (c *BusinessAssetGroupClient) Businessassetgroup_post_contained_pixels(args
 // businessassetgroup_delete_contained_product_catalogs DELETE contained_product_catalogs for BusinessAssetGroup
 func (c *BusinessAssetGroupClient) Businessassetgroup_delete_contained_product_catalogs(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	asset_id, ok := args["asset_id"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: asset_id")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = asset_id // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -1298,10 +1274,10 @@ func (c *BusinessAssetGroupClient) Businessassetgroup_delete_contained_product_c
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["asset_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("asset_id", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -1405,11 +1381,11 @@ func (c *BusinessAssetGroupClient) Businessassetgroup_get_contained_product_cata
 // businessassetgroup_post_contained_product_catalogs POST contained_product_catalogs for BusinessAssetGroup
 func (c *BusinessAssetGroupClient) Businessassetgroup_post_contained_product_catalogs(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-	asset_id, ok := args["asset_id"]
+	params, ok := args["params"]
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: asset_id")
+		return nil, fmt.Errorf("missing required parameter: params")
 	}
-	_ = asset_id // Suppress unused variable warning
+	_ = params // Suppress unused variable warning
 
 	// Build request URL and parameters
 	var baseURL string
@@ -1419,10 +1395,10 @@ func (c *BusinessAssetGroupClient) Businessassetgroup_post_contained_product_cat
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["asset_id"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("asset_id", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 
@@ -1535,10 +1511,10 @@ func (c *BusinessAssetGroupClient) Businessassetgroup_post_(args map[string]inte
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["name"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("name", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 

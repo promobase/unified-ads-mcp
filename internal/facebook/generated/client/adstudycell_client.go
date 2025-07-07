@@ -301,40 +301,10 @@ func (c *AdStudyCellClient) Adstudycell_post_(args map[string]interface{}) (inte
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-	if val, ok := args["adaccounts"]; ok {
+	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
 
-		urlParams.Set("adaccounts", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["adsets"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("adsets", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["campaigns"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("campaigns", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["creation_template"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("creation_template", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["description"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("description", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["name"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("name", fmt.Sprintf("%v", val))
+		urlParams.Set("params", fmt.Sprintf("%v", val))
 
 	}
 

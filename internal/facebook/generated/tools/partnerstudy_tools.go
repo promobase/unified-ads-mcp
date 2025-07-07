@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -20,8 +21,8 @@ func GetPartnerStudyTools() []mcp.Tool {
 	// Available fields for PartnerStudy: additional_info, brand, client_name, emails, id, input_ids, is_export, lift_study, location, match_file_ds, name, partner_defined_id, partner_household_graph_dataset_id, status, study_end_date, study_start_date, study_type, submit_date
 	partnerstudy_get_Tool := mcp.NewTool("partnerstudy_get_",
 		mcp.WithDescription("GET  for PartnerStudy"),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for PartnerStudy objects. Available fields: additional_info, brand, client_name, emails, id, input_ids, is_export, lift_study, location, match_file_ds, name, partner_defined_id, partner_household_graph_dataset_id, status, study_end_date (and 3 more)"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for PartnerStudy objects. Available fields: additional_info, brand, client_name, emails, id, input_ids, is_export, lift_study, location, match_file_ds, name, partner_defined_id, partner_household_graph_dataset_id, status, study_end_date (and 3 more)"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -55,8 +56,13 @@ func HandlePartnerstudy_get_(ctx context.Context, request mcp.CallToolRequest) (
 	args := make(map[string]interface{})
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit

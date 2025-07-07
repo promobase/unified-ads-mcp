@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -18,14 +19,21 @@ func GetPlaceTopicTools() []mcp.Tool {
 
 	// placetopic_get_ tool
 	// Available fields for PlaceTopic: count, has_children, icon_url, id, name, parent_ids, plural_name, top_subtopic_names
+	// Params object accepts: icon_size (placetopic_icon_size)
 	placetopic_get_Tool := mcp.NewTool("placetopic_get_",
 		mcp.WithDescription("GET  for PlaceTopic"),
-		mcp.WithString("icon_size",
-			mcp.Description("icon_size parameter for "),
-			mcp.Enum("24", "36", "48", "72"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"icon_size": map[string]any{
+					"type":        "string",
+					"description": "icon_size parameter",
+					"enum":        []string{"24", "36", "48", "72"},
+				},
+			}),
+			mcp.Description("Parameters object containing: icon_size (placetopic_icon_size) [24, 36, 48, 72]"),
 		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for PlaceTopic objects. Available fields: count, has_children, icon_url, id, name, parent_ids, plural_name, top_subtopic_names"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for PlaceTopic objects. Available fields: count, has_children, icon_url, id, name, parent_ids, plural_name, top_subtopic_names"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -58,14 +66,26 @@ func HandlePlacetopic_get_(ctx context.Context, request mcp.CallToolRequest) (*m
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: icon_size
-	if val := request.GetString("icon_size", ""); val != "" {
-		args["icon_size"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit

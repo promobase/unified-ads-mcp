@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -18,13 +19,20 @@ func GetLiveVideoInputStreamTools() []mcp.Tool {
 
 	// livevideoinputstream_get_ tool
 	// Available fields for LiveVideoInputStream: dash_ingest_url, dash_preview_url, id, is_master, secure_stream_url, stream_health, stream_id, stream_url
+	// Params object accepts: target_token (string)
 	livevideoinputstream_get_Tool := mcp.NewTool("livevideoinputstream_get_",
 		mcp.WithDescription("GET  for LiveVideoInputStream"),
-		mcp.WithString("target_token",
-			mcp.Description("target_token parameter for "),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"target_token": map[string]any{
+					"type":        "string",
+					"description": "target_token parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: target_token (string)"),
 		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for LiveVideoInputStream objects. Available fields: dash_ingest_url, dash_preview_url, id, is_master, secure_stream_url, stream_health, stream_id, stream_url"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for LiveVideoInputStream objects. Available fields: dash_ingest_url, dash_preview_url, id, is_master, secure_stream_url, stream_health, stream_id, stream_url"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -57,14 +65,26 @@ func HandleLivevideoinputstream_get_(ctx context.Context, request mcp.CallToolRe
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: target_token
-	if val := request.GetString("target_token", ""); val != "" {
-		args["target_token"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit

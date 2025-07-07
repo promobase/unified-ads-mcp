@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
@@ -17,24 +18,40 @@ func GetPublisherBlockListTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// publisherblocklist_post_append_publisher_urls tool
+	// Params object accepts: publisher_urls (list<string>)
 	publisherblocklist_post_append_publisher_urlsTool := mcp.NewTool("publisherblocklist_post_append_publisher_urls",
 		mcp.WithDescription("POST append_publisher_urls for PublisherBlockList"),
-		mcp.WithString("publisher_urls",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("publisher_urls parameter for append_publisher_urls"),
+			mcp.Properties(map[string]any{
+				"publisher_urls": map[string]any{
+					"type":        "array",
+					"description": "publisher_urls parameter",
+					"required":    true,
+					"items":       map[string]any{"type": "string"},
+				},
+			}),
+			mcp.Description("Parameters object containing: publisher_urls (array<string>) [required]"),
 		),
 	)
 	tools = append(tools, publisherblocklist_post_append_publisher_urlsTool)
 
 	// publisherblocklist_get_paged_web_publishers tool
 	// Available fields for WebPublisher: domain_url, id, publisher_name
+	// Params object accepts: draft_id (string)
 	publisherblocklist_get_paged_web_publishersTool := mcp.NewTool("publisherblocklist_get_paged_web_publishers",
 		mcp.WithDescription("GET paged_web_publishers for PublisherBlockList"),
-		mcp.WithString("draft_id",
-			mcp.Description("draft_id parameter for paged_web_publishers"),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"draft_id": map[string]any{
+					"type":        "string",
+					"description": "draft_id parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: draft_id (string)"),
 		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for WebPublisher objects. Available fields: domain_url, id, publisher_name"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for WebPublisher objects. Available fields: domain_url, id, publisher_name"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -56,19 +73,28 @@ func GetPublisherBlockListTools() []mcp.Tool {
 
 	// publisherblocklist_get_ tool
 	// Available fields for PublisherBlockList: app_publishers, business_owner_id, id, is_auto_blocking_on, is_eligible_at_campaign_level, last_update_time, last_update_user, name, owner_ad_account_id, web_publishers
+	// Params object accepts: account_id (unsigned int), business_id (string), draft_id (string)
 	publisherblocklist_get_Tool := mcp.NewTool("publisherblocklist_get_",
 		mcp.WithDescription("GET  for PublisherBlockList"),
-		mcp.WithNumber("account_id",
-			mcp.Description("account_id parameter for "),
+		mcp.WithObject("params",
+			mcp.Properties(map[string]any{
+				"account_id": map[string]any{
+					"type":        "integer",
+					"description": "account_id parameter",
+				},
+				"business_id": map[string]any{
+					"type":        "string",
+					"description": "business_id parameter",
+				},
+				"draft_id": map[string]any{
+					"type":        "string",
+					"description": "draft_id parameter",
+				},
+			}),
+			mcp.Description("Parameters object containing: account_id (integer), business_id (string), draft_id (string)"),
 		),
-		mcp.WithString("business_id",
-			mcp.Description("business_id parameter for "),
-		),
-		mcp.WithString("draft_id",
-			mcp.Description("draft_id parameter for "),
-		),
-		mcp.WithString("fields",
-			mcp.Description("Comma-separated list of fields to return for PublisherBlockList objects. Available fields: app_publishers, business_owner_id, id, is_auto_blocking_on, is_eligible_at_campaign_level, last_update_time, last_update_user, name, owner_ad_account_id, web_publishers"),
+		mcp.WithArray("fields",
+			mcp.Description("Array of fields to return for PublisherBlockList objects. Available fields: app_publishers, business_owner_id, id, is_auto_blocking_on, is_eligible_at_campaign_level, last_update_time, last_update_user, name, owner_ad_account_id, web_publishers"),
 		),
 		mcp.WithNumber("limit",
 			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
@@ -83,11 +109,19 @@ func GetPublisherBlockListTools() []mcp.Tool {
 	tools = append(tools, publisherblocklist_get_Tool)
 
 	// publisherblocklist_post_ tool
+	// Params object accepts: spec (Object)
 	publisherblocklist_post_Tool := mcp.NewTool("publisherblocklist_post_",
 		mcp.WithDescription("POST  for PublisherBlockList"),
-		mcp.WithString("spec",
+		mcp.WithObject("params",
 			mcp.Required(),
-			mcp.Description("spec parameter for "),
+			mcp.Properties(map[string]any{
+				"spec": map[string]any{
+					"type":        "object",
+					"description": "spec parameter",
+					"required":    true,
+				},
+			}),
+			mcp.Description("Parameters object containing: spec (object) [required]"),
 		),
 	)
 	tools = append(tools, publisherblocklist_post_Tool)
@@ -111,12 +145,19 @@ func HandlePublisherblocklist_post_append_publisher_urls(ctx context.Context, re
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: publisher_urls
-	publisher_urls, err := request.RequireString("publisher_urls")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter publisher_urls: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["publisher_urls"] = publisher_urls
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Publisherblocklist_post_append_publisher_urls(args)
@@ -147,14 +188,26 @@ func HandlePublisherblocklist_get_paged_web_publishers(ctx context.Context, requ
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: draft_id
-	if val := request.GetString("draft_id", ""); val != "" {
-		args["draft_id"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -230,24 +283,26 @@ func HandlePublisherblocklist_get_(ctx context.Context, request mcp.CallToolRequ
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Optional: account_id
-	if val := request.GetInt("account_id", 0); val != 0 {
-		args["account_id"] = val
-	}
-
-	// Optional: business_id
-	if val := request.GetString("business_id", ""); val != "" {
-		args["business_id"] = val
-	}
-
-	// Optional: draft_id
-	if val := request.GetString("draft_id", ""); val != "" {
-		args["draft_id"] = val
+	// Optional: params
+	// Object parameter - expecting JSON string
+	if val := request.GetString("params", ""); val != "" {
+		// Parse params object and extract individual parameters
+		var params map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &params); err == nil {
+			for key, value := range params {
+				args[key] = value
+			}
+		}
 	}
 
 	// Optional: fields
+	// Array parameter - expecting JSON string
 	if val := request.GetString("fields", ""); val != "" {
-		args["fields"] = val
+		// Parse array of fields and convert to comma-separated string
+		var fields []string
+		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
+			args["fields"] = strings.Join(fields, ",")
+		}
 	}
 
 	// Optional: limit
@@ -294,12 +349,19 @@ func HandlePublisherblocklist_post_(ctx context.Context, request mcp.CallToolReq
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Required: spec
-	spec, err := request.RequireString("spec")
+	// Required: params
+	params, err := request.RequireString("params")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter spec: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	args["spec"] = spec
+	// Parse required params object and extract parameters
+	var paramsObj map[string]interface{}
+	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
+	}
+	for key, value := range paramsObj {
+		args[key] = value
+	}
 
 	// Call the client method
 	result, err := client.Publisherblocklist_post_(args)
