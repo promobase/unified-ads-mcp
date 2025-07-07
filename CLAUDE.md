@@ -11,4 +11,4 @@ We'll start with facebook business api, then expand to tiktok business api & goo
 
 
 ## Workflow Notes
-- m after changes, run make build to test.
+- use `make codegen` to codegen, then `make build` to rebuild
