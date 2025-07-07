@@ -3,8 +3,10 @@
 package businessassetgroup
 
 import (
+	"encoding/json"
 	"fmt"
 	"net/url"
+	"strings"
 	"testing"
 )
 
@@ -29,12 +31,12 @@ func TestBusinessassetgroup_post_contained_custom_conversions_URLConstruction(t 
 			name: "request with fields parameter",
 			args: map[string]interface{}{
 
-				"fields": "id,name,status",
+				"fields": "id,name,status,created_time,updated_time",
 			},
 			wantBaseURL: "https://graph.facebook.com/v23.0/contained_custom_conversions",
 			wantParams: map[string]string{
 				"access_token": accessToken,
-				"fields":       "id,name,status",
+				"fields":       "id,name,status,created_time,updated_time",
 			},
 		},
 		{
@@ -49,6 +51,18 @@ func TestBusinessassetgroup_post_contained_custom_conversions_URLConstruction(t 
 				"access_token": accessToken,
 				"limit":        "10",
 				"after":        "cursor123",
+			},
+		},
+
+		{
+			name: "request with complex params object",
+			args: map[string]interface{}{
+
+				"params": map[string]interface{}{},
+			},
+			wantBaseURL: "https://graph.facebook.com/v23.0/contained_custom_conversions",
+			wantParams: map[string]string{
+				"access_token": accessToken,
 			},
 		},
 	}
@@ -87,6 +101,90 @@ func TestBusinessassetgroup_post_contained_custom_conversions_URLConstruction(t 
 	}
 }
 
+func TestBusinessassetgroup_post_contained_custom_conversions_BodyConstruction(t *testing.T) {
+	tests := []struct {
+		name     string
+		args     map[string]interface{}
+		wantBody map[string]interface{}
+	}{
+
+		{
+			name: "basic POST request",
+			args: map[string]interface{}{
+
+				"name":   "Test",
+				"status": "ACTIVE",
+			},
+			wantBody: map[string]interface{}{
+				"name":   "Test",
+				"status": "ACTIVE",
+			},
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			// Build body parameters
+			skipParams := []string{}
+
+			bodyParams := buildBodyParamsBusinessassetgroup_post_contained_custom_conversions(tt.args, skipParams...)
+
+			// Check all expected parameters
+			for key, expectedValue := range tt.wantBody {
+				actualValue := bodyParams.Get(key)
+				if actualValue != expectedValue {
+					t.Errorf("body param %s = %v, want %v", key, actualValue, expectedValue)
+				}
+			}
+
+			// Check no unexpected parameters
+			for key := range bodyParams {
+				if _, exists := tt.wantBody[key]; !exists {
+					t.Errorf("unexpected body param %s = %v", key, bodyParams.Get(key))
+				}
+			}
+		})
+	}
+}
+
+// Helper function to simulate body parameter building (for testing)
+func buildBodyParamsBusinessassetgroup_post_contained_custom_conversions(args map[string]interface{}, skipParams ...string) url.Values {
+	params := url.Values{}
+
+	skipMap := make(map[string]bool)
+	for _, param := range skipParams {
+		skipMap[param] = true
+	}
+
+	for key, value := range args {
+		if skipMap[key] {
+			continue
+		}
+
+		switch v := value.(type) {
+		case string:
+			params.Set(key, v)
+		case int, int64, float64:
+			params.Set(key, fmt.Sprintf("%v", v))
+		case bool:
+			params.Set(key, fmt.Sprintf("%v", v))
+		case []interface{}, map[string]interface{}:
+			jsonBytes, _ := json.Marshal(v)
+			params.Set(key, string(jsonBytes))
+		case []string:
+			jsonBytes, _ := json.Marshal(v)
+			params.Set(key, string(jsonBytes))
+		case []map[string]interface{}:
+			jsonBytes, _ := json.Marshal(v)
+			params.Set(key, string(jsonBytes))
+		default:
+			params.Set(key, fmt.Sprintf("%v", v))
+		}
+	}
+
+	return params
+}
+
 // Helper function to simulate BuildURLParams (for testing)
 func buildURLParamsBusinessassetgroup_post_contained_custom_conversions(accessToken string, args map[string]interface{}, skipParams ...string) url.Values {
 	params := url.Values{}
@@ -101,10 +199,45 @@ func buildURLParamsBusinessassetgroup_post_contained_custom_conversions(accessTo
 		if skipMap[key] {
 			continue
 		}
+
+		// Handle params object
 		if key == "params" {
+			if paramsObj, ok := value.(map[string]interface{}); ok {
+				for pKey, pValue := range paramsObj {
+					switch v := pValue.(type) {
+					case string:
+						params.Set(pKey, v)
+					case []string:
+						jsonBytes, _ := json.Marshal(v)
+						params.Set(pKey, string(jsonBytes))
+					case []interface{}, map[string]interface{}, []map[string]interface{}, map[string]string:
+						jsonBytes, _ := json.Marshal(v)
+						params.Set(pKey, string(jsonBytes))
+					default:
+						params.Set(pKey, fmt.Sprintf("%v", v))
+					}
+				}
+			}
 			continue
 		}
-		params.Set(key, fmt.Sprintf("%v", value))
+
+		// Handle regular parameters
+		switch v := value.(type) {
+		case string:
+			params.Set(key, v)
+		case int, int64, float64:
+			params.Set(key, fmt.Sprintf("%v", v))
+		case []string:
+			// Fields should be comma-separated
+			if key == "fields" {
+				params.Set(key, strings.Join(v, ","))
+			} else {
+				jsonBytes, _ := json.Marshal(v)
+				params.Set(key, string(jsonBytes))
+			}
+		default:
+			params.Set(key, fmt.Sprintf("%v", v))
+		}
 	}
 
 	return params

@@ -1066,6 +1066,21 @@ func getTemplateFuncs() template.FuncMap {
 		"convertTypeToJSONSchema": convertTypeToJSONSchema,
 		"extractItemType":         extractItemType,
 		"hasPrefix":               strings.HasPrefix,
+		"hasParam": func(tool MCPTool, paramName string) bool {
+			// Check direct parameters
+			for _, param := range tool.Parameters {
+				if param.Name == paramName {
+					return true
+				}
+			}
+			// Check APIParams which contains the nested parameters from the params object
+			for _, apiParam := range tool.APIParams {
+				if apiParam.Name == paramName {
+					return true
+				}
+			}
+			return false
+		},
 		"paramType": func(t string) string {
 			switch t {
 			case "string":

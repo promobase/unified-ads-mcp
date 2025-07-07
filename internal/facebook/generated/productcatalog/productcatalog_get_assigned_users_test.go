@@ -3,8 +3,10 @@
 package productcatalog
 
 import (
+	"encoding/json"
 	"fmt"
 	"net/url"
+	"strings"
 	"testing"
 )
 
@@ -29,12 +31,12 @@ func TestProductcatalog_get_assigned_users_URLConstruction(t *testing.T) {
 			name: "request with fields parameter",
 			args: map[string]interface{}{
 
-				"fields": "id,name,status",
+				"fields": "id,name,status,created_time,updated_time",
 			},
 			wantBaseURL: "https://graph.facebook.com/v23.0/assigned_users",
 			wantParams: map[string]string{
 				"access_token": accessToken,
-				"fields":       "id,name,status",
+				"fields":       "id,name,status,created_time,updated_time",
 			},
 		},
 		{
@@ -49,6 +51,18 @@ func TestProductcatalog_get_assigned_users_URLConstruction(t *testing.T) {
 				"access_token": accessToken,
 				"limit":        "10",
 				"after":        "cursor123",
+			},
+		},
+
+		{
+			name: "request with complex params object",
+			args: map[string]interface{}{
+
+				"params": map[string]interface{}{},
+			},
+			wantBaseURL: "https://graph.facebook.com/v23.0/assigned_users",
+			wantParams: map[string]string{
+				"access_token": accessToken,
 			},
 		},
 	}
@@ -101,10 +115,45 @@ func buildURLParamsProductcatalog_get_assigned_users(accessToken string, args ma
 		if skipMap[key] {
 			continue
 		}
+
+		// Handle params object
 		if key == "params" {
+			if paramsObj, ok := value.(map[string]interface{}); ok {
+				for pKey, pValue := range paramsObj {
+					switch v := pValue.(type) {
+					case string:
+						params.Set(pKey, v)
+					case []string:
+						jsonBytes, _ := json.Marshal(v)
+						params.Set(pKey, string(jsonBytes))
+					case []interface{}, map[string]interface{}, []map[string]interface{}, map[string]string:
+						jsonBytes, _ := json.Marshal(v)
+						params.Set(pKey, string(jsonBytes))
+					default:
+						params.Set(pKey, fmt.Sprintf("%v", v))
+					}
+				}
+			}
 			continue
 		}
-		params.Set(key, fmt.Sprintf("%v", value))
+
+		// Handle regular parameters
+		switch v := value.(type) {
+		case string:
+			params.Set(key, v)
+		case int, int64, float64:
+			params.Set(key, fmt.Sprintf("%v", v))
+		case []string:
+			// Fields should be comma-separated
+			if key == "fields" {
+				params.Set(key, strings.Join(v, ","))
+			} else {
+				jsonBytes, _ := json.Marshal(v)
+				params.Set(key, string(jsonBytes))
+			}
+		default:
+			params.Set(key, fmt.Sprintf("%v", v))
+		}
 	}
 
 	return params

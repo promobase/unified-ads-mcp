@@ -46,7 +46,24 @@ func ExecuteAPIRequest(method, baseURL string, params url.Values) (interface{}, 
 	case "GET":
 		resp, err = HTTPClient.Get(baseURL + "?" + params.Encode())
 	case "POST":
-		resp, err = HTTPClient.PostForm(baseURL, params)
+		// For POST, access_token goes in URL, other params in body
+		urlParams := url.Values{}
+		bodyParams := url.Values{}
+
+		for key, values := range params {
+			if key == "access_token" {
+				urlParams[key] = values
+			} else {
+				bodyParams[key] = values
+			}
+		}
+
+		fullURL := baseURL
+		if len(urlParams) > 0 {
+			fullURL = baseURL + "?" + urlParams.Encode()
+		}
+
+		resp, err = HTTPClient.PostForm(fullURL, bodyParams)
 	case "DELETE":
 		req, err := http.NewRequest("DELETE", baseURL+"?"+params.Encode(), nil)
 		if err != nil {

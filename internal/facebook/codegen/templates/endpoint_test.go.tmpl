@@ -3,8 +3,10 @@
 package {{.PackageName}}
 
 import (
+	"encoding/json"
 	"fmt"
 	"net/url"
+	"strings"
 	"testing"
 )
 
@@ -39,12 +41,12 @@ func Test{{capitalizeFirst .Tool.Name}}_URLConstruction(t *testing.T) {
 				{{if eq .NodeName "AdCreative"}}"ad_creative_id": "123456789",{{end}}
 				{{if eq .NodeName "AdSet"}}"ad_set_id": "123456789",{{end}}
 				{{if eq .NodeName "Campaign"}}"campaign_id": "123456789",{{end}}
-				"fields": "id,name,status",
+				"fields": "id,name,status,created_time,updated_time",
 			},
 			wantBaseURL: {{if eq .NodeName "AdAccount"}}{{if .Tool.Endpoint}}"https://graph.facebook.com/v23.0/act_123456789/{{.Tool.Endpoint}}"{{else}}"https://graph.facebook.com/v23.0/act_123456789"{{end}}{{else if eq .NodeName "Ad"}}{{if .Tool.Endpoint}}"https://graph.facebook.com/v23.0/123456789/{{.Tool.Endpoint}}"{{else}}"https://graph.facebook.com/v23.0/123456789"{{end}}{{else if eq .NodeName "AdCreative"}}{{if .Tool.Endpoint}}"https://graph.facebook.com/v23.0/123456789/{{.Tool.Endpoint}}"{{else}}"https://graph.facebook.com/v23.0/123456789"{{end}}{{else if eq .NodeName "AdSet"}}{{if .Tool.Endpoint}}"https://graph.facebook.com/v23.0/123456789/{{.Tool.Endpoint}}"{{else}}"https://graph.facebook.com/v23.0/123456789"{{end}}{{else if eq .NodeName "Campaign"}}{{if .Tool.Endpoint}}"https://graph.facebook.com/v23.0/123456789/{{.Tool.Endpoint}}"{{else}}"https://graph.facebook.com/v23.0/123456789"{{end}}{{else}}{{if .Tool.Endpoint}}"https://graph.facebook.com/v23.0/{{.Tool.Endpoint}}"{{else}}"https://graph.facebook.com/v23.0"{{end}}{{end}},
 			wantParams: map[string]string{
 				"access_token": accessToken,
-				"fields": "id,name,status",
+				"fields": "id,name,status,created_time,updated_time",
 			},
 		},
 		{
@@ -65,6 +67,69 @@ func Test{{capitalizeFirst .Tool.Name}}_URLConstruction(t *testing.T) {
 				"after": "cursor123",
 			},
 		},
+		{{if hasParam .Tool "params"}}
+		{
+			name: "request with complex params object",
+			args: map[string]interface{}{
+				{{if eq .NodeName "AdAccount"}}"account_id": "123456789",{{end}}
+				{{if eq .NodeName "Ad"}}"ad_id": "123456789",{{end}}
+				{{if eq .NodeName "AdCreative"}}"ad_creative_id": "123456789",{{end}}
+				{{if eq .NodeName "AdSet"}}"ad_set_id": "123456789",{{end}}
+				{{if eq .NodeName "Campaign"}}"campaign_id": "123456789",{{end}}
+				"params": map[string]interface{}{
+					{{if hasParam .Tool "effective_status"}}
+					"effective_status": []string{"ACTIVE", "PAUSED"},
+					{{end}}
+					{{if hasParam .Tool "date_preset"}}
+					"date_preset": "last_7d",
+					{{end}}
+					{{if hasParam .Tool "level"}}
+					"level": "campaign",
+					{{end}}
+					{{if hasParam .Tool "filtering"}}
+					"filtering": []map[string]interface{}{
+						{
+							"field": "spend",
+							"operator": "GREATER_THAN",
+							"value": 100,
+						},
+					},
+					{{end}}
+					{{if hasParam .Tool "breakdowns"}}
+					"breakdowns": []string{"age", "gender"},
+					{{end}}
+					{{if hasParam .Tool "time_range"}}
+					"time_range": map[string]string{
+						"since": "2024-01-01",
+						"until": "2024-01-31",
+					},
+					{{end}}
+				},
+			},
+			wantBaseURL: {{if eq .NodeName "AdAccount"}}{{if .Tool.Endpoint}}"https://graph.facebook.com/v23.0/act_123456789/{{.Tool.Endpoint}}"{{else}}"https://graph.facebook.com/v23.0/act_123456789"{{end}}{{else if eq .NodeName "Ad"}}{{if .Tool.Endpoint}}"https://graph.facebook.com/v23.0/123456789/{{.Tool.Endpoint}}"{{else}}"https://graph.facebook.com/v23.0/123456789"{{end}}{{else if eq .NodeName "AdCreative"}}{{if .Tool.Endpoint}}"https://graph.facebook.com/v23.0/123456789/{{.Tool.Endpoint}}"{{else}}"https://graph.facebook.com/v23.0/123456789"{{end}}{{else if eq .NodeName "AdSet"}}{{if .Tool.Endpoint}}"https://graph.facebook.com/v23.0/123456789/{{.Tool.Endpoint}}"{{else}}"https://graph.facebook.com/v23.0/123456789"{{end}}{{else if eq .NodeName "Campaign"}}{{if .Tool.Endpoint}}"https://graph.facebook.com/v23.0/123456789/{{.Tool.Endpoint}}"{{else}}"https://graph.facebook.com/v23.0/123456789"{{end}}{{else}}{{if .Tool.Endpoint}}"https://graph.facebook.com/v23.0/{{.Tool.Endpoint}}"{{else}}"https://graph.facebook.com/v23.0"{{end}}{{end}},
+			wantParams: map[string]string{
+				"access_token": accessToken,
+				{{if hasParam .Tool "effective_status"}}
+				"effective_status": `["ACTIVE","PAUSED"]`,
+				{{end}}
+				{{if hasParam .Tool "date_preset"}}
+				"date_preset": "last_7d",
+				{{end}}
+				{{if hasParam .Tool "level"}}
+				"level": "campaign",
+				{{end}}
+				{{if hasParam .Tool "filtering"}}
+				"filtering": `[{"field":"spend","operator":"GREATER_THAN","value":100}]`,
+				{{end}}
+				{{if hasParam .Tool "breakdowns"}}
+				"breakdowns": `["age","gender"]`,
+				{{end}}
+				{{if hasParam .Tool "time_range"}}
+				"time_range": `{"since":"2024-01-01","until":"2024-01-31"}`,
+				{{end}}
+			},
+		},
+		{{end}}
 	}
 	
 	for _, tt := range tests {
@@ -147,6 +212,187 @@ func Test{{capitalizeFirst .Tool.Name}}_URLConstruction(t *testing.T) {
 	}
 }
 
+{{if eq .Tool.Method "POST"}}
+func Test{{capitalizeFirst .Tool.Name}}_BodyConstruction(t *testing.T) {
+	tests := []struct {
+		name     string
+		args     map[string]interface{}
+		wantBody map[string]interface{}
+	}{
+		{{if and (eq .NodeName "AdAccount") (eq .Tool.Endpoint "product_audiences")}}
+		{
+			name: "create product audience with complex rules",
+			args: map[string]interface{}{
+				"account_id": "123456789",
+				"name": "Test iPhone Product Audience",
+				"product_set_id": "PRODUCT_SET_123",
+				"inclusions": []map[string]interface{}{
+					{
+						"retention_seconds": 86400,
+						"rule": map[string]interface{}{
+							"and": []map[string]interface{}{
+								{
+									"event": map[string]string{
+										"eq": "AddToCart",
+									},
+								},
+								{
+									"userAgent": map[string]string{
+										"i_contains": "iPhone",
+									},
+								},
+							},
+						},
+					},
+				},
+				"exclusions": []map[string]interface{}{
+					{
+						"retention_seconds": 172800,
+						"rule": map[string]interface{}{
+							"event": map[string]string{
+								"eq": "Purchase",
+							},
+						},
+					},
+				},
+			},
+			wantBody: map[string]interface{}{
+				"name": "Test iPhone Product Audience",
+				"product_set_id": "PRODUCT_SET_123",
+				"inclusions": `[{"retention_seconds":86400,"rule":{"and":[{"event":{"eq":"AddToCart"}},{"userAgent":{"i_contains":"iPhone"}}]}}]`,
+				"exclusions": `[{"retention_seconds":172800,"rule":{"event":{"eq":"Purchase"}}}]`,
+			},
+		},
+		{{else if and (eq .NodeName "AdAccount") (eq .Tool.Endpoint "ads")}}
+		{
+			name: "create ad with targeting",
+			args: map[string]interface{}{
+				"account_id": "123456789",
+				"name": "Test Ad",
+				"adset_id": "ADSET_123",
+				"creative": map[string]interface{}{
+					"creative_id": "CREATIVE_123",
+				},
+				"status": "PAUSED",
+			},
+			wantBody: map[string]interface{}{
+				"name": "Test Ad",
+				"adset_id": "ADSET_123",
+				"creative": `{"creative_id":"CREATIVE_123"}`,
+				"status": "PAUSED",
+			},
+		},
+		{{else if and (eq .NodeName "AdAccount") (eq .Tool.Endpoint "campaigns")}}
+		{
+			name: "create campaign with budget optimization",
+			args: map[string]interface{}{
+				"account_id": "123456789",
+				"name": "Test Campaign",
+				"objective": "CONVERSIONS",
+				"status": "PAUSED",
+				"special_ad_categories": []string{"NONE"},
+				"campaign_budget_optimization": true,
+				"daily_budget": 5000,
+			},
+			wantBody: map[string]interface{}{
+				"name": "Test Campaign",
+				"objective": "CONVERSIONS",
+				"status": "PAUSED",
+				"special_ad_categories": `["NONE"]`,
+				"campaign_budget_optimization": "true",
+				"daily_budget": "5000",
+			},
+		},
+		{{else}}
+		{
+			name: "basic POST request",
+			args: map[string]interface{}{
+				{{if eq .NodeName "AdAccount"}}"account_id": "123456789",{{end}}
+				{{if eq .NodeName "Ad"}}"ad_id": "123456789",{{end}}
+				{{if eq .NodeName "AdCreative"}}"ad_creative_id": "123456789",{{end}}
+				{{if eq .NodeName "AdSet"}}"ad_set_id": "123456789",{{end}}
+				{{if eq .NodeName "Campaign"}}"campaign_id": "123456789",{{end}}
+				"name": "Test",
+				"status": "ACTIVE",
+			},
+			wantBody: map[string]interface{}{
+				"name": "Test",
+				"status": "ACTIVE",
+			},
+		},
+		{{end}}
+	}
+	
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			// Build body parameters
+			skipParams := []string{
+				{{if eq .NodeName "AdAccount"}}"account_id",{{end}}
+				{{if eq .NodeName "Ad"}}"ad_id",{{end}}
+				{{if eq .NodeName "AdCreative"}}"ad_creative_id",{{end}}
+				{{if eq .NodeName "AdSet"}}"ad_set_id",{{end}}
+				{{if eq .NodeName "Campaign"}}"campaign_id",{{end}}
+			}
+			
+			bodyParams := buildBodyParams{{capitalizeFirst .Tool.Name}}(tt.args, skipParams...)
+			
+			// Check all expected parameters
+			for key, expectedValue := range tt.wantBody {
+				actualValue := bodyParams.Get(key)
+				if actualValue != expectedValue {
+					t.Errorf("body param %s = %v, want %v", key, actualValue, expectedValue)
+				}
+			}
+			
+			// Check no unexpected parameters
+			for key := range bodyParams {
+				if _, exists := tt.wantBody[key]; !exists {
+					t.Errorf("unexpected body param %s = %v", key, bodyParams.Get(key))
+				}
+			}
+		})
+	}
+}
+
+// Helper function to simulate body parameter building (for testing)
+func buildBodyParams{{capitalizeFirst .Tool.Name}}(args map[string]interface{}, skipParams ...string) url.Values {
+	params := url.Values{}
+	
+	skipMap := make(map[string]bool)
+	for _, param := range skipParams {
+		skipMap[param] = true
+	}
+	
+	for key, value := range args {
+		if skipMap[key] {
+			continue
+		}
+		
+		switch v := value.(type) {
+		case string:
+			params.Set(key, v)
+		case int, int64, float64:
+			params.Set(key, fmt.Sprintf("%v", v))
+		case bool:
+			params.Set(key, fmt.Sprintf("%v", v))
+		case []interface{}, map[string]interface{}:
+			jsonBytes, _ := json.Marshal(v)
+			params.Set(key, string(jsonBytes))
+		case []string:
+			jsonBytes, _ := json.Marshal(v)
+			params.Set(key, string(jsonBytes))
+		case []map[string]interface{}:
+			jsonBytes, _ := json.Marshal(v)
+			params.Set(key, string(jsonBytes))
+		default:
+			params.Set(key, fmt.Sprintf("%v", v))
+		}
+	}
+	
+	return params
+}
+{{end}}
+
 // Helper function to simulate BuildURLParams (for testing)
 func buildURLParams{{capitalizeFirst .Tool.Name}}(accessToken string, args map[string]interface{}, skipParams ...string) url.Values {
 	params := url.Values{}
@@ -161,10 +407,45 @@ func buildURLParams{{capitalizeFirst .Tool.Name}}(accessToken string, args map[s
 		if skipMap[key] {
 			continue
 		}
+		
+		// Handle params object
 		if key == "params" {
+			if paramsObj, ok := value.(map[string]interface{}); ok {
+				for pKey, pValue := range paramsObj {
+					switch v := pValue.(type) {
+					case string:
+						params.Set(pKey, v)
+					case []string:
+						jsonBytes, _ := json.Marshal(v)
+						params.Set(pKey, string(jsonBytes))
+					case []interface{}, map[string]interface{}, []map[string]interface{}, map[string]string:
+						jsonBytes, _ := json.Marshal(v)
+						params.Set(pKey, string(jsonBytes))
+					default:
+						params.Set(pKey, fmt.Sprintf("%v", v))
+					}
+				}
+			}
 			continue
 		}
-		params.Set(key, fmt.Sprintf("%v", value))
+		
+		// Handle regular parameters
+		switch v := value.(type) {
+		case string:
+			params.Set(key, v)
+		case int, int64, float64:
+			params.Set(key, fmt.Sprintf("%v", v))
+		case []string:
+			// Fields should be comma-separated
+			if key == "fields" {
+				params.Set(key, strings.Join(v, ","))
+			} else {
+				jsonBytes, _ := json.Marshal(v)
+				params.Set(key, string(jsonBytes))
+			}
+		default:
+			params.Set(key, fmt.Sprintf("%v", v))
+		}
 	}
 	
 	return params

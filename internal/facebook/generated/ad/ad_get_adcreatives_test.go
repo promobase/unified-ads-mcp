@@ -3,8 +3,10 @@
 package ad
 
 import (
+	"encoding/json"
 	"fmt"
 	"net/url"
+	"strings"
 	"testing"
 )
 
@@ -34,12 +36,12 @@ func TestAd_get_adcreatives_URLConstruction(t *testing.T) {
 
 				"ad_id": "123456789",
 
-				"fields": "id,name,status",
+				"fields": "id,name,status,created_time,updated_time",
 			},
 			wantBaseURL: "https://graph.facebook.com/v23.0/123456789/adcreatives",
 			wantParams: map[string]string{
 				"access_token": accessToken,
-				"fields":       "id,name,status",
+				"fields":       "id,name,status,created_time,updated_time",
 			},
 		},
 		{
@@ -113,10 +115,45 @@ func buildURLParamsAd_get_adcreatives(accessToken string, args map[string]interf
 		if skipMap[key] {
 			continue
 		}
+
+		// Handle params object
 		if key == "params" {
+			if paramsObj, ok := value.(map[string]interface{}); ok {
+				for pKey, pValue := range paramsObj {
+					switch v := pValue.(type) {
+					case string:
+						params.Set(pKey, v)
+					case []string:
+						jsonBytes, _ := json.Marshal(v)
+						params.Set(pKey, string(jsonBytes))
+					case []interface{}, map[string]interface{}, []map[string]interface{}, map[string]string:
+						jsonBytes, _ := json.Marshal(v)
+						params.Set(pKey, string(jsonBytes))
+					default:
+						params.Set(pKey, fmt.Sprintf("%v", v))
+					}
+				}
+			}
 			continue
 		}
-		params.Set(key, fmt.Sprintf("%v", value))
+
+		// Handle regular parameters
+		switch v := value.(type) {
+		case string:
+			params.Set(key, v)
+		case int, int64, float64:
+			params.Set(key, fmt.Sprintf("%v", v))
+		case []string:
+			// Fields should be comma-separated
+			if key == "fields" {
+				params.Set(key, strings.Join(v, ","))
+			} else {
+				jsonBytes, _ := json.Marshal(v)
+				params.Set(key, string(jsonBytes))
+			}
+		default:
+			params.Set(key, fmt.Sprintf("%v", v))
+		}
 	}
 
 	return params

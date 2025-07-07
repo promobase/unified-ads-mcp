@@ -3,8 +3,10 @@
 package campaign
 
 import (
+	"encoding/json"
 	"fmt"
 	"net/url"
+	"strings"
 	"testing"
 )
 
@@ -33,12 +35,12 @@ func TestCampaign_get_copies_URLConstruction(t *testing.T) {
 			args: map[string]interface{}{
 
 				"campaign_id": "123456789",
-				"fields":      "id,name,status",
+				"fields":      "id,name,status,created_time,updated_time",
 			},
 			wantBaseURL: "https://graph.facebook.com/v23.0/123456789/copies",
 			wantParams: map[string]string{
 				"access_token": accessToken,
-				"fields":       "id,name,status",
+				"fields":       "id,name,status,created_time,updated_time",
 			},
 		},
 		{
@@ -54,6 +56,35 @@ func TestCampaign_get_copies_URLConstruction(t *testing.T) {
 				"access_token": accessToken,
 				"limit":        "10",
 				"after":        "cursor123",
+			},
+		},
+
+		{
+			name: "request with complex params object",
+			args: map[string]interface{}{
+
+				"campaign_id": "123456789",
+				"params": map[string]interface{}{
+
+					"effective_status": []string{"ACTIVE", "PAUSED"},
+
+					"date_preset": "last_7d",
+
+					"time_range": map[string]string{
+						"since": "2024-01-01",
+						"until": "2024-01-31",
+					},
+				},
+			},
+			wantBaseURL: "https://graph.facebook.com/v23.0/123456789/copies",
+			wantParams: map[string]string{
+				"access_token": accessToken,
+
+				"effective_status": `["ACTIVE","PAUSED"]`,
+
+				"date_preset": "last_7d",
+
+				"time_range": `{"since":"2024-01-01","until":"2024-01-31"}`,
 			},
 		},
 	}
@@ -111,10 +142,45 @@ func buildURLParamsCampaign_get_copies(accessToken string, args map[string]inter
 		if skipMap[key] {
 			continue
 		}
+
+		// Handle params object
 		if key == "params" {
+			if paramsObj, ok := value.(map[string]interface{}); ok {
+				for pKey, pValue := range paramsObj {
+					switch v := pValue.(type) {
+					case string:
+						params.Set(pKey, v)
+					case []string:
+						jsonBytes, _ := json.Marshal(v)
+						params.Set(pKey, string(jsonBytes))
+					case []interface{}, map[string]interface{}, []map[string]interface{}, map[string]string:
+						jsonBytes, _ := json.Marshal(v)
+						params.Set(pKey, string(jsonBytes))
+					default:
+						params.Set(pKey, fmt.Sprintf("%v", v))
+					}
+				}
+			}
 			continue
 		}
-		params.Set(key, fmt.Sprintf("%v", value))
+
+		// Handle regular parameters
+		switch v := value.(type) {
+		case string:
+			params.Set(key, v)
+		case int, int64, float64:
+			params.Set(key, fmt.Sprintf("%v", v))
+		case []string:
+			// Fields should be comma-separated
+			if key == "fields" {
+				params.Set(key, strings.Join(v, ","))
+			} else {
+				jsonBytes, _ := json.Marshal(v)
+				params.Set(key, string(jsonBytes))
+			}
+		default:
+			params.Set(key, fmt.Sprintf("%v", v))
+		}
 	}
 
 	return params
