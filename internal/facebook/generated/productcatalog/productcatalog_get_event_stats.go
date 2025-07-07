@@ -89,7 +89,7 @@ func HandleProductcatalog_get_event_stats(ctx context.Context, request mcp.CallT
 func Productcatalog_get_event_stats(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/event_stats")
+	baseURL = FacebookGraphAPIBaseURL + "event_stats"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

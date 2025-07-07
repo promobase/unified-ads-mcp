@@ -75,7 +75,7 @@ func HandleHotel_get_hotel_rooms(ctx context.Context, request mcp.CallToolReques
 func Hotel_get_hotel_rooms(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/hotel_rooms")
+	baseURL = FacebookGraphAPIBaseURL + "hotel_rooms"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

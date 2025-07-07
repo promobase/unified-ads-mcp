@@ -118,7 +118,7 @@ func HandleApplication_get_mobile_sdk_gk(ctx context.Context, request mcp.CallTo
 func Application_get_mobile_sdk_gk(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/mobile_sdk_gk")
+	baseURL = FacebookGraphAPIBaseURL + "mobile_sdk_gk"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

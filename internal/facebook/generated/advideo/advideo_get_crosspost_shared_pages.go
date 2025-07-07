@@ -75,7 +75,7 @@ func HandleAdvideo_get_crosspost_shared_pages(ctx context.Context, request mcp.C
 func Advideo_get_crosspost_shared_pages(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/crosspost_shared_pages")
+	baseURL = FacebookGraphAPIBaseURL + "crosspost_shared_pages"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

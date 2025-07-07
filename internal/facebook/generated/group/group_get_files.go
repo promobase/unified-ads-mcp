@@ -74,7 +74,7 @@ func HandleGroup_get_files(ctx context.Context, request mcp.CallToolRequest) (*m
 func Group_get_files(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/files")
+	baseURL = FacebookGraphAPIBaseURL + "files"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

@@ -74,7 +74,7 @@ func HandleApplication_get_object_types(ctx context.Context, request mcp.CallToo
 func Application_get_object_types(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/object_types")
+	baseURL = FacebookGraphAPIBaseURL + "object_types"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

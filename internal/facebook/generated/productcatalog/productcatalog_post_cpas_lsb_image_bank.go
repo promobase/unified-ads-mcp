@@ -85,7 +85,7 @@ func HandleProductcatalog_post_cpas_lsb_image_bank(ctx context.Context, request 
 func Productcatalog_post_cpas_lsb_image_bank(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/cpas_lsb_image_bank")
+	baseURL = FacebookGraphAPIBaseURL + "cpas_lsb_image_bank"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

@@ -76,7 +76,7 @@ func HandleBusinessassetgroup_delete_contained_instagram_accounts(ctx context.Co
 func Businessassetgroup_delete_contained_instagram_accounts(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/contained_instagram_accounts")
+	baseURL = FacebookGraphAPIBaseURL + "contained_instagram_accounts"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

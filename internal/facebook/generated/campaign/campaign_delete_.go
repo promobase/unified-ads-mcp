@@ -64,7 +64,7 @@ func Campaign_delete_(accessToken string, args map[string]interface{}) (interfac
 	if !ok {
 		return nil, fmt.Errorf("campaign_id is required for campaign_delete_")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/%s", campaignId)
+	baseURL = fmt.Sprintf("%s/%s", FacebookGraphAPIBaseURL, campaignId)
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{

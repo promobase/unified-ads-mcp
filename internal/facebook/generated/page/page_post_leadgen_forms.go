@@ -139,7 +139,7 @@ func HandlePage_post_leadgen_forms(ctx context.Context, request mcp.CallToolRequ
 func Page_post_leadgen_forms(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/leadgen_forms")
+	baseURL = FacebookGraphAPIBaseURL + "leadgen_forms"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

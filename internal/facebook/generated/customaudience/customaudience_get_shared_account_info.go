@@ -75,7 +75,7 @@ func HandleCustomaudience_get_shared_account_info(ctx context.Context, request m
 func Customaudience_get_shared_account_info(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/shared_account_info")
+	baseURL = FacebookGraphAPIBaseURL + "shared_account_info"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

@@ -75,7 +75,7 @@ func HandleBusiness_get_client_apps(ctx context.Context, request mcp.CallToolReq
 func Business_get_client_apps(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/client_apps")
+	baseURL = FacebookGraphAPIBaseURL + "client_apps"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

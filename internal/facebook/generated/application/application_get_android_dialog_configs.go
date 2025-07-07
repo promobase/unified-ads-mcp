@@ -74,7 +74,7 @@ func HandleApplication_get_android_dialog_configs(ctx context.Context, request m
 func Application_get_android_dialog_configs(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/android_dialog_configs")
+	baseURL = FacebookGraphAPIBaseURL + "android_dialog_configs"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

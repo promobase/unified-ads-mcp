@@ -75,7 +75,7 @@ func HandleInstagramuser_get_ar_effects(ctx context.Context, request mcp.CallToo
 func Instagramuser_get_ar_effects(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/ar_effects")
+	baseURL = FacebookGraphAPIBaseURL + "ar_effects"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

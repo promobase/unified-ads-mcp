@@ -88,7 +88,7 @@ func HandleBusinessuser_get_assigned_pages(ctx context.Context, request mcp.Call
 func Businessuser_get_assigned_pages(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/assigned_pages")
+	baseURL = FacebookGraphAPIBaseURL + "assigned_pages"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

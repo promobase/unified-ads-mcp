@@ -63,7 +63,7 @@ func HandleIguser_post_dataset(ctx context.Context, request mcp.CallToolRequest)
 func Iguser_post_dataset(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/dataset")
+	baseURL = FacebookGraphAPIBaseURL + "dataset"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

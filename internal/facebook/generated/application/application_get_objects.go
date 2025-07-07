@@ -74,7 +74,7 @@ func HandleApplication_get_objects(ctx context.Context, request mcp.CallToolRequ
 func Application_get_objects(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/objects")
+	baseURL = FacebookGraphAPIBaseURL + "objects"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

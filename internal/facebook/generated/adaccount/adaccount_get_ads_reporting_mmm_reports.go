@@ -102,7 +102,7 @@ func Adaccount_get_ads_reporting_mmm_reports(accessToken string, args map[string
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_get_ads_reporting_mmm_reports")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%sads_reporting_mmm_reports", accountId)
+	baseURL = fmt.Sprintf("%s/act_%sads_reporting_mmm_reports", FacebookGraphAPIBaseURL, accountId)
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{

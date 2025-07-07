@@ -74,7 +74,7 @@ func HandleApplication_get_cloudbridge_settings(ctx context.Context, request mcp
 func Application_get_cloudbridge_settings(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/cloudbridge_settings")
+	baseURL = FacebookGraphAPIBaseURL + "cloudbridge_settings"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

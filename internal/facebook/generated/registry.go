@@ -322,315 +322,315 @@ import (
 func GetAllTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-	tools = append(tools, robot.GetTools()...)
-	tools = append(tools, messengeradspartialautomatedsteplist.GetTools()...)
-	tools = append(tools, pageinsightsasyncexportrun.GetTools()...)
-	tools = append(tools, canvasdynamicsetting.GetTools()...)
-	tools = append(tools, dynamicpriceconfigbydate.GetTools()...)
-	tools = append(tools, stories.GetTools()...)
-	tools = append(tools, videocopyrightrule.GetTools()...)
-	tools = append(tools, hotel.GetTools()...)
-	tools = append(tools, adplacement.GetTools()...)
-	tools = append(tools, productitemoffer.GetTools()...)
-	tools = append(tools, ad.GetTools()...)
-	tools = append(tools, imagecopyrightdispute.GetTools()...)
-	tools = append(tools, cloudgame.GetTools()...)
-	tools = append(tools, thirdpartypartnerliftrequest.GetTools()...)
-	tools = append(tools, almadaccountinfo.GetTools()...)
-	tools = append(tools, lead.GetTools()...)
-	tools = append(tools, lifeevent.GetTools()...)
-	tools = append(tools, fbimagecopyrightmatch.GetTools()...)
-	tools = append(tools, storelocation.GetTools()...)
-	tools = append(tools, placetopic.GetTools()...)
-	tools = append(tools, businessownedobjectonbehalfofrequest.GetTools()...)
-	tools = append(tools, iguser.GetTools()...)
-	tools = append(tools, jobopening.GetTools()...)
-	tools = append(tools, offlinetermsofservice.GetTools()...)
-	tools = append(tools, calladsphonedata.GetTools()...)
-	tools = append(tools, partneraccountlinking.GetTools()...)
-	tools = append(tools, adsavedkeywords.GetTools()...)
-	tools = append(tools, contentblocklist.GetTools()...)
-	tools = append(tools, adlightcampaigngroup.GetTools()...)
-	tools = append(tools, whatsappbusinessaccount.GetTools()...)
-	tools = append(tools, productfeedrule.GetTools()...)
-	tools = append(tools, adtopline.GetTools()...)
-	tools = append(tools, applinks.GetTools()...)
-	tools = append(tools, copyrightmediamisuse.GetTools()...)
-	tools = append(tools, fundraiserpersontocharity.GetTools()...)
-	tools = append(tools, productcataloglocalizationsettings.GetTools()...)
-	tools = append(tools, publisherwhitelist.GetTools()...)
-	tools = append(tools, album.GetTools()...)
-	tools = append(tools, cpasadcreationtemplate.GetTools()...)
-	tools = append(tools, customaudience.GetTools()...)
-	tools = append(tools, opengraphcontext.GetTools()...)
-	tools = append(tools, thirdpartypartnerpanelrequest.GetTools()...)
-	tools = append(tools, adsreportbuildersavedreport.GetTools()...)
-	tools = append(tools, aradsdatacontainer.GetTools()...)
-	tools = append(tools, cpasmerchantconfig.GetTools()...)
-	tools = append(tools, famekumo.GetTools()...)
-	tools = append(tools, group.GetTools()...)
-	tools = append(tools, vehicleoffer.GetTools()...)
-	tools = append(tools, businessassetsharingagreement.GetTools()...)
-	tools = append(tools, avatarprofilepicture.GetTools()...)
-	tools = append(tools, leadgendatadraft.GetTools()...)
-	tools = append(tools, mediafingerprint.GetTools()...)
-	tools = append(tools, researchpollstudy.GetTools()...)
-	tools = append(tools, pageupcomingchange.GetTools()...)
-	tools = append(tools, videopoll.GetTools()...)
-	tools = append(tools, adaccount.GetTools()...)
-	tools = append(tools, productfeeduploaderror.GetTools()...)
-	tools = append(tools, offsitepixel.GetTools()...)
-	tools = append(tools, adruleexecutionspec.GetTools()...)
-	tools = append(tools, adsstartyourdaywidget.GetTools()...)
-	tools = append(tools, mailingaddress.GetTools()...)
-	tools = append(tools, musicvideocopyright.GetTools()...)
-	tools = append(tools, productfeeduploaderrorsample.GetTools()...)
-	tools = append(tools, rightsmanagerdataexport.GetTools()...)
-	tools = append(tools, workexperience.GetTools()...)
-	tools = append(tools, audioisrc.GetTools()...)
-	tools = append(tools, admonetizationproperty.GetTools()...)
-	tools = append(tools, publisherblocklist.GetTools()...)
-	tools = append(tools, extendedcreditallocationconfig.GetTools()...)
-	tools = append(tools, videotextquestion.GetTools()...)
+	tools = append(tools, adcolumnsizes.GetTools()...)
+	tools = append(tools, adsavedlocation.GetTools()...)
+	tools = append(tools, placetag.GetTools()...)
+	tools = append(tools, productset.GetTools()...)
 	tools = append(tools, withasset3d.GetTools()...)
+	tools = append(tools, admonetizationproperty.GetTools()...)
+	tools = append(tools, adspixelcapabilityoverride.GetTools()...)
+	tools = append(tools, cpasparentcatalogsettings.GetTools()...)
+	tools = append(tools, publisherblocklist.GetTools()...)
+	tools = append(tools, videopoll.GetTools()...)
+	tools = append(tools, adsreportbuildermmmreportscheduler.GetTools()...)
+	tools = append(tools, copyrightownershiptransfer.GetTools()...)
+	tools = append(tools, offlinetermsofservice.GetTools()...)
+	tools = append(tools, stories.GetTools()...)
+	tools = append(tools, iguserexportforcam.GetTools()...)
+	tools = append(tools, adaccountagencyfeeconfig.GetTools()...)
+	tools = append(tools, bcpcampaign.GetTools()...)
+	tools = append(tools, igcomment.GetTools()...)
+	tools = append(tools, signalsiwlextractor.GetTools()...)
+	tools = append(tools, pageupcomingchange.GetTools()...)
+	tools = append(tools, adproposal.GetTools()...)
+	tools = append(tools, igupcomingevent.GetTools()...)
+	tools = append(tools, imagereferencematch.GetTools()...)
+	tools = append(tools, productdeliverypreference.GetTools()...)
+	tools = append(tools, websitecreativeassetsource.GetTools()...)
+	tools = append(tools, blindpig.GetTools()...)
+	tools = append(tools, websitecreativeassetsuggestions.GetTools()...)
+	tools = append(tools, pagecalltoaction.GetTools()...)
+	tools = append(tools, adruleevaluationspec.GetTools()...)
+	tools = append(tools, dynamicitemdisplaybundlefolder.GetTools()...)
+	tools = append(tools, shadowighashtag.GetTools()...)
+	tools = append(tools, cpascollaborationrequest.GetTools()...)
+	tools = append(tools, cpaslsbimagebank.GetTools()...)
+	tools = append(tools, placetopic.GetTools()...)
+	tools = append(tools, websitecreativeinfo.GetTools()...)
+	tools = append(tools, analyticsuserconfig.GetTools()...)
+	tools = append(tools, pageleadsaccessconfig.GetTools()...)
+	tools = append(tools, imagecopyrightdispute.GetTools()...)
+	tools = append(tools, addraft.GetTools()...)
+	tools = append(tools, cpasmerchantconfig.GetTools()...)
+	tools = append(tools, personaladspersona.GetTools()...)
+	tools = append(tools, productfeeduploaderror.GetTools()...)
+	tools = append(tools, destination.GetTools()...)
+	tools = append(tools, messengeradspartialautomatedsteplist.GetTools()...)
+	tools = append(tools, adexportpreset.GetTools()...)
+	tools = append(tools, automotivemodel.GetTools()...)
+	tools = append(tools, businessimage.GetTools()...)
+	tools = append(tools, eventticketsetting.GetTools()...)
+	tools = append(tools, offsitepixel.GetTools()...)
+	tools = append(tools, eventsourcegroup.GetTools()...)
+	tools = append(tools, wearabledevicepublickey.GetTools()...)
+	tools = append(tools, application.GetTools()...)
+	tools = append(tools, livevideoinputstream.GetTools()...)
+	tools = append(tools, adsstartyourdaywidget.GetTools()...)
+	tools = append(tools, hours.GetTools()...)
+	tools = append(tools, mediatitle.GetTools()...)
+	tools = append(tools, productitemlocalinfo.GetTools()...)
+	tools = append(tools, adaccountusersettings.GetTools()...)
+	tools = append(tools, comment.GetTools()...)
+	tools = append(tools, eventtickettier.GetTools()...)
+	tools = append(tools, livevideoerror.GetTools()...)
+	tools = append(tools, adaccountcreationrequest.GetTools()...)
+	tools = append(tools, adsreportbuilderexportcore.GetTools()...)
+	tools = append(tools, iguser.GetTools()...)
+	tools = append(tools, pagepost.GetTools()...)
+	tools = append(tools, audiocopyright.GetTools()...)
+	tools = append(tools, cpasbusinesssetupconfig.GetTools()...)
+	tools = append(tools, adplacement.GetTools()...)
+	tools = append(tools, dynamicitemdisplaybundle.GetTools()...)
+	tools = append(tools, flight.GetTools()...)
+	tools = append(tools, businessrolerequest.GetTools()...)
+	tools = append(tools, creditcard.GetTools()...)
+	tools = append(tools, fantasygame.GetTools()...)
+	tools = append(tools, apprequest.GetTools()...)
+	tools = append(tools, reachfrequencyprediction.GetTools()...)
+	tools = append(tools, whitehatfbdlrun.GetTools()...)
+	tools = append(tools, transactableitem.GetTools()...)
+	tools = append(tools, workexperience.GetTools()...)
+	tools = append(tools, event.GetTools()...)
+	tools = append(tools, businessownedobjectonbehalfofrequest.GetTools()...)
+	tools = append(tools, fbimagecopyrightmatch.GetTools()...)
+	tools = append(tools, jobopening.GetTools()...)
+	tools = append(tools, savedmessageresponse.GetTools()...)
+	tools = append(tools, thirdpartymeasurementreportdataset.GetTools()...)
+	tools = append(tools, catalogcontentversionconfig.GetTools()...)
+	tools = append(tools, mediafingerprint.GetTools()...)
+	tools = append(tools, messengerbusinesstemplate.GetTools()...)
+	tools = append(tools, copyrightmediamisuse.GetTools()...)
+	tools = append(tools, eventregistrationsetting.GetTools()...)
+	tools = append(tools, homelisting.GetTools()...)
+	tools = append(tools, link.GetTools()...)
+	tools = append(tools, cloudgame.GetTools()...)
+	tools = append(tools, business.GetTools()...)
+	tools = append(tools, adstudyobjective.GetTools()...)
+	tools = append(tools, fundraiserpersontocharity.GetTools()...)
+	tools = append(tools, user.GetTools()...)
+	tools = append(tools, adspixel.GetTools()...)
+	tools = append(tools, avatarprofilepicture.GetTools()...)
+	tools = append(tools, productsetusage.GetTools()...)
+	tools = append(tools, researchpollstudy.GetTools()...)
+	tools = append(tools, persona.GetTools()...)
+	tools = append(tools, adscreationsavedstate.GetTools()...)
 	tools = append(tools, adsusersettings.GetTools()...)
 	tools = append(tools, appeventconfig.GetTools()...)
-	tools = append(tools, igmediaboosteligibilityinfo.GetTools()...)
-	tools = append(tools, iguserexportforcam.GetTools()...)
-	tools = append(tools, productset.GetTools()...)
-	tools = append(tools, adspixelcapabilityoverride.GetTools()...)
-	tools = append(tools, partnerintegrationlinked.GetTools()...)
-	tools = append(tools, whitehatfbdlrun.GetTools()...)
-	tools = append(tools, franchiseprogrammember.GetTools()...)
-	tools = append(tools, comment.GetTools()...)
-	tools = append(tools, instagrambusinessasset.GetTools()...)
-	tools = append(tools, pagepostexperiment.GetTools()...)
-	tools = append(tools, usercontext.GetTools()...)
-	tools = append(tools, adsconversiongoal.GetTools()...)
-	tools = append(tools, businessimage.GetTools()...)
-	tools = append(tools, iguserforigonlyapi.GetTools()...)
-	tools = append(tools, pageusermessagethreadlabel.GetTools()...)
-	tools = append(tools, canvas.GetTools()...)
-	tools = append(tools, signalsiwlextractor.GetTools()...)
-	tools = append(tools, franchiseprogram.GetTools()...)
-	tools = append(tools, igboostmediaad.GetTools()...)
-	tools = append(tools, reachfrequencyprediction.GetTools()...)
-	tools = append(tools, userpageonetimeoptintokensettings.GetTools()...)
-	tools = append(tools, offlineconversiondatasetupload.GetTools()...)
-	tools = append(tools, omegacustomertrx.GetTools()...)
-	tools = append(tools, adaccountagencyfeeconfig.GetTools()...)
-	tools = append(tools, instagramthread.GetTools()...)
-	tools = append(tools, status.GetTools()...)
-	tools = append(tools, wearabledevicepublickey.GetTools()...)
-	tools = append(tools, adaccountcreationrequest.GetTools()...)
-	tools = append(tools, link.GetTools()...)
-	tools = append(tools, systemuser.GetTools()...)
-	tools = append(tools, thirdpartymeasurementreportdataset.GetTools()...)
-	tools = append(tools, paymentenginepayment.GetTools()...)
-	tools = append(tools, productdeliverypreference.GetTools()...)
-	tools = append(tools, addraft.GetTools()...)
-	tools = append(tools, thirdpartypartnerviewabilityrequest.GetTools()...)
-	tools = append(tools, adcustomderivedmetrics.GetTools()...)
-	tools = append(tools, igaccesstokenforigonlyapi.GetTools()...)
-	tools = append(tools, place.GetTools()...)
-	tools = append(tools, adsavedreport.GetTools()...)
-	tools = append(tools, adstudy.GetTools()...)
-	tools = append(tools, shadowigmediabuilder.GetTools()...)
-	tools = append(tools, favoritecatalog.GetTools()...)
-	tools = append(tools, profile.GetTools()...)
-	tools = append(tools, businessagreement.GetTools()...)
-	tools = append(tools, igcomment.GetTools()...)
-	tools = append(tools, rtbdynamicpost.GetTools()...)
-	tools = append(tools, brandsafetydownloadable.GetTools()...)
-	tools = append(tools, adplacepageset.GetTools()...)
-	tools = append(tools, advideo.GetTools()...)
-	tools = append(tools, highdemandperiod.GetTools()...)
-	tools = append(tools, page.GetTools()...)
-	tools = append(tools, videocopyrightmatch.GetTools()...)
-	tools = append(tools, almevent.GetTools()...)
-	tools = append(tools, adlightadgroup.GetTools()...)
-	tools = append(tools, copyrightownershiptransfer.GetTools()...)
-	tools = append(tools, productitemlocalinfo.GetTools()...)
-	tools = append(tools, collaborativeadssharesettings.GetTools()...)
-	tools = append(tools, educationexperience.GetTools()...)
-	tools = append(tools, adimage.GetTools()...)
-	tools = append(tools, asyncsession.GetTools()...)
-	tools = append(tools, audiosublabel.GetTools()...)
-	tools = append(tools, blindpig.GetTools()...)
-	tools = append(tools, dynamicitemdisplaybundlefolder.GetTools()...)
-	tools = append(tools, slicedeventsourcegroup.GetTools()...)
-	tools = append(tools, campaign.GetTools()...)
-	tools = append(tools, livevideoinputstream.GetTools()...)
-	tools = append(tools, application.GetTools()...)
 	tools = append(tools, businessproject.GetTools()...)
-	tools = append(tools, openbridgeconfiguration.GetTools()...)
-	tools = append(tools, livevideoadcampaignconfig.GetTools()...)
-	tools = append(tools, partnerstudy.GetTools()...)
-	tools = append(tools, destination.GetTools()...)
-	tools = append(tools, mediacopyrightattribution.GetTools()...)
-	tools = append(tools, hotelroom.GetTools()...)
-	tools = append(tools, productimage.GetTools()...)
-	tools = append(tools, measurementreport.GetTools()...)
-	tools = append(tools, dynamiccontentset.GetTools()...)
-	tools = append(tools, playablecontent.GetTools()...)
-	tools = append(tools, adcreationpackageconfig.GetTools()...)
-	tools = append(tools, whatsappbusinesspreverifiedphonenumber.GetTools()...)
-	tools = append(tools, pageleadsaccessconfig.GetTools()...)
-	tools = append(tools, customconversion.GetTools()...)
-	tools = append(tools, externalmerchantsettings.GetTools()...)
-	tools = append(tools, mediacopyrightupdaterecord.GetTools()...)
-	tools = append(tools, homelisting.GetTools()...)
-	tools = append(tools, adaccountusersettings.GetTools()...)
-	tools = append(tools, commerceorder.GetTools()...)
-	tools = append(tools, managementsitelink.GetTools()...)
-	tools = append(tools, apprequest.GetTools()...)
-	tools = append(tools, analyticsuserconfig.GetTools()...)
-	tools = append(tools, adspivotrules.GetTools()...)
-	tools = append(tools, catalogitemoverride.GetTools()...)
-	tools = append(tools, persona.GetTools()...)
-	tools = append(tools, transactableitem.GetTools()...)
-	tools = append(tools, bcpcampaign.GetTools()...)
-	tools = append(tools, businesstag.GetTools()...)
-	tools = append(tools, unifiedthread.GetTools()...)
-	tools = append(tools, adlightcampaign.GetTools()...)
-	tools = append(tools, adstudyobjective.GetTools()...)
-	tools = append(tools, eventexternalticketinfo.GetTools()...)
-	tools = append(tools, geogatingpolicy.GetTools()...)
-	tools = append(tools, messengerbusinesstemplate.GetTools()...)
-	tools = append(tools, privateliftstudyinstance.GetTools()...)
-	tools = append(tools, adcreative.GetTools()...)
-	tools = append(tools, creatorassetcreative.GetTools()...)
-	tools = append(tools, post.GetTools()...)
-	tools = append(tools, productgroup.GetTools()...)
-	tools = append(tools, cpasbusinesssetupconfig.GetTools()...)
-	tools = append(tools, placetag.GetTools()...)
-	tools = append(tools, adstudycell.GetTools()...)
-	tools = append(tools, productfeedschedule.GetTools()...)
-	tools = append(tools, productfeedupload.GetTools()...)
-	tools = append(tools, calibratorexistingrule.GetTools()...)
-	tools = append(tools, businessrolerequest.GetTools()...)
-	tools = append(tools, adrule.GetTools()...)
-	tools = append(tools, adsavedlocation.GetTools()...)
-	tools = append(tools, adscreationsavedstate.GetTools()...)
-	tools = append(tools, musicworkcopyright.GetTools()...)
-	tools = append(tools, cpasadvertiserpartnershiprecommendation.GetTools()...)
-	tools = append(tools, cpaslsbimagebank.GetTools()...)
-	tools = append(tools, leadgenform.GetTools()...)
-	tools = append(tools, offlineproductitem.GetTools()...)
-	tools = append(tools, websitecreativeassetsource.GetTools()...)
-	tools = append(tools, pagepost.GetTools()...)
-	tools = append(tools, productfeed.GetTools()...)
-	tools = append(tools, commercemerchantsettings.GetTools()...)
-	tools = append(tools, sitelink.GetTools()...)
-	tools = append(tools, adreportrun.GetTools()...)
-	tools = append(tools, bizinboxoffsiteemailaccount.GetTools()...)
-	tools = append(tools, eventsourcegroup.GetTools()...)
-	tools = append(tools, offsitesignalcontainerbusinessobject.GetTools()...)
-	tools = append(tools, adsmcmeconversion.GetTools()...)
-	tools = append(tools, commerceordertransactiondetail.GetTools()...)
-	tools = append(tools, creditcard.GetTools()...)
-	tools = append(tools, thirdpartypartnerpanelscheduled.GetTools()...)
-	tools = append(tools, imagecopyright.GetTools()...)
-	tools = append(tools, adlabel.GetTools()...)
-	tools = append(tools, productitem.GetTools()...)
-	tools = append(tools, adasyncrequestset.GetTools()...)
-	tools = append(tools, crmaddress.GetTools()...)
-	tools = append(tools, business.GetTools()...)
-	tools = append(tools, cpasparentcatalogsettings.GetTools()...)
-	tools = append(tools, catalogsmartpixelsettings.GetTools()...)
-	tools = append(tools, wifiinformation.GetTools()...)
-	tools = append(tools, extendedcreditinvoicegroup.GetTools()...)
-	tools = append(tools, photo.GetTools()...)
-	tools = append(tools, adcolumnsizes.GetTools()...)
-	tools = append(tools, savedaudience.GetTools()...)
-	tools = append(tools, chinabusinessonboardingvettingrequest.GetTools()...)
-	tools = append(tools, productsetusage.GetTools()...)
-	tools = append(tools, adsquickviews.GetTools()...)
-	tools = append(tools, catalogwebsiteonboardingsettings.GetTools()...)
-	tools = append(tools, videocopyright.GetTools()...)
-	tools = append(tools, adasyncrequest.GetTools()...)
-	tools = append(tools, adsnamingtemplate.GetTools()...)
-	tools = append(tools, organization.GetTools()...)
-	tools = append(tools, eventregistrationsetting.GetTools()...)
-	tools = append(tools, leadgendirectcrmintegrationconfig.GetTools()...)
-	tools = append(tools, businessfranchiseconfig.GetTools()...)
-	tools = append(tools, localservicebusiness.GetTools()...)
-	tools = append(tools, pagecalltoaction.GetTools()...)
-	tools = append(tools, productcatalog.GetTools()...)
-	tools = append(tools, canvastemplate.GetTools()...)
-	tools = append(tools, igmediaforigonlyapi.GetTools()...)
-	tools = append(tools, personaladspersona.GetTools()...)
-	tools = append(tools, woodhengepurchasedpaygreceipt.GetTools()...)
-	tools = append(tools, businessrequest.GetTools()...)
-	tools = append(tools, eventticketsetting.GetTools()...)
-	tools = append(tools, eventtour.GetTools()...)
-	tools = append(tools, audioasset.GetTools()...)
 	tools = append(tools, vehicle.GetTools()...)
-	tools = append(tools, woodhengesupporter.GetTools()...)
-	tools = append(tools, adgroupfacebookfeedback.GetTools()...)
-	tools = append(tools, hours.GetTools()...)
-	tools = append(tools, igmedia.GetTools()...)
-	tools = append(tools, savedmessageresponse.GetTools()...)
-	tools = append(tools, adproposal.GetTools()...)
-	tools = append(tools, adsvalueadjustmentrulecollection.GetTools()...)
-	tools = append(tools, businesscreativefolder.GetTools()...)
-	tools = append(tools, businessuser.GetTools()...)
-	tools = append(tools, fantasygame.GetTools()...)
-	tools = append(tools, whatsappbusinessprofile.GetTools()...)
-	tools = append(tools, adtoplinedetail.GetTools()...)
-	tools = append(tools, avatar.GetTools()...)
-	tools = append(tools, bidschedule.GetTools()...)
-	tools = append(tools, dynamicarmetadata.GetTools()...)
-	tools = append(tools, shop.GetTools()...)
-	tools = append(tools, catalogcontentversionconfig.GetTools()...)
-	tools = append(tools, dynamicitemdisplaybundle.GetTools()...)
-	tools = append(tools, extendedcreditapplication.GetTools()...)
-	tools = append(tools, extendedcredit.GetTools()...)
-	tools = append(tools, imagereferencematch.GetTools()...)
-	tools = append(tools, videolist.GetTools()...)
-	tools = append(tools, adsreportbuildermmmreport.GetTools()...)
-	tools = append(tools, analyticssegment.GetTools()...)
-	tools = append(tools, businessobjecttransferownershipagreement.GetTools()...)
-	tools = append(tools, igbcadspermission.GetTools()...)
-	tools = append(tools, catalogwebsitesettings.GetTools()...)
-	tools = append(tools, shadowighashtag.GetTools()...)
-	tools = append(tools, pagebroadcast.GetTools()...)
-	tools = append(tools, workskill.GetTools()...)
-	tools = append(tools, automotivemodel.GetTools()...)
-	tools = append(tools, mediatitle.GetTools()...)
-	tools = append(tools, ctxpartnerappwelcomemessageflow.GetTools()...)
-	tools = append(tools, brandrequest.GetTools()...)
-	tools = append(tools, owneddomain.GetTools()...)
-	tools = append(tools, adspixel.GetTools()...)
-	tools = append(tools, advainstance.GetTools()...)
-	tools = append(tools, igupcomingevent.GetTools()...)
-	tools = append(tools, adsreportbuilderexportcore.GetTools()...)
-	tools = append(tools, businessvideo.GetTools()...)
-	tools = append(tools, websitecreativeinfo.GetTools()...)
-	tools = append(tools, igrefreshaccesstokenforigonlyapi.GetTools()...)
-	tools = append(tools, event.GetTools()...)
-	tools = append(tools, eventtickettier.GetTools()...)
-	tools = append(tools, flight.GetTools()...)
-	tools = append(tools, adsreportbuildermmmreportscheduler.GetTools()...)
-	tools = append(tools, storecatalogsettings.GetTools()...)
+	tools = append(tools, adcustomderivedmetrics.GetTools()...)
 	tools = append(tools, url.GetTools()...)
-	tools = append(tools, livevideo.GetTools()...)
-	tools = append(tools, areffect.GetTools()...)
-	tools = append(tools, adexportpreset.GetTools()...)
-	tools = append(tools, audiorelease.GetTools()...)
+	tools = append(tools, applinks.GetTools()...)
+	tools = append(tools, adstudycell.GetTools()...)
+	tools = append(tools, businessagreement.GetTools()...)
+	tools = append(tools, externalmerchantsettings.GetTools()...)
+	tools = append(tools, status.GetTools()...)
+	tools = append(tools, wifiinformation.GetTools()...)
+	tools = append(tools, creatorassetcreative.GetTools()...)
+	tools = append(tools, shop.GetTools()...)
+	tools = append(tools, localservicebusiness.GetTools()...)
+	tools = append(tools, audiosublabel.GetTools()...)
+	tools = append(tools, bidschedule.GetTools()...)
+	tools = append(tools, educationexperience.GetTools()...)
+	tools = append(tools, adgroupfacebookfeedback.GetTools()...)
+	tools = append(tools, livevideoadcampaignconfig.GetTools()...)
+	tools = append(tools, whatsappbusinesspreverifiedphonenumber.GetTools()...)
+	tools = append(tools, extendedcreditallocationconfig.GetTools()...)
+	tools = append(tools, favoritecatalog.GetTools()...)
+	tools = append(tools, partnerstudy.GetTools()...)
+	tools = append(tools, whatsappbusinessaccount.GetTools()...)
+	tools = append(tools, leadgendirectcrmintegrationconfig.GetTools()...)
+	tools = append(tools, omegacustomertrx.GetTools()...)
+	tools = append(tools, highdemandperiod.GetTools()...)
 	tools = append(tools, instagramuser.GetTools()...)
-	tools = append(tools, paymentsubscription.GetTools()...)
-	tools = append(tools, almendadvertiserinfo.GetTools()...)
-	tools = append(tools, adruleevaluationspec.GetTools()...)
-	tools = append(tools, businessassetgroup.GetTools()...)
-	tools = append(tools, audiocopyright.GetTools()...)
-	tools = append(tools, dynamicvideometadata.GetTools()...)
-	tools = append(tools, cpascollaborationrequest.GetTools()...)
-	tools = append(tools, user.GetTools()...)
-	tools = append(tools, websitecreativeassetsuggestions.GetTools()...)
-	tools = append(tools, adset.GetTools()...)
-	tools = append(tools, livevideoerror.GetTools()...)
+	tools = append(tools, adlightcampaign.GetTools()...)
+	tools = append(tools, productfeedschedule.GetTools()...)
+	tools = append(tools, advainstance.GetTools()...)
+	tools = append(tools, businessobjecttransferownershipagreement.GetTools()...)
+	tools = append(tools, businessrequest.GetTools()...)
+	tools = append(tools, audiorelease.GetTools()...)
+	tools = append(tools, igmedia.GetTools()...)
+	tools = append(tools, productfeedupload.GetTools()...)
+	tools = append(tools, productitemoffer.GetTools()...)
+	tools = append(tools, adstudy.GetTools()...)
+	tools = append(tools, areffect.GetTools()...)
+	tools = append(tools, audioasset.GetTools()...)
+	tools = append(tools, adlightadgroup.GetTools()...)
+	tools = append(tools, place.GetTools()...)
+	tools = append(tools, avatar.GetTools()...)
+	tools = append(tools, productitem.GetTools()...)
+	tools = append(tools, pageusermessagethreadlabel.GetTools()...)
+	tools = append(tools, canvasdynamicsetting.GetTools()...)
+	tools = append(tools, catalogitemoverride.GetTools()...)
+	tools = append(tools, partnerintegrationlinked.GetTools()...)
+	tools = append(tools, rtbdynamicpost.GetTools()...)
+	tools = append(tools, offlineconversiondatasetupload.GetTools()...)
+	tools = append(tools, vehicleoffer.GetTools()...)
+	tools = append(tools, brandsafetydownloadable.GetTools()...)
+	tools = append(tools, igmediaforigonlyapi.GetTools()...)
+	tools = append(tools, adsvalueadjustmentrulecollection.GetTools()...)
+	tools = append(tools, album.GetTools()...)
+	tools = append(tools, thirdpartypartnerliftrequest.GetTools()...)
+	tools = append(tools, extendedcreditinvoicegroup.GetTools()...)
+	tools = append(tools, opengraphcontext.GetTools()...)
+	tools = append(tools, userpageonetimeoptintokensettings.GetTools()...)
+	tools = append(tools, campaign.GetTools()...)
+	tools = append(tools, commerceordertransactiondetail.GetTools()...)
 	tools = append(tools, offlineconversiondataset.GetTools()...)
+	tools = append(tools, savedaudience.GetTools()...)
+	tools = append(tools, adset.GetTools()...)
+	tools = append(tools, crmaddress.GetTools()...)
+	tools = append(tools, instagramthread.GetTools()...)
+	tools = append(tools, eventexternalticketinfo.GetTools()...)
+	tools = append(tools, famekumo.GetTools()...)
+	tools = append(tools, hotelroom.GetTools()...)
+	tools = append(tools, page.GetTools()...)
+	tools = append(tools, audioisrc.GetTools()...)
+	tools = append(tools, adimage.GetTools()...)
+	tools = append(tools, businessassetsharingagreement.GetTools()...)
+	tools = append(tools, adaccount.GetTools()...)
+	tools = append(tools, adsreportbuildermmmreport.GetTools()...)
+	tools = append(tools, businessassetgroup.GetTools()...)
+	tools = append(tools, managementsitelink.GetTools()...)
+	tools = append(tools, unifiedthread.GetTools()...)
+	tools = append(tools, adspivotrules.GetTools()...)
+	tools = append(tools, collaborativeadssharesettings.GetTools()...)
+	tools = append(tools, mediacopyrightattribution.GetTools()...)
+	tools = append(tools, videotextquestion.GetTools()...)
+	tools = append(tools, businessfranchiseconfig.GetTools()...)
+	tools = append(tools, cpasadcreationtemplate.GetTools()...)
+	tools = append(tools, videocopyrightmatch.GetTools()...)
+	tools = append(tools, aradsdatacontainer.GetTools()...)
+	tools = append(tools, photo.GetTools()...)
+	tools = append(tools, publisherwhitelist.GetTools()...)
+	tools = append(tools, adsavedreport.GetTools()...)
+	tools = append(tools, musicworkcopyright.GetTools()...)
+	tools = append(tools, paymentenginepayment.GetTools()...)
+	tools = append(tools, catalogwebsiteonboardingsettings.GetTools()...)
+	tools = append(tools, videocopyrightrule.GetTools()...)
+	tools = append(tools, adrule.GetTools()...)
+	tools = append(tools, productfeeduploaderrorsample.GetTools()...)
+	tools = append(tools, extendedcredit.GetTools()...)
+	tools = append(tools, adsconversiongoal.GetTools()...)
+	tools = append(tools, pagepostexperiment.GetTools()...)
+	tools = append(tools, post.GetTools()...)
+	tools = append(tools, adsreportbuildersavedreport.GetTools()...)
+	tools = append(tools, sitelink.GetTools()...)
+	tools = append(tools, commerceorder.GetTools()...)
+	tools = append(tools, measurementreport.GetTools()...)
+	tools = append(tools, adcreative.GetTools()...)
+	tools = append(tools, igbcadspermission.GetTools()...)
+	tools = append(tools, organization.GetTools()...)
+	tools = append(tools, ad.GetTools()...)
+	tools = append(tools, commercemerchantsettings.GetTools()...)
+	tools = append(tools, dynamiccontentset.GetTools()...)
+	tools = append(tools, productcataloglocalizationsettings.GetTools()...)
+	tools = append(tools, adcreationpackageconfig.GetTools()...)
+	tools = append(tools, igmediaboosteligibilityinfo.GetTools()...)
+	tools = append(tools, adasyncrequestset.GetTools()...)
+	tools = append(tools, extendedcreditapplication.GetTools()...)
+	tools = append(tools, storecatalogsettings.GetTools()...)
+	tools = append(tools, group.GetTools()...)
+	tools = append(tools, woodhengepurchasedpaygreceipt.GetTools()...)
+	tools = append(tools, mediacopyrightupdaterecord.GetTools()...)
+	tools = append(tools, playablecontent.GetTools()...)
+	tools = append(tools, dynamicarmetadata.GetTools()...)
+	tools = append(tools, thirdpartypartnerviewabilityrequest.GetTools()...)
+	tools = append(tools, asyncsession.GetTools()...)
+	tools = append(tools, brandrequest.GetTools()...)
+	tools = append(tools, adtopline.GetTools()...)
+	tools = append(tools, calibratorexistingrule.GetTools()...)
+	tools = append(tools, whatsappbusinessprofile.GetTools()...)
+	tools = append(tools, adruleexecutionspec.GetTools()...)
+	tools = append(tools, woodhengesupporter.GetTools()...)
+	tools = append(tools, paymentsubscription.GetTools()...)
+	tools = append(tools, profile.GetTools()...)
+	tools = append(tools, dynamicpriceconfigbydate.GetTools()...)
+	tools = append(tools, ctxpartnerappwelcomemessageflow.GetTools()...)
+	tools = append(tools, chinabusinessonboardingvettingrequest.GetTools()...)
+	tools = append(tools, dynamicvideometadata.GetTools()...)
+	tools = append(tools, livevideo.GetTools()...)
+	tools = append(tools, customconversion.GetTools()...)
+	tools = append(tools, robot.GetTools()...)
+	tools = append(tools, usercontext.GetTools()...)
+	tools = append(tools, bizinboxoffsiteemailaccount.GetTools()...)
+	tools = append(tools, calladsphonedata.GetTools()...)
+	tools = append(tools, productgroup.GetTools()...)
+	tools = append(tools, imagecopyright.GetTools()...)
+	tools = append(tools, slicedeventsourcegroup.GetTools()...)
+	tools = append(tools, leadgendatadraft.GetTools()...)
+	tools = append(tools, geogatingpolicy.GetTools()...)
+	tools = append(tools, businessvideo.GetTools()...)
+	tools = append(tools, productimage.GetTools()...)
+	tools = append(tools, musicvideocopyright.GetTools()...)
+	tools = append(tools, adsmcmeconversion.GetTools()...)
+	tools = append(tools, catalogsmartpixelsettings.GetTools()...)
+	tools = append(tools, igaccesstokenforigonlyapi.GetTools()...)
+	tools = append(tools, productcatalog.GetTools()...)
+	tools = append(tools, almevent.GetTools()...)
+	tools = append(tools, productfeed.GetTools()...)
+	tools = append(tools, thirdpartypartnerpanelscheduled.GetTools()...)
+	tools = append(tools, almendadvertiserinfo.GetTools()...)
+	tools = append(tools, businesscreativefolder.GetTools()...)
+	tools = append(tools, shadowigmediabuilder.GetTools()...)
+	tools = append(tools, contentblocklist.GetTools()...)
+	tools = append(tools, franchiseprogram.GetTools()...)
+	tools = append(tools, storelocation.GetTools()...)
+	tools = append(tools, thirdpartypartnerpanelrequest.GetTools()...)
+	tools = append(tools, adplacepageset.GetTools()...)
+	tools = append(tools, pagebroadcast.GetTools()...)
+	tools = append(tools, openbridgeconfiguration.GetTools()...)
+	tools = append(tools, cpasadvertiserpartnershiprecommendation.GetTools()...)
+	tools = append(tools, igboostmediaad.GetTools()...)
+	tools = append(tools, videolist.GetTools()...)
+	tools = append(tools, workskill.GetTools()...)
+	tools = append(tools, catalogwebsitesettings.GetTools()...)
+	tools = append(tools, hotel.GetTools()...)
+	tools = append(tools, iguserforigonlyapi.GetTools()...)
+	tools = append(tools, adlabel.GetTools()...)
+	tools = append(tools, mailingaddress.GetTools()...)
+	tools = append(tools, advideo.GetTools()...)
+	tools = append(tools, instagrambusinessasset.GetTools()...)
+	tools = append(tools, businessuser.GetTools()...)
+	tools = append(tools, franchiseprogrammember.GetTools()...)
+	tools = append(tools, privateliftstudyinstance.GetTools()...)
+	tools = append(tools, customaudience.GetTools()...)
+	tools = append(tools, videocopyright.GetTools()...)
+	tools = append(tools, systemuser.GetTools()...)
+	tools = append(tools, adsquickviews.GetTools()...)
+	tools = append(tools, pageinsightsasyncexportrun.GetTools()...)
+	tools = append(tools, adsavedkeywords.GetTools()...)
+	tools = append(tools, rightsmanagerdataexport.GetTools()...)
+	tools = append(tools, almadaccountinfo.GetTools()...)
+	tools = append(tools, adtoplinedetail.GetTools()...)
+	tools = append(tools, businesstag.GetTools()...)
+	tools = append(tools, productfeedrule.GetTools()...)
+	tools = append(tools, eventtour.GetTools()...)
+	tools = append(tools, offlineproductitem.GetTools()...)
+	tools = append(tools, offsitesignalcontainerbusinessobject.GetTools()...)
+	tools = append(tools, adlightcampaigngroup.GetTools()...)
+	tools = append(tools, canvastemplate.GetTools()...)
+	tools = append(tools, canvas.GetTools()...)
+	tools = append(tools, lifeevent.GetTools()...)
+	tools = append(tools, owneddomain.GetTools()...)
+	tools = append(tools, partneraccountlinking.GetTools()...)
+	tools = append(tools, leadgenform.GetTools()...)
+	tools = append(tools, adsnamingtemplate.GetTools()...)
+	tools = append(tools, analyticssegment.GetTools()...)
+	tools = append(tools, lead.GetTools()...)
+	tools = append(tools, adasyncrequest.GetTools()...)
+	tools = append(tools, adreportrun.GetTools()...)
+	tools = append(tools, igrefreshaccesstokenforigonlyapi.GetTools()...)
 
 	return tools
 }
@@ -639,218 +639,311 @@ func GetAllTools() []mcp.Tool {
 func GetFilteredTools(enabledObjects map[string]bool) []mcp.Tool {
 	var tools []mcp.Tool
 
-	if enabled, ok := enabledObjects["Robot"]; ok && enabled {
-		tools = append(tools, robot.GetTools()...)
+	if enabled, ok := enabledObjects["AdColumnSizes"]; ok && enabled {
+		tools = append(tools, adcolumnsizes.GetTools()...)
 	}
-	if enabled, ok := enabledObjects["MessengerAdsPartialAutomatedStepList"]; ok && enabled {
-		tools = append(tools, messengeradspartialautomatedsteplist.GetTools()...)
+	if enabled, ok := enabledObjects["AdSavedLocation"]; ok && enabled {
+		tools = append(tools, adsavedlocation.GetTools()...)
 	}
-	if enabled, ok := enabledObjects["PageInsightsAsyncExportRun"]; ok && enabled {
-		tools = append(tools, pageinsightsasyncexportrun.GetTools()...)
+	if enabled, ok := enabledObjects["PlaceTag"]; ok && enabled {
+		tools = append(tools, placetag.GetTools()...)
 	}
-	if enabled, ok := enabledObjects["CanvasDynamicSetting"]; ok && enabled {
-		tools = append(tools, canvasdynamicsetting.GetTools()...)
+	if enabled, ok := enabledObjects["ProductSet"]; ok && enabled {
+		tools = append(tools, productset.GetTools()...)
 	}
-	if enabled, ok := enabledObjects["DynamicPriceConfigByDate"]; ok && enabled {
-		tools = append(tools, dynamicpriceconfigbydate.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["Stories"]; ok && enabled {
-		tools = append(tools, stories.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["VideoCopyrightRule"]; ok && enabled {
-		tools = append(tools, videocopyrightrule.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["Hotel"]; ok && enabled {
-		tools = append(tools, hotel.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["AdPlacement"]; ok && enabled {
-		tools = append(tools, adplacement.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["ProductItemOffer"]; ok && enabled {
-		tools = append(tools, productitemoffer.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["Ad"]; ok && enabled {
-		tools = append(tools, ad.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["ImageCopyrightDispute"]; ok && enabled {
-		tools = append(tools, imagecopyrightdispute.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["CloudGame"]; ok && enabled {
-		tools = append(tools, cloudgame.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["ThirdPartyPartnerLiftRequest"]; ok && enabled {
-		tools = append(tools, thirdpartypartnerliftrequest.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["ALMAdAccountInfo"]; ok && enabled {
-		tools = append(tools, almadaccountinfo.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["Lead"]; ok && enabled {
-		tools = append(tools, lead.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["LifeEvent"]; ok && enabled {
-		tools = append(tools, lifeevent.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["FBImageCopyrightMatch"]; ok && enabled {
-		tools = append(tools, fbimagecopyrightmatch.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["StoreLocation"]; ok && enabled {
-		tools = append(tools, storelocation.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["PlaceTopic"]; ok && enabled {
-		tools = append(tools, placetopic.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["BusinessOwnedObjectOnBehalfOfRequest"]; ok && enabled {
-		tools = append(tools, businessownedobjectonbehalfofrequest.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["IGUser"]; ok && enabled {
-		tools = append(tools, iguser.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["JobOpening"]; ok && enabled {
-		tools = append(tools, jobopening.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["OfflineTermsOfService"]; ok && enabled {
-		tools = append(tools, offlinetermsofservice.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["CallAdsPhoneData"]; ok && enabled {
-		tools = append(tools, calladsphonedata.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["PartnerAccountLinking"]; ok && enabled {
-		tools = append(tools, partneraccountlinking.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["AdSavedKeywords"]; ok && enabled {
-		tools = append(tools, adsavedkeywords.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["ContentBlockList"]; ok && enabled {
-		tools = append(tools, contentblocklist.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["AdLightCampaignGroup"]; ok && enabled {
-		tools = append(tools, adlightcampaigngroup.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["WhatsAppBusinessAccount"]; ok && enabled {
-		tools = append(tools, whatsappbusinessaccount.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["ProductFeedRule"]; ok && enabled {
-		tools = append(tools, productfeedrule.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["AdTopline"]; ok && enabled {
-		tools = append(tools, adtopline.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["AppLinks"]; ok && enabled {
-		tools = append(tools, applinks.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["CopyrightMediaMisuse"]; ok && enabled {
-		tools = append(tools, copyrightmediamisuse.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["FundraiserPersonToCharity"]; ok && enabled {
-		tools = append(tools, fundraiserpersontocharity.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["ProductCatalogLocalizationSettings"]; ok && enabled {
-		tools = append(tools, productcataloglocalizationsettings.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["PublisherWhiteList"]; ok && enabled {
-		tools = append(tools, publisherwhitelist.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["Album"]; ok && enabled {
-		tools = append(tools, album.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["CPASAdCreationTemplate"]; ok && enabled {
-		tools = append(tools, cpasadcreationtemplate.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["CustomAudience"]; ok && enabled {
-		tools = append(tools, customaudience.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["OpenGraphContext"]; ok && enabled {
-		tools = append(tools, opengraphcontext.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["ThirdPartyPartnerPanelRequest"]; ok && enabled {
-		tools = append(tools, thirdpartypartnerpanelrequest.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["AdsReportBuilderSavedReport"]; ok && enabled {
-		tools = append(tools, adsreportbuildersavedreport.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["ArAdsDataContainer"]; ok && enabled {
-		tools = append(tools, aradsdatacontainer.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["CPASMerchantConfig"]; ok && enabled {
-		tools = append(tools, cpasmerchantconfig.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["FAMEKumo"]; ok && enabled {
-		tools = append(tools, famekumo.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["Group"]; ok && enabled {
-		tools = append(tools, group.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["VehicleOffer"]; ok && enabled {
-		tools = append(tools, vehicleoffer.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["BusinessAssetSharingAgreement"]; ok && enabled {
-		tools = append(tools, businessassetsharingagreement.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["AvatarProfilePicture"]; ok && enabled {
-		tools = append(tools, avatarprofilepicture.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["LeadGenDataDraft"]; ok && enabled {
-		tools = append(tools, leadgendatadraft.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["MediaFingerprint"]; ok && enabled {
-		tools = append(tools, mediafingerprint.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["ResearchPollStudy"]; ok && enabled {
-		tools = append(tools, researchpollstudy.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["PageUpcomingChange"]; ok && enabled {
-		tools = append(tools, pageupcomingchange.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["VideoPoll"]; ok && enabled {
-		tools = append(tools, videopoll.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["AdAccount"]; ok && enabled {
-		tools = append(tools, adaccount.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["ProductFeedUploadError"]; ok && enabled {
-		tools = append(tools, productfeeduploaderror.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["OffsitePixel"]; ok && enabled {
-		tools = append(tools, offsitepixel.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["AdRuleExecutionSpec"]; ok && enabled {
-		tools = append(tools, adruleexecutionspec.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["AdsStartYourDayWidget"]; ok && enabled {
-		tools = append(tools, adsstartyourdaywidget.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["MailingAddress"]; ok && enabled {
-		tools = append(tools, mailingaddress.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["MusicVideoCopyright"]; ok && enabled {
-		tools = append(tools, musicvideocopyright.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["ProductFeedUploadErrorSample"]; ok && enabled {
-		tools = append(tools, productfeeduploaderrorsample.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["RightsManagerDataExport"]; ok && enabled {
-		tools = append(tools, rightsmanagerdataexport.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["WorkExperience"]; ok && enabled {
-		tools = append(tools, workexperience.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["AudioIsrc"]; ok && enabled {
-		tools = append(tools, audioisrc.GetTools()...)
+	if enabled, ok := enabledObjects["WithAsset3D"]; ok && enabled {
+		tools = append(tools, withasset3d.GetTools()...)
 	}
 	if enabled, ok := enabledObjects["AdMonetizationProperty"]; ok && enabled {
 		tools = append(tools, admonetizationproperty.GetTools()...)
 	}
+	if enabled, ok := enabledObjects["AdsPixelCapabilityOverride"]; ok && enabled {
+		tools = append(tools, adspixelcapabilityoverride.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["CPASParentCatalogSettings"]; ok && enabled {
+		tools = append(tools, cpasparentcatalogsettings.GetTools()...)
+	}
 	if enabled, ok := enabledObjects["PublisherBlockList"]; ok && enabled {
 		tools = append(tools, publisherblocklist.GetTools()...)
 	}
-	if enabled, ok := enabledObjects["ExtendedCreditAllocationConfig"]; ok && enabled {
-		tools = append(tools, extendedcreditallocationconfig.GetTools()...)
+	if enabled, ok := enabledObjects["VideoPoll"]; ok && enabled {
+		tools = append(tools, videopoll.GetTools()...)
 	}
-	if enabled, ok := enabledObjects["VideoTextQuestion"]; ok && enabled {
-		tools = append(tools, videotextquestion.GetTools()...)
+	if enabled, ok := enabledObjects["AdsReportBuilderMMMReportScheduler"]; ok && enabled {
+		tools = append(tools, adsreportbuildermmmreportscheduler.GetTools()...)
 	}
-	if enabled, ok := enabledObjects["WithAsset3D"]; ok && enabled {
-		tools = append(tools, withasset3d.GetTools()...)
+	if enabled, ok := enabledObjects["CopyrightOwnershipTransfer"]; ok && enabled {
+		tools = append(tools, copyrightownershiptransfer.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["OfflineTermsOfService"]; ok && enabled {
+		tools = append(tools, offlinetermsofservice.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["Stories"]; ok && enabled {
+		tools = append(tools, stories.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["IGUserExportForCAM"]; ok && enabled {
+		tools = append(tools, iguserexportforcam.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["AdAccountAgencyFeeConfig"]; ok && enabled {
+		tools = append(tools, adaccountagencyfeeconfig.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["BCPCampaign"]; ok && enabled {
+		tools = append(tools, bcpcampaign.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["IGComment"]; ok && enabled {
+		tools = append(tools, igcomment.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["SignalsIWLExtractor"]; ok && enabled {
+		tools = append(tools, signalsiwlextractor.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["PageUpcomingChange"]; ok && enabled {
+		tools = append(tools, pageupcomingchange.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["AdProposal"]; ok && enabled {
+		tools = append(tools, adproposal.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["IGUpcomingEvent"]; ok && enabled {
+		tools = append(tools, igupcomingevent.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["ImageReferenceMatch"]; ok && enabled {
+		tools = append(tools, imagereferencematch.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["ProductDeliveryPreference"]; ok && enabled {
+		tools = append(tools, productdeliverypreference.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["WebsiteCreativeAssetSource"]; ok && enabled {
+		tools = append(tools, websitecreativeassetsource.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["BlindPig"]; ok && enabled {
+		tools = append(tools, blindpig.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["WebsiteCreativeAssetSuggestions"]; ok && enabled {
+		tools = append(tools, websitecreativeassetsuggestions.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["PageCallToAction"]; ok && enabled {
+		tools = append(tools, pagecalltoaction.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["AdRuleEvaluationSpec"]; ok && enabled {
+		tools = append(tools, adruleevaluationspec.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["DynamicItemDisplayBundleFolder"]; ok && enabled {
+		tools = append(tools, dynamicitemdisplaybundlefolder.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["ShadowIGHashtag"]; ok && enabled {
+		tools = append(tools, shadowighashtag.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["CPASCollaborationRequest"]; ok && enabled {
+		tools = append(tools, cpascollaborationrequest.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["CPASLsbImageBank"]; ok && enabled {
+		tools = append(tools, cpaslsbimagebank.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["PlaceTopic"]; ok && enabled {
+		tools = append(tools, placetopic.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["WebsiteCreativeInfo"]; ok && enabled {
+		tools = append(tools, websitecreativeinfo.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["AnalyticsUserConfig"]; ok && enabled {
+		tools = append(tools, analyticsuserconfig.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["PageLeadsAccessConfig"]; ok && enabled {
+		tools = append(tools, pageleadsaccessconfig.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["ImageCopyrightDispute"]; ok && enabled {
+		tools = append(tools, imagecopyrightdispute.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["AdDraft"]; ok && enabled {
+		tools = append(tools, addraft.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["CPASMerchantConfig"]; ok && enabled {
+		tools = append(tools, cpasmerchantconfig.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["PersonalAdsPersona"]; ok && enabled {
+		tools = append(tools, personaladspersona.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["ProductFeedUploadError"]; ok && enabled {
+		tools = append(tools, productfeeduploaderror.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["Destination"]; ok && enabled {
+		tools = append(tools, destination.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["MessengerAdsPartialAutomatedStepList"]; ok && enabled {
+		tools = append(tools, messengeradspartialautomatedsteplist.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["AdExportPreset"]; ok && enabled {
+		tools = append(tools, adexportpreset.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["AutomotiveModel"]; ok && enabled {
+		tools = append(tools, automotivemodel.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["BusinessImage"]; ok && enabled {
+		tools = append(tools, businessimage.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["EventTicketSetting"]; ok && enabled {
+		tools = append(tools, eventticketsetting.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["OffsitePixel"]; ok && enabled {
+		tools = append(tools, offsitepixel.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["EventSourceGroup"]; ok && enabled {
+		tools = append(tools, eventsourcegroup.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["WearableDevicePublicKey"]; ok && enabled {
+		tools = append(tools, wearabledevicepublickey.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["Application"]; ok && enabled {
+		tools = append(tools, application.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["LiveVideoInputStream"]; ok && enabled {
+		tools = append(tools, livevideoinputstream.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["AdsStartYourDayWidget"]; ok && enabled {
+		tools = append(tools, adsstartyourdaywidget.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["Hours"]; ok && enabled {
+		tools = append(tools, hours.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["MediaTitle"]; ok && enabled {
+		tools = append(tools, mediatitle.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["ProductItemLocalInfo"]; ok && enabled {
+		tools = append(tools, productitemlocalinfo.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["AdAccountUserSettings"]; ok && enabled {
+		tools = append(tools, adaccountusersettings.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["Comment"]; ok && enabled {
+		tools = append(tools, comment.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["EventTicketTier"]; ok && enabled {
+		tools = append(tools, eventtickettier.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["LiveVideoError"]; ok && enabled {
+		tools = append(tools, livevideoerror.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["AdAccountCreationRequest"]; ok && enabled {
+		tools = append(tools, adaccountcreationrequest.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["AdsReportBuilderExportCore"]; ok && enabled {
+		tools = append(tools, adsreportbuilderexportcore.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["IGUser"]; ok && enabled {
+		tools = append(tools, iguser.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["PagePost"]; ok && enabled {
+		tools = append(tools, pagepost.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["AudioCopyright"]; ok && enabled {
+		tools = append(tools, audiocopyright.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["CPASBusinessSetupConfig"]; ok && enabled {
+		tools = append(tools, cpasbusinesssetupconfig.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["AdPlacement"]; ok && enabled {
+		tools = append(tools, adplacement.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["DynamicItemDisplayBundle"]; ok && enabled {
+		tools = append(tools, dynamicitemdisplaybundle.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["Flight"]; ok && enabled {
+		tools = append(tools, flight.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["BusinessRoleRequest"]; ok && enabled {
+		tools = append(tools, businessrolerequest.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["CreditCard"]; ok && enabled {
+		tools = append(tools, creditcard.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["FantasyGame"]; ok && enabled {
+		tools = append(tools, fantasygame.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["AppRequest"]; ok && enabled {
+		tools = append(tools, apprequest.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["ReachFrequencyPrediction"]; ok && enabled {
+		tools = append(tools, reachfrequencyprediction.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["WhitehatFBDLRun"]; ok && enabled {
+		tools = append(tools, whitehatfbdlrun.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["TransactableItem"]; ok && enabled {
+		tools = append(tools, transactableitem.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["WorkExperience"]; ok && enabled {
+		tools = append(tools, workexperience.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["Event"]; ok && enabled {
+		tools = append(tools, event.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["BusinessOwnedObjectOnBehalfOfRequest"]; ok && enabled {
+		tools = append(tools, businessownedobjectonbehalfofrequest.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["FBImageCopyrightMatch"]; ok && enabled {
+		tools = append(tools, fbimagecopyrightmatch.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["JobOpening"]; ok && enabled {
+		tools = append(tools, jobopening.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["SavedMessageResponse"]; ok && enabled {
+		tools = append(tools, savedmessageresponse.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["ThirdPartyMeasurementReportDataset"]; ok && enabled {
+		tools = append(tools, thirdpartymeasurementreportdataset.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["CatalogContentVersionConfig"]; ok && enabled {
+		tools = append(tools, catalogcontentversionconfig.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["MediaFingerprint"]; ok && enabled {
+		tools = append(tools, mediafingerprint.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["MessengerBusinessTemplate"]; ok && enabled {
+		tools = append(tools, messengerbusinesstemplate.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["CopyrightMediaMisuse"]; ok && enabled {
+		tools = append(tools, copyrightmediamisuse.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["EventRegistrationSetting"]; ok && enabled {
+		tools = append(tools, eventregistrationsetting.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["HomeListing"]; ok && enabled {
+		tools = append(tools, homelisting.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["Link"]; ok && enabled {
+		tools = append(tools, link.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["CloudGame"]; ok && enabled {
+		tools = append(tools, cloudgame.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["Business"]; ok && enabled {
+		tools = append(tools, business.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["AdStudyObjective"]; ok && enabled {
+		tools = append(tools, adstudyobjective.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["FundraiserPersonToCharity"]; ok && enabled {
+		tools = append(tools, fundraiserpersontocharity.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["User"]; ok && enabled {
+		tools = append(tools, user.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["AdsPixel"]; ok && enabled {
+		tools = append(tools, adspixel.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["AvatarProfilePicture"]; ok && enabled {
+		tools = append(tools, avatarprofilepicture.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["ProductSetUsage"]; ok && enabled {
+		tools = append(tools, productsetusage.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["ResearchPollStudy"]; ok && enabled {
+		tools = append(tools, researchpollstudy.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["Persona"]; ok && enabled {
+		tools = append(tools, persona.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["AdsCreationSavedState"]; ok && enabled {
+		tools = append(tools, adscreationsavedstate.GetTools()...)
 	}
 	if enabled, ok := enabledObjects["AdsUserSettings"]; ok && enabled {
 		tools = append(tools, adsusersettings.GetTools()...)
@@ -858,713 +951,620 @@ func GetFilteredTools(enabledObjects map[string]bool) []mcp.Tool {
 	if enabled, ok := enabledObjects["AppEventConfig"]; ok && enabled {
 		tools = append(tools, appeventconfig.GetTools()...)
 	}
-	if enabled, ok := enabledObjects["IGMediaBoostEligibilityInfo"]; ok && enabled {
-		tools = append(tools, igmediaboosteligibilityinfo.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["IGUserExportForCAM"]; ok && enabled {
-		tools = append(tools, iguserexportforcam.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["ProductSet"]; ok && enabled {
-		tools = append(tools, productset.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["AdsPixelCapabilityOverride"]; ok && enabled {
-		tools = append(tools, adspixelcapabilityoverride.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["PartnerIntegrationLinked"]; ok && enabled {
-		tools = append(tools, partnerintegrationlinked.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["WhitehatFBDLRun"]; ok && enabled {
-		tools = append(tools, whitehatfbdlrun.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["FranchiseProgramMember"]; ok && enabled {
-		tools = append(tools, franchiseprogrammember.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["Comment"]; ok && enabled {
-		tools = append(tools, comment.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["InstagramBusinessAsset"]; ok && enabled {
-		tools = append(tools, instagrambusinessasset.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["PagePostExperiment"]; ok && enabled {
-		tools = append(tools, pagepostexperiment.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["UserContext"]; ok && enabled {
-		tools = append(tools, usercontext.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["AdsConversionGoal"]; ok && enabled {
-		tools = append(tools, adsconversiongoal.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["BusinessImage"]; ok && enabled {
-		tools = append(tools, businessimage.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["IGUserForIGOnlyAPI"]; ok && enabled {
-		tools = append(tools, iguserforigonlyapi.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["PageUserMessageThreadLabel"]; ok && enabled {
-		tools = append(tools, pageusermessagethreadlabel.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["Canvas"]; ok && enabled {
-		tools = append(tools, canvas.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["SignalsIWLExtractor"]; ok && enabled {
-		tools = append(tools, signalsiwlextractor.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["FranchiseProgram"]; ok && enabled {
-		tools = append(tools, franchiseprogram.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["IGBoostMediaAd"]; ok && enabled {
-		tools = append(tools, igboostmediaad.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["ReachFrequencyPrediction"]; ok && enabled {
-		tools = append(tools, reachfrequencyprediction.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["UserPageOneTimeOptInTokenSettings"]; ok && enabled {
-		tools = append(tools, userpageonetimeoptintokensettings.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["OfflineConversionDataSetUpload"]; ok && enabled {
-		tools = append(tools, offlineconversiondatasetupload.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["OmegaCustomerTrx"]; ok && enabled {
-		tools = append(tools, omegacustomertrx.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["AdAccountAgencyFeeConfig"]; ok && enabled {
-		tools = append(tools, adaccountagencyfeeconfig.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["InstagramThread"]; ok && enabled {
-		tools = append(tools, instagramthread.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["Status"]; ok && enabled {
-		tools = append(tools, status.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["WearableDevicePublicKey"]; ok && enabled {
-		tools = append(tools, wearabledevicepublickey.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["AdAccountCreationRequest"]; ok && enabled {
-		tools = append(tools, adaccountcreationrequest.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["Link"]; ok && enabled {
-		tools = append(tools, link.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["SystemUser"]; ok && enabled {
-		tools = append(tools, systemuser.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["ThirdPartyMeasurementReportDataset"]; ok && enabled {
-		tools = append(tools, thirdpartymeasurementreportdataset.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["PaymentEnginePayment"]; ok && enabled {
-		tools = append(tools, paymentenginepayment.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["ProductDeliveryPreference"]; ok && enabled {
-		tools = append(tools, productdeliverypreference.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["AdDraft"]; ok && enabled {
-		tools = append(tools, addraft.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["ThirdPartyPartnerViewabilityRequest"]; ok && enabled {
-		tools = append(tools, thirdpartypartnerviewabilityrequest.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["AdCustomDerivedMetrics"]; ok && enabled {
-		tools = append(tools, adcustomderivedmetrics.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["IGAccessTokenForIGOnlyAPI"]; ok && enabled {
-		tools = append(tools, igaccesstokenforigonlyapi.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["Place"]; ok && enabled {
-		tools = append(tools, place.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["AdSavedReport"]; ok && enabled {
-		tools = append(tools, adsavedreport.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["AdStudy"]; ok && enabled {
-		tools = append(tools, adstudy.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["ShadowIGMediaBuilder"]; ok && enabled {
-		tools = append(tools, shadowigmediabuilder.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["FavoriteCatalog"]; ok && enabled {
-		tools = append(tools, favoritecatalog.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["Profile"]; ok && enabled {
-		tools = append(tools, profile.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["BusinessAgreement"]; ok && enabled {
-		tools = append(tools, businessagreement.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["IGComment"]; ok && enabled {
-		tools = append(tools, igcomment.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["RTBDynamicPost"]; ok && enabled {
-		tools = append(tools, rtbdynamicpost.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["BrandSafetyDownloadable"]; ok && enabled {
-		tools = append(tools, brandsafetydownloadable.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["AdPlacePageSet"]; ok && enabled {
-		tools = append(tools, adplacepageset.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["AdVideo"]; ok && enabled {
-		tools = append(tools, advideo.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["HighDemandPeriod"]; ok && enabled {
-		tools = append(tools, highdemandperiod.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["Page"]; ok && enabled {
-		tools = append(tools, page.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["VideoCopyrightMatch"]; ok && enabled {
-		tools = append(tools, videocopyrightmatch.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["ALMEvent"]; ok && enabled {
-		tools = append(tools, almevent.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["AdLightAdgroup"]; ok && enabled {
-		tools = append(tools, adlightadgroup.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["CopyrightOwnershipTransfer"]; ok && enabled {
-		tools = append(tools, copyrightownershiptransfer.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["ProductItemLocalInfo"]; ok && enabled {
-		tools = append(tools, productitemlocalinfo.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["CollaborativeAdsShareSettings"]; ok && enabled {
-		tools = append(tools, collaborativeadssharesettings.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["EducationExperience"]; ok && enabled {
-		tools = append(tools, educationexperience.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["AdImage"]; ok && enabled {
-		tools = append(tools, adimage.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["AsyncSession"]; ok && enabled {
-		tools = append(tools, asyncsession.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["AudioSubLabel"]; ok && enabled {
-		tools = append(tools, audiosublabel.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["BlindPig"]; ok && enabled {
-		tools = append(tools, blindpig.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["DynamicItemDisplayBundleFolder"]; ok && enabled {
-		tools = append(tools, dynamicitemdisplaybundlefolder.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["SlicedEventSourceGroup"]; ok && enabled {
-		tools = append(tools, slicedeventsourcegroup.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["Campaign"]; ok && enabled {
-		tools = append(tools, campaign.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["LiveVideoInputStream"]; ok && enabled {
-		tools = append(tools, livevideoinputstream.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["Application"]; ok && enabled {
-		tools = append(tools, application.GetTools()...)
-	}
 	if enabled, ok := enabledObjects["BusinessProject"]; ok && enabled {
 		tools = append(tools, businessproject.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["OpenBridgeConfiguration"]; ok && enabled {
-		tools = append(tools, openbridgeconfiguration.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["LiveVideoAdCampaignConfig"]; ok && enabled {
-		tools = append(tools, livevideoadcampaignconfig.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["PartnerStudy"]; ok && enabled {
-		tools = append(tools, partnerstudy.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["Destination"]; ok && enabled {
-		tools = append(tools, destination.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["MediaCopyrightAttribution"]; ok && enabled {
-		tools = append(tools, mediacopyrightattribution.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["HotelRoom"]; ok && enabled {
-		tools = append(tools, hotelroom.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["ProductImage"]; ok && enabled {
-		tools = append(tools, productimage.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["MeasurementReport"]; ok && enabled {
-		tools = append(tools, measurementreport.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["DynamicContentSet"]; ok && enabled {
-		tools = append(tools, dynamiccontentset.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["PlayableContent"]; ok && enabled {
-		tools = append(tools, playablecontent.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["AdCreationPackageConfig"]; ok && enabled {
-		tools = append(tools, adcreationpackageconfig.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["WhatsAppBusinessPreVerifiedPhoneNumber"]; ok && enabled {
-		tools = append(tools, whatsappbusinesspreverifiedphonenumber.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["PageLeadsAccessConfig"]; ok && enabled {
-		tools = append(tools, pageleadsaccessconfig.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["CustomConversion"]; ok && enabled {
-		tools = append(tools, customconversion.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["ExternalMerchantSettings"]; ok && enabled {
-		tools = append(tools, externalmerchantsettings.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["MediaCopyrightUpdateRecord"]; ok && enabled {
-		tools = append(tools, mediacopyrightupdaterecord.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["HomeListing"]; ok && enabled {
-		tools = append(tools, homelisting.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["AdAccountUserSettings"]; ok && enabled {
-		tools = append(tools, adaccountusersettings.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["CommerceOrder"]; ok && enabled {
-		tools = append(tools, commerceorder.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["ManagementSiteLink"]; ok && enabled {
-		tools = append(tools, managementsitelink.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["AppRequest"]; ok && enabled {
-		tools = append(tools, apprequest.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["AnalyticsUserConfig"]; ok && enabled {
-		tools = append(tools, analyticsuserconfig.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["AdsPivotRules"]; ok && enabled {
-		tools = append(tools, adspivotrules.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["CatalogItemOverride"]; ok && enabled {
-		tools = append(tools, catalogitemoverride.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["Persona"]; ok && enabled {
-		tools = append(tools, persona.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["TransactableItem"]; ok && enabled {
-		tools = append(tools, transactableitem.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["BCPCampaign"]; ok && enabled {
-		tools = append(tools, bcpcampaign.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["BusinessTag"]; ok && enabled {
-		tools = append(tools, businesstag.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["UnifiedThread"]; ok && enabled {
-		tools = append(tools, unifiedthread.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["AdLightCampaign"]; ok && enabled {
-		tools = append(tools, adlightcampaign.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["AdStudyObjective"]; ok && enabled {
-		tools = append(tools, adstudyobjective.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["EventExternalTicketInfo"]; ok && enabled {
-		tools = append(tools, eventexternalticketinfo.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["GeoGatingPolicy"]; ok && enabled {
-		tools = append(tools, geogatingpolicy.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["MessengerBusinessTemplate"]; ok && enabled {
-		tools = append(tools, messengerbusinesstemplate.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["PrivateLiftStudyInstance"]; ok && enabled {
-		tools = append(tools, privateliftstudyinstance.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["AdCreative"]; ok && enabled {
-		tools = append(tools, adcreative.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["CreatorAssetCreative"]; ok && enabled {
-		tools = append(tools, creatorassetcreative.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["Post"]; ok && enabled {
-		tools = append(tools, post.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["ProductGroup"]; ok && enabled {
-		tools = append(tools, productgroup.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["CPASBusinessSetupConfig"]; ok && enabled {
-		tools = append(tools, cpasbusinesssetupconfig.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["PlaceTag"]; ok && enabled {
-		tools = append(tools, placetag.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["AdStudyCell"]; ok && enabled {
-		tools = append(tools, adstudycell.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["ProductFeedSchedule"]; ok && enabled {
-		tools = append(tools, productfeedschedule.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["ProductFeedUpload"]; ok && enabled {
-		tools = append(tools, productfeedupload.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["CalibratorExistingRule"]; ok && enabled {
-		tools = append(tools, calibratorexistingrule.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["BusinessRoleRequest"]; ok && enabled {
-		tools = append(tools, businessrolerequest.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["AdRule"]; ok && enabled {
-		tools = append(tools, adrule.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["AdSavedLocation"]; ok && enabled {
-		tools = append(tools, adsavedlocation.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["AdsCreationSavedState"]; ok && enabled {
-		tools = append(tools, adscreationsavedstate.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["MusicWorkCopyright"]; ok && enabled {
-		tools = append(tools, musicworkcopyright.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["CPASAdvertiserPartnershipRecommendation"]; ok && enabled {
-		tools = append(tools, cpasadvertiserpartnershiprecommendation.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["CPASLsbImageBank"]; ok && enabled {
-		tools = append(tools, cpaslsbimagebank.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["LeadgenForm"]; ok && enabled {
-		tools = append(tools, leadgenform.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["OfflineProductItem"]; ok && enabled {
-		tools = append(tools, offlineproductitem.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["WebsiteCreativeAssetSource"]; ok && enabled {
-		tools = append(tools, websitecreativeassetsource.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["PagePost"]; ok && enabled {
-		tools = append(tools, pagepost.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["ProductFeed"]; ok && enabled {
-		tools = append(tools, productfeed.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["CommerceMerchantSettings"]; ok && enabled {
-		tools = append(tools, commercemerchantsettings.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["SiteLink"]; ok && enabled {
-		tools = append(tools, sitelink.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["AdReportRun"]; ok && enabled {
-		tools = append(tools, adreportrun.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["BizInboxOffsiteEmailAccount"]; ok && enabled {
-		tools = append(tools, bizinboxoffsiteemailaccount.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["EventSourceGroup"]; ok && enabled {
-		tools = append(tools, eventsourcegroup.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["OffsiteSignalContainerBusinessObject"]; ok && enabled {
-		tools = append(tools, offsitesignalcontainerbusinessobject.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["AdsMcmeConversion"]; ok && enabled {
-		tools = append(tools, adsmcmeconversion.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["CommerceOrderTransactionDetail"]; ok && enabled {
-		tools = append(tools, commerceordertransactiondetail.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["CreditCard"]; ok && enabled {
-		tools = append(tools, creditcard.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["ThirdPartyPartnerPanelScheduled"]; ok && enabled {
-		tools = append(tools, thirdpartypartnerpanelscheduled.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["ImageCopyright"]; ok && enabled {
-		tools = append(tools, imagecopyright.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["AdLabel"]; ok && enabled {
-		tools = append(tools, adlabel.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["ProductItem"]; ok && enabled {
-		tools = append(tools, productitem.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["AdAsyncRequestSet"]; ok && enabled {
-		tools = append(tools, adasyncrequestset.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["CRMAddress"]; ok && enabled {
-		tools = append(tools, crmaddress.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["Business"]; ok && enabled {
-		tools = append(tools, business.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["CPASParentCatalogSettings"]; ok && enabled {
-		tools = append(tools, cpasparentcatalogsettings.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["CatalogSmartPixelSettings"]; ok && enabled {
-		tools = append(tools, catalogsmartpixelsettings.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["WifiInformation"]; ok && enabled {
-		tools = append(tools, wifiinformation.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["ExtendedCreditInvoiceGroup"]; ok && enabled {
-		tools = append(tools, extendedcreditinvoicegroup.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["Photo"]; ok && enabled {
-		tools = append(tools, photo.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["AdColumnSizes"]; ok && enabled {
-		tools = append(tools, adcolumnsizes.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["SavedAudience"]; ok && enabled {
-		tools = append(tools, savedaudience.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["ChinaBusinessOnboardingVettingRequest"]; ok && enabled {
-		tools = append(tools, chinabusinessonboardingvettingrequest.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["ProductSetUsage"]; ok && enabled {
-		tools = append(tools, productsetusage.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["AdsQuickViews"]; ok && enabled {
-		tools = append(tools, adsquickviews.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["CatalogWebsiteOnboardingSettings"]; ok && enabled {
-		tools = append(tools, catalogwebsiteonboardingsettings.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["VideoCopyright"]; ok && enabled {
-		tools = append(tools, videocopyright.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["AdAsyncRequest"]; ok && enabled {
-		tools = append(tools, adasyncrequest.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["AdsNamingTemplate"]; ok && enabled {
-		tools = append(tools, adsnamingtemplate.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["Organization"]; ok && enabled {
-		tools = append(tools, organization.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["EventRegistrationSetting"]; ok && enabled {
-		tools = append(tools, eventregistrationsetting.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["LeadGenDirectCRMIntegrationConfig"]; ok && enabled {
-		tools = append(tools, leadgendirectcrmintegrationconfig.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["BusinessFranchiseConfig"]; ok && enabled {
-		tools = append(tools, businessfranchiseconfig.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["LocalServiceBusiness"]; ok && enabled {
-		tools = append(tools, localservicebusiness.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["PageCallToAction"]; ok && enabled {
-		tools = append(tools, pagecalltoaction.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["ProductCatalog"]; ok && enabled {
-		tools = append(tools, productcatalog.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["CanvasTemplate"]; ok && enabled {
-		tools = append(tools, canvastemplate.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["IGMediaForIGOnlyAPI"]; ok && enabled {
-		tools = append(tools, igmediaforigonlyapi.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["PersonalAdsPersona"]; ok && enabled {
-		tools = append(tools, personaladspersona.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["WoodhengePurchasedPAYGReceipt"]; ok && enabled {
-		tools = append(tools, woodhengepurchasedpaygreceipt.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["BusinessRequest"]; ok && enabled {
-		tools = append(tools, businessrequest.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["EventTicketSetting"]; ok && enabled {
-		tools = append(tools, eventticketsetting.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["EventTour"]; ok && enabled {
-		tools = append(tools, eventtour.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["AudioAsset"]; ok && enabled {
-		tools = append(tools, audioasset.GetTools()...)
 	}
 	if enabled, ok := enabledObjects["Vehicle"]; ok && enabled {
 		tools = append(tools, vehicle.GetTools()...)
 	}
-	if enabled, ok := enabledObjects["WoodhengeSupporter"]; ok && enabled {
-		tools = append(tools, woodhengesupporter.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["AdgroupFacebookFeedback"]; ok && enabled {
-		tools = append(tools, adgroupfacebookfeedback.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["Hours"]; ok && enabled {
-		tools = append(tools, hours.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["IGMedia"]; ok && enabled {
-		tools = append(tools, igmedia.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["SavedMessageResponse"]; ok && enabled {
-		tools = append(tools, savedmessageresponse.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["AdProposal"]; ok && enabled {
-		tools = append(tools, adproposal.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["AdsValueAdjustmentRuleCollection"]; ok && enabled {
-		tools = append(tools, adsvalueadjustmentrulecollection.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["BusinessCreativeFolder"]; ok && enabled {
-		tools = append(tools, businesscreativefolder.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["BusinessUser"]; ok && enabled {
-		tools = append(tools, businessuser.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["FantasyGame"]; ok && enabled {
-		tools = append(tools, fantasygame.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["WhatsAppBusinessProfile"]; ok && enabled {
-		tools = append(tools, whatsappbusinessprofile.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["AdToplineDetail"]; ok && enabled {
-		tools = append(tools, adtoplinedetail.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["Avatar"]; ok && enabled {
-		tools = append(tools, avatar.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["BidSchedule"]; ok && enabled {
-		tools = append(tools, bidschedule.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["DynamicARMetadata"]; ok && enabled {
-		tools = append(tools, dynamicarmetadata.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["Shop"]; ok && enabled {
-		tools = append(tools, shop.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["CatalogContentVersionConfig"]; ok && enabled {
-		tools = append(tools, catalogcontentversionconfig.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["DynamicItemDisplayBundle"]; ok && enabled {
-		tools = append(tools, dynamicitemdisplaybundle.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["ExtendedCreditApplication"]; ok && enabled {
-		tools = append(tools, extendedcreditapplication.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["ExtendedCredit"]; ok && enabled {
-		tools = append(tools, extendedcredit.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["ImageReferenceMatch"]; ok && enabled {
-		tools = append(tools, imagereferencematch.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["VideoList"]; ok && enabled {
-		tools = append(tools, videolist.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["AdsReportBuilderMMMReport"]; ok && enabled {
-		tools = append(tools, adsreportbuildermmmreport.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["AnalyticsSegment"]; ok && enabled {
-		tools = append(tools, analyticssegment.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["BusinessObjectTransferOwnershipAgreement"]; ok && enabled {
-		tools = append(tools, businessobjecttransferownershipagreement.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["IGBCAdsPermission"]; ok && enabled {
-		tools = append(tools, igbcadspermission.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["CatalogWebsiteSettings"]; ok && enabled {
-		tools = append(tools, catalogwebsitesettings.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["ShadowIGHashtag"]; ok && enabled {
-		tools = append(tools, shadowighashtag.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["PageBroadcast"]; ok && enabled {
-		tools = append(tools, pagebroadcast.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["WorkSkill"]; ok && enabled {
-		tools = append(tools, workskill.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["AutomotiveModel"]; ok && enabled {
-		tools = append(tools, automotivemodel.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["MediaTitle"]; ok && enabled {
-		tools = append(tools, mediatitle.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["CTXPartnerAppWelcomeMessageFlow"]; ok && enabled {
-		tools = append(tools, ctxpartnerappwelcomemessageflow.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["BrandRequest"]; ok && enabled {
-		tools = append(tools, brandrequest.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["OwnedDomain"]; ok && enabled {
-		tools = append(tools, owneddomain.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["AdsPixel"]; ok && enabled {
-		tools = append(tools, adspixel.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["AdvAInstance"]; ok && enabled {
-		tools = append(tools, advainstance.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["IGUpcomingEvent"]; ok && enabled {
-		tools = append(tools, igupcomingevent.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["AdsReportBuilderExportCore"]; ok && enabled {
-		tools = append(tools, adsreportbuilderexportcore.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["BusinessVideo"]; ok && enabled {
-		tools = append(tools, businessvideo.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["WebsiteCreativeInfo"]; ok && enabled {
-		tools = append(tools, websitecreativeinfo.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["IGRefreshAccessTokenForIGOnlyAPI"]; ok && enabled {
-		tools = append(tools, igrefreshaccesstokenforigonlyapi.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["Event"]; ok && enabled {
-		tools = append(tools, event.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["EventTicketTier"]; ok && enabled {
-		tools = append(tools, eventtickettier.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["Flight"]; ok && enabled {
-		tools = append(tools, flight.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["AdsReportBuilderMMMReportScheduler"]; ok && enabled {
-		tools = append(tools, adsreportbuildermmmreportscheduler.GetTools()...)
-	}
-	if enabled, ok := enabledObjects["StoreCatalogSettings"]; ok && enabled {
-		tools = append(tools, storecatalogsettings.GetTools()...)
+	if enabled, ok := enabledObjects["AdCustomDerivedMetrics"]; ok && enabled {
+		tools = append(tools, adcustomderivedmetrics.GetTools()...)
 	}
 	if enabled, ok := enabledObjects["URL"]; ok && enabled {
 		tools = append(tools, url.GetTools()...)
 	}
-	if enabled, ok := enabledObjects["LiveVideo"]; ok && enabled {
-		tools = append(tools, livevideo.GetTools()...)
+	if enabled, ok := enabledObjects["AppLinks"]; ok && enabled {
+		tools = append(tools, applinks.GetTools()...)
 	}
-	if enabled, ok := enabledObjects["AREffect"]; ok && enabled {
-		tools = append(tools, areffect.GetTools()...)
+	if enabled, ok := enabledObjects["AdStudyCell"]; ok && enabled {
+		tools = append(tools, adstudycell.GetTools()...)
 	}
-	if enabled, ok := enabledObjects["AdExportPreset"]; ok && enabled {
-		tools = append(tools, adexportpreset.GetTools()...)
+	if enabled, ok := enabledObjects["BusinessAgreement"]; ok && enabled {
+		tools = append(tools, businessagreement.GetTools()...)
 	}
-	if enabled, ok := enabledObjects["AudioRelease"]; ok && enabled {
-		tools = append(tools, audiorelease.GetTools()...)
+	if enabled, ok := enabledObjects["ExternalMerchantSettings"]; ok && enabled {
+		tools = append(tools, externalmerchantsettings.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["Status"]; ok && enabled {
+		tools = append(tools, status.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["WifiInformation"]; ok && enabled {
+		tools = append(tools, wifiinformation.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["CreatorAssetCreative"]; ok && enabled {
+		tools = append(tools, creatorassetcreative.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["Shop"]; ok && enabled {
+		tools = append(tools, shop.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["LocalServiceBusiness"]; ok && enabled {
+		tools = append(tools, localservicebusiness.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["AudioSubLabel"]; ok && enabled {
+		tools = append(tools, audiosublabel.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["BidSchedule"]; ok && enabled {
+		tools = append(tools, bidschedule.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["EducationExperience"]; ok && enabled {
+		tools = append(tools, educationexperience.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["AdgroupFacebookFeedback"]; ok && enabled {
+		tools = append(tools, adgroupfacebookfeedback.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["LiveVideoAdCampaignConfig"]; ok && enabled {
+		tools = append(tools, livevideoadcampaignconfig.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["WhatsAppBusinessPreVerifiedPhoneNumber"]; ok && enabled {
+		tools = append(tools, whatsappbusinesspreverifiedphonenumber.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["ExtendedCreditAllocationConfig"]; ok && enabled {
+		tools = append(tools, extendedcreditallocationconfig.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["FavoriteCatalog"]; ok && enabled {
+		tools = append(tools, favoritecatalog.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["PartnerStudy"]; ok && enabled {
+		tools = append(tools, partnerstudy.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["WhatsAppBusinessAccount"]; ok && enabled {
+		tools = append(tools, whatsappbusinessaccount.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["LeadGenDirectCRMIntegrationConfig"]; ok && enabled {
+		tools = append(tools, leadgendirectcrmintegrationconfig.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["OmegaCustomerTrx"]; ok && enabled {
+		tools = append(tools, omegacustomertrx.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["HighDemandPeriod"]; ok && enabled {
+		tools = append(tools, highdemandperiod.GetTools()...)
 	}
 	if enabled, ok := enabledObjects["InstagramUser"]; ok && enabled {
 		tools = append(tools, instagramuser.GetTools()...)
 	}
-	if enabled, ok := enabledObjects["PaymentSubscription"]; ok && enabled {
-		tools = append(tools, paymentsubscription.GetTools()...)
+	if enabled, ok := enabledObjects["AdLightCampaign"]; ok && enabled {
+		tools = append(tools, adlightcampaign.GetTools()...)
 	}
-	if enabled, ok := enabledObjects["ALMEndAdvertiserInfo"]; ok && enabled {
-		tools = append(tools, almendadvertiserinfo.GetTools()...)
+	if enabled, ok := enabledObjects["ProductFeedSchedule"]; ok && enabled {
+		tools = append(tools, productfeedschedule.GetTools()...)
 	}
-	if enabled, ok := enabledObjects["AdRuleEvaluationSpec"]; ok && enabled {
-		tools = append(tools, adruleevaluationspec.GetTools()...)
+	if enabled, ok := enabledObjects["AdvAInstance"]; ok && enabled {
+		tools = append(tools, advainstance.GetTools()...)
 	}
-	if enabled, ok := enabledObjects["BusinessAssetGroup"]; ok && enabled {
-		tools = append(tools, businessassetgroup.GetTools()...)
+	if enabled, ok := enabledObjects["BusinessObjectTransferOwnershipAgreement"]; ok && enabled {
+		tools = append(tools, businessobjecttransferownershipagreement.GetTools()...)
 	}
-	if enabled, ok := enabledObjects["AudioCopyright"]; ok && enabled {
-		tools = append(tools, audiocopyright.GetTools()...)
+	if enabled, ok := enabledObjects["BusinessRequest"]; ok && enabled {
+		tools = append(tools, businessrequest.GetTools()...)
 	}
-	if enabled, ok := enabledObjects["DynamicVideoMetadata"]; ok && enabled {
-		tools = append(tools, dynamicvideometadata.GetTools()...)
+	if enabled, ok := enabledObjects["AudioRelease"]; ok && enabled {
+		tools = append(tools, audiorelease.GetTools()...)
 	}
-	if enabled, ok := enabledObjects["CPASCollaborationRequest"]; ok && enabled {
-		tools = append(tools, cpascollaborationrequest.GetTools()...)
+	if enabled, ok := enabledObjects["IGMedia"]; ok && enabled {
+		tools = append(tools, igmedia.GetTools()...)
 	}
-	if enabled, ok := enabledObjects["User"]; ok && enabled {
-		tools = append(tools, user.GetTools()...)
+	if enabled, ok := enabledObjects["ProductFeedUpload"]; ok && enabled {
+		tools = append(tools, productfeedupload.GetTools()...)
 	}
-	if enabled, ok := enabledObjects["WebsiteCreativeAssetSuggestions"]; ok && enabled {
-		tools = append(tools, websitecreativeassetsuggestions.GetTools()...)
+	if enabled, ok := enabledObjects["ProductItemOffer"]; ok && enabled {
+		tools = append(tools, productitemoffer.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["AdStudy"]; ok && enabled {
+		tools = append(tools, adstudy.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["AREffect"]; ok && enabled {
+		tools = append(tools, areffect.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["AudioAsset"]; ok && enabled {
+		tools = append(tools, audioasset.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["AdLightAdgroup"]; ok && enabled {
+		tools = append(tools, adlightadgroup.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["Place"]; ok && enabled {
+		tools = append(tools, place.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["Avatar"]; ok && enabled {
+		tools = append(tools, avatar.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["ProductItem"]; ok && enabled {
+		tools = append(tools, productitem.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["PageUserMessageThreadLabel"]; ok && enabled {
+		tools = append(tools, pageusermessagethreadlabel.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["CanvasDynamicSetting"]; ok && enabled {
+		tools = append(tools, canvasdynamicsetting.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["CatalogItemOverride"]; ok && enabled {
+		tools = append(tools, catalogitemoverride.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["PartnerIntegrationLinked"]; ok && enabled {
+		tools = append(tools, partnerintegrationlinked.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["RTBDynamicPost"]; ok && enabled {
+		tools = append(tools, rtbdynamicpost.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["OfflineConversionDataSetUpload"]; ok && enabled {
+		tools = append(tools, offlineconversiondatasetupload.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["VehicleOffer"]; ok && enabled {
+		tools = append(tools, vehicleoffer.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["BrandSafetyDownloadable"]; ok && enabled {
+		tools = append(tools, brandsafetydownloadable.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["IGMediaForIGOnlyAPI"]; ok && enabled {
+		tools = append(tools, igmediaforigonlyapi.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["AdsValueAdjustmentRuleCollection"]; ok && enabled {
+		tools = append(tools, adsvalueadjustmentrulecollection.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["Album"]; ok && enabled {
+		tools = append(tools, album.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["ThirdPartyPartnerLiftRequest"]; ok && enabled {
+		tools = append(tools, thirdpartypartnerliftrequest.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["ExtendedCreditInvoiceGroup"]; ok && enabled {
+		tools = append(tools, extendedcreditinvoicegroup.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["OpenGraphContext"]; ok && enabled {
+		tools = append(tools, opengraphcontext.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["UserPageOneTimeOptInTokenSettings"]; ok && enabled {
+		tools = append(tools, userpageonetimeoptintokensettings.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["Campaign"]; ok && enabled {
+		tools = append(tools, campaign.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["CommerceOrderTransactionDetail"]; ok && enabled {
+		tools = append(tools, commerceordertransactiondetail.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["OfflineConversionDataSet"]; ok && enabled {
+		tools = append(tools, offlineconversiondataset.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["SavedAudience"]; ok && enabled {
+		tools = append(tools, savedaudience.GetTools()...)
 	}
 	if enabled, ok := enabledObjects["AdSet"]; ok && enabled {
 		tools = append(tools, adset.GetTools()...)
 	}
-	if enabled, ok := enabledObjects["LiveVideoError"]; ok && enabled {
-		tools = append(tools, livevideoerror.GetTools()...)
+	if enabled, ok := enabledObjects["CRMAddress"]; ok && enabled {
+		tools = append(tools, crmaddress.GetTools()...)
 	}
-	if enabled, ok := enabledObjects["OfflineConversionDataSet"]; ok && enabled {
-		tools = append(tools, offlineconversiondataset.GetTools()...)
+	if enabled, ok := enabledObjects["InstagramThread"]; ok && enabled {
+		tools = append(tools, instagramthread.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["EventExternalTicketInfo"]; ok && enabled {
+		tools = append(tools, eventexternalticketinfo.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["FAMEKumo"]; ok && enabled {
+		tools = append(tools, famekumo.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["HotelRoom"]; ok && enabled {
+		tools = append(tools, hotelroom.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["Page"]; ok && enabled {
+		tools = append(tools, page.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["AudioIsrc"]; ok && enabled {
+		tools = append(tools, audioisrc.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["AdImage"]; ok && enabled {
+		tools = append(tools, adimage.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["BusinessAssetSharingAgreement"]; ok && enabled {
+		tools = append(tools, businessassetsharingagreement.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["AdAccount"]; ok && enabled {
+		tools = append(tools, adaccount.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["AdsReportBuilderMMMReport"]; ok && enabled {
+		tools = append(tools, adsreportbuildermmmreport.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["BusinessAssetGroup"]; ok && enabled {
+		tools = append(tools, businessassetgroup.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["ManagementSiteLink"]; ok && enabled {
+		tools = append(tools, managementsitelink.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["UnifiedThread"]; ok && enabled {
+		tools = append(tools, unifiedthread.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["AdsPivotRules"]; ok && enabled {
+		tools = append(tools, adspivotrules.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["CollaborativeAdsShareSettings"]; ok && enabled {
+		tools = append(tools, collaborativeadssharesettings.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["MediaCopyrightAttribution"]; ok && enabled {
+		tools = append(tools, mediacopyrightattribution.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["VideoTextQuestion"]; ok && enabled {
+		tools = append(tools, videotextquestion.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["BusinessFranchiseConfig"]; ok && enabled {
+		tools = append(tools, businessfranchiseconfig.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["CPASAdCreationTemplate"]; ok && enabled {
+		tools = append(tools, cpasadcreationtemplate.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["VideoCopyrightMatch"]; ok && enabled {
+		tools = append(tools, videocopyrightmatch.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["ArAdsDataContainer"]; ok && enabled {
+		tools = append(tools, aradsdatacontainer.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["Photo"]; ok && enabled {
+		tools = append(tools, photo.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["PublisherWhiteList"]; ok && enabled {
+		tools = append(tools, publisherwhitelist.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["AdSavedReport"]; ok && enabled {
+		tools = append(tools, adsavedreport.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["MusicWorkCopyright"]; ok && enabled {
+		tools = append(tools, musicworkcopyright.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["PaymentEnginePayment"]; ok && enabled {
+		tools = append(tools, paymentenginepayment.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["CatalogWebsiteOnboardingSettings"]; ok && enabled {
+		tools = append(tools, catalogwebsiteonboardingsettings.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["VideoCopyrightRule"]; ok && enabled {
+		tools = append(tools, videocopyrightrule.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["AdRule"]; ok && enabled {
+		tools = append(tools, adrule.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["ProductFeedUploadErrorSample"]; ok && enabled {
+		tools = append(tools, productfeeduploaderrorsample.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["ExtendedCredit"]; ok && enabled {
+		tools = append(tools, extendedcredit.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["AdsConversionGoal"]; ok && enabled {
+		tools = append(tools, adsconversiongoal.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["PagePostExperiment"]; ok && enabled {
+		tools = append(tools, pagepostexperiment.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["Post"]; ok && enabled {
+		tools = append(tools, post.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["AdsReportBuilderSavedReport"]; ok && enabled {
+		tools = append(tools, adsreportbuildersavedreport.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["SiteLink"]; ok && enabled {
+		tools = append(tools, sitelink.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["CommerceOrder"]; ok && enabled {
+		tools = append(tools, commerceorder.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["MeasurementReport"]; ok && enabled {
+		tools = append(tools, measurementreport.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["AdCreative"]; ok && enabled {
+		tools = append(tools, adcreative.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["IGBCAdsPermission"]; ok && enabled {
+		tools = append(tools, igbcadspermission.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["Organization"]; ok && enabled {
+		tools = append(tools, organization.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["Ad"]; ok && enabled {
+		tools = append(tools, ad.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["CommerceMerchantSettings"]; ok && enabled {
+		tools = append(tools, commercemerchantsettings.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["DynamicContentSet"]; ok && enabled {
+		tools = append(tools, dynamiccontentset.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["ProductCatalogLocalizationSettings"]; ok && enabled {
+		tools = append(tools, productcataloglocalizationsettings.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["AdCreationPackageConfig"]; ok && enabled {
+		tools = append(tools, adcreationpackageconfig.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["IGMediaBoostEligibilityInfo"]; ok && enabled {
+		tools = append(tools, igmediaboosteligibilityinfo.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["AdAsyncRequestSet"]; ok && enabled {
+		tools = append(tools, adasyncrequestset.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["ExtendedCreditApplication"]; ok && enabled {
+		tools = append(tools, extendedcreditapplication.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["StoreCatalogSettings"]; ok && enabled {
+		tools = append(tools, storecatalogsettings.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["Group"]; ok && enabled {
+		tools = append(tools, group.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["WoodhengePurchasedPAYGReceipt"]; ok && enabled {
+		tools = append(tools, woodhengepurchasedpaygreceipt.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["MediaCopyrightUpdateRecord"]; ok && enabled {
+		tools = append(tools, mediacopyrightupdaterecord.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["PlayableContent"]; ok && enabled {
+		tools = append(tools, playablecontent.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["DynamicARMetadata"]; ok && enabled {
+		tools = append(tools, dynamicarmetadata.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["ThirdPartyPartnerViewabilityRequest"]; ok && enabled {
+		tools = append(tools, thirdpartypartnerviewabilityrequest.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["AsyncSession"]; ok && enabled {
+		tools = append(tools, asyncsession.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["BrandRequest"]; ok && enabled {
+		tools = append(tools, brandrequest.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["AdTopline"]; ok && enabled {
+		tools = append(tools, adtopline.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["CalibratorExistingRule"]; ok && enabled {
+		tools = append(tools, calibratorexistingrule.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["WhatsAppBusinessProfile"]; ok && enabled {
+		tools = append(tools, whatsappbusinessprofile.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["AdRuleExecutionSpec"]; ok && enabled {
+		tools = append(tools, adruleexecutionspec.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["WoodhengeSupporter"]; ok && enabled {
+		tools = append(tools, woodhengesupporter.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["PaymentSubscription"]; ok && enabled {
+		tools = append(tools, paymentsubscription.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["Profile"]; ok && enabled {
+		tools = append(tools, profile.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["DynamicPriceConfigByDate"]; ok && enabled {
+		tools = append(tools, dynamicpriceconfigbydate.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["CTXPartnerAppWelcomeMessageFlow"]; ok && enabled {
+		tools = append(tools, ctxpartnerappwelcomemessageflow.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["ChinaBusinessOnboardingVettingRequest"]; ok && enabled {
+		tools = append(tools, chinabusinessonboardingvettingrequest.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["DynamicVideoMetadata"]; ok && enabled {
+		tools = append(tools, dynamicvideometadata.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["LiveVideo"]; ok && enabled {
+		tools = append(tools, livevideo.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["CustomConversion"]; ok && enabled {
+		tools = append(tools, customconversion.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["Robot"]; ok && enabled {
+		tools = append(tools, robot.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["UserContext"]; ok && enabled {
+		tools = append(tools, usercontext.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["BizInboxOffsiteEmailAccount"]; ok && enabled {
+		tools = append(tools, bizinboxoffsiteemailaccount.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["CallAdsPhoneData"]; ok && enabled {
+		tools = append(tools, calladsphonedata.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["ProductGroup"]; ok && enabled {
+		tools = append(tools, productgroup.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["ImageCopyright"]; ok && enabled {
+		tools = append(tools, imagecopyright.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["SlicedEventSourceGroup"]; ok && enabled {
+		tools = append(tools, slicedeventsourcegroup.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["LeadGenDataDraft"]; ok && enabled {
+		tools = append(tools, leadgendatadraft.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["GeoGatingPolicy"]; ok && enabled {
+		tools = append(tools, geogatingpolicy.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["BusinessVideo"]; ok && enabled {
+		tools = append(tools, businessvideo.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["ProductImage"]; ok && enabled {
+		tools = append(tools, productimage.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["MusicVideoCopyright"]; ok && enabled {
+		tools = append(tools, musicvideocopyright.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["AdsMcmeConversion"]; ok && enabled {
+		tools = append(tools, adsmcmeconversion.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["CatalogSmartPixelSettings"]; ok && enabled {
+		tools = append(tools, catalogsmartpixelsettings.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["IGAccessTokenForIGOnlyAPI"]; ok && enabled {
+		tools = append(tools, igaccesstokenforigonlyapi.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["ProductCatalog"]; ok && enabled {
+		tools = append(tools, productcatalog.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["ALMEvent"]; ok && enabled {
+		tools = append(tools, almevent.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["ProductFeed"]; ok && enabled {
+		tools = append(tools, productfeed.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["ThirdPartyPartnerPanelScheduled"]; ok && enabled {
+		tools = append(tools, thirdpartypartnerpanelscheduled.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["ALMEndAdvertiserInfo"]; ok && enabled {
+		tools = append(tools, almendadvertiserinfo.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["BusinessCreativeFolder"]; ok && enabled {
+		tools = append(tools, businesscreativefolder.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["ShadowIGMediaBuilder"]; ok && enabled {
+		tools = append(tools, shadowigmediabuilder.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["ContentBlockList"]; ok && enabled {
+		tools = append(tools, contentblocklist.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["FranchiseProgram"]; ok && enabled {
+		tools = append(tools, franchiseprogram.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["StoreLocation"]; ok && enabled {
+		tools = append(tools, storelocation.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["ThirdPartyPartnerPanelRequest"]; ok && enabled {
+		tools = append(tools, thirdpartypartnerpanelrequest.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["AdPlacePageSet"]; ok && enabled {
+		tools = append(tools, adplacepageset.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["PageBroadcast"]; ok && enabled {
+		tools = append(tools, pagebroadcast.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["OpenBridgeConfiguration"]; ok && enabled {
+		tools = append(tools, openbridgeconfiguration.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["CPASAdvertiserPartnershipRecommendation"]; ok && enabled {
+		tools = append(tools, cpasadvertiserpartnershiprecommendation.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["IGBoostMediaAd"]; ok && enabled {
+		tools = append(tools, igboostmediaad.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["VideoList"]; ok && enabled {
+		tools = append(tools, videolist.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["WorkSkill"]; ok && enabled {
+		tools = append(tools, workskill.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["CatalogWebsiteSettings"]; ok && enabled {
+		tools = append(tools, catalogwebsitesettings.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["Hotel"]; ok && enabled {
+		tools = append(tools, hotel.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["IGUserForIGOnlyAPI"]; ok && enabled {
+		tools = append(tools, iguserforigonlyapi.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["AdLabel"]; ok && enabled {
+		tools = append(tools, adlabel.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["MailingAddress"]; ok && enabled {
+		tools = append(tools, mailingaddress.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["AdVideo"]; ok && enabled {
+		tools = append(tools, advideo.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["InstagramBusinessAsset"]; ok && enabled {
+		tools = append(tools, instagrambusinessasset.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["BusinessUser"]; ok && enabled {
+		tools = append(tools, businessuser.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["FranchiseProgramMember"]; ok && enabled {
+		tools = append(tools, franchiseprogrammember.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["PrivateLiftStudyInstance"]; ok && enabled {
+		tools = append(tools, privateliftstudyinstance.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["CustomAudience"]; ok && enabled {
+		tools = append(tools, customaudience.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["VideoCopyright"]; ok && enabled {
+		tools = append(tools, videocopyright.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["SystemUser"]; ok && enabled {
+		tools = append(tools, systemuser.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["AdsQuickViews"]; ok && enabled {
+		tools = append(tools, adsquickviews.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["PageInsightsAsyncExportRun"]; ok && enabled {
+		tools = append(tools, pageinsightsasyncexportrun.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["AdSavedKeywords"]; ok && enabled {
+		tools = append(tools, adsavedkeywords.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["RightsManagerDataExport"]; ok && enabled {
+		tools = append(tools, rightsmanagerdataexport.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["ALMAdAccountInfo"]; ok && enabled {
+		tools = append(tools, almadaccountinfo.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["AdToplineDetail"]; ok && enabled {
+		tools = append(tools, adtoplinedetail.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["BusinessTag"]; ok && enabled {
+		tools = append(tools, businesstag.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["ProductFeedRule"]; ok && enabled {
+		tools = append(tools, productfeedrule.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["EventTour"]; ok && enabled {
+		tools = append(tools, eventtour.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["OfflineProductItem"]; ok && enabled {
+		tools = append(tools, offlineproductitem.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["OffsiteSignalContainerBusinessObject"]; ok && enabled {
+		tools = append(tools, offsitesignalcontainerbusinessobject.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["AdLightCampaignGroup"]; ok && enabled {
+		tools = append(tools, adlightcampaigngroup.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["CanvasTemplate"]; ok && enabled {
+		tools = append(tools, canvastemplate.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["Canvas"]; ok && enabled {
+		tools = append(tools, canvas.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["LifeEvent"]; ok && enabled {
+		tools = append(tools, lifeevent.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["OwnedDomain"]; ok && enabled {
+		tools = append(tools, owneddomain.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["PartnerAccountLinking"]; ok && enabled {
+		tools = append(tools, partneraccountlinking.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["LeadgenForm"]; ok && enabled {
+		tools = append(tools, leadgenform.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["AdsNamingTemplate"]; ok && enabled {
+		tools = append(tools, adsnamingtemplate.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["AnalyticsSegment"]; ok && enabled {
+		tools = append(tools, analyticssegment.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["Lead"]; ok && enabled {
+		tools = append(tools, lead.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["AdAsyncRequest"]; ok && enabled {
+		tools = append(tools, adasyncrequest.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["AdReportRun"]; ok && enabled {
+		tools = append(tools, adreportrun.GetTools()...)
+	}
+	if enabled, ok := enabledObjects["IGRefreshAccessTokenForIGOnlyAPI"]; ok && enabled {
+		tools = append(tools, igrefreshaccesstokenforigonlyapi.GetTools()...)
 	}
 
 	return tools
@@ -1574,217 +1574,310 @@ func GetFilteredTools(enabledObjects map[string]bool) []mcp.Tool {
 func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
-	for name, handler := range robot.GetHandlers() {
+	for name, handler := range adcolumnsizes.GetHandlers() {
 		handlers[name] = handler
 	}
-	for name, handler := range messengeradspartialautomatedsteplist.GetHandlers() {
+	for name, handler := range adsavedlocation.GetHandlers() {
 		handlers[name] = handler
 	}
-	for name, handler := range pageinsightsasyncexportrun.GetHandlers() {
+	for name, handler := range placetag.GetHandlers() {
 		handlers[name] = handler
 	}
-	for name, handler := range canvasdynamicsetting.GetHandlers() {
+	for name, handler := range productset.GetHandlers() {
 		handlers[name] = handler
 	}
-	for name, handler := range dynamicpriceconfigbydate.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range stories.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range videocopyrightrule.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range hotel.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range adplacement.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range productitemoffer.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range ad.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range imagecopyrightdispute.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range cloudgame.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range thirdpartypartnerliftrequest.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range almadaccountinfo.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range lead.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range lifeevent.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range fbimagecopyrightmatch.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range storelocation.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range placetopic.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range businessownedobjectonbehalfofrequest.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range iguser.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range jobopening.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range offlinetermsofservice.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range calladsphonedata.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range partneraccountlinking.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range adsavedkeywords.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range contentblocklist.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range adlightcampaigngroup.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range whatsappbusinessaccount.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range productfeedrule.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range adtopline.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range applinks.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range copyrightmediamisuse.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range fundraiserpersontocharity.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range productcataloglocalizationsettings.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range publisherwhitelist.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range album.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range cpasadcreationtemplate.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range customaudience.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range opengraphcontext.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range thirdpartypartnerpanelrequest.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range adsreportbuildersavedreport.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range aradsdatacontainer.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range cpasmerchantconfig.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range famekumo.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range group.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range vehicleoffer.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range businessassetsharingagreement.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range avatarprofilepicture.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range leadgendatadraft.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range mediafingerprint.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range researchpollstudy.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range pageupcomingchange.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range videopoll.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range adaccount.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range productfeeduploaderror.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range offsitepixel.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range adruleexecutionspec.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range adsstartyourdaywidget.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range mailingaddress.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range musicvideocopyright.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range productfeeduploaderrorsample.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range rightsmanagerdataexport.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range workexperience.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range audioisrc.GetHandlers() {
+	for name, handler := range withasset3d.GetHandlers() {
 		handlers[name] = handler
 	}
 	for name, handler := range admonetizationproperty.GetHandlers() {
 		handlers[name] = handler
 	}
+	for name, handler := range adspixelcapabilityoverride.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range cpasparentcatalogsettings.GetHandlers() {
+		handlers[name] = handler
+	}
 	for name, handler := range publisherblocklist.GetHandlers() {
 		handlers[name] = handler
 	}
-	for name, handler := range extendedcreditallocationconfig.GetHandlers() {
+	for name, handler := range videopoll.GetHandlers() {
 		handlers[name] = handler
 	}
-	for name, handler := range videotextquestion.GetHandlers() {
+	for name, handler := range adsreportbuildermmmreportscheduler.GetHandlers() {
 		handlers[name] = handler
 	}
-	for name, handler := range withasset3d.GetHandlers() {
+	for name, handler := range copyrightownershiptransfer.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range offlinetermsofservice.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range stories.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range iguserexportforcam.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range adaccountagencyfeeconfig.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range bcpcampaign.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range igcomment.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range signalsiwlextractor.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range pageupcomingchange.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range adproposal.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range igupcomingevent.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range imagereferencematch.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range productdeliverypreference.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range websitecreativeassetsource.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range blindpig.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range websitecreativeassetsuggestions.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range pagecalltoaction.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range adruleevaluationspec.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range dynamicitemdisplaybundlefolder.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range shadowighashtag.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range cpascollaborationrequest.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range cpaslsbimagebank.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range placetopic.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range websitecreativeinfo.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range analyticsuserconfig.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range pageleadsaccessconfig.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range imagecopyrightdispute.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range addraft.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range cpasmerchantconfig.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range personaladspersona.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range productfeeduploaderror.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range destination.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range messengeradspartialautomatedsteplist.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range adexportpreset.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range automotivemodel.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range businessimage.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range eventticketsetting.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range offsitepixel.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range eventsourcegroup.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range wearabledevicepublickey.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range application.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range livevideoinputstream.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range adsstartyourdaywidget.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range hours.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range mediatitle.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range productitemlocalinfo.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range adaccountusersettings.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range comment.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range eventtickettier.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range livevideoerror.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range adaccountcreationrequest.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range adsreportbuilderexportcore.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range iguser.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range pagepost.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range audiocopyright.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range cpasbusinesssetupconfig.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range adplacement.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range dynamicitemdisplaybundle.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range flight.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range businessrolerequest.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range creditcard.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range fantasygame.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range apprequest.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range reachfrequencyprediction.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range whitehatfbdlrun.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range transactableitem.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range workexperience.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range event.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range businessownedobjectonbehalfofrequest.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range fbimagecopyrightmatch.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range jobopening.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range savedmessageresponse.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range thirdpartymeasurementreportdataset.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range catalogcontentversionconfig.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range mediafingerprint.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range messengerbusinesstemplate.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range copyrightmediamisuse.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range eventregistrationsetting.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range homelisting.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range link.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range cloudgame.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range business.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range adstudyobjective.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range fundraiserpersontocharity.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range user.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range adspixel.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range avatarprofilepicture.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range productsetusage.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range researchpollstudy.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range persona.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range adscreationsavedstate.GetHandlers() {
 		handlers[name] = handler
 	}
 	for name, handler := range adsusersettings.GetHandlers() {
@@ -1793,712 +1886,619 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	for name, handler := range appeventconfig.GetHandlers() {
 		handlers[name] = handler
 	}
-	for name, handler := range igmediaboosteligibilityinfo.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range iguserexportforcam.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range productset.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range adspixelcapabilityoverride.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range partnerintegrationlinked.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range whitehatfbdlrun.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range franchiseprogrammember.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range comment.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range instagrambusinessasset.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range pagepostexperiment.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range usercontext.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range adsconversiongoal.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range businessimage.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range iguserforigonlyapi.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range pageusermessagethreadlabel.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range canvas.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range signalsiwlextractor.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range franchiseprogram.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range igboostmediaad.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range reachfrequencyprediction.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range userpageonetimeoptintokensettings.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range offlineconversiondatasetupload.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range omegacustomertrx.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range adaccountagencyfeeconfig.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range instagramthread.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range status.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range wearabledevicepublickey.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range adaccountcreationrequest.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range link.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range systemuser.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range thirdpartymeasurementreportdataset.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range paymentenginepayment.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range productdeliverypreference.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range addraft.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range thirdpartypartnerviewabilityrequest.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range adcustomderivedmetrics.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range igaccesstokenforigonlyapi.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range place.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range adsavedreport.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range adstudy.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range shadowigmediabuilder.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range favoritecatalog.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range profile.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range businessagreement.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range igcomment.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range rtbdynamicpost.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range brandsafetydownloadable.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range adplacepageset.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range advideo.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range highdemandperiod.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range page.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range videocopyrightmatch.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range almevent.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range adlightadgroup.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range copyrightownershiptransfer.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range productitemlocalinfo.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range collaborativeadssharesettings.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range educationexperience.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range adimage.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range asyncsession.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range audiosublabel.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range blindpig.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range dynamicitemdisplaybundlefolder.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range slicedeventsourcegroup.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range campaign.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range livevideoinputstream.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range application.GetHandlers() {
-		handlers[name] = handler
-	}
 	for name, handler := range businessproject.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range openbridgeconfiguration.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range livevideoadcampaignconfig.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range partnerstudy.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range destination.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range mediacopyrightattribution.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range hotelroom.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range productimage.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range measurementreport.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range dynamiccontentset.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range playablecontent.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range adcreationpackageconfig.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range whatsappbusinesspreverifiedphonenumber.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range pageleadsaccessconfig.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range customconversion.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range externalmerchantsettings.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range mediacopyrightupdaterecord.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range homelisting.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range adaccountusersettings.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range commerceorder.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range managementsitelink.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range apprequest.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range analyticsuserconfig.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range adspivotrules.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range catalogitemoverride.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range persona.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range transactableitem.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range bcpcampaign.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range businesstag.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range unifiedthread.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range adlightcampaign.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range adstudyobjective.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range eventexternalticketinfo.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range geogatingpolicy.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range messengerbusinesstemplate.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range privateliftstudyinstance.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range adcreative.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range creatorassetcreative.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range post.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range productgroup.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range cpasbusinesssetupconfig.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range placetag.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range adstudycell.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range productfeedschedule.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range productfeedupload.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range calibratorexistingrule.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range businessrolerequest.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range adrule.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range adsavedlocation.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range adscreationsavedstate.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range musicworkcopyright.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range cpasadvertiserpartnershiprecommendation.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range cpaslsbimagebank.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range leadgenform.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range offlineproductitem.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range websitecreativeassetsource.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range pagepost.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range productfeed.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range commercemerchantsettings.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range sitelink.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range adreportrun.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range bizinboxoffsiteemailaccount.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range eventsourcegroup.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range offsitesignalcontainerbusinessobject.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range adsmcmeconversion.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range commerceordertransactiondetail.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range creditcard.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range thirdpartypartnerpanelscheduled.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range imagecopyright.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range adlabel.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range productitem.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range adasyncrequestset.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range crmaddress.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range business.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range cpasparentcatalogsettings.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range catalogsmartpixelsettings.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range wifiinformation.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range extendedcreditinvoicegroup.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range photo.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range adcolumnsizes.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range savedaudience.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range chinabusinessonboardingvettingrequest.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range productsetusage.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range adsquickviews.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range catalogwebsiteonboardingsettings.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range videocopyright.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range adasyncrequest.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range adsnamingtemplate.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range organization.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range eventregistrationsetting.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range leadgendirectcrmintegrationconfig.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range businessfranchiseconfig.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range localservicebusiness.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range pagecalltoaction.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range productcatalog.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range canvastemplate.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range igmediaforigonlyapi.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range personaladspersona.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range woodhengepurchasedpaygreceipt.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range businessrequest.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range eventticketsetting.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range eventtour.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range audioasset.GetHandlers() {
 		handlers[name] = handler
 	}
 	for name, handler := range vehicle.GetHandlers() {
 		handlers[name] = handler
 	}
-	for name, handler := range woodhengesupporter.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range adgroupfacebookfeedback.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range hours.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range igmedia.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range savedmessageresponse.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range adproposal.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range adsvalueadjustmentrulecollection.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range businesscreativefolder.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range businessuser.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range fantasygame.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range whatsappbusinessprofile.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range adtoplinedetail.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range avatar.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range bidschedule.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range dynamicarmetadata.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range shop.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range catalogcontentversionconfig.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range dynamicitemdisplaybundle.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range extendedcreditapplication.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range extendedcredit.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range imagereferencematch.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range videolist.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range adsreportbuildermmmreport.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range analyticssegment.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range businessobjecttransferownershipagreement.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range igbcadspermission.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range catalogwebsitesettings.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range shadowighashtag.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range pagebroadcast.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range workskill.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range automotivemodel.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range mediatitle.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range ctxpartnerappwelcomemessageflow.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range brandrequest.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range owneddomain.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range adspixel.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range advainstance.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range igupcomingevent.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range adsreportbuilderexportcore.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range businessvideo.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range websitecreativeinfo.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range igrefreshaccesstokenforigonlyapi.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range event.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range eventtickettier.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range flight.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range adsreportbuildermmmreportscheduler.GetHandlers() {
-		handlers[name] = handler
-	}
-	for name, handler := range storecatalogsettings.GetHandlers() {
+	for name, handler := range adcustomderivedmetrics.GetHandlers() {
 		handlers[name] = handler
 	}
 	for name, handler := range url.GetHandlers() {
 		handlers[name] = handler
 	}
-	for name, handler := range livevideo.GetHandlers() {
+	for name, handler := range applinks.GetHandlers() {
 		handlers[name] = handler
 	}
-	for name, handler := range areffect.GetHandlers() {
+	for name, handler := range adstudycell.GetHandlers() {
 		handlers[name] = handler
 	}
-	for name, handler := range adexportpreset.GetHandlers() {
+	for name, handler := range businessagreement.GetHandlers() {
 		handlers[name] = handler
 	}
-	for name, handler := range audiorelease.GetHandlers() {
+	for name, handler := range externalmerchantsettings.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range status.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range wifiinformation.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range creatorassetcreative.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range shop.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range localservicebusiness.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range audiosublabel.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range bidschedule.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range educationexperience.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range adgroupfacebookfeedback.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range livevideoadcampaignconfig.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range whatsappbusinesspreverifiedphonenumber.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range extendedcreditallocationconfig.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range favoritecatalog.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range partnerstudy.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range whatsappbusinessaccount.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range leadgendirectcrmintegrationconfig.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range omegacustomertrx.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range highdemandperiod.GetHandlers() {
 		handlers[name] = handler
 	}
 	for name, handler := range instagramuser.GetHandlers() {
 		handlers[name] = handler
 	}
-	for name, handler := range paymentsubscription.GetHandlers() {
+	for name, handler := range adlightcampaign.GetHandlers() {
 		handlers[name] = handler
 	}
-	for name, handler := range almendadvertiserinfo.GetHandlers() {
+	for name, handler := range productfeedschedule.GetHandlers() {
 		handlers[name] = handler
 	}
-	for name, handler := range adruleevaluationspec.GetHandlers() {
+	for name, handler := range advainstance.GetHandlers() {
 		handlers[name] = handler
 	}
-	for name, handler := range businessassetgroup.GetHandlers() {
+	for name, handler := range businessobjecttransferownershipagreement.GetHandlers() {
 		handlers[name] = handler
 	}
-	for name, handler := range audiocopyright.GetHandlers() {
+	for name, handler := range businessrequest.GetHandlers() {
 		handlers[name] = handler
 	}
-	for name, handler := range dynamicvideometadata.GetHandlers() {
+	for name, handler := range audiorelease.GetHandlers() {
 		handlers[name] = handler
 	}
-	for name, handler := range cpascollaborationrequest.GetHandlers() {
+	for name, handler := range igmedia.GetHandlers() {
 		handlers[name] = handler
 	}
-	for name, handler := range user.GetHandlers() {
+	for name, handler := range productfeedupload.GetHandlers() {
 		handlers[name] = handler
 	}
-	for name, handler := range websitecreativeassetsuggestions.GetHandlers() {
+	for name, handler := range productitemoffer.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range adstudy.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range areffect.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range audioasset.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range adlightadgroup.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range place.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range avatar.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range productitem.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range pageusermessagethreadlabel.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range canvasdynamicsetting.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range catalogitemoverride.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range partnerintegrationlinked.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range rtbdynamicpost.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range offlineconversiondatasetupload.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range vehicleoffer.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range brandsafetydownloadable.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range igmediaforigonlyapi.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range adsvalueadjustmentrulecollection.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range album.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range thirdpartypartnerliftrequest.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range extendedcreditinvoicegroup.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range opengraphcontext.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range userpageonetimeoptintokensettings.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range campaign.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range commerceordertransactiondetail.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range offlineconversiondataset.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range savedaudience.GetHandlers() {
 		handlers[name] = handler
 	}
 	for name, handler := range adset.GetHandlers() {
 		handlers[name] = handler
 	}
-	for name, handler := range livevideoerror.GetHandlers() {
+	for name, handler := range crmaddress.GetHandlers() {
 		handlers[name] = handler
 	}
-	for name, handler := range offlineconversiondataset.GetHandlers() {
+	for name, handler := range instagramthread.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range eventexternalticketinfo.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range famekumo.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range hotelroom.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range page.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range audioisrc.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range adimage.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range businessassetsharingagreement.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range adaccount.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range adsreportbuildermmmreport.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range businessassetgroup.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range managementsitelink.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range unifiedthread.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range adspivotrules.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range collaborativeadssharesettings.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range mediacopyrightattribution.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range videotextquestion.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range businessfranchiseconfig.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range cpasadcreationtemplate.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range videocopyrightmatch.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range aradsdatacontainer.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range photo.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range publisherwhitelist.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range adsavedreport.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range musicworkcopyright.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range paymentenginepayment.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range catalogwebsiteonboardingsettings.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range videocopyrightrule.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range adrule.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range productfeeduploaderrorsample.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range extendedcredit.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range adsconversiongoal.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range pagepostexperiment.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range post.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range adsreportbuildersavedreport.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range sitelink.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range commerceorder.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range measurementreport.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range adcreative.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range igbcadspermission.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range organization.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range ad.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range commercemerchantsettings.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range dynamiccontentset.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range productcataloglocalizationsettings.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range adcreationpackageconfig.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range igmediaboosteligibilityinfo.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range adasyncrequestset.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range extendedcreditapplication.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range storecatalogsettings.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range group.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range woodhengepurchasedpaygreceipt.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range mediacopyrightupdaterecord.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range playablecontent.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range dynamicarmetadata.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range thirdpartypartnerviewabilityrequest.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range asyncsession.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range brandrequest.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range adtopline.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range calibratorexistingrule.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range whatsappbusinessprofile.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range adruleexecutionspec.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range woodhengesupporter.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range paymentsubscription.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range profile.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range dynamicpriceconfigbydate.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range ctxpartnerappwelcomemessageflow.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range chinabusinessonboardingvettingrequest.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range dynamicvideometadata.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range livevideo.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range customconversion.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range robot.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range usercontext.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range bizinboxoffsiteemailaccount.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range calladsphonedata.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range productgroup.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range imagecopyright.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range slicedeventsourcegroup.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range leadgendatadraft.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range geogatingpolicy.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range businessvideo.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range productimage.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range musicvideocopyright.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range adsmcmeconversion.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range catalogsmartpixelsettings.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range igaccesstokenforigonlyapi.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range productcatalog.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range almevent.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range productfeed.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range thirdpartypartnerpanelscheduled.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range almendadvertiserinfo.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range businesscreativefolder.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range shadowigmediabuilder.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range contentblocklist.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range franchiseprogram.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range storelocation.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range thirdpartypartnerpanelrequest.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range adplacepageset.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range pagebroadcast.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range openbridgeconfiguration.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range cpasadvertiserpartnershiprecommendation.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range igboostmediaad.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range videolist.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range workskill.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range catalogwebsitesettings.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range hotel.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range iguserforigonlyapi.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range adlabel.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range mailingaddress.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range advideo.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range instagrambusinessasset.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range businessuser.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range franchiseprogrammember.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range privateliftstudyinstance.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range customaudience.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range videocopyright.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range systemuser.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range adsquickviews.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range pageinsightsasyncexportrun.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range adsavedkeywords.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range rightsmanagerdataexport.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range almadaccountinfo.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range adtoplinedetail.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range businesstag.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range productfeedrule.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range eventtour.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range offlineproductitem.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range offsitesignalcontainerbusinessobject.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range adlightcampaigngroup.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range canvastemplate.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range canvas.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range lifeevent.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range owneddomain.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range partneraccountlinking.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range leadgenform.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range adsnamingtemplate.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range analyticssegment.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range lead.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range adasyncrequest.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range adreportrun.GetHandlers() {
+		handlers[name] = handler
+	}
+	for name, handler := range igrefreshaccesstokenforigonlyapi.GetHandlers() {
 		handlers[name] = handler
 	}
 

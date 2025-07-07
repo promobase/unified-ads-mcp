@@ -76,7 +76,7 @@ func HandlePageusermessagethreadlabel_delete_label(ctx context.Context, request 
 func Pageusermessagethreadlabel_delete_label(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/label")
+	baseURL = FacebookGraphAPIBaseURL + "label"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

@@ -74,7 +74,7 @@ func HandleIguserexportforcam_get_branded_content_media(ctx context.Context, req
 func Iguserexportforcam_get_branded_content_media(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/branded_content_media")
+	baseURL = FacebookGraphAPIBaseURL + "branded_content_media"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

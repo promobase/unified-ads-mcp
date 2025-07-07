@@ -63,7 +63,7 @@ func HandleUser_post_staging_resources(ctx context.Context, request mcp.CallTool
 func User_post_staging_resources(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/staging_resources")
+	baseURL = FacebookGraphAPIBaseURL + "staging_resources"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

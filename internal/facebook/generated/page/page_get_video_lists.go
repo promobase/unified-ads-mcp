@@ -75,7 +75,7 @@ func HandlePage_get_video_lists(ctx context.Context, request mcp.CallToolRequest
 func Page_get_video_lists(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/video_lists")
+	baseURL = FacebookGraphAPIBaseURL + "video_lists"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

@@ -120,7 +120,7 @@ func HandlePage_post_messages(ctx context.Context, request mcp.CallToolRequest) 
 func Page_post_messages(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/messages")
+	baseURL = FacebookGraphAPIBaseURL + "messages"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

@@ -116,7 +116,7 @@ func Adset_get_copies(accessToken string, args map[string]interface{}) (interfac
 	if !ok {
 		return nil, fmt.Errorf("ad_set_id is required for adset_get_copies")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/%scopies", adSetId)
+	baseURL = fmt.Sprintf("%s/%scopies", FacebookGraphAPIBaseURL, adSetId)
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{

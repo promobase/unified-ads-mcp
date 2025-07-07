@@ -113,7 +113,7 @@ func HandlePhoto_post_comments(ctx context.Context, request mcp.CallToolRequest)
 func Photo_post_comments(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/comments")
+	baseURL = FacebookGraphAPIBaseURL + "comments"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

@@ -75,7 +75,7 @@ func HandleStatus_post_likes(ctx context.Context, request mcp.CallToolRequest) (
 func Status_post_likes(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/likes")
+	baseURL = FacebookGraphAPIBaseURL + "likes"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

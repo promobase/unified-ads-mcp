@@ -100,7 +100,7 @@ func HandleApplication_get_iap_purchases(ctx context.Context, request mcp.CallTo
 func Application_get_iap_purchases(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/iap_purchases")
+	baseURL = FacebookGraphAPIBaseURL + "iap_purchases"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

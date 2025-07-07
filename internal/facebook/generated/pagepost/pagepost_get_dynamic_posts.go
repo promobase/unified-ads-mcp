@@ -75,7 +75,7 @@ func HandlePagepost_get_dynamic_posts(ctx context.Context, request mcp.CallToolR
 func Pagepost_get_dynamic_posts(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/dynamic_posts")
+	baseURL = FacebookGraphAPIBaseURL + "dynamic_posts"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

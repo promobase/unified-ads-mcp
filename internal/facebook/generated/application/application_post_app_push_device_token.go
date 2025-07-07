@@ -86,7 +86,7 @@ func HandleApplication_post_app_push_device_token(ctx context.Context, request m
 func Application_post_app_push_device_token(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/app_push_device_token")
+	baseURL = FacebookGraphAPIBaseURL + "app_push_device_token"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

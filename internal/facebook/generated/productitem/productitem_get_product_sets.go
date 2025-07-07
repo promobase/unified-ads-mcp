@@ -75,7 +75,7 @@ func HandleProductitem_get_product_sets(ctx context.Context, request mcp.CallToo
 func Productitem_get_product_sets(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/product_sets")
+	baseURL = FacebookGraphAPIBaseURL + "product_sets"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

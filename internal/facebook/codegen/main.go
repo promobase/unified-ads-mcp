@@ -440,6 +440,11 @@ func generateCodeNew(ctx *CodegenContext) error {
 			return fmt.Errorf("failed to create node directory %s: %w", nodeDir, err)
 		}
 
+		// Generate constants file for the node
+		if err := generateNodeConstantsFile(nodeDir, nodeName, ctx); err != nil {
+			return fmt.Errorf("failed to generate constants for %s: %w", nodeName, err)
+		}
+
 		// Generate individual endpoint files
 		for _, tool := range tools {
 			if err := generateEndpointFile(nodeDir, nodeName, tool, ctx); err != nil {
@@ -517,6 +522,30 @@ func generateEndpointFile(nodeDir string, nodeName string, tool MCPTool, ctx *Co
 		"Tool":         tool,
 		"APIVersion":   APIVersion,
 		"NeedsStrings": needsStrings,
+	})
+}
+
+// generateNodeConstantsFile generates the constants file for a node
+func generateNodeConstantsFile(nodeDir string, nodeName string, ctx *CodegenContext) error {
+	tmplData, err := templateFS.ReadFile("templates/constants.go.tmpl")
+	if err != nil {
+		return fmt.Errorf("failed to read constants template: %w", err)
+	}
+
+	t, err := template.New("constants").Parse(string(tmplData))
+	if err != nil {
+		return fmt.Errorf("failed to parse constants template: %w", err)
+	}
+
+	file, err := os.Create(filepath.Join(nodeDir, "constants.go"))
+	if err != nil {
+		return err
+	}
+	defer file.Close()
+
+	return t.Execute(file, map[string]interface{}{
+		"PackageName": strings.ToLower(nodeName),
+		"APIVersion":  APIVersion,
 	})
 }
 

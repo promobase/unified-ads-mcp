@@ -107,7 +107,7 @@ func HandlePage_post_messenger_profile(ctx context.Context, request mcp.CallTool
 func Page_post_messenger_profile(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/messenger_profile")
+	baseURL = FacebookGraphAPIBaseURL + "messenger_profile"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

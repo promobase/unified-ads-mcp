@@ -75,7 +75,7 @@ func HandleApplication_get_connected_client_businesses(ctx context.Context, requ
 func Application_get_connected_client_businesses(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/connected_client_businesses")
+	baseURL = FacebookGraphAPIBaseURL + "connected_client_businesses"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

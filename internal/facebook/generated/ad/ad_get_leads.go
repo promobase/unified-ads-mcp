@@ -89,7 +89,7 @@ func Ad_get_leads(accessToken string, args map[string]interface{}) (interface{},
 	if !ok {
 		return nil, fmt.Errorf("ad_id is required for ad_get_leads")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/%sleads", adId)
+	baseURL = fmt.Sprintf("%s/%sleads", FacebookGraphAPIBaseURL, adId)
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{

@@ -64,7 +64,7 @@ func HandleBusiness_post_ad_review_requests(ctx context.Context, request mcp.Cal
 func Business_post_ad_review_requests(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/ad_review_requests")
+	baseURL = FacebookGraphAPIBaseURL + "ad_review_requests"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

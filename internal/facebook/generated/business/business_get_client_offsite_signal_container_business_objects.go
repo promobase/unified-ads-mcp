@@ -75,7 +75,7 @@ func HandleBusiness_get_client_offsite_signal_container_business_objects(ctx con
 func Business_get_client_offsite_signal_container_business_objects(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/client_offsite_signal_container_business_objects")
+	baseURL = FacebookGraphAPIBaseURL + "client_offsite_signal_container_business_objects"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

@@ -75,7 +75,7 @@ func HandleLivevideo_get_crossposted_broadcasts(ctx context.Context, request mcp
 func Livevideo_get_crossposted_broadcasts(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/crossposted_broadcasts")
+	baseURL = FacebookGraphAPIBaseURL + "crossposted_broadcasts"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

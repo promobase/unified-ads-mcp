@@ -74,7 +74,7 @@ func HandleCommerceorder_get_cancellations(ctx context.Context, request mcp.Call
 func Commerceorder_get_cancellations(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/cancellations")
+	baseURL = FacebookGraphAPIBaseURL + "cancellations"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

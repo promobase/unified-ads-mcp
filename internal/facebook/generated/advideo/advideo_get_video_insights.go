@@ -101,7 +101,7 @@ func HandleAdvideo_get_video_insights(ctx context.Context, request mcp.CallToolR
 func Advideo_get_video_insights(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/video_insights")
+	baseURL = FacebookGraphAPIBaseURL + "video_insights"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

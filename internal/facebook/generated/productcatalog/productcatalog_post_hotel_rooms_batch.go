@@ -97,7 +97,7 @@ func HandleProductcatalog_post_hotel_rooms_batch(ctx context.Context, request mc
 func Productcatalog_post_hotel_rooms_batch(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/hotel_rooms_batch")
+	baseURL = FacebookGraphAPIBaseURL + "hotel_rooms_batch"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

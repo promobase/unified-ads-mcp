@@ -94,7 +94,7 @@ func Adaccount_post_account_controls(accessToken string, args map[string]interfa
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_post_account_controls")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%saccount_controls", accountId)
+	baseURL = fmt.Sprintf("%s/act_%saccount_controls", FacebookGraphAPIBaseURL, accountId)
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{

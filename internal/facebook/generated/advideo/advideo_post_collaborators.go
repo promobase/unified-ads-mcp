@@ -76,7 +76,7 @@ func HandleAdvideo_post_collaborators(ctx context.Context, request mcp.CallToolR
 func Advideo_post_collaborators(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/collaborators")
+	baseURL = FacebookGraphAPIBaseURL + "collaborators"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

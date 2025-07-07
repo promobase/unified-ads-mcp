@@ -96,7 +96,7 @@ func HandleBusiness_get_adspixels(ctx context.Context, request mcp.CallToolReque
 func Business_get_adspixels(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/adspixels")
+	baseURL = FacebookGraphAPIBaseURL + "adspixels"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

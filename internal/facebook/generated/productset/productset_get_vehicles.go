@@ -91,7 +91,7 @@ func HandleProductset_get_vehicles(ctx context.Context, request mcp.CallToolRequ
 func Productset_get_vehicles(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/vehicles")
+	baseURL = FacebookGraphAPIBaseURL + "vehicles"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

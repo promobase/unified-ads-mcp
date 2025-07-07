@@ -110,7 +110,7 @@ func Adset_get_delivery_estimate(accessToken string, args map[string]interface{}
 	if !ok {
 		return nil, fmt.Errorf("ad_set_id is required for adset_get_delivery_estimate")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/%sdelivery_estimate", adSetId)
+	baseURL = fmt.Sprintf("%s/%sdelivery_estimate", FacebookGraphAPIBaseURL, adSetId)
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{

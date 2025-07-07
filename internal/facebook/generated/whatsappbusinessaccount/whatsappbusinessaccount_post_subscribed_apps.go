@@ -67,7 +67,7 @@ func HandleWhatsappbusinessaccount_post_subscribed_apps(ctx context.Context, req
 func Whatsappbusinessaccount_post_subscribed_apps(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/subscribed_apps")
+	baseURL = FacebookGraphAPIBaseURL + "subscribed_apps"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

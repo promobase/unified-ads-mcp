@@ -91,7 +91,7 @@ func HandleIguser_get_live_media(ctx context.Context, request mcp.CallToolReques
 func Iguser_get_live_media(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/live_media")
+	baseURL = FacebookGraphAPIBaseURL + "live_media"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

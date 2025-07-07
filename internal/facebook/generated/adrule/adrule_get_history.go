@@ -96,7 +96,7 @@ func HandleAdrule_get_history(ctx context.Context, request mcp.CallToolRequest) 
 func Adrule_get_history(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/history")
+	baseURL = FacebookGraphAPIBaseURL + "history"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

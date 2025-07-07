@@ -74,7 +74,7 @@ func HandleCommercemerchantsettings_get_tax_settings(ctx context.Context, reques
 func Commercemerchantsettings_get_tax_settings(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/tax_settings")
+	baseURL = FacebookGraphAPIBaseURL + "tax_settings"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

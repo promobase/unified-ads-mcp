@@ -82,7 +82,7 @@ func HandleWhatsappbusinesspreverifiedphonenumber_post_request_code(ctx context.
 func Whatsappbusinesspreverifiedphonenumber_post_request_code(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/request_code")
+	baseURL = FacebookGraphAPIBaseURL + "request_code"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

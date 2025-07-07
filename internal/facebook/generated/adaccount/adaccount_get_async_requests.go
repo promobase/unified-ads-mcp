@@ -107,7 +107,7 @@ func Adaccount_get_async_requests(accessToken string, args map[string]interface{
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_get_async_requests")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%sasync_requests", accountId)
+	baseURL = fmt.Sprintf("%s/act_%sasync_requests", FacebookGraphAPIBaseURL, accountId)
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{

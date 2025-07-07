@@ -74,7 +74,7 @@ func HandleApplication_get_server_domain_infos(ctx context.Context, request mcp.
 func Application_get_server_domain_infos(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/server_domain_infos")
+	baseURL = FacebookGraphAPIBaseURL + "server_domain_infos"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

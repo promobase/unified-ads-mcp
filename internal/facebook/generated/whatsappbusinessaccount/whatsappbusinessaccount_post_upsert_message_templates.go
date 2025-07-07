@@ -98,7 +98,7 @@ func HandleWhatsappbusinessaccount_post_upsert_message_templates(ctx context.Con
 func Whatsappbusinessaccount_post_upsert_message_templates(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/upsert_message_templates")
+	baseURL = FacebookGraphAPIBaseURL + "upsert_message_templates"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

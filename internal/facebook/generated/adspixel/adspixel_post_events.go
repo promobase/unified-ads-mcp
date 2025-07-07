@@ -114,7 +114,7 @@ func HandleAdspixel_post_events(ctx context.Context, request mcp.CallToolRequest
 func Adspixel_post_events(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/events")
+	baseURL = FacebookGraphAPIBaseURL + "events"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

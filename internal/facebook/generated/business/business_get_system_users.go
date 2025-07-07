@@ -75,7 +75,7 @@ func HandleBusiness_get_system_users(ctx context.Context, request mcp.CallToolRe
 func Business_get_system_users(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/system_users")
+	baseURL = FacebookGraphAPIBaseURL + "system_users"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

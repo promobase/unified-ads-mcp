@@ -75,7 +75,7 @@ func HandleApplication_get_linked_dataset(ctx context.Context, request mcp.CallT
 func Application_get_linked_dataset(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/linked_dataset")
+	baseURL = FacebookGraphAPIBaseURL + "linked_dataset"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

@@ -157,7 +157,7 @@ func HandlePage_post_locations(ctx context.Context, request mcp.CallToolRequest)
 func Page_post_locations(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/locations")
+	baseURL = FacebookGraphAPIBaseURL + "locations"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

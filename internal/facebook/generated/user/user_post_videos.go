@@ -351,7 +351,7 @@ func HandleUser_post_videos(ctx context.Context, request mcp.CallToolRequest) (*
 func User_post_videos(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/videos")
+	baseURL = FacebookGraphAPIBaseURL + "videos"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

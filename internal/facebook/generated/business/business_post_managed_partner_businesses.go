@@ -166,7 +166,7 @@ func HandleBusiness_post_managed_partner_businesses(ctx context.Context, request
 func Business_post_managed_partner_businesses(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/managed_partner_businesses")
+	baseURL = FacebookGraphAPIBaseURL + "managed_partner_businesses"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

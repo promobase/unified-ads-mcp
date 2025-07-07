@@ -140,7 +140,7 @@ func HandleBusiness_post_openbridge_configurations(ctx context.Context, request 
 func Business_post_openbridge_configurations(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/openbridge_configurations")
+	baseURL = FacebookGraphAPIBaseURL + "openbridge_configurations"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

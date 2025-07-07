@@ -95,7 +95,7 @@ func HandleBusiness_get_ad_account_infos(ctx context.Context, request mcp.CallTo
 func Business_get_ad_account_infos(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/ad_account_infos")
+	baseURL = FacebookGraphAPIBaseURL + "ad_account_infos"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

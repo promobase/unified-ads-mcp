@@ -89,7 +89,7 @@ func HandleProductcatalog_post_localized_items_batch(ctx context.Context, reques
 func Productcatalog_post_localized_items_batch(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/localized_items_batch")
+	baseURL = FacebookGraphAPIBaseURL + "localized_items_batch"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

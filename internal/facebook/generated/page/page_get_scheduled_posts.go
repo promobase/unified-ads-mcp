@@ -75,7 +75,7 @@ func HandlePage_get_scheduled_posts(ctx context.Context, request mcp.CallToolReq
 func Page_get_scheduled_posts(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/scheduled_posts")
+	baseURL = FacebookGraphAPIBaseURL + "scheduled_posts"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

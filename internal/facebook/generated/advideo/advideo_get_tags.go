@@ -75,7 +75,7 @@ func HandleAdvideo_get_tags(ctx context.Context, request mcp.CallToolRequest) (*
 func Advideo_get_tags(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/tags")
+	baseURL = FacebookGraphAPIBaseURL + "tags"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

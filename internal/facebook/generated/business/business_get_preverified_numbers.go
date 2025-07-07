@@ -92,7 +92,7 @@ func HandleBusiness_get_preverified_numbers(ctx context.Context, request mcp.Cal
 func Business_get_preverified_numbers(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/preverified_numbers")
+	baseURL = FacebookGraphAPIBaseURL + "preverified_numbers"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

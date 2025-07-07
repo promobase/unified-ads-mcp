@@ -76,7 +76,7 @@ func HandleIguser_post_media_publish(ctx context.Context, request mcp.CallToolRe
 func Iguser_post_media_publish(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/media_publish")
+	baseURL = FacebookGraphAPIBaseURL + "media_publish"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

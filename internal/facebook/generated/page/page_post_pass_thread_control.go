@@ -84,7 +84,7 @@ func HandlePage_post_pass_thread_control(ctx context.Context, request mcp.CallTo
 func Page_post_pass_thread_control(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/pass_thread_control")
+	baseURL = FacebookGraphAPIBaseURL + "pass_thread_control"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

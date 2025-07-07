@@ -90,7 +90,7 @@ func Adaccount_delete_adimages(accessToken string, args map[string]interface{}) 
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_delete_adimages")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%sadimages", accountId)
+	baseURL = fmt.Sprintf("%s/act_%sadimages", FacebookGraphAPIBaseURL, accountId)
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{

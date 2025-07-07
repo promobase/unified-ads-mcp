@@ -75,7 +75,7 @@ func HandleIguser_get_notification_message_tokens(ctx context.Context, request m
 func Iguser_get_notification_message_tokens(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/notification_message_tokens")
+	baseURL = FacebookGraphAPIBaseURL + "notification_message_tokens"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

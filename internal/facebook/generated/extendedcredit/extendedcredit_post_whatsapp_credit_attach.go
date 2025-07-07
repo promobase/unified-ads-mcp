@@ -81,7 +81,7 @@ func HandleExtendedcredit_post_whatsapp_credit_attach(ctx context.Context, reque
 func Extendedcredit_post_whatsapp_credit_attach(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/whatsapp_credit_attach")
+	baseURL = FacebookGraphAPIBaseURL + "whatsapp_credit_attach"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

@@ -87,7 +87,7 @@ func HandleUser_get_ids_for_business(ctx context.Context, request mcp.CallToolRe
 func User_get_ids_for_business(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/ids_for_business")
+	baseURL = FacebookGraphAPIBaseURL + "ids_for_business"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

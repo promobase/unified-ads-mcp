@@ -97,7 +97,7 @@ func Adset_post_adlabels(accessToken string, args map[string]interface{}) (inter
 	if !ok {
 		return nil, fmt.Errorf("ad_set_id is required for adset_post_adlabels")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/%sadlabels", adSetId)
+	baseURL = fmt.Sprintf("%s/%sadlabels", FacebookGraphAPIBaseURL, adSetId)
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{

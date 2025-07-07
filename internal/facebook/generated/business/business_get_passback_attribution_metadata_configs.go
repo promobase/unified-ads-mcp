@@ -74,7 +74,7 @@ func HandleBusiness_get_passback_attribution_metadata_configs(ctx context.Contex
 func Business_get_passback_attribution_metadata_configs(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/passback_attribution_metadata_configs")
+	baseURL = FacebookGraphAPIBaseURL + "passback_attribution_metadata_configs"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

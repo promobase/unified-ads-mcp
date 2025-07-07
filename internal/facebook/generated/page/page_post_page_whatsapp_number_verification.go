@@ -80,7 +80,7 @@ func HandlePage_post_page_whatsapp_number_verification(ctx context.Context, requ
 func Page_post_page_whatsapp_number_verification(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/page_whatsapp_number_verification")
+	baseURL = FacebookGraphAPIBaseURL + "page_whatsapp_number_verification"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

@@ -93,7 +93,7 @@ func HandleCommerceorder_post_update_shipment(ctx context.Context, request mcp.C
 func Commerceorder_post_update_shipment(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/update_shipment")
+	baseURL = FacebookGraphAPIBaseURL + "update_shipment"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

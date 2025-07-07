@@ -113,7 +113,7 @@ func HandleProductcatalog_get_diagnostics(ctx context.Context, request mcp.CallT
 func Productcatalog_get_diagnostics(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/diagnostics")
+	baseURL = FacebookGraphAPIBaseURL + "diagnostics"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

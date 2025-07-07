@@ -75,7 +75,7 @@ func HandleTransactableitem_get_channels_to_integrity_status(ctx context.Context
 func Transactableitem_get_channels_to_integrity_status(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/channels_to_integrity_status")
+	baseURL = FacebookGraphAPIBaseURL + "channels_to_integrity_status"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

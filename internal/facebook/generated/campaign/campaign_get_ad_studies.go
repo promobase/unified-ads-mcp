@@ -89,7 +89,7 @@ func Campaign_get_ad_studies(accessToken string, args map[string]interface{}) (i
 	if !ok {
 		return nil, fmt.Errorf("campaign_id is required for campaign_get_ad_studies")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/%sad_studies", campaignId)
+	baseURL = fmt.Sprintf("%s/%sad_studies", FacebookGraphAPIBaseURL, campaignId)
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{

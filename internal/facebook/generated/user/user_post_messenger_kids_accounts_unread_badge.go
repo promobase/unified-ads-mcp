@@ -76,7 +76,7 @@ func HandleUser_post_messenger_kids_accounts_unread_badge(ctx context.Context, r
 func User_post_messenger_kids_accounts_unread_badge(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/messenger_kids_accounts_unread_badge")
+	baseURL = FacebookGraphAPIBaseURL + "messenger_kids_accounts_unread_badge"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

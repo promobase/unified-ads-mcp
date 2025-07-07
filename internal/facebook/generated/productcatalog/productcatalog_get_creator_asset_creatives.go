@@ -88,7 +88,7 @@ func HandleProductcatalog_get_creator_asset_creatives(ctx context.Context, reque
 func Productcatalog_get_creator_asset_creatives(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/creator_asset_creatives")
+	baseURL = FacebookGraphAPIBaseURL + "creator_asset_creatives"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

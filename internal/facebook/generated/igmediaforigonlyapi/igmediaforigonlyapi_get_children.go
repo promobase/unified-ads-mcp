@@ -74,7 +74,7 @@ func HandleIgmediaforigonlyapi_get_children(ctx context.Context, request mcp.Cal
 func Igmediaforigonlyapi_get_children(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/children")
+	baseURL = FacebookGraphAPIBaseURL + "children"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

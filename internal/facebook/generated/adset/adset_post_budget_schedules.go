@@ -106,7 +106,7 @@ func Adset_post_budget_schedules(accessToken string, args map[string]interface{}
 	if !ok {
 		return nil, fmt.Errorf("ad_set_id is required for adset_post_budget_schedules")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/%sbudget_schedules", adSetId)
+	baseURL = fmt.Sprintf("%s/%sbudget_schedules", FacebookGraphAPIBaseURL, adSetId)
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{

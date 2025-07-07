@@ -75,7 +75,7 @@ func HandleCanvas_get_preview(ctx context.Context, request mcp.CallToolRequest) 
 func Canvas_get_preview(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/preview")
+	baseURL = FacebookGraphAPIBaseURL + "preview"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

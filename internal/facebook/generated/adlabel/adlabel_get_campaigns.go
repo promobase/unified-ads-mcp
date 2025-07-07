@@ -75,7 +75,7 @@ func HandleAdlabel_get_campaigns(ctx context.Context, request mcp.CallToolReques
 func Adlabel_get_campaigns(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/campaigns")
+	baseURL = FacebookGraphAPIBaseURL + "campaigns"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

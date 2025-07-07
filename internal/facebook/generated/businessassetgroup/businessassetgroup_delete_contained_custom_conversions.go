@@ -76,7 +76,7 @@ func HandleBusinessassetgroup_delete_contained_custom_conversions(ctx context.Co
 func Businessassetgroup_delete_contained_custom_conversions(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/contained_custom_conversions")
+	baseURL = FacebookGraphAPIBaseURL + "contained_custom_conversions"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

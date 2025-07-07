@@ -74,7 +74,7 @@ func HandleMessengeradspartialautomatedsteplist_get_steps(ctx context.Context, r
 func Messengeradspartialautomatedsteplist_get_steps(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/steps")
+	baseURL = FacebookGraphAPIBaseURL + "steps"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

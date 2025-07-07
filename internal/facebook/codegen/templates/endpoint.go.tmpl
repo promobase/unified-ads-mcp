@@ -124,37 +124,37 @@ func {{capitalizeFirst .Tool.Name}}(accessToken string, args map[string]interfac
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for {{.Tool.Name}}")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/{{.APIVersion}}/act_%s{{.Tool.Endpoint}}", accountId)
+	baseURL = fmt.Sprintf("%s/act_%s{{.Tool.Endpoint}}", FacebookGraphAPIBaseURL, accountId)
 	{{else if eq .NodeName "Ad"}}
 	// Extract ad_id for URL construction
 	adId, ok := args["ad_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("ad_id is required for {{.Tool.Name}}")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/{{.APIVersion}}/%s{{.Tool.Endpoint}}", adId)
+	baseURL = fmt.Sprintf("%s/%s{{.Tool.Endpoint}}", FacebookGraphAPIBaseURL, adId)
 	{{else if eq .NodeName "AdCreative"}}
 	// Extract ad_creative_id for URL construction
 	adCreativeId, ok := args["ad_creative_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("ad_creative_id is required for {{.Tool.Name}}")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/{{.APIVersion}}/%s{{.Tool.Endpoint}}", adCreativeId)
+	baseURL = fmt.Sprintf("%s/%s{{.Tool.Endpoint}}", FacebookGraphAPIBaseURL, adCreativeId)
 	{{else if eq .NodeName "AdSet"}}
 	// Extract ad_set_id for URL construction
 	adSetId, ok := args["ad_set_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("ad_set_id is required for {{.Tool.Name}}")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/{{.APIVersion}}/%s{{.Tool.Endpoint}}", adSetId)
+	baseURL = fmt.Sprintf("%s/%s{{.Tool.Endpoint}}", FacebookGraphAPIBaseURL, adSetId)
 	{{else if eq .NodeName "Campaign"}}
 	// Extract campaign_id for URL construction
 	campaignId, ok := args["campaign_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("campaign_id is required for {{.Tool.Name}}")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/{{.APIVersion}}/%s{{.Tool.Endpoint}}", campaignId)
+	baseURL = fmt.Sprintf("%s/%s{{.Tool.Endpoint}}", FacebookGraphAPIBaseURL, campaignId)
 	{{else}}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/{{.APIVersion}}/{{.Tool.Endpoint}}")
+	baseURL = FacebookGraphAPIBaseURL + "{{.Tool.Endpoint}}"
 	{{end}}
 
 	// Build URL parameters, skipping ID parameters that are in the path

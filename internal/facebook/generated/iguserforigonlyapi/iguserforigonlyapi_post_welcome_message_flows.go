@@ -78,7 +78,7 @@ func HandleIguserforigonlyapi_post_welcome_message_flows(ctx context.Context, re
 func Iguserforigonlyapi_post_welcome_message_flows(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/welcome_message_flows")
+	baseURL = FacebookGraphAPIBaseURL + "welcome_message_flows"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

@@ -81,7 +81,7 @@ func HandleIguser_post_authorized_adaccounts(ctx context.Context, request mcp.Ca
 func Iguser_post_authorized_adaccounts(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/authorized_adaccounts")
+	baseURL = FacebookGraphAPIBaseURL + "authorized_adaccounts"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

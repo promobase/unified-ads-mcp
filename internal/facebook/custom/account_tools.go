@@ -4,9 +4,8 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"net/http"
-	"net/url"
 
+	"unified-ads-mcp/internal/facebook/utils"
 	"unified-ads-mcp/internal/shared"
 
 	"github.com/mark3labs/mcp-go/mcp"
@@ -43,59 +42,49 @@ func HandleGetDefaultAdAccount(ctx context.Context, request mcp.CallToolRequest)
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok || accessToken == "" {
-		return nil, fmt.Errorf("no Facebook access token found in context")
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
-	// Parse parameters
-	fields := []string{"id", "name", "currency", "account_status", "balance", "spend_cap"}
+	// Build arguments map
+	args := make(map[string]interface{})
 
-	// Get fields parameter if provided (passed as JSON array string)
-	if fieldsStr := request.GetString("fields", ""); fieldsStr != "" {
-		var fieldsArray []string
-		if err := json.Unmarshal([]byte(fieldsStr), &fieldsArray); err == nil {
-			fields = fieldsArray
-		}
-	}
+	// Set default fields
+	args["fields"] = "id,name,currency,account_status,balance,spend_cap"
+	args["limit"] = 1 // Get only the first account as default
 
-	// Build URL to get user's ad accounts
-	baseURL := fmt.Sprintf("%s/me/adaccounts", FacebookGraphAPIBaseURL)
-	u, err := url.Parse(baseURL)
+	// Parse optional fields parameter
+	utils.ParseFieldsArray(request, args)
+
+	// Build URL
+	baseURL := FacebookGraphAPIBaseURL + "/me/adaccounts"
+
+	// Build URL parameters
+	urlParams := utils.BuildURLParams(accessToken, args)
+
+	// Execute API request
+	response, err := utils.ExecuteAPIRequest("GET", baseURL, urlParams)
 	if err != nil {
-		return nil, fmt.Errorf("failed to parse URL: %w", err)
+		return mcp.NewToolResultError(fmt.Sprintf("failed to get default ad account: %v", err)), nil
 	}
 
-	// Set query parameters
-	q := u.Query()
-	q.Set("access_token", accessToken)
-	q.Set("fields", joinFields(fields))
-	q.Set("limit", "1") // Get only the first account as default
-	u.RawQuery = q.Encode()
-
-	// Make HTTP request
-	resp, err := http.Get(u.String())
-	if err != nil {
-		return nil, fmt.Errorf("failed to make HTTP request: %w", err)
-	}
-	defer resp.Body.Close()
-
-	// Parse response
+	// Parse response based on type
 	var result struct {
-		Data  []map[string]interface{} `json:"data"`
-		Error *struct {
-			Message string `json:"message"`
-			Type    string `json:"type"`
-			Code    int    `json:"code"`
-		} `json:"error"`
+		Data []map[string]interface{} `json:"data"`
 	}
 
-	if err := json.NewDecoder(resp.Body).Decode(&result); err != nil {
-		return nil, fmt.Errorf("failed to decode response: %w", err)
-	}
-
-	// Check for API errors
-	if result.Error != nil {
-		return nil, fmt.Errorf("Facebook API error: %s (code: %d, type: %s)",
-			result.Error.Message, result.Error.Code, result.Error.Type)
+	// Handle different response types
+	switch resp := response.(type) {
+	case map[string]interface{}:
+		// Response is already a map, marshal and unmarshal to get into our struct
+		jsonData, _ := json.Marshal(resp)
+		if err := json.Unmarshal(jsonData, &result); err != nil {
+			return mcp.NewToolResultError(fmt.Sprintf("failed to parse response: %v", err)), nil
+		}
+	case string:
+		// Response is a string (non-JSON response)
+		return mcp.NewToolResultText(resp), nil
+	default:
+		return mcp.NewToolResultError(fmt.Sprintf("unexpected response type: %T", resp)), nil
 	}
 
 	// Check if user has any ad accounts
@@ -113,16 +102,4 @@ func HandleGetDefaultAdAccount(ctx context.Context, request mcp.CallToolRequest)
 	}
 
 	return mcp.NewToolResultText(string(jsonBytes)), nil
-}
-
-// joinFields joins field names into a comma-separated string
-func joinFields(fields []string) string {
-	if len(fields) == 0 {
-		return ""
-	}
-	result := fields[0]
-	for i := 1; i < len(fields); i++ {
-		result += "," + fields[i]
-	}
-	return result
 }

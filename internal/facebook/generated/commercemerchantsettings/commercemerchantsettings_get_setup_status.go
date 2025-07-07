@@ -75,7 +75,7 @@ func HandleCommercemerchantsettings_get_setup_status(ctx context.Context, reques
 func Commercemerchantsettings_get_setup_status(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/setup_status")
+	baseURL = FacebookGraphAPIBaseURL + "setup_status"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

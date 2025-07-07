@@ -75,7 +75,7 @@ func HandleBusiness_get_collaborative_ads_suggested_partners(ctx context.Context
 func Business_get_collaborative_ads_suggested_partners(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/collaborative_ads_suggested_partners")
+	baseURL = FacebookGraphAPIBaseURL + "collaborative_ads_suggested_partners"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

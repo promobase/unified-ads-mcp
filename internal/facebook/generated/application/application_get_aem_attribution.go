@@ -92,7 +92,7 @@ func HandleApplication_get_aem_attribution(ctx context.Context, request mcp.Call
 func Application_get_aem_attribution(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/aem_attribution")
+	baseURL = FacebookGraphAPIBaseURL + "aem_attribution"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

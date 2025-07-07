@@ -75,7 +75,7 @@ func HandleBusinessassetgroup_get_contained_adaccounts(ctx context.Context, requ
 func Businessassetgroup_get_contained_adaccounts(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/contained_adaccounts")
+	baseURL = FacebookGraphAPIBaseURL + "contained_adaccounts"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

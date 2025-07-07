@@ -91,7 +91,7 @@ func HandleProductfeed_get_media_titles(ctx context.Context, request mcp.CallToo
 func Productfeed_get_media_titles(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/media_titles")
+	baseURL = FacebookGraphAPIBaseURL + "media_titles"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

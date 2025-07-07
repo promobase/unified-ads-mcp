@@ -75,7 +75,7 @@ func HandleUser_get_custom_labels(ctx context.Context, request mcp.CallToolReque
 func User_get_custom_labels(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/custom_labels")
+	baseURL = FacebookGraphAPIBaseURL + "custom_labels"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

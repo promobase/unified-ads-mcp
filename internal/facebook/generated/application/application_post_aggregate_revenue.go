@@ -77,7 +77,7 @@ func HandleApplication_post_aggregate_revenue(ctx context.Context, request mcp.C
 func Application_post_aggregate_revenue(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/aggregate_revenue")
+	baseURL = FacebookGraphAPIBaseURL + "aggregate_revenue"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

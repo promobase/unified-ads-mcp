@@ -81,7 +81,7 @@ func HandleApplication_post_monetized_digital_store_objects(ctx context.Context,
 func Application_post_monetized_digital_store_objects(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/monetized_digital_store_objects")
+	baseURL = FacebookGraphAPIBaseURL + "monetized_digital_store_objects"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

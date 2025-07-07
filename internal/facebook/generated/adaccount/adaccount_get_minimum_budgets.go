@@ -101,7 +101,7 @@ func Adaccount_get_minimum_budgets(accessToken string, args map[string]interface
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_get_minimum_budgets")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%sminimum_budgets", accountId)
+	baseURL = fmt.Sprintf("%s/act_%sminimum_budgets", FacebookGraphAPIBaseURL, accountId)
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{

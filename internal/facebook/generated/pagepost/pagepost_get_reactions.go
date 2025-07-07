@@ -88,7 +88,7 @@ func HandlePagepost_get_reactions(ctx context.Context, request mcp.CallToolReque
 func Pagepost_get_reactions(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/reactions")
+	baseURL = FacebookGraphAPIBaseURL + "reactions"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

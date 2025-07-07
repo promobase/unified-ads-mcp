@@ -75,7 +75,7 @@ func HandleIguser_get_instagram_backed_threads_user(ctx context.Context, request
 func Iguser_get_instagram_backed_threads_user(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/instagram_backed_threads_user")
+	baseURL = FacebookGraphAPIBaseURL + "instagram_backed_threads_user"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

@@ -76,7 +76,7 @@ func HandleBusiness_delete_pages(ctx context.Context, request mcp.CallToolReques
 func Business_delete_pages(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/pages")
+	baseURL = FacebookGraphAPIBaseURL + "pages"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

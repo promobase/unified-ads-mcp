@@ -71,7 +71,7 @@ func HandleCustomaudience_post_users(ctx context.Context, request mcp.CallToolRe
 func Customaudience_post_users(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/users")
+	baseURL = FacebookGraphAPIBaseURL + "users"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

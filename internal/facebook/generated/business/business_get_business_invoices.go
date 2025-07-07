@@ -112,7 +112,7 @@ func HandleBusiness_get_business_invoices(ctx context.Context, request mcp.CallT
 func Business_get_business_invoices(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/business_invoices")
+	baseURL = FacebookGraphAPIBaseURL + "business_invoices"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

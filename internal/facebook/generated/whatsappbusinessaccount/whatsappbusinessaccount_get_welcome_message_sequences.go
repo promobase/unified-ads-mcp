@@ -91,7 +91,7 @@ func HandleWhatsappbusinessaccount_get_welcome_message_sequences(ctx context.Con
 func Whatsappbusinessaccount_get_welcome_message_sequences(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/welcome_message_sequences")
+	baseURL = FacebookGraphAPIBaseURL + "welcome_message_sequences"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

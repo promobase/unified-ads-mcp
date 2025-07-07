@@ -96,7 +96,7 @@ func HandleFundraiserpersontocharity_post_external_donations(ctx context.Context
 func Fundraiserpersontocharity_post_external_donations(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/external_donations")
+	baseURL = FacebookGraphAPIBaseURL + "external_donations"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

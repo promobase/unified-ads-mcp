@@ -75,7 +75,7 @@ func HandlePost_get_to(ctx context.Context, request mcp.CallToolRequest) (*mcp.C
 func Post_get_to(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/to")
+	baseURL = FacebookGraphAPIBaseURL + "to"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

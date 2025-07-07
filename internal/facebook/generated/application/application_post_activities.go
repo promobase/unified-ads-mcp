@@ -263,7 +263,7 @@ func HandleApplication_post_activities(ctx context.Context, request mcp.CallTool
 func Application_post_activities(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/activities")
+	baseURL = FacebookGraphAPIBaseURL + "activities"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

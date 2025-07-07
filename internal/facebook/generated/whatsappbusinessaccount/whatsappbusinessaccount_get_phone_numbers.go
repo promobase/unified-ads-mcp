@@ -74,7 +74,7 @@ func HandleWhatsappbusinessaccount_get_phone_numbers(ctx context.Context, reques
 func Whatsappbusinessaccount_get_phone_numbers(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/phone_numbers")
+	baseURL = FacebookGraphAPIBaseURL + "phone_numbers"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

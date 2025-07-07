@@ -100,7 +100,7 @@ func HandleIguserforigonlyapi_get_business_messaging_feature_status(ctx context.
 func Iguserforigonlyapi_get_business_messaging_feature_status(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/business_messaging_feature_status")
+	baseURL = FacebookGraphAPIBaseURL + "business_messaging_feature_status"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

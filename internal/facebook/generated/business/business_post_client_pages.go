@@ -82,7 +82,7 @@ func HandleBusiness_post_client_pages(ctx context.Context, request mcp.CallToolR
 func Business_post_client_pages(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/client_pages")
+	baseURL = FacebookGraphAPIBaseURL + "client_pages"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

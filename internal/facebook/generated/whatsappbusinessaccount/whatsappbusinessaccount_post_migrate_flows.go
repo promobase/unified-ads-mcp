@@ -81,7 +81,7 @@ func HandleWhatsappbusinessaccount_post_migrate_flows(ctx context.Context, reque
 func Whatsappbusinessaccount_post_migrate_flows(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/migrate_flows")
+	baseURL = FacebookGraphAPIBaseURL + "migrate_flows"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

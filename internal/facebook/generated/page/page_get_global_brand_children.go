@@ -75,7 +75,7 @@ func HandlePage_get_global_brand_children(ctx context.Context, request mcp.CallT
 func Page_get_global_brand_children(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/global_brand_children")
+	baseURL = FacebookGraphAPIBaseURL + "global_brand_children"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

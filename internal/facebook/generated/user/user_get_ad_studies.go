@@ -75,7 +75,7 @@ func HandleUser_get_ad_studies(ctx context.Context, request mcp.CallToolRequest)
 func User_get_ad_studies(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/ad_studies")
+	baseURL = FacebookGraphAPIBaseURL + "ad_studies"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

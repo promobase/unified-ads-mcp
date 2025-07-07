@@ -81,7 +81,7 @@ func HandleAdspixel_post_shared_accounts(ctx context.Context, request mcp.CallTo
 func Adspixel_post_shared_accounts(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/shared_accounts")
+	baseURL = FacebookGraphAPIBaseURL + "shared_accounts"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

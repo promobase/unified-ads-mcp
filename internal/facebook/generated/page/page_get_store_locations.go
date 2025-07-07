@@ -75,7 +75,7 @@ func HandlePage_get_store_locations(ctx context.Context, request mcp.CallToolReq
 func Page_get_store_locations(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/store_locations")
+	baseURL = FacebookGraphAPIBaseURL + "store_locations"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

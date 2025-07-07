@@ -63,7 +63,7 @@ func HandleWhatsappbusinessaccount_post_set_obo_mobility_intent(ctx context.Cont
 func Whatsappbusinessaccount_post_set_obo_mobility_intent(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/set_obo_mobility_intent")
+	baseURL = FacebookGraphAPIBaseURL + "set_obo_mobility_intent"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

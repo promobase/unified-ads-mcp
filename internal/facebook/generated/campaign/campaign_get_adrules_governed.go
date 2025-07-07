@@ -101,7 +101,7 @@ func Campaign_get_adrules_governed(accessToken string, args map[string]interface
 	if !ok {
 		return nil, fmt.Errorf("campaign_id is required for campaign_get_adrules_governed")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/%sadrules_governed", campaignId)
+	baseURL = fmt.Sprintf("%s/%sadrules_governed", FacebookGraphAPIBaseURL, campaignId)
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{

@@ -81,7 +81,7 @@ func HandleBusiness_post_system_user_access_tokens(ctx context.Context, request 
 func Business_post_system_user_access_tokens(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/system_user_access_tokens")
+	baseURL = FacebookGraphAPIBaseURL + "system_user_access_tokens"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

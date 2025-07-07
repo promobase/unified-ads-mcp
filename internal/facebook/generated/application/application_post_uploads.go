@@ -76,7 +76,7 @@ func HandleApplication_post_uploads(ctx context.Context, request mcp.CallToolReq
 func Application_post_uploads(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/uploads")
+	baseURL = FacebookGraphAPIBaseURL + "uploads"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

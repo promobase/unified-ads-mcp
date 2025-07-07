@@ -90,7 +90,7 @@ func HandleBusiness_post_access_token(ctx context.Context, request mcp.CallToolR
 func Business_post_access_token(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/access_token")
+	baseURL = FacebookGraphAPIBaseURL + "access_token"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

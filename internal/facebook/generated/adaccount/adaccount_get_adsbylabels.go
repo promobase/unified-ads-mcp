@@ -120,7 +120,7 @@ func Adaccount_get_adsbylabels(accessToken string, args map[string]interface{}) 
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_get_adsbylabels")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%sadsbylabels", accountId)
+	baseURL = fmt.Sprintf("%s/act_%sadsbylabels", FacebookGraphAPIBaseURL, accountId)
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{

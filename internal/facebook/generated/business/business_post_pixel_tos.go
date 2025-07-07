@@ -50,7 +50,7 @@ func HandleBusiness_post_pixel_tos(ctx context.Context, request mcp.CallToolRequ
 func Business_post_pixel_tos(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/pixel_tos")
+	baseURL = FacebookGraphAPIBaseURL + "pixel_tos"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

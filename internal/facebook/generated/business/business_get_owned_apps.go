@@ -75,7 +75,7 @@ func HandleBusiness_get_owned_apps(ctx context.Context, request mcp.CallToolRequ
 func Business_get_owned_apps(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/owned_apps")
+	baseURL = FacebookGraphAPIBaseURL + "owned_apps"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

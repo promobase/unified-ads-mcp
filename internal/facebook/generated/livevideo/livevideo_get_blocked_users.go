@@ -87,7 +87,7 @@ func HandleLivevideo_get_blocked_users(ctx context.Context, request mcp.CallTool
 func Livevideo_get_blocked_users(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/blocked_users")
+	baseURL = FacebookGraphAPIBaseURL + "blocked_users"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

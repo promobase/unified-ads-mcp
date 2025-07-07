@@ -75,7 +75,7 @@ func HandleEvent_get_ticket_tiers(ctx context.Context, request mcp.CallToolReque
 func Event_get_ticket_tiers(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/ticket_tiers")
+	baseURL = FacebookGraphAPIBaseURL + "ticket_tiers"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

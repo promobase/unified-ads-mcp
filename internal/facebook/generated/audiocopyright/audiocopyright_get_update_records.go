@@ -75,7 +75,7 @@ func HandleAudiocopyright_get_update_records(ctx context.Context, request mcp.Ca
 func Audiocopyright_get_update_records(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/update_records")
+	baseURL = FacebookGraphAPIBaseURL + "update_records"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

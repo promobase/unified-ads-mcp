@@ -75,7 +75,7 @@ func HandleOfflineconversiondataset_get_server_events_permitted_business(ctx con
 func Offlineconversiondataset_get_server_events_permitted_business(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/server_events_permitted_business")
+	baseURL = FacebookGraphAPIBaseURL + "server_events_permitted_business"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

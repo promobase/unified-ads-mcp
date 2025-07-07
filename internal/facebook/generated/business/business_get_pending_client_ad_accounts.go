@@ -75,7 +75,7 @@ func HandleBusiness_get_pending_client_ad_accounts(ctx context.Context, request 
 func Business_get_pending_client_ad_accounts(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/pending_client_ad_accounts")
+	baseURL = FacebookGraphAPIBaseURL + "pending_client_ad_accounts"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

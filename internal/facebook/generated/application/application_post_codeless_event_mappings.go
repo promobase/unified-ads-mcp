@@ -94,7 +94,7 @@ func HandleApplication_post_codeless_event_mappings(ctx context.Context, request
 func Application_post_codeless_event_mappings(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/codeless_event_mappings")
+	baseURL = FacebookGraphAPIBaseURL + "codeless_event_mappings"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

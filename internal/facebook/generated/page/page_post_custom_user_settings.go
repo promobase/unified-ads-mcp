@@ -81,7 +81,7 @@ func HandlePage_post_custom_user_settings(ctx context.Context, request mcp.CallT
 func Page_post_custom_user_settings(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/custom_user_settings")
+	baseURL = FacebookGraphAPIBaseURL + "custom_user_settings"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

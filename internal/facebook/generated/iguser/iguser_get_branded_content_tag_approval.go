@@ -101,7 +101,7 @@ func HandleIguser_get_branded_content_tag_approval(ctx context.Context, request 
 func Iguser_get_branded_content_tag_approval(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/branded_content_tag_approval")
+	baseURL = FacebookGraphAPIBaseURL + "branded_content_tag_approval"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

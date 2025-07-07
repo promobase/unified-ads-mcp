@@ -77,7 +77,7 @@ func Adaccount_delete_subscribed_apps(accessToken string, args map[string]interf
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_delete_subscribed_apps")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%ssubscribed_apps", accountId)
+	baseURL = fmt.Sprintf("%s/act_%ssubscribed_apps", FacebookGraphAPIBaseURL, accountId)
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{

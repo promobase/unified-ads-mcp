@@ -368,7 +368,7 @@ func HandleProductgroup_post_products(ctx context.Context, request mcp.CallToolR
 func Productgroup_post_products(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/products")
+	baseURL = FacebookGraphAPIBaseURL + "products"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

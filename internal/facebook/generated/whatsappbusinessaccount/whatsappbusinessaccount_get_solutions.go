@@ -74,7 +74,7 @@ func HandleWhatsappbusinessaccount_get_solutions(ctx context.Context, request mc
 func Whatsappbusinessaccount_get_solutions(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/solutions")
+	baseURL = FacebookGraphAPIBaseURL + "solutions"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

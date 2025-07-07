@@ -75,7 +75,7 @@ func HandlePage_get_messaging_feature_review(ctx context.Context, request mcp.Ca
 func Page_get_messaging_feature_review(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/messaging_feature_review")
+	baseURL = FacebookGraphAPIBaseURL + "messaging_feature_review"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

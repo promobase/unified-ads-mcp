@@ -141,7 +141,7 @@ func HandleProductcatalog_post_home_listings(ctx context.Context, request mcp.Ca
 func Productcatalog_post_home_listings(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/home_listings")
+	baseURL = FacebookGraphAPIBaseURL + "home_listings"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

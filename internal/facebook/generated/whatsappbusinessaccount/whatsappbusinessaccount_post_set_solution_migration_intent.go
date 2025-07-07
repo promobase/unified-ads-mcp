@@ -67,7 +67,7 @@ func HandleWhatsappbusinessaccount_post_set_solution_migration_intent(ctx contex
 func Whatsappbusinessaccount_post_set_solution_migration_intent(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/set_solution_migration_intent")
+	baseURL = FacebookGraphAPIBaseURL + "set_solution_migration_intent"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

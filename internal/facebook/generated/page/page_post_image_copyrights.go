@@ -116,7 +116,7 @@ func HandlePage_post_image_copyrights(ctx context.Context, request mcp.CallToolR
 func Page_post_image_copyrights(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/image_copyrights")
+	baseURL = FacebookGraphAPIBaseURL + "image_copyrights"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

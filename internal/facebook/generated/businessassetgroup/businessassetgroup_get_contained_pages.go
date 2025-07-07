@@ -75,7 +75,7 @@ func HandleBusinessassetgroup_get_contained_pages(ctx context.Context, request m
 func Businessassetgroup_get_contained_pages(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/contained_pages")
+	baseURL = FacebookGraphAPIBaseURL + "contained_pages"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

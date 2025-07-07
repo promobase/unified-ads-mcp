@@ -87,7 +87,7 @@ func HandleApplication_get_adnetwork_placements(ctx context.Context, request mcp
 func Application_get_adnetwork_placements(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/adnetwork_placements")
+	baseURL = FacebookGraphAPIBaseURL + "adnetwork_placements"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

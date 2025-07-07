@@ -91,7 +91,7 @@ func HandleIguserforigonlyapi_get_media(ctx context.Context, request mcp.CallToo
 func Iguserforigonlyapi_get_media(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/media")
+	baseURL = FacebookGraphAPIBaseURL + "media"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

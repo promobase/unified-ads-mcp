@@ -76,7 +76,7 @@ func HandleBusiness_post_claim_custom_conversions(ctx context.Context, request m
 func Business_post_claim_custom_conversions(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/claim_custom_conversions")
+	baseURL = FacebookGraphAPIBaseURL + "claim_custom_conversions"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

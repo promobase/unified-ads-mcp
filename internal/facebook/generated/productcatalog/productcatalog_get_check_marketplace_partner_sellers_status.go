@@ -100,7 +100,7 @@ func HandleProductcatalog_get_check_marketplace_partner_sellers_status(ctx conte
 func Productcatalog_get_check_marketplace_partner_sellers_status(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/check_marketplace_partner_sellers_status")
+	baseURL = FacebookGraphAPIBaseURL + "check_marketplace_partner_sellers_status"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

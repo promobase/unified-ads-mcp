@@ -85,7 +85,7 @@ func HandleApplication_post_assets(ctx context.Context, request mcp.CallToolRequ
 func Application_post_assets(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/assets")
+	baseURL = FacebookGraphAPIBaseURL + "assets"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

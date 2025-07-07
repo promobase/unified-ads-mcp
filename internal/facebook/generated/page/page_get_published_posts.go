@@ -100,7 +100,7 @@ func HandlePage_get_published_posts(ctx context.Context, request mcp.CallToolReq
 func Page_get_published_posts(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/published_posts")
+	baseURL = FacebookGraphAPIBaseURL + "published_posts"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

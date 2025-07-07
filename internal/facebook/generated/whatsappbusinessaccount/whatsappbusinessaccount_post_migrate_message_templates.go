@@ -80,7 +80,7 @@ func HandleWhatsappbusinessaccount_post_migrate_message_templates(ctx context.Co
 func Whatsappbusinessaccount_post_migrate_message_templates(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/migrate_message_templates")
+	baseURL = FacebookGraphAPIBaseURL + "migrate_message_templates"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

@@ -80,7 +80,7 @@ func HandleWhatsappbusinessaccount_post_generate_payment_configuration_oauth_lin
 func Whatsappbusinessaccount_post_generate_payment_configuration_oauth_link(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/generate_payment_configuration_oauth_link")
+	baseURL = FacebookGraphAPIBaseURL + "generate_payment_configuration_oauth_link"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

@@ -106,7 +106,7 @@ func HandlePage_post_copyright_manual_claims(ctx context.Context, request mcp.Ca
 func Page_post_copyright_manual_claims(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/copyright_manual_claims")
+	baseURL = FacebookGraphAPIBaseURL + "copyright_manual_claims"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

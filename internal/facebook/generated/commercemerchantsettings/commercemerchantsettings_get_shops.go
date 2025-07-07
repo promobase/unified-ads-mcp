@@ -75,7 +75,7 @@ func HandleCommercemerchantsettings_get_shops(ctx context.Context, request mcp.C
 func Commercemerchantsettings_get_shops(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/shops")
+	baseURL = FacebookGraphAPIBaseURL + "shops"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

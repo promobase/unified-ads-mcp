@@ -114,7 +114,7 @@ func Adaccount_get_ios_fourteen_campaign_limits(accessToken string, args map[str
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_get_ios_fourteen_campaign_limits")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%sios_fourteen_campaign_limits", accountId)
+	baseURL = fmt.Sprintf("%s/act_%sios_fourteen_campaign_limits", FacebookGraphAPIBaseURL, accountId)
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{

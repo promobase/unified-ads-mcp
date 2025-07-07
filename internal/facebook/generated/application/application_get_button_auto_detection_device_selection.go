@@ -87,7 +87,7 @@ func HandleApplication_get_button_auto_detection_device_selection(ctx context.Co
 func Application_get_button_auto_detection_device_selection(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/button_auto_detection_device_selection")
+	baseURL = FacebookGraphAPIBaseURL + "button_auto_detection_device_selection"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

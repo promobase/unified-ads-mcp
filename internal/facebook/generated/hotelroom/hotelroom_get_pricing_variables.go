@@ -75,7 +75,7 @@ func HandleHotelroom_get_pricing_variables(ctx context.Context, request mcp.Call
 func Hotelroom_get_pricing_variables(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/pricing_variables")
+	baseURL = FacebookGraphAPIBaseURL + "pricing_variables"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

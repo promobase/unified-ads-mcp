@@ -75,7 +75,7 @@ func HandleBusiness_get_owned_product_catalogs(ctx context.Context, request mcp.
 func Business_get_owned_product_catalogs(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/owned_product_catalogs")
+	baseURL = FacebookGraphAPIBaseURL + "owned_product_catalogs"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

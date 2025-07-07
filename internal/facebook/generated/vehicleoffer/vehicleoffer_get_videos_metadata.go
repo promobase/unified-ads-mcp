@@ -75,7 +75,7 @@ func HandleVehicleoffer_get_videos_metadata(ctx context.Context, request mcp.Cal
 func Vehicleoffer_get_videos_metadata(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/videos_metadata")
+	baseURL = FacebookGraphAPIBaseURL + "videos_metadata"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

@@ -88,7 +88,7 @@ func HandleAdmonetizationproperty_get_adnetworkanalytics_results(ctx context.Con
 func Admonetizationproperty_get_adnetworkanalytics_results(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/adnetworkanalytics_results")
+	baseURL = FacebookGraphAPIBaseURL + "adnetworkanalytics_results"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

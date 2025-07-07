@@ -75,7 +75,7 @@ func HandleLivevideo_get_errors(ctx context.Context, request mcp.CallToolRequest
 func Livevideo_get_errors(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/errors")
+	baseURL = FacebookGraphAPIBaseURL + "errors"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

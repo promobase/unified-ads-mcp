@@ -75,7 +75,7 @@ func HandlePage_get_page_backed_instagram_accounts(ctx context.Context, request 
 func Page_get_page_backed_instagram_accounts(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/page_backed_instagram_accounts")
+	baseURL = FacebookGraphAPIBaseURL + "page_backed_instagram_accounts"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

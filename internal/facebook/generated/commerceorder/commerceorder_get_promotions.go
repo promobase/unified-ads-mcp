@@ -74,7 +74,7 @@ func HandleCommerceorder_get_promotions(ctx context.Context, request mcp.CallToo
 func Commerceorder_get_promotions(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/promotions")
+	baseURL = FacebookGraphAPIBaseURL + "promotions"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

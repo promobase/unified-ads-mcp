@@ -87,7 +87,7 @@ func HandleIguser_get_content_publishing_limit(ctx context.Context, request mcp.
 func Iguser_get_content_publishing_limit(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/content_publishing_limit")
+	baseURL = FacebookGraphAPIBaseURL + "content_publishing_limit"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

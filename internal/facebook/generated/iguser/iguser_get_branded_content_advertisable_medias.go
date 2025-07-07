@@ -104,7 +104,7 @@ func HandleIguser_get_branded_content_advertisable_medias(ctx context.Context, r
 func Iguser_get_branded_content_advertisable_medias(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/branded_content_advertisable_medias")
+	baseURL = FacebookGraphAPIBaseURL + "branded_content_advertisable_medias"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

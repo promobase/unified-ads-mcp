@@ -101,7 +101,7 @@ func Adaccount_get_connected_instagram_accounts_with_iabp(accessToken string, ar
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_get_connected_instagram_accounts_with_iabp")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%sconnected_instagram_accounts_with_iabp", accountId)
+	baseURL = fmt.Sprintf("%s/act_%sconnected_instagram_accounts_with_iabp", FacebookGraphAPIBaseURL, accountId)
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{

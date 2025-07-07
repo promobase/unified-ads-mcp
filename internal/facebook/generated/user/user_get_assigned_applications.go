@@ -75,7 +75,7 @@ func HandleUser_get_assigned_applications(ctx context.Context, request mcp.CallT
 func User_get_assigned_applications(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/assigned_applications")
+	baseURL = FacebookGraphAPIBaseURL + "assigned_applications"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

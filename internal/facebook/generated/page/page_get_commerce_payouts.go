@@ -91,7 +91,7 @@ func HandlePage_get_commerce_payouts(ctx context.Context, request mcp.CallToolRe
 func Page_get_commerce_payouts(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/commerce_payouts")
+	baseURL = FacebookGraphAPIBaseURL + "commerce_payouts"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

@@ -74,7 +74,7 @@ func HandleAdvideo_get_poll_settings(ctx context.Context, request mcp.CallToolRe
 func Advideo_get_poll_settings(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/poll_settings")
+	baseURL = FacebookGraphAPIBaseURL + "poll_settings"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

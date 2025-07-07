@@ -93,7 +93,7 @@ func HandleAdspixel_get_da_checks(ctx context.Context, request mcp.CallToolReque
 func Adspixel_get_da_checks(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/da_checks")
+	baseURL = FacebookGraphAPIBaseURL + "da_checks"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

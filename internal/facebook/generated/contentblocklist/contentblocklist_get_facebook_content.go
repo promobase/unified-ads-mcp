@@ -74,7 +74,7 @@ func HandleContentblocklist_get_facebook_content(ctx context.Context, request mc
 func Contentblocklist_get_facebook_content(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/facebook_content")
+	baseURL = FacebookGraphAPIBaseURL + "facebook_content"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

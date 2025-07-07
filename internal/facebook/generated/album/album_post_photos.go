@@ -266,7 +266,7 @@ func HandleAlbum_post_photos(ctx context.Context, request mcp.CallToolRequest) (
 func Album_post_photos(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/photos")
+	baseURL = FacebookGraphAPIBaseURL + "photos"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

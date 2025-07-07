@@ -110,7 +110,7 @@ func HandlePage_post_video_reels(ctx context.Context, request mcp.CallToolReques
 func Page_post_video_reels(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/video_reels")
+	baseURL = FacebookGraphAPIBaseURL + "video_reels"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

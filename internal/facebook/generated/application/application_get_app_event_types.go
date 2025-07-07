@@ -74,7 +74,7 @@ func HandleApplication_get_app_event_types(ctx context.Context, request mcp.Call
 func Application_get_app_event_types(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/app_event_types")
+	baseURL = FacebookGraphAPIBaseURL + "app_event_types"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

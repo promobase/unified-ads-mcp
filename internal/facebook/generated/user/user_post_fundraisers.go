@@ -135,7 +135,7 @@ func HandleUser_post_fundraisers(ctx context.Context, request mcp.CallToolReques
 func User_post_fundraisers(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/fundraisers")
+	baseURL = FacebookGraphAPIBaseURL + "fundraisers"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

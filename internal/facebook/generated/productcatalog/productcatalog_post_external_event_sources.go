@@ -63,7 +63,7 @@ func HandleProductcatalog_post_external_event_sources(ctx context.Context, reque
 func Productcatalog_post_external_event_sources(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/external_event_sources")
+	baseURL = FacebookGraphAPIBaseURL + "external_event_sources"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

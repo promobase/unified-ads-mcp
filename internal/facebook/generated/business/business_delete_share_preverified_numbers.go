@@ -81,7 +81,7 @@ func HandleBusiness_delete_share_preverified_numbers(ctx context.Context, reques
 func Business_delete_share_preverified_numbers(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/share_preverified_numbers")
+	baseURL = FacebookGraphAPIBaseURL + "share_preverified_numbers"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

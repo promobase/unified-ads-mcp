@@ -83,7 +83,7 @@ func HandleProductcatalog_post_assigned_users(ctx context.Context, request mcp.C
 func Productcatalog_post_assigned_users(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/assigned_users")
+	baseURL = FacebookGraphAPIBaseURL + "assigned_users"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

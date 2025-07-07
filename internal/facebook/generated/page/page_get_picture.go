@@ -100,7 +100,7 @@ func HandlePage_get_picture(ctx context.Context, request mcp.CallToolRequest) (*
 func Page_get_picture(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/picture")
+	baseURL = FacebookGraphAPIBaseURL + "picture"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

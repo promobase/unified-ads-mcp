@@ -76,7 +76,7 @@ func HandleBusiness_post_block_list_drafts(ctx context.Context, request mcp.Call
 func Business_post_block_list_drafts(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/block_list_drafts")
+	baseURL = FacebookGraphAPIBaseURL + "block_list_drafts"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

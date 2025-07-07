@@ -87,7 +87,7 @@ func HandleApplication_get_app_installed_groups(ctx context.Context, request mcp
 func Application_get_app_installed_groups(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/app_installed_groups")
+	baseURL = FacebookGraphAPIBaseURL + "app_installed_groups"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

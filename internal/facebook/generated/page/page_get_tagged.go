@@ -75,7 +75,7 @@ func HandlePage_get_tagged(ctx context.Context, request mcp.CallToolRequest) (*m
 func Page_get_tagged(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/tagged")
+	baseURL = FacebookGraphAPIBaseURL + "tagged"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

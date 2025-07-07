@@ -119,7 +119,7 @@ func HandleGroup_post_groups(ctx context.Context, request mcp.CallToolRequest) (
 func Group_post_groups(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/groups")
+	baseURL = FacebookGraphAPIBaseURL + "groups"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

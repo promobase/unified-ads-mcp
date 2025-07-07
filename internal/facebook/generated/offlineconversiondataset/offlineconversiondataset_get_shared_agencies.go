@@ -101,7 +101,7 @@ func HandleOfflineconversiondataset_get_shared_agencies(ctx context.Context, req
 func Offlineconversiondataset_get_shared_agencies(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/shared_agencies")
+	baseURL = FacebookGraphAPIBaseURL + "shared_agencies"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

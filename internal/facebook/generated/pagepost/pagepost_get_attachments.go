@@ -74,7 +74,7 @@ func HandlePagepost_get_attachments(ctx context.Context, request mcp.CallToolReq
 func Pagepost_get_attachments(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/attachments")
+	baseURL = FacebookGraphAPIBaseURL + "attachments"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

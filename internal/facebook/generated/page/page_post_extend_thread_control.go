@@ -80,7 +80,7 @@ func HandlePage_post_extend_thread_control(ctx context.Context, request mcp.Call
 func Page_post_extend_thread_control(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/extend_thread_control")
+	baseURL = FacebookGraphAPIBaseURL + "extend_thread_control"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

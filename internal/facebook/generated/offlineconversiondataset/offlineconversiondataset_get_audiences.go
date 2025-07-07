@@ -92,7 +92,7 @@ func HandleOfflineconversiondataset_get_audiences(ctx context.Context, request m
 func Offlineconversiondataset_get_audiences(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/audiences")
+	baseURL = FacebookGraphAPIBaseURL + "audiences"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

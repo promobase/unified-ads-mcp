@@ -81,7 +81,7 @@ func HandleIguser_post_product_appeal(ctx context.Context, request mcp.CallToolR
 func Iguser_post_product_appeal(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/product_appeal")
+	baseURL = FacebookGraphAPIBaseURL + "product_appeal"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

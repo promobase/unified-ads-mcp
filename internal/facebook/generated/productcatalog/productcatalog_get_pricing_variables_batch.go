@@ -100,7 +100,7 @@ func HandleProductcatalog_get_pricing_variables_batch(ctx context.Context, reque
 func Productcatalog_get_pricing_variables_batch(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/pricing_variables_batch")
+	baseURL = FacebookGraphAPIBaseURL + "pricing_variables_batch"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

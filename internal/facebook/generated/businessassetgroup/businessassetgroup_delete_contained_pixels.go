@@ -76,7 +76,7 @@ func HandleBusinessassetgroup_delete_contained_pixels(ctx context.Context, reque
 func Businessassetgroup_delete_contained_pixels(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/contained_pixels")
+	baseURL = FacebookGraphAPIBaseURL + "contained_pixels"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

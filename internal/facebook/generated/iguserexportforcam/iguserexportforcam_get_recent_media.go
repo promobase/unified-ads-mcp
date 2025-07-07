@@ -74,7 +74,7 @@ func HandleIguserexportforcam_get_recent_media(ctx context.Context, request mcp.
 func Iguserexportforcam_get_recent_media(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/recent_media")
+	baseURL = FacebookGraphAPIBaseURL + "recent_media"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

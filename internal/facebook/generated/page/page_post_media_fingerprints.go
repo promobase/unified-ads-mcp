@@ -96,7 +96,7 @@ func HandlePage_post_media_fingerprints(ctx context.Context, request mcp.CallToo
 func Page_post_media_fingerprints(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/media_fingerprints")
+	baseURL = FacebookGraphAPIBaseURL + "media_fingerprints"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

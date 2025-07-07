@@ -112,7 +112,7 @@ func HandleIgmedia_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 func Igmedia_get_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+	baseURL = FacebookGraphAPIBaseURL + ""
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

@@ -74,7 +74,7 @@ func HandleCommerceordertransactiondetail_get_items(ctx context.Context, request
 func Commerceordertransactiondetail_get_items(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/items")
+	baseURL = FacebookGraphAPIBaseURL + "items"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

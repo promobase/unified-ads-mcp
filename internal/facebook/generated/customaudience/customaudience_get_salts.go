@@ -88,7 +88,7 @@ func HandleCustomaudience_get_salts(ctx context.Context, request mcp.CallToolReq
 func Customaudience_get_salts(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/salts")
+	baseURL = FacebookGraphAPIBaseURL + "salts"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

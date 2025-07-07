@@ -87,7 +87,7 @@ func HandleCustomaudience_get_sessions(ctx context.Context, request mcp.CallTool
 func Customaudience_get_sessions(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/sessions")
+	baseURL = FacebookGraphAPIBaseURL + "sessions"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

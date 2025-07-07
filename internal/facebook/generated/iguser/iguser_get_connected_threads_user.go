@@ -75,7 +75,7 @@ func HandleIguser_get_connected_threads_user(ctx context.Context, request mcp.Ca
 func Iguser_get_connected_threads_user(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/connected_threads_user")
+	baseURL = FacebookGraphAPIBaseURL + "connected_threads_user"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

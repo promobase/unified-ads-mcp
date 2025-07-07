@@ -75,7 +75,7 @@ func HandleProductfeed_get_upload_schedules(ctx context.Context, request mcp.Cal
 func Productfeed_get_upload_schedules(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/upload_schedules")
+	baseURL = FacebookGraphAPIBaseURL + "upload_schedules"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

@@ -75,7 +75,7 @@ func HandleAdvideo_get_thumbnails(ctx context.Context, request mcp.CallToolReque
 func Advideo_get_thumbnails(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/thumbnails")
+	baseURL = FacebookGraphAPIBaseURL + "thumbnails"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

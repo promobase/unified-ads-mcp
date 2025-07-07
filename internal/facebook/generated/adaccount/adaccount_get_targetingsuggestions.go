@@ -153,7 +153,7 @@ func Adaccount_get_targetingsuggestions(accessToken string, args map[string]inte
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_get_targetingsuggestions")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%stargetingsuggestions", accountId)
+	baseURL = fmt.Sprintf("%s/act_%stargetingsuggestions", FacebookGraphAPIBaseURL, accountId)
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{

@@ -89,7 +89,7 @@ func Adaccount_get_impacting_ad_studies(accessToken string, args map[string]inte
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_get_impacting_ad_studies")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%simpacting_ad_studies", accountId)
+	baseURL = fmt.Sprintf("%s/act_%simpacting_ad_studies", FacebookGraphAPIBaseURL, accountId)
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{

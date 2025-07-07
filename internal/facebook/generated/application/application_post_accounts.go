@@ -89,7 +89,7 @@ func HandleApplication_post_accounts(ctx context.Context, request mcp.CallToolRe
 func Application_post_accounts(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/accounts")
+	baseURL = FacebookGraphAPIBaseURL + "accounts"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

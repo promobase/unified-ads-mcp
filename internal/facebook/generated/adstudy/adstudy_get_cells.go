@@ -75,7 +75,7 @@ func HandleAdstudy_get_cells(ctx context.Context, request mcp.CallToolRequest) (
 func Adstudy_get_cells(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/cells")
+	baseURL = FacebookGraphAPIBaseURL + "cells"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

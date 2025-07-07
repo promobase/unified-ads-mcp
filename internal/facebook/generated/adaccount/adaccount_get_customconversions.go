@@ -89,7 +89,7 @@ func Adaccount_get_customconversions(accessToken string, args map[string]interfa
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_get_customconversions")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%scustomconversions", accountId)
+	baseURL = fmt.Sprintf("%s/act_%scustomconversions", FacebookGraphAPIBaseURL, accountId)
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{

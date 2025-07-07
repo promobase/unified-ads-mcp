@@ -84,7 +84,7 @@ func HandlePage_post_moderate_conversations(ctx context.Context, request mcp.Cal
 func Page_post_moderate_conversations(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/moderate_conversations")
+	baseURL = FacebookGraphAPIBaseURL + "moderate_conversations"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

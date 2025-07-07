@@ -75,7 +75,7 @@ func HandleGroup_get_opted_in_members(ctx context.Context, request mcp.CallToolR
 func Group_get_opted_in_members(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/opted_in_members")
+	baseURL = FacebookGraphAPIBaseURL + "opted_in_members"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

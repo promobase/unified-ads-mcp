@@ -75,7 +75,7 @@ func HandleBusiness_get_creditcards(ctx context.Context, request mcp.CallToolReq
 func Business_get_creditcards(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/creditcards")
+	baseURL = FacebookGraphAPIBaseURL + "creditcards"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

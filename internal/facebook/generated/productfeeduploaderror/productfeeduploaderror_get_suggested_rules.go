@@ -75,7 +75,7 @@ func HandleProductfeeduploaderror_get_suggested_rules(ctx context.Context, reque
 func Productfeeduploaderror_get_suggested_rules(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/suggested_rules")
+	baseURL = FacebookGraphAPIBaseURL + "suggested_rules"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

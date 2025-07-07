@@ -63,7 +63,7 @@ func HandleUser_delete_permissions(ctx context.Context, request mcp.CallToolRequ
 func User_delete_permissions(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/permissions")
+	baseURL = FacebookGraphAPIBaseURL + "permissions"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

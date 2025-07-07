@@ -75,7 +75,7 @@ func HandleLeadgenform_get_leads(ctx context.Context, request mcp.CallToolReques
 func Leadgenform_get_leads(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/leads")
+	baseURL = FacebookGraphAPIBaseURL + "leads"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

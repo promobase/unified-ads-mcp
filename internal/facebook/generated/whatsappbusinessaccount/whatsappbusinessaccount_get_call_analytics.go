@@ -139,7 +139,7 @@ func HandleWhatsappbusinessaccount_get_call_analytics(ctx context.Context, reque
 func Whatsappbusinessaccount_get_call_analytics(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/call_analytics")
+	baseURL = FacebookGraphAPIBaseURL + "call_analytics"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

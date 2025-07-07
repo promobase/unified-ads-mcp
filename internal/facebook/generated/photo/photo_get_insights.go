@@ -106,7 +106,7 @@ func HandlePhoto_get_insights(ctx context.Context, request mcp.CallToolRequest) 
 func Photo_get_insights(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/insights")
+	baseURL = FacebookGraphAPIBaseURL + "insights"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

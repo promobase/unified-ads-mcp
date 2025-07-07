@@ -50,7 +50,7 @@ func HandleWhatsappbusinessprofile_post_(ctx context.Context, request mcp.CallTo
 func Whatsappbusinessprofile_post_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+	baseURL = FacebookGraphAPIBaseURL + ""
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

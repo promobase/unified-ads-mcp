@@ -112,7 +112,7 @@ func HandleBusiness_post_self_certify_whatsapp_business(ctx context.Context, req
 func Business_post_self_certify_whatsapp_business(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/self_certify_whatsapp_business")
+	baseURL = FacebookGraphAPIBaseURL + "self_certify_whatsapp_business"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

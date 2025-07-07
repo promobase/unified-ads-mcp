@@ -50,7 +50,7 @@ func HandleIgmedia_post_partnership_ad_code(ctx context.Context, request mcp.Cal
 func Igmedia_post_partnership_ad_code(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/partnership_ad_code")
+	baseURL = FacebookGraphAPIBaseURL + "partnership_ad_code"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

@@ -75,7 +75,7 @@ func HandleIguser_get_available_catalogs(ctx context.Context, request mcp.CallTo
 func Iguser_get_available_catalogs(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/available_catalogs")
+	baseURL = FacebookGraphAPIBaseURL + "available_catalogs"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

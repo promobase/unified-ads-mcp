@@ -99,7 +99,7 @@ func HandleBusiness_post_partner_premium_options(ctx context.Context, request mc
 func Business_post_partner_premium_options(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/partner_premium_options")
+	baseURL = FacebookGraphAPIBaseURL + "partner_premium_options"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

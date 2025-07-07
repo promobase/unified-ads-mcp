@@ -94,7 +94,7 @@ func HandleProductcatalog_post_version_items_batch(ctx context.Context, request 
 func Productcatalog_post_version_items_batch(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/version_items_batch")
+	baseURL = FacebookGraphAPIBaseURL + "version_items_batch"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

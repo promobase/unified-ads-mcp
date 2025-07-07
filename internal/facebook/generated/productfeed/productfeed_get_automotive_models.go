@@ -91,7 +91,7 @@ func HandleProductfeed_get_automotive_models(ctx context.Context, request mcp.Ca
 func Productfeed_get_automotive_models(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/automotive_models")
+	baseURL = FacebookGraphAPIBaseURL + "automotive_models"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

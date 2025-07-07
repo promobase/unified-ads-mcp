@@ -93,7 +93,7 @@ func HandleCommerceorder_get_returns(ctx context.Context, request mcp.CallToolRe
 func Commerceorder_get_returns(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/returns")
+	baseURL = FacebookGraphAPIBaseURL + "returns"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

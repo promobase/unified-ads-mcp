@@ -75,7 +75,7 @@ func HandleProductcatalog_get_version_configs(ctx context.Context, request mcp.C
 func Productcatalog_get_version_configs(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/version_configs")
+	baseURL = FacebookGraphAPIBaseURL + "version_configs"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

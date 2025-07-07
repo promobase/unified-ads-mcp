@@ -75,7 +75,7 @@ func HandleBusinessassetgroup_get_contained_product_catalogs(ctx context.Context
 func Businessassetgroup_get_contained_product_catalogs(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/contained_product_catalogs")
+	baseURL = FacebookGraphAPIBaseURL + "contained_product_catalogs"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}
