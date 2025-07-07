@@ -4,43 +4,43 @@ package constants
 
 // AdSavedReportFields contains field name constants for AdSavedReport objects
 var AdSavedReportFields = struct {
-	AppOwner string
-	Breakdowns string
-	BuiltinColumnSet string
-	CreationSource string
-	DateInterval string
-	DatePreset string
-	FormatVersion string
-	Id string
-	InsightsSection string
-	IsSharedUnread string
-	Level string
-	Name string
-	NormalizedFilter string
-	Sort string
+	AppOwner               string
+	Breakdowns             string
+	BuiltinColumnSet       string
+	CreationSource         string
+	DateInterval           string
+	DatePreset             string
+	FormatVersion          string
+	Id                     string
+	InsightsSection        string
+	IsSharedUnread         string
+	Level                  string
+	Name                   string
+	NormalizedFilter       string
+	Sort                   string
 	UserAttributionWindows string
-	UserColumns string
-	UserFilter string
-	UserOwner string
+	UserColumns            string
+	UserFilter             string
+	UserOwner              string
 }{
-	AppOwner: "app_owner",
-	Breakdowns: "breakdowns",
-	BuiltinColumnSet: "builtin_column_set",
-	CreationSource: "creation_source",
-	DateInterval: "date_interval",
-	DatePreset: "date_preset",
-	FormatVersion: "format_version",
-	Id: "id",
-	InsightsSection: "insights_section",
-	IsSharedUnread: "is_shared_unread",
-	Level: "level",
-	Name: "name",
-	NormalizedFilter: "normalized_filter",
-	Sort: "sort",
+	AppOwner:               "app_owner",
+	Breakdowns:             "breakdowns",
+	BuiltinColumnSet:       "builtin_column_set",
+	CreationSource:         "creation_source",
+	DateInterval:           "date_interval",
+	DatePreset:             "date_preset",
+	FormatVersion:          "format_version",
+	Id:                     "id",
+	InsightsSection:        "insights_section",
+	IsSharedUnread:         "is_shared_unread",
+	Level:                  "level",
+	Name:                   "name",
+	NormalizedFilter:       "normalized_filter",
+	Sort:                   "sort",
 	UserAttributionWindows: "user_attribution_windows",
-	UserColumns: "user_columns",
-	UserFilter: "user_filter",
-	UserOwner: "user_owner",
+	UserColumns:            "user_columns",
+	UserFilter:             "user_filter",
+	UserOwner:              "user_owner",
 }
 
 // AdSavedReportFieldsList contains all available fields for AdSavedReport objects

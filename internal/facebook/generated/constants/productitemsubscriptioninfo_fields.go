@@ -4,13 +4,13 @@ package constants
 
 // ProductItemSubscriptionInfoFields contains field name constants for ProductItemSubscriptionInfo objects
 var ProductItemSubscriptionInfoFields = struct {
-	IsSubscribable string
+	IsSubscribable            string
 	SubscriptionBillingPeriod string
-	SubscriptionBillingType string
+	SubscriptionBillingType   string
 }{
-	IsSubscribable: "is_subscribable",
+	IsSubscribable:            "is_subscribable",
 	SubscriptionBillingPeriod: "subscription_billing_period",
-	SubscriptionBillingType: "subscription_billing_type",
+	SubscriptionBillingType:   "subscription_billing_type",
 }
 
 // ProductItemSubscriptionInfoFieldsList contains all available fields for ProductItemSubscriptionInfo objects

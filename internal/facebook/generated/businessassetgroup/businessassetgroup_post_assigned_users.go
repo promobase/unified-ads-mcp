@@ -15,7 +15,7 @@ import (
 
 // ToolBusinessassetgroup_post_assigned_users returns the MCP tool definition for businessassetgroup_post_assigned_users
 func ToolBusinessassetgroup_post_assigned_users() mcp.Tool {
-	
+
 	// Params object accepts: adaccount_tasks (list<businessassetgroupassigned_users_adaccount_tasks_enum_param>), offline_conversion_data_set_tasks (list<businessassetgroupassigned_users_offline_conversion_data_set_tasks_enum_param>), page_tasks (list<businessassetgroupassigned_users_page_tasks_enum_param>), pixel_tasks (list<businessassetgroupassigned_users_pixel_tasks_enum_param>), user (int)
 	return mcp.NewTool("businessassetgroup_post_assigned_users",
 		mcp.WithDescription("POST assigned_users for BusinessAssetGroup"),
@@ -23,33 +23,33 @@ func ToolBusinessassetgroup_post_assigned_users() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"adaccount_tasks": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "adaccount_tasks parameter",
-					"enum": []string{ "AA_ANALYZE", "ADVERTISE", "ANALYZE", "DRAFT", "MANAGE" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"AA_ANALYZE", "ADVERTISE", "ANALYZE", "DRAFT", "MANAGE"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"offline_conversion_data_set_tasks": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "offline_conversion_data_set_tasks parameter",
-					"enum": []string{ "AA_ANALYZE", "ADVERTISE", "MANAGE", "UPLOAD", "VIEW" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"AA_ANALYZE", "ADVERTISE", "MANAGE", "UPLOAD", "VIEW"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"page_tasks": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "page_tasks parameter",
-					"enum": []string{ "ADVERTISE", "ANALYZE", "CASHIER_ROLE", "CREATE_CONTENT", "GLOBAL_STRUCTURE_MANAGEMENT", "MANAGE", "MANAGE_JOBS", "MANAGE_LEADS", "MESSAGING", "MODERATE", "MODERATE_COMMUNITY", "PAGES_MESSAGING", "PAGES_MESSAGING_SUBSCRIPTIONS", "PROFILE_PLUS_ADVERTISE", "PROFILE_PLUS_ANALYZE", "PROFILE_PLUS_CREATE_CONTENT", "PROFILE_PLUS_FACEBOOK_ACCESS", "PROFILE_PLUS_FULL_CONTROL", "PROFILE_PLUS_MANAGE", "PROFILE_PLUS_MANAGE_LEADS", "PROFILE_PLUS_MESSAGING", "PROFILE_PLUS_MODERATE", "PROFILE_PLUS_MODERATE_DELEGATE_COMMUNITY", "PROFILE_PLUS_REVENUE", "READ_PAGE_MAILBOXES", "VIEW_MONETIZATION_INSIGHTS" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"ADVERTISE", "ANALYZE", "CASHIER_ROLE", "CREATE_CONTENT", "GLOBAL_STRUCTURE_MANAGEMENT", "MANAGE", "MANAGE_JOBS", "MANAGE_LEADS", "MESSAGING", "MODERATE", "MODERATE_COMMUNITY", "PAGES_MESSAGING", "PAGES_MESSAGING_SUBSCRIPTIONS", "PROFILE_PLUS_ADVERTISE", "PROFILE_PLUS_ANALYZE", "PROFILE_PLUS_CREATE_CONTENT", "PROFILE_PLUS_FACEBOOK_ACCESS", "PROFILE_PLUS_FULL_CONTROL", "PROFILE_PLUS_MANAGE", "PROFILE_PLUS_MANAGE_LEADS", "PROFILE_PLUS_MESSAGING", "PROFILE_PLUS_MODERATE", "PROFILE_PLUS_MODERATE_DELEGATE_COMMUNITY", "PROFILE_PLUS_REVENUE", "READ_PAGE_MAILBOXES", "VIEW_MONETIZATION_INSIGHTS"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"pixel_tasks": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "pixel_tasks parameter",
-					"enum": []string{ "AA_ANALYZE", "ADVERTISE", "ANALYZE", "EDIT", "UPLOAD" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"AA_ANALYZE", "ADVERTISE", "ANALYZE", "EDIT", "UPLOAD"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"user": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "user parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: adaccount_tasks (array<enum>) [AA_ANALYZE, ADVERTISE, ANALYZE, DRAFT, MANAGE], offline_conversion_data_set_tasks (array<enum>) [AA_ANALYZE, ADVERTISE, MANAGE, UPLOAD, VIEW], page_tasks (array<enum>) [ADVERTISE, ANALYZE, CASHIER_ROLE, CREATE_CONTENT, GLOBAL_STRUCTURE_MANAGEMENT, ...], pixel_tasks (array<enum>) [AA_ANALYZE, ADVERTISE, ANALYZE, EDIT, UPLOAD], user (integer) [required]"),
@@ -82,8 +82,6 @@ func HandleBusinessassetgroup_post_assigned_users(ctx context.Context, request m
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Businessassetgroup_post_assigned_users(accessToken, args)
 	if err != nil {
@@ -102,20 +100,18 @@ func HandleBusinessassetgroup_post_assigned_users(ctx context.Context, request m
 // Businessassetgroup_post_assigned_users performs POST assigned_users for BusinessAssetGroup
 func Businessassetgroup_post_assigned_users(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/assigned_users")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

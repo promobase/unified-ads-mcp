@@ -17,7 +17,6 @@ import (
 func GetPersonalAdsPersonaTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// personaladspersona_get_ tool
 	// Available fields for PersonalAdsPersona: email, first_name, id, last_name, pending_email
 	personaladspersona_get_Tool := mcp.NewTool("personaladspersona_get_",
@@ -37,12 +36,10 @@ func GetPersonalAdsPersonaTools() []mcp.Tool {
 	)
 	tools = append(tools, personaladspersona_get_Tool)
 
-
 	return tools
 }
 
 // PersonalAdsPersona handlers
-
 
 // HandlePersonaladspersona_get_ handles the personaladspersona_get_ tool with context-based auth
 func HandlePersonaladspersona_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandlePersonaladspersona_get_(ctx context.Context, request mcp.CallToolRequ
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Personaladspersona_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandlePersonaladspersona_get_(ctx context.Context, request mcp.CallToolRequ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

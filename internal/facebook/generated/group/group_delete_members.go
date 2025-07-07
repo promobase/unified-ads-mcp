@@ -15,18 +15,18 @@ import (
 
 // ToolGroup_delete_members returns the MCP tool definition for group_delete_members
 func ToolGroup_delete_members() mcp.Tool {
-	
+
 	// Params object accepts: email (string), member (int)
 	return mcp.NewTool("group_delete_members",
 		mcp.WithDescription("DELETE members for Group"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"email": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "email parameter",
 				},
 				"member": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "member parameter",
 				},
 			}),
@@ -58,8 +58,6 @@ func HandleGroup_delete_members(ctx context.Context, request mcp.CallToolRequest
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Group_delete_members(accessToken, args)
 	if err != nil {
@@ -78,20 +76,18 @@ func HandleGroup_delete_members(ctx context.Context, request mcp.CallToolRequest
 // Group_delete_members performs DELETE members for Group
 func Group_delete_members(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/members")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

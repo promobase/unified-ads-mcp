@@ -4,19 +4,19 @@ package constants
 
 // ReachFrequencyActivityFields contains field name constants for ReachFrequencyActivity objects
 var ReachFrequencyActivityFields = struct {
-	AccountId string
-	CampaignActive string
-	CampaignStarted string
+	AccountId        string
+	CampaignActive   string
+	CampaignStarted  string
 	CreativeUploaded string
-	IoApproved string
-	SfLink string
+	IoApproved       string
+	SfLink           string
 }{
-	AccountId: "account_id",
-	CampaignActive: "campaign_active",
-	CampaignStarted: "campaign_started",
+	AccountId:        "account_id",
+	CampaignActive:   "campaign_active",
+	CampaignStarted:  "campaign_started",
 	CreativeUploaded: "creative_uploaded",
-	IoApproved: "io_approved",
-	SfLink: "sf_link",
+	IoApproved:       "io_approved",
+	SfLink:           "sf_link",
 }
 
 // ReachFrequencyActivityFieldsList contains all available fields for ReachFrequencyActivity objects

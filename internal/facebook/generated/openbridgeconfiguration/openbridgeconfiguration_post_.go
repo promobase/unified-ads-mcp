@@ -15,74 +15,74 @@ import (
 
 // ToolOpenbridgeconfiguration_post_ returns the MCP tool definition for openbridgeconfiguration_post_
 func ToolOpenbridgeconfiguration_post_() mcp.Tool {
-	
+
 	// Params object accepts: active (bool), cloud_provider (string), cloud_region (string), destination_id (string), endpoint (string), fallback_domain (string), first_party_domain (string), host_business_id (unsigned int), instance_id (string), instance_version (string), is_sgw_instance (bool), is_sgw_pixel_from_meta_pixel (bool), partner_name (string), sgw_account_id (string), sgw_instance_url (string), sgw_pixel_id (unsigned int)
 	return mcp.NewTool("openbridgeconfiguration_post_",
 		mcp.WithDescription("POST  for OpenBridgeConfiguration"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"active": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "active parameter",
 				},
 				"cloud_provider": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "cloud_provider parameter",
 				},
 				"cloud_region": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "cloud_region parameter",
 				},
 				"destination_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "destination_id parameter",
 				},
 				"endpoint": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "endpoint parameter",
 				},
 				"fallback_domain": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "fallback_domain parameter",
 				},
 				"first_party_domain": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "first_party_domain parameter",
 				},
 				"host_business_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "host_business_id parameter",
 				},
 				"instance_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "instance_id parameter",
 				},
 				"instance_version": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "instance_version parameter",
 				},
 				"is_sgw_instance": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_sgw_instance parameter",
 				},
 				"is_sgw_pixel_from_meta_pixel": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_sgw_pixel_from_meta_pixel parameter",
 				},
 				"partner_name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "partner_name parameter",
 				},
 				"sgw_account_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "sgw_account_id parameter",
 				},
 				"sgw_instance_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "sgw_instance_url parameter",
 				},
 				"sgw_pixel_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "sgw_pixel_id parameter",
 				},
 			}),
@@ -114,8 +114,6 @@ func HandleOpenbridgeconfiguration_post_(ctx context.Context, request mcp.CallTo
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Openbridgeconfiguration_post_(accessToken, args)
 	if err != nil {
@@ -134,20 +132,18 @@ func HandleOpenbridgeconfiguration_post_(ctx context.Context, request mcp.CallTo
 // Openbridgeconfiguration_post_ performs POST  for OpenBridgeConfiguration
 func Openbridgeconfiguration_post_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

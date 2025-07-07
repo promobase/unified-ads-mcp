@@ -5,12 +5,12 @@ package constants
 // AdsPixelStatsResultFields contains field name constants for AdsPixelStatsResult objects
 var AdsPixelStatsResultFields = struct {
 	Aggregation string
-	Data string
-	StartTime string
+	Data        string
+	StartTime   string
 }{
 	Aggregation: "aggregation",
-	Data: "data",
-	StartTime: "start_time",
+	Data:        "data",
+	StartTime:   "start_time",
 }
 
 // AdsPixelStatsResultFieldsList contains all available fields for AdsPixelStatsResult objects

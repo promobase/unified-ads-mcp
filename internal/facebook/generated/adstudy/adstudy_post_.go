@@ -15,63 +15,63 @@ import (
 
 // ToolAdstudy_post_ returns the MCP tool definition for adstudy_post_
 func ToolAdstudy_post_() mcp.Tool {
-	
+
 	// Params object accepts: cells (list<Object>), client_business (string), confidence_level (float), cooldown_start_time (int), description (string), end_time (int), name (string), objectives (list<Object>), observation_end_time (int), start_time (int), type (adstudy_type), viewers (list<int>)
 	return mcp.NewTool("adstudy_post_",
 		mcp.WithDescription("POST  for AdStudy"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"cells": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "cells parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"client_business": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "client_business parameter",
 				},
 				"confidence_level": map[string]any{
-					"type": "number",
+					"type":        "number",
 					"description": "confidence_level parameter",
 				},
 				"cooldown_start_time": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "cooldown_start_time parameter",
 				},
 				"description": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "description parameter",
 				},
 				"end_time": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "end_time parameter",
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
 				},
 				"objectives": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "objectives parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"observation_end_time": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "observation_end_time parameter",
 				},
 				"start_time": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "start_time parameter",
 				},
 				"type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "type parameter",
-					"enum": []string{ "BACKEND_AB_TESTING", "CONTINUOUS_LIFT_CONFIG", "GEO_LIFT", "LIFT", "SPLIT_TEST" },
+					"enum":        []string{"BACKEND_AB_TESTING", "CONTINUOUS_LIFT_CONFIG", "GEO_LIFT", "LIFT", "SPLIT_TEST"},
 				},
 				"viewers": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "viewers parameter",
-					"items": map[string]any{"type": "integer"},
+					"items":       map[string]any{"type": "integer"},
 				},
 			}),
 			mcp.Description("Parameters object containing: cells (array<object>), client_business (string), confidence_level (number), cooldown_start_time (integer), description (string), end_time (integer), name (string), objectives (array<object>), observation_end_time (integer), start_time (integer), type (adstudy_type) [BACKEND_AB_TESTING, CONTINUOUS_LIFT_CONFIG, GEO_LIFT, LIFT, SPLIT_TEST], viewers (array<integer>)"),
@@ -102,8 +102,6 @@ func HandleAdstudy_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Adstudy_post_(accessToken, args)
 	if err != nil {
@@ -122,20 +120,18 @@ func HandleAdstudy_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 // Adstudy_post_ performs POST  for AdStudy
 func Adstudy_post_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

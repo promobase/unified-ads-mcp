@@ -4,11 +4,11 @@ package types
 
 // AdCreativePromotionMetadataSpec represents a Facebook AdCreativePromotionMetadataSpec object
 type AdCreativePromotionMetadataSpec struct {
-	End_date int `json:"end_date"`
-	Id string `json:"id"`
-	Promotion_source string `json:"promotion_source"`
-	Promotion_type string `json:"promotion_type"`
-	Promotion_value float64 `json:"promotion_value"`
-	Required_code string `json:"required_code"`
-	Start_date int `json:"start_date"`
+	End_date         int     `json:"end_date"`
+	Id               string  `json:"id"`
+	Promotion_source string  `json:"promotion_source"`
+	Promotion_type   string  `json:"promotion_type"`
+	Promotion_value  float64 `json:"promotion_value"`
+	Required_code    string  `json:"required_code"`
+	Start_date       int     `json:"start_date"`
 }

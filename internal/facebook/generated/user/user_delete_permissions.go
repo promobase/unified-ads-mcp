@@ -15,14 +15,14 @@ import (
 
 // ToolUser_delete_permissions returns the MCP tool definition for user_delete_permissions
 func ToolUser_delete_permissions() mcp.Tool {
-	
+
 	// Params object accepts: permission (string)
 	return mcp.NewTool("user_delete_permissions",
 		mcp.WithDescription("DELETE permissions for User"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"permission": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "permission parameter",
 				},
 			}),
@@ -54,8 +54,6 @@ func HandleUser_delete_permissions(ctx context.Context, request mcp.CallToolRequ
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := User_delete_permissions(accessToken, args)
 	if err != nil {
@@ -74,20 +72,18 @@ func HandleUser_delete_permissions(ctx context.Context, request mcp.CallToolRequ
 // User_delete_permissions performs DELETE permissions for User
 func User_delete_permissions(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/permissions")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

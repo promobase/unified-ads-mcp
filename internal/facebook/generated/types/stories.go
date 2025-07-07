@@ -5,9 +5,9 @@ package types
 // Stories represents a Facebook Stories object
 type Stories struct {
 	Creation_time string `json:"creation_time"`
-	Media_id string `json:"media_id"`
-	Media_type string `json:"media_type"`
-	Post_id string `json:"post_id"`
-	Status string `json:"status"`
-	Url string `json:"url"`
+	Media_id      string `json:"media_id"`
+	Media_type    string `json:"media_type"`
+	Post_id       string `json:"post_id"`
+	Status        string `json:"status"`
+	Url           string `json:"url"`
 }

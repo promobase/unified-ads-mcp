@@ -5,14 +5,14 @@ package constants
 // AudienceOverlapFields contains field name constants for AudienceOverlap objects
 var AudienceOverlapFields = struct {
 	EstimatedReach string
-	Id string
-	Name string
-	Overlap string
+	Id             string
+	Name           string
+	Overlap        string
 }{
 	EstimatedReach: "estimated_reach",
-	Id: "id",
-	Name: "name",
-	Overlap: "overlap",
+	Id:             "id",
+	Name:           "name",
+	Overlap:        "overlap",
 }
 
 // AudienceOverlapFieldsList contains all available fields for AudienceOverlap objects

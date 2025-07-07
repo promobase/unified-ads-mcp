@@ -17,7 +17,6 @@ import (
 func GetResearchPollStudyTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// researchpollstudy_get_ tool
 	// Available fields for ResearchPollStudy: account, id, name
 	researchpollstudy_get_Tool := mcp.NewTool("researchpollstudy_get_",
@@ -37,12 +36,10 @@ func GetResearchPollStudyTools() []mcp.Tool {
 	)
 	tools = append(tools, researchpollstudy_get_Tool)
 
-
 	return tools
 }
 
 // ResearchPollStudy handlers
-
 
 // HandleResearchpollstudy_get_ handles the researchpollstudy_get_ tool with context-based auth
 func HandleResearchpollstudy_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleResearchpollstudy_get_(ctx context.Context, request mcp.CallToolReque
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Researchpollstudy_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleResearchpollstudy_get_(ctx context.Context, request mcp.CallToolReque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

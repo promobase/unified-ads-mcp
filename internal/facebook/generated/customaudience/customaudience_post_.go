@@ -15,106 +15,106 @@ import (
 
 // ToolCustomaudience_post_ returns the MCP tool definition for customaudience_post_
 func ToolCustomaudience_post_() mcp.Tool {
-	
+
 	// Params object accepts: allowed_domains (list<string>), claim_objective (customaudience_claim_objective), content_type (customaudience_content_type), countries (string), customer_file_source (customaudience_customer_file_source), description (string), enable_fetch_or_create (bool), event_source_group (string), event_sources (list<map>), exclusions (list<Object>), inclusions (list<Object>), lookalike_spec (string), name (string), opt_out_link (string), parent_audience_id (unsigned int), product_set_id (string), retention_days (unsigned int), rev_share_policy_id (unsigned int), rule (string), rule_aggregation (string), tags (list<string>), use_in_campaigns (bool)
 	return mcp.NewTool("customaudience_post_",
 		mcp.WithDescription("POST  for CustomAudience"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"allowed_domains": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "allowed_domains parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"claim_objective": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "claim_objective parameter",
-					"enum": []string{ "AUTOMOTIVE_MODEL", "COLLABORATIVE_ADS", "HOME_LISTING", "MEDIA_TITLE", "PRODUCT", "TRAVEL", "VEHICLE", "VEHICLE_OFFER" },
+					"enum":        []string{"AUTOMOTIVE_MODEL", "COLLABORATIVE_ADS", "HOME_LISTING", "MEDIA_TITLE", "PRODUCT", "TRAVEL", "VEHICLE", "VEHICLE_OFFER"},
 				},
 				"content_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "content_type parameter",
-					"enum": []string{ "AUTOMOTIVE_MODEL", "DESTINATION", "FLIGHT", "GENERIC", "HOME_LISTING", "HOTEL", "LOCAL_SERVICE_BUSINESS", "MEDIA_TITLE", "OFFLINE_PRODUCT", "PRODUCT", "VEHICLE", "VEHICLE_OFFER" },
+					"enum":        []string{"AUTOMOTIVE_MODEL", "DESTINATION", "FLIGHT", "GENERIC", "HOME_LISTING", "HOTEL", "LOCAL_SERVICE_BUSINESS", "MEDIA_TITLE", "OFFLINE_PRODUCT", "PRODUCT", "VEHICLE", "VEHICLE_OFFER"},
 				},
 				"countries": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "countries parameter",
 				},
 				"customer_file_source": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "customer_file_source parameter",
-					"enum": []string{ "BOTH_USER_AND_PARTNER_PROVIDED", "PARTNER_PROVIDED_ONLY", "USER_PROVIDED_ONLY" },
+					"enum":        []string{"BOTH_USER_AND_PARTNER_PROVIDED", "PARTNER_PROVIDED_ONLY", "USER_PROVIDED_ONLY"},
 				},
 				"description": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "description parameter",
 				},
 				"enable_fetch_or_create": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "enable_fetch_or_create parameter",
 				},
 				"event_source_group": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "event_source_group parameter",
 				},
 				"event_sources": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "event_sources parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"exclusions": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "exclusions parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"inclusions": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "inclusions parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"lookalike_spec": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "lookalike_spec parameter",
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
 				},
 				"opt_out_link": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "opt_out_link parameter",
 				},
 				"parent_audience_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "parent_audience_id parameter",
 				},
 				"product_set_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "product_set_id parameter",
 				},
 				"retention_days": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "retention_days parameter",
 				},
 				"rev_share_policy_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "rev_share_policy_id parameter",
 				},
 				"rule": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "rule parameter",
 				},
 				"rule_aggregation": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "rule_aggregation parameter",
 				},
 				"tags": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "tags parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"use_in_campaigns": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "use_in_campaigns parameter",
 				},
 			}),
@@ -146,8 +146,6 @@ func HandleCustomaudience_post_(ctx context.Context, request mcp.CallToolRequest
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Customaudience_post_(accessToken, args)
 	if err != nil {
@@ -166,20 +164,18 @@ func HandleCustomaudience_post_(ctx context.Context, request mcp.CallToolRequest
 // Customaudience_post_ performs POST  for CustomAudience
 func Customaudience_post_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

@@ -15,67 +15,67 @@ import (
 
 // ToolUser_post_notifications returns the MCP tool definition for user_post_notifications
 func ToolUser_post_notifications() mcp.Tool {
-	
+
 	// Params object accepts: bot_message_payload_elements (string), filtering (list<usernotifications_filtering_enum_param>), href (Object), label (string), message (map), notif_ids (list<string>), payload (string), read (bool), ref (string), schedule_interval (unsigned int), seen (bool), template (Object), type (usernotifications_type_enum_param)
 	return mcp.NewTool("user_post_notifications",
 		mcp.WithDescription("POST notifications for User"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"bot_message_payload_elements": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "bot_message_payload_elements parameter",
 				},
 				"filtering": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "filtering parameter",
-					"enum": []string{ "ema", "groups", "groups_social" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"ema", "groups", "groups_social"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"href": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "href parameter",
 				},
 				"label": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "label parameter",
 				},
 				"message": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "message parameter",
 				},
 				"notif_ids": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "notif_ids parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"payload": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "payload parameter",
 				},
 				"read": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "read parameter",
 				},
 				"ref": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "ref parameter",
 				},
 				"schedule_interval": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "schedule_interval parameter",
 				},
 				"seen": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "seen parameter",
 				},
 				"template": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "template parameter",
 				},
 				"type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "type parameter",
-					"enum": []string{ "content_update", "generic" },
+					"enum":        []string{"content_update", "generic"},
 				},
 			}),
 			mcp.Description("Parameters object containing: bot_message_payload_elements (string), filtering (array<enum>) [ema, groups, groups_social], href (object), label (string), message (object), notif_ids (array<string>), payload (string), read (boolean), ref (string), schedule_interval (integer), seen (boolean), template (object), type (enum) [content_update, generic]"),
@@ -106,8 +106,6 @@ func HandleUser_post_notifications(ctx context.Context, request mcp.CallToolRequ
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := User_post_notifications(accessToken, args)
 	if err != nil {
@@ -126,20 +124,18 @@ func HandleUser_post_notifications(ctx context.Context, request mcp.CallToolRequ
 // User_post_notifications performs POST notifications for User
 func User_post_notifications(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/notifications")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

@@ -4,12 +4,12 @@ package constants
 
 // CatalogContentVersionConfigFields contains field name constants for CatalogContentVersionConfig objects
 var CatalogContentVersionConfigFields = struct {
-	Id string
-	Name string
+	Id      string
+	Name    string
 	Version string
 }{
-	Id: "id",
-	Name: "name",
+	Id:      "id",
+	Name:    "name",
 	Version: "version",
 }
 

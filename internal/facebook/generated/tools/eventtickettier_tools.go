@@ -17,7 +17,6 @@ import (
 func GetEventTicketTierTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// eventtickettier_get_ tool
 	// Available fields for EventTicketTier: currency, description, end_sales_time, end_show_time, fee_settings, id, maximum_quantity, metadata, minimum_quantity, name, price, priority, retailer_id, seating_map_image_url, start_sales_time, start_show_time, status, total_quantity
 	eventtickettier_get_Tool := mcp.NewTool("eventtickettier_get_",
@@ -37,12 +36,10 @@ func GetEventTicketTierTools() []mcp.Tool {
 	)
 	tools = append(tools, eventtickettier_get_Tool)
 
-
 	return tools
 }
 
 // EventTicketTier handlers
-
 
 // HandleEventtickettier_get_ handles the eventtickettier_get_ tool with context-based auth
 func HandleEventtickettier_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleEventtickettier_get_(ctx context.Context, request mcp.CallToolRequest
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Eventtickettier_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleEventtickettier_get_(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

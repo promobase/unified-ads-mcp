@@ -18,7 +18,6 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolWhatsappbusinesspreverifiedphonenumber_delete_())
 	tools = append(tools, ToolWhatsappbusinesspreverifiedphonenumber_get_())
 
-
 	return tools
 }
 
@@ -31,7 +30,6 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers["whatsappbusinesspreverifiedphonenumber_post_verify_code"] = HandleWhatsappbusinesspreverifiedphonenumber_post_verify_code
 	handlers["whatsappbusinesspreverifiedphonenumber_delete_"] = HandleWhatsappbusinesspreverifiedphonenumber_delete_
 	handlers["whatsappbusinesspreverifiedphonenumber_get_"] = HandleWhatsappbusinesspreverifiedphonenumber_get_
-
 
 	return handlers
 }

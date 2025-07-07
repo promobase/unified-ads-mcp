@@ -4,10 +4,10 @@ package constants
 
 // ProductCatalogFacetsFields contains field name constants for ProductCatalogFacets objects
 var ProductCatalogFacetsFields = struct {
-	Facets string
+	Facets    string
 	ItemCount string
 }{
-	Facets: "facets",
+	Facets:    "facets",
 	ItemCount: "item_count",
 }
 

@@ -17,7 +17,7 @@ import (
 // ToolAdaccount_get_adrules_library returns the MCP tool definition for adaccount_get_adrules_library
 func ToolAdaccount_get_adrules_library() mcp.Tool {
 	// Available fields for AdRule: account_id, created_by, created_time, disable_error_code, evaluation_spec, execution_spec, id, name, schedule_spec, status, updated_time
-	
+
 	return mcp.NewTool("adaccount_get_adrules_library",
 		mcp.WithDescription("GET adrules_library for AdAccount"),
 		mcp.WithString("account_id",
@@ -82,8 +82,6 @@ func HandleAdaccount_get_adrules_library(ctx context.Context, request mcp.CallTo
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Adaccount_get_adrules_library(accessToken, args)
 	if err != nil {
@@ -102,59 +100,57 @@ func HandleAdaccount_get_adrules_library(ctx context.Context, request mcp.CallTo
 // Adaccount_get_adrules_library performs GET adrules_library for AdAccount
 func Adaccount_get_adrules_library(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	// Extract account_id for URL construction
 	accountId, ok := args["account_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_get_adrules_library")
 	}
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%sadrules_library", accountId)
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-		
-	}
 
+	}
 
 	// Make HTTP request
 	var resp *http.Response

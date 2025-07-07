@@ -15,31 +15,31 @@ import (
 
 // ToolPage_post_blocked returns the MCP tool definition for page_post_blocked
 func ToolPage_post_blocked() mcp.Tool {
-	
+
 	// Params object accepts: asid (list<string>), psid (list<int>), uid (list<string>), user (list<string>)
 	return mcp.NewTool("page_post_blocked",
 		mcp.WithDescription("POST blocked for Page"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"asid": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "asid parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"psid": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "psid parameter",
-					"items": map[string]any{"type": "integer"},
+					"items":       map[string]any{"type": "integer"},
 				},
 				"uid": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "uid parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"user": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "user parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: asid (array<string>), psid (array<integer>), uid (array<string>), user (array<string>)"),
@@ -70,8 +70,6 @@ func HandlePage_post_blocked(ctx context.Context, request mcp.CallToolRequest) (
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Page_post_blocked(accessToken, args)
 	if err != nil {
@@ -90,20 +88,18 @@ func HandlePage_post_blocked(ctx context.Context, request mcp.CallToolRequest) (
 // Page_post_blocked performs POST blocked for Page
 func Page_post_blocked(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/blocked")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

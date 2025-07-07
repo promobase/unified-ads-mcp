@@ -28,34 +28,34 @@ func ToolAdaccount_get_reachestimate() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"adgroup_ids": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "adgroup_ids parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"caller_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "caller_id parameter",
 				},
 				"concepts": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "concepts parameter",
 				},
 				"creative_action_spec": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "creative_action_spec parameter",
 				},
 				"is_debug": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_debug parameter",
 				},
 				"object_store_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "object_store_url parameter",
 				},
 				"targeting_spec": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "targeting_spec parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: adgroup_ids (array<string>), caller_id (string), concepts (string), creative_action_spec (string), is_debug (boolean), object_store_url (string), targeting_spec (Targeting) [required]"),
@@ -132,8 +132,6 @@ func HandleAdaccount_get_reachestimate(ctx context.Context, request mcp.CallTool
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Adaccount_get_reachestimate(accessToken, args)
 	if err != nil {
@@ -152,67 +150,65 @@ func HandleAdaccount_get_reachestimate(ctx context.Context, request mcp.CallTool
 // Adaccount_get_reachestimate performs GET reachestimate for AdAccount
 func Adaccount_get_reachestimate(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	// Extract account_id for URL construction
 	accountId, ok := args["account_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_get_reachestimate")
 	}
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%sreachestimate", accountId)
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-		
-	}
 
+	}
 
 	// Make HTTP request
 	var resp *http.Response

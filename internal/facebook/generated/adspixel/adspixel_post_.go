@@ -15,40 +15,40 @@ import (
 
 // ToolAdspixel_post_ returns the MCP tool definition for adspixel_post_
 func ToolAdspixel_post_() mcp.Tool {
-	
+
 	// Params object accepts: automatic_matching_fields (list<adspixel_automatic_matching_fields>), data_use_setting (adspixel_data_use_setting), enable_automatic_matching (bool), first_party_cookie_status (adspixel_first_party_cookie_status), name (string), server_events_business_ids (list<string>)
 	return mcp.NewTool("adspixel_post_",
 		mcp.WithDescription("POST  for AdsPixel"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"automatic_matching_fields": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "automatic_matching_fields parameter",
-					"enum": []string{ "country", "ct", "db", "em", "external_id", "fn", "ge", "ln", "ph", "st", "zp" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"country", "ct", "db", "em", "external_id", "fn", "ge", "ln", "ph", "st", "zp"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"data_use_setting": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "data_use_setting parameter",
-					"enum": []string{ "ADVERTISING_AND_ANALYTICS", "ANALYTICS_ONLY", "EMPTY" },
+					"enum":        []string{"ADVERTISING_AND_ANALYTICS", "ANALYTICS_ONLY", "EMPTY"},
 				},
 				"enable_automatic_matching": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "enable_automatic_matching parameter",
 				},
 				"first_party_cookie_status": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "first_party_cookie_status parameter",
-					"enum": []string{ "EMPTY", "FIRST_PARTY_COOKIE_DISABLED", "FIRST_PARTY_COOKIE_ENABLED" },
+					"enum":        []string{"EMPTY", "FIRST_PARTY_COOKIE_DISABLED", "FIRST_PARTY_COOKIE_ENABLED"},
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
 				},
 				"server_events_business_ids": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "server_events_business_ids parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: automatic_matching_fields (array<adspixel_automatic_matching_fields>) [country, ct, db, em, external_id, ...], data_use_setting (adspixel_data_use_setting) [ADVERTISING_AND_ANALYTICS, ANALYTICS_ONLY, EMPTY], enable_automatic_matching (boolean), first_party_cookie_status (adspixel_first_party_cookie_status) [EMPTY, FIRST_PARTY_COOKIE_DISABLED, FIRST_PARTY_COOKIE_ENABLED], name (string), server_events_business_ids (array<string>)"),
@@ -79,8 +79,6 @@ func HandleAdspixel_post_(ctx context.Context, request mcp.CallToolRequest) (*mc
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Adspixel_post_(accessToken, args)
 	if err != nil {
@@ -99,20 +97,18 @@ func HandleAdspixel_post_(ctx context.Context, request mcp.CallToolRequest) (*mc
 // Adspixel_post_ performs POST  for AdsPixel
 func Adspixel_post_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

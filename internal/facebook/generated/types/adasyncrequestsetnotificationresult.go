@@ -5,5 +5,5 @@ package types
 // AdAsyncRequestSetNotificationResult represents a Facebook AdAsyncRequestSetNotificationResult object
 type AdAsyncRequestSetNotificationResult struct {
 	Response string `json:"response"`
-	Status string `json:"status"`
+	Status   string `json:"status"`
 }

@@ -17,7 +17,7 @@ import (
 // ToolProfile_get_ returns the MCP tool definition for profile_get_
 func ToolProfile_get_() mcp.Tool {
 	// Available fields for Profile: can_post, id, link, name, pic, pic_crop, pic_large, pic_small, pic_square, profile_type, username
-	
+
 	return mcp.NewTool("profile_get_",
 		mcp.WithDescription("GET  for Profile"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleProfile_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Profile_get_(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleProfile_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 // Profile_get_ performs GET  for Profile
 func Profile_get_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

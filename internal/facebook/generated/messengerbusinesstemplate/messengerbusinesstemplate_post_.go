@@ -15,16 +15,16 @@ import (
 
 // ToolMessengerbusinesstemplate_post_ returns the MCP tool definition for messengerbusinesstemplate_post_
 func ToolMessengerbusinesstemplate_post_() mcp.Tool {
-	
+
 	// Params object accepts: components (list<map>)
 	return mcp.NewTool("messengerbusinesstemplate_post_",
 		mcp.WithDescription("POST  for MessengerBusinessTemplate"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"components": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "components parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 			}),
 			mcp.Description("Parameters object containing: components (array<object>)"),
@@ -55,8 +55,6 @@ func HandleMessengerbusinesstemplate_post_(ctx context.Context, request mcp.Call
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Messengerbusinesstemplate_post_(accessToken, args)
 	if err != nil {
@@ -75,20 +73,18 @@ func HandleMessengerbusinesstemplate_post_(ctx context.Context, request mcp.Call
 // Messengerbusinesstemplate_post_ performs POST  for MessengerBusinessTemplate
 func Messengerbusinesstemplate_post_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

@@ -28,35 +28,35 @@ func ToolAdaccount_get_matched_search_applications() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"allow_incomplete_app": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "allow_incomplete_app parameter",
 				},
 				"app_store": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "app_store parameter",
-					"required": true,
-					"enum": []string{ "AMAZON_APP_STORE", "APK_MIRROR", "APK_MONK", "APK_PURE", "APTOIDE_A1_STORE", "BEMOBI_MOBILE_STORE", "DIGITAL_TURBINE_STORE", "DOES_NOT_EXIST", "FB_ANDROID_STORE", "FB_CANVAS", "FB_GAMEROOM", "GALAXY_STORE", "GOOGLE_PLAY", "INSTANT_GAME", "ITUNES", "ITUNES_IPAD", "NEON_ANDROID_STORE", "NONE", "OCULUS_APP_STORE", "OPPO", "ROKU_STORE", "UPTODOWN", "VIVO", "WINDOWS_10_STORE", "WINDOWS_STORE", "XIAOMI" },
+					"required":    true,
+					"enum":        []string{"AMAZON_APP_STORE", "APK_MIRROR", "APK_MONK", "APK_PURE", "APTOIDE_A1_STORE", "BEMOBI_MOBILE_STORE", "DIGITAL_TURBINE_STORE", "DOES_NOT_EXIST", "FB_ANDROID_STORE", "FB_CANVAS", "FB_GAMEROOM", "GALAXY_STORE", "GOOGLE_PLAY", "INSTANT_GAME", "ITUNES", "ITUNES_IPAD", "NEON_ANDROID_STORE", "NONE", "OCULUS_APP_STORE", "OPPO", "ROKU_STORE", "UPTODOWN", "VIVO", "WINDOWS_10_STORE", "WINDOWS_STORE", "XIAOMI"},
 				},
 				"app_store_country": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "app_store_country parameter",
 				},
 				"business_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "business_id parameter",
 				},
 				"is_skadnetwork_search": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_skadnetwork_search parameter",
 				},
 				"only_apps_with_permission": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "only_apps_with_permission parameter",
 				},
 				"query_term": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "query_term parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: allow_incomplete_app (boolean), app_store (enum) [AMAZON_APP_STORE, APK_MIRROR, APK_MONK, APK_PURE, APTOIDE_A1_STORE, ...] [required], app_store_country (string), business_id (string), is_skadnetwork_search (boolean), only_apps_with_permission (boolean), query_term (string) [required]"),
@@ -133,8 +133,6 @@ func HandleAdaccount_get_matched_search_applications(ctx context.Context, reques
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Adaccount_get_matched_search_applications(accessToken, args)
 	if err != nil {
@@ -153,67 +151,65 @@ func HandleAdaccount_get_matched_search_applications(ctx context.Context, reques
 // Adaccount_get_matched_search_applications performs GET matched_search_applications for AdAccount
 func Adaccount_get_matched_search_applications(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	// Extract account_id for URL construction
 	accountId, ok := args["account_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_get_matched_search_applications")
 	}
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%smatched_search_applications", accountId)
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-		
-	}
 
+	}
 
 	// Make HTTP request
 	var resp *http.Response

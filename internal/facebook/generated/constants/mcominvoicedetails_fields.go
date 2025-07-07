@@ -4,45 +4,45 @@ package constants
 
 // McomInvoiceDetailsFields contains field name constants for McomInvoiceDetails objects
 var McomInvoiceDetailsFields = struct {
-	AdditionalAmounts string
-	BuyerNotes string
-	CurrencyAmount string
-	ExternalInvoiceId string
-	Features string
-	InvoiceCreated string
-	InvoiceId string
-	InvoiceInstructions string
+	AdditionalAmounts           string
+	BuyerNotes                  string
+	CurrencyAmount              string
+	ExternalInvoiceId           string
+	Features                    string
+	InvoiceCreated              string
+	InvoiceId                   string
+	InvoiceInstructions         string
 	InvoiceInstructionsImageUrl string
-	InvoiceUpdated string
-	OutstandingAmount string
-	PaidAmount string
-	Payments string
-	PlatformLogoUrl string
-	PlatformName string
-	ProductItems string
-	ShippingAddress string
-	Status string
-	TrackingInfo string
+	InvoiceUpdated              string
+	OutstandingAmount           string
+	PaidAmount                  string
+	Payments                    string
+	PlatformLogoUrl             string
+	PlatformName                string
+	ProductItems                string
+	ShippingAddress             string
+	Status                      string
+	TrackingInfo                string
 }{
-	AdditionalAmounts: "additional_amounts",
-	BuyerNotes: "buyer_notes",
-	CurrencyAmount: "currency_amount",
-	ExternalInvoiceId: "external_invoice_id",
-	Features: "features",
-	InvoiceCreated: "invoice_created",
-	InvoiceId: "invoice_id",
-	InvoiceInstructions: "invoice_instructions",
+	AdditionalAmounts:           "additional_amounts",
+	BuyerNotes:                  "buyer_notes",
+	CurrencyAmount:              "currency_amount",
+	ExternalInvoiceId:           "external_invoice_id",
+	Features:                    "features",
+	InvoiceCreated:              "invoice_created",
+	InvoiceId:                   "invoice_id",
+	InvoiceInstructions:         "invoice_instructions",
 	InvoiceInstructionsImageUrl: "invoice_instructions_image_url",
-	InvoiceUpdated: "invoice_updated",
-	OutstandingAmount: "outstanding_amount",
-	PaidAmount: "paid_amount",
-	Payments: "payments",
-	PlatformLogoUrl: "platform_logo_url",
-	PlatformName: "platform_name",
-	ProductItems: "product_items",
-	ShippingAddress: "shipping_address",
-	Status: "status",
-	TrackingInfo: "tracking_info",
+	InvoiceUpdated:              "invoice_updated",
+	OutstandingAmount:           "outstanding_amount",
+	PaidAmount:                  "paid_amount",
+	Payments:                    "payments",
+	PlatformLogoUrl:             "platform_logo_url",
+	PlatformName:                "platform_name",
+	ProductItems:                "product_items",
+	ShippingAddress:             "shipping_address",
+	Status:                      "status",
+	TrackingInfo:                "tracking_info",
 }
 
 // McomInvoiceDetailsFieldsList contains all available fields for McomInvoiceDetails objects

@@ -15,7 +15,7 @@ import (
 
 // ToolBusiness_post_ads_dataset returns the MCP tool definition for business_post_ads_dataset
 func ToolBusiness_post_ads_dataset() mcp.Tool {
-	
+
 	// Params object accepts: ad_account_id (string), app_id (string), is_crm (bool), name (string)
 	return mcp.NewTool("business_post_ads_dataset",
 		mcp.WithDescription("POST ads_dataset for Business"),
@@ -23,21 +23,21 @@ func ToolBusiness_post_ads_dataset() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"ad_account_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "ad_account_id parameter",
 				},
 				"app_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "app_id parameter",
 				},
 				"is_crm": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_crm parameter",
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: ad_account_id (string), app_id (string), is_crm (boolean), name (string) [required]"),
@@ -70,8 +70,6 @@ func HandleBusiness_post_ads_dataset(ctx context.Context, request mcp.CallToolRe
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Business_post_ads_dataset(accessToken, args)
 	if err != nil {
@@ -90,20 +88,18 @@ func HandleBusiness_post_ads_dataset(ctx context.Context, request mcp.CallToolRe
 // Business_post_ads_dataset performs POST ads_dataset for Business
 func Business_post_ads_dataset(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/ads_dataset")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

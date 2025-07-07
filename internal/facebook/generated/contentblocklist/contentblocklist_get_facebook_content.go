@@ -16,8 +16,7 @@ import (
 
 // ToolContentblocklist_get_facebook_content returns the MCP tool definition for contentblocklist_get_facebook_content
 func ToolContentblocklist_get_facebook_content() mcp.Tool {
-	
-	
+
 	return mcp.NewTool("contentblocklist_get_facebook_content",
 		mcp.WithDescription("GET facebook_content for ContentBlockList"),
 		mcp.WithArray("fields",
@@ -71,8 +70,6 @@ func HandleContentblocklist_get_facebook_content(ctx context.Context, request mc
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Contentblocklist_get_facebook_content(accessToken, args)
 	if err != nil {
@@ -91,38 +88,36 @@ func HandleContentblocklist_get_facebook_content(ctx context.Context, request mc
 // Contentblocklist_get_facebook_content performs GET facebook_content for ContentBlockList
 func Contentblocklist_get_facebook_content(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/facebook_content")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

@@ -15,7 +15,6 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolImagecopyright_get_())
 	tools = append(tools, ToolImagecopyright_post_())
 
-
 	return tools
 }
 
@@ -25,7 +24,6 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 
 	handlers["imagecopyright_get_"] = HandleImagecopyright_get_
 	handlers["imagecopyright_post_"] = HandleImagecopyright_post_
-
 
 	return handlers
 }

@@ -4,20 +4,20 @@ package constants
 
 // AdCreativeMarketingMessageStructuredSpecFields contains field name constants for AdCreativeMarketingMessageStructuredSpec objects
 var AdCreativeMarketingMessageStructuredSpecFields = struct {
-	Buttons string
-	Footer string
-	Greeting string
-	IsOptimizedText string
-	Language string
-	ReferencedAdgroupId string
+	Buttons                       string
+	Footer                        string
+	Greeting                      string
+	IsOptimizedText               string
+	Language                      string
+	ReferencedAdgroupId           string
 	WhatsAppBusinessPhoneNumberId string
 }{
-	Buttons: "buttons",
-	Footer: "footer",
-	Greeting: "greeting",
-	IsOptimizedText: "is_optimized_text",
-	Language: "language",
-	ReferencedAdgroupId: "referenced_adgroup_id",
+	Buttons:                       "buttons",
+	Footer:                        "footer",
+	Greeting:                      "greeting",
+	IsOptimizedText:               "is_optimized_text",
+	Language:                      "language",
+	ReferencedAdgroupId:           "referenced_adgroup_id",
 	WhatsAppBusinessPhoneNumberId: "whats_app_business_phone_number_id",
 }
 

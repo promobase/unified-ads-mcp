@@ -17,7 +17,6 @@ import (
 func GetAdAccountAgencyFeeConfigTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// adaccountagencyfeeconfig_get_ tool
 	// Available fields for AdAccountAgencyFeeConfig: can_add_agency_fee_to_invoice, default_agency_fee_pct, id, is_agency_fee_disabled, status
 	adaccountagencyfeeconfig_get_Tool := mcp.NewTool("adaccountagencyfeeconfig_get_",
@@ -37,12 +36,10 @@ func GetAdAccountAgencyFeeConfigTools() []mcp.Tool {
 	)
 	tools = append(tools, adaccountagencyfeeconfig_get_Tool)
 
-
 	return tools
 }
 
 // AdAccountAgencyFeeConfig handlers
-
 
 // HandleAdaccountagencyfeeconfig_get_ handles the adaccountagencyfeeconfig_get_ tool with context-based auth
 func HandleAdaccountagencyfeeconfig_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleAdaccountagencyfeeconfig_get_(ctx context.Context, request mcp.CallTo
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adaccountagencyfeeconfig_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleAdaccountagencyfeeconfig_get_(ctx context.Context, request mcp.CallTo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

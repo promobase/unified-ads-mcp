@@ -15,7 +15,7 @@ import (
 
 // ToolAdaccount_delete_campaigns returns the MCP tool definition for adaccount_delete_campaigns
 func ToolAdaccount_delete_campaigns() mcp.Tool {
-	
+
 	// Params object accepts: before_date (datetime), delete_offset (unsigned int), delete_strategy (adaccountcampaigns_delete_strategy_enum_param), object_count (int)
 	return mcp.NewTool("adaccount_delete_campaigns",
 		mcp.WithDescription("DELETE campaigns for AdAccount"),
@@ -27,21 +27,21 @@ func ToolAdaccount_delete_campaigns() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"before_date": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "before_date parameter",
 				},
 				"delete_offset": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "delete_offset parameter",
 				},
 				"delete_strategy": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "delete_strategy parameter",
-					"required": true,
-					"enum": []string{ "DELETE_ANY", "DELETE_ARCHIVED_BEFORE", "DELETE_OLDEST" },
+					"required":    true,
+					"enum":        []string{"DELETE_ANY", "DELETE_ARCHIVED_BEFORE", "DELETE_OLDEST"},
 				},
 				"object_count": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "object_count parameter",
 				},
 			}),
@@ -82,8 +82,6 @@ func HandleAdaccount_delete_campaigns(ctx context.Context, request mcp.CallToolR
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Adaccount_delete_campaigns(accessToken, args)
 	if err != nil {
@@ -102,35 +100,33 @@ func HandleAdaccount_delete_campaigns(ctx context.Context, request mcp.CallToolR
 // Adaccount_delete_campaigns performs DELETE campaigns for AdAccount
 func Adaccount_delete_campaigns(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	// Extract account_id for URL construction
 	accountId, ok := args["account_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_delete_campaigns")
 	}
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%scampaigns", accountId)
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-		
-	}
 
+	}
 
 	// Make HTTP request
 	var resp *http.Response

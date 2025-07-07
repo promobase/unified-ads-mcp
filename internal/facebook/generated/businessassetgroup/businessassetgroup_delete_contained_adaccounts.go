@@ -15,7 +15,7 @@ import (
 
 // ToolBusinessassetgroup_delete_contained_adaccounts returns the MCP tool definition for businessassetgroup_delete_contained_adaccounts
 func ToolBusinessassetgroup_delete_contained_adaccounts() mcp.Tool {
-	
+
 	// Params object accepts: asset_id (string)
 	return mcp.NewTool("businessassetgroup_delete_contained_adaccounts",
 		mcp.WithDescription("DELETE contained_adaccounts for BusinessAssetGroup"),
@@ -23,9 +23,9 @@ func ToolBusinessassetgroup_delete_contained_adaccounts() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"asset_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "asset_id parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: asset_id (string) [required]"),
@@ -58,8 +58,6 @@ func HandleBusinessassetgroup_delete_contained_adaccounts(ctx context.Context, r
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Businessassetgroup_delete_contained_adaccounts(accessToken, args)
 	if err != nil {
@@ -78,20 +76,18 @@ func HandleBusinessassetgroup_delete_contained_adaccounts(ctx context.Context, r
 // Businessassetgroup_delete_contained_adaccounts performs DELETE contained_adaccounts for BusinessAssetGroup
 func Businessassetgroup_delete_contained_adaccounts(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/contained_adaccounts")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

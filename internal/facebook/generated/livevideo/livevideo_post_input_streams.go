@@ -15,8 +15,7 @@ import (
 
 // ToolLivevideo_post_input_streams returns the MCP tool definition for livevideo_post_input_streams
 func ToolLivevideo_post_input_streams() mcp.Tool {
-	
-	
+
 	return mcp.NewTool("livevideo_post_input_streams",
 		mcp.WithDescription("POST input_streams for LiveVideo"),
 	)
@@ -32,8 +31,6 @@ func HandleLivevideo_post_input_streams(ctx context.Context, request mcp.CallToo
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the API method
 	result, err := Livevideo_post_input_streams(accessToken, args)
@@ -53,14 +50,11 @@ func HandleLivevideo_post_input_streams(ctx context.Context, request mcp.CallToo
 // Livevideo_post_input_streams performs POST input_streams for LiveVideo
 func Livevideo_post_input_streams(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/input_streams")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response

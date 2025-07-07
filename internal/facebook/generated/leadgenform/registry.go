@@ -18,7 +18,6 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolLeadgenform_get_())
 	tools = append(tools, ToolLeadgenform_post_())
 
-
 	return tools
 }
 
@@ -31,7 +30,6 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers["leadgenform_post_test_leads"] = HandleLeadgenform_post_test_leads
 	handlers["leadgenform_get_"] = HandleLeadgenform_get_
 	handlers["leadgenform_post_"] = HandleLeadgenform_post_
-
 
 	return handlers
 }

@@ -15,7 +15,7 @@ import (
 
 // ToolAdaccount_delete_advideos returns the MCP tool definition for adaccount_delete_advideos
 func ToolAdaccount_delete_advideos() mcp.Tool {
-	
+
 	// Params object accepts: video_id (string)
 	return mcp.NewTool("adaccount_delete_advideos",
 		mcp.WithDescription("DELETE advideos for AdAccount"),
@@ -27,9 +27,9 @@ func ToolAdaccount_delete_advideos() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"video_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "video_id parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: video_id (string) [required]"),
@@ -69,8 +69,6 @@ func HandleAdaccount_delete_advideos(ctx context.Context, request mcp.CallToolRe
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Adaccount_delete_advideos(accessToken, args)
 	if err != nil {
@@ -89,35 +87,33 @@ func HandleAdaccount_delete_advideos(ctx context.Context, request mcp.CallToolRe
 // Adaccount_delete_advideos performs DELETE advideos for AdAccount
 func Adaccount_delete_advideos(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	// Extract account_id for URL construction
 	accountId, ok := args["account_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_delete_advideos")
 	}
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%sadvideos", accountId)
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-		
-	}
 
+	}
 
 	// Make HTTP request
 	var resp *http.Response

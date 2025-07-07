@@ -4,30 +4,30 @@ package constants
 
 // AdActivityFields contains field name constants for AdActivity objects
 var AdActivityFields = struct {
-	ActorId string
-	ActorName string
-	ApplicationId string
-	ApplicationName string
-	DateTimeInTimezone string
-	EventTime string
-	EventType string
-	ExtraData string
-	ObjectId string
-	ObjectName string
-	ObjectType string
+	ActorId             string
+	ActorName           string
+	ApplicationId       string
+	ApplicationName     string
+	DateTimeInTimezone  string
+	EventTime           string
+	EventType           string
+	ExtraData           string
+	ObjectId            string
+	ObjectName          string
+	ObjectType          string
 	TranslatedEventType string
 }{
-	ActorId: "actor_id",
-	ActorName: "actor_name",
-	ApplicationId: "application_id",
-	ApplicationName: "application_name",
-	DateTimeInTimezone: "date_time_in_timezone",
-	EventTime: "event_time",
-	EventType: "event_type",
-	ExtraData: "extra_data",
-	ObjectId: "object_id",
-	ObjectName: "object_name",
-	ObjectType: "object_type",
+	ActorId:             "actor_id",
+	ActorName:           "actor_name",
+	ApplicationId:       "application_id",
+	ApplicationName:     "application_name",
+	DateTimeInTimezone:  "date_time_in_timezone",
+	EventTime:           "event_time",
+	EventType:           "event_type",
+	ExtraData:           "extra_data",
+	ObjectId:            "object_id",
+	ObjectName:          "object_name",
+	ObjectType:          "object_type",
 	TranslatedEventType: "translated_event_type",
 }
 

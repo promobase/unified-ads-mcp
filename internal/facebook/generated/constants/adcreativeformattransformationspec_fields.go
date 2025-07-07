@@ -5,10 +5,10 @@ package constants
 // AdCreativeFormatTransformationSpecFields contains field name constants for AdCreativeFormatTransformationSpec objects
 var AdCreativeFormatTransformationSpecFields = struct {
 	DataSource string
-	Format string
+	Format     string
 }{
 	DataSource: "data_source",
-	Format: "format",
+	Format:     "format",
 }
 
 // AdCreativeFormatTransformationSpecFieldsList contains all available fields for AdCreativeFormatTransformationSpec objects

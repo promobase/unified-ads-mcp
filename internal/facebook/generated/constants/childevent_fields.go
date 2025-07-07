@@ -4,13 +4,13 @@ package constants
 
 // ChildEventFields contains field name constants for ChildEvent objects
 var ChildEventFields = struct {
-	EndTime string
-	Id string
+	EndTime   string
+	Id        string
 	StartTime string
 	TicketUri string
 }{
-	EndTime: "end_time",
-	Id: "id",
+	EndTime:   "end_time",
+	Id:        "id",
 	StartTime: "start_time",
 	TicketUri: "ticket_uri",
 }

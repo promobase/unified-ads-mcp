@@ -15,7 +15,7 @@ import (
 
 // ToolAdvideo_post_collaborators returns the MCP tool definition for advideo_post_collaborators
 func ToolAdvideo_post_collaborators() mcp.Tool {
-	
+
 	// Params object accepts: target_id (string)
 	return mcp.NewTool("advideo_post_collaborators",
 		mcp.WithDescription("POST collaborators for AdVideo"),
@@ -23,9 +23,9 @@ func ToolAdvideo_post_collaborators() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"target_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "target_id parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: target_id (string) [required]"),
@@ -58,8 +58,6 @@ func HandleAdvideo_post_collaborators(ctx context.Context, request mcp.CallToolR
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Advideo_post_collaborators(accessToken, args)
 	if err != nil {
@@ -78,20 +76,18 @@ func HandleAdvideo_post_collaborators(ctx context.Context, request mcp.CallToolR
 // Advideo_post_collaborators performs POST collaborators for AdVideo
 func Advideo_post_collaborators(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/collaborators")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

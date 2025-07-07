@@ -4,6 +4,6 @@ package types
 
 // BusinessPageRequest represents a Facebook BusinessPageRequest object
 type BusinessPageRequest struct {
-	Id string `json:"id"`
-	Page *Page `json:"page"`
+	Id   string `json:"id"`
+	Page *Page  `json:"page"`
 }

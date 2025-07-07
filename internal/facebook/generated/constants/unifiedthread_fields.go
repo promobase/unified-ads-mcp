@@ -4,41 +4,41 @@ package constants
 
 // UnifiedThreadFields contains field name constants for UnifiedThread objects
 var UnifiedThreadFields = struct {
-	CanReply string
-	Folder string
+	CanReply           string
+	Folder             string
 	FormerParticipants string
-	Id string
-	IsSubscribed string
-	Link string
-	LinkedGroup string
-	MessageCount string
-	Name string
-	Participants string
-	ScopedThreadKey string
-	Senders string
-	Snippet string
-	Subject string
-	UnreadCount string
-	UpdatedTime string
-	Wallpaper string
+	Id                 string
+	IsSubscribed       string
+	Link               string
+	LinkedGroup        string
+	MessageCount       string
+	Name               string
+	Participants       string
+	ScopedThreadKey    string
+	Senders            string
+	Snippet            string
+	Subject            string
+	UnreadCount        string
+	UpdatedTime        string
+	Wallpaper          string
 }{
-	CanReply: "can_reply",
-	Folder: "folder",
+	CanReply:           "can_reply",
+	Folder:             "folder",
 	FormerParticipants: "former_participants",
-	Id: "id",
-	IsSubscribed: "is_subscribed",
-	Link: "link",
-	LinkedGroup: "linked_group",
-	MessageCount: "message_count",
-	Name: "name",
-	Participants: "participants",
-	ScopedThreadKey: "scoped_thread_key",
-	Senders: "senders",
-	Snippet: "snippet",
-	Subject: "subject",
-	UnreadCount: "unread_count",
-	UpdatedTime: "updated_time",
-	Wallpaper: "wallpaper",
+	Id:                 "id",
+	IsSubscribed:       "is_subscribed",
+	Link:               "link",
+	LinkedGroup:        "linked_group",
+	MessageCount:       "message_count",
+	Name:               "name",
+	Participants:       "participants",
+	ScopedThreadKey:    "scoped_thread_key",
+	Senders:            "senders",
+	Snippet:            "snippet",
+	Subject:            "subject",
+	UnreadCount:        "unread_count",
+	UpdatedTime:        "updated_time",
+	Wallpaper:          "wallpaper",
 }
 
 // UnifiedThreadFieldsList contains all available fields for UnifiedThread objects

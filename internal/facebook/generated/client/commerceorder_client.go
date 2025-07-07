@@ -21,24 +21,21 @@ func NewCommerceOrderClient(accessToken string) *CommerceOrderClient {
 	}
 }
 
-
 // Commerceorder_post_acknowledge_order performs POST acknowledge_order for CommerceOrder
 func (c *CommerceOrderClient) Commerceorder_post_acknowledge_order(args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/acknowledge_order")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -69,43 +66,40 @@ func (c *CommerceOrderClient) Commerceorder_post_acknowledge_order(args map[stri
 
 	return result, nil
 }
-
 
 // Commerceorder_get_cancellations performs GET cancellations for CommerceOrder
 func (c *CommerceOrderClient) Commerceorder_get_cancellations(args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/cancellations")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -136,25 +130,22 @@ func (c *CommerceOrderClient) Commerceorder_get_cancellations(args map[string]in
 
 	return result, nil
 }
-
 
 // Commerceorder_post_cancellations performs POST cancellations for CommerceOrder
 func (c *CommerceOrderClient) Commerceorder_post_cancellations(args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/cancellations")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -185,25 +176,22 @@ func (c *CommerceOrderClient) Commerceorder_post_cancellations(args map[string]i
 
 	return result, nil
 }
-
 
 // Commerceorder_post_item_updates performs POST item_updates for CommerceOrder
 func (c *CommerceOrderClient) Commerceorder_post_item_updates(args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/item_updates")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -234,43 +222,40 @@ func (c *CommerceOrderClient) Commerceorder_post_item_updates(args map[string]in
 
 	return result, nil
 }
-
 
 // Commerceorder_get_items performs GET items for CommerceOrder
 func (c *CommerceOrderClient) Commerceorder_get_items(args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/items")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -301,43 +286,40 @@ func (c *CommerceOrderClient) Commerceorder_get_items(args map[string]interface{
 
 	return result, nil
 }
-
 
 // Commerceorder_get_payments performs GET payments for CommerceOrder
 func (c *CommerceOrderClient) Commerceorder_get_payments(args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/payments")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -368,43 +350,40 @@ func (c *CommerceOrderClient) Commerceorder_get_payments(args map[string]interfa
 
 	return result, nil
 }
-
 
 // Commerceorder_get_promotion_details performs GET promotion_details for CommerceOrder
 func (c *CommerceOrderClient) Commerceorder_get_promotion_details(args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/promotion_details")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -435,43 +414,40 @@ func (c *CommerceOrderClient) Commerceorder_get_promotion_details(args map[strin
 
 	return result, nil
 }
-
 
 // Commerceorder_get_promotions performs GET promotions for CommerceOrder
 func (c *CommerceOrderClient) Commerceorder_get_promotions(args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/promotions")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -502,43 +478,40 @@ func (c *CommerceOrderClient) Commerceorder_get_promotions(args map[string]inter
 
 	return result, nil
 }
-
 
 // Commerceorder_get_refunds performs GET refunds for CommerceOrder
 func (c *CommerceOrderClient) Commerceorder_get_refunds(args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/refunds")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -569,25 +542,22 @@ func (c *CommerceOrderClient) Commerceorder_get_refunds(args map[string]interfac
 
 	return result, nil
 }
-
 
 // Commerceorder_post_refunds performs POST refunds for CommerceOrder
 func (c *CommerceOrderClient) Commerceorder_post_refunds(args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/refunds")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -618,49 +588,46 @@ func (c *CommerceOrderClient) Commerceorder_post_refunds(args map[string]interfa
 
 	return result, nil
 }
-
 
 // Commerceorder_get_returns performs GET returns for CommerceOrder
 func (c *CommerceOrderClient) Commerceorder_get_returns(args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/returns")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -691,25 +658,22 @@ func (c *CommerceOrderClient) Commerceorder_get_returns(args map[string]interfac
 
 	return result, nil
 }
-
 
 // Commerceorder_post_returns performs POST returns for CommerceOrder
 func (c *CommerceOrderClient) Commerceorder_post_returns(args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/returns")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -740,43 +704,40 @@ func (c *CommerceOrderClient) Commerceorder_post_returns(args map[string]interfa
 
 	return result, nil
 }
-
 
 // Commerceorder_get_shipments performs GET shipments for CommerceOrder
 func (c *CommerceOrderClient) Commerceorder_get_shipments(args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/shipments")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -807,25 +768,22 @@ func (c *CommerceOrderClient) Commerceorder_get_shipments(args map[string]interf
 
 	return result, nil
 }
-
 
 // Commerceorder_post_shipments performs POST shipments for CommerceOrder
 func (c *CommerceOrderClient) Commerceorder_post_shipments(args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/shipments")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -856,25 +814,22 @@ func (c *CommerceOrderClient) Commerceorder_post_shipments(args map[string]inter
 
 	return result, nil
 }
-
 
 // Commerceorder_post_update_shipment performs POST update_shipment for CommerceOrder
 func (c *CommerceOrderClient) Commerceorder_post_update_shipment(args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/update_shipment")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -906,42 +861,39 @@ func (c *CommerceOrderClient) Commerceorder_post_update_shipment(args map[string
 	return result, nil
 }
 
-
 // Commerceorder_get_ performs GET  for CommerceOrder
 func (c *CommerceOrderClient) Commerceorder_get_(args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -972,4 +924,3 @@ func (c *CommerceOrderClient) Commerceorder_get_(args map[string]interface{}) (i
 
 	return result, nil
 }
-

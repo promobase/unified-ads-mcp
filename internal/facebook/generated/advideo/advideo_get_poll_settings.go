@@ -16,8 +16,7 @@ import (
 
 // ToolAdvideo_get_poll_settings returns the MCP tool definition for advideo_get_poll_settings
 func ToolAdvideo_get_poll_settings() mcp.Tool {
-	
-	
+
 	return mcp.NewTool("advideo_get_poll_settings",
 		mcp.WithDescription("GET poll_settings for AdVideo"),
 		mcp.WithArray("fields",
@@ -71,8 +70,6 @@ func HandleAdvideo_get_poll_settings(ctx context.Context, request mcp.CallToolRe
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Advideo_get_poll_settings(accessToken, args)
 	if err != nil {
@@ -91,38 +88,36 @@ func HandleAdvideo_get_poll_settings(ctx context.Context, request mcp.CallToolRe
 // Advideo_get_poll_settings performs GET poll_settings for AdVideo
 func Advideo_get_poll_settings(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/poll_settings")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

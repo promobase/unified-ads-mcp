@@ -4,6 +4,6 @@ package types
 
 // WhatsAppPaymentCapabilities represents a Facebook WhatsAppPaymentCapabilities object
 type WhatsAppPaymentCapabilities struct {
-	Is_enabled bool `json:"is_enabled"`
+	Is_enabled                 bool                     `json:"is_enabled"`
 	Payment_capability_details []map[string]interface{} `json:"payment_capability_details"`
 }

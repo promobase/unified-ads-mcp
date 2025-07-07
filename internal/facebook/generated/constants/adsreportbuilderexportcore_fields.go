@@ -4,39 +4,39 @@ package constants
 
 // AdsReportBuilderExportCoreFields contains field name constants for AdsReportBuilderExportCore objects
 var AdsReportBuilderExportCoreFields = struct {
-	AsyncPercentCompletion string
-	AsyncReportUrl string
-	AsyncStatus string
-	ClientCreationValue string
-	ExpiryTime string
-	ExportDownloadTime string
-	ExportFormat string
-	ExportName string
-	ExportType string
-	HasSeen string
-	Id string
-	IsSharing string
+	AsyncPercentCompletion    string
+	AsyncReportUrl            string
+	AsyncStatus               string
+	ClientCreationValue       string
+	ExpiryTime                string
+	ExportDownloadTime        string
+	ExportFormat              string
+	ExportName                string
+	ExportType                string
+	HasSeen                   string
+	Id                        string
+	IsSharing                 string
 	LinkSharingExpirationTime string
-	LinkSharingUri string
-	TimeCompleted string
-	TimeStart string
+	LinkSharingUri            string
+	TimeCompleted             string
+	TimeStart                 string
 }{
-	AsyncPercentCompletion: "async_percent_completion",
-	AsyncReportUrl: "async_report_url",
-	AsyncStatus: "async_status",
-	ClientCreationValue: "client_creation_value",
-	ExpiryTime: "expiry_time",
-	ExportDownloadTime: "export_download_time",
-	ExportFormat: "export_format",
-	ExportName: "export_name",
-	ExportType: "export_type",
-	HasSeen: "has_seen",
-	Id: "id",
-	IsSharing: "is_sharing",
+	AsyncPercentCompletion:    "async_percent_completion",
+	AsyncReportUrl:            "async_report_url",
+	AsyncStatus:               "async_status",
+	ClientCreationValue:       "client_creation_value",
+	ExpiryTime:                "expiry_time",
+	ExportDownloadTime:        "export_download_time",
+	ExportFormat:              "export_format",
+	ExportName:                "export_name",
+	ExportType:                "export_type",
+	HasSeen:                   "has_seen",
+	Id:                        "id",
+	IsSharing:                 "is_sharing",
 	LinkSharingExpirationTime: "link_sharing_expiration_time",
-	LinkSharingUri: "link_sharing_uri",
-	TimeCompleted: "time_completed",
-	TimeStart: "time_start",
+	LinkSharingUri:            "link_sharing_uri",
+	TimeCompleted:             "time_completed",
+	TimeStart:                 "time_start",
 }
 
 // AdsReportBuilderExportCoreFieldsList contains all available fields for AdsReportBuilderExportCore objects

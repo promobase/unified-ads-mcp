@@ -16,7 +16,6 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolProductfeedrule_get_())
 	tools = append(tools, ToolProductfeedrule_post_())
 
-
 	return tools
 }
 
@@ -27,7 +26,6 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers["productfeedrule_delete_"] = HandleProductfeedrule_delete_
 	handlers["productfeedrule_get_"] = HandleProductfeedrule_get_
 	handlers["productfeedrule_post_"] = HandleProductfeedrule_post_
-
 
 	return handlers
 }

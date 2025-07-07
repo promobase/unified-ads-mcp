@@ -4,7 +4,7 @@ package types
 
 // BusinessVideoTBusinessFolderPathItem represents a Facebook BusinessVideoTBusinessFolderPathItem object
 type BusinessVideoTBusinessFolderPathItem struct {
-	Id string `json:"id"`
+	Id               string `json:"id"`
 	Parent_folder_id string `json:"parent_folder_id"`
-	Type_ string `json:"type"`
+	Type_            string `json:"type"`
 }

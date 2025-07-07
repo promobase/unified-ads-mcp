@@ -15,14 +15,14 @@ import (
 
 // ToolBusinessassetgroup_post_ returns the MCP tool definition for businessassetgroup_post_
 func ToolBusinessassetgroup_post_() mcp.Tool {
-	
+
 	// Params object accepts: name (string)
 	return mcp.NewTool("businessassetgroup_post_",
 		mcp.WithDescription("POST  for BusinessAssetGroup"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
 				},
 			}),
@@ -54,8 +54,6 @@ func HandleBusinessassetgroup_post_(ctx context.Context, request mcp.CallToolReq
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Businessassetgroup_post_(accessToken, args)
 	if err != nil {
@@ -74,20 +72,18 @@ func HandleBusinessassetgroup_post_(ctx context.Context, request mcp.CallToolReq
 // Businessassetgroup_post_ performs POST  for BusinessAssetGroup
 func Businessassetgroup_post_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

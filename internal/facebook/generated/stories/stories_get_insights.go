@@ -23,10 +23,10 @@ func ToolStories_get_insights() mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"metric": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "metric parameter",
-					"enum": []string{ "PAGES_FB_STORY_REPLIES", "PAGES_FB_STORY_SHARES", "PAGES_FB_STORY_STICKER_INTERACTIONS", "PAGES_FB_STORY_THREAD_LIGHTWEIGHT_REACTIONS", "PAGE_STORY_IMPRESSIONS_BY_STORY_ID", "PAGE_STORY_IMPRESSIONS_BY_STORY_ID_UNIQUE", "STORY_INTERACTION" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"PAGES_FB_STORY_REPLIES", "PAGES_FB_STORY_SHARES", "PAGES_FB_STORY_STICKER_INTERACTIONS", "PAGES_FB_STORY_THREAD_LIGHTWEIGHT_REACTIONS", "PAGE_STORY_IMPRESSIONS_BY_STORY_ID", "PAGE_STORY_IMPRESSIONS_BY_STORY_ID_UNIQUE", "STORY_INTERACTION"},
+					"items":       map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: metric (array<enum>) [PAGES_FB_STORY_REPLIES, PAGES_FB_STORY_SHARES, PAGES_FB_STORY_STICKER_INTERACTIONS, PAGES_FB_STORY_THREAD_LIGHTWEIGHT_REACTIONS, PAGE_STORY_IMPRESSIONS_BY_STORY_ID, ...]"),
@@ -94,8 +94,6 @@ func HandleStories_get_insights(ctx context.Context, request mcp.CallToolRequest
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Stories_get_insights(accessToken, args)
 	if err != nil {
@@ -114,44 +112,42 @@ func HandleStories_get_insights(ctx context.Context, request mcp.CallToolRequest
 // Stories_get_insights performs GET insights for Stories
 func Stories_get_insights(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/insights")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

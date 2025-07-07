@@ -15,7 +15,6 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolAvatar_get_models())
 	tools = append(tools, ToolAvatar_get_())
 
-
 	return tools
 }
 
@@ -25,7 +24,6 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 
 	handlers["avatar_get_models"] = HandleAvatar_get_models
 	handlers["avatar_get_"] = HandleAvatar_get_
-
 
 	return handlers
 }

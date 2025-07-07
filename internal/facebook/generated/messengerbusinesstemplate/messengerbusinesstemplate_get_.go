@@ -17,7 +17,7 @@ import (
 // ToolMessengerbusinesstemplate_get_ returns the MCP tool definition for messengerbusinesstemplate_get_
 func ToolMessengerbusinesstemplate_get_() mcp.Tool {
 	// Available fields for MessengerBusinessTemplate: category, components, creation_time, id, language, language_count, last_updated_time, library_template_name, name, rejected_reason, rejection_reasons, specific_rejection_reasons, status
-	
+
 	return mcp.NewTool("messengerbusinesstemplate_get_",
 		mcp.WithDescription("GET  for MessengerBusinessTemplate"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleMessengerbusinesstemplate_get_(ctx context.Context, request mcp.CallT
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Messengerbusinesstemplate_get_(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleMessengerbusinesstemplate_get_(ctx context.Context, request mcp.CallT
 // Messengerbusinesstemplate_get_ performs GET  for MessengerBusinessTemplate
 func Messengerbusinesstemplate_get_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

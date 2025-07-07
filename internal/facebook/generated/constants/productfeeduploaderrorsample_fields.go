@@ -4,13 +4,13 @@ package constants
 
 // ProductFeedUploadErrorSampleFields contains field name constants for ProductFeedUploadErrorSample objects
 var ProductFeedUploadErrorSampleFields = struct {
-	Id string
+	Id         string
 	RetailerId string
-	RowNumber string
+	RowNumber  string
 }{
-	Id: "id",
+	Id:         "id",
 	RetailerId: "retailer_id",
-	RowNumber: "row_number",
+	RowNumber:  "row_number",
 }
 
 // ProductFeedUploadErrorSampleFieldsList contains all available fields for ProductFeedUploadErrorSample objects

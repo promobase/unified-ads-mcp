@@ -9,14 +9,13 @@ import (
 	"net/http"
 	"net/url"
 
-	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/shared"
+
+	"github.com/mark3labs/mcp-go/mcp"
 )
 
 // ToolAd_delete_ returns the MCP tool definition for ad_delete_
 func ToolAd_delete_() mcp.Tool {
-	
-	
 	return mcp.NewTool("ad_delete_",
 		mcp.WithDescription("DELETE  for Ad"),
 		mcp.WithString("ad_id",
@@ -44,8 +43,6 @@ func HandleAd_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Ca
 	}
 	args["ad_id"] = ad_id
 
-
-
 	// Call the API method
 	result, err := Ad_delete_(accessToken, args)
 	if err != nil {
@@ -64,27 +61,24 @@ func HandleAd_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Ca
 // Ad_delete_ performs DELETE  for Ad
 func Ad_delete_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	// Extract ad_id for URL construction
 	adId, ok := args["ad_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("ad_id is required for ad_delete_")
 	}
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/%s", adId)
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["ad_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "ad_id" != "ad_id" {
 			urlParams.Set("ad_id", fmt.Sprintf("%v", val))
 		}
-		
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response

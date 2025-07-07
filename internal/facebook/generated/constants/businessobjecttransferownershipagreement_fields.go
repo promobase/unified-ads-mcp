@@ -4,15 +4,15 @@ package constants
 
 // BusinessObjectTransferOwnershipAgreementFields contains field name constants for BusinessObjectTransferOwnershipAgreement objects
 var BusinessObjectTransferOwnershipAgreementFields = struct {
-	Id string
-	ReceivingBusiness string
+	Id                 string
+	ReceivingBusiness  string
 	RequestingBusiness string
-	Status string
+	Status             string
 }{
-	Id: "id",
-	ReceivingBusiness: "receiving_business",
+	Id:                 "id",
+	ReceivingBusiness:  "receiving_business",
 	RequestingBusiness: "requesting_business",
-	Status: "status",
+	Status:             "status",
 }
 
 // BusinessObjectTransferOwnershipAgreementFieldsList contains all available fields for BusinessObjectTransferOwnershipAgreement objects

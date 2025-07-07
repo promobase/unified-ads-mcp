@@ -5,20 +5,20 @@ package constants
 // VideoCopyrightRuleFields contains field name constants for VideoCopyrightRule objects
 var VideoCopyrightRuleFields = struct {
 	ConditionGroups string
-	Copyrights string
-	CreatedDate string
-	Creator string
-	Id string
-	IsInMigration string
-	Name string
+	Copyrights      string
+	CreatedDate     string
+	Creator         string
+	Id              string
+	IsInMigration   string
+	Name            string
 }{
 	ConditionGroups: "condition_groups",
-	Copyrights: "copyrights",
-	CreatedDate: "created_date",
-	Creator: "creator",
-	Id: "id",
-	IsInMigration: "is_in_migration",
-	Name: "name",
+	Copyrights:      "copyrights",
+	CreatedDate:     "created_date",
+	Creator:         "creator",
+	Id:              "id",
+	IsInMigration:   "is_in_migration",
+	Name:            "name",
 }
 
 // VideoCopyrightRuleFieldsList contains all available fields for VideoCopyrightRule objects

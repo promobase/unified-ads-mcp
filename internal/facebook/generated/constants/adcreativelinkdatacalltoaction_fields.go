@@ -5,10 +5,10 @@ package constants
 // AdCreativeLinkDataCallToActionFields contains field name constants for AdCreativeLinkDataCallToAction objects
 var AdCreativeLinkDataCallToActionFields = struct {
 	FieldType string
-	Value string
+	Value     string
 }{
 	FieldType: "type",
-	Value: "value",
+	Value:     "value",
 }
 
 // AdCreativeLinkDataCallToActionFieldsList contains all available fields for AdCreativeLinkDataCallToAction objects

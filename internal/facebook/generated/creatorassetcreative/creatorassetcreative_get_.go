@@ -17,7 +17,7 @@ import (
 // ToolCreatorassetcreative_get_ returns the MCP tool definition for creatorassetcreative_get_
 func ToolCreatorassetcreative_get_() mcp.Tool {
 	// Available fields for CreatorAssetCreative: id, image_url, moderation_status, product_item_retailer_id, product_url, retailer_id, video_url
-	
+
 	return mcp.NewTool("creatorassetcreative_get_",
 		mcp.WithDescription("GET  for CreatorAssetCreative"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleCreatorassetcreative_get_(ctx context.Context, request mcp.CallToolRe
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Creatorassetcreative_get_(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleCreatorassetcreative_get_(ctx context.Context, request mcp.CallToolRe
 // Creatorassetcreative_get_ performs GET  for CreatorAssetCreative
 func Creatorassetcreative_get_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

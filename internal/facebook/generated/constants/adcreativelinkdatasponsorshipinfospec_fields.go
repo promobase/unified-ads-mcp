@@ -5,10 +5,10 @@ package constants
 // AdCreativeLinkDataSponsorshipInfoSpecFields contains field name constants for AdCreativeLinkDataSponsorshipInfoSpec objects
 var AdCreativeLinkDataSponsorshipInfoSpecFields = struct {
 	SponsorImageUrl string
-	SponsorName string
+	SponsorName     string
 }{
 	SponsorImageUrl: "sponsor_image_url",
-	SponsorName: "sponsor_name",
+	SponsorName:     "sponsor_name",
 }
 
 // AdCreativeLinkDataSponsorshipInfoSpecFieldsList contains all available fields for AdCreativeLinkDataSponsorshipInfoSpec objects

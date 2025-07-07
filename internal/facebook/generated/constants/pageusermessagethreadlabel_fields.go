@@ -4,10 +4,10 @@ package constants
 
 // PageUserMessageThreadLabelFields contains field name constants for PageUserMessageThreadLabel objects
 var PageUserMessageThreadLabelFields = struct {
-	Id string
+	Id            string
 	PageLabelName string
 }{
-	Id: "id",
+	Id:            "id",
 	PageLabelName: "page_label_name",
 }
 

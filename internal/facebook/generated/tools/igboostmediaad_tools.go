@@ -17,7 +17,6 @@ import (
 func GetIGBoostMediaAdTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// igboostmediaad_get_ tool
 	// Available fields for IGBoostMediaAd: ad_id, ad_status
 	igboostmediaad_get_Tool := mcp.NewTool("igboostmediaad_get_",
@@ -37,12 +36,10 @@ func GetIGBoostMediaAdTools() []mcp.Tool {
 	)
 	tools = append(tools, igboostmediaad_get_Tool)
 
-
 	return tools
 }
 
 // IGBoostMediaAd handlers
-
 
 // HandleIgboostmediaad_get_ handles the igboostmediaad_get_ tool with context-based auth
 func HandleIgboostmediaad_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleIgboostmediaad_get_(ctx context.Context, request mcp.CallToolRequest)
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Igboostmediaad_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleIgboostmediaad_get_(ctx context.Context, request mcp.CallToolRequest)
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

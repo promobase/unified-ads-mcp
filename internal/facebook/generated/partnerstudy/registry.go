@@ -14,7 +14,6 @@ func GetTools() []mcp.Tool {
 
 	tools = append(tools, ToolPartnerstudy_get_())
 
-
 	return tools
 }
 
@@ -23,7 +22,6 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
 	handlers["partnerstudy_get_"] = HandlePartnerstudy_get_
-
 
 	return handlers
 }

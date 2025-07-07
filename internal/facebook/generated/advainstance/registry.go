@@ -14,7 +14,6 @@ func GetTools() []mcp.Tool {
 
 	tools = append(tools, ToolAdvainstance_get_())
 
-
 	return tools
 }
 
@@ -23,7 +22,6 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
 	handlers["advainstance_get_"] = HandleAdvainstance_get_
-
 
 	return handlers
 }

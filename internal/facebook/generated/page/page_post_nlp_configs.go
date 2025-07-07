@@ -15,39 +15,39 @@ import (
 
 // ToolPage_post_nlp_configs returns the MCP tool definition for page_post_nlp_configs
 func ToolPage_post_nlp_configs() mcp.Tool {
-	
+
 	// Params object accepts: api_version (Object), custom_token (string), model (pagenlp_configs_model_enum_param), n_best (unsigned int), nlp_enabled (bool), other_language_support (map), verbose (bool)
 	return mcp.NewTool("page_post_nlp_configs",
 		mcp.WithDescription("POST nlp_configs for Page"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"api_version": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "api_version parameter",
 				},
 				"custom_token": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "custom_token parameter",
 				},
 				"model": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "model parameter",
-					"enum": []string{ "ARABIC", "CHINESE", "CROATIAN", "CUSTOM", "DANISH", "DUTCH", "ENGLISH", "FRENCH_STANDARD", "GEORGIAN", "GERMAN_STANDARD", "GREEK", "HEBREW", "HUNGARIAN", "IRISH", "ITALIAN_STANDARD", "KOREAN", "NORWEGIAN_BOKMAL", "POLISH", "PORTUGUESE", "ROMANIAN", "SPANISH", "SWEDISH", "VIETNAMESE" },
+					"enum":        []string{"ARABIC", "CHINESE", "CROATIAN", "CUSTOM", "DANISH", "DUTCH", "ENGLISH", "FRENCH_STANDARD", "GEORGIAN", "GERMAN_STANDARD", "GREEK", "HEBREW", "HUNGARIAN", "IRISH", "ITALIAN_STANDARD", "KOREAN", "NORWEGIAN_BOKMAL", "POLISH", "PORTUGUESE", "ROMANIAN", "SPANISH", "SWEDISH", "VIETNAMESE"},
 				},
 				"n_best": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "n_best parameter",
 				},
 				"nlp_enabled": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "nlp_enabled parameter",
 				},
 				"other_language_support": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "other_language_support parameter",
 				},
 				"verbose": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "verbose parameter",
 				},
 			}),
@@ -79,8 +79,6 @@ func HandlePage_post_nlp_configs(ctx context.Context, request mcp.CallToolReques
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Page_post_nlp_configs(accessToken, args)
 	if err != nil {
@@ -99,20 +97,18 @@ func HandlePage_post_nlp_configs(ctx context.Context, request mcp.CallToolReques
 // Page_post_nlp_configs performs POST nlp_configs for Page
 func Page_post_nlp_configs(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/nlp_configs")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

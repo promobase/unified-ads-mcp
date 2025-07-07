@@ -17,7 +17,7 @@ import (
 // ToolAdtopline_get_ returns the MCP tool definition for adtopline_get_
 func ToolAdtopline_get_() mcp.Tool {
 	// Available fields for AdTopline: account_id, client_approval_date, created_by, created_date, description, flight_end_date, flight_start_date, func_cap_amount, func_cap_amount_with_offset, func_line_amount, func_line_amount_with_offset, func_price, func_price_with_offset, gender, id, impressions, io_number, is_bonus_line, keywords, last_updated_by, last_updated_date, line_number, line_position, line_type, location, max_age, max_budget, min_age, price_per_trp, product_type, rev_assurance_approval_date, targets, trp_updated_time, trp_value, uom
-	
+
 	return mcp.NewTool("adtopline_get_",
 		mcp.WithDescription("GET  for AdTopline"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleAdtopline_get_(ctx context.Context, request mcp.CallToolRequest) (*mc
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Adtopline_get_(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleAdtopline_get_(ctx context.Context, request mcp.CallToolRequest) (*mc
 // Adtopline_get_ performs GET  for AdTopline
 func Adtopline_get_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

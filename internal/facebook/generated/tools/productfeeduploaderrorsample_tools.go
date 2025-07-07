@@ -17,7 +17,6 @@ import (
 func GetProductFeedUploadErrorSampleTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// productfeeduploaderrorsample_get_ tool
 	// Available fields for ProductFeedUploadErrorSample: id, retailer_id, row_number
 	productfeeduploaderrorsample_get_Tool := mcp.NewTool("productfeeduploaderrorsample_get_",
@@ -37,12 +36,10 @@ func GetProductFeedUploadErrorSampleTools() []mcp.Tool {
 	)
 	tools = append(tools, productfeeduploaderrorsample_get_Tool)
 
-
 	return tools
 }
 
 // ProductFeedUploadErrorSample handlers
-
 
 // HandleProductfeeduploaderrorsample_get_ handles the productfeeduploaderrorsample_get_ tool with context-based auth
 func HandleProductfeeduploaderrorsample_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleProductfeeduploaderrorsample_get_(ctx context.Context, request mcp.Ca
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Productfeeduploaderrorsample_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleProductfeeduploaderrorsample_get_(ctx context.Context, request mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

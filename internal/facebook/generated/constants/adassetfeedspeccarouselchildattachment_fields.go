@@ -4,27 +4,27 @@ package constants
 
 // AdAssetFeedSpecCarouselChildAttachmentFields contains field name constants for AdAssetFeedSpecCarouselChildAttachment objects
 var AdAssetFeedSpecCarouselChildAttachmentFields = struct {
-	BodyLabel string
+	BodyLabel             string
 	CallToActionTypeLabel string
-	CaptionLabel string
-	DescriptionLabel string
-	ImageLabel string
-	LinkUrlLabel string
-	PhoneDataIdsLabel string
-	StaticCard string
-	TitleLabel string
-	VideoLabel string
+	CaptionLabel          string
+	DescriptionLabel      string
+	ImageLabel            string
+	LinkUrlLabel          string
+	PhoneDataIdsLabel     string
+	StaticCard            string
+	TitleLabel            string
+	VideoLabel            string
 }{
-	BodyLabel: "body_label",
+	BodyLabel:             "body_label",
 	CallToActionTypeLabel: "call_to_action_type_label",
-	CaptionLabel: "caption_label",
-	DescriptionLabel: "description_label",
-	ImageLabel: "image_label",
-	LinkUrlLabel: "link_url_label",
-	PhoneDataIdsLabel: "phone_data_ids_label",
-	StaticCard: "static_card",
-	TitleLabel: "title_label",
-	VideoLabel: "video_label",
+	CaptionLabel:          "caption_label",
+	DescriptionLabel:      "description_label",
+	ImageLabel:            "image_label",
+	LinkUrlLabel:          "link_url_label",
+	PhoneDataIdsLabel:     "phone_data_ids_label",
+	StaticCard:            "static_card",
+	TitleLabel:            "title_label",
+	VideoLabel:            "video_label",
 }
 
 // AdAssetFeedSpecCarouselChildAttachmentFieldsList contains all available fields for AdAssetFeedSpecCarouselChildAttachment objects

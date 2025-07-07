@@ -15,7 +15,7 @@ import (
 
 // ToolProductfeed_post_supplementary_feed_assocs returns the MCP tool definition for productfeed_post_supplementary_feed_assocs
 func ToolProductfeed_post_supplementary_feed_assocs() mcp.Tool {
-	
+
 	// Params object accepts: assoc_data (list<map>)
 	return mcp.NewTool("productfeed_post_supplementary_feed_assocs",
 		mcp.WithDescription("POST supplementary_feed_assocs for ProductFeed"),
@@ -23,10 +23,10 @@ func ToolProductfeed_post_supplementary_feed_assocs() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"assoc_data": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "assoc_data parameter",
-					"required": true,
-					"items": map[string]any{"type": "object"},
+					"required":    true,
+					"items":       map[string]any{"type": "object"},
 				},
 			}),
 			mcp.Description("Parameters object containing: assoc_data (array<object>) [required]"),
@@ -59,8 +59,6 @@ func HandleProductfeed_post_supplementary_feed_assocs(ctx context.Context, reque
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Productfeed_post_supplementary_feed_assocs(accessToken, args)
 	if err != nil {
@@ -79,20 +77,18 @@ func HandleProductfeed_post_supplementary_feed_assocs(ctx context.Context, reque
 // Productfeed_post_supplementary_feed_assocs performs POST supplementary_feed_assocs for ProductFeed
 func Productfeed_post_supplementary_feed_assocs(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/supplementary_feed_assocs")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

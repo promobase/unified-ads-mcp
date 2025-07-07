@@ -15,7 +15,7 @@ import (
 
 // ToolAdset_post_copies returns the MCP tool definition for adset_post_copies
 func ToolAdset_post_copies() mcp.Tool {
-	
+
 	// Params object accepts: campaign_id (string), create_dco_adset (bool), deep_copy (bool), end_time (datetime), rename_options (Object), start_time (datetime), status_option (adcampaigncopies_status_option_enum_param)
 	return mcp.NewTool("adset_post_copies",
 		mcp.WithDescription("POST copies for AdSet"),
@@ -26,33 +26,33 @@ func ToolAdset_post_copies() mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"campaign_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "campaign_id parameter",
 				},
 				"create_dco_adset": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "create_dco_adset parameter",
 				},
 				"deep_copy": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "deep_copy parameter",
 				},
 				"end_time": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "end_time parameter",
 				},
 				"rename_options": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "rename_options parameter",
 				},
 				"start_time": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "start_time parameter",
 				},
 				"status_option": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "status_option parameter",
-					"enum": []string{ "ACTIVE", "INHERITED_FROM_SOURCE", "PAUSED" },
+					"enum":        []string{"ACTIVE", "INHERITED_FROM_SOURCE", "PAUSED"},
 				},
 			}),
 			mcp.Description("Parameters object containing: campaign_id (string), create_dco_adset (boolean), deep_copy (boolean), end_time (datetime), rename_options (object), start_time (datetime), status_option (enum) [ACTIVE, INHERITED_FROM_SOURCE, PAUSED]"),
@@ -90,8 +90,6 @@ func HandleAdset_post_copies(ctx context.Context, request mcp.CallToolRequest) (
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Adset_post_copies(accessToken, args)
 	if err != nil {
@@ -110,35 +108,33 @@ func HandleAdset_post_copies(ctx context.Context, request mcp.CallToolRequest) (
 // Adset_post_copies performs POST copies for AdSet
 func Adset_post_copies(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	// Extract ad_set_id for URL construction
 	adSetId, ok := args["ad_set_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("ad_set_id is required for adset_post_copies")
 	}
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/%scopies", adSetId)
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["ad_set_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "ad_set_id" != "ad_set_id" {
 			urlParams.Set("ad_set_id", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "params" != "ad_set_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-		
-	}
 
+	}
 
 	// Make HTTP request
 	var resp *http.Response

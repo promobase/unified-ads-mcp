@@ -4,10 +4,10 @@ package constants
 
 // BusinessTagFields contains field name constants for BusinessTag objects
 var BusinessTagFields = struct {
-	Id string
+	Id   string
 	Name string
 }{
-	Id: "id",
+	Id:   "id",
 	Name: "name",
 }
 

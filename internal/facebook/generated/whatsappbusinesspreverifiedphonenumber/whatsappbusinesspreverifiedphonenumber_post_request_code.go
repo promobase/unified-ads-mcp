@@ -15,7 +15,7 @@ import (
 
 // ToolWhatsappbusinesspreverifiedphonenumber_post_request_code returns the MCP tool definition for whatsappbusinesspreverifiedphonenumber_post_request_code
 func ToolWhatsappbusinesspreverifiedphonenumber_post_request_code() mcp.Tool {
-	
+
 	// Params object accepts: code_method (whatsappbusinesspreverifiedphonenumberrequest_code_code_method_enum_param), language (string)
 	return mcp.NewTool("whatsappbusinesspreverifiedphonenumber_post_request_code",
 		mcp.WithDescription("POST request_code for WhatsAppBusinessPreVerifiedPhoneNumber"),
@@ -23,15 +23,15 @@ func ToolWhatsappbusinesspreverifiedphonenumber_post_request_code() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"code_method": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "code_method parameter",
-					"required": true,
-					"enum": []string{ "SMS", "VOICE" },
+					"required":    true,
+					"enum":        []string{"SMS", "VOICE"},
 				},
 				"language": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "language parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: code_method (enum) [SMS, VOICE] [required], language (string) [required]"),
@@ -64,8 +64,6 @@ func HandleWhatsappbusinesspreverifiedphonenumber_post_request_code(ctx context.
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Whatsappbusinesspreverifiedphonenumber_post_request_code(accessToken, args)
 	if err != nil {
@@ -84,20 +82,18 @@ func HandleWhatsappbusinesspreverifiedphonenumber_post_request_code(ctx context.
 // Whatsappbusinesspreverifiedphonenumber_post_request_code performs POST request_code for WhatsAppBusinessPreVerifiedPhoneNumber
 func Whatsappbusinesspreverifiedphonenumber_post_request_code(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/request_code")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

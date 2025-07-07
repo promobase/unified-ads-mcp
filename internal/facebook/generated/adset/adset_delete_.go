@@ -15,8 +15,7 @@ import (
 
 // ToolAdset_delete_ returns the MCP tool definition for adset_delete_
 func ToolAdset_delete_() mcp.Tool {
-	
-	
+
 	return mcp.NewTool("adset_delete_",
 		mcp.WithDescription("DELETE  for AdSet"),
 		mcp.WithString("ad_set_id",
@@ -44,8 +43,6 @@ func HandleAdset_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 	}
 	args["ad_set_id"] = ad_set_id
 
-
-
 	// Call the API method
 	result, err := Adset_delete_(accessToken, args)
 	if err != nil {
@@ -64,27 +61,25 @@ func HandleAdset_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 // Adset_delete_ performs DELETE  for AdSet
 func Adset_delete_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	// Extract ad_set_id for URL construction
 	adSetId, ok := args["ad_set_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("ad_set_id is required for adset_delete_")
 	}
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/%s", adSetId)
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["ad_set_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "ad_set_id" != "ad_set_id" {
 			urlParams.Set("ad_set_id", fmt.Sprintf("%v", val))
 		}
-		
-	}
 
+	}
 
 	// Make HTTP request
 	var resp *http.Response

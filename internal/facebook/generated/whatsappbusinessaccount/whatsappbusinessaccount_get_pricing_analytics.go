@@ -16,7 +16,7 @@ import (
 
 // ToolWhatsappbusinessaccount_get_pricing_analytics returns the MCP tool definition for whatsappbusinessaccount_get_pricing_analytics
 func ToolWhatsappbusinessaccount_get_pricing_analytics() mcp.Tool {
-	
+
 	// Params object accepts: country_codes (list<string>), dimensions (list<whatsappbusinessaccountpricing_analytics_dimensions_enum_param>), end (unsigned int), granularity (whatsappbusinessaccountpricing_analytics_granularity_enum_param), metric_types (list<whatsappbusinessaccountpricing_analytics_metric_types_enum_param>), phone_numbers (list<string>), pricing_categories (list<whatsappbusinessaccountpricing_analytics_pricing_categories_enum_param>), pricing_types (list<whatsappbusinessaccountpricing_analytics_pricing_types_enum_param>), start (unsigned int), tiers (list<string>)
 	return mcp.NewTool("whatsappbusinessaccount_get_pricing_analytics",
 		mcp.WithDescription("GET pricing_analytics for WhatsAppBusinessAccount"),
@@ -24,59 +24,59 @@ func ToolWhatsappbusinessaccount_get_pricing_analytics() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"country_codes": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "country_codes parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"dimensions": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "dimensions parameter",
-					"enum": []string{ "COUNTRY", "PHONE", "PRICING_CATEGORY", "PRICING_TYPE", "TIER" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"COUNTRY", "PHONE", "PRICING_CATEGORY", "PRICING_TYPE", "TIER"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"end": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "end parameter",
-					"required": true,
+					"required":    true,
 				},
 				"granularity": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "granularity parameter",
-					"required": true,
-					"enum": []string{ "DAILY", "HALF_HOUR", "MONTHLY" },
+					"required":    true,
+					"enum":        []string{"DAILY", "HALF_HOUR", "MONTHLY"},
 				},
 				"metric_types": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "metric_types parameter",
-					"enum": []string{ "COST", "VOLUME" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"COST", "VOLUME"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"phone_numbers": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "phone_numbers parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"pricing_categories": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "pricing_categories parameter",
-					"enum": []string{ "AUTHENTICATION", "AUTHENTICATION_INTERNATIONAL", "GROUP_MARKETING", "GROUP_SERVICE", "GROUP_UTILITY", "MARKETING", "MARKETING_LITE", "SERVICE", "UTILITY" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"AUTHENTICATION", "AUTHENTICATION_INTERNATIONAL", "GROUP_MARKETING", "GROUP_SERVICE", "GROUP_UTILITY", "MARKETING", "MARKETING_LITE", "SERVICE", "UTILITY"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"pricing_types": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "pricing_types parameter",
-					"enum": []string{ "FREE_CUSTOMER_SERVICE", "FREE_ENTRY_POINT", "REGULAR" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"FREE_CUSTOMER_SERVICE", "FREE_ENTRY_POINT", "REGULAR"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"start": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "start parameter",
-					"required": true,
+					"required":    true,
 				},
 				"tiers": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "tiers parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: country_codes (array<string>), dimensions (array<enum>) [COUNTRY, PHONE, PRICING_CATEGORY, PRICING_TYPE, TIER], end (integer) [required], granularity (enum) [DAILY, HALF_HOUR, MONTHLY] [required], metric_types (array<enum>) [COST, VOLUME], phone_numbers (array<string>), pricing_categories (array<enum>) [AUTHENTICATION, AUTHENTICATION_INTERNATIONAL, GROUP_MARKETING, GROUP_SERVICE, GROUP_UTILITY, ...], pricing_types (array<enum>) [FREE_CUSTOMER_SERVICE, FREE_ENTRY_POINT, REGULAR], start (integer) [required], tiers (array<string>)"),
@@ -146,8 +146,6 @@ func HandleWhatsappbusinessaccount_get_pricing_analytics(ctx context.Context, re
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Whatsappbusinessaccount_get_pricing_analytics(accessToken, args)
 	if err != nil {
@@ -166,44 +164,42 @@ func HandleWhatsappbusinessaccount_get_pricing_analytics(ctx context.Context, re
 // Whatsappbusinessaccount_get_pricing_analytics performs GET pricing_analytics for WhatsAppBusinessAccount
 func Whatsappbusinessaccount_get_pricing_analytics(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/pricing_analytics")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

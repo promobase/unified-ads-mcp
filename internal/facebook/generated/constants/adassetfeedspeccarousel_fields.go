@@ -4,14 +4,14 @@ package constants
 
 // AdAssetFeedSpecCarouselFields contains field name constants for AdAssetFeedSpecCarousel objects
 var AdAssetFeedSpecCarouselFields = struct {
-	Adlabels string
-	ChildAttachments string
-	MultiShareEndCard string
+	Adlabels            string
+	ChildAttachments    string
+	MultiShareEndCard   string
 	MultiShareOptimized string
 }{
-	Adlabels: "adlabels",
-	ChildAttachments: "child_attachments",
-	MultiShareEndCard: "multi_share_end_card",
+	Adlabels:            "adlabels",
+	ChildAttachments:    "child_attachments",
+	MultiShareEndCard:   "multi_share_end_card",
 	MultiShareOptimized: "multi_share_optimized",
 }
 

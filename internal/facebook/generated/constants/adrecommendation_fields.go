@@ -4,23 +4,23 @@ package constants
 
 // AdRecommendationFields contains field name constants for AdRecommendation objects
 var AdRecommendationFields = struct {
-	BlameField string
-	Code string
-	Confidence string
-	Importance string
-	Message string
+	BlameField         string
+	Code               string
+	Confidence         string
+	Importance         string
+	Message            string
 	RecommendationData string
-	Title string
-	Value string
+	Title              string
+	Value              string
 }{
-	BlameField: "blame_field",
-	Code: "code",
-	Confidence: "confidence",
-	Importance: "importance",
-	Message: "message",
+	BlameField:         "blame_field",
+	Code:               "code",
+	Confidence:         "confidence",
+	Importance:         "importance",
+	Message:            "message",
 	RecommendationData: "recommendation_data",
-	Title: "title",
-	Value: "value",
+	Title:              "title",
+	Value:              "value",
 }
 
 // AdRecommendationFieldsList contains all available fields for AdRecommendation objects

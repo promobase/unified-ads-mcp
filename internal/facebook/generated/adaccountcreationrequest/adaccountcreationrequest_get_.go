@@ -17,7 +17,7 @@ import (
 // ToolAdaccountcreationrequest_get_ returns the MCP tool definition for adaccountcreationrequest_get_
 func ToolAdaccountcreationrequest_get_() mcp.Tool {
 	// Available fields for AdAccountCreationRequest: ad_accounts_currency, ad_accounts_info, additional_comment, address_in_chinese, address_in_english, address_in_local_language, advertiser_business, appeal_reason, business, business_registration_id, chinese_legal_entity_name, contact, creator, credit_card_id, disapproval_reasons, english_legal_entity_name, extended_credit_id, id, is_smb, is_test, legal_entity_name_in_local_language, oe_request_id, official_website_url, planning_agency_business, planning_agency_business_id, promotable_app_ids, promotable_page_ids, promotable_urls, request_change_reasons, status, subvertical, subvertical_v2, time_created, vertical, vertical_v2
-	
+
 	return mcp.NewTool("adaccountcreationrequest_get_",
 		mcp.WithDescription("GET  for AdAccountCreationRequest"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleAdaccountcreationrequest_get_(ctx context.Context, request mcp.CallTo
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Adaccountcreationrequest_get_(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleAdaccountcreationrequest_get_(ctx context.Context, request mcp.CallTo
 // Adaccountcreationrequest_get_ performs GET  for AdAccountCreationRequest
 func Adaccountcreationrequest_get_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

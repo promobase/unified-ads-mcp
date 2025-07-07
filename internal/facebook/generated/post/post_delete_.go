@@ -15,8 +15,7 @@ import (
 
 // ToolPost_delete_ returns the MCP tool definition for post_delete_
 func ToolPost_delete_() mcp.Tool {
-	
-	
+
 	return mcp.NewTool("post_delete_",
 		mcp.WithDescription("DELETE  for Post"),
 	)
@@ -32,8 +31,6 @@ func HandlePost_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the API method
 	result, err := Post_delete_(accessToken, args)
@@ -53,14 +50,11 @@ func HandlePost_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 // Post_delete_ performs DELETE  for Post
 func Post_delete_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response

@@ -15,7 +15,7 @@ import (
 
 // ToolAdaccount_post_customaudiencestos returns the MCP tool definition for adaccount_post_customaudiencestos
 func ToolAdaccount_post_customaudiencestos() mcp.Tool {
-	
+
 	// Params object accepts: business_id (string), tos_id (string)
 	return mcp.NewTool("adaccount_post_customaudiencestos",
 		mcp.WithDescription("POST customaudiencestos for AdAccount"),
@@ -27,13 +27,13 @@ func ToolAdaccount_post_customaudiencestos() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"business_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "business_id parameter",
 				},
 				"tos_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "tos_id parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: business_id (string), tos_id (string) [required]"),
@@ -73,8 +73,6 @@ func HandleAdaccount_post_customaudiencestos(ctx context.Context, request mcp.Ca
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Adaccount_post_customaudiencestos(accessToken, args)
 	if err != nil {
@@ -93,35 +91,33 @@ func HandleAdaccount_post_customaudiencestos(ctx context.Context, request mcp.Ca
 // Adaccount_post_customaudiencestos performs POST customaudiencestos for AdAccount
 func Adaccount_post_customaudiencestos(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	// Extract account_id for URL construction
 	accountId, ok := args["account_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_post_customaudiencestos")
 	}
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%scustomaudiencestos", accountId)
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-		
-	}
 
+	}
 
 	// Make HTTP request
 	var resp *http.Response

@@ -7,7 +7,7 @@ import "time"
 // InstantArticleInsightsQueryResult represents a Facebook InstantArticleInsightsQueryResult object
 type InstantArticleInsightsQueryResult struct {
 	Breakdowns interface{} `json:"breakdowns"`
-	Name string `json:"name"`
-	Time time.Time `json:"time"`
-	Value string `json:"value"`
+	Name       string      `json:"name"`
+	Time       time.Time   `json:"time"`
+	Value      string      `json:"value"`
 }

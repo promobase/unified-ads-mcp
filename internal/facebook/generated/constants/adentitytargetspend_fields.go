@@ -4,14 +4,14 @@ package constants
 
 // AdEntityTargetSpendFields contains field name constants for AdEntityTargetSpend objects
 var AdEntityTargetSpendFields = struct {
-	Amount string
-	HasError string
+	Amount     string
+	HasError   string
 	IsAccurate string
 	IsProrated string
 	IsUpdating string
 }{
-	Amount: "amount",
-	HasError: "has_error",
+	Amount:     "amount",
+	HasError:   "has_error",
 	IsAccurate: "is_accurate",
 	IsProrated: "is_prorated",
 	IsUpdating: "is_updating",

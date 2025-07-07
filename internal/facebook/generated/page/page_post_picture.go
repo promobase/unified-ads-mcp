@@ -15,115 +15,115 @@ import (
 
 // ToolPage_post_picture returns the MCP tool definition for page_post_picture
 func ToolPage_post_picture() mcp.Tool {
-	
+
 	// Params object accepts: android_key_hash (string), burn_media_effect (bool), caption (string), composer_session_id (string), frame_entrypoint (string), has_umg (bool), height (unsigned int), ios_bundle_id (string), media_effect_ids (list<int>), media_effect_source_object_id (int), msqrd_mask_id (string), photo (string), picture (string), profile_pic_method (string), profile_pic_source (string), proxied_app_id (int), qn (string), reuse (bool), scaled_crop_rect (Object), set_profile_photo_shield (string), sticker_id (int), sticker_source_object_id (int), suppress_stories (bool), width (unsigned int), x (unsigned int), y (unsigned int)
 	return mcp.NewTool("page_post_picture",
 		mcp.WithDescription("POST picture for Page"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"android_key_hash": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "android_key_hash parameter",
 				},
 				"burn_media_effect": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "burn_media_effect parameter",
 				},
 				"caption": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "caption parameter",
 				},
 				"composer_session_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "composer_session_id parameter",
 				},
 				"frame_entrypoint": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "frame_entrypoint parameter",
 				},
 				"has_umg": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "has_umg parameter",
 				},
 				"height": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "height parameter",
 				},
 				"ios_bundle_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "ios_bundle_id parameter",
 				},
 				"media_effect_ids": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "media_effect_ids parameter",
-					"items": map[string]any{"type": "integer"},
+					"items":       map[string]any{"type": "integer"},
 				},
 				"media_effect_source_object_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "media_effect_source_object_id parameter",
 				},
 				"msqrd_mask_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "msqrd_mask_id parameter",
 				},
 				"photo": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "photo parameter",
 				},
 				"picture": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "picture parameter",
 				},
 				"profile_pic_method": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "profile_pic_method parameter",
 				},
 				"profile_pic_source": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "profile_pic_source parameter",
 				},
 				"proxied_app_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "proxied_app_id parameter",
 				},
 				"qn": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "qn parameter",
 				},
 				"reuse": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "reuse parameter",
 				},
 				"scaled_crop_rect": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "scaled_crop_rect parameter",
 				},
 				"set_profile_photo_shield": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "set_profile_photo_shield parameter",
 				},
 				"sticker_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "sticker_id parameter",
 				},
 				"sticker_source_object_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "sticker_source_object_id parameter",
 				},
 				"suppress_stories": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "suppress_stories parameter",
 				},
 				"width": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "width parameter",
 				},
 				"x": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "x parameter",
 				},
 				"y": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "y parameter",
 				},
 			}),
@@ -155,8 +155,6 @@ func HandlePage_post_picture(ctx context.Context, request mcp.CallToolRequest) (
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Page_post_picture(accessToken, args)
 	if err != nil {
@@ -175,20 +173,18 @@ func HandlePage_post_picture(ctx context.Context, request mcp.CallToolRequest) (
 // Page_post_picture performs POST picture for Page
 func Page_post_picture(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/picture")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

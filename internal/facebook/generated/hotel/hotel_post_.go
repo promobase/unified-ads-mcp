@@ -15,60 +15,60 @@ import (
 
 // ToolHotel_post_ returns the MCP tool definition for hotel_post_
 func ToolHotel_post_() mcp.Tool {
-	
+
 	// Params object accepts: address (Object), applinks (Object), base_price (unsigned int), brand (string), currency (string), description (string), guest_ratings (list<Object>), images (list<Object>), name (string), phone (string), star_rating (float), url (string)
 	return mcp.NewTool("hotel_post_",
 		mcp.WithDescription("POST  for Hotel"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"address": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "address parameter",
 				},
 				"applinks": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "applinks parameter",
 				},
 				"base_price": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "base_price parameter",
 				},
 				"brand": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "brand parameter",
 				},
 				"currency": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "currency parameter",
 				},
 				"description": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "description parameter",
 				},
 				"guest_ratings": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "guest_ratings parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"images": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "images parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
 				},
 				"phone": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "phone parameter",
 				},
 				"star_rating": map[string]any{
-					"type": "number",
+					"type":        "number",
 					"description": "star_rating parameter",
 				},
 				"url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "url parameter",
 				},
 			}),
@@ -100,8 +100,6 @@ func HandleHotel_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.C
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Hotel_post_(accessToken, args)
 	if err != nil {
@@ -120,20 +118,18 @@ func HandleHotel_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.C
 // Hotel_post_ performs POST  for Hotel
 func Hotel_post_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

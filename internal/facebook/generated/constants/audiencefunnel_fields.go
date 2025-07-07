@@ -4,12 +4,12 @@ package constants
 
 // AudienceFunnelFields contains field name constants for AudienceFunnel objects
 var AudienceFunnelFields = struct {
-	AudienceTypeParamName string
-	AudienceTypeParamTags string
+	AudienceTypeParamName    string
+	AudienceTypeParamTags    string
 	CustomAudienceGroupsInfo string
 }{
-	AudienceTypeParamName: "audience_type_param_name",
-	AudienceTypeParamTags: "audience_type_param_tags",
+	AudienceTypeParamName:    "audience_type_param_name",
+	AudienceTypeParamTags:    "audience_type_param_tags",
 	CustomAudienceGroupsInfo: "custom_audience_groups_info",
 }
 

@@ -17,7 +17,6 @@ import (
 func GetIGRefreshAccessTokenForIGOnlyAPITools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// igrefreshaccesstokenforigonlyapi_get_ tool
 	// Params object accepts: access_token (string), grant_type (string)
 	igrefreshaccesstokenforigonlyapi_get_Tool := mcp.NewTool("igrefreshaccesstokenforigonlyapi_get_",
@@ -26,14 +25,14 @@ func GetIGRefreshAccessTokenForIGOnlyAPITools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"access_token": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "access_token parameter",
-					"required": true,
+					"required":    true,
 				},
 				"grant_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "grant_type parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: access_token (string) [required], grant_type (string) [required]"),
@@ -53,12 +52,10 @@ func GetIGRefreshAccessTokenForIGOnlyAPITools() []mcp.Tool {
 	)
 	tools = append(tools, igrefreshaccesstokenforigonlyapi_get_Tool)
 
-
 	return tools
 }
 
 // IGRefreshAccessTokenForIGOnlyAPI handlers
-
 
 // HandleIgrefreshaccesstokenforigonlyapi_get_ handles the igrefreshaccesstokenforigonlyapi_get_ tool with context-based auth
 func HandleIgrefreshaccesstokenforigonlyapi_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -113,8 +110,6 @@ func HandleIgrefreshaccesstokenforigonlyapi_get_(ctx context.Context, request mc
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Igrefreshaccesstokenforigonlyapi_get_(args)
 	if err != nil {
@@ -129,4 +124,3 @@ func HandleIgrefreshaccesstokenforigonlyapi_get_(ctx context.Context, request mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

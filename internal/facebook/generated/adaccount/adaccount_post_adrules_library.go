@@ -15,7 +15,7 @@ import (
 
 // ToolAdaccount_post_adrules_library returns the MCP tool definition for adaccount_post_adrules_library
 func ToolAdaccount_post_adrules_library() mcp.Tool {
-	
+
 	// Params object accepts: account_id (string), evaluation_spec (Object), execution_spec (Object), name (string), schedule_spec (Object), status (adaccountadrules_library_status_enum_param), ui_creation_source (adaccountadrules_library_ui_creation_source_enum_param)
 	return mcp.NewTool("adaccount_post_adrules_library",
 		mcp.WithDescription("POST adrules_library for AdAccount"),
@@ -27,37 +27,37 @@ func ToolAdaccount_post_adrules_library() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"account_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "account_id parameter",
 				},
 				"evaluation_spec": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "evaluation_spec parameter",
-					"required": true,
+					"required":    true,
 				},
 				"execution_spec": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "execution_spec parameter",
-					"required": true,
+					"required":    true,
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
-					"required": true,
+					"required":    true,
 				},
 				"schedule_spec": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "schedule_spec parameter",
 				},
 				"status": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "status parameter",
-					"enum": []string{ "DELETED", "DISABLED", "ENABLED", "HAS_ISSUES" },
+					"enum":        []string{"DELETED", "DISABLED", "ENABLED", "HAS_ISSUES"},
 				},
 				"ui_creation_source": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "ui_creation_source parameter",
-					"enum": []string{ "AM_ACCOUNT_OVERVIEW_RECOMMENDATIONS", "AM_ACTIVITY_HISTORY_TABLE", "AM_AD_OBJECT_NAME_CARD", "AM_AMFE_L3_RECOMMENDATION", "AM_AUTOFLOW_GUIDANCE_CARD", "AM_AUTO_APPLY_WIDGET", "AM_EDITOR_CARD", "AM_INFO_CARD", "AM_NAME_CELL_DROPDOWN", "AM_OPTIMIZATION_TIP_GUIDANCE_CARD", "AM_PERFORMANCE_SUMMARY", "AM_RULE_LANDING_PAGE_BANNER", "AM_SYD_RESOLUTION_FLOW", "AM_SYD_RESOLUTION_FLOW_MODAL", "AM_TABLE_DELIVERY_COLUMN_POPOVER", "AM_TABLE_MORE_RULES_DROPDOWN", "AM_TABLE_TOGGLE_POPOVER", "AM_TOOLBAR_CREATE_RULE_DROPDOWN", "PE_CAMPAIGN_STRUCTURE_MENU", "PE_EDITOR_CARD", "PE_INFO_CARD", "PE_TOOLBAR_CREATE_RULE_DROPDOWN", "RULES_MANAGEMENT_PAGE_ACTION_DROPDOWN", "RULES_MANAGEMENT_PAGE_RULE_GROUP", "RULES_MANAGEMENT_PAGE_RULE_NAME", "RULES_MANAGEMENT_PAGE_TOP_NAV", "RULES_VIEW_ACTIVE_RULES_DIALOG", "RULE_CREATION_SUCCESS_DIALOG", "RULE_SYD_REDIRECT", "RULE_TEMPLATES_DIALOG" },
+					"enum":        []string{"AM_ACCOUNT_OVERVIEW_RECOMMENDATIONS", "AM_ACTIVITY_HISTORY_TABLE", "AM_AD_OBJECT_NAME_CARD", "AM_AMFE_L3_RECOMMENDATION", "AM_AUTOFLOW_GUIDANCE_CARD", "AM_AUTO_APPLY_WIDGET", "AM_EDITOR_CARD", "AM_INFO_CARD", "AM_NAME_CELL_DROPDOWN", "AM_OPTIMIZATION_TIP_GUIDANCE_CARD", "AM_PERFORMANCE_SUMMARY", "AM_RULE_LANDING_PAGE_BANNER", "AM_SYD_RESOLUTION_FLOW", "AM_SYD_RESOLUTION_FLOW_MODAL", "AM_TABLE_DELIVERY_COLUMN_POPOVER", "AM_TABLE_MORE_RULES_DROPDOWN", "AM_TABLE_TOGGLE_POPOVER", "AM_TOOLBAR_CREATE_RULE_DROPDOWN", "PE_CAMPAIGN_STRUCTURE_MENU", "PE_EDITOR_CARD", "PE_INFO_CARD", "PE_TOOLBAR_CREATE_RULE_DROPDOWN", "RULES_MANAGEMENT_PAGE_ACTION_DROPDOWN", "RULES_MANAGEMENT_PAGE_RULE_GROUP", "RULES_MANAGEMENT_PAGE_RULE_NAME", "RULES_MANAGEMENT_PAGE_TOP_NAV", "RULES_VIEW_ACTIVE_RULES_DIALOG", "RULE_CREATION_SUCCESS_DIALOG", "RULE_SYD_REDIRECT", "RULE_TEMPLATES_DIALOG"},
 				},
 			}),
 			mcp.Description("Parameters object containing: account_id (string), evaluation_spec (object) [required], execution_spec (object) [required], name (string) [required], schedule_spec (object), status (enum) [DELETED, DISABLED, ENABLED, HAS_ISSUES], ui_creation_source (enum) [AM_ACCOUNT_OVERVIEW_RECOMMENDATIONS, AM_ACTIVITY_HISTORY_TABLE, AM_AD_OBJECT_NAME_CARD, AM_AMFE_L3_RECOMMENDATION, AM_AUTOFLOW_GUIDANCE_CARD, ...]"),
@@ -97,8 +97,6 @@ func HandleAdaccount_post_adrules_library(ctx context.Context, request mcp.CallT
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Adaccount_post_adrules_library(accessToken, args)
 	if err != nil {
@@ -117,35 +115,33 @@ func HandleAdaccount_post_adrules_library(ctx context.Context, request mcp.CallT
 // Adaccount_post_adrules_library performs POST adrules_library for AdAccount
 func Adaccount_post_adrules_library(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	// Extract account_id for URL construction
 	accountId, ok := args["account_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_post_adrules_library")
 	}
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%sadrules_library", accountId)
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-		
-	}
 
+	}
 
 	// Make HTTP request
 	var resp *http.Response

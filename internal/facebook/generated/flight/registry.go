@@ -18,7 +18,6 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolFlight_get_())
 	tools = append(tools, ToolFlight_post_())
 
-
 	return tools
 }
 
@@ -31,7 +30,6 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers["flight_get_videos_metadata"] = HandleFlight_get_videos_metadata
 	handlers["flight_get_"] = HandleFlight_get_
 	handlers["flight_post_"] = HandleFlight_post_
-
 
 	return handlers
 }

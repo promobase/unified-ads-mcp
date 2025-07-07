@@ -17,7 +17,6 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolCustomconversion_get_())
 	tools = append(tools, ToolCustomconversion_post_())
 
-
 	return tools
 }
 
@@ -29,7 +28,6 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers["customconversion_delete_"] = HandleCustomconversion_delete_
 	handlers["customconversion_get_"] = HandleCustomconversion_get_
 	handlers["customconversion_post_"] = HandleCustomconversion_post_
-
 
 	return handlers
 }

@@ -5,12 +5,12 @@ package constants
 // PageCTXMessagingFeatureLimitFields contains field name constants for PageCTXMessagingFeatureLimit objects
 var PageCTXMessagingFeatureLimitFields = struct {
 	MessagingFeatureLimitDuration string
-	MessagingFeatureLimitType string
-	MessagingViolationType string
+	MessagingFeatureLimitType     string
+	MessagingViolationType        string
 }{
 	MessagingFeatureLimitDuration: "messaging_feature_limit_duration",
-	MessagingFeatureLimitType: "messaging_feature_limit_type",
-	MessagingViolationType: "messaging_violation_type",
+	MessagingFeatureLimitType:     "messaging_feature_limit_type",
+	MessagingViolationType:        "messaging_violation_type",
 }
 
 // PageCTXMessagingFeatureLimitFieldsList contains all available fields for PageCTXMessagingFeatureLimit objects

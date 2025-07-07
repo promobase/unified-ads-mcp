@@ -4,12 +4,12 @@ package constants
 
 // PageCTXDefaultGreetingTextFields contains field name constants for PageCTXDefaultGreetingText objects
 var PageCTXDefaultGreetingTextFields = struct {
-	Ctd string
-	Ctm string
+	Ctd  string
+	Ctm  string
 	Ctwa string
 }{
-	Ctd: "ctd",
-	Ctm: "ctm",
+	Ctd:  "ctd",
+	Ctm:  "ctm",
 	Ctwa: "ctwa",
 }
 

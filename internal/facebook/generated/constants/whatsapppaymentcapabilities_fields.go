@@ -4,10 +4,10 @@ package constants
 
 // WhatsAppPaymentCapabilitiesFields contains field name constants for WhatsAppPaymentCapabilities objects
 var WhatsAppPaymentCapabilitiesFields = struct {
-	IsEnabled string
+	IsEnabled                string
 	PaymentCapabilityDetails string
 }{
-	IsEnabled: "is_enabled",
+	IsEnabled:                "is_enabled",
 	PaymentCapabilityDetails: "payment_capability_details",
 }
 

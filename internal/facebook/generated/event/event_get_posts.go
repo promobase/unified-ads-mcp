@@ -16,8 +16,7 @@ import (
 
 // ToolEvent_get_posts returns the MCP tool definition for event_get_posts
 func ToolEvent_get_posts() mcp.Tool {
-	
-	
+
 	return mcp.NewTool("event_get_posts",
 		mcp.WithDescription("GET posts for Event"),
 		mcp.WithArray("fields",
@@ -71,8 +70,6 @@ func HandleEvent_get_posts(ctx context.Context, request mcp.CallToolRequest) (*m
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Event_get_posts(accessToken, args)
 	if err != nil {
@@ -91,38 +88,36 @@ func HandleEvent_get_posts(ctx context.Context, request mcp.CallToolRequest) (*m
 // Event_get_posts performs GET posts for Event
 func Event_get_posts(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/posts")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

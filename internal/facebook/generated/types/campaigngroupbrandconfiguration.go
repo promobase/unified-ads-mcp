@@ -5,6 +5,6 @@ package types
 // CampaignGroupBrandConfiguration represents a Facebook CampaignGroupBrandConfiguration object
 type CampaignGroupBrandConfiguration struct {
 	Brand_product_name string `json:"brand_product_name"`
-	Locale string `json:"locale"`
-	Vertical string `json:"vertical"`
+	Locale             string `json:"locale"`
+	Vertical           string `json:"vertical"`
 }

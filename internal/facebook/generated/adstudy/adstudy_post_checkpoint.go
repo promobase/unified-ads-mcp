@@ -15,7 +15,7 @@ import (
 
 // ToolAdstudy_post_checkpoint returns the MCP tool definition for adstudy_post_checkpoint
 func ToolAdstudy_post_checkpoint() mcp.Tool {
-	
+
 	// Params object accepts: checkpoint_data (string), checkpoint_name (string), component (string), instance_id (string), run_id (string)
 	return mcp.NewTool("adstudy_post_checkpoint",
 		mcp.WithDescription("POST checkpoint for AdStudy"),
@@ -23,26 +23,26 @@ func ToolAdstudy_post_checkpoint() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"checkpoint_data": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "checkpoint_data parameter",
-					"required": true,
+					"required":    true,
 				},
 				"checkpoint_name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "checkpoint_name parameter",
-					"required": true,
+					"required":    true,
 				},
 				"component": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "component parameter",
-					"required": true,
+					"required":    true,
 				},
 				"instance_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "instance_id parameter",
 				},
 				"run_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "run_id parameter",
 				},
 			}),
@@ -76,8 +76,6 @@ func HandleAdstudy_post_checkpoint(ctx context.Context, request mcp.CallToolRequ
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Adstudy_post_checkpoint(accessToken, args)
 	if err != nil {
@@ -96,20 +94,18 @@ func HandleAdstudy_post_checkpoint(ctx context.Context, request mcp.CallToolRequ
 // Adstudy_post_checkpoint performs POST checkpoint for AdStudy
 func Adstudy_post_checkpoint(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/checkpoint")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

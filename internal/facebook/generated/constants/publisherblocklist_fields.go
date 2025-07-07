@@ -4,27 +4,27 @@ package constants
 
 // PublisherBlockListFields contains field name constants for PublisherBlockList objects
 var PublisherBlockListFields = struct {
-	AppPublishers string
-	BusinessOwnerId string
-	Id string
-	IsAutoBlockingOn string
+	AppPublishers             string
+	BusinessOwnerId           string
+	Id                        string
+	IsAutoBlockingOn          string
 	IsEligibleAtCampaignLevel string
-	LastUpdateTime string
-	LastUpdateUser string
-	Name string
-	OwnerAdAccountId string
-	WebPublishers string
+	LastUpdateTime            string
+	LastUpdateUser            string
+	Name                      string
+	OwnerAdAccountId          string
+	WebPublishers             string
 }{
-	AppPublishers: "app_publishers",
-	BusinessOwnerId: "business_owner_id",
-	Id: "id",
-	IsAutoBlockingOn: "is_auto_blocking_on",
+	AppPublishers:             "app_publishers",
+	BusinessOwnerId:           "business_owner_id",
+	Id:                        "id",
+	IsAutoBlockingOn:          "is_auto_blocking_on",
 	IsEligibleAtCampaignLevel: "is_eligible_at_campaign_level",
-	LastUpdateTime: "last_update_time",
-	LastUpdateUser: "last_update_user",
-	Name: "name",
-	OwnerAdAccountId: "owner_ad_account_id",
-	WebPublishers: "web_publishers",
+	LastUpdateTime:            "last_update_time",
+	LastUpdateUser:            "last_update_user",
+	Name:                      "name",
+	OwnerAdAccountId:          "owner_ad_account_id",
+	WebPublishers:             "web_publishers",
 }
 
 // PublisherBlockListFieldsList contains all available fields for PublisherBlockList objects

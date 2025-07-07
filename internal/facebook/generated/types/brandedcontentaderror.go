@@ -4,11 +4,11 @@ package types
 
 // BrandedContentAdError represents a Facebook BrandedContentAdError object
 type BrandedContentAdError struct {
-	Blame_field_spec []string `json:"blame_field_spec"`
-	Error_code int `json:"error_code"`
-	Error_description string `json:"error_description"`
-	Error_message string `json:"error_message"`
-	Error_placement string `json:"error_placement"`
-	Error_severity string `json:"error_severity"`
-	Help_center_id int `json:"help_center_id"`
+	Blame_field_spec  []string `json:"blame_field_spec"`
+	Error_code        int      `json:"error_code"`
+	Error_description string   `json:"error_description"`
+	Error_message     string   `json:"error_message"`
+	Error_placement   string   `json:"error_placement"`
+	Error_severity    string   `json:"error_severity"`
+	Help_center_id    int      `json:"help_center_id"`
 }

@@ -15,7 +15,6 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolVideolist_get_videos())
 	tools = append(tools, ToolVideolist_get_())
 
-
 	return tools
 }
 
@@ -25,7 +24,6 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 
 	handlers["videolist_get_videos"] = HandleVideolist_get_videos
 	handlers["videolist_get_"] = HandleVideolist_get_
-
 
 	return handlers
 }

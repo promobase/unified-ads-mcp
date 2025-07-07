@@ -15,7 +15,7 @@ import (
 
 // ToolAdaccount_post_ads returns the MCP tool definition for adaccount_post_ads
 func ToolAdaccount_post_ads() mcp.Tool {
-	
+
 	// Params object accepts: ad_schedule_end_time (datetime), ad_schedule_start_time (datetime), adlabels (list<Object>), adset_id (unsigned int), adset_spec (AdSet), audience_id (string), bid_amount (int), conversion_domain (string), creative (AdCreative), creative_asset_groups_spec (Object), date_format (string), display_sequence (unsigned int), draft_adgroup_id (string), engagement_audience (bool), execution_options (list<adaccountads_execution_options_enum_param>), include_demolink_hashes (bool), name (string), priority (unsigned int), source_ad_id (string), status (adaccountads_status_enum_param), tracking_specs (Object)
 	return mcp.NewTool("adaccount_post_ads",
 		mcp.WithDescription("POST ads for AdAccount"),
@@ -27,93 +27,93 @@ func ToolAdaccount_post_ads() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"ad_schedule_end_time": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "ad_schedule_end_time parameter",
 				},
 				"ad_schedule_start_time": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "ad_schedule_start_time parameter",
 				},
 				"adlabels": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "adlabels parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"adset_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "adset_id parameter",
 				},
 				"adset_spec": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "adset_spec parameter",
 				},
 				"audience_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "audience_id parameter",
 				},
 				"bid_amount": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "bid_amount parameter",
 				},
 				"conversion_domain": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "conversion_domain parameter",
 				},
 				"creative": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "creative parameter",
-					"required": true,
+					"required":    true,
 				},
 				"creative_asset_groups_spec": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "creative_asset_groups_spec parameter",
 				},
 				"date_format": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "date_format parameter",
 				},
 				"display_sequence": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "display_sequence parameter",
 				},
 				"draft_adgroup_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "draft_adgroup_id parameter",
 				},
 				"engagement_audience": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "engagement_audience parameter",
 				},
 				"execution_options": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "execution_options parameter",
-					"enum": []string{ "include_recommendations", "synchronous_ad_review", "validate_only" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"include_recommendations", "synchronous_ad_review", "validate_only"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"include_demolink_hashes": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "include_demolink_hashes parameter",
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
-					"required": true,
+					"required":    true,
 				},
 				"priority": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "priority parameter",
 				},
 				"source_ad_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "source_ad_id parameter",
 				},
 				"status": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "status parameter",
-					"enum": []string{ "ACTIVE", "ARCHIVED", "DELETED", "PAUSED" },
+					"enum":        []string{"ACTIVE", "ARCHIVED", "DELETED", "PAUSED"},
 				},
 				"tracking_specs": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "tracking_specs parameter",
 				},
 			}),
@@ -154,8 +154,6 @@ func HandleAdaccount_post_ads(ctx context.Context, request mcp.CallToolRequest) 
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Adaccount_post_ads(accessToken, args)
 	if err != nil {
@@ -174,35 +172,33 @@ func HandleAdaccount_post_ads(ctx context.Context, request mcp.CallToolRequest) 
 // Adaccount_post_ads performs POST ads for AdAccount
 func Adaccount_post_ads(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	// Extract account_id for URL construction
 	accountId, ok := args["account_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_post_ads")
 	}
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%sads", accountId)
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-		
-	}
 
+	}
 
 	// Make HTTP request
 	var resp *http.Response

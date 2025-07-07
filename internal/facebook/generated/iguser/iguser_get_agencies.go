@@ -17,7 +17,7 @@ import (
 // ToolIguser_get_agencies returns the MCP tool definition for iguser_get_agencies
 func ToolIguser_get_agencies() mcp.Tool {
 	// Available fields for Business: block_offline_analytics, collaborative_ads_managed_partner_business_info, collaborative_ads_managed_partner_eligibility, collaborative_ads_partner_premium_options, created_by, created_time, extended_updated_time, id, is_hidden, link, name, payment_account_id, primary_page, profile_picture_uri, timezone_id, two_factor_type, updated_by, updated_time, user_access_expire_time, verification_status, vertical, vertical_id
-	
+
 	return mcp.NewTool("iguser_get_agencies",
 		mcp.WithDescription("GET agencies for IGUser"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleIguser_get_agencies(ctx context.Context, request mcp.CallToolRequest)
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Iguser_get_agencies(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleIguser_get_agencies(ctx context.Context, request mcp.CallToolRequest)
 // Iguser_get_agencies performs GET agencies for IGUser
 func Iguser_get_agencies(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/agencies")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

@@ -4,31 +4,31 @@ package constants
 
 // McomInvoiceStatusFields contains field name constants for McomInvoiceStatus objects
 var McomInvoiceStatusFields = struct {
-	BankAccountNumber string
-	BankCode string
-	InvoiceId string
-	InvoiceStatus string
-	PageId string
-	PaymentMethod string
-	PaymentType string
-	PayoutAmount string
-	SlipVerificationError string
+	BankAccountNumber      string
+	BankCode               string
+	InvoiceId              string
+	InvoiceStatus          string
+	PageId                 string
+	PaymentMethod          string
+	PaymentType            string
+	PayoutAmount           string
+	SlipVerificationError  string
 	SlipVerificationStatus string
-	TransactionFee string
-	TransferSlip string
+	TransactionFee         string
+	TransferSlip           string
 }{
-	BankAccountNumber: "bank_account_number",
-	BankCode: "bank_code",
-	InvoiceId: "invoice_id",
-	InvoiceStatus: "invoice_status",
-	PageId: "page_id",
-	PaymentMethod: "payment_method",
-	PaymentType: "payment_type",
-	PayoutAmount: "payout_amount",
-	SlipVerificationError: "slip_verification_error",
+	BankAccountNumber:      "bank_account_number",
+	BankCode:               "bank_code",
+	InvoiceId:              "invoice_id",
+	InvoiceStatus:          "invoice_status",
+	PageId:                 "page_id",
+	PaymentMethod:          "payment_method",
+	PaymentType:            "payment_type",
+	PayoutAmount:           "payout_amount",
+	SlipVerificationError:  "slip_verification_error",
 	SlipVerificationStatus: "slip_verification_status",
-	TransactionFee: "transaction_fee",
-	TransferSlip: "transfer_slip",
+	TransactionFee:         "transaction_fee",
+	TransferSlip:           "transfer_slip",
 }
 
 // McomInvoiceStatusFieldsList contains all available fields for McomInvoiceStatus objects

@@ -15,7 +15,7 @@ import (
 
 // ToolBusiness_post_adaccount returns the MCP tool definition for business_post_adaccount
 func ToolBusiness_post_adaccount() mcp.Tool {
-	
+
 	// Params object accepts: ad_account_created_from_bm_flag (bool), currency (string), end_advertiser (Object), funding_id (string), invoice (bool), invoice_group_id (string), invoicing_emails (list<string>), io (bool), media_agency (string), name (string), partner (string), po_number (string), timezone_id (unsigned int)
 	return mcp.NewTool("business_post_adaccount",
 		mcp.WithDescription("POST adaccount for Business"),
@@ -23,63 +23,63 @@ func ToolBusiness_post_adaccount() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"ad_account_created_from_bm_flag": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "ad_account_created_from_bm_flag parameter",
 				},
 				"currency": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "currency parameter",
-					"required": true,
+					"required":    true,
 				},
 				"end_advertiser": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "end_advertiser parameter",
-					"required": true,
+					"required":    true,
 				},
 				"funding_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "funding_id parameter",
 				},
 				"invoice": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "invoice parameter",
 				},
 				"invoice_group_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "invoice_group_id parameter",
 				},
 				"invoicing_emails": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "invoicing_emails parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"io": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "io parameter",
 				},
 				"media_agency": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "media_agency parameter",
-					"required": true,
+					"required":    true,
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
-					"required": true,
+					"required":    true,
 				},
 				"partner": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "partner parameter",
-					"required": true,
+					"required":    true,
 				},
 				"po_number": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "po_number parameter",
 				},
 				"timezone_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "timezone_id parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: ad_account_created_from_bm_flag (boolean), currency (string) [required], end_advertiser (object) [required], funding_id (string), invoice (boolean), invoice_group_id (string), invoicing_emails (array<string>), io (boolean), media_agency (string) [required], name (string) [required], partner (string) [required], po_number (string), timezone_id (integer) [required]"),
@@ -112,8 +112,6 @@ func HandleBusiness_post_adaccount(ctx context.Context, request mcp.CallToolRequ
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Business_post_adaccount(accessToken, args)
 	if err != nil {
@@ -132,20 +130,18 @@ func HandleBusiness_post_adaccount(ctx context.Context, request mcp.CallToolRequ
 // Business_post_adaccount performs POST adaccount for Business
 func Business_post_adaccount(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/adaccount")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

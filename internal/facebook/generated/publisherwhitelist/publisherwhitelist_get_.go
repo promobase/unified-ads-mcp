@@ -17,7 +17,7 @@ import (
 // ToolPublisherwhitelist_get_ returns the MCP tool definition for publisherwhitelist_get_
 func ToolPublisherwhitelist_get_() mcp.Tool {
 	// Available fields for PublisherWhiteList: business_owner_id, id, last_updated_time, last_updated_user, name, placement_type
-	
+
 	return mcp.NewTool("publisherwhitelist_get_",
 		mcp.WithDescription("GET  for PublisherWhiteList"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandlePublisherwhitelist_get_(ctx context.Context, request mcp.CallToolRequ
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Publisherwhitelist_get_(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandlePublisherwhitelist_get_(ctx context.Context, request mcp.CallToolRequ
 // Publisherwhitelist_get_ performs GET  for PublisherWhiteList
 func Publisherwhitelist_get_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

@@ -4,6 +4,6 @@ package types
 
 // UserLeadGenFieldData represents a Facebook UserLeadGenFieldData object
 type UserLeadGenFieldData struct {
-	Name string `json:"name"`
+	Name   string   `json:"name"`
 	Values []string `json:"values"`
 }

@@ -17,7 +17,6 @@ import (
 func GetEventExternalTicketInfoTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// eventexternalticketinfo_get_ tool
 	// Available fields for EventExternalTicketInfo: id, max_sales_price, min_sales_price, sales_status
 	eventexternalticketinfo_get_Tool := mcp.NewTool("eventexternalticketinfo_get_",
@@ -37,12 +36,10 @@ func GetEventExternalTicketInfoTools() []mcp.Tool {
 	)
 	tools = append(tools, eventexternalticketinfo_get_Tool)
 
-
 	return tools
 }
 
 // EventExternalTicketInfo handlers
-
 
 // HandleEventexternalticketinfo_get_ handles the eventexternalticketinfo_get_ tool with context-based auth
 func HandleEventexternalticketinfo_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleEventexternalticketinfo_get_(ctx context.Context, request mcp.CallToo
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Eventexternalticketinfo_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleEventexternalticketinfo_get_(ctx context.Context, request mcp.CallToo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

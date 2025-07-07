@@ -15,7 +15,7 @@ import (
 
 // ToolAdaccount_post_adimages returns the MCP tool definition for adaccount_post_adimages
 func ToolAdaccount_post_adimages() mcp.Tool {
-	
+
 	// Params object accepts: bytes (string), copy_from (Object)
 	return mcp.NewTool("adaccount_post_adimages",
 		mcp.WithDescription("POST adimages for AdAccount"),
@@ -26,11 +26,11 @@ func ToolAdaccount_post_adimages() mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"bytes": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "bytes parameter",
 				},
 				"copy_from": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "copy_from parameter",
 				},
 			}),
@@ -69,8 +69,6 @@ func HandleAdaccount_post_adimages(ctx context.Context, request mcp.CallToolRequ
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Adaccount_post_adimages(accessToken, args)
 	if err != nil {
@@ -89,35 +87,33 @@ func HandleAdaccount_post_adimages(ctx context.Context, request mcp.CallToolRequ
 // Adaccount_post_adimages performs POST adimages for AdAccount
 func Adaccount_post_adimages(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	// Extract account_id for URL construction
 	accountId, ok := args["account_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_post_adimages")
 	}
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%sadimages", accountId)
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-		
-	}
 
+	}
 
 	// Make HTTP request
 	var resp *http.Response

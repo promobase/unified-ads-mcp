@@ -17,7 +17,6 @@ import (
 func GetOpenBridgeConfigurationTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// openbridgeconfiguration_delete_ tool
 	openbridgeconfiguration_delete_Tool := mcp.NewTool("openbridgeconfiguration_delete_",
 		mcp.WithDescription("DELETE  for OpenBridgeConfiguration"),
@@ -50,67 +49,67 @@ func GetOpenBridgeConfigurationTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"active": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "active parameter",
 				},
 				"cloud_provider": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "cloud_provider parameter",
 				},
 				"cloud_region": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "cloud_region parameter",
 				},
 				"destination_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "destination_id parameter",
 				},
 				"endpoint": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "endpoint parameter",
 				},
 				"fallback_domain": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "fallback_domain parameter",
 				},
 				"first_party_domain": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "first_party_domain parameter",
 				},
 				"host_business_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "host_business_id parameter",
 				},
 				"instance_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "instance_id parameter",
 				},
 				"instance_version": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "instance_version parameter",
 				},
 				"is_sgw_instance": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_sgw_instance parameter",
 				},
 				"is_sgw_pixel_from_meta_pixel": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_sgw_pixel_from_meta_pixel parameter",
 				},
 				"partner_name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "partner_name parameter",
 				},
 				"sgw_account_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "sgw_account_id parameter",
 				},
 				"sgw_instance_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "sgw_instance_url parameter",
 				},
 				"sgw_pixel_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "sgw_pixel_id parameter",
 				},
 			}),
@@ -119,12 +118,10 @@ func GetOpenBridgeConfigurationTools() []mcp.Tool {
 	)
 	tools = append(tools, openbridgeconfiguration_post_Tool)
 
-
 	return tools
 }
 
 // OpenBridgeConfiguration handlers
-
 
 // HandleOpenbridgeconfiguration_delete_ handles the openbridgeconfiguration_delete_ tool with context-based auth
 func HandleOpenbridgeconfiguration_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -140,8 +137,6 @@ func HandleOpenbridgeconfiguration_delete_(ctx context.Context, request mcp.Call
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Openbridgeconfiguration_delete_(args)
 	if err != nil {
@@ -156,7 +151,6 @@ func HandleOpenbridgeconfiguration_delete_(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleOpenbridgeconfiguration_get_ handles the openbridgeconfiguration_get_ tool with context-based auth
 func HandleOpenbridgeconfiguration_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -197,8 +191,6 @@ func HandleOpenbridgeconfiguration_get_(ctx context.Context, request mcp.CallToo
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Openbridgeconfiguration_get_(args)
 	if err != nil {
@@ -213,7 +205,6 @@ func HandleOpenbridgeconfiguration_get_(ctx context.Context, request mcp.CallToo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleOpenbridgeconfiguration_post_ handles the openbridgeconfiguration_post_ tool with context-based auth
 func HandleOpenbridgeconfiguration_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -241,8 +232,6 @@ func HandleOpenbridgeconfiguration_post_(ctx context.Context, request mcp.CallTo
 		}
 	}
 
-
-
 	// Call the client method
 	result, err := client.Openbridgeconfiguration_post_(args)
 	if err != nil {
@@ -257,4 +246,3 @@ func HandleOpenbridgeconfiguration_post_(ctx context.Context, request mcp.CallTo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

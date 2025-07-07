@@ -17,7 +17,6 @@ import (
 func GetPageTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// page_get_ab_tests tool
 	// Available fields for PagePostExperiment: auto_resolve_settings, control_video_id, creation_time, creator, declared_winning_time, declared_winning_video_id, description, experiment_video_ids, id, insight_snapshots, name, optimization_goal, publish_status, publish_time, scheduled_experiment_timestamp, updated_time
 	page_get_ab_testsTool := mcp.NewTool("page_get_ab_tests",
@@ -45,39 +44,39 @@ func GetPageTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"control_video_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "control_video_id parameter",
-					"required": true,
+					"required":    true,
 				},
 				"description": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "description parameter",
-					"required": true,
+					"required":    true,
 				},
 				"duration": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "duration parameter",
-					"required": true,
+					"required":    true,
 				},
 				"experiment_video_ids": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "experiment_video_ids parameter",
-					"required": true,
-					"items": map[string]any{"type": "string"},
+					"required":    true,
+					"items":       map[string]any{"type": "string"},
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
-					"required": true,
+					"required":    true,
 				},
 				"optimization_goal": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "optimization_goal parameter",
-					"required": true,
-					"enum": []string{ "AUTO_RESOLVE_TO_CONTROL", "AVG_TIME_WATCHED", "COMMENTS", "IMPRESSIONS", "IMPRESSIONS_UNIQUE", "LINK_CLICKS", "OTHER", "REACTIONS", "REELS_PLAYS", "SHARES", "VIDEO_VIEWS_60S" },
+					"required":    true,
+					"enum":        []string{"AUTO_RESOLVE_TO_CONTROL", "AVG_TIME_WATCHED", "COMMENTS", "IMPRESSIONS", "IMPRESSIONS_UNIQUE", "LINK_CLICKS", "OTHER", "REACTIONS", "REELS_PLAYS", "SHARES", "VIDEO_VIEWS_60S"},
 				},
 				"scheduled_experiment_timestamp": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "scheduled_experiment_timestamp parameter",
 				},
 			}),
@@ -94,15 +93,15 @@ func GetPageTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"idempotency_key": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "idempotency_key parameter",
-					"required": true,
+					"required":    true,
 				},
 				"orders": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "orders parameter",
-					"required": true,
-					"items": map[string]any{"type": "object"},
+					"required":    true,
+					"items":       map[string]any{"type": "object"},
 				},
 			}),
 			mcp.Description("Parameters object containing: idempotency_key (string) [required], orders (array<object>) [required]"),
@@ -118,19 +117,19 @@ func GetPageTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"exclude_dynamic_ads": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "exclude_dynamic_ads parameter",
 				},
 				"include_inline_create": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "include_inline_create parameter",
 				},
 				"since": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "since parameter",
 				},
 				"until": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "until parameter",
 				},
 			}),
@@ -159,9 +158,9 @@ func GetPageTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"business": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "business parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: business (string) [required]"),
@@ -196,15 +195,15 @@ func GetPageTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"business": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "business parameter",
-					"required": true,
+					"required":    true,
 				},
 				"permitted_tasks": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "permitted_tasks parameter",
-					"enum": []string{ "ADVERTISE", "ANALYZE", "CASHIER_ROLE", "CREATE_CONTENT", "GLOBAL_STRUCTURE_MANAGEMENT", "MANAGE", "MANAGE_JOBS", "MANAGE_LEADS", "MESSAGING", "MODERATE", "MODERATE_COMMUNITY", "PAGES_MESSAGING", "PAGES_MESSAGING_SUBSCRIPTIONS", "PROFILE_PLUS_ADVERTISE", "PROFILE_PLUS_ANALYZE", "PROFILE_PLUS_CREATE_CONTENT", "PROFILE_PLUS_FACEBOOK_ACCESS", "PROFILE_PLUS_FULL_CONTROL", "PROFILE_PLUS_MANAGE", "PROFILE_PLUS_MANAGE_LEADS", "PROFILE_PLUS_MESSAGING", "PROFILE_PLUS_MODERATE", "PROFILE_PLUS_MODERATE_DELEGATE_COMMUNITY", "PROFILE_PLUS_REVENUE", "READ_PAGE_MAILBOXES", "VIEW_MONETIZATION_INSIGHTS" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"ADVERTISE", "ANALYZE", "CASHIER_ROLE", "CREATE_CONTENT", "GLOBAL_STRUCTURE_MANAGEMENT", "MANAGE", "MANAGE_JOBS", "MANAGE_LEADS", "MESSAGING", "MODERATE", "MODERATE_COMMUNITY", "PAGES_MESSAGING", "PAGES_MESSAGING_SUBSCRIPTIONS", "PROFILE_PLUS_ADVERTISE", "PROFILE_PLUS_ANALYZE", "PROFILE_PLUS_CREATE_CONTENT", "PROFILE_PLUS_FACEBOOK_ACCESS", "PROFILE_PLUS_FULL_CONTROL", "PROFILE_PLUS_MANAGE", "PROFILE_PLUS_MANAGE_LEADS", "PROFILE_PLUS_MESSAGING", "PROFILE_PLUS_MODERATE", "PROFILE_PLUS_MODERATE_DELEGATE_COMMUNITY", "PROFILE_PLUS_REVENUE", "READ_PAGE_MAILBOXES", "VIEW_MONETIZATION_INSIGHTS"},
+					"items":       map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: business (string) [required], permitted_tasks (array<enum>) [ADVERTISE, ANALYZE, CASHIER_ROLE, CREATE_CONTENT, GLOBAL_STRUCTURE_MANAGEMENT, ...]"),
@@ -258,9 +257,9 @@ func GetPageTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"user": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "user parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: user (integer) [required]"),
@@ -277,9 +276,9 @@ func GetPageTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"business": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "business parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: business (string) [required]"),
@@ -307,15 +306,15 @@ func GetPageTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"tasks": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "tasks parameter",
-					"enum": []string{ "ADVERTISE", "ANALYZE", "CASHIER_ROLE", "CREATE_CONTENT", "GLOBAL_STRUCTURE_MANAGEMENT", "MANAGE", "MANAGE_JOBS", "MANAGE_LEADS", "MESSAGING", "MODERATE", "MODERATE_COMMUNITY", "PAGES_MESSAGING", "PAGES_MESSAGING_SUBSCRIPTIONS", "PROFILE_PLUS_ADVERTISE", "PROFILE_PLUS_ANALYZE", "PROFILE_PLUS_CREATE_CONTENT", "PROFILE_PLUS_FACEBOOK_ACCESS", "PROFILE_PLUS_FULL_CONTROL", "PROFILE_PLUS_MANAGE", "PROFILE_PLUS_MANAGE_LEADS", "PROFILE_PLUS_MESSAGING", "PROFILE_PLUS_MODERATE", "PROFILE_PLUS_MODERATE_DELEGATE_COMMUNITY", "PROFILE_PLUS_REVENUE", "READ_PAGE_MAILBOXES", "VIEW_MONETIZATION_INSIGHTS" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"ADVERTISE", "ANALYZE", "CASHIER_ROLE", "CREATE_CONTENT", "GLOBAL_STRUCTURE_MANAGEMENT", "MANAGE", "MANAGE_JOBS", "MANAGE_LEADS", "MESSAGING", "MODERATE", "MODERATE_COMMUNITY", "PAGES_MESSAGING", "PAGES_MESSAGING_SUBSCRIPTIONS", "PROFILE_PLUS_ADVERTISE", "PROFILE_PLUS_ANALYZE", "PROFILE_PLUS_CREATE_CONTENT", "PROFILE_PLUS_FACEBOOK_ACCESS", "PROFILE_PLUS_FULL_CONTROL", "PROFILE_PLUS_MANAGE", "PROFILE_PLUS_MANAGE_LEADS", "PROFILE_PLUS_MESSAGING", "PROFILE_PLUS_MODERATE", "PROFILE_PLUS_MODERATE_DELEGATE_COMMUNITY", "PROFILE_PLUS_REVENUE", "READ_PAGE_MAILBOXES", "VIEW_MONETIZATION_INSIGHTS"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"user": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "user parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: tasks (array<enum>) [ADVERTISE, ANALYZE, CASHIER_ROLE, CREATE_CONTENT, GLOBAL_STRUCTURE_MANAGEMENT, ...], user (integer) [required]"),
@@ -330,19 +329,19 @@ func GetPageTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"asid": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "asid parameter",
 				},
 				"psid": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "psid parameter",
 				},
 				"uid": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "uid parameter",
 				},
 				"user": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "user parameter",
 				},
 			}),
@@ -359,11 +358,11 @@ func GetPageTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"uid": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "uid parameter",
 				},
 				"user": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "user parameter",
 				},
 			}),
@@ -391,24 +390,24 @@ func GetPageTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"asid": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "asid parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"psid": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "psid parameter",
-					"items": map[string]any{"type": "integer"},
+					"items":       map[string]any{"type": "integer"},
 				},
 				"uid": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "uid parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"user": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "user parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: asid (array<string>), psid (array<integer>), uid (array<string>), user (array<string>)"),
@@ -424,18 +423,18 @@ func GetPageTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"data": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "data parameter",
-					"required": true,
-					"items": map[string]any{"type": "string"},
+					"required":    true,
+					"items":       map[string]any{"type": "string"},
 				},
 				"partner_agent": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "partner_agent parameter",
-					"required": true,
+					"required":    true,
 				},
 				"processing_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "processing_type parameter",
 				},
 			}),
@@ -452,7 +451,7 @@ func GetPageTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"business": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "business parameter",
 				},
 			}),
@@ -500,26 +499,26 @@ func GetPageTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"action": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "action parameter",
-					"required": true,
-					"enum": []string{ "ACCEPT", "CONNECT", "MEDIA_UPDATE", "REJECT", "TERMINATE" },
+					"required":    true,
+					"enum":        []string{"ACCEPT", "CONNECT", "MEDIA_UPDATE", "REJECT", "TERMINATE"},
 				},
 				"call_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "call_id parameter",
 				},
 				"platform": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "platform parameter",
-					"enum": []string{ "INSTAGRAM", "MESSENGER" },
+					"enum":        []string{"INSTAGRAM", "MESSENGER"},
 				},
 				"session": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "session parameter",
 				},
 				"to": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "to parameter",
 				},
 			}),
@@ -554,51 +553,51 @@ func GetPageTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"canvas_button": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "canvas_button parameter",
 				},
 				"canvas_carousel": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "canvas_carousel parameter",
 				},
 				"canvas_footer": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "canvas_footer parameter",
 				},
 				"canvas_header": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "canvas_header parameter",
 				},
 				"canvas_lead_form": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "canvas_lead_form parameter",
 				},
 				"canvas_photo": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "canvas_photo parameter",
 				},
 				"canvas_product_list": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "canvas_product_list parameter",
 				},
 				"canvas_product_set": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "canvas_product_set parameter",
 				},
 				"canvas_store_locator": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "canvas_store_locator parameter",
 				},
 				"canvas_template_video": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "canvas_template_video parameter",
 				},
 				"canvas_text": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "canvas_text parameter",
 				},
 				"canvas_video": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "canvas_video parameter",
 				},
 			}),
@@ -615,11 +614,11 @@ func GetPageTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"is_hidden": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_hidden parameter",
 				},
 				"is_published": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_published parameter",
 				},
 			}),
@@ -647,32 +646,32 @@ func GetPageTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"background_color": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "background_color parameter",
 				},
 				"body_element_ids": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "body_element_ids parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"enable_swipe_to_open": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "enable_swipe_to_open parameter",
 				},
 				"is_hidden": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_hidden parameter",
 				},
 				"is_published": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_published parameter",
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
 				},
 				"source_template_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "source_template_id parameter",
 				},
 			}),
@@ -727,23 +726,23 @@ func GetPageTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"filters": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "filters parameter",
-					"enum": []string{ "HAS_CANCELLATIONS", "HAS_FULFILLMENTS", "HAS_REFUNDS", "NO_CANCELLATIONS", "NO_REFUNDS", "NO_SHIPMENTS" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"HAS_CANCELLATIONS", "HAS_FULFILLMENTS", "HAS_REFUNDS", "NO_CANCELLATIONS", "NO_REFUNDS", "NO_SHIPMENTS"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"state": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "state parameter",
-					"enum": []string{ "COMPLETED", "CREATED", "FB_PROCESSING", "IN_PROGRESS" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"COMPLETED", "CREATED", "FB_PROCESSING", "IN_PROGRESS"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"updated_after": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "updated_after parameter",
 				},
 				"updated_before": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "updated_before parameter",
 				},
 			}),
@@ -772,11 +771,11 @@ func GetPageTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"end_time": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "end_time parameter",
 				},
 				"start_time": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "start_time parameter",
 				},
 			}),
@@ -805,15 +804,15 @@ func GetPageTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"end_time": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "end_time parameter",
 				},
 				"payout_reference_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "payout_reference_id parameter",
 				},
 				"start_time": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "start_time parameter",
 				},
 			}),
@@ -842,21 +841,21 @@ func GetPageTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"folder": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "folder parameter",
 				},
 				"platform": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "platform parameter",
-					"enum": []string{ "INSTAGRAM", "MESSENGER" },
+					"enum":        []string{"INSTAGRAM", "MESSENGER"},
 				},
 				"tags": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "tags parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"user_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "user_id parameter",
 				},
 			}),
@@ -885,39 +884,39 @@ func GetPageTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"action": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "action parameter",
-					"enum": []string{ "BLOCK", "CLAIM_AD_EARNINGS", "MANUAL_REVIEW", "MONITOR", "REQUEST_TAKEDOWN" },
+					"enum":        []string{"BLOCK", "CLAIM_AD_EARNINGS", "MANUAL_REVIEW", "MONITOR", "REQUEST_TAKEDOWN"},
 				},
 				"action_reason": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "action_reason parameter",
-					"enum": []string{ "ARTICLE_17_PREFLAGGING", "ARTIST_OBJECTION", "OBJECTIONABLE_CONTENT", "PREMIUM_MUSIC_VIDEO", "PRERELEASE_CONTENT", "PRODUCT_PARAMETERS", "RESTRICTED_CONTENT", "UNAUTHORIZED_COMMERCIAL_USE" },
+					"enum":        []string{"ARTICLE_17_PREFLAGGING", "ARTIST_OBJECTION", "OBJECTIONABLE_CONTENT", "PREMIUM_MUSIC_VIDEO", "PRERELEASE_CONTENT", "PRODUCT_PARAMETERS", "RESTRICTED_CONTENT", "UNAUTHORIZED_COMMERCIAL_USE"},
 				},
 				"countries": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "countries parameter",
 				},
 				"match_content_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "match_content_type parameter",
-					"required": true,
-					"enum": []string{ "AUDIO_ONLY", "VIDEO_AND_AUDIO", "VIDEO_ONLY" },
+					"required":    true,
+					"enum":        []string{"AUDIO_ONLY", "VIDEO_AND_AUDIO", "VIDEO_ONLY"},
 				},
 				"matched_asset_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "matched_asset_id parameter",
-					"required": true,
+					"required":    true,
 				},
 				"reference_asset_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "reference_asset_id parameter",
-					"required": true,
+					"required":    true,
 				},
 				"selected_segments": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "selected_segments parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 			}),
 			mcp.Description("Parameters object containing: action (enum) [BLOCK, CLAIM_AD_EARNINGS, MANUAL_REVIEW, MONITOR, REQUEST_TAKEDOWN], action_reason (enum) [ARTICLE_17_PREFLAGGING, ARTIST_OBJECTION, OBJECTIONABLE_CONTENT, PREMIUM_MUSIC_VIDEO, PRERELEASE_CONTENT, ...], countries (object), match_content_type (enum) [AUDIO_ONLY, VIDEO_AND_AUDIO, VIDEO_ONLY] [required], matched_asset_id (string) [required], reference_asset_id (string) [required], selected_segments (array<object>)"),
@@ -990,13 +989,13 @@ func GetPageTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
 				},
 				"page_label_name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "page_label_name parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: name (string), page_label_name (string) [required]"),
@@ -1012,16 +1011,16 @@ func GetPageTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"params": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "params parameter",
-					"required": true,
-					"enum": []string{ "PERSISTENT_MENU" },
-					"items": map[string]any{"type": "string"},
+					"required":    true,
+					"enum":        []string{"PERSISTENT_MENU"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"psid": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "psid parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: params (array<enum>) [PERSISTENT_MENU] [required], psid (string) [required]"),
@@ -1038,9 +1037,9 @@ func GetPageTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"psid": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "psid parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: psid (string) [required]"),
@@ -1068,14 +1067,14 @@ func GetPageTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"persistent_menu": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "persistent_menu parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"psid": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "psid parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: persistent_menu (array<object>), psid (string) [required]"),
@@ -1109,7 +1108,7 @@ func GetPageTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"dataset_name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "dataset_name parameter",
 				},
 			}),
@@ -1126,24 +1125,24 @@ func GetPageTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"event_state_filter": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "event_state_filter parameter",
-					"enum": []string{ "canceled", "draft", "published", "scheduled_draft_for_publication" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"canceled", "draft", "published", "scheduled_draft_for_publication"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"include_canceled": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "include_canceled parameter",
 				},
 				"time_filter": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "time_filter parameter",
-					"enum": []string{ "past", "upcoming" },
+					"enum":        []string{"past", "upcoming"},
 				},
 				"type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "type parameter",
-					"enum": []string{ "attending", "created", "declined", "maybe", "not_replied" },
+					"enum":        []string{"attending", "created", "declined", "maybe", "not_replied"},
 				},
 			}),
 			mcp.Description("Parameters object containing: event_state_filter (array<enum>) [canceled, draft, published, scheduled_draft_for_publication], include_canceled (boolean), time_filter (enum) [past, upcoming], type (enum) [attending, created, declined, maybe, not_replied]"),
@@ -1171,13 +1170,13 @@ func GetPageTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"duration": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "duration parameter",
 				},
 				"recipient": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "recipient parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: duration (integer), recipient (object) [required]"),
@@ -1212,21 +1211,21 @@ func GetPageTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"include_hidden": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "include_hidden parameter",
 				},
 				"limit": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "limit parameter",
 				},
 				"show_expired": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "show_expired parameter",
 				},
 				"with": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "with parameter",
-					"enum": []string{ "LOCATION" },
+					"enum":        []string{"LOCATION"},
 				},
 			}),
 			mcp.Description("Parameters object containing: include_hidden (boolean), limit (integer), show_expired (boolean), with (enum) [LOCATION]"),
@@ -1253,441 +1252,441 @@ func GetPageTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"actions": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "actions parameter",
 				},
 				"album_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "album_id parameter",
 				},
 				"android_key_hash": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "android_key_hash parameter",
 				},
 				"application_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "application_id parameter",
 				},
 				"asked_fun_fact_prompt_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "asked_fun_fact_prompt_id parameter",
 				},
 				"asset3d_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "asset3d_id parameter",
 				},
 				"associated_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "associated_id parameter",
 				},
 				"attach_place_suggestion": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "attach_place_suggestion parameter",
 				},
 				"attached_media": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "attached_media parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"audience_exp": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "audience_exp parameter",
 				},
 				"backdated_time": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "backdated_time parameter",
 				},
 				"backdated_time_granularity": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "backdated_time_granularity parameter",
-					"enum": []string{ "day", "hour", "min", "month", "none", "year" },
+					"enum":        []string{"day", "hour", "min", "month", "none", "year"},
 				},
 				"breaking_news": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "breaking_news parameter",
 				},
 				"breaking_news_expiration": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "breaking_news_expiration parameter",
 				},
 				"call_to_action": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "call_to_action parameter",
 				},
 				"caption": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "caption parameter",
 				},
 				"child_attachments": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "child_attachments parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"client_mutation_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "client_mutation_id parameter",
 				},
 				"composer_entry_picker": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "composer_entry_picker parameter",
 				},
 				"composer_entry_point": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "composer_entry_point parameter",
 				},
 				"composer_entry_time": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "composer_entry_time parameter",
 				},
 				"composer_session_events_log": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "composer_session_events_log parameter",
 				},
 				"composer_session_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "composer_session_id parameter",
 				},
 				"composer_source_surface": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "composer_source_surface parameter",
 				},
 				"composer_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "composer_type parameter",
 				},
 				"connection_class": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "connection_class parameter",
 				},
 				"content_attachment": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "content_attachment parameter",
 				},
 				"coordinates": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "coordinates parameter",
 				},
 				"cta_link": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "cta_link parameter",
 				},
 				"cta_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "cta_type parameter",
 				},
 				"description": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "description parameter",
 				},
 				"direct_share_status": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "direct_share_status parameter",
 				},
 				"enforce_link_ownership": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "enforce_link_ownership parameter",
 				},
 				"expanded_height": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "expanded_height parameter",
 				},
 				"expanded_width": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "expanded_width parameter",
 				},
 				"feed_targeting": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "feed_targeting parameter",
 				},
 				"formatting": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "formatting parameter",
-					"enum": []string{ "MARKDOWN", "PLAINTEXT" },
+					"enum":        []string{"MARKDOWN", "PLAINTEXT"},
 				},
 				"fun_fact_prompt_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "fun_fact_prompt_id parameter",
 				},
 				"fun_fact_toastee_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "fun_fact_toastee_id parameter",
 				},
 				"height": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "height parameter",
 				},
 				"home_checkin_city_id": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "home_checkin_city_id parameter",
 				},
 				"image_crops": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "image_crops parameter",
 				},
 				"implicit_with_tags": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "implicit_with_tags parameter",
-					"items": map[string]any{"type": "integer"},
+					"items":       map[string]any{"type": "integer"},
 				},
 				"instant_game_entry_point_data": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "instant_game_entry_point_data parameter",
 				},
 				"ios_bundle_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "ios_bundle_id parameter",
 				},
 				"is_backout_draft": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_backout_draft parameter",
 				},
 				"is_boost_intended": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_boost_intended parameter",
 				},
 				"is_explicit_location": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_explicit_location parameter",
 				},
 				"is_explicit_share": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_explicit_share parameter",
 				},
 				"is_group_linking_post": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_group_linking_post parameter",
 				},
 				"is_photo_container": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_photo_container parameter",
 				},
 				"link": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "link parameter",
 				},
 				"location_source_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "location_source_id parameter",
 				},
 				"manual_privacy": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "manual_privacy parameter",
 				},
 				"message": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "message parameter",
 				},
 				"multi_share_end_card": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "multi_share_end_card parameter",
 				},
 				"multi_share_optimized": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "multi_share_optimized parameter",
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
 				},
 				"nectar_module": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "nectar_module parameter",
 				},
 				"object_attachment": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "object_attachment parameter",
 				},
 				"og_action_type_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "og_action_type_id parameter",
 				},
 				"og_hide_object_attachment": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "og_hide_object_attachment parameter",
 				},
 				"og_icon_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "og_icon_id parameter",
 				},
 				"og_object_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "og_object_id parameter",
 				},
 				"og_phrase": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "og_phrase parameter",
 				},
 				"og_set_profile_badge": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "og_set_profile_badge parameter",
 				},
 				"og_suggestion_mechanism": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "og_suggestion_mechanism parameter",
 				},
 				"page_recommendation": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "page_recommendation parameter",
 				},
 				"picture": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "picture parameter",
 				},
 				"place": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "place parameter",
 				},
 				"place_attachment_setting": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "place_attachment_setting parameter",
-					"enum": []string{ "1", "2" },
+					"enum":        []string{"1", "2"},
 				},
 				"place_list": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "place_list parameter",
 				},
 				"place_list_data": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "place_list_data parameter",
 				},
 				"post_surfaces_blacklist": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "post_surfaces_blacklist parameter",
-					"enum": []string{ "1", "2", "3", "4", "5" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"1", "2", "3", "4", "5"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"posting_to_redspace": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "posting_to_redspace parameter",
-					"enum": []string{ "disabled", "enabled" },
+					"enum":        []string{"disabled", "enabled"},
 				},
 				"privacy": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "privacy parameter",
 				},
 				"prompt_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "prompt_id parameter",
 				},
 				"prompt_tracking_string": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "prompt_tracking_string parameter",
 				},
 				"properties": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "properties parameter",
 				},
 				"proxied_app_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "proxied_app_id parameter",
 				},
 				"publish_event_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "publish_event_id parameter",
 				},
 				"published": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "published parameter",
 				},
 				"quote": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "quote parameter",
 				},
 				"ref": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "ref parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"referenceable_image_ids": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "referenceable_image_ids parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"referral_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "referral_id parameter",
 				},
 				"scheduled_publish_time": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "scheduled_publish_time parameter",
 				},
 				"source": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "source parameter",
 				},
 				"sponsor_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "sponsor_id parameter",
 				},
 				"sponsor_relationship": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "sponsor_relationship parameter",
 				},
 				"suggested_place_id": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "suggested_place_id parameter",
 				},
 				"tags": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "tags parameter",
-					"items": map[string]any{"type": "integer"},
+					"items":       map[string]any{"type": "integer"},
 				},
 				"target_surface": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "target_surface parameter",
-					"enum": []string{ "STORY", "TIMELINE" },
+					"enum":        []string{"STORY", "TIMELINE"},
 				},
 				"targeting": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "targeting parameter",
 				},
 				"text_format_metadata": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "text_format_metadata parameter",
 				},
 				"text_format_preset_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "text_format_preset_id parameter",
 				},
 				"text_only_place": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "text_only_place parameter",
 				},
 				"thumbnail": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "thumbnail parameter",
 				},
 				"time_since_original_post": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "time_since_original_post parameter",
 				},
 				"title": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "title parameter",
 				},
 				"tracking_info": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "tracking_info parameter",
 				},
 				"unpublished_content_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "unpublished_content_type parameter",
-					"enum": []string{ "ADS_POST", "DRAFT", "INLINE_CREATED", "PUBLISHED", "REVIEWABLE_BRANDED_CONTENT", "SCHEDULED", "SCHEDULED_RECURRING" },
+					"enum":        []string{"ADS_POST", "DRAFT", "INLINE_CREATED", "PUBLISHED", "REVIEWABLE_BRANDED_CONTENT", "SCHEDULED", "SCHEDULED_RECURRING"},
 				},
 				"user_selected_tags": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "user_selected_tags parameter",
 				},
 				"video_start_time_ms": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "video_start_time_ms parameter",
 				},
 				"viewer_coordinates": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "viewer_coordinates parameter",
 				},
 				"width": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "width parameter",
 				},
 			}),
@@ -1742,48 +1741,48 @@ func GetPageTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"artist": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "artist parameter",
 				},
 				"attribution_link": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "attribution_link parameter",
 				},
 				"creator": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "creator parameter",
 				},
 				"custom_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "custom_id parameter",
 				},
 				"description": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "description parameter",
 				},
 				"filename": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "filename parameter",
-					"required": true,
+					"required":    true,
 				},
 				"geo_ownership": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "geo_ownership parameter",
-					"required": true,
-					"enum": []string{ "AD", "AE", "AF", "AG", "AI", "AL", "AM", "AN", "AO", "AQ", "AR", "AS", "AT", "AU", "AW", "AX", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BL", "BM", "BN", "BO", "BQ", "BR", "BS", "BT", "BV", "BW", "BY", "BZ", "CA", "CC", "CD", "CF", "CG", "CH", "CI", "CK", "CL", "CM", "CN", "CO", "CR", "CU", "CV", "CW", "CX", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "EH", "ER", "ES", "ET", "FI", "FJ", "FK", "FM", "FO", "FR", "GA", "GB", "GD", "GE", "GF", "GG", "GH", "GI", "GL", "GM", "GN", "GP", "GQ", "GR", "GS", "GT", "GU", "GW", "GY", "HK", "HM", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IM", "IN", "IO", "IQ", "IR", "IS", "IT", "JE", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KP", "KR", "KW", "KY", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MF", "MG", "MH", "MK", "ML", "MM", "MN", "MO", "MP", "MQ", "MR", "MS", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NC", "NE", "NF", "NG", "NI", "NL", "NO", "NP", "NR", "NU", "NZ", "OM", "PA", "PE", "PF", "PG", "PH", "PK", "PL", "PM", "PN", "PR", "PS", "PT", "PW", "PY", "QA", "RE", "RO", "RS", "RU", "RW", "SA", "SB", "SC", "SD", "SE", "SG", "SH", "SI", "SJ", "SK", "SL", "SM", "SN", "SO", "SR", "SS", "ST", "SV", "SX", "SY", "SZ", "TC", "TD", "TF", "TG", "TH", "TJ", "TK", "TL", "TM", "TN", "TO", "TP", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "UM", "US", "UY", "UZ", "VA", "VC", "VE", "VG", "VI", "VN", "VU", "WF", "WS", "XK", "YE", "YT", "ZA", "ZM", "ZW" },
-					"items": map[string]any{"type": "string"},
+					"required":    true,
+					"enum":        []string{"AD", "AE", "AF", "AG", "AI", "AL", "AM", "AN", "AO", "AQ", "AR", "AS", "AT", "AU", "AW", "AX", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BL", "BM", "BN", "BO", "BQ", "BR", "BS", "BT", "BV", "BW", "BY", "BZ", "CA", "CC", "CD", "CF", "CG", "CH", "CI", "CK", "CL", "CM", "CN", "CO", "CR", "CU", "CV", "CW", "CX", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "EH", "ER", "ES", "ET", "FI", "FJ", "FK", "FM", "FO", "FR", "GA", "GB", "GD", "GE", "GF", "GG", "GH", "GI", "GL", "GM", "GN", "GP", "GQ", "GR", "GS", "GT", "GU", "GW", "GY", "HK", "HM", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IM", "IN", "IO", "IQ", "IR", "IS", "IT", "JE", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KP", "KR", "KW", "KY", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MF", "MG", "MH", "MK", "ML", "MM", "MN", "MO", "MP", "MQ", "MR", "MS", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NC", "NE", "NF", "NG", "NI", "NL", "NO", "NP", "NR", "NU", "NZ", "OM", "PA", "PE", "PF", "PG", "PH", "PK", "PL", "PM", "PN", "PR", "PS", "PT", "PW", "PY", "QA", "RE", "RO", "RS", "RU", "RW", "SA", "SB", "SC", "SD", "SE", "SG", "SH", "SI", "SJ", "SK", "SL", "SM", "SN", "SO", "SR", "SS", "ST", "SV", "SX", "SY", "SZ", "TC", "TD", "TF", "TG", "TH", "TJ", "TK", "TL", "TM", "TN", "TO", "TP", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "UM", "US", "UY", "UZ", "VA", "VC", "VE", "VG", "VI", "VN", "VU", "WF", "WS", "XK", "YE", "YT", "ZA", "ZM", "ZW"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"original_content_creation_date": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "original_content_creation_date parameter",
 				},
 				"reference_photo": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "reference_photo parameter",
-					"required": true,
+					"required":    true,
 				},
 				"title": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "title parameter",
 				},
 			}),
@@ -1819,35 +1818,35 @@ func GetPageTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"breakdown": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "breakdown parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"date_preset": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "date_preset parameter",
-					"enum": []string{ "data_maximum", "last_14d", "last_28d", "last_30d", "last_3d", "last_7d", "last_90d", "last_month", "last_quarter", "last_week_mon_sun", "last_week_sun_sat", "last_year", "maximum", "this_month", "this_quarter", "this_week_mon_today", "this_week_sun_today", "this_year", "today", "yesterday" },
+					"enum":        []string{"data_maximum", "last_14d", "last_28d", "last_30d", "last_3d", "last_7d", "last_90d", "last_month", "last_quarter", "last_week_mon_sun", "last_week_sun_sat", "last_year", "maximum", "this_month", "this_quarter", "this_week_mon_today", "this_week_sun_today", "this_year", "today", "yesterday"},
 				},
 				"metric": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "metric parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"period": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "period parameter",
-					"enum": []string{ "day", "days_28", "lifetime", "month", "total_over_range", "week" },
+					"enum":        []string{"day", "days_28", "lifetime", "month", "total_over_range", "week"},
 				},
 				"show_description_from_api_doc": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "show_description_from_api_doc parameter",
 				},
 				"since": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "since parameter",
 				},
 				"until": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "until parameter",
 				},
 			}),
@@ -1914,71 +1913,71 @@ func GetPageTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"allow_organic_lead_retrieval": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "allow_organic_lead_retrieval parameter",
 				},
 				"block_display_for_non_targeted_viewer": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "block_display_for_non_targeted_viewer parameter",
 				},
 				"context_card": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "context_card parameter",
 				},
 				"cover_photo": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "cover_photo parameter",
 				},
 				"custom_disclaimer": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "custom_disclaimer parameter",
 				},
 				"follow_up_action_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "follow_up_action_url parameter",
 				},
 				"is_for_canvas": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_for_canvas parameter",
 				},
 				"is_optimized_for_quality": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_optimized_for_quality parameter",
 				},
 				"locale": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "locale parameter",
-					"enum": []string{ "AR_AR", "CS_CZ", "DA_DK", "DE_DE", "EL_GR", "EN_GB", "EN_US", "ES_ES", "ES_LA", "FI_FI", "FR_FR", "HE_IL", "HI_IN", "HU_HU", "ID_ID", "IT_IT", "JA_JP", "KO_KR", "NB_NO", "NL_NL", "PL_PL", "PT_BR", "PT_PT", "RO_RO", "RU_RU", "SV_SE", "TH_TH", "TR_TR", "VI_VN", "ZH_CN", "ZH_HK", "ZH_TW" },
+					"enum":        []string{"AR_AR", "CS_CZ", "DA_DK", "DE_DE", "EL_GR", "EN_GB", "EN_US", "ES_ES", "ES_LA", "FI_FI", "FR_FR", "HE_IL", "HI_IN", "HU_HU", "ID_ID", "IT_IT", "JA_JP", "KO_KR", "NB_NO", "NL_NL", "PL_PL", "PT_BR", "PT_PT", "RO_RO", "RU_RU", "SV_SE", "TH_TH", "TR_TR", "VI_VN", "ZH_CN", "ZH_HK", "ZH_TW"},
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
-					"required": true,
+					"required":    true,
 				},
 				"privacy_policy": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "privacy_policy parameter",
 				},
 				"question_page_custom_headline": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "question_page_custom_headline parameter",
 				},
 				"questions": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "questions parameter",
-					"required": true,
-					"items": map[string]any{"type": "object"},
+					"required":    true,
+					"items":       map[string]any{"type": "object"},
 				},
 				"thank_you_page": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "thank_you_page parameter",
 				},
 				"tracking_parameters": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "tracking_parameters parameter",
 				},
 				"upload_gated_file": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "upload_gated_file parameter",
 				},
 			}),
@@ -1995,7 +1994,7 @@ func GetPageTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"target_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "target_id parameter",
 				},
 			}),
@@ -2024,15 +2023,15 @@ func GetPageTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"broadcast_status": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "broadcast_status parameter",
-					"enum": []string{ "LIVE", "LIVE_STOPPED", "PROCESSING", "SCHEDULED_CANCELED", "SCHEDULED_EXPIRED", "SCHEDULED_LIVE", "SCHEDULED_UNPUBLISHED", "UNPUBLISHED", "VOD" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"LIVE", "LIVE_STOPPED", "PROCESSING", "SCHEDULED_CANCELED", "SCHEDULED_EXPIRED", "SCHEDULED_LIVE", "SCHEDULED_UNPUBLISHED", "UNPUBLISHED", "VOD"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"source": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "source parameter",
-					"enum": []string{ "owner", "target" },
+					"enum":        []string{"owner", "target"},
 				},
 			}),
 			mcp.Description("Parameters object containing: broadcast_status (array<enum>) [LIVE, LIVE_STOPPED, PROCESSING, SCHEDULED_CANCELED, SCHEDULED_EXPIRED, ...], source (enum) [owner, target]"),
@@ -2059,107 +2058,107 @@ func GetPageTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"content_tags": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "content_tags parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"crossposting_actions": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "crossposting_actions parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"custom_labels": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "custom_labels parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"description": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "description parameter",
 				},
 				"enable_backup_ingest": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "enable_backup_ingest parameter",
 				},
 				"encoding_settings": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "encoding_settings parameter",
 				},
 				"event_params": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "event_params parameter",
 				},
 				"fisheye_video_cropped": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "fisheye_video_cropped parameter",
 				},
 				"front_z_rotation": map[string]any{
-					"type": "number",
+					"type":        "number",
 					"description": "front_z_rotation parameter",
 				},
 				"game_show": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "game_show parameter",
 				},
 				"is_audio_only": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_audio_only parameter",
 				},
 				"is_spherical": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_spherical parameter",
 				},
 				"original_fov": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "original_fov parameter",
 				},
 				"privacy": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "privacy parameter",
 				},
 				"projection": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "projection parameter",
-					"enum": []string{ "CUBEMAP", "EQUIRECTANGULAR", "HALF_EQUIRECTANGULAR" },
+					"enum":        []string{"CUBEMAP", "EQUIRECTANGULAR", "HALF_EQUIRECTANGULAR"},
 				},
 				"published": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "published parameter",
 				},
 				"schedule_custom_profile_image": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "schedule_custom_profile_image parameter",
 				},
 				"spatial_audio_format": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "spatial_audio_format parameter",
-					"enum": []string{ "ambiX_4" },
+					"enum":        []string{"ambiX_4"},
 				},
 				"status": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "status parameter",
-					"enum": []string{ "LIVE_NOW", "SCHEDULED_CANCELED", "SCHEDULED_LIVE", "SCHEDULED_UNPUBLISHED", "UNPUBLISHED" },
+					"enum":        []string{"LIVE_NOW", "SCHEDULED_CANCELED", "SCHEDULED_LIVE", "SCHEDULED_UNPUBLISHED", "UNPUBLISHED"},
 				},
 				"stereoscopic_mode": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "stereoscopic_mode parameter",
-					"enum": []string{ "LEFT_RIGHT", "MONO", "TOP_BOTTOM" },
+					"enum":        []string{"LEFT_RIGHT", "MONO", "TOP_BOTTOM"},
 				},
 				"stop_on_delete_stream": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "stop_on_delete_stream parameter",
 				},
 				"stream_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "stream_type parameter",
-					"enum": []string{ "AMBIENT", "REGULAR" },
+					"enum":        []string{"AMBIENT", "REGULAR"},
 				},
 				"targeting": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "targeting parameter",
 				},
 				"title": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "title parameter",
 				},
 			}),
@@ -2176,16 +2175,16 @@ func GetPageTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"location_page_ids": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "location_page_ids parameter",
-					"required": true,
-					"items": map[string]any{"type": "string"},
+					"required":    true,
+					"items":       map[string]any{"type": "string"},
 				},
 				"store_numbers": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "store_numbers parameter",
-					"required": true,
-					"items": map[string]any{"type": "integer"},
+					"required":    true,
+					"items":       map[string]any{"type": "integer"},
 				},
 			}),
 			mcp.Description("Parameters object containing: location_page_ids (array<string>) [required], store_numbers (array<integer>) [required]"),
@@ -2220,89 +2219,89 @@ func GetPageTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"always_open": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "always_open parameter",
 				},
 				"delivery_and_pickup_option_info": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "delivery_and_pickup_option_info parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"differently_open_offerings": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "differently_open_offerings parameter",
 				},
 				"hours": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "hours parameter",
 				},
 				"ignore_warnings": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "ignore_warnings parameter",
 				},
 				"location": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "location parameter",
 				},
 				"location_page_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "location_page_id parameter",
 				},
 				"old_store_number": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "old_store_number parameter",
 				},
 				"page_username": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "page_username parameter",
 				},
 				"permanently_closed": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "permanently_closed parameter",
 				},
 				"phone": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "phone parameter",
 				},
 				"pickup_options": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "pickup_options parameter",
-					"enum": []string{ "CURBSIDE", "IN_STORE", "OTHER" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"CURBSIDE", "IN_STORE", "OTHER"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"place_topics": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "place_topics parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"price_range": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "price_range parameter",
 				},
 				"store_code": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "store_code parameter",
 				},
 				"store_location_descriptor": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "store_location_descriptor parameter",
 				},
 				"store_name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "store_name parameter",
 				},
 				"store_number": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "store_number parameter",
-					"required": true,
+					"required":    true,
 				},
 				"temporary_status": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "temporary_status parameter",
-					"enum": []string{ "DIFFERENTLY_OPEN", "NO_DATA", "OPERATING_AS_USUAL", "TEMPORARILY_CLOSED" },
+					"enum":        []string{"DIFFERENTLY_OPEN", "NO_DATA", "OPERATING_AS_USUAL", "TEMPORARILY_CLOSED"},
 				},
 				"website": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "website parameter",
 				},
 			}),
@@ -2319,7 +2318,7 @@ func GetPageTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"universal_content_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "universal_content_id parameter",
 				},
 			}),
@@ -2348,28 +2347,28 @@ func GetPageTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"fingerprint_content_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "fingerprint_content_type parameter",
-					"required": true,
-					"enum": []string{ "AM_SONGTRACK", "EPISODE", "MOVIE", "OTHER", "SONGTRACK" },
+					"required":    true,
+					"enum":        []string{"AM_SONGTRACK", "EPISODE", "MOVIE", "OTHER", "SONGTRACK"},
 				},
 				"metadata": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "metadata parameter",
-					"required": true,
+					"required":    true,
 				},
 				"source": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "source parameter",
-					"required": true,
+					"required":    true,
 				},
 				"title": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "title parameter",
-					"required": true,
+					"required":    true,
 				},
 				"universal_content_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "universal_content_id parameter",
 				},
 			}),
@@ -2386,14 +2385,14 @@ func GetPageTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"message": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "message parameter",
-					"required": true,
+					"required":    true,
 				},
 				"platform": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "platform parameter",
-					"enum": []string{ "INSTAGRAM", "MESSENGER" },
+					"enum":        []string{"INSTAGRAM", "MESSENGER"},
 				},
 			}),
 			mcp.Description("Parameters object containing: message (object) [required], platform (enum) [INSTAGRAM, MESSENGER]"),
@@ -2409,12 +2408,12 @@ func GetPageTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
-					"required": true,
+					"required":    true,
 				},
 				"template_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "template_id parameter",
 				},
 			}),
@@ -2431,33 +2430,33 @@ func GetPageTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"category": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "category parameter",
-					"enum": []string{ "UTILITY" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"UTILITY"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"content": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "content parameter",
 				},
 				"language": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "language parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
 				},
 				"name_or_content": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name_or_content parameter",
 				},
 				"status": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "status parameter",
-					"enum": []string{ "APPROVED", "ARCHIVED", "DELETED", "DISABLED", "IN_APPEAL", "LIMIT_EXCEEDED", "PAUSED", "PENDING", "PENDING_DELETION", "REJECTED" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"APPROVED", "ARCHIVED", "DELETED", "DISABLED", "IN_APPEAL", "LIMIT_EXCEEDED", "PAUSED", "PENDING", "PENDING_DELETION", "REJECTED"},
+					"items":       map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: category (array<enum>) [UTILITY], content (string), language (array<string>), name (string), name_or_content (string), status (array<enum>) [APPROVED, ARCHIVED, DELETED, DISABLED, IN_APPEAL, ...]"),
@@ -2485,34 +2484,34 @@ func GetPageTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"category": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "category parameter",
-					"required": true,
-					"enum": []string{ "UTILITY" },
+					"required":    true,
+					"enum":        []string{"UTILITY"},
 				},
 				"components": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "components parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"language": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "language parameter",
-					"required": true,
+					"required":    true,
 				},
 				"library_template_button_inputs": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "library_template_button_inputs parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"library_template_name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "library_template_name parameter",
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: category (enum) [UTILITY] [required], components (array<object>), language (string) [required], library_template_button_inputs (array<object>), library_template_name (string), name (string) [required]"),
@@ -2528,52 +2527,52 @@ func GetPageTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"message": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "message parameter",
 				},
 				"messaging_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "messaging_type parameter",
-					"enum": []string{ "MESSAGE_TAG", "RESPONSE", "UPDATE", "UTILITY" },
+					"enum":        []string{"MESSAGE_TAG", "RESPONSE", "UPDATE", "UTILITY"},
 				},
 				"notification_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "notification_type parameter",
-					"enum": []string{ "NO_PUSH", "REGULAR", "SILENT_PUSH" },
+					"enum":        []string{"NO_PUSH", "REGULAR", "SILENT_PUSH"},
 				},
 				"payload": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "payload parameter",
 				},
 				"persona_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "persona_id parameter",
 				},
 				"recipient": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "recipient parameter",
-					"required": true,
+					"required":    true,
 				},
 				"reply_to": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "reply_to parameter",
 				},
 				"sender_action": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "sender_action parameter",
-					"enum": []string{ "MARK_SEEN", "REACT", "TYPING_OFF", "TYPING_ON", "UNREACT" },
+					"enum":        []string{"MARK_SEEN", "REACT", "TYPING_OFF", "TYPING_ON", "UNREACT"},
 				},
 				"suggestion_action": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "suggestion_action parameter",
-					"enum": []string{ "ACCEPT", "DISMISS", "IMPRESSION" },
+					"enum":        []string{"ACCEPT", "DISMISS", "IMPRESSION"},
 				},
 				"tag": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "tag parameter",
 				},
 				"thread_control": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "thread_control parameter",
 				},
 			}),
@@ -2627,19 +2626,19 @@ func GetPageTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"audio_enabled": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "audio_enabled parameter",
 				},
 				"call_hours": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "call_hours parameter",
 				},
 				"call_routing": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "call_routing parameter",
 				},
 				"icon_enabled": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "icon_enabled parameter",
 				},
 			}),
@@ -2675,49 +2674,49 @@ func GetPageTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"account_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "account_id parameter",
 				},
 				"block_send_api": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "block_send_api parameter",
 				},
 				"exit_keyphrases": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "exit_keyphrases parameter",
 				},
 				"handover_app_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "handover_app_id parameter",
 				},
 				"handover_summary": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "handover_summary parameter",
 				},
 				"privacy_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "privacy_url parameter",
 				},
 				"reminder_text": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "reminder_text parameter",
 				},
 				"step_list": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "step_list parameter",
-					"required": true,
-					"items": map[string]any{"type": "object"},
+					"required":    true,
+					"items":       map[string]any{"type": "object"},
 				},
 				"stop_question_message": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "stop_question_message parameter",
 				},
 				"template_name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "template_name parameter",
 				},
 				"tracking_parameters": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "tracking_parameters parameter",
 				},
 			}),
@@ -2734,16 +2733,16 @@ func GetPageTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"fields": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "fields parameter",
-					"required": true,
-					"enum": []string{ "ACCOUNT_LINKING_URL", "COMMANDS", "DESCRIPTION", "GET_STARTED", "GREETING", "HOME_URL", "ICE_BREAKERS", "PERSISTENT_MENU", "PLATFORM", "SUBJECT_TO_NEW_EU_PRIVACY_RULES", "TITLE", "WHITELISTED_DOMAINS" },
-					"items": map[string]any{"type": "string"},
+					"required":    true,
+					"enum":        []string{"ACCOUNT_LINKING_URL", "COMMANDS", "DESCRIPTION", "GET_STARTED", "GREETING", "HOME_URL", "ICE_BREAKERS", "PERSISTENT_MENU", "PLATFORM", "SUBJECT_TO_NEW_EU_PRIVACY_RULES", "TITLE", "WHITELISTED_DOMAINS"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"platform": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "platform parameter",
-					"enum": []string{ "INSTAGRAM", "MESSENGER" },
+					"enum":        []string{"INSTAGRAM", "MESSENGER"},
 				},
 			}),
 			mcp.Description("Parameters object containing: fields (array<enum>) [ACCOUNT_LINKING_URL, COMMANDS, DESCRIPTION, GET_STARTED, GREETING, ...] [required], platform (enum) [INSTAGRAM, MESSENGER]"),
@@ -2759,9 +2758,9 @@ func GetPageTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"platform": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "platform parameter",
-					"enum": []string{ "INSTAGRAM", "MESSENGER" },
+					"enum":        []string{"INSTAGRAM", "MESSENGER"},
 				},
 			}),
 			mcp.Description("Parameters object containing: platform (enum) [INSTAGRAM, MESSENGER]"),
@@ -2788,52 +2787,52 @@ func GetPageTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"account_linking_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "account_linking_url parameter",
 				},
 				"commands": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "commands parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"description": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "description parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"get_started": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "get_started parameter",
 				},
 				"greeting": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "greeting parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"ice_breakers": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "ice_breakers parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"persistent_menu": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "persistent_menu parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"platform": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "platform parameter",
-					"enum": []string{ "INSTAGRAM", "MESSENGER" },
+					"enum":        []string{"INSTAGRAM", "MESSENGER"},
 				},
 				"title": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "title parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"whitelisted_domains": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "whitelisted_domains parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: account_linking_url (string), commands (array<object>), description (array<object>), get_started (object), greeting (array<object>), ice_breakers (array<object>), persistent_menu (array<object>), platform (enum) [INSTAGRAM, MESSENGER], title (array<object>), whitelisted_domains (array<string>)"),
@@ -2849,17 +2848,17 @@ func GetPageTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"actions": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "actions parameter",
-					"required": true,
-					"enum": []string{ "BAN_USER", "BLOCK_USER", "MOVE_TO_SPAM", "UNBAN_USER", "UNBLOCK_USER" },
-					"items": map[string]any{"type": "string"},
+					"required":    true,
+					"enum":        []string{"BAN_USER", "BLOCK_USER", "MOVE_TO_SPAM", "UNBAN_USER", "UNBLOCK_USER"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"user_ids": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "user_ids parameter",
-					"required": true,
-					"items": map[string]any{"type": "object"},
+					"required":    true,
+					"items":       map[string]any{"type": "object"},
 				},
 			}),
 			mcp.Description("Parameters object containing: actions (array<enum>) [BAN_USER, BLOCK_USER, MOVE_TO_SPAM, UNBAN_USER, UNBLOCK_USER] [required], user_ids (array<object>) [required]"),
@@ -2874,32 +2873,32 @@ func GetPageTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"api_version": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "api_version parameter",
 				},
 				"custom_token": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "custom_token parameter",
 				},
 				"model": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "model parameter",
-					"enum": []string{ "ARABIC", "CHINESE", "CROATIAN", "CUSTOM", "DANISH", "DUTCH", "ENGLISH", "FRENCH_STANDARD", "GEORGIAN", "GERMAN_STANDARD", "GREEK", "HEBREW", "HUNGARIAN", "IRISH", "ITALIAN_STANDARD", "KOREAN", "NORWEGIAN_BOKMAL", "POLISH", "PORTUGUESE", "ROMANIAN", "SPANISH", "SWEDISH", "VIETNAMESE" },
+					"enum":        []string{"ARABIC", "CHINESE", "CROATIAN", "CUSTOM", "DANISH", "DUTCH", "ENGLISH", "FRENCH_STANDARD", "GEORGIAN", "GERMAN_STANDARD", "GREEK", "HEBREW", "HUNGARIAN", "IRISH", "ITALIAN_STANDARD", "KOREAN", "NORWEGIAN_BOKMAL", "POLISH", "PORTUGUESE", "ROMANIAN", "SPANISH", "SWEDISH", "VIETNAMESE"},
 				},
 				"n_best": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "n_best parameter",
 				},
 				"nlp_enabled": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "nlp_enabled parameter",
 				},
 				"other_language_support": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "other_language_support parameter",
 				},
 				"verbose": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "verbose parameter",
 				},
 			}),
@@ -2935,15 +2934,15 @@ func GetPageTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"developer_action": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "developer_action parameter",
-					"required": true,
-					"enum": []string{ "ENABLE_FOLLOWUP_MESSAGE" },
+					"required":    true,
+					"enum":        []string{"ENABLE_FOLLOWUP_MESSAGE"},
 				},
 				"recipient": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "recipient parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: developer_action (enum) [ENABLE_FOLLOWUP_MESSAGE] [required], recipient (object) [required]"),
@@ -2984,13 +2983,13 @@ func GetPageTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"verification_code": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "verification_code parameter",
 				},
 				"whatsapp_number": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "whatsapp_number parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: verification_code (string), whatsapp_number (string) [required]"),
@@ -3006,16 +3005,16 @@ func GetPageTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"metadata": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "metadata parameter",
 				},
 				"recipient": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "recipient parameter",
-					"required": true,
+					"required":    true,
 				},
 				"target_app_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "target_app_id parameter",
 				},
 			}),
@@ -3051,14 +3050,14 @@ func GetPageTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
-					"required": true,
+					"required":    true,
 				},
 				"profile_picture_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "profile_picture_url parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: name (string) [required], profile_picture_url (string) [required]"),
@@ -3073,7 +3072,7 @@ func GetPageTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"photo_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "photo_id parameter",
 				},
 			}),
@@ -3090,17 +3089,17 @@ func GetPageTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"biz_tag_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "biz_tag_id parameter",
 				},
 				"business_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "business_id parameter",
 				},
 				"type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "type parameter",
-					"enum": []string{ "profile", "tagged", "uploaded" },
+					"enum":        []string{"profile", "tagged", "uploaded"},
 				},
 			}),
 			mcp.Description("Parameters object containing: biz_tag_id (integer), business_id (string), type (enum) [profile, tagged, uploaded]"),
@@ -3127,230 +3126,230 @@ func GetPageTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"aid": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "aid parameter",
 				},
 				"allow_spherical_photo": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "allow_spherical_photo parameter",
 				},
 				"alt_text_custom": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "alt_text_custom parameter",
 				},
 				"android_key_hash": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "android_key_hash parameter",
 				},
 				"application_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "application_id parameter",
 				},
 				"attempt": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "attempt parameter",
 				},
 				"audience_exp": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "audience_exp parameter",
 				},
 				"backdated_time": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "backdated_time parameter",
 				},
 				"backdated_time_granularity": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "backdated_time_granularity parameter",
-					"enum": []string{ "day", "hour", "min", "month", "none", "year" },
+					"enum":        []string{"day", "hour", "min", "month", "none", "year"},
 				},
 				"caption": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "caption parameter",
 				},
 				"composer_session_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "composer_session_id parameter",
 				},
 				"direct_share_status": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "direct_share_status parameter",
 				},
 				"feed_targeting": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "feed_targeting parameter",
 				},
 				"filter_type": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "filter_type parameter",
 				},
 				"full_res_is_coming_later": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "full_res_is_coming_later parameter",
 				},
 				"initial_view_heading_override_degrees": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "initial_view_heading_override_degrees parameter",
 				},
 				"initial_view_pitch_override_degrees": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "initial_view_pitch_override_degrees parameter",
 				},
 				"initial_view_vertical_fov_override_degrees": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "initial_view_vertical_fov_override_degrees parameter",
 				},
 				"ios_bundle_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "ios_bundle_id parameter",
 				},
 				"is_explicit_location": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_explicit_location parameter",
 				},
 				"is_explicit_place": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_explicit_place parameter",
 				},
 				"location_source_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "location_source_id parameter",
 				},
 				"manual_privacy": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "manual_privacy parameter",
 				},
 				"message": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "message parameter",
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
 				},
 				"nectar_module": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "nectar_module parameter",
 				},
 				"no_story": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "no_story parameter",
 				},
 				"offline_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "offline_id parameter",
 				},
 				"og_action_type_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "og_action_type_id parameter",
 				},
 				"og_icon_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "og_icon_id parameter",
 				},
 				"og_object_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "og_object_id parameter",
 				},
 				"og_phrase": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "og_phrase parameter",
 				},
 				"og_set_profile_badge": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "og_set_profile_badge parameter",
 				},
 				"og_suggestion_mechanism": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "og_suggestion_mechanism parameter",
 				},
 				"parent_media_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "parent_media_id parameter",
 				},
 				"place": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "place parameter",
 				},
 				"privacy": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "privacy parameter",
 				},
 				"profile_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "profile_id parameter",
 				},
 				"provenance_info": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "provenance_info parameter",
 				},
 				"proxied_app_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "proxied_app_id parameter",
 				},
 				"published": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "published parameter",
 				},
 				"qn": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "qn parameter",
 				},
 				"scheduled_publish_time": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "scheduled_publish_time parameter",
 				},
 				"spherical_metadata": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "spherical_metadata parameter",
 				},
 				"sponsor_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "sponsor_id parameter",
 				},
 				"sponsor_relationship": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "sponsor_relationship parameter",
 				},
 				"tags": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "tags parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"target_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "target_id parameter",
 				},
 				"targeting": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "targeting parameter",
 				},
 				"temporary": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "temporary parameter",
 				},
 				"time_since_original_post": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "time_since_original_post parameter",
 				},
 				"uid": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "uid parameter",
 				},
 				"unpublished_content_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "unpublished_content_type parameter",
-					"enum": []string{ "ADS_POST", "DRAFT", "INLINE_CREATED", "PUBLISHED", "REVIEWABLE_BRANDED_CONTENT", "SCHEDULED", "SCHEDULED_RECURRING" },
+					"enum":        []string{"ADS_POST", "DRAFT", "INLINE_CREATED", "PUBLISHED", "REVIEWABLE_BRANDED_CONTENT", "SCHEDULED", "SCHEDULED_RECURRING"},
 				},
 				"url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "url parameter",
 				},
 				"user_selected_tags": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "user_selected_tags parameter",
 				},
 				"vault_image_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "vault_image_id parameter",
 				},
 			}),
@@ -3367,20 +3366,20 @@ func GetPageTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"height": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "height parameter",
 				},
 				"redirect": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "redirect parameter",
 				},
 				"type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "type parameter",
-					"enum": []string{ "album", "large", "normal", "small", "square" },
+					"enum":        []string{"album", "large", "normal", "small", "square"},
 				},
 				"width": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "width parameter",
 				},
 			}),
@@ -3408,108 +3407,108 @@ func GetPageTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"android_key_hash": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "android_key_hash parameter",
 				},
 				"burn_media_effect": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "burn_media_effect parameter",
 				},
 				"caption": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "caption parameter",
 				},
 				"composer_session_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "composer_session_id parameter",
 				},
 				"frame_entrypoint": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "frame_entrypoint parameter",
 				},
 				"has_umg": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "has_umg parameter",
 				},
 				"height": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "height parameter",
 				},
 				"ios_bundle_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "ios_bundle_id parameter",
 				},
 				"media_effect_ids": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "media_effect_ids parameter",
-					"items": map[string]any{"type": "integer"},
+					"items":       map[string]any{"type": "integer"},
 				},
 				"media_effect_source_object_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "media_effect_source_object_id parameter",
 				},
 				"msqrd_mask_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "msqrd_mask_id parameter",
 				},
 				"photo": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "photo parameter",
 				},
 				"picture": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "picture parameter",
 				},
 				"profile_pic_method": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "profile_pic_method parameter",
 				},
 				"profile_pic_source": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "profile_pic_source parameter",
 				},
 				"proxied_app_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "proxied_app_id parameter",
 				},
 				"qn": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "qn parameter",
 				},
 				"reuse": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "reuse parameter",
 				},
 				"scaled_crop_rect": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "scaled_crop_rect parameter",
 				},
 				"set_profile_photo_shield": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "set_profile_photo_shield parameter",
 				},
 				"sticker_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "sticker_id parameter",
 				},
 				"sticker_source_object_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "sticker_source_object_id parameter",
 				},
 				"suppress_stories": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "suppress_stories parameter",
 				},
 				"width": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "width parameter",
 				},
 				"x": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "x parameter",
 				},
 				"y": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "y parameter",
 				},
 			}),
@@ -3526,25 +3525,25 @@ func GetPageTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"include_hidden": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "include_hidden parameter",
 				},
 				"limit": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "limit parameter",
 				},
 				"q": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "q parameter",
 				},
 				"show_expired": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "show_expired parameter",
 				},
 				"with": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "with parameter",
-					"enum": []string{ "LOCATION" },
+					"enum":        []string{"LOCATION"},
 				},
 			}),
 			mcp.Description("Parameters object containing: include_hidden (boolean), limit (integer), q (string), show_expired (boolean), with (enum) [LOCATION]"),
@@ -3591,21 +3590,21 @@ func GetPageTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"include_hidden": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "include_hidden parameter",
 				},
 				"limit": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "limit parameter",
 				},
 				"show_expired": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "show_expired parameter",
 				},
 				"with": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "with parameter",
-					"enum": []string{ "LOCATION" },
+					"enum":        []string{"LOCATION"},
 				},
 			}),
 			mcp.Description("Parameters object containing: include_hidden (boolean), limit (integer), show_expired (boolean), with (enum) [LOCATION]"),
@@ -3633,9 +3632,9 @@ func GetPageTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"recipient": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "recipient parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: recipient (object) [required]"),
@@ -3651,13 +3650,13 @@ func GetPageTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"metadata": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "metadata parameter",
 				},
 				"recipient": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "recipient parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: metadata (string), recipient (object) [required]"),
@@ -3673,11 +3672,11 @@ func GetPageTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"include_deactivated": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "include_deactivated parameter",
 				},
 				"uid": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "uid parameter",
 				},
 			}),
@@ -3744,9 +3743,9 @@ func GetPageTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"platform": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "platform parameter",
-					"enum": []string{ "INSTAGRAM", "MESSENGER" },
+					"enum":        []string{"INSTAGRAM", "MESSENGER"},
 				},
 			}),
 			mcp.Description("Parameters object containing: platform (enum) [INSTAGRAM, MESSENGER]"),
@@ -3792,7 +3791,7 @@ func GetPageTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"option": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "option parameter",
 				},
 			}),
@@ -3847,17 +3846,17 @@ func GetPageTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"since": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "since parameter",
 				},
 				"status": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "status parameter",
-					"enum": []string{ "ARCHIVED", "PUBLISHED" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"ARCHIVED", "PUBLISHED"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"until": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "until parameter",
 				},
 			}),
@@ -3911,11 +3910,11 @@ func GetPageTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"subscribed_fields": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "subscribed_fields parameter",
-					"required": true,
-					"enum": []string{ "affiliation", "attire", "awards", "bio", "birthday", "call_permission_reply", "calls", "category", "checkins", "company_overview", "conversations", "culinary_team", "current_location", "description", "email", "feature_access_list", "feed", "founded", "general_info", "general_manager", "group_feed", "hometown", "hours", "inbox_labels", "invalid_topic_placeholder", "invoice_access_bank_slip_events", "invoice_access_invoice_change", "invoice_access_invoice_draft_change", "invoice_access_onboarding_status_active", "leadgen", "leadgen_fat", "live_videos", "local_delivery", "location", "marketing_message_delivery_failed", "mcom_invoice_change", "members", "mention", "merchant_review", "message_context", "message_deliveries", "message_echoes", "message_edits", "message_mention", "message_reactions", "message_reads", "message_template_status_update", "messages", "messaging_account_linking", "messaging_appointments", "messaging_checkout_updates", "messaging_customer_information", "messaging_direct_sends", "messaging_fblogin_account_linking", "messaging_feedback", "messaging_game_plays", "messaging_handovers", "messaging_in_thread_lead_form_submit", "messaging_integrity", "messaging_optins", "messaging_optouts", "messaging_payments", "messaging_policy_enforcement", "messaging_postbacks", "messaging_pre_checkouts", "messaging_referrals", "mission", "name", "page_about_story", "page_change_proposal", "page_upcoming_change", "parking", "payment_options", "payment_request_update", "personal_info", "personal_interests", "phone", "picture", "price_range", "product_review", "products", "public_transit", "publisher_subscriptions", "ratings", "registration", "response_feedback", "send_cart", "standby", "user_action", "video_text_question_responses", "videos", "website" },
-					"items": map[string]any{"type": "string"},
+					"required":    true,
+					"enum":        []string{"affiliation", "attire", "awards", "bio", "birthday", "call_permission_reply", "calls", "category", "checkins", "company_overview", "conversations", "culinary_team", "current_location", "description", "email", "feature_access_list", "feed", "founded", "general_info", "general_manager", "group_feed", "hometown", "hours", "inbox_labels", "invalid_topic_placeholder", "invoice_access_bank_slip_events", "invoice_access_invoice_change", "invoice_access_invoice_draft_change", "invoice_access_onboarding_status_active", "leadgen", "leadgen_fat", "live_videos", "local_delivery", "location", "marketing_message_delivery_failed", "mcom_invoice_change", "members", "mention", "merchant_review", "message_context", "message_deliveries", "message_echoes", "message_edits", "message_mention", "message_reactions", "message_reads", "message_template_status_update", "messages", "messaging_account_linking", "messaging_appointments", "messaging_checkout_updates", "messaging_customer_information", "messaging_direct_sends", "messaging_fblogin_account_linking", "messaging_feedback", "messaging_game_plays", "messaging_handovers", "messaging_in_thread_lead_form_submit", "messaging_integrity", "messaging_optins", "messaging_optouts", "messaging_payments", "messaging_policy_enforcement", "messaging_postbacks", "messaging_pre_checkouts", "messaging_referrals", "mission", "name", "page_about_story", "page_change_proposal", "page_upcoming_change", "parking", "payment_options", "payment_request_update", "personal_info", "personal_interests", "phone", "picture", "price_range", "product_review", "products", "public_transit", "publisher_subscriptions", "ratings", "registration", "response_feedback", "send_cart", "standby", "user_action", "video_text_question_responses", "videos", "website"},
+					"items":       map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: subscribed_fields (array<enum>) [affiliation, attire, awards, bio, birthday, ...] [required]"),
@@ -3931,9 +3930,9 @@ func GetPageTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"tab": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "tab parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: tab (array<string>)"),
@@ -3980,13 +3979,13 @@ func GetPageTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"metadata": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "metadata parameter",
 				},
 				"recipient": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "recipient parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: metadata (string), recipient (object) [required]"),
@@ -4003,9 +4002,9 @@ func GetPageTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"recipient": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "recipient parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: recipient (string) [required]"),
@@ -4033,21 +4032,21 @@ func GetPageTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"folder": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "folder parameter",
 				},
 				"platform": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "platform parameter",
-					"enum": []string{ "INSTAGRAM", "MESSENGER" },
+					"enum":        []string{"INSTAGRAM", "MESSENGER"},
 				},
 				"tags": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "tags parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"user_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "user_id parameter",
 				},
 			}),
@@ -4076,9 +4075,9 @@ func GetPageTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"psid": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "psid parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: psid (string) [required]"),
@@ -4094,13 +4093,13 @@ func GetPageTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"selected_rule_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "selected_rule_id parameter",
 				},
 				"source": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "source parameter",
-					"enum": []string{ "MATCH_SETTINGS_DIALOG", "RULES_SELECTOR", "RULES_TAB" },
+					"enum":        []string{"MATCH_SETTINGS_DIALOG", "RULES_SELECTOR", "RULES_TAB"},
 				},
 			}),
 			mcp.Description("Parameters object containing: selected_rule_id (string), source (enum) [MATCH_SETTINGS_DIALOG, RULES_SELECTOR, RULES_TAB]"),
@@ -4128,15 +4127,15 @@ func GetPageTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"condition_groups": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "condition_groups parameter",
-					"required": true,
-					"items": map[string]any{"type": "object"},
+					"required":    true,
+					"items":       map[string]any{"type": "object"},
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: condition_groups (array<object>) [required], name (string) [required]"),
@@ -4152,65 +4151,65 @@ func GetPageTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"attribution_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "attribution_id parameter",
 				},
 				"content_category": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "content_category parameter",
-					"enum": []string{ "episode", "movie", "web" },
+					"enum":        []string{"episode", "movie", "web"},
 				},
 				"copyright_content_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "copyright_content_id parameter",
-					"required": true,
+					"required":    true,
 				},
 				"excluded_ownership_countries": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "excluded_ownership_countries parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"excluded_ownership_segments": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "excluded_ownership_segments parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"is_reference_disabled": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_reference_disabled parameter",
 				},
 				"is_reference_video": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_reference_video parameter",
 				},
 				"monitoring_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "monitoring_type parameter",
-					"enum": []string{ "AUDIO_ONLY", "VIDEO_AND_AUDIO", "VIDEO_ONLY" },
+					"enum":        []string{"AUDIO_ONLY", "VIDEO_AND_AUDIO", "VIDEO_ONLY"},
 				},
 				"ownership_countries": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "ownership_countries parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"rule_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "rule_id parameter",
 				},
 				"tags": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "tags parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"whitelisted_ids": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "whitelisted_ids parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"whitelisted_ig_user_ids": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "whitelisted_ig_user_ids parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: attribution_id (string), content_category (enum) [episode, movie, web], copyright_content_id (string) [required], excluded_ownership_countries (array<string>), excluded_ownership_segments (array<object>), is_reference_disabled (boolean), is_reference_video (boolean), monitoring_type (enum) [AUDIO_ONLY, VIDEO_AND_AUDIO, VIDEO_ONLY], ownership_countries (array<string>), rule_id (string), tags (array<string>), whitelisted_ids (array<string>), whitelisted_ig_user_ids (array<string>)"),
@@ -4245,11 +4244,11 @@ func GetPageTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"since": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "since parameter",
 				},
 				"until": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "until parameter",
 				},
 			}),
@@ -4278,43 +4277,43 @@ func GetPageTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"description": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "description parameter",
 				},
 				"feed_targeting": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "feed_targeting parameter",
 				},
 				"place": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "place parameter",
 				},
 				"scheduled_publish_time": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "scheduled_publish_time parameter",
 				},
 				"targeting": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "targeting parameter",
 				},
 				"title": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "title parameter",
 				},
 				"upload_phase": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "upload_phase parameter",
-					"required": true,
-					"enum": []string{ "FINISH", "START" },
+					"required":    true,
+					"enum":        []string{"FINISH", "START"},
 				},
 				"video_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "video_id parameter",
 				},
 				"video_state": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "video_state parameter",
-					"enum": []string{ "DRAFT", "PUBLISHED", "SCHEDULED" },
+					"enum":        []string{"DRAFT", "PUBLISHED", "SCHEDULED"},
 				},
 			}),
 			mcp.Description("Parameters object containing: description (string), feed_targeting (object), place (string), scheduled_publish_time (datetime), targeting (object), title (string), upload_phase (enum) [FINISH, START] [required], video_id (string), video_state (enum) [DRAFT, PUBLISHED, SCHEDULED]"),
@@ -4330,43 +4329,43 @@ func GetPageTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"description": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "description parameter",
 				},
 				"feed_targeting": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "feed_targeting parameter",
 				},
 				"place": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "place parameter",
 				},
 				"scheduled_publish_time": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "scheduled_publish_time parameter",
 				},
 				"targeting": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "targeting parameter",
 				},
 				"title": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "title parameter",
 				},
 				"upload_phase": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "upload_phase parameter",
-					"required": true,
-					"enum": []string{ "FINISH", "START" },
+					"required":    true,
+					"enum":        []string{"FINISH", "START"},
 				},
 				"video_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "video_id parameter",
 				},
 				"video_state": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "video_state parameter",
-					"enum": []string{ "DRAFT", "PUBLISHED", "SCHEDULED" },
+					"enum":        []string{"DRAFT", "PUBLISHED", "SCHEDULED"},
 				},
 			}),
 			mcp.Description("Parameters object containing: description (string), feed_targeting (object), place (string), scheduled_publish_time (datetime), targeting (object), title (string), upload_phase (enum) [FINISH, START] [required], video_id (string), video_state (enum) [DRAFT, PUBLISHED, SCHEDULED]"),
@@ -4382,9 +4381,9 @@ func GetPageTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "type parameter",
-					"enum": []string{ "TAGGED", "UPLOADED" },
+					"enum":        []string{"TAGGED", "UPLOADED"},
 				},
 			}),
 			mcp.Description("Parameters object containing: type (enum) [TAGGED, UPLOADED]"),
@@ -4411,370 +4410,370 @@ func GetPageTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"ad_breaks": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "ad_breaks parameter",
 				},
 				"application_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "application_id parameter",
 				},
 				"asked_fun_fact_prompt_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "asked_fun_fact_prompt_id parameter",
 				},
 				"audio_story_wave_animation_handle": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "audio_story_wave_animation_handle parameter",
 				},
 				"backdated_post": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "backdated_post parameter",
 				},
 				"call_to_action": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "call_to_action parameter",
 				},
 				"composer_entry_picker": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "composer_entry_picker parameter",
 				},
 				"composer_entry_point": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "composer_entry_point parameter",
 				},
 				"composer_entry_time": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "composer_entry_time parameter",
 				},
 				"composer_session_events_log": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "composer_session_events_log parameter",
 				},
 				"composer_session_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "composer_session_id parameter",
 				},
 				"composer_source_surface": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "composer_source_surface parameter",
 				},
 				"composer_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "composer_type parameter",
 				},
 				"container_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "container_type parameter",
-					"enum": []string{ "ACO_VIDEO_VARIATION", "ADS_AI_GENERATED", "AD_BREAK_PREVIEW", "AD_DERIVATIVE", "AD_LIBRARY_WATERMARK", "ALBUM_MULTIMEDIA_POST", "ALOHA_SUPERFRAME", "APP_REREVIEW_SCREENCAST", "APP_REVIEW_SCREENCAST", "ASSET_MANAGER", "ATLAS_VIDEO", "AUDIO_BROADCAST", "AUDIO_COMMENT", "BROADCAST", "CANVAS", "CMS_MEDIA_MANAGER", "CONTAINED_POST_ATTACHMENT", "CONTAINED_POST_AUDIO_BROADCAST", "CONTAINED_POST_COPYRIGHT_REFERENCE_BROADCAST", "COPYRIGHT_REFERENCE_BROADCAST", "COPYRIGHT_REFERENCE_IG_XPOST_VIDEO", "COPYRIGHT_REFERENCE_VIDEO", "CREATION_ML_PRECREATION", "CREATOR_FAN_CHALLENGE", "CREATOR_STOREFRONT_PERSONALIZED_VIDEO", "DATAGENIX_VIDEO", "DCO_AD_ASSET_FEED", "DCO_AUTOGEN_VIDEO", "DCO_TRIMMED_VIDEO", "DIM_SUM", "DIRECTED_POST_ATTACHMENT", "DIRECT_INBOX", "DROPS_SHOPPING_EVENT_PAGE", "DYNAMIC_ITEM_VIDEO", "DYNAMIC_TEMPLATE_VIDEO", "EVENT_COVER_VIDEO", "EVENT_TOUR", "FACECAST_DVR", "FB_AVATAR_ANIMATED_SATP", "FB_COLLECTIBLE_VIDEO", "FB_SHORTS", "FB_SHORTS_CONTENT_REMIXABLE", "FB_SHORTS_GROUP_POST", "FB_SHORTS_LINKED_PRODUCT", "FB_SHORTS_PMV_POST", "FB_SHORTS_POST", "FB_SHORTS_REMIX_POST", "FUNDRAISER_COVER_VIDEO", "GAME_CLIP", "GIF_TO_VIDEO", "GOODWILL_ANNIVERSARY_DEPRECATED", "GOODWILL_ANNIVERSARY_PROMOTION_DEPRECATED", "GOODWILL_VIDEO_CONTAINED_SHARE", "GOODWILL_VIDEO_PROMOTION", "GOODWILL_VIDEO_SHARE", "GOODWILL_VIDEO_TOKEN_REQUIRED", "GROUP_POST", "HEURISTIC_CLUSTER_VIDEO", "HIGHLIGHT_CLIP_VIDEO", "HORIZON_WORLDS_TV", "HUDDLE_BROADCAST", "IG_REELS_XPV", "IG_STORIES_READER", "INJECTABLE", "INSPIRATION_VIDEO", "INSTAGRAM_VIDEO_COPY", "INSTANT_APPLICATION_PREVIEW", "INSTANT_ARTICLE", "ISSUE_MODULE", "LEARN", "LEGACY", "LEGACY_CONTAINED_POST_BROADCAST", "LIVE_AUDIO_ROOM_BROADCAST", "LIVE_CLIP_PREVIEW", "LIVE_CLIP_WORKCHAT", "LIVE_CREATIVE_KIT_VIDEO", "LIVE_PHOTO", "LOOK_NOW_DEPRECATED", "MARKETPLACE_LISTING_VIDEO", "MARKETPLACE_PRE_RECORDED_VIDEO", "MOMENTS_VIDEO", "MUSIC_CLIP", "MUSIC_CLIP_IN_COMMENT", "MUSIC_CLIP_IN_LIGHTWEIGHT_STATUS", "MUSIC_CLIP_IN_MSGR_NOTE", "MUSIC_CLIP_IN_POLL_OPTION", "MUSIC_CLIP_ON_DATING_PROFILE", "NEO_ASYNC_GAME_VIDEO", "NEW_CONTAINED_POST_BROADCAST", "NO_STORY", "OCULUS_CREATOR_PORTAL", "OCULUS_VENUES_BROADCAST", "ORIGINALITY_SELF_ADVOCACY", "PAGES_COVER_VIDEO", "PAGE_REVIEW_SCREENCAST", "PAGE_SLIDESHOW_VIDEO", "PAID_CONTENT_PREVIEW", "PAID_CONTENT_VIDEO", "PAID_CONTENT_VIDEO__POST", "PIXELCLOUD", "PODCAST_HIGHLIGHT", "PODCAST_ML_PREVIEW", "PODCAST_ML_PREVIEW_NO_NEWSFEED_STORY", "PODCAST_RSS", "PODCAST_RSS_EPHEMERAL", "PODCAST_RSS_NO_NEWSFEED_STORY", "PODCAST_VOICES", "PODCAST_VOICES_NO_NEWSFEED_STORY", "PREMIERE_SOURCE", "PREMIUM_MUSIC_VIDEO_CLIP", "PREMIUM_MUSIC_VIDEO_CROPPED_CLIP", "PREMIUM_MUSIC_VIDEO_NO_NEWSFEED_STORY", "PREMIUM_MUSIC_VIDEO_WITH_NEWSFEED_STORY", "PRIVATE_GALLERY_VIDEO", "PRODUCT_VIDEO", "PROFILE_COVER_VIDEO", "PROFILE_INTRO_CARD", "PROFILE_VIDEO", "PROTON", "QUICK_CLIP_WORKPLACE_POST", "QUICK_PROMOTION", "REPLACE_VIDEO", "SALES_CLIENT_INTERACTION", "SHOWREEL_NATIVE_DUMMY_VIDEO", "SLIDESHOW_ANIMOTO", "SLIDESHOW_SHAKR", "SLIDESHOW_VARIATION_VIDEO", "SOUND_PLATFORM_STREAM", "SRT_ATTACHMENT", "STORIES_VIDEO", "STORYLINE", "STORYLINE_WITH_EXTERNAL_MUSIC", "STORY_ARCHIVE_VIDEO", "STORY_CARD_TEMPLATE", "STREAM_HIGHLIGHTS_VIDEO", "TAROT_DIGEST", "TEMPORARY_UNLISTED", "TEMP_VIDEO_COPYRIGHT_SCAN", "UNLISTED", "UNLISTED_OCULUS", "VIDEO_COMMENT", "VIDEO_COMPOSITION_VARIATION", "VIDEO_CREATIVE_EDITOR_AUTOGEN_AD_VIDEO", "VIDEO_SUPERRES", "VOICES_ARTICLE_VIDEO", "VU_GENERATED_VIDEO", "WOODHENGE", "WORK_KNOWLEDGE_VIDEO", "YOUR_DAY" },
+					"enum":        []string{"ACO_VIDEO_VARIATION", "ADS_AI_GENERATED", "AD_BREAK_PREVIEW", "AD_DERIVATIVE", "AD_LIBRARY_WATERMARK", "ALBUM_MULTIMEDIA_POST", "ALOHA_SUPERFRAME", "APP_REREVIEW_SCREENCAST", "APP_REVIEW_SCREENCAST", "ASSET_MANAGER", "ATLAS_VIDEO", "AUDIO_BROADCAST", "AUDIO_COMMENT", "BROADCAST", "CANVAS", "CMS_MEDIA_MANAGER", "CONTAINED_POST_ATTACHMENT", "CONTAINED_POST_AUDIO_BROADCAST", "CONTAINED_POST_COPYRIGHT_REFERENCE_BROADCAST", "COPYRIGHT_REFERENCE_BROADCAST", "COPYRIGHT_REFERENCE_IG_XPOST_VIDEO", "COPYRIGHT_REFERENCE_VIDEO", "CREATION_ML_PRECREATION", "CREATOR_FAN_CHALLENGE", "CREATOR_STOREFRONT_PERSONALIZED_VIDEO", "DATAGENIX_VIDEO", "DCO_AD_ASSET_FEED", "DCO_AUTOGEN_VIDEO", "DCO_TRIMMED_VIDEO", "DIM_SUM", "DIRECTED_POST_ATTACHMENT", "DIRECT_INBOX", "DROPS_SHOPPING_EVENT_PAGE", "DYNAMIC_ITEM_VIDEO", "DYNAMIC_TEMPLATE_VIDEO", "EVENT_COVER_VIDEO", "EVENT_TOUR", "FACECAST_DVR", "FB_AVATAR_ANIMATED_SATP", "FB_COLLECTIBLE_VIDEO", "FB_SHORTS", "FB_SHORTS_CONTENT_REMIXABLE", "FB_SHORTS_GROUP_POST", "FB_SHORTS_LINKED_PRODUCT", "FB_SHORTS_PMV_POST", "FB_SHORTS_POST", "FB_SHORTS_REMIX_POST", "FUNDRAISER_COVER_VIDEO", "GAME_CLIP", "GIF_TO_VIDEO", "GOODWILL_ANNIVERSARY_DEPRECATED", "GOODWILL_ANNIVERSARY_PROMOTION_DEPRECATED", "GOODWILL_VIDEO_CONTAINED_SHARE", "GOODWILL_VIDEO_PROMOTION", "GOODWILL_VIDEO_SHARE", "GOODWILL_VIDEO_TOKEN_REQUIRED", "GROUP_POST", "HEURISTIC_CLUSTER_VIDEO", "HIGHLIGHT_CLIP_VIDEO", "HORIZON_WORLDS_TV", "HUDDLE_BROADCAST", "IG_REELS_XPV", "IG_STORIES_READER", "INJECTABLE", "INSPIRATION_VIDEO", "INSTAGRAM_VIDEO_COPY", "INSTANT_APPLICATION_PREVIEW", "INSTANT_ARTICLE", "ISSUE_MODULE", "LEARN", "LEGACY", "LEGACY_CONTAINED_POST_BROADCAST", "LIVE_AUDIO_ROOM_BROADCAST", "LIVE_CLIP_PREVIEW", "LIVE_CLIP_WORKCHAT", "LIVE_CREATIVE_KIT_VIDEO", "LIVE_PHOTO", "LOOK_NOW_DEPRECATED", "MARKETPLACE_LISTING_VIDEO", "MARKETPLACE_PRE_RECORDED_VIDEO", "MOMENTS_VIDEO", "MUSIC_CLIP", "MUSIC_CLIP_IN_COMMENT", "MUSIC_CLIP_IN_LIGHTWEIGHT_STATUS", "MUSIC_CLIP_IN_MSGR_NOTE", "MUSIC_CLIP_IN_POLL_OPTION", "MUSIC_CLIP_ON_DATING_PROFILE", "NEO_ASYNC_GAME_VIDEO", "NEW_CONTAINED_POST_BROADCAST", "NO_STORY", "OCULUS_CREATOR_PORTAL", "OCULUS_VENUES_BROADCAST", "ORIGINALITY_SELF_ADVOCACY", "PAGES_COVER_VIDEO", "PAGE_REVIEW_SCREENCAST", "PAGE_SLIDESHOW_VIDEO", "PAID_CONTENT_PREVIEW", "PAID_CONTENT_VIDEO", "PAID_CONTENT_VIDEO__POST", "PIXELCLOUD", "PODCAST_HIGHLIGHT", "PODCAST_ML_PREVIEW", "PODCAST_ML_PREVIEW_NO_NEWSFEED_STORY", "PODCAST_RSS", "PODCAST_RSS_EPHEMERAL", "PODCAST_RSS_NO_NEWSFEED_STORY", "PODCAST_VOICES", "PODCAST_VOICES_NO_NEWSFEED_STORY", "PREMIERE_SOURCE", "PREMIUM_MUSIC_VIDEO_CLIP", "PREMIUM_MUSIC_VIDEO_CROPPED_CLIP", "PREMIUM_MUSIC_VIDEO_NO_NEWSFEED_STORY", "PREMIUM_MUSIC_VIDEO_WITH_NEWSFEED_STORY", "PRIVATE_GALLERY_VIDEO", "PRODUCT_VIDEO", "PROFILE_COVER_VIDEO", "PROFILE_INTRO_CARD", "PROFILE_VIDEO", "PROTON", "QUICK_CLIP_WORKPLACE_POST", "QUICK_PROMOTION", "REPLACE_VIDEO", "SALES_CLIENT_INTERACTION", "SHOWREEL_NATIVE_DUMMY_VIDEO", "SLIDESHOW_ANIMOTO", "SLIDESHOW_SHAKR", "SLIDESHOW_VARIATION_VIDEO", "SOUND_PLATFORM_STREAM", "SRT_ATTACHMENT", "STORIES_VIDEO", "STORYLINE", "STORYLINE_WITH_EXTERNAL_MUSIC", "STORY_ARCHIVE_VIDEO", "STORY_CARD_TEMPLATE", "STREAM_HIGHLIGHTS_VIDEO", "TAROT_DIGEST", "TEMPORARY_UNLISTED", "TEMP_VIDEO_COPYRIGHT_SCAN", "UNLISTED", "UNLISTED_OCULUS", "VIDEO_COMMENT", "VIDEO_COMPOSITION_VARIATION", "VIDEO_CREATIVE_EDITOR_AUTOGEN_AD_VIDEO", "VIDEO_SUPERRES", "VOICES_ARTICLE_VIDEO", "VU_GENERATED_VIDEO", "WOODHENGE", "WORK_KNOWLEDGE_VIDEO", "YOUR_DAY"},
 				},
 				"content_category": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "content_category parameter",
-					"enum": []string{ "BEAUTY_FASHION", "BUSINESS", "CARS_TRUCKS", "COMEDY", "CUTE_ANIMALS", "ENTERTAINMENT", "FAMILY", "FOOD_HEALTH", "HOME", "LIFESTYLE", "MUSIC", "NEWS", "OTHER", "POLITICS", "SCIENCE", "SPORTS", "TECHNOLOGY", "VIDEO_GAMING" },
+					"enum":        []string{"BEAUTY_FASHION", "BUSINESS", "CARS_TRUCKS", "COMEDY", "CUTE_ANIMALS", "ENTERTAINMENT", "FAMILY", "FOOD_HEALTH", "HOME", "LIFESTYLE", "MUSIC", "NEWS", "OTHER", "POLITICS", "SCIENCE", "SPORTS", "TECHNOLOGY", "VIDEO_GAMING"},
 				},
 				"content_tags": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "content_tags parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"creative_tools": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "creative_tools parameter",
 				},
 				"crossposted_video_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "crossposted_video_id parameter",
 				},
 				"custom_labels": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "custom_labels parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"description": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "description parameter",
 				},
 				"direct_share_status": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "direct_share_status parameter",
 				},
 				"embeddable": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "embeddable parameter",
 				},
 				"end_offset": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "end_offset parameter",
 				},
 				"expiration": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "expiration parameter",
 				},
 				"fbuploader_video_file_chunk": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "fbuploader_video_file_chunk parameter",
 				},
 				"feed_targeting": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "feed_targeting parameter",
 				},
 				"file_size": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "file_size parameter",
 				},
 				"file_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "file_url parameter",
 				},
 				"fisheye_video_cropped": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "fisheye_video_cropped parameter",
 				},
 				"formatting": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "formatting parameter",
-					"enum": []string{ "MARKDOWN", "PLAINTEXT" },
+					"enum":        []string{"MARKDOWN", "PLAINTEXT"},
 				},
 				"fov": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "fov parameter",
 				},
 				"front_z_rotation": map[string]any{
-					"type": "number",
+					"type":        "number",
 					"description": "front_z_rotation parameter",
 				},
 				"fun_fact_prompt_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "fun_fact_prompt_id parameter",
 				},
 				"fun_fact_toastee_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "fun_fact_toastee_id parameter",
 				},
 				"guide": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "guide parameter",
-					"items": map[string]any{"type": "array"},
+					"items":       map[string]any{"type": "array"},
 				},
 				"guide_enabled": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "guide_enabled parameter",
 				},
 				"initial_heading": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "initial_heading parameter",
 				},
 				"initial_pitch": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "initial_pitch parameter",
 				},
 				"instant_game_entry_point_data": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "instant_game_entry_point_data parameter",
 				},
 				"is_boost_intended": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_boost_intended parameter",
 				},
 				"is_explicit_share": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_explicit_share parameter",
 				},
 				"is_group_linking_post": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_group_linking_post parameter",
 				},
 				"is_partnership_ad": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_partnership_ad parameter",
 				},
 				"is_voice_clip": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_voice_clip parameter",
 				},
 				"location_source_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "location_source_id parameter",
 				},
 				"manual_privacy": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "manual_privacy parameter",
 				},
 				"multilingual_data": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "multilingual_data parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"no_story": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "no_story parameter",
 				},
 				"og_action_type_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "og_action_type_id parameter",
 				},
 				"og_icon_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "og_icon_id parameter",
 				},
 				"og_object_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "og_object_id parameter",
 				},
 				"og_phrase": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "og_phrase parameter",
 				},
 				"og_suggestion_mechanism": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "og_suggestion_mechanism parameter",
 				},
 				"original_fov": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "original_fov parameter",
 				},
 				"original_projection_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "original_projection_type parameter",
-					"enum": []string{ "cubemap", "equirectangular", "half_equirectangular" },
+					"enum":        []string{"cubemap", "equirectangular", "half_equirectangular"},
 				},
 				"partnership_ad_ad_code": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "partnership_ad_ad_code parameter",
 				},
 				"publish_event_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "publish_event_id parameter",
 				},
 				"published": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "published parameter",
 				},
 				"reference_only": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "reference_only parameter",
 				},
 				"referenced_sticker_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "referenced_sticker_id parameter",
 				},
 				"replace_video_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "replace_video_id parameter",
 				},
 				"scheduled_publish_time": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "scheduled_publish_time parameter",
 				},
 				"secret": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "secret parameter",
 				},
 				"slideshow_spec": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "slideshow_spec parameter",
 				},
 				"social_actions": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "social_actions parameter",
 				},
 				"source": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "source parameter",
 				},
 				"source_instagram_media_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "source_instagram_media_id parameter",
 				},
 				"specified_dialect": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "specified_dialect parameter",
 				},
 				"spherical": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "spherical parameter",
 				},
 				"sponsor_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "sponsor_id parameter",
 				},
 				"sponsor_relationship": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "sponsor_relationship parameter",
 				},
 				"start_offset": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "start_offset parameter",
 				},
 				"swap_mode": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "swap_mode parameter",
-					"enum": []string{ "replace" },
+					"enum":        []string{"replace"},
 				},
 				"targeting": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "targeting parameter",
 				},
 				"text_format_metadata": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "text_format_metadata parameter",
 				},
 				"thumb": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "thumb parameter",
 				},
 				"time_since_original_post": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "time_since_original_post parameter",
 				},
 				"title": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "title parameter",
 				},
 				"transcode_setting_properties": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "transcode_setting_properties parameter",
 				},
 				"universal_video_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "universal_video_id parameter",
 				},
 				"unpublished_content_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "unpublished_content_type parameter",
-					"enum": []string{ "ADS_POST", "DRAFT", "INLINE_CREATED", "PUBLISHED", "REVIEWABLE_BRANDED_CONTENT", "SCHEDULED", "SCHEDULED_RECURRING" },
+					"enum":        []string{"ADS_POST", "DRAFT", "INLINE_CREATED", "PUBLISHED", "REVIEWABLE_BRANDED_CONTENT", "SCHEDULED", "SCHEDULED_RECURRING"},
 				},
 				"upload_phase": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "upload_phase parameter",
-					"enum": []string{ "cancel", "finish", "start", "transfer" },
+					"enum":        []string{"cancel", "finish", "start", "transfer"},
 				},
 				"upload_session_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "upload_session_id parameter",
 				},
 				"upload_setting_properties": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "upload_setting_properties parameter",
 				},
 				"video_asset_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "video_asset_id parameter",
 				},
 				"video_file_chunk": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "video_file_chunk parameter",
 				},
 				"video_id_original": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "video_id_original parameter",
 				},
 				"video_start_time_ms": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "video_start_time_ms parameter",
 				},
 				"waterfall_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "waterfall_id parameter",
 				},
 			}),
@@ -4791,21 +4790,21 @@ func GetPageTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"include_hidden": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "include_hidden parameter",
 				},
 				"limit": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "limit parameter",
 				},
 				"show_expired": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "show_expired parameter",
 				},
 				"with": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "with parameter",
-					"enum": []string{ "LOCATION" },
+					"enum":        []string{"LOCATION"},
 				},
 			}),
 			mcp.Description("Parameters object containing: include_hidden (boolean), limit (integer), show_expired (boolean), with (enum) [LOCATION]"),
@@ -4833,9 +4832,9 @@ func GetPageTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"flow_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "flow_id parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: flow_id (string) [required]"),
@@ -4851,11 +4850,11 @@ func GetPageTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"app_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "app_id parameter",
 				},
 				"flow_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "flow_id parameter",
 				},
 			}),
@@ -4883,23 +4882,23 @@ func GetPageTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"eligible_platforms": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "eligible_platforms parameter",
-					"enum": []string{ "INSTAGRAM", "MESSENGER", "WHATSAPP" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"INSTAGRAM", "MESSENGER", "WHATSAPP"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"flow_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "flow_id parameter",
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
 				},
 				"welcome_message_flow": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "welcome_message_flow parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 			}),
 			mcp.Description("Parameters object containing: eligible_platforms (array<enum>) [INSTAGRAM, MESSENGER, WHATSAPP], flow_id (string), name (string), welcome_message_flow (array<object>)"),
@@ -4915,7 +4914,7 @@ func GetPageTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"account_linking_token": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "account_linking_token parameter",
 				},
 			}),
@@ -4943,239 +4942,239 @@ func GetPageTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"about": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "about parameter",
 				},
 				"accept_crossposting_handshake": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "accept_crossposting_handshake parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"allow_spherical_photo": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "allow_spherical_photo parameter",
 				},
 				"attire": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "attire parameter",
-					"enum": []string{ "Casual", "Dressy", "Unspecified" },
+					"enum":        []string{"Casual", "Dressy", "Unspecified"},
 				},
 				"begin_crossposting_handshake": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "begin_crossposting_handshake parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"bio": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "bio parameter",
 				},
 				"category_list": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "category_list parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"company_overview": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "company_overview parameter",
 				},
 				"contact_address": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "contact_address parameter",
 				},
 				"cover": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "cover parameter",
 				},
 				"culinary_team": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "culinary_team parameter",
 				},
 				"delivery_and_pickup_option_info": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "delivery_and_pickup_option_info parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"description": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "description parameter",
 				},
 				"differently_open_offerings": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "differently_open_offerings parameter",
 				},
 				"directed_by": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "directed_by parameter",
 				},
 				"displayed_message_response_time": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "displayed_message_response_time parameter",
 				},
 				"emails": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "emails parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"focus_x": map[string]any{
-					"type": "number",
+					"type":        "number",
 					"description": "focus_x parameter",
 				},
 				"focus_y": map[string]any{
-					"type": "number",
+					"type":        "number",
 					"description": "focus_y parameter",
 				},
 				"food_styles": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "food_styles parameter",
-					"enum": []string{ "Afghani", "American (New)", "American (Traditional)", "Asian Fusion", "Barbeque", "Brazilian", "Breakfast", "British", "Brunch", "Buffets", "Burgers", "Burmese", "Cajun/Creole", "Caribbean", "Chinese", "Creperies", "Cuban", "Delis", "Diners", "Ethiopian", "Fast Food", "Filipino", "Fondue", "Food Stands", "French", "German", "Greek and Mediterranean", "Hawaiian", "Himalayan/Nepalese", "Hot Dogs", "Indian/Pakistani", "Irish", "Italian", "Japanese", "Korean", "Latin American", "Mexican", "Middle Eastern", "Moroccan", "Pizza", "Russian", "Sandwiches", "Seafood", "Singaporean", "Soul Food", "Southern", "Spanish/Basque", "Steakhouses", "Sushi Bars", "Taiwanese", "Tapas Bars", "Tex-Mex", "Thai", "Turkish", "Vegan", "Vegetarian", "Vietnamese" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"Afghani", "American (New)", "American (Traditional)", "Asian Fusion", "Barbeque", "Brazilian", "Breakfast", "British", "Brunch", "Buffets", "Burgers", "Burmese", "Cajun/Creole", "Caribbean", "Chinese", "Creperies", "Cuban", "Delis", "Diners", "Ethiopian", "Fast Food", "Filipino", "Fondue", "Food Stands", "French", "German", "Greek and Mediterranean", "Hawaiian", "Himalayan/Nepalese", "Hot Dogs", "Indian/Pakistani", "Irish", "Italian", "Japanese", "Korean", "Latin American", "Mexican", "Middle Eastern", "Moroccan", "Pizza", "Russian", "Sandwiches", "Seafood", "Singaporean", "Soul Food", "Southern", "Spanish/Basque", "Steakhouses", "Sushi Bars", "Taiwanese", "Tapas Bars", "Tex-Mex", "Thai", "Turkish", "Vegan", "Vegetarian", "Vietnamese"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"gen_ai_provenance_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "gen_ai_provenance_type parameter",
-					"enum": []string{ "C2PA", "C2PA_METADATA_EDITED", "EXPLICIT", "EXPLICIT_IMAGINE", "EXPLICIT_IMAGINE_ME", "EXPLICIT_RESTYLE", "INVISIBLE_WATERMARK", "IPTC", "IPTC_METADATA_EDITED" },
+					"enum":        []string{"C2PA", "C2PA_METADATA_EDITED", "EXPLICIT", "EXPLICIT_IMAGINE", "EXPLICIT_IMAGINE_ME", "EXPLICIT_RESTYLE", "INVISIBLE_WATERMARK", "IPTC", "IPTC_METADATA_EDITED"},
 				},
 				"general_info": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "general_info parameter",
 				},
 				"general_manager": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "general_manager parameter",
 				},
 				"genre": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "genre parameter",
 				},
 				"hours": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "hours parameter",
 				},
 				"ignore_coordinate_warnings": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "ignore_coordinate_warnings parameter",
 				},
 				"impressum": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "impressum parameter",
 				},
 				"is_always_open": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_always_open parameter",
 				},
 				"is_permanently_closed": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_permanently_closed parameter",
 				},
 				"is_published": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_published parameter",
 				},
 				"is_webhooks_subscribed": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_webhooks_subscribed parameter",
 				},
 				"location": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "location parameter",
 				},
 				"menu": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "menu parameter",
 				},
 				"mission": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "mission parameter",
 				},
 				"no_feed_story": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "no_feed_story parameter",
 				},
 				"no_notification": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "no_notification parameter",
 				},
 				"offset_x": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "offset_x parameter",
 				},
 				"offset_y": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "offset_y parameter",
 				},
 				"parking": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "parking parameter",
 				},
 				"payment_options": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "payment_options parameter",
 				},
 				"phone": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "phone parameter",
 				},
 				"pickup_options": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "pickup_options parameter",
-					"enum": []string{ "CURBSIDE", "IN_STORE", "OTHER" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"CURBSIDE", "IN_STORE", "OTHER"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"plot_outline": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "plot_outline parameter",
 				},
 				"price_range": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "price_range parameter",
 				},
 				"public_transit": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "public_transit parameter",
 				},
 				"restaurant_services": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "restaurant_services parameter",
 				},
 				"restaurant_specialties": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "restaurant_specialties parameter",
 				},
 				"scrape": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "scrape parameter",
 				},
 				"service_details": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "service_details parameter",
 				},
 				"spherical_metadata": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "spherical_metadata parameter",
 				},
 				"start_info": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "start_info parameter",
 				},
 				"store_location_descriptor": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "store_location_descriptor parameter",
 				},
 				"temporary_status": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "temporary_status parameter",
-					"enum": []string{ "DIFFERENTLY_OPEN", "NO_DATA", "OPERATING_AS_USUAL", "TEMPORARILY_CLOSED" },
+					"enum":        []string{"DIFFERENTLY_OPEN", "NO_DATA", "OPERATING_AS_USUAL", "TEMPORARILY_CLOSED"},
 				},
 				"website": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "website parameter",
 				},
 				"zoom_scale_x": map[string]any{
-					"type": "number",
+					"type":        "number",
 					"description": "zoom_scale_x parameter",
 				},
 				"zoom_scale_y": map[string]any{
-					"type": "number",
+					"type":        "number",
 					"description": "zoom_scale_y parameter",
 				},
 			}),
@@ -5184,12 +5183,10 @@ func GetPageTools() []mcp.Tool {
 	)
 	tools = append(tools, page_post_Tool)
 
-
 	return tools
 }
 
 // Page handlers
-
 
 // HandlePage_get_ab_tests handles the page_get_ab_tests tool with context-based auth
 func HandlePage_get_ab_tests(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -5230,8 +5227,6 @@ func HandlePage_get_ab_tests(ctx context.Context, request mcp.CallToolRequest) (
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_get_ab_tests(args)
 	if err != nil {
@@ -5246,7 +5241,6 @@ func HandlePage_get_ab_tests(ctx context.Context, request mcp.CallToolRequest) (
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_post_ab_tests handles the page_post_ab_tests tool with context-based auth
 func HandlePage_post_ab_tests(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -5276,8 +5270,6 @@ func HandlePage_post_ab_tests(ctx context.Context, request mcp.CallToolRequest) 
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_post_ab_tests(args)
 	if err != nil {
@@ -5292,7 +5284,6 @@ func HandlePage_post_ab_tests(ctx context.Context, request mcp.CallToolRequest) 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_post_acknowledge_orders handles the page_post_acknowledge_orders tool with context-based auth
 func HandlePage_post_acknowledge_orders(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -5322,8 +5313,6 @@ func HandlePage_post_acknowledge_orders(ctx context.Context, request mcp.CallToo
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_post_acknowledge_orders(args)
 	if err != nil {
@@ -5338,7 +5327,6 @@ func HandlePage_post_acknowledge_orders(ctx context.Context, request mcp.CallToo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_get_ads_posts handles the page_get_ads_posts tool with context-based auth
 func HandlePage_get_ads_posts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -5391,8 +5379,6 @@ func HandlePage_get_ads_posts(ctx context.Context, request mcp.CallToolRequest) 
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_get_ads_posts(args)
 	if err != nil {
@@ -5407,7 +5393,6 @@ func HandlePage_get_ads_posts(ctx context.Context, request mcp.CallToolRequest) 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_delete_agencies handles the page_delete_agencies tool with context-based auth
 func HandlePage_delete_agencies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -5437,8 +5422,6 @@ func HandlePage_delete_agencies(ctx context.Context, request mcp.CallToolRequest
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_delete_agencies(args)
 	if err != nil {
@@ -5453,7 +5436,6 @@ func HandlePage_delete_agencies(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_get_agencies handles the page_get_agencies tool with context-based auth
 func HandlePage_get_agencies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -5494,8 +5476,6 @@ func HandlePage_get_agencies(ctx context.Context, request mcp.CallToolRequest) (
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_get_agencies(args)
 	if err != nil {
@@ -5510,7 +5490,6 @@ func HandlePage_get_agencies(ctx context.Context, request mcp.CallToolRequest) (
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_post_agencies handles the page_post_agencies tool with context-based auth
 func HandlePage_post_agencies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -5540,8 +5519,6 @@ func HandlePage_post_agencies(ctx context.Context, request mcp.CallToolRequest) 
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_post_agencies(args)
 	if err != nil {
@@ -5556,7 +5533,6 @@ func HandlePage_post_agencies(ctx context.Context, request mcp.CallToolRequest) 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_get_albums handles the page_get_albums tool with context-based auth
 func HandlePage_get_albums(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -5597,8 +5573,6 @@ func HandlePage_get_albums(ctx context.Context, request mcp.CallToolRequest) (*m
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_get_albums(args)
 	if err != nil {
@@ -5613,7 +5587,6 @@ func HandlePage_get_albums(ctx context.Context, request mcp.CallToolRequest) (*m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_get_ar_experience handles the page_get_ar_experience tool with context-based auth
 func HandlePage_get_ar_experience(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -5654,8 +5627,6 @@ func HandlePage_get_ar_experience(ctx context.Context, request mcp.CallToolReque
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_get_ar_experience(args)
 	if err != nil {
@@ -5670,7 +5641,6 @@ func HandlePage_get_ar_experience(ctx context.Context, request mcp.CallToolReque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_delete_assigned_users handles the page_delete_assigned_users tool with context-based auth
 func HandlePage_delete_assigned_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -5700,8 +5670,6 @@ func HandlePage_delete_assigned_users(ctx context.Context, request mcp.CallToolR
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_delete_assigned_users(args)
 	if err != nil {
@@ -5716,7 +5684,6 @@ func HandlePage_delete_assigned_users(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_get_assigned_users handles the page_get_assigned_users tool with context-based auth
 func HandlePage_get_assigned_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -5771,8 +5738,6 @@ func HandlePage_get_assigned_users(ctx context.Context, request mcp.CallToolRequ
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_get_assigned_users(args)
 	if err != nil {
@@ -5787,7 +5752,6 @@ func HandlePage_get_assigned_users(ctx context.Context, request mcp.CallToolRequ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_post_assigned_users handles the page_post_assigned_users tool with context-based auth
 func HandlePage_post_assigned_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -5817,8 +5781,6 @@ func HandlePage_post_assigned_users(ctx context.Context, request mcp.CallToolReq
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_post_assigned_users(args)
 	if err != nil {
@@ -5833,7 +5795,6 @@ func HandlePage_post_assigned_users(ctx context.Context, request mcp.CallToolReq
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_delete_blocked handles the page_delete_blocked tool with context-based auth
 func HandlePage_delete_blocked(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -5861,8 +5822,6 @@ func HandlePage_delete_blocked(ctx context.Context, request mcp.CallToolRequest)
 		}
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_delete_blocked(args)
 	if err != nil {
@@ -5877,7 +5836,6 @@ func HandlePage_delete_blocked(ctx context.Context, request mcp.CallToolRequest)
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_get_blocked handles the page_get_blocked tool with context-based auth
 func HandlePage_get_blocked(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -5930,8 +5888,6 @@ func HandlePage_get_blocked(ctx context.Context, request mcp.CallToolRequest) (*
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_get_blocked(args)
 	if err != nil {
@@ -5946,7 +5902,6 @@ func HandlePage_get_blocked(ctx context.Context, request mcp.CallToolRequest) (*
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_post_blocked handles the page_post_blocked tool with context-based auth
 func HandlePage_post_blocked(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -5974,8 +5929,6 @@ func HandlePage_post_blocked(ctx context.Context, request mcp.CallToolRequest) (
 		}
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_post_blocked(args)
 	if err != nil {
@@ -5990,7 +5943,6 @@ func HandlePage_post_blocked(ctx context.Context, request mcp.CallToolRequest) (
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_post_business_data handles the page_post_business_data tool with context-based auth
 func HandlePage_post_business_data(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -6020,8 +5972,6 @@ func HandlePage_post_business_data(ctx context.Context, request mcp.CallToolRequ
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_post_business_data(args)
 	if err != nil {
@@ -6036,7 +5986,6 @@ func HandlePage_post_business_data(ctx context.Context, request mcp.CallToolRequ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_get_businessprojects handles the page_get_businessprojects tool with context-based auth
 func HandlePage_get_businessprojects(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -6089,8 +6038,6 @@ func HandlePage_get_businessprojects(ctx context.Context, request mcp.CallToolRe
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_get_businessprojects(args)
 	if err != nil {
@@ -6105,7 +6052,6 @@ func HandlePage_get_businessprojects(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_get_call_to_actions handles the page_get_call_to_actions tool with context-based auth
 func HandlePage_get_call_to_actions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -6146,8 +6092,6 @@ func HandlePage_get_call_to_actions(ctx context.Context, request mcp.CallToolReq
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_get_call_to_actions(args)
 	if err != nil {
@@ -6162,7 +6106,6 @@ func HandlePage_get_call_to_actions(ctx context.Context, request mcp.CallToolReq
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_post_calls handles the page_post_calls tool with context-based auth
 func HandlePage_post_calls(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -6192,8 +6135,6 @@ func HandlePage_post_calls(ctx context.Context, request mcp.CallToolRequest) (*m
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_post_calls(args)
 	if err != nil {
@@ -6208,7 +6149,6 @@ func HandlePage_post_calls(ctx context.Context, request mcp.CallToolRequest) (*m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_get_canvas_elements handles the page_get_canvas_elements tool with context-based auth
 func HandlePage_get_canvas_elements(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -6249,8 +6189,6 @@ func HandlePage_get_canvas_elements(ctx context.Context, request mcp.CallToolReq
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_get_canvas_elements(args)
 	if err != nil {
@@ -6265,7 +6203,6 @@ func HandlePage_get_canvas_elements(ctx context.Context, request mcp.CallToolReq
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_post_canvas_elements handles the page_post_canvas_elements tool with context-based auth
 func HandlePage_post_canvas_elements(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -6293,8 +6230,6 @@ func HandlePage_post_canvas_elements(ctx context.Context, request mcp.CallToolRe
 		}
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_post_canvas_elements(args)
 	if err != nil {
@@ -6309,7 +6244,6 @@ func HandlePage_post_canvas_elements(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_get_canvases handles the page_get_canvases tool with context-based auth
 func HandlePage_get_canvases(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -6362,8 +6296,6 @@ func HandlePage_get_canvases(ctx context.Context, request mcp.CallToolRequest) (
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_get_canvases(args)
 	if err != nil {
@@ -6378,7 +6310,6 @@ func HandlePage_get_canvases(ctx context.Context, request mcp.CallToolRequest) (
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_post_canvases handles the page_post_canvases tool with context-based auth
 func HandlePage_post_canvases(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -6406,8 +6337,6 @@ func HandlePage_post_canvases(ctx context.Context, request mcp.CallToolRequest) 
 		}
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_post_canvases(args)
 	if err != nil {
@@ -6422,7 +6351,6 @@ func HandlePage_post_canvases(ctx context.Context, request mcp.CallToolRequest) 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_get_chat_plugin handles the page_get_chat_plugin tool with context-based auth
 func HandlePage_get_chat_plugin(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -6463,8 +6391,6 @@ func HandlePage_get_chat_plugin(ctx context.Context, request mcp.CallToolRequest
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_get_chat_plugin(args)
 	if err != nil {
@@ -6479,7 +6405,6 @@ func HandlePage_get_chat_plugin(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_get_commerce_merchant_settings handles the page_get_commerce_merchant_settings tool with context-based auth
 func HandlePage_get_commerce_merchant_settings(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -6520,8 +6445,6 @@ func HandlePage_get_commerce_merchant_settings(ctx context.Context, request mcp.
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_get_commerce_merchant_settings(args)
 	if err != nil {
@@ -6536,7 +6459,6 @@ func HandlePage_get_commerce_merchant_settings(ctx context.Context, request mcp.
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_get_commerce_orders handles the page_get_commerce_orders tool with context-based auth
 func HandlePage_get_commerce_orders(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -6589,8 +6511,6 @@ func HandlePage_get_commerce_orders(ctx context.Context, request mcp.CallToolReq
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_get_commerce_orders(args)
 	if err != nil {
@@ -6605,7 +6525,6 @@ func HandlePage_get_commerce_orders(ctx context.Context, request mcp.CallToolReq
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_get_commerce_payouts handles the page_get_commerce_payouts tool with context-based auth
 func HandlePage_get_commerce_payouts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -6658,8 +6577,6 @@ func HandlePage_get_commerce_payouts(ctx context.Context, request mcp.CallToolRe
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_get_commerce_payouts(args)
 	if err != nil {
@@ -6674,7 +6591,6 @@ func HandlePage_get_commerce_payouts(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_get_commerce_transactions handles the page_get_commerce_transactions tool with context-based auth
 func HandlePage_get_commerce_transactions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -6727,8 +6643,6 @@ func HandlePage_get_commerce_transactions(ctx context.Context, request mcp.CallT
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_get_commerce_transactions(args)
 	if err != nil {
@@ -6743,7 +6657,6 @@ func HandlePage_get_commerce_transactions(ctx context.Context, request mcp.CallT
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_get_conversations handles the page_get_conversations tool with context-based auth
 func HandlePage_get_conversations(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -6796,8 +6709,6 @@ func HandlePage_get_conversations(ctx context.Context, request mcp.CallToolReque
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_get_conversations(args)
 	if err != nil {
@@ -6812,7 +6723,6 @@ func HandlePage_get_conversations(ctx context.Context, request mcp.CallToolReque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_post_copyright_manual_claims handles the page_post_copyright_manual_claims tool with context-based auth
 func HandlePage_post_copyright_manual_claims(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -6842,8 +6752,6 @@ func HandlePage_post_copyright_manual_claims(ctx context.Context, request mcp.Ca
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_post_copyright_manual_claims(args)
 	if err != nil {
@@ -6858,7 +6766,6 @@ func HandlePage_post_copyright_manual_claims(ctx context.Context, request mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_get_crosspost_whitelisted_pages handles the page_get_crosspost_whitelisted_pages tool with context-based auth
 func HandlePage_get_crosspost_whitelisted_pages(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -6899,8 +6806,6 @@ func HandlePage_get_crosspost_whitelisted_pages(ctx context.Context, request mcp
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_get_crosspost_whitelisted_pages(args)
 	if err != nil {
@@ -6915,7 +6820,6 @@ func HandlePage_get_crosspost_whitelisted_pages(ctx context.Context, request mcp
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_get_ctx_optimization_eligibility handles the page_get_ctx_optimization_eligibility tool with context-based auth
 func HandlePage_get_ctx_optimization_eligibility(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -6956,8 +6860,6 @@ func HandlePage_get_ctx_optimization_eligibility(ctx context.Context, request mc
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_get_ctx_optimization_eligibility(args)
 	if err != nil {
@@ -6972,7 +6874,6 @@ func HandlePage_get_ctx_optimization_eligibility(ctx context.Context, request mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_get_custom_labels handles the page_get_custom_labels tool with context-based auth
 func HandlePage_get_custom_labels(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -7013,8 +6914,6 @@ func HandlePage_get_custom_labels(ctx context.Context, request mcp.CallToolReque
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_get_custom_labels(args)
 	if err != nil {
@@ -7029,7 +6928,6 @@ func HandlePage_get_custom_labels(ctx context.Context, request mcp.CallToolReque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_post_custom_labels handles the page_post_custom_labels tool with context-based auth
 func HandlePage_post_custom_labels(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -7059,8 +6957,6 @@ func HandlePage_post_custom_labels(ctx context.Context, request mcp.CallToolRequ
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_post_custom_labels(args)
 	if err != nil {
@@ -7075,7 +6971,6 @@ func HandlePage_post_custom_labels(ctx context.Context, request mcp.CallToolRequ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_delete_custom_user_settings handles the page_delete_custom_user_settings tool with context-based auth
 func HandlePage_delete_custom_user_settings(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -7105,8 +7000,6 @@ func HandlePage_delete_custom_user_settings(ctx context.Context, request mcp.Cal
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_delete_custom_user_settings(args)
 	if err != nil {
@@ -7121,7 +7014,6 @@ func HandlePage_delete_custom_user_settings(ctx context.Context, request mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_get_custom_user_settings handles the page_get_custom_user_settings tool with context-based auth
 func HandlePage_get_custom_user_settings(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -7176,8 +7068,6 @@ func HandlePage_get_custom_user_settings(ctx context.Context, request mcp.CallTo
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_get_custom_user_settings(args)
 	if err != nil {
@@ -7192,7 +7082,6 @@ func HandlePage_get_custom_user_settings(ctx context.Context, request mcp.CallTo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_post_custom_user_settings handles the page_post_custom_user_settings tool with context-based auth
 func HandlePage_post_custom_user_settings(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -7222,8 +7111,6 @@ func HandlePage_post_custom_user_settings(ctx context.Context, request mcp.CallT
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_post_custom_user_settings(args)
 	if err != nil {
@@ -7238,7 +7125,6 @@ func HandlePage_post_custom_user_settings(ctx context.Context, request mcp.CallT
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_get_dataset handles the page_get_dataset tool with context-based auth
 func HandlePage_get_dataset(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -7279,8 +7165,6 @@ func HandlePage_get_dataset(ctx context.Context, request mcp.CallToolRequest) (*
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_get_dataset(args)
 	if err != nil {
@@ -7295,7 +7179,6 @@ func HandlePage_get_dataset(ctx context.Context, request mcp.CallToolRequest) (*
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_post_dataset handles the page_post_dataset tool with context-based auth
 func HandlePage_post_dataset(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -7323,8 +7206,6 @@ func HandlePage_post_dataset(ctx context.Context, request mcp.CallToolRequest) (
 		}
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_post_dataset(args)
 	if err != nil {
@@ -7339,7 +7220,6 @@ func HandlePage_post_dataset(ctx context.Context, request mcp.CallToolRequest) (
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_get_events handles the page_get_events tool with context-based auth
 func HandlePage_get_events(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -7392,8 +7272,6 @@ func HandlePage_get_events(ctx context.Context, request mcp.CallToolRequest) (*m
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_get_events(args)
 	if err != nil {
@@ -7408,7 +7286,6 @@ func HandlePage_get_events(ctx context.Context, request mcp.CallToolRequest) (*m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_post_extend_thread_control handles the page_post_extend_thread_control tool with context-based auth
 func HandlePage_post_extend_thread_control(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -7438,8 +7315,6 @@ func HandlePage_post_extend_thread_control(ctx context.Context, request mcp.Call
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_post_extend_thread_control(args)
 	if err != nil {
@@ -7454,7 +7329,6 @@ func HandlePage_post_extend_thread_control(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_get_fantasy_games handles the page_get_fantasy_games tool with context-based auth
 func HandlePage_get_fantasy_games(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -7495,8 +7369,6 @@ func HandlePage_get_fantasy_games(ctx context.Context, request mcp.CallToolReque
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_get_fantasy_games(args)
 	if err != nil {
@@ -7511,7 +7383,6 @@ func HandlePage_get_fantasy_games(ctx context.Context, request mcp.CallToolReque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_get_feed handles the page_get_feed tool with context-based auth
 func HandlePage_get_feed(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -7564,8 +7435,6 @@ func HandlePage_get_feed(ctx context.Context, request mcp.CallToolRequest) (*mcp
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_get_feed(args)
 	if err != nil {
@@ -7580,7 +7449,6 @@ func HandlePage_get_feed(ctx context.Context, request mcp.CallToolRequest) (*mcp
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_post_feed handles the page_post_feed tool with context-based auth
 func HandlePage_post_feed(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -7608,8 +7476,6 @@ func HandlePage_post_feed(ctx context.Context, request mcp.CallToolRequest) (*mc
 		}
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_post_feed(args)
 	if err != nil {
@@ -7624,7 +7490,6 @@ func HandlePage_post_feed(ctx context.Context, request mcp.CallToolRequest) (*mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_get_global_brand_children handles the page_get_global_brand_children tool with context-based auth
 func HandlePage_get_global_brand_children(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -7665,8 +7530,6 @@ func HandlePage_get_global_brand_children(ctx context.Context, request mcp.CallT
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_get_global_brand_children(args)
 	if err != nil {
@@ -7681,7 +7544,6 @@ func HandlePage_get_global_brand_children(ctx context.Context, request mcp.CallT
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_get_image_copyrights handles the page_get_image_copyrights tool with context-based auth
 func HandlePage_get_image_copyrights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -7722,8 +7584,6 @@ func HandlePage_get_image_copyrights(ctx context.Context, request mcp.CallToolRe
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_get_image_copyrights(args)
 	if err != nil {
@@ -7738,7 +7598,6 @@ func HandlePage_get_image_copyrights(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_post_image_copyrights handles the page_post_image_copyrights tool with context-based auth
 func HandlePage_post_image_copyrights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -7768,8 +7627,6 @@ func HandlePage_post_image_copyrights(ctx context.Context, request mcp.CallToolR
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_post_image_copyrights(args)
 	if err != nil {
@@ -7784,7 +7641,6 @@ func HandlePage_post_image_copyrights(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_get_indexed_videos handles the page_get_indexed_videos tool with context-based auth
 func HandlePage_get_indexed_videos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -7825,8 +7681,6 @@ func HandlePage_get_indexed_videos(ctx context.Context, request mcp.CallToolRequ
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_get_indexed_videos(args)
 	if err != nil {
@@ -7841,7 +7695,6 @@ func HandlePage_get_indexed_videos(ctx context.Context, request mcp.CallToolRequ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_get_insights handles the page_get_insights tool with context-based auth
 func HandlePage_get_insights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -7894,8 +7747,6 @@ func HandlePage_get_insights(ctx context.Context, request mcp.CallToolRequest) (
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_get_insights(args)
 	if err != nil {
@@ -7910,7 +7761,6 @@ func HandlePage_get_insights(ctx context.Context, request mcp.CallToolRequest) (
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_get_instagram_accounts handles the page_get_instagram_accounts tool with context-based auth
 func HandlePage_get_instagram_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -7951,8 +7801,6 @@ func HandlePage_get_instagram_accounts(ctx context.Context, request mcp.CallTool
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_get_instagram_accounts(args)
 	if err != nil {
@@ -7967,7 +7815,6 @@ func HandlePage_get_instagram_accounts(ctx context.Context, request mcp.CallTool
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_get_leadgen_forms handles the page_get_leadgen_forms tool with context-based auth
 func HandlePage_get_leadgen_forms(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -8008,8 +7855,6 @@ func HandlePage_get_leadgen_forms(ctx context.Context, request mcp.CallToolReque
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_get_leadgen_forms(args)
 	if err != nil {
@@ -8024,7 +7869,6 @@ func HandlePage_get_leadgen_forms(ctx context.Context, request mcp.CallToolReque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_post_leadgen_forms handles the page_post_leadgen_forms tool with context-based auth
 func HandlePage_post_leadgen_forms(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -8054,8 +7898,6 @@ func HandlePage_post_leadgen_forms(ctx context.Context, request mcp.CallToolRequ
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_post_leadgen_forms(args)
 	if err != nil {
@@ -8070,7 +7912,6 @@ func HandlePage_post_leadgen_forms(ctx context.Context, request mcp.CallToolRequ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_get_likes handles the page_get_likes tool with context-based auth
 func HandlePage_get_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -8123,8 +7964,6 @@ func HandlePage_get_likes(ctx context.Context, request mcp.CallToolRequest) (*mc
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_get_likes(args)
 	if err != nil {
@@ -8139,7 +7978,6 @@ func HandlePage_get_likes(ctx context.Context, request mcp.CallToolRequest) (*mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_get_live_videos handles the page_get_live_videos tool with context-based auth
 func HandlePage_get_live_videos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -8192,8 +8030,6 @@ func HandlePage_get_live_videos(ctx context.Context, request mcp.CallToolRequest
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_get_live_videos(args)
 	if err != nil {
@@ -8208,7 +8044,6 @@ func HandlePage_get_live_videos(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_post_live_videos handles the page_post_live_videos tool with context-based auth
 func HandlePage_post_live_videos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -8236,8 +8071,6 @@ func HandlePage_post_live_videos(ctx context.Context, request mcp.CallToolReques
 		}
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_post_live_videos(args)
 	if err != nil {
@@ -8252,7 +8085,6 @@ func HandlePage_post_live_videos(ctx context.Context, request mcp.CallToolReques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_delete_locations handles the page_delete_locations tool with context-based auth
 func HandlePage_delete_locations(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -8282,8 +8114,6 @@ func HandlePage_delete_locations(ctx context.Context, request mcp.CallToolReques
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_delete_locations(args)
 	if err != nil {
@@ -8298,7 +8128,6 @@ func HandlePage_delete_locations(ctx context.Context, request mcp.CallToolReques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_get_locations handles the page_get_locations tool with context-based auth
 func HandlePage_get_locations(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -8339,8 +8168,6 @@ func HandlePage_get_locations(ctx context.Context, request mcp.CallToolRequest) 
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_get_locations(args)
 	if err != nil {
@@ -8355,7 +8182,6 @@ func HandlePage_get_locations(ctx context.Context, request mcp.CallToolRequest) 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_post_locations handles the page_post_locations tool with context-based auth
 func HandlePage_post_locations(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -8385,8 +8211,6 @@ func HandlePage_post_locations(ctx context.Context, request mcp.CallToolRequest)
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_post_locations(args)
 	if err != nil {
@@ -8401,7 +8225,6 @@ func HandlePage_post_locations(ctx context.Context, request mcp.CallToolRequest)
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_get_media_fingerprints handles the page_get_media_fingerprints tool with context-based auth
 func HandlePage_get_media_fingerprints(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -8454,8 +8277,6 @@ func HandlePage_get_media_fingerprints(ctx context.Context, request mcp.CallTool
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_get_media_fingerprints(args)
 	if err != nil {
@@ -8470,7 +8291,6 @@ func HandlePage_get_media_fingerprints(ctx context.Context, request mcp.CallTool
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_post_media_fingerprints handles the page_post_media_fingerprints tool with context-based auth
 func HandlePage_post_media_fingerprints(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -8500,8 +8320,6 @@ func HandlePage_post_media_fingerprints(ctx context.Context, request mcp.CallToo
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_post_media_fingerprints(args)
 	if err != nil {
@@ -8516,7 +8334,6 @@ func HandlePage_post_media_fingerprints(ctx context.Context, request mcp.CallToo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_post_message_attachments handles the page_post_message_attachments tool with context-based auth
 func HandlePage_post_message_attachments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -8546,8 +8363,6 @@ func HandlePage_post_message_attachments(ctx context.Context, request mcp.CallTo
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_post_message_attachments(args)
 	if err != nil {
@@ -8562,7 +8377,6 @@ func HandlePage_post_message_attachments(ctx context.Context, request mcp.CallTo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_delete_message_templates handles the page_delete_message_templates tool with context-based auth
 func HandlePage_delete_message_templates(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -8592,8 +8406,6 @@ func HandlePage_delete_message_templates(ctx context.Context, request mcp.CallTo
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_delete_message_templates(args)
 	if err != nil {
@@ -8608,7 +8420,6 @@ func HandlePage_delete_message_templates(ctx context.Context, request mcp.CallTo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_get_message_templates handles the page_get_message_templates tool with context-based auth
 func HandlePage_get_message_templates(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -8661,8 +8472,6 @@ func HandlePage_get_message_templates(ctx context.Context, request mcp.CallToolR
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_get_message_templates(args)
 	if err != nil {
@@ -8677,7 +8486,6 @@ func HandlePage_get_message_templates(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_post_message_templates handles the page_post_message_templates tool with context-based auth
 func HandlePage_post_message_templates(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -8707,8 +8515,6 @@ func HandlePage_post_message_templates(ctx context.Context, request mcp.CallTool
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_post_message_templates(args)
 	if err != nil {
@@ -8723,7 +8529,6 @@ func HandlePage_post_message_templates(ctx context.Context, request mcp.CallTool
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_post_messages handles the page_post_messages tool with context-based auth
 func HandlePage_post_messages(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -8753,8 +8558,6 @@ func HandlePage_post_messages(ctx context.Context, request mcp.CallToolRequest) 
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_post_messages(args)
 	if err != nil {
@@ -8769,7 +8572,6 @@ func HandlePage_post_messages(ctx context.Context, request mcp.CallToolRequest) 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_get_messaging_feature_review handles the page_get_messaging_feature_review tool with context-based auth
 func HandlePage_get_messaging_feature_review(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -8810,8 +8612,6 @@ func HandlePage_get_messaging_feature_review(ctx context.Context, request mcp.Ca
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_get_messaging_feature_review(args)
 	if err != nil {
@@ -8826,7 +8626,6 @@ func HandlePage_get_messaging_feature_review(ctx context.Context, request mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_get_messenger_call_settings handles the page_get_messenger_call_settings tool with context-based auth
 func HandlePage_get_messenger_call_settings(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -8867,8 +8666,6 @@ func HandlePage_get_messenger_call_settings(ctx context.Context, request mcp.Cal
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_get_messenger_call_settings(args)
 	if err != nil {
@@ -8883,7 +8680,6 @@ func HandlePage_get_messenger_call_settings(ctx context.Context, request mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_post_messenger_call_settings handles the page_post_messenger_call_settings tool with context-based auth
 func HandlePage_post_messenger_call_settings(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -8911,8 +8707,6 @@ func HandlePage_post_messenger_call_settings(ctx context.Context, request mcp.Ca
 		}
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_post_messenger_call_settings(args)
 	if err != nil {
@@ -8927,7 +8721,6 @@ func HandlePage_post_messenger_call_settings(ctx context.Context, request mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_get_messenger_lead_forms handles the page_get_messenger_lead_forms tool with context-based auth
 func HandlePage_get_messenger_lead_forms(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -8968,8 +8761,6 @@ func HandlePage_get_messenger_lead_forms(ctx context.Context, request mcp.CallTo
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_get_messenger_lead_forms(args)
 	if err != nil {
@@ -8984,7 +8775,6 @@ func HandlePage_get_messenger_lead_forms(ctx context.Context, request mcp.CallTo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_post_messenger_lead_forms handles the page_post_messenger_lead_forms tool with context-based auth
 func HandlePage_post_messenger_lead_forms(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -9014,8 +8804,6 @@ func HandlePage_post_messenger_lead_forms(ctx context.Context, request mcp.CallT
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_post_messenger_lead_forms(args)
 	if err != nil {
@@ -9030,7 +8818,6 @@ func HandlePage_post_messenger_lead_forms(ctx context.Context, request mcp.CallT
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_delete_messenger_profile handles the page_delete_messenger_profile tool with context-based auth
 func HandlePage_delete_messenger_profile(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -9060,8 +8847,6 @@ func HandlePage_delete_messenger_profile(ctx context.Context, request mcp.CallTo
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_delete_messenger_profile(args)
 	if err != nil {
@@ -9076,7 +8861,6 @@ func HandlePage_delete_messenger_profile(ctx context.Context, request mcp.CallTo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_get_messenger_profile handles the page_get_messenger_profile tool with context-based auth
 func HandlePage_get_messenger_profile(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -9129,8 +8913,6 @@ func HandlePage_get_messenger_profile(ctx context.Context, request mcp.CallToolR
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_get_messenger_profile(args)
 	if err != nil {
@@ -9145,7 +8927,6 @@ func HandlePage_get_messenger_profile(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_post_messenger_profile handles the page_post_messenger_profile tool with context-based auth
 func HandlePage_post_messenger_profile(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -9173,8 +8954,6 @@ func HandlePage_post_messenger_profile(ctx context.Context, request mcp.CallTool
 		}
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_post_messenger_profile(args)
 	if err != nil {
@@ -9189,7 +8968,6 @@ func HandlePage_post_messenger_profile(ctx context.Context, request mcp.CallTool
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_post_moderate_conversations handles the page_post_moderate_conversations tool with context-based auth
 func HandlePage_post_moderate_conversations(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -9219,8 +8997,6 @@ func HandlePage_post_moderate_conversations(ctx context.Context, request mcp.Cal
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_post_moderate_conversations(args)
 	if err != nil {
@@ -9235,7 +9011,6 @@ func HandlePage_post_moderate_conversations(ctx context.Context, request mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_post_nlp_configs handles the page_post_nlp_configs tool with context-based auth
 func HandlePage_post_nlp_configs(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -9263,8 +9038,6 @@ func HandlePage_post_nlp_configs(ctx context.Context, request mcp.CallToolReques
 		}
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_post_nlp_configs(args)
 	if err != nil {
@@ -9279,7 +9052,6 @@ func HandlePage_post_nlp_configs(ctx context.Context, request mcp.CallToolReques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_get_notification_message_tokens handles the page_get_notification_message_tokens tool with context-based auth
 func HandlePage_get_notification_message_tokens(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -9320,8 +9092,6 @@ func HandlePage_get_notification_message_tokens(ctx context.Context, request mcp
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_get_notification_message_tokens(args)
 	if err != nil {
@@ -9336,7 +9106,6 @@ func HandlePage_get_notification_message_tokens(ctx context.Context, request mcp
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_post_notification_messages_dev_support handles the page_post_notification_messages_dev_support tool with context-based auth
 func HandlePage_post_notification_messages_dev_support(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -9366,8 +9135,6 @@ func HandlePage_post_notification_messages_dev_support(ctx context.Context, requ
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_post_notification_messages_dev_support(args)
 	if err != nil {
@@ -9382,7 +9149,6 @@ func HandlePage_post_notification_messages_dev_support(ctx context.Context, requ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_get_page_backed_instagram_accounts handles the page_get_page_backed_instagram_accounts tool with context-based auth
 func HandlePage_get_page_backed_instagram_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -9423,8 +9189,6 @@ func HandlePage_get_page_backed_instagram_accounts(ctx context.Context, request 
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_get_page_backed_instagram_accounts(args)
 	if err != nil {
@@ -9440,7 +9204,6 @@ func HandlePage_get_page_backed_instagram_accounts(ctx context.Context, request 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandlePage_post_page_backed_instagram_accounts handles the page_post_page_backed_instagram_accounts tool with context-based auth
 func HandlePage_post_page_backed_instagram_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
@@ -9454,8 +9217,6 @@ func HandlePage_post_page_backed_instagram_accounts(ctx context.Context, request
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Page_post_page_backed_instagram_accounts(args)
@@ -9471,7 +9232,6 @@ func HandlePage_post_page_backed_instagram_accounts(ctx context.Context, request
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_post_page_whatsapp_number_verification handles the page_post_page_whatsapp_number_verification tool with context-based auth
 func HandlePage_post_page_whatsapp_number_verification(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -9501,8 +9261,6 @@ func HandlePage_post_page_whatsapp_number_verification(ctx context.Context, requ
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_post_page_whatsapp_number_verification(args)
 	if err != nil {
@@ -9517,7 +9275,6 @@ func HandlePage_post_page_whatsapp_number_verification(ctx context.Context, requ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_post_pass_thread_control handles the page_post_pass_thread_control tool with context-based auth
 func HandlePage_post_pass_thread_control(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -9547,8 +9304,6 @@ func HandlePage_post_pass_thread_control(ctx context.Context, request mcp.CallTo
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_post_pass_thread_control(args)
 	if err != nil {
@@ -9563,7 +9318,6 @@ func HandlePage_post_pass_thread_control(ctx context.Context, request mcp.CallTo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_get_personas handles the page_get_personas tool with context-based auth
 func HandlePage_get_personas(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -9604,8 +9358,6 @@ func HandlePage_get_personas(ctx context.Context, request mcp.CallToolRequest) (
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_get_personas(args)
 	if err != nil {
@@ -9620,7 +9372,6 @@ func HandlePage_get_personas(ctx context.Context, request mcp.CallToolRequest) (
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_post_personas handles the page_post_personas tool with context-based auth
 func HandlePage_post_personas(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -9650,8 +9401,6 @@ func HandlePage_post_personas(ctx context.Context, request mcp.CallToolRequest) 
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_post_personas(args)
 	if err != nil {
@@ -9666,7 +9415,6 @@ func HandlePage_post_personas(ctx context.Context, request mcp.CallToolRequest) 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_post_photo_stories handles the page_post_photo_stories tool with context-based auth
 func HandlePage_post_photo_stories(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -9694,8 +9442,6 @@ func HandlePage_post_photo_stories(ctx context.Context, request mcp.CallToolRequ
 		}
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_post_photo_stories(args)
 	if err != nil {
@@ -9710,7 +9456,6 @@ func HandlePage_post_photo_stories(ctx context.Context, request mcp.CallToolRequ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_get_photos handles the page_get_photos tool with context-based auth
 func HandlePage_get_photos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -9763,8 +9508,6 @@ func HandlePage_get_photos(ctx context.Context, request mcp.CallToolRequest) (*m
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_get_photos(args)
 	if err != nil {
@@ -9779,7 +9522,6 @@ func HandlePage_get_photos(ctx context.Context, request mcp.CallToolRequest) (*m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_post_photos handles the page_post_photos tool with context-based auth
 func HandlePage_post_photos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -9807,8 +9549,6 @@ func HandlePage_post_photos(ctx context.Context, request mcp.CallToolRequest) (*
 		}
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_post_photos(args)
 	if err != nil {
@@ -9823,7 +9563,6 @@ func HandlePage_post_photos(ctx context.Context, request mcp.CallToolRequest) (*
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_get_picture handles the page_get_picture tool with context-based auth
 func HandlePage_get_picture(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -9876,8 +9615,6 @@ func HandlePage_get_picture(ctx context.Context, request mcp.CallToolRequest) (*
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_get_picture(args)
 	if err != nil {
@@ -9892,7 +9629,6 @@ func HandlePage_get_picture(ctx context.Context, request mcp.CallToolRequest) (*
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_post_picture handles the page_post_picture tool with context-based auth
 func HandlePage_post_picture(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -9920,8 +9656,6 @@ func HandlePage_post_picture(ctx context.Context, request mcp.CallToolRequest) (
 		}
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_post_picture(args)
 	if err != nil {
@@ -9936,7 +9670,6 @@ func HandlePage_post_picture(ctx context.Context, request mcp.CallToolRequest) (
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_get_posts handles the page_get_posts tool with context-based auth
 func HandlePage_get_posts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -9989,8 +9722,6 @@ func HandlePage_get_posts(ctx context.Context, request mcp.CallToolRequest) (*mc
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_get_posts(args)
 	if err != nil {
@@ -10005,7 +9736,6 @@ func HandlePage_get_posts(ctx context.Context, request mcp.CallToolRequest) (*mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_get_product_catalogs handles the page_get_product_catalogs tool with context-based auth
 func HandlePage_get_product_catalogs(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -10046,8 +9776,6 @@ func HandlePage_get_product_catalogs(ctx context.Context, request mcp.CallToolRe
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_get_product_catalogs(args)
 	if err != nil {
@@ -10062,7 +9790,6 @@ func HandlePage_get_product_catalogs(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_get_published_posts handles the page_get_published_posts tool with context-based auth
 func HandlePage_get_published_posts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -10115,8 +9842,6 @@ func HandlePage_get_published_posts(ctx context.Context, request mcp.CallToolReq
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_get_published_posts(args)
 	if err != nil {
@@ -10131,7 +9856,6 @@ func HandlePage_get_published_posts(ctx context.Context, request mcp.CallToolReq
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_post_release_thread_control handles the page_post_release_thread_control tool with context-based auth
 func HandlePage_post_release_thread_control(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -10161,8 +9885,6 @@ func HandlePage_post_release_thread_control(ctx context.Context, request mcp.Cal
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_post_release_thread_control(args)
 	if err != nil {
@@ -10177,7 +9899,6 @@ func HandlePage_post_release_thread_control(ctx context.Context, request mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_post_request_thread_control handles the page_post_request_thread_control tool with context-based auth
 func HandlePage_post_request_thread_control(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -10207,8 +9928,6 @@ func HandlePage_post_request_thread_control(ctx context.Context, request mcp.Cal
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_post_request_thread_control(args)
 	if err != nil {
@@ -10223,7 +9942,6 @@ func HandlePage_post_request_thread_control(ctx context.Context, request mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_get_roles handles the page_get_roles tool with context-based auth
 func HandlePage_get_roles(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -10276,8 +9994,6 @@ func HandlePage_get_roles(ctx context.Context, request mcp.CallToolRequest) (*mc
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_get_roles(args)
 	if err != nil {
@@ -10292,7 +10008,6 @@ func HandlePage_get_roles(ctx context.Context, request mcp.CallToolRequest) (*mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_get_rtb_dynamic_posts handles the page_get_rtb_dynamic_posts tool with context-based auth
 func HandlePage_get_rtb_dynamic_posts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -10333,8 +10048,6 @@ func HandlePage_get_rtb_dynamic_posts(ctx context.Context, request mcp.CallToolR
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_get_rtb_dynamic_posts(args)
 	if err != nil {
@@ -10349,7 +10062,6 @@ func HandlePage_get_rtb_dynamic_posts(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_get_scheduled_posts handles the page_get_scheduled_posts tool with context-based auth
 func HandlePage_get_scheduled_posts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -10390,8 +10102,6 @@ func HandlePage_get_scheduled_posts(ctx context.Context, request mcp.CallToolReq
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_get_scheduled_posts(args)
 	if err != nil {
@@ -10406,7 +10116,6 @@ func HandlePage_get_scheduled_posts(ctx context.Context, request mcp.CallToolReq
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_get_secondary_receivers handles the page_get_secondary_receivers tool with context-based auth
 func HandlePage_get_secondary_receivers(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -10459,8 +10168,6 @@ func HandlePage_get_secondary_receivers(ctx context.Context, request mcp.CallToo
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_get_secondary_receivers(args)
 	if err != nil {
@@ -10475,7 +10182,6 @@ func HandlePage_get_secondary_receivers(ctx context.Context, request mcp.CallToo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_get_settings handles the page_get_settings tool with context-based auth
 func HandlePage_get_settings(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -10516,8 +10222,6 @@ func HandlePage_get_settings(ctx context.Context, request mcp.CallToolRequest) (
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_get_settings(args)
 	if err != nil {
@@ -10532,7 +10236,6 @@ func HandlePage_get_settings(ctx context.Context, request mcp.CallToolRequest) (
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_post_settings handles the page_post_settings tool with context-based auth
 func HandlePage_post_settings(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -10560,8 +10263,6 @@ func HandlePage_post_settings(ctx context.Context, request mcp.CallToolRequest) 
 		}
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_post_settings(args)
 	if err != nil {
@@ -10576,7 +10277,6 @@ func HandlePage_post_settings(ctx context.Context, request mcp.CallToolRequest) 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_get_shop_setup_status handles the page_get_shop_setup_status tool with context-based auth
 func HandlePage_get_shop_setup_status(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -10617,8 +10317,6 @@ func HandlePage_get_shop_setup_status(ctx context.Context, request mcp.CallToolR
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_get_shop_setup_status(args)
 	if err != nil {
@@ -10633,7 +10331,6 @@ func HandlePage_get_shop_setup_status(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_get_store_locations handles the page_get_store_locations tool with context-based auth
 func HandlePage_get_store_locations(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -10674,8 +10371,6 @@ func HandlePage_get_store_locations(ctx context.Context, request mcp.CallToolReq
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_get_store_locations(args)
 	if err != nil {
@@ -10690,7 +10385,6 @@ func HandlePage_get_store_locations(ctx context.Context, request mcp.CallToolReq
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_get_stories handles the page_get_stories tool with context-based auth
 func HandlePage_get_stories(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -10743,8 +10437,6 @@ func HandlePage_get_stories(ctx context.Context, request mcp.CallToolRequest) (*
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_get_stories(args)
 	if err != nil {
@@ -10760,7 +10452,6 @@ func HandlePage_get_stories(ctx context.Context, request mcp.CallToolRequest) (*
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandlePage_delete_subscribed_apps handles the page_delete_subscribed_apps tool with context-based auth
 func HandlePage_delete_subscribed_apps(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
@@ -10774,8 +10465,6 @@ func HandlePage_delete_subscribed_apps(ctx context.Context, request mcp.CallTool
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Page_delete_subscribed_apps(args)
@@ -10791,7 +10480,6 @@ func HandlePage_delete_subscribed_apps(ctx context.Context, request mcp.CallTool
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_get_subscribed_apps handles the page_get_subscribed_apps tool with context-based auth
 func HandlePage_get_subscribed_apps(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -10832,8 +10520,6 @@ func HandlePage_get_subscribed_apps(ctx context.Context, request mcp.CallToolReq
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_get_subscribed_apps(args)
 	if err != nil {
@@ -10848,7 +10534,6 @@ func HandlePage_get_subscribed_apps(ctx context.Context, request mcp.CallToolReq
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_post_subscribed_apps handles the page_post_subscribed_apps tool with context-based auth
 func HandlePage_post_subscribed_apps(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -10878,8 +10563,6 @@ func HandlePage_post_subscribed_apps(ctx context.Context, request mcp.CallToolRe
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_post_subscribed_apps(args)
 	if err != nil {
@@ -10894,7 +10577,6 @@ func HandlePage_post_subscribed_apps(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_get_tabs handles the page_get_tabs tool with context-based auth
 func HandlePage_get_tabs(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -10947,8 +10629,6 @@ func HandlePage_get_tabs(ctx context.Context, request mcp.CallToolRequest) (*mcp
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_get_tabs(args)
 	if err != nil {
@@ -10963,7 +10643,6 @@ func HandlePage_get_tabs(ctx context.Context, request mcp.CallToolRequest) (*mcp
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_get_tagged handles the page_get_tagged tool with context-based auth
 func HandlePage_get_tagged(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -11004,8 +10683,6 @@ func HandlePage_get_tagged(ctx context.Context, request mcp.CallToolRequest) (*m
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_get_tagged(args)
 	if err != nil {
@@ -11020,7 +10697,6 @@ func HandlePage_get_tagged(ctx context.Context, request mcp.CallToolRequest) (*m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_post_take_thread_control handles the page_post_take_thread_control tool with context-based auth
 func HandlePage_post_take_thread_control(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -11050,8 +10726,6 @@ func HandlePage_post_take_thread_control(ctx context.Context, request mcp.CallTo
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_post_take_thread_control(args)
 	if err != nil {
@@ -11066,7 +10740,6 @@ func HandlePage_post_take_thread_control(ctx context.Context, request mcp.CallTo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_get_thread_owner handles the page_get_thread_owner tool with context-based auth
 func HandlePage_get_thread_owner(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -11121,8 +10794,6 @@ func HandlePage_get_thread_owner(ctx context.Context, request mcp.CallToolReques
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_get_thread_owner(args)
 	if err != nil {
@@ -11137,7 +10808,6 @@ func HandlePage_get_thread_owner(ctx context.Context, request mcp.CallToolReques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_get_threads handles the page_get_threads tool with context-based auth
 func HandlePage_get_threads(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -11190,8 +10860,6 @@ func HandlePage_get_threads(ctx context.Context, request mcp.CallToolRequest) (*
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_get_threads(args)
 	if err != nil {
@@ -11206,7 +10874,6 @@ func HandlePage_get_threads(ctx context.Context, request mcp.CallToolRequest) (*
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_post_unlink_accounts handles the page_post_unlink_accounts tool with context-based auth
 func HandlePage_post_unlink_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -11236,8 +10903,6 @@ func HandlePage_post_unlink_accounts(ctx context.Context, request mcp.CallToolRe
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_post_unlink_accounts(args)
 	if err != nil {
@@ -11252,7 +10917,6 @@ func HandlePage_post_unlink_accounts(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_get_video_copyright_rules handles the page_get_video_copyright_rules tool with context-based auth
 func HandlePage_get_video_copyright_rules(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -11305,8 +10969,6 @@ func HandlePage_get_video_copyright_rules(ctx context.Context, request mcp.CallT
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_get_video_copyright_rules(args)
 	if err != nil {
@@ -11321,7 +10983,6 @@ func HandlePage_get_video_copyright_rules(ctx context.Context, request mcp.CallT
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_post_video_copyright_rules handles the page_post_video_copyright_rules tool with context-based auth
 func HandlePage_post_video_copyright_rules(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -11351,8 +11012,6 @@ func HandlePage_post_video_copyright_rules(ctx context.Context, request mcp.Call
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_post_video_copyright_rules(args)
 	if err != nil {
@@ -11367,7 +11026,6 @@ func HandlePage_post_video_copyright_rules(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_post_video_copyrights handles the page_post_video_copyrights tool with context-based auth
 func HandlePage_post_video_copyrights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -11397,8 +11055,6 @@ func HandlePage_post_video_copyrights(ctx context.Context, request mcp.CallToolR
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_post_video_copyrights(args)
 	if err != nil {
@@ -11413,7 +11069,6 @@ func HandlePage_post_video_copyrights(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_get_video_lists handles the page_get_video_lists tool with context-based auth
 func HandlePage_get_video_lists(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -11454,8 +11109,6 @@ func HandlePage_get_video_lists(ctx context.Context, request mcp.CallToolRequest
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_get_video_lists(args)
 	if err != nil {
@@ -11470,7 +11123,6 @@ func HandlePage_get_video_lists(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_get_video_reels handles the page_get_video_reels tool with context-based auth
 func HandlePage_get_video_reels(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -11523,8 +11175,6 @@ func HandlePage_get_video_reels(ctx context.Context, request mcp.CallToolRequest
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_get_video_reels(args)
 	if err != nil {
@@ -11539,7 +11189,6 @@ func HandlePage_get_video_reels(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_post_video_reels handles the page_post_video_reels tool with context-based auth
 func HandlePage_post_video_reels(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -11569,8 +11218,6 @@ func HandlePage_post_video_reels(ctx context.Context, request mcp.CallToolReques
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_post_video_reels(args)
 	if err != nil {
@@ -11585,7 +11232,6 @@ func HandlePage_post_video_reels(ctx context.Context, request mcp.CallToolReques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_post_video_stories handles the page_post_video_stories tool with context-based auth
 func HandlePage_post_video_stories(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -11615,8 +11261,6 @@ func HandlePage_post_video_stories(ctx context.Context, request mcp.CallToolRequ
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_post_video_stories(args)
 	if err != nil {
@@ -11631,7 +11275,6 @@ func HandlePage_post_video_stories(ctx context.Context, request mcp.CallToolRequ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_get_videos handles the page_get_videos tool with context-based auth
 func HandlePage_get_videos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -11684,8 +11327,6 @@ func HandlePage_get_videos(ctx context.Context, request mcp.CallToolRequest) (*m
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_get_videos(args)
 	if err != nil {
@@ -11700,7 +11341,6 @@ func HandlePage_get_videos(ctx context.Context, request mcp.CallToolRequest) (*m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_post_videos handles the page_post_videos tool with context-based auth
 func HandlePage_post_videos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -11728,8 +11368,6 @@ func HandlePage_post_videos(ctx context.Context, request mcp.CallToolRequest) (*
 		}
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_post_videos(args)
 	if err != nil {
@@ -11744,7 +11382,6 @@ func HandlePage_post_videos(ctx context.Context, request mcp.CallToolRequest) (*
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_get_visitor_posts handles the page_get_visitor_posts tool with context-based auth
 func HandlePage_get_visitor_posts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -11797,8 +11434,6 @@ func HandlePage_get_visitor_posts(ctx context.Context, request mcp.CallToolReque
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_get_visitor_posts(args)
 	if err != nil {
@@ -11813,7 +11448,6 @@ func HandlePage_get_visitor_posts(ctx context.Context, request mcp.CallToolReque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_delete_welcome_message_flows handles the page_delete_welcome_message_flows tool with context-based auth
 func HandlePage_delete_welcome_message_flows(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -11843,8 +11477,6 @@ func HandlePage_delete_welcome_message_flows(ctx context.Context, request mcp.Ca
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_delete_welcome_message_flows(args)
 	if err != nil {
@@ -11859,7 +11491,6 @@ func HandlePage_delete_welcome_message_flows(ctx context.Context, request mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_get_welcome_message_flows handles the page_get_welcome_message_flows tool with context-based auth
 func HandlePage_get_welcome_message_flows(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -11912,8 +11543,6 @@ func HandlePage_get_welcome_message_flows(ctx context.Context, request mcp.CallT
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_get_welcome_message_flows(args)
 	if err != nil {
@@ -11928,7 +11557,6 @@ func HandlePage_get_welcome_message_flows(ctx context.Context, request mcp.CallT
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_post_welcome_message_flows handles the page_post_welcome_message_flows tool with context-based auth
 func HandlePage_post_welcome_message_flows(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -11956,8 +11584,6 @@ func HandlePage_post_welcome_message_flows(ctx context.Context, request mcp.Call
 		}
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_post_welcome_message_flows(args)
 	if err != nil {
@@ -11972,7 +11598,6 @@ func HandlePage_post_welcome_message_flows(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_get_ handles the page_get_ tool with context-based auth
 func HandlePage_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -12025,8 +11650,6 @@ func HandlePage_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Cal
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_get_(args)
 	if err != nil {
@@ -12041,7 +11664,6 @@ func HandlePage_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePage_post_ handles the page_post_ tool with context-based auth
 func HandlePage_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -12069,8 +11691,6 @@ func HandlePage_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Ca
 		}
 	}
 
-
-
 	// Call the client method
 	result, err := client.Page_post_(args)
 	if err != nil {
@@ -12085,4 +11705,3 @@ func HandlePage_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

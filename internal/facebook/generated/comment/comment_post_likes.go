@@ -15,22 +15,22 @@ import (
 
 // ToolComment_post_likes returns the MCP tool definition for comment_post_likes
 func ToolComment_post_likes() mcp.Tool {
-	
+
 	// Params object accepts: feedback_source (string), nectar_module (string), tracking (string)
 	return mcp.NewTool("comment_post_likes",
 		mcp.WithDescription("POST likes for Comment"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"feedback_source": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "feedback_source parameter",
 				},
 				"nectar_module": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "nectar_module parameter",
 				},
 				"tracking": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "tracking parameter",
 				},
 			}),
@@ -62,8 +62,6 @@ func HandleComment_post_likes(ctx context.Context, request mcp.CallToolRequest) 
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Comment_post_likes(accessToken, args)
 	if err != nil {
@@ -82,20 +80,18 @@ func HandleComment_post_likes(ctx context.Context, request mcp.CallToolRequest) 
 // Comment_post_likes performs POST likes for Comment
 func Comment_post_likes(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/likes")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

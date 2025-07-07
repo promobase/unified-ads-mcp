@@ -17,7 +17,6 @@ import (
 func GetExternalMerchantSettingsTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// externalmerchantsettings_get_ tool
 	// Available fields for ExternalMerchantSettings: connect_woo, external_platform, id
 	externalmerchantsettings_get_Tool := mcp.NewTool("externalmerchantsettings_get_",
@@ -37,12 +36,10 @@ func GetExternalMerchantSettingsTools() []mcp.Tool {
 	)
 	tools = append(tools, externalmerchantsettings_get_Tool)
 
-
 	return tools
 }
 
 // ExternalMerchantSettings handlers
-
 
 // HandleExternalmerchantsettings_get_ handles the externalmerchantsettings_get_ tool with context-based auth
 func HandleExternalmerchantsettings_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleExternalmerchantsettings_get_(ctx context.Context, request mcp.CallTo
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Externalmerchantsettings_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleExternalmerchantsettings_get_(ctx context.Context, request mcp.CallTo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

@@ -5,10 +5,10 @@ package constants
 // TimeSuggestionFields contains field name constants for TimeSuggestion objects
 var TimeSuggestionFields = struct {
 	HighDemandPeriods string
-	IsEnabled string
+	IsEnabled         string
 }{
 	HighDemandPeriods: "high_demand_periods",
-	IsEnabled: "is_enabled",
+	IsEnabled:         "is_enabled",
 }
 
 // TimeSuggestionFieldsList contains all available fields for TimeSuggestion objects

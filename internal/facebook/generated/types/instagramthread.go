@@ -6,8 +6,8 @@ import "time"
 
 // InstagramThread represents a Facebook InstagramThread object
 type InstagramThread struct {
-	Folder string `json:"folder"`
-	Id string `json:"id"`
+	Folder       string                 `json:"folder"`
+	Id           string                 `json:"id"`
 	Participants map[string]interface{} `json:"participants"`
-	Updated_time time.Time `json:"updated_time"`
+	Updated_time time.Time              `json:"updated_time"`
 }

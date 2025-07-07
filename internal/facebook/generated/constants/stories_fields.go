@@ -5,18 +5,18 @@ package constants
 // StoriesFields contains field name constants for Stories objects
 var StoriesFields = struct {
 	CreationTime string
-	MediaId string
-	MediaType string
-	PostId string
-	Status string
-	Url string
+	MediaId      string
+	MediaType    string
+	PostId       string
+	Status       string
+	Url          string
 }{
 	CreationTime: "creation_time",
-	MediaId: "media_id",
-	MediaType: "media_type",
-	PostId: "post_id",
-	Status: "status",
-	Url: "url",
+	MediaId:      "media_id",
+	MediaType:    "media_type",
+	PostId:       "post_id",
+	Status:       "status",
+	Url:          "url",
 }
 
 // StoriesFieldsList contains all available fields for Stories objects

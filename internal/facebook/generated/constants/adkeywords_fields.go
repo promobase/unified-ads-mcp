@@ -4,15 +4,15 @@ package constants
 
 // AdKeywordsFields contains field name constants for AdKeywords objects
 var AdKeywordsFields = struct {
-	Brands string
+	Brands            string
 	ProductCategories string
-	ProductNames string
-	SearchTerms string
+	ProductNames      string
+	SearchTerms       string
 }{
-	Brands: "brands",
+	Brands:            "brands",
 	ProductCategories: "product_categories",
-	ProductNames: "product_names",
-	SearchTerms: "search_terms",
+	ProductNames:      "product_names",
+	SearchTerms:       "search_terms",
 }
 
 // AdKeywordsFieldsList contains all available fields for AdKeywords objects

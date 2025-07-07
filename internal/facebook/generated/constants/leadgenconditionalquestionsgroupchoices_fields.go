@@ -4,13 +4,13 @@ package constants
 
 // LeadGenConditionalQuestionsGroupChoicesFields contains field name constants for LeadGenConditionalQuestionsGroupChoices objects
 var LeadGenConditionalQuestionsGroupChoicesFields = struct {
-	CustomizedToken string
+	CustomizedToken     string
 	NextQuestionChoices string
-	Value string
+	Value               string
 }{
-	CustomizedToken: "customized_token",
+	CustomizedToken:     "customized_token",
 	NextQuestionChoices: "next_question_choices",
-	Value: "value",
+	Value:               "value",
 }
 
 // LeadGenConditionalQuestionsGroupChoicesFieldsList contains all available fields for LeadGenConditionalQuestionsGroupChoices objects

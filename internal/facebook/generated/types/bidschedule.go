@@ -6,12 +6,12 @@ import "time"
 
 // BidSchedule represents a Facebook BidSchedule object
 type BidSchedule struct {
-	Ad_object_id string `json:"ad_object_id"`
-	Bid_recurrence_type string `json:"bid_recurrence_type"`
-	Bid_timezone string `json:"bid_timezone"`
-	Bid_value int `json:"bid_value"`
-	Id string `json:"id"`
-	Status string `json:"status"`
-	Time_end time.Time `json:"time_end"`
-	Time_start time.Time `json:"time_start"`
+	Ad_object_id        string    `json:"ad_object_id"`
+	Bid_recurrence_type string    `json:"bid_recurrence_type"`
+	Bid_timezone        string    `json:"bid_timezone"`
+	Bid_value           int       `json:"bid_value"`
+	Id                  string    `json:"id"`
+	Status              string    `json:"status"`
+	Time_end            time.Time `json:"time_end"`
+	Time_start          time.Time `json:"time_start"`
 }

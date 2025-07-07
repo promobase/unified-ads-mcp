@@ -27,7 +27,7 @@ func ToolCampaign_get_adrules_governed() mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"pass_evaluation": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "pass_evaluation parameter",
 				},
 			}),
@@ -103,8 +103,6 @@ func HandleCampaign_get_adrules_governed(ctx context.Context, request mcp.CallTo
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Campaign_get_adrules_governed(accessToken, args)
 	if err != nil {
@@ -123,67 +121,65 @@ func HandleCampaign_get_adrules_governed(ctx context.Context, request mcp.CallTo
 // Campaign_get_adrules_governed performs GET adrules_governed for Campaign
 func Campaign_get_adrules_governed(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	// Extract campaign_id for URL construction
 	campaignId, ok := args["campaign_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("campaign_id is required for campaign_get_adrules_governed")
 	}
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/%sadrules_governed", campaignId)
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["campaign_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "campaign_id" != "campaign_id" {
 			urlParams.Set("campaign_id", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "params" != "campaign_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "fields" != "campaign_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "limit" != "campaign_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "after" != "campaign_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "before" != "campaign_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-		
-	}
 
+	}
 
 	// Make HTTP request
 	var resp *http.Response

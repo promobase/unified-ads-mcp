@@ -15,7 +15,7 @@ import (
 
 // ToolPublisherblocklist_post_append_publisher_urls returns the MCP tool definition for publisherblocklist_post_append_publisher_urls
 func ToolPublisherblocklist_post_append_publisher_urls() mcp.Tool {
-	
+
 	// Params object accepts: publisher_urls (list<string>)
 	return mcp.NewTool("publisherblocklist_post_append_publisher_urls",
 		mcp.WithDescription("POST append_publisher_urls for PublisherBlockList"),
@@ -23,10 +23,10 @@ func ToolPublisherblocklist_post_append_publisher_urls() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"publisher_urls": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "publisher_urls parameter",
-					"required": true,
-					"items": map[string]any{"type": "string"},
+					"required":    true,
+					"items":       map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: publisher_urls (array<string>) [required]"),
@@ -59,8 +59,6 @@ func HandlePublisherblocklist_post_append_publisher_urls(ctx context.Context, re
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Publisherblocklist_post_append_publisher_urls(accessToken, args)
 	if err != nil {
@@ -79,20 +77,18 @@ func HandlePublisherblocklist_post_append_publisher_urls(ctx context.Context, re
 // Publisherblocklist_post_append_publisher_urls performs POST append_publisher_urls for PublisherBlockList
 func Publisherblocklist_post_append_publisher_urls(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/append_publisher_urls")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

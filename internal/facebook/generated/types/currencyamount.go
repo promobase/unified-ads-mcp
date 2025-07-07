@@ -4,8 +4,8 @@ package types
 
 // CurrencyAmount represents a Facebook CurrencyAmount object
 type CurrencyAmount struct {
-	Amount string `json:"amount"`
+	Amount               string `json:"amount"`
 	Amount_in_hundredths string `json:"amount_in_hundredths"`
-	Currency string `json:"currency"`
-	Offsetted_amount string `json:"offsetted_amount"`
+	Currency             string `json:"currency"`
+	Offsetted_amount     string `json:"offsetted_amount"`
 }

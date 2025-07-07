@@ -17,7 +17,7 @@ import (
 // ToolAdsnamingtemplate_get_ returns the MCP tool definition for adsnamingtemplate_get_
 func ToolAdsnamingtemplate_get_() mcp.Tool {
 	// Available fields for AdsNamingTemplate: api_fields, api_version, field_order, id, level, separator, template_version, user_defined_fields, value_separator
-	
+
 	return mcp.NewTool("adsnamingtemplate_get_",
 		mcp.WithDescription("GET  for AdsNamingTemplate"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleAdsnamingtemplate_get_(ctx context.Context, request mcp.CallToolReque
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Adsnamingtemplate_get_(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleAdsnamingtemplate_get_(ctx context.Context, request mcp.CallToolReque
 // Adsnamingtemplate_get_ performs GET  for AdsNamingTemplate
 func Adsnamingtemplate_get_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

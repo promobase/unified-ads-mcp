@@ -17,7 +17,6 @@ import (
 func GetAdTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// ad_get_adcreatives tool
 	// Available fields for AdCreative: account_id, actor_id, ad_disclaimer_spec, adlabels, applink_treatment, asset_feed_spec, authorization_category, auto_update, body, branded_content, branded_content_sponsor_page_id, bundle_folder_id, call_to_action, call_to_action_type, categorization_criteria, category_media_source, collaborative_ads_lsb_image_bank_id, contextual_multi_ads, creative_sourcing_spec, degrees_of_freedom_spec, destination_set_id, dynamic_ad_voice, effective_authorization_category, effective_instagram_media_id, effective_object_story_id, enable_direct_install, enable_launch_instant_app, facebook_branded_content, id, image_crops, image_hash, image_url, instagram_branded_content, instagram_permalink_url, instagram_user_id, interactive_components_spec, link_deep_link_url, link_destination_display_url, link_og_id, link_url, messenger_sponsored_message, name, object_id, object_store_url, object_story_id, object_story_spec, object_type, object_url, omnichannel_link_spec, page_welcome_message, photo_album_source_object_story_id, place_page_set_id, platform_customizations, playable_asset_id, portrait_customizations, product_data, product_set_id, recommender_settings, regional_regulation_disclaimer_spec, source_facebook_post_id, source_instagram_media_id, status, template_url, template_url_spec, thumbnail_id, thumbnail_url, title, url_tags, use_page_actor_override, video_id
 	ad_get_adcreativesTool := mcp.NewTool("ad_get_adcreatives",
@@ -53,16 +52,16 @@ func GetAdTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"adlabels": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "adlabels parameter",
-					"required": true,
-					"items": map[string]any{"type": "object"},
+					"required":    true,
+					"items":       map[string]any{"type": "object"},
 				},
 				"execution_options": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "execution_options parameter",
-					"enum": []string{ "validate_only" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"validate_only"},
+					"items":       map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: adlabels (array<object>) [required], execution_options (array<enum>) [validate_only]"),
@@ -82,7 +81,7 @@ func GetAdTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"pass_evaluation": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "pass_evaluation parameter",
 				},
 			}),
@@ -115,21 +114,21 @@ func GetAdTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"date_preset": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "date_preset parameter",
-					"enum": []string{ "data_maximum", "last_14d", "last_28d", "last_30d", "last_3d", "last_7d", "last_90d", "last_month", "last_quarter", "last_week_mon_sun", "last_week_sun_sat", "last_year", "maximum", "this_month", "this_quarter", "this_week_mon_today", "this_week_sun_today", "this_year", "today", "yesterday" },
+					"enum":        []string{"data_maximum", "last_14d", "last_28d", "last_30d", "last_3d", "last_7d", "last_90d", "last_month", "last_quarter", "last_week_mon_sun", "last_week_sun_sat", "last_year", "maximum", "this_month", "this_quarter", "this_week_mon_today", "this_week_sun_today", "this_year", "today", "yesterday"},
 				},
 				"effective_status": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "effective_status parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"time_range": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "time_range parameter",
 				},
 				"updated_since": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "updated_since parameter",
 				},
 			}),
@@ -161,21 +160,21 @@ func GetAdTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"adset_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "adset_id parameter",
 				},
 				"creative_parameters": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "creative_parameters parameter",
 				},
 				"rename_options": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "rename_options parameter",
 				},
 				"status_option": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "status_option parameter",
-					"enum": []string{ "ACTIVE", "INHERITED_FROM_SOURCE", "PAUSED" },
+					"enum":        []string{"ACTIVE", "INHERITED_FROM_SOURCE", "PAUSED"},
 				},
 			}),
 			mcp.Description("Parameters object containing: adset_id (string), creative_parameters (AdCreative), rename_options (object), status_option (enum) [ACTIVE, INHERITED_FROM_SOURCE, PAUSED]"),
@@ -195,108 +194,108 @@ func GetAdTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"action_attribution_windows": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "action_attribution_windows parameter",
-					"enum": []string{ "1d_click", "1d_ev", "1d_view", "28d_click", "28d_view", "28d_view_all_conversions", "28d_view_first_conversion", "7d_click", "7d_view", "7d_view_all_conversions", "7d_view_first_conversion", "dda", "default", "skan_click", "skan_click_second_postback", "skan_click_third_postback", "skan_view", "skan_view_second_postback", "skan_view_third_postback" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"1d_click", "1d_ev", "1d_view", "28d_click", "28d_view", "28d_view_all_conversions", "28d_view_first_conversion", "7d_click", "7d_view", "7d_view_all_conversions", "7d_view_first_conversion", "dda", "default", "skan_click", "skan_click_second_postback", "skan_click_third_postback", "skan_view", "skan_view_second_postback", "skan_view_third_postback"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"action_breakdowns": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "action_breakdowns parameter",
-					"enum": []string{ "action_canvas_component_name", "action_carousel_card_id", "action_carousel_card_name", "action_destination", "action_device", "action_reaction", "action_target_id", "action_type", "action_video_sound", "action_video_type", "conversion_destination", "matched_persona_id", "matched_persona_name", "signal_source_bucket", "standard_event_content_type" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"action_canvas_component_name", "action_carousel_card_id", "action_carousel_card_name", "action_destination", "action_device", "action_reaction", "action_target_id", "action_type", "action_video_sound", "action_video_type", "conversion_destination", "matched_persona_id", "matched_persona_name", "signal_source_bucket", "standard_event_content_type"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"action_report_time": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "action_report_time parameter",
-					"enum": []string{ "conversion", "impression", "lifetime", "mixed" },
+					"enum":        []string{"conversion", "impression", "lifetime", "mixed"},
 				},
 				"breakdowns": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "breakdowns parameter",
-					"enum": []string{ "ad_extension_domain", "ad_extension_url", "ad_format_asset", "age", "app_id", "body_asset", "breakdown_ad_objective", "breakdown_reporting_ad_id", "call_to_action_asset", "coarse_conversion_value", "comscore_market", "comscore_market_code", "conversion_destination", "country", "creative_relaxation_asset_type", "description_asset", "device_platform", "dma", "fidelity_type", "flexible_format_asset_type", "frequency_value", "gen_ai_asset_type", "gender", "hourly_stats_aggregated_by_advertiser_time_zone", "hourly_stats_aggregated_by_audience_time_zone", "hsid", "image_asset", "impression_device", "impression_view_time_advertiser_hour_v2", "is_auto_advance", "is_conversion_id_modeled", "is_rendered_as_delayed_skip_ad", "landing_destination", "link_url_asset", "marketing_messages_btn_name", "mdsa_landing_destination", "media_asset_url", "media_creator", "media_destination_url", "media_format", "media_origin_url", "media_text_content", "media_type", "mmm", "place_page_id", "platform_position", "postback_sequence_index", "product_id", "publisher_platform", "redownload", "region", "signal_source_bucket", "skan_campaign_id", "skan_conversion_id", "skan_version", "sot_attribution_model_type", "sot_attribution_window", "sot_channel", "sot_event_type", "sot_source", "standard_event_content_type", "title_asset", "user_persona_id", "user_persona_name", "video_asset" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"ad_extension_domain", "ad_extension_url", "ad_format_asset", "age", "app_id", "body_asset", "breakdown_ad_objective", "breakdown_reporting_ad_id", "call_to_action_asset", "coarse_conversion_value", "comscore_market", "comscore_market_code", "conversion_destination", "country", "creative_relaxation_asset_type", "description_asset", "device_platform", "dma", "fidelity_type", "flexible_format_asset_type", "frequency_value", "gen_ai_asset_type", "gender", "hourly_stats_aggregated_by_advertiser_time_zone", "hourly_stats_aggregated_by_audience_time_zone", "hsid", "image_asset", "impression_device", "impression_view_time_advertiser_hour_v2", "is_auto_advance", "is_conversion_id_modeled", "is_rendered_as_delayed_skip_ad", "landing_destination", "link_url_asset", "marketing_messages_btn_name", "mdsa_landing_destination", "media_asset_url", "media_creator", "media_destination_url", "media_format", "media_origin_url", "media_text_content", "media_type", "mmm", "place_page_id", "platform_position", "postback_sequence_index", "product_id", "publisher_platform", "redownload", "region", "signal_source_bucket", "skan_campaign_id", "skan_conversion_id", "skan_version", "sot_attribution_model_type", "sot_attribution_window", "sot_channel", "sot_event_type", "sot_source", "standard_event_content_type", "title_asset", "user_persona_id", "user_persona_name", "video_asset"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"date_preset": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "date_preset parameter",
-					"enum": []string{ "data_maximum", "last_14d", "last_28d", "last_30d", "last_3d", "last_7d", "last_90d", "last_month", "last_quarter", "last_week_mon_sun", "last_week_sun_sat", "last_year", "maximum", "this_month", "this_quarter", "this_week_mon_today", "this_week_sun_today", "this_year", "today", "yesterday" },
+					"enum":        []string{"data_maximum", "last_14d", "last_28d", "last_30d", "last_3d", "last_7d", "last_90d", "last_month", "last_quarter", "last_week_mon_sun", "last_week_sun_sat", "last_year", "maximum", "this_month", "this_quarter", "this_week_mon_today", "this_week_sun_today", "this_year", "today", "yesterday"},
 				},
 				"default_summary": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "default_summary parameter",
 				},
 				"export_columns": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "export_columns parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"export_format": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "export_format parameter",
 				},
 				"export_name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "export_name parameter",
 				},
 				"fields": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "fields parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"filtering": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "filtering parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"level": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "level parameter",
-					"enum": []string{ "account", "ad", "adset", "campaign" },
+					"enum":        []string{"account", "ad", "adset", "campaign"},
 				},
 				"limit": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "limit parameter",
 				},
 				"product_id_limit": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "product_id_limit parameter",
 				},
 				"sort": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "sort parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"summary": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "summary parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"summary_action_breakdowns": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "summary_action_breakdowns parameter",
-					"enum": []string{ "action_canvas_component_name", "action_carousel_card_id", "action_carousel_card_name", "action_destination", "action_device", "action_reaction", "action_target_id", "action_type", "action_video_sound", "action_video_type", "conversion_destination", "matched_persona_id", "matched_persona_name", "signal_source_bucket", "standard_event_content_type" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"action_canvas_component_name", "action_carousel_card_id", "action_carousel_card_name", "action_destination", "action_device", "action_reaction", "action_target_id", "action_type", "action_video_sound", "action_video_type", "conversion_destination", "matched_persona_id", "matched_persona_name", "signal_source_bucket", "standard_event_content_type"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"time_increment": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "time_increment parameter",
 				},
 				"time_range": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "time_range parameter",
 				},
 				"time_ranges": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "time_ranges parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"use_account_attribution_setting": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "use_account_attribution_setting parameter",
 				},
 				"use_unified_attribution_setting": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "use_unified_attribution_setting parameter",
 				},
 			}),
@@ -328,108 +327,108 @@ func GetAdTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"action_attribution_windows": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "action_attribution_windows parameter",
-					"enum": []string{ "1d_click", "1d_ev", "1d_view", "28d_click", "28d_view", "28d_view_all_conversions", "28d_view_first_conversion", "7d_click", "7d_view", "7d_view_all_conversions", "7d_view_first_conversion", "dda", "default", "skan_click", "skan_click_second_postback", "skan_click_third_postback", "skan_view", "skan_view_second_postback", "skan_view_third_postback" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"1d_click", "1d_ev", "1d_view", "28d_click", "28d_view", "28d_view_all_conversions", "28d_view_first_conversion", "7d_click", "7d_view", "7d_view_all_conversions", "7d_view_first_conversion", "dda", "default", "skan_click", "skan_click_second_postback", "skan_click_third_postback", "skan_view", "skan_view_second_postback", "skan_view_third_postback"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"action_breakdowns": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "action_breakdowns parameter",
-					"enum": []string{ "action_canvas_component_name", "action_carousel_card_id", "action_carousel_card_name", "action_destination", "action_device", "action_reaction", "action_target_id", "action_type", "action_video_sound", "action_video_type", "conversion_destination", "matched_persona_id", "matched_persona_name", "signal_source_bucket", "standard_event_content_type" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"action_canvas_component_name", "action_carousel_card_id", "action_carousel_card_name", "action_destination", "action_device", "action_reaction", "action_target_id", "action_type", "action_video_sound", "action_video_type", "conversion_destination", "matched_persona_id", "matched_persona_name", "signal_source_bucket", "standard_event_content_type"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"action_report_time": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "action_report_time parameter",
-					"enum": []string{ "conversion", "impression", "lifetime", "mixed" },
+					"enum":        []string{"conversion", "impression", "lifetime", "mixed"},
 				},
 				"breakdowns": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "breakdowns parameter",
-					"enum": []string{ "ad_extension_domain", "ad_extension_url", "ad_format_asset", "age", "app_id", "body_asset", "breakdown_ad_objective", "breakdown_reporting_ad_id", "call_to_action_asset", "coarse_conversion_value", "comscore_market", "comscore_market_code", "conversion_destination", "country", "creative_relaxation_asset_type", "description_asset", "device_platform", "dma", "fidelity_type", "flexible_format_asset_type", "frequency_value", "gen_ai_asset_type", "gender", "hourly_stats_aggregated_by_advertiser_time_zone", "hourly_stats_aggregated_by_audience_time_zone", "hsid", "image_asset", "impression_device", "impression_view_time_advertiser_hour_v2", "is_auto_advance", "is_conversion_id_modeled", "is_rendered_as_delayed_skip_ad", "landing_destination", "link_url_asset", "marketing_messages_btn_name", "mdsa_landing_destination", "media_asset_url", "media_creator", "media_destination_url", "media_format", "media_origin_url", "media_text_content", "media_type", "mmm", "place_page_id", "platform_position", "postback_sequence_index", "product_id", "publisher_platform", "redownload", "region", "signal_source_bucket", "skan_campaign_id", "skan_conversion_id", "skan_version", "sot_attribution_model_type", "sot_attribution_window", "sot_channel", "sot_event_type", "sot_source", "standard_event_content_type", "title_asset", "user_persona_id", "user_persona_name", "video_asset" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"ad_extension_domain", "ad_extension_url", "ad_format_asset", "age", "app_id", "body_asset", "breakdown_ad_objective", "breakdown_reporting_ad_id", "call_to_action_asset", "coarse_conversion_value", "comscore_market", "comscore_market_code", "conversion_destination", "country", "creative_relaxation_asset_type", "description_asset", "device_platform", "dma", "fidelity_type", "flexible_format_asset_type", "frequency_value", "gen_ai_asset_type", "gender", "hourly_stats_aggregated_by_advertiser_time_zone", "hourly_stats_aggregated_by_audience_time_zone", "hsid", "image_asset", "impression_device", "impression_view_time_advertiser_hour_v2", "is_auto_advance", "is_conversion_id_modeled", "is_rendered_as_delayed_skip_ad", "landing_destination", "link_url_asset", "marketing_messages_btn_name", "mdsa_landing_destination", "media_asset_url", "media_creator", "media_destination_url", "media_format", "media_origin_url", "media_text_content", "media_type", "mmm", "place_page_id", "platform_position", "postback_sequence_index", "product_id", "publisher_platform", "redownload", "region", "signal_source_bucket", "skan_campaign_id", "skan_conversion_id", "skan_version", "sot_attribution_model_type", "sot_attribution_window", "sot_channel", "sot_event_type", "sot_source", "standard_event_content_type", "title_asset", "user_persona_id", "user_persona_name", "video_asset"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"date_preset": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "date_preset parameter",
-					"enum": []string{ "data_maximum", "last_14d", "last_28d", "last_30d", "last_3d", "last_7d", "last_90d", "last_month", "last_quarter", "last_week_mon_sun", "last_week_sun_sat", "last_year", "maximum", "this_month", "this_quarter", "this_week_mon_today", "this_week_sun_today", "this_year", "today", "yesterday" },
+					"enum":        []string{"data_maximum", "last_14d", "last_28d", "last_30d", "last_3d", "last_7d", "last_90d", "last_month", "last_quarter", "last_week_mon_sun", "last_week_sun_sat", "last_year", "maximum", "this_month", "this_quarter", "this_week_mon_today", "this_week_sun_today", "this_year", "today", "yesterday"},
 				},
 				"default_summary": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "default_summary parameter",
 				},
 				"export_columns": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "export_columns parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"export_format": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "export_format parameter",
 				},
 				"export_name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "export_name parameter",
 				},
 				"fields": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "fields parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"filtering": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "filtering parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"level": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "level parameter",
-					"enum": []string{ "account", "ad", "adset", "campaign" },
+					"enum":        []string{"account", "ad", "adset", "campaign"},
 				},
 				"limit": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "limit parameter",
 				},
 				"product_id_limit": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "product_id_limit parameter",
 				},
 				"sort": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "sort parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"summary": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "summary parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"summary_action_breakdowns": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "summary_action_breakdowns parameter",
-					"enum": []string{ "action_canvas_component_name", "action_carousel_card_id", "action_carousel_card_name", "action_destination", "action_device", "action_reaction", "action_target_id", "action_type", "action_video_sound", "action_video_type", "conversion_destination", "matched_persona_id", "matched_persona_name", "signal_source_bucket", "standard_event_content_type" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"action_canvas_component_name", "action_carousel_card_id", "action_carousel_card_name", "action_destination", "action_device", "action_reaction", "action_target_id", "action_type", "action_video_sound", "action_video_type", "conversion_destination", "matched_persona_id", "matched_persona_name", "signal_source_bucket", "standard_event_content_type"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"time_increment": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "time_increment parameter",
 				},
 				"time_range": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "time_range parameter",
 				},
 				"time_ranges": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "time_ranges parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"use_account_attribution_setting": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "use_account_attribution_setting parameter",
 				},
 				"use_unified_attribution_setting": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "use_unified_attribution_setting parameter",
 				},
 			}),
@@ -474,64 +473,64 @@ func GetAdTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"ad_format": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "ad_format parameter",
-					"required": true,
-					"enum": []string{ "AUDIENCE_NETWORK_INSTREAM_VIDEO", "AUDIENCE_NETWORK_INSTREAM_VIDEO_MOBILE", "AUDIENCE_NETWORK_OUTSTREAM_VIDEO", "AUDIENCE_NETWORK_REWARDED_VIDEO", "BIZ_DISCO_FEED_MOBILE", "DESKTOP_FEED_STANDARD", "FACEBOOK_PROFILE_FEED_DESKTOP", "FACEBOOK_PROFILE_FEED_MOBILE", "FACEBOOK_PROFILE_REELS_MOBILE", "FACEBOOK_REELS_BANNER", "FACEBOOK_REELS_BANNER_DESKTOP", "FACEBOOK_REELS_BANNER_FULLSCREEN_IOS", "FACEBOOK_REELS_BANNER_FULLSCREEN_MOBILE", "FACEBOOK_REELS_MOBILE", "FACEBOOK_REELS_POSTLOOP", "FACEBOOK_REELS_STICKER", "FACEBOOK_STORY_MOBILE", "FACEBOOK_STORY_STICKER_MOBILE", "INSTAGRAM_EXPLORE_CONTEXTUAL", "INSTAGRAM_EXPLORE_GRID_HOME", "INSTAGRAM_EXPLORE_IMMERSIVE", "INSTAGRAM_FEED_WEB", "INSTAGRAM_FEED_WEB_M_SITE", "INSTAGRAM_LEAD_GEN_MULTI_SUBMIT_ADS", "INSTAGRAM_PROFILE_FEED", "INSTAGRAM_PROFILE_REELS", "INSTAGRAM_REELS", "INSTAGRAM_REELS_OVERLAY", "INSTAGRAM_SEARCH_CHAIN", "INSTAGRAM_SEARCH_GRID", "INSTAGRAM_STANDARD", "INSTAGRAM_STORY", "INSTAGRAM_STORY_EFFECT_TRAY", "INSTAGRAM_STORY_WEB", "INSTAGRAM_STORY_WEB_M_SITE", "INSTANT_ARTICLE_RECIRCULATION_AD", "INSTANT_ARTICLE_STANDARD", "INSTREAM_BANNER_DESKTOP", "INSTREAM_BANNER_FULLSCREEN_IOS", "INSTREAM_BANNER_FULLSCREEN_MOBILE", "INSTREAM_BANNER_IMMERSIVE_MOBILE", "INSTREAM_BANNER_MOBILE", "INSTREAM_VIDEO_DESKTOP", "INSTREAM_VIDEO_FULLSCREEN_IOS", "INSTREAM_VIDEO_FULLSCREEN_MOBILE", "INSTREAM_VIDEO_IMAGE", "INSTREAM_VIDEO_IMMERSIVE_MOBILE", "INSTREAM_VIDEO_MOBILE", "JOB_BROWSER_DESKTOP", "JOB_BROWSER_MOBILE", "MARKETPLACE_MOBILE", "MESSENGER_MOBILE_INBOX_MEDIA", "MESSENGER_MOBILE_STORY_MEDIA", "MOBILE_BANNER", "MOBILE_FEED_BASIC", "MOBILE_FEED_STANDARD", "MOBILE_FULLWIDTH", "MOBILE_INTERSTITIAL", "MOBILE_MEDIUM_RECTANGLE", "MOBILE_NATIVE", "RIGHT_COLUMN_STANDARD", "SUGGESTED_VIDEO_DESKTOP", "SUGGESTED_VIDEO_FULLSCREEN_MOBILE", "SUGGESTED_VIDEO_IMMERSIVE_MOBILE", "SUGGESTED_VIDEO_MOBILE", "WATCH_FEED_HOME", "WATCH_FEED_MOBILE" },
+					"required":    true,
+					"enum":        []string{"AUDIENCE_NETWORK_INSTREAM_VIDEO", "AUDIENCE_NETWORK_INSTREAM_VIDEO_MOBILE", "AUDIENCE_NETWORK_OUTSTREAM_VIDEO", "AUDIENCE_NETWORK_REWARDED_VIDEO", "BIZ_DISCO_FEED_MOBILE", "DESKTOP_FEED_STANDARD", "FACEBOOK_PROFILE_FEED_DESKTOP", "FACEBOOK_PROFILE_FEED_MOBILE", "FACEBOOK_PROFILE_REELS_MOBILE", "FACEBOOK_REELS_BANNER", "FACEBOOK_REELS_BANNER_DESKTOP", "FACEBOOK_REELS_BANNER_FULLSCREEN_IOS", "FACEBOOK_REELS_BANNER_FULLSCREEN_MOBILE", "FACEBOOK_REELS_MOBILE", "FACEBOOK_REELS_POSTLOOP", "FACEBOOK_REELS_STICKER", "FACEBOOK_STORY_MOBILE", "FACEBOOK_STORY_STICKER_MOBILE", "INSTAGRAM_EXPLORE_CONTEXTUAL", "INSTAGRAM_EXPLORE_GRID_HOME", "INSTAGRAM_EXPLORE_IMMERSIVE", "INSTAGRAM_FEED_WEB", "INSTAGRAM_FEED_WEB_M_SITE", "INSTAGRAM_LEAD_GEN_MULTI_SUBMIT_ADS", "INSTAGRAM_PROFILE_FEED", "INSTAGRAM_PROFILE_REELS", "INSTAGRAM_REELS", "INSTAGRAM_REELS_OVERLAY", "INSTAGRAM_SEARCH_CHAIN", "INSTAGRAM_SEARCH_GRID", "INSTAGRAM_STANDARD", "INSTAGRAM_STORY", "INSTAGRAM_STORY_EFFECT_TRAY", "INSTAGRAM_STORY_WEB", "INSTAGRAM_STORY_WEB_M_SITE", "INSTANT_ARTICLE_RECIRCULATION_AD", "INSTANT_ARTICLE_STANDARD", "INSTREAM_BANNER_DESKTOP", "INSTREAM_BANNER_FULLSCREEN_IOS", "INSTREAM_BANNER_FULLSCREEN_MOBILE", "INSTREAM_BANNER_IMMERSIVE_MOBILE", "INSTREAM_BANNER_MOBILE", "INSTREAM_VIDEO_DESKTOP", "INSTREAM_VIDEO_FULLSCREEN_IOS", "INSTREAM_VIDEO_FULLSCREEN_MOBILE", "INSTREAM_VIDEO_IMAGE", "INSTREAM_VIDEO_IMMERSIVE_MOBILE", "INSTREAM_VIDEO_MOBILE", "JOB_BROWSER_DESKTOP", "JOB_BROWSER_MOBILE", "MARKETPLACE_MOBILE", "MESSENGER_MOBILE_INBOX_MEDIA", "MESSENGER_MOBILE_STORY_MEDIA", "MOBILE_BANNER", "MOBILE_FEED_BASIC", "MOBILE_FEED_STANDARD", "MOBILE_FULLWIDTH", "MOBILE_INTERSTITIAL", "MOBILE_MEDIUM_RECTANGLE", "MOBILE_NATIVE", "RIGHT_COLUMN_STANDARD", "SUGGESTED_VIDEO_DESKTOP", "SUGGESTED_VIDEO_FULLSCREEN_MOBILE", "SUGGESTED_VIDEO_IMMERSIVE_MOBILE", "SUGGESTED_VIDEO_MOBILE", "WATCH_FEED_HOME", "WATCH_FEED_MOBILE"},
 				},
 				"creative_feature": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "creative_feature parameter",
-					"enum": []string{ "product_metadata_automation", "profile_card", "standard_enhancements_catalog", "video_to_image" },
+					"enum":        []string{"product_metadata_automation", "profile_card", "standard_enhancements_catalog", "video_to_image"},
 				},
 				"dynamic_asset_label": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "dynamic_asset_label parameter",
 				},
 				"dynamic_creative_spec": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "dynamic_creative_spec parameter",
 				},
 				"dynamic_customization": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "dynamic_customization parameter",
 				},
 				"end_date": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "end_date parameter",
 				},
 				"height": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "height parameter",
 				},
 				"locale": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "locale parameter",
 				},
 				"place_page_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "place_page_id parameter",
 				},
 				"post": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "post parameter",
 				},
 				"product_item_ids": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "product_item_ids parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"render_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "render_type parameter",
-					"enum": []string{ "FALLBACK" },
+					"enum":        []string{"FALLBACK"},
 				},
 				"start_date": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "start_date parameter",
 				},
 				"width": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "width parameter",
 				},
 			}),
@@ -597,24 +596,24 @@ func GetAdTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"am_call_tags": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "am_call_tags parameter",
 				},
 				"date_preset": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "date_preset parameter",
-					"enum": []string{ "data_maximum", "last_14d", "last_28d", "last_30d", "last_3d", "last_7d", "last_90d", "last_month", "last_quarter", "last_week_mon_sun", "last_week_sun_sat", "last_year", "maximum", "this_month", "this_quarter", "this_week_mon_today", "this_week_sun_today", "this_year", "today", "yesterday" },
+					"enum":        []string{"data_maximum", "last_14d", "last_28d", "last_30d", "last_3d", "last_7d", "last_90d", "last_month", "last_quarter", "last_week_mon_sun", "last_week_sun_sat", "last_year", "maximum", "this_month", "this_quarter", "this_week_mon_today", "this_week_sun_today", "this_year", "today", "yesterday"},
 				},
 				"from_adtable": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "from_adtable parameter",
 				},
 				"review_feedback_breakdown": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "review_feedback_breakdown parameter",
 				},
 				"time_range": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "time_range parameter",
 				},
 			}),
@@ -646,79 +645,79 @@ func GetAdTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"ad_schedule_end_time": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "ad_schedule_end_time parameter",
 				},
 				"ad_schedule_start_time": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "ad_schedule_start_time parameter",
 				},
 				"adlabels": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "adlabels parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"adset_spec": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "adset_spec parameter",
 				},
 				"audience_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "audience_id parameter",
 				},
 				"bid_amount": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "bid_amount parameter",
 				},
 				"conversion_domain": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "conversion_domain parameter",
 				},
 				"creative": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "creative parameter",
 				},
 				"creative_asset_groups_spec": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "creative_asset_groups_spec parameter",
 				},
 				"display_sequence": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "display_sequence parameter",
 				},
 				"draft_adgroup_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "draft_adgroup_id parameter",
 				},
 				"engagement_audience": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "engagement_audience parameter",
 				},
 				"execution_options": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "execution_options parameter",
-					"enum": []string{ "include_recommendations", "synchronous_ad_review", "validate_only" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"include_recommendations", "synchronous_ad_review", "validate_only"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"include_demolink_hashes": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "include_demolink_hashes parameter",
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
 				},
 				"priority": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "priority parameter",
 				},
 				"status": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "status parameter",
-					"enum": []string{ "ACTIVE", "ARCHIVED", "DELETED", "PAUSED" },
+					"enum":        []string{"ACTIVE", "ARCHIVED", "DELETED", "PAUSED"},
 				},
 				"tracking_specs": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "tracking_specs parameter",
 				},
 			}),
@@ -727,12 +726,10 @@ func GetAdTools() []mcp.Tool {
 	)
 	tools = append(tools, ad_post_Tool)
 
-
 	return tools
 }
 
 // Ad handlers
-
 
 // HandleAd_get_adcreatives handles the ad_get_adcreatives tool with context-based auth
 func HandleAd_get_adcreatives(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -780,8 +777,6 @@ func HandleAd_get_adcreatives(ctx context.Context, request mcp.CallToolRequest) 
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Ad_get_adcreatives(args)
 	if err != nil {
@@ -796,7 +791,6 @@ func HandleAd_get_adcreatives(ctx context.Context, request mcp.CallToolRequest) 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAd_post_adlabels handles the ad_post_adlabels tool with context-based auth
 func HandleAd_post_adlabels(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -833,8 +827,6 @@ func HandleAd_post_adlabels(ctx context.Context, request mcp.CallToolRequest) (*
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Ad_post_adlabels(args)
 	if err != nil {
@@ -849,7 +841,6 @@ func HandleAd_post_adlabels(ctx context.Context, request mcp.CallToolRequest) (*
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAd_get_adrules_governed handles the ad_get_adrules_governed tool with context-based auth
 func HandleAd_get_adrules_governed(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -909,8 +900,6 @@ func HandleAd_get_adrules_governed(ctx context.Context, request mcp.CallToolRequ
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Ad_get_adrules_governed(args)
 	if err != nil {
@@ -925,7 +914,6 @@ func HandleAd_get_adrules_governed(ctx context.Context, request mcp.CallToolRequ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAd_get_copies handles the ad_get_copies tool with context-based auth
 func HandleAd_get_copies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -985,8 +973,6 @@ func HandleAd_get_copies(ctx context.Context, request mcp.CallToolRequest) (*mcp
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Ad_get_copies(args)
 	if err != nil {
@@ -1001,7 +987,6 @@ func HandleAd_get_copies(ctx context.Context, request mcp.CallToolRequest) (*mcp
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAd_post_copies handles the ad_post_copies tool with context-based auth
 func HandleAd_post_copies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1036,8 +1021,6 @@ func HandleAd_post_copies(ctx context.Context, request mcp.CallToolRequest) (*mc
 		}
 	}
 
-
-
 	// Call the client method
 	result, err := client.Ad_post_copies(args)
 	if err != nil {
@@ -1052,7 +1035,6 @@ func HandleAd_post_copies(ctx context.Context, request mcp.CallToolRequest) (*mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAd_get_insights handles the ad_get_insights tool with context-based auth
 func HandleAd_get_insights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1112,8 +1094,6 @@ func HandleAd_get_insights(ctx context.Context, request mcp.CallToolRequest) (*m
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Ad_get_insights(args)
 	if err != nil {
@@ -1128,7 +1108,6 @@ func HandleAd_get_insights(ctx context.Context, request mcp.CallToolRequest) (*m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAd_post_insights handles the ad_post_insights tool with context-based auth
 func HandleAd_post_insights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1163,8 +1142,6 @@ func HandleAd_post_insights(ctx context.Context, request mcp.CallToolRequest) (*
 		}
 	}
 
-
-
 	// Call the client method
 	result, err := client.Ad_post_insights(args)
 	if err != nil {
@@ -1179,7 +1156,6 @@ func HandleAd_post_insights(ctx context.Context, request mcp.CallToolRequest) (*
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAd_get_leads handles the ad_get_leads tool with context-based auth
 func HandleAd_get_leads(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1227,8 +1203,6 @@ func HandleAd_get_leads(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Ad_get_leads(args)
 	if err != nil {
@@ -1243,7 +1217,6 @@ func HandleAd_get_leads(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAd_get_previews handles the ad_get_previews tool with context-based auth
 func HandleAd_get_previews(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1305,8 +1278,6 @@ func HandleAd_get_previews(ctx context.Context, request mcp.CallToolRequest) (*m
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Ad_get_previews(args)
 	if err != nil {
@@ -1321,7 +1292,6 @@ func HandleAd_get_previews(ctx context.Context, request mcp.CallToolRequest) (*m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAd_get_targetingsentencelines handles the ad_get_targetingsentencelines tool with context-based auth
 func HandleAd_get_targetingsentencelines(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1369,8 +1339,6 @@ func HandleAd_get_targetingsentencelines(ctx context.Context, request mcp.CallTo
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Ad_get_targetingsentencelines(args)
 	if err != nil {
@@ -1385,7 +1353,6 @@ func HandleAd_get_targetingsentencelines(ctx context.Context, request mcp.CallTo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAd_delete_ handles the ad_delete_ tool with context-based auth
 func HandleAd_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1408,8 +1375,6 @@ func HandleAd_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Ca
 	}
 	args["ad_id"] = ad_id
 
-
-
 	// Call the client method
 	result, err := client.Ad_delete_(args)
 	if err != nil {
@@ -1424,7 +1389,6 @@ func HandleAd_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAd_get_ handles the ad_get_ tool with context-based auth
 func HandleAd_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1484,8 +1448,6 @@ func HandleAd_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallT
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Ad_get_(args)
 	if err != nil {
@@ -1500,7 +1462,6 @@ func HandleAd_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallT
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAd_post_ handles the ad_post_ tool with context-based auth
 func HandleAd_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1535,8 +1496,6 @@ func HandleAd_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Call
 		}
 	}
 
-
-
 	// Call the client method
 	result, err := client.Ad_post_(args)
 	if err != nil {
@@ -1551,4 +1510,3 @@ func HandleAd_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

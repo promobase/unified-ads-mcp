@@ -17,7 +17,7 @@ import (
 // ToolPage_get_leadgen_forms returns the MCP tool definition for page_get_leadgen_forms
 func ToolPage_get_leadgen_forms() mcp.Tool {
 	// Available fields for LeadgenForm: allow_organic_lead, block_display_for_non_targeted_viewer, context_card, created_time, creator, expired_leads_count, follow_up_action_text, follow_up_action_url, id, is_optimized_for_quality, leads_count, legal_content, locale, name, organic_leads_count, page, page_id, privacy_policy_url, question_page_custom_headline, questions, status, thank_you_page, tracking_parameters
-	
+
 	return mcp.NewTool("page_get_leadgen_forms",
 		mcp.WithDescription("GET leadgen_forms for Page"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandlePage_get_leadgen_forms(ctx context.Context, request mcp.CallToolReque
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Page_get_leadgen_forms(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandlePage_get_leadgen_forms(ctx context.Context, request mcp.CallToolReque
 // Page_get_leadgen_forms performs GET leadgen_forms for Page
 func Page_get_leadgen_forms(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/leadgen_forms")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

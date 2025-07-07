@@ -15,7 +15,7 @@ import (
 
 // ToolWhatsappbusinesspreverifiedphonenumber_post_verify_code returns the MCP tool definition for whatsappbusinesspreverifiedphonenumber_post_verify_code
 func ToolWhatsappbusinesspreverifiedphonenumber_post_verify_code() mcp.Tool {
-	
+
 	// Params object accepts: code (string)
 	return mcp.NewTool("whatsappbusinesspreverifiedphonenumber_post_verify_code",
 		mcp.WithDescription("POST verify_code for WhatsAppBusinessPreVerifiedPhoneNumber"),
@@ -23,9 +23,9 @@ func ToolWhatsappbusinesspreverifiedphonenumber_post_verify_code() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"code": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "code parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: code (string) [required]"),
@@ -58,8 +58,6 @@ func HandleWhatsappbusinesspreverifiedphonenumber_post_verify_code(ctx context.C
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Whatsappbusinesspreverifiedphonenumber_post_verify_code(accessToken, args)
 	if err != nil {
@@ -78,20 +76,18 @@ func HandleWhatsappbusinesspreverifiedphonenumber_post_verify_code(ctx context.C
 // Whatsappbusinesspreverifiedphonenumber_post_verify_code performs POST verify_code for WhatsAppBusinessPreVerifiedPhoneNumber
 func Whatsappbusinesspreverifiedphonenumber_post_verify_code(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/verify_code")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

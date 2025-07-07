@@ -15,7 +15,7 @@ import (
 
 // ToolPage_post_media_fingerprints returns the MCP tool definition for page_post_media_fingerprints
 func ToolPage_post_media_fingerprints() mcp.Tool {
-	
+
 	// Params object accepts: fingerprint_content_type (pagemedia_fingerprints_fingerprint_content_type_enum_param), metadata (list), source (string), title (string), universal_content_id (string)
 	return mcp.NewTool("page_post_media_fingerprints",
 		mcp.WithDescription("POST media_fingerprints for Page"),
@@ -23,28 +23,28 @@ func ToolPage_post_media_fingerprints() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"fingerprint_content_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "fingerprint_content_type parameter",
-					"required": true,
-					"enum": []string{ "AM_SONGTRACK", "EPISODE", "MOVIE", "OTHER", "SONGTRACK" },
+					"required":    true,
+					"enum":        []string{"AM_SONGTRACK", "EPISODE", "MOVIE", "OTHER", "SONGTRACK"},
 				},
 				"metadata": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "metadata parameter",
-					"required": true,
+					"required":    true,
 				},
 				"source": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "source parameter",
-					"required": true,
+					"required":    true,
 				},
 				"title": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "title parameter",
-					"required": true,
+					"required":    true,
 				},
 				"universal_content_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "universal_content_id parameter",
 				},
 			}),
@@ -78,8 +78,6 @@ func HandlePage_post_media_fingerprints(ctx context.Context, request mcp.CallToo
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Page_post_media_fingerprints(accessToken, args)
 	if err != nil {
@@ -98,20 +96,18 @@ func HandlePage_post_media_fingerprints(ctx context.Context, request mcp.CallToo
 // Page_post_media_fingerprints performs POST media_fingerprints for Page
 func Page_post_media_fingerprints(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/media_fingerprints")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

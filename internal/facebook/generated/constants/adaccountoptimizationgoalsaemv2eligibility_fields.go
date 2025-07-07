@@ -4,10 +4,10 @@ package constants
 
 // AdAccountOptimizationGoalsAEMv2EligibilityFields contains field name constants for AdAccountOptimizationGoalsAEMv2Eligibility objects
 var AdAccountOptimizationGoalsAEMv2EligibilityFields = struct {
-	IsDisabled string
+	IsDisabled       string
 	OptimizationGoal string
 }{
-	IsDisabled: "is_disabled",
+	IsDisabled:       "is_disabled",
 	OptimizationGoal: "optimization_goal",
 }
 

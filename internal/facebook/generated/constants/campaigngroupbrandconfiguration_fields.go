@@ -5,12 +5,12 @@ package constants
 // CampaignGroupBrandConfigurationFields contains field name constants for CampaignGroupBrandConfiguration objects
 var CampaignGroupBrandConfigurationFields = struct {
 	BrandProductName string
-	Locale string
-	Vertical string
+	Locale           string
+	Vertical         string
 }{
 	BrandProductName: "brand_product_name",
-	Locale: "locale",
-	Vertical: "vertical",
+	Locale:           "locale",
+	Vertical:         "vertical",
 }
 
 // CampaignGroupBrandConfigurationFieldsList contains all available fields for CampaignGroupBrandConfiguration objects

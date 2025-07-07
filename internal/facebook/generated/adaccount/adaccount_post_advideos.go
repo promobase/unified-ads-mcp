@@ -15,7 +15,7 @@ import (
 
 // ToolAdaccount_post_advideos returns the MCP tool definition for adaccount_post_advideos
 func ToolAdaccount_post_advideos() mcp.Tool {
-	
+
 	// Params object accepts: application_id (string), asked_fun_fact_prompt_id (unsigned int), audio_story_wave_animation_handle (string), chunk_session_id (string), composer_entry_picker (string), composer_entry_point (string), composer_entry_time (unsigned int), composer_session_events_log (string), composer_session_id (string), composer_source_surface (string), composer_type (string), container_type (adaccountadvideos_container_type_enum_param), content_category (adaccountadvideos_content_category_enum_param), creative_tools (string), description (string), embeddable (bool), end_offset (unsigned int), fbuploader_video_file_chunk (string), file_size (unsigned int), file_url (string), fisheye_video_cropped (bool), formatting (adaccountadvideos_formatting_enum_param), fov (unsigned int), front_z_rotation (float), fun_fact_prompt_id (string), fun_fact_toastee_id (unsigned int), guide (list<list<unsigned int>>), guide_enabled (bool), initial_heading (unsigned int), initial_pitch (unsigned int), instant_game_entry_point_data (string), is_boost_intended (bool), is_group_linking_post (bool), is_partnership_ad (bool), is_voice_clip (bool), location_source_id (string), name (string), og_action_type_id (string), og_icon_id (string), og_object_id (string), og_phrase (string), og_suggestion_mechanism (string), original_fov (unsigned int), original_projection_type (adaccountadvideos_original_projection_type_enum_param), partnership_ad_ad_code (string), publish_event_id (unsigned int), referenced_sticker_id (string), replace_video_id (string), slideshow_spec (map), source (string), source_instagram_media_id (string), spherical (bool), start_offset (unsigned int), swap_mode (adaccountadvideos_swap_mode_enum_param), text_format_metadata (string), thumb (file), time_since_original_post (unsigned int), title (string), transcode_setting_properties (string), unpublished_content_type (adaccountadvideos_unpublished_content_type_enum_param), upload_phase (adaccountadvideos_upload_phase_enum_param), upload_session_id (string), upload_setting_properties (string), video_file_chunk (string), video_id_original (string), video_start_time_ms (unsigned int), waterfall_id (string)
 	return mcp.NewTool("adaccount_post_advideos",
 		mcp.WithDescription("POST advideos for AdAccount"),
@@ -26,279 +26,279 @@ func ToolAdaccount_post_advideos() mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"application_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "application_id parameter",
 				},
 				"asked_fun_fact_prompt_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "asked_fun_fact_prompt_id parameter",
 				},
 				"audio_story_wave_animation_handle": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "audio_story_wave_animation_handle parameter",
 				},
 				"chunk_session_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "chunk_session_id parameter",
 				},
 				"composer_entry_picker": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "composer_entry_picker parameter",
 				},
 				"composer_entry_point": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "composer_entry_point parameter",
 				},
 				"composer_entry_time": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "composer_entry_time parameter",
 				},
 				"composer_session_events_log": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "composer_session_events_log parameter",
 				},
 				"composer_session_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "composer_session_id parameter",
 				},
 				"composer_source_surface": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "composer_source_surface parameter",
 				},
 				"composer_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "composer_type parameter",
 				},
 				"container_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "container_type parameter",
-					"enum": []string{ "ACO_VIDEO_VARIATION", "ADS_AI_GENERATED", "AD_BREAK_PREVIEW", "AD_DERIVATIVE", "AD_LIBRARY_WATERMARK", "ALBUM_MULTIMEDIA_POST", "ALOHA_SUPERFRAME", "APP_REREVIEW_SCREENCAST", "APP_REVIEW_SCREENCAST", "ASSET_MANAGER", "ATLAS_VIDEO", "AUDIO_BROADCAST", "AUDIO_COMMENT", "BROADCAST", "CANVAS", "CMS_MEDIA_MANAGER", "CONTAINED_POST_ATTACHMENT", "CONTAINED_POST_AUDIO_BROADCAST", "CONTAINED_POST_COPYRIGHT_REFERENCE_BROADCAST", "COPYRIGHT_REFERENCE_BROADCAST", "COPYRIGHT_REFERENCE_IG_XPOST_VIDEO", "COPYRIGHT_REFERENCE_VIDEO", "CREATION_ML_PRECREATION", "CREATOR_FAN_CHALLENGE", "CREATOR_STOREFRONT_PERSONALIZED_VIDEO", "DATAGENIX_VIDEO", "DCO_AD_ASSET_FEED", "DCO_AUTOGEN_VIDEO", "DCO_TRIMMED_VIDEO", "DIM_SUM", "DIRECTED_POST_ATTACHMENT", "DIRECT_INBOX", "DROPS_SHOPPING_EVENT_PAGE", "DYNAMIC_ITEM_VIDEO", "DYNAMIC_TEMPLATE_VIDEO", "EVENT_COVER_VIDEO", "EVENT_TOUR", "FACECAST_DVR", "FB_AVATAR_ANIMATED_SATP", "FB_COLLECTIBLE_VIDEO", "FB_SHORTS", "FB_SHORTS_CONTENT_REMIXABLE", "FB_SHORTS_GROUP_POST", "FB_SHORTS_LINKED_PRODUCT", "FB_SHORTS_PMV_POST", "FB_SHORTS_POST", "FB_SHORTS_REMIX_POST", "FUNDRAISER_COVER_VIDEO", "GAME_CLIP", "GIF_TO_VIDEO", "GOODWILL_ANNIVERSARY_DEPRECATED", "GOODWILL_ANNIVERSARY_PROMOTION_DEPRECATED", "GOODWILL_VIDEO_CONTAINED_SHARE", "GOODWILL_VIDEO_PROMOTION", "GOODWILL_VIDEO_SHARE", "GOODWILL_VIDEO_TOKEN_REQUIRED", "GROUP_POST", "HEURISTIC_CLUSTER_VIDEO", "HIGHLIGHT_CLIP_VIDEO", "HORIZON_WORLDS_TV", "HUDDLE_BROADCAST", "IG_REELS_XPV", "IG_STORIES_READER", "INJECTABLE", "INSPIRATION_VIDEO", "INSTAGRAM_VIDEO_COPY", "INSTANT_APPLICATION_PREVIEW", "INSTANT_ARTICLE", "ISSUE_MODULE", "LEARN", "LEGACY", "LEGACY_CONTAINED_POST_BROADCAST", "LIVE_AUDIO_ROOM_BROADCAST", "LIVE_CLIP_PREVIEW", "LIVE_CLIP_WORKCHAT", "LIVE_CREATIVE_KIT_VIDEO", "LIVE_PHOTO", "LOOK_NOW_DEPRECATED", "MARKETPLACE_LISTING_VIDEO", "MARKETPLACE_PRE_RECORDED_VIDEO", "MOMENTS_VIDEO", "MUSIC_CLIP", "MUSIC_CLIP_IN_COMMENT", "MUSIC_CLIP_IN_LIGHTWEIGHT_STATUS", "MUSIC_CLIP_IN_MSGR_NOTE", "MUSIC_CLIP_IN_POLL_OPTION", "MUSIC_CLIP_ON_DATING_PROFILE", "NEO_ASYNC_GAME_VIDEO", "NEW_CONTAINED_POST_BROADCAST", "NO_STORY", "OCULUS_CREATOR_PORTAL", "OCULUS_VENUES_BROADCAST", "ORIGINALITY_SELF_ADVOCACY", "PAGES_COVER_VIDEO", "PAGE_REVIEW_SCREENCAST", "PAGE_SLIDESHOW_VIDEO", "PAID_CONTENT_PREVIEW", "PAID_CONTENT_VIDEO", "PAID_CONTENT_VIDEO__POST", "PIXELCLOUD", "PODCAST_HIGHLIGHT", "PODCAST_ML_PREVIEW", "PODCAST_ML_PREVIEW_NO_NEWSFEED_STORY", "PODCAST_RSS", "PODCAST_RSS_EPHEMERAL", "PODCAST_RSS_NO_NEWSFEED_STORY", "PODCAST_VOICES", "PODCAST_VOICES_NO_NEWSFEED_STORY", "PREMIERE_SOURCE", "PREMIUM_MUSIC_VIDEO_CLIP", "PREMIUM_MUSIC_VIDEO_CROPPED_CLIP", "PREMIUM_MUSIC_VIDEO_NO_NEWSFEED_STORY", "PREMIUM_MUSIC_VIDEO_WITH_NEWSFEED_STORY", "PRIVATE_GALLERY_VIDEO", "PRODUCT_VIDEO", "PROFILE_COVER_VIDEO", "PROFILE_INTRO_CARD", "PROFILE_VIDEO", "PROTON", "QUICK_CLIP_WORKPLACE_POST", "QUICK_PROMOTION", "REPLACE_VIDEO", "SALES_CLIENT_INTERACTION", "SHOWREEL_NATIVE_DUMMY_VIDEO", "SLIDESHOW_ANIMOTO", "SLIDESHOW_SHAKR", "SLIDESHOW_VARIATION_VIDEO", "SOUND_PLATFORM_STREAM", "SRT_ATTACHMENT", "STORIES_VIDEO", "STORYLINE", "STORYLINE_WITH_EXTERNAL_MUSIC", "STORY_ARCHIVE_VIDEO", "STORY_CARD_TEMPLATE", "STREAM_HIGHLIGHTS_VIDEO", "TAROT_DIGEST", "TEMPORARY_UNLISTED", "TEMP_VIDEO_COPYRIGHT_SCAN", "UNLISTED", "UNLISTED_OCULUS", "VIDEO_COMMENT", "VIDEO_COMPOSITION_VARIATION", "VIDEO_CREATIVE_EDITOR_AUTOGEN_AD_VIDEO", "VIDEO_SUPERRES", "VOICES_ARTICLE_VIDEO", "VU_GENERATED_VIDEO", "WOODHENGE", "WORK_KNOWLEDGE_VIDEO", "YOUR_DAY" },
+					"enum":        []string{"ACO_VIDEO_VARIATION", "ADS_AI_GENERATED", "AD_BREAK_PREVIEW", "AD_DERIVATIVE", "AD_LIBRARY_WATERMARK", "ALBUM_MULTIMEDIA_POST", "ALOHA_SUPERFRAME", "APP_REREVIEW_SCREENCAST", "APP_REVIEW_SCREENCAST", "ASSET_MANAGER", "ATLAS_VIDEO", "AUDIO_BROADCAST", "AUDIO_COMMENT", "BROADCAST", "CANVAS", "CMS_MEDIA_MANAGER", "CONTAINED_POST_ATTACHMENT", "CONTAINED_POST_AUDIO_BROADCAST", "CONTAINED_POST_COPYRIGHT_REFERENCE_BROADCAST", "COPYRIGHT_REFERENCE_BROADCAST", "COPYRIGHT_REFERENCE_IG_XPOST_VIDEO", "COPYRIGHT_REFERENCE_VIDEO", "CREATION_ML_PRECREATION", "CREATOR_FAN_CHALLENGE", "CREATOR_STOREFRONT_PERSONALIZED_VIDEO", "DATAGENIX_VIDEO", "DCO_AD_ASSET_FEED", "DCO_AUTOGEN_VIDEO", "DCO_TRIMMED_VIDEO", "DIM_SUM", "DIRECTED_POST_ATTACHMENT", "DIRECT_INBOX", "DROPS_SHOPPING_EVENT_PAGE", "DYNAMIC_ITEM_VIDEO", "DYNAMIC_TEMPLATE_VIDEO", "EVENT_COVER_VIDEO", "EVENT_TOUR", "FACECAST_DVR", "FB_AVATAR_ANIMATED_SATP", "FB_COLLECTIBLE_VIDEO", "FB_SHORTS", "FB_SHORTS_CONTENT_REMIXABLE", "FB_SHORTS_GROUP_POST", "FB_SHORTS_LINKED_PRODUCT", "FB_SHORTS_PMV_POST", "FB_SHORTS_POST", "FB_SHORTS_REMIX_POST", "FUNDRAISER_COVER_VIDEO", "GAME_CLIP", "GIF_TO_VIDEO", "GOODWILL_ANNIVERSARY_DEPRECATED", "GOODWILL_ANNIVERSARY_PROMOTION_DEPRECATED", "GOODWILL_VIDEO_CONTAINED_SHARE", "GOODWILL_VIDEO_PROMOTION", "GOODWILL_VIDEO_SHARE", "GOODWILL_VIDEO_TOKEN_REQUIRED", "GROUP_POST", "HEURISTIC_CLUSTER_VIDEO", "HIGHLIGHT_CLIP_VIDEO", "HORIZON_WORLDS_TV", "HUDDLE_BROADCAST", "IG_REELS_XPV", "IG_STORIES_READER", "INJECTABLE", "INSPIRATION_VIDEO", "INSTAGRAM_VIDEO_COPY", "INSTANT_APPLICATION_PREVIEW", "INSTANT_ARTICLE", "ISSUE_MODULE", "LEARN", "LEGACY", "LEGACY_CONTAINED_POST_BROADCAST", "LIVE_AUDIO_ROOM_BROADCAST", "LIVE_CLIP_PREVIEW", "LIVE_CLIP_WORKCHAT", "LIVE_CREATIVE_KIT_VIDEO", "LIVE_PHOTO", "LOOK_NOW_DEPRECATED", "MARKETPLACE_LISTING_VIDEO", "MARKETPLACE_PRE_RECORDED_VIDEO", "MOMENTS_VIDEO", "MUSIC_CLIP", "MUSIC_CLIP_IN_COMMENT", "MUSIC_CLIP_IN_LIGHTWEIGHT_STATUS", "MUSIC_CLIP_IN_MSGR_NOTE", "MUSIC_CLIP_IN_POLL_OPTION", "MUSIC_CLIP_ON_DATING_PROFILE", "NEO_ASYNC_GAME_VIDEO", "NEW_CONTAINED_POST_BROADCAST", "NO_STORY", "OCULUS_CREATOR_PORTAL", "OCULUS_VENUES_BROADCAST", "ORIGINALITY_SELF_ADVOCACY", "PAGES_COVER_VIDEO", "PAGE_REVIEW_SCREENCAST", "PAGE_SLIDESHOW_VIDEO", "PAID_CONTENT_PREVIEW", "PAID_CONTENT_VIDEO", "PAID_CONTENT_VIDEO__POST", "PIXELCLOUD", "PODCAST_HIGHLIGHT", "PODCAST_ML_PREVIEW", "PODCAST_ML_PREVIEW_NO_NEWSFEED_STORY", "PODCAST_RSS", "PODCAST_RSS_EPHEMERAL", "PODCAST_RSS_NO_NEWSFEED_STORY", "PODCAST_VOICES", "PODCAST_VOICES_NO_NEWSFEED_STORY", "PREMIERE_SOURCE", "PREMIUM_MUSIC_VIDEO_CLIP", "PREMIUM_MUSIC_VIDEO_CROPPED_CLIP", "PREMIUM_MUSIC_VIDEO_NO_NEWSFEED_STORY", "PREMIUM_MUSIC_VIDEO_WITH_NEWSFEED_STORY", "PRIVATE_GALLERY_VIDEO", "PRODUCT_VIDEO", "PROFILE_COVER_VIDEO", "PROFILE_INTRO_CARD", "PROFILE_VIDEO", "PROTON", "QUICK_CLIP_WORKPLACE_POST", "QUICK_PROMOTION", "REPLACE_VIDEO", "SALES_CLIENT_INTERACTION", "SHOWREEL_NATIVE_DUMMY_VIDEO", "SLIDESHOW_ANIMOTO", "SLIDESHOW_SHAKR", "SLIDESHOW_VARIATION_VIDEO", "SOUND_PLATFORM_STREAM", "SRT_ATTACHMENT", "STORIES_VIDEO", "STORYLINE", "STORYLINE_WITH_EXTERNAL_MUSIC", "STORY_ARCHIVE_VIDEO", "STORY_CARD_TEMPLATE", "STREAM_HIGHLIGHTS_VIDEO", "TAROT_DIGEST", "TEMPORARY_UNLISTED", "TEMP_VIDEO_COPYRIGHT_SCAN", "UNLISTED", "UNLISTED_OCULUS", "VIDEO_COMMENT", "VIDEO_COMPOSITION_VARIATION", "VIDEO_CREATIVE_EDITOR_AUTOGEN_AD_VIDEO", "VIDEO_SUPERRES", "VOICES_ARTICLE_VIDEO", "VU_GENERATED_VIDEO", "WOODHENGE", "WORK_KNOWLEDGE_VIDEO", "YOUR_DAY"},
 				},
 				"content_category": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "content_category parameter",
-					"enum": []string{ "BEAUTY_FASHION", "BUSINESS", "CARS_TRUCKS", "COMEDY", "CUTE_ANIMALS", "ENTERTAINMENT", "FAMILY", "FOOD_HEALTH", "HOME", "LIFESTYLE", "MUSIC", "NEWS", "OTHER", "POLITICS", "SCIENCE", "SPORTS", "TECHNOLOGY", "VIDEO_GAMING" },
+					"enum":        []string{"BEAUTY_FASHION", "BUSINESS", "CARS_TRUCKS", "COMEDY", "CUTE_ANIMALS", "ENTERTAINMENT", "FAMILY", "FOOD_HEALTH", "HOME", "LIFESTYLE", "MUSIC", "NEWS", "OTHER", "POLITICS", "SCIENCE", "SPORTS", "TECHNOLOGY", "VIDEO_GAMING"},
 				},
 				"creative_tools": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "creative_tools parameter",
 				},
 				"description": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "description parameter",
 				},
 				"embeddable": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "embeddable parameter",
 				},
 				"end_offset": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "end_offset parameter",
 				},
 				"fbuploader_video_file_chunk": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "fbuploader_video_file_chunk parameter",
 				},
 				"file_size": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "file_size parameter",
 				},
 				"file_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "file_url parameter",
 				},
 				"fisheye_video_cropped": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "fisheye_video_cropped parameter",
 				},
 				"formatting": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "formatting parameter",
-					"enum": []string{ "MARKDOWN", "PLAINTEXT" },
+					"enum":        []string{"MARKDOWN", "PLAINTEXT"},
 				},
 				"fov": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "fov parameter",
 				},
 				"front_z_rotation": map[string]any{
-					"type": "number",
+					"type":        "number",
 					"description": "front_z_rotation parameter",
 				},
 				"fun_fact_prompt_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "fun_fact_prompt_id parameter",
 				},
 				"fun_fact_toastee_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "fun_fact_toastee_id parameter",
 				},
 				"guide": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "guide parameter",
-					"items": map[string]any{"type": "array"},
+					"items":       map[string]any{"type": "array"},
 				},
 				"guide_enabled": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "guide_enabled parameter",
 				},
 				"initial_heading": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "initial_heading parameter",
 				},
 				"initial_pitch": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "initial_pitch parameter",
 				},
 				"instant_game_entry_point_data": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "instant_game_entry_point_data parameter",
 				},
 				"is_boost_intended": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_boost_intended parameter",
 				},
 				"is_group_linking_post": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_group_linking_post parameter",
 				},
 				"is_partnership_ad": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_partnership_ad parameter",
 				},
 				"is_voice_clip": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_voice_clip parameter",
 				},
 				"location_source_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "location_source_id parameter",
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
 				},
 				"og_action_type_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "og_action_type_id parameter",
 				},
 				"og_icon_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "og_icon_id parameter",
 				},
 				"og_object_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "og_object_id parameter",
 				},
 				"og_phrase": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "og_phrase parameter",
 				},
 				"og_suggestion_mechanism": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "og_suggestion_mechanism parameter",
 				},
 				"original_fov": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "original_fov parameter",
 				},
 				"original_projection_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "original_projection_type parameter",
-					"enum": []string{ "cubemap", "equirectangular", "half_equirectangular" },
+					"enum":        []string{"cubemap", "equirectangular", "half_equirectangular"},
 				},
 				"partnership_ad_ad_code": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "partnership_ad_ad_code parameter",
 				},
 				"publish_event_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "publish_event_id parameter",
 				},
 				"referenced_sticker_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "referenced_sticker_id parameter",
 				},
 				"replace_video_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "replace_video_id parameter",
 				},
 				"slideshow_spec": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "slideshow_spec parameter",
 				},
 				"source": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "source parameter",
 				},
 				"source_instagram_media_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "source_instagram_media_id parameter",
 				},
 				"spherical": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "spherical parameter",
 				},
 				"start_offset": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "start_offset parameter",
 				},
 				"swap_mode": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "swap_mode parameter",
-					"enum": []string{ "replace" },
+					"enum":        []string{"replace"},
 				},
 				"text_format_metadata": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "text_format_metadata parameter",
 				},
 				"thumb": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "thumb parameter",
 				},
 				"time_since_original_post": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "time_since_original_post parameter",
 				},
 				"title": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "title parameter",
 				},
 				"transcode_setting_properties": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "transcode_setting_properties parameter",
 				},
 				"unpublished_content_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "unpublished_content_type parameter",
-					"enum": []string{ "ADS_POST", "DRAFT", "INLINE_CREATED", "PUBLISHED", "REVIEWABLE_BRANDED_CONTENT", "SCHEDULED", "SCHEDULED_RECURRING" },
+					"enum":        []string{"ADS_POST", "DRAFT", "INLINE_CREATED", "PUBLISHED", "REVIEWABLE_BRANDED_CONTENT", "SCHEDULED", "SCHEDULED_RECURRING"},
 				},
 				"upload_phase": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "upload_phase parameter",
-					"enum": []string{ "cancel", "finish", "start", "transfer" },
+					"enum":        []string{"cancel", "finish", "start", "transfer"},
 				},
 				"upload_session_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "upload_session_id parameter",
 				},
 				"upload_setting_properties": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "upload_setting_properties parameter",
 				},
 				"video_file_chunk": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "video_file_chunk parameter",
 				},
 				"video_id_original": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "video_id_original parameter",
 				},
 				"video_start_time_ms": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "video_start_time_ms parameter",
 				},
 				"waterfall_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "waterfall_id parameter",
 				},
 			}),
@@ -337,8 +337,6 @@ func HandleAdaccount_post_advideos(ctx context.Context, request mcp.CallToolRequ
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Adaccount_post_advideos(accessToken, args)
 	if err != nil {
@@ -357,35 +355,33 @@ func HandleAdaccount_post_advideos(ctx context.Context, request mcp.CallToolRequ
 // Adaccount_post_advideos performs POST advideos for AdAccount
 func Adaccount_post_advideos(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	// Extract account_id for URL construction
 	accountId, ok := args["account_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_post_advideos")
 	}
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%sadvideos", accountId)
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-		
-	}
 
+	}
 
 	// Make HTTP request
 	var resp *http.Response

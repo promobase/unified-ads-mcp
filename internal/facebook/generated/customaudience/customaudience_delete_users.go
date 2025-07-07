@@ -15,22 +15,22 @@ import (
 
 // ToolCustomaudience_delete_users returns the MCP tool definition for customaudience_delete_users
 func ToolCustomaudience_delete_users() mcp.Tool {
-	
+
 	// Params object accepts: namespace (string), payload (Object), session (Object)
 	return mcp.NewTool("customaudience_delete_users",
 		mcp.WithDescription("DELETE users for CustomAudience"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"namespace": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "namespace parameter",
 				},
 				"payload": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "payload parameter",
 				},
 				"session": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "session parameter",
 				},
 			}),
@@ -62,8 +62,6 @@ func HandleCustomaudience_delete_users(ctx context.Context, request mcp.CallTool
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Customaudience_delete_users(accessToken, args)
 	if err != nil {
@@ -82,20 +80,18 @@ func HandleCustomaudience_delete_users(ctx context.Context, request mcp.CallTool
 // Customaudience_delete_users performs DELETE users for CustomAudience
 func Customaudience_delete_users(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/users")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

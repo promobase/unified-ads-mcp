@@ -17,7 +17,7 @@ import (
 // ToolAdstudyobjective_get_brand_requests returns the MCP tool definition for adstudyobjective_get_brand_requests
 func ToolAdstudyobjective_get_brand_requests() mcp.Tool {
 	// Available fields for BrandRequest: ad_countries, additional_contacts, approval_level, cells, countries, deny_reason, end_time, estimated_reach, id, is_multicell, locale, max_age, min_age, questions, region, request_status, review_date, start_time, status, submit_date, total_budget
-	
+
 	return mcp.NewTool("adstudyobjective_get_brand_requests",
 		mcp.WithDescription("GET brand_requests for AdStudyObjective"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleAdstudyobjective_get_brand_requests(ctx context.Context, request mcp.
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Adstudyobjective_get_brand_requests(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleAdstudyobjective_get_brand_requests(ctx context.Context, request mcp.
 // Adstudyobjective_get_brand_requests performs GET brand_requests for AdStudyObjective
 func Adstudyobjective_get_brand_requests(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/brand_requests")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

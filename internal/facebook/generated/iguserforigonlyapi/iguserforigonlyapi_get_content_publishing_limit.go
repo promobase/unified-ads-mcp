@@ -23,7 +23,7 @@ func ToolIguserforigonlyapi_get_content_publishing_limit() mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"since": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "since parameter",
 				},
 			}),
@@ -92,8 +92,6 @@ func HandleIguserforigonlyapi_get_content_publishing_limit(ctx context.Context, 
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Iguserforigonlyapi_get_content_publishing_limit(accessToken, args)
 	if err != nil {
@@ -112,44 +110,42 @@ func HandleIguserforigonlyapi_get_content_publishing_limit(ctx context.Context, 
 // Iguserforigonlyapi_get_content_publishing_limit performs GET content_publishing_limit for IGUserForIGOnlyAPI
 func Iguserforigonlyapi_get_content_publishing_limit(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/content_publishing_limit")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

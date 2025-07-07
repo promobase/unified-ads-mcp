@@ -15,59 +15,59 @@ import (
 
 // ToolPage_post_messenger_profile returns the MCP tool definition for page_post_messenger_profile
 func ToolPage_post_messenger_profile() mcp.Tool {
-	
+
 	// Params object accepts: account_linking_url (string), commands (list<Object>), description (list<Object>), get_started (Object), greeting (list<Object>), ice_breakers (list<map>), persistent_menu (list<Object>), platform (pagemessenger_profile_platform_enum_param), title (list<Object>), whitelisted_domains (list<string>)
 	return mcp.NewTool("page_post_messenger_profile",
 		mcp.WithDescription("POST messenger_profile for Page"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"account_linking_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "account_linking_url parameter",
 				},
 				"commands": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "commands parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"description": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "description parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"get_started": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "get_started parameter",
 				},
 				"greeting": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "greeting parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"ice_breakers": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "ice_breakers parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"persistent_menu": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "persistent_menu parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"platform": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "platform parameter",
-					"enum": []string{ "INSTAGRAM", "MESSENGER" },
+					"enum":        []string{"INSTAGRAM", "MESSENGER"},
 				},
 				"title": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "title parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"whitelisted_domains": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "whitelisted_domains parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: account_linking_url (string), commands (array<object>), description (array<object>), get_started (object), greeting (array<object>), ice_breakers (array<object>), persistent_menu (array<object>), platform (enum) [INSTAGRAM, MESSENGER], title (array<object>), whitelisted_domains (array<string>)"),
@@ -98,8 +98,6 @@ func HandlePage_post_messenger_profile(ctx context.Context, request mcp.CallTool
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Page_post_messenger_profile(accessToken, args)
 	if err != nil {
@@ -118,20 +116,18 @@ func HandlePage_post_messenger_profile(ctx context.Context, request mcp.CallTool
 // Page_post_messenger_profile performs POST messenger_profile for Page
 func Page_post_messenger_profile(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/messenger_profile")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

@@ -15,7 +15,7 @@ import (
 
 // ToolFundraiserpersontocharity_post_external_donations returns the MCP tool definition for fundraiserpersontocharity_post_external_donations
 func ToolFundraiserpersontocharity_post_external_donations() mcp.Tool {
-	
+
 	// Params object accepts: amount_received (unsigned int), currency (string), donation_id_hash (string), donation_time (unsigned int), donor_id_hash (string)
 	return mcp.NewTool("fundraiserpersontocharity_post_external_donations",
 		mcp.WithDescription("POST external_donations for FundraiserPersonToCharity"),
@@ -23,29 +23,29 @@ func ToolFundraiserpersontocharity_post_external_donations() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"amount_received": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "amount_received parameter",
-					"required": true,
+					"required":    true,
 				},
 				"currency": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "currency parameter",
-					"required": true,
+					"required":    true,
 				},
 				"donation_id_hash": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "donation_id_hash parameter",
-					"required": true,
+					"required":    true,
 				},
 				"donation_time": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "donation_time parameter",
-					"required": true,
+					"required":    true,
 				},
 				"donor_id_hash": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "donor_id_hash parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: amount_received (integer) [required], currency (string) [required], donation_id_hash (string) [required], donation_time (integer) [required], donor_id_hash (string) [required]"),
@@ -78,8 +78,6 @@ func HandleFundraiserpersontocharity_post_external_donations(ctx context.Context
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Fundraiserpersontocharity_post_external_donations(accessToken, args)
 	if err != nil {
@@ -98,20 +96,18 @@ func HandleFundraiserpersontocharity_post_external_donations(ctx context.Context
 // Fundraiserpersontocharity_post_external_donations performs POST external_donations for FundraiserPersonToCharity
 func Fundraiserpersontocharity_post_external_donations(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/external_donations")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

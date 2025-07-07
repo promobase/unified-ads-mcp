@@ -4,7 +4,7 @@ package types
 
 // ProductItemSubscriptionInfo represents a Facebook ProductItemSubscriptionInfo object
 type ProductItemSubscriptionInfo struct {
-	Is_subscribable bool `json:"is_subscribable"`
-	Subscription_billing_period int `json:"subscription_billing_period"`
-	Subscription_billing_type string `json:"subscription_billing_type"`
+	Is_subscribable             bool   `json:"is_subscribable"`
+	Subscription_billing_period int    `json:"subscription_billing_period"`
+	Subscription_billing_type   string `json:"subscription_billing_type"`
 }

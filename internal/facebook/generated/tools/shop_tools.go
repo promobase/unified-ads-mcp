@@ -17,7 +17,6 @@ import (
 func GetShopTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// shop_get_ tool
 	// Available fields for Shop: commerce_merchant_settings, fb_sales_channel, id, ig_sales_channel, is_onsite_enabled, shop_status, workspace
 	shop_get_Tool := mcp.NewTool("shop_get_",
@@ -37,12 +36,10 @@ func GetShopTools() []mcp.Tool {
 	)
 	tools = append(tools, shop_get_Tool)
 
-
 	return tools
 }
 
 // Shop handlers
-
 
 // HandleShop_get_ handles the shop_get_ tool with context-based auth
 func HandleShop_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleShop_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Cal
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Shop_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleShop_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

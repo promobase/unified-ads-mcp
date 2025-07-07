@@ -15,7 +15,7 @@ import (
 
 // ToolBusiness_post_images returns the MCP tool definition for business_post_images
 func ToolBusiness_post_images() mcp.Tool {
-	
+
 	// Params object accepts: ad_placements_validation_only (bool), bytes (string), creative_folder_id (string), name (string), validation_ad_placements (list<businessimages_validation_ad_placements_enum_param>)
 	return mcp.NewTool("business_post_images",
 		mcp.WithDescription("POST images for Business"),
@@ -23,27 +23,27 @@ func ToolBusiness_post_images() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"ad_placements_validation_only": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "ad_placements_validation_only parameter",
 				},
 				"bytes": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "bytes parameter",
 				},
 				"creative_folder_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "creative_folder_id parameter",
-					"required": true,
+					"required":    true,
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
 				},
 				"validation_ad_placements": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "validation_ad_placements parameter",
-					"enum": []string{ "AUDIENCE_NETWORK_INSTREAM_VIDEO", "AUDIENCE_NETWORK_INSTREAM_VIDEO_MOBILE", "AUDIENCE_NETWORK_REWARDED_VIDEO", "DESKTOP_FEED_STANDARD", "FACEBOOK_STORY_MOBILE", "FACEBOOK_STORY_STICKER_MOBILE", "INSTAGRAM_STANDARD", "INSTAGRAM_STORY", "INSTANT_ARTICLE_STANDARD", "INSTREAM_BANNER_DESKTOP", "INSTREAM_BANNER_MOBILE", "INSTREAM_VIDEO_DESKTOP", "INSTREAM_VIDEO_IMAGE", "INSTREAM_VIDEO_MOBILE", "MESSENGER_MOBILE_INBOX_MEDIA", "MESSENGER_MOBILE_STORY_MEDIA", "MOBILE_FEED_STANDARD", "MOBILE_FULLWIDTH", "MOBILE_INTERSTITIAL", "MOBILE_MEDIUM_RECTANGLE", "MOBILE_NATIVE", "RIGHT_COLUMN_STANDARD", "SUGGESTED_VIDEO_MOBILE" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"AUDIENCE_NETWORK_INSTREAM_VIDEO", "AUDIENCE_NETWORK_INSTREAM_VIDEO_MOBILE", "AUDIENCE_NETWORK_REWARDED_VIDEO", "DESKTOP_FEED_STANDARD", "FACEBOOK_STORY_MOBILE", "FACEBOOK_STORY_STICKER_MOBILE", "INSTAGRAM_STANDARD", "INSTAGRAM_STORY", "INSTANT_ARTICLE_STANDARD", "INSTREAM_BANNER_DESKTOP", "INSTREAM_BANNER_MOBILE", "INSTREAM_VIDEO_DESKTOP", "INSTREAM_VIDEO_IMAGE", "INSTREAM_VIDEO_MOBILE", "MESSENGER_MOBILE_INBOX_MEDIA", "MESSENGER_MOBILE_STORY_MEDIA", "MOBILE_FEED_STANDARD", "MOBILE_FULLWIDTH", "MOBILE_INTERSTITIAL", "MOBILE_MEDIUM_RECTANGLE", "MOBILE_NATIVE", "RIGHT_COLUMN_STANDARD", "SUGGESTED_VIDEO_MOBILE"},
+					"items":       map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: ad_placements_validation_only (boolean), bytes (string), creative_folder_id (string) [required], name (string), validation_ad_placements (array<enum>) [AUDIENCE_NETWORK_INSTREAM_VIDEO, AUDIENCE_NETWORK_INSTREAM_VIDEO_MOBILE, AUDIENCE_NETWORK_REWARDED_VIDEO, DESKTOP_FEED_STANDARD, FACEBOOK_STORY_MOBILE, ...]"),
@@ -76,8 +76,6 @@ func HandleBusiness_post_images(ctx context.Context, request mcp.CallToolRequest
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Business_post_images(accessToken, args)
 	if err != nil {
@@ -96,20 +94,18 @@ func HandleBusiness_post_images(ctx context.Context, request mcp.CallToolRequest
 // Business_post_images performs POST images for Business
 func Business_post_images(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/images")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

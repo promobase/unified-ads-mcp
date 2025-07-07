@@ -15,30 +15,30 @@ import (
 
 // ToolWhatsappbusinessaccount_post_phone_numbers returns the MCP tool definition for whatsappbusinessaccount_post_phone_numbers
 func ToolWhatsappbusinessaccount_post_phone_numbers() mcp.Tool {
-	
+
 	// Params object accepts: cc (string), migrate_phone_number (bool), phone_number (string), preverified_id (string), verified_name (string)
 	return mcp.NewTool("whatsappbusinessaccount_post_phone_numbers",
 		mcp.WithDescription("POST phone_numbers for WhatsAppBusinessAccount"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"cc": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "cc parameter",
 				},
 				"migrate_phone_number": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "migrate_phone_number parameter",
 				},
 				"phone_number": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "phone_number parameter",
 				},
 				"preverified_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "preverified_id parameter",
 				},
 				"verified_name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "verified_name parameter",
 				},
 			}),
@@ -70,8 +70,6 @@ func HandleWhatsappbusinessaccount_post_phone_numbers(ctx context.Context, reque
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Whatsappbusinessaccount_post_phone_numbers(accessToken, args)
 	if err != nil {
@@ -90,20 +88,18 @@ func HandleWhatsappbusinessaccount_post_phone_numbers(ctx context.Context, reque
 // Whatsappbusinessaccount_post_phone_numbers performs POST phone_numbers for WhatsAppBusinessAccount
 func Whatsappbusinessaccount_post_phone_numbers(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/phone_numbers")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

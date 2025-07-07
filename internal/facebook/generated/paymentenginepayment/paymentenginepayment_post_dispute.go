@@ -15,7 +15,7 @@ import (
 
 // ToolPaymentenginepayment_post_dispute returns the MCP tool definition for paymentenginepayment_post_dispute
 func ToolPaymentenginepayment_post_dispute() mcp.Tool {
-	
+
 	// Params object accepts: reason (paymentenginepaymentdispute_reason_enum_param)
 	return mcp.NewTool("paymentenginepayment_post_dispute",
 		mcp.WithDescription("POST dispute for PaymentEnginePayment"),
@@ -23,10 +23,10 @@ func ToolPaymentenginepayment_post_dispute() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"reason": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "reason parameter",
-					"required": true,
-					"enum": []string{ "BANNED_USER", "DENIED_REFUND", "GRANTED_REPLACEMENT_ITEM" },
+					"required":    true,
+					"enum":        []string{"BANNED_USER", "DENIED_REFUND", "GRANTED_REPLACEMENT_ITEM"},
 				},
 			}),
 			mcp.Description("Parameters object containing: reason (enum) [BANNED_USER, DENIED_REFUND, GRANTED_REPLACEMENT_ITEM] [required]"),
@@ -59,8 +59,6 @@ func HandlePaymentenginepayment_post_dispute(ctx context.Context, request mcp.Ca
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Paymentenginepayment_post_dispute(accessToken, args)
 	if err != nil {
@@ -79,20 +77,18 @@ func HandlePaymentenginepayment_post_dispute(ctx context.Context, request mcp.Ca
 // Paymentenginepayment_post_dispute performs POST dispute for PaymentEnginePayment
 func Paymentenginepayment_post_dispute(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/dispute")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

@@ -23,7 +23,7 @@ func ToolExtendedcredit_get_owning_credit_allocation_configs() mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"receiving_business_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "receiving_business_id parameter",
 				},
 			}),
@@ -92,8 +92,6 @@ func HandleExtendedcredit_get_owning_credit_allocation_configs(ctx context.Conte
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Extendedcredit_get_owning_credit_allocation_configs(accessToken, args)
 	if err != nil {
@@ -112,44 +110,42 @@ func HandleExtendedcredit_get_owning_credit_allocation_configs(ctx context.Conte
 // Extendedcredit_get_owning_credit_allocation_configs performs GET owning_credit_allocation_configs for ExtendedCredit
 func Extendedcredit_get_owning_credit_allocation_configs(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/owning_credit_allocation_configs")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

@@ -4,25 +4,25 @@ package constants
 
 // AdAssetTargetRuleTargetingFields contains field name constants for AdAssetTargetRuleTargeting objects
 var AdAssetTargetRuleTargetingFields = struct {
-	AgeMax string
-	AgeMin string
+	AgeMax                   string
+	AgeMin                   string
 	AudienceNetworkPositions string
-	DevicePlatforms string
-	FacebookPositions string
-	GeoLocations string
-	InstagramPositions string
-	PublisherPlatforms string
-	ThreadsPositions string
+	DevicePlatforms          string
+	FacebookPositions        string
+	GeoLocations             string
+	InstagramPositions       string
+	PublisherPlatforms       string
+	ThreadsPositions         string
 }{
-	AgeMax: "age_max",
-	AgeMin: "age_min",
+	AgeMax:                   "age_max",
+	AgeMin:                   "age_min",
 	AudienceNetworkPositions: "audience_network_positions",
-	DevicePlatforms: "device_platforms",
-	FacebookPositions: "facebook_positions",
-	GeoLocations: "geo_locations",
-	InstagramPositions: "instagram_positions",
-	PublisherPlatforms: "publisher_platforms",
-	ThreadsPositions: "threads_positions",
+	DevicePlatforms:          "device_platforms",
+	FacebookPositions:        "facebook_positions",
+	GeoLocations:             "geo_locations",
+	InstagramPositions:       "instagram_positions",
+	PublisherPlatforms:       "publisher_platforms",
+	ThreadsPositions:         "threads_positions",
 }
 
 // AdAssetTargetRuleTargetingFieldsList contains all available fields for AdAssetTargetRuleTargeting objects

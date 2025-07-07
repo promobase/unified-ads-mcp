@@ -4,19 +4,19 @@ package constants
 
 // OffsitePixelFields contains field name constants for OffsitePixel objects
 var OffsitePixelFields = struct {
-	Creator string
-	Id string
-	JsPixel string
+	Creator        string
+	Id             string
+	JsPixel        string
 	LastFiringTime string
-	Name string
-	Tag string
+	Name           string
+	Tag            string
 }{
-	Creator: "creator",
-	Id: "id",
-	JsPixel: "js_pixel",
+	Creator:        "creator",
+	Id:             "id",
+	JsPixel:        "js_pixel",
 	LastFiringTime: "last_firing_time",
-	Name: "name",
-	Tag: "tag",
+	Name:           "name",
+	Tag:            "tag",
 }
 
 // OffsitePixelFieldsList contains all available fields for OffsitePixel objects

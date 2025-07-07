@@ -14,7 +14,6 @@ func GetTools() []mcp.Tool {
 
 	tools = append(tools, ToolAdgroupfacebookfeedback_get_comments())
 
-
 	return tools
 }
 
@@ -23,7 +22,6 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
 	handlers["adgroupfacebookfeedback_get_comments"] = HandleAdgroupfacebookfeedback_get_comments
-
 
 	return handlers
 }

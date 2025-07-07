@@ -5,10 +5,10 @@ package types
 // Shop represents a Facebook Shop object
 type Shop struct {
 	Commerce_merchant_settings *CommerceMerchantSettings `json:"commerce_merchant_settings"`
-	Fb_sales_channel map[string]interface{} `json:"fb_sales_channel"`
-	Id string `json:"id"`
-	Ig_sales_channel map[string]interface{} `json:"ig_sales_channel"`
-	Is_onsite_enabled bool `json:"is_onsite_enabled"`
-	Shop_status string `json:"shop_status"`
-	Workspace map[string]interface{} `json:"workspace"`
+	Fb_sales_channel           map[string]interface{}    `json:"fb_sales_channel"`
+	Id                         string                    `json:"id"`
+	Ig_sales_channel           map[string]interface{}    `json:"ig_sales_channel"`
+	Is_onsite_enabled          bool                      `json:"is_onsite_enabled"`
+	Shop_status                string                    `json:"shop_status"`
+	Workspace                  map[string]interface{}    `json:"workspace"`
 }

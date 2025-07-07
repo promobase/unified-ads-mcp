@@ -17,7 +17,7 @@ import (
 // ToolBcpcampaign_get_ returns the MCP tool definition for bcpcampaign_get_
 func ToolBcpcampaign_get_() mcp.Tool {
 	// Available fields for BCPCampaign: ads_permission_required, application_deadline, campaign_goal, campaign_goal_other, content_delivery_deadline, content_delivery_start_date, content_requirements, content_requirements_description, currency, deal_negotiation_type, description, has_free_product, id, name, payment_amount_for_ads, payment_amount_for_content, payment_description
-	
+
 	return mcp.NewTool("bcpcampaign_get_",
 		mcp.WithDescription("GET  for BCPCampaign"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleBcpcampaign_get_(ctx context.Context, request mcp.CallToolRequest) (*
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Bcpcampaign_get_(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleBcpcampaign_get_(ctx context.Context, request mcp.CallToolRequest) (*
 // Bcpcampaign_get_ performs GET  for BCPCampaign
 func Bcpcampaign_get_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

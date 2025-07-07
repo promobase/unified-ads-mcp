@@ -5,10 +5,10 @@ package constants
 // PageSettingsFields contains field name constants for PageSettings objects
 var PageSettingsFields = struct {
 	Setting string
-	Value string
+	Value   string
 }{
 	Setting: "setting",
-	Value: "value",
+	Value:   "value",
 }
 
 // PageSettingsFieldsList contains all available fields for PageSettings objects

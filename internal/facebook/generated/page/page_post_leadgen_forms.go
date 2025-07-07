@@ -15,7 +15,7 @@ import (
 
 // ToolPage_post_leadgen_forms returns the MCP tool definition for page_post_leadgen_forms
 func ToolPage_post_leadgen_forms() mcp.Tool {
-	
+
 	// Params object accepts: allow_organic_lead_retrieval (bool), block_display_for_non_targeted_viewer (bool), context_card (Object), cover_photo (file), custom_disclaimer (Object), follow_up_action_url (string), is_for_canvas (bool), is_optimized_for_quality (bool), locale (pageleadgen_forms_locale_enum_param), name (string), privacy_policy (Object), question_page_custom_headline (string), questions (list<Object>), thank_you_page (Object), tracking_parameters (map), upload_gated_file (file)
 	return mcp.NewTool("page_post_leadgen_forms",
 		mcp.WithDescription("POST leadgen_forms for Page"),
@@ -23,71 +23,71 @@ func ToolPage_post_leadgen_forms() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"allow_organic_lead_retrieval": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "allow_organic_lead_retrieval parameter",
 				},
 				"block_display_for_non_targeted_viewer": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "block_display_for_non_targeted_viewer parameter",
 				},
 				"context_card": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "context_card parameter",
 				},
 				"cover_photo": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "cover_photo parameter",
 				},
 				"custom_disclaimer": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "custom_disclaimer parameter",
 				},
 				"follow_up_action_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "follow_up_action_url parameter",
 				},
 				"is_for_canvas": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_for_canvas parameter",
 				},
 				"is_optimized_for_quality": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_optimized_for_quality parameter",
 				},
 				"locale": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "locale parameter",
-					"enum": []string{ "AR_AR", "CS_CZ", "DA_DK", "DE_DE", "EL_GR", "EN_GB", "EN_US", "ES_ES", "ES_LA", "FI_FI", "FR_FR", "HE_IL", "HI_IN", "HU_HU", "ID_ID", "IT_IT", "JA_JP", "KO_KR", "NB_NO", "NL_NL", "PL_PL", "PT_BR", "PT_PT", "RO_RO", "RU_RU", "SV_SE", "TH_TH", "TR_TR", "VI_VN", "ZH_CN", "ZH_HK", "ZH_TW" },
+					"enum":        []string{"AR_AR", "CS_CZ", "DA_DK", "DE_DE", "EL_GR", "EN_GB", "EN_US", "ES_ES", "ES_LA", "FI_FI", "FR_FR", "HE_IL", "HI_IN", "HU_HU", "ID_ID", "IT_IT", "JA_JP", "KO_KR", "NB_NO", "NL_NL", "PL_PL", "PT_BR", "PT_PT", "RO_RO", "RU_RU", "SV_SE", "TH_TH", "TR_TR", "VI_VN", "ZH_CN", "ZH_HK", "ZH_TW"},
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
-					"required": true,
+					"required":    true,
 				},
 				"privacy_policy": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "privacy_policy parameter",
 				},
 				"question_page_custom_headline": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "question_page_custom_headline parameter",
 				},
 				"questions": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "questions parameter",
-					"required": true,
-					"items": map[string]any{"type": "object"},
+					"required":    true,
+					"items":       map[string]any{"type": "object"},
 				},
 				"thank_you_page": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "thank_you_page parameter",
 				},
 				"tracking_parameters": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "tracking_parameters parameter",
 				},
 				"upload_gated_file": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "upload_gated_file parameter",
 				},
 			}),
@@ -121,8 +121,6 @@ func HandlePage_post_leadgen_forms(ctx context.Context, request mcp.CallToolRequ
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Page_post_leadgen_forms(accessToken, args)
 	if err != nil {
@@ -141,20 +139,18 @@ func HandlePage_post_leadgen_forms(ctx context.Context, request mcp.CallToolRequ
 // Page_post_leadgen_forms performs POST leadgen_forms for Page
 func Page_post_leadgen_forms(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/leadgen_forms")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

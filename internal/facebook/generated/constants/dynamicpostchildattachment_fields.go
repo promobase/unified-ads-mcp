@@ -5,18 +5,18 @@ package constants
 // DynamicPostChildAttachmentFields contains field name constants for DynamicPostChildAttachment objects
 var DynamicPostChildAttachmentFields = struct {
 	Description string
-	ImageUrl string
-	Link string
-	PlaceId string
-	ProductId string
-	Title string
+	ImageUrl    string
+	Link        string
+	PlaceId     string
+	ProductId   string
+	Title       string
 }{
 	Description: "description",
-	ImageUrl: "image_url",
-	Link: "link",
-	PlaceId: "place_id",
-	ProductId: "product_id",
-	Title: "title",
+	ImageUrl:    "image_url",
+	Link:        "link",
+	PlaceId:     "place_id",
+	ProductId:   "product_id",
+	Title:       "title",
 }
 
 // DynamicPostChildAttachmentFieldsList contains all available fields for DynamicPostChildAttachment objects

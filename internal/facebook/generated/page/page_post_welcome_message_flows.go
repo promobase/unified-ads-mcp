@@ -15,30 +15,30 @@ import (
 
 // ToolPage_post_welcome_message_flows returns the MCP tool definition for page_post_welcome_message_flows
 func ToolPage_post_welcome_message_flows() mcp.Tool {
-	
+
 	// Params object accepts: eligible_platforms (list<pagewelcome_message_flows_eligible_platforms_enum_param>), flow_id (string), name (string), welcome_message_flow (list<Object>)
 	return mcp.NewTool("page_post_welcome_message_flows",
 		mcp.WithDescription("POST welcome_message_flows for Page"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"eligible_platforms": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "eligible_platforms parameter",
-					"enum": []string{ "INSTAGRAM", "MESSENGER", "WHATSAPP" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"INSTAGRAM", "MESSENGER", "WHATSAPP"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"flow_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "flow_id parameter",
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
 				},
 				"welcome_message_flow": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "welcome_message_flow parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 			}),
 			mcp.Description("Parameters object containing: eligible_platforms (array<enum>) [INSTAGRAM, MESSENGER, WHATSAPP], flow_id (string), name (string), welcome_message_flow (array<object>)"),
@@ -69,8 +69,6 @@ func HandlePage_post_welcome_message_flows(ctx context.Context, request mcp.Call
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Page_post_welcome_message_flows(accessToken, args)
 	if err != nil {
@@ -89,20 +87,18 @@ func HandlePage_post_welcome_message_flows(ctx context.Context, request mcp.Call
 // Page_post_welcome_message_flows performs POST welcome_message_flows for Page
 func Page_post_welcome_message_flows(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/welcome_message_flows")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

@@ -5,5 +5,5 @@ package types
 // LeadGenPrivacyPolicy represents a Facebook LeadGenPrivacyPolicy object
 type LeadGenPrivacyPolicy struct {
 	Link_text string `json:"link_text"`
-	Url string `json:"url"`
+	Url       string `json:"url"`
 }

@@ -5,14 +5,14 @@ package constants
 // PageUserWithLeadsAccessFields contains field name constants for PageUserWithLeadsAccess objects
 var PageUserWithLeadsAccessFields = struct {
 	ActiveOnBusiness string
-	BusinessRole string
-	CanAccessLeads string
-	PageRole string
+	BusinessRole     string
+	CanAccessLeads   string
+	PageRole         string
 }{
 	ActiveOnBusiness: "active_on_business",
-	BusinessRole: "business_role",
-	CanAccessLeads: "can_access_leads",
-	PageRole: "page_role",
+	BusinessRole:     "business_role",
+	CanAccessLeads:   "can_access_leads",
+	PageRole:         "page_role",
 }
 
 // PageUserWithLeadsAccessFieldsList contains all available fields for PageUserWithLeadsAccess objects

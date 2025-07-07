@@ -15,7 +15,7 @@ import (
 
 // ToolAdspixel_post_events returns the MCP tool definition for adspixel_post_events
 func ToolAdspixel_post_events() mcp.Tool {
-	
+
 	// Params object accepts: data (list<string>), namespace_id (string), partner_agent (string), platforms (list<map>), progress (Object), test_event_code (string), trace (unsigned int), upload_id (string), upload_source (string), upload_tag (string)
 	return mcp.NewTool("adspixel_post_events",
 		mcp.WithDescription("POST events for AdsPixel"),
@@ -23,46 +23,46 @@ func ToolAdspixel_post_events() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"data": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "data parameter",
-					"required": true,
-					"items": map[string]any{"type": "string"},
+					"required":    true,
+					"items":       map[string]any{"type": "string"},
 				},
 				"namespace_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "namespace_id parameter",
 				},
 				"partner_agent": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "partner_agent parameter",
 				},
 				"platforms": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "platforms parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"progress": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "progress parameter",
 				},
 				"test_event_code": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "test_event_code parameter",
 				},
 				"trace": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "trace parameter",
 				},
 				"upload_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "upload_id parameter",
 				},
 				"upload_source": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "upload_source parameter",
 				},
 				"upload_tag": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "upload_tag parameter",
 				},
 			}),
@@ -96,8 +96,6 @@ func HandleAdspixel_post_events(ctx context.Context, request mcp.CallToolRequest
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Adspixel_post_events(accessToken, args)
 	if err != nil {
@@ -116,20 +114,18 @@ func HandleAdspixel_post_events(ctx context.Context, request mcp.CallToolRequest
 // Adspixel_post_events performs POST events for AdsPixel
 func Adspixel_post_events(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/events")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

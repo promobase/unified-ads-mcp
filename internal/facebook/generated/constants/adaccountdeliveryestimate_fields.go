@@ -4,18 +4,18 @@ package constants
 
 // AdAccountDeliveryEstimateFields contains field name constants for AdAccountDeliveryEstimate objects
 var AdAccountDeliveryEstimateFields = struct {
-	DailyOutcomesCurve string
-	EstimateDau string
-	EstimateMauLowerBound string
-	EstimateMauUpperBound string
-	EstimateReady string
+	DailyOutcomesCurve         string
+	EstimateDau                string
+	EstimateMauLowerBound      string
+	EstimateMauUpperBound      string
+	EstimateReady              string
 	TargetingOptimizationTypes string
 }{
-	DailyOutcomesCurve: "daily_outcomes_curve",
-	EstimateDau: "estimate_dau",
-	EstimateMauLowerBound: "estimate_mau_lower_bound",
-	EstimateMauUpperBound: "estimate_mau_upper_bound",
-	EstimateReady: "estimate_ready",
+	DailyOutcomesCurve:         "daily_outcomes_curve",
+	EstimateDau:                "estimate_dau",
+	EstimateMauLowerBound:      "estimate_mau_lower_bound",
+	EstimateMauUpperBound:      "estimate_mau_upper_bound",
+	EstimateReady:              "estimate_ready",
 	TargetingOptimizationTypes: "targeting_optimization_types",
 }
 

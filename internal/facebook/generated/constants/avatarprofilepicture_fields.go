@@ -4,10 +4,10 @@ package constants
 
 // AvatarProfilePictureFields contains field name constants for AvatarProfilePicture objects
 var AvatarProfilePictureFields = struct {
-	Id string
+	Id  string
 	Url string
 }{
-	Id: "id",
+	Id:  "id",
 	Url: "url",
 }
 

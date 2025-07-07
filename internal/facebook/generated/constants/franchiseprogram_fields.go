@@ -4,31 +4,31 @@ package constants
 
 // FranchiseProgramFields contains field name constants for FranchiseProgram objects
 var FranchiseProgramFields = struct {
-	BusinessAssetGroup string
-	CreatorBusiness string
-	Description string
-	EndDate string
-	Id string
-	Name string
-	ProgramAccessType string
-	ProgramApprovalType string
-	ProgramImageLink string
-	ProgramUrl string
+	BusinessAssetGroup   string
+	CreatorBusiness      string
+	Description          string
+	EndDate              string
+	Id                   string
+	Name                 string
+	ProgramAccessType    string
+	ProgramApprovalType  string
+	ProgramImageLink     string
+	ProgramUrl           string
 	SharedCustomAudience string
-	StartDate string
+	StartDate            string
 }{
-	BusinessAssetGroup: "business_asset_group",
-	CreatorBusiness: "creator_business",
-	Description: "description",
-	EndDate: "end_date",
-	Id: "id",
-	Name: "name",
-	ProgramAccessType: "program_access_type",
-	ProgramApprovalType: "program_approval_type",
-	ProgramImageLink: "program_image_link",
-	ProgramUrl: "program_url",
+	BusinessAssetGroup:   "business_asset_group",
+	CreatorBusiness:      "creator_business",
+	Description:          "description",
+	EndDate:              "end_date",
+	Id:                   "id",
+	Name:                 "name",
+	ProgramAccessType:    "program_access_type",
+	ProgramApprovalType:  "program_approval_type",
+	ProgramImageLink:     "program_image_link",
+	ProgramUrl:           "program_url",
 	SharedCustomAudience: "shared_custom_audience",
-	StartDate: "start_date",
+	StartDate:            "start_date",
 }
 
 // FranchiseProgramFieldsList contains all available fields for FranchiseProgram objects

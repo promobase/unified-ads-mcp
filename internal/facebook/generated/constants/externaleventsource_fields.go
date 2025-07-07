@@ -4,12 +4,12 @@ package constants
 
 // ExternalEventSourceFields contains field name constants for ExternalEventSource objects
 var ExternalEventSourceFields = struct {
-	Id string
-	Name string
+	Id         string
+	Name       string
 	SourceType string
 }{
-	Id: "id",
-	Name: "name",
+	Id:         "id",
+	Name:       "name",
 	SourceType: "source_type",
 }
 

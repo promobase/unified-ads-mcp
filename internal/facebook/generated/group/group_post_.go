@@ -15,77 +15,77 @@ import (
 
 // ToolGroup_post_ returns the MCP tool definition for group_post_
 func ToolGroup_post_() mcp.Tool {
-	
+
 	// Params object accepts: cover (string), cover_url (string), description (string), focus_x (float), focus_y (float), group_icon (string), is_official_group (bool), join_setting (group_join_setting), name (string), no_feed_story (bool), offset_y (int), post_permissions (group_post_permissions), post_requires_admin_approval (bool), privacy (string), purpose (group_purpose), update_view_time (bool)
 	return mcp.NewTool("group_post_",
 		mcp.WithDescription("POST  for Group"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"cover": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "cover parameter",
 				},
 				"cover_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "cover_url parameter",
 				},
 				"description": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "description parameter",
 				},
 				"focus_x": map[string]any{
-					"type": "number",
+					"type":        "number",
 					"description": "focus_x parameter",
 				},
 				"focus_y": map[string]any{
-					"type": "number",
+					"type":        "number",
 					"description": "focus_y parameter",
 				},
 				"group_icon": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "group_icon parameter",
 				},
 				"is_official_group": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_official_group parameter",
 				},
 				"join_setting": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "join_setting parameter",
-					"enum": []string{ "ADMIN_ONLY", "ANYONE", "NONE" },
+					"enum":        []string{"ADMIN_ONLY", "ANYONE", "NONE"},
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
 				},
 				"no_feed_story": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "no_feed_story parameter",
 				},
 				"offset_y": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "offset_y parameter",
 				},
 				"post_permissions": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "post_permissions parameter",
-					"enum": []string{ "ADMIN_ONLY", "ANYONE", "NONE" },
+					"enum":        []string{"ADMIN_ONLY", "ANYONE", "NONE"},
 				},
 				"post_requires_admin_approval": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "post_requires_admin_approval parameter",
 				},
 				"privacy": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "privacy parameter",
 				},
 				"purpose": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "purpose parameter",
-					"enum": []string{ "CASUAL", "COWORKERS", "CUSTOM", "FOR_SALE", "FOR_WORK", "GAME", "HEALTH_SUPPORT", "JOBS", "LEARNING", "NONE", "PARENTING", "STREAMER", "WORK_ANNOUNCEMENT", "WORK_DEMO_GROUP", "WORK_DISCUSSION", "WORK_EPHEMERAL", "WORK_FEEDBACK", "WORK_FOR_SALE", "WORK_GARDEN", "WORK_INTEGRITY", "WORK_LEARNING", "WORK_MENTORSHIP", "WORK_MULTI_COMPANY", "WORK_RECRUITING", "WORK_SOCIAL", "WORK_STAGES", "WORK_TEAM", "WORK_TEAMWORK" },
+					"enum":        []string{"CASUAL", "COWORKERS", "CUSTOM", "FOR_SALE", "FOR_WORK", "GAME", "HEALTH_SUPPORT", "JOBS", "LEARNING", "NONE", "PARENTING", "STREAMER", "WORK_ANNOUNCEMENT", "WORK_DEMO_GROUP", "WORK_DISCUSSION", "WORK_EPHEMERAL", "WORK_FEEDBACK", "WORK_FOR_SALE", "WORK_GARDEN", "WORK_INTEGRITY", "WORK_LEARNING", "WORK_MENTORSHIP", "WORK_MULTI_COMPANY", "WORK_RECRUITING", "WORK_SOCIAL", "WORK_STAGES", "WORK_TEAM", "WORK_TEAMWORK"},
 				},
 				"update_view_time": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "update_view_time parameter",
 				},
 			}),
@@ -117,8 +117,6 @@ func HandleGroup_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.C
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Group_post_(accessToken, args)
 	if err != nil {
@@ -137,20 +135,18 @@ func HandleGroup_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.C
 // Group_post_ performs POST  for Group
 func Group_post_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

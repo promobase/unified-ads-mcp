@@ -5,24 +5,24 @@ package constants
 // CPASAdvertiserPartnershipRecommendationFields contains field name constants for CPASAdvertiserPartnershipRecommendation objects
 var CPASAdvertiserPartnershipRecommendationFields = struct {
 	AdvertiserBusinessId string
-	BrandBusinessId string
-	Brands string
-	Countries string
-	Id string
-	MerchantBusinessId string
-	MerchantCategories string
-	Status string
-	StatusReason string
+	BrandBusinessId      string
+	Brands               string
+	Countries            string
+	Id                   string
+	MerchantBusinessId   string
+	MerchantCategories   string
+	Status               string
+	StatusReason         string
 }{
 	AdvertiserBusinessId: "advertiser_business_id",
-	BrandBusinessId: "brand_business_id",
-	Brands: "brands",
-	Countries: "countries",
-	Id: "id",
-	MerchantBusinessId: "merchant_business_id",
-	MerchantCategories: "merchant_categories",
-	Status: "status",
-	StatusReason: "status_reason",
+	BrandBusinessId:      "brand_business_id",
+	Brands:               "brands",
+	Countries:            "countries",
+	Id:                   "id",
+	MerchantBusinessId:   "merchant_business_id",
+	MerchantCategories:   "merchant_categories",
+	Status:               "status",
+	StatusReason:         "status_reason",
 }
 
 // CPASAdvertiserPartnershipRecommendationFieldsList contains all available fields for CPASAdvertiserPartnershipRecommendation objects

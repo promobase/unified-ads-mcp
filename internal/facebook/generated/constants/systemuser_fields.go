@@ -4,19 +4,19 @@ package constants
 
 // SystemUserFields contains field name constants for SystemUser objects
 var SystemUserFields = struct {
-	CreatedBy string
-	CreatedTime string
+	CreatedBy         string
+	CreatedTime       string
 	FinancePermission string
-	Id string
-	IpPermission string
-	Name string
+	Id                string
+	IpPermission      string
+	Name              string
 }{
-	CreatedBy: "created_by",
-	CreatedTime: "created_time",
+	CreatedBy:         "created_by",
+	CreatedTime:       "created_time",
 	FinancePermission: "finance_permission",
-	Id: "id",
-	IpPermission: "ip_permission",
-	Name: "name",
+	Id:                "id",
+	IpPermission:      "ip_permission",
+	Name:              "name",
 }
 
 // SystemUserFieldsList contains all available fields for SystemUser objects

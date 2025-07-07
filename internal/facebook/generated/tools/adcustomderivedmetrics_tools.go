@@ -17,7 +17,6 @@ import (
 func GetAdCustomDerivedMetricsTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// adcustomderivedmetrics_get_ tool
 	// Available fields for AdCustomDerivedMetrics: ad_account_id, business, creation_time, creator, custom_derived_metric_type, deletion_time, deletor, description, format_type, formula, has_attribution_windows, has_inline_attribution_window, id, name, permission, saved_report_id, scope
 	adcustomderivedmetrics_get_Tool := mcp.NewTool("adcustomderivedmetrics_get_",
@@ -37,12 +36,10 @@ func GetAdCustomDerivedMetricsTools() []mcp.Tool {
 	)
 	tools = append(tools, adcustomderivedmetrics_get_Tool)
 
-
 	return tools
 }
 
 // AdCustomDerivedMetrics handlers
-
 
 // HandleAdcustomderivedmetrics_get_ handles the adcustomderivedmetrics_get_ tool with context-based auth
 func HandleAdcustomderivedmetrics_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleAdcustomderivedmetrics_get_(ctx context.Context, request mcp.CallTool
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adcustomderivedmetrics_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleAdcustomderivedmetrics_get_(ctx context.Context, request mcp.CallTool
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

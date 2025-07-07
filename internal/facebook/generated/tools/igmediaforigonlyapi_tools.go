@@ -17,7 +17,6 @@ import (
 func GetIGMediaForIGOnlyAPITools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// igmediaforigonlyapi_get_children tool
 	igmediaforigonlyapi_get_childrenTool := mcp.NewTool("igmediaforigonlyapi_get_children",
 		mcp.WithDescription("GET children for IGMediaForIGOnlyAPI"),
@@ -62,7 +61,7 @@ func GetIGMediaForIGOnlyAPITools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"message": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "message parameter",
 				},
 			}),
@@ -80,23 +79,23 @@ func GetIGMediaForIGOnlyAPITools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"breakdown": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "breakdown parameter",
-					"enum": []string{ "action_type", "follow_type", "story_navigation_action_type", "surface_type" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"action_type", "follow_type", "story_navigation_action_type", "surface_type"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"metric": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "metric parameter",
-					"required": true,
-					"enum": []string{ "clips_replays_count", "comments", "content_views", "follows", "ig_reels_aggregated_all_plays_count", "ig_reels_avg_watch_time", "ig_reels_video_view_total_time", "impressions", "likes", "navigation", "plays", "profile_activity", "profile_visits", "quotes", "reach", "replies", "reposts", "saved", "shares", "thread_replies", "thread_shares", "threads_media_clicks", "threads_views", "total_interactions", "views" },
-					"items": map[string]any{"type": "string"},
+					"required":    true,
+					"enum":        []string{"clips_replays_count", "comments", "content_views", "follows", "ig_reels_aggregated_all_plays_count", "ig_reels_avg_watch_time", "ig_reels_video_view_total_time", "impressions", "likes", "navigation", "plays", "profile_activity", "profile_visits", "quotes", "reach", "replies", "reposts", "saved", "shares", "thread_replies", "thread_shares", "threads_media_clicks", "threads_views", "total_interactions", "views"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"period": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "period parameter",
-					"enum": []string{ "day", "days_28", "lifetime", "month", "total_over_range", "week" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"day", "days_28", "lifetime", "month", "total_over_range", "week"},
+					"items":       map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: breakdown (array<enum>) [action_type, follow_type, story_navigation_action_type, surface_type], metric (array<enum>) [clips_replays_count, comments, content_views, follows, ig_reels_aggregated_all_plays_count, ...] [required], period (array<enum>) [day, days_28, lifetime, month, total_over_range, ...]"),
@@ -142,9 +141,9 @@ func GetIGMediaForIGOnlyAPITools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"comment_enabled": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "comment_enabled parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: comment_enabled (boolean) [required]"),
@@ -152,12 +151,10 @@ func GetIGMediaForIGOnlyAPITools() []mcp.Tool {
 	)
 	tools = append(tools, igmediaforigonlyapi_post_Tool)
 
-
 	return tools
 }
 
 // IGMediaForIGOnlyAPI handlers
-
 
 // HandleIgmediaforigonlyapi_get_children handles the igmediaforigonlyapi_get_children tool with context-based auth
 func HandleIgmediaforigonlyapi_get_children(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -198,8 +195,6 @@ func HandleIgmediaforigonlyapi_get_children(ctx context.Context, request mcp.Cal
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Igmediaforigonlyapi_get_children(args)
 	if err != nil {
@@ -214,7 +209,6 @@ func HandleIgmediaforigonlyapi_get_children(ctx context.Context, request mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleIgmediaforigonlyapi_get_comments handles the igmediaforigonlyapi_get_comments tool with context-based auth
 func HandleIgmediaforigonlyapi_get_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -255,8 +249,6 @@ func HandleIgmediaforigonlyapi_get_comments(ctx context.Context, request mcp.Cal
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Igmediaforigonlyapi_get_comments(args)
 	if err != nil {
@@ -271,7 +263,6 @@ func HandleIgmediaforigonlyapi_get_comments(ctx context.Context, request mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleIgmediaforigonlyapi_post_comments handles the igmediaforigonlyapi_post_comments tool with context-based auth
 func HandleIgmediaforigonlyapi_post_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -299,8 +290,6 @@ func HandleIgmediaforigonlyapi_post_comments(ctx context.Context, request mcp.Ca
 		}
 	}
 
-
-
 	// Call the client method
 	result, err := client.Igmediaforigonlyapi_post_comments(args)
 	if err != nil {
@@ -315,7 +304,6 @@ func HandleIgmediaforigonlyapi_post_comments(ctx context.Context, request mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleIgmediaforigonlyapi_get_insights handles the igmediaforigonlyapi_get_insights tool with context-based auth
 func HandleIgmediaforigonlyapi_get_insights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -370,8 +358,6 @@ func HandleIgmediaforigonlyapi_get_insights(ctx context.Context, request mcp.Cal
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Igmediaforigonlyapi_get_insights(args)
 	if err != nil {
@@ -386,7 +372,6 @@ func HandleIgmediaforigonlyapi_get_insights(ctx context.Context, request mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleIgmediaforigonlyapi_get_ handles the igmediaforigonlyapi_get_ tool with context-based auth
 func HandleIgmediaforigonlyapi_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -427,8 +412,6 @@ func HandleIgmediaforigonlyapi_get_(ctx context.Context, request mcp.CallToolReq
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Igmediaforigonlyapi_get_(args)
 	if err != nil {
@@ -443,7 +426,6 @@ func HandleIgmediaforigonlyapi_get_(ctx context.Context, request mcp.CallToolReq
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleIgmediaforigonlyapi_post_ handles the igmediaforigonlyapi_post_ tool with context-based auth
 func HandleIgmediaforigonlyapi_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -473,8 +455,6 @@ func HandleIgmediaforigonlyapi_post_(ctx context.Context, request mcp.CallToolRe
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Igmediaforigonlyapi_post_(args)
 	if err != nil {
@@ -489,4 +469,3 @@ func HandleIgmediaforigonlyapi_post_(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

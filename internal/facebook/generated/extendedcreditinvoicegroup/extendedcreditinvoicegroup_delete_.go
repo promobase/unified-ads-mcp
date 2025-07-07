@@ -15,8 +15,7 @@ import (
 
 // ToolExtendedcreditinvoicegroup_delete_ returns the MCP tool definition for extendedcreditinvoicegroup_delete_
 func ToolExtendedcreditinvoicegroup_delete_() mcp.Tool {
-	
-	
+
 	return mcp.NewTool("extendedcreditinvoicegroup_delete_",
 		mcp.WithDescription("DELETE  for ExtendedCreditInvoiceGroup"),
 	)
@@ -32,8 +31,6 @@ func HandleExtendedcreditinvoicegroup_delete_(ctx context.Context, request mcp.C
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the API method
 	result, err := Extendedcreditinvoicegroup_delete_(accessToken, args)
@@ -53,14 +50,11 @@ func HandleExtendedcreditinvoicegroup_delete_(ctx context.Context, request mcp.C
 // Extendedcreditinvoicegroup_delete_ performs DELETE  for ExtendedCreditInvoiceGroup
 func Extendedcreditinvoicegroup_delete_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response

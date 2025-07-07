@@ -17,7 +17,7 @@ import (
 // ToolAdtoplinedetail_get_ returns the MCP tool definition for adtoplinedetail_get_
 func ToolAdtoplinedetail_get_() mcp.Tool {
 	// Available fields for AdToplineDetail: active_status, ad_account_id, flight_end_date, flight_start_date, id, io_number, line_number, price, quantity, sf_detail_line_id, subline_id, targets, time_created, time_updated
-	
+
 	return mcp.NewTool("adtoplinedetail_get_",
 		mcp.WithDescription("GET  for AdToplineDetail"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleAdtoplinedetail_get_(ctx context.Context, request mcp.CallToolRequest
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Adtoplinedetail_get_(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleAdtoplinedetail_get_(ctx context.Context, request mcp.CallToolRequest
 // Adtoplinedetail_get_ performs GET  for AdToplineDetail
 func Adtoplinedetail_get_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

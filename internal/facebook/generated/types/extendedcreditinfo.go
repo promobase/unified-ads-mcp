@@ -4,8 +4,8 @@ package types
 
 // ExtendedCreditInfo represents a Facebook ExtendedCreditInfo object
 type ExtendedCreditInfo struct {
-	Credit_left string `json:"credit_left"`
-	Credit_revoked bool `json:"credit_revoked"`
-	Credit_used string `json:"credit_used"`
-	Using_biz_ec string `json:"using_biz_ec"`
+	Credit_left    string `json:"credit_left"`
+	Credit_revoked bool   `json:"credit_revoked"`
+	Credit_used    string `json:"credit_used"`
+	Using_biz_ec   string `json:"using_biz_ec"`
 }

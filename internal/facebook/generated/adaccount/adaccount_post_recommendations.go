@@ -15,7 +15,7 @@ import (
 
 // ToolAdaccount_post_recommendations returns the MCP tool definition for adaccount_post_recommendations
 func ToolAdaccount_post_recommendations() mcp.Tool {
-	
+
 	// Params object accepts: asc_fragmentation_parameters (map), autoflow_parameters (map), fragmentation_parameters (map), music_parameters (map), recommendation_signature (string), scale_good_campaign_parameters (map)
 	return mcp.NewTool("adaccount_post_recommendations",
 		mcp.WithDescription("POST recommendations for AdAccount"),
@@ -27,28 +27,28 @@ func ToolAdaccount_post_recommendations() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"asc_fragmentation_parameters": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "asc_fragmentation_parameters parameter",
 				},
 				"autoflow_parameters": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "autoflow_parameters parameter",
 				},
 				"fragmentation_parameters": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "fragmentation_parameters parameter",
 				},
 				"music_parameters": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "music_parameters parameter",
 				},
 				"recommendation_signature": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "recommendation_signature parameter",
-					"required": true,
+					"required":    true,
 				},
 				"scale_good_campaign_parameters": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "scale_good_campaign_parameters parameter",
 				},
 			}),
@@ -89,8 +89,6 @@ func HandleAdaccount_post_recommendations(ctx context.Context, request mcp.CallT
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Adaccount_post_recommendations(accessToken, args)
 	if err != nil {
@@ -109,35 +107,33 @@ func HandleAdaccount_post_recommendations(ctx context.Context, request mcp.CallT
 // Adaccount_post_recommendations performs POST recommendations for AdAccount
 func Adaccount_post_recommendations(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	// Extract account_id for URL construction
 	accountId, ok := args["account_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_post_recommendations")
 	}
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%srecommendations", accountId)
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-		
-	}
 
+	}
 
 	// Make HTTP request
 	var resp *http.Response

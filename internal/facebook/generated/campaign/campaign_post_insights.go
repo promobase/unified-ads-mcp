@@ -15,7 +15,7 @@ import (
 
 // ToolCampaign_post_insights returns the MCP tool definition for campaign_post_insights
 func ToolCampaign_post_insights() mcp.Tool {
-	
+
 	// Params object accepts: action_attribution_windows (list<adcampaigngroupinsights_action_attribution_windows_enum_param>), action_breakdowns (list<adcampaigngroupinsights_action_breakdowns_enum_param>), action_report_time (adcampaigngroupinsights_action_report_time_enum_param), breakdowns (list<adcampaigngroupinsights_breakdowns_enum_param>), date_preset (adcampaigngroupinsights_date_preset_enum_param), default_summary (bool), export_columns (list<string>), export_format (string), export_name (string), fields (list<string>), filtering (list<Object>), level (adcampaigngroupinsights_level_enum_param), limit (int), product_id_limit (int), sort (list<string>), summary (list<string>), summary_action_breakdowns (list<adcampaigngroupinsights_summary_action_breakdowns_enum_param>), time_increment (string), time_range (map), time_ranges (list<map>), use_account_attribution_setting (bool), use_unified_attribution_setting (bool)
 	return mcp.NewTool("campaign_post_insights",
 		mcp.WithDescription("POST insights for Campaign"),
@@ -26,108 +26,108 @@ func ToolCampaign_post_insights() mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"action_attribution_windows": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "action_attribution_windows parameter",
-					"enum": []string{ "1d_click", "1d_ev", "1d_view", "28d_click", "28d_view", "28d_view_all_conversions", "28d_view_first_conversion", "7d_click", "7d_view", "7d_view_all_conversions", "7d_view_first_conversion", "dda", "default", "skan_click", "skan_click_second_postback", "skan_click_third_postback", "skan_view", "skan_view_second_postback", "skan_view_third_postback" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"1d_click", "1d_ev", "1d_view", "28d_click", "28d_view", "28d_view_all_conversions", "28d_view_first_conversion", "7d_click", "7d_view", "7d_view_all_conversions", "7d_view_first_conversion", "dda", "default", "skan_click", "skan_click_second_postback", "skan_click_third_postback", "skan_view", "skan_view_second_postback", "skan_view_third_postback"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"action_breakdowns": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "action_breakdowns parameter",
-					"enum": []string{ "action_canvas_component_name", "action_carousel_card_id", "action_carousel_card_name", "action_destination", "action_device", "action_reaction", "action_target_id", "action_type", "action_video_sound", "action_video_type", "conversion_destination", "matched_persona_id", "matched_persona_name", "signal_source_bucket", "standard_event_content_type" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"action_canvas_component_name", "action_carousel_card_id", "action_carousel_card_name", "action_destination", "action_device", "action_reaction", "action_target_id", "action_type", "action_video_sound", "action_video_type", "conversion_destination", "matched_persona_id", "matched_persona_name", "signal_source_bucket", "standard_event_content_type"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"action_report_time": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "action_report_time parameter",
-					"enum": []string{ "conversion", "impression", "lifetime", "mixed" },
+					"enum":        []string{"conversion", "impression", "lifetime", "mixed"},
 				},
 				"breakdowns": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "breakdowns parameter",
-					"enum": []string{ "ad_extension_domain", "ad_extension_url", "ad_format_asset", "age", "app_id", "body_asset", "breakdown_ad_objective", "breakdown_reporting_ad_id", "call_to_action_asset", "coarse_conversion_value", "comscore_market", "comscore_market_code", "conversion_destination", "country", "creative_relaxation_asset_type", "description_asset", "device_platform", "dma", "fidelity_type", "flexible_format_asset_type", "frequency_value", "gen_ai_asset_type", "gender", "hourly_stats_aggregated_by_advertiser_time_zone", "hourly_stats_aggregated_by_audience_time_zone", "hsid", "image_asset", "impression_device", "impression_view_time_advertiser_hour_v2", "is_auto_advance", "is_conversion_id_modeled", "is_rendered_as_delayed_skip_ad", "landing_destination", "link_url_asset", "marketing_messages_btn_name", "mdsa_landing_destination", "media_asset_url", "media_creator", "media_destination_url", "media_format", "media_origin_url", "media_text_content", "media_type", "mmm", "place_page_id", "platform_position", "postback_sequence_index", "product_id", "publisher_platform", "redownload", "region", "signal_source_bucket", "skan_campaign_id", "skan_conversion_id", "skan_version", "sot_attribution_model_type", "sot_attribution_window", "sot_channel", "sot_event_type", "sot_source", "standard_event_content_type", "title_asset", "user_persona_id", "user_persona_name", "video_asset" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"ad_extension_domain", "ad_extension_url", "ad_format_asset", "age", "app_id", "body_asset", "breakdown_ad_objective", "breakdown_reporting_ad_id", "call_to_action_asset", "coarse_conversion_value", "comscore_market", "comscore_market_code", "conversion_destination", "country", "creative_relaxation_asset_type", "description_asset", "device_platform", "dma", "fidelity_type", "flexible_format_asset_type", "frequency_value", "gen_ai_asset_type", "gender", "hourly_stats_aggregated_by_advertiser_time_zone", "hourly_stats_aggregated_by_audience_time_zone", "hsid", "image_asset", "impression_device", "impression_view_time_advertiser_hour_v2", "is_auto_advance", "is_conversion_id_modeled", "is_rendered_as_delayed_skip_ad", "landing_destination", "link_url_asset", "marketing_messages_btn_name", "mdsa_landing_destination", "media_asset_url", "media_creator", "media_destination_url", "media_format", "media_origin_url", "media_text_content", "media_type", "mmm", "place_page_id", "platform_position", "postback_sequence_index", "product_id", "publisher_platform", "redownload", "region", "signal_source_bucket", "skan_campaign_id", "skan_conversion_id", "skan_version", "sot_attribution_model_type", "sot_attribution_window", "sot_channel", "sot_event_type", "sot_source", "standard_event_content_type", "title_asset", "user_persona_id", "user_persona_name", "video_asset"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"date_preset": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "date_preset parameter",
-					"enum": []string{ "data_maximum", "last_14d", "last_28d", "last_30d", "last_3d", "last_7d", "last_90d", "last_month", "last_quarter", "last_week_mon_sun", "last_week_sun_sat", "last_year", "maximum", "this_month", "this_quarter", "this_week_mon_today", "this_week_sun_today", "this_year", "today", "yesterday" },
+					"enum":        []string{"data_maximum", "last_14d", "last_28d", "last_30d", "last_3d", "last_7d", "last_90d", "last_month", "last_quarter", "last_week_mon_sun", "last_week_sun_sat", "last_year", "maximum", "this_month", "this_quarter", "this_week_mon_today", "this_week_sun_today", "this_year", "today", "yesterday"},
 				},
 				"default_summary": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "default_summary parameter",
 				},
 				"export_columns": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "export_columns parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"export_format": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "export_format parameter",
 				},
 				"export_name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "export_name parameter",
 				},
 				"fields": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "fields parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"filtering": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "filtering parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"level": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "level parameter",
-					"enum": []string{ "account", "ad", "adset", "campaign" },
+					"enum":        []string{"account", "ad", "adset", "campaign"},
 				},
 				"limit": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "limit parameter",
 				},
 				"product_id_limit": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "product_id_limit parameter",
 				},
 				"sort": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "sort parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"summary": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "summary parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"summary_action_breakdowns": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "summary_action_breakdowns parameter",
-					"enum": []string{ "action_canvas_component_name", "action_carousel_card_id", "action_carousel_card_name", "action_destination", "action_device", "action_reaction", "action_target_id", "action_type", "action_video_sound", "action_video_type", "conversion_destination", "matched_persona_id", "matched_persona_name", "signal_source_bucket", "standard_event_content_type" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"action_canvas_component_name", "action_carousel_card_id", "action_carousel_card_name", "action_destination", "action_device", "action_reaction", "action_target_id", "action_type", "action_video_sound", "action_video_type", "conversion_destination", "matched_persona_id", "matched_persona_name", "signal_source_bucket", "standard_event_content_type"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"time_increment": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "time_increment parameter",
 				},
 				"time_range": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "time_range parameter",
 				},
 				"time_ranges": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "time_ranges parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"use_account_attribution_setting": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "use_account_attribution_setting parameter",
 				},
 				"use_unified_attribution_setting": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "use_unified_attribution_setting parameter",
 				},
 			}),
@@ -166,8 +166,6 @@ func HandleCampaign_post_insights(ctx context.Context, request mcp.CallToolReque
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Campaign_post_insights(accessToken, args)
 	if err != nil {
@@ -186,35 +184,33 @@ func HandleCampaign_post_insights(ctx context.Context, request mcp.CallToolReque
 // Campaign_post_insights performs POST insights for Campaign
 func Campaign_post_insights(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	// Extract campaign_id for URL construction
 	campaignId, ok := args["campaign_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("campaign_id is required for campaign_post_insights")
 	}
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/%sinsights", campaignId)
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["campaign_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "campaign_id" != "campaign_id" {
 			urlParams.Set("campaign_id", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "params" != "campaign_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-		
-	}
 
+	}
 
 	// Make HTTP request
 	var resp *http.Response

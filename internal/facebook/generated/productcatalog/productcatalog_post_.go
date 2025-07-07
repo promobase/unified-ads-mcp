@@ -15,47 +15,47 @@ import (
 
 // ToolProductcatalog_post_ returns the MCP tool definition for productcatalog_post_
 func ToolProductcatalog_post_() mcp.Tool {
-	
+
 	// Params object accepts: additional_vertical_option (productcatalog_additional_vertical_option), da_display_settings (Object), default_image_url (string), destination_catalog_settings (map), fallback_image_url (string), flight_catalog_settings (map), name (string), partner_integration (map), store_catalog_settings (map)
 	return mcp.NewTool("productcatalog_post_",
 		mcp.WithDescription("POST  for ProductCatalog"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"additional_vertical_option": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "additional_vertical_option parameter",
-					"enum": []string{ "LOCAL_DA_CATALOG", "LOCAL_PRODUCTS" },
+					"enum":        []string{"LOCAL_DA_CATALOG", "LOCAL_PRODUCTS"},
 				},
 				"da_display_settings": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "da_display_settings parameter",
 				},
 				"default_image_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "default_image_url parameter",
 				},
 				"destination_catalog_settings": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "destination_catalog_settings parameter",
 				},
 				"fallback_image_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "fallback_image_url parameter",
 				},
 				"flight_catalog_settings": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "flight_catalog_settings parameter",
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
 				},
 				"partner_integration": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "partner_integration parameter",
 				},
 				"store_catalog_settings": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "store_catalog_settings parameter",
 				},
 			}),
@@ -87,8 +87,6 @@ func HandleProductcatalog_post_(ctx context.Context, request mcp.CallToolRequest
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Productcatalog_post_(accessToken, args)
 	if err != nil {
@@ -107,20 +105,18 @@ func HandleProductcatalog_post_(ctx context.Context, request mcp.CallToolRequest
 // Productcatalog_post_ performs POST  for ProductCatalog
 func Productcatalog_post_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

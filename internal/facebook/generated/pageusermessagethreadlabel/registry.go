@@ -17,7 +17,6 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolPageusermessagethreadlabel_delete_())
 	tools = append(tools, ToolPageusermessagethreadlabel_get_())
 
-
 	return tools
 }
 
@@ -29,7 +28,6 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers["pageusermessagethreadlabel_post_label"] = HandlePageusermessagethreadlabel_post_label
 	handlers["pageusermessagethreadlabel_delete_"] = HandlePageusermessagethreadlabel_delete_
 	handlers["pageusermessagethreadlabel_get_"] = HandlePageusermessagethreadlabel_get_
-
 
 	return handlers
 }

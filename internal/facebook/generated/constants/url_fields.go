@@ -4,17 +4,17 @@ package constants
 
 // URLFields contains field name constants for URL objects
 var URLFields = struct {
-	Engagement string
-	Id string
-	OgObject string
+	Engagement           string
+	Id                   string
+	OgObject             string
 	OwnershipPermissions string
-	Scopes string
+	Scopes               string
 }{
-	Engagement: "engagement",
-	Id: "id",
-	OgObject: "og_object",
+	Engagement:           "engagement",
+	Id:                   "id",
+	OgObject:             "og_object",
 	OwnershipPermissions: "ownership_permissions",
-	Scopes: "scopes",
+	Scopes:               "scopes",
 }
 
 // URLFieldsList contains all available fields for URL objects

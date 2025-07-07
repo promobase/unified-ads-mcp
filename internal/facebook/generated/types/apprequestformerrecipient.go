@@ -4,6 +4,6 @@ package types
 
 // AppRequestFormerRecipient represents a Facebook AppRequestFormerRecipient object
 type AppRequestFormerRecipient struct {
-	Id string `json:"id"`
+	Id           string `json:"id"`
 	Recipient_id string `json:"recipient_id"`
 }

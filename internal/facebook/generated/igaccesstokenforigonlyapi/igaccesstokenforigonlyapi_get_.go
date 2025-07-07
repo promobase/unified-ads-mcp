@@ -16,7 +16,7 @@ import (
 
 // ToolIgaccesstokenforigonlyapi_get_ returns the MCP tool definition for igaccesstokenforigonlyapi_get_
 func ToolIgaccesstokenforigonlyapi_get_() mcp.Tool {
-	
+
 	// Params object accepts: access_token (string), client_secret (string), grant_type (string)
 	return mcp.NewTool("igaccesstokenforigonlyapi_get_",
 		mcp.WithDescription("GET  for IGAccessTokenForIGOnlyAPI"),
@@ -24,19 +24,19 @@ func ToolIgaccesstokenforigonlyapi_get_() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"access_token": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "access_token parameter",
-					"required": true,
+					"required":    true,
 				},
 				"client_secret": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "client_secret parameter",
-					"required": true,
+					"required":    true,
 				},
 				"grant_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "grant_type parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: access_token (string) [required], client_secret (string) [required], grant_type (string) [required]"),
@@ -106,8 +106,6 @@ func HandleIgaccesstokenforigonlyapi_get_(ctx context.Context, request mcp.CallT
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Igaccesstokenforigonlyapi_get_(accessToken, args)
 	if err != nil {
@@ -126,44 +124,42 @@ func HandleIgaccesstokenforigonlyapi_get_(ctx context.Context, request mcp.CallT
 // Igaccesstokenforigonlyapi_get_ performs GET  for IGAccessTokenForIGOnlyAPI
 func Igaccesstokenforigonlyapi_get_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

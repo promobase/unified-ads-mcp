@@ -15,20 +15,20 @@ import (
 
 // ToolProductcatalog_post_product_groups returns the MCP tool definition for productcatalog_post_product_groups
 func ToolProductcatalog_post_product_groups() mcp.Tool {
-	
+
 	// Params object accepts: retailer_id (string), variants (list<Object>)
 	return mcp.NewTool("productcatalog_post_product_groups",
 		mcp.WithDescription("POST product_groups for ProductCatalog"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"retailer_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "retailer_id parameter",
 				},
 				"variants": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "variants parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 			}),
 			mcp.Description("Parameters object containing: retailer_id (string), variants (array<object>)"),
@@ -59,8 +59,6 @@ func HandleProductcatalog_post_product_groups(ctx context.Context, request mcp.C
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Productcatalog_post_product_groups(accessToken, args)
 	if err != nil {
@@ -79,20 +77,18 @@ func HandleProductcatalog_post_product_groups(ctx context.Context, request mcp.C
 // Productcatalog_post_product_groups performs POST product_groups for ProductCatalog
 func Productcatalog_post_product_groups(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/product_groups")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

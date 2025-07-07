@@ -5,14 +5,14 @@ package constants
 // SlicedEventSourceGroupFields contains field name constants for SlicedEventSourceGroup objects
 var SlicedEventSourceGroupFields = struct {
 	EventSourceGroup string
-	Filter string
-	Id string
-	Name string
+	Filter           string
+	Id               string
+	Name             string
 }{
 	EventSourceGroup: "event_source_group",
-	Filter: "filter",
-	Id: "id",
-	Name: "name",
+	Filter:           "filter",
+	Id:               "id",
+	Name:             "name",
 }
 
 // SlicedEventSourceGroupFieldsList contains all available fields for SlicedEventSourceGroup objects

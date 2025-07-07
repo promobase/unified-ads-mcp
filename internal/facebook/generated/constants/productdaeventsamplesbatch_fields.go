@@ -4,13 +4,13 @@ package constants
 
 // ProductDaEventSamplesBatchFields contains field name constants for ProductDaEventSamplesBatch objects
 var ProductDaEventSamplesBatchFields = struct {
-	Samples string
+	Samples   string
 	TimeStart string
-	TimeStop string
+	TimeStop  string
 }{
-	Samples: "samples",
+	Samples:   "samples",
 	TimeStart: "time_start",
-	TimeStop: "time_stop",
+	TimeStop:  "time_stop",
 }
 
 // ProductDaEventSamplesBatchFieldsList contains all available fields for ProductDaEventSamplesBatch objects

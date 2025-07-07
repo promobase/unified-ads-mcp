@@ -39,7 +39,6 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolBusinessassetgroup_get_())
 	tools = append(tools, ToolBusinessassetgroup_post_())
 
-
 	return tools
 }
 
@@ -73,7 +72,6 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers["businessassetgroup_post_contained_product_catalogs"] = HandleBusinessassetgroup_post_contained_product_catalogs
 	handlers["businessassetgroup_get_"] = HandleBusinessassetgroup_get_
 	handlers["businessassetgroup_post_"] = HandleBusinessassetgroup_post_
-
 
 	return handlers
 }

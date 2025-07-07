@@ -4,15 +4,15 @@ package constants
 
 // LiveVideoTargetingFields contains field name constants for LiveVideoTargeting objects
 var LiveVideoTargetingFields = struct {
-	AgeMax string
-	AgeMin string
+	AgeMax            string
+	AgeMin            string
 	ExcludedCountries string
-	GeoLocations string
+	GeoLocations      string
 }{
-	AgeMax: "age_max",
-	AgeMin: "age_min",
+	AgeMax:            "age_max",
+	AgeMin:            "age_min",
 	ExcludedCountries: "excluded_countries",
-	GeoLocations: "geo_locations",
+	GeoLocations:      "geo_locations",
 }
 
 // LiveVideoTargetingFieldsList contains all available fields for LiveVideoTargeting objects

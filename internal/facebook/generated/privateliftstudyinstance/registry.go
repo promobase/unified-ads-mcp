@@ -15,7 +15,6 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolPrivateliftstudyinstance_get_())
 	tools = append(tools, ToolPrivateliftstudyinstance_post_())
 
-
 	return tools
 }
 
@@ -25,7 +24,6 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 
 	handlers["privateliftstudyinstance_get_"] = HandlePrivateliftstudyinstance_get_
 	handlers["privateliftstudyinstance_post_"] = HandlePrivateliftstudyinstance_post_
-
 
 	return handlers
 }

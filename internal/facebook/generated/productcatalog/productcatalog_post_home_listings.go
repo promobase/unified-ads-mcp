@@ -15,7 +15,7 @@ import (
 
 // ToolProductcatalog_post_home_listings returns the MCP tool definition for productcatalog_post_home_listings
 func ToolProductcatalog_post_home_listings() mcp.Tool {
-	
+
 	// Params object accepts: address (Object), availability (string), currency (string), description (string), home_listing_id (string), images (list<Object>), listing_type (string), name (string), num_baths (float), num_beds (float), num_units (float), price (float), property_type (string), url (string), year_built (unsigned int)
 	return mcp.NewTool("productcatalog_post_home_listings",
 		mcp.WithDescription("POST home_listings for ProductCatalog"),
@@ -23,74 +23,74 @@ func ToolProductcatalog_post_home_listings() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"address": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "address parameter",
-					"required": true,
+					"required":    true,
 				},
 				"availability": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "availability parameter",
-					"required": true,
+					"required":    true,
 				},
 				"currency": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "currency parameter",
-					"required": true,
+					"required":    true,
 				},
 				"description": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "description parameter",
 				},
 				"home_listing_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "home_listing_id parameter",
-					"required": true,
+					"required":    true,
 				},
 				"images": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "images parameter",
-					"required": true,
-					"items": map[string]any{"type": "object"},
+					"required":    true,
+					"items":       map[string]any{"type": "object"},
 				},
 				"listing_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "listing_type parameter",
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
-					"required": true,
+					"required":    true,
 				},
 				"num_baths": map[string]any{
-					"type": "number",
+					"type":        "number",
 					"description": "num_baths parameter",
 				},
 				"num_beds": map[string]any{
-					"type": "number",
+					"type":        "number",
 					"description": "num_beds parameter",
 				},
 				"num_units": map[string]any{
-					"type": "number",
+					"type":        "number",
 					"description": "num_units parameter",
 				},
 				"price": map[string]any{
-					"type": "number",
+					"type":        "number",
 					"description": "price parameter",
-					"required": true,
+					"required":    true,
 				},
 				"property_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "property_type parameter",
 				},
 				"url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "url parameter",
-					"required": true,
+					"required":    true,
 				},
 				"year_built": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "year_built parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: address (object) [required], availability (string) [required], currency (string) [required], description (string), home_listing_id (string) [required], images (array<object>) [required], listing_type (string), name (string) [required], num_baths (number), num_beds (number), num_units (number), price (number) [required], property_type (string), url (string) [required], year_built (integer) [required]"),
@@ -123,8 +123,6 @@ func HandleProductcatalog_post_home_listings(ctx context.Context, request mcp.Ca
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Productcatalog_post_home_listings(accessToken, args)
 	if err != nil {
@@ -143,20 +141,18 @@ func HandleProductcatalog_post_home_listings(ctx context.Context, request mcp.Ca
 // Productcatalog_post_home_listings performs POST home_listings for ProductCatalog
 func Productcatalog_post_home_listings(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/home_listings")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

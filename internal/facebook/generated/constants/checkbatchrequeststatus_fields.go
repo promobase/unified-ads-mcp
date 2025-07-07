@@ -4,21 +4,21 @@ package constants
 
 // CheckBatchRequestStatusFields contains field name constants for CheckBatchRequestStatus objects
 var CheckBatchRequestStatusFields = struct {
-	Errors string
-	ErrorsTotalCount string
-	Handle string
+	Errors               string
+	ErrorsTotalCount     string
+	Handle               string
 	IdsOfInvalidRequests string
-	Status string
-	Warnings string
-	WarningsTotalCount string
+	Status               string
+	Warnings             string
+	WarningsTotalCount   string
 }{
-	Errors: "errors",
-	ErrorsTotalCount: "errors_total_count",
-	Handle: "handle",
+	Errors:               "errors",
+	ErrorsTotalCount:     "errors_total_count",
+	Handle:               "handle",
 	IdsOfInvalidRequests: "ids_of_invalid_requests",
-	Status: "status",
-	Warnings: "warnings",
-	WarningsTotalCount: "warnings_total_count",
+	Status:               "status",
+	Warnings:             "warnings",
+	WarningsTotalCount:   "warnings_total_count",
 }
 
 // CheckBatchRequestStatusFieldsList contains all available fields for CheckBatchRequestStatus objects

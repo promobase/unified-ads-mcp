@@ -27,60 +27,60 @@ func ToolAdaccount_get_targetingsuggestions() mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"app_store": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "app_store parameter",
-					"enum": []string{ "amazon_app_store", "apk_mirror", "apk_monk", "apk_pure", "aptoide_a1_store", "bemobi_mobile_store", "digital_turbine_store", "does_not_exist", "fb_android_store", "fb_canvas", "fb_gameroom", "galaxy_store", "google_play", "instant_game", "itunes", "itunes_ipad", "neon_android_store", "none", "oculus_app_store", "oppo", "roku_channel_store", "uptodown", "vivo", "windows_10_store", "windows_store", "xiaomi" },
+					"enum":        []string{"amazon_app_store", "apk_mirror", "apk_monk", "apk_pure", "aptoide_a1_store", "bemobi_mobile_store", "digital_turbine_store", "does_not_exist", "fb_android_store", "fb_canvas", "fb_gameroom", "galaxy_store", "google_play", "instant_game", "itunes", "itunes_ipad", "neon_android_store", "none", "oculus_app_store", "oppo", "roku_channel_store", "uptodown", "vivo", "windows_10_store", "windows_store", "xiaomi"},
 				},
 				"countries": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "countries parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"limit_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "limit_type parameter",
-					"enum": []string{ "behaviors", "college_years", "education_majors", "education_schools", "education_statuses", "family_statuses", "home_value", "income", "industries", "interested_in", "interests", "life_events", "location_categories", "relationship_statuses", "user_adclusters", "work_employers", "work_positions" },
+					"enum":        []string{"behaviors", "college_years", "education_majors", "education_schools", "education_statuses", "family_statuses", "home_value", "income", "industries", "interested_in", "interests", "life_events", "location_categories", "relationship_statuses", "user_adclusters", "work_employers", "work_positions"},
 				},
 				"mode": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "mode parameter",
-					"enum": []string{ "best_performing", "recently_used", "related", "suggestions" },
+					"enum":        []string{"best_performing", "recently_used", "related", "suggestions"},
 				},
 				"objective": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "objective parameter",
-					"enum": []string{ "APP_INSTALLS", "BRAND_AWARENESS", "CONVERSIONS", "EVENT_RESPONSES", "LEAD_GENERATION", "LINK_CLICKS", "LOCAL_AWARENESS", "MESSAGES", "OFFER_CLAIMS", "OUTCOME_APP_PROMOTION", "OUTCOME_AWARENESS", "OUTCOME_ENGAGEMENT", "OUTCOME_LEADS", "OUTCOME_SALES", "OUTCOME_TRAFFIC", "PAGE_LIKES", "POST_ENGAGEMENT", "PRODUCT_CATALOG_SALES", "REACH", "STORE_VISITS", "VIDEO_VIEWS" },
+					"enum":        []string{"APP_INSTALLS", "BRAND_AWARENESS", "CONVERSIONS", "EVENT_RESPONSES", "LEAD_GENERATION", "LINK_CLICKS", "LOCAL_AWARENESS", "MESSAGES", "OFFER_CLAIMS", "OUTCOME_APP_PROMOTION", "OUTCOME_AWARENESS", "OUTCOME_ENGAGEMENT", "OUTCOME_LEADS", "OUTCOME_SALES", "OUTCOME_TRAFFIC", "PAGE_LIKES", "POST_ENGAGEMENT", "PRODUCT_CATALOG_SALES", "REACH", "STORE_VISITS", "VIDEO_VIEWS"},
 				},
 				"objects": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "objects parameter",
 				},
 				"regulated_categories": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "regulated_categories parameter",
-					"enum": []string{ "CREDIT", "EMPLOYMENT", "FINANCIAL_PRODUCTS_SERVICES", "HOUSING", "ISSUES_ELECTIONS_POLITICS", "NONE", "ONLINE_GAMBLING_AND_GAMING" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"CREDIT", "EMPLOYMENT", "FINANCIAL_PRODUCTS_SERVICES", "HOUSING", "ISSUES_ELECTIONS_POLITICS", "NONE", "ONLINE_GAMBLING_AND_GAMING"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"regulated_countries": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "regulated_countries parameter",
-					"enum": []string{ "AD", "AE", "AF", "AG", "AI", "AL", "AM", "AN", "AO", "AQ", "AR", "AS", "AT", "AU", "AW", "AX", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BL", "BM", "BN", "BO", "BQ", "BR", "BS", "BT", "BV", "BW", "BY", "BZ", "CA", "CC", "CD", "CF", "CG", "CH", "CI", "CK", "CL", "CM", "CN", "CO", "CR", "CU", "CV", "CW", "CX", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "EH", "ER", "ES", "ET", "FI", "FJ", "FK", "FM", "FO", "FR", "GA", "GB", "GD", "GE", "GF", "GG", "GH", "GI", "GL", "GM", "GN", "GP", "GQ", "GR", "GS", "GT", "GU", "GW", "GY", "HK", "HM", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IM", "IN", "IO", "IQ", "IR", "IS", "IT", "JE", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KP", "KR", "KW", "KY", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MF", "MG", "MH", "MK", "ML", "MM", "MN", "MO", "MP", "MQ", "MR", "MS", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NC", "NE", "NF", "NG", "NI", "NL", "NO", "NP", "NR", "NU", "NZ", "OM", "PA", "PE", "PF", "PG", "PH", "PK", "PL", "PM", "PN", "PR", "PS", "PT", "PW", "PY", "QA", "RE", "RO", "RS", "RU", "RW", "SA", "SB", "SC", "SD", "SE", "SG", "SH", "SI", "SJ", "SK", "SL", "SM", "SN", "SO", "SR", "SS", "ST", "SV", "SX", "SY", "SZ", "TC", "TD", "TF", "TG", "TH", "TJ", "TK", "TL", "TM", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "UM", "US", "UY", "UZ", "VA", "VC", "VE", "VG", "VI", "VN", "VU", "WF", "WS", "XK", "YE", "YT", "ZA", "ZM", "ZW" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"AD", "AE", "AF", "AG", "AI", "AL", "AM", "AN", "AO", "AQ", "AR", "AS", "AT", "AU", "AW", "AX", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BL", "BM", "BN", "BO", "BQ", "BR", "BS", "BT", "BV", "BW", "BY", "BZ", "CA", "CC", "CD", "CF", "CG", "CH", "CI", "CK", "CL", "CM", "CN", "CO", "CR", "CU", "CV", "CW", "CX", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "EH", "ER", "ES", "ET", "FI", "FJ", "FK", "FM", "FO", "FR", "GA", "GB", "GD", "GE", "GF", "GG", "GH", "GI", "GL", "GM", "GN", "GP", "GQ", "GR", "GS", "GT", "GU", "GW", "GY", "HK", "HM", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IM", "IN", "IO", "IQ", "IR", "IS", "IT", "JE", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KP", "KR", "KW", "KY", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MF", "MG", "MH", "MK", "ML", "MM", "MN", "MO", "MP", "MQ", "MR", "MS", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NC", "NE", "NF", "NG", "NI", "NL", "NO", "NP", "NR", "NU", "NZ", "OM", "PA", "PE", "PF", "PG", "PH", "PK", "PL", "PM", "PN", "PR", "PS", "PT", "PW", "PY", "QA", "RE", "RO", "RS", "RU", "RW", "SA", "SB", "SC", "SD", "SE", "SG", "SH", "SI", "SJ", "SK", "SL", "SM", "SN", "SO", "SR", "SS", "ST", "SV", "SX", "SY", "SZ", "TC", "TD", "TF", "TG", "TH", "TJ", "TK", "TL", "TM", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "UM", "US", "UY", "UZ", "VA", "VC", "VE", "VG", "VI", "VN", "VU", "WF", "WS", "XK", "YE", "YT", "ZA", "ZM", "ZW"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"session_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "session_id parameter",
 				},
 				"targeting_list": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "targeting_list parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"whitelisted_types": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "whitelisted_types parameter",
-					"enum": []string{ "behaviors", "college_years", "education_majors", "education_schools", "education_statuses", "family_statuses", "home_value", "income", "industries", "interested_in", "interests", "life_events", "location_categories", "relationship_statuses", "user_adclusters", "work_employers", "work_positions" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"behaviors", "college_years", "education_majors", "education_schools", "education_statuses", "family_statuses", "home_value", "income", "industries", "interested_in", "interests", "life_events", "location_categories", "relationship_statuses", "user_adclusters", "work_employers", "work_positions"},
+					"items":       map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: app_store (enum) [amazon_app_store, apk_mirror, apk_monk, apk_pure, aptoide_a1_store, ...], countries (array<string>), limit_type (enum) [behaviors, college_years, education_majors, education_schools, education_statuses, ...], mode (enum) [best_performing, recently_used, related, suggestions], objective (enum) [APP_INSTALLS, BRAND_AWARENESS, CONVERSIONS, EVENT_RESPONSES, LEAD_GENERATION, ...], objects (object), regulated_categories (array<enum>) [CREDIT, EMPLOYMENT, FINANCIAL_PRODUCTS_SERVICES, HOUSING, ISSUES_ELECTIONS_POLITICS, ...], regulated_countries (array<enum>) [AD, AE, AF, AG, AI, ...], session_id (integer), targeting_list (array<object>), whitelisted_types (array<enum>) [behaviors, college_years, education_majors, education_schools, education_statuses, ...]"),
@@ -155,8 +155,6 @@ func HandleAdaccount_get_targetingsuggestions(ctx context.Context, request mcp.C
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Adaccount_get_targetingsuggestions(accessToken, args)
 	if err != nil {
@@ -175,67 +173,65 @@ func HandleAdaccount_get_targetingsuggestions(ctx context.Context, request mcp.C
 // Adaccount_get_targetingsuggestions performs GET targetingsuggestions for AdAccount
 func Adaccount_get_targetingsuggestions(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	// Extract account_id for URL construction
 	accountId, ok := args["account_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_get_targetingsuggestions")
 	}
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%stargetingsuggestions", accountId)
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-		
-	}
 
+	}
 
 	// Make HTTP request
 	var resp *http.Response

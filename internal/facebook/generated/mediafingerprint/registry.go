@@ -15,7 +15,6 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolMediafingerprint_get_())
 	tools = append(tools, ToolMediafingerprint_post_())
 
-
 	return tools
 }
 
@@ -25,7 +24,6 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 
 	handlers["mediafingerprint_get_"] = HandleMediafingerprint_get_
 	handlers["mediafingerprint_post_"] = HandleMediafingerprint_post_
-
 
 	return handlers
 }

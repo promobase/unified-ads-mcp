@@ -17,7 +17,7 @@ import (
 // ToolPage_get_page_backed_instagram_accounts returns the MCP tool definition for page_get_page_backed_instagram_accounts
 func ToolPage_get_page_backed_instagram_accounts() mcp.Tool {
 	// Available fields for IGUser: biography, business_discovery, followers_count, follows_count, has_profile_pic, id, ig_id, is_published, legacy_instagram_user_id, media_count, mentioned_comment, mentioned_media, name, owner_business, profile_picture_url, shopping_product_tag_eligibility, shopping_review_status, username, website
-	
+
 	return mcp.NewTool("page_get_page_backed_instagram_accounts",
 		mcp.WithDescription("GET page_backed_instagram_accounts for Page"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandlePage_get_page_backed_instagram_accounts(ctx context.Context, request 
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Page_get_page_backed_instagram_accounts(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandlePage_get_page_backed_instagram_accounts(ctx context.Context, request 
 // Page_get_page_backed_instagram_accounts performs GET page_backed_instagram_accounts for Page
 func Page_get_page_backed_instagram_accounts(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/page_backed_instagram_accounts")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

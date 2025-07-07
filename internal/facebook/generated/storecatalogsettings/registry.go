@@ -15,7 +15,6 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolStorecatalogsettings_delete_())
 	tools = append(tools, ToolStorecatalogsettings_get_())
 
-
 	return tools
 }
 
@@ -25,7 +24,6 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 
 	handlers["storecatalogsettings_delete_"] = HandleStorecatalogsettings_delete_
 	handlers["storecatalogsettings_get_"] = HandleStorecatalogsettings_get_
-
 
 	return handlers
 }

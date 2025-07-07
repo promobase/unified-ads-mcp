@@ -15,7 +15,7 @@ import (
 
 // ToolWhatsappbusinessaccount_post_payment_configuration returns the MCP tool definition for whatsappbusinessaccount_post_payment_configuration
 func ToolWhatsappbusinessaccount_post_payment_configuration() mcp.Tool {
-	
+
 	// Params object accepts: configuration_name (string), data_endpoint_url (string), merchant_category_code (string), merchant_vpa (string), provider_name (whatsappbusinessaccountpayment_configuration_provider_name_enum_param), purpose_code (string), redirect_url (string)
 	return mcp.NewTool("whatsappbusinessaccount_post_payment_configuration",
 		mcp.WithDescription("POST payment_configuration for WhatsAppBusinessAccount"),
@@ -23,33 +23,33 @@ func ToolWhatsappbusinessaccount_post_payment_configuration() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"configuration_name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "configuration_name parameter",
-					"required": true,
+					"required":    true,
 				},
 				"data_endpoint_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "data_endpoint_url parameter",
 				},
 				"merchant_category_code": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "merchant_category_code parameter",
 				},
 				"merchant_vpa": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "merchant_vpa parameter",
 				},
 				"provider_name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "provider_name parameter",
-					"enum": []string{ "BILLDESK", "PAYU", "RAZORPAY", "UPI_VPA", "ZAAKPAY" },
+					"enum":        []string{"BILLDESK", "PAYU", "RAZORPAY", "UPI_VPA", "ZAAKPAY"},
 				},
 				"purpose_code": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "purpose_code parameter",
 				},
 				"redirect_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "redirect_url parameter",
 				},
 			}),
@@ -83,8 +83,6 @@ func HandleWhatsappbusinessaccount_post_payment_configuration(ctx context.Contex
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Whatsappbusinessaccount_post_payment_configuration(accessToken, args)
 	if err != nil {
@@ -103,20 +101,18 @@ func HandleWhatsappbusinessaccount_post_payment_configuration(ctx context.Contex
 // Whatsappbusinessaccount_post_payment_configuration performs POST payment_configuration for WhatsAppBusinessAccount
 func Whatsappbusinessaccount_post_payment_configuration(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/payment_configuration")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

@@ -4,10 +4,10 @@ package constants
 
 // AdAssetFeedSpecAssetLabelFields contains field name constants for AdAssetFeedSpecAssetLabel objects
 var AdAssetFeedSpecAssetLabelFields = struct {
-	Id string
+	Id   string
 	Name string
 }{
-	Id: "id",
+	Id:   "id",
 	Name: "name",
 }
 

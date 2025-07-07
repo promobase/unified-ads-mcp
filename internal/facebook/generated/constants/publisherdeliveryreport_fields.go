@@ -4,17 +4,17 @@ package constants
 
 // PublisherDeliveryReportFields contains field name constants for PublisherDeliveryReport objects
 var PublisherDeliveryReportFields = struct {
-	ContentTypes string
+	ContentTypes         string
 	EstimatedImpressions string
-	Name string
-	Status string
-	Url string
+	Name                 string
+	Status               string
+	Url                  string
 }{
-	ContentTypes: "content_types",
+	ContentTypes:         "content_types",
 	EstimatedImpressions: "estimated_impressions",
-	Name: "name",
-	Status: "status",
-	Url: "url",
+	Name:                 "name",
+	Status:               "status",
+	Url:                  "url",
 }
 
 // PublisherDeliveryReportFieldsList contains all available fields for PublisherDeliveryReport objects

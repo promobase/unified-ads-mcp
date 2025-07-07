@@ -4,19 +4,19 @@ package constants
 
 // MessengerDestinationPageWelcomeMessageFields contains field name constants for MessengerDestinationPageWelcomeMessage objects
 var MessengerDestinationPageWelcomeMessageFields = struct {
-	Id string
+	Id                     string
 	PageWelcomeMessageBody string
 	PageWelcomeMessageType string
-	TemplateName string
-	TimeCreated string
-	TimeLastUsed string
+	TemplateName           string
+	TimeCreated            string
+	TimeLastUsed           string
 }{
-	Id: "id",
+	Id:                     "id",
 	PageWelcomeMessageBody: "page_welcome_message_body",
 	PageWelcomeMessageType: "page_welcome_message_type",
-	TemplateName: "template_name",
-	TimeCreated: "time_created",
-	TimeLastUsed: "time_last_used",
+	TemplateName:           "template_name",
+	TimeCreated:            "time_created",
+	TimeLastUsed:           "time_last_used",
 }
 
 // MessengerDestinationPageWelcomeMessageFieldsList contains all available fields for MessengerDestinationPageWelcomeMessage objects

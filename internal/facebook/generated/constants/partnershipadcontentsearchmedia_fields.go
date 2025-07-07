@@ -4,19 +4,19 @@ package constants
 
 // PartnershipAdContentSearchMediaFields contains field name constants for PartnershipAdContentSearchMedia objects
 var PartnershipAdContentSearchMediaFields = struct {
-	IgAdCodeSponsorCount string
-	IgAdCodeSponsors string
-	IgMedia string
-	IgMediaHasProductTags string
+	IgAdCodeSponsorCount                     string
+	IgAdCodeSponsors                         string
+	IgMedia                                  string
+	IgMediaHasProductTags                    string
 	IsAdCodeEligibleForBoostingByTwoSponsors string
-	IsAdCodeEntry string
+	IsAdCodeEntry                            string
 }{
-	IgAdCodeSponsorCount: "ig_ad_code_sponsor_count",
-	IgAdCodeSponsors: "ig_ad_code_sponsors",
-	IgMedia: "ig_media",
-	IgMediaHasProductTags: "ig_media_has_product_tags",
+	IgAdCodeSponsorCount:                     "ig_ad_code_sponsor_count",
+	IgAdCodeSponsors:                         "ig_ad_code_sponsors",
+	IgMedia:                                  "ig_media",
+	IgMediaHasProductTags:                    "ig_media_has_product_tags",
 	IsAdCodeEligibleForBoostingByTwoSponsors: "is_ad_code_eligible_for_boosting_by_two_sponsors",
-	IsAdCodeEntry: "is_ad_code_entry",
+	IsAdCodeEntry:                            "is_ad_code_entry",
 }
 
 // PartnershipAdContentSearchMediaFieldsList contains all available fields for PartnershipAdContentSearchMedia objects

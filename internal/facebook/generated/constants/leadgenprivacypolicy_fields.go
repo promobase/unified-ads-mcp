@@ -5,10 +5,10 @@ package constants
 // LeadGenPrivacyPolicyFields contains field name constants for LeadGenPrivacyPolicy objects
 var LeadGenPrivacyPolicyFields = struct {
 	LinkText string
-	Url string
+	Url      string
 }{
 	LinkText: "link_text",
-	Url: "url",
+	Url:      "url",
 }
 
 // LeadGenPrivacyPolicyFieldsList contains all available fields for LeadGenPrivacyPolicy objects

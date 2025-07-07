@@ -15,49 +15,49 @@ import (
 
 // ToolBusinessuser_post_ returns the MCP tool definition for businessuser_post_
 func ToolBusinessuser_post_() mcp.Tool {
-	
+
 	// Params object accepts: clear_pending_email (bool), email (string), first_name (string), last_name (string), pending_email (string), role (businessuser_role), skip_verification_email (bool), tasks (list<businessuser_tasks>), title (string)
 	return mcp.NewTool("businessuser_post_",
 		mcp.WithDescription("POST  for BusinessUser"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"clear_pending_email": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "clear_pending_email parameter",
 				},
 				"email": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "email parameter",
 				},
 				"first_name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "first_name parameter",
 				},
 				"last_name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "last_name parameter",
 				},
 				"pending_email": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "pending_email parameter",
 				},
 				"role": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "role parameter",
-					"enum": []string{ "ADMIN", "ADS_RIGHTS_REVIEWER", "DEFAULT", "DEVELOPER", "EMPLOYEE", "FINANCE_ANALYST", "FINANCE_EDIT", "FINANCE_EDITOR", "FINANCE_VIEW", "MANAGE", "PARTNER_CENTER_ADMIN", "PARTNER_CENTER_ANALYST", "PARTNER_CENTER_EDUCATION", "PARTNER_CENTER_MARKETING", "PARTNER_CENTER_OPERATIONS" },
+					"enum":        []string{"ADMIN", "ADS_RIGHTS_REVIEWER", "DEFAULT", "DEVELOPER", "EMPLOYEE", "FINANCE_ANALYST", "FINANCE_EDIT", "FINANCE_EDITOR", "FINANCE_VIEW", "MANAGE", "PARTNER_CENTER_ADMIN", "PARTNER_CENTER_ANALYST", "PARTNER_CENTER_EDUCATION", "PARTNER_CENTER_MARKETING", "PARTNER_CENTER_OPERATIONS"},
 				},
 				"skip_verification_email": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "skip_verification_email parameter",
 				},
 				"tasks": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "tasks parameter",
-					"enum": []string{ "ADMIN", "ADS_RIGHTS_REVIEWER", "DEFAULT", "DEVELOPER", "EMPLOYEE", "FINANCE_ANALYST", "FINANCE_EDIT", "FINANCE_EDITOR", "FINANCE_VIEW", "MANAGE", "PARTNER_CENTER_ADMIN", "PARTNER_CENTER_ANALYST", "PARTNER_CENTER_EDUCATION", "PARTNER_CENTER_MARKETING", "PARTNER_CENTER_OPERATIONS" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"ADMIN", "ADS_RIGHTS_REVIEWER", "DEFAULT", "DEVELOPER", "EMPLOYEE", "FINANCE_ANALYST", "FINANCE_EDIT", "FINANCE_EDITOR", "FINANCE_VIEW", "MANAGE", "PARTNER_CENTER_ADMIN", "PARTNER_CENTER_ANALYST", "PARTNER_CENTER_EDUCATION", "PARTNER_CENTER_MARKETING", "PARTNER_CENTER_OPERATIONS"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"title": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "title parameter",
 				},
 			}),
@@ -89,8 +89,6 @@ func HandleBusinessuser_post_(ctx context.Context, request mcp.CallToolRequest) 
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Businessuser_post_(accessToken, args)
 	if err != nil {
@@ -109,20 +107,18 @@ func HandleBusinessuser_post_(ctx context.Context, request mcp.CallToolRequest) 
 // Businessuser_post_ performs POST  for BusinessUser
 func Businessuser_post_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

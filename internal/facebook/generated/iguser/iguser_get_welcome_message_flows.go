@@ -23,11 +23,11 @@ func ToolIguser_get_welcome_message_flows() mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"app_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "app_id parameter",
 				},
 				"flow_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "flow_id parameter",
 				},
 			}),
@@ -96,8 +96,6 @@ func HandleIguser_get_welcome_message_flows(ctx context.Context, request mcp.Cal
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Iguser_get_welcome_message_flows(accessToken, args)
 	if err != nil {
@@ -116,44 +114,42 @@ func HandleIguser_get_welcome_message_flows(ctx context.Context, request mcp.Cal
 // Iguser_get_welcome_message_flows performs GET welcome_message_flows for IGUser
 func Iguser_get_welcome_message_flows(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/welcome_message_flows")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

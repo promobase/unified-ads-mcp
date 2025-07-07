@@ -15,7 +15,7 @@ import (
 
 // ToolAd_post_copies returns the MCP tool definition for ad_post_copies
 func ToolAd_post_copies() mcp.Tool {
-	
+
 	// Params object accepts: adset_id (string), creative_parameters (AdCreative), rename_options (Object), status_option (adgroupcopies_status_option_enum_param)
 	return mcp.NewTool("ad_post_copies",
 		mcp.WithDescription("POST copies for Ad"),
@@ -26,21 +26,21 @@ func ToolAd_post_copies() mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"adset_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "adset_id parameter",
 				},
 				"creative_parameters": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "creative_parameters parameter",
 				},
 				"rename_options": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "rename_options parameter",
 				},
 				"status_option": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "status_option parameter",
-					"enum": []string{ "ACTIVE", "INHERITED_FROM_SOURCE", "PAUSED" },
+					"enum":        []string{"ACTIVE", "INHERITED_FROM_SOURCE", "PAUSED"},
 				},
 			}),
 			mcp.Description("Parameters object containing: adset_id (string), creative_parameters (AdCreative), rename_options (object), status_option (enum) [ACTIVE, INHERITED_FROM_SOURCE, PAUSED]"),
@@ -78,8 +78,6 @@ func HandleAd_post_copies(ctx context.Context, request mcp.CallToolRequest) (*mc
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Ad_post_copies(accessToken, args)
 	if err != nil {
@@ -98,35 +96,33 @@ func HandleAd_post_copies(ctx context.Context, request mcp.CallToolRequest) (*mc
 // Ad_post_copies performs POST copies for Ad
 func Ad_post_copies(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	// Extract ad_id for URL construction
 	adId, ok := args["ad_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("ad_id is required for ad_post_copies")
 	}
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/%scopies", adId)
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["ad_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "ad_id" != "ad_id" {
 			urlParams.Set("ad_id", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "params" != "ad_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-		
-	}
 
+	}
 
 	// Make HTTP request
 	var resp *http.Response

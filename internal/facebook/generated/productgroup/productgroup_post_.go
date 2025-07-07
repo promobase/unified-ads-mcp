@@ -15,20 +15,20 @@ import (
 
 // ToolProductgroup_post_ returns the MCP tool definition for productgroup_post_
 func ToolProductgroup_post_() mcp.Tool {
-	
+
 	// Params object accepts: default_product_id (string), variants (list<Object>)
 	return mcp.NewTool("productgroup_post_",
 		mcp.WithDescription("POST  for ProductGroup"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"default_product_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "default_product_id parameter",
 				},
 				"variants": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "variants parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 			}),
 			mcp.Description("Parameters object containing: default_product_id (string), variants (array<object>)"),
@@ -59,8 +59,6 @@ func HandleProductgroup_post_(ctx context.Context, request mcp.CallToolRequest) 
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Productgroup_post_(accessToken, args)
 	if err != nil {
@@ -79,20 +77,18 @@ func HandleProductgroup_post_(ctx context.Context, request mcp.CallToolRequest) 
 // Productgroup_post_ performs POST  for ProductGroup
 func Productgroup_post_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

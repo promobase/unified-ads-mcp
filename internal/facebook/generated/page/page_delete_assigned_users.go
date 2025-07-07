@@ -15,7 +15,7 @@ import (
 
 // ToolPage_delete_assigned_users returns the MCP tool definition for page_delete_assigned_users
 func ToolPage_delete_assigned_users() mcp.Tool {
-	
+
 	// Params object accepts: user (int)
 	return mcp.NewTool("page_delete_assigned_users",
 		mcp.WithDescription("DELETE assigned_users for Page"),
@@ -23,9 +23,9 @@ func ToolPage_delete_assigned_users() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"user": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "user parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: user (integer) [required]"),
@@ -58,8 +58,6 @@ func HandlePage_delete_assigned_users(ctx context.Context, request mcp.CallToolR
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Page_delete_assigned_users(accessToken, args)
 	if err != nil {
@@ -78,20 +76,18 @@ func HandlePage_delete_assigned_users(ctx context.Context, request mcp.CallToolR
 // Page_delete_assigned_users performs DELETE assigned_users for Page
 func Page_delete_assigned_users(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/assigned_users")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

@@ -4,16 +4,16 @@ package types
 
 // AdAccountAdVolume represents a Facebook AdAccountAdVolume object
 type AdAccountAdVolume struct {
-	Actor_id string `json:"actor_id"`
-	Actor_name string `json:"actor_name"`
-	Ad_limit_scope_business *Business `json:"ad_limit_scope_business"`
-	Ad_limit_scope_business_manager_id string `json:"ad_limit_scope_business_manager_id"`
-	Ad_limit_set_by_page_admin int `json:"ad_limit_set_by_page_admin"`
-	Ads_running_or_in_review_count int `json:"ads_running_or_in_review_count"`
-	Ads_running_or_in_review_count_subject_to_limit_set_by_page int `json:"ads_running_or_in_review_count_subject_to_limit_set_by_page"`
-	Current_account_ads_running_or_in_review_count int `json:"current_account_ads_running_or_in_review_count"`
-	Future_limit_activation_date string `json:"future_limit_activation_date"`
-	Future_limit_on_ads_running_or_in_review int `json:"future_limit_on_ads_running_or_in_review"`
-	Limit_on_ads_running_or_in_review int `json:"limit_on_ads_running_or_in_review"`
-	Recommendations []map[string]interface{} `json:"recommendations"`
+	Actor_id                                                    string                   `json:"actor_id"`
+	Actor_name                                                  string                   `json:"actor_name"`
+	Ad_limit_scope_business                                     *Business                `json:"ad_limit_scope_business"`
+	Ad_limit_scope_business_manager_id                          string                   `json:"ad_limit_scope_business_manager_id"`
+	Ad_limit_set_by_page_admin                                  int                      `json:"ad_limit_set_by_page_admin"`
+	Ads_running_or_in_review_count                              int                      `json:"ads_running_or_in_review_count"`
+	Ads_running_or_in_review_count_subject_to_limit_set_by_page int                      `json:"ads_running_or_in_review_count_subject_to_limit_set_by_page"`
+	Current_account_ads_running_or_in_review_count              int                      `json:"current_account_ads_running_or_in_review_count"`
+	Future_limit_activation_date                                string                   `json:"future_limit_activation_date"`
+	Future_limit_on_ads_running_or_in_review                    int                      `json:"future_limit_on_ads_running_or_in_review"`
+	Limit_on_ads_running_or_in_review                           int                      `json:"limit_on_ads_running_or_in_review"`
+	Recommendations                                             []map[string]interface{} `json:"recommendations"`
 }

@@ -17,7 +17,6 @@ import (
 func GetMediaTitleTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// mediatitle_get_channels_to_integrity_status tool
 	// Available fields for CatalogItemChannelsToIntegrityStatus: channels, rejection_information
 	mediatitle_get_channels_to_integrity_statusTool := mcp.NewTool("mediatitle_get_channels_to_integrity_status",
@@ -45,14 +44,14 @@ func GetMediaTitleTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"keys": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "keys parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "type parameter",
-					"enum": []string{ "COUNTRY", "LANGUAGE", "LANGUAGE_AND_COUNTRY" },
+					"enum":        []string{"COUNTRY", "LANGUAGE", "LANGUAGE_AND_COUNTRY"},
 				},
 			}),
 			mcp.Description("Parameters object containing: keys (array<string>), type (enum) [COUNTRY, LANGUAGE, LANGUAGE_AND_COUNTRY]"),
@@ -123,54 +122,54 @@ func GetMediaTitleTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"applinks": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "applinks parameter",
 				},
 				"content_category": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "content_category parameter",
-					"enum": []string{ "MOVIE", "MUSIC", "TV_SHOW" },
+					"enum":        []string{"MOVIE", "MUSIC", "TV_SHOW"},
 				},
 				"currency": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "currency parameter",
 				},
 				"description": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "description parameter",
 				},
 				"fb_page_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "fb_page_id parameter",
 				},
 				"genres": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "genres parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"images": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "images parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"kg_fb_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "kg_fb_id parameter",
 				},
 				"price": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "price parameter",
 				},
 				"title": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "title parameter",
 				},
 				"title_display_name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "title_display_name parameter",
 				},
 				"url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "url parameter",
 				},
 			}),
@@ -179,12 +178,10 @@ func GetMediaTitleTools() []mcp.Tool {
 	)
 	tools = append(tools, mediatitle_post_Tool)
 
-
 	return tools
 }
 
 // MediaTitle handlers
-
 
 // HandleMediatitle_get_channels_to_integrity_status handles the mediatitle_get_channels_to_integrity_status tool with context-based auth
 func HandleMediatitle_get_channels_to_integrity_status(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -225,8 +222,6 @@ func HandleMediatitle_get_channels_to_integrity_status(ctx context.Context, requ
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Mediatitle_get_channels_to_integrity_status(args)
 	if err != nil {
@@ -241,7 +236,6 @@ func HandleMediatitle_get_channels_to_integrity_status(ctx context.Context, requ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleMediatitle_get_override_details handles the mediatitle_get_override_details tool with context-based auth
 func HandleMediatitle_get_override_details(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -294,8 +288,6 @@ func HandleMediatitle_get_override_details(ctx context.Context, request mcp.Call
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Mediatitle_get_override_details(args)
 	if err != nil {
@@ -310,7 +302,6 @@ func HandleMediatitle_get_override_details(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleMediatitle_get_videos_metadata handles the mediatitle_get_videos_metadata tool with context-based auth
 func HandleMediatitle_get_videos_metadata(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -351,8 +342,6 @@ func HandleMediatitle_get_videos_metadata(ctx context.Context, request mcp.CallT
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Mediatitle_get_videos_metadata(args)
 	if err != nil {
@@ -368,7 +357,6 @@ func HandleMediatitle_get_videos_metadata(ctx context.Context, request mcp.CallT
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleMediatitle_delete_ handles the mediatitle_delete_ tool with context-based auth
 func HandleMediatitle_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
@@ -382,8 +370,6 @@ func HandleMediatitle_delete_(ctx context.Context, request mcp.CallToolRequest) 
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Mediatitle_delete_(args)
@@ -399,7 +385,6 @@ func HandleMediatitle_delete_(ctx context.Context, request mcp.CallToolRequest) 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleMediatitle_get_ handles the mediatitle_get_ tool with context-based auth
 func HandleMediatitle_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -440,8 +425,6 @@ func HandleMediatitle_get_(ctx context.Context, request mcp.CallToolRequest) (*m
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Mediatitle_get_(args)
 	if err != nil {
@@ -456,7 +439,6 @@ func HandleMediatitle_get_(ctx context.Context, request mcp.CallToolRequest) (*m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleMediatitle_post_ handles the mediatitle_post_ tool with context-based auth
 func HandleMediatitle_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -484,8 +466,6 @@ func HandleMediatitle_post_(ctx context.Context, request mcp.CallToolRequest) (*
 		}
 	}
 
-
-
 	// Call the client method
 	result, err := client.Mediatitle_post_(args)
 	if err != nil {
@@ -500,4 +480,3 @@ func HandleMediatitle_post_(ctx context.Context, request mcp.CallToolRequest) (*
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

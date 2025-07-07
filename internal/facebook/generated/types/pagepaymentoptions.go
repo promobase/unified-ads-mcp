@@ -4,9 +4,9 @@ package types
 
 // PagePaymentOptions represents a Facebook PagePaymentOptions object
 type PagePaymentOptions struct {
-	Amex int `json:"amex"`
-	Cash_only int `json:"cash_only"`
-	Discover int `json:"discover"`
+	Amex       int `json:"amex"`
+	Cash_only  int `json:"cash_only"`
+	Discover   int `json:"discover"`
 	Mastercard int `json:"mastercard"`
-	Visa int `json:"visa"`
+	Visa       int `json:"visa"`
 }

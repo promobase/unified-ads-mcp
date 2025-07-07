@@ -16,7 +16,6 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolVideocopyright_get_())
 	tools = append(tools, ToolVideocopyright_post_())
 
-
 	return tools
 }
 
@@ -27,7 +26,6 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers["videocopyright_get_update_records"] = HandleVideocopyright_get_update_records
 	handlers["videocopyright_get_"] = HandleVideocopyright_get_
 	handlers["videocopyright_post_"] = HandleVideocopyright_post_
-
 
 	return handlers
 }

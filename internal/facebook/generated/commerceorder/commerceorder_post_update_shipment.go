@@ -15,7 +15,7 @@ import (
 
 // ToolCommerceorder_post_update_shipment returns the MCP tool definition for commerceorder_post_update_shipment
 func ToolCommerceorder_post_update_shipment() mcp.Tool {
-	
+
 	// Params object accepts: external_shipment_id (string), fulfillment_id (string), idempotency_key (string), shipment_id (string), tracking_info (map)
 	return mcp.NewTool("commerceorder_post_update_shipment",
 		mcp.WithDescription("POST update_shipment for CommerceOrder"),
@@ -23,26 +23,26 @@ func ToolCommerceorder_post_update_shipment() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"external_shipment_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "external_shipment_id parameter",
 				},
 				"fulfillment_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "fulfillment_id parameter",
 				},
 				"idempotency_key": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "idempotency_key parameter",
-					"required": true,
+					"required":    true,
 				},
 				"shipment_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "shipment_id parameter",
 				},
 				"tracking_info": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "tracking_info parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: external_shipment_id (string), fulfillment_id (string), idempotency_key (string) [required], shipment_id (string), tracking_info (object) [required]"),
@@ -75,8 +75,6 @@ func HandleCommerceorder_post_update_shipment(ctx context.Context, request mcp.C
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Commerceorder_post_update_shipment(accessToken, args)
 	if err != nil {
@@ -95,20 +93,18 @@ func HandleCommerceorder_post_update_shipment(ctx context.Context, request mcp.C
 // Commerceorder_post_update_shipment performs POST update_shipment for CommerceOrder
 func Commerceorder_post_update_shipment(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/update_shipment")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

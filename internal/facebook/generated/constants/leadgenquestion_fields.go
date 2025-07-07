@@ -4,25 +4,25 @@ package constants
 
 // LeadGenQuestionFields contains field name constants for LeadGenQuestion objects
 var LeadGenQuestionFields = struct {
-	ConditionalQuestionsChoices string
-	ConditionalQuestionsGroupId string
+	ConditionalQuestionsChoices   string
+	ConditionalQuestionsGroupId   string
 	DependentConditionalQuestions string
-	Id string
-	InlineContext string
-	Key string
-	Label string
-	Options string
-	FieldType string
+	Id                            string
+	InlineContext                 string
+	Key                           string
+	Label                         string
+	Options                       string
+	FieldType                     string
 }{
-	ConditionalQuestionsChoices: "conditional_questions_choices",
-	ConditionalQuestionsGroupId: "conditional_questions_group_id",
+	ConditionalQuestionsChoices:   "conditional_questions_choices",
+	ConditionalQuestionsGroupId:   "conditional_questions_group_id",
 	DependentConditionalQuestions: "dependent_conditional_questions",
-	Id: "id",
-	InlineContext: "inline_context",
-	Key: "key",
-	Label: "label",
-	Options: "options",
-	FieldType: "type",
+	Id:                            "id",
+	InlineContext:                 "inline_context",
+	Key:                           "key",
+	Label:                         "label",
+	Options:                       "options",
+	FieldType:                     "type",
 }
 
 // LeadGenQuestionFieldsList contains all available fields for LeadGenQuestion objects

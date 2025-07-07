@@ -17,7 +17,7 @@ import (
 // ToolBusinessrolerequest_get_ returns the MCP tool definition for businessrolerequest_get_
 func ToolBusinessrolerequest_get_() mcp.Tool {
 	// Available fields for BusinessRoleRequest: created_by, created_time, email, expiration_time, expiry_time, finance_role, id, invite_link, invited_user_type, ip_role, owner, role, status, tasks, updated_by, updated_time
-	
+
 	return mcp.NewTool("businessrolerequest_get_",
 		mcp.WithDescription("GET  for BusinessRoleRequest"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleBusinessrolerequest_get_(ctx context.Context, request mcp.CallToolReq
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Businessrolerequest_get_(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleBusinessrolerequest_get_(ctx context.Context, request mcp.CallToolReq
 // Businessrolerequest_get_ performs GET  for BusinessRoleRequest
 func Businessrolerequest_get_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

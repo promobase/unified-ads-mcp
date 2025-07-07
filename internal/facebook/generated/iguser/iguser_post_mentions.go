@@ -15,7 +15,7 @@ import (
 
 // ToolIguser_post_mentions returns the MCP tool definition for iguser_post_mentions
 func ToolIguser_post_mentions() mcp.Tool {
-	
+
 	// Params object accepts: comment_id (string), media_id (string), message (string)
 	return mcp.NewTool("iguser_post_mentions",
 		mcp.WithDescription("POST mentions for IGUser"),
@@ -23,18 +23,18 @@ func ToolIguser_post_mentions() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"comment_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "comment_id parameter",
 				},
 				"media_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "media_id parameter",
-					"required": true,
+					"required":    true,
 				},
 				"message": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "message parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: comment_id (string), media_id (string) [required], message (string) [required]"),
@@ -67,8 +67,6 @@ func HandleIguser_post_mentions(ctx context.Context, request mcp.CallToolRequest
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Iguser_post_mentions(accessToken, args)
 	if err != nil {
@@ -87,20 +85,18 @@ func HandleIguser_post_mentions(ctx context.Context, request mcp.CallToolRequest
 // Iguser_post_mentions performs POST mentions for IGUser
 func Iguser_post_mentions(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/mentions")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

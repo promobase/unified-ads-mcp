@@ -15,21 +15,21 @@ import (
 
 // ToolApplication_post_subscribed_domains_phishing returns the MCP tool definition for application_post_subscribed_domains_phishing
 func ToolApplication_post_subscribed_domains_phishing() mcp.Tool {
-	
+
 	// Params object accepts: subscribe (list<string>), unsubscribe (list<string>)
 	return mcp.NewTool("application_post_subscribed_domains_phishing",
 		mcp.WithDescription("POST subscribed_domains_phishing for Application"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"subscribe": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "subscribe parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"unsubscribe": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "unsubscribe parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: subscribe (array<string>), unsubscribe (array<string>)"),
@@ -60,8 +60,6 @@ func HandleApplication_post_subscribed_domains_phishing(ctx context.Context, req
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Application_post_subscribed_domains_phishing(accessToken, args)
 	if err != nil {
@@ -80,20 +78,18 @@ func HandleApplication_post_subscribed_domains_phishing(ctx context.Context, req
 // Application_post_subscribed_domains_phishing performs POST subscribed_domains_phishing for Application
 func Application_post_subscribed_domains_phishing(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/subscribed_domains_phishing")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

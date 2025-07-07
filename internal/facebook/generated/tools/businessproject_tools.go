@@ -17,7 +17,6 @@ import (
 func GetBusinessProjectTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// businessproject_get_ tool
 	// Available fields for BusinessProject: business, created_time, creator, id, name
 	businessproject_get_Tool := mcp.NewTool("businessproject_get_",
@@ -37,12 +36,10 @@ func GetBusinessProjectTools() []mcp.Tool {
 	)
 	tools = append(tools, businessproject_get_Tool)
 
-
 	return tools
 }
 
 // BusinessProject handlers
-
 
 // HandleBusinessproject_get_ handles the businessproject_get_ tool with context-based auth
 func HandleBusinessproject_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleBusinessproject_get_(ctx context.Context, request mcp.CallToolRequest
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Businessproject_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleBusinessproject_get_(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

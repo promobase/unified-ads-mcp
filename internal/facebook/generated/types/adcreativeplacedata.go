@@ -4,10 +4,10 @@ package types
 
 // AdCreativePlaceData represents a Facebook AdCreativePlaceData object
 type AdCreativePlaceData struct {
-	Address_string string `json:"address_string"`
-	Label string `json:"label"`
-	Latitude float64 `json:"latitude"`
-	Location_source_id string `json:"location_source_id"`
-	Longitude float64 `json:"longitude"`
-	Type_ string `json:"type"`
+	Address_string     string  `json:"address_string"`
+	Label              string  `json:"label"`
+	Latitude           float64 `json:"latitude"`
+	Location_source_id string  `json:"location_source_id"`
+	Longitude          float64 `json:"longitude"`
+	Type_              string  `json:"type"`
 }

@@ -15,8 +15,7 @@ import (
 
 // ToolLead_delete_ returns the MCP tool definition for lead_delete_
 func ToolLead_delete_() mcp.Tool {
-	
-	
+
 	return mcp.NewTool("lead_delete_",
 		mcp.WithDescription("DELETE  for Lead"),
 	)
@@ -32,8 +31,6 @@ func HandleLead_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the API method
 	result, err := Lead_delete_(accessToken, args)
@@ -53,14 +50,11 @@ func HandleLead_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 // Lead_delete_ performs DELETE  for Lead
 func Lead_delete_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response

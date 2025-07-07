@@ -5,5 +5,5 @@ package types
 // UniqueAdCreative represents a Facebook UniqueAdCreative object
 type UniqueAdCreative struct {
 	Sample_creative *AdCreative `json:"sample_creative"`
-	Visual_hash int `json:"visual_hash"`
+	Visual_hash     int         `json:"visual_hash"`
 }

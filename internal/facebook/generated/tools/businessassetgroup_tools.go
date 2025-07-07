@@ -17,7 +17,6 @@ import (
 func GetBusinessAssetGroupTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// businessassetgroup_delete_assigned_users tool
 	// Params object accepts: user (int)
 	businessassetgroup_delete_assigned_usersTool := mcp.NewTool("businessassetgroup_delete_assigned_users",
@@ -26,9 +25,9 @@ func GetBusinessAssetGroupTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"user": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "user parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: user (integer) [required]"),
@@ -45,9 +44,9 @@ func GetBusinessAssetGroupTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"business": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "business parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: business (string) [required]"),
@@ -75,33 +74,33 @@ func GetBusinessAssetGroupTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"adaccount_tasks": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "adaccount_tasks parameter",
-					"enum": []string{ "AA_ANALYZE", "ADVERTISE", "ANALYZE", "DRAFT", "MANAGE" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"AA_ANALYZE", "ADVERTISE", "ANALYZE", "DRAFT", "MANAGE"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"offline_conversion_data_set_tasks": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "offline_conversion_data_set_tasks parameter",
-					"enum": []string{ "AA_ANALYZE", "ADVERTISE", "MANAGE", "UPLOAD", "VIEW" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"AA_ANALYZE", "ADVERTISE", "MANAGE", "UPLOAD", "VIEW"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"page_tasks": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "page_tasks parameter",
-					"enum": []string{ "ADVERTISE", "ANALYZE", "CASHIER_ROLE", "CREATE_CONTENT", "GLOBAL_STRUCTURE_MANAGEMENT", "MANAGE", "MANAGE_JOBS", "MANAGE_LEADS", "MESSAGING", "MODERATE", "MODERATE_COMMUNITY", "PAGES_MESSAGING", "PAGES_MESSAGING_SUBSCRIPTIONS", "PROFILE_PLUS_ADVERTISE", "PROFILE_PLUS_ANALYZE", "PROFILE_PLUS_CREATE_CONTENT", "PROFILE_PLUS_FACEBOOK_ACCESS", "PROFILE_PLUS_FULL_CONTROL", "PROFILE_PLUS_MANAGE", "PROFILE_PLUS_MANAGE_LEADS", "PROFILE_PLUS_MESSAGING", "PROFILE_PLUS_MODERATE", "PROFILE_PLUS_MODERATE_DELEGATE_COMMUNITY", "PROFILE_PLUS_REVENUE", "READ_PAGE_MAILBOXES", "VIEW_MONETIZATION_INSIGHTS" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"ADVERTISE", "ANALYZE", "CASHIER_ROLE", "CREATE_CONTENT", "GLOBAL_STRUCTURE_MANAGEMENT", "MANAGE", "MANAGE_JOBS", "MANAGE_LEADS", "MESSAGING", "MODERATE", "MODERATE_COMMUNITY", "PAGES_MESSAGING", "PAGES_MESSAGING_SUBSCRIPTIONS", "PROFILE_PLUS_ADVERTISE", "PROFILE_PLUS_ANALYZE", "PROFILE_PLUS_CREATE_CONTENT", "PROFILE_PLUS_FACEBOOK_ACCESS", "PROFILE_PLUS_FULL_CONTROL", "PROFILE_PLUS_MANAGE", "PROFILE_PLUS_MANAGE_LEADS", "PROFILE_PLUS_MESSAGING", "PROFILE_PLUS_MODERATE", "PROFILE_PLUS_MODERATE_DELEGATE_COMMUNITY", "PROFILE_PLUS_REVENUE", "READ_PAGE_MAILBOXES", "VIEW_MONETIZATION_INSIGHTS"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"pixel_tasks": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "pixel_tasks parameter",
-					"enum": []string{ "AA_ANALYZE", "ADVERTISE", "ANALYZE", "EDIT", "UPLOAD" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"AA_ANALYZE", "ADVERTISE", "ANALYZE", "EDIT", "UPLOAD"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"user": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "user parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: adaccount_tasks (array<enum>) [AA_ANALYZE, ADVERTISE, ANALYZE, DRAFT, MANAGE], offline_conversion_data_set_tasks (array<enum>) [AA_ANALYZE, ADVERTISE, MANAGE, UPLOAD, VIEW], page_tasks (array<enum>) [ADVERTISE, ANALYZE, CASHIER_ROLE, CREATE_CONTENT, GLOBAL_STRUCTURE_MANAGEMENT, ...], pixel_tasks (array<enum>) [AA_ANALYZE, ADVERTISE, ANALYZE, EDIT, UPLOAD], user (integer) [required]"),
@@ -117,9 +116,9 @@ func GetBusinessAssetGroupTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"asset_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "asset_id parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: asset_id (string) [required]"),
@@ -154,9 +153,9 @@ func GetBusinessAssetGroupTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"asset_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "asset_id parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: asset_id (string) [required]"),
@@ -172,9 +171,9 @@ func GetBusinessAssetGroupTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"asset_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "asset_id parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: asset_id (string) [required]"),
@@ -209,9 +208,9 @@ func GetBusinessAssetGroupTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"asset_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "asset_id parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: asset_id (string) [required]"),
@@ -227,9 +226,9 @@ func GetBusinessAssetGroupTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"asset_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "asset_id parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: asset_id (string) [required]"),
@@ -264,9 +263,9 @@ func GetBusinessAssetGroupTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"asset_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "asset_id parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: asset_id (string) [required]"),
@@ -282,9 +281,9 @@ func GetBusinessAssetGroupTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"asset_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "asset_id parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: asset_id (string) [required]"),
@@ -319,9 +318,9 @@ func GetBusinessAssetGroupTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"asset_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "asset_id parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: asset_id (string) [required]"),
@@ -337,9 +336,9 @@ func GetBusinessAssetGroupTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"asset_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "asset_id parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: asset_id (string) [required]"),
@@ -374,9 +373,9 @@ func GetBusinessAssetGroupTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"asset_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "asset_id parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: asset_id (string) [required]"),
@@ -392,9 +391,9 @@ func GetBusinessAssetGroupTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"asset_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "asset_id parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: asset_id (string) [required]"),
@@ -429,9 +428,9 @@ func GetBusinessAssetGroupTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"asset_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "asset_id parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: asset_id (string) [required]"),
@@ -447,9 +446,9 @@ func GetBusinessAssetGroupTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"asset_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "asset_id parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: asset_id (string) [required]"),
@@ -484,9 +483,9 @@ func GetBusinessAssetGroupTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"asset_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "asset_id parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: asset_id (string) [required]"),
@@ -520,7 +519,7 @@ func GetBusinessAssetGroupTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
 				},
 			}),
@@ -529,12 +528,10 @@ func GetBusinessAssetGroupTools() []mcp.Tool {
 	)
 	tools = append(tools, businessassetgroup_post_Tool)
 
-
 	return tools
 }
 
 // BusinessAssetGroup handlers
-
 
 // HandleBusinessassetgroup_delete_assigned_users handles the businessassetgroup_delete_assigned_users tool with context-based auth
 func HandleBusinessassetgroup_delete_assigned_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -564,8 +561,6 @@ func HandleBusinessassetgroup_delete_assigned_users(ctx context.Context, request
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Businessassetgroup_delete_assigned_users(args)
 	if err != nil {
@@ -580,7 +575,6 @@ func HandleBusinessassetgroup_delete_assigned_users(ctx context.Context, request
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleBusinessassetgroup_get_assigned_users handles the businessassetgroup_get_assigned_users tool with context-based auth
 func HandleBusinessassetgroup_get_assigned_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -635,8 +629,6 @@ func HandleBusinessassetgroup_get_assigned_users(ctx context.Context, request mc
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Businessassetgroup_get_assigned_users(args)
 	if err != nil {
@@ -651,7 +643,6 @@ func HandleBusinessassetgroup_get_assigned_users(ctx context.Context, request mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleBusinessassetgroup_post_assigned_users handles the businessassetgroup_post_assigned_users tool with context-based auth
 func HandleBusinessassetgroup_post_assigned_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -681,8 +672,6 @@ func HandleBusinessassetgroup_post_assigned_users(ctx context.Context, request m
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Businessassetgroup_post_assigned_users(args)
 	if err != nil {
@@ -697,7 +686,6 @@ func HandleBusinessassetgroup_post_assigned_users(ctx context.Context, request m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleBusinessassetgroup_delete_contained_adaccounts handles the businessassetgroup_delete_contained_adaccounts tool with context-based auth
 func HandleBusinessassetgroup_delete_contained_adaccounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -727,8 +715,6 @@ func HandleBusinessassetgroup_delete_contained_adaccounts(ctx context.Context, r
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Businessassetgroup_delete_contained_adaccounts(args)
 	if err != nil {
@@ -743,7 +729,6 @@ func HandleBusinessassetgroup_delete_contained_adaccounts(ctx context.Context, r
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleBusinessassetgroup_get_contained_adaccounts handles the businessassetgroup_get_contained_adaccounts tool with context-based auth
 func HandleBusinessassetgroup_get_contained_adaccounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -784,8 +769,6 @@ func HandleBusinessassetgroup_get_contained_adaccounts(ctx context.Context, requ
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Businessassetgroup_get_contained_adaccounts(args)
 	if err != nil {
@@ -800,7 +783,6 @@ func HandleBusinessassetgroup_get_contained_adaccounts(ctx context.Context, requ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleBusinessassetgroup_post_contained_adaccounts handles the businessassetgroup_post_contained_adaccounts tool with context-based auth
 func HandleBusinessassetgroup_post_contained_adaccounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -830,8 +812,6 @@ func HandleBusinessassetgroup_post_contained_adaccounts(ctx context.Context, req
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Businessassetgroup_post_contained_adaccounts(args)
 	if err != nil {
@@ -846,7 +826,6 @@ func HandleBusinessassetgroup_post_contained_adaccounts(ctx context.Context, req
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleBusinessassetgroup_delete_contained_applications handles the businessassetgroup_delete_contained_applications tool with context-based auth
 func HandleBusinessassetgroup_delete_contained_applications(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -876,8 +855,6 @@ func HandleBusinessassetgroup_delete_contained_applications(ctx context.Context,
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Businessassetgroup_delete_contained_applications(args)
 	if err != nil {
@@ -892,7 +869,6 @@ func HandleBusinessassetgroup_delete_contained_applications(ctx context.Context,
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleBusinessassetgroup_get_contained_applications handles the businessassetgroup_get_contained_applications tool with context-based auth
 func HandleBusinessassetgroup_get_contained_applications(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -933,8 +909,6 @@ func HandleBusinessassetgroup_get_contained_applications(ctx context.Context, re
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Businessassetgroup_get_contained_applications(args)
 	if err != nil {
@@ -949,7 +923,6 @@ func HandleBusinessassetgroup_get_contained_applications(ctx context.Context, re
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleBusinessassetgroup_post_contained_applications handles the businessassetgroup_post_contained_applications tool with context-based auth
 func HandleBusinessassetgroup_post_contained_applications(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -979,8 +952,6 @@ func HandleBusinessassetgroup_post_contained_applications(ctx context.Context, r
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Businessassetgroup_post_contained_applications(args)
 	if err != nil {
@@ -995,7 +966,6 @@ func HandleBusinessassetgroup_post_contained_applications(ctx context.Context, r
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleBusinessassetgroup_delete_contained_custom_conversions handles the businessassetgroup_delete_contained_custom_conversions tool with context-based auth
 func HandleBusinessassetgroup_delete_contained_custom_conversions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1025,8 +995,6 @@ func HandleBusinessassetgroup_delete_contained_custom_conversions(ctx context.Co
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Businessassetgroup_delete_contained_custom_conversions(args)
 	if err != nil {
@@ -1041,7 +1009,6 @@ func HandleBusinessassetgroup_delete_contained_custom_conversions(ctx context.Co
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleBusinessassetgroup_get_contained_custom_conversions handles the businessassetgroup_get_contained_custom_conversions tool with context-based auth
 func HandleBusinessassetgroup_get_contained_custom_conversions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1082,8 +1049,6 @@ func HandleBusinessassetgroup_get_contained_custom_conversions(ctx context.Conte
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Businessassetgroup_get_contained_custom_conversions(args)
 	if err != nil {
@@ -1098,7 +1063,6 @@ func HandleBusinessassetgroup_get_contained_custom_conversions(ctx context.Conte
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleBusinessassetgroup_post_contained_custom_conversions handles the businessassetgroup_post_contained_custom_conversions tool with context-based auth
 func HandleBusinessassetgroup_post_contained_custom_conversions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1128,8 +1092,6 @@ func HandleBusinessassetgroup_post_contained_custom_conversions(ctx context.Cont
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Businessassetgroup_post_contained_custom_conversions(args)
 	if err != nil {
@@ -1144,7 +1106,6 @@ func HandleBusinessassetgroup_post_contained_custom_conversions(ctx context.Cont
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleBusinessassetgroup_delete_contained_instagram_accounts handles the businessassetgroup_delete_contained_instagram_accounts tool with context-based auth
 func HandleBusinessassetgroup_delete_contained_instagram_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1174,8 +1135,6 @@ func HandleBusinessassetgroup_delete_contained_instagram_accounts(ctx context.Co
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Businessassetgroup_delete_contained_instagram_accounts(args)
 	if err != nil {
@@ -1190,7 +1149,6 @@ func HandleBusinessassetgroup_delete_contained_instagram_accounts(ctx context.Co
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleBusinessassetgroup_get_contained_instagram_accounts handles the businessassetgroup_get_contained_instagram_accounts tool with context-based auth
 func HandleBusinessassetgroup_get_contained_instagram_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1231,8 +1189,6 @@ func HandleBusinessassetgroup_get_contained_instagram_accounts(ctx context.Conte
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Businessassetgroup_get_contained_instagram_accounts(args)
 	if err != nil {
@@ -1247,7 +1203,6 @@ func HandleBusinessassetgroup_get_contained_instagram_accounts(ctx context.Conte
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleBusinessassetgroup_post_contained_instagram_accounts handles the businessassetgroup_post_contained_instagram_accounts tool with context-based auth
 func HandleBusinessassetgroup_post_contained_instagram_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1277,8 +1232,6 @@ func HandleBusinessassetgroup_post_contained_instagram_accounts(ctx context.Cont
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Businessassetgroup_post_contained_instagram_accounts(args)
 	if err != nil {
@@ -1293,7 +1246,6 @@ func HandleBusinessassetgroup_post_contained_instagram_accounts(ctx context.Cont
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleBusinessassetgroup_delete_contained_pages handles the businessassetgroup_delete_contained_pages tool with context-based auth
 func HandleBusinessassetgroup_delete_contained_pages(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1323,8 +1275,6 @@ func HandleBusinessassetgroup_delete_contained_pages(ctx context.Context, reques
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Businessassetgroup_delete_contained_pages(args)
 	if err != nil {
@@ -1339,7 +1289,6 @@ func HandleBusinessassetgroup_delete_contained_pages(ctx context.Context, reques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleBusinessassetgroup_get_contained_pages handles the businessassetgroup_get_contained_pages tool with context-based auth
 func HandleBusinessassetgroup_get_contained_pages(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1380,8 +1329,6 @@ func HandleBusinessassetgroup_get_contained_pages(ctx context.Context, request m
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Businessassetgroup_get_contained_pages(args)
 	if err != nil {
@@ -1396,7 +1343,6 @@ func HandleBusinessassetgroup_get_contained_pages(ctx context.Context, request m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleBusinessassetgroup_post_contained_pages handles the businessassetgroup_post_contained_pages tool with context-based auth
 func HandleBusinessassetgroup_post_contained_pages(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1426,8 +1372,6 @@ func HandleBusinessassetgroup_post_contained_pages(ctx context.Context, request 
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Businessassetgroup_post_contained_pages(args)
 	if err != nil {
@@ -1442,7 +1386,6 @@ func HandleBusinessassetgroup_post_contained_pages(ctx context.Context, request 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleBusinessassetgroup_delete_contained_pixels handles the businessassetgroup_delete_contained_pixels tool with context-based auth
 func HandleBusinessassetgroup_delete_contained_pixels(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1472,8 +1415,6 @@ func HandleBusinessassetgroup_delete_contained_pixels(ctx context.Context, reque
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Businessassetgroup_delete_contained_pixels(args)
 	if err != nil {
@@ -1488,7 +1429,6 @@ func HandleBusinessassetgroup_delete_contained_pixels(ctx context.Context, reque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleBusinessassetgroup_get_contained_pixels handles the businessassetgroup_get_contained_pixels tool with context-based auth
 func HandleBusinessassetgroup_get_contained_pixels(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1529,8 +1469,6 @@ func HandleBusinessassetgroup_get_contained_pixels(ctx context.Context, request 
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Businessassetgroup_get_contained_pixels(args)
 	if err != nil {
@@ -1545,7 +1483,6 @@ func HandleBusinessassetgroup_get_contained_pixels(ctx context.Context, request 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleBusinessassetgroup_post_contained_pixels handles the businessassetgroup_post_contained_pixels tool with context-based auth
 func HandleBusinessassetgroup_post_contained_pixels(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1575,8 +1512,6 @@ func HandleBusinessassetgroup_post_contained_pixels(ctx context.Context, request
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Businessassetgroup_post_contained_pixels(args)
 	if err != nil {
@@ -1591,7 +1526,6 @@ func HandleBusinessassetgroup_post_contained_pixels(ctx context.Context, request
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleBusinessassetgroup_delete_contained_product_catalogs handles the businessassetgroup_delete_contained_product_catalogs tool with context-based auth
 func HandleBusinessassetgroup_delete_contained_product_catalogs(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1621,8 +1555,6 @@ func HandleBusinessassetgroup_delete_contained_product_catalogs(ctx context.Cont
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Businessassetgroup_delete_contained_product_catalogs(args)
 	if err != nil {
@@ -1637,7 +1569,6 @@ func HandleBusinessassetgroup_delete_contained_product_catalogs(ctx context.Cont
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleBusinessassetgroup_get_contained_product_catalogs handles the businessassetgroup_get_contained_product_catalogs tool with context-based auth
 func HandleBusinessassetgroup_get_contained_product_catalogs(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1678,8 +1609,6 @@ func HandleBusinessassetgroup_get_contained_product_catalogs(ctx context.Context
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Businessassetgroup_get_contained_product_catalogs(args)
 	if err != nil {
@@ -1694,7 +1623,6 @@ func HandleBusinessassetgroup_get_contained_product_catalogs(ctx context.Context
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleBusinessassetgroup_post_contained_product_catalogs handles the businessassetgroup_post_contained_product_catalogs tool with context-based auth
 func HandleBusinessassetgroup_post_contained_product_catalogs(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1724,8 +1652,6 @@ func HandleBusinessassetgroup_post_contained_product_catalogs(ctx context.Contex
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Businessassetgroup_post_contained_product_catalogs(args)
 	if err != nil {
@@ -1740,7 +1666,6 @@ func HandleBusinessassetgroup_post_contained_product_catalogs(ctx context.Contex
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleBusinessassetgroup_get_ handles the businessassetgroup_get_ tool with context-based auth
 func HandleBusinessassetgroup_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1781,8 +1706,6 @@ func HandleBusinessassetgroup_get_(ctx context.Context, request mcp.CallToolRequ
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Businessassetgroup_get_(args)
 	if err != nil {
@@ -1797,7 +1720,6 @@ func HandleBusinessassetgroup_get_(ctx context.Context, request mcp.CallToolRequ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleBusinessassetgroup_post_ handles the businessassetgroup_post_ tool with context-based auth
 func HandleBusinessassetgroup_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1825,8 +1747,6 @@ func HandleBusinessassetgroup_post_(ctx context.Context, request mcp.CallToolReq
 		}
 	}
 
-
-
 	// Call the client method
 	result, err := client.Businessassetgroup_post_(args)
 	if err != nil {
@@ -1841,4 +1761,3 @@ func HandleBusinessassetgroup_post_(ctx context.Context, request mcp.CallToolReq
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

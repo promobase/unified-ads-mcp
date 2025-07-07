@@ -17,7 +17,7 @@ import (
 // ToolProductcatalog_get_collaborative_ads_lsb_image_bank returns the MCP tool definition for productcatalog_get_collaborative_ads_lsb_image_bank
 func ToolProductcatalog_get_collaborative_ads_lsb_image_bank() mcp.Tool {
 	// Available fields for CPASLsbImageBank: ad_group_id, catalog_segment_proxy_id, id
-	
+
 	return mcp.NewTool("productcatalog_get_collaborative_ads_lsb_image_bank",
 		mcp.WithDescription("GET collaborative_ads_lsb_image_bank for ProductCatalog"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleProductcatalog_get_collaborative_ads_lsb_image_bank(ctx context.Conte
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Productcatalog_get_collaborative_ads_lsb_image_bank(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleProductcatalog_get_collaborative_ads_lsb_image_bank(ctx context.Conte
 // Productcatalog_get_collaborative_ads_lsb_image_bank performs GET collaborative_ads_lsb_image_bank for ProductCatalog
 func Productcatalog_get_collaborative_ads_lsb_image_bank(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/collaborative_ads_lsb_image_bank")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

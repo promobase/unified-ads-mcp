@@ -15,27 +15,27 @@ import (
 
 // ToolHighdemandperiod_post_ returns the MCP tool definition for highdemandperiod_post_
 func ToolHighdemandperiod_post_() mcp.Tool {
-	
+
 	// Params object accepts: budget_value (unsigned int), budget_value_type (highdemandperiod_budget_value_type), time_end (unsigned int), time_start (unsigned int)
 	return mcp.NewTool("highdemandperiod_post_",
 		mcp.WithDescription("POST  for HighDemandPeriod"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"budget_value": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "budget_value parameter",
 				},
 				"budget_value_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "budget_value_type parameter",
-					"enum": []string{ "ABSOLUTE", "MULTIPLIER" },
+					"enum":        []string{"ABSOLUTE", "MULTIPLIER"},
 				},
 				"time_end": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "time_end parameter",
 				},
 				"time_start": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "time_start parameter",
 				},
 			}),
@@ -67,8 +67,6 @@ func HandleHighdemandperiod_post_(ctx context.Context, request mcp.CallToolReque
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Highdemandperiod_post_(accessToken, args)
 	if err != nil {
@@ -87,20 +85,18 @@ func HandleHighdemandperiod_post_(ctx context.Context, request mcp.CallToolReque
 // Highdemandperiod_post_ performs POST  for HighDemandPeriod
 func Highdemandperiod_post_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

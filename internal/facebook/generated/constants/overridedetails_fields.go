@@ -4,13 +4,13 @@ package constants
 
 // OverrideDetailsFields contains field name constants for OverrideDetails objects
 var OverrideDetailsFields = struct {
-	Key string
+	Key       string
 	FieldType string
-	Values string
+	Values    string
 }{
-	Key: "key",
+	Key:       "key",
 	FieldType: "type",
-	Values: "values",
+	Values:    "values",
 }
 
 // OverrideDetailsFieldsList contains all available fields for OverrideDetails objects

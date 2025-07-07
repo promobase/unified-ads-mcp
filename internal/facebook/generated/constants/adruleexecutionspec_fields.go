@@ -5,12 +5,12 @@ package constants
 // AdRuleExecutionSpecFields contains field name constants for AdRuleExecutionSpec objects
 var AdRuleExecutionSpecFields = struct {
 	ExecutionOptions string
-	ExecutionType string
-	IsOnceOff string
+	ExecutionType    string
+	IsOnceOff        string
 }{
 	ExecutionOptions: "execution_options",
-	ExecutionType: "execution_type",
-	IsOnceOff: "is_once_off",
+	ExecutionType:    "execution_type",
+	IsOnceOff:        "is_once_off",
 }
 
 // AdRuleExecutionSpecFieldsList contains all available fields for AdRuleExecutionSpec objects

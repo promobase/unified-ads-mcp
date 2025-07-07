@@ -4,10 +4,10 @@ package constants
 
 // AdCreativeVideoDataMediaElementsFields contains field name constants for AdCreativeVideoDataMediaElements objects
 var AdCreativeVideoDataMediaElementsFields = struct {
-	ElementId string
+	ElementId   string
 	ElementType string
 }{
-	ElementId: "element_id",
+	ElementId:   "element_id",
 	ElementType: "element_type",
 }
 

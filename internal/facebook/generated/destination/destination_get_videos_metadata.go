@@ -17,7 +17,7 @@ import (
 // ToolDestination_get_videos_metadata returns the MCP tool definition for destination_get_videos_metadata
 func ToolDestination_get_videos_metadata() mcp.Tool {
 	// Available fields for DynamicVideoMetadata: id, tags, url, video
-	
+
 	return mcp.NewTool("destination_get_videos_metadata",
 		mcp.WithDescription("GET videos_metadata for Destination"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleDestination_get_videos_metadata(ctx context.Context, request mcp.Call
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Destination_get_videos_metadata(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleDestination_get_videos_metadata(ctx context.Context, request mcp.Call
 // Destination_get_videos_metadata performs GET videos_metadata for Destination
 func Destination_get_videos_metadata(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/videos_metadata")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

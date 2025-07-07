@@ -4,51 +4,51 @@ package constants
 
 // BusinessFields contains field name constants for Business objects
 var BusinessFields = struct {
-	BlockOfflineAnalytics string
+	BlockOfflineAnalytics                      string
 	CollaborativeAdsManagedPartnerBusinessInfo string
-	CollaborativeAdsManagedPartnerEligibility string
-	CollaborativeAdsPartnerPremiumOptions string
-	CreatedBy string
-	CreatedTime string
-	ExtendedUpdatedTime string
-	Id string
-	IsHidden string
-	Link string
-	Name string
-	PaymentAccountId string
-	PrimaryPage string
-	ProfilePictureUri string
-	TimezoneId string
-	TwoFactorType string
-	UpdatedBy string
-	UpdatedTime string
-	UserAccessExpireTime string
-	VerificationStatus string
-	Vertical string
-	VerticalId string
+	CollaborativeAdsManagedPartnerEligibility  string
+	CollaborativeAdsPartnerPremiumOptions      string
+	CreatedBy                                  string
+	CreatedTime                                string
+	ExtendedUpdatedTime                        string
+	Id                                         string
+	IsHidden                                   string
+	Link                                       string
+	Name                                       string
+	PaymentAccountId                           string
+	PrimaryPage                                string
+	ProfilePictureUri                          string
+	TimezoneId                                 string
+	TwoFactorType                              string
+	UpdatedBy                                  string
+	UpdatedTime                                string
+	UserAccessExpireTime                       string
+	VerificationStatus                         string
+	Vertical                                   string
+	VerticalId                                 string
 }{
-	BlockOfflineAnalytics: "block_offline_analytics",
+	BlockOfflineAnalytics:                      "block_offline_analytics",
 	CollaborativeAdsManagedPartnerBusinessInfo: "collaborative_ads_managed_partner_business_info",
-	CollaborativeAdsManagedPartnerEligibility: "collaborative_ads_managed_partner_eligibility",
-	CollaborativeAdsPartnerPremiumOptions: "collaborative_ads_partner_premium_options",
-	CreatedBy: "created_by",
-	CreatedTime: "created_time",
-	ExtendedUpdatedTime: "extended_updated_time",
-	Id: "id",
-	IsHidden: "is_hidden",
-	Link: "link",
-	Name: "name",
-	PaymentAccountId: "payment_account_id",
-	PrimaryPage: "primary_page",
-	ProfilePictureUri: "profile_picture_uri",
-	TimezoneId: "timezone_id",
-	TwoFactorType: "two_factor_type",
-	UpdatedBy: "updated_by",
-	UpdatedTime: "updated_time",
-	UserAccessExpireTime: "user_access_expire_time",
-	VerificationStatus: "verification_status",
-	Vertical: "vertical",
-	VerticalId: "vertical_id",
+	CollaborativeAdsManagedPartnerEligibility:  "collaborative_ads_managed_partner_eligibility",
+	CollaborativeAdsPartnerPremiumOptions:      "collaborative_ads_partner_premium_options",
+	CreatedBy:                                  "created_by",
+	CreatedTime:                                "created_time",
+	ExtendedUpdatedTime:                        "extended_updated_time",
+	Id:                                         "id",
+	IsHidden:                                   "is_hidden",
+	Link:                                       "link",
+	Name:                                       "name",
+	PaymentAccountId:                           "payment_account_id",
+	PrimaryPage:                                "primary_page",
+	ProfilePictureUri:                          "profile_picture_uri",
+	TimezoneId:                                 "timezone_id",
+	TwoFactorType:                              "two_factor_type",
+	UpdatedBy:                                  "updated_by",
+	UpdatedTime:                                "updated_time",
+	UserAccessExpireTime:                       "user_access_expire_time",
+	VerificationStatus:                         "verification_status",
+	Vertical:                                   "vertical",
+	VerticalId:                                 "vertical_id",
 }
 
 // BusinessFieldsList contains all available fields for Business objects

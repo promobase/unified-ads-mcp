@@ -15,16 +15,16 @@ import (
 
 // ToolBusiness_post_ad_review_requests returns the MCP tool definition for business_post_ad_review_requests
 func ToolBusiness_post_ad_review_requests() mcp.Tool {
-	
+
 	// Params object accepts: ad_account_ids (list<string>)
 	return mcp.NewTool("business_post_ad_review_requests",
 		mcp.WithDescription("POST ad_review_requests for Business"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"ad_account_ids": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "ad_account_ids parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: ad_account_ids (array<string>)"),
@@ -55,8 +55,6 @@ func HandleBusiness_post_ad_review_requests(ctx context.Context, request mcp.Cal
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Business_post_ad_review_requests(accessToken, args)
 	if err != nil {
@@ -75,20 +73,18 @@ func HandleBusiness_post_ad_review_requests(ctx context.Context, request mcp.Cal
 // Business_post_ad_review_requests performs POST ad_review_requests for Business
 func Business_post_ad_review_requests(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/ad_review_requests")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

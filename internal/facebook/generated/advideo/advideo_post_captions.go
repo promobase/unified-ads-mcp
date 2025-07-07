@@ -15,24 +15,24 @@ import (
 
 // ToolAdvideo_post_captions returns the MCP tool definition for advideo_post_captions
 func ToolAdvideo_post_captions() mcp.Tool {
-	
+
 	// Params object accepts: captions_file (file), default_locale (string), locales_to_delete (list<string>)
 	return mcp.NewTool("advideo_post_captions",
 		mcp.WithDescription("POST captions for AdVideo"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"captions_file": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "captions_file parameter",
 				},
 				"default_locale": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "default_locale parameter",
 				},
 				"locales_to_delete": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "locales_to_delete parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: captions_file (file), default_locale (string), locales_to_delete (array<string>)"),
@@ -63,8 +63,6 @@ func HandleAdvideo_post_captions(ctx context.Context, request mcp.CallToolReques
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Advideo_post_captions(accessToken, args)
 	if err != nil {
@@ -83,20 +81,18 @@ func HandleAdvideo_post_captions(ctx context.Context, request mcp.CallToolReques
 // Advideo_post_captions performs POST captions for AdVideo
 func Advideo_post_captions(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/captions")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

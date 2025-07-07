@@ -15,28 +15,28 @@ import (
 
 // ToolApplication_post_aggregate_revenue returns the MCP tool definition for application_post_aggregate_revenue
 func ToolApplication_post_aggregate_revenue() mcp.Tool {
-	
+
 	// Params object accepts: ecpms (list<string>), query_ids (list<string>), request_id (string), sync_api (bool)
 	return mcp.NewTool("application_post_aggregate_revenue",
 		mcp.WithDescription("POST aggregate_revenue for Application"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"ecpms": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "ecpms parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"query_ids": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "query_ids parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"request_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "request_id parameter",
 				},
 				"sync_api": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "sync_api parameter",
 				},
 			}),
@@ -68,8 +68,6 @@ func HandleApplication_post_aggregate_revenue(ctx context.Context, request mcp.C
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Application_post_aggregate_revenue(accessToken, args)
 	if err != nil {
@@ -88,20 +86,18 @@ func HandleApplication_post_aggregate_revenue(ctx context.Context, request mcp.C
 // Application_post_aggregate_revenue performs POST aggregate_revenue for Application
 func Application_post_aggregate_revenue(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/aggregate_revenue")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

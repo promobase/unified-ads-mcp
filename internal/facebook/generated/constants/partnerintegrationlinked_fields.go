@@ -4,39 +4,39 @@ package constants
 
 // PartnerIntegrationLinkedFields contains field name constants for PartnerIntegrationLinked objects
 var PartnerIntegrationLinkedFields = struct {
-	AdsPixel string
-	Application string
-	CompletedIntegrationTypes string
+	AdsPixel                     string
+	Application                  string
+	CompletedIntegrationTypes    string
 	ExternalBusinessConnectionId string
-	ExternalId string
-	HasOauthToken string
-	Id string
-	MbeAppId string
-	MbeAssetId string
-	MbeExternalBusinessId string
-	Name string
-	OfflineConversionDataSet string
-	Page string
-	Partner string
-	ProductCatalog string
-	SetupStatus string
+	ExternalId                   string
+	HasOauthToken                string
+	Id                           string
+	MbeAppId                     string
+	MbeAssetId                   string
+	MbeExternalBusinessId        string
+	Name                         string
+	OfflineConversionDataSet     string
+	Page                         string
+	Partner                      string
+	ProductCatalog               string
+	SetupStatus                  string
 }{
-	AdsPixel: "ads_pixel",
-	Application: "application",
-	CompletedIntegrationTypes: "completed_integration_types",
+	AdsPixel:                     "ads_pixel",
+	Application:                  "application",
+	CompletedIntegrationTypes:    "completed_integration_types",
 	ExternalBusinessConnectionId: "external_business_connection_id",
-	ExternalId: "external_id",
-	HasOauthToken: "has_oauth_token",
-	Id: "id",
-	MbeAppId: "mbe_app_id",
-	MbeAssetId: "mbe_asset_id",
-	MbeExternalBusinessId: "mbe_external_business_id",
-	Name: "name",
-	OfflineConversionDataSet: "offline_conversion_data_set",
-	Page: "page",
-	Partner: "partner",
-	ProductCatalog: "product_catalog",
-	SetupStatus: "setup_status",
+	ExternalId:                   "external_id",
+	HasOauthToken:                "has_oauth_token",
+	Id:                           "id",
+	MbeAppId:                     "mbe_app_id",
+	MbeAssetId:                   "mbe_asset_id",
+	MbeExternalBusinessId:        "mbe_external_business_id",
+	Name:                         "name",
+	OfflineConversionDataSet:     "offline_conversion_data_set",
+	Page:                         "page",
+	Partner:                      "partner",
+	ProductCatalog:               "product_catalog",
+	SetupStatus:                  "setup_status",
 }
 
 // PartnerIntegrationLinkedFieldsList contains all available fields for PartnerIntegrationLinked objects

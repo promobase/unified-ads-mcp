@@ -4,53 +4,53 @@ package constants
 
 // JobOpeningFields contains field name constants for JobOpening objects
 var JobOpeningFields = struct {
-	Address string
-	ApplicationCallbackUrl string
-	CreatedTime string
-	Description string
-	Errors string
+	Address                    string
+	ApplicationCallbackUrl     string
+	CreatedTime                string
+	Description                string
+	Errors                     string
 	ExternalCompanyFacebookUrl string
 	ExternalCompanyFullAddress string
-	ExternalCompanyId string
-	ExternalCompanyName string
-	ExternalId string
-	Id string
-	JobStatus string
-	Latitude string
-	Longitude string
-	OffsiteApplicationUrl string
-	Page string
-	Photo string
-	PlatformReviewStatus string
-	Post string
-	RemoteType string
-	ReviewRejectionReasons string
-	Title string
-	FieldType string
+	ExternalCompanyId          string
+	ExternalCompanyName        string
+	ExternalId                 string
+	Id                         string
+	JobStatus                  string
+	Latitude                   string
+	Longitude                  string
+	OffsiteApplicationUrl      string
+	Page                       string
+	Photo                      string
+	PlatformReviewStatus       string
+	Post                       string
+	RemoteType                 string
+	ReviewRejectionReasons     string
+	Title                      string
+	FieldType                  string
 }{
-	Address: "address",
-	ApplicationCallbackUrl: "application_callback_url",
-	CreatedTime: "created_time",
-	Description: "description",
-	Errors: "errors",
+	Address:                    "address",
+	ApplicationCallbackUrl:     "application_callback_url",
+	CreatedTime:                "created_time",
+	Description:                "description",
+	Errors:                     "errors",
 	ExternalCompanyFacebookUrl: "external_company_facebook_url",
 	ExternalCompanyFullAddress: "external_company_full_address",
-	ExternalCompanyId: "external_company_id",
-	ExternalCompanyName: "external_company_name",
-	ExternalId: "external_id",
-	Id: "id",
-	JobStatus: "job_status",
-	Latitude: "latitude",
-	Longitude: "longitude",
-	OffsiteApplicationUrl: "offsite_application_url",
-	Page: "page",
-	Photo: "photo",
-	PlatformReviewStatus: "platform_review_status",
-	Post: "post",
-	RemoteType: "remote_type",
-	ReviewRejectionReasons: "review_rejection_reasons",
-	Title: "title",
-	FieldType: "type",
+	ExternalCompanyId:          "external_company_id",
+	ExternalCompanyName:        "external_company_name",
+	ExternalId:                 "external_id",
+	Id:                         "id",
+	JobStatus:                  "job_status",
+	Latitude:                   "latitude",
+	Longitude:                  "longitude",
+	OffsiteApplicationUrl:      "offsite_application_url",
+	Page:                       "page",
+	Photo:                      "photo",
+	PlatformReviewStatus:       "platform_review_status",
+	Post:                       "post",
+	RemoteType:                 "remote_type",
+	ReviewRejectionReasons:     "review_rejection_reasons",
+	Title:                      "title",
+	FieldType:                  "type",
 }
 
 // JobOpeningFieldsList contains all available fields for JobOpening objects

@@ -17,7 +17,7 @@ import (
 // ToolPagepost_get_sharedposts returns the MCP tool definition for pagepost_get_sharedposts
 func ToolPagepost_get_sharedposts() mcp.Tool {
 	// Available fields for Post: actions, admin_creator, allowed_advertising_objectives, application, backdated_time, call_to_action, can_reply_privately, caption, child_attachments, comments_mirroring_domain, coordinates, created_time, description, event, expanded_height, expanded_width, feed_targeting, from, full_picture, height, icon, id, instagram_eligibility, is_app_share, is_eligible_for_promotion, is_expired, is_hidden, is_inline_created, is_instagram_eligible, is_popular, is_published, is_spherical, link, message, message_tags, multi_share_end_card, multi_share_optimized, name, object_id, parent_id, permalink_url, picture, place, privacy, promotable_id, promotion_status, properties, scheduled_publish_time, shares, source, status_type, story, story_tags, subscribed, target, targeting, timeline_visibility, type, updated_time, via, video_buying_eligibility, width
-	
+
 	return mcp.NewTool("pagepost_get_sharedposts",
 		mcp.WithDescription("GET sharedposts for PagePost"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandlePagepost_get_sharedposts(ctx context.Context, request mcp.CallToolReq
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Pagepost_get_sharedposts(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandlePagepost_get_sharedposts(ctx context.Context, request mcp.CallToolReq
 // Pagepost_get_sharedposts performs GET sharedposts for PagePost
 func Pagepost_get_sharedposts(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/sharedposts")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

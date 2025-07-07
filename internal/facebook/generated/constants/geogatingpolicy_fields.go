@@ -4,21 +4,21 @@ package constants
 
 // GeoGatingPolicyFields contains field name constants for GeoGatingPolicy objects
 var GeoGatingPolicyFields = struct {
-	AfterSchedule string
+	AfterSchedule  string
 	ExcludeCountry string
-	Id string
+	Id             string
 	IncludeCountry string
-	Name string
-	ValidFrom string
-	ValidUntil string
+	Name           string
+	ValidFrom      string
+	ValidUntil     string
 }{
-	AfterSchedule: "after_schedule",
+	AfterSchedule:  "after_schedule",
 	ExcludeCountry: "exclude_country",
-	Id: "id",
+	Id:             "id",
 	IncludeCountry: "include_country",
-	Name: "name",
-	ValidFrom: "valid_from",
-	ValidUntil: "valid_until",
+	Name:           "name",
+	ValidFrom:      "valid_from",
+	ValidUntil:     "valid_until",
 }
 
 // GeoGatingPolicyFieldsList contains all available fields for GeoGatingPolicy objects

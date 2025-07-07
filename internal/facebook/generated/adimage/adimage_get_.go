@@ -17,7 +17,7 @@ import (
 // ToolAdimage_get_ returns the MCP tool definition for adimage_get_
 func ToolAdimage_get_() mcp.Tool {
 	// Available fields for AdImage: account_id, created_time, creatives, hash, height, id, is_associated_creatives_in_adgroups, name, original_height, original_width, owner_business, permalink_url, status, updated_time, url, url_128, width
-	
+
 	return mcp.NewTool("adimage_get_",
 		mcp.WithDescription("GET  for AdImage"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleAdimage_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Adimage_get_(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleAdimage_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 // Adimage_get_ performs GET  for AdImage
 func Adimage_get_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

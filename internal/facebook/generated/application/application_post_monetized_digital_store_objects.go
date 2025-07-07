@@ -15,7 +15,7 @@ import (
 
 // ToolApplication_post_monetized_digital_store_objects returns the MCP tool definition for application_post_monetized_digital_store_objects
 func ToolApplication_post_monetized_digital_store_objects() mcp.Tool {
-	
+
 	// Params object accepts: content_id (string), store (string)
 	return mcp.NewTool("application_post_monetized_digital_store_objects",
 		mcp.WithDescription("POST monetized_digital_store_objects for Application"),
@@ -23,14 +23,14 @@ func ToolApplication_post_monetized_digital_store_objects() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"content_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "content_id parameter",
-					"required": true,
+					"required":    true,
 				},
 				"store": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "store parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: content_id (string) [required], store (string) [required]"),
@@ -63,8 +63,6 @@ func HandleApplication_post_monetized_digital_store_objects(ctx context.Context,
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Application_post_monetized_digital_store_objects(accessToken, args)
 	if err != nil {
@@ -83,20 +81,18 @@ func HandleApplication_post_monetized_digital_store_objects(ctx context.Context,
 // Application_post_monetized_digital_store_objects performs POST monetized_digital_store_objects for Application
 func Application_post_monetized_digital_store_objects(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/monetized_digital_store_objects")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

@@ -15,7 +15,7 @@ import (
 
 // ToolCommerceorder_post_shipments returns the MCP tool definition for commerceorder_post_shipments
 func ToolCommerceorder_post_shipments() mcp.Tool {
-	
+
 	// Params object accepts: external_redemption_link (string), external_shipment_id (string), fulfillment (map), idempotency_key (string), items (list<map>), merchant_order_reference (string), shipment_origin_postal_code (string), shipping_tax_details (map), should_use_default_fulfillment_location (bool), tracking_info (map)
 	return mcp.NewTool("commerceorder_post_shipments",
 		mcp.WithDescription("POST shipments for CommerceOrder"),
@@ -23,45 +23,45 @@ func ToolCommerceorder_post_shipments() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"external_redemption_link": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "external_redemption_link parameter",
 				},
 				"external_shipment_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "external_shipment_id parameter",
 				},
 				"fulfillment": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "fulfillment parameter",
 				},
 				"idempotency_key": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "idempotency_key parameter",
-					"required": true,
+					"required":    true,
 				},
 				"items": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "items parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"merchant_order_reference": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "merchant_order_reference parameter",
 				},
 				"shipment_origin_postal_code": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "shipment_origin_postal_code parameter",
 				},
 				"shipping_tax_details": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "shipping_tax_details parameter",
 				},
 				"should_use_default_fulfillment_location": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "should_use_default_fulfillment_location parameter",
 				},
 				"tracking_info": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "tracking_info parameter",
 				},
 			}),
@@ -95,8 +95,6 @@ func HandleCommerceorder_post_shipments(ctx context.Context, request mcp.CallToo
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Commerceorder_post_shipments(accessToken, args)
 	if err != nil {
@@ -115,20 +113,18 @@ func HandleCommerceorder_post_shipments(ctx context.Context, request mcp.CallToo
 // Commerceorder_post_shipments performs POST shipments for CommerceOrder
 func Commerceorder_post_shipments(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/shipments")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

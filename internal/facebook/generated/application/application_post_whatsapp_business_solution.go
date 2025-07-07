@@ -15,7 +15,7 @@ import (
 
 // ToolApplication_post_whatsapp_business_solution returns the MCP tool definition for application_post_whatsapp_business_solution
 func ToolApplication_post_whatsapp_business_solution() mcp.Tool {
-	
+
 	// Params object accepts: owner_permissions (list<applicationwhatsapp_business_solution_owner_permissions_enum_param>), partner_app_id (string), partner_permissions (list<applicationwhatsapp_business_solution_partner_permissions_enum_param>), solution_name (string)
 	return mcp.NewTool("application_post_whatsapp_business_solution",
 		mcp.WithDescription("POST whatsapp_business_solution for Application"),
@@ -23,28 +23,28 @@ func ToolApplication_post_whatsapp_business_solution() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"owner_permissions": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "owner_permissions parameter",
-					"required": true,
-					"enum": []string{ "DEVELOP", "MANAGE", "MANAGE_EXTENSIONS", "MANAGE_PHONE", "MANAGE_PHONE_ASSETS", "MANAGE_TEMPLATES", "MESSAGING", "VIEW_COST", "VIEW_PHONE_ASSETS", "VIEW_TEMPLATES" },
-					"items": map[string]any{"type": "string"},
+					"required":    true,
+					"enum":        []string{"DEVELOP", "MANAGE", "MANAGE_EXTENSIONS", "MANAGE_PHONE", "MANAGE_PHONE_ASSETS", "MANAGE_TEMPLATES", "MESSAGING", "VIEW_COST", "VIEW_PHONE_ASSETS", "VIEW_TEMPLATES"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"partner_app_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "partner_app_id parameter",
-					"required": true,
+					"required":    true,
 				},
 				"partner_permissions": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "partner_permissions parameter",
-					"required": true,
-					"enum": []string{ "DEVELOP", "MANAGE", "MANAGE_EXTENSIONS", "MANAGE_PHONE", "MANAGE_PHONE_ASSETS", "MANAGE_TEMPLATES", "MESSAGING", "VIEW_COST", "VIEW_PHONE_ASSETS", "VIEW_TEMPLATES" },
-					"items": map[string]any{"type": "string"},
+					"required":    true,
+					"enum":        []string{"DEVELOP", "MANAGE", "MANAGE_EXTENSIONS", "MANAGE_PHONE", "MANAGE_PHONE_ASSETS", "MANAGE_TEMPLATES", "MESSAGING", "VIEW_COST", "VIEW_PHONE_ASSETS", "VIEW_TEMPLATES"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"solution_name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "solution_name parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: owner_permissions (array<enum>) [DEVELOP, MANAGE, MANAGE_EXTENSIONS, MANAGE_PHONE, MANAGE_PHONE_ASSETS, ...] [required], partner_app_id (string) [required], partner_permissions (array<enum>) [DEVELOP, MANAGE, MANAGE_EXTENSIONS, MANAGE_PHONE, MANAGE_PHONE_ASSETS, ...] [required], solution_name (string) [required]"),
@@ -77,8 +77,6 @@ func HandleApplication_post_whatsapp_business_solution(ctx context.Context, requ
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Application_post_whatsapp_business_solution(accessToken, args)
 	if err != nil {
@@ -97,20 +95,18 @@ func HandleApplication_post_whatsapp_business_solution(ctx context.Context, requ
 // Application_post_whatsapp_business_solution performs POST whatsapp_business_solution for Application
 func Application_post_whatsapp_business_solution(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/whatsapp_business_solution")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

@@ -4,8 +4,8 @@ package types
 
 // ProductImage represents a Facebook ProductImage object
 type ProductImage struct {
-	Height int `json:"height"`
-	Id string `json:"id"`
+	Height    int    `json:"height"`
+	Id        string `json:"id"`
 	Image_url string `json:"image_url"`
-	Width int `json:"width"`
+	Width     int    `json:"width"`
 }

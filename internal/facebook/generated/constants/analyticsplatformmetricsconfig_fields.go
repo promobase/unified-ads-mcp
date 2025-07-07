@@ -4,24 +4,24 @@ package constants
 
 // AnalyticsPlatformMetricsConfigFields contains field name constants for AnalyticsPlatformMetricsConfig objects
 var AnalyticsPlatformMetricsConfigFields = struct {
-	HasA2u string
-	HasApiCalls string
-	HasAppInvites string
-	HasFbLogin string
-	HasGameRequests string
-	HasPayments string
-	HasReferrals string
-	HasStories string
+	HasA2u                string
+	HasApiCalls           string
+	HasAppInvites         string
+	HasFbLogin            string
+	HasGameRequests       string
+	HasPayments           string
+	HasReferrals          string
+	HasStories            string
 	HasStructuredRequests string
 }{
-	HasA2u: "has_a2u",
-	HasApiCalls: "has_api_calls",
-	HasAppInvites: "has_app_invites",
-	HasFbLogin: "has_fb_login",
-	HasGameRequests: "has_game_requests",
-	HasPayments: "has_payments",
-	HasReferrals: "has_referrals",
-	HasStories: "has_stories",
+	HasA2u:                "has_a2u",
+	HasApiCalls:           "has_api_calls",
+	HasAppInvites:         "has_app_invites",
+	HasFbLogin:            "has_fb_login",
+	HasGameRequests:       "has_game_requests",
+	HasPayments:           "has_payments",
+	HasReferrals:          "has_referrals",
+	HasStories:            "has_stories",
 	HasStructuredRequests: "has_structured_requests",
 }
 

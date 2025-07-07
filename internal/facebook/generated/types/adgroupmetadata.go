@@ -4,9 +4,9 @@ package types
 
 // AdgroupMetadata represents a Facebook AdgroupMetadata object
 type AdgroupMetadata struct {
-	Ad_standard_enhancements_edit_source int `json:"ad_standard_enhancements_edit_source"`
-	Adgroup_creation_source string `json:"adgroup_creation_source"`
-	Adgroup_edit_source string `json:"adgroup_edit_source"`
-	Carousel_style string `json:"carousel_style"`
-	Carousel_with_static_card_style string `json:"carousel_with_static_card_style"`
+	Ad_standard_enhancements_edit_source int    `json:"ad_standard_enhancements_edit_source"`
+	Adgroup_creation_source              string `json:"adgroup_creation_source"`
+	Adgroup_edit_source                  string `json:"adgroup_edit_source"`
+	Carousel_style                       string `json:"carousel_style"`
+	Carousel_with_static_card_style      string `json:"carousel_with_static_card_style"`
 }

@@ -15,7 +15,7 @@ import (
 
 // ToolApplication_post_aem_skan_readiness returns the MCP tool definition for application_post_aem_skan_readiness
 func ToolApplication_post_aem_skan_readiness() mcp.Tool {
-	
+
 	// Params object accepts: app_id (int), is_aem_ready (bool), is_app_aem_install_ready (bool), is_app_aem_ready (bool), is_skan_ready (bool), message (string)
 	return mcp.NewTool("application_post_aem_skan_readiness",
 		mcp.WithDescription("POST aem_skan_readiness for Application"),
@@ -23,28 +23,28 @@ func ToolApplication_post_aem_skan_readiness() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"app_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "app_id parameter",
-					"required": true,
+					"required":    true,
 				},
 				"is_aem_ready": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_aem_ready parameter",
 				},
 				"is_app_aem_install_ready": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_app_aem_install_ready parameter",
 				},
 				"is_app_aem_ready": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_app_aem_ready parameter",
 				},
 				"is_skan_ready": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_skan_ready parameter",
 				},
 				"message": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "message parameter",
 				},
 			}),
@@ -78,8 +78,6 @@ func HandleApplication_post_aem_skan_readiness(ctx context.Context, request mcp.
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Application_post_aem_skan_readiness(accessToken, args)
 	if err != nil {
@@ -98,20 +96,18 @@ func HandleApplication_post_aem_skan_readiness(ctx context.Context, request mcp.
 // Application_post_aem_skan_readiness performs POST aem_skan_readiness for Application
 func Application_post_aem_skan_readiness(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/aem_skan_readiness")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

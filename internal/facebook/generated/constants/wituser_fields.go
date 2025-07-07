@@ -5,12 +5,12 @@ package constants
 // WITUserFields contains field name constants for WITUser objects
 var WITUserFields = struct {
 	AccessToken string
-	Id string
-	Name string
+	Id          string
+	Name        string
 }{
 	AccessToken: "access_token",
-	Id: "id",
-	Name: "name",
+	Id:          "id",
+	Name:        "name",
 }
 
 // WITUserFieldsList contains all available fields for WITUser objects

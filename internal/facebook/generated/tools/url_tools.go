@@ -17,7 +17,6 @@ import (
 func GetURLTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// url_get_ tool
 	// Available fields for URL: engagement, id, og_object, ownership_permissions, scopes
 	url_get_Tool := mcp.NewTool("url_get_",
@@ -44,30 +43,30 @@ func GetURLTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"blacklist": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "blacklist parameter",
 				},
 				"denylist": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "denylist parameter",
 				},
 				"hmac": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "hmac parameter",
 				},
 				"locale": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "locale parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"scopes": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "scopes parameter",
-					"enum": []string{ "NEWS_TAB", "NEWS_TAB_DEV_ENV" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"NEWS_TAB", "NEWS_TAB_DEV_ENV"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"ts": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "ts parameter",
 				},
 			}),
@@ -76,12 +75,10 @@ func GetURLTools() []mcp.Tool {
 	)
 	tools = append(tools, url_post_Tool)
 
-
 	return tools
 }
 
 // URL handlers
-
 
 // HandleUrl_get_ handles the url_get_ tool with context-based auth
 func HandleUrl_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -122,8 +119,6 @@ func HandleUrl_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Call
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Url_get_(args)
 	if err != nil {
@@ -138,7 +133,6 @@ func HandleUrl_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleUrl_post_ handles the url_post_ tool with context-based auth
 func HandleUrl_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -166,8 +160,6 @@ func HandleUrl_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Cal
 		}
 	}
 
-
-
 	// Call the client method
 	result, err := client.Url_post_(args)
 	if err != nil {
@@ -182,4 +174,3 @@ func HandleUrl_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

@@ -4,23 +4,23 @@ package constants
 
 // EducationExperienceFields contains field name constants for EducationExperience objects
 var EducationExperienceFields = struct {
-	Classes string
+	Classes       string
 	Concentration string
-	Degree string
-	Id string
-	School string
-	FieldType string
-	With string
-	Year string
+	Degree        string
+	Id            string
+	School        string
+	FieldType     string
+	With          string
+	Year          string
 }{
-	Classes: "classes",
+	Classes:       "classes",
 	Concentration: "concentration",
-	Degree: "degree",
-	Id: "id",
-	School: "school",
-	FieldType: "type",
-	With: "with",
-	Year: "year",
+	Degree:        "degree",
+	Id:            "id",
+	School:        "school",
+	FieldType:     "type",
+	With:          "with",
+	Year:          "year",
 }
 
 // EducationExperienceFieldsList contains all available fields for EducationExperience objects

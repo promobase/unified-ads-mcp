@@ -17,7 +17,6 @@ import (
 func GetCatalogWebsiteSettingsTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// catalogwebsitesettings_get_ tool
 	// Available fields for CatalogWebsiteSettings: id, is_allowed_to_crawl
 	catalogwebsitesettings_get_Tool := mcp.NewTool("catalogwebsitesettings_get_",
@@ -37,12 +36,10 @@ func GetCatalogWebsiteSettingsTools() []mcp.Tool {
 	)
 	tools = append(tools, catalogwebsitesettings_get_Tool)
 
-
 	return tools
 }
 
 // CatalogWebsiteSettings handlers
-
 
 // HandleCatalogwebsitesettings_get_ handles the catalogwebsitesettings_get_ tool with context-based auth
 func HandleCatalogwebsitesettings_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleCatalogwebsitesettings_get_(ctx context.Context, request mcp.CallTool
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Catalogwebsitesettings_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleCatalogwebsitesettings_get_(ctx context.Context, request mcp.CallTool
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

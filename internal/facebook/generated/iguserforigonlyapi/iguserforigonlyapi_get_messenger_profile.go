@@ -16,8 +16,7 @@ import (
 
 // ToolIguserforigonlyapi_get_messenger_profile returns the MCP tool definition for iguserforigonlyapi_get_messenger_profile
 func ToolIguserforigonlyapi_get_messenger_profile() mcp.Tool {
-	
-	
+
 	return mcp.NewTool("iguserforigonlyapi_get_messenger_profile",
 		mcp.WithDescription("GET messenger_profile for IGUserForIGOnlyAPI"),
 		mcp.WithArray("fields",
@@ -71,8 +70,6 @@ func HandleIguserforigonlyapi_get_messenger_profile(ctx context.Context, request
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Iguserforigonlyapi_get_messenger_profile(accessToken, args)
 	if err != nil {
@@ -91,38 +88,36 @@ func HandleIguserforigonlyapi_get_messenger_profile(ctx context.Context, request
 // Iguserforigonlyapi_get_messenger_profile performs GET messenger_profile for IGUserForIGOnlyAPI
 func Iguserforigonlyapi_get_messenger_profile(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/messenger_profile")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

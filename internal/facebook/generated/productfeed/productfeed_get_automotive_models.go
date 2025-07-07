@@ -23,11 +23,11 @@ func ToolProductfeed_get_automotive_models() mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"bulk_pagination": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "bulk_pagination parameter",
 				},
 				"filter": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "filter parameter",
 				},
 			}),
@@ -96,8 +96,6 @@ func HandleProductfeed_get_automotive_models(ctx context.Context, request mcp.Ca
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Productfeed_get_automotive_models(accessToken, args)
 	if err != nil {
@@ -116,44 +114,42 @@ func HandleProductfeed_get_automotive_models(ctx context.Context, request mcp.Ca
 // Productfeed_get_automotive_models performs GET automotive_models for ProductFeed
 func Productfeed_get_automotive_models(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/automotive_models")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

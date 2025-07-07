@@ -15,137 +15,137 @@ import (
 
 // ToolApplication_post_ returns the MCP tool definition for application_post_
 func ToolApplication_post_() mcp.Tool {
-	
+
 	// Params object accepts: allow_cycle_app_secret (bool), an_platforms (list<application_an_platforms>), app_domains (list<string>), app_name (string), app_type (bool), auth_dialog_headline (string), auth_dialog_perms_explanation (string), auth_referral_enabled (bool), auth_referral_extended_perms (list<string>), auth_referral_friend_perms (list<string>), auth_referral_response_type (string), auth_referral_user_perms (list<string>), canvas_fluid_height (bool), canvas_fluid_width (bool), canvas_url (string), contact_email (string), deauth_callback_url (string), mobile_web_url (string), namespace (string), page_tab_default_name (string), privacy_policy_url (string), restrictions (string), secure_canvas_url (string), secure_page_tab_url (string), server_ip_whitelist (list<string>), terms_of_service_url (string), url_scheme_suffix (string), user_support_email (string), user_support_url (string), website_url (string)
 	return mcp.NewTool("application_post_",
 		mcp.WithDescription("POST  for Application"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"allow_cycle_app_secret": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "allow_cycle_app_secret parameter",
 				},
 				"an_platforms": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "an_platforms parameter",
-					"enum": []string{ "ANDROID", "DESKTOP", "GALAXY", "INSTANT_ARTICLES", "IOS", "MOBILE_WEB", "OCULUS", "UNKNOWN", "XIAOMI" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"ANDROID", "DESKTOP", "GALAXY", "INSTANT_ARTICLES", "IOS", "MOBILE_WEB", "OCULUS", "UNKNOWN", "XIAOMI"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"app_domains": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "app_domains parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"app_name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "app_name parameter",
 				},
 				"app_type": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "app_type parameter",
 				},
 				"auth_dialog_headline": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "auth_dialog_headline parameter",
 				},
 				"auth_dialog_perms_explanation": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "auth_dialog_perms_explanation parameter",
 				},
 				"auth_referral_enabled": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "auth_referral_enabled parameter",
 				},
 				"auth_referral_extended_perms": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "auth_referral_extended_perms parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"auth_referral_friend_perms": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "auth_referral_friend_perms parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"auth_referral_response_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "auth_referral_response_type parameter",
 				},
 				"auth_referral_user_perms": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "auth_referral_user_perms parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"canvas_fluid_height": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "canvas_fluid_height parameter",
 				},
 				"canvas_fluid_width": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "canvas_fluid_width parameter",
 				},
 				"canvas_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "canvas_url parameter",
 				},
 				"contact_email": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "contact_email parameter",
 				},
 				"deauth_callback_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "deauth_callback_url parameter",
 				},
 				"mobile_web_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "mobile_web_url parameter",
 				},
 				"namespace": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "namespace parameter",
 				},
 				"page_tab_default_name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "page_tab_default_name parameter",
 				},
 				"privacy_policy_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "privacy_policy_url parameter",
 				},
 				"restrictions": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "restrictions parameter",
 				},
 				"secure_canvas_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "secure_canvas_url parameter",
 				},
 				"secure_page_tab_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "secure_page_tab_url parameter",
 				},
 				"server_ip_whitelist": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "server_ip_whitelist parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"terms_of_service_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "terms_of_service_url parameter",
 				},
 				"url_scheme_suffix": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "url_scheme_suffix parameter",
 				},
 				"user_support_email": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "user_support_email parameter",
 				},
 				"user_support_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "user_support_url parameter",
 				},
 				"website_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "website_url parameter",
 				},
 			}),
@@ -177,8 +177,6 @@ func HandleApplication_post_(ctx context.Context, request mcp.CallToolRequest) (
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Application_post_(accessToken, args)
 	if err != nil {
@@ -197,20 +195,18 @@ func HandleApplication_post_(ctx context.Context, request mcp.CallToolRequest) (
 // Application_post_ performs POST  for Application
 func Application_post_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

@@ -17,7 +17,6 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolContentblocklist_get_instagram_content())
 	tools = append(tools, ToolContentblocklist_get_())
 
-
 	return tools
 }
 
@@ -29,7 +28,6 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers["contentblocklist_get_facebook_content"] = HandleContentblocklist_get_facebook_content
 	handlers["contentblocklist_get_instagram_content"] = HandleContentblocklist_get_instagram_content
 	handlers["contentblocklist_get_"] = HandleContentblocklist_get_
-
 
 	return handlers
 }

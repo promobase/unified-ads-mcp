@@ -24,15 +24,15 @@ func ToolOfflineconversiondataset_get_shared_accounts() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"action_source": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "action_source parameter",
-					"required": true,
-					"enum": []string{ "PHYSICAL_STORE", "WEBSITE" },
+					"required":    true,
+					"enum":        []string{"PHYSICAL_STORE", "WEBSITE"},
 				},
 				"business": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "business parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: action_source (enum) [PHYSICAL_STORE, WEBSITE] [required], business (string) [required]"),
@@ -102,8 +102,6 @@ func HandleOfflineconversiondataset_get_shared_accounts(ctx context.Context, req
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Offlineconversiondataset_get_shared_accounts(accessToken, args)
 	if err != nil {
@@ -122,44 +120,42 @@ func HandleOfflineconversiondataset_get_shared_accounts(ctx context.Context, req
 // Offlineconversiondataset_get_shared_accounts performs GET shared_accounts for OfflineConversionDataSet
 func Offlineconversiondataset_get_shared_accounts(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/shared_accounts")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

@@ -4,20 +4,20 @@ package constants
 
 // AdCreativeTemplateURLSpecFields contains field name constants for AdCreativeTemplateURLSpec objects
 var AdCreativeTemplateURLSpecFields = struct {
-	Android string
-	Config string
-	Ios string
-	Ipad string
-	Iphone string
-	Web string
+	Android      string
+	Config       string
+	Ios          string
+	Ipad         string
+	Iphone       string
+	Web          string
 	WindowsPhone string
 }{
-	Android: "android",
-	Config: "config",
-	Ios: "ios",
-	Ipad: "ipad",
-	Iphone: "iphone",
-	Web: "web",
+	Android:      "android",
+	Config:       "config",
+	Ios:          "ios",
+	Ipad:         "ipad",
+	Iphone:       "iphone",
+	Web:          "web",
 	WindowsPhone: "windows_phone",
 }
 

@@ -5,6 +5,6 @@ package types
 // RecommendedPagePost represents a Facebook RecommendedPagePost object
 type RecommendedPagePost struct {
 	Intent_score float64 `json:"intent_score"`
-	Is_ig_media bool `json:"is_ig_media"`
-	Post_id string `json:"post_id"`
+	Is_ig_media  bool    `json:"is_ig_media"`
+	Post_id      string  `json:"post_id"`
 }

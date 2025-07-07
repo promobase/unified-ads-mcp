@@ -15,7 +15,7 @@ import (
 
 // ToolPage_delete_welcome_message_flows returns the MCP tool definition for page_delete_welcome_message_flows
 func ToolPage_delete_welcome_message_flows() mcp.Tool {
-	
+
 	// Params object accepts: flow_id (string)
 	return mcp.NewTool("page_delete_welcome_message_flows",
 		mcp.WithDescription("DELETE welcome_message_flows for Page"),
@@ -23,9 +23,9 @@ func ToolPage_delete_welcome_message_flows() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"flow_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "flow_id parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: flow_id (string) [required]"),
@@ -58,8 +58,6 @@ func HandlePage_delete_welcome_message_flows(ctx context.Context, request mcp.Ca
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Page_delete_welcome_message_flows(accessToken, args)
 	if err != nil {
@@ -78,20 +76,18 @@ func HandlePage_delete_welcome_message_flows(ctx context.Context, request mcp.Ca
 // Page_delete_welcome_message_flows performs DELETE welcome_message_flows for Page
 func Page_delete_welcome_message_flows(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/welcome_message_flows")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

@@ -5,10 +5,10 @@ package constants
 // ProductItemVideoDataFields contains field name constants for ProductItemVideoData objects
 var ProductItemVideoDataFields = struct {
 	Tags string
-	Url string
+	Url  string
 }{
 	Tags: "tags",
-	Url: "url",
+	Url:  "url",
 }
 
 // ProductItemVideoDataFieldsList contains all available fields for ProductItemVideoData objects

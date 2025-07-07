@@ -17,7 +17,7 @@ import (
 // ToolAdcustomderivedmetrics_get_ returns the MCP tool definition for adcustomderivedmetrics_get_
 func ToolAdcustomderivedmetrics_get_() mcp.Tool {
 	// Available fields for AdCustomDerivedMetrics: ad_account_id, business, creation_time, creator, custom_derived_metric_type, deletion_time, deletor, description, format_type, formula, has_attribution_windows, has_inline_attribution_window, id, name, permission, saved_report_id, scope
-	
+
 	return mcp.NewTool("adcustomderivedmetrics_get_",
 		mcp.WithDescription("GET  for AdCustomDerivedMetrics"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleAdcustomderivedmetrics_get_(ctx context.Context, request mcp.CallTool
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Adcustomderivedmetrics_get_(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleAdcustomderivedmetrics_get_(ctx context.Context, request mcp.CallTool
 // Adcustomderivedmetrics_get_ performs GET  for AdCustomDerivedMetrics
 func Adcustomderivedmetrics_get_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

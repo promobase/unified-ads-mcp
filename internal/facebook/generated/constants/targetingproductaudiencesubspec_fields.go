@@ -5,10 +5,10 @@ package constants
 // TargetingProductAudienceSubSpecFields contains field name constants for TargetingProductAudienceSubSpec objects
 var TargetingProductAudienceSubSpecFields = struct {
 	RetentionSeconds string
-	Rule string
+	Rule             string
 }{
 	RetentionSeconds: "retention_seconds",
-	Rule: "rule",
+	Rule:             "rule",
 }
 
 // TargetingProductAudienceSubSpecFieldsList contains all available fields for TargetingProductAudienceSubSpec objects

@@ -17,7 +17,7 @@ import (
 // ToolPage_get_ab_tests returns the MCP tool definition for page_get_ab_tests
 func ToolPage_get_ab_tests() mcp.Tool {
 	// Available fields for PagePostExperiment: auto_resolve_settings, control_video_id, creation_time, creator, declared_winning_time, declared_winning_video_id, description, experiment_video_ids, id, insight_snapshots, name, optimization_goal, publish_status, publish_time, scheduled_experiment_timestamp, updated_time
-	
+
 	return mcp.NewTool("page_get_ab_tests",
 		mcp.WithDescription("GET ab_tests for Page"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandlePage_get_ab_tests(ctx context.Context, request mcp.CallToolRequest) (
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Page_get_ab_tests(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandlePage_get_ab_tests(ctx context.Context, request mcp.CallToolRequest) (
 // Page_get_ab_tests performs GET ab_tests for Page
 func Page_get_ab_tests(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/ab_tests")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

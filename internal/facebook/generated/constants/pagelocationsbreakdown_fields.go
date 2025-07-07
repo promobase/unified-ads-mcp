@@ -4,25 +4,25 @@ package constants
 
 // PageLocationsBreakdownFields contains field name constants for PageLocationsBreakdown objects
 var PageLocationsBreakdownFields = struct {
-	LocationId string
-	LocationName string
-	LocationType string
-	NumPages string
+	LocationId                             string
+	LocationName                           string
+	LocationType                           string
+	NumPages                               string
 	NumPagesEligibleForStoreVisitReporting string
-	NumUnpublishedOrClosedPages string
-	ParentCountryCode string
-	ParentRegionId string
-	ParentRegionName string
+	NumUnpublishedOrClosedPages            string
+	ParentCountryCode                      string
+	ParentRegionId                         string
+	ParentRegionName                       string
 }{
-	LocationId: "location_id",
-	LocationName: "location_name",
-	LocationType: "location_type",
-	NumPages: "num_pages",
+	LocationId:                             "location_id",
+	LocationName:                           "location_name",
+	LocationType:                           "location_type",
+	NumPages:                               "num_pages",
 	NumPagesEligibleForStoreVisitReporting: "num_pages_eligible_for_store_visit_reporting",
-	NumUnpublishedOrClosedPages: "num_unpublished_or_closed_pages",
-	ParentCountryCode: "parent_country_code",
-	ParentRegionId: "parent_region_id",
-	ParentRegionName: "parent_region_name",
+	NumUnpublishedOrClosedPages:            "num_unpublished_or_closed_pages",
+	ParentCountryCode:                      "parent_country_code",
+	ParentRegionId:                         "parent_region_id",
+	ParentRegionName:                       "parent_region_name",
 }
 
 // PageLocationsBreakdownFieldsList contains all available fields for PageLocationsBreakdown objects

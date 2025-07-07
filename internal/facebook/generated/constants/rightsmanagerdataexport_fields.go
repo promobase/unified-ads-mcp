@@ -4,20 +4,20 @@ package constants
 
 // RightsManagerDataExportFields contains field name constants for RightsManagerDataExport objects
 var RightsManagerDataExportFields = struct {
-	DownloadUri string
-	ExportScope string
-	Id string
-	Name string
-	RecordType string
-	TimeRangeEnd string
+	DownloadUri    string
+	ExportScope    string
+	Id             string
+	Name           string
+	RecordType     string
+	TimeRangeEnd   string
 	TimeRangeStart string
 }{
-	DownloadUri: "download_uri",
-	ExportScope: "export_scope",
-	Id: "id",
-	Name: "name",
-	RecordType: "record_type",
-	TimeRangeEnd: "time_range_end",
+	DownloadUri:    "download_uri",
+	ExportScope:    "export_scope",
+	Id:             "id",
+	Name:           "name",
+	RecordType:     "record_type",
+	TimeRangeEnd:   "time_range_end",
 	TimeRangeStart: "time_range_start",
 }
 

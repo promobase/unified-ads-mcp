@@ -4,23 +4,23 @@ package constants
 
 // BusinessCreativeFolderFields contains field name constants for BusinessCreativeFolder objects
 var BusinessCreativeFolderFields = struct {
-	Business string
-	CreationTime string
+	Business                   string
+	CreationTime               string
 	CreativeInsightPermissions string
-	Description string
-	Id string
-	MediaLibraryUrl string
-	Name string
-	OwnerBusiness string
+	Description                string
+	Id                         string
+	MediaLibraryUrl            string
+	Name                       string
+	OwnerBusiness              string
 }{
-	Business: "business",
-	CreationTime: "creation_time",
+	Business:                   "business",
+	CreationTime:               "creation_time",
 	CreativeInsightPermissions: "creative_insight_permissions",
-	Description: "description",
-	Id: "id",
-	MediaLibraryUrl: "media_library_url",
-	Name: "name",
-	OwnerBusiness: "owner_business",
+	Description:                "description",
+	Id:                         "id",
+	MediaLibraryUrl:            "media_library_url",
+	Name:                       "name",
+	OwnerBusiness:              "owner_business",
 }
 
 // BusinessCreativeFolderFieldsList contains all available fields for BusinessCreativeFolder objects

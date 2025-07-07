@@ -16,14 +16,14 @@ import (
 
 // ToolApplication_get_button_auto_detection_device_selection returns the MCP tool definition for application_get_button_auto_detection_device_selection
 func ToolApplication_get_button_auto_detection_device_selection() mcp.Tool {
-	
+
 	// Params object accepts: device_id (string)
 	return mcp.NewTool("application_get_button_auto_detection_device_selection",
 		mcp.WithDescription("GET button_auto_detection_device_selection for Application"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"device_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "device_id parameter",
 				},
 			}),
@@ -92,8 +92,6 @@ func HandleApplication_get_button_auto_detection_device_selection(ctx context.Co
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Application_get_button_auto_detection_device_selection(accessToken, args)
 	if err != nil {
@@ -112,44 +110,42 @@ func HandleApplication_get_button_auto_detection_device_selection(ctx context.Co
 // Application_get_button_auto_detection_device_selection performs GET button_auto_detection_device_selection for Application
 func Application_get_button_auto_detection_device_selection(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/button_auto_detection_device_selection")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

@@ -17,7 +17,7 @@ import (
 // ToolAudiorelease_get_ returns the MCP tool definition for audiorelease_get_
 func ToolAudiorelease_get_() mcp.Tool {
 	// Available fields for AudioRelease: album_title, asset_availability_status, audio_availability_status, audio_release_image_uri, created_time, displayed_artist, ean, genre, grid, id, isrc, label_name, original_release_date, parental_warning_type, proprietary_id, upc
-	
+
 	return mcp.NewTool("audiorelease_get_",
 		mcp.WithDescription("GET  for AudioRelease"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleAudiorelease_get_(ctx context.Context, request mcp.CallToolRequest) (
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Audiorelease_get_(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleAudiorelease_get_(ctx context.Context, request mcp.CallToolRequest) (
 // Audiorelease_get_ performs GET  for AudioRelease
 func Audiorelease_get_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

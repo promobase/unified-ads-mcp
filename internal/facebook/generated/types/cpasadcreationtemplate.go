@@ -4,11 +4,11 @@ package types
 
 // CPASAdCreationTemplate represents a Facebook CPASAdCreationTemplate object
 type CPASAdCreationTemplate struct {
-	Description string `json:"description"`
-	Id string `json:"id"`
-	Is_unused_template bool `json:"is_unused_template"`
-	Name string `json:"name"`
-	Optimization_goal string `json:"optimization_goal"`
-	Targeting_type string `json:"targeting_type"`
-	Template_type string `json:"template_type"`
+	Description        string `json:"description"`
+	Id                 string `json:"id"`
+	Is_unused_template bool   `json:"is_unused_template"`
+	Name               string `json:"name"`
+	Optimization_goal  string `json:"optimization_goal"`
+	Targeting_type     string `json:"targeting_type"`
+	Template_type      string `json:"template_type"`
 }

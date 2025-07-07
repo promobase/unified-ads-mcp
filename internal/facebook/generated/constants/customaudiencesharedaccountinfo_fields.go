@@ -4,16 +4,16 @@ package constants
 
 // CustomAudiencesharedAccountInfoFields contains field name constants for CustomAudiencesharedAccountInfo objects
 var CustomAudiencesharedAccountInfoFields = struct {
-	AccountId string
-	AccountName string
-	BusinessId string
-	BusinessName string
+	AccountId     string
+	AccountName   string
+	BusinessId    string
+	BusinessName  string
 	SharingStatus string
 }{
-	AccountId: "account_id",
-	AccountName: "account_name",
-	BusinessId: "business_id",
-	BusinessName: "business_name",
+	AccountId:     "account_id",
+	AccountName:   "account_name",
+	BusinessId:    "business_id",
+	BusinessName:  "business_name",
 	SharingStatus: "sharing_status",
 }
 

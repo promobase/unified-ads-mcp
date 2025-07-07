@@ -4,13 +4,13 @@ package constants
 
 // AdAccountIosFourteenCampaignLimitsFields contains field name constants for AdAccountIosFourteenCampaignLimits objects
 var AdAccountIosFourteenCampaignLimitsFields = struct {
-	CampaignGroupLimit string
+	CampaignGroupLimit         string
 	CampaignGroupLimitsDetails string
-	CampaignLimit string
+	CampaignLimit              string
 }{
-	CampaignGroupLimit: "campaign_group_limit",
+	CampaignGroupLimit:         "campaign_group_limit",
 	CampaignGroupLimitsDetails: "campaign_group_limits_details",
-	CampaignLimit: "campaign_limit",
+	CampaignLimit:              "campaign_limit",
 }
 
 // AdAccountIosFourteenCampaignLimitsFieldsList contains all available fields for AdAccountIosFourteenCampaignLimits objects

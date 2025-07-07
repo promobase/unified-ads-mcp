@@ -16,8 +16,7 @@ import (
 
 // ToolOmegacustomertrx_get_campaigns returns the MCP tool definition for omegacustomertrx_get_campaigns
 func ToolOmegacustomertrx_get_campaigns() mcp.Tool {
-	
-	
+
 	return mcp.NewTool("omegacustomertrx_get_campaigns",
 		mcp.WithDescription("GET campaigns for OmegaCustomerTrx"),
 		mcp.WithArray("fields",
@@ -71,8 +70,6 @@ func HandleOmegacustomertrx_get_campaigns(ctx context.Context, request mcp.CallT
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Omegacustomertrx_get_campaigns(accessToken, args)
 	if err != nil {
@@ -91,38 +88,36 @@ func HandleOmegacustomertrx_get_campaigns(ctx context.Context, request mcp.CallT
 // Omegacustomertrx_get_campaigns performs GET campaigns for OmegaCustomerTrx
 func Omegacustomertrx_get_campaigns(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/campaigns")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

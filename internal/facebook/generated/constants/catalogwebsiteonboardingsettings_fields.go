@@ -4,13 +4,13 @@ package constants
 
 // CatalogWebsiteOnboardingSettingsFields contains field name constants for CatalogWebsiteOnboardingSettings objects
 var CatalogWebsiteOnboardingSettingsFields = struct {
-	Id string
+	Id          string
 	QualityBand string
-	Status string
+	Status      string
 }{
-	Id: "id",
+	Id:          "id",
 	QualityBand: "quality_band",
-	Status: "status",
+	Status:      "status",
 }
 
 // CatalogWebsiteOnboardingSettingsFieldsList contains all available fields for CatalogWebsiteOnboardingSettings objects

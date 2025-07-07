@@ -4,17 +4,17 @@ package constants
 
 // AdCreativeRegionalRegulationDisclaimerFields contains field name constants for AdCreativeRegionalRegulationDisclaimer objects
 var AdCreativeRegionalRegulationDisclaimerFields = struct {
-	AustraliaFinserv string
-	IndiaFinserv string
+	AustraliaFinserv   string
+	IndiaFinserv       string
 	SingaporeUniversal string
-	TaiwanFinserv string
-	TaiwanUniversal string
+	TaiwanFinserv      string
+	TaiwanUniversal    string
 }{
-	AustraliaFinserv: "australia_finserv",
-	IndiaFinserv: "india_finserv",
+	AustraliaFinserv:   "australia_finserv",
+	IndiaFinserv:       "india_finserv",
 	SingaporeUniversal: "singapore_universal",
-	TaiwanFinserv: "taiwan_finserv",
-	TaiwanUniversal: "taiwan_universal",
+	TaiwanFinserv:      "taiwan_finserv",
+	TaiwanUniversal:    "taiwan_universal",
 }
 
 // AdCreativeRegionalRegulationDisclaimerFieldsList contains all available fields for AdCreativeRegionalRegulationDisclaimer objects

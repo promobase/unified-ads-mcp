@@ -69,7 +69,6 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolProductcatalog_get_())
 	tools = append(tools, ToolProductcatalog_post_())
 
-
 	return tools
 }
 
@@ -133,7 +132,6 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers["productcatalog_delete_"] = HandleProductcatalog_delete_
 	handlers["productcatalog_get_"] = HandleProductcatalog_get_
 	handlers["productcatalog_post_"] = HandleProductcatalog_post_
-
 
 	return handlers
 }

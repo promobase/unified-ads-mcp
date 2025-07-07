@@ -4,29 +4,29 @@ package constants
 
 // ProductEventStatFields contains field name constants for ProductEventStat objects
 var ProductEventStatFields = struct {
-	DateStart string
-	DateStop string
-	DeviceType string
-	Event string
-	EventSource string
-	TotalContentIdsMatchedOtherCatalogs string
-	TotalMatchedContentIds string
-	TotalUnmatchedContentIds string
+	DateStart                            string
+	DateStop                             string
+	DeviceType                           string
+	Event                                string
+	EventSource                          string
+	TotalContentIdsMatchedOtherCatalogs  string
+	TotalMatchedContentIds               string
+	TotalUnmatchedContentIds             string
 	UniqueContentIdsMatchedOtherCatalogs string
-	UniqueMatchedContentIds string
-	UniqueUnmatchedContentIds string
+	UniqueMatchedContentIds              string
+	UniqueUnmatchedContentIds            string
 }{
-	DateStart: "date_start",
-	DateStop: "date_stop",
-	DeviceType: "device_type",
-	Event: "event",
-	EventSource: "event_source",
-	TotalContentIdsMatchedOtherCatalogs: "total_content_ids_matched_other_catalogs",
-	TotalMatchedContentIds: "total_matched_content_ids",
-	TotalUnmatchedContentIds: "total_unmatched_content_ids",
+	DateStart:                            "date_start",
+	DateStop:                             "date_stop",
+	DeviceType:                           "device_type",
+	Event:                                "event",
+	EventSource:                          "event_source",
+	TotalContentIdsMatchedOtherCatalogs:  "total_content_ids_matched_other_catalogs",
+	TotalMatchedContentIds:               "total_matched_content_ids",
+	TotalUnmatchedContentIds:             "total_unmatched_content_ids",
 	UniqueContentIdsMatchedOtherCatalogs: "unique_content_ids_matched_other_catalogs",
-	UniqueMatchedContentIds: "unique_matched_content_ids",
-	UniqueUnmatchedContentIds: "unique_unmatched_content_ids",
+	UniqueMatchedContentIds:              "unique_matched_content_ids",
+	UniqueUnmatchedContentIds:            "unique_unmatched_content_ids",
 }
 
 // ProductEventStatFieldsList contains all available fields for ProductEventStat objects

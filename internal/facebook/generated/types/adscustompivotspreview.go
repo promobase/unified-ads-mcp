@@ -4,13 +4,13 @@ package types
 
 // AdsCustomPivotsPreview represents a Facebook AdsCustomPivotsPreview object
 type AdsCustomPivotsPreview struct {
-	Account_id string `json:"account_id"`
-	Account_name string `json:"account_name"`
-	Ad_id string `json:"ad_id"`
-	Ad_name string `json:"ad_name"`
-	Adset_id string `json:"adset_id"`
-	Adset_name string `json:"adset_name"`
-	Campaign_id string `json:"campaign_id"`
-	Campaign_name string `json:"campaign_name"`
+	Account_id       string   `json:"account_id"`
+	Account_name     string   `json:"account_name"`
+	Ad_id            string   `json:"ad_id"`
+	Ad_name          string   `json:"ad_name"`
+	Adset_id         string   `json:"adset_id"`
+	Adset_name       string   `json:"adset_name"`
+	Campaign_id      string   `json:"campaign_id"`
+	Campaign_name    string   `json:"campaign_name"`
 	Custom_breakdown []string `json:"custom_breakdown"`
 }

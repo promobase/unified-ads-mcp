@@ -17,7 +17,7 @@ import (
 // ToolCpascollaborationrequest_get_ returns the MCP tool definition for cpascollaborationrequest_get_
 func ToolCpascollaborationrequest_get_() mcp.Tool {
 	// Available fields for CPASCollaborationRequest: brands, contact_email, contact_first_name, contact_last_name, id, phone_number, receiver_business, requester_agency_or_brand, sender_client_business, status
-	
+
 	return mcp.NewTool("cpascollaborationrequest_get_",
 		mcp.WithDescription("GET  for CPASCollaborationRequest"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleCpascollaborationrequest_get_(ctx context.Context, request mcp.CallTo
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Cpascollaborationrequest_get_(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleCpascollaborationrequest_get_(ctx context.Context, request mcp.CallTo
 // Cpascollaborationrequest_get_ performs GET  for CPASCollaborationRequest
 func Cpascollaborationrequest_get_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

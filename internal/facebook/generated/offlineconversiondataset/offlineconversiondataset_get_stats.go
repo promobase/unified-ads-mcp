@@ -16,36 +16,36 @@ import (
 
 // ToolOfflineconversiondataset_get_stats returns the MCP tool definition for offlineconversiondataset_get_stats
 func ToolOfflineconversiondataset_get_stats() mcp.Tool {
-	
+
 	// Params object accepts: aggr_time (offlineconversiondatasetstats_aggr_time_enum_param), end (int), granularity (offlineconversiondatasetstats_granularity_enum_param), skip_empty_values (bool), start (int), user_timezone_id (unsigned int)
 	return mcp.NewTool("offlineconversiondataset_get_stats",
 		mcp.WithDescription("GET stats for OfflineConversionDataSet"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"aggr_time": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "aggr_time parameter",
-					"enum": []string{ "event_time", "upload_time" },
+					"enum":        []string{"event_time", "upload_time"},
 				},
 				"end": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "end parameter",
 				},
 				"granularity": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "granularity parameter",
-					"enum": []string{ "daily", "hourly", "six_hourly" },
+					"enum":        []string{"daily", "hourly", "six_hourly"},
 				},
 				"skip_empty_values": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "skip_empty_values parameter",
 				},
 				"start": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "start parameter",
 				},
 				"user_timezone_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "user_timezone_id parameter",
 				},
 			}),
@@ -114,8 +114,6 @@ func HandleOfflineconversiondataset_get_stats(ctx context.Context, request mcp.C
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Offlineconversiondataset_get_stats(accessToken, args)
 	if err != nil {
@@ -134,44 +132,42 @@ func HandleOfflineconversiondataset_get_stats(ctx context.Context, request mcp.C
 // Offlineconversiondataset_get_stats performs GET stats for OfflineConversionDataSet
 func Offlineconversiondataset_get_stats(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/stats")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

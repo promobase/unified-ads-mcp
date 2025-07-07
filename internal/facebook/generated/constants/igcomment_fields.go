@@ -4,29 +4,29 @@ package constants
 
 // IGCommentFields contains field name constants for IGComment objects
 var IGCommentFields = struct {
-	From string
-	Hidden string
-	Id string
+	From                     string
+	Hidden                   string
+	Id                       string
 	LegacyInstagramCommentId string
-	LikeCount string
-	Media string
-	ParentId string
-	Text string
-	Timestamp string
-	User string
-	Username string
+	LikeCount                string
+	Media                    string
+	ParentId                 string
+	Text                     string
+	Timestamp                string
+	User                     string
+	Username                 string
 }{
-	From: "from",
-	Hidden: "hidden",
-	Id: "id",
+	From:                     "from",
+	Hidden:                   "hidden",
+	Id:                       "id",
 	LegacyInstagramCommentId: "legacy_instagram_comment_id",
-	LikeCount: "like_count",
-	Media: "media",
-	ParentId: "parent_id",
-	Text: "text",
-	Timestamp: "timestamp",
-	User: "user",
-	Username: "username",
+	LikeCount:                "like_count",
+	Media:                    "media",
+	ParentId:                 "parent_id",
+	Text:                     "text",
+	Timestamp:                "timestamp",
+	User:                     "user",
+	Username:                 "username",
 }
 
 // IGCommentFieldsList contains all available fields for IGComment objects

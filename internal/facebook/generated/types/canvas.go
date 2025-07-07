@@ -4,31 +4,31 @@ package types
 
 // Canvas represents a Facebook Canvas object
 type Canvas struct {
-	Background_color string `json:"background_color"`
-	Body_elements []map[string]interface{} `json:"body_elements"`
-	Business_id string `json:"business_id"`
-	Canvas_link string `json:"canvas_link"`
-	Collection_hero_image *Photo `json:"collection_hero_image"`
-	Collection_hero_video *AdVideo `json:"collection_hero_video"`
+	Background_color      string                      `json:"background_color"`
+	Body_elements         []map[string]interface{}    `json:"body_elements"`
+	Business_id           string                      `json:"business_id"`
+	Canvas_link           string                      `json:"canvas_link"`
+	Collection_hero_image *Photo                      `json:"collection_hero_image"`
+	Collection_hero_video *AdVideo                    `json:"collection_hero_video"`
 	Collection_thumbnails []CanvasCollectionThumbnail `json:"collection_thumbnails"`
-	Dynamic_setting *CanvasDynamicSetting `json:"dynamic_setting"`
-	Element_payload string `json:"element_payload"`
-	Elements []RichMediaElement `json:"elements"`
-	Fb_body_elements []map[string]interface{} `json:"fb_body_elements"`
-	Id string `json:"id"`
-	Is_hidden bool `json:"is_hidden"`
-	Is_published bool `json:"is_published"`
-	Last_editor *User `json:"last_editor"`
-	Linked_documents []Canvas `json:"linked_documents"`
-	Name string `json:"name"`
-	Owner *Page `json:"owner"`
-	Property_list []string `json:"property_list"`
-	Source_template *CanvasTemplate `json:"source_template"`
-	Store_url string `json:"store_url"`
-	Style_list []string `json:"style_list"`
-	Tags []string `json:"tags"`
-	Ui_property_list []string `json:"ui_property_list"`
-	Unused_body_elements []map[string]interface{} `json:"unused_body_elements"`
-	Update_time int `json:"update_time"`
-	Use_retailer_item_ids bool `json:"use_retailer_item_ids"`
+	Dynamic_setting       *CanvasDynamicSetting       `json:"dynamic_setting"`
+	Element_payload       string                      `json:"element_payload"`
+	Elements              []RichMediaElement          `json:"elements"`
+	Fb_body_elements      []map[string]interface{}    `json:"fb_body_elements"`
+	Id                    string                      `json:"id"`
+	Is_hidden             bool                        `json:"is_hidden"`
+	Is_published          bool                        `json:"is_published"`
+	Last_editor           *User                       `json:"last_editor"`
+	Linked_documents      []Canvas                    `json:"linked_documents"`
+	Name                  string                      `json:"name"`
+	Owner                 *Page                       `json:"owner"`
+	Property_list         []string                    `json:"property_list"`
+	Source_template       *CanvasTemplate             `json:"source_template"`
+	Store_url             string                      `json:"store_url"`
+	Style_list            []string                    `json:"style_list"`
+	Tags                  []string                    `json:"tags"`
+	Ui_property_list      []string                    `json:"ui_property_list"`
+	Unused_body_elements  []map[string]interface{}    `json:"unused_body_elements"`
+	Update_time           int                         `json:"update_time"`
+	Use_retailer_item_ids bool                        `json:"use_retailer_item_ids"`
 }

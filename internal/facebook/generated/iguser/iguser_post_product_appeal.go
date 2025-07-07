@@ -15,7 +15,7 @@ import (
 
 // ToolIguser_post_product_appeal returns the MCP tool definition for iguser_post_product_appeal
 func ToolIguser_post_product_appeal() mcp.Tool {
-	
+
 	// Params object accepts: appeal_reason (string), product_id (string)
 	return mcp.NewTool("iguser_post_product_appeal",
 		mcp.WithDescription("POST product_appeal for IGUser"),
@@ -23,14 +23,14 @@ func ToolIguser_post_product_appeal() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"appeal_reason": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "appeal_reason parameter",
-					"required": true,
+					"required":    true,
 				},
 				"product_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "product_id parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: appeal_reason (string) [required], product_id (string) [required]"),
@@ -63,8 +63,6 @@ func HandleIguser_post_product_appeal(ctx context.Context, request mcp.CallToolR
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Iguser_post_product_appeal(accessToken, args)
 	if err != nil {
@@ -83,20 +81,18 @@ func HandleIguser_post_product_appeal(ctx context.Context, request mcp.CallToolR
 // Iguser_post_product_appeal performs POST product_appeal for IGUser
 func Iguser_post_product_appeal(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/product_appeal")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

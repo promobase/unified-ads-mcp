@@ -15,140 +15,140 @@ import (
 
 // ToolPagepost_post_ returns the MCP tool definition for pagepost_post_
 func ToolPagepost_post_() mcp.Tool {
-	
+
 	// Params object accepts: attached_media (list<Object>), backdated_time (datetime), backdated_time_granularity (pagepost_backdated_time_granularity), composer_session_id (string), direct_share_status (unsigned int), explicitly_added_mentionee_ids (list<unsigned int>), feed_story_visibility (pagepost_feed_story_visibility), is_explicit_location (bool), is_hidden (bool), is_pinned (bool), is_published (bool), message (string), og_action_type_id (string), og_hide_object_attachment (bool), og_icon_id (string), og_object_id (string), og_phrase (string), og_set_profile_badge (bool), og_suggestion_mechanism (string), place (Object), privacy (string), product_item (Object), scheduled_publish_time (unsigned int), should_sync_product_edit (bool), source_type (string), sponsor_id (string), sponsor_relationship (unsigned int), tags (list<int>), text_format_preset_id (string), timeline_visibility (pagepost_timeline_visibility), tracking (string)
 	return mcp.NewTool("pagepost_post_",
 		mcp.WithDescription("POST  for PagePost"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"attached_media": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "attached_media parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"backdated_time": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "backdated_time parameter",
 				},
 				"backdated_time_granularity": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "backdated_time_granularity parameter",
-					"enum": []string{ "day", "hour", "min", "month", "none", "year" },
+					"enum":        []string{"day", "hour", "min", "month", "none", "year"},
 				},
 				"composer_session_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "composer_session_id parameter",
 				},
 				"direct_share_status": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "direct_share_status parameter",
 				},
 				"explicitly_added_mentionee_ids": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "explicitly_added_mentionee_ids parameter",
-					"items": map[string]any{"type": "integer"},
+					"items":       map[string]any{"type": "integer"},
 				},
 				"feed_story_visibility": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "feed_story_visibility parameter",
-					"enum": []string{ "hidden", "visible" },
+					"enum":        []string{"hidden", "visible"},
 				},
 				"is_explicit_location": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_explicit_location parameter",
 				},
 				"is_hidden": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_hidden parameter",
 				},
 				"is_pinned": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_pinned parameter",
 				},
 				"is_published": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_published parameter",
 				},
 				"message": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "message parameter",
 				},
 				"og_action_type_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "og_action_type_id parameter",
 				},
 				"og_hide_object_attachment": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "og_hide_object_attachment parameter",
 				},
 				"og_icon_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "og_icon_id parameter",
 				},
 				"og_object_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "og_object_id parameter",
 				},
 				"og_phrase": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "og_phrase parameter",
 				},
 				"og_set_profile_badge": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "og_set_profile_badge parameter",
 				},
 				"og_suggestion_mechanism": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "og_suggestion_mechanism parameter",
 				},
 				"place": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "place parameter",
 				},
 				"privacy": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "privacy parameter",
 				},
 				"product_item": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "product_item parameter",
 				},
 				"scheduled_publish_time": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "scheduled_publish_time parameter",
 				},
 				"should_sync_product_edit": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "should_sync_product_edit parameter",
 				},
 				"source_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "source_type parameter",
 				},
 				"sponsor_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "sponsor_id parameter",
 				},
 				"sponsor_relationship": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "sponsor_relationship parameter",
 				},
 				"tags": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "tags parameter",
-					"items": map[string]any{"type": "integer"},
+					"items":       map[string]any{"type": "integer"},
 				},
 				"text_format_preset_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "text_format_preset_id parameter",
 				},
 				"timeline_visibility": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "timeline_visibility parameter",
-					"enum": []string{ "forced_allow", "hidden", "normal" },
+					"enum":        []string{"forced_allow", "hidden", "normal"},
 				},
 				"tracking": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "tracking parameter",
 				},
 			}),
@@ -180,8 +180,6 @@ func HandlePagepost_post_(ctx context.Context, request mcp.CallToolRequest) (*mc
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Pagepost_post_(accessToken, args)
 	if err != nil {
@@ -200,20 +198,18 @@ func HandlePagepost_post_(ctx context.Context, request mcp.CallToolRequest) (*mc
 // Pagepost_post_ performs POST  for PagePost
 func Pagepost_post_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

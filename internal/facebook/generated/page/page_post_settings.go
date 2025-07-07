@@ -15,14 +15,14 @@ import (
 
 // ToolPage_post_settings returns the MCP tool definition for page_post_settings
 func ToolPage_post_settings() mcp.Tool {
-	
+
 	// Params object accepts: option (Object)
 	return mcp.NewTool("page_post_settings",
 		mcp.WithDescription("POST settings for Page"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"option": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "option parameter",
 				},
 			}),
@@ -54,8 +54,6 @@ func HandlePage_post_settings(ctx context.Context, request mcp.CallToolRequest) 
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Page_post_settings(accessToken, args)
 	if err != nil {
@@ -74,20 +72,18 @@ func HandlePage_post_settings(ctx context.Context, request mcp.CallToolRequest) 
 // Page_post_settings performs POST settings for Page
 func Page_post_settings(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/settings")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

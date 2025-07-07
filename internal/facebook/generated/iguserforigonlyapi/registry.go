@@ -36,7 +36,6 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolIguserforigonlyapi_post_welcome_message_flows())
 	tools = append(tools, ToolIguserforigonlyapi_get_())
 
-
 	return tools
 }
 
@@ -67,7 +66,6 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers["iguserforigonlyapi_get_welcome_message_flows"] = HandleIguserforigonlyapi_get_welcome_message_flows
 	handlers["iguserforigonlyapi_post_welcome_message_flows"] = HandleIguserforigonlyapi_post_welcome_message_flows
 	handlers["iguserforigonlyapi_get_"] = HandleIguserforigonlyapi_get_
-
 
 	return handlers
 }

@@ -15,8 +15,7 @@ import (
 
 // ToolProductfeedrule_delete_ returns the MCP tool definition for productfeedrule_delete_
 func ToolProductfeedrule_delete_() mcp.Tool {
-	
-	
+
 	return mcp.NewTool("productfeedrule_delete_",
 		mcp.WithDescription("DELETE  for ProductFeedRule"),
 	)
@@ -32,8 +31,6 @@ func HandleProductfeedrule_delete_(ctx context.Context, request mcp.CallToolRequ
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the API method
 	result, err := Productfeedrule_delete_(accessToken, args)
@@ -53,14 +50,11 @@ func HandleProductfeedrule_delete_(ctx context.Context, request mcp.CallToolRequ
 // Productfeedrule_delete_ performs DELETE  for ProductFeedRule
 func Productfeedrule_delete_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response

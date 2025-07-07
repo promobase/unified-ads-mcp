@@ -4,10 +4,10 @@ package constants
 
 // ProductVisualVariantFields contains field name constants for ProductVisualVariant objects
 var ProductVisualVariantFields = struct {
-	Items string
+	Items     string
 	UniqueKey string
 }{
-	Items: "items",
+	Items:     "items",
 	UniqueKey: "unique_key",
 }
 

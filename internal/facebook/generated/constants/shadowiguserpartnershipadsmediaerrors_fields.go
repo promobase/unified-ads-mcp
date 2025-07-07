@@ -4,15 +4,15 @@ package constants
 
 // ShadowIGUserPartnershipAdsMediaErrorsFields contains field name constants for ShadowIGUserPartnershipAdsMediaErrors objects
 var ShadowIGUserPartnershipAdsMediaErrorsFields = struct {
-	AdCode string
+	AdCode     string
 	ErrorCodes string
-	Errors string
-	Permalink string
+	Errors     string
+	Permalink  string
 }{
-	AdCode: "ad_code",
+	AdCode:     "ad_code",
 	ErrorCodes: "error_codes",
-	Errors: "errors",
-	Permalink: "permalink",
+	Errors:     "errors",
+	Permalink:  "permalink",
 }
 
 // ShadowIGUserPartnershipAdsMediaErrorsFieldsList contains all available fields for ShadowIGUserPartnershipAdsMediaErrors objects

@@ -15,7 +15,7 @@ import (
 
 // ToolPage_post_copyright_manual_claims returns the MCP tool definition for page_post_copyright_manual_claims
 func ToolPage_post_copyright_manual_claims() mcp.Tool {
-	
+
 	// Params object accepts: action (pagecopyright_manual_claims_action_enum_param), action_reason (pagecopyright_manual_claims_action_reason_enum_param), countries (Object), match_content_type (pagecopyright_manual_claims_match_content_type_enum_param), matched_asset_id (string), reference_asset_id (string), selected_segments (list<map>)
 	return mcp.NewTool("page_post_copyright_manual_claims",
 		mcp.WithDescription("POST copyright_manual_claims for Page"),
@@ -23,39 +23,39 @@ func ToolPage_post_copyright_manual_claims() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"action": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "action parameter",
-					"enum": []string{ "BLOCK", "CLAIM_AD_EARNINGS", "MANUAL_REVIEW", "MONITOR", "REQUEST_TAKEDOWN" },
+					"enum":        []string{"BLOCK", "CLAIM_AD_EARNINGS", "MANUAL_REVIEW", "MONITOR", "REQUEST_TAKEDOWN"},
 				},
 				"action_reason": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "action_reason parameter",
-					"enum": []string{ "ARTICLE_17_PREFLAGGING", "ARTIST_OBJECTION", "OBJECTIONABLE_CONTENT", "PREMIUM_MUSIC_VIDEO", "PRERELEASE_CONTENT", "PRODUCT_PARAMETERS", "RESTRICTED_CONTENT", "UNAUTHORIZED_COMMERCIAL_USE" },
+					"enum":        []string{"ARTICLE_17_PREFLAGGING", "ARTIST_OBJECTION", "OBJECTIONABLE_CONTENT", "PREMIUM_MUSIC_VIDEO", "PRERELEASE_CONTENT", "PRODUCT_PARAMETERS", "RESTRICTED_CONTENT", "UNAUTHORIZED_COMMERCIAL_USE"},
 				},
 				"countries": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "countries parameter",
 				},
 				"match_content_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "match_content_type parameter",
-					"required": true,
-					"enum": []string{ "AUDIO_ONLY", "VIDEO_AND_AUDIO", "VIDEO_ONLY" },
+					"required":    true,
+					"enum":        []string{"AUDIO_ONLY", "VIDEO_AND_AUDIO", "VIDEO_ONLY"},
 				},
 				"matched_asset_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "matched_asset_id parameter",
-					"required": true,
+					"required":    true,
 				},
 				"reference_asset_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "reference_asset_id parameter",
-					"required": true,
+					"required":    true,
 				},
 				"selected_segments": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "selected_segments parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 			}),
 			mcp.Description("Parameters object containing: action (enum) [BLOCK, CLAIM_AD_EARNINGS, MANUAL_REVIEW, MONITOR, REQUEST_TAKEDOWN], action_reason (enum) [ARTICLE_17_PREFLAGGING, ARTIST_OBJECTION, OBJECTIONABLE_CONTENT, PREMIUM_MUSIC_VIDEO, PRERELEASE_CONTENT, ...], countries (object), match_content_type (enum) [AUDIO_ONLY, VIDEO_AND_AUDIO, VIDEO_ONLY] [required], matched_asset_id (string) [required], reference_asset_id (string) [required], selected_segments (array<object>)"),
@@ -88,8 +88,6 @@ func HandlePage_post_copyright_manual_claims(ctx context.Context, request mcp.Ca
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Page_post_copyright_manual_claims(accessToken, args)
 	if err != nil {
@@ -108,20 +106,18 @@ func HandlePage_post_copyright_manual_claims(ctx context.Context, request mcp.Ca
 // Page_post_copyright_manual_claims performs POST copyright_manual_claims for Page
 func Page_post_copyright_manual_claims(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/copyright_manual_claims")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

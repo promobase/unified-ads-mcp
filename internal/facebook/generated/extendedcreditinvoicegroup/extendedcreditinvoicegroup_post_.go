@@ -15,19 +15,19 @@ import (
 
 // ToolExtendedcreditinvoicegroup_post_ returns the MCP tool definition for extendedcreditinvoicegroup_post_
 func ToolExtendedcreditinvoicegroup_post_() mcp.Tool {
-	
+
 	// Params object accepts: emails (list<string>), name (string)
 	return mcp.NewTool("extendedcreditinvoicegroup_post_",
 		mcp.WithDescription("POST  for ExtendedCreditInvoiceGroup"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"emails": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "emails parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
 				},
 			}),
@@ -59,8 +59,6 @@ func HandleExtendedcreditinvoicegroup_post_(ctx context.Context, request mcp.Cal
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Extendedcreditinvoicegroup_post_(accessToken, args)
 	if err != nil {
@@ -79,20 +77,18 @@ func HandleExtendedcreditinvoicegroup_post_(ctx context.Context, request mcp.Cal
 // Extendedcreditinvoicegroup_post_ performs POST  for ExtendedCreditInvoiceGroup
 func Extendedcreditinvoicegroup_post_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

@@ -15,7 +15,6 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolCommerceordertransactiondetail_get_items())
 	tools = append(tools, ToolCommerceordertransactiondetail_get_tax_details())
 
-
 	return tools
 }
 
@@ -25,7 +24,6 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 
 	handlers["commerceordertransactiondetail_get_items"] = HandleCommerceordertransactiondetail_get_items
 	handlers["commerceordertransactiondetail_get_tax_details"] = HandleCommerceordertransactiondetail_get_tax_details
-
 
 	return handlers
 }

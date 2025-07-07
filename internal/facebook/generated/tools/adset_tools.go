@@ -17,7 +17,6 @@ import (
 func GetAdSetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// adset_get_activities tool
 	// Available fields for AdActivity: actor_id, actor_name, application_id, application_name, date_time_in_timezone, event_time, event_type, extra_data, object_id, object_name, object_type, translated_event_type
 	// Params object accepts: after (string), business_id (string), category (adcampaignactivities_category_enum_param), limit (int), since (datetime), uid (int), until (datetime)
@@ -30,32 +29,32 @@ func GetAdSetTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"after": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "after parameter",
 				},
 				"business_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "business_id parameter",
 				},
 				"category": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "category parameter",
-					"enum": []string{ "ACCOUNT", "AD", "AD_KEYWORDS", "AD_SET", "AUDIENCE", "BID", "BUDGET", "CAMPAIGN", "DATE", "STATUS", "TARGETING" },
+					"enum":        []string{"ACCOUNT", "AD", "AD_KEYWORDS", "AD_SET", "AUDIENCE", "BID", "BUDGET", "CAMPAIGN", "DATE", "STATUS", "TARGETING"},
 				},
 				"limit": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "limit parameter",
 				},
 				"since": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "since parameter",
 				},
 				"uid": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "uid parameter",
 				},
 				"until": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "until parameter",
 				},
 			}),
@@ -134,16 +133,16 @@ func GetAdSetTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"adlabels": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "adlabels parameter",
-					"required": true,
-					"items": map[string]any{"type": "object"},
+					"required":    true,
+					"items":       map[string]any{"type": "object"},
 				},
 				"execution_options": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "execution_options parameter",
-					"enum": []string{ "validate_only" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"validate_only"},
+					"items":       map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: adlabels (array<object>) [required], execution_options (array<enum>) [validate_only]"),
@@ -163,16 +162,16 @@ func GetAdSetTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"adlabels": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "adlabels parameter",
-					"required": true,
-					"items": map[string]any{"type": "object"},
+					"required":    true,
+					"items":       map[string]any{"type": "object"},
 				},
 				"execution_options": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "execution_options parameter",
-					"enum": []string{ "validate_only" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"validate_only"},
+					"items":       map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: adlabels (array<object>) [required], execution_options (array<enum>) [validate_only]"),
@@ -192,7 +191,7 @@ func GetAdSetTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"pass_evaluation": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "pass_evaluation parameter",
 				},
 			}),
@@ -225,21 +224,21 @@ func GetAdSetTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"date_preset": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "date_preset parameter",
-					"enum": []string{ "data_maximum", "last_14d", "last_28d", "last_30d", "last_3d", "last_7d", "last_90d", "last_month", "last_quarter", "last_week_mon_sun", "last_week_sun_sat", "last_year", "maximum", "this_month", "this_quarter", "this_week_mon_today", "this_week_sun_today", "this_year", "today", "yesterday" },
+					"enum":        []string{"data_maximum", "last_14d", "last_28d", "last_30d", "last_3d", "last_7d", "last_90d", "last_month", "last_quarter", "last_week_mon_sun", "last_week_sun_sat", "last_year", "maximum", "this_month", "this_quarter", "this_week_mon_today", "this_week_sun_today", "this_year", "today", "yesterday"},
 				},
 				"effective_status": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "effective_status parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"time_range": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "time_range parameter",
 				},
 				"updated_since": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "updated_since parameter",
 				},
 			}),
@@ -272,10 +271,10 @@ func GetAdSetTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"statuses": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "statuses parameter",
-					"enum": []string{ "CANCELED", "CANCELED_DEPENDENCY", "ERROR", "ERROR_CONFLICTS", "ERROR_DEPENDENCY", "INITIAL", "IN_PROGRESS", "PENDING_DEPENDENCY", "PROCESS_BY_AD_ASYNC_ENGINE", "PROCESS_BY_EVENT_PROCESSOR", "SUCCESS", "USER_CANCELED", "USER_CANCELED_DEPENDENCY" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"CANCELED", "CANCELED_DEPENDENCY", "ERROR", "ERROR_CONFLICTS", "ERROR_DEPENDENCY", "INITIAL", "IN_PROGRESS", "PENDING_DEPENDENCY", "PROCESS_BY_AD_ASYNC_ENGINE", "PROCESS_BY_EVENT_PROCESSOR", "SUCCESS", "USER_CANCELED", "USER_CANCELED_DEPENDENCY"},
+					"items":       map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: statuses (array<enum>) [CANCELED, CANCELED_DEPENDENCY, ERROR, ERROR_CONFLICTS, ERROR_DEPENDENCY, ...]"),
@@ -307,25 +306,25 @@ func GetAdSetTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"budget_value": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "budget_value parameter",
-					"required": true,
+					"required":    true,
 				},
 				"budget_value_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "budget_value_type parameter",
-					"required": true,
-					"enum": []string{ "ABSOLUTE", "MULTIPLIER" },
+					"required":    true,
+					"enum":        []string{"ABSOLUTE", "MULTIPLIER"},
 				},
 				"time_end": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "time_end parameter",
-					"required": true,
+					"required":    true,
 				},
 				"time_start": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "time_start parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: budget_value (integer) [required], budget_value_type (enum) [ABSOLUTE, MULTIPLIER] [required], time_end (integer) [required], time_start (integer) [required]"),
@@ -345,22 +344,22 @@ func GetAdSetTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"date_preset": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "date_preset parameter",
-					"enum": []string{ "data_maximum", "last_14d", "last_28d", "last_30d", "last_3d", "last_7d", "last_90d", "last_month", "last_quarter", "last_week_mon_sun", "last_week_sun_sat", "last_year", "maximum", "this_month", "this_quarter", "this_week_mon_today", "this_week_sun_today", "this_year", "today", "yesterday" },
+					"enum":        []string{"data_maximum", "last_14d", "last_28d", "last_30d", "last_3d", "last_7d", "last_90d", "last_month", "last_quarter", "last_week_mon_sun", "last_week_sun_sat", "last_year", "maximum", "this_month", "this_quarter", "this_week_mon_today", "this_week_sun_today", "this_year", "today", "yesterday"},
 				},
 				"effective_status": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "effective_status parameter",
-					"enum": []string{ "ACTIVE", "ADSET_PAUSED", "ARCHIVED", "CAMPAIGN_PAUSED", "DELETED", "DISAPPROVED", "IN_PROCESS", "PAUSED", "PENDING_BILLING_INFO", "PENDING_REVIEW", "PREAPPROVED", "WITH_ISSUES" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"ACTIVE", "ADSET_PAUSED", "ARCHIVED", "CAMPAIGN_PAUSED", "DELETED", "DISAPPROVED", "IN_PROCESS", "PAUSED", "PENDING_BILLING_INFO", "PENDING_REVIEW", "PREAPPROVED", "WITH_ISSUES"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"is_completed": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_completed parameter",
 				},
 				"time_range": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "time_range parameter",
 				},
 			}),
@@ -392,33 +391,33 @@ func GetAdSetTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"campaign_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "campaign_id parameter",
 				},
 				"create_dco_adset": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "create_dco_adset parameter",
 				},
 				"deep_copy": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "deep_copy parameter",
 				},
 				"end_time": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "end_time parameter",
 				},
 				"rename_options": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "rename_options parameter",
 				},
 				"start_time": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "start_time parameter",
 				},
 				"status_option": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "status_option parameter",
-					"enum": []string{ "ACTIVE", "INHERITED_FROM_SOURCE", "PAUSED" },
+					"enum":        []string{"ACTIVE", "INHERITED_FROM_SOURCE", "PAUSED"},
 				},
 			}),
 			mcp.Description("Parameters object containing: campaign_id (string), create_dco_adset (boolean), deep_copy (boolean), end_time (datetime), rename_options (object), start_time (datetime), status_option (enum) [ACTIVE, INHERITED_FROM_SOURCE, PAUSED]"),
@@ -438,16 +437,16 @@ func GetAdSetTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"optimization_goal": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "optimization_goal parameter",
-					"enum": []string{ "ADVERTISER_SILOED_VALUE", "AD_RECALL_LIFT", "APP_INSTALLS", "APP_INSTALLS_AND_OFFSITE_CONVERSIONS", "CONVERSATIONS", "DERIVED_EVENTS", "ENGAGED_USERS", "EVENT_RESPONSES", "IMPRESSIONS", "IN_APP_VALUE", "LANDING_PAGE_VIEWS", "LEAD_GENERATION", "LINK_CLICKS", "MEANINGFUL_CALL_ATTEMPT", "MESSAGING_APPOINTMENT_CONVERSION", "MESSAGING_PURCHASE_CONVERSION", "NONE", "OFFSITE_CONVERSIONS", "PAGE_LIKES", "POST_ENGAGEMENT", "PROFILE_AND_PAGE_ENGAGEMENT", "PROFILE_VISIT", "QUALITY_CALL", "QUALITY_LEAD", "REACH", "REMINDERS_SET", "SUBSCRIBERS", "THRUPLAY", "VALUE", "VISIT_INSTAGRAM_PROFILE" },
+					"enum":        []string{"ADVERTISER_SILOED_VALUE", "AD_RECALL_LIFT", "APP_INSTALLS", "APP_INSTALLS_AND_OFFSITE_CONVERSIONS", "CONVERSATIONS", "DERIVED_EVENTS", "ENGAGED_USERS", "EVENT_RESPONSES", "IMPRESSIONS", "IN_APP_VALUE", "LANDING_PAGE_VIEWS", "LEAD_GENERATION", "LINK_CLICKS", "MEANINGFUL_CALL_ATTEMPT", "MESSAGING_APPOINTMENT_CONVERSION", "MESSAGING_PURCHASE_CONVERSION", "NONE", "OFFSITE_CONVERSIONS", "PAGE_LIKES", "POST_ENGAGEMENT", "PROFILE_AND_PAGE_ENGAGEMENT", "PROFILE_VISIT", "QUALITY_CALL", "QUALITY_LEAD", "REACH", "REMINDERS_SET", "SUBSCRIBERS", "THRUPLAY", "VALUE", "VISIT_INSTAGRAM_PROFILE"},
 				},
 				"promoted_object": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "promoted_object parameter",
 				},
 				"targeting_spec": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "targeting_spec parameter",
 				},
 			}),
@@ -480,108 +479,108 @@ func GetAdSetTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"action_attribution_windows": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "action_attribution_windows parameter",
-					"enum": []string{ "1d_click", "1d_ev", "1d_view", "28d_click", "28d_view", "28d_view_all_conversions", "28d_view_first_conversion", "7d_click", "7d_view", "7d_view_all_conversions", "7d_view_first_conversion", "dda", "default", "skan_click", "skan_click_second_postback", "skan_click_third_postback", "skan_view", "skan_view_second_postback", "skan_view_third_postback" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"1d_click", "1d_ev", "1d_view", "28d_click", "28d_view", "28d_view_all_conversions", "28d_view_first_conversion", "7d_click", "7d_view", "7d_view_all_conversions", "7d_view_first_conversion", "dda", "default", "skan_click", "skan_click_second_postback", "skan_click_third_postback", "skan_view", "skan_view_second_postback", "skan_view_third_postback"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"action_breakdowns": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "action_breakdowns parameter",
-					"enum": []string{ "action_canvas_component_name", "action_carousel_card_id", "action_carousel_card_name", "action_destination", "action_device", "action_reaction", "action_target_id", "action_type", "action_video_sound", "action_video_type", "conversion_destination", "matched_persona_id", "matched_persona_name", "signal_source_bucket", "standard_event_content_type" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"action_canvas_component_name", "action_carousel_card_id", "action_carousel_card_name", "action_destination", "action_device", "action_reaction", "action_target_id", "action_type", "action_video_sound", "action_video_type", "conversion_destination", "matched_persona_id", "matched_persona_name", "signal_source_bucket", "standard_event_content_type"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"action_report_time": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "action_report_time parameter",
-					"enum": []string{ "conversion", "impression", "lifetime", "mixed" },
+					"enum":        []string{"conversion", "impression", "lifetime", "mixed"},
 				},
 				"breakdowns": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "breakdowns parameter",
-					"enum": []string{ "ad_extension_domain", "ad_extension_url", "ad_format_asset", "age", "app_id", "body_asset", "breakdown_ad_objective", "breakdown_reporting_ad_id", "call_to_action_asset", "coarse_conversion_value", "comscore_market", "comscore_market_code", "conversion_destination", "country", "creative_relaxation_asset_type", "description_asset", "device_platform", "dma", "fidelity_type", "flexible_format_asset_type", "frequency_value", "gen_ai_asset_type", "gender", "hourly_stats_aggregated_by_advertiser_time_zone", "hourly_stats_aggregated_by_audience_time_zone", "hsid", "image_asset", "impression_device", "impression_view_time_advertiser_hour_v2", "is_auto_advance", "is_conversion_id_modeled", "is_rendered_as_delayed_skip_ad", "landing_destination", "link_url_asset", "marketing_messages_btn_name", "mdsa_landing_destination", "media_asset_url", "media_creator", "media_destination_url", "media_format", "media_origin_url", "media_text_content", "media_type", "mmm", "place_page_id", "platform_position", "postback_sequence_index", "product_id", "publisher_platform", "redownload", "region", "signal_source_bucket", "skan_campaign_id", "skan_conversion_id", "skan_version", "sot_attribution_model_type", "sot_attribution_window", "sot_channel", "sot_event_type", "sot_source", "standard_event_content_type", "title_asset", "user_persona_id", "user_persona_name", "video_asset" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"ad_extension_domain", "ad_extension_url", "ad_format_asset", "age", "app_id", "body_asset", "breakdown_ad_objective", "breakdown_reporting_ad_id", "call_to_action_asset", "coarse_conversion_value", "comscore_market", "comscore_market_code", "conversion_destination", "country", "creative_relaxation_asset_type", "description_asset", "device_platform", "dma", "fidelity_type", "flexible_format_asset_type", "frequency_value", "gen_ai_asset_type", "gender", "hourly_stats_aggregated_by_advertiser_time_zone", "hourly_stats_aggregated_by_audience_time_zone", "hsid", "image_asset", "impression_device", "impression_view_time_advertiser_hour_v2", "is_auto_advance", "is_conversion_id_modeled", "is_rendered_as_delayed_skip_ad", "landing_destination", "link_url_asset", "marketing_messages_btn_name", "mdsa_landing_destination", "media_asset_url", "media_creator", "media_destination_url", "media_format", "media_origin_url", "media_text_content", "media_type", "mmm", "place_page_id", "platform_position", "postback_sequence_index", "product_id", "publisher_platform", "redownload", "region", "signal_source_bucket", "skan_campaign_id", "skan_conversion_id", "skan_version", "sot_attribution_model_type", "sot_attribution_window", "sot_channel", "sot_event_type", "sot_source", "standard_event_content_type", "title_asset", "user_persona_id", "user_persona_name", "video_asset"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"date_preset": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "date_preset parameter",
-					"enum": []string{ "data_maximum", "last_14d", "last_28d", "last_30d", "last_3d", "last_7d", "last_90d", "last_month", "last_quarter", "last_week_mon_sun", "last_week_sun_sat", "last_year", "maximum", "this_month", "this_quarter", "this_week_mon_today", "this_week_sun_today", "this_year", "today", "yesterday" },
+					"enum":        []string{"data_maximum", "last_14d", "last_28d", "last_30d", "last_3d", "last_7d", "last_90d", "last_month", "last_quarter", "last_week_mon_sun", "last_week_sun_sat", "last_year", "maximum", "this_month", "this_quarter", "this_week_mon_today", "this_week_sun_today", "this_year", "today", "yesterday"},
 				},
 				"default_summary": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "default_summary parameter",
 				},
 				"export_columns": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "export_columns parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"export_format": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "export_format parameter",
 				},
 				"export_name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "export_name parameter",
 				},
 				"fields": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "fields parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"filtering": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "filtering parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"level": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "level parameter",
-					"enum": []string{ "account", "ad", "adset", "campaign" },
+					"enum":        []string{"account", "ad", "adset", "campaign"},
 				},
 				"limit": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "limit parameter",
 				},
 				"product_id_limit": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "product_id_limit parameter",
 				},
 				"sort": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "sort parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"summary": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "summary parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"summary_action_breakdowns": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "summary_action_breakdowns parameter",
-					"enum": []string{ "action_canvas_component_name", "action_carousel_card_id", "action_carousel_card_name", "action_destination", "action_device", "action_reaction", "action_target_id", "action_type", "action_video_sound", "action_video_type", "conversion_destination", "matched_persona_id", "matched_persona_name", "signal_source_bucket", "standard_event_content_type" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"action_canvas_component_name", "action_carousel_card_id", "action_carousel_card_name", "action_destination", "action_device", "action_reaction", "action_target_id", "action_type", "action_video_sound", "action_video_type", "conversion_destination", "matched_persona_id", "matched_persona_name", "signal_source_bucket", "standard_event_content_type"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"time_increment": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "time_increment parameter",
 				},
 				"time_range": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "time_range parameter",
 				},
 				"time_ranges": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "time_ranges parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"use_account_attribution_setting": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "use_account_attribution_setting parameter",
 				},
 				"use_unified_attribution_setting": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "use_unified_attribution_setting parameter",
 				},
 			}),
@@ -613,108 +612,108 @@ func GetAdSetTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"action_attribution_windows": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "action_attribution_windows parameter",
-					"enum": []string{ "1d_click", "1d_ev", "1d_view", "28d_click", "28d_view", "28d_view_all_conversions", "28d_view_first_conversion", "7d_click", "7d_view", "7d_view_all_conversions", "7d_view_first_conversion", "dda", "default", "skan_click", "skan_click_second_postback", "skan_click_third_postback", "skan_view", "skan_view_second_postback", "skan_view_third_postback" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"1d_click", "1d_ev", "1d_view", "28d_click", "28d_view", "28d_view_all_conversions", "28d_view_first_conversion", "7d_click", "7d_view", "7d_view_all_conversions", "7d_view_first_conversion", "dda", "default", "skan_click", "skan_click_second_postback", "skan_click_third_postback", "skan_view", "skan_view_second_postback", "skan_view_third_postback"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"action_breakdowns": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "action_breakdowns parameter",
-					"enum": []string{ "action_canvas_component_name", "action_carousel_card_id", "action_carousel_card_name", "action_destination", "action_device", "action_reaction", "action_target_id", "action_type", "action_video_sound", "action_video_type", "conversion_destination", "matched_persona_id", "matched_persona_name", "signal_source_bucket", "standard_event_content_type" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"action_canvas_component_name", "action_carousel_card_id", "action_carousel_card_name", "action_destination", "action_device", "action_reaction", "action_target_id", "action_type", "action_video_sound", "action_video_type", "conversion_destination", "matched_persona_id", "matched_persona_name", "signal_source_bucket", "standard_event_content_type"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"action_report_time": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "action_report_time parameter",
-					"enum": []string{ "conversion", "impression", "lifetime", "mixed" },
+					"enum":        []string{"conversion", "impression", "lifetime", "mixed"},
 				},
 				"breakdowns": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "breakdowns parameter",
-					"enum": []string{ "ad_extension_domain", "ad_extension_url", "ad_format_asset", "age", "app_id", "body_asset", "breakdown_ad_objective", "breakdown_reporting_ad_id", "call_to_action_asset", "coarse_conversion_value", "comscore_market", "comscore_market_code", "conversion_destination", "country", "creative_relaxation_asset_type", "description_asset", "device_platform", "dma", "fidelity_type", "flexible_format_asset_type", "frequency_value", "gen_ai_asset_type", "gender", "hourly_stats_aggregated_by_advertiser_time_zone", "hourly_stats_aggregated_by_audience_time_zone", "hsid", "image_asset", "impression_device", "impression_view_time_advertiser_hour_v2", "is_auto_advance", "is_conversion_id_modeled", "is_rendered_as_delayed_skip_ad", "landing_destination", "link_url_asset", "marketing_messages_btn_name", "mdsa_landing_destination", "media_asset_url", "media_creator", "media_destination_url", "media_format", "media_origin_url", "media_text_content", "media_type", "mmm", "place_page_id", "platform_position", "postback_sequence_index", "product_id", "publisher_platform", "redownload", "region", "signal_source_bucket", "skan_campaign_id", "skan_conversion_id", "skan_version", "sot_attribution_model_type", "sot_attribution_window", "sot_channel", "sot_event_type", "sot_source", "standard_event_content_type", "title_asset", "user_persona_id", "user_persona_name", "video_asset" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"ad_extension_domain", "ad_extension_url", "ad_format_asset", "age", "app_id", "body_asset", "breakdown_ad_objective", "breakdown_reporting_ad_id", "call_to_action_asset", "coarse_conversion_value", "comscore_market", "comscore_market_code", "conversion_destination", "country", "creative_relaxation_asset_type", "description_asset", "device_platform", "dma", "fidelity_type", "flexible_format_asset_type", "frequency_value", "gen_ai_asset_type", "gender", "hourly_stats_aggregated_by_advertiser_time_zone", "hourly_stats_aggregated_by_audience_time_zone", "hsid", "image_asset", "impression_device", "impression_view_time_advertiser_hour_v2", "is_auto_advance", "is_conversion_id_modeled", "is_rendered_as_delayed_skip_ad", "landing_destination", "link_url_asset", "marketing_messages_btn_name", "mdsa_landing_destination", "media_asset_url", "media_creator", "media_destination_url", "media_format", "media_origin_url", "media_text_content", "media_type", "mmm", "place_page_id", "platform_position", "postback_sequence_index", "product_id", "publisher_platform", "redownload", "region", "signal_source_bucket", "skan_campaign_id", "skan_conversion_id", "skan_version", "sot_attribution_model_type", "sot_attribution_window", "sot_channel", "sot_event_type", "sot_source", "standard_event_content_type", "title_asset", "user_persona_id", "user_persona_name", "video_asset"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"date_preset": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "date_preset parameter",
-					"enum": []string{ "data_maximum", "last_14d", "last_28d", "last_30d", "last_3d", "last_7d", "last_90d", "last_month", "last_quarter", "last_week_mon_sun", "last_week_sun_sat", "last_year", "maximum", "this_month", "this_quarter", "this_week_mon_today", "this_week_sun_today", "this_year", "today", "yesterday" },
+					"enum":        []string{"data_maximum", "last_14d", "last_28d", "last_30d", "last_3d", "last_7d", "last_90d", "last_month", "last_quarter", "last_week_mon_sun", "last_week_sun_sat", "last_year", "maximum", "this_month", "this_quarter", "this_week_mon_today", "this_week_sun_today", "this_year", "today", "yesterday"},
 				},
 				"default_summary": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "default_summary parameter",
 				},
 				"export_columns": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "export_columns parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"export_format": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "export_format parameter",
 				},
 				"export_name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "export_name parameter",
 				},
 				"fields": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "fields parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"filtering": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "filtering parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"level": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "level parameter",
-					"enum": []string{ "account", "ad", "adset", "campaign" },
+					"enum":        []string{"account", "ad", "adset", "campaign"},
 				},
 				"limit": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "limit parameter",
 				},
 				"product_id_limit": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "product_id_limit parameter",
 				},
 				"sort": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "sort parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"summary": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "summary parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"summary_action_breakdowns": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "summary_action_breakdowns parameter",
-					"enum": []string{ "action_canvas_component_name", "action_carousel_card_id", "action_carousel_card_name", "action_destination", "action_device", "action_reaction", "action_target_id", "action_type", "action_video_sound", "action_video_type", "conversion_destination", "matched_persona_id", "matched_persona_name", "signal_source_bucket", "standard_event_content_type" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"action_canvas_component_name", "action_carousel_card_id", "action_carousel_card_name", "action_destination", "action_device", "action_reaction", "action_target_id", "action_type", "action_video_sound", "action_video_type", "conversion_destination", "matched_persona_id", "matched_persona_name", "signal_source_bucket", "standard_event_content_type"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"time_increment": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "time_increment parameter",
 				},
 				"time_range": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "time_range parameter",
 				},
 				"time_ranges": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "time_ranges parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"use_account_attribution_setting": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "use_account_attribution_setting parameter",
 				},
 				"use_unified_attribution_setting": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "use_unified_attribution_setting parameter",
 				},
 			}),
@@ -735,41 +734,41 @@ func GetAdSetTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"bid_amount": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "bid_amount parameter",
 				},
 				"daily_budget": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "daily_budget parameter",
 				},
 				"is_direct_send_campaign": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_direct_send_campaign parameter",
 				},
 				"lifetime_budget": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "lifetime_budget parameter",
 				},
 				"lifetime_in_days": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "lifetime_in_days parameter",
 				},
 				"optimization_goal": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "optimization_goal parameter",
-					"enum": []string{ "ADVERTISER_SILOED_VALUE", "AD_RECALL_LIFT", "APP_INSTALLS", "APP_INSTALLS_AND_OFFSITE_CONVERSIONS", "CONVERSATIONS", "DERIVED_EVENTS", "ENGAGED_USERS", "EVENT_RESPONSES", "IMPRESSIONS", "IN_APP_VALUE", "LANDING_PAGE_VIEWS", "LEAD_GENERATION", "LINK_CLICKS", "MEANINGFUL_CALL_ATTEMPT", "MESSAGING_APPOINTMENT_CONVERSION", "MESSAGING_PURCHASE_CONVERSION", "NONE", "OFFSITE_CONVERSIONS", "PAGE_LIKES", "POST_ENGAGEMENT", "PROFILE_AND_PAGE_ENGAGEMENT", "PROFILE_VISIT", "QUALITY_CALL", "QUALITY_LEAD", "REACH", "REMINDERS_SET", "SUBSCRIBERS", "THRUPLAY", "VALUE", "VISIT_INSTAGRAM_PROFILE" },
+					"enum":        []string{"ADVERTISER_SILOED_VALUE", "AD_RECALL_LIFT", "APP_INSTALLS", "APP_INSTALLS_AND_OFFSITE_CONVERSIONS", "CONVERSATIONS", "DERIVED_EVENTS", "ENGAGED_USERS", "EVENT_RESPONSES", "IMPRESSIONS", "IN_APP_VALUE", "LANDING_PAGE_VIEWS", "LEAD_GENERATION", "LINK_CLICKS", "MEANINGFUL_CALL_ATTEMPT", "MESSAGING_APPOINTMENT_CONVERSION", "MESSAGING_PURCHASE_CONVERSION", "NONE", "OFFSITE_CONVERSIONS", "PAGE_LIKES", "POST_ENGAGEMENT", "PROFILE_AND_PAGE_ENGAGEMENT", "PROFILE_VISIT", "QUALITY_CALL", "QUALITY_LEAD", "REACH", "REMINDERS_SET", "SUBSCRIBERS", "THRUPLAY", "VALUE", "VISIT_INSTAGRAM_PROFILE"},
 				},
 				"pacing_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "pacing_type parameter",
-					"enum": []string{ "DAY_PARTING", "DISABLED", "NO_PACING", "PROBABILISTIC_PACING", "PROBABILISTIC_PACING_V2", "STANDARD" },
+					"enum":        []string{"DAY_PARTING", "DISABLED", "NO_PACING", "PROBABILISTIC_PACING", "PROBABILISTIC_PACING_V2", "STANDARD"},
 				},
 				"promoted_object": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "promoted_object parameter",
 				},
 				"targeting_spec": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "targeting_spec parameter",
 				},
 			}),
@@ -835,20 +834,20 @@ func GetAdSetTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"am_call_tags": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "am_call_tags parameter",
 				},
 				"date_preset": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "date_preset parameter",
-					"enum": []string{ "data_maximum", "last_14d", "last_28d", "last_30d", "last_3d", "last_7d", "last_90d", "last_month", "last_quarter", "last_week_mon_sun", "last_week_sun_sat", "last_year", "maximum", "this_month", "this_quarter", "this_week_mon_today", "this_week_sun_today", "this_year", "today", "yesterday" },
+					"enum":        []string{"data_maximum", "last_14d", "last_28d", "last_30d", "last_3d", "last_7d", "last_90d", "last_month", "last_quarter", "last_week_mon_sun", "last_week_sun_sat", "last_year", "maximum", "this_month", "this_quarter", "this_week_mon_today", "this_week_sun_today", "this_year", "today", "yesterday"},
 				},
 				"from_adtable": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "from_adtable parameter",
 				},
 				"time_range": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "time_range parameter",
 				},
 			}),
@@ -880,233 +879,233 @@ func GetAdSetTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"account_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "account_id parameter",
 				},
 				"adlabels": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "adlabels parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"adset_schedule": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "adset_schedule parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"attribution_spec": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "attribution_spec parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"bid_adjustments": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "bid_adjustments parameter",
 				},
 				"bid_amount": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "bid_amount parameter",
 				},
 				"bid_constraints": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "bid_constraints parameter",
 				},
 				"bid_strategy": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "bid_strategy parameter",
-					"enum": []string{ "COST_CAP", "LOWEST_COST_WITHOUT_CAP", "LOWEST_COST_WITH_BID_CAP", "LOWEST_COST_WITH_MIN_ROAS" },
+					"enum":        []string{"COST_CAP", "LOWEST_COST_WITHOUT_CAP", "LOWEST_COST_WITH_BID_CAP", "LOWEST_COST_WITH_MIN_ROAS"},
 				},
 				"billing_event": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "billing_event parameter",
-					"enum": []string{ "APP_INSTALLS", "CLICKS", "IMPRESSIONS", "LINK_CLICKS", "LISTING_INTERACTION", "NONE", "OFFER_CLAIMS", "PAGE_LIKES", "POST_ENGAGEMENT", "PURCHASE", "THRUPLAY" },
+					"enum":        []string{"APP_INSTALLS", "CLICKS", "IMPRESSIONS", "LINK_CLICKS", "LISTING_INTERACTION", "NONE", "OFFER_CLAIMS", "PAGE_LIKES", "POST_ENGAGEMENT", "PURCHASE", "THRUPLAY"},
 				},
 				"campaign_attribution": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "campaign_attribution parameter",
 				},
 				"campaign_spec": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "campaign_spec parameter",
 				},
 				"creative_sequence": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "creative_sequence parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"creative_sequence_repetition_pattern": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "creative_sequence_repetition_pattern parameter",
-					"enum": []string{ "FULL_SEQUENCE", "LAST_AD" },
+					"enum":        []string{"FULL_SEQUENCE", "LAST_AD"},
 				},
 				"daily_budget": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "daily_budget parameter",
 				},
 				"daily_imps": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "daily_imps parameter",
 				},
 				"daily_min_spend_target": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "daily_min_spend_target parameter",
 				},
 				"daily_spend_cap": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "daily_spend_cap parameter",
 				},
 				"date_format": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "date_format parameter",
 				},
 				"destination_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "destination_type parameter",
-					"enum": []string{ "APP", "APPLINKS_AUTOMATIC", "FACEBOOK", "FACEBOOK_LIVE", "FACEBOOK_PAGE", "IMAGINE", "INSTAGRAM_DIRECT", "INSTAGRAM_LIVE", "INSTAGRAM_PROFILE", "INSTAGRAM_PROFILE_AND_FACEBOOK_PAGE", "MESSAGING_INSTAGRAM_DIRECT_MESSENGER", "MESSAGING_INSTAGRAM_DIRECT_MESSENGER_WHATSAPP", "MESSAGING_INSTAGRAM_DIRECT_WHATSAPP", "MESSAGING_MESSENGER_WHATSAPP", "MESSENGER", "ON_AD", "ON_EVENT", "ON_PAGE", "ON_POST", "ON_VIDEO", "SHOP_AUTOMATIC", "WEBSITE", "WHATSAPP" },
+					"enum":        []string{"APP", "APPLINKS_AUTOMATIC", "FACEBOOK", "FACEBOOK_LIVE", "FACEBOOK_PAGE", "IMAGINE", "INSTAGRAM_DIRECT", "INSTAGRAM_LIVE", "INSTAGRAM_PROFILE", "INSTAGRAM_PROFILE_AND_FACEBOOK_PAGE", "MESSAGING_INSTAGRAM_DIRECT_MESSENGER", "MESSAGING_INSTAGRAM_DIRECT_MESSENGER_WHATSAPP", "MESSAGING_INSTAGRAM_DIRECT_WHATSAPP", "MESSAGING_MESSENGER_WHATSAPP", "MESSENGER", "ON_AD", "ON_EVENT", "ON_PAGE", "ON_POST", "ON_VIDEO", "SHOP_AUTOMATIC", "WEBSITE", "WHATSAPP"},
 				},
 				"dsa_beneficiary": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "dsa_beneficiary parameter",
 				},
 				"dsa_payor": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "dsa_payor parameter",
 				},
 				"end_time": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "end_time parameter",
 				},
 				"execution_options": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "execution_options parameter",
-					"enum": []string{ "include_recommendations", "validate_only" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"include_recommendations", "validate_only"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"existing_customer_budget_percentage": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "existing_customer_budget_percentage parameter",
 				},
 				"full_funnel_exploration_mode": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "full_funnel_exploration_mode parameter",
-					"enum": []string{ "EXTENDED_EXPLORATION", "LIMITED_EXPLORATION", "NONE_EXPLORATION" },
+					"enum":        []string{"EXTENDED_EXPLORATION", "LIMITED_EXPLORATION", "NONE_EXPLORATION"},
 				},
 				"is_ba_skip_delayed_eligible": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_ba_skip_delayed_eligible parameter",
 				},
 				"is_incremental_attribution_enabled": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_incremental_attribution_enabled parameter",
 				},
 				"is_sac_cfca_terms_certified": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_sac_cfca_terms_certified parameter",
 				},
 				"lifetime_budget": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "lifetime_budget parameter",
 				},
 				"lifetime_imps": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "lifetime_imps parameter",
 				},
 				"lifetime_min_spend_target": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "lifetime_min_spend_target parameter",
 				},
 				"lifetime_spend_cap": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "lifetime_spend_cap parameter",
 				},
 				"max_budget_spend_percentage": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "max_budget_spend_percentage parameter",
 				},
 				"min_budget_spend_percentage": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "min_budget_spend_percentage parameter",
 				},
 				"multi_optimization_goal_weight": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "multi_optimization_goal_weight parameter",
-					"enum": []string{ "BALANCED", "PREFER_EVENT", "PREFER_INSTALL", "UNDEFINED" },
+					"enum":        []string{"BALANCED", "PREFER_EVENT", "PREFER_INSTALL", "UNDEFINED"},
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
 				},
 				"optimization_goal": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "optimization_goal parameter",
-					"enum": []string{ "ADVERTISER_SILOED_VALUE", "AD_RECALL_LIFT", "APP_INSTALLS", "APP_INSTALLS_AND_OFFSITE_CONVERSIONS", "CONVERSATIONS", "DERIVED_EVENTS", "ENGAGED_USERS", "EVENT_RESPONSES", "IMPRESSIONS", "IN_APP_VALUE", "LANDING_PAGE_VIEWS", "LEAD_GENERATION", "LINK_CLICKS", "MEANINGFUL_CALL_ATTEMPT", "MESSAGING_APPOINTMENT_CONVERSION", "MESSAGING_PURCHASE_CONVERSION", "NONE", "OFFSITE_CONVERSIONS", "PAGE_LIKES", "POST_ENGAGEMENT", "PROFILE_AND_PAGE_ENGAGEMENT", "PROFILE_VISIT", "QUALITY_CALL", "QUALITY_LEAD", "REACH", "REMINDERS_SET", "SUBSCRIBERS", "THRUPLAY", "VALUE", "VISIT_INSTAGRAM_PROFILE" },
+					"enum":        []string{"ADVERTISER_SILOED_VALUE", "AD_RECALL_LIFT", "APP_INSTALLS", "APP_INSTALLS_AND_OFFSITE_CONVERSIONS", "CONVERSATIONS", "DERIVED_EVENTS", "ENGAGED_USERS", "EVENT_RESPONSES", "IMPRESSIONS", "IN_APP_VALUE", "LANDING_PAGE_VIEWS", "LEAD_GENERATION", "LINK_CLICKS", "MEANINGFUL_CALL_ATTEMPT", "MESSAGING_APPOINTMENT_CONVERSION", "MESSAGING_PURCHASE_CONVERSION", "NONE", "OFFSITE_CONVERSIONS", "PAGE_LIKES", "POST_ENGAGEMENT", "PROFILE_AND_PAGE_ENGAGEMENT", "PROFILE_VISIT", "QUALITY_CALL", "QUALITY_LEAD", "REACH", "REMINDERS_SET", "SUBSCRIBERS", "THRUPLAY", "VALUE", "VISIT_INSTAGRAM_PROFILE"},
 				},
 				"optimization_sub_event": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "optimization_sub_event parameter",
-					"enum": []string{ "NONE", "TRAVEL_INTENT", "TRAVEL_INTENT_BUCKET_01", "TRAVEL_INTENT_BUCKET_02", "TRAVEL_INTENT_BUCKET_03", "TRAVEL_INTENT_BUCKET_04", "TRAVEL_INTENT_BUCKET_05", "TRAVEL_INTENT_NO_DESTINATION_INTENT", "TRIP_CONSIDERATION", "VIDEO_SOUND_ON" },
+					"enum":        []string{"NONE", "TRAVEL_INTENT", "TRAVEL_INTENT_BUCKET_01", "TRAVEL_INTENT_BUCKET_02", "TRAVEL_INTENT_BUCKET_03", "TRAVEL_INTENT_BUCKET_04", "TRAVEL_INTENT_BUCKET_05", "TRAVEL_INTENT_NO_DESTINATION_INTENT", "TRIP_CONSIDERATION", "VIDEO_SOUND_ON"},
 				},
 				"pacing_type": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "pacing_type parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"promoted_object": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "promoted_object parameter",
 				},
 				"rb_prediction_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "rb_prediction_id parameter",
 				},
 				"regional_regulated_categories": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "regional_regulated_categories parameter",
-					"enum": []string{ "0", "1", "2", "3", "4", "5", "6" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"0", "1", "2", "3", "4", "5", "6"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"regional_regulation_identities": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "regional_regulation_identities parameter",
 				},
 				"rf_prediction_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "rf_prediction_id parameter",
 				},
 				"start_time": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "start_time parameter",
 				},
 				"status": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "status parameter",
-					"enum": []string{ "ACTIVE", "ARCHIVED", "DELETED", "PAUSED" },
+					"enum":        []string{"ACTIVE", "ARCHIVED", "DELETED", "PAUSED"},
 				},
 				"targeting": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "targeting parameter",
 				},
 				"time_based_ad_rotation_id_blocks": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "time_based_ad_rotation_id_blocks parameter",
-					"items": map[string]any{"type": "array"},
+					"items":       map[string]any{"type": "array"},
 				},
 				"time_based_ad_rotation_intervals": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "time_based_ad_rotation_intervals parameter",
-					"items": map[string]any{"type": "integer"},
+					"items":       map[string]any{"type": "integer"},
 				},
 				"time_start": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "time_start parameter",
 				},
 				"time_stop": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "time_stop parameter",
 				},
 				"tune_for_category": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "tune_for_category parameter",
-					"enum": []string{ "CREDIT", "EMPLOYMENT", "FINANCIAL_PRODUCTS_SERVICES", "HOUSING", "ISSUES_ELECTIONS_POLITICS", "NONE", "ONLINE_GAMBLING_AND_GAMING" },
+					"enum":        []string{"CREDIT", "EMPLOYMENT", "FINANCIAL_PRODUCTS_SERVICES", "HOUSING", "ISSUES_ELECTIONS_POLITICS", "NONE", "ONLINE_GAMBLING_AND_GAMING"},
 				},
 			}),
 			mcp.Description("Parameters object containing: account_id (string), adlabels (array<object>), adset_schedule (array<object>), attribution_spec (array<object>), bid_adjustments (object), bid_amount (integer), bid_constraints (map<string, Object>), bid_strategy (adcampaign_bid_strategy) [COST_CAP, LOWEST_COST_WITHOUT_CAP, LOWEST_COST_WITH_BID_CAP, LOWEST_COST_WITH_MIN_ROAS], billing_event (adcampaign_billing_event) [APP_INSTALLS, CLICKS, IMPRESSIONS, LINK_CLICKS, LISTING_INTERACTION, ...], campaign_attribution (object), campaign_spec (object), creative_sequence (array<string>), creative_sequence_repetition_pattern (adcampaign_creative_sequence_repetition_pattern) [FULL_SEQUENCE, LAST_AD], daily_budget (integer), daily_imps (integer), daily_min_spend_target (integer), daily_spend_cap (integer), date_format (string), destination_type (adcampaign_destination_type) [APP, APPLINKS_AUTOMATIC, FACEBOOK, FACEBOOK_LIVE, FACEBOOK_PAGE, ...], dsa_beneficiary (string), dsa_payor (string), end_time (datetime), execution_options (array<adcampaign_execution_options>) [include_recommendations, validate_only], existing_customer_budget_percentage (integer), full_funnel_exploration_mode (adcampaign_full_funnel_exploration_mode) [EXTENDED_EXPLORATION, LIMITED_EXPLORATION, NONE_EXPLORATION], is_ba_skip_delayed_eligible (boolean), is_incremental_attribution_enabled (boolean), is_sac_cfca_terms_certified (boolean), lifetime_budget (integer), lifetime_imps (integer), lifetime_min_spend_target (integer), lifetime_spend_cap (integer), max_budget_spend_percentage (integer), min_budget_spend_percentage (integer), multi_optimization_goal_weight (adcampaign_multi_optimization_goal_weight) [BALANCED, PREFER_EVENT, PREFER_INSTALL, UNDEFINED], name (string), optimization_goal (adcampaign_optimization_goal) [ADVERTISER_SILOED_VALUE, AD_RECALL_LIFT, APP_INSTALLS, APP_INSTALLS_AND_OFFSITE_CONVERSIONS, CONVERSATIONS, ...], optimization_sub_event (adcampaign_optimization_sub_event) [NONE, TRAVEL_INTENT, TRAVEL_INTENT_BUCKET_01, TRAVEL_INTENT_BUCKET_02, TRAVEL_INTENT_BUCKET_03, ...], pacing_type (array<string>), promoted_object (object), rb_prediction_id (string), regional_regulated_categories (array<adcampaign_regional_regulated_categories>) [0, 1, 2, 3, 4, ...], regional_regulation_identities (object), rf_prediction_id (string), start_time (datetime), status (adcampaign_status) [ACTIVE, ARCHIVED, DELETED, PAUSED], targeting (Targeting), time_based_ad_rotation_id_blocks (array<array<integer>>), time_based_ad_rotation_intervals (array<integer>), time_start (datetime), time_stop (datetime), tune_for_category (adcampaign_tune_for_category) [CREDIT, EMPLOYMENT, FINANCIAL_PRODUCTS_SERVICES, HOUSING, ISSUES_ELECTIONS_POLITICS, ...]"),
@@ -1114,12 +1113,10 @@ func GetAdSetTools() []mcp.Tool {
 	)
 	tools = append(tools, adset_post_Tool)
 
-
 	return tools
 }
 
 // AdSet handlers
-
 
 // HandleAdset_get_activities handles the adset_get_activities tool with context-based auth
 func HandleAdset_get_activities(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1179,8 +1176,6 @@ func HandleAdset_get_activities(ctx context.Context, request mcp.CallToolRequest
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adset_get_activities(args)
 	if err != nil {
@@ -1195,7 +1190,6 @@ func HandleAdset_get_activities(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdset_get_ad_studies handles the adset_get_ad_studies tool with context-based auth
 func HandleAdset_get_ad_studies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1243,8 +1237,6 @@ func HandleAdset_get_ad_studies(ctx context.Context, request mcp.CallToolRequest
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adset_get_ad_studies(args)
 	if err != nil {
@@ -1259,7 +1251,6 @@ func HandleAdset_get_ad_studies(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdset_get_adcreatives handles the adset_get_adcreatives tool with context-based auth
 func HandleAdset_get_adcreatives(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1307,8 +1298,6 @@ func HandleAdset_get_adcreatives(ctx context.Context, request mcp.CallToolReques
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adset_get_adcreatives(args)
 	if err != nil {
@@ -1323,7 +1312,6 @@ func HandleAdset_get_adcreatives(ctx context.Context, request mcp.CallToolReques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdset_delete_adlabels handles the adset_delete_adlabels tool with context-based auth
 func HandleAdset_delete_adlabels(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1360,8 +1348,6 @@ func HandleAdset_delete_adlabels(ctx context.Context, request mcp.CallToolReques
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adset_delete_adlabels(args)
 	if err != nil {
@@ -1376,7 +1362,6 @@ func HandleAdset_delete_adlabels(ctx context.Context, request mcp.CallToolReques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdset_post_adlabels handles the adset_post_adlabels tool with context-based auth
 func HandleAdset_post_adlabels(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1413,8 +1398,6 @@ func HandleAdset_post_adlabels(ctx context.Context, request mcp.CallToolRequest)
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adset_post_adlabels(args)
 	if err != nil {
@@ -1429,7 +1412,6 @@ func HandleAdset_post_adlabels(ctx context.Context, request mcp.CallToolRequest)
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdset_get_adrules_governed handles the adset_get_adrules_governed tool with context-based auth
 func HandleAdset_get_adrules_governed(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1489,8 +1471,6 @@ func HandleAdset_get_adrules_governed(ctx context.Context, request mcp.CallToolR
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adset_get_adrules_governed(args)
 	if err != nil {
@@ -1505,7 +1485,6 @@ func HandleAdset_get_adrules_governed(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdset_get_ads handles the adset_get_ads tool with context-based auth
 func HandleAdset_get_ads(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1565,8 +1544,6 @@ func HandleAdset_get_ads(ctx context.Context, request mcp.CallToolRequest) (*mcp
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adset_get_ads(args)
 	if err != nil {
@@ -1581,7 +1558,6 @@ func HandleAdset_get_ads(ctx context.Context, request mcp.CallToolRequest) (*mcp
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdset_get_asyncadrequests handles the adset_get_asyncadrequests tool with context-based auth
 func HandleAdset_get_asyncadrequests(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1641,8 +1617,6 @@ func HandleAdset_get_asyncadrequests(ctx context.Context, request mcp.CallToolRe
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adset_get_asyncadrequests(args)
 	if err != nil {
@@ -1657,7 +1631,6 @@ func HandleAdset_get_asyncadrequests(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdset_post_budget_schedules handles the adset_post_budget_schedules tool with context-based auth
 func HandleAdset_post_budget_schedules(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1694,8 +1667,6 @@ func HandleAdset_post_budget_schedules(ctx context.Context, request mcp.CallTool
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adset_post_budget_schedules(args)
 	if err != nil {
@@ -1710,7 +1681,6 @@ func HandleAdset_post_budget_schedules(ctx context.Context, request mcp.CallTool
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdset_get_copies handles the adset_get_copies tool with context-based auth
 func HandleAdset_get_copies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1770,8 +1740,6 @@ func HandleAdset_get_copies(ctx context.Context, request mcp.CallToolRequest) (*
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adset_get_copies(args)
 	if err != nil {
@@ -1786,7 +1754,6 @@ func HandleAdset_get_copies(ctx context.Context, request mcp.CallToolRequest) (*
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdset_post_copies handles the adset_post_copies tool with context-based auth
 func HandleAdset_post_copies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1821,8 +1788,6 @@ func HandleAdset_post_copies(ctx context.Context, request mcp.CallToolRequest) (
 		}
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adset_post_copies(args)
 	if err != nil {
@@ -1837,7 +1802,6 @@ func HandleAdset_post_copies(ctx context.Context, request mcp.CallToolRequest) (
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdset_get_delivery_estimate handles the adset_get_delivery_estimate tool with context-based auth
 func HandleAdset_get_delivery_estimate(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1897,8 +1861,6 @@ func HandleAdset_get_delivery_estimate(ctx context.Context, request mcp.CallTool
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adset_get_delivery_estimate(args)
 	if err != nil {
@@ -1913,7 +1875,6 @@ func HandleAdset_get_delivery_estimate(ctx context.Context, request mcp.CallTool
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdset_get_insights handles the adset_get_insights tool with context-based auth
 func HandleAdset_get_insights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1973,8 +1934,6 @@ func HandleAdset_get_insights(ctx context.Context, request mcp.CallToolRequest) 
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adset_get_insights(args)
 	if err != nil {
@@ -1989,7 +1948,6 @@ func HandleAdset_get_insights(ctx context.Context, request mcp.CallToolRequest) 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdset_post_insights handles the adset_post_insights tool with context-based auth
 func HandleAdset_post_insights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2024,8 +1982,6 @@ func HandleAdset_post_insights(ctx context.Context, request mcp.CallToolRequest)
 		}
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adset_post_insights(args)
 	if err != nil {
@@ -2040,7 +1996,6 @@ func HandleAdset_post_insights(ctx context.Context, request mcp.CallToolRequest)
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdset_get_message_delivery_estimate handles the adset_get_message_delivery_estimate tool with context-based auth
 func HandleAdset_get_message_delivery_estimate(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2100,8 +2055,6 @@ func HandleAdset_get_message_delivery_estimate(ctx context.Context, request mcp.
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adset_get_message_delivery_estimate(args)
 	if err != nil {
@@ -2116,7 +2069,6 @@ func HandleAdset_get_message_delivery_estimate(ctx context.Context, request mcp.
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdset_get_targetingsentencelines handles the adset_get_targetingsentencelines tool with context-based auth
 func HandleAdset_get_targetingsentencelines(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2164,8 +2116,6 @@ func HandleAdset_get_targetingsentencelines(ctx context.Context, request mcp.Cal
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adset_get_targetingsentencelines(args)
 	if err != nil {
@@ -2180,7 +2130,6 @@ func HandleAdset_get_targetingsentencelines(ctx context.Context, request mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdset_delete_ handles the adset_delete_ tool with context-based auth
 func HandleAdset_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2203,8 +2152,6 @@ func HandleAdset_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 	}
 	args["ad_set_id"] = ad_set_id
 
-
-
 	// Call the client method
 	result, err := client.Adset_delete_(args)
 	if err != nil {
@@ -2219,7 +2166,6 @@ func HandleAdset_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdset_get_ handles the adset_get_ tool with context-based auth
 func HandleAdset_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2279,8 +2225,6 @@ func HandleAdset_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Ca
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adset_get_(args)
 	if err != nil {
@@ -2295,7 +2239,6 @@ func HandleAdset_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdset_post_ handles the adset_post_ tool with context-based auth
 func HandleAdset_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2330,8 +2273,6 @@ func HandleAdset_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.C
 		}
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adset_post_(args)
 	if err != nil {
@@ -2346,4 +2287,3 @@ func HandleAdset_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

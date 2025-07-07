@@ -17,7 +17,7 @@ import (
 // ToolPageinsightsasyncexportrun_get_ returns the MCP tool definition for pageinsightsasyncexportrun_get_
 func ToolPageinsightsasyncexportrun_get_() mcp.Tool {
 	// Available fields for PageInsightsAsyncExportRun: data_level, filters, format, gen_report_date, id, report_end_date, report_start_date, sorters, status
-	
+
 	return mcp.NewTool("pageinsightsasyncexportrun_get_",
 		mcp.WithDescription("GET  for PageInsightsAsyncExportRun"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandlePageinsightsasyncexportrun_get_(ctx context.Context, request mcp.Call
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Pageinsightsasyncexportrun_get_(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandlePageinsightsasyncexportrun_get_(ctx context.Context, request mcp.Call
 // Pageinsightsasyncexportrun_get_ performs GET  for PageInsightsAsyncExportRun
 func Pageinsightsasyncexportrun_get_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

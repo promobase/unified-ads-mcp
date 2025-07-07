@@ -15,7 +15,7 @@ import (
 
 // ToolPage_post_unlink_accounts returns the MCP tool definition for page_post_unlink_accounts
 func ToolPage_post_unlink_accounts() mcp.Tool {
-	
+
 	// Params object accepts: psid (string)
 	return mcp.NewTool("page_post_unlink_accounts",
 		mcp.WithDescription("POST unlink_accounts for Page"),
@@ -23,9 +23,9 @@ func ToolPage_post_unlink_accounts() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"psid": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "psid parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: psid (string) [required]"),
@@ -58,8 +58,6 @@ func HandlePage_post_unlink_accounts(ctx context.Context, request mcp.CallToolRe
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Page_post_unlink_accounts(accessToken, args)
 	if err != nil {
@@ -78,20 +76,18 @@ func HandlePage_post_unlink_accounts(ctx context.Context, request mcp.CallToolRe
 // Page_post_unlink_accounts performs POST unlink_accounts for Page
 func Page_post_unlink_accounts(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/unlink_accounts")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

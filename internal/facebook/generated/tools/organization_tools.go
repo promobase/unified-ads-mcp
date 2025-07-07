@@ -17,7 +17,6 @@ import (
 func GetOrganizationTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// organization_get_ tool
 	// Available fields for Organization: id, legal_entity_name, owner_business
 	organization_get_Tool := mcp.NewTool("organization_get_",
@@ -37,12 +36,10 @@ func GetOrganizationTools() []mcp.Tool {
 	)
 	tools = append(tools, organization_get_Tool)
 
-
 	return tools
 }
 
 // Organization handlers
-
 
 // HandleOrganization_get_ handles the organization_get_ tool with context-based auth
 func HandleOrganization_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleOrganization_get_(ctx context.Context, request mcp.CallToolRequest) (
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Organization_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleOrganization_get_(ctx context.Context, request mcp.CallToolRequest) (
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

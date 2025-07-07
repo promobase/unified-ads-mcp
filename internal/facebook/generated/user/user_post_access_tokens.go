@@ -15,7 +15,7 @@ import (
 
 // ToolUser_post_access_tokens returns the MCP tool definition for user_post_access_tokens
 func ToolUser_post_access_tokens() mcp.Tool {
-	
+
 	// Params object accepts: business_app (string), page_id (string), scope (list<string>), set_token_expires_in_60_days (bool)
 	return mcp.NewTool("user_post_access_tokens",
 		mcp.WithDescription("POST access_tokens for User"),
@@ -23,21 +23,21 @@ func ToolUser_post_access_tokens() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"business_app": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "business_app parameter",
-					"required": true,
+					"required":    true,
 				},
 				"page_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "page_id parameter",
 				},
 				"scope": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "scope parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"set_token_expires_in_60_days": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "set_token_expires_in_60_days parameter",
 				},
 			}),
@@ -71,8 +71,6 @@ func HandleUser_post_access_tokens(ctx context.Context, request mcp.CallToolRequ
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := User_post_access_tokens(accessToken, args)
 	if err != nil {
@@ -91,20 +89,18 @@ func HandleUser_post_access_tokens(ctx context.Context, request mcp.CallToolRequ
 // User_post_access_tokens performs POST access_tokens for User
 func User_post_access_tokens(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/access_tokens")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

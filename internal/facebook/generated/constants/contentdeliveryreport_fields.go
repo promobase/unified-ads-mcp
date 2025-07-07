@@ -4,20 +4,20 @@ package constants
 
 // ContentDeliveryReportFields contains field name constants for ContentDeliveryReport objects
 var ContentDeliveryReportFields = struct {
-	ContentId string
-	ContentName string
-	ContentUrl string
-	CreatorId string
-	CreatorName string
-	CreatorUrl string
+	ContentId            string
+	ContentName          string
+	ContentUrl           string
+	CreatorId            string
+	CreatorName          string
+	CreatorUrl           string
 	EstimatedImpressions string
 }{
-	ContentId: "content_id",
-	ContentName: "content_name",
-	ContentUrl: "content_url",
-	CreatorId: "creator_id",
-	CreatorName: "creator_name",
-	CreatorUrl: "creator_url",
+	ContentId:            "content_id",
+	ContentName:          "content_name",
+	ContentUrl:           "content_url",
+	CreatorId:            "creator_id",
+	CreatorName:          "creator_name",
+	CreatorUrl:           "creator_url",
 	EstimatedImpressions: "estimated_impressions",
 }
 

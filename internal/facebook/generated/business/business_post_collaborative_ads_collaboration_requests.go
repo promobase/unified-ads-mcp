@@ -15,7 +15,7 @@ import (
 
 // ToolBusiness_post_collaborative_ads_collaboration_requests returns the MCP tool definition for business_post_collaborative_ads_collaboration_requests
 func ToolBusiness_post_collaborative_ads_collaboration_requests() mcp.Tool {
-	
+
 	// Params object accepts: brands (list<string>), contact_email (string), contact_first_name (string), contact_last_name (string), phone_number (string), receiver_business (string), requester_agency_or_brand (businesscollaborative_ads_collaboration_requests_requester_agency_or_brand_enum_param), sender_client_business (string)
 	return mcp.NewTool("business_post_collaborative_ads_collaboration_requests",
 		mcp.WithDescription("POST collaborative_ads_collaboration_requests for Business"),
@@ -23,43 +23,43 @@ func ToolBusiness_post_collaborative_ads_collaboration_requests() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"brands": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "brands parameter",
-					"required": true,
-					"items": map[string]any{"type": "string"},
+					"required":    true,
+					"items":       map[string]any{"type": "string"},
 				},
 				"contact_email": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "contact_email parameter",
-					"required": true,
+					"required":    true,
 				},
 				"contact_first_name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "contact_first_name parameter",
-					"required": true,
+					"required":    true,
 				},
 				"contact_last_name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "contact_last_name parameter",
-					"required": true,
+					"required":    true,
 				},
 				"phone_number": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "phone_number parameter",
 				},
 				"receiver_business": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "receiver_business parameter",
-					"required": true,
+					"required":    true,
 				},
 				"requester_agency_or_brand": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "requester_agency_or_brand parameter",
-					"required": true,
-					"enum": []string{ "AGENCY", "BRAND", "MERCHANT" },
+					"required":    true,
+					"enum":        []string{"AGENCY", "BRAND", "MERCHANT"},
 				},
 				"sender_client_business": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "sender_client_business parameter",
 				},
 			}),
@@ -93,8 +93,6 @@ func HandleBusiness_post_collaborative_ads_collaboration_requests(ctx context.Co
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Business_post_collaborative_ads_collaboration_requests(accessToken, args)
 	if err != nil {
@@ -113,20 +111,18 @@ func HandleBusiness_post_collaborative_ads_collaboration_requests(ctx context.Co
 // Business_post_collaborative_ads_collaboration_requests performs POST collaborative_ads_collaboration_requests for Business
 func Business_post_collaborative_ads_collaboration_requests(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/collaborative_ads_collaboration_requests")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

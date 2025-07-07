@@ -5,8 +5,8 @@ package types
 // PageRestaurantSpecialties represents a Facebook PageRestaurantSpecialties object
 type PageRestaurantSpecialties struct {
 	Breakfast int `json:"breakfast"`
-	Coffee int `json:"coffee"`
-	Dinner int `json:"dinner"`
-	Drinks int `json:"drinks"`
-	Lunch int `json:"lunch"`
+	Coffee    int `json:"coffee"`
+	Dinner    int `json:"dinner"`
+	Drinks    int `json:"drinks"`
+	Lunch     int `json:"lunch"`
 }

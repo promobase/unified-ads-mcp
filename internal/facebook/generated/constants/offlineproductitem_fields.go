@@ -4,39 +4,39 @@ package constants
 
 // OfflineProductItemFields contains field name constants for OfflineProductItem objects
 var OfflineProductItemFields = struct {
-	Applinks string
-	Brand string
-	Category string
+	Applinks               string
+	Brand                  string
+	Category               string
 	CategorySpecificFields string
-	Currency string
-	Description string
-	Id string
-	ImageFetchStatus string
-	ImageUrl string
-	Images string
-	Name string
-	OfflineProductItemId string
-	Price string
-	SanitizedImages string
-	Url string
-	Visibility string
+	Currency               string
+	Description            string
+	Id                     string
+	ImageFetchStatus       string
+	ImageUrl               string
+	Images                 string
+	Name                   string
+	OfflineProductItemId   string
+	Price                  string
+	SanitizedImages        string
+	Url                    string
+	Visibility             string
 }{
-	Applinks: "applinks",
-	Brand: "brand",
-	Category: "category",
+	Applinks:               "applinks",
+	Brand:                  "brand",
+	Category:               "category",
 	CategorySpecificFields: "category_specific_fields",
-	Currency: "currency",
-	Description: "description",
-	Id: "id",
-	ImageFetchStatus: "image_fetch_status",
-	ImageUrl: "image_url",
-	Images: "images",
-	Name: "name",
-	OfflineProductItemId: "offline_product_item_id",
-	Price: "price",
-	SanitizedImages: "sanitized_images",
-	Url: "url",
-	Visibility: "visibility",
+	Currency:               "currency",
+	Description:            "description",
+	Id:                     "id",
+	ImageFetchStatus:       "image_fetch_status",
+	ImageUrl:               "image_url",
+	Images:                 "images",
+	Name:                   "name",
+	OfflineProductItemId:   "offline_product_item_id",
+	Price:                  "price",
+	SanitizedImages:        "sanitized_images",
+	Url:                    "url",
+	Visibility:             "visibility",
 }
 
 // OfflineProductItemFieldsList contains all available fields for OfflineProductItem objects

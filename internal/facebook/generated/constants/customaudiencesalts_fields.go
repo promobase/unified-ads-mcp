@@ -4,15 +4,15 @@ package constants
 
 // CustomAudienceSaltsFields contains field name constants for CustomAudienceSalts objects
 var CustomAudienceSaltsFields = struct {
-	AppId string
+	AppId     string
 	PublicKey string
-	Salts string
-	UserId string
+	Salts     string
+	UserId    string
 }{
-	AppId: "app_id",
+	AppId:     "app_id",
 	PublicKey: "public_key",
-	Salts: "salts",
-	UserId: "user_id",
+	Salts:     "salts",
+	UserId:    "user_id",
 }
 
 // CustomAudienceSaltsFieldsList contains all available fields for CustomAudienceSalts objects

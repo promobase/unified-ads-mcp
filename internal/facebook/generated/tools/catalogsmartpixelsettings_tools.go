@@ -17,7 +17,6 @@ import (
 func GetCatalogSmartPixelSettingsTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// catalogsmartpixelsettings_get_ tool
 	// Available fields for CatalogSmartPixelSettings: allowed_domains, available_property_filters, catalog, cbb_custom_override_filters, cbb_default_filter, defaults, filters, id, is_cbb_enabled, is_create_enabled, is_delete_enabled, is_update_enabled, microdata_format_precedence, pixel, property_filter, trusted_domains
 	catalogsmartpixelsettings_get_Tool := mcp.NewTool("catalogsmartpixelsettings_get_",
@@ -37,12 +36,10 @@ func GetCatalogSmartPixelSettingsTools() []mcp.Tool {
 	)
 	tools = append(tools, catalogsmartpixelsettings_get_Tool)
 
-
 	return tools
 }
 
 // CatalogSmartPixelSettings handlers
-
 
 // HandleCatalogsmartpixelsettings_get_ handles the catalogsmartpixelsettings_get_ tool with context-based auth
 func HandleCatalogsmartpixelsettings_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleCatalogsmartpixelsettings_get_(ctx context.Context, request mcp.CallT
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Catalogsmartpixelsettings_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleCatalogsmartpixelsettings_get_(ctx context.Context, request mcp.CallT
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

@@ -17,7 +17,7 @@ import (
 // ToolPage_get_store_locations returns the MCP tool definition for page_get_store_locations
 func ToolPage_get_store_locations() mcp.Tool {
 	// Available fields for StoreLocation: full_address, hours, id, phone_number, pickup_options, price_range, store_code, zip_code
-	
+
 	return mcp.NewTool("page_get_store_locations",
 		mcp.WithDescription("GET store_locations for Page"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandlePage_get_store_locations(ctx context.Context, request mcp.CallToolReq
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Page_get_store_locations(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandlePage_get_store_locations(ctx context.Context, request mcp.CallToolReq
 // Page_get_store_locations performs GET store_locations for Page
 func Page_get_store_locations(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/store_locations")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

@@ -4,12 +4,12 @@ package constants
 
 // WebPublisherFields contains field name constants for WebPublisher objects
 var WebPublisherFields = struct {
-	DomainUrl string
-	Id string
+	DomainUrl     string
+	Id            string
 	PublisherName string
 }{
-	DomainUrl: "domain_url",
-	Id: "id",
+	DomainUrl:     "domain_url",
+	Id:            "id",
 	PublisherName: "publisher_name",
 }
 

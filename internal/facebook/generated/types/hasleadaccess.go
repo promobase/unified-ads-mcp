@@ -4,13 +4,13 @@ package types
 
 // HasLeadAccess represents a Facebook HasLeadAccess object
 type HasLeadAccess struct {
-	App_has_leads_permission bool `json:"app_has_leads_permission"`
-	Can_access_lead bool `json:"can_access_lead"`
-	Enabled_lead_access_manager bool `json:"enabled_lead_access_manager"`
-	Failure_reason string `json:"failure_reason"`
-	Failure_resolution string `json:"failure_resolution"`
-	Is_page_admin bool `json:"is_page_admin"`
-	Page_id string `json:"page_id"`
-	User_has_leads_permission bool `json:"user_has_leads_permission"`
-	User_id string `json:"user_id"`
+	App_has_leads_permission    bool   `json:"app_has_leads_permission"`
+	Can_access_lead             bool   `json:"can_access_lead"`
+	Enabled_lead_access_manager bool   `json:"enabled_lead_access_manager"`
+	Failure_reason              string `json:"failure_reason"`
+	Failure_resolution          string `json:"failure_resolution"`
+	Is_page_admin               bool   `json:"is_page_admin"`
+	Page_id                     string `json:"page_id"`
+	User_has_leads_permission   bool   `json:"user_has_leads_permission"`
+	User_id                     string `json:"user_id"`
 }

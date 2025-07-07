@@ -17,7 +17,7 @@ import (
 // ToolInstagramuser_get_ar_effects returns the MCP tool definition for instagramuser_get_ar_effects
 func ToolInstagramuser_get_ar_effects() mcp.Tool {
 	// Available fields for AREffect: creation_time, id, last_modified_time, name, status, surfaces
-	
+
 	return mcp.NewTool("instagramuser_get_ar_effects",
 		mcp.WithDescription("GET ar_effects for InstagramUser"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleInstagramuser_get_ar_effects(ctx context.Context, request mcp.CallToo
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Instagramuser_get_ar_effects(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleInstagramuser_get_ar_effects(ctx context.Context, request mcp.CallToo
 // Instagramuser_get_ar_effects performs GET ar_effects for InstagramUser
 func Instagramuser_get_ar_effects(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/ar_effects")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

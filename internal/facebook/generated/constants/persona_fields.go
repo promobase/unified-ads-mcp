@@ -4,12 +4,12 @@ package constants
 
 // PersonaFields contains field name constants for Persona objects
 var PersonaFields = struct {
-	Id string
-	Name string
+	Id                string
+	Name              string
 	ProfilePictureUrl string
 }{
-	Id: "id",
-	Name: "name",
+	Id:                "id",
+	Name:              "name",
 	ProfilePictureUrl: "profile_picture_url",
 }
 

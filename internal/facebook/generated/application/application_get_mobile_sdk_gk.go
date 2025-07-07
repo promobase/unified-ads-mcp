@@ -16,7 +16,7 @@ import (
 
 // ToolApplication_get_mobile_sdk_gk returns the MCP tool definition for application_get_mobile_sdk_gk
 func ToolApplication_get_mobile_sdk_gk() mcp.Tool {
-	
+
 	// Params object accepts: device_id (string), extinfo (Object), os_version (string), platform (applicationmobile_sdk_gk_platform_enum_param), sdk_version (string)
 	return mcp.NewTool("application_get_mobile_sdk_gk",
 		mcp.WithDescription("GET mobile_sdk_gk for Application"),
@@ -24,27 +24,27 @@ func ToolApplication_get_mobile_sdk_gk() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"device_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "device_id parameter",
 				},
 				"extinfo": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "extinfo parameter",
 				},
 				"os_version": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "os_version parameter",
 				},
 				"platform": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "platform parameter",
-					"required": true,
-					"enum": []string{ "ANDROID", "IOS" },
+					"required":    true,
+					"enum":        []string{"ANDROID", "IOS"},
 				},
 				"sdk_version": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "sdk_version parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: device_id (string), extinfo (object), os_version (string), platform (enum) [ANDROID, IOS] [required], sdk_version (string) [required]"),
@@ -114,8 +114,6 @@ func HandleApplication_get_mobile_sdk_gk(ctx context.Context, request mcp.CallTo
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Application_get_mobile_sdk_gk(accessToken, args)
 	if err != nil {
@@ -134,44 +132,42 @@ func HandleApplication_get_mobile_sdk_gk(ctx context.Context, request mcp.CallTo
 // Application_get_mobile_sdk_gk performs GET mobile_sdk_gk for Application
 func Application_get_mobile_sdk_gk(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/mobile_sdk_gk")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

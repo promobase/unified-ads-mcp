@@ -15,7 +15,7 @@ import (
 
 // ToolPage_post_messenger_lead_forms returns the MCP tool definition for page_post_messenger_lead_forms
 func ToolPage_post_messenger_lead_forms() mcp.Tool {
-	
+
 	// Params object accepts: account_id (unsigned int), block_send_api (bool), exit_keyphrases (string), handover_app_id (unsigned int), handover_summary (bool), privacy_url (string), reminder_text (string), step_list (list<map>), stop_question_message (string), template_name (string), tracking_parameters (map)
 	return mcp.NewTool("page_post_messenger_lead_forms",
 		mcp.WithDescription("POST messenger_lead_forms for Page"),
@@ -23,49 +23,49 @@ func ToolPage_post_messenger_lead_forms() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"account_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "account_id parameter",
 				},
 				"block_send_api": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "block_send_api parameter",
 				},
 				"exit_keyphrases": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "exit_keyphrases parameter",
 				},
 				"handover_app_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "handover_app_id parameter",
 				},
 				"handover_summary": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "handover_summary parameter",
 				},
 				"privacy_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "privacy_url parameter",
 				},
 				"reminder_text": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "reminder_text parameter",
 				},
 				"step_list": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "step_list parameter",
-					"required": true,
-					"items": map[string]any{"type": "object"},
+					"required":    true,
+					"items":       map[string]any{"type": "object"},
 				},
 				"stop_question_message": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "stop_question_message parameter",
 				},
 				"template_name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "template_name parameter",
 				},
 				"tracking_parameters": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "tracking_parameters parameter",
 				},
 			}),
@@ -99,8 +99,6 @@ func HandlePage_post_messenger_lead_forms(ctx context.Context, request mcp.CallT
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Page_post_messenger_lead_forms(accessToken, args)
 	if err != nil {
@@ -119,20 +117,18 @@ func HandlePage_post_messenger_lead_forms(ctx context.Context, request mcp.CallT
 // Page_post_messenger_lead_forms performs POST messenger_lead_forms for Page
 func Page_post_messenger_lead_forms(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/messenger_lead_forms")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

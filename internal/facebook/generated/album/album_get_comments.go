@@ -23,22 +23,22 @@ func ToolAlbum_get_comments() mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"filter": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "filter parameter",
-					"enum": []string{ "stream", "toplevel" },
+					"enum":        []string{"stream", "toplevel"},
 				},
 				"live_filter": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "live_filter parameter",
-					"enum": []string{ "filter_low_quality", "no_filter" },
+					"enum":        []string{"filter_low_quality", "no_filter"},
 				},
 				"order": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "order parameter",
-					"enum": []string{ "chronological", "reverse_chronological" },
+					"enum":        []string{"chronological", "reverse_chronological"},
 				},
 				"since": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "since parameter",
 				},
 			}),
@@ -107,8 +107,6 @@ func HandleAlbum_get_comments(ctx context.Context, request mcp.CallToolRequest) 
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Album_get_comments(accessToken, args)
 	if err != nil {
@@ -127,44 +125,42 @@ func HandleAlbum_get_comments(ctx context.Context, request mcp.CallToolRequest) 
 // Album_get_comments performs GET comments for Album
 func Album_get_comments(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/comments")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

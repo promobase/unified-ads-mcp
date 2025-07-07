@@ -4,27 +4,27 @@ package constants
 
 // TabFields contains field name constants for Tab objects
 var TabFields = struct {
-	Application string
-	CustomImageUrl string
-	CustomName string
-	Id string
-	ImageUrl string
+	Application               string
+	CustomImageUrl            string
+	CustomName                string
+	Id                        string
+	ImageUrl                  string
 	IsNonConnectionLandingTab string
-	IsPermanent string
-	Link string
-	Name string
-	Position string
+	IsPermanent               string
+	Link                      string
+	Name                      string
+	Position                  string
 }{
-	Application: "application",
-	CustomImageUrl: "custom_image_url",
-	CustomName: "custom_name",
-	Id: "id",
-	ImageUrl: "image_url",
+	Application:               "application",
+	CustomImageUrl:            "custom_image_url",
+	CustomName:                "custom_name",
+	Id:                        "id",
+	ImageUrl:                  "image_url",
 	IsNonConnectionLandingTab: "is_non_connection_landing_tab",
-	IsPermanent: "is_permanent",
-	Link: "link",
-	Name: "name",
-	Position: "position",
+	IsPermanent:               "is_permanent",
+	Link:                      "link",
+	Name:                      "name",
+	Position:                  "position",
 }
 
 // TabFieldsList contains all available fields for Tab objects

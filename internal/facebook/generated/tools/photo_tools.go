@@ -17,7 +17,6 @@ import (
 func GetPhotoTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// photo_get_comments tool
 	// Available fields for Comment: admin_creator, application, attachment, can_comment, can_hide, can_like, can_remove, can_reply_privately, comment_count, created_time, from, id, is_hidden, is_private, like_count, live_broadcast_timestamp, message, message_tags, object, parent, permalink_url, private_reply_conversation, user_likes
 	// Params object accepts: filter (photocomments_filter_enum_param), live_filter (photocomments_live_filter_enum_param), order (photocomments_order_enum_param), since (datetime)
@@ -26,22 +25,22 @@ func GetPhotoTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"filter": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "filter parameter",
-					"enum": []string{ "stream", "toplevel" },
+					"enum":        []string{"stream", "toplevel"},
 				},
 				"live_filter": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "live_filter parameter",
-					"enum": []string{ "filter_low_quality", "no_filter" },
+					"enum":        []string{"filter_low_quality", "no_filter"},
 				},
 				"order": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "order parameter",
-					"enum": []string{ "chronological", "reverse_chronological" },
+					"enum":        []string{"chronological", "reverse_chronological"},
 				},
 				"since": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "since parameter",
 				},
 			}),
@@ -69,57 +68,57 @@ func GetPhotoTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"attachment_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "attachment_id parameter",
 				},
 				"attachment_share_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "attachment_share_url parameter",
 				},
 				"attachment_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "attachment_url parameter",
 				},
 				"comment_privacy_value": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "comment_privacy_value parameter",
-					"enum": []string{ "DECLINED_BY_ADMIN_ASSISTANT", "DEFAULT_PRIVACY", "FRIENDS_AND_POST_OWNER", "FRIENDS_ONLY", "GRAPHQL_MULTIPLE_VALUE_HACK_DO_NOT_USE", "OWNER_OR_COMMENTER", "PENDING_APPROVAL", "REMOVED_BY_ADMIN_ASSISTANT", "SIDE_CONVERSATION", "SIDE_CONVERSATION_AND_POST_OWNER", "SPOTLIGHT_TAB" },
+					"enum":        []string{"DECLINED_BY_ADMIN_ASSISTANT", "DEFAULT_PRIVACY", "FRIENDS_AND_POST_OWNER", "FRIENDS_ONLY", "GRAPHQL_MULTIPLE_VALUE_HACK_DO_NOT_USE", "OWNER_OR_COMMENTER", "PENDING_APPROVAL", "REMOVED_BY_ADMIN_ASSISTANT", "SIDE_CONVERSATION", "SIDE_CONVERSATION_AND_POST_OWNER", "SPOTLIGHT_TAB"},
 				},
 				"facepile_mentioned_ids": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "facepile_mentioned_ids parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"feedback_source": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "feedback_source parameter",
 				},
 				"is_offline": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_offline parameter",
 				},
 				"message": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "message parameter",
 				},
 				"nectar_module": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "nectar_module parameter",
 				},
 				"object_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "object_id parameter",
 				},
 				"parent_comment_id": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "parent_comment_id parameter",
 				},
 				"text": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "text parameter",
 				},
 				"tracking": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "tracking parameter",
 				},
 			}),
@@ -136,26 +135,26 @@ func GetPhotoTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"date_preset": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "date_preset parameter",
-					"enum": []string{ "data_maximum", "last_14d", "last_28d", "last_30d", "last_3d", "last_7d", "last_90d", "last_month", "last_quarter", "last_week_mon_sun", "last_week_sun_sat", "last_year", "maximum", "this_month", "this_quarter", "this_week_mon_today", "this_week_sun_today", "this_year", "today", "yesterday" },
+					"enum":        []string{"data_maximum", "last_14d", "last_28d", "last_30d", "last_3d", "last_7d", "last_90d", "last_month", "last_quarter", "last_week_mon_sun", "last_week_sun_sat", "last_year", "maximum", "this_month", "this_quarter", "this_week_mon_today", "this_week_sun_today", "this_year", "today", "yesterday"},
 				},
 				"metric": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "metric parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"period": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "period parameter",
-					"enum": []string{ "day", "days_28", "lifetime", "month", "total_over_range", "week" },
+					"enum":        []string{"day", "days_28", "lifetime", "month", "total_over_range", "week"},
 				},
 				"since": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "since parameter",
 				},
 				"until": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "until parameter",
 				},
 			}),
@@ -202,19 +201,19 @@ func GetPhotoTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"feedback_source": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "feedback_source parameter",
 				},
 				"nectar_module": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "nectar_module parameter",
 				},
 				"notify": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "notify parameter",
 				},
 				"tracking": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "tracking parameter",
 				},
 			}),
@@ -267,12 +266,10 @@ func GetPhotoTools() []mcp.Tool {
 	)
 	tools = append(tools, photo_get_Tool)
 
-
 	return tools
 }
 
 // Photo handlers
-
 
 // HandlePhoto_get_comments handles the photo_get_comments tool with context-based auth
 func HandlePhoto_get_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -325,8 +322,6 @@ func HandlePhoto_get_comments(ctx context.Context, request mcp.CallToolRequest) 
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Photo_get_comments(args)
 	if err != nil {
@@ -341,7 +336,6 @@ func HandlePhoto_get_comments(ctx context.Context, request mcp.CallToolRequest) 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePhoto_post_comments handles the photo_post_comments tool with context-based auth
 func HandlePhoto_post_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -369,8 +363,6 @@ func HandlePhoto_post_comments(ctx context.Context, request mcp.CallToolRequest)
 		}
 	}
 
-
-
 	// Call the client method
 	result, err := client.Photo_post_comments(args)
 	if err != nil {
@@ -385,7 +377,6 @@ func HandlePhoto_post_comments(ctx context.Context, request mcp.CallToolRequest)
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePhoto_get_insights handles the photo_get_insights tool with context-based auth
 func HandlePhoto_get_insights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -438,8 +429,6 @@ func HandlePhoto_get_insights(ctx context.Context, request mcp.CallToolRequest) 
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Photo_get_insights(args)
 	if err != nil {
@@ -454,7 +443,6 @@ func HandlePhoto_get_insights(ctx context.Context, request mcp.CallToolRequest) 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePhoto_get_likes handles the photo_get_likes tool with context-based auth
 func HandlePhoto_get_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -495,8 +483,6 @@ func HandlePhoto_get_likes(ctx context.Context, request mcp.CallToolRequest) (*m
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Photo_get_likes(args)
 	if err != nil {
@@ -511,7 +497,6 @@ func HandlePhoto_get_likes(ctx context.Context, request mcp.CallToolRequest) (*m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePhoto_post_likes handles the photo_post_likes tool with context-based auth
 func HandlePhoto_post_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -539,8 +524,6 @@ func HandlePhoto_post_likes(ctx context.Context, request mcp.CallToolRequest) (*
 		}
 	}
 
-
-
 	// Call the client method
 	result, err := client.Photo_post_likes(args)
 	if err != nil {
@@ -555,7 +538,6 @@ func HandlePhoto_post_likes(ctx context.Context, request mcp.CallToolRequest) (*
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePhoto_get_sponsor_tags handles the photo_get_sponsor_tags tool with context-based auth
 func HandlePhoto_get_sponsor_tags(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -596,8 +578,6 @@ func HandlePhoto_get_sponsor_tags(ctx context.Context, request mcp.CallToolReque
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Photo_get_sponsor_tags(args)
 	if err != nil {
@@ -613,7 +593,6 @@ func HandlePhoto_get_sponsor_tags(ctx context.Context, request mcp.CallToolReque
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandlePhoto_delete_ handles the photo_delete_ tool with context-based auth
 func HandlePhoto_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
@@ -627,8 +606,6 @@ func HandlePhoto_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Photo_delete_(args)
@@ -644,7 +621,6 @@ func HandlePhoto_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePhoto_get_ handles the photo_get_ tool with context-based auth
 func HandlePhoto_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -685,8 +661,6 @@ func HandlePhoto_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Ca
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Photo_get_(args)
 	if err != nil {
@@ -701,4 +675,3 @@ func HandlePhoto_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

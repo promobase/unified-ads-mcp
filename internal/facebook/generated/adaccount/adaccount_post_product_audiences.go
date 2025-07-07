@@ -15,7 +15,7 @@ import (
 
 // ToolAdaccount_post_product_audiences returns the MCP tool definition for adaccount_post_product_audiences
 func ToolAdaccount_post_product_audiences() mcp.Tool {
-	
+
 	// Params object accepts: allowed_domains (list<string>), associated_audience_id (unsigned int), claim_objective (adaccountproduct_audiences_claim_objective_enum_param), content_type (adaccountproduct_audiences_content_type_enum_param), creation_params (map), description (string), enable_fetch_or_create (bool), event_source_group (string), event_sources (list<map>), exclusions (list<Object>), inclusions (list<Object>), is_snapshot (bool), is_value_based (bool), name (string), opt_out_link (string), parent_audience_id (unsigned int), product_set_id (string), rev_share_policy_id (unsigned int), subtype (adaccountproduct_audiences_subtype_enum_param)
 	return mcp.NewTool("adaccount_post_product_audiences",
 		mcp.WithDescription("POST product_audiences for AdAccount"),
@@ -27,89 +27,89 @@ func ToolAdaccount_post_product_audiences() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"allowed_domains": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "allowed_domains parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"associated_audience_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "associated_audience_id parameter",
 				},
 				"claim_objective": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "claim_objective parameter",
-					"enum": []string{ "AUTOMOTIVE_MODEL", "COLLABORATIVE_ADS", "HOME_LISTING", "MEDIA_TITLE", "PRODUCT", "TRAVEL", "VEHICLE", "VEHICLE_OFFER" },
+					"enum":        []string{"AUTOMOTIVE_MODEL", "COLLABORATIVE_ADS", "HOME_LISTING", "MEDIA_TITLE", "PRODUCT", "TRAVEL", "VEHICLE", "VEHICLE_OFFER"},
 				},
 				"content_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "content_type parameter",
-					"enum": []string{ "AUTOMOTIVE_MODEL", "DESTINATION", "FLIGHT", "GENERIC", "HOME_LISTING", "HOTEL", "LOCAL_SERVICE_BUSINESS", "MEDIA_TITLE", "OFFLINE_PRODUCT", "PRODUCT", "VEHICLE", "VEHICLE_OFFER" },
+					"enum":        []string{"AUTOMOTIVE_MODEL", "DESTINATION", "FLIGHT", "GENERIC", "HOME_LISTING", "HOTEL", "LOCAL_SERVICE_BUSINESS", "MEDIA_TITLE", "OFFLINE_PRODUCT", "PRODUCT", "VEHICLE", "VEHICLE_OFFER"},
 				},
 				"creation_params": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "creation_params parameter",
 				},
 				"description": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "description parameter",
 				},
 				"enable_fetch_or_create": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "enable_fetch_or_create parameter",
 				},
 				"event_source_group": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "event_source_group parameter",
 				},
 				"event_sources": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "event_sources parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"exclusions": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "exclusions parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"inclusions": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "inclusions parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"is_snapshot": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_snapshot parameter",
 				},
 				"is_value_based": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_value_based parameter",
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
-					"required": true,
+					"required":    true,
 				},
 				"opt_out_link": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "opt_out_link parameter",
 				},
 				"parent_audience_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "parent_audience_id parameter",
 				},
 				"product_set_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "product_set_id parameter",
-					"required": true,
+					"required":    true,
 				},
 				"rev_share_policy_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "rev_share_policy_id parameter",
 				},
 				"subtype": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "subtype parameter",
-					"enum": []string{ "APP", "BAG_OF_ACCOUNTS", "BIDDING", "CLAIM", "CUSTOM", "ENGAGEMENT", "EXCLUSION", "FOX", "LOOKALIKE", "MANAGED", "MEASUREMENT", "MESSENGER_SUBSCRIBER_LIST", "OFFLINE_CONVERSION", "PARTNER", "PRIMARY", "REGULATED_CATEGORIES_AUDIENCE", "STUDY_RULE_AUDIENCE", "VIDEO", "WEBSITE" },
+					"enum":        []string{"APP", "BAG_OF_ACCOUNTS", "BIDDING", "CLAIM", "CUSTOM", "ENGAGEMENT", "EXCLUSION", "FOX", "LOOKALIKE", "MANAGED", "MEASUREMENT", "MESSENGER_SUBSCRIBER_LIST", "OFFLINE_CONVERSION", "PARTNER", "PRIMARY", "REGULATED_CATEGORIES_AUDIENCE", "STUDY_RULE_AUDIENCE", "VIDEO", "WEBSITE"},
 				},
 			}),
 			mcp.Description("Parameters object containing: allowed_domains (array<string>), associated_audience_id (integer), claim_objective (enum) [AUTOMOTIVE_MODEL, COLLABORATIVE_ADS, HOME_LISTING, MEDIA_TITLE, PRODUCT, ...], content_type (enum) [AUTOMOTIVE_MODEL, DESTINATION, FLIGHT, GENERIC, HOME_LISTING, ...], creation_params (object), description (string), enable_fetch_or_create (boolean), event_source_group (string), event_sources (array<object>), exclusions (array<object>), inclusions (array<object>), is_snapshot (boolean), is_value_based (boolean), name (string) [required], opt_out_link (string), parent_audience_id (integer), product_set_id (string) [required], rev_share_policy_id (integer), subtype (enum) [APP, BAG_OF_ACCOUNTS, BIDDING, CLAIM, CUSTOM, ...]"),
@@ -149,8 +149,6 @@ func HandleAdaccount_post_product_audiences(ctx context.Context, request mcp.Cal
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Adaccount_post_product_audiences(accessToken, args)
 	if err != nil {
@@ -169,35 +167,33 @@ func HandleAdaccount_post_product_audiences(ctx context.Context, request mcp.Cal
 // Adaccount_post_product_audiences performs POST product_audiences for AdAccount
 func Adaccount_post_product_audiences(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	// Extract account_id for URL construction
 	accountId, ok := args["account_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_post_product_audiences")
 	}
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%sproduct_audiences", accountId)
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-		
-	}
 
+	}
 
 	// Make HTTP request
 	var resp *http.Response

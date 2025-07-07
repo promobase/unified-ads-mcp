@@ -4,35 +4,35 @@ package constants
 
 // AdCreativeBrandedContentAdsFields contains field name constants for AdCreativeBrandedContentAds objects
 var AdCreativeBrandedContentAdsFields = struct {
-	AdFormat string
-	ContentSearchInput string
-	CreatorAdPermissionType string
-	FacebookBoostPostAccessToken string
-	InstagramBoostPostAccessToken string
-	IsMcaInternal string
-	ParentSourceFacebookPostId string
-	ParentSourceInstagramMediaId string
-	Partners string
+	AdFormat                         string
+	ContentSearchInput               string
+	CreatorAdPermissionType          string
+	FacebookBoostPostAccessToken     string
+	InstagramBoostPostAccessToken    string
+	IsMcaInternal                    string
+	ParentSourceFacebookPostId       string
+	ParentSourceInstagramMediaId     string
+	Partners                         string
 	ProductSetPartnerSelectionStatus string
-	PromotedPageId string
-	Testimonial string
-	TestimonialLocale string
-	UiVersion string
+	PromotedPageId                   string
+	Testimonial                      string
+	TestimonialLocale                string
+	UiVersion                        string
 }{
-	AdFormat: "ad_format",
-	ContentSearchInput: "content_search_input",
-	CreatorAdPermissionType: "creator_ad_permission_type",
-	FacebookBoostPostAccessToken: "facebook_boost_post_access_token",
-	InstagramBoostPostAccessToken: "instagram_boost_post_access_token",
-	IsMcaInternal: "is_mca_internal",
-	ParentSourceFacebookPostId: "parent_source_facebook_post_id",
-	ParentSourceInstagramMediaId: "parent_source_instagram_media_id",
-	Partners: "partners",
+	AdFormat:                         "ad_format",
+	ContentSearchInput:               "content_search_input",
+	CreatorAdPermissionType:          "creator_ad_permission_type",
+	FacebookBoostPostAccessToken:     "facebook_boost_post_access_token",
+	InstagramBoostPostAccessToken:    "instagram_boost_post_access_token",
+	IsMcaInternal:                    "is_mca_internal",
+	ParentSourceFacebookPostId:       "parent_source_facebook_post_id",
+	ParentSourceInstagramMediaId:     "parent_source_instagram_media_id",
+	Partners:                         "partners",
 	ProductSetPartnerSelectionStatus: "product_set_partner_selection_status",
-	PromotedPageId: "promoted_page_id",
-	Testimonial: "testimonial",
-	TestimonialLocale: "testimonial_locale",
-	UiVersion: "ui_version",
+	PromotedPageId:                   "promoted_page_id",
+	Testimonial:                      "testimonial",
+	TestimonialLocale:                "testimonial_locale",
+	UiVersion:                        "ui_version",
 }
 
 // AdCreativeBrandedContentAdsFieldsList contains all available fields for AdCreativeBrandedContentAds objects

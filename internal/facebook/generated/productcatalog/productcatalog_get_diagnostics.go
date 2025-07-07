@@ -23,34 +23,34 @@ func ToolProductcatalog_get_diagnostics() mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"affected_channels": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "affected_channels parameter",
-					"enum": []string{ "b2c_marketplace", "c2c_marketplace", "da", "daily_deals", "daily_deals_legacy", "ig_product_tagging", "marketplace", "marketplace_ads_deprecated", "marketplace_shops", "mini_shops", "offline_conversions", "shops", "universal_checkout", "whatsapp" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"b2c_marketplace", "c2c_marketplace", "da", "daily_deals", "daily_deals_legacy", "ig_product_tagging", "marketplace", "marketplace_ads_deprecated", "marketplace_shops", "mini_shops", "offline_conversions", "shops", "universal_checkout", "whatsapp"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"affected_entities": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "affected_entities parameter",
-					"enum": []string{ "product_catalog", "product_event", "product_item", "product_set" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"product_catalog", "product_event", "product_item", "product_set"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"affected_features": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "affected_features parameter",
-					"enum": []string{ "augmented_reality", "checkout" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"augmented_reality", "checkout"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"severities": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "severities parameter",
-					"enum": []string{ "MUST_FIX", "OPPORTUNITY" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"MUST_FIX", "OPPORTUNITY"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"types": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "types parameter",
-					"enum": []string{ "AR_VISIBILITY_ISSUES", "ATTRIBUTES_INVALID", "ATTRIBUTES_MISSING", "CATEGORY", "CHECKOUT", "DA_VISIBILITY_ISSUES", "EVENT_SOURCE_ISSUES", "IMAGE_QUALITY", "LOW_QUALITY_TITLE_AND_DESCRIPTION", "POLICY_VIOLATION", "SHOPS_VISIBILITY_ISSUES" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"AR_VISIBILITY_ISSUES", "ATTRIBUTES_INVALID", "ATTRIBUTES_MISSING", "CATEGORY", "CHECKOUT", "DA_VISIBILITY_ISSUES", "EVENT_SOURCE_ISSUES", "IMAGE_QUALITY", "LOW_QUALITY_TITLE_AND_DESCRIPTION", "POLICY_VIOLATION", "SHOPS_VISIBILITY_ISSUES"},
+					"items":       map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: affected_channels (array<enum>) [b2c_marketplace, c2c_marketplace, da, daily_deals, daily_deals_legacy, ...], affected_entities (array<enum>) [product_catalog, product_event, product_item, product_set], affected_features (array<enum>) [augmented_reality, checkout], severities (array<enum>) [MUST_FIX, OPPORTUNITY], types (array<enum>) [AR_VISIBILITY_ISSUES, ATTRIBUTES_INVALID, ATTRIBUTES_MISSING, CATEGORY, CHECKOUT, ...]"),
@@ -118,8 +118,6 @@ func HandleProductcatalog_get_diagnostics(ctx context.Context, request mcp.CallT
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Productcatalog_get_diagnostics(accessToken, args)
 	if err != nil {
@@ -138,44 +136,42 @@ func HandleProductcatalog_get_diagnostics(ctx context.Context, request mcp.CallT
 // Productcatalog_get_diagnostics performs GET diagnostics for ProductCatalog
 func Productcatalog_get_diagnostics(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/diagnostics")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

@@ -4,27 +4,27 @@ package constants
 
 // ProductFeedScheduleFields contains field name constants for ProductFeedSchedule objects
 var ProductFeedScheduleFields = struct {
-	DayOfMonth string
-	DayOfWeek string
-	Hour string
-	Id string
-	Interval string
+	DayOfMonth    string
+	DayOfWeek     string
+	Hour          string
+	Id            string
+	Interval      string
 	IntervalCount string
-	Minute string
-	Timezone string
-	Url string
-	Username string
+	Minute        string
+	Timezone      string
+	Url           string
+	Username      string
 }{
-	DayOfMonth: "day_of_month",
-	DayOfWeek: "day_of_week",
-	Hour: "hour",
-	Id: "id",
-	Interval: "interval",
+	DayOfMonth:    "day_of_month",
+	DayOfWeek:     "day_of_week",
+	Hour:          "hour",
+	Id:            "id",
+	Interval:      "interval",
 	IntervalCount: "interval_count",
-	Minute: "minute",
-	Timezone: "timezone",
-	Url: "url",
-	Username: "username",
+	Minute:        "minute",
+	Timezone:      "timezone",
+	Url:           "url",
+	Username:      "username",
 }
 
 // ProductFeedScheduleFieldsList contains all available fields for ProductFeedSchedule objects

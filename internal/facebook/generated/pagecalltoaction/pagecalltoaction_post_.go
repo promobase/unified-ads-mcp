@@ -15,62 +15,62 @@ import (
 
 // ToolPagecalltoaction_post_ returns the MCP tool definition for pagecalltoaction_post_
 func ToolPagecalltoaction_post_() mcp.Tool {
-	
+
 	// Params object accepts: android_app_id (int), android_destination_type (pagecalltoaction_android_destination_type), android_package_name (string), android_url (string), email_address (string), intl_number_with_plus (string), iphone_app_id (int), iphone_destination_type (pagecalltoaction_iphone_destination_type), iphone_url (string), type (pagecalltoaction_type), web_destination_type (pagecalltoaction_web_destination_type), web_url (string)
 	return mcp.NewTool("pagecalltoaction_post_",
 		mcp.WithDescription("POST  for PageCallToAction"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"android_app_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "android_app_id parameter",
 				},
 				"android_destination_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "android_destination_type parameter",
-					"enum": []string{ "APP_DEEPLINK", "BECOME_A_VOLUNTEER", "EMAIL", "FACEBOOK_APP", "FOLLOW", "MARKETPLACE_INVENTORY_PAGE", "MENU_ON_FACEBOOK", "MESSENGER", "MINI_SHOP", "MOBILE_CENTER", "NONE", "PHONE_CALL", "SHOP_ON_FACEBOOK", "WEBSITE" },
+					"enum":        []string{"APP_DEEPLINK", "BECOME_A_VOLUNTEER", "EMAIL", "FACEBOOK_APP", "FOLLOW", "MARKETPLACE_INVENTORY_PAGE", "MENU_ON_FACEBOOK", "MESSENGER", "MINI_SHOP", "MOBILE_CENTER", "NONE", "PHONE_CALL", "SHOP_ON_FACEBOOK", "WEBSITE"},
 				},
 				"android_package_name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "android_package_name parameter",
 				},
 				"android_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "android_url parameter",
 				},
 				"email_address": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "email_address parameter",
 				},
 				"intl_number_with_plus": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "intl_number_with_plus parameter",
 				},
 				"iphone_app_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "iphone_app_id parameter",
 				},
 				"iphone_destination_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "iphone_destination_type parameter",
-					"enum": []string{ "APP_DEEPLINK", "BECOME_A_VOLUNTEER", "EMAIL", "FACEBOOK_APP", "FOLLOW", "MARKETPLACE_INVENTORY_PAGE", "MENU_ON_FACEBOOK", "MESSENGER", "MINI_SHOP", "NONE", "PHONE_CALL", "SHOP_ON_FACEBOOK", "WEBSITE" },
+					"enum":        []string{"APP_DEEPLINK", "BECOME_A_VOLUNTEER", "EMAIL", "FACEBOOK_APP", "FOLLOW", "MARKETPLACE_INVENTORY_PAGE", "MENU_ON_FACEBOOK", "MESSENGER", "MINI_SHOP", "NONE", "PHONE_CALL", "SHOP_ON_FACEBOOK", "WEBSITE"},
 				},
 				"iphone_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "iphone_url parameter",
 				},
 				"type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "type parameter",
-					"enum": []string{ "BECOME_A_VOLUNTEER", "BOOK_APPOINTMENT", "BOOK_NOW", "BUY_TICKETS", "CALL_NOW", "CHARITY_DONATE", "CHECK_IN", "CONTACT_US", "CREATOR_STOREFRONT", "DONATE_NOW", "EMAIL", "FOLLOW_PAGE", "GET_DIRECTIONS", "GET_OFFER", "GET_OFFER_VIEW", "INTERESTED", "LEARN_MORE", "LISTEN", "LOCAL_DEV_PLATFORM", "MESSAGE", "MOBILE_CENTER", "OPEN_APP", "ORDER_FOOD", "PLAY_MUSIC", "PLAY_NOW", "PURCHASE_GIFT_CARDS", "REQUEST_APPOINTMENT", "REQUEST_QUOTE", "SHOP_NOW", "SHOP_ON_FACEBOOK", "SIGN_UP", "VIEW_INVENTORY", "VIEW_MENU", "VIEW_SHOP", "VISIT_GROUP", "WATCH_NOW", "WOODHENGE_SUPPORT" },
+					"enum":        []string{"BECOME_A_VOLUNTEER", "BOOK_APPOINTMENT", "BOOK_NOW", "BUY_TICKETS", "CALL_NOW", "CHARITY_DONATE", "CHECK_IN", "CONTACT_US", "CREATOR_STOREFRONT", "DONATE_NOW", "EMAIL", "FOLLOW_PAGE", "GET_DIRECTIONS", "GET_OFFER", "GET_OFFER_VIEW", "INTERESTED", "LEARN_MORE", "LISTEN", "LOCAL_DEV_PLATFORM", "MESSAGE", "MOBILE_CENTER", "OPEN_APP", "ORDER_FOOD", "PLAY_MUSIC", "PLAY_NOW", "PURCHASE_GIFT_CARDS", "REQUEST_APPOINTMENT", "REQUEST_QUOTE", "SHOP_NOW", "SHOP_ON_FACEBOOK", "SIGN_UP", "VIEW_INVENTORY", "VIEW_MENU", "VIEW_SHOP", "VISIT_GROUP", "WATCH_NOW", "WOODHENGE_SUPPORT"},
 				},
 				"web_destination_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "web_destination_type parameter",
-					"enum": []string{ "BECOME_A_VOLUNTEER", "BECOME_SUPPORTER", "EMAIL", "FOLLOW", "MESSENGER", "MOBILE_CENTER", "NONE", "SHOP_ON_FACEBOOK", "WEBSITE" },
+					"enum":        []string{"BECOME_A_VOLUNTEER", "BECOME_SUPPORTER", "EMAIL", "FOLLOW", "MESSENGER", "MOBILE_CENTER", "NONE", "SHOP_ON_FACEBOOK", "WEBSITE"},
 				},
 				"web_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "web_url parameter",
 				},
 			}),
@@ -102,8 +102,6 @@ func HandlePagecalltoaction_post_(ctx context.Context, request mcp.CallToolReque
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Pagecalltoaction_post_(accessToken, args)
 	if err != nil {
@@ -122,20 +120,18 @@ func HandlePagecalltoaction_post_(ctx context.Context, request mcp.CallToolReque
 // Pagecalltoaction_post_ performs POST  for PageCallToAction
 func Pagecalltoaction_post_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

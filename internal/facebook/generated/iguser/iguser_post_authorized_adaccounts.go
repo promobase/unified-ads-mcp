@@ -15,7 +15,7 @@ import (
 
 // ToolIguser_post_authorized_adaccounts returns the MCP tool definition for iguser_post_authorized_adaccounts
 func ToolIguser_post_authorized_adaccounts() mcp.Tool {
-	
+
 	// Params object accepts: account_id (string), business (string)
 	return mcp.NewTool("iguser_post_authorized_adaccounts",
 		mcp.WithDescription("POST authorized_adaccounts for IGUser"),
@@ -23,14 +23,14 @@ func ToolIguser_post_authorized_adaccounts() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"account_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "account_id parameter",
-					"required": true,
+					"required":    true,
 				},
 				"business": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "business parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: account_id (string) [required], business (string) [required]"),
@@ -63,8 +63,6 @@ func HandleIguser_post_authorized_adaccounts(ctx context.Context, request mcp.Ca
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Iguser_post_authorized_adaccounts(accessToken, args)
 	if err != nil {
@@ -83,20 +81,18 @@ func HandleIguser_post_authorized_adaccounts(ctx context.Context, request mcp.Ca
 // Iguser_post_authorized_adaccounts performs POST authorized_adaccounts for IGUser
 func Iguser_post_authorized_adaccounts(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/authorized_adaccounts")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

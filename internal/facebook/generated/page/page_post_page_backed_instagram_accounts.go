@@ -15,8 +15,7 @@ import (
 
 // ToolPage_post_page_backed_instagram_accounts returns the MCP tool definition for page_post_page_backed_instagram_accounts
 func ToolPage_post_page_backed_instagram_accounts() mcp.Tool {
-	
-	
+
 	return mcp.NewTool("page_post_page_backed_instagram_accounts",
 		mcp.WithDescription("POST page_backed_instagram_accounts for Page"),
 	)
@@ -32,8 +31,6 @@ func HandlePage_post_page_backed_instagram_accounts(ctx context.Context, request
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the API method
 	result, err := Page_post_page_backed_instagram_accounts(accessToken, args)
@@ -53,14 +50,11 @@ func HandlePage_post_page_backed_instagram_accounts(ctx context.Context, request
 // Page_post_page_backed_instagram_accounts performs POST page_backed_instagram_accounts for Page
 func Page_post_page_backed_instagram_accounts(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/page_backed_instagram_accounts")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response

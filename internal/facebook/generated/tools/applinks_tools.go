@@ -17,7 +17,6 @@ import (
 func GetAppLinksTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// applinks_get_ tool
 	// Available fields for AppLinks: android, id, ios, ipad, iphone, web, windows, windows_phone, windows_universal
 	applinks_get_Tool := mcp.NewTool("applinks_get_",
@@ -37,12 +36,10 @@ func GetAppLinksTools() []mcp.Tool {
 	)
 	tools = append(tools, applinks_get_Tool)
 
-
 	return tools
 }
 
 // AppLinks handlers
-
 
 // HandleApplinks_get_ handles the applinks_get_ tool with context-based auth
 func HandleApplinks_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleApplinks_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Applinks_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleApplinks_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

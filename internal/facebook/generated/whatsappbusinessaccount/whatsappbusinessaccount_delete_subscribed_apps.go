@@ -15,8 +15,7 @@ import (
 
 // ToolWhatsappbusinessaccount_delete_subscribed_apps returns the MCP tool definition for whatsappbusinessaccount_delete_subscribed_apps
 func ToolWhatsappbusinessaccount_delete_subscribed_apps() mcp.Tool {
-	
-	
+
 	return mcp.NewTool("whatsappbusinessaccount_delete_subscribed_apps",
 		mcp.WithDescription("DELETE subscribed_apps for WhatsAppBusinessAccount"),
 	)
@@ -32,8 +31,6 @@ func HandleWhatsappbusinessaccount_delete_subscribed_apps(ctx context.Context, r
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the API method
 	result, err := Whatsappbusinessaccount_delete_subscribed_apps(accessToken, args)
@@ -53,14 +50,11 @@ func HandleWhatsappbusinessaccount_delete_subscribed_apps(ctx context.Context, r
 // Whatsappbusinessaccount_delete_subscribed_apps performs DELETE subscribed_apps for WhatsAppBusinessAccount
 func Whatsappbusinessaccount_delete_subscribed_apps(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/subscribed_apps")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response

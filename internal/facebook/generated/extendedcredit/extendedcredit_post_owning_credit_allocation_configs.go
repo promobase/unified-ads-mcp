@@ -15,7 +15,7 @@ import (
 
 // ToolExtendedcredit_post_owning_credit_allocation_configs returns the MCP tool definition for extendedcredit_post_owning_credit_allocation_configs
 func ToolExtendedcredit_post_owning_credit_allocation_configs() mcp.Tool {
-	
+
 	// Params object accepts: amount (Object), liability_type (extendedcreditowning_credit_allocation_configs_liability_type_enum_param), partition_type (extendedcreditowning_credit_allocation_configs_partition_type_enum_param), receiving_business_id (string), send_bill_to (extendedcreditowning_credit_allocation_configs_send_bill_to_enum_param)
 	return mcp.NewTool("extendedcredit_post_owning_credit_allocation_configs",
 		mcp.WithDescription("POST owning_credit_allocation_configs for ExtendedCredit"),
@@ -23,28 +23,28 @@ func ToolExtendedcredit_post_owning_credit_allocation_configs() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"amount": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "amount parameter",
 				},
 				"liability_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "liability_type parameter",
-					"enum": []string{ "", "MSA", "Normal", "Sequential" },
+					"enum":        []string{"", "MSA", "Normal", "Sequential"},
 				},
 				"partition_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "partition_type parameter",
-					"enum": []string{ "AUTH", "FIXED", "FIXED_WITHOUT_PARTITION" },
+					"enum":        []string{"AUTH", "FIXED", "FIXED_WITHOUT_PARTITION"},
 				},
 				"receiving_business_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "receiving_business_id parameter",
-					"required": true,
+					"required":    true,
 				},
 				"send_bill_to": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "send_bill_to parameter",
-					"enum": []string{ "", "Advertiser", "Agency" },
+					"enum":        []string{"", "Advertiser", "Agency"},
 				},
 			}),
 			mcp.Description("Parameters object containing: amount (object), liability_type (enum) [, MSA, Normal, Sequential], partition_type (enum) [AUTH, FIXED, FIXED_WITHOUT_PARTITION], receiving_business_id (string) [required], send_bill_to (enum) [, Advertiser, Agency]"),
@@ -77,8 +77,6 @@ func HandleExtendedcredit_post_owning_credit_allocation_configs(ctx context.Cont
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Extendedcredit_post_owning_credit_allocation_configs(accessToken, args)
 	if err != nil {
@@ -97,20 +95,18 @@ func HandleExtendedcredit_post_owning_credit_allocation_configs(ctx context.Cont
 // Extendedcredit_post_owning_credit_allocation_configs performs POST owning_credit_allocation_configs for ExtendedCredit
 func Extendedcredit_post_owning_credit_allocation_configs(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/owning_credit_allocation_configs")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

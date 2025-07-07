@@ -15,20 +15,20 @@ import (
 
 // ToolBusinessagreement_post_ returns the MCP tool definition for businessagreement_post_
 func ToolBusinessagreement_post_() mcp.Tool {
-	
+
 	// Params object accepts: asset_id (unsigned int), request_status (businessagreement_request_status)
 	return mcp.NewTool("businessagreement_post_",
 		mcp.WithDescription("POST  for BusinessAgreement"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"asset_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "asset_id parameter",
 				},
 				"request_status": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "request_status parameter",
-					"enum": []string{ "APPROVE", "CANCELED", "DECLINE", "EXPIRED", "IN_PROGRESS", "PENDING", "PENDING_EMAIL_VERIFICATION", "PENDING_INTEGRITY_REVIEW" },
+					"enum":        []string{"APPROVE", "CANCELED", "DECLINE", "EXPIRED", "IN_PROGRESS", "PENDING", "PENDING_EMAIL_VERIFICATION", "PENDING_INTEGRITY_REVIEW"},
 				},
 			}),
 			mcp.Description("Parameters object containing: asset_id (integer), request_status (businessagreement_request_status) [APPROVE, CANCELED, DECLINE, EXPIRED, IN_PROGRESS, ...]"),
@@ -59,8 +59,6 @@ func HandleBusinessagreement_post_(ctx context.Context, request mcp.CallToolRequ
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Businessagreement_post_(accessToken, args)
 	if err != nil {
@@ -79,20 +77,18 @@ func HandleBusinessagreement_post_(ctx context.Context, request mcp.CallToolRequ
 // Businessagreement_post_ performs POST  for BusinessAgreement
 func Businessagreement_post_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

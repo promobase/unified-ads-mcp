@@ -17,7 +17,7 @@ import (
 // ToolFranchiseprogram_get_ returns the MCP tool definition for franchiseprogram_get_
 func ToolFranchiseprogram_get_() mcp.Tool {
 	// Available fields for FranchiseProgram: business_asset_group, creator_business, description, end_date, id, name, program_access_type, program_approval_type, program_image_link, program_url, shared_custom_audience, start_date
-	
+
 	return mcp.NewTool("franchiseprogram_get_",
 		mcp.WithDescription("GET  for FranchiseProgram"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleFranchiseprogram_get_(ctx context.Context, request mcp.CallToolReques
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Franchiseprogram_get_(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleFranchiseprogram_get_(ctx context.Context, request mcp.CallToolReques
 // Franchiseprogram_get_ performs GET  for FranchiseProgram
 func Franchiseprogram_get_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

@@ -5,12 +5,12 @@ package constants
 // AdCreativeCollectionThumbnailInfoFields contains field name constants for AdCreativeCollectionThumbnailInfo objects
 var AdCreativeCollectionThumbnailInfoFields = struct {
 	ElementChildIndex string
-	ElementCrops string
-	ElementId string
+	ElementCrops      string
+	ElementId         string
 }{
 	ElementChildIndex: "element_child_index",
-	ElementCrops: "element_crops",
-	ElementId: "element_id",
+	ElementCrops:      "element_crops",
+	ElementId:         "element_id",
 }
 
 // AdCreativeCollectionThumbnailInfoFieldsList contains all available fields for AdCreativeCollectionThumbnailInfo objects

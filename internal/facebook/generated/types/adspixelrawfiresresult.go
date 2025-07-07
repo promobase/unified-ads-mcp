@@ -6,12 +6,12 @@ import "time"
 
 // AdsPixelRawFiresResult represents a Facebook AdsPixelRawFiresResult object
 type AdsPixelRawFiresResult struct {
-	Data_json string `json:"data_json"`
-	Device_type string `json:"device_type"`
-	Event string `json:"event"`
-	Event_detection_method string `json:"event_detection_method"`
-	Event_src string `json:"event_src"`
-	Placed_url string `json:"placed_url"`
-	Timestamp time.Time `json:"timestamp"`
-	User_pii_keys string `json:"user_pii_keys"`
+	Data_json              string    `json:"data_json"`
+	Device_type            string    `json:"device_type"`
+	Event                  string    `json:"event"`
+	Event_detection_method string    `json:"event_detection_method"`
+	Event_src              string    `json:"event_src"`
+	Placed_url             string    `json:"placed_url"`
+	Timestamp              time.Time `json:"timestamp"`
+	User_pii_keys          string    `json:"user_pii_keys"`
 }

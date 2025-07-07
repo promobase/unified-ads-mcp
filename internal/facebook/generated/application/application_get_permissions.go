@@ -16,34 +16,34 @@ import (
 
 // ToolApplication_get_permissions returns the MCP tool definition for application_get_permissions
 func ToolApplication_get_permissions() mcp.Tool {
-	
+
 	// Params object accepts: android_key_hash (string), ios_bundle_id (string), permission (list<Permission>), proxied_app_id (int), status (list<applicationpermissions_status_enum_param>)
 	return mcp.NewTool("application_get_permissions",
 		mcp.WithDescription("GET permissions for Application"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"android_key_hash": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "android_key_hash parameter",
 				},
 				"ios_bundle_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "ios_bundle_id parameter",
 				},
 				"permission": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "permission parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"proxied_app_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "proxied_app_id parameter",
 				},
 				"status": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "status parameter",
-					"enum": []string{ "live", "unapproved" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"live", "unapproved"},
+					"items":       map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: android_key_hash (string), ios_bundle_id (string), permission (array<Permission>), proxied_app_id (integer), status (array<enum>) [live, unapproved]"),
@@ -111,8 +111,6 @@ func HandleApplication_get_permissions(ctx context.Context, request mcp.CallTool
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Application_get_permissions(accessToken, args)
 	if err != nil {
@@ -131,44 +129,42 @@ func HandleApplication_get_permissions(ctx context.Context, request mcp.CallTool
 // Application_get_permissions performs GET permissions for Application
 func Application_get_permissions(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/permissions")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

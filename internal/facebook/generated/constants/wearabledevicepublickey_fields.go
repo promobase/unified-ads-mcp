@@ -5,22 +5,22 @@ package constants
 // WearableDevicePublicKeyFields contains field name constants for WearableDevicePublicKey objects
 var WearableDevicePublicKeyFields = struct {
 	Base64EncodedPublicKey string
-	CreationTimeOnDevice string
-	DeviceUuid string
-	Id string
-	KeyType string
-	OwnerId string
-	ProductUseCase string
-	Version string
+	CreationTimeOnDevice   string
+	DeviceUuid             string
+	Id                     string
+	KeyType                string
+	OwnerId                string
+	ProductUseCase         string
+	Version                string
 }{
 	Base64EncodedPublicKey: "base64_encoded_public_key",
-	CreationTimeOnDevice: "creation_time_on_device",
-	DeviceUuid: "device_uuid",
-	Id: "id",
-	KeyType: "key_type",
-	OwnerId: "owner_id",
-	ProductUseCase: "product_use_case",
-	Version: "version",
+	CreationTimeOnDevice:   "creation_time_on_device",
+	DeviceUuid:             "device_uuid",
+	Id:                     "id",
+	KeyType:                "key_type",
+	OwnerId:                "owner_id",
+	ProductUseCase:         "product_use_case",
+	Version:                "version",
 }
 
 // WearableDevicePublicKeyFieldsList contains all available fields for WearableDevicePublicKey objects

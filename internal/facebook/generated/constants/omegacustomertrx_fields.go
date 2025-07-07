@@ -4,45 +4,45 @@ package constants
 
 // OmegaCustomerTrxFields contains field name constants for OmegaCustomerTrx objects
 var OmegaCustomerTrxFields = struct {
-	AdAccountIds string
-	AdvertiserName string
-	Amount string
-	AmountDue string
+	AdAccountIds        string
+	AdvertiserName      string
+	Amount              string
+	AmountDue           string
 	BilledAmountDetails string
-	BillingPeriod string
-	CdnDownloadUri string
-	Currency string
-	DownloadUri string
-	DueDate string
-	Entity string
-	Id string
-	InvoiceDate string
-	InvoiceId string
-	InvoiceType string
-	LiabilityType string
-	PaymentStatus string
-	PaymentTerm string
-	FieldType string
+	BillingPeriod       string
+	CdnDownloadUri      string
+	Currency            string
+	DownloadUri         string
+	DueDate             string
+	Entity              string
+	Id                  string
+	InvoiceDate         string
+	InvoiceId           string
+	InvoiceType         string
+	LiabilityType       string
+	PaymentStatus       string
+	PaymentTerm         string
+	FieldType           string
 }{
-	AdAccountIds: "ad_account_ids",
-	AdvertiserName: "advertiser_name",
-	Amount: "amount",
-	AmountDue: "amount_due",
+	AdAccountIds:        "ad_account_ids",
+	AdvertiserName:      "advertiser_name",
+	Amount:              "amount",
+	AmountDue:           "amount_due",
 	BilledAmountDetails: "billed_amount_details",
-	BillingPeriod: "billing_period",
-	CdnDownloadUri: "cdn_download_uri",
-	Currency: "currency",
-	DownloadUri: "download_uri",
-	DueDate: "due_date",
-	Entity: "entity",
-	Id: "id",
-	InvoiceDate: "invoice_date",
-	InvoiceId: "invoice_id",
-	InvoiceType: "invoice_type",
-	LiabilityType: "liability_type",
-	PaymentStatus: "payment_status",
-	PaymentTerm: "payment_term",
-	FieldType: "type",
+	BillingPeriod:       "billing_period",
+	CdnDownloadUri:      "cdn_download_uri",
+	Currency:            "currency",
+	DownloadUri:         "download_uri",
+	DueDate:             "due_date",
+	Entity:              "entity",
+	Id:                  "id",
+	InvoiceDate:         "invoice_date",
+	InvoiceId:           "invoice_id",
+	InvoiceType:         "invoice_type",
+	LiabilityType:       "liability_type",
+	PaymentStatus:       "payment_status",
+	PaymentTerm:         "payment_term",
+	FieldType:           "type",
 }
 
 // OmegaCustomerTrxFieldsList contains all available fields for OmegaCustomerTrx objects

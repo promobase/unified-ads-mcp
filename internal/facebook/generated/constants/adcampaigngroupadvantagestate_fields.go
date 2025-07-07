@@ -4,15 +4,15 @@ package constants
 
 // AdCampaignGroupAdvantageStateFields contains field name constants for AdCampaignGroupAdvantageState objects
 var AdCampaignGroupAdvantageStateFields = struct {
-	AdvantageAudienceState string
-	AdvantageBudgetState string
+	AdvantageAudienceState  string
+	AdvantageBudgetState    string
 	AdvantagePlacementState string
-	AdvantageState string
+	AdvantageState          string
 }{
-	AdvantageAudienceState: "advantage_audience_state",
-	AdvantageBudgetState: "advantage_budget_state",
+	AdvantageAudienceState:  "advantage_audience_state",
+	AdvantageBudgetState:    "advantage_budget_state",
 	AdvantagePlacementState: "advantage_placement_state",
-	AdvantageState: "advantage_state",
+	AdvantageState:          "advantage_state",
 }
 
 // AdCampaignGroupAdvantageStateFieldsList contains all available fields for AdCampaignGroupAdvantageState objects

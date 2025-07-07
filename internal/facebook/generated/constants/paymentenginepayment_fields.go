@@ -4,47 +4,47 @@ package constants
 
 // PaymentEnginePaymentFields contains field name constants for PaymentEnginePayment objects
 var PaymentEnginePaymentFields = struct {
-	Actions string
-	Application string
-	Country string
-	CreatedTime string
-	Disputes string
-	FraudStatus string
-	FulfillmentStatus string
-	Id string
-	IsFromAd string
-	IsFromPagePost string
-	Items string
+	Actions                   string
+	Application               string
+	Country                   string
+	CreatedTime               string
+	Disputes                  string
+	FraudStatus               string
+	FulfillmentStatus         string
+	Id                        string
+	IsFromAd                  string
+	IsFromPagePost            string
+	Items                     string
 	PayoutForeignExchangeRate string
-	PhoneSupportEligible string
-	Platform string
-	RefundableAmount string
-	RequestId string
-	Tax string
-	TaxCountry string
-	Test string
-	User string
+	PhoneSupportEligible      string
+	Platform                  string
+	RefundableAmount          string
+	RequestId                 string
+	Tax                       string
+	TaxCountry                string
+	Test                      string
+	User                      string
 }{
-	Actions: "actions",
-	Application: "application",
-	Country: "country",
-	CreatedTime: "created_time",
-	Disputes: "disputes",
-	FraudStatus: "fraud_status",
-	FulfillmentStatus: "fulfillment_status",
-	Id: "id",
-	IsFromAd: "is_from_ad",
-	IsFromPagePost: "is_from_page_post",
-	Items: "items",
+	Actions:                   "actions",
+	Application:               "application",
+	Country:                   "country",
+	CreatedTime:               "created_time",
+	Disputes:                  "disputes",
+	FraudStatus:               "fraud_status",
+	FulfillmentStatus:         "fulfillment_status",
+	Id:                        "id",
+	IsFromAd:                  "is_from_ad",
+	IsFromPagePost:            "is_from_page_post",
+	Items:                     "items",
 	PayoutForeignExchangeRate: "payout_foreign_exchange_rate",
-	PhoneSupportEligible: "phone_support_eligible",
-	Platform: "platform",
-	RefundableAmount: "refundable_amount",
-	RequestId: "request_id",
-	Tax: "tax",
-	TaxCountry: "tax_country",
-	Test: "test",
-	User: "user",
+	PhoneSupportEligible:      "phone_support_eligible",
+	Platform:                  "platform",
+	RefundableAmount:          "refundable_amount",
+	RequestId:                 "request_id",
+	Tax:                       "tax",
+	TaxCountry:                "tax_country",
+	Test:                      "test",
+	User:                      "user",
 }
 
 // PaymentEnginePaymentFieldsList contains all available fields for PaymentEnginePayment objects

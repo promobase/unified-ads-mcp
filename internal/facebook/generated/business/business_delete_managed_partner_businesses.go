@@ -15,18 +15,18 @@ import (
 
 // ToolBusiness_delete_managed_partner_businesses returns the MCP tool definition for business_delete_managed_partner_businesses
 func ToolBusiness_delete_managed_partner_businesses() mcp.Tool {
-	
+
 	// Params object accepts: child_business_external_id (string), child_business_id (string)
 	return mcp.NewTool("business_delete_managed_partner_businesses",
 		mcp.WithDescription("DELETE managed_partner_businesses for Business"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"child_business_external_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "child_business_external_id parameter",
 				},
 				"child_business_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "child_business_id parameter",
 				},
 			}),
@@ -58,8 +58,6 @@ func HandleBusiness_delete_managed_partner_businesses(ctx context.Context, reque
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Business_delete_managed_partner_businesses(accessToken, args)
 	if err != nil {
@@ -78,20 +76,18 @@ func HandleBusiness_delete_managed_partner_businesses(ctx context.Context, reque
 // Business_delete_managed_partner_businesses performs DELETE managed_partner_businesses for Business
 func Business_delete_managed_partner_businesses(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/managed_partner_businesses")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

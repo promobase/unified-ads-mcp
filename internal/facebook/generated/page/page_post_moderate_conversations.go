@@ -15,7 +15,7 @@ import (
 
 // ToolPage_post_moderate_conversations returns the MCP tool definition for page_post_moderate_conversations
 func ToolPage_post_moderate_conversations() mcp.Tool {
-	
+
 	// Params object accepts: actions (list<pagemoderate_conversations_actions_enum_param>), user_ids (list<map>)
 	return mcp.NewTool("page_post_moderate_conversations",
 		mcp.WithDescription("POST moderate_conversations for Page"),
@@ -23,17 +23,17 @@ func ToolPage_post_moderate_conversations() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"actions": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "actions parameter",
-					"required": true,
-					"enum": []string{ "BAN_USER", "BLOCK_USER", "MOVE_TO_SPAM", "UNBAN_USER", "UNBLOCK_USER" },
-					"items": map[string]any{"type": "string"},
+					"required":    true,
+					"enum":        []string{"BAN_USER", "BLOCK_USER", "MOVE_TO_SPAM", "UNBAN_USER", "UNBLOCK_USER"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"user_ids": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "user_ids parameter",
-					"required": true,
-					"items": map[string]any{"type": "object"},
+					"required":    true,
+					"items":       map[string]any{"type": "object"},
 				},
 			}),
 			mcp.Description("Parameters object containing: actions (array<enum>) [BAN_USER, BLOCK_USER, MOVE_TO_SPAM, UNBAN_USER, UNBLOCK_USER] [required], user_ids (array<object>) [required]"),
@@ -66,8 +66,6 @@ func HandlePage_post_moderate_conversations(ctx context.Context, request mcp.Cal
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Page_post_moderate_conversations(accessToken, args)
 	if err != nil {
@@ -86,20 +84,18 @@ func HandlePage_post_moderate_conversations(ctx context.Context, request mcp.Cal
 // Page_post_moderate_conversations performs POST moderate_conversations for Page
 func Page_post_moderate_conversations(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/moderate_conversations")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

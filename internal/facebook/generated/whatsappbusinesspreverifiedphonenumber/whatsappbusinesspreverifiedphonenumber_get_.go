@@ -17,7 +17,7 @@ import (
 // ToolWhatsappbusinesspreverifiedphonenumber_get_ returns the MCP tool definition for whatsappbusinesspreverifiedphonenumber_get_
 func ToolWhatsappbusinesspreverifiedphonenumber_get_() mcp.Tool {
 	// Available fields for WhatsAppBusinessPreVerifiedPhoneNumber: code_verification_status, code_verification_time, id, owner_business, phone_number, verification_expiry_time
-	
+
 	return mcp.NewTool("whatsappbusinesspreverifiedphonenumber_get_",
 		mcp.WithDescription("GET  for WhatsAppBusinessPreVerifiedPhoneNumber"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleWhatsappbusinesspreverifiedphonenumber_get_(ctx context.Context, requ
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Whatsappbusinesspreverifiedphonenumber_get_(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleWhatsappbusinesspreverifiedphonenumber_get_(ctx context.Context, requ
 // Whatsappbusinesspreverifiedphonenumber_get_ performs GET  for WhatsAppBusinessPreVerifiedPhoneNumber
 func Whatsappbusinesspreverifiedphonenumber_get_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

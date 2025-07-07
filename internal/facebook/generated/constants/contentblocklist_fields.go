@@ -5,12 +5,12 @@ package constants
 // ContentBlockListFields contains field name constants for ContentBlockList objects
 var ContentBlockListFields = struct {
 	Business string
-	Id string
-	Name string
+	Id       string
+	Name     string
 }{
 	Business: "business",
-	Id: "id",
-	Name: "name",
+	Id:       "id",
+	Name:     "name",
 }
 
 // ContentBlockListFieldsList contains all available fields for ContentBlockList objects

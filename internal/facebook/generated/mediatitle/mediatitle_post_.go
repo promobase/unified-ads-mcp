@@ -15,61 +15,61 @@ import (
 
 // ToolMediatitle_post_ returns the MCP tool definition for mediatitle_post_
 func ToolMediatitle_post_() mcp.Tool {
-	
+
 	// Params object accepts: applinks (Object), content_category (mediatitle_content_category), currency (string), description (string), fb_page_id (string), genres (list<string>), images (list<Object>), kg_fb_id (string), price (unsigned int), title (string), title_display_name (string), url (string)
 	return mcp.NewTool("mediatitle_post_",
 		mcp.WithDescription("POST  for MediaTitle"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"applinks": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "applinks parameter",
 				},
 				"content_category": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "content_category parameter",
-					"enum": []string{ "MOVIE", "MUSIC", "TV_SHOW" },
+					"enum":        []string{"MOVIE", "MUSIC", "TV_SHOW"},
 				},
 				"currency": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "currency parameter",
 				},
 				"description": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "description parameter",
 				},
 				"fb_page_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "fb_page_id parameter",
 				},
 				"genres": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "genres parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"images": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "images parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"kg_fb_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "kg_fb_id parameter",
 				},
 				"price": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "price parameter",
 				},
 				"title": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "title parameter",
 				},
 				"title_display_name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "title_display_name parameter",
 				},
 				"url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "url parameter",
 				},
 			}),
@@ -101,8 +101,6 @@ func HandleMediatitle_post_(ctx context.Context, request mcp.CallToolRequest) (*
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Mediatitle_post_(accessToken, args)
 	if err != nil {
@@ -121,20 +119,18 @@ func HandleMediatitle_post_(ctx context.Context, request mcp.CallToolRequest) (*
 // Mediatitle_post_ performs POST  for MediaTitle
 func Mediatitle_post_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

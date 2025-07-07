@@ -17,7 +17,7 @@ import (
 // ToolIgmedia_get_product_tags returns the MCP tool definition for igmedia_get_product_tags
 func ToolIgmedia_get_product_tags() mcp.Tool {
 	// Available fields for ShadowIGMediaProductTags: image_url, is_checkout, merchant_id, name, price_string, product_id, review_status, stripped_price_string, stripped_sale_price_string, x, y
-	
+
 	return mcp.NewTool("igmedia_get_product_tags",
 		mcp.WithDescription("GET product_tags for IGMedia"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleIgmedia_get_product_tags(ctx context.Context, request mcp.CallToolReq
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Igmedia_get_product_tags(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleIgmedia_get_product_tags(ctx context.Context, request mcp.CallToolReq
 // Igmedia_get_product_tags performs GET product_tags for IGMedia
 func Igmedia_get_product_tags(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/product_tags")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

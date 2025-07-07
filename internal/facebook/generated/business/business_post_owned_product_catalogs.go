@@ -15,7 +15,7 @@ import (
 
 // ToolBusiness_post_owned_product_catalogs returns the MCP tool definition for business_post_owned_product_catalogs
 func ToolBusiness_post_owned_product_catalogs() mcp.Tool {
-	
+
 	// Params object accepts: additional_vertical_option (businessowned_product_catalogs_additional_vertical_option_enum_param), business_metadata (map), catalog_segment_filter (Object), catalog_segment_product_set_id (string), da_display_settings (Object), destination_catalog_settings (map), flight_catalog_settings (map), name (string), parent_catalog_id (string), partner_integration (map), store_catalog_settings (map), vertical (businessowned_product_catalogs_vertical_enum_param)
 	return mcp.NewTool("business_post_owned_product_catalogs",
 		mcp.WithDescription("POST owned_product_catalogs for Business"),
@@ -23,55 +23,55 @@ func ToolBusiness_post_owned_product_catalogs() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"additional_vertical_option": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "additional_vertical_option parameter",
-					"enum": []string{ "LOCAL_DA_CATALOG", "LOCAL_PRODUCTS" },
+					"enum":        []string{"LOCAL_DA_CATALOG", "LOCAL_PRODUCTS"},
 				},
 				"business_metadata": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "business_metadata parameter",
 				},
 				"catalog_segment_filter": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "catalog_segment_filter parameter",
 				},
 				"catalog_segment_product_set_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "catalog_segment_product_set_id parameter",
 				},
 				"da_display_settings": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "da_display_settings parameter",
 				},
 				"destination_catalog_settings": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "destination_catalog_settings parameter",
 				},
 				"flight_catalog_settings": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "flight_catalog_settings parameter",
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
-					"required": true,
+					"required":    true,
 				},
 				"parent_catalog_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "parent_catalog_id parameter",
 				},
 				"partner_integration": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "partner_integration parameter",
 				},
 				"store_catalog_settings": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "store_catalog_settings parameter",
 				},
 				"vertical": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "vertical parameter",
-					"enum": []string{ "adoptable_pets", "commerce", "destinations", "flights", "generic", "home_listings", "hotels", "local_service_businesses", "offer_items", "offline_commerce", "transactable_items", "vehicles" },
+					"enum":        []string{"adoptable_pets", "commerce", "destinations", "flights", "generic", "home_listings", "hotels", "local_service_businesses", "offer_items", "offline_commerce", "transactable_items", "vehicles"},
 				},
 			}),
 			mcp.Description("Parameters object containing: additional_vertical_option (enum) [LOCAL_DA_CATALOG, LOCAL_PRODUCTS], business_metadata (object), catalog_segment_filter (object), catalog_segment_product_set_id (string), da_display_settings (object), destination_catalog_settings (object), flight_catalog_settings (object), name (string) [required], parent_catalog_id (string), partner_integration (object), store_catalog_settings (object), vertical (enum) [adoptable_pets, commerce, destinations, flights, generic, ...]"),
@@ -104,8 +104,6 @@ func HandleBusiness_post_owned_product_catalogs(ctx context.Context, request mcp
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Business_post_owned_product_catalogs(accessToken, args)
 	if err != nil {
@@ -124,20 +122,18 @@ func HandleBusiness_post_owned_product_catalogs(ctx context.Context, request mcp
 // Business_post_owned_product_catalogs performs POST owned_product_catalogs for Business
 func Business_post_owned_product_catalogs(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/owned_product_catalogs")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

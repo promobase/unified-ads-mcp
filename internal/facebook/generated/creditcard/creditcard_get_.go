@@ -17,7 +17,7 @@ import (
 // ToolCreditcard_get_ returns the MCP tool definition for creditcard_get_
 func ToolCreditcard_get_() mcp.Tool {
 	// Available fields for CreditCard: billing_address, card_cobadging, card_holder_name, card_type, credential_id, default_receiving_method_products, expiry_month, expiry_year, id, is_cvv_tricky_bin, is_enabled, is_last_used, is_network_tokenized_in_india, is_soft_disabled, is_user_verified, is_zip_verified, last4, readable_card_type, time_created, time_created_ts, type
-	
+
 	return mcp.NewTool("creditcard_get_",
 		mcp.WithDescription("GET  for CreditCard"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleCreditcard_get_(ctx context.Context, request mcp.CallToolRequest) (*m
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Creditcard_get_(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleCreditcard_get_(ctx context.Context, request mcp.CallToolRequest) (*m
 // Creditcard_get_ performs GET  for CreditCard
 func Creditcard_get_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

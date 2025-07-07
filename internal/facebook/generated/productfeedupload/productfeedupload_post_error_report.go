@@ -15,8 +15,7 @@ import (
 
 // ToolProductfeedupload_post_error_report returns the MCP tool definition for productfeedupload_post_error_report
 func ToolProductfeedupload_post_error_report() mcp.Tool {
-	
-	
+
 	return mcp.NewTool("productfeedupload_post_error_report",
 		mcp.WithDescription("POST error_report for ProductFeedUpload"),
 	)
@@ -32,8 +31,6 @@ func HandleProductfeedupload_post_error_report(ctx context.Context, request mcp.
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the API method
 	result, err := Productfeedupload_post_error_report(accessToken, args)
@@ -53,14 +50,11 @@ func HandleProductfeedupload_post_error_report(ctx context.Context, request mcp.
 // Productfeedupload_post_error_report performs POST error_report for ProductFeedUpload
 func Productfeedupload_post_error_report(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/error_report")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response

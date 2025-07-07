@@ -17,7 +17,7 @@ import (
 // ToolCommercemerchantsettings_get_shops returns the MCP tool definition for commercemerchantsettings_get_shops
 func ToolCommercemerchantsettings_get_shops() mcp.Tool {
 	// Available fields for Shop: commerce_merchant_settings, fb_sales_channel, id, ig_sales_channel, is_onsite_enabled, shop_status, workspace
-	
+
 	return mcp.NewTool("commercemerchantsettings_get_shops",
 		mcp.WithDescription("GET shops for CommerceMerchantSettings"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleCommercemerchantsettings_get_shops(ctx context.Context, request mcp.C
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Commercemerchantsettings_get_shops(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleCommercemerchantsettings_get_shops(ctx context.Context, request mcp.C
 // Commercemerchantsettings_get_shops performs GET shops for CommerceMerchantSettings
 func Commercemerchantsettings_get_shops(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/shops")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

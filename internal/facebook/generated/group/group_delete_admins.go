@@ -15,7 +15,7 @@ import (
 
 // ToolGroup_delete_admins returns the MCP tool definition for group_delete_admins
 func ToolGroup_delete_admins() mcp.Tool {
-	
+
 	// Params object accepts: uid (int)
 	return mcp.NewTool("group_delete_admins",
 		mcp.WithDescription("DELETE admins for Group"),
@@ -23,9 +23,9 @@ func ToolGroup_delete_admins() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"uid": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "uid parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: uid (integer) [required]"),
@@ -58,8 +58,6 @@ func HandleGroup_delete_admins(ctx context.Context, request mcp.CallToolRequest)
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Group_delete_admins(accessToken, args)
 	if err != nil {
@@ -78,20 +76,18 @@ func HandleGroup_delete_admins(ctx context.Context, request mcp.CallToolRequest)
 // Group_delete_admins performs DELETE admins for Group
 func Group_delete_admins(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/admins")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

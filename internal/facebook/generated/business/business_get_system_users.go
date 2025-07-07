@@ -17,7 +17,7 @@ import (
 // ToolBusiness_get_system_users returns the MCP tool definition for business_get_system_users
 func ToolBusiness_get_system_users() mcp.Tool {
 	// Available fields for SystemUser: created_by, created_time, finance_permission, id, ip_permission, name
-	
+
 	return mcp.NewTool("business_get_system_users",
 		mcp.WithDescription("GET system_users for Business"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleBusiness_get_system_users(ctx context.Context, request mcp.CallToolRe
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Business_get_system_users(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleBusiness_get_system_users(ctx context.Context, request mcp.CallToolRe
 // Business_get_system_users performs GET system_users for Business
 func Business_get_system_users(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/system_users")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

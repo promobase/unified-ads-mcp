@@ -15,8 +15,7 @@ import (
 
 // ToolUser_delete_access_tokens returns the MCP tool definition for user_delete_access_tokens
 func ToolUser_delete_access_tokens() mcp.Tool {
-	
-	
+
 	return mcp.NewTool("user_delete_access_tokens",
 		mcp.WithDescription("DELETE access_tokens for User"),
 	)
@@ -32,8 +31,6 @@ func HandleUser_delete_access_tokens(ctx context.Context, request mcp.CallToolRe
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the API method
 	result, err := User_delete_access_tokens(accessToken, args)
@@ -53,14 +50,11 @@ func HandleUser_delete_access_tokens(ctx context.Context, request mcp.CallToolRe
 // User_delete_access_tokens performs DELETE access_tokens for User
 func User_delete_access_tokens(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/access_tokens")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response

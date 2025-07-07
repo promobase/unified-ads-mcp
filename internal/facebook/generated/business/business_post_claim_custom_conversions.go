@@ -15,7 +15,7 @@ import (
 
 // ToolBusiness_post_claim_custom_conversions returns the MCP tool definition for business_post_claim_custom_conversions
 func ToolBusiness_post_claim_custom_conversions() mcp.Tool {
-	
+
 	// Params object accepts: custom_conversion_id (string)
 	return mcp.NewTool("business_post_claim_custom_conversions",
 		mcp.WithDescription("POST claim_custom_conversions for Business"),
@@ -23,9 +23,9 @@ func ToolBusiness_post_claim_custom_conversions() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"custom_conversion_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "custom_conversion_id parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: custom_conversion_id (string) [required]"),
@@ -58,8 +58,6 @@ func HandleBusiness_post_claim_custom_conversions(ctx context.Context, request m
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Business_post_claim_custom_conversions(accessToken, args)
 	if err != nil {
@@ -78,20 +76,18 @@ func HandleBusiness_post_claim_custom_conversions(ctx context.Context, request m
 // Business_post_claim_custom_conversions performs POST claim_custom_conversions for Business
 func Business_post_claim_custom_conversions(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/claim_custom_conversions")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

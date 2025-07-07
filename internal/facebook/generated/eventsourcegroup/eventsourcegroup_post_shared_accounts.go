@@ -15,7 +15,7 @@ import (
 
 // ToolEventsourcegroup_post_shared_accounts returns the MCP tool definition for eventsourcegroup_post_shared_accounts
 func ToolEventsourcegroup_post_shared_accounts() mcp.Tool {
-	
+
 	// Params object accepts: accounts (list<string>)
 	return mcp.NewTool("eventsourcegroup_post_shared_accounts",
 		mcp.WithDescription("POST shared_accounts for EventSourceGroup"),
@@ -23,10 +23,10 @@ func ToolEventsourcegroup_post_shared_accounts() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"accounts": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "accounts parameter",
-					"required": true,
-					"items": map[string]any{"type": "string"},
+					"required":    true,
+					"items":       map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: accounts (array<string>) [required]"),
@@ -59,8 +59,6 @@ func HandleEventsourcegroup_post_shared_accounts(ctx context.Context, request mc
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Eventsourcegroup_post_shared_accounts(accessToken, args)
 	if err != nil {
@@ -79,20 +77,18 @@ func HandleEventsourcegroup_post_shared_accounts(ctx context.Context, request mc
 // Eventsourcegroup_post_shared_accounts performs POST shared_accounts for EventSourceGroup
 func Eventsourcegroup_post_shared_accounts(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/shared_accounts")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

@@ -15,7 +15,7 @@ import (
 
 // ToolBusiness_post_add_phone_numbers returns the MCP tool definition for business_post_add_phone_numbers
 func ToolBusiness_post_add_phone_numbers() mcp.Tool {
-	
+
 	// Params object accepts: phone_number (string)
 	return mcp.NewTool("business_post_add_phone_numbers",
 		mcp.WithDescription("POST add_phone_numbers for Business"),
@@ -23,9 +23,9 @@ func ToolBusiness_post_add_phone_numbers() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"phone_number": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "phone_number parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: phone_number (string) [required]"),
@@ -58,8 +58,6 @@ func HandleBusiness_post_add_phone_numbers(ctx context.Context, request mcp.Call
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Business_post_add_phone_numbers(accessToken, args)
 	if err != nil {
@@ -78,20 +76,18 @@ func HandleBusiness_post_add_phone_numbers(ctx context.Context, request mcp.Call
 // Business_post_add_phone_numbers performs POST add_phone_numbers for Business
 func Business_post_add_phone_numbers(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/add_phone_numbers")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

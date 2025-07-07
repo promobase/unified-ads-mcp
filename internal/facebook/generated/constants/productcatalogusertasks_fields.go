@@ -5,10 +5,10 @@ package constants
 // ProductCatalogUserTasksFields contains field name constants for ProductCatalogUserTasks objects
 var ProductCatalogUserTasksFields = struct {
 	Business string
-	Tasks string
+	Tasks    string
 }{
 	Business: "business",
-	Tasks: "tasks",
+	Tasks:    "tasks",
 }
 
 // ProductCatalogUserTasksFieldsList contains all available fields for ProductCatalogUserTasks objects

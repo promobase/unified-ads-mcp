@@ -17,7 +17,6 @@ import (
 func GetCloudGameTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// cloudgame_get_ tool
 	// Available fields for CloudGame: id, name, owner, playable_ad_file_size, playable_ad_orientation, playable_ad_package_name, playable_ad_reject_reason, playable_ad_status, playable_ad_upload_time
 	cloudgame_get_Tool := mcp.NewTool("cloudgame_get_",
@@ -37,12 +36,10 @@ func GetCloudGameTools() []mcp.Tool {
 	)
 	tools = append(tools, cloudgame_get_Tool)
 
-
 	return tools
 }
 
 // CloudGame handlers
-
 
 // HandleCloudgame_get_ handles the cloudgame_get_ tool with context-based auth
 func HandleCloudgame_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleCloudgame_get_(ctx context.Context, request mcp.CallToolRequest) (*mc
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Cloudgame_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleCloudgame_get_(ctx context.Context, request mcp.CallToolRequest) (*mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

@@ -4,10 +4,10 @@ package constants
 
 // AdPreviewFields contains field name constants for AdPreview objects
 var AdPreviewFields = struct {
-	Body string
+	Body               string
 	TransformationSpec string
 }{
-	Body: "body",
+	Body:               "body",
 	TransformationSpec: "transformation_spec",
 }
 

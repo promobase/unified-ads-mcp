@@ -15,55 +15,55 @@ import (
 
 // ToolPagepost_post_comments returns the MCP tool definition for pagepost_post_comments
 func ToolPagepost_post_comments() mcp.Tool {
-	
+
 	// Params object accepts: attachment_id (string), attachment_share_url (string), attachment_url (string), comment (string), comment_privacy_value (pagepostcomments_comment_privacy_value_enum_param), feedback_source (string), message (string), nectar_module (string), parent_comment_id (Object), post_id (string), tracking (string)
 	return mcp.NewTool("pagepost_post_comments",
 		mcp.WithDescription("POST comments for PagePost"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"attachment_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "attachment_id parameter",
 				},
 				"attachment_share_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "attachment_share_url parameter",
 				},
 				"attachment_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "attachment_url parameter",
 				},
 				"comment": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "comment parameter",
 				},
 				"comment_privacy_value": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "comment_privacy_value parameter",
-					"enum": []string{ "DECLINED_BY_ADMIN_ASSISTANT", "DEFAULT_PRIVACY", "FRIENDS_AND_POST_OWNER", "FRIENDS_ONLY", "GRAPHQL_MULTIPLE_VALUE_HACK_DO_NOT_USE", "OWNER_OR_COMMENTER", "PENDING_APPROVAL", "REMOVED_BY_ADMIN_ASSISTANT", "SIDE_CONVERSATION", "SIDE_CONVERSATION_AND_POST_OWNER", "SPOTLIGHT_TAB" },
+					"enum":        []string{"DECLINED_BY_ADMIN_ASSISTANT", "DEFAULT_PRIVACY", "FRIENDS_AND_POST_OWNER", "FRIENDS_ONLY", "GRAPHQL_MULTIPLE_VALUE_HACK_DO_NOT_USE", "OWNER_OR_COMMENTER", "PENDING_APPROVAL", "REMOVED_BY_ADMIN_ASSISTANT", "SIDE_CONVERSATION", "SIDE_CONVERSATION_AND_POST_OWNER", "SPOTLIGHT_TAB"},
 				},
 				"feedback_source": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "feedback_source parameter",
 				},
 				"message": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "message parameter",
 				},
 				"nectar_module": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "nectar_module parameter",
 				},
 				"parent_comment_id": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "parent_comment_id parameter",
 				},
 				"post_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "post_id parameter",
 				},
 				"tracking": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "tracking parameter",
 				},
 			}),
@@ -95,8 +95,6 @@ func HandlePagepost_post_comments(ctx context.Context, request mcp.CallToolReque
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Pagepost_post_comments(accessToken, args)
 	if err != nil {
@@ -115,20 +113,18 @@ func HandlePagepost_post_comments(ctx context.Context, request mcp.CallToolReque
 // Pagepost_post_comments performs POST comments for PagePost
 func Pagepost_post_comments(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/comments")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

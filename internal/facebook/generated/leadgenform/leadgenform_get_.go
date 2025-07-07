@@ -17,7 +17,7 @@ import (
 // ToolLeadgenform_get_ returns the MCP tool definition for leadgenform_get_
 func ToolLeadgenform_get_() mcp.Tool {
 	// Available fields for LeadgenForm: allow_organic_lead, block_display_for_non_targeted_viewer, context_card, created_time, creator, expired_leads_count, follow_up_action_text, follow_up_action_url, id, is_optimized_for_quality, leads_count, legal_content, locale, name, organic_leads_count, page, page_id, privacy_policy_url, question_page_custom_headline, questions, status, thank_you_page, tracking_parameters
-	
+
 	return mcp.NewTool("leadgenform_get_",
 		mcp.WithDescription("GET  for LeadgenForm"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleLeadgenform_get_(ctx context.Context, request mcp.CallToolRequest) (*
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Leadgenform_get_(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleLeadgenform_get_(ctx context.Context, request mcp.CallToolRequest) (*
 // Leadgenform_get_ performs GET  for LeadgenForm
 func Leadgenform_get_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

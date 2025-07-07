@@ -4,27 +4,27 @@ package constants
 
 // AdCustomizationRuleSpecFields contains field name constants for AdCustomizationRuleSpec objects
 var AdCustomizationRuleSpecFields = struct {
-	Caption string
+	Caption           string
 	CustomizationSpec string
-	Description string
-	ImageHash string
-	Link string
-	Message string
-	Name string
-	Priority string
-	TemplateUrlSpec string
-	VideoId string
+	Description       string
+	ImageHash         string
+	Link              string
+	Message           string
+	Name              string
+	Priority          string
+	TemplateUrlSpec   string
+	VideoId           string
 }{
-	Caption: "caption",
+	Caption:           "caption",
 	CustomizationSpec: "customization_spec",
-	Description: "description",
-	ImageHash: "image_hash",
-	Link: "link",
-	Message: "message",
-	Name: "name",
-	Priority: "priority",
-	TemplateUrlSpec: "template_url_spec",
-	VideoId: "video_id",
+	Description:       "description",
+	ImageHash:         "image_hash",
+	Link:              "link",
+	Message:           "message",
+	Name:              "name",
+	Priority:          "priority",
+	TemplateUrlSpec:   "template_url_spec",
+	VideoId:           "video_id",
 }
 
 // AdCustomizationRuleSpecFieldsList contains all available fields for AdCustomizationRuleSpec objects

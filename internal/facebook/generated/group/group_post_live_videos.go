@@ -15,96 +15,96 @@ import (
 
 // ToolGroup_post_live_videos returns the MCP tool definition for group_post_live_videos
 func ToolGroup_post_live_videos() mcp.Tool {
-	
+
 	// Params object accepts: content_tags (list<string>), description (string), enable_backup_ingest (bool), encoding_settings (string), event_params (Object), fisheye_video_cropped (bool), front_z_rotation (float), is_audio_only (bool), is_spherical (bool), original_fov (unsigned int), privacy (string), projection (grouplive_videos_projection_enum_param), published (bool), schedule_custom_profile_image (file), spatial_audio_format (grouplive_videos_spatial_audio_format_enum_param), status (grouplive_videos_status_enum_param), stereoscopic_mode (grouplive_videos_stereoscopic_mode_enum_param), stop_on_delete_stream (bool), stream_type (grouplive_videos_stream_type_enum_param), title (string)
 	return mcp.NewTool("group_post_live_videos",
 		mcp.WithDescription("POST live_videos for Group"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"content_tags": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "content_tags parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"description": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "description parameter",
 				},
 				"enable_backup_ingest": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "enable_backup_ingest parameter",
 				},
 				"encoding_settings": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "encoding_settings parameter",
 				},
 				"event_params": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "event_params parameter",
 				},
 				"fisheye_video_cropped": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "fisheye_video_cropped parameter",
 				},
 				"front_z_rotation": map[string]any{
-					"type": "number",
+					"type":        "number",
 					"description": "front_z_rotation parameter",
 				},
 				"is_audio_only": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_audio_only parameter",
 				},
 				"is_spherical": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_spherical parameter",
 				},
 				"original_fov": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "original_fov parameter",
 				},
 				"privacy": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "privacy parameter",
 				},
 				"projection": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "projection parameter",
-					"enum": []string{ "CUBEMAP", "EQUIRECTANGULAR", "HALF_EQUIRECTANGULAR" },
+					"enum":        []string{"CUBEMAP", "EQUIRECTANGULAR", "HALF_EQUIRECTANGULAR"},
 				},
 				"published": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "published parameter",
 				},
 				"schedule_custom_profile_image": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "schedule_custom_profile_image parameter",
 				},
 				"spatial_audio_format": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "spatial_audio_format parameter",
-					"enum": []string{ "ambiX_4" },
+					"enum":        []string{"ambiX_4"},
 				},
 				"status": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "status parameter",
-					"enum": []string{ "LIVE_NOW", "SCHEDULED_CANCELED", "SCHEDULED_LIVE", "SCHEDULED_UNPUBLISHED", "UNPUBLISHED" },
+					"enum":        []string{"LIVE_NOW", "SCHEDULED_CANCELED", "SCHEDULED_LIVE", "SCHEDULED_UNPUBLISHED", "UNPUBLISHED"},
 				},
 				"stereoscopic_mode": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "stereoscopic_mode parameter",
-					"enum": []string{ "LEFT_RIGHT", "MONO", "TOP_BOTTOM" },
+					"enum":        []string{"LEFT_RIGHT", "MONO", "TOP_BOTTOM"},
 				},
 				"stop_on_delete_stream": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "stop_on_delete_stream parameter",
 				},
 				"stream_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "stream_type parameter",
-					"enum": []string{ "AMBIENT", "REGULAR" },
+					"enum":        []string{"AMBIENT", "REGULAR"},
 				},
 				"title": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "title parameter",
 				},
 			}),
@@ -136,8 +136,6 @@ func HandleGroup_post_live_videos(ctx context.Context, request mcp.CallToolReque
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Group_post_live_videos(accessToken, args)
 	if err != nil {
@@ -156,20 +154,18 @@ func HandleGroup_post_live_videos(ctx context.Context, request mcp.CallToolReque
 // Group_post_live_videos performs POST live_videos for Group
 func Group_post_live_videos(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/live_videos")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

@@ -16,7 +16,6 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolVideopoll_get_())
 	tools = append(tools, ToolVideopoll_post_())
 
-
 	return tools
 }
 
@@ -27,7 +26,6 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers["videopoll_get_poll_options"] = HandleVideopoll_get_poll_options
 	handlers["videopoll_get_"] = HandleVideopoll_get_
 	handlers["videopoll_post_"] = HandleVideopoll_post_
-
 
 	return handlers
 }

@@ -15,8 +15,7 @@ import (
 
 // ToolBusinessrolerequest_delete_ returns the MCP tool definition for businessrolerequest_delete_
 func ToolBusinessrolerequest_delete_() mcp.Tool {
-	
-	
+
 	return mcp.NewTool("businessrolerequest_delete_",
 		mcp.WithDescription("DELETE  for BusinessRoleRequest"),
 	)
@@ -32,8 +31,6 @@ func HandleBusinessrolerequest_delete_(ctx context.Context, request mcp.CallTool
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the API method
 	result, err := Businessrolerequest_delete_(accessToken, args)
@@ -53,14 +50,11 @@ func HandleBusinessrolerequest_delete_(ctx context.Context, request mcp.CallTool
 // Businessrolerequest_delete_ performs DELETE  for BusinessRoleRequest
 func Businessrolerequest_delete_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response

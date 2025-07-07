@@ -15,217 +15,217 @@ import (
 
 // ToolGroup_post_photos returns the MCP tool definition for group_post_photos
 func ToolGroup_post_photos() mcp.Tool {
-	
+
 	// Params object accepts: aid (string), allow_spherical_photo (bool), alt_text_custom (string), android_key_hash (string), application_id (string), attempt (unsigned int), audience_exp (bool), backdated_time (datetime), backdated_time_granularity (groupphotos_backdated_time_granularity_enum_param), caption (string), composer_session_id (string), direct_share_status (unsigned int), feed_targeting (Object), filter_type (unsigned int), full_res_is_coming_later (bool), initial_view_heading_override_degrees (unsigned int), initial_view_pitch_override_degrees (unsigned int), initial_view_vertical_fov_override_degrees (unsigned int), ios_bundle_id (string), is_explicit_location (bool), is_explicit_place (bool), manual_privacy (bool), message (string), name (string), no_story (bool), offline_id (unsigned int), og_action_type_id (string), og_icon_id (string), og_object_id (string), og_phrase (string), og_set_profile_badge (bool), og_suggestion_mechanism (string), place (Object), privacy (string), profile_id (int), provenance_info (map), proxied_app_id (string), published (bool), qn (string), spherical_metadata (map), sponsor_id (string), sponsor_relationship (unsigned int), tags (list<Object>), target_id (int), targeting (Object), time_since_original_post (unsigned int), uid (int), unpublished_content_type (groupphotos_unpublished_content_type_enum_param), url (string), user_selected_tags (bool), vault_image_id (string)
 	return mcp.NewTool("group_post_photos",
 		mcp.WithDescription("POST photos for Group"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"aid": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "aid parameter",
 				},
 				"allow_spherical_photo": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "allow_spherical_photo parameter",
 				},
 				"alt_text_custom": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "alt_text_custom parameter",
 				},
 				"android_key_hash": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "android_key_hash parameter",
 				},
 				"application_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "application_id parameter",
 				},
 				"attempt": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "attempt parameter",
 				},
 				"audience_exp": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "audience_exp parameter",
 				},
 				"backdated_time": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "backdated_time parameter",
 				},
 				"backdated_time_granularity": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "backdated_time_granularity parameter",
-					"enum": []string{ "day", "hour", "min", "month", "none", "year" },
+					"enum":        []string{"day", "hour", "min", "month", "none", "year"},
 				},
 				"caption": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "caption parameter",
 				},
 				"composer_session_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "composer_session_id parameter",
 				},
 				"direct_share_status": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "direct_share_status parameter",
 				},
 				"feed_targeting": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "feed_targeting parameter",
 				},
 				"filter_type": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "filter_type parameter",
 				},
 				"full_res_is_coming_later": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "full_res_is_coming_later parameter",
 				},
 				"initial_view_heading_override_degrees": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "initial_view_heading_override_degrees parameter",
 				},
 				"initial_view_pitch_override_degrees": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "initial_view_pitch_override_degrees parameter",
 				},
 				"initial_view_vertical_fov_override_degrees": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "initial_view_vertical_fov_override_degrees parameter",
 				},
 				"ios_bundle_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "ios_bundle_id parameter",
 				},
 				"is_explicit_location": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_explicit_location parameter",
 				},
 				"is_explicit_place": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_explicit_place parameter",
 				},
 				"manual_privacy": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "manual_privacy parameter",
 				},
 				"message": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "message parameter",
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
 				},
 				"no_story": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "no_story parameter",
 				},
 				"offline_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "offline_id parameter",
 				},
 				"og_action_type_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "og_action_type_id parameter",
 				},
 				"og_icon_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "og_icon_id parameter",
 				},
 				"og_object_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "og_object_id parameter",
 				},
 				"og_phrase": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "og_phrase parameter",
 				},
 				"og_set_profile_badge": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "og_set_profile_badge parameter",
 				},
 				"og_suggestion_mechanism": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "og_suggestion_mechanism parameter",
 				},
 				"place": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "place parameter",
 				},
 				"privacy": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "privacy parameter",
 				},
 				"profile_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "profile_id parameter",
 				},
 				"provenance_info": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "provenance_info parameter",
 				},
 				"proxied_app_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "proxied_app_id parameter",
 				},
 				"published": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "published parameter",
 				},
 				"qn": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "qn parameter",
 				},
 				"spherical_metadata": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "spherical_metadata parameter",
 				},
 				"sponsor_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "sponsor_id parameter",
 				},
 				"sponsor_relationship": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "sponsor_relationship parameter",
 				},
 				"tags": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "tags parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"target_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "target_id parameter",
 				},
 				"targeting": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "targeting parameter",
 				},
 				"time_since_original_post": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "time_since_original_post parameter",
 				},
 				"uid": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "uid parameter",
 				},
 				"unpublished_content_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "unpublished_content_type parameter",
-					"enum": []string{ "ADS_POST", "DRAFT", "INLINE_CREATED", "PUBLISHED", "REVIEWABLE_BRANDED_CONTENT", "SCHEDULED", "SCHEDULED_RECURRING" },
+					"enum":        []string{"ADS_POST", "DRAFT", "INLINE_CREATED", "PUBLISHED", "REVIEWABLE_BRANDED_CONTENT", "SCHEDULED", "SCHEDULED_RECURRING"},
 				},
 				"url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "url parameter",
 				},
 				"user_selected_tags": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "user_selected_tags parameter",
 				},
 				"vault_image_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "vault_image_id parameter",
 				},
 			}),
@@ -257,8 +257,6 @@ func HandleGroup_post_photos(ctx context.Context, request mcp.CallToolRequest) (
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Group_post_photos(accessToken, args)
 	if err != nil {
@@ -277,20 +275,18 @@ func HandleGroup_post_photos(ctx context.Context, request mcp.CallToolRequest) (
 // Group_post_photos performs POST photos for Group
 func Group_post_photos(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/photos")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

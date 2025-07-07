@@ -17,7 +17,7 @@ import (
 // ToolIgmedia_get_boost_ads_list returns the MCP tool definition for igmedia_get_boost_ads_list
 func ToolIgmedia_get_boost_ads_list() mcp.Tool {
 	// Available fields for IGBoostMediaAd: ad_id, ad_status
-	
+
 	return mcp.NewTool("igmedia_get_boost_ads_list",
 		mcp.WithDescription("GET boost_ads_list for IGMedia"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleIgmedia_get_boost_ads_list(ctx context.Context, request mcp.CallToolR
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Igmedia_get_boost_ads_list(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleIgmedia_get_boost_ads_list(ctx context.Context, request mcp.CallToolR
 // Igmedia_get_boost_ads_list performs GET boost_ads_list for IGMedia
 func Igmedia_get_boost_ads_list(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/boost_ads_list")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

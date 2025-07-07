@@ -15,37 +15,37 @@ import (
 
 // ToolUrl_post_ returns the MCP tool definition for url_post_
 func ToolUrl_post_() mcp.Tool {
-	
+
 	// Params object accepts: blacklist (bool), denylist (bool), hmac (string), locale (list<string>), scopes (list<url_scopes>), ts (datetime)
 	return mcp.NewTool("url_post_",
 		mcp.WithDescription("POST  for URL"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"blacklist": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "blacklist parameter",
 				},
 				"denylist": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "denylist parameter",
 				},
 				"hmac": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "hmac parameter",
 				},
 				"locale": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "locale parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"scopes": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "scopes parameter",
-					"enum": []string{ "NEWS_TAB", "NEWS_TAB_DEV_ENV" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"NEWS_TAB", "NEWS_TAB_DEV_ENV"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"ts": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "ts parameter",
 				},
 			}),
@@ -77,8 +77,6 @@ func HandleUrl_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Cal
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Url_post_(accessToken, args)
 	if err != nil {
@@ -97,20 +95,18 @@ func HandleUrl_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Cal
 // Url_post_ performs POST  for URL
 func Url_post_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

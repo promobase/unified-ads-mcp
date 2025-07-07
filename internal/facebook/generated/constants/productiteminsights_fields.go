@@ -4,17 +4,17 @@ package constants
 
 // ProductItemInsightsFields contains field name constants for ProductItemInsights objects
 var ProductItemInsightsFields = struct {
-	AdClickCount string
+	AdClickCount      string
 	AdImpressionCount string
-	AddToCartCount string
-	PurchaseCount string
-	ViewContentCount string
+	AddToCartCount    string
+	PurchaseCount     string
+	ViewContentCount  string
 }{
-	AdClickCount: "ad_click_count",
+	AdClickCount:      "ad_click_count",
 	AdImpressionCount: "ad_impression_count",
-	AddToCartCount: "add_to_cart_count",
-	PurchaseCount: "purchase_count",
-	ViewContentCount: "view_content_count",
+	AddToCartCount:    "add_to_cart_count",
+	PurchaseCount:     "purchase_count",
+	ViewContentCount:  "view_content_count",
 }
 
 // ProductItemInsightsFieldsList contains all available fields for ProductItemInsights objects

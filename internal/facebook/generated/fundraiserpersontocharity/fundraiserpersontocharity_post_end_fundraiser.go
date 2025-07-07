@@ -15,8 +15,7 @@ import (
 
 // ToolFundraiserpersontocharity_post_end_fundraiser returns the MCP tool definition for fundraiserpersontocharity_post_end_fundraiser
 func ToolFundraiserpersontocharity_post_end_fundraiser() mcp.Tool {
-	
-	
+
 	return mcp.NewTool("fundraiserpersontocharity_post_end_fundraiser",
 		mcp.WithDescription("POST end_fundraiser for FundraiserPersonToCharity"),
 	)
@@ -32,8 +31,6 @@ func HandleFundraiserpersontocharity_post_end_fundraiser(ctx context.Context, re
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the API method
 	result, err := Fundraiserpersontocharity_post_end_fundraiser(accessToken, args)
@@ -53,14 +50,11 @@ func HandleFundraiserpersontocharity_post_end_fundraiser(ctx context.Context, re
 // Fundraiserpersontocharity_post_end_fundraiser performs POST end_fundraiser for FundraiserPersonToCharity
 func Fundraiserpersontocharity_post_end_fundraiser(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/end_fundraiser")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response

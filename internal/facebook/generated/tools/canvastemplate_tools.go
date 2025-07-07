@@ -17,7 +17,6 @@ import (
 func GetCanvasTemplateTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// canvastemplate_get_ tool
 	// Available fields for CanvasTemplate: channels, description, document, id, is_multi_tab_supportable, is_new, name, objectives, owner_id, required_capabilities, snapshot_photo, status, sub_verticals, verticals
 	canvastemplate_get_Tool := mcp.NewTool("canvastemplate_get_",
@@ -37,12 +36,10 @@ func GetCanvasTemplateTools() []mcp.Tool {
 	)
 	tools = append(tools, canvastemplate_get_Tool)
 
-
 	return tools
 }
 
 // CanvasTemplate handlers
-
 
 // HandleCanvastemplate_get_ handles the canvastemplate_get_ tool with context-based auth
 func HandleCanvastemplate_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleCanvastemplate_get_(ctx context.Context, request mcp.CallToolRequest)
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Canvastemplate_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleCanvastemplate_get_(ctx context.Context, request mcp.CallToolRequest)
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

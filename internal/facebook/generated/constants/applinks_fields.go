@@ -4,24 +4,24 @@ package constants
 
 // AppLinksFields contains field name constants for AppLinks objects
 var AppLinksFields = struct {
-	Android string
-	Id string
-	Ios string
-	Ipad string
-	Iphone string
-	Web string
-	Windows string
-	WindowsPhone string
+	Android          string
+	Id               string
+	Ios              string
+	Ipad             string
+	Iphone           string
+	Web              string
+	Windows          string
+	WindowsPhone     string
 	WindowsUniversal string
 }{
-	Android: "android",
-	Id: "id",
-	Ios: "ios",
-	Ipad: "ipad",
-	Iphone: "iphone",
-	Web: "web",
-	Windows: "windows",
-	WindowsPhone: "windows_phone",
+	Android:          "android",
+	Id:               "id",
+	Ios:              "ios",
+	Ipad:             "ipad",
+	Iphone:           "iphone",
+	Web:              "web",
+	Windows:          "windows",
+	WindowsPhone:     "windows_phone",
 	WindowsUniversal: "windows_universal",
 }
 

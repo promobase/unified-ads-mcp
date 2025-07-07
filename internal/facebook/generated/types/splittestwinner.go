@@ -4,7 +4,7 @@ package types
 
 // SplitTestWinner represents a Facebook SplitTestWinner object
 type SplitTestWinner struct {
-	Ad_object_level string `json:"ad_object_level"`
-	Confidences []interface{} `json:"confidences"`
-	Winner_ad_object_id string `json:"winner_ad_object_id"`
+	Ad_object_level     string        `json:"ad_object_level"`
+	Confidences         []interface{} `json:"confidences"`
+	Winner_ad_object_id string        `json:"winner_ad_object_id"`
 }

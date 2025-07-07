@@ -4,55 +4,55 @@ package constants
 
 // WhatsAppBusinessAccountFields contains field name constants for WhatsAppBusinessAccount objects
 var WhatsAppBusinessAccountFields = struct {
-	AccountReviewStatus string
-	Analytics string
+	AccountReviewStatus              string
+	Analytics                        string
 	AuthInternationalRateEligibility string
-	BusinessVerificationStatus string
-	Country string
-	CreationTime string
-	Currency string
-	HealthStatus string
-	Id string
-	IsEnabledForInsights string
-	IsSharedWithPartners string
-	LinkedCommerceAccount string
-	MarketingMessagesLiteApiStatus string
-	MessageTemplateNamespace string
-	Name string
-	OnBehalfOfBusinessInfo string
-	OwnerBusiness string
-	OwnerBusinessInfo string
-	OwnershipType string
-	PrimaryBusinessLocation string
-	PrimaryFundingId string
-	PurchaseOrderNumber string
-	Status string
-	TimezoneId string
+	BusinessVerificationStatus       string
+	Country                          string
+	CreationTime                     string
+	Currency                         string
+	HealthStatus                     string
+	Id                               string
+	IsEnabledForInsights             string
+	IsSharedWithPartners             string
+	LinkedCommerceAccount            string
+	MarketingMessagesLiteApiStatus   string
+	MessageTemplateNamespace         string
+	Name                             string
+	OnBehalfOfBusinessInfo           string
+	OwnerBusiness                    string
+	OwnerBusinessInfo                string
+	OwnershipType                    string
+	PrimaryBusinessLocation          string
+	PrimaryFundingId                 string
+	PurchaseOrderNumber              string
+	Status                           string
+	TimezoneId                       string
 }{
-	AccountReviewStatus: "account_review_status",
-	Analytics: "analytics",
+	AccountReviewStatus:              "account_review_status",
+	Analytics:                        "analytics",
 	AuthInternationalRateEligibility: "auth_international_rate_eligibility",
-	BusinessVerificationStatus: "business_verification_status",
-	Country: "country",
-	CreationTime: "creation_time",
-	Currency: "currency",
-	HealthStatus: "health_status",
-	Id: "id",
-	IsEnabledForInsights: "is_enabled_for_insights",
-	IsSharedWithPartners: "is_shared_with_partners",
-	LinkedCommerceAccount: "linked_commerce_account",
-	MarketingMessagesLiteApiStatus: "marketing_messages_lite_api_status",
-	MessageTemplateNamespace: "message_template_namespace",
-	Name: "name",
-	OnBehalfOfBusinessInfo: "on_behalf_of_business_info",
-	OwnerBusiness: "owner_business",
-	OwnerBusinessInfo: "owner_business_info",
-	OwnershipType: "ownership_type",
-	PrimaryBusinessLocation: "primary_business_location",
-	PrimaryFundingId: "primary_funding_id",
-	PurchaseOrderNumber: "purchase_order_number",
-	Status: "status",
-	TimezoneId: "timezone_id",
+	BusinessVerificationStatus:       "business_verification_status",
+	Country:                          "country",
+	CreationTime:                     "creation_time",
+	Currency:                         "currency",
+	HealthStatus:                     "health_status",
+	Id:                               "id",
+	IsEnabledForInsights:             "is_enabled_for_insights",
+	IsSharedWithPartners:             "is_shared_with_partners",
+	LinkedCommerceAccount:            "linked_commerce_account",
+	MarketingMessagesLiteApiStatus:   "marketing_messages_lite_api_status",
+	MessageTemplateNamespace:         "message_template_namespace",
+	Name:                             "name",
+	OnBehalfOfBusinessInfo:           "on_behalf_of_business_info",
+	OwnerBusiness:                    "owner_business",
+	OwnerBusinessInfo:                "owner_business_info",
+	OwnershipType:                    "ownership_type",
+	PrimaryBusinessLocation:          "primary_business_location",
+	PrimaryFundingId:                 "primary_funding_id",
+	PurchaseOrderNumber:              "purchase_order_number",
+	Status:                           "status",
+	TimezoneId:                       "timezone_id",
 }
 
 // WhatsAppBusinessAccountFieldsList contains all available fields for WhatsAppBusinessAccount objects

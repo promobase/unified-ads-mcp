@@ -4,10 +4,10 @@ package constants
 
 // ProductItemLocalInfoLatLongShapeFields contains field name constants for ProductItemLocalInfoLatLongShape objects
 var ProductItemLocalInfoLatLongShapeFields = struct {
-	Latitude string
+	Latitude  string
 	Longitude string
 }{
-	Latitude: "latitude",
+	Latitude:  "latitude",
 	Longitude: "longitude",
 }
 

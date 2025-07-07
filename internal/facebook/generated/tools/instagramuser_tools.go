@@ -17,7 +17,6 @@ import (
 func GetInstagramUserTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// instagramuser_get_agencies tool
 	// Available fields for Business: block_offline_analytics, collaborative_ads_managed_partner_business_info, collaborative_ads_managed_partner_eligibility, collaborative_ads_partner_premium_options, created_by, created_time, extended_updated_time, id, is_hidden, link, name, payment_account_id, primary_page, profile_picture_uri, timezone_id, two_factor_type, updated_by, updated_time, user_access_expire_time, verification_status, vertical, vertical_id
 	instagramuser_get_agenciesTool := mcp.NewTool("instagramuser_get_agencies",
@@ -65,9 +64,9 @@ func GetInstagramUserTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"business": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "business parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: business (string) [required]"),
@@ -114,7 +113,7 @@ func GetInstagramUserTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"adgroup_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "adgroup_id parameter",
 				},
 			}),
@@ -135,12 +134,10 @@ func GetInstagramUserTools() []mcp.Tool {
 	)
 	tools = append(tools, instagramuser_get_Tool)
 
-
 	return tools
 }
 
 // InstagramUser handlers
-
 
 // HandleInstagramuser_get_agencies handles the instagramuser_get_agencies tool with context-based auth
 func HandleInstagramuser_get_agencies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -181,8 +178,6 @@ func HandleInstagramuser_get_agencies(ctx context.Context, request mcp.CallToolR
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Instagramuser_get_agencies(args)
 	if err != nil {
@@ -197,7 +192,6 @@ func HandleInstagramuser_get_agencies(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleInstagramuser_get_ar_effects handles the instagramuser_get_ar_effects tool with context-based auth
 func HandleInstagramuser_get_ar_effects(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -238,8 +232,6 @@ func HandleInstagramuser_get_ar_effects(ctx context.Context, request mcp.CallToo
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Instagramuser_get_ar_effects(args)
 	if err != nil {
@@ -254,7 +246,6 @@ func HandleInstagramuser_get_ar_effects(ctx context.Context, request mcp.CallToo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleInstagramuser_get_authorized_adaccounts handles the instagramuser_get_authorized_adaccounts tool with context-based auth
 func HandleInstagramuser_get_authorized_adaccounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -309,8 +300,6 @@ func HandleInstagramuser_get_authorized_adaccounts(ctx context.Context, request 
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Instagramuser_get_authorized_adaccounts(args)
 	if err != nil {
@@ -325,7 +314,6 @@ func HandleInstagramuser_get_authorized_adaccounts(ctx context.Context, request 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleInstagramuser_get_upcoming_events handles the instagramuser_get_upcoming_events tool with context-based auth
 func HandleInstagramuser_get_upcoming_events(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -366,8 +354,6 @@ func HandleInstagramuser_get_upcoming_events(ctx context.Context, request mcp.Ca
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Instagramuser_get_upcoming_events(args)
 	if err != nil {
@@ -382,7 +368,6 @@ func HandleInstagramuser_get_upcoming_events(ctx context.Context, request mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleInstagramuser_get_ handles the instagramuser_get_ tool with context-based auth
 func HandleInstagramuser_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -435,8 +420,6 @@ func HandleInstagramuser_get_(ctx context.Context, request mcp.CallToolRequest) 
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Instagramuser_get_(args)
 	if err != nil {
@@ -451,4 +434,3 @@ func HandleInstagramuser_get_(ctx context.Context, request mcp.CallToolRequest) 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

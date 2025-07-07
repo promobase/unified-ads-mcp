@@ -15,7 +15,6 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolAdsconversiongoal_get_conversion_events())
 	tools = append(tools, ToolAdsconversiongoal_get_())
 
-
 	return tools
 }
 
@@ -25,7 +24,6 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 
 	handlers["adsconversiongoal_get_conversion_events"] = HandleAdsconversiongoal_get_conversion_events
 	handlers["adsconversiongoal_get_"] = HandleAdsconversiongoal_get_
-
 
 	return handlers
 }

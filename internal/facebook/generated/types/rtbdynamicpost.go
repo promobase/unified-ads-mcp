@@ -7,14 +7,14 @@ import "time"
 // RTBDynamicPost represents a Facebook RTBDynamicPost object
 type RTBDynamicPost struct {
 	Child_attachments []DynamicPostChildAttachment `json:"child_attachments"`
-	Created time.Time `json:"created"`
-	Description string `json:"description"`
-	Id string `json:"id"`
-	Image_url string `json:"image_url"`
-	Link string `json:"link"`
-	Message string `json:"message"`
-	Owner_id string `json:"owner_id"`
-	Place_id string `json:"place_id"`
-	Product_id string `json:"product_id"`
-	Title string `json:"title"`
+	Created           time.Time                    `json:"created"`
+	Description       string                       `json:"description"`
+	Id                string                       `json:"id"`
+	Image_url         string                       `json:"image_url"`
+	Link              string                       `json:"link"`
+	Message           string                       `json:"message"`
+	Owner_id          string                       `json:"owner_id"`
+	Place_id          string                       `json:"place_id"`
+	Product_id        string                       `json:"product_id"`
+	Title             string                       `json:"title"`
 }

@@ -4,12 +4,12 @@ package constants
 
 // CustomAudiencesTOSFields contains field name constants for CustomAudiencesTOS objects
 var CustomAudiencesTOSFields = struct {
-	Content string
-	Id string
+	Content   string
+	Id        string
 	FieldType string
 }{
-	Content: "content",
-	Id: "id",
+	Content:   "content",
+	Id:        "id",
 	FieldType: "type",
 }
 

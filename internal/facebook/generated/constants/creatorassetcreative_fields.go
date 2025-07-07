@@ -4,21 +4,21 @@ package constants
 
 // CreatorAssetCreativeFields contains field name constants for CreatorAssetCreative objects
 var CreatorAssetCreativeFields = struct {
-	Id string
-	ImageUrl string
-	ModerationStatus string
+	Id                    string
+	ImageUrl              string
+	ModerationStatus      string
 	ProductItemRetailerId string
-	ProductUrl string
-	RetailerId string
-	VideoUrl string
+	ProductUrl            string
+	RetailerId            string
+	VideoUrl              string
 }{
-	Id: "id",
-	ImageUrl: "image_url",
-	ModerationStatus: "moderation_status",
+	Id:                    "id",
+	ImageUrl:              "image_url",
+	ModerationStatus:      "moderation_status",
 	ProductItemRetailerId: "product_item_retailer_id",
-	ProductUrl: "product_url",
-	RetailerId: "retailer_id",
-	VideoUrl: "video_url",
+	ProductUrl:            "product_url",
+	RetailerId:            "retailer_id",
+	VideoUrl:              "video_url",
 }
 
 // CreatorAssetCreativeFieldsList contains all available fields for CreatorAssetCreative objects

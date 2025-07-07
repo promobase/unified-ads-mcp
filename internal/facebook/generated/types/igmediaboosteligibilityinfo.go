@@ -5,5 +5,5 @@ package types
 // IGMediaBoostEligibilityInfo represents a Facebook IGMediaBoostEligibilityInfo object
 type IGMediaBoostEligibilityInfo struct {
 	Boost_ineligible_reason string `json:"boost_ineligible_reason"`
-	Eligible_to_boost bool `json:"eligible_to_boost"`
+	Eligible_to_boost       bool   `json:"eligible_to_boost"`
 }

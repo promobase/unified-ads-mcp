@@ -15,7 +15,7 @@ import (
 
 // ToolPage_delete_locations returns the MCP tool definition for page_delete_locations
 func ToolPage_delete_locations() mcp.Tool {
-	
+
 	// Params object accepts: location_page_ids (list<string>), store_numbers (list<unsigned int>)
 	return mcp.NewTool("page_delete_locations",
 		mcp.WithDescription("DELETE locations for Page"),
@@ -23,16 +23,16 @@ func ToolPage_delete_locations() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"location_page_ids": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "location_page_ids parameter",
-					"required": true,
-					"items": map[string]any{"type": "string"},
+					"required":    true,
+					"items":       map[string]any{"type": "string"},
 				},
 				"store_numbers": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "store_numbers parameter",
-					"required": true,
-					"items": map[string]any{"type": "integer"},
+					"required":    true,
+					"items":       map[string]any{"type": "integer"},
 				},
 			}),
 			mcp.Description("Parameters object containing: location_page_ids (array<string>) [required], store_numbers (array<integer>) [required]"),
@@ -65,8 +65,6 @@ func HandlePage_delete_locations(ctx context.Context, request mcp.CallToolReques
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Page_delete_locations(accessToken, args)
 	if err != nil {
@@ -85,20 +83,18 @@ func HandlePage_delete_locations(ctx context.Context, request mcp.CallToolReques
 // Page_delete_locations performs DELETE locations for Page
 func Page_delete_locations(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/locations")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

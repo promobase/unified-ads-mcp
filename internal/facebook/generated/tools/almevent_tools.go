@@ -17,7 +17,6 @@ import (
 func GetALMEventTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// almevent_get_ tool
 	// Available fields for ALMEvent: ad_account_ids, campaign_ids, channel, event, event_time, guidance, guidance_detail, id, parent_advertiser_ids, reseller_business_id, sub_channel, user_id
 	almevent_get_Tool := mcp.NewTool("almevent_get_",
@@ -37,12 +36,10 @@ func GetALMEventTools() []mcp.Tool {
 	)
 	tools = append(tools, almevent_get_Tool)
 
-
 	return tools
 }
 
 // ALMEvent handlers
-
 
 // HandleAlmevent_get_ handles the almevent_get_ tool with context-based auth
 func HandleAlmevent_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleAlmevent_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Almevent_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleAlmevent_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

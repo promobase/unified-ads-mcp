@@ -24,23 +24,23 @@ func ToolIgmedia_get_insights() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"breakdown": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "breakdown parameter",
-					"enum": []string{ "action_type", "follow_type", "story_navigation_action_type", "surface_type" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"action_type", "follow_type", "story_navigation_action_type", "surface_type"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"metric": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "metric parameter",
-					"required": true,
-					"enum": []string{ "clips_replays_count", "comments", "content_views", "follows", "ig_reels_aggregated_all_plays_count", "ig_reels_avg_watch_time", "ig_reels_video_view_total_time", "impressions", "likes", "navigation", "plays", "profile_activity", "profile_visits", "quotes", "reach", "replies", "reposts", "saved", "shares", "thread_replies", "thread_shares", "threads_media_clicks", "threads_views", "total_interactions", "views" },
-					"items": map[string]any{"type": "string"},
+					"required":    true,
+					"enum":        []string{"clips_replays_count", "comments", "content_views", "follows", "ig_reels_aggregated_all_plays_count", "ig_reels_avg_watch_time", "ig_reels_video_view_total_time", "impressions", "likes", "navigation", "plays", "profile_activity", "profile_visits", "quotes", "reach", "replies", "reposts", "saved", "shares", "thread_replies", "thread_shares", "threads_media_clicks", "threads_views", "total_interactions", "views"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"period": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "period parameter",
-					"enum": []string{ "day", "days_28", "lifetime", "month", "total_over_range", "week" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"day", "days_28", "lifetime", "month", "total_over_range", "week"},
+					"items":       map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: breakdown (array<enum>) [action_type, follow_type, story_navigation_action_type, surface_type], metric (array<enum>) [clips_replays_count, comments, content_views, follows, ig_reels_aggregated_all_plays_count, ...] [required], period (array<enum>) [day, days_28, lifetime, month, total_over_range, ...]"),
@@ -110,8 +110,6 @@ func HandleIgmedia_get_insights(ctx context.Context, request mcp.CallToolRequest
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Igmedia_get_insights(accessToken, args)
 	if err != nil {
@@ -130,44 +128,42 @@ func HandleIgmedia_get_insights(ctx context.Context, request mcp.CallToolRequest
 // Igmedia_get_insights performs GET insights for IGMedia
 func Igmedia_get_insights(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/insights")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

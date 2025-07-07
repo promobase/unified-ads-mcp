@@ -5,10 +5,10 @@ package constants
 // TargetingRelaxationFields contains field name constants for TargetingRelaxation objects
 var TargetingRelaxationFields = struct {
 	CustomAudience string
-	Lookalike string
+	Lookalike      string
 }{
 	CustomAudience: "custom_audience",
-	Lookalike: "lookalike",
+	Lookalike:      "lookalike",
 }
 
 // TargetingRelaxationFieldsList contains all available fields for TargetingRelaxation objects

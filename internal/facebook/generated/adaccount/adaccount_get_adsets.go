@@ -27,26 +27,26 @@ func ToolAdaccount_get_adsets() mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"date_preset": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "date_preset parameter",
-					"enum": []string{ "DATA_MAXIMUM", "LAST_14D", "LAST_28D", "LAST_30D", "LAST_3D", "LAST_7D", "LAST_90D", "LAST_MONTH", "LAST_QUARTER", "LAST_WEEK_MON_SUN", "LAST_WEEK_SUN_SAT", "LAST_YEAR", "MAXIMUM", "THIS_MONTH", "THIS_QUARTER", "THIS_WEEK_MON_TODAY", "THIS_WEEK_SUN_TODAY", "THIS_YEAR", "TODAY", "YESTERDAY" },
+					"enum":        []string{"DATA_MAXIMUM", "LAST_14D", "LAST_28D", "LAST_30D", "LAST_3D", "LAST_7D", "LAST_90D", "LAST_MONTH", "LAST_QUARTER", "LAST_WEEK_MON_SUN", "LAST_WEEK_SUN_SAT", "LAST_YEAR", "MAXIMUM", "THIS_MONTH", "THIS_QUARTER", "THIS_WEEK_MON_TODAY", "THIS_WEEK_SUN_TODAY", "THIS_YEAR", "TODAY", "YESTERDAY"},
 				},
 				"effective_status": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "effective_status parameter",
-					"enum": []string{ "ACTIVE", "ADSET_PAUSED", "ARCHIVED", "CAMPAIGN_PAUSED", "DELETED", "DISAPPROVED", "IN_PROCESS", "PAUSED", "PENDING_BILLING_INFO", "PENDING_REVIEW", "PREAPPROVED", "WITH_ISSUES" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"ACTIVE", "ADSET_PAUSED", "ARCHIVED", "CAMPAIGN_PAUSED", "DELETED", "DISAPPROVED", "IN_PROCESS", "PAUSED", "PENDING_BILLING_INFO", "PENDING_REVIEW", "PREAPPROVED", "WITH_ISSUES"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"is_completed": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_completed parameter",
 				},
 				"time_range": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "time_range parameter",
 				},
 				"updated_since": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "updated_since parameter",
 				},
 			}),
@@ -122,8 +122,6 @@ func HandleAdaccount_get_adsets(ctx context.Context, request mcp.CallToolRequest
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Adaccount_get_adsets(accessToken, args)
 	if err != nil {
@@ -142,67 +140,65 @@ func HandleAdaccount_get_adsets(ctx context.Context, request mcp.CallToolRequest
 // Adaccount_get_adsets performs GET adsets for AdAccount
 func Adaccount_get_adsets(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	// Extract account_id for URL construction
 	accountId, ok := args["account_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_get_adsets")
 	}
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%sadsets", accountId)
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-		
-	}
 
+	}
 
 	// Make HTTP request
 	var resp *http.Response

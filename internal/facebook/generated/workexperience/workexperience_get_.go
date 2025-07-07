@@ -17,7 +17,7 @@ import (
 // ToolWorkexperience_get_ returns the MCP tool definition for workexperience_get_
 func ToolWorkexperience_get_() mcp.Tool {
 	// Available fields for WorkExperience: description, employer, end_date, from, id, location, position, projects, start_date, with
-	
+
 	return mcp.NewTool("workexperience_get_",
 		mcp.WithDescription("GET  for WorkExperience"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleWorkexperience_get_(ctx context.Context, request mcp.CallToolRequest)
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Workexperience_get_(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleWorkexperience_get_(ctx context.Context, request mcp.CallToolRequest)
 // Workexperience_get_ performs GET  for WorkExperience
 func Workexperience_get_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

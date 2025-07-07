@@ -17,7 +17,7 @@ import (
 // ToolAdaccount_get_affectedadsets returns the MCP tool definition for adaccount_get_affectedadsets
 func ToolAdaccount_get_affectedadsets() mcp.Tool {
 	// Available fields for AdSet: account_id, adlabels, adset_schedule, asset_feed_id, attribution_spec, bid_adjustments, bid_amount, bid_constraints, bid_info, bid_strategy, billing_event, brand_safety_config, budget_remaining, campaign, campaign_active_time, campaign_attribution, campaign_id, configured_status, created_time, creative_sequence, creative_sequence_repetition_pattern, daily_budget, daily_min_spend_target, daily_spend_cap, destination_type, dsa_beneficiary, dsa_payor, effective_status, end_time, existing_customer_budget_percentage, frequency_control_specs, full_funnel_exploration_mode, id, instagram_user_id, is_ba_skip_delayed_eligible, is_budget_schedule_enabled, is_dynamic_creative, is_incremental_attribution_enabled, issues_info, learning_stage_info, lifetime_budget, lifetime_imps, lifetime_min_spend_target, lifetime_spend_cap, max_budget_spend_percentage, min_budget_spend_percentage, multi_optimization_goal_weight, name, optimization_goal, optimization_sub_event, pacing_type, promoted_object, recommendations, recurring_budget_semantics, regional_regulated_categories, regional_regulation_identities, review_feedback, rf_prediction_id, source_adset, source_adset_id, start_time, status, targeting, targeting_optimization_types, time_based_ad_rotation_id_blocks, time_based_ad_rotation_intervals, updated_time, use_new_app_click
-	
+
 	return mcp.NewTool("adaccount_get_affectedadsets",
 		mcp.WithDescription("GET affectedadsets for AdAccount"),
 		mcp.WithString("account_id",
@@ -82,8 +82,6 @@ func HandleAdaccount_get_affectedadsets(ctx context.Context, request mcp.CallToo
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Adaccount_get_affectedadsets(accessToken, args)
 	if err != nil {
@@ -102,59 +100,57 @@ func HandleAdaccount_get_affectedadsets(ctx context.Context, request mcp.CallToo
 // Adaccount_get_affectedadsets performs GET affectedadsets for AdAccount
 func Adaccount_get_affectedadsets(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	// Extract account_id for URL construction
 	accountId, ok := args["account_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_get_affectedadsets")
 	}
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%saffectedadsets", accountId)
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-		
-	}
 
+	}
 
 	// Make HTTP request
 	var resp *http.Response

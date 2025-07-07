@@ -15,14 +15,14 @@ import (
 
 // ToolWhatsappbusinessaccount_post_dataset returns the MCP tool definition for whatsappbusinessaccount_post_dataset
 func ToolWhatsappbusinessaccount_post_dataset() mcp.Tool {
-	
+
 	// Params object accepts: dataset_name (string)
 	return mcp.NewTool("whatsappbusinessaccount_post_dataset",
 		mcp.WithDescription("POST dataset for WhatsAppBusinessAccount"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"dataset_name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "dataset_name parameter",
 				},
 			}),
@@ -54,8 +54,6 @@ func HandleWhatsappbusinessaccount_post_dataset(ctx context.Context, request mcp
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Whatsappbusinessaccount_post_dataset(accessToken, args)
 	if err != nil {
@@ -74,20 +72,18 @@ func HandleWhatsappbusinessaccount_post_dataset(ctx context.Context, request mcp
 // Whatsappbusinessaccount_post_dataset performs POST dataset for WhatsAppBusinessAccount
 func Whatsappbusinessaccount_post_dataset(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/dataset")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

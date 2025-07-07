@@ -5,10 +5,10 @@ package constants
 // CanvasDynamicSettingFields contains field name constants for CanvasDynamicSetting objects
 var CanvasDynamicSettingFields = struct {
 	ChildDocuments string
-	ProductSetId string
+	ProductSetId   string
 }{
 	ChildDocuments: "child_documents",
-	ProductSetId: "product_set_id",
+	ProductSetId:   "product_set_id",
 }
 
 // CanvasDynamicSettingFieldsList contains all available fields for CanvasDynamicSetting objects

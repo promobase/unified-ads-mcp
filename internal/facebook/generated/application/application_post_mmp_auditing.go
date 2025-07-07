@@ -15,7 +15,7 @@ import (
 
 // ToolApplication_post_mmp_auditing returns the MCP tool definition for application_post_mmp_auditing
 func ToolApplication_post_mmp_auditing() mcp.Tool {
-	
+
 	// Params object accepts: advertiser_id (string), attribution (string), attribution_method (string), attribution_model (string), attribution_referrer (string), auditing_token (string), click_attr_window (unsigned int), custom_events (list<Object>), decline_reason (string), device_os (string), engagement_type (string), event (string), event_id (string), event_reported_time (unsigned int), fb_ad_id (unsigned int), fb_adgroup_id (unsigned int), fb_click_time (unsigned int), fb_view_time (unsigned int), google_install_referrer (string), inactivity_window_hours (unsigned int), install_id (string), is_fb (bool), meta_install_referrer (string), used_install_referrer (bool), view_attr_window (unsigned int)
 	return mcp.NewTool("application_post_mmp_auditing",
 		mcp.WithDescription("POST mmp_auditing for Application"),
@@ -23,106 +23,106 @@ func ToolApplication_post_mmp_auditing() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"advertiser_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "advertiser_id parameter",
 				},
 				"attribution": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "attribution parameter",
 				},
 				"attribution_method": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "attribution_method parameter",
 				},
 				"attribution_model": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "attribution_model parameter",
 				},
 				"attribution_referrer": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "attribution_referrer parameter",
 				},
 				"auditing_token": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "auditing_token parameter",
 				},
 				"click_attr_window": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "click_attr_window parameter",
 				},
 				"custom_events": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "custom_events parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"decline_reason": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "decline_reason parameter",
 				},
 				"device_os": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "device_os parameter",
 				},
 				"engagement_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "engagement_type parameter",
 				},
 				"event": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "event parameter",
-					"required": true,
+					"required":    true,
 				},
 				"event_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "event_id parameter",
 				},
 				"event_reported_time": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "event_reported_time parameter",
 				},
 				"fb_ad_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "fb_ad_id parameter",
 				},
 				"fb_adgroup_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "fb_adgroup_id parameter",
 				},
 				"fb_click_time": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "fb_click_time parameter",
 				},
 				"fb_view_time": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "fb_view_time parameter",
 				},
 				"google_install_referrer": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "google_install_referrer parameter",
 				},
 				"inactivity_window_hours": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "inactivity_window_hours parameter",
 				},
 				"install_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "install_id parameter",
 				},
 				"is_fb": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_fb parameter",
-					"required": true,
+					"required":    true,
 				},
 				"meta_install_referrer": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "meta_install_referrer parameter",
 				},
 				"used_install_referrer": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "used_install_referrer parameter",
 				},
 				"view_attr_window": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "view_attr_window parameter",
 				},
 			}),
@@ -156,8 +156,6 @@ func HandleApplication_post_mmp_auditing(ctx context.Context, request mcp.CallTo
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Application_post_mmp_auditing(accessToken, args)
 	if err != nil {
@@ -176,20 +174,18 @@ func HandleApplication_post_mmp_auditing(ctx context.Context, request mcp.CallTo
 // Application_post_mmp_auditing performs POST mmp_auditing for Application
 func Application_post_mmp_auditing(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/mmp_auditing")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

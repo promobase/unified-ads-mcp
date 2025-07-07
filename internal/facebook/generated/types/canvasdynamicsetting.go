@@ -5,5 +5,5 @@ package types
 // CanvasDynamicSetting represents a Facebook CanvasDynamicSetting object
 type CanvasDynamicSetting struct {
 	Child_documents []Canvas `json:"child_documents"`
-	Product_set_id string `json:"product_set_id"`
+	Product_set_id  string   `json:"product_set_id"`
 }

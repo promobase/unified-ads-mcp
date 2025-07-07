@@ -4,10 +4,10 @@ package constants
 
 // AdCreativeProductDataFields contains field name constants for AdCreativeProductData objects
 var AdCreativeProductDataFields = struct {
-	ProductId string
+	ProductId     string
 	ProductSource string
 }{
-	ProductId: "product_id",
+	ProductId:     "product_id",
 	ProductSource: "product_source",
 }
 

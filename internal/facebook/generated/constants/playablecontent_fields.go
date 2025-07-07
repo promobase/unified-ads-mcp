@@ -4,12 +4,12 @@ package constants
 
 // PlayableContentFields contains field name constants for PlayableContent objects
 var PlayableContentFields = struct {
-	Id string
-	Name string
+	Id    string
+	Name  string
 	Owner string
 }{
-	Id: "id",
-	Name: "name",
+	Id:    "id",
+	Name:  "name",
 	Owner: "owner",
 }
 

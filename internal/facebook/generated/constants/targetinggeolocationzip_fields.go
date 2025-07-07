@@ -4,17 +4,17 @@ package constants
 
 // TargetingGeoLocationZipFields contains field name constants for TargetingGeoLocationZip objects
 var TargetingGeoLocationZipFields = struct {
-	Country string
-	Key string
-	Name string
+	Country       string
+	Key           string
+	Name          string
 	PrimaryCityId string
-	RegionId string
+	RegionId      string
 }{
-	Country: "country",
-	Key: "key",
-	Name: "name",
+	Country:       "country",
+	Key:           "key",
+	Name:          "name",
 	PrimaryCityId: "primary_city_id",
-	RegionId: "region_id",
+	RegionId:      "region_id",
 }
 
 // TargetingGeoLocationZipFieldsList contains all available fields for TargetingGeoLocationZip objects

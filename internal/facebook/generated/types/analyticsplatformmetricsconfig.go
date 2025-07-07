@@ -4,13 +4,13 @@ package types
 
 // AnalyticsPlatformMetricsConfig represents a Facebook AnalyticsPlatformMetricsConfig object
 type AnalyticsPlatformMetricsConfig struct {
-	Has_a2u bool `json:"has_a2u"`
-	Has_api_calls bool `json:"has_api_calls"`
-	Has_app_invites bool `json:"has_app_invites"`
-	Has_fb_login bool `json:"has_fb_login"`
-	Has_game_requests bool `json:"has_game_requests"`
-	Has_payments bool `json:"has_payments"`
-	Has_referrals bool `json:"has_referrals"`
-	Has_stories bool `json:"has_stories"`
+	Has_a2u                 bool `json:"has_a2u"`
+	Has_api_calls           bool `json:"has_api_calls"`
+	Has_app_invites         bool `json:"has_app_invites"`
+	Has_fb_login            bool `json:"has_fb_login"`
+	Has_game_requests       bool `json:"has_game_requests"`
+	Has_payments            bool `json:"has_payments"`
+	Has_referrals           bool `json:"has_referrals"`
+	Has_stories             bool `json:"has_stories"`
 	Has_structured_requests bool `json:"has_structured_requests"`
 }

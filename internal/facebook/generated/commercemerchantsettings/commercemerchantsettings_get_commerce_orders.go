@@ -23,23 +23,23 @@ func ToolCommercemerchantsettings_get_commerce_orders() mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"filters": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "filters parameter",
-					"enum": []string{ "HAS_CANCELLATIONS", "HAS_FULFILLMENTS", "HAS_REFUNDS", "NO_CANCELLATIONS", "NO_REFUNDS", "NO_SHIPMENTS" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"HAS_CANCELLATIONS", "HAS_FULFILLMENTS", "HAS_REFUNDS", "NO_CANCELLATIONS", "NO_REFUNDS", "NO_SHIPMENTS"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"state": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "state parameter",
-					"enum": []string{ "COMPLETED", "CREATED", "FB_PROCESSING", "IN_PROGRESS" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"COMPLETED", "CREATED", "FB_PROCESSING", "IN_PROGRESS"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"updated_after": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "updated_after parameter",
 				},
 				"updated_before": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "updated_before parameter",
 				},
 			}),
@@ -108,8 +108,6 @@ func HandleCommercemerchantsettings_get_commerce_orders(ctx context.Context, req
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Commercemerchantsettings_get_commerce_orders(accessToken, args)
 	if err != nil {
@@ -128,44 +126,42 @@ func HandleCommercemerchantsettings_get_commerce_orders(ctx context.Context, req
 // Commercemerchantsettings_get_commerce_orders performs GET commerce_orders for CommerceMerchantSettings
 func Commercemerchantsettings_get_commerce_orders(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/commerce_orders")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

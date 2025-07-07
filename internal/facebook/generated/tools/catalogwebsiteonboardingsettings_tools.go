@@ -17,7 +17,6 @@ import (
 func GetCatalogWebsiteOnboardingSettingsTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// catalogwebsiteonboardingsettings_get_ tool
 	// Available fields for CatalogWebsiteOnboardingSettings: id, quality_band, status
 	catalogwebsiteonboardingsettings_get_Tool := mcp.NewTool("catalogwebsiteonboardingsettings_get_",
@@ -37,12 +36,10 @@ func GetCatalogWebsiteOnboardingSettingsTools() []mcp.Tool {
 	)
 	tools = append(tools, catalogwebsiteonboardingsettings_get_Tool)
 
-
 	return tools
 }
 
 // CatalogWebsiteOnboardingSettings handlers
-
 
 // HandleCatalogwebsiteonboardingsettings_get_ handles the catalogwebsiteonboardingsettings_get_ tool with context-based auth
 func HandleCatalogwebsiteonboardingsettings_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleCatalogwebsiteonboardingsettings_get_(ctx context.Context, request mc
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Catalogwebsiteonboardingsettings_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleCatalogwebsiteonboardingsettings_get_(ctx context.Context, request mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

@@ -6,22 +6,22 @@ import "time"
 
 // PartnerStudy represents a Facebook PartnerStudy object
 type PartnerStudy struct {
-	Additional_info string `json:"additional_info"`
-	Brand string `json:"brand"`
-	Client_name string `json:"client_name"`
-	Emails string `json:"emails"`
-	Id string `json:"id"`
-	Input_ids []string `json:"input_ids"`
-	Is_export bool `json:"is_export"`
-	Lift_study *AdStudy `json:"lift_study"`
-	Location string `json:"location"`
-	Match_file_ds string `json:"match_file_ds"`
-	Name string `json:"name"`
-	Partner_defined_id string `json:"partner_defined_id"`
-	Partner_household_graph_dataset_id string `json:"partner_household_graph_dataset_id"`
-	Status string `json:"status"`
-	Study_end_date time.Time `json:"study_end_date"`
-	Study_start_date time.Time `json:"study_start_date"`
-	Study_type string `json:"study_type"`
-	Submit_date time.Time `json:"submit_date"`
+	Additional_info                    string    `json:"additional_info"`
+	Brand                              string    `json:"brand"`
+	Client_name                        string    `json:"client_name"`
+	Emails                             string    `json:"emails"`
+	Id                                 string    `json:"id"`
+	Input_ids                          []string  `json:"input_ids"`
+	Is_export                          bool      `json:"is_export"`
+	Lift_study                         *AdStudy  `json:"lift_study"`
+	Location                           string    `json:"location"`
+	Match_file_ds                      string    `json:"match_file_ds"`
+	Name                               string    `json:"name"`
+	Partner_defined_id                 string    `json:"partner_defined_id"`
+	Partner_household_graph_dataset_id string    `json:"partner_household_graph_dataset_id"`
+	Status                             string    `json:"status"`
+	Study_end_date                     time.Time `json:"study_end_date"`
+	Study_start_date                   time.Time `json:"study_start_date"`
+	Study_type                         string    `json:"study_type"`
+	Submit_date                        time.Time `json:"submit_date"`
 }

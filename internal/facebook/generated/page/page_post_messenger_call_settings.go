@@ -15,26 +15,26 @@ import (
 
 // ToolPage_post_messenger_call_settings returns the MCP tool definition for page_post_messenger_call_settings
 func ToolPage_post_messenger_call_settings() mcp.Tool {
-	
+
 	// Params object accepts: audio_enabled (bool), call_hours (map), call_routing (map), icon_enabled (bool)
 	return mcp.NewTool("page_post_messenger_call_settings",
 		mcp.WithDescription("POST messenger_call_settings for Page"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"audio_enabled": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "audio_enabled parameter",
 				},
 				"call_hours": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "call_hours parameter",
 				},
 				"call_routing": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "call_routing parameter",
 				},
 				"icon_enabled": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "icon_enabled parameter",
 				},
 			}),
@@ -66,8 +66,6 @@ func HandlePage_post_messenger_call_settings(ctx context.Context, request mcp.Ca
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Page_post_messenger_call_settings(accessToken, args)
 	if err != nil {
@@ -86,20 +84,18 @@ func HandlePage_post_messenger_call_settings(ctx context.Context, request mcp.Ca
 // Page_post_messenger_call_settings performs POST messenger_call_settings for Page
 func Page_post_messenger_call_settings(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/messenger_call_settings")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

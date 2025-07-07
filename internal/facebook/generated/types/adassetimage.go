@@ -4,11 +4,11 @@ package types
 
 // AdAssetImage represents a Facebook AdAssetImage object
 type AdAssetImage struct {
-	Hash string `json:"hash"`
-	Id string `json:"id"`
+	Hash        string         `json:"hash"`
+	Id          string         `json:"id"`
 	Image_crops *AdsImageCrops `json:"image_crops"`
-	Name string `json:"name"`
-	Tag string `json:"tag"`
-	Url string `json:"url"`
-	Url_tags string `json:"url_tags"`
+	Name        string         `json:"name"`
+	Tag         string         `json:"tag"`
+	Url         string         `json:"url"`
+	Url_tags    string         `json:"url_tags"`
 }

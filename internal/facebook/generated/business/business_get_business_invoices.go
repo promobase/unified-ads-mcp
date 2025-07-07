@@ -23,33 +23,33 @@ func ToolBusiness_get_business_invoices() mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"end_date": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "end_date parameter",
 				},
 				"invoice_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "invoice_id parameter",
 				},
 				"issue_end_date": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "issue_end_date parameter",
 				},
 				"issue_start_date": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "issue_start_date parameter",
 				},
 				"root_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "root_id parameter",
 				},
 				"start_date": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "start_date parameter",
 				},
 				"type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "type parameter",
-					"enum": []string{ "CM", "DM", "INV", "PRO_FORMA" },
+					"enum":        []string{"CM", "DM", "INV", "PRO_FORMA"},
 				},
 			}),
 			mcp.Description("Parameters object containing: end_date (string), invoice_id (string), issue_end_date (string), issue_start_date (string), root_id (integer), start_date (string), type (enum) [CM, DM, INV, PRO_FORMA]"),
@@ -117,8 +117,6 @@ func HandleBusiness_get_business_invoices(ctx context.Context, request mcp.CallT
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Business_get_business_invoices(accessToken, args)
 	if err != nil {
@@ -137,44 +135,42 @@ func HandleBusiness_get_business_invoices(ctx context.Context, request mcp.CallT
 // Business_get_business_invoices performs GET business_invoices for Business
 func Business_get_business_invoices(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/business_invoices")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

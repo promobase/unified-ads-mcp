@@ -15,59 +15,59 @@ import (
 
 // ToolAdstudyobjective_post_ returns the MCP tool definition for adstudyobjective_post_
 func ToolAdstudyobjective_post_() mcp.Tool {
-	
+
 	// Params object accepts: adspixels (list<Object>), applications (list<Object>), customconversions (list<Object>), is_primary (bool), name (string), offline_conversion_data_sets (list<Object>), offsite_datasets (list<Object>), product_catalogs (list<Object>), product_sets (list<Object>), type (adstudyobjective_type)
 	return mcp.NewTool("adstudyobjective_post_",
 		mcp.WithDescription("POST  for AdStudyObjective"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"adspixels": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "adspixels parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"applications": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "applications parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"customconversions": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "customconversions parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"is_primary": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_primary parameter",
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
 				},
 				"offline_conversion_data_sets": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "offline_conversion_data_sets parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"offsite_datasets": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "offsite_datasets parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"product_catalogs": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "product_catalogs parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"product_sets": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "product_sets parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "type parameter",
-					"enum": []string{ "BRAND", "BRANDLIFT", "CONVERSIONS", "FTL", "MAE", "MAI", "MPC_CONVERSION", "NONSALES", "PARTNER", "SALES", "TELCO" },
+					"enum":        []string{"BRAND", "BRANDLIFT", "CONVERSIONS", "FTL", "MAE", "MAI", "MPC_CONVERSION", "NONSALES", "PARTNER", "SALES", "TELCO"},
 				},
 			}),
 			mcp.Description("Parameters object containing: adspixels (array<object>), applications (array<object>), customconversions (array<object>), is_primary (boolean), name (string), offline_conversion_data_sets (array<object>), offsite_datasets (array<object>), product_catalogs (array<object>), product_sets (array<object>), type (adstudyobjective_type) [BRAND, BRANDLIFT, CONVERSIONS, FTL, MAE, ...]"),
@@ -98,8 +98,6 @@ func HandleAdstudyobjective_post_(ctx context.Context, request mcp.CallToolReque
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Adstudyobjective_post_(accessToken, args)
 	if err != nil {
@@ -118,20 +116,18 @@ func HandleAdstudyobjective_post_(ctx context.Context, request mcp.CallToolReque
 // Adstudyobjective_post_ performs POST  for AdStudyObjective
 func Adstudyobjective_post_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

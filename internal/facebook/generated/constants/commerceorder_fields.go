@@ -4,37 +4,37 @@ package constants
 
 // CommerceOrderFields contains field name constants for CommerceOrder objects
 var CommerceOrderFields = struct {
-	BuyerDetails string
-	Channel string
-	ContainsBopisItems string
-	Created string
+	BuyerDetails            string
+	Channel                 string
+	ContainsBopisItems      string
+	Created                 string
 	EstimatedPaymentDetails string
-	Id string
-	IsGroupBuy string
-	IsTestOrder string
-	LastUpdated string
-	MerchantOrderId string
-	OrderStatus string
-	PreOrderDetails string
-	SelectedShippingOption string
-	ShipByDate string
-	ShippingAddress string
+	Id                      string
+	IsGroupBuy              string
+	IsTestOrder             string
+	LastUpdated             string
+	MerchantOrderId         string
+	OrderStatus             string
+	PreOrderDetails         string
+	SelectedShippingOption  string
+	ShipByDate              string
+	ShippingAddress         string
 }{
-	BuyerDetails: "buyer_details",
-	Channel: "channel",
-	ContainsBopisItems: "contains_bopis_items",
-	Created: "created",
+	BuyerDetails:            "buyer_details",
+	Channel:                 "channel",
+	ContainsBopisItems:      "contains_bopis_items",
+	Created:                 "created",
 	EstimatedPaymentDetails: "estimated_payment_details",
-	Id: "id",
-	IsGroupBuy: "is_group_buy",
-	IsTestOrder: "is_test_order",
-	LastUpdated: "last_updated",
-	MerchantOrderId: "merchant_order_id",
-	OrderStatus: "order_status",
-	PreOrderDetails: "pre_order_details",
-	SelectedShippingOption: "selected_shipping_option",
-	ShipByDate: "ship_by_date",
-	ShippingAddress: "shipping_address",
+	Id:                      "id",
+	IsGroupBuy:              "is_group_buy",
+	IsTestOrder:             "is_test_order",
+	LastUpdated:             "last_updated",
+	MerchantOrderId:         "merchant_order_id",
+	OrderStatus:             "order_status",
+	PreOrderDetails:         "pre_order_details",
+	SelectedShippingOption:  "selected_shipping_option",
+	ShipByDate:              "ship_by_date",
+	ShippingAddress:         "shipping_address",
 }
 
 // CommerceOrderFieldsList contains all available fields for CommerceOrder objects

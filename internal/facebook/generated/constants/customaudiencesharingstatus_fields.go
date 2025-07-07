@@ -5,10 +5,10 @@ package constants
 // CustomAudienceSharingStatusFields contains field name constants for CustomAudienceSharingStatus objects
 var CustomAudienceSharingStatusFields = struct {
 	SharingRelationshipId string
-	Status string
+	Status                string
 }{
 	SharingRelationshipId: "sharing_relationship_id",
-	Status: "status",
+	Status:                "status",
 }
 
 // CustomAudienceSharingStatusFieldsList contains all available fields for CustomAudienceSharingStatus objects

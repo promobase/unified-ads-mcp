@@ -16,8 +16,7 @@ import (
 
 // ToolIgmediaforigonlyapi_get_children returns the MCP tool definition for igmediaforigonlyapi_get_children
 func ToolIgmediaforigonlyapi_get_children() mcp.Tool {
-	
-	
+
 	return mcp.NewTool("igmediaforigonlyapi_get_children",
 		mcp.WithDescription("GET children for IGMediaForIGOnlyAPI"),
 		mcp.WithArray("fields",
@@ -71,8 +70,6 @@ func HandleIgmediaforigonlyapi_get_children(ctx context.Context, request mcp.Cal
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Igmediaforigonlyapi_get_children(accessToken, args)
 	if err != nil {
@@ -91,38 +88,36 @@ func HandleIgmediaforigonlyapi_get_children(ctx context.Context, request mcp.Cal
 // Igmediaforigonlyapi_get_children performs GET children for IGMediaForIGOnlyAPI
 func Igmediaforigonlyapi_get_children(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/children")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

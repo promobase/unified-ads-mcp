@@ -15,7 +15,7 @@ import (
 
 // ToolAdvideo_post_thumbnails returns the MCP tool definition for advideo_post_thumbnails
 func ToolAdvideo_post_thumbnails() mcp.Tool {
-	
+
 	// Params object accepts: is_preferred (bool), source (file)
 	return mcp.NewTool("advideo_post_thumbnails",
 		mcp.WithDescription("POST thumbnails for AdVideo"),
@@ -23,13 +23,13 @@ func ToolAdvideo_post_thumbnails() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"is_preferred": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_preferred parameter",
 				},
 				"source": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "source parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: is_preferred (boolean), source (file) [required]"),
@@ -62,8 +62,6 @@ func HandleAdvideo_post_thumbnails(ctx context.Context, request mcp.CallToolRequ
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Advideo_post_thumbnails(accessToken, args)
 	if err != nil {
@@ -82,20 +80,18 @@ func HandleAdvideo_post_thumbnails(ctx context.Context, request mcp.CallToolRequ
 // Advideo_post_thumbnails performs POST thumbnails for AdVideo
 func Advideo_post_thumbnails(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/thumbnails")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

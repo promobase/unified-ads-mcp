@@ -15,21 +15,21 @@ import (
 
 // ToolLeadgenform_post_test_leads returns the MCP tool definition for leadgenform_post_test_leads
 func ToolLeadgenform_post_test_leads() mcp.Tool {
-	
+
 	// Params object accepts: custom_disclaimer_responses (list<Object>), field_data (list<Object>)
 	return mcp.NewTool("leadgenform_post_test_leads",
 		mcp.WithDescription("POST test_leads for LeadgenForm"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"custom_disclaimer_responses": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "custom_disclaimer_responses parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"field_data": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "field_data parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 			}),
 			mcp.Description("Parameters object containing: custom_disclaimer_responses (array<object>), field_data (array<object>)"),
@@ -60,8 +60,6 @@ func HandleLeadgenform_post_test_leads(ctx context.Context, request mcp.CallTool
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Leadgenform_post_test_leads(accessToken, args)
 	if err != nil {
@@ -80,20 +78,18 @@ func HandleLeadgenform_post_test_leads(ctx context.Context, request mcp.CallTool
 // Leadgenform_post_test_leads performs POST test_leads for LeadgenForm
 func Leadgenform_post_test_leads(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/test_leads")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

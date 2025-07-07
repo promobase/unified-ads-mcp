@@ -5,18 +5,18 @@ package constants
 // AdCampaignMetricsMetadataFields contains field name constants for AdCampaignMetricsMetadata objects
 var AdCampaignMetricsMetadataFields = struct {
 	BoostedComponentOptimization string
-	CreationFlowTips string
-	DefaultOptedInPlacements string
-	DeliveryGrowthOptimizations string
-	DuplicationFlowTips string
-	EditFlowTips string
+	CreationFlowTips             string
+	DefaultOptedInPlacements     string
+	DeliveryGrowthOptimizations  string
+	DuplicationFlowTips          string
+	EditFlowTips                 string
 }{
 	BoostedComponentOptimization: "boosted_component_optimization",
-	CreationFlowTips: "creation_flow_tips",
-	DefaultOptedInPlacements: "default_opted_in_placements",
-	DeliveryGrowthOptimizations: "delivery_growth_optimizations",
-	DuplicationFlowTips: "duplication_flow_tips",
-	EditFlowTips: "edit_flow_tips",
+	CreationFlowTips:             "creation_flow_tips",
+	DefaultOptedInPlacements:     "default_opted_in_placements",
+	DeliveryGrowthOptimizations:  "delivery_growth_optimizations",
+	DuplicationFlowTips:          "duplication_flow_tips",
+	EditFlowTips:                 "edit_flow_tips",
 }
 
 // AdCampaignMetricsMetadataFieldsList contains all available fields for AdCampaignMetricsMetadata objects

@@ -17,7 +17,6 @@ import (
 func GetBusinessCreativeFolderTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// businesscreativefolder_get_ tool
 	// Available fields for BusinessCreativeFolder: business, creation_time, creative_insight_permissions, description, id, media_library_url, name, owner_business
 	businesscreativefolder_get_Tool := mcp.NewTool("businesscreativefolder_get_",
@@ -37,12 +36,10 @@ func GetBusinessCreativeFolderTools() []mcp.Tool {
 	)
 	tools = append(tools, businesscreativefolder_get_Tool)
 
-
 	return tools
 }
 
 // BusinessCreativeFolder handlers
-
 
 // HandleBusinesscreativefolder_get_ handles the businesscreativefolder_get_ tool with context-based auth
 func HandleBusinesscreativefolder_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleBusinesscreativefolder_get_(ctx context.Context, request mcp.CallTool
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Businesscreativefolder_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleBusinesscreativefolder_get_(ctx context.Context, request mcp.CallTool
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

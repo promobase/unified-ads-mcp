@@ -15,8 +15,7 @@ import (
 
 // ToolAdlabel_delete_ returns the MCP tool definition for adlabel_delete_
 func ToolAdlabel_delete_() mcp.Tool {
-	
-	
+
 	return mcp.NewTool("adlabel_delete_",
 		mcp.WithDescription("DELETE  for AdLabel"),
 	)
@@ -32,8 +31,6 @@ func HandleAdlabel_delete_(ctx context.Context, request mcp.CallToolRequest) (*m
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the API method
 	result, err := Adlabel_delete_(accessToken, args)
@@ -53,14 +50,11 @@ func HandleAdlabel_delete_(ctx context.Context, request mcp.CallToolRequest) (*m
 // Adlabel_delete_ performs DELETE  for AdLabel
 func Adlabel_delete_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response

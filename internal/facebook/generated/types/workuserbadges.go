@@ -4,9 +4,9 @@ package types
 
 // WorkUserBadges represents a Facebook WorkUserBadges object
 type WorkUserBadges struct {
-	Category string `json:"category"`
+	Category    string `json:"category"`
 	Description string `json:"description"`
-	Icon string `json:"icon"`
-	Id string `json:"id"`
-	Name string `json:"name"`
+	Icon        string `json:"icon"`
+	Id          string `json:"id"`
+	Name        string `json:"name"`
 }

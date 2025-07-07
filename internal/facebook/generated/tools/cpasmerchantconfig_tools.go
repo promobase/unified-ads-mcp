@@ -17,7 +17,6 @@ import (
 func GetCPASMerchantConfigTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// cpasmerchantconfig_get_ tool
 	// Available fields for CPASMerchantConfig: accepted_tos, beta_features, business_outcomes_status, id, is_test_merchant, outcomes_compliance_status, qualified_to_onboard
 	cpasmerchantconfig_get_Tool := mcp.NewTool("cpasmerchantconfig_get_",
@@ -37,12 +36,10 @@ func GetCPASMerchantConfigTools() []mcp.Tool {
 	)
 	tools = append(tools, cpasmerchantconfig_get_Tool)
 
-
 	return tools
 }
 
 // CPASMerchantConfig handlers
-
 
 // HandleCpasmerchantconfig_get_ handles the cpasmerchantconfig_get_ tool with context-based auth
 func HandleCpasmerchantconfig_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleCpasmerchantconfig_get_(ctx context.Context, request mcp.CallToolRequ
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Cpasmerchantconfig_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleCpasmerchantconfig_get_(ctx context.Context, request mcp.CallToolRequ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

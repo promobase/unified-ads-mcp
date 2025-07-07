@@ -17,7 +17,6 @@ import (
 func GetCallAdsPhoneDataTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// calladsphonedata_get_ tool
 	// Available fields for CallAdsPhoneData: call_ads_phone_data_use_case, callback_variant, destination_website_url, id, page, phone_number
 	calladsphonedata_get_Tool := mcp.NewTool("calladsphonedata_get_",
@@ -37,12 +36,10 @@ func GetCallAdsPhoneDataTools() []mcp.Tool {
 	)
 	tools = append(tools, calladsphonedata_get_Tool)
 
-
 	return tools
 }
 
 // CallAdsPhoneData handlers
-
 
 // HandleCalladsphonedata_get_ handles the calladsphonedata_get_ tool with context-based auth
 func HandleCalladsphonedata_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleCalladsphonedata_get_(ctx context.Context, request mcp.CallToolReques
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Calladsphonedata_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleCalladsphonedata_get_(ctx context.Context, request mcp.CallToolReques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

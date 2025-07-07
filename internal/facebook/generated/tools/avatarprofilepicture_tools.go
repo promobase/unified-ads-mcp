@@ -17,7 +17,6 @@ import (
 func GetAvatarProfilePictureTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// avatarprofilepicture_get_ tool
 	// Available fields for AvatarProfilePicture: id, url
 	avatarprofilepicture_get_Tool := mcp.NewTool("avatarprofilepicture_get_",
@@ -37,12 +36,10 @@ func GetAvatarProfilePictureTools() []mcp.Tool {
 	)
 	tools = append(tools, avatarprofilepicture_get_Tool)
 
-
 	return tools
 }
 
 // AvatarProfilePicture handlers
-
 
 // HandleAvatarprofilepicture_get_ handles the avatarprofilepicture_get_ tool with context-based auth
 func HandleAvatarprofilepicture_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleAvatarprofilepicture_get_(ctx context.Context, request mcp.CallToolRe
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Avatarprofilepicture_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleAvatarprofilepicture_get_(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

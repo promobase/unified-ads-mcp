@@ -15,7 +15,7 @@ import (
 
 // ToolProductcatalog_post_cpas_lsb_image_bank returns the MCP tool definition for productcatalog_post_cpas_lsb_image_bank
 func ToolProductcatalog_post_cpas_lsb_image_bank() mcp.Tool {
-	
+
 	// Params object accepts: ad_group_id (unsigned int), agency_business_id (unsigned int), backup_image_urls (list<string>)
 	return mcp.NewTool("productcatalog_post_cpas_lsb_image_bank",
 		mcp.WithDescription("POST cpas_lsb_image_bank for ProductCatalog"),
@@ -23,18 +23,18 @@ func ToolProductcatalog_post_cpas_lsb_image_bank() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"ad_group_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "ad_group_id parameter",
 				},
 				"agency_business_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "agency_business_id parameter",
 				},
 				"backup_image_urls": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "backup_image_urls parameter",
-					"required": true,
-					"items": map[string]any{"type": "string"},
+					"required":    true,
+					"items":       map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: ad_group_id (integer), agency_business_id (integer), backup_image_urls (array<string>) [required]"),
@@ -67,8 +67,6 @@ func HandleProductcatalog_post_cpas_lsb_image_bank(ctx context.Context, request 
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Productcatalog_post_cpas_lsb_image_bank(accessToken, args)
 	if err != nil {
@@ -87,20 +85,18 @@ func HandleProductcatalog_post_cpas_lsb_image_bank(ctx context.Context, request 
 // Productcatalog_post_cpas_lsb_image_bank performs POST cpas_lsb_image_bank for ProductCatalog
 func Productcatalog_post_cpas_lsb_image_bank(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/cpas_lsb_image_bank")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

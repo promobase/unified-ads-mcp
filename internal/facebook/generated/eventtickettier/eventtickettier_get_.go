@@ -17,7 +17,7 @@ import (
 // ToolEventtickettier_get_ returns the MCP tool definition for eventtickettier_get_
 func ToolEventtickettier_get_() mcp.Tool {
 	// Available fields for EventTicketTier: currency, description, end_sales_time, end_show_time, fee_settings, id, maximum_quantity, metadata, minimum_quantity, name, price, priority, retailer_id, seating_map_image_url, start_sales_time, start_show_time, status, total_quantity
-	
+
 	return mcp.NewTool("eventtickettier_get_",
 		mcp.WithDescription("GET  for EventTicketTier"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleEventtickettier_get_(ctx context.Context, request mcp.CallToolRequest
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Eventtickettier_get_(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleEventtickettier_get_(ctx context.Context, request mcp.CallToolRequest
 // Eventtickettier_get_ performs GET  for EventTicketTier
 func Eventtickettier_get_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

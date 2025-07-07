@@ -17,7 +17,6 @@ import (
 func GetWhatsAppBusinessProfileTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// whatsappbusinessprofile_get_ tool
 	// Available fields for WhatsAppBusinessProfile: id, name_verification, whatsapp_business_api_data
 	whatsappbusinessprofile_get_Tool := mcp.NewTool("whatsappbusinessprofile_get_",
@@ -43,12 +42,10 @@ func GetWhatsAppBusinessProfileTools() []mcp.Tool {
 	)
 	tools = append(tools, whatsappbusinessprofile_post_Tool)
 
-
 	return tools
 }
 
 // WhatsAppBusinessProfile handlers
-
 
 // HandleWhatsappbusinessprofile_get_ handles the whatsappbusinessprofile_get_ tool with context-based auth
 func HandleWhatsappbusinessprofile_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -89,8 +86,6 @@ func HandleWhatsappbusinessprofile_get_(ctx context.Context, request mcp.CallToo
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessprofile_get_(args)
 	if err != nil {
@@ -106,7 +101,6 @@ func HandleWhatsappbusinessprofile_get_(ctx context.Context, request mcp.CallToo
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleWhatsappbusinessprofile_post_ handles the whatsappbusinessprofile_post_ tool with context-based auth
 func HandleWhatsappbusinessprofile_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
@@ -120,8 +114,6 @@ func HandleWhatsappbusinessprofile_post_(ctx context.Context, request mcp.CallTo
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Whatsappbusinessprofile_post_(args)
@@ -137,4 +129,3 @@ func HandleWhatsappbusinessprofile_post_(ctx context.Context, request mcp.CallTo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

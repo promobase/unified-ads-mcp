@@ -4,16 +4,16 @@ package constants
 
 // ALMGuidanceFields contains field name constants for ALMGuidance objects
 var ALMGuidanceFields = struct {
-	AdAccountId string
-	Guidances string
-	OpportunityScore string
-	ParentAdvertiserId string
+	AdAccountId          string
+	Guidances            string
+	OpportunityScore     string
+	ParentAdvertiserId   string
 	ParentAdvertiserName string
 }{
-	AdAccountId: "ad_account_id",
-	Guidances: "guidances",
-	OpportunityScore: "opportunity_score",
-	ParentAdvertiserId: "parent_advertiser_id",
+	AdAccountId:          "ad_account_id",
+	Guidances:            "guidances",
+	OpportunityScore:     "opportunity_score",
+	ParentAdvertiserId:   "parent_advertiser_id",
 	ParentAdvertiserName: "parent_advertiser_name",
 }
 

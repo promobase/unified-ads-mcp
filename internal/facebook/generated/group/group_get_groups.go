@@ -17,7 +17,7 @@ import (
 // ToolGroup_get_groups returns the MCP tool definition for group_get_groups
 func ToolGroup_get_groups() mcp.Tool {
 	// Available fields for Group: archived, cover, created_time, description, email, icon, id, install, link, member_count, member_request_count, name, parent, permissions, privacy, purpose, subdomain, updated_time, venue
-	
+
 	return mcp.NewTool("group_get_groups",
 		mcp.WithDescription("GET groups for Group"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleGroup_get_groups(ctx context.Context, request mcp.CallToolRequest) (*
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Group_get_groups(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleGroup_get_groups(ctx context.Context, request mcp.CallToolRequest) (*
 // Group_get_groups performs GET groups for Group
 func Group_get_groups(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/groups")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

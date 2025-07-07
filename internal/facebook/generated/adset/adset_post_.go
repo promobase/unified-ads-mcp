@@ -15,7 +15,7 @@ import (
 
 // ToolAdset_post_ returns the MCP tool definition for adset_post_
 func ToolAdset_post_() mcp.Tool {
-	
+
 	// Params object accepts: account_id (string), adlabels (list<Object>), adset_schedule (list<Object>), attribution_spec (list<map>), bid_adjustments (Object), bid_amount (int), bid_constraints (map<string, Object>), bid_strategy (adcampaign_bid_strategy), billing_event (adcampaign_billing_event), campaign_attribution (Object), campaign_spec (Object), creative_sequence (list<string>), creative_sequence_repetition_pattern (adcampaign_creative_sequence_repetition_pattern), daily_budget (unsigned int), daily_imps (unsigned int), daily_min_spend_target (unsigned int), daily_spend_cap (unsigned int), date_format (string), destination_type (adcampaign_destination_type), dsa_beneficiary (string), dsa_payor (string), end_time (datetime), execution_options (list<adcampaign_execution_options>), existing_customer_budget_percentage (unsigned int), full_funnel_exploration_mode (adcampaign_full_funnel_exploration_mode), is_ba_skip_delayed_eligible (bool), is_incremental_attribution_enabled (bool), is_sac_cfca_terms_certified (bool), lifetime_budget (unsigned int), lifetime_imps (unsigned int), lifetime_min_spend_target (unsigned int), lifetime_spend_cap (unsigned int), max_budget_spend_percentage (unsigned int), min_budget_spend_percentage (unsigned int), multi_optimization_goal_weight (adcampaign_multi_optimization_goal_weight), name (string), optimization_goal (adcampaign_optimization_goal), optimization_sub_event (adcampaign_optimization_sub_event), pacing_type (list<string>), promoted_object (Object), rb_prediction_id (string), regional_regulated_categories (list<adcampaign_regional_regulated_categories>), regional_regulation_identities (map), rf_prediction_id (string), start_time (datetime), status (adcampaign_status), targeting (Targeting), time_based_ad_rotation_id_blocks (list<list<unsigned int>>), time_based_ad_rotation_intervals (list<unsigned int>), time_start (datetime), time_stop (datetime), tune_for_category (adcampaign_tune_for_category)
 	return mcp.NewTool("adset_post_",
 		mcp.WithDescription("POST  for AdSet"),
@@ -26,233 +26,233 @@ func ToolAdset_post_() mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"account_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "account_id parameter",
 				},
 				"adlabels": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "adlabels parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"adset_schedule": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "adset_schedule parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"attribution_spec": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "attribution_spec parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"bid_adjustments": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "bid_adjustments parameter",
 				},
 				"bid_amount": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "bid_amount parameter",
 				},
 				"bid_constraints": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "bid_constraints parameter",
 				},
 				"bid_strategy": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "bid_strategy parameter",
-					"enum": []string{ "COST_CAP", "LOWEST_COST_WITHOUT_CAP", "LOWEST_COST_WITH_BID_CAP", "LOWEST_COST_WITH_MIN_ROAS" },
+					"enum":        []string{"COST_CAP", "LOWEST_COST_WITHOUT_CAP", "LOWEST_COST_WITH_BID_CAP", "LOWEST_COST_WITH_MIN_ROAS"},
 				},
 				"billing_event": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "billing_event parameter",
-					"enum": []string{ "APP_INSTALLS", "CLICKS", "IMPRESSIONS", "LINK_CLICKS", "LISTING_INTERACTION", "NONE", "OFFER_CLAIMS", "PAGE_LIKES", "POST_ENGAGEMENT", "PURCHASE", "THRUPLAY" },
+					"enum":        []string{"APP_INSTALLS", "CLICKS", "IMPRESSIONS", "LINK_CLICKS", "LISTING_INTERACTION", "NONE", "OFFER_CLAIMS", "PAGE_LIKES", "POST_ENGAGEMENT", "PURCHASE", "THRUPLAY"},
 				},
 				"campaign_attribution": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "campaign_attribution parameter",
 				},
 				"campaign_spec": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "campaign_spec parameter",
 				},
 				"creative_sequence": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "creative_sequence parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"creative_sequence_repetition_pattern": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "creative_sequence_repetition_pattern parameter",
-					"enum": []string{ "FULL_SEQUENCE", "LAST_AD" },
+					"enum":        []string{"FULL_SEQUENCE", "LAST_AD"},
 				},
 				"daily_budget": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "daily_budget parameter",
 				},
 				"daily_imps": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "daily_imps parameter",
 				},
 				"daily_min_spend_target": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "daily_min_spend_target parameter",
 				},
 				"daily_spend_cap": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "daily_spend_cap parameter",
 				},
 				"date_format": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "date_format parameter",
 				},
 				"destination_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "destination_type parameter",
-					"enum": []string{ "APP", "APPLINKS_AUTOMATIC", "FACEBOOK", "FACEBOOK_LIVE", "FACEBOOK_PAGE", "IMAGINE", "INSTAGRAM_DIRECT", "INSTAGRAM_LIVE", "INSTAGRAM_PROFILE", "INSTAGRAM_PROFILE_AND_FACEBOOK_PAGE", "MESSAGING_INSTAGRAM_DIRECT_MESSENGER", "MESSAGING_INSTAGRAM_DIRECT_MESSENGER_WHATSAPP", "MESSAGING_INSTAGRAM_DIRECT_WHATSAPP", "MESSAGING_MESSENGER_WHATSAPP", "MESSENGER", "ON_AD", "ON_EVENT", "ON_PAGE", "ON_POST", "ON_VIDEO", "SHOP_AUTOMATIC", "WEBSITE", "WHATSAPP" },
+					"enum":        []string{"APP", "APPLINKS_AUTOMATIC", "FACEBOOK", "FACEBOOK_LIVE", "FACEBOOK_PAGE", "IMAGINE", "INSTAGRAM_DIRECT", "INSTAGRAM_LIVE", "INSTAGRAM_PROFILE", "INSTAGRAM_PROFILE_AND_FACEBOOK_PAGE", "MESSAGING_INSTAGRAM_DIRECT_MESSENGER", "MESSAGING_INSTAGRAM_DIRECT_MESSENGER_WHATSAPP", "MESSAGING_INSTAGRAM_DIRECT_WHATSAPP", "MESSAGING_MESSENGER_WHATSAPP", "MESSENGER", "ON_AD", "ON_EVENT", "ON_PAGE", "ON_POST", "ON_VIDEO", "SHOP_AUTOMATIC", "WEBSITE", "WHATSAPP"},
 				},
 				"dsa_beneficiary": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "dsa_beneficiary parameter",
 				},
 				"dsa_payor": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "dsa_payor parameter",
 				},
 				"end_time": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "end_time parameter",
 				},
 				"execution_options": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "execution_options parameter",
-					"enum": []string{ "include_recommendations", "validate_only" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"include_recommendations", "validate_only"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"existing_customer_budget_percentage": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "existing_customer_budget_percentage parameter",
 				},
 				"full_funnel_exploration_mode": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "full_funnel_exploration_mode parameter",
-					"enum": []string{ "EXTENDED_EXPLORATION", "LIMITED_EXPLORATION", "NONE_EXPLORATION" },
+					"enum":        []string{"EXTENDED_EXPLORATION", "LIMITED_EXPLORATION", "NONE_EXPLORATION"},
 				},
 				"is_ba_skip_delayed_eligible": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_ba_skip_delayed_eligible parameter",
 				},
 				"is_incremental_attribution_enabled": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_incremental_attribution_enabled parameter",
 				},
 				"is_sac_cfca_terms_certified": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_sac_cfca_terms_certified parameter",
 				},
 				"lifetime_budget": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "lifetime_budget parameter",
 				},
 				"lifetime_imps": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "lifetime_imps parameter",
 				},
 				"lifetime_min_spend_target": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "lifetime_min_spend_target parameter",
 				},
 				"lifetime_spend_cap": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "lifetime_spend_cap parameter",
 				},
 				"max_budget_spend_percentage": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "max_budget_spend_percentage parameter",
 				},
 				"min_budget_spend_percentage": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "min_budget_spend_percentage parameter",
 				},
 				"multi_optimization_goal_weight": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "multi_optimization_goal_weight parameter",
-					"enum": []string{ "BALANCED", "PREFER_EVENT", "PREFER_INSTALL", "UNDEFINED" },
+					"enum":        []string{"BALANCED", "PREFER_EVENT", "PREFER_INSTALL", "UNDEFINED"},
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
 				},
 				"optimization_goal": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "optimization_goal parameter",
-					"enum": []string{ "ADVERTISER_SILOED_VALUE", "AD_RECALL_LIFT", "APP_INSTALLS", "APP_INSTALLS_AND_OFFSITE_CONVERSIONS", "CONVERSATIONS", "DERIVED_EVENTS", "ENGAGED_USERS", "EVENT_RESPONSES", "IMPRESSIONS", "IN_APP_VALUE", "LANDING_PAGE_VIEWS", "LEAD_GENERATION", "LINK_CLICKS", "MEANINGFUL_CALL_ATTEMPT", "MESSAGING_APPOINTMENT_CONVERSION", "MESSAGING_PURCHASE_CONVERSION", "NONE", "OFFSITE_CONVERSIONS", "PAGE_LIKES", "POST_ENGAGEMENT", "PROFILE_AND_PAGE_ENGAGEMENT", "PROFILE_VISIT", "QUALITY_CALL", "QUALITY_LEAD", "REACH", "REMINDERS_SET", "SUBSCRIBERS", "THRUPLAY", "VALUE", "VISIT_INSTAGRAM_PROFILE" },
+					"enum":        []string{"ADVERTISER_SILOED_VALUE", "AD_RECALL_LIFT", "APP_INSTALLS", "APP_INSTALLS_AND_OFFSITE_CONVERSIONS", "CONVERSATIONS", "DERIVED_EVENTS", "ENGAGED_USERS", "EVENT_RESPONSES", "IMPRESSIONS", "IN_APP_VALUE", "LANDING_PAGE_VIEWS", "LEAD_GENERATION", "LINK_CLICKS", "MEANINGFUL_CALL_ATTEMPT", "MESSAGING_APPOINTMENT_CONVERSION", "MESSAGING_PURCHASE_CONVERSION", "NONE", "OFFSITE_CONVERSIONS", "PAGE_LIKES", "POST_ENGAGEMENT", "PROFILE_AND_PAGE_ENGAGEMENT", "PROFILE_VISIT", "QUALITY_CALL", "QUALITY_LEAD", "REACH", "REMINDERS_SET", "SUBSCRIBERS", "THRUPLAY", "VALUE", "VISIT_INSTAGRAM_PROFILE"},
 				},
 				"optimization_sub_event": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "optimization_sub_event parameter",
-					"enum": []string{ "NONE", "TRAVEL_INTENT", "TRAVEL_INTENT_BUCKET_01", "TRAVEL_INTENT_BUCKET_02", "TRAVEL_INTENT_BUCKET_03", "TRAVEL_INTENT_BUCKET_04", "TRAVEL_INTENT_BUCKET_05", "TRAVEL_INTENT_NO_DESTINATION_INTENT", "TRIP_CONSIDERATION", "VIDEO_SOUND_ON" },
+					"enum":        []string{"NONE", "TRAVEL_INTENT", "TRAVEL_INTENT_BUCKET_01", "TRAVEL_INTENT_BUCKET_02", "TRAVEL_INTENT_BUCKET_03", "TRAVEL_INTENT_BUCKET_04", "TRAVEL_INTENT_BUCKET_05", "TRAVEL_INTENT_NO_DESTINATION_INTENT", "TRIP_CONSIDERATION", "VIDEO_SOUND_ON"},
 				},
 				"pacing_type": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "pacing_type parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"promoted_object": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "promoted_object parameter",
 				},
 				"rb_prediction_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "rb_prediction_id parameter",
 				},
 				"regional_regulated_categories": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "regional_regulated_categories parameter",
-					"enum": []string{ "0", "1", "2", "3", "4", "5", "6" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"0", "1", "2", "3", "4", "5", "6"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"regional_regulation_identities": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "regional_regulation_identities parameter",
 				},
 				"rf_prediction_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "rf_prediction_id parameter",
 				},
 				"start_time": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "start_time parameter",
 				},
 				"status": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "status parameter",
-					"enum": []string{ "ACTIVE", "ARCHIVED", "DELETED", "PAUSED" },
+					"enum":        []string{"ACTIVE", "ARCHIVED", "DELETED", "PAUSED"},
 				},
 				"targeting": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "targeting parameter",
 				},
 				"time_based_ad_rotation_id_blocks": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "time_based_ad_rotation_id_blocks parameter",
-					"items": map[string]any{"type": "array"},
+					"items":       map[string]any{"type": "array"},
 				},
 				"time_based_ad_rotation_intervals": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "time_based_ad_rotation_intervals parameter",
-					"items": map[string]any{"type": "integer"},
+					"items":       map[string]any{"type": "integer"},
 				},
 				"time_start": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "time_start parameter",
 				},
 				"time_stop": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "time_stop parameter",
 				},
 				"tune_for_category": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "tune_for_category parameter",
-					"enum": []string{ "CREDIT", "EMPLOYMENT", "FINANCIAL_PRODUCTS_SERVICES", "HOUSING", "ISSUES_ELECTIONS_POLITICS", "NONE", "ONLINE_GAMBLING_AND_GAMING" },
+					"enum":        []string{"CREDIT", "EMPLOYMENT", "FINANCIAL_PRODUCTS_SERVICES", "HOUSING", "ISSUES_ELECTIONS_POLITICS", "NONE", "ONLINE_GAMBLING_AND_GAMING"},
 				},
 			}),
 			mcp.Description("Parameters object containing: account_id (string), adlabels (array<object>), adset_schedule (array<object>), attribution_spec (array<object>), bid_adjustments (object), bid_amount (integer), bid_constraints (map<string, Object>), bid_strategy (adcampaign_bid_strategy) [COST_CAP, LOWEST_COST_WITHOUT_CAP, LOWEST_COST_WITH_BID_CAP, LOWEST_COST_WITH_MIN_ROAS], billing_event (adcampaign_billing_event) [APP_INSTALLS, CLICKS, IMPRESSIONS, LINK_CLICKS, LISTING_INTERACTION, ...], campaign_attribution (object), campaign_spec (object), creative_sequence (array<string>), creative_sequence_repetition_pattern (adcampaign_creative_sequence_repetition_pattern) [FULL_SEQUENCE, LAST_AD], daily_budget (integer), daily_imps (integer), daily_min_spend_target (integer), daily_spend_cap (integer), date_format (string), destination_type (adcampaign_destination_type) [APP, APPLINKS_AUTOMATIC, FACEBOOK, FACEBOOK_LIVE, FACEBOOK_PAGE, ...], dsa_beneficiary (string), dsa_payor (string), end_time (datetime), execution_options (array<adcampaign_execution_options>) [include_recommendations, validate_only], existing_customer_budget_percentage (integer), full_funnel_exploration_mode (adcampaign_full_funnel_exploration_mode) [EXTENDED_EXPLORATION, LIMITED_EXPLORATION, NONE_EXPLORATION], is_ba_skip_delayed_eligible (boolean), is_incremental_attribution_enabled (boolean), is_sac_cfca_terms_certified (boolean), lifetime_budget (integer), lifetime_imps (integer), lifetime_min_spend_target (integer), lifetime_spend_cap (integer), max_budget_spend_percentage (integer), min_budget_spend_percentage (integer), multi_optimization_goal_weight (adcampaign_multi_optimization_goal_weight) [BALANCED, PREFER_EVENT, PREFER_INSTALL, UNDEFINED], name (string), optimization_goal (adcampaign_optimization_goal) [ADVERTISER_SILOED_VALUE, AD_RECALL_LIFT, APP_INSTALLS, APP_INSTALLS_AND_OFFSITE_CONVERSIONS, CONVERSATIONS, ...], optimization_sub_event (adcampaign_optimization_sub_event) [NONE, TRAVEL_INTENT, TRAVEL_INTENT_BUCKET_01, TRAVEL_INTENT_BUCKET_02, TRAVEL_INTENT_BUCKET_03, ...], pacing_type (array<string>), promoted_object (object), rb_prediction_id (string), regional_regulated_categories (array<adcampaign_regional_regulated_categories>) [0, 1, 2, 3, 4, ...], regional_regulation_identities (object), rf_prediction_id (string), start_time (datetime), status (adcampaign_status) [ACTIVE, ARCHIVED, DELETED, PAUSED], targeting (Targeting), time_based_ad_rotation_id_blocks (array<array<integer>>), time_based_ad_rotation_intervals (array<integer>), time_start (datetime), time_stop (datetime), tune_for_category (adcampaign_tune_for_category) [CREDIT, EMPLOYMENT, FINANCIAL_PRODUCTS_SERVICES, HOUSING, ISSUES_ELECTIONS_POLITICS, ...]"),
@@ -290,8 +290,6 @@ func HandleAdset_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.C
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Adset_post_(accessToken, args)
 	if err != nil {
@@ -310,35 +308,33 @@ func HandleAdset_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.C
 // Adset_post_ performs POST  for AdSet
 func Adset_post_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	// Extract ad_set_id for URL construction
 	adSetId, ok := args["ad_set_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("ad_set_id is required for adset_post_")
 	}
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/%s", adSetId)
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["ad_set_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "ad_set_id" != "ad_set_id" {
 			urlParams.Set("ad_set_id", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "params" != "ad_set_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-		
-	}
 
+	}
 
 	// Make HTTP request
 	var resp *http.Response

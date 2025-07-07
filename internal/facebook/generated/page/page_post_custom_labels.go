@@ -15,7 +15,7 @@ import (
 
 // ToolPage_post_custom_labels returns the MCP tool definition for page_post_custom_labels
 func ToolPage_post_custom_labels() mcp.Tool {
-	
+
 	// Params object accepts: name (string), page_label_name (string)
 	return mcp.NewTool("page_post_custom_labels",
 		mcp.WithDescription("POST custom_labels for Page"),
@@ -23,13 +23,13 @@ func ToolPage_post_custom_labels() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
 				},
 				"page_label_name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "page_label_name parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: name (string), page_label_name (string) [required]"),
@@ -62,8 +62,6 @@ func HandlePage_post_custom_labels(ctx context.Context, request mcp.CallToolRequ
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Page_post_custom_labels(accessToken, args)
 	if err != nil {
@@ -82,20 +80,18 @@ func HandlePage_post_custom_labels(ctx context.Context, request mcp.CallToolRequ
 // Page_post_custom_labels performs POST custom_labels for Page
 func Page_post_custom_labels(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/custom_labels")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

@@ -15,7 +15,7 @@ import (
 
 // ToolBusiness_post_client_pages returns the MCP tool definition for business_post_client_pages
 func ToolBusiness_post_client_pages() mcp.Tool {
-	
+
 	// Params object accepts: page_id (int), permitted_tasks (list<businessclient_pages_permitted_tasks_enum_param>)
 	return mcp.NewTool("business_post_client_pages",
 		mcp.WithDescription("POST client_pages for Business"),
@@ -23,15 +23,15 @@ func ToolBusiness_post_client_pages() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"page_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "page_id parameter",
-					"required": true,
+					"required":    true,
 				},
 				"permitted_tasks": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "permitted_tasks parameter",
-					"enum": []string{ "ADVERTISE", "ANALYZE", "CASHIER_ROLE", "CREATE_CONTENT", "GLOBAL_STRUCTURE_MANAGEMENT", "MANAGE", "MANAGE_JOBS", "MANAGE_LEADS", "MESSAGING", "MODERATE", "MODERATE_COMMUNITY", "PAGES_MESSAGING", "PAGES_MESSAGING_SUBSCRIPTIONS", "PROFILE_PLUS_ADVERTISE", "PROFILE_PLUS_ANALYZE", "PROFILE_PLUS_CREATE_CONTENT", "PROFILE_PLUS_FACEBOOK_ACCESS", "PROFILE_PLUS_FULL_CONTROL", "PROFILE_PLUS_MANAGE", "PROFILE_PLUS_MANAGE_LEADS", "PROFILE_PLUS_MESSAGING", "PROFILE_PLUS_MODERATE", "PROFILE_PLUS_MODERATE_DELEGATE_COMMUNITY", "PROFILE_PLUS_REVENUE", "READ_PAGE_MAILBOXES", "VIEW_MONETIZATION_INSIGHTS" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"ADVERTISE", "ANALYZE", "CASHIER_ROLE", "CREATE_CONTENT", "GLOBAL_STRUCTURE_MANAGEMENT", "MANAGE", "MANAGE_JOBS", "MANAGE_LEADS", "MESSAGING", "MODERATE", "MODERATE_COMMUNITY", "PAGES_MESSAGING", "PAGES_MESSAGING_SUBSCRIPTIONS", "PROFILE_PLUS_ADVERTISE", "PROFILE_PLUS_ANALYZE", "PROFILE_PLUS_CREATE_CONTENT", "PROFILE_PLUS_FACEBOOK_ACCESS", "PROFILE_PLUS_FULL_CONTROL", "PROFILE_PLUS_MANAGE", "PROFILE_PLUS_MANAGE_LEADS", "PROFILE_PLUS_MESSAGING", "PROFILE_PLUS_MODERATE", "PROFILE_PLUS_MODERATE_DELEGATE_COMMUNITY", "PROFILE_PLUS_REVENUE", "READ_PAGE_MAILBOXES", "VIEW_MONETIZATION_INSIGHTS"},
+					"items":       map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: page_id (integer) [required], permitted_tasks (array<enum>) [ADVERTISE, ANALYZE, CASHIER_ROLE, CREATE_CONTENT, GLOBAL_STRUCTURE_MANAGEMENT, ...]"),
@@ -64,8 +64,6 @@ func HandleBusiness_post_client_pages(ctx context.Context, request mcp.CallToolR
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Business_post_client_pages(accessToken, args)
 	if err != nil {
@@ -84,20 +82,18 @@ func HandleBusiness_post_client_pages(ctx context.Context, request mcp.CallToolR
 // Business_post_client_pages performs POST client_pages for Business
 func Business_post_client_pages(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/client_pages")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

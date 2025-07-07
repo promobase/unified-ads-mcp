@@ -17,7 +17,7 @@ import (
 // ToolPage_get_ctx_optimization_eligibility returns the MCP tool definition for page_get_ctx_optimization_eligibility
 func ToolPage_get_ctx_optimization_eligibility() mcp.Tool {
 	// Available fields for CTXOptimizationEligibility: ctm
-	
+
 	return mcp.NewTool("page_get_ctx_optimization_eligibility",
 		mcp.WithDescription("GET ctx_optimization_eligibility for Page"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandlePage_get_ctx_optimization_eligibility(ctx context.Context, request mc
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Page_get_ctx_optimization_eligibility(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandlePage_get_ctx_optimization_eligibility(ctx context.Context, request mc
 // Page_get_ctx_optimization_eligibility performs GET ctx_optimization_eligibility for Page
 func Page_get_ctx_optimization_eligibility(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/ctx_optimization_eligibility")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

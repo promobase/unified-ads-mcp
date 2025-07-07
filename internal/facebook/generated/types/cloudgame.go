@@ -6,13 +6,13 @@ import "time"
 
 // CloudGame represents a Facebook CloudGame object
 type CloudGame struct {
-	Id string `json:"id"`
-	Name string `json:"name"`
-	Owner *Profile `json:"owner"`
-	Playable_ad_file_size int `json:"playable_ad_file_size"`
-	Playable_ad_orientation string `json:"playable_ad_orientation"`
-	Playable_ad_package_name string `json:"playable_ad_package_name"`
-	Playable_ad_reject_reason string `json:"playable_ad_reject_reason"`
-	Playable_ad_status string `json:"playable_ad_status"`
-	Playable_ad_upload_time time.Time `json:"playable_ad_upload_time"`
+	Id                        string    `json:"id"`
+	Name                      string    `json:"name"`
+	Owner                     *Profile  `json:"owner"`
+	Playable_ad_file_size     int       `json:"playable_ad_file_size"`
+	Playable_ad_orientation   string    `json:"playable_ad_orientation"`
+	Playable_ad_package_name  string    `json:"playable_ad_package_name"`
+	Playable_ad_reject_reason string    `json:"playable_ad_reject_reason"`
+	Playable_ad_status        string    `json:"playable_ad_status"`
+	Playable_ad_upload_time   time.Time `json:"playable_ad_upload_time"`
 }

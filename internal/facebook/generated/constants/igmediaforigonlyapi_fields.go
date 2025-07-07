@@ -4,39 +4,39 @@ package constants
 
 // IGMediaForIGOnlyAPIFields contains field name constants for IGMediaForIGOnlyAPI objects
 var IGMediaForIGOnlyAPIFields = struct {
-	AltText string
-	Caption string
-	CommentsCount string
-	Id string
+	AltText          string
+	Caption          string
+	CommentsCount    string
+	Id               string
 	IsCommentEnabled string
-	IsSharedToFeed string
-	LikeCount string
+	IsSharedToFeed   string
+	LikeCount        string
 	MediaProductType string
-	MediaType string
-	MediaUrl string
-	Owner string
-	Permalink string
-	Shortcode string
-	ThumbnailUrl string
-	Timestamp string
-	Username string
+	MediaType        string
+	MediaUrl         string
+	Owner            string
+	Permalink        string
+	Shortcode        string
+	ThumbnailUrl     string
+	Timestamp        string
+	Username         string
 }{
-	AltText: "alt_text",
-	Caption: "caption",
-	CommentsCount: "comments_count",
-	Id: "id",
+	AltText:          "alt_text",
+	Caption:          "caption",
+	CommentsCount:    "comments_count",
+	Id:               "id",
 	IsCommentEnabled: "is_comment_enabled",
-	IsSharedToFeed: "is_shared_to_feed",
-	LikeCount: "like_count",
+	IsSharedToFeed:   "is_shared_to_feed",
+	LikeCount:        "like_count",
 	MediaProductType: "media_product_type",
-	MediaType: "media_type",
-	MediaUrl: "media_url",
-	Owner: "owner",
-	Permalink: "permalink",
-	Shortcode: "shortcode",
-	ThumbnailUrl: "thumbnail_url",
-	Timestamp: "timestamp",
-	Username: "username",
+	MediaType:        "media_type",
+	MediaUrl:         "media_url",
+	Owner:            "owner",
+	Permalink:        "permalink",
+	Shortcode:        "shortcode",
+	ThumbnailUrl:     "thumbnail_url",
+	Timestamp:        "timestamp",
+	Username:         "username",
 }
 
 // IGMediaForIGOnlyAPIFieldsList contains all available fields for IGMediaForIGOnlyAPI objects

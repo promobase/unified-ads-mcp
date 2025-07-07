@@ -5,10 +5,10 @@ package constants
 // AdCreativeFeatureDetailsFields contains field name constants for AdCreativeFeatureDetails objects
 var AdCreativeFeatureDetailsFields = struct {
 	Customizations string
-	EnrollStatus string
+	EnrollStatus   string
 }{
 	Customizations: "customizations",
-	EnrollStatus: "enroll_status",
+	EnrollStatus:   "enroll_status",
 }
 
 // AdCreativeFeatureDetailsFieldsList contains all available fields for AdCreativeFeatureDetails objects

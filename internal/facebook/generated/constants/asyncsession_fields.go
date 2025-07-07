@@ -4,37 +4,37 @@ package constants
 
 // AsyncSessionFields contains field name constants for AsyncSession objects
 var AsyncSessionFields = struct {
-	App string
-	CompleteTime string
-	ErrorCode string
-	Exception string
-	Id string
-	Method string
-	Name string
-	Page string
+	App              string
+	CompleteTime     string
+	ErrorCode        string
+	Exception        string
+	Id               string
+	Method           string
+	Name             string
+	Page             string
 	PercentCompleted string
-	PlatformVersion string
-	Result string
-	StartTime string
-	Status string
-	Uri string
-	User string
+	PlatformVersion  string
+	Result           string
+	StartTime        string
+	Status           string
+	Uri              string
+	User             string
 }{
-	App: "app",
-	CompleteTime: "complete_time",
-	ErrorCode: "error_code",
-	Exception: "exception",
-	Id: "id",
-	Method: "method",
-	Name: "name",
-	Page: "page",
+	App:              "app",
+	CompleteTime:     "complete_time",
+	ErrorCode:        "error_code",
+	Exception:        "exception",
+	Id:               "id",
+	Method:           "method",
+	Name:             "name",
+	Page:             "page",
 	PercentCompleted: "percent_completed",
-	PlatformVersion: "platform_version",
-	Result: "result",
-	StartTime: "start_time",
-	Status: "status",
-	Uri: "uri",
-	User: "user",
+	PlatformVersion:  "platform_version",
+	Result:           "result",
+	StartTime:        "start_time",
+	Status:           "status",
+	Uri:              "uri",
+	User:             "user",
 }
 
 // AsyncSessionFieldsList contains all available fields for AsyncSession objects

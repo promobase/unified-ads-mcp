@@ -4,9 +4,9 @@ package types
 
 // AdAccountAgencyFeeConfig represents a Facebook AdAccountAgencyFeeConfig object
 type AdAccountAgencyFeeConfig struct {
-	Can_add_agency_fee_to_invoice bool `json:"can_add_agency_fee_to_invoice"`
-	Default_agency_fee_pct float64 `json:"default_agency_fee_pct"`
-	Id string `json:"id"`
-	Is_agency_fee_disabled bool `json:"is_agency_fee_disabled"`
-	Status string `json:"status"`
+	Can_add_agency_fee_to_invoice bool    `json:"can_add_agency_fee_to_invoice"`
+	Default_agency_fee_pct        float64 `json:"default_agency_fee_pct"`
+	Id                            string  `json:"id"`
+	Is_agency_fee_disabled        bool    `json:"is_agency_fee_disabled"`
+	Status                        string  `json:"status"`
 }

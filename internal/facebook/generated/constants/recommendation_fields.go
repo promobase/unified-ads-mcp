@@ -4,23 +4,23 @@ package constants
 
 // RecommendationFields contains field name constants for Recommendation objects
 var RecommendationFields = struct {
-	CreatedTime string
-	HasRating string
-	HasReview string
-	OpenGraphStory string
-	Rating string
+	CreatedTime        string
+	HasRating          string
+	HasReview          string
+	OpenGraphStory     string
+	Rating             string
 	RecommendationType string
-	ReviewText string
-	Reviewer string
+	ReviewText         string
+	Reviewer           string
 }{
-	CreatedTime: "created_time",
-	HasRating: "has_rating",
-	HasReview: "has_review",
-	OpenGraphStory: "open_graph_story",
-	Rating: "rating",
+	CreatedTime:        "created_time",
+	HasRating:          "has_rating",
+	HasReview:          "has_review",
+	OpenGraphStory:     "open_graph_story",
+	Rating:             "rating",
 	RecommendationType: "recommendation_type",
-	ReviewText: "review_text",
-	Reviewer: "reviewer",
+	ReviewText:         "review_text",
+	Reviewer:           "reviewer",
 }
 
 // RecommendationFieldsList contains all available fields for Recommendation objects

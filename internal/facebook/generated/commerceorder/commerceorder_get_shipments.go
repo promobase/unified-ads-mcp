@@ -16,8 +16,7 @@ import (
 
 // ToolCommerceorder_get_shipments returns the MCP tool definition for commerceorder_get_shipments
 func ToolCommerceorder_get_shipments() mcp.Tool {
-	
-	
+
 	return mcp.NewTool("commerceorder_get_shipments",
 		mcp.WithDescription("GET shipments for CommerceOrder"),
 		mcp.WithArray("fields",
@@ -71,8 +70,6 @@ func HandleCommerceorder_get_shipments(ctx context.Context, request mcp.CallTool
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Commerceorder_get_shipments(accessToken, args)
 	if err != nil {
@@ -91,38 +88,36 @@ func HandleCommerceorder_get_shipments(ctx context.Context, request mcp.CallTool
 // Commerceorder_get_shipments performs GET shipments for CommerceOrder
 func Commerceorder_get_shipments(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/shipments")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

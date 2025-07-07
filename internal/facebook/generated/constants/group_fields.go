@@ -4,45 +4,45 @@ package constants
 
 // GroupFields contains field name constants for Group objects
 var GroupFields = struct {
-	Archived string
-	Cover string
-	CreatedTime string
-	Description string
-	Email string
-	Icon string
-	Id string
-	Install string
-	Link string
-	MemberCount string
+	Archived           string
+	Cover              string
+	CreatedTime        string
+	Description        string
+	Email              string
+	Icon               string
+	Id                 string
+	Install            string
+	Link               string
+	MemberCount        string
 	MemberRequestCount string
-	Name string
-	Parent string
-	Permissions string
-	Privacy string
-	Purpose string
-	Subdomain string
-	UpdatedTime string
-	Venue string
+	Name               string
+	Parent             string
+	Permissions        string
+	Privacy            string
+	Purpose            string
+	Subdomain          string
+	UpdatedTime        string
+	Venue              string
 }{
-	Archived: "archived",
-	Cover: "cover",
-	CreatedTime: "created_time",
-	Description: "description",
-	Email: "email",
-	Icon: "icon",
-	Id: "id",
-	Install: "install",
-	Link: "link",
-	MemberCount: "member_count",
+	Archived:           "archived",
+	Cover:              "cover",
+	CreatedTime:        "created_time",
+	Description:        "description",
+	Email:              "email",
+	Icon:               "icon",
+	Id:                 "id",
+	Install:            "install",
+	Link:               "link",
+	MemberCount:        "member_count",
 	MemberRequestCount: "member_request_count",
-	Name: "name",
-	Parent: "parent",
-	Permissions: "permissions",
-	Privacy: "privacy",
-	Purpose: "purpose",
-	Subdomain: "subdomain",
-	UpdatedTime: "updated_time",
-	Venue: "venue",
+	Name:               "name",
+	Parent:             "parent",
+	Permissions:        "permissions",
+	Privacy:            "privacy",
+	Purpose:            "purpose",
+	Subdomain:          "subdomain",
+	UpdatedTime:        "updated_time",
+	Venue:              "venue",
 }
 
 // GroupFieldsList contains all available fields for Group objects

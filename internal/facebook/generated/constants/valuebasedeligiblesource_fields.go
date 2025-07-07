@@ -4,12 +4,12 @@ package constants
 
 // ValueBasedEligibleSourceFields contains field name constants for ValueBasedEligibleSource objects
 var ValueBasedEligibleSourceFields = struct {
-	Id string
-	Title string
+	Id        string
+	Title     string
 	FieldType string
 }{
-	Id: "id",
-	Title: "title",
+	Id:        "id",
+	Title:     "title",
 	FieldType: "type",
 }
 

@@ -24,41 +24,41 @@ func ToolIguserforigonlyapi_get_insights() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"breakdown": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "breakdown parameter",
-					"enum": []string{ "age", "city", "contact_button_type", "country", "follow_type", "gender", "media_product_type" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"age", "city", "contact_button_type", "country", "follow_type", "gender", "media_product_type"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"metric": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "metric parameter",
-					"required": true,
-					"enum": []string{ "accounts_engaged", "comments", "content_views", "engaged_audience_demographics", "follower_count", "follower_demographics", "follows_and_unfollows", "impressions", "likes", "online_followers", "profile_links_taps", "profile_views", "quotes", "reach", "reached_audience_demographics", "replies", "reposts", "saves", "shares", "threads_follower_demographics", "threads_followers", "threads_likes", "threads_replies", "threads_views", "total_interactions", "views", "website_clicks" },
-					"items": map[string]any{"type": "string"},
+					"required":    true,
+					"enum":        []string{"accounts_engaged", "comments", "content_views", "engaged_audience_demographics", "follower_count", "follower_demographics", "follows_and_unfollows", "impressions", "likes", "online_followers", "profile_links_taps", "profile_views", "quotes", "reach", "reached_audience_demographics", "replies", "reposts", "saves", "shares", "threads_follower_demographics", "threads_followers", "threads_likes", "threads_replies", "threads_views", "total_interactions", "views", "website_clicks"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"metric_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "metric_type parameter",
-					"enum": []string{ "default", "time_series", "total_value" },
+					"enum":        []string{"default", "time_series", "total_value"},
 				},
 				"period": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "period parameter",
-					"required": true,
-					"enum": []string{ "day", "days_28", "lifetime", "month", "total_over_range", "week" },
-					"items": map[string]any{"type": "string"},
+					"required":    true,
+					"enum":        []string{"day", "days_28", "lifetime", "month", "total_over_range", "week"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"since": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "since parameter",
 				},
 				"timeframe": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "timeframe parameter",
-					"enum": []string{ "last_14_days", "last_30_days", "last_90_days", "prev_month", "this_month", "this_week" },
+					"enum":        []string{"last_14_days", "last_30_days", "last_90_days", "prev_month", "this_month", "this_week"},
 				},
 				"until": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "until parameter",
 				},
 			}),
@@ -129,8 +129,6 @@ func HandleIguserforigonlyapi_get_insights(ctx context.Context, request mcp.Call
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Iguserforigonlyapi_get_insights(accessToken, args)
 	if err != nil {
@@ -149,44 +147,42 @@ func HandleIguserforigonlyapi_get_insights(ctx context.Context, request mcp.Call
 // Iguserforigonlyapi_get_insights performs GET insights for IGUserForIGOnlyAPI
 func Iguserforigonlyapi_get_insights(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/insights")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

@@ -15,7 +15,7 @@ import (
 
 // ToolApplication_delete_accounts returns the MCP tool definition for application_delete_accounts
 func ToolApplication_delete_accounts() mcp.Tool {
-	
+
 	// Params object accepts: type (applicationaccounts_type_enum_param), uid (int)
 	return mcp.NewTool("application_delete_accounts",
 		mcp.WithDescription("DELETE accounts for Application"),
@@ -23,14 +23,14 @@ func ToolApplication_delete_accounts() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "type parameter",
-					"enum": []string{ "test-users" },
+					"enum":        []string{"test-users"},
 				},
 				"uid": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "uid parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: type (enum) [test-users], uid (integer) [required]"),
@@ -63,8 +63,6 @@ func HandleApplication_delete_accounts(ctx context.Context, request mcp.CallTool
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Application_delete_accounts(accessToken, args)
 	if err != nil {
@@ -83,20 +81,18 @@ func HandleApplication_delete_accounts(ctx context.Context, request mcp.CallTool
 // Application_delete_accounts performs DELETE accounts for Application
 func Application_delete_accounts(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/accounts")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

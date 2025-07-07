@@ -4,10 +4,10 @@ package constants
 
 // AdgroupFacebookFeedbackFields contains field name constants for AdgroupFacebookFeedback objects
 var AdgroupFacebookFeedbackFields = struct {
-	Id string
+	Id      string
 	Preview string
 }{
-	Id: "id",
+	Id:      "id",
 	Preview: "preview",
 }
 

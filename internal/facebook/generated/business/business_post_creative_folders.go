@@ -15,7 +15,7 @@ import (
 
 // ToolBusiness_post_creative_folders returns the MCP tool definition for business_post_creative_folders
 func ToolBusiness_post_creative_folders() mcp.Tool {
-	
+
 	// Params object accepts: description (string), name (string), parent_folder_id (string)
 	return mcp.NewTool("business_post_creative_folders",
 		mcp.WithDescription("POST creative_folders for Business"),
@@ -23,16 +23,16 @@ func ToolBusiness_post_creative_folders() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"description": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "description parameter",
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
-					"required": true,
+					"required":    true,
 				},
 				"parent_folder_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "parent_folder_id parameter",
 				},
 			}),
@@ -66,8 +66,6 @@ func HandleBusiness_post_creative_folders(ctx context.Context, request mcp.CallT
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Business_post_creative_folders(accessToken, args)
 	if err != nil {
@@ -86,20 +84,18 @@ func HandleBusiness_post_creative_folders(ctx context.Context, request mcp.CallT
 // Business_post_creative_folders performs POST creative_folders for Business
 func Business_post_creative_folders(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/creative_folders")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

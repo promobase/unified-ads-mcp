@@ -15,26 +15,26 @@ import (
 
 // ToolMediafingerprint_post_ returns the MCP tool definition for mediafingerprint_post_
 func ToolMediafingerprint_post_() mcp.Tool {
-	
+
 	// Params object accepts: metadata (list), source (file), title (string), universal_content_id (string)
 	return mcp.NewTool("mediafingerprint_post_",
 		mcp.WithDescription("POST  for MediaFingerprint"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"metadata": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "metadata parameter",
 				},
 				"source": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "source parameter",
 				},
 				"title": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "title parameter",
 				},
 				"universal_content_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "universal_content_id parameter",
 				},
 			}),
@@ -66,8 +66,6 @@ func HandleMediafingerprint_post_(ctx context.Context, request mcp.CallToolReque
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Mediafingerprint_post_(accessToken, args)
 	if err != nil {
@@ -86,20 +84,18 @@ func HandleMediafingerprint_post_(ctx context.Context, request mcp.CallToolReque
 // Mediafingerprint_post_ performs POST  for MediaFingerprint
 func Mediafingerprint_post_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

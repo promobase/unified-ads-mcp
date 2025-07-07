@@ -17,7 +17,6 @@ import (
 func GetChinaBusinessOnboardingVettingRequestTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// chinabusinessonboardingvettingrequest_get_ tool
 	// Available fields for ChinaBusinessOnboardingVettingRequest: ad_account_creation_request_status, ad_account_limit, ad_account_number, ad_accounts_info, advertiser_business_id, advertiser_business_name, business_manager_id, business_registration, business_registration_id, business_verification_status, chinese_address, chinese_legal_entity_name, city, contact, coupon_code, disapprove_reason, english_business_name, id, official_website_url, org_ad_account_count, payment_type, planning_agency_id, planning_agency_name, promotable_app_ids, promotable_page_ids, promotable_pages, promotable_urls, request_changes_reason, reviewed_user, spend_limit, status, subvertical, subvertical_v2, supporting_document, time_changes_requested, time_created, time_updated, time_zone, used_reseller_link, user_id, user_name, vertical, vertical_v2, viewed_by_reseller, zip_code
 	chinabusinessonboardingvettingrequest_get_Tool := mcp.NewTool("chinabusinessonboardingvettingrequest_get_",
@@ -37,12 +36,10 @@ func GetChinaBusinessOnboardingVettingRequestTools() []mcp.Tool {
 	)
 	tools = append(tools, chinabusinessonboardingvettingrequest_get_Tool)
 
-
 	return tools
 }
 
 // ChinaBusinessOnboardingVettingRequest handlers
-
 
 // HandleChinabusinessonboardingvettingrequest_get_ handles the chinabusinessonboardingvettingrequest_get_ tool with context-based auth
 func HandleChinabusinessonboardingvettingrequest_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleChinabusinessonboardingvettingrequest_get_(ctx context.Context, reque
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Chinabusinessonboardingvettingrequest_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleChinabusinessonboardingvettingrequest_get_(ctx context.Context, reque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

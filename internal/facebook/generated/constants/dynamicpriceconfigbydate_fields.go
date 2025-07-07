@@ -4,12 +4,12 @@ package constants
 
 // DynamicPriceConfigByDateFields contains field name constants for DynamicPriceConfigByDate objects
 var DynamicPriceConfigByDateFields = struct {
-	CheckinDate string
-	Prices string
+	CheckinDate  string
+	Prices       string
 	PricesPretty string
 }{
-	CheckinDate: "checkin_date",
-	Prices: "prices",
+	CheckinDate:  "checkin_date",
+	Prices:       "prices",
 	PricesPretty: "prices_pretty",
 }
 

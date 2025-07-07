@@ -4,19 +4,19 @@ package constants
 
 // AdCampaignIssuesInfoFields contains field name constants for AdCampaignIssuesInfo objects
 var AdCampaignIssuesInfoFields = struct {
-	ErrorCode string
+	ErrorCode    string
 	ErrorMessage string
 	ErrorSummary string
-	ErrorType string
-	Level string
-	Mid string
+	ErrorType    string
+	Level        string
+	Mid          string
 }{
-	ErrorCode: "error_code",
+	ErrorCode:    "error_code",
 	ErrorMessage: "error_message",
 	ErrorSummary: "error_summary",
-	ErrorType: "error_type",
-	Level: "level",
-	Mid: "mid",
+	ErrorType:    "error_type",
+	Level:        "level",
+	Mid:          "mid",
 }
 
 // AdCampaignIssuesInfoFieldsList contains all available fields for AdCampaignIssuesInfo objects

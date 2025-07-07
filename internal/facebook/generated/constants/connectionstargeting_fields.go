@@ -4,10 +4,10 @@ package constants
 
 // ConnectionsTargetingFields contains field name constants for ConnectionsTargeting objects
 var ConnectionsTargetingFields = struct {
-	Id string
+	Id   string
 	Name string
 }{
-	Id: "id",
+	Id:   "id",
 	Name: "name",
 }
 

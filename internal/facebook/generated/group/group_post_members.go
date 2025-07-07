@@ -15,30 +15,30 @@ import (
 
 // ToolGroup_post_members returns the MCP tool definition for group_post_members
 func ToolGroup_post_members() mcp.Tool {
-	
+
 	// Params object accepts: email (string), from (int), member (int), rate (unsigned int), source (string)
 	return mcp.NewTool("group_post_members",
 		mcp.WithDescription("POST members for Group"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"email": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "email parameter",
 				},
 				"from": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "from parameter",
 				},
 				"member": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "member parameter",
 				},
 				"rate": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "rate parameter",
 				},
 				"source": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "source parameter",
 				},
 			}),
@@ -70,8 +70,6 @@ func HandleGroup_post_members(ctx context.Context, request mcp.CallToolRequest) 
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Group_post_members(accessToken, args)
 	if err != nil {
@@ -90,20 +88,18 @@ func HandleGroup_post_members(ctx context.Context, request mcp.CallToolRequest) 
 // Group_post_members performs POST members for Group
 func Group_post_members(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/members")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

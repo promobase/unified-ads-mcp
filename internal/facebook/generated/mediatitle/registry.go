@@ -19,7 +19,6 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolMediatitle_get_())
 	tools = append(tools, ToolMediatitle_post_())
 
-
 	return tools
 }
 
@@ -33,7 +32,6 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers["mediatitle_delete_"] = HandleMediatitle_delete_
 	handlers["mediatitle_get_"] = HandleMediatitle_get_
 	handlers["mediatitle_post_"] = HandleMediatitle_post_
-
 
 	return handlers
 }

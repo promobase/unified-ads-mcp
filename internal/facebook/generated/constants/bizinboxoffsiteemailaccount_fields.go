@@ -5,10 +5,10 @@ package constants
 // BizInboxOffsiteEmailAccountFields contains field name constants for BizInboxOffsiteEmailAccount objects
 var BizInboxOffsiteEmailAccountFields = struct {
 	EmailAddress string
-	Id string
+	Id           string
 }{
 	EmailAddress: "email_address",
-	Id: "id",
+	Id:           "id",
 }
 
 // BizInboxOffsiteEmailAccountFieldsList contains all available fields for BizInboxOffsiteEmailAccount objects

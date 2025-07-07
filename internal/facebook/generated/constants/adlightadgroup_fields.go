@@ -5,10 +5,10 @@ package constants
 // AdLightAdgroupFields contains field name constants for AdLightAdgroup objects
 var AdLightAdgroupFields = struct {
 	AdsetId string
-	Id string
+	Id      string
 }{
 	AdsetId: "adset_id",
-	Id: "id",
+	Id:      "id",
 }
 
 // AdLightAdgroupFieldsList contains all available fields for AdLightAdgroup objects

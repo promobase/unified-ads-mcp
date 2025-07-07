@@ -5,14 +5,14 @@ package constants
 // AdCampaignLearningStageInfoFields contains field name constants for AdCampaignLearningStageInfo objects
 var AdCampaignLearningStageInfoFields = struct {
 	AttributionWindows string
-	Conversions string
-	LastSigEditTs string
-	Status string
+	Conversions        string
+	LastSigEditTs      string
+	Status             string
 }{
 	AttributionWindows: "attribution_windows",
-	Conversions: "conversions",
-	LastSigEditTs: "last_sig_edit_ts",
-	Status: "status",
+	Conversions:        "conversions",
+	LastSigEditTs:      "last_sig_edit_ts",
+	Status:             "status",
 }
 
 // AdCampaignLearningStageInfoFieldsList contains all available fields for AdCampaignLearningStageInfo objects

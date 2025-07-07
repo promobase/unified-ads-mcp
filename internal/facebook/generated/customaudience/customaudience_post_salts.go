@@ -15,7 +15,7 @@ import (
 
 // ToolCustomaudience_post_salts returns the MCP tool definition for customaudience_post_salts
 func ToolCustomaudience_post_salts() mcp.Tool {
-	
+
 	// Params object accepts: salt (string), valid_from (datetime), valid_to (datetime)
 	return mcp.NewTool("customaudience_post_salts",
 		mcp.WithDescription("POST salts for CustomAudience"),
@@ -23,19 +23,19 @@ func ToolCustomaudience_post_salts() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"salt": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "salt parameter",
-					"required": true,
+					"required":    true,
 				},
 				"valid_from": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "valid_from parameter",
-					"required": true,
+					"required":    true,
 				},
 				"valid_to": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "valid_to parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: salt (string) [required], valid_from (datetime) [required], valid_to (datetime) [required]"),
@@ -68,8 +68,6 @@ func HandleCustomaudience_post_salts(ctx context.Context, request mcp.CallToolRe
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Customaudience_post_salts(accessToken, args)
 	if err != nil {
@@ -88,20 +86,18 @@ func HandleCustomaudience_post_salts(ctx context.Context, request mcp.CallToolRe
 // Customaudience_post_salts performs POST salts for CustomAudience
 func Customaudience_post_salts(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/salts")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

@@ -15,21 +15,21 @@ import (
 
 // ToolIguserforigonlyapi_post_messenger_profile returns the MCP tool definition for iguserforigonlyapi_post_messenger_profile
 func ToolIguserforigonlyapi_post_messenger_profile() mcp.Tool {
-	
+
 	// Params object accepts: ice_breakers (list<map>), persistent_menu (list<Object>)
 	return mcp.NewTool("iguserforigonlyapi_post_messenger_profile",
 		mcp.WithDescription("POST messenger_profile for IGUserForIGOnlyAPI"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"ice_breakers": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "ice_breakers parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"persistent_menu": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "persistent_menu parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 			}),
 			mcp.Description("Parameters object containing: ice_breakers (array<object>), persistent_menu (array<object>)"),
@@ -60,8 +60,6 @@ func HandleIguserforigonlyapi_post_messenger_profile(ctx context.Context, reques
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Iguserforigonlyapi_post_messenger_profile(accessToken, args)
 	if err != nil {
@@ -80,20 +78,18 @@ func HandleIguserforigonlyapi_post_messenger_profile(ctx context.Context, reques
 // Iguserforigonlyapi_post_messenger_profile performs POST messenger_profile for IGUserForIGOnlyAPI
 func Iguserforigonlyapi_post_messenger_profile(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/messenger_profile")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

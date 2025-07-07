@@ -15,7 +15,7 @@ import (
 
 // ToolIguserforigonlyapi_post_mediapublish returns the MCP tool definition for iguserforigonlyapi_post_mediapublish
 func ToolIguserforigonlyapi_post_mediapublish() mcp.Tool {
-	
+
 	// Params object accepts: creation_id (unsigned int)
 	return mcp.NewTool("iguserforigonlyapi_post_mediapublish",
 		mcp.WithDescription("POST mediapublish for IGUserForIGOnlyAPI"),
@@ -23,9 +23,9 @@ func ToolIguserforigonlyapi_post_mediapublish() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"creation_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "creation_id parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: creation_id (integer) [required]"),
@@ -58,8 +58,6 @@ func HandleIguserforigonlyapi_post_mediapublish(ctx context.Context, request mcp
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Iguserforigonlyapi_post_mediapublish(accessToken, args)
 	if err != nil {
@@ -78,20 +76,18 @@ func HandleIguserforigonlyapi_post_mediapublish(ctx context.Context, request mcp
 // Iguserforigonlyapi_post_mediapublish performs POST mediapublish for IGUserForIGOnlyAPI
 func Iguserforigonlyapi_post_mediapublish(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/mediapublish")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

@@ -17,7 +17,6 @@ import (
 func GetBrandSafetyDownloadableTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// brandsafetydownloadable_get_ tool
 	// Available fields for BrandSafetyDownloadable: account_context_id, async_job_percent_complete, async_job_status, file_name, id, request_surface, url
 	brandsafetydownloadable_get_Tool := mcp.NewTool("brandsafetydownloadable_get_",
@@ -37,12 +36,10 @@ func GetBrandSafetyDownloadableTools() []mcp.Tool {
 	)
 	tools = append(tools, brandsafetydownloadable_get_Tool)
 
-
 	return tools
 }
 
 // BrandSafetyDownloadable handlers
-
 
 // HandleBrandsafetydownloadable_get_ handles the brandsafetydownloadable_get_ tool with context-based auth
 func HandleBrandsafetydownloadable_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleBrandsafetydownloadable_get_(ctx context.Context, request mcp.CallToo
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Brandsafetydownloadable_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleBrandsafetydownloadable_get_(ctx context.Context, request mcp.CallToo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

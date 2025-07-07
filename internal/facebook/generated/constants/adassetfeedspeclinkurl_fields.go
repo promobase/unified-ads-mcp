@@ -4,21 +4,21 @@ package constants
 
 // AdAssetFeedSpecLinkURLFields contains field name constants for AdAssetFeedSpecLinkURL objects
 var AdAssetFeedSpecLinkURLFields = struct {
-	Adlabels string
+	Adlabels           string
 	CarouselSeeMoreUrl string
-	DeeplinkUrl string
-	DisplayUrl string
-	ObjectStoreUrls string
-	UrlTags string
-	WebsiteUrl string
+	DeeplinkUrl        string
+	DisplayUrl         string
+	ObjectStoreUrls    string
+	UrlTags            string
+	WebsiteUrl         string
 }{
-	Adlabels: "adlabels",
+	Adlabels:           "adlabels",
 	CarouselSeeMoreUrl: "carousel_see_more_url",
-	DeeplinkUrl: "deeplink_url",
-	DisplayUrl: "display_url",
-	ObjectStoreUrls: "object_store_urls",
-	UrlTags: "url_tags",
-	WebsiteUrl: "website_url",
+	DeeplinkUrl:        "deeplink_url",
+	DisplayUrl:         "display_url",
+	ObjectStoreUrls:    "object_store_urls",
+	UrlTags:            "url_tags",
+	WebsiteUrl:         "website_url",
 }
 
 // AdAssetFeedSpecLinkURLFieldsList contains all available fields for AdAssetFeedSpecLinkURL objects

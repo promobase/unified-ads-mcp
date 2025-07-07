@@ -5,12 +5,12 @@ package constants
 // LeadGenAppointmentBookingInfoFields contains field name constants for LeadGenAppointmentBookingInfo objects
 var LeadGenAppointmentBookingInfoFields = struct {
 	AdvertiserTimezoneOffset string
-	AppointmentDurations string
-	AppointmentSlotsByDay string
+	AppointmentDurations     string
+	AppointmentSlotsByDay    string
 }{
 	AdvertiserTimezoneOffset: "advertiser_timezone_offset",
-	AppointmentDurations: "appointment_durations",
-	AppointmentSlotsByDay: "appointment_slots_by_day",
+	AppointmentDurations:     "appointment_durations",
+	AppointmentSlotsByDay:    "appointment_slots_by_day",
 }
 
 // LeadGenAppointmentBookingInfoFieldsList contains all available fields for LeadGenAppointmentBookingInfo objects

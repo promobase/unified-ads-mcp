@@ -17,7 +17,6 @@ import (
 func GetProductFeedRuleTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// productfeedrule_delete_ tool
 	productfeedrule_delete_Tool := mcp.NewTool("productfeedrule_delete_",
 		mcp.WithDescription("DELETE  for ProductFeedRule"),
@@ -51,9 +50,9 @@ func GetProductFeedRuleTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"params": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "params parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: params (object) [required]"),
@@ -61,12 +60,10 @@ func GetProductFeedRuleTools() []mcp.Tool {
 	)
 	tools = append(tools, productfeedrule_post_Tool)
 
-
 	return tools
 }
 
 // ProductFeedRule handlers
-
 
 // HandleProductfeedrule_delete_ handles the productfeedrule_delete_ tool with context-based auth
 func HandleProductfeedrule_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -82,8 +79,6 @@ func HandleProductfeedrule_delete_(ctx context.Context, request mcp.CallToolRequ
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Productfeedrule_delete_(args)
 	if err != nil {
@@ -98,7 +93,6 @@ func HandleProductfeedrule_delete_(ctx context.Context, request mcp.CallToolRequ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleProductfeedrule_get_ handles the productfeedrule_get_ tool with context-based auth
 func HandleProductfeedrule_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -139,8 +133,6 @@ func HandleProductfeedrule_get_(ctx context.Context, request mcp.CallToolRequest
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Productfeedrule_get_(args)
 	if err != nil {
@@ -155,7 +147,6 @@ func HandleProductfeedrule_get_(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleProductfeedrule_post_ handles the productfeedrule_post_ tool with context-based auth
 func HandleProductfeedrule_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -185,8 +176,6 @@ func HandleProductfeedrule_post_(ctx context.Context, request mcp.CallToolReques
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Productfeedrule_post_(args)
 	if err != nil {
@@ -201,4 +190,3 @@ func HandleProductfeedrule_post_(ctx context.Context, request mcp.CallToolReques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

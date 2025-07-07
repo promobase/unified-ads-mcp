@@ -17,7 +17,6 @@ import (
 func GetCPASParentCatalogSettingsTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// cpasparentcatalogsettings_get_ tool
 	// Available fields for CPASParentCatalogSettings: attribution_windows, default_currency, disable_use_as_parent_catalog, id
 	cpasparentcatalogsettings_get_Tool := mcp.NewTool("cpasparentcatalogsettings_get_",
@@ -37,12 +36,10 @@ func GetCPASParentCatalogSettingsTools() []mcp.Tool {
 	)
 	tools = append(tools, cpasparentcatalogsettings_get_Tool)
 
-
 	return tools
 }
 
 // CPASParentCatalogSettings handlers
-
 
 // HandleCpasparentcatalogsettings_get_ handles the cpasparentcatalogsettings_get_ tool with context-based auth
 func HandleCpasparentcatalogsettings_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleCpasparentcatalogsettings_get_(ctx context.Context, request mcp.CallT
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Cpasparentcatalogsettings_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleCpasparentcatalogsettings_get_(ctx context.Context, request mcp.CallT
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

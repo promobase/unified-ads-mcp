@@ -15,7 +15,7 @@ import (
 
 // ToolAdaccount_post_video_ads returns the MCP tool definition for adaccount_post_video_ads
 func ToolAdaccount_post_video_ads() mcp.Tool {
-	
+
 	// Params object accepts: description (string), privacy (string), title (string), upload_phase (adaccountvideo_ads_upload_phase_enum_param), video_id (string), video_state (adaccountvideo_ads_video_state_enum_param)
 	return mcp.NewTool("adaccount_post_video_ads",
 		mcp.WithDescription("POST video_ads for AdAccount"),
@@ -27,31 +27,31 @@ func ToolAdaccount_post_video_ads() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"description": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "description parameter",
 				},
 				"privacy": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "privacy parameter",
 				},
 				"title": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "title parameter",
 				},
 				"upload_phase": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "upload_phase parameter",
-					"required": true,
-					"enum": []string{ "FINISH", "START" },
+					"required":    true,
+					"enum":        []string{"FINISH", "START"},
 				},
 				"video_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "video_id parameter",
 				},
 				"video_state": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "video_state parameter",
-					"enum": []string{ "DRAFT", "PUBLISHED", "SCHEDULED" },
+					"enum":        []string{"DRAFT", "PUBLISHED", "SCHEDULED"},
 				},
 			}),
 			mcp.Description("Parameters object containing: description (string), privacy (string), title (string), upload_phase (enum) [FINISH, START] [required], video_id (string), video_state (enum) [DRAFT, PUBLISHED, SCHEDULED]"),
@@ -91,8 +91,6 @@ func HandleAdaccount_post_video_ads(ctx context.Context, request mcp.CallToolReq
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Adaccount_post_video_ads(accessToken, args)
 	if err != nil {
@@ -111,35 +109,33 @@ func HandleAdaccount_post_video_ads(ctx context.Context, request mcp.CallToolReq
 // Adaccount_post_video_ads performs POST video_ads for AdAccount
 func Adaccount_post_video_ads(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	// Extract account_id for URL construction
 	accountId, ok := args["account_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_post_video_ads")
 	}
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%svideo_ads", accountId)
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-		
-	}
 
+	}
 
 	// Make HTTP request
 	var resp *http.Response

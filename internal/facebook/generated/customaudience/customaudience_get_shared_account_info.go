@@ -17,7 +17,7 @@ import (
 // ToolCustomaudience_get_shared_account_info returns the MCP tool definition for customaudience_get_shared_account_info
 func ToolCustomaudience_get_shared_account_info() mcp.Tool {
 	// Available fields for CustomAudiencesharedAccountInfo: account_id, account_name, business_id, business_name, sharing_status
-	
+
 	return mcp.NewTool("customaudience_get_shared_account_info",
 		mcp.WithDescription("GET shared_account_info for CustomAudience"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleCustomaudience_get_shared_account_info(ctx context.Context, request m
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Customaudience_get_shared_account_info(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleCustomaudience_get_shared_account_info(ctx context.Context, request m
 // Customaudience_get_shared_account_info performs GET shared_account_info for CustomAudience
 func Customaudience_get_shared_account_info(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/shared_account_info")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

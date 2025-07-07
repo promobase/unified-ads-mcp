@@ -4,12 +4,12 @@ package types
 
 // CustomAudienceSharedAccountCampaignInfo represents a Facebook CustomAudienceSharedAccountCampaignInfo object
 type CustomAudienceSharedAccountCampaignInfo struct {
-	Account_id string `json:"account_id"`
-	Account_name string `json:"account_name"`
-	Adset_excluding_count int `json:"adset_excluding_count"`
-	Adset_including_count int `json:"adset_including_count"`
-	Campaign_delivery_status string `json:"campaign_delivery_status"`
-	Campaign_objective string `json:"campaign_objective"`
-	Campaign_pages []map[string]interface{} `json:"campaign_pages"`
-	Campaign_schedule string `json:"campaign_schedule"`
+	Account_id               string                   `json:"account_id"`
+	Account_name             string                   `json:"account_name"`
+	Adset_excluding_count    int                      `json:"adset_excluding_count"`
+	Adset_including_count    int                      `json:"adset_including_count"`
+	Campaign_delivery_status string                   `json:"campaign_delivery_status"`
+	Campaign_objective       string                   `json:"campaign_objective"`
+	Campaign_pages           []map[string]interface{} `json:"campaign_pages"`
+	Campaign_schedule        string                   `json:"campaign_schedule"`
 }

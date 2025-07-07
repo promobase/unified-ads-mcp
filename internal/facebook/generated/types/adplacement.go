@@ -4,13 +4,13 @@ package types
 
 // AdPlacement represents a Facebook AdPlacement object
 type AdPlacement struct {
-	Bundle_id string `json:"bundle_id"`
-	Display_format string `json:"display_format"`
-	External_placement_id string `json:"external_placement_id"`
-	Google_display_format string `json:"google_display_format"`
-	Id string `json:"id"`
-	Name string `json:"name"`
-	Placement_group map[string]interface{} `json:"placement_group"`
-	Platform string `json:"platform"`
-	Status string `json:"status"`
+	Bundle_id             string                 `json:"bundle_id"`
+	Display_format        string                 `json:"display_format"`
+	External_placement_id string                 `json:"external_placement_id"`
+	Google_display_format string                 `json:"google_display_format"`
+	Id                    string                 `json:"id"`
+	Name                  string                 `json:"name"`
+	Placement_group       map[string]interface{} `json:"placement_group"`
+	Platform              string                 `json:"platform"`
+	Status                string                 `json:"status"`
 }

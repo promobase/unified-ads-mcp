@@ -27,7 +27,6 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolPost_get_())
 	tools = append(tools, ToolPost_post_())
 
-
 	return tools
 }
 
@@ -49,7 +48,6 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers["post_delete_"] = HandlePost_delete_
 	handlers["post_get_"] = HandlePost_get_
 	handlers["post_post_"] = HandlePost_post_
-
 
 	return handlers
 }

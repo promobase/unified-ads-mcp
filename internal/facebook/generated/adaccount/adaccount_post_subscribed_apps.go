@@ -15,7 +15,7 @@ import (
 
 // ToolAdaccount_post_subscribed_apps returns the MCP tool definition for adaccount_post_subscribed_apps
 func ToolAdaccount_post_subscribed_apps() mcp.Tool {
-	
+
 	// Params object accepts: app_id (string)
 	return mcp.NewTool("adaccount_post_subscribed_apps",
 		mcp.WithDescription("POST subscribed_apps for AdAccount"),
@@ -26,7 +26,7 @@ func ToolAdaccount_post_subscribed_apps() mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"app_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "app_id parameter",
 				},
 			}),
@@ -65,8 +65,6 @@ func HandleAdaccount_post_subscribed_apps(ctx context.Context, request mcp.CallT
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Adaccount_post_subscribed_apps(accessToken, args)
 	if err != nil {
@@ -85,35 +83,33 @@ func HandleAdaccount_post_subscribed_apps(ctx context.Context, request mcp.CallT
 // Adaccount_post_subscribed_apps performs POST subscribed_apps for AdAccount
 func Adaccount_post_subscribed_apps(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	// Extract account_id for URL construction
 	accountId, ok := args["account_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_post_subscribed_apps")
 	}
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%ssubscribed_apps", accountId)
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-		
-	}
 
+	}
 
 	// Make HTTP request
 	var resp *http.Response

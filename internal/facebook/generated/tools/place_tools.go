@@ -17,7 +17,6 @@ import (
 func GetPlaceTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// place_get_ tool
 	// Available fields for Place: id, location, name, overall_rating
 	place_get_Tool := mcp.NewTool("place_get_",
@@ -37,12 +36,10 @@ func GetPlaceTools() []mcp.Tool {
 	)
 	tools = append(tools, place_get_Tool)
 
-
 	return tools
 }
 
 // Place handlers
-
 
 // HandlePlace_get_ handles the place_get_ tool with context-based auth
 func HandlePlace_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandlePlace_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Ca
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Place_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandlePlace_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

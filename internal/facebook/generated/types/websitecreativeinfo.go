@@ -4,7 +4,7 @@ package types
 
 // WebsiteCreativeInfo represents a Facebook WebsiteCreativeInfo object
 type WebsiteCreativeInfo struct {
-	Id string `json:"id"`
+	Id         string   `json:"id"`
 	Image_urls []string `json:"image_urls"`
-	Link_url string `json:"link_url"`
+	Link_url   string   `json:"link_url"`
 }

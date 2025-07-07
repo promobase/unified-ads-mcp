@@ -4,21 +4,21 @@ package constants
 
 // AdCreativePromotionMetadataSpecFields contains field name constants for AdCreativePromotionMetadataSpec objects
 var AdCreativePromotionMetadataSpecFields = struct {
-	EndDate string
-	Id string
+	EndDate         string
+	Id              string
 	PromotionSource string
-	PromotionType string
-	PromotionValue string
-	RequiredCode string
-	StartDate string
+	PromotionType   string
+	PromotionValue  string
+	RequiredCode    string
+	StartDate       string
 }{
-	EndDate: "end_date",
-	Id: "id",
+	EndDate:         "end_date",
+	Id:              "id",
 	PromotionSource: "promotion_source",
-	PromotionType: "promotion_type",
-	PromotionValue: "promotion_value",
-	RequiredCode: "required_code",
-	StartDate: "start_date",
+	PromotionType:   "promotion_type",
+	PromotionValue:  "promotion_value",
+	RequiredCode:    "required_code",
+	StartDate:       "start_date",
 }
 
 // AdCreativePromotionMetadataSpecFieldsList contains all available fields for AdCreativePromotionMetadataSpec objects

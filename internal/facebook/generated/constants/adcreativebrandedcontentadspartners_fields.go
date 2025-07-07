@@ -4,17 +4,17 @@ package constants
 
 // AdCreativeBrandedContentAdsPartnersFields contains field name constants for AdCreativeBrandedContentAdsPartners objects
 var AdCreativeBrandedContentAdsPartnersFields = struct {
-	FbPageId string
+	FbPageId           string
 	HasCreateAdsAccess string
-	IdentityType string
-	IgAssetId string
-	IgUserId string
+	IdentityType       string
+	IgAssetId          string
+	IgUserId           string
 }{
-	FbPageId: "fb_page_id",
+	FbPageId:           "fb_page_id",
 	HasCreateAdsAccess: "has_create_ads_access",
-	IdentityType: "identity_type",
-	IgAssetId: "ig_asset_id",
-	IgUserId: "ig_user_id",
+	IdentityType:       "identity_type",
+	IgAssetId:          "ig_asset_id",
+	IgUserId:           "ig_user_id",
 }
 
 // AdCreativeBrandedContentAdsPartnersFieldsList contains all available fields for AdCreativeBrandedContentAdsPartners objects

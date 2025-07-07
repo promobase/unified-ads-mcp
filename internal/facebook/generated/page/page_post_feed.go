@@ -15,448 +15,448 @@ import (
 
 // ToolPage_post_feed returns the MCP tool definition for page_post_feed
 func ToolPage_post_feed() mcp.Tool {
-	
+
 	// Params object accepts: actions (Object), album_id (string), android_key_hash (string), application_id (string), asked_fun_fact_prompt_id (unsigned int), asset3d_id (string), associated_id (string), attach_place_suggestion (bool), attached_media (list<Object>), audience_exp (bool), backdated_time (datetime), backdated_time_granularity (pagefeed_backdated_time_granularity_enum_param), breaking_news (bool), breaking_news_expiration (unsigned int), call_to_action (Object), caption (string), child_attachments (list<Object>), client_mutation_id (string), composer_entry_picker (string), composer_entry_point (string), composer_entry_time (unsigned int), composer_session_events_log (string), composer_session_id (string), composer_source_surface (string), composer_type (string), connection_class (string), content_attachment (string), coordinates (Object), cta_link (string), cta_type (string), description (string), direct_share_status (unsigned int), enforce_link_ownership (bool), expanded_height (unsigned int), expanded_width (unsigned int), feed_targeting (Object), formatting (pagefeed_formatting_enum_param), fun_fact_prompt_id (string), fun_fact_toastee_id (unsigned int), height (unsigned int), home_checkin_city_id (Object), image_crops (map), implicit_with_tags (list<int>), instant_game_entry_point_data (string), ios_bundle_id (string), is_backout_draft (bool), is_boost_intended (bool), is_explicit_location (bool), is_explicit_share (bool), is_group_linking_post (bool), is_photo_container (bool), link (string), location_source_id (string), manual_privacy (bool), message (string), multi_share_end_card (bool), multi_share_optimized (bool), name (string), nectar_module (string), object_attachment (string), og_action_type_id (string), og_hide_object_attachment (bool), og_icon_id (string), og_object_id (string), og_phrase (string), og_set_profile_badge (bool), og_suggestion_mechanism (string), page_recommendation (string), picture (string), place (Object), place_attachment_setting (pagefeed_place_attachment_setting_enum_param), place_list (string), place_list_data (list), post_surfaces_blacklist (list<pagefeed_post_surfaces_blacklist_enum_param>), posting_to_redspace (pagefeed_posting_to_redspace_enum_param), privacy (string), prompt_id (string), prompt_tracking_string (string), properties (Object), proxied_app_id (string), publish_event_id (unsigned int), published (bool), quote (string), ref (list<string>), referenceable_image_ids (list<string>), referral_id (string), scheduled_publish_time (datetime), source (string), sponsor_id (string), sponsor_relationship (unsigned int), suggested_place_id (Object), tags (list<int>), target_surface (pagefeed_target_surface_enum_param), targeting (Object), text_format_metadata (string), text_format_preset_id (string), text_only_place (string), thumbnail (file), time_since_original_post (unsigned int), title (string), tracking_info (string), unpublished_content_type (pagefeed_unpublished_content_type_enum_param), user_selected_tags (bool), video_start_time_ms (unsigned int), viewer_coordinates (Object), width (unsigned int)
 	return mcp.NewTool("page_post_feed",
 		mcp.WithDescription("POST feed for Page"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"actions": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "actions parameter",
 				},
 				"album_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "album_id parameter",
 				},
 				"android_key_hash": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "android_key_hash parameter",
 				},
 				"application_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "application_id parameter",
 				},
 				"asked_fun_fact_prompt_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "asked_fun_fact_prompt_id parameter",
 				},
 				"asset3d_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "asset3d_id parameter",
 				},
 				"associated_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "associated_id parameter",
 				},
 				"attach_place_suggestion": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "attach_place_suggestion parameter",
 				},
 				"attached_media": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "attached_media parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"audience_exp": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "audience_exp parameter",
 				},
 				"backdated_time": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "backdated_time parameter",
 				},
 				"backdated_time_granularity": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "backdated_time_granularity parameter",
-					"enum": []string{ "day", "hour", "min", "month", "none", "year" },
+					"enum":        []string{"day", "hour", "min", "month", "none", "year"},
 				},
 				"breaking_news": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "breaking_news parameter",
 				},
 				"breaking_news_expiration": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "breaking_news_expiration parameter",
 				},
 				"call_to_action": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "call_to_action parameter",
 				},
 				"caption": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "caption parameter",
 				},
 				"child_attachments": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "child_attachments parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"client_mutation_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "client_mutation_id parameter",
 				},
 				"composer_entry_picker": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "composer_entry_picker parameter",
 				},
 				"composer_entry_point": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "composer_entry_point parameter",
 				},
 				"composer_entry_time": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "composer_entry_time parameter",
 				},
 				"composer_session_events_log": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "composer_session_events_log parameter",
 				},
 				"composer_session_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "composer_session_id parameter",
 				},
 				"composer_source_surface": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "composer_source_surface parameter",
 				},
 				"composer_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "composer_type parameter",
 				},
 				"connection_class": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "connection_class parameter",
 				},
 				"content_attachment": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "content_attachment parameter",
 				},
 				"coordinates": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "coordinates parameter",
 				},
 				"cta_link": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "cta_link parameter",
 				},
 				"cta_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "cta_type parameter",
 				},
 				"description": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "description parameter",
 				},
 				"direct_share_status": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "direct_share_status parameter",
 				},
 				"enforce_link_ownership": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "enforce_link_ownership parameter",
 				},
 				"expanded_height": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "expanded_height parameter",
 				},
 				"expanded_width": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "expanded_width parameter",
 				},
 				"feed_targeting": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "feed_targeting parameter",
 				},
 				"formatting": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "formatting parameter",
-					"enum": []string{ "MARKDOWN", "PLAINTEXT" },
+					"enum":        []string{"MARKDOWN", "PLAINTEXT"},
 				},
 				"fun_fact_prompt_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "fun_fact_prompt_id parameter",
 				},
 				"fun_fact_toastee_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "fun_fact_toastee_id parameter",
 				},
 				"height": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "height parameter",
 				},
 				"home_checkin_city_id": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "home_checkin_city_id parameter",
 				},
 				"image_crops": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "image_crops parameter",
 				},
 				"implicit_with_tags": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "implicit_with_tags parameter",
-					"items": map[string]any{"type": "integer"},
+					"items":       map[string]any{"type": "integer"},
 				},
 				"instant_game_entry_point_data": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "instant_game_entry_point_data parameter",
 				},
 				"ios_bundle_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "ios_bundle_id parameter",
 				},
 				"is_backout_draft": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_backout_draft parameter",
 				},
 				"is_boost_intended": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_boost_intended parameter",
 				},
 				"is_explicit_location": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_explicit_location parameter",
 				},
 				"is_explicit_share": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_explicit_share parameter",
 				},
 				"is_group_linking_post": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_group_linking_post parameter",
 				},
 				"is_photo_container": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_photo_container parameter",
 				},
 				"link": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "link parameter",
 				},
 				"location_source_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "location_source_id parameter",
 				},
 				"manual_privacy": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "manual_privacy parameter",
 				},
 				"message": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "message parameter",
 				},
 				"multi_share_end_card": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "multi_share_end_card parameter",
 				},
 				"multi_share_optimized": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "multi_share_optimized parameter",
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
 				},
 				"nectar_module": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "nectar_module parameter",
 				},
 				"object_attachment": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "object_attachment parameter",
 				},
 				"og_action_type_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "og_action_type_id parameter",
 				},
 				"og_hide_object_attachment": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "og_hide_object_attachment parameter",
 				},
 				"og_icon_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "og_icon_id parameter",
 				},
 				"og_object_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "og_object_id parameter",
 				},
 				"og_phrase": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "og_phrase parameter",
 				},
 				"og_set_profile_badge": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "og_set_profile_badge parameter",
 				},
 				"og_suggestion_mechanism": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "og_suggestion_mechanism parameter",
 				},
 				"page_recommendation": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "page_recommendation parameter",
 				},
 				"picture": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "picture parameter",
 				},
 				"place": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "place parameter",
 				},
 				"place_attachment_setting": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "place_attachment_setting parameter",
-					"enum": []string{ "1", "2" },
+					"enum":        []string{"1", "2"},
 				},
 				"place_list": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "place_list parameter",
 				},
 				"place_list_data": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "place_list_data parameter",
 				},
 				"post_surfaces_blacklist": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "post_surfaces_blacklist parameter",
-					"enum": []string{ "1", "2", "3", "4", "5" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"1", "2", "3", "4", "5"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"posting_to_redspace": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "posting_to_redspace parameter",
-					"enum": []string{ "disabled", "enabled" },
+					"enum":        []string{"disabled", "enabled"},
 				},
 				"privacy": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "privacy parameter",
 				},
 				"prompt_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "prompt_id parameter",
 				},
 				"prompt_tracking_string": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "prompt_tracking_string parameter",
 				},
 				"properties": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "properties parameter",
 				},
 				"proxied_app_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "proxied_app_id parameter",
 				},
 				"publish_event_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "publish_event_id parameter",
 				},
 				"published": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "published parameter",
 				},
 				"quote": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "quote parameter",
 				},
 				"ref": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "ref parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"referenceable_image_ids": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "referenceable_image_ids parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"referral_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "referral_id parameter",
 				},
 				"scheduled_publish_time": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "scheduled_publish_time parameter",
 				},
 				"source": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "source parameter",
 				},
 				"sponsor_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "sponsor_id parameter",
 				},
 				"sponsor_relationship": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "sponsor_relationship parameter",
 				},
 				"suggested_place_id": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "suggested_place_id parameter",
 				},
 				"tags": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "tags parameter",
-					"items": map[string]any{"type": "integer"},
+					"items":       map[string]any{"type": "integer"},
 				},
 				"target_surface": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "target_surface parameter",
-					"enum": []string{ "STORY", "TIMELINE" },
+					"enum":        []string{"STORY", "TIMELINE"},
 				},
 				"targeting": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "targeting parameter",
 				},
 				"text_format_metadata": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "text_format_metadata parameter",
 				},
 				"text_format_preset_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "text_format_preset_id parameter",
 				},
 				"text_only_place": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "text_only_place parameter",
 				},
 				"thumbnail": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "thumbnail parameter",
 				},
 				"time_since_original_post": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "time_since_original_post parameter",
 				},
 				"title": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "title parameter",
 				},
 				"tracking_info": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "tracking_info parameter",
 				},
 				"unpublished_content_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "unpublished_content_type parameter",
-					"enum": []string{ "ADS_POST", "DRAFT", "INLINE_CREATED", "PUBLISHED", "REVIEWABLE_BRANDED_CONTENT", "SCHEDULED", "SCHEDULED_RECURRING" },
+					"enum":        []string{"ADS_POST", "DRAFT", "INLINE_CREATED", "PUBLISHED", "REVIEWABLE_BRANDED_CONTENT", "SCHEDULED", "SCHEDULED_RECURRING"},
 				},
 				"user_selected_tags": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "user_selected_tags parameter",
 				},
 				"video_start_time_ms": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "video_start_time_ms parameter",
 				},
 				"viewer_coordinates": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "viewer_coordinates parameter",
 				},
 				"width": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "width parameter",
 				},
 			}),
@@ -488,8 +488,6 @@ func HandlePage_post_feed(ctx context.Context, request mcp.CallToolRequest) (*mc
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Page_post_feed(accessToken, args)
 	if err != nil {
@@ -508,20 +506,18 @@ func HandlePage_post_feed(ctx context.Context, request mcp.CallToolRequest) (*mc
 // Page_post_feed performs POST feed for Page
 func Page_post_feed(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/feed")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

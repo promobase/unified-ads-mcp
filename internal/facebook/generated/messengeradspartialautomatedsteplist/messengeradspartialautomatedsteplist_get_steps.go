@@ -16,8 +16,7 @@ import (
 
 // ToolMessengeradspartialautomatedsteplist_get_steps returns the MCP tool definition for messengeradspartialautomatedsteplist_get_steps
 func ToolMessengeradspartialautomatedsteplist_get_steps() mcp.Tool {
-	
-	
+
 	return mcp.NewTool("messengeradspartialautomatedsteplist_get_steps",
 		mcp.WithDescription("GET steps for MessengerAdsPartialAutomatedStepList"),
 		mcp.WithArray("fields",
@@ -71,8 +70,6 @@ func HandleMessengeradspartialautomatedsteplist_get_steps(ctx context.Context, r
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Messengeradspartialautomatedsteplist_get_steps(accessToken, args)
 	if err != nil {
@@ -91,38 +88,36 @@ func HandleMessengeradspartialautomatedsteplist_get_steps(ctx context.Context, r
 // Messengeradspartialautomatedsteplist_get_steps performs GET steps for MessengerAdsPartialAutomatedStepList
 func Messengeradspartialautomatedsteplist_get_steps(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/steps")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

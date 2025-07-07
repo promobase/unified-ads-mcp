@@ -4,39 +4,39 @@ package constants
 
 // AdAsyncRequestSetFields contains field name constants for AdAsyncRequestSet objects
 var AdAsyncRequestSetFields = struct {
-	CanceledCount string
-	CreatedTime string
-	ErrorCount string
-	Id string
-	InProgressCount string
-	InitialCount string
-	IsCompleted string
-	Name string
-	NotificationMode string
+	CanceledCount      string
+	CreatedTime        string
+	ErrorCount         string
+	Id                 string
+	InProgressCount    string
+	InitialCount       string
+	IsCompleted        string
+	Name               string
+	NotificationMode   string
 	NotificationResult string
 	NotificationStatus string
-	NotificationUri string
-	OwnerId string
-	SuccessCount string
-	TotalCount string
-	UpdatedTime string
+	NotificationUri    string
+	OwnerId            string
+	SuccessCount       string
+	TotalCount         string
+	UpdatedTime        string
 }{
-	CanceledCount: "canceled_count",
-	CreatedTime: "created_time",
-	ErrorCount: "error_count",
-	Id: "id",
-	InProgressCount: "in_progress_count",
-	InitialCount: "initial_count",
-	IsCompleted: "is_completed",
-	Name: "name",
-	NotificationMode: "notification_mode",
+	CanceledCount:      "canceled_count",
+	CreatedTime:        "created_time",
+	ErrorCount:         "error_count",
+	Id:                 "id",
+	InProgressCount:    "in_progress_count",
+	InitialCount:       "initial_count",
+	IsCompleted:        "is_completed",
+	Name:               "name",
+	NotificationMode:   "notification_mode",
 	NotificationResult: "notification_result",
 	NotificationStatus: "notification_status",
-	NotificationUri: "notification_uri",
-	OwnerId: "owner_id",
-	SuccessCount: "success_count",
-	TotalCount: "total_count",
-	UpdatedTime: "updated_time",
+	NotificationUri:    "notification_uri",
+	OwnerId:            "owner_id",
+	SuccessCount:       "success_count",
+	TotalCount:         "total_count",
+	UpdatedTime:        "updated_time",
 }
 
 // AdAsyncRequestSetFieldsList contains all available fields for AdAsyncRequestSet objects

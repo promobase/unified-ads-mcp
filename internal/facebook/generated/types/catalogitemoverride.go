@@ -4,8 +4,8 @@ package types
 
 // CatalogItemOverride represents a Facebook CatalogItemOverride object
 type CatalogItemOverride struct {
-	Id string `json:"id"`
-	Local_info *ProductItemLocalInfo `json:"local_info"`
-	Override_type string `json:"override_type"`
-	Override_value string `json:"override_value"`
+	Id             string                `json:"id"`
+	Local_info     *ProductItemLocalInfo `json:"local_info"`
+	Override_type  string                `json:"override_type"`
+	Override_value string                `json:"override_value"`
 }

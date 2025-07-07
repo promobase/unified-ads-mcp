@@ -4,33 +4,33 @@ package constants
 
 // EventTourFields contains field name constants for EventTour objects
 var EventTourFields = struct {
-	Description string
-	DominantColor string
-	EndTime string
-	Id string
-	IsPast string
-	LastEventTimestamp string
-	Name string
-	NumEvents string
-	Photo string
+	Description               string
+	DominantColor             string
+	EndTime                   string
+	Id                        string
+	IsPast                    string
+	LastEventTimestamp        string
+	Name                      string
+	NumEvents                 string
+	Photo                     string
 	ScheduledPublishTimestamp string
-	StartTime string
-	TicketingUri string
-	Video string
+	StartTime                 string
+	TicketingUri              string
+	Video                     string
 }{
-	Description: "description",
-	DominantColor: "dominant_color",
-	EndTime: "end_time",
-	Id: "id",
-	IsPast: "is_past",
-	LastEventTimestamp: "last_event_timestamp",
-	Name: "name",
-	NumEvents: "num_events",
-	Photo: "photo",
+	Description:               "description",
+	DominantColor:             "dominant_color",
+	EndTime:                   "end_time",
+	Id:                        "id",
+	IsPast:                    "is_past",
+	LastEventTimestamp:        "last_event_timestamp",
+	Name:                      "name",
+	NumEvents:                 "num_events",
+	Photo:                     "photo",
 	ScheduledPublishTimestamp: "scheduled_publish_timestamp",
-	StartTime: "start_time",
-	TicketingUri: "ticketing_uri",
-	Video: "video",
+	StartTime:                 "start_time",
+	TicketingUri:              "ticketing_uri",
+	Video:                     "video",
 }
 
 // EventTourFieldsList contains all available fields for EventTour objects

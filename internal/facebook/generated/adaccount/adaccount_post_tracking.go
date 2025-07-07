@@ -15,7 +15,7 @@ import (
 
 // ToolAdaccount_post_tracking returns the MCP tool definition for adaccount_post_tracking
 func ToolAdaccount_post_tracking() mcp.Tool {
-	
+
 	// Params object accepts: tracking_specs (Object)
 	return mcp.NewTool("adaccount_post_tracking",
 		mcp.WithDescription("POST tracking for AdAccount"),
@@ -27,9 +27,9 @@ func ToolAdaccount_post_tracking() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"tracking_specs": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "tracking_specs parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: tracking_specs (object) [required]"),
@@ -69,8 +69,6 @@ func HandleAdaccount_post_tracking(ctx context.Context, request mcp.CallToolRequ
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Adaccount_post_tracking(accessToken, args)
 	if err != nil {
@@ -89,35 +87,33 @@ func HandleAdaccount_post_tracking(ctx context.Context, request mcp.CallToolRequ
 // Adaccount_post_tracking performs POST tracking for AdAccount
 func Adaccount_post_tracking(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	// Extract account_id for URL construction
 	accountId, ok := args["account_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_post_tracking")
 	}
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%stracking", accountId)
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-		
-	}
 
+	}
 
 	// Make HTTP request
 	var resp *http.Response

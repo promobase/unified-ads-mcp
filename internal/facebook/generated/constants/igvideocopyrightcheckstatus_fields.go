@@ -5,10 +5,10 @@ package constants
 // IGVideoCopyrightCheckStatusFields contains field name constants for IGVideoCopyrightCheckStatus objects
 var IGVideoCopyrightCheckStatusFields = struct {
 	MatchesFound string
-	Status string
+	Status       string
 }{
 	MatchesFound: "matches_found",
-	Status: "status",
+	Status:       "status",
 }
 
 // IGVideoCopyrightCheckStatusFieldsList contains all available fields for IGVideoCopyrightCheckStatus objects

@@ -7,8 +7,8 @@ import "time"
 // BlockedUserInfo represents a Facebook BlockedUserInfo object
 type BlockedUserInfo struct {
 	Block_time time.Time `json:"block_time"`
-	Block_type string `json:"block_type"`
-	Fbid string `json:"fbid"`
-	Name string `json:"name"`
-	Username string `json:"username"`
+	Block_type string    `json:"block_type"`
+	Fbid       string    `json:"fbid"`
+	Name       string    `json:"name"`
+	Username   string    `json:"username"`
 }

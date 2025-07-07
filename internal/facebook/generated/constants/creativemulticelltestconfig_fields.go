@@ -4,18 +4,18 @@ package constants
 
 // CreativeMulticellTestConfigFields contains field name constants for CreativeMulticellTestConfig objects
 var CreativeMulticellTestConfigFields = struct {
-	BudgetPercentage string
-	ConfiguredCellCount string
-	DailyBudget string
-	EntrySource string
-	LifetimeBudget string
+	BudgetPercentage       string
+	ConfiguredCellCount    string
+	DailyBudget            string
+	EntrySource            string
+	LifetimeBudget         string
 	UseExistingDailyBudget string
 }{
-	BudgetPercentage: "budget_percentage",
-	ConfiguredCellCount: "configured_cell_count",
-	DailyBudget: "daily_budget",
-	EntrySource: "entry_source",
-	LifetimeBudget: "lifetime_budget",
+	BudgetPercentage:       "budget_percentage",
+	ConfiguredCellCount:    "configured_cell_count",
+	DailyBudget:            "daily_budget",
+	EntrySource:            "entry_source",
+	LifetimeBudget:         "lifetime_budget",
 	UseExistingDailyBudget: "use_existing_daily_budget",
 }
 

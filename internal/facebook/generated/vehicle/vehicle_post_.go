@@ -15,135 +15,135 @@ import (
 
 // ToolVehicle_post_ returns the MCP tool definition for vehicle_post_
 func ToolVehicle_post_() mcp.Tool {
-	
+
 	// Params object accepts: address (map), applinks (Object), availability (vehicle_availability), body_style (vehicle_body_style), condition (vehicle_condition), currency (string), date_first_on_lot (string), dealer_id (string), dealer_name (string), dealer_phone (string), description (string), drivetrain (vehicle_drivetrain), exterior_color (string), fb_page_id (string), fuel_type (vehicle_fuel_type), images (list<Object>), interior_color (string), make (string), mileage (map), model (string), price (unsigned int), state_of_vehicle (vehicle_state_of_vehicle), title (string), transmission (vehicle_transmission), trim (string), url (string), vehicle_type (vehicle_vehicle_type), vin (string), year (unsigned int)
 	return mcp.NewTool("vehicle_post_",
 		mcp.WithDescription("POST  for Vehicle"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"address": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "address parameter",
 				},
 				"applinks": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "applinks parameter",
 				},
 				"availability": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "availability parameter",
-					"enum": []string{ "AVAILABLE", "NOT_AVAILABLE", "PENDING", "UNKNOWN" },
+					"enum":        []string{"AVAILABLE", "NOT_AVAILABLE", "PENDING", "UNKNOWN"},
 				},
 				"body_style": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "body_style parameter",
-					"enum": []string{ "CONVERTIBLE", "COUPE", "CROSSOVER", "ESTATE", "GRANDTOURER", "HATCHBACK", "MINIBUS", "MINIVAN", "MPV", "NONE", "OTHER", "PICKUP", "ROADSTER", "SALOON", "SEDAN", "SMALL_CAR", "SPORTSCAR", "SUPERCAR", "SUPERMINI", "SUV", "TRUCK", "VAN", "WAGON" },
+					"enum":        []string{"CONVERTIBLE", "COUPE", "CROSSOVER", "ESTATE", "GRANDTOURER", "HATCHBACK", "MINIBUS", "MINIVAN", "MPV", "NONE", "OTHER", "PICKUP", "ROADSTER", "SALOON", "SEDAN", "SMALL_CAR", "SPORTSCAR", "SUPERCAR", "SUPERMINI", "SUV", "TRUCK", "VAN", "WAGON"},
 				},
 				"condition": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "condition parameter",
-					"enum": []string{ "EXCELLENT", "FAIR", "GOOD", "NONE", "OTHER", "POOR", "VERY_GOOD" },
+					"enum":        []string{"EXCELLENT", "FAIR", "GOOD", "NONE", "OTHER", "POOR", "VERY_GOOD"},
 				},
 				"currency": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "currency parameter",
 				},
 				"date_first_on_lot": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "date_first_on_lot parameter",
 				},
 				"dealer_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "dealer_id parameter",
 				},
 				"dealer_name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "dealer_name parameter",
 				},
 				"dealer_phone": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "dealer_phone parameter",
 				},
 				"description": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "description parameter",
 				},
 				"drivetrain": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "drivetrain parameter",
-					"enum": []string{ "AWD", "FOUR_WD", "FWD", "NONE", "OTHER", "RWD", "TWO_WD" },
+					"enum":        []string{"AWD", "FOUR_WD", "FWD", "NONE", "OTHER", "RWD", "TWO_WD"},
 				},
 				"exterior_color": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "exterior_color parameter",
 				},
 				"fb_page_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "fb_page_id parameter",
 				},
 				"fuel_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "fuel_type parameter",
-					"enum": []string{ "DIESEL", "ELECTRIC", "FLEX", "GASOLINE", "HYBRID", "NONE", "OTHER", "PETROL", "PLUGIN_HYBRID" },
+					"enum":        []string{"DIESEL", "ELECTRIC", "FLEX", "GASOLINE", "HYBRID", "NONE", "OTHER", "PETROL", "PLUGIN_HYBRID"},
 				},
 				"images": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "images parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"interior_color": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "interior_color parameter",
 				},
 				"make": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "make parameter",
 				},
 				"mileage": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "mileage parameter",
 				},
 				"model": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "model parameter",
 				},
 				"price": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "price parameter",
 				},
 				"state_of_vehicle": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "state_of_vehicle parameter",
-					"enum": []string{ "CPO", "NEW", "USED" },
+					"enum":        []string{"CPO", "NEW", "USED"},
 				},
 				"title": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "title parameter",
 				},
 				"transmission": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "transmission parameter",
-					"enum": []string{ "AUTOMATIC", "MANUAL", "NONE", "OTHER" },
+					"enum":        []string{"AUTOMATIC", "MANUAL", "NONE", "OTHER"},
 				},
 				"trim": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "trim parameter",
 				},
 				"url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "url parameter",
 				},
 				"vehicle_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "vehicle_type parameter",
-					"enum": []string{ "BOAT", "CAR_TRUCK", "COMMERCIAL", "MOTORCYCLE", "OTHER", "POWERSPORT", "RV_CAMPER", "TRAILER" },
+					"enum":        []string{"BOAT", "CAR_TRUCK", "COMMERCIAL", "MOTORCYCLE", "OTHER", "POWERSPORT", "RV_CAMPER", "TRAILER"},
 				},
 				"vin": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "vin parameter",
 				},
 				"year": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "year parameter",
 				},
 			}),
@@ -175,8 +175,6 @@ func HandleVehicle_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Vehicle_post_(accessToken, args)
 	if err != nil {
@@ -195,20 +193,18 @@ func HandleVehicle_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 // Vehicle_post_ performs POST  for Vehicle
 func Vehicle_post_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

@@ -15,7 +15,7 @@ import (
 
 // ToolWhatsappbusinessaccount_post_generate_payment_configuration_oauth_link returns the MCP tool definition for whatsappbusinessaccount_post_generate_payment_configuration_oauth_link
 func ToolWhatsappbusinessaccount_post_generate_payment_configuration_oauth_link() mcp.Tool {
-	
+
 	// Params object accepts: configuration_name (string), redirect_url (string)
 	return mcp.NewTool("whatsappbusinessaccount_post_generate_payment_configuration_oauth_link",
 		mcp.WithDescription("POST generate_payment_configuration_oauth_link for WhatsAppBusinessAccount"),
@@ -23,12 +23,12 @@ func ToolWhatsappbusinessaccount_post_generate_payment_configuration_oauth_link(
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"configuration_name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "configuration_name parameter",
-					"required": true,
+					"required":    true,
 				},
 				"redirect_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "redirect_url parameter",
 				},
 			}),
@@ -62,8 +62,6 @@ func HandleWhatsappbusinessaccount_post_generate_payment_configuration_oauth_lin
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Whatsappbusinessaccount_post_generate_payment_configuration_oauth_link(accessToken, args)
 	if err != nil {
@@ -82,20 +80,18 @@ func HandleWhatsappbusinessaccount_post_generate_payment_configuration_oauth_lin
 // Whatsappbusinessaccount_post_generate_payment_configuration_oauth_link performs POST generate_payment_configuration_oauth_link for WhatsAppBusinessAccount
 func Whatsappbusinessaccount_post_generate_payment_configuration_oauth_link(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/generate_payment_configuration_oauth_link")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

@@ -4,14 +4,14 @@ package constants
 
 // AdCampaignGroupStructureTreeFields contains field name constants for AdCampaignGroupStructureTree objects
 var AdCampaignGroupStructureTreeFields = struct {
-	Children string
-	Id string
-	Name string
+	Children    string
+	Id          string
+	Name        string
 	TimeUpdated string
 }{
-	Children: "children",
-	Id: "id",
-	Name: "name",
+	Children:    "children",
+	Id:          "id",
+	Name:        "name",
 	TimeUpdated: "time_updated",
 }
 

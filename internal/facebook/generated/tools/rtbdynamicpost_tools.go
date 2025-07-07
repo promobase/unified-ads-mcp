@@ -17,7 +17,6 @@ import (
 func GetRTBDynamicPostTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// rtbdynamicpost_get_comments tool
 	// Available fields for Comment: admin_creator, application, attachment, can_comment, can_hide, can_like, can_remove, can_reply_privately, comment_count, created_time, from, id, is_hidden, is_private, like_count, live_broadcast_timestamp, message, message_tags, object, parent, permalink_url, private_reply_conversation, user_likes
 	// Params object accepts: filter (rtbdynamicpostcomments_filter_enum_param), live_filter (rtbdynamicpostcomments_live_filter_enum_param), order (rtbdynamicpostcomments_order_enum_param), since (datetime)
@@ -26,22 +25,22 @@ func GetRTBDynamicPostTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"filter": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "filter parameter",
-					"enum": []string{ "stream", "toplevel" },
+					"enum":        []string{"stream", "toplevel"},
 				},
 				"live_filter": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "live_filter parameter",
-					"enum": []string{ "filter_low_quality", "no_filter" },
+					"enum":        []string{"filter_low_quality", "no_filter"},
 				},
 				"order": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "order parameter",
-					"enum": []string{ "chronological", "reverse_chronological" },
+					"enum":        []string{"chronological", "reverse_chronological"},
 				},
 				"since": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "since parameter",
 				},
 			}),
@@ -100,12 +99,10 @@ func GetRTBDynamicPostTools() []mcp.Tool {
 	)
 	tools = append(tools, rtbdynamicpost_get_Tool)
 
-
 	return tools
 }
 
 // RTBDynamicPost handlers
-
 
 // HandleRtbdynamicpost_get_comments handles the rtbdynamicpost_get_comments tool with context-based auth
 func HandleRtbdynamicpost_get_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -158,8 +155,6 @@ func HandleRtbdynamicpost_get_comments(ctx context.Context, request mcp.CallTool
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Rtbdynamicpost_get_comments(args)
 	if err != nil {
@@ -174,7 +169,6 @@ func HandleRtbdynamicpost_get_comments(ctx context.Context, request mcp.CallTool
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleRtbdynamicpost_get_likes handles the rtbdynamicpost_get_likes tool with context-based auth
 func HandleRtbdynamicpost_get_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -215,8 +209,6 @@ func HandleRtbdynamicpost_get_likes(ctx context.Context, request mcp.CallToolReq
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Rtbdynamicpost_get_likes(args)
 	if err != nil {
@@ -231,7 +223,6 @@ func HandleRtbdynamicpost_get_likes(ctx context.Context, request mcp.CallToolReq
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleRtbdynamicpost_get_ handles the rtbdynamicpost_get_ tool with context-based auth
 func HandleRtbdynamicpost_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -272,8 +263,6 @@ func HandleRtbdynamicpost_get_(ctx context.Context, request mcp.CallToolRequest)
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Rtbdynamicpost_get_(args)
 	if err != nil {
@@ -288,4 +277,3 @@ func HandleRtbdynamicpost_get_(ctx context.Context, request mcp.CallToolRequest)
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

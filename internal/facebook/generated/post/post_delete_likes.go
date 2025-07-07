@@ -15,18 +15,18 @@ import (
 
 // ToolPost_delete_likes returns the MCP tool definition for post_delete_likes
 func ToolPost_delete_likes() mcp.Tool {
-	
+
 	// Params object accepts: nectar_module (string), tracking (string)
 	return mcp.NewTool("post_delete_likes",
 		mcp.WithDescription("DELETE likes for Post"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"nectar_module": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "nectar_module parameter",
 				},
 				"tracking": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "tracking parameter",
 				},
 			}),
@@ -58,8 +58,6 @@ func HandlePost_delete_likes(ctx context.Context, request mcp.CallToolRequest) (
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Post_delete_likes(accessToken, args)
 	if err != nil {
@@ -78,20 +76,18 @@ func HandlePost_delete_likes(ctx context.Context, request mcp.CallToolRequest) (
 // Post_delete_likes performs DELETE likes for Post
 func Post_delete_likes(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/likes")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

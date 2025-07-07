@@ -15,7 +15,7 @@ import (
 
 // ToolAdstudy_post_instances returns the MCP tool definition for adstudy_post_instances
 func ToolAdstudy_post_instances() mcp.Tool {
-	
+
 	// Params object accepts: breakdown_key (map), run_id (string)
 	return mcp.NewTool("adstudy_post_instances",
 		mcp.WithDescription("POST instances for AdStudy"),
@@ -23,12 +23,12 @@ func ToolAdstudy_post_instances() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"breakdown_key": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "breakdown_key parameter",
-					"required": true,
+					"required":    true,
 				},
 				"run_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "run_id parameter",
 				},
 			}),
@@ -62,8 +62,6 @@ func HandleAdstudy_post_instances(ctx context.Context, request mcp.CallToolReque
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Adstudy_post_instances(accessToken, args)
 	if err != nil {
@@ -82,20 +80,18 @@ func HandleAdstudy_post_instances(ctx context.Context, request mcp.CallToolReque
 // Adstudy_post_instances performs POST instances for AdStudy
 func Adstudy_post_instances(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/instances")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

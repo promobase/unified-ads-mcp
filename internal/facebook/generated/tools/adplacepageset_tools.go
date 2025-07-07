@@ -17,7 +17,6 @@ import (
 func GetAdPlacePageSetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// adplacepageset_get_ tool
 	// Available fields for AdPlacePageSet: account_id, id, location_types, name, pages_count, parent_page
 	adplacepageset_get_Tool := mcp.NewTool("adplacepageset_get_",
@@ -37,12 +36,10 @@ func GetAdPlacePageSetTools() []mcp.Tool {
 	)
 	tools = append(tools, adplacepageset_get_Tool)
 
-
 	return tools
 }
 
 // AdPlacePageSet handlers
-
 
 // HandleAdplacepageset_get_ handles the adplacepageset_get_ tool with context-based auth
 func HandleAdplacepageset_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleAdplacepageset_get_(ctx context.Context, request mcp.CallToolRequest)
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adplacepageset_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleAdplacepageset_get_(ctx context.Context, request mcp.CallToolRequest)
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

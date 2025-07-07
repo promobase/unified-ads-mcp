@@ -15,64 +15,64 @@ import (
 
 // ToolLink_post_comments returns the MCP tool definition for link_post_comments
 func ToolLink_post_comments() mcp.Tool {
-	
+
 	// Params object accepts: attachment_id (string), attachment_share_url (string), attachment_url (string), comment_privacy_value (linkcomments_comment_privacy_value_enum_param), facepile_mentioned_ids (list<string>), feedback_source (string), is_offline (bool), message (string), nectar_module (string), object_id (string), parent_comment_id (Object), text (string), tracking (string)
 	return mcp.NewTool("link_post_comments",
 		mcp.WithDescription("POST comments for Link"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"attachment_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "attachment_id parameter",
 				},
 				"attachment_share_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "attachment_share_url parameter",
 				},
 				"attachment_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "attachment_url parameter",
 				},
 				"comment_privacy_value": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "comment_privacy_value parameter",
-					"enum": []string{ "DECLINED_BY_ADMIN_ASSISTANT", "DEFAULT_PRIVACY", "FRIENDS_AND_POST_OWNER", "FRIENDS_ONLY", "GRAPHQL_MULTIPLE_VALUE_HACK_DO_NOT_USE", "OWNER_OR_COMMENTER", "PENDING_APPROVAL", "REMOVED_BY_ADMIN_ASSISTANT", "SIDE_CONVERSATION", "SIDE_CONVERSATION_AND_POST_OWNER", "SPOTLIGHT_TAB" },
+					"enum":        []string{"DECLINED_BY_ADMIN_ASSISTANT", "DEFAULT_PRIVACY", "FRIENDS_AND_POST_OWNER", "FRIENDS_ONLY", "GRAPHQL_MULTIPLE_VALUE_HACK_DO_NOT_USE", "OWNER_OR_COMMENTER", "PENDING_APPROVAL", "REMOVED_BY_ADMIN_ASSISTANT", "SIDE_CONVERSATION", "SIDE_CONVERSATION_AND_POST_OWNER", "SPOTLIGHT_TAB"},
 				},
 				"facepile_mentioned_ids": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "facepile_mentioned_ids parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"feedback_source": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "feedback_source parameter",
 				},
 				"is_offline": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_offline parameter",
 				},
 				"message": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "message parameter",
 				},
 				"nectar_module": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "nectar_module parameter",
 				},
 				"object_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "object_id parameter",
 				},
 				"parent_comment_id": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "parent_comment_id parameter",
 				},
 				"text": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "text parameter",
 				},
 				"tracking": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "tracking parameter",
 				},
 			}),
@@ -104,8 +104,6 @@ func HandleLink_post_comments(ctx context.Context, request mcp.CallToolRequest) 
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Link_post_comments(accessToken, args)
 	if err != nil {
@@ -124,20 +122,18 @@ func HandleLink_post_comments(ctx context.Context, request mcp.CallToolRequest) 
 // Link_post_comments performs POST comments for Link
 func Link_post_comments(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/comments")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

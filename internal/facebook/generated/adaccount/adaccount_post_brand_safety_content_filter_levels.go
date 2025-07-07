@@ -15,7 +15,7 @@ import (
 
 // ToolAdaccount_post_brand_safety_content_filter_levels returns the MCP tool definition for adaccount_post_brand_safety_content_filter_levels
 func ToolAdaccount_post_brand_safety_content_filter_levels() mcp.Tool {
-	
+
 	// Params object accepts: brand_safety_content_filter_levels (list<adaccountbrand_safety_content_filter_levels_brand_safety_content_filter_levels_enum_param>), business_id (string)
 	return mcp.NewTool("adaccount_post_brand_safety_content_filter_levels",
 		mcp.WithDescription("POST brand_safety_content_filter_levels for AdAccount"),
@@ -27,14 +27,14 @@ func ToolAdaccount_post_brand_safety_content_filter_levels() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"brand_safety_content_filter_levels": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "brand_safety_content_filter_levels parameter",
-					"required": true,
-					"enum": []string{ "AN_RELAXED", "AN_STANDARD", "AN_STRICT", "FACEBOOK_RELAXED", "FACEBOOK_STANDARD", "FACEBOOK_STRICT", "FEED_DNM", "FEED_RELAXED", "FEED_STANDARD", "FEED_STRICT", "UNINITIALIZED", "UNKNOWN" },
-					"items": map[string]any{"type": "string"},
+					"required":    true,
+					"enum":        []string{"AN_RELAXED", "AN_STANDARD", "AN_STRICT", "FACEBOOK_RELAXED", "FACEBOOK_STANDARD", "FACEBOOK_STRICT", "FEED_DNM", "FEED_RELAXED", "FEED_STANDARD", "FEED_STRICT", "UNINITIALIZED", "UNKNOWN"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"business_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "business_id parameter",
 				},
 			}),
@@ -75,8 +75,6 @@ func HandleAdaccount_post_brand_safety_content_filter_levels(ctx context.Context
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Adaccount_post_brand_safety_content_filter_levels(accessToken, args)
 	if err != nil {
@@ -95,35 +93,33 @@ func HandleAdaccount_post_brand_safety_content_filter_levels(ctx context.Context
 // Adaccount_post_brand_safety_content_filter_levels performs POST brand_safety_content_filter_levels for AdAccount
 func Adaccount_post_brand_safety_content_filter_levels(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	// Extract account_id for URL construction
 	accountId, ok := args["account_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_post_brand_safety_content_filter_levels")
 	}
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%sbrand_safety_content_filter_levels", accountId)
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-		
-	}
 
+	}
 
 	// Make HTTP request
 	var resp *http.Response

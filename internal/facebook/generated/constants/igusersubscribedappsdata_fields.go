@@ -4,10 +4,10 @@ package constants
 
 // IGUserSubscribedAppsDataFields contains field name constants for IGUserSubscribedAppsData objects
 var IGUserSubscribedAppsDataFields = struct {
-	AppId string
+	AppId            string
 	SubscribedFields string
 }{
-	AppId: "app_id",
+	AppId:            "app_id",
 	SubscribedFields: "subscribed_fields",
 }
 

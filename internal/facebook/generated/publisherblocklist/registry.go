@@ -18,7 +18,6 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolPublisherblocklist_get_())
 	tools = append(tools, ToolPublisherblocklist_post_())
 
-
 	return tools
 }
 
@@ -31,7 +30,6 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers["publisherblocklist_delete_"] = HandlePublisherblocklist_delete_
 	handlers["publisherblocklist_get_"] = HandlePublisherblocklist_get_
 	handlers["publisherblocklist_post_"] = HandlePublisherblocklist_post_
-
 
 	return handlers
 }

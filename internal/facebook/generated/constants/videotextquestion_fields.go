@@ -4,15 +4,15 @@ package constants
 
 // VideoTextQuestionFields contains field name constants for VideoTextQuestion objects
 var VideoTextQuestionFields = struct {
-	Id string
+	Id               string
 	QuestionTargetId string
-	QuestionText string
-	Status string
+	QuestionText     string
+	Status           string
 }{
-	Id: "id",
+	Id:               "id",
 	QuestionTargetId: "question_target_id",
-	QuestionText: "question_text",
-	Status: "status",
+	QuestionText:     "question_text",
+	Status:           "status",
 }
 
 // VideoTextQuestionFieldsList contains all available fields for VideoTextQuestion objects

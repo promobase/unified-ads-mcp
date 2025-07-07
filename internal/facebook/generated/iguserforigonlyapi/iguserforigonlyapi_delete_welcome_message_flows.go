@@ -15,14 +15,14 @@ import (
 
 // ToolIguserforigonlyapi_delete_welcome_message_flows returns the MCP tool definition for iguserforigonlyapi_delete_welcome_message_flows
 func ToolIguserforigonlyapi_delete_welcome_message_flows() mcp.Tool {
-	
+
 	// Params object accepts: flow_id (string)
 	return mcp.NewTool("iguserforigonlyapi_delete_welcome_message_flows",
 		mcp.WithDescription("DELETE welcome_message_flows for IGUserForIGOnlyAPI"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"flow_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "flow_id parameter",
 				},
 			}),
@@ -54,8 +54,6 @@ func HandleIguserforigonlyapi_delete_welcome_message_flows(ctx context.Context, 
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Iguserforigonlyapi_delete_welcome_message_flows(accessToken, args)
 	if err != nil {
@@ -74,20 +72,18 @@ func HandleIguserforigonlyapi_delete_welcome_message_flows(ctx context.Context, 
 // Iguserforigonlyapi_delete_welcome_message_flows performs DELETE welcome_message_flows for IGUserForIGOnlyAPI
 func Iguserforigonlyapi_delete_welcome_message_flows(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/welcome_message_flows")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

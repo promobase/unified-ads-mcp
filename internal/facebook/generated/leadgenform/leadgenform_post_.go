@@ -15,16 +15,16 @@ import (
 
 // ToolLeadgenform_post_ returns the MCP tool definition for leadgenform_post_
 func ToolLeadgenform_post_() mcp.Tool {
-	
+
 	// Params object accepts: status (leadgendata_status)
 	return mcp.NewTool("leadgenform_post_",
 		mcp.WithDescription("POST  for LeadgenForm"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"status": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "status parameter",
-					"enum": []string{ "ACTIVE", "ARCHIVED", "DELETED", "DRAFT" },
+					"enum":        []string{"ACTIVE", "ARCHIVED", "DELETED", "DRAFT"},
 				},
 			}),
 			mcp.Description("Parameters object containing: status (leadgendata_status) [ACTIVE, ARCHIVED, DELETED, DRAFT]"),
@@ -55,8 +55,6 @@ func HandleLeadgenform_post_(ctx context.Context, request mcp.CallToolRequest) (
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Leadgenform_post_(accessToken, args)
 	if err != nil {
@@ -75,20 +73,18 @@ func HandleLeadgenform_post_(ctx context.Context, request mcp.CallToolRequest) (
 // Leadgenform_post_ performs POST  for LeadgenForm
 func Leadgenform_post_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

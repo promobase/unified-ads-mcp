@@ -15,8 +15,7 @@ import (
 
 // ToolUser_post_messenger_desktop_performance_traces returns the MCP tool definition for user_post_messenger_desktop_performance_traces
 func ToolUser_post_messenger_desktop_performance_traces() mcp.Tool {
-	
-	
+
 	return mcp.NewTool("user_post_messenger_desktop_performance_traces",
 		mcp.WithDescription("POST messenger_desktop_performance_traces for User"),
 	)
@@ -32,8 +31,6 @@ func HandleUser_post_messenger_desktop_performance_traces(ctx context.Context, r
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the API method
 	result, err := User_post_messenger_desktop_performance_traces(accessToken, args)
@@ -53,14 +50,11 @@ func HandleUser_post_messenger_desktop_performance_traces(ctx context.Context, r
 // User_post_messenger_desktop_performance_traces performs POST messenger_desktop_performance_traces for User
 func User_post_messenger_desktop_performance_traces(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/messenger_desktop_performance_traces")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response

@@ -16,8 +16,7 @@ import (
 
 // ToolIguserforigonlyapi_get_subscribed_apps returns the MCP tool definition for iguserforigonlyapi_get_subscribed_apps
 func ToolIguserforigonlyapi_get_subscribed_apps() mcp.Tool {
-	
-	
+
 	return mcp.NewTool("iguserforigonlyapi_get_subscribed_apps",
 		mcp.WithDescription("GET subscribed_apps for IGUserForIGOnlyAPI"),
 		mcp.WithArray("fields",
@@ -71,8 +70,6 @@ func HandleIguserforigonlyapi_get_subscribed_apps(ctx context.Context, request m
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Iguserforigonlyapi_get_subscribed_apps(accessToken, args)
 	if err != nil {
@@ -91,38 +88,36 @@ func HandleIguserforigonlyapi_get_subscribed_apps(ctx context.Context, request m
 // Iguserforigonlyapi_get_subscribed_apps performs GET subscribed_apps for IGUserForIGOnlyAPI
 func Iguserforigonlyapi_get_subscribed_apps(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/subscribed_apps")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

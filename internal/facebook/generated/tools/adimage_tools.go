@@ -17,7 +17,6 @@ import (
 func GetAdImageTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// adimage_get_ tool
 	// Available fields for AdImage: account_id, created_time, creatives, hash, height, id, is_associated_creatives_in_adgroups, name, original_height, original_width, owner_business, permalink_url, status, updated_time, url, url_128, width
 	adimage_get_Tool := mcp.NewTool("adimage_get_",
@@ -37,12 +36,10 @@ func GetAdImageTools() []mcp.Tool {
 	)
 	tools = append(tools, adimage_get_Tool)
 
-
 	return tools
 }
 
 // AdImage handlers
-
 
 // HandleAdimage_get_ handles the adimage_get_ tool with context-based auth
 func HandleAdimage_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleAdimage_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adimage_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleAdimage_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

@@ -15,7 +15,7 @@ import (
 
 // ToolPage_post_locations returns the MCP tool definition for page_post_locations
 func ToolPage_post_locations() mcp.Tool {
-	
+
 	// Params object accepts: always_open (bool), delivery_and_pickup_option_info (list<string>), differently_open_offerings (map), hours (map), ignore_warnings (bool), location (Object), location_page_id (string), old_store_number (unsigned int), page_username (string), permanently_closed (bool), phone (string), pickup_options (list<pagelocations_pickup_options_enum_param>), place_topics (list<string>), price_range (string), store_code (string), store_location_descriptor (string), store_name (string), store_number (unsigned int), temporary_status (pagelocations_temporary_status_enum_param), website (string)
 	return mcp.NewTool("page_post_locations",
 		mcp.WithDescription("POST locations for Page"),
@@ -23,89 +23,89 @@ func ToolPage_post_locations() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"always_open": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "always_open parameter",
 				},
 				"delivery_and_pickup_option_info": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "delivery_and_pickup_option_info parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"differently_open_offerings": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "differently_open_offerings parameter",
 				},
 				"hours": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "hours parameter",
 				},
 				"ignore_warnings": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "ignore_warnings parameter",
 				},
 				"location": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "location parameter",
 				},
 				"location_page_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "location_page_id parameter",
 				},
 				"old_store_number": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "old_store_number parameter",
 				},
 				"page_username": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "page_username parameter",
 				},
 				"permanently_closed": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "permanently_closed parameter",
 				},
 				"phone": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "phone parameter",
 				},
 				"pickup_options": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "pickup_options parameter",
-					"enum": []string{ "CURBSIDE", "IN_STORE", "OTHER" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"CURBSIDE", "IN_STORE", "OTHER"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"place_topics": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "place_topics parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"price_range": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "price_range parameter",
 				},
 				"store_code": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "store_code parameter",
 				},
 				"store_location_descriptor": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "store_location_descriptor parameter",
 				},
 				"store_name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "store_name parameter",
 				},
 				"store_number": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "store_number parameter",
-					"required": true,
+					"required":    true,
 				},
 				"temporary_status": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "temporary_status parameter",
-					"enum": []string{ "DIFFERENTLY_OPEN", "NO_DATA", "OPERATING_AS_USUAL", "TEMPORARILY_CLOSED" },
+					"enum":        []string{"DIFFERENTLY_OPEN", "NO_DATA", "OPERATING_AS_USUAL", "TEMPORARILY_CLOSED"},
 				},
 				"website": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "website parameter",
 				},
 			}),
@@ -139,8 +139,6 @@ func HandlePage_post_locations(ctx context.Context, request mcp.CallToolRequest)
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Page_post_locations(accessToken, args)
 	if err != nil {
@@ -159,20 +157,18 @@ func HandlePage_post_locations(ctx context.Context, request mcp.CallToolRequest)
 // Page_post_locations performs POST locations for Page
 func Page_post_locations(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/locations")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

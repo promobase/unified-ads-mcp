@@ -4,15 +4,15 @@ package constants
 
 // ProductCatalogProductSetsBatchFields contains field name constants for ProductCatalogProductSetsBatch objects
 var ProductCatalogProductSetsBatchFields = struct {
-	Errors string
+	Errors           string
 	ErrorsTotalCount string
-	Handle string
-	Status string
+	Handle           string
+	Status           string
 }{
-	Errors: "errors",
+	Errors:           "errors",
 	ErrorsTotalCount: "errors_total_count",
-	Handle: "handle",
-	Status: "status",
+	Handle:           "handle",
+	Status:           "status",
 }
 
 // ProductCatalogProductSetsBatchFieldsList contains all available fields for ProductCatalogProductSetsBatch objects

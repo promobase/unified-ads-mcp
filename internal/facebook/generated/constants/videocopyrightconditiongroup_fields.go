@@ -4,12 +4,12 @@ package constants
 
 // VideoCopyrightConditionGroupFields contains field name constants for VideoCopyrightConditionGroup objects
 var VideoCopyrightConditionGroupFields = struct {
-	Action string
-	Conditions string
+	Action         string
+	Conditions     string
 	ValidityStatus string
 }{
-	Action: "action",
-	Conditions: "conditions",
+	Action:         "action",
+	Conditions:     "conditions",
 	ValidityStatus: "validity_status",
 }
 

@@ -17,7 +17,7 @@ import (
 // ToolAdaccount_get_reachfrequencypredictions returns the MCP tool definition for adaccount_get_reachfrequencypredictions
 func ToolAdaccount_get_reachfrequencypredictions() mcp.Tool {
 	// Available fields for ReachFrequencyPrediction: account_id, activity_status, ad_formats, auction_entry_option_index, audience_size_lower_bound, audience_size_upper_bound, business_id, buying_type, campaign_group_id, campaign_id, campaign_time_start, campaign_time_stop, currency, curve_budget_reach, curve_reach, daily_grp_curve, daily_impression_curve, daily_impression_curve_map, day_parting_schedule, destination_id, end_time, expiration_time, external_budget, external_impression, external_maximum_budget, external_maximum_impression, external_maximum_reach, external_minimum_budget, external_minimum_impression, external_minimum_reach, external_reach, feed_ratio_0000, frequency_cap, frequency_distribution_map, frequency_distribution_map_agg, grp_audience_size, grp_avg_probability_map, grp_country_audience_size, grp_curve, grp_dmas_audience_size, grp_filtering_threshold_00, grp_points, grp_ratio, grp_reach_ratio, grp_status, holdout_percentage, id, impression_curve, instagram_destination_id, instream_packages, interval_frequency_cap, interval_frequency_cap_reset_period, is_balanced_frequency, is_bonus_media, is_conversion_goal, is_higher_average_frequency, is_io, is_reserved_buying, is_trp, name, objective, objective_name, odax_objective, odax_objective_name, optimization_goal, optimization_goal_name, pause_periods, percent_reach_at_target_frequency, placement_breakdown, placement_breakdown_map, plan_name, plan_type, prediction_mode, prediction_progress, reference_id, reservation_status, start_time, status, story_event_type, target_cpm, target_frequency, target_frequency_reset_period, target_spec, time_created, time_updated, timezone_id, timezone_name, topline_id, video_view_length_constraint, viewtag
-	
+
 	return mcp.NewTool("adaccount_get_reachfrequencypredictions",
 		mcp.WithDescription("GET reachfrequencypredictions for AdAccount"),
 		mcp.WithString("account_id",
@@ -82,8 +82,6 @@ func HandleAdaccount_get_reachfrequencypredictions(ctx context.Context, request 
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Adaccount_get_reachfrequencypredictions(accessToken, args)
 	if err != nil {
@@ -102,59 +100,57 @@ func HandleAdaccount_get_reachfrequencypredictions(ctx context.Context, request 
 // Adaccount_get_reachfrequencypredictions performs GET reachfrequencypredictions for AdAccount
 func Adaccount_get_reachfrequencypredictions(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	// Extract account_id for URL construction
 	accountId, ok := args["account_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_get_reachfrequencypredictions")
 	}
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%sreachfrequencypredictions", accountId)
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-		
-	}
 
+	}
 
 	// Make HTTP request
 	var resp *http.Response

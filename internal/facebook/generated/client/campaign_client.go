@@ -21,63 +21,60 @@ func NewCampaignClient(accessToken string) *CampaignClient {
 	}
 }
 
-
 // Campaign_get_ad_studies performs GET ad_studies for Campaign
 func (c *CampaignClient) Campaign_get_ad_studies(args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	// Extract campaign_id for URL construction
 	campaignId, ok := args["campaign_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("campaign_id is required for campaign_get_ad_studies")
 	}
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/%s/ad_studies", campaignId)
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["campaign_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "campaign_id" != "campaign_id" {
 			urlParams.Set("campaign_id", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "fields" != "campaign_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "limit" != "campaign_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "after" != "campaign_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "before" != "campaign_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-		
-	}
 
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -109,39 +106,36 @@ func (c *CampaignClient) Campaign_get_ad_studies(args map[string]interface{}) (i
 	return result, nil
 }
 
-
 // Campaign_post_adlabels performs POST adlabels for Campaign
 func (c *CampaignClient) Campaign_post_adlabels(args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	// Extract campaign_id for URL construction
 	campaignId, ok := args["campaign_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("campaign_id is required for campaign_post_adlabels")
 	}
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/%s/adlabels", campaignId)
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["campaign_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "campaign_id" != "campaign_id" {
 			urlParams.Set("campaign_id", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "params" != "campaign_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-		
-	}
 
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -173,71 +167,68 @@ func (c *CampaignClient) Campaign_post_adlabels(args map[string]interface{}) (in
 	return result, nil
 }
 
-
 // Campaign_get_adrules_governed performs GET adrules_governed for Campaign
 func (c *CampaignClient) Campaign_get_adrules_governed(args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	// Extract campaign_id for URL construction
 	campaignId, ok := args["campaign_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("campaign_id is required for campaign_get_adrules_governed")
 	}
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/%s/adrules_governed", campaignId)
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["campaign_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "campaign_id" != "campaign_id" {
 			urlParams.Set("campaign_id", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "params" != "campaign_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "fields" != "campaign_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "limit" != "campaign_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "after" != "campaign_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "before" != "campaign_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-		
-	}
 
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -269,71 +260,68 @@ func (c *CampaignClient) Campaign_get_adrules_governed(args map[string]interface
 	return result, nil
 }
 
-
 // Campaign_get_ads performs GET ads for Campaign
 func (c *CampaignClient) Campaign_get_ads(args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	// Extract campaign_id for URL construction
 	campaignId, ok := args["campaign_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("campaign_id is required for campaign_get_ads")
 	}
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/%s/ads", campaignId)
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["campaign_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "campaign_id" != "campaign_id" {
 			urlParams.Set("campaign_id", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "params" != "campaign_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "fields" != "campaign_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "limit" != "campaign_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "after" != "campaign_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "before" != "campaign_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-		
-	}
 
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -365,71 +353,68 @@ func (c *CampaignClient) Campaign_get_ads(args map[string]interface{}) (interfac
 	return result, nil
 }
 
-
 // Campaign_get_adsets performs GET adsets for Campaign
 func (c *CampaignClient) Campaign_get_adsets(args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	// Extract campaign_id for URL construction
 	campaignId, ok := args["campaign_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("campaign_id is required for campaign_get_adsets")
 	}
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/%s/adsets", campaignId)
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["campaign_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "campaign_id" != "campaign_id" {
 			urlParams.Set("campaign_id", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "params" != "campaign_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "fields" != "campaign_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "limit" != "campaign_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "after" != "campaign_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "before" != "campaign_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-		
-	}
 
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -461,39 +446,36 @@ func (c *CampaignClient) Campaign_get_adsets(args map[string]interface{}) (inter
 	return result, nil
 }
 
-
 // Campaign_post_budget_schedules performs POST budget_schedules for Campaign
 func (c *CampaignClient) Campaign_post_budget_schedules(args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	// Extract campaign_id for URL construction
 	campaignId, ok := args["campaign_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("campaign_id is required for campaign_post_budget_schedules")
 	}
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/%s/budget_schedules", campaignId)
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["campaign_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "campaign_id" != "campaign_id" {
 			urlParams.Set("campaign_id", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "params" != "campaign_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-		
-	}
 
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -525,71 +507,68 @@ func (c *CampaignClient) Campaign_post_budget_schedules(args map[string]interfac
 	return result, nil
 }
 
-
 // Campaign_get_copies performs GET copies for Campaign
 func (c *CampaignClient) Campaign_get_copies(args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	// Extract campaign_id for URL construction
 	campaignId, ok := args["campaign_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("campaign_id is required for campaign_get_copies")
 	}
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/%s/copies", campaignId)
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["campaign_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "campaign_id" != "campaign_id" {
 			urlParams.Set("campaign_id", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "params" != "campaign_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "fields" != "campaign_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "limit" != "campaign_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "after" != "campaign_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "before" != "campaign_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-		
-	}
 
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -621,39 +600,36 @@ func (c *CampaignClient) Campaign_get_copies(args map[string]interface{}) (inter
 	return result, nil
 }
 
-
 // Campaign_post_copies performs POST copies for Campaign
 func (c *CampaignClient) Campaign_post_copies(args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	// Extract campaign_id for URL construction
 	campaignId, ok := args["campaign_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("campaign_id is required for campaign_post_copies")
 	}
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/%s/copies", campaignId)
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["campaign_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "campaign_id" != "campaign_id" {
 			urlParams.Set("campaign_id", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "params" != "campaign_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-		
-	}
 
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -685,71 +661,68 @@ func (c *CampaignClient) Campaign_post_copies(args map[string]interface{}) (inte
 	return result, nil
 }
 
-
 // Campaign_get_insights performs GET insights for Campaign
 func (c *CampaignClient) Campaign_get_insights(args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	// Extract campaign_id for URL construction
 	campaignId, ok := args["campaign_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("campaign_id is required for campaign_get_insights")
 	}
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/%s/insights", campaignId)
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["campaign_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "campaign_id" != "campaign_id" {
 			urlParams.Set("campaign_id", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "params" != "campaign_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "fields" != "campaign_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "limit" != "campaign_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "after" != "campaign_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "before" != "campaign_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-		
-	}
 
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -781,39 +754,36 @@ func (c *CampaignClient) Campaign_get_insights(args map[string]interface{}) (int
 	return result, nil
 }
 
-
 // Campaign_post_insights performs POST insights for Campaign
 func (c *CampaignClient) Campaign_post_insights(args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	// Extract campaign_id for URL construction
 	campaignId, ok := args["campaign_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("campaign_id is required for campaign_post_insights")
 	}
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/%s/insights", campaignId)
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["campaign_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "campaign_id" != "campaign_id" {
 			urlParams.Set("campaign_id", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "params" != "campaign_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-		
-	}
 
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -845,31 +815,28 @@ func (c *CampaignClient) Campaign_post_insights(args map[string]interface{}) (in
 	return result, nil
 }
 
-
 // Campaign_delete_ performs DELETE  for Campaign
 func (c *CampaignClient) Campaign_delete_(args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	// Extract campaign_id for URL construction
 	campaignId, ok := args["campaign_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("campaign_id is required for campaign_delete_")
 	}
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/%s/", campaignId)
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["campaign_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "campaign_id" != "campaign_id" {
 			urlParams.Set("campaign_id", fmt.Sprintf("%v", val))
 		}
-		
-	}
 
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -901,71 +868,68 @@ func (c *CampaignClient) Campaign_delete_(args map[string]interface{}) (interfac
 	return result, nil
 }
 
-
 // Campaign_get_ performs GET  for Campaign
 func (c *CampaignClient) Campaign_get_(args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	// Extract campaign_id for URL construction
 	campaignId, ok := args["campaign_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("campaign_id is required for campaign_get_")
 	}
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/%s/", campaignId)
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["campaign_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "campaign_id" != "campaign_id" {
 			urlParams.Set("campaign_id", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "params" != "campaign_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "fields" != "campaign_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "limit" != "campaign_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "after" != "campaign_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "before" != "campaign_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-		
-	}
 
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -997,39 +961,36 @@ func (c *CampaignClient) Campaign_get_(args map[string]interface{}) (interface{}
 	return result, nil
 }
 
-
 // Campaign_post_ performs POST  for Campaign
 func (c *CampaignClient) Campaign_post_(args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	// Extract campaign_id for URL construction
 	campaignId, ok := args["campaign_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("campaign_id is required for campaign_post_")
 	}
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/%s/", campaignId)
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["campaign_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "campaign_id" != "campaign_id" {
 			urlParams.Set("campaign_id", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "params" != "campaign_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-		
-	}
 
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -1060,4 +1021,3 @@ func (c *CampaignClient) Campaign_post_(args map[string]interface{}) (interface{
 
 	return result, nil
 }
-

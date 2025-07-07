@@ -4,15 +4,15 @@ package constants
 
 // AndroidAppLinkFields contains field name constants for AndroidAppLink objects
 var AndroidAppLinkFields = struct {
-	AppName string
-	Class string
+	AppName      string
+	Class        string
 	FieldPackage string
-	Url string
+	Url          string
 }{
-	AppName: "app_name",
-	Class: "class",
+	AppName:      "app_name",
+	Class:        "class",
 	FieldPackage: "package",
-	Url: "url",
+	Url:          "url",
 }
 
 // AndroidAppLinkFieldsList contains all available fields for AndroidAppLink objects

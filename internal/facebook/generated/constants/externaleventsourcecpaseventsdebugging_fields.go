@@ -5,24 +5,24 @@ package constants
 // ExternalEventSourceCPASEventsDebuggingFields contains field name constants for ExternalEventSourceCPASEventsDebugging objects
 var ExternalEventSourceCPASEventsDebuggingFields = struct {
 	ActualEventTime string
-	AppVersion string
-	ContentUrl string
-	DeviceOs string
-	Diagnostic string
-	EventName string
-	EventTime string
-	MissingIds string
-	Severity string
+	AppVersion      string
+	ContentUrl      string
+	DeviceOs        string
+	Diagnostic      string
+	EventName       string
+	EventTime       string
+	MissingIds      string
+	Severity        string
 }{
 	ActualEventTime: "actual_event_time",
-	AppVersion: "app_version",
-	ContentUrl: "content_url",
-	DeviceOs: "device_os",
-	Diagnostic: "diagnostic",
-	EventName: "event_name",
-	EventTime: "event_time",
-	MissingIds: "missing_ids",
-	Severity: "severity",
+	AppVersion:      "app_version",
+	ContentUrl:      "content_url",
+	DeviceOs:        "device_os",
+	Diagnostic:      "diagnostic",
+	EventName:       "event_name",
+	EventTime:       "event_time",
+	MissingIds:      "missing_ids",
+	Severity:        "severity",
 }
 
 // ExternalEventSourceCPASEventsDebuggingFieldsList contains all available fields for ExternalEventSourceCPASEventsDebugging objects

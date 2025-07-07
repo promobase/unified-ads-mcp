@@ -17,7 +17,7 @@ import (
 // ToolPaymentsubscription_get_ returns the MCP tool definition for paymentsubscription_get_
 func ToolPaymentsubscription_get_() mcp.Tool {
 	// Available fields for PaymentSubscription: amount, app_param_data, application, billing_period, canceled_reason, created_time, currency, id, last_payment, next_bill_time, next_period_amount, next_period_currency, next_period_product, payment_status, pending_cancel, period_start_time, product, status, test, trial_amount, trial_currency, trial_expiry_time, updated_time, user
-	
+
 	return mcp.NewTool("paymentsubscription_get_",
 		mcp.WithDescription("GET  for PaymentSubscription"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandlePaymentsubscription_get_(ctx context.Context, request mcp.CallToolReq
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Paymentsubscription_get_(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandlePaymentsubscription_get_(ctx context.Context, request mcp.CallToolReq
 // Paymentsubscription_get_ performs GET  for PaymentSubscription
 func Paymentsubscription_get_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

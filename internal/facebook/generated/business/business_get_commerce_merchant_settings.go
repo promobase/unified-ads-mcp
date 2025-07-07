@@ -17,7 +17,7 @@ import (
 // ToolBusiness_get_commerce_merchant_settings returns the MCP tool definition for business_get_commerce_merchant_settings
 func ToolBusiness_get_commerce_merchant_settings() mcp.Tool {
 	// Available fields for CommerceMerchantSettings: checkout_config, checkout_message, contact_email, cta, display_name, facebook_channel, id, instagram_channel, korea_ftc_listing, merchant_page, merchant_status, onsite_commerce_merchant, payment_provider, privacy_policy_localized, return_policy_localized, review_rejection_messages, review_rejection_reasons, terms
-	
+
 	return mcp.NewTool("business_get_commerce_merchant_settings",
 		mcp.WithDescription("GET commerce_merchant_settings for Business"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleBusiness_get_commerce_merchant_settings(ctx context.Context, request 
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Business_get_commerce_merchant_settings(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleBusiness_get_commerce_merchant_settings(ctx context.Context, request 
 // Business_get_commerce_merchant_settings performs GET commerce_merchant_settings for Business
 func Business_get_commerce_merchant_settings(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/commerce_merchant_settings")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

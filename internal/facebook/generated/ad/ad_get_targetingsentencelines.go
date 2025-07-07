@@ -17,7 +17,7 @@ import (
 // ToolAd_get_targetingsentencelines returns the MCP tool definition for ad_get_targetingsentencelines
 func ToolAd_get_targetingsentencelines() mcp.Tool {
 	// Available fields for TargetingSentenceLine: id, params, targetingsentencelines
-	
+
 	return mcp.NewTool("ad_get_targetingsentencelines",
 		mcp.WithDescription("GET targetingsentencelines for Ad"),
 		mcp.WithString("ad_id",
@@ -82,8 +82,6 @@ func HandleAd_get_targetingsentencelines(ctx context.Context, request mcp.CallTo
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Ad_get_targetingsentencelines(accessToken, args)
 	if err != nil {
@@ -102,59 +100,57 @@ func HandleAd_get_targetingsentencelines(ctx context.Context, request mcp.CallTo
 // Ad_get_targetingsentencelines performs GET targetingsentencelines for Ad
 func Ad_get_targetingsentencelines(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	// Extract ad_id for URL construction
 	adId, ok := args["ad_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("ad_id is required for ad_get_targetingsentencelines")
 	}
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/%stargetingsentencelines", adId)
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["ad_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "ad_id" != "ad_id" {
 			urlParams.Set("ad_id", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "fields" != "ad_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "limit" != "ad_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "after" != "ad_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "before" != "ad_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-		
-	}
 
+	}
 
 	// Make HTTP request
 	var resp *http.Response

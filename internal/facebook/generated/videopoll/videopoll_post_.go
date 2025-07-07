@@ -15,7 +15,7 @@ import (
 
 // ToolVideopoll_post_ returns the MCP tool definition for videopoll_post_
 func ToolVideopoll_post_() mcp.Tool {
-	
+
 	// Params object accepts: action (videopoll_action), close_after_voting (bool), default_open (bool), show_gradient (bool), show_results (bool)
 	return mcp.NewTool("videopoll_post_",
 		mcp.WithDescription("POST  for VideoPoll"),
@@ -23,25 +23,25 @@ func ToolVideopoll_post_() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"action": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "action parameter",
-					"required": true,
-					"enum": []string{ "ATTACH_TO_VIDEO", "CLOSE", "DELETE_POLL", "SHOW_RESULTS", "SHOW_VOTING" },
+					"required":    true,
+					"enum":        []string{"ATTACH_TO_VIDEO", "CLOSE", "DELETE_POLL", "SHOW_RESULTS", "SHOW_VOTING"},
 				},
 				"close_after_voting": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "close_after_voting parameter",
 				},
 				"default_open": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "default_open parameter",
 				},
 				"show_gradient": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "show_gradient parameter",
 				},
 				"show_results": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "show_results parameter",
 				},
 			}),
@@ -75,8 +75,6 @@ func HandleVideopoll_post_(ctx context.Context, request mcp.CallToolRequest) (*m
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Videopoll_post_(accessToken, args)
 	if err != nil {
@@ -95,20 +93,18 @@ func HandleVideopoll_post_(ctx context.Context, request mcp.CallToolRequest) (*m
 // Videopoll_post_ performs POST  for VideoPoll
 func Videopoll_post_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

@@ -15,7 +15,7 @@ import (
 
 // ToolApplication_post_app_push_device_token returns the MCP tool definition for application_post_app_push_device_token
 func ToolApplication_post_app_push_device_token() mcp.Tool {
-	
+
 	// Params object accepts: device_id (string), device_token (string), platform (applicationapp_push_device_token_platform_enum_param)
 	return mcp.NewTool("application_post_app_push_device_token",
 		mcp.WithDescription("POST app_push_device_token for Application"),
@@ -23,19 +23,19 @@ func ToolApplication_post_app_push_device_token() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"device_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "device_id parameter",
-					"required": true,
+					"required":    true,
 				},
 				"device_token": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "device_token parameter",
-					"required": true,
+					"required":    true,
 				},
 				"platform": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "platform parameter",
-					"enum": []string{ "ANDROID", "IOS", "UNKNOWN" },
+					"enum":        []string{"ANDROID", "IOS", "UNKNOWN"},
 				},
 			}),
 			mcp.Description("Parameters object containing: device_id (string) [required], device_token (string) [required], platform (enum) [ANDROID, IOS, UNKNOWN]"),
@@ -68,8 +68,6 @@ func HandleApplication_post_app_push_device_token(ctx context.Context, request m
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Application_post_app_push_device_token(accessToken, args)
 	if err != nil {
@@ -88,20 +86,18 @@ func HandleApplication_post_app_push_device_token(ctx context.Context, request m
 // Application_post_app_push_device_token performs POST app_push_device_token for Application
 func Application_post_app_push_device_token(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/app_push_device_token")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

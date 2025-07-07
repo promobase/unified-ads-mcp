@@ -15,14 +15,14 @@ import (
 
 // ToolIguser_post_dataset returns the MCP tool definition for iguser_post_dataset
 func ToolIguser_post_dataset() mcp.Tool {
-	
+
 	// Params object accepts: dataset_name (string)
 	return mcp.NewTool("iguser_post_dataset",
 		mcp.WithDescription("POST dataset for IGUser"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"dataset_name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "dataset_name parameter",
 				},
 			}),
@@ -54,8 +54,6 @@ func HandleIguser_post_dataset(ctx context.Context, request mcp.CallToolRequest)
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Iguser_post_dataset(accessToken, args)
 	if err != nil {
@@ -74,20 +72,18 @@ func HandleIguser_post_dataset(ctx context.Context, request mcp.CallToolRequest)
 // Iguser_post_dataset performs POST dataset for IGUser
 func Iguser_post_dataset(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/dataset")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

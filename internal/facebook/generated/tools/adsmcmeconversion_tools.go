@@ -17,7 +17,6 @@ import (
 func GetAdsMcmeConversionTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// adsmcmeconversion_get_ tool
 	// Available fields for AdsMcmeConversion: creation_time, description, id, is_archived, mcme_conversion_type, name, omnichannel_object_id
 	adsmcmeconversion_get_Tool := mcp.NewTool("adsmcmeconversion_get_",
@@ -37,12 +36,10 @@ func GetAdsMcmeConversionTools() []mcp.Tool {
 	)
 	tools = append(tools, adsmcmeconversion_get_Tool)
 
-
 	return tools
 }
 
 // AdsMcmeConversion handlers
-
 
 // HandleAdsmcmeconversion_get_ handles the adsmcmeconversion_get_ tool with context-based auth
 func HandleAdsmcmeconversion_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleAdsmcmeconversion_get_(ctx context.Context, request mcp.CallToolReque
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adsmcmeconversion_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleAdsmcmeconversion_get_(ctx context.Context, request mcp.CallToolReque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

@@ -15,7 +15,7 @@ import (
 
 // ToolUser_post_accounts returns the MCP tool definition for user_post_accounts
 func ToolUser_post_accounts() mcp.Tool {
-	
+
 	// Params object accepts: about (string), address (string), category (int), category_enum (string), category_list (list<string>), city_id (string), coordinates (Object), cover_photo (Object), description (string), ignore_coordinate_warnings (bool), location (Object), name (string), phone (string), picture (string), website (string), zip (string)
 	return mcp.NewTool("user_post_accounts",
 		mcp.WithDescription("POST accounts for User"),
@@ -23,69 +23,69 @@ func ToolUser_post_accounts() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"about": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "about parameter",
 				},
 				"address": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "address parameter",
 				},
 				"category": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "category parameter",
 				},
 				"category_enum": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "category_enum parameter",
 				},
 				"category_list": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "category_list parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"city_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "city_id parameter",
 				},
 				"coordinates": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "coordinates parameter",
 				},
 				"cover_photo": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "cover_photo parameter",
 				},
 				"description": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "description parameter",
 				},
 				"ignore_coordinate_warnings": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "ignore_coordinate_warnings parameter",
 				},
 				"location": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "location parameter",
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
-					"required": true,
+					"required":    true,
 				},
 				"phone": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "phone parameter",
 				},
 				"picture": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "picture parameter",
 				},
 				"website": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "website parameter",
 				},
 				"zip": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "zip parameter",
 				},
 			}),
@@ -119,8 +119,6 @@ func HandleUser_post_accounts(ctx context.Context, request mcp.CallToolRequest) 
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := User_post_accounts(accessToken, args)
 	if err != nil {
@@ -139,20 +137,18 @@ func HandleUser_post_accounts(ctx context.Context, request mcp.CallToolRequest) 
 // User_post_accounts performs POST accounts for User
 func User_post_accounts(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/accounts")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

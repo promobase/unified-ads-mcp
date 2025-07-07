@@ -15,7 +15,7 @@ import (
 
 // ToolPage_post_video_stories returns the MCP tool definition for page_post_video_stories
 func ToolPage_post_video_stories() mcp.Tool {
-	
+
 	// Params object accepts: description (string), feed_targeting (Object), place (string), scheduled_publish_time (datetime), targeting (Object), title (string), upload_phase (pagevideo_stories_upload_phase_enum_param), video_id (string), video_state (pagevideo_stories_video_state_enum_param)
 	return mcp.NewTool("page_post_video_stories",
 		mcp.WithDescription("POST video_stories for Page"),
@@ -23,43 +23,43 @@ func ToolPage_post_video_stories() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"description": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "description parameter",
 				},
 				"feed_targeting": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "feed_targeting parameter",
 				},
 				"place": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "place parameter",
 				},
 				"scheduled_publish_time": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "scheduled_publish_time parameter",
 				},
 				"targeting": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "targeting parameter",
 				},
 				"title": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "title parameter",
 				},
 				"upload_phase": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "upload_phase parameter",
-					"required": true,
-					"enum": []string{ "FINISH", "START" },
+					"required":    true,
+					"enum":        []string{"FINISH", "START"},
 				},
 				"video_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "video_id parameter",
 				},
 				"video_state": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "video_state parameter",
-					"enum": []string{ "DRAFT", "PUBLISHED", "SCHEDULED" },
+					"enum":        []string{"DRAFT", "PUBLISHED", "SCHEDULED"},
 				},
 			}),
 			mcp.Description("Parameters object containing: description (string), feed_targeting (object), place (string), scheduled_publish_time (datetime), targeting (object), title (string), upload_phase (enum) [FINISH, START] [required], video_id (string), video_state (enum) [DRAFT, PUBLISHED, SCHEDULED]"),
@@ -92,8 +92,6 @@ func HandlePage_post_video_stories(ctx context.Context, request mcp.CallToolRequ
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Page_post_video_stories(accessToken, args)
 	if err != nil {
@@ -112,20 +110,18 @@ func HandlePage_post_video_stories(ctx context.Context, request mcp.CallToolRequ
 // Page_post_video_stories performs POST video_stories for Page
 func Page_post_video_stories(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/video_stories")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

@@ -17,7 +17,6 @@ import (
 func GetVehicleOfferTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// vehicleoffer_get_channels_to_integrity_status tool
 	// Available fields for CatalogItemChannelsToIntegrityStatus: channels, rejection_information
 	vehicleoffer_get_channels_to_integrity_statusTool := mcp.NewTool("vehicleoffer_get_channels_to_integrity_status",
@@ -45,14 +44,14 @@ func GetVehicleOfferTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"keys": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "keys parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "type parameter",
-					"enum": []string{ "COUNTRY", "LANGUAGE", "LANGUAGE_AND_COUNTRY" },
+					"enum":        []string{"COUNTRY", "LANGUAGE", "LANGUAGE_AND_COUNTRY"},
 				},
 			}),
 			mcp.Description("Parameters object containing: keys (array<string>), type (enum) [COUNTRY, LANGUAGE, LANGUAGE_AND_COUNTRY]"),
@@ -110,12 +109,10 @@ func GetVehicleOfferTools() []mcp.Tool {
 	)
 	tools = append(tools, vehicleoffer_get_Tool)
 
-
 	return tools
 }
 
 // VehicleOffer handlers
-
 
 // HandleVehicleoffer_get_channels_to_integrity_status handles the vehicleoffer_get_channels_to_integrity_status tool with context-based auth
 func HandleVehicleoffer_get_channels_to_integrity_status(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -156,8 +153,6 @@ func HandleVehicleoffer_get_channels_to_integrity_status(ctx context.Context, re
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Vehicleoffer_get_channels_to_integrity_status(args)
 	if err != nil {
@@ -172,7 +167,6 @@ func HandleVehicleoffer_get_channels_to_integrity_status(ctx context.Context, re
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleVehicleoffer_get_override_details handles the vehicleoffer_get_override_details tool with context-based auth
 func HandleVehicleoffer_get_override_details(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -225,8 +219,6 @@ func HandleVehicleoffer_get_override_details(ctx context.Context, request mcp.Ca
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Vehicleoffer_get_override_details(args)
 	if err != nil {
@@ -241,7 +233,6 @@ func HandleVehicleoffer_get_override_details(ctx context.Context, request mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleVehicleoffer_get_videos_metadata handles the vehicleoffer_get_videos_metadata tool with context-based auth
 func HandleVehicleoffer_get_videos_metadata(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -282,8 +273,6 @@ func HandleVehicleoffer_get_videos_metadata(ctx context.Context, request mcp.Cal
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Vehicleoffer_get_videos_metadata(args)
 	if err != nil {
@@ -298,7 +287,6 @@ func HandleVehicleoffer_get_videos_metadata(ctx context.Context, request mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleVehicleoffer_get_ handles the vehicleoffer_get_ tool with context-based auth
 func HandleVehicleoffer_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -339,8 +327,6 @@ func HandleVehicleoffer_get_(ctx context.Context, request mcp.CallToolRequest) (
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Vehicleoffer_get_(args)
 	if err != nil {
@@ -355,4 +341,3 @@ func HandleVehicleoffer_get_(ctx context.Context, request mcp.CallToolRequest) (
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

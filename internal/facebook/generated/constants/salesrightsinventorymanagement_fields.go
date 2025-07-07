@@ -4,21 +4,21 @@ package constants
 
 // SalesRightsInventoryManagementFields contains field name constants for SalesRightsInventoryManagement objects
 var SalesRightsInventoryManagementFields = struct {
-	AvailableImpressions string
-	BookedImpressions string
-	OverbookedImpressions string
-	SupportedCountries string
-	TotalImpressions string
+	AvailableImpressions   string
+	BookedImpressions      string
+	OverbookedImpressions  string
+	SupportedCountries     string
+	TotalImpressions       string
 	UnavailableImpressions string
-	WarningMessages string
+	WarningMessages        string
 }{
-	AvailableImpressions: "available_impressions",
-	BookedImpressions: "booked_impressions",
-	OverbookedImpressions: "overbooked_impressions",
-	SupportedCountries: "supported_countries",
-	TotalImpressions: "total_impressions",
+	AvailableImpressions:   "available_impressions",
+	BookedImpressions:      "booked_impressions",
+	OverbookedImpressions:  "overbooked_impressions",
+	SupportedCountries:     "supported_countries",
+	TotalImpressions:       "total_impressions",
 	UnavailableImpressions: "unavailable_impressions",
-	WarningMessages: "warning_messages",
+	WarningMessages:        "warning_messages",
 }
 
 // SalesRightsInventoryManagementFieldsList contains all available fields for SalesRightsInventoryManagement objects

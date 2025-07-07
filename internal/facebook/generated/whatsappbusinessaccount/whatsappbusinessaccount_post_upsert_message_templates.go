@@ -15,7 +15,7 @@ import (
 
 // ToolWhatsappbusinessaccount_post_upsert_message_templates returns the MCP tool definition for whatsappbusinessaccount_post_upsert_message_templates
 func ToolWhatsappbusinessaccount_post_upsert_message_templates() mcp.Tool {
-	
+
 	// Params object accepts: category (whatsappbusinessaccountupsert_message_templates_category_enum_param), components (list<map>), languages (list<string>), message_send_ttl_seconds (unsigned int), name (string)
 	return mcp.NewTool("whatsappbusinessaccount_post_upsert_message_templates",
 		mcp.WithDescription("POST upsert_message_templates for WhatsAppBusinessAccount"),
@@ -23,31 +23,31 @@ func ToolWhatsappbusinessaccount_post_upsert_message_templates() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"category": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "category parameter",
-					"required": true,
-					"enum": []string{ "AUTHENTICATION" },
+					"required":    true,
+					"enum":        []string{"AUTHENTICATION"},
 				},
 				"components": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "components parameter",
-					"required": true,
-					"items": map[string]any{"type": "object"},
+					"required":    true,
+					"items":       map[string]any{"type": "object"},
 				},
 				"languages": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "languages parameter",
-					"required": true,
-					"items": map[string]any{"type": "string"},
+					"required":    true,
+					"items":       map[string]any{"type": "string"},
 				},
 				"message_send_ttl_seconds": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "message_send_ttl_seconds parameter",
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: category (enum) [AUTHENTICATION] [required], components (array<object>) [required], languages (array<string>) [required], message_send_ttl_seconds (integer), name (string) [required]"),
@@ -80,8 +80,6 @@ func HandleWhatsappbusinessaccount_post_upsert_message_templates(ctx context.Con
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Whatsappbusinessaccount_post_upsert_message_templates(accessToken, args)
 	if err != nil {
@@ -100,20 +98,18 @@ func HandleWhatsappbusinessaccount_post_upsert_message_templates(ctx context.Con
 // Whatsappbusinessaccount_post_upsert_message_templates performs POST upsert_message_templates for WhatsAppBusinessAccount
 func Whatsappbusinessaccount_post_upsert_message_templates(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/upsert_message_templates")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

@@ -4,19 +4,19 @@ package constants
 
 // CloudbridgeDatasetStatusFields contains field name constants for CloudbridgeDatasetStatus objects
 var CloudbridgeDatasetStatusFields = struct {
-	AppRedactedEvent string
+	AppRedactedEvent   string
 	AppSensitiveParams string
 	AppUnverifiedEvent string
-	HasAppAssociated string
-	IsAppProhibited string
-	IsDataset string
+	HasAppAssociated   string
+	IsAppProhibited    string
+	IsDataset          string
 }{
-	AppRedactedEvent: "app_redacted_event",
+	AppRedactedEvent:   "app_redacted_event",
 	AppSensitiveParams: "app_sensitive_params",
 	AppUnverifiedEvent: "app_unverified_event",
-	HasAppAssociated: "has_app_associated",
-	IsAppProhibited: "is_app_prohibited",
-	IsDataset: "is_dataset",
+	HasAppAssociated:   "has_app_associated",
+	IsAppProhibited:    "is_app_prohibited",
+	IsDataset:          "is_dataset",
 }
 
 // CloudbridgeDatasetStatusFieldsList contains all available fields for CloudbridgeDatasetStatus objects

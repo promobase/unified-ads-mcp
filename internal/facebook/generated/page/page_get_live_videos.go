@@ -23,15 +23,15 @@ func ToolPage_get_live_videos() mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"broadcast_status": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "broadcast_status parameter",
-					"enum": []string{ "LIVE", "LIVE_STOPPED", "PROCESSING", "SCHEDULED_CANCELED", "SCHEDULED_EXPIRED", "SCHEDULED_LIVE", "SCHEDULED_UNPUBLISHED", "UNPUBLISHED", "VOD" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"LIVE", "LIVE_STOPPED", "PROCESSING", "SCHEDULED_CANCELED", "SCHEDULED_EXPIRED", "SCHEDULED_LIVE", "SCHEDULED_UNPUBLISHED", "UNPUBLISHED", "VOD"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"source": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "source parameter",
-					"enum": []string{ "owner", "target" },
+					"enum":        []string{"owner", "target"},
 				},
 			}),
 			mcp.Description("Parameters object containing: broadcast_status (array<enum>) [LIVE, LIVE_STOPPED, PROCESSING, SCHEDULED_CANCELED, SCHEDULED_EXPIRED, ...], source (enum) [owner, target]"),
@@ -99,8 +99,6 @@ func HandlePage_get_live_videos(ctx context.Context, request mcp.CallToolRequest
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Page_get_live_videos(accessToken, args)
 	if err != nil {
@@ -119,44 +117,42 @@ func HandlePage_get_live_videos(ctx context.Context, request mcp.CallToolRequest
 // Page_get_live_videos performs GET live_videos for Page
 func Page_get_live_videos(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/live_videos")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

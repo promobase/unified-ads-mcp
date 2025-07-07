@@ -4,30 +4,30 @@ package constants
 
 // ChatPluginFields contains field name constants for ChatPlugin objects
 var ChatPluginFields = struct {
-	Alignment string
-	DesktopBottomSpacing string
-	DesktopSideSpacing string
-	EntryPointIcon string
-	EntryPointLabel string
+	Alignment             string
+	DesktopBottomSpacing  string
+	DesktopSideSpacing    string
+	EntryPointIcon        string
+	EntryPointLabel       string
 	GreetingDialogDisplay string
-	GuestChatMode string
-	MobileBottomSpacing string
-	MobileChatDisplay string
-	MobileSideSpacing string
-	ThemeColor string
+	GuestChatMode         string
+	MobileBottomSpacing   string
+	MobileChatDisplay     string
+	MobileSideSpacing     string
+	ThemeColor            string
 	WelcomeScreenGreeting string
 }{
-	Alignment: "alignment",
-	DesktopBottomSpacing: "desktop_bottom_spacing",
-	DesktopSideSpacing: "desktop_side_spacing",
-	EntryPointIcon: "entry_point_icon",
-	EntryPointLabel: "entry_point_label",
+	Alignment:             "alignment",
+	DesktopBottomSpacing:  "desktop_bottom_spacing",
+	DesktopSideSpacing:    "desktop_side_spacing",
+	EntryPointIcon:        "entry_point_icon",
+	EntryPointLabel:       "entry_point_label",
 	GreetingDialogDisplay: "greeting_dialog_display",
-	GuestChatMode: "guest_chat_mode",
-	MobileBottomSpacing: "mobile_bottom_spacing",
-	MobileChatDisplay: "mobile_chat_display",
-	MobileSideSpacing: "mobile_side_spacing",
-	ThemeColor: "theme_color",
+	GuestChatMode:         "guest_chat_mode",
+	MobileBottomSpacing:   "mobile_bottom_spacing",
+	MobileChatDisplay:     "mobile_chat_display",
+	MobileSideSpacing:     "mobile_side_spacing",
+	ThemeColor:            "theme_color",
 	WelcomeScreenGreeting: "welcome_screen_greeting",
 }
 

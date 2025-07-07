@@ -17,7 +17,6 @@ import (
 func GetAdsReportBuilderMMMReportSchedulerTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// adsreportbuildermmmreportscheduler_get_ tool
 	// Available fields for AdsReportBuilderMMMReportScheduler: ad_account_ids, filtering, id, report_name, schedule_frequency
 	adsreportbuildermmmreportscheduler_get_Tool := mcp.NewTool("adsreportbuildermmmreportscheduler_get_",
@@ -37,12 +36,10 @@ func GetAdsReportBuilderMMMReportSchedulerTools() []mcp.Tool {
 	)
 	tools = append(tools, adsreportbuildermmmreportscheduler_get_Tool)
 
-
 	return tools
 }
 
 // AdsReportBuilderMMMReportScheduler handlers
-
 
 // HandleAdsreportbuildermmmreportscheduler_get_ handles the adsreportbuildermmmreportscheduler_get_ tool with context-based auth
 func HandleAdsreportbuildermmmreportscheduler_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleAdsreportbuildermmmreportscheduler_get_(ctx context.Context, request 
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adsreportbuildermmmreportscheduler_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleAdsreportbuildermmmreportscheduler_get_(ctx context.Context, request 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

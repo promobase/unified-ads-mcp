@@ -15,7 +15,7 @@ import (
 
 // ToolAdaccount_post_customaudiences returns the MCP tool definition for adaccount_post_customaudiences
 func ToolAdaccount_post_customaudiences() mcp.Tool {
-	
+
 	// Params object accepts: allowed_domains (list<string>), associated_audience_id (unsigned int), claim_objective (adaccountcustomaudiences_claim_objective_enum_param), content_type (adaccountcustomaudiences_content_type_enum_param), countries (string), creation_params (map), customer_file_source (adaccountcustomaudiences_customer_file_source_enum_param), dataset_id (string), description (string), enable_fetch_or_create (bool), event_source_group (string), event_sources (list<map>), exclusions (list<Object>), facebook_page_id (string), inclusions (list<Object>), is_snapshot (bool), is_value_based (bool), list_of_accounts (list<unsigned int>), lookalike_spec (string), marketing_message_channels (Object), name (string), opt_out_link (string), origin_audience_id (string), parent_audience_id (unsigned int), partner_reference_key (string), pixel_id (string), prefill (bool), product_set_id (string), regulated_audience_spec (string), retention_days (unsigned int), rev_share_policy_id (unsigned int), rule (string), rule_aggregation (string), subscription_info (list<adaccountcustomaudiences_subscription_info_enum_param>), subtype (adaccountcustomaudiences_subtype_enum_param), use_for_products (list<adaccountcustomaudiences_use_for_products_enum_param>), use_in_campaigns (bool), video_group_ids (list<string>), whats_app_business_phone_number_id (string)
 	return mcp.NewTool("adaccount_post_customaudiences",
 		mcp.WithDescription("POST customaudiences for AdAccount"),
@@ -26,173 +26,173 @@ func ToolAdaccount_post_customaudiences() mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"allowed_domains": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "allowed_domains parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"associated_audience_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "associated_audience_id parameter",
 				},
 				"claim_objective": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "claim_objective parameter",
-					"enum": []string{ "AUTOMOTIVE_MODEL", "COLLABORATIVE_ADS", "HOME_LISTING", "MEDIA_TITLE", "PRODUCT", "TRAVEL", "VEHICLE", "VEHICLE_OFFER" },
+					"enum":        []string{"AUTOMOTIVE_MODEL", "COLLABORATIVE_ADS", "HOME_LISTING", "MEDIA_TITLE", "PRODUCT", "TRAVEL", "VEHICLE", "VEHICLE_OFFER"},
 				},
 				"content_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "content_type parameter",
-					"enum": []string{ "AUTOMOTIVE_MODEL", "DESTINATION", "FLIGHT", "GENERIC", "HOME_LISTING", "HOTEL", "LOCAL_SERVICE_BUSINESS", "MEDIA_TITLE", "OFFLINE_PRODUCT", "PRODUCT", "VEHICLE", "VEHICLE_OFFER" },
+					"enum":        []string{"AUTOMOTIVE_MODEL", "DESTINATION", "FLIGHT", "GENERIC", "HOME_LISTING", "HOTEL", "LOCAL_SERVICE_BUSINESS", "MEDIA_TITLE", "OFFLINE_PRODUCT", "PRODUCT", "VEHICLE", "VEHICLE_OFFER"},
 				},
 				"countries": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "countries parameter",
 				},
 				"creation_params": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "creation_params parameter",
 				},
 				"customer_file_source": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "customer_file_source parameter",
-					"enum": []string{ "BOTH_USER_AND_PARTNER_PROVIDED", "PARTNER_PROVIDED_ONLY", "USER_PROVIDED_ONLY" },
+					"enum":        []string{"BOTH_USER_AND_PARTNER_PROVIDED", "PARTNER_PROVIDED_ONLY", "USER_PROVIDED_ONLY"},
 				},
 				"dataset_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "dataset_id parameter",
 				},
 				"description": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "description parameter",
 				},
 				"enable_fetch_or_create": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "enable_fetch_or_create parameter",
 				},
 				"event_source_group": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "event_source_group parameter",
 				},
 				"event_sources": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "event_sources parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"exclusions": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "exclusions parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"facebook_page_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "facebook_page_id parameter",
 				},
 				"inclusions": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "inclusions parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"is_snapshot": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_snapshot parameter",
 				},
 				"is_value_based": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_value_based parameter",
 				},
 				"list_of_accounts": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "list_of_accounts parameter",
-					"items": map[string]any{"type": "integer"},
+					"items":       map[string]any{"type": "integer"},
 				},
 				"lookalike_spec": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "lookalike_spec parameter",
 				},
 				"marketing_message_channels": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "marketing_message_channels parameter",
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
 				},
 				"opt_out_link": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "opt_out_link parameter",
 				},
 				"origin_audience_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "origin_audience_id parameter",
 				},
 				"parent_audience_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "parent_audience_id parameter",
 				},
 				"partner_reference_key": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "partner_reference_key parameter",
 				},
 				"pixel_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "pixel_id parameter",
 				},
 				"prefill": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "prefill parameter",
 				},
 				"product_set_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "product_set_id parameter",
 				},
 				"regulated_audience_spec": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "regulated_audience_spec parameter",
 				},
 				"retention_days": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "retention_days parameter",
 				},
 				"rev_share_policy_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "rev_share_policy_id parameter",
 				},
 				"rule": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "rule parameter",
 				},
 				"rule_aggregation": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "rule_aggregation parameter",
 				},
 				"subscription_info": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "subscription_info parameter",
-					"enum": []string{ "MESSENGER", "WHATSAPP" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"MESSENGER", "WHATSAPP"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"subtype": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "subtype parameter",
-					"enum": []string{ "APP", "BAG_OF_ACCOUNTS", "BIDDING", "CLAIM", "CUSTOM", "ENGAGEMENT", "EXCLUSION", "FOX", "LOOKALIKE", "MANAGED", "MEASUREMENT", "MESSENGER_SUBSCRIBER_LIST", "OFFLINE_CONVERSION", "PARTNER", "PRIMARY", "REGULATED_CATEGORIES_AUDIENCE", "STUDY_RULE_AUDIENCE", "VIDEO", "WEBSITE" },
+					"enum":        []string{"APP", "BAG_OF_ACCOUNTS", "BIDDING", "CLAIM", "CUSTOM", "ENGAGEMENT", "EXCLUSION", "FOX", "LOOKALIKE", "MANAGED", "MEASUREMENT", "MESSENGER_SUBSCRIBER_LIST", "OFFLINE_CONVERSION", "PARTNER", "PRIMARY", "REGULATED_CATEGORIES_AUDIENCE", "STUDY_RULE_AUDIENCE", "VIDEO", "WEBSITE"},
 				},
 				"use_for_products": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "use_for_products parameter",
-					"enum": []string{ "ADS", "MARKETING_MESSAGES" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"ADS", "MARKETING_MESSAGES"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"use_in_campaigns": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "use_in_campaigns parameter",
 				},
 				"video_group_ids": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "video_group_ids parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"whats_app_business_phone_number_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "whats_app_business_phone_number_id parameter",
 				},
 			}),
@@ -231,8 +231,6 @@ func HandleAdaccount_post_customaudiences(ctx context.Context, request mcp.CallT
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Adaccount_post_customaudiences(accessToken, args)
 	if err != nil {
@@ -251,35 +249,33 @@ func HandleAdaccount_post_customaudiences(ctx context.Context, request mcp.CallT
 // Adaccount_post_customaudiences performs POST customaudiences for AdAccount
 func Adaccount_post_customaudiences(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	// Extract account_id for URL construction
 	accountId, ok := args["account_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_post_customaudiences")
 	}
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%scustomaudiences", accountId)
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-		
-	}
 
+	}
 
 	// Make HTTP request
 	var resp *http.Response

@@ -4,25 +4,25 @@ package constants
 
 // ManagementSiteLinkFields contains field name constants for ManagementSiteLink objects
 var ManagementSiteLinkFields = struct {
-	AdAccountId string
-	Id string
-	LinkDomain string
-	LinkHash string
+	AdAccountId   string
+	Id            string
+	LinkDomain    string
+	LinkHash      string
 	LinkImageHash string
-	LinkImageUrl string
-	LinkTitle string
-	LinkType string
-	LinkUrl string
+	LinkImageUrl  string
+	LinkTitle     string
+	LinkType      string
+	LinkUrl       string
 }{
-	AdAccountId: "ad_account_id",
-	Id: "id",
-	LinkDomain: "link_domain",
-	LinkHash: "link_hash",
+	AdAccountId:   "ad_account_id",
+	Id:            "id",
+	LinkDomain:    "link_domain",
+	LinkHash:      "link_hash",
 	LinkImageHash: "link_image_hash",
-	LinkImageUrl: "link_image_url",
-	LinkTitle: "link_title",
-	LinkType: "link_type",
-	LinkUrl: "link_url",
+	LinkImageUrl:  "link_image_url",
+	LinkTitle:     "link_title",
+	LinkType:      "link_type",
+	LinkUrl:       "link_url",
 }
 
 // ManagementSiteLinkFieldsList contains all available fields for ManagementSiteLink objects

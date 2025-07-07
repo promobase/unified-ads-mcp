@@ -15,7 +15,7 @@ import (
 
 // ToolAdcreative_delete_ returns the MCP tool definition for adcreative_delete_
 func ToolAdcreative_delete_() mcp.Tool {
-	
+
 	// Params object accepts: account_id (string), adlabels (list<Object>), name (string), status (adcreative_status)
 	return mcp.NewTool("adcreative_delete_",
 		mcp.WithDescription("DELETE  for AdCreative"),
@@ -26,22 +26,22 @@ func ToolAdcreative_delete_() mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"account_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "account_id parameter",
 				},
 				"adlabels": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "adlabels parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
 				},
 				"status": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "status parameter",
-					"enum": []string{ "ACTIVE", "DELETED", "IN_PROCESS", "WITH_ISSUES" },
+					"enum":        []string{"ACTIVE", "DELETED", "IN_PROCESS", "WITH_ISSUES"},
 				},
 			}),
 			mcp.Description("Parameters object containing: account_id (string), adlabels (array<object>), name (string), status (adcreative_status) [ACTIVE, DELETED, IN_PROCESS, WITH_ISSUES]"),
@@ -79,8 +79,6 @@ func HandleAdcreative_delete_(ctx context.Context, request mcp.CallToolRequest) 
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Adcreative_delete_(accessToken, args)
 	if err != nil {
@@ -99,35 +97,33 @@ func HandleAdcreative_delete_(ctx context.Context, request mcp.CallToolRequest) 
 // Adcreative_delete_ performs DELETE  for AdCreative
 func Adcreative_delete_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	// Extract ad_creative_id for URL construction
 	adCreativeId, ok := args["ad_creative_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("ad_creative_id is required for adcreative_delete_")
 	}
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/%s", adCreativeId)
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["ad_creative_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "ad_creative_id" != "ad_creative_id" {
 			urlParams.Set("ad_creative_id", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "params" != "ad_creative_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-		
-	}
 
+	}
 
 	// Make HTTP request
 	var resp *http.Response

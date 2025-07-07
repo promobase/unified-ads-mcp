@@ -17,7 +17,6 @@ import (
 func GetReachFrequencyPredictionTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// reachfrequencyprediction_get_ tool
 	// Available fields for ReachFrequencyPrediction: account_id, activity_status, ad_formats, auction_entry_option_index, audience_size_lower_bound, audience_size_upper_bound, business_id, buying_type, campaign_group_id, campaign_id, campaign_time_start, campaign_time_stop, currency, curve_budget_reach, curve_reach, daily_grp_curve, daily_impression_curve, daily_impression_curve_map, day_parting_schedule, destination_id, end_time, expiration_time, external_budget, external_impression, external_maximum_budget, external_maximum_impression, external_maximum_reach, external_minimum_budget, external_minimum_impression, external_minimum_reach, external_reach, feed_ratio_0000, frequency_cap, frequency_distribution_map, frequency_distribution_map_agg, grp_audience_size, grp_avg_probability_map, grp_country_audience_size, grp_curve, grp_dmas_audience_size, grp_filtering_threshold_00, grp_points, grp_ratio, grp_reach_ratio, grp_status, holdout_percentage, id, impression_curve, instagram_destination_id, instream_packages, interval_frequency_cap, interval_frequency_cap_reset_period, is_balanced_frequency, is_bonus_media, is_conversion_goal, is_higher_average_frequency, is_io, is_reserved_buying, is_trp, name, objective, objective_name, odax_objective, odax_objective_name, optimization_goal, optimization_goal_name, pause_periods, percent_reach_at_target_frequency, placement_breakdown, placement_breakdown_map, plan_name, plan_type, prediction_mode, prediction_progress, reference_id, reservation_status, start_time, status, story_event_type, target_cpm, target_frequency, target_frequency_reset_period, target_spec, time_created, time_updated, timezone_id, timezone_name, topline_id, video_view_length_constraint, viewtag
 	reachfrequencyprediction_get_Tool := mcp.NewTool("reachfrequencyprediction_get_",
@@ -37,12 +36,10 @@ func GetReachFrequencyPredictionTools() []mcp.Tool {
 	)
 	tools = append(tools, reachfrequencyprediction_get_Tool)
 
-
 	return tools
 }
 
 // ReachFrequencyPrediction handlers
-
 
 // HandleReachfrequencyprediction_get_ handles the reachfrequencyprediction_get_ tool with context-based auth
 func HandleReachfrequencyprediction_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleReachfrequencyprediction_get_(ctx context.Context, request mcp.CallTo
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Reachfrequencyprediction_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleReachfrequencyprediction_get_(ctx context.Context, request mcp.CallTo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

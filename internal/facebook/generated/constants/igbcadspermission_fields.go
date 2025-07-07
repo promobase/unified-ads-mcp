@@ -4,13 +4,13 @@ package constants
 
 // IGBCAdsPermissionFields contains field name constants for IGBCAdsPermission objects
 var IGBCAdsPermissionFields = struct {
-	Id string
+	Id             string
 	PermissionType string
-	Status string
+	Status         string
 }{
-	Id: "id",
+	Id:             "id",
 	PermissionType: "permission_type",
-	Status: "status",
+	Status:         "status",
 }
 
 // IGBCAdsPermissionFieldsList contains all available fields for IGBCAdsPermission objects

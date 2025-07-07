@@ -4,12 +4,12 @@ package constants
 
 // SplitTestWinnerFields contains field name constants for SplitTestWinner objects
 var SplitTestWinnerFields = struct {
-	AdObjectLevel string
-	Confidences string
+	AdObjectLevel    string
+	Confidences      string
 	WinnerAdObjectId string
 }{
-	AdObjectLevel: "ad_object_level",
-	Confidences: "confidences",
+	AdObjectLevel:    "ad_object_level",
+	Confidences:      "confidences",
 	WinnerAdObjectId: "winner_ad_object_id",
 }
 

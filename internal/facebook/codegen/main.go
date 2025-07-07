@@ -589,7 +589,7 @@ func GetAllTools() []mcp.Tool {
 func GetFilteredTools(enabledObjects map[string]bool) []mcp.Tool {
 	var tools []mcp.Tool
 
-{{range .NodeTypes}}	if enabled, ok := enabledObjects["{{.}}"]; !ok || enabled {
+{{range .NodeTypes}}	if enabled, ok := enabledObjects["{{.}}"]; ok && enabled {
 		tools = append(tools, {{. | lower}}.GetTools()...)
 	}
 {{end}}

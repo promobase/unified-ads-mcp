@@ -4,16 +4,16 @@ package constants
 
 // OwnedDomainFields contains field name constants for OwnedDomain objects
 var OwnedDomainFields = struct {
-	DomainName string
-	Id string
-	OwnerBusiness string
-	Status string
+	DomainName       string
+	Id               string
+	OwnerBusiness    string
+	Status           string
 	VerificationCode string
 }{
-	DomainName: "domain_name",
-	Id: "id",
-	OwnerBusiness: "owner_business",
-	Status: "status",
+	DomainName:       "domain_name",
+	Id:               "id",
+	OwnerBusiness:    "owner_business",
+	Status:           "status",
 	VerificationCode: "verification_code",
 }
 

@@ -19,7 +19,6 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolIgmediaforigonlyapi_get_())
 	tools = append(tools, ToolIgmediaforigonlyapi_post_())
 
-
 	return tools
 }
 
@@ -33,7 +32,6 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers["igmediaforigonlyapi_get_insights"] = HandleIgmediaforigonlyapi_get_insights
 	handlers["igmediaforigonlyapi_get_"] = HandleIgmediaforigonlyapi_get_
 	handlers["igmediaforigonlyapi_post_"] = HandleIgmediaforigonlyapi_post_
-
 
 	return handlers
 }

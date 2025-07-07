@@ -4,10 +4,10 @@ package constants
 
 // PageStartInfoFields contains field name constants for PageStartInfo objects
 var PageStartInfoFields = struct {
-	Date string
+	Date      string
 	FieldType string
 }{
-	Date: "date",
+	Date:      "date",
 	FieldType: "type",
 }
 

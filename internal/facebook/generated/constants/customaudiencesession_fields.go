@@ -4,23 +4,23 @@ package constants
 
 // CustomAudienceSessionFields contains field name constants for CustomAudienceSession objects
 var CustomAudienceSessionFields = struct {
-	EndTime string
+	EndTime           string
 	NumInvalidEntries string
-	NumMatched string
-	NumReceived string
-	Progress string
-	SessionId string
-	Stage string
-	StartTime string
+	NumMatched        string
+	NumReceived       string
+	Progress          string
+	SessionId         string
+	Stage             string
+	StartTime         string
 }{
-	EndTime: "end_time",
+	EndTime:           "end_time",
 	NumInvalidEntries: "num_invalid_entries",
-	NumMatched: "num_matched",
-	NumReceived: "num_received",
-	Progress: "progress",
-	SessionId: "session_id",
-	Stage: "stage",
-	StartTime: "start_time",
+	NumMatched:        "num_matched",
+	NumReceived:       "num_received",
+	Progress:          "progress",
+	SessionId:         "session_id",
+	Stage:             "stage",
+	StartTime:         "start_time",
 }
 
 // CustomAudienceSessionFieldsList contains all available fields for CustomAudienceSession objects

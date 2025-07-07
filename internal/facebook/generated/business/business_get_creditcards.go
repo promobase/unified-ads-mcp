@@ -17,7 +17,7 @@ import (
 // ToolBusiness_get_creditcards returns the MCP tool definition for business_get_creditcards
 func ToolBusiness_get_creditcards() mcp.Tool {
 	// Available fields for CreditCard: billing_address, card_cobadging, card_holder_name, card_type, credential_id, default_receiving_method_products, expiry_month, expiry_year, id, is_cvv_tricky_bin, is_enabled, is_last_used, is_network_tokenized_in_india, is_soft_disabled, is_user_verified, is_zip_verified, last4, readable_card_type, time_created, time_created_ts, type
-	
+
 	return mcp.NewTool("business_get_creditcards",
 		mcp.WithDescription("GET creditcards for Business"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleBusiness_get_creditcards(ctx context.Context, request mcp.CallToolReq
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Business_get_creditcards(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleBusiness_get_creditcards(ctx context.Context, request mcp.CallToolReq
 // Business_get_creditcards performs GET creditcards for Business
 func Business_get_creditcards(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/creditcards")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

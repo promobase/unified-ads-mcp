@@ -4,13 +4,13 @@ package constants
 
 // CPASSetupPageStructureProgressFields contains field name constants for CPASSetupPageStructureProgress objects
 var CPASSetupPageStructureProgressFields = struct {
-	Id string
+	Id     string
 	Issues string
-	Name string
+	Name   string
 }{
-	Id: "id",
+	Id:     "id",
 	Issues: "issues",
-	Name: "name",
+	Name:   "name",
 }
 
 // CPASSetupPageStructureProgressFieldsList contains all available fields for CPASSetupPageStructureProgress objects

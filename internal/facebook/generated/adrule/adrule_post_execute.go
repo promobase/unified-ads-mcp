@@ -15,8 +15,7 @@ import (
 
 // ToolAdrule_post_execute returns the MCP tool definition for adrule_post_execute
 func ToolAdrule_post_execute() mcp.Tool {
-	
-	
+
 	return mcp.NewTool("adrule_post_execute",
 		mcp.WithDescription("POST execute for AdRule"),
 	)
@@ -32,8 +31,6 @@ func HandleAdrule_post_execute(ctx context.Context, request mcp.CallToolRequest)
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the API method
 	result, err := Adrule_post_execute(accessToken, args)
@@ -53,14 +50,11 @@ func HandleAdrule_post_execute(ctx context.Context, request mcp.CallToolRequest)
 // Adrule_post_execute performs POST execute for AdRule
 func Adrule_post_execute(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/execute")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response

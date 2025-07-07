@@ -17,7 +17,7 @@ import (
 // ToolAdcreative_get_creative_insights returns the MCP tool definition for adcreative_get_creative_insights
 func ToolAdcreative_get_creative_insights() mcp.Tool {
 	// Available fields for AdCreativeInsights: aesthetics
-	
+
 	return mcp.NewTool("adcreative_get_creative_insights",
 		mcp.WithDescription("GET creative_insights for AdCreative"),
 		mcp.WithString("ad_creative_id",
@@ -82,8 +82,6 @@ func HandleAdcreative_get_creative_insights(ctx context.Context, request mcp.Cal
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Adcreative_get_creative_insights(accessToken, args)
 	if err != nil {
@@ -102,59 +100,57 @@ func HandleAdcreative_get_creative_insights(ctx context.Context, request mcp.Cal
 // Adcreative_get_creative_insights performs GET creative_insights for AdCreative
 func Adcreative_get_creative_insights(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	// Extract ad_creative_id for URL construction
 	adCreativeId, ok := args["ad_creative_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("ad_creative_id is required for adcreative_get_creative_insights")
 	}
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/%screative_insights", adCreativeId)
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["ad_creative_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "ad_creative_id" != "ad_creative_id" {
 			urlParams.Set("ad_creative_id", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "fields" != "ad_creative_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "limit" != "ad_creative_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "after" != "ad_creative_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "before" != "ad_creative_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-		
-	}
 
+	}
 
 	// Make HTTP request
 	var resp *http.Response

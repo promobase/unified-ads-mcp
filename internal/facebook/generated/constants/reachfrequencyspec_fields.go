@@ -4,23 +4,23 @@ package constants
 
 // ReachFrequencySpecFields contains field name constants for ReachFrequencySpec objects
 var ReachFrequencySpecFields = struct {
-	Countries string
-	DefaultCreationData string
-	GlobalIoMaxCampaignDuration string
-	MaxCampaignDuration string
-	MaxDaysToFinish string
+	Countries                      string
+	DefaultCreationData            string
+	GlobalIoMaxCampaignDuration    string
+	MaxCampaignDuration            string
+	MaxDaysToFinish                string
 	MaxPauseWithoutPredictionRerun string
-	MinCampaignDuration string
-	MinReachLimits string
+	MinCampaignDuration            string
+	MinReachLimits                 string
 }{
-	Countries: "countries",
-	DefaultCreationData: "default_creation_data",
-	GlobalIoMaxCampaignDuration: "global_io_max_campaign_duration",
-	MaxCampaignDuration: "max_campaign_duration",
-	MaxDaysToFinish: "max_days_to_finish",
+	Countries:                      "countries",
+	DefaultCreationData:            "default_creation_data",
+	GlobalIoMaxCampaignDuration:    "global_io_max_campaign_duration",
+	MaxCampaignDuration:            "max_campaign_duration",
+	MaxDaysToFinish:                "max_days_to_finish",
 	MaxPauseWithoutPredictionRerun: "max_pause_without_prediction_rerun",
-	MinCampaignDuration: "min_campaign_duration",
-	MinReachLimits: "min_reach_limits",
+	MinCampaignDuration:            "min_campaign_duration",
+	MinReachLimits:                 "min_reach_limits",
 }
 
 // ReachFrequencySpecFieldsList contains all available fields for ReachFrequencySpec objects

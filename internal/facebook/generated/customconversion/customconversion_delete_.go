@@ -15,8 +15,7 @@ import (
 
 // ToolCustomconversion_delete_ returns the MCP tool definition for customconversion_delete_
 func ToolCustomconversion_delete_() mcp.Tool {
-	
-	
+
 	return mcp.NewTool("customconversion_delete_",
 		mcp.WithDescription("DELETE  for CustomConversion"),
 	)
@@ -32,8 +31,6 @@ func HandleCustomconversion_delete_(ctx context.Context, request mcp.CallToolReq
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the API method
 	result, err := Customconversion_delete_(accessToken, args)
@@ -53,14 +50,11 @@ func HandleCustomconversion_delete_(ctx context.Context, request mcp.CallToolReq
 // Customconversion_delete_ performs DELETE  for CustomConversion
 func Customconversion_delete_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response

@@ -6,6 +6,6 @@ import "time"
 
 // WorkAccessCode represents a Facebook WorkAccessCode object
 type WorkAccessCode struct {
-	Code string `json:"code"`
+	Code            string    `json:"code"`
 	Expiration_time time.Time `json:"expiration_time"`
 }

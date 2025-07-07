@@ -17,7 +17,6 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolDestination_get_videos_metadata())
 	tools = append(tools, ToolDestination_get_())
 
-
 	return tools
 }
 
@@ -29,7 +28,6 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers["destination_get_override_details"] = HandleDestination_get_override_details
 	handlers["destination_get_videos_metadata"] = HandleDestination_get_videos_metadata
 	handlers["destination_get_"] = HandleDestination_get_
-
 
 	return handlers
 }

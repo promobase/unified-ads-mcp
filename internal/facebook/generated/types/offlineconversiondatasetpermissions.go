@@ -4,8 +4,8 @@ package types
 
 // OfflineConversionDataSetPermissions represents a Facebook OfflineConversionDataSetPermissions object
 type OfflineConversionDataSetPermissions struct {
-	Can_edit bool `json:"can_edit"`
-	Can_edit_or_upload bool `json:"can_edit_or_upload"`
-	Can_upload bool `json:"can_upload"`
+	Can_edit                                      bool `json:"can_edit"`
+	Can_edit_or_upload                            bool `json:"can_edit_or_upload"`
+	Can_upload                                    bool `json:"can_upload"`
 	Should_block_vanilla_business_employee_access bool `json:"should_block_vanilla_business_employee_access"`
 }

@@ -4,29 +4,29 @@ package constants
 
 // ProfileFields contains field name constants for Profile objects
 var ProfileFields = struct {
-	CanPost string
-	Id string
-	Link string
-	Name string
-	Pic string
-	PicCrop string
-	PicLarge string
-	PicSmall string
-	PicSquare string
+	CanPost     string
+	Id          string
+	Link        string
+	Name        string
+	Pic         string
+	PicCrop     string
+	PicLarge    string
+	PicSmall    string
+	PicSquare   string
 	ProfileType string
-	Username string
+	Username    string
 }{
-	CanPost: "can_post",
-	Id: "id",
-	Link: "link",
-	Name: "name",
-	Pic: "pic",
-	PicCrop: "pic_crop",
-	PicLarge: "pic_large",
-	PicSmall: "pic_small",
-	PicSquare: "pic_square",
+	CanPost:     "can_post",
+	Id:          "id",
+	Link:        "link",
+	Name:        "name",
+	Pic:         "pic",
+	PicCrop:     "pic_crop",
+	PicLarge:    "pic_large",
+	PicSmall:    "pic_small",
+	PicSquare:   "pic_square",
 	ProfileType: "profile_type",
-	Username: "username",
+	Username:    "username",
 }
 
 // ProfileFieldsList contains all available fields for Profile objects

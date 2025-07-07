@@ -4,17 +4,17 @@ package constants
 
 // IGShoppingProductAppealFields contains field name constants for IGShoppingProductAppeal objects
 var IGShoppingProductAppealFields = struct {
-	EligibleForAppeal string
+	EligibleForAppeal   string
 	ProductAppealStatus string
-	ProductId string
-	RejectionReasons string
-	ReviewStatus string
+	ProductId           string
+	RejectionReasons    string
+	ReviewStatus        string
 }{
-	EligibleForAppeal: "eligible_for_appeal",
+	EligibleForAppeal:   "eligible_for_appeal",
 	ProductAppealStatus: "product_appeal_status",
-	ProductId: "product_id",
-	RejectionReasons: "rejection_reasons",
-	ReviewStatus: "review_status",
+	ProductId:           "product_id",
+	RejectionReasons:    "rejection_reasons",
+	ReviewStatus:        "review_status",
 }
 
 // IGShoppingProductAppealFieldsList contains all available fields for IGShoppingProductAppeal objects

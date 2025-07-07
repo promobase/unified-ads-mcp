@@ -4,23 +4,23 @@ package constants
 
 // HighDemandPeriodFields contains field name constants for HighDemandPeriod objects
 var HighDemandPeriodFields = struct {
-	AdObjectId string
-	BudgetValue string
+	AdObjectId      string
+	BudgetValue     string
 	BudgetValueType string
-	Id string
-	RecurrenceType string
-	TimeEnd string
-	TimeStart string
-	WeeklySchedule string
+	Id              string
+	RecurrenceType  string
+	TimeEnd         string
+	TimeStart       string
+	WeeklySchedule  string
 }{
-	AdObjectId: "ad_object_id",
-	BudgetValue: "budget_value",
+	AdObjectId:      "ad_object_id",
+	BudgetValue:     "budget_value",
 	BudgetValueType: "budget_value_type",
-	Id: "id",
-	RecurrenceType: "recurrence_type",
-	TimeEnd: "time_end",
-	TimeStart: "time_start",
-	WeeklySchedule: "weekly_schedule",
+	Id:              "id",
+	RecurrenceType:  "recurrence_type",
+	TimeEnd:         "time_end",
+	TimeStart:       "time_start",
+	WeeklySchedule:  "weekly_schedule",
 }
 
 // HighDemandPeriodFieldsList contains all available fields for HighDemandPeriod objects

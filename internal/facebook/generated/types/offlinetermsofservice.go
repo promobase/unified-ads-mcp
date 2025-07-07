@@ -4,7 +4,7 @@ package types
 
 // OfflineTermsOfService represents a Facebook OfflineTermsOfService object
 type OfflineTermsOfService struct {
-	Accept_time int `json:"accept_time"`
-	Id string `json:"id"`
-	Signed_by_user *User `json:"signed_by_user"`
+	Accept_time    int    `json:"accept_time"`
+	Id             string `json:"id"`
+	Signed_by_user *User  `json:"signed_by_user"`
 }

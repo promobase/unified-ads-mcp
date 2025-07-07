@@ -4,20 +4,20 @@ package types
 
 // AdReportRun represents a Facebook AdReportRun object
 type AdReportRun struct {
-	Account_id string `json:"account_id"`
-	Async_percent_completion int `json:"async_percent_completion"`
-	Async_report_url string `json:"async_report_url"`
-	Async_status string `json:"async_status"`
-	Date_start string `json:"date_start"`
-	Date_stop string `json:"date_stop"`
-	Emails []string `json:"emails"`
-	Error_code int `json:"error_code"`
-	Friendly_name string `json:"friendly_name"`
-	Id string `json:"id"`
-	Is_async_export int `json:"is_async_export"`
-	Is_bookmarked bool `json:"is_bookmarked"`
-	Is_running bool `json:"is_running"`
-	Schedule_id string `json:"schedule_id"`
-	Time_completed int `json:"time_completed"`
-	Time_ref int `json:"time_ref"`
+	Account_id               string   `json:"account_id"`
+	Async_percent_completion int      `json:"async_percent_completion"`
+	Async_report_url         string   `json:"async_report_url"`
+	Async_status             string   `json:"async_status"`
+	Date_start               string   `json:"date_start"`
+	Date_stop                string   `json:"date_stop"`
+	Emails                   []string `json:"emails"`
+	Error_code               int      `json:"error_code"`
+	Friendly_name            string   `json:"friendly_name"`
+	Id                       string   `json:"id"`
+	Is_async_export          int      `json:"is_async_export"`
+	Is_bookmarked            bool     `json:"is_bookmarked"`
+	Is_running               bool     `json:"is_running"`
+	Schedule_id              string   `json:"schedule_id"`
+	Time_completed           int      `json:"time_completed"`
+	Time_ref                 int      `json:"time_ref"`
 }

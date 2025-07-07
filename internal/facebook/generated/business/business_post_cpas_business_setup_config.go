@@ -15,27 +15,27 @@ import (
 
 // ToolBusiness_post_cpas_business_setup_config returns the MCP tool definition for business_post_cpas_business_setup_config
 func ToolBusiness_post_cpas_business_setup_config() mcp.Tool {
-	
+
 	// Params object accepts: accepted_collab_ads_tos (bool), ad_accounts (list<string>), business_capabilities_status (map), capabilities_compliance_status (map)
 	return mcp.NewTool("business_post_cpas_business_setup_config",
 		mcp.WithDescription("POST cpas_business_setup_config for Business"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"accepted_collab_ads_tos": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "accepted_collab_ads_tos parameter",
 				},
 				"ad_accounts": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "ad_accounts parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"business_capabilities_status": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "business_capabilities_status parameter",
 				},
 				"capabilities_compliance_status": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "capabilities_compliance_status parameter",
 				},
 			}),
@@ -67,8 +67,6 @@ func HandleBusiness_post_cpas_business_setup_config(ctx context.Context, request
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Business_post_cpas_business_setup_config(accessToken, args)
 	if err != nil {
@@ -87,20 +85,18 @@ func HandleBusiness_post_cpas_business_setup_config(ctx context.Context, request
 // Business_post_cpas_business_setup_config performs POST cpas_business_setup_config for Business
 func Business_post_cpas_business_setup_config(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/cpas_business_setup_config")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

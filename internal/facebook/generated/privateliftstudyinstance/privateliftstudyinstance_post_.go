@@ -15,19 +15,19 @@ import (
 
 // ToolPrivateliftstudyinstance_post_ returns the MCP tool definition for privateliftstudyinstance_post_
 func ToolPrivateliftstudyinstance_post_() mcp.Tool {
-	
+
 	// Params object accepts: operation (privateliftstudyinstance_operation), run_id (string)
 	return mcp.NewTool("privateliftstudyinstance_post_",
 		mcp.WithDescription("POST  for PrivateLiftStudyInstance"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"operation": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "operation parameter",
-					"enum": []string{ "AGGREGATE", "CANCEL", "COMPUTE", "ID_MATCH", "NEXT", "NONE" },
+					"enum":        []string{"AGGREGATE", "CANCEL", "COMPUTE", "ID_MATCH", "NEXT", "NONE"},
 				},
 				"run_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "run_id parameter",
 				},
 			}),
@@ -59,8 +59,6 @@ func HandlePrivateliftstudyinstance_post_(ctx context.Context, request mcp.CallT
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Privateliftstudyinstance_post_(accessToken, args)
 	if err != nil {
@@ -79,20 +77,18 @@ func HandlePrivateliftstudyinstance_post_(ctx context.Context, request mcp.CallT
 // Privateliftstudyinstance_post_ performs POST  for PrivateLiftStudyInstance
 func Privateliftstudyinstance_post_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

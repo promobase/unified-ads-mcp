@@ -5,12 +5,12 @@ package constants
 // MCExperienceConfigForApiFields contains field name constants for MCExperienceConfigForApi objects
 var MCExperienceConfigForApiFields = struct {
 	IsCampaignEnabled string
-	IsTermsSigned string
-	MerchantType string
+	IsTermsSigned     string
+	MerchantType      string
 }{
 	IsCampaignEnabled: "is_campaign_enabled",
-	IsTermsSigned: "is_terms_signed",
-	MerchantType: "merchant_type",
+	IsTermsSigned:     "is_terms_signed",
+	MerchantType:      "merchant_type",
 }
 
 // MCExperienceConfigForApiFieldsList contains all available fields for MCExperienceConfigForApi objects

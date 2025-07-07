@@ -5,24 +5,24 @@ package constants
 // AdAsyncRequestFields contains field name constants for AdAsyncRequest objects
 var AdAsyncRequestFields = struct {
 	AsyncRequestSet string
-	CreatedTime string
-	Id string
-	Input string
-	Result string
-	ScopeObjectId string
-	Status string
-	FieldType string
-	UpdatedTime string
+	CreatedTime     string
+	Id              string
+	Input           string
+	Result          string
+	ScopeObjectId   string
+	Status          string
+	FieldType       string
+	UpdatedTime     string
 }{
 	AsyncRequestSet: "async_request_set",
-	CreatedTime: "created_time",
-	Id: "id",
-	Input: "input",
-	Result: "result",
-	ScopeObjectId: "scope_object_id",
-	Status: "status",
-	FieldType: "type",
-	UpdatedTime: "updated_time",
+	CreatedTime:     "created_time",
+	Id:              "id",
+	Input:           "input",
+	Result:          "result",
+	ScopeObjectId:   "scope_object_id",
+	Status:          "status",
+	FieldType:       "type",
+	UpdatedTime:     "updated_time",
 }
 
 // AdAsyncRequestFieldsList contains all available fields for AdAsyncRequest objects

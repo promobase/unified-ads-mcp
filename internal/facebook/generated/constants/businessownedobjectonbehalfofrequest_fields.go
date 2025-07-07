@@ -5,16 +5,16 @@ package constants
 // BusinessOwnedObjectOnBehalfOfRequestFields contains field name constants for BusinessOwnedObjectOnBehalfOfRequest objects
 var BusinessOwnedObjectOnBehalfOfRequestFields = struct {
 	BusinessOwnedObject string
-	Id string
-	ReceivingBusiness string
-	RequestingBusiness string
-	Status string
+	Id                  string
+	ReceivingBusiness   string
+	RequestingBusiness  string
+	Status              string
 }{
 	BusinessOwnedObject: "business_owned_object",
-	Id: "id",
-	ReceivingBusiness: "receiving_business",
-	RequestingBusiness: "requesting_business",
-	Status: "status",
+	Id:                  "id",
+	ReceivingBusiness:   "receiving_business",
+	RequestingBusiness:  "requesting_business",
+	Status:              "status",
 }
 
 // BusinessOwnedObjectOnBehalfOfRequestFieldsList contains all available fields for BusinessOwnedObjectOnBehalfOfRequest objects

@@ -15,7 +15,7 @@ import (
 
 // ToolPage_post_page_whatsapp_number_verification returns the MCP tool definition for page_post_page_whatsapp_number_verification
 func ToolPage_post_page_whatsapp_number_verification() mcp.Tool {
-	
+
 	// Params object accepts: verification_code (string), whatsapp_number (string)
 	return mcp.NewTool("page_post_page_whatsapp_number_verification",
 		mcp.WithDescription("POST page_whatsapp_number_verification for Page"),
@@ -23,13 +23,13 @@ func ToolPage_post_page_whatsapp_number_verification() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"verification_code": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "verification_code parameter",
 				},
 				"whatsapp_number": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "whatsapp_number parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: verification_code (string), whatsapp_number (string) [required]"),
@@ -62,8 +62,6 @@ func HandlePage_post_page_whatsapp_number_verification(ctx context.Context, requ
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Page_post_page_whatsapp_number_verification(accessToken, args)
 	if err != nil {
@@ -82,20 +80,18 @@ func HandlePage_post_page_whatsapp_number_verification(ctx context.Context, requ
 // Page_post_page_whatsapp_number_verification performs POST page_whatsapp_number_verification for Page
 func Page_post_page_whatsapp_number_verification(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/page_whatsapp_number_verification")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

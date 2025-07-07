@@ -17,7 +17,6 @@ import (
 func GetAdLightCampaignGroupTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// adlightcampaigngroup_get_ tool
 	// Available fields for AdLightCampaignGroup: id
 	adlightcampaigngroup_get_Tool := mcp.NewTool("adlightcampaigngroup_get_",
@@ -37,12 +36,10 @@ func GetAdLightCampaignGroupTools() []mcp.Tool {
 	)
 	tools = append(tools, adlightcampaigngroup_get_Tool)
 
-
 	return tools
 }
 
 // AdLightCampaignGroup handlers
-
 
 // HandleAdlightcampaigngroup_get_ handles the adlightcampaigngroup_get_ tool with context-based auth
 func HandleAdlightcampaigngroup_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleAdlightcampaigngroup_get_(ctx context.Context, request mcp.CallToolRe
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adlightcampaigngroup_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleAdlightcampaigngroup_get_(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

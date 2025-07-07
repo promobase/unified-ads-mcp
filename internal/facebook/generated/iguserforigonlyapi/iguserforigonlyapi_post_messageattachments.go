@@ -15,7 +15,7 @@ import (
 
 // ToolIguserforigonlyapi_post_messageattachments returns the MCP tool definition for iguserforigonlyapi_post_messageattachments
 func ToolIguserforigonlyapi_post_messageattachments() mcp.Tool {
-	
+
 	// Params object accepts: message (Object)
 	return mcp.NewTool("iguserforigonlyapi_post_messageattachments",
 		mcp.WithDescription("POST messageattachments for IGUserForIGOnlyAPI"),
@@ -23,9 +23,9 @@ func ToolIguserforigonlyapi_post_messageattachments() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"message": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "message parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: message (object) [required]"),
@@ -58,8 +58,6 @@ func HandleIguserforigonlyapi_post_messageattachments(ctx context.Context, reque
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Iguserforigonlyapi_post_messageattachments(accessToken, args)
 	if err != nil {
@@ -78,20 +76,18 @@ func HandleIguserforigonlyapi_post_messageattachments(ctx context.Context, reque
 // Iguserforigonlyapi_post_messageattachments performs POST messageattachments for IGUserForIGOnlyAPI
 func Iguserforigonlyapi_post_messageattachments(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/messageattachments")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

@@ -4,17 +4,17 @@ package constants
 
 // ALMEndAdvertiserInfoFields contains field name constants for ALMEndAdvertiserInfo objects
 var ALMEndAdvertiserInfoFields = struct {
-	EstimatedAdBudget string
-	Id string
-	ParentAdvertiserId string
+	EstimatedAdBudget    string
+	Id                   string
+	ParentAdvertiserId   string
 	ParentAdvertiserName string
-	Tag string
+	Tag                  string
 }{
-	EstimatedAdBudget: "estimated_ad_budget",
-	Id: "id",
-	ParentAdvertiserId: "parent_advertiser_id",
+	EstimatedAdBudget:    "estimated_ad_budget",
+	Id:                   "id",
+	ParentAdvertiserId:   "parent_advertiser_id",
 	ParentAdvertiserName: "parent_advertiser_name",
-	Tag: "tag",
+	Tag:                  "tag",
 }
 
 // ALMEndAdvertiserInfoFieldsList contains all available fields for ALMEndAdvertiserInfo objects

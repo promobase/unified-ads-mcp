@@ -15,28 +15,28 @@ import (
 
 // ToolApplication_post_uploads returns the MCP tool definition for application_post_uploads
 func ToolApplication_post_uploads() mcp.Tool {
-	
+
 	// Params object accepts: file_length (unsigned int), file_name (Object), file_type (Object), session_type (applicationuploads_session_type_enum_param)
 	return mcp.NewTool("application_post_uploads",
 		mcp.WithDescription("POST uploads for Application"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"file_length": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "file_length parameter",
 				},
 				"file_name": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "file_name parameter",
 				},
 				"file_type": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "file_type parameter",
 				},
 				"session_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "session_type parameter",
-					"enum": []string{ "attachment" },
+					"enum":        []string{"attachment"},
 				},
 			}),
 			mcp.Description("Parameters object containing: file_length (integer), file_name (object), file_type (object), session_type (enum) [attachment]"),
@@ -67,8 +67,6 @@ func HandleApplication_post_uploads(ctx context.Context, request mcp.CallToolReq
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Application_post_uploads(accessToken, args)
 	if err != nil {
@@ -87,20 +85,18 @@ func HandleApplication_post_uploads(ctx context.Context, request mcp.CallToolReq
 // Application_post_uploads performs POST uploads for Application
 func Application_post_uploads(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/uploads")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

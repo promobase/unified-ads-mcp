@@ -17,7 +17,6 @@ import (
 func GetWifiInformationTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// wifiinformation_get_ tool
 	// Available fields for WifiInformation: id, name, network_access_type
 	wifiinformation_get_Tool := mcp.NewTool("wifiinformation_get_",
@@ -37,12 +36,10 @@ func GetWifiInformationTools() []mcp.Tool {
 	)
 	tools = append(tools, wifiinformation_get_Tool)
 
-
 	return tools
 }
 
 // WifiInformation handlers
-
 
 // HandleWifiinformation_get_ handles the wifiinformation_get_ tool with context-based auth
 func HandleWifiinformation_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleWifiinformation_get_(ctx context.Context, request mcp.CallToolRequest
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Wifiinformation_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleWifiinformation_get_(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

@@ -4,10 +4,10 @@ package constants
 
 // WebsiteCreativeAssetSourceFields contains field name constants for WebsiteCreativeAssetSource objects
 var WebsiteCreativeAssetSourceFields = struct {
-	Id string
+	Id        string
 	SourceUrl string
 }{
-	Id: "id",
+	Id:        "id",
 	SourceUrl: "source_url",
 }
 

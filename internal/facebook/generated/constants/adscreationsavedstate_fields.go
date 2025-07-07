@@ -4,17 +4,17 @@ package constants
 
 // AdsCreationSavedStateFields contains field name constants for AdsCreationSavedState objects
 var AdsCreationSavedStateFields = struct {
-	AdAccount string
-	Id string
+	AdAccount           string
+	Id                  string
 	SerializedStoreData string
-	TimeUpdated string
-	User string
+	TimeUpdated         string
+	User                string
 }{
-	AdAccount: "ad_account",
-	Id: "id",
+	AdAccount:           "ad_account",
+	Id:                  "id",
 	SerializedStoreData: "serialized_store_data",
-	TimeUpdated: "time_updated",
-	User: "user",
+	TimeUpdated:         "time_updated",
+	User:                "user",
 }
 
 // AdsCreationSavedStateFieldsList contains all available fields for AdsCreationSavedState objects

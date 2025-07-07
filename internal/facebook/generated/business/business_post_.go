@@ -15,37 +15,37 @@ import (
 
 // ToolBusiness_post_ returns the MCP tool definition for business_post_
 func ToolBusiness_post_() mcp.Tool {
-	
+
 	// Params object accepts: entry_point (string), name (string), primary_page (string), timezone_id (unsigned int), two_factor_type (business_two_factor_type), vertical (business_vertical)
 	return mcp.NewTool("business_post_",
 		mcp.WithDescription("POST  for Business"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"entry_point": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "entry_point parameter",
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
 				},
 				"primary_page": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "primary_page parameter",
 				},
 				"timezone_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "timezone_id parameter",
 				},
 				"two_factor_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "two_factor_type parameter",
-					"enum": []string{ "admin_required", "all_required", "none" },
+					"enum":        []string{"admin_required", "all_required", "none"},
 				},
 				"vertical": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "vertical parameter",
-					"enum": []string{ "ADVERTISING", "AUTOMOTIVE", "CONSUMER_PACKAGED_GOODS", "ECOMMERCE", "EDUCATION", "ENERGY_AND_UTILITIES", "ENTERTAINMENT_AND_MEDIA", "FINANCIAL_SERVICES", "GAMING", "GOVERNMENT_AND_POLITICS", "HEALTH", "LUXURY", "MARKETING", "NON_PROFIT", "NOT_SET", "ORGANIZATIONS_AND_ASSOCIATIONS", "OTHER", "PROFESSIONAL_SERVICES", "RESTAURANT", "RETAIL", "TECHNOLOGY", "TELECOM", "TRAVEL" },
+					"enum":        []string{"ADVERTISING", "AUTOMOTIVE", "CONSUMER_PACKAGED_GOODS", "ECOMMERCE", "EDUCATION", "ENERGY_AND_UTILITIES", "ENTERTAINMENT_AND_MEDIA", "FINANCIAL_SERVICES", "GAMING", "GOVERNMENT_AND_POLITICS", "HEALTH", "LUXURY", "MARKETING", "NON_PROFIT", "NOT_SET", "ORGANIZATIONS_AND_ASSOCIATIONS", "OTHER", "PROFESSIONAL_SERVICES", "RESTAURANT", "RETAIL", "TECHNOLOGY", "TELECOM", "TRAVEL"},
 				},
 			}),
 			mcp.Description("Parameters object containing: entry_point (string), name (string), primary_page (string), timezone_id (integer), two_factor_type (business_two_factor_type) [admin_required, all_required, none], vertical (business_vertical) [ADVERTISING, AUTOMOTIVE, CONSUMER_PACKAGED_GOODS, ECOMMERCE, EDUCATION, ...]"),
@@ -76,8 +76,6 @@ func HandleBusiness_post_(ctx context.Context, request mcp.CallToolRequest) (*mc
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Business_post_(accessToken, args)
 	if err != nil {
@@ -96,20 +94,18 @@ func HandleBusiness_post_(ctx context.Context, request mcp.CallToolRequest) (*mc
 // Business_post_ performs POST  for Business
 func Business_post_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

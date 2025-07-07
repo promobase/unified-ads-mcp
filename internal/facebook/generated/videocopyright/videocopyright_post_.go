@@ -15,62 +15,62 @@ import (
 
 // ToolVideocopyright_post_ returns the MCP tool definition for videocopyright_post_
 func ToolVideocopyright_post_() mcp.Tool {
-	
+
 	// Params object accepts: append_excluded_ownership_segments (bool), attribution_id (string), content_category (videocopyright_content_category), excluded_ownership_countries (list<string>), excluded_ownership_segments (list<Object>), is_reference_disabled (bool), monitoring_type (videocopyright_monitoring_type), ownership_countries (list<string>), rule_id (string), whitelisted_ids (list<string>), whitelisted_ig_user_ids (list<string>)
 	return mcp.NewTool("videocopyright_post_",
 		mcp.WithDescription("POST  for VideoCopyright"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"append_excluded_ownership_segments": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "append_excluded_ownership_segments parameter",
 				},
 				"attribution_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "attribution_id parameter",
 				},
 				"content_category": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "content_category parameter",
-					"enum": []string{ "episode", "movie", "web" },
+					"enum":        []string{"episode", "movie", "web"},
 				},
 				"excluded_ownership_countries": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "excluded_ownership_countries parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"excluded_ownership_segments": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "excluded_ownership_segments parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"is_reference_disabled": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_reference_disabled parameter",
 				},
 				"monitoring_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "monitoring_type parameter",
-					"enum": []string{ "AUDIO_ONLY", "VIDEO_AND_AUDIO", "VIDEO_ONLY" },
+					"enum":        []string{"AUDIO_ONLY", "VIDEO_AND_AUDIO", "VIDEO_ONLY"},
 				},
 				"ownership_countries": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "ownership_countries parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"rule_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "rule_id parameter",
 				},
 				"whitelisted_ids": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "whitelisted_ids parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"whitelisted_ig_user_ids": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "whitelisted_ig_user_ids parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: append_excluded_ownership_segments (boolean), attribution_id (string), content_category (videocopyright_content_category) [episode, movie, web], excluded_ownership_countries (array<string>), excluded_ownership_segments (array<object>), is_reference_disabled (boolean), monitoring_type (videocopyright_monitoring_type) [AUDIO_ONLY, VIDEO_AND_AUDIO, VIDEO_ONLY], ownership_countries (array<string>), rule_id (string), whitelisted_ids (array<string>), whitelisted_ig_user_ids (array<string>)"),
@@ -101,8 +101,6 @@ func HandleVideocopyright_post_(ctx context.Context, request mcp.CallToolRequest
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Videocopyright_post_(accessToken, args)
 	if err != nil {
@@ -121,20 +119,18 @@ func HandleVideocopyright_post_(ctx context.Context, request mcp.CallToolRequest
 // Videocopyright_post_ performs POST  for VideoCopyright
 func Videocopyright_post_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

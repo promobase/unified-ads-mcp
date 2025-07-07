@@ -4,17 +4,17 @@ package constants
 
 // SiteLinkFields contains field name constants for SiteLink objects
 var SiteLinkFields = struct {
-	Id string
+	Id            string
 	LinkImageHash string
-	LinkTitle string
-	LinkType string
-	LinkUrl string
+	LinkTitle     string
+	LinkType      string
+	LinkUrl       string
 }{
-	Id: "id",
+	Id:            "id",
 	LinkImageHash: "link_image_hash",
-	LinkTitle: "link_title",
-	LinkType: "link_type",
-	LinkUrl: "link_url",
+	LinkTitle:     "link_title",
+	LinkType:      "link_type",
+	LinkUrl:       "link_url",
 }
 
 // SiteLinkFieldsList contains all available fields for SiteLink objects

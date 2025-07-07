@@ -15,7 +15,7 @@ import (
 
 // ToolPage_post_custom_user_settings returns the MCP tool definition for page_post_custom_user_settings
 func ToolPage_post_custom_user_settings() mcp.Tool {
-	
+
 	// Params object accepts: persistent_menu (list<Object>), psid (string)
 	return mcp.NewTool("page_post_custom_user_settings",
 		mcp.WithDescription("POST custom_user_settings for Page"),
@@ -23,14 +23,14 @@ func ToolPage_post_custom_user_settings() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"persistent_menu": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "persistent_menu parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"psid": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "psid parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: persistent_menu (array<object>), psid (string) [required]"),
@@ -63,8 +63,6 @@ func HandlePage_post_custom_user_settings(ctx context.Context, request mcp.CallT
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Page_post_custom_user_settings(accessToken, args)
 	if err != nil {
@@ -83,20 +81,18 @@ func HandlePage_post_custom_user_settings(ctx context.Context, request mcp.CallT
 // Page_post_custom_user_settings performs POST custom_user_settings for Page
 func Page_post_custom_user_settings(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/custom_user_settings")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

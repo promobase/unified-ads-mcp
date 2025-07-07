@@ -16,7 +16,7 @@ import (
 
 // ToolWhatsappbusinessaccount_get_template_group_analytics returns the MCP tool definition for whatsappbusinessaccount_get_template_group_analytics
 func ToolWhatsappbusinessaccount_get_template_group_analytics() mcp.Tool {
-	
+
 	// Params object accepts: end (datetime), granularity (whatsappbusinessaccounttemplate_group_analytics_granularity_enum_param), metric_types (list<whatsappbusinessaccounttemplate_group_analytics_metric_types_enum_param>), start (datetime), template_group_ids (list<string>)
 	return mcp.NewTool("whatsappbusinessaccount_get_template_group_analytics",
 		mcp.WithDescription("GET template_group_analytics for WhatsAppBusinessAccount"),
@@ -24,32 +24,32 @@ func ToolWhatsappbusinessaccount_get_template_group_analytics() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"end": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "end parameter",
-					"required": true,
+					"required":    true,
 				},
 				"granularity": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "granularity parameter",
-					"required": true,
-					"enum": []string{ "DAILY" },
+					"required":    true,
+					"enum":        []string{"DAILY"},
 				},
 				"metric_types": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "metric_types parameter",
-					"enum": []string{ "CLICKED", "COST", "DELIVERED", "READ", "REPLIED", "SENT" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"CLICKED", "COST", "DELIVERED", "READ", "REPLIED", "SENT"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"start": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "start parameter",
-					"required": true,
+					"required":    true,
 				},
 				"template_group_ids": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "template_group_ids parameter",
-					"required": true,
-					"items": map[string]any{"type": "string"},
+					"required":    true,
+					"items":       map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: end (datetime) [required], granularity (enum) [DAILY] [required], metric_types (array<enum>) [CLICKED, COST, DELIVERED, READ, REPLIED, ...], start (datetime) [required], template_group_ids (array<string>) [required]"),
@@ -119,8 +119,6 @@ func HandleWhatsappbusinessaccount_get_template_group_analytics(ctx context.Cont
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Whatsappbusinessaccount_get_template_group_analytics(accessToken, args)
 	if err != nil {
@@ -139,44 +137,42 @@ func HandleWhatsappbusinessaccount_get_template_group_analytics(ctx context.Cont
 // Whatsappbusinessaccount_get_template_group_analytics performs GET template_group_analytics for WhatsAppBusinessAccount
 func Whatsappbusinessaccount_get_template_group_analytics(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/template_group_analytics")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

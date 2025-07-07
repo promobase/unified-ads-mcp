@@ -4,16 +4,16 @@ package types
 
 // LeadGenThankYouPage represents a Facebook LeadGenThankYouPage object
 type LeadGenThankYouPage struct {
-	Body string `json:"body"`
-	Business_phone_number string `json:"business_phone_number"`
-	Button_text string `json:"button_text"`
-	Button_type string `json:"button_type"`
-	Country_code string `json:"country_code"`
-	Enable_messenger bool `json:"enable_messenger"`
-	Gated_file *LeadGenThankYouPageGatedFile `json:"gated_file"`
-	Id string `json:"id"`
-	Lead_gen_use_case string `json:"lead_gen_use_case"`
-	Status string `json:"status"`
-	Title string `json:"title"`
-	Website_url string `json:"website_url"`
+	Body                  string                        `json:"body"`
+	Business_phone_number string                        `json:"business_phone_number"`
+	Button_text           string                        `json:"button_text"`
+	Button_type           string                        `json:"button_type"`
+	Country_code          string                        `json:"country_code"`
+	Enable_messenger      bool                          `json:"enable_messenger"`
+	Gated_file            *LeadGenThankYouPageGatedFile `json:"gated_file"`
+	Id                    string                        `json:"id"`
+	Lead_gen_use_case     string                        `json:"lead_gen_use_case"`
+	Status                string                        `json:"status"`
+	Title                 string                        `json:"title"`
+	Website_url           string                        `json:"website_url"`
 }

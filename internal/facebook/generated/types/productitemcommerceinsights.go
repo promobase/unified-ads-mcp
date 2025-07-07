@@ -4,7 +4,7 @@ package types
 
 // ProductItemCommerceInsights represents a Facebook ProductItemCommerceInsights object
 type ProductItemCommerceInsights struct {
-	Message_sends int `json:"message_sends"`
+	Message_sends       int `json:"message_sends"`
 	Organic_impressions int `json:"organic_impressions"`
-	Paid_impressions int `json:"paid_impressions"`
+	Paid_impressions    int `json:"paid_impressions"`
 }

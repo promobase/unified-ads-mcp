@@ -15,28 +15,28 @@ import (
 
 // ToolCustomaudience_post_adaccounts returns the MCP tool definition for customaudience_post_adaccounts
 func ToolCustomaudience_post_adaccounts() mcp.Tool {
-	
+
 	// Params object accepts: adaccounts (list<string>), permissions (string), relationship_type (list<string>), replace (bool)
 	return mcp.NewTool("customaudience_post_adaccounts",
 		mcp.WithDescription("POST adaccounts for CustomAudience"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"adaccounts": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "adaccounts parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"permissions": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "permissions parameter",
 				},
 				"relationship_type": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "relationship_type parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"replace": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "replace parameter",
 				},
 			}),
@@ -68,8 +68,6 @@ func HandleCustomaudience_post_adaccounts(ctx context.Context, request mcp.CallT
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Customaudience_post_adaccounts(accessToken, args)
 	if err != nil {
@@ -88,20 +86,18 @@ func HandleCustomaudience_post_adaccounts(ctx context.Context, request mcp.CallT
 // Customaudience_post_adaccounts performs POST adaccounts for CustomAudience
 func Customaudience_post_adaccounts(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/adaccounts")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

@@ -6,11 +6,11 @@ package constants
 var AdsPixelEventPredictionFields = struct {
 	Dismissed string
 	EventType string
-	Rule string
+	Rule      string
 }{
 	Dismissed: "dismissed",
 	EventType: "event_type",
-	Rule: "rule",
+	Rule:      "rule",
 }
 
 // AdsPixelEventPredictionFieldsList contains all available fields for AdsPixelEventPrediction objects

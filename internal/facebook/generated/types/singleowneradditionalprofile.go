@@ -4,7 +4,7 @@ package types
 
 // SingleOwnerAdditionalProfile represents a Facebook SingleOwnerAdditionalProfile object
 type SingleOwnerAdditionalProfile struct {
-	Id string `json:"id"`
-	Name string `json:"name"`
+	Id        string `json:"id"`
+	Name      string `json:"name"`
 	User_name string `json:"user_name"`
 }

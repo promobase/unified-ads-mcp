@@ -4,15 +4,15 @@ package constants
 
 // AdCreativePhotoDataMediaElementsFields contains field name constants for AdCreativePhotoDataMediaElements objects
 var AdCreativePhotoDataMediaElementsFields = struct {
-	ElementId string
+	ElementId   string
 	ElementType string
-	X string
-	Y string
+	X           string
+	Y           string
 }{
-	ElementId: "element_id",
+	ElementId:   "element_id",
 	ElementType: "element_type",
-	X: "x",
-	Y: "y",
+	X:           "x",
+	Y:           "y",
 }
 
 // AdCreativePhotoDataMediaElementsFieldsList contains all available fields for AdCreativePhotoDataMediaElements objects

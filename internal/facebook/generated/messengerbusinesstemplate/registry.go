@@ -15,7 +15,6 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolMessengerbusinesstemplate_get_())
 	tools = append(tools, ToolMessengerbusinesstemplate_post_())
 
-
 	return tools
 }
 
@@ -25,7 +24,6 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 
 	handlers["messengerbusinesstemplate_get_"] = HandleMessengerbusinesstemplate_get_
 	handlers["messengerbusinesstemplate_post_"] = HandleMessengerbusinesstemplate_post_
-
 
 	return handlers
 }

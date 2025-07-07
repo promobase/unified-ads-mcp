@@ -5,9 +5,9 @@ package types
 // AdCreativeStaticFallbackSpec represents a Facebook AdCreativeStaticFallbackSpec object
 type AdCreativeStaticFallbackSpec struct {
 	Call_to_action *AdCreativeLinkDataCallToAction `json:"call_to_action"`
-	Description string `json:"description"`
-	Image_hash string `json:"image_hash"`
-	Link string `json:"link"`
-	Message string `json:"message"`
-	Name string `json:"name"`
+	Description    string                          `json:"description"`
+	Image_hash     string                          `json:"image_hash"`
+	Link           string                          `json:"link"`
+	Message        string                          `json:"message"`
+	Name           string                          `json:"name"`
 }

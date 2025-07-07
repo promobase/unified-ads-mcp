@@ -4,7 +4,7 @@ package types
 
 // MCExperienceConfigForApi represents a Facebook MCExperienceConfigForApi object
 type MCExperienceConfigForApi struct {
-	Is_campaign_enabled bool `json:"is_campaign_enabled"`
-	Is_terms_signed bool `json:"is_terms_signed"`
-	Merchant_type string `json:"merchant_type"`
+	Is_campaign_enabled bool   `json:"is_campaign_enabled"`
+	Is_terms_signed     bool   `json:"is_terms_signed"`
+	Merchant_type       string `json:"merchant_type"`
 }

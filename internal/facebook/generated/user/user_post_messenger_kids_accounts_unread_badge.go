@@ -15,7 +15,7 @@ import (
 
 // ToolUser_post_messenger_kids_accounts_unread_badge returns the MCP tool definition for user_post_messenger_kids_accounts_unread_badge
 func ToolUser_post_messenger_kids_accounts_unread_badge() mcp.Tool {
-	
+
 	// Params object accepts: proxied_app_id (int)
 	return mcp.NewTool("user_post_messenger_kids_accounts_unread_badge",
 		mcp.WithDescription("POST messenger_kids_accounts_unread_badge for User"),
@@ -23,9 +23,9 @@ func ToolUser_post_messenger_kids_accounts_unread_badge() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"proxied_app_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "proxied_app_id parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: proxied_app_id (integer) [required]"),
@@ -58,8 +58,6 @@ func HandleUser_post_messenger_kids_accounts_unread_badge(ctx context.Context, r
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := User_post_messenger_kids_accounts_unread_badge(accessToken, args)
 	if err != nil {
@@ -78,20 +76,18 @@ func HandleUser_post_messenger_kids_accounts_unread_badge(ctx context.Context, r
 // User_post_messenger_kids_accounts_unread_badge performs POST messenger_kids_accounts_unread_badge for User
 func User_post_messenger_kids_accounts_unread_badge(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/messenger_kids_accounts_unread_badge")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

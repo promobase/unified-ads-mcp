@@ -4,23 +4,23 @@ package constants
 
 // LeadGenDirectCRMIntegrationConfigFields contains field name constants for LeadGenDirectCRMIntegrationConfig objects
 var LeadGenDirectCRMIntegrationConfigFields = struct {
-	AuthId string
-	CreationTime string
-	Id string
-	LeadGenData string
-	MatchedFields string
+	AuthId              string
+	CreationTime        string
+	Id                  string
+	LeadGenData         string
+	MatchedFields       string
 	MatchedFieldsLabels string
-	Resources string
-	ThirdPartyAppId string
+	Resources           string
+	ThirdPartyAppId     string
 }{
-	AuthId: "auth_id",
-	CreationTime: "creation_time",
-	Id: "id",
-	LeadGenData: "lead_gen_data",
-	MatchedFields: "matched_fields",
+	AuthId:              "auth_id",
+	CreationTime:        "creation_time",
+	Id:                  "id",
+	LeadGenData:         "lead_gen_data",
+	MatchedFields:       "matched_fields",
 	MatchedFieldsLabels: "matched_fields_labels",
-	Resources: "resources",
-	ThirdPartyAppId: "third_party_app_id",
+	Resources:           "resources",
+	ThirdPartyAppId:     "third_party_app_id",
 }
 
 // LeadGenDirectCRMIntegrationConfigFieldsList contains all available fields for LeadGenDirectCRMIntegrationConfig objects

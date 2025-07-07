@@ -4,8 +4,8 @@ package types
 
 // AsyncRequest represents a Facebook AsyncRequest object
 type AsyncRequest struct {
-	Id int `json:"id"`
+	Id     int    `json:"id"`
 	Result string `json:"result"`
-	Status int `json:"status"`
-	Type_ int `json:"type"`
+	Status int    `json:"status"`
+	Type_  int    `json:"type"`
 }

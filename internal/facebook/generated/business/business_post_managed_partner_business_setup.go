@@ -15,41 +15,41 @@ import (
 
 // ToolBusiness_post_managed_partner_business_setup returns the MCP tool definition for business_post_managed_partner_business_setup
 func ToolBusiness_post_managed_partner_business_setup() mcp.Tool {
-	
+
 	// Params object accepts: active_ad_account_id (string), active_page_id (int), partner_facebook_page_url (string), partner_registration_countries (list<string>), seller_email_address (string), seller_external_website_url (string), template (list<map>)
 	return mcp.NewTool("business_post_managed_partner_business_setup",
 		mcp.WithDescription("POST managed_partner_business_setup for Business"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"active_ad_account_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "active_ad_account_id parameter",
 				},
 				"active_page_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "active_page_id parameter",
 				},
 				"partner_facebook_page_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "partner_facebook_page_url parameter",
 				},
 				"partner_registration_countries": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "partner_registration_countries parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"seller_email_address": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "seller_email_address parameter",
 				},
 				"seller_external_website_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "seller_external_website_url parameter",
 				},
 				"template": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "template parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 			}),
 			mcp.Description("Parameters object containing: active_ad_account_id (string), active_page_id (integer), partner_facebook_page_url (string), partner_registration_countries (array<string>), seller_email_address (string), seller_external_website_url (string), template (array<object>)"),
@@ -80,8 +80,6 @@ func HandleBusiness_post_managed_partner_business_setup(ctx context.Context, req
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Business_post_managed_partner_business_setup(accessToken, args)
 	if err != nil {
@@ -100,20 +98,18 @@ func HandleBusiness_post_managed_partner_business_setup(ctx context.Context, req
 // Business_post_managed_partner_business_setup performs POST managed_partner_business_setup for Business
 func Business_post_managed_partner_business_setup(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/managed_partner_business_setup")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

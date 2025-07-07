@@ -4,33 +4,33 @@ package constants
 
 // AdAssetFeedSpecAssetCustomizationRuleFields contains field name constants for AdAssetFeedSpecAssetCustomizationRule objects
 var AdAssetFeedSpecAssetCustomizationRuleFields = struct {
-	BodyLabel string
-	CallToActionLabel string
+	BodyLabel             string
+	CallToActionLabel     string
 	CallToActionTypeLabel string
-	CaptionLabel string
-	CarouselLabel string
-	CustomizationSpec string
-	DescriptionLabel string
-	ImageLabel string
-	IsDefault string
-	LinkUrlLabel string
-	Priority string
-	TitleLabel string
-	VideoLabel string
+	CaptionLabel          string
+	CarouselLabel         string
+	CustomizationSpec     string
+	DescriptionLabel      string
+	ImageLabel            string
+	IsDefault             string
+	LinkUrlLabel          string
+	Priority              string
+	TitleLabel            string
+	VideoLabel            string
 }{
-	BodyLabel: "body_label",
-	CallToActionLabel: "call_to_action_label",
+	BodyLabel:             "body_label",
+	CallToActionLabel:     "call_to_action_label",
 	CallToActionTypeLabel: "call_to_action_type_label",
-	CaptionLabel: "caption_label",
-	CarouselLabel: "carousel_label",
-	CustomizationSpec: "customization_spec",
-	DescriptionLabel: "description_label",
-	ImageLabel: "image_label",
-	IsDefault: "is_default",
-	LinkUrlLabel: "link_url_label",
-	Priority: "priority",
-	TitleLabel: "title_label",
-	VideoLabel: "video_label",
+	CaptionLabel:          "caption_label",
+	CarouselLabel:         "carousel_label",
+	CustomizationSpec:     "customization_spec",
+	DescriptionLabel:      "description_label",
+	ImageLabel:            "image_label",
+	IsDefault:             "is_default",
+	LinkUrlLabel:          "link_url_label",
+	Priority:              "priority",
+	TitleLabel:            "title_label",
+	VideoLabel:            "video_label",
 }
 
 // AdAssetFeedSpecAssetCustomizationRuleFieldsList contains all available fields for AdAssetFeedSpecAssetCustomizationRule objects

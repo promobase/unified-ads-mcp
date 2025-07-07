@@ -17,7 +17,7 @@ import (
 // ToolLeadgendatadraft_get_ returns the MCP tool definition for leadgendatadraft_get_
 func ToolLeadgendatadraft_get_() mcp.Tool {
 	// Available fields for LeadGenDataDraft: block_display_for_non_targeted_viewer, created_time, disqualified_end_component, follow_up_action_url, id, is_optimized_for_quality, legal_content, locale, name, page, question_page_custom_headline, questions, status, thank_you_page, tracking_parameters
-	
+
 	return mcp.NewTool("leadgendatadraft_get_",
 		mcp.WithDescription("GET  for LeadGenDataDraft"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleLeadgendatadraft_get_(ctx context.Context, request mcp.CallToolReques
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Leadgendatadraft_get_(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleLeadgendatadraft_get_(ctx context.Context, request mcp.CallToolReques
 // Leadgendatadraft_get_ performs GET  for LeadGenDataDraft
 func Leadgendatadraft_get_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

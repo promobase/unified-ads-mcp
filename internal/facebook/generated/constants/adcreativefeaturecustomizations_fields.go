@@ -4,23 +4,23 @@ package constants
 
 // AdCreativeFeatureCustomizationsFields contains field name constants for AdCreativeFeatureCustomizations objects
 var AdCreativeFeatureCustomizationsFields = struct {
-	BackgroundColor string
-	CatalogFeedTagName string
-	FontName string
-	ImageCropStyle string
-	PeCarousel string
+	BackgroundColor     string
+	CatalogFeedTagName  string
+	FontName            string
+	ImageCropStyle      string
+	PeCarousel          string
 	ShowcaseCardDisplay string
-	TextExtraction string
-	TextStyle string
+	TextExtraction      string
+	TextStyle           string
 }{
-	BackgroundColor: "background_color",
-	CatalogFeedTagName: "catalog_feed_tag_name",
-	FontName: "font_name",
-	ImageCropStyle: "image_crop_style",
-	PeCarousel: "pe_carousel",
+	BackgroundColor:     "background_color",
+	CatalogFeedTagName:  "catalog_feed_tag_name",
+	FontName:            "font_name",
+	ImageCropStyle:      "image_crop_style",
+	PeCarousel:          "pe_carousel",
 	ShowcaseCardDisplay: "showcase_card_display",
-	TextExtraction: "text_extraction",
-	TextStyle: "text_style",
+	TextExtraction:      "text_extraction",
+	TextStyle:           "text_style",
 }
 
 // AdCreativeFeatureCustomizationsFieldsList contains all available fields for AdCreativeFeatureCustomizations objects

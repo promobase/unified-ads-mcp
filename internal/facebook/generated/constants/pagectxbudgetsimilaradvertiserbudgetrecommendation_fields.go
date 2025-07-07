@@ -4,10 +4,10 @@ package constants
 
 // PageCTXBudgetSimilarAdvertiserBudgetRecommendationFields contains field name constants for PageCTXBudgetSimilarAdvertiserBudgetRecommendation objects
 var PageCTXBudgetSimilarAdvertiserBudgetRecommendationFields = struct {
-	Budget string
+	Budget             string
 	ReportedConversion string
 }{
-	Budget: "budget",
+	Budget:             "budget",
 	ReportedConversion: "reported_conversion",
 }
 

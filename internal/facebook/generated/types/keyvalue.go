@@ -4,6 +4,6 @@ package types
 
 // KeyValue represents a Facebook KeyValue object
 type KeyValue struct {
-	Key string `json:"key"`
+	Key   string `json:"key"`
 	Value string `json:"value"`
 }

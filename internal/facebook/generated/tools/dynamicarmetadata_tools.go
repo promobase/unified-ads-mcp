@@ -17,7 +17,6 @@ import (
 func GetDynamicARMetadataTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// dynamicarmetadata_get_ tool
 	// Available fields for DynamicARMetadata: anchor_point, container_effect_enum, effect_icon_url, effect_id, id, platforms, scale_factor, shadow_texture_url, source_url, state, tags, variant_picker_url
 	dynamicarmetadata_get_Tool := mcp.NewTool("dynamicarmetadata_get_",
@@ -37,12 +36,10 @@ func GetDynamicARMetadataTools() []mcp.Tool {
 	)
 	tools = append(tools, dynamicarmetadata_get_Tool)
 
-
 	return tools
 }
 
 // DynamicARMetadata handlers
-
 
 // HandleDynamicarmetadata_get_ handles the dynamicarmetadata_get_ tool with context-based auth
 func HandleDynamicarmetadata_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleDynamicarmetadata_get_(ctx context.Context, request mcp.CallToolReque
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Dynamicarmetadata_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleDynamicarmetadata_get_(ctx context.Context, request mcp.CallToolReque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

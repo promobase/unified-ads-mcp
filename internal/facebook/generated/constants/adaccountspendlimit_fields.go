@@ -5,20 +5,20 @@ package constants
 // AdAccountSpendLimitFields contains field name constants for AdAccountSpendLimit objects
 var AdAccountSpendLimitFields = struct {
 	AmountSpent string
-	GroupId string
-	LimitId string
-	LimitValue string
+	GroupId     string
+	LimitId     string
+	LimitValue  string
 	TimeCreated string
-	TimeStart string
-	TimeStop string
+	TimeStart   string
+	TimeStop    string
 }{
 	AmountSpent: "amount_spent",
-	GroupId: "group_id",
-	LimitId: "limit_id",
-	LimitValue: "limit_value",
+	GroupId:     "group_id",
+	LimitId:     "limit_id",
+	LimitValue:  "limit_value",
 	TimeCreated: "time_created",
-	TimeStart: "time_start",
-	TimeStop: "time_stop",
+	TimeStart:   "time_start",
+	TimeStop:    "time_stop",
 }
 
 // AdAccountSpendLimitFieldsList contains all available fields for AdAccountSpendLimit objects

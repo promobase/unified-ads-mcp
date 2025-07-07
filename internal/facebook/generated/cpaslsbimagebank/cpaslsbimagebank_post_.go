@@ -15,7 +15,7 @@ import (
 
 // ToolCpaslsbimagebank_post_ returns the MCP tool definition for cpaslsbimagebank_post_
 func ToolCpaslsbimagebank_post_() mcp.Tool {
-	
+
 	// Params object accepts: backup_image_urls (list<string>)
 	return mcp.NewTool("cpaslsbimagebank_post_",
 		mcp.WithDescription("POST  for CPASLsbImageBank"),
@@ -23,10 +23,10 @@ func ToolCpaslsbimagebank_post_() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"backup_image_urls": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "backup_image_urls parameter",
-					"required": true,
-					"items": map[string]any{"type": "string"},
+					"required":    true,
+					"items":       map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: backup_image_urls (array<string>) [required]"),
@@ -59,8 +59,6 @@ func HandleCpaslsbimagebank_post_(ctx context.Context, request mcp.CallToolReque
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Cpaslsbimagebank_post_(accessToken, args)
 	if err != nil {
@@ -79,20 +77,18 @@ func HandleCpaslsbimagebank_post_(ctx context.Context, request mcp.CallToolReque
 // Cpaslsbimagebank_post_ performs POST  for CPASLsbImageBank
 func Cpaslsbimagebank_post_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

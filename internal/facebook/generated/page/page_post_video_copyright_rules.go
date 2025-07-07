@@ -15,7 +15,7 @@ import (
 
 // ToolPage_post_video_copyright_rules returns the MCP tool definition for page_post_video_copyright_rules
 func ToolPage_post_video_copyright_rules() mcp.Tool {
-	
+
 	// Params object accepts: condition_groups (list<Object>), name (string)
 	return mcp.NewTool("page_post_video_copyright_rules",
 		mcp.WithDescription("POST video_copyright_rules for Page"),
@@ -23,15 +23,15 @@ func ToolPage_post_video_copyright_rules() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"condition_groups": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "condition_groups parameter",
-					"required": true,
-					"items": map[string]any{"type": "object"},
+					"required":    true,
+					"items":       map[string]any{"type": "object"},
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: condition_groups (array<object>) [required], name (string) [required]"),
@@ -64,8 +64,6 @@ func HandlePage_post_video_copyright_rules(ctx context.Context, request mcp.Call
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Page_post_video_copyright_rules(accessToken, args)
 	if err != nil {
@@ -84,20 +82,18 @@ func HandlePage_post_video_copyright_rules(ctx context.Context, request mcp.Call
 // Page_post_video_copyright_rules performs POST video_copyright_rules for Page
 func Page_post_video_copyright_rules(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/video_copyright_rules")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

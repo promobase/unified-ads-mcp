@@ -15,7 +15,7 @@ import (
 
 // ToolIguser_post_branded_content_tag_approval returns the MCP tool definition for iguser_post_branded_content_tag_approval
 func ToolIguser_post_branded_content_tag_approval() mcp.Tool {
-	
+
 	// Params object accepts: user_ids (list<unsigned int>)
 	return mcp.NewTool("iguser_post_branded_content_tag_approval",
 		mcp.WithDescription("POST branded_content_tag_approval for IGUser"),
@@ -23,10 +23,10 @@ func ToolIguser_post_branded_content_tag_approval() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"user_ids": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "user_ids parameter",
-					"required": true,
-					"items": map[string]any{"type": "integer"},
+					"required":    true,
+					"items":       map[string]any{"type": "integer"},
 				},
 			}),
 			mcp.Description("Parameters object containing: user_ids (array<integer>) [required]"),
@@ -59,8 +59,6 @@ func HandleIguser_post_branded_content_tag_approval(ctx context.Context, request
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Iguser_post_branded_content_tag_approval(accessToken, args)
 	if err != nil {
@@ -79,20 +77,18 @@ func HandleIguser_post_branded_content_tag_approval(ctx context.Context, request
 // Iguser_post_branded_content_tag_approval performs POST branded_content_tag_approval for IGUser
 func Iguser_post_branded_content_tag_approval(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/branded_content_tag_approval")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

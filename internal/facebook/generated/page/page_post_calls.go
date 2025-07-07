@@ -15,7 +15,7 @@ import (
 
 // ToolPage_post_calls returns the MCP tool definition for page_post_calls
 func ToolPage_post_calls() mcp.Tool {
-	
+
 	// Params object accepts: action (pagecalls_action_enum_param), call_id (string), platform (pagecalls_platform_enum_param), session (map), to (string)
 	return mcp.NewTool("page_post_calls",
 		mcp.WithDescription("POST calls for Page"),
@@ -23,26 +23,26 @@ func ToolPage_post_calls() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"action": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "action parameter",
-					"required": true,
-					"enum": []string{ "ACCEPT", "CONNECT", "MEDIA_UPDATE", "REJECT", "TERMINATE" },
+					"required":    true,
+					"enum":        []string{"ACCEPT", "CONNECT", "MEDIA_UPDATE", "REJECT", "TERMINATE"},
 				},
 				"call_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "call_id parameter",
 				},
 				"platform": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "platform parameter",
-					"enum": []string{ "INSTAGRAM", "MESSENGER" },
+					"enum":        []string{"INSTAGRAM", "MESSENGER"},
 				},
 				"session": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "session parameter",
 				},
 				"to": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "to parameter",
 				},
 			}),
@@ -76,8 +76,6 @@ func HandlePage_post_calls(ctx context.Context, request mcp.CallToolRequest) (*m
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Page_post_calls(accessToken, args)
 	if err != nil {
@@ -96,20 +94,18 @@ func HandlePage_post_calls(ctx context.Context, request mcp.CallToolRequest) (*m
 // Page_post_calls performs POST calls for Page
 func Page_post_calls(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/calls")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

@@ -17,7 +17,6 @@ import (
 func GetAdRuleEvaluationSpecTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// adruleevaluationspec_get_ tool
 	// Available fields for AdRuleEvaluationSpec: evaluation_type, filters, trigger
 	adruleevaluationspec_get_Tool := mcp.NewTool("adruleevaluationspec_get_",
@@ -37,12 +36,10 @@ func GetAdRuleEvaluationSpecTools() []mcp.Tool {
 	)
 	tools = append(tools, adruleevaluationspec_get_Tool)
 
-
 	return tools
 }
 
 // AdRuleEvaluationSpec handlers
-
 
 // HandleAdruleevaluationspec_get_ handles the adruleevaluationspec_get_ tool with context-based auth
 func HandleAdruleevaluationspec_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleAdruleevaluationspec_get_(ctx context.Context, request mcp.CallToolRe
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adruleevaluationspec_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleAdruleevaluationspec_get_(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

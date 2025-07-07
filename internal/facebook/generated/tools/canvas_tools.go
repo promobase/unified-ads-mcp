@@ -17,7 +17,6 @@ import (
 func GetCanvasTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// canvas_get_preview tool
 	// Available fields for CanvasPreview: body
 	canvas_get_previewTool := mcp.NewTool("canvas_get_preview",
@@ -45,9 +44,9 @@ func GetCanvasTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"user_ids": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "user_ids parameter",
-					"items": map[string]any{"type": "integer"},
+					"items":       map[string]any{"type": "integer"},
 				},
 			}),
 			mcp.Description("Parameters object containing: user_ids (array<integer>)"),
@@ -93,32 +92,32 @@ func GetCanvasTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"background_color": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "background_color parameter",
 				},
 				"body_element_ids": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "body_element_ids parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"enable_swipe_to_open": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "enable_swipe_to_open parameter",
 				},
 				"is_hidden": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_hidden parameter",
 				},
 				"is_published": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_published parameter",
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
 				},
 				"source_template_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "source_template_id parameter",
 				},
 			}),
@@ -127,12 +126,10 @@ func GetCanvasTools() []mcp.Tool {
 	)
 	tools = append(tools, canvas_post_Tool)
 
-
 	return tools
 }
 
 // Canvas handlers
-
 
 // HandleCanvas_get_preview handles the canvas_get_preview tool with context-based auth
 func HandleCanvas_get_preview(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -173,8 +170,6 @@ func HandleCanvas_get_preview(ctx context.Context, request mcp.CallToolRequest) 
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Canvas_get_preview(args)
 	if err != nil {
@@ -189,7 +184,6 @@ func HandleCanvas_get_preview(ctx context.Context, request mcp.CallToolRequest) 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleCanvas_get_previews handles the canvas_get_previews tool with context-based auth
 func HandleCanvas_get_previews(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -242,8 +236,6 @@ func HandleCanvas_get_previews(ctx context.Context, request mcp.CallToolRequest)
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Canvas_get_previews(args)
 	if err != nil {
@@ -258,7 +250,6 @@ func HandleCanvas_get_previews(ctx context.Context, request mcp.CallToolRequest)
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleCanvas_get_ handles the canvas_get_ tool with context-based auth
 func HandleCanvas_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -299,8 +290,6 @@ func HandleCanvas_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.C
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Canvas_get_(args)
 	if err != nil {
@@ -315,7 +304,6 @@ func HandleCanvas_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleCanvas_post_ handles the canvas_post_ tool with context-based auth
 func HandleCanvas_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -343,8 +331,6 @@ func HandleCanvas_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 		}
 	}
 
-
-
 	// Call the client method
 	result, err := client.Canvas_post_(args)
 	if err != nil {
@@ -359,4 +345,3 @@ func HandleCanvas_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

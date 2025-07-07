@@ -4,6 +4,6 @@ package types
 
 // ProductItemLocalInfoLatLongShape represents a Facebook ProductItemLocalInfoLatLongShape object
 type ProductItemLocalInfoLatLongShape struct {
-	Latitude float64 `json:"latitude"`
+	Latitude  float64 `json:"latitude"`
 	Longitude float64 `json:"longitude"`
 }

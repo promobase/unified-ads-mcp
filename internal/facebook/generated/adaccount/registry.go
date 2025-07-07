@@ -124,7 +124,6 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolAdaccount_get_())
 	tools = append(tools, ToolAdaccount_post_())
 
-
 	return tools
 }
 
@@ -243,7 +242,6 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers["adaccount_post_video_ads"] = HandleAdaccount_post_video_ads
 	handlers["adaccount_get_"] = HandleAdaccount_get_
 	handlers["adaccount_post_"] = HandleAdaccount_post_
-
 
 	return handlers
 }

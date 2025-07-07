@@ -5,18 +5,18 @@ package constants
 // DynamicItemDisplayBundleFolderFields contains field name constants for DynamicItemDisplayBundleFolder objects
 var DynamicItemDisplayBundleFolderFields = struct {
 	CategorizationCriteria string
-	Id string
-	Name string
-	ProductCatalog string
-	ProductSet string
-	ValidLabels string
+	Id                     string
+	Name                   string
+	ProductCatalog         string
+	ProductSet             string
+	ValidLabels            string
 }{
 	CategorizationCriteria: "categorization_criteria",
-	Id: "id",
-	Name: "name",
-	ProductCatalog: "product_catalog",
-	ProductSet: "product_set",
-	ValidLabels: "valid_labels",
+	Id:                     "id",
+	Name:                   "name",
+	ProductCatalog:         "product_catalog",
+	ProductSet:             "product_set",
+	ValidLabels:            "valid_labels",
 }
 
 // DynamicItemDisplayBundleFolderFieldsList contains all available fields for DynamicItemDisplayBundleFolder objects

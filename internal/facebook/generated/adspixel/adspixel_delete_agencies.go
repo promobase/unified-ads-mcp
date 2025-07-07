@@ -15,7 +15,7 @@ import (
 
 // ToolAdspixel_delete_agencies returns the MCP tool definition for adspixel_delete_agencies
 func ToolAdspixel_delete_agencies() mcp.Tool {
-	
+
 	// Params object accepts: business (string)
 	return mcp.NewTool("adspixel_delete_agencies",
 		mcp.WithDescription("DELETE agencies for AdsPixel"),
@@ -23,9 +23,9 @@ func ToolAdspixel_delete_agencies() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"business": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "business parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: business (string) [required]"),
@@ -58,8 +58,6 @@ func HandleAdspixel_delete_agencies(ctx context.Context, request mcp.CallToolReq
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Adspixel_delete_agencies(accessToken, args)
 	if err != nil {
@@ -78,20 +76,18 @@ func HandleAdspixel_delete_agencies(ctx context.Context, request mcp.CallToolReq
 // Adspixel_delete_agencies performs DELETE agencies for AdsPixel
 func Adspixel_delete_agencies(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/agencies")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

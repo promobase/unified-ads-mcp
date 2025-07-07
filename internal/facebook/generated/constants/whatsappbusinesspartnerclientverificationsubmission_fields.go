@@ -4,20 +4,20 @@ package constants
 
 // WhatsAppBusinessPartnerClientVerificationSubmissionFields contains field name constants for WhatsAppBusinessPartnerClientVerificationSubmission objects
 var WhatsAppBusinessPartnerClientVerificationSubmissionFields = struct {
-	ClientBusinessId string
-	Id string
-	RejectionReasons string
-	SubmittedInfo string
-	SubmittedTime string
-	UpdateTime string
+	ClientBusinessId   string
+	Id                 string
+	RejectionReasons   string
+	SubmittedInfo      string
+	SubmittedTime      string
+	UpdateTime         string
 	VerificationStatus string
 }{
-	ClientBusinessId: "client_business_id",
-	Id: "id",
-	RejectionReasons: "rejection_reasons",
-	SubmittedInfo: "submitted_info",
-	SubmittedTime: "submitted_time",
-	UpdateTime: "update_time",
+	ClientBusinessId:   "client_business_id",
+	Id:                 "id",
+	RejectionReasons:   "rejection_reasons",
+	SubmittedInfo:      "submitted_info",
+	SubmittedTime:      "submitted_time",
+	UpdateTime:         "update_time",
 	VerificationStatus: "verification_status",
 }
 

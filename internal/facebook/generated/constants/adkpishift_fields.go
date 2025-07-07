@@ -4,19 +4,19 @@ package constants
 
 // AdKpiShiftFields contains field name constants for AdKpiShift objects
 var AdKpiShiftFields = struct {
-	AdSet string
-	CostPerResultShift string
+	AdSet               string
+	CostPerResultShift  string
 	EnoughEffectiveDays string
-	ResultIndicator string
-	ResultShift string
-	SpendShift string
+	ResultIndicator     string
+	ResultShift         string
+	SpendShift          string
 }{
-	AdSet: "ad_set",
-	CostPerResultShift: "cost_per_result_shift",
+	AdSet:               "ad_set",
+	CostPerResultShift:  "cost_per_result_shift",
 	EnoughEffectiveDays: "enough_effective_days",
-	ResultIndicator: "result_indicator",
-	ResultShift: "result_shift",
-	SpendShift: "spend_shift",
+	ResultIndicator:     "result_indicator",
+	ResultShift:         "result_shift",
+	SpendShift:          "spend_shift",
 }
 
 // AdKpiShiftFieldsList contains all available fields for AdKpiShift objects

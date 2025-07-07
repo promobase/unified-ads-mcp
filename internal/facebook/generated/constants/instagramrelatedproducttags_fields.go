@@ -5,18 +5,18 @@ package constants
 // InstagramRelatedProductTagsFields contains field name constants for InstagramRelatedProductTags objects
 var InstagramRelatedProductTagsFields = struct {
 	CheckoutSetting string
-	Id string
-	ImageUri string
-	Name string
-	PriceLabel string
-	SalePriceLabel string
+	Id              string
+	ImageUri        string
+	Name            string
+	PriceLabel      string
+	SalePriceLabel  string
 }{
 	CheckoutSetting: "checkout_setting",
-	Id: "id",
-	ImageUri: "image_uri",
-	Name: "name",
-	PriceLabel: "price_label",
-	SalePriceLabel: "sale_price_label",
+	Id:              "id",
+	ImageUri:        "image_uri",
+	Name:            "name",
+	PriceLabel:      "price_label",
+	SalePriceLabel:  "sale_price_label",
 }
 
 // InstagramRelatedProductTagsFieldsList contains all available fields for InstagramRelatedProductTags objects

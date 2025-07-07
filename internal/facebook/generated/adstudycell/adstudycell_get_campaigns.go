@@ -17,7 +17,7 @@ import (
 // ToolAdstudycell_get_campaigns returns the MCP tool definition for adstudycell_get_campaigns
 func ToolAdstudycell_get_campaigns() mcp.Tool {
 	// Available fields for Campaign: account_id, adlabels, advantage_state_info, bid_strategy, boosted_object_id, brand_lift_studies, budget_rebalance_flag, budget_remaining, buying_type, campaign_group_active_time, can_create_brand_lift_study, can_use_spend_cap, configured_status, created_time, daily_budget, effective_status, has_secondary_skadnetwork_reporting, id, is_budget_schedule_enabled, is_skadnetwork_attribution, issues_info, last_budget_toggling_time, lifetime_budget, name, objective, pacing_type, primary_attribution, promoted_object, recommendations, smart_promotion_type, source_campaign, source_campaign_id, source_recommendation_type, special_ad_categories, special_ad_category, special_ad_category_country, spend_cap, start_time, status, stop_time, topline_id, updated_time
-	
+
 	return mcp.NewTool("adstudycell_get_campaigns",
 		mcp.WithDescription("GET campaigns for AdStudyCell"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleAdstudycell_get_campaigns(ctx context.Context, request mcp.CallToolRe
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Adstudycell_get_campaigns(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleAdstudycell_get_campaigns(ctx context.Context, request mcp.CallToolRe
 // Adstudycell_get_campaigns performs GET campaigns for AdStudyCell
 func Adstudycell_get_campaigns(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/campaigns")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

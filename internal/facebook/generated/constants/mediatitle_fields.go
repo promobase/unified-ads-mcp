@@ -4,49 +4,49 @@ package constants
 
 // MediaTitleFields contains field name constants for MediaTitle objects
 var MediaTitleFields = struct {
-	Applinks string
+	Applinks               string
 	CategorySpecificFields string
-	ContentCategory string
-	Currency string
-	Description string
-	FbPageAlias string
-	FbPageId string
-	Genres string
-	Id string
-	ImageFetchStatus string
-	Images string
-	KgFbId string
-	MediaTitleId string
-	Price string
-	SanitizedImages string
-	Title string
-	TitleDisplayName string
-	UnitPrice string
-	Url string
-	Visibility string
-	WikiDataItem string
+	ContentCategory        string
+	Currency               string
+	Description            string
+	FbPageAlias            string
+	FbPageId               string
+	Genres                 string
+	Id                     string
+	ImageFetchStatus       string
+	Images                 string
+	KgFbId                 string
+	MediaTitleId           string
+	Price                  string
+	SanitizedImages        string
+	Title                  string
+	TitleDisplayName       string
+	UnitPrice              string
+	Url                    string
+	Visibility             string
+	WikiDataItem           string
 }{
-	Applinks: "applinks",
+	Applinks:               "applinks",
 	CategorySpecificFields: "category_specific_fields",
-	ContentCategory: "content_category",
-	Currency: "currency",
-	Description: "description",
-	FbPageAlias: "fb_page_alias",
-	FbPageId: "fb_page_id",
-	Genres: "genres",
-	Id: "id",
-	ImageFetchStatus: "image_fetch_status",
-	Images: "images",
-	KgFbId: "kg_fb_id",
-	MediaTitleId: "media_title_id",
-	Price: "price",
-	SanitizedImages: "sanitized_images",
-	Title: "title",
-	TitleDisplayName: "title_display_name",
-	UnitPrice: "unit_price",
-	Url: "url",
-	Visibility: "visibility",
-	WikiDataItem: "wiki_data_item",
+	ContentCategory:        "content_category",
+	Currency:               "currency",
+	Description:            "description",
+	FbPageAlias:            "fb_page_alias",
+	FbPageId:               "fb_page_id",
+	Genres:                 "genres",
+	Id:                     "id",
+	ImageFetchStatus:       "image_fetch_status",
+	Images:                 "images",
+	KgFbId:                 "kg_fb_id",
+	MediaTitleId:           "media_title_id",
+	Price:                  "price",
+	SanitizedImages:        "sanitized_images",
+	Title:                  "title",
+	TitleDisplayName:       "title_display_name",
+	UnitPrice:              "unit_price",
+	Url:                    "url",
+	Visibility:             "visibility",
+	WikiDataItem:           "wiki_data_item",
 }
 
 // MediaTitleFieldsList contains all available fields for MediaTitle objects

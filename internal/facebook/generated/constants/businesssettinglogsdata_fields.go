@@ -4,17 +4,17 @@ package constants
 
 // BusinessSettingLogsDataFields contains field name constants for BusinessSettingLogsData objects
 var BusinessSettingLogsDataFields = struct {
-	Actor string
+	Actor       string
 	EventObject string
-	EventTime string
-	EventType string
-	ExtraData string
+	EventTime   string
+	EventType   string
+	ExtraData   string
 }{
-	Actor: "actor",
+	Actor:       "actor",
 	EventObject: "event_object",
-	EventTime: "event_time",
-	EventType: "event_type",
-	ExtraData: "extra_data",
+	EventTime:   "event_time",
+	EventType:   "event_type",
+	ExtraData:   "extra_data",
 }
 
 // BusinessSettingLogsDataFieldsList contains all available fields for BusinessSettingLogsData objects

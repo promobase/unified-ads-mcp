@@ -15,14 +15,14 @@ import (
 
 // ToolBusiness_post_onboard_partners_to_mm_lite returns the MCP tool definition for business_post_onboard_partners_to_mm_lite
 func ToolBusiness_post_onboard_partners_to_mm_lite() mcp.Tool {
-	
+
 	// Params object accepts: solution_id (string)
 	return mcp.NewTool("business_post_onboard_partners_to_mm_lite",
 		mcp.WithDescription("POST onboard_partners_to_mm_lite for Business"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"solution_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "solution_id parameter",
 				},
 			}),
@@ -54,8 +54,6 @@ func HandleBusiness_post_onboard_partners_to_mm_lite(ctx context.Context, reques
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Business_post_onboard_partners_to_mm_lite(accessToken, args)
 	if err != nil {
@@ -74,20 +72,18 @@ func HandleBusiness_post_onboard_partners_to_mm_lite(ctx context.Context, reques
 // Business_post_onboard_partners_to_mm_lite performs POST onboard_partners_to_mm_lite for Business
 func Business_post_onboard_partners_to_mm_lite(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/onboard_partners_to_mm_lite")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

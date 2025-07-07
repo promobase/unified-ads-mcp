@@ -4,35 +4,35 @@ package constants
 
 // AdCreativeLinkDataImageLayerSpecFields contains field name constants for AdCreativeLinkDataImageLayerSpec objects
 var AdCreativeLinkDataImageLayerSpecFields = struct {
-	BlendingMode string
-	Content string
+	BlendingMode              string
+	Content                   string
 	FrameAutoShowEnrollStatus string
-	FrameImageHash string
-	FrameSource string
-	ImageSource string
-	LayerType string
-	Opacity string
-	OverlayPosition string
-	OverlayShape string
-	Scale string
-	ShapeColor string
-	TextColor string
-	TextFont string
+	FrameImageHash            string
+	FrameSource               string
+	ImageSource               string
+	LayerType                 string
+	Opacity                   string
+	OverlayPosition           string
+	OverlayShape              string
+	Scale                     string
+	ShapeColor                string
+	TextColor                 string
+	TextFont                  string
 }{
-	BlendingMode: "blending_mode",
-	Content: "content",
+	BlendingMode:              "blending_mode",
+	Content:                   "content",
 	FrameAutoShowEnrollStatus: "frame_auto_show_enroll_status",
-	FrameImageHash: "frame_image_hash",
-	FrameSource: "frame_source",
-	ImageSource: "image_source",
-	LayerType: "layer_type",
-	Opacity: "opacity",
-	OverlayPosition: "overlay_position",
-	OverlayShape: "overlay_shape",
-	Scale: "scale",
-	ShapeColor: "shape_color",
-	TextColor: "text_color",
-	TextFont: "text_font",
+	FrameImageHash:            "frame_image_hash",
+	FrameSource:               "frame_source",
+	ImageSource:               "image_source",
+	LayerType:                 "layer_type",
+	Opacity:                   "opacity",
+	OverlayPosition:           "overlay_position",
+	OverlayShape:              "overlay_shape",
+	Scale:                     "scale",
+	ShapeColor:                "shape_color",
+	TextColor:                 "text_color",
+	TextFont:                  "text_font",
 }
 
 // AdCreativeLinkDataImageLayerSpecFieldsList contains all available fields for AdCreativeLinkDataImageLayerSpec objects

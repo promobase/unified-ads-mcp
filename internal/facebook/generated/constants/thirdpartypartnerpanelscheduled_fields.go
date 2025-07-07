@@ -4,35 +4,35 @@ package constants
 
 // ThirdPartyPartnerPanelScheduledFields contains field name constants for ThirdPartyPartnerPanelScheduled objects
 var ThirdPartyPartnerPanelScheduledFields = struct {
-	AdentitiesIds string
-	Cadence string
-	Country string
-	CreatedTime string
-	Description string
-	EndTime string
-	Id string
-	ModifiedTime string
+	AdentitiesIds   string
+	Cadence         string
+	Country         string
+	CreatedTime     string
+	Description     string
+	EndTime         string
+	Id              string
+	ModifiedTime    string
 	OwnerInstanceId string
-	OwnerPanelId string
-	OwnerPanelName string
-	StartTime string
-	Status string
-	StudyType string
+	OwnerPanelId    string
+	OwnerPanelName  string
+	StartTime       string
+	Status          string
+	StudyType       string
 }{
-	AdentitiesIds: "adentities_ids",
-	Cadence: "cadence",
-	Country: "country",
-	CreatedTime: "created_time",
-	Description: "description",
-	EndTime: "end_time",
-	Id: "id",
-	ModifiedTime: "modified_time",
+	AdentitiesIds:   "adentities_ids",
+	Cadence:         "cadence",
+	Country:         "country",
+	CreatedTime:     "created_time",
+	Description:     "description",
+	EndTime:         "end_time",
+	Id:              "id",
+	ModifiedTime:    "modified_time",
 	OwnerInstanceId: "owner_instance_id",
-	OwnerPanelId: "owner_panel_id",
-	OwnerPanelName: "owner_panel_name",
-	StartTime: "start_time",
-	Status: "status",
-	StudyType: "study_type",
+	OwnerPanelId:    "owner_panel_id",
+	OwnerPanelName:  "owner_panel_name",
+	StartTime:       "start_time",
+	Status:          "status",
+	StudyType:       "study_type",
 }
 
 // ThirdPartyPartnerPanelScheduledFieldsList contains all available fields for ThirdPartyPartnerPanelScheduled objects

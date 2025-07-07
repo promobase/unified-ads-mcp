@@ -15,7 +15,7 @@ import (
 
 // ToolPage_post_pass_thread_control returns the MCP tool definition for page_post_pass_thread_control
 func ToolPage_post_pass_thread_control() mcp.Tool {
-	
+
 	// Params object accepts: metadata (string), recipient (Object), target_app_id (string)
 	return mcp.NewTool("page_post_pass_thread_control",
 		mcp.WithDescription("POST pass_thread_control for Page"),
@@ -23,16 +23,16 @@ func ToolPage_post_pass_thread_control() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"metadata": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "metadata parameter",
 				},
 				"recipient": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "recipient parameter",
-					"required": true,
+					"required":    true,
 				},
 				"target_app_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "target_app_id parameter",
 				},
 			}),
@@ -66,8 +66,6 @@ func HandlePage_post_pass_thread_control(ctx context.Context, request mcp.CallTo
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Page_post_pass_thread_control(accessToken, args)
 	if err != nil {
@@ -86,20 +84,18 @@ func HandlePage_post_pass_thread_control(ctx context.Context, request mcp.CallTo
 // Page_post_pass_thread_control performs POST pass_thread_control for Page
 func Page_post_pass_thread_control(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/pass_thread_control")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

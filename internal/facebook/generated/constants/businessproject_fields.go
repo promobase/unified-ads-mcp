@@ -4,17 +4,17 @@ package constants
 
 // BusinessProjectFields contains field name constants for BusinessProject objects
 var BusinessProjectFields = struct {
-	Business string
+	Business    string
 	CreatedTime string
-	Creator string
-	Id string
-	Name string
+	Creator     string
+	Id          string
+	Name        string
 }{
-	Business: "business",
+	Business:    "business",
 	CreatedTime: "created_time",
-	Creator: "creator",
-	Id: "id",
-	Name: "name",
+	Creator:     "creator",
+	Id:          "id",
+	Name:        "name",
 }
 
 // BusinessProjectFieldsList contains all available fields for BusinessProject objects

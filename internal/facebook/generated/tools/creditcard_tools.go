@@ -17,7 +17,6 @@ import (
 func GetCreditCardTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// creditcard_get_ tool
 	// Available fields for CreditCard: billing_address, card_cobadging, card_holder_name, card_type, credential_id, default_receiving_method_products, expiry_month, expiry_year, id, is_cvv_tricky_bin, is_enabled, is_last_used, is_network_tokenized_in_india, is_soft_disabled, is_user_verified, is_zip_verified, last4, readable_card_type, time_created, time_created_ts, type
 	creditcard_get_Tool := mcp.NewTool("creditcard_get_",
@@ -37,12 +36,10 @@ func GetCreditCardTools() []mcp.Tool {
 	)
 	tools = append(tools, creditcard_get_Tool)
 
-
 	return tools
 }
 
 // CreditCard handlers
-
 
 // HandleCreditcard_get_ handles the creditcard_get_ tool with context-based auth
 func HandleCreditcard_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleCreditcard_get_(ctx context.Context, request mcp.CallToolRequest) (*m
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Creditcard_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleCreditcard_get_(ctx context.Context, request mcp.CallToolRequest) (*m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

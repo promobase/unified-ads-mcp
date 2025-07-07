@@ -5,14 +5,14 @@ package constants
 // MessengerCallSettingsFields contains field name constants for MessengerCallSettings objects
 var MessengerCallSettingsFields = struct {
 	AudioEnabled string
-	CallHours string
-	CallRouting string
-	IconEnabled string
+	CallHours    string
+	CallRouting  string
+	IconEnabled  string
 }{
 	AudioEnabled: "audio_enabled",
-	CallHours: "call_hours",
-	CallRouting: "call_routing",
-	IconEnabled: "icon_enabled",
+	CallHours:    "call_hours",
+	CallRouting:  "call_routing",
+	IconEnabled:  "icon_enabled",
 }
 
 // MessengerCallSettingsFieldsList contains all available fields for MessengerCallSettings objects

@@ -17,7 +17,7 @@ import (
 // ToolUser_get_payment_transactions returns the MCP tool definition for user_get_payment_transactions
 func ToolUser_get_payment_transactions() mcp.Tool {
 	// Available fields for PaymentEnginePayment: actions, application, country, created_time, disputes, fraud_status, fulfillment_status, id, is_from_ad, is_from_page_post, items, payout_foreign_exchange_rate, phone_support_eligible, platform, refundable_amount, request_id, tax, tax_country, test, user
-	
+
 	return mcp.NewTool("user_get_payment_transactions",
 		mcp.WithDescription("GET payment_transactions for User"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleUser_get_payment_transactions(ctx context.Context, request mcp.CallTo
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := User_get_payment_transactions(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleUser_get_payment_transactions(ctx context.Context, request mcp.CallTo
 // User_get_payment_transactions performs GET payment_transactions for User
 func User_get_payment_transactions(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/payment_transactions")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

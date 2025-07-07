@@ -4,17 +4,17 @@ package constants
 
 // CommercePayoutFields contains field name constants for CommercePayout objects
 var CommercePayoutFields = struct {
-	Amount string
-	PayoutDate string
+	Amount            string
+	PayoutDate        string
 	PayoutReferenceId string
-	Status string
-	TransferId string
+	Status            string
+	TransferId        string
 }{
-	Amount: "amount",
-	PayoutDate: "payout_date",
+	Amount:            "amount",
+	PayoutDate:        "payout_date",
 	PayoutReferenceId: "payout_reference_id",
-	Status: "status",
-	TransferId: "transfer_id",
+	Status:            "status",
+	TransferId:        "transfer_id",
 }
 
 // CommercePayoutFieldsList contains all available fields for CommercePayout objects

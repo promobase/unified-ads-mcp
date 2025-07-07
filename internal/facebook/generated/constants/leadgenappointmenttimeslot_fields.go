@@ -4,10 +4,10 @@ package constants
 
 // LeadGenAppointmentTimeSlotFields contains field name constants for LeadGenAppointmentTimeSlot objects
 var LeadGenAppointmentTimeSlotFields = struct {
-	EndTime string
+	EndTime   string
 	StartTime string
 }{
-	EndTime: "end_time",
+	EndTime:   "end_time",
 	StartTime: "start_time",
 }
 

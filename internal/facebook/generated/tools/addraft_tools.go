@@ -17,7 +17,6 @@ import (
 func GetAdDraftTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// addraft_get_ tool
 	// Available fields for AdDraft: account_id, api_version, async_request_set, author_id, created_by, draft_version, id, is_active, name, ownership_type, publish_status, state, summary, time_created, time_updated
 	addraft_get_Tool := mcp.NewTool("addraft_get_",
@@ -37,12 +36,10 @@ func GetAdDraftTools() []mcp.Tool {
 	)
 	tools = append(tools, addraft_get_Tool)
 
-
 	return tools
 }
 
 // AdDraft handlers
-
 
 // HandleAddraft_get_ handles the addraft_get_ tool with context-based auth
 func HandleAddraft_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleAddraft_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Addraft_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleAddraft_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

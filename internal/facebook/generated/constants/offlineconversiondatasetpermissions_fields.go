@@ -4,14 +4,14 @@ package constants
 
 // OfflineConversionDataSetPermissionsFields contains field name constants for OfflineConversionDataSetPermissions objects
 var OfflineConversionDataSetPermissionsFields = struct {
-	CanEdit string
-	CanEditOrUpload string
-	CanUpload string
+	CanEdit                                  string
+	CanEditOrUpload                          string
+	CanUpload                                string
 	ShouldBlockVanillaBusinessEmployeeAccess string
 }{
-	CanEdit: "can_edit",
-	CanEditOrUpload: "can_edit_or_upload",
-	CanUpload: "can_upload",
+	CanEdit:                                  "can_edit",
+	CanEditOrUpload:                          "can_edit_or_upload",
+	CanUpload:                                "can_upload",
 	ShouldBlockVanillaBusinessEmployeeAccess: "should_block_vanilla_business_employee_access",
 }
 

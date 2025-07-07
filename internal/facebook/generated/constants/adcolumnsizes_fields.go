@@ -5,24 +5,24 @@ package constants
 // AdColumnSizesFields contains field name constants for AdColumnSizes objects
 var AdColumnSizesFields = struct {
 	AdmarketAccount string
-	AppId string
-	Columns string
-	Id string
-	Owner string
-	Page string
-	Report string
-	Tab string
-	View string
+	AppId           string
+	Columns         string
+	Id              string
+	Owner           string
+	Page            string
+	Report          string
+	Tab             string
+	View            string
 }{
 	AdmarketAccount: "admarket_account",
-	AppId: "app_id",
-	Columns: "columns",
-	Id: "id",
-	Owner: "owner",
-	Page: "page",
-	Report: "report",
-	Tab: "tab",
-	View: "view",
+	AppId:           "app_id",
+	Columns:         "columns",
+	Id:              "id",
+	Owner:           "owner",
+	Page:            "page",
+	Report:          "report",
+	Tab:             "tab",
+	View:            "view",
 }
 
 // AdColumnSizesFieldsList contains all available fields for AdColumnSizes objects

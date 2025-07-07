@@ -4,6 +4,6 @@ package types
 
 // PageStartInfo represents a Facebook PageStartInfo object
 type PageStartInfo struct {
-	Date map[string]interface{} `json:"date"`
-	Type_ string `json:"type"`
+	Date  map[string]interface{} `json:"date"`
+	Type_ string                 `json:"type"`
 }

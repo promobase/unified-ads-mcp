@@ -4,27 +4,27 @@ package constants
 
 // LiveVideoAdBreakConfigFields contains field name constants for LiveVideoAdBreakConfig objects
 var LiveVideoAdBreakConfigFields = struct {
-	DefaultAdBreakDuration string
+	DefaultAdBreakDuration       string
 	FailureReasonPollingInterval string
-	FirstBreakEligibleSecs string
-	GuideUrl string
-	IsEligibleToOnboard string
-	IsEnabled string
-	OnboardingUrl string
-	PreparingDuration string
-	TimeBetweenAdBreaksSecs string
-	ViewerCountThreshold string
+	FirstBreakEligibleSecs       string
+	GuideUrl                     string
+	IsEligibleToOnboard          string
+	IsEnabled                    string
+	OnboardingUrl                string
+	PreparingDuration            string
+	TimeBetweenAdBreaksSecs      string
+	ViewerCountThreshold         string
 }{
-	DefaultAdBreakDuration: "default_ad_break_duration",
+	DefaultAdBreakDuration:       "default_ad_break_duration",
 	FailureReasonPollingInterval: "failure_reason_polling_interval",
-	FirstBreakEligibleSecs: "first_break_eligible_secs",
-	GuideUrl: "guide_url",
-	IsEligibleToOnboard: "is_eligible_to_onboard",
-	IsEnabled: "is_enabled",
-	OnboardingUrl: "onboarding_url",
-	PreparingDuration: "preparing_duration",
-	TimeBetweenAdBreaksSecs: "time_between_ad_breaks_secs",
-	ViewerCountThreshold: "viewer_count_threshold",
+	FirstBreakEligibleSecs:       "first_break_eligible_secs",
+	GuideUrl:                     "guide_url",
+	IsEligibleToOnboard:          "is_eligible_to_onboard",
+	IsEnabled:                    "is_enabled",
+	OnboardingUrl:                "onboarding_url",
+	PreparingDuration:            "preparing_duration",
+	TimeBetweenAdBreaksSecs:      "time_between_ad_breaks_secs",
+	ViewerCountThreshold:         "viewer_count_threshold",
 }
 
 // LiveVideoAdBreakConfigFieldsList contains all available fields for LiveVideoAdBreakConfig objects

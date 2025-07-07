@@ -20,7 +20,6 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolAdlabel_get_())
 	tools = append(tools, ToolAdlabel_post_())
 
-
 	return tools
 }
 
@@ -35,7 +34,6 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers["adlabel_delete_"] = HandleAdlabel_delete_
 	handlers["adlabel_get_"] = HandleAdlabel_get_
 	handlers["adlabel_post_"] = HandleAdlabel_post_
-
 
 	return handlers
 }

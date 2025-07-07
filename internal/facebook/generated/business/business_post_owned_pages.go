@@ -15,7 +15,7 @@ import (
 
 // ToolBusiness_post_owned_pages returns the MCP tool definition for business_post_owned_pages
 func ToolBusiness_post_owned_pages() mcp.Tool {
-	
+
 	// Params object accepts: code (string), entry_point (string), page_id (int)
 	return mcp.NewTool("business_post_owned_pages",
 		mcp.WithDescription("POST owned_pages for Business"),
@@ -23,17 +23,17 @@ func ToolBusiness_post_owned_pages() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"code": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "code parameter",
 				},
 				"entry_point": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "entry_point parameter",
 				},
 				"page_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "page_id parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: code (string), entry_point (string), page_id (integer) [required]"),
@@ -66,8 +66,6 @@ func HandleBusiness_post_owned_pages(ctx context.Context, request mcp.CallToolRe
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Business_post_owned_pages(accessToken, args)
 	if err != nil {
@@ -86,20 +84,18 @@ func HandleBusiness_post_owned_pages(ctx context.Context, request mcp.CallToolRe
 // Business_post_owned_pages performs POST owned_pages for Business
 func Business_post_owned_pages(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/owned_pages")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

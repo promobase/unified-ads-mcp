@@ -17,7 +17,6 @@ import (
 func GetAdAsyncRequestSetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// adasyncrequestset_get_requests tool
 	// Available fields for AdAsyncRequest: async_request_set, created_time, id, input, result, scope_object_id, status, type, updated_time
 	// Params object accepts: statuses (list<adasyncrequestsetrequests_statuses_enum_param>)
@@ -26,10 +25,10 @@ func GetAdAsyncRequestSetTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"statuses": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "statuses parameter",
-					"enum": []string{ "CANCELED", "CANCELED_DEPENDENCY", "ERROR", "ERROR_CONFLICTS", "ERROR_DEPENDENCY", "INITIAL", "IN_PROGRESS", "PENDING_DEPENDENCY", "PROCESS_BY_AD_ASYNC_ENGINE", "PROCESS_BY_EVENT_PROCESSOR", "SUCCESS", "USER_CANCELED", "USER_CANCELED_DEPENDENCY" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"CANCELED", "CANCELED_DEPENDENCY", "ERROR", "ERROR_CONFLICTS", "ERROR_DEPENDENCY", "INITIAL", "IN_PROGRESS", "PENDING_DEPENDENCY", "PROCESS_BY_AD_ASYNC_ENGINE", "PROCESS_BY_EVENT_PROCESSOR", "SUCCESS", "USER_CANCELED", "USER_CANCELED_DEPENDENCY"},
+					"items":       map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: statuses (array<enum>) [CANCELED, CANCELED_DEPENDENCY, ERROR, ERROR_CONFLICTS, ERROR_DEPENDENCY, ...]"),
@@ -81,16 +80,16 @@ func GetAdAsyncRequestSetTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
 				},
 				"notification_mode": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "notification_mode parameter",
-					"enum": []string{ "OFF", "ON_COMPLETE" },
+					"enum":        []string{"OFF", "ON_COMPLETE"},
 				},
 				"notification_uri": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "notification_uri parameter",
 				},
 			}),
@@ -99,12 +98,10 @@ func GetAdAsyncRequestSetTools() []mcp.Tool {
 	)
 	tools = append(tools, adasyncrequestset_post_Tool)
 
-
 	return tools
 }
 
 // AdAsyncRequestSet handlers
-
 
 // HandleAdasyncrequestset_get_requests handles the adasyncrequestset_get_requests tool with context-based auth
 func HandleAdasyncrequestset_get_requests(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -157,8 +154,6 @@ func HandleAdasyncrequestset_get_requests(ctx context.Context, request mcp.CallT
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adasyncrequestset_get_requests(args)
 	if err != nil {
@@ -174,7 +169,6 @@ func HandleAdasyncrequestset_get_requests(ctx context.Context, request mcp.CallT
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleAdasyncrequestset_delete_ handles the adasyncrequestset_delete_ tool with context-based auth
 func HandleAdasyncrequestset_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
@@ -188,8 +182,6 @@ func HandleAdasyncrequestset_delete_(ctx context.Context, request mcp.CallToolRe
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Adasyncrequestset_delete_(args)
@@ -205,7 +197,6 @@ func HandleAdasyncrequestset_delete_(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdasyncrequestset_get_ handles the adasyncrequestset_get_ tool with context-based auth
 func HandleAdasyncrequestset_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -246,8 +237,6 @@ func HandleAdasyncrequestset_get_(ctx context.Context, request mcp.CallToolReque
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adasyncrequestset_get_(args)
 	if err != nil {
@@ -262,7 +251,6 @@ func HandleAdasyncrequestset_get_(ctx context.Context, request mcp.CallToolReque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdasyncrequestset_post_ handles the adasyncrequestset_post_ tool with context-based auth
 func HandleAdasyncrequestset_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -290,8 +278,6 @@ func HandleAdasyncrequestset_post_(ctx context.Context, request mcp.CallToolRequ
 		}
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adasyncrequestset_post_(args)
 	if err != nil {
@@ -306,4 +292,3 @@ func HandleAdasyncrequestset_post_(ctx context.Context, request mcp.CallToolRequ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

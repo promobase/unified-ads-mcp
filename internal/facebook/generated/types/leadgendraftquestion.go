@@ -4,12 +4,12 @@ package types
 
 // LeadGenDraftQuestion represents a Facebook LeadGenDraftQuestion object
 type LeadGenDraftQuestion struct {
-	Conditional_questions_choices []LeadGenConditionalQuestionsGroupChoices `json:"conditional_questions_choices"`
-	Conditional_questions_group_id string `json:"conditional_questions_group_id"`
+	Conditional_questions_choices   []LeadGenConditionalQuestionsGroupChoices   `json:"conditional_questions_choices"`
+	Conditional_questions_group_id  string                                      `json:"conditional_questions_group_id"`
 	Dependent_conditional_questions []LeadGenConditionalQuestionsGroupQuestions `json:"dependent_conditional_questions"`
-	Inline_context string `json:"inline_context"`
-	Key string `json:"key"`
-	Label string `json:"label"`
-	Options []LeadGenQuestionOption `json:"options"`
-	Type_ string `json:"type"`
+	Inline_context                  string                                      `json:"inline_context"`
+	Key                             string                                      `json:"key"`
+	Label                           string                                      `json:"label"`
+	Options                         []LeadGenQuestionOption                     `json:"options"`
+	Type_                           string                                      `json:"type"`
 }

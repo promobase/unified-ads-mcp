@@ -17,7 +17,6 @@ import (
 func GetBusinessRequestTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// businessrequest_get_ tool
 	// Available fields for BusinessRequest: accessor, creation_time, id, object_id, object_type, permitted_tasks, request_status, request_type, requestor
 	businessrequest_get_Tool := mcp.NewTool("businessrequest_get_",
@@ -37,12 +36,10 @@ func GetBusinessRequestTools() []mcp.Tool {
 	)
 	tools = append(tools, businessrequest_get_Tool)
 
-
 	return tools
 }
 
 // BusinessRequest handlers
-
 
 // HandleBusinessrequest_get_ handles the businessrequest_get_ tool with context-based auth
 func HandleBusinessrequest_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleBusinessrequest_get_(ctx context.Context, request mcp.CallToolRequest
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Businessrequest_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleBusinessrequest_get_(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

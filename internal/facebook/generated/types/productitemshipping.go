@@ -4,9 +4,9 @@ package types
 
 // ProductItemShipping represents a Facebook ProductItemShipping object
 type ProductItemShipping struct {
-	Shipping_country string `json:"shipping_country"`
-	Shipping_price_currency string `json:"shipping_price_currency"`
-	Shipping_price_value float64 `json:"shipping_price_value"`
-	Shipping_region string `json:"shipping_region"`
-	Shipping_service string `json:"shipping_service"`
+	Shipping_country        string  `json:"shipping_country"`
+	Shipping_price_currency string  `json:"shipping_price_currency"`
+	Shipping_price_value    float64 `json:"shipping_price_value"`
+	Shipping_region         string  `json:"shipping_region"`
+	Shipping_service        string  `json:"shipping_service"`
 }

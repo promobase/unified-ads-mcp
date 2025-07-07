@@ -4,17 +4,17 @@ package constants
 
 // AdAccountLiveVideoAdvertiserFields contains field name constants for AdAccountLiveVideoAdvertiser objects
 var AdAccountLiveVideoAdvertiserFields = struct {
-	IsLvaToggleOn string
-	LvaDefaultBudget string
-	ShouldDefaultCurrentLive string
+	IsLvaToggleOn              string
+	LvaDefaultBudget           string
+	ShouldDefaultCurrentLive   string
 	ShouldDefaultScheduledLive string
-	ShouldShowLvaToggle string
+	ShouldShowLvaToggle        string
 }{
-	IsLvaToggleOn: "is_lva_toggle_on",
-	LvaDefaultBudget: "lva_default_budget",
-	ShouldDefaultCurrentLive: "should_default_current_live",
+	IsLvaToggleOn:              "is_lva_toggle_on",
+	LvaDefaultBudget:           "lva_default_budget",
+	ShouldDefaultCurrentLive:   "should_default_current_live",
 	ShouldDefaultScheduledLive: "should_default_scheduled_live",
-	ShouldShowLvaToggle: "should_show_lva_toggle",
+	ShouldShowLvaToggle:        "should_show_lva_toggle",
 }
 
 // AdAccountLiveVideoAdvertiserFieldsList contains all available fields for AdAccountLiveVideoAdvertiser objects

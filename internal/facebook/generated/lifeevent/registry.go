@@ -15,7 +15,6 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolLifeevent_get_likes())
 	tools = append(tools, ToolLifeevent_get_())
 
-
 	return tools
 }
 
@@ -25,7 +24,6 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 
 	handlers["lifeevent_get_likes"] = HandleLifeevent_get_likes
 	handlers["lifeevent_get_"] = HandleLifeevent_get_
-
 
 	return handlers
 }

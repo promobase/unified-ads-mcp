@@ -4,17 +4,17 @@ package constants
 
 // FBPageAndInstagramAccountFields contains field name constants for FBPageAndInstagramAccount objects
 var FBPageAndInstagramAccountFields = struct {
-	AdPermissions string
+	AdPermissions      string
 	BcPermissionStatus string
-	BcPermissions string
-	IsManaged string
-	MatchedBy string
+	BcPermissions      string
+	IsManaged          string
+	MatchedBy          string
 }{
-	AdPermissions: "ad_permissions",
+	AdPermissions:      "ad_permissions",
 	BcPermissionStatus: "bc_permission_status",
-	BcPermissions: "bc_permissions",
-	IsManaged: "is_managed",
-	MatchedBy: "matched_by",
+	BcPermissions:      "bc_permissions",
+	IsManaged:          "is_managed",
+	MatchedBy:          "matched_by",
 }
 
 // FBPageAndInstagramAccountFieldsList contains all available fields for FBPageAndInstagramAccount objects

@@ -15,36 +15,36 @@ import (
 
 // ToolProductset_post_ returns the MCP tool definition for productset_post_
 func ToolProductset_post_() mcp.Tool {
-	
+
 	// Params object accepts: filter (Object), metadata (map), name (string), ordering_info (list<unsigned int>), publish_to_shops (list<map>), retailer_id (string)
 	return mcp.NewTool("productset_post_",
 		mcp.WithDescription("POST  for ProductSet"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"filter": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "filter parameter",
 				},
 				"metadata": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "metadata parameter",
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
 				},
 				"ordering_info": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "ordering_info parameter",
-					"items": map[string]any{"type": "integer"},
+					"items":       map[string]any{"type": "integer"},
 				},
 				"publish_to_shops": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "publish_to_shops parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"retailer_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "retailer_id parameter",
 				},
 			}),
@@ -76,8 +76,6 @@ func HandleProductset_post_(ctx context.Context, request mcp.CallToolRequest) (*
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Productset_post_(accessToken, args)
 	if err != nil {
@@ -96,20 +94,18 @@ func HandleProductset_post_(ctx context.Context, request mcp.CallToolRequest) (*
 // Productset_post_ performs POST  for ProductSet
 func Productset_post_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

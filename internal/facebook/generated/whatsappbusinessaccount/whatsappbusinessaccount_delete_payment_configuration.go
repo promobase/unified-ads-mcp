@@ -15,7 +15,7 @@ import (
 
 // ToolWhatsappbusinessaccount_delete_payment_configuration returns the MCP tool definition for whatsappbusinessaccount_delete_payment_configuration
 func ToolWhatsappbusinessaccount_delete_payment_configuration() mcp.Tool {
-	
+
 	// Params object accepts: configuration_name (string)
 	return mcp.NewTool("whatsappbusinessaccount_delete_payment_configuration",
 		mcp.WithDescription("DELETE payment_configuration for WhatsAppBusinessAccount"),
@@ -23,9 +23,9 @@ func ToolWhatsappbusinessaccount_delete_payment_configuration() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"configuration_name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "configuration_name parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: configuration_name (string) [required]"),
@@ -58,8 +58,6 @@ func HandleWhatsappbusinessaccount_delete_payment_configuration(ctx context.Cont
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Whatsappbusinessaccount_delete_payment_configuration(accessToken, args)
 	if err != nil {
@@ -78,20 +76,18 @@ func HandleWhatsappbusinessaccount_delete_payment_configuration(ctx context.Cont
 // Whatsappbusinessaccount_delete_payment_configuration performs DELETE payment_configuration for WhatsAppBusinessAccount
 func Whatsappbusinessaccount_delete_payment_configuration(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/payment_configuration")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

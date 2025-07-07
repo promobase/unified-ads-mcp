@@ -15,7 +15,7 @@ import (
 
 // ToolBusinessassetgroup_delete_contained_instagram_accounts returns the MCP tool definition for businessassetgroup_delete_contained_instagram_accounts
 func ToolBusinessassetgroup_delete_contained_instagram_accounts() mcp.Tool {
-	
+
 	// Params object accepts: asset_id (string)
 	return mcp.NewTool("businessassetgroup_delete_contained_instagram_accounts",
 		mcp.WithDescription("DELETE contained_instagram_accounts for BusinessAssetGroup"),
@@ -23,9 +23,9 @@ func ToolBusinessassetgroup_delete_contained_instagram_accounts() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"asset_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "asset_id parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: asset_id (string) [required]"),
@@ -58,8 +58,6 @@ func HandleBusinessassetgroup_delete_contained_instagram_accounts(ctx context.Co
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Businessassetgroup_delete_contained_instagram_accounts(accessToken, args)
 	if err != nil {
@@ -78,20 +76,18 @@ func HandleBusinessassetgroup_delete_contained_instagram_accounts(ctx context.Co
 // Businessassetgroup_delete_contained_instagram_accounts performs DELETE contained_instagram_accounts for BusinessAssetGroup
 func Businessassetgroup_delete_contained_instagram_accounts(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/contained_instagram_accounts")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

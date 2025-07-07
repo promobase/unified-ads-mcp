@@ -19,7 +19,6 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolExtendedcreditinvoicegroup_get_())
 	tools = append(tools, ToolExtendedcreditinvoicegroup_post_())
 
-
 	return tools
 }
 
@@ -33,7 +32,6 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers["extendedcreditinvoicegroup_delete_"] = HandleExtendedcreditinvoicegroup_delete_
 	handlers["extendedcreditinvoicegroup_get_"] = HandleExtendedcreditinvoicegroup_get_
 	handlers["extendedcreditinvoicegroup_post_"] = HandleExtendedcreditinvoicegroup_post_
-
 
 	return handlers
 }

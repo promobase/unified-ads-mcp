@@ -17,7 +17,6 @@ import (
 func GetAdsReportBuilderExportCoreTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// adsreportbuilderexportcore_get_ tool
 	// Available fields for AdsReportBuilderExportCore: async_percent_completion, async_report_url, async_status, client_creation_value, expiry_time, export_download_time, export_format, export_name, export_type, has_seen, id, is_sharing, link_sharing_expiration_time, link_sharing_uri, time_completed, time_start
 	adsreportbuilderexportcore_get_Tool := mcp.NewTool("adsreportbuilderexportcore_get_",
@@ -37,12 +36,10 @@ func GetAdsReportBuilderExportCoreTools() []mcp.Tool {
 	)
 	tools = append(tools, adsreportbuilderexportcore_get_Tool)
 
-
 	return tools
 }
 
 // AdsReportBuilderExportCore handlers
-
 
 // HandleAdsreportbuilderexportcore_get_ handles the adsreportbuilderexportcore_get_ tool with context-based auth
 func HandleAdsreportbuilderexportcore_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleAdsreportbuilderexportcore_get_(ctx context.Context, request mcp.Call
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adsreportbuilderexportcore_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleAdsreportbuilderexportcore_get_(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

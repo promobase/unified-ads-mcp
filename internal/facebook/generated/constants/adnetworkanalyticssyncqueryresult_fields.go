@@ -5,12 +5,12 @@ package constants
 // AdNetworkAnalyticsSyncQueryResultFields contains field name constants for AdNetworkAnalyticsSyncQueryResult objects
 var AdNetworkAnalyticsSyncQueryResultFields = struct {
 	OmittedResults string
-	QueryId string
-	Results string
+	QueryId        string
+	Results        string
 }{
 	OmittedResults: "omitted_results",
-	QueryId: "query_id",
-	Results: "results",
+	QueryId:        "query_id",
+	Results:        "results",
 }
 
 // AdNetworkAnalyticsSyncQueryResultFieldsList contains all available fields for AdNetworkAnalyticsSyncQueryResult objects

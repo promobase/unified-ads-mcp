@@ -4,10 +4,10 @@ package constants
 
 // AdsStartYourDayWidgetFields contains field name constants for AdsStartYourDayWidget objects
 var AdsStartYourDayWidgetFields = struct {
-	Id string
+	Id       string
 	WidgetId string
 }{
-	Id: "id",
+	Id:       "id",
 	WidgetId: "widget_id",
 }
 

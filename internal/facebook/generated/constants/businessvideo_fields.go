@@ -4,17 +4,17 @@ package constants
 
 // BusinessVideoFields contains field name constants for BusinessVideo objects
 var BusinessVideoFields = struct {
-	Business string
-	Id string
+	Business        string
+	Id              string
 	MediaLibraryUrl string
-	Name string
-	Video string
+	Name            string
+	Video           string
 }{
-	Business: "business",
-	Id: "id",
+	Business:        "business",
+	Id:              "id",
 	MediaLibraryUrl: "media_library_url",
-	Name: "name",
-	Video: "video",
+	Name:            "name",
+	Video:           "video",
 }
 
 // BusinessVideoFieldsList contains all available fields for BusinessVideo objects

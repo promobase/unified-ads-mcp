@@ -4,25 +4,25 @@ package constants
 
 // AdPlacementFields contains field name constants for AdPlacement objects
 var AdPlacementFields = struct {
-	BundleId string
-	DisplayFormat string
+	BundleId            string
+	DisplayFormat       string
 	ExternalPlacementId string
 	GoogleDisplayFormat string
-	Id string
-	Name string
-	PlacementGroup string
-	Platform string
-	Status string
+	Id                  string
+	Name                string
+	PlacementGroup      string
+	Platform            string
+	Status              string
 }{
-	BundleId: "bundle_id",
-	DisplayFormat: "display_format",
+	BundleId:            "bundle_id",
+	DisplayFormat:       "display_format",
 	ExternalPlacementId: "external_placement_id",
 	GoogleDisplayFormat: "google_display_format",
-	Id: "id",
-	Name: "name",
-	PlacementGroup: "placement_group",
-	Platform: "platform",
-	Status: "status",
+	Id:                  "id",
+	Name:                "name",
+	PlacementGroup:      "placement_group",
+	Platform:            "platform",
+	Status:              "status",
 }
 
 // AdPlacementFieldsList contains all available fields for AdPlacement objects

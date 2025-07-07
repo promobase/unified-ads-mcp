@@ -15,40 +15,40 @@ import (
 
 // ToolApplication_post_accounts returns the MCP tool definition for application_post_accounts
 func ToolApplication_post_accounts() mcp.Tool {
-	
+
 	// Params object accepts: installed (bool), minor (bool), name (string), owner_access_token (string), permissions (list<Permission>), type (applicationaccounts_type_enum_param), uid (int)
 	return mcp.NewTool("application_post_accounts",
 		mcp.WithDescription("POST accounts for Application"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"installed": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "installed parameter",
 				},
 				"minor": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "minor parameter",
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
 				},
 				"owner_access_token": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "owner_access_token parameter",
 				},
 				"permissions": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "permissions parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "type parameter",
-					"enum": []string{ "test-users" },
+					"enum":        []string{"test-users"},
 				},
 				"uid": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "uid parameter",
 				},
 			}),
@@ -80,8 +80,6 @@ func HandleApplication_post_accounts(ctx context.Context, request mcp.CallToolRe
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Application_post_accounts(accessToken, args)
 	if err != nil {
@@ -100,20 +98,18 @@ func HandleApplication_post_accounts(ctx context.Context, request mcp.CallToolRe
 // Application_post_accounts performs POST accounts for Application
 func Application_post_accounts(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/accounts")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

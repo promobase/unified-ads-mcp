@@ -15,26 +15,26 @@ import (
 
 // ToolPhoto_post_likes returns the MCP tool definition for photo_post_likes
 func ToolPhoto_post_likes() mcp.Tool {
-	
+
 	// Params object accepts: feedback_source (string), nectar_module (string), notify (bool), tracking (string)
 	return mcp.NewTool("photo_post_likes",
 		mcp.WithDescription("POST likes for Photo"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"feedback_source": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "feedback_source parameter",
 				},
 				"nectar_module": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "nectar_module parameter",
 				},
 				"notify": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "notify parameter",
 				},
 				"tracking": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "tracking parameter",
 				},
 			}),
@@ -66,8 +66,6 @@ func HandlePhoto_post_likes(ctx context.Context, request mcp.CallToolRequest) (*
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Photo_post_likes(accessToken, args)
 	if err != nil {
@@ -86,20 +84,18 @@ func HandlePhoto_post_likes(ctx context.Context, request mcp.CallToolRequest) (*
 // Photo_post_likes performs POST likes for Photo
 func Photo_post_likes(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/likes")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

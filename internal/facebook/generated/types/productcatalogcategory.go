@@ -4,11 +4,11 @@ package types
 
 // ProductCatalogCategory represents a Facebook ProductCatalogCategory object
 type ProductCatalogCategory struct {
-	Criteria_value string `json:"criteria_value"`
-	Description string `json:"description"`
-	Destination_uri string `json:"destination_uri"`
-	Image_url string `json:"image_url"`
-	Name string `json:"name"`
-	Num_items int `json:"num_items"`
-	Tokens []interface{} `json:"tokens"`
+	Criteria_value  string        `json:"criteria_value"`
+	Description     string        `json:"description"`
+	Destination_uri string        `json:"destination_uri"`
+	Image_url       string        `json:"image_url"`
+	Name            string        `json:"name"`
+	Num_items       int           `json:"num_items"`
+	Tokens          []interface{} `json:"tokens"`
 }

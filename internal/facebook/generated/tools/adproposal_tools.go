@@ -17,7 +17,6 @@ import (
 func GetAdProposalTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// adproposal_get_ tool
 	// Available fields for AdProposal: ad_proposal_type_name, adaccount, creation_time, creator, delivery_interface, expiration_time, has_conflict, id, kpi_metric, message, name, proposal_dts_template, proposal_template_name, recommendation, review_time, reviewed_by, send_time, status, use_testing
 	adproposal_get_Tool := mcp.NewTool("adproposal_get_",
@@ -37,12 +36,10 @@ func GetAdProposalTools() []mcp.Tool {
 	)
 	tools = append(tools, adproposal_get_Tool)
 
-
 	return tools
 }
 
 // AdProposal handlers
-
 
 // HandleAdproposal_get_ handles the adproposal_get_ tool with context-based auth
 func HandleAdproposal_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleAdproposal_get_(ctx context.Context, request mcp.CallToolRequest) (*m
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adproposal_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleAdproposal_get_(ctx context.Context, request mcp.CallToolRequest) (*m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

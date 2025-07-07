@@ -15,8 +15,7 @@ import (
 
 // ToolAdsvalueadjustmentrulecollection_post_delete_rule_set returns the MCP tool definition for adsvalueadjustmentrulecollection_post_delete_rule_set
 func ToolAdsvalueadjustmentrulecollection_post_delete_rule_set() mcp.Tool {
-	
-	
+
 	return mcp.NewTool("adsvalueadjustmentrulecollection_post_delete_rule_set",
 		mcp.WithDescription("POST delete_rule_set for AdsValueAdjustmentRuleCollection"),
 	)
@@ -32,8 +31,6 @@ func HandleAdsvalueadjustmentrulecollection_post_delete_rule_set(ctx context.Con
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the API method
 	result, err := Adsvalueadjustmentrulecollection_post_delete_rule_set(accessToken, args)
@@ -53,14 +50,11 @@ func HandleAdsvalueadjustmentrulecollection_post_delete_rule_set(ctx context.Con
 // Adsvalueadjustmentrulecollection_post_delete_rule_set performs POST delete_rule_set for AdsValueAdjustmentRuleCollection
 func Adsvalueadjustmentrulecollection_post_delete_rule_set(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/delete_rule_set")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response

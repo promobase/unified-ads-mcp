@@ -17,7 +17,7 @@ import (
 // ToolAdruleexecutionspec_get_ returns the MCP tool definition for adruleexecutionspec_get_
 func ToolAdruleexecutionspec_get_() mcp.Tool {
 	// Available fields for AdRuleExecutionSpec: execution_options, execution_type, is_once_off
-	
+
 	return mcp.NewTool("adruleexecutionspec_get_",
 		mcp.WithDescription("GET  for AdRuleExecutionSpec"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleAdruleexecutionspec_get_(ctx context.Context, request mcp.CallToolReq
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Adruleexecutionspec_get_(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleAdruleexecutionspec_get_(ctx context.Context, request mcp.CallToolReq
 // Adruleexecutionspec_get_ performs GET  for AdRuleExecutionSpec
 func Adruleexecutionspec_get_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

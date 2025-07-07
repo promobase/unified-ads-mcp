@@ -5,22 +5,22 @@ package constants
 // AdCreativeObjectStorySpecFields contains field name constants for AdCreativeObjectStorySpec objects
 var AdCreativeObjectStorySpecFields = struct {
 	InstagramUserId string
-	LinkData string
-	PageId string
-	PhotoData string
-	ProductData string
-	TemplateData string
-	TextData string
-	VideoData string
+	LinkData        string
+	PageId          string
+	PhotoData       string
+	ProductData     string
+	TemplateData    string
+	TextData        string
+	VideoData       string
 }{
 	InstagramUserId: "instagram_user_id",
-	LinkData: "link_data",
-	PageId: "page_id",
-	PhotoData: "photo_data",
-	ProductData: "product_data",
-	TemplateData: "template_data",
-	TextData: "text_data",
-	VideoData: "video_data",
+	LinkData:        "link_data",
+	PageId:          "page_id",
+	PhotoData:       "photo_data",
+	ProductData:     "product_data",
+	TemplateData:    "template_data",
+	TextData:        "text_data",
+	VideoData:       "video_data",
 }
 
 // AdCreativeObjectStorySpecFieldsList contains all available fields for AdCreativeObjectStorySpec objects

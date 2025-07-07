@@ -17,7 +17,6 @@ import (
 func GetAudioSubLabelTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// audiosublabel_get_ tool
 	// Available fields for AudioSubLabel: expiration_timestamp, flagged_timestamp, id, label_name, last_update_timestamp, num_audio_tracks, state
 	audiosublabel_get_Tool := mcp.NewTool("audiosublabel_get_",
@@ -37,12 +36,10 @@ func GetAudioSubLabelTools() []mcp.Tool {
 	)
 	tools = append(tools, audiosublabel_get_Tool)
 
-
 	return tools
 }
 
 // AudioSubLabel handlers
-
 
 // HandleAudiosublabel_get_ handles the audiosublabel_get_ tool with context-based auth
 func HandleAudiosublabel_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleAudiosublabel_get_(ctx context.Context, request mcp.CallToolRequest) 
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Audiosublabel_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleAudiosublabel_get_(ctx context.Context, request mcp.CallToolRequest) 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

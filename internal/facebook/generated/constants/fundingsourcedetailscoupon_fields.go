@@ -4,33 +4,33 @@ package constants
 
 // FundingSourceDetailsCouponFields contains field name constants for FundingSourceDetailsCoupon objects
 var FundingSourceDetailsCouponFields = struct {
-	Amount string
-	CampaignIds string
-	ChildAdAccountId string
-	ChildBmId string
-	CouponId string
-	CouponTiering string
-	Currency string
-	DisplayAmount string
-	Expiration string
-	OriginalAmount string
+	Amount                string
+	CampaignIds           string
+	ChildAdAccountId      string
+	ChildBmId             string
+	CouponId              string
+	CouponTiering         string
+	Currency              string
+	DisplayAmount         string
+	Expiration            string
+	OriginalAmount        string
 	OriginalDisplayAmount string
-	StartDate string
-	VendorId string
+	StartDate             string
+	VendorId              string
 }{
-	Amount: "amount",
-	CampaignIds: "campaign_ids",
-	ChildAdAccountId: "child_ad_account_id",
-	ChildBmId: "child_bm_id",
-	CouponId: "coupon_id",
-	CouponTiering: "coupon_tiering",
-	Currency: "currency",
-	DisplayAmount: "display_amount",
-	Expiration: "expiration",
-	OriginalAmount: "original_amount",
+	Amount:                "amount",
+	CampaignIds:           "campaign_ids",
+	ChildAdAccountId:      "child_ad_account_id",
+	ChildBmId:             "child_bm_id",
+	CouponId:              "coupon_id",
+	CouponTiering:         "coupon_tiering",
+	Currency:              "currency",
+	DisplayAmount:         "display_amount",
+	Expiration:            "expiration",
+	OriginalAmount:        "original_amount",
 	OriginalDisplayAmount: "original_display_amount",
-	StartDate: "start_date",
-	VendorId: "vendor_id",
+	StartDate:             "start_date",
+	VendorId:              "vendor_id",
 }
 
 // FundingSourceDetailsCouponFieldsList contains all available fields for FundingSourceDetailsCoupon objects

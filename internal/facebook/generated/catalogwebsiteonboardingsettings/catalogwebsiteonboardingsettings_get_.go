@@ -17,7 +17,7 @@ import (
 // ToolCatalogwebsiteonboardingsettings_get_ returns the MCP tool definition for catalogwebsiteonboardingsettings_get_
 func ToolCatalogwebsiteonboardingsettings_get_() mcp.Tool {
 	// Available fields for CatalogWebsiteOnboardingSettings: id, quality_band, status
-	
+
 	return mcp.NewTool("catalogwebsiteonboardingsettings_get_",
 		mcp.WithDescription("GET  for CatalogWebsiteOnboardingSettings"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleCatalogwebsiteonboardingsettings_get_(ctx context.Context, request mc
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Catalogwebsiteonboardingsettings_get_(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleCatalogwebsiteonboardingsettings_get_(ctx context.Context, request mc
 // Catalogwebsiteonboardingsettings_get_ performs GET  for CatalogWebsiteOnboardingSettings
 func Catalogwebsiteonboardingsettings_get_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

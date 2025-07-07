@@ -17,7 +17,7 @@ import (
 // ToolAdaccount_get_customconversions returns the MCP tool definition for adaccount_get_customconversions
 func ToolAdaccount_get_customconversions() mcp.Tool {
 	// Available fields for CustomConversion: account_id, aggregation_rule, business, creation_time, custom_event_type, data_sources, default_conversion_value, description, event_source_type, first_fired_time, id, is_archived, is_unavailable, last_fired_time, name, offline_conversion_data_set, pixel, retention_days, rule
-	
+
 	return mcp.NewTool("adaccount_get_customconversions",
 		mcp.WithDescription("GET customconversions for AdAccount"),
 		mcp.WithString("account_id",
@@ -82,8 +82,6 @@ func HandleAdaccount_get_customconversions(ctx context.Context, request mcp.Call
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Adaccount_get_customconversions(accessToken, args)
 	if err != nil {
@@ -102,59 +100,57 @@ func HandleAdaccount_get_customconversions(ctx context.Context, request mcp.Call
 // Adaccount_get_customconversions performs GET customconversions for AdAccount
 func Adaccount_get_customconversions(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	// Extract account_id for URL construction
 	accountId, ok := args["account_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_get_customconversions")
 	}
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%scustomconversions", accountId)
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-		
-	}
 
+	}
 
 	// Make HTTP request
 	var resp *http.Response

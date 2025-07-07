@@ -5,14 +5,14 @@ package constants
 // AdAccountSmartSuggestedAdsFields contains field name constants for AdAccountSmartSuggestedAds objects
 var AdAccountSmartSuggestedAdsFields = struct {
 	AdCreativeSpec string
-	Description string
-	GuidanceSpec string
-	ThumbnailUrl string
+	Description    string
+	GuidanceSpec   string
+	ThumbnailUrl   string
 }{
 	AdCreativeSpec: "ad_creative_spec",
-	Description: "description",
-	GuidanceSpec: "guidance_spec",
-	ThumbnailUrl: "thumbnail_url",
+	Description:    "description",
+	GuidanceSpec:   "guidance_spec",
+	ThumbnailUrl:   "thumbnail_url",
 }
 
 // AdAccountSmartSuggestedAdsFieldsList contains all available fields for AdAccountSmartSuggestedAds objects

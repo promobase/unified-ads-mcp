@@ -15,7 +15,7 @@ import (
 
 // ToolUser_post_applications returns the MCP tool definition for user_post_applications
 func ToolUser_post_applications() mcp.Tool {
-	
+
 	// Params object accepts: business_app (int)
 	return mcp.NewTool("user_post_applications",
 		mcp.WithDescription("POST applications for User"),
@@ -23,9 +23,9 @@ func ToolUser_post_applications() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"business_app": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "business_app parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: business_app (integer) [required]"),
@@ -58,8 +58,6 @@ func HandleUser_post_applications(ctx context.Context, request mcp.CallToolReque
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := User_post_applications(accessToken, args)
 	if err != nil {
@@ -78,20 +76,18 @@ func HandleUser_post_applications(ctx context.Context, request mcp.CallToolReque
 // User_post_applications performs POST applications for User
 func User_post_applications(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/applications")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

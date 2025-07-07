@@ -15,32 +15,32 @@ import (
 
 // ToolAdrule_post_ returns the MCP tool definition for adrule_post_
 func ToolAdrule_post_() mcp.Tool {
-	
+
 	// Params object accepts: evaluation_spec (Object), execution_spec (Object), name (string), schedule_spec (Object), status (adrule_status)
 	return mcp.NewTool("adrule_post_",
 		mcp.WithDescription("POST  for AdRule"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"evaluation_spec": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "evaluation_spec parameter",
 				},
 				"execution_spec": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "execution_spec parameter",
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
 				},
 				"schedule_spec": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "schedule_spec parameter",
 				},
 				"status": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "status parameter",
-					"enum": []string{ "DELETED", "DISABLED", "ENABLED", "HAS_ISSUES" },
+					"enum":        []string{"DELETED", "DISABLED", "ENABLED", "HAS_ISSUES"},
 				},
 			}),
 			mcp.Description("Parameters object containing: evaluation_spec (object), execution_spec (object), name (string), schedule_spec (object), status (adrule_status) [DELETED, DISABLED, ENABLED, HAS_ISSUES]"),
@@ -71,8 +71,6 @@ func HandleAdrule_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Adrule_post_(accessToken, args)
 	if err != nil {
@@ -91,20 +89,18 @@ func HandleAdrule_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 // Adrule_post_ performs POST  for AdRule
 func Adrule_post_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

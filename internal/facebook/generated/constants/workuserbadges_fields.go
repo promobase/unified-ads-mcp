@@ -4,17 +4,17 @@ package constants
 
 // WorkUserBadgesFields contains field name constants for WorkUserBadges objects
 var WorkUserBadgesFields = struct {
-	Category string
+	Category    string
 	Description string
-	Icon string
-	Id string
-	Name string
+	Icon        string
+	Id          string
+	Name        string
 }{
-	Category: "category",
+	Category:    "category",
 	Description: "description",
-	Icon: "icon",
-	Id: "id",
-	Name: "name",
+	Icon:        "icon",
+	Id:          "id",
+	Name:        "name",
 }
 
 // WorkUserBadgesFieldsList contains all available fields for WorkUserBadges objects

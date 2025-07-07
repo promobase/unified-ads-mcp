@@ -17,7 +17,6 @@ import (
 func GetPublisherBlockListTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// publisherblocklist_post_append_publisher_urls tool
 	// Params object accepts: publisher_urls (list<string>)
 	publisherblocklist_post_append_publisher_urlsTool := mcp.NewTool("publisherblocklist_post_append_publisher_urls",
@@ -26,10 +25,10 @@ func GetPublisherBlockListTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"publisher_urls": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "publisher_urls parameter",
-					"required": true,
-					"items": map[string]any{"type": "string"},
+					"required":    true,
+					"items":       map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: publisher_urls (array<string>) [required]"),
@@ -45,7 +44,7 @@ func GetPublisherBlockListTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"draft_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "draft_id parameter",
 				},
 			}),
@@ -80,15 +79,15 @@ func GetPublisherBlockListTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"account_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "account_id parameter",
 				},
 				"business_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "business_id parameter",
 				},
 				"draft_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "draft_id parameter",
 				},
 			}),
@@ -117,9 +116,9 @@ func GetPublisherBlockListTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"spec": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "spec parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: spec (object) [required]"),
@@ -127,12 +126,10 @@ func GetPublisherBlockListTools() []mcp.Tool {
 	)
 	tools = append(tools, publisherblocklist_post_Tool)
 
-
 	return tools
 }
 
 // PublisherBlockList handlers
-
 
 // HandlePublisherblocklist_post_append_publisher_urls handles the publisherblocklist_post_append_publisher_urls tool with context-based auth
 func HandlePublisherblocklist_post_append_publisher_urls(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -162,8 +159,6 @@ func HandlePublisherblocklist_post_append_publisher_urls(ctx context.Context, re
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Publisherblocklist_post_append_publisher_urls(args)
 	if err != nil {
@@ -178,7 +173,6 @@ func HandlePublisherblocklist_post_append_publisher_urls(ctx context.Context, re
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePublisherblocklist_get_paged_web_publishers handles the publisherblocklist_get_paged_web_publishers tool with context-based auth
 func HandlePublisherblocklist_get_paged_web_publishers(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -231,8 +225,6 @@ func HandlePublisherblocklist_get_paged_web_publishers(ctx context.Context, requ
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Publisherblocklist_get_paged_web_publishers(args)
 	if err != nil {
@@ -248,7 +240,6 @@ func HandlePublisherblocklist_get_paged_web_publishers(ctx context.Context, requ
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandlePublisherblocklist_delete_ handles the publisherblocklist_delete_ tool with context-based auth
 func HandlePublisherblocklist_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
@@ -262,8 +253,6 @@ func HandlePublisherblocklist_delete_(ctx context.Context, request mcp.CallToolR
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Publisherblocklist_delete_(args)
@@ -279,7 +268,6 @@ func HandlePublisherblocklist_delete_(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePublisherblocklist_get_ handles the publisherblocklist_get_ tool with context-based auth
 func HandlePublisherblocklist_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -332,8 +320,6 @@ func HandlePublisherblocklist_get_(ctx context.Context, request mcp.CallToolRequ
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Publisherblocklist_get_(args)
 	if err != nil {
@@ -348,7 +334,6 @@ func HandlePublisherblocklist_get_(ctx context.Context, request mcp.CallToolRequ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePublisherblocklist_post_ handles the publisherblocklist_post_ tool with context-based auth
 func HandlePublisherblocklist_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -378,8 +363,6 @@ func HandlePublisherblocklist_post_(ctx context.Context, request mcp.CallToolReq
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Publisherblocklist_post_(args)
 	if err != nil {
@@ -394,4 +377,3 @@ func HandlePublisherblocklist_post_(ctx context.Context, request mcp.CallToolReq
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

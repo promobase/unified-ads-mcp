@@ -15,18 +15,18 @@ import (
 
 // ToolWhatsappbusinessaccount_post_subscribed_apps returns the MCP tool definition for whatsappbusinessaccount_post_subscribed_apps
 func ToolWhatsappbusinessaccount_post_subscribed_apps() mcp.Tool {
-	
+
 	// Params object accepts: override_callback_uri (string), verify_token (string)
 	return mcp.NewTool("whatsappbusinessaccount_post_subscribed_apps",
 		mcp.WithDescription("POST subscribed_apps for WhatsAppBusinessAccount"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"override_callback_uri": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "override_callback_uri parameter",
 				},
 				"verify_token": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "verify_token parameter",
 				},
 			}),
@@ -58,8 +58,6 @@ func HandleWhatsappbusinessaccount_post_subscribed_apps(ctx context.Context, req
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Whatsappbusinessaccount_post_subscribed_apps(accessToken, args)
 	if err != nil {
@@ -78,20 +76,18 @@ func HandleWhatsappbusinessaccount_post_subscribed_apps(ctx context.Context, req
 // Whatsappbusinessaccount_post_subscribed_apps performs POST subscribed_apps for WhatsAppBusinessAccount
 func Whatsappbusinessaccount_post_subscribed_apps(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/subscribed_apps")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

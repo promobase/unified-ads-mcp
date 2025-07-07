@@ -17,7 +17,7 @@ import (
 // ToolRobot_get_ returns the MCP tool definition for robot_get_
 func ToolRobot_get_() mcp.Tool {
 	// Available fields for Robot: bringup_vars, configurations, data_center, id, init_pos, last_pos, meetup_link_hash, suite, target_map_image_uri, target_os_image_uri, target_sw_image_uri, user
-	
+
 	return mcp.NewTool("robot_get_",
 		mcp.WithDescription("GET  for Robot"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleRobot_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Ca
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Robot_get_(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleRobot_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Ca
 // Robot_get_ performs GET  for Robot
 func Robot_get_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

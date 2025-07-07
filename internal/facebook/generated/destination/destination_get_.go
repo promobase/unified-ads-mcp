@@ -17,7 +17,7 @@ import (
 // ToolDestination_get_ returns the MCP tool definition for destination_get_
 func ToolDestination_get_() mcp.Tool {
 	// Available fields for Destination: address, applinks, category_specific_fields, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0, custom_number_1, custom_number_2, custom_number_3, custom_number_4, description, destination_id, id, image_fetch_status, images, name, price, price_change, sanitized_images, tags, types, unit_price, url, visibility
-	
+
 	return mcp.NewTool("destination_get_",
 		mcp.WithDescription("GET  for Destination"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleDestination_get_(ctx context.Context, request mcp.CallToolRequest) (*
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Destination_get_(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleDestination_get_(ctx context.Context, request mcp.CallToolRequest) (*
 // Destination_get_ performs GET  for Destination
 func Destination_get_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

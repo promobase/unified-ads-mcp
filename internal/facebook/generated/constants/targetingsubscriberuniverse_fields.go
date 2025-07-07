@@ -5,12 +5,12 @@ package constants
 // TargetingSubscriberUniverseFields contains field name constants for TargetingSubscriberUniverse objects
 var TargetingSubscriberUniverseFields = struct {
 	MessengerSubscriberSource string
-	WhatsappSubscriberPool string
-	WhatsappSubscriberSource string
+	WhatsappSubscriberPool    string
+	WhatsappSubscriberSource  string
 }{
 	MessengerSubscriberSource: "messenger_subscriber_source",
-	WhatsappSubscriberPool: "whatsapp_subscriber_pool",
-	WhatsappSubscriberSource: "whatsapp_subscriber_source",
+	WhatsappSubscriberPool:    "whatsapp_subscriber_pool",
+	WhatsappSubscriberSource:  "whatsapp_subscriber_source",
 }
 
 // TargetingSubscriberUniverseFieldsList contains all available fields for TargetingSubscriberUniverse objects

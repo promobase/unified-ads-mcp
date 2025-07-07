@@ -4,25 +4,25 @@ package constants
 
 // HasLeadAccessFields contains field name constants for HasLeadAccess objects
 var HasLeadAccessFields = struct {
-	AppHasLeadsPermission string
-	CanAccessLead string
+	AppHasLeadsPermission    string
+	CanAccessLead            string
 	EnabledLeadAccessManager string
-	FailureReason string
-	FailureResolution string
-	IsPageAdmin string
-	PageId string
-	UserHasLeadsPermission string
-	UserId string
+	FailureReason            string
+	FailureResolution        string
+	IsPageAdmin              string
+	PageId                   string
+	UserHasLeadsPermission   string
+	UserId                   string
 }{
-	AppHasLeadsPermission: "app_has_leads_permission",
-	CanAccessLead: "can_access_lead",
+	AppHasLeadsPermission:    "app_has_leads_permission",
+	CanAccessLead:            "can_access_lead",
 	EnabledLeadAccessManager: "enabled_lead_access_manager",
-	FailureReason: "failure_reason",
-	FailureResolution: "failure_resolution",
-	IsPageAdmin: "is_page_admin",
-	PageId: "page_id",
-	UserHasLeadsPermission: "user_has_leads_permission",
-	UserId: "user_id",
+	FailureReason:            "failure_reason",
+	FailureResolution:        "failure_resolution",
+	IsPageAdmin:              "is_page_admin",
+	PageId:                   "page_id",
+	UserHasLeadsPermission:   "user_has_leads_permission",
+	UserId:                   "user_id",
 }
 
 // HasLeadAccessFieldsList contains all available fields for HasLeadAccess objects

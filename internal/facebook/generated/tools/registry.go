@@ -13,7 +13,7 @@ import (
 // GetAllTools returns all Facebook Business API MCP tools
 func GetAllTools() []mcp.Tool {
 	var allTools []mcp.Tool
-	
+
 	allTools = append(allTools, GetHighDemandPeriodTools()...)
 	allTools = append(allTools, GetHoursTools()...)
 	allTools = append(allTools, GetAdPlacePageSetTools()...)
@@ -330,7 +330,7 @@ func GetAllTools() []mcp.Tool {
 // GetFilteredTools returns filtered tools based on enabled objects
 func GetFilteredTools(enabledObjects map[string]bool) []mcp.Tool {
 	var filteredTools []mcp.Tool
-	
+
 	if enabled, ok := enabledObjects[strings.ToLower("HighDemandPeriod")]; ok && enabled {
 		filteredTools = append(filteredTools, GetHighDemandPeriodTools()...)
 	}
@@ -1265,7 +1265,7 @@ func GetFilteredTools(enabledObjects map[string]bool) []mcp.Tool {
 // GetHandlers returns all tool handlers mapped by tool name
 func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
-	
+
 	handlers["highdemandperiod_delete_"] = HandleHighdemandperiod_delete_
 	handlers["highdemandperiod_get_"] = HandleHighdemandperiod_get_
 	handlers["highdemandperiod_post_"] = HandleHighdemandperiod_post_
@@ -2715,7 +2715,7 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 func RegisterTools(s *server.MCPServer) error {
 	tools := GetAllTools()
 	handlers := GetHandlers()
-	
+
 	for _, tool := range tools {
 		handler, exists := handlers[tool.Name]
 		if !exists {
@@ -2723,6 +2723,6 @@ func RegisterTools(s *server.MCPServer) error {
 		}
 		s.AddTool(tool, handler)
 	}
-	
+
 	return nil
 }

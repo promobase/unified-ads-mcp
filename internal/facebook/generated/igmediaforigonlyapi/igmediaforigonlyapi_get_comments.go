@@ -17,7 +17,7 @@ import (
 // ToolIgmediaforigonlyapi_get_comments returns the MCP tool definition for igmediaforigonlyapi_get_comments
 func ToolIgmediaforigonlyapi_get_comments() mcp.Tool {
 	// Available fields for Comment: admin_creator, application, attachment, can_comment, can_hide, can_like, can_remove, can_reply_privately, comment_count, created_time, from, id, is_hidden, is_private, like_count, live_broadcast_timestamp, message, message_tags, object, parent, permalink_url, private_reply_conversation, user_likes
-	
+
 	return mcp.NewTool("igmediaforigonlyapi_get_comments",
 		mcp.WithDescription("GET comments for IGMediaForIGOnlyAPI"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleIgmediaforigonlyapi_get_comments(ctx context.Context, request mcp.Cal
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Igmediaforigonlyapi_get_comments(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleIgmediaforigonlyapi_get_comments(ctx context.Context, request mcp.Cal
 // Igmediaforigonlyapi_get_comments performs GET comments for IGMediaForIGOnlyAPI
 func Igmediaforigonlyapi_get_comments(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/comments")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

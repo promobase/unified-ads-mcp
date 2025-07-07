@@ -5,12 +5,12 @@ package constants
 // AdCreativeShopSpecFields contains field name constants for AdCreativeShopSpec objects
 var AdCreativeShopSpecFields = struct {
 	CollectionId string
-	LandingView string
-	ShopId string
+	LandingView  string
+	ShopId       string
 }{
 	CollectionId: "collection_id",
-	LandingView: "landing_view",
-	ShopId: "shop_id",
+	LandingView:  "landing_view",
+	ShopId:       "shop_id",
 }
 
 // AdCreativeShopSpecFieldsList contains all available fields for AdCreativeShopSpec objects

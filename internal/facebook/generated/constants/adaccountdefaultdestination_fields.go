@@ -4,10 +4,10 @@ package constants
 
 // AdAccountDefaultDestinationFields contains field name constants for AdAccountDefaultDestination objects
 var AdAccountDefaultDestinationFields = struct {
-	DestinationId string
+	DestinationId  string
 	DestinationUrl string
 }{
-	DestinationId: "destination_id",
+	DestinationId:  "destination_id",
 	DestinationUrl: "destination_url",
 }
 

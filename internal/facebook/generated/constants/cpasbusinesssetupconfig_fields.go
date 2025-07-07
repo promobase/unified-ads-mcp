@@ -4,17 +4,17 @@ package constants
 
 // CPASBusinessSetupConfigFields contains field name constants for CPASBusinessSetupConfig objects
 var CPASBusinessSetupConfigFields = struct {
-	AcceptedCollabAdsTos string
-	Business string
-	BusinessCapabilitiesStatus string
+	AcceptedCollabAdsTos         string
+	Business                     string
+	BusinessCapabilitiesStatus   string
 	CapabilitiesComplianceStatus string
-	Id string
+	Id                           string
 }{
-	AcceptedCollabAdsTos: "accepted_collab_ads_tos",
-	Business: "business",
-	BusinessCapabilitiesStatus: "business_capabilities_status",
+	AcceptedCollabAdsTos:         "accepted_collab_ads_tos",
+	Business:                     "business",
+	BusinessCapabilitiesStatus:   "business_capabilities_status",
 	CapabilitiesComplianceStatus: "capabilities_compliance_status",
-	Id: "id",
+	Id:                           "id",
 }
 
 // CPASBusinessSetupConfigFieldsList contains all available fields for CPASBusinessSetupConfig objects

@@ -15,8 +15,7 @@ import (
 
 // ToolWhatsappbusinesspreverifiedphonenumber_delete_ returns the MCP tool definition for whatsappbusinesspreverifiedphonenumber_delete_
 func ToolWhatsappbusinesspreverifiedphonenumber_delete_() mcp.Tool {
-	
-	
+
 	return mcp.NewTool("whatsappbusinesspreverifiedphonenumber_delete_",
 		mcp.WithDescription("DELETE  for WhatsAppBusinessPreVerifiedPhoneNumber"),
 	)
@@ -32,8 +31,6 @@ func HandleWhatsappbusinesspreverifiedphonenumber_delete_(ctx context.Context, r
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the API method
 	result, err := Whatsappbusinesspreverifiedphonenumber_delete_(accessToken, args)
@@ -53,14 +50,11 @@ func HandleWhatsappbusinesspreverifiedphonenumber_delete_(ctx context.Context, r
 // Whatsappbusinesspreverifiedphonenumber_delete_ performs DELETE  for WhatsAppBusinessPreVerifiedPhoneNumber
 func Whatsappbusinesspreverifiedphonenumber_delete_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response

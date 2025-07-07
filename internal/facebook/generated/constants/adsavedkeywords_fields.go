@@ -4,19 +4,19 @@ package constants
 
 // AdSavedKeywordsFields contains field name constants for AdSavedKeywords objects
 var AdSavedKeywordsFields = struct {
-	Account string
-	Id string
-	Keywords string
-	Name string
-	RunStatus string
+	Account     string
+	Id          string
+	Keywords    string
+	Name        string
+	RunStatus   string
 	TimeCreated string
 	TimeUpdated string
 }{
-	Account: "account",
-	Id: "id",
-	Keywords: "keywords",
-	Name: "name",
-	RunStatus: "run_status",
+	Account:     "account",
+	Id:          "id",
+	Keywords:    "keywords",
+	Name:        "name",
+	RunStatus:   "run_status",
 	TimeCreated: "time_created",
 	TimeUpdated: "time_updated",
 }

@@ -4,7 +4,7 @@ package types
 
 // AdAssetBody represents a Facebook AdAssetBody object
 type AdAssetBody struct {
-	Id string `json:"id"`
-	Text string `json:"text"`
+	Id       string `json:"id"`
+	Text     string `json:"text"`
 	Url_tags string `json:"url_tags"`
 }

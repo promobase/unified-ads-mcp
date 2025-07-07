@@ -15,7 +15,7 @@ import (
 
 // ToolIgmedia_post_branded_content_partner_promote returns the MCP tool definition for igmedia_post_branded_content_partner_promote
 func ToolIgmedia_post_branded_content_partner_promote() mcp.Tool {
-	
+
 	// Params object accepts: permission (bool), sponsor_id (unsigned int)
 	return mcp.NewTool("igmedia_post_branded_content_partner_promote",
 		mcp.WithDescription("POST branded_content_partner_promote for IGMedia"),
@@ -23,14 +23,14 @@ func ToolIgmedia_post_branded_content_partner_promote() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"permission": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "permission parameter",
-					"required": true,
+					"required":    true,
 				},
 				"sponsor_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "sponsor_id parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: permission (boolean) [required], sponsor_id (integer) [required]"),
@@ -63,8 +63,6 @@ func HandleIgmedia_post_branded_content_partner_promote(ctx context.Context, req
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Igmedia_post_branded_content_partner_promote(accessToken, args)
 	if err != nil {
@@ -83,20 +81,18 @@ func HandleIgmedia_post_branded_content_partner_promote(ctx context.Context, req
 // Igmedia_post_branded_content_partner_promote performs POST branded_content_partner_promote for IGMedia
 func Igmedia_post_branded_content_partner_promote(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/branded_content_partner_promote")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

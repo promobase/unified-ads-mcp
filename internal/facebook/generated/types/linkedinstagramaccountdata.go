@@ -4,10 +4,10 @@ package types
 
 // LinkedInstagramAccountData represents a Facebook LinkedInstagramAccountData object
 type LinkedInstagramAccountData struct {
-	Access_token string `json:"access_token"`
-	Analytics_claim string `json:"analytics_claim"`
-	Full_name string `json:"full_name"`
+	Access_token        string `json:"access_token"`
+	Analytics_claim     string `json:"analytics_claim"`
+	Full_name           string `json:"full_name"`
 	Profile_picture_url string `json:"profile_picture_url"`
-	User_id string `json:"user_id"`
-	User_name string `json:"user_name"`
+	User_id             string `json:"user_id"`
+	User_name           string `json:"user_name"`
 }

@@ -15,14 +15,14 @@ import (
 
 // ToolAdvideo_post_gaming_clip_create returns the MCP tool definition for advideo_post_gaming_clip_create
 func ToolAdvideo_post_gaming_clip_create() mcp.Tool {
-	
+
 	// Params object accepts: duration_seconds (float)
 	return mcp.NewTool("advideo_post_gaming_clip_create",
 		mcp.WithDescription("POST gaming_clip_create for AdVideo"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"duration_seconds": map[string]any{
-					"type": "number",
+					"type":        "number",
 					"description": "duration_seconds parameter",
 				},
 			}),
@@ -54,8 +54,6 @@ func HandleAdvideo_post_gaming_clip_create(ctx context.Context, request mcp.Call
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Advideo_post_gaming_clip_create(accessToken, args)
 	if err != nil {
@@ -74,20 +72,18 @@ func HandleAdvideo_post_gaming_clip_create(ctx context.Context, request mcp.Call
 // Advideo_post_gaming_clip_create performs POST gaming_clip_create for AdVideo
 func Advideo_post_gaming_clip_create(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/gaming_clip_create")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

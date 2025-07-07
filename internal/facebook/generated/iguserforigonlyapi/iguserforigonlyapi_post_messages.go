@@ -15,40 +15,40 @@ import (
 
 // ToolIguserforigonlyapi_post_messages returns the MCP tool definition for iguserforigonlyapi_post_messages
 func ToolIguserforigonlyapi_post_messages() mcp.Tool {
-	
+
 	// Params object accepts: message (Object), messaging_type (iggraphusermessages_messaging_type_enum_param), payload (string), recipient (Object), sender_action (iggraphusermessages_sender_action_enum_param), tag (Object), thread_control (Object)
 	return mcp.NewTool("iguserforigonlyapi_post_messages",
 		mcp.WithDescription("POST messages for IGUserForIGOnlyAPI"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"message": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "message parameter",
 				},
 				"messaging_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "messaging_type parameter",
-					"enum": []string{ "MESSAGE_TAG", "RESPONSE", "UPDATE", "UTILITY" },
+					"enum":        []string{"MESSAGE_TAG", "RESPONSE", "UPDATE", "UTILITY"},
 				},
 				"payload": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "payload parameter",
 				},
 				"recipient": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "recipient parameter",
 				},
 				"sender_action": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "sender_action parameter",
-					"enum": []string{ "MARK_SEEN", "REACT", "TYPING_OFF", "TYPING_ON", "UNREACT" },
+					"enum":        []string{"MARK_SEEN", "REACT", "TYPING_OFF", "TYPING_ON", "UNREACT"},
 				},
 				"tag": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "tag parameter",
 				},
 				"thread_control": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "thread_control parameter",
 				},
 			}),
@@ -80,8 +80,6 @@ func HandleIguserforigonlyapi_post_messages(ctx context.Context, request mcp.Cal
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Iguserforigonlyapi_post_messages(accessToken, args)
 	if err != nil {
@@ -100,20 +98,18 @@ func HandleIguserforigonlyapi_post_messages(ctx context.Context, request mcp.Cal
 // Iguserforigonlyapi_post_messages performs POST messages for IGUserForIGOnlyAPI
 func Iguserforigonlyapi_post_messages(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/messages")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

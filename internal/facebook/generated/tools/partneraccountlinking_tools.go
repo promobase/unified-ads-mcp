@@ -17,7 +17,6 @@ import (
 func GetPartnerAccountLinkingTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// partneraccountlinking_get_ tool
 	// Available fields for PartnerAccountLinking: adaccount, app, business, externalidentifier, externalidentifieruri, id, partnername, pixel
 	partneraccountlinking_get_Tool := mcp.NewTool("partneraccountlinking_get_",
@@ -37,12 +36,10 @@ func GetPartnerAccountLinkingTools() []mcp.Tool {
 	)
 	tools = append(tools, partneraccountlinking_get_Tool)
 
-
 	return tools
 }
 
 // PartnerAccountLinking handlers
-
 
 // HandlePartneraccountlinking_get_ handles the partneraccountlinking_get_ tool with context-based auth
 func HandlePartneraccountlinking_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandlePartneraccountlinking_get_(ctx context.Context, request mcp.CallToolR
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Partneraccountlinking_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandlePartneraccountlinking_get_(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

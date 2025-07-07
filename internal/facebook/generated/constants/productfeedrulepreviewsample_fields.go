@@ -4,10 +4,10 @@ package constants
 
 // ProductFeedRulePreviewSampleFields contains field name constants for ProductFeedRulePreviewSample objects
 var ProductFeedRulePreviewSampleFields = struct {
-	PropertiesAfter string
+	PropertiesAfter  string
 	PropertiesBefore string
 }{
-	PropertiesAfter: "properties_after",
+	PropertiesAfter:  "properties_after",
 	PropertiesBefore: "properties_before",
 }
 

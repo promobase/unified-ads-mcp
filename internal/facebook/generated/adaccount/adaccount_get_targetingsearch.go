@@ -28,76 +28,76 @@ func ToolAdaccount_get_targetingsearch() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"allow_only_fat_head_interests": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "allow_only_fat_head_interests parameter",
 				},
 				"app_store": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "app_store parameter",
-					"enum": []string{ "amazon_app_store", "apk_mirror", "apk_monk", "apk_pure", "aptoide_a1_store", "bemobi_mobile_store", "digital_turbine_store", "does_not_exist", "fb_android_store", "fb_canvas", "fb_gameroom", "galaxy_store", "google_play", "instant_game", "itunes", "itunes_ipad", "neon_android_store", "none", "oculus_app_store", "oppo", "roku_channel_store", "uptodown", "vivo", "windows_10_store", "windows_store", "xiaomi" },
+					"enum":        []string{"amazon_app_store", "apk_mirror", "apk_monk", "apk_pure", "aptoide_a1_store", "bemobi_mobile_store", "digital_turbine_store", "does_not_exist", "fb_android_store", "fb_canvas", "fb_gameroom", "galaxy_store", "google_play", "instant_game", "itunes", "itunes_ipad", "neon_android_store", "none", "oculus_app_store", "oppo", "roku_channel_store", "uptodown", "vivo", "windows_10_store", "windows_store", "xiaomi"},
 				},
 				"countries": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "countries parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"is_account_level_brand_safety_exclusion": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_account_level_brand_safety_exclusion parameter",
 				},
 				"is_account_level_employer_exclusion": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_account_level_employer_exclusion parameter",
 				},
 				"is_exclusion": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_exclusion parameter",
 				},
 				"limit_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "limit_type parameter",
-					"enum": []string{ "adgroup_id", "age_max", "age_min", "age_range", "alternate_auto_targeting_option", "app_install_state", "audience_network_positions", "behaviors", "brand_safety_content_filter_levels", "brand_safety_content_severity_levels", "cafe_ca_contraction_targeting_signal", "cafe_ca_expansion_targeting_signal", "catalog_based_targeting", "cities", "city_keys", "college_years", "conjunctive_user_adclusters", "connections", "contextual_targeting_categories", "countries", "country", "country_groups", "custom_audiences", "device_platforms", "direct_install_devices", "dynamic_audience_ids", "education_majors", "education_schools", "education_statuses", "effective_audience_network_positions", "effective_device_platforms", "effective_facebook_positions", "effective_instagram_positions", "effective_messenger_positions", "effective_oculus_positions", "effective_publisher_platforms", "effective_threads_positions", "effective_whatsapp_positions", "engagement_specs", "ethnic_affinity", "exclude_previous_days", "exclude_reached_since", "excluded_brand_safety_content_types", "excluded_connections", "excluded_custom_audiences", "excluded_dynamic_audience_ids", "excluded_engagement_specs", "excluded_geo_locations", "excluded_mobile_device_model", "excluded_product_audience_specs", "excluded_publisher_categories", "excluded_publisher_list_ids", "excluded_user_adclusters", "excluded_user_device", "exclusions", "expanded_implicit_custom_audiences", "facebook_positions", "family_statuses", "fb_deal_id", "flexible_spec", "follow_profiles", "follow_profiles_negative", "format", "friends_of_connections", "gatekeepers", "genders", "generation", "geo_locations", "home_ownership", "home_type", "home_value", "household_composition", "household_income", "id", "income", "industries", "instagram_hashtags", "instagram_positions", "install_state_application", "instream_video_skippable_excluded", "instream_video_sponsorship_placements", "interest_defaults_source", "interested_in", "interests", "is_instagram_destination_ad", "is_whatsapp_destination_ad", "keywords", "life_events", "locales", "location_categories", "location_cluster_ids", "location_expansion", "marketing_message_channels", "marketplace_product_categories", "messenger_positions", "mobile_device_model", "moms", "net_worth", "oculus_positions", "office_type", "page_types", "place_page_set_ids", "political_views", "politics", "product_audience_specs", "prospecting_audience", "publisher_platforms", "radius", "region_keys", "regions", "relationship_statuses", "rtb_flag", "site_category", "subscriber_universe", "tafe_ca_mitigation_strategy", "targeting_automation", "targeting_optimization", "targeting_relaxation_types", "threads_positions", "timezones", "topic", "trending", "user_adclusters", "user_age_unknown", "user_device", "user_event", "user_os", "user_page_threads", "user_page_threads_excluded", "whatsapp_positions", "wireless_carrier", "work_employers", "work_positions", "zips" },
+					"enum":        []string{"adgroup_id", "age_max", "age_min", "age_range", "alternate_auto_targeting_option", "app_install_state", "audience_network_positions", "behaviors", "brand_safety_content_filter_levels", "brand_safety_content_severity_levels", "cafe_ca_contraction_targeting_signal", "cafe_ca_expansion_targeting_signal", "catalog_based_targeting", "cities", "city_keys", "college_years", "conjunctive_user_adclusters", "connections", "contextual_targeting_categories", "countries", "country", "country_groups", "custom_audiences", "device_platforms", "direct_install_devices", "dynamic_audience_ids", "education_majors", "education_schools", "education_statuses", "effective_audience_network_positions", "effective_device_platforms", "effective_facebook_positions", "effective_instagram_positions", "effective_messenger_positions", "effective_oculus_positions", "effective_publisher_platforms", "effective_threads_positions", "effective_whatsapp_positions", "engagement_specs", "ethnic_affinity", "exclude_previous_days", "exclude_reached_since", "excluded_brand_safety_content_types", "excluded_connections", "excluded_custom_audiences", "excluded_dynamic_audience_ids", "excluded_engagement_specs", "excluded_geo_locations", "excluded_mobile_device_model", "excluded_product_audience_specs", "excluded_publisher_categories", "excluded_publisher_list_ids", "excluded_user_adclusters", "excluded_user_device", "exclusions", "expanded_implicit_custom_audiences", "facebook_positions", "family_statuses", "fb_deal_id", "flexible_spec", "follow_profiles", "follow_profiles_negative", "format", "friends_of_connections", "gatekeepers", "genders", "generation", "geo_locations", "home_ownership", "home_type", "home_value", "household_composition", "household_income", "id", "income", "industries", "instagram_hashtags", "instagram_positions", "install_state_application", "instream_video_skippable_excluded", "instream_video_sponsorship_placements", "interest_defaults_source", "interested_in", "interests", "is_instagram_destination_ad", "is_whatsapp_destination_ad", "keywords", "life_events", "locales", "location_categories", "location_cluster_ids", "location_expansion", "marketing_message_channels", "marketplace_product_categories", "messenger_positions", "mobile_device_model", "moms", "net_worth", "oculus_positions", "office_type", "page_types", "place_page_set_ids", "political_views", "politics", "product_audience_specs", "prospecting_audience", "publisher_platforms", "radius", "region_keys", "regions", "relationship_statuses", "rtb_flag", "site_category", "subscriber_universe", "tafe_ca_mitigation_strategy", "targeting_automation", "targeting_optimization", "targeting_relaxation_types", "threads_positions", "timezones", "topic", "trending", "user_adclusters", "user_age_unknown", "user_device", "user_event", "user_os", "user_page_threads", "user_page_threads_excluded", "whatsapp_positions", "wireless_carrier", "work_employers", "work_positions", "zips"},
 				},
 				"objective": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "objective parameter",
-					"enum": []string{ "APP_INSTALLS", "BRAND_AWARENESS", "CONVERSIONS", "EVENT_RESPONSES", "LEAD_GENERATION", "LINK_CLICKS", "LOCAL_AWARENESS", "MESSAGES", "OFFER_CLAIMS", "OUTCOME_APP_PROMOTION", "OUTCOME_AWARENESS", "OUTCOME_ENGAGEMENT", "OUTCOME_LEADS", "OUTCOME_SALES", "OUTCOME_TRAFFIC", "PAGE_LIKES", "POST_ENGAGEMENT", "PRODUCT_CATALOG_SALES", "REACH", "STORE_VISITS", "VIDEO_VIEWS" },
+					"enum":        []string{"APP_INSTALLS", "BRAND_AWARENESS", "CONVERSIONS", "EVENT_RESPONSES", "LEAD_GENERATION", "LINK_CLICKS", "LOCAL_AWARENESS", "MESSAGES", "OFFER_CLAIMS", "OUTCOME_APP_PROMOTION", "OUTCOME_AWARENESS", "OUTCOME_ENGAGEMENT", "OUTCOME_LEADS", "OUTCOME_SALES", "OUTCOME_TRAFFIC", "PAGE_LIKES", "POST_ENGAGEMENT", "PRODUCT_CATALOG_SALES", "REACH", "STORE_VISITS", "VIDEO_VIEWS"},
 				},
 				"promoted_object": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "promoted_object parameter",
 				},
 				"q": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "q parameter",
-					"required": true,
+					"required":    true,
 				},
 				"regulated_categories": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "regulated_categories parameter",
-					"enum": []string{ "CREDIT", "EMPLOYMENT", "FINANCIAL_PRODUCTS_SERVICES", "HOUSING", "ISSUES_ELECTIONS_POLITICS", "NONE", "ONLINE_GAMBLING_AND_GAMING" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"CREDIT", "EMPLOYMENT", "FINANCIAL_PRODUCTS_SERVICES", "HOUSING", "ISSUES_ELECTIONS_POLITICS", "NONE", "ONLINE_GAMBLING_AND_GAMING"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"regulated_countries": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "regulated_countries parameter",
-					"enum": []string{ "AD", "AE", "AF", "AG", "AI", "AL", "AM", "AN", "AO", "AQ", "AR", "AS", "AT", "AU", "AW", "AX", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BL", "BM", "BN", "BO", "BQ", "BR", "BS", "BT", "BV", "BW", "BY", "BZ", "CA", "CC", "CD", "CF", "CG", "CH", "CI", "CK", "CL", "CM", "CN", "CO", "CR", "CU", "CV", "CW", "CX", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "EH", "ER", "ES", "ET", "FI", "FJ", "FK", "FM", "FO", "FR", "GA", "GB", "GD", "GE", "GF", "GG", "GH", "GI", "GL", "GM", "GN", "GP", "GQ", "GR", "GS", "GT", "GU", "GW", "GY", "HK", "HM", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IM", "IN", "IO", "IQ", "IR", "IS", "IT", "JE", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KP", "KR", "KW", "KY", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MF", "MG", "MH", "MK", "ML", "MM", "MN", "MO", "MP", "MQ", "MR", "MS", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NC", "NE", "NF", "NG", "NI", "NL", "NO", "NP", "NR", "NU", "NZ", "OM", "PA", "PE", "PF", "PG", "PH", "PK", "PL", "PM", "PN", "PR", "PS", "PT", "PW", "PY", "QA", "RE", "RO", "RS", "RU", "RW", "SA", "SB", "SC", "SD", "SE", "SG", "SH", "SI", "SJ", "SK", "SL", "SM", "SN", "SO", "SR", "SS", "ST", "SV", "SX", "SY", "SZ", "TC", "TD", "TF", "TG", "TH", "TJ", "TK", "TL", "TM", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "UM", "US", "UY", "UZ", "VA", "VC", "VE", "VG", "VI", "VN", "VU", "WF", "WS", "XK", "YE", "YT", "ZA", "ZM", "ZW" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"AD", "AE", "AF", "AG", "AI", "AL", "AM", "AN", "AO", "AQ", "AR", "AS", "AT", "AU", "AW", "AX", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BL", "BM", "BN", "BO", "BQ", "BR", "BS", "BT", "BV", "BW", "BY", "BZ", "CA", "CC", "CD", "CF", "CG", "CH", "CI", "CK", "CL", "CM", "CN", "CO", "CR", "CU", "CV", "CW", "CX", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "EH", "ER", "ES", "ET", "FI", "FJ", "FK", "FM", "FO", "FR", "GA", "GB", "GD", "GE", "GF", "GG", "GH", "GI", "GL", "GM", "GN", "GP", "GQ", "GR", "GS", "GT", "GU", "GW", "GY", "HK", "HM", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IM", "IN", "IO", "IQ", "IR", "IS", "IT", "JE", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KP", "KR", "KW", "KY", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MF", "MG", "MH", "MK", "ML", "MM", "MN", "MO", "MP", "MQ", "MR", "MS", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NC", "NE", "NF", "NG", "NI", "NL", "NO", "NP", "NR", "NU", "NZ", "OM", "PA", "PE", "PF", "PG", "PH", "PK", "PL", "PM", "PN", "PR", "PS", "PT", "PW", "PY", "QA", "RE", "RO", "RS", "RU", "RW", "SA", "SB", "SC", "SD", "SE", "SG", "SH", "SI", "SJ", "SK", "SL", "SM", "SN", "SO", "SR", "SS", "ST", "SV", "SX", "SY", "SZ", "TC", "TD", "TF", "TG", "TH", "TJ", "TK", "TL", "TM", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "UM", "US", "UY", "UZ", "VA", "VC", "VE", "VG", "VI", "VN", "VU", "WF", "WS", "XK", "YE", "YT", "ZA", "ZM", "ZW"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"session_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "session_id parameter",
 				},
 				"targeting_list": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "targeting_list parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"whitelisted_types": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "whitelisted_types parameter",
-					"enum": []string{ "adgroup_id", "age_max", "age_min", "age_range", "alternate_auto_targeting_option", "app_install_state", "audience_network_positions", "behaviors", "brand_safety_content_filter_levels", "brand_safety_content_severity_levels", "cafe_ca_contraction_targeting_signal", "cafe_ca_expansion_targeting_signal", "catalog_based_targeting", "cities", "city_keys", "college_years", "conjunctive_user_adclusters", "connections", "contextual_targeting_categories", "countries", "country", "country_groups", "custom_audiences", "device_platforms", "direct_install_devices", "dynamic_audience_ids", "education_majors", "education_schools", "education_statuses", "effective_audience_network_positions", "effective_device_platforms", "effective_facebook_positions", "effective_instagram_positions", "effective_messenger_positions", "effective_oculus_positions", "effective_publisher_platforms", "effective_threads_positions", "effective_whatsapp_positions", "engagement_specs", "ethnic_affinity", "exclude_previous_days", "exclude_reached_since", "excluded_brand_safety_content_types", "excluded_connections", "excluded_custom_audiences", "excluded_dynamic_audience_ids", "excluded_engagement_specs", "excluded_geo_locations", "excluded_mobile_device_model", "excluded_product_audience_specs", "excluded_publisher_categories", "excluded_publisher_list_ids", "excluded_user_adclusters", "excluded_user_device", "exclusions", "expanded_implicit_custom_audiences", "facebook_positions", "family_statuses", "fb_deal_id", "flexible_spec", "follow_profiles", "follow_profiles_negative", "format", "friends_of_connections", "gatekeepers", "genders", "generation", "geo_locations", "home_ownership", "home_type", "home_value", "household_composition", "household_income", "id", "income", "industries", "instagram_hashtags", "instagram_positions", "install_state_application", "instream_video_skippable_excluded", "instream_video_sponsorship_placements", "interest_defaults_source", "interested_in", "interests", "is_instagram_destination_ad", "is_whatsapp_destination_ad", "keywords", "life_events", "locales", "location_categories", "location_cluster_ids", "location_expansion", "marketing_message_channels", "marketplace_product_categories", "messenger_positions", "mobile_device_model", "moms", "net_worth", "oculus_positions", "office_type", "page_types", "place_page_set_ids", "political_views", "politics", "product_audience_specs", "prospecting_audience", "publisher_platforms", "radius", "region_keys", "regions", "relationship_statuses", "rtb_flag", "site_category", "subscriber_universe", "tafe_ca_mitigation_strategy", "targeting_automation", "targeting_optimization", "targeting_relaxation_types", "threads_positions", "timezones", "topic", "trending", "user_adclusters", "user_age_unknown", "user_device", "user_event", "user_os", "user_page_threads", "user_page_threads_excluded", "whatsapp_positions", "wireless_carrier", "work_employers", "work_positions", "zips" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"adgroup_id", "age_max", "age_min", "age_range", "alternate_auto_targeting_option", "app_install_state", "audience_network_positions", "behaviors", "brand_safety_content_filter_levels", "brand_safety_content_severity_levels", "cafe_ca_contraction_targeting_signal", "cafe_ca_expansion_targeting_signal", "catalog_based_targeting", "cities", "city_keys", "college_years", "conjunctive_user_adclusters", "connections", "contextual_targeting_categories", "countries", "country", "country_groups", "custom_audiences", "device_platforms", "direct_install_devices", "dynamic_audience_ids", "education_majors", "education_schools", "education_statuses", "effective_audience_network_positions", "effective_device_platforms", "effective_facebook_positions", "effective_instagram_positions", "effective_messenger_positions", "effective_oculus_positions", "effective_publisher_platforms", "effective_threads_positions", "effective_whatsapp_positions", "engagement_specs", "ethnic_affinity", "exclude_previous_days", "exclude_reached_since", "excluded_brand_safety_content_types", "excluded_connections", "excluded_custom_audiences", "excluded_dynamic_audience_ids", "excluded_engagement_specs", "excluded_geo_locations", "excluded_mobile_device_model", "excluded_product_audience_specs", "excluded_publisher_categories", "excluded_publisher_list_ids", "excluded_user_adclusters", "excluded_user_device", "exclusions", "expanded_implicit_custom_audiences", "facebook_positions", "family_statuses", "fb_deal_id", "flexible_spec", "follow_profiles", "follow_profiles_negative", "format", "friends_of_connections", "gatekeepers", "genders", "generation", "geo_locations", "home_ownership", "home_type", "home_value", "household_composition", "household_income", "id", "income", "industries", "instagram_hashtags", "instagram_positions", "install_state_application", "instream_video_skippable_excluded", "instream_video_sponsorship_placements", "interest_defaults_source", "interested_in", "interests", "is_instagram_destination_ad", "is_whatsapp_destination_ad", "keywords", "life_events", "locales", "location_categories", "location_cluster_ids", "location_expansion", "marketing_message_channels", "marketplace_product_categories", "messenger_positions", "mobile_device_model", "moms", "net_worth", "oculus_positions", "office_type", "page_types", "place_page_set_ids", "political_views", "politics", "product_audience_specs", "prospecting_audience", "publisher_platforms", "radius", "region_keys", "regions", "relationship_statuses", "rtb_flag", "site_category", "subscriber_universe", "tafe_ca_mitigation_strategy", "targeting_automation", "targeting_optimization", "targeting_relaxation_types", "threads_positions", "timezones", "topic", "trending", "user_adclusters", "user_age_unknown", "user_device", "user_event", "user_os", "user_page_threads", "user_page_threads_excluded", "whatsapp_positions", "wireless_carrier", "work_employers", "work_positions", "zips"},
+					"items":       map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: allow_only_fat_head_interests (boolean), app_store (enum) [amazon_app_store, apk_mirror, apk_monk, apk_pure, aptoide_a1_store, ...], countries (array<string>), is_account_level_brand_safety_exclusion (boolean), is_account_level_employer_exclusion (boolean), is_exclusion (boolean), limit_type (enum) [adgroup_id, age_max, age_min, age_range, alternate_auto_targeting_option, ...], objective (enum) [APP_INSTALLS, BRAND_AWARENESS, CONVERSIONS, EVENT_RESPONSES, LEAD_GENERATION, ...], promoted_object (object), q (string) [required], regulated_categories (array<enum>) [CREDIT, EMPLOYMENT, FINANCIAL_PRODUCTS_SERVICES, HOUSING, ISSUES_ELECTIONS_POLITICS, ...], regulated_countries (array<enum>) [AD, AE, AF, AG, AI, ...], session_id (integer), targeting_list (array<object>), whitelisted_types (array<enum>) [adgroup_id, age_max, age_min, age_range, alternate_auto_targeting_option, ...]"),
@@ -174,8 +174,6 @@ func HandleAdaccount_get_targetingsearch(ctx context.Context, request mcp.CallTo
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Adaccount_get_targetingsearch(accessToken, args)
 	if err != nil {
@@ -194,67 +192,65 @@ func HandleAdaccount_get_targetingsearch(ctx context.Context, request mcp.CallTo
 // Adaccount_get_targetingsearch performs GET targetingsearch for AdAccount
 func Adaccount_get_targetingsearch(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	// Extract account_id for URL construction
 	accountId, ok := args["account_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_get_targetingsearch")
 	}
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%stargetingsearch", accountId)
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-		
-	}
 
+	}
 
 	// Make HTTP request
 	var resp *http.Response

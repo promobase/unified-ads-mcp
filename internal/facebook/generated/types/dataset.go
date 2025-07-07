@@ -4,6 +4,6 @@ package types
 
 // Dataset represents a Facebook Dataset object
 type Dataset struct {
-	Id string `json:"id"`
+	Id   string `json:"id"`
 	Name string `json:"name"`
 }

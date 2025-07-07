@@ -17,7 +17,6 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolEventsourcegroup_get_())
 	tools = append(tools, ToolEventsourcegroup_post_())
 
-
 	return tools
 }
 
@@ -29,7 +28,6 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers["eventsourcegroup_post_shared_accounts"] = HandleEventsourcegroup_post_shared_accounts
 	handlers["eventsourcegroup_get_"] = HandleEventsourcegroup_get_
 	handlers["eventsourcegroup_post_"] = HandleEventsourcegroup_post_
-
 
 	return handlers
 }

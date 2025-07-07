@@ -15,8 +15,7 @@ import (
 
 // ToolAdspixel_post_shadowtraffichelper returns the MCP tool definition for adspixel_post_shadowtraffichelper
 func ToolAdspixel_post_shadowtraffichelper() mcp.Tool {
-	
-	
+
 	return mcp.NewTool("adspixel_post_shadowtraffichelper",
 		mcp.WithDescription("POST shadowtraffichelper for AdsPixel"),
 	)
@@ -32,8 +31,6 @@ func HandleAdspixel_post_shadowtraffichelper(ctx context.Context, request mcp.Ca
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the API method
 	result, err := Adspixel_post_shadowtraffichelper(accessToken, args)
@@ -53,14 +50,11 @@ func HandleAdspixel_post_shadowtraffichelper(ctx context.Context, request mcp.Ca
 // Adspixel_post_shadowtraffichelper performs POST shadowtraffichelper for AdsPixel
 func Adspixel_post_shadowtraffichelper(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/shadowtraffichelper")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response

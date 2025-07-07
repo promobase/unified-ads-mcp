@@ -15,7 +15,7 @@ import (
 
 // ToolPage_delete_messenger_profile returns the MCP tool definition for page_delete_messenger_profile
 func ToolPage_delete_messenger_profile() mcp.Tool {
-	
+
 	// Params object accepts: fields (list<pagemessenger_profile_fields_enum_param>), platform (pagemessenger_profile_platform_enum_param)
 	return mcp.NewTool("page_delete_messenger_profile",
 		mcp.WithDescription("DELETE messenger_profile for Page"),
@@ -23,16 +23,16 @@ func ToolPage_delete_messenger_profile() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"fields": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "fields parameter",
-					"required": true,
-					"enum": []string{ "ACCOUNT_LINKING_URL", "COMMANDS", "DESCRIPTION", "GET_STARTED", "GREETING", "HOME_URL", "ICE_BREAKERS", "PERSISTENT_MENU", "PLATFORM", "SUBJECT_TO_NEW_EU_PRIVACY_RULES", "TITLE", "WHITELISTED_DOMAINS" },
-					"items": map[string]any{"type": "string"},
+					"required":    true,
+					"enum":        []string{"ACCOUNT_LINKING_URL", "COMMANDS", "DESCRIPTION", "GET_STARTED", "GREETING", "HOME_URL", "ICE_BREAKERS", "PERSISTENT_MENU", "PLATFORM", "SUBJECT_TO_NEW_EU_PRIVACY_RULES", "TITLE", "WHITELISTED_DOMAINS"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"platform": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "platform parameter",
-					"enum": []string{ "INSTAGRAM", "MESSENGER" },
+					"enum":        []string{"INSTAGRAM", "MESSENGER"},
 				},
 			}),
 			mcp.Description("Parameters object containing: fields (array<enum>) [ACCOUNT_LINKING_URL, COMMANDS, DESCRIPTION, GET_STARTED, GREETING, ...] [required], platform (enum) [INSTAGRAM, MESSENGER]"),
@@ -65,8 +65,6 @@ func HandlePage_delete_messenger_profile(ctx context.Context, request mcp.CallTo
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Page_delete_messenger_profile(accessToken, args)
 	if err != nil {
@@ -85,20 +83,18 @@ func HandlePage_delete_messenger_profile(ctx context.Context, request mcp.CallTo
 // Page_delete_messenger_profile performs DELETE messenger_profile for Page
 func Page_delete_messenger_profile(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/messenger_profile")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

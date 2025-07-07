@@ -15,7 +15,7 @@ import (
 
 // ToolCommerceorder_post_item_updates returns the MCP tool definition for commerceorder_post_item_updates
 func ToolCommerceorder_post_item_updates() mcp.Tool {
-	
+
 	// Params object accepts: items (list<map>), merchant_order_reference (string)
 	return mcp.NewTool("commerceorder_post_item_updates",
 		mcp.WithDescription("POST item_updates for CommerceOrder"),
@@ -23,15 +23,15 @@ func ToolCommerceorder_post_item_updates() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"items": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "items parameter",
-					"required": true,
-					"items": map[string]any{"type": "object"},
+					"required":    true,
+					"items":       map[string]any{"type": "object"},
 				},
 				"merchant_order_reference": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "merchant_order_reference parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: items (array<object>) [required], merchant_order_reference (string) [required]"),
@@ -64,8 +64,6 @@ func HandleCommerceorder_post_item_updates(ctx context.Context, request mcp.Call
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Commerceorder_post_item_updates(accessToken, args)
 	if err != nil {
@@ -84,20 +82,18 @@ func HandleCommerceorder_post_item_updates(ctx context.Context, request mcp.Call
 // Commerceorder_post_item_updates performs POST item_updates for CommerceOrder
 func Commerceorder_post_item_updates(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/item_updates")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

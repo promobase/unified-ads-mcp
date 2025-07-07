@@ -4,31 +4,31 @@ package constants
 
 // AdCreativeLinkDataCallToActionValueFields contains field name constants for AdCreativeLinkDataCallToActionValue objects
 var AdCreativeLinkDataCallToActionValueFields = struct {
-	AppDestination string
-	AppLink string
-	Application string
-	EventId string
-	LeadGenFormId string
-	Link string
-	LinkCaption string
-	LinkFormat string
+	AppDestination  string
+	AppLink         string
+	Application     string
+	EventId         string
+	LeadGenFormId   string
+	Link            string
+	LinkCaption     string
+	LinkFormat      string
 	ObjectStoreUrls string
-	Page string
-	ProductLink string
-	WhatsappNumber string
+	Page            string
+	ProductLink     string
+	WhatsappNumber  string
 }{
-	AppDestination: "app_destination",
-	AppLink: "app_link",
-	Application: "application",
-	EventId: "event_id",
-	LeadGenFormId: "lead_gen_form_id",
-	Link: "link",
-	LinkCaption: "link_caption",
-	LinkFormat: "link_format",
+	AppDestination:  "app_destination",
+	AppLink:         "app_link",
+	Application:     "application",
+	EventId:         "event_id",
+	LeadGenFormId:   "lead_gen_form_id",
+	Link:            "link",
+	LinkCaption:     "link_caption",
+	LinkFormat:      "link_format",
 	ObjectStoreUrls: "object_store_urls",
-	Page: "page",
-	ProductLink: "product_link",
-	WhatsappNumber: "whatsapp_number",
+	Page:            "page",
+	ProductLink:     "product_link",
+	WhatsappNumber:  "whatsapp_number",
 }
 
 // AdCreativeLinkDataCallToActionValueFieldsList contains all available fields for AdCreativeLinkDataCallToActionValue objects

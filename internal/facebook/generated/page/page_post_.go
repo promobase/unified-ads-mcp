@@ -15,246 +15,246 @@ import (
 
 // ToolPage_post_ returns the MCP tool definition for page_post_
 func ToolPage_post_() mcp.Tool {
-	
+
 	// Params object accepts: about (string), accept_crossposting_handshake (list<map>), allow_spherical_photo (bool), attire (page_attire), begin_crossposting_handshake (list<map>), bio (string), category_list (list<string>), company_overview (string), contact_address (Object), cover (string), culinary_team (string), delivery_and_pickup_option_info (list<string>), description (string), differently_open_offerings (map), directed_by (string), displayed_message_response_time (string), emails (list<string>), focus_x (float), focus_y (float), food_styles (list<page_food_styles>), gen_ai_provenance_type (page_gen_ai_provenance_type), general_info (string), general_manager (string), genre (string), hours (map), ignore_coordinate_warnings (bool), impressum (string), is_always_open (bool), is_permanently_closed (bool), is_published (bool), is_webhooks_subscribed (bool), location (Object), menu (string), mission (string), no_feed_story (bool), no_notification (bool), offset_x (int), offset_y (int), parking (map), payment_options (map), phone (string), pickup_options (list<page_pickup_options>), plot_outline (string), price_range (string), public_transit (string), restaurant_services (map), restaurant_specialties (map), scrape (bool), service_details (string), spherical_metadata (map), start_info (Object), store_location_descriptor (string), temporary_status (page_temporary_status), website (string), zoom_scale_x (float), zoom_scale_y (float)
 	return mcp.NewTool("page_post_",
 		mcp.WithDescription("POST  for Page"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"about": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "about parameter",
 				},
 				"accept_crossposting_handshake": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "accept_crossposting_handshake parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"allow_spherical_photo": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "allow_spherical_photo parameter",
 				},
 				"attire": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "attire parameter",
-					"enum": []string{ "Casual", "Dressy", "Unspecified" },
+					"enum":        []string{"Casual", "Dressy", "Unspecified"},
 				},
 				"begin_crossposting_handshake": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "begin_crossposting_handshake parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"bio": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "bio parameter",
 				},
 				"category_list": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "category_list parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"company_overview": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "company_overview parameter",
 				},
 				"contact_address": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "contact_address parameter",
 				},
 				"cover": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "cover parameter",
 				},
 				"culinary_team": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "culinary_team parameter",
 				},
 				"delivery_and_pickup_option_info": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "delivery_and_pickup_option_info parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"description": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "description parameter",
 				},
 				"differently_open_offerings": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "differently_open_offerings parameter",
 				},
 				"directed_by": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "directed_by parameter",
 				},
 				"displayed_message_response_time": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "displayed_message_response_time parameter",
 				},
 				"emails": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "emails parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"focus_x": map[string]any{
-					"type": "number",
+					"type":        "number",
 					"description": "focus_x parameter",
 				},
 				"focus_y": map[string]any{
-					"type": "number",
+					"type":        "number",
 					"description": "focus_y parameter",
 				},
 				"food_styles": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "food_styles parameter",
-					"enum": []string{ "Afghani", "American (New)", "American (Traditional)", "Asian Fusion", "Barbeque", "Brazilian", "Breakfast", "British", "Brunch", "Buffets", "Burgers", "Burmese", "Cajun/Creole", "Caribbean", "Chinese", "Creperies", "Cuban", "Delis", "Diners", "Ethiopian", "Fast Food", "Filipino", "Fondue", "Food Stands", "French", "German", "Greek and Mediterranean", "Hawaiian", "Himalayan/Nepalese", "Hot Dogs", "Indian/Pakistani", "Irish", "Italian", "Japanese", "Korean", "Latin American", "Mexican", "Middle Eastern", "Moroccan", "Pizza", "Russian", "Sandwiches", "Seafood", "Singaporean", "Soul Food", "Southern", "Spanish/Basque", "Steakhouses", "Sushi Bars", "Taiwanese", "Tapas Bars", "Tex-Mex", "Thai", "Turkish", "Vegan", "Vegetarian", "Vietnamese" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"Afghani", "American (New)", "American (Traditional)", "Asian Fusion", "Barbeque", "Brazilian", "Breakfast", "British", "Brunch", "Buffets", "Burgers", "Burmese", "Cajun/Creole", "Caribbean", "Chinese", "Creperies", "Cuban", "Delis", "Diners", "Ethiopian", "Fast Food", "Filipino", "Fondue", "Food Stands", "French", "German", "Greek and Mediterranean", "Hawaiian", "Himalayan/Nepalese", "Hot Dogs", "Indian/Pakistani", "Irish", "Italian", "Japanese", "Korean", "Latin American", "Mexican", "Middle Eastern", "Moroccan", "Pizza", "Russian", "Sandwiches", "Seafood", "Singaporean", "Soul Food", "Southern", "Spanish/Basque", "Steakhouses", "Sushi Bars", "Taiwanese", "Tapas Bars", "Tex-Mex", "Thai", "Turkish", "Vegan", "Vegetarian", "Vietnamese"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"gen_ai_provenance_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "gen_ai_provenance_type parameter",
-					"enum": []string{ "C2PA", "C2PA_METADATA_EDITED", "EXPLICIT", "EXPLICIT_IMAGINE", "EXPLICIT_IMAGINE_ME", "EXPLICIT_RESTYLE", "INVISIBLE_WATERMARK", "IPTC", "IPTC_METADATA_EDITED" },
+					"enum":        []string{"C2PA", "C2PA_METADATA_EDITED", "EXPLICIT", "EXPLICIT_IMAGINE", "EXPLICIT_IMAGINE_ME", "EXPLICIT_RESTYLE", "INVISIBLE_WATERMARK", "IPTC", "IPTC_METADATA_EDITED"},
 				},
 				"general_info": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "general_info parameter",
 				},
 				"general_manager": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "general_manager parameter",
 				},
 				"genre": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "genre parameter",
 				},
 				"hours": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "hours parameter",
 				},
 				"ignore_coordinate_warnings": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "ignore_coordinate_warnings parameter",
 				},
 				"impressum": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "impressum parameter",
 				},
 				"is_always_open": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_always_open parameter",
 				},
 				"is_permanently_closed": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_permanently_closed parameter",
 				},
 				"is_published": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_published parameter",
 				},
 				"is_webhooks_subscribed": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_webhooks_subscribed parameter",
 				},
 				"location": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "location parameter",
 				},
 				"menu": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "menu parameter",
 				},
 				"mission": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "mission parameter",
 				},
 				"no_feed_story": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "no_feed_story parameter",
 				},
 				"no_notification": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "no_notification parameter",
 				},
 				"offset_x": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "offset_x parameter",
 				},
 				"offset_y": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "offset_y parameter",
 				},
 				"parking": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "parking parameter",
 				},
 				"payment_options": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "payment_options parameter",
 				},
 				"phone": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "phone parameter",
 				},
 				"pickup_options": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "pickup_options parameter",
-					"enum": []string{ "CURBSIDE", "IN_STORE", "OTHER" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"CURBSIDE", "IN_STORE", "OTHER"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"plot_outline": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "plot_outline parameter",
 				},
 				"price_range": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "price_range parameter",
 				},
 				"public_transit": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "public_transit parameter",
 				},
 				"restaurant_services": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "restaurant_services parameter",
 				},
 				"restaurant_specialties": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "restaurant_specialties parameter",
 				},
 				"scrape": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "scrape parameter",
 				},
 				"service_details": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "service_details parameter",
 				},
 				"spherical_metadata": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "spherical_metadata parameter",
 				},
 				"start_info": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "start_info parameter",
 				},
 				"store_location_descriptor": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "store_location_descriptor parameter",
 				},
 				"temporary_status": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "temporary_status parameter",
-					"enum": []string{ "DIFFERENTLY_OPEN", "NO_DATA", "OPERATING_AS_USUAL", "TEMPORARILY_CLOSED" },
+					"enum":        []string{"DIFFERENTLY_OPEN", "NO_DATA", "OPERATING_AS_USUAL", "TEMPORARILY_CLOSED"},
 				},
 				"website": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "website parameter",
 				},
 				"zoom_scale_x": map[string]any{
-					"type": "number",
+					"type":        "number",
 					"description": "zoom_scale_x parameter",
 				},
 				"zoom_scale_y": map[string]any{
-					"type": "number",
+					"type":        "number",
 					"description": "zoom_scale_y parameter",
 				},
 			}),
@@ -286,8 +286,6 @@ func HandlePage_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Ca
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Page_post_(accessToken, args)
 	if err != nil {
@@ -306,20 +304,18 @@ func HandlePage_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Ca
 // Page_post_ performs POST  for Page
 func Page_post_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

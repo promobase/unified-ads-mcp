@@ -6,13 +6,13 @@ import "time"
 
 // AdAsyncRequest represents a Facebook AdAsyncRequest object
 type AdAsyncRequest struct {
-	Async_request_set *AdAsyncRequestSet `json:"async_request_set"`
-	Created_time time.Time `json:"created_time"`
-	Id string `json:"id"`
-	Input map[string]interface{} `json:"input"`
-	Result map[string]interface{} `json:"result"`
-	Scope_object_id string `json:"scope_object_id"`
-	Status string `json:"status"`
-	Type_ string `json:"type"`
-	Updated_time time.Time `json:"updated_time"`
+	Async_request_set *AdAsyncRequestSet     `json:"async_request_set"`
+	Created_time      time.Time              `json:"created_time"`
+	Id                string                 `json:"id"`
+	Input             map[string]interface{} `json:"input"`
+	Result            map[string]interface{} `json:"result"`
+	Scope_object_id   string                 `json:"scope_object_id"`
+	Status            string                 `json:"status"`
+	Type_             string                 `json:"type"`
+	Updated_time      time.Time              `json:"updated_time"`
 }

@@ -4,31 +4,31 @@ package constants
 
 // LinkFields contains field name constants for Link objects
 var LinkFields = struct {
-	Caption string
-	CreatedTime string
-	Description string
-	From string
-	Icon string
-	Id string
-	Link string
-	Message string
+	Caption             string
+	CreatedTime         string
+	Description         string
+	From                string
+	Icon                string
+	Id                  string
+	Link                string
+	Message             string
 	MultiShareOptimized string
-	Name string
-	Privacy string
-	Via string
+	Name                string
+	Privacy             string
+	Via                 string
 }{
-	Caption: "caption",
-	CreatedTime: "created_time",
-	Description: "description",
-	From: "from",
-	Icon: "icon",
-	Id: "id",
-	Link: "link",
-	Message: "message",
+	Caption:             "caption",
+	CreatedTime:         "created_time",
+	Description:         "description",
+	From:                "from",
+	Icon:                "icon",
+	Id:                  "id",
+	Link:                "link",
+	Message:             "message",
 	MultiShareOptimized: "multi_share_optimized",
-	Name: "name",
-	Privacy: "privacy",
-	Via: "via",
+	Name:                "name",
+	Privacy:             "privacy",
+	Via:                 "via",
 }
 
 // LinkFieldsList contains all available fields for Link objects

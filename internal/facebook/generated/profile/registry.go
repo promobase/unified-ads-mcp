@@ -15,7 +15,6 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolProfile_get_picture())
 	tools = append(tools, ToolProfile_get_())
 
-
 	return tools
 }
 
@@ -25,7 +24,6 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 
 	handlers["profile_get_picture"] = HandleProfile_get_picture
 	handlers["profile_get_"] = HandleProfile_get_
-
 
 	return handlers
 }

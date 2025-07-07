@@ -4,11 +4,11 @@ package types
 
 // AdsTextSuggestions represents a Facebook AdsTextSuggestions object
 type AdsTextSuggestions struct {
-	Ad_account_id string `json:"ad_account_id"`
-	Bodies []map[string]interface{} `json:"bodies"`
-	Descriptions []map[string]interface{} `json:"descriptions"`
-	Inactive_session_tally int `json:"inactive_session_tally"`
-	Long []map[string]interface{} `json:"long"`
-	Short []map[string]interface{} `json:"short"`
-	Titles []map[string]interface{} `json:"titles"`
+	Ad_account_id          string                   `json:"ad_account_id"`
+	Bodies                 []map[string]interface{} `json:"bodies"`
+	Descriptions           []map[string]interface{} `json:"descriptions"`
+	Inactive_session_tally int                      `json:"inactive_session_tally"`
+	Long                   []map[string]interface{} `json:"long"`
+	Short                  []map[string]interface{} `json:"short"`
+	Titles                 []map[string]interface{} `json:"titles"`
 }

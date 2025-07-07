@@ -15,7 +15,7 @@ import (
 
 // ToolProductfeed_post_rules returns the MCP tool definition for productfeed_post_rules
 func ToolProductfeed_post_rules() mcp.Tool {
-	
+
 	// Params object accepts: attribute (string), params (map), rule_type (productfeedrules_rule_type_enum_param)
 	return mcp.NewTool("productfeed_post_rules",
 		mcp.WithDescription("POST rules for ProductFeed"),
@@ -23,19 +23,19 @@ func ToolProductfeed_post_rules() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"attribute": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "attribute parameter",
-					"required": true,
+					"required":    true,
 				},
 				"params": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "params parameter",
 				},
 				"rule_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "rule_type parameter",
-					"required": true,
-					"enum": []string{ "fallback_rule", "letter_case_rule", "mapping_rule", "regex_replace_rule", "value_mapping_rule" },
+					"required":    true,
+					"enum":        []string{"fallback_rule", "letter_case_rule", "mapping_rule", "regex_replace_rule", "value_mapping_rule"},
 				},
 			}),
 			mcp.Description("Parameters object containing: attribute (string) [required], params (object), rule_type (enum) [fallback_rule, letter_case_rule, mapping_rule, regex_replace_rule, value_mapping_rule] [required]"),
@@ -68,8 +68,6 @@ func HandleProductfeed_post_rules(ctx context.Context, request mcp.CallToolReque
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Productfeed_post_rules(accessToken, args)
 	if err != nil {
@@ -88,20 +86,18 @@ func HandleProductfeed_post_rules(ctx context.Context, request mcp.CallToolReque
 // Productfeed_post_rules performs POST rules for ProductFeed
 func Productfeed_post_rules(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/rules")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

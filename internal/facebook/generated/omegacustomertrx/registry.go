@@ -15,7 +15,6 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolOmegacustomertrx_get_campaigns())
 	tools = append(tools, ToolOmegacustomertrx_get_())
 
-
 	return tools
 }
 
@@ -25,7 +24,6 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 
 	handlers["omegacustomertrx_get_campaigns"] = HandleOmegacustomertrx_get_campaigns
 	handlers["omegacustomertrx_get_"] = HandleOmegacustomertrx_get_
-
 
 	return handlers
 }

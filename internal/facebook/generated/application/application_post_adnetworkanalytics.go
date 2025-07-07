@@ -15,7 +15,7 @@ import (
 
 // ToolApplication_post_adnetworkanalytics returns the MCP tool definition for application_post_adnetworkanalytics
 func ToolApplication_post_adnetworkanalytics() mcp.Tool {
-	
+
 	// Params object accepts: aggregation_period (applicationadnetworkanalytics_aggregation_period_enum_param), breakdowns (list<applicationadnetworkanalytics_breakdowns_enum_param>), filters (list<Object>), limit (int), metrics (list<applicationadnetworkanalytics_metrics_enum_param>), ordering_column (applicationadnetworkanalytics_ordering_column_enum_param), ordering_type (applicationadnetworkanalytics_ordering_type_enum_param), since (datetime), until (datetime)
 	return mcp.NewTool("application_post_adnetworkanalytics",
 		mcp.WithDescription("POST adnetworkanalytics for Application"),
@@ -23,48 +23,48 @@ func ToolApplication_post_adnetworkanalytics() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"aggregation_period": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "aggregation_period parameter",
-					"enum": []string{ "DAY", "TOTAL" },
+					"enum":        []string{"DAY", "TOTAL"},
 				},
 				"breakdowns": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "breakdowns parameter",
-					"enum": []string{ "AD_SERVER_CAMPAIGN_ID", "AD_SPACE", "AGE", "APP", "CLICKED_VIEW_TAG", "COUNTRY", "DEAL", "DEAL_AD", "DEAL_PAGE", "DELIVERY_METHOD", "DISPLAY_FORMAT", "FAIL_REASON", "GENDER", "INSTANT_ARTICLE_ID", "INSTANT_ARTICLE_PAGE_ID", "IS_DEAL_BACKFILL", "PLACEMENT", "PLACEMENT_NAME", "PLATFORM", "PROPERTY", "SDK_VERSION" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"AD_SERVER_CAMPAIGN_ID", "AD_SPACE", "AGE", "APP", "CLICKED_VIEW_TAG", "COUNTRY", "DEAL", "DEAL_AD", "DEAL_PAGE", "DELIVERY_METHOD", "DISPLAY_FORMAT", "FAIL_REASON", "GENDER", "INSTANT_ARTICLE_ID", "INSTANT_ARTICLE_PAGE_ID", "IS_DEAL_BACKFILL", "PLACEMENT", "PLACEMENT_NAME", "PLATFORM", "PROPERTY", "SDK_VERSION"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"filters": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "filters parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"limit": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "limit parameter",
 				},
 				"metrics": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "metrics parameter",
-					"required": true,
-					"enum": []string{ "FB_AD_NETWORK_BIDDING_BID_RATE", "FB_AD_NETWORK_BIDDING_REQUEST", "FB_AD_NETWORK_BIDDING_RESPONSE", "FB_AD_NETWORK_BIDDING_REVENUE", "FB_AD_NETWORK_BIDDING_WIN_RATE", "FB_AD_NETWORK_CLICK", "FB_AD_NETWORK_CPM", "FB_AD_NETWORK_CTR", "FB_AD_NETWORK_FILLED_REQUEST", "FB_AD_NETWORK_FILL_RATE", "FB_AD_NETWORK_IMP", "FB_AD_NETWORK_IMPRESSION_RATE", "FB_AD_NETWORK_REQUEST", "FB_AD_NETWORK_REVENUE", "FB_AD_NETWORK_SHOW_RATE", "FB_AD_NETWORK_VIDEO_GUARANTEE_REVENUE", "FB_AD_NETWORK_VIDEO_MRC", "FB_AD_NETWORK_VIDEO_MRC_RATE", "FB_AD_NETWORK_VIDEO_VIEW", "FB_AD_NETWORK_VIDEO_VIEW_RATE" },
-					"items": map[string]any{"type": "string"},
+					"required":    true,
+					"enum":        []string{"FB_AD_NETWORK_BIDDING_BID_RATE", "FB_AD_NETWORK_BIDDING_REQUEST", "FB_AD_NETWORK_BIDDING_RESPONSE", "FB_AD_NETWORK_BIDDING_REVENUE", "FB_AD_NETWORK_BIDDING_WIN_RATE", "FB_AD_NETWORK_CLICK", "FB_AD_NETWORK_CPM", "FB_AD_NETWORK_CTR", "FB_AD_NETWORK_FILLED_REQUEST", "FB_AD_NETWORK_FILL_RATE", "FB_AD_NETWORK_IMP", "FB_AD_NETWORK_IMPRESSION_RATE", "FB_AD_NETWORK_REQUEST", "FB_AD_NETWORK_REVENUE", "FB_AD_NETWORK_SHOW_RATE", "FB_AD_NETWORK_VIDEO_GUARANTEE_REVENUE", "FB_AD_NETWORK_VIDEO_MRC", "FB_AD_NETWORK_VIDEO_MRC_RATE", "FB_AD_NETWORK_VIDEO_VIEW", "FB_AD_NETWORK_VIDEO_VIEW_RATE"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"ordering_column": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "ordering_column parameter",
-					"enum": []string{ "METRIC", "TIME", "VALUE" },
+					"enum":        []string{"METRIC", "TIME", "VALUE"},
 				},
 				"ordering_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "ordering_type parameter",
-					"enum": []string{ "ASCENDING", "DESCENDING" },
+					"enum":        []string{"ASCENDING", "DESCENDING"},
 				},
 				"since": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "since parameter",
 				},
 				"until": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "until parameter",
 				},
 			}),
@@ -98,8 +98,6 @@ func HandleApplication_post_adnetworkanalytics(ctx context.Context, request mcp.
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Application_post_adnetworkanalytics(accessToken, args)
 	if err != nil {
@@ -118,20 +116,18 @@ func HandleApplication_post_adnetworkanalytics(ctx context.Context, request mcp.
 // Application_post_adnetworkanalytics performs POST adnetworkanalytics for Application
 func Application_post_adnetworkanalytics(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/adnetworkanalytics")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

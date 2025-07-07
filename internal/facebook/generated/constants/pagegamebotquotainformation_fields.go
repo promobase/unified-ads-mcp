@@ -4,10 +4,10 @@ package constants
 
 // PageGameBotQuotaInformationFields contains field name constants for PageGameBotQuotaInformation objects
 var PageGameBotQuotaInformationFields = struct {
-	Count string
+	Count      string
 	TimeWindow string
 }{
-	Count: "count",
+	Count:      "count",
 	TimeWindow: "time_window",
 }
 

@@ -15,7 +15,7 @@ import (
 
 // ToolBusiness_post_block_list_drafts returns the MCP tool definition for business_post_block_list_drafts
 func ToolBusiness_post_block_list_drafts() mcp.Tool {
-	
+
 	// Params object accepts: publisher_urls_file (file)
 	return mcp.NewTool("business_post_block_list_drafts",
 		mcp.WithDescription("POST block_list_drafts for Business"),
@@ -23,9 +23,9 @@ func ToolBusiness_post_block_list_drafts() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"publisher_urls_file": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "publisher_urls_file parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: publisher_urls_file (file) [required]"),
@@ -58,8 +58,6 @@ func HandleBusiness_post_block_list_drafts(ctx context.Context, request mcp.Call
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Business_post_block_list_drafts(accessToken, args)
 	if err != nil {
@@ -78,20 +76,18 @@ func HandleBusiness_post_block_list_drafts(ctx context.Context, request mcp.Call
 // Business_post_block_list_drafts performs POST block_list_drafts for Business
 func Business_post_block_list_drafts(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/block_list_drafts")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

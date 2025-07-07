@@ -15,14 +15,14 @@ import (
 
 // ToolIgmediaforigonlyapi_post_comments returns the MCP tool definition for igmediaforigonlyapi_post_comments
 func ToolIgmediaforigonlyapi_post_comments() mcp.Tool {
-	
+
 	// Params object accepts: message (string)
 	return mcp.NewTool("igmediaforigonlyapi_post_comments",
 		mcp.WithDescription("POST comments for IGMediaForIGOnlyAPI"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"message": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "message parameter",
 				},
 			}),
@@ -54,8 +54,6 @@ func HandleIgmediaforigonlyapi_post_comments(ctx context.Context, request mcp.Ca
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Igmediaforigonlyapi_post_comments(accessToken, args)
 	if err != nil {
@@ -74,20 +72,18 @@ func HandleIgmediaforigonlyapi_post_comments(ctx context.Context, request mcp.Ca
 // Igmediaforigonlyapi_post_comments performs POST comments for IGMediaForIGOnlyAPI
 func Igmediaforigonlyapi_post_comments(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/comments")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

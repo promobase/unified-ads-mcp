@@ -4,13 +4,13 @@ package constants
 
 // PagePartnerWithLeadsAccessFields contains field name constants for PagePartnerWithLeadsAccess objects
 var PagePartnerWithLeadsAccessFields = struct {
-	CanAccessLeads string
+	CanAccessLeads  string
 	PartnerBusiness string
-	PermittedTasks string
+	PermittedTasks  string
 }{
-	CanAccessLeads: "can_access_leads",
+	CanAccessLeads:  "can_access_leads",
 	PartnerBusiness: "partner_business",
-	PermittedTasks: "permitted_tasks",
+	PermittedTasks:  "permitted_tasks",
 }
 
 // PagePartnerWithLeadsAccessFieldsList contains all available fields for PagePartnerWithLeadsAccess objects

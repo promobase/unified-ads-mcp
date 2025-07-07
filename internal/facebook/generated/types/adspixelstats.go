@@ -6,8 +6,8 @@ import "time"
 
 // AdsPixelStats represents a Facebook AdsPixelStats object
 type AdsPixelStats struct {
-	Count int `json:"count"`
+	Count                             int       `json:"count"`
 	Diagnostics_hourly_last_timestamp time.Time `json:"diagnostics_hourly_last_timestamp"`
-	Event string `json:"event"`
-	Value string `json:"value"`
+	Event                             string    `json:"event"`
+	Value                             string    `json:"value"`
 }

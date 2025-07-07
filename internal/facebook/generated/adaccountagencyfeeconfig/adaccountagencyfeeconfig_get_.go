@@ -17,7 +17,7 @@ import (
 // ToolAdaccountagencyfeeconfig_get_ returns the MCP tool definition for adaccountagencyfeeconfig_get_
 func ToolAdaccountagencyfeeconfig_get_() mcp.Tool {
 	// Available fields for AdAccountAgencyFeeConfig: can_add_agency_fee_to_invoice, default_agency_fee_pct, id, is_agency_fee_disabled, status
-	
+
 	return mcp.NewTool("adaccountagencyfeeconfig_get_",
 		mcp.WithDescription("GET  for AdAccountAgencyFeeConfig"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleAdaccountagencyfeeconfig_get_(ctx context.Context, request mcp.CallTo
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Adaccountagencyfeeconfig_get_(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleAdaccountagencyfeeconfig_get_(ctx context.Context, request mcp.CallTo
 // Adaccountagencyfeeconfig_get_ performs GET  for AdAccountAgencyFeeConfig
 func Adaccountagencyfeeconfig_get_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

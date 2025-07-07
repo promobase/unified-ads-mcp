@@ -15,7 +15,7 @@ import (
 
 // ToolWhatsappbusinessaccount_post_migrate_message_templates returns the MCP tool definition for whatsappbusinessaccount_post_migrate_message_templates
 func ToolWhatsappbusinessaccount_post_migrate_message_templates() mcp.Tool {
-	
+
 	// Params object accepts: page_number (unsigned int), source_waba_id (string)
 	return mcp.NewTool("whatsappbusinessaccount_post_migrate_message_templates",
 		mcp.WithDescription("POST migrate_message_templates for WhatsAppBusinessAccount"),
@@ -23,13 +23,13 @@ func ToolWhatsappbusinessaccount_post_migrate_message_templates() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"page_number": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "page_number parameter",
 				},
 				"source_waba_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "source_waba_id parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: page_number (integer), source_waba_id (string) [required]"),
@@ -62,8 +62,6 @@ func HandleWhatsappbusinessaccount_post_migrate_message_templates(ctx context.Co
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Whatsappbusinessaccount_post_migrate_message_templates(accessToken, args)
 	if err != nil {
@@ -82,20 +80,18 @@ func HandleWhatsappbusinessaccount_post_migrate_message_templates(ctx context.Co
 // Whatsappbusinessaccount_post_migrate_message_templates performs POST migrate_message_templates for WhatsAppBusinessAccount
 func Whatsappbusinessaccount_post_migrate_message_templates(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/migrate_message_templates")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

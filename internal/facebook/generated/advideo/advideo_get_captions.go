@@ -16,8 +16,7 @@ import (
 
 // ToolAdvideo_get_captions returns the MCP tool definition for advideo_get_captions
 func ToolAdvideo_get_captions() mcp.Tool {
-	
-	
+
 	return mcp.NewTool("advideo_get_captions",
 		mcp.WithDescription("GET captions for AdVideo"),
 		mcp.WithArray("fields",
@@ -71,8 +70,6 @@ func HandleAdvideo_get_captions(ctx context.Context, request mcp.CallToolRequest
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Advideo_get_captions(accessToken, args)
 	if err != nil {
@@ -91,38 +88,36 @@ func HandleAdvideo_get_captions(ctx context.Context, request mcp.CallToolRequest
 // Advideo_get_captions performs GET captions for AdVideo
 func Advideo_get_captions(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/captions")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

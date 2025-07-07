@@ -4,15 +4,15 @@ package constants
 
 // InstagramThreadFields contains field name constants for InstagramThread objects
 var InstagramThreadFields = struct {
-	Folder string
-	Id string
+	Folder       string
+	Id           string
 	Participants string
-	UpdatedTime string
+	UpdatedTime  string
 }{
-	Folder: "folder",
-	Id: "id",
+	Folder:       "folder",
+	Id:           "id",
 	Participants: "participants",
-	UpdatedTime: "updated_time",
+	UpdatedTime:  "updated_time",
 }
 
 // InstagramThreadFieldsList contains all available fields for InstagramThread objects

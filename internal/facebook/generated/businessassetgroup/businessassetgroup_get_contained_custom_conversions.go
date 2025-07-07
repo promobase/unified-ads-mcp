@@ -17,7 +17,7 @@ import (
 // ToolBusinessassetgroup_get_contained_custom_conversions returns the MCP tool definition for businessassetgroup_get_contained_custom_conversions
 func ToolBusinessassetgroup_get_contained_custom_conversions() mcp.Tool {
 	// Available fields for CustomConversion: account_id, aggregation_rule, business, creation_time, custom_event_type, data_sources, default_conversion_value, description, event_source_type, first_fired_time, id, is_archived, is_unavailable, last_fired_time, name, offline_conversion_data_set, pixel, retention_days, rule
-	
+
 	return mcp.NewTool("businessassetgroup_get_contained_custom_conversions",
 		mcp.WithDescription("GET contained_custom_conversions for BusinessAssetGroup"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleBusinessassetgroup_get_contained_custom_conversions(ctx context.Conte
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Businessassetgroup_get_contained_custom_conversions(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleBusinessassetgroup_get_contained_custom_conversions(ctx context.Conte
 // Businessassetgroup_get_contained_custom_conversions performs GET contained_custom_conversions for BusinessAssetGroup
 func Businessassetgroup_get_contained_custom_conversions(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/contained_custom_conversions")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

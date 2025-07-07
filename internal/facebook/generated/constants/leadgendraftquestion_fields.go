@@ -4,23 +4,23 @@ package constants
 
 // LeadGenDraftQuestionFields contains field name constants for LeadGenDraftQuestion objects
 var LeadGenDraftQuestionFields = struct {
-	ConditionalQuestionsChoices string
-	ConditionalQuestionsGroupId string
+	ConditionalQuestionsChoices   string
+	ConditionalQuestionsGroupId   string
 	DependentConditionalQuestions string
-	InlineContext string
-	Key string
-	Label string
-	Options string
-	FieldType string
+	InlineContext                 string
+	Key                           string
+	Label                         string
+	Options                       string
+	FieldType                     string
 }{
-	ConditionalQuestionsChoices: "conditional_questions_choices",
-	ConditionalQuestionsGroupId: "conditional_questions_group_id",
+	ConditionalQuestionsChoices:   "conditional_questions_choices",
+	ConditionalQuestionsGroupId:   "conditional_questions_group_id",
 	DependentConditionalQuestions: "dependent_conditional_questions",
-	InlineContext: "inline_context",
-	Key: "key",
-	Label: "label",
-	Options: "options",
-	FieldType: "type",
+	InlineContext:                 "inline_context",
+	Key:                           "key",
+	Label:                         "label",
+	Options:                       "options",
+	FieldType:                     "type",
 }
 
 // LeadGenDraftQuestionFieldsList contains all available fields for LeadGenDraftQuestion objects

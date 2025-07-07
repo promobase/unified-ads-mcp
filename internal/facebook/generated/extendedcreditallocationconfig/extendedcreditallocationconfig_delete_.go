@@ -15,8 +15,7 @@ import (
 
 // ToolExtendedcreditallocationconfig_delete_ returns the MCP tool definition for extendedcreditallocationconfig_delete_
 func ToolExtendedcreditallocationconfig_delete_() mcp.Tool {
-	
-	
+
 	return mcp.NewTool("extendedcreditallocationconfig_delete_",
 		mcp.WithDescription("DELETE  for ExtendedCreditAllocationConfig"),
 	)
@@ -32,8 +31,6 @@ func HandleExtendedcreditallocationconfig_delete_(ctx context.Context, request m
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the API method
 	result, err := Extendedcreditallocationconfig_delete_(accessToken, args)
@@ -53,14 +50,11 @@ func HandleExtendedcreditallocationconfig_delete_(ctx context.Context, request m
 // Extendedcreditallocationconfig_delete_ performs DELETE  for ExtendedCreditAllocationConfig
 func Extendedcreditallocationconfig_delete_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response

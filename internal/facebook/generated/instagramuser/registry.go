@@ -18,7 +18,6 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolInstagramuser_get_upcoming_events())
 	tools = append(tools, ToolInstagramuser_get_())
 
-
 	return tools
 }
 
@@ -31,7 +30,6 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers["instagramuser_get_authorized_adaccounts"] = HandleInstagramuser_get_authorized_adaccounts
 	handlers["instagramuser_get_upcoming_events"] = HandleInstagramuser_get_upcoming_events
 	handlers["instagramuser_get_"] = HandleInstagramuser_get_
-
 
 	return handlers
 }

@@ -16,7 +16,7 @@ import (
 
 // ToolWhatsappbusinessaccount_get_conversation_analytics returns the MCP tool definition for whatsappbusinessaccount_get_conversation_analytics
 func ToolWhatsappbusinessaccount_get_conversation_analytics() mcp.Tool {
-	
+
 	// Params object accepts: conversation_categories (list<whatsappbusinessaccountconversation_analytics_conversation_categories_enum_param>), conversation_directions (list<whatsappbusinessaccountconversation_analytics_conversation_directions_enum_param>), conversation_types (list<whatsappbusinessaccountconversation_analytics_conversation_types_enum_param>), country_codes (list<string>), dimensions (list<whatsappbusinessaccountconversation_analytics_dimensions_enum_param>), end (unsigned int), granularity (whatsappbusinessaccountconversation_analytics_granularity_enum_param), metric_types (list<whatsappbusinessaccountconversation_analytics_metric_types_enum_param>), phone_numbers (list<string>), start (unsigned int)
 	return mcp.NewTool("whatsappbusinessaccount_get_conversation_analytics",
 		mcp.WithDescription("GET conversation_analytics for WhatsAppBusinessAccount"),
@@ -24,60 +24,60 @@ func ToolWhatsappbusinessaccount_get_conversation_analytics() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"conversation_categories": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "conversation_categories parameter",
-					"enum": []string{ "AUTHENTICATION", "AUTHENTICATION_INTERNATIONAL", "MARKETING", "MARKETING_LITE", "SERVICE", "UTILITY" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"AUTHENTICATION", "AUTHENTICATION_INTERNATIONAL", "MARKETING", "MARKETING_LITE", "SERVICE", "UTILITY"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"conversation_directions": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "conversation_directions parameter",
-					"enum": []string{ "BUSINESS_INITIATED", "UNKNOWN", "USER_INITIATED" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"BUSINESS_INITIATED", "UNKNOWN", "USER_INITIATED"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"conversation_types": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "conversation_types parameter",
-					"enum": []string{ "FREE_ENTRY_POINT", "FREE_TIER", "REGULAR", "UNKNOWN" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"FREE_ENTRY_POINT", "FREE_TIER", "REGULAR", "UNKNOWN"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"country_codes": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "country_codes parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"dimensions": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "dimensions parameter",
-					"enum": []string{ "CONVERSATION_CATEGORY", "CONVERSATION_DIRECTION", "CONVERSATION_TYPE", "COUNTRY", "PHONE", "UNKNOWN" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"CONVERSATION_CATEGORY", "CONVERSATION_DIRECTION", "CONVERSATION_TYPE", "COUNTRY", "PHONE", "UNKNOWN"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"end": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "end parameter",
-					"required": true,
+					"required":    true,
 				},
 				"granularity": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "granularity parameter",
-					"required": true,
-					"enum": []string{ "DAILY", "HALF_HOUR", "MONTHLY" },
+					"required":    true,
+					"enum":        []string{"DAILY", "HALF_HOUR", "MONTHLY"},
 				},
 				"metric_types": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "metric_types parameter",
-					"enum": []string{ "CONVERSATION", "COST", "UNKNOWN" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"CONVERSATION", "COST", "UNKNOWN"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"phone_numbers": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "phone_numbers parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"start": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "start parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: conversation_categories (array<enum>) [AUTHENTICATION, AUTHENTICATION_INTERNATIONAL, MARKETING, MARKETING_LITE, SERVICE, ...], conversation_directions (array<enum>) [BUSINESS_INITIATED, UNKNOWN, USER_INITIATED], conversation_types (array<enum>) [FREE_ENTRY_POINT, FREE_TIER, REGULAR, UNKNOWN], country_codes (array<string>), dimensions (array<enum>) [CONVERSATION_CATEGORY, CONVERSATION_DIRECTION, CONVERSATION_TYPE, COUNTRY, PHONE, ...], end (integer) [required], granularity (enum) [DAILY, HALF_HOUR, MONTHLY] [required], metric_types (array<enum>) [CONVERSATION, COST, UNKNOWN], phone_numbers (array<string>), start (integer) [required]"),
@@ -147,8 +147,6 @@ func HandleWhatsappbusinessaccount_get_conversation_analytics(ctx context.Contex
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Whatsappbusinessaccount_get_conversation_analytics(accessToken, args)
 	if err != nil {
@@ -167,44 +165,42 @@ func HandleWhatsappbusinessaccount_get_conversation_analytics(ctx context.Contex
 // Whatsappbusinessaccount_get_conversation_analytics performs GET conversation_analytics for WhatsAppBusinessAccount
 func Whatsappbusinessaccount_get_conversation_analytics(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/conversation_analytics")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

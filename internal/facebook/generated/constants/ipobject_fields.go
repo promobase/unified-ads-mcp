@@ -5,10 +5,10 @@ package constants
 // IPObjectFields contains field name constants for IPObject objects
 var IPObjectFields = struct {
 	IpPermission string
-	User string
+	User         string
 }{
 	IpPermission: "ip_permission",
-	User: "user",
+	User:         "user",
 }
 
 // IPObjectFieldsList contains all available fields for IPObject objects

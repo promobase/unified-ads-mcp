@@ -4,6 +4,6 @@ package types
 
 // AdsStartYourDayWidget represents a Facebook AdsStartYourDayWidget object
 type AdsStartYourDayWidget struct {
-	Id string `json:"id"`
+	Id        string `json:"id"`
 	Widget_id string `json:"widget_id"`
 }

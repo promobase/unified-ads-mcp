@@ -17,7 +17,6 @@ import (
 func GetIGUserForIGOnlyAPITools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// iguserforigonlyapi_get_business_messaging_feature_status tool
 	// Params object accepts: feature (string)
 	iguserforigonlyapi_get_business_messaging_feature_statusTool := mcp.NewTool("iguserforigonlyapi_get_business_messaging_feature_status",
@@ -26,9 +25,9 @@ func GetIGUserForIGOnlyAPITools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"feature": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "feature parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: feature (string) [required]"),
@@ -56,7 +55,7 @@ func GetIGUserForIGOnlyAPITools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"since": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "since parameter",
 				},
 			}),
@@ -85,21 +84,21 @@ func GetIGUserForIGOnlyAPITools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"folder": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "folder parameter",
 				},
 				"platform": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "platform parameter",
-					"enum": []string{ "INSTAGRAM", "MESSENGER" },
+					"enum":        []string{"INSTAGRAM", "MESSENGER"},
 				},
 				"tags": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "tags parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"user_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "user_id parameter",
 				},
 			}),
@@ -129,41 +128,41 @@ func GetIGUserForIGOnlyAPITools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"breakdown": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "breakdown parameter",
-					"enum": []string{ "age", "city", "contact_button_type", "country", "follow_type", "gender", "media_product_type" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"age", "city", "contact_button_type", "country", "follow_type", "gender", "media_product_type"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"metric": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "metric parameter",
-					"required": true,
-					"enum": []string{ "accounts_engaged", "comments", "content_views", "engaged_audience_demographics", "follower_count", "follower_demographics", "follows_and_unfollows", "impressions", "likes", "online_followers", "profile_links_taps", "profile_views", "quotes", "reach", "reached_audience_demographics", "replies", "reposts", "saves", "shares", "threads_follower_demographics", "threads_followers", "threads_likes", "threads_replies", "threads_views", "total_interactions", "views", "website_clicks" },
-					"items": map[string]any{"type": "string"},
+					"required":    true,
+					"enum":        []string{"accounts_engaged", "comments", "content_views", "engaged_audience_demographics", "follower_count", "follower_demographics", "follows_and_unfollows", "impressions", "likes", "online_followers", "profile_links_taps", "profile_views", "quotes", "reach", "reached_audience_demographics", "replies", "reposts", "saves", "shares", "threads_follower_demographics", "threads_followers", "threads_likes", "threads_replies", "threads_views", "total_interactions", "views", "website_clicks"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"metric_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "metric_type parameter",
-					"enum": []string{ "default", "time_series", "total_value" },
+					"enum":        []string{"default", "time_series", "total_value"},
 				},
 				"period": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "period parameter",
-					"required": true,
-					"enum": []string{ "day", "days_28", "lifetime", "month", "total_over_range", "week" },
-					"items": map[string]any{"type": "string"},
+					"required":    true,
+					"enum":        []string{"day", "days_28", "lifetime", "month", "total_over_range", "week"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"since": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "since parameter",
 				},
 				"timeframe": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "timeframe parameter",
-					"enum": []string{ "last_14_days", "last_30_days", "last_90_days", "prev_month", "this_month", "this_week" },
+					"enum":        []string{"last_14_days", "last_30_days", "last_90_days", "prev_month", "this_month", "this_week"},
 				},
 				"until": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "until parameter",
 				},
 			}),
@@ -209,11 +208,11 @@ func GetIGUserForIGOnlyAPITools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"since": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "since parameter",
 				},
 				"until": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "until parameter",
 				},
 			}),
@@ -241,71 +240,71 @@ func GetIGUserForIGOnlyAPITools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"alt_text": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "alt_text parameter",
 				},
 				"audio_name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "audio_name parameter",
 				},
 				"caption": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "caption parameter",
 				},
 				"children": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "children parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"collaborators": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "collaborators parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"cover_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "cover_url parameter",
 				},
 				"image_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "image_url parameter",
 				},
 				"is_carousel_item": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_carousel_item parameter",
 				},
 				"location_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "location_id parameter",
 				},
 				"media_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "media_type parameter",
 				},
 				"product_tags": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "product_tags parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"share_to_feed": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "share_to_feed parameter",
 				},
 				"thumb_offset": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "thumb_offset parameter",
 				},
 				"upload_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "upload_type parameter",
 				},
 				"user_tags": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "user_tags parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"video_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "video_url parameter",
 				},
 			}),
@@ -322,9 +321,9 @@ func GetIGUserForIGOnlyAPITools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"creation_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "creation_id parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: creation_id (integer) [required]"),
@@ -340,18 +339,18 @@ func GetIGUserForIGOnlyAPITools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"comment_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "comment_id parameter",
 				},
 				"media_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "media_id parameter",
-					"required": true,
+					"required":    true,
 				},
 				"message": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "message parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: comment_id (string), media_id (string) [required], message (string) [required]"),
@@ -367,9 +366,9 @@ func GetIGUserForIGOnlyAPITools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"message": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "message parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: message (object) [required]"),
@@ -384,33 +383,33 @@ func GetIGUserForIGOnlyAPITools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"message": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "message parameter",
 				},
 				"messaging_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "messaging_type parameter",
-					"enum": []string{ "MESSAGE_TAG", "RESPONSE", "UPDATE", "UTILITY" },
+					"enum":        []string{"MESSAGE_TAG", "RESPONSE", "UPDATE", "UTILITY"},
 				},
 				"payload": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "payload parameter",
 				},
 				"recipient": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "recipient parameter",
 				},
 				"sender_action": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "sender_action parameter",
-					"enum": []string{ "MARK_SEEN", "REACT", "TYPING_OFF", "TYPING_ON", "UNREACT" },
+					"enum":        []string{"MARK_SEEN", "REACT", "TYPING_OFF", "TYPING_ON", "UNREACT"},
 				},
 				"tag": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "tag parameter",
 				},
 				"thread_control": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "thread_control parameter",
 				},
 			}),
@@ -427,11 +426,11 @@ func GetIGUserForIGOnlyAPITools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"fields": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "fields parameter",
-					"required": true,
-					"enum": []string{ "ACCOUNT_LINKING_URL", "COMMANDS", "DESCRIPTION", "GET_STARTED", "GREETING", "HOME_URL", "ICE_BREAKERS", "PERSISTENT_MENU", "PLATFORM", "SUBJECT_TO_NEW_EU_PRIVACY_RULES", "TITLE", "WHITELISTED_DOMAINS" },
-					"items": map[string]any{"type": "string"},
+					"required":    true,
+					"enum":        []string{"ACCOUNT_LINKING_URL", "COMMANDS", "DESCRIPTION", "GET_STARTED", "GREETING", "HOME_URL", "ICE_BREAKERS", "PERSISTENT_MENU", "PLATFORM", "SUBJECT_TO_NEW_EU_PRIVACY_RULES", "TITLE", "WHITELISTED_DOMAINS"},
+					"items":       map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: fields (array<enum>) [ACCOUNT_LINKING_URL, COMMANDS, DESCRIPTION, GET_STARTED, GREETING, ...] [required]"),
@@ -464,14 +463,14 @@ func GetIGUserForIGOnlyAPITools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"ice_breakers": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "ice_breakers parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"persistent_menu": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "persistent_menu parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 			}),
 			mcp.Description("Parameters object containing: ice_breakers (array<object>), persistent_menu (array<object>)"),
@@ -529,11 +528,11 @@ func GetIGUserForIGOnlyAPITools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"subscribed_fields": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "subscribed_fields parameter",
-					"required": true,
-					"enum": []string{ "comment_poll_response", "comments", "creator_marketplace_invited_creator_onboarding", "creator_marketplace_projects", "delta", "follow", "live_comments", "mentions", "message_reactions", "messages", "messaging_handover", "messaging_optins", "messaging_postbacks", "messaging_referral", "messaging_seen", "onboarding_welcome_message_series", "standby", "story_insights", "story_poll_response", "story_reactions", "story_share" },
-					"items": map[string]any{"type": "string"},
+					"required":    true,
+					"enum":        []string{"comment_poll_response", "comments", "creator_marketplace_invited_creator_onboarding", "creator_marketplace_projects", "delta", "follow", "live_comments", "mentions", "message_reactions", "messages", "messaging_handover", "messaging_optins", "messaging_postbacks", "messaging_referral", "messaging_seen", "onboarding_welcome_message_series", "standby", "story_insights", "story_poll_response", "story_reactions", "story_share"},
+					"items":       map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: subscribed_fields (array<enum>) [comment_poll_response, comments, creator_marketplace_invited_creator_onboarding, creator_marketplace_projects, delta, ...] [required]"),
@@ -566,7 +565,7 @@ func GetIGUserForIGOnlyAPITools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"flow_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "flow_id parameter",
 				},
 			}),
@@ -583,11 +582,11 @@ func GetIGUserForIGOnlyAPITools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"app_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "app_id parameter",
 				},
 				"flow_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "flow_id parameter",
 				},
 			}),
@@ -615,23 +614,23 @@ func GetIGUserForIGOnlyAPITools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"eligible_platforms": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "eligible_platforms parameter",
-					"enum": []string{ "INSTAGRAM", "MESSENGER", "WHATSAPP" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"INSTAGRAM", "MESSENGER", "WHATSAPP"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"flow_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "flow_id parameter",
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
 				},
 				"welcome_message_flow": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "welcome_message_flow parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 			}),
 			mcp.Description("Parameters object containing: eligible_platforms (array<enum>) [INSTAGRAM, MESSENGER, WHATSAPP], flow_id (string), name (string), welcome_message_flow (array<object>)"),
@@ -658,12 +657,10 @@ func GetIGUserForIGOnlyAPITools() []mcp.Tool {
 	)
 	tools = append(tools, iguserforigonlyapi_get_Tool)
 
-
 	return tools
 }
 
 // IGUserForIGOnlyAPI handlers
-
 
 // HandleIguserforigonlyapi_get_business_messaging_feature_status handles the iguserforigonlyapi_get_business_messaging_feature_status tool with context-based auth
 func HandleIguserforigonlyapi_get_business_messaging_feature_status(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -718,8 +715,6 @@ func HandleIguserforigonlyapi_get_business_messaging_feature_status(ctx context.
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Iguserforigonlyapi_get_business_messaging_feature_status(args)
 	if err != nil {
@@ -734,7 +729,6 @@ func HandleIguserforigonlyapi_get_business_messaging_feature_status(ctx context.
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleIguserforigonlyapi_get_content_publishing_limit handles the iguserforigonlyapi_get_content_publishing_limit tool with context-based auth
 func HandleIguserforigonlyapi_get_content_publishing_limit(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -787,8 +781,6 @@ func HandleIguserforigonlyapi_get_content_publishing_limit(ctx context.Context, 
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Iguserforigonlyapi_get_content_publishing_limit(args)
 	if err != nil {
@@ -803,7 +795,6 @@ func HandleIguserforigonlyapi_get_content_publishing_limit(ctx context.Context, 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleIguserforigonlyapi_get_conversations handles the iguserforigonlyapi_get_conversations tool with context-based auth
 func HandleIguserforigonlyapi_get_conversations(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -856,8 +847,6 @@ func HandleIguserforigonlyapi_get_conversations(ctx context.Context, request mcp
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Iguserforigonlyapi_get_conversations(args)
 	if err != nil {
@@ -872,7 +861,6 @@ func HandleIguserforigonlyapi_get_conversations(ctx context.Context, request mcp
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleIguserforigonlyapi_get_insights handles the iguserforigonlyapi_get_insights tool with context-based auth
 func HandleIguserforigonlyapi_get_insights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -927,8 +915,6 @@ func HandleIguserforigonlyapi_get_insights(ctx context.Context, request mcp.Call
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Iguserforigonlyapi_get_insights(args)
 	if err != nil {
@@ -943,7 +929,6 @@ func HandleIguserforigonlyapi_get_insights(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleIguserforigonlyapi_get_live_media handles the iguserforigonlyapi_get_live_media tool with context-based auth
 func HandleIguserforigonlyapi_get_live_media(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -984,8 +969,6 @@ func HandleIguserforigonlyapi_get_live_media(ctx context.Context, request mcp.Ca
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Iguserforigonlyapi_get_live_media(args)
 	if err != nil {
@@ -1000,7 +983,6 @@ func HandleIguserforigonlyapi_get_live_media(ctx context.Context, request mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleIguserforigonlyapi_get_media handles the iguserforigonlyapi_get_media tool with context-based auth
 func HandleIguserforigonlyapi_get_media(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1053,8 +1035,6 @@ func HandleIguserforigonlyapi_get_media(ctx context.Context, request mcp.CallToo
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Iguserforigonlyapi_get_media(args)
 	if err != nil {
@@ -1069,7 +1049,6 @@ func HandleIguserforigonlyapi_get_media(ctx context.Context, request mcp.CallToo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleIguserforigonlyapi_post_media handles the iguserforigonlyapi_post_media tool with context-based auth
 func HandleIguserforigonlyapi_post_media(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1097,8 +1076,6 @@ func HandleIguserforigonlyapi_post_media(ctx context.Context, request mcp.CallTo
 		}
 	}
 
-
-
 	// Call the client method
 	result, err := client.Iguserforigonlyapi_post_media(args)
 	if err != nil {
@@ -1113,7 +1090,6 @@ func HandleIguserforigonlyapi_post_media(ctx context.Context, request mcp.CallTo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleIguserforigonlyapi_post_mediapublish handles the iguserforigonlyapi_post_mediapublish tool with context-based auth
 func HandleIguserforigonlyapi_post_mediapublish(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1143,8 +1119,6 @@ func HandleIguserforigonlyapi_post_mediapublish(ctx context.Context, request mcp
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Iguserforigonlyapi_post_mediapublish(args)
 	if err != nil {
@@ -1159,7 +1133,6 @@ func HandleIguserforigonlyapi_post_mediapublish(ctx context.Context, request mcp
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleIguserforigonlyapi_post_mentions handles the iguserforigonlyapi_post_mentions tool with context-based auth
 func HandleIguserforigonlyapi_post_mentions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1189,8 +1162,6 @@ func HandleIguserforigonlyapi_post_mentions(ctx context.Context, request mcp.Cal
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Iguserforigonlyapi_post_mentions(args)
 	if err != nil {
@@ -1205,7 +1176,6 @@ func HandleIguserforigonlyapi_post_mentions(ctx context.Context, request mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleIguserforigonlyapi_post_messageattachments handles the iguserforigonlyapi_post_messageattachments tool with context-based auth
 func HandleIguserforigonlyapi_post_messageattachments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1235,8 +1205,6 @@ func HandleIguserforigonlyapi_post_messageattachments(ctx context.Context, reque
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Iguserforigonlyapi_post_messageattachments(args)
 	if err != nil {
@@ -1251,7 +1219,6 @@ func HandleIguserforigonlyapi_post_messageattachments(ctx context.Context, reque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleIguserforigonlyapi_post_messages handles the iguserforigonlyapi_post_messages tool with context-based auth
 func HandleIguserforigonlyapi_post_messages(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1279,8 +1246,6 @@ func HandleIguserforigonlyapi_post_messages(ctx context.Context, request mcp.Cal
 		}
 	}
 
-
-
 	// Call the client method
 	result, err := client.Iguserforigonlyapi_post_messages(args)
 	if err != nil {
@@ -1295,7 +1260,6 @@ func HandleIguserforigonlyapi_post_messages(ctx context.Context, request mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleIguserforigonlyapi_delete_messenger_profile handles the iguserforigonlyapi_delete_messenger_profile tool with context-based auth
 func HandleIguserforigonlyapi_delete_messenger_profile(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1325,8 +1289,6 @@ func HandleIguserforigonlyapi_delete_messenger_profile(ctx context.Context, requ
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Iguserforigonlyapi_delete_messenger_profile(args)
 	if err != nil {
@@ -1341,7 +1303,6 @@ func HandleIguserforigonlyapi_delete_messenger_profile(ctx context.Context, requ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleIguserforigonlyapi_get_messenger_profile handles the iguserforigonlyapi_get_messenger_profile tool with context-based auth
 func HandleIguserforigonlyapi_get_messenger_profile(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1382,8 +1343,6 @@ func HandleIguserforigonlyapi_get_messenger_profile(ctx context.Context, request
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Iguserforigonlyapi_get_messenger_profile(args)
 	if err != nil {
@@ -1398,7 +1357,6 @@ func HandleIguserforigonlyapi_get_messenger_profile(ctx context.Context, request
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleIguserforigonlyapi_post_messenger_profile handles the iguserforigonlyapi_post_messenger_profile tool with context-based auth
 func HandleIguserforigonlyapi_post_messenger_profile(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1426,8 +1384,6 @@ func HandleIguserforigonlyapi_post_messenger_profile(ctx context.Context, reques
 		}
 	}
 
-
-
 	// Call the client method
 	result, err := client.Iguserforigonlyapi_post_messenger_profile(args)
 	if err != nil {
@@ -1442,7 +1398,6 @@ func HandleIguserforigonlyapi_post_messenger_profile(ctx context.Context, reques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleIguserforigonlyapi_get_stories handles the iguserforigonlyapi_get_stories tool with context-based auth
 func HandleIguserforigonlyapi_get_stories(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1483,8 +1438,6 @@ func HandleIguserforigonlyapi_get_stories(ctx context.Context, request mcp.CallT
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Iguserforigonlyapi_get_stories(args)
 	if err != nil {
@@ -1500,7 +1453,6 @@ func HandleIguserforigonlyapi_get_stories(ctx context.Context, request mcp.CallT
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleIguserforigonlyapi_delete_subscribed_apps handles the iguserforigonlyapi_delete_subscribed_apps tool with context-based auth
 func HandleIguserforigonlyapi_delete_subscribed_apps(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
@@ -1514,8 +1466,6 @@ func HandleIguserforigonlyapi_delete_subscribed_apps(ctx context.Context, reques
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Iguserforigonlyapi_delete_subscribed_apps(args)
@@ -1531,7 +1481,6 @@ func HandleIguserforigonlyapi_delete_subscribed_apps(ctx context.Context, reques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleIguserforigonlyapi_get_subscribed_apps handles the iguserforigonlyapi_get_subscribed_apps tool with context-based auth
 func HandleIguserforigonlyapi_get_subscribed_apps(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1572,8 +1521,6 @@ func HandleIguserforigonlyapi_get_subscribed_apps(ctx context.Context, request m
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Iguserforigonlyapi_get_subscribed_apps(args)
 	if err != nil {
@@ -1588,7 +1535,6 @@ func HandleIguserforigonlyapi_get_subscribed_apps(ctx context.Context, request m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleIguserforigonlyapi_post_subscribed_apps handles the iguserforigonlyapi_post_subscribed_apps tool with context-based auth
 func HandleIguserforigonlyapi_post_subscribed_apps(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1618,8 +1564,6 @@ func HandleIguserforigonlyapi_post_subscribed_apps(ctx context.Context, request 
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Iguserforigonlyapi_post_subscribed_apps(args)
 	if err != nil {
@@ -1634,7 +1578,6 @@ func HandleIguserforigonlyapi_post_subscribed_apps(ctx context.Context, request 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleIguserforigonlyapi_get_tags handles the iguserforigonlyapi_get_tags tool with context-based auth
 func HandleIguserforigonlyapi_get_tags(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1675,8 +1618,6 @@ func HandleIguserforigonlyapi_get_tags(ctx context.Context, request mcp.CallTool
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Iguserforigonlyapi_get_tags(args)
 	if err != nil {
@@ -1691,7 +1632,6 @@ func HandleIguserforigonlyapi_get_tags(ctx context.Context, request mcp.CallTool
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleIguserforigonlyapi_delete_welcome_message_flows handles the iguserforigonlyapi_delete_welcome_message_flows tool with context-based auth
 func HandleIguserforigonlyapi_delete_welcome_message_flows(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1719,8 +1659,6 @@ func HandleIguserforigonlyapi_delete_welcome_message_flows(ctx context.Context, 
 		}
 	}
 
-
-
 	// Call the client method
 	result, err := client.Iguserforigonlyapi_delete_welcome_message_flows(args)
 	if err != nil {
@@ -1735,7 +1673,6 @@ func HandleIguserforigonlyapi_delete_welcome_message_flows(ctx context.Context, 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleIguserforigonlyapi_get_welcome_message_flows handles the iguserforigonlyapi_get_welcome_message_flows tool with context-based auth
 func HandleIguserforigonlyapi_get_welcome_message_flows(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1788,8 +1725,6 @@ func HandleIguserforigonlyapi_get_welcome_message_flows(ctx context.Context, req
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Iguserforigonlyapi_get_welcome_message_flows(args)
 	if err != nil {
@@ -1804,7 +1739,6 @@ func HandleIguserforigonlyapi_get_welcome_message_flows(ctx context.Context, req
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleIguserforigonlyapi_post_welcome_message_flows handles the iguserforigonlyapi_post_welcome_message_flows tool with context-based auth
 func HandleIguserforigonlyapi_post_welcome_message_flows(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1832,8 +1766,6 @@ func HandleIguserforigonlyapi_post_welcome_message_flows(ctx context.Context, re
 		}
 	}
 
-
-
 	// Call the client method
 	result, err := client.Iguserforigonlyapi_post_welcome_message_flows(args)
 	if err != nil {
@@ -1848,7 +1780,6 @@ func HandleIguserforigonlyapi_post_welcome_message_flows(ctx context.Context, re
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleIguserforigonlyapi_get_ handles the iguserforigonlyapi_get_ tool with context-based auth
 func HandleIguserforigonlyapi_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1889,8 +1820,6 @@ func HandleIguserforigonlyapi_get_(ctx context.Context, request mcp.CallToolRequ
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Iguserforigonlyapi_get_(args)
 	if err != nil {
@@ -1905,4 +1834,3 @@ func HandleIguserforigonlyapi_get_(ctx context.Context, request mcp.CallToolRequ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

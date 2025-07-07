@@ -5,5 +5,5 @@ package types
 // AnalyticsFunnelQueryResult represents a Facebook AnalyticsFunnelQueryResult object
 type AnalyticsFunnelQueryResult struct {
 	Query_id string `json:"query_id"`
-	Status string `json:"status"`
+	Status   string `json:"status"`
 }

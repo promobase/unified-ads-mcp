@@ -16,21 +16,21 @@ import (
 
 // ToolCommerceorder_get_returns returns the MCP tool definition for commerceorder_get_returns
 func ToolCommerceorder_get_returns() mcp.Tool {
-	
+
 	// Params object accepts: merchant_return_id (string), statuses (list<commerceorderreturns_statuses_enum_param>)
 	return mcp.NewTool("commerceorder_get_returns",
 		mcp.WithDescription("GET returns for CommerceOrder"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"merchant_return_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "merchant_return_id parameter",
 				},
 				"statuses": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "statuses parameter",
-					"enum": []string{ "APPROVED", "DISAPPROVED", "MERCHANT_MARKED_COMPLETED", "REFUNDED", "REQUESTED" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"APPROVED", "DISAPPROVED", "MERCHANT_MARKED_COMPLETED", "REFUNDED", "REQUESTED"},
+					"items":       map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: merchant_return_id (string), statuses (array<enum>) [APPROVED, DISAPPROVED, MERCHANT_MARKED_COMPLETED, REFUNDED, REQUESTED]"),
@@ -98,8 +98,6 @@ func HandleCommerceorder_get_returns(ctx context.Context, request mcp.CallToolRe
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Commerceorder_get_returns(accessToken, args)
 	if err != nil {
@@ -118,44 +116,42 @@ func HandleCommerceorder_get_returns(ctx context.Context, request mcp.CallToolRe
 // Commerceorder_get_returns performs GET returns for CommerceOrder
 func Commerceorder_get_returns(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/returns")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

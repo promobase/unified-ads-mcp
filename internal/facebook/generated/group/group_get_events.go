@@ -17,7 +17,7 @@ import (
 // ToolGroup_get_events returns the MCP tool definition for group_get_events
 func ToolGroup_get_events() mcp.Tool {
 	// Available fields for Event: attending_count, can_guests_invite, category, cover, created_time, declined_count, description, discount_code_enabled, end_time, event_times, guest_list_enabled, id, interested_count, is_canceled, is_draft, is_online, is_page_owned, maybe_count, name, noreply_count, online_event_format, online_event_third_party_url, owner, parent_group, place, registration_setting, scheduled_publish_time, start_time, sub_categories, ticket_selling_status, ticket_setting, ticket_uri, ticket_uri_start_sales_time, ticketing_privacy_uri, ticketing_terms_uri, timezone, type, updated_time
-	
+
 	return mcp.NewTool("group_get_events",
 		mcp.WithDescription("GET events for Group"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleGroup_get_events(ctx context.Context, request mcp.CallToolRequest) (*
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Group_get_events(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleGroup_get_events(ctx context.Context, request mcp.CallToolRequest) (*
 // Group_get_events performs GET events for Group
 func Group_get_events(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/events")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

@@ -4,13 +4,13 @@ package constants
 
 // AdCampaignConversionValueExpressionSpecFields contains field name constants for AdCampaignConversionValueExpressionSpec objects
 var AdCampaignConversionValueExpressionSpecFields = struct {
-	AdjustmentSign string
+	AdjustmentSign   string
 	AdjustmentWeight string
-	DestinationType string
+	DestinationType  string
 }{
-	AdjustmentSign: "adjustment_sign",
+	AdjustmentSign:   "adjustment_sign",
 	AdjustmentWeight: "adjustment_weight",
-	DestinationType: "destination_type",
+	DestinationType:  "destination_type",
 }
 
 // AdCampaignConversionValueExpressionSpecFieldsList contains all available fields for AdCampaignConversionValueExpressionSpec objects

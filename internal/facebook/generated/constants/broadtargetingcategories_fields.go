@@ -4,30 +4,30 @@ package constants
 
 // BroadTargetingCategoriesFields contains field name constants for BroadTargetingCategories objects
 var BroadTargetingCategoriesFields = struct {
-	CategoryDescription string
-	Id string
-	Name string
-	ParentCategory string
-	Path string
-	SizeLowerBound string
-	SizeUpperBound string
-	Source string
-	FieldType string
-	TypeName string
-	UntranslatedName string
+	CategoryDescription    string
+	Id                     string
+	Name                   string
+	ParentCategory         string
+	Path                   string
+	SizeLowerBound         string
+	SizeUpperBound         string
+	Source                 string
+	FieldType              string
+	TypeName               string
+	UntranslatedName       string
 	UntranslatedParentName string
 }{
-	CategoryDescription: "category_description",
-	Id: "id",
-	Name: "name",
-	ParentCategory: "parent_category",
-	Path: "path",
-	SizeLowerBound: "size_lower_bound",
-	SizeUpperBound: "size_upper_bound",
-	Source: "source",
-	FieldType: "type",
-	TypeName: "type_name",
-	UntranslatedName: "untranslated_name",
+	CategoryDescription:    "category_description",
+	Id:                     "id",
+	Name:                   "name",
+	ParentCategory:         "parent_category",
+	Path:                   "path",
+	SizeLowerBound:         "size_lower_bound",
+	SizeUpperBound:         "size_upper_bound",
+	Source:                 "source",
+	FieldType:              "type",
+	TypeName:               "type_name",
+	UntranslatedName:       "untranslated_name",
 	UntranslatedParentName: "untranslated_parent_name",
 }
 

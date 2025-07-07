@@ -17,7 +17,6 @@ import (
 func GetAdsStartYourDayWidgetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// adsstartyourdaywidget_get_ tool
 	// Available fields for AdsStartYourDayWidget: id, widget_id
 	adsstartyourdaywidget_get_Tool := mcp.NewTool("adsstartyourdaywidget_get_",
@@ -37,12 +36,10 @@ func GetAdsStartYourDayWidgetTools() []mcp.Tool {
 	)
 	tools = append(tools, adsstartyourdaywidget_get_Tool)
 
-
 	return tools
 }
 
 // AdsStartYourDayWidget handlers
-
 
 // HandleAdsstartyourdaywidget_get_ handles the adsstartyourdaywidget_get_ tool with context-based auth
 func HandleAdsstartyourdaywidget_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleAdsstartyourdaywidget_get_(ctx context.Context, request mcp.CallToolR
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adsstartyourdaywidget_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleAdsstartyourdaywidget_get_(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

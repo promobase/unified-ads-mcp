@@ -15,34 +15,34 @@ import (
 
 // ToolProductfeed_post_uploads returns the MCP tool definition for productfeed_post_uploads
 func ToolProductfeed_post_uploads() mcp.Tool {
-	
+
 	// Params object accepts: fbe_external_business_id (string), file (file), password (string), update_only (bool), url (string), username (string)
 	return mcp.NewTool("productfeed_post_uploads",
 		mcp.WithDescription("POST uploads for ProductFeed"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"fbe_external_business_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "fbe_external_business_id parameter",
 				},
 				"file": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "file parameter",
 				},
 				"password": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "password parameter",
 				},
 				"update_only": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "update_only parameter",
 				},
 				"url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "url parameter",
 				},
 				"username": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "username parameter",
 				},
 			}),
@@ -74,8 +74,6 @@ func HandleProductfeed_post_uploads(ctx context.Context, request mcp.CallToolReq
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Productfeed_post_uploads(accessToken, args)
 	if err != nil {
@@ -94,20 +92,18 @@ func HandleProductfeed_post_uploads(ctx context.Context, request mcp.CallToolReq
 // Productfeed_post_uploads performs POST uploads for ProductFeed
 func Productfeed_post_uploads(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/uploads")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

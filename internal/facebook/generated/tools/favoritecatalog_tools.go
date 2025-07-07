@@ -17,7 +17,6 @@ import (
 func GetFavoriteCatalogTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// favoritecatalog_get_ tool
 	// Available fields for FavoriteCatalog: catalog, id
 	favoritecatalog_get_Tool := mcp.NewTool("favoritecatalog_get_",
@@ -37,12 +36,10 @@ func GetFavoriteCatalogTools() []mcp.Tool {
 	)
 	tools = append(tools, favoritecatalog_get_Tool)
 
-
 	return tools
 }
 
 // FavoriteCatalog handlers
-
 
 // HandleFavoritecatalog_get_ handles the favoritecatalog_get_ tool with context-based auth
 func HandleFavoritecatalog_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleFavoritecatalog_get_(ctx context.Context, request mcp.CallToolRequest
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Favoritecatalog_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleFavoritecatalog_get_(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

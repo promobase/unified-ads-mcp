@@ -4,14 +4,14 @@ package constants
 
 // ProductDeliveryPreferenceFields contains field name constants for ProductDeliveryPreference objects
 var ProductDeliveryPreferenceFields = struct {
-	AdObjectId string
-	Id string
-	ProductPriority string
+	AdObjectId              string
+	Id                      string
+	ProductPriority         string
 	ProductPriorityCategory string
 }{
-	AdObjectId: "ad_object_id",
-	Id: "id",
-	ProductPriority: "product_priority",
+	AdObjectId:              "ad_object_id",
+	Id:                      "id",
+	ProductPriority:         "product_priority",
 	ProductPriorityCategory: "product_priority_category",
 }
 

@@ -4,10 +4,10 @@ package constants
 
 // AdsPixelDeliveryRecommendationsFields contains field name constants for AdsPixelDeliveryRecommendations objects
 var AdsPixelDeliveryRecommendationsFields = struct {
-	CustomEventType string
+	CustomEventType  string
 	OptimizationGoal string
 }{
-	CustomEventType: "custom_event_type",
+	CustomEventType:  "custom_event_type",
 	OptimizationGoal: "optimization_goal",
 }
 

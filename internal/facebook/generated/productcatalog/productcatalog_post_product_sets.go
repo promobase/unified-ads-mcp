@@ -15,7 +15,7 @@ import (
 
 // ToolProductcatalog_post_product_sets returns the MCP tool definition for productcatalog_post_product_sets
 func ToolProductcatalog_post_product_sets() mcp.Tool {
-	
+
 	// Params object accepts: filter (Object), metadata (map), name (string), ordering_info (list<unsigned int>), publish_to_shops (list<map>), retailer_id (string)
 	return mcp.NewTool("productcatalog_post_product_sets",
 		mcp.WithDescription("POST product_sets for ProductCatalog"),
@@ -23,30 +23,30 @@ func ToolProductcatalog_post_product_sets() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"filter": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "filter parameter",
 				},
 				"metadata": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "metadata parameter",
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
-					"required": true,
+					"required":    true,
 				},
 				"ordering_info": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "ordering_info parameter",
-					"items": map[string]any{"type": "integer"},
+					"items":       map[string]any{"type": "integer"},
 				},
 				"publish_to_shops": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "publish_to_shops parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"retailer_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "retailer_id parameter",
 				},
 			}),
@@ -80,8 +80,6 @@ func HandleProductcatalog_post_product_sets(ctx context.Context, request mcp.Cal
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Productcatalog_post_product_sets(accessToken, args)
 	if err != nil {
@@ -100,20 +98,18 @@ func HandleProductcatalog_post_product_sets(ctx context.Context, request mcp.Cal
 // Productcatalog_post_product_sets performs POST product_sets for ProductCatalog
 func Productcatalog_post_product_sets(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/product_sets")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

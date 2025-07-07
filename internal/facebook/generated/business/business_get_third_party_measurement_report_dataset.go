@@ -17,7 +17,7 @@ import (
 // ToolBusiness_get_third_party_measurement_report_dataset returns the MCP tool definition for business_get_third_party_measurement_report_dataset
 func ToolBusiness_get_third_party_measurement_report_dataset() mcp.Tool {
 	// Available fields for ThirdPartyMeasurementReportDataset: category, id, partner, product, schema
-	
+
 	return mcp.NewTool("business_get_third_party_measurement_report_dataset",
 		mcp.WithDescription("GET third_party_measurement_report_dataset for Business"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleBusiness_get_third_party_measurement_report_dataset(ctx context.Conte
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Business_get_third_party_measurement_report_dataset(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleBusiness_get_third_party_measurement_report_dataset(ctx context.Conte
 // Business_get_third_party_measurement_report_dataset performs GET third_party_measurement_report_dataset for Business
 func Business_get_third_party_measurement_report_dataset(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/third_party_measurement_report_dataset")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

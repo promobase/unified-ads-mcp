@@ -6,13 +6,13 @@ import "time"
 
 // OrderIDAttributions represents a Facebook OrderIDAttributions object
 type OrderIDAttributions struct {
-	App_id string `json:"app_id"`
-	Attribution_type string `json:"attribution_type"`
-	Attributions []map[string]interface{} `json:"attributions"`
-	Conversion_device string `json:"conversion_device"`
-	Dataset_id string `json:"dataset_id"`
-	Holdout_status []map[string]interface{} `json:"holdout_status"`
-	Order_id string `json:"order_id"`
-	Order_timestamp time.Time `json:"order_timestamp"`
-	Pixel_id string `json:"pixel_id"`
+	App_id            string                   `json:"app_id"`
+	Attribution_type  string                   `json:"attribution_type"`
+	Attributions      []map[string]interface{} `json:"attributions"`
+	Conversion_device string                   `json:"conversion_device"`
+	Dataset_id        string                   `json:"dataset_id"`
+	Holdout_status    []map[string]interface{} `json:"holdout_status"`
+	Order_id          string                   `json:"order_id"`
+	Order_timestamp   time.Time                `json:"order_timestamp"`
+	Pixel_id          string                   `json:"pixel_id"`
 }

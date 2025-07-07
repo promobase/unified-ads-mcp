@@ -6,20 +6,20 @@ import "time"
 
 // MediaCopyrightAttribution represents a Facebook MediaCopyrightAttribution object
 type MediaCopyrightAttribution struct {
-	Attribution_ig_target_id string `json:"attribution_ig_target_id"`
-	Attribution_target_email_address string `json:"attribution_target_email_address"`
-	Attribution_target_id string `json:"attribution_target_id"`
-	Attribution_target_name string `json:"attribution_target_name"`
-	Attribution_type string `json:"attribution_type"`
-	Attribution_uri string `json:"attribution_uri"`
-	Copyright_count int `json:"copyright_count"`
-	Creation_time time.Time `json:"creation_time"`
-	Creator *Profile `json:"creator"`
-	Id string `json:"id"`
-	Is_enabled bool `json:"is_enabled"`
-	Link_title string `json:"link_title"`
-	Match_count int `json:"match_count"`
-	Owner *Page `json:"owner"`
-	Status string `json:"status"`
-	Title string `json:"title"`
+	Attribution_ig_target_id         string    `json:"attribution_ig_target_id"`
+	Attribution_target_email_address string    `json:"attribution_target_email_address"`
+	Attribution_target_id            string    `json:"attribution_target_id"`
+	Attribution_target_name          string    `json:"attribution_target_name"`
+	Attribution_type                 string    `json:"attribution_type"`
+	Attribution_uri                  string    `json:"attribution_uri"`
+	Copyright_count                  int       `json:"copyright_count"`
+	Creation_time                    time.Time `json:"creation_time"`
+	Creator                          *Profile  `json:"creator"`
+	Id                               string    `json:"id"`
+	Is_enabled                       bool      `json:"is_enabled"`
+	Link_title                       string    `json:"link_title"`
+	Match_count                      int       `json:"match_count"`
+	Owner                            *Page     `json:"owner"`
+	Status                           string    `json:"status"`
+	Title                            string    `json:"title"`
 }

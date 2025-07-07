@@ -15,8 +15,7 @@ import (
 
 // ToolAdvideo_delete_ returns the MCP tool definition for advideo_delete_
 func ToolAdvideo_delete_() mcp.Tool {
-	
-	
+
 	return mcp.NewTool("advideo_delete_",
 		mcp.WithDescription("DELETE  for AdVideo"),
 	)
@@ -32,8 +31,6 @@ func HandleAdvideo_delete_(ctx context.Context, request mcp.CallToolRequest) (*m
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the API method
 	result, err := Advideo_delete_(accessToken, args)
@@ -53,14 +50,11 @@ func HandleAdvideo_delete_(ctx context.Context, request mcp.CallToolRequest) (*m
 // Advideo_delete_ performs DELETE  for AdVideo
 func Advideo_delete_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response

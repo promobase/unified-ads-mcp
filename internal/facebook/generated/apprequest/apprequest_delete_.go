@@ -15,7 +15,7 @@ import (
 
 // ToolApprequest_delete_ returns the MCP tool definition for apprequest_delete_
 func ToolApprequest_delete_() mcp.Tool {
-	
+
 	// Params object accepts: ids (list<string>)
 	return mcp.NewTool("apprequest_delete_",
 		mcp.WithDescription("DELETE  for AppRequest"),
@@ -23,10 +23,10 @@ func ToolApprequest_delete_() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"ids": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "ids parameter",
-					"required": true,
-					"items": map[string]any{"type": "string"},
+					"required":    true,
+					"items":       map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: ids (array<string>) [required]"),
@@ -59,8 +59,6 @@ func HandleApprequest_delete_(ctx context.Context, request mcp.CallToolRequest) 
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Apprequest_delete_(accessToken, args)
 	if err != nil {
@@ -79,20 +77,18 @@ func HandleApprequest_delete_(ctx context.Context, request mcp.CallToolRequest) 
 // Apprequest_delete_ performs DELETE  for AppRequest
 func Apprequest_delete_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

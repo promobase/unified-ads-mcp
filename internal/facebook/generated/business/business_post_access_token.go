@@ -15,7 +15,7 @@ import (
 
 // ToolBusiness_post_access_token returns the MCP tool definition for business_post_access_token
 func ToolBusiness_post_access_token() mcp.Tool {
-	
+
 	// Params object accepts: app_id (string), fbe_external_business_id (string), scope (list<Permission>), system_user_name (string)
 	return mcp.NewTool("business_post_access_token",
 		mcp.WithDescription("POST access_token for Business"),
@@ -23,22 +23,22 @@ func ToolBusiness_post_access_token() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"app_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "app_id parameter",
-					"required": true,
+					"required":    true,
 				},
 				"fbe_external_business_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "fbe_external_business_id parameter",
 				},
 				"scope": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "scope parameter",
-					"required": true,
-					"items": map[string]any{"type": "string"},
+					"required":    true,
+					"items":       map[string]any{"type": "string"},
 				},
 				"system_user_name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "system_user_name parameter",
 				},
 			}),
@@ -72,8 +72,6 @@ func HandleBusiness_post_access_token(ctx context.Context, request mcp.CallToolR
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Business_post_access_token(accessToken, args)
 	if err != nil {
@@ -92,20 +90,18 @@ func HandleBusiness_post_access_token(ctx context.Context, request mcp.CallToolR
 // Business_post_access_token performs POST access_token for Business
 func Business_post_access_token(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/access_token")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

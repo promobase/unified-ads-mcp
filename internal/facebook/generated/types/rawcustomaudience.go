@@ -4,6 +4,6 @@ package types
 
 // RawCustomAudience represents a Facebook RawCustomAudience object
 type RawCustomAudience struct {
-	Id string `json:"id"`
+	Id   string `json:"id"`
 	Name string `json:"name"`
 }

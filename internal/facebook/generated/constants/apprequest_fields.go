@@ -4,25 +4,25 @@ package constants
 
 // AppRequestFields contains field name constants for AppRequest objects
 var AppRequestFields = struct {
-	ActionType string
+	ActionType  string
 	Application string
 	CreatedTime string
-	Data string
-	From string
-	Id string
-	Message string
-	Object string
-	To string
+	Data        string
+	From        string
+	Id          string
+	Message     string
+	Object      string
+	To          string
 }{
-	ActionType: "action_type",
+	ActionType:  "action_type",
 	Application: "application",
 	CreatedTime: "created_time",
-	Data: "data",
-	From: "from",
-	Id: "id",
-	Message: "message",
-	Object: "object",
-	To: "to",
+	Data:        "data",
+	From:        "from",
+	Id:          "id",
+	Message:     "message",
+	Object:      "object",
+	To:          "to",
 }
 
 // AppRequestFieldsList contains all available fields for AppRequest objects

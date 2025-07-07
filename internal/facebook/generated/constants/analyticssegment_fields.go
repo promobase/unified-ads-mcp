@@ -5,40 +5,40 @@ package constants
 // AnalyticsSegmentFields contains field name constants for AnalyticsSegment objects
 var AnalyticsSegmentFields = struct {
 	CustomAudienceIneligiblityReasons string
-	Description string
-	EstimatedCustomAudienceSize string
-	EventInfoRules string
-	EventRules string
-	FilterSet string
-	HasDemographicRules string
-	Id string
-	IsAllUser string
-	IsEligibleForPushCampaign string
-	IsInternal string
-	Name string
-	PercentileRules string
-	TimeLastSeen string
-	TimeLastUpdated string
-	UserPropertyRules string
-	WebParamRules string
+	Description                       string
+	EstimatedCustomAudienceSize       string
+	EventInfoRules                    string
+	EventRules                        string
+	FilterSet                         string
+	HasDemographicRules               string
+	Id                                string
+	IsAllUser                         string
+	IsEligibleForPushCampaign         string
+	IsInternal                        string
+	Name                              string
+	PercentileRules                   string
+	TimeLastSeen                      string
+	TimeLastUpdated                   string
+	UserPropertyRules                 string
+	WebParamRules                     string
 }{
 	CustomAudienceIneligiblityReasons: "custom_audience_ineligiblity_reasons",
-	Description: "description",
-	EstimatedCustomAudienceSize: "estimated_custom_audience_size",
-	EventInfoRules: "event_info_rules",
-	EventRules: "event_rules",
-	FilterSet: "filter_set",
-	HasDemographicRules: "has_demographic_rules",
-	Id: "id",
-	IsAllUser: "is_all_user",
-	IsEligibleForPushCampaign: "is_eligible_for_push_campaign",
-	IsInternal: "is_internal",
-	Name: "name",
-	PercentileRules: "percentile_rules",
-	TimeLastSeen: "time_last_seen",
-	TimeLastUpdated: "time_last_updated",
-	UserPropertyRules: "user_property_rules",
-	WebParamRules: "web_param_rules",
+	Description:                       "description",
+	EstimatedCustomAudienceSize:       "estimated_custom_audience_size",
+	EventInfoRules:                    "event_info_rules",
+	EventRules:                        "event_rules",
+	FilterSet:                         "filter_set",
+	HasDemographicRules:               "has_demographic_rules",
+	Id:                                "id",
+	IsAllUser:                         "is_all_user",
+	IsEligibleForPushCampaign:         "is_eligible_for_push_campaign",
+	IsInternal:                        "is_internal",
+	Name:                              "name",
+	PercentileRules:                   "percentile_rules",
+	TimeLastSeen:                      "time_last_seen",
+	TimeLastUpdated:                   "time_last_updated",
+	UserPropertyRules:                 "user_property_rules",
+	WebParamRules:                     "web_param_rules",
 }
 
 // AnalyticsSegmentFieldsList contains all available fields for AnalyticsSegment objects

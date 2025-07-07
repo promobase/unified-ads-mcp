@@ -17,7 +17,6 @@ import (
 func GetPagePostExperimentTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// pagepostexperiment_get_video_insights tool
 	pagepostexperiment_get_video_insightsTool := mcp.NewTool("pagepostexperiment_get_video_insights",
 		mcp.WithDescription("GET video_insights for PagePostExperiment"),
@@ -61,12 +60,10 @@ func GetPagePostExperimentTools() []mcp.Tool {
 	)
 	tools = append(tools, pagepostexperiment_get_Tool)
 
-
 	return tools
 }
 
 // PagePostExperiment handlers
-
 
 // HandlePagepostexperiment_get_video_insights handles the pagepostexperiment_get_video_insights tool with context-based auth
 func HandlePagepostexperiment_get_video_insights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -107,8 +104,6 @@ func HandlePagepostexperiment_get_video_insights(ctx context.Context, request mc
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Pagepostexperiment_get_video_insights(args)
 	if err != nil {
@@ -124,7 +119,6 @@ func HandlePagepostexperiment_get_video_insights(ctx context.Context, request mc
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandlePagepostexperiment_delete_ handles the pagepostexperiment_delete_ tool with context-based auth
 func HandlePagepostexperiment_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
@@ -138,8 +132,6 @@ func HandlePagepostexperiment_delete_(ctx context.Context, request mcp.CallToolR
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Pagepostexperiment_delete_(args)
@@ -155,7 +147,6 @@ func HandlePagepostexperiment_delete_(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePagepostexperiment_get_ handles the pagepostexperiment_get_ tool with context-based auth
 func HandlePagepostexperiment_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -196,8 +187,6 @@ func HandlePagepostexperiment_get_(ctx context.Context, request mcp.CallToolRequ
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Pagepostexperiment_get_(args)
 	if err != nil {
@@ -212,4 +201,3 @@ func HandlePagepostexperiment_get_(ctx context.Context, request mcp.CallToolRequ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

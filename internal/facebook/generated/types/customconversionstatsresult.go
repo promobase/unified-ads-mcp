@@ -6,7 +6,7 @@ import "time"
 
 // CustomConversionStatsResult represents a Facebook CustomConversionStatsResult object
 type CustomConversionStatsResult struct {
-	Aggregation string `json:"aggregation"`
-	Data []map[string]interface{} `json:"data"`
-	Timestamp time.Time `json:"timestamp"`
+	Aggregation string                   `json:"aggregation"`
+	Data        []map[string]interface{} `json:"data"`
+	Timestamp   time.Time                `json:"timestamp"`
 }

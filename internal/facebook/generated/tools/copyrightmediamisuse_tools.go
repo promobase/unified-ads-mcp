@@ -17,7 +17,6 @@ import (
 func GetCopyrightMediaMisuseTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// copyrightmediamisuse_get_ tool
 	// Available fields for CopyrightMediaMisuse: audio_segments, creation_time, disabled_audio_segments, disabled_video_segments, entire_file_issue, entire_file_issue_reasons, expiration_time, id, media_asset_id, reasons, requested_audio_segments, requested_video_segments, resolution_type, status, update_time, video_copyright, video_segments
 	copyrightmediamisuse_get_Tool := mcp.NewTool("copyrightmediamisuse_get_",
@@ -37,12 +36,10 @@ func GetCopyrightMediaMisuseTools() []mcp.Tool {
 	)
 	tools = append(tools, copyrightmediamisuse_get_Tool)
 
-
 	return tools
 }
 
 // CopyrightMediaMisuse handlers
-
 
 // HandleCopyrightmediamisuse_get_ handles the copyrightmediamisuse_get_ tool with context-based auth
 func HandleCopyrightmediamisuse_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleCopyrightmediamisuse_get_(ctx context.Context, request mcp.CallToolRe
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Copyrightmediamisuse_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleCopyrightmediamisuse_get_(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

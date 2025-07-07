@@ -15,7 +15,7 @@ import (
 
 // ToolCommerceorder_post_acknowledge_order returns the MCP tool definition for commerceorder_post_acknowledge_order
 func ToolCommerceorder_post_acknowledge_order() mcp.Tool {
-	
+
 	// Params object accepts: idempotency_key (string), merchant_order_reference (string)
 	return mcp.NewTool("commerceorder_post_acknowledge_order",
 		mcp.WithDescription("POST acknowledge_order for CommerceOrder"),
@@ -23,12 +23,12 @@ func ToolCommerceorder_post_acknowledge_order() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"idempotency_key": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "idempotency_key parameter",
-					"required": true,
+					"required":    true,
 				},
 				"merchant_order_reference": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "merchant_order_reference parameter",
 				},
 			}),
@@ -62,8 +62,6 @@ func HandleCommerceorder_post_acknowledge_order(ctx context.Context, request mcp
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Commerceorder_post_acknowledge_order(accessToken, args)
 	if err != nil {
@@ -82,20 +80,18 @@ func HandleCommerceorder_post_acknowledge_order(ctx context.Context, request mcp
 // Commerceorder_post_acknowledge_order performs POST acknowledge_order for CommerceOrder
 func Commerceorder_post_acknowledge_order(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/acknowledge_order")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

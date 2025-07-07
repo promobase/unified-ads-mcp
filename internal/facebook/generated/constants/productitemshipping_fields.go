@@ -4,17 +4,17 @@ package constants
 
 // ProductItemShippingFields contains field name constants for ProductItemShipping objects
 var ProductItemShippingFields = struct {
-	ShippingCountry string
+	ShippingCountry       string
 	ShippingPriceCurrency string
-	ShippingPriceValue string
-	ShippingRegion string
-	ShippingService string
+	ShippingPriceValue    string
+	ShippingRegion        string
+	ShippingService       string
 }{
-	ShippingCountry: "shipping_country",
+	ShippingCountry:       "shipping_country",
 	ShippingPriceCurrency: "shipping_price_currency",
-	ShippingPriceValue: "shipping_price_value",
-	ShippingRegion: "shipping_region",
-	ShippingService: "shipping_service",
+	ShippingPriceValue:    "shipping_price_value",
+	ShippingRegion:        "shipping_region",
+	ShippingService:       "shipping_service",
 }
 
 // ProductItemShippingFieldsList contains all available fields for ProductItemShipping objects

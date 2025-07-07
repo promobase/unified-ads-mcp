@@ -4,17 +4,17 @@ package constants
 
 // SavedMessageResponseFields contains field name constants for SavedMessageResponse objects
 var SavedMessageResponseFields = struct {
-	Id string
-	Image string
+	Id        string
+	Image     string
 	IsEnabled string
-	Message string
-	Title string
+	Message   string
+	Title     string
 }{
-	Id: "id",
-	Image: "image",
+	Id:        "id",
+	Image:     "image",
 	IsEnabled: "is_enabled",
-	Message: "message",
-	Title: "title",
+	Message:   "message",
+	Title:     "title",
 }
 
 // SavedMessageResponseFieldsList contains all available fields for SavedMessageResponse objects

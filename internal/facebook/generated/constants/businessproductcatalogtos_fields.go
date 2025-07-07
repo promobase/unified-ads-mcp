@@ -5,10 +5,10 @@ package constants
 // BusinessProductCatalogTOSFields contains field name constants for BusinessProductCatalogTOS objects
 var BusinessProductCatalogTOSFields = struct {
 	Accepted string
-	Content string
+	Content  string
 }{
 	Accepted: "accepted",
-	Content: "content",
+	Content:  "content",
 }
 
 // BusinessProductCatalogTOSFieldsList contains all available fields for BusinessProductCatalogTOS objects

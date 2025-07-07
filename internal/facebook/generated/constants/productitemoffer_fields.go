@@ -4,13 +4,13 @@ package constants
 
 // ProductItemOfferFields contains field name constants for ProductItemOffer objects
 var ProductItemOfferFields = struct {
-	AvailabilityArea string
+	AvailabilityArea   string
 	AvailabilityRadius string
-	Id string
+	Id                 string
 }{
-	AvailabilityArea: "availability_area",
+	AvailabilityArea:   "availability_area",
 	AvailabilityRadius: "availability_radius",
-	Id: "id",
+	Id:                 "id",
 }
 
 // ProductItemOfferFieldsList contains all available fields for ProductItemOffer objects

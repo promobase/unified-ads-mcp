@@ -15,7 +15,7 @@ import (
 
 // ToolBusiness_post_partner_premium_options returns the MCP tool definition for business_post_partner_premium_options
 func ToolBusiness_post_partner_premium_options() mcp.Tool {
-	
+
 	// Params object accepts: catalog_segment_id (string), enable_basket_insight (bool), enable_extended_audience_retargeting (bool), partner_business_id (string), retailer_custom_audience_config (map), vendor_id (string)
 	return mcp.NewTool("business_post_partner_premium_options",
 		mcp.WithDescription("POST partner_premium_options for Business"),
@@ -23,31 +23,31 @@ func ToolBusiness_post_partner_premium_options() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"catalog_segment_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "catalog_segment_id parameter",
 				},
 				"enable_basket_insight": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "enable_basket_insight parameter",
-					"required": true,
+					"required":    true,
 				},
 				"enable_extended_audience_retargeting": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "enable_extended_audience_retargeting parameter",
-					"required": true,
+					"required":    true,
 				},
 				"partner_business_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "partner_business_id parameter",
-					"required": true,
+					"required":    true,
 				},
 				"retailer_custom_audience_config": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "retailer_custom_audience_config parameter",
-					"required": true,
+					"required":    true,
 				},
 				"vendor_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "vendor_id parameter",
 				},
 			}),
@@ -81,8 +81,6 @@ func HandleBusiness_post_partner_premium_options(ctx context.Context, request mc
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Business_post_partner_premium_options(accessToken, args)
 	if err != nil {
@@ -101,20 +99,18 @@ func HandleBusiness_post_partner_premium_options(ctx context.Context, request mc
 // Business_post_partner_premium_options performs POST partner_premium_options for Business
 func Business_post_partner_premium_options(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/partner_premium_options")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

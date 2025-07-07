@@ -4,6 +4,6 @@ package types
 
 // ThreadsUser represents a Facebook ThreadsUser object
 type ThreadsUser struct {
-	Threads_user_id string `json:"threads_user_id"`
+	Threads_user_id          string `json:"threads_user_id"`
 	Threads_user_profile_pic string `json:"threads_user_profile_pic"`
 }

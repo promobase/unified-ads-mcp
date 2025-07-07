@@ -15,7 +15,7 @@ import (
 
 // ToolIgmedia_post_product_tags returns the MCP tool definition for igmedia_post_product_tags
 func ToolIgmedia_post_product_tags() mcp.Tool {
-	
+
 	// Params object accepts: child_index (unsigned int), updated_tags (list<map>)
 	return mcp.NewTool("igmedia_post_product_tags",
 		mcp.WithDescription("POST product_tags for IGMedia"),
@@ -23,14 +23,14 @@ func ToolIgmedia_post_product_tags() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"child_index": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "child_index parameter",
 				},
 				"updated_tags": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "updated_tags parameter",
-					"required": true,
-					"items": map[string]any{"type": "object"},
+					"required":    true,
+					"items":       map[string]any{"type": "object"},
 				},
 			}),
 			mcp.Description("Parameters object containing: child_index (integer), updated_tags (array<object>) [required]"),
@@ -63,8 +63,6 @@ func HandleIgmedia_post_product_tags(ctx context.Context, request mcp.CallToolRe
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Igmedia_post_product_tags(accessToken, args)
 	if err != nil {
@@ -83,20 +81,18 @@ func HandleIgmedia_post_product_tags(ctx context.Context, request mcp.CallToolRe
 // Igmedia_post_product_tags performs POST product_tags for IGMedia
 func Igmedia_post_product_tags(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/product_tags")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

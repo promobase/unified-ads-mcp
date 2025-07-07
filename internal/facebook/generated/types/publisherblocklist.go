@@ -6,14 +6,14 @@ import "time"
 
 // PublisherBlockList represents a Facebook PublisherBlockList object
 type PublisherBlockList struct {
-	App_publishers []AppPublisher `json:"app_publishers"`
-	Business_owner_id string `json:"business_owner_id"`
-	Id string `json:"id"`
-	Is_auto_blocking_on bool `json:"is_auto_blocking_on"`
-	Is_eligible_at_campaign_level bool `json:"is_eligible_at_campaign_level"`
-	Last_update_time time.Time `json:"last_update_time"`
-	Last_update_user string `json:"last_update_user"`
-	Name string `json:"name"`
-	Owner_ad_account_id string `json:"owner_ad_account_id"`
-	Web_publishers []WebPublisher `json:"web_publishers"`
+	App_publishers                []AppPublisher `json:"app_publishers"`
+	Business_owner_id             string         `json:"business_owner_id"`
+	Id                            string         `json:"id"`
+	Is_auto_blocking_on           bool           `json:"is_auto_blocking_on"`
+	Is_eligible_at_campaign_level bool           `json:"is_eligible_at_campaign_level"`
+	Last_update_time              time.Time      `json:"last_update_time"`
+	Last_update_user              string         `json:"last_update_user"`
+	Name                          string         `json:"name"`
+	Owner_ad_account_id           string         `json:"owner_ad_account_id"`
+	Web_publishers                []WebPublisher `json:"web_publishers"`
 }

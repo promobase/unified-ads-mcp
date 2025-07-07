@@ -4,7 +4,7 @@ package types
 
 // AdCreativeLinkDataTemplateVideoSpec represents a Facebook AdCreativeLinkDataTemplateVideoSpec object
 type AdCreativeLinkDataTemplateVideoSpec struct {
-	Categorization_criteria string `json:"categorization_criteria"`
-	Customization []interface{} `json:"customization"`
-	Template_id string `json:"template_id"`
+	Categorization_criteria string        `json:"categorization_criteria"`
+	Customization           []interface{} `json:"customization"`
+	Template_id             string        `json:"template_id"`
 }

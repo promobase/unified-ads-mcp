@@ -4,10 +4,10 @@ package constants
 
 // FantasyGameFields contains field name constants for FantasyGame objects
 var FantasyGameFields = struct {
-	Id string
+	Id   string
 	Name string
 }{
-	Id: "id",
+	Id:   "id",
 	Name: "name",
 }
 

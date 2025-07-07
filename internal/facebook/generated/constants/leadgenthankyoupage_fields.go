@@ -4,31 +4,31 @@ package constants
 
 // LeadGenThankYouPageFields contains field name constants for LeadGenThankYouPage objects
 var LeadGenThankYouPageFields = struct {
-	Body string
+	Body                string
 	BusinessPhoneNumber string
-	ButtonText string
-	ButtonType string
-	CountryCode string
-	EnableMessenger string
-	GatedFile string
-	Id string
-	LeadGenUseCase string
-	Status string
-	Title string
-	WebsiteUrl string
+	ButtonText          string
+	ButtonType          string
+	CountryCode         string
+	EnableMessenger     string
+	GatedFile           string
+	Id                  string
+	LeadGenUseCase      string
+	Status              string
+	Title               string
+	WebsiteUrl          string
 }{
-	Body: "body",
+	Body:                "body",
 	BusinessPhoneNumber: "business_phone_number",
-	ButtonText: "button_text",
-	ButtonType: "button_type",
-	CountryCode: "country_code",
-	EnableMessenger: "enable_messenger",
-	GatedFile: "gated_file",
-	Id: "id",
-	LeadGenUseCase: "lead_gen_use_case",
-	Status: "status",
-	Title: "title",
-	WebsiteUrl: "website_url",
+	ButtonText:          "button_text",
+	ButtonType:          "button_type",
+	CountryCode:         "country_code",
+	EnableMessenger:     "enable_messenger",
+	GatedFile:           "gated_file",
+	Id:                  "id",
+	LeadGenUseCase:      "lead_gen_use_case",
+	Status:              "status",
+	Title:               "title",
+	WebsiteUrl:          "website_url",
 }
 
 // LeadGenThankYouPageFieldsList contains all available fields for LeadGenThankYouPage objects

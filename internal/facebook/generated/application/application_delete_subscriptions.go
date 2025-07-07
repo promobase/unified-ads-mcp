@@ -15,19 +15,19 @@ import (
 
 // ToolApplication_delete_subscriptions returns the MCP tool definition for application_delete_subscriptions
 func ToolApplication_delete_subscriptions() mcp.Tool {
-	
+
 	// Params object accepts: fields (list<string>), object (string)
 	return mcp.NewTool("application_delete_subscriptions",
 		mcp.WithDescription("DELETE subscriptions for Application"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"fields": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "fields parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"object": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "object parameter",
 				},
 			}),
@@ -59,8 +59,6 @@ func HandleApplication_delete_subscriptions(ctx context.Context, request mcp.Cal
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Application_delete_subscriptions(accessToken, args)
 	if err != nil {
@@ -79,20 +77,18 @@ func HandleApplication_delete_subscriptions(ctx context.Context, request mcp.Cal
 // Application_delete_subscriptions performs DELETE subscriptions for Application
 func Application_delete_subscriptions(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/subscriptions")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

@@ -15,7 +15,7 @@ import (
 
 // ToolAdaccount_post_ad_place_page_sets_async returns the MCP tool definition for adaccount_post_ad_place_page_sets_async
 func ToolAdaccount_post_ad_place_page_sets_async() mcp.Tool {
-	
+
 	// Params object accepts: location_types (list<adaccountad_place_page_sets_async_location_types_enum_param>), name (string), parent_page (string), targeted_area_type (adaccountad_place_page_sets_async_targeted_area_type_enum_param)
 	return mcp.NewTool("adaccount_post_ad_place_page_sets_async",
 		mcp.WithDescription("POST ad_place_page_sets_async for AdAccount"),
@@ -27,25 +27,25 @@ func ToolAdaccount_post_ad_place_page_sets_async() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"location_types": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "location_types parameter",
-					"enum": []string{ "home", "recent" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"home", "recent"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
-					"required": true,
+					"required":    true,
 				},
 				"parent_page": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "parent_page parameter",
-					"required": true,
+					"required":    true,
 				},
 				"targeted_area_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "targeted_area_type parameter",
-					"enum": []string{ "CUSTOM_RADIUS", "MARKETING_AREA", "NONE" },
+					"enum":        []string{"CUSTOM_RADIUS", "MARKETING_AREA", "NONE"},
 				},
 			}),
 			mcp.Description("Parameters object containing: location_types (array<enum>) [home, recent], name (string) [required], parent_page (string) [required], targeted_area_type (enum) [CUSTOM_RADIUS, MARKETING_AREA, NONE]"),
@@ -85,8 +85,6 @@ func HandleAdaccount_post_ad_place_page_sets_async(ctx context.Context, request 
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Adaccount_post_ad_place_page_sets_async(accessToken, args)
 	if err != nil {
@@ -105,35 +103,33 @@ func HandleAdaccount_post_ad_place_page_sets_async(ctx context.Context, request 
 // Adaccount_post_ad_place_page_sets_async performs POST ad_place_page_sets_async for AdAccount
 func Adaccount_post_ad_place_page_sets_async(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	// Extract account_id for URL construction
 	accountId, ok := args["account_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_post_ad_place_page_sets_async")
 	}
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%sad_place_page_sets_async", accountId)
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-		
-	}
 
+	}
 
 	// Make HTTP request
 	var resp *http.Response

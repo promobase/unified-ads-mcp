@@ -17,7 +17,6 @@ import (
 func GetProductDeliveryPreferenceTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// productdeliverypreference_get_ tool
 	// Available fields for ProductDeliveryPreference: ad_object_id, id, product_priority, product_priority_category
 	productdeliverypreference_get_Tool := mcp.NewTool("productdeliverypreference_get_",
@@ -37,12 +36,10 @@ func GetProductDeliveryPreferenceTools() []mcp.Tool {
 	)
 	tools = append(tools, productdeliverypreference_get_Tool)
 
-
 	return tools
 }
 
 // ProductDeliveryPreference handlers
-
 
 // HandleProductdeliverypreference_get_ handles the productdeliverypreference_get_ tool with context-based auth
 func HandleProductdeliverypreference_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleProductdeliverypreference_get_(ctx context.Context, request mcp.CallT
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Productdeliverypreference_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleProductdeliverypreference_get_(ctx context.Context, request mcp.CallT
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

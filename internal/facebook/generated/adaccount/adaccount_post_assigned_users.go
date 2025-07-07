@@ -15,7 +15,7 @@ import (
 
 // ToolAdaccount_post_assigned_users returns the MCP tool definition for adaccount_post_assigned_users
 func ToolAdaccount_post_assigned_users() mcp.Tool {
-	
+
 	// Params object accepts: tasks (list<adaccountassigned_users_tasks_enum_param>), user (int)
 	return mcp.NewTool("adaccount_post_assigned_users",
 		mcp.WithDescription("POST assigned_users for AdAccount"),
@@ -27,15 +27,15 @@ func ToolAdaccount_post_assigned_users() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"tasks": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "tasks parameter",
-					"enum": []string{ "AA_ANALYZE", "ADVERTISE", "ANALYZE", "DRAFT", "MANAGE" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"AA_ANALYZE", "ADVERTISE", "ANALYZE", "DRAFT", "MANAGE"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"user": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "user parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: tasks (array<enum>) [AA_ANALYZE, ADVERTISE, ANALYZE, DRAFT, MANAGE], user (integer) [required]"),
@@ -75,8 +75,6 @@ func HandleAdaccount_post_assigned_users(ctx context.Context, request mcp.CallTo
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Adaccount_post_assigned_users(accessToken, args)
 	if err != nil {
@@ -95,35 +93,33 @@ func HandleAdaccount_post_assigned_users(ctx context.Context, request mcp.CallTo
 // Adaccount_post_assigned_users performs POST assigned_users for AdAccount
 func Adaccount_post_assigned_users(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	// Extract account_id for URL construction
 	accountId, ok := args["account_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_post_assigned_users")
 	}
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%sassigned_users", accountId)
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-		
-	}
 
+	}
 
 	// Make HTTP request
 	var resp *http.Response

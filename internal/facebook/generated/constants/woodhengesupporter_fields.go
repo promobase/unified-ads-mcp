@@ -4,19 +4,19 @@ package constants
 
 // WoodhengeSupporterFields contains field name constants for WoodhengeSupporter objects
 var WoodhengeSupporterFields = struct {
-	CreationTime string
-	Id string
-	IsGiftedSubscription string
+	CreationTime               string
+	Id                         string
+	IsGiftedSubscription       string
 	MostRecentSubscriptionTime string
-	NumberOfMonthsSubscribed string
-	User string
+	NumberOfMonthsSubscribed   string
+	User                       string
 }{
-	CreationTime: "creation_time",
-	Id: "id",
-	IsGiftedSubscription: "is_gifted_subscription",
+	CreationTime:               "creation_time",
+	Id:                         "id",
+	IsGiftedSubscription:       "is_gifted_subscription",
 	MostRecentSubscriptionTime: "most_recent_subscription_time",
-	NumberOfMonthsSubscribed: "number_of_months_subscribed",
-	User: "user",
+	NumberOfMonthsSubscribed:   "number_of_months_subscribed",
+	User:                       "user",
 }
 
 // WoodhengeSupporterFieldsList contains all available fields for WoodhengeSupporter objects

@@ -4,15 +4,15 @@ package constants
 
 // BAPIDomainFields contains field name constants for BAPIDomain objects
 var BAPIDomainFields = struct {
-	Domain string
+	Domain          string
 	InCoolDownUntil string
 	IsEligibleForVo string
-	IsInCoolDown string
+	IsInCoolDown    string
 }{
-	Domain: "domain",
+	Domain:          "domain",
 	InCoolDownUntil: "in_cool_down_until",
 	IsEligibleForVo: "is_eligible_for_vo",
-	IsInCoolDown: "is_in_cool_down",
+	IsInCoolDown:    "is_in_cool_down",
 }
 
 // BAPIDomainFieldsList contains all available fields for BAPIDomain objects

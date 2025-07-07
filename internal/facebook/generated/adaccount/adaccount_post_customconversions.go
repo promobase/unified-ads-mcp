@@ -15,7 +15,7 @@ import (
 
 // ToolAdaccount_post_customconversions returns the MCP tool definition for adaccount_post_customconversions
 func ToolAdaccount_post_customconversions() mcp.Tool {
-	
+
 	// Params object accepts: action_source_type (adaccountcustomconversions_action_source_type_enum_param), advanced_rule (string), custom_event_type (adaccountcustomconversions_custom_event_type_enum_param), default_conversion_value (float), description (string), event_source_id (string), name (string), rule (string)
 	return mcp.NewTool("adaccount_post_customconversions",
 		mcp.WithDescription("POST customconversions for AdAccount"),
@@ -27,38 +27,38 @@ func ToolAdaccount_post_customconversions() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"action_source_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "action_source_type parameter",
-					"enum": []string{ "app", "business_messaging", "chat", "email", "other", "phone_call", "physical_store", "system_generated", "website" },
+					"enum":        []string{"app", "business_messaging", "chat", "email", "other", "phone_call", "physical_store", "system_generated", "website"},
 				},
 				"advanced_rule": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "advanced_rule parameter",
 				},
 				"custom_event_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "custom_event_type parameter",
-					"enum": []string{ "ADD_PAYMENT_INFO", "ADD_TO_CART", "ADD_TO_WISHLIST", "COMPLETE_REGISTRATION", "CONTACT", "CONTENT_VIEW", "CUSTOMIZE_PRODUCT", "DONATE", "FACEBOOK_SELECTED", "FIND_LOCATION", "INITIATED_CHECKOUT", "LEAD", "LISTING_INTERACTION", "OTHER", "PURCHASE", "SCHEDULE", "SEARCH", "START_TRIAL", "SUBMIT_APPLICATION", "SUBSCRIBE" },
+					"enum":        []string{"ADD_PAYMENT_INFO", "ADD_TO_CART", "ADD_TO_WISHLIST", "COMPLETE_REGISTRATION", "CONTACT", "CONTENT_VIEW", "CUSTOMIZE_PRODUCT", "DONATE", "FACEBOOK_SELECTED", "FIND_LOCATION", "INITIATED_CHECKOUT", "LEAD", "LISTING_INTERACTION", "OTHER", "PURCHASE", "SCHEDULE", "SEARCH", "START_TRIAL", "SUBMIT_APPLICATION", "SUBSCRIBE"},
 				},
 				"default_conversion_value": map[string]any{
-					"type": "number",
+					"type":        "number",
 					"description": "default_conversion_value parameter",
 				},
 				"description": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "description parameter",
 				},
 				"event_source_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "event_source_id parameter",
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
-					"required": true,
+					"required":    true,
 				},
 				"rule": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "rule parameter",
 				},
 			}),
@@ -99,8 +99,6 @@ func HandleAdaccount_post_customconversions(ctx context.Context, request mcp.Cal
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Adaccount_post_customconversions(accessToken, args)
 	if err != nil {
@@ -119,35 +117,33 @@ func HandleAdaccount_post_customconversions(ctx context.Context, request mcp.Cal
 // Adaccount_post_customconversions performs POST customconversions for AdAccount
 func Adaccount_post_customconversions(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	// Extract account_id for URL construction
 	accountId, ok := args["account_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_post_customconversions")
 	}
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%scustomconversions", accountId)
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-		
-	}
 
+	}
 
 	// Make HTTP request
 	var resp *http.Response

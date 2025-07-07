@@ -4,11 +4,11 @@ package constants
 
 // IGShoppingReviewStatusReasonWithHelpMessageFields contains field name constants for IGShoppingReviewStatusReasonWithHelpMessage objects
 var IGShoppingReviewStatusReasonWithHelpMessageFields = struct {
-	Code string
+	Code    string
 	HelpUrl string
 	Message string
 }{
-	Code: "code",
+	Code:    "code",
 	HelpUrl: "help_url",
 	Message: "message",
 }

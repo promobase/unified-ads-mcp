@@ -17,7 +17,6 @@ import (
 func GetCommentTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// comment_get_comments tool
 	// Available fields for Comment: admin_creator, application, attachment, can_comment, can_hide, can_like, can_remove, can_reply_privately, comment_count, created_time, from, id, is_hidden, is_private, like_count, live_broadcast_timestamp, message, message_tags, object, parent, permalink_url, private_reply_conversation, user_likes
 	// Params object accepts: filter (commentcomments_filter_enum_param), live_filter (commentcomments_live_filter_enum_param), order (commentcomments_order_enum_param), since (datetime)
@@ -26,22 +25,22 @@ func GetCommentTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"filter": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "filter parameter",
-					"enum": []string{ "stream", "toplevel" },
+					"enum":        []string{"stream", "toplevel"},
 				},
 				"live_filter": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "live_filter parameter",
-					"enum": []string{ "filter_low_quality", "no_filter" },
+					"enum":        []string{"filter_low_quality", "no_filter"},
 				},
 				"order": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "order parameter",
-					"enum": []string{ "chronological", "reverse_chronological" },
+					"enum":        []string{"chronological", "reverse_chronological"},
 				},
 				"since": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "since parameter",
 				},
 			}),
@@ -69,57 +68,57 @@ func GetCommentTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"attachment_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "attachment_id parameter",
 				},
 				"attachment_share_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "attachment_share_url parameter",
 				},
 				"attachment_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "attachment_url parameter",
 				},
 				"comment_privacy_value": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "comment_privacy_value parameter",
-					"enum": []string{ "DECLINED_BY_ADMIN_ASSISTANT", "DEFAULT_PRIVACY", "FRIENDS_AND_POST_OWNER", "FRIENDS_ONLY", "GRAPHQL_MULTIPLE_VALUE_HACK_DO_NOT_USE", "OWNER_OR_COMMENTER", "PENDING_APPROVAL", "REMOVED_BY_ADMIN_ASSISTANT", "SIDE_CONVERSATION", "SIDE_CONVERSATION_AND_POST_OWNER", "SPOTLIGHT_TAB" },
+					"enum":        []string{"DECLINED_BY_ADMIN_ASSISTANT", "DEFAULT_PRIVACY", "FRIENDS_AND_POST_OWNER", "FRIENDS_ONLY", "GRAPHQL_MULTIPLE_VALUE_HACK_DO_NOT_USE", "OWNER_OR_COMMENTER", "PENDING_APPROVAL", "REMOVED_BY_ADMIN_ASSISTANT", "SIDE_CONVERSATION", "SIDE_CONVERSATION_AND_POST_OWNER", "SPOTLIGHT_TAB"},
 				},
 				"facepile_mentioned_ids": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "facepile_mentioned_ids parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"feedback_source": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "feedback_source parameter",
 				},
 				"is_offline": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_offline parameter",
 				},
 				"message": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "message parameter",
 				},
 				"nectar_module": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "nectar_module parameter",
 				},
 				"object_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "object_id parameter",
 				},
 				"parent_comment_id": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "parent_comment_id parameter",
 				},
 				"text": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "text parameter",
 				},
 				"tracking": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "tracking parameter",
 				},
 			}),
@@ -135,15 +134,15 @@ func GetCommentTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"feedback_source": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "feedback_source parameter",
 				},
 				"nectar_module": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "nectar_module parameter",
 				},
 				"tracking": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "tracking parameter",
 				},
 			}),
@@ -178,15 +177,15 @@ func GetCommentTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"feedback_source": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "feedback_source parameter",
 				},
 				"nectar_module": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "nectar_module parameter",
 				},
 				"tracking": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "tracking parameter",
 				},
 			}),
@@ -203,9 +202,9 @@ func GetCommentTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "type parameter",
-					"enum": []string{ "ANGRY", "CARE", "FIRE", "HAHA", "HUNDRED", "LIKE", "LOVE", "NONE", "PRIDE", "SAD", "THANKFUL", "WOW" },
+					"enum":        []string{"ANGRY", "CARE", "FIRE", "HAHA", "HUNDRED", "LIKE", "LOVE", "NONE", "PRIDE", "SAD", "THANKFUL", "WOW"},
 				},
 			}),
 			mcp.Description("Parameters object containing: type (enum) [ANGRY, CARE, FIRE, HAHA, HUNDRED, ...]"),
@@ -257,23 +256,23 @@ func GetCommentTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"attachment_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "attachment_id parameter",
 				},
 				"attachment_share_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "attachment_share_url parameter",
 				},
 				"attachment_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "attachment_url parameter",
 				},
 				"is_hidden": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_hidden parameter",
 				},
 				"message": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "message parameter",
 				},
 			}),
@@ -282,12 +281,10 @@ func GetCommentTools() []mcp.Tool {
 	)
 	tools = append(tools, comment_post_Tool)
 
-
 	return tools
 }
 
 // Comment handlers
-
 
 // HandleComment_get_comments handles the comment_get_comments tool with context-based auth
 func HandleComment_get_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -340,8 +337,6 @@ func HandleComment_get_comments(ctx context.Context, request mcp.CallToolRequest
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Comment_get_comments(args)
 	if err != nil {
@@ -356,7 +351,6 @@ func HandleComment_get_comments(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleComment_post_comments handles the comment_post_comments tool with context-based auth
 func HandleComment_post_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -384,8 +378,6 @@ func HandleComment_post_comments(ctx context.Context, request mcp.CallToolReques
 		}
 	}
 
-
-
 	// Call the client method
 	result, err := client.Comment_post_comments(args)
 	if err != nil {
@@ -400,7 +392,6 @@ func HandleComment_post_comments(ctx context.Context, request mcp.CallToolReques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleComment_delete_likes handles the comment_delete_likes tool with context-based auth
 func HandleComment_delete_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -428,8 +419,6 @@ func HandleComment_delete_likes(ctx context.Context, request mcp.CallToolRequest
 		}
 	}
 
-
-
 	// Call the client method
 	result, err := client.Comment_delete_likes(args)
 	if err != nil {
@@ -444,7 +433,6 @@ func HandleComment_delete_likes(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleComment_get_likes handles the comment_get_likes tool with context-based auth
 func HandleComment_get_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -485,8 +473,6 @@ func HandleComment_get_likes(ctx context.Context, request mcp.CallToolRequest) (
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Comment_get_likes(args)
 	if err != nil {
@@ -501,7 +487,6 @@ func HandleComment_get_likes(ctx context.Context, request mcp.CallToolRequest) (
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleComment_post_likes handles the comment_post_likes tool with context-based auth
 func HandleComment_post_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -529,8 +514,6 @@ func HandleComment_post_likes(ctx context.Context, request mcp.CallToolRequest) 
 		}
 	}
 
-
-
 	// Call the client method
 	result, err := client.Comment_post_likes(args)
 	if err != nil {
@@ -545,7 +528,6 @@ func HandleComment_post_likes(ctx context.Context, request mcp.CallToolRequest) 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleComment_get_reactions handles the comment_get_reactions tool with context-based auth
 func HandleComment_get_reactions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -598,8 +580,6 @@ func HandleComment_get_reactions(ctx context.Context, request mcp.CallToolReques
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Comment_get_reactions(args)
 	if err != nil {
@@ -615,7 +595,6 @@ func HandleComment_get_reactions(ctx context.Context, request mcp.CallToolReques
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleComment_delete_ handles the comment_delete_ tool with context-based auth
 func HandleComment_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
@@ -629,8 +608,6 @@ func HandleComment_delete_(ctx context.Context, request mcp.CallToolRequest) (*m
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Comment_delete_(args)
@@ -646,7 +623,6 @@ func HandleComment_delete_(ctx context.Context, request mcp.CallToolRequest) (*m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleComment_get_ handles the comment_get_ tool with context-based auth
 func HandleComment_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -687,8 +663,6 @@ func HandleComment_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Comment_get_(args)
 	if err != nil {
@@ -703,7 +677,6 @@ func HandleComment_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleComment_post_ handles the comment_post_ tool with context-based auth
 func HandleComment_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -731,8 +704,6 @@ func HandleComment_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 		}
 	}
 
-
-
 	// Call the client method
 	result, err := client.Comment_post_(args)
 	if err != nil {
@@ -747,4 +718,3 @@ func HandleComment_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

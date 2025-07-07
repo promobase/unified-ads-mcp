@@ -5,20 +5,20 @@ package constants
 // InstagramInsightsResultFields contains field name constants for InstagramInsightsResult objects
 var InstagramInsightsResultFields = struct {
 	Description string
-	Id string
-	Name string
-	Period string
-	Title string
-	TotalValue string
-	Values string
+	Id          string
+	Name        string
+	Period      string
+	Title       string
+	TotalValue  string
+	Values      string
 }{
 	Description: "description",
-	Id: "id",
-	Name: "name",
-	Period: "period",
-	Title: "title",
-	TotalValue: "total_value",
-	Values: "values",
+	Id:          "id",
+	Name:        "name",
+	Period:      "period",
+	Title:       "title",
+	TotalValue:  "total_value",
+	Values:      "values",
 }
 
 // InstagramInsightsResultFieldsList contains all available fields for InstagramInsightsResult objects

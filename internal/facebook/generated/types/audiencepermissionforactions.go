@@ -4,9 +4,9 @@ package types
 
 // AudiencePermissionForActions represents a Facebook AudiencePermissionForActions object
 type AudiencePermissionForActions struct {
-	Can_edit bool `json:"can_edit"`
-	Can_see_insight bool `json:"can_see_insight"`
-	Can_share bool `json:"can_share"`
-	Subtype_supports_lookalike bool `json:"subtype_supports_lookalike"`
+	Can_edit                     bool `json:"can_edit"`
+	Can_see_insight              bool `json:"can_see_insight"`
+	Can_share                    bool `json:"can_share"`
+	Subtype_supports_lookalike   bool `json:"subtype_supports_lookalike"`
 	Supports_recipient_lookalike bool `json:"supports_recipient_lookalike"`
 }

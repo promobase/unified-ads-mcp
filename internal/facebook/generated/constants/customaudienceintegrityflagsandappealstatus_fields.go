@@ -4,17 +4,17 @@ package constants
 
 // CustomAudienceIntegrityFlagsAndAppealStatusFields contains field name constants for CustomAudienceIntegrityFlagsAndAppealStatus objects
 var CustomAudienceIntegrityFlagsAndAppealStatusFields = struct {
-	CloseoutTime string
-	FlaggedFields string
+	CloseoutTime          string
+	FlaggedFields         string
 	LatestAppealRequestor string
-	LatestAppealTime string
-	RestrictionStatus string
+	LatestAppealTime      string
+	RestrictionStatus     string
 }{
-	CloseoutTime: "closeout_time",
-	FlaggedFields: "flagged_fields",
+	CloseoutTime:          "closeout_time",
+	FlaggedFields:         "flagged_fields",
 	LatestAppealRequestor: "latest_appeal_requestor",
-	LatestAppealTime: "latest_appeal_time",
-	RestrictionStatus: "restriction_status",
+	LatestAppealTime:      "latest_appeal_time",
+	RestrictionStatus:     "restriction_status",
 }
 
 // CustomAudienceIntegrityFlagsAndAppealStatusFieldsList contains all available fields for CustomAudienceIntegrityFlagsAndAppealStatus objects

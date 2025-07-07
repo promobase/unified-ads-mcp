@@ -15,7 +15,7 @@ import (
 
 // ToolPage_post_video_copyrights returns the MCP tool definition for page_post_video_copyrights
 func ToolPage_post_video_copyrights() mcp.Tool {
-	
+
 	// Params object accepts: attribution_id (string), content_category (pagevideo_copyrights_content_category_enum_param), copyright_content_id (string), excluded_ownership_countries (list<string>), excluded_ownership_segments (list<Object>), is_reference_disabled (bool), is_reference_video (bool), monitoring_type (pagevideo_copyrights_monitoring_type_enum_param), ownership_countries (list<string>), rule_id (string), tags (list<string>), whitelisted_ids (list<string>), whitelisted_ig_user_ids (list<string>)
 	return mcp.NewTool("page_post_video_copyrights",
 		mcp.WithDescription("POST video_copyrights for Page"),
@@ -23,65 +23,65 @@ func ToolPage_post_video_copyrights() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"attribution_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "attribution_id parameter",
 				},
 				"content_category": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "content_category parameter",
-					"enum": []string{ "episode", "movie", "web" },
+					"enum":        []string{"episode", "movie", "web"},
 				},
 				"copyright_content_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "copyright_content_id parameter",
-					"required": true,
+					"required":    true,
 				},
 				"excluded_ownership_countries": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "excluded_ownership_countries parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"excluded_ownership_segments": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "excluded_ownership_segments parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"is_reference_disabled": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_reference_disabled parameter",
 				},
 				"is_reference_video": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_reference_video parameter",
 				},
 				"monitoring_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "monitoring_type parameter",
-					"enum": []string{ "AUDIO_ONLY", "VIDEO_AND_AUDIO", "VIDEO_ONLY" },
+					"enum":        []string{"AUDIO_ONLY", "VIDEO_AND_AUDIO", "VIDEO_ONLY"},
 				},
 				"ownership_countries": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "ownership_countries parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"rule_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "rule_id parameter",
 				},
 				"tags": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "tags parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"whitelisted_ids": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "whitelisted_ids parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"whitelisted_ig_user_ids": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "whitelisted_ig_user_ids parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: attribution_id (string), content_category (enum) [episode, movie, web], copyright_content_id (string) [required], excluded_ownership_countries (array<string>), excluded_ownership_segments (array<object>), is_reference_disabled (boolean), is_reference_video (boolean), monitoring_type (enum) [AUDIO_ONLY, VIDEO_AND_AUDIO, VIDEO_ONLY], ownership_countries (array<string>), rule_id (string), tags (array<string>), whitelisted_ids (array<string>), whitelisted_ig_user_ids (array<string>)"),
@@ -114,8 +114,6 @@ func HandlePage_post_video_copyrights(ctx context.Context, request mcp.CallToolR
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Page_post_video_copyrights(accessToken, args)
 	if err != nil {
@@ -134,20 +132,18 @@ func HandlePage_post_video_copyrights(ctx context.Context, request mcp.CallToolR
 // Page_post_video_copyrights performs POST video_copyrights for Page
 func Page_post_video_copyrights(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/video_copyrights")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

@@ -17,7 +17,6 @@ import (
 func GetAdsQuickViewsTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// adsquickviews_get_ tool
 	// Available fields for AdsQuickViews: attribution_windows, breakdowns, column_fields, description, id, name, owner, permission, quick_view_type, sort
 	adsquickviews_get_Tool := mcp.NewTool("adsquickviews_get_",
@@ -37,12 +36,10 @@ func GetAdsQuickViewsTools() []mcp.Tool {
 	)
 	tools = append(tools, adsquickviews_get_Tool)
 
-
 	return tools
 }
 
 // AdsQuickViews handlers
-
 
 // HandleAdsquickviews_get_ handles the adsquickviews_get_ tool with context-based auth
 func HandleAdsquickviews_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleAdsquickviews_get_(ctx context.Context, request mcp.CallToolRequest) 
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adsquickviews_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleAdsquickviews_get_(ctx context.Context, request mcp.CallToolRequest) 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

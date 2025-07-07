@@ -4,35 +4,35 @@ package constants
 
 // AdToplineDetailFields contains field name constants for AdToplineDetail objects
 var AdToplineDetailFields = struct {
-	ActiveStatus string
-	AdAccountId string
-	FlightEndDate string
+	ActiveStatus    string
+	AdAccountId     string
+	FlightEndDate   string
 	FlightStartDate string
-	Id string
-	IoNumber string
-	LineNumber string
-	Price string
-	Quantity string
-	SfDetailLineId string
-	SublineId string
-	Targets string
-	TimeCreated string
-	TimeUpdated string
+	Id              string
+	IoNumber        string
+	LineNumber      string
+	Price           string
+	Quantity        string
+	SfDetailLineId  string
+	SublineId       string
+	Targets         string
+	TimeCreated     string
+	TimeUpdated     string
 }{
-	ActiveStatus: "active_status",
-	AdAccountId: "ad_account_id",
-	FlightEndDate: "flight_end_date",
+	ActiveStatus:    "active_status",
+	AdAccountId:     "ad_account_id",
+	FlightEndDate:   "flight_end_date",
 	FlightStartDate: "flight_start_date",
-	Id: "id",
-	IoNumber: "io_number",
-	LineNumber: "line_number",
-	Price: "price",
-	Quantity: "quantity",
-	SfDetailLineId: "sf_detail_line_id",
-	SublineId: "subline_id",
-	Targets: "targets",
-	TimeCreated: "time_created",
-	TimeUpdated: "time_updated",
+	Id:              "id",
+	IoNumber:        "io_number",
+	LineNumber:      "line_number",
+	Price:           "price",
+	Quantity:        "quantity",
+	SfDetailLineId:  "sf_detail_line_id",
+	SublineId:       "subline_id",
+	Targets:         "targets",
+	TimeCreated:     "time_created",
+	TimeUpdated:     "time_updated",
 }
 
 // AdToplineDetailFieldsList contains all available fields for AdToplineDetail objects

@@ -17,7 +17,6 @@ import (
 func GetOfflineProductItemTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// offlineproductitem_get_channels_to_integrity_status tool
 	// Available fields for CatalogItemChannelsToIntegrityStatus: channels, rejection_information
 	offlineproductitem_get_channels_to_integrity_statusTool := mcp.NewTool("offlineproductitem_get_channels_to_integrity_status",
@@ -45,14 +44,14 @@ func GetOfflineProductItemTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"keys": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "keys parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "type parameter",
-					"enum": []string{ "COUNTRY", "LANGUAGE", "LANGUAGE_AND_COUNTRY" },
+					"enum":        []string{"COUNTRY", "LANGUAGE", "LANGUAGE_AND_COUNTRY"},
 				},
 			}),
 			mcp.Description("Parameters object containing: keys (array<string>), type (enum) [COUNTRY, LANGUAGE, LANGUAGE_AND_COUNTRY]"),
@@ -91,12 +90,10 @@ func GetOfflineProductItemTools() []mcp.Tool {
 	)
 	tools = append(tools, offlineproductitem_get_Tool)
 
-
 	return tools
 }
 
 // OfflineProductItem handlers
-
 
 // HandleOfflineproductitem_get_channels_to_integrity_status handles the offlineproductitem_get_channels_to_integrity_status tool with context-based auth
 func HandleOfflineproductitem_get_channels_to_integrity_status(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -137,8 +134,6 @@ func HandleOfflineproductitem_get_channels_to_integrity_status(ctx context.Conte
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Offlineproductitem_get_channels_to_integrity_status(args)
 	if err != nil {
@@ -153,7 +148,6 @@ func HandleOfflineproductitem_get_channels_to_integrity_status(ctx context.Conte
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleOfflineproductitem_get_override_details handles the offlineproductitem_get_override_details tool with context-based auth
 func HandleOfflineproductitem_get_override_details(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -206,8 +200,6 @@ func HandleOfflineproductitem_get_override_details(ctx context.Context, request 
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Offlineproductitem_get_override_details(args)
 	if err != nil {
@@ -222,7 +214,6 @@ func HandleOfflineproductitem_get_override_details(ctx context.Context, request 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleOfflineproductitem_get_ handles the offlineproductitem_get_ tool with context-based auth
 func HandleOfflineproductitem_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -263,8 +254,6 @@ func HandleOfflineproductitem_get_(ctx context.Context, request mcp.CallToolRequ
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Offlineproductitem_get_(args)
 	if err != nil {
@@ -279,4 +268,3 @@ func HandleOfflineproductitem_get_(ctx context.Context, request mcp.CallToolRequ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

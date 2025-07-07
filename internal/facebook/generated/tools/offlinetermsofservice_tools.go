@@ -17,7 +17,6 @@ import (
 func GetOfflineTermsOfServiceTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// offlinetermsofservice_get_ tool
 	// Available fields for OfflineTermsOfService: accept_time, id, signed_by_user
 	offlinetermsofservice_get_Tool := mcp.NewTool("offlinetermsofservice_get_",
@@ -37,12 +36,10 @@ func GetOfflineTermsOfServiceTools() []mcp.Tool {
 	)
 	tools = append(tools, offlinetermsofservice_get_Tool)
 
-
 	return tools
 }
 
 // OfflineTermsOfService handlers
-
 
 // HandleOfflinetermsofservice_get_ handles the offlinetermsofservice_get_ tool with context-based auth
 func HandleOfflinetermsofservice_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleOfflinetermsofservice_get_(ctx context.Context, request mcp.CallToolR
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Offlinetermsofservice_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleOfflinetermsofservice_get_(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

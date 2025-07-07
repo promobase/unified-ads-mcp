@@ -17,7 +17,6 @@ import (
 func GetArAdsDataContainerTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// aradsdatacontainer_get_ tool
 	// Available fields for ArAdsDataContainer: camera_facing_override, creation_time, effect, id, is_published, last_modified_time, name
 	aradsdatacontainer_get_Tool := mcp.NewTool("aradsdatacontainer_get_",
@@ -37,12 +36,10 @@ func GetArAdsDataContainerTools() []mcp.Tool {
 	)
 	tools = append(tools, aradsdatacontainer_get_Tool)
 
-
 	return tools
 }
 
 // ArAdsDataContainer handlers
-
 
 // HandleAradsdatacontainer_get_ handles the aradsdatacontainer_get_ tool with context-based auth
 func HandleAradsdatacontainer_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleAradsdatacontainer_get_(ctx context.Context, request mcp.CallToolRequ
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Aradsdatacontainer_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleAradsdatacontainer_get_(ctx context.Context, request mcp.CallToolRequ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

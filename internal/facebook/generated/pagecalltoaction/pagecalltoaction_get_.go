@@ -17,7 +17,7 @@ import (
 // ToolPagecalltoaction_get_ returns the MCP tool definition for pagecalltoaction_get_
 func ToolPagecalltoaction_get_() mcp.Tool {
 	// Available fields for PageCallToAction: android_app, android_deeplink, android_destination_type, android_package_name, android_url, created_time, email_address, from, id, intl_number_with_plus, iphone_app, iphone_deeplink, iphone_destination_type, iphone_url, status, type, updated_time, web_destination_type, web_url
-	
+
 	return mcp.NewTool("pagecalltoaction_get_",
 		mcp.WithDescription("GET  for PageCallToAction"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandlePagecalltoaction_get_(ctx context.Context, request mcp.CallToolReques
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Pagecalltoaction_get_(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandlePagecalltoaction_get_(ctx context.Context, request mcp.CallToolReques
 // Pagecalltoaction_get_ performs GET  for PageCallToAction
 func Pagecalltoaction_get_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

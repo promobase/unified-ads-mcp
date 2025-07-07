@@ -4,7 +4,7 @@ package types
 
 // PageGetStartedNullstate represents a Facebook PageGetStartedNullstate object
 type PageGetStartedNullstate struct {
-	Cta_title string `json:"cta_title"`
+	Cta_title          string `json:"cta_title"`
 	Processed_greeting string `json:"processed_greeting"`
-	Responsiveness string `json:"responsiveness"`
+	Responsiveness     string `json:"responsiveness"`
 }

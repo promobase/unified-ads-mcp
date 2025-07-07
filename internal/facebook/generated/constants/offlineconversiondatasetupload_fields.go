@@ -4,35 +4,35 @@ package constants
 
 // OfflineConversionDataSetUploadFields contains field name constants for OfflineConversionDataSetUpload objects
 var OfflineConversionDataSetUploadFields = struct {
-	ApiCalls string
-	CreationTime string
-	DuplicateEntries string
-	EventStats string
-	EventTimeMax string
-	EventTimeMin string
-	FirstUploadTime string
-	Id string
+	ApiCalls          string
+	CreationTime      string
+	DuplicateEntries  string
+	EventStats        string
+	EventTimeMax      string
+	EventTimeMin      string
+	FirstUploadTime   string
+	Id                string
 	IsExcludedForLift string
-	LastUploadTime string
-	MatchRateApprox string
-	MatchedEntries string
-	UploadTag string
-	ValidEntries string
+	LastUploadTime    string
+	MatchRateApprox   string
+	MatchedEntries    string
+	UploadTag         string
+	ValidEntries      string
 }{
-	ApiCalls: "api_calls",
-	CreationTime: "creation_time",
-	DuplicateEntries: "duplicate_entries",
-	EventStats: "event_stats",
-	EventTimeMax: "event_time_max",
-	EventTimeMin: "event_time_min",
-	FirstUploadTime: "first_upload_time",
-	Id: "id",
+	ApiCalls:          "api_calls",
+	CreationTime:      "creation_time",
+	DuplicateEntries:  "duplicate_entries",
+	EventStats:        "event_stats",
+	EventTimeMax:      "event_time_max",
+	EventTimeMin:      "event_time_min",
+	FirstUploadTime:   "first_upload_time",
+	Id:                "id",
 	IsExcludedForLift: "is_excluded_for_lift",
-	LastUploadTime: "last_upload_time",
-	MatchRateApprox: "match_rate_approx",
-	MatchedEntries: "matched_entries",
-	UploadTag: "upload_tag",
-	ValidEntries: "valid_entries",
+	LastUploadTime:    "last_upload_time",
+	MatchRateApprox:   "match_rate_approx",
+	MatchedEntries:    "matched_entries",
+	UploadTag:         "upload_tag",
+	ValidEntries:      "valid_entries",
 }
 
 // OfflineConversionDataSetUploadFieldsList contains all available fields for OfflineConversionDataSetUpload objects

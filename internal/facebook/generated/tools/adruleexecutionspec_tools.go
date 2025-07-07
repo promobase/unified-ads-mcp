@@ -17,7 +17,6 @@ import (
 func GetAdRuleExecutionSpecTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// adruleexecutionspec_get_ tool
 	// Available fields for AdRuleExecutionSpec: execution_options, execution_type, is_once_off
 	adruleexecutionspec_get_Tool := mcp.NewTool("adruleexecutionspec_get_",
@@ -37,12 +36,10 @@ func GetAdRuleExecutionSpecTools() []mcp.Tool {
 	)
 	tools = append(tools, adruleexecutionspec_get_Tool)
 
-
 	return tools
 }
 
 // AdRuleExecutionSpec handlers
-
 
 // HandleAdruleexecutionspec_get_ handles the adruleexecutionspec_get_ tool with context-based auth
 func HandleAdruleexecutionspec_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleAdruleexecutionspec_get_(ctx context.Context, request mcp.CallToolReq
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adruleexecutionspec_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleAdruleexecutionspec_get_(ctx context.Context, request mcp.CallToolReq
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

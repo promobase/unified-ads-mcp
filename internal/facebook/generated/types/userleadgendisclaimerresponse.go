@@ -5,5 +5,5 @@ package types
 // UserLeadGenDisclaimerResponse represents a Facebook UserLeadGenDisclaimerResponse object
 type UserLeadGenDisclaimerResponse struct {
 	Checkbox_key string `json:"checkbox_key"`
-	Is_checked string `json:"is_checked"`
+	Is_checked   string `json:"is_checked"`
 }

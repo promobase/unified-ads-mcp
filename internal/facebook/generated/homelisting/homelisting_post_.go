@@ -15,67 +15,67 @@ import (
 
 // ToolHomelisting_post_ returns the MCP tool definition for homelisting_post_
 func ToolHomelisting_post_() mcp.Tool {
-	
+
 	// Params object accepts: address (Object), availability (string), currency (string), description (string), images (list<Object>), listing_type (string), name (string), num_baths (float), num_beds (float), num_units (float), price (float), property_type (string), url (string), year_built (unsigned int)
 	return mcp.NewTool("homelisting_post_",
 		mcp.WithDescription("POST  for HomeListing"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"address": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "address parameter",
 				},
 				"availability": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "availability parameter",
 				},
 				"currency": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "currency parameter",
 				},
 				"description": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "description parameter",
 				},
 				"images": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "images parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"listing_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "listing_type parameter",
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
 				},
 				"num_baths": map[string]any{
-					"type": "number",
+					"type":        "number",
 					"description": "num_baths parameter",
 				},
 				"num_beds": map[string]any{
-					"type": "number",
+					"type":        "number",
 					"description": "num_beds parameter",
 				},
 				"num_units": map[string]any{
-					"type": "number",
+					"type":        "number",
 					"description": "num_units parameter",
 				},
 				"price": map[string]any{
-					"type": "number",
+					"type":        "number",
 					"description": "price parameter",
 				},
 				"property_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "property_type parameter",
 				},
 				"url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "url parameter",
 				},
 				"year_built": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "year_built parameter",
 				},
 			}),
@@ -107,8 +107,6 @@ func HandleHomelisting_post_(ctx context.Context, request mcp.CallToolRequest) (
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Homelisting_post_(accessToken, args)
 	if err != nil {
@@ -127,20 +125,18 @@ func HandleHomelisting_post_(ctx context.Context, request mcp.CallToolRequest) (
 // Homelisting_post_ performs POST  for HomeListing
 func Homelisting_post_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

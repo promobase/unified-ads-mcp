@@ -6,11 +6,11 @@ package constants
 var LeadGenURLEntityAtRangesFields = struct {
 	Length string
 	Offset string
-	Url string
+	Url    string
 }{
 	Length: "length",
 	Offset: "offset",
-	Url: "url",
+	Url:    "url",
 }
 
 // LeadGenURLEntityAtRangesFieldsList contains all available fields for LeadGenURLEntityAtRanges objects

@@ -15,8 +15,7 @@ import (
 
 // ToolHotel_delete_ returns the MCP tool definition for hotel_delete_
 func ToolHotel_delete_() mcp.Tool {
-	
-	
+
 	return mcp.NewTool("hotel_delete_",
 		mcp.WithDescription("DELETE  for Hotel"),
 	)
@@ -32,8 +31,6 @@ func HandleHotel_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the API method
 	result, err := Hotel_delete_(accessToken, args)
@@ -53,14 +50,11 @@ func HandleHotel_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 // Hotel_delete_ performs DELETE  for Hotel
 func Hotel_delete_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response

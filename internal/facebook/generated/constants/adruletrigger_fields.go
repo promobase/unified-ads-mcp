@@ -4,15 +4,15 @@ package constants
 
 // AdRuleTriggerFields contains field name constants for AdRuleTrigger objects
 var AdRuleTriggerFields = struct {
-	Field string
-	Operator string
+	Field     string
+	Operator  string
 	FieldType string
-	Value string
+	Value     string
 }{
-	Field: "field",
-	Operator: "operator",
+	Field:     "field",
+	Operator:  "operator",
 	FieldType: "type",
-	Value: "value",
+	Value:     "value",
 }
 
 // AdRuleTriggerFieldsList contains all available fields for AdRuleTrigger objects

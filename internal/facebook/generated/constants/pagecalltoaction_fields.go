@@ -4,45 +4,45 @@ package constants
 
 // PageCallToActionFields contains field name constants for PageCallToAction objects
 var PageCallToActionFields = struct {
-	AndroidApp string
-	AndroidDeeplink string
+	AndroidApp             string
+	AndroidDeeplink        string
 	AndroidDestinationType string
-	AndroidPackageName string
-	AndroidUrl string
-	CreatedTime string
-	EmailAddress string
-	From string
-	Id string
-	IntlNumberWithPlus string
-	IphoneApp string
-	IphoneDeeplink string
-	IphoneDestinationType string
-	IphoneUrl string
-	Status string
-	FieldType string
-	UpdatedTime string
-	WebDestinationType string
-	WebUrl string
+	AndroidPackageName     string
+	AndroidUrl             string
+	CreatedTime            string
+	EmailAddress           string
+	From                   string
+	Id                     string
+	IntlNumberWithPlus     string
+	IphoneApp              string
+	IphoneDeeplink         string
+	IphoneDestinationType  string
+	IphoneUrl              string
+	Status                 string
+	FieldType              string
+	UpdatedTime            string
+	WebDestinationType     string
+	WebUrl                 string
 }{
-	AndroidApp: "android_app",
-	AndroidDeeplink: "android_deeplink",
+	AndroidApp:             "android_app",
+	AndroidDeeplink:        "android_deeplink",
 	AndroidDestinationType: "android_destination_type",
-	AndroidPackageName: "android_package_name",
-	AndroidUrl: "android_url",
-	CreatedTime: "created_time",
-	EmailAddress: "email_address",
-	From: "from",
-	Id: "id",
-	IntlNumberWithPlus: "intl_number_with_plus",
-	IphoneApp: "iphone_app",
-	IphoneDeeplink: "iphone_deeplink",
-	IphoneDestinationType: "iphone_destination_type",
-	IphoneUrl: "iphone_url",
-	Status: "status",
-	FieldType: "type",
-	UpdatedTime: "updated_time",
-	WebDestinationType: "web_destination_type",
-	WebUrl: "web_url",
+	AndroidPackageName:     "android_package_name",
+	AndroidUrl:             "android_url",
+	CreatedTime:            "created_time",
+	EmailAddress:           "email_address",
+	From:                   "from",
+	Id:                     "id",
+	IntlNumberWithPlus:     "intl_number_with_plus",
+	IphoneApp:              "iphone_app",
+	IphoneDeeplink:         "iphone_deeplink",
+	IphoneDestinationType:  "iphone_destination_type",
+	IphoneUrl:              "iphone_url",
+	Status:                 "status",
+	FieldType:              "type",
+	UpdatedTime:            "updated_time",
+	WebDestinationType:     "web_destination_type",
+	WebUrl:                 "web_url",
 }
 
 // PageCallToActionFieldsList contains all available fields for PageCallToAction objects

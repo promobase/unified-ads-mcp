@@ -17,7 +17,7 @@ import (
 // ToolIguser_get_recently_searched_hashtags returns the MCP tool definition for iguser_get_recently_searched_hashtags
 func ToolIguser_get_recently_searched_hashtags() mcp.Tool {
 	// Available fields for ShadowIGHashtag: id, name
-	
+
 	return mcp.NewTool("iguser_get_recently_searched_hashtags",
 		mcp.WithDescription("GET recently_searched_hashtags for IGUser"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleIguser_get_recently_searched_hashtags(ctx context.Context, request mc
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Iguser_get_recently_searched_hashtags(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleIguser_get_recently_searched_hashtags(ctx context.Context, request mc
 // Iguser_get_recently_searched_hashtags performs GET recently_searched_hashtags for IGUser
 func Iguser_get_recently_searched_hashtags(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/recently_searched_hashtags")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

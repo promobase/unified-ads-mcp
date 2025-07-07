@@ -17,7 +17,7 @@ import (
 // ToolLivevideo_get_errors returns the MCP tool definition for livevideo_get_errors
 func ToolLivevideo_get_errors() mcp.Tool {
 	// Available fields for LiveVideoError: creation_time, error_code, error_message, error_type
-	
+
 	return mcp.NewTool("livevideo_get_errors",
 		mcp.WithDescription("GET errors for LiveVideo"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleLivevideo_get_errors(ctx context.Context, request mcp.CallToolRequest
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Livevideo_get_errors(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleLivevideo_get_errors(ctx context.Context, request mcp.CallToolRequest
 // Livevideo_get_errors performs GET errors for LiveVideo
 func Livevideo_get_errors(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/errors")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

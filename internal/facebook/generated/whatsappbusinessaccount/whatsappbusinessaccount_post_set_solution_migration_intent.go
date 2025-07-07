@@ -15,18 +15,18 @@ import (
 
 // ToolWhatsappbusinessaccount_post_set_solution_migration_intent returns the MCP tool definition for whatsappbusinessaccount_post_set_solution_migration_intent
 func ToolWhatsappbusinessaccount_post_set_solution_migration_intent() mcp.Tool {
-	
+
 	// Params object accepts: app_id (string), solution_id (string)
 	return mcp.NewTool("whatsappbusinessaccount_post_set_solution_migration_intent",
 		mcp.WithDescription("POST set_solution_migration_intent for WhatsAppBusinessAccount"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"app_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "app_id parameter",
 				},
 				"solution_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "solution_id parameter",
 				},
 			}),
@@ -58,8 +58,6 @@ func HandleWhatsappbusinessaccount_post_set_solution_migration_intent(ctx contex
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Whatsappbusinessaccount_post_set_solution_migration_intent(accessToken, args)
 	if err != nil {
@@ -78,20 +76,18 @@ func HandleWhatsappbusinessaccount_post_set_solution_migration_intent(ctx contex
 // Whatsappbusinessaccount_post_set_solution_migration_intent performs POST set_solution_migration_intent for WhatsAppBusinessAccount
 func Whatsappbusinessaccount_post_set_solution_migration_intent(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/set_solution_migration_intent")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

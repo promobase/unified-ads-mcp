@@ -17,7 +17,7 @@ import (
 // ToolPageusermessagethreadlabel_get_ returns the MCP tool definition for pageusermessagethreadlabel_get_
 func ToolPageusermessagethreadlabel_get_() mcp.Tool {
 	// Available fields for PageUserMessageThreadLabel: id, page_label_name
-	
+
 	return mcp.NewTool("pageusermessagethreadlabel_get_",
 		mcp.WithDescription("GET  for PageUserMessageThreadLabel"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandlePageusermessagethreadlabel_get_(ctx context.Context, request mcp.Call
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Pageusermessagethreadlabel_get_(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandlePageusermessagethreadlabel_get_(ctx context.Context, request mcp.Call
 // Pageusermessagethreadlabel_get_ performs GET  for PageUserMessageThreadLabel
 func Pageusermessagethreadlabel_get_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

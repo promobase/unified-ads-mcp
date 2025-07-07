@@ -15,7 +15,7 @@ import (
 
 // ToolCommercemerchantsettings_post_shipping_profiles returns the MCP tool definition for commercemerchantsettings_post_shipping_profiles
 func ToolCommercemerchantsettings_post_shipping_profiles() mcp.Tool {
-	
+
 	// Params object accepts: handling_time (map), is_default (bool), is_default_shipping_profile (bool), name (string), reference_id (string), shipping_destinations (list<map>)
 	return mcp.NewTool("commercemerchantsettings_post_shipping_profiles",
 		mcp.WithDescription("POST shipping_profiles for CommerceMerchantSettings"),
@@ -23,31 +23,31 @@ func ToolCommercemerchantsettings_post_shipping_profiles() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"handling_time": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "handling_time parameter",
 				},
 				"is_default": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_default parameter",
 				},
 				"is_default_shipping_profile": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_default_shipping_profile parameter",
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
-					"required": true,
+					"required":    true,
 				},
 				"reference_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "reference_id parameter",
 				},
 				"shipping_destinations": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "shipping_destinations parameter",
-					"required": true,
-					"items": map[string]any{"type": "object"},
+					"required":    true,
+					"items":       map[string]any{"type": "object"},
 				},
 			}),
 			mcp.Description("Parameters object containing: handling_time (object), is_default (boolean), is_default_shipping_profile (boolean), name (string) [required], reference_id (string), shipping_destinations (array<object>) [required]"),
@@ -80,8 +80,6 @@ func HandleCommercemerchantsettings_post_shipping_profiles(ctx context.Context, 
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Commercemerchantsettings_post_shipping_profiles(accessToken, args)
 	if err != nil {
@@ -100,20 +98,18 @@ func HandleCommercemerchantsettings_post_shipping_profiles(ctx context.Context, 
 // Commercemerchantsettings_post_shipping_profiles performs POST shipping_profiles for CommerceMerchantSettings
 func Commercemerchantsettings_post_shipping_profiles(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/shipping_profiles")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

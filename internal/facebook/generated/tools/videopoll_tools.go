@@ -17,7 +17,6 @@ import (
 func GetVideoPollTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// videopoll_get_poll_options tool
 	videopoll_get_poll_optionsTool := mcp.NewTool("videopoll_get_poll_options",
 		mcp.WithDescription("GET poll_options for VideoPoll"),
@@ -63,25 +62,25 @@ func GetVideoPollTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"action": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "action parameter",
-					"required": true,
-					"enum": []string{ "ATTACH_TO_VIDEO", "CLOSE", "DELETE_POLL", "SHOW_RESULTS", "SHOW_VOTING" },
+					"required":    true,
+					"enum":        []string{"ATTACH_TO_VIDEO", "CLOSE", "DELETE_POLL", "SHOW_RESULTS", "SHOW_VOTING"},
 				},
 				"close_after_voting": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "close_after_voting parameter",
 				},
 				"default_open": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "default_open parameter",
 				},
 				"show_gradient": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "show_gradient parameter",
 				},
 				"show_results": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "show_results parameter",
 				},
 			}),
@@ -90,12 +89,10 @@ func GetVideoPollTools() []mcp.Tool {
 	)
 	tools = append(tools, videopoll_post_Tool)
 
-
 	return tools
 }
 
 // VideoPoll handlers
-
 
 // HandleVideopoll_get_poll_options handles the videopoll_get_poll_options tool with context-based auth
 func HandleVideopoll_get_poll_options(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -136,8 +133,6 @@ func HandleVideopoll_get_poll_options(ctx context.Context, request mcp.CallToolR
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Videopoll_get_poll_options(args)
 	if err != nil {
@@ -152,7 +147,6 @@ func HandleVideopoll_get_poll_options(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleVideopoll_get_ handles the videopoll_get_ tool with context-based auth
 func HandleVideopoll_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -193,8 +187,6 @@ func HandleVideopoll_get_(ctx context.Context, request mcp.CallToolRequest) (*mc
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Videopoll_get_(args)
 	if err != nil {
@@ -209,7 +201,6 @@ func HandleVideopoll_get_(ctx context.Context, request mcp.CallToolRequest) (*mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleVideopoll_post_ handles the videopoll_post_ tool with context-based auth
 func HandleVideopoll_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -239,8 +230,6 @@ func HandleVideopoll_post_(ctx context.Context, request mcp.CallToolRequest) (*m
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Videopoll_post_(args)
 	if err != nil {
@@ -255,4 +244,3 @@ func HandleVideopoll_post_(ctx context.Context, request mcp.CallToolRequest) (*m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

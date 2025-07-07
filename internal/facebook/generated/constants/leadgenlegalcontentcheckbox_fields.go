@@ -4,17 +4,17 @@ package constants
 
 // LeadGenLegalContentCheckboxFields contains field name constants for LeadGenLegalContentCheckbox objects
 var LeadGenLegalContentCheckboxFields = struct {
-	Id string
+	Id                 string
 	IsCheckedByDefault string
-	IsRequired string
-	Key string
-	Text string
+	IsRequired         string
+	Key                string
+	Text               string
 }{
-	Id: "id",
+	Id:                 "id",
 	IsCheckedByDefault: "is_checked_by_default",
-	IsRequired: "is_required",
-	Key: "key",
-	Text: "text",
+	IsRequired:         "is_required",
+	Key:                "key",
+	Text:               "text",
 }
 
 // LeadGenLegalContentCheckboxFieldsList contains all available fields for LeadGenLegalContentCheckbox objects

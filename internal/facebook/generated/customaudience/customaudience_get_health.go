@@ -23,27 +23,27 @@ func ToolCustomaudience_get_health() mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"calculated_date": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "calculated_date parameter",
 				},
 				"processed_date": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "processed_date parameter",
 				},
 				"value_aggregation_duration": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "value_aggregation_duration parameter",
 				},
 				"value_country": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "value_country parameter",
 				},
 				"value_currency": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "value_currency parameter",
 				},
 				"value_version": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "value_version parameter",
 				},
 			}),
@@ -112,8 +112,6 @@ func HandleCustomaudience_get_health(ctx context.Context, request mcp.CallToolRe
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Customaudience_get_health(accessToken, args)
 	if err != nil {
@@ -132,44 +130,42 @@ func HandleCustomaudience_get_health(ctx context.Context, request mcp.CallToolRe
 // Customaudience_get_health performs GET health for CustomAudience
 func Customaudience_get_health(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/health")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

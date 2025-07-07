@@ -15,7 +15,7 @@ import (
 
 // ToolProductcatalog_post_localized_items_batch returns the MCP tool definition for productcatalog_post_localized_items_batch
 func ToolProductcatalog_post_localized_items_batch() mcp.Tool {
-	
+
 	// Params object accepts: allow_upsert (bool), item_type (string), requests (map), version (unsigned int)
 	return mcp.NewTool("productcatalog_post_localized_items_batch",
 		mcp.WithDescription("POST localized_items_batch for ProductCatalog"),
@@ -23,21 +23,21 @@ func ToolProductcatalog_post_localized_items_batch() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"allow_upsert": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "allow_upsert parameter",
 				},
 				"item_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "item_type parameter",
-					"required": true,
+					"required":    true,
 				},
 				"requests": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "requests parameter",
-					"required": true,
+					"required":    true,
 				},
 				"version": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "version parameter",
 				},
 			}),
@@ -71,8 +71,6 @@ func HandleProductcatalog_post_localized_items_batch(ctx context.Context, reques
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Productcatalog_post_localized_items_batch(accessToken, args)
 	if err != nil {
@@ -91,20 +89,18 @@ func HandleProductcatalog_post_localized_items_batch(ctx context.Context, reques
 // Productcatalog_post_localized_items_batch performs POST localized_items_batch for ProductCatalog
 func Productcatalog_post_localized_items_batch(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/localized_items_batch")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

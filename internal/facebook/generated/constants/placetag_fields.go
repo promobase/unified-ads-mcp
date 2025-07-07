@@ -5,12 +5,12 @@ package constants
 // PlaceTagFields contains field name constants for PlaceTag objects
 var PlaceTagFields = struct {
 	CreatedTime string
-	Id string
-	Place string
+	Id          string
+	Place       string
 }{
 	CreatedTime: "created_time",
-	Id: "id",
-	Place: "place",
+	Id:          "id",
+	Place:       "place",
 }
 
 // PlaceTagFieldsList contains all available fields for PlaceTag objects

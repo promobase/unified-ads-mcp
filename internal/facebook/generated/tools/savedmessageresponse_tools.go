@@ -17,7 +17,6 @@ import (
 func GetSavedMessageResponseTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// savedmessageresponse_get_ tool
 	// Available fields for SavedMessageResponse: id, image, is_enabled, message, title
 	savedmessageresponse_get_Tool := mcp.NewTool("savedmessageresponse_get_",
@@ -37,12 +36,10 @@ func GetSavedMessageResponseTools() []mcp.Tool {
 	)
 	tools = append(tools, savedmessageresponse_get_Tool)
 
-
 	return tools
 }
 
 // SavedMessageResponse handlers
-
 
 // HandleSavedmessageresponse_get_ handles the savedmessageresponse_get_ tool with context-based auth
 func HandleSavedmessageresponse_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleSavedmessageresponse_get_(ctx context.Context, request mcp.CallToolRe
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Savedmessageresponse_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleSavedmessageresponse_get_(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

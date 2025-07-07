@@ -15,7 +15,7 @@ import (
 
 // ToolAdspixel_delete_shared_accounts returns the MCP tool definition for adspixel_delete_shared_accounts
 func ToolAdspixel_delete_shared_accounts() mcp.Tool {
-	
+
 	// Params object accepts: account_id (string), business (string)
 	return mcp.NewTool("adspixel_delete_shared_accounts",
 		mcp.WithDescription("DELETE shared_accounts for AdsPixel"),
@@ -23,14 +23,14 @@ func ToolAdspixel_delete_shared_accounts() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"account_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "account_id parameter",
-					"required": true,
+					"required":    true,
 				},
 				"business": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "business parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: account_id (string) [required], business (string) [required]"),
@@ -63,8 +63,6 @@ func HandleAdspixel_delete_shared_accounts(ctx context.Context, request mcp.Call
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Adspixel_delete_shared_accounts(accessToken, args)
 	if err != nil {
@@ -83,20 +81,18 @@ func HandleAdspixel_delete_shared_accounts(ctx context.Context, request mcp.Call
 // Adspixel_delete_shared_accounts performs DELETE shared_accounts for AdsPixel
 func Adspixel_delete_shared_accounts(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/shared_accounts")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

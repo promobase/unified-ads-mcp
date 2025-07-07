@@ -4,31 +4,31 @@ package constants
 
 // LookalikeSpecFields contains field name constants for LookalikeSpec objects
 var LookalikeSpecFields = struct {
-	Country string
-	IsFinancialService string
-	Origin string
-	OriginEventName string
+	Country               string
+	IsFinancialService    string
+	Origin                string
+	OriginEventName       string
 	OriginEventSourceName string
 	OriginEventSourceType string
-	ProductSetName string
-	Ratio string
-	StartingRatio string
-	TargetCountries string
-	TargetCountryNames string
-	FieldType string
+	ProductSetName        string
+	Ratio                 string
+	StartingRatio         string
+	TargetCountries       string
+	TargetCountryNames    string
+	FieldType             string
 }{
-	Country: "country",
-	IsFinancialService: "is_financial_service",
-	Origin: "origin",
-	OriginEventName: "origin_event_name",
+	Country:               "country",
+	IsFinancialService:    "is_financial_service",
+	Origin:                "origin",
+	OriginEventName:       "origin_event_name",
 	OriginEventSourceName: "origin_event_source_name",
 	OriginEventSourceType: "origin_event_source_type",
-	ProductSetName: "product_set_name",
-	Ratio: "ratio",
-	StartingRatio: "starting_ratio",
-	TargetCountries: "target_countries",
-	TargetCountryNames: "target_country_names",
-	FieldType: "type",
+	ProductSetName:        "product_set_name",
+	Ratio:                 "ratio",
+	StartingRatio:         "starting_ratio",
+	TargetCountries:       "target_countries",
+	TargetCountryNames:    "target_country_names",
+	FieldType:             "type",
 }
 
 // LookalikeSpecFieldsList contains all available fields for LookalikeSpec objects

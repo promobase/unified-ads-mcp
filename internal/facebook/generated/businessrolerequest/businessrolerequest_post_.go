@@ -15,22 +15,22 @@ import (
 
 // ToolBusinessrolerequest_post_ returns the MCP tool definition for businessrolerequest_post_
 func ToolBusinessrolerequest_post_() mcp.Tool {
-	
+
 	// Params object accepts: role (businessrolerequest_role), tasks (list<businessrolerequest_tasks>)
 	return mcp.NewTool("businessrolerequest_post_",
 		mcp.WithDescription("POST  for BusinessRoleRequest"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"role": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "role parameter",
-					"enum": []string{ "ADMIN", "ADS_RIGHTS_REVIEWER", "DEFAULT", "DEVELOPER", "EMPLOYEE", "FINANCE_ANALYST", "FINANCE_EDIT", "FINANCE_EDITOR", "FINANCE_VIEW", "MANAGE", "PARTNER_CENTER_ADMIN", "PARTNER_CENTER_ANALYST", "PARTNER_CENTER_EDUCATION", "PARTNER_CENTER_MARKETING", "PARTNER_CENTER_OPERATIONS" },
+					"enum":        []string{"ADMIN", "ADS_RIGHTS_REVIEWER", "DEFAULT", "DEVELOPER", "EMPLOYEE", "FINANCE_ANALYST", "FINANCE_EDIT", "FINANCE_EDITOR", "FINANCE_VIEW", "MANAGE", "PARTNER_CENTER_ADMIN", "PARTNER_CENTER_ANALYST", "PARTNER_CENTER_EDUCATION", "PARTNER_CENTER_MARKETING", "PARTNER_CENTER_OPERATIONS"},
 				},
 				"tasks": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "tasks parameter",
-					"enum": []string{ "ADMIN", "ADS_RIGHTS_REVIEWER", "DEFAULT", "DEVELOPER", "EMPLOYEE", "FINANCE_ANALYST", "FINANCE_EDIT", "FINANCE_EDITOR", "FINANCE_VIEW", "MANAGE", "PARTNER_CENTER_ADMIN", "PARTNER_CENTER_ANALYST", "PARTNER_CENTER_EDUCATION", "PARTNER_CENTER_MARKETING", "PARTNER_CENTER_OPERATIONS" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"ADMIN", "ADS_RIGHTS_REVIEWER", "DEFAULT", "DEVELOPER", "EMPLOYEE", "FINANCE_ANALYST", "FINANCE_EDIT", "FINANCE_EDITOR", "FINANCE_VIEW", "MANAGE", "PARTNER_CENTER_ADMIN", "PARTNER_CENTER_ANALYST", "PARTNER_CENTER_EDUCATION", "PARTNER_CENTER_MARKETING", "PARTNER_CENTER_OPERATIONS"},
+					"items":       map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: role (businessrolerequest_role) [ADMIN, ADS_RIGHTS_REVIEWER, DEFAULT, DEVELOPER, EMPLOYEE, ...], tasks (array<businessrolerequest_tasks>) [ADMIN, ADS_RIGHTS_REVIEWER, DEFAULT, DEVELOPER, EMPLOYEE, ...]"),
@@ -61,8 +61,6 @@ func HandleBusinessrolerequest_post_(ctx context.Context, request mcp.CallToolRe
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Businessrolerequest_post_(accessToken, args)
 	if err != nil {
@@ -81,20 +79,18 @@ func HandleBusinessrolerequest_post_(ctx context.Context, request mcp.CallToolRe
 // Businessrolerequest_post_ performs POST  for BusinessRoleRequest
 func Businessrolerequest_post_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

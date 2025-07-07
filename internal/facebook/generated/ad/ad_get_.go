@@ -27,24 +27,24 @@ func ToolAd_get_() mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"am_call_tags": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "am_call_tags parameter",
 				},
 				"date_preset": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "date_preset parameter",
-					"enum": []string{ "data_maximum", "last_14d", "last_28d", "last_30d", "last_3d", "last_7d", "last_90d", "last_month", "last_quarter", "last_week_mon_sun", "last_week_sun_sat", "last_year", "maximum", "this_month", "this_quarter", "this_week_mon_today", "this_week_sun_today", "this_year", "today", "yesterday" },
+					"enum":        []string{"data_maximum", "last_14d", "last_28d", "last_30d", "last_3d", "last_7d", "last_90d", "last_month", "last_quarter", "last_week_mon_sun", "last_week_sun_sat", "last_year", "maximum", "this_month", "this_quarter", "this_week_mon_today", "this_week_sun_today", "this_year", "today", "yesterday"},
 				},
 				"from_adtable": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "from_adtable parameter",
 				},
 				"review_feedback_breakdown": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "review_feedback_breakdown parameter",
 				},
 				"time_range": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "time_range parameter",
 				},
 			}),
@@ -120,8 +120,6 @@ func HandleAd_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallT
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Ad_get_(accessToken, args)
 	if err != nil {
@@ -140,67 +138,65 @@ func HandleAd_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallT
 // Ad_get_ performs GET  for Ad
 func Ad_get_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	// Extract ad_id for URL construction
 	adId, ok := args["ad_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("ad_id is required for ad_get_")
 	}
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/%s", adId)
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["ad_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "ad_id" != "ad_id" {
 			urlParams.Set("ad_id", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "params" != "ad_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "fields" != "ad_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "limit" != "ad_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "after" != "ad_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "before" != "ad_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-		
-	}
 
+	}
 
 	// Make HTTP request
 	var resp *http.Response

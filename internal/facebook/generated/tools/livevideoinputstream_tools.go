@@ -17,7 +17,6 @@ import (
 func GetLiveVideoInputStreamTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// livevideoinputstream_get_ tool
 	// Available fields for LiveVideoInputStream: dash_ingest_url, dash_preview_url, id, is_master, secure_stream_url, stream_health, stream_id, stream_url
 	// Params object accepts: target_token (string)
@@ -26,7 +25,7 @@ func GetLiveVideoInputStreamTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"target_token": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "target_token parameter",
 				},
 			}),
@@ -47,12 +46,10 @@ func GetLiveVideoInputStreamTools() []mcp.Tool {
 	)
 	tools = append(tools, livevideoinputstream_get_Tool)
 
-
 	return tools
 }
 
 // LiveVideoInputStream handlers
-
 
 // HandleLivevideoinputstream_get_ handles the livevideoinputstream_get_ tool with context-based auth
 func HandleLivevideoinputstream_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -105,8 +102,6 @@ func HandleLivevideoinputstream_get_(ctx context.Context, request mcp.CallToolRe
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Livevideoinputstream_get_(args)
 	if err != nil {
@@ -121,4 +116,3 @@ func HandleLivevideoinputstream_get_(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

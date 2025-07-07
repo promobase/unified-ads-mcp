@@ -17,7 +17,6 @@ import (
 func GetAdvAInstanceTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// advainstance_get_ tool
 	// Available fields for AdvAInstance: id, instance_type, name, owner_business
 	advainstance_get_Tool := mcp.NewTool("advainstance_get_",
@@ -37,12 +36,10 @@ func GetAdvAInstanceTools() []mcp.Tool {
 	)
 	tools = append(tools, advainstance_get_Tool)
 
-
 	return tools
 }
 
 // AdvAInstance handlers
-
 
 // HandleAdvainstance_get_ handles the advainstance_get_ tool with context-based auth
 func HandleAdvainstance_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleAdvainstance_get_(ctx context.Context, request mcp.CallToolRequest) (
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Advainstance_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleAdvainstance_get_(ctx context.Context, request mcp.CallToolRequest) (
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

@@ -5,14 +5,14 @@ package constants
 // McomInvoiceBankAccountFields contains field name constants for McomInvoiceBankAccount objects
 var McomInvoiceBankAccountFields = struct {
 	NumPendingVerificationAccounts string
-	NumVerifiedAccounts string
-	PendingVerificationAccounts string
-	VerifiedAccounts string
+	NumVerifiedAccounts            string
+	PendingVerificationAccounts    string
+	VerifiedAccounts               string
 }{
 	NumPendingVerificationAccounts: "num_pending_verification_accounts",
-	NumVerifiedAccounts: "num_verified_accounts",
-	PendingVerificationAccounts: "pending_verification_accounts",
-	VerifiedAccounts: "verified_accounts",
+	NumVerifiedAccounts:            "num_verified_accounts",
+	PendingVerificationAccounts:    "pending_verification_accounts",
+	VerifiedAccounts:               "verified_accounts",
 }
 
 // McomInvoiceBankAccountFieldsList contains all available fields for McomInvoiceBankAccount objects

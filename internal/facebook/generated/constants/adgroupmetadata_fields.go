@@ -5,16 +5,16 @@ package constants
 // AdgroupMetadataFields contains field name constants for AdgroupMetadata objects
 var AdgroupMetadataFields = struct {
 	AdStandardEnhancementsEditSource string
-	AdgroupCreationSource string
-	AdgroupEditSource string
-	CarouselStyle string
-	CarouselWithStaticCardStyle string
+	AdgroupCreationSource            string
+	AdgroupEditSource                string
+	CarouselStyle                    string
+	CarouselWithStaticCardStyle      string
 }{
 	AdStandardEnhancementsEditSource: "ad_standard_enhancements_edit_source",
-	AdgroupCreationSource: "adgroup_creation_source",
-	AdgroupEditSource: "adgroup_edit_source",
-	CarouselStyle: "carousel_style",
-	CarouselWithStaticCardStyle: "carousel_with_static_card_style",
+	AdgroupCreationSource:            "adgroup_creation_source",
+	AdgroupEditSource:                "adgroup_edit_source",
+	CarouselStyle:                    "carousel_style",
+	CarouselWithStaticCardStyle:      "carousel_with_static_card_style",
 }
 
 // AdgroupMetadataFieldsList contains all available fields for AdgroupMetadata objects

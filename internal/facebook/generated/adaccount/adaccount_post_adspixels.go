@@ -15,7 +15,7 @@ import (
 
 // ToolAdaccount_post_adspixels returns the MCP tool definition for adaccount_post_adspixels
 func ToolAdaccount_post_adspixels() mcp.Tool {
-	
+
 	// Params object accepts: name (string)
 	return mcp.NewTool("adaccount_post_adspixels",
 		mcp.WithDescription("POST adspixels for AdAccount"),
@@ -26,7 +26,7 @@ func ToolAdaccount_post_adspixels() mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
 				},
 			}),
@@ -65,8 +65,6 @@ func HandleAdaccount_post_adspixels(ctx context.Context, request mcp.CallToolReq
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Adaccount_post_adspixels(accessToken, args)
 	if err != nil {
@@ -85,35 +83,33 @@ func HandleAdaccount_post_adspixels(ctx context.Context, request mcp.CallToolReq
 // Adaccount_post_adspixels performs POST adspixels for AdAccount
 func Adaccount_post_adspixels(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	// Extract account_id for URL construction
 	accountId, ok := args["account_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_post_adspixels")
 	}
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%sadspixels", accountId)
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-		
-	}
 
+	}
 
 	// Make HTTP request
 	var resp *http.Response

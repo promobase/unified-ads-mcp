@@ -4,17 +4,17 @@ package constants
 
 // AdsValueAdjustmentRuleCollectionFields contains field name constants for AdsValueAdjustmentRuleCollection objects
 var AdsValueAdjustmentRuleCollectionFields = struct {
-	Id string
+	Id               string
 	IsDefaultSetting string
-	Name string
-	ProductType string
-	Status string
+	Name             string
+	ProductType      string
+	Status           string
 }{
-	Id: "id",
+	Id:               "id",
 	IsDefaultSetting: "is_default_setting",
-	Name: "name",
-	ProductType: "product_type",
-	Status: "status",
+	Name:             "name",
+	ProductType:      "product_type",
+	Status:           "status",
 }
 
 // AdsValueAdjustmentRuleCollectionFieldsList contains all available fields for AdsValueAdjustmentRuleCollection objects

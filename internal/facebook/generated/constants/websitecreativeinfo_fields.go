@@ -4,13 +4,13 @@ package constants
 
 // WebsiteCreativeInfoFields contains field name constants for WebsiteCreativeInfo objects
 var WebsiteCreativeInfoFields = struct {
-	Id string
+	Id        string
 	ImageUrls string
-	LinkUrl string
+	LinkUrl   string
 }{
-	Id: "id",
+	Id:        "id",
 	ImageUrls: "image_urls",
-	LinkUrl: "link_url",
+	LinkUrl:   "link_url",
 }
 
 // WebsiteCreativeInfoFieldsList contains all available fields for WebsiteCreativeInfo objects

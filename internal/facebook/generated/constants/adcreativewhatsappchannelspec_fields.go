@@ -4,10 +4,10 @@ package constants
 
 // AdCreativeWhatsAppChannelSpecFields contains field name constants for AdCreativeWhatsAppChannelSpec objects
 var AdCreativeWhatsAppChannelSpecFields = struct {
-	ChannelId string
+	ChannelId  string
 	ChannelUrl string
 }{
-	ChannelId: "channel_id",
+	ChannelId:  "channel_id",
 	ChannelUrl: "channel_url",
 }
 

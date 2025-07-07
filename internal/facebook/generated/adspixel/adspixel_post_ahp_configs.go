@@ -15,7 +15,7 @@ import (
 
 // ToolAdspixel_post_ahp_configs returns the MCP tool definition for adspixel_post_ahp_configs
 func ToolAdspixel_post_ahp_configs() mcp.Tool {
-	
+
 	// Params object accepts: applink_autosetup (bool)
 	return mcp.NewTool("adspixel_post_ahp_configs",
 		mcp.WithDescription("POST ahp_configs for AdsPixel"),
@@ -23,9 +23,9 @@ func ToolAdspixel_post_ahp_configs() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"applink_autosetup": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "applink_autosetup parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: applink_autosetup (boolean) [required]"),
@@ -58,8 +58,6 @@ func HandleAdspixel_post_ahp_configs(ctx context.Context, request mcp.CallToolRe
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Adspixel_post_ahp_configs(accessToken, args)
 	if err != nil {
@@ -78,20 +76,18 @@ func HandleAdspixel_post_ahp_configs(ctx context.Context, request mcp.CallToolRe
 // Adspixel_post_ahp_configs performs POST ahp_configs for AdsPixel
 func Adspixel_post_ahp_configs(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/ahp_configs")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

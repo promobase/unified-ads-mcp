@@ -17,7 +17,6 @@ import (
 func GetWithAsset3DTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// withasset3d_get_ tool
 	// Available fields for WithAsset3D: id
 	withasset3d_get_Tool := mcp.NewTool("withasset3d_get_",
@@ -37,12 +36,10 @@ func GetWithAsset3DTools() []mcp.Tool {
 	)
 	tools = append(tools, withasset3d_get_Tool)
 
-
 	return tools
 }
 
 // WithAsset3D handlers
-
 
 // HandleWithasset3d_get_ handles the withasset3d_get_ tool with context-based auth
 func HandleWithasset3d_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleWithasset3d_get_(ctx context.Context, request mcp.CallToolRequest) (*
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Withasset3d_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleWithasset3d_get_(ctx context.Context, request mcp.CallToolRequest) (*
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

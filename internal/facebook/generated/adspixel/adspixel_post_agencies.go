@@ -15,7 +15,7 @@ import (
 
 // ToolAdspixel_post_agencies returns the MCP tool definition for adspixel_post_agencies
 func ToolAdspixel_post_agencies() mcp.Tool {
-	
+
 	// Params object accepts: business (string), permitted_tasks (list<adspixelagencies_permitted_tasks_enum_param>)
 	return mcp.NewTool("adspixel_post_agencies",
 		mcp.WithDescription("POST agencies for AdsPixel"),
@@ -23,16 +23,16 @@ func ToolAdspixel_post_agencies() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"business": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "business parameter",
-					"required": true,
+					"required":    true,
 				},
 				"permitted_tasks": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "permitted_tasks parameter",
-					"required": true,
-					"enum": []string{ "ADVERTISE", "ANALYZE", "EDIT", "UPLOAD" },
-					"items": map[string]any{"type": "string"},
+					"required":    true,
+					"enum":        []string{"ADVERTISE", "ANALYZE", "EDIT", "UPLOAD"},
+					"items":       map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: business (string) [required], permitted_tasks (array<enum>) [ADVERTISE, ANALYZE, EDIT, UPLOAD] [required]"),
@@ -65,8 +65,6 @@ func HandleAdspixel_post_agencies(ctx context.Context, request mcp.CallToolReque
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Adspixel_post_agencies(accessToken, args)
 	if err != nil {
@@ -85,20 +83,18 @@ func HandleAdspixel_post_agencies(ctx context.Context, request mcp.CallToolReque
 // Adspixel_post_agencies performs POST agencies for AdsPixel
 func Adspixel_post_agencies(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/agencies")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

@@ -4,14 +4,14 @@ package types
 
 // AdsQuickViews represents a Facebook AdsQuickViews object
 type AdsQuickViews struct {
-	Attribution_windows []string `json:"attribution_windows"`
-	Breakdowns []string `json:"breakdowns"`
-	Column_fields []string `json:"column_fields"`
-	Description string `json:"description"`
-	Id string `json:"id"`
-	Name string `json:"name"`
-	Owner *Profile `json:"owner"`
-	Permission string `json:"permission"`
-	Quick_view_type string `json:"quick_view_type"`
-	Sort []map[string]interface{} `json:"sort"`
+	Attribution_windows []string                 `json:"attribution_windows"`
+	Breakdowns          []string                 `json:"breakdowns"`
+	Column_fields       []string                 `json:"column_fields"`
+	Description         string                   `json:"description"`
+	Id                  string                   `json:"id"`
+	Name                string                   `json:"name"`
+	Owner               *Profile                 `json:"owner"`
+	Permission          string                   `json:"permission"`
+	Quick_view_type     string                   `json:"quick_view_type"`
+	Sort                []map[string]interface{} `json:"sort"`
 }

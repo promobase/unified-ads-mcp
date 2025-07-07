@@ -17,7 +17,6 @@ import (
 func GetMediaCopyrightUpdateRecordTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// mediacopyrightupdaterecord_get_ tool
 	// Available fields for MediaCopyrightUpdateRecord: action_types, actor, actor_type, creation_time, id, ownership_countries, whitelisted_accounts
 	mediacopyrightupdaterecord_get_Tool := mcp.NewTool("mediacopyrightupdaterecord_get_",
@@ -37,12 +36,10 @@ func GetMediaCopyrightUpdateRecordTools() []mcp.Tool {
 	)
 	tools = append(tools, mediacopyrightupdaterecord_get_Tool)
 
-
 	return tools
 }
 
 // MediaCopyrightUpdateRecord handlers
-
 
 // HandleMediacopyrightupdaterecord_get_ handles the mediacopyrightupdaterecord_get_ tool with context-based auth
 func HandleMediacopyrightupdaterecord_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleMediacopyrightupdaterecord_get_(ctx context.Context, request mcp.Call
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Mediacopyrightupdaterecord_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleMediacopyrightupdaterecord_get_(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

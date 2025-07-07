@@ -4,13 +4,13 @@ package constants
 
 // PageGetStartedNullstateFields contains field name constants for PageGetStartedNullstate objects
 var PageGetStartedNullstateFields = struct {
-	CtaTitle string
+	CtaTitle          string
 	ProcessedGreeting string
-	Responsiveness string
+	Responsiveness    string
 }{
-	CtaTitle: "cta_title",
+	CtaTitle:          "cta_title",
 	ProcessedGreeting: "processed_greeting",
-	Responsiveness: "responsiveness",
+	Responsiveness:    "responsiveness",
 }
 
 // PageGetStartedNullstateFieldsList contains all available fields for PageGetStartedNullstate objects

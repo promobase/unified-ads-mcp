@@ -4,16 +4,16 @@ package constants
 
 // AdStudyCellFields contains field name constants for AdStudyCell objects
 var AdStudyCellFields = struct {
-	AdEntitiesCount string
-	ControlPercentage string
-	Id string
-	Name string
+	AdEntitiesCount     string
+	ControlPercentage   string
+	Id                  string
+	Name                string
 	TreatmentPercentage string
 }{
-	AdEntitiesCount: "ad_entities_count",
-	ControlPercentage: "control_percentage",
-	Id: "id",
-	Name: "name",
+	AdEntitiesCount:     "ad_entities_count",
+	ControlPercentage:   "control_percentage",
+	Id:                  "id",
+	Name:                "name",
 	TreatmentPercentage: "treatment_percentage",
 }
 

@@ -16,7 +16,7 @@ import (
 
 // ToolAvatar_get_models returns the MCP tool definition for avatar_get_models
 func ToolAvatar_get_models() mcp.Tool {
-	
+
 	// Params object accepts: client_name (string), client_version (string), config_id (string), force_generate (bool), platform (string), profile (string), sdk_version (string)
 	return mcp.NewTool("avatar_get_models",
 		mcp.WithDescription("GET models for Avatar"),
@@ -24,32 +24,32 @@ func ToolAvatar_get_models() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"client_name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "client_name parameter",
 				},
 				"client_version": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "client_version parameter",
 				},
 				"config_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "config_id parameter",
 				},
 				"force_generate": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "force_generate parameter",
 				},
 				"platform": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "platform parameter",
 				},
 				"profile": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "profile parameter",
-					"required": true,
+					"required":    true,
 				},
 				"sdk_version": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "sdk_version parameter",
 				},
 			}),
@@ -120,8 +120,6 @@ func HandleAvatar_get_models(ctx context.Context, request mcp.CallToolRequest) (
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Avatar_get_models(accessToken, args)
 	if err != nil {
@@ -140,44 +138,42 @@ func HandleAvatar_get_models(ctx context.Context, request mcp.CallToolRequest) (
 // Avatar_get_models performs GET models for Avatar
 func Avatar_get_models(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/models")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

@@ -4,20 +4,20 @@ package constants
 
 // AdsMcmeConversionFields contains field name constants for AdsMcmeConversion objects
 var AdsMcmeConversionFields = struct {
-	CreationTime string
-	Description string
-	Id string
-	IsArchived string
-	McmeConversionType string
-	Name string
+	CreationTime        string
+	Description         string
+	Id                  string
+	IsArchived          string
+	McmeConversionType  string
+	Name                string
 	OmnichannelObjectId string
 }{
-	CreationTime: "creation_time",
-	Description: "description",
-	Id: "id",
-	IsArchived: "is_archived",
-	McmeConversionType: "mcme_conversion_type",
-	Name: "name",
+	CreationTime:        "creation_time",
+	Description:         "description",
+	Id:                  "id",
+	IsArchived:          "is_archived",
+	McmeConversionType:  "mcme_conversion_type",
+	Name:                "name",
 	OmnichannelObjectId: "omnichannel_object_id",
 }
 

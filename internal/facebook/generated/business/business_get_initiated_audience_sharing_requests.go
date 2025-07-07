@@ -23,13 +23,13 @@ func ToolBusiness_get_initiated_audience_sharing_requests() mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"recipient_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "recipient_id parameter",
 				},
 				"request_status": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "request_status parameter",
-					"enum": []string{ "APPROVE", "CANCELED", "DECLINE", "EXPIRED", "IN_PROGRESS", "PENDING", "PENDING_EMAIL_VERIFICATION", "PENDING_INTEGRITY_REVIEW" },
+					"enum":        []string{"APPROVE", "CANCELED", "DECLINE", "EXPIRED", "IN_PROGRESS", "PENDING", "PENDING_EMAIL_VERIFICATION", "PENDING_INTEGRITY_REVIEW"},
 				},
 			}),
 			mcp.Description("Parameters object containing: recipient_id (string), request_status (enum) [APPROVE, CANCELED, DECLINE, EXPIRED, IN_PROGRESS, ...]"),
@@ -97,8 +97,6 @@ func HandleBusiness_get_initiated_audience_sharing_requests(ctx context.Context,
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Business_get_initiated_audience_sharing_requests(accessToken, args)
 	if err != nil {
@@ -117,44 +115,42 @@ func HandleBusiness_get_initiated_audience_sharing_requests(ctx context.Context,
 // Business_get_initiated_audience_sharing_requests performs GET initiated_audience_sharing_requests for Business
 func Business_get_initiated_audience_sharing_requests(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/initiated_audience_sharing_requests")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

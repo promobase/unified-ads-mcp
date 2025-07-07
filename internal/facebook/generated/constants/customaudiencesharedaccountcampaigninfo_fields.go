@@ -4,23 +4,23 @@ package constants
 
 // CustomAudienceSharedAccountCampaignInfoFields contains field name constants for CustomAudienceSharedAccountCampaignInfo objects
 var CustomAudienceSharedAccountCampaignInfoFields = struct {
-	AccountId string
-	AccountName string
-	AdsetExcludingCount string
-	AdsetIncludingCount string
+	AccountId              string
+	AccountName            string
+	AdsetExcludingCount    string
+	AdsetIncludingCount    string
 	CampaignDeliveryStatus string
-	CampaignObjective string
-	CampaignPages string
-	CampaignSchedule string
+	CampaignObjective      string
+	CampaignPages          string
+	CampaignSchedule       string
 }{
-	AccountId: "account_id",
-	AccountName: "account_name",
-	AdsetExcludingCount: "adset_excluding_count",
-	AdsetIncludingCount: "adset_including_count",
+	AccountId:              "account_id",
+	AccountName:            "account_name",
+	AdsetExcludingCount:    "adset_excluding_count",
+	AdsetIncludingCount:    "adset_including_count",
 	CampaignDeliveryStatus: "campaign_delivery_status",
-	CampaignObjective: "campaign_objective",
-	CampaignPages: "campaign_pages",
-	CampaignSchedule: "campaign_schedule",
+	CampaignObjective:      "campaign_objective",
+	CampaignPages:          "campaign_pages",
+	CampaignSchedule:       "campaign_schedule",
 }
 
 // CustomAudienceSharedAccountCampaignInfoFieldsList contains all available fields for CustomAudienceSharedAccountCampaignInfo objects

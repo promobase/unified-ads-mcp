@@ -4,6 +4,6 @@ package types
 
 // AdAssetFeedSpecAssetLabel represents a Facebook AdAssetFeedSpecAssetLabel object
 type AdAssetFeedSpecAssetLabel struct {
-	Id string `json:"id"`
+	Id   string `json:"id"`
 	Name string `json:"name"`
 }

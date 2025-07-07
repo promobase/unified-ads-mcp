@@ -15,78 +15,78 @@ import (
 
 // ToolIguser_post_media returns the MCP tool definition for iguser_post_media
 func ToolIguser_post_media() mcp.Tool {
-	
+
 	// Params object accepts: alt_text (string), audio_name (string), caption (string), children (list<string>), collaborators (list<string>), cover_url (string), image_url (string), is_carousel_item (bool), location_id (string), media_type (string), product_tags (list<map>), share_to_feed (bool), thumb_offset (string), upload_type (string), user_tags (list<map>), video_url (string)
 	return mcp.NewTool("iguser_post_media",
 		mcp.WithDescription("POST media for IGUser"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"alt_text": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "alt_text parameter",
 				},
 				"audio_name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "audio_name parameter",
 				},
 				"caption": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "caption parameter",
 				},
 				"children": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "children parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"collaborators": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "collaborators parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"cover_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "cover_url parameter",
 				},
 				"image_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "image_url parameter",
 				},
 				"is_carousel_item": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_carousel_item parameter",
 				},
 				"location_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "location_id parameter",
 				},
 				"media_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "media_type parameter",
 				},
 				"product_tags": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "product_tags parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"share_to_feed": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "share_to_feed parameter",
 				},
 				"thumb_offset": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "thumb_offset parameter",
 				},
 				"upload_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "upload_type parameter",
 				},
 				"user_tags": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "user_tags parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"video_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "video_url parameter",
 				},
 			}),
@@ -118,8 +118,6 @@ func HandleIguser_post_media(ctx context.Context, request mcp.CallToolRequest) (
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Iguser_post_media(accessToken, args)
 	if err != nil {
@@ -138,20 +136,18 @@ func HandleIguser_post_media(ctx context.Context, request mcp.CallToolRequest) (
 // Iguser_post_media performs POST media for IGUser
 func Iguser_post_media(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/media")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

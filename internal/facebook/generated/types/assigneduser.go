@@ -4,8 +4,8 @@ package types
 
 // AssignedUser represents a Facebook AssignedUser object
 type AssignedUser struct {
-	Business *Business `json:"business"`
-	Id string `json:"id"`
-	Name string `json:"name"`
-	User_type string `json:"user_type"`
+	Business  *Business `json:"business"`
+	Id        string    `json:"id"`
+	Name      string    `json:"name"`
+	User_type string    `json:"user_type"`
 }

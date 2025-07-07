@@ -16,7 +16,7 @@ import (
 
 // ToolApplication_get_sgw_dataset_status returns the MCP tool definition for application_get_sgw_dataset_status
 func ToolApplication_get_sgw_dataset_status() mcp.Tool {
-	
+
 	// Params object accepts: dataset_id (unsigned int)
 	return mcp.NewTool("application_get_sgw_dataset_status",
 		mcp.WithDescription("GET sgw_dataset_status for Application"),
@@ -24,9 +24,9 @@ func ToolApplication_get_sgw_dataset_status() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"dataset_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "dataset_id parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: dataset_id (integer) [required]"),
@@ -96,8 +96,6 @@ func HandleApplication_get_sgw_dataset_status(ctx context.Context, request mcp.C
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Application_get_sgw_dataset_status(accessToken, args)
 	if err != nil {
@@ -116,44 +114,42 @@ func HandleApplication_get_sgw_dataset_status(ctx context.Context, request mcp.C
 // Application_get_sgw_dataset_status performs GET sgw_dataset_status for Application
 func Application_get_sgw_dataset_status(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/sgw_dataset_status")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

@@ -17,7 +17,7 @@ import (
 // ToolBusiness_get_cpas_merchant_config returns the MCP tool definition for business_get_cpas_merchant_config
 func ToolBusiness_get_cpas_merchant_config() mcp.Tool {
 	// Available fields for CPASMerchantConfig: accepted_tos, beta_features, business_outcomes_status, id, is_test_merchant, outcomes_compliance_status, qualified_to_onboard
-	
+
 	return mcp.NewTool("business_get_cpas_merchant_config",
 		mcp.WithDescription("GET cpas_merchant_config for Business"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleBusiness_get_cpas_merchant_config(ctx context.Context, request mcp.Ca
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Business_get_cpas_merchant_config(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleBusiness_get_cpas_merchant_config(ctx context.Context, request mcp.Ca
 // Business_get_cpas_merchant_config performs GET cpas_merchant_config for Business
 func Business_get_cpas_merchant_config(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/cpas_merchant_config")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

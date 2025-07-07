@@ -17,7 +17,7 @@ import (
 // ToolPage_get_tagged returns the MCP tool definition for page_get_tagged
 func ToolPage_get_tagged() mcp.Tool {
 	// Available fields for PagePost: actions, admin_creator, allowed_advertising_objectives, application, backdated_time, call_to_action, can_reply_privately, child_attachments, comments_mirroring_domain, coordinates, created_time, event, expanded_height, expanded_width, feed_targeting, from, full_picture, height, icon, id, instagram_eligibility, is_app_share, is_eligible_for_promotion, is_expired, is_hidden, is_inline_created, is_instagram_eligible, is_popular, is_published, is_spherical, message, message_tags, multi_share_end_card, multi_share_optimized, parent_id, permalink_url, picture, place, privacy, promotable_id, promotion_status, properties, scheduled_publish_time, shares, status_type, story, story_tags, subscribed, target, targeting, timeline_visibility, updated_time, via, video_buying_eligibility, width
-	
+
 	return mcp.NewTool("page_get_tagged",
 		mcp.WithDescription("GET tagged for Page"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandlePage_get_tagged(ctx context.Context, request mcp.CallToolRequest) (*m
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Page_get_tagged(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandlePage_get_tagged(ctx context.Context, request mcp.CallToolRequest) (*m
 // Page_get_tagged performs GET tagged for Page
 func Page_get_tagged(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/tagged")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

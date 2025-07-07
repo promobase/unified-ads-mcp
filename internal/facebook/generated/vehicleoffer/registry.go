@@ -17,7 +17,6 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolVehicleoffer_get_videos_metadata())
 	tools = append(tools, ToolVehicleoffer_get_())
 
-
 	return tools
 }
 
@@ -29,7 +28,6 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers["vehicleoffer_get_override_details"] = HandleVehicleoffer_get_override_details
 	handlers["vehicleoffer_get_videos_metadata"] = HandleVehicleoffer_get_videos_metadata
 	handlers["vehicleoffer_get_"] = HandleVehicleoffer_get_
-
 
 	return handlers
 }

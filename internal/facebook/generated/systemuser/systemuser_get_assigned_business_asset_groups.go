@@ -23,7 +23,7 @@ func ToolSystemuser_get_assigned_business_asset_groups() mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"contained_asset_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "contained_asset_id parameter",
 				},
 			}),
@@ -92,8 +92,6 @@ func HandleSystemuser_get_assigned_business_asset_groups(ctx context.Context, re
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Systemuser_get_assigned_business_asset_groups(accessToken, args)
 	if err != nil {
@@ -112,44 +110,42 @@ func HandleSystemuser_get_assigned_business_asset_groups(ctx context.Context, re
 // Systemuser_get_assigned_business_asset_groups performs GET assigned_business_asset_groups for SystemUser
 func Systemuser_get_assigned_business_asset_groups(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/assigned_business_asset_groups")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

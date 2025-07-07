@@ -5,10 +5,10 @@ package constants
 // AdsPixelDomainControlRuleFields contains field name constants for AdsPixelDomainControlRule objects
 var AdsPixelDomainControlRuleFields = struct {
 	DomainList string
-	FieldType string
+	FieldType  string
 }{
 	DomainList: "domain_list",
-	FieldType: "type",
+	FieldType:  "type",
 }
 
 // AdsPixelDomainControlRuleFieldsList contains all available fields for AdsPixelDomainControlRule objects

@@ -17,7 +17,7 @@ import (
 // ToolGeogatingpolicy_get_ returns the MCP tool definition for geogatingpolicy_get_
 func ToolGeogatingpolicy_get_() mcp.Tool {
 	// Available fields for GeoGatingPolicy: after_schedule, exclude_country, id, include_country, name, valid_from, valid_until
-	
+
 	return mcp.NewTool("geogatingpolicy_get_",
 		mcp.WithDescription("GET  for GeoGatingPolicy"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleGeogatingpolicy_get_(ctx context.Context, request mcp.CallToolRequest
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Geogatingpolicy_get_(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleGeogatingpolicy_get_(ctx context.Context, request mcp.CallToolRequest
 // Geogatingpolicy_get_ performs GET  for GeoGatingPolicy
 func Geogatingpolicy_get_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

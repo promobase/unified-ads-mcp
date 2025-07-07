@@ -24,9 +24,9 @@ func ToolShadowighashtag_get_recent_media() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"user_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "user_id parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: user_id (string) [required]"),
@@ -96,8 +96,6 @@ func HandleShadowighashtag_get_recent_media(ctx context.Context, request mcp.Cal
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Shadowighashtag_get_recent_media(accessToken, args)
 	if err != nil {
@@ -116,44 +114,42 @@ func HandleShadowighashtag_get_recent_media(ctx context.Context, request mcp.Cal
 // Shadowighashtag_get_recent_media performs GET recent_media for ShadowIGHashtag
 func Shadowighashtag_get_recent_media(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/recent_media")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

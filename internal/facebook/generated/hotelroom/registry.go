@@ -15,7 +15,6 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolHotelroom_get_pricing_variables())
 	tools = append(tools, ToolHotelroom_get_())
 
-
 	return tools
 }
 
@@ -25,7 +24,6 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 
 	handlers["hotelroom_get_pricing_variables"] = HandleHotelroom_get_pricing_variables
 	handlers["hotelroom_get_"] = HandleHotelroom_get_
-
 
 	return handlers
 }

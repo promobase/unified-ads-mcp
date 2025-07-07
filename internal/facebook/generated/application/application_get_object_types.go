@@ -16,8 +16,7 @@ import (
 
 // ToolApplication_get_object_types returns the MCP tool definition for application_get_object_types
 func ToolApplication_get_object_types() mcp.Tool {
-	
-	
+
 	return mcp.NewTool("application_get_object_types",
 		mcp.WithDescription("GET object_types for Application"),
 		mcp.WithArray("fields",
@@ -71,8 +70,6 @@ func HandleApplication_get_object_types(ctx context.Context, request mcp.CallToo
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Application_get_object_types(accessToken, args)
 	if err != nil {
@@ -91,38 +88,36 @@ func HandleApplication_get_object_types(ctx context.Context, request mcp.CallToo
 // Application_get_object_types performs GET object_types for Application
 func Application_get_object_types(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/object_types")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

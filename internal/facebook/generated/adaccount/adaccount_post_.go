@@ -15,7 +15,7 @@ import (
 
 // ToolAdaccount_post_ returns the MCP tool definition for adaccount_post_
 func ToolAdaccount_post_() mcp.Tool {
-	
+
 	// Params object accepts: agency_client_declaration (map), attribution_spec (list<Object>), business_info (map), currency (adaccount_currency), custom_audience_info (map), default_dsa_beneficiary (string), default_dsa_payor (string), end_advertiser (string), existing_customers (list<string>), is_ba_skip_delayed_eligible (bool), is_notifications_enabled (bool), media_agency (string), name (string), partner (string), spend_cap (float), spend_cap_action (string), timezone_id (unsigned int), tos_accepted (map)
 	return mcp.NewTool("adaccount_post_",
 		mcp.WithDescription("POST  for AdAccount"),
@@ -26,78 +26,78 @@ func ToolAdaccount_post_() mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"agency_client_declaration": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "agency_client_declaration parameter",
 				},
 				"attribution_spec": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "attribution_spec parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"business_info": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "business_info parameter",
 				},
 				"currency": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "currency parameter",
-					"enum": []string{ "AED", "ARS", "AUD", "BDT", "BOB", "BRL", "CAD", "CHF", "CLP", "CNY", "COP", "CRC", "CZK", "DKK", "DZD", "EGP", "EUR", "GBP", "GTQ", "HKD", "HNL", "HUF", "IDR", "ILS", "INR", "ISK", "JPY", "KES", "KRW", "LKR", "MOP", "MXN", "MYR", "NGN", "NIO", "NOK", "NZD", "PEN", "PHP", "PKR", "PLN", "PYG", "QAR", "RON", "SAR", "SEK", "SGD", "THB", "TRY", "TWD", "UAH", "USD", "UYU", "VND", "ZAR" },
+					"enum":        []string{"AED", "ARS", "AUD", "BDT", "BOB", "BRL", "CAD", "CHF", "CLP", "CNY", "COP", "CRC", "CZK", "DKK", "DZD", "EGP", "EUR", "GBP", "GTQ", "HKD", "HNL", "HUF", "IDR", "ILS", "INR", "ISK", "JPY", "KES", "KRW", "LKR", "MOP", "MXN", "MYR", "NGN", "NIO", "NOK", "NZD", "PEN", "PHP", "PKR", "PLN", "PYG", "QAR", "RON", "SAR", "SEK", "SGD", "THB", "TRY", "TWD", "UAH", "USD", "UYU", "VND", "ZAR"},
 				},
 				"custom_audience_info": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "custom_audience_info parameter",
 				},
 				"default_dsa_beneficiary": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "default_dsa_beneficiary parameter",
 				},
 				"default_dsa_payor": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "default_dsa_payor parameter",
 				},
 				"end_advertiser": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "end_advertiser parameter",
 				},
 				"existing_customers": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "existing_customers parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"is_ba_skip_delayed_eligible": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_ba_skip_delayed_eligible parameter",
 				},
 				"is_notifications_enabled": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_notifications_enabled parameter",
 				},
 				"media_agency": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "media_agency parameter",
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
 				},
 				"partner": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "partner parameter",
 				},
 				"spend_cap": map[string]any{
-					"type": "number",
+					"type":        "number",
 					"description": "spend_cap parameter",
 				},
 				"spend_cap_action": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "spend_cap_action parameter",
 				},
 				"timezone_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "timezone_id parameter",
 				},
 				"tos_accepted": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "tos_accepted parameter",
 				},
 			}),
@@ -136,8 +136,6 @@ func HandleAdaccount_post_(ctx context.Context, request mcp.CallToolRequest) (*m
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Adaccount_post_(accessToken, args)
 	if err != nil {
@@ -156,35 +154,33 @@ func HandleAdaccount_post_(ctx context.Context, request mcp.CallToolRequest) (*m
 // Adaccount_post_ performs POST  for AdAccount
 func Adaccount_post_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	// Extract account_id for URL construction
 	accountId, ok := args["account_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_post_")
 	}
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s", accountId)
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-		
-	}
 
+	}
 
 	// Make HTTP request
 	var resp *http.Response

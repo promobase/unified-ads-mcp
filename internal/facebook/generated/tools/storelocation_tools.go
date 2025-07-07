@@ -17,7 +17,6 @@ import (
 func GetStoreLocationTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// storelocation_get_ tool
 	// Available fields for StoreLocation: full_address, hours, id, phone_number, pickup_options, price_range, store_code, zip_code
 	storelocation_get_Tool := mcp.NewTool("storelocation_get_",
@@ -37,12 +36,10 @@ func GetStoreLocationTools() []mcp.Tool {
 	)
 	tools = append(tools, storelocation_get_Tool)
 
-
 	return tools
 }
 
 // StoreLocation handlers
-
 
 // HandleStorelocation_get_ handles the storelocation_get_ tool with context-based auth
 func HandleStorelocation_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleStorelocation_get_(ctx context.Context, request mcp.CallToolRequest) 
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Storelocation_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleStorelocation_get_(ctx context.Context, request mcp.CallToolRequest) 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

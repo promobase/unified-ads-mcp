@@ -17,7 +17,6 @@ import (
 func GetStoriesTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// stories_get_insights tool
 	// Available fields for InsightsResult: description, description_from_api_doc, id, name, period, title, values
 	// Params object accepts: metric (list<storiesinsights_metric_enum_param>)
@@ -26,10 +25,10 @@ func GetStoriesTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"metric": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "metric parameter",
-					"enum": []string{ "PAGES_FB_STORY_REPLIES", "PAGES_FB_STORY_SHARES", "PAGES_FB_STORY_STICKER_INTERACTIONS", "PAGES_FB_STORY_THREAD_LIGHTWEIGHT_REACTIONS", "PAGE_STORY_IMPRESSIONS_BY_STORY_ID", "PAGE_STORY_IMPRESSIONS_BY_STORY_ID_UNIQUE", "STORY_INTERACTION" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"PAGES_FB_STORY_REPLIES", "PAGES_FB_STORY_SHARES", "PAGES_FB_STORY_STICKER_INTERACTIONS", "PAGES_FB_STORY_THREAD_LIGHTWEIGHT_REACTIONS", "PAGE_STORY_IMPRESSIONS_BY_STORY_ID", "PAGE_STORY_IMPRESSIONS_BY_STORY_ID_UNIQUE", "STORY_INTERACTION"},
+					"items":       map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: metric (array<enum>) [PAGES_FB_STORY_REPLIES, PAGES_FB_STORY_SHARES, PAGES_FB_STORY_STICKER_INTERACTIONS, PAGES_FB_STORY_THREAD_LIGHTWEIGHT_REACTIONS, PAGE_STORY_IMPRESSIONS_BY_STORY_ID, ...]"),
@@ -68,12 +67,10 @@ func GetStoriesTools() []mcp.Tool {
 	)
 	tools = append(tools, stories_get_Tool)
 
-
 	return tools
 }
 
 // Stories handlers
-
 
 // HandleStories_get_insights handles the stories_get_insights tool with context-based auth
 func HandleStories_get_insights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -126,8 +123,6 @@ func HandleStories_get_insights(ctx context.Context, request mcp.CallToolRequest
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Stories_get_insights(args)
 	if err != nil {
@@ -142,7 +137,6 @@ func HandleStories_get_insights(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleStories_get_ handles the stories_get_ tool with context-based auth
 func HandleStories_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -183,8 +177,6 @@ func HandleStories_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Stories_get_(args)
 	if err != nil {
@@ -199,4 +191,3 @@ func HandleStories_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

@@ -16,7 +16,7 @@ import (
 
 // ToolWhatsappbusinessaccount_get_payment_configuration returns the MCP tool definition for whatsappbusinessaccount_get_payment_configuration
 func ToolWhatsappbusinessaccount_get_payment_configuration() mcp.Tool {
-	
+
 	// Params object accepts: configuration_name (string)
 	return mcp.NewTool("whatsappbusinessaccount_get_payment_configuration",
 		mcp.WithDescription("GET payment_configuration for WhatsAppBusinessAccount"),
@@ -24,9 +24,9 @@ func ToolWhatsappbusinessaccount_get_payment_configuration() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"configuration_name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "configuration_name parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: configuration_name (string) [required]"),
@@ -96,8 +96,6 @@ func HandleWhatsappbusinessaccount_get_payment_configuration(ctx context.Context
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Whatsappbusinessaccount_get_payment_configuration(accessToken, args)
 	if err != nil {
@@ -116,44 +114,42 @@ func HandleWhatsappbusinessaccount_get_payment_configuration(ctx context.Context
 // Whatsappbusinessaccount_get_payment_configuration performs GET payment_configuration for WhatsAppBusinessAccount
 func Whatsappbusinessaccount_get_payment_configuration(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/payment_configuration")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

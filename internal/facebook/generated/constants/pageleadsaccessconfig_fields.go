@@ -4,10 +4,10 @@ package constants
 
 // PageLeadsAccessConfigFields contains field name constants for PageLeadsAccessConfig objects
 var PageLeadsAccessConfigFields = struct {
-	Id string
+	Id   string
 	Page string
 }{
-	Id: "id",
+	Id:   "id",
 	Page: "page",
 }
 

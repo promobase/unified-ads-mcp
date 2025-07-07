@@ -4,33 +4,33 @@ package constants
 
 // AdsPixelRealTimeEventLogResultFields contains field name constants for AdsPixelRealTimeEventLogResult objects
 var AdsPixelRealTimeEventLogResultFields = struct {
-	DataJson string
-	DedupData string
-	DeviceType string
+	DataJson                   string
+	DedupData                  string
+	DeviceType                 string
 	DomainControlRuleRejection string
-	Event string
-	EventDetectionMethod string
-	InIframe string
-	MatchedRuleConditions string
-	ResolvedLink string
-	SourceRuleCondition string
-	Timestamp string
-	TraceId string
-	Url string
+	Event                      string
+	EventDetectionMethod       string
+	InIframe                   string
+	MatchedRuleConditions      string
+	ResolvedLink               string
+	SourceRuleCondition        string
+	Timestamp                  string
+	TraceId                    string
+	Url                        string
 }{
-	DataJson: "data_json",
-	DedupData: "dedup_data",
-	DeviceType: "device_type",
+	DataJson:                   "data_json",
+	DedupData:                  "dedup_data",
+	DeviceType:                 "device_type",
 	DomainControlRuleRejection: "domain_control_rule_rejection",
-	Event: "event",
-	EventDetectionMethod: "event_detection_method",
-	InIframe: "in_iframe",
-	MatchedRuleConditions: "matched_rule_conditions",
-	ResolvedLink: "resolved_link",
-	SourceRuleCondition: "source_rule_condition",
-	Timestamp: "timestamp",
-	TraceId: "trace_id",
-	Url: "url",
+	Event:                      "event",
+	EventDetectionMethod:       "event_detection_method",
+	InIframe:                   "in_iframe",
+	MatchedRuleConditions:      "matched_rule_conditions",
+	ResolvedLink:               "resolved_link",
+	SourceRuleCondition:        "source_rule_condition",
+	Timestamp:                  "timestamp",
+	TraceId:                    "trace_id",
+	Url:                        "url",
 }
 
 // AdsPixelRealTimeEventLogResultFieldsList contains all available fields for AdsPixelRealTimeEventLogResult objects

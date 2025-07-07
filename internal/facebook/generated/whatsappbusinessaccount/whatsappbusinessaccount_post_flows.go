@@ -15,7 +15,7 @@ import (
 
 // ToolWhatsappbusinessaccount_post_flows returns the MCP tool definition for whatsappbusinessaccount_post_flows
 func ToolWhatsappbusinessaccount_post_flows() mcp.Tool {
-	
+
 	// Params object accepts: categories (list<whatsappbusinessaccountflows_categories_enum_param>), clone_flow_id (string), endpoint_uri (string), flow_json (string), name (string), publish (bool)
 	return mcp.NewTool("whatsappbusinessaccount_post_flows",
 		mcp.WithDescription("POST flows for WhatsAppBusinessAccount"),
@@ -23,31 +23,31 @@ func ToolWhatsappbusinessaccount_post_flows() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"categories": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "categories parameter",
-					"required": true,
-					"enum": []string{ "APPOINTMENT_BOOKING", "CONTACT_US", "CUSTOMER_SUPPORT", "LEAD_GENERATION", "OTHER", "SHOPPING", "SIGN_IN", "SIGN_UP", "SURVEY" },
-					"items": map[string]any{"type": "string"},
+					"required":    true,
+					"enum":        []string{"APPOINTMENT_BOOKING", "CONTACT_US", "CUSTOMER_SUPPORT", "LEAD_GENERATION", "OTHER", "SHOPPING", "SIGN_IN", "SIGN_UP", "SURVEY"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"clone_flow_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "clone_flow_id parameter",
 				},
 				"endpoint_uri": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "endpoint_uri parameter",
 				},
 				"flow_json": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "flow_json parameter",
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
-					"required": true,
+					"required":    true,
 				},
 				"publish": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "publish parameter",
 				},
 			}),
@@ -81,8 +81,6 @@ func HandleWhatsappbusinessaccount_post_flows(ctx context.Context, request mcp.C
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Whatsappbusinessaccount_post_flows(accessToken, args)
 	if err != nil {
@@ -101,20 +99,18 @@ func HandleWhatsappbusinessaccount_post_flows(ctx context.Context, request mcp.C
 // Whatsappbusinessaccount_post_flows performs POST flows for WhatsAppBusinessAccount
 func Whatsappbusinessaccount_post_flows(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/flows")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

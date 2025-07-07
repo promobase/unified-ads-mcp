@@ -17,7 +17,7 @@ import (
 // ToolProductfeed_get_uploads returns the MCP tool definition for productfeed_get_uploads
 func ToolProductfeed_get_uploads() mcp.Tool {
 	// Available fields for ProductFeedUpload: end_time, error_count, error_report, filename, id, input_method, num_deleted_items, num_detected_items, num_invalid_items, num_persisted_items, start_time, url, warning_count
-	
+
 	return mcp.NewTool("productfeed_get_uploads",
 		mcp.WithDescription("GET uploads for ProductFeed"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleProductfeed_get_uploads(ctx context.Context, request mcp.CallToolRequ
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Productfeed_get_uploads(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleProductfeed_get_uploads(ctx context.Context, request mcp.CallToolRequ
 // Productfeed_get_uploads performs GET uploads for ProductFeed
 func Productfeed_get_uploads(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/uploads")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

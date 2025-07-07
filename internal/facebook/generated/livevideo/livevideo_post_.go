@@ -15,140 +15,140 @@ import (
 
 // ToolLivevideo_post_ returns the MCP tool definition for livevideo_post_
 func ToolLivevideo_post_() mcp.Tool {
-	
+
 	// Params object accepts: allow_bm_crossposting (bool), content_tags (list<string>), cross_share_to_group_ids (list<string>), crossposting_actions (list<map>), custom_labels (list<string>), description (string), direct_share_status (unsigned int), embeddable (bool), end_live_video (bool), event_params (Object), is_audio_only (bool), is_manual_mode (bool), live_comment_moderation_setting (list<livevideo_live_comment_moderation_setting>), master_ingest_stream_id (string), og_icon_id (string), og_phrase (string), persistent_stream_key_status (livevideo_persistent_stream_key_status), place (Object), planned_start_time (datetime), privacy (string), published (bool), schedule_custom_profile_image (file), schedule_feed_background_image (file), sponsor_id (string), sponsor_relationship (unsigned int), status (livevideo_status), stream_type (livevideo_stream_type), tags (list<int>), targeting (Object), title (string)
 	return mcp.NewTool("livevideo_post_",
 		mcp.WithDescription("POST  for LiveVideo"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"allow_bm_crossposting": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "allow_bm_crossposting parameter",
 				},
 				"content_tags": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "content_tags parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"cross_share_to_group_ids": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "cross_share_to_group_ids parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"crossposting_actions": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "crossposting_actions parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"custom_labels": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "custom_labels parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"description": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "description parameter",
 				},
 				"direct_share_status": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "direct_share_status parameter",
 				},
 				"embeddable": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "embeddable parameter",
 				},
 				"end_live_video": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "end_live_video parameter",
 				},
 				"event_params": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "event_params parameter",
 				},
 				"is_audio_only": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_audio_only parameter",
 				},
 				"is_manual_mode": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_manual_mode parameter",
 				},
 				"live_comment_moderation_setting": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "live_comment_moderation_setting parameter",
-					"enum": []string{ "DEFAULT", "DISCUSSION", "FOLLOWED", "FOLLOWER", "NO_HYPERLINK", "PROTECTED_MODE", "RESTRICTED", "SLOW", "SUPPORTER", "TAGGED" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"DEFAULT", "DISCUSSION", "FOLLOWED", "FOLLOWER", "NO_HYPERLINK", "PROTECTED_MODE", "RESTRICTED", "SLOW", "SUPPORTER", "TAGGED"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"master_ingest_stream_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "master_ingest_stream_id parameter",
 				},
 				"og_icon_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "og_icon_id parameter",
 				},
 				"og_phrase": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "og_phrase parameter",
 				},
 				"persistent_stream_key_status": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "persistent_stream_key_status parameter",
-					"enum": []string{ "DISABLE", "ENABLE", "REGENERATE" },
+					"enum":        []string{"DISABLE", "ENABLE", "REGENERATE"},
 				},
 				"place": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "place parameter",
 				},
 				"planned_start_time": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "planned_start_time parameter",
 				},
 				"privacy": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "privacy parameter",
 				},
 				"published": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "published parameter",
 				},
 				"schedule_custom_profile_image": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "schedule_custom_profile_image parameter",
 				},
 				"schedule_feed_background_image": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "schedule_feed_background_image parameter",
 				},
 				"sponsor_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "sponsor_id parameter",
 				},
 				"sponsor_relationship": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "sponsor_relationship parameter",
 				},
 				"status": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "status parameter",
-					"enum": []string{ "LIVE_NOW", "SCHEDULED_CANCELED", "SCHEDULED_LIVE", "SCHEDULED_UNPUBLISHED", "UNPUBLISHED" },
+					"enum":        []string{"LIVE_NOW", "SCHEDULED_CANCELED", "SCHEDULED_LIVE", "SCHEDULED_UNPUBLISHED", "UNPUBLISHED"},
 				},
 				"stream_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "stream_type parameter",
-					"enum": []string{ "AMBIENT", "REGULAR" },
+					"enum":        []string{"AMBIENT", "REGULAR"},
 				},
 				"tags": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "tags parameter",
-					"items": map[string]any{"type": "integer"},
+					"items":       map[string]any{"type": "integer"},
 				},
 				"targeting": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "targeting parameter",
 				},
 				"title": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "title parameter",
 				},
 			}),
@@ -180,8 +180,6 @@ func HandleLivevideo_post_(ctx context.Context, request mcp.CallToolRequest) (*m
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Livevideo_post_(accessToken, args)
 	if err != nil {
@@ -200,20 +198,18 @@ func HandleLivevideo_post_(ctx context.Context, request mcp.CallToolRequest) (*m
 // Livevideo_post_ performs POST  for LiveVideo
 func Livevideo_post_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

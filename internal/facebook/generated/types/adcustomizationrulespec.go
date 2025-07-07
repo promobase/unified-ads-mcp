@@ -4,14 +4,14 @@ package types
 
 // AdCustomizationRuleSpec represents a Facebook AdCustomizationRuleSpec object
 type AdCustomizationRuleSpec struct {
-	Caption string `json:"caption"`
-	Customization_spec map[string]interface{} `json:"customization_spec"`
-	Description string `json:"description"`
-	Image_hash string `json:"image_hash"`
-	Link string `json:"link"`
-	Message string `json:"message"`
-	Name string `json:"name"`
-	Priority int `json:"priority"`
-	Template_url_spec *AdCreativeTemplateURLSpec `json:"template_url_spec"`
-	Video_id int `json:"video_id"`
+	Caption            string                     `json:"caption"`
+	Customization_spec map[string]interface{}     `json:"customization_spec"`
+	Description        string                     `json:"description"`
+	Image_hash         string                     `json:"image_hash"`
+	Link               string                     `json:"link"`
+	Message            string                     `json:"message"`
+	Name               string                     `json:"name"`
+	Priority           int                        `json:"priority"`
+	Template_url_spec  *AdCreativeTemplateURLSpec `json:"template_url_spec"`
+	Video_id           int                        `json:"video_id"`
 }

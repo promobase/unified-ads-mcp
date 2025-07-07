@@ -4,10 +4,10 @@ package constants
 
 // ReachFrequencyAdFormatFields contains field name constants for ReachFrequencyAdFormat objects
 var ReachFrequencyAdFormatFields = struct {
-	Details string
+	Details   string
 	FieldType string
 }{
-	Details: "details",
+	Details:   "details",
 	FieldType: "type",
 }
 

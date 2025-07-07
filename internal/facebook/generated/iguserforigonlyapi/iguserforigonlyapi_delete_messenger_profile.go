@@ -15,7 +15,7 @@ import (
 
 // ToolIguserforigonlyapi_delete_messenger_profile returns the MCP tool definition for iguserforigonlyapi_delete_messenger_profile
 func ToolIguserforigonlyapi_delete_messenger_profile() mcp.Tool {
-	
+
 	// Params object accepts: fields (list<iggraphusermessenger_profile_fields_enum_param>)
 	return mcp.NewTool("iguserforigonlyapi_delete_messenger_profile",
 		mcp.WithDescription("DELETE messenger_profile for IGUserForIGOnlyAPI"),
@@ -23,11 +23,11 @@ func ToolIguserforigonlyapi_delete_messenger_profile() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"fields": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "fields parameter",
-					"required": true,
-					"enum": []string{ "ACCOUNT_LINKING_URL", "COMMANDS", "DESCRIPTION", "GET_STARTED", "GREETING", "HOME_URL", "ICE_BREAKERS", "PERSISTENT_MENU", "PLATFORM", "SUBJECT_TO_NEW_EU_PRIVACY_RULES", "TITLE", "WHITELISTED_DOMAINS" },
-					"items": map[string]any{"type": "string"},
+					"required":    true,
+					"enum":        []string{"ACCOUNT_LINKING_URL", "COMMANDS", "DESCRIPTION", "GET_STARTED", "GREETING", "HOME_URL", "ICE_BREAKERS", "PERSISTENT_MENU", "PLATFORM", "SUBJECT_TO_NEW_EU_PRIVACY_RULES", "TITLE", "WHITELISTED_DOMAINS"},
+					"items":       map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: fields (array<enum>) [ACCOUNT_LINKING_URL, COMMANDS, DESCRIPTION, GET_STARTED, GREETING, ...] [required]"),
@@ -60,8 +60,6 @@ func HandleIguserforigonlyapi_delete_messenger_profile(ctx context.Context, requ
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Iguserforigonlyapi_delete_messenger_profile(accessToken, args)
 	if err != nil {
@@ -80,20 +78,18 @@ func HandleIguserforigonlyapi_delete_messenger_profile(ctx context.Context, requ
 // Iguserforigonlyapi_delete_messenger_profile performs DELETE messenger_profile for IGUserForIGOnlyAPI
 func Iguserforigonlyapi_delete_messenger_profile(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/messenger_profile")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

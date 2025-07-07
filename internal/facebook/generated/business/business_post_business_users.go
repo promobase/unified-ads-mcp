@@ -15,7 +15,7 @@ import (
 
 // ToolBusiness_post_business_users returns the MCP tool definition for business_post_business_users
 func ToolBusiness_post_business_users() mcp.Tool {
-	
+
 	// Params object accepts: email (string), invited_user_type (list<businessbusiness_users_invited_user_type_enum_param>), role (businessbusiness_users_role_enum_param), tasks (list<businessbusiness_users_tasks_enum_param>)
 	return mcp.NewTool("business_post_business_users",
 		mcp.WithDescription("POST business_users for Business"),
@@ -23,26 +23,26 @@ func ToolBusiness_post_business_users() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"email": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "email parameter",
-					"required": true,
+					"required":    true,
 				},
 				"invited_user_type": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "invited_user_type parameter",
-					"enum": []string{ "FB", "MWA" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"FB", "MWA"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"role": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "role parameter",
-					"enum": []string{ "ADMIN", "ADS_RIGHTS_REVIEWER", "DEFAULT", "DEVELOPER", "EMPLOYEE", "FINANCE_ANALYST", "FINANCE_EDIT", "FINANCE_EDITOR", "FINANCE_VIEW", "MANAGE", "PARTNER_CENTER_ADMIN", "PARTNER_CENTER_ANALYST", "PARTNER_CENTER_EDUCATION", "PARTNER_CENTER_MARKETING", "PARTNER_CENTER_OPERATIONS" },
+					"enum":        []string{"ADMIN", "ADS_RIGHTS_REVIEWER", "DEFAULT", "DEVELOPER", "EMPLOYEE", "FINANCE_ANALYST", "FINANCE_EDIT", "FINANCE_EDITOR", "FINANCE_VIEW", "MANAGE", "PARTNER_CENTER_ADMIN", "PARTNER_CENTER_ANALYST", "PARTNER_CENTER_EDUCATION", "PARTNER_CENTER_MARKETING", "PARTNER_CENTER_OPERATIONS"},
 				},
 				"tasks": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "tasks parameter",
-					"enum": []string{ "ADMIN", "ADS_RIGHTS_REVIEWER", "DEFAULT", "DEVELOPER", "EMPLOYEE", "FINANCE_ANALYST", "FINANCE_EDIT", "FINANCE_EDITOR", "FINANCE_VIEW", "MANAGE", "PARTNER_CENTER_ADMIN", "PARTNER_CENTER_ANALYST", "PARTNER_CENTER_EDUCATION", "PARTNER_CENTER_MARKETING", "PARTNER_CENTER_OPERATIONS" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"ADMIN", "ADS_RIGHTS_REVIEWER", "DEFAULT", "DEVELOPER", "EMPLOYEE", "FINANCE_ANALYST", "FINANCE_EDIT", "FINANCE_EDITOR", "FINANCE_VIEW", "MANAGE", "PARTNER_CENTER_ADMIN", "PARTNER_CENTER_ANALYST", "PARTNER_CENTER_EDUCATION", "PARTNER_CENTER_MARKETING", "PARTNER_CENTER_OPERATIONS"},
+					"items":       map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: email (string) [required], invited_user_type (array<enum>) [FB, MWA], role (enum) [ADMIN, ADS_RIGHTS_REVIEWER, DEFAULT, DEVELOPER, EMPLOYEE, ...], tasks (array<enum>) [ADMIN, ADS_RIGHTS_REVIEWER, DEFAULT, DEVELOPER, EMPLOYEE, ...]"),
@@ -75,8 +75,6 @@ func HandleBusiness_post_business_users(ctx context.Context, request mcp.CallToo
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Business_post_business_users(accessToken, args)
 	if err != nil {
@@ -95,20 +93,18 @@ func HandleBusiness_post_business_users(ctx context.Context, request mcp.CallToo
 // Business_post_business_users performs POST business_users for Business
 func Business_post_business_users(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/business_users")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

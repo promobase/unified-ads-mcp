@@ -4,11 +4,11 @@ package constants
 
 // PageAboutStoryComposedBlockEntityRangesFields contains field name constants for PageAboutStoryComposedBlockEntityRanges objects
 var PageAboutStoryComposedBlockEntityRangesFields = struct {
-	Key string
+	Key    string
 	Length string
 	Offset string
 }{
-	Key: "key",
+	Key:    "key",
 	Length: "length",
 	Offset: "offset",
 }

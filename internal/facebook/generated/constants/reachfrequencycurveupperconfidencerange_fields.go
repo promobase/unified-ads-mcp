@@ -4,19 +4,19 @@ package constants
 
 // ReachFrequencyCurveUpperConfidenceRangeFields contains field name constants for ReachFrequencyCurveUpperConfidenceRange objects
 var ReachFrequencyCurveUpperConfidenceRangeFields = struct {
-	ImpressionUpper string
-	NumPoints string
-	Reach string
-	ReachUpper string
+	ImpressionUpper       string
+	NumPoints             string
+	Reach                 string
+	ReachUpper            string
 	UniqVideoViews2sUpper string
-	VideoViews2sUpper string
+	VideoViews2sUpper     string
 }{
-	ImpressionUpper: "impression_upper",
-	NumPoints: "num_points",
-	Reach: "reach",
-	ReachUpper: "reach_upper",
+	ImpressionUpper:       "impression_upper",
+	NumPoints:             "num_points",
+	Reach:                 "reach",
+	ReachUpper:            "reach_upper",
 	UniqVideoViews2sUpper: "uniq_video_views_2s_upper",
-	VideoViews2sUpper: "video_views_2s_upper",
+	VideoViews2sUpper:     "video_views_2s_upper",
 }
 
 // ReachFrequencyCurveUpperConfidenceRangeFieldsList contains all available fields for ReachFrequencyCurveUpperConfidenceRange objects

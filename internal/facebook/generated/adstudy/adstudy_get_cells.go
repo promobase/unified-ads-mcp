@@ -17,7 +17,7 @@ import (
 // ToolAdstudy_get_cells returns the MCP tool definition for adstudy_get_cells
 func ToolAdstudy_get_cells() mcp.Tool {
 	// Available fields for AdStudyCell: ad_entities_count, control_percentage, id, name, treatment_percentage
-	
+
 	return mcp.NewTool("adstudy_get_cells",
 		mcp.WithDescription("GET cells for AdStudy"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleAdstudy_get_cells(ctx context.Context, request mcp.CallToolRequest) (
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Adstudy_get_cells(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleAdstudy_get_cells(ctx context.Context, request mcp.CallToolRequest) (
 // Adstudy_get_cells performs GET cells for AdStudy
 func Adstudy_get_cells(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/cells")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

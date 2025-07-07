@@ -16,7 +16,6 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolOpenbridgeconfiguration_get_())
 	tools = append(tools, ToolOpenbridgeconfiguration_post_())
 
-
 	return tools
 }
 
@@ -27,7 +26,6 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers["openbridgeconfiguration_delete_"] = HandleOpenbridgeconfiguration_delete_
 	handlers["openbridgeconfiguration_get_"] = HandleOpenbridgeconfiguration_get_
 	handlers["openbridgeconfiguration_post_"] = HandleOpenbridgeconfiguration_post_
-
 
 	return handlers
 }

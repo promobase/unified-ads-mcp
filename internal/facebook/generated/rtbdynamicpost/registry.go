@@ -16,7 +16,6 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolRtbdynamicpost_get_likes())
 	tools = append(tools, ToolRtbdynamicpost_get_())
 
-
 	return tools
 }
 
@@ -27,7 +26,6 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers["rtbdynamicpost_get_comments"] = HandleRtbdynamicpost_get_comments
 	handlers["rtbdynamicpost_get_likes"] = HandleRtbdynamicpost_get_likes
 	handlers["rtbdynamicpost_get_"] = HandleRtbdynamicpost_get_
-
 
 	return handlers
 }

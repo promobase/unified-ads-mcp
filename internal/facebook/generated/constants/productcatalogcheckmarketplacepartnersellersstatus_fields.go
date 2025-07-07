@@ -5,12 +5,12 @@ package constants
 // ProductCatalogCheckMarketplacePartnerSellersStatusFields contains field name constants for ProductCatalogCheckMarketplacePartnerSellersStatus objects
 var ProductCatalogCheckMarketplacePartnerSellersStatusFields = struct {
 	SampleErrors string
-	SessionId string
-	Status string
+	SessionId    string
+	Status       string
 }{
 	SampleErrors: "sample_errors",
-	SessionId: "session_id",
-	Status: "status",
+	SessionId:    "session_id",
+	Status:       "status",
 }
 
 // ProductCatalogCheckMarketplacePartnerSellersStatusFieldsList contains all available fields for ProductCatalogCheckMarketplacePartnerSellersStatus objects

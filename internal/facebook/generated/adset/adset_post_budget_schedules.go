@@ -15,7 +15,7 @@ import (
 
 // ToolAdset_post_budget_schedules returns the MCP tool definition for adset_post_budget_schedules
 func ToolAdset_post_budget_schedules() mcp.Tool {
-	
+
 	// Params object accepts: budget_value (unsigned int), budget_value_type (adcampaignbudget_schedules_budget_value_type_enum_param), time_end (unsigned int), time_start (unsigned int)
 	return mcp.NewTool("adset_post_budget_schedules",
 		mcp.WithDescription("POST budget_schedules for AdSet"),
@@ -27,25 +27,25 @@ func ToolAdset_post_budget_schedules() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"budget_value": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "budget_value parameter",
-					"required": true,
+					"required":    true,
 				},
 				"budget_value_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "budget_value_type parameter",
-					"required": true,
-					"enum": []string{ "ABSOLUTE", "MULTIPLIER" },
+					"required":    true,
+					"enum":        []string{"ABSOLUTE", "MULTIPLIER"},
 				},
 				"time_end": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "time_end parameter",
-					"required": true,
+					"required":    true,
 				},
 				"time_start": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "time_start parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: budget_value (integer) [required], budget_value_type (enum) [ABSOLUTE, MULTIPLIER] [required], time_end (integer) [required], time_start (integer) [required]"),
@@ -85,8 +85,6 @@ func HandleAdset_post_budget_schedules(ctx context.Context, request mcp.CallTool
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Adset_post_budget_schedules(accessToken, args)
 	if err != nil {
@@ -105,35 +103,33 @@ func HandleAdset_post_budget_schedules(ctx context.Context, request mcp.CallTool
 // Adset_post_budget_schedules performs POST budget_schedules for AdSet
 func Adset_post_budget_schedules(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	// Extract ad_set_id for URL construction
 	adSetId, ok := args["ad_set_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("ad_set_id is required for adset_post_budget_schedules")
 	}
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/%sbudget_schedules", adSetId)
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["ad_set_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "ad_set_id" != "ad_set_id" {
 			urlParams.Set("ad_set_id", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "params" != "ad_set_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-		
-	}
 
+	}
 
 	// Make HTTP request
 	var resp *http.Response

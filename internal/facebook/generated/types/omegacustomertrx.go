@@ -6,23 +6,23 @@ import "time"
 
 // OmegaCustomerTrx represents a Facebook OmegaCustomerTrx object
 type OmegaCustomerTrx struct {
-	Ad_account_ids []string `json:"ad_account_ids"`
-	Advertiser_name string `json:"advertiser_name"`
-	Amount string `json:"amount"`
-	Amount_due *CurrencyAmount `json:"amount_due"`
+	Ad_account_ids        []string               `json:"ad_account_ids"`
+	Advertiser_name       string                 `json:"advertiser_name"`
+	Amount                string                 `json:"amount"`
+	Amount_due            *CurrencyAmount        `json:"amount_due"`
 	Billed_amount_details map[string]interface{} `json:"billed_amount_details"`
-	Billing_period string `json:"billing_period"`
-	Cdn_download_uri string `json:"cdn_download_uri"`
-	Currency string `json:"currency"`
-	Download_uri string `json:"download_uri"`
-	Due_date time.Time `json:"due_date"`
-	Entity string `json:"entity"`
-	Id string `json:"id"`
-	Invoice_date time.Time `json:"invoice_date"`
-	Invoice_id string `json:"invoice_id"`
-	Invoice_type string `json:"invoice_type"`
-	Liability_type string `json:"liability_type"`
-	Payment_status string `json:"payment_status"`
-	Payment_term string `json:"payment_term"`
-	Type_ string `json:"type"`
+	Billing_period        string                 `json:"billing_period"`
+	Cdn_download_uri      string                 `json:"cdn_download_uri"`
+	Currency              string                 `json:"currency"`
+	Download_uri          string                 `json:"download_uri"`
+	Due_date              time.Time              `json:"due_date"`
+	Entity                string                 `json:"entity"`
+	Id                    string                 `json:"id"`
+	Invoice_date          time.Time              `json:"invoice_date"`
+	Invoice_id            string                 `json:"invoice_id"`
+	Invoice_type          string                 `json:"invoice_type"`
+	Liability_type        string                 `json:"liability_type"`
+	Payment_status        string                 `json:"payment_status"`
+	Payment_term          string                 `json:"payment_term"`
+	Type_                 string                 `json:"type"`
 }

@@ -15,7 +15,7 @@ import (
 
 // ToolProductcatalog_post_pricing_variables_batch returns the MCP tool definition for productcatalog_post_pricing_variables_batch
 func ToolProductcatalog_post_pricing_variables_batch() mcp.Tool {
-	
+
 	// Params object accepts: file (file), password (string), standard (productcatalogpricing_variables_batch_standard_enum_param), update_only (bool), url (string), username (string)
 	return mcp.NewTool("productcatalog_post_pricing_variables_batch",
 		mcp.WithDescription("POST pricing_variables_batch for ProductCatalog"),
@@ -23,29 +23,29 @@ func ToolProductcatalog_post_pricing_variables_batch() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"file": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "file parameter",
 				},
 				"password": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "password parameter",
 				},
 				"standard": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "standard parameter",
-					"required": true,
-					"enum": []string{ "google" },
+					"required":    true,
+					"enum":        []string{"google"},
 				},
 				"update_only": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "update_only parameter",
 				},
 				"url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "url parameter",
 				},
 				"username": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "username parameter",
 				},
 			}),
@@ -79,8 +79,6 @@ func HandleProductcatalog_post_pricing_variables_batch(ctx context.Context, requ
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Productcatalog_post_pricing_variables_batch(accessToken, args)
 	if err != nil {
@@ -99,20 +97,18 @@ func HandleProductcatalog_post_pricing_variables_batch(ctx context.Context, requ
 // Productcatalog_post_pricing_variables_batch performs POST pricing_variables_batch for ProductCatalog
 func Productcatalog_post_pricing_variables_batch(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/pricing_variables_batch")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

@@ -4,13 +4,13 @@ package constants
 
 // ProductSetUsageFields contains field name constants for ProductSetUsage objects
 var ProductSetUsageFields = struct {
-	Id string
+	Id         string
 	ProductSet string
-	UsageType string
+	UsageType  string
 }{
-	Id: "id",
+	Id:         "id",
 	ProductSet: "product_set",
-	UsageType: "usage_type",
+	UsageType:  "usage_type",
 }
 
 // ProductSetUsageFieldsList contains all available fields for ProductSetUsage objects

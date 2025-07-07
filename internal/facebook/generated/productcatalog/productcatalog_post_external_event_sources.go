@@ -15,14 +15,14 @@ import (
 
 // ToolProductcatalog_post_external_event_sources returns the MCP tool definition for productcatalog_post_external_event_sources
 func ToolProductcatalog_post_external_event_sources() mcp.Tool {
-	
+
 	// Params object accepts: external_event_sources (Object)
 	return mcp.NewTool("productcatalog_post_external_event_sources",
 		mcp.WithDescription("POST external_event_sources for ProductCatalog"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"external_event_sources": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "external_event_sources parameter",
 				},
 			}),
@@ -54,8 +54,6 @@ func HandleProductcatalog_post_external_event_sources(ctx context.Context, reque
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Productcatalog_post_external_event_sources(accessToken, args)
 	if err != nil {
@@ -74,20 +72,18 @@ func HandleProductcatalog_post_external_event_sources(ctx context.Context, reque
 // Productcatalog_post_external_event_sources performs POST external_event_sources for ProductCatalog
 func Productcatalog_post_external_event_sources(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/external_event_sources")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

@@ -15,7 +15,7 @@ import (
 
 // ToolAdaccount_delete_adimages returns the MCP tool definition for adaccount_delete_adimages
 func ToolAdaccount_delete_adimages() mcp.Tool {
-	
+
 	// Params object accepts: hash (string)
 	return mcp.NewTool("adaccount_delete_adimages",
 		mcp.WithDescription("DELETE adimages for AdAccount"),
@@ -27,9 +27,9 @@ func ToolAdaccount_delete_adimages() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"hash": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "hash parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: hash (string) [required]"),
@@ -69,8 +69,6 @@ func HandleAdaccount_delete_adimages(ctx context.Context, request mcp.CallToolRe
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Adaccount_delete_adimages(accessToken, args)
 	if err != nil {
@@ -89,35 +87,33 @@ func HandleAdaccount_delete_adimages(ctx context.Context, request mcp.CallToolRe
 // Adaccount_delete_adimages performs DELETE adimages for AdAccount
 func Adaccount_delete_adimages(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	// Extract account_id for URL construction
 	accountId, ok := args["account_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_delete_adimages")
 	}
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%sadimages", accountId)
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-		
-	}
 
+	}
 
 	// Make HTTP request
 	var resp *http.Response

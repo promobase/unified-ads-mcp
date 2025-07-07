@@ -15,7 +15,6 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolAdreportrun_get_insights())
 	tools = append(tools, ToolAdreportrun_get_())
 
-
 	return tools
 }
 
@@ -25,7 +24,6 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 
 	handlers["adreportrun_get_insights"] = HandleAdreportrun_get_insights
 	handlers["adreportrun_get_"] = HandleAdreportrun_get_
-
 
 	return handlers
 }

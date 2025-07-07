@@ -17,7 +17,6 @@ import (
 func GetPersonaTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// persona_delete_ tool
 	persona_delete_Tool := mcp.NewTool("persona_delete_",
 		mcp.WithDescription("DELETE  for Persona"),
@@ -43,12 +42,10 @@ func GetPersonaTools() []mcp.Tool {
 	)
 	tools = append(tools, persona_get_Tool)
 
-
 	return tools
 }
 
 // Persona handlers
-
 
 // HandlePersona_delete_ handles the persona_delete_ tool with context-based auth
 func HandlePersona_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -64,8 +61,6 @@ func HandlePersona_delete_(ctx context.Context, request mcp.CallToolRequest) (*m
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Persona_delete_(args)
 	if err != nil {
@@ -80,7 +75,6 @@ func HandlePersona_delete_(ctx context.Context, request mcp.CallToolRequest) (*m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePersona_get_ handles the persona_get_ tool with context-based auth
 func HandlePersona_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -121,8 +115,6 @@ func HandlePersona_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Persona_get_(args)
 	if err != nil {
@@ -137,4 +129,3 @@ func HandlePersona_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

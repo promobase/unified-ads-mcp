@@ -4,15 +4,15 @@ package constants
 
 // DeliveryCheckFields contains field name constants for DeliveryCheck objects
 var DeliveryCheckFields = struct {
-	CheckName string
+	CheckName   string
 	Description string
-	ExtraInfo string
-	Summary string
+	ExtraInfo   string
+	Summary     string
 }{
-	CheckName: "check_name",
+	CheckName:   "check_name",
 	Description: "description",
-	ExtraInfo: "extra_info",
-	Summary: "summary",
+	ExtraInfo:   "extra_info",
+	Summary:     "summary",
 }
 
 // DeliveryCheckFieldsList contains all available fields for DeliveryCheck objects

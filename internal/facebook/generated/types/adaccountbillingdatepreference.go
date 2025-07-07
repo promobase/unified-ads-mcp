@@ -6,10 +6,10 @@ import "time"
 
 // AdAccountBillingDatePreference represents a Facebook AdAccountBillingDatePreference object
 type AdAccountBillingDatePreference struct {
-	Ad_account *AdAccount `json:"ad_account"`
-	Day_of_month int `json:"day_of_month"`
-	Id string `json:"id"`
-	Next_bill_date time.Time `json:"next_bill_date"`
-	Time_created time.Time `json:"time_created"`
-	Time_effective time.Time `json:"time_effective"`
+	Ad_account     *AdAccount `json:"ad_account"`
+	Day_of_month   int        `json:"day_of_month"`
+	Id             string     `json:"id"`
+	Next_bill_date time.Time  `json:"next_bill_date"`
+	Time_created   time.Time  `json:"time_created"`
+	Time_effective time.Time  `json:"time_effective"`
 }

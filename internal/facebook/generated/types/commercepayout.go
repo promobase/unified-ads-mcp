@@ -4,9 +4,9 @@ package types
 
 // CommercePayout represents a Facebook CommercePayout object
 type CommercePayout struct {
-	Amount map[string]interface{} `json:"amount"`
-	Payout_date string `json:"payout_date"`
-	Payout_reference_id string `json:"payout_reference_id"`
-	Status string `json:"status"`
-	Transfer_id string `json:"transfer_id"`
+	Amount              map[string]interface{} `json:"amount"`
+	Payout_date         string                 `json:"payout_date"`
+	Payout_reference_id string                 `json:"payout_reference_id"`
+	Status              string                 `json:"status"`
+	Transfer_id         string                 `json:"transfer_id"`
 }

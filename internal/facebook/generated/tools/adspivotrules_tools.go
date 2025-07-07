@@ -17,7 +17,6 @@ import (
 func GetAdsPivotRulesTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// adspivotrules_get_ tool
 	// Available fields for AdsPivotRules: creation_time, creator, description, id, name, permission, rules, scope, update_by, update_time
 	adspivotrules_get_Tool := mcp.NewTool("adspivotrules_get_",
@@ -37,12 +36,10 @@ func GetAdsPivotRulesTools() []mcp.Tool {
 	)
 	tools = append(tools, adspivotrules_get_Tool)
 
-
 	return tools
 }
 
 // AdsPivotRules handlers
-
 
 // HandleAdspivotrules_get_ handles the adspivotrules_get_ tool with context-based auth
 func HandleAdspivotrules_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleAdspivotrules_get_(ctx context.Context, request mcp.CallToolRequest) 
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adspivotrules_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleAdspivotrules_get_(ctx context.Context, request mcp.CallToolRequest) 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

@@ -17,7 +17,7 @@ import (
 // ToolHotel_get_hotel_rooms returns the MCP tool definition for hotel_get_hotel_rooms
 func ToolHotel_get_hotel_rooms() mcp.Tool {
 	// Available fields for HotelRoom: applinks, base_price, currency, description, id, images, margin_level, name, room_id, sale_price, url
-	
+
 	return mcp.NewTool("hotel_get_hotel_rooms",
 		mcp.WithDescription("GET hotel_rooms for Hotel"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleHotel_get_hotel_rooms(ctx context.Context, request mcp.CallToolReques
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Hotel_get_hotel_rooms(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleHotel_get_hotel_rooms(ctx context.Context, request mcp.CallToolReques
 // Hotel_get_hotel_rooms performs GET hotel_rooms for Hotel
 func Hotel_get_hotel_rooms(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/hotel_rooms")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

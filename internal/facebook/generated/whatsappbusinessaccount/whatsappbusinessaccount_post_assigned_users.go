@@ -15,7 +15,7 @@ import (
 
 // ToolWhatsappbusinessaccount_post_assigned_users returns the MCP tool definition for whatsappbusinessaccount_post_assigned_users
 func ToolWhatsappbusinessaccount_post_assigned_users() mcp.Tool {
-	
+
 	// Params object accepts: tasks (list<whatsappbusinessaccountassigned_users_tasks_enum_param>), user (int)
 	return mcp.NewTool("whatsappbusinessaccount_post_assigned_users",
 		mcp.WithDescription("POST assigned_users for WhatsAppBusinessAccount"),
@@ -23,16 +23,16 @@ func ToolWhatsappbusinessaccount_post_assigned_users() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"tasks": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "tasks parameter",
-					"required": true,
-					"enum": []string{ "DEVELOP", "MANAGE", "MANAGE_EXTENSIONS", "MANAGE_PHONE", "MANAGE_PHONE_ASSETS", "MANAGE_TEMPLATES", "MESSAGING", "VIEW_COST", "VIEW_PHONE_ASSETS", "VIEW_TEMPLATES" },
-					"items": map[string]any{"type": "string"},
+					"required":    true,
+					"enum":        []string{"DEVELOP", "MANAGE", "MANAGE_EXTENSIONS", "MANAGE_PHONE", "MANAGE_PHONE_ASSETS", "MANAGE_TEMPLATES", "MESSAGING", "VIEW_COST", "VIEW_PHONE_ASSETS", "VIEW_TEMPLATES"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"user": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "user parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: tasks (array<enum>) [DEVELOP, MANAGE, MANAGE_EXTENSIONS, MANAGE_PHONE, MANAGE_PHONE_ASSETS, ...] [required], user (integer) [required]"),
@@ -65,8 +65,6 @@ func HandleWhatsappbusinessaccount_post_assigned_users(ctx context.Context, requ
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Whatsappbusinessaccount_post_assigned_users(accessToken, args)
 	if err != nil {
@@ -85,20 +83,18 @@ func HandleWhatsappbusinessaccount_post_assigned_users(ctx context.Context, requ
 // Whatsappbusinessaccount_post_assigned_users performs POST assigned_users for WhatsAppBusinessAccount
 func Whatsappbusinessaccount_post_assigned_users(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/assigned_users")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

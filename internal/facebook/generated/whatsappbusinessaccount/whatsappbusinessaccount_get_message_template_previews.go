@@ -16,7 +16,7 @@ import (
 
 // ToolWhatsappbusinessaccount_get_message_template_previews returns the MCP tool definition for whatsappbusinessaccount_get_message_template_previews
 func ToolWhatsappbusinessaccount_get_message_template_previews() mcp.Tool {
-	
+
 	// Params object accepts: add_security_recommendation (bool), button_types (list<whatsappbusinessaccountmessage_template_previews_button_types_enum_param>), category (whatsappbusinessaccountmessage_template_previews_category_enum_param), code_expiration_minutes (unsigned int), languages (list<string>)
 	return mcp.NewTool("whatsappbusinessaccount_get_message_template_previews",
 		mcp.WithDescription("GET message_template_previews for WhatsAppBusinessAccount"),
@@ -24,29 +24,29 @@ func ToolWhatsappbusinessaccount_get_message_template_previews() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"add_security_recommendation": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "add_security_recommendation parameter",
 				},
 				"button_types": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "button_types parameter",
-					"enum": []string{ "OTP" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"OTP"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"category": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "category parameter",
-					"required": true,
-					"enum": []string{ "AUTHENTICATION" },
+					"required":    true,
+					"enum":        []string{"AUTHENTICATION"},
 				},
 				"code_expiration_minutes": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "code_expiration_minutes parameter",
 				},
 				"languages": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "languages parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: add_security_recommendation (boolean), button_types (array<enum>) [OTP], category (enum) [AUTHENTICATION] [required], code_expiration_minutes (integer), languages (array<string>)"),
@@ -116,8 +116,6 @@ func HandleWhatsappbusinessaccount_get_message_template_previews(ctx context.Con
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Whatsappbusinessaccount_get_message_template_previews(accessToken, args)
 	if err != nil {
@@ -136,44 +134,42 @@ func HandleWhatsappbusinessaccount_get_message_template_previews(ctx context.Con
 // Whatsappbusinessaccount_get_message_template_previews performs GET message_template_previews for WhatsAppBusinessAccount
 func Whatsappbusinessaccount_get_message_template_previews(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/message_template_previews")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

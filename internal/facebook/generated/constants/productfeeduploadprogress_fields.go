@@ -4,16 +4,16 @@ package constants
 
 // ProductFeedUploadProgressFields contains field name constants for ProductFeedUploadProgress objects
 var ProductFeedUploadProgressFields = struct {
-	Pos string
-	Size string
-	Step string
-	Unit string
+	Pos         string
+	Size        string
+	Step        string
+	Unit        string
 	UpdatedTime string
 }{
-	Pos: "pos",
-	Size: "size",
-	Step: "step",
-	Unit: "unit",
+	Pos:         "pos",
+	Size:        "size",
+	Step:        "step",
+	Unit:        "unit",
 	UpdatedTime: "updated_time",
 }
 

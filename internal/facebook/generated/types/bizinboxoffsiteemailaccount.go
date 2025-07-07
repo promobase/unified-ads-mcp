@@ -5,5 +5,5 @@ package types
 // BizInboxOffsiteEmailAccount represents a Facebook BizInboxOffsiteEmailAccount object
 type BizInboxOffsiteEmailAccount struct {
 	Email_address string `json:"email_address"`
-	Id string `json:"id"`
+	Id            string `json:"id"`
 }

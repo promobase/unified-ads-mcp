@@ -4,7 +4,7 @@ package types
 
 // BusinessManagedPartnerEligibility represents a Facebook BusinessManagedPartnerEligibility object
 type BusinessManagedPartnerEligibility struct {
-	Is_eligible bool `json:"is_eligible"`
-	Reason_code string `json:"reason_code"`
+	Is_eligible        bool   `json:"is_eligible"`
+	Reason_code        string `json:"reason_code"`
 	Reason_description string `json:"reason_description"`
 }

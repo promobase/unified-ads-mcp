@@ -5,28 +5,28 @@ package constants
 // RTBDynamicPostFields contains field name constants for RTBDynamicPost objects
 var RTBDynamicPostFields = struct {
 	ChildAttachments string
-	Created string
-	Description string
-	Id string
-	ImageUrl string
-	Link string
-	Message string
-	OwnerId string
-	PlaceId string
-	ProductId string
-	Title string
+	Created          string
+	Description      string
+	Id               string
+	ImageUrl         string
+	Link             string
+	Message          string
+	OwnerId          string
+	PlaceId          string
+	ProductId        string
+	Title            string
 }{
 	ChildAttachments: "child_attachments",
-	Created: "created",
-	Description: "description",
-	Id: "id",
-	ImageUrl: "image_url",
-	Link: "link",
-	Message: "message",
-	OwnerId: "owner_id",
-	PlaceId: "place_id",
-	ProductId: "product_id",
-	Title: "title",
+	Created:          "created",
+	Description:      "description",
+	Id:               "id",
+	ImageUrl:         "image_url",
+	Link:             "link",
+	Message:          "message",
+	OwnerId:          "owner_id",
+	PlaceId:          "place_id",
+	ProductId:        "product_id",
+	Title:            "title",
 }
 
 // RTBDynamicPostFieldsList contains all available fields for RTBDynamicPost objects

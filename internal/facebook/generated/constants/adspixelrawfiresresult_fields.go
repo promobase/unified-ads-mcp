@@ -4,23 +4,23 @@ package constants
 
 // AdsPixelRawFiresResultFields contains field name constants for AdsPixelRawFiresResult objects
 var AdsPixelRawFiresResultFields = struct {
-	DataJson string
-	DeviceType string
-	Event string
+	DataJson             string
+	DeviceType           string
+	Event                string
 	EventDetectionMethod string
-	EventSrc string
-	PlacedUrl string
-	Timestamp string
-	UserPiiKeys string
+	EventSrc             string
+	PlacedUrl            string
+	Timestamp            string
+	UserPiiKeys          string
 }{
-	DataJson: "data_json",
-	DeviceType: "device_type",
-	Event: "event",
+	DataJson:             "data_json",
+	DeviceType:           "device_type",
+	Event:                "event",
 	EventDetectionMethod: "event_detection_method",
-	EventSrc: "event_src",
-	PlacedUrl: "placed_url",
-	Timestamp: "timestamp",
-	UserPiiKeys: "user_pii_keys",
+	EventSrc:             "event_src",
+	PlacedUrl:            "placed_url",
+	Timestamp:            "timestamp",
+	UserPiiKeys:          "user_pii_keys",
 }
 
 // AdsPixelRawFiresResultFieldsList contains all available fields for AdsPixelRawFiresResult objects

@@ -4,10 +4,10 @@ package constants
 
 // AdsPixelEventLastFiredTimeFields contains field name constants for AdsPixelEventLastFiredTime objects
 var AdsPixelEventLastFiredTimeFields = struct {
-	Event string
+	Event         string
 	LastFiredTime string
 }{
-	Event: "event",
+	Event:         "event",
 	LastFiredTime: "last_fired_time",
 }
 

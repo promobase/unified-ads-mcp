@@ -4,15 +4,15 @@ package constants
 
 // UserPaymentMobilePricepointsFields contains field name constants for UserPaymentMobilePricepoints objects
 var UserPaymentMobilePricepointsFields = struct {
-	MobileCountry string
+	MobileCountry    string
 	PhoneNumberLast4 string
-	Pricepoints string
-	UserCurrency string
+	Pricepoints      string
+	UserCurrency     string
 }{
-	MobileCountry: "mobile_country",
+	MobileCountry:    "mobile_country",
 	PhoneNumberLast4: "phone_number_last4",
-	Pricepoints: "pricepoints",
-	UserCurrency: "user_currency",
+	Pricepoints:      "pricepoints",
+	UserCurrency:     "user_currency",
 }
 
 // UserPaymentMobilePricepointsFieldsList contains all available fields for UserPaymentMobilePricepoints objects

@@ -17,7 +17,6 @@ import (
 func GetIGMediaTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// igmedia_get_boost_ads_list tool
 	// Available fields for IGBoostMediaAd: ad_id, ad_status
 	igmedia_get_boost_ads_listTool := mcp.NewTool("igmedia_get_boost_ads_list",
@@ -64,14 +63,14 @@ func GetIGMediaTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"permission": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "permission parameter",
-					"required": true,
+					"required":    true,
 				},
 				"sponsor_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "sponsor_id parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: permission (boolean) [required], sponsor_id (integer) [required]"),
@@ -143,11 +142,11 @@ func GetIGMediaTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"ad_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "ad_id parameter",
 				},
 				"message": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "message parameter",
 				},
 			}),
@@ -165,23 +164,23 @@ func GetIGMediaTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"breakdown": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "breakdown parameter",
-					"enum": []string{ "action_type", "follow_type", "story_navigation_action_type", "surface_type" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"action_type", "follow_type", "story_navigation_action_type", "surface_type"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"metric": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "metric parameter",
-					"required": true,
-					"enum": []string{ "clips_replays_count", "comments", "content_views", "follows", "ig_reels_aggregated_all_plays_count", "ig_reels_avg_watch_time", "ig_reels_video_view_total_time", "impressions", "likes", "navigation", "plays", "profile_activity", "profile_visits", "quotes", "reach", "replies", "reposts", "saved", "shares", "thread_replies", "thread_shares", "threads_media_clicks", "threads_views", "total_interactions", "views" },
-					"items": map[string]any{"type": "string"},
+					"required":    true,
+					"enum":        []string{"clips_replays_count", "comments", "content_views", "follows", "ig_reels_aggregated_all_plays_count", "ig_reels_avg_watch_time", "ig_reels_video_view_total_time", "impressions", "likes", "navigation", "plays", "profile_activity", "profile_visits", "quotes", "reach", "replies", "reposts", "saved", "shares", "thread_replies", "thread_shares", "threads_media_clicks", "threads_views", "total_interactions", "views"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"period": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "period parameter",
-					"enum": []string{ "day", "days_28", "lifetime", "month", "total_over_range", "week" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"day", "days_28", "lifetime", "month", "total_over_range", "week"},
+					"items":       map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: breakdown (array<enum>) [action_type, follow_type, story_navigation_action_type, surface_type], metric (array<enum>) [clips_replays_count, comments, content_views, follows, ig_reels_aggregated_all_plays_count, ...] [required], period (array<enum>) [day, days_28, lifetime, month, total_over_range, ...]"),
@@ -240,14 +239,14 @@ func GetIGMediaTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"child_index": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "child_index parameter",
 				},
 				"updated_tags": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "updated_tags parameter",
-					"required": true,
-					"items": map[string]any{"type": "object"},
+					"required":    true,
+					"items":       map[string]any{"type": "object"},
 				},
 			}),
 			mcp.Description("Parameters object containing: child_index (integer), updated_tags (array<object>) [required]"),
@@ -263,32 +262,32 @@ func GetIGMediaTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"ad_account_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "ad_account_id parameter",
 				},
 				"boostable_media_callsite": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "boostable_media_callsite parameter",
-					"enum": []string{ "ADS_MANAGER_L1_EDITOR_DYNAMIC_ADS_WITH_EXISTING_POST" },
+					"enum":        []string{"ADS_MANAGER_L1_EDITOR_DYNAMIC_ADS_WITH_EXISTING_POST"},
 				},
 				"business_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "business_id parameter",
 				},
 				"primary_fb_page_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "primary_fb_page_id parameter",
 				},
 				"primary_ig_user_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "primary_ig_user_id parameter",
 				},
 				"secondary_fb_page_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "secondary_fb_page_id parameter",
 				},
 				"secondary_ig_user_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "secondary_ig_user_id parameter",
 				},
 			}),
@@ -317,9 +316,9 @@ func GetIGMediaTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"comment_enabled": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "comment_enabled parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: comment_enabled (boolean) [required]"),
@@ -327,12 +326,10 @@ func GetIGMediaTools() []mcp.Tool {
 	)
 	tools = append(tools, igmedia_post_Tool)
 
-
 	return tools
 }
 
 // IGMedia handlers
-
 
 // HandleIgmedia_get_boost_ads_list handles the igmedia_get_boost_ads_list tool with context-based auth
 func HandleIgmedia_get_boost_ads_list(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -373,8 +370,6 @@ func HandleIgmedia_get_boost_ads_list(ctx context.Context, request mcp.CallToolR
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Igmedia_get_boost_ads_list(args)
 	if err != nil {
@@ -389,7 +384,6 @@ func HandleIgmedia_get_boost_ads_list(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleIgmedia_get_branded_content_partner_promote handles the igmedia_get_branded_content_partner_promote tool with context-based auth
 func HandleIgmedia_get_branded_content_partner_promote(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -430,8 +424,6 @@ func HandleIgmedia_get_branded_content_partner_promote(ctx context.Context, requ
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Igmedia_get_branded_content_partner_promote(args)
 	if err != nil {
@@ -446,7 +438,6 @@ func HandleIgmedia_get_branded_content_partner_promote(ctx context.Context, requ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleIgmedia_post_branded_content_partner_promote handles the igmedia_post_branded_content_partner_promote tool with context-based auth
 func HandleIgmedia_post_branded_content_partner_promote(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -476,8 +467,6 @@ func HandleIgmedia_post_branded_content_partner_promote(ctx context.Context, req
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Igmedia_post_branded_content_partner_promote(args)
 	if err != nil {
@@ -492,7 +481,6 @@ func HandleIgmedia_post_branded_content_partner_promote(ctx context.Context, req
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleIgmedia_get_children handles the igmedia_get_children tool with context-based auth
 func HandleIgmedia_get_children(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -533,8 +521,6 @@ func HandleIgmedia_get_children(ctx context.Context, request mcp.CallToolRequest
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Igmedia_get_children(args)
 	if err != nil {
@@ -549,7 +535,6 @@ func HandleIgmedia_get_children(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleIgmedia_get_collaborators handles the igmedia_get_collaborators tool with context-based auth
 func HandleIgmedia_get_collaborators(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -590,8 +575,6 @@ func HandleIgmedia_get_collaborators(ctx context.Context, request mcp.CallToolRe
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Igmedia_get_collaborators(args)
 	if err != nil {
@@ -606,7 +589,6 @@ func HandleIgmedia_get_collaborators(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleIgmedia_get_comments handles the igmedia_get_comments tool with context-based auth
 func HandleIgmedia_get_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -647,8 +629,6 @@ func HandleIgmedia_get_comments(ctx context.Context, request mcp.CallToolRequest
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Igmedia_get_comments(args)
 	if err != nil {
@@ -663,7 +643,6 @@ func HandleIgmedia_get_comments(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleIgmedia_post_comments handles the igmedia_post_comments tool with context-based auth
 func HandleIgmedia_post_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -691,8 +670,6 @@ func HandleIgmedia_post_comments(ctx context.Context, request mcp.CallToolReques
 		}
 	}
 
-
-
 	// Call the client method
 	result, err := client.Igmedia_post_comments(args)
 	if err != nil {
@@ -707,7 +684,6 @@ func HandleIgmedia_post_comments(ctx context.Context, request mcp.CallToolReques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleIgmedia_get_insights handles the igmedia_get_insights tool with context-based auth
 func HandleIgmedia_get_insights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -762,8 +738,6 @@ func HandleIgmedia_get_insights(ctx context.Context, request mcp.CallToolRequest
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Igmedia_get_insights(args)
 	if err != nil {
@@ -779,7 +753,6 @@ func HandleIgmedia_get_insights(ctx context.Context, request mcp.CallToolRequest
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleIgmedia_delete_partnership_ad_code handles the igmedia_delete_partnership_ad_code tool with context-based auth
 func HandleIgmedia_delete_partnership_ad_code(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
@@ -793,8 +766,6 @@ func HandleIgmedia_delete_partnership_ad_code(ctx context.Context, request mcp.C
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Igmedia_delete_partnership_ad_code(args)
@@ -811,7 +782,6 @@ func HandleIgmedia_delete_partnership_ad_code(ctx context.Context, request mcp.C
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleIgmedia_post_partnership_ad_code handles the igmedia_post_partnership_ad_code tool with context-based auth
 func HandleIgmedia_post_partnership_ad_code(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
@@ -825,8 +795,6 @@ func HandleIgmedia_post_partnership_ad_code(ctx context.Context, request mcp.Cal
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Igmedia_post_partnership_ad_code(args)
@@ -842,7 +810,6 @@ func HandleIgmedia_post_partnership_ad_code(ctx context.Context, request mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleIgmedia_get_product_tags handles the igmedia_get_product_tags tool with context-based auth
 func HandleIgmedia_get_product_tags(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -883,8 +850,6 @@ func HandleIgmedia_get_product_tags(ctx context.Context, request mcp.CallToolReq
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Igmedia_get_product_tags(args)
 	if err != nil {
@@ -899,7 +864,6 @@ func HandleIgmedia_get_product_tags(ctx context.Context, request mcp.CallToolReq
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleIgmedia_post_product_tags handles the igmedia_post_product_tags tool with context-based auth
 func HandleIgmedia_post_product_tags(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -929,8 +893,6 @@ func HandleIgmedia_post_product_tags(ctx context.Context, request mcp.CallToolRe
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Igmedia_post_product_tags(args)
 	if err != nil {
@@ -945,7 +907,6 @@ func HandleIgmedia_post_product_tags(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleIgmedia_get_ handles the igmedia_get_ tool with context-based auth
 func HandleIgmedia_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -998,8 +959,6 @@ func HandleIgmedia_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Igmedia_get_(args)
 	if err != nil {
@@ -1014,7 +973,6 @@ func HandleIgmedia_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleIgmedia_post_ handles the igmedia_post_ tool with context-based auth
 func HandleIgmedia_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1044,8 +1002,6 @@ func HandleIgmedia_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Igmedia_post_(args)
 	if err != nil {
@@ -1060,4 +1016,3 @@ func HandleIgmedia_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

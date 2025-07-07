@@ -4,21 +4,21 @@ package constants
 
 // BrandSafetyDownloadableFields contains field name constants for BrandSafetyDownloadable objects
 var BrandSafetyDownloadableFields = struct {
-	AccountContextId string
+	AccountContextId        string
 	AsyncJobPercentComplete string
-	AsyncJobStatus string
-	FileName string
-	Id string
-	RequestSurface string
-	Url string
+	AsyncJobStatus          string
+	FileName                string
+	Id                      string
+	RequestSurface          string
+	Url                     string
 }{
-	AccountContextId: "account_context_id",
+	AccountContextId:        "account_context_id",
 	AsyncJobPercentComplete: "async_job_percent_complete",
-	AsyncJobStatus: "async_job_status",
-	FileName: "file_name",
-	Id: "id",
-	RequestSurface: "request_surface",
-	Url: "url",
+	AsyncJobStatus:          "async_job_status",
+	FileName:                "file_name",
+	Id:                      "id",
+	RequestSurface:          "request_surface",
+	Url:                     "url",
 }
 
 // BrandSafetyDownloadableFieldsList contains all available fields for BrandSafetyDownloadable objects

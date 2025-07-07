@@ -17,7 +17,7 @@ import (
 // ToolAdstudy_get_instances returns the MCP tool definition for adstudy_get_instances
 func ToolAdstudy_get_instances() mcp.Tool {
 	// Available fields for PrivateLiftStudyInstance: breakdown_key, created_time, feature_list, id, issuer_certificate, latest_status_update_time, run_id, server_hostnames, server_ips, status, tier
-	
+
 	return mcp.NewTool("adstudy_get_instances",
 		mcp.WithDescription("GET instances for AdStudy"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleAdstudy_get_instances(ctx context.Context, request mcp.CallToolReques
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Adstudy_get_instances(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleAdstudy_get_instances(ctx context.Context, request mcp.CallToolReques
 // Adstudy_get_instances performs GET instances for AdStudy
 func Adstudy_get_instances(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/instances")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

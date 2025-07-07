@@ -17,7 +17,7 @@ import (
 // ToolSavedaudience_get_ returns the MCP tool definition for savedaudience_get_
 func ToolSavedaudience_get_() mcp.Tool {
 	// Available fields for SavedAudience: account, approximate_count_lower_bound, approximate_count_upper_bound, delete_time, description, id, name, operation_status, owner_business, page_deletion_marked_delete_time, permission_for_actions, run_status, sentence_lines, targeting, time_created, time_updated
-	
+
 	return mcp.NewTool("savedaudience_get_",
 		mcp.WithDescription("GET  for SavedAudience"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleSavedaudience_get_(ctx context.Context, request mcp.CallToolRequest) 
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Savedaudience_get_(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleSavedaudience_get_(ctx context.Context, request mcp.CallToolRequest) 
 // Savedaudience_get_ performs GET  for SavedAudience
 func Savedaudience_get_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

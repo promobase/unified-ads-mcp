@@ -4,6 +4,6 @@ package types
 
 // AdCreativePortraitCustomizations represents a Facebook AdCreativePortraitCustomizations object
 type AdCreativePortraitCustomizations struct {
-	Carousel_delivery_mode string `json:"carousel_delivery_mode"`
-	Specifications []map[string]interface{} `json:"specifications"`
+	Carousel_delivery_mode string                   `json:"carousel_delivery_mode"`
+	Specifications         []map[string]interface{} `json:"specifications"`
 }

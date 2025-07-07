@@ -4,10 +4,10 @@ package constants
 
 // CatalogWebsiteSettingsFields contains field name constants for CatalogWebsiteSettings objects
 var CatalogWebsiteSettingsFields = struct {
-	Id string
+	Id               string
 	IsAllowedToCrawl string
 }{
-	Id: "id",
+	Id:               "id",
 	IsAllowedToCrawl: "is_allowed_to_crawl",
 }
 

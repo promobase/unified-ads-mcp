@@ -17,7 +17,6 @@ import (
 func GetLifeEventTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// lifeevent_get_likes tool
 	// Available fields for Profile: can_post, id, link, name, pic, pic_crop, pic_large, pic_small, pic_square, profile_type, username
 	lifeevent_get_likesTool := mcp.NewTool("lifeevent_get_likes",
@@ -56,12 +55,10 @@ func GetLifeEventTools() []mcp.Tool {
 	)
 	tools = append(tools, lifeevent_get_Tool)
 
-
 	return tools
 }
 
 // LifeEvent handlers
-
 
 // HandleLifeevent_get_likes handles the lifeevent_get_likes tool with context-based auth
 func HandleLifeevent_get_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -102,8 +99,6 @@ func HandleLifeevent_get_likes(ctx context.Context, request mcp.CallToolRequest)
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Lifeevent_get_likes(args)
 	if err != nil {
@@ -118,7 +113,6 @@ func HandleLifeevent_get_likes(ctx context.Context, request mcp.CallToolRequest)
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleLifeevent_get_ handles the lifeevent_get_ tool with context-based auth
 func HandleLifeevent_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -159,8 +153,6 @@ func HandleLifeevent_get_(ctx context.Context, request mcp.CallToolRequest) (*mc
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Lifeevent_get_(args)
 	if err != nil {
@@ -175,4 +167,3 @@ func HandleLifeevent_get_(ctx context.Context, request mcp.CallToolRequest) (*mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

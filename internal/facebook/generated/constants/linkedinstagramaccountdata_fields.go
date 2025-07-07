@@ -4,19 +4,19 @@ package constants
 
 // LinkedInstagramAccountDataFields contains field name constants for LinkedInstagramAccountData objects
 var LinkedInstagramAccountDataFields = struct {
-	AccessToken string
-	AnalyticsClaim string
-	FullName string
+	AccessToken       string
+	AnalyticsClaim    string
+	FullName          string
 	ProfilePictureUrl string
-	UserId string
-	UserName string
+	UserId            string
+	UserName          string
 }{
-	AccessToken: "access_token",
-	AnalyticsClaim: "analytics_claim",
-	FullName: "full_name",
+	AccessToken:       "access_token",
+	AnalyticsClaim:    "analytics_claim",
+	FullName:          "full_name",
 	ProfilePictureUrl: "profile_picture_url",
-	UserId: "user_id",
-	UserName: "user_name",
+	UserId:            "user_id",
+	UserName:          "user_name",
 }
 
 // LinkedInstagramAccountDataFieldsList contains all available fields for LinkedInstagramAccountData objects

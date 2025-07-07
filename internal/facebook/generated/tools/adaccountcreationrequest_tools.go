@@ -17,7 +17,6 @@ import (
 func GetAdAccountCreationRequestTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// adaccountcreationrequest_get_adaccounts tool
 	// Available fields for AdAccount: account_id, account_status, ad_account_promotable_objects, age, agency_client_declaration, all_capabilities, amount_spent, attribution_spec, balance, brand_safety_content_filter_levels, business, business_city, business_country_code, business_name, business_state, business_street, business_street2, business_zip, can_create_brand_lift_study, capabilities, created_time, currency, custom_audience_info, default_dsa_beneficiary, default_dsa_payor, disable_reason, end_advertiser, end_advertiser_name, existing_customers, expired_funding_source_details, extended_credit_invoice_group, failed_delivery_checks, fb_entity, funding_source, funding_source_details, has_migrated_permissions, has_page_authorized_adaccount, id, io_number, is_attribution_spec_system_default, is_ba_skip_delayed_eligible, is_direct_deals_enabled, is_in_3ds_authorization_enabled_market, is_notifications_enabled, is_personal, is_prepay_account, is_tax_id_required, liable_address, line_numbers, media_agency, min_campaign_group_spend_cap, min_daily_budget, name, offsite_pixels_tos_accepted, owner, owner_business, partner, rf_spec, send_bill_to_address, show_checkout_experience, sold_to_address, spend_cap, tax_id, tax_id_status, tax_id_type, timezone_id, timezone_name, timezone_offset_hours_utc, tos_accepted, user_access_expire_time, user_tasks, user_tos_accepted, viewable_business
 	adaccountcreationrequest_get_adaccountsTool := mcp.NewTool("adaccountcreationrequest_get_adaccounts",
@@ -56,12 +55,10 @@ func GetAdAccountCreationRequestTools() []mcp.Tool {
 	)
 	tools = append(tools, adaccountcreationrequest_get_Tool)
 
-
 	return tools
 }
 
 // AdAccountCreationRequest handlers
-
 
 // HandleAdaccountcreationrequest_get_adaccounts handles the adaccountcreationrequest_get_adaccounts tool with context-based auth
 func HandleAdaccountcreationrequest_get_adaccounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -102,8 +99,6 @@ func HandleAdaccountcreationrequest_get_adaccounts(ctx context.Context, request 
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adaccountcreationrequest_get_adaccounts(args)
 	if err != nil {
@@ -118,7 +113,6 @@ func HandleAdaccountcreationrequest_get_adaccounts(ctx context.Context, request 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdaccountcreationrequest_get_ handles the adaccountcreationrequest_get_ tool with context-based auth
 func HandleAdaccountcreationrequest_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -159,8 +153,6 @@ func HandleAdaccountcreationrequest_get_(ctx context.Context, request mcp.CallTo
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adaccountcreationrequest_get_(args)
 	if err != nil {
@@ -175,4 +167,3 @@ func HandleAdaccountcreationrequest_get_(ctx context.Context, request mcp.CallTo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

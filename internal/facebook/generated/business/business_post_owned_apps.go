@@ -15,7 +15,7 @@ import (
 
 // ToolBusiness_post_owned_apps returns the MCP tool definition for business_post_owned_apps
 func ToolBusiness_post_owned_apps() mcp.Tool {
-	
+
 	// Params object accepts: app_id (Object)
 	return mcp.NewTool("business_post_owned_apps",
 		mcp.WithDescription("POST owned_apps for Business"),
@@ -23,9 +23,9 @@ func ToolBusiness_post_owned_apps() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"app_id": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "app_id parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: app_id (object) [required]"),
@@ -58,8 +58,6 @@ func HandleBusiness_post_owned_apps(ctx context.Context, request mcp.CallToolReq
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Business_post_owned_apps(accessToken, args)
 	if err != nil {
@@ -78,20 +76,18 @@ func HandleBusiness_post_owned_apps(ctx context.Context, request mcp.CallToolReq
 // Business_post_owned_apps performs POST owned_apps for Business
 func Business_post_owned_apps(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/owned_apps")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

@@ -27,41 +27,41 @@ func ToolAdset_get_message_delivery_estimate() mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"bid_amount": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "bid_amount parameter",
 				},
 				"daily_budget": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "daily_budget parameter",
 				},
 				"is_direct_send_campaign": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_direct_send_campaign parameter",
 				},
 				"lifetime_budget": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "lifetime_budget parameter",
 				},
 				"lifetime_in_days": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "lifetime_in_days parameter",
 				},
 				"optimization_goal": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "optimization_goal parameter",
-					"enum": []string{ "ADVERTISER_SILOED_VALUE", "AD_RECALL_LIFT", "APP_INSTALLS", "APP_INSTALLS_AND_OFFSITE_CONVERSIONS", "CONVERSATIONS", "DERIVED_EVENTS", "ENGAGED_USERS", "EVENT_RESPONSES", "IMPRESSIONS", "IN_APP_VALUE", "LANDING_PAGE_VIEWS", "LEAD_GENERATION", "LINK_CLICKS", "MEANINGFUL_CALL_ATTEMPT", "MESSAGING_APPOINTMENT_CONVERSION", "MESSAGING_PURCHASE_CONVERSION", "NONE", "OFFSITE_CONVERSIONS", "PAGE_LIKES", "POST_ENGAGEMENT", "PROFILE_AND_PAGE_ENGAGEMENT", "PROFILE_VISIT", "QUALITY_CALL", "QUALITY_LEAD", "REACH", "REMINDERS_SET", "SUBSCRIBERS", "THRUPLAY", "VALUE", "VISIT_INSTAGRAM_PROFILE" },
+					"enum":        []string{"ADVERTISER_SILOED_VALUE", "AD_RECALL_LIFT", "APP_INSTALLS", "APP_INSTALLS_AND_OFFSITE_CONVERSIONS", "CONVERSATIONS", "DERIVED_EVENTS", "ENGAGED_USERS", "EVENT_RESPONSES", "IMPRESSIONS", "IN_APP_VALUE", "LANDING_PAGE_VIEWS", "LEAD_GENERATION", "LINK_CLICKS", "MEANINGFUL_CALL_ATTEMPT", "MESSAGING_APPOINTMENT_CONVERSION", "MESSAGING_PURCHASE_CONVERSION", "NONE", "OFFSITE_CONVERSIONS", "PAGE_LIKES", "POST_ENGAGEMENT", "PROFILE_AND_PAGE_ENGAGEMENT", "PROFILE_VISIT", "QUALITY_CALL", "QUALITY_LEAD", "REACH", "REMINDERS_SET", "SUBSCRIBERS", "THRUPLAY", "VALUE", "VISIT_INSTAGRAM_PROFILE"},
 				},
 				"pacing_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "pacing_type parameter",
-					"enum": []string{ "DAY_PARTING", "DISABLED", "NO_PACING", "PROBABILISTIC_PACING", "PROBABILISTIC_PACING_V2", "STANDARD" },
+					"enum":        []string{"DAY_PARTING", "DISABLED", "NO_PACING", "PROBABILISTIC_PACING", "PROBABILISTIC_PACING_V2", "STANDARD"},
 				},
 				"promoted_object": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "promoted_object parameter",
 				},
 				"targeting_spec": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "targeting_spec parameter",
 				},
 			}),
@@ -137,8 +137,6 @@ func HandleAdset_get_message_delivery_estimate(ctx context.Context, request mcp.
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Adset_get_message_delivery_estimate(accessToken, args)
 	if err != nil {
@@ -157,67 +155,65 @@ func HandleAdset_get_message_delivery_estimate(ctx context.Context, request mcp.
 // Adset_get_message_delivery_estimate performs GET message_delivery_estimate for AdSet
 func Adset_get_message_delivery_estimate(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	// Extract ad_set_id for URL construction
 	adSetId, ok := args["ad_set_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("ad_set_id is required for adset_get_message_delivery_estimate")
 	}
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/%smessage_delivery_estimate", adSetId)
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["ad_set_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "ad_set_id" != "ad_set_id" {
 			urlParams.Set("ad_set_id", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "params" != "ad_set_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "fields" != "ad_set_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "limit" != "ad_set_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "after" != "ad_set_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "before" != "ad_set_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-		
-	}
 
+	}
 
 	// Make HTTP request
 	var resp *http.Response

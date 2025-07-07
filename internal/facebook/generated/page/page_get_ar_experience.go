@@ -17,7 +17,7 @@ import (
 // ToolPage_get_ar_experience returns the MCP tool definition for page_get_ar_experience
 func ToolPage_get_ar_experience() mcp.Tool {
 	// Available fields for ArAdsDataContainer: camera_facing_override, creation_time, effect, id, is_published, last_modified_time, name
-	
+
 	return mcp.NewTool("page_get_ar_experience",
 		mcp.WithDescription("GET ar_experience for Page"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandlePage_get_ar_experience(ctx context.Context, request mcp.CallToolReque
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Page_get_ar_experience(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandlePage_get_ar_experience(ctx context.Context, request mcp.CallToolReque
 // Page_get_ar_experience performs GET ar_experience for Page
 func Page_get_ar_experience(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/ar_experience")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

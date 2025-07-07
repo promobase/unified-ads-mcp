@@ -15,23 +15,23 @@ import (
 
 // ToolAdasyncrequestset_post_ returns the MCP tool definition for adasyncrequestset_post_
 func ToolAdasyncrequestset_post_() mcp.Tool {
-	
+
 	// Params object accepts: name (string), notification_mode (adasyncrequestset_notification_mode), notification_uri (string)
 	return mcp.NewTool("adasyncrequestset_post_",
 		mcp.WithDescription("POST  for AdAsyncRequestSet"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
 				},
 				"notification_mode": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "notification_mode parameter",
-					"enum": []string{ "OFF", "ON_COMPLETE" },
+					"enum":        []string{"OFF", "ON_COMPLETE"},
 				},
 				"notification_uri": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "notification_uri parameter",
 				},
 			}),
@@ -63,8 +63,6 @@ func HandleAdasyncrequestset_post_(ctx context.Context, request mcp.CallToolRequ
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Adasyncrequestset_post_(accessToken, args)
 	if err != nil {
@@ -83,20 +81,18 @@ func HandleAdasyncrequestset_post_(ctx context.Context, request mcp.CallToolRequ
 // Adasyncrequestset_post_ performs POST  for AdAsyncRequestSet
 func Adasyncrequestset_post_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

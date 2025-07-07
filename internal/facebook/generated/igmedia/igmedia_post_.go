@@ -15,7 +15,7 @@ import (
 
 // ToolIgmedia_post_ returns the MCP tool definition for igmedia_post_
 func ToolIgmedia_post_() mcp.Tool {
-	
+
 	// Params object accepts: comment_enabled (bool)
 	return mcp.NewTool("igmedia_post_",
 		mcp.WithDescription("POST  for IGMedia"),
@@ -23,9 +23,9 @@ func ToolIgmedia_post_() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"comment_enabled": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "comment_enabled parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: comment_enabled (boolean) [required]"),
@@ -58,8 +58,6 @@ func HandleIgmedia_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Igmedia_post_(accessToken, args)
 	if err != nil {
@@ -78,20 +76,18 @@ func HandleIgmedia_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 // Igmedia_post_ performs POST  for IGMedia
 func Igmedia_post_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

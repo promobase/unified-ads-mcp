@@ -17,7 +17,6 @@ import (
 func GetVideoCopyrightMatchTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// videocopyrightmatch_get_ tool
 	// Available fields for VideoCopyrightMatch: created_date, id, last_modified_user, match_data, match_status, notes, permalink, ugc_content_format
 	videocopyrightmatch_get_Tool := mcp.NewTool("videocopyrightmatch_get_",
@@ -37,12 +36,10 @@ func GetVideoCopyrightMatchTools() []mcp.Tool {
 	)
 	tools = append(tools, videocopyrightmatch_get_Tool)
 
-
 	return tools
 }
 
 // VideoCopyrightMatch handlers
-
 
 // HandleVideocopyrightmatch_get_ handles the videocopyrightmatch_get_ tool with context-based auth
 func HandleVideocopyrightmatch_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleVideocopyrightmatch_get_(ctx context.Context, request mcp.CallToolReq
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Videocopyrightmatch_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleVideocopyrightmatch_get_(ctx context.Context, request mcp.CallToolReq
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

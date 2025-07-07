@@ -17,7 +17,6 @@ import (
 func GetPaymentEnginePaymentTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// paymentenginepayment_post_dispute tool
 	// Params object accepts: reason (paymentenginepaymentdispute_reason_enum_param)
 	paymentenginepayment_post_disputeTool := mcp.NewTool("paymentenginepayment_post_dispute",
@@ -26,10 +25,10 @@ func GetPaymentEnginePaymentTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"reason": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "reason parameter",
-					"required": true,
-					"enum": []string{ "BANNED_USER", "DENIED_REFUND", "GRANTED_REPLACEMENT_ITEM" },
+					"required":    true,
+					"enum":        []string{"BANNED_USER", "DENIED_REFUND", "GRANTED_REPLACEMENT_ITEM"},
 				},
 			}),
 			mcp.Description("Parameters object containing: reason (enum) [BANNED_USER, DENIED_REFUND, GRANTED_REPLACEMENT_ITEM] [required]"),
@@ -45,19 +44,19 @@ func GetPaymentEnginePaymentTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"amount": map[string]any{
-					"type": "number",
+					"type":        "number",
 					"description": "amount parameter",
-					"required": true,
+					"required":    true,
 				},
 				"currency": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "currency parameter",
-					"required": true,
+					"required":    true,
 				},
 				"reason": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "reason parameter",
-					"enum": []string{ "CUSTOMER_SERVICE", "FRIENDLY_FRAUD", "MALICIOUS_FRAUD" },
+					"enum":        []string{"CUSTOMER_SERVICE", "FRIENDLY_FRAUD", "MALICIOUS_FRAUD"},
 				},
 			}),
 			mcp.Description("Parameters object containing: amount (number) [required], currency (string) [required], reason (enum) [CUSTOMER_SERVICE, FRIENDLY_FRAUD, MALICIOUS_FRAUD]"),
@@ -84,12 +83,10 @@ func GetPaymentEnginePaymentTools() []mcp.Tool {
 	)
 	tools = append(tools, paymentenginepayment_get_Tool)
 
-
 	return tools
 }
 
 // PaymentEnginePayment handlers
-
 
 // HandlePaymentenginepayment_post_dispute handles the paymentenginepayment_post_dispute tool with context-based auth
 func HandlePaymentenginepayment_post_dispute(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -119,8 +116,6 @@ func HandlePaymentenginepayment_post_dispute(ctx context.Context, request mcp.Ca
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Paymentenginepayment_post_dispute(args)
 	if err != nil {
@@ -135,7 +130,6 @@ func HandlePaymentenginepayment_post_dispute(ctx context.Context, request mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePaymentenginepayment_post_refunds handles the paymentenginepayment_post_refunds tool with context-based auth
 func HandlePaymentenginepayment_post_refunds(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -165,8 +159,6 @@ func HandlePaymentenginepayment_post_refunds(ctx context.Context, request mcp.Ca
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Paymentenginepayment_post_refunds(args)
 	if err != nil {
@@ -181,7 +173,6 @@ func HandlePaymentenginepayment_post_refunds(ctx context.Context, request mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePaymentenginepayment_get_ handles the paymentenginepayment_get_ tool with context-based auth
 func HandlePaymentenginepayment_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -222,8 +213,6 @@ func HandlePaymentenginepayment_get_(ctx context.Context, request mcp.CallToolRe
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Paymentenginepayment_get_(args)
 	if err != nil {
@@ -238,4 +227,3 @@ func HandlePaymentenginepayment_get_(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

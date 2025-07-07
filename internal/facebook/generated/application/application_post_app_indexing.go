@@ -15,7 +15,7 @@ import (
 
 // ToolApplication_post_app_indexing returns the MCP tool definition for application_post_app_indexing
 func ToolApplication_post_app_indexing() mcp.Tool {
-	
+
 	// Params object accepts: app_version (string), device_session_id (string), extra_info (string), platform (applicationapp_indexing_platform_enum_param), request_type (applicationapp_indexing_request_type_enum_param), tree (map)
 	return mcp.NewTool("application_post_app_indexing",
 		mcp.WithDescription("POST app_indexing for Application"),
@@ -23,33 +23,33 @@ func ToolApplication_post_app_indexing() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"app_version": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "app_version parameter",
-					"required": true,
+					"required":    true,
 				},
 				"device_session_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "device_session_id parameter",
 				},
 				"extra_info": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "extra_info parameter",
 				},
 				"platform": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "platform parameter",
-					"required": true,
-					"enum": []string{ "ANDROID", "IOS" },
+					"required":    true,
+					"enum":        []string{"ANDROID", "IOS"},
 				},
 				"request_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "request_type parameter",
-					"enum": []string{ "APP_INDEXING", "BUTTON_SAMPLING", "PLUGIN" },
+					"enum":        []string{"APP_INDEXING", "BUTTON_SAMPLING", "PLUGIN"},
 				},
 				"tree": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "tree parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: app_version (string) [required], device_session_id (string), extra_info (string), platform (enum) [ANDROID, IOS] [required], request_type (enum) [APP_INDEXING, BUTTON_SAMPLING, PLUGIN], tree (object) [required]"),
@@ -82,8 +82,6 @@ func HandleApplication_post_app_indexing(ctx context.Context, request mcp.CallTo
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Application_post_app_indexing(accessToken, args)
 	if err != nil {
@@ -102,20 +100,18 @@ func HandleApplication_post_app_indexing(ctx context.Context, request mcp.CallTo
 // Application_post_app_indexing performs POST app_indexing for Application
 func Application_post_app_indexing(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/app_indexing")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

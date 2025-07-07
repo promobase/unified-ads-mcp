@@ -5,10 +5,10 @@ package constants
 // AdAccountDefaultObjectiveFields contains field name constants for AdAccountDefaultObjective objects
 var AdAccountDefaultObjectiveFields = struct {
 	DefaultObjectiveForUser string
-	ObjectiveForLevel string
+	ObjectiveForLevel       string
 }{
 	DefaultObjectiveForUser: "default_objective_for_user",
-	ObjectiveForLevel: "objective_for_level",
+	ObjectiveForLevel:       "objective_for_level",
 }
 
 // AdAccountDefaultObjectiveFieldsList contains all available fields for AdAccountDefaultObjective objects

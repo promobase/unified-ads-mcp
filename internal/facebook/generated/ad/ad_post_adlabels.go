@@ -15,7 +15,7 @@ import (
 
 // ToolAd_post_adlabels returns the MCP tool definition for ad_post_adlabels
 func ToolAd_post_adlabels() mcp.Tool {
-	
+
 	// Params object accepts: adlabels (list<Object>), execution_options (list<adgroupadlabels_execution_options_enum_param>)
 	return mcp.NewTool("ad_post_adlabels",
 		mcp.WithDescription("POST adlabels for Ad"),
@@ -27,16 +27,16 @@ func ToolAd_post_adlabels() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"adlabels": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "adlabels parameter",
-					"required": true,
-					"items": map[string]any{"type": "object"},
+					"required":    true,
+					"items":       map[string]any{"type": "object"},
 				},
 				"execution_options": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "execution_options parameter",
-					"enum": []string{ "validate_only" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"validate_only"},
+					"items":       map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: adlabels (array<object>) [required], execution_options (array<enum>) [validate_only]"),
@@ -76,8 +76,6 @@ func HandleAd_post_adlabels(ctx context.Context, request mcp.CallToolRequest) (*
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Ad_post_adlabels(accessToken, args)
 	if err != nil {
@@ -96,35 +94,33 @@ func HandleAd_post_adlabels(ctx context.Context, request mcp.CallToolRequest) (*
 // Ad_post_adlabels performs POST adlabels for Ad
 func Ad_post_adlabels(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	// Extract ad_id for URL construction
 	adId, ok := args["ad_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("ad_id is required for ad_post_adlabels")
 	}
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/%sadlabels", adId)
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["ad_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "ad_id" != "ad_id" {
 			urlParams.Set("ad_id", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "params" != "ad_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-		
-	}
 
+	}
 
 	// Make HTTP request
 	var resp *http.Response

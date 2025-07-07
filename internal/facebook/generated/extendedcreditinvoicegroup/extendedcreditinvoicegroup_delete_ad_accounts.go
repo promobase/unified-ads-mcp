@@ -15,7 +15,7 @@ import (
 
 // ToolExtendedcreditinvoicegroup_delete_ad_accounts returns the MCP tool definition for extendedcreditinvoicegroup_delete_ad_accounts
 func ToolExtendedcreditinvoicegroup_delete_ad_accounts() mcp.Tool {
-	
+
 	// Params object accepts: ad_account_id (string)
 	return mcp.NewTool("extendedcreditinvoicegroup_delete_ad_accounts",
 		mcp.WithDescription("DELETE ad_accounts for ExtendedCreditInvoiceGroup"),
@@ -23,9 +23,9 @@ func ToolExtendedcreditinvoicegroup_delete_ad_accounts() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"ad_account_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "ad_account_id parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: ad_account_id (string) [required]"),
@@ -58,8 +58,6 @@ func HandleExtendedcreditinvoicegroup_delete_ad_accounts(ctx context.Context, re
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Extendedcreditinvoicegroup_delete_ad_accounts(accessToken, args)
 	if err != nil {
@@ -78,20 +76,18 @@ func HandleExtendedcreditinvoicegroup_delete_ad_accounts(ctx context.Context, re
 // Extendedcreditinvoicegroup_delete_ad_accounts performs DELETE ad_accounts for ExtendedCreditInvoiceGroup
 func Extendedcreditinvoicegroup_delete_ad_accounts(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/ad_accounts")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

@@ -17,7 +17,7 @@ import (
 // ToolThirdpartypartnerpanelscheduled_get_ returns the MCP tool definition for thirdpartypartnerpanelscheduled_get_
 func ToolThirdpartypartnerpanelscheduled_get_() mcp.Tool {
 	// Available fields for ThirdPartyPartnerPanelScheduled: adentities_ids, cadence, country, created_time, description, end_time, id, modified_time, owner_instance_id, owner_panel_id, owner_panel_name, start_time, status, study_type
-	
+
 	return mcp.NewTool("thirdpartypartnerpanelscheduled_get_",
 		mcp.WithDescription("GET  for ThirdPartyPartnerPanelScheduled"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleThirdpartypartnerpanelscheduled_get_(ctx context.Context, request mcp
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Thirdpartypartnerpanelscheduled_get_(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleThirdpartypartnerpanelscheduled_get_(ctx context.Context, request mcp
 // Thirdpartypartnerpanelscheduled_get_ performs GET  for ThirdPartyPartnerPanelScheduled
 func Thirdpartypartnerpanelscheduled_get_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

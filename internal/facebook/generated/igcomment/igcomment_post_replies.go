@@ -15,14 +15,14 @@ import (
 
 // ToolIgcomment_post_replies returns the MCP tool definition for igcomment_post_replies
 func ToolIgcomment_post_replies() mcp.Tool {
-	
+
 	// Params object accepts: message (string)
 	return mcp.NewTool("igcomment_post_replies",
 		mcp.WithDescription("POST replies for IGComment"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"message": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "message parameter",
 				},
 			}),
@@ -54,8 +54,6 @@ func HandleIgcomment_post_replies(ctx context.Context, request mcp.CallToolReque
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Igcomment_post_replies(accessToken, args)
 	if err != nil {
@@ -74,20 +72,18 @@ func HandleIgcomment_post_replies(ctx context.Context, request mcp.CallToolReque
 // Igcomment_post_replies performs POST replies for IGComment
 func Igcomment_post_replies(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/replies")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

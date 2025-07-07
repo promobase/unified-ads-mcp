@@ -6,17 +6,17 @@ import "time"
 
 // ThirdPartyPartnerPanelRequest represents a Facebook ThirdPartyPartnerPanelRequest object
 type ThirdPartyPartnerPanelRequest struct {
-	Adentities_ids []string `json:"adentities_ids"`
-	Country string `json:"country"`
-	Created_time time.Time `json:"created_time"`
-	Description string `json:"description"`
-	Id string `json:"id"`
-	Modified_time time.Time `json:"modified_time"`
-	Owner_instance_id string `json:"owner_instance_id"`
-	Owner_panel_id string `json:"owner_panel_id"`
-	Owner_panel_name string `json:"owner_panel_name"`
-	Status string `json:"status"`
-	Study_end_time time.Time `json:"study_end_time"`
-	Study_start_time time.Time `json:"study_start_time"`
-	Study_type string `json:"study_type"`
+	Adentities_ids    []string  `json:"adentities_ids"`
+	Country           string    `json:"country"`
+	Created_time      time.Time `json:"created_time"`
+	Description       string    `json:"description"`
+	Id                string    `json:"id"`
+	Modified_time     time.Time `json:"modified_time"`
+	Owner_instance_id string    `json:"owner_instance_id"`
+	Owner_panel_id    string    `json:"owner_panel_id"`
+	Owner_panel_name  string    `json:"owner_panel_name"`
+	Status            string    `json:"status"`
+	Study_end_time    time.Time `json:"study_end_time"`
+	Study_start_time  time.Time `json:"study_start_time"`
+	Study_type        string    `json:"study_type"`
 }

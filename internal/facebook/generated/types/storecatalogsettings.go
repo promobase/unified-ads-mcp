@@ -4,6 +4,6 @@ package types
 
 // StoreCatalogSettings represents a Facebook StoreCatalogSettings object
 type StoreCatalogSettings struct {
-	Id string `json:"id"`
-	Page *Page `json:"page"`
+	Id   string `json:"id"`
+	Page *Page  `json:"page"`
 }

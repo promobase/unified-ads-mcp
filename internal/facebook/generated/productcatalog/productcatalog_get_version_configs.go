@@ -17,7 +17,7 @@ import (
 // ToolProductcatalog_get_version_configs returns the MCP tool definition for productcatalog_get_version_configs
 func ToolProductcatalog_get_version_configs() mcp.Tool {
 	// Available fields for CatalogContentVersionConfig: id, name, version
-	
+
 	return mcp.NewTool("productcatalog_get_version_configs",
 		mcp.WithDescription("GET version_configs for ProductCatalog"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleProductcatalog_get_version_configs(ctx context.Context, request mcp.C
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Productcatalog_get_version_configs(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleProductcatalog_get_version_configs(ctx context.Context, request mcp.C
 // Productcatalog_get_version_configs performs GET version_configs for ProductCatalog
 func Productcatalog_get_version_configs(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/version_configs")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

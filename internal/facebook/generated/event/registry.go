@@ -24,7 +24,6 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolEvent_get_videos())
 	tools = append(tools, ToolEvent_get_())
 
-
 	return tools
 }
 
@@ -43,7 +42,6 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers["event_get_ticket_tiers"] = HandleEvent_get_ticket_tiers
 	handlers["event_get_videos"] = HandleEvent_get_videos
 	handlers["event_get_"] = HandleEvent_get_
-
 
 	return handlers
 }

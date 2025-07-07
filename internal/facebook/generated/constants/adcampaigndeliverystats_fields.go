@@ -4,19 +4,19 @@ package constants
 
 // AdCampaignDeliveryStatsFields contains field name constants for AdCampaignDeliveryStats objects
 var AdCampaignDeliveryStatsFields = struct {
-	BidRecommendation string
-	CurrentAverageCost string
+	BidRecommendation     string
+	CurrentAverageCost    string
 	LastSignificantEditTs string
 	LearningStageExitInfo string
-	LearningStageInfo string
-	UnsupportedFeatures string
+	LearningStageInfo     string
+	UnsupportedFeatures   string
 }{
-	BidRecommendation: "bid_recommendation",
-	CurrentAverageCost: "current_average_cost",
+	BidRecommendation:     "bid_recommendation",
+	CurrentAverageCost:    "current_average_cost",
 	LastSignificantEditTs: "last_significant_edit_ts",
 	LearningStageExitInfo: "learning_stage_exit_info",
-	LearningStageInfo: "learning_stage_info",
-	UnsupportedFeatures: "unsupported_features",
+	LearningStageInfo:     "learning_stage_info",
+	UnsupportedFeatures:   "unsupported_features",
 }
 
 // AdCampaignDeliveryStatsFieldsList contains all available fields for AdCampaignDeliveryStats objects

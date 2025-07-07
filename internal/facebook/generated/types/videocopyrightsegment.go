@@ -4,7 +4,7 @@ package types
 
 // VideoCopyrightSegment represents a Facebook VideoCopyrightSegment object
 type VideoCopyrightSegment struct {
-	Duration_in_sec float64 `json:"duration_in_sec"`
-	Media_type string `json:"media_type"`
+	Duration_in_sec   float64 `json:"duration_in_sec"`
+	Media_type        string  `json:"media_type"`
 	Start_time_in_sec float64 `json:"start_time_in_sec"`
 }

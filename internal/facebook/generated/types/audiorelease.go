@@ -6,20 +6,20 @@ import "time"
 
 // AudioRelease represents a Facebook AudioRelease object
 type AudioRelease struct {
-	Album_title string `json:"album_title"`
+	Album_title               string        `json:"album_title"`
 	Asset_availability_status []interface{} `json:"asset_availability_status"`
-	Audio_availability_status string `json:"audio_availability_status"`
-	Audio_release_image_uri string `json:"audio_release_image_uri"`
-	Created_time time.Time `json:"created_time"`
-	Displayed_artist string `json:"displayed_artist"`
-	Ean string `json:"ean"`
-	Genre string `json:"genre"`
-	Grid string `json:"grid"`
-	Id string `json:"id"`
-	Isrc string `json:"isrc"`
-	Label_name string `json:"label_name"`
-	Original_release_date time.Time `json:"original_release_date"`
-	Parental_warning_type string `json:"parental_warning_type"`
-	Proprietary_id string `json:"proprietary_id"`
-	Upc string `json:"upc"`
+	Audio_availability_status string        `json:"audio_availability_status"`
+	Audio_release_image_uri   string        `json:"audio_release_image_uri"`
+	Created_time              time.Time     `json:"created_time"`
+	Displayed_artist          string        `json:"displayed_artist"`
+	Ean                       string        `json:"ean"`
+	Genre                     string        `json:"genre"`
+	Grid                      string        `json:"grid"`
+	Id                        string        `json:"id"`
+	Isrc                      string        `json:"isrc"`
+	Label_name                string        `json:"label_name"`
+	Original_release_date     time.Time     `json:"original_release_date"`
+	Parental_warning_type     string        `json:"parental_warning_type"`
+	Proprietary_id            string        `json:"proprietary_id"`
+	Upc                       string        `json:"upc"`
 }

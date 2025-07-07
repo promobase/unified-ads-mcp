@@ -15,7 +15,7 @@ import (
 
 // ToolPageusermessagethreadlabel_delete_label returns the MCP tool definition for pageusermessagethreadlabel_delete_label
 func ToolPageusermessagethreadlabel_delete_label() mcp.Tool {
-	
+
 	// Params object accepts: user (int)
 	return mcp.NewTool("pageusermessagethreadlabel_delete_label",
 		mcp.WithDescription("DELETE label for PageUserMessageThreadLabel"),
@@ -23,9 +23,9 @@ func ToolPageusermessagethreadlabel_delete_label() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"user": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "user parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: user (integer) [required]"),
@@ -58,8 +58,6 @@ func HandlePageusermessagethreadlabel_delete_label(ctx context.Context, request 
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Pageusermessagethreadlabel_delete_label(accessToken, args)
 	if err != nil {
@@ -78,20 +76,18 @@ func HandlePageusermessagethreadlabel_delete_label(ctx context.Context, request 
 // Pageusermessagethreadlabel_delete_label performs DELETE label for PageUserMessageThreadLabel
 func Pageusermessagethreadlabel_delete_label(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/label")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

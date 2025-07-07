@@ -15,7 +15,7 @@ import (
 
 // ToolAdaccount_post_adcreatives returns the MCP tool definition for adaccount_post_adcreatives
 func ToolAdaccount_post_adcreatives() mcp.Tool {
-	
+
 	// Params object accepts: actor_id (unsigned int), ad_disclaimer_spec (map), adlabels (list<Object>), applink_treatment (adaccountadcreatives_applink_treatment_enum_param), asset_feed_spec (Object), authorization_category (adaccountadcreatives_authorization_category_enum_param), body (string), branded_content (map), branded_content_sponsor_page_id (string), bundle_folder_id (string), call_to_action (Object), categorization_criteria (adaccountadcreatives_categorization_criteria_enum_param), category_media_source (adaccountadcreatives_category_media_source_enum_param), contextual_multi_ads (map), creative_sourcing_spec (map), degrees_of_freedom_spec (map), destination_set_id (string), dynamic_ad_voice (adaccountadcreatives_dynamic_ad_voice_enum_param), enable_launch_instant_app (bool), facebook_branded_content (map), image_crops (map), image_file (string), image_hash (string), image_url (string), instagram_branded_content (map), instagram_permalink_url (string), instagram_user_id (string), interactive_components_spec (map), is_dco_internal (bool), link_og_id (string), link_url (string), name (string), object_id (unsigned int), object_story_id (string), object_story_spec (AdCreativeObjectStorySpec), object_type (string), object_url (string), omnichannel_link_spec (map), page_welcome_message (string), place_page_set_id (string), platform_customizations (Object), playable_asset_id (string), portrait_customizations (map), product_set_id (string), recommender_settings (map), regional_regulation_disclaimer_spec (map), source_instagram_media_id (string), template_url (string), template_url_spec (string), thumbnail_url (string), title (string), url_tags (string), use_page_actor_override (bool)
 	return mcp.NewTool("adaccount_post_adcreatives",
 		mcp.WithDescription("POST adcreatives for AdAccount"),
@@ -26,221 +26,221 @@ func ToolAdaccount_post_adcreatives() mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"actor_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "actor_id parameter",
 				},
 				"ad_disclaimer_spec": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "ad_disclaimer_spec parameter",
 				},
 				"adlabels": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "adlabels parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"applink_treatment": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "applink_treatment parameter",
-					"enum": []string{ "automatic", "deeplink_with_appstore_fallback", "deeplink_with_web_fallback", "web_only" },
+					"enum":        []string{"automatic", "deeplink_with_appstore_fallback", "deeplink_with_web_fallback", "web_only"},
 				},
 				"asset_feed_spec": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "asset_feed_spec parameter",
 				},
 				"authorization_category": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "authorization_category parameter",
-					"enum": []string{ "NONE", "POLITICAL", "POLITICAL_WITH_DIGITALLY_CREATED_MEDIA" },
+					"enum":        []string{"NONE", "POLITICAL", "POLITICAL_WITH_DIGITALLY_CREATED_MEDIA"},
 				},
 				"body": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "body parameter",
 				},
 				"branded_content": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "branded_content parameter",
 				},
 				"branded_content_sponsor_page_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "branded_content_sponsor_page_id parameter",
 				},
 				"bundle_folder_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "bundle_folder_id parameter",
 				},
 				"call_to_action": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "call_to_action parameter",
 				},
 				"categorization_criteria": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "categorization_criteria parameter",
-					"enum": []string{ "brand", "category", "product_type" },
+					"enum":        []string{"brand", "category", "product_type"},
 				},
 				"category_media_source": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "category_media_source parameter",
-					"enum": []string{ "CATEGORY", "MIXED", "PRODUCTS_COLLAGE", "PRODUCTS_SLIDESHOW" },
+					"enum":        []string{"CATEGORY", "MIXED", "PRODUCTS_COLLAGE", "PRODUCTS_SLIDESHOW"},
 				},
 				"contextual_multi_ads": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "contextual_multi_ads parameter",
 				},
 				"creative_sourcing_spec": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "creative_sourcing_spec parameter",
 				},
 				"degrees_of_freedom_spec": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "degrees_of_freedom_spec parameter",
 				},
 				"destination_set_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "destination_set_id parameter",
 				},
 				"dynamic_ad_voice": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "dynamic_ad_voice parameter",
-					"enum": []string{ "DYNAMIC", "STORY_OWNER" },
+					"enum":        []string{"DYNAMIC", "STORY_OWNER"},
 				},
 				"enable_launch_instant_app": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "enable_launch_instant_app parameter",
 				},
 				"facebook_branded_content": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "facebook_branded_content parameter",
 				},
 				"image_crops": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "image_crops parameter",
 				},
 				"image_file": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "image_file parameter",
 				},
 				"image_hash": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "image_hash parameter",
 				},
 				"image_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "image_url parameter",
 				},
 				"instagram_branded_content": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "instagram_branded_content parameter",
 				},
 				"instagram_permalink_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "instagram_permalink_url parameter",
 				},
 				"instagram_user_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "instagram_user_id parameter",
 				},
 				"interactive_components_spec": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "interactive_components_spec parameter",
 				},
 				"is_dco_internal": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_dco_internal parameter",
 				},
 				"link_og_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "link_og_id parameter",
 				},
 				"link_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "link_url parameter",
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
 				},
 				"object_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "object_id parameter",
 				},
 				"object_story_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "object_story_id parameter",
 				},
 				"object_story_spec": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "object_story_spec parameter",
 				},
 				"object_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "object_type parameter",
 				},
 				"object_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "object_url parameter",
 				},
 				"omnichannel_link_spec": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "omnichannel_link_spec parameter",
 				},
 				"page_welcome_message": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "page_welcome_message parameter",
 				},
 				"place_page_set_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "place_page_set_id parameter",
 				},
 				"platform_customizations": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "platform_customizations parameter",
 				},
 				"playable_asset_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "playable_asset_id parameter",
 				},
 				"portrait_customizations": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "portrait_customizations parameter",
 				},
 				"product_set_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "product_set_id parameter",
 				},
 				"recommender_settings": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "recommender_settings parameter",
 				},
 				"regional_regulation_disclaimer_spec": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "regional_regulation_disclaimer_spec parameter",
 				},
 				"source_instagram_media_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "source_instagram_media_id parameter",
 				},
 				"template_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "template_url parameter",
 				},
 				"template_url_spec": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "template_url_spec parameter",
 				},
 				"thumbnail_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "thumbnail_url parameter",
 				},
 				"title": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "title parameter",
 				},
 				"url_tags": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "url_tags parameter",
 				},
 				"use_page_actor_override": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "use_page_actor_override parameter",
 				},
 			}),
@@ -279,8 +279,6 @@ func HandleAdaccount_post_adcreatives(ctx context.Context, request mcp.CallToolR
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Adaccount_post_adcreatives(accessToken, args)
 	if err != nil {
@@ -299,35 +297,33 @@ func HandleAdaccount_post_adcreatives(ctx context.Context, request mcp.CallToolR
 // Adaccount_post_adcreatives performs POST adcreatives for AdAccount
 func Adaccount_post_adcreatives(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	// Extract account_id for URL construction
 	accountId, ok := args["account_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_post_adcreatives")
 	}
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%sadcreatives", accountId)
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-		
-	}
 
+	}
 
 	// Make HTTP request
 	var resp *http.Response

@@ -15,7 +15,7 @@ import (
 
 // ToolProductcatalog_post_marketplace_partner_signals returns the MCP tool definition for productcatalog_post_marketplace_partner_signals
 func ToolProductcatalog_post_marketplace_partner_signals() mcp.Tool {
-	
+
 	// Params object accepts: event_name (productcatalogmarketplace_partner_signals_event_name_enum_param), event_source_url (string), event_time (datetime), order_data (map), user_data (map)
 	return mcp.NewTool("productcatalog_post_marketplace_partner_signals",
 		mcp.WithDescription("POST marketplace_partner_signals for ProductCatalog"),
@@ -23,28 +23,28 @@ func ToolProductcatalog_post_marketplace_partner_signals() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"event_name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "event_name parameter",
-					"required": true,
-					"enum": []string{ "ADD_TO_CART", "PURCHASE", "TEST", "VIEW_ITEM" },
+					"required":    true,
+					"enum":        []string{"ADD_TO_CART", "PURCHASE", "TEST", "VIEW_ITEM"},
 				},
 				"event_source_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "event_source_url parameter",
 				},
 				"event_time": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "event_time parameter",
-					"required": true,
+					"required":    true,
 				},
 				"order_data": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "order_data parameter",
 				},
 				"user_data": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "user_data parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: event_name (enum) [ADD_TO_CART, PURCHASE, TEST, VIEW_ITEM] [required], event_source_url (string), event_time (datetime) [required], order_data (object), user_data (object) [required]"),
@@ -77,8 +77,6 @@ func HandleProductcatalog_post_marketplace_partner_signals(ctx context.Context, 
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Productcatalog_post_marketplace_partner_signals(accessToken, args)
 	if err != nil {
@@ -97,20 +95,18 @@ func HandleProductcatalog_post_marketplace_partner_signals(ctx context.Context, 
 // Productcatalog_post_marketplace_partner_signals performs POST marketplace_partner_signals for ProductCatalog
 func Productcatalog_post_marketplace_partner_signals(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/marketplace_partner_signals")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

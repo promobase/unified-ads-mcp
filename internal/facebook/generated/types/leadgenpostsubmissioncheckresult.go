@@ -4,7 +4,7 @@ package types
 
 // LeadGenPostSubmissionCheckResult represents a Facebook LeadGenPostSubmissionCheckResult object
 type LeadGenPostSubmissionCheckResult struct {
-	Api_call_result string `json:"api_call_result"`
-	Api_error_message string `json:"api_error_message"`
+	Api_call_result      string `json:"api_call_result"`
+	Api_error_message    string `json:"api_error_message"`
 	Shown_thank_you_page string `json:"shown_thank_you_page"`
 }

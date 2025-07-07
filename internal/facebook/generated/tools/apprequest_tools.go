@@ -17,7 +17,6 @@ import (
 func GetAppRequestTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// apprequest_delete_ tool
 	// Params object accepts: ids (list<string>)
 	apprequest_delete_Tool := mcp.NewTool("apprequest_delete_",
@@ -26,10 +25,10 @@ func GetAppRequestTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"ids": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "ids parameter",
-					"required": true,
-					"items": map[string]any{"type": "string"},
+					"required":    true,
+					"items":       map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: ids (array<string>) [required]"),
@@ -56,12 +55,10 @@ func GetAppRequestTools() []mcp.Tool {
 	)
 	tools = append(tools, apprequest_get_Tool)
 
-
 	return tools
 }
 
 // AppRequest handlers
-
 
 // HandleApprequest_delete_ handles the apprequest_delete_ tool with context-based auth
 func HandleApprequest_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -91,8 +88,6 @@ func HandleApprequest_delete_(ctx context.Context, request mcp.CallToolRequest) 
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Apprequest_delete_(args)
 	if err != nil {
@@ -107,7 +102,6 @@ func HandleApprequest_delete_(ctx context.Context, request mcp.CallToolRequest) 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleApprequest_get_ handles the apprequest_get_ tool with context-based auth
 func HandleApprequest_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -148,8 +142,6 @@ func HandleApprequest_get_(ctx context.Context, request mcp.CallToolRequest) (*m
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Apprequest_get_(args)
 	if err != nil {
@@ -164,4 +156,3 @@ func HandleApprequest_get_(ctx context.Context, request mcp.CallToolRequest) (*m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

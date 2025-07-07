@@ -15,7 +15,7 @@ import (
 
 // ToolExtendedcredit_post_extended_credit_invoice_groups returns the MCP tool definition for extendedcredit_post_extended_credit_invoice_groups
 func ToolExtendedcredit_post_extended_credit_invoice_groups() mcp.Tool {
-	
+
 	// Params object accepts: emails (list<string>), name (string)
 	return mcp.NewTool("extendedcredit_post_extended_credit_invoice_groups",
 		mcp.WithDescription("POST extended_credit_invoice_groups for ExtendedCredit"),
@@ -23,15 +23,15 @@ func ToolExtendedcredit_post_extended_credit_invoice_groups() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"emails": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "emails parameter",
-					"required": true,
-					"items": map[string]any{"type": "string"},
+					"required":    true,
+					"items":       map[string]any{"type": "string"},
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: emails (array<string>) [required], name (string) [required]"),
@@ -64,8 +64,6 @@ func HandleExtendedcredit_post_extended_credit_invoice_groups(ctx context.Contex
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Extendedcredit_post_extended_credit_invoice_groups(accessToken, args)
 	if err != nil {
@@ -84,20 +82,18 @@ func HandleExtendedcredit_post_extended_credit_invoice_groups(ctx context.Contex
 // Extendedcredit_post_extended_credit_invoice_groups performs POST extended_credit_invoice_groups for ExtendedCredit
 func Extendedcredit_post_extended_credit_invoice_groups(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/extended_credit_invoice_groups")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

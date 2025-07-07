@@ -17,7 +17,6 @@ import (
 func GetOffsitePixelTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// offsitepixel_get_ tool
 	// Available fields for OffsitePixel: creator, id, js_pixel, last_firing_time, name, tag
 	// Params object accepts: value (unsigned int)
@@ -26,7 +25,7 @@ func GetOffsitePixelTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"value": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "value parameter",
 				},
 			}),
@@ -47,12 +46,10 @@ func GetOffsitePixelTools() []mcp.Tool {
 	)
 	tools = append(tools, offsitepixel_get_Tool)
 
-
 	return tools
 }
 
 // OffsitePixel handlers
-
 
 // HandleOffsitepixel_get_ handles the offsitepixel_get_ tool with context-based auth
 func HandleOffsitepixel_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -105,8 +102,6 @@ func HandleOffsitepixel_get_(ctx context.Context, request mcp.CallToolRequest) (
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Offsitepixel_get_(args)
 	if err != nil {
@@ -121,4 +116,3 @@ func HandleOffsitepixel_get_(ctx context.Context, request mcp.CallToolRequest) (
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

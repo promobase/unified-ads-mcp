@@ -17,7 +17,7 @@ import (
 // ToolIgmedia_get_comments returns the MCP tool definition for igmedia_get_comments
 func ToolIgmedia_get_comments() mcp.Tool {
 	// Available fields for IGComment: from, hidden, id, legacy_instagram_comment_id, like_count, media, parent_id, text, timestamp, user, username
-	
+
 	return mcp.NewTool("igmedia_get_comments",
 		mcp.WithDescription("GET comments for IGMedia"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleIgmedia_get_comments(ctx context.Context, request mcp.CallToolRequest
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Igmedia_get_comments(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleIgmedia_get_comments(ctx context.Context, request mcp.CallToolRequest
 // Igmedia_get_comments performs GET comments for IGMedia
 func Igmedia_get_comments(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/comments")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

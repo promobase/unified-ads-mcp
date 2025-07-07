@@ -4,19 +4,19 @@ package constants
 
 // AdCreativePlaceDataFields contains field name constants for AdCreativePlaceData objects
 var AdCreativePlaceDataFields = struct {
-	AddressString string
-	Label string
-	Latitude string
+	AddressString    string
+	Label            string
+	Latitude         string
 	LocationSourceId string
-	Longitude string
-	FieldType string
+	Longitude        string
+	FieldType        string
 }{
-	AddressString: "address_string",
-	Label: "label",
-	Latitude: "latitude",
+	AddressString:    "address_string",
+	Label:            "label",
+	Latitude:         "latitude",
 	LocationSourceId: "location_source_id",
-	Longitude: "longitude",
-	FieldType: "type",
+	Longitude:        "longitude",
+	FieldType:        "type",
 }
 
 // AdCreativePlaceDataFieldsList contains all available fields for AdCreativePlaceData objects

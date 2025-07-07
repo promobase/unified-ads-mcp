@@ -17,7 +17,7 @@ import (
 // ToolUser_get_apprequestformerrecipients returns the MCP tool definition for user_get_apprequestformerrecipients
 func ToolUser_get_apprequestformerrecipients() mcp.Tool {
 	// Available fields for AppRequestFormerRecipient: id, recipient_id
-	
+
 	return mcp.NewTool("user_get_apprequestformerrecipients",
 		mcp.WithDescription("GET apprequestformerrecipients for User"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleUser_get_apprequestformerrecipients(ctx context.Context, request mcp.
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := User_get_apprequestformerrecipients(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleUser_get_apprequestformerrecipients(ctx context.Context, request mcp.
 // User_get_apprequestformerrecipients performs GET apprequestformerrecipients for User
 func User_get_apprequestformerrecipients(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/apprequestformerrecipients")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

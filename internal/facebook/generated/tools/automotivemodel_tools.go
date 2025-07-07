@@ -17,7 +17,6 @@ import (
 func GetAutomotiveModelTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// automotivemodel_get_channels_to_integrity_status tool
 	// Available fields for CatalogItemChannelsToIntegrityStatus: channels, rejection_information
 	automotivemodel_get_channels_to_integrity_statusTool := mcp.NewTool("automotivemodel_get_channels_to_integrity_status",
@@ -45,14 +44,14 @@ func GetAutomotiveModelTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"keys": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "keys parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "type parameter",
-					"enum": []string{ "COUNTRY", "LANGUAGE", "LANGUAGE_AND_COUNTRY" },
+					"enum":        []string{"COUNTRY", "LANGUAGE", "LANGUAGE_AND_COUNTRY"},
 				},
 			}),
 			mcp.Description("Parameters object containing: keys (array<string>), type (enum) [COUNTRY, LANGUAGE, LANGUAGE_AND_COUNTRY]"),
@@ -110,12 +109,10 @@ func GetAutomotiveModelTools() []mcp.Tool {
 	)
 	tools = append(tools, automotivemodel_get_Tool)
 
-
 	return tools
 }
 
 // AutomotiveModel handlers
-
 
 // HandleAutomotivemodel_get_channels_to_integrity_status handles the automotivemodel_get_channels_to_integrity_status tool with context-based auth
 func HandleAutomotivemodel_get_channels_to_integrity_status(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -156,8 +153,6 @@ func HandleAutomotivemodel_get_channels_to_integrity_status(ctx context.Context,
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Automotivemodel_get_channels_to_integrity_status(args)
 	if err != nil {
@@ -172,7 +167,6 @@ func HandleAutomotivemodel_get_channels_to_integrity_status(ctx context.Context,
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAutomotivemodel_get_override_details handles the automotivemodel_get_override_details tool with context-based auth
 func HandleAutomotivemodel_get_override_details(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -225,8 +219,6 @@ func HandleAutomotivemodel_get_override_details(ctx context.Context, request mcp
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Automotivemodel_get_override_details(args)
 	if err != nil {
@@ -241,7 +233,6 @@ func HandleAutomotivemodel_get_override_details(ctx context.Context, request mcp
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAutomotivemodel_get_videos_metadata handles the automotivemodel_get_videos_metadata tool with context-based auth
 func HandleAutomotivemodel_get_videos_metadata(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -282,8 +273,6 @@ func HandleAutomotivemodel_get_videos_metadata(ctx context.Context, request mcp.
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Automotivemodel_get_videos_metadata(args)
 	if err != nil {
@@ -298,7 +287,6 @@ func HandleAutomotivemodel_get_videos_metadata(ctx context.Context, request mcp.
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAutomotivemodel_get_ handles the automotivemodel_get_ tool with context-based auth
 func HandleAutomotivemodel_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -339,8 +327,6 @@ func HandleAutomotivemodel_get_(ctx context.Context, request mcp.CallToolRequest
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Automotivemodel_get_(args)
 	if err != nil {
@@ -355,4 +341,3 @@ func HandleAutomotivemodel_get_(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

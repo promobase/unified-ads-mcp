@@ -4,8 +4,8 @@ package types
 
 // ProductGroup represents a Facebook ProductGroup object
 type ProductGroup struct {
-	Id string `json:"id"`
-	Product_catalog *ProductCatalog `json:"product_catalog"`
-	Retailer_id string `json:"retailer_id"`
-	Variants []ProductVariant `json:"variants"`
+	Id              string           `json:"id"`
+	Product_catalog *ProductCatalog  `json:"product_catalog"`
+	Retailer_id     string           `json:"retailer_id"`
+	Variants        []ProductVariant `json:"variants"`
 }

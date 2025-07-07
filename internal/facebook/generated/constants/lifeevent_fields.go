@@ -5,21 +5,21 @@ package constants
 // LifeEventFields contains field name constants for LifeEvent objects
 var LifeEventFields = struct {
 	Description string
-	EndTime string
-	From string
-	Id string
-	IsHidden string
-	StartTime string
-	Title string
+	EndTime     string
+	From        string
+	Id          string
+	IsHidden    string
+	StartTime   string
+	Title       string
 	UpdatedTime string
 }{
 	Description: "description",
-	EndTime: "end_time",
-	From: "from",
-	Id: "id",
-	IsHidden: "is_hidden",
-	StartTime: "start_time",
-	Title: "title",
+	EndTime:     "end_time",
+	From:        "from",
+	Id:          "id",
+	IsHidden:    "is_hidden",
+	StartTime:   "start_time",
+	Title:       "title",
 	UpdatedTime: "updated_time",
 }
 

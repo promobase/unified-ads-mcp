@@ -5,12 +5,12 @@ package constants
 // AdAccountSubsidyAmountDetailsFields contains field name constants for AdAccountSubsidyAmountDetails objects
 var AdAccountSubsidyAmountDetailsFields = struct {
 	EnteredAmount string
-	FeeAmount string
-	TotalAmount string
+	FeeAmount     string
+	TotalAmount   string
 }{
 	EnteredAmount: "entered_amount",
-	FeeAmount: "fee_amount",
-	TotalAmount: "total_amount",
+	FeeAmount:     "fee_amount",
+	TotalAmount:   "total_amount",
 }
 
 // AdAccountSubsidyAmountDetailsFieldsList contains all available fields for AdAccountSubsidyAmountDetails objects

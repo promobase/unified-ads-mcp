@@ -17,7 +17,7 @@ import (
 // ToolIgmedia_get_children returns the MCP tool definition for igmedia_get_children
 func ToolIgmedia_get_children() mcp.Tool {
 	// Available fields for IGMedia: alt_text, boost_eligibility_info, caption, comments_count, copyright_check_information, id, ig_id, is_comment_enabled, is_shared_to_feed, legacy_instagram_media_id, like_count, media_product_type, media_type, media_url, owner, permalink, shortcode, thumbnail_url, timestamp, username, view_count
-	
+
 	return mcp.NewTool("igmedia_get_children",
 		mcp.WithDescription("GET children for IGMedia"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleIgmedia_get_children(ctx context.Context, request mcp.CallToolRequest
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Igmedia_get_children(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleIgmedia_get_children(ctx context.Context, request mcp.CallToolRequest
 // Igmedia_get_children performs GET children for IGMedia
 func Igmedia_get_children(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/children")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

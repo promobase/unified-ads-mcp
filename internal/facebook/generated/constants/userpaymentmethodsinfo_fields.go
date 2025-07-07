@@ -4,21 +4,21 @@ package constants
 
 // UserPaymentMethodsInfoFields contains field name constants for UserPaymentMethodsInfo objects
 var UserPaymentMethodsInfoFields = struct {
-	AccountId string
-	AvailableCardTypes string
-	AvailablePaymentMethods string
+	AccountId                      string
+	AvailableCardTypes             string
+	AvailablePaymentMethods        string
 	AvailablePaymentMethodsDetails string
-	Country string
-	Currency string
-	ExistingPaymentMethods string
+	Country                        string
+	Currency                       string
+	ExistingPaymentMethods         string
 }{
-	AccountId: "account_id",
-	AvailableCardTypes: "available_card_types",
-	AvailablePaymentMethods: "available_payment_methods",
+	AccountId:                      "account_id",
+	AvailableCardTypes:             "available_card_types",
+	AvailablePaymentMethods:        "available_payment_methods",
 	AvailablePaymentMethodsDetails: "available_payment_methods_details",
-	Country: "country",
-	Currency: "currency",
-	ExistingPaymentMethods: "existing_payment_methods",
+	Country:                        "country",
+	Currency:                       "currency",
+	ExistingPaymentMethods:         "existing_payment_methods",
 }
 
 // UserPaymentMethodsInfoFieldsList contains all available fields for UserPaymentMethodsInfo objects

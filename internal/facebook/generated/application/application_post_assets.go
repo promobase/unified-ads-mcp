@@ -15,7 +15,7 @@ import (
 
 // ToolApplication_post_assets returns the MCP tool definition for application_post_assets
 func ToolApplication_post_assets() mcp.Tool {
-	
+
 	// Params object accepts: asset (file), comment (string), type (string)
 	return mcp.NewTool("application_post_assets",
 		mcp.WithDescription("POST assets for Application"),
@@ -23,18 +23,18 @@ func ToolApplication_post_assets() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"asset": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "asset parameter",
-					"required": true,
+					"required":    true,
 				},
 				"comment": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "comment parameter",
 				},
 				"type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "type parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: asset (file) [required], comment (string), type (string) [required]"),
@@ -67,8 +67,6 @@ func HandleApplication_post_assets(ctx context.Context, request mcp.CallToolRequ
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Application_post_assets(accessToken, args)
 	if err != nil {
@@ -87,20 +85,18 @@ func HandleApplication_post_assets(ctx context.Context, request mcp.CallToolRequ
 // Application_post_assets performs POST assets for Application
 func Application_post_assets(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/assets")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

@@ -15,8 +15,7 @@ import (
 
 // ToolBusiness_post_pixel_tos returns the MCP tool definition for business_post_pixel_tos
 func ToolBusiness_post_pixel_tos() mcp.Tool {
-	
-	
+
 	return mcp.NewTool("business_post_pixel_tos",
 		mcp.WithDescription("POST pixel_tos for Business"),
 	)
@@ -32,8 +31,6 @@ func HandleBusiness_post_pixel_tos(ctx context.Context, request mcp.CallToolRequ
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the API method
 	result, err := Business_post_pixel_tos(accessToken, args)
@@ -53,14 +50,11 @@ func HandleBusiness_post_pixel_tos(ctx context.Context, request mcp.CallToolRequ
 // Business_post_pixel_tos performs POST pixel_tos for Business
 func Business_post_pixel_tos(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/pixel_tos")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response

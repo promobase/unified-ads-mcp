@@ -15,40 +15,40 @@ import (
 
 // ToolUser_post_ returns the MCP tool definition for user_post_
 func ToolUser_post_() mcp.Tool {
-	
+
 	// Params object accepts: emoji_color_pref (unsigned int), firstname (string), lastname (string), local_news_megaphone_dismiss_status (user_local_news_megaphone_dismiss_status), local_news_subscription_status (user_local_news_subscription_status), name (string), password (string)
 	return mcp.NewTool("user_post_",
 		mcp.WithDescription("POST  for User"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"emoji_color_pref": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "emoji_color_pref parameter",
 				},
 				"firstname": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "firstname parameter",
 				},
 				"lastname": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "lastname parameter",
 				},
 				"local_news_megaphone_dismiss_status": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "local_news_megaphone_dismiss_status parameter",
-					"enum": []string{ "NO", "YES" },
+					"enum":        []string{"NO", "YES"},
 				},
 				"local_news_subscription_status": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "local_news_subscription_status parameter",
-					"enum": []string{ "STATUS_OFF", "STATUS_ON" },
+					"enum":        []string{"STATUS_OFF", "STATUS_ON"},
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
 				},
 				"password": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "password parameter",
 				},
 			}),
@@ -80,8 +80,6 @@ func HandleUser_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Ca
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := User_post_(accessToken, args)
 	if err != nil {
@@ -100,20 +98,18 @@ func HandleUser_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Ca
 // User_post_ performs POST  for User
 func User_post_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

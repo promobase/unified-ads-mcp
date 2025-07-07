@@ -15,8 +15,7 @@ import (
 
 // ToolHomelisting_delete_ returns the MCP tool definition for homelisting_delete_
 func ToolHomelisting_delete_() mcp.Tool {
-	
-	
+
 	return mcp.NewTool("homelisting_delete_",
 		mcp.WithDescription("DELETE  for HomeListing"),
 	)
@@ -32,8 +31,6 @@ func HandleHomelisting_delete_(ctx context.Context, request mcp.CallToolRequest)
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the API method
 	result, err := Homelisting_delete_(accessToken, args)
@@ -53,14 +50,11 @@ func HandleHomelisting_delete_(ctx context.Context, request mcp.CallToolRequest)
 // Homelisting_delete_ performs DELETE  for HomeListing
 func Homelisting_delete_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response

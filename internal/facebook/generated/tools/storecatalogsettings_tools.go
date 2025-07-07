@@ -17,7 +17,6 @@ import (
 func GetStoreCatalogSettingsTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// storecatalogsettings_delete_ tool
 	storecatalogsettings_delete_Tool := mcp.NewTool("storecatalogsettings_delete_",
 		mcp.WithDescription("DELETE  for StoreCatalogSettings"),
@@ -43,12 +42,10 @@ func GetStoreCatalogSettingsTools() []mcp.Tool {
 	)
 	tools = append(tools, storecatalogsettings_get_Tool)
 
-
 	return tools
 }
 
 // StoreCatalogSettings handlers
-
 
 // HandleStorecatalogsettings_delete_ handles the storecatalogsettings_delete_ tool with context-based auth
 func HandleStorecatalogsettings_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -64,8 +61,6 @@ func HandleStorecatalogsettings_delete_(ctx context.Context, request mcp.CallToo
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Storecatalogsettings_delete_(args)
 	if err != nil {
@@ -80,7 +75,6 @@ func HandleStorecatalogsettings_delete_(ctx context.Context, request mcp.CallToo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleStorecatalogsettings_get_ handles the storecatalogsettings_get_ tool with context-based auth
 func HandleStorecatalogsettings_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -121,8 +115,6 @@ func HandleStorecatalogsettings_get_(ctx context.Context, request mcp.CallToolRe
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Storecatalogsettings_get_(args)
 	if err != nil {
@@ -137,4 +129,3 @@ func HandleStorecatalogsettings_get_(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

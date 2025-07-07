@@ -5,5 +5,5 @@ package types
 // AdCreativePostClickConfiguration represents a Facebook AdCreativePostClickConfiguration object
 type AdCreativePostClickConfiguration struct {
 	Post_click_item_description string `json:"post_click_item_description"`
-	Post_click_item_headline string `json:"post_click_item_headline"`
+	Post_click_item_headline    string `json:"post_click_item_headline"`
 }

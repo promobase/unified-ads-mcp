@@ -16,8 +16,7 @@ import (
 
 // ToolWhatsappbusinessaccount_get_phone_numbers returns the MCP tool definition for whatsappbusinessaccount_get_phone_numbers
 func ToolWhatsappbusinessaccount_get_phone_numbers() mcp.Tool {
-	
-	
+
 	return mcp.NewTool("whatsappbusinessaccount_get_phone_numbers",
 		mcp.WithDescription("GET phone_numbers for WhatsAppBusinessAccount"),
 		mcp.WithArray("fields",
@@ -71,8 +70,6 @@ func HandleWhatsappbusinessaccount_get_phone_numbers(ctx context.Context, reques
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Whatsappbusinessaccount_get_phone_numbers(accessToken, args)
 	if err != nil {
@@ -91,38 +88,36 @@ func HandleWhatsappbusinessaccount_get_phone_numbers(ctx context.Context, reques
 // Whatsappbusinessaccount_get_phone_numbers performs GET phone_numbers for WhatsAppBusinessAccount
 func Whatsappbusinessaccount_get_phone_numbers(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/phone_numbers")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

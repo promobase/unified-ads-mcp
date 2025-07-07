@@ -6,12 +6,12 @@ import "time"
 
 // LeadGenDirectCRMIntegrationConfig represents a Facebook LeadGenDirectCRMIntegrationConfig object
 type LeadGenDirectCRMIntegrationConfig struct {
-	Auth_id string `json:"auth_id"`
-	Creation_time time.Time `json:"creation_time"`
-	Id string `json:"id"`
-	Lead_gen_data *LeadgenForm `json:"lead_gen_data"`
-	Matched_fields []interface{} `json:"matched_fields"`
+	Auth_id               string        `json:"auth_id"`
+	Creation_time         time.Time     `json:"creation_time"`
+	Id                    string        `json:"id"`
+	Lead_gen_data         *LeadgenForm  `json:"lead_gen_data"`
+	Matched_fields        []interface{} `json:"matched_fields"`
 	Matched_fields_labels []interface{} `json:"matched_fields_labels"`
-	Resources []interface{} `json:"resources"`
-	Third_party_app_id string `json:"third_party_app_id"`
+	Resources             []interface{} `json:"resources"`
+	Third_party_app_id    string        `json:"third_party_app_id"`
 }

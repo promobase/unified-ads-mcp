@@ -15,7 +15,7 @@ import (
 
 // ToolPaymentenginepayment_post_refunds returns the MCP tool definition for paymentenginepayment_post_refunds
 func ToolPaymentenginepayment_post_refunds() mcp.Tool {
-	
+
 	// Params object accepts: amount (float), currency (string), reason (paymentenginepaymentrefunds_reason_enum_param)
 	return mcp.NewTool("paymentenginepayment_post_refunds",
 		mcp.WithDescription("POST refunds for PaymentEnginePayment"),
@@ -23,19 +23,19 @@ func ToolPaymentenginepayment_post_refunds() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"amount": map[string]any{
-					"type": "number",
+					"type":        "number",
 					"description": "amount parameter",
-					"required": true,
+					"required":    true,
 				},
 				"currency": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "currency parameter",
-					"required": true,
+					"required":    true,
 				},
 				"reason": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "reason parameter",
-					"enum": []string{ "CUSTOMER_SERVICE", "FRIENDLY_FRAUD", "MALICIOUS_FRAUD" },
+					"enum":        []string{"CUSTOMER_SERVICE", "FRIENDLY_FRAUD", "MALICIOUS_FRAUD"},
 				},
 			}),
 			mcp.Description("Parameters object containing: amount (number) [required], currency (string) [required], reason (enum) [CUSTOMER_SERVICE, FRIENDLY_FRAUD, MALICIOUS_FRAUD]"),
@@ -68,8 +68,6 @@ func HandlePaymentenginepayment_post_refunds(ctx context.Context, request mcp.Ca
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Paymentenginepayment_post_refunds(accessToken, args)
 	if err != nil {
@@ -88,20 +86,18 @@ func HandlePaymentenginepayment_post_refunds(ctx context.Context, request mcp.Ca
 // Paymentenginepayment_post_refunds performs POST refunds for PaymentEnginePayment
 func Paymentenginepayment_post_refunds(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/refunds")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

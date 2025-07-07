@@ -5,14 +5,14 @@ package constants
 // IGRefreshAccessTokenForIGOnlyAPIFields contains field name constants for IGRefreshAccessTokenForIGOnlyAPI objects
 var IGRefreshAccessTokenForIGOnlyAPIFields = struct {
 	AccessToken string
-	ExpiresIn string
+	ExpiresIn   string
 	Permissions string
-	TokenType string
+	TokenType   string
 }{
 	AccessToken: "access_token",
-	ExpiresIn: "expires_in",
+	ExpiresIn:   "expires_in",
 	Permissions: "permissions",
-	TokenType: "token_type",
+	TokenType:   "token_type",
 }
 
 // IGRefreshAccessTokenForIGOnlyAPIFieldsList contains all available fields for IGRefreshAccessTokenForIGOnlyAPI objects

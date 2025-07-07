@@ -4,10 +4,10 @@ package constants
 
 // WorkSkillFields contains field name constants for WorkSkill objects
 var WorkSkillFields = struct {
-	Id string
+	Id   string
 	Name string
 }{
-	Id: "id",
+	Id:   "id",
 	Name: "name",
 }
 

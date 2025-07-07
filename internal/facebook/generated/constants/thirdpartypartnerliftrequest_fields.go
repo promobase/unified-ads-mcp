@@ -4,39 +4,39 @@ package constants
 
 // ThirdPartyPartnerLiftRequestFields contains field name constants for ThirdPartyPartnerLiftRequest objects
 var ThirdPartyPartnerLiftRequestFields = struct {
-	AdEntities string
-	Country string
-	CreatedTime string
-	Description string
-	HoldoutSize string
-	Id string
-	LegacyAdsDataPartnerId string
-	LegacyAdsDataPartnerName string
-	ModifiedTime string
-	OwnerInstanceId string
+	AdEntities                     string
+	Country                        string
+	CreatedTime                    string
+	Description                    string
+	HoldoutSize                    string
+	Id                             string
+	LegacyAdsDataPartnerId         string
+	LegacyAdsDataPartnerName       string
+	ModifiedTime                   string
+	OwnerInstanceId                string
 	PartnerHouseholdGraphDatasetId string
-	Region string
-	Status string
-	StudyCells string
-	StudyEndTime string
-	StudyStartTime string
+	Region                         string
+	Status                         string
+	StudyCells                     string
+	StudyEndTime                   string
+	StudyStartTime                 string
 }{
-	AdEntities: "ad_entities",
-	Country: "country",
-	CreatedTime: "created_time",
-	Description: "description",
-	HoldoutSize: "holdout_size",
-	Id: "id",
-	LegacyAdsDataPartnerId: "legacy_ads_data_partner_id",
-	LegacyAdsDataPartnerName: "legacy_ads_data_partner_name",
-	ModifiedTime: "modified_time",
-	OwnerInstanceId: "owner_instance_id",
+	AdEntities:                     "ad_entities",
+	Country:                        "country",
+	CreatedTime:                    "created_time",
+	Description:                    "description",
+	HoldoutSize:                    "holdout_size",
+	Id:                             "id",
+	LegacyAdsDataPartnerId:         "legacy_ads_data_partner_id",
+	LegacyAdsDataPartnerName:       "legacy_ads_data_partner_name",
+	ModifiedTime:                   "modified_time",
+	OwnerInstanceId:                "owner_instance_id",
 	PartnerHouseholdGraphDatasetId: "partner_household_graph_dataset_id",
-	Region: "region",
-	Status: "status",
-	StudyCells: "study_cells",
-	StudyEndTime: "study_end_time",
-	StudyStartTime: "study_start_time",
+	Region:                         "region",
+	Status:                         "status",
+	StudyCells:                     "study_cells",
+	StudyEndTime:                   "study_end_time",
+	StudyStartTime:                 "study_start_time",
 }
 
 // ThirdPartyPartnerLiftRequestFieldsList contains all available fields for ThirdPartyPartnerLiftRequest objects

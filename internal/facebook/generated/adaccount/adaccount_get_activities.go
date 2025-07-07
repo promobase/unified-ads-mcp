@@ -27,50 +27,50 @@ func ToolAdaccount_get_activities() mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"add_children": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "add_children parameter",
 				},
 				"after": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "after parameter",
 				},
 				"business_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "business_id parameter",
 				},
 				"category": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "category parameter",
-					"enum": []string{ "ACCOUNT", "AD", "AD_KEYWORDS", "AD_SET", "AUDIENCE", "BID", "BUDGET", "CAMPAIGN", "DATE", "STATUS", "TARGETING" },
+					"enum":        []string{"ACCOUNT", "AD", "AD_KEYWORDS", "AD_SET", "AUDIENCE", "BID", "BUDGET", "CAMPAIGN", "DATE", "STATUS", "TARGETING"},
 				},
 				"data_source": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "data_source parameter",
-					"enum": []string{ "CALYPSO", "TAO", "TAO_AD_ACCOUNT", "TAO_AD_STATUS" },
+					"enum":        []string{"CALYPSO", "TAO", "TAO_AD_ACCOUNT", "TAO_AD_STATUS"},
 				},
 				"extra_oids": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "extra_oids parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"limit": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "limit parameter",
 				},
 				"oid": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "oid parameter",
 				},
 				"since": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "since parameter",
 				},
 				"uid": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "uid parameter",
 				},
 				"until": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "until parameter",
 				},
 			}),
@@ -146,8 +146,6 @@ func HandleAdaccount_get_activities(ctx context.Context, request mcp.CallToolReq
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Adaccount_get_activities(accessToken, args)
 	if err != nil {
@@ -166,67 +164,65 @@ func HandleAdaccount_get_activities(ctx context.Context, request mcp.CallToolReq
 // Adaccount_get_activities performs GET activities for AdAccount
 func Adaccount_get_activities(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	// Extract account_id for URL construction
 	accountId, ok := args["account_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_get_activities")
 	}
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%sactivities", accountId)
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-		
-	}
 
+	}
 
 	// Make HTTP request
 	var resp *http.Response

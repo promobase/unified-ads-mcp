@@ -17,7 +17,7 @@ import (
 // ToolAdvideo_get_tags returns the MCP tool definition for advideo_get_tags
 func ToolAdvideo_get_tags() mcp.Tool {
 	// Available fields for TaggableSubject: id, name
-	
+
 	return mcp.NewTool("advideo_get_tags",
 		mcp.WithDescription("GET tags for AdVideo"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleAdvideo_get_tags(ctx context.Context, request mcp.CallToolRequest) (*
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Advideo_get_tags(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleAdvideo_get_tags(ctx context.Context, request mcp.CallToolRequest) (*
 // Advideo_get_tags performs GET tags for AdVideo
 func Advideo_get_tags(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/tags")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

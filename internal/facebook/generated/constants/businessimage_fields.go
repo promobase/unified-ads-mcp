@@ -4,27 +4,27 @@ package constants
 
 // BusinessImageFields contains field name constants for BusinessImage objects
 var BusinessImageFields = struct {
-	Business string
-	CreationTime string
-	Hash string
-	Height string
-	Id string
+	Business        string
+	CreationTime    string
+	Hash            string
+	Height          string
+	Id              string
 	MediaLibraryUrl string
-	Name string
-	Url string
-	Url128 string
-	Width string
+	Name            string
+	Url             string
+	Url128          string
+	Width           string
 }{
-	Business: "business",
-	CreationTime: "creation_time",
-	Hash: "hash",
-	Height: "height",
-	Id: "id",
+	Business:        "business",
+	CreationTime:    "creation_time",
+	Hash:            "hash",
+	Height:          "height",
+	Id:              "id",
 	MediaLibraryUrl: "media_library_url",
-	Name: "name",
-	Url: "url",
-	Url128: "url_128",
-	Width: "width",
+	Name:            "name",
+	Url:             "url",
+	Url128:          "url_128",
+	Width:           "width",
 }
 
 // BusinessImageFieldsList contains all available fields for BusinessImage objects

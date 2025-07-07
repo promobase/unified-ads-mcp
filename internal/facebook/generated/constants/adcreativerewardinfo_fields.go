@@ -4,10 +4,10 @@ package constants
 
 // AdCreativeRewardInfoFields contains field name constants for AdCreativeRewardInfo objects
 var AdCreativeRewardInfoFields = struct {
-	RewardOfferId string
+	RewardOfferId   string
 	RewardProgramId string
 }{
-	RewardOfferId: "reward_offer_id",
+	RewardOfferId:   "reward_offer_id",
 	RewardProgramId: "reward_program_id",
 }
 

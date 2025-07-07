@@ -17,7 +17,7 @@ import (
 // ToolAudioasset_get_ returns the MCP tool definition for audioasset_get_
 func ToolAudioasset_get_() mcp.Tool {
 	// Available fields for AudioAsset: all_ddex_featured_artists, all_ddex_main_artists, audio_cluster_id, cover_image_source, display_artist, download_hd_url, download_sd_url, duration_in_ms, freeform_genre, grid, id, is_test, original_release_date, owner, parental_warning_type, subtitle, title, title_with_featured_artists, upc
-	
+
 	return mcp.NewTool("audioasset_get_",
 		mcp.WithDescription("GET  for AudioAsset"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleAudioasset_get_(ctx context.Context, request mcp.CallToolRequest) (*m
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Audioasset_get_(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleAudioasset_get_(ctx context.Context, request mcp.CallToolRequest) (*m
 // Audioasset_get_ performs GET  for AudioAsset
 func Audioasset_get_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

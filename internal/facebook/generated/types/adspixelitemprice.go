@@ -4,6 +4,6 @@ package types
 
 // AdsPixelItemPrice represents a Facebook AdsPixelItemPrice object
 type AdsPixelItemPrice struct {
-	Date string `json:"date"`
+	Date                string `json:"date"`
 	Item_price_coverage string `json:"item_price_coverage"`
 }

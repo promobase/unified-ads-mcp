@@ -17,7 +17,6 @@ import (
 func GetThirdPartyMeasurementReportDatasetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// thirdpartymeasurementreportdataset_get_ tool
 	// Available fields for ThirdPartyMeasurementReportDataset: category, id, partner, product, schema
 	thirdpartymeasurementreportdataset_get_Tool := mcp.NewTool("thirdpartymeasurementreportdataset_get_",
@@ -37,12 +36,10 @@ func GetThirdPartyMeasurementReportDatasetTools() []mcp.Tool {
 	)
 	tools = append(tools, thirdpartymeasurementreportdataset_get_Tool)
 
-
 	return tools
 }
 
 // ThirdPartyMeasurementReportDataset handlers
-
 
 // HandleThirdpartymeasurementreportdataset_get_ handles the thirdpartymeasurementreportdataset_get_ tool with context-based auth
 func HandleThirdpartymeasurementreportdataset_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleThirdpartymeasurementreportdataset_get_(ctx context.Context, request 
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Thirdpartymeasurementreportdataset_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleThirdpartymeasurementreportdataset_get_(ctx context.Context, request 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

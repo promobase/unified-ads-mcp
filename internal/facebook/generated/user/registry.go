@@ -68,7 +68,6 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolUser_get_())
 	tools = append(tools, ToolUser_post_())
 
-
 	return tools
 }
 
@@ -131,7 +130,6 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers["user_delete_"] = HandleUser_delete_
 	handlers["user_get_"] = HandleUser_get_
 	handlers["user_post_"] = HandleUser_post_
-
 
 	return handlers
 }

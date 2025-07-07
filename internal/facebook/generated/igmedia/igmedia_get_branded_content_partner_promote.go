@@ -17,7 +17,7 @@ import (
 // ToolIgmedia_get_branded_content_partner_promote returns the MCP tool definition for igmedia_get_branded_content_partner_promote
 func ToolIgmedia_get_branded_content_partner_promote() mcp.Tool {
 	// Available fields for BrandedContentShadowIGUserID: id
-	
+
 	return mcp.NewTool("igmedia_get_branded_content_partner_promote",
 		mcp.WithDescription("GET branded_content_partner_promote for IGMedia"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleIgmedia_get_branded_content_partner_promote(ctx context.Context, requ
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Igmedia_get_branded_content_partner_promote(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleIgmedia_get_branded_content_partner_promote(ctx context.Context, requ
 // Igmedia_get_branded_content_partner_promote performs GET branded_content_partner_promote for IGMedia
 func Igmedia_get_branded_content_partner_promote(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/branded_content_partner_promote")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

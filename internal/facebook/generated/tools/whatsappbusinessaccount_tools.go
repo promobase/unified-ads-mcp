@@ -17,7 +17,6 @@ import (
 func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// whatsappbusinessaccount_get_activities tool
 	whatsappbusinessaccount_get_activitiesTool := mcp.NewTool("whatsappbusinessaccount_get_activities",
 		mcp.WithDescription("GET activities for WhatsAppBusinessAccount"),
@@ -44,9 +43,9 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"user": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "user parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: user (integer) [required]"),
@@ -63,9 +62,9 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"business": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "business parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: business (string) [required]"),
@@ -93,16 +92,16 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"tasks": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "tasks parameter",
-					"required": true,
-					"enum": []string{ "DEVELOP", "MANAGE", "MANAGE_EXTENSIONS", "MANAGE_PHONE", "MANAGE_PHONE_ASSETS", "MANAGE_TEMPLATES", "MESSAGING", "VIEW_COST", "VIEW_PHONE_ASSETS", "VIEW_TEMPLATES" },
-					"items": map[string]any{"type": "string"},
+					"required":    true,
+					"enum":        []string{"DEVELOP", "MANAGE", "MANAGE_EXTENSIONS", "MANAGE_PHONE", "MANAGE_PHONE_ASSETS", "MANAGE_TEMPLATES", "MESSAGING", "VIEW_COST", "VIEW_PHONE_ASSETS", "VIEW_TEMPLATES"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"user": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "user parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: tasks (array<enum>) [DEVELOP, MANAGE, MANAGE_EXTENSIONS, MANAGE_PHONE, MANAGE_PHONE_ASSETS, ...] [required], user (integer) [required]"),
@@ -136,48 +135,48 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"country_codes": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "country_codes parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"dimensions": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "dimensions parameter",
-					"enum": []string{ "COUNTRY", "DIRECTION", "PHONE", "TIER", "UNKNOWN" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"COUNTRY", "DIRECTION", "PHONE", "TIER", "UNKNOWN"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"directions": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "directions parameter",
-					"enum": []string{ "BUSINESS_INITIATED", "UNKNOWN", "USER_INITIATED" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"BUSINESS_INITIATED", "UNKNOWN", "USER_INITIATED"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"end": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "end parameter",
-					"required": true,
+					"required":    true,
 				},
 				"granularity": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "granularity parameter",
-					"required": true,
-					"enum": []string{ "DAILY", "HALF_HOUR", "MONTHLY" },
+					"required":    true,
+					"enum":        []string{"DAILY", "HALF_HOUR", "MONTHLY"},
 				},
 				"metric_types": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "metric_types parameter",
-					"enum": []string{ "AVERAGE_DURATION", "COST", "COUNT", "UNKNOWN" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"AVERAGE_DURATION", "COST", "COUNT", "UNKNOWN"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"phone_numbers": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "phone_numbers parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"start": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "start parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: country_codes (array<string>), dimensions (array<enum>) [COUNTRY, DIRECTION, PHONE, TIER, UNKNOWN], directions (array<enum>) [BUSINESS_INITIATED, UNKNOWN, USER_INITIATED], end (integer) [required], granularity (enum) [DAILY, HALF_HOUR, MONTHLY] [required], metric_types (array<enum>) [AVERAGE_DURATION, COST, COUNT, UNKNOWN], phone_numbers (array<string>), start (integer) [required]"),
@@ -205,60 +204,60 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"conversation_categories": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "conversation_categories parameter",
-					"enum": []string{ "AUTHENTICATION", "AUTHENTICATION_INTERNATIONAL", "MARKETING", "MARKETING_LITE", "SERVICE", "UTILITY" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"AUTHENTICATION", "AUTHENTICATION_INTERNATIONAL", "MARKETING", "MARKETING_LITE", "SERVICE", "UTILITY"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"conversation_directions": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "conversation_directions parameter",
-					"enum": []string{ "BUSINESS_INITIATED", "UNKNOWN", "USER_INITIATED" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"BUSINESS_INITIATED", "UNKNOWN", "USER_INITIATED"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"conversation_types": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "conversation_types parameter",
-					"enum": []string{ "FREE_ENTRY_POINT", "FREE_TIER", "REGULAR", "UNKNOWN" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"FREE_ENTRY_POINT", "FREE_TIER", "REGULAR", "UNKNOWN"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"country_codes": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "country_codes parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"dimensions": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "dimensions parameter",
-					"enum": []string{ "CONVERSATION_CATEGORY", "CONVERSATION_DIRECTION", "CONVERSATION_TYPE", "COUNTRY", "PHONE", "UNKNOWN" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"CONVERSATION_CATEGORY", "CONVERSATION_DIRECTION", "CONVERSATION_TYPE", "COUNTRY", "PHONE", "UNKNOWN"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"end": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "end parameter",
-					"required": true,
+					"required":    true,
 				},
 				"granularity": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "granularity parameter",
-					"required": true,
-					"enum": []string{ "DAILY", "HALF_HOUR", "MONTHLY" },
+					"required":    true,
+					"enum":        []string{"DAILY", "HALF_HOUR", "MONTHLY"},
 				},
 				"metric_types": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "metric_types parameter",
-					"enum": []string{ "CONVERSATION", "COST", "UNKNOWN" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"CONVERSATION", "COST", "UNKNOWN"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"phone_numbers": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "phone_numbers parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"start": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "start parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: conversation_categories (array<enum>) [AUTHENTICATION, AUTHENTICATION_INTERNATIONAL, MARKETING, MARKETING_LITE, SERVICE, ...], conversation_directions (array<enum>) [BUSINESS_INITIATED, UNKNOWN, USER_INITIATED], conversation_types (array<enum>) [FREE_ENTRY_POINT, FREE_TIER, REGULAR, UNKNOWN], country_codes (array<string>), dimensions (array<enum>) [CONVERSATION_CATEGORY, CONVERSATION_DIRECTION, CONVERSATION_TYPE, COUNTRY, PHONE, ...], end (integer) [required], granularity (enum) [DAILY, HALF_HOUR, MONTHLY] [required], metric_types (array<enum>) [CONVERSATION, COST, UNKNOWN], phone_numbers (array<string>), start (integer) [required]"),
@@ -304,7 +303,7 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"dataset_name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "dataset_name parameter",
 				},
 			}),
@@ -339,31 +338,31 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"categories": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "categories parameter",
-					"required": true,
-					"enum": []string{ "APPOINTMENT_BOOKING", "CONTACT_US", "CUSTOMER_SUPPORT", "LEAD_GENERATION", "OTHER", "SHOPPING", "SIGN_IN", "SIGN_UP", "SURVEY" },
-					"items": map[string]any{"type": "string"},
+					"required":    true,
+					"enum":        []string{"APPOINTMENT_BOOKING", "CONTACT_US", "CUSTOMER_SUPPORT", "LEAD_GENERATION", "OTHER", "SHOPPING", "SIGN_IN", "SIGN_UP", "SURVEY"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"clone_flow_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "clone_flow_id parameter",
 				},
 				"endpoint_uri": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "endpoint_uri parameter",
 				},
 				"flow_json": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "flow_json parameter",
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
-					"required": true,
+					"required":    true,
 				},
 				"publish": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "publish parameter",
 				},
 			}),
@@ -380,12 +379,12 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"configuration_name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "configuration_name parameter",
-					"required": true,
+					"required":    true,
 				},
 				"redirect_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "redirect_url parameter",
 				},
 			}),
@@ -420,29 +419,29 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"add_security_recommendation": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "add_security_recommendation parameter",
 				},
 				"button_types": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "button_types parameter",
-					"enum": []string{ "OTP" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"OTP"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"category": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "category parameter",
-					"required": true,
-					"enum": []string{ "AUTHENTICATION" },
+					"required":    true,
+					"enum":        []string{"AUTHENTICATION"},
 				},
 				"code_expiration_minutes": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "code_expiration_minutes parameter",
 				},
 				"languages": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "languages parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: add_security_recommendation (boolean), button_types (array<enum>) [OTP], category (enum) [AUTHENTICATION] [required], code_expiration_minutes (integer), languages (array<string>)"),
@@ -470,13 +469,13 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"hsm_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "hsm_id parameter",
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: hsm_id (string), name (string) [required]"),
@@ -491,39 +490,39 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"category": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "category parameter",
-					"enum": []string{ "AUTHENTICATION", "MARKETING", "UTILITY" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"AUTHENTICATION", "MARKETING", "UTILITY"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"content": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "content parameter",
 				},
 				"language": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "language parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
 				},
 				"name_or_content": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name_or_content parameter",
 				},
 				"quality_score": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "quality_score parameter",
-					"enum": []string{ "GREEN", "RED", "UNKNOWN", "YELLOW" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"GREEN", "RED", "UNKNOWN", "YELLOW"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"status": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "status parameter",
-					"enum": []string{ "APPROVED", "ARCHIVED", "DELETED", "DISABLED", "IN_APPEAL", "LIMIT_EXCEEDED", "PAUSED", "PENDING", "PENDING_DELETION", "REJECTED" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"APPROVED", "ARCHIVED", "DELETED", "DISABLED", "IN_APPEAL", "LIMIT_EXCEEDED", "PAUSED", "PENDING", "PENDING_DELETION", "REJECTED"},
+					"items":       map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: category (array<enum>) [AUTHENTICATION, MARKETING, UTILITY], content (string), language (array<string>), name (string), name_or_content (string), quality_score (array<enum>) [GREEN, RED, UNKNOWN, YELLOW], status (array<enum>) [APPROVED, ARCHIVED, DELETED, DISABLED, IN_APPEAL, ...]"),
@@ -551,69 +550,69 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"allow_category_change": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "allow_category_change parameter",
 				},
 				"category": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "category parameter",
-					"required": true,
-					"enum": []string{ "AUTHENTICATION", "MARKETING", "UTILITY" },
+					"required":    true,
+					"enum":        []string{"AUTHENTICATION", "MARKETING", "UTILITY"},
 				},
 				"components": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "components parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"cta_url_link_tracking_opted_out": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "cta_url_link_tracking_opted_out parameter",
 				},
 				"degrees_of_freedom_spec": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "degrees_of_freedom_spec parameter",
 				},
 				"display_format": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "display_format parameter",
-					"enum": []string{ "ORDER_DETAILS" },
+					"enum":        []string{"ORDER_DETAILS"},
 				},
 				"language": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "language parameter",
-					"required": true,
+					"required":    true,
 				},
 				"library_template_body_inputs": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "library_template_body_inputs parameter",
 				},
 				"library_template_button_inputs": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "library_template_button_inputs parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"library_template_name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "library_template_name parameter",
 				},
 				"message_send_ttl_seconds": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "message_send_ttl_seconds parameter",
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
-					"required": true,
+					"required":    true,
 				},
 				"parameter_format": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "parameter_format parameter",
-					"enum": []string{ "NAMED", "POSITIONAL" },
+					"enum":        []string{"NAMED", "POSITIONAL"},
 				},
 				"sub_category": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "sub_category parameter",
-					"enum": []string{ "ORDER_DETAILS", "ORDER_STATUS" },
+					"enum":        []string{"ORDER_DETAILS", "ORDER_STATUS"},
 				},
 			}),
 			mcp.Description("Parameters object containing: allow_category_change (boolean), category (enum) [AUTHENTICATION, MARKETING, UTILITY] [required], components (array<object>), cta_url_link_tracking_opted_out (boolean), degrees_of_freedom_spec (object), display_format (enum) [ORDER_DETAILS], language (string) [required], library_template_body_inputs (object), library_template_button_inputs (array<object>), library_template_name (string), message_send_ttl_seconds (integer), name (string) [required], parameter_format (enum) [NAMED, POSITIONAL], sub_category (enum) [ORDER_DETAILS, ORDER_STATUS]"),
@@ -629,14 +628,14 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"source_flow_names": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "source_flow_names parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"source_waba_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "source_waba_id parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: source_flow_names (array<string>), source_waba_id (string) [required]"),
@@ -652,13 +651,13 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"page_number": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "page_number parameter",
 				},
 				"source_waba_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "source_waba_id parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: page_number (integer), source_waba_id (string) [required]"),
@@ -674,9 +673,9 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"configuration_name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "configuration_name parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: configuration_name (string) [required]"),
@@ -692,9 +691,9 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"configuration_name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "configuration_name parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: configuration_name (string) [required]"),
@@ -722,33 +721,33 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"configuration_name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "configuration_name parameter",
-					"required": true,
+					"required":    true,
 				},
 				"data_endpoint_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "data_endpoint_url parameter",
 				},
 				"merchant_category_code": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "merchant_category_code parameter",
 				},
 				"merchant_vpa": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "merchant_vpa parameter",
 				},
 				"provider_name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "provider_name parameter",
-					"enum": []string{ "BILLDESK", "PAYU", "RAZORPAY", "UPI_VPA", "ZAAKPAY" },
+					"enum":        []string{"BILLDESK", "PAYU", "RAZORPAY", "UPI_VPA", "ZAAKPAY"},
 				},
 				"purpose_code": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "purpose_code parameter",
 				},
 				"redirect_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "redirect_url parameter",
 				},
 			}),
@@ -800,23 +799,23 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"cc": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "cc parameter",
 				},
 				"migrate_phone_number": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "migrate_phone_number parameter",
 				},
 				"phone_number": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "phone_number parameter",
 				},
 				"preverified_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "preverified_id parameter",
 				},
 				"verified_name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "verified_name parameter",
 				},
 			}),
@@ -833,59 +832,59 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"country_codes": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "country_codes parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"dimensions": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "dimensions parameter",
-					"enum": []string{ "COUNTRY", "PHONE", "PRICING_CATEGORY", "PRICING_TYPE", "TIER" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"COUNTRY", "PHONE", "PRICING_CATEGORY", "PRICING_TYPE", "TIER"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"end": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "end parameter",
-					"required": true,
+					"required":    true,
 				},
 				"granularity": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "granularity parameter",
-					"required": true,
-					"enum": []string{ "DAILY", "HALF_HOUR", "MONTHLY" },
+					"required":    true,
+					"enum":        []string{"DAILY", "HALF_HOUR", "MONTHLY"},
 				},
 				"metric_types": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "metric_types parameter",
-					"enum": []string{ "COST", "VOLUME" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"COST", "VOLUME"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"phone_numbers": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "phone_numbers parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"pricing_categories": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "pricing_categories parameter",
-					"enum": []string{ "AUTHENTICATION", "AUTHENTICATION_INTERNATIONAL", "GROUP_MARKETING", "GROUP_SERVICE", "GROUP_UTILITY", "MARKETING", "MARKETING_LITE", "SERVICE", "UTILITY" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"AUTHENTICATION", "AUTHENTICATION_INTERNATIONAL", "GROUP_MARKETING", "GROUP_SERVICE", "GROUP_UTILITY", "MARKETING", "MARKETING_LITE", "SERVICE", "UTILITY"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"pricing_types": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "pricing_types parameter",
-					"enum": []string{ "FREE_CUSTOMER_SERVICE", "FREE_ENTRY_POINT", "REGULAR" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"FREE_CUSTOMER_SERVICE", "FREE_ENTRY_POINT", "REGULAR"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"start": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "start parameter",
-					"required": true,
+					"required":    true,
 				},
 				"tiers": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "tiers parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: country_codes (array<string>), dimensions (array<enum>) [COUNTRY, PHONE, PRICING_CATEGORY, PRICING_TYPE, TIER], end (integer) [required], granularity (enum) [DAILY, HALF_HOUR, MONTHLY] [required], metric_types (array<enum>) [COST, VOLUME], phone_numbers (array<string>), pricing_categories (array<enum>) [AUTHENTICATION, AUTHENTICATION_INTERNATIONAL, GROUP_MARKETING, GROUP_SERVICE, GROUP_UTILITY, ...], pricing_types (array<enum>) [FREE_CUSTOMER_SERVICE, FREE_ENTRY_POINT, REGULAR], start (integer) [required], tiers (array<string>)"),
@@ -913,9 +912,9 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"catalog_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "catalog_id parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: catalog_id (string) [required]"),
@@ -950,9 +949,9 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"catalog_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "catalog_id parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: catalog_id (string) [required]"),
@@ -985,7 +984,7 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"solution_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "solution_id parameter",
 				},
 			}),
@@ -1001,11 +1000,11 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"app_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "app_id parameter",
 				},
 				"solution_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "solution_id parameter",
 				},
 			}),
@@ -1063,11 +1062,11 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"override_callback_uri": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "override_callback_uri parameter",
 				},
 				"verify_token": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "verify_token parameter",
 				},
 			}),
@@ -1084,37 +1083,37 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"end": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "end parameter",
-					"required": true,
+					"required":    true,
 				},
 				"granularity": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "granularity parameter",
-					"required": true,
-					"enum": []string{ "DAILY" },
+					"required":    true,
+					"enum":        []string{"DAILY"},
 				},
 				"metric_types": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "metric_types parameter",
-					"enum": []string{ "CLICKED", "COST", "DELIVERED", "READ", "REPLIED", "SENT" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"CLICKED", "COST", "DELIVERED", "READ", "REPLIED", "SENT"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"product_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "product_type parameter",
-					"enum": []string{ "CLOUD_API", "MARKETING_MESSAGES_LITE_API" },
+					"enum":        []string{"CLOUD_API", "MARKETING_MESSAGES_LITE_API"},
 				},
 				"start": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "start parameter",
-					"required": true,
+					"required":    true,
 				},
 				"template_ids": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "template_ids parameter",
-					"required": true,
-					"items": map[string]any{"type": "string"},
+					"required":    true,
+					"items":       map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: end (datetime) [required], granularity (enum) [DAILY] [required], metric_types (array<enum>) [CLICKED, COST, DELIVERED, READ, REPLIED, ...], product_type (enum) [CLOUD_API, MARKETING_MESSAGES_LITE_API], start (datetime) [required], template_ids (array<string>) [required]"),
@@ -1142,32 +1141,32 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"end": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "end parameter",
-					"required": true,
+					"required":    true,
 				},
 				"granularity": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "granularity parameter",
-					"required": true,
-					"enum": []string{ "DAILY" },
+					"required":    true,
+					"enum":        []string{"DAILY"},
 				},
 				"metric_types": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "metric_types parameter",
-					"enum": []string{ "CLICKED", "COST", "DELIVERED", "READ", "REPLIED", "SENT" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"CLICKED", "COST", "DELIVERED", "READ", "REPLIED", "SENT"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"start": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "start parameter",
-					"required": true,
+					"required":    true,
 				},
 				"template_group_ids": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "template_group_ids parameter",
-					"required": true,
-					"items": map[string]any{"type": "string"},
+					"required":    true,
+					"items":       map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: end (datetime) [required], granularity (enum) [DAILY] [required], metric_types (array<enum>) [CLICKED, COST, DELIVERED, READ, REPLIED, ...], start (datetime) [required], template_group_ids (array<string>) [required]"),
@@ -1213,20 +1212,20 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"description": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "description parameter",
-					"required": true,
+					"required":    true,
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
-					"required": true,
+					"required":    true,
 				},
 				"whatsapp_business_templates": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "whatsapp_business_templates parameter",
-					"required": true,
-					"items": map[string]any{"type": "string"},
+					"required":    true,
+					"items":       map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: description (string) [required], name (string) [required], whatsapp_business_templates (array<string>) [required]"),
@@ -1241,11 +1240,11 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
 				},
 				"template_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "template_id parameter",
 				},
 			}),
@@ -1274,31 +1273,31 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"category": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "category parameter",
-					"required": true,
-					"enum": []string{ "AUTHENTICATION" },
+					"required":    true,
+					"enum":        []string{"AUTHENTICATION"},
 				},
 				"components": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "components parameter",
-					"required": true,
-					"items": map[string]any{"type": "object"},
+					"required":    true,
+					"items":       map[string]any{"type": "object"},
 				},
 				"languages": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "languages parameter",
-					"required": true,
-					"items": map[string]any{"type": "string"},
+					"required":    true,
+					"items":       map[string]any{"type": "string"},
 				},
 				"message_send_ttl_seconds": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "message_send_ttl_seconds parameter",
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: category (enum) [AUTHENTICATION] [required], components (array<object>) [required], languages (array<string>) [required], message_send_ttl_seconds (integer), name (string) [required]"),
@@ -1314,11 +1313,11 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"app_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "app_id parameter",
 				},
 				"sequence_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "sequence_id parameter",
 				},
 			}),
@@ -1365,7 +1364,7 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"is_enabled_for_insights": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_enabled_for_insights parameter",
 				},
 			}),
@@ -1374,12 +1373,10 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 	)
 	tools = append(tools, whatsappbusinessaccount_post_Tool)
 
-
 	return tools
 }
 
 // WhatsAppBusinessAccount handlers
-
 
 // HandleWhatsappbusinessaccount_get_activities handles the whatsappbusinessaccount_get_activities tool with context-based auth
 func HandleWhatsappbusinessaccount_get_activities(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1420,8 +1417,6 @@ func HandleWhatsappbusinessaccount_get_activities(ctx context.Context, request m
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_get_activities(args)
 	if err != nil {
@@ -1436,7 +1431,6 @@ func HandleWhatsappbusinessaccount_get_activities(ctx context.Context, request m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleWhatsappbusinessaccount_delete_assigned_users handles the whatsappbusinessaccount_delete_assigned_users tool with context-based auth
 func HandleWhatsappbusinessaccount_delete_assigned_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1466,8 +1460,6 @@ func HandleWhatsappbusinessaccount_delete_assigned_users(ctx context.Context, re
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_delete_assigned_users(args)
 	if err != nil {
@@ -1482,7 +1474,6 @@ func HandleWhatsappbusinessaccount_delete_assigned_users(ctx context.Context, re
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleWhatsappbusinessaccount_get_assigned_users handles the whatsappbusinessaccount_get_assigned_users tool with context-based auth
 func HandleWhatsappbusinessaccount_get_assigned_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1537,8 +1528,6 @@ func HandleWhatsappbusinessaccount_get_assigned_users(ctx context.Context, reque
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_get_assigned_users(args)
 	if err != nil {
@@ -1553,7 +1542,6 @@ func HandleWhatsappbusinessaccount_get_assigned_users(ctx context.Context, reque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleWhatsappbusinessaccount_post_assigned_users handles the whatsappbusinessaccount_post_assigned_users tool with context-based auth
 func HandleWhatsappbusinessaccount_post_assigned_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1583,8 +1571,6 @@ func HandleWhatsappbusinessaccount_post_assigned_users(ctx context.Context, requ
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_post_assigned_users(args)
 	if err != nil {
@@ -1599,7 +1585,6 @@ func HandleWhatsappbusinessaccount_post_assigned_users(ctx context.Context, requ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleWhatsappbusinessaccount_get_audiences handles the whatsappbusinessaccount_get_audiences tool with context-based auth
 func HandleWhatsappbusinessaccount_get_audiences(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1640,8 +1625,6 @@ func HandleWhatsappbusinessaccount_get_audiences(ctx context.Context, request mc
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_get_audiences(args)
 	if err != nil {
@@ -1656,7 +1639,6 @@ func HandleWhatsappbusinessaccount_get_audiences(ctx context.Context, request mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleWhatsappbusinessaccount_get_call_analytics handles the whatsappbusinessaccount_get_call_analytics tool with context-based auth
 func HandleWhatsappbusinessaccount_get_call_analytics(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1711,8 +1693,6 @@ func HandleWhatsappbusinessaccount_get_call_analytics(ctx context.Context, reque
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_get_call_analytics(args)
 	if err != nil {
@@ -1727,7 +1707,6 @@ func HandleWhatsappbusinessaccount_get_call_analytics(ctx context.Context, reque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleWhatsappbusinessaccount_get_conversation_analytics handles the whatsappbusinessaccount_get_conversation_analytics tool with context-based auth
 func HandleWhatsappbusinessaccount_get_conversation_analytics(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1782,8 +1761,6 @@ func HandleWhatsappbusinessaccount_get_conversation_analytics(ctx context.Contex
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_get_conversation_analytics(args)
 	if err != nil {
@@ -1798,7 +1775,6 @@ func HandleWhatsappbusinessaccount_get_conversation_analytics(ctx context.Contex
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleWhatsappbusinessaccount_get_dataset handles the whatsappbusinessaccount_get_dataset tool with context-based auth
 func HandleWhatsappbusinessaccount_get_dataset(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1839,8 +1815,6 @@ func HandleWhatsappbusinessaccount_get_dataset(ctx context.Context, request mcp.
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_get_dataset(args)
 	if err != nil {
@@ -1855,7 +1829,6 @@ func HandleWhatsappbusinessaccount_get_dataset(ctx context.Context, request mcp.
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleWhatsappbusinessaccount_post_dataset handles the whatsappbusinessaccount_post_dataset tool with context-based auth
 func HandleWhatsappbusinessaccount_post_dataset(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1883,8 +1856,6 @@ func HandleWhatsappbusinessaccount_post_dataset(ctx context.Context, request mcp
 		}
 	}
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_post_dataset(args)
 	if err != nil {
@@ -1899,7 +1870,6 @@ func HandleWhatsappbusinessaccount_post_dataset(ctx context.Context, request mcp
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleWhatsappbusinessaccount_get_flows handles the whatsappbusinessaccount_get_flows tool with context-based auth
 func HandleWhatsappbusinessaccount_get_flows(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1940,8 +1910,6 @@ func HandleWhatsappbusinessaccount_get_flows(ctx context.Context, request mcp.Ca
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_get_flows(args)
 	if err != nil {
@@ -1956,7 +1924,6 @@ func HandleWhatsappbusinessaccount_get_flows(ctx context.Context, request mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleWhatsappbusinessaccount_post_flows handles the whatsappbusinessaccount_post_flows tool with context-based auth
 func HandleWhatsappbusinessaccount_post_flows(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1986,8 +1953,6 @@ func HandleWhatsappbusinessaccount_post_flows(ctx context.Context, request mcp.C
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_post_flows(args)
 	if err != nil {
@@ -2002,7 +1967,6 @@ func HandleWhatsappbusinessaccount_post_flows(ctx context.Context, request mcp.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleWhatsappbusinessaccount_post_generate_payment_configuration_oauth_link handles the whatsappbusinessaccount_post_generate_payment_configuration_oauth_link tool with context-based auth
 func HandleWhatsappbusinessaccount_post_generate_payment_configuration_oauth_link(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2032,8 +1996,6 @@ func HandleWhatsappbusinessaccount_post_generate_payment_configuration_oauth_lin
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_post_generate_payment_configuration_oauth_link(args)
 	if err != nil {
@@ -2048,7 +2010,6 @@ func HandleWhatsappbusinessaccount_post_generate_payment_configuration_oauth_lin
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleWhatsappbusinessaccount_get_message_campaigns handles the whatsappbusinessaccount_get_message_campaigns tool with context-based auth
 func HandleWhatsappbusinessaccount_get_message_campaigns(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2089,8 +2050,6 @@ func HandleWhatsappbusinessaccount_get_message_campaigns(ctx context.Context, re
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_get_message_campaigns(args)
 	if err != nil {
@@ -2105,7 +2064,6 @@ func HandleWhatsappbusinessaccount_get_message_campaigns(ctx context.Context, re
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleWhatsappbusinessaccount_get_message_template_previews handles the whatsappbusinessaccount_get_message_template_previews tool with context-based auth
 func HandleWhatsappbusinessaccount_get_message_template_previews(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2160,8 +2118,6 @@ func HandleWhatsappbusinessaccount_get_message_template_previews(ctx context.Con
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_get_message_template_previews(args)
 	if err != nil {
@@ -2176,7 +2132,6 @@ func HandleWhatsappbusinessaccount_get_message_template_previews(ctx context.Con
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleWhatsappbusinessaccount_delete_message_templates handles the whatsappbusinessaccount_delete_message_templates tool with context-based auth
 func HandleWhatsappbusinessaccount_delete_message_templates(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2206,8 +2161,6 @@ func HandleWhatsappbusinessaccount_delete_message_templates(ctx context.Context,
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_delete_message_templates(args)
 	if err != nil {
@@ -2222,7 +2175,6 @@ func HandleWhatsappbusinessaccount_delete_message_templates(ctx context.Context,
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleWhatsappbusinessaccount_get_message_templates handles the whatsappbusinessaccount_get_message_templates tool with context-based auth
 func HandleWhatsappbusinessaccount_get_message_templates(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2275,8 +2227,6 @@ func HandleWhatsappbusinessaccount_get_message_templates(ctx context.Context, re
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_get_message_templates(args)
 	if err != nil {
@@ -2291,7 +2241,6 @@ func HandleWhatsappbusinessaccount_get_message_templates(ctx context.Context, re
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleWhatsappbusinessaccount_post_message_templates handles the whatsappbusinessaccount_post_message_templates tool with context-based auth
 func HandleWhatsappbusinessaccount_post_message_templates(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2321,8 +2270,6 @@ func HandleWhatsappbusinessaccount_post_message_templates(ctx context.Context, r
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_post_message_templates(args)
 	if err != nil {
@@ -2337,7 +2284,6 @@ func HandleWhatsappbusinessaccount_post_message_templates(ctx context.Context, r
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleWhatsappbusinessaccount_post_migrate_flows handles the whatsappbusinessaccount_post_migrate_flows tool with context-based auth
 func HandleWhatsappbusinessaccount_post_migrate_flows(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2367,8 +2313,6 @@ func HandleWhatsappbusinessaccount_post_migrate_flows(ctx context.Context, reque
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_post_migrate_flows(args)
 	if err != nil {
@@ -2383,7 +2327,6 @@ func HandleWhatsappbusinessaccount_post_migrate_flows(ctx context.Context, reque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleWhatsappbusinessaccount_post_migrate_message_templates handles the whatsappbusinessaccount_post_migrate_message_templates tool with context-based auth
 func HandleWhatsappbusinessaccount_post_migrate_message_templates(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2413,8 +2356,6 @@ func HandleWhatsappbusinessaccount_post_migrate_message_templates(ctx context.Co
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_post_migrate_message_templates(args)
 	if err != nil {
@@ -2429,7 +2370,6 @@ func HandleWhatsappbusinessaccount_post_migrate_message_templates(ctx context.Co
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleWhatsappbusinessaccount_delete_payment_configuration handles the whatsappbusinessaccount_delete_payment_configuration tool with context-based auth
 func HandleWhatsappbusinessaccount_delete_payment_configuration(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2459,8 +2399,6 @@ func HandleWhatsappbusinessaccount_delete_payment_configuration(ctx context.Cont
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_delete_payment_configuration(args)
 	if err != nil {
@@ -2475,7 +2413,6 @@ func HandleWhatsappbusinessaccount_delete_payment_configuration(ctx context.Cont
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleWhatsappbusinessaccount_get_payment_configuration handles the whatsappbusinessaccount_get_payment_configuration tool with context-based auth
 func HandleWhatsappbusinessaccount_get_payment_configuration(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2530,8 +2467,6 @@ func HandleWhatsappbusinessaccount_get_payment_configuration(ctx context.Context
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_get_payment_configuration(args)
 	if err != nil {
@@ -2546,7 +2481,6 @@ func HandleWhatsappbusinessaccount_get_payment_configuration(ctx context.Context
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleWhatsappbusinessaccount_post_payment_configuration handles the whatsappbusinessaccount_post_payment_configuration tool with context-based auth
 func HandleWhatsappbusinessaccount_post_payment_configuration(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2576,8 +2510,6 @@ func HandleWhatsappbusinessaccount_post_payment_configuration(ctx context.Contex
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_post_payment_configuration(args)
 	if err != nil {
@@ -2592,7 +2524,6 @@ func HandleWhatsappbusinessaccount_post_payment_configuration(ctx context.Contex
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleWhatsappbusinessaccount_get_payment_configurations handles the whatsappbusinessaccount_get_payment_configurations tool with context-based auth
 func HandleWhatsappbusinessaccount_get_payment_configurations(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2633,8 +2564,6 @@ func HandleWhatsappbusinessaccount_get_payment_configurations(ctx context.Contex
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_get_payment_configurations(args)
 	if err != nil {
@@ -2649,7 +2578,6 @@ func HandleWhatsappbusinessaccount_get_payment_configurations(ctx context.Contex
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleWhatsappbusinessaccount_get_phone_numbers handles the whatsappbusinessaccount_get_phone_numbers tool with context-based auth
 func HandleWhatsappbusinessaccount_get_phone_numbers(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2690,8 +2618,6 @@ func HandleWhatsappbusinessaccount_get_phone_numbers(ctx context.Context, reques
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_get_phone_numbers(args)
 	if err != nil {
@@ -2706,7 +2632,6 @@ func HandleWhatsappbusinessaccount_get_phone_numbers(ctx context.Context, reques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleWhatsappbusinessaccount_post_phone_numbers handles the whatsappbusinessaccount_post_phone_numbers tool with context-based auth
 func HandleWhatsappbusinessaccount_post_phone_numbers(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2734,8 +2659,6 @@ func HandleWhatsappbusinessaccount_post_phone_numbers(ctx context.Context, reque
 		}
 	}
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_post_phone_numbers(args)
 	if err != nil {
@@ -2750,7 +2673,6 @@ func HandleWhatsappbusinessaccount_post_phone_numbers(ctx context.Context, reque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleWhatsappbusinessaccount_get_pricing_analytics handles the whatsappbusinessaccount_get_pricing_analytics tool with context-based auth
 func HandleWhatsappbusinessaccount_get_pricing_analytics(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2805,8 +2727,6 @@ func HandleWhatsappbusinessaccount_get_pricing_analytics(ctx context.Context, re
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_get_pricing_analytics(args)
 	if err != nil {
@@ -2821,7 +2741,6 @@ func HandleWhatsappbusinessaccount_get_pricing_analytics(ctx context.Context, re
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleWhatsappbusinessaccount_delete_product_catalogs handles the whatsappbusinessaccount_delete_product_catalogs tool with context-based auth
 func HandleWhatsappbusinessaccount_delete_product_catalogs(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2851,8 +2770,6 @@ func HandleWhatsappbusinessaccount_delete_product_catalogs(ctx context.Context, 
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_delete_product_catalogs(args)
 	if err != nil {
@@ -2867,7 +2784,6 @@ func HandleWhatsappbusinessaccount_delete_product_catalogs(ctx context.Context, 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleWhatsappbusinessaccount_get_product_catalogs handles the whatsappbusinessaccount_get_product_catalogs tool with context-based auth
 func HandleWhatsappbusinessaccount_get_product_catalogs(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2908,8 +2824,6 @@ func HandleWhatsappbusinessaccount_get_product_catalogs(ctx context.Context, req
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_get_product_catalogs(args)
 	if err != nil {
@@ -2924,7 +2838,6 @@ func HandleWhatsappbusinessaccount_get_product_catalogs(ctx context.Context, req
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleWhatsappbusinessaccount_post_product_catalogs handles the whatsappbusinessaccount_post_product_catalogs tool with context-based auth
 func HandleWhatsappbusinessaccount_post_product_catalogs(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2954,8 +2867,6 @@ func HandleWhatsappbusinessaccount_post_product_catalogs(ctx context.Context, re
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_post_product_catalogs(args)
 	if err != nil {
@@ -2970,7 +2881,6 @@ func HandleWhatsappbusinessaccount_post_product_catalogs(ctx context.Context, re
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleWhatsappbusinessaccount_get_schedules handles the whatsappbusinessaccount_get_schedules tool with context-based auth
 func HandleWhatsappbusinessaccount_get_schedules(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3011,8 +2921,6 @@ func HandleWhatsappbusinessaccount_get_schedules(ctx context.Context, request mc
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_get_schedules(args)
 	if err != nil {
@@ -3027,7 +2935,6 @@ func HandleWhatsappbusinessaccount_get_schedules(ctx context.Context, request mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleWhatsappbusinessaccount_post_set_obo_mobility_intent handles the whatsappbusinessaccount_post_set_obo_mobility_intent tool with context-based auth
 func HandleWhatsappbusinessaccount_post_set_obo_mobility_intent(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3055,8 +2962,6 @@ func HandleWhatsappbusinessaccount_post_set_obo_mobility_intent(ctx context.Cont
 		}
 	}
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_post_set_obo_mobility_intent(args)
 	if err != nil {
@@ -3071,7 +2976,6 @@ func HandleWhatsappbusinessaccount_post_set_obo_mobility_intent(ctx context.Cont
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleWhatsappbusinessaccount_post_set_solution_migration_intent handles the whatsappbusinessaccount_post_set_solution_migration_intent tool with context-based auth
 func HandleWhatsappbusinessaccount_post_set_solution_migration_intent(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3099,8 +3003,6 @@ func HandleWhatsappbusinessaccount_post_set_solution_migration_intent(ctx contex
 		}
 	}
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_post_set_solution_migration_intent(args)
 	if err != nil {
@@ -3115,7 +3017,6 @@ func HandleWhatsappbusinessaccount_post_set_solution_migration_intent(ctx contex
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleWhatsappbusinessaccount_get_solutions handles the whatsappbusinessaccount_get_solutions tool with context-based auth
 func HandleWhatsappbusinessaccount_get_solutions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3156,8 +3057,6 @@ func HandleWhatsappbusinessaccount_get_solutions(ctx context.Context, request mc
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_get_solutions(args)
 	if err != nil {
@@ -3173,7 +3072,6 @@ func HandleWhatsappbusinessaccount_get_solutions(ctx context.Context, request mc
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleWhatsappbusinessaccount_delete_subscribed_apps handles the whatsappbusinessaccount_delete_subscribed_apps tool with context-based auth
 func HandleWhatsappbusinessaccount_delete_subscribed_apps(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
@@ -3187,8 +3085,6 @@ func HandleWhatsappbusinessaccount_delete_subscribed_apps(ctx context.Context, r
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_delete_subscribed_apps(args)
@@ -3204,7 +3100,6 @@ func HandleWhatsappbusinessaccount_delete_subscribed_apps(ctx context.Context, r
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleWhatsappbusinessaccount_get_subscribed_apps handles the whatsappbusinessaccount_get_subscribed_apps tool with context-based auth
 func HandleWhatsappbusinessaccount_get_subscribed_apps(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3245,8 +3140,6 @@ func HandleWhatsappbusinessaccount_get_subscribed_apps(ctx context.Context, requ
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_get_subscribed_apps(args)
 	if err != nil {
@@ -3261,7 +3154,6 @@ func HandleWhatsappbusinessaccount_get_subscribed_apps(ctx context.Context, requ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleWhatsappbusinessaccount_post_subscribed_apps handles the whatsappbusinessaccount_post_subscribed_apps tool with context-based auth
 func HandleWhatsappbusinessaccount_post_subscribed_apps(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3289,8 +3181,6 @@ func HandleWhatsappbusinessaccount_post_subscribed_apps(ctx context.Context, req
 		}
 	}
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_post_subscribed_apps(args)
 	if err != nil {
@@ -3305,7 +3195,6 @@ func HandleWhatsappbusinessaccount_post_subscribed_apps(ctx context.Context, req
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleWhatsappbusinessaccount_get_template_analytics handles the whatsappbusinessaccount_get_template_analytics tool with context-based auth
 func HandleWhatsappbusinessaccount_get_template_analytics(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3360,8 +3249,6 @@ func HandleWhatsappbusinessaccount_get_template_analytics(ctx context.Context, r
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_get_template_analytics(args)
 	if err != nil {
@@ -3376,7 +3263,6 @@ func HandleWhatsappbusinessaccount_get_template_analytics(ctx context.Context, r
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleWhatsappbusinessaccount_get_template_group_analytics handles the whatsappbusinessaccount_get_template_group_analytics tool with context-based auth
 func HandleWhatsappbusinessaccount_get_template_group_analytics(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3431,8 +3317,6 @@ func HandleWhatsappbusinessaccount_get_template_group_analytics(ctx context.Cont
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_get_template_group_analytics(args)
 	if err != nil {
@@ -3447,7 +3331,6 @@ func HandleWhatsappbusinessaccount_get_template_group_analytics(ctx context.Cont
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleWhatsappbusinessaccount_get_template_groups handles the whatsappbusinessaccount_get_template_groups tool with context-based auth
 func HandleWhatsappbusinessaccount_get_template_groups(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3488,8 +3371,6 @@ func HandleWhatsappbusinessaccount_get_template_groups(ctx context.Context, requ
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_get_template_groups(args)
 	if err != nil {
@@ -3504,7 +3385,6 @@ func HandleWhatsappbusinessaccount_get_template_groups(ctx context.Context, requ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleWhatsappbusinessaccount_post_template_groups handles the whatsappbusinessaccount_post_template_groups tool with context-based auth
 func HandleWhatsappbusinessaccount_post_template_groups(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3534,8 +3414,6 @@ func HandleWhatsappbusinessaccount_post_template_groups(ctx context.Context, req
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_post_template_groups(args)
 	if err != nil {
@@ -3550,7 +3428,6 @@ func HandleWhatsappbusinessaccount_post_template_groups(ctx context.Context, req
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleWhatsappbusinessaccount_get_template_performance_metrics handles the whatsappbusinessaccount_get_template_performance_metrics tool with context-based auth
 func HandleWhatsappbusinessaccount_get_template_performance_metrics(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3603,8 +3480,6 @@ func HandleWhatsappbusinessaccount_get_template_performance_metrics(ctx context.
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_get_template_performance_metrics(args)
 	if err != nil {
@@ -3619,7 +3494,6 @@ func HandleWhatsappbusinessaccount_get_template_performance_metrics(ctx context.
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleWhatsappbusinessaccount_post_upsert_message_templates handles the whatsappbusinessaccount_post_upsert_message_templates tool with context-based auth
 func HandleWhatsappbusinessaccount_post_upsert_message_templates(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3649,8 +3523,6 @@ func HandleWhatsappbusinessaccount_post_upsert_message_templates(ctx context.Con
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_post_upsert_message_templates(args)
 	if err != nil {
@@ -3665,7 +3537,6 @@ func HandleWhatsappbusinessaccount_post_upsert_message_templates(ctx context.Con
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleWhatsappbusinessaccount_get_welcome_message_sequences handles the whatsappbusinessaccount_get_welcome_message_sequences tool with context-based auth
 func HandleWhatsappbusinessaccount_get_welcome_message_sequences(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3718,8 +3589,6 @@ func HandleWhatsappbusinessaccount_get_welcome_message_sequences(ctx context.Con
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_get_welcome_message_sequences(args)
 	if err != nil {
@@ -3734,7 +3603,6 @@ func HandleWhatsappbusinessaccount_get_welcome_message_sequences(ctx context.Con
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleWhatsappbusinessaccount_get_ handles the whatsappbusinessaccount_get_ tool with context-based auth
 func HandleWhatsappbusinessaccount_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3775,8 +3643,6 @@ func HandleWhatsappbusinessaccount_get_(ctx context.Context, request mcp.CallToo
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_get_(args)
 	if err != nil {
@@ -3791,7 +3657,6 @@ func HandleWhatsappbusinessaccount_get_(ctx context.Context, request mcp.CallToo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleWhatsappbusinessaccount_post_ handles the whatsappbusinessaccount_post_ tool with context-based auth
 func HandleWhatsappbusinessaccount_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3819,8 +3684,6 @@ func HandleWhatsappbusinessaccount_post_(ctx context.Context, request mcp.CallTo
 		}
 	}
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_post_(args)
 	if err != nil {
@@ -3835,4 +3698,3 @@ func HandleWhatsappbusinessaccount_post_(ctx context.Context, request mcp.CallTo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

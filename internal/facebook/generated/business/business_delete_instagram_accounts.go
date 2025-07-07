@@ -15,7 +15,7 @@ import (
 
 // ToolBusiness_delete_instagram_accounts returns the MCP tool definition for business_delete_instagram_accounts
 func ToolBusiness_delete_instagram_accounts() mcp.Tool {
-	
+
 	// Params object accepts: instagram_account (string)
 	return mcp.NewTool("business_delete_instagram_accounts",
 		mcp.WithDescription("DELETE instagram_accounts for Business"),
@@ -23,9 +23,9 @@ func ToolBusiness_delete_instagram_accounts() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"instagram_account": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "instagram_account parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: instagram_account (string) [required]"),
@@ -58,8 +58,6 @@ func HandleBusiness_delete_instagram_accounts(ctx context.Context, request mcp.C
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Business_delete_instagram_accounts(accessToken, args)
 	if err != nil {
@@ -78,20 +76,18 @@ func HandleBusiness_delete_instagram_accounts(ctx context.Context, request mcp.C
 // Business_delete_instagram_accounts performs DELETE instagram_accounts for Business
 func Business_delete_instagram_accounts(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/instagram_accounts")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

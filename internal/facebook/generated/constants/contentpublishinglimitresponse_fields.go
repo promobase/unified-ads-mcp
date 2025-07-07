@@ -4,10 +4,10 @@ package constants
 
 // ContentPublishingLimitResponseFields contains field name constants for ContentPublishingLimitResponse objects
 var ContentPublishingLimitResponseFields = struct {
-	Config string
+	Config     string
 	QuotaUsage string
 }{
-	Config: "config",
+	Config:     "config",
 	QuotaUsage: "quota_usage",
 }
 

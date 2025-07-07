@@ -15,14 +15,14 @@ import (
 
 // ToolUser_delete_businesses returns the MCP tool definition for user_delete_businesses
 func ToolUser_delete_businesses() mcp.Tool {
-	
+
 	// Params object accepts: business (string)
 	return mcp.NewTool("user_delete_businesses",
 		mcp.WithDescription("DELETE businesses for User"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"business": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "business parameter",
 				},
 			}),
@@ -54,8 +54,6 @@ func HandleUser_delete_businesses(ctx context.Context, request mcp.CallToolReque
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := User_delete_businesses(accessToken, args)
 	if err != nil {
@@ -74,20 +72,18 @@ func HandleUser_delete_businesses(ctx context.Context, request mcp.CallToolReque
 // User_delete_businesses performs DELETE businesses for User
 func User_delete_businesses(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/businesses")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

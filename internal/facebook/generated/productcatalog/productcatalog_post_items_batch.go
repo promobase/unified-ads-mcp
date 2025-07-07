@@ -15,7 +15,7 @@ import (
 
 // ToolProductcatalog_post_items_batch returns the MCP tool definition for productcatalog_post_items_batch
 func ToolProductcatalog_post_items_batch() mcp.Tool {
-	
+
 	// Params object accepts: allow_upsert (bool), item_sub_type (productcatalogitems_batch_item_sub_type_enum_param), item_type (string), requests (map), version (unsigned int)
 	return mcp.NewTool("productcatalog_post_items_batch",
 		mcp.WithDescription("POST items_batch for ProductCatalog"),
@@ -23,26 +23,26 @@ func ToolProductcatalog_post_items_batch() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"allow_upsert": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "allow_upsert parameter",
 				},
 				"item_sub_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "item_sub_type parameter",
-					"enum": []string{ "APPLIANCES", "BABY_FEEDING", "BABY_TRANSPORT", "BEAUTY", "BEDDING", "CAMERAS", "CELL_PHONES_AND_SMART_WATCHES", "CLEANING_SUPPLIES", "CLOTHING", "CLOTHING_ACCESSORIES", "COMPUTERS_AND_TABLETS", "DIAPERING_AND_POTTY_TRAINING", "ELECTRONICS_ACCESSORIES", "FURNITURE", "HEALTH", "HOME_GOODS", "JEWELRY", "NURSERY", "PRINTERS_AND_SCANNERS", "PROJECTORS", "SHOES_AND_FOOTWEAR", "SOFTWARE", "TOYS", "TVS_AND_MONITORS", "VIDEO_GAME_CONSOLES_AND_VIDEO_GAMES", "WATCHES" },
+					"enum":        []string{"APPLIANCES", "BABY_FEEDING", "BABY_TRANSPORT", "BEAUTY", "BEDDING", "CAMERAS", "CELL_PHONES_AND_SMART_WATCHES", "CLEANING_SUPPLIES", "CLOTHING", "CLOTHING_ACCESSORIES", "COMPUTERS_AND_TABLETS", "DIAPERING_AND_POTTY_TRAINING", "ELECTRONICS_ACCESSORIES", "FURNITURE", "HEALTH", "HOME_GOODS", "JEWELRY", "NURSERY", "PRINTERS_AND_SCANNERS", "PROJECTORS", "SHOES_AND_FOOTWEAR", "SOFTWARE", "TOYS", "TVS_AND_MONITORS", "VIDEO_GAME_CONSOLES_AND_VIDEO_GAMES", "WATCHES"},
 				},
 				"item_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "item_type parameter",
-					"required": true,
+					"required":    true,
 				},
 				"requests": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "requests parameter",
-					"required": true,
+					"required":    true,
 				},
 				"version": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "version parameter",
 				},
 			}),
@@ -76,8 +76,6 @@ func HandleProductcatalog_post_items_batch(ctx context.Context, request mcp.Call
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Productcatalog_post_items_batch(accessToken, args)
 	if err != nil {
@@ -96,20 +94,18 @@ func HandleProductcatalog_post_items_batch(ctx context.Context, request mcp.Call
 // Productcatalog_post_items_batch performs POST items_batch for ProductCatalog
 func Productcatalog_post_items_batch(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/items_batch")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

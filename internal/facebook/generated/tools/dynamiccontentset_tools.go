@@ -17,7 +17,6 @@ import (
 func GetDynamicContentSetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// dynamiccontentset_get_ tool
 	// Available fields for DynamicContentSet: business_id, id, name
 	dynamiccontentset_get_Tool := mcp.NewTool("dynamiccontentset_get_",
@@ -37,12 +36,10 @@ func GetDynamicContentSetTools() []mcp.Tool {
 	)
 	tools = append(tools, dynamiccontentset_get_Tool)
 
-
 	return tools
 }
 
 // DynamicContentSet handlers
-
 
 // HandleDynamiccontentset_get_ handles the dynamiccontentset_get_ tool with context-based auth
 func HandleDynamiccontentset_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleDynamiccontentset_get_(ctx context.Context, request mcp.CallToolReque
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Dynamiccontentset_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleDynamiccontentset_get_(ctx context.Context, request mcp.CallToolReque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

@@ -15,7 +15,7 @@ import (
 
 // ToolPage_delete_message_templates returns the MCP tool definition for page_delete_message_templates
 func ToolPage_delete_message_templates() mcp.Tool {
-	
+
 	// Params object accepts: name (string), template_id (string)
 	return mcp.NewTool("page_delete_message_templates",
 		mcp.WithDescription("DELETE message_templates for Page"),
@@ -23,12 +23,12 @@ func ToolPage_delete_message_templates() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
-					"required": true,
+					"required":    true,
 				},
 				"template_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "template_id parameter",
 				},
 			}),
@@ -62,8 +62,6 @@ func HandlePage_delete_message_templates(ctx context.Context, request mcp.CallTo
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Page_delete_message_templates(accessToken, args)
 	if err != nil {
@@ -82,20 +80,18 @@ func HandlePage_delete_message_templates(ctx context.Context, request mcp.CallTo
 // Page_delete_message_templates performs DELETE message_templates for Page
 func Page_delete_message_templates(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/message_templates")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

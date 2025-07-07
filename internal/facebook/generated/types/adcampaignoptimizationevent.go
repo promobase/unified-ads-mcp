@@ -5,6 +5,6 @@ package types
 // AdCampaignOptimizationEvent represents a Facebook AdCampaignOptimizationEvent object
 type AdCampaignOptimizationEvent struct {
 	Custom_conversion_id string `json:"custom_conversion_id"`
-	Event_sequence int `json:"event_sequence"`
-	Event_type string `json:"event_type"`
+	Event_sequence       int    `json:"event_sequence"`
+	Event_type           string `json:"event_type"`
 }

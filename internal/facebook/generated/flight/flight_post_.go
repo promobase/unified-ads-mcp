@@ -15,47 +15,47 @@ import (
 
 // ToolFlight_post_ returns the MCP tool definition for flight_post_
 func ToolFlight_post_() mcp.Tool {
-	
+
 	// Params object accepts: currency (string), description (string), destination_airport (string), destination_city (string), images (list<Object>), origin_airport (string), origin_city (string), price (unsigned int), url (string)
 	return mcp.NewTool("flight_post_",
 		mcp.WithDescription("POST  for Flight"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"currency": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "currency parameter",
 				},
 				"description": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "description parameter",
 				},
 				"destination_airport": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "destination_airport parameter",
 				},
 				"destination_city": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "destination_city parameter",
 				},
 				"images": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "images parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"origin_airport": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "origin_airport parameter",
 				},
 				"origin_city": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "origin_city parameter",
 				},
 				"price": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "price parameter",
 				},
 				"url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "url parameter",
 				},
 			}),
@@ -87,8 +87,6 @@ func HandleFlight_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Flight_post_(accessToken, args)
 	if err != nil {
@@ -107,20 +105,18 @@ func HandleFlight_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 // Flight_post_ performs POST  for Flight
 func Flight_post_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

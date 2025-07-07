@@ -19,7 +19,6 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolHomelisting_get_())
 	tools = append(tools, ToolHomelisting_post_())
 
-
 	return tools
 }
 
@@ -33,7 +32,6 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers["homelisting_delete_"] = HandleHomelisting_delete_
 	handlers["homelisting_get_"] = HandleHomelisting_get_
 	handlers["homelisting_post_"] = HandleHomelisting_post_
-
 
 	return handlers
 }

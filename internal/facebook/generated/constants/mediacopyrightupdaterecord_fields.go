@@ -4,20 +4,20 @@ package constants
 
 // MediaCopyrightUpdateRecordFields contains field name constants for MediaCopyrightUpdateRecord objects
 var MediaCopyrightUpdateRecordFields = struct {
-	ActionTypes string
-	Actor string
-	ActorType string
-	CreationTime string
-	Id string
-	OwnershipCountries string
+	ActionTypes         string
+	Actor               string
+	ActorType           string
+	CreationTime        string
+	Id                  string
+	OwnershipCountries  string
 	WhitelistedAccounts string
 }{
-	ActionTypes: "action_types",
-	Actor: "actor",
-	ActorType: "actor_type",
-	CreationTime: "creation_time",
-	Id: "id",
-	OwnershipCountries: "ownership_countries",
+	ActionTypes:         "action_types",
+	Actor:               "actor",
+	ActorType:           "actor_type",
+	CreationTime:        "creation_time",
+	Id:                  "id",
+	OwnershipCountries:  "ownership_countries",
 	WhitelistedAccounts: "whitelisted_accounts",
 }
 

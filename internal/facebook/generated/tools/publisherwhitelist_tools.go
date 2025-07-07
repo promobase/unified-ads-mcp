@@ -17,7 +17,6 @@ import (
 func GetPublisherWhiteListTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// publisherwhitelist_get_ tool
 	// Available fields for PublisherWhiteList: business_owner_id, id, last_updated_time, last_updated_user, name, placement_type
 	publisherwhitelist_get_Tool := mcp.NewTool("publisherwhitelist_get_",
@@ -37,12 +36,10 @@ func GetPublisherWhiteListTools() []mcp.Tool {
 	)
 	tools = append(tools, publisherwhitelist_get_Tool)
 
-
 	return tools
 }
 
 // PublisherWhiteList handlers
-
 
 // HandlePublisherwhitelist_get_ handles the publisherwhitelist_get_ tool with context-based auth
 func HandlePublisherwhitelist_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandlePublisherwhitelist_get_(ctx context.Context, request mcp.CallToolRequ
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Publisherwhitelist_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandlePublisherwhitelist_get_(ctx context.Context, request mcp.CallToolRequ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

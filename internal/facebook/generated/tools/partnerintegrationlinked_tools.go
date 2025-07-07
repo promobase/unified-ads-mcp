@@ -17,7 +17,6 @@ import (
 func GetPartnerIntegrationLinkedTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// partnerintegrationlinked_get_ tool
 	// Available fields for PartnerIntegrationLinked: ads_pixel, application, completed_integration_types, external_business_connection_id, external_id, has_oauth_token, id, mbe_app_id, mbe_asset_id, mbe_external_business_id, name, offline_conversion_data_set, page, partner, product_catalog, setup_status
 	partnerintegrationlinked_get_Tool := mcp.NewTool("partnerintegrationlinked_get_",
@@ -37,12 +36,10 @@ func GetPartnerIntegrationLinkedTools() []mcp.Tool {
 	)
 	tools = append(tools, partnerintegrationlinked_get_Tool)
 
-
 	return tools
 }
 
 // PartnerIntegrationLinked handlers
-
 
 // HandlePartnerintegrationlinked_get_ handles the partnerintegrationlinked_get_ tool with context-based auth
 func HandlePartnerintegrationlinked_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandlePartnerintegrationlinked_get_(ctx context.Context, request mcp.CallTo
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Partnerintegrationlinked_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandlePartnerintegrationlinked_get_(ctx context.Context, request mcp.CallTo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

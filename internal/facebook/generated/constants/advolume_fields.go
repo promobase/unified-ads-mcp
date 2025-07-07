@@ -4,27 +4,27 @@ package constants
 
 // AdVolumeFields contains field name constants for AdVolume objects
 var AdVolumeFields = struct {
-	AdVolumeBreakDown string
-	AdsRunningOrInReviewCount string
-	FutureLimitActivationDate string
+	AdVolumeBreakDown                 string
+	AdsRunningOrInReviewCount         string
+	FutureLimitActivationDate         string
 	FutureLimitOnAdsRunningOrInReview string
-	IndividualAccountsAdVolume string
-	IsGpaPage string
-	LimitOnAdsRunningOrInReview string
-	OwningBusinessAdVolume string
-	PartnerBusinessAdVolume string
-	UserRole string
+	IndividualAccountsAdVolume        string
+	IsGpaPage                         string
+	LimitOnAdsRunningOrInReview       string
+	OwningBusinessAdVolume            string
+	PartnerBusinessAdVolume           string
+	UserRole                          string
 }{
-	AdVolumeBreakDown: "ad_volume_break_down",
-	AdsRunningOrInReviewCount: "ads_running_or_in_review_count",
-	FutureLimitActivationDate: "future_limit_activation_date",
+	AdVolumeBreakDown:                 "ad_volume_break_down",
+	AdsRunningOrInReviewCount:         "ads_running_or_in_review_count",
+	FutureLimitActivationDate:         "future_limit_activation_date",
 	FutureLimitOnAdsRunningOrInReview: "future_limit_on_ads_running_or_in_review",
-	IndividualAccountsAdVolume: "individual_accounts_ad_volume",
-	IsGpaPage: "is_gpa_page",
-	LimitOnAdsRunningOrInReview: "limit_on_ads_running_or_in_review",
-	OwningBusinessAdVolume: "owning_business_ad_volume",
-	PartnerBusinessAdVolume: "partner_business_ad_volume",
-	UserRole: "user_role",
+	IndividualAccountsAdVolume:        "individual_accounts_ad_volume",
+	IsGpaPage:                         "is_gpa_page",
+	LimitOnAdsRunningOrInReview:       "limit_on_ads_running_or_in_review",
+	OwningBusinessAdVolume:            "owning_business_ad_volume",
+	PartnerBusinessAdVolume:           "partner_business_ad_volume",
+	UserRole:                          "user_role",
 }
 
 // AdVolumeFieldsList contains all available fields for AdVolume objects

@@ -4,29 +4,29 @@ package constants
 
 // ThirdPartyPartnerViewabilityRequestFields contains field name constants for ThirdPartyPartnerViewabilityRequest objects
 var ThirdPartyPartnerViewabilityRequestFields = struct {
-	CreatedTime string
-	Description string
-	Ds string
-	Hour string
-	Id string
-	Metric string
-	ModifiedTime string
+	CreatedTime     string
+	Description     string
+	Ds              string
+	Hour            string
+	Id              string
+	Metric          string
+	ModifiedTime    string
 	OwnerInstanceId string
-	Platform string
-	Status string
-	TotalFileCount string
+	Platform        string
+	Status          string
+	TotalFileCount  string
 }{
-	CreatedTime: "created_time",
-	Description: "description",
-	Ds: "ds",
-	Hour: "hour",
-	Id: "id",
-	Metric: "metric",
-	ModifiedTime: "modified_time",
+	CreatedTime:     "created_time",
+	Description:     "description",
+	Ds:              "ds",
+	Hour:            "hour",
+	Id:              "id",
+	Metric:          "metric",
+	ModifiedTime:    "modified_time",
 	OwnerInstanceId: "owner_instance_id",
-	Platform: "platform",
-	Status: "status",
-	TotalFileCount: "total_file_count",
+	Platform:        "platform",
+	Status:          "status",
+	TotalFileCount:  "total_file_count",
 }
 
 // ThirdPartyPartnerViewabilityRequestFieldsList contains all available fields for ThirdPartyPartnerViewabilityRequest objects

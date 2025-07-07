@@ -4,23 +4,23 @@ package constants
 
 // ShadowIGUserCatalogProductSearchFields contains field name constants for ShadowIGUserCatalogProductSearch objects
 var ShadowIGUserCatalogProductSearchFields = struct {
-	ImageUrl string
-	IsCheckoutFlow string
-	MerchantId string
-	ProductId string
-	ProductName string
+	ImageUrl        string
+	IsCheckoutFlow  string
+	MerchantId      string
+	ProductId       string
+	ProductName     string
 	ProductVariants string
-	RetailerId string
-	ReviewStatus string
+	RetailerId      string
+	ReviewStatus    string
 }{
-	ImageUrl: "image_url",
-	IsCheckoutFlow: "is_checkout_flow",
-	MerchantId: "merchant_id",
-	ProductId: "product_id",
-	ProductName: "product_name",
+	ImageUrl:        "image_url",
+	IsCheckoutFlow:  "is_checkout_flow",
+	MerchantId:      "merchant_id",
+	ProductId:       "product_id",
+	ProductName:     "product_name",
 	ProductVariants: "product_variants",
-	RetailerId: "retailer_id",
-	ReviewStatus: "review_status",
+	RetailerId:      "retailer_id",
+	ReviewStatus:    "review_status",
 }
 
 // ShadowIGUserCatalogProductSearchFieldsList contains all available fields for ShadowIGUserCatalogProductSearch objects

@@ -15,7 +15,7 @@ import (
 
 // ToolUser_post_fundraisers returns the MCP tool definition for user_post_fundraisers
 func ToolUser_post_fundraisers() mcp.Tool {
-	
+
 	// Params object accepts: charity_id (string), cover_photo (file), currency (string), description (string), end_time (datetime), external_event_name (string), external_event_start_time (datetime), external_event_uri (string), external_fundraiser_uri (string), external_id (string), fundraiser_type (userfundraisers_fundraiser_type_enum_param), goal_amount (unsigned int), name (string), page_id (string)
 	return mcp.NewTool("user_post_fundraisers",
 		mcp.WithDescription("POST fundraisers for User"),
@@ -23,67 +23,67 @@ func ToolUser_post_fundraisers() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"charity_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "charity_id parameter",
 				},
 				"cover_photo": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "cover_photo parameter",
 				},
 				"currency": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "currency parameter",
-					"required": true,
+					"required":    true,
 				},
 				"description": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "description parameter",
-					"required": true,
+					"required":    true,
 				},
 				"end_time": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "end_time parameter",
-					"required": true,
+					"required":    true,
 				},
 				"external_event_name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "external_event_name parameter",
 				},
 				"external_event_start_time": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "external_event_start_time parameter",
 				},
 				"external_event_uri": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "external_event_uri parameter",
 				},
 				"external_fundraiser_uri": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "external_fundraiser_uri parameter",
 				},
 				"external_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "external_id parameter",
-					"required": true,
+					"required":    true,
 				},
 				"fundraiser_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "fundraiser_type parameter",
-					"required": true,
-					"enum": []string{ "person_for_charity" },
+					"required":    true,
+					"enum":        []string{"person_for_charity"},
 				},
 				"goal_amount": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "goal_amount parameter",
-					"required": true,
+					"required":    true,
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
-					"required": true,
+					"required":    true,
 				},
 				"page_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "page_id parameter",
 				},
 			}),
@@ -117,8 +117,6 @@ func HandleUser_post_fundraisers(ctx context.Context, request mcp.CallToolReques
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := User_post_fundraisers(accessToken, args)
 	if err != nil {
@@ -137,20 +135,18 @@ func HandleUser_post_fundraisers(ctx context.Context, request mcp.CallToolReques
 // User_post_fundraisers performs POST fundraisers for User
 func User_post_fundraisers(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/fundraisers")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

@@ -15,8 +15,7 @@ import (
 
 // ToolIgmedia_post_partnership_ad_code returns the MCP tool definition for igmedia_post_partnership_ad_code
 func ToolIgmedia_post_partnership_ad_code() mcp.Tool {
-	
-	
+
 	return mcp.NewTool("igmedia_post_partnership_ad_code",
 		mcp.WithDescription("POST partnership_ad_code for IGMedia"),
 	)
@@ -32,8 +31,6 @@ func HandleIgmedia_post_partnership_ad_code(ctx context.Context, request mcp.Cal
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the API method
 	result, err := Igmedia_post_partnership_ad_code(accessToken, args)
@@ -53,14 +50,11 @@ func HandleIgmedia_post_partnership_ad_code(ctx context.Context, request mcp.Cal
 // Igmedia_post_partnership_ad_code performs POST partnership_ad_code for IGMedia
 func Igmedia_post_partnership_ad_code(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/partnership_ad_code")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response

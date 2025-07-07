@@ -17,7 +17,6 @@ import (
 func GetFranchiseProgramMemberTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// franchiseprogrammember_get_ tool
 	// Available fields for FranchiseProgramMember: business, end_date, id, join_date, member_ad_account, member_user, membership_status, page
 	franchiseprogrammember_get_Tool := mcp.NewTool("franchiseprogrammember_get_",
@@ -37,12 +36,10 @@ func GetFranchiseProgramMemberTools() []mcp.Tool {
 	)
 	tools = append(tools, franchiseprogrammember_get_Tool)
 
-
 	return tools
 }
 
 // FranchiseProgramMember handlers
-
 
 // HandleFranchiseprogrammember_get_ handles the franchiseprogrammember_get_ tool with context-based auth
 func HandleFranchiseprogrammember_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleFranchiseprogrammember_get_(ctx context.Context, request mcp.CallTool
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Franchiseprogrammember_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleFranchiseprogrammember_get_(ctx context.Context, request mcp.CallTool
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

@@ -17,7 +17,7 @@ import (
 // ToolBusiness_get_pending_shared_offsite_signal_container_business_objects returns the MCP tool definition for business_get_pending_shared_offsite_signal_container_business_objects
 func ToolBusiness_get_pending_shared_offsite_signal_container_business_objects() mcp.Tool {
 	// Available fields for OffsiteSignalContainerBusinessObject: business, id, is_eligible_for_sharing_to_ad_account, is_eligible_for_sharing_to_business, is_unavailable, name, primary_container_id
-	
+
 	return mcp.NewTool("business_get_pending_shared_offsite_signal_container_business_objects",
 		mcp.WithDescription("GET pending_shared_offsite_signal_container_business_objects for Business"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleBusiness_get_pending_shared_offsite_signal_container_business_objects
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Business_get_pending_shared_offsite_signal_container_business_objects(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleBusiness_get_pending_shared_offsite_signal_container_business_objects
 // Business_get_pending_shared_offsite_signal_container_business_objects performs GET pending_shared_offsite_signal_container_business_objects for Business
 func Business_get_pending_shared_offsite_signal_container_business_objects(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/pending_shared_offsite_signal_container_business_objects")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

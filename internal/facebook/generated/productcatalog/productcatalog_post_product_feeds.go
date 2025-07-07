@@ -15,96 +15,96 @@ import (
 
 // ToolProductcatalog_post_product_feeds returns the MCP tool definition for productcatalog_post_product_feeds
 func ToolProductcatalog_post_product_feeds() mcp.Tool {
-	
+
 	// Params object accepts: country (string), default_currency (string), deletion_enabled (bool), delimiter (productcatalogproduct_feeds_delimiter_enum_param), encoding (productcatalogproduct_feeds_encoding_enum_param), feed_type (productcatalogproduct_feeds_feed_type_enum_param), file_name (string), ingestion_source_type (productcatalogproduct_feeds_ingestion_source_type_enum_param), item_sub_type (productcatalogproduct_feeds_item_sub_type_enum_param), migrated_from_feed_id (string), name (string), override_type (productcatalogproduct_feeds_override_type_enum_param), override_value (string), primary_feed_ids (list<string>), quoted_fields_mode (productcatalogproduct_feeds_quoted_fields_mode_enum_param), rules (list<string>), schedule (string), selected_override_fields (list<string>), update_schedule (string)
 	return mcp.NewTool("productcatalog_post_product_feeds",
 		mcp.WithDescription("POST product_feeds for ProductCatalog"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"country": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "country parameter",
 				},
 				"default_currency": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "default_currency parameter",
 				},
 				"deletion_enabled": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "deletion_enabled parameter",
 				},
 				"delimiter": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "delimiter parameter",
-					"enum": []string{ "AUTODETECT", "BAR", "COMMA", "SEMICOLON", "TAB", "TILDE" },
+					"enum":        []string{"AUTODETECT", "BAR", "COMMA", "SEMICOLON", "TAB", "TILDE"},
 				},
 				"encoding": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "encoding parameter",
-					"enum": []string{ "AUTODETECT", "LATIN1", "UTF16BE", "UTF16LE", "UTF32BE", "UTF32LE", "UTF8" },
+					"enum":        []string{"AUTODETECT", "LATIN1", "UTF16BE", "UTF16LE", "UTF32BE", "UTF32LE", "UTF8"},
 				},
 				"feed_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "feed_type parameter",
-					"enum": []string{ "AUTOMOTIVE_MODEL", "COLLECTION", "DESTINATION", "FLIGHT", "HOME_LISTING", "HOTEL", "HOTEL_ROOM", "LOCAL_INVENTORY", "MEDIA_TITLE", "OFFER", "PRODUCTS", "PRODUCT_RATINGS_AND_REVIEWS", "TRANSACTABLE_ITEMS", "VEHICLES", "VEHICLE_OFFER" },
+					"enum":        []string{"AUTOMOTIVE_MODEL", "COLLECTION", "DESTINATION", "FLIGHT", "HOME_LISTING", "HOTEL", "HOTEL_ROOM", "LOCAL_INVENTORY", "MEDIA_TITLE", "OFFER", "PRODUCTS", "PRODUCT_RATINGS_AND_REVIEWS", "TRANSACTABLE_ITEMS", "VEHICLES", "VEHICLE_OFFER"},
 				},
 				"file_name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "file_name parameter",
 				},
 				"ingestion_source_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "ingestion_source_type parameter",
-					"enum": []string{ "PRIMARY_FEED", "SUPPLEMENTARY_FEED" },
+					"enum":        []string{"PRIMARY_FEED", "SUPPLEMENTARY_FEED"},
 				},
 				"item_sub_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "item_sub_type parameter",
-					"enum": []string{ "APPLIANCES", "BABY_FEEDING", "BABY_TRANSPORT", "BEAUTY", "BEDDING", "CAMERAS", "CELL_PHONES_AND_SMART_WATCHES", "CLEANING_SUPPLIES", "CLOTHING", "CLOTHING_ACCESSORIES", "COMPUTERS_AND_TABLETS", "DIAPERING_AND_POTTY_TRAINING", "ELECTRONICS_ACCESSORIES", "FURNITURE", "HEALTH", "HOME_GOODS", "JEWELRY", "NURSERY", "PRINTERS_AND_SCANNERS", "PROJECTORS", "SHOES_AND_FOOTWEAR", "SOFTWARE", "TOYS", "TVS_AND_MONITORS", "VIDEO_GAME_CONSOLES_AND_VIDEO_GAMES", "WATCHES" },
+					"enum":        []string{"APPLIANCES", "BABY_FEEDING", "BABY_TRANSPORT", "BEAUTY", "BEDDING", "CAMERAS", "CELL_PHONES_AND_SMART_WATCHES", "CLEANING_SUPPLIES", "CLOTHING", "CLOTHING_ACCESSORIES", "COMPUTERS_AND_TABLETS", "DIAPERING_AND_POTTY_TRAINING", "ELECTRONICS_ACCESSORIES", "FURNITURE", "HEALTH", "HOME_GOODS", "JEWELRY", "NURSERY", "PRINTERS_AND_SCANNERS", "PROJECTORS", "SHOES_AND_FOOTWEAR", "SOFTWARE", "TOYS", "TVS_AND_MONITORS", "VIDEO_GAME_CONSOLES_AND_VIDEO_GAMES", "WATCHES"},
 				},
 				"migrated_from_feed_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "migrated_from_feed_id parameter",
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
 				},
 				"override_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "override_type parameter",
-					"enum": []string{ "BATCH_API_LANGUAGE_OR_COUNTRY", "CATALOG_SEGMENT_CUSTOMIZE_DEFAULT", "COUNTRY", "LANGUAGE", "LANGUAGE_AND_COUNTRY", "LOCAL", "SMART_PIXEL_LANGUAGE_OR_COUNTRY", "VERSION" },
+					"enum":        []string{"BATCH_API_LANGUAGE_OR_COUNTRY", "CATALOG_SEGMENT_CUSTOMIZE_DEFAULT", "COUNTRY", "LANGUAGE", "LANGUAGE_AND_COUNTRY", "LOCAL", "SMART_PIXEL_LANGUAGE_OR_COUNTRY", "VERSION"},
 				},
 				"override_value": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "override_value parameter",
 				},
 				"primary_feed_ids": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "primary_feed_ids parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"quoted_fields_mode": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "quoted_fields_mode parameter",
-					"enum": []string{ "autodetect", "off", "on" },
+					"enum":        []string{"autodetect", "off", "on"},
 				},
 				"rules": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "rules parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"schedule": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "schedule parameter",
 				},
 				"selected_override_fields": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "selected_override_fields parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"update_schedule": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "update_schedule parameter",
 				},
 			}),
@@ -136,8 +136,6 @@ func HandleProductcatalog_post_product_feeds(ctx context.Context, request mcp.Ca
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Productcatalog_post_product_feeds(accessToken, args)
 	if err != nil {
@@ -156,20 +154,18 @@ func HandleProductcatalog_post_product_feeds(ctx context.Context, request mcp.Ca
 // Productcatalog_post_product_feeds performs POST product_feeds for ProductCatalog
 func Productcatalog_post_product_feeds(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/product_feeds")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

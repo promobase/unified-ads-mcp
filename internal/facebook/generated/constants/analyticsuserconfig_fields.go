@@ -5,12 +5,12 @@ package constants
 // AnalyticsUserConfigFields contains field name constants for AnalyticsUserConfig objects
 var AnalyticsUserConfigFields = struct {
 	DemoAppNuxConfig string
-	Flags string
-	Id string
+	Flags            string
+	Id               string
 }{
 	DemoAppNuxConfig: "demo_app_nux_config",
-	Flags: "flags",
-	Id: "id",
+	Flags:            "flags",
+	Id:               "id",
 }
 
 // AnalyticsUserConfigFieldsList contains all available fields for AnalyticsUserConfig objects

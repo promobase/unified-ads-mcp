@@ -5,12 +5,12 @@ package constants
 // PageMessageResponsivenessMetricsFields contains field name constants for PageMessageResponsivenessMetrics objects
 var PageMessageResponsivenessMetricsFields = struct {
 	IsVeryResponsive string
-	ResponseRate string
-	ResponseTime string
+	ResponseRate     string
+	ResponseTime     string
 }{
 	IsVeryResponsive: "is_very_responsive",
-	ResponseRate: "response_rate",
-	ResponseTime: "response_time",
+	ResponseRate:     "response_rate",
+	ResponseTime:     "response_time",
 }
 
 // PageMessageResponsivenessMetricsFieldsList contains all available fields for PageMessageResponsivenessMetrics objects

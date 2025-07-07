@@ -17,7 +17,7 @@ import (
 // ToolAdset_get_adcreatives returns the MCP tool definition for adset_get_adcreatives
 func ToolAdset_get_adcreatives() mcp.Tool {
 	// Available fields for AdCreative: account_id, actor_id, ad_disclaimer_spec, adlabels, applink_treatment, asset_feed_spec, authorization_category, auto_update, body, branded_content, branded_content_sponsor_page_id, bundle_folder_id, call_to_action, call_to_action_type, categorization_criteria, category_media_source, collaborative_ads_lsb_image_bank_id, contextual_multi_ads, creative_sourcing_spec, degrees_of_freedom_spec, destination_set_id, dynamic_ad_voice, effective_authorization_category, effective_instagram_media_id, effective_object_story_id, enable_direct_install, enable_launch_instant_app, facebook_branded_content, id, image_crops, image_hash, image_url, instagram_branded_content, instagram_permalink_url, instagram_user_id, interactive_components_spec, link_deep_link_url, link_destination_display_url, link_og_id, link_url, messenger_sponsored_message, name, object_id, object_store_url, object_story_id, object_story_spec, object_type, object_url, omnichannel_link_spec, page_welcome_message, photo_album_source_object_story_id, place_page_set_id, platform_customizations, playable_asset_id, portrait_customizations, product_data, product_set_id, recommender_settings, regional_regulation_disclaimer_spec, source_facebook_post_id, source_instagram_media_id, status, template_url, template_url_spec, thumbnail_id, thumbnail_url, title, url_tags, use_page_actor_override, video_id
-	
+
 	return mcp.NewTool("adset_get_adcreatives",
 		mcp.WithDescription("GET adcreatives for AdSet"),
 		mcp.WithString("ad_set_id",
@@ -82,8 +82,6 @@ func HandleAdset_get_adcreatives(ctx context.Context, request mcp.CallToolReques
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Adset_get_adcreatives(accessToken, args)
 	if err != nil {
@@ -102,59 +100,57 @@ func HandleAdset_get_adcreatives(ctx context.Context, request mcp.CallToolReques
 // Adset_get_adcreatives performs GET adcreatives for AdSet
 func Adset_get_adcreatives(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	// Extract ad_set_id for URL construction
 	adSetId, ok := args["ad_set_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("ad_set_id is required for adset_get_adcreatives")
 	}
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/%sadcreatives", adSetId)
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["ad_set_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "ad_set_id" != "ad_set_id" {
 			urlParams.Set("ad_set_id", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "fields" != "ad_set_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "limit" != "ad_set_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "after" != "ad_set_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "before" != "ad_set_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-		
-	}
 
+	}
 
 	// Make HTTP request
 	var resp *http.Response

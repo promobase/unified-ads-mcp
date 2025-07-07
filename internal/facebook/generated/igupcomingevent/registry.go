@@ -15,7 +15,6 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolIgupcomingevent_get_())
 	tools = append(tools, ToolIgupcomingevent_post_())
 
-
 	return tools
 }
 
@@ -25,7 +24,6 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 
 	handlers["igupcomingevent_get_"] = HandleIgupcomingevent_get_
 	handlers["igupcomingevent_post_"] = HandleIgupcomingevent_post_
-
 
 	return handlers
 }

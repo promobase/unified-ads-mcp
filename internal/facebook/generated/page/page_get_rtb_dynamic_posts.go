@@ -17,7 +17,7 @@ import (
 // ToolPage_get_rtb_dynamic_posts returns the MCP tool definition for page_get_rtb_dynamic_posts
 func ToolPage_get_rtb_dynamic_posts() mcp.Tool {
 	// Available fields for RTBDynamicPost: child_attachments, created, description, id, image_url, link, message, owner_id, place_id, product_id, title
-	
+
 	return mcp.NewTool("page_get_rtb_dynamic_posts",
 		mcp.WithDescription("GET rtb_dynamic_posts for Page"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandlePage_get_rtb_dynamic_posts(ctx context.Context, request mcp.CallToolR
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Page_get_rtb_dynamic_posts(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandlePage_get_rtb_dynamic_posts(ctx context.Context, request mcp.CallToolR
 // Page_get_rtb_dynamic_posts performs GET rtb_dynamic_posts for Page
 func Page_get_rtb_dynamic_posts(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/rtb_dynamic_posts")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

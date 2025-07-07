@@ -6,11 +6,11 @@ package constants
 var CreditPartitionActionOptionsFields = struct {
 	LiabilityType string
 	PartitionType string
-	SendBillTo string
+	SendBillTo    string
 }{
 	LiabilityType: "liability_type",
 	PartitionType: "partition_type",
-	SendBillTo: "send_bill_to",
+	SendBillTo:    "send_bill_to",
 }
 
 // CreditPartitionActionOptionsFieldsList contains all available fields for CreditPartitionActionOptions objects

@@ -6,15 +6,15 @@ import "time"
 
 // PrivateLiftStudyInstance represents a Facebook PrivateLiftStudyInstance object
 type PrivateLiftStudyInstance struct {
-	Breakdown_key string `json:"breakdown_key"`
-	Created_time time.Time `json:"created_time"`
-	Feature_list []string `json:"feature_list"`
-	Id string `json:"id"`
-	Issuer_certificate string `json:"issuer_certificate"`
+	Breakdown_key             string    `json:"breakdown_key"`
+	Created_time              time.Time `json:"created_time"`
+	Feature_list              []string  `json:"feature_list"`
+	Id                        string    `json:"id"`
+	Issuer_certificate        string    `json:"issuer_certificate"`
 	Latest_status_update_time time.Time `json:"latest_status_update_time"`
-	Run_id string `json:"run_id"`
-	Server_hostnames []string `json:"server_hostnames"`
-	Server_ips []string `json:"server_ips"`
-	Status string `json:"status"`
-	Tier string `json:"tier"`
+	Run_id                    string    `json:"run_id"`
+	Server_hostnames          []string  `json:"server_hostnames"`
+	Server_ips                []string  `json:"server_ips"`
+	Status                    string    `json:"status"`
+	Tier                      string    `json:"tier"`
 }

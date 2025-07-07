@@ -4,7 +4,7 @@ package types
 
 // ScimCompanyUserPhoneNumber represents a Facebook ScimCompanyUserPhoneNumber object
 type ScimCompanyUserPhoneNumber struct {
-	Number string `json:"number"`
-	Primary bool `json:"primary"`
-	Type_ string `json:"type"`
+	Number  string `json:"number"`
+	Primary bool   `json:"primary"`
+	Type_   string `json:"type"`
 }

@@ -15,7 +15,7 @@ import (
 
 // ToolEventsourcegroup_post_ returns the MCP tool definition for eventsourcegroup_post_
 func ToolEventsourcegroup_post_() mcp.Tool {
-	
+
 	// Params object accepts: event_sources (list<string>), name (string)
 	return mcp.NewTool("eventsourcegroup_post_",
 		mcp.WithDescription("POST  for EventSourceGroup"),
@@ -23,15 +23,15 @@ func ToolEventsourcegroup_post_() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"event_sources": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "event_sources parameter",
-					"required": true,
-					"items": map[string]any{"type": "string"},
+					"required":    true,
+					"items":       map[string]any{"type": "string"},
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: event_sources (array<string>) [required], name (string) [required]"),
@@ -64,8 +64,6 @@ func HandleEventsourcegroup_post_(ctx context.Context, request mcp.CallToolReque
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Eventsourcegroup_post_(accessToken, args)
 	if err != nil {
@@ -84,20 +82,18 @@ func HandleEventsourcegroup_post_(ctx context.Context, request mcp.CallToolReque
 // Eventsourcegroup_post_ performs POST  for EventSourceGroup
 func Eventsourcegroup_post_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

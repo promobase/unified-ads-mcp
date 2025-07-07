@@ -17,7 +17,6 @@ import (
 func GetCustomConversionTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// customconversion_get_stats tool
 	// Available fields for CustomConversionStatsResult: aggregation, data, timestamp
 	// Params object accepts: aggregation (customconversionstats_aggregation_enum_param), end_time (datetime), start_time (datetime)
@@ -26,16 +25,16 @@ func GetCustomConversionTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"aggregation": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "aggregation parameter",
-					"enum": []string{ "count", "device_type", "host", "pixel_fire", "unmatched_count", "unmatched_usd_amount", "url", "usd_amount" },
+					"enum":        []string{"count", "device_type", "host", "pixel_fire", "unmatched_count", "unmatched_usd_amount", "url", "usd_amount"},
 				},
 				"end_time": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "end_time parameter",
 				},
 				"start_time": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "start_time parameter",
 				},
 			}),
@@ -88,15 +87,15 @@ func GetCustomConversionTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"default_conversion_value": map[string]any{
-					"type": "number",
+					"type":        "number",
 					"description": "default_conversion_value parameter",
 				},
 				"description": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "description parameter",
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
 				},
 			}),
@@ -105,12 +104,10 @@ func GetCustomConversionTools() []mcp.Tool {
 	)
 	tools = append(tools, customconversion_post_Tool)
 
-
 	return tools
 }
 
 // CustomConversion handlers
-
 
 // HandleCustomconversion_get_stats handles the customconversion_get_stats tool with context-based auth
 func HandleCustomconversion_get_stats(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -163,8 +160,6 @@ func HandleCustomconversion_get_stats(ctx context.Context, request mcp.CallToolR
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Customconversion_get_stats(args)
 	if err != nil {
@@ -180,7 +175,6 @@ func HandleCustomconversion_get_stats(ctx context.Context, request mcp.CallToolR
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleCustomconversion_delete_ handles the customconversion_delete_ tool with context-based auth
 func HandleCustomconversion_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
@@ -194,8 +188,6 @@ func HandleCustomconversion_delete_(ctx context.Context, request mcp.CallToolReq
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Customconversion_delete_(args)
@@ -211,7 +203,6 @@ func HandleCustomconversion_delete_(ctx context.Context, request mcp.CallToolReq
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleCustomconversion_get_ handles the customconversion_get_ tool with context-based auth
 func HandleCustomconversion_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -252,8 +243,6 @@ func HandleCustomconversion_get_(ctx context.Context, request mcp.CallToolReques
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Customconversion_get_(args)
 	if err != nil {
@@ -268,7 +257,6 @@ func HandleCustomconversion_get_(ctx context.Context, request mcp.CallToolReques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleCustomconversion_post_ handles the customconversion_post_ tool with context-based auth
 func HandleCustomconversion_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -296,8 +284,6 @@ func HandleCustomconversion_post_(ctx context.Context, request mcp.CallToolReque
 		}
 	}
 
-
-
 	// Call the client method
 	result, err := client.Customconversion_post_(args)
 	if err != nil {
@@ -312,4 +298,3 @@ func HandleCustomconversion_post_(ctx context.Context, request mcp.CallToolReque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

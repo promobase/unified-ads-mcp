@@ -4,9 +4,9 @@ package types
 
 // SiteLink represents a Facebook SiteLink object
 type SiteLink struct {
-	Id string `json:"id"`
+	Id              string `json:"id"`
 	Link_image_hash string `json:"link_image_hash"`
-	Link_title string `json:"link_title"`
-	Link_type string `json:"link_type"`
-	Link_url string `json:"link_url"`
+	Link_title      string `json:"link_title"`
+	Link_type       string `json:"link_type"`
+	Link_url        string `json:"link_url"`
 }

@@ -15,7 +15,6 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolBusinessassetsharingagreement_get_())
 	tools = append(tools, ToolBusinessassetsharingagreement_post_())
 
-
 	return tools
 }
 
@@ -25,7 +24,6 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 
 	handlers["businessassetsharingagreement_get_"] = HandleBusinessassetsharingagreement_get_
 	handlers["businessassetsharingagreement_post_"] = HandleBusinessassetsharingagreement_post_
-
 
 	return handlers
 }

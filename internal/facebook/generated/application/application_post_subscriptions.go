@@ -15,7 +15,7 @@ import (
 
 // ToolApplication_post_subscriptions returns the MCP tool definition for application_post_subscriptions
 func ToolApplication_post_subscriptions() mcp.Tool {
-	
+
 	// Params object accepts: callback_url (string), fields (list<string>), include_values (bool), object (string), verify_token (string)
 	return mcp.NewTool("application_post_subscriptions",
 		mcp.WithDescription("POST subscriptions for Application"),
@@ -23,25 +23,25 @@ func ToolApplication_post_subscriptions() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"callback_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "callback_url parameter",
 				},
 				"fields": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "fields parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"include_values": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "include_values parameter",
 				},
 				"object": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "object parameter",
-					"required": true,
+					"required":    true,
 				},
 				"verify_token": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "verify_token parameter",
 				},
 			}),
@@ -75,8 +75,6 @@ func HandleApplication_post_subscriptions(ctx context.Context, request mcp.CallT
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Application_post_subscriptions(accessToken, args)
 	if err != nil {
@@ -95,20 +93,18 @@ func HandleApplication_post_subscriptions(ctx context.Context, request mcp.CallT
 // Application_post_subscriptions performs POST subscriptions for Application
 func Application_post_subscriptions(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/subscriptions")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

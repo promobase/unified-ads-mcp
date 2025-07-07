@@ -4,10 +4,10 @@ package constants
 
 // CustomAudienceStatusFields contains field name constants for CustomAudienceStatus objects
 var CustomAudienceStatusFields = struct {
-	Code string
+	Code        string
 	Description string
 }{
-	Code: "code",
+	Code:        "code",
 	Description: "description",
 }
 

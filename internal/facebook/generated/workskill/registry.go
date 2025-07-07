@@ -15,7 +15,6 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolWorkskill_get_users())
 	tools = append(tools, ToolWorkskill_get_())
 
-
 	return tools
 }
 
@@ -25,7 +24,6 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 
 	handlers["workskill_get_users"] = HandleWorkskill_get_users
 	handlers["workskill_get_"] = HandleWorkskill_get_
-
 
 	return handlers
 }

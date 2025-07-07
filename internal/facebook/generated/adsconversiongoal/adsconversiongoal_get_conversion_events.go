@@ -16,8 +16,7 @@ import (
 
 // ToolAdsconversiongoal_get_conversion_events returns the MCP tool definition for adsconversiongoal_get_conversion_events
 func ToolAdsconversiongoal_get_conversion_events() mcp.Tool {
-	
-	
+
 	return mcp.NewTool("adsconversiongoal_get_conversion_events",
 		mcp.WithDescription("GET conversion_events for AdsConversionGoal"),
 		mcp.WithArray("fields",
@@ -71,8 +70,6 @@ func HandleAdsconversiongoal_get_conversion_events(ctx context.Context, request 
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Adsconversiongoal_get_conversion_events(accessToken, args)
 	if err != nil {
@@ -91,38 +88,36 @@ func HandleAdsconversiongoal_get_conversion_events(ctx context.Context, request 
 // Adsconversiongoal_get_conversion_events performs GET conversion_events for AdsConversionGoal
 func Adsconversiongoal_get_conversion_events(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/conversion_events")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

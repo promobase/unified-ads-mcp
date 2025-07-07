@@ -15,7 +15,7 @@ import (
 
 // ToolAdaccount_post_agencies returns the MCP tool definition for adaccount_post_agencies
 func ToolAdaccount_post_agencies() mcp.Tool {
-	
+
 	// Params object accepts: business (string), permitted_tasks (list<adaccountagencies_permitted_tasks_enum_param>)
 	return mcp.NewTool("adaccount_post_agencies",
 		mcp.WithDescription("POST agencies for AdAccount"),
@@ -27,15 +27,15 @@ func ToolAdaccount_post_agencies() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"business": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "business parameter",
-					"required": true,
+					"required":    true,
 				},
 				"permitted_tasks": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "permitted_tasks parameter",
-					"enum": []string{ "AA_ANALYZE", "ADVERTISE", "ANALYZE", "DRAFT", "MANAGE" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"AA_ANALYZE", "ADVERTISE", "ANALYZE", "DRAFT", "MANAGE"},
+					"items":       map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: business (string) [required], permitted_tasks (array<enum>) [AA_ANALYZE, ADVERTISE, ANALYZE, DRAFT, MANAGE]"),
@@ -75,8 +75,6 @@ func HandleAdaccount_post_agencies(ctx context.Context, request mcp.CallToolRequ
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Adaccount_post_agencies(accessToken, args)
 	if err != nil {
@@ -95,35 +93,33 @@ func HandleAdaccount_post_agencies(ctx context.Context, request mcp.CallToolRequ
 // Adaccount_post_agencies performs POST agencies for AdAccount
 func Adaccount_post_agencies(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	// Extract account_id for URL construction
 	accountId, ok := args["account_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_post_agencies")
 	}
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%sagencies", accountId)
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-		
-	}
 
+	}
 
 	// Make HTTP request
 	var resp *http.Response

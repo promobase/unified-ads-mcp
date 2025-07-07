@@ -21,42 +21,39 @@ func NewExtendedCreditClient(accessToken string) *ExtendedCreditClient {
 	}
 }
 
-
 // Extendedcredit_get_extended_credit_invoice_groups performs GET extended_credit_invoice_groups for ExtendedCredit
 func (c *ExtendedCreditClient) Extendedcredit_get_extended_credit_invoice_groups(args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/extended_credit_invoice_groups")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -87,25 +84,22 @@ func (c *ExtendedCreditClient) Extendedcredit_get_extended_credit_invoice_groups
 
 	return result, nil
 }
-
 
 // Extendedcredit_post_extended_credit_invoice_groups performs POST extended_credit_invoice_groups for ExtendedCredit
 func (c *ExtendedCreditClient) Extendedcredit_post_extended_credit_invoice_groups(args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/extended_credit_invoice_groups")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -136,49 +130,46 @@ func (c *ExtendedCreditClient) Extendedcredit_post_extended_credit_invoice_group
 
 	return result, nil
 }
-
 
 // Extendedcredit_get_owning_credit_allocation_configs performs GET owning_credit_allocation_configs for ExtendedCredit
 func (c *ExtendedCreditClient) Extendedcredit_get_owning_credit_allocation_configs(args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/owning_credit_allocation_configs")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -209,25 +200,22 @@ func (c *ExtendedCreditClient) Extendedcredit_get_owning_credit_allocation_confi
 
 	return result, nil
 }
-
 
 // Extendedcredit_post_owning_credit_allocation_configs performs POST owning_credit_allocation_configs for ExtendedCredit
 func (c *ExtendedCreditClient) Extendedcredit_post_owning_credit_allocation_configs(args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/owning_credit_allocation_configs")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -258,25 +246,22 @@ func (c *ExtendedCreditClient) Extendedcredit_post_owning_credit_allocation_conf
 
 	return result, nil
 }
-
 
 // Extendedcredit_post_whatsapp_credit_attach performs POST whatsapp_credit_attach for ExtendedCredit
 func (c *ExtendedCreditClient) Extendedcredit_post_whatsapp_credit_attach(args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/whatsapp_credit_attach")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -307,25 +292,22 @@ func (c *ExtendedCreditClient) Extendedcredit_post_whatsapp_credit_attach(args m
 
 	return result, nil
 }
-
 
 // Extendedcredit_post_whatsapp_credit_sharing performs POST whatsapp_credit_sharing for ExtendedCredit
 func (c *ExtendedCreditClient) Extendedcredit_post_whatsapp_credit_sharing(args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/whatsapp_credit_sharing")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -356,25 +338,22 @@ func (c *ExtendedCreditClient) Extendedcredit_post_whatsapp_credit_sharing(args 
 
 	return result, nil
 }
-
 
 // Extendedcredit_post_whatsapp_credit_sharing_and_attach performs POST whatsapp_credit_sharing_and_attach for ExtendedCredit
 func (c *ExtendedCreditClient) Extendedcredit_post_whatsapp_credit_sharing_and_attach(args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/whatsapp_credit_sharing_and_attach")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -406,42 +385,39 @@ func (c *ExtendedCreditClient) Extendedcredit_post_whatsapp_credit_sharing_and_a
 	return result, nil
 }
 
-
 // Extendedcredit_get_ performs GET  for ExtendedCredit
 func (c *ExtendedCreditClient) Extendedcredit_get_(args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -472,4 +448,3 @@ func (c *ExtendedCreditClient) Extendedcredit_get_(args map[string]interface{}) 
 
 	return result, nil
 }
-

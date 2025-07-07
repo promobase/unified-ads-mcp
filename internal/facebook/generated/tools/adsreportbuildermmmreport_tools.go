@@ -17,7 +17,6 @@ import (
 func GetAdsReportBuilderMMMReportTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// adsreportbuildermmmreport_get_ tool
 	// Available fields for AdsReportBuilderMMMReport: async_status, export_format, export_name, export_type, has_seen, id, mmm_status, time_start
 	adsreportbuildermmmreport_get_Tool := mcp.NewTool("adsreportbuildermmmreport_get_",
@@ -37,12 +36,10 @@ func GetAdsReportBuilderMMMReportTools() []mcp.Tool {
 	)
 	tools = append(tools, adsreportbuildermmmreport_get_Tool)
 
-
 	return tools
 }
 
 // AdsReportBuilderMMMReport handlers
-
 
 // HandleAdsreportbuildermmmreport_get_ handles the adsreportbuildermmmreport_get_ tool with context-based auth
 func HandleAdsreportbuildermmmreport_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleAdsreportbuildermmmreport_get_(ctx context.Context, request mcp.CallT
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adsreportbuildermmmreport_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleAdsreportbuildermmmreport_get_(ctx context.Context, request mcp.CallT
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

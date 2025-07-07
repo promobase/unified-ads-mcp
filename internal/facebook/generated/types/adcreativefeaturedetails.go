@@ -5,5 +5,5 @@ package types
 // AdCreativeFeatureDetails represents a Facebook AdCreativeFeatureDetails object
 type AdCreativeFeatureDetails struct {
 	Customizations *AdCreativeFeatureCustomizations `json:"customizations"`
-	Enroll_status string `json:"enroll_status"`
+	Enroll_status  string                           `json:"enroll_status"`
 }

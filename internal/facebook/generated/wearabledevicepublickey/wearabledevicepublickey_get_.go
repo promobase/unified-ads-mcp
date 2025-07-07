@@ -17,7 +17,7 @@ import (
 // ToolWearabledevicepublickey_get_ returns the MCP tool definition for wearabledevicepublickey_get_
 func ToolWearabledevicepublickey_get_() mcp.Tool {
 	// Available fields for WearableDevicePublicKey: base64_encoded_public_key, creation_time_on_device, device_uuid, id, key_type, owner_id, product_use_case, version
-	
+
 	return mcp.NewTool("wearabledevicepublickey_get_",
 		mcp.WithDescription("GET  for WearableDevicePublicKey"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleWearabledevicepublickey_get_(ctx context.Context, request mcp.CallToo
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Wearabledevicepublickey_get_(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleWearabledevicepublickey_get_(ctx context.Context, request mcp.CallToo
 // Wearabledevicepublickey_get_ performs GET  for WearableDevicePublicKey
 func Wearabledevicepublickey_get_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

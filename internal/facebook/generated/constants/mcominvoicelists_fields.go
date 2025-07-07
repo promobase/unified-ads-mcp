@@ -5,12 +5,12 @@ package constants
 // McomInvoiceListsFields contains field name constants for McomInvoiceLists objects
 var McomInvoiceListsFields = struct {
 	InvoiceDetails string
-	InvoiceIds string
-	PageId string
+	InvoiceIds     string
+	PageId         string
 }{
 	InvoiceDetails: "invoice_details",
-	InvoiceIds: "invoice_ids",
-	PageId: "page_id",
+	InvoiceIds:     "invoice_ids",
+	PageId:         "page_id",
 }
 
 // McomInvoiceListsFieldsList contains all available fields for McomInvoiceLists objects

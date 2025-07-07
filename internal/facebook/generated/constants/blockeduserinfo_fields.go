@@ -6,15 +6,15 @@ package constants
 var BlockedUserInfoFields = struct {
 	BlockTime string
 	BlockType string
-	Fbid string
-	Name string
-	Username string
+	Fbid      string
+	Name      string
+	Username  string
 }{
 	BlockTime: "block_time",
 	BlockType: "block_type",
-	Fbid: "fbid",
-	Name: "name",
-	Username: "username",
+	Fbid:      "fbid",
+	Name:      "name",
+	Username:  "username",
 }
 
 // BlockedUserInfoFieldsList contains all available fields for BlockedUserInfo objects

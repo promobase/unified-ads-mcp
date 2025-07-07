@@ -15,7 +15,7 @@ import (
 
 // ToolIguser_post_upcoming_events returns the MCP tool definition for iguser_post_upcoming_events
 func ToolIguser_post_upcoming_events() mcp.Tool {
-	
+
 	// Params object accepts: end_time (datetime), notification_subtypes (list<shadowiguserupcoming_events_notification_subtypes_enum_param>), start_time (datetime), title (string)
 	return mcp.NewTool("iguser_post_upcoming_events",
 		mcp.WithDescription("POST upcoming_events for IGUser"),
@@ -23,24 +23,24 @@ func ToolIguser_post_upcoming_events() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"end_time": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "end_time parameter",
 				},
 				"notification_subtypes": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "notification_subtypes parameter",
-					"enum": []string{ "AFTER_EVENT_1DAY", "AFTER_EVENT_2DAY", "AFTER_EVENT_3DAY", "AFTER_EVENT_4DAY", "AFTER_EVENT_5DAY", "AFTER_EVENT_6DAY", "AFTER_EVENT_7DAY", "BEFORE_EVENT_15MIN", "BEFORE_EVENT_1DAY", "BEFORE_EVENT_1HOUR", "BEFORE_EVENT_2DAY", "EVENT_START", "RESCHEDULED" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"AFTER_EVENT_1DAY", "AFTER_EVENT_2DAY", "AFTER_EVENT_3DAY", "AFTER_EVENT_4DAY", "AFTER_EVENT_5DAY", "AFTER_EVENT_6DAY", "AFTER_EVENT_7DAY", "BEFORE_EVENT_15MIN", "BEFORE_EVENT_1DAY", "BEFORE_EVENT_1HOUR", "BEFORE_EVENT_2DAY", "EVENT_START", "RESCHEDULED"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"start_time": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "start_time parameter",
-					"required": true,
+					"required":    true,
 				},
 				"title": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "title parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: end_time (datetime), notification_subtypes (array<enum>) [AFTER_EVENT_1DAY, AFTER_EVENT_2DAY, AFTER_EVENT_3DAY, AFTER_EVENT_4DAY, AFTER_EVENT_5DAY, ...], start_time (datetime) [required], title (string) [required]"),
@@ -73,8 +73,6 @@ func HandleIguser_post_upcoming_events(ctx context.Context, request mcp.CallTool
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Iguser_post_upcoming_events(accessToken, args)
 	if err != nil {
@@ -93,20 +91,18 @@ func HandleIguser_post_upcoming_events(ctx context.Context, request mcp.CallTool
 // Iguser_post_upcoming_events performs POST upcoming_events for IGUser
 func Iguser_post_upcoming_events(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/upcoming_events")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

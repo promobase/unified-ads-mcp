@@ -16,7 +16,6 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolExtendedcreditallocationconfig_get_())
 	tools = append(tools, ToolExtendedcreditallocationconfig_post_())
 
-
 	return tools
 }
 
@@ -27,7 +26,6 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers["extendedcreditallocationconfig_delete_"] = HandleExtendedcreditallocationconfig_delete_
 	handlers["extendedcreditallocationconfig_get_"] = HandleExtendedcreditallocationconfig_get_
 	handlers["extendedcreditallocationconfig_post_"] = HandleExtendedcreditallocationconfig_post_
-
 
 	return handlers
 }

@@ -15,8 +15,7 @@ import (
 
 // ToolPublisherblocklist_delete_ returns the MCP tool definition for publisherblocklist_delete_
 func ToolPublisherblocklist_delete_() mcp.Tool {
-	
-	
+
 	return mcp.NewTool("publisherblocklist_delete_",
 		mcp.WithDescription("DELETE  for PublisherBlockList"),
 	)
@@ -32,8 +31,6 @@ func HandlePublisherblocklist_delete_(ctx context.Context, request mcp.CallToolR
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the API method
 	result, err := Publisherblocklist_delete_(accessToken, args)
@@ -53,14 +50,11 @@ func HandlePublisherblocklist_delete_(ctx context.Context, request mcp.CallToolR
 // Publisherblocklist_delete_ performs DELETE  for PublisherBlockList
 func Publisherblocklist_delete_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response

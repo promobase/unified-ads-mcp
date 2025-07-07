@@ -32,7 +32,6 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolAdspixel_get_())
 	tools = append(tools, ToolAdspixel_post_())
 
-
 	return tools
 }
 
@@ -59,7 +58,6 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers["adspixel_get_stats"] = HandleAdspixel_get_stats
 	handlers["adspixel_get_"] = HandleAdspixel_get_
 	handlers["adspixel_post_"] = HandleAdspixel_post_
-
 
 	return handlers
 }

@@ -15,7 +15,7 @@ import (
 
 // ToolPage_post_message_attachments returns the MCP tool definition for page_post_message_attachments
 func ToolPage_post_message_attachments() mcp.Tool {
-	
+
 	// Params object accepts: message (Object), platform (pagemessage_attachments_platform_enum_param)
 	return mcp.NewTool("page_post_message_attachments",
 		mcp.WithDescription("POST message_attachments for Page"),
@@ -23,14 +23,14 @@ func ToolPage_post_message_attachments() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"message": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "message parameter",
-					"required": true,
+					"required":    true,
 				},
 				"platform": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "platform parameter",
-					"enum": []string{ "INSTAGRAM", "MESSENGER" },
+					"enum":        []string{"INSTAGRAM", "MESSENGER"},
 				},
 			}),
 			mcp.Description("Parameters object containing: message (object) [required], platform (enum) [INSTAGRAM, MESSENGER]"),
@@ -63,8 +63,6 @@ func HandlePage_post_message_attachments(ctx context.Context, request mcp.CallTo
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Page_post_message_attachments(accessToken, args)
 	if err != nil {
@@ -83,20 +81,18 @@ func HandlePage_post_message_attachments(ctx context.Context, request mcp.CallTo
 // Page_post_message_attachments performs POST message_attachments for Page
 func Page_post_message_attachments(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/message_attachments")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

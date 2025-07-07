@@ -4,10 +4,10 @@ package constants
 
 // WorkUserFrontlineFields contains field name constants for WorkUserFrontline objects
 var WorkUserFrontlineFields = struct {
-	HasAccess string
+	HasAccess   string
 	IsFrontline string
 }{
-	HasAccess: "has_access",
+	HasAccess:   "has_access",
 	IsFrontline: "is_frontline",
 }
 

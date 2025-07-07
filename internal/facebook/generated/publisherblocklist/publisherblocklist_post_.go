@@ -15,7 +15,7 @@ import (
 
 // ToolPublisherblocklist_post_ returns the MCP tool definition for publisherblocklist_post_
 func ToolPublisherblocklist_post_() mcp.Tool {
-	
+
 	// Params object accepts: spec (Object)
 	return mcp.NewTool("publisherblocklist_post_",
 		mcp.WithDescription("POST  for PublisherBlockList"),
@@ -23,9 +23,9 @@ func ToolPublisherblocklist_post_() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"spec": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "spec parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: spec (object) [required]"),
@@ -58,8 +58,6 @@ func HandlePublisherblocklist_post_(ctx context.Context, request mcp.CallToolReq
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Publisherblocklist_post_(accessToken, args)
 	if err != nil {
@@ -78,20 +76,18 @@ func HandlePublisherblocklist_post_(ctx context.Context, request mcp.CallToolReq
 // Publisherblocklist_post_ performs POST  for PublisherBlockList
 func Publisherblocklist_post_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

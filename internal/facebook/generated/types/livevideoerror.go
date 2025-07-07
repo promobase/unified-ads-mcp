@@ -7,7 +7,7 @@ import "time"
 // LiveVideoError represents a Facebook LiveVideoError object
 type LiveVideoError struct {
 	Creation_time time.Time `json:"creation_time"`
-	Error_code int `json:"error_code"`
-	Error_message string `json:"error_message"`
-	Error_type string `json:"error_type"`
+	Error_code    int       `json:"error_code"`
+	Error_message string    `json:"error_message"`
+	Error_type    string    `json:"error_type"`
 }

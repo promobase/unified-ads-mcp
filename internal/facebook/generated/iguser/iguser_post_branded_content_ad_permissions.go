@@ -15,22 +15,22 @@ import (
 
 // ToolIguser_post_branded_content_ad_permissions returns the MCP tool definition for iguser_post_branded_content_ad_permissions
 func ToolIguser_post_branded_content_ad_permissions() mcp.Tool {
-	
+
 	// Params object accepts: creator_instagram_account (string), creator_instagram_username (string), revoke (bool)
 	return mcp.NewTool("iguser_post_branded_content_ad_permissions",
 		mcp.WithDescription("POST branded_content_ad_permissions for IGUser"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"creator_instagram_account": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "creator_instagram_account parameter",
 				},
 				"creator_instagram_username": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "creator_instagram_username parameter",
 				},
 				"revoke": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "revoke parameter",
 				},
 			}),
@@ -62,8 +62,6 @@ func HandleIguser_post_branded_content_ad_permissions(ctx context.Context, reque
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Iguser_post_branded_content_ad_permissions(accessToken, args)
 	if err != nil {
@@ -82,20 +80,18 @@ func HandleIguser_post_branded_content_ad_permissions(ctx context.Context, reque
 // Iguser_post_branded_content_ad_permissions performs POST branded_content_ad_permissions for IGUser
 func Iguser_post_branded_content_ad_permissions(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/branded_content_ad_permissions")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

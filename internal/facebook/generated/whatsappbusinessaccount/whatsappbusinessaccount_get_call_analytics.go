@@ -16,7 +16,7 @@ import (
 
 // ToolWhatsappbusinessaccount_get_call_analytics returns the MCP tool definition for whatsappbusinessaccount_get_call_analytics
 func ToolWhatsappbusinessaccount_get_call_analytics() mcp.Tool {
-	
+
 	// Params object accepts: country_codes (list<string>), dimensions (list<whatsappbusinessaccountcall_analytics_dimensions_enum_param>), directions (list<whatsappbusinessaccountcall_analytics_directions_enum_param>), end (unsigned int), granularity (whatsappbusinessaccountcall_analytics_granularity_enum_param), metric_types (list<whatsappbusinessaccountcall_analytics_metric_types_enum_param>), phone_numbers (list<string>), start (unsigned int)
 	return mcp.NewTool("whatsappbusinessaccount_get_call_analytics",
 		mcp.WithDescription("GET call_analytics for WhatsAppBusinessAccount"),
@@ -24,48 +24,48 @@ func ToolWhatsappbusinessaccount_get_call_analytics() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"country_codes": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "country_codes parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"dimensions": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "dimensions parameter",
-					"enum": []string{ "COUNTRY", "DIRECTION", "PHONE", "TIER", "UNKNOWN" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"COUNTRY", "DIRECTION", "PHONE", "TIER", "UNKNOWN"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"directions": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "directions parameter",
-					"enum": []string{ "BUSINESS_INITIATED", "UNKNOWN", "USER_INITIATED" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"BUSINESS_INITIATED", "UNKNOWN", "USER_INITIATED"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"end": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "end parameter",
-					"required": true,
+					"required":    true,
 				},
 				"granularity": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "granularity parameter",
-					"required": true,
-					"enum": []string{ "DAILY", "HALF_HOUR", "MONTHLY" },
+					"required":    true,
+					"enum":        []string{"DAILY", "HALF_HOUR", "MONTHLY"},
 				},
 				"metric_types": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "metric_types parameter",
-					"enum": []string{ "AVERAGE_DURATION", "COST", "COUNT", "UNKNOWN" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"AVERAGE_DURATION", "COST", "COUNT", "UNKNOWN"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"phone_numbers": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "phone_numbers parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"start": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "start parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: country_codes (array<string>), dimensions (array<enum>) [COUNTRY, DIRECTION, PHONE, TIER, UNKNOWN], directions (array<enum>) [BUSINESS_INITIATED, UNKNOWN, USER_INITIATED], end (integer) [required], granularity (enum) [DAILY, HALF_HOUR, MONTHLY] [required], metric_types (array<enum>) [AVERAGE_DURATION, COST, COUNT, UNKNOWN], phone_numbers (array<string>), start (integer) [required]"),
@@ -135,8 +135,6 @@ func HandleWhatsappbusinessaccount_get_call_analytics(ctx context.Context, reque
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Whatsappbusinessaccount_get_call_analytics(accessToken, args)
 	if err != nil {
@@ -155,44 +153,42 @@ func HandleWhatsappbusinessaccount_get_call_analytics(ctx context.Context, reque
 // Whatsappbusinessaccount_get_call_analytics performs GET call_analytics for WhatsAppBusinessAccount
 func Whatsappbusinessaccount_get_call_analytics(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/call_analytics")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

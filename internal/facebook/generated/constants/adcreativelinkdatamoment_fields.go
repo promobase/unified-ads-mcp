@@ -4,10 +4,10 @@ package constants
 
 // AdCreativeLinkDataMomentFields contains field name constants for AdCreativeLinkDataMoment objects
 var AdCreativeLinkDataMomentFields = struct {
-	Id string
+	Id        string
 	FieldType string
 }{
-	Id: "id",
+	Id:        "id",
 	FieldType: "type",
 }
 

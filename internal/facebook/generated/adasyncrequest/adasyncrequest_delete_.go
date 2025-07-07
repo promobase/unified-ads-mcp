@@ -15,8 +15,7 @@ import (
 
 // ToolAdasyncrequest_delete_ returns the MCP tool definition for adasyncrequest_delete_
 func ToolAdasyncrequest_delete_() mcp.Tool {
-	
-	
+
 	return mcp.NewTool("adasyncrequest_delete_",
 		mcp.WithDescription("DELETE  for AdAsyncRequest"),
 	)
@@ -32,8 +31,6 @@ func HandleAdasyncrequest_delete_(ctx context.Context, request mcp.CallToolReque
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the API method
 	result, err := Adasyncrequest_delete_(accessToken, args)
@@ -53,14 +50,11 @@ func HandleAdasyncrequest_delete_(ctx context.Context, request mcp.CallToolReque
 // Adasyncrequest_delete_ performs DELETE  for AdAsyncRequest
 func Adasyncrequest_delete_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response

@@ -17,7 +17,7 @@ import (
 // ToolProductfeed_get_rules returns the MCP tool definition for productfeed_get_rules
 func ToolProductfeed_get_rules() mcp.Tool {
 	// Available fields for ProductFeedRule: attribute, id, params, rule_type
-	
+
 	return mcp.NewTool("productfeed_get_rules",
 		mcp.WithDescription("GET rules for ProductFeed"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleProductfeed_get_rules(ctx context.Context, request mcp.CallToolReques
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Productfeed_get_rules(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleProductfeed_get_rules(ctx context.Context, request mcp.CallToolReques
 // Productfeed_get_rules performs GET rules for ProductFeed
 func Productfeed_get_rules(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/rules")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

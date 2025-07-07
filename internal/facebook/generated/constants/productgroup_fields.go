@@ -4,15 +4,15 @@ package constants
 
 // ProductGroupFields contains field name constants for ProductGroup objects
 var ProductGroupFields = struct {
-	Id string
+	Id             string
 	ProductCatalog string
-	RetailerId string
-	Variants string
+	RetailerId     string
+	Variants       string
 }{
-	Id: "id",
+	Id:             "id",
 	ProductCatalog: "product_catalog",
-	RetailerId: "retailer_id",
-	Variants: "variants",
+	RetailerId:     "retailer_id",
+	Variants:       "variants",
 }
 
 // ProductGroupFieldsList contains all available fields for ProductGroup objects

@@ -15,7 +15,7 @@ import (
 
 // ToolApplication_post_domain_reports returns the MCP tool definition for application_post_domain_reports
 func ToolApplication_post_domain_reports() mcp.Tool {
-	
+
 	// Params object accepts: tracking_domains (list<string>)
 	return mcp.NewTool("application_post_domain_reports",
 		mcp.WithDescription("POST domain_reports for Application"),
@@ -23,10 +23,10 @@ func ToolApplication_post_domain_reports() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"tracking_domains": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "tracking_domains parameter",
-					"required": true,
-					"items": map[string]any{"type": "string"},
+					"required":    true,
+					"items":       map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: tracking_domains (array<string>) [required]"),
@@ -59,8 +59,6 @@ func HandleApplication_post_domain_reports(ctx context.Context, request mcp.Call
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Application_post_domain_reports(accessToken, args)
 	if err != nil {
@@ -79,20 +77,18 @@ func HandleApplication_post_domain_reports(ctx context.Context, request mcp.Call
 // Application_post_domain_reports performs POST domain_reports for Application
 func Application_post_domain_reports(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/domain_reports")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

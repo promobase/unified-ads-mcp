@@ -4,17 +4,17 @@ package constants
 
 // AdAssetFeedSpecImageFields contains field name constants for AdAssetFeedSpecImage objects
 var AdAssetFeedSpecImageFields = struct {
-	Adlabels string
-	Hash string
+	Adlabels   string
+	Hash       string
 	ImageCrops string
-	Url string
-	UrlTags string
+	Url        string
+	UrlTags    string
 }{
-	Adlabels: "adlabels",
-	Hash: "hash",
+	Adlabels:   "adlabels",
+	Hash:       "hash",
 	ImageCrops: "image_crops",
-	Url: "url",
-	UrlTags: "url_tags",
+	Url:        "url",
+	UrlTags:    "url_tags",
 }
 
 // AdAssetFeedSpecImageFieldsList contains all available fields for AdAssetFeedSpecImage objects

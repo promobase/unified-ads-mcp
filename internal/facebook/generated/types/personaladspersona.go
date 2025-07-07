@@ -4,9 +4,9 @@ package types
 
 // PersonalAdsPersona represents a Facebook PersonalAdsPersona object
 type PersonalAdsPersona struct {
-	Email string `json:"email"`
-	First_name string `json:"first_name"`
-	Id string `json:"id"`
-	Last_name string `json:"last_name"`
+	Email         string `json:"email"`
+	First_name    string `json:"first_name"`
+	Id            string `json:"id"`
+	Last_name     string `json:"last_name"`
 	Pending_email string `json:"pending_email"`
 }

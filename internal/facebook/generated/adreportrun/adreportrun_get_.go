@@ -17,7 +17,7 @@ import (
 // ToolAdreportrun_get_ returns the MCP tool definition for adreportrun_get_
 func ToolAdreportrun_get_() mcp.Tool {
 	// Available fields for AdReportRun: account_id, async_percent_completion, async_report_url, async_status, date_start, date_stop, emails, error_code, friendly_name, id, is_async_export, is_bookmarked, is_running, schedule_id, time_completed, time_ref
-	
+
 	return mcp.NewTool("adreportrun_get_",
 		mcp.WithDescription("GET  for AdReportRun"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleAdreportrun_get_(ctx context.Context, request mcp.CallToolRequest) (*
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Adreportrun_get_(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleAdreportrun_get_(ctx context.Context, request mcp.CallToolRequest) (*
 // Adreportrun_get_ performs GET  for AdReportRun
 func Adreportrun_get_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

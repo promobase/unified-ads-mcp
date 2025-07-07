@@ -4,12 +4,12 @@ package types
 
 // CustomAudienceSession represents a Facebook CustomAudienceSession object
 type CustomAudienceSession struct {
-	End_time string `json:"end_time"`
+	End_time            string `json:"end_time"`
 	Num_invalid_entries string `json:"num_invalid_entries"`
-	Num_matched string `json:"num_matched"`
-	Num_received string `json:"num_received"`
-	Progress string `json:"progress"`
-	Session_id string `json:"session_id"`
-	Stage string `json:"stage"`
-	Start_time string `json:"start_time"`
+	Num_matched         string `json:"num_matched"`
+	Num_received        string `json:"num_received"`
+	Progress            string `json:"progress"`
+	Session_id          string `json:"session_id"`
+	Stage               string `json:"stage"`
+	Start_time          string `json:"start_time"`
 }

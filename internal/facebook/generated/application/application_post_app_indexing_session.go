@@ -15,7 +15,7 @@ import (
 
 // ToolApplication_post_app_indexing_session returns the MCP tool definition for application_post_app_indexing_session
 func ToolApplication_post_app_indexing_session() mcp.Tool {
-	
+
 	// Params object accepts: device_session_id (string), extinfo (string)
 	return mcp.NewTool("application_post_app_indexing_session",
 		mcp.WithDescription("POST app_indexing_session for Application"),
@@ -23,12 +23,12 @@ func ToolApplication_post_app_indexing_session() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"device_session_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "device_session_id parameter",
-					"required": true,
+					"required":    true,
 				},
 				"extinfo": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "extinfo parameter",
 				},
 			}),
@@ -62,8 +62,6 @@ func HandleApplication_post_app_indexing_session(ctx context.Context, request mc
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Application_post_app_indexing_session(accessToken, args)
 	if err != nil {
@@ -82,20 +80,18 @@ func HandleApplication_post_app_indexing_session(ctx context.Context, request mc
 // Application_post_app_indexing_session performs POST app_indexing_session for Application
 func Application_post_app_indexing_session(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/app_indexing_session")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

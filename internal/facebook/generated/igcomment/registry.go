@@ -18,7 +18,6 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolIgcomment_get_())
 	tools = append(tools, ToolIgcomment_post_())
 
-
 	return tools
 }
 
@@ -31,7 +30,6 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers["igcomment_delete_"] = HandleIgcomment_delete_
 	handlers["igcomment_get_"] = HandleIgcomment_get_
 	handlers["igcomment_post_"] = HandleIgcomment_post_
-
 
 	return handlers
 }

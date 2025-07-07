@@ -15,8 +15,7 @@ import (
 
 // ToolCommercemerchantsettings_post_order_management_apps returns the MCP tool definition for commercemerchantsettings_post_order_management_apps
 func ToolCommercemerchantsettings_post_order_management_apps() mcp.Tool {
-	
-	
+
 	return mcp.NewTool("commercemerchantsettings_post_order_management_apps",
 		mcp.WithDescription("POST order_management_apps for CommerceMerchantSettings"),
 	)
@@ -32,8 +31,6 @@ func HandleCommercemerchantsettings_post_order_management_apps(ctx context.Conte
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the API method
 	result, err := Commercemerchantsettings_post_order_management_apps(accessToken, args)
@@ -53,14 +50,11 @@ func HandleCommercemerchantsettings_post_order_management_apps(ctx context.Conte
 // Commercemerchantsettings_post_order_management_apps performs POST order_management_apps for CommerceMerchantSettings
 func Commercemerchantsettings_post_order_management_apps(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/order_management_apps")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response

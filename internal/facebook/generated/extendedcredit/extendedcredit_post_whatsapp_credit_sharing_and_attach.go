@@ -15,7 +15,7 @@ import (
 
 // ToolExtendedcredit_post_whatsapp_credit_sharing_and_attach returns the MCP tool definition for extendedcredit_post_whatsapp_credit_sharing_and_attach
 func ToolExtendedcredit_post_whatsapp_credit_sharing_and_attach() mcp.Tool {
-	
+
 	// Params object accepts: waba_currency (string), waba_id (string)
 	return mcp.NewTool("extendedcredit_post_whatsapp_credit_sharing_and_attach",
 		mcp.WithDescription("POST whatsapp_credit_sharing_and_attach for ExtendedCredit"),
@@ -23,14 +23,14 @@ func ToolExtendedcredit_post_whatsapp_credit_sharing_and_attach() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"waba_currency": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "waba_currency parameter",
-					"required": true,
+					"required":    true,
 				},
 				"waba_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "waba_id parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: waba_currency (string) [required], waba_id (string) [required]"),
@@ -63,8 +63,6 @@ func HandleExtendedcredit_post_whatsapp_credit_sharing_and_attach(ctx context.Co
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Extendedcredit_post_whatsapp_credit_sharing_and_attach(accessToken, args)
 	if err != nil {
@@ -83,20 +81,18 @@ func HandleExtendedcredit_post_whatsapp_credit_sharing_and_attach(ctx context.Co
 // Extendedcredit_post_whatsapp_credit_sharing_and_attach performs POST whatsapp_credit_sharing_and_attach for ExtendedCredit
 func Extendedcredit_post_whatsapp_credit_sharing_and_attach(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/whatsapp_credit_sharing_and_attach")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

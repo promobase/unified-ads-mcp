@@ -4,10 +4,10 @@ package constants
 
 // BusinessAgreementFields contains field name constants for BusinessAgreement objects
 var BusinessAgreementFields = struct {
-	Id string
+	Id            string
 	RequestStatus string
 }{
-	Id: "id",
+	Id:            "id",
 	RequestStatus: "request_status",
 }
 

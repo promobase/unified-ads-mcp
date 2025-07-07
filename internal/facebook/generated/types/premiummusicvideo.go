@@ -4,12 +4,12 @@ package types
 
 // PremiumMusicVideo represents a Facebook PremiumMusicVideo object
 type PremiumMusicVideo struct {
-	Creation_time string `json:"creation_time"`
-	Cross_post_videos []map[string]interface{} `json:"cross_post_videos"`
-	Eligible_cross_post_pages []map[string]interface{} `json:"eligible_cross_post_pages"`
-	Id string `json:"id"`
-	Preferred_video_thumbnail_image_uri string `json:"preferred_video_thumbnail_image_uri"`
-	Premium_music_video_metadata map[string]interface{} `json:"premium_music_video_metadata"`
-	Scheduled_publish_time int `json:"scheduled_publish_time"`
-	Title string `json:"title"`
+	Creation_time                       string                   `json:"creation_time"`
+	Cross_post_videos                   []map[string]interface{} `json:"cross_post_videos"`
+	Eligible_cross_post_pages           []map[string]interface{} `json:"eligible_cross_post_pages"`
+	Id                                  string                   `json:"id"`
+	Preferred_video_thumbnail_image_uri string                   `json:"preferred_video_thumbnail_image_uri"`
+	Premium_music_video_metadata        map[string]interface{}   `json:"premium_music_video_metadata"`
+	Scheduled_publish_time              int                      `json:"scheduled_publish_time"`
+	Title                               string                   `json:"title"`
 }

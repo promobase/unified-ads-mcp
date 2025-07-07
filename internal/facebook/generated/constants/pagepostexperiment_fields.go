@@ -4,39 +4,39 @@ package constants
 
 // PagePostExperimentFields contains field name constants for PagePostExperiment objects
 var PagePostExperimentFields = struct {
-	AutoResolveSettings string
-	ControlVideoId string
-	CreationTime string
-	Creator string
-	DeclaredWinningTime string
-	DeclaredWinningVideoId string
-	Description string
-	ExperimentVideoIds string
-	Id string
-	InsightSnapshots string
-	Name string
-	OptimizationGoal string
-	PublishStatus string
-	PublishTime string
+	AutoResolveSettings          string
+	ControlVideoId               string
+	CreationTime                 string
+	Creator                      string
+	DeclaredWinningTime          string
+	DeclaredWinningVideoId       string
+	Description                  string
+	ExperimentVideoIds           string
+	Id                           string
+	InsightSnapshots             string
+	Name                         string
+	OptimizationGoal             string
+	PublishStatus                string
+	PublishTime                  string
 	ScheduledExperimentTimestamp string
-	UpdatedTime string
+	UpdatedTime                  string
 }{
-	AutoResolveSettings: "auto_resolve_settings",
-	ControlVideoId: "control_video_id",
-	CreationTime: "creation_time",
-	Creator: "creator",
-	DeclaredWinningTime: "declared_winning_time",
-	DeclaredWinningVideoId: "declared_winning_video_id",
-	Description: "description",
-	ExperimentVideoIds: "experiment_video_ids",
-	Id: "id",
-	InsightSnapshots: "insight_snapshots",
-	Name: "name",
-	OptimizationGoal: "optimization_goal",
-	PublishStatus: "publish_status",
-	PublishTime: "publish_time",
+	AutoResolveSettings:          "auto_resolve_settings",
+	ControlVideoId:               "control_video_id",
+	CreationTime:                 "creation_time",
+	Creator:                      "creator",
+	DeclaredWinningTime:          "declared_winning_time",
+	DeclaredWinningVideoId:       "declared_winning_video_id",
+	Description:                  "description",
+	ExperimentVideoIds:           "experiment_video_ids",
+	Id:                           "id",
+	InsightSnapshots:             "insight_snapshots",
+	Name:                         "name",
+	OptimizationGoal:             "optimization_goal",
+	PublishStatus:                "publish_status",
+	PublishTime:                  "publish_time",
 	ScheduledExperimentTimestamp: "scheduled_experiment_timestamp",
-	UpdatedTime: "updated_time",
+	UpdatedTime:                  "updated_time",
 }
 
 // PagePostExperimentFieldsList contains all available fields for PagePostExperiment objects

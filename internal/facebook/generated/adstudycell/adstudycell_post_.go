@@ -15,38 +15,38 @@ import (
 
 // ToolAdstudycell_post_ returns the MCP tool definition for adstudycell_post_
 func ToolAdstudycell_post_() mcp.Tool {
-	
+
 	// Params object accepts: adaccounts (list<unsigned int>), adsets (list<string>), campaigns (list<string>), creation_template (adstudycell_creation_template), description (string), name (string)
 	return mcp.NewTool("adstudycell_post_",
 		mcp.WithDescription("POST  for AdStudyCell"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"adaccounts": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "adaccounts parameter",
-					"items": map[string]any{"type": "integer"},
+					"items":       map[string]any{"type": "integer"},
 				},
 				"adsets": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "adsets parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"campaigns": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "campaigns parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"creation_template": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "creation_template parameter",
-					"enum": []string{ "AUTOMATIC_PLACEMENTS", "BRAND_AWARENESS", "FACEBOOK", "FACEBOOK_AUDIENCE_NETWORK", "FACEBOOK_INSTAGRAM", "FACEBOOK_NEWS_FEED", "FACEBOOK_NEWS_FEED_IN_STREAM_VIDEO", "HIGH_FREQUENCY", "INSTAGRAM", "IN_STREAM_VIDEO", "LOW_FREQUENCY", "MEDIUM_FREQUENCY", "MOBILE_OPTIMIZED_VIDEO", "PAGE_POST_ENGAGEMENT", "REACH", "TV_COMMERCIAL", "TV_FACEBOOK", "VIDEO_VIEW_OPTIMIZATION" },
+					"enum":        []string{"AUTOMATIC_PLACEMENTS", "BRAND_AWARENESS", "FACEBOOK", "FACEBOOK_AUDIENCE_NETWORK", "FACEBOOK_INSTAGRAM", "FACEBOOK_NEWS_FEED", "FACEBOOK_NEWS_FEED_IN_STREAM_VIDEO", "HIGH_FREQUENCY", "INSTAGRAM", "IN_STREAM_VIDEO", "LOW_FREQUENCY", "MEDIUM_FREQUENCY", "MOBILE_OPTIMIZED_VIDEO", "PAGE_POST_ENGAGEMENT", "REACH", "TV_COMMERCIAL", "TV_FACEBOOK", "VIDEO_VIEW_OPTIMIZATION"},
 				},
 				"description": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "description parameter",
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
 				},
 			}),
@@ -78,8 +78,6 @@ func HandleAdstudycell_post_(ctx context.Context, request mcp.CallToolRequest) (
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Adstudycell_post_(accessToken, args)
 	if err != nil {
@@ -98,20 +96,18 @@ func HandleAdstudycell_post_(ctx context.Context, request mcp.CallToolRequest) (
 // Adstudycell_post_ performs POST  for AdStudyCell
 func Adstudycell_post_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

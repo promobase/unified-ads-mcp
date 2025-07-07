@@ -17,7 +17,6 @@ import (
 func GetHoursTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// hours_get_ tool
 	// Available fields for Hours: id, permanent_status
 	hours_get_Tool := mcp.NewTool("hours_get_",
@@ -37,12 +36,10 @@ func GetHoursTools() []mcp.Tool {
 	)
 	tools = append(tools, hours_get_Tool)
 
-
 	return tools
 }
 
 // Hours handlers
-
 
 // HandleHours_get_ handles the hours_get_ tool with context-based auth
 func HandleHours_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleHours_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Ca
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Hours_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleHours_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

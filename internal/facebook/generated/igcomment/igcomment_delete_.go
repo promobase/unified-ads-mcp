@@ -15,14 +15,14 @@ import (
 
 // ToolIgcomment_delete_ returns the MCP tool definition for igcomment_delete_
 func ToolIgcomment_delete_() mcp.Tool {
-	
+
 	// Params object accepts: ad_id (string)
 	return mcp.NewTool("igcomment_delete_",
 		mcp.WithDescription("DELETE  for IGComment"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"ad_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "ad_id parameter",
 				},
 			}),
@@ -54,8 +54,6 @@ func HandleIgcomment_delete_(ctx context.Context, request mcp.CallToolRequest) (
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Igcomment_delete_(accessToken, args)
 	if err != nil {
@@ -74,20 +72,18 @@ func HandleIgcomment_delete_(ctx context.Context, request mcp.CallToolRequest) (
 // Igcomment_delete_ performs DELETE  for IGComment
 func Igcomment_delete_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

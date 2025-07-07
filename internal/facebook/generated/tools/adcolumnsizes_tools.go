@@ -17,7 +17,6 @@ import (
 func GetAdColumnSizesTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// adcolumnsizes_get_ tool
 	// Available fields for AdColumnSizes: admarket_account, app_id, columns, id, owner, page, report, tab, view
 	adcolumnsizes_get_Tool := mcp.NewTool("adcolumnsizes_get_",
@@ -37,12 +36,10 @@ func GetAdColumnSizesTools() []mcp.Tool {
 	)
 	tools = append(tools, adcolumnsizes_get_Tool)
 
-
 	return tools
 }
 
 // AdColumnSizes handlers
-
 
 // HandleAdcolumnsizes_get_ handles the adcolumnsizes_get_ tool with context-based auth
 func HandleAdcolumnsizes_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleAdcolumnsizes_get_(ctx context.Context, request mcp.CallToolRequest) 
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adcolumnsizes_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleAdcolumnsizes_get_(ctx context.Context, request mcp.CallToolRequest) 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

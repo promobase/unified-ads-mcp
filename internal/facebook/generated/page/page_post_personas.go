@@ -15,7 +15,7 @@ import (
 
 // ToolPage_post_personas returns the MCP tool definition for page_post_personas
 func ToolPage_post_personas() mcp.Tool {
-	
+
 	// Params object accepts: name (string), profile_picture_url (string)
 	return mcp.NewTool("page_post_personas",
 		mcp.WithDescription("POST personas for Page"),
@@ -23,14 +23,14 @@ func ToolPage_post_personas() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
-					"required": true,
+					"required":    true,
 				},
 				"profile_picture_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "profile_picture_url parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: name (string) [required], profile_picture_url (string) [required]"),
@@ -63,8 +63,6 @@ func HandlePage_post_personas(ctx context.Context, request mcp.CallToolRequest) 
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Page_post_personas(accessToken, args)
 	if err != nil {
@@ -83,20 +81,18 @@ func HandlePage_post_personas(ctx context.Context, request mcp.CallToolRequest) 
 // Page_post_personas performs POST personas for Page
 func Page_post_personas(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/personas")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

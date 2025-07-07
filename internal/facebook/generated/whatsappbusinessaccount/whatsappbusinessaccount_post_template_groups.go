@@ -15,7 +15,7 @@ import (
 
 // ToolWhatsappbusinessaccount_post_template_groups returns the MCP tool definition for whatsappbusinessaccount_post_template_groups
 func ToolWhatsappbusinessaccount_post_template_groups() mcp.Tool {
-	
+
 	// Params object accepts: description (string), name (string), whatsapp_business_templates (list<string>)
 	return mcp.NewTool("whatsappbusinessaccount_post_template_groups",
 		mcp.WithDescription("POST template_groups for WhatsAppBusinessAccount"),
@@ -23,20 +23,20 @@ func ToolWhatsappbusinessaccount_post_template_groups() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"description": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "description parameter",
-					"required": true,
+					"required":    true,
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
-					"required": true,
+					"required":    true,
 				},
 				"whatsapp_business_templates": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "whatsapp_business_templates parameter",
-					"required": true,
-					"items": map[string]any{"type": "string"},
+					"required":    true,
+					"items":       map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: description (string) [required], name (string) [required], whatsapp_business_templates (array<string>) [required]"),
@@ -69,8 +69,6 @@ func HandleWhatsappbusinessaccount_post_template_groups(ctx context.Context, req
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Whatsappbusinessaccount_post_template_groups(accessToken, args)
 	if err != nil {
@@ -89,20 +87,18 @@ func HandleWhatsappbusinessaccount_post_template_groups(ctx context.Context, req
 // Whatsappbusinessaccount_post_template_groups performs POST template_groups for WhatsAppBusinessAccount
 func Whatsappbusinessaccount_post_template_groups(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/template_groups")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

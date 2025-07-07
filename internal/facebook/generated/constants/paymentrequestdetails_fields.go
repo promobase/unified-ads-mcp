@@ -4,25 +4,25 @@ package constants
 
 // PaymentRequestDetailsFields contains field name constants for PaymentRequestDetails objects
 var PaymentRequestDetailsFields = struct {
-	Amount string
-	CreationTime string
-	Note string
+	Amount           string
+	CreationTime     string
+	Note             string
 	PaymentRequestId string
-	ReceiverId string
-	ReferenceNumber string
-	SenderId string
-	Status string
-	TransactionTime string
+	ReceiverId       string
+	ReferenceNumber  string
+	SenderId         string
+	Status           string
+	TransactionTime  string
 }{
-	Amount: "amount",
-	CreationTime: "creation_time",
-	Note: "note",
+	Amount:           "amount",
+	CreationTime:     "creation_time",
+	Note:             "note",
 	PaymentRequestId: "payment_request_id",
-	ReceiverId: "receiver_id",
-	ReferenceNumber: "reference_number",
-	SenderId: "sender_id",
-	Status: "status",
-	TransactionTime: "transaction_time",
+	ReceiverId:       "receiver_id",
+	ReferenceNumber:  "reference_number",
+	SenderId:         "sender_id",
+	Status:           "status",
+	TransactionTime:  "transaction_time",
 }
 
 // PaymentRequestDetailsFieldsList contains all available fields for PaymentRequestDetails objects

@@ -5,14 +5,14 @@ package constants
 // AdCreativeLinkDataAppLinkSpecFields contains field name constants for AdCreativeLinkDataAppLinkSpec objects
 var AdCreativeLinkDataAppLinkSpecFields = struct {
 	Android string
-	Ios string
-	Ipad string
-	Iphone string
+	Ios     string
+	Ipad    string
+	Iphone  string
 }{
 	Android: "android",
-	Ios: "ios",
-	Ipad: "ipad",
-	Iphone: "iphone",
+	Ios:     "ios",
+	Ipad:    "ipad",
+	Iphone:  "iphone",
 }
 
 // AdCreativeLinkDataAppLinkSpecFieldsList contains all available fields for AdCreativeLinkDataAppLinkSpec objects

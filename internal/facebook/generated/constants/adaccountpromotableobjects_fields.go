@@ -4,13 +4,13 @@ package constants
 
 // AdAccountPromotableObjectsFields contains field name constants for AdAccountPromotableObjects objects
 var AdAccountPromotableObjectsFields = struct {
-	PromotableAppIds string
+	PromotableAppIds  string
 	PromotablePageIds string
-	PromotableUrls string
+	PromotableUrls    string
 }{
-	PromotableAppIds: "promotable_app_ids",
+	PromotableAppIds:  "promotable_app_ids",
 	PromotablePageIds: "promotable_page_ids",
-	PromotableUrls: "promotable_urls",
+	PromotableUrls:    "promotable_urls",
 }
 
 // AdAccountPromotableObjectsFieldsList contains all available fields for AdAccountPromotableObjects objects

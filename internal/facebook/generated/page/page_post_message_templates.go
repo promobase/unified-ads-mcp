@@ -15,7 +15,7 @@ import (
 
 // ToolPage_post_message_templates returns the MCP tool definition for page_post_message_templates
 func ToolPage_post_message_templates() mcp.Tool {
-	
+
 	// Params object accepts: category (pagemessage_templates_category_enum_param), components (list<map>), language (string), library_template_button_inputs (list<map>), library_template_name (string), name (string)
 	return mcp.NewTool("page_post_message_templates",
 		mcp.WithDescription("POST message_templates for Page"),
@@ -23,34 +23,34 @@ func ToolPage_post_message_templates() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"category": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "category parameter",
-					"required": true,
-					"enum": []string{ "UTILITY" },
+					"required":    true,
+					"enum":        []string{"UTILITY"},
 				},
 				"components": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "components parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"language": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "language parameter",
-					"required": true,
+					"required":    true,
 				},
 				"library_template_button_inputs": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "library_template_button_inputs parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"library_template_name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "library_template_name parameter",
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: category (enum) [UTILITY] [required], components (array<object>), language (string) [required], library_template_button_inputs (array<object>), library_template_name (string), name (string) [required]"),
@@ -83,8 +83,6 @@ func HandlePage_post_message_templates(ctx context.Context, request mcp.CallTool
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Page_post_message_templates(accessToken, args)
 	if err != nil {
@@ -103,20 +101,18 @@ func HandlePage_post_message_templates(ctx context.Context, request mcp.CallTool
 // Page_post_message_templates performs POST message_templates for Page
 func Page_post_message_templates(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/message_templates")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

@@ -5,16 +5,16 @@ package constants
 // ThirdPartyMeasurementReportDatasetFields contains field name constants for ThirdPartyMeasurementReportDataset objects
 var ThirdPartyMeasurementReportDatasetFields = struct {
 	Category string
-	Id string
-	Partner string
-	Product string
-	Schema string
+	Id       string
+	Partner  string
+	Product  string
+	Schema   string
 }{
 	Category: "category",
-	Id: "id",
-	Partner: "partner",
-	Product: "product",
-	Schema: "schema",
+	Id:       "id",
+	Partner:  "partner",
+	Product:  "product",
+	Schema:   "schema",
 }
 
 // ThirdPartyMeasurementReportDatasetFieldsList contains all available fields for ThirdPartyMeasurementReportDataset objects

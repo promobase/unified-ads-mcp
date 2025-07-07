@@ -5,10 +5,10 @@ package constants
 // BusinessApplicationRequestFields contains field name constants for BusinessApplicationRequest objects
 var BusinessApplicationRequestFields = struct {
 	Application string
-	Id string
+	Id          string
 }{
 	Application: "application",
-	Id: "id",
+	Id:          "id",
 }
 
 // BusinessApplicationRequestFieldsList contains all available fields for BusinessApplicationRequest objects

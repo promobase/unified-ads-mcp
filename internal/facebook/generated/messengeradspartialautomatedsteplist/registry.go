@@ -15,7 +15,6 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolMessengeradspartialautomatedsteplist_get_steps())
 	tools = append(tools, ToolMessengeradspartialautomatedsteplist_get_())
 
-
 	return tools
 }
 
@@ -25,7 +24,6 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 
 	handlers["messengeradspartialautomatedsteplist_get_steps"] = HandleMessengeradspartialautomatedsteplist_get_steps
 	handlers["messengeradspartialautomatedsteplist_get_"] = HandleMessengeradspartialautomatedsteplist_get_
-
 
 	return handlers
 }

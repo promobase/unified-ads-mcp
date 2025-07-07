@@ -5,10 +5,10 @@ package constants
 // WebAppLinkFields contains field name constants for WebAppLink objects
 var WebAppLinkFields = struct {
 	ShouldFallback string
-	Url string
+	Url            string
 }{
 	ShouldFallback: "should_fallback",
-	Url: "url",
+	Url:            "url",
 }
 
 // WebAppLinkFieldsList contains all available fields for WebAppLink objects

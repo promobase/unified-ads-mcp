@@ -4,39 +4,39 @@ package constants
 
 // AdReportRunFields contains field name constants for AdReportRun objects
 var AdReportRunFields = struct {
-	AccountId string
+	AccountId              string
 	AsyncPercentCompletion string
-	AsyncReportUrl string
-	AsyncStatus string
-	DateStart string
-	DateStop string
-	Emails string
-	ErrorCode string
-	FriendlyName string
-	Id string
-	IsAsyncExport string
-	IsBookmarked string
-	IsRunning string
-	ScheduleId string
-	TimeCompleted string
-	TimeRef string
+	AsyncReportUrl         string
+	AsyncStatus            string
+	DateStart              string
+	DateStop               string
+	Emails                 string
+	ErrorCode              string
+	FriendlyName           string
+	Id                     string
+	IsAsyncExport          string
+	IsBookmarked           string
+	IsRunning              string
+	ScheduleId             string
+	TimeCompleted          string
+	TimeRef                string
 }{
-	AccountId: "account_id",
+	AccountId:              "account_id",
 	AsyncPercentCompletion: "async_percent_completion",
-	AsyncReportUrl: "async_report_url",
-	AsyncStatus: "async_status",
-	DateStart: "date_start",
-	DateStop: "date_stop",
-	Emails: "emails",
-	ErrorCode: "error_code",
-	FriendlyName: "friendly_name",
-	Id: "id",
-	IsAsyncExport: "is_async_export",
-	IsBookmarked: "is_bookmarked",
-	IsRunning: "is_running",
-	ScheduleId: "schedule_id",
-	TimeCompleted: "time_completed",
-	TimeRef: "time_ref",
+	AsyncReportUrl:         "async_report_url",
+	AsyncStatus:            "async_status",
+	DateStart:              "date_start",
+	DateStop:               "date_stop",
+	Emails:                 "emails",
+	ErrorCode:              "error_code",
+	FriendlyName:           "friendly_name",
+	Id:                     "id",
+	IsAsyncExport:          "is_async_export",
+	IsBookmarked:           "is_bookmarked",
+	IsRunning:              "is_running",
+	ScheduleId:             "schedule_id",
+	TimeCompleted:          "time_completed",
+	TimeRef:                "time_ref",
 }
 
 // AdReportRunFieldsList contains all available fields for AdReportRun objects

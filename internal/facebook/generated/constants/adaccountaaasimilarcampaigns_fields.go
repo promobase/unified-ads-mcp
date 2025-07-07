@@ -6,11 +6,11 @@ package constants
 var AdAccountAAASimilarCampaignsFields = struct {
 	SimilarCampaignLimit string
 	SimilarCampaignsInfo string
-	UsedCampaignSlots string
+	UsedCampaignSlots    string
 }{
 	SimilarCampaignLimit: "similar_campaign_limit",
 	SimilarCampaignsInfo: "similar_campaigns_info",
-	UsedCampaignSlots: "used_campaign_slots",
+	UsedCampaignSlots:    "used_campaign_slots",
 }
 
 // AdAccountAAASimilarCampaignsFieldsList contains all available fields for AdAccountAAASimilarCampaigns objects

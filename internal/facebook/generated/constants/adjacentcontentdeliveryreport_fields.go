@@ -4,12 +4,12 @@ package constants
 
 // AdjacentContentDeliveryReportFields contains field name constants for AdjacentContentDeliveryReport objects
 var AdjacentContentDeliveryReportFields = struct {
-	AdId string
-	Content string
+	AdId         string
+	Content      string
 	ImpressionId string
 }{
-	AdId: "ad_id",
-	Content: "content",
+	AdId:         "ad_id",
+	Content:      "content",
 	ImpressionId: "impression_id",
 }
 

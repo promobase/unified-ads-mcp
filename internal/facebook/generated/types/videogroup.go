@@ -4,21 +4,21 @@ package types
 
 // VideoGroup represents a Facebook VideoGroup object
 type VideoGroup struct {
-	Created_time string `json:"created_time"`
-	Description string `json:"description"`
-	Disable_reason string `json:"disable_reason"`
-	Id string `json:"id"`
-	Ig_profile_ids []string `json:"ig_profile_ids"`
-	Is_disabled bool `json:"is_disabled"`
-	Is_fb_video_group bool `json:"is_fb_video_group"`
-	Last_used_time string `json:"last_used_time"`
-	Length float64 `json:"length"`
-	Name string `json:"name"`
-	Page_id string `json:"page_id"`
-	Page_ids []string `json:"page_ids"`
-	Picture string `json:"picture"`
-	Placements []string `json:"placements"`
+	Created_time      string   `json:"created_time"`
+	Description       string   `json:"description"`
+	Disable_reason    string   `json:"disable_reason"`
+	Id                string   `json:"id"`
+	Ig_profile_ids    []string `json:"ig_profile_ids"`
+	Is_disabled       bool     `json:"is_disabled"`
+	Is_fb_video_group bool     `json:"is_fb_video_group"`
+	Last_used_time    string   `json:"last_used_time"`
+	Length            float64  `json:"length"`
+	Name              string   `json:"name"`
+	Page_id           string   `json:"page_id"`
+	Page_ids          []string `json:"page_ids"`
+	Picture           string   `json:"picture"`
+	Placements        []string `json:"placements"`
 	Video_group_types []string `json:"video_group_types"`
-	Videos []string `json:"videos"`
-	Views int `json:"views"`
+	Videos            []string `json:"videos"`
+	Views             int      `json:"views"`
 }

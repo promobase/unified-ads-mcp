@@ -4,23 +4,23 @@ package constants
 
 // FranchiseProgramMemberFields contains field name constants for FranchiseProgramMember objects
 var FranchiseProgramMemberFields = struct {
-	Business string
-	EndDate string
-	Id string
-	JoinDate string
-	MemberAdAccount string
-	MemberUser string
+	Business         string
+	EndDate          string
+	Id               string
+	JoinDate         string
+	MemberAdAccount  string
+	MemberUser       string
 	MembershipStatus string
-	Page string
+	Page             string
 }{
-	Business: "business",
-	EndDate: "end_date",
-	Id: "id",
-	JoinDate: "join_date",
-	MemberAdAccount: "member_ad_account",
-	MemberUser: "member_user",
+	Business:         "business",
+	EndDate:          "end_date",
+	Id:               "id",
+	JoinDate:         "join_date",
+	MemberAdAccount:  "member_ad_account",
+	MemberUser:       "member_user",
 	MembershipStatus: "membership_status",
-	Page: "page",
+	Page:             "page",
 }
 
 // FranchiseProgramMemberFieldsList contains all available fields for FranchiseProgramMember objects

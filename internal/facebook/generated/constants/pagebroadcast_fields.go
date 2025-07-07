@@ -4,13 +4,13 @@ package constants
 
 // PageBroadcastFields contains field name constants for PageBroadcast objects
 var PageBroadcastFields = struct {
-	Id string
+	Id            string
 	ScheduledTime string
-	Status string
+	Status        string
 }{
-	Id: "id",
+	Id:            "id",
 	ScheduledTime: "scheduled_time",
-	Status: "status",
+	Status:        "status",
 }
 
 // PageBroadcastFieldsList contains all available fields for PageBroadcast objects

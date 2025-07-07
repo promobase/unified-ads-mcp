@@ -15,7 +15,7 @@ import (
 
 // ToolBusiness_post_share_preverified_numbers returns the MCP tool definition for business_post_share_preverified_numbers
 func ToolBusiness_post_share_preverified_numbers() mcp.Tool {
-	
+
 	// Params object accepts: partner_business_id (string), preverified_id (string)
 	return mcp.NewTool("business_post_share_preverified_numbers",
 		mcp.WithDescription("POST share_preverified_numbers for Business"),
@@ -23,14 +23,14 @@ func ToolBusiness_post_share_preverified_numbers() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"partner_business_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "partner_business_id parameter",
-					"required": true,
+					"required":    true,
 				},
 				"preverified_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "preverified_id parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: partner_business_id (string) [required], preverified_id (string) [required]"),
@@ -63,8 +63,6 @@ func HandleBusiness_post_share_preverified_numbers(ctx context.Context, request 
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Business_post_share_preverified_numbers(accessToken, args)
 	if err != nil {
@@ -83,20 +81,18 @@ func HandleBusiness_post_share_preverified_numbers(ctx context.Context, request 
 // Business_post_share_preverified_numbers performs POST share_preverified_numbers for Business
 func Business_post_share_preverified_numbers(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/share_preverified_numbers")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

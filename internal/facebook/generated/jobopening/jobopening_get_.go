@@ -17,7 +17,7 @@ import (
 // ToolJobopening_get_ returns the MCP tool definition for jobopening_get_
 func ToolJobopening_get_() mcp.Tool {
 	// Available fields for JobOpening: address, application_callback_url, created_time, description, errors, external_company_facebook_url, external_company_full_address, external_company_id, external_company_name, external_id, id, job_status, latitude, longitude, offsite_application_url, page, photo, platform_review_status, post, remote_type, review_rejection_reasons, title, type
-	
+
 	return mcp.NewTool("jobopening_get_",
 		mcp.WithDescription("GET  for JobOpening"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleJobopening_get_(ctx context.Context, request mcp.CallToolRequest) (*m
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Jobopening_get_(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleJobopening_get_(ctx context.Context, request mcp.CallToolRequest) (*m
 // Jobopening_get_ performs GET  for JobOpening
 func Jobopening_get_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

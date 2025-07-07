@@ -16,7 +16,6 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolHighdemandperiod_get_())
 	tools = append(tools, ToolHighdemandperiod_post_())
 
-
 	return tools
 }
 
@@ -27,7 +26,6 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers["highdemandperiod_delete_"] = HandleHighdemandperiod_delete_
 	handlers["highdemandperiod_get_"] = HandleHighdemandperiod_get_
 	handlers["highdemandperiod_post_"] = HandleHighdemandperiod_post_
-
 
 	return handlers
 }

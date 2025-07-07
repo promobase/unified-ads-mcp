@@ -17,7 +17,6 @@ import (
 func GetSavedAudienceTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// savedaudience_get_ tool
 	// Available fields for SavedAudience: account, approximate_count_lower_bound, approximate_count_upper_bound, delete_time, description, id, name, operation_status, owner_business, page_deletion_marked_delete_time, permission_for_actions, run_status, sentence_lines, targeting, time_created, time_updated
 	savedaudience_get_Tool := mcp.NewTool("savedaudience_get_",
@@ -37,12 +36,10 @@ func GetSavedAudienceTools() []mcp.Tool {
 	)
 	tools = append(tools, savedaudience_get_Tool)
 
-
 	return tools
 }
 
 // SavedAudience handlers
-
 
 // HandleSavedaudience_get_ handles the savedaudience_get_ tool with context-based auth
 func HandleSavedaudience_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleSavedaudience_get_(ctx context.Context, request mcp.CallToolRequest) 
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Savedaudience_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleSavedaudience_get_(ctx context.Context, request mcp.CallToolRequest) 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

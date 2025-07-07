@@ -15,14 +15,14 @@ import (
 
 // ToolProductcatalog_delete_ returns the MCP tool definition for productcatalog_delete_
 func ToolProductcatalog_delete_() mcp.Tool {
-	
+
 	// Params object accepts: allow_delete_catalog_with_live_product_set (bool)
 	return mcp.NewTool("productcatalog_delete_",
 		mcp.WithDescription("DELETE  for ProductCatalog"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"allow_delete_catalog_with_live_product_set": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "allow_delete_catalog_with_live_product_set parameter",
 				},
 			}),
@@ -54,8 +54,6 @@ func HandleProductcatalog_delete_(ctx context.Context, request mcp.CallToolReque
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Productcatalog_delete_(accessToken, args)
 	if err != nil {
@@ -74,20 +72,18 @@ func HandleProductcatalog_delete_(ctx context.Context, request mcp.CallToolReque
 // Productcatalog_delete_ performs DELETE  for ProductCatalog
 func Productcatalog_delete_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

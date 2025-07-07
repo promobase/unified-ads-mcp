@@ -15,30 +15,30 @@ import (
 
 // ToolComment_post_ returns the MCP tool definition for comment_post_
 func ToolComment_post_() mcp.Tool {
-	
+
 	// Params object accepts: attachment_id (string), attachment_share_url (string), attachment_url (string), is_hidden (bool), message (string)
 	return mcp.NewTool("comment_post_",
 		mcp.WithDescription("POST  for Comment"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"attachment_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "attachment_id parameter",
 				},
 				"attachment_share_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "attachment_share_url parameter",
 				},
 				"attachment_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "attachment_url parameter",
 				},
 				"is_hidden": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_hidden parameter",
 				},
 				"message": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "message parameter",
 				},
 			}),
@@ -70,8 +70,6 @@ func HandleComment_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Comment_post_(accessToken, args)
 	if err != nil {
@@ -90,20 +88,18 @@ func HandleComment_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 // Comment_post_ performs POST  for Comment
 func Comment_post_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

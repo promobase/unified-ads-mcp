@@ -15,7 +15,7 @@ import (
 
 // ToolProductcatalog_post_catalog_store returns the MCP tool definition for productcatalog_post_catalog_store
 func ToolProductcatalog_post_catalog_store() mcp.Tool {
-	
+
 	// Params object accepts: page (string)
 	return mcp.NewTool("productcatalog_post_catalog_store",
 		mcp.WithDescription("POST catalog_store for ProductCatalog"),
@@ -23,9 +23,9 @@ func ToolProductcatalog_post_catalog_store() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"page": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "page parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: page (string) [required]"),
@@ -58,8 +58,6 @@ func HandleProductcatalog_post_catalog_store(ctx context.Context, request mcp.Ca
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Productcatalog_post_catalog_store(accessToken, args)
 	if err != nil {
@@ -78,20 +76,18 @@ func HandleProductcatalog_post_catalog_store(ctx context.Context, request mcp.Ca
 // Productcatalog_post_catalog_store performs POST catalog_store for ProductCatalog
 func Productcatalog_post_catalog_store(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/catalog_store")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

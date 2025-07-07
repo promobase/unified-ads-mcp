@@ -5,20 +5,20 @@ package constants
 // CopyrightAudioAssetFields contains field name constants for CopyrightAudioAsset objects
 var CopyrightAudioAssetFields = struct {
 	AudioAvailabilityStatus string
-	AudioLibraryPolicy string
-	CreationTime string
-	Id string
-	ReferenceFiles string
-	Title string
-	UpdateTime string
+	AudioLibraryPolicy      string
+	CreationTime            string
+	Id                      string
+	ReferenceFiles          string
+	Title                   string
+	UpdateTime              string
 }{
 	AudioAvailabilityStatus: "audio_availability_status",
-	AudioLibraryPolicy: "audio_library_policy",
-	CreationTime: "creation_time",
-	Id: "id",
-	ReferenceFiles: "reference_files",
-	Title: "title",
-	UpdateTime: "update_time",
+	AudioLibraryPolicy:      "audio_library_policy",
+	CreationTime:            "creation_time",
+	Id:                      "id",
+	ReferenceFiles:          "reference_files",
+	Title:                   "title",
+	UpdateTime:              "update_time",
 }
 
 // CopyrightAudioAssetFieldsList contains all available fields for CopyrightAudioAsset objects

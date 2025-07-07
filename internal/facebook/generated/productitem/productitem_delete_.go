@@ -15,8 +15,7 @@ import (
 
 // ToolProductitem_delete_ returns the MCP tool definition for productitem_delete_
 func ToolProductitem_delete_() mcp.Tool {
-	
-	
+
 	return mcp.NewTool("productitem_delete_",
 		mcp.WithDescription("DELETE  for ProductItem"),
 	)
@@ -32,8 +31,6 @@ func HandleProductitem_delete_(ctx context.Context, request mcp.CallToolRequest)
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the API method
 	result, err := Productitem_delete_(accessToken, args)
@@ -53,14 +50,11 @@ func HandleProductitem_delete_(ctx context.Context, request mcp.CallToolRequest)
 // Productitem_delete_ performs DELETE  for ProductItem
 func Productitem_delete_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response

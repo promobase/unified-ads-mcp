@@ -17,7 +17,6 @@ import (
 func GetGeoGatingPolicyTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// geogatingpolicy_get_ tool
 	// Available fields for GeoGatingPolicy: after_schedule, exclude_country, id, include_country, name, valid_from, valid_until
 	geogatingpolicy_get_Tool := mcp.NewTool("geogatingpolicy_get_",
@@ -37,12 +36,10 @@ func GetGeoGatingPolicyTools() []mcp.Tool {
 	)
 	tools = append(tools, geogatingpolicy_get_Tool)
 
-
 	return tools
 }
 
 // GeoGatingPolicy handlers
-
 
 // HandleGeogatingpolicy_get_ handles the geogatingpolicy_get_ tool with context-based auth
 func HandleGeogatingpolicy_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleGeogatingpolicy_get_(ctx context.Context, request mcp.CallToolRequest
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Geogatingpolicy_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleGeogatingpolicy_get_(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

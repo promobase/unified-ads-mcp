@@ -4,21 +4,21 @@ package constants
 
 // AdsTextSuggestionsFields contains field name constants for AdsTextSuggestions objects
 var AdsTextSuggestionsFields = struct {
-	AdAccountId string
-	Bodies string
-	Descriptions string
+	AdAccountId          string
+	Bodies               string
+	Descriptions         string
 	InactiveSessionTally string
-	Long string
-	Short string
-	Titles string
+	Long                 string
+	Short                string
+	Titles               string
 }{
-	AdAccountId: "ad_account_id",
-	Bodies: "bodies",
-	Descriptions: "descriptions",
+	AdAccountId:          "ad_account_id",
+	Bodies:               "bodies",
+	Descriptions:         "descriptions",
 	InactiveSessionTally: "inactive_session_tally",
-	Long: "long",
-	Short: "short",
-	Titles: "titles",
+	Long:                 "long",
+	Short:                "short",
+	Titles:               "titles",
 }
 
 // AdsTextSuggestionsFieldsList contains all available fields for AdsTextSuggestions objects

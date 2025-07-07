@@ -17,7 +17,7 @@ import (
 // ToolVideocopyrightrule_get_ returns the MCP tool definition for videocopyrightrule_get_
 func ToolVideocopyrightrule_get_() mcp.Tool {
 	// Available fields for VideoCopyrightRule: condition_groups, copyrights, created_date, creator, id, is_in_migration, name
-	
+
 	return mcp.NewTool("videocopyrightrule_get_",
 		mcp.WithDescription("GET  for VideoCopyrightRule"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleVideocopyrightrule_get_(ctx context.Context, request mcp.CallToolRequ
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Videocopyrightrule_get_(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleVideocopyrightrule_get_(ctx context.Context, request mcp.CallToolRequ
 // Videocopyrightrule_get_ performs GET  for VideoCopyrightRule
 func Videocopyrightrule_get_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

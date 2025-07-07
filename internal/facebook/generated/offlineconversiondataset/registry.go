@@ -23,7 +23,6 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolOfflineconversiondataset_get_uploads())
 	tools = append(tools, ToolOfflineconversiondataset_get_())
 
-
 	return tools
 }
 
@@ -41,7 +40,6 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers["offlineconversiondataset_get_stats"] = HandleOfflineconversiondataset_get_stats
 	handlers["offlineconversiondataset_get_uploads"] = HandleOfflineconversiondataset_get_uploads
 	handlers["offlineconversiondataset_get_"] = HandleOfflineconversiondataset_get_
-
 
 	return handlers
 }

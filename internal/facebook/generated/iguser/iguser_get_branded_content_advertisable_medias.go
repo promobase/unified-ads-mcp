@@ -23,25 +23,25 @@ func ToolIguser_get_branded_content_advertisable_medias() mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"ad_code": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "ad_code parameter",
 				},
 				"creator_username": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "creator_username parameter",
 				},
 				"only_fetch_allowlisted": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "only_fetch_allowlisted parameter",
 				},
 				"only_fetch_recommended_content": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "only_fetch_recommended_content parameter",
 				},
 				"permalinks": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "permalinks parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: ad_code (string), creator_username (string), only_fetch_allowlisted (boolean), only_fetch_recommended_content (boolean), permalinks (array<string>)"),
@@ -109,8 +109,6 @@ func HandleIguser_get_branded_content_advertisable_medias(ctx context.Context, r
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Iguser_get_branded_content_advertisable_medias(accessToken, args)
 	if err != nil {
@@ -129,44 +127,42 @@ func HandleIguser_get_branded_content_advertisable_medias(ctx context.Context, r
 // Iguser_get_branded_content_advertisable_medias performs GET branded_content_advertisable_medias for IGUser
 func Iguser_get_branded_content_advertisable_medias(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/branded_content_advertisable_medias")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

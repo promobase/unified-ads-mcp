@@ -16,7 +16,6 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolTransactableitem_get_override_details())
 	tools = append(tools, ToolTransactableitem_get_())
 
-
 	return tools
 }
 
@@ -27,7 +26,6 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers["transactableitem_get_channels_to_integrity_status"] = HandleTransactableitem_get_channels_to_integrity_status
 	handlers["transactableitem_get_override_details"] = HandleTransactableitem_get_override_details
 	handlers["transactableitem_get_"] = HandleTransactableitem_get_
-
 
 	return handlers
 }

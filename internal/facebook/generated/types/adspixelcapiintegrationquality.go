@@ -4,11 +4,11 @@ package types
 
 // AdsPixelCAPIIntegrationQuality represents a Facebook AdsPixelCAPIIntegrationQuality object
 type AdsPixelCAPIIntegrationQuality struct {
-	Acr map[string]interface{} `json:"acr"`
-	Data_freshness map[string]interface{} `json:"data_freshness"`
-	Dedupe_key_feedback []map[string]interface{} `json:"dedupe_key_feedback"`
-	Event_coverage map[string]interface{} `json:"event_coverage"`
-	Event_match_quality map[string]interface{} `json:"event_match_quality"`
-	Event_name string `json:"event_name"`
-	Event_potential_aly_acr_increase map[string]interface{} `json:"event_potential_aly_acr_increase"`
+	Acr                              map[string]interface{}   `json:"acr"`
+	Data_freshness                   map[string]interface{}   `json:"data_freshness"`
+	Dedupe_key_feedback              []map[string]interface{} `json:"dedupe_key_feedback"`
+	Event_coverage                   map[string]interface{}   `json:"event_coverage"`
+	Event_match_quality              map[string]interface{}   `json:"event_match_quality"`
+	Event_name                       string                   `json:"event_name"`
+	Event_potential_aly_acr_increase map[string]interface{}   `json:"event_potential_aly_acr_increase"`
 }

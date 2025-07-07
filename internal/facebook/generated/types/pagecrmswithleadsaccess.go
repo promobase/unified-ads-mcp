@@ -4,8 +4,8 @@ package types
 
 // PageCrmsWithLeadsAccess represents a Facebook PageCrmsWithLeadsAccess object
 type PageCrmsWithLeadsAccess struct {
-	Can_access_leads bool `json:"can_access_leads"`
-	Id string `json:"id"`
+	Can_access_leads bool   `json:"can_access_leads"`
+	Id               string `json:"id"`
 	Integration_type string `json:"integration_type"`
-	Name string `json:"name"`
+	Name             string `json:"name"`
 }

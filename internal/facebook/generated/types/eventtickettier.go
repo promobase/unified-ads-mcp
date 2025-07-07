@@ -6,22 +6,22 @@ import "time"
 
 // EventTicketTier represents a Facebook EventTicketTier object
 type EventTicketTier struct {
-	Currency string `json:"currency"`
-	Description string `json:"description"`
-	End_sales_time time.Time `json:"end_sales_time"`
-	End_show_time time.Time `json:"end_show_time"`
-	Fee_settings string `json:"fee_settings"`
-	Id string `json:"id"`
-	Maximum_quantity int `json:"maximum_quantity"`
-	Metadata string `json:"metadata"`
-	Minimum_quantity int `json:"minimum_quantity"`
-	Name string `json:"name"`
-	Price int `json:"price"`
-	Priority int `json:"priority"`
-	Retailer_id string `json:"retailer_id"`
-	Seating_map_image_url string `json:"seating_map_image_url"`
-	Start_sales_time time.Time `json:"start_sales_time"`
-	Start_show_time time.Time `json:"start_show_time"`
-	Status string `json:"status"`
-	Total_quantity int `json:"total_quantity"`
+	Currency              string    `json:"currency"`
+	Description           string    `json:"description"`
+	End_sales_time        time.Time `json:"end_sales_time"`
+	End_show_time         time.Time `json:"end_show_time"`
+	Fee_settings          string    `json:"fee_settings"`
+	Id                    string    `json:"id"`
+	Maximum_quantity      int       `json:"maximum_quantity"`
+	Metadata              string    `json:"metadata"`
+	Minimum_quantity      int       `json:"minimum_quantity"`
+	Name                  string    `json:"name"`
+	Price                 int       `json:"price"`
+	Priority              int       `json:"priority"`
+	Retailer_id           string    `json:"retailer_id"`
+	Seating_map_image_url string    `json:"seating_map_image_url"`
+	Start_sales_time      time.Time `json:"start_sales_time"`
+	Start_show_time       time.Time `json:"start_show_time"`
+	Status                string    `json:"status"`
+	Total_quantity        int       `json:"total_quantity"`
 }

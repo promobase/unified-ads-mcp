@@ -4,15 +4,15 @@ package constants
 
 // WebsiteCreativeAssetSuggestionsFields contains field name constants for WebsiteCreativeAssetSuggestions objects
 var WebsiteCreativeAssetSuggestionsFields = struct {
-	AdAccountId string
+	AdAccountId      string
 	ExtractionStatus string
-	Id string
-	LinkUrl string
+	Id               string
+	LinkUrl          string
 }{
-	AdAccountId: "ad_account_id",
+	AdAccountId:      "ad_account_id",
 	ExtractionStatus: "extraction_status",
-	Id: "id",
-	LinkUrl: "link_url",
+	Id:               "id",
+	LinkUrl:          "link_url",
 }
 
 // WebsiteCreativeAssetSuggestionsFieldsList contains all available fields for WebsiteCreativeAssetSuggestions objects

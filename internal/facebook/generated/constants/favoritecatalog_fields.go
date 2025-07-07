@@ -5,10 +5,10 @@ package constants
 // FavoriteCatalogFields contains field name constants for FavoriteCatalog objects
 var FavoriteCatalogFields = struct {
 	Catalog string
-	Id string
+	Id      string
 }{
 	Catalog: "catalog",
-	Id: "id",
+	Id:      "id",
 }
 
 // FavoriteCatalogFieldsList contains all available fields for FavoriteCatalog objects

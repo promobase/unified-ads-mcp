@@ -15,7 +15,7 @@ import (
 
 // ToolProductcatalog_post_categories returns the MCP tool definition for productcatalog_post_categories
 func ToolProductcatalog_post_categories() mcp.Tool {
-	
+
 	// Params object accepts: data (list<map>)
 	return mcp.NewTool("productcatalog_post_categories",
 		mcp.WithDescription("POST categories for ProductCatalog"),
@@ -23,10 +23,10 @@ func ToolProductcatalog_post_categories() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"data": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "data parameter",
-					"required": true,
-					"items": map[string]any{"type": "object"},
+					"required":    true,
+					"items":       map[string]any{"type": "object"},
 				},
 			}),
 			mcp.Description("Parameters object containing: data (array<object>) [required]"),
@@ -59,8 +59,6 @@ func HandleProductcatalog_post_categories(ctx context.Context, request mcp.CallT
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Productcatalog_post_categories(accessToken, args)
 	if err != nil {
@@ -79,20 +77,18 @@ func HandleProductcatalog_post_categories(ctx context.Context, request mcp.CallT
 // Productcatalog_post_categories performs POST categories for ProductCatalog
 func Productcatalog_post_categories(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/categories")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

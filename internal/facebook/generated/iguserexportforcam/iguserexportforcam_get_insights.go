@@ -16,32 +16,32 @@ import (
 
 // ToolIguserexportforcam_get_insights returns the MCP tool definition for iguserexportforcam_get_insights
 func ToolIguserexportforcam_get_insights() mcp.Tool {
-	
+
 	// Params object accepts: breakdown (iguserexportforcaminsights_breakdown_enum_param), metrics (list<iguserexportforcaminsights_metrics_enum_param>), period (iguserexportforcaminsights_period_enum_param), time_range (iguserexportforcaminsights_time_range_enum_param)
 	return mcp.NewTool("iguserexportforcam_get_insights",
 		mcp.WithDescription("GET insights for IGUserExportForCAM"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"breakdown": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "breakdown parameter",
-					"enum": []string{ "AGE", "FOLLOW_TYPE", "GENDER", "MEDIA_TYPE", "TOP_CITIES", "TOP_COUNTRIES" },
+					"enum":        []string{"AGE", "FOLLOW_TYPE", "GENDER", "MEDIA_TYPE", "TOP_CITIES", "TOP_COUNTRIES"},
 				},
 				"metrics": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "metrics parameter",
-					"enum": []string{ "CREATOR_ENGAGED_ACCOUNTS", "CREATOR_REACH", "REELS_HOOK_RATE", "REELS_INTERACTION_RATE", "TOTAL_FOLLOWERS" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"CREATOR_ENGAGED_ACCOUNTS", "CREATOR_REACH", "REELS_HOOK_RATE", "REELS_INTERACTION_RATE", "TOTAL_FOLLOWERS"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"period": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "period parameter",
-					"enum": []string{ "DAY", "OVERALL" },
+					"enum":        []string{"DAY", "OVERALL"},
 				},
 				"time_range": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "time_range parameter",
-					"enum": []string{ "LAST_14_DAYS", "LAST_90_DAYS", "LIFETIME", "THIS_MONTH", "THIS_WEEK" },
+					"enum":        []string{"LAST_14_DAYS", "LAST_90_DAYS", "LIFETIME", "THIS_MONTH", "THIS_WEEK"},
 				},
 			}),
 			mcp.Description("Parameters object containing: breakdown (enum) [AGE, FOLLOW_TYPE, GENDER, MEDIA_TYPE, TOP_CITIES, ...], metrics (array<enum>) [CREATOR_ENGAGED_ACCOUNTS, CREATOR_REACH, REELS_HOOK_RATE, REELS_INTERACTION_RATE, TOTAL_FOLLOWERS], period (enum) [DAY, OVERALL], time_range (enum) [LAST_14_DAYS, LAST_90_DAYS, LIFETIME, THIS_MONTH, THIS_WEEK]"),
@@ -109,8 +109,6 @@ func HandleIguserexportforcam_get_insights(ctx context.Context, request mcp.Call
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Iguserexportforcam_get_insights(accessToken, args)
 	if err != nil {
@@ -129,44 +127,42 @@ func HandleIguserexportforcam_get_insights(ctx context.Context, request mcp.Call
 // Iguserexportforcam_get_insights performs GET insights for IGUserExportForCAM
 func Iguserexportforcam_get_insights(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/insights")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

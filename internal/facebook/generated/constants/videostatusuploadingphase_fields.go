@@ -5,14 +5,14 @@ package constants
 // VideoStatusUploadingPhaseFields contains field name constants for VideoStatusUploadingPhase objects
 var VideoStatusUploadingPhaseFields = struct {
 	BytesTransferred string
-	Errors string
-	SourceFileSize string
-	Status string
+	Errors           string
+	SourceFileSize   string
+	Status           string
 }{
 	BytesTransferred: "bytes_transferred",
-	Errors: "errors",
-	SourceFileSize: "source_file_size",
-	Status: "status",
+	Errors:           "errors",
+	SourceFileSize:   "source_file_size",
+	Status:           "status",
 }
 
 // VideoStatusUploadingPhaseFieldsList contains all available fields for VideoStatusUploadingPhase objects

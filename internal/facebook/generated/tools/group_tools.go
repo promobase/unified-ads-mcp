@@ -17,7 +17,6 @@ import (
 func GetGroupTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// group_delete_admins tool
 	// Params object accepts: uid (int)
 	group_delete_adminsTool := mcp.NewTool("group_delete_admins",
@@ -26,9 +25,9 @@ func GetGroupTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"uid": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "uid parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: uid (integer) [required]"),
@@ -44,9 +43,9 @@ func GetGroupTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"uid": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "uid parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: uid (integer) [required]"),
@@ -118,27 +117,27 @@ func GetGroupTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"include_hidden": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "include_hidden parameter",
 				},
 				"q": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "q parameter",
 				},
 				"show_expired": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "show_expired parameter",
 				},
 				"since": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "since parameter",
 				},
 				"until": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "until parameter",
 				},
 				"with": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "with parameter",
 				},
 			}),
@@ -166,437 +165,437 @@ func GetGroupTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"actions": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "actions parameter",
 				},
 				"album_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "album_id parameter",
 				},
 				"android_key_hash": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "android_key_hash parameter",
 				},
 				"application_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "application_id parameter",
 				},
 				"asked_fun_fact_prompt_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "asked_fun_fact_prompt_id parameter",
 				},
 				"asset3d_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "asset3d_id parameter",
 				},
 				"associated_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "associated_id parameter",
 				},
 				"attach_place_suggestion": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "attach_place_suggestion parameter",
 				},
 				"attached_media": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "attached_media parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"audience_exp": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "audience_exp parameter",
 				},
 				"backdated_time": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "backdated_time parameter",
 				},
 				"backdated_time_granularity": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "backdated_time_granularity parameter",
-					"enum": []string{ "day", "hour", "min", "month", "none", "year" },
+					"enum":        []string{"day", "hour", "min", "month", "none", "year"},
 				},
 				"breaking_news": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "breaking_news parameter",
 				},
 				"breaking_news_expiration": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "breaking_news_expiration parameter",
 				},
 				"call_to_action": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "call_to_action parameter",
 				},
 				"caption": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "caption parameter",
 				},
 				"child_attachments": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "child_attachments parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"client_mutation_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "client_mutation_id parameter",
 				},
 				"composer_entry_picker": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "composer_entry_picker parameter",
 				},
 				"composer_entry_point": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "composer_entry_point parameter",
 				},
 				"composer_entry_time": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "composer_entry_time parameter",
 				},
 				"composer_session_events_log": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "composer_session_events_log parameter",
 				},
 				"composer_session_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "composer_session_id parameter",
 				},
 				"composer_source_surface": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "composer_source_surface parameter",
 				},
 				"composer_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "composer_type parameter",
 				},
 				"connection_class": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "connection_class parameter",
 				},
 				"content_attachment": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "content_attachment parameter",
 				},
 				"coordinates": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "coordinates parameter",
 				},
 				"cta_link": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "cta_link parameter",
 				},
 				"cta_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "cta_type parameter",
 				},
 				"description": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "description parameter",
 				},
 				"direct_share_status": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "direct_share_status parameter",
 				},
 				"expanded_height": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "expanded_height parameter",
 				},
 				"expanded_width": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "expanded_width parameter",
 				},
 				"feed_targeting": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "feed_targeting parameter",
 				},
 				"formatting": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "formatting parameter",
-					"enum": []string{ "MARKDOWN", "PLAINTEXT" },
+					"enum":        []string{"MARKDOWN", "PLAINTEXT"},
 				},
 				"fun_fact_prompt_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "fun_fact_prompt_id parameter",
 				},
 				"fun_fact_toastee_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "fun_fact_toastee_id parameter",
 				},
 				"height": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "height parameter",
 				},
 				"home_checkin_city_id": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "home_checkin_city_id parameter",
 				},
 				"image_crops": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "image_crops parameter",
 				},
 				"implicit_with_tags": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "implicit_with_tags parameter",
-					"items": map[string]any{"type": "integer"},
+					"items":       map[string]any{"type": "integer"},
 				},
 				"instant_game_entry_point_data": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "instant_game_entry_point_data parameter",
 				},
 				"ios_bundle_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "ios_bundle_id parameter",
 				},
 				"is_backout_draft": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_backout_draft parameter",
 				},
 				"is_boost_intended": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_boost_intended parameter",
 				},
 				"is_explicit_location": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_explicit_location parameter",
 				},
 				"is_explicit_share": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_explicit_share parameter",
 				},
 				"is_group_linking_post": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_group_linking_post parameter",
 				},
 				"is_photo_container": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_photo_container parameter",
 				},
 				"link": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "link parameter",
 				},
 				"location_source_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "location_source_id parameter",
 				},
 				"manual_privacy": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "manual_privacy parameter",
 				},
 				"message": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "message parameter",
 				},
 				"multi_share_end_card": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "multi_share_end_card parameter",
 				},
 				"multi_share_optimized": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "multi_share_optimized parameter",
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
 				},
 				"nectar_module": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "nectar_module parameter",
 				},
 				"object_attachment": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "object_attachment parameter",
 				},
 				"og_action_type_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "og_action_type_id parameter",
 				},
 				"og_hide_object_attachment": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "og_hide_object_attachment parameter",
 				},
 				"og_icon_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "og_icon_id parameter",
 				},
 				"og_object_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "og_object_id parameter",
 				},
 				"og_phrase": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "og_phrase parameter",
 				},
 				"og_set_profile_badge": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "og_set_profile_badge parameter",
 				},
 				"og_suggestion_mechanism": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "og_suggestion_mechanism parameter",
 				},
 				"page_recommendation": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "page_recommendation parameter",
 				},
 				"picture": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "picture parameter",
 				},
 				"place": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "place parameter",
 				},
 				"place_attachment_setting": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "place_attachment_setting parameter",
-					"enum": []string{ "1", "2" },
+					"enum":        []string{"1", "2"},
 				},
 				"place_list": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "place_list parameter",
 				},
 				"place_list_data": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "place_list_data parameter",
 				},
 				"post_surfaces_blacklist": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "post_surfaces_blacklist parameter",
-					"enum": []string{ "1", "2", "3", "4", "5" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"1", "2", "3", "4", "5"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"posting_to_redspace": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "posting_to_redspace parameter",
-					"enum": []string{ "disabled", "enabled" },
+					"enum":        []string{"disabled", "enabled"},
 				},
 				"privacy": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "privacy parameter",
 				},
 				"prompt_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "prompt_id parameter",
 				},
 				"prompt_tracking_string": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "prompt_tracking_string parameter",
 				},
 				"properties": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "properties parameter",
 				},
 				"proxied_app_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "proxied_app_id parameter",
 				},
 				"publish_event_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "publish_event_id parameter",
 				},
 				"published": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "published parameter",
 				},
 				"quote": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "quote parameter",
 				},
 				"ref": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "ref parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"referenceable_image_ids": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "referenceable_image_ids parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"referral_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "referral_id parameter",
 				},
 				"scheduled_publish_time": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "scheduled_publish_time parameter",
 				},
 				"source": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "source parameter",
 				},
 				"sponsor_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "sponsor_id parameter",
 				},
 				"sponsor_relationship": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "sponsor_relationship parameter",
 				},
 				"suggested_place_id": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "suggested_place_id parameter",
 				},
 				"tags": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "tags parameter",
-					"items": map[string]any{"type": "integer"},
+					"items":       map[string]any{"type": "integer"},
 				},
 				"target_surface": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "target_surface parameter",
-					"enum": []string{ "STORY", "TIMELINE" },
+					"enum":        []string{"STORY", "TIMELINE"},
 				},
 				"targeting": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "targeting parameter",
 				},
 				"text_format_metadata": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "text_format_metadata parameter",
 				},
 				"text_format_preset_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "text_format_preset_id parameter",
 				},
 				"text_only_place": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "text_only_place parameter",
 				},
 				"thumbnail": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "thumbnail parameter",
 				},
 				"time_since_original_post": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "time_since_original_post parameter",
 				},
 				"title": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "title parameter",
 				},
 				"tracking_info": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "tracking_info parameter",
 				},
 				"unpublished_content_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "unpublished_content_type parameter",
-					"enum": []string{ "ADS_POST", "DRAFT", "INLINE_CREATED", "PUBLISHED", "REVIEWABLE_BRANDED_CONTENT", "SCHEDULED", "SCHEDULED_RECURRING" },
+					"enum":        []string{"ADS_POST", "DRAFT", "INLINE_CREATED", "PUBLISHED", "REVIEWABLE_BRANDED_CONTENT", "SCHEDULED", "SCHEDULED_RECURRING"},
 				},
 				"user_selected_tags": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "user_selected_tags parameter",
 				},
 				"video_start_time_ms": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "video_start_time_ms parameter",
 				},
 				"viewer_coordinates": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "viewer_coordinates parameter",
 				},
 				"width": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "width parameter",
 				},
 			}),
@@ -650,51 +649,51 @@ func GetGroupTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"admin": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "admin parameter",
 				},
 				"description": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "description parameter",
 				},
 				"group_icon_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "group_icon_id parameter",
 				},
 				"group_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "group_type parameter",
-					"enum": []string{ "CASUAL", "COWORKERS", "CUSTOM", "FOR_SALE", "FOR_WORK", "GAME", "HEALTH_SUPPORT", "JOBS", "LEARNING", "NONE", "PARENTING", "STREAMER", "WORK_ANNOUNCEMENT", "WORK_DEMO_GROUP", "WORK_DISCUSSION", "WORK_EPHEMERAL", "WORK_FEEDBACK", "WORK_FOR_SALE", "WORK_GARDEN", "WORK_INTEGRITY", "WORK_LEARNING", "WORK_MENTORSHIP", "WORK_MULTI_COMPANY", "WORK_RECRUITING", "WORK_SOCIAL", "WORK_STAGES", "WORK_TEAM", "WORK_TEAMWORK" },
+					"enum":        []string{"CASUAL", "COWORKERS", "CUSTOM", "FOR_SALE", "FOR_WORK", "GAME", "HEALTH_SUPPORT", "JOBS", "LEARNING", "NONE", "PARENTING", "STREAMER", "WORK_ANNOUNCEMENT", "WORK_DEMO_GROUP", "WORK_DISCUSSION", "WORK_EPHEMERAL", "WORK_FEEDBACK", "WORK_FOR_SALE", "WORK_GARDEN", "WORK_INTEGRITY", "WORK_LEARNING", "WORK_MENTORSHIP", "WORK_MULTI_COMPANY", "WORK_RECRUITING", "WORK_SOCIAL", "WORK_STAGES", "WORK_TEAM", "WORK_TEAMWORK"},
 				},
 				"join_setting": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "join_setting parameter",
-					"enum": []string{ "ADMIN_ONLY", "ANYONE", "NONE" },
+					"enum":        []string{"ADMIN_ONLY", "ANYONE", "NONE"},
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
-					"required": true,
+					"required":    true,
 				},
 				"parent_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "parent_id parameter",
 				},
 				"post_permissions": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "post_permissions parameter",
-					"enum": []string{ "ADMIN_ONLY", "ANYONE", "NONE" },
+					"enum":        []string{"ADMIN_ONLY", "ANYONE", "NONE"},
 				},
 				"post_requires_admin_approval": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "post_requires_admin_approval parameter",
 				},
 				"privacy": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "privacy parameter",
 				},
 				"ref": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "ref parameter",
 				},
 			}),
@@ -711,15 +710,15 @@ func GetGroupTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"broadcast_status": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "broadcast_status parameter",
-					"enum": []string{ "LIVE", "LIVE_STOPPED", "PROCESSING", "SCHEDULED_CANCELED", "SCHEDULED_EXPIRED", "SCHEDULED_LIVE", "SCHEDULED_UNPUBLISHED", "UNPUBLISHED", "VOD" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"LIVE", "LIVE_STOPPED", "PROCESSING", "SCHEDULED_CANCELED", "SCHEDULED_EXPIRED", "SCHEDULED_LIVE", "SCHEDULED_UNPUBLISHED", "UNPUBLISHED", "VOD"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"source": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "source parameter",
-					"enum": []string{ "owner", "target" },
+					"enum":        []string{"owner", "target"},
 				},
 			}),
 			mcp.Description("Parameters object containing: broadcast_status (array<enum>) [LIVE, LIVE_STOPPED, PROCESSING, SCHEDULED_CANCELED, SCHEDULED_EXPIRED, ...], source (enum) [owner, target]"),
@@ -746,89 +745,89 @@ func GetGroupTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"content_tags": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "content_tags parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"description": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "description parameter",
 				},
 				"enable_backup_ingest": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "enable_backup_ingest parameter",
 				},
 				"encoding_settings": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "encoding_settings parameter",
 				},
 				"event_params": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "event_params parameter",
 				},
 				"fisheye_video_cropped": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "fisheye_video_cropped parameter",
 				},
 				"front_z_rotation": map[string]any{
-					"type": "number",
+					"type":        "number",
 					"description": "front_z_rotation parameter",
 				},
 				"is_audio_only": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_audio_only parameter",
 				},
 				"is_spherical": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_spherical parameter",
 				},
 				"original_fov": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "original_fov parameter",
 				},
 				"privacy": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "privacy parameter",
 				},
 				"projection": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "projection parameter",
-					"enum": []string{ "CUBEMAP", "EQUIRECTANGULAR", "HALF_EQUIRECTANGULAR" },
+					"enum":        []string{"CUBEMAP", "EQUIRECTANGULAR", "HALF_EQUIRECTANGULAR"},
 				},
 				"published": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "published parameter",
 				},
 				"schedule_custom_profile_image": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "schedule_custom_profile_image parameter",
 				},
 				"spatial_audio_format": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "spatial_audio_format parameter",
-					"enum": []string{ "ambiX_4" },
+					"enum":        []string{"ambiX_4"},
 				},
 				"status": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "status parameter",
-					"enum": []string{ "LIVE_NOW", "SCHEDULED_CANCELED", "SCHEDULED_LIVE", "SCHEDULED_UNPUBLISHED", "UNPUBLISHED" },
+					"enum":        []string{"LIVE_NOW", "SCHEDULED_CANCELED", "SCHEDULED_LIVE", "SCHEDULED_UNPUBLISHED", "UNPUBLISHED"},
 				},
 				"stereoscopic_mode": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "stereoscopic_mode parameter",
-					"enum": []string{ "LEFT_RIGHT", "MONO", "TOP_BOTTOM" },
+					"enum":        []string{"LEFT_RIGHT", "MONO", "TOP_BOTTOM"},
 				},
 				"stop_on_delete_stream": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "stop_on_delete_stream parameter",
 				},
 				"stream_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "stream_type parameter",
-					"enum": []string{ "AMBIENT", "REGULAR" },
+					"enum":        []string{"AMBIENT", "REGULAR"},
 				},
 				"title": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "title parameter",
 				},
 			}),
@@ -844,11 +843,11 @@ func GetGroupTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"email": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "email parameter",
 				},
 				"member": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "member parameter",
 				},
 			}),
@@ -864,23 +863,23 @@ func GetGroupTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"email": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "email parameter",
 				},
 				"from": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "from parameter",
 				},
 				"member": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "member parameter",
 				},
 				"rate": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "rate parameter",
 				},
 				"source": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "source parameter",
 				},
 			}),
@@ -915,210 +914,210 @@ func GetGroupTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"aid": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "aid parameter",
 				},
 				"allow_spherical_photo": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "allow_spherical_photo parameter",
 				},
 				"alt_text_custom": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "alt_text_custom parameter",
 				},
 				"android_key_hash": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "android_key_hash parameter",
 				},
 				"application_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "application_id parameter",
 				},
 				"attempt": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "attempt parameter",
 				},
 				"audience_exp": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "audience_exp parameter",
 				},
 				"backdated_time": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "backdated_time parameter",
 				},
 				"backdated_time_granularity": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "backdated_time_granularity parameter",
-					"enum": []string{ "day", "hour", "min", "month", "none", "year" },
+					"enum":        []string{"day", "hour", "min", "month", "none", "year"},
 				},
 				"caption": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "caption parameter",
 				},
 				"composer_session_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "composer_session_id parameter",
 				},
 				"direct_share_status": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "direct_share_status parameter",
 				},
 				"feed_targeting": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "feed_targeting parameter",
 				},
 				"filter_type": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "filter_type parameter",
 				},
 				"full_res_is_coming_later": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "full_res_is_coming_later parameter",
 				},
 				"initial_view_heading_override_degrees": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "initial_view_heading_override_degrees parameter",
 				},
 				"initial_view_pitch_override_degrees": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "initial_view_pitch_override_degrees parameter",
 				},
 				"initial_view_vertical_fov_override_degrees": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "initial_view_vertical_fov_override_degrees parameter",
 				},
 				"ios_bundle_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "ios_bundle_id parameter",
 				},
 				"is_explicit_location": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_explicit_location parameter",
 				},
 				"is_explicit_place": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_explicit_place parameter",
 				},
 				"manual_privacy": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "manual_privacy parameter",
 				},
 				"message": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "message parameter",
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
 				},
 				"no_story": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "no_story parameter",
 				},
 				"offline_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "offline_id parameter",
 				},
 				"og_action_type_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "og_action_type_id parameter",
 				},
 				"og_icon_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "og_icon_id parameter",
 				},
 				"og_object_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "og_object_id parameter",
 				},
 				"og_phrase": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "og_phrase parameter",
 				},
 				"og_set_profile_badge": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "og_set_profile_badge parameter",
 				},
 				"og_suggestion_mechanism": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "og_suggestion_mechanism parameter",
 				},
 				"place": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "place parameter",
 				},
 				"privacy": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "privacy parameter",
 				},
 				"profile_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "profile_id parameter",
 				},
 				"provenance_info": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "provenance_info parameter",
 				},
 				"proxied_app_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "proxied_app_id parameter",
 				},
 				"published": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "published parameter",
 				},
 				"qn": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "qn parameter",
 				},
 				"spherical_metadata": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "spherical_metadata parameter",
 				},
 				"sponsor_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "sponsor_id parameter",
 				},
 				"sponsor_relationship": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "sponsor_relationship parameter",
 				},
 				"tags": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "tags parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"target_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "target_id parameter",
 				},
 				"targeting": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "targeting parameter",
 				},
 				"time_since_original_post": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "time_since_original_post parameter",
 				},
 				"uid": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "uid parameter",
 				},
 				"unpublished_content_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "unpublished_content_type parameter",
-					"enum": []string{ "ADS_POST", "DRAFT", "INLINE_CREATED", "PUBLISHED", "REVIEWABLE_BRANDED_CONTENT", "SCHEDULED", "SCHEDULED_RECURRING" },
+					"enum":        []string{"ADS_POST", "DRAFT", "INLINE_CREATED", "PUBLISHED", "REVIEWABLE_BRANDED_CONTENT", "SCHEDULED", "SCHEDULED_RECURRING"},
 				},
 				"url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "url parameter",
 				},
 				"user_selected_tags": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "user_selected_tags parameter",
 				},
 				"vault_image_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "vault_image_id parameter",
 				},
 			}),
@@ -1135,20 +1134,20 @@ func GetGroupTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"height": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "height parameter",
 				},
 				"redirect": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "redirect parameter",
 				},
 				"type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "type parameter",
-					"enum": []string{ "album", "large", "normal", "small", "square" },
+					"enum":        []string{"album", "large", "normal", "small", "square"},
 				},
 				"width": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "width parameter",
 				},
 			}),
@@ -1177,9 +1176,9 @@ func GetGroupTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "type parameter",
-					"enum": []string{ "tagged", "uploaded" },
+					"enum":        []string{"tagged", "uploaded"},
 				},
 			}),
 			mcp.Description("Parameters object containing: type (enum) [tagged, uploaded]"),
@@ -1206,287 +1205,287 @@ func GetGroupTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"application_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "application_id parameter",
 				},
 				"asked_fun_fact_prompt_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "asked_fun_fact_prompt_id parameter",
 				},
 				"audio_story_wave_animation_handle": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "audio_story_wave_animation_handle parameter",
 				},
 				"composer_entry_picker": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "composer_entry_picker parameter",
 				},
 				"composer_entry_point": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "composer_entry_point parameter",
 				},
 				"composer_entry_time": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "composer_entry_time parameter",
 				},
 				"composer_session_events_log": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "composer_session_events_log parameter",
 				},
 				"composer_session_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "composer_session_id parameter",
 				},
 				"composer_source_surface": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "composer_source_surface parameter",
 				},
 				"composer_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "composer_type parameter",
 				},
 				"container_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "container_type parameter",
-					"enum": []string{ "ACO_VIDEO_VARIATION", "ADS_AI_GENERATED", "AD_BREAK_PREVIEW", "AD_DERIVATIVE", "AD_LIBRARY_WATERMARK", "ALBUM_MULTIMEDIA_POST", "ALOHA_SUPERFRAME", "APP_REREVIEW_SCREENCAST", "APP_REVIEW_SCREENCAST", "ASSET_MANAGER", "ATLAS_VIDEO", "AUDIO_BROADCAST", "AUDIO_COMMENT", "BROADCAST", "CANVAS", "CMS_MEDIA_MANAGER", "CONTAINED_POST_ATTACHMENT", "CONTAINED_POST_AUDIO_BROADCAST", "CONTAINED_POST_COPYRIGHT_REFERENCE_BROADCAST", "COPYRIGHT_REFERENCE_BROADCAST", "COPYRIGHT_REFERENCE_IG_XPOST_VIDEO", "COPYRIGHT_REFERENCE_VIDEO", "CREATION_ML_PRECREATION", "CREATOR_FAN_CHALLENGE", "CREATOR_STOREFRONT_PERSONALIZED_VIDEO", "DATAGENIX_VIDEO", "DCO_AD_ASSET_FEED", "DCO_AUTOGEN_VIDEO", "DCO_TRIMMED_VIDEO", "DIM_SUM", "DIRECTED_POST_ATTACHMENT", "DIRECT_INBOX", "DROPS_SHOPPING_EVENT_PAGE", "DYNAMIC_ITEM_VIDEO", "DYNAMIC_TEMPLATE_VIDEO", "EVENT_COVER_VIDEO", "EVENT_TOUR", "FACECAST_DVR", "FB_AVATAR_ANIMATED_SATP", "FB_COLLECTIBLE_VIDEO", "FB_SHORTS", "FB_SHORTS_CONTENT_REMIXABLE", "FB_SHORTS_GROUP_POST", "FB_SHORTS_LINKED_PRODUCT", "FB_SHORTS_PMV_POST", "FB_SHORTS_POST", "FB_SHORTS_REMIX_POST", "FUNDRAISER_COVER_VIDEO", "GAME_CLIP", "GIF_TO_VIDEO", "GOODWILL_ANNIVERSARY_DEPRECATED", "GOODWILL_ANNIVERSARY_PROMOTION_DEPRECATED", "GOODWILL_VIDEO_CONTAINED_SHARE", "GOODWILL_VIDEO_PROMOTION", "GOODWILL_VIDEO_SHARE", "GOODWILL_VIDEO_TOKEN_REQUIRED", "GROUP_POST", "HEURISTIC_CLUSTER_VIDEO", "HIGHLIGHT_CLIP_VIDEO", "HORIZON_WORLDS_TV", "HUDDLE_BROADCAST", "IG_REELS_XPV", "IG_STORIES_READER", "INJECTABLE", "INSPIRATION_VIDEO", "INSTAGRAM_VIDEO_COPY", "INSTANT_APPLICATION_PREVIEW", "INSTANT_ARTICLE", "ISSUE_MODULE", "LEARN", "LEGACY", "LEGACY_CONTAINED_POST_BROADCAST", "LIVE_AUDIO_ROOM_BROADCAST", "LIVE_CLIP_PREVIEW", "LIVE_CLIP_WORKCHAT", "LIVE_CREATIVE_KIT_VIDEO", "LIVE_PHOTO", "LOOK_NOW_DEPRECATED", "MARKETPLACE_LISTING_VIDEO", "MARKETPLACE_PRE_RECORDED_VIDEO", "MOMENTS_VIDEO", "MUSIC_CLIP", "MUSIC_CLIP_IN_COMMENT", "MUSIC_CLIP_IN_LIGHTWEIGHT_STATUS", "MUSIC_CLIP_IN_MSGR_NOTE", "MUSIC_CLIP_IN_POLL_OPTION", "MUSIC_CLIP_ON_DATING_PROFILE", "NEO_ASYNC_GAME_VIDEO", "NEW_CONTAINED_POST_BROADCAST", "NO_STORY", "OCULUS_CREATOR_PORTAL", "OCULUS_VENUES_BROADCAST", "ORIGINALITY_SELF_ADVOCACY", "PAGES_COVER_VIDEO", "PAGE_REVIEW_SCREENCAST", "PAGE_SLIDESHOW_VIDEO", "PAID_CONTENT_PREVIEW", "PAID_CONTENT_VIDEO", "PAID_CONTENT_VIDEO__POST", "PIXELCLOUD", "PODCAST_HIGHLIGHT", "PODCAST_ML_PREVIEW", "PODCAST_ML_PREVIEW_NO_NEWSFEED_STORY", "PODCAST_RSS", "PODCAST_RSS_EPHEMERAL", "PODCAST_RSS_NO_NEWSFEED_STORY", "PODCAST_VOICES", "PODCAST_VOICES_NO_NEWSFEED_STORY", "PREMIERE_SOURCE", "PREMIUM_MUSIC_VIDEO_CLIP", "PREMIUM_MUSIC_VIDEO_CROPPED_CLIP", "PREMIUM_MUSIC_VIDEO_NO_NEWSFEED_STORY", "PREMIUM_MUSIC_VIDEO_WITH_NEWSFEED_STORY", "PRIVATE_GALLERY_VIDEO", "PRODUCT_VIDEO", "PROFILE_COVER_VIDEO", "PROFILE_INTRO_CARD", "PROFILE_VIDEO", "PROTON", "QUICK_CLIP_WORKPLACE_POST", "QUICK_PROMOTION", "REPLACE_VIDEO", "SALES_CLIENT_INTERACTION", "SHOWREEL_NATIVE_DUMMY_VIDEO", "SLIDESHOW_ANIMOTO", "SLIDESHOW_SHAKR", "SLIDESHOW_VARIATION_VIDEO", "SOUND_PLATFORM_STREAM", "SRT_ATTACHMENT", "STORIES_VIDEO", "STORYLINE", "STORYLINE_WITH_EXTERNAL_MUSIC", "STORY_ARCHIVE_VIDEO", "STORY_CARD_TEMPLATE", "STREAM_HIGHLIGHTS_VIDEO", "TAROT_DIGEST", "TEMPORARY_UNLISTED", "TEMP_VIDEO_COPYRIGHT_SCAN", "UNLISTED", "UNLISTED_OCULUS", "VIDEO_COMMENT", "VIDEO_COMPOSITION_VARIATION", "VIDEO_CREATIVE_EDITOR_AUTOGEN_AD_VIDEO", "VIDEO_SUPERRES", "VOICES_ARTICLE_VIDEO", "VU_GENERATED_VIDEO", "WOODHENGE", "WORK_KNOWLEDGE_VIDEO", "YOUR_DAY" },
+					"enum":        []string{"ACO_VIDEO_VARIATION", "ADS_AI_GENERATED", "AD_BREAK_PREVIEW", "AD_DERIVATIVE", "AD_LIBRARY_WATERMARK", "ALBUM_MULTIMEDIA_POST", "ALOHA_SUPERFRAME", "APP_REREVIEW_SCREENCAST", "APP_REVIEW_SCREENCAST", "ASSET_MANAGER", "ATLAS_VIDEO", "AUDIO_BROADCAST", "AUDIO_COMMENT", "BROADCAST", "CANVAS", "CMS_MEDIA_MANAGER", "CONTAINED_POST_ATTACHMENT", "CONTAINED_POST_AUDIO_BROADCAST", "CONTAINED_POST_COPYRIGHT_REFERENCE_BROADCAST", "COPYRIGHT_REFERENCE_BROADCAST", "COPYRIGHT_REFERENCE_IG_XPOST_VIDEO", "COPYRIGHT_REFERENCE_VIDEO", "CREATION_ML_PRECREATION", "CREATOR_FAN_CHALLENGE", "CREATOR_STOREFRONT_PERSONALIZED_VIDEO", "DATAGENIX_VIDEO", "DCO_AD_ASSET_FEED", "DCO_AUTOGEN_VIDEO", "DCO_TRIMMED_VIDEO", "DIM_SUM", "DIRECTED_POST_ATTACHMENT", "DIRECT_INBOX", "DROPS_SHOPPING_EVENT_PAGE", "DYNAMIC_ITEM_VIDEO", "DYNAMIC_TEMPLATE_VIDEO", "EVENT_COVER_VIDEO", "EVENT_TOUR", "FACECAST_DVR", "FB_AVATAR_ANIMATED_SATP", "FB_COLLECTIBLE_VIDEO", "FB_SHORTS", "FB_SHORTS_CONTENT_REMIXABLE", "FB_SHORTS_GROUP_POST", "FB_SHORTS_LINKED_PRODUCT", "FB_SHORTS_PMV_POST", "FB_SHORTS_POST", "FB_SHORTS_REMIX_POST", "FUNDRAISER_COVER_VIDEO", "GAME_CLIP", "GIF_TO_VIDEO", "GOODWILL_ANNIVERSARY_DEPRECATED", "GOODWILL_ANNIVERSARY_PROMOTION_DEPRECATED", "GOODWILL_VIDEO_CONTAINED_SHARE", "GOODWILL_VIDEO_PROMOTION", "GOODWILL_VIDEO_SHARE", "GOODWILL_VIDEO_TOKEN_REQUIRED", "GROUP_POST", "HEURISTIC_CLUSTER_VIDEO", "HIGHLIGHT_CLIP_VIDEO", "HORIZON_WORLDS_TV", "HUDDLE_BROADCAST", "IG_REELS_XPV", "IG_STORIES_READER", "INJECTABLE", "INSPIRATION_VIDEO", "INSTAGRAM_VIDEO_COPY", "INSTANT_APPLICATION_PREVIEW", "INSTANT_ARTICLE", "ISSUE_MODULE", "LEARN", "LEGACY", "LEGACY_CONTAINED_POST_BROADCAST", "LIVE_AUDIO_ROOM_BROADCAST", "LIVE_CLIP_PREVIEW", "LIVE_CLIP_WORKCHAT", "LIVE_CREATIVE_KIT_VIDEO", "LIVE_PHOTO", "LOOK_NOW_DEPRECATED", "MARKETPLACE_LISTING_VIDEO", "MARKETPLACE_PRE_RECORDED_VIDEO", "MOMENTS_VIDEO", "MUSIC_CLIP", "MUSIC_CLIP_IN_COMMENT", "MUSIC_CLIP_IN_LIGHTWEIGHT_STATUS", "MUSIC_CLIP_IN_MSGR_NOTE", "MUSIC_CLIP_IN_POLL_OPTION", "MUSIC_CLIP_ON_DATING_PROFILE", "NEO_ASYNC_GAME_VIDEO", "NEW_CONTAINED_POST_BROADCAST", "NO_STORY", "OCULUS_CREATOR_PORTAL", "OCULUS_VENUES_BROADCAST", "ORIGINALITY_SELF_ADVOCACY", "PAGES_COVER_VIDEO", "PAGE_REVIEW_SCREENCAST", "PAGE_SLIDESHOW_VIDEO", "PAID_CONTENT_PREVIEW", "PAID_CONTENT_VIDEO", "PAID_CONTENT_VIDEO__POST", "PIXELCLOUD", "PODCAST_HIGHLIGHT", "PODCAST_ML_PREVIEW", "PODCAST_ML_PREVIEW_NO_NEWSFEED_STORY", "PODCAST_RSS", "PODCAST_RSS_EPHEMERAL", "PODCAST_RSS_NO_NEWSFEED_STORY", "PODCAST_VOICES", "PODCAST_VOICES_NO_NEWSFEED_STORY", "PREMIERE_SOURCE", "PREMIUM_MUSIC_VIDEO_CLIP", "PREMIUM_MUSIC_VIDEO_CROPPED_CLIP", "PREMIUM_MUSIC_VIDEO_NO_NEWSFEED_STORY", "PREMIUM_MUSIC_VIDEO_WITH_NEWSFEED_STORY", "PRIVATE_GALLERY_VIDEO", "PRODUCT_VIDEO", "PROFILE_COVER_VIDEO", "PROFILE_INTRO_CARD", "PROFILE_VIDEO", "PROTON", "QUICK_CLIP_WORKPLACE_POST", "QUICK_PROMOTION", "REPLACE_VIDEO", "SALES_CLIENT_INTERACTION", "SHOWREEL_NATIVE_DUMMY_VIDEO", "SLIDESHOW_ANIMOTO", "SLIDESHOW_SHAKR", "SLIDESHOW_VARIATION_VIDEO", "SOUND_PLATFORM_STREAM", "SRT_ATTACHMENT", "STORIES_VIDEO", "STORYLINE", "STORYLINE_WITH_EXTERNAL_MUSIC", "STORY_ARCHIVE_VIDEO", "STORY_CARD_TEMPLATE", "STREAM_HIGHLIGHTS_VIDEO", "TAROT_DIGEST", "TEMPORARY_UNLISTED", "TEMP_VIDEO_COPYRIGHT_SCAN", "UNLISTED", "UNLISTED_OCULUS", "VIDEO_COMMENT", "VIDEO_COMPOSITION_VARIATION", "VIDEO_CREATIVE_EDITOR_AUTOGEN_AD_VIDEO", "VIDEO_SUPERRES", "VOICES_ARTICLE_VIDEO", "VU_GENERATED_VIDEO", "WOODHENGE", "WORK_KNOWLEDGE_VIDEO", "YOUR_DAY"},
 				},
 				"content_category": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "content_category parameter",
-					"enum": []string{ "BEAUTY_FASHION", "BUSINESS", "CARS_TRUCKS", "COMEDY", "CUTE_ANIMALS", "ENTERTAINMENT", "FAMILY", "FOOD_HEALTH", "HOME", "LIFESTYLE", "MUSIC", "NEWS", "OTHER", "POLITICS", "SCIENCE", "SPORTS", "TECHNOLOGY", "VIDEO_GAMING" },
+					"enum":        []string{"BEAUTY_FASHION", "BUSINESS", "CARS_TRUCKS", "COMEDY", "CUTE_ANIMALS", "ENTERTAINMENT", "FAMILY", "FOOD_HEALTH", "HOME", "LIFESTYLE", "MUSIC", "NEWS", "OTHER", "POLITICS", "SCIENCE", "SPORTS", "TECHNOLOGY", "VIDEO_GAMING"},
 				},
 				"creative_tools": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "creative_tools parameter",
 				},
 				"description": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "description parameter",
 				},
 				"embeddable": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "embeddable parameter",
 				},
 				"end_offset": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "end_offset parameter",
 				},
 				"fbuploader_video_file_chunk": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "fbuploader_video_file_chunk parameter",
 				},
 				"file_size": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "file_size parameter",
 				},
 				"file_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "file_url parameter",
 				},
 				"fisheye_video_cropped": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "fisheye_video_cropped parameter",
 				},
 				"formatting": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "formatting parameter",
-					"enum": []string{ "MARKDOWN", "PLAINTEXT" },
+					"enum":        []string{"MARKDOWN", "PLAINTEXT"},
 				},
 				"fov": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "fov parameter",
 				},
 				"front_z_rotation": map[string]any{
-					"type": "number",
+					"type":        "number",
 					"description": "front_z_rotation parameter",
 				},
 				"fun_fact_prompt_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "fun_fact_prompt_id parameter",
 				},
 				"fun_fact_toastee_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "fun_fact_toastee_id parameter",
 				},
 				"guide": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "guide parameter",
-					"items": map[string]any{"type": "array"},
+					"items":       map[string]any{"type": "array"},
 				},
 				"guide_enabled": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "guide_enabled parameter",
 				},
 				"initial_heading": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "initial_heading parameter",
 				},
 				"initial_pitch": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "initial_pitch parameter",
 				},
 				"instant_game_entry_point_data": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "instant_game_entry_point_data parameter",
 				},
 				"is_boost_intended": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_boost_intended parameter",
 				},
 				"is_explicit_share": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_explicit_share parameter",
 				},
 				"is_group_linking_post": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_group_linking_post parameter",
 				},
 				"is_partnership_ad": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_partnership_ad parameter",
 				},
 				"is_voice_clip": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_voice_clip parameter",
 				},
 				"location_source_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "location_source_id parameter",
 				},
 				"manual_privacy": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "manual_privacy parameter",
 				},
 				"og_action_type_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "og_action_type_id parameter",
 				},
 				"og_icon_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "og_icon_id parameter",
 				},
 				"og_object_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "og_object_id parameter",
 				},
 				"og_phrase": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "og_phrase parameter",
 				},
 				"og_suggestion_mechanism": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "og_suggestion_mechanism parameter",
 				},
 				"original_fov": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "original_fov parameter",
 				},
 				"original_projection_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "original_projection_type parameter",
-					"enum": []string{ "cubemap", "equirectangular", "half_equirectangular" },
+					"enum":        []string{"cubemap", "equirectangular", "half_equirectangular"},
 				},
 				"partnership_ad_ad_code": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "partnership_ad_ad_code parameter",
 				},
 				"publish_event_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "publish_event_id parameter",
 				},
 				"published": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "published parameter",
 				},
 				"referenced_sticker_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "referenced_sticker_id parameter",
 				},
 				"replace_video_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "replace_video_id parameter",
 				},
 				"scheduled_publish_time": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "scheduled_publish_time parameter",
 				},
 				"slideshow_spec": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "slideshow_spec parameter",
 				},
 				"source": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "source parameter",
 				},
 				"source_instagram_media_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "source_instagram_media_id parameter",
 				},
 				"spherical": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "spherical parameter",
 				},
 				"start_offset": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "start_offset parameter",
 				},
 				"swap_mode": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "swap_mode parameter",
-					"enum": []string{ "replace" },
+					"enum":        []string{"replace"},
 				},
 				"text_format_metadata": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "text_format_metadata parameter",
 				},
 				"thumb": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "thumb parameter",
 				},
 				"time_since_original_post": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "time_since_original_post parameter",
 				},
 				"title": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "title parameter",
 				},
 				"transcode_setting_properties": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "transcode_setting_properties parameter",
 				},
 				"unpublished_content_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "unpublished_content_type parameter",
-					"enum": []string{ "ADS_POST", "DRAFT", "INLINE_CREATED", "PUBLISHED", "REVIEWABLE_BRANDED_CONTENT", "SCHEDULED", "SCHEDULED_RECURRING" },
+					"enum":        []string{"ADS_POST", "DRAFT", "INLINE_CREATED", "PUBLISHED", "REVIEWABLE_BRANDED_CONTENT", "SCHEDULED", "SCHEDULED_RECURRING"},
 				},
 				"upload_phase": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "upload_phase parameter",
-					"enum": []string{ "cancel", "finish", "start", "transfer" },
+					"enum":        []string{"cancel", "finish", "start", "transfer"},
 				},
 				"upload_session_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "upload_session_id parameter",
 				},
 				"upload_setting_properties": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "upload_setting_properties parameter",
 				},
 				"video_file_chunk": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "video_file_chunk parameter",
 				},
 				"video_id_original": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "video_id_original parameter",
 				},
 				"video_start_time_ms": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "video_start_time_ms parameter",
 				},
 				"waterfall_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "waterfall_id parameter",
 				},
 			}),
@@ -1503,9 +1502,9 @@ func GetGroupTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"icon_size": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "icon_size parameter",
-					"enum": []string{ "16", "34", "50", "68" },
+					"enum":        []string{"16", "34", "50", "68"},
 				},
 			}),
 			mcp.Description("Parameters object containing: icon_size (group_icon_size) [16, 34, 50, 68]"),
@@ -1532,70 +1531,70 @@ func GetGroupTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"cover": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "cover parameter",
 				},
 				"cover_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "cover_url parameter",
 				},
 				"description": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "description parameter",
 				},
 				"focus_x": map[string]any{
-					"type": "number",
+					"type":        "number",
 					"description": "focus_x parameter",
 				},
 				"focus_y": map[string]any{
-					"type": "number",
+					"type":        "number",
 					"description": "focus_y parameter",
 				},
 				"group_icon": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "group_icon parameter",
 				},
 				"is_official_group": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_official_group parameter",
 				},
 				"join_setting": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "join_setting parameter",
-					"enum": []string{ "ADMIN_ONLY", "ANYONE", "NONE" },
+					"enum":        []string{"ADMIN_ONLY", "ANYONE", "NONE"},
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
 				},
 				"no_feed_story": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "no_feed_story parameter",
 				},
 				"offset_y": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "offset_y parameter",
 				},
 				"post_permissions": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "post_permissions parameter",
-					"enum": []string{ "ADMIN_ONLY", "ANYONE", "NONE" },
+					"enum":        []string{"ADMIN_ONLY", "ANYONE", "NONE"},
 				},
 				"post_requires_admin_approval": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "post_requires_admin_approval parameter",
 				},
 				"privacy": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "privacy parameter",
 				},
 				"purpose": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "purpose parameter",
-					"enum": []string{ "CASUAL", "COWORKERS", "CUSTOM", "FOR_SALE", "FOR_WORK", "GAME", "HEALTH_SUPPORT", "JOBS", "LEARNING", "NONE", "PARENTING", "STREAMER", "WORK_ANNOUNCEMENT", "WORK_DEMO_GROUP", "WORK_DISCUSSION", "WORK_EPHEMERAL", "WORK_FEEDBACK", "WORK_FOR_SALE", "WORK_GARDEN", "WORK_INTEGRITY", "WORK_LEARNING", "WORK_MENTORSHIP", "WORK_MULTI_COMPANY", "WORK_RECRUITING", "WORK_SOCIAL", "WORK_STAGES", "WORK_TEAM", "WORK_TEAMWORK" },
+					"enum":        []string{"CASUAL", "COWORKERS", "CUSTOM", "FOR_SALE", "FOR_WORK", "GAME", "HEALTH_SUPPORT", "JOBS", "LEARNING", "NONE", "PARENTING", "STREAMER", "WORK_ANNOUNCEMENT", "WORK_DEMO_GROUP", "WORK_DISCUSSION", "WORK_EPHEMERAL", "WORK_FEEDBACK", "WORK_FOR_SALE", "WORK_GARDEN", "WORK_INTEGRITY", "WORK_LEARNING", "WORK_MENTORSHIP", "WORK_MULTI_COMPANY", "WORK_RECRUITING", "WORK_SOCIAL", "WORK_STAGES", "WORK_TEAM", "WORK_TEAMWORK"},
 				},
 				"update_view_time": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "update_view_time parameter",
 				},
 			}),
@@ -1604,12 +1603,10 @@ func GetGroupTools() []mcp.Tool {
 	)
 	tools = append(tools, group_post_Tool)
 
-
 	return tools
 }
 
 // Group handlers
-
 
 // HandleGroup_delete_admins handles the group_delete_admins tool with context-based auth
 func HandleGroup_delete_admins(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1639,8 +1636,6 @@ func HandleGroup_delete_admins(ctx context.Context, request mcp.CallToolRequest)
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Group_delete_admins(args)
 	if err != nil {
@@ -1655,7 +1650,6 @@ func HandleGroup_delete_admins(ctx context.Context, request mcp.CallToolRequest)
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleGroup_post_admins handles the group_post_admins tool with context-based auth
 func HandleGroup_post_admins(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1685,8 +1679,6 @@ func HandleGroup_post_admins(ctx context.Context, request mcp.CallToolRequest) (
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Group_post_admins(args)
 	if err != nil {
@@ -1701,7 +1693,6 @@ func HandleGroup_post_admins(ctx context.Context, request mcp.CallToolRequest) (
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleGroup_get_albums handles the group_get_albums tool with context-based auth
 func HandleGroup_get_albums(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1742,8 +1733,6 @@ func HandleGroup_get_albums(ctx context.Context, request mcp.CallToolRequest) (*
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Group_get_albums(args)
 	if err != nil {
@@ -1758,7 +1747,6 @@ func HandleGroup_get_albums(ctx context.Context, request mcp.CallToolRequest) (*
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleGroup_get_docs handles the group_get_docs tool with context-based auth
 func HandleGroup_get_docs(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1799,8 +1787,6 @@ func HandleGroup_get_docs(ctx context.Context, request mcp.CallToolRequest) (*mc
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Group_get_docs(args)
 	if err != nil {
@@ -1815,7 +1801,6 @@ func HandleGroup_get_docs(ctx context.Context, request mcp.CallToolRequest) (*mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleGroup_get_events handles the group_get_events tool with context-based auth
 func HandleGroup_get_events(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1856,8 +1841,6 @@ func HandleGroup_get_events(ctx context.Context, request mcp.CallToolRequest) (*
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Group_get_events(args)
 	if err != nil {
@@ -1872,7 +1855,6 @@ func HandleGroup_get_events(ctx context.Context, request mcp.CallToolRequest) (*
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleGroup_get_feed handles the group_get_feed tool with context-based auth
 func HandleGroup_get_feed(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1925,8 +1907,6 @@ func HandleGroup_get_feed(ctx context.Context, request mcp.CallToolRequest) (*mc
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Group_get_feed(args)
 	if err != nil {
@@ -1941,7 +1921,6 @@ func HandleGroup_get_feed(ctx context.Context, request mcp.CallToolRequest) (*mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleGroup_post_feed handles the group_post_feed tool with context-based auth
 func HandleGroup_post_feed(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1969,8 +1948,6 @@ func HandleGroup_post_feed(ctx context.Context, request mcp.CallToolRequest) (*m
 		}
 	}
 
-
-
 	// Call the client method
 	result, err := client.Group_post_feed(args)
 	if err != nil {
@@ -1985,7 +1962,6 @@ func HandleGroup_post_feed(ctx context.Context, request mcp.CallToolRequest) (*m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleGroup_get_files handles the group_get_files tool with context-based auth
 func HandleGroup_get_files(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2026,8 +2002,6 @@ func HandleGroup_get_files(ctx context.Context, request mcp.CallToolRequest) (*m
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Group_get_files(args)
 	if err != nil {
@@ -2042,7 +2016,6 @@ func HandleGroup_get_files(ctx context.Context, request mcp.CallToolRequest) (*m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleGroup_get_groups handles the group_get_groups tool with context-based auth
 func HandleGroup_get_groups(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2083,8 +2056,6 @@ func HandleGroup_get_groups(ctx context.Context, request mcp.CallToolRequest) (*
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Group_get_groups(args)
 	if err != nil {
@@ -2099,7 +2070,6 @@ func HandleGroup_get_groups(ctx context.Context, request mcp.CallToolRequest) (*
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleGroup_post_groups handles the group_post_groups tool with context-based auth
 func HandleGroup_post_groups(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2129,8 +2099,6 @@ func HandleGroup_post_groups(ctx context.Context, request mcp.CallToolRequest) (
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Group_post_groups(args)
 	if err != nil {
@@ -2145,7 +2113,6 @@ func HandleGroup_post_groups(ctx context.Context, request mcp.CallToolRequest) (
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleGroup_get_live_videos handles the group_get_live_videos tool with context-based auth
 func HandleGroup_get_live_videos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2198,8 +2165,6 @@ func HandleGroup_get_live_videos(ctx context.Context, request mcp.CallToolReques
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Group_get_live_videos(args)
 	if err != nil {
@@ -2214,7 +2179,6 @@ func HandleGroup_get_live_videos(ctx context.Context, request mcp.CallToolReques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleGroup_post_live_videos handles the group_post_live_videos tool with context-based auth
 func HandleGroup_post_live_videos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2242,8 +2206,6 @@ func HandleGroup_post_live_videos(ctx context.Context, request mcp.CallToolReque
 		}
 	}
 
-
-
 	// Call the client method
 	result, err := client.Group_post_live_videos(args)
 	if err != nil {
@@ -2258,7 +2220,6 @@ func HandleGroup_post_live_videos(ctx context.Context, request mcp.CallToolReque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleGroup_delete_members handles the group_delete_members tool with context-based auth
 func HandleGroup_delete_members(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2286,8 +2247,6 @@ func HandleGroup_delete_members(ctx context.Context, request mcp.CallToolRequest
 		}
 	}
 
-
-
 	// Call the client method
 	result, err := client.Group_delete_members(args)
 	if err != nil {
@@ -2302,7 +2261,6 @@ func HandleGroup_delete_members(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleGroup_post_members handles the group_post_members tool with context-based auth
 func HandleGroup_post_members(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2330,8 +2288,6 @@ func HandleGroup_post_members(ctx context.Context, request mcp.CallToolRequest) 
 		}
 	}
 
-
-
 	// Call the client method
 	result, err := client.Group_post_members(args)
 	if err != nil {
@@ -2346,7 +2302,6 @@ func HandleGroup_post_members(ctx context.Context, request mcp.CallToolRequest) 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleGroup_get_opted_in_members handles the group_get_opted_in_members tool with context-based auth
 func HandleGroup_get_opted_in_members(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2387,8 +2342,6 @@ func HandleGroup_get_opted_in_members(ctx context.Context, request mcp.CallToolR
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Group_get_opted_in_members(args)
 	if err != nil {
@@ -2403,7 +2356,6 @@ func HandleGroup_get_opted_in_members(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleGroup_post_photos handles the group_post_photos tool with context-based auth
 func HandleGroup_post_photos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2431,8 +2383,6 @@ func HandleGroup_post_photos(ctx context.Context, request mcp.CallToolRequest) (
 		}
 	}
 
-
-
 	// Call the client method
 	result, err := client.Group_post_photos(args)
 	if err != nil {
@@ -2447,7 +2397,6 @@ func HandleGroup_post_photos(ctx context.Context, request mcp.CallToolRequest) (
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleGroup_get_picture handles the group_get_picture tool with context-based auth
 func HandleGroup_get_picture(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2500,8 +2449,6 @@ func HandleGroup_get_picture(ctx context.Context, request mcp.CallToolRequest) (
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Group_get_picture(args)
 	if err != nil {
@@ -2516,7 +2463,6 @@ func HandleGroup_get_picture(ctx context.Context, request mcp.CallToolRequest) (
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleGroup_get_videos handles the group_get_videos tool with context-based auth
 func HandleGroup_get_videos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2569,8 +2515,6 @@ func HandleGroup_get_videos(ctx context.Context, request mcp.CallToolRequest) (*
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Group_get_videos(args)
 	if err != nil {
@@ -2585,7 +2529,6 @@ func HandleGroup_get_videos(ctx context.Context, request mcp.CallToolRequest) (*
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleGroup_post_videos handles the group_post_videos tool with context-based auth
 func HandleGroup_post_videos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2613,8 +2556,6 @@ func HandleGroup_post_videos(ctx context.Context, request mcp.CallToolRequest) (
 		}
 	}
 
-
-
 	// Call the client method
 	result, err := client.Group_post_videos(args)
 	if err != nil {
@@ -2629,7 +2570,6 @@ func HandleGroup_post_videos(ctx context.Context, request mcp.CallToolRequest) (
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleGroup_get_ handles the group_get_ tool with context-based auth
 func HandleGroup_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2682,8 +2622,6 @@ func HandleGroup_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Ca
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Group_get_(args)
 	if err != nil {
@@ -2698,7 +2636,6 @@ func HandleGroup_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleGroup_post_ handles the group_post_ tool with context-based auth
 func HandleGroup_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2726,8 +2663,6 @@ func HandleGroup_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.C
 		}
 	}
 
-
-
 	// Call the client method
 	result, err := client.Group_post_(args)
 	if err != nil {
@@ -2742,4 +2677,3 @@ func HandleGroup_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

@@ -4,10 +4,10 @@ package constants
 
 // CatalogItemChannelsToIntegrityStatusFields contains field name constants for CatalogItemChannelsToIntegrityStatus objects
 var CatalogItemChannelsToIntegrityStatusFields = struct {
-	Channels string
+	Channels             string
 	RejectionInformation string
 }{
-	Channels: "channels",
+	Channels:             "channels",
 	RejectionInformation: "rejection_information",
 }
 

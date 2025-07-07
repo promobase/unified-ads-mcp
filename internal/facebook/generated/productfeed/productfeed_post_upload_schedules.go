@@ -15,14 +15,14 @@ import (
 
 // ToolProductfeed_post_upload_schedules returns the MCP tool definition for productfeed_post_upload_schedules
 func ToolProductfeed_post_upload_schedules() mcp.Tool {
-	
+
 	// Params object accepts: upload_schedule (string)
 	return mcp.NewTool("productfeed_post_upload_schedules",
 		mcp.WithDescription("POST upload_schedules for ProductFeed"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"upload_schedule": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "upload_schedule parameter",
 				},
 			}),
@@ -54,8 +54,6 @@ func HandleProductfeed_post_upload_schedules(ctx context.Context, request mcp.Ca
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Productfeed_post_upload_schedules(accessToken, args)
 	if err != nil {
@@ -74,20 +72,18 @@ func HandleProductfeed_post_upload_schedules(ctx context.Context, request mcp.Ca
 // Productfeed_post_upload_schedules performs POST upload_schedules for ProductFeed
 func Productfeed_post_upload_schedules(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/upload_schedules")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

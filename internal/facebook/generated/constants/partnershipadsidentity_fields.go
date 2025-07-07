@@ -4,12 +4,12 @@ package constants
 
 // PartnershipAdsIdentityFields contains field name constants for PartnershipAdsIdentity objects
 var PartnershipAdsIdentityFields = struct {
-	IsSaved string
-	PostTypes string
+	IsSaved             string
+	PostTypes           string
 	SecondaryIdentities string
 }{
-	IsSaved: "is_saved",
-	PostTypes: "post_types",
+	IsSaved:             "is_saved",
+	PostTypes:           "post_types",
 	SecondaryIdentities: "secondary_identities",
 }
 

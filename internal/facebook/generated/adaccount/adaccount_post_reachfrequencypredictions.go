@@ -15,7 +15,7 @@ import (
 
 // ToolAdaccount_post_reachfrequencypredictions returns the MCP tool definition for adaccount_post_reachfrequencypredictions
 func ToolAdaccount_post_reachfrequencypredictions() mcp.Tool {
-	
+
 	// Params object accepts: action (adaccountreachfrequencypredictions_action_enum_param), ad_formats (list<map>), auction_entry_option_index (unsigned int), budget (unsigned int), buying_type (adaccountreachfrequencypredictions_buying_type_enum_param), campaign_group_id (string), day_parting_schedule (list<Object>), deal_id (string), destination_id (unsigned int), destination_ids (list<string>), end_time (unsigned int), exceptions (bool), existing_campaign_id (string), expiration_time (unsigned int), frequency_cap (unsigned int), grp_buying (bool), impression (unsigned int), instream_packages (list<adaccountreachfrequencypredictions_instream_packages_enum_param>), interval_frequency_cap_reset_period (unsigned int), is_balanced_frequency (bool), is_bonus_media (bool), is_conversion_goal (bool), is_full_view (bool), is_higher_average_frequency (bool), is_reach_and_frequency_io_buying (bool), is_reserved_buying (bool), num_curve_points (unsigned int), objective (string), optimization_goal (string), prediction_mode (unsigned int), reach (unsigned int), rf_prediction_id (string), rf_prediction_id_to_release (string), rf_prediction_id_to_share (string), start_time (unsigned int), stop_time (unsigned int), story_event_type (unsigned int), target_cpm (unsigned int), target_frequency (unsigned int), target_frequency_reset_period (unsigned int), target_spec (Targeting), video_view_length_constraint (unsigned int)
 	return mcp.NewTool("adaccount_post_reachfrequencypredictions",
 		mcp.WithDescription("POST reachfrequencypredictions for AdAccount"),
@@ -26,178 +26,178 @@ func ToolAdaccount_post_reachfrequencypredictions() mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"action": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "action parameter",
-					"enum": []string{ "cancel", "quote", "reserve" },
+					"enum":        []string{"cancel", "quote", "reserve"},
 				},
 				"ad_formats": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "ad_formats parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"auction_entry_option_index": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "auction_entry_option_index parameter",
 				},
 				"budget": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "budget parameter",
 				},
 				"buying_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "buying_type parameter",
-					"enum": []string{ "AUCTION", "DEPRECATED_REACH_BLOCK", "FIXED_CPM", "MIXED", "REACHBLOCK", "RESEARCH_POLL", "RESERVED" },
+					"enum":        []string{"AUCTION", "DEPRECATED_REACH_BLOCK", "FIXED_CPM", "MIXED", "REACHBLOCK", "RESEARCH_POLL", "RESERVED"},
 				},
 				"campaign_group_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "campaign_group_id parameter",
 				},
 				"day_parting_schedule": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "day_parting_schedule parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"deal_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "deal_id parameter",
 				},
 				"destination_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "destination_id parameter",
 				},
 				"destination_ids": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "destination_ids parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"end_time": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "end_time parameter",
 				},
 				"exceptions": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "exceptions parameter",
 				},
 				"existing_campaign_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "existing_campaign_id parameter",
 				},
 				"expiration_time": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "expiration_time parameter",
 				},
 				"frequency_cap": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "frequency_cap parameter",
 				},
 				"grp_buying": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "grp_buying parameter",
 				},
 				"impression": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "impression parameter",
 				},
 				"instream_packages": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "instream_packages parameter",
-					"enum": []string{ "BEAUTY", "ENTERTAINMENT", "FOOD", "NORMAL", "PREMIUM", "REGULAR_ANIMALS_PETS", "REGULAR_FOOD", "REGULAR_GAMES", "REGULAR_POLITICS", "REGULAR_SPORTS", "REGULAR_STYLE", "REGULAR_TV_MOVIES", "SPANISH", "SPORTS" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"BEAUTY", "ENTERTAINMENT", "FOOD", "NORMAL", "PREMIUM", "REGULAR_ANIMALS_PETS", "REGULAR_FOOD", "REGULAR_GAMES", "REGULAR_POLITICS", "REGULAR_SPORTS", "REGULAR_STYLE", "REGULAR_TV_MOVIES", "SPANISH", "SPORTS"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"interval_frequency_cap_reset_period": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "interval_frequency_cap_reset_period parameter",
 				},
 				"is_balanced_frequency": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_balanced_frequency parameter",
 				},
 				"is_bonus_media": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_bonus_media parameter",
 				},
 				"is_conversion_goal": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_conversion_goal parameter",
 				},
 				"is_full_view": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_full_view parameter",
 				},
 				"is_higher_average_frequency": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_higher_average_frequency parameter",
 				},
 				"is_reach_and_frequency_io_buying": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_reach_and_frequency_io_buying parameter",
 				},
 				"is_reserved_buying": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_reserved_buying parameter",
 				},
 				"num_curve_points": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "num_curve_points parameter",
 				},
 				"objective": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "objective parameter",
 				},
 				"optimization_goal": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "optimization_goal parameter",
 				},
 				"prediction_mode": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "prediction_mode parameter",
 				},
 				"reach": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "reach parameter",
 				},
 				"rf_prediction_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "rf_prediction_id parameter",
 				},
 				"rf_prediction_id_to_release": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "rf_prediction_id_to_release parameter",
 				},
 				"rf_prediction_id_to_share": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "rf_prediction_id_to_share parameter",
 				},
 				"start_time": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "start_time parameter",
 				},
 				"stop_time": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "stop_time parameter",
 				},
 				"story_event_type": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "story_event_type parameter",
 				},
 				"target_cpm": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "target_cpm parameter",
 				},
 				"target_frequency": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "target_frequency parameter",
 				},
 				"target_frequency_reset_period": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "target_frequency_reset_period parameter",
 				},
 				"target_spec": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "target_spec parameter",
 				},
 				"video_view_length_constraint": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "video_view_length_constraint parameter",
 				},
 			}),
@@ -236,8 +236,6 @@ func HandleAdaccount_post_reachfrequencypredictions(ctx context.Context, request
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Adaccount_post_reachfrequencypredictions(accessToken, args)
 	if err != nil {
@@ -256,35 +254,33 @@ func HandleAdaccount_post_reachfrequencypredictions(ctx context.Context, request
 // Adaccount_post_reachfrequencypredictions performs POST reachfrequencypredictions for AdAccount
 func Adaccount_post_reachfrequencypredictions(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	// Extract account_id for URL construction
 	accountId, ok := args["account_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_post_reachfrequencypredictions")
 	}
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%sreachfrequencypredictions", accountId)
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-		
-	}
 
+	}
 
 	// Make HTTP request
 	var resp *http.Response

@@ -15,7 +15,7 @@ import (
 
 // ToolBusiness_post_self_certify_whatsapp_business returns the MCP tool definition for business_post_self_certify_whatsapp_business
 func ToolBusiness_post_self_certify_whatsapp_business() mcp.Tool {
-	
+
 	// Params object accepts: average_monthly_revenue_spend_with_partner (map), business_documents (list<file>), business_vertical (businessself_certify_whatsapp_business_business_vertical_enum_param), end_business_address (map), end_business_id (string), end_business_legal_name (string), end_business_trade_names (list<string>), end_business_website (string), num_billing_cycles_with_partner (unsigned int)
 	return mcp.NewTool("business_post_self_certify_whatsapp_business",
 		mcp.WithDescription("POST self_certify_whatsapp_business for Business"),
@@ -23,44 +23,44 @@ func ToolBusiness_post_self_certify_whatsapp_business() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"average_monthly_revenue_spend_with_partner": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "average_monthly_revenue_spend_with_partner parameter",
 				},
 				"business_documents": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "business_documents parameter",
-					"required": true,
-					"items": map[string]any{"type": "string"},
+					"required":    true,
+					"items":       map[string]any{"type": "string"},
 				},
 				"business_vertical": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "business_vertical parameter",
-					"enum": []string{ "ADVERTISING", "AUTOMOTIVE", "CONSUMER_PACKAGED_GOODS", "ECOMMERCE", "EDUCATION", "ENERGY_AND_UTILITIES", "ENTERTAINMENT_AND_MEDIA", "FINANCIAL_SERVICES", "GAMING", "GOVERNMENT_AND_POLITICS", "HEALTH", "LUXURY", "MARKETING", "NON_PROFIT", "NOT_SET", "ORGANIZATIONS_AND_ASSOCIATIONS", "OTHER", "PROFESSIONAL_SERVICES", "RESTAURANT", "RETAIL", "TECHNOLOGY", "TELECOM", "TRAVEL" },
+					"enum":        []string{"ADVERTISING", "AUTOMOTIVE", "CONSUMER_PACKAGED_GOODS", "ECOMMERCE", "EDUCATION", "ENERGY_AND_UTILITIES", "ENTERTAINMENT_AND_MEDIA", "FINANCIAL_SERVICES", "GAMING", "GOVERNMENT_AND_POLITICS", "HEALTH", "LUXURY", "MARKETING", "NON_PROFIT", "NOT_SET", "ORGANIZATIONS_AND_ASSOCIATIONS", "OTHER", "PROFESSIONAL_SERVICES", "RESTAURANT", "RETAIL", "TECHNOLOGY", "TELECOM", "TRAVEL"},
 				},
 				"end_business_address": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "end_business_address parameter",
 				},
 				"end_business_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "end_business_id parameter",
-					"required": true,
+					"required":    true,
 				},
 				"end_business_legal_name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "end_business_legal_name parameter",
 				},
 				"end_business_trade_names": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "end_business_trade_names parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"end_business_website": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "end_business_website parameter",
 				},
 				"num_billing_cycles_with_partner": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "num_billing_cycles_with_partner parameter",
 				},
 			}),
@@ -94,8 +94,6 @@ func HandleBusiness_post_self_certify_whatsapp_business(ctx context.Context, req
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Business_post_self_certify_whatsapp_business(accessToken, args)
 	if err != nil {
@@ -114,20 +112,18 @@ func HandleBusiness_post_self_certify_whatsapp_business(ctx context.Context, req
 // Business_post_self_certify_whatsapp_business performs POST self_certify_whatsapp_business for Business
 func Business_post_self_certify_whatsapp_business(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/self_certify_whatsapp_business")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

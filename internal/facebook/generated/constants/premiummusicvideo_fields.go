@@ -4,23 +4,23 @@ package constants
 
 // PremiumMusicVideoFields contains field name constants for PremiumMusicVideo objects
 var PremiumMusicVideoFields = struct {
-	CreationTime string
-	CrossPostVideos string
-	EligibleCrossPostPages string
-	Id string
+	CreationTime                    string
+	CrossPostVideos                 string
+	EligibleCrossPostPages          string
+	Id                              string
 	PreferredVideoThumbnailImageUri string
-	PremiumMusicVideoMetadata string
-	ScheduledPublishTime string
-	Title string
+	PremiumMusicVideoMetadata       string
+	ScheduledPublishTime            string
+	Title                           string
 }{
-	CreationTime: "creation_time",
-	CrossPostVideos: "cross_post_videos",
-	EligibleCrossPostPages: "eligible_cross_post_pages",
-	Id: "id",
+	CreationTime:                    "creation_time",
+	CrossPostVideos:                 "cross_post_videos",
+	EligibleCrossPostPages:          "eligible_cross_post_pages",
+	Id:                              "id",
 	PreferredVideoThumbnailImageUri: "preferred_video_thumbnail_image_uri",
-	PremiumMusicVideoMetadata: "premium_music_video_metadata",
-	ScheduledPublishTime: "scheduled_publish_time",
-	Title: "title",
+	PremiumMusicVideoMetadata:       "premium_music_video_metadata",
+	ScheduledPublishTime:            "scheduled_publish_time",
+	Title:                           "title",
 }
 
 // PremiumMusicVideoFieldsList contains all available fields for PremiumMusicVideo objects

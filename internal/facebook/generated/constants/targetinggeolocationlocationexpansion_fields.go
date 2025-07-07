@@ -5,10 +5,10 @@ package constants
 // TargetingGeoLocationLocationExpansionFields contains field name constants for TargetingGeoLocationLocationExpansion objects
 var TargetingGeoLocationLocationExpansionFields = struct {
 	Allowed string
-	Intent string
+	Intent  string
 }{
 	Allowed: "allowed",
-	Intent: "intent",
+	Intent:  "intent",
 }
 
 // TargetingGeoLocationLocationExpansionFieldsList contains all available fields for TargetingGeoLocationLocationExpansion objects

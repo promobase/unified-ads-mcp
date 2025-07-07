@@ -7,9 +7,9 @@ import "time"
 // AdExportPreset represents a Facebook AdExportPreset object
 type AdExportPreset struct {
 	Created_time time.Time `json:"created_time"`
-	Fields []string `json:"fields"`
-	Id string `json:"id"`
-	Name string `json:"name"`
-	Owner *User `json:"owner"`
+	Fields       []string  `json:"fields"`
+	Id           string    `json:"id"`
+	Name         string    `json:"name"`
+	Owner        *User     `json:"owner"`
 	Updated_time time.Time `json:"updated_time"`
 }

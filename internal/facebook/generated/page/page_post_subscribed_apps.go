@@ -15,7 +15,7 @@ import (
 
 // ToolPage_post_subscribed_apps returns the MCP tool definition for page_post_subscribed_apps
 func ToolPage_post_subscribed_apps() mcp.Tool {
-	
+
 	// Params object accepts: subscribed_fields (list<pagesubscribed_apps_subscribed_fields_enum_param>)
 	return mcp.NewTool("page_post_subscribed_apps",
 		mcp.WithDescription("POST subscribed_apps for Page"),
@@ -23,11 +23,11 @@ func ToolPage_post_subscribed_apps() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"subscribed_fields": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "subscribed_fields parameter",
-					"required": true,
-					"enum": []string{ "affiliation", "attire", "awards", "bio", "birthday", "call_permission_reply", "calls", "category", "checkins", "company_overview", "conversations", "culinary_team", "current_location", "description", "email", "feature_access_list", "feed", "founded", "general_info", "general_manager", "group_feed", "hometown", "hours", "inbox_labels", "invalid_topic_placeholder", "invoice_access_bank_slip_events", "invoice_access_invoice_change", "invoice_access_invoice_draft_change", "invoice_access_onboarding_status_active", "leadgen", "leadgen_fat", "live_videos", "local_delivery", "location", "marketing_message_delivery_failed", "mcom_invoice_change", "members", "mention", "merchant_review", "message_context", "message_deliveries", "message_echoes", "message_edits", "message_mention", "message_reactions", "message_reads", "message_template_status_update", "messages", "messaging_account_linking", "messaging_appointments", "messaging_checkout_updates", "messaging_customer_information", "messaging_direct_sends", "messaging_fblogin_account_linking", "messaging_feedback", "messaging_game_plays", "messaging_handovers", "messaging_in_thread_lead_form_submit", "messaging_integrity", "messaging_optins", "messaging_optouts", "messaging_payments", "messaging_policy_enforcement", "messaging_postbacks", "messaging_pre_checkouts", "messaging_referrals", "mission", "name", "page_about_story", "page_change_proposal", "page_upcoming_change", "parking", "payment_options", "payment_request_update", "personal_info", "personal_interests", "phone", "picture", "price_range", "product_review", "products", "public_transit", "publisher_subscriptions", "ratings", "registration", "response_feedback", "send_cart", "standby", "user_action", "video_text_question_responses", "videos", "website" },
-					"items": map[string]any{"type": "string"},
+					"required":    true,
+					"enum":        []string{"affiliation", "attire", "awards", "bio", "birthday", "call_permission_reply", "calls", "category", "checkins", "company_overview", "conversations", "culinary_team", "current_location", "description", "email", "feature_access_list", "feed", "founded", "general_info", "general_manager", "group_feed", "hometown", "hours", "inbox_labels", "invalid_topic_placeholder", "invoice_access_bank_slip_events", "invoice_access_invoice_change", "invoice_access_invoice_draft_change", "invoice_access_onboarding_status_active", "leadgen", "leadgen_fat", "live_videos", "local_delivery", "location", "marketing_message_delivery_failed", "mcom_invoice_change", "members", "mention", "merchant_review", "message_context", "message_deliveries", "message_echoes", "message_edits", "message_mention", "message_reactions", "message_reads", "message_template_status_update", "messages", "messaging_account_linking", "messaging_appointments", "messaging_checkout_updates", "messaging_customer_information", "messaging_direct_sends", "messaging_fblogin_account_linking", "messaging_feedback", "messaging_game_plays", "messaging_handovers", "messaging_in_thread_lead_form_submit", "messaging_integrity", "messaging_optins", "messaging_optouts", "messaging_payments", "messaging_policy_enforcement", "messaging_postbacks", "messaging_pre_checkouts", "messaging_referrals", "mission", "name", "page_about_story", "page_change_proposal", "page_upcoming_change", "parking", "payment_options", "payment_request_update", "personal_info", "personal_interests", "phone", "picture", "price_range", "product_review", "products", "public_transit", "publisher_subscriptions", "ratings", "registration", "response_feedback", "send_cart", "standby", "user_action", "video_text_question_responses", "videos", "website"},
+					"items":       map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: subscribed_fields (array<enum>) [affiliation, attire, awards, bio, birthday, ...] [required]"),
@@ -60,8 +60,6 @@ func HandlePage_post_subscribed_apps(ctx context.Context, request mcp.CallToolRe
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Page_post_subscribed_apps(accessToken, args)
 	if err != nil {
@@ -80,20 +78,18 @@ func HandlePage_post_subscribed_apps(ctx context.Context, request mcp.CallToolRe
 // Page_post_subscribed_apps performs POST subscribed_apps for Page
 func Page_post_subscribed_apps(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/subscribed_apps")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

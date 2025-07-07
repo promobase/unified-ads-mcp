@@ -15,7 +15,7 @@ import (
 
 // ToolCommercemerchantsettings_post_acknowledge_orders returns the MCP tool definition for commercemerchantsettings_post_acknowledge_orders
 func ToolCommercemerchantsettings_post_acknowledge_orders() mcp.Tool {
-	
+
 	// Params object accepts: idempotency_key (string), orders (list<map>)
 	return mcp.NewTool("commercemerchantsettings_post_acknowledge_orders",
 		mcp.WithDescription("POST acknowledge_orders for CommerceMerchantSettings"),
@@ -23,15 +23,15 @@ func ToolCommercemerchantsettings_post_acknowledge_orders() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"idempotency_key": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "idempotency_key parameter",
-					"required": true,
+					"required":    true,
 				},
 				"orders": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "orders parameter",
-					"required": true,
-					"items": map[string]any{"type": "object"},
+					"required":    true,
+					"items":       map[string]any{"type": "object"},
 				},
 			}),
 			mcp.Description("Parameters object containing: idempotency_key (string) [required], orders (array<object>) [required]"),
@@ -64,8 +64,6 @@ func HandleCommercemerchantsettings_post_acknowledge_orders(ctx context.Context,
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Commercemerchantsettings_post_acknowledge_orders(accessToken, args)
 	if err != nil {
@@ -84,20 +82,18 @@ func HandleCommercemerchantsettings_post_acknowledge_orders(ctx context.Context,
 // Commercemerchantsettings_post_acknowledge_orders performs POST acknowledge_orders for CommerceMerchantSettings
 func Commercemerchantsettings_post_acknowledge_orders(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/acknowledge_orders")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

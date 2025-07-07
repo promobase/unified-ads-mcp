@@ -15,8 +15,7 @@ import (
 
 // ToolPhoto_delete_ returns the MCP tool definition for photo_delete_
 func ToolPhoto_delete_() mcp.Tool {
-	
-	
+
 	return mcp.NewTool("photo_delete_",
 		mcp.WithDescription("DELETE  for Photo"),
 	)
@@ -32,8 +31,6 @@ func HandlePhoto_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the API method
 	result, err := Photo_delete_(accessToken, args)
@@ -53,14 +50,11 @@ func HandlePhoto_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 // Photo_delete_ performs DELETE  for Photo
 func Photo_delete_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response

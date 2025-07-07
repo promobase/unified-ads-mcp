@@ -4,21 +4,21 @@ package constants
 
 // AdAssetFeedSpecGroupRuleFields contains field name constants for AdAssetFeedSpecGroupRule objects
 var AdAssetFeedSpecGroupRuleFields = struct {
-	BodyLabel string
-	CaptionLabel string
+	BodyLabel        string
+	CaptionLabel     string
 	DescriptionLabel string
-	ImageLabel string
-	LinkUrlLabel string
-	TitleLabel string
-	VideoLabel string
+	ImageLabel       string
+	LinkUrlLabel     string
+	TitleLabel       string
+	VideoLabel       string
 }{
-	BodyLabel: "body_label",
-	CaptionLabel: "caption_label",
+	BodyLabel:        "body_label",
+	CaptionLabel:     "caption_label",
 	DescriptionLabel: "description_label",
-	ImageLabel: "image_label",
-	LinkUrlLabel: "link_url_label",
-	TitleLabel: "title_label",
-	VideoLabel: "video_label",
+	ImageLabel:       "image_label",
+	LinkUrlLabel:     "link_url_label",
+	TitleLabel:       "title_label",
+	VideoLabel:       "video_label",
 }
 
 // AdAssetFeedSpecGroupRuleFieldsList contains all available fields for AdAssetFeedSpecGroupRule objects

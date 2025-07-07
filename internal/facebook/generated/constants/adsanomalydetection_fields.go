@@ -5,10 +5,10 @@ package constants
 // AdsAnomalyDetectionFields contains field name constants for AdsAnomalyDetection objects
 var AdsAnomalyDetectionFields = struct {
 	AnomalyData string
-	Day string
+	Day         string
 }{
 	AnomalyData: "anomaly_data",
-	Day: "day",
+	Day:         "day",
 }
 
 // AdsAnomalyDetectionFieldsList contains all available fields for AdsAnomalyDetection objects

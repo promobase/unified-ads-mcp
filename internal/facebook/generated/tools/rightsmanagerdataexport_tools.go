@@ -17,7 +17,6 @@ import (
 func GetRightsManagerDataExportTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// rightsmanagerdataexport_get_ tool
 	// Available fields for RightsManagerDataExport: download_uri, export_scope, id, name, record_type, time_range_end, time_range_start
 	rightsmanagerdataexport_get_Tool := mcp.NewTool("rightsmanagerdataexport_get_",
@@ -37,12 +36,10 @@ func GetRightsManagerDataExportTools() []mcp.Tool {
 	)
 	tools = append(tools, rightsmanagerdataexport_get_Tool)
 
-
 	return tools
 }
 
 // RightsManagerDataExport handlers
-
 
 // HandleRightsmanagerdataexport_get_ handles the rightsmanagerdataexport_get_ tool with context-based auth
 func HandleRightsmanagerdataexport_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleRightsmanagerdataexport_get_(ctx context.Context, request mcp.CallToo
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Rightsmanagerdataexport_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleRightsmanagerdataexport_get_(ctx context.Context, request mcp.CallToo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

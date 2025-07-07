@@ -17,7 +17,6 @@ import (
 func GetApplicationTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// application_delete_accounts tool
 	// Params object accepts: type (applicationaccounts_type_enum_param), uid (int)
 	application_delete_accountsTool := mcp.NewTool("application_delete_accounts",
@@ -26,14 +25,14 @@ func GetApplicationTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "type parameter",
-					"enum": []string{ "test-users" },
+					"enum":        []string{"test-users"},
 				},
 				"uid": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "uid parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: type (enum) [test-users], uid (integer) [required]"),
@@ -48,9 +47,9 @@ func GetApplicationTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "type parameter",
-					"enum": []string{ "test-users" },
+					"enum":        []string{"test-users"},
 				},
 			}),
 			mcp.Description("Parameters object containing: type (enum) [test-users]"),
@@ -77,33 +76,33 @@ func GetApplicationTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"installed": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "installed parameter",
 				},
 				"minor": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "minor parameter",
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
 				},
 				"owner_access_token": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "owner_access_token parameter",
 				},
 				"permissions": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "permissions parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "type parameter",
-					"enum": []string{ "test-users" },
+					"enum":        []string{"test-users"},
 				},
 				"uid": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "uid parameter",
 				},
 			}),
@@ -120,195 +119,195 @@ func GetApplicationTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"advertiser_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "advertiser_id parameter",
 				},
 				"advertiser_tracking_enabled": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "advertiser_tracking_enabled parameter",
 				},
 				"anon_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "anon_id parameter",
 				},
 				"app_user_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "app_user_id parameter",
 				},
 				"application_tracking_enabled": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "application_tracking_enabled parameter",
 				},
 				"attribution": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "attribution parameter",
 				},
 				"attribution_referrer": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "attribution_referrer parameter",
 				},
 				"attribution_sources": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "attribution_sources parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"auto_publish": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "auto_publish parameter",
 				},
 				"bundle_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "bundle_id parameter",
 				},
 				"bundle_short_version": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "bundle_short_version parameter",
 				},
 				"bundle_version": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "bundle_version parameter",
 				},
 				"campaign_ids": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "campaign_ids parameter",
 				},
 				"click_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "click_id parameter",
 				},
 				"consider_views": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "consider_views parameter",
 				},
 				"custom_events": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "custom_events parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"custom_events_file": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "custom_events_file parameter",
 				},
 				"data_processing_options": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "data_processing_options parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"data_processing_options_country": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "data_processing_options_country parameter",
 				},
 				"data_processing_options_state": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "data_processing_options_state parameter",
 				},
 				"device_token": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "device_token parameter",
 				},
 				"event": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "event parameter",
-					"required": true,
-					"enum": []string{ "CUSTOM_APP_EVENTS", "DEFERRED_APP_LINK", "MOBILE_APP_INSTALL" },
+					"required":    true,
+					"enum":        []string{"CUSTOM_APP_EVENTS", "DEFERRED_APP_LINK", "MOBILE_APP_INSTALL"},
 				},
 				"event_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "event_id parameter",
 				},
 				"extinfo": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "extinfo parameter",
 				},
 				"google_install_referrer": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "google_install_referrer parameter",
 				},
 				"include_dwell_data": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "include_dwell_data parameter",
 				},
 				"include_video_data": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "include_video_data parameter",
 				},
 				"install_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "install_id parameter",
 				},
 				"install_referrer": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "install_referrer parameter",
 				},
 				"install_timestamp": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "install_timestamp parameter",
 				},
 				"installer_package": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "installer_package parameter",
 				},
 				"is_fb": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_fb parameter",
 				},
 				"limited_data_use": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "limited_data_use parameter",
 				},
 				"meta_install_referrer": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "meta_install_referrer parameter",
 				},
 				"migration_bundle": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "migration_bundle parameter",
 				},
 				"operational_parameters": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "operational_parameters parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"page_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "page_id parameter",
 				},
 				"page_scoped_user_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "page_scoped_user_id parameter",
 				},
 				"receipt_data": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "receipt_data parameter",
 				},
 				"sdk_version": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "sdk_version parameter",
 				},
 				"ud": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "ud parameter",
 				},
 				"url_schemes": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "url_schemes parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"user_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "user_id parameter",
 				},
 				"user_id_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "user_id_type parameter",
-					"enum": []string{ "INSTANT_GAMES_PLAYER_ID" },
+					"enum":        []string{"INSTANT_GAMES_PLAYER_ID"},
 				},
 				"vendor_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "vendor_id parameter",
 				},
 				"windows_attribution_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "windows_attribution_id parameter",
 				},
 			}),
@@ -343,7 +342,7 @@ func GetApplicationTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"request_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "request_id parameter",
 				},
 			}),
@@ -373,52 +372,52 @@ func GetApplicationTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"aggregation_period": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "aggregation_period parameter",
-					"enum": []string{ "DAY", "TOTAL" },
+					"enum":        []string{"DAY", "TOTAL"},
 				},
 				"breakdowns": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "breakdowns parameter",
-					"enum": []string{ "AD_SERVER_CAMPAIGN_ID", "AD_SPACE", "AGE", "APP", "CLICKED_VIEW_TAG", "COUNTRY", "DEAL", "DEAL_AD", "DEAL_PAGE", "DELIVERY_METHOD", "DISPLAY_FORMAT", "FAIL_REASON", "GENDER", "INSTANT_ARTICLE_ID", "INSTANT_ARTICLE_PAGE_ID", "IS_DEAL_BACKFILL", "PLACEMENT", "PLACEMENT_NAME", "PLATFORM", "PROPERTY", "SDK_VERSION" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"AD_SERVER_CAMPAIGN_ID", "AD_SPACE", "AGE", "APP", "CLICKED_VIEW_TAG", "COUNTRY", "DEAL", "DEAL_AD", "DEAL_PAGE", "DELIVERY_METHOD", "DISPLAY_FORMAT", "FAIL_REASON", "GENDER", "INSTANT_ARTICLE_ID", "INSTANT_ARTICLE_PAGE_ID", "IS_DEAL_BACKFILL", "PLACEMENT", "PLACEMENT_NAME", "PLATFORM", "PROPERTY", "SDK_VERSION"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"filters": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "filters parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"limit": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "limit parameter",
 				},
 				"metrics": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "metrics parameter",
-					"required": true,
-					"enum": []string{ "FB_AD_NETWORK_BIDDING_BID_RATE", "FB_AD_NETWORK_BIDDING_REQUEST", "FB_AD_NETWORK_BIDDING_RESPONSE", "FB_AD_NETWORK_BIDDING_REVENUE", "FB_AD_NETWORK_BIDDING_WIN_RATE", "FB_AD_NETWORK_CLICK", "FB_AD_NETWORK_CPM", "FB_AD_NETWORK_CTR", "FB_AD_NETWORK_FILLED_REQUEST", "FB_AD_NETWORK_FILL_RATE", "FB_AD_NETWORK_IMP", "FB_AD_NETWORK_IMPRESSION_RATE", "FB_AD_NETWORK_REQUEST", "FB_AD_NETWORK_REVENUE", "FB_AD_NETWORK_SHOW_RATE", "FB_AD_NETWORK_VIDEO_GUARANTEE_REVENUE", "FB_AD_NETWORK_VIDEO_MRC", "FB_AD_NETWORK_VIDEO_MRC_RATE", "FB_AD_NETWORK_VIDEO_VIEW", "FB_AD_NETWORK_VIDEO_VIEW_RATE" },
-					"items": map[string]any{"type": "string"},
+					"required":    true,
+					"enum":        []string{"FB_AD_NETWORK_BIDDING_BID_RATE", "FB_AD_NETWORK_BIDDING_REQUEST", "FB_AD_NETWORK_BIDDING_RESPONSE", "FB_AD_NETWORK_BIDDING_REVENUE", "FB_AD_NETWORK_BIDDING_WIN_RATE", "FB_AD_NETWORK_CLICK", "FB_AD_NETWORK_CPM", "FB_AD_NETWORK_CTR", "FB_AD_NETWORK_FILLED_REQUEST", "FB_AD_NETWORK_FILL_RATE", "FB_AD_NETWORK_IMP", "FB_AD_NETWORK_IMPRESSION_RATE", "FB_AD_NETWORK_REQUEST", "FB_AD_NETWORK_REVENUE", "FB_AD_NETWORK_SHOW_RATE", "FB_AD_NETWORK_VIDEO_GUARANTEE_REVENUE", "FB_AD_NETWORK_VIDEO_MRC", "FB_AD_NETWORK_VIDEO_MRC_RATE", "FB_AD_NETWORK_VIDEO_VIEW", "FB_AD_NETWORK_VIDEO_VIEW_RATE"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"ordering_column": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "ordering_column parameter",
-					"enum": []string{ "METRIC", "TIME", "VALUE" },
+					"enum":        []string{"METRIC", "TIME", "VALUE"},
 				},
 				"ordering_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "ordering_type parameter",
-					"enum": []string{ "ASCENDING", "DESCENDING" },
+					"enum":        []string{"ASCENDING", "DESCENDING"},
 				},
 				"should_include_until": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "should_include_until parameter",
 				},
 				"since": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "since parameter",
 				},
 				"until": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "until parameter",
 				},
 			}),
@@ -447,48 +446,48 @@ func GetApplicationTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"aggregation_period": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "aggregation_period parameter",
-					"enum": []string{ "DAY", "TOTAL" },
+					"enum":        []string{"DAY", "TOTAL"},
 				},
 				"breakdowns": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "breakdowns parameter",
-					"enum": []string{ "AD_SERVER_CAMPAIGN_ID", "AD_SPACE", "AGE", "APP", "CLICKED_VIEW_TAG", "COUNTRY", "DEAL", "DEAL_AD", "DEAL_PAGE", "DELIVERY_METHOD", "DISPLAY_FORMAT", "FAIL_REASON", "GENDER", "INSTANT_ARTICLE_ID", "INSTANT_ARTICLE_PAGE_ID", "IS_DEAL_BACKFILL", "PLACEMENT", "PLACEMENT_NAME", "PLATFORM", "PROPERTY", "SDK_VERSION" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"AD_SERVER_CAMPAIGN_ID", "AD_SPACE", "AGE", "APP", "CLICKED_VIEW_TAG", "COUNTRY", "DEAL", "DEAL_AD", "DEAL_PAGE", "DELIVERY_METHOD", "DISPLAY_FORMAT", "FAIL_REASON", "GENDER", "INSTANT_ARTICLE_ID", "INSTANT_ARTICLE_PAGE_ID", "IS_DEAL_BACKFILL", "PLACEMENT", "PLACEMENT_NAME", "PLATFORM", "PROPERTY", "SDK_VERSION"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"filters": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "filters parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"limit": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "limit parameter",
 				},
 				"metrics": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "metrics parameter",
-					"required": true,
-					"enum": []string{ "FB_AD_NETWORK_BIDDING_BID_RATE", "FB_AD_NETWORK_BIDDING_REQUEST", "FB_AD_NETWORK_BIDDING_RESPONSE", "FB_AD_NETWORK_BIDDING_REVENUE", "FB_AD_NETWORK_BIDDING_WIN_RATE", "FB_AD_NETWORK_CLICK", "FB_AD_NETWORK_CPM", "FB_AD_NETWORK_CTR", "FB_AD_NETWORK_FILLED_REQUEST", "FB_AD_NETWORK_FILL_RATE", "FB_AD_NETWORK_IMP", "FB_AD_NETWORK_IMPRESSION_RATE", "FB_AD_NETWORK_REQUEST", "FB_AD_NETWORK_REVENUE", "FB_AD_NETWORK_SHOW_RATE", "FB_AD_NETWORK_VIDEO_GUARANTEE_REVENUE", "FB_AD_NETWORK_VIDEO_MRC", "FB_AD_NETWORK_VIDEO_MRC_RATE", "FB_AD_NETWORK_VIDEO_VIEW", "FB_AD_NETWORK_VIDEO_VIEW_RATE" },
-					"items": map[string]any{"type": "string"},
+					"required":    true,
+					"enum":        []string{"FB_AD_NETWORK_BIDDING_BID_RATE", "FB_AD_NETWORK_BIDDING_REQUEST", "FB_AD_NETWORK_BIDDING_RESPONSE", "FB_AD_NETWORK_BIDDING_REVENUE", "FB_AD_NETWORK_BIDDING_WIN_RATE", "FB_AD_NETWORK_CLICK", "FB_AD_NETWORK_CPM", "FB_AD_NETWORK_CTR", "FB_AD_NETWORK_FILLED_REQUEST", "FB_AD_NETWORK_FILL_RATE", "FB_AD_NETWORK_IMP", "FB_AD_NETWORK_IMPRESSION_RATE", "FB_AD_NETWORK_REQUEST", "FB_AD_NETWORK_REVENUE", "FB_AD_NETWORK_SHOW_RATE", "FB_AD_NETWORK_VIDEO_GUARANTEE_REVENUE", "FB_AD_NETWORK_VIDEO_MRC", "FB_AD_NETWORK_VIDEO_MRC_RATE", "FB_AD_NETWORK_VIDEO_VIEW", "FB_AD_NETWORK_VIDEO_VIEW_RATE"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"ordering_column": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "ordering_column parameter",
-					"enum": []string{ "METRIC", "TIME", "VALUE" },
+					"enum":        []string{"METRIC", "TIME", "VALUE"},
 				},
 				"ordering_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "ordering_type parameter",
-					"enum": []string{ "ASCENDING", "DESCENDING" },
+					"enum":        []string{"ASCENDING", "DESCENDING"},
 				},
 				"since": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "since parameter",
 				},
 				"until": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "until parameter",
 				},
 			}),
@@ -505,9 +504,9 @@ func GetApplicationTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"query_ids": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "query_ids parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: query_ids (array<string>)"),
@@ -534,12 +533,12 @@ func GetApplicationTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"advertiser_ids": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "advertiser_ids parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"fb_content_data": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "fb_content_data parameter",
 				},
 			}),
@@ -567,9 +566,9 @@ func GetApplicationTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"advertiser_ids": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "advertiser_ids parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: advertiser_ids (array<string>)"),
@@ -596,11 +595,11 @@ func GetApplicationTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"catalog_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "catalog_id parameter",
 				},
 				"fb_content_ids": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "fb_content_ids parameter",
 				},
 			}),
@@ -629,10 +628,10 @@ func GetApplicationTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"aem_conversions": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "aem_conversions parameter",
-					"required": true,
-					"items": map[string]any{"type": "object"},
+					"required":    true,
+					"items":       map[string]any{"type": "object"},
 				},
 			}),
 			mcp.Description("Parameters object containing: aem_conversions (array<object>) [required]"),
@@ -648,28 +647,28 @@ func GetApplicationTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"app_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "app_id parameter",
-					"required": true,
+					"required":    true,
 				},
 				"is_aem_ready": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_aem_ready parameter",
 				},
 				"is_app_aem_install_ready": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_app_aem_install_ready parameter",
 				},
 				"is_app_aem_ready": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_app_aem_ready parameter",
 				},
 				"is_skan_ready": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_skan_ready parameter",
 				},
 				"message": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "message parameter",
 				},
 			}),
@@ -704,21 +703,21 @@ func GetApplicationTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"ecpms": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "ecpms parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"query_ids": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "query_ids parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"request_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "request_id parameter",
 				},
 				"sync_api": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "sync_api parameter",
 				},
 			}),
@@ -789,33 +788,33 @@ func GetApplicationTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"app_version": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "app_version parameter",
-					"required": true,
+					"required":    true,
 				},
 				"device_session_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "device_session_id parameter",
 				},
 				"extra_info": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "extra_info parameter",
 				},
 				"platform": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "platform parameter",
-					"required": true,
-					"enum": []string{ "ANDROID", "IOS" },
+					"required":    true,
+					"enum":        []string{"ANDROID", "IOS"},
 				},
 				"request_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "request_type parameter",
-					"enum": []string{ "APP_INDEXING", "BUTTON_SAMPLING", "PLUGIN" },
+					"enum":        []string{"APP_INDEXING", "BUTTON_SAMPLING", "PLUGIN"},
 				},
 				"tree": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "tree parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: app_version (string) [required], device_session_id (string), extra_info (string), platform (enum) [ANDROID, IOS] [required], request_type (enum) [APP_INDEXING, BUTTON_SAMPLING, PLUGIN], tree (object) [required]"),
@@ -831,12 +830,12 @@ func GetApplicationTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"device_session_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "device_session_id parameter",
-					"required": true,
+					"required":    true,
 				},
 				"extinfo": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "extinfo parameter",
 				},
 			}),
@@ -853,7 +852,7 @@ func GetApplicationTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"group_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "group_id parameter",
 				},
 			}),
@@ -882,19 +881,19 @@ func GetApplicationTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"device_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "device_id parameter",
-					"required": true,
+					"required":    true,
 				},
 				"device_token": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "device_token parameter",
-					"required": true,
+					"required":    true,
 				},
 				"platform": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "platform parameter",
-					"enum": []string{ "ANDROID", "IOS", "UNKNOWN" },
+					"enum":        []string{"ANDROID", "IOS", "UNKNOWN"},
 				},
 			}),
 			mcp.Description("Parameters object containing: device_id (string) [required], device_token (string) [required], platform (enum) [ANDROID, IOS, UNKNOWN]"),
@@ -928,18 +927,18 @@ func GetApplicationTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"asset": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "asset parameter",
-					"required": true,
+					"required":    true,
 				},
 				"comment": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "comment parameter",
 				},
 				"type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "type parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: asset (file) [required], comment (string), type (string) [required]"),
@@ -955,7 +954,7 @@ func GetApplicationTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"business": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "business parameter",
 				},
 			}),
@@ -983,7 +982,7 @@ func GetApplicationTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"device_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "device_id parameter",
 				},
 			}),
@@ -1030,27 +1029,27 @@ func GetApplicationTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"mappings": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "mappings parameter",
-					"required": true,
-					"items": map[string]any{"type": "object"},
+					"required":    true,
+					"items":       map[string]any{"type": "object"},
 				},
 				"mutation_method": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "mutation_method parameter",
-					"required": true,
-					"enum": []string{ "ADD", "DELETE", "REPLACE" },
+					"required":    true,
+					"enum":        []string{"ADD", "DELETE", "REPLACE"},
 				},
 				"platform": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "platform parameter",
-					"required": true,
-					"enum": []string{ "ANDROID", "IOS" },
+					"required":    true,
+					"enum":        []string{"ANDROID", "IOS"},
 				},
 				"post_method": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "post_method parameter",
-					"enum": []string{ "CODELESS", "EYMT" },
+					"enum":        []string{"CODELESS", "EYMT"},
 				},
 			}),
 			mcp.Description("Parameters object containing: mappings (array<object>) [required], mutation_method (enum) [ADD, DELETE, REPLACE] [required], platform (enum) [ANDROID, IOS] [required], post_method (enum) [CODELESS, EYMT]"),
@@ -1085,14 +1084,14 @@ func GetApplicationTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"checks": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "checks parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"connection_method": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "connection_method parameter",
-					"enum": []string{ "ALL", "APP", "BROWSER", "SERVER" },
+					"enum":        []string{"ALL", "APP", "BROWSER", "SERVER"},
 				},
 			}),
 			mcp.Description("Parameters object containing: checks (array<string>), connection_method (enum) [ALL, APP, BROWSER, SERVER]"),
@@ -1120,10 +1119,10 @@ func GetApplicationTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"tracking_domains": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "tracking_domains parameter",
-					"required": true,
-					"items": map[string]any{"type": "string"},
+					"required":    true,
+					"items":       map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: tracking_domains (array<string>) [required]"),
@@ -1139,9 +1138,9 @@ func GetApplicationTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"order_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "order_id parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: order_id (string) [required]"),
@@ -1205,7 +1204,7 @@ func GetApplicationTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"template_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "template_id parameter",
 				},
 			}),
@@ -1234,106 +1233,106 @@ func GetApplicationTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"advertiser_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "advertiser_id parameter",
 				},
 				"attribution": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "attribution parameter",
 				},
 				"attribution_method": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "attribution_method parameter",
 				},
 				"attribution_model": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "attribution_model parameter",
 				},
 				"attribution_referrer": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "attribution_referrer parameter",
 				},
 				"auditing_token": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "auditing_token parameter",
 				},
 				"click_attr_window": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "click_attr_window parameter",
 				},
 				"custom_events": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "custom_events parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"decline_reason": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "decline_reason parameter",
 				},
 				"device_os": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "device_os parameter",
 				},
 				"engagement_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "engagement_type parameter",
 				},
 				"event": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "event parameter",
-					"required": true,
+					"required":    true,
 				},
 				"event_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "event_id parameter",
 				},
 				"event_reported_time": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "event_reported_time parameter",
 				},
 				"fb_ad_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "fb_ad_id parameter",
 				},
 				"fb_adgroup_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "fb_adgroup_id parameter",
 				},
 				"fb_click_time": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "fb_click_time parameter",
 				},
 				"fb_view_time": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "fb_view_time parameter",
 				},
 				"google_install_referrer": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "google_install_referrer parameter",
 				},
 				"inactivity_window_hours": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "inactivity_window_hours parameter",
 				},
 				"install_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "install_id parameter",
 				},
 				"is_fb": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_fb parameter",
-					"required": true,
+					"required":    true,
 				},
 				"meta_install_referrer": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "meta_install_referrer parameter",
 				},
 				"used_install_referrer": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "used_install_referrer parameter",
 				},
 				"view_attr_window": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "view_attr_window parameter",
 				},
 			}),
@@ -1350,27 +1349,27 @@ func GetApplicationTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"device_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "device_id parameter",
 				},
 				"extinfo": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "extinfo parameter",
 				},
 				"os_version": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "os_version parameter",
 				},
 				"platform": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "platform parameter",
-					"required": true,
-					"enum": []string{ "ANDROID", "IOS" },
+					"required":    true,
+					"enum":        []string{"ANDROID", "IOS"},
 				},
 				"sdk_version": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "sdk_version parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: device_id (string), extinfo (object), os_version (string), platform (enum) [ANDROID, IOS] [required], sdk_version (string) [required]"),
@@ -1416,14 +1415,14 @@ func GetApplicationTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"content_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "content_id parameter",
-					"required": true,
+					"required":    true,
 				},
 				"store": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "store parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: content_id (string) [required], store (string) [required]"),
@@ -1474,11 +1473,11 @@ func GetApplicationTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"flash": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "flash parameter",
 				},
 				"unity": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "unity parameter",
 				},
 			}),
@@ -1494,27 +1493,27 @@ func GetApplicationTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"android_key_hash": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "android_key_hash parameter",
 				},
 				"ios_bundle_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "ios_bundle_id parameter",
 				},
 				"permission": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "permission parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"proxied_app_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "proxied_app_id parameter",
 				},
 				"status": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "status parameter",
-					"enum": []string{ "live", "unapproved" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"live", "unapproved"},
+					"items":       map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: android_key_hash (string), ios_bundle_id (string), permission (array<Permission>), proxied_app_id (integer), status (array<enum>) [live, unapproved]"),
@@ -1541,9 +1540,9 @@ func GetApplicationTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"product_ids": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "product_ids parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: product_ids (array<string>)"),
@@ -1625,9 +1624,9 @@ func GetApplicationTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"dataset_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "dataset_id parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: dataset_id (integer) [required]"),
@@ -1655,13 +1654,13 @@ func GetApplicationTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"client_ip": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "client_ip parameter",
 				},
 				"dataset_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "dataset_id parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: client_ip (string), dataset_id (integer) [required]"),
@@ -1706,14 +1705,14 @@ func GetApplicationTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"subscribe": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "subscribe parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"unsubscribe": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "unsubscribe parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: subscribe (array<string>), unsubscribe (array<string>)"),
@@ -1746,14 +1745,14 @@ func GetApplicationTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"subscribe": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "subscribe parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"unsubscribe": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "unsubscribe parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: subscribe (array<string>), unsubscribe (array<string>)"),
@@ -1768,12 +1767,12 @@ func GetApplicationTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"fields": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "fields parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"object": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "object parameter",
 				},
 			}),
@@ -1808,25 +1807,25 @@ func GetApplicationTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"callback_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "callback_url parameter",
 				},
 				"fields": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "fields parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"include_values": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "include_values parameter",
 				},
 				"object": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "object parameter",
-					"required": true,
+					"required":    true,
 				},
 				"verify_token": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "verify_token parameter",
 				},
 			}),
@@ -1842,21 +1841,21 @@ func GetApplicationTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"file_length": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "file_length parameter",
 				},
 				"file_name": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "file_name parameter",
 				},
 				"file_type": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "file_type parameter",
 				},
 				"session_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "session_type parameter",
-					"enum": []string{ "attachment" },
+					"enum":        []string{"attachment"},
 				},
 			}),
 			mcp.Description("Parameters object containing: file_length (integer), file_name (object), file_type (object), session_type (enum) [attachment]"),
@@ -1872,28 +1871,28 @@ func GetApplicationTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"owner_permissions": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "owner_permissions parameter",
-					"required": true,
-					"enum": []string{ "DEVELOP", "MANAGE", "MANAGE_EXTENSIONS", "MANAGE_PHONE", "MANAGE_PHONE_ASSETS", "MANAGE_TEMPLATES", "MESSAGING", "VIEW_COST", "VIEW_PHONE_ASSETS", "VIEW_TEMPLATES" },
-					"items": map[string]any{"type": "string"},
+					"required":    true,
+					"enum":        []string{"DEVELOP", "MANAGE", "MANAGE_EXTENSIONS", "MANAGE_PHONE", "MANAGE_PHONE_ASSETS", "MANAGE_TEMPLATES", "MESSAGING", "VIEW_COST", "VIEW_PHONE_ASSETS", "VIEW_TEMPLATES"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"partner_app_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "partner_app_id parameter",
-					"required": true,
+					"required":    true,
 				},
 				"partner_permissions": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "partner_permissions parameter",
-					"required": true,
-					"enum": []string{ "DEVELOP", "MANAGE", "MANAGE_EXTENSIONS", "MANAGE_PHONE", "MANAGE_PHONE_ASSETS", "MANAGE_TEMPLATES", "MESSAGING", "VIEW_COST", "VIEW_PHONE_ASSETS", "VIEW_TEMPLATES" },
-					"items": map[string]any{"type": "string"},
+					"required":    true,
+					"enum":        []string{"DEVELOP", "MANAGE", "MANAGE_EXTENSIONS", "MANAGE_PHONE", "MANAGE_PHONE_ASSETS", "MANAGE_TEMPLATES", "MESSAGING", "VIEW_COST", "VIEW_PHONE_ASSETS", "VIEW_TEMPLATES"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"solution_name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "solution_name parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: owner_permissions (array<enum>) [DEVELOP, MANAGE, MANAGE_EXTENSIONS, MANAGE_PHONE, MANAGE_PHONE_ASSETS, ...] [required], partner_app_id (string) [required], partner_permissions (array<enum>) [DEVELOP, MANAGE, MANAGE_EXTENSIONS, MANAGE_PHONE, MANAGE_PHONE_ASSETS, ...] [required], solution_name (string) [required]"),
@@ -1908,9 +1907,9 @@ func GetApplicationTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"role": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "role parameter",
-					"enum": []string{ "OWNER", "PARTNER" },
+					"enum":        []string{"OWNER", "PARTNER"},
 				},
 			}),
 			mcp.Description("Parameters object containing: role (enum) [OWNER, PARTNER]"),
@@ -1938,7 +1937,7 @@ func GetApplicationTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"advertiser_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "advertiser_id parameter",
 				},
 			}),
@@ -1966,130 +1965,130 @@ func GetApplicationTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"allow_cycle_app_secret": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "allow_cycle_app_secret parameter",
 				},
 				"an_platforms": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "an_platforms parameter",
-					"enum": []string{ "ANDROID", "DESKTOP", "GALAXY", "INSTANT_ARTICLES", "IOS", "MOBILE_WEB", "OCULUS", "UNKNOWN", "XIAOMI" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"ANDROID", "DESKTOP", "GALAXY", "INSTANT_ARTICLES", "IOS", "MOBILE_WEB", "OCULUS", "UNKNOWN", "XIAOMI"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"app_domains": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "app_domains parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"app_name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "app_name parameter",
 				},
 				"app_type": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "app_type parameter",
 				},
 				"auth_dialog_headline": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "auth_dialog_headline parameter",
 				},
 				"auth_dialog_perms_explanation": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "auth_dialog_perms_explanation parameter",
 				},
 				"auth_referral_enabled": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "auth_referral_enabled parameter",
 				},
 				"auth_referral_extended_perms": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "auth_referral_extended_perms parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"auth_referral_friend_perms": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "auth_referral_friend_perms parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"auth_referral_response_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "auth_referral_response_type parameter",
 				},
 				"auth_referral_user_perms": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "auth_referral_user_perms parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"canvas_fluid_height": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "canvas_fluid_height parameter",
 				},
 				"canvas_fluid_width": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "canvas_fluid_width parameter",
 				},
 				"canvas_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "canvas_url parameter",
 				},
 				"contact_email": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "contact_email parameter",
 				},
 				"deauth_callback_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "deauth_callback_url parameter",
 				},
 				"mobile_web_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "mobile_web_url parameter",
 				},
 				"namespace": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "namespace parameter",
 				},
 				"page_tab_default_name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "page_tab_default_name parameter",
 				},
 				"privacy_policy_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "privacy_policy_url parameter",
 				},
 				"restrictions": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "restrictions parameter",
 				},
 				"secure_canvas_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "secure_canvas_url parameter",
 				},
 				"secure_page_tab_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "secure_page_tab_url parameter",
 				},
 				"server_ip_whitelist": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "server_ip_whitelist parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"terms_of_service_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "terms_of_service_url parameter",
 				},
 				"url_scheme_suffix": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "url_scheme_suffix parameter",
 				},
 				"user_support_email": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "user_support_email parameter",
 				},
 				"user_support_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "user_support_url parameter",
 				},
 				"website_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "website_url parameter",
 				},
 			}),
@@ -2098,12 +2097,10 @@ func GetApplicationTools() []mcp.Tool {
 	)
 	tools = append(tools, application_post_Tool)
 
-
 	return tools
 }
 
 // Application handlers
-
 
 // HandleApplication_delete_accounts handles the application_delete_accounts tool with context-based auth
 func HandleApplication_delete_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2133,8 +2130,6 @@ func HandleApplication_delete_accounts(ctx context.Context, request mcp.CallTool
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Application_delete_accounts(args)
 	if err != nil {
@@ -2149,7 +2144,6 @@ func HandleApplication_delete_accounts(ctx context.Context, request mcp.CallTool
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleApplication_get_accounts handles the application_get_accounts tool with context-based auth
 func HandleApplication_get_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2202,8 +2196,6 @@ func HandleApplication_get_accounts(ctx context.Context, request mcp.CallToolReq
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Application_get_accounts(args)
 	if err != nil {
@@ -2218,7 +2210,6 @@ func HandleApplication_get_accounts(ctx context.Context, request mcp.CallToolReq
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleApplication_post_accounts handles the application_post_accounts tool with context-based auth
 func HandleApplication_post_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2246,8 +2237,6 @@ func HandleApplication_post_accounts(ctx context.Context, request mcp.CallToolRe
 		}
 	}
 
-
-
 	// Call the client method
 	result, err := client.Application_post_accounts(args)
 	if err != nil {
@@ -2262,7 +2251,6 @@ func HandleApplication_post_accounts(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleApplication_post_activities handles the application_post_activities tool with context-based auth
 func HandleApplication_post_activities(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2292,8 +2280,6 @@ func HandleApplication_post_activities(ctx context.Context, request mcp.CallTool
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Application_post_activities(args)
 	if err != nil {
@@ -2308,7 +2294,6 @@ func HandleApplication_post_activities(ctx context.Context, request mcp.CallTool
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleApplication_get_ad_placement_groups handles the application_get_ad_placement_groups tool with context-based auth
 func HandleApplication_get_ad_placement_groups(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2349,8 +2334,6 @@ func HandleApplication_get_ad_placement_groups(ctx context.Context, request mcp.
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Application_get_ad_placement_groups(args)
 	if err != nil {
@@ -2365,7 +2348,6 @@ func HandleApplication_get_ad_placement_groups(ctx context.Context, request mcp.
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleApplication_get_adnetwork_placements handles the application_get_adnetwork_placements tool with context-based auth
 func HandleApplication_get_adnetwork_placements(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2418,8 +2400,6 @@ func HandleApplication_get_adnetwork_placements(ctx context.Context, request mcp
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Application_get_adnetwork_placements(args)
 	if err != nil {
@@ -2434,7 +2414,6 @@ func HandleApplication_get_adnetwork_placements(ctx context.Context, request mcp
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleApplication_get_adnetworkanalytics handles the application_get_adnetworkanalytics tool with context-based auth
 func HandleApplication_get_adnetworkanalytics(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2489,8 +2468,6 @@ func HandleApplication_get_adnetworkanalytics(ctx context.Context, request mcp.C
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Application_get_adnetworkanalytics(args)
 	if err != nil {
@@ -2505,7 +2482,6 @@ func HandleApplication_get_adnetworkanalytics(ctx context.Context, request mcp.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleApplication_post_adnetworkanalytics handles the application_post_adnetworkanalytics tool with context-based auth
 func HandleApplication_post_adnetworkanalytics(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2535,8 +2511,6 @@ func HandleApplication_post_adnetworkanalytics(ctx context.Context, request mcp.
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Application_post_adnetworkanalytics(args)
 	if err != nil {
@@ -2551,7 +2525,6 @@ func HandleApplication_post_adnetworkanalytics(ctx context.Context, request mcp.
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleApplication_get_adnetworkanalytics_results handles the application_get_adnetworkanalytics_results tool with context-based auth
 func HandleApplication_get_adnetworkanalytics_results(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2604,8 +2577,6 @@ func HandleApplication_get_adnetworkanalytics_results(ctx context.Context, reque
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Application_get_adnetworkanalytics_results(args)
 	if err != nil {
@@ -2620,7 +2591,6 @@ func HandleApplication_get_adnetworkanalytics_results(ctx context.Context, reque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleApplication_get_aem_attribution handles the application_get_aem_attribution tool with context-based auth
 func HandleApplication_get_aem_attribution(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2673,8 +2643,6 @@ func HandleApplication_get_aem_attribution(ctx context.Context, request mcp.Call
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Application_get_aem_attribution(args)
 	if err != nil {
@@ -2689,7 +2657,6 @@ func HandleApplication_get_aem_attribution(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleApplication_get_aem_conversion_configs handles the application_get_aem_conversion_configs tool with context-based auth
 func HandleApplication_get_aem_conversion_configs(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2742,8 +2709,6 @@ func HandleApplication_get_aem_conversion_configs(ctx context.Context, request m
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Application_get_aem_conversion_configs(args)
 	if err != nil {
@@ -2758,7 +2723,6 @@ func HandleApplication_get_aem_conversion_configs(ctx context.Context, request m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleApplication_get_aem_conversion_filter handles the application_get_aem_conversion_filter tool with context-based auth
 func HandleApplication_get_aem_conversion_filter(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2811,8 +2775,6 @@ func HandleApplication_get_aem_conversion_filter(ctx context.Context, request mc
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Application_get_aem_conversion_filter(args)
 	if err != nil {
@@ -2827,7 +2789,6 @@ func HandleApplication_get_aem_conversion_filter(ctx context.Context, request mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleApplication_post_aem_conversions handles the application_post_aem_conversions tool with context-based auth
 func HandleApplication_post_aem_conversions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2857,8 +2818,6 @@ func HandleApplication_post_aem_conversions(ctx context.Context, request mcp.Cal
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Application_post_aem_conversions(args)
 	if err != nil {
@@ -2873,7 +2832,6 @@ func HandleApplication_post_aem_conversions(ctx context.Context, request mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleApplication_post_aem_skan_readiness handles the application_post_aem_skan_readiness tool with context-based auth
 func HandleApplication_post_aem_skan_readiness(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2903,8 +2861,6 @@ func HandleApplication_post_aem_skan_readiness(ctx context.Context, request mcp.
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Application_post_aem_skan_readiness(args)
 	if err != nil {
@@ -2919,7 +2875,6 @@ func HandleApplication_post_aem_skan_readiness(ctx context.Context, request mcp.
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleApplication_get_agencies handles the application_get_agencies tool with context-based auth
 func HandleApplication_get_agencies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2960,8 +2915,6 @@ func HandleApplication_get_agencies(ctx context.Context, request mcp.CallToolReq
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Application_get_agencies(args)
 	if err != nil {
@@ -2976,7 +2929,6 @@ func HandleApplication_get_agencies(ctx context.Context, request mcp.CallToolReq
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleApplication_post_aggregate_revenue handles the application_post_aggregate_revenue tool with context-based auth
 func HandleApplication_post_aggregate_revenue(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3004,8 +2956,6 @@ func HandleApplication_post_aggregate_revenue(ctx context.Context, request mcp.C
 		}
 	}
 
-
-
 	// Call the client method
 	result, err := client.Application_post_aggregate_revenue(args)
 	if err != nil {
@@ -3020,7 +2970,6 @@ func HandleApplication_post_aggregate_revenue(ctx context.Context, request mcp.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleApplication_get_android_dialog_configs handles the application_get_android_dialog_configs tool with context-based auth
 func HandleApplication_get_android_dialog_configs(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3061,8 +3010,6 @@ func HandleApplication_get_android_dialog_configs(ctx context.Context, request m
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Application_get_android_dialog_configs(args)
 	if err != nil {
@@ -3077,7 +3024,6 @@ func HandleApplication_get_android_dialog_configs(ctx context.Context, request m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleApplication_get_app_capi_settings handles the application_get_app_capi_settings tool with context-based auth
 func HandleApplication_get_app_capi_settings(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3118,8 +3064,6 @@ func HandleApplication_get_app_capi_settings(ctx context.Context, request mcp.Ca
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Application_get_app_capi_settings(args)
 	if err != nil {
@@ -3134,7 +3078,6 @@ func HandleApplication_get_app_capi_settings(ctx context.Context, request mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleApplication_get_app_event_types handles the application_get_app_event_types tool with context-based auth
 func HandleApplication_get_app_event_types(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3175,8 +3118,6 @@ func HandleApplication_get_app_event_types(ctx context.Context, request mcp.Call
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Application_get_app_event_types(args)
 	if err != nil {
@@ -3191,7 +3132,6 @@ func HandleApplication_get_app_event_types(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleApplication_post_app_indexing handles the application_post_app_indexing tool with context-based auth
 func HandleApplication_post_app_indexing(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3221,8 +3161,6 @@ func HandleApplication_post_app_indexing(ctx context.Context, request mcp.CallTo
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Application_post_app_indexing(args)
 	if err != nil {
@@ -3237,7 +3175,6 @@ func HandleApplication_post_app_indexing(ctx context.Context, request mcp.CallTo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleApplication_post_app_indexing_session handles the application_post_app_indexing_session tool with context-based auth
 func HandleApplication_post_app_indexing_session(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3267,8 +3204,6 @@ func HandleApplication_post_app_indexing_session(ctx context.Context, request mc
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Application_post_app_indexing_session(args)
 	if err != nil {
@@ -3283,7 +3218,6 @@ func HandleApplication_post_app_indexing_session(ctx context.Context, request mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleApplication_get_app_installed_groups handles the application_get_app_installed_groups tool with context-based auth
 func HandleApplication_get_app_installed_groups(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3336,8 +3270,6 @@ func HandleApplication_get_app_installed_groups(ctx context.Context, request mcp
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Application_get_app_installed_groups(args)
 	if err != nil {
@@ -3352,7 +3284,6 @@ func HandleApplication_get_app_installed_groups(ctx context.Context, request mcp
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleApplication_post_app_push_device_token handles the application_post_app_push_device_token tool with context-based auth
 func HandleApplication_post_app_push_device_token(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3382,8 +3313,6 @@ func HandleApplication_post_app_push_device_token(ctx context.Context, request m
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Application_post_app_push_device_token(args)
 	if err != nil {
@@ -3398,7 +3327,6 @@ func HandleApplication_post_app_push_device_token(ctx context.Context, request m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleApplication_get_appassets handles the application_get_appassets tool with context-based auth
 func HandleApplication_get_appassets(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3439,8 +3367,6 @@ func HandleApplication_get_appassets(ctx context.Context, request mcp.CallToolRe
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Application_get_appassets(args)
 	if err != nil {
@@ -3455,7 +3381,6 @@ func HandleApplication_get_appassets(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleApplication_post_assets handles the application_post_assets tool with context-based auth
 func HandleApplication_post_assets(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3485,8 +3410,6 @@ func HandleApplication_post_assets(ctx context.Context, request mcp.CallToolRequ
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Application_post_assets(args)
 	if err != nil {
@@ -3501,7 +3424,6 @@ func HandleApplication_post_assets(ctx context.Context, request mcp.CallToolRequ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleApplication_get_authorized_adaccounts handles the application_get_authorized_adaccounts tool with context-based auth
 func HandleApplication_get_authorized_adaccounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3554,8 +3476,6 @@ func HandleApplication_get_authorized_adaccounts(ctx context.Context, request mc
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Application_get_authorized_adaccounts(args)
 	if err != nil {
@@ -3570,7 +3490,6 @@ func HandleApplication_get_authorized_adaccounts(ctx context.Context, request mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleApplication_get_button_auto_detection_device_selection handles the application_get_button_auto_detection_device_selection tool with context-based auth
 func HandleApplication_get_button_auto_detection_device_selection(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3623,8 +3542,6 @@ func HandleApplication_get_button_auto_detection_device_selection(ctx context.Co
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Application_get_button_auto_detection_device_selection(args)
 	if err != nil {
@@ -3639,7 +3556,6 @@ func HandleApplication_get_button_auto_detection_device_selection(ctx context.Co
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleApplication_get_cloudbridge_settings handles the application_get_cloudbridge_settings tool with context-based auth
 func HandleApplication_get_cloudbridge_settings(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3680,8 +3596,6 @@ func HandleApplication_get_cloudbridge_settings(ctx context.Context, request mcp
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Application_get_cloudbridge_settings(args)
 	if err != nil {
@@ -3696,7 +3610,6 @@ func HandleApplication_get_cloudbridge_settings(ctx context.Context, request mcp
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleApplication_post_codeless_event_mappings handles the application_post_codeless_event_mappings tool with context-based auth
 func HandleApplication_post_codeless_event_mappings(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3726,8 +3639,6 @@ func HandleApplication_post_codeless_event_mappings(ctx context.Context, request
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Application_post_codeless_event_mappings(args)
 	if err != nil {
@@ -3742,7 +3653,6 @@ func HandleApplication_post_codeless_event_mappings(ctx context.Context, request
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleApplication_get_connected_client_businesses handles the application_get_connected_client_businesses tool with context-based auth
 func HandleApplication_get_connected_client_businesses(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3783,8 +3693,6 @@ func HandleApplication_get_connected_client_businesses(ctx context.Context, requ
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Application_get_connected_client_businesses(args)
 	if err != nil {
@@ -3799,7 +3707,6 @@ func HandleApplication_get_connected_client_businesses(ctx context.Context, requ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleApplication_get_da_checks handles the application_get_da_checks tool with context-based auth
 func HandleApplication_get_da_checks(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3852,8 +3759,6 @@ func HandleApplication_get_da_checks(ctx context.Context, request mcp.CallToolRe
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Application_get_da_checks(args)
 	if err != nil {
@@ -3868,7 +3773,6 @@ func HandleApplication_get_da_checks(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleApplication_post_domain_reports handles the application_post_domain_reports tool with context-based auth
 func HandleApplication_post_domain_reports(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3898,8 +3802,6 @@ func HandleApplication_post_domain_reports(ctx context.Context, request mcp.Call
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Application_post_domain_reports(args)
 	if err != nil {
@@ -3914,7 +3816,6 @@ func HandleApplication_post_domain_reports(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleApplication_get_iap_purchases handles the application_get_iap_purchases tool with context-based auth
 func HandleApplication_get_iap_purchases(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3969,8 +3870,6 @@ func HandleApplication_get_iap_purchases(ctx context.Context, request mcp.CallTo
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Application_get_iap_purchases(args)
 	if err != nil {
@@ -3985,7 +3884,6 @@ func HandleApplication_get_iap_purchases(ctx context.Context, request mcp.CallTo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleApplication_get_ios_dialog_configs handles the application_get_ios_dialog_configs tool with context-based auth
 func HandleApplication_get_ios_dialog_configs(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4026,8 +3924,6 @@ func HandleApplication_get_ios_dialog_configs(ctx context.Context, request mcp.C
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Application_get_ios_dialog_configs(args)
 	if err != nil {
@@ -4042,7 +3938,6 @@ func HandleApplication_get_ios_dialog_configs(ctx context.Context, request mcp.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleApplication_get_linked_dataset handles the application_get_linked_dataset tool with context-based auth
 func HandleApplication_get_linked_dataset(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4083,8 +3978,6 @@ func HandleApplication_get_linked_dataset(ctx context.Context, request mcp.CallT
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Application_get_linked_dataset(args)
 	if err != nil {
@@ -4099,7 +3992,6 @@ func HandleApplication_get_linked_dataset(ctx context.Context, request mcp.CallT
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleApplication_get_message_templates handles the application_get_message_templates tool with context-based auth
 func HandleApplication_get_message_templates(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4152,8 +4044,6 @@ func HandleApplication_get_message_templates(ctx context.Context, request mcp.Ca
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Application_get_message_templates(args)
 	if err != nil {
@@ -4168,7 +4058,6 @@ func HandleApplication_get_message_templates(ctx context.Context, request mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleApplication_post_mmp_auditing handles the application_post_mmp_auditing tool with context-based auth
 func HandleApplication_post_mmp_auditing(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4198,8 +4087,6 @@ func HandleApplication_post_mmp_auditing(ctx context.Context, request mcp.CallTo
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Application_post_mmp_auditing(args)
 	if err != nil {
@@ -4214,7 +4101,6 @@ func HandleApplication_post_mmp_auditing(ctx context.Context, request mcp.CallTo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleApplication_get_mobile_sdk_gk handles the application_get_mobile_sdk_gk tool with context-based auth
 func HandleApplication_get_mobile_sdk_gk(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4269,8 +4155,6 @@ func HandleApplication_get_mobile_sdk_gk(ctx context.Context, request mcp.CallTo
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Application_get_mobile_sdk_gk(args)
 	if err != nil {
@@ -4285,7 +4169,6 @@ func HandleApplication_get_mobile_sdk_gk(ctx context.Context, request mcp.CallTo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleApplication_get_monetized_digital_store_objects handles the application_get_monetized_digital_store_objects tool with context-based auth
 func HandleApplication_get_monetized_digital_store_objects(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4326,8 +4209,6 @@ func HandleApplication_get_monetized_digital_store_objects(ctx context.Context, 
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Application_get_monetized_digital_store_objects(args)
 	if err != nil {
@@ -4342,7 +4223,6 @@ func HandleApplication_get_monetized_digital_store_objects(ctx context.Context, 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleApplication_post_monetized_digital_store_objects handles the application_post_monetized_digital_store_objects tool with context-based auth
 func HandleApplication_post_monetized_digital_store_objects(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4372,8 +4252,6 @@ func HandleApplication_post_monetized_digital_store_objects(ctx context.Context,
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Application_post_monetized_digital_store_objects(args)
 	if err != nil {
@@ -4388,7 +4266,6 @@ func HandleApplication_post_monetized_digital_store_objects(ctx context.Context,
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleApplication_get_object_types handles the application_get_object_types tool with context-based auth
 func HandleApplication_get_object_types(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4429,8 +4306,6 @@ func HandleApplication_get_object_types(ctx context.Context, request mcp.CallToo
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Application_get_object_types(args)
 	if err != nil {
@@ -4445,7 +4320,6 @@ func HandleApplication_get_object_types(ctx context.Context, request mcp.CallToo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleApplication_get_objects handles the application_get_objects tool with context-based auth
 func HandleApplication_get_objects(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4486,8 +4360,6 @@ func HandleApplication_get_objects(ctx context.Context, request mcp.CallToolRequ
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Application_get_objects(args)
 	if err != nil {
@@ -4502,7 +4374,6 @@ func HandleApplication_get_objects(ctx context.Context, request mcp.CallToolRequ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleApplication_post_occludespopups handles the application_post_occludespopups tool with context-based auth
 func HandleApplication_post_occludespopups(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4530,8 +4401,6 @@ func HandleApplication_post_occludespopups(ctx context.Context, request mcp.Call
 		}
 	}
 
-
-
 	// Call the client method
 	result, err := client.Application_post_occludespopups(args)
 	if err != nil {
@@ -4546,7 +4415,6 @@ func HandleApplication_post_occludespopups(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleApplication_get_permissions handles the application_get_permissions tool with context-based auth
 func HandleApplication_get_permissions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4599,8 +4467,6 @@ func HandleApplication_get_permissions(ctx context.Context, request mcp.CallTool
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Application_get_permissions(args)
 	if err != nil {
@@ -4615,7 +4481,6 @@ func HandleApplication_get_permissions(ctx context.Context, request mcp.CallTool
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleApplication_get_products handles the application_get_products tool with context-based auth
 func HandleApplication_get_products(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4668,8 +4533,6 @@ func HandleApplication_get_products(ctx context.Context, request mcp.CallToolReq
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Application_get_products(args)
 	if err != nil {
@@ -4684,7 +4547,6 @@ func HandleApplication_get_products(ctx context.Context, request mcp.CallToolReq
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleApplication_get_purchases handles the application_get_purchases tool with context-based auth
 func HandleApplication_get_purchases(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4725,8 +4587,6 @@ func HandleApplication_get_purchases(ctx context.Context, request mcp.CallToolRe
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Application_get_purchases(args)
 	if err != nil {
@@ -4741,7 +4601,6 @@ func HandleApplication_get_purchases(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleApplication_get_roles handles the application_get_roles tool with context-based auth
 func HandleApplication_get_roles(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4782,8 +4641,6 @@ func HandleApplication_get_roles(ctx context.Context, request mcp.CallToolReques
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Application_get_roles(args)
 	if err != nil {
@@ -4798,7 +4655,6 @@ func HandleApplication_get_roles(ctx context.Context, request mcp.CallToolReques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleApplication_get_server_domain_infos handles the application_get_server_domain_infos tool with context-based auth
 func HandleApplication_get_server_domain_infos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4839,8 +4695,6 @@ func HandleApplication_get_server_domain_infos(ctx context.Context, request mcp.
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Application_get_server_domain_infos(args)
 	if err != nil {
@@ -4855,7 +4709,6 @@ func HandleApplication_get_server_domain_infos(ctx context.Context, request mcp.
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleApplication_get_sgw_dataset_status handles the application_get_sgw_dataset_status tool with context-based auth
 func HandleApplication_get_sgw_dataset_status(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4910,8 +4763,6 @@ func HandleApplication_get_sgw_dataset_status(ctx context.Context, request mcp.C
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Application_get_sgw_dataset_status(args)
 	if err != nil {
@@ -4926,7 +4777,6 @@ func HandleApplication_get_sgw_dataset_status(ctx context.Context, request mcp.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleApplication_get_sgw_install_deferral_link handles the application_get_sgw_install_deferral_link tool with context-based auth
 func HandleApplication_get_sgw_install_deferral_link(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4981,8 +4831,6 @@ func HandleApplication_get_sgw_install_deferral_link(ctx context.Context, reques
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Application_get_sgw_install_deferral_link(args)
 	if err != nil {
@@ -4997,7 +4845,6 @@ func HandleApplication_get_sgw_install_deferral_link(ctx context.Context, reques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleApplication_get_subscribed_domains handles the application_get_subscribed_domains tool with context-based auth
 func HandleApplication_get_subscribed_domains(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -5038,8 +4885,6 @@ func HandleApplication_get_subscribed_domains(ctx context.Context, request mcp.C
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Application_get_subscribed_domains(args)
 	if err != nil {
@@ -5054,7 +4899,6 @@ func HandleApplication_get_subscribed_domains(ctx context.Context, request mcp.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleApplication_post_subscribed_domains handles the application_post_subscribed_domains tool with context-based auth
 func HandleApplication_post_subscribed_domains(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -5082,8 +4926,6 @@ func HandleApplication_post_subscribed_domains(ctx context.Context, request mcp.
 		}
 	}
 
-
-
 	// Call the client method
 	result, err := client.Application_post_subscribed_domains(args)
 	if err != nil {
@@ -5098,7 +4940,6 @@ func HandleApplication_post_subscribed_domains(ctx context.Context, request mcp.
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleApplication_get_subscribed_domains_phishing handles the application_get_subscribed_domains_phishing tool with context-based auth
 func HandleApplication_get_subscribed_domains_phishing(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -5139,8 +4980,6 @@ func HandleApplication_get_subscribed_domains_phishing(ctx context.Context, requ
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Application_get_subscribed_domains_phishing(args)
 	if err != nil {
@@ -5155,7 +4994,6 @@ func HandleApplication_get_subscribed_domains_phishing(ctx context.Context, requ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleApplication_post_subscribed_domains_phishing handles the application_post_subscribed_domains_phishing tool with context-based auth
 func HandleApplication_post_subscribed_domains_phishing(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -5183,8 +5021,6 @@ func HandleApplication_post_subscribed_domains_phishing(ctx context.Context, req
 		}
 	}
 
-
-
 	// Call the client method
 	result, err := client.Application_post_subscribed_domains_phishing(args)
 	if err != nil {
@@ -5199,7 +5035,6 @@ func HandleApplication_post_subscribed_domains_phishing(ctx context.Context, req
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleApplication_delete_subscriptions handles the application_delete_subscriptions tool with context-based auth
 func HandleApplication_delete_subscriptions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -5227,8 +5062,6 @@ func HandleApplication_delete_subscriptions(ctx context.Context, request mcp.Cal
 		}
 	}
 
-
-
 	// Call the client method
 	result, err := client.Application_delete_subscriptions(args)
 	if err != nil {
@@ -5243,7 +5076,6 @@ func HandleApplication_delete_subscriptions(ctx context.Context, request mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleApplication_get_subscriptions handles the application_get_subscriptions tool with context-based auth
 func HandleApplication_get_subscriptions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -5284,8 +5116,6 @@ func HandleApplication_get_subscriptions(ctx context.Context, request mcp.CallTo
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Application_get_subscriptions(args)
 	if err != nil {
@@ -5300,7 +5130,6 @@ func HandleApplication_get_subscriptions(ctx context.Context, request mcp.CallTo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleApplication_post_subscriptions handles the application_post_subscriptions tool with context-based auth
 func HandleApplication_post_subscriptions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -5330,8 +5159,6 @@ func HandleApplication_post_subscriptions(ctx context.Context, request mcp.CallT
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Application_post_subscriptions(args)
 	if err != nil {
@@ -5346,7 +5173,6 @@ func HandleApplication_post_subscriptions(ctx context.Context, request mcp.CallT
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleApplication_post_uploads handles the application_post_uploads tool with context-based auth
 func HandleApplication_post_uploads(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -5374,8 +5200,6 @@ func HandleApplication_post_uploads(ctx context.Context, request mcp.CallToolReq
 		}
 	}
 
-
-
 	// Call the client method
 	result, err := client.Application_post_uploads(args)
 	if err != nil {
@@ -5390,7 +5214,6 @@ func HandleApplication_post_uploads(ctx context.Context, request mcp.CallToolReq
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleApplication_post_whatsapp_business_solution handles the application_post_whatsapp_business_solution tool with context-based auth
 func HandleApplication_post_whatsapp_business_solution(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -5420,8 +5243,6 @@ func HandleApplication_post_whatsapp_business_solution(ctx context.Context, requ
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Application_post_whatsapp_business_solution(args)
 	if err != nil {
@@ -5436,7 +5257,6 @@ func HandleApplication_post_whatsapp_business_solution(ctx context.Context, requ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleApplication_get_whatsapp_business_solutions handles the application_get_whatsapp_business_solutions tool with context-based auth
 func HandleApplication_get_whatsapp_business_solutions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -5489,8 +5309,6 @@ func HandleApplication_get_whatsapp_business_solutions(ctx context.Context, requ
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Application_get_whatsapp_business_solutions(args)
 	if err != nil {
@@ -5505,7 +5323,6 @@ func HandleApplication_get_whatsapp_business_solutions(ctx context.Context, requ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleApplication_get_ handles the application_get_ tool with context-based auth
 func HandleApplication_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -5558,8 +5375,6 @@ func HandleApplication_get_(ctx context.Context, request mcp.CallToolRequest) (*
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Application_get_(args)
 	if err != nil {
@@ -5574,7 +5389,6 @@ func HandleApplication_get_(ctx context.Context, request mcp.CallToolRequest) (*
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleApplication_post_ handles the application_post_ tool with context-based auth
 func HandleApplication_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -5602,8 +5416,6 @@ func HandleApplication_post_(ctx context.Context, request mcp.CallToolRequest) (
 		}
 	}
 
-
-
 	// Call the client method
 	result, err := client.Application_post_(args)
 	if err != nil {
@@ -5618,4 +5430,3 @@ func HandleApplication_post_(ctx context.Context, request mcp.CallToolRequest) (
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

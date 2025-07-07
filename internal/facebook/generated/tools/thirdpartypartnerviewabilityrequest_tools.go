@@ -17,7 +17,6 @@ import (
 func GetThirdPartyPartnerViewabilityRequestTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// thirdpartypartnerviewabilityrequest_get_ tool
 	// Available fields for ThirdPartyPartnerViewabilityRequest: created_time, description, ds, hour, id, metric, modified_time, owner_instance_id, platform, status, total_file_count
 	thirdpartypartnerviewabilityrequest_get_Tool := mcp.NewTool("thirdpartypartnerviewabilityrequest_get_",
@@ -37,12 +36,10 @@ func GetThirdPartyPartnerViewabilityRequestTools() []mcp.Tool {
 	)
 	tools = append(tools, thirdpartypartnerviewabilityrequest_get_Tool)
 
-
 	return tools
 }
 
 // ThirdPartyPartnerViewabilityRequest handlers
-
 
 // HandleThirdpartypartnerviewabilityrequest_get_ handles the thirdpartypartnerviewabilityrequest_get_ tool with context-based auth
 func HandleThirdpartypartnerviewabilityrequest_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleThirdpartypartnerviewabilityrequest_get_(ctx context.Context, request
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Thirdpartypartnerviewabilityrequest_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleThirdpartypartnerviewabilityrequest_get_(ctx context.Context, request
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

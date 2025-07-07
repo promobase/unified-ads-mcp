@@ -17,7 +17,7 @@ import (
 // ToolBrandrequest_get_ returns the MCP tool definition for brandrequest_get_
 func ToolBrandrequest_get_() mcp.Tool {
 	// Available fields for BrandRequest: ad_countries, additional_contacts, approval_level, cells, countries, deny_reason, end_time, estimated_reach, id, is_multicell, locale, max_age, min_age, questions, region, request_status, review_date, start_time, status, submit_date, total_budget
-	
+
 	return mcp.NewTool("brandrequest_get_",
 		mcp.WithDescription("GET  for BrandRequest"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleBrandrequest_get_(ctx context.Context, request mcp.CallToolRequest) (
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Brandrequest_get_(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleBrandrequest_get_(ctx context.Context, request mcp.CallToolRequest) (
 // Brandrequest_get_ performs GET  for BrandRequest
 func Brandrequest_get_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

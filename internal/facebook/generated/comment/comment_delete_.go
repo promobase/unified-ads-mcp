@@ -15,8 +15,7 @@ import (
 
 // ToolComment_delete_ returns the MCP tool definition for comment_delete_
 func ToolComment_delete_() mcp.Tool {
-	
-	
+
 	return mcp.NewTool("comment_delete_",
 		mcp.WithDescription("DELETE  for Comment"),
 	)
@@ -32,8 +31,6 @@ func HandleComment_delete_(ctx context.Context, request mcp.CallToolRequest) (*m
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the API method
 	result, err := Comment_delete_(accessToken, args)
@@ -53,14 +50,11 @@ func HandleComment_delete_(ctx context.Context, request mcp.CallToolRequest) (*m
 // Comment_delete_ performs DELETE  for Comment
 func Comment_delete_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response

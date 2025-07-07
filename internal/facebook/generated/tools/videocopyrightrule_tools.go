@@ -17,7 +17,6 @@ import (
 func GetVideoCopyrightRuleTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// videocopyrightrule_get_ tool
 	// Available fields for VideoCopyrightRule: condition_groups, copyrights, created_date, creator, id, is_in_migration, name
 	videocopyrightrule_get_Tool := mcp.NewTool("videocopyrightrule_get_",
@@ -37,12 +36,10 @@ func GetVideoCopyrightRuleTools() []mcp.Tool {
 	)
 	tools = append(tools, videocopyrightrule_get_Tool)
 
-
 	return tools
 }
 
 // VideoCopyrightRule handlers
-
 
 // HandleVideocopyrightrule_get_ handles the videocopyrightrule_get_ tool with context-based auth
 func HandleVideocopyrightrule_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleVideocopyrightrule_get_(ctx context.Context, request mcp.CallToolRequ
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Videocopyrightrule_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleVideocopyrightrule_get_(ctx context.Context, request mcp.CallToolRequ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

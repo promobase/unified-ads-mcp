@@ -5,10 +5,10 @@ package constants
 // CreativeHistoryFields contains field name constants for CreativeHistory objects
 var CreativeHistoryFields = struct {
 	CreativeFingerprint string
-	TimeRanges string
+	TimeRanges          string
 }{
 	CreativeFingerprint: "creative_fingerprint",
-	TimeRanges: "time_ranges",
+	TimeRanges:          "time_ranges",
 }
 
 // CreativeHistoryFieldsList contains all available fields for CreativeHistory objects

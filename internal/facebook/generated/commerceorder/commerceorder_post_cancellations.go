@@ -15,7 +15,7 @@ import (
 
 // ToolCommerceorder_post_cancellations returns the MCP tool definition for commerceorder_post_cancellations
 func ToolCommerceorder_post_cancellations() mcp.Tool {
-	
+
 	// Params object accepts: cancel_reason (map), idempotency_key (string), items (list<map>), restock_items (bool)
 	return mcp.NewTool("commerceorder_post_cancellations",
 		mcp.WithDescription("POST cancellations for CommerceOrder"),
@@ -23,21 +23,21 @@ func ToolCommerceorder_post_cancellations() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"cancel_reason": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "cancel_reason parameter",
 				},
 				"idempotency_key": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "idempotency_key parameter",
-					"required": true,
+					"required":    true,
 				},
 				"items": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "items parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"restock_items": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "restock_items parameter",
 				},
 			}),
@@ -71,8 +71,6 @@ func HandleCommerceorder_post_cancellations(ctx context.Context, request mcp.Cal
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Commerceorder_post_cancellations(accessToken, args)
 	if err != nil {
@@ -91,20 +89,18 @@ func HandleCommerceorder_post_cancellations(ctx context.Context, request mcp.Cal
 // Commerceorder_post_cancellations performs POST cancellations for CommerceOrder
 func Commerceorder_post_cancellations(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/cancellations")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

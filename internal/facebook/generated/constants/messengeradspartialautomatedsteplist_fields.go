@@ -4,20 +4,20 @@ package constants
 
 // MessengerAdsPartialAutomatedStepListFields contains field name constants for MessengerAdsPartialAutomatedStepList objects
 var MessengerAdsPartialAutomatedStepListFields = struct {
-	FbleadForm string
-	FirstStepId string
-	Id string
-	Page string
-	PrivacyUrl string
-	ReminderText string
+	FbleadForm          string
+	FirstStepId         string
+	Id                  string
+	Page                string
+	PrivacyUrl          string
+	ReminderText        string
 	StopQuestionMessage string
 }{
-	FbleadForm: "fblead_form",
-	FirstStepId: "first_step_id",
-	Id: "id",
-	Page: "page",
-	PrivacyUrl: "privacy_url",
-	ReminderText: "reminder_text",
+	FbleadForm:          "fblead_form",
+	FirstStepId:         "first_step_id",
+	Id:                  "id",
+	Page:                "page",
+	PrivacyUrl:          "privacy_url",
+	ReminderText:        "reminder_text",
 	StopQuestionMessage: "stop_question_message",
 }
 

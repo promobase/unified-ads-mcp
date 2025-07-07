@@ -17,7 +17,6 @@ import (
 func GetLeadGenDirectCRMIntegrationConfigTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// leadgendirectcrmintegrationconfig_get_ tool
 	// Available fields for LeadGenDirectCRMIntegrationConfig: auth_id, creation_time, id, lead_gen_data, matched_fields, matched_fields_labels, resources, third_party_app_id
 	leadgendirectcrmintegrationconfig_get_Tool := mcp.NewTool("leadgendirectcrmintegrationconfig_get_",
@@ -37,12 +36,10 @@ func GetLeadGenDirectCRMIntegrationConfigTools() []mcp.Tool {
 	)
 	tools = append(tools, leadgendirectcrmintegrationconfig_get_Tool)
 
-
 	return tools
 }
 
 // LeadGenDirectCRMIntegrationConfig handlers
-
 
 // HandleLeadgendirectcrmintegrationconfig_get_ handles the leadgendirectcrmintegrationconfig_get_ tool with context-based auth
 func HandleLeadgendirectcrmintegrationconfig_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleLeadgendirectcrmintegrationconfig_get_(ctx context.Context, request m
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Leadgendirectcrmintegrationconfig_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleLeadgendirectcrmintegrationconfig_get_(ctx context.Context, request m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

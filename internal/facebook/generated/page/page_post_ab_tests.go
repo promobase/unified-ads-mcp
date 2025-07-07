@@ -15,7 +15,7 @@ import (
 
 // ToolPage_post_ab_tests returns the MCP tool definition for page_post_ab_tests
 func ToolPage_post_ab_tests() mcp.Tool {
-	
+
 	// Params object accepts: control_video_id (string), description (string), duration (unsigned int), experiment_video_ids (list<string>), name (string), optimization_goal (pageab_tests_optimization_goal_enum_param), scheduled_experiment_timestamp (unsigned int)
 	return mcp.NewTool("page_post_ab_tests",
 		mcp.WithDescription("POST ab_tests for Page"),
@@ -23,39 +23,39 @@ func ToolPage_post_ab_tests() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"control_video_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "control_video_id parameter",
-					"required": true,
+					"required":    true,
 				},
 				"description": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "description parameter",
-					"required": true,
+					"required":    true,
 				},
 				"duration": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "duration parameter",
-					"required": true,
+					"required":    true,
 				},
 				"experiment_video_ids": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "experiment_video_ids parameter",
-					"required": true,
-					"items": map[string]any{"type": "string"},
+					"required":    true,
+					"items":       map[string]any{"type": "string"},
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
-					"required": true,
+					"required":    true,
 				},
 				"optimization_goal": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "optimization_goal parameter",
-					"required": true,
-					"enum": []string{ "AUTO_RESOLVE_TO_CONTROL", "AVG_TIME_WATCHED", "COMMENTS", "IMPRESSIONS", "IMPRESSIONS_UNIQUE", "LINK_CLICKS", "OTHER", "REACTIONS", "REELS_PLAYS", "SHARES", "VIDEO_VIEWS_60S" },
+					"required":    true,
+					"enum":        []string{"AUTO_RESOLVE_TO_CONTROL", "AVG_TIME_WATCHED", "COMMENTS", "IMPRESSIONS", "IMPRESSIONS_UNIQUE", "LINK_CLICKS", "OTHER", "REACTIONS", "REELS_PLAYS", "SHARES", "VIDEO_VIEWS_60S"},
 				},
 				"scheduled_experiment_timestamp": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "scheduled_experiment_timestamp parameter",
 				},
 			}),
@@ -89,8 +89,6 @@ func HandlePage_post_ab_tests(ctx context.Context, request mcp.CallToolRequest) 
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Page_post_ab_tests(accessToken, args)
 	if err != nil {
@@ -109,20 +107,18 @@ func HandlePage_post_ab_tests(ctx context.Context, request mcp.CallToolRequest) 
 // Page_post_ab_tests performs POST ab_tests for Page
 func Page_post_ab_tests(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/ab_tests")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

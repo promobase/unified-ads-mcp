@@ -17,7 +17,6 @@ import (
 func GetInstagramThreadTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// instagramthread_get_ tool
 	// Available fields for InstagramThread: folder, id, participants, updated_time
 	instagramthread_get_Tool := mcp.NewTool("instagramthread_get_",
@@ -37,12 +36,10 @@ func GetInstagramThreadTools() []mcp.Tool {
 	)
 	tools = append(tools, instagramthread_get_Tool)
 
-
 	return tools
 }
 
 // InstagramThread handlers
-
 
 // HandleInstagramthread_get_ handles the instagramthread_get_ tool with context-based auth
 func HandleInstagramthread_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleInstagramthread_get_(ctx context.Context, request mcp.CallToolRequest
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Instagramthread_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleInstagramthread_get_(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

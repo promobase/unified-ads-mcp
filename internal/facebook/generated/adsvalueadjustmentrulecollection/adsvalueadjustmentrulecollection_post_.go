@@ -15,7 +15,7 @@ import (
 
 // ToolAdsvalueadjustmentrulecollection_post_ returns the MCP tool definition for adsvalueadjustmentrulecollection_post_
 func ToolAdsvalueadjustmentrulecollection_post_() mcp.Tool {
-	
+
 	// Params object accepts: is_default_setting (bool), name (string), rules (list<map>)
 	return mcp.NewTool("adsvalueadjustmentrulecollection_post_",
 		mcp.WithDescription("POST  for AdsValueAdjustmentRuleCollection"),
@@ -23,19 +23,19 @@ func ToolAdsvalueadjustmentrulecollection_post_() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"is_default_setting": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_default_setting parameter",
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
-					"required": true,
+					"required":    true,
 				},
 				"rules": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "rules parameter",
-					"required": true,
-					"items": map[string]any{"type": "object"},
+					"required":    true,
+					"items":       map[string]any{"type": "object"},
 				},
 			}),
 			mcp.Description("Parameters object containing: is_default_setting (boolean), name (string) [required], rules (array<object>) [required]"),
@@ -68,8 +68,6 @@ func HandleAdsvalueadjustmentrulecollection_post_(ctx context.Context, request m
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Adsvalueadjustmentrulecollection_post_(accessToken, args)
 	if err != nil {
@@ -88,20 +86,18 @@ func HandleAdsvalueadjustmentrulecollection_post_(ctx context.Context, request m
 // Adsvalueadjustmentrulecollection_post_ performs POST  for AdsValueAdjustmentRuleCollection
 func Adsvalueadjustmentrulecollection_post_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

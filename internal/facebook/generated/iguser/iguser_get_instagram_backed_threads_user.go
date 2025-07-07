@@ -17,7 +17,7 @@ import (
 // ToolIguser_get_instagram_backed_threads_user returns the MCP tool definition for iguser_get_instagram_backed_threads_user
 func ToolIguser_get_instagram_backed_threads_user() mcp.Tool {
 	// Available fields for ThreadsUser: threads_user_id, threads_user_profile_pic
-	
+
 	return mcp.NewTool("iguser_get_instagram_backed_threads_user",
 		mcp.WithDescription("GET instagram_backed_threads_user for IGUser"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleIguser_get_instagram_backed_threads_user(ctx context.Context, request
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Iguser_get_instagram_backed_threads_user(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleIguser_get_instagram_backed_threads_user(ctx context.Context, request
 // Iguser_get_instagram_backed_threads_user performs GET instagram_backed_threads_user for IGUser
 func Iguser_get_instagram_backed_threads_user(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/instagram_backed_threads_user")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

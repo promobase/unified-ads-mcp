@@ -4,10 +4,10 @@ package types
 
 // AdAssetFeedAdditionalData represents a Facebook AdAssetFeedAdditionalData object
 type AdAssetFeedAdditionalData struct {
-	Automated_product_tags bool `json:"automated_product_tags"`
-	Brand_page_id string `json:"brand_page_id"`
-	Is_click_to_message bool `json:"is_click_to_message"`
-	Multi_share_end_card bool `json:"multi_share_end_card"`
-	Page_welcome_message string `json:"page_welcome_message"`
+	Automated_product_tags              bool   `json:"automated_product_tags"`
+	Brand_page_id                       string `json:"brand_page_id"`
+	Is_click_to_message                 bool   `json:"is_click_to_message"`
+	Multi_share_end_card                bool   `json:"multi_share_end_card"`
+	Page_welcome_message                string `json:"page_welcome_message"`
 	Partner_app_welcome_message_flow_id string `json:"partner_app_welcome_message_flow_id"`
 }

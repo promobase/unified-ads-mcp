@@ -17,7 +17,7 @@ import (
 // ToolLeadgendirectcrmintegrationconfig_get_ returns the MCP tool definition for leadgendirectcrmintegrationconfig_get_
 func ToolLeadgendirectcrmintegrationconfig_get_() mcp.Tool {
 	// Available fields for LeadGenDirectCRMIntegrationConfig: auth_id, creation_time, id, lead_gen_data, matched_fields, matched_fields_labels, resources, third_party_app_id
-	
+
 	return mcp.NewTool("leadgendirectcrmintegrationconfig_get_",
 		mcp.WithDescription("GET  for LeadGenDirectCRMIntegrationConfig"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleLeadgendirectcrmintegrationconfig_get_(ctx context.Context, request m
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Leadgendirectcrmintegrationconfig_get_(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleLeadgendirectcrmintegrationconfig_get_(ctx context.Context, request m
 // Leadgendirectcrmintegrationconfig_get_ performs GET  for LeadGenDirectCRMIntegrationConfig
 func Leadgendirectcrmintegrationconfig_get_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

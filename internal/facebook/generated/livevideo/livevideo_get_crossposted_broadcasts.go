@@ -17,7 +17,7 @@ import (
 // ToolLivevideo_get_crossposted_broadcasts returns the MCP tool definition for livevideo_get_crossposted_broadcasts
 func ToolLivevideo_get_crossposted_broadcasts() mcp.Tool {
 	// Available fields for LiveVideo: ad_break_config, ad_break_failure_reason, broadcast_start_time, copyright, creation_time, dash_ingest_url, dash_preview_url, description, embed_html, from, id, ingest_streams, is_manual_mode, is_reference_only, live_views, overlay_url, permalink_url, planned_start_time, recommended_encoder_settings, seconds_left, secure_stream_url, status, stream_url, targeting, title, total_views, video
-	
+
 	return mcp.NewTool("livevideo_get_crossposted_broadcasts",
 		mcp.WithDescription("GET crossposted_broadcasts for LiveVideo"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleLivevideo_get_crossposted_broadcasts(ctx context.Context, request mcp
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Livevideo_get_crossposted_broadcasts(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleLivevideo_get_crossposted_broadcasts(ctx context.Context, request mcp
 // Livevideo_get_crossposted_broadcasts performs GET crossposted_broadcasts for LiveVideo
 func Livevideo_get_crossposted_broadcasts(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/crossposted_broadcasts")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

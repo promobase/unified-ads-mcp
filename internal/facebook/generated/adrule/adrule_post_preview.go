@@ -15,8 +15,7 @@ import (
 
 // ToolAdrule_post_preview returns the MCP tool definition for adrule_post_preview
 func ToolAdrule_post_preview() mcp.Tool {
-	
-	
+
 	return mcp.NewTool("adrule_post_preview",
 		mcp.WithDescription("POST preview for AdRule"),
 	)
@@ -32,8 +31,6 @@ func HandleAdrule_post_preview(ctx context.Context, request mcp.CallToolRequest)
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the API method
 	result, err := Adrule_post_preview(accessToken, args)
@@ -53,14 +50,11 @@ func HandleAdrule_post_preview(ctx context.Context, request mcp.CallToolRequest)
 // Adrule_post_preview performs POST preview for AdRule
 func Adrule_post_preview(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/preview")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response

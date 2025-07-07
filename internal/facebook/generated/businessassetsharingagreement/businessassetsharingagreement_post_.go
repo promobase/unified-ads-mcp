@@ -15,14 +15,14 @@ import (
 
 // ToolBusinessassetsharingagreement_post_ returns the MCP tool definition for businessassetsharingagreement_post_
 func ToolBusinessassetsharingagreement_post_() mcp.Tool {
-	
+
 	// Params object accepts: request_response (string)
 	return mcp.NewTool("businessassetsharingagreement_post_",
 		mcp.WithDescription("POST  for BusinessAssetSharingAgreement"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"request_response": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "request_response parameter",
 				},
 			}),
@@ -54,8 +54,6 @@ func HandleBusinessassetsharingagreement_post_(ctx context.Context, request mcp.
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Businessassetsharingagreement_post_(accessToken, args)
 	if err != nil {
@@ -74,20 +72,18 @@ func HandleBusinessassetsharingagreement_post_(ctx context.Context, request mcp.
 // Businessassetsharingagreement_post_ performs POST  for BusinessAssetSharingAgreement
 func Businessassetsharingagreement_post_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

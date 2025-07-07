@@ -6,8 +6,8 @@ import "time"
 
 // VideoStatusPublishingPhase represents a Facebook VideoStatusPublishingPhase object
 type VideoStatusPublishingPhase struct {
-	Errors []VideoStatusError `json:"errors"`
-	Publish_status string `json:"publish_status"`
-	Publish_time time.Time `json:"publish_time"`
-	Status string `json:"status"`
+	Errors         []VideoStatusError `json:"errors"`
+	Publish_status string             `json:"publish_status"`
+	Publish_time   time.Time          `json:"publish_time"`
+	Status         string             `json:"status"`
 }

@@ -15,7 +15,7 @@ import (
 
 // ToolCampaign_post_copies returns the MCP tool definition for campaign_post_copies
 func ToolCampaign_post_copies() mcp.Tool {
-	
+
 	// Params object accepts: deep_copy (bool), end_time (datetime), rename_options (Object), start_time (datetime), status_option (adcampaigngroupcopies_status_option_enum_param)
 	return mcp.NewTool("campaign_post_copies",
 		mcp.WithDescription("POST copies for Campaign"),
@@ -26,25 +26,25 @@ func ToolCampaign_post_copies() mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"deep_copy": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "deep_copy parameter",
 				},
 				"end_time": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "end_time parameter",
 				},
 				"rename_options": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "rename_options parameter",
 				},
 				"start_time": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "start_time parameter",
 				},
 				"status_option": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "status_option parameter",
-					"enum": []string{ "ACTIVE", "INHERITED_FROM_SOURCE", "PAUSED" },
+					"enum":        []string{"ACTIVE", "INHERITED_FROM_SOURCE", "PAUSED"},
 				},
 			}),
 			mcp.Description("Parameters object containing: deep_copy (boolean), end_time (datetime), rename_options (object), start_time (datetime), status_option (enum) [ACTIVE, INHERITED_FROM_SOURCE, PAUSED]"),
@@ -82,8 +82,6 @@ func HandleCampaign_post_copies(ctx context.Context, request mcp.CallToolRequest
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Campaign_post_copies(accessToken, args)
 	if err != nil {
@@ -102,35 +100,33 @@ func HandleCampaign_post_copies(ctx context.Context, request mcp.CallToolRequest
 // Campaign_post_copies performs POST copies for Campaign
 func Campaign_post_copies(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	// Extract campaign_id for URL construction
 	campaignId, ok := args["campaign_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("campaign_id is required for campaign_post_copies")
 	}
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/%scopies", campaignId)
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["campaign_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "campaign_id" != "campaign_id" {
 			urlParams.Set("campaign_id", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "params" != "campaign_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-		
-	}
 
+	}
 
 	// Make HTTP request
 	var resp *http.Response

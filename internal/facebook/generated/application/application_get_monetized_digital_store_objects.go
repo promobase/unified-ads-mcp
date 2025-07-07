@@ -16,8 +16,7 @@ import (
 
 // ToolApplication_get_monetized_digital_store_objects returns the MCP tool definition for application_get_monetized_digital_store_objects
 func ToolApplication_get_monetized_digital_store_objects() mcp.Tool {
-	
-	
+
 	return mcp.NewTool("application_get_monetized_digital_store_objects",
 		mcp.WithDescription("GET monetized_digital_store_objects for Application"),
 		mcp.WithArray("fields",
@@ -71,8 +70,6 @@ func HandleApplication_get_monetized_digital_store_objects(ctx context.Context, 
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Application_get_monetized_digital_store_objects(accessToken, args)
 	if err != nil {
@@ -91,38 +88,36 @@ func HandleApplication_get_monetized_digital_store_objects(ctx context.Context, 
 // Application_get_monetized_digital_store_objects performs GET monetized_digital_store_objects for Application
 func Application_get_monetized_digital_store_objects(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/monetized_digital_store_objects")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

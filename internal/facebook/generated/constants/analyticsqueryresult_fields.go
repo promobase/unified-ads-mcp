@@ -5,10 +5,10 @@ package constants
 // AnalyticsQueryResultFields contains field name constants for AnalyticsQueryResult objects
 var AnalyticsQueryResultFields = struct {
 	QueryId string
-	Status string
+	Status  string
 }{
 	QueryId: "query_id",
-	Status: "status",
+	Status:  "status",
 }
 
 // AnalyticsQueryResultFieldsList contains all available fields for AnalyticsQueryResult objects

@@ -15,7 +15,7 @@ import (
 
 // ToolGroup_post_groups returns the MCP tool definition for group_post_groups
 func ToolGroup_post_groups() mcp.Tool {
-	
+
 	// Params object accepts: admin (int), description (string), group_icon_id (string), group_type (groupgroups_group_type_enum_param), join_setting (groupgroups_join_setting_enum_param), name (string), parent_id (string), post_permissions (groupgroups_post_permissions_enum_param), post_requires_admin_approval (bool), privacy (string), ref (string)
 	return mcp.NewTool("group_post_groups",
 		mcp.WithDescription("POST groups for Group"),
@@ -23,51 +23,51 @@ func ToolGroup_post_groups() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"admin": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "admin parameter",
 				},
 				"description": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "description parameter",
 				},
 				"group_icon_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "group_icon_id parameter",
 				},
 				"group_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "group_type parameter",
-					"enum": []string{ "CASUAL", "COWORKERS", "CUSTOM", "FOR_SALE", "FOR_WORK", "GAME", "HEALTH_SUPPORT", "JOBS", "LEARNING", "NONE", "PARENTING", "STREAMER", "WORK_ANNOUNCEMENT", "WORK_DEMO_GROUP", "WORK_DISCUSSION", "WORK_EPHEMERAL", "WORK_FEEDBACK", "WORK_FOR_SALE", "WORK_GARDEN", "WORK_INTEGRITY", "WORK_LEARNING", "WORK_MENTORSHIP", "WORK_MULTI_COMPANY", "WORK_RECRUITING", "WORK_SOCIAL", "WORK_STAGES", "WORK_TEAM", "WORK_TEAMWORK" },
+					"enum":        []string{"CASUAL", "COWORKERS", "CUSTOM", "FOR_SALE", "FOR_WORK", "GAME", "HEALTH_SUPPORT", "JOBS", "LEARNING", "NONE", "PARENTING", "STREAMER", "WORK_ANNOUNCEMENT", "WORK_DEMO_GROUP", "WORK_DISCUSSION", "WORK_EPHEMERAL", "WORK_FEEDBACK", "WORK_FOR_SALE", "WORK_GARDEN", "WORK_INTEGRITY", "WORK_LEARNING", "WORK_MENTORSHIP", "WORK_MULTI_COMPANY", "WORK_RECRUITING", "WORK_SOCIAL", "WORK_STAGES", "WORK_TEAM", "WORK_TEAMWORK"},
 				},
 				"join_setting": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "join_setting parameter",
-					"enum": []string{ "ADMIN_ONLY", "ANYONE", "NONE" },
+					"enum":        []string{"ADMIN_ONLY", "ANYONE", "NONE"},
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
-					"required": true,
+					"required":    true,
 				},
 				"parent_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "parent_id parameter",
 				},
 				"post_permissions": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "post_permissions parameter",
-					"enum": []string{ "ADMIN_ONLY", "ANYONE", "NONE" },
+					"enum":        []string{"ADMIN_ONLY", "ANYONE", "NONE"},
 				},
 				"post_requires_admin_approval": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "post_requires_admin_approval parameter",
 				},
 				"privacy": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "privacy parameter",
 				},
 				"ref": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "ref parameter",
 				},
 			}),
@@ -101,8 +101,6 @@ func HandleGroup_post_groups(ctx context.Context, request mcp.CallToolRequest) (
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Group_post_groups(accessToken, args)
 	if err != nil {
@@ -121,20 +119,18 @@ func HandleGroup_post_groups(ctx context.Context, request mcp.CallToolRequest) (
 // Group_post_groups performs POST groups for Group
 func Group_post_groups(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/groups")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

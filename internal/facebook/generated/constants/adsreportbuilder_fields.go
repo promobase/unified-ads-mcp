@@ -4,12 +4,12 @@ package constants
 
 // AdsReportBuilderFields contains field name constants for AdsReportBuilder objects
 var AdsReportBuilderFields = struct {
-	Headers string
-	Rows string
+	Headers             string
+	Rows                string
 	SkanReadinessStatus string
 }{
-	Headers: "headers",
-	Rows: "rows",
+	Headers:             "headers",
+	Rows:                "rows",
 	SkanReadinessStatus: "skan_readiness_status",
 }
 

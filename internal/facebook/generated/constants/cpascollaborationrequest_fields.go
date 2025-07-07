@@ -4,27 +4,27 @@ package constants
 
 // CPASCollaborationRequestFields contains field name constants for CPASCollaborationRequest objects
 var CPASCollaborationRequestFields = struct {
-	Brands string
-	ContactEmail string
-	ContactFirstName string
-	ContactLastName string
-	Id string
-	PhoneNumber string
-	ReceiverBusiness string
+	Brands                 string
+	ContactEmail           string
+	ContactFirstName       string
+	ContactLastName        string
+	Id                     string
+	PhoneNumber            string
+	ReceiverBusiness       string
 	RequesterAgencyOrBrand string
-	SenderClientBusiness string
-	Status string
+	SenderClientBusiness   string
+	Status                 string
 }{
-	Brands: "brands",
-	ContactEmail: "contact_email",
-	ContactFirstName: "contact_first_name",
-	ContactLastName: "contact_last_name",
-	Id: "id",
-	PhoneNumber: "phone_number",
-	ReceiverBusiness: "receiver_business",
+	Brands:                 "brands",
+	ContactEmail:           "contact_email",
+	ContactFirstName:       "contact_first_name",
+	ContactLastName:        "contact_last_name",
+	Id:                     "id",
+	PhoneNumber:            "phone_number",
+	ReceiverBusiness:       "receiver_business",
 	RequesterAgencyOrBrand: "requester_agency_or_brand",
-	SenderClientBusiness: "sender_client_business",
-	Status: "status",
+	SenderClientBusiness:   "sender_client_business",
+	Status:                 "status",
 }
 
 // CPASCollaborationRequestFieldsList contains all available fields for CPASCollaborationRequest objects

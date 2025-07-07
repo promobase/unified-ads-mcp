@@ -15,7 +15,7 @@ import (
 
 // ToolProductcatalog_post_marketplace_partner_sellers_details returns the MCP tool definition for productcatalog_post_marketplace_partner_sellers_details
 func ToolProductcatalog_post_marketplace_partner_sellers_details() mcp.Tool {
-	
+
 	// Params object accepts: requests (map)
 	return mcp.NewTool("productcatalog_post_marketplace_partner_sellers_details",
 		mcp.WithDescription("POST marketplace_partner_sellers_details for ProductCatalog"),
@@ -23,9 +23,9 @@ func ToolProductcatalog_post_marketplace_partner_sellers_details() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"requests": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "requests parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: requests (object) [required]"),
@@ -58,8 +58,6 @@ func HandleProductcatalog_post_marketplace_partner_sellers_details(ctx context.C
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Productcatalog_post_marketplace_partner_sellers_details(accessToken, args)
 	if err != nil {
@@ -78,20 +76,18 @@ func HandleProductcatalog_post_marketplace_partner_sellers_details(ctx context.C
 // Productcatalog_post_marketplace_partner_sellers_details performs POST marketplace_partner_sellers_details for ProductCatalog
 func Productcatalog_post_marketplace_partner_sellers_details(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/marketplace_partner_sellers_details")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

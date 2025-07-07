@@ -15,7 +15,7 @@ import (
 
 // ToolAdvideo_post_polls returns the MCP tool definition for advideo_post_polls
 func ToolAdvideo_post_polls() mcp.Tool {
-	
+
 	// Params object accepts: close_after_voting (bool), correct_option (unsigned int), default_open (bool), options (list<string>), question (string), show_gradient (bool), show_results (bool)
 	return mcp.NewTool("advideo_post_polls",
 		mcp.WithDescription("POST polls for AdVideo"),
@@ -23,34 +23,34 @@ func ToolAdvideo_post_polls() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"close_after_voting": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "close_after_voting parameter",
 				},
 				"correct_option": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "correct_option parameter",
 				},
 				"default_open": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "default_open parameter",
 				},
 				"options": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "options parameter",
-					"required": true,
-					"items": map[string]any{"type": "string"},
+					"required":    true,
+					"items":       map[string]any{"type": "string"},
 				},
 				"question": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "question parameter",
-					"required": true,
+					"required":    true,
 				},
 				"show_gradient": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "show_gradient parameter",
 				},
 				"show_results": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "show_results parameter",
 				},
 			}),
@@ -84,8 +84,6 @@ func HandleAdvideo_post_polls(ctx context.Context, request mcp.CallToolRequest) 
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Advideo_post_polls(accessToken, args)
 	if err != nil {
@@ -104,20 +102,18 @@ func HandleAdvideo_post_polls(ctx context.Context, request mcp.CallToolRequest) 
 // Advideo_post_polls performs POST polls for AdVideo
 func Advideo_post_polls(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/polls")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

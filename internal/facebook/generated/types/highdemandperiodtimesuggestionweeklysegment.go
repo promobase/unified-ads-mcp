@@ -4,8 +4,8 @@ package types
 
 // HighDemandPeriodTimeSuggestionWeeklySegment represents a Facebook HighDemandPeriodTimeSuggestionWeeklySegment object
 type HighDemandPeriodTimeSuggestionWeeklySegment struct {
-	Days []string `json:"days"`
-	End_minute int `json:"end_minute"`
-	Start_minute int `json:"start_minute"`
-	Timezone_type string `json:"timezone_type"`
+	Days          []string `json:"days"`
+	End_minute    int      `json:"end_minute"`
+	Start_minute  int      `json:"start_minute"`
+	Timezone_type string   `json:"timezone_type"`
 }

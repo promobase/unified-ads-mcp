@@ -5,7 +5,7 @@ package types
 // AdCreativeLinkDataAppLinkSpec represents a Facebook AdCreativeLinkDataAppLinkSpec object
 type AdCreativeLinkDataAppLinkSpec struct {
 	Android []AndroidAppLink `json:"android"`
-	Ios []IosAppLink `json:"ios"`
-	Ipad []IosAppLink `json:"ipad"`
-	Iphone []IosAppLink `json:"iphone"`
+	Ios     []IosAppLink     `json:"ios"`
+	Ipad    []IosAppLink     `json:"ipad"`
+	Iphone  []IosAppLink     `json:"iphone"`
 }

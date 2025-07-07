@@ -15,7 +15,6 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolAdasyncrequest_delete_())
 	tools = append(tools, ToolAdasyncrequest_get_())
 
-
 	return tools
 }
 
@@ -25,7 +24,6 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 
 	handlers["adasyncrequest_delete_"] = HandleAdasyncrequest_delete_
 	handlers["adasyncrequest_get_"] = HandleAdasyncrequest_get_
-
 
 	return handlers
 }

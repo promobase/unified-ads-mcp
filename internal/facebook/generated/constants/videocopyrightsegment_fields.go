@@ -4,12 +4,12 @@ package constants
 
 // VideoCopyrightSegmentFields contains field name constants for VideoCopyrightSegment objects
 var VideoCopyrightSegmentFields = struct {
-	DurationInSec string
-	MediaType string
+	DurationInSec  string
+	MediaType      string
 	StartTimeInSec string
 }{
-	DurationInSec: "duration_in_sec",
-	MediaType: "media_type",
+	DurationInSec:  "duration_in_sec",
+	MediaType:      "media_type",
 	StartTimeInSec: "start_time_in_sec",
 }
 

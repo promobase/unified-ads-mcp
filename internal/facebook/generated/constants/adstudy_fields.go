@@ -4,43 +4,43 @@ package constants
 
 // AdStudyFields contains field name constants for AdStudy objects
 var AdStudyFields = struct {
-	Business string
-	CanceledTime string
-	ClientBusiness string
-	CooldownStartTime string
-	CreatedBy string
-	CreatedTime string
-	Description string
-	EndTime string
-	Id string
-	MeasurementContact string
-	Name string
-	ObservationEndTime string
+	Business                  string
+	CanceledTime              string
+	ClientBusiness            string
+	CooldownStartTime         string
+	CreatedBy                 string
+	CreatedTime               string
+	Description               string
+	EndTime                   string
+	Id                        string
+	MeasurementContact        string
+	Name                      string
+	ObservationEndTime        string
 	ResultsFirstAvailableDate string
-	SalesContact string
-	StartTime string
-	FieldType string
-	UpdatedBy string
-	UpdatedTime string
+	SalesContact              string
+	StartTime                 string
+	FieldType                 string
+	UpdatedBy                 string
+	UpdatedTime               string
 }{
-	Business: "business",
-	CanceledTime: "canceled_time",
-	ClientBusiness: "client_business",
-	CooldownStartTime: "cooldown_start_time",
-	CreatedBy: "created_by",
-	CreatedTime: "created_time",
-	Description: "description",
-	EndTime: "end_time",
-	Id: "id",
-	MeasurementContact: "measurement_contact",
-	Name: "name",
-	ObservationEndTime: "observation_end_time",
+	Business:                  "business",
+	CanceledTime:              "canceled_time",
+	ClientBusiness:            "client_business",
+	CooldownStartTime:         "cooldown_start_time",
+	CreatedBy:                 "created_by",
+	CreatedTime:               "created_time",
+	Description:               "description",
+	EndTime:                   "end_time",
+	Id:                        "id",
+	MeasurementContact:        "measurement_contact",
+	Name:                      "name",
+	ObservationEndTime:        "observation_end_time",
 	ResultsFirstAvailableDate: "results_first_available_date",
-	SalesContact: "sales_contact",
-	StartTime: "start_time",
-	FieldType: "type",
-	UpdatedBy: "updated_by",
-	UpdatedTime: "updated_time",
+	SalesContact:              "sales_contact",
+	StartTime:                 "start_time",
+	FieldType:                 "type",
+	UpdatedBy:                 "updated_by",
+	UpdatedTime:               "updated_time",
 }
 
 // AdStudyFieldsList contains all available fields for AdStudy objects

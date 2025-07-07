@@ -15,7 +15,7 @@ import (
 
 // ToolApplication_post_activities returns the MCP tool definition for application_post_activities
 func ToolApplication_post_activities() mcp.Tool {
-	
+
 	// Params object accepts: advertiser_id (string), advertiser_tracking_enabled (bool), anon_id (string), app_user_id (string), application_tracking_enabled (bool), attribution (string), attribution_referrer (string), attribution_sources (list<map>), auto_publish (bool), bundle_id (string), bundle_short_version (string), bundle_version (string), campaign_ids (string), click_id (string), consider_views (bool), custom_events (list<Object>), custom_events_file (file), data_processing_options (list<string>), data_processing_options_country (unsigned int), data_processing_options_state (unsigned int), device_token (string), event (applicationactivities_event_enum_param), event_id (string), extinfo (Object), google_install_referrer (string), include_dwell_data (bool), include_video_data (bool), install_id (string), install_referrer (string), install_timestamp (unsigned int), installer_package (string), is_fb (bool), limited_data_use (bool), meta_install_referrer (string), migration_bundle (string), operational_parameters (list<map>), page_id (unsigned int), page_scoped_user_id (unsigned int), receipt_data (string), sdk_version (string), ud (map), url_schemes (list<string>), user_id (string), user_id_type (applicationactivities_user_id_type_enum_param), vendor_id (string), windows_attribution_id (string)
 	return mcp.NewTool("application_post_activities",
 		mcp.WithDescription("POST activities for Application"),
@@ -23,195 +23,195 @@ func ToolApplication_post_activities() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"advertiser_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "advertiser_id parameter",
 				},
 				"advertiser_tracking_enabled": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "advertiser_tracking_enabled parameter",
 				},
 				"anon_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "anon_id parameter",
 				},
 				"app_user_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "app_user_id parameter",
 				},
 				"application_tracking_enabled": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "application_tracking_enabled parameter",
 				},
 				"attribution": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "attribution parameter",
 				},
 				"attribution_referrer": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "attribution_referrer parameter",
 				},
 				"attribution_sources": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "attribution_sources parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"auto_publish": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "auto_publish parameter",
 				},
 				"bundle_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "bundle_id parameter",
 				},
 				"bundle_short_version": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "bundle_short_version parameter",
 				},
 				"bundle_version": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "bundle_version parameter",
 				},
 				"campaign_ids": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "campaign_ids parameter",
 				},
 				"click_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "click_id parameter",
 				},
 				"consider_views": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "consider_views parameter",
 				},
 				"custom_events": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "custom_events parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"custom_events_file": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "custom_events_file parameter",
 				},
 				"data_processing_options": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "data_processing_options parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"data_processing_options_country": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "data_processing_options_country parameter",
 				},
 				"data_processing_options_state": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "data_processing_options_state parameter",
 				},
 				"device_token": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "device_token parameter",
 				},
 				"event": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "event parameter",
-					"required": true,
-					"enum": []string{ "CUSTOM_APP_EVENTS", "DEFERRED_APP_LINK", "MOBILE_APP_INSTALL" },
+					"required":    true,
+					"enum":        []string{"CUSTOM_APP_EVENTS", "DEFERRED_APP_LINK", "MOBILE_APP_INSTALL"},
 				},
 				"event_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "event_id parameter",
 				},
 				"extinfo": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "extinfo parameter",
 				},
 				"google_install_referrer": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "google_install_referrer parameter",
 				},
 				"include_dwell_data": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "include_dwell_data parameter",
 				},
 				"include_video_data": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "include_video_data parameter",
 				},
 				"install_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "install_id parameter",
 				},
 				"install_referrer": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "install_referrer parameter",
 				},
 				"install_timestamp": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "install_timestamp parameter",
 				},
 				"installer_package": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "installer_package parameter",
 				},
 				"is_fb": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_fb parameter",
 				},
 				"limited_data_use": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "limited_data_use parameter",
 				},
 				"meta_install_referrer": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "meta_install_referrer parameter",
 				},
 				"migration_bundle": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "migration_bundle parameter",
 				},
 				"operational_parameters": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "operational_parameters parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"page_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "page_id parameter",
 				},
 				"page_scoped_user_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "page_scoped_user_id parameter",
 				},
 				"receipt_data": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "receipt_data parameter",
 				},
 				"sdk_version": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "sdk_version parameter",
 				},
 				"ud": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "ud parameter",
 				},
 				"url_schemes": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "url_schemes parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"user_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "user_id parameter",
 				},
 				"user_id_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "user_id_type parameter",
-					"enum": []string{ "INSTANT_GAMES_PLAYER_ID" },
+					"enum":        []string{"INSTANT_GAMES_PLAYER_ID"},
 				},
 				"vendor_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "vendor_id parameter",
 				},
 				"windows_attribution_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "windows_attribution_id parameter",
 				},
 			}),
@@ -245,8 +245,6 @@ func HandleApplication_post_activities(ctx context.Context, request mcp.CallTool
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Application_post_activities(accessToken, args)
 	if err != nil {
@@ -265,20 +263,18 @@ func HandleApplication_post_activities(ctx context.Context, request mcp.CallTool
 // Application_post_activities performs POST activities for Application
 func Application_post_activities(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/activities")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

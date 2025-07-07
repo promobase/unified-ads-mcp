@@ -4,31 +4,31 @@ package constants
 
 // InsightsValueFields contains field name constants for InsightsValue objects
 var InsightsValueFields = struct {
-	CampaignId string
-	EarningSource string
-	EndTime string
-	EngagementSource string
-	MessageType string
-	MessagingChannel string
-	MonetizationTool string
+	CampaignId                       string
+	EarningSource                    string
+	EndTime                          string
+	EngagementSource                 string
+	MessageType                      string
+	MessagingChannel                 string
+	MonetizationTool                 string
 	RecurringNotificationsEntryPoint string
-	RecurringNotificationsFrequency string
-	RecurringNotificationsTopic string
-	StartTime string
-	Value string
+	RecurringNotificationsFrequency  string
+	RecurringNotificationsTopic      string
+	StartTime                        string
+	Value                            string
 }{
-	CampaignId: "campaign_id",
-	EarningSource: "earning_source",
-	EndTime: "end_time",
-	EngagementSource: "engagement_source",
-	MessageType: "message_type",
-	MessagingChannel: "messaging_channel",
-	MonetizationTool: "monetization_tool",
+	CampaignId:                       "campaign_id",
+	EarningSource:                    "earning_source",
+	EndTime:                          "end_time",
+	EngagementSource:                 "engagement_source",
+	MessageType:                      "message_type",
+	MessagingChannel:                 "messaging_channel",
+	MonetizationTool:                 "monetization_tool",
 	RecurringNotificationsEntryPoint: "recurring_notifications_entry_point",
-	RecurringNotificationsFrequency: "recurring_notifications_frequency",
-	RecurringNotificationsTopic: "recurring_notifications_topic",
-	StartTime: "start_time",
-	Value: "value",
+	RecurringNotificationsFrequency:  "recurring_notifications_frequency",
+	RecurringNotificationsTopic:      "recurring_notifications_topic",
+	StartTime:                        "start_time",
+	Value:                            "value",
 }
 
 // InsightsValueFieldsList contains all available fields for InsightsValue objects

@@ -4,12 +4,12 @@ package constants
 
 // AppOptimizedCustomEventsFields contains field name constants for AppOptimizedCustomEvents objects
 var AppOptimizedCustomEventsFields = struct {
-	AppId string
-	AppName string
+	AppId      string
+	AppName    string
 	EventNames string
 }{
-	AppId: "app_id",
-	AppName: "app_name",
+	AppId:      "app_id",
+	AppName:    "app_name",
 	EventNames: "event_names",
 }
 

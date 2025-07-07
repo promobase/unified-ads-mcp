@@ -4,27 +4,27 @@ package constants
 
 // AdAccountUserPermissionsFields contains field name constants for AdAccountUserPermissions objects
 var AdAccountUserPermissionsFields = struct {
-	Business string
+	Business        string
 	BusinessPersona string
-	CreatedBy string
-	CreatedTime string
-	Email string
-	Status string
-	Tasks string
-	UpdatedBy string
-	UpdatedTime string
-	User string
+	CreatedBy       string
+	CreatedTime     string
+	Email           string
+	Status          string
+	Tasks           string
+	UpdatedBy       string
+	UpdatedTime     string
+	User            string
 }{
-	Business: "business",
+	Business:        "business",
 	BusinessPersona: "business_persona",
-	CreatedBy: "created_by",
-	CreatedTime: "created_time",
-	Email: "email",
-	Status: "status",
-	Tasks: "tasks",
-	UpdatedBy: "updated_by",
-	UpdatedTime: "updated_time",
-	User: "user",
+	CreatedBy:       "created_by",
+	CreatedTime:     "created_time",
+	Email:           "email",
+	Status:          "status",
+	Tasks:           "tasks",
+	UpdatedBy:       "updated_by",
+	UpdatedTime:     "updated_time",
+	User:            "user",
 }
 
 // AdAccountUserPermissionsFieldsList contains all available fields for AdAccountUserPermissions objects

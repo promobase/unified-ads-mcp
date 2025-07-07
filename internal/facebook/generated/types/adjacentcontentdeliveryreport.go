@@ -4,7 +4,7 @@ package types
 
 // AdjacentContentDeliveryReport represents a Facebook AdjacentContentDeliveryReport object
 type AdjacentContentDeliveryReport struct {
-	Ad_id string `json:"ad_id"`
-	Content []map[string]interface{} `json:"content"`
-	Impression_id string `json:"impression_id"`
+	Ad_id         string                   `json:"ad_id"`
+	Content       []map[string]interface{} `json:"content"`
+	Impression_id string                   `json:"impression_id"`
 }

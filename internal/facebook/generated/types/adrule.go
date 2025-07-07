@@ -6,15 +6,15 @@ import "time"
 
 // AdRule represents a Facebook AdRule object
 type AdRule struct {
-	Account_id string `json:"account_id"`
-	Created_by *User `json:"created_by"`
-	Created_time time.Time `json:"created_time"`
-	Disable_error_code int `json:"disable_error_code"`
-	Evaluation_spec *AdRuleEvaluationSpec `json:"evaluation_spec"`
-	Execution_spec *AdRuleExecutionSpec `json:"execution_spec"`
-	Id string `json:"id"`
-	Name string `json:"name"`
-	Schedule_spec *AdRuleScheduleSpec `json:"schedule_spec"`
-	Status string `json:"status"`
-	Updated_time time.Time `json:"updated_time"`
+	Account_id         string                `json:"account_id"`
+	Created_by         *User                 `json:"created_by"`
+	Created_time       time.Time             `json:"created_time"`
+	Disable_error_code int                   `json:"disable_error_code"`
+	Evaluation_spec    *AdRuleEvaluationSpec `json:"evaluation_spec"`
+	Execution_spec     *AdRuleExecutionSpec  `json:"execution_spec"`
+	Id                 string                `json:"id"`
+	Name               string                `json:"name"`
+	Schedule_spec      *AdRuleScheduleSpec   `json:"schedule_spec"`
+	Status             string                `json:"status"`
+	Updated_time       time.Time             `json:"updated_time"`
 }

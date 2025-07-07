@@ -16,8 +16,7 @@ import (
 
 // ToolOfflineconversiondatasetupload_get_pull_sessions returns the MCP tool definition for offlineconversiondatasetupload_get_pull_sessions
 func ToolOfflineconversiondatasetupload_get_pull_sessions() mcp.Tool {
-	
-	
+
 	return mcp.NewTool("offlineconversiondatasetupload_get_pull_sessions",
 		mcp.WithDescription("GET pull_sessions for OfflineConversionDataSetUpload"),
 		mcp.WithArray("fields",
@@ -71,8 +70,6 @@ func HandleOfflineconversiondatasetupload_get_pull_sessions(ctx context.Context,
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Offlineconversiondatasetupload_get_pull_sessions(accessToken, args)
 	if err != nil {
@@ -91,38 +88,36 @@ func HandleOfflineconversiondatasetupload_get_pull_sessions(ctx context.Context,
 // Offlineconversiondatasetupload_get_pull_sessions performs GET pull_sessions for OfflineConversionDataSetUpload
 func Offlineconversiondatasetupload_get_pull_sessions(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/pull_sessions")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

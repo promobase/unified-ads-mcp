@@ -4,10 +4,10 @@ package types
 
 // BusinessAdvertisableApplicationsResult represents a Facebook BusinessAdvertisableApplicationsResult object
 type BusinessAdvertisableApplicationsResult struct {
-	Are_app_events_unavailable bool `json:"are_app_events_unavailable"`
-	Business *Business `json:"business"`
-	Has_insight_permission bool `json:"has_insight_permission"`
-	Id string `json:"id"`
-	Name string `json:"name"`
-	Photo_url string `json:"photo_url"`
+	Are_app_events_unavailable bool      `json:"are_app_events_unavailable"`
+	Business                   *Business `json:"business"`
+	Has_insight_permission     bool      `json:"has_insight_permission"`
+	Id                         string    `json:"id"`
+	Name                       string    `json:"name"`
+	Photo_url                  string    `json:"photo_url"`
 }

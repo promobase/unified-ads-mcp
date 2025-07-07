@@ -17,7 +17,7 @@ import (
 // ToolIguser_get_notification_message_tokens returns the MCP tool definition for iguser_get_notification_message_tokens
 func ToolIguser_get_notification_message_tokens() mcp.Tool {
 	// Available fields for UserPageOneTimeOptInTokenSettings: creation_timestamp, next_eligible_time, notification_messages_frequency, notification_messages_reoptin, notification_messages_timezone, notification_messages_token, recipient_id, token_expiry_timestamp, topic_title, user_token_status
-	
+
 	return mcp.NewTool("iguser_get_notification_message_tokens",
 		mcp.WithDescription("GET notification_message_tokens for IGUser"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleIguser_get_notification_message_tokens(ctx context.Context, request m
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Iguser_get_notification_message_tokens(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleIguser_get_notification_message_tokens(ctx context.Context, request m
 // Iguser_get_notification_message_tokens performs GET notification_message_tokens for IGUser
 func Iguser_get_notification_message_tokens(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/notification_message_tokens")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

@@ -15,7 +15,7 @@ import (
 
 // ToolIgcomment_post_ returns the MCP tool definition for igcomment_post_
 func ToolIgcomment_post_() mcp.Tool {
-	
+
 	// Params object accepts: ad_id (string), hide (bool)
 	return mcp.NewTool("igcomment_post_",
 		mcp.WithDescription("POST  for IGComment"),
@@ -23,13 +23,13 @@ func ToolIgcomment_post_() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"ad_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "ad_id parameter",
 				},
 				"hide": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "hide parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: ad_id (string), hide (boolean) [required]"),
@@ -62,8 +62,6 @@ func HandleIgcomment_post_(ctx context.Context, request mcp.CallToolRequest) (*m
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Igcomment_post_(accessToken, args)
 	if err != nil {
@@ -82,20 +80,18 @@ func HandleIgcomment_post_(ctx context.Context, request mcp.CallToolRequest) (*m
 // Igcomment_post_ performs POST  for IGComment
 func Igcomment_post_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

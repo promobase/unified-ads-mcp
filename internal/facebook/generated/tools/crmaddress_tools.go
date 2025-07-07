@@ -17,7 +17,6 @@ import (
 func GetCRMAddressTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// crmaddress_get_ tool
 	// Available fields for CRMAddress: city, cnpj_tax_id, country, id, postal_code, registration_label, registration_number, state, street1, street2, street3, street4, validation_status, vat_tax_id
 	crmaddress_get_Tool := mcp.NewTool("crmaddress_get_",
@@ -37,12 +36,10 @@ func GetCRMAddressTools() []mcp.Tool {
 	)
 	tools = append(tools, crmaddress_get_Tool)
 
-
 	return tools
 }
 
 // CRMAddress handlers
-
 
 // HandleCrmaddress_get_ handles the crmaddress_get_ tool with context-based auth
 func HandleCrmaddress_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleCrmaddress_get_(ctx context.Context, request mcp.CallToolRequest) (*m
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Crmaddress_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleCrmaddress_get_(ctx context.Context, request mcp.CallToolRequest) (*m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

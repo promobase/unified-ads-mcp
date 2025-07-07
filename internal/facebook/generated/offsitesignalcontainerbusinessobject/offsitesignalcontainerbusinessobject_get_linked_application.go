@@ -17,7 +17,7 @@ import (
 // ToolOffsitesignalcontainerbusinessobject_get_linked_application returns the MCP tool definition for offsitesignalcontainerbusinessobject_get_linked_application
 func ToolOffsitesignalcontainerbusinessobject_get_linked_application() mcp.Tool {
 	// Available fields for AdsDataset: can_proxy, collection_rate, config, creation_time, creator, dataset_id, description, duplicate_entries, enable_auto_assign_to_accounts, enable_automatic_events, enable_automatic_matching, enable_real_time_event_log, event_stats, event_time_max, event_time_min, first_party_cookie_status, has_bapi_domains, has_catalog_microdata_activity, has_ofa_redacted_keys, has_sent_pii, id, is_consolidated_container, is_created_by_business, is_crm, is_eligible_for_sharing_to_ad_account, is_eligible_for_sharing_to_business, is_eligible_for_value_optimization, is_mta_use, is_restricted_use, is_unavailable, last_fired_time, last_upload_app, last_upload_app_changed_time, last_upload_time, late_upload_reminder_eligibility, match_rate_approx, matched_entries, name, no_ads_tracked_for_weekly_uploaded_events_reminder_eligibility, num_active_ad_set_tracked, num_recent_offline_conversions_uploaded, num_uploads, owner_ad_account, owner_business, percentage_of_late_uploads_in_external_suboptimal_window, permissions, server_last_fired_time, show_automatic_events, upload_rate, upload_reminder_eligibility, usage, valid_entries
-	
+
 	return mcp.NewTool("offsitesignalcontainerbusinessobject_get_linked_application",
 		mcp.WithDescription("GET linked_application for OffsiteSignalContainerBusinessObject"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleOffsitesignalcontainerbusinessobject_get_linked_application(ctx conte
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Offsitesignalcontainerbusinessobject_get_linked_application(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleOffsitesignalcontainerbusinessobject_get_linked_application(ctx conte
 // Offsitesignalcontainerbusinessobject_get_linked_application performs GET linked_application for OffsiteSignalContainerBusinessObject
 func Offsitesignalcontainerbusinessobject_get_linked_application(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/linked_application")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

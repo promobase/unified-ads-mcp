@@ -15,22 +15,22 @@ import (
 
 // ToolCustomaudience_post_users returns the MCP tool definition for customaudience_post_users
 func ToolCustomaudience_post_users() mcp.Tool {
-	
+
 	// Params object accepts: namespace (string), payload (Object), session (Object)
 	return mcp.NewTool("customaudience_post_users",
 		mcp.WithDescription("POST users for CustomAudience"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"namespace": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "namespace parameter",
 				},
 				"payload": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "payload parameter",
 				},
 				"session": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "session parameter",
 				},
 			}),
@@ -62,8 +62,6 @@ func HandleCustomaudience_post_users(ctx context.Context, request mcp.CallToolRe
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Customaudience_post_users(accessToken, args)
 	if err != nil {
@@ -82,20 +80,18 @@ func HandleCustomaudience_post_users(ctx context.Context, request mcp.CallToolRe
 // Customaudience_post_users performs POST users for CustomAudience
 func Customaudience_post_users(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/users")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

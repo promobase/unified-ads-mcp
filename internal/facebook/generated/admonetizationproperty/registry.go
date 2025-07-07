@@ -17,7 +17,6 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolAdmonetizationproperty_get_adnetworkanalytics_results())
 	tools = append(tools, ToolAdmonetizationproperty_get_())
 
-
 	return tools
 }
 
@@ -29,7 +28,6 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers["admonetizationproperty_post_adnetworkanalytics"] = HandleAdmonetizationproperty_post_adnetworkanalytics
 	handlers["admonetizationproperty_get_adnetworkanalytics_results"] = HandleAdmonetizationproperty_get_adnetworkanalytics_results
 	handlers["admonetizationproperty_get_"] = HandleAdmonetizationproperty_get_
-
 
 	return handlers
 }

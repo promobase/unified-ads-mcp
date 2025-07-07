@@ -4,15 +4,15 @@ package constants
 
 // EventExternalTicketInfoFields contains field name constants for EventExternalTicketInfo objects
 var EventExternalTicketInfoFields = struct {
-	Id string
+	Id            string
 	MaxSalesPrice string
 	MinSalesPrice string
-	SalesStatus string
+	SalesStatus   string
 }{
-	Id: "id",
+	Id:            "id",
 	MaxSalesPrice: "max_sales_price",
 	MinSalesPrice: "min_sales_price",
-	SalesStatus: "sales_status",
+	SalesStatus:   "sales_status",
 }
 
 // EventExternalTicketInfoFieldsList contains all available fields for EventExternalTicketInfo objects

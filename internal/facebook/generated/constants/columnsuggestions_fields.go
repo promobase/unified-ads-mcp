@@ -4,14 +4,14 @@ package constants
 
 // ColumnSuggestionsFields contains field name constants for ColumnSuggestions objects
 var ColumnSuggestionsFields = struct {
-	Explanations string
-	Format string
-	Objective string
+	Explanations      string
+	Format            string
+	Objective         string
 	OptimizationGoals string
 }{
-	Explanations: "explanations",
-	Format: "format",
-	Objective: "objective",
+	Explanations:      "explanations",
+	Format:            "format",
+	Objective:         "objective",
 	OptimizationGoals: "optimization_goals",
 }
 

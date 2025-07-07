@@ -5,10 +5,10 @@ package constants
 // UserIDForAppFields contains field name constants for UserIDForApp objects
 var UserIDForAppFields = struct {
 	App string
-	Id string
+	Id  string
 }{
 	App: "app",
-	Id: "id",
+	Id:  "id",
 }
 
 // UserIDForAppFieldsList contains all available fields for UserIDForApp objects

@@ -15,49 +15,49 @@ import (
 
 // ToolProductfeed_post_ returns the MCP tool definition for productfeed_post_
 func ToolProductfeed_post_() mcp.Tool {
-	
+
 	// Params object accepts: default_currency (string), deletion_enabled (bool), delimiter (productfeed_delimiter), encoding (productfeed_encoding), migrated_from_feed_id (string), name (string), quoted_fields_mode (productfeed_quoted_fields_mode), schedule (string), update_schedule (string)
 	return mcp.NewTool("productfeed_post_",
 		mcp.WithDescription("POST  for ProductFeed"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"default_currency": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "default_currency parameter",
 				},
 				"deletion_enabled": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "deletion_enabled parameter",
 				},
 				"delimiter": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "delimiter parameter",
-					"enum": []string{ "AUTODETECT", "BAR", "COMMA", "SEMICOLON", "TAB", "TILDE" },
+					"enum":        []string{"AUTODETECT", "BAR", "COMMA", "SEMICOLON", "TAB", "TILDE"},
 				},
 				"encoding": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "encoding parameter",
-					"enum": []string{ "AUTODETECT", "LATIN1", "UTF16BE", "UTF16LE", "UTF32BE", "UTF32LE", "UTF8" },
+					"enum":        []string{"AUTODETECT", "LATIN1", "UTF16BE", "UTF16LE", "UTF32BE", "UTF32LE", "UTF8"},
 				},
 				"migrated_from_feed_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "migrated_from_feed_id parameter",
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
 				},
 				"quoted_fields_mode": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "quoted_fields_mode parameter",
-					"enum": []string{ "autodetect", "off", "on" },
+					"enum":        []string{"autodetect", "off", "on"},
 				},
 				"schedule": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "schedule parameter",
 				},
 				"update_schedule": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "update_schedule parameter",
 				},
 			}),
@@ -89,8 +89,6 @@ func HandleProductfeed_post_(ctx context.Context, request mcp.CallToolRequest) (
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Productfeed_post_(accessToken, args)
 	if err != nil {
@@ -109,20 +107,18 @@ func HandleProductfeed_post_(ctx context.Context, request mcp.CallToolRequest) (
 // Productfeed_post_ performs POST  for ProductFeed
 func Productfeed_post_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

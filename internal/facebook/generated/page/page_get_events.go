@@ -23,24 +23,24 @@ func ToolPage_get_events() mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"event_state_filter": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "event_state_filter parameter",
-					"enum": []string{ "canceled", "draft", "published", "scheduled_draft_for_publication" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"canceled", "draft", "published", "scheduled_draft_for_publication"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"include_canceled": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "include_canceled parameter",
 				},
 				"time_filter": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "time_filter parameter",
-					"enum": []string{ "past", "upcoming" },
+					"enum":        []string{"past", "upcoming"},
 				},
 				"type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "type parameter",
-					"enum": []string{ "attending", "created", "declined", "maybe", "not_replied" },
+					"enum":        []string{"attending", "created", "declined", "maybe", "not_replied"},
 				},
 			}),
 			mcp.Description("Parameters object containing: event_state_filter (array<enum>) [canceled, draft, published, scheduled_draft_for_publication], include_canceled (boolean), time_filter (enum) [past, upcoming], type (enum) [attending, created, declined, maybe, not_replied]"),
@@ -108,8 +108,6 @@ func HandlePage_get_events(ctx context.Context, request mcp.CallToolRequest) (*m
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Page_get_events(accessToken, args)
 	if err != nil {
@@ -128,44 +126,42 @@ func HandlePage_get_events(ctx context.Context, request mcp.CallToolRequest) (*m
 // Page_get_events performs GET events for Page
 func Page_get_events(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/events")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

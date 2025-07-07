@@ -4,7 +4,7 @@ package types
 
 // ReachFrequencyDayPart represents a Facebook ReachFrequencyDayPart object
 type ReachFrequencyDayPart struct {
-	Days []int `json:"days"`
-	End_minute int `json:"end_minute"`
-	Start_minute int `json:"start_minute"`
+	Days         []int `json:"days"`
+	End_minute   int   `json:"end_minute"`
+	Start_minute int   `json:"start_minute"`
 }

@@ -4,23 +4,23 @@ package constants
 
 // MailingAddressFields contains field name constants for MailingAddress objects
 var MailingAddressFields = struct {
-	City string
-	CityPage string
-	Country string
-	Id string
+	City       string
+	CityPage   string
+	Country    string
+	Id         string
 	PostalCode string
-	Region string
-	Street1 string
-	Street2 string
+	Region     string
+	Street1    string
+	Street2    string
 }{
-	City: "city",
-	CityPage: "city_page",
-	Country: "country",
-	Id: "id",
+	City:       "city",
+	CityPage:   "city_page",
+	Country:    "country",
+	Id:         "id",
 	PostalCode: "postal_code",
-	Region: "region",
-	Street1: "street1",
-	Street2: "street2",
+	Region:     "region",
+	Street1:    "street1",
+	Street2:    "street2",
 }
 
 // MailingAddressFieldsList contains all available fields for MailingAddress objects

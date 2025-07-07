@@ -15,7 +15,7 @@ import (
 
 // ToolCampaign_post_adlabels returns the MCP tool definition for campaign_post_adlabels
 func ToolCampaign_post_adlabels() mcp.Tool {
-	
+
 	// Params object accepts: adlabels (list<Object>), execution_options (list<adcampaigngroupadlabels_execution_options_enum_param>)
 	return mcp.NewTool("campaign_post_adlabels",
 		mcp.WithDescription("POST adlabels for Campaign"),
@@ -27,16 +27,16 @@ func ToolCampaign_post_adlabels() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"adlabels": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "adlabels parameter",
-					"required": true,
-					"items": map[string]any{"type": "object"},
+					"required":    true,
+					"items":       map[string]any{"type": "object"},
 				},
 				"execution_options": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "execution_options parameter",
-					"enum": []string{ "validate_only" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"validate_only"},
+					"items":       map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: adlabels (array<object>) [required], execution_options (array<enum>) [validate_only]"),
@@ -76,8 +76,6 @@ func HandleCampaign_post_adlabels(ctx context.Context, request mcp.CallToolReque
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Campaign_post_adlabels(accessToken, args)
 	if err != nil {
@@ -96,35 +94,33 @@ func HandleCampaign_post_adlabels(ctx context.Context, request mcp.CallToolReque
 // Campaign_post_adlabels performs POST adlabels for Campaign
 func Campaign_post_adlabels(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	// Extract campaign_id for URL construction
 	campaignId, ok := args["campaign_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("campaign_id is required for campaign_post_adlabels")
 	}
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/%sadlabels", campaignId)
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["campaign_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "campaign_id" != "campaign_id" {
 			urlParams.Set("campaign_id", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "params" != "campaign_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-		
-	}
 
+	}
 
 	// Make HTTP request
 	var resp *http.Response

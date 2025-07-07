@@ -17,7 +17,7 @@ import (
 // ToolAdstudy_get_objectives returns the MCP tool definition for adstudy_get_objectives
 func ToolAdstudy_get_objectives() mcp.Tool {
 	// Available fields for AdStudyObjective: id, is_primary, last_updated_results, name, results, type
-	
+
 	return mcp.NewTool("adstudy_get_objectives",
 		mcp.WithDescription("GET objectives for AdStudy"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleAdstudy_get_objectives(ctx context.Context, request mcp.CallToolReque
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Adstudy_get_objectives(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleAdstudy_get_objectives(ctx context.Context, request mcp.CallToolReque
 // Adstudy_get_objectives performs GET objectives for AdStudy
 func Adstudy_get_objectives(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/objectives")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

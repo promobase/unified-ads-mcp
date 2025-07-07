@@ -17,7 +17,7 @@ import (
 // ToolAdvideo_get_thumbnails returns the MCP tool definition for advideo_get_thumbnails
 func ToolAdvideo_get_thumbnails() mcp.Tool {
 	// Available fields for VideoThumbnail: height, id, is_preferred, name, scale, uri, width
-	
+
 	return mcp.NewTool("advideo_get_thumbnails",
 		mcp.WithDescription("GET thumbnails for AdVideo"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleAdvideo_get_thumbnails(ctx context.Context, request mcp.CallToolReque
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Advideo_get_thumbnails(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleAdvideo_get_thumbnails(ctx context.Context, request mcp.CallToolReque
 // Advideo_get_thumbnails performs GET thumbnails for AdVideo
 func Advideo_get_thumbnails(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/thumbnails")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

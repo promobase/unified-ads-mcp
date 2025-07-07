@@ -17,7 +17,6 @@ import (
 func GetBusinessFranchiseConfigTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// businessfranchiseconfig_get_ tool
 	// Available fields for BusinessFranchiseConfig: active_partner_count, agency_business, agency_business_asset_group, brand_name, business, business_vertical, id, partner_count, pending_agency_business, program_count, shared_business_asset_group, shared_creative_folder_count, shared_custom_audience_count
 	businessfranchiseconfig_get_Tool := mcp.NewTool("businessfranchiseconfig_get_",
@@ -37,12 +36,10 @@ func GetBusinessFranchiseConfigTools() []mcp.Tool {
 	)
 	tools = append(tools, businessfranchiseconfig_get_Tool)
 
-
 	return tools
 }
 
 // BusinessFranchiseConfig handlers
-
 
 // HandleBusinessfranchiseconfig_get_ handles the businessfranchiseconfig_get_ tool with context-based auth
 func HandleBusinessfranchiseconfig_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleBusinessfranchiseconfig_get_(ctx context.Context, request mcp.CallToo
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Businessfranchiseconfig_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleBusinessfranchiseconfig_get_(ctx context.Context, request mcp.CallToo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

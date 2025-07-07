@@ -5,5 +5,5 @@ package types
 // ProductCatalogImageSettings represents a Facebook ProductCatalogImageSettings object
 type ProductCatalogImageSettings struct {
 	Carousel_ad *ProductCatalogImageSettingsOperation `json:"carousel_ad"`
-	Single_ad *ProductCatalogImageSettingsOperation `json:"single_ad"`
+	Single_ad   *ProductCatalogImageSettingsOperation `json:"single_ad"`
 }

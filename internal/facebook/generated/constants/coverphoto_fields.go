@@ -5,16 +5,16 @@ package constants
 // CoverPhotoFields contains field name constants for CoverPhoto objects
 var CoverPhotoFields = struct {
 	CoverId string
-	Id string
+	Id      string
 	OffsetX string
 	OffsetY string
-	Source string
+	Source  string
 }{
 	CoverId: "cover_id",
-	Id: "id",
+	Id:      "id",
 	OffsetX: "offset_x",
 	OffsetY: "offset_y",
-	Source: "source",
+	Source:  "source",
 }
 
 // CoverPhotoFieldsList contains all available fields for CoverPhoto objects

@@ -15,8 +15,7 @@ import (
 
 // ToolLivevideo_delete_ returns the MCP tool definition for livevideo_delete_
 func ToolLivevideo_delete_() mcp.Tool {
-	
-	
+
 	return mcp.NewTool("livevideo_delete_",
 		mcp.WithDescription("DELETE  for LiveVideo"),
 	)
@@ -32,8 +31,6 @@ func HandleLivevideo_delete_(ctx context.Context, request mcp.CallToolRequest) (
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the API method
 	result, err := Livevideo_delete_(accessToken, args)
@@ -53,14 +50,11 @@ func HandleLivevideo_delete_(ctx context.Context, request mcp.CallToolRequest) (
 // Livevideo_delete_ performs DELETE  for LiveVideo
 func Livevideo_delete_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response

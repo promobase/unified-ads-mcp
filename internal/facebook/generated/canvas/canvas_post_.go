@@ -15,39 +15,39 @@ import (
 
 // ToolCanvas_post_ returns the MCP tool definition for canvas_post_
 func ToolCanvas_post_() mcp.Tool {
-	
+
 	// Params object accepts: background_color (string), body_element_ids (list<string>), enable_swipe_to_open (bool), is_hidden (bool), is_published (bool), name (string), source_template_id (string)
 	return mcp.NewTool("canvas_post_",
 		mcp.WithDescription("POST  for Canvas"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"background_color": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "background_color parameter",
 				},
 				"body_element_ids": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "body_element_ids parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"enable_swipe_to_open": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "enable_swipe_to_open parameter",
 				},
 				"is_hidden": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_hidden parameter",
 				},
 				"is_published": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_published parameter",
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
 				},
 				"source_template_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "source_template_id parameter",
 				},
 			}),
@@ -79,8 +79,6 @@ func HandleCanvas_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Canvas_post_(accessToken, args)
 	if err != nil {
@@ -99,20 +97,18 @@ func HandleCanvas_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 // Canvas_post_ performs POST  for Canvas
 func Canvas_post_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

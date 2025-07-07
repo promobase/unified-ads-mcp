@@ -17,7 +17,7 @@ import (
 // ToolProductitem_get_product_sets returns the MCP tool definition for productitem_get_product_sets
 func ToolProductitem_get_product_sets() mcp.Tool {
 	// Available fields for ProductSet: auto_creation_url, filter, id, latest_metadata, live_metadata, name, ordering_info, product_catalog, product_count, retailer_id
-	
+
 	return mcp.NewTool("productitem_get_product_sets",
 		mcp.WithDescription("GET product_sets for ProductItem"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleProductitem_get_product_sets(ctx context.Context, request mcp.CallToo
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Productitem_get_product_sets(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleProductitem_get_product_sets(ctx context.Context, request mcp.CallToo
 // Productitem_get_product_sets performs GET product_sets for ProductItem
 func Productitem_get_product_sets(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/product_sets")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

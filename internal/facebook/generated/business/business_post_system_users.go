@@ -15,7 +15,7 @@ import (
 
 // ToolBusiness_post_system_users returns the MCP tool definition for business_post_system_users
 func ToolBusiness_post_system_users() mcp.Tool {
-	
+
 	// Params object accepts: name (string), role (businesssystem_users_role_enum_param), system_user_id (int)
 	return mcp.NewTool("business_post_system_users",
 		mcp.WithDescription("POST system_users for Business"),
@@ -23,17 +23,17 @@ func ToolBusiness_post_system_users() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
-					"required": true,
+					"required":    true,
 				},
 				"role": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "role parameter",
-					"enum": []string{ "ADMIN", "ADS_RIGHTS_REVIEWER", "DEFAULT", "DEVELOPER", "EMPLOYEE", "FINANCE_ANALYST", "FINANCE_EDIT", "FINANCE_EDITOR", "FINANCE_VIEW", "MANAGE", "PARTNER_CENTER_ADMIN", "PARTNER_CENTER_ANALYST", "PARTNER_CENTER_EDUCATION", "PARTNER_CENTER_MARKETING", "PARTNER_CENTER_OPERATIONS" },
+					"enum":        []string{"ADMIN", "ADS_RIGHTS_REVIEWER", "DEFAULT", "DEVELOPER", "EMPLOYEE", "FINANCE_ANALYST", "FINANCE_EDIT", "FINANCE_EDITOR", "FINANCE_VIEW", "MANAGE", "PARTNER_CENTER_ADMIN", "PARTNER_CENTER_ANALYST", "PARTNER_CENTER_EDUCATION", "PARTNER_CENTER_MARKETING", "PARTNER_CENTER_OPERATIONS"},
 				},
 				"system_user_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "system_user_id parameter",
 				},
 			}),
@@ -67,8 +67,6 @@ func HandleBusiness_post_system_users(ctx context.Context, request mcp.CallToolR
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Business_post_system_users(accessToken, args)
 	if err != nil {
@@ -87,20 +85,18 @@ func HandleBusiness_post_system_users(ctx context.Context, request mcp.CallToolR
 // Business_post_system_users performs POST system_users for Business
 func Business_post_system_users(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/system_users")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

@@ -17,7 +17,6 @@ import (
 func GetMeasurementReportTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// measurementreport_get_ tool
 	// Available fields for MeasurementReport: download_urls, id, metadata, report_type, status
 	measurementreport_get_Tool := mcp.NewTool("measurementreport_get_",
@@ -37,12 +36,10 @@ func GetMeasurementReportTools() []mcp.Tool {
 	)
 	tools = append(tools, measurementreport_get_Tool)
 
-
 	return tools
 }
 
 // MeasurementReport handlers
-
 
 // HandleMeasurementreport_get_ handles the measurementreport_get_ tool with context-based auth
 func HandleMeasurementreport_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleMeasurementreport_get_(ctx context.Context, request mcp.CallToolReque
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Measurementreport_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleMeasurementreport_get_(ctx context.Context, request mcp.CallToolReque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

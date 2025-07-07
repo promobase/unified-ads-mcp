@@ -28,7 +28,6 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolPagepost_get_())
 	tools = append(tools, ToolPagepost_post_())
 
-
 	return tools
 }
 
@@ -51,7 +50,6 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers["pagepost_delete_"] = HandlePagepost_delete_
 	handlers["pagepost_get_"] = HandlePagepost_get_
 	handlers["pagepost_post_"] = HandlePagepost_post_
-
 
 	return handlers
 }

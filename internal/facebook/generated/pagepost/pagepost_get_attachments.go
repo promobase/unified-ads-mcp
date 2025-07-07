@@ -16,8 +16,7 @@ import (
 
 // ToolPagepost_get_attachments returns the MCP tool definition for pagepost_get_attachments
 func ToolPagepost_get_attachments() mcp.Tool {
-	
-	
+
 	return mcp.NewTool("pagepost_get_attachments",
 		mcp.WithDescription("GET attachments for PagePost"),
 		mcp.WithArray("fields",
@@ -71,8 +70,6 @@ func HandlePagepost_get_attachments(ctx context.Context, request mcp.CallToolReq
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Pagepost_get_attachments(accessToken, args)
 	if err != nil {
@@ -91,38 +88,36 @@ func HandlePagepost_get_attachments(ctx context.Context, request mcp.CallToolReq
 // Pagepost_get_attachments performs GET attachments for PagePost
 func Pagepost_get_attachments(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/attachments")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

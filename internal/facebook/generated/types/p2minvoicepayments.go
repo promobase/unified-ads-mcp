@@ -4,6 +4,6 @@ package types
 
 // P2MInvoicePayments represents a Facebook P2MInvoicePayments object
 type P2MInvoicePayments struct {
-	Page_id string `json:"page_id"`
+	Page_id  string                   `json:"page_id"`
 	Payments []map[string]interface{} `json:"payments"`
 }

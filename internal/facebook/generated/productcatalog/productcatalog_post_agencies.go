@@ -15,7 +15,7 @@ import (
 
 // ToolProductcatalog_post_agencies returns the MCP tool definition for productcatalog_post_agencies
 func ToolProductcatalog_post_agencies() mcp.Tool {
-	
+
 	// Params object accepts: business (string), permitted_roles (list<productcatalogagencies_permitted_roles_enum_param>), permitted_tasks (list<productcatalogagencies_permitted_tasks_enum_param>), skip_defaults (bool), utm_settings (map)
 	return mcp.NewTool("productcatalog_post_agencies",
 		mcp.WithDescription("POST agencies for ProductCatalog"),
@@ -23,28 +23,28 @@ func ToolProductcatalog_post_agencies() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"business": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "business parameter",
-					"required": true,
+					"required":    true,
 				},
 				"permitted_roles": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "permitted_roles parameter",
-					"enum": []string{ "ADMIN", "ADVERTISER" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"ADMIN", "ADVERTISER"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"permitted_tasks": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "permitted_tasks parameter",
-					"enum": []string{ "AA_ANALYZE", "ADVERTISE", "MANAGE", "MANAGE_AR" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"AA_ANALYZE", "ADVERTISE", "MANAGE", "MANAGE_AR"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"skip_defaults": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "skip_defaults parameter",
 				},
 				"utm_settings": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "utm_settings parameter",
 				},
 			}),
@@ -78,8 +78,6 @@ func HandleProductcatalog_post_agencies(ctx context.Context, request mcp.CallToo
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Productcatalog_post_agencies(accessToken, args)
 	if err != nil {
@@ -98,20 +96,18 @@ func HandleProductcatalog_post_agencies(ctx context.Context, request mcp.CallToo
 // Productcatalog_post_agencies performs POST agencies for ProductCatalog
 func Productcatalog_post_agencies(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/agencies")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

@@ -15,7 +15,6 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolAudiocopyright_get_update_records())
 	tools = append(tools, ToolAudiocopyright_get_())
 
-
 	return tools
 }
 
@@ -25,7 +24,6 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 
 	handlers["audiocopyright_get_update_records"] = HandleAudiocopyright_get_update_records
 	handlers["audiocopyright_get_"] = HandleAudiocopyright_get_
-
 
 	return handlers
 }

@@ -5,26 +5,26 @@ package constants
 // AdsQuickViewsFields contains field name constants for AdsQuickViews objects
 var AdsQuickViewsFields = struct {
 	AttributionWindows string
-	Breakdowns string
-	ColumnFields string
-	Description string
-	Id string
-	Name string
-	Owner string
-	Permission string
-	QuickViewType string
-	Sort string
+	Breakdowns         string
+	ColumnFields       string
+	Description        string
+	Id                 string
+	Name               string
+	Owner              string
+	Permission         string
+	QuickViewType      string
+	Sort               string
 }{
 	AttributionWindows: "attribution_windows",
-	Breakdowns: "breakdowns",
-	ColumnFields: "column_fields",
-	Description: "description",
-	Id: "id",
-	Name: "name",
-	Owner: "owner",
-	Permission: "permission",
-	QuickViewType: "quick_view_type",
-	Sort: "sort",
+	Breakdowns:         "breakdowns",
+	ColumnFields:       "column_fields",
+	Description:        "description",
+	Id:                 "id",
+	Name:               "name",
+	Owner:              "owner",
+	Permission:         "permission",
+	QuickViewType:      "quick_view_type",
+	Sort:               "sort",
 }
 
 // AdsQuickViewsFieldsList contains all available fields for AdsQuickViews objects

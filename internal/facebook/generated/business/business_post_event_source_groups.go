@@ -15,7 +15,7 @@ import (
 
 // ToolBusiness_post_event_source_groups returns the MCP tool definition for business_post_event_source_groups
 func ToolBusiness_post_event_source_groups() mcp.Tool {
-	
+
 	// Params object accepts: event_sources (list<string>), name (string)
 	return mcp.NewTool("business_post_event_source_groups",
 		mcp.WithDescription("POST event_source_groups for Business"),
@@ -23,15 +23,15 @@ func ToolBusiness_post_event_source_groups() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"event_sources": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "event_sources parameter",
-					"required": true,
-					"items": map[string]any{"type": "string"},
+					"required":    true,
+					"items":       map[string]any{"type": "string"},
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: event_sources (array<string>) [required], name (string) [required]"),
@@ -64,8 +64,6 @@ func HandleBusiness_post_event_source_groups(ctx context.Context, request mcp.Ca
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Business_post_event_source_groups(accessToken, args)
 	if err != nil {
@@ -84,20 +82,18 @@ func HandleBusiness_post_event_source_groups(ctx context.Context, request mcp.Ca
 // Business_post_event_source_groups performs POST event_source_groups for Business
 func Business_post_event_source_groups(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/event_source_groups")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

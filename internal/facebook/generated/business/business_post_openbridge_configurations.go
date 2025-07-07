@@ -15,7 +15,7 @@ import (
 
 // ToolBusiness_post_openbridge_configurations returns the MCP tool definition for business_post_openbridge_configurations
 func ToolBusiness_post_openbridge_configurations() mcp.Tool {
-	
+
 	// Params object accepts: active (bool), cloud_provider (string), cloud_region (string), destination_id (string), endpoint (string), fallback_domain (string), first_party_domain (string), host_business_id (unsigned int), instance_id (string), instance_version (string), is_sgw_instance (bool), is_sgw_pixel_from_meta_pixel (bool), partner_name (string), pixel_id (unsigned int), sgw_account_id (string), sgw_instance_url (string), sgw_pixel_id (unsigned int)
 	return mcp.NewTool("business_post_openbridge_configurations",
 		mcp.WithDescription("POST openbridge_configurations for Business"),
@@ -23,72 +23,72 @@ func ToolBusiness_post_openbridge_configurations() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"active": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "active parameter",
 				},
 				"cloud_provider": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "cloud_provider parameter",
 				},
 				"cloud_region": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "cloud_region parameter",
 				},
 				"destination_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "destination_id parameter",
 				},
 				"endpoint": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "endpoint parameter",
 				},
 				"fallback_domain": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "fallback_domain parameter",
 				},
 				"first_party_domain": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "first_party_domain parameter",
 				},
 				"host_business_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "host_business_id parameter",
 				},
 				"instance_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "instance_id parameter",
 				},
 				"instance_version": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "instance_version parameter",
 				},
 				"is_sgw_instance": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_sgw_instance parameter",
 				},
 				"is_sgw_pixel_from_meta_pixel": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_sgw_pixel_from_meta_pixel parameter",
 				},
 				"partner_name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "partner_name parameter",
 				},
 				"pixel_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "pixel_id parameter",
-					"required": true,
+					"required":    true,
 				},
 				"sgw_account_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "sgw_account_id parameter",
 				},
 				"sgw_instance_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "sgw_instance_url parameter",
 				},
 				"sgw_pixel_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "sgw_pixel_id parameter",
 				},
 			}),
@@ -122,8 +122,6 @@ func HandleBusiness_post_openbridge_configurations(ctx context.Context, request 
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Business_post_openbridge_configurations(accessToken, args)
 	if err != nil {
@@ -142,20 +140,18 @@ func HandleBusiness_post_openbridge_configurations(ctx context.Context, request 
 // Business_post_openbridge_configurations performs POST openbridge_configurations for Business
 func Business_post_openbridge_configurations(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/openbridge_configurations")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

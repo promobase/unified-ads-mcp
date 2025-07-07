@@ -17,7 +17,6 @@ import (
 func GetProductItemLocalInfoTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// productitemlocalinfo_get_ tool
 	// Available fields for ProductItemLocalInfo: availability_circle_origin, availability_circle_radius, availability_circle_radius_unit, availability_polygon_coordinates, availability_postal_codes, availability_source, id, inferred_circle_origin, inferred_circle_radius
 	productitemlocalinfo_get_Tool := mcp.NewTool("productitemlocalinfo_get_",
@@ -37,12 +36,10 @@ func GetProductItemLocalInfoTools() []mcp.Tool {
 	)
 	tools = append(tools, productitemlocalinfo_get_Tool)
 
-
 	return tools
 }
 
 // ProductItemLocalInfo handlers
-
 
 // HandleProductitemlocalinfo_get_ handles the productitemlocalinfo_get_ tool with context-based auth
 func HandleProductitemlocalinfo_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleProductitemlocalinfo_get_(ctx context.Context, request mcp.CallToolRe
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Productitemlocalinfo_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleProductitemlocalinfo_get_(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

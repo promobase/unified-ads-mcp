@@ -15,8 +15,7 @@ import (
 
 // ToolIguserforigonlyapi_delete_subscribed_apps returns the MCP tool definition for iguserforigonlyapi_delete_subscribed_apps
 func ToolIguserforigonlyapi_delete_subscribed_apps() mcp.Tool {
-	
-	
+
 	return mcp.NewTool("iguserforigonlyapi_delete_subscribed_apps",
 		mcp.WithDescription("DELETE subscribed_apps for IGUserForIGOnlyAPI"),
 	)
@@ -32,8 +31,6 @@ func HandleIguserforigonlyapi_delete_subscribed_apps(ctx context.Context, reques
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the API method
 	result, err := Iguserforigonlyapi_delete_subscribed_apps(accessToken, args)
@@ -53,14 +50,11 @@ func HandleIguserforigonlyapi_delete_subscribed_apps(ctx context.Context, reques
 // Iguserforigonlyapi_delete_subscribed_apps performs DELETE subscribed_apps for IGUserForIGOnlyAPI
 func Iguserforigonlyapi_delete_subscribed_apps(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/subscribed_apps")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response

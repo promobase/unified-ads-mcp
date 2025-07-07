@@ -4,17 +4,17 @@ package constants
 
 // PreapprovalReviewFields contains field name constants for PreapprovalReview objects
 var PreapprovalReviewFields = struct {
-	CompType string
+	CompType        string
 	CrowComponentId string
 	IsHumanReviewed string
-	IsReviewed string
-	PolicyInfo string
+	IsReviewed      string
+	PolicyInfo      string
 }{
-	CompType: "comp_type",
+	CompType:        "comp_type",
 	CrowComponentId: "crow_component_id",
 	IsHumanReviewed: "is_human_reviewed",
-	IsReviewed: "is_reviewed",
-	PolicyInfo: "policy_info",
+	IsReviewed:      "is_reviewed",
+	PolicyInfo:      "policy_info",
 }
 
 // PreapprovalReviewFieldsList contains all available fields for PreapprovalReview objects

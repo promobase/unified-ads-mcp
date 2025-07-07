@@ -4,13 +4,13 @@ package constants
 
 // CustomConversionActivitiesFields contains field name constants for CustomConversionActivities objects
 var CustomConversionActivitiesFields = struct {
-	AppId string
-	Data string
+	AppId     string
+	Data      string
 	EventType string
 	Timestamp string
 }{
-	AppId: "app_id",
-	Data: "data",
+	AppId:     "app_id",
+	Data:      "data",
 	EventType: "event_type",
 	Timestamp: "timestamp",
 }

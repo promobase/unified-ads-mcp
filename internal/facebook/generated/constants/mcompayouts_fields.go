@@ -4,21 +4,21 @@ package constants
 
 // McomPayoutsFields contains field name constants for McomPayouts objects
 var McomPayoutsFields = struct {
-	NumberOfOrders string
-	OrderIds string
-	PayoutAmount string
+	NumberOfOrders            string
+	OrderIds                  string
+	PayoutAmount              string
 	PayoutProviderReferenceId string
-	PayoutStatus string
-	PayoutTime string
-	Provider string
+	PayoutStatus              string
+	PayoutTime                string
+	Provider                  string
 }{
-	NumberOfOrders: "number_of_orders",
-	OrderIds: "order_ids",
-	PayoutAmount: "payout_amount",
+	NumberOfOrders:            "number_of_orders",
+	OrderIds:                  "order_ids",
+	PayoutAmount:              "payout_amount",
 	PayoutProviderReferenceId: "payout_provider_reference_id",
-	PayoutStatus: "payout_status",
-	PayoutTime: "payout_time",
-	Provider: "provider",
+	PayoutStatus:              "payout_status",
+	PayoutTime:                "payout_time",
+	Provider:                  "provider",
 }
 
 // McomPayoutsFieldsList contains all available fields for McomPayouts objects

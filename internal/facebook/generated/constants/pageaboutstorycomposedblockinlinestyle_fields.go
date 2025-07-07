@@ -6,11 +6,11 @@ package constants
 var PageAboutStoryComposedBlockInlineStyleFields = struct {
 	Length string
 	Offset string
-	Style string
+	Style  string
 }{
 	Length: "length",
 	Offset: "offset",
-	Style: "style",
+	Style:  "style",
 }
 
 // PageAboutStoryComposedBlockInlineStyleFieldsList contains all available fields for PageAboutStoryComposedBlockInlineStyle objects

@@ -4,35 +4,35 @@ package constants
 
 // MusicVideoCopyrightFields contains field name constants for MusicVideoCopyright objects
 var MusicVideoCopyrightFields = struct {
-	CreationTime string
+	CreationTime          string
 	DisplayedMatchesCount string
-	Id string
-	InConflict string
-	Isrc string
-	MatchRule string
-	OwnershipCountries string
-	ReferenceFileStatus string
+	Id                    string
+	InConflict            string
+	Isrc                  string
+	MatchRule             string
+	OwnershipCountries    string
+	ReferenceFileStatus   string
 	RidgeMonitoringStatus string
-	Tags string
-	UpdateTime string
-	VideoAsset string
-	WhitelistedFbUsers string
-	WhitelistedIgUsers string
+	Tags                  string
+	UpdateTime            string
+	VideoAsset            string
+	WhitelistedFbUsers    string
+	WhitelistedIgUsers    string
 }{
-	CreationTime: "creation_time",
+	CreationTime:          "creation_time",
 	DisplayedMatchesCount: "displayed_matches_count",
-	Id: "id",
-	InConflict: "in_conflict",
-	Isrc: "isrc",
-	MatchRule: "match_rule",
-	OwnershipCountries: "ownership_countries",
-	ReferenceFileStatus: "reference_file_status",
+	Id:                    "id",
+	InConflict:            "in_conflict",
+	Isrc:                  "isrc",
+	MatchRule:             "match_rule",
+	OwnershipCountries:    "ownership_countries",
+	ReferenceFileStatus:   "reference_file_status",
 	RidgeMonitoringStatus: "ridge_monitoring_status",
-	Tags: "tags",
-	UpdateTime: "update_time",
-	VideoAsset: "video_asset",
-	WhitelistedFbUsers: "whitelisted_fb_users",
-	WhitelistedIgUsers: "whitelisted_ig_users",
+	Tags:                  "tags",
+	UpdateTime:            "update_time",
+	VideoAsset:            "video_asset",
+	WhitelistedFbUsers:    "whitelisted_fb_users",
+	WhitelistedIgUsers:    "whitelisted_ig_users",
 }
 
 // MusicVideoCopyrightFieldsList contains all available fields for MusicVideoCopyright objects

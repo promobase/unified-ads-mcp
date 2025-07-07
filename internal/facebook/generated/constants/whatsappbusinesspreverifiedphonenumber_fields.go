@@ -5,17 +5,17 @@ package constants
 // WhatsAppBusinessPreVerifiedPhoneNumberFields contains field name constants for WhatsAppBusinessPreVerifiedPhoneNumber objects
 var WhatsAppBusinessPreVerifiedPhoneNumberFields = struct {
 	CodeVerificationStatus string
-	CodeVerificationTime string
-	Id string
-	OwnerBusiness string
-	PhoneNumber string
+	CodeVerificationTime   string
+	Id                     string
+	OwnerBusiness          string
+	PhoneNumber            string
 	VerificationExpiryTime string
 }{
 	CodeVerificationStatus: "code_verification_status",
-	CodeVerificationTime: "code_verification_time",
-	Id: "id",
-	OwnerBusiness: "owner_business",
-	PhoneNumber: "phone_number",
+	CodeVerificationTime:   "code_verification_time",
+	Id:                     "id",
+	OwnerBusiness:          "owner_business",
+	PhoneNumber:            "phone_number",
 	VerificationExpiryTime: "verification_expiry_time",
 }
 

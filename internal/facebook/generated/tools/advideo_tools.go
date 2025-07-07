@@ -17,7 +17,6 @@ import (
 func GetAdVideoTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// advideo_get_boost_ads_list tool
 	advideo_get_boost_ads_listTool := mcp.NewTool("advideo_get_boost_ads_list",
 		mcp.WithDescription("GET boost_ads_list for AdVideo"),
@@ -61,17 +60,17 @@ func GetAdVideoTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"captions_file": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "captions_file parameter",
 				},
 				"default_locale": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "default_locale parameter",
 				},
 				"locales_to_delete": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "locales_to_delete parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: captions_file (file), default_locale (string), locales_to_delete (array<string>)"),
@@ -105,9 +104,9 @@ func GetAdVideoTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"target_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "target_id parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: target_id (string) [required]"),
@@ -123,22 +122,22 @@ func GetAdVideoTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"filter": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "filter parameter",
-					"enum": []string{ "stream", "toplevel" },
+					"enum":        []string{"stream", "toplevel"},
 				},
 				"live_filter": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "live_filter parameter",
-					"enum": []string{ "filter_low_quality", "no_filter" },
+					"enum":        []string{"filter_low_quality", "no_filter"},
 				},
 				"order": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "order parameter",
-					"enum": []string{ "chronological", "reverse_chronological" },
+					"enum":        []string{"chronological", "reverse_chronological"},
 				},
 				"since": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "since parameter",
 				},
 			}),
@@ -166,57 +165,57 @@ func GetAdVideoTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"attachment_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "attachment_id parameter",
 				},
 				"attachment_share_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "attachment_share_url parameter",
 				},
 				"attachment_url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "attachment_url parameter",
 				},
 				"comment_privacy_value": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "comment_privacy_value parameter",
-					"enum": []string{ "DECLINED_BY_ADMIN_ASSISTANT", "DEFAULT_PRIVACY", "FRIENDS_AND_POST_OWNER", "FRIENDS_ONLY", "GRAPHQL_MULTIPLE_VALUE_HACK_DO_NOT_USE", "OWNER_OR_COMMENTER", "PENDING_APPROVAL", "REMOVED_BY_ADMIN_ASSISTANT", "SIDE_CONVERSATION", "SIDE_CONVERSATION_AND_POST_OWNER", "SPOTLIGHT_TAB" },
+					"enum":        []string{"DECLINED_BY_ADMIN_ASSISTANT", "DEFAULT_PRIVACY", "FRIENDS_AND_POST_OWNER", "FRIENDS_ONLY", "GRAPHQL_MULTIPLE_VALUE_HACK_DO_NOT_USE", "OWNER_OR_COMMENTER", "PENDING_APPROVAL", "REMOVED_BY_ADMIN_ASSISTANT", "SIDE_CONVERSATION", "SIDE_CONVERSATION_AND_POST_OWNER", "SPOTLIGHT_TAB"},
 				},
 				"facepile_mentioned_ids": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "facepile_mentioned_ids parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"feedback_source": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "feedback_source parameter",
 				},
 				"is_offline": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_offline parameter",
 				},
 				"message": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "message parameter",
 				},
 				"nectar_module": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "nectar_module parameter",
 				},
 				"object_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "object_id parameter",
 				},
 				"parent_comment_id": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "parent_comment_id parameter",
 				},
 				"text": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "text parameter",
 				},
 				"tracking": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "tracking parameter",
 				},
 			}),
@@ -251,7 +250,7 @@ func GetAdVideoTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"duration_seconds": map[string]any{
-					"type": "number",
+					"type":        "number",
 					"description": "duration_seconds parameter",
 				},
 			}),
@@ -286,19 +285,19 @@ func GetAdVideoTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"feedback_source": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "feedback_source parameter",
 				},
 				"nectar_module": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "nectar_module parameter",
 				},
 				"notify": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "notify parameter",
 				},
 				"tracking": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "tracking parameter",
 				},
 			}),
@@ -352,34 +351,34 @@ func GetAdVideoTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"close_after_voting": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "close_after_voting parameter",
 				},
 				"correct_option": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "correct_option parameter",
 				},
 				"default_open": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "default_open parameter",
 				},
 				"options": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "options parameter",
-					"required": true,
-					"items": map[string]any{"type": "string"},
+					"required":    true,
+					"items":       map[string]any{"type": "string"},
 				},
 				"question": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "question parameter",
-					"required": true,
+					"required":    true,
 				},
 				"show_gradient": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "show_gradient parameter",
 				},
 				"show_results": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "show_results parameter",
 				},
 			}),
@@ -453,13 +452,13 @@ func GetAdVideoTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"is_preferred": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_preferred parameter",
 				},
 				"source": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "source parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: is_preferred (boolean), source (file) [required]"),
@@ -475,21 +474,21 @@ func GetAdVideoTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"metric": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "metric parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"period": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "period parameter",
-					"enum": []string{ "day", "days_28", "lifetime", "month", "total_over_range", "week" },
+					"enum":        []string{"day", "days_28", "lifetime", "month", "total_over_range", "week"},
 				},
 				"since": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "since parameter",
 				},
 				"until": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "until parameter",
 				},
 			}),
@@ -542,121 +541,121 @@ func GetAdVideoTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"ad_breaks": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "ad_breaks parameter",
 				},
 				"allow_bm_crossposting": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "allow_bm_crossposting parameter",
 				},
 				"allow_crossposting_for_pages": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "allow_crossposting_for_pages parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"backdated_time": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "backdated_time parameter",
 				},
 				"backdated_time_granularity": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "backdated_time_granularity parameter",
-					"enum": []string{ "day", "hour", "min", "month", "none", "year" },
+					"enum":        []string{"day", "hour", "min", "month", "none", "year"},
 				},
 				"call_to_action": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "call_to_action parameter",
 				},
 				"content_category": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "content_category parameter",
-					"enum": []string{ "BEAUTY_FASHION", "BUSINESS", "CARS_TRUCKS", "COMEDY", "CUTE_ANIMALS", "ENTERTAINMENT", "FAMILY", "FOOD_HEALTH", "HOME", "LIFESTYLE", "MUSIC", "NEWS", "OTHER", "POLITICS", "SCIENCE", "SPORTS", "TECHNOLOGY", "VIDEO_GAMING" },
+					"enum":        []string{"BEAUTY_FASHION", "BUSINESS", "CARS_TRUCKS", "COMEDY", "CUTE_ANIMALS", "ENTERTAINMENT", "FAMILY", "FOOD_HEALTH", "HOME", "LIFESTYLE", "MUSIC", "NEWS", "OTHER", "POLITICS", "SCIENCE", "SPORTS", "TECHNOLOGY", "VIDEO_GAMING"},
 				},
 				"content_tags": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "content_tags parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"custom_labels": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "custom_labels parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"description": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "description parameter",
 				},
 				"direct_share_status": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "direct_share_status parameter",
 				},
 				"embeddable": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "embeddable parameter",
 				},
 				"expiration": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "expiration parameter",
 				},
 				"expire_now": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "expire_now parameter",
 				},
 				"increment_play_count": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "increment_play_count parameter",
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
 				},
 				"preferred_thumbnail_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "preferred_thumbnail_id parameter",
 				},
 				"privacy": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "privacy parameter",
 				},
 				"publish_to_news_feed": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "publish_to_news_feed parameter",
 				},
 				"publish_to_videos_tab": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "publish_to_videos_tab parameter",
 				},
 				"published": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "published parameter",
 				},
 				"scheduled_publish_time": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "scheduled_publish_time parameter",
 				},
 				"social_actions": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "social_actions parameter",
 				},
 				"sponsor_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "sponsor_id parameter",
 				},
 				"sponsor_relationship": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "sponsor_relationship parameter",
 				},
 				"tags": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "tags parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"target": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "target parameter",
 				},
 				"universal_video_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "universal_video_id parameter",
 				},
 			}),
@@ -665,12 +664,10 @@ func GetAdVideoTools() []mcp.Tool {
 	)
 	tools = append(tools, advideo_post_Tool)
 
-
 	return tools
 }
 
 // AdVideo handlers
-
 
 // HandleAdvideo_get_boost_ads_list handles the advideo_get_boost_ads_list tool with context-based auth
 func HandleAdvideo_get_boost_ads_list(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -711,8 +708,6 @@ func HandleAdvideo_get_boost_ads_list(ctx context.Context, request mcp.CallToolR
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Advideo_get_boost_ads_list(args)
 	if err != nil {
@@ -727,7 +722,6 @@ func HandleAdvideo_get_boost_ads_list(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdvideo_get_captions handles the advideo_get_captions tool with context-based auth
 func HandleAdvideo_get_captions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -768,8 +762,6 @@ func HandleAdvideo_get_captions(ctx context.Context, request mcp.CallToolRequest
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Advideo_get_captions(args)
 	if err != nil {
@@ -784,7 +776,6 @@ func HandleAdvideo_get_captions(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdvideo_post_captions handles the advideo_post_captions tool with context-based auth
 func HandleAdvideo_post_captions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -812,8 +803,6 @@ func HandleAdvideo_post_captions(ctx context.Context, request mcp.CallToolReques
 		}
 	}
 
-
-
 	// Call the client method
 	result, err := client.Advideo_post_captions(args)
 	if err != nil {
@@ -828,7 +817,6 @@ func HandleAdvideo_post_captions(ctx context.Context, request mcp.CallToolReques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdvideo_get_collaborators handles the advideo_get_collaborators tool with context-based auth
 func HandleAdvideo_get_collaborators(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -869,8 +857,6 @@ func HandleAdvideo_get_collaborators(ctx context.Context, request mcp.CallToolRe
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Advideo_get_collaborators(args)
 	if err != nil {
@@ -885,7 +871,6 @@ func HandleAdvideo_get_collaborators(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdvideo_post_collaborators handles the advideo_post_collaborators tool with context-based auth
 func HandleAdvideo_post_collaborators(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -915,8 +900,6 @@ func HandleAdvideo_post_collaborators(ctx context.Context, request mcp.CallToolR
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Advideo_post_collaborators(args)
 	if err != nil {
@@ -931,7 +914,6 @@ func HandleAdvideo_post_collaborators(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdvideo_get_comments handles the advideo_get_comments tool with context-based auth
 func HandleAdvideo_get_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -984,8 +966,6 @@ func HandleAdvideo_get_comments(ctx context.Context, request mcp.CallToolRequest
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Advideo_get_comments(args)
 	if err != nil {
@@ -1000,7 +980,6 @@ func HandleAdvideo_get_comments(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdvideo_post_comments handles the advideo_post_comments tool with context-based auth
 func HandleAdvideo_post_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1028,8 +1007,6 @@ func HandleAdvideo_post_comments(ctx context.Context, request mcp.CallToolReques
 		}
 	}
 
-
-
 	// Call the client method
 	result, err := client.Advideo_post_comments(args)
 	if err != nil {
@@ -1044,7 +1021,6 @@ func HandleAdvideo_post_comments(ctx context.Context, request mcp.CallToolReques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdvideo_get_crosspost_shared_pages handles the advideo_get_crosspost_shared_pages tool with context-based auth
 func HandleAdvideo_get_crosspost_shared_pages(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1085,8 +1061,6 @@ func HandleAdvideo_get_crosspost_shared_pages(ctx context.Context, request mcp.C
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Advideo_get_crosspost_shared_pages(args)
 	if err != nil {
@@ -1101,7 +1075,6 @@ func HandleAdvideo_get_crosspost_shared_pages(ctx context.Context, request mcp.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdvideo_post_gaming_clip_create handles the advideo_post_gaming_clip_create tool with context-based auth
 func HandleAdvideo_post_gaming_clip_create(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1129,8 +1102,6 @@ func HandleAdvideo_post_gaming_clip_create(ctx context.Context, request mcp.Call
 		}
 	}
 
-
-
 	// Call the client method
 	result, err := client.Advideo_post_gaming_clip_create(args)
 	if err != nil {
@@ -1145,7 +1116,6 @@ func HandleAdvideo_post_gaming_clip_create(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdvideo_get_likes handles the advideo_get_likes tool with context-based auth
 func HandleAdvideo_get_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1186,8 +1156,6 @@ func HandleAdvideo_get_likes(ctx context.Context, request mcp.CallToolRequest) (
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Advideo_get_likes(args)
 	if err != nil {
@@ -1202,7 +1170,6 @@ func HandleAdvideo_get_likes(ctx context.Context, request mcp.CallToolRequest) (
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdvideo_post_likes handles the advideo_post_likes tool with context-based auth
 func HandleAdvideo_post_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1230,8 +1197,6 @@ func HandleAdvideo_post_likes(ctx context.Context, request mcp.CallToolRequest) 
 		}
 	}
 
-
-
 	// Call the client method
 	result, err := client.Advideo_post_likes(args)
 	if err != nil {
@@ -1246,7 +1211,6 @@ func HandleAdvideo_post_likes(ctx context.Context, request mcp.CallToolRequest) 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdvideo_get_poll_settings handles the advideo_get_poll_settings tool with context-based auth
 func HandleAdvideo_get_poll_settings(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1287,8 +1251,6 @@ func HandleAdvideo_get_poll_settings(ctx context.Context, request mcp.CallToolRe
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Advideo_get_poll_settings(args)
 	if err != nil {
@@ -1303,7 +1265,6 @@ func HandleAdvideo_get_poll_settings(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdvideo_get_polls handles the advideo_get_polls tool with context-based auth
 func HandleAdvideo_get_polls(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1344,8 +1305,6 @@ func HandleAdvideo_get_polls(ctx context.Context, request mcp.CallToolRequest) (
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Advideo_get_polls(args)
 	if err != nil {
@@ -1360,7 +1319,6 @@ func HandleAdvideo_get_polls(ctx context.Context, request mcp.CallToolRequest) (
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdvideo_post_polls handles the advideo_post_polls tool with context-based auth
 func HandleAdvideo_post_polls(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1390,8 +1348,6 @@ func HandleAdvideo_post_polls(ctx context.Context, request mcp.CallToolRequest) 
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Advideo_post_polls(args)
 	if err != nil {
@@ -1406,7 +1362,6 @@ func HandleAdvideo_post_polls(ctx context.Context, request mcp.CallToolRequest) 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdvideo_get_sponsor_tags handles the advideo_get_sponsor_tags tool with context-based auth
 func HandleAdvideo_get_sponsor_tags(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1447,8 +1402,6 @@ func HandleAdvideo_get_sponsor_tags(ctx context.Context, request mcp.CallToolReq
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Advideo_get_sponsor_tags(args)
 	if err != nil {
@@ -1463,7 +1416,6 @@ func HandleAdvideo_get_sponsor_tags(ctx context.Context, request mcp.CallToolReq
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdvideo_get_tags handles the advideo_get_tags tool with context-based auth
 func HandleAdvideo_get_tags(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1504,8 +1456,6 @@ func HandleAdvideo_get_tags(ctx context.Context, request mcp.CallToolRequest) (*
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Advideo_get_tags(args)
 	if err != nil {
@@ -1520,7 +1470,6 @@ func HandleAdvideo_get_tags(ctx context.Context, request mcp.CallToolRequest) (*
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdvideo_get_thumbnails handles the advideo_get_thumbnails tool with context-based auth
 func HandleAdvideo_get_thumbnails(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1561,8 +1510,6 @@ func HandleAdvideo_get_thumbnails(ctx context.Context, request mcp.CallToolReque
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Advideo_get_thumbnails(args)
 	if err != nil {
@@ -1577,7 +1524,6 @@ func HandleAdvideo_get_thumbnails(ctx context.Context, request mcp.CallToolReque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdvideo_post_thumbnails handles the advideo_post_thumbnails tool with context-based auth
 func HandleAdvideo_post_thumbnails(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1607,8 +1553,6 @@ func HandleAdvideo_post_thumbnails(ctx context.Context, request mcp.CallToolRequ
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Advideo_post_thumbnails(args)
 	if err != nil {
@@ -1623,7 +1567,6 @@ func HandleAdvideo_post_thumbnails(ctx context.Context, request mcp.CallToolRequ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdvideo_get_video_insights handles the advideo_get_video_insights tool with context-based auth
 func HandleAdvideo_get_video_insights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1676,8 +1619,6 @@ func HandleAdvideo_get_video_insights(ctx context.Context, request mcp.CallToolR
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Advideo_get_video_insights(args)
 	if err != nil {
@@ -1693,7 +1634,6 @@ func HandleAdvideo_get_video_insights(ctx context.Context, request mcp.CallToolR
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleAdvideo_delete_ handles the advideo_delete_ tool with context-based auth
 func HandleAdvideo_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
@@ -1707,8 +1647,6 @@ func HandleAdvideo_delete_(ctx context.Context, request mcp.CallToolRequest) (*m
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Advideo_delete_(args)
@@ -1724,7 +1662,6 @@ func HandleAdvideo_delete_(ctx context.Context, request mcp.CallToolRequest) (*m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdvideo_get_ handles the advideo_get_ tool with context-based auth
 func HandleAdvideo_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1765,8 +1702,6 @@ func HandleAdvideo_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Advideo_get_(args)
 	if err != nil {
@@ -1781,7 +1716,6 @@ func HandleAdvideo_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdvideo_post_ handles the advideo_post_ tool with context-based auth
 func HandleAdvideo_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1809,8 +1743,6 @@ func HandleAdvideo_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 		}
 	}
 
-
-
 	// Call the client method
 	result, err := client.Advideo_post_(args)
 	if err != nil {
@@ -1825,4 +1757,3 @@ func HandleAdvideo_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

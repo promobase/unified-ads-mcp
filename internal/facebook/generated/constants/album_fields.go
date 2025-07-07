@@ -4,53 +4,53 @@ package constants
 
 // AlbumFields contains field name constants for Album objects
 var AlbumFields = struct {
-	BackdatedTime string
+	BackdatedTime            string
 	BackdatedTimeGranularity string
-	CanBackdate string
-	CanUpload string
-	Count string
-	CoverPhoto string
-	CreatedTime string
-	Description string
-	EditLink string
-	Event string
-	From string
-	Id string
-	IsUserFacing string
-	Link string
-	Location string
-	ModifiedMajor string
-	Name string
-	PhotoCount string
-	Place string
-	Privacy string
-	FieldType string
-	UpdatedTime string
-	VideoCount string
+	CanBackdate              string
+	CanUpload                string
+	Count                    string
+	CoverPhoto               string
+	CreatedTime              string
+	Description              string
+	EditLink                 string
+	Event                    string
+	From                     string
+	Id                       string
+	IsUserFacing             string
+	Link                     string
+	Location                 string
+	ModifiedMajor            string
+	Name                     string
+	PhotoCount               string
+	Place                    string
+	Privacy                  string
+	FieldType                string
+	UpdatedTime              string
+	VideoCount               string
 }{
-	BackdatedTime: "backdated_time",
+	BackdatedTime:            "backdated_time",
 	BackdatedTimeGranularity: "backdated_time_granularity",
-	CanBackdate: "can_backdate",
-	CanUpload: "can_upload",
-	Count: "count",
-	CoverPhoto: "cover_photo",
-	CreatedTime: "created_time",
-	Description: "description",
-	EditLink: "edit_link",
-	Event: "event",
-	From: "from",
-	Id: "id",
-	IsUserFacing: "is_user_facing",
-	Link: "link",
-	Location: "location",
-	ModifiedMajor: "modified_major",
-	Name: "name",
-	PhotoCount: "photo_count",
-	Place: "place",
-	Privacy: "privacy",
-	FieldType: "type",
-	UpdatedTime: "updated_time",
-	VideoCount: "video_count",
+	CanBackdate:              "can_backdate",
+	CanUpload:                "can_upload",
+	Count:                    "count",
+	CoverPhoto:               "cover_photo",
+	CreatedTime:              "created_time",
+	Description:              "description",
+	EditLink:                 "edit_link",
+	Event:                    "event",
+	From:                     "from",
+	Id:                       "id",
+	IsUserFacing:             "is_user_facing",
+	Link:                     "link",
+	Location:                 "location",
+	ModifiedMajor:            "modified_major",
+	Name:                     "name",
+	PhotoCount:               "photo_count",
+	Place:                    "place",
+	Privacy:                  "privacy",
+	FieldType:                "type",
+	UpdatedTime:              "updated_time",
+	VideoCount:               "video_count",
 }
 
 // AlbumFieldsList contains all available fields for Album objects

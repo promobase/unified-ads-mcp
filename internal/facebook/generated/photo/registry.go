@@ -21,7 +21,6 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolPhoto_delete_())
 	tools = append(tools, ToolPhoto_get_())
 
-
 	return tools
 }
 
@@ -37,7 +36,6 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers["photo_get_sponsor_tags"] = HandlePhoto_get_sponsor_tags
 	handlers["photo_delete_"] = HandlePhoto_delete_
 	handlers["photo_get_"] = HandlePhoto_get_
-
 
 	return handlers
 }

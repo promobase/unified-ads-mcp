@@ -17,7 +17,6 @@ import (
 func GetEventSourceGroupTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// eventsourcegroup_get_shared_accounts tool
 	// Available fields for AdAccount: account_id, account_status, ad_account_promotable_objects, age, agency_client_declaration, all_capabilities, amount_spent, attribution_spec, balance, brand_safety_content_filter_levels, business, business_city, business_country_code, business_name, business_state, business_street, business_street2, business_zip, can_create_brand_lift_study, capabilities, created_time, currency, custom_audience_info, default_dsa_beneficiary, default_dsa_payor, disable_reason, end_advertiser, end_advertiser_name, existing_customers, expired_funding_source_details, extended_credit_invoice_group, failed_delivery_checks, fb_entity, funding_source, funding_source_details, has_migrated_permissions, has_page_authorized_adaccount, id, io_number, is_attribution_spec_system_default, is_ba_skip_delayed_eligible, is_direct_deals_enabled, is_in_3ds_authorization_enabled_market, is_notifications_enabled, is_personal, is_prepay_account, is_tax_id_required, liable_address, line_numbers, media_agency, min_campaign_group_spend_cap, min_daily_budget, name, offsite_pixels_tos_accepted, owner, owner_business, partner, rf_spec, send_bill_to_address, show_checkout_experience, sold_to_address, spend_cap, tax_id, tax_id_status, tax_id_type, timezone_id, timezone_name, timezone_offset_hours_utc, tos_accepted, user_access_expire_time, user_tasks, user_tos_accepted, viewable_business
 	eventsourcegroup_get_shared_accountsTool := mcp.NewTool("eventsourcegroup_get_shared_accounts",
@@ -45,10 +44,10 @@ func GetEventSourceGroupTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"accounts": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "accounts parameter",
-					"required": true,
-					"items": map[string]any{"type": "string"},
+					"required":    true,
+					"items":       map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: accounts (array<string>) [required]"),
@@ -83,15 +82,15 @@ func GetEventSourceGroupTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"event_sources": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "event_sources parameter",
-					"required": true,
-					"items": map[string]any{"type": "string"},
+					"required":    true,
+					"items":       map[string]any{"type": "string"},
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: event_sources (array<string>) [required], name (string) [required]"),
@@ -99,12 +98,10 @@ func GetEventSourceGroupTools() []mcp.Tool {
 	)
 	tools = append(tools, eventsourcegroup_post_Tool)
 
-
 	return tools
 }
 
 // EventSourceGroup handlers
-
 
 // HandleEventsourcegroup_get_shared_accounts handles the eventsourcegroup_get_shared_accounts tool with context-based auth
 func HandleEventsourcegroup_get_shared_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -145,8 +142,6 @@ func HandleEventsourcegroup_get_shared_accounts(ctx context.Context, request mcp
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Eventsourcegroup_get_shared_accounts(args)
 	if err != nil {
@@ -161,7 +156,6 @@ func HandleEventsourcegroup_get_shared_accounts(ctx context.Context, request mcp
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleEventsourcegroup_post_shared_accounts handles the eventsourcegroup_post_shared_accounts tool with context-based auth
 func HandleEventsourcegroup_post_shared_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -191,8 +185,6 @@ func HandleEventsourcegroup_post_shared_accounts(ctx context.Context, request mc
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Eventsourcegroup_post_shared_accounts(args)
 	if err != nil {
@@ -207,7 +199,6 @@ func HandleEventsourcegroup_post_shared_accounts(ctx context.Context, request mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleEventsourcegroup_get_ handles the eventsourcegroup_get_ tool with context-based auth
 func HandleEventsourcegroup_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -248,8 +239,6 @@ func HandleEventsourcegroup_get_(ctx context.Context, request mcp.CallToolReques
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Eventsourcegroup_get_(args)
 	if err != nil {
@@ -264,7 +253,6 @@ func HandleEventsourcegroup_get_(ctx context.Context, request mcp.CallToolReques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleEventsourcegroup_post_ handles the eventsourcegroup_post_ tool with context-based auth
 func HandleEventsourcegroup_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -294,8 +282,6 @@ func HandleEventsourcegroup_post_(ctx context.Context, request mcp.CallToolReque
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Eventsourcegroup_post_(args)
 	if err != nil {
@@ -310,4 +296,3 @@ func HandleEventsourcegroup_post_(ctx context.Context, request mcp.CallToolReque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

@@ -15,58 +15,58 @@ import (
 
 // ToolPage_post_canvas_elements returns the MCP tool definition for page_post_canvas_elements
 func ToolPage_post_canvas_elements() mcp.Tool {
-	
+
 	// Params object accepts: canvas_button (Object), canvas_carousel (Object), canvas_footer (Object), canvas_header (Object), canvas_lead_form (Object), canvas_photo (Object), canvas_product_list (Object), canvas_product_set (Object), canvas_store_locator (Object), canvas_template_video (Object), canvas_text (Object), canvas_video (Object)
 	return mcp.NewTool("page_post_canvas_elements",
 		mcp.WithDescription("POST canvas_elements for Page"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"canvas_button": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "canvas_button parameter",
 				},
 				"canvas_carousel": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "canvas_carousel parameter",
 				},
 				"canvas_footer": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "canvas_footer parameter",
 				},
 				"canvas_header": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "canvas_header parameter",
 				},
 				"canvas_lead_form": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "canvas_lead_form parameter",
 				},
 				"canvas_photo": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "canvas_photo parameter",
 				},
 				"canvas_product_list": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "canvas_product_list parameter",
 				},
 				"canvas_product_set": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "canvas_product_set parameter",
 				},
 				"canvas_store_locator": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "canvas_store_locator parameter",
 				},
 				"canvas_template_video": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "canvas_template_video parameter",
 				},
 				"canvas_text": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "canvas_text parameter",
 				},
 				"canvas_video": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "canvas_video parameter",
 				},
 			}),
@@ -98,8 +98,6 @@ func HandlePage_post_canvas_elements(ctx context.Context, request mcp.CallToolRe
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Page_post_canvas_elements(accessToken, args)
 	if err != nil {
@@ -118,20 +116,18 @@ func HandlePage_post_canvas_elements(ctx context.Context, request mcp.CallToolRe
 // Page_post_canvas_elements performs POST canvas_elements for Page
 func Page_post_canvas_elements(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/canvas_elements")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

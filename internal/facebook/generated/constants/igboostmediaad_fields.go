@@ -4,10 +4,10 @@ package constants
 
 // IGBoostMediaAdFields contains field name constants for IGBoostMediaAd objects
 var IGBoostMediaAdFields = struct {
-	AdId string
+	AdId     string
 	AdStatus string
 }{
-	AdId: "ad_id",
+	AdId:     "ad_id",
 	AdStatus: "ad_status",
 }
 

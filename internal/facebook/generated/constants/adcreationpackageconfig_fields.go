@@ -4,19 +4,19 @@ package constants
 
 // AdCreationPackageConfigFields contains field name constants for AdCreationPackageConfig objects
 var AdCreationPackageConfigFields = struct {
-	ApiVersion string
-	Id string
+	ApiVersion                string
+	Id                        string
 	IsEligibleForDefaultOptIn string
-	Objective string
-	PackageId string
-	Status string
+	Objective                 string
+	PackageId                 string
+	Status                    string
 }{
-	ApiVersion: "api_version",
-	Id: "id",
+	ApiVersion:                "api_version",
+	Id:                        "id",
 	IsEligibleForDefaultOptIn: "is_eligible_for_default_opt_in",
-	Objective: "objective",
-	PackageId: "package_id",
-	Status: "status",
+	Objective:                 "objective",
+	PackageId:                 "package_id",
+	Status:                    "status",
 }
 
 // AdCreationPackageConfigFieldsList contains all available fields for AdCreationPackageConfig objects

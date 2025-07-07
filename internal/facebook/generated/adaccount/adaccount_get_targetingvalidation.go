@@ -27,23 +27,23 @@ func ToolAdaccount_get_targetingvalidation() mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"id_list": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "id_list parameter",
-					"items": map[string]any{"type": "integer"},
+					"items":       map[string]any{"type": "integer"},
 				},
 				"is_exclusion": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_exclusion parameter",
 				},
 				"name_list": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "name_list parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"targeting_list": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "targeting_list parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 			}),
 			mcp.Description("Parameters object containing: id_list (array<integer>), is_exclusion (boolean), name_list (array<string>), targeting_list (array<object>)"),
@@ -118,8 +118,6 @@ func HandleAdaccount_get_targetingvalidation(ctx context.Context, request mcp.Ca
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Adaccount_get_targetingvalidation(accessToken, args)
 	if err != nil {
@@ -138,67 +136,65 @@ func HandleAdaccount_get_targetingvalidation(ctx context.Context, request mcp.Ca
 // Adaccount_get_targetingvalidation performs GET targetingvalidation for AdAccount
 func Adaccount_get_targetingvalidation(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	// Extract account_id for URL construction
 	accountId, ok := args["account_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_get_targetingvalidation")
 	}
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%stargetingvalidation", accountId)
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-		
-	}
 
+	}
 
 	// Make HTTP request
 	var resp *http.Response

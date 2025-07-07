@@ -6,15 +6,15 @@ package constants
 var WhatsAppBusinessHealthStatusFields = struct {
 	AdditionalInfo string
 	CanSendMessage string
-	EntityType string
-	Errors string
-	Id string
+	EntityType     string
+	Errors         string
+	Id             string
 }{
 	AdditionalInfo: "additional_info",
 	CanSendMessage: "can_send_message",
-	EntityType: "entity_type",
-	Errors: "errors",
-	Id: "id",
+	EntityType:     "entity_type",
+	Errors:         "errors",
+	Id:             "id",
 }
 
 // WhatsAppBusinessHealthStatusFieldsList contains all available fields for WhatsAppBusinessHealthStatus objects

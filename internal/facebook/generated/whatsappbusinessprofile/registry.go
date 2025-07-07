@@ -15,7 +15,6 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolWhatsappbusinessprofile_get_())
 	tools = append(tools, ToolWhatsappbusinessprofile_post_())
 
-
 	return tools
 }
 
@@ -25,7 +24,6 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 
 	handlers["whatsappbusinessprofile_get_"] = HandleWhatsappbusinessprofile_get_
 	handlers["whatsappbusinessprofile_post_"] = HandleWhatsappbusinessprofile_post_
-
 
 	return handlers
 }

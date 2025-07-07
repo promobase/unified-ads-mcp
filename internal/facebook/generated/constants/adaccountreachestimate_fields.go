@@ -4,11 +4,11 @@ package constants
 
 // AdAccountReachEstimateFields contains field name constants for AdAccountReachEstimate objects
 var AdAccountReachEstimateFields = struct {
-	EstimateReady string
+	EstimateReady   string
 	UsersLowerBound string
 	UsersUpperBound string
 }{
-	EstimateReady: "estimate_ready",
+	EstimateReady:   "estimate_ready",
 	UsersLowerBound: "users_lower_bound",
 	UsersUpperBound: "users_upper_bound",
 }

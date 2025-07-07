@@ -23,33 +23,33 @@ func ToolPage_get_message_templates() mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"category": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "category parameter",
-					"enum": []string{ "UTILITY" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"UTILITY"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"content": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "content parameter",
 				},
 				"language": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "language parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
 				},
 				"name_or_content": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name_or_content parameter",
 				},
 				"status": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "status parameter",
-					"enum": []string{ "APPROVED", "ARCHIVED", "DELETED", "DISABLED", "IN_APPEAL", "LIMIT_EXCEEDED", "PAUSED", "PENDING", "PENDING_DELETION", "REJECTED" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"APPROVED", "ARCHIVED", "DELETED", "DISABLED", "IN_APPEAL", "LIMIT_EXCEEDED", "PAUSED", "PENDING", "PENDING_DELETION", "REJECTED"},
+					"items":       map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: category (array<enum>) [UTILITY], content (string), language (array<string>), name (string), name_or_content (string), status (array<enum>) [APPROVED, ARCHIVED, DELETED, DISABLED, IN_APPEAL, ...]"),
@@ -117,8 +117,6 @@ func HandlePage_get_message_templates(ctx context.Context, request mcp.CallToolR
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Page_get_message_templates(accessToken, args)
 	if err != nil {
@@ -137,44 +135,42 @@ func HandlePage_get_message_templates(ctx context.Context, request mcp.CallToolR
 // Page_get_message_templates performs GET message_templates for Page
 func Page_get_message_templates(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/message_templates")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

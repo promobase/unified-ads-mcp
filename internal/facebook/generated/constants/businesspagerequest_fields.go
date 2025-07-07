@@ -4,10 +4,10 @@ package constants
 
 // BusinessPageRequestFields contains field name constants for BusinessPageRequest objects
 var BusinessPageRequestFields = struct {
-	Id string
+	Id   string
 	Page string
 }{
-	Id: "id",
+	Id:   "id",
 	Page: "page",
 }
 

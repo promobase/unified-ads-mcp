@@ -6,11 +6,11 @@ package constants
 var UserCoverPhotoFields = struct {
 	OffsetX string
 	OffsetY string
-	Source string
+	Source  string
 }{
 	OffsetX: "offset_x",
 	OffsetY: "offset_y",
-	Source: "source",
+	Source:  "source",
 }
 
 // UserCoverPhotoFieldsList contains all available fields for UserCoverPhoto objects

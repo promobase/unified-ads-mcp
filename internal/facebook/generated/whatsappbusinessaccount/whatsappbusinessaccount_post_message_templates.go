@@ -15,7 +15,7 @@ import (
 
 // ToolWhatsappbusinessaccount_post_message_templates returns the MCP tool definition for whatsappbusinessaccount_post_message_templates
 func ToolWhatsappbusinessaccount_post_message_templates() mcp.Tool {
-	
+
 	// Params object accepts: allow_category_change (bool), category (whatsappbusinessaccountmessage_templates_category_enum_param), components (list<map>), cta_url_link_tracking_opted_out (bool), degrees_of_freedom_spec (map), display_format (whatsappbusinessaccountmessage_templates_display_format_enum_param), language (string), library_template_body_inputs (map), library_template_button_inputs (list<map>), library_template_name (string), message_send_ttl_seconds (unsigned int), name (string), parameter_format (whatsappbusinessaccountmessage_templates_parameter_format_enum_param), sub_category (whatsappbusinessaccountmessage_templates_sub_category_enum_param)
 	return mcp.NewTool("whatsappbusinessaccount_post_message_templates",
 		mcp.WithDescription("POST message_templates for WhatsAppBusinessAccount"),
@@ -23,69 +23,69 @@ func ToolWhatsappbusinessaccount_post_message_templates() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"allow_category_change": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "allow_category_change parameter",
 				},
 				"category": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "category parameter",
-					"required": true,
-					"enum": []string{ "AUTHENTICATION", "MARKETING", "UTILITY" },
+					"required":    true,
+					"enum":        []string{"AUTHENTICATION", "MARKETING", "UTILITY"},
 				},
 				"components": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "components parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"cta_url_link_tracking_opted_out": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "cta_url_link_tracking_opted_out parameter",
 				},
 				"degrees_of_freedom_spec": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "degrees_of_freedom_spec parameter",
 				},
 				"display_format": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "display_format parameter",
-					"enum": []string{ "ORDER_DETAILS" },
+					"enum":        []string{"ORDER_DETAILS"},
 				},
 				"language": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "language parameter",
-					"required": true,
+					"required":    true,
 				},
 				"library_template_body_inputs": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "library_template_body_inputs parameter",
 				},
 				"library_template_button_inputs": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "library_template_button_inputs parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"library_template_name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "library_template_name parameter",
 				},
 				"message_send_ttl_seconds": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "message_send_ttl_seconds parameter",
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
-					"required": true,
+					"required":    true,
 				},
 				"parameter_format": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "parameter_format parameter",
-					"enum": []string{ "NAMED", "POSITIONAL" },
+					"enum":        []string{"NAMED", "POSITIONAL"},
 				},
 				"sub_category": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "sub_category parameter",
-					"enum": []string{ "ORDER_DETAILS", "ORDER_STATUS" },
+					"enum":        []string{"ORDER_DETAILS", "ORDER_STATUS"},
 				},
 			}),
 			mcp.Description("Parameters object containing: allow_category_change (boolean), category (enum) [AUTHENTICATION, MARKETING, UTILITY] [required], components (array<object>), cta_url_link_tracking_opted_out (boolean), degrees_of_freedom_spec (object), display_format (enum) [ORDER_DETAILS], language (string) [required], library_template_body_inputs (object), library_template_button_inputs (array<object>), library_template_name (string), message_send_ttl_seconds (integer), name (string) [required], parameter_format (enum) [NAMED, POSITIONAL], sub_category (enum) [ORDER_DETAILS, ORDER_STATUS]"),
@@ -118,8 +118,6 @@ func HandleWhatsappbusinessaccount_post_message_templates(ctx context.Context, r
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Whatsappbusinessaccount_post_message_templates(accessToken, args)
 	if err != nil {
@@ -138,20 +136,18 @@ func HandleWhatsappbusinessaccount_post_message_templates(ctx context.Context, r
 // Whatsappbusinessaccount_post_message_templates performs POST message_templates for WhatsAppBusinessAccount
 func Whatsappbusinessaccount_post_message_templates(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/message_templates")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

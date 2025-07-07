@@ -5,20 +5,20 @@ package constants
 // VideoPollFields contains field name constants for VideoPoll objects
 var VideoPollFields = struct {
 	CloseAfterVoting string
-	DefaultOpen string
-	Id string
-	Question string
-	ShowGradient string
-	ShowResults string
-	Status string
+	DefaultOpen      string
+	Id               string
+	Question         string
+	ShowGradient     string
+	ShowResults      string
+	Status           string
 }{
 	CloseAfterVoting: "close_after_voting",
-	DefaultOpen: "default_open",
-	Id: "id",
-	Question: "question",
-	ShowGradient: "show_gradient",
-	ShowResults: "show_results",
-	Status: "status",
+	DefaultOpen:      "default_open",
+	Id:               "id",
+	Question:         "question",
+	ShowGradient:     "show_gradient",
+	ShowResults:      "show_results",
+	Status:           "status",
 }
 
 // VideoPollFieldsList contains all available fields for VideoPoll objects

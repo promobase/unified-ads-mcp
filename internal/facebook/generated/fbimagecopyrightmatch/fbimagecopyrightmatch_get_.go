@@ -17,7 +17,7 @@ import (
 // ToolFbimagecopyrightmatch_get_ returns the MCP tool definition for fbimagecopyrightmatch_get_
 func ToolFbimagecopyrightmatch_get_() mcp.Tool {
 	// Available fields for FBImageCopyrightMatch: added_to_dashboard_time, applied_actions, audit_log, available_ui_actions, expiration_days, generic_match_data, id, is_business_page_match, last_modified_time, match_data, match_status, ownership_countries, reference_owner, time_to_appeal
-	
+
 	return mcp.NewTool("fbimagecopyrightmatch_get_",
 		mcp.WithDescription("GET  for FBImageCopyrightMatch"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleFbimagecopyrightmatch_get_(ctx context.Context, request mcp.CallToolR
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Fbimagecopyrightmatch_get_(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleFbimagecopyrightmatch_get_(ctx context.Context, request mcp.CallToolR
 // Fbimagecopyrightmatch_get_ performs GET  for FBImageCopyrightMatch
 func Fbimagecopyrightmatch_get_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

@@ -17,7 +17,7 @@ import (
 // ToolBusiness_get_collaborative_ads_suggested_partners returns the MCP tool definition for business_get_collaborative_ads_suggested_partners
 func ToolBusiness_get_collaborative_ads_suggested_partners() mcp.Tool {
 	// Available fields for CPASAdvertiserPartnershipRecommendation: advertiser_business_id, brand_business_id, brands, countries, id, merchant_business_id, merchant_categories, status, status_reason
-	
+
 	return mcp.NewTool("business_get_collaborative_ads_suggested_partners",
 		mcp.WithDescription("GET collaborative_ads_suggested_partners for Business"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleBusiness_get_collaborative_ads_suggested_partners(ctx context.Context
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Business_get_collaborative_ads_suggested_partners(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleBusiness_get_collaborative_ads_suggested_partners(ctx context.Context
 // Business_get_collaborative_ads_suggested_partners performs GET collaborative_ads_suggested_partners for Business
 func Business_get_collaborative_ads_suggested_partners(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/collaborative_ads_suggested_partners")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

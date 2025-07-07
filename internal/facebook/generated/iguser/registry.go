@@ -45,7 +45,6 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolIguser_get_welcome_message_flows())
 	tools = append(tools, ToolIguser_get_())
 
-
 	return tools
 }
 
@@ -85,7 +84,6 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers["iguser_post_upcoming_events"] = HandleIguser_post_upcoming_events
 	handlers["iguser_get_welcome_message_flows"] = HandleIguser_get_welcome_message_flows
 	handlers["iguser_get_"] = HandleIguser_get_
-
 
 	return handlers
 }

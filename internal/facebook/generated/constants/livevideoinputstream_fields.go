@@ -4,23 +4,23 @@ package constants
 
 // LiveVideoInputStreamFields contains field name constants for LiveVideoInputStream objects
 var LiveVideoInputStreamFields = struct {
-	DashIngestUrl string
-	DashPreviewUrl string
-	Id string
-	IsMaster string
+	DashIngestUrl   string
+	DashPreviewUrl  string
+	Id              string
+	IsMaster        string
 	SecureStreamUrl string
-	StreamHealth string
-	StreamId string
-	StreamUrl string
+	StreamHealth    string
+	StreamId        string
+	StreamUrl       string
 }{
-	DashIngestUrl: "dash_ingest_url",
-	DashPreviewUrl: "dash_preview_url",
-	Id: "id",
-	IsMaster: "is_master",
+	DashIngestUrl:   "dash_ingest_url",
+	DashPreviewUrl:  "dash_preview_url",
+	Id:              "id",
+	IsMaster:        "is_master",
 	SecureStreamUrl: "secure_stream_url",
-	StreamHealth: "stream_health",
-	StreamId: "stream_id",
-	StreamUrl: "stream_url",
+	StreamHealth:    "stream_health",
+	StreamId:        "stream_id",
+	StreamUrl:       "stream_url",
 }
 
 // LiveVideoInputStreamFieldsList contains all available fields for LiveVideoInputStream objects

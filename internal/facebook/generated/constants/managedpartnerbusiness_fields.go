@@ -4,21 +4,21 @@ package constants
 
 // ManagedPartnerBusinessFields contains field name constants for ManagedPartnerBusiness objects
 var ManagedPartnerBusinessFields = struct {
-	AdAccount string
-	CatalogSegment string
-	ExtendedCredit string
-	Page string
-	SellerBusinessInfo string
+	AdAccount            string
+	CatalogSegment       string
+	ExtendedCredit       string
+	Page                 string
+	SellerBusinessInfo   string
 	SellerBusinessStatus string
-	Template string
+	Template             string
 }{
-	AdAccount: "ad_account",
-	CatalogSegment: "catalog_segment",
-	ExtendedCredit: "extended_credit",
-	Page: "page",
-	SellerBusinessInfo: "seller_business_info",
+	AdAccount:            "ad_account",
+	CatalogSegment:       "catalog_segment",
+	ExtendedCredit:       "extended_credit",
+	Page:                 "page",
+	SellerBusinessInfo:   "seller_business_info",
 	SellerBusinessStatus: "seller_business_status",
-	Template: "template",
+	Template:             "template",
 }
 
 // ManagedPartnerBusinessFieldsList contains all available fields for ManagedPartnerBusiness objects

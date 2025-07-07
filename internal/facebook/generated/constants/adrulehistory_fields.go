@@ -4,23 +4,23 @@ package constants
 
 // AdRuleHistoryFields contains field name constants for AdRuleHistory objects
 var AdRuleHistoryFields = struct {
-	EvaluationSpec string
-	ExceptionCode string
+	EvaluationSpec   string
+	ExceptionCode    string
 	ExceptionMessage string
-	ExecutionSpec string
-	IsManual string
-	Results string
-	ScheduleSpec string
-	Timestamp string
+	ExecutionSpec    string
+	IsManual         string
+	Results          string
+	ScheduleSpec     string
+	Timestamp        string
 }{
-	EvaluationSpec: "evaluation_spec",
-	ExceptionCode: "exception_code",
+	EvaluationSpec:   "evaluation_spec",
+	ExceptionCode:    "exception_code",
 	ExceptionMessage: "exception_message",
-	ExecutionSpec: "execution_spec",
-	IsManual: "is_manual",
-	Results: "results",
-	ScheduleSpec: "schedule_spec",
-	Timestamp: "timestamp",
+	ExecutionSpec:    "execution_spec",
+	IsManual:         "is_manual",
+	Results:          "results",
+	ScheduleSpec:     "schedule_spec",
+	Timestamp:        "timestamp",
 }
 
 // AdRuleHistoryFieldsList contains all available fields for AdRuleHistory objects

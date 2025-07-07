@@ -15,14 +15,14 @@ import (
 
 // ToolPage_post_photo_stories returns the MCP tool definition for page_post_photo_stories
 func ToolPage_post_photo_stories() mcp.Tool {
-	
+
 	// Params object accepts: photo_id (string)
 	return mcp.NewTool("page_post_photo_stories",
 		mcp.WithDescription("POST photo_stories for Page"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"photo_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "photo_id parameter",
 				},
 			}),
@@ -54,8 +54,6 @@ func HandlePage_post_photo_stories(ctx context.Context, request mcp.CallToolRequ
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Page_post_photo_stories(accessToken, args)
 	if err != nil {
@@ -74,20 +72,18 @@ func HandlePage_post_photo_stories(ctx context.Context, request mcp.CallToolRequ
 // Page_post_photo_stories performs POST photo_stories for Page
 func Page_post_photo_stories(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/photo_stories")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

@@ -17,7 +17,6 @@ import (
 func GetUserContextTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// usercontext_get_ tool
 	// Available fields for UserContext: id
 	usercontext_get_Tool := mcp.NewTool("usercontext_get_",
@@ -37,12 +36,10 @@ func GetUserContextTools() []mcp.Tool {
 	)
 	tools = append(tools, usercontext_get_Tool)
 
-
 	return tools
 }
 
 // UserContext handlers
-
 
 // HandleUsercontext_get_ handles the usercontext_get_ tool with context-based auth
 func HandleUsercontext_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleUsercontext_get_(ctx context.Context, request mcp.CallToolRequest) (*
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Usercontext_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleUsercontext_get_(ctx context.Context, request mcp.CallToolRequest) (*
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

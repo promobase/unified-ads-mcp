@@ -4,10 +4,10 @@ package constants
 
 // CommerceSettingsFields contains field name constants for CommerceSettings objects
 var CommerceSettingsFields = struct {
-	Inventory string
+	Inventory      string
 	TotalInventory string
 }{
-	Inventory: "inventory",
+	Inventory:      "inventory",
 	TotalInventory: "total_inventory",
 }
 

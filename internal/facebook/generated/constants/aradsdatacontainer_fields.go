@@ -5,20 +5,20 @@ package constants
 // ArAdsDataContainerFields contains field name constants for ArAdsDataContainer objects
 var ArAdsDataContainerFields = struct {
 	CameraFacingOverride string
-	CreationTime string
-	Effect string
-	Id string
-	IsPublished string
-	LastModifiedTime string
-	Name string
+	CreationTime         string
+	Effect               string
+	Id                   string
+	IsPublished          string
+	LastModifiedTime     string
+	Name                 string
 }{
 	CameraFacingOverride: "camera_facing_override",
-	CreationTime: "creation_time",
-	Effect: "effect",
-	Id: "id",
-	IsPublished: "is_published",
-	LastModifiedTime: "last_modified_time",
-	Name: "name",
+	CreationTime:         "creation_time",
+	Effect:               "effect",
+	Id:                   "id",
+	IsPublished:          "is_published",
+	LastModifiedTime:     "last_modified_time",
+	Name:                 "name",
 }
 
 // ArAdsDataContainerFieldsList contains all available fields for ArAdsDataContainer objects

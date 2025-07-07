@@ -4,47 +4,47 @@ package constants
 
 // ProductFeedFields contains field name constants for ProductFeed objects
 var ProductFeedFields = struct {
-	Country string
-	CreatedTime string
-	DefaultCurrency string
-	DeletionEnabled string
-	Delimiter string
-	Encoding string
-	FileName string
-	Id string
+	Country             string
+	CreatedTime         string
+	DefaultCurrency     string
+	DeletionEnabled     string
+	Delimiter           string
+	Encoding            string
+	FileName            string
+	Id                  string
 	IngestionSourceType string
-	ItemSubType string
-	LatestUpload string
-	MigratedFromFeedId string
-	Name string
-	OverrideType string
-	PrimaryFeeds string
-	ProductCount string
-	QuotedFieldsMode string
-	Schedule string
-	SupplementaryFeeds string
-	UpdateSchedule string
+	ItemSubType         string
+	LatestUpload        string
+	MigratedFromFeedId  string
+	Name                string
+	OverrideType        string
+	PrimaryFeeds        string
+	ProductCount        string
+	QuotedFieldsMode    string
+	Schedule            string
+	SupplementaryFeeds  string
+	UpdateSchedule      string
 }{
-	Country: "country",
-	CreatedTime: "created_time",
-	DefaultCurrency: "default_currency",
-	DeletionEnabled: "deletion_enabled",
-	Delimiter: "delimiter",
-	Encoding: "encoding",
-	FileName: "file_name",
-	Id: "id",
+	Country:             "country",
+	CreatedTime:         "created_time",
+	DefaultCurrency:     "default_currency",
+	DeletionEnabled:     "deletion_enabled",
+	Delimiter:           "delimiter",
+	Encoding:            "encoding",
+	FileName:            "file_name",
+	Id:                  "id",
 	IngestionSourceType: "ingestion_source_type",
-	ItemSubType: "item_sub_type",
-	LatestUpload: "latest_upload",
-	MigratedFromFeedId: "migrated_from_feed_id",
-	Name: "name",
-	OverrideType: "override_type",
-	PrimaryFeeds: "primary_feeds",
-	ProductCount: "product_count",
-	QuotedFieldsMode: "quoted_fields_mode",
-	Schedule: "schedule",
-	SupplementaryFeeds: "supplementary_feeds",
-	UpdateSchedule: "update_schedule",
+	ItemSubType:         "item_sub_type",
+	LatestUpload:        "latest_upload",
+	MigratedFromFeedId:  "migrated_from_feed_id",
+	Name:                "name",
+	OverrideType:        "override_type",
+	PrimaryFeeds:        "primary_feeds",
+	ProductCount:        "product_count",
+	QuotedFieldsMode:    "quoted_fields_mode",
+	Schedule:            "schedule",
+	SupplementaryFeeds:  "supplementary_feeds",
+	UpdateSchedule:      "update_schedule",
 }
 
 // ProductFeedFieldsList contains all available fields for ProductFeed objects

@@ -15,8 +15,7 @@ import (
 
 // ToolHighdemandperiod_delete_ returns the MCP tool definition for highdemandperiod_delete_
 func ToolHighdemandperiod_delete_() mcp.Tool {
-	
-	
+
 	return mcp.NewTool("highdemandperiod_delete_",
 		mcp.WithDescription("DELETE  for HighDemandPeriod"),
 	)
@@ -32,8 +31,6 @@ func HandleHighdemandperiod_delete_(ctx context.Context, request mcp.CallToolReq
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the API method
 	result, err := Highdemandperiod_delete_(accessToken, args)
@@ -53,14 +50,11 @@ func HandleHighdemandperiod_delete_(ctx context.Context, request mcp.CallToolReq
 // Highdemandperiod_delete_ performs DELETE  for HighDemandPeriod
 func Highdemandperiod_delete_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response

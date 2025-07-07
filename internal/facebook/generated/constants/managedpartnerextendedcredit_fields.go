@@ -4,12 +4,12 @@ package constants
 
 // ManagedPartnerExtendedCreditFields contains field name constants for ManagedPartnerExtendedCredit objects
 var ManagedPartnerExtendedCreditFields = struct {
-	Id string
-	MaxBalance string
+	Id                              string
+	MaxBalance                      string
 	ReceivingCreditAllocationConfig string
 }{
-	Id: "id",
-	MaxBalance: "max_balance",
+	Id:                              "id",
+	MaxBalance:                      "max_balance",
 	ReceivingCreditAllocationConfig: "receiving_credit_allocation_config",
 }
 

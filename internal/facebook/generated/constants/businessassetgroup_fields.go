@@ -4,12 +4,12 @@ package constants
 
 // BusinessAssetGroupFields contains field name constants for BusinessAssetGroup objects
 var BusinessAssetGroupFields = struct {
-	Id string
-	Name string
+	Id            string
+	Name          string
 	OwnerBusiness string
 }{
-	Id: "id",
-	Name: "name",
+	Id:            "id",
+	Name:          "name",
 	OwnerBusiness: "owner_business",
 }
 

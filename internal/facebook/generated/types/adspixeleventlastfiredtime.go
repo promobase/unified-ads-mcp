@@ -4,6 +4,6 @@ package types
 
 // AdsPixelEventLastFiredTime represents a Facebook AdsPixelEventLastFiredTime object
 type AdsPixelEventLastFiredTime struct {
-	Event string `json:"event"`
-	Last_fired_time int `json:"last_fired_time"`
+	Event           string `json:"event"`
+	Last_fired_time int    `json:"last_fired_time"`
 }

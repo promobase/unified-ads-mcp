@@ -5,6 +5,6 @@ package types
 // AdAccountSubsidyAmountDetails represents a Facebook AdAccountSubsidyAmountDetails object
 type AdAccountSubsidyAmountDetails struct {
 	Entered_amount *CurrencyAmount `json:"entered_amount"`
-	Fee_amount *CurrencyAmount `json:"fee_amount"`
-	Total_amount *CurrencyAmount `json:"total_amount"`
+	Fee_amount     *CurrencyAmount `json:"fee_amount"`
+	Total_amount   *CurrencyAmount `json:"total_amount"`
 }

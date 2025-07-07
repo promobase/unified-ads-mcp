@@ -17,7 +17,6 @@ import (
 func GetImageReferenceMatchTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// imagereferencematch_get_ tool
 	// Available fields for ImageReferenceMatch: conflicting_countries, country_resolution_history, creation_time, current_conflict_resolved_countries, displayed_match_state, dispute_form_data_entries_with_translations, expiration_time, id, match_state, matched_reference_copyright, matched_reference_owner, modification_history, reference_copyright, reference_owner, rejection_form_data_entries_with_translations, resolution_reason, update_time
 	imagereferencematch_get_Tool := mcp.NewTool("imagereferencematch_get_",
@@ -37,12 +36,10 @@ func GetImageReferenceMatchTools() []mcp.Tool {
 	)
 	tools = append(tools, imagereferencematch_get_Tool)
 
-
 	return tools
 }
 
 // ImageReferenceMatch handlers
-
 
 // HandleImagereferencematch_get_ handles the imagereferencematch_get_ tool with context-based auth
 func HandleImagereferencematch_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleImagereferencematch_get_(ctx context.Context, request mcp.CallToolReq
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Imagereferencematch_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleImagereferencematch_get_(ctx context.Context, request mcp.CallToolReq
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

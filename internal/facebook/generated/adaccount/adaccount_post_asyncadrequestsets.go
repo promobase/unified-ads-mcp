@@ -15,7 +15,7 @@ import (
 
 // ToolAdaccount_post_asyncadrequestsets returns the MCP tool definition for adaccount_post_asyncadrequestsets
 func ToolAdaccount_post_asyncadrequestsets() mcp.Tool {
-	
+
 	// Params object accepts: ad_specs (list<map>), name (string), notification_mode (adaccountasyncadrequestsets_notification_mode_enum_param), notification_uri (string)
 	return mcp.NewTool("adaccount_post_asyncadrequestsets",
 		mcp.WithDescription("POST asyncadrequestsets for AdAccount"),
@@ -27,23 +27,23 @@ func ToolAdaccount_post_asyncadrequestsets() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"ad_specs": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "ad_specs parameter",
-					"required": true,
-					"items": map[string]any{"type": "object"},
+					"required":    true,
+					"items":       map[string]any{"type": "object"},
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
-					"required": true,
+					"required":    true,
 				},
 				"notification_mode": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "notification_mode parameter",
-					"enum": []string{ "OFF", "ON_COMPLETE" },
+					"enum":        []string{"OFF", "ON_COMPLETE"},
 				},
 				"notification_uri": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "notification_uri parameter",
 				},
 			}),
@@ -84,8 +84,6 @@ func HandleAdaccount_post_asyncadrequestsets(ctx context.Context, request mcp.Ca
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Adaccount_post_asyncadrequestsets(accessToken, args)
 	if err != nil {
@@ -104,35 +102,33 @@ func HandleAdaccount_post_asyncadrequestsets(ctx context.Context, request mcp.Ca
 // Adaccount_post_asyncadrequestsets performs POST asyncadrequestsets for AdAccount
 func Adaccount_post_asyncadrequestsets(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	// Extract account_id for URL construction
 	accountId, ok := args["account_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_post_asyncadrequestsets")
 	}
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%sasyncadrequestsets", accountId)
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-		
-	}
 
+	}
 
 	// Make HTTP request
 	var resp *http.Response

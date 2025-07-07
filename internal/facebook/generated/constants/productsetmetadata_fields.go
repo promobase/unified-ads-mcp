@@ -4,14 +4,14 @@ package constants
 
 // ProductSetMetadataFields contains field name constants for ProductSetMetadata objects
 var ProductSetMetadataFields = struct {
-	CoverImageUrl string
-	Description string
-	ExternalUrl string
+	CoverImageUrl         string
+	Description           string
+	ExternalUrl           string
 	IntegrityReviewStatus string
 }{
-	CoverImageUrl: "cover_image_url",
-	Description: "description",
-	ExternalUrl: "external_url",
+	CoverImageUrl:         "cover_image_url",
+	Description:           "description",
+	ExternalUrl:           "external_url",
 	IntegrityReviewStatus: "integrity_review_status",
 }
 

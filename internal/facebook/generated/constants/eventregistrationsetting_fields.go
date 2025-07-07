@@ -4,14 +4,14 @@ package constants
 
 // EventRegistrationSettingFields contains field name constants for EventRegistrationSetting objects
 var EventRegistrationSettingFields = struct {
-	Id string
-	Questions string
-	TargetType string
+	Id            string
+	Questions     string
+	TargetType    string
 	TicketTierIds string
 }{
-	Id: "id",
-	Questions: "questions",
-	TargetType: "target_type",
+	Id:            "id",
+	Questions:     "questions",
+	TargetType:    "target_type",
 	TicketTierIds: "ticket_tier_ids",
 }
 

@@ -17,7 +17,7 @@ import (
 // ToolAdstudyobjective_get_partner_private_studies returns the MCP tool definition for adstudyobjective_get_partner_private_studies
 func ToolAdstudyobjective_get_partner_private_studies() mcp.Tool {
 	// Available fields for Business: block_offline_analytics, collaborative_ads_managed_partner_business_info, collaborative_ads_managed_partner_eligibility, collaborative_ads_partner_premium_options, created_by, created_time, extended_updated_time, id, is_hidden, link, name, payment_account_id, primary_page, profile_picture_uri, timezone_id, two_factor_type, updated_by, updated_time, user_access_expire_time, verification_status, vertical, vertical_id
-	
+
 	return mcp.NewTool("adstudyobjective_get_partner_private_studies",
 		mcp.WithDescription("GET partner_private_studies for AdStudyObjective"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleAdstudyobjective_get_partner_private_studies(ctx context.Context, req
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Adstudyobjective_get_partner_private_studies(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleAdstudyobjective_get_partner_private_studies(ctx context.Context, req
 // Adstudyobjective_get_partner_private_studies performs GET partner_private_studies for AdStudyObjective
 func Adstudyobjective_get_partner_private_studies(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/partner_private_studies")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

@@ -17,7 +17,6 @@ import (
 func GetJobOpeningTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// jobopening_get_ tool
 	// Available fields for JobOpening: address, application_callback_url, created_time, description, errors, external_company_facebook_url, external_company_full_address, external_company_id, external_company_name, external_id, id, job_status, latitude, longitude, offsite_application_url, page, photo, platform_review_status, post, remote_type, review_rejection_reasons, title, type
 	jobopening_get_Tool := mcp.NewTool("jobopening_get_",
@@ -37,12 +36,10 @@ func GetJobOpeningTools() []mcp.Tool {
 	)
 	tools = append(tools, jobopening_get_Tool)
 
-
 	return tools
 }
 
 // JobOpening handlers
-
 
 // HandleJobopening_get_ handles the jobopening_get_ tool with context-based auth
 func HandleJobopening_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleJobopening_get_(ctx context.Context, request mcp.CallToolRequest) (*m
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Jobopening_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleJobopening_get_(ctx context.Context, request mcp.CallToolRequest) (*m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

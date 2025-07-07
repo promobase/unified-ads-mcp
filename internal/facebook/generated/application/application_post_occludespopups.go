@@ -15,18 +15,18 @@ import (
 
 // ToolApplication_post_occludespopups returns the MCP tool definition for application_post_occludespopups
 func ToolApplication_post_occludespopups() mcp.Tool {
-	
+
 	// Params object accepts: flash (bool), unity (bool)
 	return mcp.NewTool("application_post_occludespopups",
 		mcp.WithDescription("POST occludespopups for Application"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"flash": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "flash parameter",
 				},
 				"unity": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "unity parameter",
 				},
 			}),
@@ -58,8 +58,6 @@ func HandleApplication_post_occludespopups(ctx context.Context, request mcp.Call
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Application_post_occludespopups(accessToken, args)
 	if err != nil {
@@ -78,20 +76,18 @@ func HandleApplication_post_occludespopups(ctx context.Context, request mcp.Call
 // Application_post_occludespopups performs POST occludespopups for Application
 func Application_post_occludespopups(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/occludespopups")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

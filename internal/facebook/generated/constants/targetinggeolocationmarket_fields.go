@@ -4,15 +4,15 @@ package constants
 
 // TargetingGeoLocationMarketFields contains field name constants for TargetingGeoLocationMarket objects
 var TargetingGeoLocationMarketFields = struct {
-	Country string
-	Key string
+	Country    string
+	Key        string
 	MarketType string
-	Name string
+	Name       string
 }{
-	Country: "country",
-	Key: "key",
+	Country:    "country",
+	Key:        "key",
 	MarketType: "market_type",
-	Name: "name",
+	Name:       "name",
 }
 
 // TargetingGeoLocationMarketFieldsList contains all available fields for TargetingGeoLocationMarket objects

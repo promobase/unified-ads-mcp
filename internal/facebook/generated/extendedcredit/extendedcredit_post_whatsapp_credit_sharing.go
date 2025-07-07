@@ -15,7 +15,7 @@ import (
 
 // ToolExtendedcredit_post_whatsapp_credit_sharing returns the MCP tool definition for extendedcredit_post_whatsapp_credit_sharing
 func ToolExtendedcredit_post_whatsapp_credit_sharing() mcp.Tool {
-	
+
 	// Params object accepts: receiving_business_id (string)
 	return mcp.NewTool("extendedcredit_post_whatsapp_credit_sharing",
 		mcp.WithDescription("POST whatsapp_credit_sharing for ExtendedCredit"),
@@ -23,9 +23,9 @@ func ToolExtendedcredit_post_whatsapp_credit_sharing() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"receiving_business_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "receiving_business_id parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: receiving_business_id (string) [required]"),
@@ -58,8 +58,6 @@ func HandleExtendedcredit_post_whatsapp_credit_sharing(ctx context.Context, requ
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Extendedcredit_post_whatsapp_credit_sharing(accessToken, args)
 	if err != nil {
@@ -78,20 +76,18 @@ func HandleExtendedcredit_post_whatsapp_credit_sharing(ctx context.Context, requ
 // Extendedcredit_post_whatsapp_credit_sharing performs POST whatsapp_credit_sharing for ExtendedCredit
 func Extendedcredit_post_whatsapp_credit_sharing(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/whatsapp_credit_sharing")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

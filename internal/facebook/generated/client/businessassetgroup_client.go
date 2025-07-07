@@ -21,24 +21,21 @@ func NewBusinessAssetGroupClient(accessToken string) *BusinessAssetGroupClient {
 	}
 }
 
-
 // Businessassetgroup_delete_assigned_users performs DELETE assigned_users for BusinessAssetGroup
 func (c *BusinessAssetGroupClient) Businessassetgroup_delete_assigned_users(args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/assigned_users")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -69,49 +66,46 @@ func (c *BusinessAssetGroupClient) Businessassetgroup_delete_assigned_users(args
 
 	return result, nil
 }
-
 
 // Businessassetgroup_get_assigned_users performs GET assigned_users for BusinessAssetGroup
 func (c *BusinessAssetGroupClient) Businessassetgroup_get_assigned_users(args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/assigned_users")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -142,25 +136,22 @@ func (c *BusinessAssetGroupClient) Businessassetgroup_get_assigned_users(args ma
 
 	return result, nil
 }
-
 
 // Businessassetgroup_post_assigned_users performs POST assigned_users for BusinessAssetGroup
 func (c *BusinessAssetGroupClient) Businessassetgroup_post_assigned_users(args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/assigned_users")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -191,25 +182,22 @@ func (c *BusinessAssetGroupClient) Businessassetgroup_post_assigned_users(args m
 
 	return result, nil
 }
-
 
 // Businessassetgroup_delete_contained_adaccounts performs DELETE contained_adaccounts for BusinessAssetGroup
 func (c *BusinessAssetGroupClient) Businessassetgroup_delete_contained_adaccounts(args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/contained_adaccounts")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -240,43 +228,40 @@ func (c *BusinessAssetGroupClient) Businessassetgroup_delete_contained_adaccount
 
 	return result, nil
 }
-
 
 // Businessassetgroup_get_contained_adaccounts performs GET contained_adaccounts for BusinessAssetGroup
 func (c *BusinessAssetGroupClient) Businessassetgroup_get_contained_adaccounts(args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/contained_adaccounts")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -307,25 +292,22 @@ func (c *BusinessAssetGroupClient) Businessassetgroup_get_contained_adaccounts(a
 
 	return result, nil
 }
-
 
 // Businessassetgroup_post_contained_adaccounts performs POST contained_adaccounts for BusinessAssetGroup
 func (c *BusinessAssetGroupClient) Businessassetgroup_post_contained_adaccounts(args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/contained_adaccounts")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -356,25 +338,22 @@ func (c *BusinessAssetGroupClient) Businessassetgroup_post_contained_adaccounts(
 
 	return result, nil
 }
-
 
 // Businessassetgroup_delete_contained_applications performs DELETE contained_applications for BusinessAssetGroup
 func (c *BusinessAssetGroupClient) Businessassetgroup_delete_contained_applications(args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/contained_applications")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -405,43 +384,40 @@ func (c *BusinessAssetGroupClient) Businessassetgroup_delete_contained_applicati
 
 	return result, nil
 }
-
 
 // Businessassetgroup_get_contained_applications performs GET contained_applications for BusinessAssetGroup
 func (c *BusinessAssetGroupClient) Businessassetgroup_get_contained_applications(args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/contained_applications")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -472,25 +448,22 @@ func (c *BusinessAssetGroupClient) Businessassetgroup_get_contained_applications
 
 	return result, nil
 }
-
 
 // Businessassetgroup_post_contained_applications performs POST contained_applications for BusinessAssetGroup
 func (c *BusinessAssetGroupClient) Businessassetgroup_post_contained_applications(args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/contained_applications")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -521,25 +494,22 @@ func (c *BusinessAssetGroupClient) Businessassetgroup_post_contained_application
 
 	return result, nil
 }
-
 
 // Businessassetgroup_delete_contained_custom_conversions performs DELETE contained_custom_conversions for BusinessAssetGroup
 func (c *BusinessAssetGroupClient) Businessassetgroup_delete_contained_custom_conversions(args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/contained_custom_conversions")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -570,43 +540,40 @@ func (c *BusinessAssetGroupClient) Businessassetgroup_delete_contained_custom_co
 
 	return result, nil
 }
-
 
 // Businessassetgroup_get_contained_custom_conversions performs GET contained_custom_conversions for BusinessAssetGroup
 func (c *BusinessAssetGroupClient) Businessassetgroup_get_contained_custom_conversions(args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/contained_custom_conversions")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -637,25 +604,22 @@ func (c *BusinessAssetGroupClient) Businessassetgroup_get_contained_custom_conve
 
 	return result, nil
 }
-
 
 // Businessassetgroup_post_contained_custom_conversions performs POST contained_custom_conversions for BusinessAssetGroup
 func (c *BusinessAssetGroupClient) Businessassetgroup_post_contained_custom_conversions(args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/contained_custom_conversions")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -686,25 +650,22 @@ func (c *BusinessAssetGroupClient) Businessassetgroup_post_contained_custom_conv
 
 	return result, nil
 }
-
 
 // Businessassetgroup_delete_contained_instagram_accounts performs DELETE contained_instagram_accounts for BusinessAssetGroup
 func (c *BusinessAssetGroupClient) Businessassetgroup_delete_contained_instagram_accounts(args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/contained_instagram_accounts")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -735,43 +696,40 @@ func (c *BusinessAssetGroupClient) Businessassetgroup_delete_contained_instagram
 
 	return result, nil
 }
-
 
 // Businessassetgroup_get_contained_instagram_accounts performs GET contained_instagram_accounts for BusinessAssetGroup
 func (c *BusinessAssetGroupClient) Businessassetgroup_get_contained_instagram_accounts(args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/contained_instagram_accounts")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -802,25 +760,22 @@ func (c *BusinessAssetGroupClient) Businessassetgroup_get_contained_instagram_ac
 
 	return result, nil
 }
-
 
 // Businessassetgroup_post_contained_instagram_accounts performs POST contained_instagram_accounts for BusinessAssetGroup
 func (c *BusinessAssetGroupClient) Businessassetgroup_post_contained_instagram_accounts(args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/contained_instagram_accounts")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -851,25 +806,22 @@ func (c *BusinessAssetGroupClient) Businessassetgroup_post_contained_instagram_a
 
 	return result, nil
 }
-
 
 // Businessassetgroup_delete_contained_pages performs DELETE contained_pages for BusinessAssetGroup
 func (c *BusinessAssetGroupClient) Businessassetgroup_delete_contained_pages(args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/contained_pages")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -900,43 +852,40 @@ func (c *BusinessAssetGroupClient) Businessassetgroup_delete_contained_pages(arg
 
 	return result, nil
 }
-
 
 // Businessassetgroup_get_contained_pages performs GET contained_pages for BusinessAssetGroup
 func (c *BusinessAssetGroupClient) Businessassetgroup_get_contained_pages(args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/contained_pages")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -967,25 +916,22 @@ func (c *BusinessAssetGroupClient) Businessassetgroup_get_contained_pages(args m
 
 	return result, nil
 }
-
 
 // Businessassetgroup_post_contained_pages performs POST contained_pages for BusinessAssetGroup
 func (c *BusinessAssetGroupClient) Businessassetgroup_post_contained_pages(args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/contained_pages")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -1016,25 +962,22 @@ func (c *BusinessAssetGroupClient) Businessassetgroup_post_contained_pages(args 
 
 	return result, nil
 }
-
 
 // Businessassetgroup_delete_contained_pixels performs DELETE contained_pixels for BusinessAssetGroup
 func (c *BusinessAssetGroupClient) Businessassetgroup_delete_contained_pixels(args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/contained_pixels")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -1065,43 +1008,40 @@ func (c *BusinessAssetGroupClient) Businessassetgroup_delete_contained_pixels(ar
 
 	return result, nil
 }
-
 
 // Businessassetgroup_get_contained_pixels performs GET contained_pixels for BusinessAssetGroup
 func (c *BusinessAssetGroupClient) Businessassetgroup_get_contained_pixels(args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/contained_pixels")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -1133,24 +1073,21 @@ func (c *BusinessAssetGroupClient) Businessassetgroup_get_contained_pixels(args 
 	return result, nil
 }
 
-
 // Businessassetgroup_post_contained_pixels performs POST contained_pixels for BusinessAssetGroup
 func (c *BusinessAssetGroupClient) Businessassetgroup_post_contained_pixels(args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/contained_pixels")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -1182,24 +1119,21 @@ func (c *BusinessAssetGroupClient) Businessassetgroup_post_contained_pixels(args
 	return result, nil
 }
 
-
 // Businessassetgroup_delete_contained_product_catalogs performs DELETE contained_product_catalogs for BusinessAssetGroup
 func (c *BusinessAssetGroupClient) Businessassetgroup_delete_contained_product_catalogs(args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/contained_product_catalogs")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -1231,42 +1165,39 @@ func (c *BusinessAssetGroupClient) Businessassetgroup_delete_contained_product_c
 	return result, nil
 }
 
-
 // Businessassetgroup_get_contained_product_catalogs performs GET contained_product_catalogs for BusinessAssetGroup
 func (c *BusinessAssetGroupClient) Businessassetgroup_get_contained_product_catalogs(args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/contained_product_catalogs")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -1297,25 +1228,22 @@ func (c *BusinessAssetGroupClient) Businessassetgroup_get_contained_product_cata
 
 	return result, nil
 }
-
 
 // Businessassetgroup_post_contained_product_catalogs performs POST contained_product_catalogs for BusinessAssetGroup
 func (c *BusinessAssetGroupClient) Businessassetgroup_post_contained_product_catalogs(args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/contained_product_catalogs")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -1347,42 +1275,39 @@ func (c *BusinessAssetGroupClient) Businessassetgroup_post_contained_product_cat
 	return result, nil
 }
 
-
 // Businessassetgroup_get_ performs GET  for BusinessAssetGroup
 func (c *BusinessAssetGroupClient) Businessassetgroup_get_(args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -1414,24 +1339,21 @@ func (c *BusinessAssetGroupClient) Businessassetgroup_get_(args map[string]inter
 	return result, nil
 }
 
-
 // Businessassetgroup_post_ performs POST  for BusinessAssetGroup
 func (c *BusinessAssetGroupClient) Businessassetgroup_post_(args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -1462,4 +1384,3 @@ func (c *BusinessAssetGroupClient) Businessassetgroup_post_(args map[string]inte
 
 	return result, nil
 }
-

@@ -15,128 +15,128 @@ import (
 
 // ToolAdvideo_post_ returns the MCP tool definition for advideo_post_
 func ToolAdvideo_post_() mcp.Tool {
-	
+
 	// Params object accepts: ad_breaks (list), allow_bm_crossposting (bool), allow_crossposting_for_pages (list<Object>), backdated_time (datetime), backdated_time_granularity (video_backdated_time_granularity), call_to_action (Object), content_category (video_content_category), content_tags (list<string>), custom_labels (list<string>), description (string), direct_share_status (unsigned int), embeddable (bool), expiration (Object), expire_now (bool), increment_play_count (bool), name (string), preferred_thumbnail_id (string), privacy (string), publish_to_news_feed (bool), publish_to_videos_tab (bool), published (bool), scheduled_publish_time (unsigned int), social_actions (bool), sponsor_id (string), sponsor_relationship (unsigned int), tags (list<string>), target (string), universal_video_id (string)
 	return mcp.NewTool("advideo_post_",
 		mcp.WithDescription("POST  for AdVideo"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"ad_breaks": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "ad_breaks parameter",
 				},
 				"allow_bm_crossposting": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "allow_bm_crossposting parameter",
 				},
 				"allow_crossposting_for_pages": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "allow_crossposting_for_pages parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"backdated_time": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "backdated_time parameter",
 				},
 				"backdated_time_granularity": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "backdated_time_granularity parameter",
-					"enum": []string{ "day", "hour", "min", "month", "none", "year" },
+					"enum":        []string{"day", "hour", "min", "month", "none", "year"},
 				},
 				"call_to_action": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "call_to_action parameter",
 				},
 				"content_category": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "content_category parameter",
-					"enum": []string{ "BEAUTY_FASHION", "BUSINESS", "CARS_TRUCKS", "COMEDY", "CUTE_ANIMALS", "ENTERTAINMENT", "FAMILY", "FOOD_HEALTH", "HOME", "LIFESTYLE", "MUSIC", "NEWS", "OTHER", "POLITICS", "SCIENCE", "SPORTS", "TECHNOLOGY", "VIDEO_GAMING" },
+					"enum":        []string{"BEAUTY_FASHION", "BUSINESS", "CARS_TRUCKS", "COMEDY", "CUTE_ANIMALS", "ENTERTAINMENT", "FAMILY", "FOOD_HEALTH", "HOME", "LIFESTYLE", "MUSIC", "NEWS", "OTHER", "POLITICS", "SCIENCE", "SPORTS", "TECHNOLOGY", "VIDEO_GAMING"},
 				},
 				"content_tags": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "content_tags parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"custom_labels": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "custom_labels parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"description": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "description parameter",
 				},
 				"direct_share_status": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "direct_share_status parameter",
 				},
 				"embeddable": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "embeddable parameter",
 				},
 				"expiration": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "expiration parameter",
 				},
 				"expire_now": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "expire_now parameter",
 				},
 				"increment_play_count": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "increment_play_count parameter",
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
 				},
 				"preferred_thumbnail_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "preferred_thumbnail_id parameter",
 				},
 				"privacy": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "privacy parameter",
 				},
 				"publish_to_news_feed": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "publish_to_news_feed parameter",
 				},
 				"publish_to_videos_tab": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "publish_to_videos_tab parameter",
 				},
 				"published": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "published parameter",
 				},
 				"scheduled_publish_time": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "scheduled_publish_time parameter",
 				},
 				"social_actions": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "social_actions parameter",
 				},
 				"sponsor_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "sponsor_id parameter",
 				},
 				"sponsor_relationship": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "sponsor_relationship parameter",
 				},
 				"tags": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "tags parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"target": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "target parameter",
 				},
 				"universal_video_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "universal_video_id parameter",
 				},
 			}),
@@ -168,8 +168,6 @@ func HandleAdvideo_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Advideo_post_(accessToken, args)
 	if err != nil {
@@ -188,20 +186,18 @@ func HandleAdvideo_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 // Advideo_post_ performs POST  for AdVideo
 func Advideo_post_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

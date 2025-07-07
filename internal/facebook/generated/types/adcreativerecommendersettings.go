@@ -4,6 +4,6 @@ package types
 
 // AdCreativeRecommenderSettings represents a Facebook AdCreativeRecommenderSettings object
 type AdCreativeRecommenderSettings struct {
-	Preferred_events []string `json:"preferred_events"`
-	Product_sales_channel string `json:"product_sales_channel"`
+	Preferred_events      []string `json:"preferred_events"`
+	Product_sales_channel string   `json:"product_sales_channel"`
 }

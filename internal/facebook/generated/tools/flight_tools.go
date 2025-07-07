@@ -17,7 +17,6 @@ import (
 func GetFlightTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// flight_get_channels_to_integrity_status tool
 	// Available fields for CatalogItemChannelsToIntegrityStatus: channels, rejection_information
 	flight_get_channels_to_integrity_statusTool := mcp.NewTool("flight_get_channels_to_integrity_status",
@@ -45,14 +44,14 @@ func GetFlightTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"keys": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "keys parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "type parameter",
-					"enum": []string{ "COUNTRY", "LANGUAGE", "LANGUAGE_AND_COUNTRY" },
+					"enum":        []string{"COUNTRY", "LANGUAGE", "LANGUAGE_AND_COUNTRY"},
 				},
 			}),
 			mcp.Description("Parameters object containing: keys (array<string>), type (enum) [COUNTRY, LANGUAGE, LANGUAGE_AND_COUNTRY]"),
@@ -117,40 +116,40 @@ func GetFlightTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"currency": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "currency parameter",
 				},
 				"description": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "description parameter",
 				},
 				"destination_airport": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "destination_airport parameter",
 				},
 				"destination_city": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "destination_city parameter",
 				},
 				"images": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "images parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"origin_airport": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "origin_airport parameter",
 				},
 				"origin_city": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "origin_city parameter",
 				},
 				"price": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "price parameter",
 				},
 				"url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "url parameter",
 				},
 			}),
@@ -159,12 +158,10 @@ func GetFlightTools() []mcp.Tool {
 	)
 	tools = append(tools, flight_post_Tool)
 
-
 	return tools
 }
 
 // Flight handlers
-
 
 // HandleFlight_get_channels_to_integrity_status handles the flight_get_channels_to_integrity_status tool with context-based auth
 func HandleFlight_get_channels_to_integrity_status(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -205,8 +202,6 @@ func HandleFlight_get_channels_to_integrity_status(ctx context.Context, request 
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Flight_get_channels_to_integrity_status(args)
 	if err != nil {
@@ -221,7 +216,6 @@ func HandleFlight_get_channels_to_integrity_status(ctx context.Context, request 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFlight_get_override_details handles the flight_get_override_details tool with context-based auth
 func HandleFlight_get_override_details(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -274,8 +268,6 @@ func HandleFlight_get_override_details(ctx context.Context, request mcp.CallTool
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Flight_get_override_details(args)
 	if err != nil {
@@ -290,7 +282,6 @@ func HandleFlight_get_override_details(ctx context.Context, request mcp.CallTool
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFlight_get_videos_metadata handles the flight_get_videos_metadata tool with context-based auth
 func HandleFlight_get_videos_metadata(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -331,8 +322,6 @@ func HandleFlight_get_videos_metadata(ctx context.Context, request mcp.CallToolR
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Flight_get_videos_metadata(args)
 	if err != nil {
@@ -347,7 +336,6 @@ func HandleFlight_get_videos_metadata(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFlight_get_ handles the flight_get_ tool with context-based auth
 func HandleFlight_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -388,8 +376,6 @@ func HandleFlight_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.C
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Flight_get_(args)
 	if err != nil {
@@ -404,7 +390,6 @@ func HandleFlight_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFlight_post_ handles the flight_post_ tool with context-based auth
 func HandleFlight_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -432,8 +417,6 @@ func HandleFlight_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 		}
 	}
 
-
-
 	// Call the client method
 	result, err := client.Flight_post_(args)
 	if err != nil {
@@ -448,4 +431,3 @@ func HandleFlight_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

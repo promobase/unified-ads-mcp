@@ -17,7 +17,6 @@ import (
 func GetImageCopyrightDisputeTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// imagecopyrightdispute_get_ tool
 	// Available fields for ImageCopyrightDispute: appeal_form_data, dispute_form_data, expiration_time, id, match_id, status, time_appealed, time_created, time_updated
 	imagecopyrightdispute_get_Tool := mcp.NewTool("imagecopyrightdispute_get_",
@@ -37,12 +36,10 @@ func GetImageCopyrightDisputeTools() []mcp.Tool {
 	)
 	tools = append(tools, imagecopyrightdispute_get_Tool)
 
-
 	return tools
 }
 
 // ImageCopyrightDispute handlers
-
 
 // HandleImagecopyrightdispute_get_ handles the imagecopyrightdispute_get_ tool with context-based auth
 func HandleImagecopyrightdispute_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleImagecopyrightdispute_get_(ctx context.Context, request mcp.CallToolR
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Imagecopyrightdispute_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleImagecopyrightdispute_get_(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

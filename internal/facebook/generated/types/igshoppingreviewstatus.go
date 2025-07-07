@@ -4,7 +4,7 @@ package types
 
 // IGShoppingReviewStatus represents a Facebook IGShoppingReviewStatus object
 type IGShoppingReviewStatus struct {
-	Onsite_eligibility *IGShoppingReviewStatusOnsiteEligibility `json:"onsite_eligibility"`
-	Reasons []IGShoppingReviewStatusReasonWithHelpMessage `json:"reasons"`
-	Status string `json:"status"`
+	Onsite_eligibility *IGShoppingReviewStatusOnsiteEligibility      `json:"onsite_eligibility"`
+	Reasons            []IGShoppingReviewStatusReasonWithHelpMessage `json:"reasons"`
+	Status             string                                        `json:"status"`
 }

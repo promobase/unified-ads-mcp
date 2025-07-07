@@ -17,7 +17,6 @@ import (
 func GetExtendedCreditTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// extendedcredit_get_extended_credit_invoice_groups tool
 	// Available fields for ExtendedCreditInvoiceGroup: auto_enroll, bill_to_address, customer_po_number, email, emails, id, liable_address, name, sold_to_address
 	extendedcredit_get_extended_credit_invoice_groupsTool := mcp.NewTool("extendedcredit_get_extended_credit_invoice_groups",
@@ -45,15 +44,15 @@ func GetExtendedCreditTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"emails": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "emails parameter",
-					"required": true,
-					"items": map[string]any{"type": "string"},
+					"required":    true,
+					"items":       map[string]any{"type": "string"},
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: emails (array<string>) [required], name (string) [required]"),
@@ -69,7 +68,7 @@ func GetExtendedCreditTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"receiving_business_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "receiving_business_id parameter",
 				},
 			}),
@@ -98,28 +97,28 @@ func GetExtendedCreditTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"amount": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "amount parameter",
 				},
 				"liability_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "liability_type parameter",
-					"enum": []string{ "", "MSA", "Normal", "Sequential" },
+					"enum":        []string{"", "MSA", "Normal", "Sequential"},
 				},
 				"partition_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "partition_type parameter",
-					"enum": []string{ "AUTH", "FIXED", "FIXED_WITHOUT_PARTITION" },
+					"enum":        []string{"AUTH", "FIXED", "FIXED_WITHOUT_PARTITION"},
 				},
 				"receiving_business_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "receiving_business_id parameter",
-					"required": true,
+					"required":    true,
 				},
 				"send_bill_to": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "send_bill_to parameter",
-					"enum": []string{ "", "Advertiser", "Agency" },
+					"enum":        []string{"", "Advertiser", "Agency"},
 				},
 			}),
 			mcp.Description("Parameters object containing: amount (object), liability_type (enum) [, MSA, Normal, Sequential], partition_type (enum) [AUTH, FIXED, FIXED_WITHOUT_PARTITION], receiving_business_id (string) [required], send_bill_to (enum) [, Advertiser, Agency]"),
@@ -135,14 +134,14 @@ func GetExtendedCreditTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"waba_currency": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "waba_currency parameter",
-					"required": true,
+					"required":    true,
 				},
 				"waba_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "waba_id parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: waba_currency (string) [required], waba_id (string) [required]"),
@@ -158,9 +157,9 @@ func GetExtendedCreditTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"receiving_business_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "receiving_business_id parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: receiving_business_id (string) [required]"),
@@ -176,14 +175,14 @@ func GetExtendedCreditTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"waba_currency": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "waba_currency parameter",
-					"required": true,
+					"required":    true,
 				},
 				"waba_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "waba_id parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: waba_currency (string) [required], waba_id (string) [required]"),
@@ -210,12 +209,10 @@ func GetExtendedCreditTools() []mcp.Tool {
 	)
 	tools = append(tools, extendedcredit_get_Tool)
 
-
 	return tools
 }
 
 // ExtendedCredit handlers
-
 
 // HandleExtendedcredit_get_extended_credit_invoice_groups handles the extendedcredit_get_extended_credit_invoice_groups tool with context-based auth
 func HandleExtendedcredit_get_extended_credit_invoice_groups(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -256,8 +253,6 @@ func HandleExtendedcredit_get_extended_credit_invoice_groups(ctx context.Context
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Extendedcredit_get_extended_credit_invoice_groups(args)
 	if err != nil {
@@ -272,7 +267,6 @@ func HandleExtendedcredit_get_extended_credit_invoice_groups(ctx context.Context
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleExtendedcredit_post_extended_credit_invoice_groups handles the extendedcredit_post_extended_credit_invoice_groups tool with context-based auth
 func HandleExtendedcredit_post_extended_credit_invoice_groups(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -302,8 +296,6 @@ func HandleExtendedcredit_post_extended_credit_invoice_groups(ctx context.Contex
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Extendedcredit_post_extended_credit_invoice_groups(args)
 	if err != nil {
@@ -318,7 +310,6 @@ func HandleExtendedcredit_post_extended_credit_invoice_groups(ctx context.Contex
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleExtendedcredit_get_owning_credit_allocation_configs handles the extendedcredit_get_owning_credit_allocation_configs tool with context-based auth
 func HandleExtendedcredit_get_owning_credit_allocation_configs(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -371,8 +362,6 @@ func HandleExtendedcredit_get_owning_credit_allocation_configs(ctx context.Conte
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Extendedcredit_get_owning_credit_allocation_configs(args)
 	if err != nil {
@@ -387,7 +376,6 @@ func HandleExtendedcredit_get_owning_credit_allocation_configs(ctx context.Conte
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleExtendedcredit_post_owning_credit_allocation_configs handles the extendedcredit_post_owning_credit_allocation_configs tool with context-based auth
 func HandleExtendedcredit_post_owning_credit_allocation_configs(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -417,8 +405,6 @@ func HandleExtendedcredit_post_owning_credit_allocation_configs(ctx context.Cont
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Extendedcredit_post_owning_credit_allocation_configs(args)
 	if err != nil {
@@ -433,7 +419,6 @@ func HandleExtendedcredit_post_owning_credit_allocation_configs(ctx context.Cont
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleExtendedcredit_post_whatsapp_credit_attach handles the extendedcredit_post_whatsapp_credit_attach tool with context-based auth
 func HandleExtendedcredit_post_whatsapp_credit_attach(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -463,8 +448,6 @@ func HandleExtendedcredit_post_whatsapp_credit_attach(ctx context.Context, reque
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Extendedcredit_post_whatsapp_credit_attach(args)
 	if err != nil {
@@ -479,7 +462,6 @@ func HandleExtendedcredit_post_whatsapp_credit_attach(ctx context.Context, reque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleExtendedcredit_post_whatsapp_credit_sharing handles the extendedcredit_post_whatsapp_credit_sharing tool with context-based auth
 func HandleExtendedcredit_post_whatsapp_credit_sharing(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -509,8 +491,6 @@ func HandleExtendedcredit_post_whatsapp_credit_sharing(ctx context.Context, requ
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Extendedcredit_post_whatsapp_credit_sharing(args)
 	if err != nil {
@@ -525,7 +505,6 @@ func HandleExtendedcredit_post_whatsapp_credit_sharing(ctx context.Context, requ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleExtendedcredit_post_whatsapp_credit_sharing_and_attach handles the extendedcredit_post_whatsapp_credit_sharing_and_attach tool with context-based auth
 func HandleExtendedcredit_post_whatsapp_credit_sharing_and_attach(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -555,8 +534,6 @@ func HandleExtendedcredit_post_whatsapp_credit_sharing_and_attach(ctx context.Co
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Extendedcredit_post_whatsapp_credit_sharing_and_attach(args)
 	if err != nil {
@@ -571,7 +548,6 @@ func HandleExtendedcredit_post_whatsapp_credit_sharing_and_attach(ctx context.Co
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleExtendedcredit_get_ handles the extendedcredit_get_ tool with context-based auth
 func HandleExtendedcredit_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -612,8 +588,6 @@ func HandleExtendedcredit_get_(ctx context.Context, request mcp.CallToolRequest)
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Extendedcredit_get_(args)
 	if err != nil {
@@ -628,4 +602,3 @@ func HandleExtendedcredit_get_(ctx context.Context, request mcp.CallToolRequest)
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

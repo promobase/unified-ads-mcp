@@ -15,8 +15,7 @@ import (
 
 // ToolCampaign_delete_ returns the MCP tool definition for campaign_delete_
 func ToolCampaign_delete_() mcp.Tool {
-	
-	
+
 	return mcp.NewTool("campaign_delete_",
 		mcp.WithDescription("DELETE  for Campaign"),
 		mcp.WithString("campaign_id",
@@ -44,8 +43,6 @@ func HandleCampaign_delete_(ctx context.Context, request mcp.CallToolRequest) (*
 	}
 	args["campaign_id"] = campaign_id
 
-
-
 	// Call the API method
 	result, err := Campaign_delete_(accessToken, args)
 	if err != nil {
@@ -64,27 +61,25 @@ func HandleCampaign_delete_(ctx context.Context, request mcp.CallToolRequest) (*
 // Campaign_delete_ performs DELETE  for Campaign
 func Campaign_delete_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	// Extract campaign_id for URL construction
 	campaignId, ok := args["campaign_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("campaign_id is required for campaign_delete_")
 	}
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/%s", campaignId)
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["campaign_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "campaign_id" != "campaign_id" {
 			urlParams.Set("campaign_id", fmt.Sprintf("%v", val))
 		}
-		
-	}
 
+	}
 
 	// Make HTTP request
 	var resp *http.Response

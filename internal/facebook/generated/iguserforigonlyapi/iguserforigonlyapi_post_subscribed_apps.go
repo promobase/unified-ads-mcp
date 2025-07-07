@@ -15,7 +15,7 @@ import (
 
 // ToolIguserforigonlyapi_post_subscribed_apps returns the MCP tool definition for iguserforigonlyapi_post_subscribed_apps
 func ToolIguserforigonlyapi_post_subscribed_apps() mcp.Tool {
-	
+
 	// Params object accepts: subscribed_fields (list<iggraphusersubscribed_apps_subscribed_fields_enum_param>)
 	return mcp.NewTool("iguserforigonlyapi_post_subscribed_apps",
 		mcp.WithDescription("POST subscribed_apps for IGUserForIGOnlyAPI"),
@@ -23,11 +23,11 @@ func ToolIguserforigonlyapi_post_subscribed_apps() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"subscribed_fields": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "subscribed_fields parameter",
-					"required": true,
-					"enum": []string{ "comment_poll_response", "comments", "creator_marketplace_invited_creator_onboarding", "creator_marketplace_projects", "delta", "follow", "live_comments", "mentions", "message_reactions", "messages", "messaging_handover", "messaging_optins", "messaging_postbacks", "messaging_referral", "messaging_seen", "onboarding_welcome_message_series", "standby", "story_insights", "story_poll_response", "story_reactions", "story_share" },
-					"items": map[string]any{"type": "string"},
+					"required":    true,
+					"enum":        []string{"comment_poll_response", "comments", "creator_marketplace_invited_creator_onboarding", "creator_marketplace_projects", "delta", "follow", "live_comments", "mentions", "message_reactions", "messages", "messaging_handover", "messaging_optins", "messaging_postbacks", "messaging_referral", "messaging_seen", "onboarding_welcome_message_series", "standby", "story_insights", "story_poll_response", "story_reactions", "story_share"},
+					"items":       map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: subscribed_fields (array<enum>) [comment_poll_response, comments, creator_marketplace_invited_creator_onboarding, creator_marketplace_projects, delta, ...] [required]"),
@@ -60,8 +60,6 @@ func HandleIguserforigonlyapi_post_subscribed_apps(ctx context.Context, request 
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Iguserforigonlyapi_post_subscribed_apps(accessToken, args)
 	if err != nil {
@@ -80,20 +78,18 @@ func HandleIguserforigonlyapi_post_subscribed_apps(ctx context.Context, request 
 // Iguserforigonlyapi_post_subscribed_apps performs POST subscribed_apps for IGUserForIGOnlyAPI
 func Iguserforigonlyapi_post_subscribed_apps(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/subscribed_apps")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

@@ -4,11 +4,11 @@ package types
 
 // MessengerAdsPartialAutomatedStepList represents a Facebook MessengerAdsPartialAutomatedStepList object
 type MessengerAdsPartialAutomatedStepList struct {
-	Fblead_form *LeadgenForm `json:"fblead_form"`
-	First_step_id string `json:"first_step_id"`
-	Id string `json:"id"`
-	Page *Page `json:"page"`
-	Privacy_url string `json:"privacy_url"`
-	Reminder_text string `json:"reminder_text"`
-	Stop_question_message string `json:"stop_question_message"`
+	Fblead_form           *LeadgenForm `json:"fblead_form"`
+	First_step_id         string       `json:"first_step_id"`
+	Id                    string       `json:"id"`
+	Page                  *Page        `json:"page"`
+	Privacy_url           string       `json:"privacy_url"`
+	Reminder_text         string       `json:"reminder_text"`
+	Stop_question_message string       `json:"stop_question_message"`
 }

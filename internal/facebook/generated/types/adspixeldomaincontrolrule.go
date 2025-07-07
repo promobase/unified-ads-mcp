@@ -5,5 +5,5 @@ package types
 // AdsPixelDomainControlRule represents a Facebook AdsPixelDomainControlRule object
 type AdsPixelDomainControlRule struct {
 	Domain_list []map[string]interface{} `json:"domain_list"`
-	Type_ string `json:"type"`
+	Type_       string                   `json:"type"`
 }

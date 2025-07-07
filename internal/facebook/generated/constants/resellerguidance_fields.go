@@ -5,34 +5,34 @@ package constants
 // ResellerGuidanceFields contains field name constants for ResellerGuidance objects
 var ResellerGuidanceFields = struct {
 	AdAccountFirstSpendDate string
-	AdAccountId string
-	AdoptedGuidanceL7d string
-	AdvertiserName string
+	AdAccountId             string
+	AdoptedGuidanceL7d      string
+	AdvertiserName          string
 	AttributedToResellerL7d string
-	AvailableGuidance string
+	AvailableGuidance       string
 	GuidanceAdoptionRateL7d string
-	NurturedByResellerL7d string
-	PlanningAgencyName string
-	RecommendationTime string
-	ReportingDs string
-	Reseller string
-	RevenueL30d string
-	UltimateAdvertiserName string
+	NurturedByResellerL7d   string
+	PlanningAgencyName      string
+	RecommendationTime      string
+	ReportingDs             string
+	Reseller                string
+	RevenueL30d             string
+	UltimateAdvertiserName  string
 }{
 	AdAccountFirstSpendDate: "ad_account_first_spend_date",
-	AdAccountId: "ad_account_id",
-	AdoptedGuidanceL7d: "adopted_guidance_l7d",
-	AdvertiserName: "advertiser_name",
+	AdAccountId:             "ad_account_id",
+	AdoptedGuidanceL7d:      "adopted_guidance_l7d",
+	AdvertiserName:          "advertiser_name",
 	AttributedToResellerL7d: "attributed_to_reseller_l7d",
-	AvailableGuidance: "available_guidance",
+	AvailableGuidance:       "available_guidance",
 	GuidanceAdoptionRateL7d: "guidance_adoption_rate_l7d",
-	NurturedByResellerL7d: "nurtured_by_reseller_l7d",
-	PlanningAgencyName: "planning_agency_name",
-	RecommendationTime: "recommendation_time",
-	ReportingDs: "reporting_ds",
-	Reseller: "reseller",
-	RevenueL30d: "revenue_l30d",
-	UltimateAdvertiserName: "ultimate_advertiser_name",
+	NurturedByResellerL7d:   "nurtured_by_reseller_l7d",
+	PlanningAgencyName:      "planning_agency_name",
+	RecommendationTime:      "recommendation_time",
+	ReportingDs:             "reporting_ds",
+	Reseller:                "reseller",
+	RevenueL30d:             "revenue_l30d",
+	UltimateAdvertiserName:  "ultimate_advertiser_name",
 }
 
 // ResellerGuidanceFieldsList contains all available fields for ResellerGuidance objects

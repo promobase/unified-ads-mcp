@@ -15,7 +15,7 @@ import (
 
 // ToolProductcatalog_post_hotels returns the MCP tool definition for productcatalog_post_hotels
 func ToolProductcatalog_post_hotels() mcp.Tool {
-	
+
 	// Params object accepts: address (Object), applinks (Object), base_price (unsigned int), brand (string), currency (string), description (string), guest_ratings (list<Object>), hotel_id (string), images (list<Object>), name (string), phone (string), star_rating (float), url (string)
 	return mcp.NewTool("productcatalog_post_hotels",
 		mcp.WithDescription("POST hotels for ProductCatalog"),
@@ -23,63 +23,63 @@ func ToolProductcatalog_post_hotels() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"address": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "address parameter",
-					"required": true,
+					"required":    true,
 				},
 				"applinks": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "applinks parameter",
 				},
 				"base_price": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "base_price parameter",
 				},
 				"brand": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "brand parameter",
 				},
 				"currency": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "currency parameter",
 				},
 				"description": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "description parameter",
-					"required": true,
+					"required":    true,
 				},
 				"guest_ratings": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "guest_ratings parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"hotel_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "hotel_id parameter",
 				},
 				"images": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "images parameter",
-					"required": true,
-					"items": map[string]any{"type": "object"},
+					"required":    true,
+					"items":       map[string]any{"type": "object"},
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
-					"required": true,
+					"required":    true,
 				},
 				"phone": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "phone parameter",
 				},
 				"star_rating": map[string]any{
-					"type": "number",
+					"type":        "number",
 					"description": "star_rating parameter",
 				},
 				"url": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "url parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: address (object) [required], applinks (object), base_price (integer), brand (string), currency (string), description (string) [required], guest_ratings (array<object>), hotel_id (string), images (array<object>) [required], name (string) [required], phone (string), star_rating (number), url (string) [required]"),
@@ -112,8 +112,6 @@ func HandleProductcatalog_post_hotels(ctx context.Context, request mcp.CallToolR
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Productcatalog_post_hotels(accessToken, args)
 	if err != nil {
@@ -132,20 +130,18 @@ func HandleProductcatalog_post_hotels(ctx context.Context, request mcp.CallToolR
 // Productcatalog_post_hotels performs POST hotels for ProductCatalog
 func Productcatalog_post_hotels(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/hotels")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

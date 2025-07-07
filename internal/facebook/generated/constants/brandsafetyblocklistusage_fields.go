@@ -5,16 +5,16 @@ package constants
 // BrandSafetyBlockListUsageFields contains field name constants for BrandSafetyBlockListUsage objects
 var BrandSafetyBlockListUsageFields = struct {
 	CurrentUsage string
-	NewUsage string
-	Platform string
-	Position string
-	Threshold string
+	NewUsage     string
+	Platform     string
+	Position     string
+	Threshold    string
 }{
 	CurrentUsage: "current_usage",
-	NewUsage: "new_usage",
-	Platform: "platform",
-	Position: "position",
-	Threshold: "threshold",
+	NewUsage:     "new_usage",
+	Platform:     "platform",
+	Position:     "position",
+	Threshold:    "threshold",
 }
 
 // BrandSafetyBlockListUsageFieldsList contains all available fields for BrandSafetyBlockListUsage objects

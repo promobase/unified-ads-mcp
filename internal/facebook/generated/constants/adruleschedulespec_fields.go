@@ -4,10 +4,10 @@ package constants
 
 // AdRuleScheduleSpecFields contains field name constants for AdRuleScheduleSpec objects
 var AdRuleScheduleSpecFields = struct {
-	Schedule string
+	Schedule     string
 	ScheduleType string
 }{
-	Schedule: "schedule",
+	Schedule:     "schedule",
 	ScheduleType: "schedule_type",
 }
 

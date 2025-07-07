@@ -4,22 +4,22 @@ package types
 
 // CommerceMerchantSettings represents a Facebook CommerceMerchantSettings object
 type CommerceMerchantSettings struct {
-	Checkout_config string `json:"checkout_config"`
-	Checkout_message string `json:"checkout_message"`
-	Contact_email string `json:"contact_email"`
-	Cta string `json:"cta"`
-	Display_name string `json:"display_name"`
-	Facebook_channel map[string]interface{} `json:"facebook_channel"`
-	Id string `json:"id"`
-	Instagram_channel map[string]interface{} `json:"instagram_channel"`
-	Korea_ftc_listing string `json:"korea_ftc_listing"`
-	Merchant_page *Profile `json:"merchant_page"`
-	Merchant_status string `json:"merchant_status"`
-	Onsite_commerce_merchant map[string]interface{} `json:"onsite_commerce_merchant"`
-	Payment_provider string `json:"payment_provider"`
-	Privacy_policy_localized string `json:"privacy_policy_localized"`
-	Return_policy_localized string `json:"return_policy_localized"`
-	Review_rejection_messages []string `json:"review_rejection_messages"`
-	Review_rejection_reasons []string `json:"review_rejection_reasons"`
-	Terms string `json:"terms"`
+	Checkout_config           string                 `json:"checkout_config"`
+	Checkout_message          string                 `json:"checkout_message"`
+	Contact_email             string                 `json:"contact_email"`
+	Cta                       string                 `json:"cta"`
+	Display_name              string                 `json:"display_name"`
+	Facebook_channel          map[string]interface{} `json:"facebook_channel"`
+	Id                        string                 `json:"id"`
+	Instagram_channel         map[string]interface{} `json:"instagram_channel"`
+	Korea_ftc_listing         string                 `json:"korea_ftc_listing"`
+	Merchant_page             *Profile               `json:"merchant_page"`
+	Merchant_status           string                 `json:"merchant_status"`
+	Onsite_commerce_merchant  map[string]interface{} `json:"onsite_commerce_merchant"`
+	Payment_provider          string                 `json:"payment_provider"`
+	Privacy_policy_localized  string                 `json:"privacy_policy_localized"`
+	Return_policy_localized   string                 `json:"return_policy_localized"`
+	Review_rejection_messages []string               `json:"review_rejection_messages"`
+	Review_rejection_reasons  []string               `json:"review_rejection_reasons"`
+	Terms                     string                 `json:"terms"`
 }

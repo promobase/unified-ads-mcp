@@ -5,22 +5,22 @@ package constants
 // AdsPixelEventSuggestionRuleFields contains field name constants for AdsPixelEventSuggestionRule objects
 var AdsPixelEventSuggestionRuleFields = struct {
 	Field7dVolume string
-	Dismissed string
-	EndTime string
-	EventType string
-	Rank string
-	Rule string
-	SampleUrls string
-	StartTime string
+	Dismissed     string
+	EndTime       string
+	EventType     string
+	Rank          string
+	Rule          string
+	SampleUrls    string
+	StartTime     string
 }{
 	Field7dVolume: "7d_volume",
-	Dismissed: "dismissed",
-	EndTime: "end_time",
-	EventType: "event_type",
-	Rank: "rank",
-	Rule: "rule",
-	SampleUrls: "sample_urls",
-	StartTime: "start_time",
+	Dismissed:     "dismissed",
+	EndTime:       "end_time",
+	EventType:     "event_type",
+	Rank:          "rank",
+	Rule:          "rule",
+	SampleUrls:    "sample_urls",
+	StartTime:     "start_time",
 }
 
 // AdsPixelEventSuggestionRuleFieldsList contains all available fields for AdsPixelEventSuggestionRule objects

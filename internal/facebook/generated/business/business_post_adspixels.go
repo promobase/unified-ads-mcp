@@ -15,7 +15,7 @@ import (
 
 // ToolBusiness_post_adspixels returns the MCP tool definition for business_post_adspixels
 func ToolBusiness_post_adspixels() mcp.Tool {
-	
+
 	// Params object accepts: is_crm (bool), name (string)
 	return mcp.NewTool("business_post_adspixels",
 		mcp.WithDescription("POST adspixels for Business"),
@@ -23,13 +23,13 @@ func ToolBusiness_post_adspixels() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"is_crm": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_crm parameter",
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: is_crm (boolean), name (string) [required]"),
@@ -62,8 +62,6 @@ func HandleBusiness_post_adspixels(ctx context.Context, request mcp.CallToolRequ
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Business_post_adspixels(accessToken, args)
 	if err != nil {
@@ -82,20 +80,18 @@ func HandleBusiness_post_adspixels(ctx context.Context, request mcp.CallToolRequ
 // Business_post_adspixels performs POST adspixels for Business
 func Business_post_adspixels(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/adspixels")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

@@ -4,19 +4,19 @@ package constants
 
 // ReachFrequencyCurveLowerConfidenceRangeFields contains field name constants for ReachFrequencyCurveLowerConfidenceRange objects
 var ReachFrequencyCurveLowerConfidenceRangeFields = struct {
-	ImpressionLower string
-	NumPoints string
-	Reach string
-	ReachLower string
+	ImpressionLower       string
+	NumPoints             string
+	Reach                 string
+	ReachLower            string
 	UniqVideoViews2sLower string
-	VideoViews2sLower string
+	VideoViews2sLower     string
 }{
-	ImpressionLower: "impression_lower",
-	NumPoints: "num_points",
-	Reach: "reach",
-	ReachLower: "reach_lower",
+	ImpressionLower:       "impression_lower",
+	NumPoints:             "num_points",
+	Reach:                 "reach",
+	ReachLower:            "reach_lower",
 	UniqVideoViews2sLower: "uniq_video_views_2s_lower",
-	VideoViews2sLower: "video_views_2s_lower",
+	VideoViews2sLower:     "video_views_2s_lower",
 }
 
 // ReachFrequencyCurveLowerConfidenceRangeFieldsList contains all available fields for ReachFrequencyCurveLowerConfidenceRange objects

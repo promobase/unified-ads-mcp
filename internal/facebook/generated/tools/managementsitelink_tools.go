@@ -17,7 +17,6 @@ import (
 func GetManagementSiteLinkTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// managementsitelink_get_ tool
 	// Available fields for ManagementSiteLink: ad_account_id, id, link_domain, link_hash, link_image_hash, link_image_url, link_title, link_type, link_url
 	managementsitelink_get_Tool := mcp.NewTool("managementsitelink_get_",
@@ -37,12 +36,10 @@ func GetManagementSiteLinkTools() []mcp.Tool {
 	)
 	tools = append(tools, managementsitelink_get_Tool)
 
-
 	return tools
 }
 
 // ManagementSiteLink handlers
-
 
 // HandleManagementsitelink_get_ handles the managementsitelink_get_ tool with context-based auth
 func HandleManagementsitelink_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleManagementsitelink_get_(ctx context.Context, request mcp.CallToolRequ
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Managementsitelink_get_(args)
 	if err != nil {
@@ -99,4 +94,3 @@ func HandleManagementsitelink_get_(ctx context.Context, request mcp.CallToolRequ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

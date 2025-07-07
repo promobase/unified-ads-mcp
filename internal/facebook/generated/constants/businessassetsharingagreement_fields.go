@@ -4,19 +4,19 @@ package constants
 
 // BusinessAssetSharingAgreementFields contains field name constants for BusinessAssetSharingAgreement objects
 var BusinessAssetSharingAgreementFields = struct {
-	Id string
-	Initiator string
-	Recipient string
+	Id               string
+	Initiator        string
+	Recipient        string
 	RelationshipType string
-	RequestStatus string
-	RequestType string
+	RequestStatus    string
+	RequestType      string
 }{
-	Id: "id",
-	Initiator: "initiator",
-	Recipient: "recipient",
+	Id:               "id",
+	Initiator:        "initiator",
+	Recipient:        "recipient",
 	RelationshipType: "relationship_type",
-	RequestStatus: "request_status",
-	RequestType: "request_type",
+	RequestStatus:    "request_status",
+	RequestType:      "request_type",
 }
 
 // BusinessAssetSharingAgreementFieldsList contains all available fields for BusinessAssetSharingAgreement objects

@@ -4,39 +4,39 @@ package constants
 
 // BusinessRoleRequestFields contains field name constants for BusinessRoleRequest objects
 var BusinessRoleRequestFields = struct {
-	CreatedBy string
-	CreatedTime string
-	Email string
-	ExpirationTime string
-	ExpiryTime string
-	FinanceRole string
-	Id string
-	InviteLink string
+	CreatedBy       string
+	CreatedTime     string
+	Email           string
+	ExpirationTime  string
+	ExpiryTime      string
+	FinanceRole     string
+	Id              string
+	InviteLink      string
 	InvitedUserType string
-	IpRole string
-	Owner string
-	Role string
-	Status string
-	Tasks string
-	UpdatedBy string
-	UpdatedTime string
+	IpRole          string
+	Owner           string
+	Role            string
+	Status          string
+	Tasks           string
+	UpdatedBy       string
+	UpdatedTime     string
 }{
-	CreatedBy: "created_by",
-	CreatedTime: "created_time",
-	Email: "email",
-	ExpirationTime: "expiration_time",
-	ExpiryTime: "expiry_time",
-	FinanceRole: "finance_role",
-	Id: "id",
-	InviteLink: "invite_link",
+	CreatedBy:       "created_by",
+	CreatedTime:     "created_time",
+	Email:           "email",
+	ExpirationTime:  "expiration_time",
+	ExpiryTime:      "expiry_time",
+	FinanceRole:     "finance_role",
+	Id:              "id",
+	InviteLink:      "invite_link",
 	InvitedUserType: "invited_user_type",
-	IpRole: "ip_role",
-	Owner: "owner",
-	Role: "role",
-	Status: "status",
-	Tasks: "tasks",
-	UpdatedBy: "updated_by",
-	UpdatedTime: "updated_time",
+	IpRole:          "ip_role",
+	Owner:           "owner",
+	Role:            "role",
+	Status:          "status",
+	Tasks:           "tasks",
+	UpdatedBy:       "updated_by",
+	UpdatedTime:     "updated_time",
 }
 
 // BusinessRoleRequestFieldsList contains all available fields for BusinessRoleRequest objects

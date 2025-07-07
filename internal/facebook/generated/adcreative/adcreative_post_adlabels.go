@@ -15,7 +15,7 @@ import (
 
 // ToolAdcreative_post_adlabels returns the MCP tool definition for adcreative_post_adlabels
 func ToolAdcreative_post_adlabels() mcp.Tool {
-	
+
 	// Params object accepts: adlabels (list<Object>)
 	return mcp.NewTool("adcreative_post_adlabels",
 		mcp.WithDescription("POST adlabels for AdCreative"),
@@ -27,10 +27,10 @@ func ToolAdcreative_post_adlabels() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"adlabels": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "adlabels parameter",
-					"required": true,
-					"items": map[string]any{"type": "object"},
+					"required":    true,
+					"items":       map[string]any{"type": "object"},
 				},
 			}),
 			mcp.Description("Parameters object containing: adlabels (array<object>) [required]"),
@@ -70,8 +70,6 @@ func HandleAdcreative_post_adlabels(ctx context.Context, request mcp.CallToolReq
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Adcreative_post_adlabels(accessToken, args)
 	if err != nil {
@@ -90,35 +88,33 @@ func HandleAdcreative_post_adlabels(ctx context.Context, request mcp.CallToolReq
 // Adcreative_post_adlabels performs POST adlabels for AdCreative
 func Adcreative_post_adlabels(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	// Extract ad_creative_id for URL construction
 	adCreativeId, ok := args["ad_creative_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("ad_creative_id is required for adcreative_post_adlabels")
 	}
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/%sadlabels", adCreativeId)
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["ad_creative_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "ad_creative_id" != "ad_creative_id" {
 			urlParams.Set("ad_creative_id", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "params" != "ad_creative_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-		
-	}
 
+	}
 
 	// Make HTTP request
 	var resp *http.Response

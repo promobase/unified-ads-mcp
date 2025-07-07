@@ -15,8 +15,7 @@ import (
 
 // ToolPagecalltoaction_delete_ returns the MCP tool definition for pagecalltoaction_delete_
 func ToolPagecalltoaction_delete_() mcp.Tool {
-	
-	
+
 	return mcp.NewTool("pagecalltoaction_delete_",
 		mcp.WithDescription("DELETE  for PageCallToAction"),
 	)
@@ -32,8 +31,6 @@ func HandlePagecalltoaction_delete_(ctx context.Context, request mcp.CallToolReq
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the API method
 	result, err := Pagecalltoaction_delete_(accessToken, args)
@@ -53,14 +50,11 @@ func HandlePagecalltoaction_delete_(ctx context.Context, request mcp.CallToolReq
 // Pagecalltoaction_delete_ performs DELETE  for PageCallToAction
 func Pagecalltoaction_delete_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response

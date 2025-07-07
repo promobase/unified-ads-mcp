@@ -15,8 +15,7 @@ import (
 
 // ToolWhatsappbusinessprofile_post_ returns the MCP tool definition for whatsappbusinessprofile_post_
 func ToolWhatsappbusinessprofile_post_() mcp.Tool {
-	
-	
+
 	return mcp.NewTool("whatsappbusinessprofile_post_",
 		mcp.WithDescription("POST  for WhatsAppBusinessProfile"),
 	)
@@ -32,8 +31,6 @@ func HandleWhatsappbusinessprofile_post_(ctx context.Context, request mcp.CallTo
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the API method
 	result, err := Whatsappbusinessprofile_post_(accessToken, args)
@@ -53,14 +50,11 @@ func HandleWhatsappbusinessprofile_post_(ctx context.Context, request mcp.CallTo
 // Whatsappbusinessprofile_post_ performs POST  for WhatsAppBusinessProfile
 func Whatsappbusinessprofile_post_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response

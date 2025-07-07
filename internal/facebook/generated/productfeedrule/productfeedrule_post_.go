@@ -15,7 +15,7 @@ import (
 
 // ToolProductfeedrule_post_ returns the MCP tool definition for productfeedrule_post_
 func ToolProductfeedrule_post_() mcp.Tool {
-	
+
 	// Params object accepts: params (map)
 	return mcp.NewTool("productfeedrule_post_",
 		mcp.WithDescription("POST  for ProductFeedRule"),
@@ -23,9 +23,9 @@ func ToolProductfeedrule_post_() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"params": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "params parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: params (object) [required]"),
@@ -58,8 +58,6 @@ func HandleProductfeedrule_post_(ctx context.Context, request mcp.CallToolReques
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Productfeedrule_post_(accessToken, args)
 	if err != nil {
@@ -78,20 +76,18 @@ func HandleProductfeedrule_post_(ctx context.Context, request mcp.CallToolReques
 // Productfeedrule_post_ performs POST  for ProductFeedRule
 func Productfeedrule_post_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

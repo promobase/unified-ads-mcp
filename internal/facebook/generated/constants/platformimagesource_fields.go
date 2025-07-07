@@ -6,11 +6,11 @@ package constants
 var PlatformImageSourceFields = struct {
 	Height string
 	Source string
-	Width string
+	Width  string
 }{
 	Height: "height",
 	Source: "source",
-	Width: "width",
+	Width:  "width",
 }
 
 // PlatformImageSourceFieldsList contains all available fields for PlatformImageSource objects

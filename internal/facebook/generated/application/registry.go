@@ -75,7 +75,6 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolApplication_get_())
 	tools = append(tools, ToolApplication_post_())
 
-
 	return tools
 }
 
@@ -145,7 +144,6 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers["application_get_whatsapp_business_solutions"] = HandleApplication_get_whatsapp_business_solutions
 	handlers["application_get_"] = HandleApplication_get_
 	handlers["application_post_"] = HandleApplication_post_
-
 
 	return handlers
 }

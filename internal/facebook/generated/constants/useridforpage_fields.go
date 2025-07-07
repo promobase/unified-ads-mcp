@@ -4,10 +4,10 @@ package constants
 
 // UserIDForPageFields contains field name constants for UserIDForPage objects
 var UserIDForPageFields = struct {
-	Id string
+	Id   string
 	Page string
 }{
-	Id: "id",
+	Id:   "id",
 	Page: "page",
 }
 

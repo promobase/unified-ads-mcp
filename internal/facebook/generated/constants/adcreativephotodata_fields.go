@@ -5,18 +5,18 @@ package constants
 // AdCreativePhotoDataFields contains field name constants for AdCreativePhotoData objects
 var AdCreativePhotoDataFields = struct {
 	BrandedContentSharedToSponsorStatus string
-	BrandedContentSponsorPageId string
-	Caption string
-	ImageHash string
-	PageWelcomeMessage string
-	Url string
+	BrandedContentSponsorPageId         string
+	Caption                             string
+	ImageHash                           string
+	PageWelcomeMessage                  string
+	Url                                 string
 }{
 	BrandedContentSharedToSponsorStatus: "branded_content_shared_to_sponsor_status",
-	BrandedContentSponsorPageId: "branded_content_sponsor_page_id",
-	Caption: "caption",
-	ImageHash: "image_hash",
-	PageWelcomeMessage: "page_welcome_message",
-	Url: "url",
+	BrandedContentSponsorPageId:         "branded_content_sponsor_page_id",
+	Caption:                             "caption",
+	ImageHash:                           "image_hash",
+	PageWelcomeMessage:                  "page_welcome_message",
+	Url:                                 "url",
 }
 
 // AdCreativePhotoDataFieldsList contains all available fields for AdCreativePhotoData objects

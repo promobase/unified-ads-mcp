@@ -6,23 +6,23 @@ import "time"
 
 // PageCallToAction represents a Facebook PageCallToAction object
 type PageCallToAction struct {
-	Android_app *Application `json:"android_app"`
-	Android_deeplink string `json:"android_deeplink"`
-	Android_destination_type string `json:"android_destination_type"`
-	Android_package_name string `json:"android_package_name"`
-	Android_url string `json:"android_url"`
-	Created_time time.Time `json:"created_time"`
-	Email_address string `json:"email_address"`
-	From *Page `json:"from"`
-	Id string `json:"id"`
-	Intl_number_with_plus string `json:"intl_number_with_plus"`
-	Iphone_app *Application `json:"iphone_app"`
-	Iphone_deeplink string `json:"iphone_deeplink"`
-	Iphone_destination_type string `json:"iphone_destination_type"`
-	Iphone_url string `json:"iphone_url"`
-	Status string `json:"status"`
-	Type_ string `json:"type"`
-	Updated_time time.Time `json:"updated_time"`
-	Web_destination_type string `json:"web_destination_type"`
-	Web_url string `json:"web_url"`
+	Android_app              *Application `json:"android_app"`
+	Android_deeplink         string       `json:"android_deeplink"`
+	Android_destination_type string       `json:"android_destination_type"`
+	Android_package_name     string       `json:"android_package_name"`
+	Android_url              string       `json:"android_url"`
+	Created_time             time.Time    `json:"created_time"`
+	Email_address            string       `json:"email_address"`
+	From                     *Page        `json:"from"`
+	Id                       string       `json:"id"`
+	Intl_number_with_plus    string       `json:"intl_number_with_plus"`
+	Iphone_app               *Application `json:"iphone_app"`
+	Iphone_deeplink          string       `json:"iphone_deeplink"`
+	Iphone_destination_type  string       `json:"iphone_destination_type"`
+	Iphone_url               string       `json:"iphone_url"`
+	Status                   string       `json:"status"`
+	Type_                    string       `json:"type"`
+	Updated_time             time.Time    `json:"updated_time"`
+	Web_destination_type     string       `json:"web_destination_type"`
+	Web_url                  string       `json:"web_url"`
 }

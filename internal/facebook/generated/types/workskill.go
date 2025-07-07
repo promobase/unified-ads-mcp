@@ -4,6 +4,6 @@ package types
 
 // WorkSkill represents a Facebook WorkSkill object
 type WorkSkill struct {
-	Id string `json:"id"`
+	Id   string `json:"id"`
 	Name string `json:"name"`
 }

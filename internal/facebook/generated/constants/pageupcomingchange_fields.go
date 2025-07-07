@@ -4,19 +4,19 @@ package constants
 
 // PageUpcomingChangeFields contains field name constants for PageUpcomingChange objects
 var PageUpcomingChangeFields = struct {
-	ChangeType string
+	ChangeType    string
 	EffectiveTime string
-	Id string
-	Page string
-	Proposal string
-	TimerStatus string
+	Id            string
+	Page          string
+	Proposal      string
+	TimerStatus   string
 }{
-	ChangeType: "change_type",
+	ChangeType:    "change_type",
 	EffectiveTime: "effective_time",
-	Id: "id",
-	Page: "page",
-	Proposal: "proposal",
-	TimerStatus: "timer_status",
+	Id:            "id",
+	Page:          "page",
+	Proposal:      "proposal",
+	TimerStatus:   "timer_status",
 }
 
 // PageUpcomingChangeFieldsList contains all available fields for PageUpcomingChange objects

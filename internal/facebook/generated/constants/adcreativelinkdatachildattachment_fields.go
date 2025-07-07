@@ -5,28 +5,28 @@ package constants
 // AdCreativeLinkDataChildAttachmentFields contains field name constants for AdCreativeLinkDataChildAttachment objects
 var AdCreativeLinkDataChildAttachmentFields = struct {
 	CallToAction string
-	Caption string
-	Description string
-	ImageCrops string
-	ImageHash string
-	Link string
-	Name string
-	Picture string
-	PlaceData string
-	StaticCard string
-	VideoId string
+	Caption      string
+	Description  string
+	ImageCrops   string
+	ImageHash    string
+	Link         string
+	Name         string
+	Picture      string
+	PlaceData    string
+	StaticCard   string
+	VideoId      string
 }{
 	CallToAction: "call_to_action",
-	Caption: "caption",
-	Description: "description",
-	ImageCrops: "image_crops",
-	ImageHash: "image_hash",
-	Link: "link",
-	Name: "name",
-	Picture: "picture",
-	PlaceData: "place_data",
-	StaticCard: "static_card",
-	VideoId: "video_id",
+	Caption:      "caption",
+	Description:  "description",
+	ImageCrops:   "image_crops",
+	ImageHash:    "image_hash",
+	Link:         "link",
+	Name:         "name",
+	Picture:      "picture",
+	PlaceData:    "place_data",
+	StaticCard:   "static_card",
+	VideoId:      "video_id",
 }
 
 // AdCreativeLinkDataChildAttachmentFieldsList contains all available fields for AdCreativeLinkDataChildAttachment objects

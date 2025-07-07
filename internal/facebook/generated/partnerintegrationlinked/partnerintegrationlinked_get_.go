@@ -17,7 +17,7 @@ import (
 // ToolPartnerintegrationlinked_get_ returns the MCP tool definition for partnerintegrationlinked_get_
 func ToolPartnerintegrationlinked_get_() mcp.Tool {
 	// Available fields for PartnerIntegrationLinked: ads_pixel, application, completed_integration_types, external_business_connection_id, external_id, has_oauth_token, id, mbe_app_id, mbe_asset_id, mbe_external_business_id, name, offline_conversion_data_set, page, partner, product_catalog, setup_status
-	
+
 	return mcp.NewTool("partnerintegrationlinked_get_",
 		mcp.WithDescription("GET  for PartnerIntegrationLinked"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandlePartnerintegrationlinked_get_(ctx context.Context, request mcp.CallTo
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Partnerintegrationlinked_get_(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandlePartnerintegrationlinked_get_(ctx context.Context, request mcp.CallTo
 // Partnerintegrationlinked_get_ performs GET  for PartnerIntegrationLinked
 func Partnerintegrationlinked_get_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

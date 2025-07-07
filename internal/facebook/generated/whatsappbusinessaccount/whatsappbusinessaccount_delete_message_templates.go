@@ -15,7 +15,7 @@ import (
 
 // ToolWhatsappbusinessaccount_delete_message_templates returns the MCP tool definition for whatsappbusinessaccount_delete_message_templates
 func ToolWhatsappbusinessaccount_delete_message_templates() mcp.Tool {
-	
+
 	// Params object accepts: hsm_id (string), name (string)
 	return mcp.NewTool("whatsappbusinessaccount_delete_message_templates",
 		mcp.WithDescription("DELETE message_templates for WhatsAppBusinessAccount"),
@@ -23,13 +23,13 @@ func ToolWhatsappbusinessaccount_delete_message_templates() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"hsm_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "hsm_id parameter",
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: hsm_id (string), name (string) [required]"),
@@ -62,8 +62,6 @@ func HandleWhatsappbusinessaccount_delete_message_templates(ctx context.Context,
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Whatsappbusinessaccount_delete_message_templates(accessToken, args)
 	if err != nil {
@@ -82,20 +80,18 @@ func HandleWhatsappbusinessaccount_delete_message_templates(ctx context.Context,
 // Whatsappbusinessaccount_delete_message_templates performs DELETE message_templates for WhatsAppBusinessAccount
 func Whatsappbusinessaccount_delete_message_templates(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/message_templates")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

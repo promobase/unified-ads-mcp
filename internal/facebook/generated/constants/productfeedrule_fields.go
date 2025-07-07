@@ -5,14 +5,14 @@ package constants
 // ProductFeedRuleFields contains field name constants for ProductFeedRule objects
 var ProductFeedRuleFields = struct {
 	Attribute string
-	Id string
-	Params string
-	RuleType string
+	Id        string
+	Params    string
+	RuleType  string
 }{
 	Attribute: "attribute",
-	Id: "id",
-	Params: "params",
-	RuleType: "rule_type",
+	Id:        "id",
+	Params:    "params",
+	RuleType:  "rule_type",
 }
 
 // ProductFeedRuleFieldsList contains all available fields for ProductFeedRule objects

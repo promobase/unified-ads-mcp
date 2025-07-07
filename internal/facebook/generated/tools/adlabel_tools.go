@@ -17,7 +17,6 @@ import (
 func GetAdLabelTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// adlabel_get_adcreatives tool
 	// Available fields for AdCreative: account_id, actor_id, ad_disclaimer_spec, adlabels, applink_treatment, asset_feed_spec, authorization_category, auto_update, body, branded_content, branded_content_sponsor_page_id, bundle_folder_id, call_to_action, call_to_action_type, categorization_criteria, category_media_source, collaborative_ads_lsb_image_bank_id, contextual_multi_ads, creative_sourcing_spec, degrees_of_freedom_spec, destination_set_id, dynamic_ad_voice, effective_authorization_category, effective_instagram_media_id, effective_object_story_id, enable_direct_install, enable_launch_instant_app, facebook_branded_content, id, image_crops, image_hash, image_url, instagram_branded_content, instagram_permalink_url, instagram_user_id, interactive_components_spec, link_deep_link_url, link_destination_display_url, link_og_id, link_url, messenger_sponsored_message, name, object_id, object_store_url, object_story_id, object_story_spec, object_type, object_url, omnichannel_link_spec, page_welcome_message, photo_album_source_object_story_id, place_page_set_id, platform_customizations, playable_asset_id, portrait_customizations, product_data, product_set_id, recommender_settings, regional_regulation_disclaimer_spec, source_facebook_post_id, source_instagram_media_id, status, template_url, template_url_spec, thumbnail_id, thumbnail_url, title, url_tags, use_page_actor_override, video_id
 	adlabel_get_adcreativesTool := mcp.NewTool("adlabel_get_adcreatives",
@@ -127,9 +126,9 @@ func GetAdLabelTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
-					"required": true,
+					"required":    true,
 				},
 			}),
 			mcp.Description("Parameters object containing: name (string) [required]"),
@@ -137,12 +136,10 @@ func GetAdLabelTools() []mcp.Tool {
 	)
 	tools = append(tools, adlabel_post_Tool)
 
-
 	return tools
 }
 
 // AdLabel handlers
-
 
 // HandleAdlabel_get_adcreatives handles the adlabel_get_adcreatives tool with context-based auth
 func HandleAdlabel_get_adcreatives(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -183,8 +180,6 @@ func HandleAdlabel_get_adcreatives(ctx context.Context, request mcp.CallToolRequ
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adlabel_get_adcreatives(args)
 	if err != nil {
@@ -199,7 +194,6 @@ func HandleAdlabel_get_adcreatives(ctx context.Context, request mcp.CallToolRequ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdlabel_get_ads handles the adlabel_get_ads tool with context-based auth
 func HandleAdlabel_get_ads(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -240,8 +234,6 @@ func HandleAdlabel_get_ads(ctx context.Context, request mcp.CallToolRequest) (*m
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adlabel_get_ads(args)
 	if err != nil {
@@ -256,7 +248,6 @@ func HandleAdlabel_get_ads(ctx context.Context, request mcp.CallToolRequest) (*m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdlabel_get_adsets handles the adlabel_get_adsets tool with context-based auth
 func HandleAdlabel_get_adsets(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -297,8 +288,6 @@ func HandleAdlabel_get_adsets(ctx context.Context, request mcp.CallToolRequest) 
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adlabel_get_adsets(args)
 	if err != nil {
@@ -313,7 +302,6 @@ func HandleAdlabel_get_adsets(ctx context.Context, request mcp.CallToolRequest) 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdlabel_get_campaigns handles the adlabel_get_campaigns tool with context-based auth
 func HandleAdlabel_get_campaigns(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -354,8 +342,6 @@ func HandleAdlabel_get_campaigns(ctx context.Context, request mcp.CallToolReques
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adlabel_get_campaigns(args)
 	if err != nil {
@@ -371,7 +357,6 @@ func HandleAdlabel_get_campaigns(ctx context.Context, request mcp.CallToolReques
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleAdlabel_delete_ handles the adlabel_delete_ tool with context-based auth
 func HandleAdlabel_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
@@ -385,8 +370,6 @@ func HandleAdlabel_delete_(ctx context.Context, request mcp.CallToolRequest) (*m
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Adlabel_delete_(args)
@@ -402,7 +385,6 @@ func HandleAdlabel_delete_(ctx context.Context, request mcp.CallToolRequest) (*m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdlabel_get_ handles the adlabel_get_ tool with context-based auth
 func HandleAdlabel_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -443,8 +425,6 @@ func HandleAdlabel_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 		args["before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adlabel_get_(args)
 	if err != nil {
@@ -459,7 +439,6 @@ func HandleAdlabel_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdlabel_post_ handles the adlabel_post_ tool with context-based auth
 func HandleAdlabel_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -489,8 +468,6 @@ func HandleAdlabel_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 		args[key] = value
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adlabel_post_(args)
 	if err != nil {
@@ -505,4 +482,3 @@ func HandleAdlabel_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

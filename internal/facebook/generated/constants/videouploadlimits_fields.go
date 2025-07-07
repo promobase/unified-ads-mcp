@@ -5,10 +5,10 @@ package constants
 // VideoUploadLimitsFields contains field name constants for VideoUploadLimits objects
 var VideoUploadLimitsFields = struct {
 	Length string
-	Size string
+	Size   string
 }{
 	Length: "length",
-	Size: "size",
+	Size:   "size",
 }
 
 // VideoUploadLimitsFieldsList contains all available fields for VideoUploadLimits objects

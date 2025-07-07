@@ -17,7 +17,7 @@ import (
 // ToolBusiness_get_openbridge_configurations returns the MCP tool definition for business_get_openbridge_configurations
 func ToolBusiness_get_openbridge_configurations() mcp.Tool {
 	// Available fields for OpenBridgeConfiguration: active, cloud_provider, cloud_region, destination_id, endpoint, fallback_domain, first_party_domain, host_business_id, id, instance_id, instance_version, is_sgw_instance, is_sgw_pixel_from_meta_pixel, partner_name, pixel_id, sgw_account_id, sgw_instance_url, sgw_pixel_id
-	
+
 	return mcp.NewTool("business_get_openbridge_configurations",
 		mcp.WithDescription("GET openbridge_configurations for Business"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleBusiness_get_openbridge_configurations(ctx context.Context, request m
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Business_get_openbridge_configurations(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleBusiness_get_openbridge_configurations(ctx context.Context, request m
 // Business_get_openbridge_configurations performs GET openbridge_configurations for Business
 func Business_get_openbridge_configurations(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/openbridge_configurations")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

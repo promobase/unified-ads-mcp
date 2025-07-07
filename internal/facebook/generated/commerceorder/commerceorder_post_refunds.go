@@ -15,7 +15,7 @@ import (
 
 // ToolCommerceorder_post_refunds returns the MCP tool definition for commerceorder_post_refunds
 func ToolCommerceorder_post_refunds() mcp.Tool {
-	
+
 	// Params object accepts: adjustment_amount (map), deductions (list<map>), idempotency_key (string), items (list<map>), reason_code (commerceorderrefunds_reason_code_enum_param), reason_text (string), return_id (string), shipping (map)
 	return mcp.NewTool("commerceorder_post_refunds",
 		mcp.WithDescription("POST refunds for CommerceOrder"),
@@ -23,40 +23,40 @@ func ToolCommerceorder_post_refunds() mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"adjustment_amount": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "adjustment_amount parameter",
 				},
 				"deductions": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "deductions parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"idempotency_key": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "idempotency_key parameter",
-					"required": true,
+					"required":    true,
 				},
 				"items": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "items parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"reason_code": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "reason_code parameter",
-					"required": true,
-					"enum": []string{ "BUYERS_REMORSE", "DAMAGED_GOODS", "FACEBOOK_INITIATED", "NOT_AS_DESCRIBED", "QUALITY_ISSUE", "REFUND_COMPROMISED", "REFUND_FOR_RETURN", "REFUND_REASON_OTHER", "REFUND_SFI_FAKE", "REFUND_SFI_REAL", "WRONG_ITEM" },
+					"required":    true,
+					"enum":        []string{"BUYERS_REMORSE", "DAMAGED_GOODS", "FACEBOOK_INITIATED", "NOT_AS_DESCRIBED", "QUALITY_ISSUE", "REFUND_COMPROMISED", "REFUND_FOR_RETURN", "REFUND_REASON_OTHER", "REFUND_SFI_FAKE", "REFUND_SFI_REAL", "WRONG_ITEM"},
 				},
 				"reason_text": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "reason_text parameter",
 				},
 				"return_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "return_id parameter",
 				},
 				"shipping": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "shipping parameter",
 				},
 			}),
@@ -90,8 +90,6 @@ func HandleCommerceorder_post_refunds(ctx context.Context, request mcp.CallToolR
 		args[key] = value
 	}
 
-
-
 	// Call the API method
 	result, err := Commerceorder_post_refunds(accessToken, args)
 	if err != nil {
@@ -110,20 +108,18 @@ func HandleCommerceorder_post_refunds(ctx context.Context, request mcp.CallToolR
 // Commerceorder_post_refunds performs POST refunds for CommerceOrder
 func Commerceorder_post_refunds(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/refunds")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("params", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

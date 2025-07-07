@@ -27,34 +27,34 @@ func ToolAdaccount_get_adimages() mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"biz_tag_id": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "biz_tag_id parameter",
 				},
 				"business_id": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "business_id parameter",
 				},
 				"hashes": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "hashes parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"minheight": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "minheight parameter",
 				},
 				"minwidth": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "minwidth parameter",
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
 				},
 				"selected_hashes": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "selected_hashes parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: biz_tag_id (integer), business_id (string), hashes (array<string>), minheight (integer), minwidth (integer), name (string), selected_hashes (array<string>)"),
@@ -129,8 +129,6 @@ func HandleAdaccount_get_adimages(ctx context.Context, request mcp.CallToolReque
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Adaccount_get_adimages(accessToken, args)
 	if err != nil {
@@ -149,67 +147,65 @@ func HandleAdaccount_get_adimages(ctx context.Context, request mcp.CallToolReque
 // Adaccount_get_adimages performs GET adimages for AdAccount
 func Adaccount_get_adimages(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	// Extract account_id for URL construction
 	accountId, ok := args["account_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_get_adimages")
 	}
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%sadimages", accountId)
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-		
-	}
 
+	}
 
 	// Make HTTP request
 	var resp *http.Response

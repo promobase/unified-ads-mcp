@@ -4,10 +4,10 @@ package constants
 
 // TaggableSubjectFields contains field name constants for TaggableSubject objects
 var TaggableSubjectFields = struct {
-	Id string
+	Id   string
 	Name string
 }{
-	Id: "id",
+	Id:   "id",
 	Name: "name",
 }
 

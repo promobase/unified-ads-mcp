@@ -23,24 +23,24 @@ func ToolAdspixel_get_stats() mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"aggregation": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "aggregation parameter",
-					"enum": []string{ "browser_type", "custom_data_field", "device_os", "device_type", "event", "event_detection_method", "event_processing_results", "event_source", "event_total_counts", "event_value_count", "had_pii", "host", "match_keys", "pixel_fire", "url", "url_by_rule" },
+					"enum":        []string{"browser_type", "custom_data_field", "device_os", "device_type", "event", "event_detection_method", "event_processing_results", "event_source", "event_total_counts", "event_value_count", "had_pii", "host", "match_keys", "pixel_fire", "url", "url_by_rule"},
 				},
 				"end_time": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "end_time parameter",
 				},
 				"event": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "event parameter",
 				},
 				"event_source": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "event_source parameter",
 				},
 				"start_time": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "start_time parameter",
 				},
 			}),
@@ -109,8 +109,6 @@ func HandleAdspixel_get_stats(ctx context.Context, request mcp.CallToolRequest) 
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Adspixel_get_stats(accessToken, args)
 	if err != nil {
@@ -129,44 +127,42 @@ func HandleAdspixel_get_stats(ctx context.Context, request mcp.CallToolRequest) 
 // Adspixel_get_stats performs GET stats for AdsPixel
 func Adspixel_get_stats(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/stats")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

@@ -4,12 +4,12 @@ package constants
 
 // AdAssetTitleFields contains field name constants for AdAssetTitle objects
 var AdAssetTitleFields = struct {
-	Id string
-	Text string
+	Id      string
+	Text    string
 	UrlTags string
 }{
-	Id: "id",
-	Text: "text",
+	Id:      "id",
+	Text:    "text",
 	UrlTags: "url_tags",
 }
 

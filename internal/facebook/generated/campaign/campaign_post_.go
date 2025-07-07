@@ -15,7 +15,7 @@ import (
 
 // ToolCampaign_post_ returns the MCP tool definition for campaign_post_
 func ToolCampaign_post_() mcp.Tool {
-	
+
 	// Params object accepts: adlabels (list<Object>), adset_bid_amounts (map), adset_budgets (list<map>), bid_strategy (adcampaigngroup_bid_strategy), budget_rebalance_flag (bool), daily_budget (unsigned int), execution_options (list<adcampaigngroup_execution_options>), is_skadnetwork_attribution (bool), iterative_split_test_configs (list<Object>), lifetime_budget (unsigned int), name (string), objective (adcampaigngroup_objective), pacing_type (list<string>), promoted_object (Object), smart_promotion_type (adcampaigngroup_smart_promotion_type), special_ad_categories (list<adcampaigngroup_special_ad_categories>), special_ad_category (adcampaigngroup_special_ad_category), special_ad_category_country (list<adcampaigngroup_special_ad_category_country>), spend_cap (unsigned int), start_time (datetime), status (adcampaigngroup_status), stop_time (datetime)
 	return mcp.NewTool("campaign_post_",
 		mcp.WithDescription("POST  for Campaign"),
@@ -26,106 +26,106 @@ func ToolCampaign_post_() mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"adlabels": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "adlabels parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"adset_bid_amounts": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "adset_bid_amounts parameter",
 				},
 				"adset_budgets": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "adset_budgets parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"bid_strategy": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "bid_strategy parameter",
-					"enum": []string{ "COST_CAP", "LOWEST_COST_WITHOUT_CAP", "LOWEST_COST_WITH_BID_CAP", "LOWEST_COST_WITH_MIN_ROAS" },
+					"enum":        []string{"COST_CAP", "LOWEST_COST_WITHOUT_CAP", "LOWEST_COST_WITH_BID_CAP", "LOWEST_COST_WITH_MIN_ROAS"},
 				},
 				"budget_rebalance_flag": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "budget_rebalance_flag parameter",
 				},
 				"daily_budget": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "daily_budget parameter",
 				},
 				"execution_options": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "execution_options parameter",
-					"enum": []string{ "include_recommendations", "validate_only" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"include_recommendations", "validate_only"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"is_skadnetwork_attribution": map[string]any{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "is_skadnetwork_attribution parameter",
 				},
 				"iterative_split_test_configs": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "iterative_split_test_configs parameter",
-					"items": map[string]any{"type": "object"},
+					"items":       map[string]any{"type": "object"},
 				},
 				"lifetime_budget": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "lifetime_budget parameter",
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
 				},
 				"objective": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "objective parameter",
-					"enum": []string{ "APP_INSTALLS", "BRAND_AWARENESS", "CONVERSIONS", "EVENT_RESPONSES", "LEAD_GENERATION", "LINK_CLICKS", "LOCAL_AWARENESS", "MESSAGES", "OFFER_CLAIMS", "OUTCOME_APP_PROMOTION", "OUTCOME_AWARENESS", "OUTCOME_ENGAGEMENT", "OUTCOME_LEADS", "OUTCOME_SALES", "OUTCOME_TRAFFIC", "PAGE_LIKES", "POST_ENGAGEMENT", "PRODUCT_CATALOG_SALES", "REACH", "STORE_VISITS", "VIDEO_VIEWS" },
+					"enum":        []string{"APP_INSTALLS", "BRAND_AWARENESS", "CONVERSIONS", "EVENT_RESPONSES", "LEAD_GENERATION", "LINK_CLICKS", "LOCAL_AWARENESS", "MESSAGES", "OFFER_CLAIMS", "OUTCOME_APP_PROMOTION", "OUTCOME_AWARENESS", "OUTCOME_ENGAGEMENT", "OUTCOME_LEADS", "OUTCOME_SALES", "OUTCOME_TRAFFIC", "PAGE_LIKES", "POST_ENGAGEMENT", "PRODUCT_CATALOG_SALES", "REACH", "STORE_VISITS", "VIDEO_VIEWS"},
 				},
 				"pacing_type": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "pacing_type parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"promoted_object": map[string]any{
-					"type": "object",
+					"type":        "object",
 					"description": "promoted_object parameter",
 				},
 				"smart_promotion_type": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "smart_promotion_type parameter",
-					"enum": []string{ "GUIDED_CREATION", "SMART_APP_PROMOTION" },
+					"enum":        []string{"GUIDED_CREATION", "SMART_APP_PROMOTION"},
 				},
 				"special_ad_categories": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "special_ad_categories parameter",
-					"enum": []string{ "CREDIT", "EMPLOYMENT", "FINANCIAL_PRODUCTS_SERVICES", "HOUSING", "ISSUES_ELECTIONS_POLITICS", "NONE", "ONLINE_GAMBLING_AND_GAMING" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"CREDIT", "EMPLOYMENT", "FINANCIAL_PRODUCTS_SERVICES", "HOUSING", "ISSUES_ELECTIONS_POLITICS", "NONE", "ONLINE_GAMBLING_AND_GAMING"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"special_ad_category": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "special_ad_category parameter",
-					"enum": []string{ "CREDIT", "EMPLOYMENT", "FINANCIAL_PRODUCTS_SERVICES", "HOUSING", "ISSUES_ELECTIONS_POLITICS", "NONE", "ONLINE_GAMBLING_AND_GAMING" },
+					"enum":        []string{"CREDIT", "EMPLOYMENT", "FINANCIAL_PRODUCTS_SERVICES", "HOUSING", "ISSUES_ELECTIONS_POLITICS", "NONE", "ONLINE_GAMBLING_AND_GAMING"},
 				},
 				"special_ad_category_country": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "special_ad_category_country parameter",
-					"enum": []string{ "CREDIT", "EMPLOYMENT", "FINANCIAL_PRODUCTS_SERVICES", "HOUSING", "ISSUES_ELECTIONS_POLITICS", "NONE", "ONLINE_GAMBLING_AND_GAMING" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"CREDIT", "EMPLOYMENT", "FINANCIAL_PRODUCTS_SERVICES", "HOUSING", "ISSUES_ELECTIONS_POLITICS", "NONE", "ONLINE_GAMBLING_AND_GAMING"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"spend_cap": map[string]any{
-					"type": "integer",
+					"type":        "integer",
 					"description": "spend_cap parameter",
 				},
 				"start_time": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "start_time parameter",
 				},
 				"status": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "status parameter",
-					"enum": []string{ "ACTIVE", "ARCHIVED", "DELETED", "PAUSED" },
+					"enum":        []string{"ACTIVE", "ARCHIVED", "DELETED", "PAUSED"},
 				},
 				"stop_time": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "stop_time parameter",
 				},
 			}),
@@ -164,8 +164,6 @@ func HandleCampaign_post_(ctx context.Context, request mcp.CallToolRequest) (*mc
 		}
 	}
 
-
-
 	// Call the API method
 	result, err := Campaign_post_(accessToken, args)
 	if err != nil {
@@ -184,35 +182,33 @@ func HandleCampaign_post_(ctx context.Context, request mcp.CallToolRequest) (*mc
 // Campaign_post_ performs POST  for Campaign
 func Campaign_post_(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	// Extract campaign_id for URL construction
 	campaignId, ok := args["campaign_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("campaign_id is required for campaign_post_")
 	}
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/%s", campaignId)
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["campaign_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "campaign_id" != "campaign_id" {
 			urlParams.Set("campaign_id", fmt.Sprintf("%v", val))
 		}
-		
+
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		if "params" != "campaign_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-		
-	}
 
+	}
 
 	// Make HTTP request
 	var resp *http.Response

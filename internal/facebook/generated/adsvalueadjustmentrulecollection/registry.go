@@ -17,7 +17,6 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolAdsvalueadjustmentrulecollection_get_())
 	tools = append(tools, ToolAdsvalueadjustmentrulecollection_post_())
 
-
 	return tools
 }
 
@@ -29,7 +28,6 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers["adsvalueadjustmentrulecollection_get_rules"] = HandleAdsvalueadjustmentrulecollection_get_rules
 	handlers["adsvalueadjustmentrulecollection_get_"] = HandleAdsvalueadjustmentrulecollection_get_
 	handlers["adsvalueadjustmentrulecollection_post_"] = HandleAdsvalueadjustmentrulecollection_post_
-
 
 	return handlers
 }

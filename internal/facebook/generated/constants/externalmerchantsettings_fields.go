@@ -4,13 +4,13 @@ package constants
 
 // ExternalMerchantSettingsFields contains field name constants for ExternalMerchantSettings objects
 var ExternalMerchantSettingsFields = struct {
-	ConnectWoo string
+	ConnectWoo       string
 	ExternalPlatform string
-	Id string
+	Id               string
 }{
-	ConnectWoo: "connect_woo",
+	ConnectWoo:       "connect_woo",
 	ExternalPlatform: "external_platform",
-	Id: "id",
+	Id:               "id",
 }
 
 // ExternalMerchantSettingsFieldsList contains all available fields for ExternalMerchantSettings objects

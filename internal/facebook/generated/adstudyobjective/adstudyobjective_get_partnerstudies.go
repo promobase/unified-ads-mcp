@@ -17,7 +17,7 @@ import (
 // ToolAdstudyobjective_get_partnerstudies returns the MCP tool definition for adstudyobjective_get_partnerstudies
 func ToolAdstudyobjective_get_partnerstudies() mcp.Tool {
 	// Available fields for PartnerStudy: additional_info, brand, client_name, emails, id, input_ids, is_export, lift_study, location, match_file_ds, name, partner_defined_id, partner_household_graph_dataset_id, status, study_end_date, study_start_date, study_type, submit_date
-	
+
 	return mcp.NewTool("adstudyobjective_get_partnerstudies",
 		mcp.WithDescription("GET partnerstudies for AdStudyObjective"),
 		mcp.WithArray("fields",
@@ -71,8 +71,6 @@ func HandleAdstudyobjective_get_partnerstudies(ctx context.Context, request mcp.
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Adstudyobjective_get_partnerstudies(accessToken, args)
 	if err != nil {
@@ -91,38 +89,36 @@ func HandleAdstudyobjective_get_partnerstudies(ctx context.Context, request mcp.
 // Adstudyobjective_get_partnerstudies performs GET partnerstudies for AdStudyObjective
 func Adstudyobjective_get_partnerstudies(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/partnerstudies")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

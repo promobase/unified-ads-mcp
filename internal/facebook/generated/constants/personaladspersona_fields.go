@@ -4,16 +4,16 @@ package constants
 
 // PersonalAdsPersonaFields contains field name constants for PersonalAdsPersona objects
 var PersonalAdsPersonaFields = struct {
-	Email string
-	FirstName string
-	Id string
-	LastName string
+	Email        string
+	FirstName    string
+	Id           string
+	LastName     string
 	PendingEmail string
 }{
-	Email: "email",
-	FirstName: "first_name",
-	Id: "id",
-	LastName: "last_name",
+	Email:        "email",
+	FirstName:    "first_name",
+	Id:           "id",
+	LastName:     "last_name",
 	PendingEmail: "pending_email",
 }
 

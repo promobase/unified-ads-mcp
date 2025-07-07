@@ -4,13 +4,13 @@ package constants
 
 // ShadowIGMediaCollaboratorsFields contains field name constants for ShadowIGMediaCollaborators objects
 var ShadowIGMediaCollaboratorsFields = struct {
-	Id string
+	Id           string
 	InviteStatus string
-	Username string
+	Username     string
 }{
-	Id: "id",
+	Id:           "id",
 	InviteStatus: "invite_status",
-	Username: "username",
+	Username:     "username",
 }
 
 // ShadowIGMediaCollaboratorsFieldsList contains all available fields for ShadowIGMediaCollaborators objects

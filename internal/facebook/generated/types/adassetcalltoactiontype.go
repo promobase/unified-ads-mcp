@@ -4,6 +4,6 @@ package types
 
 // AdAssetCallToActionType represents a Facebook AdAssetCallToActionType object
 type AdAssetCallToActionType struct {
-	Id string `json:"id"`
+	Id   string `json:"id"`
 	Name string `json:"name"`
 }

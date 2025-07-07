@@ -6,10 +6,10 @@ import "time"
 
 // AdsPaymentCycle represents a Facebook AdsPaymentCycle object
 type AdsPaymentCycle struct {
-	Account_id string `json:"account_id"`
-	Created_time time.Time `json:"created_time"`
-	Multiplier int `json:"multiplier"`
-	Requested_threshold_amount int `json:"requested_threshold_amount"`
-	Threshold_amount int `json:"threshold_amount"`
-	Updated_time time.Time `json:"updated_time"`
+	Account_id                 string    `json:"account_id"`
+	Created_time               time.Time `json:"created_time"`
+	Multiplier                 int       `json:"multiplier"`
+	Requested_threshold_amount int       `json:"requested_threshold_amount"`
+	Threshold_amount           int       `json:"threshold_amount"`
+	Updated_time               time.Time `json:"updated_time"`
 }

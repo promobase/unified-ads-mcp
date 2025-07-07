@@ -6,11 +6,11 @@ import "time"
 
 // AdsMcmeConversion represents a Facebook AdsMcmeConversion object
 type AdsMcmeConversion struct {
-	Creation_time time.Time `json:"creation_time"`
-	Description string `json:"description"`
-	Id string `json:"id"`
-	Is_archived bool `json:"is_archived"`
-	Mcme_conversion_type string `json:"mcme_conversion_type"`
-	Name string `json:"name"`
-	Omnichannel_object_id string `json:"omnichannel_object_id"`
+	Creation_time         time.Time `json:"creation_time"`
+	Description           string    `json:"description"`
+	Id                    string    `json:"id"`
+	Is_archived           bool      `json:"is_archived"`
+	Mcme_conversion_type  string    `json:"mcme_conversion_type"`
+	Name                  string    `json:"name"`
+	Omnichannel_object_id string    `json:"omnichannel_object_id"`
 }

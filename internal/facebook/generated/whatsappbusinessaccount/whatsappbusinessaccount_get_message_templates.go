@@ -16,46 +16,46 @@ import (
 
 // ToolWhatsappbusinessaccount_get_message_templates returns the MCP tool definition for whatsappbusinessaccount_get_message_templates
 func ToolWhatsappbusinessaccount_get_message_templates() mcp.Tool {
-	
+
 	// Params object accepts: category (list<whatsappbusinessaccountmessage_templates_category_enum_param>), content (string), language (list<string>), name (string), name_or_content (string), quality_score (list<whatsappbusinessaccountmessage_templates_quality_score_enum_param>), status (list<whatsappbusinessaccountmessage_templates_status_enum_param>)
 	return mcp.NewTool("whatsappbusinessaccount_get_message_templates",
 		mcp.WithDescription("GET message_templates for WhatsAppBusinessAccount"),
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"category": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "category parameter",
-					"enum": []string{ "AUTHENTICATION", "MARKETING", "UTILITY" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"AUTHENTICATION", "MARKETING", "UTILITY"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"content": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "content parameter",
 				},
 				"language": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "language parameter",
-					"items": map[string]any{"type": "string"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"name": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name parameter",
 				},
 				"name_or_content": map[string]any{
-					"type": "string",
+					"type":        "string",
 					"description": "name_or_content parameter",
 				},
 				"quality_score": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "quality_score parameter",
-					"enum": []string{ "GREEN", "RED", "UNKNOWN", "YELLOW" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"GREEN", "RED", "UNKNOWN", "YELLOW"},
+					"items":       map[string]any{"type": "string"},
 				},
 				"status": map[string]any{
-					"type": "array",
+					"type":        "array",
 					"description": "status parameter",
-					"enum": []string{ "APPROVED", "ARCHIVED", "DELETED", "DISABLED", "IN_APPEAL", "LIMIT_EXCEEDED", "PAUSED", "PENDING", "PENDING_DELETION", "REJECTED" },
-					"items": map[string]any{"type": "string"},
+					"enum":        []string{"APPROVED", "ARCHIVED", "DELETED", "DISABLED", "IN_APPEAL", "LIMIT_EXCEEDED", "PAUSED", "PENDING", "PENDING_DELETION", "REJECTED"},
+					"items":       map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: category (array<enum>) [AUTHENTICATION, MARKETING, UTILITY], content (string), language (array<string>), name (string), name_or_content (string), quality_score (array<enum>) [GREEN, RED, UNKNOWN, YELLOW], status (array<enum>) [APPROVED, ARCHIVED, DELETED, DISABLED, IN_APPEAL, ...]"),
@@ -123,8 +123,6 @@ func HandleWhatsappbusinessaccount_get_message_templates(ctx context.Context, re
 		args["before"] = val
 	}
 
-
-
 	// Call the API method
 	result, err := Whatsappbusinessaccount_get_message_templates(accessToken, args)
 	if err != nil {
@@ -143,44 +141,42 @@ func HandleWhatsappbusinessaccount_get_message_templates(ctx context.Context, re
 // Whatsappbusinessaccount_get_message_templates performs GET message_templates for WhatsAppBusinessAccount
 func Whatsappbusinessaccount_get_message_templates(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
-	
-	
+
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/message_templates")
-	
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("params", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
+
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-		
+
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-		
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-		
-	}
 
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
