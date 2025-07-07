@@ -7,6 +7,7 @@ import (
 
 	"unified-ads-mcp/internal/config"
 	"unified-ads-mcp/internal/facebook"
+	"unified-ads-mcp/internal/facebook/custom"
 	"unified-ads-mcp/internal/shared"
 
 	"github.com/mark3labs/mcp-go/mcp"
@@ -140,14 +141,19 @@ func (s *WrappedMCPServer) registerFacebookTools(mcpServer *server.MCPServer) er
 	allTools := facebook.GetFilteredMCPTools(s.enabledObjects)
 	handlers := facebook.GetContextAwareHandlers(s.facebookToken)
 
-	log.Printf("Found %d filtered tools", len(allTools))
+	// Get custom tools (always enabled)
+	customTools := custom.GetCustomTools()
+	customHandlers := custom.GetCustomHandlers()
+
+	log.Printf("Found %d filtered generated tools", len(allTools))
+	log.Printf("Found %d custom tools", len(customTools))
 	log.Printf("Found %d handlers", len(handlers))
 	log.Printf("Enabled objects: %v", s.enabledObjects)
 
 	// Count registered tools
 	registeredCount := 0
 
-	// Register each tool with its context-aware handler
+	// Register generated tools with their context-aware handlers
 	for _, tool := range allTools {
 		if handler, ok := handlers[tool.Name]; ok {
 			// Wrap handler to inject context
@@ -162,7 +168,20 @@ func (s *WrappedMCPServer) registerFacebookTools(mcpServer *server.MCPServer) er
 		}
 	}
 
-	log.Printf("Registered %d tools out of %d filtered tools", registeredCount, len(allTools))
+	// Register custom tools
+	for _, tool := range customTools {
+		if handler, ok := customHandlers[tool.Name]; ok {
+			// Wrap handler to inject context
+			wrappedHandler := s.wrapHandlerWithContext(handler)
+			mcpServer.AddTool(tool, wrappedHandler)
+			registeredCount++
+		} else {
+			log.Printf("No handler found for custom tool: %s", tool.Name)
+		}
+	}
+
+	log.Printf("Registered %d tools total (%d generated + %d custom)", 
+		registeredCount, len(allTools), len(customTools))
 	return nil
 }
 
