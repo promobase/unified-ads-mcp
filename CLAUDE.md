@@ -7,6 +7,7 @@ We'll start with facebook business api, then expand to tiktok business api & goo
 1. [mcp-go](https://raw.githubusercontent.com/mark3labs/mcp-go/refs/heads/main/README.md) this includes the readme for how to create Model Context Protocal Servers in golang.
 2. [facebook-business-marketing-api-overview](https://developers.facebook.com/docs/marketing-apis/overview) Marketing api is subset of facebook business sdk, it's dedicated for ads mgmt, insights, campaigns etc. We prioritize supporthing these first.
 3. [api-reference-v23.0](https://developers.facebook.com/docs/marketing-api/reference/v23.0) It's wrapping the underlying graph api, where we have nodes & edges. The JSON api specs are stored in `internal/facebook/api_specs/specs` dir, which has directory of .JSON specs. each one defines "apis" and "fields", apis are the endpoints of different methods, and fields are the object of the entity, e.g. we have Ad.json, AdAccount.json, etc. Fields mapping could be referring to other api specs, so we need to handle them properly. NOTE that there's a special `enum_types.json` in the specs dir, it contains all the ENUM definitions. Which might be used in the field def across repo, so handle it first.
+4. [complete example of using mcp-go](https://raw.githubusercontent.com/mark3labs/mcp-go/refs/heads/main/examples/everything/main.go)
 
 
 
