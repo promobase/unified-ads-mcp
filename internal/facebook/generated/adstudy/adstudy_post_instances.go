@@ -6,10 +6,9 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"net/http"
-	"net/url"
 
 	"github.com/mark3labs/mcp-go/mcp"
+	"unified-ads-mcp/internal/facebook/utils"
 	"unified-ads-mcp/internal/shared"
 )
 
@@ -49,13 +48,13 @@ func HandleAdstudy_post_instances(ctx context.Context, request mcp.CallToolReque
 	args := make(map[string]interface{})
 
 	// Required: params
-	params, err := request.RequireString("params")
+	// Parse required params object and expand into args
+	val, err := request.RequireString("params")
 	if err != nil {
 		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	// Parse required params object and extract parameters
 	var paramsObj map[string]interface{}
-	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+	if err := json.Unmarshal([]byte(val), &paramsObj); err != nil {
 		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
 	for key, value := range paramsObj {
@@ -83,42 +82,10 @@ func Adstudy_post_instances(accessToken string, args map[string]interface{}) (in
 
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/instances")
 
-	urlParams := url.Values{}
-	urlParams.Set("access_token", accessToken)
+	// Build URL parameters, skipping ID parameters that are in the path
+	skipParams := []string{}
+	urlParams := utils.BuildURLParams(accessToken, args, skipParams...)
 
-	if val, ok := args["params"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-
-	}
-
-	// Make HTTP request
-	var resp *http.Response
-	var err error
-
-	switch "POST" {
-	case "GET":
-		resp, err = http.Get(baseURL + "?" + urlParams.Encode())
-	case "POST":
-		resp, err = http.PostForm(baseURL, urlParams)
-	default:
-		return nil, fmt.Errorf("unsupported HTTP method: POST")
-	}
-
-	if err != nil {
-		return nil, fmt.Errorf("HTTP request failed: %w", err)
-	}
-	defer resp.Body.Close()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("API request failed with status: %d", resp.StatusCode)
-	}
-
-	var result interface{}
-	if err := json.NewDecoder(resp.Body).Decode(&result); err != nil {
-		return nil, fmt.Errorf("failed to decode response: %w", err)
-	}
-
-	return result, nil
+	// Execute the API request
+	return utils.ExecuteAPIRequest("POST", baseURL, urlParams)
 }

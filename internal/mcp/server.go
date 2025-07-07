@@ -89,7 +89,7 @@ func InitMCPServer(cfg *config.Config, enabledCategories []string) (*WrappedMCPS
 	// Build enabled objects map from categories
 	for _, categoryStr := range enabledCategories {
 		category := ObjectCategory(categoryStr)
-		
+
 		if category == CategoryAll {
 			// Enable all objects
 			for _, objects := range ObjectCategories {
@@ -180,7 +180,7 @@ func (s *WrappedMCPServer) registerFacebookTools(mcpServer *server.MCPServer) er
 		}
 	}
 
-	log.Printf("Registered %d tools total (%d generated + %d custom)", 
+	log.Printf("Registered %d tools total (%d generated + %d custom)",
 		registeredCount, len(allTools), len(customTools))
 	return nil
 }

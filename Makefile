@@ -12,9 +12,10 @@ GENERATED_DIR=internal/facebook/generated
 all: build
 
 # Build the unified server
-build:
+build: codegen
 	@echo "Building unified-ads-mcp server..."
 	$(GOCMD) build -ldflags "-s -w" -o $(BINARY_NAME) ./cmd/server
+	$(GOCMD) fmt ./...
 
 # Build the Facebook-only server
 build-facebook:
@@ -45,11 +46,6 @@ run-facebook: build-facebook
 codegen:
 	@echo "Running code generation for Facebook API..."
 	@cd internal/facebook/codegen && $(GOCMD) run main.go ../api_specs/specs
-	@echo "Running formatters..."
-	@find $(GENERATED_DIR) -name "*.go" -exec gofmt -w {} \;
-	@if command -v goimports > /dev/null; then \
-		find $(GENERATED_DIR) -name "*.go" -exec goimports -w {} \; ; \
-	fi
 
 # Run tests
 test:

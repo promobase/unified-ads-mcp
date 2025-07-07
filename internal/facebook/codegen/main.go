@@ -19,6 +19,7 @@ const (
 
 // templateFS embeds all template files from the templates directory
 // Templates are used to generate Go code files for the Facebook Business API
+//
 //go:embed templates/*
 var templateFS embed.FS
 
@@ -252,15 +253,15 @@ func generateTools(ctx *CodegenContext) {
 				// Build detailed description of params object
 				paramDescriptions := []string{}
 				requiredParams := []string{}
-				
+
 				// Enhance API params with descriptions and enum values
 				enhancedParams := make([]Parameter, len(api.Params))
 				for i, param := range api.Params {
 					enhancedParams[i] = param
-					
+
 					// Build description for display
 					paramDesc := fmt.Sprintf("%s (%s)", param.Name, convertTypeForDisplay(param.Type))
-					
+
 					// Add enum values if available
 					if enumValues := findEnumValues(ctx, param.Type); len(enumValues) > 0 {
 						enhancedParams[i].EnumValues = enumValues
@@ -270,19 +271,19 @@ func generateTools(ctx *CodegenContext) {
 							paramDesc += fmt.Sprintf(" [%s, ...]", strings.Join(enumValues[:5], ", "))
 						}
 					}
-					
+
 					// Set description
 					enhancedParams[i].Description = fmt.Sprintf("%s parameter", param.Name)
-					
+
 					if param.Required {
 						paramDesc += " [required]"
 						requiredParams = append(requiredParams, param.Name)
 					}
 					paramDescriptions = append(paramDescriptions, paramDesc)
 				}
-				
+
 				description := fmt.Sprintf("Parameters object containing: %s", strings.Join(paramDescriptions, ", "))
-				
+
 				// Create a params object that contains all API-specific parameters
 				paramsParam := MCPParameter{
 					Name:        "params",
@@ -292,7 +293,7 @@ func generateTools(ctx *CodegenContext) {
 					APIParams:   enhancedParams,
 				}
 				tool.Parameters = append(tool.Parameters, paramsParam)
-				
+
 				// Store the API params for later use in handler generation
 				tool.APIParams = enhancedParams
 			}
@@ -306,7 +307,7 @@ func generateTools(ctx *CodegenContext) {
 					Required:    false,
 					Description: fmt.Sprintf("Array of fields to return for %s objects", api.Return),
 				}
-				
+
 				// Get available fields from the return type spec
 				var targetType string
 				if api.Return != "" && api.Return != "Object" {
@@ -316,7 +317,7 @@ func generateTools(ctx *CodegenContext) {
 				} else {
 					targetType = api.Return
 				}
-				
+
 				// Look up the fields from the target type's spec
 				if targetSpec, exists := ctx.Specs[targetType]; exists && len(targetSpec.Fields) > 0 {
 					var fieldNames []string
@@ -326,18 +327,18 @@ func generateTools(ctx *CodegenContext) {
 					if len(fieldNames) > 0 {
 						// Store available fields in the tool for type-safe generation
 						tool.AvailableFields = fieldNames
-						
+
 						// Add field names to description for reference (show first 15 fields)
 						displayFields := fieldNames
 						if len(fieldNames) > 15 {
 							displayFields = fieldNames[:15]
 						}
-						fieldsParam.Description = fmt.Sprintf("Array of fields to return for %s objects. Available fields: %s", 
+						fieldsParam.Description = fmt.Sprintf("Array of fields to return for %s objects. Available fields: %s",
 							targetType, strings.Join(displayFields, ", "))
 						if len(fieldNames) > 15 {
 							fieldsParam.Description += fmt.Sprintf(" (and %d more)", len(fieldNames)-15)
 						}
-						
+
 						tool.Parameters = append(tool.Parameters, fieldsParam)
 					}
 				} else {
@@ -410,7 +411,7 @@ func generateTypes(ctx *CodegenContext) {
 func generateCodeNew(ctx *CodegenContext) error {
 	// Create generated directory structure
 	generatedDir := "../generated"
-	
+
 	// Create base directories
 	dirs := []string{
 		generatedDir,
@@ -1166,7 +1167,7 @@ func generateFieldConstantsFile(constantsDir string, typeName string, spec *APIS
 		constName := ""
 		// Replace dots with underscores first
 		sanitizedName := strings.ReplaceAll(field.Name, ".", "_")
-		
+
 		// Convert field name to PascalCase for constant name
 		parts := strings.Split(sanitizedName, "_")
 		for _, part := range parts {
@@ -1174,26 +1175,26 @@ func generateFieldConstantsFile(constantsDir string, typeName string, spec *APIS
 				constName += strings.ToUpper(part[:1]) + part[1:]
 			}
 		}
-		
+
 		// Handle special cases
 		if constName == "" {
 			constName = "Field" + sanitizedName
 		}
-		
+
 		// If starts with number, prefix with Field
 		if len(constName) > 0 && constName[0] >= '0' && constName[0] <= '9' {
 			constName = "Field" + constName
 		}
-		
+
 		// Handle Go keywords
 		switch constName {
-		case "Type", "Func", "Var", "Const", "Package", "Import", "Interface", 
-		     "Struct", "Map", "Chan", "Select", "Case", "Default", "If", "Else",
-		     "For", "Range", "Switch", "Return", "Break", "Continue", "Goto",
-		     "Defer", "Go":
+		case "Type", "Func", "Var", "Const", "Package", "Import", "Interface",
+			"Struct", "Map", "Chan", "Select", "Case", "Default", "If", "Else",
+			"For", "Range", "Switch", "Return", "Break", "Continue", "Goto",
+			"Defer", "Go":
 			constName = "Field" + constName
 		}
-		
+
 		data.Fields = append(data.Fields, fieldData{
 			OriginalName: field.Name,
 			SafeName:     constName,

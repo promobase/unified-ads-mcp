@@ -6,10 +6,9 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"net/http"
-	"net/url"
 
 	"github.com/mark3labs/mcp-go/mcp"
+	"unified-ads-mcp/internal/facebook/utils"
 	"unified-ads-mcp/internal/shared"
 )
 
@@ -148,23 +147,12 @@ func HandleAdset_post_insights(ctx context.Context, request mcp.CallToolRequest)
 	args := make(map[string]interface{})
 
 	// Required: ad_set_id
-	ad_set_id, err := request.RequireString("ad_set_id")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter ad_set_id: %v", err)), nil
+	if err := utils.ParseRequiredString(request, "ad_set_id", args); err != nil {
+		return mcp.NewToolResultError(err.Error()), nil
 	}
-	args["ad_set_id"] = ad_set_id
 
 	// Optional: params
-	// Object parameter - expecting JSON string
-	if val := request.GetString("params", ""); val != "" {
-		// Parse params object and extract individual parameters
-		var params map[string]interface{}
-		if err := json.Unmarshal([]byte(val), &params); err == nil {
-			for key, value := range params {
-				args[key] = value
-			}
-		}
-	}
+	utils.ParseParamsObject(request, args)
 
 	// Call the API method
 	result, err := Adset_post_insights(accessToken, args)
@@ -192,52 +180,12 @@ func Adset_post_insights(accessToken string, args map[string]interface{}) (inter
 	}
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/%sinsights", adSetId)
 
-	urlParams := url.Values{}
-	urlParams.Set("access_token", accessToken)
-
-	if val, ok := args["ad_set_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "ad_set_id" != "ad_set_id" {
-			urlParams.Set("ad_set_id", fmt.Sprintf("%v", val))
-		}
-
+	// Build URL parameters, skipping ID parameters that are in the path
+	skipParams := []string{
+		"ad_set_id",
 	}
-	if val, ok := args["params"]; ok {
-		// Skip ID parameters as they're already in the URL path
+	urlParams := utils.BuildURLParams(accessToken, args, skipParams...)
 
-		if "params" != "ad_set_id" {
-			urlParams.Set("params", fmt.Sprintf("%v", val))
-		}
-
-	}
-
-	// Make HTTP request
-	var resp *http.Response
-	var err error
-
-	switch "POST" {
-	case "GET":
-		resp, err = http.Get(baseURL + "?" + urlParams.Encode())
-	case "POST":
-		resp, err = http.PostForm(baseURL, urlParams)
-	default:
-		return nil, fmt.Errorf("unsupported HTTP method: POST")
-	}
-
-	if err != nil {
-		return nil, fmt.Errorf("HTTP request failed: %w", err)
-	}
-	defer resp.Body.Close()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("API request failed with status: %d", resp.StatusCode)
-	}
-
-	var result interface{}
-	if err := json.NewDecoder(resp.Body).Decode(&result); err != nil {
-		return nil, fmt.Errorf("failed to decode response: %w", err)
-	}
-
-	return result, nil
+	// Execute the API request
+	return utils.ExecuteAPIRequest("POST", baseURL, urlParams)
 }

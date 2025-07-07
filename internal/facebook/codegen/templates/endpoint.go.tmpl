@@ -6,12 +6,10 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"net/http"
-	"net/url"
-{{if .NeedsStrings}}	"strings"
-{{end}}
+
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/shared"
+	"unified-ads-mcp/internal/facebook/utils"
 )
 
 // Tool{{capitalizeFirst .Tool.Name}} returns the MCP tool definition for {{.Tool.Name}}
@@ -57,76 +55,47 @@ func Handle{{capitalizeFirst .Tool.Name}}(ctx context.Context, request mcp.CallT
 	args := make(map[string]interface{})
 
 {{range $param := .Tool.Parameters}}{{if $param.Required}}	// Required: {{$param.Name}}
-	{{sanitizeVarName $param.Name}}, err := request.{{requireMethod $param.Type}}("{{$param.Name}}")
+{{if eq $param.Type "string"}}	if err := utils.ParseRequiredString(request, "{{$param.Name}}", args); err != nil {
+		return mcp.NewToolResultError(err.Error()), nil
+	}
+{{else if eq $param.Type "object"}}{{if eq $param.Name "params"}}	// Parse required params object and expand into args
+	val, err := request.RequireString("{{$param.Name}}")
 	if err != nil {
 		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter {{$param.Name}}: %v", err)), nil
 	}
-	{{if eq $param.Type "object"}}{{if eq $param.Name "params"}}// Parse required params object and extract parameters
 	var paramsObj map[string]interface{}
-	if err := json.Unmarshal([]byte({{sanitizeVarName $param.Name}}), &paramsObj); err != nil {
+	if err := json.Unmarshal([]byte(val), &paramsObj); err != nil {
 		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
 	for key, value := range paramsObj {
 		args[key] = value
-	}{{else}}// Parse as JSON object
-	var obj map[string]interface{}
-	if err := json.Unmarshal([]byte({{sanitizeVarName $param.Name}}), &obj); err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("invalid {{$param.Name}} object: %v", err)), nil
 	}
-	args["{{$param.Name}}"] = obj{{end}}{{else if eq $param.Type "array"}}{{if eq $param.Name "fields"}}// Parse required fields array
-	var fields []string
-	if err := json.Unmarshal([]byte({{sanitizeVarName $param.Name}}), &fields); err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("invalid fields array: %v", err)), nil
+{{else}}	if err := utils.ParseRequiredObject(request, "{{$param.Name}}", args); err != nil {
+		return mcp.NewToolResultError(err.Error()), nil
 	}
-	args["{{$param.Name}}"] = strings.Join(fields, ","){{else}}// Parse as JSON array
-	var arr []interface{}
-	if err := json.Unmarshal([]byte({{sanitizeVarName $param.Name}}), &arr); err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("invalid {{$param.Name}} array: %v", err)), nil
+{{end}}{{else if eq $param.Type "array"}}{{if eq $param.Name "fields"}}	if err := utils.ParseRequiredFieldsArray(request, args); err != nil {
+		return mcp.NewToolResultError(err.Error()), nil
 	}
-	args["{{$param.Name}}"] = arr{{end}}{{else}}args["{{$param.Name}}"] = {{sanitizeVarName $param.Name}}{{end}}
-{{else}}	// Optional: {{$param.Name}}
-{{if eq $param.Type "string"}}	if val := request.GetString("{{$param.Name}}", ""); val != "" {
-		args["{{$param.Name}}"] = val
+{{else}}	if err := utils.ParseRequiredArray(request, "{{$param.Name}}", args); err != nil {
+		return mcp.NewToolResultError(err.Error()), nil
 	}
-{{else if eq $param.Type "integer"}}	if val := request.GetInt("{{$param.Name}}", 0); val != 0 {
-		args["{{$param.Name}}"] = val
+{{end}}{{else}}	// {{$param.Type}} type
+	{{sanitizeVarName $param.Name}}, err := request.{{requireMethod $param.Type}}("{{$param.Name}}")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter {{$param.Name}}: %v", err)), nil
 	}
-{{else if eq $param.Type "number"}}	if val := request.GetFloat("{{$param.Name}}", 0); val != 0 {
-		args["{{$param.Name}}"] = val
-	}
-{{else if eq $param.Type "boolean"}}	if val := request.GetBool("{{$param.Name}}", false); val {
-		args["{{$param.Name}}"] = val
-	}
-{{else if eq $param.Type "array"}}	// Array parameter - expecting JSON string
-	if val := request.GetString("{{$param.Name}}", ""); val != "" {
-		{{if eq $param.Name "fields"}}// Parse array of fields and convert to comma-separated string
-		var fields []string
-		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
-			args["{{$param.Name}}"] = strings.Join(fields, ",")
-		}{{else}}// Parse as JSON array
-		var arr []interface{}
-		if err := json.Unmarshal([]byte(val), &arr); err == nil {
-			args["{{$param.Name}}"] = arr
-		}{{end}}
-	}
-{{else if eq $param.Type "object"}}	// Object parameter - expecting JSON string
-	if val := request.GetString("{{$param.Name}}", ""); val != "" {
-		{{if eq $param.Name "params"}}// Parse params object and extract individual parameters
-		var params map[string]interface{}
-		if err := json.Unmarshal([]byte(val), &params); err == nil {
-			for key, value := range params {
-				args[key] = value
-			}
-		}{{else}}// Parse as JSON object
-		var obj map[string]interface{}
-		if err := json.Unmarshal([]byte(val), &obj); err == nil {
-			args["{{$param.Name}}"] = obj
-		}{{end}}
-	}
-{{else}}	// {{$param.Type}} type - using string
-	if val := request.GetString("{{$param.Name}}", ""); val != "" {
-		args["{{$param.Name}}"] = val
-	}
+	args["{{$param.Name}}"] = {{sanitizeVarName $param.Name}}
+{{end}}{{else}}	// Optional: {{$param.Name}}
+{{if eq $param.Type "string"}}	utils.ParseOptionalString(request, "{{$param.Name}}", args)
+{{else if eq $param.Type "integer"}}	utils.ParseOptionalInt(request, "{{$param.Name}}", args)
+{{else if eq $param.Type "number"}}	utils.ParseOptionalFloat(request, "{{$param.Name}}", args)
+{{else if eq $param.Type "boolean"}}	utils.ParseOptionalBool(request, "{{$param.Name}}", args)
+{{else if eq $param.Type "array"}}{{if eq $param.Name "fields"}}	utils.ParseFieldsArray(request, args)
+{{else}}	utils.ParseOptionalArray(request, "{{$param.Name}}", args)
+{{end}}{{else if eq $param.Type "object"}}{{if eq $param.Name "params"}}	utils.ParseParamsObject(request, args)
+{{else}}	utils.ParseOptionalObject(request, "{{$param.Name}}", args)
+{{end}}{{else}}	// {{$param.Type}} type - using string
+	utils.ParseOptionalString(request, "{{$param.Name}}", args)
 {{end}}{{end}}
 {{end}}
 
@@ -187,63 +156,18 @@ func {{capitalizeFirst .Tool.Name}}(accessToken string, args map[string]interfac
 	{{else}}
 	baseURL = fmt.Sprintf("https://graph.facebook.com/{{.APIVersion}}/{{.Tool.Endpoint}}")
 	{{end}}
-	urlParams := url.Values{}
-	urlParams.Set("access_token", accessToken)
 
-{{range .Tool.Parameters}}	if val, ok := args["{{.Name}}"]; ok {
-		// Skip ID parameters as they're already in the URL path
-		{{if eq $.NodeName "AdAccount"}}
-		if "{{.Name}}" != "account_id" {
-			urlParams.Set("{{.Name}}", fmt.Sprintf("%v", val))
-		}
-		{{else if eq $.NodeName "Ad"}}
-		if "{{.Name}}" != "ad_id" {
-			urlParams.Set("{{.Name}}", fmt.Sprintf("%v", val))
-		}
-		{{else if eq $.NodeName "AdCreative"}}
-		if "{{.Name}}" != "ad_creative_id" {
-			urlParams.Set("{{.Name}}", fmt.Sprintf("%v", val))
-		}
-		{{else if eq $.NodeName "AdSet"}}
-		if "{{.Name}}" != "ad_set_id" {
-			urlParams.Set("{{.Name}}", fmt.Sprintf("%v", val))
-		}
-		{{else if eq $.NodeName "Campaign"}}
-		if "{{.Name}}" != "campaign_id" {
-			urlParams.Set("{{.Name}}", fmt.Sprintf("%v", val))
-		}
-		{{else}}
-		urlParams.Set("{{.Name}}", fmt.Sprintf("%v", val))
+	// Build URL parameters, skipping ID parameters that are in the path
+	skipParams := []string{
+		{{if eq .NodeName "AdAccount"}}"account_id",
+		{{else if eq .NodeName "Ad"}}"ad_id",
+		{{else if eq .NodeName "AdCreative"}}"ad_creative_id",
+		{{else if eq .NodeName "AdSet"}}"ad_set_id",
+		{{else if eq .NodeName "Campaign"}}"campaign_id",
 		{{end}}
 	}
-{{end}}
+	urlParams := utils.BuildURLParams(accessToken, args, skipParams...)
 
-	// Make HTTP request
-	var resp *http.Response
-	var err error
-
-	switch "{{.Tool.Method}}" {
-	case "GET":
-		resp, err = http.Get(baseURL + "?" + urlParams.Encode())
-	case "POST":
-		resp, err = http.PostForm(baseURL, urlParams)
-	default:
-		return nil, fmt.Errorf("unsupported HTTP method: {{.Tool.Method}}")
-	}
-
-	if err != nil {
-		return nil, fmt.Errorf("HTTP request failed: %w", err)
-	}
-	defer resp.Body.Close()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("API request failed with status: %d", resp.StatusCode)
-	}
-
-	var result interface{}
-	if err := json.NewDecoder(resp.Body).Decode(&result); err != nil {
-		return nil, fmt.Errorf("failed to decode response: %w", err)
-	}
-
-	return result, nil
+	// Execute the API request
+	return utils.ExecuteAPIRequest("{{.Tool.Method}}", baseURL, urlParams)
 }

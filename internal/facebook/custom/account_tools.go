@@ -48,7 +48,7 @@ func HandleGetDefaultAdAccount(ctx context.Context, request mcp.CallToolRequest)
 
 	// Parse parameters
 	fields := []string{"id", "name", "currency", "account_status", "balance", "spend_cap"}
-	
+
 	// Get fields parameter if provided (passed as JSON array string)
 	if fieldsStr := request.GetString("fields", ""); fieldsStr != "" {
 		var fieldsArray []string
@@ -80,7 +80,7 @@ func HandleGetDefaultAdAccount(ctx context.Context, request mcp.CallToolRequest)
 
 	// Parse response
 	var result struct {
-		Data []map[string]interface{} `json:"data"`
+		Data  []map[string]interface{} `json:"data"`
 		Error *struct {
 			Message string `json:"message"`
 			Type    string `json:"type"`
@@ -94,7 +94,7 @@ func HandleGetDefaultAdAccount(ctx context.Context, request mcp.CallToolRequest)
 
 	// Check for API errors
 	if result.Error != nil {
-		return nil, fmt.Errorf("Facebook API error: %s (code: %d, type: %s)", 
+		return nil, fmt.Errorf("Facebook API error: %s (code: %d, type: %s)",
 			result.Error.Message, result.Error.Code, result.Error.Type)
 	}
 
@@ -105,7 +105,7 @@ func HandleGetDefaultAdAccount(ctx context.Context, request mcp.CallToolRequest)
 
 	// Return the first ad account as default
 	defaultAccount := result.Data[0]
-	
+
 	// Format the response as JSON
 	jsonBytes, err := json.MarshalIndent(defaultAccount, "", "  ")
 	if err != nil {

@@ -6,11 +6,9 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"net/http"
-	"net/url"
-	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
+	"unified-ads-mcp/internal/facebook/utils"
 	"unified-ads-mcp/internal/shared"
 )
 
@@ -51,36 +49,21 @@ func HandleAdcreative_get_creative_insights(ctx context.Context, request mcp.Cal
 	args := make(map[string]interface{})
 
 	// Required: ad_creative_id
-	ad_creative_id, err := request.RequireString("ad_creative_id")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter ad_creative_id: %v", err)), nil
+	if err := utils.ParseRequiredString(request, "ad_creative_id", args); err != nil {
+		return mcp.NewToolResultError(err.Error()), nil
 	}
-	args["ad_creative_id"] = ad_creative_id
 
 	// Optional: fields
-	// Array parameter - expecting JSON string
-	if val := request.GetString("fields", ""); val != "" {
-		// Parse array of fields and convert to comma-separated string
-		var fields []string
-		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
-			args["fields"] = strings.Join(fields, ",")
-		}
-	}
+	utils.ParseFieldsArray(request, args)
 
 	// Optional: limit
-	if val := request.GetInt("limit", 0); val != 0 {
-		args["limit"] = val
-	}
+	utils.ParseOptionalInt(request, "limit", args)
 
 	// Optional: after
-	if val := request.GetString("after", ""); val != "" {
-		args["after"] = val
-	}
+	utils.ParseOptionalString(request, "after", args)
 
 	// Optional: before
-	if val := request.GetString("before", ""); val != "" {
-		args["before"] = val
-	}
+	utils.ParseOptionalString(request, "before", args)
 
 	// Call the API method
 	result, err := Adcreative_get_creative_insights(accessToken, args)
@@ -108,76 +91,12 @@ func Adcreative_get_creative_insights(accessToken string, args map[string]interf
 	}
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/%screative_insights", adCreativeId)
 
-	urlParams := url.Values{}
-	urlParams.Set("access_token", accessToken)
-
-	if val, ok := args["ad_creative_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "ad_creative_id" != "ad_creative_id" {
-			urlParams.Set("ad_creative_id", fmt.Sprintf("%v", val))
-		}
-
+	// Build URL parameters, skipping ID parameters that are in the path
+	skipParams := []string{
+		"ad_creative_id",
 	}
-	if val, ok := args["fields"]; ok {
-		// Skip ID parameters as they're already in the URL path
+	urlParams := utils.BuildURLParams(accessToken, args, skipParams...)
 
-		if "fields" != "ad_creative_id" {
-			urlParams.Set("fields", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["limit"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "limit" != "ad_creative_id" {
-			urlParams.Set("limit", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["after"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "after" != "ad_creative_id" {
-			urlParams.Set("after", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["before"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "before" != "ad_creative_id" {
-			urlParams.Set("before", fmt.Sprintf("%v", val))
-		}
-
-	}
-
-	// Make HTTP request
-	var resp *http.Response
-	var err error
-
-	switch "GET" {
-	case "GET":
-		resp, err = http.Get(baseURL + "?" + urlParams.Encode())
-	case "POST":
-		resp, err = http.PostForm(baseURL, urlParams)
-	default:
-		return nil, fmt.Errorf("unsupported HTTP method: GET")
-	}
-
-	if err != nil {
-		return nil, fmt.Errorf("HTTP request failed: %w", err)
-	}
-	defer resp.Body.Close()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("API request failed with status: %d", resp.StatusCode)
-	}
-
-	var result interface{}
-	if err := json.NewDecoder(resp.Body).Decode(&result); err != nil {
-		return nil, fmt.Errorf("failed to decode response: %w", err)
-	}
-
-	return result, nil
+	// Execute the API request
+	return utils.ExecuteAPIRequest("GET", baseURL, urlParams)
 }

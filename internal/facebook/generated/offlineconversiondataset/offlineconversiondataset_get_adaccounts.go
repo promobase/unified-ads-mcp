@@ -6,11 +6,9 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"net/http"
-	"net/url"
-	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
+	"unified-ads-mcp/internal/facebook/utils"
 	"unified-ads-mcp/internal/shared"
 )
 
@@ -58,13 +56,13 @@ func HandleOfflineconversiondataset_get_adaccounts(ctx context.Context, request 
 	args := make(map[string]interface{})
 
 	// Required: params
-	params, err := request.RequireString("params")
+	// Parse required params object and expand into args
+	val, err := request.RequireString("params")
 	if err != nil {
 		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
 	}
-	// Parse required params object and extract parameters
 	var paramsObj map[string]interface{}
-	if err := json.Unmarshal([]byte(params), &paramsObj); err != nil {
+	if err := json.Unmarshal([]byte(val), &paramsObj); err != nil {
 		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
 	}
 	for key, value := range paramsObj {
@@ -72,29 +70,16 @@ func HandleOfflineconversiondataset_get_adaccounts(ctx context.Context, request 
 	}
 
 	// Optional: fields
-	// Array parameter - expecting JSON string
-	if val := request.GetString("fields", ""); val != "" {
-		// Parse array of fields and convert to comma-separated string
-		var fields []string
-		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
-			args["fields"] = strings.Join(fields, ",")
-		}
-	}
+	utils.ParseFieldsArray(request, args)
 
 	// Optional: limit
-	if val := request.GetInt("limit", 0); val != 0 {
-		args["limit"] = val
-	}
+	utils.ParseOptionalInt(request, "limit", args)
 
 	// Optional: after
-	if val := request.GetString("after", ""); val != "" {
-		args["after"] = val
-	}
+	utils.ParseOptionalString(request, "after", args)
 
 	// Optional: before
-	if val := request.GetString("before", ""); val != "" {
-		args["before"] = val
-	}
+	utils.ParseOptionalString(request, "before", args)
 
 	// Call the API method
 	result, err := Offlineconversiondataset_get_adaccounts(accessToken, args)
@@ -117,66 +102,10 @@ func Offlineconversiondataset_get_adaccounts(accessToken string, args map[string
 
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/adaccounts")
 
-	urlParams := url.Values{}
-	urlParams.Set("access_token", accessToken)
+	// Build URL parameters, skipping ID parameters that are in the path
+	skipParams := []string{}
+	urlParams := utils.BuildURLParams(accessToken, args, skipParams...)
 
-	if val, ok := args["params"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("params", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["fields"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("fields", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["limit"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("limit", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["after"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("after", fmt.Sprintf("%v", val))
-
-	}
-	if val, ok := args["before"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		urlParams.Set("before", fmt.Sprintf("%v", val))
-
-	}
-
-	// Make HTTP request
-	var resp *http.Response
-	var err error
-
-	switch "GET" {
-	case "GET":
-		resp, err = http.Get(baseURL + "?" + urlParams.Encode())
-	case "POST":
-		resp, err = http.PostForm(baseURL, urlParams)
-	default:
-		return nil, fmt.Errorf("unsupported HTTP method: GET")
-	}
-
-	if err != nil {
-		return nil, fmt.Errorf("HTTP request failed: %w", err)
-	}
-	defer resp.Body.Close()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("API request failed with status: %d", resp.StatusCode)
-	}
-
-	var result interface{}
-	if err := json.NewDecoder(resp.Body).Decode(&result); err != nil {
-		return nil, fmt.Errorf("failed to decode response: %w", err)
-	}
-
-	return result, nil
+	// Execute the API request
+	return utils.ExecuteAPIRequest("GET", baseURL, urlParams)
 }

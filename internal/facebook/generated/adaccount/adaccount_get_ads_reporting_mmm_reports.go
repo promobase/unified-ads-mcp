@@ -6,11 +6,9 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"net/http"
-	"net/url"
-	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
+	"unified-ads-mcp/internal/facebook/utils"
 	"unified-ads-mcp/internal/shared"
 )
 
@@ -61,48 +59,24 @@ func HandleAdaccount_get_ads_reporting_mmm_reports(ctx context.Context, request 
 	args := make(map[string]interface{})
 
 	// Required: account_id
-	account_id, err := request.RequireString("account_id")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter account_id: %v", err)), nil
+	if err := utils.ParseRequiredString(request, "account_id", args); err != nil {
+		return mcp.NewToolResultError(err.Error()), nil
 	}
-	args["account_id"] = account_id
 
 	// Optional: params
-	// Object parameter - expecting JSON string
-	if val := request.GetString("params", ""); val != "" {
-		// Parse params object and extract individual parameters
-		var params map[string]interface{}
-		if err := json.Unmarshal([]byte(val), &params); err == nil {
-			for key, value := range params {
-				args[key] = value
-			}
-		}
-	}
+	utils.ParseParamsObject(request, args)
 
 	// Optional: fields
-	// Array parameter - expecting JSON string
-	if val := request.GetString("fields", ""); val != "" {
-		// Parse array of fields and convert to comma-separated string
-		var fields []string
-		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
-			args["fields"] = strings.Join(fields, ",")
-		}
-	}
+	utils.ParseFieldsArray(request, args)
 
 	// Optional: limit
-	if val := request.GetInt("limit", 0); val != 0 {
-		args["limit"] = val
-	}
+	utils.ParseOptionalInt(request, "limit", args)
 
 	// Optional: after
-	if val := request.GetString("after", ""); val != "" {
-		args["after"] = val
-	}
+	utils.ParseOptionalString(request, "after", args)
 
 	// Optional: before
-	if val := request.GetString("before", ""); val != "" {
-		args["before"] = val
-	}
+	utils.ParseOptionalString(request, "before", args)
 
 	// Call the API method
 	result, err := Adaccount_get_ads_reporting_mmm_reports(accessToken, args)
@@ -130,84 +104,12 @@ func Adaccount_get_ads_reporting_mmm_reports(accessToken string, args map[string
 	}
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%sads_reporting_mmm_reports", accountId)
 
-	urlParams := url.Values{}
-	urlParams.Set("access_token", accessToken)
-
-	if val, ok := args["account_id"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "account_id" != "account_id" {
-			urlParams.Set("account_id", fmt.Sprintf("%v", val))
-		}
-
+	// Build URL parameters, skipping ID parameters that are in the path
+	skipParams := []string{
+		"account_id",
 	}
-	if val, ok := args["params"]; ok {
-		// Skip ID parameters as they're already in the URL path
+	urlParams := utils.BuildURLParams(accessToken, args, skipParams...)
 
-		if "params" != "account_id" {
-			urlParams.Set("params", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["fields"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "fields" != "account_id" {
-			urlParams.Set("fields", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["limit"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "limit" != "account_id" {
-			urlParams.Set("limit", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["after"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "after" != "account_id" {
-			urlParams.Set("after", fmt.Sprintf("%v", val))
-		}
-
-	}
-	if val, ok := args["before"]; ok {
-		// Skip ID parameters as they're already in the URL path
-
-		if "before" != "account_id" {
-			urlParams.Set("before", fmt.Sprintf("%v", val))
-		}
-
-	}
-
-	// Make HTTP request
-	var resp *http.Response
-	var err error
-
-	switch "GET" {
-	case "GET":
-		resp, err = http.Get(baseURL + "?" + urlParams.Encode())
-	case "POST":
-		resp, err = http.PostForm(baseURL, urlParams)
-	default:
-		return nil, fmt.Errorf("unsupported HTTP method: GET")
-	}
-
-	if err != nil {
-		return nil, fmt.Errorf("HTTP request failed: %w", err)
-	}
-	defer resp.Body.Close()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("API request failed with status: %d", resp.StatusCode)
-	}
-
-	var result interface{}
-	if err := json.NewDecoder(resp.Body).Decode(&result); err != nil {
-		return nil, fmt.Errorf("failed to decode response: %w", err)
-	}
-
-	return result, nil
+	// Execute the API request
+	return utils.ExecuteAPIRequest("GET", baseURL, urlParams)
 }
