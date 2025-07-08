@@ -15,7 +15,10 @@ import (
 
 const (
 	graphAPIVersion = "v23.0"
-	graphAPIHost    = "https://graph.facebook.com"
+)
+
+var (
+	graphAPIHost = "https://graph.facebook.com"
 )
 
 // getAccessToken retrieves the Facebook access token from environment
