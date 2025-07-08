@@ -7,6 +7,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
+	"log"
 	"net/http"
 	"net/url"
 	"os"
@@ -57,8 +58,10 @@ func makeGraphRequest(method, urlStr string, data map[string]interface{}) ([]byt
 	// Create request based on method
 	switch method {
 	case "GET", "DELETE":
+		log.Printf("[DEBUG] Making %s request to %s", method, parsedURL.String())
 		req, err = http.NewRequest(method, parsedURL.String(), nil)
 	case "POST", "PUT":
+		log.Printf("[DEBUG] Making %s request to %s with data: %v", method, parsedURL.String(), data)
 		jsonData, err := json.Marshal(data)
 		if err != nil {
 			return nil, fmt.Errorf("failed to marshal data: %w", err)
