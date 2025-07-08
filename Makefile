@@ -45,7 +45,7 @@ run-facebook: build-facebook
 # Run code generation
 codegen:
 	@echo "Running code generation for Facebook API..."
-	@cd internal/facebook/codegen && $(GOCMD) run main.go ../api_specs/specs
+	@cd internal/facebook/codegen && $(GOCMD) run . -specs ../api_specs/specs
 
 # Run tests
 test:
