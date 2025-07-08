@@ -21,6 +21,16 @@ var (
 	graphAPIHost = "https://graph.facebook.com"
 )
 
+// SetGraphAPIHost sets the Graph API host for testing purposes
+func SetGraphAPIHost(host string) {
+	graphAPIHost = host
+}
+
+// GetGraphAPIHost returns the current Graph API host
+func GetGraphAPIHost() string {
+	return graphAPIHost
+}
+
 // getAccessToken retrieves the Facebook access token from environment
 func getAccessToken() string {
 	return os.Getenv("FACEBOOK_ACCESS_TOKEN")
@@ -107,4 +117,159 @@ func makeGraphRequest(method, urlStr string, data map[string]interface{}) ([]byt
 	}
 
 	return body, nil
+}
+
+// BatchRequest represents a single request in a batch
+type BatchRequest struct {
+	Method      string                 `json:"method"`
+	RelativeURL string                 `json:"relative_url"`
+	Body        map[string]interface{} `json:"body,omitempty"`
+	Headers     map[string]string      `json:"headers,omitempty"`
+	Name        string                 `json:"name,omitempty"`
+}
+
+// BatchResponse represents a single response in a batch
+type BatchResponse struct {
+	Code    int                    `json:"code"`
+	Headers map[string]string      `json:"headers,omitempty"`
+	Body    json.RawMessage        `json:"body,omitempty"`
+}
+
+// MakeBatchRequest performs a batch request to the Facebook Graph API
+func MakeBatchRequest(requests []BatchRequest) ([]BatchResponse, error) {
+	if len(requests) == 0 {
+		return nil, fmt.Errorf("no requests provided")
+	}
+	
+	if len(requests) > 50 {
+		return nil, fmt.Errorf("batch request limited to 50 requests, got %d", len(requests))
+	}
+
+	// Check access token
+	accessToken := getAccessToken()
+	if accessToken == "" {
+		return nil, fmt.Errorf("FACEBOOK_ACCESS_TOKEN environment variable is not set")
+	}
+
+	// Convert batch requests to JSON
+	batchJSON, err := json.Marshal(requests)
+	if err != nil {
+		return nil, fmt.Errorf("failed to marshal batch requests: %w", err)
+	}
+
+	// Create form data
+	formData := url.Values{}
+	formData.Set("batch", string(batchJSON))
+	formData.Set("access_token", accessToken)
+
+	// Build URL
+	batchURL := fmt.Sprintf("%s/%s/", graphAPIHost, graphAPIVersion)
+	
+	log.Printf("[DEBUG] Making batch request to %s with %d requests", batchURL, len(requests))
+
+	// Create request
+	req, err := http.NewRequest("POST", batchURL, bytes.NewBufferString(formData.Encode()))
+	if err != nil {
+		return nil, fmt.Errorf("failed to create batch request: %w", err)
+	}
+	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
+
+	// Execute request
+	client := &http.Client{}
+	resp, err := client.Do(req)
+	if err != nil {
+		return nil, fmt.Errorf("batch request failed: %w", err)
+	}
+	defer resp.Body.Close()
+
+	// Read response
+	body, err := io.ReadAll(resp.Body)
+	if err != nil {
+		return nil, fmt.Errorf("failed to read batch response: %w", err)
+	}
+
+	// Check HTTP status
+	if resp.StatusCode >= 400 {
+		return nil, fmt.Errorf("batch request failed with HTTP %d: %s", resp.StatusCode, string(body))
+	}
+
+	// Parse batch responses
+	var batchResponses []BatchResponse
+	if err := json.Unmarshal(body, &batchResponses); err != nil {
+		return nil, fmt.Errorf("failed to parse batch response: %w", err)
+	}
+
+	return batchResponses, nil
+}
+
+// BatchRequestBuilder helps build batch requests with dependencies
+type BatchRequestBuilder struct {
+	requests []BatchRequest
+}
+
+// NewBatchRequestBuilder creates a new batch request builder
+func NewBatchRequestBuilder() *BatchRequestBuilder {
+	return &BatchRequestBuilder{
+		requests: make([]BatchRequest, 0),
+	}
+}
+
+// AddRequest adds a request to the batch
+func (b *BatchRequestBuilder) AddRequest(method, relativeURL string, body map[string]interface{}, name string) *BatchRequestBuilder {
+	req := BatchRequest{
+		Method:      method,
+		RelativeURL: relativeURL,
+		Body:        body,
+		Name:        name,
+	}
+	b.requests = append(b.requests, req)
+	return b
+}
+
+// AddGET adds a GET request to the batch
+func (b *BatchRequestBuilder) AddGET(objectID, endpoint string, params map[string]interface{}, name string) *BatchRequestBuilder {
+	// Build relative URL
+	relativeURL := objectID
+	if endpoint != "" {
+		relativeURL = fmt.Sprintf("%s/%s", objectID, endpoint)
+	}
+	
+	// Add query parameters
+	if len(params) > 0 {
+		query := url.Values{}
+		for k, v := range params {
+			query.Set(k, fmt.Sprintf("%v", v))
+		}
+		relativeURL = fmt.Sprintf("%s?%s", relativeURL, query.Encode())
+	}
+	
+	return b.AddRequest("GET", relativeURL, nil, name)
+}
+
+// AddPOST adds a POST request to the batch
+func (b *BatchRequestBuilder) AddPOST(objectID, endpoint string, body map[string]interface{}, name string) *BatchRequestBuilder {
+	relativeURL := objectID
+	if endpoint != "" {
+		relativeURL = fmt.Sprintf("%s/%s", objectID, endpoint)
+	}
+	return b.AddRequest("POST", relativeURL, body, name)
+}
+
+// AddDELETE adds a DELETE request to the batch
+func (b *BatchRequestBuilder) AddDELETE(objectID, endpoint string, name string) *BatchRequestBuilder {
+	relativeURL := objectID
+	if endpoint != "" {
+		relativeURL = fmt.Sprintf("%s/%s", objectID, endpoint)
+	}
+	return b.AddRequest("DELETE", relativeURL, nil, name)
+}
+
+// Execute performs the batch request
+func (b *BatchRequestBuilder) Execute() ([]BatchResponse, error) {
+	return MakeBatchRequest(b.requests)
+}
+
+// GetRequests returns the built requests for inspection
+func (b *BatchRequestBuilder) GetRequests() []BatchRequest {
+	return b.requests
 }

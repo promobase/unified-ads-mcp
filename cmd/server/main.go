@@ -50,6 +50,9 @@ func NewFacebookMCPServer() *server.MCPServer {
 		log.Fatalf("Failed to register account tools: %v", err)
 	}
 
+	// Register batch tools
+	tools.RegisterBatchTools(mcpServer)
+
 	return mcpServer
 }
 

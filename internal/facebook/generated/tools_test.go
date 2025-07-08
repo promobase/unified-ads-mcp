@@ -20,21 +20,101 @@ func mockGraphAPIServer(t *testing.T) *httptest.Server {
 		// Log the request for debugging
 		t.Logf("Mock API request: %s %s", r.Method, r.URL.Path)
 
-		// Extract access token to verify it's being sent
-		accessToken := r.URL.Query().Get("access_token")
-		if accessToken == "" {
-			w.WriteHeader(http.StatusUnauthorized)
-			json.NewEncoder(w).Encode(map[string]interface{}{
-				"error": map[string]interface{}{
-					"type":    "OAuthException",
-					"message": "An access token is required to request this resource.",
-				},
-			})
-			return
+		// Handle batch requests differently - they use form data for auth
+		if r.Method == "POST" && strings.HasSuffix(r.URL.Path, fmt.Sprintf("/%s/", graphAPIVersion)) {
+			// For batch requests, don't check auth here - it's handled in the switch below
+		} else {
+			// Extract access token to verify it's being sent
+			accessToken := r.URL.Query().Get("access_token")
+			if accessToken == "" {
+				w.WriteHeader(http.StatusUnauthorized)
+				json.NewEncoder(w).Encode(map[string]interface{}{
+					"error": map[string]interface{}{
+						"type":    "OAuthException",
+						"message": "An access token is required to request this resource.",
+					},
+				})
+				return
+			}
 		}
 
 		// Mock different endpoints
 		switch {
+		case r.Method == "POST" && strings.HasSuffix(r.URL.Path, fmt.Sprintf("/%s/", graphAPIVersion)):
+			// This is a batch request
+			// Parse form data
+			if err := r.ParseForm(); err != nil {
+				w.WriteHeader(http.StatusBadRequest)
+				json.NewEncoder(w).Encode(map[string]interface{}{
+					"error": map[string]interface{}{
+						"message": "Failed to parse form",
+					},
+				})
+				return
+			}
+
+			// Check access token in form data
+			accessToken := r.FormValue("access_token")
+			if accessToken == "" {
+				w.WriteHeader(http.StatusUnauthorized)
+				json.NewEncoder(w).Encode(map[string]interface{}{
+					"error": map[string]interface{}{
+						"type":    "OAuthException",
+						"message": "An access token is required to request this resource.",
+					},
+				})
+				return
+			}
+
+			// Get batch parameter
+			batchJSON := r.FormValue("batch")
+			if batchJSON == "" {
+				w.WriteHeader(http.StatusBadRequest)
+				json.NewEncoder(w).Encode(map[string]interface{}{
+					"error": map[string]interface{}{
+						"message": "Missing batch parameter",
+					},
+				})
+				return
+			}
+
+			// Parse batch requests
+			var requests []BatchRequest
+			if err := json.Unmarshal([]byte(batchJSON), &requests); err != nil {
+				w.WriteHeader(http.StatusBadRequest)
+				json.NewEncoder(w).Encode(map[string]interface{}{
+					"error": map[string]interface{}{
+						"message": "Invalid batch JSON",
+					},
+				})
+				return
+			}
+
+			// Create responses
+			responses := make([]BatchResponse, len(requests))
+			for i, req := range requests {
+				if strings.Contains(req.RelativeURL, "activities") {
+					responses[i] = BatchResponse{
+						Code: 200,
+						Body: json.RawMessage(`{"data":[{"event_time":"2024-01-01T12:00:00+0000","event_type":"update_status"}]}`),
+					}
+				} else if strings.Contains(req.RelativeURL, "insights") {
+					responses[i] = BatchResponse{
+						Code: 200,
+						Body: json.RawMessage(`{"data":[{"impressions":"1000","clicks":"50","spend":"25.50"}]}`),
+					}
+				} else {
+					responses[i] = BatchResponse{
+						Code: 200,
+						Body: json.RawMessage(`{"id":"` + strings.Split(req.RelativeURL, "?")[0] + `","name":"Test Object"}`),
+					}
+				}
+			}
+
+			w.Header().Set("Content-Type", "application/json")
+			json.NewEncoder(w).Encode(responses)
+			return
+
 		case strings.Contains(r.URL.Path, "/activities"):
 			// Mock activities endpoint
 			w.Header().Set("Content-Type", "application/json")
