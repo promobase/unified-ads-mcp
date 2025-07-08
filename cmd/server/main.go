@@ -3,11 +3,11 @@ package main
 import (
 	"context"
 	"flag"
-	"fmt"
 	"log"
 	"os"
 
 	"unified-ads-mcp/internal/facebook/generated"
+	"unified-ads-mcp/internal/tools"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"github.com/mark3labs/mcp-go/server"
@@ -39,44 +39,12 @@ func NewFacebookMCPServer() *server.MCPServer {
 		log.Fatalf("Failed to register tools: %v", err)
 	}
 
-	// Add a health check tool
-	mcpServer.AddTool(
-		mcp.NewTool("health_check",
-			mcp.WithDescription("Check if the Facebook Business MCP server is running"),
-		),
-		handleHealthCheck,
-	)
-
-	// Add a tool to check Facebook access token
-	mcpServer.AddTool(
-		mcp.NewTool("check_access_token",
-			mcp.WithDescription("Check if Facebook access token is configured"),
-		),
-		handleCheckAccessToken,
-	)
-
-	return mcpServer
-}
-
-func handleHealthCheck(
-	ctx context.Context,
-	request mcp.CallToolRequest,
-) (*mcp.CallToolResult, error) {
-	return mcp.NewToolResultText("Facebook Business MCP server is running"), nil
-}
-
-func handleCheckAccessToken(
-	ctx context.Context,
-	request mcp.CallToolRequest,
-) (*mcp.CallToolResult, error) {
-	token := os.Getenv("FACEBOOK_ACCESS_TOKEN")
-	if token == "" {
-		return mcp.NewToolResultText("WARNING: FACEBOOK_ACCESS_TOKEN environment variable is not set"), nil
+	// Register custom health and diagnostic tools
+	if err := tools.RegisterHealthTools(mcpServer); err != nil {
+		log.Fatalf("Failed to register health tools: %v", err)
 	}
 
-	// Mask the token for security
-	maskedToken := token[:10] + "..." + token[len(token)-4:]
-	return mcp.NewToolResultText(fmt.Sprintf("Facebook access token is configured: %s", maskedToken)), nil
+	return mcpServer
 }
 
 func main() {

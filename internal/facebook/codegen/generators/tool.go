@@ -108,6 +108,7 @@ func (g *ToolGenerator) Generate() error {
 		"AdSet":      true,
 		"AdCreative": true,
 		"Ad":         true,
+		"User":       true,
 	}
 
 	// Generate separate file for each core object
@@ -206,7 +207,7 @@ func (g *ToolGenerator) generateToolsForObject(objectName string, spec *ToolSpec
 
 	// Write to file named after the object (lowercase)
 	filename := fmt.Sprintf("%s_tools.go", strings.ToLower(objectName))
-	return os.WriteFile(filepath.Join(g.outputPath, filename), buf.Bytes(), 0644)
+	return os.WriteFile(filepath.Join(g.outputPath, filename), buf.Bytes(), 0o644)
 }
 
 func (g *ToolGenerator) generateCommonFile() error {
@@ -217,7 +218,7 @@ func (g *ToolGenerator) generateCommonFile() error {
 	}
 
 	// Write the file as-is (no template variables needed)
-	return os.WriteFile(filepath.Join(g.outputPath, "tools_common.go"), tmplContent, 0644)
+	return os.WriteFile(filepath.Join(g.outputPath, "tools_common.go"), tmplContent, 0o644)
 }
 
 func (g *ToolGenerator) generateRegisterFile(coreObjects map[string]bool) error {
@@ -252,7 +253,7 @@ func (g *ToolGenerator) generateRegisterFile(coreObjects map[string]bool) error 
 		return fmt.Errorf("failed to execute template: %w", err)
 	}
 
-	return os.WriteFile(filepath.Join(g.outputPath, "register_tools.go"), buf.Bytes(), 0644)
+	return os.WriteFile(filepath.Join(g.outputPath, "register_tools.go"), buf.Bytes(), 0o644)
 }
 
 func (g *ToolGenerator) generateTools() error {
@@ -334,7 +335,7 @@ func (g *ToolGenerator) generateTools() error {
 		return fmt.Errorf("failed to execute template: %w", err)
 	}
 
-	return os.WriteFile(filepath.Join(g.outputPath, "tools.go"), buf.Bytes(), 0644)
+	return os.WriteFile(filepath.Join(g.outputPath, "tools.go"), buf.Bytes(), 0o644)
 }
 
 func (g *ToolGenerator) generateToolName(objectName string, api API) string {

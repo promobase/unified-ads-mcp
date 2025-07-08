@@ -29,5 +29,9 @@ func RegisterAllTools(s *server.MCPServer) error {
 		return err
 	}
 
+	if err := RegisterUserTools(s); err != nil {
+		return err
+	}
+
 	return nil
 }
