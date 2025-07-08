@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"os/exec"
 	"path/filepath"
 	"sort"
 	"strings"
@@ -53,6 +54,11 @@ func (g *EnumGenerator) Generate() error {
 	// Generate enums file
 	if err := g.generateEnums(); err != nil {
 		return fmt.Errorf("failed to generate enums: %w", err)
+	}
+
+	// Format the generated file
+	if err := g.formatGeneratedFile(); err != nil {
+		return fmt.Errorf("failed to format generated file: %w", err)
 	}
 
 	return nil
@@ -208,4 +214,20 @@ func ToGoConstName(s string) string {
 	}
 
 	return s
+}
+
+func (g *EnumGenerator) formatGeneratedFile() error {
+	// Run go fmt on the generated enums.go file
+	enumFile := filepath.Join(g.outputPath, "enums.go")
+	cmd := exec.Command("go", "fmt", enumFile)
+	output, err := cmd.CombinedOutput()
+	if err != nil {
+		return fmt.Errorf("go fmt failed: %w\nOutput: %s", err, string(output))
+	}
+	
+	if len(output) > 0 {
+		log.Printf("Formatted: %s", string(output))
+	}
+	
+	return nil
 }

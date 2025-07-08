@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"os/exec"
 	"path/filepath"
 	"sort"
 	"strings"
@@ -95,6 +96,11 @@ func (g *FieldGenerator) Generate() error {
 	// Generate fields file
 	if err := g.generateFields(); err != nil {
 		return fmt.Errorf("failed to generate fields: %w", err)
+	}
+
+	// Format the generated file
+	if err := g.formatGeneratedFile(); err != nil {
+		return fmt.Errorf("failed to format generated file: %w", err)
 	}
 
 	return nil
@@ -271,4 +277,20 @@ func toGoFieldName(s string) string {
 	}
 
 	return result
+}
+
+func (g *FieldGenerator) formatGeneratedFile() error {
+	// Run go fmt on the generated fields.go file
+	fieldsFile := filepath.Join(g.outputPath, "fields.go")
+	cmd := exec.Command("go", "fmt", fieldsFile)
+	output, err := cmd.CombinedOutput()
+	if err != nil {
+		return fmt.Errorf("go fmt failed: %w\nOutput: %s", err, string(output))
+	}
+	
+	if len(output) > 0 {
+		log.Printf("Formatted: %s", string(output))
+	}
+	
+	return nil
 }

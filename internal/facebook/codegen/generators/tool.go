@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"os/exec"
 	"path/filepath"
 	"sort"
 	"strings"
@@ -100,12 +101,158 @@ func (g *ToolGenerator) Generate() error {
 		return fmt.Errorf("failed to create output directory: %w", err)
 	}
 
-	// Generate tools file
-	if err := g.generateTools(); err != nil {
-		return fmt.Errorf("failed to generate tools: %w", err)
+	// Define core objects to generate
+	coreObjects := map[string]bool{
+		"AdAccount":  true,
+		"Campaign":   true,
+		"AdSet":      true,
+		"AdCreative": true,
+		"Ad":         true,
+	}
+
+	// Generate separate file for each core object
+	for objectName := range coreObjects {
+		if spec, exists := g.specs[objectName]; exists {
+			if err := g.generateToolsForObject(objectName, spec); err != nil {
+				return fmt.Errorf("failed to generate tools for %s: %w", objectName, err)
+			}
+		}
+	}
+
+	// Generate common utilities file
+	if err := g.generateCommonFile(); err != nil {
+		return fmt.Errorf("failed to generate common file: %w", err)
+	}
+
+	// Generate register_tools.go that imports all the tool files
+	if err := g.generateRegisterFile(coreObjects); err != nil {
+		return fmt.Errorf("failed to generate register file: %w", err)
+	}
+
+	// Run go fmt on all generated files
+	if err := g.formatGeneratedFiles(); err != nil {
+		return fmt.Errorf("failed to format generated files: %w", err)
 	}
 
 	return nil
+}
+
+func (g *ToolGenerator) generateToolsForObject(objectName string, spec *ToolSpec) error {
+	// Prepare tools data for this object
+	type ToolData struct {
+		ObjectName  string
+		Method      string
+		Endpoint    string
+		Return      string
+		ToolName    string
+		HandlerName string
+		Description string
+		InputSchema string // JSON string
+		NeedsID     bool
+		Params      []Param
+	}
+
+	var tools []ToolData
+
+	// Process APIs for this object
+	for _, api := range spec.APIs {
+		toolName := g.generateToolName(objectName, api)
+		handlerName := toolName + "Handler"
+		
+		// Generate input schema based on method
+		inputSchema := g.generateInputSchema(objectName, api)
+		inputSchemaJSON, _ := json.Marshal(inputSchema)
+		
+		tools = append(tools, ToolData{
+			ObjectName:  objectName,
+			Method:      api.Method,
+			Endpoint:    api.Endpoint,
+			Return:      api.Return,
+			ToolName:    toolName,
+			HandlerName: handlerName,
+			Description: strings.ReplaceAll(g.generateDescription(objectName, api), `"`, `\"`),
+			InputSchema: string(inputSchemaJSON),
+			NeedsID:     g.needsObjectID(objectName, api.Endpoint),
+			Params:      api.Params,
+		})
+	}
+
+	// Prepare template data
+	data := struct {
+		ObjectName string
+		Tools      []ToolData
+		TotalTools int
+	}{
+		ObjectName: objectName,
+		Tools:      tools,
+		TotalTools: len(tools),
+	}
+
+	// Load and execute template
+	tmplContent, err := os.ReadFile(filepath.Join(filepath.Dir(g.outputPath), "codegen", "templates", "object_tools.go.tmpl"))
+	if err != nil {
+		return fmt.Errorf("failed to read template: %w", err)
+	}
+
+	tmpl, err := template.New("object_tools").Parse(string(tmplContent))
+	if err != nil {
+		return fmt.Errorf("failed to parse template: %w", err)
+	}
+
+	var buf bytes.Buffer
+	if err := tmpl.Execute(&buf, data); err != nil {
+		return fmt.Errorf("failed to execute template: %w", err)
+	}
+
+	// Write to file named after the object (lowercase)
+	filename := fmt.Sprintf("%s_tools.go", strings.ToLower(objectName))
+	return os.WriteFile(filepath.Join(g.outputPath, filename), buf.Bytes(), 0644)
+}
+
+func (g *ToolGenerator) generateCommonFile() error {
+	// Load and execute template
+	tmplContent, err := os.ReadFile(filepath.Join(filepath.Dir(g.outputPath), "codegen", "templates", "tools_common.go.tmpl"))
+	if err != nil {
+		return fmt.Errorf("failed to read template: %w", err)
+	}
+
+	// Write the file as-is (no template variables needed)
+	return os.WriteFile(filepath.Join(g.outputPath, "tools_common.go"), tmplContent, 0644)
+}
+
+func (g *ToolGenerator) generateRegisterFile(coreObjects map[string]bool) error {
+	// Prepare data for register file
+	var objectNames []string
+	for name := range coreObjects {
+		if _, exists := g.specs[name]; exists {
+			objectNames = append(objectNames, name)
+		}
+	}
+	sort.Strings(objectNames)
+
+	data := struct {
+		Objects []string
+	}{
+		Objects: objectNames,
+	}
+
+	// Load and execute template
+	tmplContent, err := os.ReadFile(filepath.Join(filepath.Dir(g.outputPath), "codegen", "templates", "register_tools.go.tmpl"))
+	if err != nil {
+		return fmt.Errorf("failed to read template: %w", err)
+	}
+
+	tmpl, err := template.New("register").Parse(string(tmplContent))
+	if err != nil {
+		return fmt.Errorf("failed to parse template: %w", err)
+	}
+
+	var buf bytes.Buffer
+	if err := tmpl.Execute(&buf, data); err != nil {
+		return fmt.Errorf("failed to execute template: %w", err)
+	}
+
+	return os.WriteFile(filepath.Join(g.outputPath, "register_tools.go"), buf.Bytes(), 0644)
 }
 
 func (g *ToolGenerator) generateTools() error {
@@ -402,4 +549,19 @@ func (g *ToolGenerator) needsObjectID(objectName string, endpoint string) bool {
 	}
 
 	return true
+}
+
+func (g *ToolGenerator) formatGeneratedFiles() error {
+	// Run go fmt on the output directory
+	cmd := exec.Command("go", "fmt", g.outputPath)
+	output, err := cmd.CombinedOutput()
+	if err != nil {
+		return fmt.Errorf("go fmt failed: %w\nOutput: %s", err, string(output))
+	}
+	
+	if len(output) > 0 {
+		log.Printf("Formatted files: %s", string(output))
+	}
+	
+	return nil
 }
