@@ -5,9 +5,6 @@ package generated
 import (
 	"context"
 	"encoding/json"
-	"fmt"
-	"net/url"
-	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"github.com/mark3labs/mcp-go/server"
@@ -30,282 +27,50 @@ var (
 
 // CreateAdCreativeAdlabelHandler handles create_ad_creative_adlabel
 func CreateAdCreativeAdlabelHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get parameters from the request
-	params := request.GetArguments()
-	if params == nil {
-		params = make(map[string]interface{})
-	}
 
-	// POST/PUT request
+	// Use standard POST handler
+	return StandardPOSTHandler(ctx, request, "adlabels", true)
 
-	// Extract ID
-	id, ok := params["id"].(string)
-	if !ok || id == "" {
-		return mcp.NewToolResultErrorf("id is required"), nil
-	}
-	delete(params, "id")
-
-	// Build URL
-	url := buildGraphURL(id, "adlabels")
-
-	// Make request with remaining params as body
-	resp, err := makeGraphRequest("POST", url, params)
-
-	if err != nil {
-		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
-	}
-
-	return mcp.NewToolResultText(string(resp)), nil
 }
 
 // ListAdCreativeCreativeInsightsHandler handles list_ad_creative_creative_insights
 func ListAdCreativeCreativeInsightsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get parameters from the request
-	params := request.GetArguments()
-	if params == nil {
-		params = make(map[string]interface{})
-	}
 
-	// Build query parameters
-	query := url.Values{}
+	// Use standard GET handler
+	return StandardGETHandler(ctx, request, "creative_insights", "AdCreative", true)
 
-	// Extract ID
-	id, ok := params["id"].(string)
-	if !ok || id == "" {
-		return mcp.NewToolResultErrorf("id is required"), nil
-	}
-	delete(params, "id")
-
-	// Handle fields parameter specially
-	if fields, ok := params["fields"].([]interface{}); ok {
-		fieldStrs := make([]string, len(fields))
-		for i, f := range fields {
-			fieldStrs[i] = fmt.Sprintf("%v", f)
-		}
-		query.Set("fields", strings.Join(fieldStrs, ","))
-		delete(params, "fields")
-	} else {
-		// Use default fields if none provided
-		defaultFields := GetDefaultFields("AdCreative")
-		if len(defaultFields) > 0 {
-			query.Set("fields", strings.Join(defaultFields, ","))
-		}
-	}
-
-	// Add all other parameters to query
-	for key, value := range params {
-		query.Set(key, fmt.Sprintf("%v", value))
-	}
-
-	// Build URL
-	baseURL := buildGraphURL(id, "creative_insights")
-	if len(query) > 0 {
-		baseURL = fmt.Sprintf("%s?%s", baseURL, query.Encode())
-	}
-
-	// Make request
-	resp, err := makeGraphRequest("GET", baseURL, nil)
-
-	if err != nil {
-		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
-	}
-
-	return mcp.NewToolResultText(string(resp)), nil
 }
 
 // ListAdCreativePreviewsHandler handles list_ad_creative_previews
 func ListAdCreativePreviewsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get parameters from the request
-	params := request.GetArguments()
-	if params == nil {
-		params = make(map[string]interface{})
-	}
 
-	// Build query parameters
-	query := url.Values{}
+	// Use standard GET handler
+	return StandardGETHandler(ctx, request, "previews", "AdCreative", true)
 
-	// Extract ID
-	id, ok := params["id"].(string)
-	if !ok || id == "" {
-		return mcp.NewToolResultErrorf("id is required"), nil
-	}
-	delete(params, "id")
-
-	// Handle fields parameter specially
-	if fields, ok := params["fields"].([]interface{}); ok {
-		fieldStrs := make([]string, len(fields))
-		for i, f := range fields {
-			fieldStrs[i] = fmt.Sprintf("%v", f)
-		}
-		query.Set("fields", strings.Join(fieldStrs, ","))
-		delete(params, "fields")
-	} else {
-		// Use default fields if none provided
-		defaultFields := GetDefaultFields("AdCreative")
-		if len(defaultFields) > 0 {
-			query.Set("fields", strings.Join(defaultFields, ","))
-		}
-	}
-
-	// Add all other parameters to query
-	for key, value := range params {
-		query.Set(key, fmt.Sprintf("%v", value))
-	}
-
-	// Build URL
-	baseURL := buildGraphURL(id, "previews")
-	if len(query) > 0 {
-		baseURL = fmt.Sprintf("%s?%s", baseURL, query.Encode())
-	}
-
-	// Make request
-	resp, err := makeGraphRequest("GET", baseURL, nil)
-
-	if err != nil {
-		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
-	}
-
-	return mcp.NewToolResultText(string(resp)), nil
 }
 
 // DeleteAdCreativeHandler handles delete_ad_creative
 func DeleteAdCreativeHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get parameters from the request
-	params := request.GetArguments()
-	if params == nil {
-		params = make(map[string]interface{})
-	}
 
-	// Build query parameters
-	query := url.Values{}
+	// Use standard DELETE handler
+	return StandardDELETEHandler(ctx, request, "")
 
-	// Extract ID
-	id, ok := params["id"].(string)
-	if !ok || id == "" {
-		return mcp.NewToolResultErrorf("id is required"), nil
-	}
-	delete(params, "id")
-
-	// Handle fields parameter specially
-	if fields, ok := params["fields"].([]interface{}); ok {
-		fieldStrs := make([]string, len(fields))
-		for i, f := range fields {
-			fieldStrs[i] = fmt.Sprintf("%v", f)
-		}
-		query.Set("fields", strings.Join(fieldStrs, ","))
-		delete(params, "fields")
-	} else {
-		// Use default fields if none provided
-		defaultFields := GetDefaultFields("AdCreative")
-		if len(defaultFields) > 0 {
-			query.Set("fields", strings.Join(defaultFields, ","))
-		}
-	}
-
-	// Add all other parameters to query
-	for key, value := range params {
-		query.Set(key, fmt.Sprintf("%v", value))
-	}
-
-	// Build URL
-	baseURL := buildGraphURL(id, "")
-	if len(query) > 0 {
-		baseURL = fmt.Sprintf("%s?%s", baseURL, query.Encode())
-	}
-
-	// Make request
-	resp, err := makeGraphRequest("DELETE", baseURL, nil)
-
-	if err != nil {
-		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
-	}
-
-	return mcp.NewToolResultText(string(resp)), nil
 }
 
 // GetAdCreativeHandler handles get_ad_creative
 func GetAdCreativeHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get parameters from the request
-	params := request.GetArguments()
-	if params == nil {
-		params = make(map[string]interface{})
-	}
 
-	// Build query parameters
-	query := url.Values{}
+	// Use standard GET handler
+	return StandardGETHandler(ctx, request, "", "AdCreative", true)
 
-	// Extract ID
-	id, ok := params["id"].(string)
-	if !ok || id == "" {
-		return mcp.NewToolResultErrorf("id is required"), nil
-	}
-	delete(params, "id")
-
-	// Handle fields parameter specially
-	if fields, ok := params["fields"].([]interface{}); ok {
-		fieldStrs := make([]string, len(fields))
-		for i, f := range fields {
-			fieldStrs[i] = fmt.Sprintf("%v", f)
-		}
-		query.Set("fields", strings.Join(fieldStrs, ","))
-		delete(params, "fields")
-	} else {
-		// Use default fields if none provided
-		defaultFields := GetDefaultFields("AdCreative")
-		if len(defaultFields) > 0 {
-			query.Set("fields", strings.Join(defaultFields, ","))
-		}
-	}
-
-	// Add all other parameters to query
-	for key, value := range params {
-		query.Set(key, fmt.Sprintf("%v", value))
-	}
-
-	// Build URL
-	baseURL := buildGraphURL(id, "")
-	if len(query) > 0 {
-		baseURL = fmt.Sprintf("%s?%s", baseURL, query.Encode())
-	}
-
-	// Make request
-	resp, err := makeGraphRequest("GET", baseURL, nil)
-
-	if err != nil {
-		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
-	}
-
-	return mcp.NewToolResultText(string(resp)), nil
 }
 
 // UpdateAdCreativeHandler handles update_ad_creative
 func UpdateAdCreativeHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get parameters from the request
-	params := request.GetArguments()
-	if params == nil {
-		params = make(map[string]interface{})
-	}
 
-	// POST/PUT request
+	// Use standard POST handler
+	return StandardPOSTHandler(ctx, request, "", true)
 
-	// Extract ID
-	id, ok := params["id"].(string)
-	if !ok || id == "" {
-		return mcp.NewToolResultErrorf("id is required"), nil
-	}
-	delete(params, "id")
-
-	// Build URL
-	url := buildGraphURL(id, "")
-
-	// Make request with remaining params as body
-	resp, err := makeGraphRequest("POST", url, params)
-
-	if err != nil {
-		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
-	}
-
-	return mcp.NewToolResultText(string(resp)), nil
 }
 
 // RegisterAdCreativeTools registers all AdCreative tools with the MCP server

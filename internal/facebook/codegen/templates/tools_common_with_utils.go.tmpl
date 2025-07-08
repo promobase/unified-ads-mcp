@@ -51,27 +51,27 @@ func buildGraphURL(objectID, endpoint string) string {
 // makeGraphRequest performs an HTTP request to the Facebook Graph API
 func makeGraphRequest(method, urlStr string, data map[string]interface{}) ([]byte, error) {
 	client := &http.Client{}
-
+	
 	var req *http.Request
 	var err error
-
+	
 	// Check access token
 	accessToken := getAccessToken()
 	if accessToken == "" {
 		return nil, fmt.Errorf("FACEBOOK_ACCESS_TOKEN environment variable is not set")
 	}
-
+	
 	// Parse URL to add access token
 	parsedURL, err := url.Parse(urlStr)
 	if err != nil {
 		return nil, fmt.Errorf("invalid URL: %w", err)
 	}
-
+	
 	// Add access token to query params
 	q := parsedURL.Query()
 	q.Set("access_token", accessToken)
 	parsedURL.RawQuery = q.Encode()
-
+	
 	// Create request based on method
 	switch method {
 	case "GET", "DELETE":
@@ -90,36 +90,36 @@ func makeGraphRequest(method, urlStr string, data map[string]interface{}) ([]byt
 	default:
 		return nil, fmt.Errorf("unsupported method: %s", method)
 	}
-
+	
 	if err != nil {
 		return nil, fmt.Errorf("failed to create request: %w", err)
 	}
-
+	
 	// Execute request
 	resp, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("request failed: %w", err)
 	}
 	defer resp.Body.Close()
-
+	
 	// Read response
 	body, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return nil, fmt.Errorf("failed to read response: %w", err)
 	}
-
+	
 	// Check for errors
 	if resp.StatusCode >= 400 {
 		var fbError map[string]interface{}
 		if err := json.Unmarshal(body, &fbError); err == nil {
 			if errData, ok := fbError["error"].(map[string]interface{}); ok {
-				return nil, fmt.Errorf("Facebook API error: %v - %v",
+				return nil, fmt.Errorf("Facebook API error: %v - %v", 
 					errData["type"], errData["message"])
 			}
 		}
 		return nil, fmt.Errorf("HTTP %d: %s", resp.StatusCode, string(body))
 	}
-
+	
 	return body, nil
 }
 
@@ -134,9 +134,9 @@ type BatchRequest struct {
 
 // BatchResponse represents a single response in a batch
 type BatchResponse struct {
-	Code    int               `json:"code"`
-	Headers map[string]string `json:"headers,omitempty"`
-	Body    json.RawMessage   `json:"body,omitempty"`
+	Code    int                    `json:"code"`
+	Headers map[string]string      `json:"headers,omitempty"`
+	Body    json.RawMessage        `json:"body,omitempty"`
 }
 
 // MakeBatchRequest performs a batch request to the Facebook Graph API
@@ -144,7 +144,7 @@ func MakeBatchRequest(requests []BatchRequest) ([]BatchResponse, error) {
 	if len(requests) == 0 {
 		return nil, fmt.Errorf("no requests provided")
 	}
-
+	
 	if len(requests) > 50 {
 		return nil, fmt.Errorf("batch request limited to 50 requests, got %d", len(requests))
 	}
@@ -168,7 +168,7 @@ func MakeBatchRequest(requests []BatchRequest) ([]BatchResponse, error) {
 
 	// Build URL
 	batchURL := fmt.Sprintf("%s/%s/", graphAPIHost, graphAPIVersion)
-
+	
 	log.Printf("[DEBUG] Making batch request to %s with %d requests", batchURL, len(requests))
 
 	// Create request
@@ -237,7 +237,7 @@ func (b *BatchRequestBuilder) AddGET(objectID, endpoint string, params map[strin
 	if endpoint != "" {
 		relativeURL = fmt.Sprintf("%s/%s", objectID, endpoint)
 	}
-
+	
 	// Add query parameters
 	if len(params) > 0 {
 		query := url.Values{}
@@ -246,7 +246,7 @@ func (b *BatchRequestBuilder) AddGET(objectID, endpoint string, params map[strin
 		}
 		relativeURL = fmt.Sprintf("%s?%s", relativeURL, query.Encode())
 	}
-
+	
 	return b.AddRequest("GET", relativeURL, nil, name)
 }
 
@@ -326,14 +326,14 @@ func HandleFieldsParameter(params map[string]interface{}, query url.Values, obje
 		delete(params, "fields")
 		return
 	}
-
+	
 	// Check for string format
 	if fields, ok := params["fields"].(string); ok && fields != "" {
 		query.Set("fields", fields)
 		delete(params, "fields")
 		return
 	}
-
+	
 	// Use default fields if none provided
 	defaultFields := GetDefaultFields(objectType)
 	if len(defaultFields) > 0 {
@@ -396,7 +396,7 @@ func ExecuteDELETERequest(ctx context.Context, url string) (*mcp.CallToolResult,
 func StandardGETHandler(ctx context.Context, request mcp.CallToolRequest, endpoint string, objectType string, requireID bool) (*mcp.CallToolResult, error) {
 	// Initialize parameters
 	params := InitializeParams(request)
-
+	
 	// Extract ID if required
 	var id string
 	var err error
@@ -408,20 +408,20 @@ func StandardGETHandler(ctx context.Context, request mcp.CallToolRequest, endpoi
 	} else {
 		id = ExtractOptionalID(params)
 	}
-
+	
 	// Build query parameters
 	query := BuildQueryParameters()
-
+	
 	// Handle fields parameter
 	HandleFieldsParameter(params, query, objectType)
-
+	
 	// Add remaining parameters
 	AddRemainingParams(params, query)
-
+	
 	// Build URL
 	baseURL := buildGraphURL(id, endpoint)
 	fullURL := BuildURLWithQuery(baseURL, query)
-
+	
 	// Execute request
 	return ExecuteGETRequest(ctx, fullURL)
 }
@@ -430,7 +430,7 @@ func StandardGETHandler(ctx context.Context, request mcp.CallToolRequest, endpoi
 func StandardPOSTHandler(ctx context.Context, request mcp.CallToolRequest, endpoint string, requireID bool) (*mcp.CallToolResult, error) {
 	// Initialize parameters
 	params := InitializeParams(request)
-
+	
 	// Extract ID if required
 	var id string
 	var err error
@@ -442,10 +442,10 @@ func StandardPOSTHandler(ctx context.Context, request mcp.CallToolRequest, endpo
 	} else {
 		id = ExtractOptionalID(params)
 	}
-
+	
 	// Build URL
 	url := buildGraphURL(id, endpoint)
-
+	
 	// Execute request with params as body
 	return ExecutePOSTRequest(ctx, url, params)
 }
@@ -454,16 +454,16 @@ func StandardPOSTHandler(ctx context.Context, request mcp.CallToolRequest, endpo
 func StandardDELETEHandler(ctx context.Context, request mcp.CallToolRequest, endpoint string) (*mcp.CallToolResult, error) {
 	// Initialize parameters
 	params := InitializeParams(request)
-
+	
 	// Extract required ID
 	id, err := ExtractRequiredID(params)
 	if err != nil {
 		return mcp.NewToolResultErrorf("%s", err.Error()), nil
 	}
-
+	
 	// Build URL
 	url := buildGraphURL(id, endpoint)
-
+	
 	// Execute request
 	return ExecuteDELETERequest(ctx, url)
 }

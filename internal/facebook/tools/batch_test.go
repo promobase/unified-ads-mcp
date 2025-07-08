@@ -366,17 +366,17 @@ func TestBatchCreateAdsetsHandler(t *testing.T) {
 
 	adsets := []map[string]interface{}{
 		{
-			"name":           "Test AdSet 1",
-			"daily_budget":   1000,
-			"targeting":      map[string]interface{}{"geo_locations": map[string]interface{}{"countries": []string{"US"}}},
-			"billing_event":  "IMPRESSIONS",
+			"name":              "Test AdSet 1",
+			"daily_budget":      1000,
+			"targeting":         map[string]interface{}{"geo_locations": map[string]interface{}{"countries": []string{"US"}}},
+			"billing_event":     "IMPRESSIONS",
 			"optimization_goal": "REACH",
 		},
 		{
-			"name":           "Test AdSet 2",
-			"daily_budget":   2000,
-			"targeting":      map[string]interface{}{"geo_locations": map[string]interface{}{"countries": []string{"CA"}}},
-			"billing_event":  "IMPRESSIONS",
+			"name":              "Test AdSet 2",
+			"daily_budget":      2000,
+			"targeting":         map[string]interface{}{"geo_locations": map[string]interface{}{"countries": []string{"CA"}}},
+			"billing_event":     "IMPRESSIONS",
 			"optimization_goal": "REACH",
 		},
 	}

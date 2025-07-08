@@ -174,10 +174,10 @@ func mockGraphAPIServer(t *testing.T) *httptest.Server {
 			body, _ := io.ReadAll(r.Body)
 			var params map[string]interface{}
 			json.Unmarshal(body, &params)
-			
+
 			w.Header().Set("Content-Type", "application/json")
 			json.NewEncoder(w).Encode(map[string]interface{}{
-				"success": true,
+				"success":  true,
 				"adlabels": params["adlabels"],
 			})
 
@@ -243,7 +243,7 @@ func TestListAdAccountActivitiesHandler_Success(t *testing.T) {
 	if result == nil {
 		t.Fatal("Handler returned nil result")
 	}
-	
+
 	// Debug: Check if it's an error
 	if result.IsError {
 		textContent, _ := mcp.AsTextContent(result.Content[0])
@@ -517,24 +517,24 @@ func TestToolResultFormat(t *testing.T) {
 	t.Run("Success Result Format", func(t *testing.T) {
 		// Simulate what handlers do for success
 		result := mcp.NewToolResultText(string(successResponse))
-		
+
 		if result.IsError {
 			t.Error("Success result should not be marked as error")
 		}
-		
+
 		if len(result.Content) != 1 {
 			t.Errorf("Expected 1 content item, got %d", len(result.Content))
 		}
-		
+
 		textContent, ok := mcp.AsTextContent(result.Content[0])
 		if !ok {
 			t.Error("Expected text content in result")
 		}
-		
+
 		if textContent.Type != "text" {
 			t.Errorf("Expected content type 'text', got %s", textContent.Type)
 		}
-		
+
 		if textContent.Text != string(successResponse) {
 			t.Error("Content text doesn't match expected response")
 		}
@@ -544,20 +544,20 @@ func TestToolResultFormat(t *testing.T) {
 	t.Run("Error Result Format", func(t *testing.T) {
 		// Simulate what handlers do for errors
 		result := mcp.NewToolResultErrorf("API request failed: %v", fmt.Errorf("%s", errorMessage))
-		
+
 		if !result.IsError {
 			t.Error("Error result should be marked as error")
 		}
-		
+
 		if len(result.Content) != 1 {
 			t.Errorf("Expected 1 content item, got %d", len(result.Content))
 		}
-		
+
 		textContent, ok := mcp.AsTextContent(result.Content[0])
 		if !ok {
 			t.Error("Expected text content in error result")
 		}
-		
+
 		expectedError := fmt.Sprintf("API request failed: %s", errorMessage)
 		if textContent.Text != expectedError {
 			t.Errorf("Error message mismatch: got %s, want %s", textContent.Text, expectedError)

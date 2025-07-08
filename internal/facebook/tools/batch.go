@@ -17,7 +17,7 @@ func RegisterBatchTools(s *server.MCPServer) {
 		mcp.NewTool(
 			"execute_batch_requests",
 			mcp.WithDescription("Execute multiple Facebook Graph API requests in a single batch. Maximum 50 requests per batch."),
-			mcp.WithString("requests", 
+			mcp.WithString("requests",
 				mcp.Required(),
 				mcp.Description("JSON array of batch requests. Each request should have: method, relative_url, and optional body/name fields"),
 			),
@@ -132,11 +132,11 @@ func ExecuteBatchRequestsHandler(ctx context.Context, request mcp.CallToolReques
 		resultItem := map[string]interface{}{
 			"code": resp.Code,
 		}
-		
+
 		if resp.Headers != nil {
 			resultItem["headers"] = resp.Headers
 		}
-		
+
 		if resp.Body != nil {
 			var bodyData interface{}
 			if err := json.Unmarshal(resp.Body, &bodyData); err == nil {
@@ -145,7 +145,7 @@ func ExecuteBatchRequestsHandler(ctx context.Context, request mcp.CallToolReques
 				resultItem["body"] = string(resp.Body)
 			}
 		}
-		
+
 		result[i] = resultItem
 	}
 
@@ -162,16 +162,16 @@ func BatchGetObjectsHandler(ctx context.Context, request mcp.CallToolRequest) (*
 	}
 
 	fields := request.GetStringSlice("fields", nil)
-	
+
 	// Build batch requests
 	builder := generated.NewBatchRequestBuilder()
-	
+
 	for i, objectID := range objectIDs {
 		params := make(map[string]interface{})
 		if len(fields) > 0 {
 			params["fields"] = fields
 		}
-		
+
 		builder.AddGET(objectID, "", params, fmt.Sprintf("get_%d", i))
 	}
 
@@ -227,7 +227,7 @@ func BatchUpdateCampaignsHandler(ctx context.Context, request mcp.CallToolReques
 	// Build batch requests
 	builder := generated.NewBatchRequestBuilder()
 	campaignIDs := make([]string, 0, len(updates))
-	
+
 	for campaignID, updateParams := range updates {
 		campaignIDs = append(campaignIDs, campaignID)
 		builder.AddPOST(campaignID, "", updateParams, fmt.Sprintf("update_%s", campaignID))
@@ -291,7 +291,7 @@ func BatchCreateAdsetsHandler(ctx context.Context, request mcp.CallToolRequest) 
 
 	// Build batch requests
 	builder := generated.NewBatchRequestBuilder()
-	
+
 	for i, adset := range adsets {
 		// Add campaign_id to each ad set
 		adset["campaign_id"] = campaignID
@@ -351,7 +351,7 @@ func BatchGetInsightsHandler(ctx context.Context, request mcp.CallToolRequest) (
 
 	// Build batch requests
 	builder := generated.NewBatchRequestBuilder()
-	
+
 	for i, objectID := range objectIDs {
 		params := map[string]interface{}{
 			"fields":      fields,
@@ -360,7 +360,7 @@ func BatchGetInsightsHandler(ctx context.Context, request mcp.CallToolRequest) (
 		if level != "" {
 			params["level"] = level
 		}
-		
+
 		builder.AddGET(objectID, "insights", params, fmt.Sprintf("insights_%d", i))
 	}
 

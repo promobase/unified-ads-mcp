@@ -36,6 +36,34 @@ type ToolGenerator struct {
 	outputPath string
 }
 
+type SchemaParam struct {
+	Name        string
+	Type        string
+	Required    bool
+	Description string
+}
+
+type ToolData struct {
+	ObjectName      string
+	Method          string
+	Endpoint        string
+	Return          string
+	ToolName        string
+	HandlerName     string
+	Description     string
+	InputSchema     string // JSON string
+	NeedsID         bool
+	Params          []Param
+	HasComplexLogic bool          // Whether handler needs custom logic
+	HasQueryParams  bool          // Whether POST/PUT has query params
+	SchemaParams    []SchemaParam // For new template format
+}
+
+type ObjectGroup struct {
+	ObjectName string
+	Tools      []ToolData
+}
+
 func NewToolGenerator(outputPath string) *ToolGenerator {
 	return &ToolGenerator{
 		specs:      make(map[string]*ToolSpec),
@@ -146,16 +174,18 @@ func (g *ToolGenerator) Generate() error {
 func (g *ToolGenerator) generateToolsForObject(objectName string, spec *ToolSpec) error {
 	// Prepare tools data for this object
 	type ToolData struct {
-		ObjectName  string
-		Method      string
-		Endpoint    string
-		Return      string
-		ToolName    string
-		HandlerName string
-		Description string
-		InputSchema string // JSON string
-		NeedsID     bool
-		Params      []Param
+		ObjectName      string
+		Method          string
+		Endpoint        string
+		Return          string
+		ToolName        string
+		HandlerName     string
+		Description     string
+		InputSchema     string // JSON string
+		NeedsID         bool
+		Params          []Param
+		HasComplexLogic bool // Whether handler needs custom logic
+		HasQueryParams  bool // Whether POST/PUT has query params
 	}
 
 	var tools []ToolData
@@ -170,17 +200,23 @@ func (g *ToolGenerator) generateToolsForObject(objectName string, spec *ToolSpec
 		inputSchema := g.generateInputSchema(objectName, api)
 		inputSchemaJSON, _ := json.Marshal(inputSchema)
 
+		// Determine if handler needs custom logic
+		hasComplexLogic := g.hasComplexLogic(api)
+		hasQueryParams := g.hasQueryParams(api)
+
 		tools = append(tools, ToolData{
-			ObjectName:  objectName,
-			Method:      api.Method,
-			Endpoint:    api.Endpoint,
-			Return:      api.Return,
-			ToolName:    toolName,
-			HandlerName: handlerName,
-			Description: strings.ReplaceAll(g.generateDescription(objectName, api), `"`, `\"`),
-			InputSchema: string(inputSchemaJSON),
-			NeedsID:     g.needsObjectID(objectName, api.Endpoint),
-			Params:      api.Params,
+			ObjectName:      objectName,
+			Method:          api.Method,
+			Endpoint:        api.Endpoint,
+			Return:          api.Return,
+			ToolName:        toolName,
+			HandlerName:     handlerName,
+			Description:     strings.ReplaceAll(g.generateDescription(objectName, api), `"`, `\"`),
+			InputSchema:     string(inputSchemaJSON),
+			NeedsID:         g.needsObjectID(objectName, api.Endpoint),
+			Params:          api.Params,
+			HasComplexLogic: hasComplexLogic,
+			HasQueryParams:  hasQueryParams,
 		})
 	}
 
@@ -196,9 +232,14 @@ func (g *ToolGenerator) generateToolsForObject(objectName string, spec *ToolSpec
 	}
 
 	// Load and execute template
-	tmplContent, err := os.ReadFile(filepath.Join(filepath.Dir(g.outputPath), "codegen", "templates", "object_tools.go.tmpl"))
+	// Use refactored template that leverages utility functions
+	tmplContent, err := os.ReadFile(filepath.Join(filepath.Dir(g.outputPath), "codegen", "templates", "object_tools_refactored.go.tmpl"))
 	if err != nil {
-		return fmt.Errorf("failed to read template: %w", err)
+		// Fallback to original template if refactored doesn't exist
+		tmplContent, err = os.ReadFile(filepath.Join(filepath.Dir(g.outputPath), "codegen", "templates", "object_tools.go.tmpl"))
+		if err != nil {
+			return fmt.Errorf("failed to read template: %w", err)
+		}
 	}
 
 	tmpl, err := template.New("object_tools").Parse(string(tmplContent))
@@ -218,7 +259,12 @@ func (g *ToolGenerator) generateToolsForObject(objectName string, spec *ToolSpec
 
 func (g *ToolGenerator) generateCommonFile() error {
 	// Load and execute template
-	tmplContent, err := os.ReadFile(filepath.Join(filepath.Dir(g.outputPath), "codegen", "templates", "tools_common.go.tmpl"))
+	// Use the template with utility functions
+	tmplContent, err := os.ReadFile(filepath.Join(filepath.Dir(g.outputPath), "codegen", "templates", "tools_common_with_utils.go.tmpl"))
+	if err != nil {
+		// Fallback to original template
+		tmplContent, err = os.ReadFile(filepath.Join(filepath.Dir(g.outputPath), "codegen", "templates", "tools_common.go.tmpl"))
+	}
 	if err != nil {
 		return fmt.Errorf("failed to read template: %w", err)
 	}
@@ -275,18 +321,6 @@ func (g *ToolGenerator) generateRegisterFile(coreObjects map[string]bool) error 
 
 func (g *ToolGenerator) generateTools() error {
 	// Prepare tools data for template
-	type ToolData struct {
-		ObjectName  string
-		Method      string
-		Endpoint    string
-		Return      string
-		ToolName    string
-		HandlerName string
-		Description string
-		InputSchema string // JSON string
-		NeedsID     bool
-		Params      []Param
-	}
 
 	var tools []ToolData
 	totalAPIs := 0
@@ -312,34 +346,68 @@ func (g *ToolGenerator) generateTools() error {
 			// Marshal without indentation for embedding in Go code
 			inputSchemaJSON, _ := json.Marshal(inputSchema)
 
+			// Determine if handler needs custom logic
+			hasComplexLogic := g.hasComplexLogic(api)
+			hasQueryParams := g.hasQueryParams(api)
+
+			// Convert params to SchemaParams
+			schemaParams := g.convertToSchemaParams(api.Params, g.needsObjectID(objectName, api.Endpoint))
+
 			tools = append(tools, ToolData{
-				ObjectName:  objectName,
-				Method:      api.Method,
-				Endpoint:    api.Endpoint,
-				Return:      api.Return,
-				ToolName:    toolName,
-				HandlerName: handlerName,
-				Description: strings.ReplaceAll(g.generateDescription(objectName, api), `"`, `\"`),
-				InputSchema: string(inputSchemaJSON),
-				NeedsID:     g.needsObjectID(objectName, api.Endpoint),
-				Params:      api.Params,
+				ObjectName:      objectName,
+				Method:          api.Method,
+				Endpoint:        api.Endpoint,
+				Return:          api.Return,
+				ToolName:        toolName,
+				HandlerName:     handlerName,
+				Description:     strings.ReplaceAll(g.generateDescription(objectName, api), `"`, `\"`),
+				InputSchema:     string(inputSchemaJSON),
+				NeedsID:         g.needsObjectID(objectName, api.Endpoint),
+				Params:          api.Params,
+				HasComplexLogic: hasComplexLogic,
+				HasQueryParams:  hasQueryParams,
+				SchemaParams:    schemaParams,
+			})
+		}
+	}
+
+	// Group tools by object
+	objectGroups := make(map[string][]ToolData)
+	for _, tool := range tools {
+		objectGroups[tool.ObjectName] = append(objectGroups[tool.ObjectName], tool)
+	}
+
+	// Convert to sorted slice of groups
+	var groups []ObjectGroup
+	for _, name := range objectNames {
+		if tools, ok := objectGroups[name]; ok {
+			groups = append(groups, ObjectGroup{
+				ObjectName: name,
+				Tools:      tools,
 			})
 		}
 	}
 
 	// Prepare template data
 	data := struct {
-		Tools      []ToolData
-		TotalTools int
+		Tools        []ToolData
+		ObjectGroups []ObjectGroup
+		TotalTools   int
 	}{
-		Tools:      tools,
-		TotalTools: totalAPIs,
+		Tools:        tools,
+		ObjectGroups: groups,
+		TotalTools:   totalAPIs,
 	}
 
 	// Load and execute template
-	tmplContent, err := os.ReadFile(filepath.Join(filepath.Dir(g.outputPath), "codegen", "templates", "tools.go.tmpl"))
+	// Use refactored template that leverages utility functions
+	tmplContent, err := os.ReadFile(filepath.Join(filepath.Dir(g.outputPath), "codegen", "templates", "tools_refactored.go.tmpl"))
 	if err != nil {
-		return fmt.Errorf("failed to read template: %w", err)
+		// Fallback to original template if refactored doesn't exist
+		tmplContent, err = os.ReadFile(filepath.Join(filepath.Dir(g.outputPath), "codegen", "templates", "tools.go.tmpl"))
+		if err != nil {
+			return fmt.Errorf("failed to read template: %w", err)
+		}
 	}
 
 	tmpl, err := template.New("tools").Parse(string(tmplContent))
@@ -692,6 +760,80 @@ func (g *ToolGenerator) formatGeneratedFiles() error {
 }
 
 // toSnakeCase converts CamelCase to snake_case
+func (g *ToolGenerator) hasComplexLogic(api API) bool {
+	// Handlers that need custom logic:
+	// 1. Multiple endpoints in one (e.g., handling both collection and item)
+	// 2. Special parameter handling beyond standard patterns
+	// 3. Complex return value processing
+
+	// For now, consider all handlers as potentially needing custom logic
+	// This can be refined based on actual API patterns
+	return false // We'll start with assuming most can use standard handlers
+}
+
+func (g *ToolGenerator) hasQueryParams(api API) bool {
+	// Check if POST/PUT methods have parameters that should go in query string
+	if api.Method != "POST" && api.Method != "PUT" {
+		return false
+	}
+
+	// Some Facebook APIs require certain params in query even for POST
+	// This would need to be determined from API documentation
+	return false
+}
+
+func (g *ToolGenerator) convertToSchemaParams(params []Param, needsID bool) []SchemaParam {
+	var schemaParams []SchemaParam
+
+	// Add ID parameter if needed
+	if needsID {
+		schemaParams = append(schemaParams, SchemaParam{
+			Name:        "id",
+			Type:        "string",
+			Required:    true,
+			Description: "The ID of the object",
+		})
+	}
+
+	// Add fields parameter for GET requests (common pattern)
+	// This is handled by checking method in template
+
+	// Convert API params
+	for _, param := range params {
+		paramType := g.mapParamType(param.Type)
+		schemaParams = append(schemaParams, SchemaParam{
+			Name:        param.Name,
+			Type:        paramType,
+			Required:    param.Required,
+			Description: "", // Could be enhanced with param descriptions
+		})
+	}
+
+	return schemaParams
+}
+
+func (g *ToolGenerator) mapParamType(fbType string) string {
+	// Map Facebook types to JSON schema types
+	switch strings.ToLower(fbType) {
+	case "string", "enum", "datetime", "url":
+		return "string"
+	case "int", "integer", "unsigned int":
+		return "number"
+	case "bool", "boolean":
+		return "boolean"
+	case "list", "array":
+		return "array"
+	case "object", "map":
+		return "object"
+	default:
+		// Check if it's an enum type
+		if g.isEnumType(fbType) {
+			return "string"
+		}
+		return "string" // Default to string
+	}
+}
+
 func (g *ToolGenerator) toSnakeCase(s string) string {
 	var result []rune
 	for i, r := range s {
