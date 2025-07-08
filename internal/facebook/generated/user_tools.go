@@ -4,1061 +4,6359 @@ package generated
 
 import (
 	"context"
-	"encoding/json"
+	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"github.com/mark3labs/mcp-go/server"
 )
 
-// Tool schemas for User
-var (
-	remove_access_tokens_from_userSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+// remove_access_tokens_from_userArgs defines the typed arguments for remove_access_tokens_from_user
+type remove_access_tokens_from_userArgs struct {
+	ID string `json:"id"`
+}
 
-	create_user_access_tokenSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"business_app":{"description":"business_app","type":"string"},"id":{"description":"User ID","type":"string"},"page_id":{"description":"page_id","type":"string"},"scope":{"description":"scope","items":{"type":"string"},"type":"array"},"set_token_expires_in_60_days":{"description":"set_token_expires_in_60_days","type":"boolean"}},"required":["id","business_app"],"type":"object"}`)
+// create_user_access_tokenArgs defines the typed arguments for create_user_access_token
+type create_user_access_tokenArgs struct {
+	ID                      string   `json:"id"`
+	BusinessApp             string   `json:"business_app"`
+	PageId                  string   `json:"page_id,omitempty"`
+	Scope                   []string `json:"scope,omitempty"`
+	SetTokenExpiresIn60Days bool     `json:"set_token_expires_in_60_days,omitempty"`
+}
 
-	list_user_accountsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"ad_id":{"description":"ad_id","type":"string"},"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"is_place":{"description":"is_place","type":"boolean"},"is_promotable":{"description":"is_promotable","type":"boolean"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+// list_user_accountsArgs defines the typed arguments for list_user_accounts
+type list_user_accountsArgs struct {
+	ID           string   `json:"id"`
+	Fields       []string `json:"fields,omitempty"`
+	Limit        int      `json:"limit,omitempty"`
+	After        string   `json:"after,omitempty"`
+	Before       string   `json:"before,omitempty"`
+	AdId         string   `json:"ad_id,omitempty"`
+	IsPlace      bool     `json:"is_place,omitempty"`
+	IsPromotable bool     `json:"is_promotable,omitempty"`
+}
 
-	create_user_accountSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"about":{"description":"about","type":"string"},"address":{"description":"address","type":"string"},"category":{"description":"category","type":"integer"},"category_enum":{"description":"category_enum","type":"string"},"category_list":{"description":"category_list","items":{"type":"string"},"type":"array"},"city_id":{"description":"city_id","type":"string"},"coordinates":{"additionalProperties":true,"description":"coordinates","type":"object"},"cover_photo":{"additionalProperties":true,"description":"cover_photo","type":"object"},"description":{"description":"description","type":"string"},"id":{"description":"User ID","type":"string"},"ignore_coordinate_warnings":{"description":"ignore_coordinate_warnings","type":"boolean"},"location":{"additionalProperties":true,"description":"location","type":"object"},"name":{"description":"name","type":"string"},"phone":{"description":"phone","type":"string"},"picture":{"description":"picture","type":"string"},"website":{"description":"website","type":"string"},"zip":{"description":"zip","type":"string"}},"required":["id","name"],"type":"object"}`)
+// create_user_accountArgs defines the typed arguments for create_user_account
+type create_user_accountArgs struct {
+	ID                       string                 `json:"id"`
+	About                    string                 `json:"about,omitempty"`
+	Address                  string                 `json:"address,omitempty"`
+	Category                 int                    `json:"category,omitempty"`
+	CategoryEnum             string                 `json:"category_enum,omitempty"`
+	CategoryList             []string               `json:"category_list,omitempty"`
+	CityId                   string                 `json:"city_id,omitempty"`
+	Coordinates              map[string]interface{} `json:"coordinates,omitempty"`
+	CoverPhoto               map[string]interface{} `json:"cover_photo,omitempty"`
+	Description              string                 `json:"description,omitempty"`
+	IgnoreCoordinateWarnings bool                   `json:"ignore_coordinate_warnings,omitempty"`
+	Location                 map[string]interface{} `json:"location,omitempty"`
+	Name                     string                 `json:"name"`
+	Phone                    string                 `json:"phone,omitempty"`
+	Picture                  string                 `json:"picture,omitempty"`
+	Website                  string                 `json:"website,omitempty"`
+	Zip                      string                 `json:"zip,omitempty"`
+}
 
-	list_user_ad_studiesSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+// list_user_ad_studiesArgs defines the typed arguments for list_user_ad_studies
+type list_user_ad_studiesArgs struct {
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
+}
 
-	create_user_ad_studieSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"cells":{"description":"cells","items":{"additionalProperties":true,"type":"object"},"type":"array"},"client_business":{"description":"client_business","type":"string"},"confidence_level":{"description":"confidence_level","type":"number"},"cooldown_start_time":{"description":"cooldown_start_time","type":"integer"},"description":{"description":"description","type":"string"},"end_time":{"description":"end_time","type":"integer"},"id":{"description":"User ID","type":"string"},"name":{"description":"name","type":"string"},"objectives":{"description":"objectives","items":{"additionalProperties":true,"type":"object"},"type":"array"},"observation_end_time":{"description":"observation_end_time","type":"integer"},"start_time":{"description":"start_time","type":"integer"},"type":{"description":"type (enum: userad_studies_type_enum_param)","type":"string"},"viewers":{"description":"viewers","items":{"type":"integer"},"type":"array"}},"required":["id"],"type":"object"}`)
+// create_user_ad_studieArgs defines the typed arguments for create_user_ad_studie
+type create_user_ad_studieArgs struct {
+	ID                 string                   `json:"id"`
+	Cells              []map[string]interface{} `json:"cells,omitempty"`
+	ClientBusiness     string                   `json:"client_business,omitempty"`
+	ConfidenceLevel    float64                  `json:"confidence_level,omitempty"`
+	CooldownStartTime  int                      `json:"cooldown_start_time,omitempty"`
+	Description        string                   `json:"description,omitempty"`
+	EndTime            int                      `json:"end_time,omitempty"`
+	Name               string                   `json:"name,omitempty"`
+	Objectives         []map[string]interface{} `json:"objectives,omitempty"`
+	ObservationEndTime int                      `json:"observation_end_time,omitempty"`
+	StartTime          int                      `json:"start_time,omitempty"`
+	Type               string                   `json:"type,omitempty"`
+	Viewers            []int                    `json:"viewers,omitempty"`
+}
 
-	list_user_adaccountsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+// list_user_adaccountsArgs defines the typed arguments for list_user_adaccounts
+type list_user_adaccountsArgs struct {
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
+}
 
-	list_user_albumsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+// list_user_albumsArgs defines the typed arguments for list_user_albums
+type list_user_albumsArgs struct {
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
+}
 
-	create_user_applicationSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"business_app":{"description":"business_app","type":"integer"},"id":{"description":"User ID","type":"string"}},"required":["id","business_app"],"type":"object"}`)
+// create_user_applicationArgs defines the typed arguments for create_user_application
+type create_user_applicationArgs struct {
+	ID          string `json:"id"`
+	BusinessApp int    `json:"business_app"`
+}
 
-	list_user_apprequestformerrecipientsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"limit":{"description":"Maximum number of results","type":"integer"}},"type":"object"}`)
+// list_user_apprequestformerrecipientsArgs defines the typed arguments for list_user_apprequestformerrecipients
+type list_user_apprequestformerrecipientsArgs struct {
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
+}
 
-	list_user_apprequestsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+// list_user_apprequestsArgs defines the typed arguments for list_user_apprequests
+type list_user_apprequestsArgs struct {
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
+}
 
-	list_user_assigned_ad_accountsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+// list_user_assigned_ad_accountsArgs defines the typed arguments for list_user_assigned_ad_accounts
+type list_user_assigned_ad_accountsArgs struct {
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
+}
 
-	list_user_assigned_applicationsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+// list_user_assigned_applicationsArgs defines the typed arguments for list_user_assigned_applications
+type list_user_assigned_applicationsArgs struct {
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
+}
 
-	list_user_assigned_business_asset_groupsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"contained_asset_id":{"description":"contained_asset_id","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+// list_user_assigned_business_asset_groupsArgs defines the typed arguments for list_user_assigned_business_asset_groups
+type list_user_assigned_business_asset_groupsArgs struct {
+	ID               string   `json:"id"`
+	Fields           []string `json:"fields,omitempty"`
+	Limit            int      `json:"limit,omitempty"`
+	After            string   `json:"after,omitempty"`
+	Before           string   `json:"before,omitempty"`
+	ContainedAssetId string   `json:"contained_asset_id,omitempty"`
+}
 
-	list_user_assigned_pagesSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"pages":{"description":"pages","items":{"type":"integer"},"type":"array"}},"required":["id"],"type":"object"}`)
+// list_user_assigned_pagesArgs defines the typed arguments for list_user_assigned_pages
+type list_user_assigned_pagesArgs struct {
+	ID     string        `json:"id"`
+	Fields []string      `json:"fields,omitempty"`
+	Limit  int           `json:"limit,omitempty"`
+	After  string        `json:"after,omitempty"`
+	Before string        `json:"before,omitempty"`
+	Pages  []interface{} `json:"pages,omitempty"`
+}
 
-	list_user_assigned_product_catalogsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+// list_user_assigned_product_catalogsArgs defines the typed arguments for list_user_assigned_product_catalogs
+type list_user_assigned_product_catalogsArgs struct {
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
+}
 
-	list_user_avatarsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+// list_user_avatarsArgs defines the typed arguments for list_user_avatars
+type list_user_avatarsArgs struct {
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
+}
 
-	list_user_business_usersSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"limit":{"description":"Maximum number of results","type":"integer"}},"type":"object"}`)
+// list_user_business_usersArgs defines the typed arguments for list_user_business_users
+type list_user_business_usersArgs struct {
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
+}
 
-	remove_businesses_from_userSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"business":{"description":"business","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+// remove_businesses_from_userArgs defines the typed arguments for remove_businesses_from_user
+type remove_businesses_from_userArgs struct {
+	ID       string `json:"id"`
+	Business string `json:"business,omitempty"`
+}
 
-	list_user_businessesSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+// list_user_businessesArgs defines the typed arguments for list_user_businesses
+type list_user_businessesArgs struct {
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
+}
 
-	create_user_businesseSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"child_business_external_id":{"description":"child_business_external_id","type":"string"},"email":{"description":"email","type":"string"},"id":{"description":"User ID","type":"string"},"name":{"description":"name","type":"string"},"primary_page":{"description":"primary_page","type":"string"},"sales_rep_email":{"description":"sales_rep_email","type":"string"},"survey_business_type":{"description":"survey_business_type (enum: userbusinesses_survey_business_type_enum_param)","type":"string"},"survey_num_assets":{"description":"survey_num_assets","type":"integer"},"survey_num_people":{"description":"survey_num_people","type":"integer"},"timezone_id":{"description":"timezone_id (enum: userbusinesses_timezone_id_enum_param)","type":"string"},"vertical":{"description":"vertical (enum: userbusinesses_vertical_enum_param)","type":"string"}},"required":["id","name","vertical"],"type":"object"}`)
+// create_user_businesseArgs defines the typed arguments for create_user_businesse
+type create_user_businesseArgs struct {
+	ID                      string `json:"id"`
+	ChildBusinessExternalId string `json:"child_business_external_id,omitempty"`
+	Email                   string `json:"email,omitempty"`
+	Name                    string `json:"name"`
+	PrimaryPage             string `json:"primary_page,omitempty"`
+	SalesRepEmail           string `json:"sales_rep_email,omitempty"`
+	SurveyBusinessType      string `json:"survey_business_type,omitempty"`
+	SurveyNumAssets         int    `json:"survey_num_assets,omitempty"`
+	SurveyNumPeople         int    `json:"survey_num_people,omitempty"`
+	TimezoneId              string `json:"timezone_id,omitempty"`
+	Vertical                string `json:"vertical"`
+}
 
-	list_user_conversationsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"folder":{"description":"folder","type":"string"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"platform":{"description":"platform (enum: userconversations_platform_enum_param)","type":"string"},"tags":{"description":"tags","items":{"type":"string"},"type":"array"},"user_id":{"description":"user_id","type":"string"}},"required":["id"],"type":"object"}`)
+// list_user_conversationsArgs defines the typed arguments for list_user_conversations
+type list_user_conversationsArgs struct {
+	ID       string   `json:"id"`
+	Fields   []string `json:"fields,omitempty"`
+	Limit    int      `json:"limit,omitempty"`
+	After    string   `json:"after,omitempty"`
+	Before   string   `json:"before,omitempty"`
+	Folder   string   `json:"folder,omitempty"`
+	Platform string   `json:"platform,omitempty"`
+	Tags     []string `json:"tags,omitempty"`
+	UserId   string   `json:"user_id,omitempty"`
+}
 
-	list_user_custom_labelsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+// list_user_custom_labelsArgs defines the typed arguments for list_user_custom_labels
+type list_user_custom_labelsArgs struct {
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
+}
 
-	list_user_eventsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"include_canceled":{"description":"include_canceled","type":"boolean"},"limit":{"description":"Maximum number of results","type":"integer"},"type":{"description":"type (enum: userevents_type_enum_param)","type":"string"}},"required":["id"],"type":"object"}`)
+// list_user_eventsArgs defines the typed arguments for list_user_events
+type list_user_eventsArgs struct {
+	ID              string   `json:"id"`
+	Fields          []string `json:"fields,omitempty"`
+	Limit           int      `json:"limit,omitempty"`
+	After           string   `json:"after,omitempty"`
+	Before          string   `json:"before,omitempty"`
+	IncludeCanceled bool     `json:"include_canceled,omitempty"`
+	Type            string   `json:"type,omitempty"`
+}
 
-	get_user_feedSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"include_hidden":{"description":"include_hidden","type":"boolean"},"limit":{"description":"Maximum number of results","type":"integer"},"q":{"description":"q","type":"string"},"show_expired":{"description":"show_expired","type":"boolean"},"since":{"description":"since","type":"string"},"until":{"description":"until","type":"string"},"with":{"description":"with","type":"string"}},"required":["id"],"type":"object"}`)
+// get_user_feedArgs defines the typed arguments for get_user_feed
+type get_user_feedArgs struct {
+	ID            string      `json:"id"`
+	Fields        []string    `json:"fields,omitempty"`
+	Limit         int         `json:"limit,omitempty"`
+	After         string      `json:"after,omitempty"`
+	Before        string      `json:"before,omitempty"`
+	IncludeHidden bool        `json:"include_hidden,omitempty"`
+	Q             string      `json:"q,omitempty"`
+	ShowExpired   bool        `json:"show_expired,omitempty"`
+	Since         interface{} `json:"since,omitempty"`
+	Until         interface{} `json:"until,omitempty"`
+	With          string      `json:"with,omitempty"`
+}
 
-	update_user_feedSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"actions":{"additionalProperties":true,"description":"actions","type":"object"},"album_id":{"description":"album_id","type":"string"},"android_key_hash":{"description":"android_key_hash","type":"string"},"application_id":{"description":"application_id","type":"string"},"asked_fun_fact_prompt_id":{"description":"asked_fun_fact_prompt_id","type":"integer"},"asset3d_id":{"description":"asset3d_id","type":"string"},"associated_id":{"description":"associated_id","type":"string"},"attach_place_suggestion":{"description":"attach_place_suggestion","type":"boolean"},"attached_media":{"description":"attached_media","items":{"additionalProperties":true,"type":"object"},"type":"array"},"audience_exp":{"description":"audience_exp","type":"boolean"},"backdated_time":{"description":"backdated_time","type":"string"},"backdated_time_granularity":{"description":"backdated_time_granularity (enum: userfeed_backdated_time_granularity_enum_param)","type":"string"},"breaking_news":{"description":"breaking_news","type":"boolean"},"breaking_news_expiration":{"description":"breaking_news_expiration","type":"integer"},"call_to_action":{"additionalProperties":true,"description":"call_to_action","type":"object"},"caption":{"description":"caption","type":"string"},"child_attachments":{"description":"child_attachments","items":{"additionalProperties":true,"type":"object"},"type":"array"},"client_mutation_id":{"description":"client_mutation_id","type":"string"},"composer_entry_picker":{"description":"composer_entry_picker","type":"string"},"composer_entry_point":{"description":"composer_entry_point","type":"string"},"composer_entry_time":{"description":"composer_entry_time","type":"integer"},"composer_session_events_log":{"description":"composer_session_events_log","type":"string"},"composer_session_id":{"description":"composer_session_id","type":"string"},"composer_source_surface":{"description":"composer_source_surface","type":"string"},"composer_type":{"description":"composer_type","type":"string"},"connection_class":{"description":"connection_class","type":"string"},"content_attachment":{"description":"content_attachment","type":"string"},"coordinates":{"additionalProperties":true,"description":"coordinates","type":"object"},"cta_link":{"description":"cta_link","type":"string"},"cta_type":{"description":"cta_type","type":"string"},"description":{"description":"description","type":"string"},"direct_share_status":{"description":"direct_share_status","type":"integer"},"expanded_height":{"description":"expanded_height","type":"integer"},"expanded_width":{"description":"expanded_width","type":"integer"},"feed_targeting":{"additionalProperties":true,"description":"feed_targeting","type":"object"},"formatting":{"description":"formatting (enum: userfeed_formatting_enum_param)","type":"string"},"fun_fact_prompt_id":{"description":"fun_fact_prompt_id","type":"string"},"fun_fact_toastee_id":{"description":"fun_fact_toastee_id","type":"integer"},"height":{"description":"height","type":"integer"},"home_checkin_city_id":{"additionalProperties":true,"description":"home_checkin_city_id","type":"object"},"id":{"description":"User ID","type":"string"},"image_crops":{"description":"image_crops","type":"string"},"implicit_with_tags":{"description":"implicit_with_tags","items":{"type":"integer"},"type":"array"},"instant_game_entry_point_data":{"description":"instant_game_entry_point_data","type":"string"},"ios_bundle_id":{"description":"ios_bundle_id","type":"string"},"is_backout_draft":{"description":"is_backout_draft","type":"boolean"},"is_boost_intended":{"description":"is_boost_intended","type":"boolean"},"is_explicit_location":{"description":"is_explicit_location","type":"boolean"},"is_explicit_share":{"description":"is_explicit_share","type":"boolean"},"is_group_linking_post":{"description":"is_group_linking_post","type":"boolean"},"is_photo_container":{"description":"is_photo_container","type":"boolean"},"link":{"description":"link","type":"string"},"location_source_id":{"description":"location_source_id","type":"string"},"manual_privacy":{"description":"manual_privacy","type":"boolean"},"message":{"description":"message","type":"string"},"multi_share_end_card":{"description":"multi_share_end_card","type":"boolean"},"multi_share_optimized":{"description":"multi_share_optimized","type":"boolean"},"name":{"description":"name","type":"string"},"nectar_module":{"description":"nectar_module","type":"string"},"object_attachment":{"description":"object_attachment","type":"string"},"og_action_type_id":{"description":"og_action_type_id","type":"string"},"og_hide_object_attachment":{"description":"og_hide_object_attachment","type":"boolean"},"og_icon_id":{"description":"og_icon_id","type":"string"},"og_object_id":{"description":"og_object_id","type":"string"},"og_phrase":{"description":"og_phrase","type":"string"},"og_set_profile_badge":{"description":"og_set_profile_badge","type":"boolean"},"og_suggestion_mechanism":{"description":"og_suggestion_mechanism","type":"string"},"page_recommendation":{"description":"page_recommendation","type":"string"},"picture":{"description":"picture","type":"string"},"place":{"additionalProperties":true,"description":"place","type":"object"},"place_attachment_setting":{"description":"place_attachment_setting (enum: userfeed_place_attachment_setting_enum_param)","type":"string"},"place_list":{"description":"place_list","type":"string"},"place_list_data":{"description":"place_list_data","type":"string"},"post_surfaces_blacklist":{"description":"post_surfaces_blacklist","items":{"type":"string"},"type":"array"},"posting_to_redspace":{"description":"posting_to_redspace (enum: userfeed_posting_to_redspace_enum_param)","type":"string"},"privacy":{"description":"privacy","type":"string"},"prompt_id":{"description":"prompt_id","type":"string"},"prompt_tracking_string":{"description":"prompt_tracking_string","type":"string"},"properties":{"additionalProperties":true,"description":"properties","type":"object"},"proxied_app_id":{"description":"proxied_app_id","type":"string"},"publish_event_id":{"description":"publish_event_id","type":"integer"},"published":{"description":"published","type":"boolean"},"quote":{"description":"quote","type":"string"},"ref":{"description":"ref","items":{"type":"string"},"type":"array"},"referenceable_image_ids":{"description":"referenceable_image_ids","items":{"type":"string"},"type":"array"},"referral_id":{"description":"referral_id","type":"string"},"scheduled_publish_time":{"description":"scheduled_publish_time","type":"string"},"source":{"description":"source","type":"string"},"sponsor_id":{"description":"sponsor_id","type":"string"},"sponsor_relationship":{"description":"sponsor_relationship","type":"integer"},"suggested_place_id":{"additionalProperties":true,"description":"suggested_place_id","type":"object"},"tags":{"description":"tags","items":{"type":"integer"},"type":"array"},"target_surface":{"description":"target_surface (enum: userfeed_target_surface_enum_param)","type":"string"},"targeting":{"additionalProperties":true,"description":"targeting","type":"object"},"text_format_metadata":{"description":"text_format_metadata","type":"string"},"text_format_preset_id":{"description":"text_format_preset_id","type":"string"},"text_only_place":{"description":"text_only_place","type":"string"},"thumbnail":{"description":"thumbnail","type":"string"},"time_since_original_post":{"description":"time_since_original_post","type":"integer"},"title":{"description":"title","type":"string"},"tracking_info":{"description":"tracking_info","type":"string"},"unpublished_content_type":{"description":"unpublished_content_type (enum: userfeed_unpublished_content_type_enum_param)","type":"string"},"user_selected_tags":{"description":"user_selected_tags","type":"boolean"},"video_start_time_ms":{"description":"video_start_time_ms","type":"integer"},"viewer_coordinates":{"additionalProperties":true,"description":"viewer_coordinates","type":"object"},"width":{"description":"width","type":"integer"}},"required":["id"],"type":"object"}`)
+// update_user_feedArgs defines the typed arguments for update_user_feed
+type update_user_feedArgs struct {
+	ID                        string                   `json:"id"`
+	Actions                   map[string]interface{}   `json:"actions,omitempty"`
+	AlbumId                   string                   `json:"album_id,omitempty"`
+	AndroidKeyHash            string                   `json:"android_key_hash,omitempty"`
+	ApplicationId             string                   `json:"application_id,omitempty"`
+	AskedFunFactPromptId      int                      `json:"asked_fun_fact_prompt_id,omitempty"`
+	Asset3dId                 string                   `json:"asset3d_id,omitempty"`
+	AssociatedId              string                   `json:"associated_id,omitempty"`
+	AttachPlaceSuggestion     bool                     `json:"attach_place_suggestion,omitempty"`
+	AttachedMedia             []map[string]interface{} `json:"attached_media,omitempty"`
+	AudienceExp               bool                     `json:"audience_exp,omitempty"`
+	BackdatedTime             interface{}              `json:"backdated_time,omitempty"`
+	BackdatedTimeGranularity  string                   `json:"backdated_time_granularity,omitempty"`
+	BreakingNews              bool                     `json:"breaking_news,omitempty"`
+	BreakingNewsExpiration    int                      `json:"breaking_news_expiration,omitempty"`
+	CallToAction              map[string]interface{}   `json:"call_to_action,omitempty"`
+	Caption                   string                   `json:"caption,omitempty"`
+	ChildAttachments          []map[string]interface{} `json:"child_attachments,omitempty"`
+	ClientMutationId          string                   `json:"client_mutation_id,omitempty"`
+	ComposerEntryPicker       string                   `json:"composer_entry_picker,omitempty"`
+	ComposerEntryPoint        string                   `json:"composer_entry_point,omitempty"`
+	ComposerEntryTime         int                      `json:"composer_entry_time,omitempty"`
+	ComposerSessionEventsLog  string                   `json:"composer_session_events_log,omitempty"`
+	ComposerSessionId         string                   `json:"composer_session_id,omitempty"`
+	ComposerSourceSurface     string                   `json:"composer_source_surface,omitempty"`
+	ComposerType              string                   `json:"composer_type,omitempty"`
+	ConnectionClass           string                   `json:"connection_class,omitempty"`
+	ContentAttachment         string                   `json:"content_attachment,omitempty"`
+	Coordinates               map[string]interface{}   `json:"coordinates,omitempty"`
+	CtaLink                   string                   `json:"cta_link,omitempty"`
+	CtaType                   string                   `json:"cta_type,omitempty"`
+	Description               string                   `json:"description,omitempty"`
+	DirectShareStatus         int                      `json:"direct_share_status,omitempty"`
+	ExpandedHeight            int                      `json:"expanded_height,omitempty"`
+	ExpandedWidth             int                      `json:"expanded_width,omitempty"`
+	FeedTargeting             map[string]interface{}   `json:"feed_targeting,omitempty"`
+	Formatting                string                   `json:"formatting,omitempty"`
+	FunFactPromptId           string                   `json:"fun_fact_prompt_id,omitempty"`
+	FunFactToasteeId          int                      `json:"fun_fact_toastee_id,omitempty"`
+	Height                    int                      `json:"height,omitempty"`
+	HomeCheckinCityId         map[string]interface{}   `json:"home_checkin_city_id,omitempty"`
+	ImageCrops                map[string]interface{}   `json:"image_crops,omitempty"`
+	ImplicitWithTags          []int                    `json:"implicit_with_tags,omitempty"`
+	InstantGameEntryPointData string                   `json:"instant_game_entry_point_data,omitempty"`
+	IosBundleId               string                   `json:"ios_bundle_id,omitempty"`
+	IsBackoutDraft            bool                     `json:"is_backout_draft,omitempty"`
+	IsBoostIntended           bool                     `json:"is_boost_intended,omitempty"`
+	IsExplicitLocation        bool                     `json:"is_explicit_location,omitempty"`
+	IsExplicitShare           bool                     `json:"is_explicit_share,omitempty"`
+	IsGroupLinkingPost        bool                     `json:"is_group_linking_post,omitempty"`
+	IsPhotoContainer          bool                     `json:"is_photo_container,omitempty"`
+	Link                      string                   `json:"link,omitempty"`
+	LocationSourceId          string                   `json:"location_source_id,omitempty"`
+	ManualPrivacy             bool                     `json:"manual_privacy,omitempty"`
+	Message                   string                   `json:"message,omitempty"`
+	MultiShareEndCard         bool                     `json:"multi_share_end_card,omitempty"`
+	MultiShareOptimized       bool                     `json:"multi_share_optimized,omitempty"`
+	Name                      string                   `json:"name,omitempty"`
+	NectarModule              string                   `json:"nectar_module,omitempty"`
+	ObjectAttachment          string                   `json:"object_attachment,omitempty"`
+	OgActionTypeId            string                   `json:"og_action_type_id,omitempty"`
+	OgHideObjectAttachment    bool                     `json:"og_hide_object_attachment,omitempty"`
+	OgIconId                  string                   `json:"og_icon_id,omitempty"`
+	OgObjectId                string                   `json:"og_object_id,omitempty"`
+	OgPhrase                  string                   `json:"og_phrase,omitempty"`
+	OgSetProfileBadge         bool                     `json:"og_set_profile_badge,omitempty"`
+	OgSuggestionMechanism     string                   `json:"og_suggestion_mechanism,omitempty"`
+	PageRecommendation        string                   `json:"page_recommendation,omitempty"`
+	Picture                   string                   `json:"picture,omitempty"`
+	Place                     map[string]interface{}   `json:"place,omitempty"`
+	PlaceAttachmentSetting    string                   `json:"place_attachment_setting,omitempty"`
+	PlaceList                 string                   `json:"place_list,omitempty"`
+	PlaceListData             interface{}              `json:"place_list_data,omitempty"`
+	PostSurfacesBlacklist     []interface{}            `json:"post_surfaces_blacklist,omitempty"`
+	PostingToRedspace         string                   `json:"posting_to_redspace,omitempty"`
+	Privacy                   string                   `json:"privacy,omitempty"`
+	PromptId                  string                   `json:"prompt_id,omitempty"`
+	PromptTrackingString      string                   `json:"prompt_tracking_string,omitempty"`
+	Properties                map[string]interface{}   `json:"properties,omitempty"`
+	ProxiedAppId              string                   `json:"proxied_app_id,omitempty"`
+	PublishEventId            int                      `json:"publish_event_id,omitempty"`
+	Published                 bool                     `json:"published,omitempty"`
+	Quote                     string                   `json:"quote,omitempty"`
+	Ref                       []string                 `json:"ref,omitempty"`
+	ReferenceableImageIds     []string                 `json:"referenceable_image_ids,omitempty"`
+	ReferralId                string                   `json:"referral_id,omitempty"`
+	ScheduledPublishTime      interface{}              `json:"scheduled_publish_time,omitempty"`
+	Source                    string                   `json:"source,omitempty"`
+	SponsorId                 string                   `json:"sponsor_id,omitempty"`
+	SponsorRelationship       int                      `json:"sponsor_relationship,omitempty"`
+	SuggestedPlaceId          map[string]interface{}   `json:"suggested_place_id,omitempty"`
+	Tags                      []int                    `json:"tags,omitempty"`
+	TargetSurface             string                   `json:"target_surface,omitempty"`
+	Targeting                 map[string]interface{}   `json:"targeting,omitempty"`
+	TextFormatMetadata        string                   `json:"text_format_metadata,omitempty"`
+	TextFormatPresetId        string                   `json:"text_format_preset_id,omitempty"`
+	TextOnlyPlace             string                   `json:"text_only_place,omitempty"`
+	Thumbnail                 interface{}              `json:"thumbnail,omitempty"`
+	TimeSinceOriginalPost     int                      `json:"time_since_original_post,omitempty"`
+	Title                     string                   `json:"title,omitempty"`
+	TrackingInfo              string                   `json:"tracking_info,omitempty"`
+	UnpublishedContentType    string                   `json:"unpublished_content_type,omitempty"`
+	UserSelectedTags          bool                     `json:"user_selected_tags,omitempty"`
+	VideoStartTimeMs          int                      `json:"video_start_time_ms,omitempty"`
+	ViewerCoordinates         map[string]interface{}   `json:"viewer_coordinates,omitempty"`
+	Width                     int                      `json:"width,omitempty"`
+}
 
-	list_user_friendsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"uid":{"description":"uid","type":"integer"}},"required":["id"],"type":"object"}`)
+// list_user_friendsArgs defines the typed arguments for list_user_friends
+type list_user_friendsArgs struct {
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
+	Uid    int      `json:"uid,omitempty"`
+}
 
-	list_user_fundraisersSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+// list_user_fundraisersArgs defines the typed arguments for list_user_fundraisers
+type list_user_fundraisersArgs struct {
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
+}
 
-	create_user_fundraiserSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"charity_id":{"description":"charity_id","type":"string"},"cover_photo":{"description":"cover_photo","type":"string"},"currency":{"description":"currency","type":"string"},"description":{"description":"description","type":"string"},"end_time":{"description":"end_time","type":"string"},"external_event_name":{"description":"external_event_name","type":"string"},"external_event_start_time":{"description":"external_event_start_time","type":"string"},"external_event_uri":{"description":"external_event_uri","type":"string"},"external_fundraiser_uri":{"description":"external_fundraiser_uri","type":"string"},"external_id":{"description":"external_id","type":"string"},"fundraiser_type":{"description":"fundraiser_type (enum: userfundraisers_fundraiser_type_enum_param)","type":"string"},"goal_amount":{"description":"goal_amount","type":"integer"},"id":{"description":"User ID","type":"string"},"name":{"description":"name","type":"string"},"page_id":{"description":"page_id","type":"string"}},"required":["id","currency","description","end_time","external_id","fundraiser_type","goal_amount","name"],"type":"object"}`)
+// create_user_fundraiserArgs defines the typed arguments for create_user_fundraiser
+type create_user_fundraiserArgs struct {
+	ID                     string      `json:"id"`
+	CharityId              string      `json:"charity_id,omitempty"`
+	CoverPhoto             interface{} `json:"cover_photo,omitempty"`
+	Currency               string      `json:"currency"`
+	Description            string      `json:"description"`
+	EndTime                interface{} `json:"end_time"`
+	ExternalEventName      string      `json:"external_event_name,omitempty"`
+	ExternalEventStartTime interface{} `json:"external_event_start_time,omitempty"`
+	ExternalEventUri       string      `json:"external_event_uri,omitempty"`
+	ExternalFundraiserUri  string      `json:"external_fundraiser_uri,omitempty"`
+	ExternalId             string      `json:"external_id"`
+	FundraiserType         string      `json:"fundraiser_type"`
+	GoalAmount             int         `json:"goal_amount"`
+	Name                   string      `json:"name"`
+	PageId                 string      `json:"page_id,omitempty"`
+}
 
-	list_user_groupsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"admin_only":{"description":"admin_only","type":"boolean"},"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"parent":{"description":"parent","type":"string"}},"required":["id"],"type":"object"}`)
+// list_user_groupsArgs defines the typed arguments for list_user_groups
+type list_user_groupsArgs struct {
+	ID        string   `json:"id"`
+	Fields    []string `json:"fields,omitempty"`
+	Limit     int      `json:"limit,omitempty"`
+	After     string   `json:"after,omitempty"`
+	Before    string   `json:"before,omitempty"`
+	AdminOnly bool     `json:"admin_only,omitempty"`
+	Parent    string   `json:"parent,omitempty"`
+}
 
-	list_user_ids_for_appsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"app":{"description":"app","type":"integer"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+// list_user_ids_for_appsArgs defines the typed arguments for list_user_ids_for_apps
+type list_user_ids_for_appsArgs struct {
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
+	App    int      `json:"app,omitempty"`
+}
 
-	list_user_ids_for_businessSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"app":{"description":"app","type":"integer"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+// list_user_ids_for_businessArgs defines the typed arguments for list_user_ids_for_business
+type list_user_ids_for_businessArgs struct {
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
+	App    int      `json:"app,omitempty"`
+}
 
-	list_user_ids_for_pagesSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"page":{"description":"page","type":"integer"}},"required":["id"],"type":"object"}`)
+// list_user_ids_for_pagesArgs defines the typed arguments for list_user_ids_for_pages
+type list_user_ids_for_pagesArgs struct {
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
+	Page   int      `json:"page,omitempty"`
+}
 
-	list_user_likesSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"target_id":{"description":"target_id","type":"string"}},"required":["id"],"type":"object"}`)
+// list_user_likesArgs defines the typed arguments for list_user_likes
+type list_user_likesArgs struct {
+	ID       string   `json:"id"`
+	Fields   []string `json:"fields,omitempty"`
+	Limit    int      `json:"limit,omitempty"`
+	After    string   `json:"after,omitempty"`
+	Before   string   `json:"before,omitempty"`
+	TargetId string   `json:"target_id,omitempty"`
+}
 
-	list_user_live_videosSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"broadcast_status":{"description":"broadcast_status","items":{"type":"string"},"type":"array"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"source":{"description":"source (enum: userlive_videos_source_enum_param)","type":"string"}},"required":["id"],"type":"object"}`)
+// list_user_live_videosArgs defines the typed arguments for list_user_live_videos
+type list_user_live_videosArgs struct {
+	ID              string        `json:"id"`
+	Fields          []string      `json:"fields,omitempty"`
+	Limit           int           `json:"limit,omitempty"`
+	After           string        `json:"after,omitempty"`
+	Before          string        `json:"before,omitempty"`
+	BroadcastStatus []interface{} `json:"broadcast_status,omitempty"`
+	Source          string        `json:"source,omitempty"`
+}
 
-	create_user_live_videoSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"content_tags":{"description":"content_tags","items":{"type":"string"},"type":"array"},"description":{"description":"description","type":"string"},"enable_backup_ingest":{"description":"enable_backup_ingest","type":"boolean"},"encoding_settings":{"description":"encoding_settings","type":"string"},"event_params":{"additionalProperties":true,"description":"event_params","type":"object"},"fisheye_video_cropped":{"description":"fisheye_video_cropped","type":"boolean"},"front_z_rotation":{"description":"front_z_rotation","type":"number"},"id":{"description":"User ID","type":"string"},"is_audio_only":{"description":"is_audio_only","type":"boolean"},"is_spherical":{"description":"is_spherical","type":"boolean"},"original_fov":{"description":"original_fov","type":"integer"},"privacy":{"description":"privacy","type":"string"},"projection":{"description":"projection (enum: userlive_videos_projection_enum_param)","type":"string"},"published":{"description":"published","type":"boolean"},"schedule_custom_profile_image":{"description":"schedule_custom_profile_image","type":"string"},"spatial_audio_format":{"description":"spatial_audio_format (enum: userlive_videos_spatial_audio_format_enum_param)","type":"string"},"status":{"description":"status (enum: userlive_videos_status_enum_param)","type":"string"},"stereoscopic_mode":{"description":"stereoscopic_mode (enum: userlive_videos_stereoscopic_mode_enum_param)","type":"string"},"stop_on_delete_stream":{"description":"stop_on_delete_stream","type":"boolean"},"stream_type":{"description":"stream_type (enum: userlive_videos_stream_type_enum_param)","type":"string"},"title":{"description":"title","type":"string"}},"required":["id"],"type":"object"}`)
+// create_user_live_videoArgs defines the typed arguments for create_user_live_video
+type create_user_live_videoArgs struct {
+	ID                         string                 `json:"id"`
+	ContentTags                []string               `json:"content_tags,omitempty"`
+	Description                string                 `json:"description,omitempty"`
+	EnableBackupIngest         bool                   `json:"enable_backup_ingest,omitempty"`
+	EncodingSettings           string                 `json:"encoding_settings,omitempty"`
+	EventParams                map[string]interface{} `json:"event_params,omitempty"`
+	FisheyeVideoCropped        bool                   `json:"fisheye_video_cropped,omitempty"`
+	FrontZRotation             float64                `json:"front_z_rotation,omitempty"`
+	IsAudioOnly                bool                   `json:"is_audio_only,omitempty"`
+	IsSpherical                bool                   `json:"is_spherical,omitempty"`
+	OriginalFov                int                    `json:"original_fov,omitempty"`
+	Privacy                    string                 `json:"privacy,omitempty"`
+	Projection                 string                 `json:"projection,omitempty"`
+	Published                  bool                   `json:"published,omitempty"`
+	ScheduleCustomProfileImage interface{}            `json:"schedule_custom_profile_image,omitempty"`
+	SpatialAudioFormat         string                 `json:"spatial_audio_format,omitempty"`
+	Status                     string                 `json:"status,omitempty"`
+	StereoscopicMode           string                 `json:"stereoscopic_mode,omitempty"`
+	StopOnDeleteStream         bool                   `json:"stop_on_delete_stream,omitempty"`
+	StreamType                 string                 `json:"stream_type,omitempty"`
+	Title                      string                 `json:"title,omitempty"`
+}
 
-	create_user_messenger_desktop_performance_traceSchema = json.RawMessage(`{"additionalProperties":false,"properties":{},"type":"object"}`)
+// create_user_messenger_desktop_performance_traceArgs defines the typed arguments for create_user_messenger_desktop_performance_trace
+type create_user_messenger_desktop_performance_traceArgs struct {
+}
 
-	update_user_messenger_kids_accounts_unread_badgeSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"proxied_app_id":{"description":"proxied_app_id","type":"integer"}},"required":["proxied_app_id"],"type":"object"}`)
+// update_user_messenger_kids_accounts_unread_badgeArgs defines the typed arguments for update_user_messenger_kids_accounts_unread_badge
+type update_user_messenger_kids_accounts_unread_badgeArgs struct {
+	ProxiedAppId int `json:"proxied_app_id"`
+}
 
-	get_user_musicSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"target_id":{"description":"target_id","type":"string"}},"required":["id"],"type":"object"}`)
+// get_user_musicArgs defines the typed arguments for get_user_music
+type get_user_musicArgs struct {
+	ID       string   `json:"id"`
+	Fields   []string `json:"fields,omitempty"`
+	Limit    int      `json:"limit,omitempty"`
+	After    string   `json:"after,omitempty"`
+	Before   string   `json:"before,omitempty"`
+	TargetId string   `json:"target_id,omitempty"`
+}
 
-	create_user_notificationSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"bot_message_payload_elements":{"description":"bot_message_payload_elements","type":"string"},"filtering":{"description":"filtering","items":{"type":"string"},"type":"array"},"href":{"additionalProperties":true,"description":"href","type":"object"},"id":{"description":"User ID","type":"string"},"label":{"description":"label","type":"string"},"message":{"description":"message","type":"string"},"notif_ids":{"description":"notif_ids","items":{"type":"string"},"type":"array"},"payload":{"description":"payload","type":"string"},"read":{"description":"read","type":"boolean"},"ref":{"description":"ref","type":"string"},"schedule_interval":{"description":"schedule_interval","type":"integer"},"seen":{"description":"seen","type":"boolean"},"template":{"additionalProperties":true,"description":"template","type":"object"},"type":{"description":"type (enum: usernotifications_type_enum_param)","type":"string"}},"required":["id"],"type":"object"}`)
+// create_user_notificationArgs defines the typed arguments for create_user_notification
+type create_user_notificationArgs struct {
+	ID                        string                 `json:"id"`
+	BotMessagePayloadElements string                 `json:"bot_message_payload_elements,omitempty"`
+	Filtering                 []interface{}          `json:"filtering,omitempty"`
+	Href                      map[string]interface{} `json:"href,omitempty"`
+	Label                     string                 `json:"label,omitempty"`
+	Message                   map[string]interface{} `json:"message,omitempty"`
+	NotifIds                  []string               `json:"notif_ids,omitempty"`
+	Payload                   string                 `json:"payload,omitempty"`
+	Read                      bool                   `json:"read,omitempty"`
+	Ref                       string                 `json:"ref,omitempty"`
+	ScheduleInterval          int                    `json:"schedule_interval,omitempty"`
+	Seen                      bool                   `json:"seen,omitempty"`
+	Template                  map[string]interface{} `json:"template,omitempty"`
+	Type                      string                 `json:"type,omitempty"`
+}
 
-	list_user_payment_transactionsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"limit":{"description":"Maximum number of results","type":"integer"}},"type":"object"}`)
+// list_user_payment_transactionsArgs defines the typed arguments for list_user_payment_transactions
+type list_user_payment_transactionsArgs struct {
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
+}
 
-	remove_permissions_from_userSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"permission":{"description":"permission","type":"string"}},"required":["id"],"type":"object"}`)
+// remove_permissions_from_userArgs defines the typed arguments for remove_permissions_from_user
+type remove_permissions_from_userArgs struct {
+	ID         string `json:"id"`
+	Permission string `json:"permission,omitempty"`
+}
 
-	list_user_permissionsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"permission":{"description":"permission","type":"string"},"status":{"description":"status (enum: userpermissions_status_enum_param)","type":"string"}},"required":["id"],"type":"object"}`)
+// list_user_permissionsArgs defines the typed arguments for list_user_permissions
+type list_user_permissionsArgs struct {
+	ID         string   `json:"id"`
+	Fields     []string `json:"fields,omitempty"`
+	Limit      int      `json:"limit,omitempty"`
+	After      string   `json:"after,omitempty"`
+	Before     string   `json:"before,omitempty"`
+	Permission string   `json:"permission,omitempty"`
+	Status     string   `json:"status,omitempty"`
+}
 
-	list_user_personal_ad_accountsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+// list_user_personal_ad_accountsArgs defines the typed arguments for list_user_personal_ad_accounts
+type list_user_personal_ad_accountsArgs struct {
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
+}
 
-	list_user_photosSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"type":{"description":"type (enum: userphotos_type_enum_param)","type":"string"}},"required":["id"],"type":"object"}`)
+// list_user_photosArgs defines the typed arguments for list_user_photos
+type list_user_photosArgs struct {
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
+	Type   string   `json:"type,omitempty"`
+}
 
-	create_user_photoSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"aid":{"description":"aid","type":"string"},"allow_spherical_photo":{"description":"allow_spherical_photo","type":"boolean"},"alt_text_custom":{"description":"alt_text_custom","type":"string"},"android_key_hash":{"description":"android_key_hash","type":"string"},"application_id":{"description":"application_id","type":"string"},"attempt":{"description":"attempt","type":"integer"},"audience_exp":{"description":"audience_exp","type":"boolean"},"backdated_time":{"description":"backdated_time","type":"string"},"backdated_time_granularity":{"description":"backdated_time_granularity (enum: userphotos_backdated_time_granularity_enum_param)","type":"string"},"caption":{"description":"caption","type":"string"},"composer_session_id":{"description":"composer_session_id","type":"string"},"direct_share_status":{"description":"direct_share_status","type":"integer"},"feed_targeting":{"additionalProperties":true,"description":"feed_targeting","type":"object"},"filter_type":{"description":"filter_type","type":"integer"},"full_res_is_coming_later":{"description":"full_res_is_coming_later","type":"boolean"},"id":{"description":"User ID","type":"string"},"initial_view_heading_override_degrees":{"description":"initial_view_heading_override_degrees","type":"integer"},"initial_view_pitch_override_degrees":{"description":"initial_view_pitch_override_degrees","type":"integer"},"initial_view_vertical_fov_override_degrees":{"description":"initial_view_vertical_fov_override_degrees","type":"integer"},"ios_bundle_id":{"description":"ios_bundle_id","type":"string"},"is_explicit_location":{"description":"is_explicit_location","type":"boolean"},"is_explicit_place":{"description":"is_explicit_place","type":"boolean"},"manual_privacy":{"description":"manual_privacy","type":"boolean"},"message":{"description":"message","type":"string"},"name":{"description":"name","type":"string"},"no_story":{"description":"no_story","type":"boolean"},"offline_id":{"description":"offline_id","type":"integer"},"og_action_type_id":{"description":"og_action_type_id","type":"string"},"og_icon_id":{"description":"og_icon_id","type":"string"},"og_object_id":{"description":"og_object_id","type":"string"},"og_phrase":{"description":"og_phrase","type":"string"},"og_set_profile_badge":{"description":"og_set_profile_badge","type":"boolean"},"og_suggestion_mechanism":{"description":"og_suggestion_mechanism","type":"string"},"place":{"additionalProperties":true,"description":"place","type":"object"},"privacy":{"description":"privacy","type":"string"},"profile_id":{"description":"profile_id","type":"integer"},"provenance_info":{"description":"provenance_info","type":"string"},"proxied_app_id":{"description":"proxied_app_id","type":"string"},"published":{"description":"published","type":"boolean"},"qn":{"description":"qn","type":"string"},"scheduled_publish_time":{"description":"scheduled_publish_time","type":"integer"},"spherical_metadata":{"description":"spherical_metadata","type":"string"},"sponsor_id":{"description":"sponsor_id","type":"string"},"sponsor_relationship":{"description":"sponsor_relationship","type":"integer"},"tags":{"description":"tags","items":{"additionalProperties":true,"type":"object"},"type":"array"},"target_id":{"description":"target_id","type":"integer"},"targeting":{"additionalProperties":true,"description":"targeting","type":"object"},"time_since_original_post":{"description":"time_since_original_post","type":"integer"},"uid":{"description":"uid","type":"integer"},"unpublished_content_type":{"description":"unpublished_content_type (enum: userphotos_unpublished_content_type_enum_param)","type":"string"},"url":{"description":"url","type":"string"},"user_selected_tags":{"description":"user_selected_tags","type":"boolean"},"vault_image_id":{"description":"vault_image_id","type":"string"}},"required":["id"],"type":"object"}`)
+// create_user_photoArgs defines the typed arguments for create_user_photo
+type create_user_photoArgs struct {
+	ID                                    string                   `json:"id"`
+	Aid                                   string                   `json:"aid,omitempty"`
+	AllowSphericalPhoto                   bool                     `json:"allow_spherical_photo,omitempty"`
+	AltTextCustom                         string                   `json:"alt_text_custom,omitempty"`
+	AndroidKeyHash                        string                   `json:"android_key_hash,omitempty"`
+	ApplicationId                         string                   `json:"application_id,omitempty"`
+	Attempt                               int                      `json:"attempt,omitempty"`
+	AudienceExp                           bool                     `json:"audience_exp,omitempty"`
+	BackdatedTime                         interface{}              `json:"backdated_time,omitempty"`
+	BackdatedTimeGranularity              string                   `json:"backdated_time_granularity,omitempty"`
+	Caption                               string                   `json:"caption,omitempty"`
+	ComposerSessionId                     string                   `json:"composer_session_id,omitempty"`
+	DirectShareStatus                     int                      `json:"direct_share_status,omitempty"`
+	FeedTargeting                         map[string]interface{}   `json:"feed_targeting,omitempty"`
+	FilterType                            int                      `json:"filter_type,omitempty"`
+	FullResIsComingLater                  bool                     `json:"full_res_is_coming_later,omitempty"`
+	InitialViewHeadingOverrideDegrees     int                      `json:"initial_view_heading_override_degrees,omitempty"`
+	InitialViewPitchOverrideDegrees       int                      `json:"initial_view_pitch_override_degrees,omitempty"`
+	InitialViewVerticalFovOverrideDegrees int                      `json:"initial_view_vertical_fov_override_degrees,omitempty"`
+	IosBundleId                           string                   `json:"ios_bundle_id,omitempty"`
+	IsExplicitLocation                    bool                     `json:"is_explicit_location,omitempty"`
+	IsExplicitPlace                       bool                     `json:"is_explicit_place,omitempty"`
+	ManualPrivacy                         bool                     `json:"manual_privacy,omitempty"`
+	Message                               string                   `json:"message,omitempty"`
+	Name                                  string                   `json:"name,omitempty"`
+	NoStory                               bool                     `json:"no_story,omitempty"`
+	OfflineId                             int                      `json:"offline_id,omitempty"`
+	OgActionTypeId                        string                   `json:"og_action_type_id,omitempty"`
+	OgIconId                              string                   `json:"og_icon_id,omitempty"`
+	OgObjectId                            string                   `json:"og_object_id,omitempty"`
+	OgPhrase                              string                   `json:"og_phrase,omitempty"`
+	OgSetProfileBadge                     bool                     `json:"og_set_profile_badge,omitempty"`
+	OgSuggestionMechanism                 string                   `json:"og_suggestion_mechanism,omitempty"`
+	Place                                 map[string]interface{}   `json:"place,omitempty"`
+	Privacy                               string                   `json:"privacy,omitempty"`
+	ProfileId                             int                      `json:"profile_id,omitempty"`
+	ProvenanceInfo                        map[string]interface{}   `json:"provenance_info,omitempty"`
+	ProxiedAppId                          string                   `json:"proxied_app_id,omitempty"`
+	Published                             bool                     `json:"published,omitempty"`
+	Qn                                    string                   `json:"qn,omitempty"`
+	ScheduledPublishTime                  int                      `json:"scheduled_publish_time,omitempty"`
+	SphericalMetadata                     map[string]interface{}   `json:"spherical_metadata,omitempty"`
+	SponsorId                             string                   `json:"sponsor_id,omitempty"`
+	SponsorRelationship                   int                      `json:"sponsor_relationship,omitempty"`
+	Tags                                  []map[string]interface{} `json:"tags,omitempty"`
+	TargetId                              int                      `json:"target_id,omitempty"`
+	Targeting                             map[string]interface{}   `json:"targeting,omitempty"`
+	TimeSinceOriginalPost                 int                      `json:"time_since_original_post,omitempty"`
+	Uid                                   int                      `json:"uid,omitempty"`
+	UnpublishedContentType                string                   `json:"unpublished_content_type,omitempty"`
+	Url                                   string                   `json:"url,omitempty"`
+	UserSelectedTags                      bool                     `json:"user_selected_tags,omitempty"`
+	VaultImageId                          string                   `json:"vault_image_id,omitempty"`
+}
 
-	get_user_pictureSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"height":{"description":"height","type":"integer"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"redirect":{"description":"redirect","type":"boolean"},"type":{"description":"type (enum: userpicture_type_enum_param)","type":"string"},"width":{"description":"width","type":"integer"}},"required":["id"],"type":"object"}`)
+// get_user_pictureArgs defines the typed arguments for get_user_picture
+type get_user_pictureArgs struct {
+	ID       string   `json:"id"`
+	Fields   []string `json:"fields,omitempty"`
+	Limit    int      `json:"limit,omitempty"`
+	After    string   `json:"after,omitempty"`
+	Before   string   `json:"before,omitempty"`
+	Height   int      `json:"height,omitempty"`
+	Redirect bool     `json:"redirect,omitempty"`
+	Type     string   `json:"type,omitempty"`
+	Width    int      `json:"width,omitempty"`
+}
 
-	list_user_postsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"include_hidden":{"description":"include_hidden","type":"boolean"},"limit":{"description":"Maximum number of results","type":"integer"},"q":{"description":"q","type":"string"},"show_expired":{"description":"show_expired","type":"boolean"},"since":{"description":"since","type":"string"},"until":{"description":"until","type":"string"},"with":{"description":"with","type":"string"}},"required":["id"],"type":"object"}`)
+// list_user_postsArgs defines the typed arguments for list_user_posts
+type list_user_postsArgs struct {
+	ID            string      `json:"id"`
+	Fields        []string    `json:"fields,omitempty"`
+	Limit         int         `json:"limit,omitempty"`
+	After         string      `json:"after,omitempty"`
+	Before        string      `json:"before,omitempty"`
+	IncludeHidden bool        `json:"include_hidden,omitempty"`
+	Q             string      `json:"q,omitempty"`
+	ShowExpired   bool        `json:"show_expired,omitempty"`
+	Since         interface{} `json:"since,omitempty"`
+	Until         interface{} `json:"until,omitempty"`
+	With          string      `json:"with,omitempty"`
+}
 
-	list_user_rich_media_documentsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"limit":{"description":"Maximum number of results","type":"integer"},"query":{"description":"query","type":"string"}},"type":"object"}`)
+// list_user_rich_media_documentsArgs defines the typed arguments for list_user_rich_media_documents
+type list_user_rich_media_documentsArgs struct {
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
+	Query  string   `json:"query,omitempty"`
+}
 
-	create_user_staging_resourceSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"file":{"description":"file","type":"string"},"id":{"description":"User ID","type":"string"}},"required":["id"],"type":"object"}`)
+// create_user_staging_resourceArgs defines the typed arguments for create_user_staging_resource
+type create_user_staging_resourceArgs struct {
+	ID   string      `json:"id"`
+	File interface{} `json:"file,omitempty"`
+}
 
-	list_user_videosSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"type":{"description":"type (enum: uservideos_type_enum_param)","type":"string"}},"required":["id"],"type":"object"}`)
+// list_user_videosArgs defines the typed arguments for list_user_videos
+type list_user_videosArgs struct {
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
+	Type   string   `json:"type,omitempty"`
+}
 
-	create_user_videoSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"application_id":{"description":"application_id","type":"string"},"asked_fun_fact_prompt_id":{"description":"asked_fun_fact_prompt_id","type":"integer"},"audio_story_wave_animation_handle":{"description":"audio_story_wave_animation_handle","type":"string"},"composer_entry_picker":{"description":"composer_entry_picker","type":"string"},"composer_entry_point":{"description":"composer_entry_point","type":"string"},"composer_entry_time":{"description":"composer_entry_time","type":"integer"},"composer_session_events_log":{"description":"composer_session_events_log","type":"string"},"composer_session_id":{"description":"composer_session_id","type":"string"},"composer_source_surface":{"description":"composer_source_surface","type":"string"},"composer_type":{"description":"composer_type","type":"string"},"container_type":{"description":"container_type (enum: uservideos_container_type_enum_param)","type":"string"},"content_category":{"description":"content_category (enum: uservideos_content_category_enum_param)","type":"string"},"creative_tools":{"description":"creative_tools","type":"string"},"description":{"description":"description","type":"string"},"direct_share_status":{"description":"direct_share_status","type":"integer"},"embeddable":{"description":"embeddable","type":"boolean"},"end_offset":{"description":"end_offset","type":"integer"},"fbuploader_video_file_chunk":{"description":"fbuploader_video_file_chunk","type":"string"},"file_size":{"description":"file_size","type":"integer"},"file_url":{"description":"file_url","type":"string"},"fisheye_video_cropped":{"description":"fisheye_video_cropped","type":"boolean"},"formatting":{"description":"formatting (enum: uservideos_formatting_enum_param)","type":"string"},"fov":{"description":"fov","type":"integer"},"front_z_rotation":{"description":"front_z_rotation","type":"number"},"fun_fact_prompt_id":{"description":"fun_fact_prompt_id","type":"string"},"fun_fact_toastee_id":{"description":"fun_fact_toastee_id","type":"integer"},"guide":{"description":"guide","items":{"type":"string"},"type":"array"},"guide_enabled":{"description":"guide_enabled","type":"boolean"},"id":{"description":"User ID","type":"string"},"initial_heading":{"description":"initial_heading","type":"integer"},"initial_pitch":{"description":"initial_pitch","type":"integer"},"instant_game_entry_point_data":{"description":"instant_game_entry_point_data","type":"string"},"is_boost_intended":{"description":"is_boost_intended","type":"boolean"},"is_explicit_share":{"description":"is_explicit_share","type":"boolean"},"is_group_linking_post":{"description":"is_group_linking_post","type":"boolean"},"is_partnership_ad":{"description":"is_partnership_ad","type":"boolean"},"is_voice_clip":{"description":"is_voice_clip","type":"boolean"},"location_source_id":{"description":"location_source_id","type":"string"},"manual_privacy":{"description":"manual_privacy","type":"boolean"},"no_story":{"description":"no_story","type":"boolean"},"og_action_type_id":{"description":"og_action_type_id","type":"string"},"og_icon_id":{"description":"og_icon_id","type":"string"},"og_object_id":{"description":"og_object_id","type":"string"},"og_phrase":{"description":"og_phrase","type":"string"},"og_suggestion_mechanism":{"description":"og_suggestion_mechanism","type":"string"},"original_fov":{"description":"original_fov","type":"integer"},"original_projection_type":{"description":"original_projection_type (enum: uservideos_original_projection_type_enum_param)","type":"string"},"partnership_ad_ad_code":{"description":"partnership_ad_ad_code","type":"string"},"privacy":{"description":"privacy","type":"string"},"publish_event_id":{"description":"publish_event_id","type":"integer"},"referenced_sticker_id":{"description":"referenced_sticker_id","type":"string"},"replace_video_id":{"description":"replace_video_id","type":"string"},"slideshow_spec":{"description":"slideshow_spec","type":"string"},"source":{"description":"source","type":"string"},"source_instagram_media_id":{"description":"source_instagram_media_id","type":"string"},"spherical":{"description":"spherical","type":"boolean"},"sponsor_id":{"description":"sponsor_id","type":"string"},"start_offset":{"description":"start_offset","type":"integer"},"swap_mode":{"description":"swap_mode (enum: uservideos_swap_mode_enum_param)","type":"string"},"text_format_metadata":{"description":"text_format_metadata","type":"string"},"thumb":{"description":"thumb","type":"string"},"time_since_original_post":{"description":"time_since_original_post","type":"integer"},"title":{"description":"title","type":"string"},"transcode_setting_properties":{"description":"transcode_setting_properties","type":"string"},"unpublished_content_type":{"description":"unpublished_content_type (enum: uservideos_unpublished_content_type_enum_param)","type":"string"},"upload_phase":{"description":"upload_phase (enum: uservideos_upload_phase_enum_param)","type":"string"},"upload_session_id":{"description":"upload_session_id","type":"string"},"upload_setting_properties":{"description":"upload_setting_properties","type":"string"},"video_file_chunk":{"description":"video_file_chunk","type":"string"},"video_id_original":{"description":"video_id_original","type":"string"},"video_start_time_ms":{"description":"video_start_time_ms","type":"integer"},"waterfall_id":{"description":"waterfall_id","type":"string"}},"required":["id"],"type":"object"}`)
+// create_user_videoArgs defines the typed arguments for create_user_video
+type create_user_videoArgs struct {
+	ID                            string                 `json:"id"`
+	ApplicationId                 string                 `json:"application_id,omitempty"`
+	AskedFunFactPromptId          int                    `json:"asked_fun_fact_prompt_id,omitempty"`
+	AudioStoryWaveAnimationHandle string                 `json:"audio_story_wave_animation_handle,omitempty"`
+	ComposerEntryPicker           string                 `json:"composer_entry_picker,omitempty"`
+	ComposerEntryPoint            string                 `json:"composer_entry_point,omitempty"`
+	ComposerEntryTime             int                    `json:"composer_entry_time,omitempty"`
+	ComposerSessionEventsLog      string                 `json:"composer_session_events_log,omitempty"`
+	ComposerSessionId             string                 `json:"composer_session_id,omitempty"`
+	ComposerSourceSurface         string                 `json:"composer_source_surface,omitempty"`
+	ComposerType                  string                 `json:"composer_type,omitempty"`
+	ContainerType                 string                 `json:"container_type,omitempty"`
+	ContentCategory               string                 `json:"content_category,omitempty"`
+	CreativeTools                 string                 `json:"creative_tools,omitempty"`
+	Description                   string                 `json:"description,omitempty"`
+	DirectShareStatus             int                    `json:"direct_share_status,omitempty"`
+	Embeddable                    bool                   `json:"embeddable,omitempty"`
+	EndOffset                     int                    `json:"end_offset,omitempty"`
+	FbuploaderVideoFileChunk      string                 `json:"fbuploader_video_file_chunk,omitempty"`
+	FileSize                      int                    `json:"file_size,omitempty"`
+	FileUrl                       string                 `json:"file_url,omitempty"`
+	FisheyeVideoCropped           bool                   `json:"fisheye_video_cropped,omitempty"`
+	Formatting                    string                 `json:"formatting,omitempty"`
+	Fov                           int                    `json:"fov,omitempty"`
+	FrontZRotation                float64                `json:"front_z_rotation,omitempty"`
+	FunFactPromptId               string                 `json:"fun_fact_prompt_id,omitempty"`
+	FunFactToasteeId              int                    `json:"fun_fact_toastee_id,omitempty"`
+	Guide                         []interface{}          `json:"guide,omitempty"`
+	GuideEnabled                  bool                   `json:"guide_enabled,omitempty"`
+	InitialHeading                int                    `json:"initial_heading,omitempty"`
+	InitialPitch                  int                    `json:"initial_pitch,omitempty"`
+	InstantGameEntryPointData     string                 `json:"instant_game_entry_point_data,omitempty"`
+	IsBoostIntended               bool                   `json:"is_boost_intended,omitempty"`
+	IsExplicitShare               bool                   `json:"is_explicit_share,omitempty"`
+	IsGroupLinkingPost            bool                   `json:"is_group_linking_post,omitempty"`
+	IsPartnershipAd               bool                   `json:"is_partnership_ad,omitempty"`
+	IsVoiceClip                   bool                   `json:"is_voice_clip,omitempty"`
+	LocationSourceId              string                 `json:"location_source_id,omitempty"`
+	ManualPrivacy                 bool                   `json:"manual_privacy,omitempty"`
+	NoStory                       bool                   `json:"no_story,omitempty"`
+	OgActionTypeId                string                 `json:"og_action_type_id,omitempty"`
+	OgIconId                      string                 `json:"og_icon_id,omitempty"`
+	OgObjectId                    string                 `json:"og_object_id,omitempty"`
+	OgPhrase                      string                 `json:"og_phrase,omitempty"`
+	OgSuggestionMechanism         string                 `json:"og_suggestion_mechanism,omitempty"`
+	OriginalFov                   int                    `json:"original_fov,omitempty"`
+	OriginalProjectionType        string                 `json:"original_projection_type,omitempty"`
+	PartnershipAdAdCode           string                 `json:"partnership_ad_ad_code,omitempty"`
+	Privacy                       string                 `json:"privacy,omitempty"`
+	PublishEventId                int                    `json:"publish_event_id,omitempty"`
+	ReferencedStickerId           string                 `json:"referenced_sticker_id,omitempty"`
+	ReplaceVideoId                string                 `json:"replace_video_id,omitempty"`
+	SlideshowSpec                 map[string]interface{} `json:"slideshow_spec,omitempty"`
+	Source                        string                 `json:"source,omitempty"`
+	SourceInstagramMediaId        string                 `json:"source_instagram_media_id,omitempty"`
+	Spherical                     bool                   `json:"spherical,omitempty"`
+	SponsorId                     string                 `json:"sponsor_id,omitempty"`
+	StartOffset                   int                    `json:"start_offset,omitempty"`
+	SwapMode                      string                 `json:"swap_mode,omitempty"`
+	TextFormatMetadata            string                 `json:"text_format_metadata,omitempty"`
+	Thumb                         interface{}            `json:"thumb,omitempty"`
+	TimeSinceOriginalPost         int                    `json:"time_since_original_post,omitempty"`
+	Title                         string                 `json:"title,omitempty"`
+	TranscodeSettingProperties    string                 `json:"transcode_setting_properties,omitempty"`
+	UnpublishedContentType        string                 `json:"unpublished_content_type,omitempty"`
+	UploadPhase                   string                 `json:"upload_phase,omitempty"`
+	UploadSessionId               string                 `json:"upload_session_id,omitempty"`
+	UploadSettingProperties       string                 `json:"upload_setting_properties,omitempty"`
+	VideoFileChunk                string                 `json:"video_file_chunk,omitempty"`
+	VideoIdOriginal               string                 `json:"video_id_original,omitempty"`
+	VideoStartTimeMs              int                    `json:"video_start_time_ms,omitempty"`
+	WaterfallId                   string                 `json:"waterfall_id,omitempty"`
+}
 
-	delete_userSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+// delete_userArgs defines the typed arguments for delete_user
+type delete_userArgs struct {
+	ID string `json:"id"`
+}
 
-	get_userSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+// get_userArgs defines the typed arguments for get_user
+type get_userArgs struct {
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
+}
 
-	update_userSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"emoji_color_pref":{"description":"emoji_color_pref","type":"integer"},"firstname":{"description":"firstname","type":"string"},"id":{"description":"User ID","type":"string"},"lastname":{"description":"lastname","type":"string"},"local_news_megaphone_dismiss_status":{"description":"local_news_megaphone_dismiss_status (enum: user_local_news_megaphone_dismiss_status)","type":"string"},"local_news_subscription_status":{"description":"local_news_subscription_status (enum: user_local_news_subscription_status)","type":"string"},"name":{"description":"name","type":"string"},"password":{"description":"password","type":"string"}},"required":["id"],"type":"object"}`)
-)
+// update_userArgs defines the typed arguments for update_user
+type update_userArgs struct {
+	ID                              string `json:"id"`
+	EmojiColorPref                  int    `json:"emoji_color_pref,omitempty"`
+	Firstname                       string `json:"firstname,omitempty"`
+	Lastname                        string `json:"lastname,omitempty"`
+	LocalNewsMegaphoneDismissStatus string `json:"local_news_megaphone_dismiss_status,omitempty"`
+	LocalNewsSubscriptionStatus     string `json:"local_news_subscription_status,omitempty"`
+	Name                            string `json:"name,omitempty"`
+	Password                        string `json:"password,omitempty"`
+}
 
-// RemoveAccessTokensFromUserHandler handles remove_access_tokens_from_user
-func RemoveAccessTokensFromUserHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// RemoveAccessTokensFromUserHandler handles remove_access_tokens_from_user with typed arguments
+func RemoveAccessTokensFromUserHandler(ctx context.Context, request mcp.CallToolRequest, args remove_access_tokens_from_userArgs) (*mcp.CallToolResult, error) {
 
-	// Use standard DELETE handler
-	return StandardDELETEHandler(ctx, request, "access_tokens")
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Build URL and execute
+	url := buildGraphURL(args.ID, "access_tokens")
+
+	return ExecuteDELETERequest(ctx, url)
 
 }
 
-// CreateUserAccessTokenHandler handles create_user_access_token
-func CreateUserAccessTokenHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// CreateUserAccessTokenHandler handles create_user_access_token with typed arguments
+func CreateUserAccessTokenHandler(ctx context.Context, request mcp.CallToolRequest, args create_user_access_tokenArgs) (*mcp.CallToolResult, error) {
 
-	// Use standard POST handler
-	return StandardPOSTHandler(ctx, request, "access_tokens", true)
+	// Build request body
+	body := make(map[string]interface{})
 
-}
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
 
-// ListUserAccountsHandler handles list_user_accounts
-func ListUserAccountsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Add parameters to body
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "accounts", "User", true)
+	if args.BusinessApp != "" {
+		body["business_app"] = args.BusinessApp
+	}
 
-}
+	if args.PageId != "" {
+		body["page_id"] = args.PageId
+	}
 
-// CreateUserAccountHandler handles create_user_account
-func CreateUserAccountHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	if len(args.Scope) > 0 {
+		body["scope"] = args.Scope
+	}
 
-	// Use standard POST handler
-	return StandardPOSTHandler(ctx, request, "accounts", true)
+	body["set_token_expires_in_60_days"] = args.SetTokenExpiresIn60Days
 
-}
+	// Build URL and execute
+	url := buildGraphURL(args.ID, "access_tokens")
 
-// ListUserAdStudiesHandler handles list_user_ad_studies
-func ListUserAdStudiesHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "ad_studies", "User", true)
-
-}
-
-// CreateUserAdStudieHandler handles create_user_ad_studie
-func CreateUserAdStudieHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-
-	// Use standard POST handler
-	return StandardPOSTHandler(ctx, request, "ad_studies", true)
+	return ExecutePOSTRequest(ctx, url, body)
 
 }
 
-// ListUserAdaccountsHandler handles list_user_adaccounts
-func ListUserAdaccountsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// ListUserAccountsHandler handles list_user_accounts with typed arguments
+func ListUserAccountsHandler(ctx context.Context, request mcp.CallToolRequest, args list_user_accountsArgs) (*mcp.CallToolResult, error) {
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "adaccounts", "User", true)
+	// Build query parameters
+	query := BuildQueryParameters()
 
-}
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
 
-// ListUserAlbumsHandler handles list_user_albums
-func ListUserAlbumsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("User")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "albums", "User", true)
+	// Add other parameters
 
-}
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
 
-// CreateUserApplicationHandler handles create_user_application
-func CreateUserApplicationHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
 
-	// Use standard POST handler
-	return StandardPOSTHandler(ctx, request, "applications", true)
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
 
-}
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
 
-// ListUserApprequestformerrecipientsHandler handles list_user_apprequestformerrecipients
-func ListUserApprequestformerrecipientsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	if args.AdId != "" {
+		query.Set("ad_id", args.AdId)
+	}
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "apprequestformerrecipients", "User", false)
+	if args.IsPlace {
+		query.Set("is_place", "true")
+	}
 
-}
+	if args.IsPromotable {
+		query.Set("is_promotable", "true")
+	}
 
-// ListUserApprequestsHandler handles list_user_apprequests
-func ListUserApprequestsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "accounts")
+	fullURL := BuildURLWithQuery(baseURL, query)
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "apprequests", "User", true)
-
-}
-
-// ListUserAssignedAdAccountsHandler handles list_user_assigned_ad_accounts
-func ListUserAssignedAdAccountsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "assigned_ad_accounts", "User", true)
-
-}
-
-// ListUserAssignedApplicationsHandler handles list_user_assigned_applications
-func ListUserAssignedApplicationsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "assigned_applications", "User", true)
-
-}
-
-// ListUserAssignedBusinessAssetGroupsHandler handles list_user_assigned_business_asset_groups
-func ListUserAssignedBusinessAssetGroupsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "assigned_business_asset_groups", "User", true)
+	return ExecuteGETRequest(ctx, fullURL)
 
 }
 
-// ListUserAssignedPagesHandler handles list_user_assigned_pages
-func ListUserAssignedPagesHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// CreateUserAccountHandler handles create_user_account with typed arguments
+func CreateUserAccountHandler(ctx context.Context, request mcp.CallToolRequest, args create_user_accountArgs) (*mcp.CallToolResult, error) {
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "assigned_pages", "User", true)
+	// Build request body
+	body := make(map[string]interface{})
 
-}
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
 
-// ListUserAssignedProductCatalogsHandler handles list_user_assigned_product_catalogs
-func ListUserAssignedProductCatalogsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Add parameters to body
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "assigned_product_catalogs", "User", true)
+	if args.About != "" {
+		body["about"] = args.About
+	}
 
-}
+	if args.Address != "" {
+		body["address"] = args.Address
+	}
 
-// ListUserAvatarsHandler handles list_user_avatars
-func ListUserAvatarsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	if args.Category > 0 {
+		body["category"] = args.Category
+	}
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "avatars", "User", true)
+	if args.CategoryEnum != "" {
+		body["category_enum"] = args.CategoryEnum
+	}
 
-}
+	if len(args.CategoryList) > 0 {
+		body["category_list"] = args.CategoryList
+	}
 
-// ListUserBusinessUsersHandler handles list_user_business_users
-func ListUserBusinessUsersHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	if args.CityId != "" {
+		body["city_id"] = args.CityId
+	}
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "business_users", "User", false)
+	if args.Coordinates != nil {
+		body["coordinates"] = args.Coordinates
+	}
 
-}
+	if args.CoverPhoto != nil {
+		body["cover_photo"] = args.CoverPhoto
+	}
 
-// RemoveBusinessesFromUserHandler handles remove_businesses_from_user
-func RemoveBusinessesFromUserHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	if args.Description != "" {
+		body["description"] = args.Description
+	}
 
-	// Use standard DELETE handler
-	return StandardDELETEHandler(ctx, request, "businesses")
+	body["ignore_coordinate_warnings"] = args.IgnoreCoordinateWarnings
 
-}
+	if args.Location != nil {
+		body["location"] = args.Location
+	}
 
-// ListUserBusinessesHandler handles list_user_businesses
-func ListUserBusinessesHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	if args.Name != "" {
+		body["name"] = args.Name
+	}
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "businesses", "User", true)
+	if args.Phone != "" {
+		body["phone"] = args.Phone
+	}
 
-}
+	if args.Picture != "" {
+		body["picture"] = args.Picture
+	}
 
-// CreateUserBusinesseHandler handles create_user_businesse
-func CreateUserBusinesseHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	if args.Website != "" {
+		body["website"] = args.Website
+	}
 
-	// Use standard POST handler
-	return StandardPOSTHandler(ctx, request, "businesses", true)
+	if args.Zip != "" {
+		body["zip"] = args.Zip
+	}
 
-}
+	// Build URL and execute
+	url := buildGraphURL(args.ID, "accounts")
 
-// ListUserConversationsHandler handles list_user_conversations
-func ListUserConversationsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "conversations", "User", true)
-
-}
-
-// ListUserCustomLabelsHandler handles list_user_custom_labels
-func ListUserCustomLabelsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "custom_labels", "User", true)
-
-}
-
-// ListUserEventsHandler handles list_user_events
-func ListUserEventsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "events", "User", true)
-
-}
-
-// GetUserFeedHandler handles get_user_feed
-func GetUserFeedHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "feed", "User", true)
+	return ExecutePOSTRequest(ctx, url, body)
 
 }
 
-// UpdateUserFeedHandler handles update_user_feed
-func UpdateUserFeedHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// ListUserAdStudiesHandler handles list_user_ad_studies with typed arguments
+func ListUserAdStudiesHandler(ctx context.Context, request mcp.CallToolRequest, args list_user_ad_studiesArgs) (*mcp.CallToolResult, error) {
 
-	// Use standard POST handler
-	return StandardPOSTHandler(ctx, request, "feed", true)
+	// Build query parameters
+	query := BuildQueryParameters()
 
-}
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
 
-// ListUserFriendsHandler handles list_user_friends
-func ListUserFriendsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("User")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "friends", "User", true)
+	// Add other parameters
 
-}
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
 
-// ListUserFundraisersHandler handles list_user_fundraisers
-func ListUserFundraisersHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "fundraisers", "User", true)
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
 
-}
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
 
-// CreateUserFundraiserHandler handles create_user_fundraiser
-func CreateUserFundraiserHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "ad_studies")
+	fullURL := BuildURLWithQuery(baseURL, query)
 
-	// Use standard POST handler
-	return StandardPOSTHandler(ctx, request, "fundraisers", true)
-
-}
-
-// ListUserGroupsHandler handles list_user_groups
-func ListUserGroupsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "groups", "User", true)
-
-}
-
-// ListUserIdsForAppsHandler handles list_user_ids_for_apps
-func ListUserIdsForAppsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "ids_for_apps", "User", true)
-
-}
-
-// ListUserIdsForBusinessHandler handles list_user_ids_for_business
-func ListUserIdsForBusinessHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "ids_for_business", "User", true)
+	return ExecuteGETRequest(ctx, fullURL)
 
 }
 
-// ListUserIdsForPagesHandler handles list_user_ids_for_pages
-func ListUserIdsForPagesHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// CreateUserAdStudieHandler handles create_user_ad_studie with typed arguments
+func CreateUserAdStudieHandler(ctx context.Context, request mcp.CallToolRequest, args create_user_ad_studieArgs) (*mcp.CallToolResult, error) {
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "ids_for_pages", "User", true)
+	// Build request body
+	body := make(map[string]interface{})
 
-}
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
 
-// ListUserLikesHandler handles list_user_likes
-func ListUserLikesHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Add parameters to body
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "likes", "User", true)
+	if len(args.Cells) > 0 {
+		body["cells"] = args.Cells
+	}
 
-}
+	if args.ClientBusiness != "" {
+		body["client_business"] = args.ClientBusiness
+	}
 
-// ListUserLiveVideosHandler handles list_user_live_videos
-func ListUserLiveVideosHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	if args.CooldownStartTime > 0 {
+		body["cooldown_start_time"] = args.CooldownStartTime
+	}
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "live_videos", "User", true)
+	if args.Description != "" {
+		body["description"] = args.Description
+	}
 
-}
+	if args.EndTime > 0 {
+		body["end_time"] = args.EndTime
+	}
 
-// CreateUserLiveVideoHandler handles create_user_live_video
-func CreateUserLiveVideoHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	if args.Name != "" {
+		body["name"] = args.Name
+	}
 
-	// Use standard POST handler
-	return StandardPOSTHandler(ctx, request, "live_videos", true)
+	if len(args.Objectives) > 0 {
+		body["objectives"] = args.Objectives
+	}
 
-}
+	if args.ObservationEndTime > 0 {
+		body["observation_end_time"] = args.ObservationEndTime
+	}
 
-// CreateUserMessengerDesktopPerformanceTraceHandler handles create_user_messenger_desktop_performance_trace
-func CreateUserMessengerDesktopPerformanceTraceHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	if args.StartTime > 0 {
+		body["start_time"] = args.StartTime
+	}
 
-	// Use standard POST handler
-	return StandardPOSTHandler(ctx, request, "messenger_desktop_performance_traces", false)
+	if args.Type != "" {
+		body["type"] = args.Type
+	}
 
-}
+	// Build URL and execute
+	url := buildGraphURL(args.ID, "ad_studies")
 
-// UpdateUserMessengerKidsAccountsUnreadBadgeHandler handles update_user_messenger_kids_accounts_unread_badge
-func UpdateUserMessengerKidsAccountsUnreadBadgeHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-
-	// Use standard POST handler
-	return StandardPOSTHandler(ctx, request, "messenger_kids_accounts_unread_badge", false)
-
-}
-
-// GetUserMusicHandler handles get_user_music
-func GetUserMusicHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "music", "User", true)
-
-}
-
-// CreateUserNotificationHandler handles create_user_notification
-func CreateUserNotificationHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-
-	// Use standard POST handler
-	return StandardPOSTHandler(ctx, request, "notifications", true)
+	return ExecutePOSTRequest(ctx, url, body)
 
 }
 
-// ListUserPaymentTransactionsHandler handles list_user_payment_transactions
-func ListUserPaymentTransactionsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// ListUserAdaccountsHandler handles list_user_adaccounts with typed arguments
+func ListUserAdaccountsHandler(ctx context.Context, request mcp.CallToolRequest, args list_user_adaccountsArgs) (*mcp.CallToolResult, error) {
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "payment_transactions", "User", false)
+	// Build query parameters
+	query := BuildQueryParameters()
 
-}
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
 
-// RemovePermissionsFromUserHandler handles remove_permissions_from_user
-func RemovePermissionsFromUserHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("User")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
 
-	// Use standard DELETE handler
-	return StandardDELETEHandler(ctx, request, "permissions")
+	// Add other parameters
 
-}
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
 
-// ListUserPermissionsHandler handles list_user_permissions
-func ListUserPermissionsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "permissions", "User", true)
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
 
-}
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
 
-// ListUserPersonalAdAccountsHandler handles list_user_personal_ad_accounts
-func ListUserPersonalAdAccountsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "adaccounts")
+	fullURL := BuildURLWithQuery(baseURL, query)
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "personal_ad_accounts", "User", true)
-
-}
-
-// ListUserPhotosHandler handles list_user_photos
-func ListUserPhotosHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "photos", "User", true)
-
-}
-
-// CreateUserPhotoHandler handles create_user_photo
-func CreateUserPhotoHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-
-	// Use standard POST handler
-	return StandardPOSTHandler(ctx, request, "photos", true)
-
-}
-
-// GetUserPictureHandler handles get_user_picture
-func GetUserPictureHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "picture", "User", true)
+	return ExecuteGETRequest(ctx, fullURL)
 
 }
 
-// ListUserPostsHandler handles list_user_posts
-func ListUserPostsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// ListUserAlbumsHandler handles list_user_albums with typed arguments
+func ListUserAlbumsHandler(ctx context.Context, request mcp.CallToolRequest, args list_user_albumsArgs) (*mcp.CallToolResult, error) {
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "posts", "User", true)
+	// Build query parameters
+	query := BuildQueryParameters()
 
-}
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
 
-// ListUserRichMediaDocumentsHandler handles list_user_rich_media_documents
-func ListUserRichMediaDocumentsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("User")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "rich_media_documents", "User", false)
+	// Add other parameters
 
-}
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
 
-// CreateUserStagingResourceHandler handles create_user_staging_resource
-func CreateUserStagingResourceHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
 
-	// Use standard POST handler
-	return StandardPOSTHandler(ctx, request, "staging_resources", true)
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
 
-}
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
 
-// ListUserVideosHandler handles list_user_videos
-func ListUserVideosHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "albums")
+	fullURL := BuildURLWithQuery(baseURL, query)
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "videos", "User", true)
-
-}
-
-// CreateUserVideoHandler handles create_user_video
-func CreateUserVideoHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-
-	// Use standard POST handler
-	return StandardPOSTHandler(ctx, request, "videos", true)
-
-}
-
-// DeleteUserHandler handles delete_user
-func DeleteUserHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-
-	// Use standard DELETE handler
-	return StandardDELETEHandler(ctx, request, "")
-
-}
-
-// GetUserHandler handles get_user
-func GetUserHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "", "User", true)
+	return ExecuteGETRequest(ctx, fullURL)
 
 }
 
-// UpdateUserHandler handles update_user
-func UpdateUserHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// CreateUserApplicationHandler handles create_user_application with typed arguments
+func CreateUserApplicationHandler(ctx context.Context, request mcp.CallToolRequest, args create_user_applicationArgs) (*mcp.CallToolResult, error) {
 
-	// Use standard POST handler
-	return StandardPOSTHandler(ctx, request, "", true)
+	// Build request body
+	body := make(map[string]interface{})
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Add parameters to body
+
+	if args.BusinessApp > 0 {
+		body["business_app"] = args.BusinessApp
+	}
+
+	// Build URL and execute
+	url := buildGraphURL(args.ID, "applications")
+
+	return ExecutePOSTRequest(ctx, url, body)
+
+}
+
+// ListUserApprequestformerrecipientsHandler handles list_user_apprequestformerrecipients with typed arguments
+func ListUserApprequestformerrecipientsHandler(ctx context.Context, request mcp.CallToolRequest, args list_user_apprequestformerrecipientsArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("User")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL("", "apprequestformerrecipients")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
+}
+
+// ListUserApprequestsHandler handles list_user_apprequests with typed arguments
+func ListUserApprequestsHandler(ctx context.Context, request mcp.CallToolRequest, args list_user_apprequestsArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("User")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "apprequests")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
+}
+
+// ListUserAssignedAdAccountsHandler handles list_user_assigned_ad_accounts with typed arguments
+func ListUserAssignedAdAccountsHandler(ctx context.Context, request mcp.CallToolRequest, args list_user_assigned_ad_accountsArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("User")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "assigned_ad_accounts")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
+}
+
+// ListUserAssignedApplicationsHandler handles list_user_assigned_applications with typed arguments
+func ListUserAssignedApplicationsHandler(ctx context.Context, request mcp.CallToolRequest, args list_user_assigned_applicationsArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("User")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "assigned_applications")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
+}
+
+// ListUserAssignedBusinessAssetGroupsHandler handles list_user_assigned_business_asset_groups with typed arguments
+func ListUserAssignedBusinessAssetGroupsHandler(ctx context.Context, request mcp.CallToolRequest, args list_user_assigned_business_asset_groupsArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("User")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	if args.ContainedAssetId != "" {
+		query.Set("contained_asset_id", args.ContainedAssetId)
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "assigned_business_asset_groups")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
+}
+
+// ListUserAssignedPagesHandler handles list_user_assigned_pages with typed arguments
+func ListUserAssignedPagesHandler(ctx context.Context, request mcp.CallToolRequest, args list_user_assigned_pagesArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("User")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "assigned_pages")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
+}
+
+// ListUserAssignedProductCatalogsHandler handles list_user_assigned_product_catalogs with typed arguments
+func ListUserAssignedProductCatalogsHandler(ctx context.Context, request mcp.CallToolRequest, args list_user_assigned_product_catalogsArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("User")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "assigned_product_catalogs")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
+}
+
+// ListUserAvatarsHandler handles list_user_avatars with typed arguments
+func ListUserAvatarsHandler(ctx context.Context, request mcp.CallToolRequest, args list_user_avatarsArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("User")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "avatars")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
+}
+
+// ListUserBusinessUsersHandler handles list_user_business_users with typed arguments
+func ListUserBusinessUsersHandler(ctx context.Context, request mcp.CallToolRequest, args list_user_business_usersArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("User")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL("", "business_users")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
+}
+
+// RemoveBusinessesFromUserHandler handles remove_businesses_from_user with typed arguments
+func RemoveBusinessesFromUserHandler(ctx context.Context, request mcp.CallToolRequest, args remove_businesses_from_userArgs) (*mcp.CallToolResult, error) {
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Build URL and execute
+	url := buildGraphURL(args.ID, "businesses")
+
+	return ExecuteDELETERequest(ctx, url)
+
+}
+
+// ListUserBusinessesHandler handles list_user_businesses with typed arguments
+func ListUserBusinessesHandler(ctx context.Context, request mcp.CallToolRequest, args list_user_businessesArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("User")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "businesses")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
+}
+
+// CreateUserBusinesseHandler handles create_user_businesse with typed arguments
+func CreateUserBusinesseHandler(ctx context.Context, request mcp.CallToolRequest, args create_user_businesseArgs) (*mcp.CallToolResult, error) {
+
+	// Build request body
+	body := make(map[string]interface{})
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Add parameters to body
+
+	if args.ChildBusinessExternalId != "" {
+		body["child_business_external_id"] = args.ChildBusinessExternalId
+	}
+
+	if args.Email != "" {
+		body["email"] = args.Email
+	}
+
+	if args.Name != "" {
+		body["name"] = args.Name
+	}
+
+	if args.PrimaryPage != "" {
+		body["primary_page"] = args.PrimaryPage
+	}
+
+	if args.SalesRepEmail != "" {
+		body["sales_rep_email"] = args.SalesRepEmail
+	}
+
+	if args.SurveyBusinessType != "" {
+		body["survey_business_type"] = args.SurveyBusinessType
+	}
+
+	if args.SurveyNumAssets > 0 {
+		body["survey_num_assets"] = args.SurveyNumAssets
+	}
+
+	if args.SurveyNumPeople > 0 {
+		body["survey_num_people"] = args.SurveyNumPeople
+	}
+
+	if args.TimezoneId != "" {
+		body["timezone_id"] = args.TimezoneId
+	}
+
+	if args.Vertical != "" {
+		body["vertical"] = args.Vertical
+	}
+
+	// Build URL and execute
+	url := buildGraphURL(args.ID, "businesses")
+
+	return ExecutePOSTRequest(ctx, url, body)
+
+}
+
+// ListUserConversationsHandler handles list_user_conversations with typed arguments
+func ListUserConversationsHandler(ctx context.Context, request mcp.CallToolRequest, args list_user_conversationsArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("User")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	if args.Folder != "" {
+		query.Set("folder", args.Folder)
+	}
+
+	if args.Platform != "" {
+		query.Set("platform", args.Platform)
+	}
+
+	if len(args.Tags) > 0 {
+		query.Set("tags", strings.Join(args.Tags, ","))
+	}
+
+	if args.UserId != "" {
+		query.Set("user_id", args.UserId)
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "conversations")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
+}
+
+// ListUserCustomLabelsHandler handles list_user_custom_labels with typed arguments
+func ListUserCustomLabelsHandler(ctx context.Context, request mcp.CallToolRequest, args list_user_custom_labelsArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("User")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "custom_labels")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
+}
+
+// ListUserEventsHandler handles list_user_events with typed arguments
+func ListUserEventsHandler(ctx context.Context, request mcp.CallToolRequest, args list_user_eventsArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("User")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	if args.IncludeCanceled {
+		query.Set("include_canceled", "true")
+	}
+
+	if args.Type != "" {
+		query.Set("type", args.Type)
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "events")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
+}
+
+// GetUserFeedHandler handles get_user_feed with typed arguments
+func GetUserFeedHandler(ctx context.Context, request mcp.CallToolRequest, args get_user_feedArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("User")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	if args.IncludeHidden {
+		query.Set("include_hidden", "true")
+	}
+
+	if args.Q != "" {
+		query.Set("q", args.Q)
+	}
+
+	if args.ShowExpired {
+		query.Set("show_expired", "true")
+	}
+
+	if args.With != "" {
+		query.Set("with", args.With)
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "feed")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
+}
+
+// UpdateUserFeedHandler handles update_user_feed with typed arguments
+func UpdateUserFeedHandler(ctx context.Context, request mcp.CallToolRequest, args update_user_feedArgs) (*mcp.CallToolResult, error) {
+
+	// Build request body
+	body := make(map[string]interface{})
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Add parameters to body
+
+	if args.Actions != nil {
+		body["actions"] = args.Actions
+	}
+
+	if args.AlbumId != "" {
+		body["album_id"] = args.AlbumId
+	}
+
+	if args.AndroidKeyHash != "" {
+		body["android_key_hash"] = args.AndroidKeyHash
+	}
+
+	if args.ApplicationId != "" {
+		body["application_id"] = args.ApplicationId
+	}
+
+	if args.AskedFunFactPromptId > 0 {
+		body["asked_fun_fact_prompt_id"] = args.AskedFunFactPromptId
+	}
+
+	if args.Asset3dId != "" {
+		body["asset3d_id"] = args.Asset3dId
+	}
+
+	if args.AssociatedId != "" {
+		body["associated_id"] = args.AssociatedId
+	}
+
+	body["attach_place_suggestion"] = args.AttachPlaceSuggestion
+
+	if len(args.AttachedMedia) > 0 {
+		body["attached_media"] = args.AttachedMedia
+	}
+
+	body["audience_exp"] = args.AudienceExp
+
+	if args.BackdatedTimeGranularity != "" {
+		body["backdated_time_granularity"] = args.BackdatedTimeGranularity
+	}
+
+	body["breaking_news"] = args.BreakingNews
+
+	if args.BreakingNewsExpiration > 0 {
+		body["breaking_news_expiration"] = args.BreakingNewsExpiration
+	}
+
+	if args.CallToAction != nil {
+		body["call_to_action"] = args.CallToAction
+	}
+
+	if args.Caption != "" {
+		body["caption"] = args.Caption
+	}
+
+	if len(args.ChildAttachments) > 0 {
+		body["child_attachments"] = args.ChildAttachments
+	}
+
+	if args.ClientMutationId != "" {
+		body["client_mutation_id"] = args.ClientMutationId
+	}
+
+	if args.ComposerEntryPicker != "" {
+		body["composer_entry_picker"] = args.ComposerEntryPicker
+	}
+
+	if args.ComposerEntryPoint != "" {
+		body["composer_entry_point"] = args.ComposerEntryPoint
+	}
+
+	if args.ComposerEntryTime > 0 {
+		body["composer_entry_time"] = args.ComposerEntryTime
+	}
+
+	if args.ComposerSessionEventsLog != "" {
+		body["composer_session_events_log"] = args.ComposerSessionEventsLog
+	}
+
+	if args.ComposerSessionId != "" {
+		body["composer_session_id"] = args.ComposerSessionId
+	}
+
+	if args.ComposerSourceSurface != "" {
+		body["composer_source_surface"] = args.ComposerSourceSurface
+	}
+
+	if args.ComposerType != "" {
+		body["composer_type"] = args.ComposerType
+	}
+
+	if args.ConnectionClass != "" {
+		body["connection_class"] = args.ConnectionClass
+	}
+
+	if args.ContentAttachment != "" {
+		body["content_attachment"] = args.ContentAttachment
+	}
+
+	if args.Coordinates != nil {
+		body["coordinates"] = args.Coordinates
+	}
+
+	if args.CtaLink != "" {
+		body["cta_link"] = args.CtaLink
+	}
+
+	if args.CtaType != "" {
+		body["cta_type"] = args.CtaType
+	}
+
+	if args.Description != "" {
+		body["description"] = args.Description
+	}
+
+	if args.DirectShareStatus > 0 {
+		body["direct_share_status"] = args.DirectShareStatus
+	}
+
+	if args.ExpandedHeight > 0 {
+		body["expanded_height"] = args.ExpandedHeight
+	}
+
+	if args.ExpandedWidth > 0 {
+		body["expanded_width"] = args.ExpandedWidth
+	}
+
+	if args.FeedTargeting != nil {
+		body["feed_targeting"] = args.FeedTargeting
+	}
+
+	if args.Formatting != "" {
+		body["formatting"] = args.Formatting
+	}
+
+	if args.FunFactPromptId != "" {
+		body["fun_fact_prompt_id"] = args.FunFactPromptId
+	}
+
+	if args.FunFactToasteeId > 0 {
+		body["fun_fact_toastee_id"] = args.FunFactToasteeId
+	}
+
+	if args.Height > 0 {
+		body["height"] = args.Height
+	}
+
+	if args.HomeCheckinCityId != nil {
+		body["home_checkin_city_id"] = args.HomeCheckinCityId
+	}
+
+	if args.ImageCrops != nil {
+		body["image_crops"] = args.ImageCrops
+	}
+
+	if args.InstantGameEntryPointData != "" {
+		body["instant_game_entry_point_data"] = args.InstantGameEntryPointData
+	}
+
+	if args.IosBundleId != "" {
+		body["ios_bundle_id"] = args.IosBundleId
+	}
+
+	body["is_backout_draft"] = args.IsBackoutDraft
+
+	body["is_boost_intended"] = args.IsBoostIntended
+
+	body["is_explicit_location"] = args.IsExplicitLocation
+
+	body["is_explicit_share"] = args.IsExplicitShare
+
+	body["is_group_linking_post"] = args.IsGroupLinkingPost
+
+	body["is_photo_container"] = args.IsPhotoContainer
+
+	if args.Link != "" {
+		body["link"] = args.Link
+	}
+
+	if args.LocationSourceId != "" {
+		body["location_source_id"] = args.LocationSourceId
+	}
+
+	body["manual_privacy"] = args.ManualPrivacy
+
+	if args.Message != "" {
+		body["message"] = args.Message
+	}
+
+	body["multi_share_end_card"] = args.MultiShareEndCard
+
+	body["multi_share_optimized"] = args.MultiShareOptimized
+
+	if args.Name != "" {
+		body["name"] = args.Name
+	}
+
+	if args.NectarModule != "" {
+		body["nectar_module"] = args.NectarModule
+	}
+
+	if args.ObjectAttachment != "" {
+		body["object_attachment"] = args.ObjectAttachment
+	}
+
+	if args.OgActionTypeId != "" {
+		body["og_action_type_id"] = args.OgActionTypeId
+	}
+
+	body["og_hide_object_attachment"] = args.OgHideObjectAttachment
+
+	if args.OgIconId != "" {
+		body["og_icon_id"] = args.OgIconId
+	}
+
+	if args.OgObjectId != "" {
+		body["og_object_id"] = args.OgObjectId
+	}
+
+	if args.OgPhrase != "" {
+		body["og_phrase"] = args.OgPhrase
+	}
+
+	body["og_set_profile_badge"] = args.OgSetProfileBadge
+
+	if args.OgSuggestionMechanism != "" {
+		body["og_suggestion_mechanism"] = args.OgSuggestionMechanism
+	}
+
+	if args.PageRecommendation != "" {
+		body["page_recommendation"] = args.PageRecommendation
+	}
+
+	if args.Picture != "" {
+		body["picture"] = args.Picture
+	}
+
+	if args.Place != nil {
+		body["place"] = args.Place
+	}
+
+	if args.PlaceAttachmentSetting != "" {
+		body["place_attachment_setting"] = args.PlaceAttachmentSetting
+	}
+
+	if args.PlaceList != "" {
+		body["place_list"] = args.PlaceList
+	}
+
+	if args.PostingToRedspace != "" {
+		body["posting_to_redspace"] = args.PostingToRedspace
+	}
+
+	if args.Privacy != "" {
+		body["privacy"] = args.Privacy
+	}
+
+	if args.PromptId != "" {
+		body["prompt_id"] = args.PromptId
+	}
+
+	if args.PromptTrackingString != "" {
+		body["prompt_tracking_string"] = args.PromptTrackingString
+	}
+
+	if args.Properties != nil {
+		body["properties"] = args.Properties
+	}
+
+	if args.ProxiedAppId != "" {
+		body["proxied_app_id"] = args.ProxiedAppId
+	}
+
+	if args.PublishEventId > 0 {
+		body["publish_event_id"] = args.PublishEventId
+	}
+
+	body["published"] = args.Published
+
+	if args.Quote != "" {
+		body["quote"] = args.Quote
+	}
+
+	if len(args.Ref) > 0 {
+		body["ref"] = args.Ref
+	}
+
+	if len(args.ReferenceableImageIds) > 0 {
+		body["referenceable_image_ids"] = args.ReferenceableImageIds
+	}
+
+	if args.ReferralId != "" {
+		body["referral_id"] = args.ReferralId
+	}
+
+	if args.Source != "" {
+		body["source"] = args.Source
+	}
+
+	if args.SponsorId != "" {
+		body["sponsor_id"] = args.SponsorId
+	}
+
+	if args.SponsorRelationship > 0 {
+		body["sponsor_relationship"] = args.SponsorRelationship
+	}
+
+	if args.SuggestedPlaceId != nil {
+		body["suggested_place_id"] = args.SuggestedPlaceId
+	}
+
+	if args.TargetSurface != "" {
+		body["target_surface"] = args.TargetSurface
+	}
+
+	if args.Targeting != nil {
+		body["targeting"] = args.Targeting
+	}
+
+	if args.TextFormatMetadata != "" {
+		body["text_format_metadata"] = args.TextFormatMetadata
+	}
+
+	if args.TextFormatPresetId != "" {
+		body["text_format_preset_id"] = args.TextFormatPresetId
+	}
+
+	if args.TextOnlyPlace != "" {
+		body["text_only_place"] = args.TextOnlyPlace
+	}
+
+	if args.TimeSinceOriginalPost > 0 {
+		body["time_since_original_post"] = args.TimeSinceOriginalPost
+	}
+
+	if args.Title != "" {
+		body["title"] = args.Title
+	}
+
+	if args.TrackingInfo != "" {
+		body["tracking_info"] = args.TrackingInfo
+	}
+
+	if args.UnpublishedContentType != "" {
+		body["unpublished_content_type"] = args.UnpublishedContentType
+	}
+
+	body["user_selected_tags"] = args.UserSelectedTags
+
+	if args.VideoStartTimeMs > 0 {
+		body["video_start_time_ms"] = args.VideoStartTimeMs
+	}
+
+	if args.ViewerCoordinates != nil {
+		body["viewer_coordinates"] = args.ViewerCoordinates
+	}
+
+	if args.Width > 0 {
+		body["width"] = args.Width
+	}
+
+	// Build URL and execute
+	url := buildGraphURL(args.ID, "feed")
+
+	return ExecutePOSTRequest(ctx, url, body)
+
+}
+
+// ListUserFriendsHandler handles list_user_friends with typed arguments
+func ListUserFriendsHandler(ctx context.Context, request mcp.CallToolRequest, args list_user_friendsArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("User")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	if args.Uid > 0 {
+		query.Set("uid", fmt.Sprintf("%d", args.Uid))
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "friends")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
+}
+
+// ListUserFundraisersHandler handles list_user_fundraisers with typed arguments
+func ListUserFundraisersHandler(ctx context.Context, request mcp.CallToolRequest, args list_user_fundraisersArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("User")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "fundraisers")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
+}
+
+// CreateUserFundraiserHandler handles create_user_fundraiser with typed arguments
+func CreateUserFundraiserHandler(ctx context.Context, request mcp.CallToolRequest, args create_user_fundraiserArgs) (*mcp.CallToolResult, error) {
+
+	// Build request body
+	body := make(map[string]interface{})
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Add parameters to body
+
+	if args.CharityId != "" {
+		body["charity_id"] = args.CharityId
+	}
+
+	if args.Currency != "" {
+		body["currency"] = args.Currency
+	}
+
+	if args.Description != "" {
+		body["description"] = args.Description
+	}
+
+	if args.ExternalEventName != "" {
+		body["external_event_name"] = args.ExternalEventName
+	}
+
+	if args.ExternalEventUri != "" {
+		body["external_event_uri"] = args.ExternalEventUri
+	}
+
+	if args.ExternalFundraiserUri != "" {
+		body["external_fundraiser_uri"] = args.ExternalFundraiserUri
+	}
+
+	if args.ExternalId != "" {
+		body["external_id"] = args.ExternalId
+	}
+
+	if args.FundraiserType != "" {
+		body["fundraiser_type"] = args.FundraiserType
+	}
+
+	if args.GoalAmount > 0 {
+		body["goal_amount"] = args.GoalAmount
+	}
+
+	if args.Name != "" {
+		body["name"] = args.Name
+	}
+
+	if args.PageId != "" {
+		body["page_id"] = args.PageId
+	}
+
+	// Build URL and execute
+	url := buildGraphURL(args.ID, "fundraisers")
+
+	return ExecutePOSTRequest(ctx, url, body)
+
+}
+
+// ListUserGroupsHandler handles list_user_groups with typed arguments
+func ListUserGroupsHandler(ctx context.Context, request mcp.CallToolRequest, args list_user_groupsArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("User")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	if args.AdminOnly {
+		query.Set("admin_only", "true")
+	}
+
+	if args.Parent != "" {
+		query.Set("parent", args.Parent)
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "groups")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
+}
+
+// ListUserIdsForAppsHandler handles list_user_ids_for_apps with typed arguments
+func ListUserIdsForAppsHandler(ctx context.Context, request mcp.CallToolRequest, args list_user_ids_for_appsArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("User")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	if args.App > 0 {
+		query.Set("app", fmt.Sprintf("%d", args.App))
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "ids_for_apps")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
+}
+
+// ListUserIdsForBusinessHandler handles list_user_ids_for_business with typed arguments
+func ListUserIdsForBusinessHandler(ctx context.Context, request mcp.CallToolRequest, args list_user_ids_for_businessArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("User")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	if args.App > 0 {
+		query.Set("app", fmt.Sprintf("%d", args.App))
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "ids_for_business")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
+}
+
+// ListUserIdsForPagesHandler handles list_user_ids_for_pages with typed arguments
+func ListUserIdsForPagesHandler(ctx context.Context, request mcp.CallToolRequest, args list_user_ids_for_pagesArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("User")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	if args.Page > 0 {
+		query.Set("page", fmt.Sprintf("%d", args.Page))
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "ids_for_pages")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
+}
+
+// ListUserLikesHandler handles list_user_likes with typed arguments
+func ListUserLikesHandler(ctx context.Context, request mcp.CallToolRequest, args list_user_likesArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("User")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	if args.TargetId != "" {
+		query.Set("target_id", args.TargetId)
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "likes")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
+}
+
+// ListUserLiveVideosHandler handles list_user_live_videos with typed arguments
+func ListUserLiveVideosHandler(ctx context.Context, request mcp.CallToolRequest, args list_user_live_videosArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("User")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	if args.Source != "" {
+		query.Set("source", args.Source)
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "live_videos")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
+}
+
+// CreateUserLiveVideoHandler handles create_user_live_video with typed arguments
+func CreateUserLiveVideoHandler(ctx context.Context, request mcp.CallToolRequest, args create_user_live_videoArgs) (*mcp.CallToolResult, error) {
+
+	// Build request body
+	body := make(map[string]interface{})
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Add parameters to body
+
+	if len(args.ContentTags) > 0 {
+		body["content_tags"] = args.ContentTags
+	}
+
+	if args.Description != "" {
+		body["description"] = args.Description
+	}
+
+	body["enable_backup_ingest"] = args.EnableBackupIngest
+
+	if args.EncodingSettings != "" {
+		body["encoding_settings"] = args.EncodingSettings
+	}
+
+	if args.EventParams != nil {
+		body["event_params"] = args.EventParams
+	}
+
+	body["fisheye_video_cropped"] = args.FisheyeVideoCropped
+
+	body["is_audio_only"] = args.IsAudioOnly
+
+	body["is_spherical"] = args.IsSpherical
+
+	if args.OriginalFov > 0 {
+		body["original_fov"] = args.OriginalFov
+	}
+
+	if args.Privacy != "" {
+		body["privacy"] = args.Privacy
+	}
+
+	if args.Projection != "" {
+		body["projection"] = args.Projection
+	}
+
+	body["published"] = args.Published
+
+	if args.SpatialAudioFormat != "" {
+		body["spatial_audio_format"] = args.SpatialAudioFormat
+	}
+
+	if args.Status != "" {
+		body["status"] = args.Status
+	}
+
+	if args.StereoscopicMode != "" {
+		body["stereoscopic_mode"] = args.StereoscopicMode
+	}
+
+	body["stop_on_delete_stream"] = args.StopOnDeleteStream
+
+	if args.StreamType != "" {
+		body["stream_type"] = args.StreamType
+	}
+
+	if args.Title != "" {
+		body["title"] = args.Title
+	}
+
+	// Build URL and execute
+	url := buildGraphURL(args.ID, "live_videos")
+
+	return ExecutePOSTRequest(ctx, url, body)
+
+}
+
+// CreateUserMessengerDesktopPerformanceTraceHandler handles create_user_messenger_desktop_performance_trace with typed arguments
+func CreateUserMessengerDesktopPerformanceTraceHandler(ctx context.Context, request mcp.CallToolRequest, args create_user_messenger_desktop_performance_traceArgs) (*mcp.CallToolResult, error) {
+
+	// Build request body
+	body := make(map[string]interface{})
+
+	// Add parameters to body
+
+	// Build URL and execute
+	url := buildGraphURL("", "messenger_desktop_performance_traces")
+
+	return ExecutePOSTRequest(ctx, url, body)
+
+}
+
+// UpdateUserMessengerKidsAccountsUnreadBadgeHandler handles update_user_messenger_kids_accounts_unread_badge with typed arguments
+func UpdateUserMessengerKidsAccountsUnreadBadgeHandler(ctx context.Context, request mcp.CallToolRequest, args update_user_messenger_kids_accounts_unread_badgeArgs) (*mcp.CallToolResult, error) {
+
+	// Build request body
+	body := make(map[string]interface{})
+
+	// Add parameters to body
+
+	if args.ProxiedAppId > 0 {
+		body["proxied_app_id"] = args.ProxiedAppId
+	}
+
+	// Build URL and execute
+	url := buildGraphURL("", "messenger_kids_accounts_unread_badge")
+
+	return ExecutePOSTRequest(ctx, url, body)
+
+}
+
+// GetUserMusicHandler handles get_user_music with typed arguments
+func GetUserMusicHandler(ctx context.Context, request mcp.CallToolRequest, args get_user_musicArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("User")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	if args.TargetId != "" {
+		query.Set("target_id", args.TargetId)
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "music")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
+}
+
+// CreateUserNotificationHandler handles create_user_notification with typed arguments
+func CreateUserNotificationHandler(ctx context.Context, request mcp.CallToolRequest, args create_user_notificationArgs) (*mcp.CallToolResult, error) {
+
+	// Build request body
+	body := make(map[string]interface{})
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Add parameters to body
+
+	if args.BotMessagePayloadElements != "" {
+		body["bot_message_payload_elements"] = args.BotMessagePayloadElements
+	}
+
+	if args.Href != nil {
+		body["href"] = args.Href
+	}
+
+	if args.Label != "" {
+		body["label"] = args.Label
+	}
+
+	if args.Message != nil {
+		body["message"] = args.Message
+	}
+
+	if len(args.NotifIds) > 0 {
+		body["notif_ids"] = args.NotifIds
+	}
+
+	if args.Payload != "" {
+		body["payload"] = args.Payload
+	}
+
+	body["read"] = args.Read
+
+	if args.Ref != "" {
+		body["ref"] = args.Ref
+	}
+
+	if args.ScheduleInterval > 0 {
+		body["schedule_interval"] = args.ScheduleInterval
+	}
+
+	body["seen"] = args.Seen
+
+	if args.Template != nil {
+		body["template"] = args.Template
+	}
+
+	if args.Type != "" {
+		body["type"] = args.Type
+	}
+
+	// Build URL and execute
+	url := buildGraphURL(args.ID, "notifications")
+
+	return ExecutePOSTRequest(ctx, url, body)
+
+}
+
+// ListUserPaymentTransactionsHandler handles list_user_payment_transactions with typed arguments
+func ListUserPaymentTransactionsHandler(ctx context.Context, request mcp.CallToolRequest, args list_user_payment_transactionsArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("User")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL("", "payment_transactions")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
+}
+
+// RemovePermissionsFromUserHandler handles remove_permissions_from_user with typed arguments
+func RemovePermissionsFromUserHandler(ctx context.Context, request mcp.CallToolRequest, args remove_permissions_from_userArgs) (*mcp.CallToolResult, error) {
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Build URL and execute
+	url := buildGraphURL(args.ID, "permissions")
+
+	return ExecuteDELETERequest(ctx, url)
+
+}
+
+// ListUserPermissionsHandler handles list_user_permissions with typed arguments
+func ListUserPermissionsHandler(ctx context.Context, request mcp.CallToolRequest, args list_user_permissionsArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("User")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	if args.Permission != "" {
+		query.Set("permission", args.Permission)
+	}
+
+	if args.Status != "" {
+		query.Set("status", args.Status)
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "permissions")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
+}
+
+// ListUserPersonalAdAccountsHandler handles list_user_personal_ad_accounts with typed arguments
+func ListUserPersonalAdAccountsHandler(ctx context.Context, request mcp.CallToolRequest, args list_user_personal_ad_accountsArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("User")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "personal_ad_accounts")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
+}
+
+// ListUserPhotosHandler handles list_user_photos with typed arguments
+func ListUserPhotosHandler(ctx context.Context, request mcp.CallToolRequest, args list_user_photosArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("User")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	if args.Type != "" {
+		query.Set("type", args.Type)
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "photos")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
+}
+
+// CreateUserPhotoHandler handles create_user_photo with typed arguments
+func CreateUserPhotoHandler(ctx context.Context, request mcp.CallToolRequest, args create_user_photoArgs) (*mcp.CallToolResult, error) {
+
+	// Build request body
+	body := make(map[string]interface{})
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Add parameters to body
+
+	if args.Aid != "" {
+		body["aid"] = args.Aid
+	}
+
+	body["allow_spherical_photo"] = args.AllowSphericalPhoto
+
+	if args.AltTextCustom != "" {
+		body["alt_text_custom"] = args.AltTextCustom
+	}
+
+	if args.AndroidKeyHash != "" {
+		body["android_key_hash"] = args.AndroidKeyHash
+	}
+
+	if args.ApplicationId != "" {
+		body["application_id"] = args.ApplicationId
+	}
+
+	if args.Attempt > 0 {
+		body["attempt"] = args.Attempt
+	}
+
+	body["audience_exp"] = args.AudienceExp
+
+	if args.BackdatedTimeGranularity != "" {
+		body["backdated_time_granularity"] = args.BackdatedTimeGranularity
+	}
+
+	if args.Caption != "" {
+		body["caption"] = args.Caption
+	}
+
+	if args.ComposerSessionId != "" {
+		body["composer_session_id"] = args.ComposerSessionId
+	}
+
+	if args.DirectShareStatus > 0 {
+		body["direct_share_status"] = args.DirectShareStatus
+	}
+
+	if args.FeedTargeting != nil {
+		body["feed_targeting"] = args.FeedTargeting
+	}
+
+	if args.FilterType > 0 {
+		body["filter_type"] = args.FilterType
+	}
+
+	body["full_res_is_coming_later"] = args.FullResIsComingLater
+
+	if args.InitialViewHeadingOverrideDegrees > 0 {
+		body["initial_view_heading_override_degrees"] = args.InitialViewHeadingOverrideDegrees
+	}
+
+	if args.InitialViewPitchOverrideDegrees > 0 {
+		body["initial_view_pitch_override_degrees"] = args.InitialViewPitchOverrideDegrees
+	}
+
+	if args.InitialViewVerticalFovOverrideDegrees > 0 {
+		body["initial_view_vertical_fov_override_degrees"] = args.InitialViewVerticalFovOverrideDegrees
+	}
+
+	if args.IosBundleId != "" {
+		body["ios_bundle_id"] = args.IosBundleId
+	}
+
+	body["is_explicit_location"] = args.IsExplicitLocation
+
+	body["is_explicit_place"] = args.IsExplicitPlace
+
+	body["manual_privacy"] = args.ManualPrivacy
+
+	if args.Message != "" {
+		body["message"] = args.Message
+	}
+
+	if args.Name != "" {
+		body["name"] = args.Name
+	}
+
+	body["no_story"] = args.NoStory
+
+	if args.OfflineId > 0 {
+		body["offline_id"] = args.OfflineId
+	}
+
+	if args.OgActionTypeId != "" {
+		body["og_action_type_id"] = args.OgActionTypeId
+	}
+
+	if args.OgIconId != "" {
+		body["og_icon_id"] = args.OgIconId
+	}
+
+	if args.OgObjectId != "" {
+		body["og_object_id"] = args.OgObjectId
+	}
+
+	if args.OgPhrase != "" {
+		body["og_phrase"] = args.OgPhrase
+	}
+
+	body["og_set_profile_badge"] = args.OgSetProfileBadge
+
+	if args.OgSuggestionMechanism != "" {
+		body["og_suggestion_mechanism"] = args.OgSuggestionMechanism
+	}
+
+	if args.Place != nil {
+		body["place"] = args.Place
+	}
+
+	if args.Privacy != "" {
+		body["privacy"] = args.Privacy
+	}
+
+	if args.ProfileId > 0 {
+		body["profile_id"] = args.ProfileId
+	}
+
+	if args.ProvenanceInfo != nil {
+		body["provenance_info"] = args.ProvenanceInfo
+	}
+
+	if args.ProxiedAppId != "" {
+		body["proxied_app_id"] = args.ProxiedAppId
+	}
+
+	body["published"] = args.Published
+
+	if args.Qn != "" {
+		body["qn"] = args.Qn
+	}
+
+	if args.ScheduledPublishTime > 0 {
+		body["scheduled_publish_time"] = args.ScheduledPublishTime
+	}
+
+	if args.SphericalMetadata != nil {
+		body["spherical_metadata"] = args.SphericalMetadata
+	}
+
+	if args.SponsorId != "" {
+		body["sponsor_id"] = args.SponsorId
+	}
+
+	if args.SponsorRelationship > 0 {
+		body["sponsor_relationship"] = args.SponsorRelationship
+	}
+
+	if len(args.Tags) > 0 {
+		body["tags"] = args.Tags
+	}
+
+	if args.TargetId > 0 {
+		body["target_id"] = args.TargetId
+	}
+
+	if args.Targeting != nil {
+		body["targeting"] = args.Targeting
+	}
+
+	if args.TimeSinceOriginalPost > 0 {
+		body["time_since_original_post"] = args.TimeSinceOriginalPost
+	}
+
+	if args.Uid > 0 {
+		body["uid"] = args.Uid
+	}
+
+	if args.UnpublishedContentType != "" {
+		body["unpublished_content_type"] = args.UnpublishedContentType
+	}
+
+	if args.Url != "" {
+		body["url"] = args.Url
+	}
+
+	body["user_selected_tags"] = args.UserSelectedTags
+
+	if args.VaultImageId != "" {
+		body["vault_image_id"] = args.VaultImageId
+	}
+
+	// Build URL and execute
+	url := buildGraphURL(args.ID, "photos")
+
+	return ExecutePOSTRequest(ctx, url, body)
+
+}
+
+// GetUserPictureHandler handles get_user_picture with typed arguments
+func GetUserPictureHandler(ctx context.Context, request mcp.CallToolRequest, args get_user_pictureArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("User")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	if args.Height > 0 {
+		query.Set("height", fmt.Sprintf("%d", args.Height))
+	}
+
+	if args.Redirect {
+		query.Set("redirect", "true")
+	}
+
+	if args.Type != "" {
+		query.Set("type", args.Type)
+	}
+
+	if args.Width > 0 {
+		query.Set("width", fmt.Sprintf("%d", args.Width))
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "picture")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
+}
+
+// ListUserPostsHandler handles list_user_posts with typed arguments
+func ListUserPostsHandler(ctx context.Context, request mcp.CallToolRequest, args list_user_postsArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("User")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	if args.IncludeHidden {
+		query.Set("include_hidden", "true")
+	}
+
+	if args.Q != "" {
+		query.Set("q", args.Q)
+	}
+
+	if args.ShowExpired {
+		query.Set("show_expired", "true")
+	}
+
+	if args.With != "" {
+		query.Set("with", args.With)
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "posts")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
+}
+
+// ListUserRichMediaDocumentsHandler handles list_user_rich_media_documents with typed arguments
+func ListUserRichMediaDocumentsHandler(ctx context.Context, request mcp.CallToolRequest, args list_user_rich_media_documentsArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("User")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	if args.Query != "" {
+		query.Set("query", args.Query)
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL("", "rich_media_documents")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
+}
+
+// CreateUserStagingResourceHandler handles create_user_staging_resource with typed arguments
+func CreateUserStagingResourceHandler(ctx context.Context, request mcp.CallToolRequest, args create_user_staging_resourceArgs) (*mcp.CallToolResult, error) {
+
+	// Build request body
+	body := make(map[string]interface{})
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Add parameters to body
+
+	// Build URL and execute
+	url := buildGraphURL(args.ID, "staging_resources")
+
+	return ExecutePOSTRequest(ctx, url, body)
+
+}
+
+// ListUserVideosHandler handles list_user_videos with typed arguments
+func ListUserVideosHandler(ctx context.Context, request mcp.CallToolRequest, args list_user_videosArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("User")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	if args.Type != "" {
+		query.Set("type", args.Type)
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "videos")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
+}
+
+// CreateUserVideoHandler handles create_user_video with typed arguments
+func CreateUserVideoHandler(ctx context.Context, request mcp.CallToolRequest, args create_user_videoArgs) (*mcp.CallToolResult, error) {
+
+	// Build request body
+	body := make(map[string]interface{})
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Add parameters to body
+
+	if args.ApplicationId != "" {
+		body["application_id"] = args.ApplicationId
+	}
+
+	if args.AskedFunFactPromptId > 0 {
+		body["asked_fun_fact_prompt_id"] = args.AskedFunFactPromptId
+	}
+
+	if args.AudioStoryWaveAnimationHandle != "" {
+		body["audio_story_wave_animation_handle"] = args.AudioStoryWaveAnimationHandle
+	}
+
+	if args.ComposerEntryPicker != "" {
+		body["composer_entry_picker"] = args.ComposerEntryPicker
+	}
+
+	if args.ComposerEntryPoint != "" {
+		body["composer_entry_point"] = args.ComposerEntryPoint
+	}
+
+	if args.ComposerEntryTime > 0 {
+		body["composer_entry_time"] = args.ComposerEntryTime
+	}
+
+	if args.ComposerSessionEventsLog != "" {
+		body["composer_session_events_log"] = args.ComposerSessionEventsLog
+	}
+
+	if args.ComposerSessionId != "" {
+		body["composer_session_id"] = args.ComposerSessionId
+	}
+
+	if args.ComposerSourceSurface != "" {
+		body["composer_source_surface"] = args.ComposerSourceSurface
+	}
+
+	if args.ComposerType != "" {
+		body["composer_type"] = args.ComposerType
+	}
+
+	if args.ContainerType != "" {
+		body["container_type"] = args.ContainerType
+	}
+
+	if args.ContentCategory != "" {
+		body["content_category"] = args.ContentCategory
+	}
+
+	if args.CreativeTools != "" {
+		body["creative_tools"] = args.CreativeTools
+	}
+
+	if args.Description != "" {
+		body["description"] = args.Description
+	}
+
+	if args.DirectShareStatus > 0 {
+		body["direct_share_status"] = args.DirectShareStatus
+	}
+
+	body["embeddable"] = args.Embeddable
+
+	if args.EndOffset > 0 {
+		body["end_offset"] = args.EndOffset
+	}
+
+	if args.FbuploaderVideoFileChunk != "" {
+		body["fbuploader_video_file_chunk"] = args.FbuploaderVideoFileChunk
+	}
+
+	if args.FileSize > 0 {
+		body["file_size"] = args.FileSize
+	}
+
+	if args.FileUrl != "" {
+		body["file_url"] = args.FileUrl
+	}
+
+	body["fisheye_video_cropped"] = args.FisheyeVideoCropped
+
+	if args.Formatting != "" {
+		body["formatting"] = args.Formatting
+	}
+
+	if args.Fov > 0 {
+		body["fov"] = args.Fov
+	}
+
+	if args.FunFactPromptId != "" {
+		body["fun_fact_prompt_id"] = args.FunFactPromptId
+	}
+
+	if args.FunFactToasteeId > 0 {
+		body["fun_fact_toastee_id"] = args.FunFactToasteeId
+	}
+
+	body["guide_enabled"] = args.GuideEnabled
+
+	if args.InitialHeading > 0 {
+		body["initial_heading"] = args.InitialHeading
+	}
+
+	if args.InitialPitch > 0 {
+		body["initial_pitch"] = args.InitialPitch
+	}
+
+	if args.InstantGameEntryPointData != "" {
+		body["instant_game_entry_point_data"] = args.InstantGameEntryPointData
+	}
+
+	body["is_boost_intended"] = args.IsBoostIntended
+
+	body["is_explicit_share"] = args.IsExplicitShare
+
+	body["is_group_linking_post"] = args.IsGroupLinkingPost
+
+	body["is_partnership_ad"] = args.IsPartnershipAd
+
+	body["is_voice_clip"] = args.IsVoiceClip
+
+	if args.LocationSourceId != "" {
+		body["location_source_id"] = args.LocationSourceId
+	}
+
+	body["manual_privacy"] = args.ManualPrivacy
+
+	body["no_story"] = args.NoStory
+
+	if args.OgActionTypeId != "" {
+		body["og_action_type_id"] = args.OgActionTypeId
+	}
+
+	if args.OgIconId != "" {
+		body["og_icon_id"] = args.OgIconId
+	}
+
+	if args.OgObjectId != "" {
+		body["og_object_id"] = args.OgObjectId
+	}
+
+	if args.OgPhrase != "" {
+		body["og_phrase"] = args.OgPhrase
+	}
+
+	if args.OgSuggestionMechanism != "" {
+		body["og_suggestion_mechanism"] = args.OgSuggestionMechanism
+	}
+
+	if args.OriginalFov > 0 {
+		body["original_fov"] = args.OriginalFov
+	}
+
+	if args.OriginalProjectionType != "" {
+		body["original_projection_type"] = args.OriginalProjectionType
+	}
+
+	if args.PartnershipAdAdCode != "" {
+		body["partnership_ad_ad_code"] = args.PartnershipAdAdCode
+	}
+
+	if args.Privacy != "" {
+		body["privacy"] = args.Privacy
+	}
+
+	if args.PublishEventId > 0 {
+		body["publish_event_id"] = args.PublishEventId
+	}
+
+	if args.ReferencedStickerId != "" {
+		body["referenced_sticker_id"] = args.ReferencedStickerId
+	}
+
+	if args.ReplaceVideoId != "" {
+		body["replace_video_id"] = args.ReplaceVideoId
+	}
+
+	if args.SlideshowSpec != nil {
+		body["slideshow_spec"] = args.SlideshowSpec
+	}
+
+	if args.Source != "" {
+		body["source"] = args.Source
+	}
+
+	if args.SourceInstagramMediaId != "" {
+		body["source_instagram_media_id"] = args.SourceInstagramMediaId
+	}
+
+	body["spherical"] = args.Spherical
+
+	if args.SponsorId != "" {
+		body["sponsor_id"] = args.SponsorId
+	}
+
+	if args.StartOffset > 0 {
+		body["start_offset"] = args.StartOffset
+	}
+
+	if args.SwapMode != "" {
+		body["swap_mode"] = args.SwapMode
+	}
+
+	if args.TextFormatMetadata != "" {
+		body["text_format_metadata"] = args.TextFormatMetadata
+	}
+
+	if args.TimeSinceOriginalPost > 0 {
+		body["time_since_original_post"] = args.TimeSinceOriginalPost
+	}
+
+	if args.Title != "" {
+		body["title"] = args.Title
+	}
+
+	if args.TranscodeSettingProperties != "" {
+		body["transcode_setting_properties"] = args.TranscodeSettingProperties
+	}
+
+	if args.UnpublishedContentType != "" {
+		body["unpublished_content_type"] = args.UnpublishedContentType
+	}
+
+	if args.UploadPhase != "" {
+		body["upload_phase"] = args.UploadPhase
+	}
+
+	if args.UploadSessionId != "" {
+		body["upload_session_id"] = args.UploadSessionId
+	}
+
+	if args.UploadSettingProperties != "" {
+		body["upload_setting_properties"] = args.UploadSettingProperties
+	}
+
+	if args.VideoFileChunk != "" {
+		body["video_file_chunk"] = args.VideoFileChunk
+	}
+
+	if args.VideoIdOriginal != "" {
+		body["video_id_original"] = args.VideoIdOriginal
+	}
+
+	if args.VideoStartTimeMs > 0 {
+		body["video_start_time_ms"] = args.VideoStartTimeMs
+	}
+
+	if args.WaterfallId != "" {
+		body["waterfall_id"] = args.WaterfallId
+	}
+
+	// Build URL and execute
+	url := buildGraphURL(args.ID, "videos")
+
+	return ExecutePOSTRequest(ctx, url, body)
+
+}
+
+// DeleteUserHandler handles delete_user with typed arguments
+func DeleteUserHandler(ctx context.Context, request mcp.CallToolRequest, args delete_userArgs) (*mcp.CallToolResult, error) {
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Build URL and execute
+	url := buildGraphURL(args.ID, "")
+
+	return ExecuteDELETERequest(ctx, url)
+
+}
+
+// GetUserHandler handles get_user with typed arguments
+func GetUserHandler(ctx context.Context, request mcp.CallToolRequest, args get_userArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("User")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
+}
+
+// UpdateUserHandler handles update_user with typed arguments
+func UpdateUserHandler(ctx context.Context, request mcp.CallToolRequest, args update_userArgs) (*mcp.CallToolResult, error) {
+
+	// Build request body
+	body := make(map[string]interface{})
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Add parameters to body
+
+	if args.EmojiColorPref > 0 {
+		body["emoji_color_pref"] = args.EmojiColorPref
+	}
+
+	if args.Firstname != "" {
+		body["firstname"] = args.Firstname
+	}
+
+	if args.Lastname != "" {
+		body["lastname"] = args.Lastname
+	}
+
+	if args.LocalNewsMegaphoneDismissStatus != "" {
+		body["local_news_megaphone_dismiss_status"] = args.LocalNewsMegaphoneDismissStatus
+	}
+
+	if args.LocalNewsSubscriptionStatus != "" {
+		body["local_news_subscription_status"] = args.LocalNewsSubscriptionStatus
+	}
+
+	if args.Name != "" {
+		body["name"] = args.Name
+	}
+
+	if args.Password != "" {
+		body["password"] = args.Password
+	}
+
+	// Build URL and execute
+	url := buildGraphURL(args.ID, "")
+
+	return ExecutePOSTRequest(ctx, url, body)
 
 }
 
 // RegisterUserTools registers all User tools with the MCP server
 func RegisterUserTools(s *server.MCPServer) error {
 
+	// Register remove_access_tokens_from_user
 	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"remove_access_tokens_from_user",
-			"Remove access_tokens from this User",
-			remove_access_tokens_from_userSchema,
+		mcp.NewTool("remove_access_tokens_from_user",
+			mcp.WithDescription("Remove access_tokens from this User"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
 		),
-		RemoveAccessTokensFromUserHandler,
+		mcp.NewTypedToolHandler(RemoveAccessTokensFromUserHandler),
 	)
 
+	// Register create_user_access_token
 	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"create_user_access_token",
-			"Create or update access_tokens for this User Returns User. Required: business_app",
-			create_user_access_tokenSchema,
+		mcp.NewTool("create_user_access_token",
+			mcp.WithDescription("Create or update access_tokens for this User Returns User. Required: business_app"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithString("business_app",
+				mcp.Required(),
+				mcp.Description("business_app"),
+			),
+			mcp.WithString("page_id",
+				mcp.Description("page_id"),
+			),
+			mcp.WithArray("scope",
+				mcp.Description("scope"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithBoolean("set_token_expires_in_60_days",
+				mcp.Description("set_token_expires_in_60_days"),
+			),
 		),
-		CreateUserAccessTokenHandler,
+		mcp.NewTypedToolHandler(CreateUserAccessTokenHandler),
 	)
 
+	// Register list_user_accounts
 	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_user_accounts",
-			"List accounts for this User Returns Page.",
-			list_user_accountsSchema,
+		mcp.NewTool("list_user_accounts",
+			mcp.WithDescription("List accounts for this User Returns Page."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithString("ad_id",
+				mcp.Description("ad_id"),
+			),
+			mcp.WithBoolean("is_place",
+				mcp.Description("is_place"),
+			),
+			mcp.WithBoolean("is_promotable",
+				mcp.Description("is_promotable"),
+			),
 		),
-		ListUserAccountsHandler,
+		mcp.NewTypedToolHandler(ListUserAccountsHandler),
 	)
 
+	// Register create_user_account
 	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"create_user_account",
-			"Create or update accounts for this User Required: name",
-			create_user_accountSchema,
+		mcp.NewTool("create_user_account",
+			mcp.WithDescription("Create or update accounts for this User Required: name"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithString("about",
+				mcp.Description("about"),
+			),
+			mcp.WithString("address",
+				mcp.Description("address"),
+			),
+			mcp.WithNumber("category",
+				mcp.Description("category"),
+			),
+			mcp.WithString("category_enum",
+				mcp.Description("category_enum"),
+			),
+			mcp.WithArray("category_list",
+				mcp.Description("category_list"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithString("city_id",
+				mcp.Description("city_id"),
+			),
+			mcp.WithObject("coordinates",
+				mcp.Description("coordinates"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithObject("cover_photo",
+				mcp.Description("cover_photo"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("description",
+				mcp.Description("description"),
+			),
+			mcp.WithBoolean("ignore_coordinate_warnings",
+				mcp.Description("ignore_coordinate_warnings"),
+			),
+			mcp.WithObject("location",
+				mcp.Description("location"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("name",
+				mcp.Required(),
+				mcp.Description("name"),
+			),
+			mcp.WithString("phone",
+				mcp.Description("phone"),
+			),
+			mcp.WithString("picture",
+				mcp.Description("picture"),
+			),
+			mcp.WithString("website",
+				mcp.Description("website"),
+			),
+			mcp.WithString("zip",
+				mcp.Description("zip"),
+			),
 		),
-		CreateUserAccountHandler,
+		mcp.NewTypedToolHandler(CreateUserAccountHandler),
 	)
 
+	// Register list_user_ad_studies
 	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_user_ad_studies",
-			"List ad_studies for this User Returns AdStudy.",
-			list_user_ad_studiesSchema,
+		mcp.NewTool("list_user_ad_studies",
+			mcp.WithDescription("List ad_studies for this User Returns AdStudy."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
 		),
-		ListUserAdStudiesHandler,
+		mcp.NewTypedToolHandler(ListUserAdStudiesHandler),
 	)
 
+	// Register create_user_ad_studie
 	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"create_user_ad_studie",
-			"Associate ad_studies with this User Returns AdStudy.",
-			create_user_ad_studieSchema,
+		mcp.NewTool("create_user_ad_studie",
+			mcp.WithDescription("Associate ad_studies with this User Returns AdStudy."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithArray("cells",
+				mcp.Description("cells"),
+				mcp.Items(map[string]any{"type": "object"}),
+			),
+			mcp.WithString("client_business",
+				mcp.Description("client_business"),
+			),
+			mcp.WithNumber("confidence_level",
+				mcp.Description("confidence_level"),
+			),
+			mcp.WithNumber("cooldown_start_time",
+				mcp.Description("cooldown_start_time"),
+			),
+			mcp.WithString("description",
+				mcp.Description("description"),
+			),
+			mcp.WithNumber("end_time",
+				mcp.Description("end_time"),
+			),
+			mcp.WithString("name",
+				mcp.Description("name"),
+			),
+			mcp.WithArray("objectives",
+				mcp.Description("objectives"),
+				mcp.Items(map[string]any{"type": "object"}),
+			),
+			mcp.WithNumber("observation_end_time",
+				mcp.Description("observation_end_time"),
+			),
+			mcp.WithNumber("start_time",
+				mcp.Description("start_time"),
+			),
+			mcp.WithString("type",
+				mcp.Description("type (enum: userad_studies_type_enum_param)"),
+			),
+			mcp.WithArray("viewers",
+				mcp.Description("viewers"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
 		),
-		CreateUserAdStudieHandler,
+		mcp.NewTypedToolHandler(CreateUserAdStudieHandler),
 	)
 
+	// Register list_user_adaccounts
 	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_user_adaccounts",
-			"List adaccounts for this User Returns AdAccount.",
-			list_user_adaccountsSchema,
+		mcp.NewTool("list_user_adaccounts",
+			mcp.WithDescription("List adaccounts for this User Returns AdAccount."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
 		),
-		ListUserAdaccountsHandler,
+		mcp.NewTypedToolHandler(ListUserAdaccountsHandler),
 	)
 
+	// Register list_user_albums
 	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_user_albums",
-			"List albums for this User Returns Album.",
-			list_user_albumsSchema,
+		mcp.NewTool("list_user_albums",
+			mcp.WithDescription("List albums for this User Returns Album."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
 		),
-		ListUserAlbumsHandler,
+		mcp.NewTypedToolHandler(ListUserAlbumsHandler),
 	)
 
+	// Register create_user_application
 	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"create_user_application",
-			"Create or update applications for this User Returns User. Required: business_app",
-			create_user_applicationSchema,
+		mcp.NewTool("create_user_application",
+			mcp.WithDescription("Create or update applications for this User Returns User. Required: business_app"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithNumber("business_app",
+				mcp.Required(),
+				mcp.Description("business_app"),
+			),
 		),
-		CreateUserApplicationHandler,
+		mcp.NewTypedToolHandler(CreateUserApplicationHandler),
 	)
 
+	// Register list_user_apprequestformerrecipients
 	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_user_apprequestformerrecipients",
-			"List apprequestformerrecipients for this User Returns AppRequestFormerRecipient.",
-			list_user_apprequestformerrecipientsSchema,
+		mcp.NewTool("list_user_apprequestformerrecipients",
+			mcp.WithDescription("List apprequestformerrecipients for this User Returns AppRequestFormerRecipient."),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
 		),
-		ListUserApprequestformerrecipientsHandler,
+		mcp.NewTypedToolHandler(ListUserApprequestformerrecipientsHandler),
 	)
 
+	// Register list_user_apprequests
 	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_user_apprequests",
-			"List apprequests for this User Returns AppRequest.",
-			list_user_apprequestsSchema,
+		mcp.NewTool("list_user_apprequests",
+			mcp.WithDescription("List apprequests for this User Returns AppRequest."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
 		),
-		ListUserApprequestsHandler,
+		mcp.NewTypedToolHandler(ListUserApprequestsHandler),
 	)
 
+	// Register list_user_assigned_ad_accounts
 	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_user_assigned_ad_accounts",
-			"List assigned_ad_accounts for this User Returns AdAccount.",
-			list_user_assigned_ad_accountsSchema,
+		mcp.NewTool("list_user_assigned_ad_accounts",
+			mcp.WithDescription("List assigned_ad_accounts for this User Returns AdAccount."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
 		),
-		ListUserAssignedAdAccountsHandler,
+		mcp.NewTypedToolHandler(ListUserAssignedAdAccountsHandler),
 	)
 
+	// Register list_user_assigned_applications
 	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_user_assigned_applications",
-			"List assigned_applications for this User Returns Application.",
-			list_user_assigned_applicationsSchema,
+		mcp.NewTool("list_user_assigned_applications",
+			mcp.WithDescription("List assigned_applications for this User Returns Application."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
 		),
-		ListUserAssignedApplicationsHandler,
+		mcp.NewTypedToolHandler(ListUserAssignedApplicationsHandler),
 	)
 
+	// Register list_user_assigned_business_asset_groups
 	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_user_assigned_business_asset_groups",
-			"List assigned_business_asset_groups for this User Returns BusinessAssetGroup.",
-			list_user_assigned_business_asset_groupsSchema,
+		mcp.NewTool("list_user_assigned_business_asset_groups",
+			mcp.WithDescription("List assigned_business_asset_groups for this User Returns BusinessAssetGroup."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithString("contained_asset_id",
+				mcp.Description("contained_asset_id"),
+			),
 		),
-		ListUserAssignedBusinessAssetGroupsHandler,
+		mcp.NewTypedToolHandler(ListUserAssignedBusinessAssetGroupsHandler),
 	)
 
+	// Register list_user_assigned_pages
 	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_user_assigned_pages",
-			"List assigned_pages for this User Returns Page.",
-			list_user_assigned_pagesSchema,
+		mcp.NewTool("list_user_assigned_pages",
+			mcp.WithDescription("List assigned_pages for this User Returns Page."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithArray("pages",
+				mcp.Description("pages"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
 		),
-		ListUserAssignedPagesHandler,
+		mcp.NewTypedToolHandler(ListUserAssignedPagesHandler),
 	)
 
+	// Register list_user_assigned_product_catalogs
 	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_user_assigned_product_catalogs",
-			"List assigned_product_catalogs for this User Returns ProductCatalog.",
-			list_user_assigned_product_catalogsSchema,
+		mcp.NewTool("list_user_assigned_product_catalogs",
+			mcp.WithDescription("List assigned_product_catalogs for this User Returns ProductCatalog."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
 		),
-		ListUserAssignedProductCatalogsHandler,
+		mcp.NewTypedToolHandler(ListUserAssignedProductCatalogsHandler),
 	)
 
+	// Register list_user_avatars
 	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_user_avatars",
-			"List avatars for this User Returns Avatar.",
-			list_user_avatarsSchema,
+		mcp.NewTool("list_user_avatars",
+			mcp.WithDescription("List avatars for this User Returns Avatar."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
 		),
-		ListUserAvatarsHandler,
+		mcp.NewTypedToolHandler(ListUserAvatarsHandler),
 	)
 
+	// Register list_user_business_users
 	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_user_business_users",
-			"List business_users for this User Returns BusinessUser.",
-			list_user_business_usersSchema,
+		mcp.NewTool("list_user_business_users",
+			mcp.WithDescription("List business_users for this User Returns BusinessUser."),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
 		),
-		ListUserBusinessUsersHandler,
+		mcp.NewTypedToolHandler(ListUserBusinessUsersHandler),
 	)
 
+	// Register remove_businesses_from_user
 	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"remove_businesses_from_user",
-			"Remove businesses from this User",
-			remove_businesses_from_userSchema,
+		mcp.NewTool("remove_businesses_from_user",
+			mcp.WithDescription("Remove businesses from this User"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithString("business",
+				mcp.Description("business"),
+			),
 		),
-		RemoveBusinessesFromUserHandler,
+		mcp.NewTypedToolHandler(RemoveBusinessesFromUserHandler),
 	)
 
+	// Register list_user_businesses
 	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_user_businesses",
-			"List businesses for this User Returns Business.",
-			list_user_businessesSchema,
+		mcp.NewTool("list_user_businesses",
+			mcp.WithDescription("List businesses for this User Returns Business."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
 		),
-		ListUserBusinessesHandler,
+		mcp.NewTypedToolHandler(ListUserBusinessesHandler),
 	)
 
+	// Register create_user_businesse
 	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"create_user_businesse",
-			"Create or update businesses for this User Returns Business. Required: name, vertical (enum)",
-			create_user_businesseSchema,
+		mcp.NewTool("create_user_businesse",
+			mcp.WithDescription("Create or update businesses for this User Returns Business. Required: name, vertical (enum)"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithString("child_business_external_id",
+				mcp.Description("child_business_external_id"),
+			),
+			mcp.WithString("email",
+				mcp.Description("email"),
+			),
+			mcp.WithString("name",
+				mcp.Required(),
+				mcp.Description("name"),
+			),
+			mcp.WithString("primary_page",
+				mcp.Description("primary_page"),
+			),
+			mcp.WithString("sales_rep_email",
+				mcp.Description("sales_rep_email"),
+			),
+			mcp.WithString("survey_business_type",
+				mcp.Description("survey_business_type (enum: userbusinesses_survey_business_type_enum_param)"),
+			),
+			mcp.WithNumber("survey_num_assets",
+				mcp.Description("survey_num_assets"),
+			),
+			mcp.WithNumber("survey_num_people",
+				mcp.Description("survey_num_people"),
+			),
+			mcp.WithString("timezone_id",
+				mcp.Description("timezone_id (enum: userbusinesses_timezone_id_enum_param)"),
+			),
+			mcp.WithString("vertical",
+				mcp.Required(),
+				mcp.Description("vertical (enum: userbusinesses_vertical_enum_param)"),
+			),
 		),
-		CreateUserBusinesseHandler,
+		mcp.NewTypedToolHandler(CreateUserBusinesseHandler),
 	)
 
+	// Register list_user_conversations
 	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_user_conversations",
-			"List conversations for this User Returns UnifiedThread.",
-			list_user_conversationsSchema,
+		mcp.NewTool("list_user_conversations",
+			mcp.WithDescription("List conversations for this User Returns UnifiedThread."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithString("folder",
+				mcp.Description("folder"),
+			),
+			mcp.WithString("platform",
+				mcp.Description("platform (enum: userconversations_platform_enum_param)"),
+			),
+			mcp.WithArray("tags",
+				mcp.Description("tags"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithString("user_id",
+				mcp.Description("user_id"),
+			),
 		),
-		ListUserConversationsHandler,
+		mcp.NewTypedToolHandler(ListUserConversationsHandler),
 	)
 
+	// Register list_user_custom_labels
 	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_user_custom_labels",
-			"List custom_labels for this User Returns PageUserMessageThreadLabel.",
-			list_user_custom_labelsSchema,
+		mcp.NewTool("list_user_custom_labels",
+			mcp.WithDescription("List custom_labels for this User Returns PageUserMessageThreadLabel."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
 		),
-		ListUserCustomLabelsHandler,
+		mcp.NewTypedToolHandler(ListUserCustomLabelsHandler),
 	)
 
+	// Register list_user_events
 	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_user_events",
-			"List events for this User Returns Event.",
-			list_user_eventsSchema,
+		mcp.NewTool("list_user_events",
+			mcp.WithDescription("List events for this User Returns Event."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithBoolean("include_canceled",
+				mcp.Description("include_canceled"),
+			),
+			mcp.WithString("type",
+				mcp.Description("type (enum: userevents_type_enum_param)"),
+			),
 		),
-		ListUserEventsHandler,
+		mcp.NewTypedToolHandler(ListUserEventsHandler),
 	)
 
+	// Register get_user_feed
 	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"get_user_feed",
-			"Get feed data for this User Returns Post.",
-			get_user_feedSchema,
+		mcp.NewTool("get_user_feed",
+			mcp.WithDescription("Get feed data for this User Returns Post."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithBoolean("include_hidden",
+				mcp.Description("include_hidden"),
+			),
+			mcp.WithString("q",
+				mcp.Description("q"),
+			),
+			mcp.WithBoolean("show_expired",
+				mcp.Description("show_expired"),
+			),
+			mcp.WithString("since",
+				mcp.Description("since"),
+			),
+			mcp.WithString("until",
+				mcp.Description("until"),
+			),
+			mcp.WithString("with",
+				mcp.Description("with"),
+			),
 		),
-		GetUserFeedHandler,
+		mcp.NewTypedToolHandler(GetUserFeedHandler),
 	)
 
+	// Register update_user_feed
 	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"update_user_feed",
-			"Create or update feed for this User Returns Post.",
-			update_user_feedSchema,
+		mcp.NewTool("update_user_feed",
+			mcp.WithDescription("Create or update feed for this User Returns Post."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithObject("actions",
+				mcp.Description("actions"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("album_id",
+				mcp.Description("album_id"),
+			),
+			mcp.WithString("android_key_hash",
+				mcp.Description("android_key_hash"),
+			),
+			mcp.WithString("application_id",
+				mcp.Description("application_id"),
+			),
+			mcp.WithNumber("asked_fun_fact_prompt_id",
+				mcp.Description("asked_fun_fact_prompt_id"),
+			),
+			mcp.WithString("asset3d_id",
+				mcp.Description("asset3d_id"),
+			),
+			mcp.WithString("associated_id",
+				mcp.Description("associated_id"),
+			),
+			mcp.WithBoolean("attach_place_suggestion",
+				mcp.Description("attach_place_suggestion"),
+			),
+			mcp.WithArray("attached_media",
+				mcp.Description("attached_media"),
+				mcp.Items(map[string]any{"type": "object"}),
+			),
+			mcp.WithBoolean("audience_exp",
+				mcp.Description("audience_exp"),
+			),
+			mcp.WithString("backdated_time",
+				mcp.Description("backdated_time"),
+			),
+			mcp.WithString("backdated_time_granularity",
+				mcp.Description("backdated_time_granularity (enum: userfeed_backdated_time_granularity_enum_param)"),
+			),
+			mcp.WithBoolean("breaking_news",
+				mcp.Description("breaking_news"),
+			),
+			mcp.WithNumber("breaking_news_expiration",
+				mcp.Description("breaking_news_expiration"),
+			),
+			mcp.WithObject("call_to_action",
+				mcp.Description("call_to_action"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("caption",
+				mcp.Description("caption"),
+			),
+			mcp.WithArray("child_attachments",
+				mcp.Description("child_attachments"),
+				mcp.Items(map[string]any{"type": "object"}),
+			),
+			mcp.WithString("client_mutation_id",
+				mcp.Description("client_mutation_id"),
+			),
+			mcp.WithString("composer_entry_picker",
+				mcp.Description("composer_entry_picker"),
+			),
+			mcp.WithString("composer_entry_point",
+				mcp.Description("composer_entry_point"),
+			),
+			mcp.WithNumber("composer_entry_time",
+				mcp.Description("composer_entry_time"),
+			),
+			mcp.WithString("composer_session_events_log",
+				mcp.Description("composer_session_events_log"),
+			),
+			mcp.WithString("composer_session_id",
+				mcp.Description("composer_session_id"),
+			),
+			mcp.WithString("composer_source_surface",
+				mcp.Description("composer_source_surface"),
+			),
+			mcp.WithString("composer_type",
+				mcp.Description("composer_type"),
+			),
+			mcp.WithString("connection_class",
+				mcp.Description("connection_class"),
+			),
+			mcp.WithString("content_attachment",
+				mcp.Description("content_attachment"),
+			),
+			mcp.WithObject("coordinates",
+				mcp.Description("coordinates"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("cta_link",
+				mcp.Description("cta_link"),
+			),
+			mcp.WithString("cta_type",
+				mcp.Description("cta_type"),
+			),
+			mcp.WithString("description",
+				mcp.Description("description"),
+			),
+			mcp.WithNumber("direct_share_status",
+				mcp.Description("direct_share_status"),
+			),
+			mcp.WithNumber("expanded_height",
+				mcp.Description("expanded_height"),
+			),
+			mcp.WithNumber("expanded_width",
+				mcp.Description("expanded_width"),
+			),
+			mcp.WithObject("feed_targeting",
+				mcp.Description("feed_targeting"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("formatting",
+				mcp.Description("formatting (enum: userfeed_formatting_enum_param)"),
+			),
+			mcp.WithString("fun_fact_prompt_id",
+				mcp.Description("fun_fact_prompt_id"),
+			),
+			mcp.WithNumber("fun_fact_toastee_id",
+				mcp.Description("fun_fact_toastee_id"),
+			),
+			mcp.WithNumber("height",
+				mcp.Description("height"),
+			),
+			mcp.WithObject("home_checkin_city_id",
+				mcp.Description("home_checkin_city_id"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithObject("image_crops",
+				mcp.Description("image_crops"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithArray("implicit_with_tags",
+				mcp.Description("implicit_with_tags"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithString("instant_game_entry_point_data",
+				mcp.Description("instant_game_entry_point_data"),
+			),
+			mcp.WithString("ios_bundle_id",
+				mcp.Description("ios_bundle_id"),
+			),
+			mcp.WithBoolean("is_backout_draft",
+				mcp.Description("is_backout_draft"),
+			),
+			mcp.WithBoolean("is_boost_intended",
+				mcp.Description("is_boost_intended"),
+			),
+			mcp.WithBoolean("is_explicit_location",
+				mcp.Description("is_explicit_location"),
+			),
+			mcp.WithBoolean("is_explicit_share",
+				mcp.Description("is_explicit_share"),
+			),
+			mcp.WithBoolean("is_group_linking_post",
+				mcp.Description("is_group_linking_post"),
+			),
+			mcp.WithBoolean("is_photo_container",
+				mcp.Description("is_photo_container"),
+			),
+			mcp.WithString("link",
+				mcp.Description("link"),
+			),
+			mcp.WithString("location_source_id",
+				mcp.Description("location_source_id"),
+			),
+			mcp.WithBoolean("manual_privacy",
+				mcp.Description("manual_privacy"),
+			),
+			mcp.WithString("message",
+				mcp.Description("message"),
+			),
+			mcp.WithBoolean("multi_share_end_card",
+				mcp.Description("multi_share_end_card"),
+			),
+			mcp.WithBoolean("multi_share_optimized",
+				mcp.Description("multi_share_optimized"),
+			),
+			mcp.WithString("name",
+				mcp.Description("name"),
+			),
+			mcp.WithString("nectar_module",
+				mcp.Description("nectar_module"),
+			),
+			mcp.WithString("object_attachment",
+				mcp.Description("object_attachment"),
+			),
+			mcp.WithString("og_action_type_id",
+				mcp.Description("og_action_type_id"),
+			),
+			mcp.WithBoolean("og_hide_object_attachment",
+				mcp.Description("og_hide_object_attachment"),
+			),
+			mcp.WithString("og_icon_id",
+				mcp.Description("og_icon_id"),
+			),
+			mcp.WithString("og_object_id",
+				mcp.Description("og_object_id"),
+			),
+			mcp.WithString("og_phrase",
+				mcp.Description("og_phrase"),
+			),
+			mcp.WithBoolean("og_set_profile_badge",
+				mcp.Description("og_set_profile_badge"),
+			),
+			mcp.WithString("og_suggestion_mechanism",
+				mcp.Description("og_suggestion_mechanism"),
+			),
+			mcp.WithString("page_recommendation",
+				mcp.Description("page_recommendation"),
+			),
+			mcp.WithString("picture",
+				mcp.Description("picture"),
+			),
+			mcp.WithObject("place",
+				mcp.Description("place"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("place_attachment_setting",
+				mcp.Description("place_attachment_setting (enum: userfeed_place_attachment_setting_enum_param)"),
+			),
+			mcp.WithString("place_list",
+				mcp.Description("place_list"),
+			),
+			mcp.WithString("place_list_data",
+				mcp.Description("place_list_data"),
+			),
+			mcp.WithArray("post_surfaces_blacklist",
+				mcp.Description("post_surfaces_blacklist"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithString("posting_to_redspace",
+				mcp.Description("posting_to_redspace (enum: userfeed_posting_to_redspace_enum_param)"),
+			),
+			mcp.WithString("privacy",
+				mcp.Description("privacy"),
+			),
+			mcp.WithString("prompt_id",
+				mcp.Description("prompt_id"),
+			),
+			mcp.WithString("prompt_tracking_string",
+				mcp.Description("prompt_tracking_string"),
+			),
+			mcp.WithObject("properties",
+				mcp.Description("properties"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("proxied_app_id",
+				mcp.Description("proxied_app_id"),
+			),
+			mcp.WithNumber("publish_event_id",
+				mcp.Description("publish_event_id"),
+			),
+			mcp.WithBoolean("published",
+				mcp.Description("published"),
+			),
+			mcp.WithString("quote",
+				mcp.Description("quote"),
+			),
+			mcp.WithArray("ref",
+				mcp.Description("ref"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithArray("referenceable_image_ids",
+				mcp.Description("referenceable_image_ids"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithString("referral_id",
+				mcp.Description("referral_id"),
+			),
+			mcp.WithString("scheduled_publish_time",
+				mcp.Description("scheduled_publish_time"),
+			),
+			mcp.WithString("source",
+				mcp.Description("source"),
+			),
+			mcp.WithString("sponsor_id",
+				mcp.Description("sponsor_id"),
+			),
+			mcp.WithNumber("sponsor_relationship",
+				mcp.Description("sponsor_relationship"),
+			),
+			mcp.WithObject("suggested_place_id",
+				mcp.Description("suggested_place_id"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithArray("tags",
+				mcp.Description("tags"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithString("target_surface",
+				mcp.Description("target_surface (enum: userfeed_target_surface_enum_param)"),
+			),
+			mcp.WithObject("targeting",
+				mcp.Description("targeting"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("text_format_metadata",
+				mcp.Description("text_format_metadata"),
+			),
+			mcp.WithString("text_format_preset_id",
+				mcp.Description("text_format_preset_id"),
+			),
+			mcp.WithString("text_only_place",
+				mcp.Description("text_only_place"),
+			),
+			mcp.WithString("thumbnail",
+				mcp.Description("thumbnail"),
+			),
+			mcp.WithNumber("time_since_original_post",
+				mcp.Description("time_since_original_post"),
+			),
+			mcp.WithString("title",
+				mcp.Description("title"),
+			),
+			mcp.WithString("tracking_info",
+				mcp.Description("tracking_info"),
+			),
+			mcp.WithString("unpublished_content_type",
+				mcp.Description("unpublished_content_type (enum: userfeed_unpublished_content_type_enum_param)"),
+			),
+			mcp.WithBoolean("user_selected_tags",
+				mcp.Description("user_selected_tags"),
+			),
+			mcp.WithNumber("video_start_time_ms",
+				mcp.Description("video_start_time_ms"),
+			),
+			mcp.WithObject("viewer_coordinates",
+				mcp.Description("viewer_coordinates"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithNumber("width",
+				mcp.Description("width"),
+			),
 		),
-		UpdateUserFeedHandler,
+		mcp.NewTypedToolHandler(UpdateUserFeedHandler),
 	)
 
+	// Register list_user_friends
 	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_user_friends",
-			"List friends for this User Returns User.",
-			list_user_friendsSchema,
+		mcp.NewTool("list_user_friends",
+			mcp.WithDescription("List friends for this User Returns User."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithNumber("uid",
+				mcp.Description("uid"),
+			),
 		),
-		ListUserFriendsHandler,
+		mcp.NewTypedToolHandler(ListUserFriendsHandler),
 	)
 
+	// Register list_user_fundraisers
 	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_user_fundraisers",
-			"List fundraisers for this User Returns FundraiserPersonToCharity.",
-			list_user_fundraisersSchema,
+		mcp.NewTool("list_user_fundraisers",
+			mcp.WithDescription("List fundraisers for this User Returns FundraiserPersonToCharity."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
 		),
-		ListUserFundraisersHandler,
+		mcp.NewTypedToolHandler(ListUserFundraisersHandler),
 	)
 
+	// Register create_user_fundraiser
 	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"create_user_fundraiser",
-			"Create or update fundraisers for this User Returns FundraiserPersonToCharity. Required: currency, description, end_time, external_id, fundraiser_type (enum), goal_amount, name",
-			create_user_fundraiserSchema,
+		mcp.NewTool("create_user_fundraiser",
+			mcp.WithDescription("Create or update fundraisers for this User Returns FundraiserPersonToCharity. Required: currency, description, end_time, external_id, fundraiser_type (enum), goal_amount, name"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithString("charity_id",
+				mcp.Description("charity_id"),
+			),
+			mcp.WithString("cover_photo",
+				mcp.Description("cover_photo"),
+			),
+			mcp.WithString("currency",
+				mcp.Required(),
+				mcp.Description("currency"),
+			),
+			mcp.WithString("description",
+				mcp.Required(),
+				mcp.Description("description"),
+			),
+			mcp.WithString("end_time",
+				mcp.Required(),
+				mcp.Description("end_time"),
+			),
+			mcp.WithString("external_event_name",
+				mcp.Description("external_event_name"),
+			),
+			mcp.WithString("external_event_start_time",
+				mcp.Description("external_event_start_time"),
+			),
+			mcp.WithString("external_event_uri",
+				mcp.Description("external_event_uri"),
+			),
+			mcp.WithString("external_fundraiser_uri",
+				mcp.Description("external_fundraiser_uri"),
+			),
+			mcp.WithString("external_id",
+				mcp.Required(),
+				mcp.Description("external_id"),
+			),
+			mcp.WithString("fundraiser_type",
+				mcp.Required(),
+				mcp.Description("fundraiser_type (enum: userfundraisers_fundraiser_type_enum_param)"),
+			),
+			mcp.WithNumber("goal_amount",
+				mcp.Required(),
+				mcp.Description("goal_amount"),
+			),
+			mcp.WithString("name",
+				mcp.Required(),
+				mcp.Description("name"),
+			),
+			mcp.WithString("page_id",
+				mcp.Description("page_id"),
+			),
 		),
-		CreateUserFundraiserHandler,
+		mcp.NewTypedToolHandler(CreateUserFundraiserHandler),
 	)
 
+	// Register list_user_groups
 	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_user_groups",
-			"List groups for this User Returns Group.",
-			list_user_groupsSchema,
+		mcp.NewTool("list_user_groups",
+			mcp.WithDescription("List groups for this User Returns Group."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithBoolean("admin_only",
+				mcp.Description("admin_only"),
+			),
+			mcp.WithString("parent",
+				mcp.Description("parent"),
+			),
 		),
-		ListUserGroupsHandler,
+		mcp.NewTypedToolHandler(ListUserGroupsHandler),
 	)
 
+	// Register list_user_ids_for_apps
 	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_user_ids_for_apps",
-			"List ids_for_apps for this User Returns UserIDForApp.",
-			list_user_ids_for_appsSchema,
+		mcp.NewTool("list_user_ids_for_apps",
+			mcp.WithDescription("List ids_for_apps for this User Returns UserIDForApp."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithNumber("app",
+				mcp.Description("app"),
+			),
 		),
-		ListUserIdsForAppsHandler,
+		mcp.NewTypedToolHandler(ListUserIdsForAppsHandler),
 	)
 
+	// Register list_user_ids_for_business
 	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_user_ids_for_business",
-			"List ids_for_business for this User Returns UserIDForApp.",
-			list_user_ids_for_businessSchema,
+		mcp.NewTool("list_user_ids_for_business",
+			mcp.WithDescription("List ids_for_business for this User Returns UserIDForApp."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithNumber("app",
+				mcp.Description("app"),
+			),
 		),
-		ListUserIdsForBusinessHandler,
+		mcp.NewTypedToolHandler(ListUserIdsForBusinessHandler),
 	)
 
+	// Register list_user_ids_for_pages
 	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_user_ids_for_pages",
-			"List ids_for_pages for this User Returns UserIDForPage.",
-			list_user_ids_for_pagesSchema,
+		mcp.NewTool("list_user_ids_for_pages",
+			mcp.WithDescription("List ids_for_pages for this User Returns UserIDForPage."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithNumber("page",
+				mcp.Description("page"),
+			),
 		),
-		ListUserIdsForPagesHandler,
+		mcp.NewTypedToolHandler(ListUserIdsForPagesHandler),
 	)
 
+	// Register list_user_likes
 	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_user_likes",
-			"List likes for this User Returns Page.",
-			list_user_likesSchema,
+		mcp.NewTool("list_user_likes",
+			mcp.WithDescription("List likes for this User Returns Page."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithString("target_id",
+				mcp.Description("target_id"),
+			),
 		),
-		ListUserLikesHandler,
+		mcp.NewTypedToolHandler(ListUserLikesHandler),
 	)
 
+	// Register list_user_live_videos
 	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_user_live_videos",
-			"List live_videos for this User Returns LiveVideo.",
-			list_user_live_videosSchema,
+		mcp.NewTool("list_user_live_videos",
+			mcp.WithDescription("List live_videos for this User Returns LiveVideo."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithArray("broadcast_status",
+				mcp.Description("broadcast_status"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithString("source",
+				mcp.Description("source (enum: userlive_videos_source_enum_param)"),
+			),
 		),
-		ListUserLiveVideosHandler,
+		mcp.NewTypedToolHandler(ListUserLiveVideosHandler),
 	)
 
+	// Register create_user_live_video
 	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"create_user_live_video",
-			"Create or update live_videos for this User Returns LiveVideo.",
-			create_user_live_videoSchema,
+		mcp.NewTool("create_user_live_video",
+			mcp.WithDescription("Create or update live_videos for this User Returns LiveVideo."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithArray("content_tags",
+				mcp.Description("content_tags"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithString("description",
+				mcp.Description("description"),
+			),
+			mcp.WithBoolean("enable_backup_ingest",
+				mcp.Description("enable_backup_ingest"),
+			),
+			mcp.WithString("encoding_settings",
+				mcp.Description("encoding_settings"),
+			),
+			mcp.WithObject("event_params",
+				mcp.Description("event_params"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithBoolean("fisheye_video_cropped",
+				mcp.Description("fisheye_video_cropped"),
+			),
+			mcp.WithNumber("front_z_rotation",
+				mcp.Description("front_z_rotation"),
+			),
+			mcp.WithBoolean("is_audio_only",
+				mcp.Description("is_audio_only"),
+			),
+			mcp.WithBoolean("is_spherical",
+				mcp.Description("is_spherical"),
+			),
+			mcp.WithNumber("original_fov",
+				mcp.Description("original_fov"),
+			),
+			mcp.WithString("privacy",
+				mcp.Description("privacy"),
+			),
+			mcp.WithString("projection",
+				mcp.Description("projection (enum: userlive_videos_projection_enum_param)"),
+			),
+			mcp.WithBoolean("published",
+				mcp.Description("published"),
+			),
+			mcp.WithString("schedule_custom_profile_image",
+				mcp.Description("schedule_custom_profile_image"),
+			),
+			mcp.WithString("spatial_audio_format",
+				mcp.Description("spatial_audio_format (enum: userlive_videos_spatial_audio_format_enum_param)"),
+			),
+			mcp.WithString("status",
+				mcp.Description("status (enum: userlive_videos_status_enum_param)"),
+			),
+			mcp.WithString("stereoscopic_mode",
+				mcp.Description("stereoscopic_mode (enum: userlive_videos_stereoscopic_mode_enum_param)"),
+			),
+			mcp.WithBoolean("stop_on_delete_stream",
+				mcp.Description("stop_on_delete_stream"),
+			),
+			mcp.WithString("stream_type",
+				mcp.Description("stream_type (enum: userlive_videos_stream_type_enum_param)"),
+			),
+			mcp.WithString("title",
+				mcp.Description("title"),
+			),
 		),
-		CreateUserLiveVideoHandler,
+		mcp.NewTypedToolHandler(CreateUserLiveVideoHandler),
 	)
 
+	// Register create_user_messenger_desktop_performance_trace
 	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"create_user_messenger_desktop_performance_trace",
-			"Create or update messenger_desktop_performance_traces for this User Returns User.",
-			create_user_messenger_desktop_performance_traceSchema,
+		mcp.NewTool("create_user_messenger_desktop_performance_trace",
+			mcp.WithDescription("Create or update messenger_desktop_performance_traces for this User Returns User."),
 		),
-		CreateUserMessengerDesktopPerformanceTraceHandler,
+		mcp.NewTypedToolHandler(CreateUserMessengerDesktopPerformanceTraceHandler),
 	)
 
+	// Register update_user_messenger_kids_accounts_unread_badge
 	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"update_user_messenger_kids_accounts_unread_badge",
-			"Create or update messenger_kids_accounts_unread_badge for this User Returns User. Required: proxied_app_id",
-			update_user_messenger_kids_accounts_unread_badgeSchema,
+		mcp.NewTool("update_user_messenger_kids_accounts_unread_badge",
+			mcp.WithDescription("Create or update messenger_kids_accounts_unread_badge for this User Returns User. Required: proxied_app_id"),
+			mcp.WithNumber("proxied_app_id",
+				mcp.Required(),
+				mcp.Description("proxied_app_id"),
+			),
 		),
-		UpdateUserMessengerKidsAccountsUnreadBadgeHandler,
+		mcp.NewTypedToolHandler(UpdateUserMessengerKidsAccountsUnreadBadgeHandler),
 	)
 
+	// Register get_user_music
 	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"get_user_music",
-			"Get music data for this User Returns Page.",
-			get_user_musicSchema,
+		mcp.NewTool("get_user_music",
+			mcp.WithDescription("Get music data for this User Returns Page."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithString("target_id",
+				mcp.Description("target_id"),
+			),
 		),
-		GetUserMusicHandler,
+		mcp.NewTypedToolHandler(GetUserMusicHandler),
 	)
 
+	// Register create_user_notification
 	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"create_user_notification",
-			"Create or update notifications for this User Returns User.",
-			create_user_notificationSchema,
+		mcp.NewTool("create_user_notification",
+			mcp.WithDescription("Create or update notifications for this User Returns User."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithString("bot_message_payload_elements",
+				mcp.Description("bot_message_payload_elements"),
+			),
+			mcp.WithArray("filtering",
+				mcp.Description("filtering"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithObject("href",
+				mcp.Description("href"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("label",
+				mcp.Description("label"),
+			),
+			mcp.WithObject("message",
+				mcp.Description("message"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithArray("notif_ids",
+				mcp.Description("notif_ids"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithString("payload",
+				mcp.Description("payload"),
+			),
+			mcp.WithBoolean("read",
+				mcp.Description("read"),
+			),
+			mcp.WithString("ref",
+				mcp.Description("ref"),
+			),
+			mcp.WithNumber("schedule_interval",
+				mcp.Description("schedule_interval"),
+			),
+			mcp.WithBoolean("seen",
+				mcp.Description("seen"),
+			),
+			mcp.WithObject("template",
+				mcp.Description("template"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("type",
+				mcp.Description("type (enum: usernotifications_type_enum_param)"),
+			),
 		),
-		CreateUserNotificationHandler,
+		mcp.NewTypedToolHandler(CreateUserNotificationHandler),
 	)
 
+	// Register list_user_payment_transactions
 	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_user_payment_transactions",
-			"List payment_transactions for this User Returns PaymentEnginePayment.",
-			list_user_payment_transactionsSchema,
+		mcp.NewTool("list_user_payment_transactions",
+			mcp.WithDescription("List payment_transactions for this User Returns PaymentEnginePayment."),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
 		),
-		ListUserPaymentTransactionsHandler,
+		mcp.NewTypedToolHandler(ListUserPaymentTransactionsHandler),
 	)
 
+	// Register remove_permissions_from_user
 	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"remove_permissions_from_user",
-			"Remove permissions from this User",
-			remove_permissions_from_userSchema,
+		mcp.NewTool("remove_permissions_from_user",
+			mcp.WithDescription("Remove permissions from this User"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithString("permission",
+				mcp.Description("permission"),
+			),
 		),
-		RemovePermissionsFromUserHandler,
+		mcp.NewTypedToolHandler(RemovePermissionsFromUserHandler),
 	)
 
+	// Register list_user_permissions
 	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_user_permissions",
-			"List permissions for this User Returns Permission.",
-			list_user_permissionsSchema,
+		mcp.NewTool("list_user_permissions",
+			mcp.WithDescription("List permissions for this User Returns Permission."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithString("permission",
+				mcp.Description("permission"),
+			),
+			mcp.WithString("status",
+				mcp.Description("status (enum: userpermissions_status_enum_param)"),
+			),
 		),
-		ListUserPermissionsHandler,
+		mcp.NewTypedToolHandler(ListUserPermissionsHandler),
 	)
 
+	// Register list_user_personal_ad_accounts
 	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_user_personal_ad_accounts",
-			"List personal_ad_accounts for this User Returns AdAccount.",
-			list_user_personal_ad_accountsSchema,
+		mcp.NewTool("list_user_personal_ad_accounts",
+			mcp.WithDescription("List personal_ad_accounts for this User Returns AdAccount."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
 		),
-		ListUserPersonalAdAccountsHandler,
+		mcp.NewTypedToolHandler(ListUserPersonalAdAccountsHandler),
 	)
 
+	// Register list_user_photos
 	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_user_photos",
-			"List photos for this User Returns Photo.",
-			list_user_photosSchema,
+		mcp.NewTool("list_user_photos",
+			mcp.WithDescription("List photos for this User Returns Photo."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithString("type",
+				mcp.Description("type (enum: userphotos_type_enum_param)"),
+			),
 		),
-		ListUserPhotosHandler,
+		mcp.NewTypedToolHandler(ListUserPhotosHandler),
 	)
 
+	// Register create_user_photo
 	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"create_user_photo",
-			"Create or update photos for this User Returns Photo.",
-			create_user_photoSchema,
+		mcp.NewTool("create_user_photo",
+			mcp.WithDescription("Create or update photos for this User Returns Photo."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithString("aid",
+				mcp.Description("aid"),
+			),
+			mcp.WithBoolean("allow_spherical_photo",
+				mcp.Description("allow_spherical_photo"),
+			),
+			mcp.WithString("alt_text_custom",
+				mcp.Description("alt_text_custom"),
+			),
+			mcp.WithString("android_key_hash",
+				mcp.Description("android_key_hash"),
+			),
+			mcp.WithString("application_id",
+				mcp.Description("application_id"),
+			),
+			mcp.WithNumber("attempt",
+				mcp.Description("attempt"),
+			),
+			mcp.WithBoolean("audience_exp",
+				mcp.Description("audience_exp"),
+			),
+			mcp.WithString("backdated_time",
+				mcp.Description("backdated_time"),
+			),
+			mcp.WithString("backdated_time_granularity",
+				mcp.Description("backdated_time_granularity (enum: userphotos_backdated_time_granularity_enum_param)"),
+			),
+			mcp.WithString("caption",
+				mcp.Description("caption"),
+			),
+			mcp.WithString("composer_session_id",
+				mcp.Description("composer_session_id"),
+			),
+			mcp.WithNumber("direct_share_status",
+				mcp.Description("direct_share_status"),
+			),
+			mcp.WithObject("feed_targeting",
+				mcp.Description("feed_targeting"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithNumber("filter_type",
+				mcp.Description("filter_type"),
+			),
+			mcp.WithBoolean("full_res_is_coming_later",
+				mcp.Description("full_res_is_coming_later"),
+			),
+			mcp.WithNumber("initial_view_heading_override_degrees",
+				mcp.Description("initial_view_heading_override_degrees"),
+			),
+			mcp.WithNumber("initial_view_pitch_override_degrees",
+				mcp.Description("initial_view_pitch_override_degrees"),
+			),
+			mcp.WithNumber("initial_view_vertical_fov_override_degrees",
+				mcp.Description("initial_view_vertical_fov_override_degrees"),
+			),
+			mcp.WithString("ios_bundle_id",
+				mcp.Description("ios_bundle_id"),
+			),
+			mcp.WithBoolean("is_explicit_location",
+				mcp.Description("is_explicit_location"),
+			),
+			mcp.WithBoolean("is_explicit_place",
+				mcp.Description("is_explicit_place"),
+			),
+			mcp.WithBoolean("manual_privacy",
+				mcp.Description("manual_privacy"),
+			),
+			mcp.WithString("message",
+				mcp.Description("message"),
+			),
+			mcp.WithString("name",
+				mcp.Description("name"),
+			),
+			mcp.WithBoolean("no_story",
+				mcp.Description("no_story"),
+			),
+			mcp.WithNumber("offline_id",
+				mcp.Description("offline_id"),
+			),
+			mcp.WithString("og_action_type_id",
+				mcp.Description("og_action_type_id"),
+			),
+			mcp.WithString("og_icon_id",
+				mcp.Description("og_icon_id"),
+			),
+			mcp.WithString("og_object_id",
+				mcp.Description("og_object_id"),
+			),
+			mcp.WithString("og_phrase",
+				mcp.Description("og_phrase"),
+			),
+			mcp.WithBoolean("og_set_profile_badge",
+				mcp.Description("og_set_profile_badge"),
+			),
+			mcp.WithString("og_suggestion_mechanism",
+				mcp.Description("og_suggestion_mechanism"),
+			),
+			mcp.WithObject("place",
+				mcp.Description("place"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("privacy",
+				mcp.Description("privacy"),
+			),
+			mcp.WithNumber("profile_id",
+				mcp.Description("profile_id"),
+			),
+			mcp.WithObject("provenance_info",
+				mcp.Description("provenance_info"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("proxied_app_id",
+				mcp.Description("proxied_app_id"),
+			),
+			mcp.WithBoolean("published",
+				mcp.Description("published"),
+			),
+			mcp.WithString("qn",
+				mcp.Description("qn"),
+			),
+			mcp.WithNumber("scheduled_publish_time",
+				mcp.Description("scheduled_publish_time"),
+			),
+			mcp.WithObject("spherical_metadata",
+				mcp.Description("spherical_metadata"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("sponsor_id",
+				mcp.Description("sponsor_id"),
+			),
+			mcp.WithNumber("sponsor_relationship",
+				mcp.Description("sponsor_relationship"),
+			),
+			mcp.WithArray("tags",
+				mcp.Description("tags"),
+				mcp.Items(map[string]any{"type": "object"}),
+			),
+			mcp.WithNumber("target_id",
+				mcp.Description("target_id"),
+			),
+			mcp.WithObject("targeting",
+				mcp.Description("targeting"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithNumber("time_since_original_post",
+				mcp.Description("time_since_original_post"),
+			),
+			mcp.WithNumber("uid",
+				mcp.Description("uid"),
+			),
+			mcp.WithString("unpublished_content_type",
+				mcp.Description("unpublished_content_type (enum: userphotos_unpublished_content_type_enum_param)"),
+			),
+			mcp.WithString("url",
+				mcp.Description("url"),
+			),
+			mcp.WithBoolean("user_selected_tags",
+				mcp.Description("user_selected_tags"),
+			),
+			mcp.WithString("vault_image_id",
+				mcp.Description("vault_image_id"),
+			),
 		),
-		CreateUserPhotoHandler,
+		mcp.NewTypedToolHandler(CreateUserPhotoHandler),
 	)
 
+	// Register get_user_picture
 	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"get_user_picture",
-			"Get picture data for this User Returns ProfilePictureSource.",
-			get_user_pictureSchema,
+		mcp.NewTool("get_user_picture",
+			mcp.WithDescription("Get picture data for this User Returns ProfilePictureSource."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithNumber("height",
+				mcp.Description("height"),
+			),
+			mcp.WithBoolean("redirect",
+				mcp.Description("redirect"),
+			),
+			mcp.WithString("type",
+				mcp.Description("type (enum: userpicture_type_enum_param)"),
+			),
+			mcp.WithNumber("width",
+				mcp.Description("width"),
+			),
 		),
-		GetUserPictureHandler,
+		mcp.NewTypedToolHandler(GetUserPictureHandler),
 	)
 
+	// Register list_user_posts
 	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_user_posts",
-			"List posts for this User Returns Post.",
-			list_user_postsSchema,
+		mcp.NewTool("list_user_posts",
+			mcp.WithDescription("List posts for this User Returns Post."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithBoolean("include_hidden",
+				mcp.Description("include_hidden"),
+			),
+			mcp.WithString("q",
+				mcp.Description("q"),
+			),
+			mcp.WithBoolean("show_expired",
+				mcp.Description("show_expired"),
+			),
+			mcp.WithString("since",
+				mcp.Description("since"),
+			),
+			mcp.WithString("until",
+				mcp.Description("until"),
+			),
+			mcp.WithString("with",
+				mcp.Description("with"),
+			),
 		),
-		ListUserPostsHandler,
+		mcp.NewTypedToolHandler(ListUserPostsHandler),
 	)
 
+	// Register list_user_rich_media_documents
 	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_user_rich_media_documents",
-			"List rich_media_documents for this User Returns Canvas.",
-			list_user_rich_media_documentsSchema,
+		mcp.NewTool("list_user_rich_media_documents",
+			mcp.WithDescription("List rich_media_documents for this User Returns Canvas."),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithString("query",
+				mcp.Description("query"),
+			),
 		),
-		ListUserRichMediaDocumentsHandler,
+		mcp.NewTypedToolHandler(ListUserRichMediaDocumentsHandler),
 	)
 
+	// Register create_user_staging_resource
 	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"create_user_staging_resource",
-			"Create or update staging_resources for this User Returns User.",
-			create_user_staging_resourceSchema,
+		mcp.NewTool("create_user_staging_resource",
+			mcp.WithDescription("Create or update staging_resources for this User Returns User."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithString("file",
+				mcp.Description("file"),
+			),
 		),
-		CreateUserStagingResourceHandler,
+		mcp.NewTypedToolHandler(CreateUserStagingResourceHandler),
 	)
 
+	// Register list_user_videos
 	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_user_videos",
-			"List videos for this User Returns AdVideo.",
-			list_user_videosSchema,
+		mcp.NewTool("list_user_videos",
+			mcp.WithDescription("List videos for this User Returns AdVideo."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithString("type",
+				mcp.Description("type (enum: uservideos_type_enum_param)"),
+			),
 		),
-		ListUserVideosHandler,
+		mcp.NewTypedToolHandler(ListUserVideosHandler),
 	)
 
+	// Register create_user_video
 	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"create_user_video",
-			"Create or update videos for this User Returns AdVideo.",
-			create_user_videoSchema,
+		mcp.NewTool("create_user_video",
+			mcp.WithDescription("Create or update videos for this User Returns AdVideo."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithString("application_id",
+				mcp.Description("application_id"),
+			),
+			mcp.WithNumber("asked_fun_fact_prompt_id",
+				mcp.Description("asked_fun_fact_prompt_id"),
+			),
+			mcp.WithString("audio_story_wave_animation_handle",
+				mcp.Description("audio_story_wave_animation_handle"),
+			),
+			mcp.WithString("composer_entry_picker",
+				mcp.Description("composer_entry_picker"),
+			),
+			mcp.WithString("composer_entry_point",
+				mcp.Description("composer_entry_point"),
+			),
+			mcp.WithNumber("composer_entry_time",
+				mcp.Description("composer_entry_time"),
+			),
+			mcp.WithString("composer_session_events_log",
+				mcp.Description("composer_session_events_log"),
+			),
+			mcp.WithString("composer_session_id",
+				mcp.Description("composer_session_id"),
+			),
+			mcp.WithString("composer_source_surface",
+				mcp.Description("composer_source_surface"),
+			),
+			mcp.WithString("composer_type",
+				mcp.Description("composer_type"),
+			),
+			mcp.WithString("container_type",
+				mcp.Description("container_type (enum: uservideos_container_type_enum_param)"),
+			),
+			mcp.WithString("content_category",
+				mcp.Description("content_category (enum: uservideos_content_category_enum_param)"),
+			),
+			mcp.WithString("creative_tools",
+				mcp.Description("creative_tools"),
+			),
+			mcp.WithString("description",
+				mcp.Description("description"),
+			),
+			mcp.WithNumber("direct_share_status",
+				mcp.Description("direct_share_status"),
+			),
+			mcp.WithBoolean("embeddable",
+				mcp.Description("embeddable"),
+			),
+			mcp.WithNumber("end_offset",
+				mcp.Description("end_offset"),
+			),
+			mcp.WithString("fbuploader_video_file_chunk",
+				mcp.Description("fbuploader_video_file_chunk"),
+			),
+			mcp.WithNumber("file_size",
+				mcp.Description("file_size"),
+			),
+			mcp.WithString("file_url",
+				mcp.Description("file_url"),
+			),
+			mcp.WithBoolean("fisheye_video_cropped",
+				mcp.Description("fisheye_video_cropped"),
+			),
+			mcp.WithString("formatting",
+				mcp.Description("formatting (enum: uservideos_formatting_enum_param)"),
+			),
+			mcp.WithNumber("fov",
+				mcp.Description("fov"),
+			),
+			mcp.WithNumber("front_z_rotation",
+				mcp.Description("front_z_rotation"),
+			),
+			mcp.WithString("fun_fact_prompt_id",
+				mcp.Description("fun_fact_prompt_id"),
+			),
+			mcp.WithNumber("fun_fact_toastee_id",
+				mcp.Description("fun_fact_toastee_id"),
+			),
+			mcp.WithArray("guide",
+				mcp.Description("guide"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithBoolean("guide_enabled",
+				mcp.Description("guide_enabled"),
+			),
+			mcp.WithNumber("initial_heading",
+				mcp.Description("initial_heading"),
+			),
+			mcp.WithNumber("initial_pitch",
+				mcp.Description("initial_pitch"),
+			),
+			mcp.WithString("instant_game_entry_point_data",
+				mcp.Description("instant_game_entry_point_data"),
+			),
+			mcp.WithBoolean("is_boost_intended",
+				mcp.Description("is_boost_intended"),
+			),
+			mcp.WithBoolean("is_explicit_share",
+				mcp.Description("is_explicit_share"),
+			),
+			mcp.WithBoolean("is_group_linking_post",
+				mcp.Description("is_group_linking_post"),
+			),
+			mcp.WithBoolean("is_partnership_ad",
+				mcp.Description("is_partnership_ad"),
+			),
+			mcp.WithBoolean("is_voice_clip",
+				mcp.Description("is_voice_clip"),
+			),
+			mcp.WithString("location_source_id",
+				mcp.Description("location_source_id"),
+			),
+			mcp.WithBoolean("manual_privacy",
+				mcp.Description("manual_privacy"),
+			),
+			mcp.WithBoolean("no_story",
+				mcp.Description("no_story"),
+			),
+			mcp.WithString("og_action_type_id",
+				mcp.Description("og_action_type_id"),
+			),
+			mcp.WithString("og_icon_id",
+				mcp.Description("og_icon_id"),
+			),
+			mcp.WithString("og_object_id",
+				mcp.Description("og_object_id"),
+			),
+			mcp.WithString("og_phrase",
+				mcp.Description("og_phrase"),
+			),
+			mcp.WithString("og_suggestion_mechanism",
+				mcp.Description("og_suggestion_mechanism"),
+			),
+			mcp.WithNumber("original_fov",
+				mcp.Description("original_fov"),
+			),
+			mcp.WithString("original_projection_type",
+				mcp.Description("original_projection_type (enum: uservideos_original_projection_type_enum_param)"),
+			),
+			mcp.WithString("partnership_ad_ad_code",
+				mcp.Description("partnership_ad_ad_code"),
+			),
+			mcp.WithString("privacy",
+				mcp.Description("privacy"),
+			),
+			mcp.WithNumber("publish_event_id",
+				mcp.Description("publish_event_id"),
+			),
+			mcp.WithString("referenced_sticker_id",
+				mcp.Description("referenced_sticker_id"),
+			),
+			mcp.WithString("replace_video_id",
+				mcp.Description("replace_video_id"),
+			),
+			mcp.WithObject("slideshow_spec",
+				mcp.Description("slideshow_spec"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("source",
+				mcp.Description("source"),
+			),
+			mcp.WithString("source_instagram_media_id",
+				mcp.Description("source_instagram_media_id"),
+			),
+			mcp.WithBoolean("spherical",
+				mcp.Description("spherical"),
+			),
+			mcp.WithString("sponsor_id",
+				mcp.Description("sponsor_id"),
+			),
+			mcp.WithNumber("start_offset",
+				mcp.Description("start_offset"),
+			),
+			mcp.WithString("swap_mode",
+				mcp.Description("swap_mode (enum: uservideos_swap_mode_enum_param)"),
+			),
+			mcp.WithString("text_format_metadata",
+				mcp.Description("text_format_metadata"),
+			),
+			mcp.WithString("thumb",
+				mcp.Description("thumb"),
+			),
+			mcp.WithNumber("time_since_original_post",
+				mcp.Description("time_since_original_post"),
+			),
+			mcp.WithString("title",
+				mcp.Description("title"),
+			),
+			mcp.WithString("transcode_setting_properties",
+				mcp.Description("transcode_setting_properties"),
+			),
+			mcp.WithString("unpublished_content_type",
+				mcp.Description("unpublished_content_type (enum: uservideos_unpublished_content_type_enum_param)"),
+			),
+			mcp.WithString("upload_phase",
+				mcp.Description("upload_phase (enum: uservideos_upload_phase_enum_param)"),
+			),
+			mcp.WithString("upload_session_id",
+				mcp.Description("upload_session_id"),
+			),
+			mcp.WithString("upload_setting_properties",
+				mcp.Description("upload_setting_properties"),
+			),
+			mcp.WithString("video_file_chunk",
+				mcp.Description("video_file_chunk"),
+			),
+			mcp.WithString("video_id_original",
+				mcp.Description("video_id_original"),
+			),
+			mcp.WithNumber("video_start_time_ms",
+				mcp.Description("video_start_time_ms"),
+			),
+			mcp.WithString("waterfall_id",
+				mcp.Description("waterfall_id"),
+			),
 		),
-		CreateUserVideoHandler,
+		mcp.NewTypedToolHandler(CreateUserVideoHandler),
 	)
 
+	// Register delete_user
 	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"delete_user",
-			"Delete a User",
-			delete_userSchema,
+		mcp.NewTool("delete_user",
+			mcp.WithDescription("Delete a User"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
 		),
-		DeleteUserHandler,
+		mcp.NewTypedToolHandler(DeleteUserHandler),
 	)
 
+	// Register get_user
 	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"get_user",
-			"Get details of a specific User Returns User.",
-			get_userSchema,
+		mcp.NewTool("get_user",
+			mcp.WithDescription("Get details of a specific User Returns User."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
 		),
-		GetUserHandler,
+		mcp.NewTypedToolHandler(GetUserHandler),
 	)
 
+	// Register update_user
 	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"update_user",
-			"Update a User Returns User.",
-			update_userSchema,
+		mcp.NewTool("update_user",
+			mcp.WithDescription("Update a User Returns User."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithNumber("emoji_color_pref",
+				mcp.Description("emoji_color_pref"),
+			),
+			mcp.WithString("firstname",
+				mcp.Description("firstname"),
+			),
+			mcp.WithString("lastname",
+				mcp.Description("lastname"),
+			),
+			mcp.WithString("local_news_megaphone_dismiss_status",
+				mcp.Description("local_news_megaphone_dismiss_status (enum: user_local_news_megaphone_dismiss_status)"),
+			),
+			mcp.WithString("local_news_subscription_status",
+				mcp.Description("local_news_subscription_status (enum: user_local_news_subscription_status)"),
+			),
+			mcp.WithString("name",
+				mcp.Description("name"),
+			),
+			mcp.WithString("password",
+				mcp.Description("password"),
+			),
 		),
-		UpdateUserHandler,
+		mcp.NewTypedToolHandler(UpdateUserHandler),
 	)
 
 	return nil

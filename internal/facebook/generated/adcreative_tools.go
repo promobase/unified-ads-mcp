@@ -4,130 +4,548 @@ package generated
 
 import (
 	"context"
-	"encoding/json"
+	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"github.com/mark3labs/mcp-go/server"
 )
 
-// Tool schemas for AdCreative
-var (
-	create_ad_creative_adlabelSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"adlabels":{"description":"adlabels","items":{"additionalProperties":true,"type":"object"},"type":"array"},"id":{"description":"AdCreative ID","type":"string"}},"required":["id","adlabels"],"type":"object"}`)
+// create_ad_creative_adlabelArgs defines the typed arguments for create_ad_creative_adlabel
+type create_ad_creative_adlabelArgs struct {
+	ID       string                   `json:"id"`
+	Adlabels []map[string]interface{} `json:"adlabels"`
+}
 
-	list_ad_creative_creative_insightsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdCreative ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+// list_ad_creative_creative_insightsArgs defines the typed arguments for list_ad_creative_creative_insights
+type list_ad_creative_creative_insightsArgs struct {
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
+}
 
-	list_ad_creative_previewsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"ad_format":{"description":"ad_format (enum: adcreativepreviews_ad_format_enum_param)","type":"string"},"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"creative_feature":{"description":"creative_feature (enum: adcreativepreviews_creative_feature_enum_param)","type":"string"},"dynamic_asset_label":{"description":"dynamic_asset_label","type":"string"},"dynamic_creative_spec":{"additionalProperties":true,"description":"dynamic_creative_spec","type":"object"},"dynamic_customization":{"additionalProperties":true,"description":"dynamic_customization","type":"object"},"end_date":{"description":"end_date","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"height":{"description":"height","type":"integer"},"id":{"description":"AdCreative ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"locale":{"description":"locale","type":"string"},"place_page_id":{"description":"place_page_id","type":"integer"},"post":{"additionalProperties":true,"description":"post","type":"object"},"product_item_ids":{"description":"product_item_ids","items":{"type":"string"},"type":"array"},"render_type":{"description":"render_type (enum: adcreativepreviews_render_type_enum_param)","type":"string"},"start_date":{"description":"start_date","type":"string"},"width":{"description":"width","type":"integer"}},"required":["id","ad_format"],"type":"object"}`)
+// list_ad_creative_previewsArgs defines the typed arguments for list_ad_creative_previews
+type list_ad_creative_previewsArgs struct {
+	ID                   string                 `json:"id"`
+	Fields               []string               `json:"fields,omitempty"`
+	Limit                int                    `json:"limit,omitempty"`
+	After                string                 `json:"after,omitempty"`
+	Before               string                 `json:"before,omitempty"`
+	AdFormat             string                 `json:"ad_format"`
+	CreativeFeature      string                 `json:"creative_feature,omitempty"`
+	DynamicAssetLabel    string                 `json:"dynamic_asset_label,omitempty"`
+	DynamicCreativeSpec  map[string]interface{} `json:"dynamic_creative_spec,omitempty"`
+	DynamicCustomization map[string]interface{} `json:"dynamic_customization,omitempty"`
+	EndDate              interface{}            `json:"end_date,omitempty"`
+	Height               int                    `json:"height,omitempty"`
+	Locale               string                 `json:"locale,omitempty"`
+	PlacePageId          int                    `json:"place_page_id,omitempty"`
+	Post                 map[string]interface{} `json:"post,omitempty"`
+	ProductItemIds       []string               `json:"product_item_ids,omitempty"`
+	RenderType           string                 `json:"render_type,omitempty"`
+	StartDate            interface{}            `json:"start_date,omitempty"`
+	Width                int                    `json:"width,omitempty"`
+}
 
-	delete_ad_creativeSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"account_id":{"description":"account_id","type":"string"},"adlabels":{"description":"adlabels","items":{"additionalProperties":true,"type":"object"},"type":"array"},"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdCreative ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"name":{"description":"name","type":"string"},"status":{"description":"status (enum: adcreative_status)","type":"string"}},"required":["id"],"type":"object"}`)
+// delete_ad_creativeArgs defines the typed arguments for delete_ad_creative
+type delete_ad_creativeArgs struct {
+	ID        string                   `json:"id"`
+	AccountId string                   `json:"account_id,omitempty"`
+	Adlabels  []map[string]interface{} `json:"adlabels,omitempty"`
+	Name      string                   `json:"name,omitempty"`
+	Status    string                   `json:"status,omitempty"`
+}
 
-	get_ad_creativeSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdCreative ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"thumbnail_height":{"description":"thumbnail_height","type":"integer"},"thumbnail_width":{"description":"thumbnail_width","type":"integer"}},"required":["id"],"type":"object"}`)
+// get_ad_creativeArgs defines the typed arguments for get_ad_creative
+type get_ad_creativeArgs struct {
+	ID              string   `json:"id"`
+	Fields          []string `json:"fields,omitempty"`
+	Limit           int      `json:"limit,omitempty"`
+	After           string   `json:"after,omitempty"`
+	Before          string   `json:"before,omitempty"`
+	ThumbnailHeight int      `json:"thumbnail_height,omitempty"`
+	ThumbnailWidth  int      `json:"thumbnail_width,omitempty"`
+}
 
-	update_ad_creativeSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"account_id":{"description":"account_id","type":"string"},"adlabels":{"description":"adlabels","items":{"additionalProperties":true,"type":"object"},"type":"array"},"id":{"description":"AdCreative ID","type":"string"},"name":{"description":"name","type":"string"},"status":{"description":"status (enum: adcreative_status)","type":"string"}},"required":["id"],"type":"object"}`)
-)
+// update_ad_creativeArgs defines the typed arguments for update_ad_creative
+type update_ad_creativeArgs struct {
+	ID        string                   `json:"id"`
+	AccountId string                   `json:"account_id,omitempty"`
+	Adlabels  []map[string]interface{} `json:"adlabels,omitempty"`
+	Name      string                   `json:"name,omitempty"`
+	Status    string                   `json:"status,omitempty"`
+}
 
-// CreateAdCreativeAdlabelHandler handles create_ad_creative_adlabel
-func CreateAdCreativeAdlabelHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// CreateAdCreativeAdlabelHandler handles create_ad_creative_adlabel with typed arguments
+func CreateAdCreativeAdlabelHandler(ctx context.Context, request mcp.CallToolRequest, args create_ad_creative_adlabelArgs) (*mcp.CallToolResult, error) {
 
-	// Use standard POST handler
-	return StandardPOSTHandler(ctx, request, "adlabels", true)
+	// Build request body
+	body := make(map[string]interface{})
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Add parameters to body
+
+	if len(args.Adlabels) > 0 {
+		body["adlabels"] = args.Adlabels
+	}
+
+	// Build URL and execute
+	url := buildGraphURL(args.ID, "adlabels")
+
+	return ExecutePOSTRequest(ctx, url, body)
 
 }
 
-// ListAdCreativeCreativeInsightsHandler handles list_ad_creative_creative_insights
-func ListAdCreativeCreativeInsightsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// ListAdCreativeCreativeInsightsHandler handles list_ad_creative_creative_insights with typed arguments
+func ListAdCreativeCreativeInsightsHandler(ctx context.Context, request mcp.CallToolRequest, args list_ad_creative_creative_insightsArgs) (*mcp.CallToolResult, error) {
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "creative_insights", "AdCreative", true)
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("AdCreative")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "creative_insights")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
 
 }
 
-// ListAdCreativePreviewsHandler handles list_ad_creative_previews
-func ListAdCreativePreviewsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// ListAdCreativePreviewsHandler handles list_ad_creative_previews with typed arguments
+func ListAdCreativePreviewsHandler(ctx context.Context, request mcp.CallToolRequest, args list_ad_creative_previewsArgs) (*mcp.CallToolResult, error) {
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "previews", "AdCreative", true)
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("AdCreative")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	if args.AdFormat != "" {
+		query.Set("ad_format", args.AdFormat)
+	}
+
+	if args.CreativeFeature != "" {
+		query.Set("creative_feature", args.CreativeFeature)
+	}
+
+	if args.DynamicAssetLabel != "" {
+		query.Set("dynamic_asset_label", args.DynamicAssetLabel)
+	}
+
+	// Handle DynamicCreativeSpec map parameter
+	for k, v := range args.DynamicCreativeSpec {
+		query.Set(k, fmt.Sprintf("%v", v))
+	}
+
+	// Handle DynamicCustomization map parameter
+	for k, v := range args.DynamicCustomization {
+		query.Set(k, fmt.Sprintf("%v", v))
+	}
+
+	if args.Height > 0 {
+		query.Set("height", fmt.Sprintf("%d", args.Height))
+	}
+
+	if args.Locale != "" {
+		query.Set("locale", args.Locale)
+	}
+
+	if args.PlacePageId > 0 {
+		query.Set("place_page_id", fmt.Sprintf("%d", args.PlacePageId))
+	}
+
+	// Handle Post map parameter
+	for k, v := range args.Post {
+		query.Set(k, fmt.Sprintf("%v", v))
+	}
+
+	if len(args.ProductItemIds) > 0 {
+		query.Set("product_item_ids", strings.Join(args.ProductItemIds, ","))
+	}
+
+	if args.RenderType != "" {
+		query.Set("render_type", args.RenderType)
+	}
+
+	if args.Width > 0 {
+		query.Set("width", fmt.Sprintf("%d", args.Width))
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "previews")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
 
 }
 
-// DeleteAdCreativeHandler handles delete_ad_creative
-func DeleteAdCreativeHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// DeleteAdCreativeHandler handles delete_ad_creative with typed arguments
+func DeleteAdCreativeHandler(ctx context.Context, request mcp.CallToolRequest, args delete_ad_creativeArgs) (*mcp.CallToolResult, error) {
 
-	// Use standard DELETE handler
-	return StandardDELETEHandler(ctx, request, "")
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
 
-}
+	// Build URL and execute
+	url := buildGraphURL(args.ID, "")
 
-// GetAdCreativeHandler handles get_ad_creative
-func GetAdCreativeHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "", "AdCreative", true)
+	return ExecuteDELETERequest(ctx, url)
 
 }
 
-// UpdateAdCreativeHandler handles update_ad_creative
-func UpdateAdCreativeHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// GetAdCreativeHandler handles get_ad_creative with typed arguments
+func GetAdCreativeHandler(ctx context.Context, request mcp.CallToolRequest, args get_ad_creativeArgs) (*mcp.CallToolResult, error) {
 
-	// Use standard POST handler
-	return StandardPOSTHandler(ctx, request, "", true)
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("AdCreative")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	if args.ThumbnailHeight > 0 {
+		query.Set("thumbnail_height", fmt.Sprintf("%d", args.ThumbnailHeight))
+	}
+
+	if args.ThumbnailWidth > 0 {
+		query.Set("thumbnail_width", fmt.Sprintf("%d", args.ThumbnailWidth))
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
+}
+
+// UpdateAdCreativeHandler handles update_ad_creative with typed arguments
+func UpdateAdCreativeHandler(ctx context.Context, request mcp.CallToolRequest, args update_ad_creativeArgs) (*mcp.CallToolResult, error) {
+
+	// Build request body
+	body := make(map[string]interface{})
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Add parameters to body
+
+	if args.AccountId != "" {
+		body["account_id"] = args.AccountId
+	}
+
+	if len(args.Adlabels) > 0 {
+		body["adlabels"] = args.Adlabels
+	}
+
+	if args.Name != "" {
+		body["name"] = args.Name
+	}
+
+	if args.Status != "" {
+		body["status"] = args.Status
+	}
+
+	// Build URL and execute
+	url := buildGraphURL(args.ID, "")
+
+	return ExecutePOSTRequest(ctx, url, body)
 
 }
 
 // RegisterAdCreativeTools registers all AdCreative tools with the MCP server
 func RegisterAdCreativeTools(s *server.MCPServer) error {
 
+	// Register create_ad_creative_adlabel
 	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"create_ad_creative_adlabel",
-			"Associate adlabels with this AdCreative Returns AdCreative. Required: adlabels",
-			create_ad_creative_adlabelSchema,
+		mcp.NewTool("create_ad_creative_adlabel",
+			mcp.WithDescription("Associate adlabels with this AdCreative Returns AdCreative. Required: adlabels"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdCreative ID"),
+			),
+			mcp.WithArray("adlabels",
+				mcp.Required(),
+				mcp.Description("adlabels"),
+				mcp.Items(map[string]any{"type": "object"}),
+			),
 		),
-		CreateAdCreativeAdlabelHandler,
+		mcp.NewTypedToolHandler(CreateAdCreativeAdlabelHandler),
 	)
 
+	// Register list_ad_creative_creative_insights
 	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_ad_creative_creative_insights",
-			"List creative_insights for this AdCreative Returns AdCreativeInsights.",
-			list_ad_creative_creative_insightsSchema,
+		mcp.NewTool("list_ad_creative_creative_insights",
+			mcp.WithDescription("List creative_insights for this AdCreative Returns AdCreativeInsights."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdCreative ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
 		),
-		ListAdCreativeCreativeInsightsHandler,
+		mcp.NewTypedToolHandler(ListAdCreativeCreativeInsightsHandler),
 	)
 
+	// Register list_ad_creative_previews
 	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_ad_creative_previews",
-			"List previews for this AdCreative Returns AdPreview. Required: ad_format (enum)",
-			list_ad_creative_previewsSchema,
+		mcp.NewTool("list_ad_creative_previews",
+			mcp.WithDescription("List previews for this AdCreative Returns AdPreview. Required: ad_format (enum)"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdCreative ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithString("ad_format",
+				mcp.Required(),
+				mcp.Description("ad_format (enum: adcreativepreviews_ad_format_enum_param)"),
+			),
+			mcp.WithString("creative_feature",
+				mcp.Description("creative_feature (enum: adcreativepreviews_creative_feature_enum_param)"),
+			),
+			mcp.WithString("dynamic_asset_label",
+				mcp.Description("dynamic_asset_label"),
+			),
+			mcp.WithObject("dynamic_creative_spec",
+				mcp.Description("dynamic_creative_spec"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithObject("dynamic_customization",
+				mcp.Description("dynamic_customization"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("end_date",
+				mcp.Description("end_date"),
+			),
+			mcp.WithNumber("height",
+				mcp.Description("height"),
+			),
+			mcp.WithString("locale",
+				mcp.Description("locale"),
+			),
+			mcp.WithNumber("place_page_id",
+				mcp.Description("place_page_id"),
+			),
+			mcp.WithObject("post",
+				mcp.Description("post"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithArray("product_item_ids",
+				mcp.Description("product_item_ids"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithString("render_type",
+				mcp.Description("render_type (enum: adcreativepreviews_render_type_enum_param)"),
+			),
+			mcp.WithString("start_date",
+				mcp.Description("start_date"),
+			),
+			mcp.WithNumber("width",
+				mcp.Description("width"),
+			),
 		),
-		ListAdCreativePreviewsHandler,
+		mcp.NewTypedToolHandler(ListAdCreativePreviewsHandler),
 	)
 
+	// Register delete_ad_creative
 	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"delete_ad_creative",
-			"Delete a AdCreative",
-			delete_ad_creativeSchema,
+		mcp.NewTool("delete_ad_creative",
+			mcp.WithDescription("Delete a AdCreative"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdCreative ID"),
+			),
+			mcp.WithString("account_id",
+				mcp.Description("account_id"),
+			),
+			mcp.WithArray("adlabels",
+				mcp.Description("adlabels"),
+				mcp.Items(map[string]any{"type": "object"}),
+			),
+			mcp.WithString("name",
+				mcp.Description("name"),
+			),
+			mcp.WithString("status",
+				mcp.Description("status (enum: adcreative_status)"),
+			),
 		),
-		DeleteAdCreativeHandler,
+		mcp.NewTypedToolHandler(DeleteAdCreativeHandler),
 	)
 
+	// Register get_ad_creative
 	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"get_ad_creative",
-			"Get details of a specific AdCreative Returns AdCreative.",
-			get_ad_creativeSchema,
+		mcp.NewTool("get_ad_creative",
+			mcp.WithDescription("Get details of a specific AdCreative Returns AdCreative."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdCreative ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithNumber("thumbnail_height",
+				mcp.Description("thumbnail_height"),
+			),
+			mcp.WithNumber("thumbnail_width",
+				mcp.Description("thumbnail_width"),
+			),
 		),
-		GetAdCreativeHandler,
+		mcp.NewTypedToolHandler(GetAdCreativeHandler),
 	)
 
+	// Register update_ad_creative
 	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"update_ad_creative",
-			"Update a AdCreative Returns AdCreative.",
-			update_ad_creativeSchema,
+		mcp.NewTool("update_ad_creative",
+			mcp.WithDescription("Update a AdCreative Returns AdCreative."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdCreative ID"),
+			),
+			mcp.WithString("account_id",
+				mcp.Description("account_id"),
+			),
+			mcp.WithArray("adlabels",
+				mcp.Description("adlabels"),
+				mcp.Items(map[string]any{"type": "object"}),
+			),
+			mcp.WithString("name",
+				mcp.Description("name"),
+			),
+			mcp.WithString("status",
+				mcp.Description("status (enum: adcreative_status)"),
+			),
 		),
-		UpdateAdCreativeHandler,
+		mcp.NewTypedToolHandler(UpdateAdCreativeHandler),
 	)
 
 	return nil

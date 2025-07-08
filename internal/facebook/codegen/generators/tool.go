@@ -41,6 +41,17 @@ type SchemaParam struct {
 	Type        string
 	Required    bool
 	Description string
+	// For typed template
+	SchemaType string // string, number, boolean, array, object
+	ItemsType  string // For arrays
+	JSONName   string // JSON field name
+}
+
+type TypedParam struct {
+	GoName   string // Go struct field name (capitalized)
+	GoType   string // Go type (string, int, bool, []string, etc.)
+	JSONName string // JSON field name
+	JSONTag  string // Additional JSON tags like omitempty
 }
 
 type ToolData struct {
@@ -57,6 +68,7 @@ type ToolData struct {
 	HasComplexLogic bool          // Whether handler needs custom logic
 	HasQueryParams  bool          // Whether POST/PUT has query params
 	SchemaParams    []SchemaParam // For new template format
+	TypedParams     []TypedParam  // For typed handlers
 }
 
 type ObjectGroup struct {
@@ -173,21 +185,6 @@ func (g *ToolGenerator) Generate() error {
 
 func (g *ToolGenerator) generateToolsForObject(objectName string, spec *ToolSpec) error {
 	// Prepare tools data for this object
-	type ToolData struct {
-		ObjectName      string
-		Method          string
-		Endpoint        string
-		Return          string
-		ToolName        string
-		HandlerName     string
-		Description     string
-		InputSchema     string // JSON string
-		NeedsID         bool
-		Params          []Param
-		HasComplexLogic bool // Whether handler needs custom logic
-		HasQueryParams  bool // Whether POST/PUT has query params
-	}
-
 	var tools []ToolData
 
 	// Process APIs for this object
@@ -203,6 +200,11 @@ func (g *ToolGenerator) generateToolsForObject(objectName string, spec *ToolSpec
 		// Determine if handler needs custom logic
 		hasComplexLogic := g.hasComplexLogic(api)
 		hasQueryParams := g.hasQueryParams(api)
+		needsID := g.needsObjectID(objectName, api.Endpoint)
+
+		// Convert to typed params
+		typedParams := g.convertToTypedParams(api.Params, api.Method)
+		schemaParams := g.convertToSchemaParams(api.Params, needsID, api.Method)
 
 		tools = append(tools, ToolData{
 			ObjectName:      objectName,
@@ -213,10 +215,12 @@ func (g *ToolGenerator) generateToolsForObject(objectName string, spec *ToolSpec
 			HandlerName:     handlerName,
 			Description:     strings.ReplaceAll(g.generateDescription(objectName, api), `"`, `\"`),
 			InputSchema:     string(inputSchemaJSON),
-			NeedsID:         g.needsObjectID(objectName, api.Endpoint),
+			NeedsID:         needsID,
 			Params:          api.Params,
 			HasComplexLogic: hasComplexLogic,
 			HasQueryParams:  hasQueryParams,
+			TypedParams:     typedParams,
+			SchemaParams:    schemaParams,
 		})
 	}
 
@@ -232,13 +236,17 @@ func (g *ToolGenerator) generateToolsForObject(objectName string, spec *ToolSpec
 	}
 
 	// Load and execute template
-	// Use refactored template that leverages utility functions
-	tmplContent, err := os.ReadFile(filepath.Join(filepath.Dir(g.outputPath), "codegen", "templates", "object_tools_refactored.go.tmpl"))
+	// Use typed template for type-safe handlers
+	tmplContent, err := os.ReadFile(filepath.Join(filepath.Dir(g.outputPath), "codegen", "templates", "object_tools_typed.go.tmpl"))
 	if err != nil {
-		// Fallback to original template if refactored doesn't exist
-		tmplContent, err = os.ReadFile(filepath.Join(filepath.Dir(g.outputPath), "codegen", "templates", "object_tools.go.tmpl"))
+		// Fallback to refactored template if typed doesn't exist
+		tmplContent, err = os.ReadFile(filepath.Join(filepath.Dir(g.outputPath), "codegen", "templates", "object_tools_refactored.go.tmpl"))
 		if err != nil {
-			return fmt.Errorf("failed to read template: %w", err)
+			// Fallback to original template
+			tmplContent, err = os.ReadFile(filepath.Join(filepath.Dir(g.outputPath), "codegen", "templates", "object_tools.go.tmpl"))
+			if err != nil {
+				return fmt.Errorf("failed to read template: %w", err)
+			}
 		}
 	}
 
@@ -351,7 +359,8 @@ func (g *ToolGenerator) generateTools() error {
 			hasQueryParams := g.hasQueryParams(api)
 
 			// Convert params to SchemaParams
-			schemaParams := g.convertToSchemaParams(api.Params, g.needsObjectID(objectName, api.Endpoint))
+			schemaParams := g.convertToSchemaParams(api.Params, g.needsObjectID(objectName, api.Endpoint), api.Method)
+			typedParams := g.convertToTypedParams(api.Params, api.Method)
 
 			tools = append(tools, ToolData{
 				ObjectName:      objectName,
@@ -367,6 +376,7 @@ func (g *ToolGenerator) generateTools() error {
 				HasComplexLogic: hasComplexLogic,
 				HasQueryParams:  hasQueryParams,
 				SchemaParams:    schemaParams,
+				TypedParams:     typedParams,
 			})
 		}
 	}
@@ -782,36 +792,6 @@ func (g *ToolGenerator) hasQueryParams(api API) bool {
 	return false
 }
 
-func (g *ToolGenerator) convertToSchemaParams(params []Param, needsID bool) []SchemaParam {
-	var schemaParams []SchemaParam
-
-	// Add ID parameter if needed
-	if needsID {
-		schemaParams = append(schemaParams, SchemaParam{
-			Name:        "id",
-			Type:        "string",
-			Required:    true,
-			Description: "The ID of the object",
-		})
-	}
-
-	// Add fields parameter for GET requests (common pattern)
-	// This is handled by checking method in template
-
-	// Convert API params
-	for _, param := range params {
-		paramType := g.mapParamType(param.Type)
-		schemaParams = append(schemaParams, SchemaParam{
-			Name:        param.Name,
-			Type:        paramType,
-			Required:    param.Required,
-			Description: "", // Could be enhanced with param descriptions
-		})
-	}
-
-	return schemaParams
-}
-
 func (g *ToolGenerator) mapParamType(fbType string) string {
 	// Map Facebook types to JSON schema types
 	switch strings.ToLower(fbType) {
@@ -857,4 +837,216 @@ func (g *ToolGenerator) toCamelCase(s string) string {
 		}
 	}
 	return strings.Join(parts, "")
+}
+
+// convertToTypedParams converts API params to TypedParam for Go structs
+func (g *ToolGenerator) convertToTypedParams(params []Param, method string) []TypedParam {
+	var typedParams []TypedParam
+	seen := make(map[string]bool)
+
+	// Add common GET parameters if GET method
+	if method == "GET" {
+		typedParams = append(typedParams, TypedParam{
+			GoName:   "Fields",
+			GoType:   "[]string",
+			JSONName: "fields",
+			JSONTag:  "omitempty",
+		})
+		seen["fields"] = true
+
+		typedParams = append(typedParams, TypedParam{
+			GoName:   "Limit",
+			GoType:   "int",
+			JSONName: "limit",
+			JSONTag:  "omitempty",
+		})
+		seen["limit"] = true
+
+		typedParams = append(typedParams, TypedParam{
+			GoName:   "After",
+			GoType:   "string",
+			JSONName: "after",
+			JSONTag:  "omitempty",
+		})
+		seen["after"] = true
+
+		typedParams = append(typedParams, TypedParam{
+			GoName:   "Before",
+			GoType:   "string",
+			JSONName: "before",
+			JSONTag:  "omitempty",
+		})
+		seen["before"] = true
+	}
+
+	// Convert API params, skipping duplicates
+	for _, param := range params {
+		// Skip if already added as common param
+		if seen[param.Name] {
+			continue
+		}
+
+		goType := g.mapParamToGoType(param.Type)
+		goName := g.toCamelCase(param.Name)
+
+		typedParam := TypedParam{
+			GoName:   goName,
+			GoType:   goType,
+			JSONName: param.Name,
+		}
+
+		// Add omitempty for optional params
+		if !param.Required {
+			typedParam.JSONTag = "omitempty"
+		}
+
+		typedParams = append(typedParams, typedParam)
+		seen[param.Name] = true
+	}
+
+	return typedParams
+}
+
+// mapParamToGoType maps Facebook parameter types to Go types
+func (g *ToolGenerator) mapParamToGoType(fbType string) string {
+	switch {
+	case strings.HasPrefix(fbType, "list<"):
+		innerType := strings.TrimSuffix(strings.TrimPrefix(fbType, "list<"), ">")
+		if innerType == "Object" || strings.Contains(innerType, "map") {
+			return "[]map[string]interface{}"
+		} else if innerType == "string" {
+			return "[]string"
+		} else if innerType == "int" || innerType == "integer" {
+			return "[]int"
+		}
+		return "[]interface{}"
+
+	case strings.HasPrefix(fbType, "map"):
+		return "map[string]interface{}"
+
+	case fbType == "Object" || fbType == "object":
+		return "map[string]interface{}"
+
+	case fbType == "string" || g.isEnumType(fbType):
+		return "string"
+
+	case fbType == "int" || fbType == "integer" || fbType == "unsigned int":
+		return "int"
+
+	case fbType == "float" || fbType == "double":
+		return "float64"
+
+	case fbType == "bool" || fbType == "boolean":
+		return "bool"
+
+	default:
+		return "interface{}"
+	}
+}
+
+// convertToSchemaParams creates SchemaParam entries for mcp.NewTool
+func (g *ToolGenerator) convertToSchemaParams(params []Param, needsID bool, method string) []SchemaParam {
+	var schemaParams []SchemaParam
+	seen := make(map[string]bool)
+
+	// Add common GET parameters if GET method
+	if method == "GET" {
+		schemaParams = append(schemaParams, SchemaParam{
+			Name:        "fields",
+			Type:        "array",
+			Required:    false,
+			Description: "Fields to return",
+			SchemaType:  "array",
+			ItemsType:   "string",
+			JSONName:    "fields",
+		})
+		seen["fields"] = true
+
+		schemaParams = append(schemaParams, SchemaParam{
+			Name:        "limit",
+			Type:        "number",
+			Required:    false,
+			Description: "Maximum number of results",
+			SchemaType:  "number",
+			JSONName:    "limit",
+		})
+		seen["limit"] = true
+
+		schemaParams = append(schemaParams, SchemaParam{
+			Name:        "after",
+			Type:        "string",
+			Required:    false,
+			Description: "Cursor for pagination (next page)",
+			SchemaType:  "string",
+			JSONName:    "after",
+		})
+		seen["after"] = true
+
+		schemaParams = append(schemaParams, SchemaParam{
+			Name:        "before",
+			Type:        "string",
+			Required:    false,
+			Description: "Cursor for pagination (previous page)",
+			SchemaType:  "string",
+			JSONName:    "before",
+		})
+		seen["before"] = true
+	}
+
+	// Convert API params, skipping duplicates
+	for _, param := range params {
+		// Skip if already added as common param
+		if seen[param.Name] {
+			continue
+		}
+
+		schemaType, itemsType := g.mapParamToSchemaType(param.Type)
+		desc := param.Name
+		if g.isEnumType(param.Type) {
+			desc = fmt.Sprintf("%s (enum: %s)", param.Name, param.Type)
+		}
+
+		schemaParams = append(schemaParams, SchemaParam{
+			Name:        param.Name,
+			Type:        param.Type,
+			Required:    param.Required,
+			Description: desc,
+			SchemaType:  schemaType,
+			ItemsType:   itemsType,
+			JSONName:    param.Name,
+		})
+		seen[param.Name] = true
+	}
+
+	return schemaParams
+}
+
+// mapParamToSchemaType maps Facebook types to JSON schema types
+func (g *ToolGenerator) mapParamToSchemaType(fbType string) (schemaType string, itemsType string) {
+	switch {
+	case strings.HasPrefix(fbType, "list<"):
+		innerType := strings.TrimSuffix(strings.TrimPrefix(fbType, "list<"), ">")
+		if innerType == "Object" || strings.Contains(innerType, "map") {
+			return "array", "object"
+		}
+		return "array", "string"
+
+	case strings.HasPrefix(fbType, "map") || fbType == "Object" || fbType == "object":
+		return "object", ""
+
+	case fbType == "string" || g.isEnumType(fbType):
+		return "string", ""
+
+	case fbType == "int" || fbType == "integer" || fbType == "unsigned int":
+		return "number", ""
+
+	case fbType == "float" || fbType == "double":
+		return "number", ""
+
+	case fbType == "bool" || fbType == "boolean":
+		return "boolean", ""
+
+	default:
+		return "string", ""
+	}
 }

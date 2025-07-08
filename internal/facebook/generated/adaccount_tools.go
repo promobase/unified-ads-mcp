@@ -4,2125 +4,11816 @@ package generated
 
 import (
 	"context"
-	"encoding/json"
+	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"github.com/mark3labs/mcp-go/server"
 )
 
-// Tool schemas for AdAccount
-var (
-	list_ad_account_account_controlsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdAccount ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+// list_ad_account_account_controlsArgs defines the typed arguments for list_ad_account_account_controls
+type list_ad_account_account_controlsArgs struct {
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
+}
+
+// create_ad_account_account_controlArgs defines the typed arguments for create_ad_account_account_control
+type create_ad_account_account_controlArgs struct {
+	ID                string                 `json:"id"`
+	AudienceControls  map[string]interface{} `json:"audience_controls"`
+	PlacementControls map[string]interface{} `json:"placement_controls,omitempty"`
+}
+
+// list_ad_account_activitiesArgs defines the typed arguments for list_ad_account_activities
+type list_ad_account_activitiesArgs struct {
+	ID          string      `json:"id"`
+	Fields      []string    `json:"fields,omitempty"`
+	Limit       int         `json:"limit,omitempty"`
+	After       string      `json:"after,omitempty"`
+	Before      string      `json:"before,omitempty"`
+	AddChildren bool        `json:"add_children,omitempty"`
+	BusinessId  string      `json:"business_id,omitempty"`
+	Category    string      `json:"category,omitempty"`
+	DataSource  string      `json:"data_source,omitempty"`
+	ExtraOids   []string    `json:"extra_oids,omitempty"`
+	Oid         string      `json:"oid,omitempty"`
+	Since       interface{} `json:"since,omitempty"`
+	Uid         int         `json:"uid,omitempty"`
+	Until       interface{} `json:"until,omitempty"`
+}
+
+// list_ad_account_ad_place_page_setsArgs defines the typed arguments for list_ad_account_ad_place_page_sets
+type list_ad_account_ad_place_page_setsArgs struct {
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
+}
+
+// create_ad_account_ad_place_page_setArgs defines the typed arguments for create_ad_account_ad_place_page_set
+type create_ad_account_ad_place_page_setArgs struct {
+	ID               string        `json:"id"`
+	LocationTypes    []interface{} `json:"location_types,omitempty"`
+	Name             string        `json:"name"`
+	ParentPage       string        `json:"parent_page"`
+	TargetedAreaType string        `json:"targeted_area_type,omitempty"`
+}
+
+// update_ad_account_ad_place_page_sets_asyncArgs defines the typed arguments for update_ad_account_ad_place_page_sets_async
+type update_ad_account_ad_place_page_sets_asyncArgs struct {
+	ID               string        `json:"id"`
+	LocationTypes    []interface{} `json:"location_types,omitempty"`
+	Name             string        `json:"name"`
+	ParentPage       string        `json:"parent_page"`
+	TargetedAreaType string        `json:"targeted_area_type,omitempty"`
+}
+
+// list_ad_account_ad_saved_keywordsArgs defines the typed arguments for list_ad_account_ad_saved_keywords
+type list_ad_account_ad_saved_keywordsArgs struct {
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
+}
+
+// list_ad_account_ad_studiesArgs defines the typed arguments for list_ad_account_ad_studies
+type list_ad_account_ad_studiesArgs struct {
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
+}
+
+// list_ad_account_adcloudplayablesArgs defines the typed arguments for list_ad_account_adcloudplayables
+type list_ad_account_adcloudplayablesArgs struct {
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
+}
+
+// list_ad_account_adcreativesArgs defines the typed arguments for list_ad_account_adcreatives
+type list_ad_account_adcreativesArgs struct {
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
+}
+
+// create_ad_account_adcreativeArgs defines the typed arguments for create_ad_account_adcreative
+type create_ad_account_adcreativeArgs struct {
+	ID                               string                   `json:"id"`
+	ActorId                          int                      `json:"actor_id,omitempty"`
+	AdDisclaimerSpec                 map[string]interface{}   `json:"ad_disclaimer_spec,omitempty"`
+	Adlabels                         []map[string]interface{} `json:"adlabels,omitempty"`
+	ApplinkTreatment                 string                   `json:"applink_treatment,omitempty"`
+	AssetFeedSpec                    map[string]interface{}   `json:"asset_feed_spec,omitempty"`
+	AuthorizationCategory            string                   `json:"authorization_category,omitempty"`
+	Body                             string                   `json:"body,omitempty"`
+	BrandedContent                   map[string]interface{}   `json:"branded_content,omitempty"`
+	BrandedContentSponsorPageId      string                   `json:"branded_content_sponsor_page_id,omitempty"`
+	BundleFolderId                   string                   `json:"bundle_folder_id,omitempty"`
+	CallToAction                     map[string]interface{}   `json:"call_to_action,omitempty"`
+	CategorizationCriteria           string                   `json:"categorization_criteria,omitempty"`
+	CategoryMediaSource              string                   `json:"category_media_source,omitempty"`
+	ContextualMultiAds               map[string]interface{}   `json:"contextual_multi_ads,omitempty"`
+	CreativeSourcingSpec             map[string]interface{}   `json:"creative_sourcing_spec,omitempty"`
+	DegreesOfFreedomSpec             map[string]interface{}   `json:"degrees_of_freedom_spec,omitempty"`
+	DestinationSetId                 string                   `json:"destination_set_id,omitempty"`
+	DynamicAdVoice                   string                   `json:"dynamic_ad_voice,omitempty"`
+	EnableLaunchInstantApp           bool                     `json:"enable_launch_instant_app,omitempty"`
+	FacebookBrandedContent           map[string]interface{}   `json:"facebook_branded_content,omitempty"`
+	ImageCrops                       map[string]interface{}   `json:"image_crops,omitempty"`
+	ImageFile                        string                   `json:"image_file,omitempty"`
+	ImageHash                        string                   `json:"image_hash,omitempty"`
+	ImageUrl                         string                   `json:"image_url,omitempty"`
+	InstagramBrandedContent          map[string]interface{}   `json:"instagram_branded_content,omitempty"`
+	InstagramPermalinkUrl            string                   `json:"instagram_permalink_url,omitempty"`
+	InstagramUserId                  string                   `json:"instagram_user_id,omitempty"`
+	InteractiveComponentsSpec        map[string]interface{}   `json:"interactive_components_spec,omitempty"`
+	IsDcoInternal                    bool                     `json:"is_dco_internal,omitempty"`
+	LinkOgId                         string                   `json:"link_og_id,omitempty"`
+	LinkUrl                          string                   `json:"link_url,omitempty"`
+	Name                             string                   `json:"name,omitempty"`
+	ObjectId                         int                      `json:"object_id,omitempty"`
+	ObjectStoryId                    string                   `json:"object_story_id,omitempty"`
+	ObjectStorySpec                  interface{}              `json:"object_story_spec,omitempty"`
+	ObjectType                       string                   `json:"object_type,omitempty"`
+	ObjectUrl                        string                   `json:"object_url,omitempty"`
+	OmnichannelLinkSpec              map[string]interface{}   `json:"omnichannel_link_spec,omitempty"`
+	PageWelcomeMessage               string                   `json:"page_welcome_message,omitempty"`
+	PlacePageSetId                   string                   `json:"place_page_set_id,omitempty"`
+	PlatformCustomizations           map[string]interface{}   `json:"platform_customizations,omitempty"`
+	PlayableAssetId                  string                   `json:"playable_asset_id,omitempty"`
+	PortraitCustomizations           map[string]interface{}   `json:"portrait_customizations,omitempty"`
+	ProductSetId                     string                   `json:"product_set_id,omitempty"`
+	RecommenderSettings              map[string]interface{}   `json:"recommender_settings,omitempty"`
+	RegionalRegulationDisclaimerSpec map[string]interface{}   `json:"regional_regulation_disclaimer_spec,omitempty"`
+	SourceInstagramMediaId           string                   `json:"source_instagram_media_id,omitempty"`
+	TemplateUrl                      string                   `json:"template_url,omitempty"`
+	TemplateUrlSpec                  string                   `json:"template_url_spec,omitempty"`
+	ThumbnailUrl                     string                   `json:"thumbnail_url,omitempty"`
+	Title                            string                   `json:"title,omitempty"`
+	UrlTags                          string                   `json:"url_tags,omitempty"`
+	UsePageActorOverride             bool                     `json:"use_page_actor_override,omitempty"`
+}
+
+// list_ad_account_adcreativesbylabelsArgs defines the typed arguments for list_ad_account_adcreativesbylabels
+type list_ad_account_adcreativesbylabelsArgs struct {
+	ID         string   `json:"id"`
+	Fields     []string `json:"fields,omitempty"`
+	Limit      int      `json:"limit,omitempty"`
+	After      string   `json:"after,omitempty"`
+	Before     string   `json:"before,omitempty"`
+	AdLabelIds []string `json:"ad_label_ids"`
+	Operator   string   `json:"operator,omitempty"`
+}
+
+// remove_adimages_from_ad_accountArgs defines the typed arguments for remove_adimages_from_ad_account
+type remove_adimages_from_ad_accountArgs struct {
+	ID   string `json:"id"`
+	Hash string `json:"hash"`
+}
+
+// list_ad_account_adimagesArgs defines the typed arguments for list_ad_account_adimages
+type list_ad_account_adimagesArgs struct {
+	ID             string   `json:"id"`
+	Fields         []string `json:"fields,omitempty"`
+	Limit          int      `json:"limit,omitempty"`
+	After          string   `json:"after,omitempty"`
+	Before         string   `json:"before,omitempty"`
+	BizTagId       int      `json:"biz_tag_id,omitempty"`
+	BusinessId     string   `json:"business_id,omitempty"`
+	Hashes         []string `json:"hashes,omitempty"`
+	Minheight      int      `json:"minheight,omitempty"`
+	Minwidth       int      `json:"minwidth,omitempty"`
+	Name           string   `json:"name,omitempty"`
+	SelectedHashes []string `json:"selected_hashes,omitempty"`
+}
+
+// create_ad_account_adimageArgs defines the typed arguments for create_ad_account_adimage
+type create_ad_account_adimageArgs struct {
+	ID       string                 `json:"id"`
+	Bytes    string                 `json:"bytes,omitempty"`
+	CopyFrom map[string]interface{} `json:"copy_from,omitempty"`
+}
+
+// list_ad_account_adlabelsArgs defines the typed arguments for list_ad_account_adlabels
+type list_ad_account_adlabelsArgs struct {
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
+}
+
+// create_ad_account_adlabelArgs defines the typed arguments for create_ad_account_adlabel
+type create_ad_account_adlabelArgs struct {
+	ID   string `json:"id"`
+	Name string `json:"name"`
+}
+
+// list_ad_account_adplayablesArgs defines the typed arguments for list_ad_account_adplayables
+type list_ad_account_adplayablesArgs struct {
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
+}
+
+// create_ad_account_adplayableArgs defines the typed arguments for create_ad_account_adplayable
+type create_ad_account_adplayableArgs struct {
+	ID        string      `json:"id"`
+	AppId     string      `json:"app_id,omitempty"`
+	Name      string      `json:"name"`
+	SessionId string      `json:"session_id,omitempty"`
+	Source    interface{} `json:"source,omitempty"`
+	SourceUrl string      `json:"source_url,omitempty"`
+	SourceZip interface{} `json:"source_zip,omitempty"`
+}
+
+// get_ad_account_adrules_historyArgs defines the typed arguments for get_ad_account_adrules_history
+type get_ad_account_adrules_historyArgs struct {
+	ID             string   `json:"id"`
+	Fields         []string `json:"fields,omitempty"`
+	Limit          int      `json:"limit,omitempty"`
+	After          string   `json:"after,omitempty"`
+	Before         string   `json:"before,omitempty"`
+	Action         string   `json:"action,omitempty"`
+	EvaluationType string   `json:"evaluation_type,omitempty"`
+	HideNoChanges  bool     `json:"hide_no_changes,omitempty"`
+	ObjectId       string   `json:"object_id,omitempty"`
+}
+
+// get_ad_account_adrules_libraryArgs defines the typed arguments for get_ad_account_adrules_library
+type get_ad_account_adrules_libraryArgs struct {
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
+}
+
+// update_ad_account_adrules_libraryArgs defines the typed arguments for update_ad_account_adrules_library
+type update_ad_account_adrules_libraryArgs struct {
+	ID               string                 `json:"id"`
+	AccountId        string                 `json:"account_id,omitempty"`
+	EvaluationSpec   map[string]interface{} `json:"evaluation_spec"`
+	ExecutionSpec    map[string]interface{} `json:"execution_spec"`
+	Name             string                 `json:"name"`
+	ScheduleSpec     map[string]interface{} `json:"schedule_spec,omitempty"`
+	Status           string                 `json:"status,omitempty"`
+	UiCreationSource string                 `json:"ui_creation_source,omitempty"`
+}
+
+// list_ad_account_adsArgs defines the typed arguments for list_ad_account_ads
+type list_ad_account_adsArgs struct {
+	ID              string                 `json:"id"`
+	Fields          []string               `json:"fields,omitempty"`
+	Limit           int                    `json:"limit,omitempty"`
+	After           string                 `json:"after,omitempty"`
+	Before          string                 `json:"before,omitempty"`
+	DatePreset      string                 `json:"date_preset,omitempty"`
+	EffectiveStatus []string               `json:"effective_status,omitempty"`
+	TimeRange       map[string]interface{} `json:"time_range,omitempty"`
+	UpdatedSince    int                    `json:"updated_since,omitempty"`
+}
+
+// create_ad_account_adArgs defines the typed arguments for create_ad_account_ad
+type create_ad_account_adArgs struct {
+	ID                      string                   `json:"id"`
+	AdScheduleEndTime       interface{}              `json:"ad_schedule_end_time,omitempty"`
+	AdScheduleStartTime     interface{}              `json:"ad_schedule_start_time,omitempty"`
+	Adlabels                []map[string]interface{} `json:"adlabels,omitempty"`
+	AdsetId                 int                      `json:"adset_id,omitempty"`
+	AdsetSpec               interface{}              `json:"adset_spec,omitempty"`
+	AudienceId              string                   `json:"audience_id,omitempty"`
+	BidAmount               int                      `json:"bid_amount,omitempty"`
+	ConversionDomain        string                   `json:"conversion_domain,omitempty"`
+	Creative                interface{}              `json:"creative"`
+	CreativeAssetGroupsSpec map[string]interface{}   `json:"creative_asset_groups_spec,omitempty"`
+	DateFormat              string                   `json:"date_format,omitempty"`
+	DisplaySequence         int                      `json:"display_sequence,omitempty"`
+	DraftAdgroupId          string                   `json:"draft_adgroup_id,omitempty"`
+	EngagementAudience      bool                     `json:"engagement_audience,omitempty"`
+	ExecutionOptions        []interface{}            `json:"execution_options,omitempty"`
+	IncludeDemolinkHashes   bool                     `json:"include_demolink_hashes,omitempty"`
+	Name                    string                   `json:"name"`
+	Priority                int                      `json:"priority,omitempty"`
+	SourceAdId              string                   `json:"source_ad_id,omitempty"`
+	Status                  string                   `json:"status,omitempty"`
+	TrackingSpecs           map[string]interface{}   `json:"tracking_specs,omitempty"`
+}
+
+// list_ad_account_ads_reporting_mmm_reportsArgs defines the typed arguments for list_ad_account_ads_reporting_mmm_reports
+type list_ad_account_ads_reporting_mmm_reportsArgs struct {
+	ID        string                   `json:"id"`
+	Fields    []string                 `json:"fields,omitempty"`
+	Limit     int                      `json:"limit,omitempty"`
+	After     string                   `json:"after,omitempty"`
+	Before    string                   `json:"before,omitempty"`
+	Filtering []map[string]interface{} `json:"filtering,omitempty"`
+}
+
+// list_ad_account_ads_reporting_mmm_schedulersArgs defines the typed arguments for list_ad_account_ads_reporting_mmm_schedulers
+type list_ad_account_ads_reporting_mmm_schedulersArgs struct {
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
+}
+
+// get_ad_account_ads_volumeArgs defines the typed arguments for get_ad_account_ads_volume
+type get_ad_account_ads_volumeArgs struct {
+	Fields               []string `json:"fields,omitempty"`
+	Limit                int      `json:"limit,omitempty"`
+	After                string   `json:"after,omitempty"`
+	Before               string   `json:"before,omitempty"`
+	PageId               string   `json:"page_id,omitempty"`
+	RecommendationType   string   `json:"recommendation_type,omitempty"`
+	ShowBreakdownByActor bool     `json:"show_breakdown_by_actor,omitempty"`
+}
+
+// list_ad_account_adsbylabelsArgs defines the typed arguments for list_ad_account_adsbylabels
+type list_ad_account_adsbylabelsArgs struct {
+	ID         string   `json:"id"`
+	Fields     []string `json:"fields,omitempty"`
+	Limit      int      `json:"limit,omitempty"`
+	After      string   `json:"after,omitempty"`
+	Before     string   `json:"before,omitempty"`
+	AdLabelIds []string `json:"ad_label_ids"`
+	Operator   string   `json:"operator,omitempty"`
+}
+
+// list_ad_account_adsetsArgs defines the typed arguments for list_ad_account_adsets
+type list_ad_account_adsetsArgs struct {
+	ID              string                 `json:"id"`
+	Fields          []string               `json:"fields,omitempty"`
+	Limit           int                    `json:"limit,omitempty"`
+	After           string                 `json:"after,omitempty"`
+	Before          string                 `json:"before,omitempty"`
+	DatePreset      string                 `json:"date_preset,omitempty"`
+	EffectiveStatus []interface{}          `json:"effective_status,omitempty"`
+	IsCompleted     bool                   `json:"is_completed,omitempty"`
+	TimeRange       map[string]interface{} `json:"time_range,omitempty"`
+	UpdatedSince    int                    `json:"updated_since,omitempty"`
+}
+
+// create_ad_account_adsetArgs defines the typed arguments for create_ad_account_adset
+type create_ad_account_adsetArgs struct {
+	ID                                string                   `json:"id"`
+	Adlabels                          []map[string]interface{} `json:"adlabels,omitempty"`
+	AdsetSchedule                     []map[string]interface{} `json:"adset_schedule,omitempty"`
+	AttributionSpec                   []map[string]interface{} `json:"attribution_spec,omitempty"`
+	BidAdjustments                    map[string]interface{}   `json:"bid_adjustments,omitempty"`
+	BidAmount                         int                      `json:"bid_amount,omitempty"`
+	BidConstraints                    map[string]interface{}   `json:"bid_constraints,omitempty"`
+	BidStrategy                       string                   `json:"bid_strategy,omitempty"`
+	BillingEvent                      string                   `json:"billing_event,omitempty"`
+	BudgetSource                      string                   `json:"budget_source,omitempty"`
+	BudgetSplitSetId                  string                   `json:"budget_split_set_id,omitempty"`
+	CampaignAttribution               map[string]interface{}   `json:"campaign_attribution,omitempty"`
+	CampaignId                        string                   `json:"campaign_id,omitempty"`
+	CampaignSpec                      map[string]interface{}   `json:"campaign_spec,omitempty"`
+	CreativeSequence                  []string                 `json:"creative_sequence,omitempty"`
+	CreativeSequenceRepetitionPattern string                   `json:"creative_sequence_repetition_pattern,omitempty"`
+	DailyBudget                       int                      `json:"daily_budget,omitempty"`
+	DailyImps                         int                      `json:"daily_imps,omitempty"`
+	DailyMinSpendTarget               int                      `json:"daily_min_spend_target,omitempty"`
+	DailySpendCap                     int                      `json:"daily_spend_cap,omitempty"`
+	DateFormat                        string                   `json:"date_format,omitempty"`
+	DestinationType                   string                   `json:"destination_type,omitempty"`
+	DsaBeneficiary                    string                   `json:"dsa_beneficiary,omitempty"`
+	DsaPayor                          string                   `json:"dsa_payor,omitempty"`
+	EndTime                           interface{}              `json:"end_time,omitempty"`
+	ExecutionOptions                  []interface{}            `json:"execution_options,omitempty"`
+	ExistingCustomerBudgetPercentage  int                      `json:"existing_customer_budget_percentage,omitempty"`
+	FrequencyControlSpecs             []map[string]interface{} `json:"frequency_control_specs,omitempty"`
+	FullFunnelExplorationMode         string                   `json:"full_funnel_exploration_mode,omitempty"`
+	IsBaSkipDelayedEligible           bool                     `json:"is_ba_skip_delayed_eligible,omitempty"`
+	IsDynamicCreative                 bool                     `json:"is_dynamic_creative,omitempty"`
+	IsIncrementalAttributionEnabled   bool                     `json:"is_incremental_attribution_enabled,omitempty"`
+	IsSacCfcaTermsCertified           bool                     `json:"is_sac_cfca_terms_certified,omitempty"`
+	LifetimeBudget                    int                      `json:"lifetime_budget,omitempty"`
+	LifetimeImps                      int                      `json:"lifetime_imps,omitempty"`
+	LifetimeMinSpendTarget            int                      `json:"lifetime_min_spend_target,omitempty"`
+	LifetimeSpendCap                  int                      `json:"lifetime_spend_cap,omitempty"`
+	LineNumber                        int                      `json:"line_number,omitempty"`
+	MaxBudgetSpendPercentage          int                      `json:"max_budget_spend_percentage,omitempty"`
+	MinBudgetSpendPercentage          int                      `json:"min_budget_spend_percentage,omitempty"`
+	MultiOptimizationGoalWeight       string                   `json:"multi_optimization_goal_weight,omitempty"`
+	Name                              string                   `json:"name"`
+	OptimizationGoal                  string                   `json:"optimization_goal,omitempty"`
+	OptimizationSubEvent              string                   `json:"optimization_sub_event,omitempty"`
+	PacingType                        []string                 `json:"pacing_type,omitempty"`
+	PromotedObject                    map[string]interface{}   `json:"promoted_object,omitempty"`
+	RbPredictionId                    string                   `json:"rb_prediction_id,omitempty"`
+	RegionalRegulatedCategories       []interface{}            `json:"regional_regulated_categories,omitempty"`
+	RegionalRegulationIdentities      map[string]interface{}   `json:"regional_regulation_identities,omitempty"`
+	RfPredictionId                    string                   `json:"rf_prediction_id,omitempty"`
+	SourceAdsetId                     string                   `json:"source_adset_id,omitempty"`
+	StartTime                         interface{}              `json:"start_time,omitempty"`
+	Status                            string                   `json:"status,omitempty"`
+	Targeting                         interface{}              `json:"targeting,omitempty"`
+	TimeBasedAdRotationIdBlocks       []interface{}            `json:"time_based_ad_rotation_id_blocks,omitempty"`
+	TimeBasedAdRotationIntervals      []interface{}            `json:"time_based_ad_rotation_intervals,omitempty"`
+	TimeStart                         interface{}              `json:"time_start,omitempty"`
+	TimeStop                          interface{}              `json:"time_stop,omitempty"`
+	ToplineId                         string                   `json:"topline_id,omitempty"`
+	TuneForCategory                   string                   `json:"tune_for_category,omitempty"`
+}
+
+// list_ad_account_adsetsbylabelsArgs defines the typed arguments for list_ad_account_adsetsbylabels
+type list_ad_account_adsetsbylabelsArgs struct {
+	ID         string   `json:"id"`
+	Fields     []string `json:"fields,omitempty"`
+	Limit      int      `json:"limit,omitempty"`
+	After      string   `json:"after,omitempty"`
+	Before     string   `json:"before,omitempty"`
+	AdLabelIds []string `json:"ad_label_ids"`
+	Operator   string   `json:"operator,omitempty"`
+}
+
+// list_ad_account_adspixelsArgs defines the typed arguments for list_ad_account_adspixels
+type list_ad_account_adspixelsArgs struct {
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
+	SortBy string   `json:"sort_by,omitempty"`
+}
+
+// create_ad_account_adspixelArgs defines the typed arguments for create_ad_account_adspixel
+type create_ad_account_adspixelArgs struct {
+	ID   string `json:"id"`
+	Name string `json:"name,omitempty"`
+}
+
+// list_ad_account_advertisable_applicationsArgs defines the typed arguments for list_ad_account_advertisable_applications
+type list_ad_account_advertisable_applicationsArgs struct {
+	ID         string   `json:"id"`
+	Fields     []string `json:"fields,omitempty"`
+	Limit      int      `json:"limit,omitempty"`
+	After      string   `json:"after,omitempty"`
+	Before     string   `json:"before,omitempty"`
+	AppId      string   `json:"app_id,omitempty"`
+	BusinessId string   `json:"business_id,omitempty"`
+}
+
+// remove_advideos_from_ad_accountArgs defines the typed arguments for remove_advideos_from_ad_account
+type remove_advideos_from_ad_accountArgs struct {
+	ID      string `json:"id"`
+	VideoId string `json:"video_id"`
+}
+
+// list_ad_account_advideosArgs defines the typed arguments for list_ad_account_advideos
+type list_ad_account_advideosArgs struct {
+	ID             string   `json:"id"`
+	Fields         []string `json:"fields,omitempty"`
+	Limit          int      `json:"limit,omitempty"`
+	After          string   `json:"after,omitempty"`
+	Before         string   `json:"before,omitempty"`
+	MaxAspectRatio float64  `json:"max_aspect_ratio,omitempty"`
+	Maxheight      int      `json:"maxheight,omitempty"`
+	Maxlength      int      `json:"maxlength,omitempty"`
+	Maxwidth       int      `json:"maxwidth,omitempty"`
+	MinAspectRatio float64  `json:"min_aspect_ratio,omitempty"`
+	Minheight      int      `json:"minheight,omitempty"`
+	Minlength      int      `json:"minlength,omitempty"`
+	Minwidth       int      `json:"minwidth,omitempty"`
+	Title          string   `json:"title,omitempty"`
+}
+
+// create_ad_account_advideoArgs defines the typed arguments for create_ad_account_advideo
+type create_ad_account_advideoArgs struct {
+	ID                            string                 `json:"id"`
+	ApplicationId                 string                 `json:"application_id,omitempty"`
+	AskedFunFactPromptId          int                    `json:"asked_fun_fact_prompt_id,omitempty"`
+	AudioStoryWaveAnimationHandle string                 `json:"audio_story_wave_animation_handle,omitempty"`
+	ChunkSessionId                string                 `json:"chunk_session_id,omitempty"`
+	ComposerEntryPicker           string                 `json:"composer_entry_picker,omitempty"`
+	ComposerEntryPoint            string                 `json:"composer_entry_point,omitempty"`
+	ComposerEntryTime             int                    `json:"composer_entry_time,omitempty"`
+	ComposerSessionEventsLog      string                 `json:"composer_session_events_log,omitempty"`
+	ComposerSessionId             string                 `json:"composer_session_id,omitempty"`
+	ComposerSourceSurface         string                 `json:"composer_source_surface,omitempty"`
+	ComposerType                  string                 `json:"composer_type,omitempty"`
+	ContainerType                 string                 `json:"container_type,omitempty"`
+	ContentCategory               string                 `json:"content_category,omitempty"`
+	CreativeTools                 string                 `json:"creative_tools,omitempty"`
+	Description                   string                 `json:"description,omitempty"`
+	Embeddable                    bool                   `json:"embeddable,omitempty"`
+	EndOffset                     int                    `json:"end_offset,omitempty"`
+	FbuploaderVideoFileChunk      string                 `json:"fbuploader_video_file_chunk,omitempty"`
+	FileSize                      int                    `json:"file_size,omitempty"`
+	FileUrl                       string                 `json:"file_url,omitempty"`
+	FisheyeVideoCropped           bool                   `json:"fisheye_video_cropped,omitempty"`
+	Formatting                    string                 `json:"formatting,omitempty"`
+	Fov                           int                    `json:"fov,omitempty"`
+	FrontZRotation                float64                `json:"front_z_rotation,omitempty"`
+	FunFactPromptId               string                 `json:"fun_fact_prompt_id,omitempty"`
+	FunFactToasteeId              int                    `json:"fun_fact_toastee_id,omitempty"`
+	Guide                         []interface{}          `json:"guide,omitempty"`
+	GuideEnabled                  bool                   `json:"guide_enabled,omitempty"`
+	InitialHeading                int                    `json:"initial_heading,omitempty"`
+	InitialPitch                  int                    `json:"initial_pitch,omitempty"`
+	InstantGameEntryPointData     string                 `json:"instant_game_entry_point_data,omitempty"`
+	IsBoostIntended               bool                   `json:"is_boost_intended,omitempty"`
+	IsGroupLinkingPost            bool                   `json:"is_group_linking_post,omitempty"`
+	IsPartnershipAd               bool                   `json:"is_partnership_ad,omitempty"`
+	IsVoiceClip                   bool                   `json:"is_voice_clip,omitempty"`
+	LocationSourceId              string                 `json:"location_source_id,omitempty"`
+	Name                          string                 `json:"name,omitempty"`
+	OgActionTypeId                string                 `json:"og_action_type_id,omitempty"`
+	OgIconId                      string                 `json:"og_icon_id,omitempty"`
+	OgObjectId                    string                 `json:"og_object_id,omitempty"`
+	OgPhrase                      string                 `json:"og_phrase,omitempty"`
+	OgSuggestionMechanism         string                 `json:"og_suggestion_mechanism,omitempty"`
+	OriginalFov                   int                    `json:"original_fov,omitempty"`
+	OriginalProjectionType        string                 `json:"original_projection_type,omitempty"`
+	PartnershipAdAdCode           string                 `json:"partnership_ad_ad_code,omitempty"`
+	PublishEventId                int                    `json:"publish_event_id,omitempty"`
+	ReferencedStickerId           string                 `json:"referenced_sticker_id,omitempty"`
+	ReplaceVideoId                string                 `json:"replace_video_id,omitempty"`
+	SlideshowSpec                 map[string]interface{} `json:"slideshow_spec,omitempty"`
+	Source                        string                 `json:"source,omitempty"`
+	SourceInstagramMediaId        string                 `json:"source_instagram_media_id,omitempty"`
+	Spherical                     bool                   `json:"spherical,omitempty"`
+	StartOffset                   int                    `json:"start_offset,omitempty"`
+	SwapMode                      string                 `json:"swap_mode,omitempty"`
+	TextFormatMetadata            string                 `json:"text_format_metadata,omitempty"`
+	Thumb                         interface{}            `json:"thumb,omitempty"`
+	TimeSinceOriginalPost         int                    `json:"time_since_original_post,omitempty"`
+	Title                         string                 `json:"title,omitempty"`
+	TranscodeSettingProperties    string                 `json:"transcode_setting_properties,omitempty"`
+	UnpublishedContentType        string                 `json:"unpublished_content_type,omitempty"`
+	UploadPhase                   string                 `json:"upload_phase,omitempty"`
+	UploadSessionId               string                 `json:"upload_session_id,omitempty"`
+	UploadSettingProperties       string                 `json:"upload_setting_properties,omitempty"`
+	VideoFileChunk                string                 `json:"video_file_chunk,omitempty"`
+	VideoIdOriginal               string                 `json:"video_id_original,omitempty"`
+	VideoStartTimeMs              int                    `json:"video_start_time_ms,omitempty"`
+	WaterfallId                   string                 `json:"waterfall_id,omitempty"`
+}
+
+// list_ad_account_affectedadsetsArgs defines the typed arguments for list_ad_account_affectedadsets
+type list_ad_account_affectedadsetsArgs struct {
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
+}
+
+// remove_agencies_from_ad_accountArgs defines the typed arguments for remove_agencies_from_ad_account
+type remove_agencies_from_ad_accountArgs struct {
+	ID       string `json:"id"`
+	Business string `json:"business"`
+}
+
+// list_ad_account_agenciesArgs defines the typed arguments for list_ad_account_agencies
+type list_ad_account_agenciesArgs struct {
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
+}
+
+// create_ad_account_agencieArgs defines the typed arguments for create_ad_account_agencie
+type create_ad_account_agencieArgs struct {
+	ID             string        `json:"id"`
+	Business       string        `json:"business"`
+	PermittedTasks []interface{} `json:"permitted_tasks,omitempty"`
+}
+
+// list_ad_account_applicationsArgs defines the typed arguments for list_ad_account_applications
+type list_ad_account_applicationsArgs struct {
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
+}
+
+// remove_assigned_users_from_ad_accountArgs defines the typed arguments for remove_assigned_users_from_ad_account
+type remove_assigned_users_from_ad_accountArgs struct {
+	ID   string `json:"id"`
+	User int    `json:"user"`
+}
+
+// list_ad_account_assigned_usersArgs defines the typed arguments for list_ad_account_assigned_users
+type list_ad_account_assigned_usersArgs struct {
+	ID       string   `json:"id"`
+	Fields   []string `json:"fields,omitempty"`
+	Limit    int      `json:"limit,omitempty"`
+	After    string   `json:"after,omitempty"`
+	Before   string   `json:"before,omitempty"`
+	Business string   `json:"business"`
+}
+
+// create_ad_account_assigned_userArgs defines the typed arguments for create_ad_account_assigned_user
+type create_ad_account_assigned_userArgs struct {
+	ID    string        `json:"id"`
+	Tasks []interface{} `json:"tasks,omitempty"`
+	User  int           `json:"user"`
+}
+
+// create_ad_account_async_batch_requestArgs defines the typed arguments for create_ad_account_async_batch_request
+type create_ad_account_async_batch_requestArgs struct {
+	ID      string                   `json:"id"`
+	Adbatch []map[string]interface{} `json:"adbatch"`
+	Name    string                   `json:"name"`
+}
+
+// list_ad_account_async_requestsArgs defines the typed arguments for list_ad_account_async_requests
+type list_ad_account_async_requestsArgs struct {
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
+	Status string   `json:"status,omitempty"`
+	Type   string   `json:"type,omitempty"`
+}
+
+// list_ad_account_asyncadcreativesArgs defines the typed arguments for list_ad_account_asyncadcreatives
+type list_ad_account_asyncadcreativesArgs struct {
+	ID          string   `json:"id"`
+	Fields      []string `json:"fields,omitempty"`
+	Limit       int      `json:"limit,omitempty"`
+	After       string   `json:"after,omitempty"`
+	Before      string   `json:"before,omitempty"`
+	IsCompleted bool     `json:"is_completed,omitempty"`
+}
+
+// create_ad_account_asyncadcreativeArgs defines the typed arguments for create_ad_account_asyncadcreative
+type create_ad_account_asyncadcreativeArgs struct {
+	ID               string      `json:"id"`
+	CreativeSpec     interface{} `json:"creative_spec"`
+	Name             string      `json:"name"`
+	NotificationMode string      `json:"notification_mode,omitempty"`
+	NotificationUri  string      `json:"notification_uri,omitempty"`
+}
+
+// list_ad_account_asyncadrequestsetsArgs defines the typed arguments for list_ad_account_asyncadrequestsets
+type list_ad_account_asyncadrequestsetsArgs struct {
+	ID          string   `json:"id"`
+	Fields      []string `json:"fields,omitempty"`
+	Limit       int      `json:"limit,omitempty"`
+	After       string   `json:"after,omitempty"`
+	Before      string   `json:"before,omitempty"`
+	IsCompleted bool     `json:"is_completed,omitempty"`
+}
+
+// create_ad_account_asyncadrequestsetArgs defines the typed arguments for create_ad_account_asyncadrequestset
+type create_ad_account_asyncadrequestsetArgs struct {
+	ID               string                   `json:"id"`
+	AdSpecs          []map[string]interface{} `json:"ad_specs"`
+	Name             string                   `json:"name"`
+	NotificationMode string                   `json:"notification_mode,omitempty"`
+	NotificationUri  string                   `json:"notification_uri,omitempty"`
+}
+
+// get_ad_account_audience_funnelArgs defines the typed arguments for get_ad_account_audience_funnel
+type get_ad_account_audience_funnelArgs struct {
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
+}
+
+// create_ad_account_block_list_draftArgs defines the typed arguments for create_ad_account_block_list_draft
+type create_ad_account_block_list_draftArgs struct {
+	ID                string      `json:"id"`
+	PublisherUrlsFile interface{} `json:"publisher_urls_file"`
+}
+
+// create_ad_account_brand_safety_content_filter_levelArgs defines the typed arguments for create_ad_account_brand_safety_content_filter_level
+type create_ad_account_brand_safety_content_filter_levelArgs struct {
+	ID                             string        `json:"id"`
+	BrandSafetyContentFilterLevels []interface{} `json:"brand_safety_content_filter_levels"`
+	BusinessId                     string        `json:"business_id,omitempty"`
+}
+
+// list_ad_account_broadtargetingcategoriesArgs defines the typed arguments for list_ad_account_broadtargetingcategories
+type list_ad_account_broadtargetingcategoriesArgs struct {
+	ID                   string   `json:"id"`
+	Fields               []string `json:"fields,omitempty"`
+	Limit                int      `json:"limit,omitempty"`
+	After                string   `json:"after,omitempty"`
+	Before               string   `json:"before,omitempty"`
+	CustomCategoriesOnly bool     `json:"custom_categories_only,omitempty"`
+}
+
+// list_ad_account_businessprojectsArgs defines the typed arguments for list_ad_account_businessprojects
+type list_ad_account_businessprojectsArgs struct {
+	ID       string   `json:"id"`
+	Fields   []string `json:"fields,omitempty"`
+	Limit    int      `json:"limit,omitempty"`
+	After    string   `json:"after,omitempty"`
+	Before   string   `json:"before,omitempty"`
+	Business string   `json:"business,omitempty"`
+}
+
+// remove_campaigns_from_ad_accountArgs defines the typed arguments for remove_campaigns_from_ad_account
+type remove_campaigns_from_ad_accountArgs struct {
+	ID             string      `json:"id"`
+	BeforeDate     interface{} `json:"before_date,omitempty"`
+	DeleteOffset   int         `json:"delete_offset,omitempty"`
+	DeleteStrategy string      `json:"delete_strategy"`
+	ObjectCount    int         `json:"object_count,omitempty"`
+}
+
+// list_ad_account_campaignsArgs defines the typed arguments for list_ad_account_campaigns
+type list_ad_account_campaignsArgs struct {
+	ID              string                 `json:"id"`
+	Fields          []string               `json:"fields,omitempty"`
+	Limit           int                    `json:"limit,omitempty"`
+	After           string                 `json:"after,omitempty"`
+	Before          string                 `json:"before,omitempty"`
+	DatePreset      string                 `json:"date_preset,omitempty"`
+	EffectiveStatus []interface{}          `json:"effective_status,omitempty"`
+	IsCompleted     bool                   `json:"is_completed,omitempty"`
+	TimeRange       map[string]interface{} `json:"time_range,omitempty"`
+}
+
+// create_ad_account_campaignArgs defines the typed arguments for create_ad_account_campaign
+type create_ad_account_campaignArgs struct {
+	ID                        string                   `json:"id"`
+	Adlabels                  []map[string]interface{} `json:"adlabels,omitempty"`
+	BidStrategy               string                   `json:"bid_strategy,omitempty"`
+	BuyingType                string                   `json:"buying_type,omitempty"`
+	DailyBudget               int                      `json:"daily_budget,omitempty"`
+	ExecutionOptions          []interface{}            `json:"execution_options,omitempty"`
+	IsSkadnetworkAttribution  bool                     `json:"is_skadnetwork_attribution,omitempty"`
+	IterativeSplitTestConfigs []map[string]interface{} `json:"iterative_split_test_configs,omitempty"`
+	LifetimeBudget            int                      `json:"lifetime_budget,omitempty"`
+	Name                      string                   `json:"name,omitempty"`
+	Objective                 string                   `json:"objective,omitempty"`
+	PacingType                []string                 `json:"pacing_type,omitempty"`
+	PromotedObject            map[string]interface{}   `json:"promoted_object,omitempty"`
+	SmartPromotionType        string                   `json:"smart_promotion_type,omitempty"`
+	SourceCampaignId          string                   `json:"source_campaign_id,omitempty"`
+	SpecialAdCategories       []interface{}            `json:"special_ad_categories"`
+	SpecialAdCategoryCountry  []interface{}            `json:"special_ad_category_country,omitempty"`
+	SpendCap                  int                      `json:"spend_cap,omitempty"`
+	StartTime                 interface{}              `json:"start_time,omitempty"`
+	Status                    string                   `json:"status,omitempty"`
+	StopTime                  interface{}              `json:"stop_time,omitempty"`
+	ToplineId                 string                   `json:"topline_id,omitempty"`
+}
+
+// list_ad_account_campaignsbylabelsArgs defines the typed arguments for list_ad_account_campaignsbylabels
+type list_ad_account_campaignsbylabelsArgs struct {
+	ID         string   `json:"id"`
+	Fields     []string `json:"fields,omitempty"`
+	Limit      int      `json:"limit,omitempty"`
+	After      string   `json:"after,omitempty"`
+	Before     string   `json:"before,omitempty"`
+	AdLabelIds []string `json:"ad_label_ids"`
+	Operator   string   `json:"operator,omitempty"`
+}
+
+// list_ad_account_connected_instagram_accountsArgs defines the typed arguments for list_ad_account_connected_instagram_accounts
+type list_ad_account_connected_instagram_accountsArgs struct {
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
+}
+
+// get_ad_account_connected_instagram_accounts_with_iabpArgs defines the typed arguments for get_ad_account_connected_instagram_accounts_with_iabp
+type get_ad_account_connected_instagram_accounts_with_iabpArgs struct {
+	ID         string   `json:"id"`
+	Fields     []string `json:"fields,omitempty"`
+	Limit      int      `json:"limit,omitempty"`
+	After      string   `json:"after,omitempty"`
+	Before     string   `json:"before,omitempty"`
+	BusinessId string   `json:"business_id,omitempty"`
+}
+
+// list_ad_account_conversion_goalsArgs defines the typed arguments for list_ad_account_conversion_goals
+type list_ad_account_conversion_goalsArgs struct {
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
+}
+
+// list_ad_account_customaudiencesArgs defines the typed arguments for list_ad_account_customaudiences
+type list_ad_account_customaudiencesArgs struct {
+	ID                   string                   `json:"id"`
+	Fields               []string                 `json:"fields,omitempty"`
+	Limit                int                      `json:"limit,omitempty"`
+	After                string                   `json:"after,omitempty"`
+	Before               string                   `json:"before,omitempty"`
+	BusinessId           string                   `json:"business_id,omitempty"`
+	FetchPrimaryAudience bool                     `json:"fetch_primary_audience,omitempty"`
+	Filtering            []map[string]interface{} `json:"filtering,omitempty"`
+	PixelId              string                   `json:"pixel_id,omitempty"`
+}
+
+// create_ad_account_customaudienceArgs defines the typed arguments for create_ad_account_customaudience
+type create_ad_account_customaudienceArgs struct {
+	ID                            string                   `json:"id"`
+	AllowedDomains                []string                 `json:"allowed_domains,omitempty"`
+	AssociatedAudienceId          int                      `json:"associated_audience_id,omitempty"`
+	ClaimObjective                string                   `json:"claim_objective,omitempty"`
+	ContentType                   string                   `json:"content_type,omitempty"`
+	Countries                     string                   `json:"countries,omitempty"`
+	CreationParams                map[string]interface{}   `json:"creation_params,omitempty"`
+	CustomerFileSource            string                   `json:"customer_file_source,omitempty"`
+	DatasetId                     string                   `json:"dataset_id,omitempty"`
+	Description                   string                   `json:"description,omitempty"`
+	EnableFetchOrCreate           bool                     `json:"enable_fetch_or_create,omitempty"`
+	EventSourceGroup              string                   `json:"event_source_group,omitempty"`
+	EventSources                  []map[string]interface{} `json:"event_sources,omitempty"`
+	Exclusions                    []map[string]interface{} `json:"exclusions,omitempty"`
+	FacebookPageId                string                   `json:"facebook_page_id,omitempty"`
+	Inclusions                    []map[string]interface{} `json:"inclusions,omitempty"`
+	IsSnapshot                    bool                     `json:"is_snapshot,omitempty"`
+	IsValueBased                  bool                     `json:"is_value_based,omitempty"`
+	ListOfAccounts                []interface{}            `json:"list_of_accounts,omitempty"`
+	LookalikeSpec                 string                   `json:"lookalike_spec,omitempty"`
+	MarketingMessageChannels      map[string]interface{}   `json:"marketing_message_channels,omitempty"`
+	Name                          string                   `json:"name,omitempty"`
+	OptOutLink                    string                   `json:"opt_out_link,omitempty"`
+	OriginAudienceId              string                   `json:"origin_audience_id,omitempty"`
+	ParentAudienceId              int                      `json:"parent_audience_id,omitempty"`
+	PartnerReferenceKey           string                   `json:"partner_reference_key,omitempty"`
+	PixelId                       string                   `json:"pixel_id,omitempty"`
+	Prefill                       bool                     `json:"prefill,omitempty"`
+	ProductSetId                  string                   `json:"product_set_id,omitempty"`
+	RegulatedAudienceSpec         string                   `json:"regulated_audience_spec,omitempty"`
+	RetentionDays                 int                      `json:"retention_days,omitempty"`
+	RevSharePolicyId              int                      `json:"rev_share_policy_id,omitempty"`
+	Rule                          string                   `json:"rule,omitempty"`
+	RuleAggregation               string                   `json:"rule_aggregation,omitempty"`
+	SubscriptionInfo              []interface{}            `json:"subscription_info,omitempty"`
+	Subtype                       string                   `json:"subtype,omitempty"`
+	UseForProducts                []interface{}            `json:"use_for_products,omitempty"`
+	UseInCampaigns                bool                     `json:"use_in_campaigns,omitempty"`
+	VideoGroupIds                 []string                 `json:"video_group_ids,omitempty"`
+	WhatsAppBusinessPhoneNumberId string                   `json:"whats_app_business_phone_number_id,omitempty"`
+}
+
+// list_ad_account_customaudiencestosArgs defines the typed arguments for list_ad_account_customaudiencestos
+type list_ad_account_customaudiencestosArgs struct {
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
+}
+
+// create_ad_account_customaudiencestoArgs defines the typed arguments for create_ad_account_customaudiencesto
+type create_ad_account_customaudiencestoArgs struct {
+	ID         string `json:"id"`
+	BusinessId string `json:"business_id,omitempty"`
+	TosId      string `json:"tos_id"`
+}
+
+// list_ad_account_customconversionsArgs defines the typed arguments for list_ad_account_customconversions
+type list_ad_account_customconversionsArgs struct {
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
+}
+
+// create_ad_account_customconversionArgs defines the typed arguments for create_ad_account_customconversion
+type create_ad_account_customconversionArgs struct {
+	ID                     string  `json:"id"`
+	ActionSourceType       string  `json:"action_source_type,omitempty"`
+	AdvancedRule           string  `json:"advanced_rule,omitempty"`
+	CustomEventType        string  `json:"custom_event_type,omitempty"`
+	DefaultConversionValue float64 `json:"default_conversion_value,omitempty"`
+	Description            string  `json:"description,omitempty"`
+	EventSourceId          string  `json:"event_source_id,omitempty"`
+	Name                   string  `json:"name"`
+	Rule                   string  `json:"rule,omitempty"`
+}
+
+// get_ad_account_delivery_estimateArgs defines the typed arguments for get_ad_account_delivery_estimate
+type get_ad_account_delivery_estimateArgs struct {
+	ID               string                 `json:"id"`
+	Fields           []string               `json:"fields,omitempty"`
+	Limit            int                    `json:"limit,omitempty"`
+	After            string                 `json:"after,omitempty"`
+	Before           string                 `json:"before,omitempty"`
+	OptimizationGoal string                 `json:"optimization_goal"`
+	PromotedObject   map[string]interface{} `json:"promoted_object,omitempty"`
+	TargetingSpec    interface{}            `json:"targeting_spec"`
+}
+
+// list_ad_account_deprecatedtargetingadsetsArgs defines the typed arguments for list_ad_account_deprecatedtargetingadsets
+type list_ad_account_deprecatedtargetingadsetsArgs struct {
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
+	Type   string   `json:"type,omitempty"`
+}
+
+// list_ad_account_dsa_recommendationsArgs defines the typed arguments for list_ad_account_dsa_recommendations
+type list_ad_account_dsa_recommendationsArgs struct {
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
+}
+
+// list_ad_account_generatepreviewsArgs defines the typed arguments for list_ad_account_generatepreviews
+type list_ad_account_generatepreviewsArgs struct {
+	ID                   string                 `json:"id"`
+	Fields               []string               `json:"fields,omitempty"`
+	Limit                int                    `json:"limit,omitempty"`
+	After                string                 `json:"after,omitempty"`
+	Before               string                 `json:"before,omitempty"`
+	AdFormat             string                 `json:"ad_format"`
+	Creative             interface{}            `json:"creative"`
+	CreativeFeature      string                 `json:"creative_feature,omitempty"`
+	DynamicAssetLabel    string                 `json:"dynamic_asset_label,omitempty"`
+	DynamicCreativeSpec  map[string]interface{} `json:"dynamic_creative_spec,omitempty"`
+	DynamicCustomization map[string]interface{} `json:"dynamic_customization,omitempty"`
+	EndDate              interface{}            `json:"end_date,omitempty"`
+	Height               int                    `json:"height,omitempty"`
+	Locale               string                 `json:"locale,omitempty"`
+	PlacePageId          int                    `json:"place_page_id,omitempty"`
+	Post                 map[string]interface{} `json:"post,omitempty"`
+	ProductItemIds       []string               `json:"product_item_ids,omitempty"`
+	RenderType           string                 `json:"render_type,omitempty"`
+	StartDate            interface{}            `json:"start_date,omitempty"`
+	Width                int                    `json:"width,omitempty"`
+}
+
+// list_ad_account_impacting_ad_studiesArgs defines the typed arguments for list_ad_account_impacting_ad_studies
+type list_ad_account_impacting_ad_studiesArgs struct {
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
+}
+
+// get_ad_account_insightsArgs defines the typed arguments for get_ad_account_insights
+type get_ad_account_insightsArgs struct {
+	ID                           string                   `json:"id"`
+	Fields                       []string                 `json:"fields,omitempty"`
+	Limit                        int                      `json:"limit,omitempty"`
+	After                        string                   `json:"after,omitempty"`
+	Before                       string                   `json:"before,omitempty"`
+	ActionAttributionWindows     []interface{}            `json:"action_attribution_windows,omitempty"`
+	ActionBreakdowns             []interface{}            `json:"action_breakdowns,omitempty"`
+	ActionReportTime             string                   `json:"action_report_time,omitempty"`
+	Breakdowns                   []interface{}            `json:"breakdowns,omitempty"`
+	DatePreset                   string                   `json:"date_preset,omitempty"`
+	DefaultSummary               bool                     `json:"default_summary,omitempty"`
+	ExportColumns                []string                 `json:"export_columns,omitempty"`
+	ExportFormat                 string                   `json:"export_format,omitempty"`
+	ExportName                   string                   `json:"export_name,omitempty"`
+	Filtering                    []map[string]interface{} `json:"filtering,omitempty"`
+	Level                        string                   `json:"level,omitempty"`
+	ProductIdLimit               int                      `json:"product_id_limit,omitempty"`
+	Sort                         []string                 `json:"sort,omitempty"`
+	Summary                      []string                 `json:"summary,omitempty"`
+	SummaryActionBreakdowns      []interface{}            `json:"summary_action_breakdowns,omitempty"`
+	TimeIncrement                string                   `json:"time_increment,omitempty"`
+	TimeRange                    map[string]interface{}   `json:"time_range,omitempty"`
+	TimeRanges                   []map[string]interface{} `json:"time_ranges,omitempty"`
+	UseAccountAttributionSetting bool                     `json:"use_account_attribution_setting,omitempty"`
+	UseUnifiedAttributionSetting bool                     `json:"use_unified_attribution_setting,omitempty"`
+}
+
+// create_ad_account_insights_reportArgs defines the typed arguments for create_ad_account_insights_report
+type create_ad_account_insights_reportArgs struct {
+	ID                           string                   `json:"id"`
+	ActionAttributionWindows     []interface{}            `json:"action_attribution_windows,omitempty"`
+	ActionBreakdowns             []interface{}            `json:"action_breakdowns,omitempty"`
+	ActionReportTime             string                   `json:"action_report_time,omitempty"`
+	Breakdowns                   []interface{}            `json:"breakdowns,omitempty"`
+	DatePreset                   string                   `json:"date_preset,omitempty"`
+	DefaultSummary               bool                     `json:"default_summary,omitempty"`
+	ExportColumns                []string                 `json:"export_columns,omitempty"`
+	ExportFormat                 string                   `json:"export_format,omitempty"`
+	ExportName                   string                   `json:"export_name,omitempty"`
+	Fields                       []string                 `json:"fields,omitempty"`
+	Filtering                    []map[string]interface{} `json:"filtering,omitempty"`
+	Level                        string                   `json:"level,omitempty"`
+	Limit                        int                      `json:"limit,omitempty"`
+	ProductIdLimit               int                      `json:"product_id_limit,omitempty"`
+	Sort                         []string                 `json:"sort,omitempty"`
+	Summary                      []string                 `json:"summary,omitempty"`
+	SummaryActionBreakdowns      []interface{}            `json:"summary_action_breakdowns,omitempty"`
+	TimeIncrement                string                   `json:"time_increment,omitempty"`
+	TimeRange                    map[string]interface{}   `json:"time_range,omitempty"`
+	TimeRanges                   []map[string]interface{} `json:"time_ranges,omitempty"`
+	UseAccountAttributionSetting bool                     `json:"use_account_attribution_setting,omitempty"`
+	UseUnifiedAttributionSetting bool                     `json:"use_unified_attribution_setting,omitempty"`
+}
+
+// list_ad_account_instagram_accountsArgs defines the typed arguments for list_ad_account_instagram_accounts
+type list_ad_account_instagram_accountsArgs struct {
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
+}
+
+// list_ad_account_ios_fourteen_campaign_limitsArgs defines the typed arguments for list_ad_account_ios_fourteen_campaign_limits
+type list_ad_account_ios_fourteen_campaign_limitsArgs struct {
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
+	AppId  string   `json:"app_id"`
+}
+
+// list_ad_account_matched_search_applicationsArgs defines the typed arguments for list_ad_account_matched_search_applications
+type list_ad_account_matched_search_applicationsArgs struct {
+	Fields                 []string `json:"fields,omitempty"`
+	Limit                  int      `json:"limit,omitempty"`
+	After                  string   `json:"after,omitempty"`
+	Before                 string   `json:"before,omitempty"`
+	AllowIncompleteApp     bool     `json:"allow_incomplete_app,omitempty"`
+	AppStore               string   `json:"app_store"`
+	AppStoreCountry        string   `json:"app_store_country,omitempty"`
+	BusinessId             string   `json:"business_id,omitempty"`
+	IsSkadnetworkSearch    bool     `json:"is_skadnetwork_search,omitempty"`
+	OnlyAppsWithPermission bool     `json:"only_apps_with_permission,omitempty"`
+	QueryTerm              string   `json:"query_term"`
+}
+
+// get_ad_account_max_bidArgs defines the typed arguments for get_ad_account_max_bid
+type get_ad_account_max_bidArgs struct {
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
+}
+
+// list_ad_account_mcmeconversionsArgs defines the typed arguments for list_ad_account_mcmeconversions
+type list_ad_account_mcmeconversionsArgs struct {
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
+}
+
+// list_ad_account_minimum_budgetsArgs defines the typed arguments for list_ad_account_minimum_budgets
+type list_ad_account_minimum_budgetsArgs struct {
+	ID        string   `json:"id"`
+	Fields    []string `json:"fields,omitempty"`
+	Limit     int      `json:"limit,omitempty"`
+	After     string   `json:"after,omitempty"`
+	Before    string   `json:"before,omitempty"`
+	BidAmount int      `json:"bid_amount,omitempty"`
+}
+
+// list_ad_account_onbehalf_requestsArgs defines the typed arguments for list_ad_account_onbehalf_requests
+type list_ad_account_onbehalf_requestsArgs struct {
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
+	Status string   `json:"status,omitempty"`
+}
+
+// create_ad_account_product_audienceArgs defines the typed arguments for create_ad_account_product_audience
+type create_ad_account_product_audienceArgs struct {
+	ID                   string                   `json:"id"`
+	AllowedDomains       []string                 `json:"allowed_domains,omitempty"`
+	AssociatedAudienceId int                      `json:"associated_audience_id,omitempty"`
+	ClaimObjective       string                   `json:"claim_objective,omitempty"`
+	ContentType          string                   `json:"content_type,omitempty"`
+	CreationParams       map[string]interface{}   `json:"creation_params,omitempty"`
+	Description          string                   `json:"description,omitempty"`
+	EnableFetchOrCreate  bool                     `json:"enable_fetch_or_create,omitempty"`
+	EventSourceGroup     string                   `json:"event_source_group,omitempty"`
+	EventSources         []map[string]interface{} `json:"event_sources,omitempty"`
+	Exclusions           []map[string]interface{} `json:"exclusions,omitempty"`
+	Inclusions           []map[string]interface{} `json:"inclusions,omitempty"`
+	IsSnapshot           bool                     `json:"is_snapshot,omitempty"`
+	IsValueBased         bool                     `json:"is_value_based,omitempty"`
+	Name                 string                   `json:"name"`
+	OptOutLink           string                   `json:"opt_out_link,omitempty"`
+	ParentAudienceId     int                      `json:"parent_audience_id,omitempty"`
+	ProductSetId         string                   `json:"product_set_id"`
+	RevSharePolicyId     int                      `json:"rev_share_policy_id,omitempty"`
+	Subtype              string                   `json:"subtype,omitempty"`
+}
+
+// list_ad_account_promote_pagesArgs defines the typed arguments for list_ad_account_promote_pages
+type list_ad_account_promote_pagesArgs struct {
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
+}
+
+// list_ad_account_publisher_block_listsArgs defines the typed arguments for list_ad_account_publisher_block_lists
+type list_ad_account_publisher_block_listsArgs struct {
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
+}
+
+// create_ad_account_publisher_block_listArgs defines the typed arguments for create_ad_account_publisher_block_list
+type create_ad_account_publisher_block_listArgs struct {
+	ID   string `json:"id"`
+	Name string `json:"name,omitempty"`
+}
+
+// get_ad_account_reachestimateArgs defines the typed arguments for get_ad_account_reachestimate
+type get_ad_account_reachestimateArgs struct {
+	ID                 string      `json:"id"`
+	Fields             []string    `json:"fields,omitempty"`
+	Limit              int         `json:"limit,omitempty"`
+	After              string      `json:"after,omitempty"`
+	Before             string      `json:"before,omitempty"`
+	AdgroupIds         []string    `json:"adgroup_ids,omitempty"`
+	CallerId           string      `json:"caller_id,omitempty"`
+	Concepts           string      `json:"concepts,omitempty"`
+	CreativeActionSpec string      `json:"creative_action_spec,omitempty"`
+	IsDebug            bool        `json:"is_debug,omitempty"`
+	ObjectStoreUrl     string      `json:"object_store_url,omitempty"`
+	TargetingSpec      interface{} `json:"targeting_spec"`
+}
+
+// list_ad_account_reachfrequencypredictionsArgs defines the typed arguments for list_ad_account_reachfrequencypredictions
+type list_ad_account_reachfrequencypredictionsArgs struct {
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
+}
+
+// create_ad_account_reachfrequencypredictionArgs defines the typed arguments for create_ad_account_reachfrequencyprediction
+type create_ad_account_reachfrequencypredictionArgs struct {
+	ID                              string                   `json:"id"`
+	Action                          string                   `json:"action,omitempty"`
+	AdFormats                       []map[string]interface{} `json:"ad_formats,omitempty"`
+	AuctionEntryOptionIndex         int                      `json:"auction_entry_option_index,omitempty"`
+	Budget                          int                      `json:"budget,omitempty"`
+	BuyingType                      string                   `json:"buying_type,omitempty"`
+	CampaignGroupId                 string                   `json:"campaign_group_id,omitempty"`
+	DayPartingSchedule              []map[string]interface{} `json:"day_parting_schedule,omitempty"`
+	DealId                          string                   `json:"deal_id,omitempty"`
+	DestinationId                   int                      `json:"destination_id,omitempty"`
+	DestinationIds                  []string                 `json:"destination_ids,omitempty"`
+	EndTime                         int                      `json:"end_time,omitempty"`
+	Exceptions                      bool                     `json:"exceptions,omitempty"`
+	ExistingCampaignId              string                   `json:"existing_campaign_id,omitempty"`
+	ExpirationTime                  int                      `json:"expiration_time,omitempty"`
+	FrequencyCap                    int                      `json:"frequency_cap,omitempty"`
+	GrpBuying                       bool                     `json:"grp_buying,omitempty"`
+	Impression                      int                      `json:"impression,omitempty"`
+	InstreamPackages                []interface{}            `json:"instream_packages,omitempty"`
+	IntervalFrequencyCapResetPeriod int                      `json:"interval_frequency_cap_reset_period,omitempty"`
+	IsBalancedFrequency             bool                     `json:"is_balanced_frequency,omitempty"`
+	IsBonusMedia                    bool                     `json:"is_bonus_media,omitempty"`
+	IsConversionGoal                bool                     `json:"is_conversion_goal,omitempty"`
+	IsFullView                      bool                     `json:"is_full_view,omitempty"`
+	IsHigherAverageFrequency        bool                     `json:"is_higher_average_frequency,omitempty"`
+	IsReachAndFrequencyIoBuying     bool                     `json:"is_reach_and_frequency_io_buying,omitempty"`
+	IsReservedBuying                bool                     `json:"is_reserved_buying,omitempty"`
+	NumCurvePoints                  int                      `json:"num_curve_points,omitempty"`
+	Objective                       string                   `json:"objective,omitempty"`
+	OptimizationGoal                string                   `json:"optimization_goal,omitempty"`
+	PredictionMode                  int                      `json:"prediction_mode,omitempty"`
+	Reach                           int                      `json:"reach,omitempty"`
+	RfPredictionId                  string                   `json:"rf_prediction_id,omitempty"`
+	RfPredictionIdToRelease         string                   `json:"rf_prediction_id_to_release,omitempty"`
+	RfPredictionIdToShare           string                   `json:"rf_prediction_id_to_share,omitempty"`
+	StartTime                       int                      `json:"start_time,omitempty"`
+	StopTime                        int                      `json:"stop_time,omitempty"`
+	StoryEventType                  int                      `json:"story_event_type,omitempty"`
+	TargetCpm                       int                      `json:"target_cpm,omitempty"`
+	TargetFrequency                 int                      `json:"target_frequency,omitempty"`
+	TargetFrequencyResetPeriod      int                      `json:"target_frequency_reset_period,omitempty"`
+	TargetSpec                      interface{}              `json:"target_spec,omitempty"`
+	VideoViewLengthConstraint       int                      `json:"video_view_length_constraint,omitempty"`
+}
+
+// list_ad_account_recommendationsArgs defines the typed arguments for list_ad_account_recommendations
+type list_ad_account_recommendationsArgs struct {
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
+}
+
+// create_ad_account_recommendationArgs defines the typed arguments for create_ad_account_recommendation
+type create_ad_account_recommendationArgs struct {
+	AscFragmentationParameters  map[string]interface{} `json:"asc_fragmentation_parameters,omitempty"`
+	AutoflowParameters          map[string]interface{} `json:"autoflow_parameters,omitempty"`
+	FragmentationParameters     map[string]interface{} `json:"fragmentation_parameters,omitempty"`
+	MusicParameters             map[string]interface{} `json:"music_parameters,omitempty"`
+	RecommendationSignature     string                 `json:"recommendation_signature"`
+	ScaleGoodCampaignParameters map[string]interface{} `json:"scale_good_campaign_parameters,omitempty"`
+}
+
+// list_ad_account_saved_audiencesArgs defines the typed arguments for list_ad_account_saved_audiences
+type list_ad_account_saved_audiencesArgs struct {
+	ID         string                   `json:"id"`
+	Fields     []string                 `json:"fields,omitempty"`
+	Limit      int                      `json:"limit,omitempty"`
+	After      string                   `json:"after,omitempty"`
+	Before     string                   `json:"before,omitempty"`
+	BusinessId string                   `json:"business_id,omitempty"`
+	Filtering  []map[string]interface{} `json:"filtering,omitempty"`
+}
+
+// remove_subscribed_apps_from_ad_accountArgs defines the typed arguments for remove_subscribed_apps_from_ad_account
+type remove_subscribed_apps_from_ad_accountArgs struct {
+	ID    string `json:"id"`
+	AppId string `json:"app_id,omitempty"`
+}
+
+// list_ad_account_subscribed_appsArgs defines the typed arguments for list_ad_account_subscribed_apps
+type list_ad_account_subscribed_appsArgs struct {
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
+}
+
+// create_ad_account_subscribed_appArgs defines the typed arguments for create_ad_account_subscribed_app
+type create_ad_account_subscribed_appArgs struct {
+	ID    string `json:"id"`
+	AppId string `json:"app_id,omitempty"`
+}
+
+// get_ad_account_targetingbrowseArgs defines the typed arguments for get_ad_account_targetingbrowse
+type get_ad_account_targetingbrowseArgs struct {
+	ID                  string        `json:"id"`
+	Fields              []string      `json:"fields,omitempty"`
+	Limit               int           `json:"limit,omitempty"`
+	After               string        `json:"after,omitempty"`
+	Before              string        `json:"before,omitempty"`
+	ExcludedCategory    string        `json:"excluded_category,omitempty"`
+	IncludeNodes        bool          `json:"include_nodes,omitempty"`
+	IsExclusion         bool          `json:"is_exclusion,omitempty"`
+	LimitType           string        `json:"limit_type,omitempty"`
+	RegulatedCategories []interface{} `json:"regulated_categories,omitempty"`
+	RegulatedCountries  []interface{} `json:"regulated_countries,omitempty"`
+	WhitelistedTypes    []interface{} `json:"whitelisted_types,omitempty"`
+}
+
+// get_ad_account_targetingsearchArgs defines the typed arguments for get_ad_account_targetingsearch
+type get_ad_account_targetingsearchArgs struct {
+	Fields                             []string                 `json:"fields,omitempty"`
+	Limit                              int                      `json:"limit,omitempty"`
+	After                              string                   `json:"after,omitempty"`
+	Before                             string                   `json:"before,omitempty"`
+	AllowOnlyFatHeadInterests          bool                     `json:"allow_only_fat_head_interests,omitempty"`
+	AppStore                           string                   `json:"app_store,omitempty"`
+	Countries                          []string                 `json:"countries,omitempty"`
+	IsAccountLevelBrandSafetyExclusion bool                     `json:"is_account_level_brand_safety_exclusion,omitempty"`
+	IsAccountLevelEmployerExclusion    bool                     `json:"is_account_level_employer_exclusion,omitempty"`
+	IsExclusion                        bool                     `json:"is_exclusion,omitempty"`
+	LimitType                          string                   `json:"limit_type,omitempty"`
+	Objective                          string                   `json:"objective,omitempty"`
+	PromotedObject                     map[string]interface{}   `json:"promoted_object,omitempty"`
+	Q                                  string                   `json:"q"`
+	RegulatedCategories                []interface{}            `json:"regulated_categories,omitempty"`
+	RegulatedCountries                 []interface{}            `json:"regulated_countries,omitempty"`
+	SessionId                          int                      `json:"session_id,omitempty"`
+	TargetingList                      []map[string]interface{} `json:"targeting_list,omitempty"`
+	WhitelistedTypes                   []interface{}            `json:"whitelisted_types,omitempty"`
+}
+
+// list_ad_account_targetingsentencelinesArgs defines the typed arguments for list_ad_account_targetingsentencelines
+type list_ad_account_targetingsentencelinesArgs struct {
+	ID                          string      `json:"id"`
+	Fields                      []string    `json:"fields,omitempty"`
+	Limit                       int         `json:"limit,omitempty"`
+	After                       string      `json:"after,omitempty"`
+	Before                      string      `json:"before,omitempty"`
+	DiscardAges                 bool        `json:"discard_ages,omitempty"`
+	DiscardPlacements           bool        `json:"discard_placements,omitempty"`
+	HideTargetingSpecFromReturn bool        `json:"hide_targeting_spec_from_return,omitempty"`
+	TargetingSpec               interface{} `json:"targeting_spec"`
+}
+
+// list_ad_account_targetingsuggestionsArgs defines the typed arguments for list_ad_account_targetingsuggestions
+type list_ad_account_targetingsuggestionsArgs struct {
+	ID                  string                   `json:"id"`
+	Fields              []string                 `json:"fields,omitempty"`
+	Limit               int                      `json:"limit,omitempty"`
+	After               string                   `json:"after,omitempty"`
+	Before              string                   `json:"before,omitempty"`
+	AppStore            string                   `json:"app_store,omitempty"`
+	Countries           []string                 `json:"countries,omitempty"`
+	LimitType           string                   `json:"limit_type,omitempty"`
+	Mode                string                   `json:"mode,omitempty"`
+	Objective           string                   `json:"objective,omitempty"`
+	Objects             map[string]interface{}   `json:"objects,omitempty"`
+	RegulatedCategories []interface{}            `json:"regulated_categories,omitempty"`
+	RegulatedCountries  []interface{}            `json:"regulated_countries,omitempty"`
+	SessionId           int                      `json:"session_id,omitempty"`
+	TargetingList       []map[string]interface{} `json:"targeting_list,omitempty"`
+	WhitelistedTypes    []interface{}            `json:"whitelisted_types,omitempty"`
+}
+
+// get_ad_account_targetingvalidationArgs defines the typed arguments for get_ad_account_targetingvalidation
+type get_ad_account_targetingvalidationArgs struct {
+	ID            string                   `json:"id"`
+	Fields        []string                 `json:"fields,omitempty"`
+	Limit         int                      `json:"limit,omitempty"`
+	After         string                   `json:"after,omitempty"`
+	Before        string                   `json:"before,omitempty"`
+	IdList        []interface{}            `json:"id_list,omitempty"`
+	IsExclusion   bool                     `json:"is_exclusion,omitempty"`
+	NameList      []string                 `json:"name_list,omitempty"`
+	TargetingList []map[string]interface{} `json:"targeting_list,omitempty"`
+}
+
+// get_ad_account_trackingArgs defines the typed arguments for get_ad_account_tracking
+type get_ad_account_trackingArgs struct {
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
+}
+
+// update_ad_account_trackingArgs defines the typed arguments for update_ad_account_tracking
+type update_ad_account_trackingArgs struct {
+	ID            string                 `json:"id"`
+	TrackingSpecs map[string]interface{} `json:"tracking_specs"`
+}
+
+// list_ad_account_usersArgs defines the typed arguments for list_ad_account_users
+type list_ad_account_usersArgs struct {
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
+}
+
+// remove_usersofanyaudience_from_ad_accountArgs defines the typed arguments for remove_usersofanyaudience_from_ad_account
+type remove_usersofanyaudience_from_ad_accountArgs struct {
+	ID        string                 `json:"id"`
+	Namespace string                 `json:"namespace,omitempty"`
+	Payload   map[string]interface{} `json:"payload,omitempty"`
+	Session   map[string]interface{} `json:"session,omitempty"`
+}
+
+// get_ad_account_value_rule_setArgs defines the typed arguments for get_ad_account_value_rule_set
+type get_ad_account_value_rule_setArgs struct {
+	ID          string   `json:"id"`
+	Fields      []string `json:"fields,omitempty"`
+	Limit       int      `json:"limit,omitempty"`
+	After       string   `json:"after,omitempty"`
+	Before      string   `json:"before,omitempty"`
+	ProductType string   `json:"product_type,omitempty"`
+	Status      string   `json:"status,omitempty"`
+}
+
+// update_ad_account_value_rule_setArgs defines the typed arguments for update_ad_account_value_rule_set
+type update_ad_account_value_rule_setArgs struct {
+	ID          string                   `json:"id"`
+	Name        string                   `json:"name"`
+	ProductType string                   `json:"product_type,omitempty"`
+	Rules       []map[string]interface{} `json:"rules"`
+}
+
+// list_ad_account_video_adsArgs defines the typed arguments for list_ad_account_video_ads
+type list_ad_account_video_adsArgs struct {
+	ID     string      `json:"id"`
+	Fields []string    `json:"fields,omitempty"`
+	Limit  int         `json:"limit,omitempty"`
+	After  string      `json:"after,omitempty"`
+	Before string      `json:"before,omitempty"`
+	Since  interface{} `json:"since,omitempty"`
+	Until  interface{} `json:"until,omitempty"`
+}
+
+// create_ad_account_video_adArgs defines the typed arguments for create_ad_account_video_ad
+type create_ad_account_video_adArgs struct {
+	ID          string `json:"id"`
+	Description string `json:"description,omitempty"`
+	Privacy     string `json:"privacy,omitempty"`
+	Title       string `json:"title,omitempty"`
+	UploadPhase string `json:"upload_phase"`
+	VideoId     string `json:"video_id,omitempty"`
+	VideoState  string `json:"video_state,omitempty"`
+}
+
+// get_ad_accountArgs defines the typed arguments for get_ad_account
+type get_ad_accountArgs struct {
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
+}
+
+// update_ad_accountArgs defines the typed arguments for update_ad_account
+type update_ad_accountArgs struct {
+	ID                      string                   `json:"id"`
+	AgencyClientDeclaration map[string]interface{}   `json:"agency_client_declaration,omitempty"`
+	AttributionSpec         []map[string]interface{} `json:"attribution_spec,omitempty"`
+	BusinessInfo            map[string]interface{}   `json:"business_info,omitempty"`
+	Currency                string                   `json:"currency,omitempty"`
+	CustomAudienceInfo      map[string]interface{}   `json:"custom_audience_info,omitempty"`
+	DefaultDsaBeneficiary   string                   `json:"default_dsa_beneficiary,omitempty"`
+	DefaultDsaPayor         string                   `json:"default_dsa_payor,omitempty"`
+	EndAdvertiser           string                   `json:"end_advertiser,omitempty"`
+	ExistingCustomers       []string                 `json:"existing_customers,omitempty"`
+	IsBaSkipDelayedEligible bool                     `json:"is_ba_skip_delayed_eligible,omitempty"`
+	IsNotificationsEnabled  bool                     `json:"is_notifications_enabled,omitempty"`
+	MediaAgency             string                   `json:"media_agency,omitempty"`
+	Name                    string                   `json:"name,omitempty"`
+	Partner                 string                   `json:"partner,omitempty"`
+	SpendCap                float64                  `json:"spend_cap,omitempty"`
+	SpendCapAction          string                   `json:"spend_cap_action,omitempty"`
+	TimezoneId              int                      `json:"timezone_id,omitempty"`
+	TosAccepted             map[string]interface{}   `json:"tos_accepted,omitempty"`
+}
+
+// ListAdAccountAccountControlsHandler handles list_ad_account_account_controls with typed arguments
+func ListAdAccountAccountControlsHandler(ctx context.Context, request mcp.CallToolRequest, args list_ad_account_account_controlsArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "account_controls")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
+}
+
+// CreateAdAccountAccountControlHandler handles create_ad_account_account_control with typed arguments
+func CreateAdAccountAccountControlHandler(ctx context.Context, request mcp.CallToolRequest, args create_ad_account_account_controlArgs) (*mcp.CallToolResult, error) {
+
+	// Build request body
+	body := make(map[string]interface{})
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Add parameters to body
+
+	if args.AudienceControls != nil {
+		body["audience_controls"] = args.AudienceControls
+	}
+
+	if args.PlacementControls != nil {
+		body["placement_controls"] = args.PlacementControls
+	}
+
+	// Build URL and execute
+	url := buildGraphURL(args.ID, "account_controls")
+
+	return ExecutePOSTRequest(ctx, url, body)
+
+}
+
+// ListAdAccountActivitiesHandler handles list_ad_account_activities with typed arguments
+func ListAdAccountActivitiesHandler(ctx context.Context, request mcp.CallToolRequest, args list_ad_account_activitiesArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	if args.AddChildren {
+		query.Set("add_children", "true")
+	}
+
+	if args.BusinessId != "" {
+		query.Set("business_id", args.BusinessId)
+	}
+
+	if args.Category != "" {
+		query.Set("category", args.Category)
+	}
+
+	if args.DataSource != "" {
+		query.Set("data_source", args.DataSource)
+	}
+
+	if len(args.ExtraOids) > 0 {
+		query.Set("extra_oids", strings.Join(args.ExtraOids, ","))
+	}
+
+	if args.Oid != "" {
+		query.Set("oid", args.Oid)
+	}
+
+	if args.Uid > 0 {
+		query.Set("uid", fmt.Sprintf("%d", args.Uid))
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "activities")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
+}
+
+// ListAdAccountAdPlacePageSetsHandler handles list_ad_account_ad_place_page_sets with typed arguments
+func ListAdAccountAdPlacePageSetsHandler(ctx context.Context, request mcp.CallToolRequest, args list_ad_account_ad_place_page_setsArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "ad_place_page_sets")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
+}
+
+// CreateAdAccountAdPlacePageSetHandler handles create_ad_account_ad_place_page_set with typed arguments
+func CreateAdAccountAdPlacePageSetHandler(ctx context.Context, request mcp.CallToolRequest, args create_ad_account_ad_place_page_setArgs) (*mcp.CallToolResult, error) {
+
+	// Build request body
+	body := make(map[string]interface{})
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Add parameters to body
+
+	if args.Name != "" {
+		body["name"] = args.Name
+	}
+
+	if args.ParentPage != "" {
+		body["parent_page"] = args.ParentPage
+	}
+
+	if args.TargetedAreaType != "" {
+		body["targeted_area_type"] = args.TargetedAreaType
+	}
+
+	// Build URL and execute
+	url := buildGraphURL(args.ID, "ad_place_page_sets")
+
+	return ExecutePOSTRequest(ctx, url, body)
+
+}
+
+// UpdateAdAccountAdPlacePageSetsAsyncHandler handles update_ad_account_ad_place_page_sets_async with typed arguments
+func UpdateAdAccountAdPlacePageSetsAsyncHandler(ctx context.Context, request mcp.CallToolRequest, args update_ad_account_ad_place_page_sets_asyncArgs) (*mcp.CallToolResult, error) {
+
+	// Build request body
+	body := make(map[string]interface{})
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Add parameters to body
+
+	if args.Name != "" {
+		body["name"] = args.Name
+	}
+
+	if args.ParentPage != "" {
+		body["parent_page"] = args.ParentPage
+	}
+
+	if args.TargetedAreaType != "" {
+		body["targeted_area_type"] = args.TargetedAreaType
+	}
+
+	// Build URL and execute
+	url := buildGraphURL(args.ID, "ad_place_page_sets_async")
+
+	return ExecutePOSTRequest(ctx, url, body)
+
+}
+
+// ListAdAccountAdSavedKeywordsHandler handles list_ad_account_ad_saved_keywords with typed arguments
+func ListAdAccountAdSavedKeywordsHandler(ctx context.Context, request mcp.CallToolRequest, args list_ad_account_ad_saved_keywordsArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "ad_saved_keywords")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
+}
+
+// ListAdAccountAdStudiesHandler handles list_ad_account_ad_studies with typed arguments
+func ListAdAccountAdStudiesHandler(ctx context.Context, request mcp.CallToolRequest, args list_ad_account_ad_studiesArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "ad_studies")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
+}
+
+// ListAdAccountAdcloudplayablesHandler handles list_ad_account_adcloudplayables with typed arguments
+func ListAdAccountAdcloudplayablesHandler(ctx context.Context, request mcp.CallToolRequest, args list_ad_account_adcloudplayablesArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "adcloudplayables")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
+}
+
+// ListAdAccountAdcreativesHandler handles list_ad_account_adcreatives with typed arguments
+func ListAdAccountAdcreativesHandler(ctx context.Context, request mcp.CallToolRequest, args list_ad_account_adcreativesArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "adcreatives")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
+}
+
+// CreateAdAccountAdcreativeHandler handles create_ad_account_adcreative with typed arguments
+func CreateAdAccountAdcreativeHandler(ctx context.Context, request mcp.CallToolRequest, args create_ad_account_adcreativeArgs) (*mcp.CallToolResult, error) {
+
+	// Build request body
+	body := make(map[string]interface{})
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Add parameters to body
+
+	if args.ActorId > 0 {
+		body["actor_id"] = args.ActorId
+	}
+
+	if args.AdDisclaimerSpec != nil {
+		body["ad_disclaimer_spec"] = args.AdDisclaimerSpec
+	}
+
+	if len(args.Adlabels) > 0 {
+		body["adlabels"] = args.Adlabels
+	}
+
+	if args.ApplinkTreatment != "" {
+		body["applink_treatment"] = args.ApplinkTreatment
+	}
+
+	if args.AssetFeedSpec != nil {
+		body["asset_feed_spec"] = args.AssetFeedSpec
+	}
+
+	if args.AuthorizationCategory != "" {
+		body["authorization_category"] = args.AuthorizationCategory
+	}
+
+	if args.Body != "" {
+		body["body"] = args.Body
+	}
+
+	if args.BrandedContent != nil {
+		body["branded_content"] = args.BrandedContent
+	}
+
+	if args.BrandedContentSponsorPageId != "" {
+		body["branded_content_sponsor_page_id"] = args.BrandedContentSponsorPageId
+	}
+
+	if args.BundleFolderId != "" {
+		body["bundle_folder_id"] = args.BundleFolderId
+	}
+
+	if args.CallToAction != nil {
+		body["call_to_action"] = args.CallToAction
+	}
+
+	if args.CategorizationCriteria != "" {
+		body["categorization_criteria"] = args.CategorizationCriteria
+	}
+
+	if args.CategoryMediaSource != "" {
+		body["category_media_source"] = args.CategoryMediaSource
+	}
+
+	if args.ContextualMultiAds != nil {
+		body["contextual_multi_ads"] = args.ContextualMultiAds
+	}
+
+	if args.CreativeSourcingSpec != nil {
+		body["creative_sourcing_spec"] = args.CreativeSourcingSpec
+	}
+
+	if args.DegreesOfFreedomSpec != nil {
+		body["degrees_of_freedom_spec"] = args.DegreesOfFreedomSpec
+	}
+
+	if args.DestinationSetId != "" {
+		body["destination_set_id"] = args.DestinationSetId
+	}
+
+	if args.DynamicAdVoice != "" {
+		body["dynamic_ad_voice"] = args.DynamicAdVoice
+	}
+
+	body["enable_launch_instant_app"] = args.EnableLaunchInstantApp
+
+	if args.FacebookBrandedContent != nil {
+		body["facebook_branded_content"] = args.FacebookBrandedContent
+	}
+
+	if args.ImageCrops != nil {
+		body["image_crops"] = args.ImageCrops
+	}
+
+	if args.ImageFile != "" {
+		body["image_file"] = args.ImageFile
+	}
+
+	if args.ImageHash != "" {
+		body["image_hash"] = args.ImageHash
+	}
+
+	if args.ImageUrl != "" {
+		body["image_url"] = args.ImageUrl
+	}
+
+	if args.InstagramBrandedContent != nil {
+		body["instagram_branded_content"] = args.InstagramBrandedContent
+	}
+
+	if args.InstagramPermalinkUrl != "" {
+		body["instagram_permalink_url"] = args.InstagramPermalinkUrl
+	}
+
+	if args.InstagramUserId != "" {
+		body["instagram_user_id"] = args.InstagramUserId
+	}
+
+	if args.InteractiveComponentsSpec != nil {
+		body["interactive_components_spec"] = args.InteractiveComponentsSpec
+	}
+
+	body["is_dco_internal"] = args.IsDcoInternal
+
+	if args.LinkOgId != "" {
+		body["link_og_id"] = args.LinkOgId
+	}
+
+	if args.LinkUrl != "" {
+		body["link_url"] = args.LinkUrl
+	}
+
+	if args.Name != "" {
+		body["name"] = args.Name
+	}
+
+	if args.ObjectId > 0 {
+		body["object_id"] = args.ObjectId
+	}
+
+	if args.ObjectStoryId != "" {
+		body["object_story_id"] = args.ObjectStoryId
+	}
+
+	if args.ObjectType != "" {
+		body["object_type"] = args.ObjectType
+	}
+
+	if args.ObjectUrl != "" {
+		body["object_url"] = args.ObjectUrl
+	}
+
+	if args.OmnichannelLinkSpec != nil {
+		body["omnichannel_link_spec"] = args.OmnichannelLinkSpec
+	}
+
+	if args.PageWelcomeMessage != "" {
+		body["page_welcome_message"] = args.PageWelcomeMessage
+	}
+
+	if args.PlacePageSetId != "" {
+		body["place_page_set_id"] = args.PlacePageSetId
+	}
+
+	if args.PlatformCustomizations != nil {
+		body["platform_customizations"] = args.PlatformCustomizations
+	}
+
+	if args.PlayableAssetId != "" {
+		body["playable_asset_id"] = args.PlayableAssetId
+	}
+
+	if args.PortraitCustomizations != nil {
+		body["portrait_customizations"] = args.PortraitCustomizations
+	}
+
+	if args.ProductSetId != "" {
+		body["product_set_id"] = args.ProductSetId
+	}
+
+	if args.RecommenderSettings != nil {
+		body["recommender_settings"] = args.RecommenderSettings
+	}
+
+	if args.RegionalRegulationDisclaimerSpec != nil {
+		body["regional_regulation_disclaimer_spec"] = args.RegionalRegulationDisclaimerSpec
+	}
+
+	if args.SourceInstagramMediaId != "" {
+		body["source_instagram_media_id"] = args.SourceInstagramMediaId
+	}
+
+	if args.TemplateUrl != "" {
+		body["template_url"] = args.TemplateUrl
+	}
+
+	if args.TemplateUrlSpec != "" {
+		body["template_url_spec"] = args.TemplateUrlSpec
+	}
+
+	if args.ThumbnailUrl != "" {
+		body["thumbnail_url"] = args.ThumbnailUrl
+	}
+
+	if args.Title != "" {
+		body["title"] = args.Title
+	}
+
+	if args.UrlTags != "" {
+		body["url_tags"] = args.UrlTags
+	}
+
+	body["use_page_actor_override"] = args.UsePageActorOverride
+
+	// Build URL and execute
+	url := buildGraphURL(args.ID, "adcreatives")
+
+	return ExecutePOSTRequest(ctx, url, body)
+
+}
+
+// ListAdAccountAdcreativesbylabelsHandler handles list_ad_account_adcreativesbylabels with typed arguments
+func ListAdAccountAdcreativesbylabelsHandler(ctx context.Context, request mcp.CallToolRequest, args list_ad_account_adcreativesbylabelsArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	if len(args.AdLabelIds) > 0 {
+		query.Set("ad_label_ids", strings.Join(args.AdLabelIds, ","))
+	}
+
+	if args.Operator != "" {
+		query.Set("operator", args.Operator)
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "adcreativesbylabels")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
+}
+
+// RemoveAdimagesFromAdAccountHandler handles remove_adimages_from_ad_account with typed arguments
+func RemoveAdimagesFromAdAccountHandler(ctx context.Context, request mcp.CallToolRequest, args remove_adimages_from_ad_accountArgs) (*mcp.CallToolResult, error) {
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Build URL and execute
+	url := buildGraphURL(args.ID, "adimages")
+
+	return ExecuteDELETERequest(ctx, url)
+
+}
+
+// ListAdAccountAdimagesHandler handles list_ad_account_adimages with typed arguments
+func ListAdAccountAdimagesHandler(ctx context.Context, request mcp.CallToolRequest, args list_ad_account_adimagesArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	if args.BizTagId > 0 {
+		query.Set("biz_tag_id", fmt.Sprintf("%d", args.BizTagId))
+	}
+
+	if args.BusinessId != "" {
+		query.Set("business_id", args.BusinessId)
+	}
+
+	if len(args.Hashes) > 0 {
+		query.Set("hashes", strings.Join(args.Hashes, ","))
+	}
+
+	if args.Minheight > 0 {
+		query.Set("minheight", fmt.Sprintf("%d", args.Minheight))
+	}
+
+	if args.Minwidth > 0 {
+		query.Set("minwidth", fmt.Sprintf("%d", args.Minwidth))
+	}
+
+	if args.Name != "" {
+		query.Set("name", args.Name)
+	}
+
+	if len(args.SelectedHashes) > 0 {
+		query.Set("selected_hashes", strings.Join(args.SelectedHashes, ","))
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "adimages")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
+}
+
+// CreateAdAccountAdimageHandler handles create_ad_account_adimage with typed arguments
+func CreateAdAccountAdimageHandler(ctx context.Context, request mcp.CallToolRequest, args create_ad_account_adimageArgs) (*mcp.CallToolResult, error) {
+
+	// Build request body
+	body := make(map[string]interface{})
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Add parameters to body
+
+	if args.Bytes != "" {
+		body["bytes"] = args.Bytes
+	}
+
+	if args.CopyFrom != nil {
+		body["copy_from"] = args.CopyFrom
+	}
+
+	// Build URL and execute
+	url := buildGraphURL(args.ID, "adimages")
+
+	return ExecutePOSTRequest(ctx, url, body)
+
+}
+
+// ListAdAccountAdlabelsHandler handles list_ad_account_adlabels with typed arguments
+func ListAdAccountAdlabelsHandler(ctx context.Context, request mcp.CallToolRequest, args list_ad_account_adlabelsArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "adlabels")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
+}
+
+// CreateAdAccountAdlabelHandler handles create_ad_account_adlabel with typed arguments
+func CreateAdAccountAdlabelHandler(ctx context.Context, request mcp.CallToolRequest, args create_ad_account_adlabelArgs) (*mcp.CallToolResult, error) {
+
+	// Build request body
+	body := make(map[string]interface{})
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Add parameters to body
+
+	if args.Name != "" {
+		body["name"] = args.Name
+	}
+
+	// Build URL and execute
+	url := buildGraphURL(args.ID, "adlabels")
+
+	return ExecutePOSTRequest(ctx, url, body)
+
+}
+
+// ListAdAccountAdplayablesHandler handles list_ad_account_adplayables with typed arguments
+func ListAdAccountAdplayablesHandler(ctx context.Context, request mcp.CallToolRequest, args list_ad_account_adplayablesArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "adplayables")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
+}
+
+// CreateAdAccountAdplayableHandler handles create_ad_account_adplayable with typed arguments
+func CreateAdAccountAdplayableHandler(ctx context.Context, request mcp.CallToolRequest, args create_ad_account_adplayableArgs) (*mcp.CallToolResult, error) {
+
+	// Build request body
+	body := make(map[string]interface{})
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Add parameters to body
+
+	if args.AppId != "" {
+		body["app_id"] = args.AppId
+	}
+
+	if args.Name != "" {
+		body["name"] = args.Name
+	}
+
+	if args.SessionId != "" {
+		body["session_id"] = args.SessionId
+	}
+
+	if args.SourceUrl != "" {
+		body["source_url"] = args.SourceUrl
+	}
+
+	// Build URL and execute
+	url := buildGraphURL(args.ID, "adplayables")
+
+	return ExecutePOSTRequest(ctx, url, body)
+
+}
+
+// GetAdAccountAdrulesHistoryHandler handles get_ad_account_adrules_history with typed arguments
+func GetAdAccountAdrulesHistoryHandler(ctx context.Context, request mcp.CallToolRequest, args get_ad_account_adrules_historyArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	if args.Action != "" {
+		query.Set("action", args.Action)
+	}
+
+	if args.EvaluationType != "" {
+		query.Set("evaluation_type", args.EvaluationType)
+	}
+
+	if args.HideNoChanges {
+		query.Set("hide_no_changes", "true")
+	}
+
+	if args.ObjectId != "" {
+		query.Set("object_id", args.ObjectId)
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "adrules_history")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
+}
+
+// GetAdAccountAdrulesLibraryHandler handles get_ad_account_adrules_library with typed arguments
+func GetAdAccountAdrulesLibraryHandler(ctx context.Context, request mcp.CallToolRequest, args get_ad_account_adrules_libraryArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "adrules_library")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
+}
+
+// UpdateAdAccountAdrulesLibraryHandler handles update_ad_account_adrules_library with typed arguments
+func UpdateAdAccountAdrulesLibraryHandler(ctx context.Context, request mcp.CallToolRequest, args update_ad_account_adrules_libraryArgs) (*mcp.CallToolResult, error) {
+
+	// Build request body
+	body := make(map[string]interface{})
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Add parameters to body
+
+	if args.AccountId != "" {
+		body["account_id"] = args.AccountId
+	}
+
+	if args.EvaluationSpec != nil {
+		body["evaluation_spec"] = args.EvaluationSpec
+	}
+
+	if args.ExecutionSpec != nil {
+		body["execution_spec"] = args.ExecutionSpec
+	}
+
+	if args.Name != "" {
+		body["name"] = args.Name
+	}
+
+	if args.ScheduleSpec != nil {
+		body["schedule_spec"] = args.ScheduleSpec
+	}
+
+	if args.Status != "" {
+		body["status"] = args.Status
+	}
+
+	if args.UiCreationSource != "" {
+		body["ui_creation_source"] = args.UiCreationSource
+	}
+
+	// Build URL and execute
+	url := buildGraphURL(args.ID, "adrules_library")
+
+	return ExecutePOSTRequest(ctx, url, body)
+
+}
+
+// ListAdAccountAdsHandler handles list_ad_account_ads with typed arguments
+func ListAdAccountAdsHandler(ctx context.Context, request mcp.CallToolRequest, args list_ad_account_adsArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	if args.DatePreset != "" {
+		query.Set("date_preset", args.DatePreset)
+	}
+
+	if len(args.EffectiveStatus) > 0 {
+		query.Set("effective_status", strings.Join(args.EffectiveStatus, ","))
+	}
+
+	// Handle TimeRange map parameter
+	for k, v := range args.TimeRange {
+		query.Set(k, fmt.Sprintf("%v", v))
+	}
+
+	if args.UpdatedSince > 0 {
+		query.Set("updated_since", fmt.Sprintf("%d", args.UpdatedSince))
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "ads")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
+}
+
+// CreateAdAccountAdHandler handles create_ad_account_ad with typed arguments
+func CreateAdAccountAdHandler(ctx context.Context, request mcp.CallToolRequest, args create_ad_account_adArgs) (*mcp.CallToolResult, error) {
+
+	// Build request body
+	body := make(map[string]interface{})
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Add parameters to body
+
+	if len(args.Adlabels) > 0 {
+		body["adlabels"] = args.Adlabels
+	}
+
+	if args.AdsetId > 0 {
+		body["adset_id"] = args.AdsetId
+	}
+
+	if args.AudienceId != "" {
+		body["audience_id"] = args.AudienceId
+	}
+
+	if args.BidAmount > 0 {
+		body["bid_amount"] = args.BidAmount
+	}
+
+	if args.ConversionDomain != "" {
+		body["conversion_domain"] = args.ConversionDomain
+	}
+
+	if args.CreativeAssetGroupsSpec != nil {
+		body["creative_asset_groups_spec"] = args.CreativeAssetGroupsSpec
+	}
+
+	if args.DateFormat != "" {
+		body["date_format"] = args.DateFormat
+	}
+
+	if args.DisplaySequence > 0 {
+		body["display_sequence"] = args.DisplaySequence
+	}
+
+	if args.DraftAdgroupId != "" {
+		body["draft_adgroup_id"] = args.DraftAdgroupId
+	}
+
+	body["engagement_audience"] = args.EngagementAudience
+
+	body["include_demolink_hashes"] = args.IncludeDemolinkHashes
+
+	if args.Name != "" {
+		body["name"] = args.Name
+	}
+
+	if args.Priority > 0 {
+		body["priority"] = args.Priority
+	}
+
+	if args.SourceAdId != "" {
+		body["source_ad_id"] = args.SourceAdId
+	}
+
+	if args.Status != "" {
+		body["status"] = args.Status
+	}
+
+	if args.TrackingSpecs != nil {
+		body["tracking_specs"] = args.TrackingSpecs
+	}
+
+	// Build URL and execute
+	url := buildGraphURL(args.ID, "ads")
+
+	return ExecutePOSTRequest(ctx, url, body)
+
+}
+
+// ListAdAccountAdsReportingMmmReportsHandler handles list_ad_account_ads_reporting_mmm_reports with typed arguments
+func ListAdAccountAdsReportingMmmReportsHandler(ctx context.Context, request mcp.CallToolRequest, args list_ad_account_ads_reporting_mmm_reportsArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "ads_reporting_mmm_reports")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
+}
+
+// ListAdAccountAdsReportingMmmSchedulersHandler handles list_ad_account_ads_reporting_mmm_schedulers with typed arguments
+func ListAdAccountAdsReportingMmmSchedulersHandler(ctx context.Context, request mcp.CallToolRequest, args list_ad_account_ads_reporting_mmm_schedulersArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "ads_reporting_mmm_schedulers")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
+}
+
+// GetAdAccountAdsVolumeHandler handles get_ad_account_ads_volume with typed arguments
+func GetAdAccountAdsVolumeHandler(ctx context.Context, request mcp.CallToolRequest, args get_ad_account_ads_volumeArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	if args.PageId != "" {
+		query.Set("page_id", args.PageId)
+	}
+
+	if args.RecommendationType != "" {
+		query.Set("recommendation_type", args.RecommendationType)
+	}
+
+	if args.ShowBreakdownByActor {
+		query.Set("show_breakdown_by_actor", "true")
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL("", "ads_volume")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
+}
+
+// ListAdAccountAdsbylabelsHandler handles list_ad_account_adsbylabels with typed arguments
+func ListAdAccountAdsbylabelsHandler(ctx context.Context, request mcp.CallToolRequest, args list_ad_account_adsbylabelsArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	if len(args.AdLabelIds) > 0 {
+		query.Set("ad_label_ids", strings.Join(args.AdLabelIds, ","))
+	}
+
+	if args.Operator != "" {
+		query.Set("operator", args.Operator)
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "adsbylabels")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
+}
+
+// ListAdAccountAdsetsHandler handles list_ad_account_adsets with typed arguments
+func ListAdAccountAdsetsHandler(ctx context.Context, request mcp.CallToolRequest, args list_ad_account_adsetsArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	if args.DatePreset != "" {
+		query.Set("date_preset", args.DatePreset)
+	}
+
+	if args.IsCompleted {
+		query.Set("is_completed", "true")
+	}
+
+	// Handle TimeRange map parameter
+	for k, v := range args.TimeRange {
+		query.Set(k, fmt.Sprintf("%v", v))
+	}
+
+	if args.UpdatedSince > 0 {
+		query.Set("updated_since", fmt.Sprintf("%d", args.UpdatedSince))
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "adsets")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
+}
+
+// CreateAdAccountAdsetHandler handles create_ad_account_adset with typed arguments
+func CreateAdAccountAdsetHandler(ctx context.Context, request mcp.CallToolRequest, args create_ad_account_adsetArgs) (*mcp.CallToolResult, error) {
+
+	// Build request body
+	body := make(map[string]interface{})
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Add parameters to body
+
+	if len(args.Adlabels) > 0 {
+		body["adlabels"] = args.Adlabels
+	}
+
+	if len(args.AdsetSchedule) > 0 {
+		body["adset_schedule"] = args.AdsetSchedule
+	}
+
+	if len(args.AttributionSpec) > 0 {
+		body["attribution_spec"] = args.AttributionSpec
+	}
+
+	if args.BidAdjustments != nil {
+		body["bid_adjustments"] = args.BidAdjustments
+	}
+
+	if args.BidAmount > 0 {
+		body["bid_amount"] = args.BidAmount
+	}
+
+	if args.BidConstraints != nil {
+		body["bid_constraints"] = args.BidConstraints
+	}
+
+	if args.BidStrategy != "" {
+		body["bid_strategy"] = args.BidStrategy
+	}
+
+	if args.BillingEvent != "" {
+		body["billing_event"] = args.BillingEvent
+	}
+
+	if args.BudgetSource != "" {
+		body["budget_source"] = args.BudgetSource
+	}
+
+	if args.BudgetSplitSetId != "" {
+		body["budget_split_set_id"] = args.BudgetSplitSetId
+	}
+
+	if args.CampaignAttribution != nil {
+		body["campaign_attribution"] = args.CampaignAttribution
+	}
+
+	if args.CampaignId != "" {
+		body["campaign_id"] = args.CampaignId
+	}
+
+	if args.CampaignSpec != nil {
+		body["campaign_spec"] = args.CampaignSpec
+	}
+
+	if len(args.CreativeSequence) > 0 {
+		body["creative_sequence"] = args.CreativeSequence
+	}
+
+	if args.CreativeSequenceRepetitionPattern != "" {
+		body["creative_sequence_repetition_pattern"] = args.CreativeSequenceRepetitionPattern
+	}
+
+	if args.DailyBudget > 0 {
+		body["daily_budget"] = args.DailyBudget
+	}
+
+	if args.DailyImps > 0 {
+		body["daily_imps"] = args.DailyImps
+	}
+
+	if args.DailyMinSpendTarget > 0 {
+		body["daily_min_spend_target"] = args.DailyMinSpendTarget
+	}
+
+	if args.DailySpendCap > 0 {
+		body["daily_spend_cap"] = args.DailySpendCap
+	}
+
+	if args.DateFormat != "" {
+		body["date_format"] = args.DateFormat
+	}
+
+	if args.DestinationType != "" {
+		body["destination_type"] = args.DestinationType
+	}
+
+	if args.DsaBeneficiary != "" {
+		body["dsa_beneficiary"] = args.DsaBeneficiary
+	}
+
+	if args.DsaPayor != "" {
+		body["dsa_payor"] = args.DsaPayor
+	}
+
+	if args.ExistingCustomerBudgetPercentage > 0 {
+		body["existing_customer_budget_percentage"] = args.ExistingCustomerBudgetPercentage
+	}
+
+	if len(args.FrequencyControlSpecs) > 0 {
+		body["frequency_control_specs"] = args.FrequencyControlSpecs
+	}
+
+	if args.FullFunnelExplorationMode != "" {
+		body["full_funnel_exploration_mode"] = args.FullFunnelExplorationMode
+	}
+
+	body["is_ba_skip_delayed_eligible"] = args.IsBaSkipDelayedEligible
+
+	body["is_dynamic_creative"] = args.IsDynamicCreative
+
+	body["is_incremental_attribution_enabled"] = args.IsIncrementalAttributionEnabled
+
+	body["is_sac_cfca_terms_certified"] = args.IsSacCfcaTermsCertified
+
+	if args.LifetimeBudget > 0 {
+		body["lifetime_budget"] = args.LifetimeBudget
+	}
+
+	if args.LifetimeImps > 0 {
+		body["lifetime_imps"] = args.LifetimeImps
+	}
+
+	if args.LifetimeMinSpendTarget > 0 {
+		body["lifetime_min_spend_target"] = args.LifetimeMinSpendTarget
+	}
+
+	if args.LifetimeSpendCap > 0 {
+		body["lifetime_spend_cap"] = args.LifetimeSpendCap
+	}
+
+	if args.LineNumber > 0 {
+		body["line_number"] = args.LineNumber
+	}
+
+	if args.MaxBudgetSpendPercentage > 0 {
+		body["max_budget_spend_percentage"] = args.MaxBudgetSpendPercentage
+	}
+
+	if args.MinBudgetSpendPercentage > 0 {
+		body["min_budget_spend_percentage"] = args.MinBudgetSpendPercentage
+	}
+
+	if args.MultiOptimizationGoalWeight != "" {
+		body["multi_optimization_goal_weight"] = args.MultiOptimizationGoalWeight
+	}
+
+	if args.Name != "" {
+		body["name"] = args.Name
+	}
+
+	if args.OptimizationGoal != "" {
+		body["optimization_goal"] = args.OptimizationGoal
+	}
+
+	if args.OptimizationSubEvent != "" {
+		body["optimization_sub_event"] = args.OptimizationSubEvent
+	}
+
+	if len(args.PacingType) > 0 {
+		body["pacing_type"] = args.PacingType
+	}
+
+	if args.PromotedObject != nil {
+		body["promoted_object"] = args.PromotedObject
+	}
+
+	if args.RbPredictionId != "" {
+		body["rb_prediction_id"] = args.RbPredictionId
+	}
+
+	if args.RegionalRegulationIdentities != nil {
+		body["regional_regulation_identities"] = args.RegionalRegulationIdentities
+	}
+
+	if args.RfPredictionId != "" {
+		body["rf_prediction_id"] = args.RfPredictionId
+	}
+
+	if args.SourceAdsetId != "" {
+		body["source_adset_id"] = args.SourceAdsetId
+	}
+
+	if args.Status != "" {
+		body["status"] = args.Status
+	}
+
+	if args.ToplineId != "" {
+		body["topline_id"] = args.ToplineId
+	}
+
+	if args.TuneForCategory != "" {
+		body["tune_for_category"] = args.TuneForCategory
+	}
+
+	// Build URL and execute
+	url := buildGraphURL(args.ID, "adsets")
+
+	return ExecutePOSTRequest(ctx, url, body)
+
+}
+
+// ListAdAccountAdsetsbylabelsHandler handles list_ad_account_adsetsbylabels with typed arguments
+func ListAdAccountAdsetsbylabelsHandler(ctx context.Context, request mcp.CallToolRequest, args list_ad_account_adsetsbylabelsArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	if len(args.AdLabelIds) > 0 {
+		query.Set("ad_label_ids", strings.Join(args.AdLabelIds, ","))
+	}
+
+	if args.Operator != "" {
+		query.Set("operator", args.Operator)
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "adsetsbylabels")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
+}
+
+// ListAdAccountAdspixelsHandler handles list_ad_account_adspixels with typed arguments
+func ListAdAccountAdspixelsHandler(ctx context.Context, request mcp.CallToolRequest, args list_ad_account_adspixelsArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	if args.SortBy != "" {
+		query.Set("sort_by", args.SortBy)
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "adspixels")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
+}
+
+// CreateAdAccountAdspixelHandler handles create_ad_account_adspixel with typed arguments
+func CreateAdAccountAdspixelHandler(ctx context.Context, request mcp.CallToolRequest, args create_ad_account_adspixelArgs) (*mcp.CallToolResult, error) {
+
+	// Build request body
+	body := make(map[string]interface{})
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Add parameters to body
+
+	if args.Name != "" {
+		body["name"] = args.Name
+	}
+
+	// Build URL and execute
+	url := buildGraphURL(args.ID, "adspixels")
+
+	return ExecutePOSTRequest(ctx, url, body)
+
+}
+
+// ListAdAccountAdvertisableApplicationsHandler handles list_ad_account_advertisable_applications with typed arguments
+func ListAdAccountAdvertisableApplicationsHandler(ctx context.Context, request mcp.CallToolRequest, args list_ad_account_advertisable_applicationsArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	if args.AppId != "" {
+		query.Set("app_id", args.AppId)
+	}
+
+	if args.BusinessId != "" {
+		query.Set("business_id", args.BusinessId)
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "advertisable_applications")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
+}
+
+// RemoveAdvideosFromAdAccountHandler handles remove_advideos_from_ad_account with typed arguments
+func RemoveAdvideosFromAdAccountHandler(ctx context.Context, request mcp.CallToolRequest, args remove_advideos_from_ad_accountArgs) (*mcp.CallToolResult, error) {
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Build URL and execute
+	url := buildGraphURL(args.ID, "advideos")
+
+	return ExecuteDELETERequest(ctx, url)
+
+}
+
+// ListAdAccountAdvideosHandler handles list_ad_account_advideos with typed arguments
+func ListAdAccountAdvideosHandler(ctx context.Context, request mcp.CallToolRequest, args list_ad_account_advideosArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	if args.Maxheight > 0 {
+		query.Set("maxheight", fmt.Sprintf("%d", args.Maxheight))
+	}
+
+	if args.Maxlength > 0 {
+		query.Set("maxlength", fmt.Sprintf("%d", args.Maxlength))
+	}
+
+	if args.Maxwidth > 0 {
+		query.Set("maxwidth", fmt.Sprintf("%d", args.Maxwidth))
+	}
+
+	if args.Minheight > 0 {
+		query.Set("minheight", fmt.Sprintf("%d", args.Minheight))
+	}
+
+	if args.Minlength > 0 {
+		query.Set("minlength", fmt.Sprintf("%d", args.Minlength))
+	}
+
+	if args.Minwidth > 0 {
+		query.Set("minwidth", fmt.Sprintf("%d", args.Minwidth))
+	}
+
+	if args.Title != "" {
+		query.Set("title", args.Title)
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "advideos")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
+}
+
+// CreateAdAccountAdvideoHandler handles create_ad_account_advideo with typed arguments
+func CreateAdAccountAdvideoHandler(ctx context.Context, request mcp.CallToolRequest, args create_ad_account_advideoArgs) (*mcp.CallToolResult, error) {
+
+	// Build request body
+	body := make(map[string]interface{})
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Add parameters to body
+
+	if args.ApplicationId != "" {
+		body["application_id"] = args.ApplicationId
+	}
+
+	if args.AskedFunFactPromptId > 0 {
+		body["asked_fun_fact_prompt_id"] = args.AskedFunFactPromptId
+	}
+
+	if args.AudioStoryWaveAnimationHandle != "" {
+		body["audio_story_wave_animation_handle"] = args.AudioStoryWaveAnimationHandle
+	}
+
+	if args.ChunkSessionId != "" {
+		body["chunk_session_id"] = args.ChunkSessionId
+	}
+
+	if args.ComposerEntryPicker != "" {
+		body["composer_entry_picker"] = args.ComposerEntryPicker
+	}
+
+	if args.ComposerEntryPoint != "" {
+		body["composer_entry_point"] = args.ComposerEntryPoint
+	}
+
+	if args.ComposerEntryTime > 0 {
+		body["composer_entry_time"] = args.ComposerEntryTime
+	}
+
+	if args.ComposerSessionEventsLog != "" {
+		body["composer_session_events_log"] = args.ComposerSessionEventsLog
+	}
+
+	if args.ComposerSessionId != "" {
+		body["composer_session_id"] = args.ComposerSessionId
+	}
+
+	if args.ComposerSourceSurface != "" {
+		body["composer_source_surface"] = args.ComposerSourceSurface
+	}
+
+	if args.ComposerType != "" {
+		body["composer_type"] = args.ComposerType
+	}
+
+	if args.ContainerType != "" {
+		body["container_type"] = args.ContainerType
+	}
+
+	if args.ContentCategory != "" {
+		body["content_category"] = args.ContentCategory
+	}
+
+	if args.CreativeTools != "" {
+		body["creative_tools"] = args.CreativeTools
+	}
+
+	if args.Description != "" {
+		body["description"] = args.Description
+	}
+
+	body["embeddable"] = args.Embeddable
+
+	if args.EndOffset > 0 {
+		body["end_offset"] = args.EndOffset
+	}
+
+	if args.FbuploaderVideoFileChunk != "" {
+		body["fbuploader_video_file_chunk"] = args.FbuploaderVideoFileChunk
+	}
+
+	if args.FileSize > 0 {
+		body["file_size"] = args.FileSize
+	}
+
+	if args.FileUrl != "" {
+		body["file_url"] = args.FileUrl
+	}
+
+	body["fisheye_video_cropped"] = args.FisheyeVideoCropped
+
+	if args.Formatting != "" {
+		body["formatting"] = args.Formatting
+	}
+
+	if args.Fov > 0 {
+		body["fov"] = args.Fov
+	}
+
+	if args.FunFactPromptId != "" {
+		body["fun_fact_prompt_id"] = args.FunFactPromptId
+	}
+
+	if args.FunFactToasteeId > 0 {
+		body["fun_fact_toastee_id"] = args.FunFactToasteeId
+	}
+
+	body["guide_enabled"] = args.GuideEnabled
+
+	if args.InitialHeading > 0 {
+		body["initial_heading"] = args.InitialHeading
+	}
+
+	if args.InitialPitch > 0 {
+		body["initial_pitch"] = args.InitialPitch
+	}
+
+	if args.InstantGameEntryPointData != "" {
+		body["instant_game_entry_point_data"] = args.InstantGameEntryPointData
+	}
+
+	body["is_boost_intended"] = args.IsBoostIntended
+
+	body["is_group_linking_post"] = args.IsGroupLinkingPost
+
+	body["is_partnership_ad"] = args.IsPartnershipAd
+
+	body["is_voice_clip"] = args.IsVoiceClip
+
+	if args.LocationSourceId != "" {
+		body["location_source_id"] = args.LocationSourceId
+	}
+
+	if args.Name != "" {
+		body["name"] = args.Name
+	}
+
+	if args.OgActionTypeId != "" {
+		body["og_action_type_id"] = args.OgActionTypeId
+	}
+
+	if args.OgIconId != "" {
+		body["og_icon_id"] = args.OgIconId
+	}
+
+	if args.OgObjectId != "" {
+		body["og_object_id"] = args.OgObjectId
+	}
+
+	if args.OgPhrase != "" {
+		body["og_phrase"] = args.OgPhrase
+	}
+
+	if args.OgSuggestionMechanism != "" {
+		body["og_suggestion_mechanism"] = args.OgSuggestionMechanism
+	}
+
+	if args.OriginalFov > 0 {
+		body["original_fov"] = args.OriginalFov
+	}
+
+	if args.OriginalProjectionType != "" {
+		body["original_projection_type"] = args.OriginalProjectionType
+	}
+
+	if args.PartnershipAdAdCode != "" {
+		body["partnership_ad_ad_code"] = args.PartnershipAdAdCode
+	}
+
+	if args.PublishEventId > 0 {
+		body["publish_event_id"] = args.PublishEventId
+	}
+
+	if args.ReferencedStickerId != "" {
+		body["referenced_sticker_id"] = args.ReferencedStickerId
+	}
+
+	if args.ReplaceVideoId != "" {
+		body["replace_video_id"] = args.ReplaceVideoId
+	}
+
+	if args.SlideshowSpec != nil {
+		body["slideshow_spec"] = args.SlideshowSpec
+	}
+
+	if args.Source != "" {
+		body["source"] = args.Source
+	}
+
+	if args.SourceInstagramMediaId != "" {
+		body["source_instagram_media_id"] = args.SourceInstagramMediaId
+	}
+
+	body["spherical"] = args.Spherical
+
+	if args.StartOffset > 0 {
+		body["start_offset"] = args.StartOffset
+	}
+
+	if args.SwapMode != "" {
+		body["swap_mode"] = args.SwapMode
+	}
+
+	if args.TextFormatMetadata != "" {
+		body["text_format_metadata"] = args.TextFormatMetadata
+	}
+
+	if args.TimeSinceOriginalPost > 0 {
+		body["time_since_original_post"] = args.TimeSinceOriginalPost
+	}
+
+	if args.Title != "" {
+		body["title"] = args.Title
+	}
+
+	if args.TranscodeSettingProperties != "" {
+		body["transcode_setting_properties"] = args.TranscodeSettingProperties
+	}
+
+	if args.UnpublishedContentType != "" {
+		body["unpublished_content_type"] = args.UnpublishedContentType
+	}
+
+	if args.UploadPhase != "" {
+		body["upload_phase"] = args.UploadPhase
+	}
+
+	if args.UploadSessionId != "" {
+		body["upload_session_id"] = args.UploadSessionId
+	}
+
+	if args.UploadSettingProperties != "" {
+		body["upload_setting_properties"] = args.UploadSettingProperties
+	}
+
+	if args.VideoFileChunk != "" {
+		body["video_file_chunk"] = args.VideoFileChunk
+	}
+
+	if args.VideoIdOriginal != "" {
+		body["video_id_original"] = args.VideoIdOriginal
+	}
+
+	if args.VideoStartTimeMs > 0 {
+		body["video_start_time_ms"] = args.VideoStartTimeMs
+	}
+
+	if args.WaterfallId != "" {
+		body["waterfall_id"] = args.WaterfallId
+	}
+
+	// Build URL and execute
+	url := buildGraphURL(args.ID, "advideos")
+
+	return ExecutePOSTRequest(ctx, url, body)
+
+}
+
+// ListAdAccountAffectedadsetsHandler handles list_ad_account_affectedadsets with typed arguments
+func ListAdAccountAffectedadsetsHandler(ctx context.Context, request mcp.CallToolRequest, args list_ad_account_affectedadsetsArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "affectedadsets")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
+}
+
+// RemoveAgenciesFromAdAccountHandler handles remove_agencies_from_ad_account with typed arguments
+func RemoveAgenciesFromAdAccountHandler(ctx context.Context, request mcp.CallToolRequest, args remove_agencies_from_ad_accountArgs) (*mcp.CallToolResult, error) {
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Build URL and execute
+	url := buildGraphURL(args.ID, "agencies")
+
+	return ExecuteDELETERequest(ctx, url)
+
+}
+
+// ListAdAccountAgenciesHandler handles list_ad_account_agencies with typed arguments
+func ListAdAccountAgenciesHandler(ctx context.Context, request mcp.CallToolRequest, args list_ad_account_agenciesArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "agencies")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
+}
+
+// CreateAdAccountAgencieHandler handles create_ad_account_agencie with typed arguments
+func CreateAdAccountAgencieHandler(ctx context.Context, request mcp.CallToolRequest, args create_ad_account_agencieArgs) (*mcp.CallToolResult, error) {
+
+	// Build request body
+	body := make(map[string]interface{})
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Add parameters to body
+
+	if args.Business != "" {
+		body["business"] = args.Business
+	}
+
+	// Build URL and execute
+	url := buildGraphURL(args.ID, "agencies")
+
+	return ExecutePOSTRequest(ctx, url, body)
+
+}
+
+// ListAdAccountApplicationsHandler handles list_ad_account_applications with typed arguments
+func ListAdAccountApplicationsHandler(ctx context.Context, request mcp.CallToolRequest, args list_ad_account_applicationsArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "applications")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
+}
+
+// RemoveAssignedUsersFromAdAccountHandler handles remove_assigned_users_from_ad_account with typed arguments
+func RemoveAssignedUsersFromAdAccountHandler(ctx context.Context, request mcp.CallToolRequest, args remove_assigned_users_from_ad_accountArgs) (*mcp.CallToolResult, error) {
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Build URL and execute
+	url := buildGraphURL(args.ID, "assigned_users")
+
+	return ExecuteDELETERequest(ctx, url)
+
+}
+
+// ListAdAccountAssignedUsersHandler handles list_ad_account_assigned_users with typed arguments
+func ListAdAccountAssignedUsersHandler(ctx context.Context, request mcp.CallToolRequest, args list_ad_account_assigned_usersArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	if args.Business != "" {
+		query.Set("business", args.Business)
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "assigned_users")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
+}
+
+// CreateAdAccountAssignedUserHandler handles create_ad_account_assigned_user with typed arguments
+func CreateAdAccountAssignedUserHandler(ctx context.Context, request mcp.CallToolRequest, args create_ad_account_assigned_userArgs) (*mcp.CallToolResult, error) {
+
+	// Build request body
+	body := make(map[string]interface{})
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Add parameters to body
+
+	if args.User > 0 {
+		body["user"] = args.User
+	}
+
+	// Build URL and execute
+	url := buildGraphURL(args.ID, "assigned_users")
+
+	return ExecutePOSTRequest(ctx, url, body)
+
+}
+
+// CreateAdAccountAsyncBatchRequestHandler handles create_ad_account_async_batch_request with typed arguments
+func CreateAdAccountAsyncBatchRequestHandler(ctx context.Context, request mcp.CallToolRequest, args create_ad_account_async_batch_requestArgs) (*mcp.CallToolResult, error) {
+
+	// Build request body
+	body := make(map[string]interface{})
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Add parameters to body
+
+	if len(args.Adbatch) > 0 {
+		body["adbatch"] = args.Adbatch
+	}
+
+	if args.Name != "" {
+		body["name"] = args.Name
+	}
+
+	// Build URL and execute
+	url := buildGraphURL(args.ID, "async_batch_requests")
+
+	return ExecutePOSTRequest(ctx, url, body)
+
+}
+
+// ListAdAccountAsyncRequestsHandler handles list_ad_account_async_requests with typed arguments
+func ListAdAccountAsyncRequestsHandler(ctx context.Context, request mcp.CallToolRequest, args list_ad_account_async_requestsArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	if args.Status != "" {
+		query.Set("status", args.Status)
+	}
+
+	if args.Type != "" {
+		query.Set("type", args.Type)
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "async_requests")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
+}
+
+// ListAdAccountAsyncadcreativesHandler handles list_ad_account_asyncadcreatives with typed arguments
+func ListAdAccountAsyncadcreativesHandler(ctx context.Context, request mcp.CallToolRequest, args list_ad_account_asyncadcreativesArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	if args.IsCompleted {
+		query.Set("is_completed", "true")
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "asyncadcreatives")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
+}
+
+// CreateAdAccountAsyncadcreativeHandler handles create_ad_account_asyncadcreative with typed arguments
+func CreateAdAccountAsyncadcreativeHandler(ctx context.Context, request mcp.CallToolRequest, args create_ad_account_asyncadcreativeArgs) (*mcp.CallToolResult, error) {
+
+	// Build request body
+	body := make(map[string]interface{})
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Add parameters to body
+
+	if args.Name != "" {
+		body["name"] = args.Name
+	}
+
+	if args.NotificationMode != "" {
+		body["notification_mode"] = args.NotificationMode
+	}
+
+	if args.NotificationUri != "" {
+		body["notification_uri"] = args.NotificationUri
+	}
+
+	// Build URL and execute
+	url := buildGraphURL(args.ID, "asyncadcreatives")
+
+	return ExecutePOSTRequest(ctx, url, body)
+
+}
+
+// ListAdAccountAsyncadrequestsetsHandler handles list_ad_account_asyncadrequestsets with typed arguments
+func ListAdAccountAsyncadrequestsetsHandler(ctx context.Context, request mcp.CallToolRequest, args list_ad_account_asyncadrequestsetsArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	if args.IsCompleted {
+		query.Set("is_completed", "true")
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "asyncadrequestsets")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
+}
+
+// CreateAdAccountAsyncadrequestsetHandler handles create_ad_account_asyncadrequestset with typed arguments
+func CreateAdAccountAsyncadrequestsetHandler(ctx context.Context, request mcp.CallToolRequest, args create_ad_account_asyncadrequestsetArgs) (*mcp.CallToolResult, error) {
+
+	// Build request body
+	body := make(map[string]interface{})
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Add parameters to body
+
+	if len(args.AdSpecs) > 0 {
+		body["ad_specs"] = args.AdSpecs
+	}
+
+	if args.Name != "" {
+		body["name"] = args.Name
+	}
+
+	if args.NotificationMode != "" {
+		body["notification_mode"] = args.NotificationMode
+	}
+
+	if args.NotificationUri != "" {
+		body["notification_uri"] = args.NotificationUri
+	}
+
+	// Build URL and execute
+	url := buildGraphURL(args.ID, "asyncadrequestsets")
+
+	return ExecutePOSTRequest(ctx, url, body)
+
+}
+
+// GetAdAccountAudienceFunnelHandler handles get_ad_account_audience_funnel with typed arguments
+func GetAdAccountAudienceFunnelHandler(ctx context.Context, request mcp.CallToolRequest, args get_ad_account_audience_funnelArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "audience_funnel")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
+}
+
+// CreateAdAccountBlockListDraftHandler handles create_ad_account_block_list_draft with typed arguments
+func CreateAdAccountBlockListDraftHandler(ctx context.Context, request mcp.CallToolRequest, args create_ad_account_block_list_draftArgs) (*mcp.CallToolResult, error) {
+
+	// Build request body
+	body := make(map[string]interface{})
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Add parameters to body
+
+	// Build URL and execute
+	url := buildGraphURL(args.ID, "block_list_drafts")
+
+	return ExecutePOSTRequest(ctx, url, body)
+
+}
+
+// CreateAdAccountBrandSafetyContentFilterLevelHandler handles create_ad_account_brand_safety_content_filter_level with typed arguments
+func CreateAdAccountBrandSafetyContentFilterLevelHandler(ctx context.Context, request mcp.CallToolRequest, args create_ad_account_brand_safety_content_filter_levelArgs) (*mcp.CallToolResult, error) {
+
+	// Build request body
+	body := make(map[string]interface{})
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Add parameters to body
+
+	if args.BusinessId != "" {
+		body["business_id"] = args.BusinessId
+	}
+
+	// Build URL and execute
+	url := buildGraphURL(args.ID, "brand_safety_content_filter_levels")
+
+	return ExecutePOSTRequest(ctx, url, body)
+
+}
+
+// ListAdAccountBroadtargetingcategoriesHandler handles list_ad_account_broadtargetingcategories with typed arguments
+func ListAdAccountBroadtargetingcategoriesHandler(ctx context.Context, request mcp.CallToolRequest, args list_ad_account_broadtargetingcategoriesArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	if args.CustomCategoriesOnly {
+		query.Set("custom_categories_only", "true")
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "broadtargetingcategories")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
+}
+
+// ListAdAccountBusinessprojectsHandler handles list_ad_account_businessprojects with typed arguments
+func ListAdAccountBusinessprojectsHandler(ctx context.Context, request mcp.CallToolRequest, args list_ad_account_businessprojectsArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	if args.Business != "" {
+		query.Set("business", args.Business)
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "businessprojects")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
+}
+
+// RemoveCampaignsFromAdAccountHandler handles remove_campaigns_from_ad_account with typed arguments
+func RemoveCampaignsFromAdAccountHandler(ctx context.Context, request mcp.CallToolRequest, args remove_campaigns_from_ad_accountArgs) (*mcp.CallToolResult, error) {
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Build URL and execute
+	url := buildGraphURL(args.ID, "campaigns")
+
+	return ExecuteDELETERequest(ctx, url)
+
+}
+
+// ListAdAccountCampaignsHandler handles list_ad_account_campaigns with typed arguments
+func ListAdAccountCampaignsHandler(ctx context.Context, request mcp.CallToolRequest, args list_ad_account_campaignsArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	if args.DatePreset != "" {
+		query.Set("date_preset", args.DatePreset)
+	}
+
+	if args.IsCompleted {
+		query.Set("is_completed", "true")
+	}
+
+	// Handle TimeRange map parameter
+	for k, v := range args.TimeRange {
+		query.Set(k, fmt.Sprintf("%v", v))
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "campaigns")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
+}
+
+// CreateAdAccountCampaignHandler handles create_ad_account_campaign with typed arguments
+func CreateAdAccountCampaignHandler(ctx context.Context, request mcp.CallToolRequest, args create_ad_account_campaignArgs) (*mcp.CallToolResult, error) {
+
+	// Build request body
+	body := make(map[string]interface{})
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Add parameters to body
+
+	if len(args.Adlabels) > 0 {
+		body["adlabels"] = args.Adlabels
+	}
+
+	if args.BidStrategy != "" {
+		body["bid_strategy"] = args.BidStrategy
+	}
+
+	if args.BuyingType != "" {
+		body["buying_type"] = args.BuyingType
+	}
+
+	if args.DailyBudget > 0 {
+		body["daily_budget"] = args.DailyBudget
+	}
+
+	body["is_skadnetwork_attribution"] = args.IsSkadnetworkAttribution
+
+	if len(args.IterativeSplitTestConfigs) > 0 {
+		body["iterative_split_test_configs"] = args.IterativeSplitTestConfigs
+	}
+
+	if args.LifetimeBudget > 0 {
+		body["lifetime_budget"] = args.LifetimeBudget
+	}
+
+	if args.Name != "" {
+		body["name"] = args.Name
+	}
+
+	if args.Objective != "" {
+		body["objective"] = args.Objective
+	}
+
+	if len(args.PacingType) > 0 {
+		body["pacing_type"] = args.PacingType
+	}
+
+	if args.PromotedObject != nil {
+		body["promoted_object"] = args.PromotedObject
+	}
+
+	if args.SmartPromotionType != "" {
+		body["smart_promotion_type"] = args.SmartPromotionType
+	}
+
+	if args.SourceCampaignId != "" {
+		body["source_campaign_id"] = args.SourceCampaignId
+	}
+
+	if args.SpendCap > 0 {
+		body["spend_cap"] = args.SpendCap
+	}
+
+	if args.Status != "" {
+		body["status"] = args.Status
+	}
+
+	if args.ToplineId != "" {
+		body["topline_id"] = args.ToplineId
+	}
+
+	// Build URL and execute
+	url := buildGraphURL(args.ID, "campaigns")
+
+	return ExecutePOSTRequest(ctx, url, body)
+
+}
+
+// ListAdAccountCampaignsbylabelsHandler handles list_ad_account_campaignsbylabels with typed arguments
+func ListAdAccountCampaignsbylabelsHandler(ctx context.Context, request mcp.CallToolRequest, args list_ad_account_campaignsbylabelsArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	if len(args.AdLabelIds) > 0 {
+		query.Set("ad_label_ids", strings.Join(args.AdLabelIds, ","))
+	}
+
+	if args.Operator != "" {
+		query.Set("operator", args.Operator)
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "campaignsbylabels")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
+}
+
+// ListAdAccountConnectedInstagramAccountsHandler handles list_ad_account_connected_instagram_accounts with typed arguments
+func ListAdAccountConnectedInstagramAccountsHandler(ctx context.Context, request mcp.CallToolRequest, args list_ad_account_connected_instagram_accountsArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "connected_instagram_accounts")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
+}
+
+// GetAdAccountConnectedInstagramAccountsWithIabpHandler handles get_ad_account_connected_instagram_accounts_with_iabp with typed arguments
+func GetAdAccountConnectedInstagramAccountsWithIabpHandler(ctx context.Context, request mcp.CallToolRequest, args get_ad_account_connected_instagram_accounts_with_iabpArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	if args.BusinessId != "" {
+		query.Set("business_id", args.BusinessId)
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "connected_instagram_accounts_with_iabp")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
+}
+
+// ListAdAccountConversionGoalsHandler handles list_ad_account_conversion_goals with typed arguments
+func ListAdAccountConversionGoalsHandler(ctx context.Context, request mcp.CallToolRequest, args list_ad_account_conversion_goalsArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
 
-	create_ad_account_account_controlSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"audience_controls":{"additionalProperties":true,"description":"audience_controls","type":"object"},"id":{"description":"AdAccount ID","type":"string"},"placement_controls":{"additionalProperties":true,"description":"placement_controls","type":"object"}},"required":["id","audience_controls"],"type":"object"}`)
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
 
-	list_ad_account_activitiesSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"add_children":{"description":"add_children","type":"boolean"},"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"business_id":{"description":"business_id","type":"string"},"category":{"description":"category (enum: adaccountactivities_category_enum_param)","type":"string"},"data_source":{"description":"data_source (enum: adaccountactivities_data_source_enum_param)","type":"string"},"extra_oids":{"description":"extra_oids","items":{"type":"string"},"type":"array"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdAccount ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"oid":{"description":"oid","type":"string"},"since":{"description":"since","type":"string"},"uid":{"description":"uid","type":"integer"},"until":{"description":"until","type":"string"}},"required":["id"],"type":"object"}`)
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
 
-	list_ad_account_ad_place_page_setsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdAccount ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
 
-	create_ad_account_ad_place_page_setSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"id":{"description":"AdAccount ID","type":"string"},"location_types":{"description":"location_types","items":{"type":"string"},"type":"array"},"name":{"description":"name","type":"string"},"parent_page":{"description":"parent_page","type":"string"},"targeted_area_type":{"description":"targeted_area_type (enum: adaccountad_place_page_sets_targeted_area_type_enum_param)","type":"string"}},"required":["id","name","parent_page"],"type":"object"}`)
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
 
-	update_ad_account_ad_place_page_sets_asyncSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"id":{"description":"AdAccount ID","type":"string"},"location_types":{"description":"location_types","items":{"type":"string"},"type":"array"},"name":{"description":"name","type":"string"},"parent_page":{"description":"parent_page","type":"string"},"targeted_area_type":{"description":"targeted_area_type (enum: adaccountad_place_page_sets_async_targeted_area_type_enum_param)","type":"string"}},"required":["id","name","parent_page"],"type":"object"}`)
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "conversion_goals")
+	fullURL := BuildURLWithQuery(baseURL, query)
 
-	list_ad_account_ad_saved_keywordsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdAccount ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+	return ExecuteGETRequest(ctx, fullURL)
+
+}
 
-	list_ad_account_ad_studiesSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdAccount ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+// ListAdAccountCustomaudiencesHandler handles list_ad_account_customaudiences with typed arguments
+func ListAdAccountCustomaudiencesHandler(ctx context.Context, request mcp.CallToolRequest, args list_ad_account_customaudiencesArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
 
-	list_ad_account_adcloudplayablesSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdAccount ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
 
-	list_ad_account_adcreativesSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdAccount ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+	// Add other parameters
 
-	create_ad_account_adcreativeSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"actor_id":{"description":"actor_id","type":"integer"},"ad_disclaimer_spec":{"description":"ad_disclaimer_spec","type":"string"},"adlabels":{"description":"adlabels","items":{"additionalProperties":true,"type":"object"},"type":"array"},"applink_treatment":{"description":"applink_treatment (enum: adaccountadcreatives_applink_treatment_enum_param)","type":"string"},"asset_feed_spec":{"additionalProperties":true,"description":"asset_feed_spec","type":"object"},"authorization_category":{"description":"authorization_category (enum: adaccountadcreatives_authorization_category_enum_param)","type":"string"},"body":{"description":"body","type":"string"},"branded_content":{"description":"branded_content","type":"string"},"branded_content_sponsor_page_id":{"description":"branded_content_sponsor_page_id","type":"string"},"bundle_folder_id":{"description":"bundle_folder_id","type":"string"},"call_to_action":{"additionalProperties":true,"description":"call_to_action","type":"object"},"categorization_criteria":{"description":"categorization_criteria (enum: adaccountadcreatives_categorization_criteria_enum_param)","type":"string"},"category_media_source":{"description":"category_media_source (enum: adaccountadcreatives_category_media_source_enum_param)","type":"string"},"contextual_multi_ads":{"description":"contextual_multi_ads","type":"string"},"creative_sourcing_spec":{"description":"creative_sourcing_spec","type":"string"},"degrees_of_freedom_spec":{"description":"degrees_of_freedom_spec","type":"string"},"destination_set_id":{"description":"destination_set_id","type":"string"},"dynamic_ad_voice":{"description":"dynamic_ad_voice (enum: adaccountadcreatives_dynamic_ad_voice_enum_param)","type":"string"},"enable_launch_instant_app":{"description":"enable_launch_instant_app","type":"boolean"},"facebook_branded_content":{"description":"facebook_branded_content","type":"string"},"id":{"description":"AdAccount ID","type":"string"},"image_crops":{"description":"image_crops","type":"string"},"image_file":{"description":"image_file","type":"string"},"image_hash":{"description":"image_hash","type":"string"},"image_url":{"description":"image_url","type":"string"},"instagram_branded_content":{"description":"instagram_branded_content","type":"string"},"instagram_permalink_url":{"description":"instagram_permalink_url","type":"string"},"instagram_user_id":{"description":"instagram_user_id","type":"string"},"interactive_components_spec":{"description":"interactive_components_spec","type":"string"},"is_dco_internal":{"description":"is_dco_internal","type":"boolean"},"link_og_id":{"description":"link_og_id","type":"string"},"link_url":{"description":"link_url","type":"string"},"name":{"description":"name","type":"string"},"object_id":{"description":"object_id","type":"integer"},"object_story_id":{"description":"object_story_id","type":"string"},"object_story_spec":{"description":"object_story_spec","type":"string"},"object_type":{"description":"object_type","type":"string"},"object_url":{"description":"object_url","type":"string"},"omnichannel_link_spec":{"description":"omnichannel_link_spec","type":"string"},"page_welcome_message":{"description":"page_welcome_message","type":"string"},"place_page_set_id":{"description":"place_page_set_id","type":"string"},"platform_customizations":{"additionalProperties":true,"description":"platform_customizations","type":"object"},"playable_asset_id":{"description":"playable_asset_id","type":"string"},"portrait_customizations":{"description":"portrait_customizations","type":"string"},"product_set_id":{"description":"product_set_id","type":"string"},"recommender_settings":{"description":"recommender_settings","type":"string"},"regional_regulation_disclaimer_spec":{"description":"regional_regulation_disclaimer_spec","type":"string"},"source_instagram_media_id":{"description":"source_instagram_media_id","type":"string"},"template_url":{"description":"template_url","type":"string"},"template_url_spec":{"description":"template_url_spec","type":"string"},"thumbnail_url":{"description":"thumbnail_url","type":"string"},"title":{"description":"title","type":"string"},"url_tags":{"description":"url_tags","type":"string"},"use_page_actor_override":{"description":"use_page_actor_override","type":"boolean"}},"required":["id"],"type":"object"}`)
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
 
-	list_ad_account_adcreativesbylabelsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"ad_label_ids":{"description":"ad_label_ids","items":{"type":"string"},"type":"array"},"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdAccount ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"operator":{"description":"operator (enum: adaccountadcreativesbylabels_operator_enum_param)","type":"string"}},"required":["id","ad_label_ids"],"type":"object"}`)
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
 
-	remove_adimages_from_ad_accountSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"hash":{"description":"hash","type":"string"},"id":{"description":"AdAccount ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id","hash"],"type":"object"}`)
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
 
-	list_ad_account_adimagesSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"biz_tag_id":{"description":"biz_tag_id","type":"integer"},"business_id":{"description":"business_id","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"hashes":{"description":"hashes","items":{"type":"string"},"type":"array"},"id":{"description":"AdAccount ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"minheight":{"description":"minheight","type":"integer"},"minwidth":{"description":"minwidth","type":"integer"},"name":{"description":"name","type":"string"},"selected_hashes":{"description":"selected_hashes","items":{"type":"string"},"type":"array"}},"required":["id"],"type":"object"}`)
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
 
-	create_ad_account_adimageSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"bytes":{"description":"bytes","type":"string"},"copy_from":{"additionalProperties":true,"description":"copy_from","type":"object"},"id":{"description":"AdAccount ID","type":"string"}},"required":["id"],"type":"object"}`)
+	if args.BusinessId != "" {
+		query.Set("business_id", args.BusinessId)
+	}
 
-	list_ad_account_adlabelsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdAccount ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+	if args.FetchPrimaryAudience {
+		query.Set("fetch_primary_audience", "true")
+	}
 
-	create_ad_account_adlabelSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"id":{"description":"AdAccount ID","type":"string"},"name":{"description":"name","type":"string"}},"required":["id","name"],"type":"object"}`)
+	if args.PixelId != "" {
+		query.Set("pixel_id", args.PixelId)
+	}
 
-	list_ad_account_adplayablesSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdAccount ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "customaudiences")
+	fullURL := BuildURLWithQuery(baseURL, query)
 
-	create_ad_account_adplayableSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"app_id":{"description":"app_id","type":"string"},"id":{"description":"AdAccount ID","type":"string"},"name":{"description":"name","type":"string"},"session_id":{"description":"session_id","type":"string"},"source":{"description":"source","type":"string"},"source_url":{"description":"source_url","type":"string"},"source_zip":{"description":"source_zip","type":"string"}},"required":["id","name"],"type":"object"}`)
+	return ExecuteGETRequest(ctx, fullURL)
 
-	get_ad_account_adrules_historySchema = json.RawMessage(`{"additionalProperties":true,"properties":{"action":{"description":"action (enum: adaccountadrules_history_action_enum_param)","type":"string"},"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"evaluation_type":{"description":"evaluation_type (enum: adaccountadrules_history_evaluation_type_enum_param)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"hide_no_changes":{"description":"hide_no_changes","type":"boolean"},"id":{"description":"AdAccount ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"object_id":{"description":"object_id","type":"string"}},"required":["id"],"type":"object"}`)
+}
+
+// CreateAdAccountCustomaudienceHandler handles create_ad_account_customaudience with typed arguments
+func CreateAdAccountCustomaudienceHandler(ctx context.Context, request mcp.CallToolRequest, args create_ad_account_customaudienceArgs) (*mcp.CallToolResult, error) {
 
-	get_ad_account_adrules_librarySchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdAccount ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+	// Build request body
+	body := make(map[string]interface{})
 
-	update_ad_account_adrules_librarySchema = json.RawMessage(`{"additionalProperties":false,"properties":{"account_id":{"description":"account_id","type":"string"},"evaluation_spec":{"additionalProperties":true,"description":"evaluation_spec","type":"object"},"execution_spec":{"additionalProperties":true,"description":"execution_spec","type":"object"},"id":{"description":"AdAccount ID","type":"string"},"name":{"description":"name","type":"string"},"schedule_spec":{"additionalProperties":true,"description":"schedule_spec","type":"object"},"status":{"description":"status (enum: adaccountadrules_library_status_enum_param)","type":"string"},"ui_creation_source":{"description":"ui_creation_source (enum: adaccountadrules_library_ui_creation_source_enum_param)","type":"string"}},"required":["id","evaluation_spec","execution_spec","name"],"type":"object"}`)
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
 
-	list_ad_account_adsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"date_preset":{"description":"date_preset (enum: adaccountads_date_preset_enum_param)","type":"string"},"effective_status":{"description":"effective_status","items":{"type":"string"},"type":"array"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdAccount ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"time_range":{"description":"time_range","type":"string"},"updated_since":{"description":"updated_since","type":"integer"}},"required":["id"],"type":"object"}`)
+	// Add parameters to body
 
-	create_ad_account_adSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"ad_schedule_end_time":{"description":"ad_schedule_end_time","type":"string"},"ad_schedule_start_time":{"description":"ad_schedule_start_time","type":"string"},"adlabels":{"description":"adlabels","items":{"additionalProperties":true,"type":"object"},"type":"array"},"adset_id":{"description":"adset_id","type":"integer"},"adset_spec":{"description":"adset_spec","type":"string"},"audience_id":{"description":"audience_id","type":"string"},"bid_amount":{"description":"bid_amount","type":"integer"},"conversion_domain":{"description":"conversion_domain","type":"string"},"creative":{"description":"creative","type":"string"},"creative_asset_groups_spec":{"additionalProperties":true,"description":"creative_asset_groups_spec","type":"object"},"date_format":{"description":"date_format","type":"string"},"display_sequence":{"description":"display_sequence","type":"integer"},"draft_adgroup_id":{"description":"draft_adgroup_id","type":"string"},"engagement_audience":{"description":"engagement_audience","type":"boolean"},"execution_options":{"description":"execution_options","items":{"type":"string"},"type":"array"},"id":{"description":"AdAccount ID","type":"string"},"include_demolink_hashes":{"description":"include_demolink_hashes","type":"boolean"},"name":{"description":"name","type":"string"},"priority":{"description":"priority","type":"integer"},"source_ad_id":{"description":"source_ad_id","type":"string"},"status":{"description":"status (enum: adaccountads_status_enum_param)","type":"string"},"tracking_specs":{"additionalProperties":true,"description":"tracking_specs","type":"object"}},"required":["id","creative","name"],"type":"object"}`)
+	if len(args.AllowedDomains) > 0 {
+		body["allowed_domains"] = args.AllowedDomains
+	}
 
-	list_ad_account_ads_reporting_mmm_reportsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"filtering":{"description":"filtering","items":{"additionalProperties":true,"type":"object"},"type":"array"},"id":{"description":"AdAccount ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+	if args.AssociatedAudienceId > 0 {
+		body["associated_audience_id"] = args.AssociatedAudienceId
+	}
 
-	list_ad_account_ads_reporting_mmm_schedulersSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdAccount ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+	if args.ClaimObjective != "" {
+		body["claim_objective"] = args.ClaimObjective
+	}
 
-	get_ad_account_ads_volumeSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"limit":{"description":"Maximum number of results","type":"integer"},"page_id":{"description":"page_id","type":"string"},"recommendation_type":{"description":"recommendation_type (enum: adaccountads_volume_recommendation_type_enum_param)","type":"string"},"show_breakdown_by_actor":{"description":"show_breakdown_by_actor","type":"boolean"}},"type":"object"}`)
+	if args.ContentType != "" {
+		body["content_type"] = args.ContentType
+	}
 
-	list_ad_account_adsbylabelsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"ad_label_ids":{"description":"ad_label_ids","items":{"type":"string"},"type":"array"},"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdAccount ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"operator":{"description":"operator (enum: adaccountadsbylabels_operator_enum_param)","type":"string"}},"required":["id","ad_label_ids"],"type":"object"}`)
+	if args.Countries != "" {
+		body["countries"] = args.Countries
+	}
 
-	list_ad_account_adsetsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"date_preset":{"description":"date_preset (enum: adaccountadsets_date_preset_enum_param)","type":"string"},"effective_status":{"description":"effective_status","items":{"type":"string"},"type":"array"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdAccount ID","type":"string"},"is_completed":{"description":"is_completed","type":"boolean"},"limit":{"description":"Maximum number of results","type":"integer"},"time_range":{"description":"time_range","type":"string"},"updated_since":{"description":"updated_since","type":"integer"}},"required":["id"],"type":"object"}`)
+	if args.CreationParams != nil {
+		body["creation_params"] = args.CreationParams
+	}
 
-	create_ad_account_adsetSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"adlabels":{"description":"adlabels","items":{"additionalProperties":true,"type":"object"},"type":"array"},"adset_schedule":{"description":"adset_schedule","items":{"additionalProperties":true,"type":"object"},"type":"array"},"attribution_spec":{"description":"attribution_spec","items":{"additionalProperties":true,"type":"object"},"type":"array"},"bid_adjustments":{"additionalProperties":true,"description":"bid_adjustments","type":"object"},"bid_amount":{"description":"bid_amount","type":"integer"},"bid_constraints":{"additionalProperties":true,"description":"bid_constraints","type":"object"},"bid_strategy":{"description":"bid_strategy (enum: adaccountadsets_bid_strategy_enum_param)","type":"string"},"billing_event":{"description":"billing_event (enum: adaccountadsets_billing_event_enum_param)","type":"string"},"budget_source":{"description":"budget_source (enum: adaccountadsets_budget_source_enum_param)","type":"string"},"budget_split_set_id":{"description":"budget_split_set_id","type":"string"},"campaign_attribution":{"additionalProperties":true,"description":"campaign_attribution","type":"object"},"campaign_id":{"description":"campaign_id","type":"string"},"campaign_spec":{"additionalProperties":true,"description":"campaign_spec","type":"object"},"creative_sequence":{"description":"creative_sequence","items":{"type":"string"},"type":"array"},"creative_sequence_repetition_pattern":{"description":"creative_sequence_repetition_pattern (enum: adaccountadsets_creative_sequence_repetition_pattern_enum_param)","type":"string"},"daily_budget":{"description":"daily_budget","type":"integer"},"daily_imps":{"description":"daily_imps","type":"integer"},"daily_min_spend_target":{"description":"daily_min_spend_target","type":"integer"},"daily_spend_cap":{"description":"daily_spend_cap","type":"integer"},"date_format":{"description":"date_format","type":"string"},"destination_type":{"description":"destination_type (enum: adaccountadsets_destination_type_enum_param)","type":"string"},"dsa_beneficiary":{"description":"dsa_beneficiary","type":"string"},"dsa_payor":{"description":"dsa_payor","type":"string"},"end_time":{"description":"end_time","type":"string"},"execution_options":{"description":"execution_options","items":{"type":"string"},"type":"array"},"existing_customer_budget_percentage":{"description":"existing_customer_budget_percentage","type":"integer"},"frequency_control_specs":{"description":"frequency_control_specs","items":{"additionalProperties":true,"type":"object"},"type":"array"},"full_funnel_exploration_mode":{"description":"full_funnel_exploration_mode (enum: adaccountadsets_full_funnel_exploration_mode_enum_param)","type":"string"},"id":{"description":"AdAccount ID","type":"string"},"is_ba_skip_delayed_eligible":{"description":"is_ba_skip_delayed_eligible","type":"boolean"},"is_dynamic_creative":{"description":"is_dynamic_creative","type":"boolean"},"is_incremental_attribution_enabled":{"description":"is_incremental_attribution_enabled","type":"boolean"},"is_sac_cfca_terms_certified":{"description":"is_sac_cfca_terms_certified","type":"boolean"},"lifetime_budget":{"description":"lifetime_budget","type":"integer"},"lifetime_imps":{"description":"lifetime_imps","type":"integer"},"lifetime_min_spend_target":{"description":"lifetime_min_spend_target","type":"integer"},"lifetime_spend_cap":{"description":"lifetime_spend_cap","type":"integer"},"line_number":{"description":"line_number","type":"integer"},"max_budget_spend_percentage":{"description":"max_budget_spend_percentage","type":"integer"},"min_budget_spend_percentage":{"description":"min_budget_spend_percentage","type":"integer"},"multi_optimization_goal_weight":{"description":"multi_optimization_goal_weight (enum: adaccountadsets_multi_optimization_goal_weight_enum_param)","type":"string"},"name":{"description":"name","type":"string"},"optimization_goal":{"description":"optimization_goal (enum: adaccountadsets_optimization_goal_enum_param)","type":"string"},"optimization_sub_event":{"description":"optimization_sub_event (enum: adaccountadsets_optimization_sub_event_enum_param)","type":"string"},"pacing_type":{"description":"pacing_type","items":{"type":"string"},"type":"array"},"promoted_object":{"additionalProperties":true,"description":"promoted_object","type":"object"},"rb_prediction_id":{"description":"rb_prediction_id","type":"string"},"regional_regulated_categories":{"description":"regional_regulated_categories","items":{"type":"string"},"type":"array"},"regional_regulation_identities":{"description":"regional_regulation_identities","type":"string"},"rf_prediction_id":{"description":"rf_prediction_id","type":"string"},"source_adset_id":{"description":"source_adset_id","type":"string"},"start_time":{"description":"start_time","type":"string"},"status":{"description":"status (enum: adaccountadsets_status_enum_param)","type":"string"},"targeting":{"description":"targeting","type":"string"},"time_based_ad_rotation_id_blocks":{"description":"time_based_ad_rotation_id_blocks","items":{"type":"string"},"type":"array"},"time_based_ad_rotation_intervals":{"description":"time_based_ad_rotation_intervals","items":{"type":"integer"},"type":"array"},"time_start":{"description":"time_start","type":"string"},"time_stop":{"description":"time_stop","type":"string"},"topline_id":{"description":"topline_id","type":"string"},"tune_for_category":{"description":"tune_for_category (enum: adaccountadsets_tune_for_category_enum_param)","type":"string"}},"required":["id","name"],"type":"object"}`)
+	if args.CustomerFileSource != "" {
+		body["customer_file_source"] = args.CustomerFileSource
+	}
 
-	list_ad_account_adsetsbylabelsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"ad_label_ids":{"description":"ad_label_ids","items":{"type":"string"},"type":"array"},"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdAccount ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"operator":{"description":"operator (enum: adaccountadsetsbylabels_operator_enum_param)","type":"string"}},"required":["id","ad_label_ids"],"type":"object"}`)
+	if args.DatasetId != "" {
+		body["dataset_id"] = args.DatasetId
+	}
 
-	list_ad_account_adspixelsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdAccount ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"sort_by":{"description":"sort_by (enum: adaccountadspixels_sort_by_enum_param)","type":"string"}},"required":["id"],"type":"object"}`)
+	if args.Description != "" {
+		body["description"] = args.Description
+	}
 
-	create_ad_account_adspixelSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"id":{"description":"AdAccount ID","type":"string"},"name":{"description":"name","type":"string"}},"required":["id"],"type":"object"}`)
+	body["enable_fetch_or_create"] = args.EnableFetchOrCreate
 
-	list_ad_account_advertisable_applicationsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"app_id":{"description":"app_id","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"business_id":{"description":"business_id","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdAccount ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+	if args.EventSourceGroup != "" {
+		body["event_source_group"] = args.EventSourceGroup
+	}
 
-	remove_advideos_from_ad_accountSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdAccount ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"video_id":{"description":"video_id","type":"string"}},"required":["id","video_id"],"type":"object"}`)
+	if len(args.EventSources) > 0 {
+		body["event_sources"] = args.EventSources
+	}
 
-	list_ad_account_advideosSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdAccount ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"max_aspect_ratio":{"description":"max_aspect_ratio","type":"number"},"maxheight":{"description":"maxheight","type":"integer"},"maxlength":{"description":"maxlength","type":"integer"},"maxwidth":{"description":"maxwidth","type":"integer"},"min_aspect_ratio":{"description":"min_aspect_ratio","type":"number"},"minheight":{"description":"minheight","type":"integer"},"minlength":{"description":"minlength","type":"integer"},"minwidth":{"description":"minwidth","type":"integer"},"title":{"description":"title","type":"string"}},"required":["id"],"type":"object"}`)
+	if len(args.Exclusions) > 0 {
+		body["exclusions"] = args.Exclusions
+	}
 
-	create_ad_account_advideoSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"application_id":{"description":"application_id","type":"string"},"asked_fun_fact_prompt_id":{"description":"asked_fun_fact_prompt_id","type":"integer"},"audio_story_wave_animation_handle":{"description":"audio_story_wave_animation_handle","type":"string"},"chunk_session_id":{"description":"chunk_session_id","type":"string"},"composer_entry_picker":{"description":"composer_entry_picker","type":"string"},"composer_entry_point":{"description":"composer_entry_point","type":"string"},"composer_entry_time":{"description":"composer_entry_time","type":"integer"},"composer_session_events_log":{"description":"composer_session_events_log","type":"string"},"composer_session_id":{"description":"composer_session_id","type":"string"},"composer_source_surface":{"description":"composer_source_surface","type":"string"},"composer_type":{"description":"composer_type","type":"string"},"container_type":{"description":"container_type (enum: adaccountadvideos_container_type_enum_param)","type":"string"},"content_category":{"description":"content_category (enum: adaccountadvideos_content_category_enum_param)","type":"string"},"creative_tools":{"description":"creative_tools","type":"string"},"description":{"description":"description","type":"string"},"embeddable":{"description":"embeddable","type":"boolean"},"end_offset":{"description":"end_offset","type":"integer"},"fbuploader_video_file_chunk":{"description":"fbuploader_video_file_chunk","type":"string"},"file_size":{"description":"file_size","type":"integer"},"file_url":{"description":"file_url","type":"string"},"fisheye_video_cropped":{"description":"fisheye_video_cropped","type":"boolean"},"formatting":{"description":"formatting (enum: adaccountadvideos_formatting_enum_param)","type":"string"},"fov":{"description":"fov","type":"integer"},"front_z_rotation":{"description":"front_z_rotation","type":"number"},"fun_fact_prompt_id":{"description":"fun_fact_prompt_id","type":"string"},"fun_fact_toastee_id":{"description":"fun_fact_toastee_id","type":"integer"},"guide":{"description":"guide","items":{"type":"string"},"type":"array"},"guide_enabled":{"description":"guide_enabled","type":"boolean"},"id":{"description":"AdAccount ID","type":"string"},"initial_heading":{"description":"initial_heading","type":"integer"},"initial_pitch":{"description":"initial_pitch","type":"integer"},"instant_game_entry_point_data":{"description":"instant_game_entry_point_data","type":"string"},"is_boost_intended":{"description":"is_boost_intended","type":"boolean"},"is_group_linking_post":{"description":"is_group_linking_post","type":"boolean"},"is_partnership_ad":{"description":"is_partnership_ad","type":"boolean"},"is_voice_clip":{"description":"is_voice_clip","type":"boolean"},"location_source_id":{"description":"location_source_id","type":"string"},"name":{"description":"name","type":"string"},"og_action_type_id":{"description":"og_action_type_id","type":"string"},"og_icon_id":{"description":"og_icon_id","type":"string"},"og_object_id":{"description":"og_object_id","type":"string"},"og_phrase":{"description":"og_phrase","type":"string"},"og_suggestion_mechanism":{"description":"og_suggestion_mechanism","type":"string"},"original_fov":{"description":"original_fov","type":"integer"},"original_projection_type":{"description":"original_projection_type (enum: adaccountadvideos_original_projection_type_enum_param)","type":"string"},"partnership_ad_ad_code":{"description":"partnership_ad_ad_code","type":"string"},"publish_event_id":{"description":"publish_event_id","type":"integer"},"referenced_sticker_id":{"description":"referenced_sticker_id","type":"string"},"replace_video_id":{"description":"replace_video_id","type":"string"},"slideshow_spec":{"description":"slideshow_spec","type":"string"},"source":{"description":"source","type":"string"},"source_instagram_media_id":{"description":"source_instagram_media_id","type":"string"},"spherical":{"description":"spherical","type":"boolean"},"start_offset":{"description":"start_offset","type":"integer"},"swap_mode":{"description":"swap_mode (enum: adaccountadvideos_swap_mode_enum_param)","type":"string"},"text_format_metadata":{"description":"text_format_metadata","type":"string"},"thumb":{"description":"thumb","type":"string"},"time_since_original_post":{"description":"time_since_original_post","type":"integer"},"title":{"description":"title","type":"string"},"transcode_setting_properties":{"description":"transcode_setting_properties","type":"string"},"unpublished_content_type":{"description":"unpublished_content_type (enum: adaccountadvideos_unpublished_content_type_enum_param)","type":"string"},"upload_phase":{"description":"upload_phase (enum: adaccountadvideos_upload_phase_enum_param)","type":"string"},"upload_session_id":{"description":"upload_session_id","type":"string"},"upload_setting_properties":{"description":"upload_setting_properties","type":"string"},"video_file_chunk":{"description":"video_file_chunk","type":"string"},"video_id_original":{"description":"video_id_original","type":"string"},"video_start_time_ms":{"description":"video_start_time_ms","type":"integer"},"waterfall_id":{"description":"waterfall_id","type":"string"}},"required":["id"],"type":"object"}`)
+	if args.FacebookPageId != "" {
+		body["facebook_page_id"] = args.FacebookPageId
+	}
 
-	list_ad_account_affectedadsetsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdAccount ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+	if len(args.Inclusions) > 0 {
+		body["inclusions"] = args.Inclusions
+	}
 
-	remove_agencies_from_ad_accountSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"business":{"description":"business","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdAccount ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id","business"],"type":"object"}`)
+	body["is_snapshot"] = args.IsSnapshot
 
-	list_ad_account_agenciesSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdAccount ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+	body["is_value_based"] = args.IsValueBased
 
-	create_ad_account_agencieSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"business":{"description":"business","type":"string"},"id":{"description":"AdAccount ID","type":"string"},"permitted_tasks":{"description":"permitted_tasks","items":{"type":"string"},"type":"array"}},"required":["id","business"],"type":"object"}`)
+	if args.LookalikeSpec != "" {
+		body["lookalike_spec"] = args.LookalikeSpec
+	}
 
-	list_ad_account_applicationsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdAccount ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+	if args.MarketingMessageChannels != nil {
+		body["marketing_message_channels"] = args.MarketingMessageChannels
+	}
 
-	remove_assigned_users_from_ad_accountSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdAccount ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"user":{"description":"user","type":"integer"}},"required":["id","user"],"type":"object"}`)
+	if args.Name != "" {
+		body["name"] = args.Name
+	}
 
-	list_ad_account_assigned_usersSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"business":{"description":"business","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdAccount ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id","business"],"type":"object"}`)
+	if args.OptOutLink != "" {
+		body["opt_out_link"] = args.OptOutLink
+	}
 
-	create_ad_account_assigned_userSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"id":{"description":"AdAccount ID","type":"string"},"tasks":{"description":"tasks","items":{"type":"string"},"type":"array"},"user":{"description":"user","type":"integer"}},"required":["id","user"],"type":"object"}`)
+	if args.OriginAudienceId != "" {
+		body["origin_audience_id"] = args.OriginAudienceId
+	}
 
-	create_ad_account_async_batch_requestSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"adbatch":{"description":"adbatch","items":{"additionalProperties":true,"type":"object"},"type":"array"},"id":{"description":"AdAccount ID","type":"string"},"name":{"description":"name","type":"string"}},"required":["id","adbatch","name"],"type":"object"}`)
+	if args.ParentAudienceId > 0 {
+		body["parent_audience_id"] = args.ParentAudienceId
+	}
 
-	list_ad_account_async_requestsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdAccount ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"status":{"description":"status (enum: adaccountasync_requests_status_enum_param)","type":"string"},"type":{"description":"type (enum: adaccountasync_requests_type_enum_param)","type":"string"}},"required":["id"],"type":"object"}`)
+	if args.PartnerReferenceKey != "" {
+		body["partner_reference_key"] = args.PartnerReferenceKey
+	}
 
-	list_ad_account_asyncadcreativesSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdAccount ID","type":"string"},"is_completed":{"description":"is_completed","type":"boolean"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+	if args.PixelId != "" {
+		body["pixel_id"] = args.PixelId
+	}
 
-	create_ad_account_asyncadcreativeSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"creative_spec":{"description":"creative_spec","type":"string"},"id":{"description":"AdAccount ID","type":"string"},"name":{"description":"name","type":"string"},"notification_mode":{"description":"notification_mode (enum: adaccountasyncadcreatives_notification_mode_enum_param)","type":"string"},"notification_uri":{"description":"notification_uri","type":"string"}},"required":["id","creative_spec","name"],"type":"object"}`)
+	body["prefill"] = args.Prefill
 
-	list_ad_account_asyncadrequestsetsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdAccount ID","type":"string"},"is_completed":{"description":"is_completed","type":"boolean"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+	if args.ProductSetId != "" {
+		body["product_set_id"] = args.ProductSetId
+	}
 
-	create_ad_account_asyncadrequestsetSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"ad_specs":{"description":"ad_specs","items":{"additionalProperties":true,"type":"object"},"type":"array"},"id":{"description":"AdAccount ID","type":"string"},"name":{"description":"name","type":"string"},"notification_mode":{"description":"notification_mode (enum: adaccountasyncadrequestsets_notification_mode_enum_param)","type":"string"},"notification_uri":{"description":"notification_uri","type":"string"}},"required":["id","ad_specs","name"],"type":"object"}`)
+	if args.RegulatedAudienceSpec != "" {
+		body["regulated_audience_spec"] = args.RegulatedAudienceSpec
+	}
 
-	get_ad_account_audience_funnelSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdAccount ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+	if args.RetentionDays > 0 {
+		body["retention_days"] = args.RetentionDays
+	}
 
-	create_ad_account_block_list_draftSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"id":{"description":"AdAccount ID","type":"string"},"publisher_urls_file":{"description":"publisher_urls_file","type":"string"}},"required":["id","publisher_urls_file"],"type":"object"}`)
+	if args.RevSharePolicyId > 0 {
+		body["rev_share_policy_id"] = args.RevSharePolicyId
+	}
 
-	create_ad_account_brand_safety_content_filter_levelSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"brand_safety_content_filter_levels":{"description":"brand_safety_content_filter_levels","items":{"type":"string"},"type":"array"},"business_id":{"description":"business_id","type":"string"},"id":{"description":"AdAccount ID","type":"string"}},"required":["id","brand_safety_content_filter_levels"],"type":"object"}`)
+	if args.Rule != "" {
+		body["rule"] = args.Rule
+	}
 
-	list_ad_account_broadtargetingcategoriesSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"custom_categories_only":{"description":"custom_categories_only","type":"boolean"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdAccount ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+	if args.RuleAggregation != "" {
+		body["rule_aggregation"] = args.RuleAggregation
+	}
 
-	list_ad_account_businessprojectsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"business":{"description":"business","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdAccount ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+	if args.Subtype != "" {
+		body["subtype"] = args.Subtype
+	}
 
-	remove_campaigns_from_ad_accountSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"before_date":{"description":"before_date","type":"string"},"delete_offset":{"description":"delete_offset","type":"integer"},"delete_strategy":{"description":"delete_strategy (enum: adaccountcampaigns_delete_strategy_enum_param)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdAccount ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"object_count":{"description":"object_count","type":"integer"}},"required":["id","delete_strategy"],"type":"object"}`)
+	body["use_in_campaigns"] = args.UseInCampaigns
 
-	list_ad_account_campaignsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"date_preset":{"description":"date_preset (enum: adaccountcampaigns_date_preset_enum_param)","type":"string"},"effective_status":{"description":"effective_status","items":{"type":"string"},"type":"array"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdAccount ID","type":"string"},"is_completed":{"description":"is_completed","type":"boolean"},"limit":{"description":"Maximum number of results","type":"integer"},"time_range":{"description":"time_range","type":"string"}},"required":["id"],"type":"object"}`)
+	if len(args.VideoGroupIds) > 0 {
+		body["video_group_ids"] = args.VideoGroupIds
+	}
 
-	create_ad_account_campaignSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"adlabels":{"description":"adlabels","items":{"additionalProperties":true,"type":"object"},"type":"array"},"bid_strategy":{"description":"bid_strategy (enum: adaccountcampaigns_bid_strategy_enum_param)","type":"string"},"buying_type":{"description":"buying_type","type":"string"},"daily_budget":{"description":"daily_budget","type":"integer"},"execution_options":{"description":"execution_options","items":{"type":"string"},"type":"array"},"id":{"description":"AdAccount ID","type":"string"},"is_skadnetwork_attribution":{"description":"is_skadnetwork_attribution","type":"boolean"},"iterative_split_test_configs":{"description":"iterative_split_test_configs","items":{"additionalProperties":true,"type":"object"},"type":"array"},"lifetime_budget":{"description":"lifetime_budget","type":"integer"},"name":{"description":"name","type":"string"},"objective":{"description":"objective (enum: adaccountcampaigns_objective_enum_param)","type":"string"},"pacing_type":{"description":"pacing_type","items":{"type":"string"},"type":"array"},"promoted_object":{"additionalProperties":true,"description":"promoted_object","type":"object"},"smart_promotion_type":{"description":"smart_promotion_type (enum: adaccountcampaigns_smart_promotion_type_enum_param)","type":"string"},"source_campaign_id":{"description":"source_campaign_id","type":"string"},"special_ad_categories":{"description":"special_ad_categories","items":{"type":"string"},"type":"array"},"special_ad_category_country":{"description":"special_ad_category_country","items":{"type":"string"},"type":"array"},"spend_cap":{"description":"spend_cap","type":"integer"},"start_time":{"description":"start_time","type":"string"},"status":{"description":"status (enum: adaccountcampaigns_status_enum_param)","type":"string"},"stop_time":{"description":"stop_time","type":"string"},"topline_id":{"description":"topline_id","type":"string"}},"required":["id","special_ad_categories"],"type":"object"}`)
+	if args.WhatsAppBusinessPhoneNumberId != "" {
+		body["whats_app_business_phone_number_id"] = args.WhatsAppBusinessPhoneNumberId
+	}
 
-	list_ad_account_campaignsbylabelsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"ad_label_ids":{"description":"ad_label_ids","items":{"type":"string"},"type":"array"},"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdAccount ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"operator":{"description":"operator (enum: adaccountcampaignsbylabels_operator_enum_param)","type":"string"}},"required":["id","ad_label_ids"],"type":"object"}`)
+	// Build URL and execute
+	url := buildGraphURL(args.ID, "customaudiences")
 
-	list_ad_account_connected_instagram_accountsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdAccount ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+	return ExecutePOSTRequest(ctx, url, body)
 
-	get_ad_account_connected_instagram_accounts_with_iabpSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"business_id":{"description":"business_id","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdAccount ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+}
 
-	list_ad_account_conversion_goalsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdAccount ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+// ListAdAccountCustomaudiencestosHandler handles list_ad_account_customaudiencestos with typed arguments
+func ListAdAccountCustomaudiencestosHandler(ctx context.Context, request mcp.CallToolRequest, args list_ad_account_customaudiencestosArgs) (*mcp.CallToolResult, error) {
 
-	list_ad_account_customaudiencesSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"business_id":{"description":"business_id","type":"string"},"fetch_primary_audience":{"description":"fetch_primary_audience","type":"boolean"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"filtering":{"description":"filtering","items":{"additionalProperties":true,"type":"object"},"type":"array"},"id":{"description":"AdAccount ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"pixel_id":{"description":"pixel_id","type":"string"}},"required":["id"],"type":"object"}`)
+	// Build query parameters
+	query := BuildQueryParameters()
 
-	create_ad_account_customaudienceSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"allowed_domains":{"description":"allowed_domains","items":{"type":"string"},"type":"array"},"associated_audience_id":{"description":"associated_audience_id","type":"integer"},"claim_objective":{"description":"claim_objective (enum: adaccountcustomaudiences_claim_objective_enum_param)","type":"string"},"content_type":{"description":"content_type (enum: adaccountcustomaudiences_content_type_enum_param)","type":"string"},"countries":{"description":"countries","type":"string"},"creation_params":{"description":"creation_params","type":"string"},"customer_file_source":{"description":"customer_file_source (enum: adaccountcustomaudiences_customer_file_source_enum_param)","type":"string"},"dataset_id":{"description":"dataset_id","type":"string"},"description":{"description":"description","type":"string"},"enable_fetch_or_create":{"description":"enable_fetch_or_create","type":"boolean"},"event_source_group":{"description":"event_source_group","type":"string"},"event_sources":{"description":"event_sources","items":{"additionalProperties":true,"type":"object"},"type":"array"},"exclusions":{"description":"exclusions","items":{"additionalProperties":true,"type":"object"},"type":"array"},"facebook_page_id":{"description":"facebook_page_id","type":"string"},"id":{"description":"AdAccount ID","type":"string"},"inclusions":{"description":"inclusions","items":{"additionalProperties":true,"type":"object"},"type":"array"},"is_snapshot":{"description":"is_snapshot","type":"boolean"},"is_value_based":{"description":"is_value_based","type":"boolean"},"list_of_accounts":{"description":"list_of_accounts","items":{"type":"integer"},"type":"array"},"lookalike_spec":{"description":"lookalike_spec","type":"string"},"marketing_message_channels":{"additionalProperties":true,"description":"marketing_message_channels","type":"object"},"name":{"description":"name","type":"string"},"opt_out_link":{"description":"opt_out_link","type":"string"},"origin_audience_id":{"description":"origin_audience_id","type":"string"},"parent_audience_id":{"description":"parent_audience_id","type":"integer"},"partner_reference_key":{"description":"partner_reference_key","type":"string"},"pixel_id":{"description":"pixel_id","type":"string"},"prefill":{"description":"prefill","type":"boolean"},"product_set_id":{"description":"product_set_id","type":"string"},"regulated_audience_spec":{"description":"regulated_audience_spec","type":"string"},"retention_days":{"description":"retention_days","type":"integer"},"rev_share_policy_id":{"description":"rev_share_policy_id","type":"integer"},"rule":{"description":"rule","type":"string"},"rule_aggregation":{"description":"rule_aggregation","type":"string"},"subscription_info":{"description":"subscription_info","items":{"type":"string"},"type":"array"},"subtype":{"description":"subtype (enum: adaccountcustomaudiences_subtype_enum_param)","type":"string"},"use_for_products":{"description":"use_for_products","items":{"type":"string"},"type":"array"},"use_in_campaigns":{"description":"use_in_campaigns","type":"boolean"},"video_group_ids":{"description":"video_group_ids","items":{"type":"string"},"type":"array"},"whats_app_business_phone_number_id":{"description":"whats_app_business_phone_number_id","type":"string"}},"required":["id"],"type":"object"}`)
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
 
-	list_ad_account_customaudiencestosSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdAccount ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
 
-	create_ad_account_customaudiencestoSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"business_id":{"description":"business_id","type":"string"},"id":{"description":"AdAccount ID","type":"string"},"tos_id":{"description":"tos_id","type":"string"}},"required":["id","tos_id"],"type":"object"}`)
+	// Add other parameters
 
-	list_ad_account_customconversionsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdAccount ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
 
-	create_ad_account_customconversionSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"action_source_type":{"description":"action_source_type (enum: adaccountcustomconversions_action_source_type_enum_param)","type":"string"},"advanced_rule":{"description":"advanced_rule","type":"string"},"custom_event_type":{"description":"custom_event_type (enum: adaccountcustomconversions_custom_event_type_enum_param)","type":"string"},"default_conversion_value":{"description":"default_conversion_value","type":"number"},"description":{"description":"description","type":"string"},"event_source_id":{"description":"event_source_id","type":"string"},"id":{"description":"AdAccount ID","type":"string"},"name":{"description":"name","type":"string"},"rule":{"description":"rule","type":"string"}},"required":["id","name"],"type":"object"}`)
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
 
-	get_ad_account_delivery_estimateSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdAccount ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"optimization_goal":{"description":"optimization_goal (enum: adaccountdelivery_estimate_optimization_goal_enum_param)","type":"string"},"promoted_object":{"additionalProperties":true,"description":"promoted_object","type":"object"},"targeting_spec":{"description":"targeting_spec","type":"string"}},"required":["id","optimization_goal","targeting_spec"],"type":"object"}`)
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
 
-	list_ad_account_deprecatedtargetingadsetsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdAccount ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"type":{"description":"type","type":"string"}},"required":["id"],"type":"object"}`)
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
 
-	list_ad_account_dsa_recommendationsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"limit":{"description":"Maximum number of results","type":"integer"}},"type":"object"}`)
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "customaudiencestos")
+	fullURL := BuildURLWithQuery(baseURL, query)
 
-	list_ad_account_generatepreviewsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"ad_format":{"description":"ad_format (enum: adaccountgeneratepreviews_ad_format_enum_param)","type":"string"},"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"creative":{"description":"creative","type":"string"},"creative_feature":{"description":"creative_feature (enum: adaccountgeneratepreviews_creative_feature_enum_param)","type":"string"},"dynamic_asset_label":{"description":"dynamic_asset_label","type":"string"},"dynamic_creative_spec":{"additionalProperties":true,"description":"dynamic_creative_spec","type":"object"},"dynamic_customization":{"additionalProperties":true,"description":"dynamic_customization","type":"object"},"end_date":{"description":"end_date","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"height":{"description":"height","type":"integer"},"id":{"description":"AdAccount ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"locale":{"description":"locale","type":"string"},"place_page_id":{"description":"place_page_id","type":"integer"},"post":{"additionalProperties":true,"description":"post","type":"object"},"product_item_ids":{"description":"product_item_ids","items":{"type":"string"},"type":"array"},"render_type":{"description":"render_type (enum: adaccountgeneratepreviews_render_type_enum_param)","type":"string"},"start_date":{"description":"start_date","type":"string"},"width":{"description":"width","type":"integer"}},"required":["id","ad_format","creative"],"type":"object"}`)
+	return ExecuteGETRequest(ctx, fullURL)
 
-	list_ad_account_impacting_ad_studiesSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdAccount ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+}
 
-	get_ad_account_insightsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"action_attribution_windows":{"description":"action_attribution_windows","items":{"type":"string"},"type":"array"},"action_breakdowns":{"description":"action_breakdowns","items":{"type":"string"},"type":"array"},"action_report_time":{"description":"action_report_time (enum: adaccountinsights_action_report_time_enum_param)","type":"string"},"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"breakdowns":{"description":"breakdowns","items":{"type":"string"},"type":"array"},"date_preset":{"description":"date_preset (enum: adaccountinsights_date_preset_enum_param)","type":"string"},"default_summary":{"description":"default_summary","type":"boolean"},"export_columns":{"description":"export_columns","items":{"type":"string"},"type":"array"},"export_format":{"description":"export_format","type":"string"},"export_name":{"description":"export_name","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"filtering":{"description":"filtering","items":{"additionalProperties":true,"type":"object"},"type":"array"},"id":{"description":"AdAccount ID","type":"string"},"level":{"description":"level (enum: adaccountinsights_level_enum_param)","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"product_id_limit":{"description":"product_id_limit","type":"integer"},"sort":{"description":"sort","items":{"type":"string"},"type":"array"},"summary":{"description":"summary","items":{"type":"string"},"type":"array"},"summary_action_breakdowns":{"description":"summary_action_breakdowns","items":{"type":"string"},"type":"array"},"time_increment":{"description":"time_increment","type":"string"},"time_range":{"description":"time_range","type":"string"},"time_ranges":{"description":"time_ranges","items":{"additionalProperties":true,"type":"object"},"type":"array"},"use_account_attribution_setting":{"description":"use_account_attribution_setting","type":"boolean"},"use_unified_attribution_setting":{"description":"use_unified_attribution_setting","type":"boolean"}},"required":["id"],"type":"object"}`)
+// CreateAdAccountCustomaudiencestoHandler handles create_ad_account_customaudiencesto with typed arguments
+func CreateAdAccountCustomaudiencestoHandler(ctx context.Context, request mcp.CallToolRequest, args create_ad_account_customaudiencestoArgs) (*mcp.CallToolResult, error) {
 
-	create_ad_account_insights_reportSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"action_attribution_windows":{"description":"action_attribution_windows","items":{"type":"string"},"type":"array"},"action_breakdowns":{"description":"action_breakdowns","items":{"type":"string"},"type":"array"},"action_report_time":{"description":"action_report_time (enum: adaccountinsights_action_report_time_enum_param)","type":"string"},"breakdowns":{"description":"breakdowns","items":{"type":"string"},"type":"array"},"date_preset":{"description":"date_preset (enum: adaccountinsights_date_preset_enum_param)","type":"string"},"default_summary":{"description":"default_summary","type":"boolean"},"export_columns":{"description":"export_columns","items":{"type":"string"},"type":"array"},"export_format":{"description":"export_format","type":"string"},"export_name":{"description":"export_name","type":"string"},"fields":{"description":"fields","items":{"type":"string"},"type":"array"},"filtering":{"description":"filtering","items":{"additionalProperties":true,"type":"object"},"type":"array"},"id":{"description":"AdAccount ID","type":"string"},"level":{"description":"level (enum: adaccountinsights_level_enum_param)","type":"string"},"limit":{"description":"limit","type":"integer"},"product_id_limit":{"description":"product_id_limit","type":"integer"},"sort":{"description":"sort","items":{"type":"string"},"type":"array"},"summary":{"description":"summary","items":{"type":"string"},"type":"array"},"summary_action_breakdowns":{"description":"summary_action_breakdowns","items":{"type":"string"},"type":"array"},"time_increment":{"description":"time_increment","type":"string"},"time_range":{"description":"time_range","type":"string"},"time_ranges":{"description":"time_ranges","items":{"additionalProperties":true,"type":"object"},"type":"array"},"use_account_attribution_setting":{"description":"use_account_attribution_setting","type":"boolean"},"use_unified_attribution_setting":{"description":"use_unified_attribution_setting","type":"boolean"}},"required":["id"],"type":"object"}`)
+	// Build request body
+	body := make(map[string]interface{})
 
-	list_ad_account_instagram_accountsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdAccount ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
 
-	list_ad_account_ios_fourteen_campaign_limitsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"app_id":{"description":"app_id","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdAccount ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id","app_id"],"type":"object"}`)
+	// Add parameters to body
 
-	list_ad_account_matched_search_applicationsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"allow_incomplete_app":{"description":"allow_incomplete_app","type":"boolean"},"app_store":{"description":"app_store (enum: adaccountmatched_search_applications_app_store_enum_param)","type":"string"},"app_store_country":{"description":"app_store_country","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"business_id":{"description":"business_id","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"is_skadnetwork_search":{"description":"is_skadnetwork_search","type":"boolean"},"limit":{"description":"Maximum number of results","type":"integer"},"only_apps_with_permission":{"description":"only_apps_with_permission","type":"boolean"},"query_term":{"description":"query_term","type":"string"}},"required":["app_store","query_term"],"type":"object"}`)
+	if args.BusinessId != "" {
+		body["business_id"] = args.BusinessId
+	}
 
-	get_ad_account_max_bidSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdAccount ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+	if args.TosId != "" {
+		body["tos_id"] = args.TosId
+	}
 
-	list_ad_account_mcmeconversionsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"limit":{"description":"Maximum number of results","type":"integer"}},"type":"object"}`)
+	// Build URL and execute
+	url := buildGraphURL(args.ID, "customaudiencestos")
 
-	list_ad_account_minimum_budgetsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"bid_amount":{"description":"bid_amount","type":"integer"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdAccount ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+	return ExecutePOSTRequest(ctx, url, body)
 
-	list_ad_account_onbehalf_requestsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdAccount ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"status":{"description":"status (enum: adaccountonbehalf_requests_status_enum_param)","type":"string"}},"required":["id"],"type":"object"}`)
+}
 
-	create_ad_account_product_audienceSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"allowed_domains":{"description":"allowed_domains","items":{"type":"string"},"type":"array"},"associated_audience_id":{"description":"associated_audience_id","type":"integer"},"claim_objective":{"description":"claim_objective (enum: adaccountproduct_audiences_claim_objective_enum_param)","type":"string"},"content_type":{"description":"content_type (enum: adaccountproduct_audiences_content_type_enum_param)","type":"string"},"creation_params":{"description":"creation_params","type":"string"},"description":{"description":"description","type":"string"},"enable_fetch_or_create":{"description":"enable_fetch_or_create","type":"boolean"},"event_source_group":{"description":"event_source_group","type":"string"},"event_sources":{"description":"event_sources","items":{"additionalProperties":true,"type":"object"},"type":"array"},"exclusions":{"description":"exclusions","items":{"additionalProperties":true,"type":"object"},"type":"array"},"id":{"description":"AdAccount ID","type":"string"},"inclusions":{"description":"inclusions","items":{"additionalProperties":true,"type":"object"},"type":"array"},"is_snapshot":{"description":"is_snapshot","type":"boolean"},"is_value_based":{"description":"is_value_based","type":"boolean"},"name":{"description":"name","type":"string"},"opt_out_link":{"description":"opt_out_link","type":"string"},"parent_audience_id":{"description":"parent_audience_id","type":"integer"},"product_set_id":{"description":"product_set_id","type":"string"},"rev_share_policy_id":{"description":"rev_share_policy_id","type":"integer"},"subtype":{"description":"subtype (enum: adaccountproduct_audiences_subtype_enum_param)","type":"string"}},"required":["id","name","product_set_id"],"type":"object"}`)
+// ListAdAccountCustomconversionsHandler handles list_ad_account_customconversions with typed arguments
+func ListAdAccountCustomconversionsHandler(ctx context.Context, request mcp.CallToolRequest, args list_ad_account_customconversionsArgs) (*mcp.CallToolResult, error) {
 
-	list_ad_account_promote_pagesSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdAccount ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+	// Build query parameters
+	query := BuildQueryParameters()
 
-	list_ad_account_publisher_block_listsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdAccount ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
 
-	create_ad_account_publisher_block_listSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"id":{"description":"AdAccount ID","type":"string"},"name":{"description":"name","type":"string"}},"required":["id"],"type":"object"}`)
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
 
-	get_ad_account_reachestimateSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"adgroup_ids":{"description":"adgroup_ids","items":{"type":"string"},"type":"array"},"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"caller_id":{"description":"caller_id","type":"string"},"concepts":{"description":"concepts","type":"string"},"creative_action_spec":{"description":"creative_action_spec","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdAccount ID","type":"string"},"is_debug":{"description":"is_debug","type":"boolean"},"limit":{"description":"Maximum number of results","type":"integer"},"object_store_url":{"description":"object_store_url","type":"string"},"targeting_spec":{"description":"targeting_spec","type":"string"}},"required":["id","targeting_spec"],"type":"object"}`)
+	// Add other parameters
 
-	list_ad_account_reachfrequencypredictionsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdAccount ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
 
-	create_ad_account_reachfrequencypredictionSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"action":{"description":"action (enum: adaccountreachfrequencypredictions_action_enum_param)","type":"string"},"ad_formats":{"description":"ad_formats","items":{"additionalProperties":true,"type":"object"},"type":"array"},"auction_entry_option_index":{"description":"auction_entry_option_index","type":"integer"},"budget":{"description":"budget","type":"integer"},"buying_type":{"description":"buying_type (enum: adaccountreachfrequencypredictions_buying_type_enum_param)","type":"string"},"campaign_group_id":{"description":"campaign_group_id","type":"string"},"day_parting_schedule":{"description":"day_parting_schedule","items":{"additionalProperties":true,"type":"object"},"type":"array"},"deal_id":{"description":"deal_id","type":"string"},"destination_id":{"description":"destination_id","type":"integer"},"destination_ids":{"description":"destination_ids","items":{"type":"string"},"type":"array"},"end_time":{"description":"end_time","type":"integer"},"exceptions":{"description":"exceptions","type":"boolean"},"existing_campaign_id":{"description":"existing_campaign_id","type":"string"},"expiration_time":{"description":"expiration_time","type":"integer"},"frequency_cap":{"description":"frequency_cap","type":"integer"},"grp_buying":{"description":"grp_buying","type":"boolean"},"id":{"description":"AdAccount ID","type":"string"},"impression":{"description":"impression","type":"integer"},"instream_packages":{"description":"instream_packages","items":{"type":"string"},"type":"array"},"interval_frequency_cap_reset_period":{"description":"interval_frequency_cap_reset_period","type":"integer"},"is_balanced_frequency":{"description":"is_balanced_frequency","type":"boolean"},"is_bonus_media":{"description":"is_bonus_media","type":"boolean"},"is_conversion_goal":{"description":"is_conversion_goal","type":"boolean"},"is_full_view":{"description":"is_full_view","type":"boolean"},"is_higher_average_frequency":{"description":"is_higher_average_frequency","type":"boolean"},"is_reach_and_frequency_io_buying":{"description":"is_reach_and_frequency_io_buying","type":"boolean"},"is_reserved_buying":{"description":"is_reserved_buying","type":"boolean"},"num_curve_points":{"description":"num_curve_points","type":"integer"},"objective":{"description":"objective","type":"string"},"optimization_goal":{"description":"optimization_goal","type":"string"},"prediction_mode":{"description":"prediction_mode","type":"integer"},"reach":{"description":"reach","type":"integer"},"rf_prediction_id":{"description":"rf_prediction_id","type":"string"},"rf_prediction_id_to_release":{"description":"rf_prediction_id_to_release","type":"string"},"rf_prediction_id_to_share":{"description":"rf_prediction_id_to_share","type":"string"},"start_time":{"description":"start_time","type":"integer"},"stop_time":{"description":"stop_time","type":"integer"},"story_event_type":{"description":"story_event_type","type":"integer"},"target_cpm":{"description":"target_cpm","type":"integer"},"target_frequency":{"description":"target_frequency","type":"integer"},"target_frequency_reset_period":{"description":"target_frequency_reset_period","type":"integer"},"target_spec":{"description":"target_spec","type":"string"},"video_view_length_constraint":{"description":"video_view_length_constraint","type":"integer"}},"required":["id"],"type":"object"}`)
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
 
-	list_ad_account_recommendationsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"limit":{"description":"Maximum number of results","type":"integer"}},"type":"object"}`)
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
 
-	create_ad_account_recommendationSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"asc_fragmentation_parameters":{"description":"asc_fragmentation_parameters","type":"string"},"autoflow_parameters":{"description":"autoflow_parameters","type":"string"},"fragmentation_parameters":{"description":"fragmentation_parameters","type":"string"},"music_parameters":{"description":"music_parameters","type":"string"},"recommendation_signature":{"description":"recommendation_signature","type":"string"},"scale_good_campaign_parameters":{"description":"scale_good_campaign_parameters","type":"string"}},"required":["recommendation_signature"],"type":"object"}`)
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
 
-	list_ad_account_saved_audiencesSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"business_id":{"description":"business_id","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"filtering":{"description":"filtering","items":{"additionalProperties":true,"type":"object"},"type":"array"},"id":{"description":"AdAccount ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "customconversions")
+	fullURL := BuildURLWithQuery(baseURL, query)
 
-	remove_subscribed_apps_from_ad_accountSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"app_id":{"description":"app_id","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdAccount ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+	return ExecuteGETRequest(ctx, fullURL)
 
-	list_ad_account_subscribed_appsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdAccount ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+}
 
-	create_ad_account_subscribed_appSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"app_id":{"description":"app_id","type":"string"},"id":{"description":"AdAccount ID","type":"string"}},"required":["id"],"type":"object"}`)
+// CreateAdAccountCustomconversionHandler handles create_ad_account_customconversion with typed arguments
+func CreateAdAccountCustomconversionHandler(ctx context.Context, request mcp.CallToolRequest, args create_ad_account_customconversionArgs) (*mcp.CallToolResult, error) {
 
-	get_ad_account_targetingbrowseSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"excluded_category":{"description":"excluded_category","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdAccount ID","type":"string"},"include_nodes":{"description":"include_nodes","type":"boolean"},"is_exclusion":{"description":"is_exclusion","type":"boolean"},"limit":{"description":"Maximum number of results","type":"integer"},"limit_type":{"description":"limit_type (enum: adaccounttargetingbrowse_limit_type_enum_param)","type":"string"},"regulated_categories":{"description":"regulated_categories","items":{"type":"string"},"type":"array"},"regulated_countries":{"description":"regulated_countries","items":{"type":"string"},"type":"array"},"whitelisted_types":{"description":"whitelisted_types","items":{"type":"string"},"type":"array"}},"required":["id"],"type":"object"}`)
+	// Build request body
+	body := make(map[string]interface{})
 
-	get_ad_account_targetingsearchSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"allow_only_fat_head_interests":{"description":"allow_only_fat_head_interests","type":"boolean"},"app_store":{"description":"app_store (enum: adaccounttargetingsearch_app_store_enum_param)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"countries":{"description":"countries","items":{"type":"string"},"type":"array"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"is_account_level_brand_safety_exclusion":{"description":"is_account_level_brand_safety_exclusion","type":"boolean"},"is_account_level_employer_exclusion":{"description":"is_account_level_employer_exclusion","type":"boolean"},"is_exclusion":{"description":"is_exclusion","type":"boolean"},"limit":{"description":"Maximum number of results","type":"integer"},"limit_type":{"description":"limit_type (enum: adaccounttargetingsearch_limit_type_enum_param)","type":"string"},"objective":{"description":"objective (enum: adaccounttargetingsearch_objective_enum_param)","type":"string"},"promoted_object":{"additionalProperties":true,"description":"promoted_object","type":"object"},"q":{"description":"q","type":"string"},"regulated_categories":{"description":"regulated_categories","items":{"type":"string"},"type":"array"},"regulated_countries":{"description":"regulated_countries","items":{"type":"string"},"type":"array"},"session_id":{"description":"session_id","type":"integer"},"targeting_list":{"description":"targeting_list","items":{"additionalProperties":true,"type":"object"},"type":"array"},"whitelisted_types":{"description":"whitelisted_types","items":{"type":"string"},"type":"array"}},"required":["q"],"type":"object"}`)
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
 
-	list_ad_account_targetingsentencelinesSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"discard_ages":{"description":"discard_ages","type":"boolean"},"discard_placements":{"description":"discard_placements","type":"boolean"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"hide_targeting_spec_from_return":{"description":"hide_targeting_spec_from_return","type":"boolean"},"id":{"description":"AdAccount ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"targeting_spec":{"description":"targeting_spec","type":"string"}},"required":["id","targeting_spec"],"type":"object"}`)
+	// Add parameters to body
 
-	list_ad_account_targetingsuggestionsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"app_store":{"description":"app_store (enum: adaccounttargetingsuggestions_app_store_enum_param)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"countries":{"description":"countries","items":{"type":"string"},"type":"array"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdAccount ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"limit_type":{"description":"limit_type (enum: adaccounttargetingsuggestions_limit_type_enum_param)","type":"string"},"mode":{"description":"mode (enum: adaccounttargetingsuggestions_mode_enum_param)","type":"string"},"objective":{"description":"objective (enum: adaccounttargetingsuggestions_objective_enum_param)","type":"string"},"objects":{"additionalProperties":true,"description":"objects","type":"object"},"regulated_categories":{"description":"regulated_categories","items":{"type":"string"},"type":"array"},"regulated_countries":{"description":"regulated_countries","items":{"type":"string"},"type":"array"},"session_id":{"description":"session_id","type":"integer"},"targeting_list":{"description":"targeting_list","items":{"additionalProperties":true,"type":"object"},"type":"array"},"whitelisted_types":{"description":"whitelisted_types","items":{"type":"string"},"type":"array"}},"required":["id"],"type":"object"}`)
+	if args.ActionSourceType != "" {
+		body["action_source_type"] = args.ActionSourceType
+	}
 
-	get_ad_account_targetingvalidationSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdAccount ID","type":"string"},"id_list":{"description":"id_list","items":{"type":"integer"},"type":"array"},"is_exclusion":{"description":"is_exclusion","type":"boolean"},"limit":{"description":"Maximum number of results","type":"integer"},"name_list":{"description":"name_list","items":{"type":"string"},"type":"array"},"targeting_list":{"description":"targeting_list","items":{"additionalProperties":true,"type":"object"},"type":"array"}},"required":["id"],"type":"object"}`)
+	if args.AdvancedRule != "" {
+		body["advanced_rule"] = args.AdvancedRule
+	}
 
-	get_ad_account_trackingSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdAccount ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+	if args.CustomEventType != "" {
+		body["custom_event_type"] = args.CustomEventType
+	}
 
-	update_ad_account_trackingSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"id":{"description":"AdAccount ID","type":"string"},"tracking_specs":{"additionalProperties":true,"description":"tracking_specs","type":"object"}},"required":["id","tracking_specs"],"type":"object"}`)
+	if args.Description != "" {
+		body["description"] = args.Description
+	}
 
-	list_ad_account_usersSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdAccount ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+	if args.EventSourceId != "" {
+		body["event_source_id"] = args.EventSourceId
+	}
 
-	remove_usersofanyaudience_from_ad_accountSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdAccount ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"namespace":{"description":"namespace","type":"string"},"payload":{"additionalProperties":true,"description":"payload","type":"object"},"session":{"additionalProperties":true,"description":"session","type":"object"}},"required":["id"],"type":"object"}`)
+	if args.Name != "" {
+		body["name"] = args.Name
+	}
 
-	get_ad_account_value_rule_setSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdAccount ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"product_type":{"description":"product_type (enum: adaccountvalue_rule_set_product_type_enum_param)","type":"string"},"status":{"description":"status (enum: adaccountvalue_rule_set_status_enum_param)","type":"string"}},"required":["id"],"type":"object"}`)
+	if args.Rule != "" {
+		body["rule"] = args.Rule
+	}
 
-	update_ad_account_value_rule_setSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"id":{"description":"AdAccount ID","type":"string"},"name":{"description":"name","type":"string"},"product_type":{"description":"product_type (enum: adaccountvalue_rule_set_product_type_enum_param)","type":"string"},"rules":{"description":"rules","items":{"additionalProperties":true,"type":"object"},"type":"array"}},"required":["id","name","rules"],"type":"object"}`)
+	// Build URL and execute
+	url := buildGraphURL(args.ID, "customconversions")
 
-	list_ad_account_video_adsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdAccount ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"since":{"description":"since","type":"string"},"until":{"description":"until","type":"string"}},"required":["id"],"type":"object"}`)
+	return ExecutePOSTRequest(ctx, url, body)
 
-	create_ad_account_video_adSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"description":{"description":"description","type":"string"},"id":{"description":"AdAccount ID","type":"string"},"privacy":{"description":"privacy","type":"string"},"title":{"description":"title","type":"string"},"upload_phase":{"description":"upload_phase (enum: adaccountvideo_ads_upload_phase_enum_param)","type":"string"},"video_id":{"description":"video_id","type":"string"},"video_state":{"description":"video_state (enum: adaccountvideo_ads_video_state_enum_param)","type":"string"}},"required":["id","upload_phase"],"type":"object"}`)
+}
 
-	get_ad_accountSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdAccount ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+// GetAdAccountDeliveryEstimateHandler handles get_ad_account_delivery_estimate with typed arguments
+func GetAdAccountDeliveryEstimateHandler(ctx context.Context, request mcp.CallToolRequest, args get_ad_account_delivery_estimateArgs) (*mcp.CallToolResult, error) {
 
-	update_ad_accountSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"agency_client_declaration":{"description":"agency_client_declaration","type":"string"},"attribution_spec":{"description":"attribution_spec","items":{"additionalProperties":true,"type":"object"},"type":"array"},"business_info":{"description":"business_info","type":"string"},"currency":{"description":"currency (enum: adaccount_currency)","type":"string"},"custom_audience_info":{"description":"custom_audience_info","type":"string"},"default_dsa_beneficiary":{"description":"default_dsa_beneficiary","type":"string"},"default_dsa_payor":{"description":"default_dsa_payor","type":"string"},"end_advertiser":{"description":"end_advertiser","type":"string"},"existing_customers":{"description":"existing_customers","items":{"type":"string"},"type":"array"},"id":{"description":"AdAccount ID","type":"string"},"is_ba_skip_delayed_eligible":{"description":"is_ba_skip_delayed_eligible","type":"boolean"},"is_notifications_enabled":{"description":"is_notifications_enabled","type":"boolean"},"media_agency":{"description":"media_agency","type":"string"},"name":{"description":"name","type":"string"},"partner":{"description":"partner","type":"string"},"spend_cap":{"description":"spend_cap","type":"number"},"spend_cap_action":{"description":"spend_cap_action","type":"string"},"timezone_id":{"description":"timezone_id","type":"integer"},"tos_accepted":{"description":"tos_accepted","type":"string"}},"required":["id"],"type":"object"}`)
-)
+	// Build query parameters
+	query := BuildQueryParameters()
 
-// ListAdAccountAccountControlsHandler handles list_ad_account_account_controls
-func ListAdAccountAccountControlsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "account_controls", "AdAccount", true)
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
 
-}
+	// Add other parameters
 
-// CreateAdAccountAccountControlHandler handles create_ad_account_account_control
-func CreateAdAccountAccountControlHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
 
-	// Use standard POST handler
-	return StandardPOSTHandler(ctx, request, "account_controls", true)
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
 
-}
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
 
-// ListAdAccountActivitiesHandler handles list_ad_account_activities
-func ListAdAccountActivitiesHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "activities", "AdAccount", true)
+	if args.OptimizationGoal != "" {
+		query.Set("optimization_goal", args.OptimizationGoal)
+	}
 
-}
+	// Handle PromotedObject map parameter
+	for k, v := range args.PromotedObject {
+		query.Set(k, fmt.Sprintf("%v", v))
+	}
 
-// ListAdAccountAdPlacePageSetsHandler handles list_ad_account_ad_place_page_sets
-func ListAdAccountAdPlacePageSetsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "delivery_estimate")
+	fullURL := BuildURLWithQuery(baseURL, query)
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "ad_place_page_sets", "AdAccount", true)
+	return ExecuteGETRequest(ctx, fullURL)
 
 }
 
-// CreateAdAccountAdPlacePageSetHandler handles create_ad_account_ad_place_page_set
-func CreateAdAccountAdPlacePageSetHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// ListAdAccountDeprecatedtargetingadsetsHandler handles list_ad_account_deprecatedtargetingadsets with typed arguments
+func ListAdAccountDeprecatedtargetingadsetsHandler(ctx context.Context, request mcp.CallToolRequest, args list_ad_account_deprecatedtargetingadsetsArgs) (*mcp.CallToolResult, error) {
 
-	// Use standard POST handler
-	return StandardPOSTHandler(ctx, request, "ad_place_page_sets", true)
+	// Build query parameters
+	query := BuildQueryParameters()
 
-}
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
 
-// UpdateAdAccountAdPlacePageSetsAsyncHandler handles update_ad_account_ad_place_page_sets_async
-func UpdateAdAccountAdPlacePageSetsAsyncHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
 
-	// Use standard POST handler
-	return StandardPOSTHandler(ctx, request, "ad_place_page_sets_async", true)
+	// Add other parameters
 
-}
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
 
-// ListAdAccountAdSavedKeywordsHandler handles list_ad_account_ad_saved_keywords
-func ListAdAccountAdSavedKeywordsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "ad_saved_keywords", "AdAccount", true)
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
 
-}
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
 
-// ListAdAccountAdStudiesHandler handles list_ad_account_ad_studies
-func ListAdAccountAdStudiesHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	if args.Type != "" {
+		query.Set("type", args.Type)
+	}
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "ad_studies", "AdAccount", true)
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "deprecatedtargetingadsets")
+	fullURL := BuildURLWithQuery(baseURL, query)
 
+	return ExecuteGETRequest(ctx, fullURL)
+
 }
 
-// ListAdAccountAdcloudplayablesHandler handles list_ad_account_adcloudplayables
-func ListAdAccountAdcloudplayablesHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// ListAdAccountDsaRecommendationsHandler handles list_ad_account_dsa_recommendations with typed arguments
+func ListAdAccountDsaRecommendationsHandler(ctx context.Context, request mcp.CallToolRequest, args list_ad_account_dsa_recommendationsArgs) (*mcp.CallToolResult, error) {
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "adcloudplayables", "AdAccount", true)
+	// Build query parameters
+	query := BuildQueryParameters()
 
-}
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
 
-// ListAdAccountAdcreativesHandler handles list_ad_account_adcreatives
-func ListAdAccountAdcreativesHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Add other parameters
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "adcreatives", "AdAccount", true)
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
 
-}
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
 
-// CreateAdAccountAdcreativeHandler handles create_ad_account_adcreative
-func CreateAdAccountAdcreativeHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
 
-	// Use standard POST handler
-	return StandardPOSTHandler(ctx, request, "adcreatives", true)
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
 
+	// Build URL and execute
+	baseURL := buildGraphURL("", "dsa_recommendations")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
 }
 
-// ListAdAccountAdcreativesbylabelsHandler handles list_ad_account_adcreativesbylabels
-func ListAdAccountAdcreativesbylabelsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// ListAdAccountGeneratepreviewsHandler handles list_ad_account_generatepreviews with typed arguments
+func ListAdAccountGeneratepreviewsHandler(ctx context.Context, request mcp.CallToolRequest, args list_ad_account_generatepreviewsArgs) (*mcp.CallToolResult, error) {
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "adcreativesbylabels", "AdAccount", true)
+	// Build query parameters
+	query := BuildQueryParameters()
 
-}
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
 
-// RemoveAdimagesFromAdAccountHandler handles remove_adimages_from_ad_account
-func RemoveAdimagesFromAdAccountHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
 
-	// Use standard DELETE handler
-	return StandardDELETEHandler(ctx, request, "adimages")
+	// Add other parameters
 
-}
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
 
-// ListAdAccountAdimagesHandler handles list_ad_account_adimages
-func ListAdAccountAdimagesHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "adimages", "AdAccount", true)
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
 
-}
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
 
-// CreateAdAccountAdimageHandler handles create_ad_account_adimage
-func CreateAdAccountAdimageHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	if args.AdFormat != "" {
+		query.Set("ad_format", args.AdFormat)
+	}
 
-	// Use standard POST handler
-	return StandardPOSTHandler(ctx, request, "adimages", true)
+	if args.CreativeFeature != "" {
+		query.Set("creative_feature", args.CreativeFeature)
+	}
 
-}
+	if args.DynamicAssetLabel != "" {
+		query.Set("dynamic_asset_label", args.DynamicAssetLabel)
+	}
 
-// ListAdAccountAdlabelsHandler handles list_ad_account_adlabels
-func ListAdAccountAdlabelsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Handle DynamicCreativeSpec map parameter
+	for k, v := range args.DynamicCreativeSpec {
+		query.Set(k, fmt.Sprintf("%v", v))
+	}
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "adlabels", "AdAccount", true)
+	// Handle DynamicCustomization map parameter
+	for k, v := range args.DynamicCustomization {
+		query.Set(k, fmt.Sprintf("%v", v))
+	}
 
-}
+	if args.Height > 0 {
+		query.Set("height", fmt.Sprintf("%d", args.Height))
+	}
 
-// CreateAdAccountAdlabelHandler handles create_ad_account_adlabel
-func CreateAdAccountAdlabelHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	if args.Locale != "" {
+		query.Set("locale", args.Locale)
+	}
 
-	// Use standard POST handler
-	return StandardPOSTHandler(ctx, request, "adlabels", true)
+	if args.PlacePageId > 0 {
+		query.Set("place_page_id", fmt.Sprintf("%d", args.PlacePageId))
+	}
 
-}
+	// Handle Post map parameter
+	for k, v := range args.Post {
+		query.Set(k, fmt.Sprintf("%v", v))
+	}
 
-// ListAdAccountAdplayablesHandler handles list_ad_account_adplayables
-func ListAdAccountAdplayablesHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	if len(args.ProductItemIds) > 0 {
+		query.Set("product_item_ids", strings.Join(args.ProductItemIds, ","))
+	}
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "adplayables", "AdAccount", true)
+	if args.RenderType != "" {
+		query.Set("render_type", args.RenderType)
+	}
 
-}
+	if args.Width > 0 {
+		query.Set("width", fmt.Sprintf("%d", args.Width))
+	}
 
-// CreateAdAccountAdplayableHandler handles create_ad_account_adplayable
-func CreateAdAccountAdplayableHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "generatepreviews")
+	fullURL := BuildURLWithQuery(baseURL, query)
 
-	// Use standard POST handler
-	return StandardPOSTHandler(ctx, request, "adplayables", true)
+	return ExecuteGETRequest(ctx, fullURL)
 
 }
 
-// GetAdAccountAdrulesHistoryHandler handles get_ad_account_adrules_history
-func GetAdAccountAdrulesHistoryHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// ListAdAccountImpactingAdStudiesHandler handles list_ad_account_impacting_ad_studies with typed arguments
+func ListAdAccountImpactingAdStudiesHandler(ctx context.Context, request mcp.CallToolRequest, args list_ad_account_impacting_ad_studiesArgs) (*mcp.CallToolResult, error) {
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "adrules_history", "AdAccount", true)
+	// Build query parameters
+	query := BuildQueryParameters()
 
-}
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
 
-// GetAdAccountAdrulesLibraryHandler handles get_ad_account_adrules_library
-func GetAdAccountAdrulesLibraryHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "adrules_library", "AdAccount", true)
+	// Add other parameters
 
-}
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
 
-// UpdateAdAccountAdrulesLibraryHandler handles update_ad_account_adrules_library
-func UpdateAdAccountAdrulesLibraryHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
 
-	// Use standard POST handler
-	return StandardPOSTHandler(ctx, request, "adrules_library", true)
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
 
-}
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
 
-// ListAdAccountAdsHandler handles list_ad_account_ads
-func ListAdAccountAdsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "impacting_ad_studies")
+	fullURL := BuildURLWithQuery(baseURL, query)
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "ads", "AdAccount", true)
+	return ExecuteGETRequest(ctx, fullURL)
 
 }
 
-// CreateAdAccountAdHandler handles create_ad_account_ad
-func CreateAdAccountAdHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// GetAdAccountInsightsHandler handles get_ad_account_insights with typed arguments
+func GetAdAccountInsightsHandler(ctx context.Context, request mcp.CallToolRequest, args get_ad_account_insightsArgs) (*mcp.CallToolResult, error) {
 
-	// Use standard POST handler
-	return StandardPOSTHandler(ctx, request, "ads", true)
+	// Build query parameters
+	query := BuildQueryParameters()
 
-}
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
 
-// ListAdAccountAdsReportingMmmReportsHandler handles list_ad_account_ads_reporting_mmm_reports
-func ListAdAccountAdsReportingMmmReportsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "ads_reporting_mmm_reports", "AdAccount", true)
+	// Add other parameters
 
-}
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
 
-// ListAdAccountAdsReportingMmmSchedulersHandler handles list_ad_account_ads_reporting_mmm_schedulers
-func ListAdAccountAdsReportingMmmSchedulersHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "ads_reporting_mmm_schedulers", "AdAccount", true)
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
 
-}
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
 
-// GetAdAccountAdsVolumeHandler handles get_ad_account_ads_volume
-func GetAdAccountAdsVolumeHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	if args.ActionReportTime != "" {
+		query.Set("action_report_time", args.ActionReportTime)
+	}
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "ads_volume", "AdAccount", false)
+	if args.DatePreset != "" {
+		query.Set("date_preset", args.DatePreset)
+	}
 
-}
+	if args.DefaultSummary {
+		query.Set("default_summary", "true")
+	}
 
-// ListAdAccountAdsbylabelsHandler handles list_ad_account_adsbylabels
-func ListAdAccountAdsbylabelsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	if len(args.ExportColumns) > 0 {
+		query.Set("export_columns", strings.Join(args.ExportColumns, ","))
+	}
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "adsbylabels", "AdAccount", true)
+	if args.ExportFormat != "" {
+		query.Set("export_format", args.ExportFormat)
+	}
 
-}
+	if args.ExportName != "" {
+		query.Set("export_name", args.ExportName)
+	}
 
-// ListAdAccountAdsetsHandler handles list_ad_account_adsets
-func ListAdAccountAdsetsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	if args.Level != "" {
+		query.Set("level", args.Level)
+	}
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "adsets", "AdAccount", true)
+	if args.ProductIdLimit > 0 {
+		query.Set("product_id_limit", fmt.Sprintf("%d", args.ProductIdLimit))
+	}
 
-}
+	if len(args.Sort) > 0 {
+		query.Set("sort", strings.Join(args.Sort, ","))
+	}
 
-// CreateAdAccountAdsetHandler handles create_ad_account_adset
-func CreateAdAccountAdsetHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	if len(args.Summary) > 0 {
+		query.Set("summary", strings.Join(args.Summary, ","))
+	}
 
-	// Use standard POST handler
-	return StandardPOSTHandler(ctx, request, "adsets", true)
+	if args.TimeIncrement != "" {
+		query.Set("time_increment", args.TimeIncrement)
+	}
 
-}
+	// Handle TimeRange map parameter
+	for k, v := range args.TimeRange {
+		query.Set(k, fmt.Sprintf("%v", v))
+	}
+
+	if args.UseAccountAttributionSetting {
+		query.Set("use_account_attribution_setting", "true")
+	}
 
-// ListAdAccountAdsetsbylabelsHandler handles list_ad_account_adsetsbylabels
-func ListAdAccountAdsetsbylabelsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	if args.UseUnifiedAttributionSetting {
+		query.Set("use_unified_attribution_setting", "true")
+	}
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "adsetsbylabels", "AdAccount", true)
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "insights")
+	fullURL := BuildURLWithQuery(baseURL, query)
 
+	return ExecuteGETRequest(ctx, fullURL)
+
 }
 
-// ListAdAccountAdspixelsHandler handles list_ad_account_adspixels
-func ListAdAccountAdspixelsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// CreateAdAccountInsightsReportHandler handles create_ad_account_insights_report with typed arguments
+func CreateAdAccountInsightsReportHandler(ctx context.Context, request mcp.CallToolRequest, args create_ad_account_insights_reportArgs) (*mcp.CallToolResult, error) {
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "adspixels", "AdAccount", true)
+	// Build request body
+	body := make(map[string]interface{})
 
-}
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
 
-// CreateAdAccountAdspixelHandler handles create_ad_account_adspixel
-func CreateAdAccountAdspixelHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Add parameters to body
 
-	// Use standard POST handler
-	return StandardPOSTHandler(ctx, request, "adspixels", true)
+	if args.ActionReportTime != "" {
+		body["action_report_time"] = args.ActionReportTime
+	}
 
-}
+	if args.DatePreset != "" {
+		body["date_preset"] = args.DatePreset
+	}
 
-// ListAdAccountAdvertisableApplicationsHandler handles list_ad_account_advertisable_applications
-func ListAdAccountAdvertisableApplicationsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	body["default_summary"] = args.DefaultSummary
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "advertisable_applications", "AdAccount", true)
+	if len(args.ExportColumns) > 0 {
+		body["export_columns"] = args.ExportColumns
+	}
 
-}
+	if args.ExportFormat != "" {
+		body["export_format"] = args.ExportFormat
+	}
 
-// RemoveAdvideosFromAdAccountHandler handles remove_advideos_from_ad_account
-func RemoveAdvideosFromAdAccountHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	if args.ExportName != "" {
+		body["export_name"] = args.ExportName
+	}
 
-	// Use standard DELETE handler
-	return StandardDELETEHandler(ctx, request, "advideos")
+	if len(args.Fields) > 0 {
+		body["fields"] = args.Fields
+	}
 
-}
+	if len(args.Filtering) > 0 {
+		body["filtering"] = args.Filtering
+	}
 
-// ListAdAccountAdvideosHandler handles list_ad_account_advideos
-func ListAdAccountAdvideosHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	if args.Level != "" {
+		body["level"] = args.Level
+	}
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "advideos", "AdAccount", true)
+	if args.Limit > 0 {
+		body["limit"] = args.Limit
+	}
 
-}
+	if args.ProductIdLimit > 0 {
+		body["product_id_limit"] = args.ProductIdLimit
+	}
 
-// CreateAdAccountAdvideoHandler handles create_ad_account_advideo
-func CreateAdAccountAdvideoHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	if len(args.Sort) > 0 {
+		body["sort"] = args.Sort
+	}
 
-	// Use standard POST handler
-	return StandardPOSTHandler(ctx, request, "advideos", true)
+	if len(args.Summary) > 0 {
+		body["summary"] = args.Summary
+	}
 
-}
+	if args.TimeIncrement != "" {
+		body["time_increment"] = args.TimeIncrement
+	}
 
-// ListAdAccountAffectedadsetsHandler handles list_ad_account_affectedadsets
-func ListAdAccountAffectedadsetsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	if args.TimeRange != nil {
+		body["time_range"] = args.TimeRange
+	}
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "affectedadsets", "AdAccount", true)
+	if len(args.TimeRanges) > 0 {
+		body["time_ranges"] = args.TimeRanges
+	}
 
-}
+	body["use_account_attribution_setting"] = args.UseAccountAttributionSetting
+
+	body["use_unified_attribution_setting"] = args.UseUnifiedAttributionSetting
 
-// RemoveAgenciesFromAdAccountHandler handles remove_agencies_from_ad_account
-func RemoveAgenciesFromAdAccountHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Build URL and execute
+	url := buildGraphURL(args.ID, "insights")
 
-	// Use standard DELETE handler
-	return StandardDELETEHandler(ctx, request, "agencies")
+	return ExecutePOSTRequest(ctx, url, body)
 
 }
 
-// ListAdAccountAgenciesHandler handles list_ad_account_agencies
-func ListAdAccountAgenciesHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// ListAdAccountInstagramAccountsHandler handles list_ad_account_instagram_accounts with typed arguments
+func ListAdAccountInstagramAccountsHandler(ctx context.Context, request mcp.CallToolRequest, args list_ad_account_instagram_accountsArgs) (*mcp.CallToolResult, error) {
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "agencies", "AdAccount", true)
+	// Build query parameters
+	query := BuildQueryParameters()
 
-}
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
 
-// CreateAdAccountAgencieHandler handles create_ad_account_agencie
-func CreateAdAccountAgencieHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
 
-	// Use standard POST handler
-	return StandardPOSTHandler(ctx, request, "agencies", true)
+	// Add other parameters
 
-}
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
 
-// ListAdAccountApplicationsHandler handles list_ad_account_applications
-func ListAdAccountApplicationsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "applications", "AdAccount", true)
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
 
-}
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
 
-// RemoveAssignedUsersFromAdAccountHandler handles remove_assigned_users_from_ad_account
-func RemoveAssignedUsersFromAdAccountHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "instagram_accounts")
+	fullURL := BuildURLWithQuery(baseURL, query)
 
-	// Use standard DELETE handler
-	return StandardDELETEHandler(ctx, request, "assigned_users")
+	return ExecuteGETRequest(ctx, fullURL)
 
 }
 
-// ListAdAccountAssignedUsersHandler handles list_ad_account_assigned_users
-func ListAdAccountAssignedUsersHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// ListAdAccountIosFourteenCampaignLimitsHandler handles list_ad_account_ios_fourteen_campaign_limits with typed arguments
+func ListAdAccountIosFourteenCampaignLimitsHandler(ctx context.Context, request mcp.CallToolRequest, args list_ad_account_ios_fourteen_campaign_limitsArgs) (*mcp.CallToolResult, error) {
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "assigned_users", "AdAccount", true)
+	// Build query parameters
+	query := BuildQueryParameters()
 
-}
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
 
-// CreateAdAccountAssignedUserHandler handles create_ad_account_assigned_user
-func CreateAdAccountAssignedUserHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
 
-	// Use standard POST handler
-	return StandardPOSTHandler(ctx, request, "assigned_users", true)
+	// Add other parameters
 
-}
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
 
-// CreateAdAccountAsyncBatchRequestHandler handles create_ad_account_async_batch_request
-func CreateAdAccountAsyncBatchRequestHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
 
-	// Use standard POST handler
-	return StandardPOSTHandler(ctx, request, "async_batch_requests", true)
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
 
-}
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
 
-// ListAdAccountAsyncRequestsHandler handles list_ad_account_async_requests
-func ListAdAccountAsyncRequestsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	if args.AppId != "" {
+		query.Set("app_id", args.AppId)
+	}
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "async_requests", "AdAccount", true)
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "ios_fourteen_campaign_limits")
+	fullURL := BuildURLWithQuery(baseURL, query)
 
+	return ExecuteGETRequest(ctx, fullURL)
+
 }
 
-// ListAdAccountAsyncadcreativesHandler handles list_ad_account_asyncadcreatives
-func ListAdAccountAsyncadcreativesHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// ListAdAccountMatchedSearchApplicationsHandler handles list_ad_account_matched_search_applications with typed arguments
+func ListAdAccountMatchedSearchApplicationsHandler(ctx context.Context, request mcp.CallToolRequest, args list_ad_account_matched_search_applicationsArgs) (*mcp.CallToolResult, error) {
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "asyncadcreatives", "AdAccount", true)
+	// Build query parameters
+	query := BuildQueryParameters()
 
-}
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
 
-// CreateAdAccountAsyncadcreativeHandler handles create_ad_account_asyncadcreative
-func CreateAdAccountAsyncadcreativeHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Add other parameters
 
-	// Use standard POST handler
-	return StandardPOSTHandler(ctx, request, "asyncadcreatives", true)
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
 
-}
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
 
-// ListAdAccountAsyncadrequestsetsHandler handles list_ad_account_asyncadrequestsets
-func ListAdAccountAsyncadrequestsetsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "asyncadrequestsets", "AdAccount", true)
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
 
-}
+	if args.AllowIncompleteApp {
+		query.Set("allow_incomplete_app", "true")
+	}
 
-// CreateAdAccountAsyncadrequestsetHandler handles create_ad_account_asyncadrequestset
-func CreateAdAccountAsyncadrequestsetHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	if args.AppStore != "" {
+		query.Set("app_store", args.AppStore)
+	}
 
-	// Use standard POST handler
-	return StandardPOSTHandler(ctx, request, "asyncadrequestsets", true)
+	if args.AppStoreCountry != "" {
+		query.Set("app_store_country", args.AppStoreCountry)
+	}
 
-}
+	if args.BusinessId != "" {
+		query.Set("business_id", args.BusinessId)
+	}
 
-// GetAdAccountAudienceFunnelHandler handles get_ad_account_audience_funnel
-func GetAdAccountAudienceFunnelHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	if args.IsSkadnetworkSearch {
+		query.Set("is_skadnetwork_search", "true")
+	}
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "audience_funnel", "AdAccount", true)
+	if args.OnlyAppsWithPermission {
+		query.Set("only_apps_with_permission", "true")
+	}
 
-}
+	if args.QueryTerm != "" {
+		query.Set("query_term", args.QueryTerm)
+	}
 
-// CreateAdAccountBlockListDraftHandler handles create_ad_account_block_list_draft
-func CreateAdAccountBlockListDraftHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Build URL and execute
+	baseURL := buildGraphURL("", "matched_search_applications")
+	fullURL := BuildURLWithQuery(baseURL, query)
 
-	// Use standard POST handler
-	return StandardPOSTHandler(ctx, request, "block_list_drafts", true)
+	return ExecuteGETRequest(ctx, fullURL)
 
 }
 
-// CreateAdAccountBrandSafetyContentFilterLevelHandler handles create_ad_account_brand_safety_content_filter_level
-func CreateAdAccountBrandSafetyContentFilterLevelHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// GetAdAccountMaxBidHandler handles get_ad_account_max_bid with typed arguments
+func GetAdAccountMaxBidHandler(ctx context.Context, request mcp.CallToolRequest, args get_ad_account_max_bidArgs) (*mcp.CallToolResult, error) {
 
-	// Use standard POST handler
-	return StandardPOSTHandler(ctx, request, "brand_safety_content_filter_levels", true)
+	// Build query parameters
+	query := BuildQueryParameters()
 
-}
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
 
-// ListAdAccountBroadtargetingcategoriesHandler handles list_ad_account_broadtargetingcategories
-func ListAdAccountBroadtargetingcategoriesHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "broadtargetingcategories", "AdAccount", true)
+	// Add other parameters
 
-}
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
 
-// ListAdAccountBusinessprojectsHandler handles list_ad_account_businessprojects
-func ListAdAccountBusinessprojectsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "businessprojects", "AdAccount", true)
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
 
-}
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
 
-// RemoveCampaignsFromAdAccountHandler handles remove_campaigns_from_ad_account
-func RemoveCampaignsFromAdAccountHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "max_bid")
+	fullURL := BuildURLWithQuery(baseURL, query)
 
-	// Use standard DELETE handler
-	return StandardDELETEHandler(ctx, request, "campaigns")
+	return ExecuteGETRequest(ctx, fullURL)
 
 }
 
-// ListAdAccountCampaignsHandler handles list_ad_account_campaigns
-func ListAdAccountCampaignsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// ListAdAccountMcmeconversionsHandler handles list_ad_account_mcmeconversions with typed arguments
+func ListAdAccountMcmeconversionsHandler(ctx context.Context, request mcp.CallToolRequest, args list_ad_account_mcmeconversionsArgs) (*mcp.CallToolResult, error) {
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "campaigns", "AdAccount", true)
+	// Build query parameters
+	query := BuildQueryParameters()
 
-}
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
 
-// CreateAdAccountCampaignHandler handles create_ad_account_campaign
-func CreateAdAccountCampaignHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Add other parameters
 
-	// Use standard POST handler
-	return StandardPOSTHandler(ctx, request, "campaigns", true)
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
 
-}
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
 
-// ListAdAccountCampaignsbylabelsHandler handles list_ad_account_campaignsbylabels
-func ListAdAccountCampaignsbylabelsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Build URL and execute
+	baseURL := buildGraphURL("", "mcmeconversions")
+	fullURL := BuildURLWithQuery(baseURL, query)
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "campaignsbylabels", "AdAccount", true)
+	return ExecuteGETRequest(ctx, fullURL)
 
 }
 
-// ListAdAccountConnectedInstagramAccountsHandler handles list_ad_account_connected_instagram_accounts
-func ListAdAccountConnectedInstagramAccountsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// ListAdAccountMinimumBudgetsHandler handles list_ad_account_minimum_budgets with typed arguments
+func ListAdAccountMinimumBudgetsHandler(ctx context.Context, request mcp.CallToolRequest, args list_ad_account_minimum_budgetsArgs) (*mcp.CallToolResult, error) {
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "connected_instagram_accounts", "AdAccount", true)
+	// Build query parameters
+	query := BuildQueryParameters()
 
-}
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
 
-// GetAdAccountConnectedInstagramAccountsWithIabpHandler handles get_ad_account_connected_instagram_accounts_with_iabp
-func GetAdAccountConnectedInstagramAccountsWithIabpHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "connected_instagram_accounts_with_iabp", "AdAccount", true)
+	// Add other parameters
 
-}
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
 
-// ListAdAccountConversionGoalsHandler handles list_ad_account_conversion_goals
-func ListAdAccountConversionGoalsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "conversion_goals", "AdAccount", true)
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
 
-}
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
 
-// ListAdAccountCustomaudiencesHandler handles list_ad_account_customaudiences
-func ListAdAccountCustomaudiencesHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	if args.BidAmount > 0 {
+		query.Set("bid_amount", fmt.Sprintf("%d", args.BidAmount))
+	}
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "customaudiences", "AdAccount", true)
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "minimum_budgets")
+	fullURL := BuildURLWithQuery(baseURL, query)
 
+	return ExecuteGETRequest(ctx, fullURL)
+
 }
 
-// CreateAdAccountCustomaudienceHandler handles create_ad_account_customaudience
-func CreateAdAccountCustomaudienceHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// ListAdAccountOnbehalfRequestsHandler handles list_ad_account_onbehalf_requests with typed arguments
+func ListAdAccountOnbehalfRequestsHandler(ctx context.Context, request mcp.CallToolRequest, args list_ad_account_onbehalf_requestsArgs) (*mcp.CallToolResult, error) {
 
-	// Use standard POST handler
-	return StandardPOSTHandler(ctx, request, "customaudiences", true)
+	// Build query parameters
+	query := BuildQueryParameters()
 
-}
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
 
-// ListAdAccountCustomaudiencestosHandler handles list_ad_account_customaudiencestos
-func ListAdAccountCustomaudiencestosHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "customaudiencestos", "AdAccount", true)
+	// Add other parameters
 
-}
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
 
-// CreateAdAccountCustomaudiencestoHandler handles create_ad_account_customaudiencesto
-func CreateAdAccountCustomaudiencestoHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
 
-	// Use standard POST handler
-	return StandardPOSTHandler(ctx, request, "customaudiencestos", true)
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
 
-}
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	if args.Status != "" {
+		query.Set("status", args.Status)
+	}
 
-// ListAdAccountCustomconversionsHandler handles list_ad_account_customconversions
-func ListAdAccountCustomconversionsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "onbehalf_requests")
+	fullURL := BuildURLWithQuery(baseURL, query)
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "customconversions", "AdAccount", true)
+	return ExecuteGETRequest(ctx, fullURL)
 
 }
 
-// CreateAdAccountCustomconversionHandler handles create_ad_account_customconversion
-func CreateAdAccountCustomconversionHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// CreateAdAccountProductAudienceHandler handles create_ad_account_product_audience with typed arguments
+func CreateAdAccountProductAudienceHandler(ctx context.Context, request mcp.CallToolRequest, args create_ad_account_product_audienceArgs) (*mcp.CallToolResult, error) {
 
-	// Use standard POST handler
-	return StandardPOSTHandler(ctx, request, "customconversions", true)
+	// Build request body
+	body := make(map[string]interface{})
 
-}
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
 
-// GetAdAccountDeliveryEstimateHandler handles get_ad_account_delivery_estimate
-func GetAdAccountDeliveryEstimateHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Add parameters to body
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "delivery_estimate", "AdAccount", true)
+	if len(args.AllowedDomains) > 0 {
+		body["allowed_domains"] = args.AllowedDomains
+	}
 
-}
+	if args.AssociatedAudienceId > 0 {
+		body["associated_audience_id"] = args.AssociatedAudienceId
+	}
 
-// ListAdAccountDeprecatedtargetingadsetsHandler handles list_ad_account_deprecatedtargetingadsets
-func ListAdAccountDeprecatedtargetingadsetsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	if args.ClaimObjective != "" {
+		body["claim_objective"] = args.ClaimObjective
+	}
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "deprecatedtargetingadsets", "AdAccount", true)
+	if args.ContentType != "" {
+		body["content_type"] = args.ContentType
+	}
 
-}
+	if args.CreationParams != nil {
+		body["creation_params"] = args.CreationParams
+	}
 
-// ListAdAccountDsaRecommendationsHandler handles list_ad_account_dsa_recommendations
-func ListAdAccountDsaRecommendationsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	if args.Description != "" {
+		body["description"] = args.Description
+	}
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "dsa_recommendations", "AdAccount", false)
+	body["enable_fetch_or_create"] = args.EnableFetchOrCreate
 
-}
+	if args.EventSourceGroup != "" {
+		body["event_source_group"] = args.EventSourceGroup
+	}
 
-// ListAdAccountGeneratepreviewsHandler handles list_ad_account_generatepreviews
-func ListAdAccountGeneratepreviewsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	if len(args.EventSources) > 0 {
+		body["event_sources"] = args.EventSources
+	}
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "generatepreviews", "AdAccount", true)
+	if len(args.Exclusions) > 0 {
+		body["exclusions"] = args.Exclusions
+	}
 
-}
+	if len(args.Inclusions) > 0 {
+		body["inclusions"] = args.Inclusions
+	}
 
-// ListAdAccountImpactingAdStudiesHandler handles list_ad_account_impacting_ad_studies
-func ListAdAccountImpactingAdStudiesHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	body["is_snapshot"] = args.IsSnapshot
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "impacting_ad_studies", "AdAccount", true)
+	body["is_value_based"] = args.IsValueBased
 
-}
+	if args.Name != "" {
+		body["name"] = args.Name
+	}
 
-// GetAdAccountInsightsHandler handles get_ad_account_insights
-func GetAdAccountInsightsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	if args.OptOutLink != "" {
+		body["opt_out_link"] = args.OptOutLink
+	}
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "insights", "AdAccount", true)
+	if args.ParentAudienceId > 0 {
+		body["parent_audience_id"] = args.ParentAudienceId
+	}
 
-}
+	if args.ProductSetId != "" {
+		body["product_set_id"] = args.ProductSetId
+	}
+
+	if args.RevSharePolicyId > 0 {
+		body["rev_share_policy_id"] = args.RevSharePolicyId
+	}
+
+	if args.Subtype != "" {
+		body["subtype"] = args.Subtype
+	}
 
-// CreateAdAccountInsightsReportHandler handles create_ad_account_insights_report
-func CreateAdAccountInsightsReportHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Build URL and execute
+	url := buildGraphURL(args.ID, "product_audiences")
 
-	// Use standard POST handler
-	return StandardPOSTHandler(ctx, request, "insights", true)
+	return ExecutePOSTRequest(ctx, url, body)
 
 }
 
-// ListAdAccountInstagramAccountsHandler handles list_ad_account_instagram_accounts
-func ListAdAccountInstagramAccountsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// ListAdAccountPromotePagesHandler handles list_ad_account_promote_pages with typed arguments
+func ListAdAccountPromotePagesHandler(ctx context.Context, request mcp.CallToolRequest, args list_ad_account_promote_pagesArgs) (*mcp.CallToolResult, error) {
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "instagram_accounts", "AdAccount", true)
+	// Build query parameters
+	query := BuildQueryParameters()
 
-}
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
 
-// ListAdAccountIosFourteenCampaignLimitsHandler handles list_ad_account_ios_fourteen_campaign_limits
-func ListAdAccountIosFourteenCampaignLimitsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "ios_fourteen_campaign_limits", "AdAccount", true)
+	// Add other parameters
 
-}
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
 
-// ListAdAccountMatchedSearchApplicationsHandler handles list_ad_account_matched_search_applications
-func ListAdAccountMatchedSearchApplicationsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "matched_search_applications", "AdAccount", false)
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
 
-}
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
 
-// GetAdAccountMaxBidHandler handles get_ad_account_max_bid
-func GetAdAccountMaxBidHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "promote_pages")
+	fullURL := BuildURLWithQuery(baseURL, query)
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "max_bid", "AdAccount", true)
+	return ExecuteGETRequest(ctx, fullURL)
 
 }
 
-// ListAdAccountMcmeconversionsHandler handles list_ad_account_mcmeconversions
-func ListAdAccountMcmeconversionsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// ListAdAccountPublisherBlockListsHandler handles list_ad_account_publisher_block_lists with typed arguments
+func ListAdAccountPublisherBlockListsHandler(ctx context.Context, request mcp.CallToolRequest, args list_ad_account_publisher_block_listsArgs) (*mcp.CallToolResult, error) {
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "mcmeconversions", "AdAccount", false)
+	// Build query parameters
+	query := BuildQueryParameters()
 
-}
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
 
-// ListAdAccountMinimumBudgetsHandler handles list_ad_account_minimum_budgets
-func ListAdAccountMinimumBudgetsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "minimum_budgets", "AdAccount", true)
+	// Add other parameters
 
-}
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
 
-// ListAdAccountOnbehalfRequestsHandler handles list_ad_account_onbehalf_requests
-func ListAdAccountOnbehalfRequestsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "onbehalf_requests", "AdAccount", true)
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
 
-}
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
 
-// CreateAdAccountProductAudienceHandler handles create_ad_account_product_audience
-func CreateAdAccountProductAudienceHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "publisher_block_lists")
+	fullURL := BuildURLWithQuery(baseURL, query)
 
-	// Use standard POST handler
-	return StandardPOSTHandler(ctx, request, "product_audiences", true)
+	return ExecuteGETRequest(ctx, fullURL)
 
 }
 
-// ListAdAccountPromotePagesHandler handles list_ad_account_promote_pages
-func ListAdAccountPromotePagesHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// CreateAdAccountPublisherBlockListHandler handles create_ad_account_publisher_block_list with typed arguments
+func CreateAdAccountPublisherBlockListHandler(ctx context.Context, request mcp.CallToolRequest, args create_ad_account_publisher_block_listArgs) (*mcp.CallToolResult, error) {
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "promote_pages", "AdAccount", true)
+	// Build request body
+	body := make(map[string]interface{})
 
-}
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Add parameters to body
+
+	if args.Name != "" {
+		body["name"] = args.Name
+	}
 
-// ListAdAccountPublisherBlockListsHandler handles list_ad_account_publisher_block_lists
-func ListAdAccountPublisherBlockListsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Build URL and execute
+	url := buildGraphURL(args.ID, "publisher_block_lists")
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "publisher_block_lists", "AdAccount", true)
+	return ExecutePOSTRequest(ctx, url, body)
 
 }
 
-// CreateAdAccountPublisherBlockListHandler handles create_ad_account_publisher_block_list
-func CreateAdAccountPublisherBlockListHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// GetAdAccountReachestimateHandler handles get_ad_account_reachestimate with typed arguments
+func GetAdAccountReachestimateHandler(ctx context.Context, request mcp.CallToolRequest, args get_ad_account_reachestimateArgs) (*mcp.CallToolResult, error) {
 
-	// Use standard POST handler
-	return StandardPOSTHandler(ctx, request, "publisher_block_lists", true)
+	// Build query parameters
+	query := BuildQueryParameters()
 
-}
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	if len(args.AdgroupIds) > 0 {
+		query.Set("adgroup_ids", strings.Join(args.AdgroupIds, ","))
+	}
+
+	if args.CallerId != "" {
+		query.Set("caller_id", args.CallerId)
+	}
+
+	if args.Concepts != "" {
+		query.Set("concepts", args.Concepts)
+	}
+
+	if args.CreativeActionSpec != "" {
+		query.Set("creative_action_spec", args.CreativeActionSpec)
+	}
 
-// GetAdAccountReachestimateHandler handles get_ad_account_reachestimate
-func GetAdAccountReachestimateHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	if args.IsDebug {
+		query.Set("is_debug", "true")
+	}
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "reachestimate", "AdAccount", true)
+	if args.ObjectStoreUrl != "" {
+		query.Set("object_store_url", args.ObjectStoreUrl)
+	}
 
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "reachestimate")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
 }
+
+// ListAdAccountReachfrequencypredictionsHandler handles list_ad_account_reachfrequencypredictions with typed arguments
+func ListAdAccountReachfrequencypredictionsHandler(ctx context.Context, request mcp.CallToolRequest, args list_ad_account_reachfrequencypredictionsArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
 
-// ListAdAccountReachfrequencypredictionsHandler handles list_ad_account_reachfrequencypredictions
-func ListAdAccountReachfrequencypredictionsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "reachfrequencypredictions")
+	fullURL := BuildURLWithQuery(baseURL, query)
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "reachfrequencypredictions", "AdAccount", true)
+	return ExecuteGETRequest(ctx, fullURL)
 
 }
+
+// CreateAdAccountReachfrequencypredictionHandler handles create_ad_account_reachfrequencyprediction with typed arguments
+func CreateAdAccountReachfrequencypredictionHandler(ctx context.Context, request mcp.CallToolRequest, args create_ad_account_reachfrequencypredictionArgs) (*mcp.CallToolResult, error) {
+
+	// Build request body
+	body := make(map[string]interface{})
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Add parameters to body
+
+	if args.Action != "" {
+		body["action"] = args.Action
+	}
+
+	if len(args.AdFormats) > 0 {
+		body["ad_formats"] = args.AdFormats
+	}
+
+	if args.AuctionEntryOptionIndex > 0 {
+		body["auction_entry_option_index"] = args.AuctionEntryOptionIndex
+	}
+
+	if args.Budget > 0 {
+		body["budget"] = args.Budget
+	}
+
+	if args.BuyingType != "" {
+		body["buying_type"] = args.BuyingType
+	}
+
+	if args.CampaignGroupId != "" {
+		body["campaign_group_id"] = args.CampaignGroupId
+	}
+
+	if len(args.DayPartingSchedule) > 0 {
+		body["day_parting_schedule"] = args.DayPartingSchedule
+	}
+
+	if args.DealId != "" {
+		body["deal_id"] = args.DealId
+	}
+
+	if args.DestinationId > 0 {
+		body["destination_id"] = args.DestinationId
+	}
+
+	if len(args.DestinationIds) > 0 {
+		body["destination_ids"] = args.DestinationIds
+	}
+
+	if args.EndTime > 0 {
+		body["end_time"] = args.EndTime
+	}
+
+	body["exceptions"] = args.Exceptions
+
+	if args.ExistingCampaignId != "" {
+		body["existing_campaign_id"] = args.ExistingCampaignId
+	}
+
+	if args.ExpirationTime > 0 {
+		body["expiration_time"] = args.ExpirationTime
+	}
+
+	if args.FrequencyCap > 0 {
+		body["frequency_cap"] = args.FrequencyCap
+	}
+
+	body["grp_buying"] = args.GrpBuying
+
+	if args.Impression > 0 {
+		body["impression"] = args.Impression
+	}
+
+	if args.IntervalFrequencyCapResetPeriod > 0 {
+		body["interval_frequency_cap_reset_period"] = args.IntervalFrequencyCapResetPeriod
+	}
+
+	body["is_balanced_frequency"] = args.IsBalancedFrequency
 
-// CreateAdAccountReachfrequencypredictionHandler handles create_ad_account_reachfrequencyprediction
-func CreateAdAccountReachfrequencypredictionHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	body["is_bonus_media"] = args.IsBonusMedia
 
-	// Use standard POST handler
-	return StandardPOSTHandler(ctx, request, "reachfrequencypredictions", true)
+	body["is_conversion_goal"] = args.IsConversionGoal
 
+	body["is_full_view"] = args.IsFullView
+
+	body["is_higher_average_frequency"] = args.IsHigherAverageFrequency
+
+	body["is_reach_and_frequency_io_buying"] = args.IsReachAndFrequencyIoBuying
+
+	body["is_reserved_buying"] = args.IsReservedBuying
+
+	if args.NumCurvePoints > 0 {
+		body["num_curve_points"] = args.NumCurvePoints
+	}
+
+	if args.Objective != "" {
+		body["objective"] = args.Objective
+	}
+
+	if args.OptimizationGoal != "" {
+		body["optimization_goal"] = args.OptimizationGoal
+	}
+
+	if args.PredictionMode > 0 {
+		body["prediction_mode"] = args.PredictionMode
+	}
+
+	if args.Reach > 0 {
+		body["reach"] = args.Reach
+	}
+
+	if args.RfPredictionId != "" {
+		body["rf_prediction_id"] = args.RfPredictionId
+	}
+
+	if args.RfPredictionIdToRelease != "" {
+		body["rf_prediction_id_to_release"] = args.RfPredictionIdToRelease
+	}
+
+	if args.RfPredictionIdToShare != "" {
+		body["rf_prediction_id_to_share"] = args.RfPredictionIdToShare
+	}
+
+	if args.StartTime > 0 {
+		body["start_time"] = args.StartTime
+	}
+
+	if args.StopTime > 0 {
+		body["stop_time"] = args.StopTime
+	}
+
+	if args.StoryEventType > 0 {
+		body["story_event_type"] = args.StoryEventType
+	}
+
+	if args.TargetCpm > 0 {
+		body["target_cpm"] = args.TargetCpm
+	}
+
+	if args.TargetFrequency > 0 {
+		body["target_frequency"] = args.TargetFrequency
+	}
+
+	if args.TargetFrequencyResetPeriod > 0 {
+		body["target_frequency_reset_period"] = args.TargetFrequencyResetPeriod
+	}
+
+	if args.VideoViewLengthConstraint > 0 {
+		body["video_view_length_constraint"] = args.VideoViewLengthConstraint
+	}
+
+	// Build URL and execute
+	url := buildGraphURL(args.ID, "reachfrequencypredictions")
+
+	return ExecutePOSTRequest(ctx, url, body)
+
 }
+
+// ListAdAccountRecommendationsHandler handles list_ad_account_recommendations with typed arguments
+func ListAdAccountRecommendationsHandler(ctx context.Context, request mcp.CallToolRequest, args list_ad_account_recommendationsArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
 
-// ListAdAccountRecommendationsHandler handles list_ad_account_recommendations
-func ListAdAccountRecommendationsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "recommendations", "AdAccount", false)
+	// Add other parameters
 
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL("", "recommendations")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
 }
+
+// CreateAdAccountRecommendationHandler handles create_ad_account_recommendation with typed arguments
+func CreateAdAccountRecommendationHandler(ctx context.Context, request mcp.CallToolRequest, args create_ad_account_recommendationArgs) (*mcp.CallToolResult, error) {
+
+	// Build request body
+	body := make(map[string]interface{})
+
+	// Add parameters to body
+
+	if args.AscFragmentationParameters != nil {
+		body["asc_fragmentation_parameters"] = args.AscFragmentationParameters
+	}
+
+	if args.AutoflowParameters != nil {
+		body["autoflow_parameters"] = args.AutoflowParameters
+	}
 
-// CreateAdAccountRecommendationHandler handles create_ad_account_recommendation
-func CreateAdAccountRecommendationHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	if args.FragmentationParameters != nil {
+		body["fragmentation_parameters"] = args.FragmentationParameters
+	}
 
-	// Use standard POST handler
-	return StandardPOSTHandler(ctx, request, "recommendations", false)
+	if args.MusicParameters != nil {
+		body["music_parameters"] = args.MusicParameters
+	}
 
+	if args.RecommendationSignature != "" {
+		body["recommendation_signature"] = args.RecommendationSignature
+	}
+
+	if args.ScaleGoodCampaignParameters != nil {
+		body["scale_good_campaign_parameters"] = args.ScaleGoodCampaignParameters
+	}
+
+	// Build URL and execute
+	url := buildGraphURL("", "recommendations")
+
+	return ExecutePOSTRequest(ctx, url, body)
+
 }
+
+// ListAdAccountSavedAudiencesHandler handles list_ad_account_saved_audiences with typed arguments
+func ListAdAccountSavedAudiencesHandler(ctx context.Context, request mcp.CallToolRequest, args list_ad_account_saved_audiencesArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
 
-// ListAdAccountSavedAudiencesHandler handles list_ad_account_saved_audiences
-func ListAdAccountSavedAudiencesHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "saved_audiences", "AdAccount", true)
+	if args.BusinessId != "" {
+		query.Set("business_id", args.BusinessId)
+	}
 
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "saved_audiences")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
 }
 
-// RemoveSubscribedAppsFromAdAccountHandler handles remove_subscribed_apps_from_ad_account
-func RemoveSubscribedAppsFromAdAccountHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// RemoveSubscribedAppsFromAdAccountHandler handles remove_subscribed_apps_from_ad_account with typed arguments
+func RemoveSubscribedAppsFromAdAccountHandler(ctx context.Context, request mcp.CallToolRequest, args remove_subscribed_apps_from_ad_accountArgs) (*mcp.CallToolResult, error) {
 
-	// Use standard DELETE handler
-	return StandardDELETEHandler(ctx, request, "subscribed_apps")
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
 
+	// Build URL and execute
+	url := buildGraphURL(args.ID, "subscribed_apps")
+
+	return ExecuteDELETERequest(ctx, url)
+
 }
+
+// ListAdAccountSubscribedAppsHandler handles list_ad_account_subscribed_apps with typed arguments
+func ListAdAccountSubscribedAppsHandler(ctx context.Context, request mcp.CallToolRequest, args list_ad_account_subscribed_appsArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
 
-// ListAdAccountSubscribedAppsHandler handles list_ad_account_subscribed_apps
-func ListAdAccountSubscribedAppsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "subscribed_apps", "AdAccount", true)
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
 
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "subscribed_apps")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
 }
+
+// CreateAdAccountSubscribedAppHandler handles create_ad_account_subscribed_app with typed arguments
+func CreateAdAccountSubscribedAppHandler(ctx context.Context, request mcp.CallToolRequest, args create_ad_account_subscribed_appArgs) (*mcp.CallToolResult, error) {
+
+	// Build request body
+	body := make(map[string]interface{})
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
 
-// CreateAdAccountSubscribedAppHandler handles create_ad_account_subscribed_app
-func CreateAdAccountSubscribedAppHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Add parameters to body
 
-	// Use standard POST handler
-	return StandardPOSTHandler(ctx, request, "subscribed_apps", true)
+	if args.AppId != "" {
+		body["app_id"] = args.AppId
+	}
 
+	// Build URL and execute
+	url := buildGraphURL(args.ID, "subscribed_apps")
+
+	return ExecutePOSTRequest(ctx, url, body)
+
 }
+
+// GetAdAccountTargetingbrowseHandler handles get_ad_account_targetingbrowse with typed arguments
+func GetAdAccountTargetingbrowseHandler(ctx context.Context, request mcp.CallToolRequest, args get_ad_account_targetingbrowseArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
 
-// GetAdAccountTargetingbrowseHandler handles get_ad_account_targetingbrowse
-func GetAdAccountTargetingbrowseHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Add other parameters
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "targetingbrowse", "AdAccount", true)
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
 
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	if args.ExcludedCategory != "" {
+		query.Set("excluded_category", args.ExcludedCategory)
+	}
+
+	if args.IncludeNodes {
+		query.Set("include_nodes", "true")
+	}
+
+	if args.IsExclusion {
+		query.Set("is_exclusion", "true")
+	}
+
+	if args.LimitType != "" {
+		query.Set("limit_type", args.LimitType)
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "targetingbrowse")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
 }
+
+// GetAdAccountTargetingsearchHandler handles get_ad_account_targetingsearch with typed arguments
+func GetAdAccountTargetingsearchHandler(ctx context.Context, request mcp.CallToolRequest, args get_ad_account_targetingsearchArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	if args.AllowOnlyFatHeadInterests {
+		query.Set("allow_only_fat_head_interests", "true")
+	}
+
+	if args.AppStore != "" {
+		query.Set("app_store", args.AppStore)
+	}
+
+	if len(args.Countries) > 0 {
+		query.Set("countries", strings.Join(args.Countries, ","))
+	}
+
+	if args.IsAccountLevelBrandSafetyExclusion {
+		query.Set("is_account_level_brand_safety_exclusion", "true")
+	}
+
+	if args.IsAccountLevelEmployerExclusion {
+		query.Set("is_account_level_employer_exclusion", "true")
+	}
+
+	if args.IsExclusion {
+		query.Set("is_exclusion", "true")
+	}
 
-// GetAdAccountTargetingsearchHandler handles get_ad_account_targetingsearch
-func GetAdAccountTargetingsearchHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	if args.LimitType != "" {
+		query.Set("limit_type", args.LimitType)
+	}
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "targetingsearch", "AdAccount", false)
+	if args.Objective != "" {
+		query.Set("objective", args.Objective)
+	}
 
+	// Handle PromotedObject map parameter
+	for k, v := range args.PromotedObject {
+		query.Set(k, fmt.Sprintf("%v", v))
+	}
+
+	if args.Q != "" {
+		query.Set("q", args.Q)
+	}
+
+	if args.SessionId > 0 {
+		query.Set("session_id", fmt.Sprintf("%d", args.SessionId))
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL("", "targetingsearch")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
 }
+
+// ListAdAccountTargetingsentencelinesHandler handles list_ad_account_targetingsentencelines with typed arguments
+func ListAdAccountTargetingsentencelinesHandler(ctx context.Context, request mcp.CallToolRequest, args list_ad_account_targetingsentencelinesArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
 
-// ListAdAccountTargetingsentencelinesHandler handles list_ad_account_targetingsentencelines
-func ListAdAccountTargetingsentencelinesHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "targetingsentencelines", "AdAccount", true)
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
 
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	if args.DiscardAges {
+		query.Set("discard_ages", "true")
+	}
+
+	if args.DiscardPlacements {
+		query.Set("discard_placements", "true")
+	}
+
+	if args.HideTargetingSpecFromReturn {
+		query.Set("hide_targeting_spec_from_return", "true")
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "targetingsentencelines")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
 }
+
+// ListAdAccountTargetingsuggestionsHandler handles list_ad_account_targetingsuggestions with typed arguments
+func ListAdAccountTargetingsuggestionsHandler(ctx context.Context, request mcp.CallToolRequest, args list_ad_account_targetingsuggestionsArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
 
-// ListAdAccountTargetingsuggestionsHandler handles list_ad_account_targetingsuggestions
-func ListAdAccountTargetingsuggestionsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "targetingsuggestions", "AdAccount", true)
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
 
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	if args.AppStore != "" {
+		query.Set("app_store", args.AppStore)
+	}
+
+	if len(args.Countries) > 0 {
+		query.Set("countries", strings.Join(args.Countries, ","))
+	}
+
+	if args.LimitType != "" {
+		query.Set("limit_type", args.LimitType)
+	}
+
+	if args.Mode != "" {
+		query.Set("mode", args.Mode)
+	}
+
+	if args.Objective != "" {
+		query.Set("objective", args.Objective)
+	}
+
+	// Handle Objects map parameter
+	for k, v := range args.Objects {
+		query.Set(k, fmt.Sprintf("%v", v))
+	}
+
+	if args.SessionId > 0 {
+		query.Set("session_id", fmt.Sprintf("%d", args.SessionId))
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "targetingsuggestions")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
 }
 
-// GetAdAccountTargetingvalidationHandler handles get_ad_account_targetingvalidation
-func GetAdAccountTargetingvalidationHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// GetAdAccountTargetingvalidationHandler handles get_ad_account_targetingvalidation with typed arguments
+func GetAdAccountTargetingvalidationHandler(ctx context.Context, request mcp.CallToolRequest, args get_ad_account_targetingvalidationArgs) (*mcp.CallToolResult, error) {
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "targetingvalidation", "AdAccount", true)
+	// Build query parameters
+	query := BuildQueryParameters()
 
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	if args.IsExclusion {
+		query.Set("is_exclusion", "true")
+	}
+
+	if len(args.NameList) > 0 {
+		query.Set("name_list", strings.Join(args.NameList, ","))
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "targetingvalidation")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
 }
+
+// GetAdAccountTrackingHandler handles get_ad_account_tracking with typed arguments
+func GetAdAccountTrackingHandler(ctx context.Context, request mcp.CallToolRequest, args get_ad_account_trackingArgs) (*mcp.CallToolResult, error) {
 
-// GetAdAccountTrackingHandler handles get_ad_account_tracking
-func GetAdAccountTrackingHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Build query parameters
+	query := BuildQueryParameters()
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "tracking", "AdAccount", true)
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
 
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "tracking")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
 }
+
+// UpdateAdAccountTrackingHandler handles update_ad_account_tracking with typed arguments
+func UpdateAdAccountTrackingHandler(ctx context.Context, request mcp.CallToolRequest, args update_ad_account_trackingArgs) (*mcp.CallToolResult, error) {
+
+	// Build request body
+	body := make(map[string]interface{})
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
 
-// UpdateAdAccountTrackingHandler handles update_ad_account_tracking
-func UpdateAdAccountTrackingHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Add parameters to body
 
-	// Use standard POST handler
-	return StandardPOSTHandler(ctx, request, "tracking", true)
+	if args.TrackingSpecs != nil {
+		body["tracking_specs"] = args.TrackingSpecs
+	}
 
+	// Build URL and execute
+	url := buildGraphURL(args.ID, "tracking")
+
+	return ExecutePOSTRequest(ctx, url, body)
+
 }
+
+// ListAdAccountUsersHandler handles list_ad_account_users with typed arguments
+func ListAdAccountUsersHandler(ctx context.Context, request mcp.CallToolRequest, args list_ad_account_usersArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
 
-// ListAdAccountUsersHandler handles list_ad_account_users
-func ListAdAccountUsersHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "users")
+	fullURL := BuildURLWithQuery(baseURL, query)
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "users", "AdAccount", true)
+	return ExecuteGETRequest(ctx, fullURL)
 
 }
 
-// RemoveUsersofanyaudienceFromAdAccountHandler handles remove_usersofanyaudience_from_ad_account
-func RemoveUsersofanyaudienceFromAdAccountHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// RemoveUsersofanyaudienceFromAdAccountHandler handles remove_usersofanyaudience_from_ad_account with typed arguments
+func RemoveUsersofanyaudienceFromAdAccountHandler(ctx context.Context, request mcp.CallToolRequest, args remove_usersofanyaudience_from_ad_accountArgs) (*mcp.CallToolResult, error) {
 
-	// Use standard DELETE handler
-	return StandardDELETEHandler(ctx, request, "usersofanyaudience")
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
 
+	// Build URL and execute
+	url := buildGraphURL(args.ID, "usersofanyaudience")
+
+	return ExecuteDELETERequest(ctx, url)
+
 }
+
+// GetAdAccountValueRuleSetHandler handles get_ad_account_value_rule_set with typed arguments
+func GetAdAccountValueRuleSetHandler(ctx context.Context, request mcp.CallToolRequest, args get_ad_account_value_rule_setArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
 
-// GetAdAccountValueRuleSetHandler handles get_ad_account_value_rule_set
-func GetAdAccountValueRuleSetHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	if args.ProductType != "" {
+		query.Set("product_type", args.ProductType)
+	}
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "value_rule_set", "AdAccount", true)
+	if args.Status != "" {
+		query.Set("status", args.Status)
+	}
 
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "value_rule_set")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
 }
+
+// UpdateAdAccountValueRuleSetHandler handles update_ad_account_value_rule_set with typed arguments
+func UpdateAdAccountValueRuleSetHandler(ctx context.Context, request mcp.CallToolRequest, args update_ad_account_value_rule_setArgs) (*mcp.CallToolResult, error) {
+
+	// Build request body
+	body := make(map[string]interface{})
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Add parameters to body
 
-// UpdateAdAccountValueRuleSetHandler handles update_ad_account_value_rule_set
-func UpdateAdAccountValueRuleSetHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	if args.Name != "" {
+		body["name"] = args.Name
+	}
 
-	// Use standard POST handler
-	return StandardPOSTHandler(ctx, request, "value_rule_set", true)
+	if args.ProductType != "" {
+		body["product_type"] = args.ProductType
+	}
 
+	if len(args.Rules) > 0 {
+		body["rules"] = args.Rules
+	}
+
+	// Build URL and execute
+	url := buildGraphURL(args.ID, "value_rule_set")
+
+	return ExecutePOSTRequest(ctx, url, body)
+
 }
+
+// ListAdAccountVideoAdsHandler handles list_ad_account_video_ads with typed arguments
+func ListAdAccountVideoAdsHandler(ctx context.Context, request mcp.CallToolRequest, args list_ad_account_video_adsArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
 
-// ListAdAccountVideoAdsHandler handles list_ad_account_video_ads
-func ListAdAccountVideoAdsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "video_ads", "AdAccount", true)
+	// Add other parameters
 
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
+
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
+
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
+
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "video_ads")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
 }
+
+// CreateAdAccountVideoAdHandler handles create_ad_account_video_ad with typed arguments
+func CreateAdAccountVideoAdHandler(ctx context.Context, request mcp.CallToolRequest, args create_ad_account_video_adArgs) (*mcp.CallToolResult, error) {
+
+	// Build request body
+	body := make(map[string]interface{})
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Add parameters to body
+
+	if args.Description != "" {
+		body["description"] = args.Description
+	}
 
-// CreateAdAccountVideoAdHandler handles create_ad_account_video_ad
-func CreateAdAccountVideoAdHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	if args.Privacy != "" {
+		body["privacy"] = args.Privacy
+	}
 
-	// Use standard POST handler
-	return StandardPOSTHandler(ctx, request, "video_ads", true)
+	if args.Title != "" {
+		body["title"] = args.Title
+	}
 
+	if args.UploadPhase != "" {
+		body["upload_phase"] = args.UploadPhase
+	}
+
+	if args.VideoId != "" {
+		body["video_id"] = args.VideoId
+	}
+
+	if args.VideoState != "" {
+		body["video_state"] = args.VideoState
+	}
+
+	// Build URL and execute
+	url := buildGraphURL(args.ID, "video_ads")
+
+	return ExecutePOSTRequest(ctx, url, body)
+
 }
+
+// GetAdAccountHandler handles get_ad_account with typed arguments
+func GetAdAccountHandler(ctx context.Context, request mcp.CallToolRequest, args get_ad_accountArgs) (*mcp.CallToolResult, error) {
+
+	// Build query parameters
+	query := BuildQueryParameters()
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Handle fields parameter
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	} else {
+		// Use default fields
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
+	}
+
+	// Add other parameters
+
+	if len(args.Fields) > 0 {
+		query.Set("fields", strings.Join(args.Fields, ","))
+	}
+
+	if args.Limit > 0 {
+		query.Set("limit", fmt.Sprintf("%d", args.Limit))
+	}
 
-// GetAdAccountHandler handles get_ad_account
-func GetAdAccountHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	if args.After != "" {
+		query.Set("after", args.After)
+	}
 
-	// Use standard GET handler
-	return StandardGETHandler(ctx, request, "", "AdAccount", true)
+	if args.Before != "" {
+		query.Set("before", args.Before)
+	}
 
+	// Build URL and execute
+	baseURL := buildGraphURL(args.ID, "")
+	fullURL := BuildURLWithQuery(baseURL, query)
+
+	return ExecuteGETRequest(ctx, fullURL)
+
 }
+
+// UpdateAdAccountHandler handles update_ad_account with typed arguments
+func UpdateAdAccountHandler(ctx context.Context, request mcp.CallToolRequest, args update_ad_accountArgs) (*mcp.CallToolResult, error) {
+
+	// Build request body
+	body := make(map[string]interface{})
+
+	if args.ID == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Add parameters to body
+
+	if args.AgencyClientDeclaration != nil {
+		body["agency_client_declaration"] = args.AgencyClientDeclaration
+	}
+
+	if len(args.AttributionSpec) > 0 {
+		body["attribution_spec"] = args.AttributionSpec
+	}
+
+	if args.BusinessInfo != nil {
+		body["business_info"] = args.BusinessInfo
+	}
+
+	if args.Currency != "" {
+		body["currency"] = args.Currency
+	}
+
+	if args.CustomAudienceInfo != nil {
+		body["custom_audience_info"] = args.CustomAudienceInfo
+	}
+
+	if args.DefaultDsaBeneficiary != "" {
+		body["default_dsa_beneficiary"] = args.DefaultDsaBeneficiary
+	}
+
+	if args.DefaultDsaPayor != "" {
+		body["default_dsa_payor"] = args.DefaultDsaPayor
+	}
+
+	if args.EndAdvertiser != "" {
+		body["end_advertiser"] = args.EndAdvertiser
+	}
+
+	if len(args.ExistingCustomers) > 0 {
+		body["existing_customers"] = args.ExistingCustomers
+	}
+
+	body["is_ba_skip_delayed_eligible"] = args.IsBaSkipDelayedEligible
+
+	body["is_notifications_enabled"] = args.IsNotificationsEnabled
+
+	if args.MediaAgency != "" {
+		body["media_agency"] = args.MediaAgency
+	}
+
+	if args.Name != "" {
+		body["name"] = args.Name
+	}
+
+	if args.Partner != "" {
+		body["partner"] = args.Partner
+	}
+
+	if args.SpendCapAction != "" {
+		body["spend_cap_action"] = args.SpendCapAction
+	}
+
+	if args.TimezoneId > 0 {
+		body["timezone_id"] = args.TimezoneId
+	}
+
+	if args.TosAccepted != nil {
+		body["tos_accepted"] = args.TosAccepted
+	}
 
-// UpdateAdAccountHandler handles update_ad_account
-func UpdateAdAccountHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Build URL and execute
+	url := buildGraphURL(args.ID, "")
 
-	// Use standard POST handler
-	return StandardPOSTHandler(ctx, request, "", true)
+	return ExecutePOSTRequest(ctx, url, body)
 
 }
 
 // RegisterAdAccountTools registers all AdAccount tools with the MCP server
 func RegisterAdAccountTools(s *server.MCPServer) error {
 
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_ad_account_account_controls",
-			"List account_controls for this AdAccount Returns AdAccountBusinessConstraints.",
-			list_ad_account_account_controlsSchema,
-		),
-		ListAdAccountAccountControlsHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"create_ad_account_account_control",
-			"Create or update account_controls for this AdAccount Returns AdAccountBusinessConstraints. Required: audience_controls",
-			create_ad_account_account_controlSchema,
-		),
-		CreateAdAccountAccountControlHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_ad_account_activities",
-			"List activities for this AdAccount Returns AdActivity.",
-			list_ad_account_activitiesSchema,
-		),
-		ListAdAccountActivitiesHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_ad_account_ad_place_page_sets",
-			"List ad_place_page_sets for this AdAccount Returns AdPlacePageSet.",
-			list_ad_account_ad_place_page_setsSchema,
-		),
-		ListAdAccountAdPlacePageSetsHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"create_ad_account_ad_place_page_set",
-			"Associate ad_place_page_sets with this AdAccount Returns AdPlacePageSet. Required: name, parent_page",
-			create_ad_account_ad_place_page_setSchema,
-		),
-		CreateAdAccountAdPlacePageSetHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"update_ad_account_ad_place_page_sets_async",
-			"Associate ad_place_page_sets_async with this AdAccount Returns AdPlacePageSet. Required: name, parent_page",
-			update_ad_account_ad_place_page_sets_asyncSchema,
-		),
-		UpdateAdAccountAdPlacePageSetsAsyncHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_ad_account_ad_saved_keywords",
-			"List ad_saved_keywords for this AdAccount Returns AdSavedKeywords.",
-			list_ad_account_ad_saved_keywordsSchema,
-		),
-		ListAdAccountAdSavedKeywordsHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_ad_account_ad_studies",
-			"List ad_studies for this AdAccount Returns AdStudy.",
-			list_ad_account_ad_studiesSchema,
-		),
-		ListAdAccountAdStudiesHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_ad_account_adcloudplayables",
-			"List adcloudplayables for this AdAccount Returns CloudGame.",
-			list_ad_account_adcloudplayablesSchema,
-		),
-		ListAdAccountAdcloudplayablesHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_ad_account_adcreatives",
-			"List adcreatives for this AdAccount Returns AdCreative.",
-			list_ad_account_adcreativesSchema,
-		),
-		ListAdAccountAdcreativesHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"create_ad_account_adcreative",
-			"Associate adcreatives with this AdAccount Returns AdCreative.",
-			create_ad_account_adcreativeSchema,
-		),
-		CreateAdAccountAdcreativeHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_ad_account_adcreativesbylabels",
-			"List adcreativesbylabels for this AdAccount Returns AdCreative. Required: ad_label_ids",
-			list_ad_account_adcreativesbylabelsSchema,
-		),
-		ListAdAccountAdcreativesbylabelsHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"remove_adimages_from_ad_account",
-			"Remove adimages from this AdAccount Required: hash",
-			remove_adimages_from_ad_accountSchema,
-		),
-		RemoveAdimagesFromAdAccountHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_ad_account_adimages",
-			"List adimages for this AdAccount Returns AdImage.",
-			list_ad_account_adimagesSchema,
-		),
-		ListAdAccountAdimagesHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"create_ad_account_adimage",
-			"Associate adimages with this AdAccount",
-			create_ad_account_adimageSchema,
-		),
-		CreateAdAccountAdimageHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_ad_account_adlabels",
-			"List adlabels for this AdAccount Returns AdLabel.",
-			list_ad_account_adlabelsSchema,
-		),
-		ListAdAccountAdlabelsHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"create_ad_account_adlabel",
-			"Associate adlabels with this AdAccount Returns AdLabel. Required: name",
-			create_ad_account_adlabelSchema,
-		),
-		CreateAdAccountAdlabelHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_ad_account_adplayables",
-			"List adplayables for this AdAccount Returns PlayableContent.",
-			list_ad_account_adplayablesSchema,
-		),
-		ListAdAccountAdplayablesHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"create_ad_account_adplayable",
-			"Associate adplayables with this AdAccount Returns PlayableContent. Required: name",
-			create_ad_account_adplayableSchema,
-		),
-		CreateAdAccountAdplayableHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"get_ad_account_adrules_history",
-			"Get adrules_history data for this AdAccount Returns AdAccountAdRulesHistory.",
-			get_ad_account_adrules_historySchema,
-		),
-		GetAdAccountAdrulesHistoryHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"get_ad_account_adrules_library",
-			"Get adrules_library data for this AdAccount Returns AdRule.",
-			get_ad_account_adrules_librarySchema,
-		),
-		GetAdAccountAdrulesLibraryHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"update_ad_account_adrules_library",
-			"Associate adrules_library with this AdAccount Returns AdRule. Required: evaluation_spec, execution_spec, name",
-			update_ad_account_adrules_librarySchema,
-		),
-		UpdateAdAccountAdrulesLibraryHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_ad_account_ads",
-			"List ads for this AdAccount Returns Ad.",
-			list_ad_account_adsSchema,
-		),
-		ListAdAccountAdsHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"create_ad_account_ad",
-			"Associate ads with this AdAccount Returns Ad. Required: creative, name",
-			create_ad_account_adSchema,
-		),
-		CreateAdAccountAdHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_ad_account_ads_reporting_mmm_reports",
-			"List ads_reporting_mmm_reports for this AdAccount Returns AdsReportBuilderMMMReport.",
-			list_ad_account_ads_reporting_mmm_reportsSchema,
-		),
-		ListAdAccountAdsReportingMmmReportsHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_ad_account_ads_reporting_mmm_schedulers",
-			"List ads_reporting_mmm_schedulers for this AdAccount Returns AdsReportBuilderMMMReportScheduler.",
-			list_ad_account_ads_reporting_mmm_schedulersSchema,
-		),
-		ListAdAccountAdsReportingMmmSchedulersHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"get_ad_account_ads_volume",
-			"Get ads_volume data for this AdAccount Returns AdAccountAdVolume.",
-			get_ad_account_ads_volumeSchema,
-		),
-		GetAdAccountAdsVolumeHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_ad_account_adsbylabels",
-			"List adsbylabels for this AdAccount Returns Ad. Required: ad_label_ids",
-			list_ad_account_adsbylabelsSchema,
-		),
-		ListAdAccountAdsbylabelsHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_ad_account_adsets",
-			"List adsets for this AdAccount Returns AdSet.",
-			list_ad_account_adsetsSchema,
-		),
-		ListAdAccountAdsetsHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"create_ad_account_adset",
-			"Associate adsets with this AdAccount Returns AdSet. Required: name",
-			create_ad_account_adsetSchema,
-		),
-		CreateAdAccountAdsetHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_ad_account_adsetsbylabels",
-			"List adsetsbylabels for this AdAccount Returns AdSet. Required: ad_label_ids",
-			list_ad_account_adsetsbylabelsSchema,
-		),
-		ListAdAccountAdsetsbylabelsHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_ad_account_adspixels",
-			"List adspixels for this AdAccount Returns AdsPixel.",
-			list_ad_account_adspixelsSchema,
-		),
-		ListAdAccountAdspixelsHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"create_ad_account_adspixel",
-			"Associate adspixels with this AdAccount Returns AdsPixel.",
-			create_ad_account_adspixelSchema,
-		),
-		CreateAdAccountAdspixelHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_ad_account_advertisable_applications",
-			"List advertisable_applications for this AdAccount Returns Application.",
-			list_ad_account_advertisable_applicationsSchema,
-		),
-		ListAdAccountAdvertisableApplicationsHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"remove_advideos_from_ad_account",
-			"Remove advideos from this AdAccount Required: video_id",
-			remove_advideos_from_ad_accountSchema,
-		),
-		RemoveAdvideosFromAdAccountHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_ad_account_advideos",
-			"List advideos for this AdAccount Returns AdVideo.",
-			list_ad_account_advideosSchema,
-		),
-		ListAdAccountAdvideosHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"create_ad_account_advideo",
-			"Associate advideos with this AdAccount Returns AdVideo.",
-			create_ad_account_advideoSchema,
-		),
-		CreateAdAccountAdvideoHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_ad_account_affectedadsets",
-			"List affectedadsets for this AdAccount Returns AdSet.",
-			list_ad_account_affectedadsetsSchema,
-		),
-		ListAdAccountAffectedadsetsHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"remove_agencies_from_ad_account",
-			"Remove agencies from this AdAccount Required: business",
-			remove_agencies_from_ad_accountSchema,
-		),
-		RemoveAgenciesFromAdAccountHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_ad_account_agencies",
-			"List agencies for this AdAccount Returns Business.",
-			list_ad_account_agenciesSchema,
-		),
-		ListAdAccountAgenciesHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"create_ad_account_agencie",
-			"Create or update agencies for this AdAccount Returns AdAccount. Required: business",
-			create_ad_account_agencieSchema,
-		),
-		CreateAdAccountAgencieHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_ad_account_applications",
-			"List applications for this AdAccount Returns Application.",
-			list_ad_account_applicationsSchema,
-		),
-		ListAdAccountApplicationsHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"remove_assigned_users_from_ad_account",
-			"Remove assigned_users from this AdAccount Required: user",
-			remove_assigned_users_from_ad_accountSchema,
-		),
-		RemoveAssignedUsersFromAdAccountHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_ad_account_assigned_users",
-			"List assigned_users for this AdAccount Returns AssignedUser. Required: business",
-			list_ad_account_assigned_usersSchema,
-		),
-		ListAdAccountAssignedUsersHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"create_ad_account_assigned_user",
-			"Create or update assigned_users for this AdAccount Returns AdAccount. Required: user",
-			create_ad_account_assigned_userSchema,
-		),
-		CreateAdAccountAssignedUserHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"create_ad_account_async_batch_request",
-			"Create or update async_batch_requests for this AdAccount Returns Campaign. Required: adbatch, name",
-			create_ad_account_async_batch_requestSchema,
-		),
-		CreateAdAccountAsyncBatchRequestHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_ad_account_async_requests",
-			"List async_requests for this AdAccount Returns AsyncRequest.",
-			list_ad_account_async_requestsSchema,
-		),
-		ListAdAccountAsyncRequestsHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_ad_account_asyncadcreatives",
-			"List asyncadcreatives for this AdAccount Returns AdAsyncRequestSet.",
-			list_ad_account_asyncadcreativesSchema,
-		),
-		ListAdAccountAsyncadcreativesHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"create_ad_account_asyncadcreative",
-			"Create or update asyncadcreatives for this AdAccount Returns AdAsyncRequestSet. Required: creative_spec, name",
-			create_ad_account_asyncadcreativeSchema,
-		),
-		CreateAdAccountAsyncadcreativeHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_ad_account_asyncadrequestsets",
-			"List asyncadrequestsets for this AdAccount Returns AdAsyncRequestSet.",
-			list_ad_account_asyncadrequestsetsSchema,
-		),
-		ListAdAccountAsyncadrequestsetsHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"create_ad_account_asyncadrequestset",
-			"Create or update asyncadrequestsets for this AdAccount Returns AdAsyncRequestSet. Required: ad_specs, name",
-			create_ad_account_asyncadrequestsetSchema,
-		),
-		CreateAdAccountAsyncadrequestsetHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"get_ad_account_audience_funnel",
-			"Get audience_funnel data for this AdAccount Returns AudienceFunnel.",
-			get_ad_account_audience_funnelSchema,
-		),
-		GetAdAccountAudienceFunnelHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"create_ad_account_block_list_draft",
-			"Create or update block_list_drafts for this AdAccount Returns AdAccount. Required: publisher_urls_file",
-			create_ad_account_block_list_draftSchema,
-		),
-		CreateAdAccountBlockListDraftHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"create_ad_account_brand_safety_content_filter_level",
-			"Create or update brand_safety_content_filter_levels for this AdAccount Returns AdAccount. Required: brand_safety_content_filter_levels",
-			create_ad_account_brand_safety_content_filter_levelSchema,
-		),
-		CreateAdAccountBrandSafetyContentFilterLevelHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_ad_account_broadtargetingcategories",
-			"List broadtargetingcategories for this AdAccount Returns BroadTargetingCategories.",
-			list_ad_account_broadtargetingcategoriesSchema,
-		),
-		ListAdAccountBroadtargetingcategoriesHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_ad_account_businessprojects",
-			"List businessprojects for this AdAccount Returns BusinessProject.",
-			list_ad_account_businessprojectsSchema,
-		),
-		ListAdAccountBusinessprojectsHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"remove_campaigns_from_ad_account",
-			"Remove campaigns from this AdAccount Required: delete_strategy (enum)",
-			remove_campaigns_from_ad_accountSchema,
-		),
-		RemoveCampaignsFromAdAccountHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_ad_account_campaigns",
-			"List campaigns for this AdAccount Returns Campaign.",
-			list_ad_account_campaignsSchema,
-		),
-		ListAdAccountCampaignsHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"create_ad_account_campaign",
-			"Create or update campaigns for this AdAccount Returns Campaign. Required: special_ad_categories",
-			create_ad_account_campaignSchema,
-		),
-		CreateAdAccountCampaignHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_ad_account_campaignsbylabels",
-			"List campaignsbylabels for this AdAccount Returns Campaign. Required: ad_label_ids",
-			list_ad_account_campaignsbylabelsSchema,
-		),
-		ListAdAccountCampaignsbylabelsHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_ad_account_connected_instagram_accounts",
-			"List connected_instagram_accounts for this AdAccount Returns IGUser.",
-			list_ad_account_connected_instagram_accountsSchema,
-		),
-		ListAdAccountConnectedInstagramAccountsHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"get_ad_account_connected_instagram_accounts_with_iabp",
-			"Get connected_instagram_accounts_with_iabp data for this AdAccount Returns IGUser.",
-			get_ad_account_connected_instagram_accounts_with_iabpSchema,
-		),
-		GetAdAccountConnectedInstagramAccountsWithIabpHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_ad_account_conversion_goals",
-			"List conversion_goals for this AdAccount Returns AdsConversionGoal.",
-			list_ad_account_conversion_goalsSchema,
-		),
-		ListAdAccountConversionGoalsHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_ad_account_customaudiences",
-			"List customaudiences for this AdAccount Returns CustomAudience.",
-			list_ad_account_customaudiencesSchema,
-		),
-		ListAdAccountCustomaudiencesHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"create_ad_account_customaudience",
-			"Create or update customaudiences for this AdAccount Returns CustomAudience.",
-			create_ad_account_customaudienceSchema,
-		),
-		CreateAdAccountCustomaudienceHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_ad_account_customaudiencestos",
-			"List customaudiencestos for this AdAccount Returns CustomAudiencesTOS.",
-			list_ad_account_customaudiencestosSchema,
-		),
-		ListAdAccountCustomaudiencestosHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"create_ad_account_customaudiencesto",
-			"Create or update customaudiencestos for this AdAccount Returns AdAccount. Required: tos_id",
-			create_ad_account_customaudiencestoSchema,
-		),
-		CreateAdAccountCustomaudiencestoHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_ad_account_customconversions",
-			"List customconversions for this AdAccount Returns CustomConversion.",
-			list_ad_account_customconversionsSchema,
-		),
-		ListAdAccountCustomconversionsHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"create_ad_account_customconversion",
-			"Create or update customconversions for this AdAccount Returns CustomConversion. Required: name",
-			create_ad_account_customconversionSchema,
-		),
-		CreateAdAccountCustomconversionHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"get_ad_account_delivery_estimate",
-			"Get delivery_estimate data for this AdAccount Returns AdAccountDeliveryEstimate. Required: optimization_goal (enum), targeting_spec",
-			get_ad_account_delivery_estimateSchema,
-		),
-		GetAdAccountDeliveryEstimateHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_ad_account_deprecatedtargetingadsets",
-			"List deprecatedtargetingadsets for this AdAccount Returns AdSet.",
-			list_ad_account_deprecatedtargetingadsetsSchema,
-		),
-		ListAdAccountDeprecatedtargetingadsetsHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_ad_account_dsa_recommendations",
-			"List dsa_recommendations for this AdAccount Returns AdAccountDsaRecommendations.",
-			list_ad_account_dsa_recommendationsSchema,
-		),
-		ListAdAccountDsaRecommendationsHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_ad_account_generatepreviews",
-			"List generatepreviews for this AdAccount Returns AdPreview. Required: ad_format (enum), creative",
-			list_ad_account_generatepreviewsSchema,
-		),
-		ListAdAccountGeneratepreviewsHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_ad_account_impacting_ad_studies",
-			"List impacting_ad_studies for this AdAccount Returns AdStudy.",
-			list_ad_account_impacting_ad_studiesSchema,
-		),
-		ListAdAccountImpactingAdStudiesHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"get_ad_account_insights",
-			"List insights for this AdAccount Returns AdsInsights.",
-			get_ad_account_insightsSchema,
-		),
-		GetAdAccountInsightsHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"create_ad_account_insights_report",
-			"Generate an insights report for this AdAccount Returns AdReportRun.",
-			create_ad_account_insights_reportSchema,
-		),
-		CreateAdAccountInsightsReportHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_ad_account_instagram_accounts",
-			"List instagram_accounts for this AdAccount Returns IGUser.",
-			list_ad_account_instagram_accountsSchema,
-		),
-		ListAdAccountInstagramAccountsHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_ad_account_ios_fourteen_campaign_limits",
-			"List ios_fourteen_campaign_limits for this AdAccount Returns AdAccountIosFourteenCampaignLimits. Required: app_id",
-			list_ad_account_ios_fourteen_campaign_limitsSchema,
-		),
-		ListAdAccountIosFourteenCampaignLimitsHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_ad_account_matched_search_applications",
-			"List matched_search_applications for this AdAccount Returns AdAccountMatchedSearchApplicationsEdgeData. Required: app_store (enum), query_term",
-			list_ad_account_matched_search_applicationsSchema,
-		),
-		ListAdAccountMatchedSearchApplicationsHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"get_ad_account_max_bid",
-			"Get max_bid data for this AdAccount Returns AdAccountMaxBid.",
-			get_ad_account_max_bidSchema,
-		),
-		GetAdAccountMaxBidHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_ad_account_mcmeconversions",
-			"List mcmeconversions for this AdAccount Returns AdsMcmeConversion.",
-			list_ad_account_mcmeconversionsSchema,
-		),
-		ListAdAccountMcmeconversionsHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_ad_account_minimum_budgets",
-			"List minimum_budgets for this AdAccount Returns MinimumBudget.",
-			list_ad_account_minimum_budgetsSchema,
-		),
-		ListAdAccountMinimumBudgetsHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_ad_account_onbehalf_requests",
-			"List onbehalf_requests for this AdAccount Returns BusinessOwnedObjectOnBehalfOfRequest.",
-			list_ad_account_onbehalf_requestsSchema,
-		),
-		ListAdAccountOnbehalfRequestsHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"create_ad_account_product_audience",
-			"Create or update product_audiences for this AdAccount Returns AdAccount. Required: name, product_set_id",
-			create_ad_account_product_audienceSchema,
-		),
-		CreateAdAccountProductAudienceHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_ad_account_promote_pages",
-			"List promote_pages for this AdAccount Returns Page.",
-			list_ad_account_promote_pagesSchema,
-		),
-		ListAdAccountPromotePagesHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_ad_account_publisher_block_lists",
-			"List publisher_block_lists for this AdAccount Returns PublisherBlockList.",
-			list_ad_account_publisher_block_listsSchema,
-		),
-		ListAdAccountPublisherBlockListsHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"create_ad_account_publisher_block_list",
-			"Create or update publisher_block_lists for this AdAccount Returns PublisherBlockList.",
-			create_ad_account_publisher_block_listSchema,
-		),
-		CreateAdAccountPublisherBlockListHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"get_ad_account_reachestimate",
-			"Get reachestimate data for this AdAccount Returns AdAccountReachEstimate. Required: targeting_spec",
-			get_ad_account_reachestimateSchema,
-		),
-		GetAdAccountReachestimateHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_ad_account_reachfrequencypredictions",
-			"List reachfrequencypredictions for this AdAccount Returns ReachFrequencyPrediction.",
-			list_ad_account_reachfrequencypredictionsSchema,
-		),
-		ListAdAccountReachfrequencypredictionsHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"create_ad_account_reachfrequencyprediction",
-			"Create or update reachfrequencypredictions for this AdAccount Returns ReachFrequencyPrediction.",
-			create_ad_account_reachfrequencypredictionSchema,
-		),
-		CreateAdAccountReachfrequencypredictionHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_ad_account_recommendations",
-			"List recommendations for this AdAccount Returns AdAccountRecommendations.",
-			list_ad_account_recommendationsSchema,
-		),
-		ListAdAccountRecommendationsHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"create_ad_account_recommendation",
-			"Create or update recommendations for this AdAccount Returns AdAccountRecommendations. Required: recommendation_signature",
-			create_ad_account_recommendationSchema,
-		),
-		CreateAdAccountRecommendationHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_ad_account_saved_audiences",
-			"List saved_audiences for this AdAccount Returns SavedAudience.",
-			list_ad_account_saved_audiencesSchema,
-		),
-		ListAdAccountSavedAudiencesHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"remove_subscribed_apps_from_ad_account",
-			"Remove subscribed_apps from this AdAccount",
-			remove_subscribed_apps_from_ad_accountSchema,
-		),
-		RemoveSubscribedAppsFromAdAccountHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_ad_account_subscribed_apps",
-			"List subscribed_apps for this AdAccount Returns AdAccountSubscribedApps.",
-			list_ad_account_subscribed_appsSchema,
-		),
-		ListAdAccountSubscribedAppsHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"create_ad_account_subscribed_app",
-			"Create or update subscribed_apps for this AdAccount Returns AdAccountSubscribedApps.",
-			create_ad_account_subscribed_appSchema,
-		),
-		CreateAdAccountSubscribedAppHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"get_ad_account_targetingbrowse",
-			"Get targeting information for this AdAccount Returns AdAccountTargetingUnified.",
-			get_ad_account_targetingbrowseSchema,
-		),
-		GetAdAccountTargetingbrowseHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"get_ad_account_targetingsearch",
-			"Get targeting information for this AdAccount Returns AdAccountTargetingUnified. Required: q",
-			get_ad_account_targetingsearchSchema,
-		),
-		GetAdAccountTargetingsearchHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_ad_account_targetingsentencelines",
-			"List targetingsentencelines for this AdAccount Returns TargetingSentenceLine. Required: targeting_spec",
-			list_ad_account_targetingsentencelinesSchema,
-		),
-		ListAdAccountTargetingsentencelinesHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_ad_account_targetingsuggestions",
-			"List targetingsuggestions for this AdAccount Returns AdAccountTargetingUnified.",
-			list_ad_account_targetingsuggestionsSchema,
-		),
-		ListAdAccountTargetingsuggestionsHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"get_ad_account_targetingvalidation",
-			"Get targeting information for this AdAccount Returns AdAccountTargetingUnified.",
-			get_ad_account_targetingvalidationSchema,
-		),
-		GetAdAccountTargetingvalidationHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"get_ad_account_tracking",
-			"Get tracking data for this AdAccount Returns AdAccountTrackingData.",
-			get_ad_account_trackingSchema,
-		),
-		GetAdAccountTrackingHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"update_ad_account_tracking",
-			"Create or update tracking for this AdAccount Returns AdAccount. Required: tracking_specs",
-			update_ad_account_trackingSchema,
-		),
-		UpdateAdAccountTrackingHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_ad_account_users",
-			"List users for this AdAccount Returns AdAccountUser.",
-			list_ad_account_usersSchema,
-		),
-		ListAdAccountUsersHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"remove_usersofanyaudience_from_ad_account",
-			"Remove usersofanyaudience from this AdAccount",
-			remove_usersofanyaudience_from_ad_accountSchema,
-		),
-		RemoveUsersofanyaudienceFromAdAccountHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"get_ad_account_value_rule_set",
-			"Get value_rule_set data for this AdAccount Returns AdsValueAdjustmentRuleCollection.",
-			get_ad_account_value_rule_setSchema,
-		),
-		GetAdAccountValueRuleSetHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"update_ad_account_value_rule_set",
-			"Create or update value_rule_set for this AdAccount Returns AdsValueAdjustmentRuleCollection. Required: name, rules",
-			update_ad_account_value_rule_setSchema,
-		),
-		UpdateAdAccountValueRuleSetHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"list_ad_account_video_ads",
-			"List video_ads for this AdAccount Returns AdVideo.",
-			list_ad_account_video_adsSchema,
-		),
-		ListAdAccountVideoAdsHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"create_ad_account_video_ad",
-			"Create or update video_ads for this AdAccount Returns AdVideo. Required: upload_phase (enum)",
-			create_ad_account_video_adSchema,
-		),
-		CreateAdAccountVideoAdHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"get_ad_account",
-			"Get details of a specific AdAccount Returns AdAccount.",
-			get_ad_accountSchema,
-		),
-		GetAdAccountHandler,
-	)
-
-	s.AddTool(
-		mcp.NewToolWithRawSchema(
-			"update_ad_account",
-			"Update a AdAccount Returns AdAccount.",
-			update_ad_accountSchema,
-		),
-		UpdateAdAccountHandler,
+	// Register list_ad_account_account_controls
+	s.AddTool(
+		mcp.NewTool("list_ad_account_account_controls",
+			mcp.WithDescription("List account_controls for this AdAccount Returns AdAccountBusinessConstraints."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
+		mcp.NewTypedToolHandler(ListAdAccountAccountControlsHandler),
+	)
+
+	// Register create_ad_account_account_control
+	s.AddTool(
+		mcp.NewTool("create_ad_account_account_control",
+			mcp.WithDescription("Create or update account_controls for this AdAccount Returns AdAccountBusinessConstraints. Required: audience_controls"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithObject("audience_controls",
+				mcp.Required(),
+				mcp.Description("audience_controls"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithObject("placement_controls",
+				mcp.Description("placement_controls"),
+				mcp.AdditionalProperties(true),
+			),
+		),
+		mcp.NewTypedToolHandler(CreateAdAccountAccountControlHandler),
+	)
+
+	// Register list_ad_account_activities
+	s.AddTool(
+		mcp.NewTool("list_ad_account_activities",
+			mcp.WithDescription("List activities for this AdAccount Returns AdActivity."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithBoolean("add_children",
+				mcp.Description("add_children"),
+			),
+			mcp.WithString("business_id",
+				mcp.Description("business_id"),
+			),
+			mcp.WithString("category",
+				mcp.Description("category (enum: adaccountactivities_category_enum_param)"),
+			),
+			mcp.WithString("data_source",
+				mcp.Description("data_source (enum: adaccountactivities_data_source_enum_param)"),
+			),
+			mcp.WithArray("extra_oids",
+				mcp.Description("extra_oids"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithString("oid",
+				mcp.Description("oid"),
+			),
+			mcp.WithString("since",
+				mcp.Description("since"),
+			),
+			mcp.WithNumber("uid",
+				mcp.Description("uid"),
+			),
+			mcp.WithString("until",
+				mcp.Description("until"),
+			),
+		),
+		mcp.NewTypedToolHandler(ListAdAccountActivitiesHandler),
+	)
+
+	// Register list_ad_account_ad_place_page_sets
+	s.AddTool(
+		mcp.NewTool("list_ad_account_ad_place_page_sets",
+			mcp.WithDescription("List ad_place_page_sets for this AdAccount Returns AdPlacePageSet."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
+		mcp.NewTypedToolHandler(ListAdAccountAdPlacePageSetsHandler),
+	)
+
+	// Register create_ad_account_ad_place_page_set
+	s.AddTool(
+		mcp.NewTool("create_ad_account_ad_place_page_set",
+			mcp.WithDescription("Associate ad_place_page_sets with this AdAccount Returns AdPlacePageSet. Required: name, parent_page"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("location_types",
+				mcp.Description("location_types"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithString("name",
+				mcp.Required(),
+				mcp.Description("name"),
+			),
+			mcp.WithString("parent_page",
+				mcp.Required(),
+				mcp.Description("parent_page"),
+			),
+			mcp.WithString("targeted_area_type",
+				mcp.Description("targeted_area_type (enum: adaccountad_place_page_sets_targeted_area_type_enum_param)"),
+			),
+		),
+		mcp.NewTypedToolHandler(CreateAdAccountAdPlacePageSetHandler),
+	)
+
+	// Register update_ad_account_ad_place_page_sets_async
+	s.AddTool(
+		mcp.NewTool("update_ad_account_ad_place_page_sets_async",
+			mcp.WithDescription("Associate ad_place_page_sets_async with this AdAccount Returns AdPlacePageSet. Required: name, parent_page"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("location_types",
+				mcp.Description("location_types"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithString("name",
+				mcp.Required(),
+				mcp.Description("name"),
+			),
+			mcp.WithString("parent_page",
+				mcp.Required(),
+				mcp.Description("parent_page"),
+			),
+			mcp.WithString("targeted_area_type",
+				mcp.Description("targeted_area_type (enum: adaccountad_place_page_sets_async_targeted_area_type_enum_param)"),
+			),
+		),
+		mcp.NewTypedToolHandler(UpdateAdAccountAdPlacePageSetsAsyncHandler),
+	)
+
+	// Register list_ad_account_ad_saved_keywords
+	s.AddTool(
+		mcp.NewTool("list_ad_account_ad_saved_keywords",
+			mcp.WithDescription("List ad_saved_keywords for this AdAccount Returns AdSavedKeywords."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
+		mcp.NewTypedToolHandler(ListAdAccountAdSavedKeywordsHandler),
+	)
+
+	// Register list_ad_account_ad_studies
+	s.AddTool(
+		mcp.NewTool("list_ad_account_ad_studies",
+			mcp.WithDescription("List ad_studies for this AdAccount Returns AdStudy."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
+		mcp.NewTypedToolHandler(ListAdAccountAdStudiesHandler),
+	)
+
+	// Register list_ad_account_adcloudplayables
+	s.AddTool(
+		mcp.NewTool("list_ad_account_adcloudplayables",
+			mcp.WithDescription("List adcloudplayables for this AdAccount Returns CloudGame."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
+		mcp.NewTypedToolHandler(ListAdAccountAdcloudplayablesHandler),
+	)
+
+	// Register list_ad_account_adcreatives
+	s.AddTool(
+		mcp.NewTool("list_ad_account_adcreatives",
+			mcp.WithDescription("List adcreatives for this AdAccount Returns AdCreative."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
+		mcp.NewTypedToolHandler(ListAdAccountAdcreativesHandler),
+	)
+
+	// Register create_ad_account_adcreative
+	s.AddTool(
+		mcp.NewTool("create_ad_account_adcreative",
+			mcp.WithDescription("Associate adcreatives with this AdAccount Returns AdCreative."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithNumber("actor_id",
+				mcp.Description("actor_id"),
+			),
+			mcp.WithObject("ad_disclaimer_spec",
+				mcp.Description("ad_disclaimer_spec"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithArray("adlabels",
+				mcp.Description("adlabels"),
+				mcp.Items(map[string]any{"type": "object"}),
+			),
+			mcp.WithString("applink_treatment",
+				mcp.Description("applink_treatment (enum: adaccountadcreatives_applink_treatment_enum_param)"),
+			),
+			mcp.WithObject("asset_feed_spec",
+				mcp.Description("asset_feed_spec"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("authorization_category",
+				mcp.Description("authorization_category (enum: adaccountadcreatives_authorization_category_enum_param)"),
+			),
+			mcp.WithString("body",
+				mcp.Description("body"),
+			),
+			mcp.WithObject("branded_content",
+				mcp.Description("branded_content"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("branded_content_sponsor_page_id",
+				mcp.Description("branded_content_sponsor_page_id"),
+			),
+			mcp.WithString("bundle_folder_id",
+				mcp.Description("bundle_folder_id"),
+			),
+			mcp.WithObject("call_to_action",
+				mcp.Description("call_to_action"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("categorization_criteria",
+				mcp.Description("categorization_criteria (enum: adaccountadcreatives_categorization_criteria_enum_param)"),
+			),
+			mcp.WithString("category_media_source",
+				mcp.Description("category_media_source (enum: adaccountadcreatives_category_media_source_enum_param)"),
+			),
+			mcp.WithObject("contextual_multi_ads",
+				mcp.Description("contextual_multi_ads"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithObject("creative_sourcing_spec",
+				mcp.Description("creative_sourcing_spec"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithObject("degrees_of_freedom_spec",
+				mcp.Description("degrees_of_freedom_spec"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("destination_set_id",
+				mcp.Description("destination_set_id"),
+			),
+			mcp.WithString("dynamic_ad_voice",
+				mcp.Description("dynamic_ad_voice (enum: adaccountadcreatives_dynamic_ad_voice_enum_param)"),
+			),
+			mcp.WithBoolean("enable_launch_instant_app",
+				mcp.Description("enable_launch_instant_app"),
+			),
+			mcp.WithObject("facebook_branded_content",
+				mcp.Description("facebook_branded_content"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithObject("image_crops",
+				mcp.Description("image_crops"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("image_file",
+				mcp.Description("image_file"),
+			),
+			mcp.WithString("image_hash",
+				mcp.Description("image_hash"),
+			),
+			mcp.WithString("image_url",
+				mcp.Description("image_url"),
+			),
+			mcp.WithObject("instagram_branded_content",
+				mcp.Description("instagram_branded_content"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("instagram_permalink_url",
+				mcp.Description("instagram_permalink_url"),
+			),
+			mcp.WithString("instagram_user_id",
+				mcp.Description("instagram_user_id"),
+			),
+			mcp.WithObject("interactive_components_spec",
+				mcp.Description("interactive_components_spec"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithBoolean("is_dco_internal",
+				mcp.Description("is_dco_internal"),
+			),
+			mcp.WithString("link_og_id",
+				mcp.Description("link_og_id"),
+			),
+			mcp.WithString("link_url",
+				mcp.Description("link_url"),
+			),
+			mcp.WithString("name",
+				mcp.Description("name"),
+			),
+			mcp.WithNumber("object_id",
+				mcp.Description("object_id"),
+			),
+			mcp.WithString("object_story_id",
+				mcp.Description("object_story_id"),
+			),
+			mcp.WithString("object_story_spec",
+				mcp.Description("object_story_spec"),
+			),
+			mcp.WithString("object_type",
+				mcp.Description("object_type"),
+			),
+			mcp.WithString("object_url",
+				mcp.Description("object_url"),
+			),
+			mcp.WithObject("omnichannel_link_spec",
+				mcp.Description("omnichannel_link_spec"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("page_welcome_message",
+				mcp.Description("page_welcome_message"),
+			),
+			mcp.WithString("place_page_set_id",
+				mcp.Description("place_page_set_id"),
+			),
+			mcp.WithObject("platform_customizations",
+				mcp.Description("platform_customizations"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("playable_asset_id",
+				mcp.Description("playable_asset_id"),
+			),
+			mcp.WithObject("portrait_customizations",
+				mcp.Description("portrait_customizations"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("product_set_id",
+				mcp.Description("product_set_id"),
+			),
+			mcp.WithObject("recommender_settings",
+				mcp.Description("recommender_settings"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithObject("regional_regulation_disclaimer_spec",
+				mcp.Description("regional_regulation_disclaimer_spec"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("source_instagram_media_id",
+				mcp.Description("source_instagram_media_id"),
+			),
+			mcp.WithString("template_url",
+				mcp.Description("template_url"),
+			),
+			mcp.WithString("template_url_spec",
+				mcp.Description("template_url_spec"),
+			),
+			mcp.WithString("thumbnail_url",
+				mcp.Description("thumbnail_url"),
+			),
+			mcp.WithString("title",
+				mcp.Description("title"),
+			),
+			mcp.WithString("url_tags",
+				mcp.Description("url_tags"),
+			),
+			mcp.WithBoolean("use_page_actor_override",
+				mcp.Description("use_page_actor_override"),
+			),
+		),
+		mcp.NewTypedToolHandler(CreateAdAccountAdcreativeHandler),
+	)
+
+	// Register list_ad_account_adcreativesbylabels
+	s.AddTool(
+		mcp.NewTool("list_ad_account_adcreativesbylabels",
+			mcp.WithDescription("List adcreativesbylabels for this AdAccount Returns AdCreative. Required: ad_label_ids"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithArray("ad_label_ids",
+				mcp.Required(),
+				mcp.Description("ad_label_ids"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithString("operator",
+				mcp.Description("operator (enum: adaccountadcreativesbylabels_operator_enum_param)"),
+			),
+		),
+		mcp.NewTypedToolHandler(ListAdAccountAdcreativesbylabelsHandler),
+	)
+
+	// Register remove_adimages_from_ad_account
+	s.AddTool(
+		mcp.NewTool("remove_adimages_from_ad_account",
+			mcp.WithDescription("Remove adimages from this AdAccount Required: hash"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithString("hash",
+				mcp.Required(),
+				mcp.Description("hash"),
+			),
+		),
+		mcp.NewTypedToolHandler(RemoveAdimagesFromAdAccountHandler),
+	)
+
+	// Register list_ad_account_adimages
+	s.AddTool(
+		mcp.NewTool("list_ad_account_adimages",
+			mcp.WithDescription("List adimages for this AdAccount Returns AdImage."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithNumber("biz_tag_id",
+				mcp.Description("biz_tag_id"),
+			),
+			mcp.WithString("business_id",
+				mcp.Description("business_id"),
+			),
+			mcp.WithArray("hashes",
+				mcp.Description("hashes"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("minheight",
+				mcp.Description("minheight"),
+			),
+			mcp.WithNumber("minwidth",
+				mcp.Description("minwidth"),
+			),
+			mcp.WithString("name",
+				mcp.Description("name"),
+			),
+			mcp.WithArray("selected_hashes",
+				mcp.Description("selected_hashes"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+		),
+		mcp.NewTypedToolHandler(ListAdAccountAdimagesHandler),
+	)
+
+	// Register create_ad_account_adimage
+	s.AddTool(
+		mcp.NewTool("create_ad_account_adimage",
+			mcp.WithDescription("Associate adimages with this AdAccount"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithString("bytes",
+				mcp.Description("bytes"),
+			),
+			mcp.WithObject("copy_from",
+				mcp.Description("copy_from"),
+				mcp.AdditionalProperties(true),
+			),
+		),
+		mcp.NewTypedToolHandler(CreateAdAccountAdimageHandler),
+	)
+
+	// Register list_ad_account_adlabels
+	s.AddTool(
+		mcp.NewTool("list_ad_account_adlabels",
+			mcp.WithDescription("List adlabels for this AdAccount Returns AdLabel."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
+		mcp.NewTypedToolHandler(ListAdAccountAdlabelsHandler),
+	)
+
+	// Register create_ad_account_adlabel
+	s.AddTool(
+		mcp.NewTool("create_ad_account_adlabel",
+			mcp.WithDescription("Associate adlabels with this AdAccount Returns AdLabel. Required: name"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithString("name",
+				mcp.Required(),
+				mcp.Description("name"),
+			),
+		),
+		mcp.NewTypedToolHandler(CreateAdAccountAdlabelHandler),
+	)
+
+	// Register list_ad_account_adplayables
+	s.AddTool(
+		mcp.NewTool("list_ad_account_adplayables",
+			mcp.WithDescription("List adplayables for this AdAccount Returns PlayableContent."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
+		mcp.NewTypedToolHandler(ListAdAccountAdplayablesHandler),
+	)
+
+	// Register create_ad_account_adplayable
+	s.AddTool(
+		mcp.NewTool("create_ad_account_adplayable",
+			mcp.WithDescription("Associate adplayables with this AdAccount Returns PlayableContent. Required: name"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithString("app_id",
+				mcp.Description("app_id"),
+			),
+			mcp.WithString("name",
+				mcp.Required(),
+				mcp.Description("name"),
+			),
+			mcp.WithString("session_id",
+				mcp.Description("session_id"),
+			),
+			mcp.WithString("source",
+				mcp.Description("source"),
+			),
+			mcp.WithString("source_url",
+				mcp.Description("source_url"),
+			),
+			mcp.WithString("source_zip",
+				mcp.Description("source_zip"),
+			),
+		),
+		mcp.NewTypedToolHandler(CreateAdAccountAdplayableHandler),
+	)
+
+	// Register get_ad_account_adrules_history
+	s.AddTool(
+		mcp.NewTool("get_ad_account_adrules_history",
+			mcp.WithDescription("Get adrules_history data for this AdAccount Returns AdAccountAdRulesHistory."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithString("action",
+				mcp.Description("action (enum: adaccountadrules_history_action_enum_param)"),
+			),
+			mcp.WithString("evaluation_type",
+				mcp.Description("evaluation_type (enum: adaccountadrules_history_evaluation_type_enum_param)"),
+			),
+			mcp.WithBoolean("hide_no_changes",
+				mcp.Description("hide_no_changes"),
+			),
+			mcp.WithString("object_id",
+				mcp.Description("object_id"),
+			),
+		),
+		mcp.NewTypedToolHandler(GetAdAccountAdrulesHistoryHandler),
+	)
+
+	// Register get_ad_account_adrules_library
+	s.AddTool(
+		mcp.NewTool("get_ad_account_adrules_library",
+			mcp.WithDescription("Get adrules_library data for this AdAccount Returns AdRule."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
+		mcp.NewTypedToolHandler(GetAdAccountAdrulesLibraryHandler),
+	)
+
+	// Register update_ad_account_adrules_library
+	s.AddTool(
+		mcp.NewTool("update_ad_account_adrules_library",
+			mcp.WithDescription("Associate adrules_library with this AdAccount Returns AdRule. Required: evaluation_spec, execution_spec, name"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithString("account_id",
+				mcp.Description("account_id"),
+			),
+			mcp.WithObject("evaluation_spec",
+				mcp.Required(),
+				mcp.Description("evaluation_spec"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithObject("execution_spec",
+				mcp.Required(),
+				mcp.Description("execution_spec"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("name",
+				mcp.Required(),
+				mcp.Description("name"),
+			),
+			mcp.WithObject("schedule_spec",
+				mcp.Description("schedule_spec"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("status",
+				mcp.Description("status (enum: adaccountadrules_library_status_enum_param)"),
+			),
+			mcp.WithString("ui_creation_source",
+				mcp.Description("ui_creation_source (enum: adaccountadrules_library_ui_creation_source_enum_param)"),
+			),
+		),
+		mcp.NewTypedToolHandler(UpdateAdAccountAdrulesLibraryHandler),
+	)
+
+	// Register list_ad_account_ads
+	s.AddTool(
+		mcp.NewTool("list_ad_account_ads",
+			mcp.WithDescription("List ads for this AdAccount Returns Ad."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithString("date_preset",
+				mcp.Description("date_preset (enum: adaccountads_date_preset_enum_param)"),
+			),
+			mcp.WithArray("effective_status",
+				mcp.Description("effective_status"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithObject("time_range",
+				mcp.Description("time_range"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithNumber("updated_since",
+				mcp.Description("updated_since"),
+			),
+		),
+		mcp.NewTypedToolHandler(ListAdAccountAdsHandler),
+	)
+
+	// Register create_ad_account_ad
+	s.AddTool(
+		mcp.NewTool("create_ad_account_ad",
+			mcp.WithDescription("Associate ads with this AdAccount Returns Ad. Required: creative, name"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithString("ad_schedule_end_time",
+				mcp.Description("ad_schedule_end_time"),
+			),
+			mcp.WithString("ad_schedule_start_time",
+				mcp.Description("ad_schedule_start_time"),
+			),
+			mcp.WithArray("adlabels",
+				mcp.Description("adlabels"),
+				mcp.Items(map[string]any{"type": "object"}),
+			),
+			mcp.WithNumber("adset_id",
+				mcp.Description("adset_id"),
+			),
+			mcp.WithString("adset_spec",
+				mcp.Description("adset_spec"),
+			),
+			mcp.WithString("audience_id",
+				mcp.Description("audience_id"),
+			),
+			mcp.WithNumber("bid_amount",
+				mcp.Description("bid_amount"),
+			),
+			mcp.WithString("conversion_domain",
+				mcp.Description("conversion_domain"),
+			),
+			mcp.WithString("creative",
+				mcp.Required(),
+				mcp.Description("creative"),
+			),
+			mcp.WithObject("creative_asset_groups_spec",
+				mcp.Description("creative_asset_groups_spec"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("date_format",
+				mcp.Description("date_format"),
+			),
+			mcp.WithNumber("display_sequence",
+				mcp.Description("display_sequence"),
+			),
+			mcp.WithString("draft_adgroup_id",
+				mcp.Description("draft_adgroup_id"),
+			),
+			mcp.WithBoolean("engagement_audience",
+				mcp.Description("engagement_audience"),
+			),
+			mcp.WithArray("execution_options",
+				mcp.Description("execution_options"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithBoolean("include_demolink_hashes",
+				mcp.Description("include_demolink_hashes"),
+			),
+			mcp.WithString("name",
+				mcp.Required(),
+				mcp.Description("name"),
+			),
+			mcp.WithNumber("priority",
+				mcp.Description("priority"),
+			),
+			mcp.WithString("source_ad_id",
+				mcp.Description("source_ad_id"),
+			),
+			mcp.WithString("status",
+				mcp.Description("status (enum: adaccountads_status_enum_param)"),
+			),
+			mcp.WithObject("tracking_specs",
+				mcp.Description("tracking_specs"),
+				mcp.AdditionalProperties(true),
+			),
+		),
+		mcp.NewTypedToolHandler(CreateAdAccountAdHandler),
+	)
+
+	// Register list_ad_account_ads_reporting_mmm_reports
+	s.AddTool(
+		mcp.NewTool("list_ad_account_ads_reporting_mmm_reports",
+			mcp.WithDescription("List ads_reporting_mmm_reports for this AdAccount Returns AdsReportBuilderMMMReport."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithArray("filtering",
+				mcp.Description("filtering"),
+				mcp.Items(map[string]any{"type": "object"}),
+			),
+		),
+		mcp.NewTypedToolHandler(ListAdAccountAdsReportingMmmReportsHandler),
+	)
+
+	// Register list_ad_account_ads_reporting_mmm_schedulers
+	s.AddTool(
+		mcp.NewTool("list_ad_account_ads_reporting_mmm_schedulers",
+			mcp.WithDescription("List ads_reporting_mmm_schedulers for this AdAccount Returns AdsReportBuilderMMMReportScheduler."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
+		mcp.NewTypedToolHandler(ListAdAccountAdsReportingMmmSchedulersHandler),
+	)
+
+	// Register get_ad_account_ads_volume
+	s.AddTool(
+		mcp.NewTool("get_ad_account_ads_volume",
+			mcp.WithDescription("Get ads_volume data for this AdAccount Returns AdAccountAdVolume."),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithString("page_id",
+				mcp.Description("page_id"),
+			),
+			mcp.WithString("recommendation_type",
+				mcp.Description("recommendation_type (enum: adaccountads_volume_recommendation_type_enum_param)"),
+			),
+			mcp.WithBoolean("show_breakdown_by_actor",
+				mcp.Description("show_breakdown_by_actor"),
+			),
+		),
+		mcp.NewTypedToolHandler(GetAdAccountAdsVolumeHandler),
+	)
+
+	// Register list_ad_account_adsbylabels
+	s.AddTool(
+		mcp.NewTool("list_ad_account_adsbylabels",
+			mcp.WithDescription("List adsbylabels for this AdAccount Returns Ad. Required: ad_label_ids"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithArray("ad_label_ids",
+				mcp.Required(),
+				mcp.Description("ad_label_ids"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithString("operator",
+				mcp.Description("operator (enum: adaccountadsbylabels_operator_enum_param)"),
+			),
+		),
+		mcp.NewTypedToolHandler(ListAdAccountAdsbylabelsHandler),
+	)
+
+	// Register list_ad_account_adsets
+	s.AddTool(
+		mcp.NewTool("list_ad_account_adsets",
+			mcp.WithDescription("List adsets for this AdAccount Returns AdSet."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithString("date_preset",
+				mcp.Description("date_preset (enum: adaccountadsets_date_preset_enum_param)"),
+			),
+			mcp.WithArray("effective_status",
+				mcp.Description("effective_status"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithBoolean("is_completed",
+				mcp.Description("is_completed"),
+			),
+			mcp.WithObject("time_range",
+				mcp.Description("time_range"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithNumber("updated_since",
+				mcp.Description("updated_since"),
+			),
+		),
+		mcp.NewTypedToolHandler(ListAdAccountAdsetsHandler),
+	)
+
+	// Register create_ad_account_adset
+	s.AddTool(
+		mcp.NewTool("create_ad_account_adset",
+			mcp.WithDescription("Associate adsets with this AdAccount Returns AdSet. Required: name"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("adlabels",
+				mcp.Description("adlabels"),
+				mcp.Items(map[string]any{"type": "object"}),
+			),
+			mcp.WithArray("adset_schedule",
+				mcp.Description("adset_schedule"),
+				mcp.Items(map[string]any{"type": "object"}),
+			),
+			mcp.WithArray("attribution_spec",
+				mcp.Description("attribution_spec"),
+				mcp.Items(map[string]any{"type": "object"}),
+			),
+			mcp.WithObject("bid_adjustments",
+				mcp.Description("bid_adjustments"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithNumber("bid_amount",
+				mcp.Description("bid_amount"),
+			),
+			mcp.WithObject("bid_constraints",
+				mcp.Description("bid_constraints"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("bid_strategy",
+				mcp.Description("bid_strategy (enum: adaccountadsets_bid_strategy_enum_param)"),
+			),
+			mcp.WithString("billing_event",
+				mcp.Description("billing_event (enum: adaccountadsets_billing_event_enum_param)"),
+			),
+			mcp.WithString("budget_source",
+				mcp.Description("budget_source (enum: adaccountadsets_budget_source_enum_param)"),
+			),
+			mcp.WithString("budget_split_set_id",
+				mcp.Description("budget_split_set_id"),
+			),
+			mcp.WithObject("campaign_attribution",
+				mcp.Description("campaign_attribution"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("campaign_id",
+				mcp.Description("campaign_id"),
+			),
+			mcp.WithObject("campaign_spec",
+				mcp.Description("campaign_spec"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithArray("creative_sequence",
+				mcp.Description("creative_sequence"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithString("creative_sequence_repetition_pattern",
+				mcp.Description("creative_sequence_repetition_pattern (enum: adaccountadsets_creative_sequence_repetition_pattern_enum_param)"),
+			),
+			mcp.WithNumber("daily_budget",
+				mcp.Description("daily_budget"),
+			),
+			mcp.WithNumber("daily_imps",
+				mcp.Description("daily_imps"),
+			),
+			mcp.WithNumber("daily_min_spend_target",
+				mcp.Description("daily_min_spend_target"),
+			),
+			mcp.WithNumber("daily_spend_cap",
+				mcp.Description("daily_spend_cap"),
+			),
+			mcp.WithString("date_format",
+				mcp.Description("date_format"),
+			),
+			mcp.WithString("destination_type",
+				mcp.Description("destination_type (enum: adaccountadsets_destination_type_enum_param)"),
+			),
+			mcp.WithString("dsa_beneficiary",
+				mcp.Description("dsa_beneficiary"),
+			),
+			mcp.WithString("dsa_payor",
+				mcp.Description("dsa_payor"),
+			),
+			mcp.WithString("end_time",
+				mcp.Description("end_time"),
+			),
+			mcp.WithArray("execution_options",
+				mcp.Description("execution_options"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("existing_customer_budget_percentage",
+				mcp.Description("existing_customer_budget_percentage"),
+			),
+			mcp.WithArray("frequency_control_specs",
+				mcp.Description("frequency_control_specs"),
+				mcp.Items(map[string]any{"type": "object"}),
+			),
+			mcp.WithString("full_funnel_exploration_mode",
+				mcp.Description("full_funnel_exploration_mode (enum: adaccountadsets_full_funnel_exploration_mode_enum_param)"),
+			),
+			mcp.WithBoolean("is_ba_skip_delayed_eligible",
+				mcp.Description("is_ba_skip_delayed_eligible"),
+			),
+			mcp.WithBoolean("is_dynamic_creative",
+				mcp.Description("is_dynamic_creative"),
+			),
+			mcp.WithBoolean("is_incremental_attribution_enabled",
+				mcp.Description("is_incremental_attribution_enabled"),
+			),
+			mcp.WithBoolean("is_sac_cfca_terms_certified",
+				mcp.Description("is_sac_cfca_terms_certified"),
+			),
+			mcp.WithNumber("lifetime_budget",
+				mcp.Description("lifetime_budget"),
+			),
+			mcp.WithNumber("lifetime_imps",
+				mcp.Description("lifetime_imps"),
+			),
+			mcp.WithNumber("lifetime_min_spend_target",
+				mcp.Description("lifetime_min_spend_target"),
+			),
+			mcp.WithNumber("lifetime_spend_cap",
+				mcp.Description("lifetime_spend_cap"),
+			),
+			mcp.WithNumber("line_number",
+				mcp.Description("line_number"),
+			),
+			mcp.WithNumber("max_budget_spend_percentage",
+				mcp.Description("max_budget_spend_percentage"),
+			),
+			mcp.WithNumber("min_budget_spend_percentage",
+				mcp.Description("min_budget_spend_percentage"),
+			),
+			mcp.WithString("multi_optimization_goal_weight",
+				mcp.Description("multi_optimization_goal_weight (enum: adaccountadsets_multi_optimization_goal_weight_enum_param)"),
+			),
+			mcp.WithString("name",
+				mcp.Required(),
+				mcp.Description("name"),
+			),
+			mcp.WithString("optimization_goal",
+				mcp.Description("optimization_goal (enum: adaccountadsets_optimization_goal_enum_param)"),
+			),
+			mcp.WithString("optimization_sub_event",
+				mcp.Description("optimization_sub_event (enum: adaccountadsets_optimization_sub_event_enum_param)"),
+			),
+			mcp.WithArray("pacing_type",
+				mcp.Description("pacing_type"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithObject("promoted_object",
+				mcp.Description("promoted_object"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("rb_prediction_id",
+				mcp.Description("rb_prediction_id"),
+			),
+			mcp.WithArray("regional_regulated_categories",
+				mcp.Description("regional_regulated_categories"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithObject("regional_regulation_identities",
+				mcp.Description("regional_regulation_identities"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("rf_prediction_id",
+				mcp.Description("rf_prediction_id"),
+			),
+			mcp.WithString("source_adset_id",
+				mcp.Description("source_adset_id"),
+			),
+			mcp.WithString("start_time",
+				mcp.Description("start_time"),
+			),
+			mcp.WithString("status",
+				mcp.Description("status (enum: adaccountadsets_status_enum_param)"),
+			),
+			mcp.WithString("targeting",
+				mcp.Description("targeting"),
+			),
+			mcp.WithArray("time_based_ad_rotation_id_blocks",
+				mcp.Description("time_based_ad_rotation_id_blocks"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithArray("time_based_ad_rotation_intervals",
+				mcp.Description("time_based_ad_rotation_intervals"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithString("time_start",
+				mcp.Description("time_start"),
+			),
+			mcp.WithString("time_stop",
+				mcp.Description("time_stop"),
+			),
+			mcp.WithString("topline_id",
+				mcp.Description("topline_id"),
+			),
+			mcp.WithString("tune_for_category",
+				mcp.Description("tune_for_category (enum: adaccountadsets_tune_for_category_enum_param)"),
+			),
+		),
+		mcp.NewTypedToolHandler(CreateAdAccountAdsetHandler),
+	)
+
+	// Register list_ad_account_adsetsbylabels
+	s.AddTool(
+		mcp.NewTool("list_ad_account_adsetsbylabels",
+			mcp.WithDescription("List adsetsbylabels for this AdAccount Returns AdSet. Required: ad_label_ids"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithArray("ad_label_ids",
+				mcp.Required(),
+				mcp.Description("ad_label_ids"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithString("operator",
+				mcp.Description("operator (enum: adaccountadsetsbylabels_operator_enum_param)"),
+			),
+		),
+		mcp.NewTypedToolHandler(ListAdAccountAdsetsbylabelsHandler),
+	)
+
+	// Register list_ad_account_adspixels
+	s.AddTool(
+		mcp.NewTool("list_ad_account_adspixels",
+			mcp.WithDescription("List adspixels for this AdAccount Returns AdsPixel."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithString("sort_by",
+				mcp.Description("sort_by (enum: adaccountadspixels_sort_by_enum_param)"),
+			),
+		),
+		mcp.NewTypedToolHandler(ListAdAccountAdspixelsHandler),
+	)
+
+	// Register create_ad_account_adspixel
+	s.AddTool(
+		mcp.NewTool("create_ad_account_adspixel",
+			mcp.WithDescription("Associate adspixels with this AdAccount Returns AdsPixel."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithString("name",
+				mcp.Description("name"),
+			),
+		),
+		mcp.NewTypedToolHandler(CreateAdAccountAdspixelHandler),
+	)
+
+	// Register list_ad_account_advertisable_applications
+	s.AddTool(
+		mcp.NewTool("list_ad_account_advertisable_applications",
+			mcp.WithDescription("List advertisable_applications for this AdAccount Returns Application."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithString("app_id",
+				mcp.Description("app_id"),
+			),
+			mcp.WithString("business_id",
+				mcp.Description("business_id"),
+			),
+		),
+		mcp.NewTypedToolHandler(ListAdAccountAdvertisableApplicationsHandler),
+	)
+
+	// Register remove_advideos_from_ad_account
+	s.AddTool(
+		mcp.NewTool("remove_advideos_from_ad_account",
+			mcp.WithDescription("Remove advideos from this AdAccount Required: video_id"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithString("video_id",
+				mcp.Required(),
+				mcp.Description("video_id"),
+			),
+		),
+		mcp.NewTypedToolHandler(RemoveAdvideosFromAdAccountHandler),
+	)
+
+	// Register list_ad_account_advideos
+	s.AddTool(
+		mcp.NewTool("list_ad_account_advideos",
+			mcp.WithDescription("List advideos for this AdAccount Returns AdVideo."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithNumber("max_aspect_ratio",
+				mcp.Description("max_aspect_ratio"),
+			),
+			mcp.WithNumber("maxheight",
+				mcp.Description("maxheight"),
+			),
+			mcp.WithNumber("maxlength",
+				mcp.Description("maxlength"),
+			),
+			mcp.WithNumber("maxwidth",
+				mcp.Description("maxwidth"),
+			),
+			mcp.WithNumber("min_aspect_ratio",
+				mcp.Description("min_aspect_ratio"),
+			),
+			mcp.WithNumber("minheight",
+				mcp.Description("minheight"),
+			),
+			mcp.WithNumber("minlength",
+				mcp.Description("minlength"),
+			),
+			mcp.WithNumber("minwidth",
+				mcp.Description("minwidth"),
+			),
+			mcp.WithString("title",
+				mcp.Description("title"),
+			),
+		),
+		mcp.NewTypedToolHandler(ListAdAccountAdvideosHandler),
+	)
+
+	// Register create_ad_account_advideo
+	s.AddTool(
+		mcp.NewTool("create_ad_account_advideo",
+			mcp.WithDescription("Associate advideos with this AdAccount Returns AdVideo."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithString("application_id",
+				mcp.Description("application_id"),
+			),
+			mcp.WithNumber("asked_fun_fact_prompt_id",
+				mcp.Description("asked_fun_fact_prompt_id"),
+			),
+			mcp.WithString("audio_story_wave_animation_handle",
+				mcp.Description("audio_story_wave_animation_handle"),
+			),
+			mcp.WithString("chunk_session_id",
+				mcp.Description("chunk_session_id"),
+			),
+			mcp.WithString("composer_entry_picker",
+				mcp.Description("composer_entry_picker"),
+			),
+			mcp.WithString("composer_entry_point",
+				mcp.Description("composer_entry_point"),
+			),
+			mcp.WithNumber("composer_entry_time",
+				mcp.Description("composer_entry_time"),
+			),
+			mcp.WithString("composer_session_events_log",
+				mcp.Description("composer_session_events_log"),
+			),
+			mcp.WithString("composer_session_id",
+				mcp.Description("composer_session_id"),
+			),
+			mcp.WithString("composer_source_surface",
+				mcp.Description("composer_source_surface"),
+			),
+			mcp.WithString("composer_type",
+				mcp.Description("composer_type"),
+			),
+			mcp.WithString("container_type",
+				mcp.Description("container_type (enum: adaccountadvideos_container_type_enum_param)"),
+			),
+			mcp.WithString("content_category",
+				mcp.Description("content_category (enum: adaccountadvideos_content_category_enum_param)"),
+			),
+			mcp.WithString("creative_tools",
+				mcp.Description("creative_tools"),
+			),
+			mcp.WithString("description",
+				mcp.Description("description"),
+			),
+			mcp.WithBoolean("embeddable",
+				mcp.Description("embeddable"),
+			),
+			mcp.WithNumber("end_offset",
+				mcp.Description("end_offset"),
+			),
+			mcp.WithString("fbuploader_video_file_chunk",
+				mcp.Description("fbuploader_video_file_chunk"),
+			),
+			mcp.WithNumber("file_size",
+				mcp.Description("file_size"),
+			),
+			mcp.WithString("file_url",
+				mcp.Description("file_url"),
+			),
+			mcp.WithBoolean("fisheye_video_cropped",
+				mcp.Description("fisheye_video_cropped"),
+			),
+			mcp.WithString("formatting",
+				mcp.Description("formatting (enum: adaccountadvideos_formatting_enum_param)"),
+			),
+			mcp.WithNumber("fov",
+				mcp.Description("fov"),
+			),
+			mcp.WithNumber("front_z_rotation",
+				mcp.Description("front_z_rotation"),
+			),
+			mcp.WithString("fun_fact_prompt_id",
+				mcp.Description("fun_fact_prompt_id"),
+			),
+			mcp.WithNumber("fun_fact_toastee_id",
+				mcp.Description("fun_fact_toastee_id"),
+			),
+			mcp.WithArray("guide",
+				mcp.Description("guide"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithBoolean("guide_enabled",
+				mcp.Description("guide_enabled"),
+			),
+			mcp.WithNumber("initial_heading",
+				mcp.Description("initial_heading"),
+			),
+			mcp.WithNumber("initial_pitch",
+				mcp.Description("initial_pitch"),
+			),
+			mcp.WithString("instant_game_entry_point_data",
+				mcp.Description("instant_game_entry_point_data"),
+			),
+			mcp.WithBoolean("is_boost_intended",
+				mcp.Description("is_boost_intended"),
+			),
+			mcp.WithBoolean("is_group_linking_post",
+				mcp.Description("is_group_linking_post"),
+			),
+			mcp.WithBoolean("is_partnership_ad",
+				mcp.Description("is_partnership_ad"),
+			),
+			mcp.WithBoolean("is_voice_clip",
+				mcp.Description("is_voice_clip"),
+			),
+			mcp.WithString("location_source_id",
+				mcp.Description("location_source_id"),
+			),
+			mcp.WithString("name",
+				mcp.Description("name"),
+			),
+			mcp.WithString("og_action_type_id",
+				mcp.Description("og_action_type_id"),
+			),
+			mcp.WithString("og_icon_id",
+				mcp.Description("og_icon_id"),
+			),
+			mcp.WithString("og_object_id",
+				mcp.Description("og_object_id"),
+			),
+			mcp.WithString("og_phrase",
+				mcp.Description("og_phrase"),
+			),
+			mcp.WithString("og_suggestion_mechanism",
+				mcp.Description("og_suggestion_mechanism"),
+			),
+			mcp.WithNumber("original_fov",
+				mcp.Description("original_fov"),
+			),
+			mcp.WithString("original_projection_type",
+				mcp.Description("original_projection_type (enum: adaccountadvideos_original_projection_type_enum_param)"),
+			),
+			mcp.WithString("partnership_ad_ad_code",
+				mcp.Description("partnership_ad_ad_code"),
+			),
+			mcp.WithNumber("publish_event_id",
+				mcp.Description("publish_event_id"),
+			),
+			mcp.WithString("referenced_sticker_id",
+				mcp.Description("referenced_sticker_id"),
+			),
+			mcp.WithString("replace_video_id",
+				mcp.Description("replace_video_id"),
+			),
+			mcp.WithObject("slideshow_spec",
+				mcp.Description("slideshow_spec"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("source",
+				mcp.Description("source"),
+			),
+			mcp.WithString("source_instagram_media_id",
+				mcp.Description("source_instagram_media_id"),
+			),
+			mcp.WithBoolean("spherical",
+				mcp.Description("spherical"),
+			),
+			mcp.WithNumber("start_offset",
+				mcp.Description("start_offset"),
+			),
+			mcp.WithString("swap_mode",
+				mcp.Description("swap_mode (enum: adaccountadvideos_swap_mode_enum_param)"),
+			),
+			mcp.WithString("text_format_metadata",
+				mcp.Description("text_format_metadata"),
+			),
+			mcp.WithString("thumb",
+				mcp.Description("thumb"),
+			),
+			mcp.WithNumber("time_since_original_post",
+				mcp.Description("time_since_original_post"),
+			),
+			mcp.WithString("title",
+				mcp.Description("title"),
+			),
+			mcp.WithString("transcode_setting_properties",
+				mcp.Description("transcode_setting_properties"),
+			),
+			mcp.WithString("unpublished_content_type",
+				mcp.Description("unpublished_content_type (enum: adaccountadvideos_unpublished_content_type_enum_param)"),
+			),
+			mcp.WithString("upload_phase",
+				mcp.Description("upload_phase (enum: adaccountadvideos_upload_phase_enum_param)"),
+			),
+			mcp.WithString("upload_session_id",
+				mcp.Description("upload_session_id"),
+			),
+			mcp.WithString("upload_setting_properties",
+				mcp.Description("upload_setting_properties"),
+			),
+			mcp.WithString("video_file_chunk",
+				mcp.Description("video_file_chunk"),
+			),
+			mcp.WithString("video_id_original",
+				mcp.Description("video_id_original"),
+			),
+			mcp.WithNumber("video_start_time_ms",
+				mcp.Description("video_start_time_ms"),
+			),
+			mcp.WithString("waterfall_id",
+				mcp.Description("waterfall_id"),
+			),
+		),
+		mcp.NewTypedToolHandler(CreateAdAccountAdvideoHandler),
+	)
+
+	// Register list_ad_account_affectedadsets
+	s.AddTool(
+		mcp.NewTool("list_ad_account_affectedadsets",
+			mcp.WithDescription("List affectedadsets for this AdAccount Returns AdSet."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
+		mcp.NewTypedToolHandler(ListAdAccountAffectedadsetsHandler),
+	)
+
+	// Register remove_agencies_from_ad_account
+	s.AddTool(
+		mcp.NewTool("remove_agencies_from_ad_account",
+			mcp.WithDescription("Remove agencies from this AdAccount Required: business"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithString("business",
+				mcp.Required(),
+				mcp.Description("business"),
+			),
+		),
+		mcp.NewTypedToolHandler(RemoveAgenciesFromAdAccountHandler),
+	)
+
+	// Register list_ad_account_agencies
+	s.AddTool(
+		mcp.NewTool("list_ad_account_agencies",
+			mcp.WithDescription("List agencies for this AdAccount Returns Business."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
+		mcp.NewTypedToolHandler(ListAdAccountAgenciesHandler),
+	)
+
+	// Register create_ad_account_agencie
+	s.AddTool(
+		mcp.NewTool("create_ad_account_agencie",
+			mcp.WithDescription("Create or update agencies for this AdAccount Returns AdAccount. Required: business"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithString("business",
+				mcp.Required(),
+				mcp.Description("business"),
+			),
+			mcp.WithArray("permitted_tasks",
+				mcp.Description("permitted_tasks"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+		),
+		mcp.NewTypedToolHandler(CreateAdAccountAgencieHandler),
+	)
+
+	// Register list_ad_account_applications
+	s.AddTool(
+		mcp.NewTool("list_ad_account_applications",
+			mcp.WithDescription("List applications for this AdAccount Returns Application."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
+		mcp.NewTypedToolHandler(ListAdAccountApplicationsHandler),
+	)
+
+	// Register remove_assigned_users_from_ad_account
+	s.AddTool(
+		mcp.NewTool("remove_assigned_users_from_ad_account",
+			mcp.WithDescription("Remove assigned_users from this AdAccount Required: user"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithNumber("user",
+				mcp.Required(),
+				mcp.Description("user"),
+			),
+		),
+		mcp.NewTypedToolHandler(RemoveAssignedUsersFromAdAccountHandler),
+	)
+
+	// Register list_ad_account_assigned_users
+	s.AddTool(
+		mcp.NewTool("list_ad_account_assigned_users",
+			mcp.WithDescription("List assigned_users for this AdAccount Returns AssignedUser. Required: business"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithString("business",
+				mcp.Required(),
+				mcp.Description("business"),
+			),
+		),
+		mcp.NewTypedToolHandler(ListAdAccountAssignedUsersHandler),
+	)
+
+	// Register create_ad_account_assigned_user
+	s.AddTool(
+		mcp.NewTool("create_ad_account_assigned_user",
+			mcp.WithDescription("Create or update assigned_users for this AdAccount Returns AdAccount. Required: user"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("tasks",
+				mcp.Description("tasks"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("user",
+				mcp.Required(),
+				mcp.Description("user"),
+			),
+		),
+		mcp.NewTypedToolHandler(CreateAdAccountAssignedUserHandler),
+	)
+
+	// Register create_ad_account_async_batch_request
+	s.AddTool(
+		mcp.NewTool("create_ad_account_async_batch_request",
+			mcp.WithDescription("Create or update async_batch_requests for this AdAccount Returns Campaign. Required: adbatch, name"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("adbatch",
+				mcp.Required(),
+				mcp.Description("adbatch"),
+				mcp.Items(map[string]any{"type": "object"}),
+			),
+			mcp.WithString("name",
+				mcp.Required(),
+				mcp.Description("name"),
+			),
+		),
+		mcp.NewTypedToolHandler(CreateAdAccountAsyncBatchRequestHandler),
+	)
+
+	// Register list_ad_account_async_requests
+	s.AddTool(
+		mcp.NewTool("list_ad_account_async_requests",
+			mcp.WithDescription("List async_requests for this AdAccount Returns AsyncRequest."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithString("status",
+				mcp.Description("status (enum: adaccountasync_requests_status_enum_param)"),
+			),
+			mcp.WithString("type",
+				mcp.Description("type (enum: adaccountasync_requests_type_enum_param)"),
+			),
+		),
+		mcp.NewTypedToolHandler(ListAdAccountAsyncRequestsHandler),
+	)
+
+	// Register list_ad_account_asyncadcreatives
+	s.AddTool(
+		mcp.NewTool("list_ad_account_asyncadcreatives",
+			mcp.WithDescription("List asyncadcreatives for this AdAccount Returns AdAsyncRequestSet."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithBoolean("is_completed",
+				mcp.Description("is_completed"),
+			),
+		),
+		mcp.NewTypedToolHandler(ListAdAccountAsyncadcreativesHandler),
+	)
+
+	// Register create_ad_account_asyncadcreative
+	s.AddTool(
+		mcp.NewTool("create_ad_account_asyncadcreative",
+			mcp.WithDescription("Create or update asyncadcreatives for this AdAccount Returns AdAsyncRequestSet. Required: creative_spec, name"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithString("creative_spec",
+				mcp.Required(),
+				mcp.Description("creative_spec"),
+			),
+			mcp.WithString("name",
+				mcp.Required(),
+				mcp.Description("name"),
+			),
+			mcp.WithString("notification_mode",
+				mcp.Description("notification_mode (enum: adaccountasyncadcreatives_notification_mode_enum_param)"),
+			),
+			mcp.WithString("notification_uri",
+				mcp.Description("notification_uri"),
+			),
+		),
+		mcp.NewTypedToolHandler(CreateAdAccountAsyncadcreativeHandler),
+	)
+
+	// Register list_ad_account_asyncadrequestsets
+	s.AddTool(
+		mcp.NewTool("list_ad_account_asyncadrequestsets",
+			mcp.WithDescription("List asyncadrequestsets for this AdAccount Returns AdAsyncRequestSet."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithBoolean("is_completed",
+				mcp.Description("is_completed"),
+			),
+		),
+		mcp.NewTypedToolHandler(ListAdAccountAsyncadrequestsetsHandler),
+	)
+
+	// Register create_ad_account_asyncadrequestset
+	s.AddTool(
+		mcp.NewTool("create_ad_account_asyncadrequestset",
+			mcp.WithDescription("Create or update asyncadrequestsets for this AdAccount Returns AdAsyncRequestSet. Required: ad_specs, name"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("ad_specs",
+				mcp.Required(),
+				mcp.Description("ad_specs"),
+				mcp.Items(map[string]any{"type": "object"}),
+			),
+			mcp.WithString("name",
+				mcp.Required(),
+				mcp.Description("name"),
+			),
+			mcp.WithString("notification_mode",
+				mcp.Description("notification_mode (enum: adaccountasyncadrequestsets_notification_mode_enum_param)"),
+			),
+			mcp.WithString("notification_uri",
+				mcp.Description("notification_uri"),
+			),
+		),
+		mcp.NewTypedToolHandler(CreateAdAccountAsyncadrequestsetHandler),
+	)
+
+	// Register get_ad_account_audience_funnel
+	s.AddTool(
+		mcp.NewTool("get_ad_account_audience_funnel",
+			mcp.WithDescription("Get audience_funnel data for this AdAccount Returns AudienceFunnel."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
+		mcp.NewTypedToolHandler(GetAdAccountAudienceFunnelHandler),
+	)
+
+	// Register create_ad_account_block_list_draft
+	s.AddTool(
+		mcp.NewTool("create_ad_account_block_list_draft",
+			mcp.WithDescription("Create or update block_list_drafts for this AdAccount Returns AdAccount. Required: publisher_urls_file"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithString("publisher_urls_file",
+				mcp.Required(),
+				mcp.Description("publisher_urls_file"),
+			),
+		),
+		mcp.NewTypedToolHandler(CreateAdAccountBlockListDraftHandler),
+	)
+
+	// Register create_ad_account_brand_safety_content_filter_level
+	s.AddTool(
+		mcp.NewTool("create_ad_account_brand_safety_content_filter_level",
+			mcp.WithDescription("Create or update brand_safety_content_filter_levels for this AdAccount Returns AdAccount. Required: brand_safety_content_filter_levels"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("brand_safety_content_filter_levels",
+				mcp.Required(),
+				mcp.Description("brand_safety_content_filter_levels"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithString("business_id",
+				mcp.Description("business_id"),
+			),
+		),
+		mcp.NewTypedToolHandler(CreateAdAccountBrandSafetyContentFilterLevelHandler),
+	)
+
+	// Register list_ad_account_broadtargetingcategories
+	s.AddTool(
+		mcp.NewTool("list_ad_account_broadtargetingcategories",
+			mcp.WithDescription("List broadtargetingcategories for this AdAccount Returns BroadTargetingCategories."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithBoolean("custom_categories_only",
+				mcp.Description("custom_categories_only"),
+			),
+		),
+		mcp.NewTypedToolHandler(ListAdAccountBroadtargetingcategoriesHandler),
+	)
+
+	// Register list_ad_account_businessprojects
+	s.AddTool(
+		mcp.NewTool("list_ad_account_businessprojects",
+			mcp.WithDescription("List businessprojects for this AdAccount Returns BusinessProject."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithString("business",
+				mcp.Description("business"),
+			),
+		),
+		mcp.NewTypedToolHandler(ListAdAccountBusinessprojectsHandler),
+	)
+
+	// Register remove_campaigns_from_ad_account
+	s.AddTool(
+		mcp.NewTool("remove_campaigns_from_ad_account",
+			mcp.WithDescription("Remove campaigns from this AdAccount Required: delete_strategy (enum)"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithString("before_date",
+				mcp.Description("before_date"),
+			),
+			mcp.WithNumber("delete_offset",
+				mcp.Description("delete_offset"),
+			),
+			mcp.WithString("delete_strategy",
+				mcp.Required(),
+				mcp.Description("delete_strategy (enum: adaccountcampaigns_delete_strategy_enum_param)"),
+			),
+			mcp.WithNumber("object_count",
+				mcp.Description("object_count"),
+			),
+		),
+		mcp.NewTypedToolHandler(RemoveCampaignsFromAdAccountHandler),
+	)
+
+	// Register list_ad_account_campaigns
+	s.AddTool(
+		mcp.NewTool("list_ad_account_campaigns",
+			mcp.WithDescription("List campaigns for this AdAccount Returns Campaign."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithString("date_preset",
+				mcp.Description("date_preset (enum: adaccountcampaigns_date_preset_enum_param)"),
+			),
+			mcp.WithArray("effective_status",
+				mcp.Description("effective_status"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithBoolean("is_completed",
+				mcp.Description("is_completed"),
+			),
+			mcp.WithObject("time_range",
+				mcp.Description("time_range"),
+				mcp.AdditionalProperties(true),
+			),
+		),
+		mcp.NewTypedToolHandler(ListAdAccountCampaignsHandler),
+	)
+
+	// Register create_ad_account_campaign
+	s.AddTool(
+		mcp.NewTool("create_ad_account_campaign",
+			mcp.WithDescription("Create or update campaigns for this AdAccount Returns Campaign. Required: special_ad_categories"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("adlabels",
+				mcp.Description("adlabels"),
+				mcp.Items(map[string]any{"type": "object"}),
+			),
+			mcp.WithString("bid_strategy",
+				mcp.Description("bid_strategy (enum: adaccountcampaigns_bid_strategy_enum_param)"),
+			),
+			mcp.WithString("buying_type",
+				mcp.Description("buying_type"),
+			),
+			mcp.WithNumber("daily_budget",
+				mcp.Description("daily_budget"),
+			),
+			mcp.WithArray("execution_options",
+				mcp.Description("execution_options"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithBoolean("is_skadnetwork_attribution",
+				mcp.Description("is_skadnetwork_attribution"),
+			),
+			mcp.WithArray("iterative_split_test_configs",
+				mcp.Description("iterative_split_test_configs"),
+				mcp.Items(map[string]any{"type": "object"}),
+			),
+			mcp.WithNumber("lifetime_budget",
+				mcp.Description("lifetime_budget"),
+			),
+			mcp.WithString("name",
+				mcp.Description("name"),
+			),
+			mcp.WithString("objective",
+				mcp.Description("objective (enum: adaccountcampaigns_objective_enum_param)"),
+			),
+			mcp.WithArray("pacing_type",
+				mcp.Description("pacing_type"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithObject("promoted_object",
+				mcp.Description("promoted_object"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("smart_promotion_type",
+				mcp.Description("smart_promotion_type (enum: adaccountcampaigns_smart_promotion_type_enum_param)"),
+			),
+			mcp.WithString("source_campaign_id",
+				mcp.Description("source_campaign_id"),
+			),
+			mcp.WithArray("special_ad_categories",
+				mcp.Required(),
+				mcp.Description("special_ad_categories"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithArray("special_ad_category_country",
+				mcp.Description("special_ad_category_country"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("spend_cap",
+				mcp.Description("spend_cap"),
+			),
+			mcp.WithString("start_time",
+				mcp.Description("start_time"),
+			),
+			mcp.WithString("status",
+				mcp.Description("status (enum: adaccountcampaigns_status_enum_param)"),
+			),
+			mcp.WithString("stop_time",
+				mcp.Description("stop_time"),
+			),
+			mcp.WithString("topline_id",
+				mcp.Description("topline_id"),
+			),
+		),
+		mcp.NewTypedToolHandler(CreateAdAccountCampaignHandler),
+	)
+
+	// Register list_ad_account_campaignsbylabels
+	s.AddTool(
+		mcp.NewTool("list_ad_account_campaignsbylabels",
+			mcp.WithDescription("List campaignsbylabels for this AdAccount Returns Campaign. Required: ad_label_ids"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithArray("ad_label_ids",
+				mcp.Required(),
+				mcp.Description("ad_label_ids"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithString("operator",
+				mcp.Description("operator (enum: adaccountcampaignsbylabels_operator_enum_param)"),
+			),
+		),
+		mcp.NewTypedToolHandler(ListAdAccountCampaignsbylabelsHandler),
+	)
+
+	// Register list_ad_account_connected_instagram_accounts
+	s.AddTool(
+		mcp.NewTool("list_ad_account_connected_instagram_accounts",
+			mcp.WithDescription("List connected_instagram_accounts for this AdAccount Returns IGUser."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
+		mcp.NewTypedToolHandler(ListAdAccountConnectedInstagramAccountsHandler),
+	)
+
+	// Register get_ad_account_connected_instagram_accounts_with_iabp
+	s.AddTool(
+		mcp.NewTool("get_ad_account_connected_instagram_accounts_with_iabp",
+			mcp.WithDescription("Get connected_instagram_accounts_with_iabp data for this AdAccount Returns IGUser."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithString("business_id",
+				mcp.Description("business_id"),
+			),
+		),
+		mcp.NewTypedToolHandler(GetAdAccountConnectedInstagramAccountsWithIabpHandler),
+	)
+
+	// Register list_ad_account_conversion_goals
+	s.AddTool(
+		mcp.NewTool("list_ad_account_conversion_goals",
+			mcp.WithDescription("List conversion_goals for this AdAccount Returns AdsConversionGoal."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
+		mcp.NewTypedToolHandler(ListAdAccountConversionGoalsHandler),
+	)
+
+	// Register list_ad_account_customaudiences
+	s.AddTool(
+		mcp.NewTool("list_ad_account_customaudiences",
+			mcp.WithDescription("List customaudiences for this AdAccount Returns CustomAudience."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithString("business_id",
+				mcp.Description("business_id"),
+			),
+			mcp.WithBoolean("fetch_primary_audience",
+				mcp.Description("fetch_primary_audience"),
+			),
+			mcp.WithArray("filtering",
+				mcp.Description("filtering"),
+				mcp.Items(map[string]any{"type": "object"}),
+			),
+			mcp.WithString("pixel_id",
+				mcp.Description("pixel_id"),
+			),
+		),
+		mcp.NewTypedToolHandler(ListAdAccountCustomaudiencesHandler),
+	)
+
+	// Register create_ad_account_customaudience
+	s.AddTool(
+		mcp.NewTool("create_ad_account_customaudience",
+			mcp.WithDescription("Create or update customaudiences for this AdAccount Returns CustomAudience."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("allowed_domains",
+				mcp.Description("allowed_domains"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("associated_audience_id",
+				mcp.Description("associated_audience_id"),
+			),
+			mcp.WithString("claim_objective",
+				mcp.Description("claim_objective (enum: adaccountcustomaudiences_claim_objective_enum_param)"),
+			),
+			mcp.WithString("content_type",
+				mcp.Description("content_type (enum: adaccountcustomaudiences_content_type_enum_param)"),
+			),
+			mcp.WithString("countries",
+				mcp.Description("countries"),
+			),
+			mcp.WithObject("creation_params",
+				mcp.Description("creation_params"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("customer_file_source",
+				mcp.Description("customer_file_source (enum: adaccountcustomaudiences_customer_file_source_enum_param)"),
+			),
+			mcp.WithString("dataset_id",
+				mcp.Description("dataset_id"),
+			),
+			mcp.WithString("description",
+				mcp.Description("description"),
+			),
+			mcp.WithBoolean("enable_fetch_or_create",
+				mcp.Description("enable_fetch_or_create"),
+			),
+			mcp.WithString("event_source_group",
+				mcp.Description("event_source_group"),
+			),
+			mcp.WithArray("event_sources",
+				mcp.Description("event_sources"),
+				mcp.Items(map[string]any{"type": "object"}),
+			),
+			mcp.WithArray("exclusions",
+				mcp.Description("exclusions"),
+				mcp.Items(map[string]any{"type": "object"}),
+			),
+			mcp.WithString("facebook_page_id",
+				mcp.Description("facebook_page_id"),
+			),
+			mcp.WithArray("inclusions",
+				mcp.Description("inclusions"),
+				mcp.Items(map[string]any{"type": "object"}),
+			),
+			mcp.WithBoolean("is_snapshot",
+				mcp.Description("is_snapshot"),
+			),
+			mcp.WithBoolean("is_value_based",
+				mcp.Description("is_value_based"),
+			),
+			mcp.WithArray("list_of_accounts",
+				mcp.Description("list_of_accounts"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithString("lookalike_spec",
+				mcp.Description("lookalike_spec"),
+			),
+			mcp.WithObject("marketing_message_channels",
+				mcp.Description("marketing_message_channels"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("name",
+				mcp.Description("name"),
+			),
+			mcp.WithString("opt_out_link",
+				mcp.Description("opt_out_link"),
+			),
+			mcp.WithString("origin_audience_id",
+				mcp.Description("origin_audience_id"),
+			),
+			mcp.WithNumber("parent_audience_id",
+				mcp.Description("parent_audience_id"),
+			),
+			mcp.WithString("partner_reference_key",
+				mcp.Description("partner_reference_key"),
+			),
+			mcp.WithString("pixel_id",
+				mcp.Description("pixel_id"),
+			),
+			mcp.WithBoolean("prefill",
+				mcp.Description("prefill"),
+			),
+			mcp.WithString("product_set_id",
+				mcp.Description("product_set_id"),
+			),
+			mcp.WithString("regulated_audience_spec",
+				mcp.Description("regulated_audience_spec"),
+			),
+			mcp.WithNumber("retention_days",
+				mcp.Description("retention_days"),
+			),
+			mcp.WithNumber("rev_share_policy_id",
+				mcp.Description("rev_share_policy_id"),
+			),
+			mcp.WithString("rule",
+				mcp.Description("rule"),
+			),
+			mcp.WithString("rule_aggregation",
+				mcp.Description("rule_aggregation"),
+			),
+			mcp.WithArray("subscription_info",
+				mcp.Description("subscription_info"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithString("subtype",
+				mcp.Description("subtype (enum: adaccountcustomaudiences_subtype_enum_param)"),
+			),
+			mcp.WithArray("use_for_products",
+				mcp.Description("use_for_products"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithBoolean("use_in_campaigns",
+				mcp.Description("use_in_campaigns"),
+			),
+			mcp.WithArray("video_group_ids",
+				mcp.Description("video_group_ids"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithString("whats_app_business_phone_number_id",
+				mcp.Description("whats_app_business_phone_number_id"),
+			),
+		),
+		mcp.NewTypedToolHandler(CreateAdAccountCustomaudienceHandler),
+	)
+
+	// Register list_ad_account_customaudiencestos
+	s.AddTool(
+		mcp.NewTool("list_ad_account_customaudiencestos",
+			mcp.WithDescription("List customaudiencestos for this AdAccount Returns CustomAudiencesTOS."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
+		mcp.NewTypedToolHandler(ListAdAccountCustomaudiencestosHandler),
+	)
+
+	// Register create_ad_account_customaudiencesto
+	s.AddTool(
+		mcp.NewTool("create_ad_account_customaudiencesto",
+			mcp.WithDescription("Create or update customaudiencestos for this AdAccount Returns AdAccount. Required: tos_id"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithString("business_id",
+				mcp.Description("business_id"),
+			),
+			mcp.WithString("tos_id",
+				mcp.Required(),
+				mcp.Description("tos_id"),
+			),
+		),
+		mcp.NewTypedToolHandler(CreateAdAccountCustomaudiencestoHandler),
+	)
+
+	// Register list_ad_account_customconversions
+	s.AddTool(
+		mcp.NewTool("list_ad_account_customconversions",
+			mcp.WithDescription("List customconversions for this AdAccount Returns CustomConversion."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
+		mcp.NewTypedToolHandler(ListAdAccountCustomconversionsHandler),
+	)
+
+	// Register create_ad_account_customconversion
+	s.AddTool(
+		mcp.NewTool("create_ad_account_customconversion",
+			mcp.WithDescription("Create or update customconversions for this AdAccount Returns CustomConversion. Required: name"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithString("action_source_type",
+				mcp.Description("action_source_type (enum: adaccountcustomconversions_action_source_type_enum_param)"),
+			),
+			mcp.WithString("advanced_rule",
+				mcp.Description("advanced_rule"),
+			),
+			mcp.WithString("custom_event_type",
+				mcp.Description("custom_event_type (enum: adaccountcustomconversions_custom_event_type_enum_param)"),
+			),
+			mcp.WithNumber("default_conversion_value",
+				mcp.Description("default_conversion_value"),
+			),
+			mcp.WithString("description",
+				mcp.Description("description"),
+			),
+			mcp.WithString("event_source_id",
+				mcp.Description("event_source_id"),
+			),
+			mcp.WithString("name",
+				mcp.Required(),
+				mcp.Description("name"),
+			),
+			mcp.WithString("rule",
+				mcp.Description("rule"),
+			),
+		),
+		mcp.NewTypedToolHandler(CreateAdAccountCustomconversionHandler),
+	)
+
+	// Register get_ad_account_delivery_estimate
+	s.AddTool(
+		mcp.NewTool("get_ad_account_delivery_estimate",
+			mcp.WithDescription("Get delivery_estimate data for this AdAccount Returns AdAccountDeliveryEstimate. Required: optimization_goal (enum), targeting_spec"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithString("optimization_goal",
+				mcp.Required(),
+				mcp.Description("optimization_goal (enum: adaccountdelivery_estimate_optimization_goal_enum_param)"),
+			),
+			mcp.WithObject("promoted_object",
+				mcp.Description("promoted_object"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("targeting_spec",
+				mcp.Required(),
+				mcp.Description("targeting_spec"),
+			),
+		),
+		mcp.NewTypedToolHandler(GetAdAccountDeliveryEstimateHandler),
+	)
+
+	// Register list_ad_account_deprecatedtargetingadsets
+	s.AddTool(
+		mcp.NewTool("list_ad_account_deprecatedtargetingadsets",
+			mcp.WithDescription("List deprecatedtargetingadsets for this AdAccount Returns AdSet."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithString("type",
+				mcp.Description("type"),
+			),
+		),
+		mcp.NewTypedToolHandler(ListAdAccountDeprecatedtargetingadsetsHandler),
+	)
+
+	// Register list_ad_account_dsa_recommendations
+	s.AddTool(
+		mcp.NewTool("list_ad_account_dsa_recommendations",
+			mcp.WithDescription("List dsa_recommendations for this AdAccount Returns AdAccountDsaRecommendations."),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
+		mcp.NewTypedToolHandler(ListAdAccountDsaRecommendationsHandler),
+	)
+
+	// Register list_ad_account_generatepreviews
+	s.AddTool(
+		mcp.NewTool("list_ad_account_generatepreviews",
+			mcp.WithDescription("List generatepreviews for this AdAccount Returns AdPreview. Required: ad_format (enum), creative"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithString("ad_format",
+				mcp.Required(),
+				mcp.Description("ad_format (enum: adaccountgeneratepreviews_ad_format_enum_param)"),
+			),
+			mcp.WithString("creative",
+				mcp.Required(),
+				mcp.Description("creative"),
+			),
+			mcp.WithString("creative_feature",
+				mcp.Description("creative_feature (enum: adaccountgeneratepreviews_creative_feature_enum_param)"),
+			),
+			mcp.WithString("dynamic_asset_label",
+				mcp.Description("dynamic_asset_label"),
+			),
+			mcp.WithObject("dynamic_creative_spec",
+				mcp.Description("dynamic_creative_spec"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithObject("dynamic_customization",
+				mcp.Description("dynamic_customization"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("end_date",
+				mcp.Description("end_date"),
+			),
+			mcp.WithNumber("height",
+				mcp.Description("height"),
+			),
+			mcp.WithString("locale",
+				mcp.Description("locale"),
+			),
+			mcp.WithNumber("place_page_id",
+				mcp.Description("place_page_id"),
+			),
+			mcp.WithObject("post",
+				mcp.Description("post"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithArray("product_item_ids",
+				mcp.Description("product_item_ids"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithString("render_type",
+				mcp.Description("render_type (enum: adaccountgeneratepreviews_render_type_enum_param)"),
+			),
+			mcp.WithString("start_date",
+				mcp.Description("start_date"),
+			),
+			mcp.WithNumber("width",
+				mcp.Description("width"),
+			),
+		),
+		mcp.NewTypedToolHandler(ListAdAccountGeneratepreviewsHandler),
+	)
+
+	// Register list_ad_account_impacting_ad_studies
+	s.AddTool(
+		mcp.NewTool("list_ad_account_impacting_ad_studies",
+			mcp.WithDescription("List impacting_ad_studies for this AdAccount Returns AdStudy."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
+		mcp.NewTypedToolHandler(ListAdAccountImpactingAdStudiesHandler),
+	)
+
+	// Register get_ad_account_insights
+	s.AddTool(
+		mcp.NewTool("get_ad_account_insights",
+			mcp.WithDescription("List insights for this AdAccount Returns AdsInsights."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithArray("action_attribution_windows",
+				mcp.Description("action_attribution_windows"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithArray("action_breakdowns",
+				mcp.Description("action_breakdowns"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithString("action_report_time",
+				mcp.Description("action_report_time (enum: adaccountinsights_action_report_time_enum_param)"),
+			),
+			mcp.WithArray("breakdowns",
+				mcp.Description("breakdowns"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithString("date_preset",
+				mcp.Description("date_preset (enum: adaccountinsights_date_preset_enum_param)"),
+			),
+			mcp.WithBoolean("default_summary",
+				mcp.Description("default_summary"),
+			),
+			mcp.WithArray("export_columns",
+				mcp.Description("export_columns"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithString("export_format",
+				mcp.Description("export_format"),
+			),
+			mcp.WithString("export_name",
+				mcp.Description("export_name"),
+			),
+			mcp.WithArray("filtering",
+				mcp.Description("filtering"),
+				mcp.Items(map[string]any{"type": "object"}),
+			),
+			mcp.WithString("level",
+				mcp.Description("level (enum: adaccountinsights_level_enum_param)"),
+			),
+			mcp.WithNumber("product_id_limit",
+				mcp.Description("product_id_limit"),
+			),
+			mcp.WithArray("sort",
+				mcp.Description("sort"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithArray("summary",
+				mcp.Description("summary"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithArray("summary_action_breakdowns",
+				mcp.Description("summary_action_breakdowns"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithString("time_increment",
+				mcp.Description("time_increment"),
+			),
+			mcp.WithObject("time_range",
+				mcp.Description("time_range"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithArray("time_ranges",
+				mcp.Description("time_ranges"),
+				mcp.Items(map[string]any{"type": "object"}),
+			),
+			mcp.WithBoolean("use_account_attribution_setting",
+				mcp.Description("use_account_attribution_setting"),
+			),
+			mcp.WithBoolean("use_unified_attribution_setting",
+				mcp.Description("use_unified_attribution_setting"),
+			),
+		),
+		mcp.NewTypedToolHandler(GetAdAccountInsightsHandler),
+	)
+
+	// Register create_ad_account_insights_report
+	s.AddTool(
+		mcp.NewTool("create_ad_account_insights_report",
+			mcp.WithDescription("Generate an insights report for this AdAccount Returns AdReportRun."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("action_attribution_windows",
+				mcp.Description("action_attribution_windows"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithArray("action_breakdowns",
+				mcp.Description("action_breakdowns"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithString("action_report_time",
+				mcp.Description("action_report_time (enum: adaccountinsights_action_report_time_enum_param)"),
+			),
+			mcp.WithArray("breakdowns",
+				mcp.Description("breakdowns"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithString("date_preset",
+				mcp.Description("date_preset (enum: adaccountinsights_date_preset_enum_param)"),
+			),
+			mcp.WithBoolean("default_summary",
+				mcp.Description("default_summary"),
+			),
+			mcp.WithArray("export_columns",
+				mcp.Description("export_columns"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithString("export_format",
+				mcp.Description("export_format"),
+			),
+			mcp.WithString("export_name",
+				mcp.Description("export_name"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("fields"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithArray("filtering",
+				mcp.Description("filtering"),
+				mcp.Items(map[string]any{"type": "object"}),
+			),
+			mcp.WithString("level",
+				mcp.Description("level (enum: adaccountinsights_level_enum_param)"),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("limit"),
+			),
+			mcp.WithNumber("product_id_limit",
+				mcp.Description("product_id_limit"),
+			),
+			mcp.WithArray("sort",
+				mcp.Description("sort"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithArray("summary",
+				mcp.Description("summary"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithArray("summary_action_breakdowns",
+				mcp.Description("summary_action_breakdowns"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithString("time_increment",
+				mcp.Description("time_increment"),
+			),
+			mcp.WithObject("time_range",
+				mcp.Description("time_range"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithArray("time_ranges",
+				mcp.Description("time_ranges"),
+				mcp.Items(map[string]any{"type": "object"}),
+			),
+			mcp.WithBoolean("use_account_attribution_setting",
+				mcp.Description("use_account_attribution_setting"),
+			),
+			mcp.WithBoolean("use_unified_attribution_setting",
+				mcp.Description("use_unified_attribution_setting"),
+			),
+		),
+		mcp.NewTypedToolHandler(CreateAdAccountInsightsReportHandler),
+	)
+
+	// Register list_ad_account_instagram_accounts
+	s.AddTool(
+		mcp.NewTool("list_ad_account_instagram_accounts",
+			mcp.WithDescription("List instagram_accounts for this AdAccount Returns IGUser."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
+		mcp.NewTypedToolHandler(ListAdAccountInstagramAccountsHandler),
+	)
+
+	// Register list_ad_account_ios_fourteen_campaign_limits
+	s.AddTool(
+		mcp.NewTool("list_ad_account_ios_fourteen_campaign_limits",
+			mcp.WithDescription("List ios_fourteen_campaign_limits for this AdAccount Returns AdAccountIosFourteenCampaignLimits. Required: app_id"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithString("app_id",
+				mcp.Required(),
+				mcp.Description("app_id"),
+			),
+		),
+		mcp.NewTypedToolHandler(ListAdAccountIosFourteenCampaignLimitsHandler),
+	)
+
+	// Register list_ad_account_matched_search_applications
+	s.AddTool(
+		mcp.NewTool("list_ad_account_matched_search_applications",
+			mcp.WithDescription("List matched_search_applications for this AdAccount Returns AdAccountMatchedSearchApplicationsEdgeData. Required: app_store (enum), query_term"),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithBoolean("allow_incomplete_app",
+				mcp.Description("allow_incomplete_app"),
+			),
+			mcp.WithString("app_store",
+				mcp.Required(),
+				mcp.Description("app_store (enum: adaccountmatched_search_applications_app_store_enum_param)"),
+			),
+			mcp.WithString("app_store_country",
+				mcp.Description("app_store_country"),
+			),
+			mcp.WithString("business_id",
+				mcp.Description("business_id"),
+			),
+			mcp.WithBoolean("is_skadnetwork_search",
+				mcp.Description("is_skadnetwork_search"),
+			),
+			mcp.WithBoolean("only_apps_with_permission",
+				mcp.Description("only_apps_with_permission"),
+			),
+			mcp.WithString("query_term",
+				mcp.Required(),
+				mcp.Description("query_term"),
+			),
+		),
+		mcp.NewTypedToolHandler(ListAdAccountMatchedSearchApplicationsHandler),
+	)
+
+	// Register get_ad_account_max_bid
+	s.AddTool(
+		mcp.NewTool("get_ad_account_max_bid",
+			mcp.WithDescription("Get max_bid data for this AdAccount Returns AdAccountMaxBid."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
+		mcp.NewTypedToolHandler(GetAdAccountMaxBidHandler),
+	)
+
+	// Register list_ad_account_mcmeconversions
+	s.AddTool(
+		mcp.NewTool("list_ad_account_mcmeconversions",
+			mcp.WithDescription("List mcmeconversions for this AdAccount Returns AdsMcmeConversion."),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
+		mcp.NewTypedToolHandler(ListAdAccountMcmeconversionsHandler),
+	)
+
+	// Register list_ad_account_minimum_budgets
+	s.AddTool(
+		mcp.NewTool("list_ad_account_minimum_budgets",
+			mcp.WithDescription("List minimum_budgets for this AdAccount Returns MinimumBudget."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithNumber("bid_amount",
+				mcp.Description("bid_amount"),
+			),
+		),
+		mcp.NewTypedToolHandler(ListAdAccountMinimumBudgetsHandler),
+	)
+
+	// Register list_ad_account_onbehalf_requests
+	s.AddTool(
+		mcp.NewTool("list_ad_account_onbehalf_requests",
+			mcp.WithDescription("List onbehalf_requests for this AdAccount Returns BusinessOwnedObjectOnBehalfOfRequest."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithString("status",
+				mcp.Description("status (enum: adaccountonbehalf_requests_status_enum_param)"),
+			),
+		),
+		mcp.NewTypedToolHandler(ListAdAccountOnbehalfRequestsHandler),
+	)
+
+	// Register create_ad_account_product_audience
+	s.AddTool(
+		mcp.NewTool("create_ad_account_product_audience",
+			mcp.WithDescription("Create or update product_audiences for this AdAccount Returns AdAccount. Required: name, product_set_id"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("allowed_domains",
+				mcp.Description("allowed_domains"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("associated_audience_id",
+				mcp.Description("associated_audience_id"),
+			),
+			mcp.WithString("claim_objective",
+				mcp.Description("claim_objective (enum: adaccountproduct_audiences_claim_objective_enum_param)"),
+			),
+			mcp.WithString("content_type",
+				mcp.Description("content_type (enum: adaccountproduct_audiences_content_type_enum_param)"),
+			),
+			mcp.WithObject("creation_params",
+				mcp.Description("creation_params"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("description",
+				mcp.Description("description"),
+			),
+			mcp.WithBoolean("enable_fetch_or_create",
+				mcp.Description("enable_fetch_or_create"),
+			),
+			mcp.WithString("event_source_group",
+				mcp.Description("event_source_group"),
+			),
+			mcp.WithArray("event_sources",
+				mcp.Description("event_sources"),
+				mcp.Items(map[string]any{"type": "object"}),
+			),
+			mcp.WithArray("exclusions",
+				mcp.Description("exclusions"),
+				mcp.Items(map[string]any{"type": "object"}),
+			),
+			mcp.WithArray("inclusions",
+				mcp.Description("inclusions"),
+				mcp.Items(map[string]any{"type": "object"}),
+			),
+			mcp.WithBoolean("is_snapshot",
+				mcp.Description("is_snapshot"),
+			),
+			mcp.WithBoolean("is_value_based",
+				mcp.Description("is_value_based"),
+			),
+			mcp.WithString("name",
+				mcp.Required(),
+				mcp.Description("name"),
+			),
+			mcp.WithString("opt_out_link",
+				mcp.Description("opt_out_link"),
+			),
+			mcp.WithNumber("parent_audience_id",
+				mcp.Description("parent_audience_id"),
+			),
+			mcp.WithString("product_set_id",
+				mcp.Required(),
+				mcp.Description("product_set_id"),
+			),
+			mcp.WithNumber("rev_share_policy_id",
+				mcp.Description("rev_share_policy_id"),
+			),
+			mcp.WithString("subtype",
+				mcp.Description("subtype (enum: adaccountproduct_audiences_subtype_enum_param)"),
+			),
+		),
+		mcp.NewTypedToolHandler(CreateAdAccountProductAudienceHandler),
+	)
+
+	// Register list_ad_account_promote_pages
+	s.AddTool(
+		mcp.NewTool("list_ad_account_promote_pages",
+			mcp.WithDescription("List promote_pages for this AdAccount Returns Page."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
+		mcp.NewTypedToolHandler(ListAdAccountPromotePagesHandler),
+	)
+
+	// Register list_ad_account_publisher_block_lists
+	s.AddTool(
+		mcp.NewTool("list_ad_account_publisher_block_lists",
+			mcp.WithDescription("List publisher_block_lists for this AdAccount Returns PublisherBlockList."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
+		mcp.NewTypedToolHandler(ListAdAccountPublisherBlockListsHandler),
+	)
+
+	// Register create_ad_account_publisher_block_list
+	s.AddTool(
+		mcp.NewTool("create_ad_account_publisher_block_list",
+			mcp.WithDescription("Create or update publisher_block_lists for this AdAccount Returns PublisherBlockList."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithString("name",
+				mcp.Description("name"),
+			),
+		),
+		mcp.NewTypedToolHandler(CreateAdAccountPublisherBlockListHandler),
+	)
+
+	// Register get_ad_account_reachestimate
+	s.AddTool(
+		mcp.NewTool("get_ad_account_reachestimate",
+			mcp.WithDescription("Get reachestimate data for this AdAccount Returns AdAccountReachEstimate. Required: targeting_spec"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithArray("adgroup_ids",
+				mcp.Description("adgroup_ids"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithString("caller_id",
+				mcp.Description("caller_id"),
+			),
+			mcp.WithString("concepts",
+				mcp.Description("concepts"),
+			),
+			mcp.WithString("creative_action_spec",
+				mcp.Description("creative_action_spec"),
+			),
+			mcp.WithBoolean("is_debug",
+				mcp.Description("is_debug"),
+			),
+			mcp.WithString("object_store_url",
+				mcp.Description("object_store_url"),
+			),
+			mcp.WithString("targeting_spec",
+				mcp.Required(),
+				mcp.Description("targeting_spec"),
+			),
+		),
+		mcp.NewTypedToolHandler(GetAdAccountReachestimateHandler),
+	)
+
+	// Register list_ad_account_reachfrequencypredictions
+	s.AddTool(
+		mcp.NewTool("list_ad_account_reachfrequencypredictions",
+			mcp.WithDescription("List reachfrequencypredictions for this AdAccount Returns ReachFrequencyPrediction."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
+		mcp.NewTypedToolHandler(ListAdAccountReachfrequencypredictionsHandler),
+	)
+
+	// Register create_ad_account_reachfrequencyprediction
+	s.AddTool(
+		mcp.NewTool("create_ad_account_reachfrequencyprediction",
+			mcp.WithDescription("Create or update reachfrequencypredictions for this AdAccount Returns ReachFrequencyPrediction."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithString("action",
+				mcp.Description("action (enum: adaccountreachfrequencypredictions_action_enum_param)"),
+			),
+			mcp.WithArray("ad_formats",
+				mcp.Description("ad_formats"),
+				mcp.Items(map[string]any{"type": "object"}),
+			),
+			mcp.WithNumber("auction_entry_option_index",
+				mcp.Description("auction_entry_option_index"),
+			),
+			mcp.WithNumber("budget",
+				mcp.Description("budget"),
+			),
+			mcp.WithString("buying_type",
+				mcp.Description("buying_type (enum: adaccountreachfrequencypredictions_buying_type_enum_param)"),
+			),
+			mcp.WithString("campaign_group_id",
+				mcp.Description("campaign_group_id"),
+			),
+			mcp.WithArray("day_parting_schedule",
+				mcp.Description("day_parting_schedule"),
+				mcp.Items(map[string]any{"type": "object"}),
+			),
+			mcp.WithString("deal_id",
+				mcp.Description("deal_id"),
+			),
+			mcp.WithNumber("destination_id",
+				mcp.Description("destination_id"),
+			),
+			mcp.WithArray("destination_ids",
+				mcp.Description("destination_ids"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("end_time",
+				mcp.Description("end_time"),
+			),
+			mcp.WithBoolean("exceptions",
+				mcp.Description("exceptions"),
+			),
+			mcp.WithString("existing_campaign_id",
+				mcp.Description("existing_campaign_id"),
+			),
+			mcp.WithNumber("expiration_time",
+				mcp.Description("expiration_time"),
+			),
+			mcp.WithNumber("frequency_cap",
+				mcp.Description("frequency_cap"),
+			),
+			mcp.WithBoolean("grp_buying",
+				mcp.Description("grp_buying"),
+			),
+			mcp.WithNumber("impression",
+				mcp.Description("impression"),
+			),
+			mcp.WithArray("instream_packages",
+				mcp.Description("instream_packages"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("interval_frequency_cap_reset_period",
+				mcp.Description("interval_frequency_cap_reset_period"),
+			),
+			mcp.WithBoolean("is_balanced_frequency",
+				mcp.Description("is_balanced_frequency"),
+			),
+			mcp.WithBoolean("is_bonus_media",
+				mcp.Description("is_bonus_media"),
+			),
+			mcp.WithBoolean("is_conversion_goal",
+				mcp.Description("is_conversion_goal"),
+			),
+			mcp.WithBoolean("is_full_view",
+				mcp.Description("is_full_view"),
+			),
+			mcp.WithBoolean("is_higher_average_frequency",
+				mcp.Description("is_higher_average_frequency"),
+			),
+			mcp.WithBoolean("is_reach_and_frequency_io_buying",
+				mcp.Description("is_reach_and_frequency_io_buying"),
+			),
+			mcp.WithBoolean("is_reserved_buying",
+				mcp.Description("is_reserved_buying"),
+			),
+			mcp.WithNumber("num_curve_points",
+				mcp.Description("num_curve_points"),
+			),
+			mcp.WithString("objective",
+				mcp.Description("objective"),
+			),
+			mcp.WithString("optimization_goal",
+				mcp.Description("optimization_goal"),
+			),
+			mcp.WithNumber("prediction_mode",
+				mcp.Description("prediction_mode"),
+			),
+			mcp.WithNumber("reach",
+				mcp.Description("reach"),
+			),
+			mcp.WithString("rf_prediction_id",
+				mcp.Description("rf_prediction_id"),
+			),
+			mcp.WithString("rf_prediction_id_to_release",
+				mcp.Description("rf_prediction_id_to_release"),
+			),
+			mcp.WithString("rf_prediction_id_to_share",
+				mcp.Description("rf_prediction_id_to_share"),
+			),
+			mcp.WithNumber("start_time",
+				mcp.Description("start_time"),
+			),
+			mcp.WithNumber("stop_time",
+				mcp.Description("stop_time"),
+			),
+			mcp.WithNumber("story_event_type",
+				mcp.Description("story_event_type"),
+			),
+			mcp.WithNumber("target_cpm",
+				mcp.Description("target_cpm"),
+			),
+			mcp.WithNumber("target_frequency",
+				mcp.Description("target_frequency"),
+			),
+			mcp.WithNumber("target_frequency_reset_period",
+				mcp.Description("target_frequency_reset_period"),
+			),
+			mcp.WithString("target_spec",
+				mcp.Description("target_spec"),
+			),
+			mcp.WithNumber("video_view_length_constraint",
+				mcp.Description("video_view_length_constraint"),
+			),
+		),
+		mcp.NewTypedToolHandler(CreateAdAccountReachfrequencypredictionHandler),
+	)
+
+	// Register list_ad_account_recommendations
+	s.AddTool(
+		mcp.NewTool("list_ad_account_recommendations",
+			mcp.WithDescription("List recommendations for this AdAccount Returns AdAccountRecommendations."),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
+		mcp.NewTypedToolHandler(ListAdAccountRecommendationsHandler),
+	)
+
+	// Register create_ad_account_recommendation
+	s.AddTool(
+		mcp.NewTool("create_ad_account_recommendation",
+			mcp.WithDescription("Create or update recommendations for this AdAccount Returns AdAccountRecommendations. Required: recommendation_signature"),
+			mcp.WithObject("asc_fragmentation_parameters",
+				mcp.Description("asc_fragmentation_parameters"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithObject("autoflow_parameters",
+				mcp.Description("autoflow_parameters"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithObject("fragmentation_parameters",
+				mcp.Description("fragmentation_parameters"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithObject("music_parameters",
+				mcp.Description("music_parameters"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("recommendation_signature",
+				mcp.Required(),
+				mcp.Description("recommendation_signature"),
+			),
+			mcp.WithObject("scale_good_campaign_parameters",
+				mcp.Description("scale_good_campaign_parameters"),
+				mcp.AdditionalProperties(true),
+			),
+		),
+		mcp.NewTypedToolHandler(CreateAdAccountRecommendationHandler),
+	)
+
+	// Register list_ad_account_saved_audiences
+	s.AddTool(
+		mcp.NewTool("list_ad_account_saved_audiences",
+			mcp.WithDescription("List saved_audiences for this AdAccount Returns SavedAudience."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithString("business_id",
+				mcp.Description("business_id"),
+			),
+			mcp.WithArray("filtering",
+				mcp.Description("filtering"),
+				mcp.Items(map[string]any{"type": "object"}),
+			),
+		),
+		mcp.NewTypedToolHandler(ListAdAccountSavedAudiencesHandler),
+	)
+
+	// Register remove_subscribed_apps_from_ad_account
+	s.AddTool(
+		mcp.NewTool("remove_subscribed_apps_from_ad_account",
+			mcp.WithDescription("Remove subscribed_apps from this AdAccount"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithString("app_id",
+				mcp.Description("app_id"),
+			),
+		),
+		mcp.NewTypedToolHandler(RemoveSubscribedAppsFromAdAccountHandler),
+	)
+
+	// Register list_ad_account_subscribed_apps
+	s.AddTool(
+		mcp.NewTool("list_ad_account_subscribed_apps",
+			mcp.WithDescription("List subscribed_apps for this AdAccount Returns AdAccountSubscribedApps."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
+		mcp.NewTypedToolHandler(ListAdAccountSubscribedAppsHandler),
+	)
+
+	// Register create_ad_account_subscribed_app
+	s.AddTool(
+		mcp.NewTool("create_ad_account_subscribed_app",
+			mcp.WithDescription("Create or update subscribed_apps for this AdAccount Returns AdAccountSubscribedApps."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithString("app_id",
+				mcp.Description("app_id"),
+			),
+		),
+		mcp.NewTypedToolHandler(CreateAdAccountSubscribedAppHandler),
+	)
+
+	// Register get_ad_account_targetingbrowse
+	s.AddTool(
+		mcp.NewTool("get_ad_account_targetingbrowse",
+			mcp.WithDescription("Get targeting information for this AdAccount Returns AdAccountTargetingUnified."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithString("excluded_category",
+				mcp.Description("excluded_category"),
+			),
+			mcp.WithBoolean("include_nodes",
+				mcp.Description("include_nodes"),
+			),
+			mcp.WithBoolean("is_exclusion",
+				mcp.Description("is_exclusion"),
+			),
+			mcp.WithString("limit_type",
+				mcp.Description("limit_type (enum: adaccounttargetingbrowse_limit_type_enum_param)"),
+			),
+			mcp.WithArray("regulated_categories",
+				mcp.Description("regulated_categories"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithArray("regulated_countries",
+				mcp.Description("regulated_countries"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithArray("whitelisted_types",
+				mcp.Description("whitelisted_types"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+		),
+		mcp.NewTypedToolHandler(GetAdAccountTargetingbrowseHandler),
+	)
+
+	// Register get_ad_account_targetingsearch
+	s.AddTool(
+		mcp.NewTool("get_ad_account_targetingsearch",
+			mcp.WithDescription("Get targeting information for this AdAccount Returns AdAccountTargetingUnified. Required: q"),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithBoolean("allow_only_fat_head_interests",
+				mcp.Description("allow_only_fat_head_interests"),
+			),
+			mcp.WithString("app_store",
+				mcp.Description("app_store (enum: adaccounttargetingsearch_app_store_enum_param)"),
+			),
+			mcp.WithArray("countries",
+				mcp.Description("countries"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithBoolean("is_account_level_brand_safety_exclusion",
+				mcp.Description("is_account_level_brand_safety_exclusion"),
+			),
+			mcp.WithBoolean("is_account_level_employer_exclusion",
+				mcp.Description("is_account_level_employer_exclusion"),
+			),
+			mcp.WithBoolean("is_exclusion",
+				mcp.Description("is_exclusion"),
+			),
+			mcp.WithString("limit_type",
+				mcp.Description("limit_type (enum: adaccounttargetingsearch_limit_type_enum_param)"),
+			),
+			mcp.WithString("objective",
+				mcp.Description("objective (enum: adaccounttargetingsearch_objective_enum_param)"),
+			),
+			mcp.WithObject("promoted_object",
+				mcp.Description("promoted_object"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("q",
+				mcp.Required(),
+				mcp.Description("q"),
+			),
+			mcp.WithArray("regulated_categories",
+				mcp.Description("regulated_categories"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithArray("regulated_countries",
+				mcp.Description("regulated_countries"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("session_id",
+				mcp.Description("session_id"),
+			),
+			mcp.WithArray("targeting_list",
+				mcp.Description("targeting_list"),
+				mcp.Items(map[string]any{"type": "object"}),
+			),
+			mcp.WithArray("whitelisted_types",
+				mcp.Description("whitelisted_types"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+		),
+		mcp.NewTypedToolHandler(GetAdAccountTargetingsearchHandler),
+	)
+
+	// Register list_ad_account_targetingsentencelines
+	s.AddTool(
+		mcp.NewTool("list_ad_account_targetingsentencelines",
+			mcp.WithDescription("List targetingsentencelines for this AdAccount Returns TargetingSentenceLine. Required: targeting_spec"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithBoolean("discard_ages",
+				mcp.Description("discard_ages"),
+			),
+			mcp.WithBoolean("discard_placements",
+				mcp.Description("discard_placements"),
+			),
+			mcp.WithBoolean("hide_targeting_spec_from_return",
+				mcp.Description("hide_targeting_spec_from_return"),
+			),
+			mcp.WithString("targeting_spec",
+				mcp.Required(),
+				mcp.Description("targeting_spec"),
+			),
+		),
+		mcp.NewTypedToolHandler(ListAdAccountTargetingsentencelinesHandler),
+	)
+
+	// Register list_ad_account_targetingsuggestions
+	s.AddTool(
+		mcp.NewTool("list_ad_account_targetingsuggestions",
+			mcp.WithDescription("List targetingsuggestions for this AdAccount Returns AdAccountTargetingUnified."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithString("app_store",
+				mcp.Description("app_store (enum: adaccounttargetingsuggestions_app_store_enum_param)"),
+			),
+			mcp.WithArray("countries",
+				mcp.Description("countries"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithString("limit_type",
+				mcp.Description("limit_type (enum: adaccounttargetingsuggestions_limit_type_enum_param)"),
+			),
+			mcp.WithString("mode",
+				mcp.Description("mode (enum: adaccounttargetingsuggestions_mode_enum_param)"),
+			),
+			mcp.WithString("objective",
+				mcp.Description("objective (enum: adaccounttargetingsuggestions_objective_enum_param)"),
+			),
+			mcp.WithObject("objects",
+				mcp.Description("objects"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithArray("regulated_categories",
+				mcp.Description("regulated_categories"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithArray("regulated_countries",
+				mcp.Description("regulated_countries"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("session_id",
+				mcp.Description("session_id"),
+			),
+			mcp.WithArray("targeting_list",
+				mcp.Description("targeting_list"),
+				mcp.Items(map[string]any{"type": "object"}),
+			),
+			mcp.WithArray("whitelisted_types",
+				mcp.Description("whitelisted_types"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+		),
+		mcp.NewTypedToolHandler(ListAdAccountTargetingsuggestionsHandler),
+	)
+
+	// Register get_ad_account_targetingvalidation
+	s.AddTool(
+		mcp.NewTool("get_ad_account_targetingvalidation",
+			mcp.WithDescription("Get targeting information for this AdAccount Returns AdAccountTargetingUnified."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithArray("id_list",
+				mcp.Description("id_list"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithBoolean("is_exclusion",
+				mcp.Description("is_exclusion"),
+			),
+			mcp.WithArray("name_list",
+				mcp.Description("name_list"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithArray("targeting_list",
+				mcp.Description("targeting_list"),
+				mcp.Items(map[string]any{"type": "object"}),
+			),
+		),
+		mcp.NewTypedToolHandler(GetAdAccountTargetingvalidationHandler),
+	)
+
+	// Register get_ad_account_tracking
+	s.AddTool(
+		mcp.NewTool("get_ad_account_tracking",
+			mcp.WithDescription("Get tracking data for this AdAccount Returns AdAccountTrackingData."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
+		mcp.NewTypedToolHandler(GetAdAccountTrackingHandler),
+	)
+
+	// Register update_ad_account_tracking
+	s.AddTool(
+		mcp.NewTool("update_ad_account_tracking",
+			mcp.WithDescription("Create or update tracking for this AdAccount Returns AdAccount. Required: tracking_specs"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithObject("tracking_specs",
+				mcp.Required(),
+				mcp.Description("tracking_specs"),
+				mcp.AdditionalProperties(true),
+			),
+		),
+		mcp.NewTypedToolHandler(UpdateAdAccountTrackingHandler),
+	)
+
+	// Register list_ad_account_users
+	s.AddTool(
+		mcp.NewTool("list_ad_account_users",
+			mcp.WithDescription("List users for this AdAccount Returns AdAccountUser."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
+		mcp.NewTypedToolHandler(ListAdAccountUsersHandler),
+	)
+
+	// Register remove_usersofanyaudience_from_ad_account
+	s.AddTool(
+		mcp.NewTool("remove_usersofanyaudience_from_ad_account",
+			mcp.WithDescription("Remove usersofanyaudience from this AdAccount"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithString("namespace",
+				mcp.Description("namespace"),
+			),
+			mcp.WithObject("payload",
+				mcp.Description("payload"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithObject("session",
+				mcp.Description("session"),
+				mcp.AdditionalProperties(true),
+			),
+		),
+		mcp.NewTypedToolHandler(RemoveUsersofanyaudienceFromAdAccountHandler),
+	)
+
+	// Register get_ad_account_value_rule_set
+	s.AddTool(
+		mcp.NewTool("get_ad_account_value_rule_set",
+			mcp.WithDescription("Get value_rule_set data for this AdAccount Returns AdsValueAdjustmentRuleCollection."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithString("product_type",
+				mcp.Description("product_type (enum: adaccountvalue_rule_set_product_type_enum_param)"),
+			),
+			mcp.WithString("status",
+				mcp.Description("status (enum: adaccountvalue_rule_set_status_enum_param)"),
+			),
+		),
+		mcp.NewTypedToolHandler(GetAdAccountValueRuleSetHandler),
+	)
+
+	// Register update_ad_account_value_rule_set
+	s.AddTool(
+		mcp.NewTool("update_ad_account_value_rule_set",
+			mcp.WithDescription("Create or update value_rule_set for this AdAccount Returns AdsValueAdjustmentRuleCollection. Required: name, rules"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithString("name",
+				mcp.Required(),
+				mcp.Description("name"),
+			),
+			mcp.WithString("product_type",
+				mcp.Description("product_type (enum: adaccountvalue_rule_set_product_type_enum_param)"),
+			),
+			mcp.WithArray("rules",
+				mcp.Required(),
+				mcp.Description("rules"),
+				mcp.Items(map[string]any{"type": "object"}),
+			),
+		),
+		mcp.NewTypedToolHandler(UpdateAdAccountValueRuleSetHandler),
+	)
+
+	// Register list_ad_account_video_ads
+	s.AddTool(
+		mcp.NewTool("list_ad_account_video_ads",
+			mcp.WithDescription("List video_ads for this AdAccount Returns AdVideo."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithString("since",
+				mcp.Description("since"),
+			),
+			mcp.WithString("until",
+				mcp.Description("until"),
+			),
+		),
+		mcp.NewTypedToolHandler(ListAdAccountVideoAdsHandler),
+	)
+
+	// Register create_ad_account_video_ad
+	s.AddTool(
+		mcp.NewTool("create_ad_account_video_ad",
+			mcp.WithDescription("Create or update video_ads for this AdAccount Returns AdVideo. Required: upload_phase (enum)"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithString("description",
+				mcp.Description("description"),
+			),
+			mcp.WithString("privacy",
+				mcp.Description("privacy"),
+			),
+			mcp.WithString("title",
+				mcp.Description("title"),
+			),
+			mcp.WithString("upload_phase",
+				mcp.Required(),
+				mcp.Description("upload_phase (enum: adaccountvideo_ads_upload_phase_enum_param)"),
+			),
+			mcp.WithString("video_id",
+				mcp.Description("video_id"),
+			),
+			mcp.WithString("video_state",
+				mcp.Description("video_state (enum: adaccountvideo_ads_video_state_enum_param)"),
+			),
+		),
+		mcp.NewTypedToolHandler(CreateAdAccountVideoAdHandler),
+	)
+
+	// Register get_ad_account
+	s.AddTool(
+		mcp.NewTool("get_ad_account",
+			mcp.WithDescription("Get details of a specific AdAccount Returns AdAccount."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
+		mcp.NewTypedToolHandler(GetAdAccountHandler),
+	)
+
+	// Register update_ad_account
+	s.AddTool(
+		mcp.NewTool("update_ad_account",
+			mcp.WithDescription("Update a AdAccount Returns AdAccount."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithObject("agency_client_declaration",
+				mcp.Description("agency_client_declaration"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithArray("attribution_spec",
+				mcp.Description("attribution_spec"),
+				mcp.Items(map[string]any{"type": "object"}),
+			),
+			mcp.WithObject("business_info",
+				mcp.Description("business_info"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("currency",
+				mcp.Description("currency (enum: adaccount_currency)"),
+			),
+			mcp.WithObject("custom_audience_info",
+				mcp.Description("custom_audience_info"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("default_dsa_beneficiary",
+				mcp.Description("default_dsa_beneficiary"),
+			),
+			mcp.WithString("default_dsa_payor",
+				mcp.Description("default_dsa_payor"),
+			),
+			mcp.WithString("end_advertiser",
+				mcp.Description("end_advertiser"),
+			),
+			mcp.WithArray("existing_customers",
+				mcp.Description("existing_customers"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithBoolean("is_ba_skip_delayed_eligible",
+				mcp.Description("is_ba_skip_delayed_eligible"),
+			),
+			mcp.WithBoolean("is_notifications_enabled",
+				mcp.Description("is_notifications_enabled"),
+			),
+			mcp.WithString("media_agency",
+				mcp.Description("media_agency"),
+			),
+			mcp.WithString("name",
+				mcp.Description("name"),
+			),
+			mcp.WithString("partner",
+				mcp.Description("partner"),
+			),
+			mcp.WithNumber("spend_cap",
+				mcp.Description("spend_cap"),
+			),
+			mcp.WithString("spend_cap_action",
+				mcp.Description("spend_cap_action"),
+			),
+			mcp.WithNumber("timezone_id",
+				mcp.Description("timezone_id"),
+			),
+			mcp.WithObject("tos_accepted",
+				mcp.Description("tos_accepted"),
+				mcp.AdditionalProperties(true),
+			),
+		),
+		mcp.NewTypedToolHandler(UpdateAdAccountHandler),
 	)
 
 	return nil

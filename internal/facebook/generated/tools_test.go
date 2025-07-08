@@ -233,8 +233,15 @@ func TestListAdAccountActivitiesHandler_Success(t *testing.T) {
 		},
 	}
 
+	// Create typed args
+	args := list_ad_account_activitiesArgs{
+		ID:     "act_123456789",
+		Limit:  10,
+		Fields: []string{"event_time", "event_type", "extra_data"},
+	}
+
 	// Call the handler
-	result, err := ListAdAccountActivitiesHandler(context.Background(), request)
+	result, err := ListAdAccountActivitiesHandler(context.Background(), request, args)
 	if err != nil {
 		t.Fatalf("Handler returned error: %v", err)
 	}
@@ -293,8 +300,13 @@ func TestListAdAccountActivitiesHandler_NoAccessToken(t *testing.T) {
 		},
 	}
 
+	// Create typed args
+	args := list_ad_account_activitiesArgs{
+		ID: "act_123456789",
+	}
+
 	// Call the handler
-	result, err := ListAdAccountActivitiesHandler(context.Background(), request)
+	result, err := ListAdAccountActivitiesHandler(context.Background(), request, args)
 	if err != nil {
 		t.Fatalf("Handler returned error: %v", err)
 	}
@@ -346,8 +358,16 @@ func TestGetAdSetInsightsHandler_Success(t *testing.T) {
 		},
 	}
 
+	// Create typed args
+	args := get_ad_set_insightsArgs{
+		ID:         "123456789",
+		DatePreset: "yesterday",
+		Fields:     []string{"impressions", "clicks", "spend", "reach", "frequency"},
+		Level:      "adset",
+	}
+
 	// Call the handler
-	result, err := GetAdSetInsightsHandler(context.Background(), request)
+	result, err := GetAdSetInsightsHandler(context.Background(), request, args)
 	if err != nil {
 		t.Fatalf("Handler returned error: %v", err)
 	}
@@ -416,8 +436,19 @@ func TestCreateAdSetAdlabelHandler_Success(t *testing.T) {
 		},
 	}
 
+	// Create typed args
+	args := create_ad_set_adlabelArgs{
+		ID: "123456789",
+		Adlabels: []map[string]interface{}{
+			{
+				"name": "Test Label",
+				"id":   "label_123",
+			},
+		},
+	}
+
 	// Call the handler
-	result, err := CreateAdSetAdlabelHandler(context.Background(), request)
+	result, err := CreateAdSetAdlabelHandler(context.Background(), request, args)
 	if err != nil {
 		t.Fatalf("Handler returned error: %v", err)
 	}
@@ -480,8 +511,13 @@ func TestAPIErrorHandling(t *testing.T) {
 		},
 	}
 
+	// Create typed args
+	args := get_ad_setArgs{
+		ID: "invalid_id",
+	}
+
 	// Call the handler
-	result, err := GetAdSetHandler(context.Background(), request)
+	result, err := GetAdSetHandler(context.Background(), request, args)
 	if err != nil {
 		t.Fatalf("Handler returned error: %v", err)
 	}
@@ -592,9 +628,16 @@ func BenchmarkListAdAccountActivitiesHandler(b *testing.B) {
 		},
 	}
 
+	// Create typed args
+	args := list_ad_account_activitiesArgs{
+		ID:     "act_123456789",
+		Limit:  10,
+		Fields: []string{"event_time", "event_type", "extra_data"},
+	}
+
 	// Run benchmark
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
-		_, _ = ListAdAccountActivitiesHandler(context.Background(), request)
+		_, _ = ListAdAccountActivitiesHandler(context.Background(), request, args)
 	}
 }
