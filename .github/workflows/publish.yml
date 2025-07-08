@@ -1,0 +1,122 @@
+name: publish
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+  packages: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - os: ubuntu-latest
+            goos: linux
+            goarch: amd64
+            suffix: linux-amd64
+          - os: ubuntu-latest
+            goos: linux
+            goarch: arm64
+            suffix: linux-arm64
+          - os: ubuntu-latest
+            goos: darwin
+            goarch: amd64
+            suffix: darwin-amd64
+          - os: ubuntu-latest
+            goos: darwin
+            goarch: arm64
+            suffix: darwin-arm64
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.24"
+          cache: true
+
+      - name: Install dependencies
+        run: make deps
+
+      - name: Run codegen
+        run: make codegen
+
+      - name: Build binary
+        env:
+          GOOS: ${{ matrix.goos }}
+          GOARCH: ${{ matrix.goarch }}
+          CGO_ENABLED: 0
+        run: |
+          VERSION=${GITHUB_REF#refs/tags/}
+          go build -ldflags "-s -w -X main.version=$VERSION -X main.commit=$GITHUB_SHA -X main.date=$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
+            -o unified-ads-mcp-${{ matrix.suffix }} ./cmd/server
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: unified-ads-mcp-${{ matrix.suffix }}
+          path: unified-ads-mcp-${{ matrix.suffix }}
+
+  release:
+    needs: publish
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+
+      - name: Create checksums
+        run: |
+          cd artifacts
+          find . -type f -name "unified-ads-mcp-*" -exec mv {} . \; 2>/dev/null || true
+          sha256sum unified-ads-mcp-* > checksums.txt
+
+      - name: Create Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          VERSION=${GITHUB_REF#refs/tags/}
+          
+          gh release create $VERSION \
+            --title "Release $VERSION" \
+            --notes "## Unified Ads MCP Server $VERSION
+
+MCP (Model Context Protocol) server for Facebook Business API.
+
+## Quick Install
+
+\`\`\`bash
+curl -sSL https://raw.githubusercontent.com/${{ github.repository }}/main/install.sh | bash
+\`\`\`
+
+## Manual Setup
+
+1. Download the binary for your platform below
+2. Add to Claude Desktop config (\`~/Library/Application Support/Claude/claude_desktop_config.json\`):
+
+\`\`\`json
+{
+  \"mcpServers\": {
+    \"unified-ads\": {
+      \"command\": \"/path/to/unified-ads-mcp\",
+      \"env\": {
+        \"FACEBOOK_ACCESS_TOKEN\": \"your_token_here\"
+      }
+    }
+  }
+}
+\`\`\`
+
+Get your token at: https://developers.facebook.com/tools/explorer/" \
+            artifacts/unified-ads-mcp-* \
+            artifacts/checksums.txt

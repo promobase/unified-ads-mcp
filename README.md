@@ -156,23 +156,28 @@ This will regenerate all tools from the Facebook API specifications.
 
 ## Development
 
-### Automatic Releases
+### Creating Releases
 
-Every commit to the `main` branch automatically:
-1. Bumps the patch version
-2. Creates a new release with binaries for Linux and macOS
-3. Updates the install script to use the latest version
-
-**Note**: To enable automatic releases, create a Personal Access Token with `repo` scope and add it as `RELEASE_TOKEN` secret in your repository settings.
-
-### Manual Release
-
-To create a major or minor version bump:
+Releases are created manually using the release script:
 
 ```bash
-git tag -a v1.0.0 -m 'Major release v1.0.0'
-git push origin v1.0.0
+# Patch release (default) - v0.0.1 -> v0.0.2
+./scripts/release.sh
+
+# Minor release - v0.1.2 -> v0.2.0
+./scripts/release.sh --minor
+
+# Major release - v1.2.3 -> v2.0.0
+./scripts/release.sh --major
 ```
+
+This will:
+1. Increment the version
+2. Update the VERSION file
+3. Create a git tag
+4. Push the tag to trigger the release workflow
+
+The GitHub Actions workflow will then automatically build binaries for all platforms and create a release.
 
 ## Future Plans
 
