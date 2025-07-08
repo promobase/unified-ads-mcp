@@ -13,6 +13,13 @@ import (
 	"github.com/mark3labs/mcp-go/server"
 )
 
+// Tool schemas for {{.ObjectName}}
+var (
+{{range .Tools}}
+	{{.ToolName}}Schema = json.RawMessage(`{{.InputSchema}}`)
+{{end}}
+)
+
 {{range .Tools}}
 // {{.HandlerName}} handles {{.ToolName}}
 func {{.HandlerName}}(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -29,7 +36,7 @@ func {{.HandlerName}}(ctx context.Context, request mcp.CallToolRequest) (*mcp.Ca
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 	{{else}}
@@ -65,7 +72,7 @@ func {{.HandlerName}}(ctx context.Context, request mcp.CallToolRequest) (*mcp.Ca
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 	{{else}}
@@ -80,7 +87,7 @@ func {{.HandlerName}}(ctx context.Context, request mcp.CallToolRequest) (*mcp.Ca
 	{{end}}
 	
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 	
 	return mcp.NewToolResultText(string(resp)), nil
@@ -95,7 +102,7 @@ func Register{{.ObjectName}}Tools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"{{.ToolName}}",
 			"{{.Description}}",
-			json.RawMessage(`{{.InputSchema}}`),
+			{{.ToolName}}Schema,
 		),
 		{{.HandlerName}},
 	)

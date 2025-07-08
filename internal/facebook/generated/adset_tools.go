@@ -13,6 +13,47 @@ import (
 	"github.com/mark3labs/mcp-go/server"
 )
 
+// Tool schemas for AdSet
+var (
+	AdSet_GET_activitiesSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"business_id":{"description":"business_id","type":"string"},"category":{"description":"category (enum: adcampaignactivities_category_enum_param)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdSet ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"since":{"description":"since","type":"string"},"uid":{"description":"uid","type":"integer"},"until":{"description":"until","type":"string"}},"required":["id"],"type":"object"}`)
+
+	AdSet_GET_ad_studiesSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdSet ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+
+	AdSet_GET_adcreativesSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdSet ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+
+	AdSet_DELETE_adlabelsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"adlabels":{"description":"adlabels","items":{"additionalProperties":true,"type":"object"},"type":"array"},"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"execution_options":{"description":"execution_options","items":{"type":"string"},"type":"array"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdSet ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id","adlabels"],"type":"object"}`)
+
+	AdSet_POST_adlabelsSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"adlabels":{"description":"adlabels","items":{"additionalProperties":true,"type":"object"},"type":"array"},"execution_options":{"description":"execution_options","items":{"type":"string"},"type":"array"},"id":{"description":"AdSet ID","type":"string"}},"required":["id","adlabels"],"type":"object"}`)
+
+	AdSet_GET_adrules_governedSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdSet ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"pass_evaluation":{"description":"pass_evaluation","type":"boolean"}},"required":["id"],"type":"object"}`)
+
+	AdSet_GET_adsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"date_preset":{"description":"date_preset (enum: adcampaignads_date_preset_enum_param)","type":"string"},"effective_status":{"description":"effective_status","items":{"type":"string"},"type":"array"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdSet ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"time_range":{"description":"time_range","type":"string"},"updated_since":{"description":"updated_since","type":"integer"}},"required":["id"],"type":"object"}`)
+
+	AdSet_GET_asyncadrequestsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdSet ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"statuses":{"description":"statuses","items":{"type":"string"},"type":"array"}},"required":["id"],"type":"object"}`)
+
+	AdSet_POST_budget_schedulesSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"budget_value":{"description":"budget_value","type":"integer"},"budget_value_type":{"description":"budget_value_type (enum: adcampaignbudget_schedules_budget_value_type_enum_param)","type":"string"},"id":{"description":"AdSet ID","type":"string"},"time_end":{"description":"time_end","type":"integer"},"time_start":{"description":"time_start","type":"integer"}},"required":["id","budget_value","budget_value_type","time_end","time_start"],"type":"object"}`)
+
+	AdSet_GET_copiesSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"date_preset":{"description":"date_preset (enum: adcampaigncopies_date_preset_enum_param)","type":"string"},"effective_status":{"description":"effective_status","items":{"type":"string"},"type":"array"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdSet ID","type":"string"},"is_completed":{"description":"is_completed","type":"boolean"},"limit":{"description":"Maximum number of results","type":"integer"},"time_range":{"description":"time_range","type":"string"}},"required":["id"],"type":"object"}`)
+
+	AdSet_POST_copiesSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"campaign_id":{"description":"campaign_id","type":"string"},"create_dco_adset":{"description":"create_dco_adset","type":"boolean"},"deep_copy":{"description":"deep_copy","type":"boolean"},"end_time":{"description":"end_time","type":"string"},"id":{"description":"AdSet ID","type":"string"},"rename_options":{"additionalProperties":true,"description":"rename_options","type":"object"},"start_time":{"description":"start_time","type":"string"},"status_option":{"description":"status_option (enum: adcampaigncopies_status_option_enum_param)","type":"string"}},"required":["id"],"type":"object"}`)
+
+	AdSet_GET_delivery_estimateSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdSet ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"optimization_goal":{"description":"optimization_goal (enum: adcampaigndelivery_estimate_optimization_goal_enum_param)","type":"string"},"promoted_object":{"additionalProperties":true,"description":"promoted_object","type":"object"},"targeting_spec":{"description":"targeting_spec","type":"string"}},"required":["id"],"type":"object"}`)
+
+	AdSet_GET_insightsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"action_attribution_windows":{"description":"action_attribution_windows","items":{"type":"string"},"type":"array"},"action_breakdowns":{"description":"action_breakdowns","items":{"type":"string"},"type":"array"},"action_report_time":{"description":"action_report_time (enum: adcampaigninsights_action_report_time_enum_param)","type":"string"},"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"breakdowns":{"description":"breakdowns","items":{"type":"string"},"type":"array"},"date_preset":{"description":"date_preset (enum: adcampaigninsights_date_preset_enum_param)","type":"string"},"default_summary":{"description":"default_summary","type":"boolean"},"export_columns":{"description":"export_columns","items":{"type":"string"},"type":"array"},"export_format":{"description":"export_format","type":"string"},"export_name":{"description":"export_name","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"filtering":{"description":"filtering","items":{"additionalProperties":true,"type":"object"},"type":"array"},"id":{"description":"AdSet ID","type":"string"},"level":{"description":"level (enum: adcampaigninsights_level_enum_param)","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"product_id_limit":{"description":"product_id_limit","type":"integer"},"sort":{"description":"sort","items":{"type":"string"},"type":"array"},"summary":{"description":"summary","items":{"type":"string"},"type":"array"},"summary_action_breakdowns":{"description":"summary_action_breakdowns","items":{"type":"string"},"type":"array"},"time_increment":{"description":"time_increment","type":"string"},"time_range":{"description":"time_range","type":"string"},"time_ranges":{"description":"time_ranges","items":{"additionalProperties":true,"type":"object"},"type":"array"},"use_account_attribution_setting":{"description":"use_account_attribution_setting","type":"boolean"},"use_unified_attribution_setting":{"description":"use_unified_attribution_setting","type":"boolean"}},"required":["id"],"type":"object"}`)
+
+	AdSet_POST_insightsSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"action_attribution_windows":{"description":"action_attribution_windows","items":{"type":"string"},"type":"array"},"action_breakdowns":{"description":"action_breakdowns","items":{"type":"string"},"type":"array"},"action_report_time":{"description":"action_report_time (enum: adcampaigninsights_action_report_time_enum_param)","type":"string"},"breakdowns":{"description":"breakdowns","items":{"type":"string"},"type":"array"},"date_preset":{"description":"date_preset (enum: adcampaigninsights_date_preset_enum_param)","type":"string"},"default_summary":{"description":"default_summary","type":"boolean"},"export_columns":{"description":"export_columns","items":{"type":"string"},"type":"array"},"export_format":{"description":"export_format","type":"string"},"export_name":{"description":"export_name","type":"string"},"fields":{"description":"fields","items":{"type":"string"},"type":"array"},"filtering":{"description":"filtering","items":{"additionalProperties":true,"type":"object"},"type":"array"},"id":{"description":"AdSet ID","type":"string"},"level":{"description":"level (enum: adcampaigninsights_level_enum_param)","type":"string"},"limit":{"description":"limit","type":"integer"},"product_id_limit":{"description":"product_id_limit","type":"integer"},"sort":{"description":"sort","items":{"type":"string"},"type":"array"},"summary":{"description":"summary","items":{"type":"string"},"type":"array"},"summary_action_breakdowns":{"description":"summary_action_breakdowns","items":{"type":"string"},"type":"array"},"time_increment":{"description":"time_increment","type":"string"},"time_range":{"description":"time_range","type":"string"},"time_ranges":{"description":"time_ranges","items":{"additionalProperties":true,"type":"object"},"type":"array"},"use_account_attribution_setting":{"description":"use_account_attribution_setting","type":"boolean"},"use_unified_attribution_setting":{"description":"use_unified_attribution_setting","type":"boolean"}},"required":["id"],"type":"object"}`)
+
+	AdSet_GET_message_delivery_estimateSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"bid_amount":{"description":"bid_amount","type":"integer"},"daily_budget":{"description":"daily_budget","type":"integer"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"is_direct_send_campaign":{"description":"is_direct_send_campaign","type":"boolean"},"lifetime_budget":{"description":"lifetime_budget","type":"integer"},"lifetime_in_days":{"description":"lifetime_in_days","type":"integer"},"limit":{"description":"Maximum number of results","type":"integer"},"optimization_goal":{"description":"optimization_goal (enum: adcampaignmessage_delivery_estimate_optimization_goal_enum_param)","type":"string"},"pacing_type":{"description":"pacing_type (enum: adcampaignmessage_delivery_estimate_pacing_type_enum_param)","type":"string"},"promoted_object":{"additionalProperties":true,"description":"promoted_object","type":"object"},"targeting_spec":{"description":"targeting_spec","type":"string"}},"type":"object"}`)
+
+	AdSet_GET_targetingsentencelinesSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdSet ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+
+	AdSet_DELETE_Schema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdSet ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+
+	AdSet_GET_Schema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"am_call_tags":{"description":"am_call_tags","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"date_preset":{"description":"date_preset (enum: adcampaign_date_preset)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"from_adtable":{"description":"from_adtable","type":"boolean"},"id":{"description":"AdSet ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"time_range":{"description":"time_range","type":"string"}},"required":["id"],"type":"object"}`)
+
+	AdSet_POST_Schema = json.RawMessage(`{"additionalProperties":false,"properties":{"account_id":{"description":"account_id","type":"string"},"adlabels":{"description":"adlabels","items":{"additionalProperties":true,"type":"object"},"type":"array"},"adset_schedule":{"description":"adset_schedule","items":{"additionalProperties":true,"type":"object"},"type":"array"},"attribution_spec":{"description":"attribution_spec","items":{"additionalProperties":true,"type":"object"},"type":"array"},"bid_adjustments":{"additionalProperties":true,"description":"bid_adjustments","type":"object"},"bid_amount":{"description":"bid_amount","type":"integer"},"bid_constraints":{"additionalProperties":true,"description":"bid_constraints","type":"object"},"bid_strategy":{"description":"bid_strategy (enum: adcampaign_bid_strategy)","type":"string"},"billing_event":{"description":"billing_event (enum: adcampaign_billing_event)","type":"string"},"campaign_attribution":{"additionalProperties":true,"description":"campaign_attribution","type":"object"},"campaign_spec":{"additionalProperties":true,"description":"campaign_spec","type":"object"},"creative_sequence":{"description":"creative_sequence","items":{"type":"string"},"type":"array"},"creative_sequence_repetition_pattern":{"description":"creative_sequence_repetition_pattern (enum: adcampaign_creative_sequence_repetition_pattern)","type":"string"},"daily_budget":{"description":"daily_budget","type":"integer"},"daily_imps":{"description":"daily_imps","type":"integer"},"daily_min_spend_target":{"description":"daily_min_spend_target","type":"integer"},"daily_spend_cap":{"description":"daily_spend_cap","type":"integer"},"date_format":{"description":"date_format","type":"string"},"destination_type":{"description":"destination_type (enum: adcampaign_destination_type)","type":"string"},"dsa_beneficiary":{"description":"dsa_beneficiary","type":"string"},"dsa_payor":{"description":"dsa_payor","type":"string"},"end_time":{"description":"end_time","type":"string"},"execution_options":{"description":"execution_options","items":{"type":"string"},"type":"array"},"existing_customer_budget_percentage":{"description":"existing_customer_budget_percentage","type":"integer"},"full_funnel_exploration_mode":{"description":"full_funnel_exploration_mode (enum: adcampaign_full_funnel_exploration_mode)","type":"string"},"id":{"description":"AdSet ID","type":"string"},"is_ba_skip_delayed_eligible":{"description":"is_ba_skip_delayed_eligible","type":"boolean"},"is_incremental_attribution_enabled":{"description":"is_incremental_attribution_enabled","type":"boolean"},"is_sac_cfca_terms_certified":{"description":"is_sac_cfca_terms_certified","type":"boolean"},"lifetime_budget":{"description":"lifetime_budget","type":"integer"},"lifetime_imps":{"description":"lifetime_imps","type":"integer"},"lifetime_min_spend_target":{"description":"lifetime_min_spend_target","type":"integer"},"lifetime_spend_cap":{"description":"lifetime_spend_cap","type":"integer"},"max_budget_spend_percentage":{"description":"max_budget_spend_percentage","type":"integer"},"min_budget_spend_percentage":{"description":"min_budget_spend_percentage","type":"integer"},"multi_optimization_goal_weight":{"description":"multi_optimization_goal_weight (enum: adcampaign_multi_optimization_goal_weight)","type":"string"},"name":{"description":"name","type":"string"},"optimization_goal":{"description":"optimization_goal (enum: adcampaign_optimization_goal)","type":"string"},"optimization_sub_event":{"description":"optimization_sub_event (enum: adcampaign_optimization_sub_event)","type":"string"},"pacing_type":{"description":"pacing_type","items":{"type":"string"},"type":"array"},"promoted_object":{"additionalProperties":true,"description":"promoted_object","type":"object"},"rb_prediction_id":{"description":"rb_prediction_id","type":"string"},"regional_regulated_categories":{"description":"regional_regulated_categories","items":{"type":"string"},"type":"array"},"regional_regulation_identities":{"description":"regional_regulation_identities","type":"string"},"rf_prediction_id":{"description":"rf_prediction_id","type":"string"},"start_time":{"description":"start_time","type":"string"},"status":{"description":"status (enum: adcampaign_status)","type":"string"},"targeting":{"description":"targeting","type":"string"},"time_based_ad_rotation_id_blocks":{"description":"time_based_ad_rotation_id_blocks","items":{"type":"string"},"type":"array"},"time_based_ad_rotation_intervals":{"description":"time_based_ad_rotation_intervals","items":{"type":"integer"},"type":"array"},"time_start":{"description":"time_start","type":"string"},"time_stop":{"description":"time_stop","type":"string"},"tune_for_category":{"description":"tune_for_category (enum: adcampaign_tune_for_category)","type":"string"}},"required":["id"],"type":"object"}`)
+)
+
 // AdSet_GET_activitiesHandler handles AdSet_GET_activities
 func AdSet_GET_activitiesHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
@@ -27,7 +68,7 @@ func AdSet_GET_activitiesHandler(ctx context.Context, request mcp.CallToolReques
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -56,7 +97,7 @@ func AdSet_GET_activitiesHandler(ctx context.Context, request mcp.CallToolReques
 	resp, err := makeGraphRequest("GET", baseURL, nil)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -76,7 +117,7 @@ func AdSet_GET_ad_studiesHandler(ctx context.Context, request mcp.CallToolReques
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -105,7 +146,7 @@ func AdSet_GET_ad_studiesHandler(ctx context.Context, request mcp.CallToolReques
 	resp, err := makeGraphRequest("GET", baseURL, nil)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -125,7 +166,7 @@ func AdSet_GET_adcreativesHandler(ctx context.Context, request mcp.CallToolReque
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -154,7 +195,7 @@ func AdSet_GET_adcreativesHandler(ctx context.Context, request mcp.CallToolReque
 	resp, err := makeGraphRequest("GET", baseURL, nil)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -174,7 +215,7 @@ func AdSet_DELETE_adlabelsHandler(ctx context.Context, request mcp.CallToolReque
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -203,7 +244,7 @@ func AdSet_DELETE_adlabelsHandler(ctx context.Context, request mcp.CallToolReque
 	resp, err := makeGraphRequest("DELETE", baseURL, nil)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -222,7 +263,7 @@ func AdSet_POST_adlabelsHandler(ctx context.Context, request mcp.CallToolRequest
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -233,7 +274,7 @@ func AdSet_POST_adlabelsHandler(ctx context.Context, request mcp.CallToolRequest
 	resp, err := makeGraphRequest("POST", url, params)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -253,7 +294,7 @@ func AdSet_GET_adrules_governedHandler(ctx context.Context, request mcp.CallTool
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -282,7 +323,7 @@ func AdSet_GET_adrules_governedHandler(ctx context.Context, request mcp.CallTool
 	resp, err := makeGraphRequest("GET", baseURL, nil)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -302,7 +343,7 @@ func AdSet_GET_adsHandler(ctx context.Context, request mcp.CallToolRequest) (*mc
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -331,7 +372,7 @@ func AdSet_GET_adsHandler(ctx context.Context, request mcp.CallToolRequest) (*mc
 	resp, err := makeGraphRequest("GET", baseURL, nil)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -351,7 +392,7 @@ func AdSet_GET_asyncadrequestsHandler(ctx context.Context, request mcp.CallToolR
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -380,7 +421,7 @@ func AdSet_GET_asyncadrequestsHandler(ctx context.Context, request mcp.CallToolR
 	resp, err := makeGraphRequest("GET", baseURL, nil)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -399,7 +440,7 @@ func AdSet_POST_budget_schedulesHandler(ctx context.Context, request mcp.CallToo
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -410,7 +451,7 @@ func AdSet_POST_budget_schedulesHandler(ctx context.Context, request mcp.CallToo
 	resp, err := makeGraphRequest("POST", url, params)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -430,7 +471,7 @@ func AdSet_GET_copiesHandler(ctx context.Context, request mcp.CallToolRequest) (
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -459,7 +500,7 @@ func AdSet_GET_copiesHandler(ctx context.Context, request mcp.CallToolRequest) (
 	resp, err := makeGraphRequest("GET", baseURL, nil)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -478,7 +519,7 @@ func AdSet_POST_copiesHandler(ctx context.Context, request mcp.CallToolRequest) 
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -489,7 +530,7 @@ func AdSet_POST_copiesHandler(ctx context.Context, request mcp.CallToolRequest) 
 	resp, err := makeGraphRequest("POST", url, params)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -509,7 +550,7 @@ func AdSet_GET_delivery_estimateHandler(ctx context.Context, request mcp.CallToo
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -538,7 +579,7 @@ func AdSet_GET_delivery_estimateHandler(ctx context.Context, request mcp.CallToo
 	resp, err := makeGraphRequest("GET", baseURL, nil)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -558,7 +599,7 @@ func AdSet_GET_insightsHandler(ctx context.Context, request mcp.CallToolRequest)
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -587,7 +628,7 @@ func AdSet_GET_insightsHandler(ctx context.Context, request mcp.CallToolRequest)
 	resp, err := makeGraphRequest("GET", baseURL, nil)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -606,7 +647,7 @@ func AdSet_POST_insightsHandler(ctx context.Context, request mcp.CallToolRequest
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -617,7 +658,7 @@ func AdSet_POST_insightsHandler(ctx context.Context, request mcp.CallToolRequest
 	resp, err := makeGraphRequest("POST", url, params)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -661,7 +702,7 @@ func AdSet_GET_message_delivery_estimateHandler(ctx context.Context, request mcp
 	resp, err := makeGraphRequest("GET", baseURL, nil)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -681,7 +722,7 @@ func AdSet_GET_targetingsentencelinesHandler(ctx context.Context, request mcp.Ca
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -710,7 +751,7 @@ func AdSet_GET_targetingsentencelinesHandler(ctx context.Context, request mcp.Ca
 	resp, err := makeGraphRequest("GET", baseURL, nil)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -730,7 +771,7 @@ func AdSet_DELETE_Handler(ctx context.Context, request mcp.CallToolRequest) (*mc
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -759,7 +800,7 @@ func AdSet_DELETE_Handler(ctx context.Context, request mcp.CallToolRequest) (*mc
 	resp, err := makeGraphRequest("DELETE", baseURL, nil)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -779,7 +820,7 @@ func AdSet_GET_Handler(ctx context.Context, request mcp.CallToolRequest) (*mcp.C
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -808,7 +849,7 @@ func AdSet_GET_Handler(ctx context.Context, request mcp.CallToolRequest) (*mcp.C
 	resp, err := makeGraphRequest("GET", baseURL, nil)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -827,7 +868,7 @@ func AdSet_POST_Handler(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -838,7 +879,7 @@ func AdSet_POST_Handler(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 	resp, err := makeGraphRequest("POST", url, params)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -851,7 +892,7 @@ func RegisterAdSetTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"AdSet_GET_activities",
 			"GET activities for AdSet. Returns AdActivity. Parameters: after (string), business_id (string), category (adcampaignactivities_category_enum_param), limit (int), since (datetime), uid (int), until (datetime)",
-			json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"business_id":{"description":"business_id","type":"string"},"category":{"description":"category (enum: adcampaignactivities_category_enum_param)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdSet ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"since":{"description":"since","type":"string"},"uid":{"description":"uid","type":"integer"},"until":{"description":"until","type":"string"}},"required":["id"],"type":"object"}`),
+			AdSet_GET_activitiesSchema,
 		),
 		AdSet_GET_activitiesHandler,
 	)
@@ -860,7 +901,7 @@ func RegisterAdSetTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"AdSet_GET_ad_studies",
 			"GET ad_studies for AdSet. Returns AdStudy",
-			json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdSet ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`),
+			AdSet_GET_ad_studiesSchema,
 		),
 		AdSet_GET_ad_studiesHandler,
 	)
@@ -869,7 +910,7 @@ func RegisterAdSetTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"AdSet_GET_adcreatives",
 			"GET adcreatives for AdSet. Returns AdCreative",
-			json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdSet ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`),
+			AdSet_GET_adcreativesSchema,
 		),
 		AdSet_GET_adcreativesHandler,
 	)
@@ -878,7 +919,7 @@ func RegisterAdSetTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"AdSet_DELETE_adlabels",
 			"DELETE adlabels for AdSet. Returns Object. Parameters: adlabels (list<Object>) [required], execution_options (list<adcampaignadlabels_execution_options_enum_param>)",
-			json.RawMessage(`{"additionalProperties":true,"properties":{"adlabels":{"description":"adlabels","items":{"additionalProperties":true,"type":"object"},"type":"array"},"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"execution_options":{"description":"execution_options","items":{"type":"string"},"type":"array"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdSet ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id","adlabels"],"type":"object"}`),
+			AdSet_DELETE_adlabelsSchema,
 		),
 		AdSet_DELETE_adlabelsHandler,
 	)
@@ -887,7 +928,7 @@ func RegisterAdSetTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"AdSet_POST_adlabels",
 			"POST adlabels for AdSet. Returns AdSet. Parameters: adlabels (list<Object>) [required], execution_options (list<adcampaignadlabels_execution_options_enum_param>)",
-			json.RawMessage(`{"additionalProperties":false,"properties":{"adlabels":{"description":"adlabels","items":{"additionalProperties":true,"type":"object"},"type":"array"},"execution_options":{"description":"execution_options","items":{"type":"string"},"type":"array"},"id":{"description":"AdSet ID","type":"string"}},"required":["id","adlabels"],"type":"object"}`),
+			AdSet_POST_adlabelsSchema,
 		),
 		AdSet_POST_adlabelsHandler,
 	)
@@ -896,7 +937,7 @@ func RegisterAdSetTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"AdSet_GET_adrules_governed",
 			"GET adrules_governed for AdSet. Returns AdRule. Parameters: pass_evaluation (bool)",
-			json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdSet ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"pass_evaluation":{"description":"pass_evaluation","type":"boolean"}},"required":["id"],"type":"object"}`),
+			AdSet_GET_adrules_governedSchema,
 		),
 		AdSet_GET_adrules_governedHandler,
 	)
@@ -905,7 +946,7 @@ func RegisterAdSetTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"AdSet_GET_ads",
 			"GET ads for AdSet. Returns Ad. Parameters: date_preset (adcampaignads_date_preset_enum_param), effective_status (list<string>), time_range (map), updated_since (int)",
-			json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"date_preset":{"description":"date_preset (enum: adcampaignads_date_preset_enum_param)","type":"string"},"effective_status":{"description":"effective_status","items":{"type":"string"},"type":"array"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdSet ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"time_range":{"description":"time_range","type":"string"},"updated_since":{"description":"updated_since","type":"integer"}},"required":["id"],"type":"object"}`),
+			AdSet_GET_adsSchema,
 		),
 		AdSet_GET_adsHandler,
 	)
@@ -914,7 +955,7 @@ func RegisterAdSetTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"AdSet_GET_asyncadrequests",
 			"GET asyncadrequests for AdSet. Returns AdAsyncRequest. Parameters: statuses (list<adcampaignasyncadrequests_statuses_enum_param>)",
-			json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdSet ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"statuses":{"description":"statuses","items":{"type":"string"},"type":"array"}},"required":["id"],"type":"object"}`),
+			AdSet_GET_asyncadrequestsSchema,
 		),
 		AdSet_GET_asyncadrequestsHandler,
 	)
@@ -923,7 +964,7 @@ func RegisterAdSetTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"AdSet_POST_budget_schedules",
 			"POST budget_schedules for AdSet. Returns HighDemandPeriod. Parameters: budget_value (unsigned int) [required], budget_value_type (adcampaignbudget_schedules_budget_value_type_enum_param) [required], time_end (unsigned int) [required], time_start (unsigned int) [required]",
-			json.RawMessage(`{"additionalProperties":false,"properties":{"budget_value":{"description":"budget_value","type":"integer"},"budget_value_type":{"description":"budget_value_type (enum: adcampaignbudget_schedules_budget_value_type_enum_param)","type":"string"},"id":{"description":"AdSet ID","type":"string"},"time_end":{"description":"time_end","type":"integer"},"time_start":{"description":"time_start","type":"integer"}},"required":["id","budget_value","budget_value_type","time_end","time_start"],"type":"object"}`),
+			AdSet_POST_budget_schedulesSchema,
 		),
 		AdSet_POST_budget_schedulesHandler,
 	)
@@ -932,7 +973,7 @@ func RegisterAdSetTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"AdSet_GET_copies",
 			"GET copies for AdSet. Returns AdSet. Parameters: date_preset (adcampaigncopies_date_preset_enum_param), effective_status (list<adcampaigncopies_effective_status_enum_param>), is_completed (bool), time_range (map)",
-			json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"date_preset":{"description":"date_preset (enum: adcampaigncopies_date_preset_enum_param)","type":"string"},"effective_status":{"description":"effective_status","items":{"type":"string"},"type":"array"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdSet ID","type":"string"},"is_completed":{"description":"is_completed","type":"boolean"},"limit":{"description":"Maximum number of results","type":"integer"},"time_range":{"description":"time_range","type":"string"}},"required":["id"],"type":"object"}`),
+			AdSet_GET_copiesSchema,
 		),
 		AdSet_GET_copiesHandler,
 	)
@@ -941,7 +982,7 @@ func RegisterAdSetTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"AdSet_POST_copies",
 			"POST copies for AdSet. Returns AdSet. Parameters: campaign_id (string), create_dco_adset (bool), deep_copy (bool), end_time (datetime), rename_options (Object), start_time (datetime), status_option (adcampaigncopies_status_option_enum_param)",
-			json.RawMessage(`{"additionalProperties":false,"properties":{"campaign_id":{"description":"campaign_id","type":"string"},"create_dco_adset":{"description":"create_dco_adset","type":"boolean"},"deep_copy":{"description":"deep_copy","type":"boolean"},"end_time":{"description":"end_time","type":"string"},"id":{"description":"AdSet ID","type":"string"},"rename_options":{"additionalProperties":true,"description":"rename_options","type":"object"},"start_time":{"description":"start_time","type":"string"},"status_option":{"description":"status_option (enum: adcampaigncopies_status_option_enum_param)","type":"string"}},"required":["id"],"type":"object"}`),
+			AdSet_POST_copiesSchema,
 		),
 		AdSet_POST_copiesHandler,
 	)
@@ -950,7 +991,7 @@ func RegisterAdSetTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"AdSet_GET_delivery_estimate",
 			"GET delivery_estimate for AdSet. Returns AdCampaignDeliveryEstimate. Parameters: optimization_goal (adcampaigndelivery_estimate_optimization_goal_enum_param), promoted_object (Object), targeting_spec (Targeting)",
-			json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdSet ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"optimization_goal":{"description":"optimization_goal (enum: adcampaigndelivery_estimate_optimization_goal_enum_param)","type":"string"},"promoted_object":{"additionalProperties":true,"description":"promoted_object","type":"object"},"targeting_spec":{"description":"targeting_spec","type":"string"}},"required":["id"],"type":"object"}`),
+			AdSet_GET_delivery_estimateSchema,
 		),
 		AdSet_GET_delivery_estimateHandler,
 	)
@@ -959,7 +1000,7 @@ func RegisterAdSetTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"AdSet_GET_insights",
 			"GET insights for AdSet. Returns AdsInsights. Parameters: action_attribution_windows (list<adcampaigninsights_action_attribution_windows_enum_param>), action_breakdowns (list<adcampaigninsights_action_breakdowns_enum_param>), action_report_time (adcampaigninsights_action_report_time_enum_param), breakdowns (list<adcampaigninsights_breakdowns_enum_param>), date_preset (adcampaigninsights_date_preset_enum_param), default_summary (bool), export_columns (list<string>), export_format (string), export_name (string), fields (list<string>), filtering (list<Object>), level (adcampaigninsights_level_enum_param), limit (int), product_id_limit (int), sort (list<string>), summary (list<string>), summary_action_breakdowns (list<adcampaigninsights_summary_action_breakdowns_enum_param>), time_increment (string), time_range (map), time_ranges (list<map>), use_account_attribution_setting (bool), use_unified_attribution_setting (bool)",
-			json.RawMessage(`{"additionalProperties":true,"properties":{"action_attribution_windows":{"description":"action_attribution_windows","items":{"type":"string"},"type":"array"},"action_breakdowns":{"description":"action_breakdowns","items":{"type":"string"},"type":"array"},"action_report_time":{"description":"action_report_time (enum: adcampaigninsights_action_report_time_enum_param)","type":"string"},"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"breakdowns":{"description":"breakdowns","items":{"type":"string"},"type":"array"},"date_preset":{"description":"date_preset (enum: adcampaigninsights_date_preset_enum_param)","type":"string"},"default_summary":{"description":"default_summary","type":"boolean"},"export_columns":{"description":"export_columns","items":{"type":"string"},"type":"array"},"export_format":{"description":"export_format","type":"string"},"export_name":{"description":"export_name","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"filtering":{"description":"filtering","items":{"additionalProperties":true,"type":"object"},"type":"array"},"id":{"description":"AdSet ID","type":"string"},"level":{"description":"level (enum: adcampaigninsights_level_enum_param)","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"product_id_limit":{"description":"product_id_limit","type":"integer"},"sort":{"description":"sort","items":{"type":"string"},"type":"array"},"summary":{"description":"summary","items":{"type":"string"},"type":"array"},"summary_action_breakdowns":{"description":"summary_action_breakdowns","items":{"type":"string"},"type":"array"},"time_increment":{"description":"time_increment","type":"string"},"time_range":{"description":"time_range","type":"string"},"time_ranges":{"description":"time_ranges","items":{"additionalProperties":true,"type":"object"},"type":"array"},"use_account_attribution_setting":{"description":"use_account_attribution_setting","type":"boolean"},"use_unified_attribution_setting":{"description":"use_unified_attribution_setting","type":"boolean"}},"required":["id"],"type":"object"}`),
+			AdSet_GET_insightsSchema,
 		),
 		AdSet_GET_insightsHandler,
 	)
@@ -968,7 +1009,7 @@ func RegisterAdSetTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"AdSet_POST_insights",
 			"POST insights for AdSet. Returns AdReportRun. Parameters: action_attribution_windows (list<adcampaigninsights_action_attribution_windows_enum_param>), action_breakdowns (list<adcampaigninsights_action_breakdowns_enum_param>), action_report_time (adcampaigninsights_action_report_time_enum_param), breakdowns (list<adcampaigninsights_breakdowns_enum_param>), date_preset (adcampaigninsights_date_preset_enum_param), default_summary (bool), export_columns (list<string>), export_format (string), export_name (string), fields (list<string>), filtering (list<Object>), level (adcampaigninsights_level_enum_param), limit (int), product_id_limit (int), sort (list<string>), summary (list<string>), summary_action_breakdowns (list<adcampaigninsights_summary_action_breakdowns_enum_param>), time_increment (string), time_range (map), time_ranges (list<map>), use_account_attribution_setting (bool), use_unified_attribution_setting (bool)",
-			json.RawMessage(`{"additionalProperties":false,"properties":{"action_attribution_windows":{"description":"action_attribution_windows","items":{"type":"string"},"type":"array"},"action_breakdowns":{"description":"action_breakdowns","items":{"type":"string"},"type":"array"},"action_report_time":{"description":"action_report_time (enum: adcampaigninsights_action_report_time_enum_param)","type":"string"},"breakdowns":{"description":"breakdowns","items":{"type":"string"},"type":"array"},"date_preset":{"description":"date_preset (enum: adcampaigninsights_date_preset_enum_param)","type":"string"},"default_summary":{"description":"default_summary","type":"boolean"},"export_columns":{"description":"export_columns","items":{"type":"string"},"type":"array"},"export_format":{"description":"export_format","type":"string"},"export_name":{"description":"export_name","type":"string"},"fields":{"description":"fields","items":{"type":"string"},"type":"array"},"filtering":{"description":"filtering","items":{"additionalProperties":true,"type":"object"},"type":"array"},"id":{"description":"AdSet ID","type":"string"},"level":{"description":"level (enum: adcampaigninsights_level_enum_param)","type":"string"},"limit":{"description":"limit","type":"integer"},"product_id_limit":{"description":"product_id_limit","type":"integer"},"sort":{"description":"sort","items":{"type":"string"},"type":"array"},"summary":{"description":"summary","items":{"type":"string"},"type":"array"},"summary_action_breakdowns":{"description":"summary_action_breakdowns","items":{"type":"string"},"type":"array"},"time_increment":{"description":"time_increment","type":"string"},"time_range":{"description":"time_range","type":"string"},"time_ranges":{"description":"time_ranges","items":{"additionalProperties":true,"type":"object"},"type":"array"},"use_account_attribution_setting":{"description":"use_account_attribution_setting","type":"boolean"},"use_unified_attribution_setting":{"description":"use_unified_attribution_setting","type":"boolean"}},"required":["id"],"type":"object"}`),
+			AdSet_POST_insightsSchema,
 		),
 		AdSet_POST_insightsHandler,
 	)
@@ -977,7 +1018,7 @@ func RegisterAdSetTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"AdSet_GET_message_delivery_estimate",
 			"GET message_delivery_estimate for AdSet. Returns MessageDeliveryEstimate. Parameters: bid_amount (unsigned int), daily_budget (unsigned int), is_direct_send_campaign (bool), lifetime_budget (unsigned int), lifetime_in_days (unsigned int), optimization_goal (adcampaignmessage_delivery_estimate_optimization_goal_enum_param), pacing_type (adcampaignmessage_delivery_estimate_pacing_type_enum_param), promoted_object (Object), targeting_spec (Targeting)",
-			json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"bid_amount":{"description":"bid_amount","type":"integer"},"daily_budget":{"description":"daily_budget","type":"integer"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"is_direct_send_campaign":{"description":"is_direct_send_campaign","type":"boolean"},"lifetime_budget":{"description":"lifetime_budget","type":"integer"},"lifetime_in_days":{"description":"lifetime_in_days","type":"integer"},"limit":{"description":"Maximum number of results","type":"integer"},"optimization_goal":{"description":"optimization_goal (enum: adcampaignmessage_delivery_estimate_optimization_goal_enum_param)","type":"string"},"pacing_type":{"description":"pacing_type (enum: adcampaignmessage_delivery_estimate_pacing_type_enum_param)","type":"string"},"promoted_object":{"additionalProperties":true,"description":"promoted_object","type":"object"},"targeting_spec":{"description":"targeting_spec","type":"string"}},"type":"object"}`),
+			AdSet_GET_message_delivery_estimateSchema,
 		),
 		AdSet_GET_message_delivery_estimateHandler,
 	)
@@ -986,7 +1027,7 @@ func RegisterAdSetTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"AdSet_GET_targetingsentencelines",
 			"GET targetingsentencelines for AdSet. Returns TargetingSentenceLine",
-			json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdSet ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`),
+			AdSet_GET_targetingsentencelinesSchema,
 		),
 		AdSet_GET_targetingsentencelinesHandler,
 	)
@@ -995,7 +1036,7 @@ func RegisterAdSetTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"AdSet_DELETE_",
 			"DELETE  for AdSet. Returns Object",
-			json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdSet ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`),
+			AdSet_DELETE_Schema,
 		),
 		AdSet_DELETE_Handler,
 	)
@@ -1004,7 +1045,7 @@ func RegisterAdSetTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"AdSet_GET_",
 			"GET  for AdSet. Returns AdSet. Parameters: am_call_tags (map), date_preset (adcampaign_date_preset), from_adtable (bool), time_range (map)",
-			json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"am_call_tags":{"description":"am_call_tags","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"date_preset":{"description":"date_preset (enum: adcampaign_date_preset)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"from_adtable":{"description":"from_adtable","type":"boolean"},"id":{"description":"AdSet ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"time_range":{"description":"time_range","type":"string"}},"required":["id"],"type":"object"}`),
+			AdSet_GET_Schema,
 		),
 		AdSet_GET_Handler,
 	)
@@ -1013,7 +1054,7 @@ func RegisterAdSetTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"AdSet_POST_",
 			"POST  for AdSet. Returns AdSet. Parameters: account_id (string), adlabels (list<Object>), adset_schedule (list<Object>), attribution_spec (list<map>), bid_adjustments (Object), bid_amount (int), bid_constraints (map<string, Object>), bid_strategy (adcampaign_bid_strategy), billing_event (adcampaign_billing_event), campaign_attribution (Object), campaign_spec (Object), creative_sequence (list<string>), creative_sequence_repetition_pattern (adcampaign_creative_sequence_repetition_pattern), daily_budget (unsigned int), daily_imps (unsigned int), daily_min_spend_target (unsigned int), daily_spend_cap (unsigned int), date_format (string), destination_type (adcampaign_destination_type), dsa_beneficiary (string), dsa_payor (string), end_time (datetime), execution_options (list<adcampaign_execution_options>), existing_customer_budget_percentage (unsigned int), full_funnel_exploration_mode (adcampaign_full_funnel_exploration_mode), is_ba_skip_delayed_eligible (bool), is_incremental_attribution_enabled (bool), is_sac_cfca_terms_certified (bool), lifetime_budget (unsigned int), lifetime_imps (unsigned int), lifetime_min_spend_target (unsigned int), lifetime_spend_cap (unsigned int), max_budget_spend_percentage (unsigned int), min_budget_spend_percentage (unsigned int), multi_optimization_goal_weight (adcampaign_multi_optimization_goal_weight), name (string), optimization_goal (adcampaign_optimization_goal), optimization_sub_event (adcampaign_optimization_sub_event), pacing_type (list<string>), promoted_object (Object), rb_prediction_id (string), regional_regulated_categories (list<adcampaign_regional_regulated_categories>), regional_regulation_identities (map), rf_prediction_id (string), start_time (datetime), status (adcampaign_status), targeting (Targeting), time_based_ad_rotation_id_blocks (list<list<unsigned int>>), time_based_ad_rotation_intervals (list<unsigned int>), time_start (datetime), time_stop (datetime), tune_for_category (adcampaign_tune_for_category)",
-			json.RawMessage(`{"additionalProperties":false,"properties":{"account_id":{"description":"account_id","type":"string"},"adlabels":{"description":"adlabels","items":{"additionalProperties":true,"type":"object"},"type":"array"},"adset_schedule":{"description":"adset_schedule","items":{"additionalProperties":true,"type":"object"},"type":"array"},"attribution_spec":{"description":"attribution_spec","items":{"additionalProperties":true,"type":"object"},"type":"array"},"bid_adjustments":{"additionalProperties":true,"description":"bid_adjustments","type":"object"},"bid_amount":{"description":"bid_amount","type":"integer"},"bid_constraints":{"additionalProperties":true,"description":"bid_constraints","type":"object"},"bid_strategy":{"description":"bid_strategy (enum: adcampaign_bid_strategy)","type":"string"},"billing_event":{"description":"billing_event (enum: adcampaign_billing_event)","type":"string"},"campaign_attribution":{"additionalProperties":true,"description":"campaign_attribution","type":"object"},"campaign_spec":{"additionalProperties":true,"description":"campaign_spec","type":"object"},"creative_sequence":{"description":"creative_sequence","items":{"type":"string"},"type":"array"},"creative_sequence_repetition_pattern":{"description":"creative_sequence_repetition_pattern (enum: adcampaign_creative_sequence_repetition_pattern)","type":"string"},"daily_budget":{"description":"daily_budget","type":"integer"},"daily_imps":{"description":"daily_imps","type":"integer"},"daily_min_spend_target":{"description":"daily_min_spend_target","type":"integer"},"daily_spend_cap":{"description":"daily_spend_cap","type":"integer"},"date_format":{"description":"date_format","type":"string"},"destination_type":{"description":"destination_type (enum: adcampaign_destination_type)","type":"string"},"dsa_beneficiary":{"description":"dsa_beneficiary","type":"string"},"dsa_payor":{"description":"dsa_payor","type":"string"},"end_time":{"description":"end_time","type":"string"},"execution_options":{"description":"execution_options","items":{"type":"string"},"type":"array"},"existing_customer_budget_percentage":{"description":"existing_customer_budget_percentage","type":"integer"},"full_funnel_exploration_mode":{"description":"full_funnel_exploration_mode (enum: adcampaign_full_funnel_exploration_mode)","type":"string"},"id":{"description":"AdSet ID","type":"string"},"is_ba_skip_delayed_eligible":{"description":"is_ba_skip_delayed_eligible","type":"boolean"},"is_incremental_attribution_enabled":{"description":"is_incremental_attribution_enabled","type":"boolean"},"is_sac_cfca_terms_certified":{"description":"is_sac_cfca_terms_certified","type":"boolean"},"lifetime_budget":{"description":"lifetime_budget","type":"integer"},"lifetime_imps":{"description":"lifetime_imps","type":"integer"},"lifetime_min_spend_target":{"description":"lifetime_min_spend_target","type":"integer"},"lifetime_spend_cap":{"description":"lifetime_spend_cap","type":"integer"},"max_budget_spend_percentage":{"description":"max_budget_spend_percentage","type":"integer"},"min_budget_spend_percentage":{"description":"min_budget_spend_percentage","type":"integer"},"multi_optimization_goal_weight":{"description":"multi_optimization_goal_weight (enum: adcampaign_multi_optimization_goal_weight)","type":"string"},"name":{"description":"name","type":"string"},"optimization_goal":{"description":"optimization_goal (enum: adcampaign_optimization_goal)","type":"string"},"optimization_sub_event":{"description":"optimization_sub_event (enum: adcampaign_optimization_sub_event)","type":"string"},"pacing_type":{"description":"pacing_type","items":{"type":"string"},"type":"array"},"promoted_object":{"additionalProperties":true,"description":"promoted_object","type":"object"},"rb_prediction_id":{"description":"rb_prediction_id","type":"string"},"regional_regulated_categories":{"description":"regional_regulated_categories","items":{"type":"string"},"type":"array"},"regional_regulation_identities":{"description":"regional_regulation_identities","type":"string"},"rf_prediction_id":{"description":"rf_prediction_id","type":"string"},"start_time":{"description":"start_time","type":"string"},"status":{"description":"status (enum: adcampaign_status)","type":"string"},"targeting":{"description":"targeting","type":"string"},"time_based_ad_rotation_id_blocks":{"description":"time_based_ad_rotation_id_blocks","items":{"type":"string"},"type":"array"},"time_based_ad_rotation_intervals":{"description":"time_based_ad_rotation_intervals","items":{"type":"integer"},"type":"array"},"time_start":{"description":"time_start","type":"string"},"time_stop":{"description":"time_stop","type":"string"},"tune_for_category":{"description":"tune_for_category (enum: adcampaign_tune_for_category)","type":"string"}},"required":["id"],"type":"object"}`),
+			AdSet_POST_Schema,
 		),
 		AdSet_POST_Handler,
 	)

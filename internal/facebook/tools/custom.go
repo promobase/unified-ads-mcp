@@ -9,20 +9,18 @@ import (
 	"github.com/mark3labs/mcp-go/server"
 )
 
-// RegisterHealthTools registers health and diagnostic tools
 func RegisterHealthTools(mcpServer *server.MCPServer) error {
-	// Add a tool to check Facebook access token
 	mcpServer.AddTool(
-		mcp.NewTool("check_access_token",
-			mcp.WithDescription("Check if Facebook access token is configured"),
+		mcp.NewTool("get_default_ad_account",
+			mcp.WithDescription("Read the default ad account."),
 		),
-		handleCheckAccessToken,
+		handleGetDefaultAdAccount,
 	)
 
 	return nil
 }
 
-func handleCheckAccessToken(
+func handleGetDefaultAdAccount(
 	ctx context.Context,
 	request mcp.CallToolRequest,
 ) (*mcp.CallToolResult, error) {

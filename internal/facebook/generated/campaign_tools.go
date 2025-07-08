@@ -13,6 +13,35 @@ import (
 	"github.com/mark3labs/mcp-go/server"
 )
 
+// Tool schemas for Campaign
+var (
+	Campaign_GET_ad_studiesSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"Campaign ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+
+	Campaign_POST_adlabelsSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"adlabels":{"description":"adlabels","items":{"additionalProperties":true,"type":"object"},"type":"array"},"execution_options":{"description":"execution_options","items":{"type":"string"},"type":"array"},"id":{"description":"Campaign ID","type":"string"}},"required":["id","adlabels"],"type":"object"}`)
+
+	Campaign_GET_adrules_governedSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"Campaign ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"pass_evaluation":{"description":"pass_evaluation","type":"boolean"}},"required":["id"],"type":"object"}`)
+
+	Campaign_GET_adsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"date_preset":{"description":"date_preset (enum: adcampaigngroupads_date_preset_enum_param)","type":"string"},"effective_status":{"description":"effective_status","items":{"type":"string"},"type":"array"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"Campaign ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"time_range":{"description":"time_range","type":"string"},"updated_since":{"description":"updated_since","type":"integer"}},"required":["id"],"type":"object"}`)
+
+	Campaign_GET_adsetsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"date_preset":{"description":"date_preset (enum: adcampaigngroupadsets_date_preset_enum_param)","type":"string"},"effective_status":{"description":"effective_status","items":{"type":"string"},"type":"array"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"Campaign ID","type":"string"},"is_completed":{"description":"is_completed","type":"boolean"},"limit":{"description":"Maximum number of results","type":"integer"},"time_range":{"description":"time_range","type":"string"}},"required":["id"],"type":"object"}`)
+
+	Campaign_POST_budget_schedulesSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"budget_value":{"description":"budget_value","type":"integer"},"budget_value_type":{"description":"budget_value_type (enum: adcampaigngroupbudget_schedules_budget_value_type_enum_param)","type":"string"},"id":{"description":"Campaign ID","type":"string"},"time_end":{"description":"time_end","type":"integer"},"time_start":{"description":"time_start","type":"integer"}},"required":["id","budget_value","budget_value_type","time_end","time_start"],"type":"object"}`)
+
+	Campaign_GET_copiesSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"date_preset":{"description":"date_preset (enum: adcampaigngroupcopies_date_preset_enum_param)","type":"string"},"effective_status":{"description":"effective_status","items":{"type":"string"},"type":"array"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"Campaign ID","type":"string"},"is_completed":{"description":"is_completed","type":"boolean"},"limit":{"description":"Maximum number of results","type":"integer"},"time_range":{"description":"time_range","type":"string"}},"required":["id"],"type":"object"}`)
+
+	Campaign_POST_copiesSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"deep_copy":{"description":"deep_copy","type":"boolean"},"end_time":{"description":"end_time","type":"string"},"id":{"description":"Campaign ID","type":"string"},"rename_options":{"additionalProperties":true,"description":"rename_options","type":"object"},"start_time":{"description":"start_time","type":"string"},"status_option":{"description":"status_option (enum: adcampaigngroupcopies_status_option_enum_param)","type":"string"}},"required":["id"],"type":"object"}`)
+
+	Campaign_GET_insightsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"action_attribution_windows":{"description":"action_attribution_windows","items":{"type":"string"},"type":"array"},"action_breakdowns":{"description":"action_breakdowns","items":{"type":"string"},"type":"array"},"action_report_time":{"description":"action_report_time (enum: adcampaigngroupinsights_action_report_time_enum_param)","type":"string"},"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"breakdowns":{"description":"breakdowns","items":{"type":"string"},"type":"array"},"date_preset":{"description":"date_preset (enum: adcampaigngroupinsights_date_preset_enum_param)","type":"string"},"default_summary":{"description":"default_summary","type":"boolean"},"export_columns":{"description":"export_columns","items":{"type":"string"},"type":"array"},"export_format":{"description":"export_format","type":"string"},"export_name":{"description":"export_name","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"filtering":{"description":"filtering","items":{"additionalProperties":true,"type":"object"},"type":"array"},"id":{"description":"Campaign ID","type":"string"},"level":{"description":"level (enum: adcampaigngroupinsights_level_enum_param)","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"product_id_limit":{"description":"product_id_limit","type":"integer"},"sort":{"description":"sort","items":{"type":"string"},"type":"array"},"summary":{"description":"summary","items":{"type":"string"},"type":"array"},"summary_action_breakdowns":{"description":"summary_action_breakdowns","items":{"type":"string"},"type":"array"},"time_increment":{"description":"time_increment","type":"string"},"time_range":{"description":"time_range","type":"string"},"time_ranges":{"description":"time_ranges","items":{"additionalProperties":true,"type":"object"},"type":"array"},"use_account_attribution_setting":{"description":"use_account_attribution_setting","type":"boolean"},"use_unified_attribution_setting":{"description":"use_unified_attribution_setting","type":"boolean"}},"required":["id"],"type":"object"}`)
+
+	Campaign_POST_insightsSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"action_attribution_windows":{"description":"action_attribution_windows","items":{"type":"string"},"type":"array"},"action_breakdowns":{"description":"action_breakdowns","items":{"type":"string"},"type":"array"},"action_report_time":{"description":"action_report_time (enum: adcampaigngroupinsights_action_report_time_enum_param)","type":"string"},"breakdowns":{"description":"breakdowns","items":{"type":"string"},"type":"array"},"date_preset":{"description":"date_preset (enum: adcampaigngroupinsights_date_preset_enum_param)","type":"string"},"default_summary":{"description":"default_summary","type":"boolean"},"export_columns":{"description":"export_columns","items":{"type":"string"},"type":"array"},"export_format":{"description":"export_format","type":"string"},"export_name":{"description":"export_name","type":"string"},"fields":{"description":"fields","items":{"type":"string"},"type":"array"},"filtering":{"description":"filtering","items":{"additionalProperties":true,"type":"object"},"type":"array"},"id":{"description":"Campaign ID","type":"string"},"level":{"description":"level (enum: adcampaigngroupinsights_level_enum_param)","type":"string"},"limit":{"description":"limit","type":"integer"},"product_id_limit":{"description":"product_id_limit","type":"integer"},"sort":{"description":"sort","items":{"type":"string"},"type":"array"},"summary":{"description":"summary","items":{"type":"string"},"type":"array"},"summary_action_breakdowns":{"description":"summary_action_breakdowns","items":{"type":"string"},"type":"array"},"time_increment":{"description":"time_increment","type":"string"},"time_range":{"description":"time_range","type":"string"},"time_ranges":{"description":"time_ranges","items":{"additionalProperties":true,"type":"object"},"type":"array"},"use_account_attribution_setting":{"description":"use_account_attribution_setting","type":"boolean"},"use_unified_attribution_setting":{"description":"use_unified_attribution_setting","type":"boolean"}},"required":["id"],"type":"object"}`)
+
+	Campaign_DELETE_Schema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"Campaign ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+
+	Campaign_GET_Schema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"am_call_tags":{"description":"am_call_tags","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"date_preset":{"description":"date_preset (enum: adcampaigngroup_date_preset)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"from_adtable":{"description":"from_adtable","type":"boolean"},"id":{"description":"Campaign ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"time_range":{"description":"time_range","type":"string"}},"required":["id"],"type":"object"}`)
+
+	Campaign_POST_Schema = json.RawMessage(`{"additionalProperties":false,"properties":{"adlabels":{"description":"adlabels","items":{"additionalProperties":true,"type":"object"},"type":"array"},"adset_bid_amounts":{"description":"adset_bid_amounts","type":"string"},"adset_budgets":{"description":"adset_budgets","items":{"additionalProperties":true,"type":"object"},"type":"array"},"bid_strategy":{"description":"bid_strategy (enum: adcampaigngroup_bid_strategy)","type":"string"},"budget_rebalance_flag":{"description":"budget_rebalance_flag","type":"boolean"},"daily_budget":{"description":"daily_budget","type":"integer"},"execution_options":{"description":"execution_options","items":{"type":"string"},"type":"array"},"id":{"description":"Campaign ID","type":"string"},"is_skadnetwork_attribution":{"description":"is_skadnetwork_attribution","type":"boolean"},"iterative_split_test_configs":{"description":"iterative_split_test_configs","items":{"additionalProperties":true,"type":"object"},"type":"array"},"lifetime_budget":{"description":"lifetime_budget","type":"integer"},"name":{"description":"name","type":"string"},"objective":{"description":"objective (enum: adcampaigngroup_objective)","type":"string"},"pacing_type":{"description":"pacing_type","items":{"type":"string"},"type":"array"},"promoted_object":{"additionalProperties":true,"description":"promoted_object","type":"object"},"smart_promotion_type":{"description":"smart_promotion_type (enum: adcampaigngroup_smart_promotion_type)","type":"string"},"special_ad_categories":{"description":"special_ad_categories","items":{"type":"string"},"type":"array"},"special_ad_category":{"description":"special_ad_category (enum: adcampaigngroup_special_ad_category)","type":"string"},"special_ad_category_country":{"description":"special_ad_category_country","items":{"type":"string"},"type":"array"},"spend_cap":{"description":"spend_cap","type":"integer"},"start_time":{"description":"start_time","type":"string"},"status":{"description":"status (enum: adcampaigngroup_status)","type":"string"},"stop_time":{"description":"stop_time","type":"string"}},"required":["id"],"type":"object"}`)
+)
+
 // Campaign_GET_ad_studiesHandler handles Campaign_GET_ad_studies
 func Campaign_GET_ad_studiesHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
@@ -27,7 +56,7 @@ func Campaign_GET_ad_studiesHandler(ctx context.Context, request mcp.CallToolReq
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -56,7 +85,7 @@ func Campaign_GET_ad_studiesHandler(ctx context.Context, request mcp.CallToolReq
 	resp, err := makeGraphRequest("GET", baseURL, nil)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -75,7 +104,7 @@ func Campaign_POST_adlabelsHandler(ctx context.Context, request mcp.CallToolRequ
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -86,7 +115,7 @@ func Campaign_POST_adlabelsHandler(ctx context.Context, request mcp.CallToolRequ
 	resp, err := makeGraphRequest("POST", url, params)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -106,7 +135,7 @@ func Campaign_GET_adrules_governedHandler(ctx context.Context, request mcp.CallT
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -135,7 +164,7 @@ func Campaign_GET_adrules_governedHandler(ctx context.Context, request mcp.CallT
 	resp, err := makeGraphRequest("GET", baseURL, nil)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -155,7 +184,7 @@ func Campaign_GET_adsHandler(ctx context.Context, request mcp.CallToolRequest) (
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -184,7 +213,7 @@ func Campaign_GET_adsHandler(ctx context.Context, request mcp.CallToolRequest) (
 	resp, err := makeGraphRequest("GET", baseURL, nil)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -204,7 +233,7 @@ func Campaign_GET_adsetsHandler(ctx context.Context, request mcp.CallToolRequest
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -233,7 +262,7 @@ func Campaign_GET_adsetsHandler(ctx context.Context, request mcp.CallToolRequest
 	resp, err := makeGraphRequest("GET", baseURL, nil)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -252,7 +281,7 @@ func Campaign_POST_budget_schedulesHandler(ctx context.Context, request mcp.Call
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -263,7 +292,7 @@ func Campaign_POST_budget_schedulesHandler(ctx context.Context, request mcp.Call
 	resp, err := makeGraphRequest("POST", url, params)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -283,7 +312,7 @@ func Campaign_GET_copiesHandler(ctx context.Context, request mcp.CallToolRequest
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -312,7 +341,7 @@ func Campaign_GET_copiesHandler(ctx context.Context, request mcp.CallToolRequest
 	resp, err := makeGraphRequest("GET", baseURL, nil)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -331,7 +360,7 @@ func Campaign_POST_copiesHandler(ctx context.Context, request mcp.CallToolReques
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -342,7 +371,7 @@ func Campaign_POST_copiesHandler(ctx context.Context, request mcp.CallToolReques
 	resp, err := makeGraphRequest("POST", url, params)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -362,7 +391,7 @@ func Campaign_GET_insightsHandler(ctx context.Context, request mcp.CallToolReque
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -391,7 +420,7 @@ func Campaign_GET_insightsHandler(ctx context.Context, request mcp.CallToolReque
 	resp, err := makeGraphRequest("GET", baseURL, nil)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -410,7 +439,7 @@ func Campaign_POST_insightsHandler(ctx context.Context, request mcp.CallToolRequ
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -421,7 +450,7 @@ func Campaign_POST_insightsHandler(ctx context.Context, request mcp.CallToolRequ
 	resp, err := makeGraphRequest("POST", url, params)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -441,7 +470,7 @@ func Campaign_DELETE_Handler(ctx context.Context, request mcp.CallToolRequest) (
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -470,7 +499,7 @@ func Campaign_DELETE_Handler(ctx context.Context, request mcp.CallToolRequest) (
 	resp, err := makeGraphRequest("DELETE", baseURL, nil)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -490,7 +519,7 @@ func Campaign_GET_Handler(ctx context.Context, request mcp.CallToolRequest) (*mc
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -519,7 +548,7 @@ func Campaign_GET_Handler(ctx context.Context, request mcp.CallToolRequest) (*mc
 	resp, err := makeGraphRequest("GET", baseURL, nil)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -538,7 +567,7 @@ func Campaign_POST_Handler(ctx context.Context, request mcp.CallToolRequest) (*m
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -549,7 +578,7 @@ func Campaign_POST_Handler(ctx context.Context, request mcp.CallToolRequest) (*m
 	resp, err := makeGraphRequest("POST", url, params)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -562,7 +591,7 @@ func RegisterCampaignTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"Campaign_GET_ad_studies",
 			"GET ad_studies for Campaign. Returns AdStudy",
-			json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"Campaign ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`),
+			Campaign_GET_ad_studiesSchema,
 		),
 		Campaign_GET_ad_studiesHandler,
 	)
@@ -571,7 +600,7 @@ func RegisterCampaignTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"Campaign_POST_adlabels",
 			"POST adlabels for Campaign. Returns Campaign. Parameters: adlabels (list<Object>) [required], execution_options (list<adcampaigngroupadlabels_execution_options_enum_param>)",
-			json.RawMessage(`{"additionalProperties":false,"properties":{"adlabels":{"description":"adlabels","items":{"additionalProperties":true,"type":"object"},"type":"array"},"execution_options":{"description":"execution_options","items":{"type":"string"},"type":"array"},"id":{"description":"Campaign ID","type":"string"}},"required":["id","adlabels"],"type":"object"}`),
+			Campaign_POST_adlabelsSchema,
 		),
 		Campaign_POST_adlabelsHandler,
 	)
@@ -580,7 +609,7 @@ func RegisterCampaignTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"Campaign_GET_adrules_governed",
 			"GET adrules_governed for Campaign. Returns AdRule. Parameters: pass_evaluation (bool)",
-			json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"Campaign ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"pass_evaluation":{"description":"pass_evaluation","type":"boolean"}},"required":["id"],"type":"object"}`),
+			Campaign_GET_adrules_governedSchema,
 		),
 		Campaign_GET_adrules_governedHandler,
 	)
@@ -589,7 +618,7 @@ func RegisterCampaignTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"Campaign_GET_ads",
 			"GET ads for Campaign. Returns Ad. Parameters: date_preset (adcampaigngroupads_date_preset_enum_param), effective_status (list<string>), time_range (map), updated_since (int)",
-			json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"date_preset":{"description":"date_preset (enum: adcampaigngroupads_date_preset_enum_param)","type":"string"},"effective_status":{"description":"effective_status","items":{"type":"string"},"type":"array"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"Campaign ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"time_range":{"description":"time_range","type":"string"},"updated_since":{"description":"updated_since","type":"integer"}},"required":["id"],"type":"object"}`),
+			Campaign_GET_adsSchema,
 		),
 		Campaign_GET_adsHandler,
 	)
@@ -598,7 +627,7 @@ func RegisterCampaignTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"Campaign_GET_adsets",
 			"GET adsets for Campaign. Returns AdSet. Parameters: date_preset (adcampaigngroupadsets_date_preset_enum_param), effective_status (list<adcampaigngroupadsets_effective_status_enum_param>), is_completed (bool), time_range (map)",
-			json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"date_preset":{"description":"date_preset (enum: adcampaigngroupadsets_date_preset_enum_param)","type":"string"},"effective_status":{"description":"effective_status","items":{"type":"string"},"type":"array"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"Campaign ID","type":"string"},"is_completed":{"description":"is_completed","type":"boolean"},"limit":{"description":"Maximum number of results","type":"integer"},"time_range":{"description":"time_range","type":"string"}},"required":["id"],"type":"object"}`),
+			Campaign_GET_adsetsSchema,
 		),
 		Campaign_GET_adsetsHandler,
 	)
@@ -607,7 +636,7 @@ func RegisterCampaignTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"Campaign_POST_budget_schedules",
 			"POST budget_schedules for Campaign. Returns HighDemandPeriod. Parameters: budget_value (unsigned int) [required], budget_value_type (adcampaigngroupbudget_schedules_budget_value_type_enum_param) [required], time_end (unsigned int) [required], time_start (unsigned int) [required]",
-			json.RawMessage(`{"additionalProperties":false,"properties":{"budget_value":{"description":"budget_value","type":"integer"},"budget_value_type":{"description":"budget_value_type (enum: adcampaigngroupbudget_schedules_budget_value_type_enum_param)","type":"string"},"id":{"description":"Campaign ID","type":"string"},"time_end":{"description":"time_end","type":"integer"},"time_start":{"description":"time_start","type":"integer"}},"required":["id","budget_value","budget_value_type","time_end","time_start"],"type":"object"}`),
+			Campaign_POST_budget_schedulesSchema,
 		),
 		Campaign_POST_budget_schedulesHandler,
 	)
@@ -616,7 +645,7 @@ func RegisterCampaignTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"Campaign_GET_copies",
 			"GET copies for Campaign. Returns Campaign. Parameters: date_preset (adcampaigngroupcopies_date_preset_enum_param), effective_status (list<adcampaigngroupcopies_effective_status_enum_param>), is_completed (bool), time_range (map)",
-			json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"date_preset":{"description":"date_preset (enum: adcampaigngroupcopies_date_preset_enum_param)","type":"string"},"effective_status":{"description":"effective_status","items":{"type":"string"},"type":"array"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"Campaign ID","type":"string"},"is_completed":{"description":"is_completed","type":"boolean"},"limit":{"description":"Maximum number of results","type":"integer"},"time_range":{"description":"time_range","type":"string"}},"required":["id"],"type":"object"}`),
+			Campaign_GET_copiesSchema,
 		),
 		Campaign_GET_copiesHandler,
 	)
@@ -625,7 +654,7 @@ func RegisterCampaignTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"Campaign_POST_copies",
 			"POST copies for Campaign. Returns Campaign. Parameters: deep_copy (bool), end_time (datetime), rename_options (Object), start_time (datetime), status_option (adcampaigngroupcopies_status_option_enum_param)",
-			json.RawMessage(`{"additionalProperties":false,"properties":{"deep_copy":{"description":"deep_copy","type":"boolean"},"end_time":{"description":"end_time","type":"string"},"id":{"description":"Campaign ID","type":"string"},"rename_options":{"additionalProperties":true,"description":"rename_options","type":"object"},"start_time":{"description":"start_time","type":"string"},"status_option":{"description":"status_option (enum: adcampaigngroupcopies_status_option_enum_param)","type":"string"}},"required":["id"],"type":"object"}`),
+			Campaign_POST_copiesSchema,
 		),
 		Campaign_POST_copiesHandler,
 	)
@@ -634,7 +663,7 @@ func RegisterCampaignTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"Campaign_GET_insights",
 			"GET insights for Campaign. Returns AdsInsights. Parameters: action_attribution_windows (list<adcampaigngroupinsights_action_attribution_windows_enum_param>), action_breakdowns (list<adcampaigngroupinsights_action_breakdowns_enum_param>), action_report_time (adcampaigngroupinsights_action_report_time_enum_param), breakdowns (list<adcampaigngroupinsights_breakdowns_enum_param>), date_preset (adcampaigngroupinsights_date_preset_enum_param), default_summary (bool), export_columns (list<string>), export_format (string), export_name (string), fields (list<string>), filtering (list<Object>), level (adcampaigngroupinsights_level_enum_param), limit (int), product_id_limit (int), sort (list<string>), summary (list<string>), summary_action_breakdowns (list<adcampaigngroupinsights_summary_action_breakdowns_enum_param>), time_increment (string), time_range (map), time_ranges (list<map>), use_account_attribution_setting (bool), use_unified_attribution_setting (bool)",
-			json.RawMessage(`{"additionalProperties":true,"properties":{"action_attribution_windows":{"description":"action_attribution_windows","items":{"type":"string"},"type":"array"},"action_breakdowns":{"description":"action_breakdowns","items":{"type":"string"},"type":"array"},"action_report_time":{"description":"action_report_time (enum: adcampaigngroupinsights_action_report_time_enum_param)","type":"string"},"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"breakdowns":{"description":"breakdowns","items":{"type":"string"},"type":"array"},"date_preset":{"description":"date_preset (enum: adcampaigngroupinsights_date_preset_enum_param)","type":"string"},"default_summary":{"description":"default_summary","type":"boolean"},"export_columns":{"description":"export_columns","items":{"type":"string"},"type":"array"},"export_format":{"description":"export_format","type":"string"},"export_name":{"description":"export_name","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"filtering":{"description":"filtering","items":{"additionalProperties":true,"type":"object"},"type":"array"},"id":{"description":"Campaign ID","type":"string"},"level":{"description":"level (enum: adcampaigngroupinsights_level_enum_param)","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"product_id_limit":{"description":"product_id_limit","type":"integer"},"sort":{"description":"sort","items":{"type":"string"},"type":"array"},"summary":{"description":"summary","items":{"type":"string"},"type":"array"},"summary_action_breakdowns":{"description":"summary_action_breakdowns","items":{"type":"string"},"type":"array"},"time_increment":{"description":"time_increment","type":"string"},"time_range":{"description":"time_range","type":"string"},"time_ranges":{"description":"time_ranges","items":{"additionalProperties":true,"type":"object"},"type":"array"},"use_account_attribution_setting":{"description":"use_account_attribution_setting","type":"boolean"},"use_unified_attribution_setting":{"description":"use_unified_attribution_setting","type":"boolean"}},"required":["id"],"type":"object"}`),
+			Campaign_GET_insightsSchema,
 		),
 		Campaign_GET_insightsHandler,
 	)
@@ -643,7 +672,7 @@ func RegisterCampaignTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"Campaign_POST_insights",
 			"POST insights for Campaign. Returns AdReportRun. Parameters: action_attribution_windows (list<adcampaigngroupinsights_action_attribution_windows_enum_param>), action_breakdowns (list<adcampaigngroupinsights_action_breakdowns_enum_param>), action_report_time (adcampaigngroupinsights_action_report_time_enum_param), breakdowns (list<adcampaigngroupinsights_breakdowns_enum_param>), date_preset (adcampaigngroupinsights_date_preset_enum_param), default_summary (bool), export_columns (list<string>), export_format (string), export_name (string), fields (list<string>), filtering (list<Object>), level (adcampaigngroupinsights_level_enum_param), limit (int), product_id_limit (int), sort (list<string>), summary (list<string>), summary_action_breakdowns (list<adcampaigngroupinsights_summary_action_breakdowns_enum_param>), time_increment (string), time_range (map), time_ranges (list<map>), use_account_attribution_setting (bool), use_unified_attribution_setting (bool)",
-			json.RawMessage(`{"additionalProperties":false,"properties":{"action_attribution_windows":{"description":"action_attribution_windows","items":{"type":"string"},"type":"array"},"action_breakdowns":{"description":"action_breakdowns","items":{"type":"string"},"type":"array"},"action_report_time":{"description":"action_report_time (enum: adcampaigngroupinsights_action_report_time_enum_param)","type":"string"},"breakdowns":{"description":"breakdowns","items":{"type":"string"},"type":"array"},"date_preset":{"description":"date_preset (enum: adcampaigngroupinsights_date_preset_enum_param)","type":"string"},"default_summary":{"description":"default_summary","type":"boolean"},"export_columns":{"description":"export_columns","items":{"type":"string"},"type":"array"},"export_format":{"description":"export_format","type":"string"},"export_name":{"description":"export_name","type":"string"},"fields":{"description":"fields","items":{"type":"string"},"type":"array"},"filtering":{"description":"filtering","items":{"additionalProperties":true,"type":"object"},"type":"array"},"id":{"description":"Campaign ID","type":"string"},"level":{"description":"level (enum: adcampaigngroupinsights_level_enum_param)","type":"string"},"limit":{"description":"limit","type":"integer"},"product_id_limit":{"description":"product_id_limit","type":"integer"},"sort":{"description":"sort","items":{"type":"string"},"type":"array"},"summary":{"description":"summary","items":{"type":"string"},"type":"array"},"summary_action_breakdowns":{"description":"summary_action_breakdowns","items":{"type":"string"},"type":"array"},"time_increment":{"description":"time_increment","type":"string"},"time_range":{"description":"time_range","type":"string"},"time_ranges":{"description":"time_ranges","items":{"additionalProperties":true,"type":"object"},"type":"array"},"use_account_attribution_setting":{"description":"use_account_attribution_setting","type":"boolean"},"use_unified_attribution_setting":{"description":"use_unified_attribution_setting","type":"boolean"}},"required":["id"],"type":"object"}`),
+			Campaign_POST_insightsSchema,
 		),
 		Campaign_POST_insightsHandler,
 	)
@@ -652,7 +681,7 @@ func RegisterCampaignTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"Campaign_DELETE_",
 			"DELETE  for Campaign. Returns Object",
-			json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"Campaign ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`),
+			Campaign_DELETE_Schema,
 		),
 		Campaign_DELETE_Handler,
 	)
@@ -661,7 +690,7 @@ func RegisterCampaignTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"Campaign_GET_",
 			"GET  for Campaign. Returns Campaign. Parameters: am_call_tags (map), date_preset (adcampaigngroup_date_preset), from_adtable (bool), time_range (map)",
-			json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"am_call_tags":{"description":"am_call_tags","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"date_preset":{"description":"date_preset (enum: adcampaigngroup_date_preset)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"from_adtable":{"description":"from_adtable","type":"boolean"},"id":{"description":"Campaign ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"time_range":{"description":"time_range","type":"string"}},"required":["id"],"type":"object"}`),
+			Campaign_GET_Schema,
 		),
 		Campaign_GET_Handler,
 	)
@@ -670,7 +699,7 @@ func RegisterCampaignTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"Campaign_POST_",
 			"POST  for Campaign. Returns Campaign. Parameters: adlabels (list<Object>), adset_bid_amounts (map), adset_budgets (list<map>), bid_strategy (adcampaigngroup_bid_strategy), budget_rebalance_flag (bool), daily_budget (unsigned int), execution_options (list<adcampaigngroup_execution_options>), is_skadnetwork_attribution (bool), iterative_split_test_configs (list<Object>), lifetime_budget (unsigned int), name (string), objective (adcampaigngroup_objective), pacing_type (list<string>), promoted_object (Object), smart_promotion_type (adcampaigngroup_smart_promotion_type), special_ad_categories (list<adcampaigngroup_special_ad_categories>), special_ad_category (adcampaigngroup_special_ad_category), special_ad_category_country (list<adcampaigngroup_special_ad_category_country>), spend_cap (unsigned int), start_time (datetime), status (adcampaigngroup_status), stop_time (datetime)",
-			json.RawMessage(`{"additionalProperties":false,"properties":{"adlabels":{"description":"adlabels","items":{"additionalProperties":true,"type":"object"},"type":"array"},"adset_bid_amounts":{"description":"adset_bid_amounts","type":"string"},"adset_budgets":{"description":"adset_budgets","items":{"additionalProperties":true,"type":"object"},"type":"array"},"bid_strategy":{"description":"bid_strategy (enum: adcampaigngroup_bid_strategy)","type":"string"},"budget_rebalance_flag":{"description":"budget_rebalance_flag","type":"boolean"},"daily_budget":{"description":"daily_budget","type":"integer"},"execution_options":{"description":"execution_options","items":{"type":"string"},"type":"array"},"id":{"description":"Campaign ID","type":"string"},"is_skadnetwork_attribution":{"description":"is_skadnetwork_attribution","type":"boolean"},"iterative_split_test_configs":{"description":"iterative_split_test_configs","items":{"additionalProperties":true,"type":"object"},"type":"array"},"lifetime_budget":{"description":"lifetime_budget","type":"integer"},"name":{"description":"name","type":"string"},"objective":{"description":"objective (enum: adcampaigngroup_objective)","type":"string"},"pacing_type":{"description":"pacing_type","items":{"type":"string"},"type":"array"},"promoted_object":{"additionalProperties":true,"description":"promoted_object","type":"object"},"smart_promotion_type":{"description":"smart_promotion_type (enum: adcampaigngroup_smart_promotion_type)","type":"string"},"special_ad_categories":{"description":"special_ad_categories","items":{"type":"string"},"type":"array"},"special_ad_category":{"description":"special_ad_category (enum: adcampaigngroup_special_ad_category)","type":"string"},"special_ad_category_country":{"description":"special_ad_category_country","items":{"type":"string"},"type":"array"},"spend_cap":{"description":"spend_cap","type":"integer"},"start_time":{"description":"start_time","type":"string"},"status":{"description":"status (enum: adcampaigngroup_status)","type":"string"},"stop_time":{"description":"stop_time","type":"string"}},"required":["id"],"type":"object"}`),
+			Campaign_POST_Schema,
 		),
 		Campaign_POST_Handler,
 	)

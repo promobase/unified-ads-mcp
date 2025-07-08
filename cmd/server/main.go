@@ -7,7 +7,7 @@ import (
 	"os"
 
 	"unified-ads-mcp/internal/facebook/generated"
-	"unified-ads-mcp/internal/tools"
+	"unified-ads-mcp/internal/facebook/tools"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"github.com/mark3labs/mcp-go/server"
@@ -42,6 +42,11 @@ func NewFacebookMCPServer() *server.MCPServer {
 	// Register custom health and diagnostic tools
 	if err := tools.RegisterHealthTools(mcpServer); err != nil {
 		log.Fatalf("Failed to register health tools: %v", err)
+	}
+
+	// Register account tools
+	if err := tools.RegisterAccountTools(mcpServer); err != nil {
+		log.Fatalf("Failed to register account tools: %v", err)
 	}
 
 	return mcpServer

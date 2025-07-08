@@ -13,6 +13,21 @@ import (
 	"github.com/mark3labs/mcp-go/server"
 )
 
+// Tool schemas for AdCreative
+var (
+	AdCreative_POST_adlabelsSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"adlabels":{"description":"adlabels","items":{"additionalProperties":true,"type":"object"},"type":"array"},"id":{"description":"AdCreative ID","type":"string"}},"required":["id","adlabels"],"type":"object"}`)
+
+	AdCreative_GET_creative_insightsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdCreative ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+
+	AdCreative_GET_previewsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"ad_format":{"description":"ad_format (enum: adcreativepreviews_ad_format_enum_param)","type":"string"},"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"creative_feature":{"description":"creative_feature (enum: adcreativepreviews_creative_feature_enum_param)","type":"string"},"dynamic_asset_label":{"description":"dynamic_asset_label","type":"string"},"dynamic_creative_spec":{"additionalProperties":true,"description":"dynamic_creative_spec","type":"object"},"dynamic_customization":{"additionalProperties":true,"description":"dynamic_customization","type":"object"},"end_date":{"description":"end_date","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"height":{"description":"height","type":"integer"},"id":{"description":"AdCreative ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"locale":{"description":"locale","type":"string"},"place_page_id":{"description":"place_page_id","type":"integer"},"post":{"additionalProperties":true,"description":"post","type":"object"},"product_item_ids":{"description":"product_item_ids","items":{"type":"string"},"type":"array"},"render_type":{"description":"render_type (enum: adcreativepreviews_render_type_enum_param)","type":"string"},"start_date":{"description":"start_date","type":"string"},"width":{"description":"width","type":"integer"}},"required":["id","ad_format"],"type":"object"}`)
+
+	AdCreative_DELETE_Schema = json.RawMessage(`{"additionalProperties":true,"properties":{"account_id":{"description":"account_id","type":"string"},"adlabels":{"description":"adlabels","items":{"additionalProperties":true,"type":"object"},"type":"array"},"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdCreative ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"name":{"description":"name","type":"string"},"status":{"description":"status (enum: adcreative_status)","type":"string"}},"required":["id"],"type":"object"}`)
+
+	AdCreative_GET_Schema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdCreative ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"thumbnail_height":{"description":"thumbnail_height","type":"integer"},"thumbnail_width":{"description":"thumbnail_width","type":"integer"}},"required":["id"],"type":"object"}`)
+
+	AdCreative_POST_Schema = json.RawMessage(`{"additionalProperties":false,"properties":{"account_id":{"description":"account_id","type":"string"},"adlabels":{"description":"adlabels","items":{"additionalProperties":true,"type":"object"},"type":"array"},"id":{"description":"AdCreative ID","type":"string"},"name":{"description":"name","type":"string"},"status":{"description":"status (enum: adcreative_status)","type":"string"}},"required":["id"],"type":"object"}`)
+)
+
 // AdCreative_POST_adlabelsHandler handles AdCreative_POST_adlabels
 func AdCreative_POST_adlabelsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
@@ -26,7 +41,7 @@ func AdCreative_POST_adlabelsHandler(ctx context.Context, request mcp.CallToolRe
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -37,7 +52,7 @@ func AdCreative_POST_adlabelsHandler(ctx context.Context, request mcp.CallToolRe
 	resp, err := makeGraphRequest("POST", url, params)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -57,7 +72,7 @@ func AdCreative_GET_creative_insightsHandler(ctx context.Context, request mcp.Ca
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -86,7 +101,7 @@ func AdCreative_GET_creative_insightsHandler(ctx context.Context, request mcp.Ca
 	resp, err := makeGraphRequest("GET", baseURL, nil)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -106,7 +121,7 @@ func AdCreative_GET_previewsHandler(ctx context.Context, request mcp.CallToolReq
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -135,7 +150,7 @@ func AdCreative_GET_previewsHandler(ctx context.Context, request mcp.CallToolReq
 	resp, err := makeGraphRequest("GET", baseURL, nil)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -155,7 +170,7 @@ func AdCreative_DELETE_Handler(ctx context.Context, request mcp.CallToolRequest)
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -184,7 +199,7 @@ func AdCreative_DELETE_Handler(ctx context.Context, request mcp.CallToolRequest)
 	resp, err := makeGraphRequest("DELETE", baseURL, nil)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -204,7 +219,7 @@ func AdCreative_GET_Handler(ctx context.Context, request mcp.CallToolRequest) (*
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -233,7 +248,7 @@ func AdCreative_GET_Handler(ctx context.Context, request mcp.CallToolRequest) (*
 	resp, err := makeGraphRequest("GET", baseURL, nil)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -252,7 +267,7 @@ func AdCreative_POST_Handler(ctx context.Context, request mcp.CallToolRequest) (
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -263,7 +278,7 @@ func AdCreative_POST_Handler(ctx context.Context, request mcp.CallToolRequest) (
 	resp, err := makeGraphRequest("POST", url, params)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -276,7 +291,7 @@ func RegisterAdCreativeTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"AdCreative_POST_adlabels",
 			"POST adlabels for AdCreative. Returns AdCreative. Parameters: adlabels (list<Object>) [required]",
-			json.RawMessage(`{"additionalProperties":false,"properties":{"adlabels":{"description":"adlabels","items":{"additionalProperties":true,"type":"object"},"type":"array"},"id":{"description":"AdCreative ID","type":"string"}},"required":["id","adlabels"],"type":"object"}`),
+			AdCreative_POST_adlabelsSchema,
 		),
 		AdCreative_POST_adlabelsHandler,
 	)
@@ -285,7 +300,7 @@ func RegisterAdCreativeTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"AdCreative_GET_creative_insights",
 			"GET creative_insights for AdCreative. Returns AdCreativeInsights",
-			json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdCreative ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`),
+			AdCreative_GET_creative_insightsSchema,
 		),
 		AdCreative_GET_creative_insightsHandler,
 	)
@@ -294,7 +309,7 @@ func RegisterAdCreativeTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"AdCreative_GET_previews",
 			"GET previews for AdCreative. Returns AdPreview. Parameters: ad_format (adcreativepreviews_ad_format_enum_param) [required], creative_feature (adcreativepreviews_creative_feature_enum_param), dynamic_asset_label (string), dynamic_creative_spec (Object), dynamic_customization (Object), end_date (datetime), height (unsigned int), locale (string), place_page_id (int), post (Object), product_item_ids (list<string>), render_type (adcreativepreviews_render_type_enum_param), start_date (datetime), width (unsigned int)",
-			json.RawMessage(`{"additionalProperties":true,"properties":{"ad_format":{"description":"ad_format (enum: adcreativepreviews_ad_format_enum_param)","type":"string"},"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"creative_feature":{"description":"creative_feature (enum: adcreativepreviews_creative_feature_enum_param)","type":"string"},"dynamic_asset_label":{"description":"dynamic_asset_label","type":"string"},"dynamic_creative_spec":{"additionalProperties":true,"description":"dynamic_creative_spec","type":"object"},"dynamic_customization":{"additionalProperties":true,"description":"dynamic_customization","type":"object"},"end_date":{"description":"end_date","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"height":{"description":"height","type":"integer"},"id":{"description":"AdCreative ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"locale":{"description":"locale","type":"string"},"place_page_id":{"description":"place_page_id","type":"integer"},"post":{"additionalProperties":true,"description":"post","type":"object"},"product_item_ids":{"description":"product_item_ids","items":{"type":"string"},"type":"array"},"render_type":{"description":"render_type (enum: adcreativepreviews_render_type_enum_param)","type":"string"},"start_date":{"description":"start_date","type":"string"},"width":{"description":"width","type":"integer"}},"required":["id","ad_format"],"type":"object"}`),
+			AdCreative_GET_previewsSchema,
 		),
 		AdCreative_GET_previewsHandler,
 	)
@@ -303,7 +318,7 @@ func RegisterAdCreativeTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"AdCreative_DELETE_",
 			"DELETE  for AdCreative. Returns Object. Parameters: account_id (string), adlabels (list<Object>), name (string), status (adcreative_status)",
-			json.RawMessage(`{"additionalProperties":true,"properties":{"account_id":{"description":"account_id","type":"string"},"adlabels":{"description":"adlabels","items":{"additionalProperties":true,"type":"object"},"type":"array"},"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdCreative ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"name":{"description":"name","type":"string"},"status":{"description":"status (enum: adcreative_status)","type":"string"}},"required":["id"],"type":"object"}`),
+			AdCreative_DELETE_Schema,
 		),
 		AdCreative_DELETE_Handler,
 	)
@@ -312,7 +327,7 @@ func RegisterAdCreativeTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"AdCreative_GET_",
 			"GET  for AdCreative. Returns AdCreative. Parameters: thumbnail_height (unsigned int), thumbnail_width (unsigned int)",
-			json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdCreative ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"thumbnail_height":{"description":"thumbnail_height","type":"integer"},"thumbnail_width":{"description":"thumbnail_width","type":"integer"}},"required":["id"],"type":"object"}`),
+			AdCreative_GET_Schema,
 		),
 		AdCreative_GET_Handler,
 	)
@@ -321,7 +336,7 @@ func RegisterAdCreativeTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"AdCreative_POST_",
 			"POST  for AdCreative. Returns AdCreative. Parameters: account_id (string), adlabels (list<Object>), name (string), status (adcreative_status)",
-			json.RawMessage(`{"additionalProperties":false,"properties":{"account_id":{"description":"account_id","type":"string"},"adlabels":{"description":"adlabels","items":{"additionalProperties":true,"type":"object"},"type":"array"},"id":{"description":"AdCreative ID","type":"string"},"name":{"description":"name","type":"string"},"status":{"description":"status (enum: adcreative_status)","type":"string"}},"required":["id"],"type":"object"}`),
+			AdCreative_POST_Schema,
 		),
 		AdCreative_POST_Handler,
 	)

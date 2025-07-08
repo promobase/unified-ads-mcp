@@ -13,6 +13,119 @@ import (
 	"github.com/mark3labs/mcp-go/server"
 )
 
+// Tool schemas for User
+var (
+	User_DELETE_access_tokensSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+
+	User_POST_access_tokensSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"business_app":{"description":"business_app","type":"string"},"id":{"description":"User ID","type":"string"},"page_id":{"description":"page_id","type":"string"},"scope":{"description":"scope","items":{"type":"string"},"type":"array"},"set_token_expires_in_60_days":{"description":"set_token_expires_in_60_days","type":"boolean"}},"required":["id","business_app"],"type":"object"}`)
+
+	User_GET_accountsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"ad_id":{"description":"ad_id","type":"string"},"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"is_place":{"description":"is_place","type":"boolean"},"is_promotable":{"description":"is_promotable","type":"boolean"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+
+	User_POST_accountsSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"about":{"description":"about","type":"string"},"address":{"description":"address","type":"string"},"category":{"description":"category","type":"integer"},"category_enum":{"description":"category_enum","type":"string"},"category_list":{"description":"category_list","items":{"type":"string"},"type":"array"},"city_id":{"description":"city_id","type":"string"},"coordinates":{"additionalProperties":true,"description":"coordinates","type":"object"},"cover_photo":{"additionalProperties":true,"description":"cover_photo","type":"object"},"description":{"description":"description","type":"string"},"id":{"description":"User ID","type":"string"},"ignore_coordinate_warnings":{"description":"ignore_coordinate_warnings","type":"boolean"},"location":{"additionalProperties":true,"description":"location","type":"object"},"name":{"description":"name","type":"string"},"phone":{"description":"phone","type":"string"},"picture":{"description":"picture","type":"string"},"website":{"description":"website","type":"string"},"zip":{"description":"zip","type":"string"}},"required":["id","name"],"type":"object"}`)
+
+	User_GET_ad_studiesSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+
+	User_POST_ad_studiesSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"cells":{"description":"cells","items":{"additionalProperties":true,"type":"object"},"type":"array"},"client_business":{"description":"client_business","type":"string"},"confidence_level":{"description":"confidence_level","type":"number"},"cooldown_start_time":{"description":"cooldown_start_time","type":"integer"},"description":{"description":"description","type":"string"},"end_time":{"description":"end_time","type":"integer"},"id":{"description":"User ID","type":"string"},"name":{"description":"name","type":"string"},"objectives":{"description":"objectives","items":{"additionalProperties":true,"type":"object"},"type":"array"},"observation_end_time":{"description":"observation_end_time","type":"integer"},"start_time":{"description":"start_time","type":"integer"},"type":{"description":"type (enum: userad_studies_type_enum_param)","type":"string"},"viewers":{"description":"viewers","items":{"type":"integer"},"type":"array"}},"required":["id"],"type":"object"}`)
+
+	User_GET_adaccountsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+
+	User_GET_albumsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+
+	User_POST_applicationsSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"business_app":{"description":"business_app","type":"integer"},"id":{"description":"User ID","type":"string"}},"required":["id","business_app"],"type":"object"}`)
+
+	User_GET_apprequestformerrecipientsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"limit":{"description":"Maximum number of results","type":"integer"}},"type":"object"}`)
+
+	User_GET_apprequestsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+
+	User_GET_assigned_ad_accountsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+
+	User_GET_assigned_applicationsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+
+	User_GET_assigned_business_asset_groupsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"contained_asset_id":{"description":"contained_asset_id","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+
+	User_GET_assigned_pagesSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"pages":{"description":"pages","items":{"type":"integer"},"type":"array"}},"required":["id"],"type":"object"}`)
+
+	User_GET_assigned_product_catalogsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+
+	User_GET_avatarsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+
+	User_GET_business_usersSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"limit":{"description":"Maximum number of results","type":"integer"}},"type":"object"}`)
+
+	User_DELETE_businessesSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"business":{"description":"business","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+
+	User_GET_businessesSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+
+	User_POST_businessesSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"child_business_external_id":{"description":"child_business_external_id","type":"string"},"email":{"description":"email","type":"string"},"id":{"description":"User ID","type":"string"},"name":{"description":"name","type":"string"},"primary_page":{"description":"primary_page","type":"string"},"sales_rep_email":{"description":"sales_rep_email","type":"string"},"survey_business_type":{"description":"survey_business_type (enum: userbusinesses_survey_business_type_enum_param)","type":"string"},"survey_num_assets":{"description":"survey_num_assets","type":"integer"},"survey_num_people":{"description":"survey_num_people","type":"integer"},"timezone_id":{"description":"timezone_id (enum: userbusinesses_timezone_id_enum_param)","type":"string"},"vertical":{"description":"vertical (enum: userbusinesses_vertical_enum_param)","type":"string"}},"required":["id","name","vertical"],"type":"object"}`)
+
+	User_GET_conversationsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"folder":{"description":"folder","type":"string"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"platform":{"description":"platform (enum: userconversations_platform_enum_param)","type":"string"},"tags":{"description":"tags","items":{"type":"string"},"type":"array"},"user_id":{"description":"user_id","type":"string"}},"required":["id"],"type":"object"}`)
+
+	User_GET_custom_labelsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+
+	User_GET_eventsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"include_canceled":{"description":"include_canceled","type":"boolean"},"limit":{"description":"Maximum number of results","type":"integer"},"type":{"description":"type (enum: userevents_type_enum_param)","type":"string"}},"required":["id"],"type":"object"}`)
+
+	User_GET_feedSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"include_hidden":{"description":"include_hidden","type":"boolean"},"limit":{"description":"Maximum number of results","type":"integer"},"q":{"description":"q","type":"string"},"show_expired":{"description":"show_expired","type":"boolean"},"since":{"description":"since","type":"string"},"until":{"description":"until","type":"string"},"with":{"description":"with","type":"string"}},"required":["id"],"type":"object"}`)
+
+	User_POST_feedSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"actions":{"additionalProperties":true,"description":"actions","type":"object"},"album_id":{"description":"album_id","type":"string"},"android_key_hash":{"description":"android_key_hash","type":"string"},"application_id":{"description":"application_id","type":"string"},"asked_fun_fact_prompt_id":{"description":"asked_fun_fact_prompt_id","type":"integer"},"asset3d_id":{"description":"asset3d_id","type":"string"},"associated_id":{"description":"associated_id","type":"string"},"attach_place_suggestion":{"description":"attach_place_suggestion","type":"boolean"},"attached_media":{"description":"attached_media","items":{"additionalProperties":true,"type":"object"},"type":"array"},"audience_exp":{"description":"audience_exp","type":"boolean"},"backdated_time":{"description":"backdated_time","type":"string"},"backdated_time_granularity":{"description":"backdated_time_granularity (enum: userfeed_backdated_time_granularity_enum_param)","type":"string"},"breaking_news":{"description":"breaking_news","type":"boolean"},"breaking_news_expiration":{"description":"breaking_news_expiration","type":"integer"},"call_to_action":{"additionalProperties":true,"description":"call_to_action","type":"object"},"caption":{"description":"caption","type":"string"},"child_attachments":{"description":"child_attachments","items":{"additionalProperties":true,"type":"object"},"type":"array"},"client_mutation_id":{"description":"client_mutation_id","type":"string"},"composer_entry_picker":{"description":"composer_entry_picker","type":"string"},"composer_entry_point":{"description":"composer_entry_point","type":"string"},"composer_entry_time":{"description":"composer_entry_time","type":"integer"},"composer_session_events_log":{"description":"composer_session_events_log","type":"string"},"composer_session_id":{"description":"composer_session_id","type":"string"},"composer_source_surface":{"description":"composer_source_surface","type":"string"},"composer_type":{"description":"composer_type","type":"string"},"connection_class":{"description":"connection_class","type":"string"},"content_attachment":{"description":"content_attachment","type":"string"},"coordinates":{"additionalProperties":true,"description":"coordinates","type":"object"},"cta_link":{"description":"cta_link","type":"string"},"cta_type":{"description":"cta_type","type":"string"},"description":{"description":"description","type":"string"},"direct_share_status":{"description":"direct_share_status","type":"integer"},"expanded_height":{"description":"expanded_height","type":"integer"},"expanded_width":{"description":"expanded_width","type":"integer"},"feed_targeting":{"additionalProperties":true,"description":"feed_targeting","type":"object"},"formatting":{"description":"formatting (enum: userfeed_formatting_enum_param)","type":"string"},"fun_fact_prompt_id":{"description":"fun_fact_prompt_id","type":"string"},"fun_fact_toastee_id":{"description":"fun_fact_toastee_id","type":"integer"},"height":{"description":"height","type":"integer"},"home_checkin_city_id":{"additionalProperties":true,"description":"home_checkin_city_id","type":"object"},"id":{"description":"User ID","type":"string"},"image_crops":{"description":"image_crops","type":"string"},"implicit_with_tags":{"description":"implicit_with_tags","items":{"type":"integer"},"type":"array"},"instant_game_entry_point_data":{"description":"instant_game_entry_point_data","type":"string"},"ios_bundle_id":{"description":"ios_bundle_id","type":"string"},"is_backout_draft":{"description":"is_backout_draft","type":"boolean"},"is_boost_intended":{"description":"is_boost_intended","type":"boolean"},"is_explicit_location":{"description":"is_explicit_location","type":"boolean"},"is_explicit_share":{"description":"is_explicit_share","type":"boolean"},"is_group_linking_post":{"description":"is_group_linking_post","type":"boolean"},"is_photo_container":{"description":"is_photo_container","type":"boolean"},"link":{"description":"link","type":"string"},"location_source_id":{"description":"location_source_id","type":"string"},"manual_privacy":{"description":"manual_privacy","type":"boolean"},"message":{"description":"message","type":"string"},"multi_share_end_card":{"description":"multi_share_end_card","type":"boolean"},"multi_share_optimized":{"description":"multi_share_optimized","type":"boolean"},"name":{"description":"name","type":"string"},"nectar_module":{"description":"nectar_module","type":"string"},"object_attachment":{"description":"object_attachment","type":"string"},"og_action_type_id":{"description":"og_action_type_id","type":"string"},"og_hide_object_attachment":{"description":"og_hide_object_attachment","type":"boolean"},"og_icon_id":{"description":"og_icon_id","type":"string"},"og_object_id":{"description":"og_object_id","type":"string"},"og_phrase":{"description":"og_phrase","type":"string"},"og_set_profile_badge":{"description":"og_set_profile_badge","type":"boolean"},"og_suggestion_mechanism":{"description":"og_suggestion_mechanism","type":"string"},"page_recommendation":{"description":"page_recommendation","type":"string"},"picture":{"description":"picture","type":"string"},"place":{"additionalProperties":true,"description":"place","type":"object"},"place_attachment_setting":{"description":"place_attachment_setting (enum: userfeed_place_attachment_setting_enum_param)","type":"string"},"place_list":{"description":"place_list","type":"string"},"place_list_data":{"description":"place_list_data","type":"string"},"post_surfaces_blacklist":{"description":"post_surfaces_blacklist","items":{"type":"string"},"type":"array"},"posting_to_redspace":{"description":"posting_to_redspace (enum: userfeed_posting_to_redspace_enum_param)","type":"string"},"privacy":{"description":"privacy","type":"string"},"prompt_id":{"description":"prompt_id","type":"string"},"prompt_tracking_string":{"description":"prompt_tracking_string","type":"string"},"properties":{"additionalProperties":true,"description":"properties","type":"object"},"proxied_app_id":{"description":"proxied_app_id","type":"string"},"publish_event_id":{"description":"publish_event_id","type":"integer"},"published":{"description":"published","type":"boolean"},"quote":{"description":"quote","type":"string"},"ref":{"description":"ref","items":{"type":"string"},"type":"array"},"referenceable_image_ids":{"description":"referenceable_image_ids","items":{"type":"string"},"type":"array"},"referral_id":{"description":"referral_id","type":"string"},"scheduled_publish_time":{"description":"scheduled_publish_time","type":"string"},"source":{"description":"source","type":"string"},"sponsor_id":{"description":"sponsor_id","type":"string"},"sponsor_relationship":{"description":"sponsor_relationship","type":"integer"},"suggested_place_id":{"additionalProperties":true,"description":"suggested_place_id","type":"object"},"tags":{"description":"tags","items":{"type":"integer"},"type":"array"},"target_surface":{"description":"target_surface (enum: userfeed_target_surface_enum_param)","type":"string"},"targeting":{"additionalProperties":true,"description":"targeting","type":"object"},"text_format_metadata":{"description":"text_format_metadata","type":"string"},"text_format_preset_id":{"description":"text_format_preset_id","type":"string"},"text_only_place":{"description":"text_only_place","type":"string"},"thumbnail":{"description":"thumbnail","type":"string"},"time_since_original_post":{"description":"time_since_original_post","type":"integer"},"title":{"description":"title","type":"string"},"tracking_info":{"description":"tracking_info","type":"string"},"unpublished_content_type":{"description":"unpublished_content_type (enum: userfeed_unpublished_content_type_enum_param)","type":"string"},"user_selected_tags":{"description":"user_selected_tags","type":"boolean"},"video_start_time_ms":{"description":"video_start_time_ms","type":"integer"},"viewer_coordinates":{"additionalProperties":true,"description":"viewer_coordinates","type":"object"},"width":{"description":"width","type":"integer"}},"required":["id"],"type":"object"}`)
+
+	User_GET_friendsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"uid":{"description":"uid","type":"integer"}},"required":["id"],"type":"object"}`)
+
+	User_GET_fundraisersSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+
+	User_POST_fundraisersSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"charity_id":{"description":"charity_id","type":"string"},"cover_photo":{"description":"cover_photo","type":"string"},"currency":{"description":"currency","type":"string"},"description":{"description":"description","type":"string"},"end_time":{"description":"end_time","type":"string"},"external_event_name":{"description":"external_event_name","type":"string"},"external_event_start_time":{"description":"external_event_start_time","type":"string"},"external_event_uri":{"description":"external_event_uri","type":"string"},"external_fundraiser_uri":{"description":"external_fundraiser_uri","type":"string"},"external_id":{"description":"external_id","type":"string"},"fundraiser_type":{"description":"fundraiser_type (enum: userfundraisers_fundraiser_type_enum_param)","type":"string"},"goal_amount":{"description":"goal_amount","type":"integer"},"id":{"description":"User ID","type":"string"},"name":{"description":"name","type":"string"},"page_id":{"description":"page_id","type":"string"}},"required":["id","currency","description","end_time","external_id","fundraiser_type","goal_amount","name"],"type":"object"}`)
+
+	User_GET_groupsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"admin_only":{"description":"admin_only","type":"boolean"},"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"parent":{"description":"parent","type":"string"}},"required":["id"],"type":"object"}`)
+
+	User_GET_ids_for_appsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"app":{"description":"app","type":"integer"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+
+	User_GET_ids_for_businessSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"app":{"description":"app","type":"integer"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+
+	User_GET_ids_for_pagesSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"page":{"description":"page","type":"integer"}},"required":["id"],"type":"object"}`)
+
+	User_GET_likesSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"target_id":{"description":"target_id","type":"string"}},"required":["id"],"type":"object"}`)
+
+	User_GET_live_videosSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"broadcast_status":{"description":"broadcast_status","items":{"type":"string"},"type":"array"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"source":{"description":"source (enum: userlive_videos_source_enum_param)","type":"string"}},"required":["id"],"type":"object"}`)
+
+	User_POST_live_videosSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"content_tags":{"description":"content_tags","items":{"type":"string"},"type":"array"},"description":{"description":"description","type":"string"},"enable_backup_ingest":{"description":"enable_backup_ingest","type":"boolean"},"encoding_settings":{"description":"encoding_settings","type":"string"},"event_params":{"additionalProperties":true,"description":"event_params","type":"object"},"fisheye_video_cropped":{"description":"fisheye_video_cropped","type":"boolean"},"front_z_rotation":{"description":"front_z_rotation","type":"number"},"id":{"description":"User ID","type":"string"},"is_audio_only":{"description":"is_audio_only","type":"boolean"},"is_spherical":{"description":"is_spherical","type":"boolean"},"original_fov":{"description":"original_fov","type":"integer"},"privacy":{"description":"privacy","type":"string"},"projection":{"description":"projection (enum: userlive_videos_projection_enum_param)","type":"string"},"published":{"description":"published","type":"boolean"},"schedule_custom_profile_image":{"description":"schedule_custom_profile_image","type":"string"},"spatial_audio_format":{"description":"spatial_audio_format (enum: userlive_videos_spatial_audio_format_enum_param)","type":"string"},"status":{"description":"status (enum: userlive_videos_status_enum_param)","type":"string"},"stereoscopic_mode":{"description":"stereoscopic_mode (enum: userlive_videos_stereoscopic_mode_enum_param)","type":"string"},"stop_on_delete_stream":{"description":"stop_on_delete_stream","type":"boolean"},"stream_type":{"description":"stream_type (enum: userlive_videos_stream_type_enum_param)","type":"string"},"title":{"description":"title","type":"string"}},"required":["id"],"type":"object"}`)
+
+	User_POST_messenger_desktop_performance_tracesSchema = json.RawMessage(`{"additionalProperties":false,"properties":{},"type":"object"}`)
+
+	User_POST_messenger_kids_accounts_unread_badgeSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"proxied_app_id":{"description":"proxied_app_id","type":"integer"}},"required":["proxied_app_id"],"type":"object"}`)
+
+	User_GET_musicSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"target_id":{"description":"target_id","type":"string"}},"required":["id"],"type":"object"}`)
+
+	User_POST_notificationsSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"bot_message_payload_elements":{"description":"bot_message_payload_elements","type":"string"},"filtering":{"description":"filtering","items":{"type":"string"},"type":"array"},"href":{"additionalProperties":true,"description":"href","type":"object"},"id":{"description":"User ID","type":"string"},"label":{"description":"label","type":"string"},"message":{"description":"message","type":"string"},"notif_ids":{"description":"notif_ids","items":{"type":"string"},"type":"array"},"payload":{"description":"payload","type":"string"},"read":{"description":"read","type":"boolean"},"ref":{"description":"ref","type":"string"},"schedule_interval":{"description":"schedule_interval","type":"integer"},"seen":{"description":"seen","type":"boolean"},"template":{"additionalProperties":true,"description":"template","type":"object"},"type":{"description":"type (enum: usernotifications_type_enum_param)","type":"string"}},"required":["id"],"type":"object"}`)
+
+	User_GET_payment_transactionsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"limit":{"description":"Maximum number of results","type":"integer"}},"type":"object"}`)
+
+	User_DELETE_permissionsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"permission":{"description":"permission","type":"string"}},"required":["id"],"type":"object"}`)
+
+	User_GET_permissionsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"permission":{"description":"permission","type":"string"},"status":{"description":"status (enum: userpermissions_status_enum_param)","type":"string"}},"required":["id"],"type":"object"}`)
+
+	User_GET_personal_ad_accountsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+
+	User_GET_photosSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"type":{"description":"type (enum: userphotos_type_enum_param)","type":"string"}},"required":["id"],"type":"object"}`)
+
+	User_POST_photosSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"aid":{"description":"aid","type":"string"},"allow_spherical_photo":{"description":"allow_spherical_photo","type":"boolean"},"alt_text_custom":{"description":"alt_text_custom","type":"string"},"android_key_hash":{"description":"android_key_hash","type":"string"},"application_id":{"description":"application_id","type":"string"},"attempt":{"description":"attempt","type":"integer"},"audience_exp":{"description":"audience_exp","type":"boolean"},"backdated_time":{"description":"backdated_time","type":"string"},"backdated_time_granularity":{"description":"backdated_time_granularity (enum: userphotos_backdated_time_granularity_enum_param)","type":"string"},"caption":{"description":"caption","type":"string"},"composer_session_id":{"description":"composer_session_id","type":"string"},"direct_share_status":{"description":"direct_share_status","type":"integer"},"feed_targeting":{"additionalProperties":true,"description":"feed_targeting","type":"object"},"filter_type":{"description":"filter_type","type":"integer"},"full_res_is_coming_later":{"description":"full_res_is_coming_later","type":"boolean"},"id":{"description":"User ID","type":"string"},"initial_view_heading_override_degrees":{"description":"initial_view_heading_override_degrees","type":"integer"},"initial_view_pitch_override_degrees":{"description":"initial_view_pitch_override_degrees","type":"integer"},"initial_view_vertical_fov_override_degrees":{"description":"initial_view_vertical_fov_override_degrees","type":"integer"},"ios_bundle_id":{"description":"ios_bundle_id","type":"string"},"is_explicit_location":{"description":"is_explicit_location","type":"boolean"},"is_explicit_place":{"description":"is_explicit_place","type":"boolean"},"manual_privacy":{"description":"manual_privacy","type":"boolean"},"message":{"description":"message","type":"string"},"name":{"description":"name","type":"string"},"no_story":{"description":"no_story","type":"boolean"},"offline_id":{"description":"offline_id","type":"integer"},"og_action_type_id":{"description":"og_action_type_id","type":"string"},"og_icon_id":{"description":"og_icon_id","type":"string"},"og_object_id":{"description":"og_object_id","type":"string"},"og_phrase":{"description":"og_phrase","type":"string"},"og_set_profile_badge":{"description":"og_set_profile_badge","type":"boolean"},"og_suggestion_mechanism":{"description":"og_suggestion_mechanism","type":"string"},"place":{"additionalProperties":true,"description":"place","type":"object"},"privacy":{"description":"privacy","type":"string"},"profile_id":{"description":"profile_id","type":"integer"},"provenance_info":{"description":"provenance_info","type":"string"},"proxied_app_id":{"description":"proxied_app_id","type":"string"},"published":{"description":"published","type":"boolean"},"qn":{"description":"qn","type":"string"},"scheduled_publish_time":{"description":"scheduled_publish_time","type":"integer"},"spherical_metadata":{"description":"spherical_metadata","type":"string"},"sponsor_id":{"description":"sponsor_id","type":"string"},"sponsor_relationship":{"description":"sponsor_relationship","type":"integer"},"tags":{"description":"tags","items":{"additionalProperties":true,"type":"object"},"type":"array"},"target_id":{"description":"target_id","type":"integer"},"targeting":{"additionalProperties":true,"description":"targeting","type":"object"},"time_since_original_post":{"description":"time_since_original_post","type":"integer"},"uid":{"description":"uid","type":"integer"},"unpublished_content_type":{"description":"unpublished_content_type (enum: userphotos_unpublished_content_type_enum_param)","type":"string"},"url":{"description":"url","type":"string"},"user_selected_tags":{"description":"user_selected_tags","type":"boolean"},"vault_image_id":{"description":"vault_image_id","type":"string"}},"required":["id"],"type":"object"}`)
+
+	User_GET_pictureSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"height":{"description":"height","type":"integer"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"redirect":{"description":"redirect","type":"boolean"},"type":{"description":"type (enum: userpicture_type_enum_param)","type":"string"},"width":{"description":"width","type":"integer"}},"required":["id"],"type":"object"}`)
+
+	User_GET_postsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"include_hidden":{"description":"include_hidden","type":"boolean"},"limit":{"description":"Maximum number of results","type":"integer"},"q":{"description":"q","type":"string"},"show_expired":{"description":"show_expired","type":"boolean"},"since":{"description":"since","type":"string"},"until":{"description":"until","type":"string"},"with":{"description":"with","type":"string"}},"required":["id"],"type":"object"}`)
+
+	User_GET_rich_media_documentsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"limit":{"description":"Maximum number of results","type":"integer"},"query":{"description":"query","type":"string"}},"type":"object"}`)
+
+	User_POST_staging_resourcesSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"file":{"description":"file","type":"string"},"id":{"description":"User ID","type":"string"}},"required":["id"],"type":"object"}`)
+
+	User_GET_videosSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"type":{"description":"type (enum: uservideos_type_enum_param)","type":"string"}},"required":["id"],"type":"object"}`)
+
+	User_POST_videosSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"application_id":{"description":"application_id","type":"string"},"asked_fun_fact_prompt_id":{"description":"asked_fun_fact_prompt_id","type":"integer"},"audio_story_wave_animation_handle":{"description":"audio_story_wave_animation_handle","type":"string"},"composer_entry_picker":{"description":"composer_entry_picker","type":"string"},"composer_entry_point":{"description":"composer_entry_point","type":"string"},"composer_entry_time":{"description":"composer_entry_time","type":"integer"},"composer_session_events_log":{"description":"composer_session_events_log","type":"string"},"composer_session_id":{"description":"composer_session_id","type":"string"},"composer_source_surface":{"description":"composer_source_surface","type":"string"},"composer_type":{"description":"composer_type","type":"string"},"container_type":{"description":"container_type (enum: uservideos_container_type_enum_param)","type":"string"},"content_category":{"description":"content_category (enum: uservideos_content_category_enum_param)","type":"string"},"creative_tools":{"description":"creative_tools","type":"string"},"description":{"description":"description","type":"string"},"direct_share_status":{"description":"direct_share_status","type":"integer"},"embeddable":{"description":"embeddable","type":"boolean"},"end_offset":{"description":"end_offset","type":"integer"},"fbuploader_video_file_chunk":{"description":"fbuploader_video_file_chunk","type":"string"},"file_size":{"description":"file_size","type":"integer"},"file_url":{"description":"file_url","type":"string"},"fisheye_video_cropped":{"description":"fisheye_video_cropped","type":"boolean"},"formatting":{"description":"formatting (enum: uservideos_formatting_enum_param)","type":"string"},"fov":{"description":"fov","type":"integer"},"front_z_rotation":{"description":"front_z_rotation","type":"number"},"fun_fact_prompt_id":{"description":"fun_fact_prompt_id","type":"string"},"fun_fact_toastee_id":{"description":"fun_fact_toastee_id","type":"integer"},"guide":{"description":"guide","items":{"type":"string"},"type":"array"},"guide_enabled":{"description":"guide_enabled","type":"boolean"},"id":{"description":"User ID","type":"string"},"initial_heading":{"description":"initial_heading","type":"integer"},"initial_pitch":{"description":"initial_pitch","type":"integer"},"instant_game_entry_point_data":{"description":"instant_game_entry_point_data","type":"string"},"is_boost_intended":{"description":"is_boost_intended","type":"boolean"},"is_explicit_share":{"description":"is_explicit_share","type":"boolean"},"is_group_linking_post":{"description":"is_group_linking_post","type":"boolean"},"is_partnership_ad":{"description":"is_partnership_ad","type":"boolean"},"is_voice_clip":{"description":"is_voice_clip","type":"boolean"},"location_source_id":{"description":"location_source_id","type":"string"},"manual_privacy":{"description":"manual_privacy","type":"boolean"},"no_story":{"description":"no_story","type":"boolean"},"og_action_type_id":{"description":"og_action_type_id","type":"string"},"og_icon_id":{"description":"og_icon_id","type":"string"},"og_object_id":{"description":"og_object_id","type":"string"},"og_phrase":{"description":"og_phrase","type":"string"},"og_suggestion_mechanism":{"description":"og_suggestion_mechanism","type":"string"},"original_fov":{"description":"original_fov","type":"integer"},"original_projection_type":{"description":"original_projection_type (enum: uservideos_original_projection_type_enum_param)","type":"string"},"partnership_ad_ad_code":{"description":"partnership_ad_ad_code","type":"string"},"privacy":{"description":"privacy","type":"string"},"publish_event_id":{"description":"publish_event_id","type":"integer"},"referenced_sticker_id":{"description":"referenced_sticker_id","type":"string"},"replace_video_id":{"description":"replace_video_id","type":"string"},"slideshow_spec":{"description":"slideshow_spec","type":"string"},"source":{"description":"source","type":"string"},"source_instagram_media_id":{"description":"source_instagram_media_id","type":"string"},"spherical":{"description":"spherical","type":"boolean"},"sponsor_id":{"description":"sponsor_id","type":"string"},"start_offset":{"description":"start_offset","type":"integer"},"swap_mode":{"description":"swap_mode (enum: uservideos_swap_mode_enum_param)","type":"string"},"text_format_metadata":{"description":"text_format_metadata","type":"string"},"thumb":{"description":"thumb","type":"string"},"time_since_original_post":{"description":"time_since_original_post","type":"integer"},"title":{"description":"title","type":"string"},"transcode_setting_properties":{"description":"transcode_setting_properties","type":"string"},"unpublished_content_type":{"description":"unpublished_content_type (enum: uservideos_unpublished_content_type_enum_param)","type":"string"},"upload_phase":{"description":"upload_phase (enum: uservideos_upload_phase_enum_param)","type":"string"},"upload_session_id":{"description":"upload_session_id","type":"string"},"upload_setting_properties":{"description":"upload_setting_properties","type":"string"},"video_file_chunk":{"description":"video_file_chunk","type":"string"},"video_id_original":{"description":"video_id_original","type":"string"},"video_start_time_ms":{"description":"video_start_time_ms","type":"integer"},"waterfall_id":{"description":"waterfall_id","type":"string"}},"required":["id"],"type":"object"}`)
+
+	User_DELETE_Schema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+
+	User_GET_Schema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+
+	User_POST_Schema = json.RawMessage(`{"additionalProperties":false,"properties":{"emoji_color_pref":{"description":"emoji_color_pref","type":"integer"},"firstname":{"description":"firstname","type":"string"},"id":{"description":"User ID","type":"string"},"lastname":{"description":"lastname","type":"string"},"local_news_megaphone_dismiss_status":{"description":"local_news_megaphone_dismiss_status (enum: user_local_news_megaphone_dismiss_status)","type":"string"},"local_news_subscription_status":{"description":"local_news_subscription_status (enum: user_local_news_subscription_status)","type":"string"},"name":{"description":"name","type":"string"},"password":{"description":"password","type":"string"}},"required":["id"],"type":"object"}`)
+)
+
 // User_DELETE_access_tokensHandler handles User_DELETE_access_tokens
 func User_DELETE_access_tokensHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
@@ -27,7 +140,7 @@ func User_DELETE_access_tokensHandler(ctx context.Context, request mcp.CallToolR
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -56,7 +169,7 @@ func User_DELETE_access_tokensHandler(ctx context.Context, request mcp.CallToolR
 	resp, err := makeGraphRequest("DELETE", baseURL, nil)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -75,7 +188,7 @@ func User_POST_access_tokensHandler(ctx context.Context, request mcp.CallToolReq
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -86,7 +199,7 @@ func User_POST_access_tokensHandler(ctx context.Context, request mcp.CallToolReq
 	resp, err := makeGraphRequest("POST", url, params)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -106,7 +219,7 @@ func User_GET_accountsHandler(ctx context.Context, request mcp.CallToolRequest) 
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -135,7 +248,7 @@ func User_GET_accountsHandler(ctx context.Context, request mcp.CallToolRequest) 
 	resp, err := makeGraphRequest("GET", baseURL, nil)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -154,7 +267,7 @@ func User_POST_accountsHandler(ctx context.Context, request mcp.CallToolRequest)
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -165,7 +278,7 @@ func User_POST_accountsHandler(ctx context.Context, request mcp.CallToolRequest)
 	resp, err := makeGraphRequest("POST", url, params)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -185,7 +298,7 @@ func User_GET_ad_studiesHandler(ctx context.Context, request mcp.CallToolRequest
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -214,7 +327,7 @@ func User_GET_ad_studiesHandler(ctx context.Context, request mcp.CallToolRequest
 	resp, err := makeGraphRequest("GET", baseURL, nil)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -233,7 +346,7 @@ func User_POST_ad_studiesHandler(ctx context.Context, request mcp.CallToolReques
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -244,7 +357,7 @@ func User_POST_ad_studiesHandler(ctx context.Context, request mcp.CallToolReques
 	resp, err := makeGraphRequest("POST", url, params)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -264,7 +377,7 @@ func User_GET_adaccountsHandler(ctx context.Context, request mcp.CallToolRequest
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -293,7 +406,7 @@ func User_GET_adaccountsHandler(ctx context.Context, request mcp.CallToolRequest
 	resp, err := makeGraphRequest("GET", baseURL, nil)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -313,7 +426,7 @@ func User_GET_albumsHandler(ctx context.Context, request mcp.CallToolRequest) (*
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -342,7 +455,7 @@ func User_GET_albumsHandler(ctx context.Context, request mcp.CallToolRequest) (*
 	resp, err := makeGraphRequest("GET", baseURL, nil)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -361,7 +474,7 @@ func User_POST_applicationsHandler(ctx context.Context, request mcp.CallToolRequ
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -372,7 +485,7 @@ func User_POST_applicationsHandler(ctx context.Context, request mcp.CallToolRequ
 	resp, err := makeGraphRequest("POST", url, params)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -416,7 +529,7 @@ func User_GET_apprequestformerrecipientsHandler(ctx context.Context, request mcp
 	resp, err := makeGraphRequest("GET", baseURL, nil)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -436,7 +549,7 @@ func User_GET_apprequestsHandler(ctx context.Context, request mcp.CallToolReques
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -465,7 +578,7 @@ func User_GET_apprequestsHandler(ctx context.Context, request mcp.CallToolReques
 	resp, err := makeGraphRequest("GET", baseURL, nil)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -485,7 +598,7 @@ func User_GET_assigned_ad_accountsHandler(ctx context.Context, request mcp.CallT
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -514,7 +627,7 @@ func User_GET_assigned_ad_accountsHandler(ctx context.Context, request mcp.CallT
 	resp, err := makeGraphRequest("GET", baseURL, nil)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -534,7 +647,7 @@ func User_GET_assigned_applicationsHandler(ctx context.Context, request mcp.Call
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -563,7 +676,7 @@ func User_GET_assigned_applicationsHandler(ctx context.Context, request mcp.Call
 	resp, err := makeGraphRequest("GET", baseURL, nil)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -583,7 +696,7 @@ func User_GET_assigned_business_asset_groupsHandler(ctx context.Context, request
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -612,7 +725,7 @@ func User_GET_assigned_business_asset_groupsHandler(ctx context.Context, request
 	resp, err := makeGraphRequest("GET", baseURL, nil)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -632,7 +745,7 @@ func User_GET_assigned_pagesHandler(ctx context.Context, request mcp.CallToolReq
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -661,7 +774,7 @@ func User_GET_assigned_pagesHandler(ctx context.Context, request mcp.CallToolReq
 	resp, err := makeGraphRequest("GET", baseURL, nil)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -681,7 +794,7 @@ func User_GET_assigned_product_catalogsHandler(ctx context.Context, request mcp.
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -710,7 +823,7 @@ func User_GET_assigned_product_catalogsHandler(ctx context.Context, request mcp.
 	resp, err := makeGraphRequest("GET", baseURL, nil)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -730,7 +843,7 @@ func User_GET_avatarsHandler(ctx context.Context, request mcp.CallToolRequest) (
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -759,7 +872,7 @@ func User_GET_avatarsHandler(ctx context.Context, request mcp.CallToolRequest) (
 	resp, err := makeGraphRequest("GET", baseURL, nil)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -803,7 +916,7 @@ func User_GET_business_usersHandler(ctx context.Context, request mcp.CallToolReq
 	resp, err := makeGraphRequest("GET", baseURL, nil)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -823,7 +936,7 @@ func User_DELETE_businessesHandler(ctx context.Context, request mcp.CallToolRequ
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -852,7 +965,7 @@ func User_DELETE_businessesHandler(ctx context.Context, request mcp.CallToolRequ
 	resp, err := makeGraphRequest("DELETE", baseURL, nil)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -872,7 +985,7 @@ func User_GET_businessesHandler(ctx context.Context, request mcp.CallToolRequest
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -901,7 +1014,7 @@ func User_GET_businessesHandler(ctx context.Context, request mcp.CallToolRequest
 	resp, err := makeGraphRequest("GET", baseURL, nil)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -920,7 +1033,7 @@ func User_POST_businessesHandler(ctx context.Context, request mcp.CallToolReques
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -931,7 +1044,7 @@ func User_POST_businessesHandler(ctx context.Context, request mcp.CallToolReques
 	resp, err := makeGraphRequest("POST", url, params)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -951,7 +1064,7 @@ func User_GET_conversationsHandler(ctx context.Context, request mcp.CallToolRequ
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -980,7 +1093,7 @@ func User_GET_conversationsHandler(ctx context.Context, request mcp.CallToolRequ
 	resp, err := makeGraphRequest("GET", baseURL, nil)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -1000,7 +1113,7 @@ func User_GET_custom_labelsHandler(ctx context.Context, request mcp.CallToolRequ
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -1029,7 +1142,7 @@ func User_GET_custom_labelsHandler(ctx context.Context, request mcp.CallToolRequ
 	resp, err := makeGraphRequest("GET", baseURL, nil)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -1049,7 +1162,7 @@ func User_GET_eventsHandler(ctx context.Context, request mcp.CallToolRequest) (*
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -1078,7 +1191,7 @@ func User_GET_eventsHandler(ctx context.Context, request mcp.CallToolRequest) (*
 	resp, err := makeGraphRequest("GET", baseURL, nil)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -1098,7 +1211,7 @@ func User_GET_feedHandler(ctx context.Context, request mcp.CallToolRequest) (*mc
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -1127,7 +1240,7 @@ func User_GET_feedHandler(ctx context.Context, request mcp.CallToolRequest) (*mc
 	resp, err := makeGraphRequest("GET", baseURL, nil)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -1146,7 +1259,7 @@ func User_POST_feedHandler(ctx context.Context, request mcp.CallToolRequest) (*m
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -1157,7 +1270,7 @@ func User_POST_feedHandler(ctx context.Context, request mcp.CallToolRequest) (*m
 	resp, err := makeGraphRequest("POST", url, params)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -1177,7 +1290,7 @@ func User_GET_friendsHandler(ctx context.Context, request mcp.CallToolRequest) (
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -1206,7 +1319,7 @@ func User_GET_friendsHandler(ctx context.Context, request mcp.CallToolRequest) (
 	resp, err := makeGraphRequest("GET", baseURL, nil)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -1226,7 +1339,7 @@ func User_GET_fundraisersHandler(ctx context.Context, request mcp.CallToolReques
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -1255,7 +1368,7 @@ func User_GET_fundraisersHandler(ctx context.Context, request mcp.CallToolReques
 	resp, err := makeGraphRequest("GET", baseURL, nil)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -1274,7 +1387,7 @@ func User_POST_fundraisersHandler(ctx context.Context, request mcp.CallToolReque
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -1285,7 +1398,7 @@ func User_POST_fundraisersHandler(ctx context.Context, request mcp.CallToolReque
 	resp, err := makeGraphRequest("POST", url, params)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -1305,7 +1418,7 @@ func User_GET_groupsHandler(ctx context.Context, request mcp.CallToolRequest) (*
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -1334,7 +1447,7 @@ func User_GET_groupsHandler(ctx context.Context, request mcp.CallToolRequest) (*
 	resp, err := makeGraphRequest("GET", baseURL, nil)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -1354,7 +1467,7 @@ func User_GET_ids_for_appsHandler(ctx context.Context, request mcp.CallToolReque
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -1383,7 +1496,7 @@ func User_GET_ids_for_appsHandler(ctx context.Context, request mcp.CallToolReque
 	resp, err := makeGraphRequest("GET", baseURL, nil)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -1403,7 +1516,7 @@ func User_GET_ids_for_businessHandler(ctx context.Context, request mcp.CallToolR
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -1432,7 +1545,7 @@ func User_GET_ids_for_businessHandler(ctx context.Context, request mcp.CallToolR
 	resp, err := makeGraphRequest("GET", baseURL, nil)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -1452,7 +1565,7 @@ func User_GET_ids_for_pagesHandler(ctx context.Context, request mcp.CallToolRequ
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -1481,7 +1594,7 @@ func User_GET_ids_for_pagesHandler(ctx context.Context, request mcp.CallToolRequ
 	resp, err := makeGraphRequest("GET", baseURL, nil)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -1501,7 +1614,7 @@ func User_GET_likesHandler(ctx context.Context, request mcp.CallToolRequest) (*m
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -1530,7 +1643,7 @@ func User_GET_likesHandler(ctx context.Context, request mcp.CallToolRequest) (*m
 	resp, err := makeGraphRequest("GET", baseURL, nil)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -1550,7 +1663,7 @@ func User_GET_live_videosHandler(ctx context.Context, request mcp.CallToolReques
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -1579,7 +1692,7 @@ func User_GET_live_videosHandler(ctx context.Context, request mcp.CallToolReques
 	resp, err := makeGraphRequest("GET", baseURL, nil)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -1598,7 +1711,7 @@ func User_POST_live_videosHandler(ctx context.Context, request mcp.CallToolReque
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -1609,7 +1722,7 @@ func User_POST_live_videosHandler(ctx context.Context, request mcp.CallToolReque
 	resp, err := makeGraphRequest("POST", url, params)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -1634,7 +1747,7 @@ func User_POST_messenger_desktop_performance_tracesHandler(ctx context.Context, 
 	resp, err := makeGraphRequest("POST", url, params)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -1659,7 +1772,7 @@ func User_POST_messenger_kids_accounts_unread_badgeHandler(ctx context.Context, 
 	resp, err := makeGraphRequest("POST", url, params)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -1679,7 +1792,7 @@ func User_GET_musicHandler(ctx context.Context, request mcp.CallToolRequest) (*m
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -1708,7 +1821,7 @@ func User_GET_musicHandler(ctx context.Context, request mcp.CallToolRequest) (*m
 	resp, err := makeGraphRequest("GET", baseURL, nil)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -1727,7 +1840,7 @@ func User_POST_notificationsHandler(ctx context.Context, request mcp.CallToolReq
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -1738,7 +1851,7 @@ func User_POST_notificationsHandler(ctx context.Context, request mcp.CallToolReq
 	resp, err := makeGraphRequest("POST", url, params)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -1782,7 +1895,7 @@ func User_GET_payment_transactionsHandler(ctx context.Context, request mcp.CallT
 	resp, err := makeGraphRequest("GET", baseURL, nil)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -1802,7 +1915,7 @@ func User_DELETE_permissionsHandler(ctx context.Context, request mcp.CallToolReq
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -1831,7 +1944,7 @@ func User_DELETE_permissionsHandler(ctx context.Context, request mcp.CallToolReq
 	resp, err := makeGraphRequest("DELETE", baseURL, nil)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -1851,7 +1964,7 @@ func User_GET_permissionsHandler(ctx context.Context, request mcp.CallToolReques
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -1880,7 +1993,7 @@ func User_GET_permissionsHandler(ctx context.Context, request mcp.CallToolReques
 	resp, err := makeGraphRequest("GET", baseURL, nil)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -1900,7 +2013,7 @@ func User_GET_personal_ad_accountsHandler(ctx context.Context, request mcp.CallT
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -1929,7 +2042,7 @@ func User_GET_personal_ad_accountsHandler(ctx context.Context, request mcp.CallT
 	resp, err := makeGraphRequest("GET", baseURL, nil)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -1949,7 +2062,7 @@ func User_GET_photosHandler(ctx context.Context, request mcp.CallToolRequest) (*
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -1978,7 +2091,7 @@ func User_GET_photosHandler(ctx context.Context, request mcp.CallToolRequest) (*
 	resp, err := makeGraphRequest("GET", baseURL, nil)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -1997,7 +2110,7 @@ func User_POST_photosHandler(ctx context.Context, request mcp.CallToolRequest) (
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -2008,7 +2121,7 @@ func User_POST_photosHandler(ctx context.Context, request mcp.CallToolRequest) (
 	resp, err := makeGraphRequest("POST", url, params)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -2028,7 +2141,7 @@ func User_GET_pictureHandler(ctx context.Context, request mcp.CallToolRequest) (
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -2057,7 +2170,7 @@ func User_GET_pictureHandler(ctx context.Context, request mcp.CallToolRequest) (
 	resp, err := makeGraphRequest("GET", baseURL, nil)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -2077,7 +2190,7 @@ func User_GET_postsHandler(ctx context.Context, request mcp.CallToolRequest) (*m
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -2106,7 +2219,7 @@ func User_GET_postsHandler(ctx context.Context, request mcp.CallToolRequest) (*m
 	resp, err := makeGraphRequest("GET", baseURL, nil)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -2150,7 +2263,7 @@ func User_GET_rich_media_documentsHandler(ctx context.Context, request mcp.CallT
 	resp, err := makeGraphRequest("GET", baseURL, nil)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -2169,7 +2282,7 @@ func User_POST_staging_resourcesHandler(ctx context.Context, request mcp.CallToo
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -2180,7 +2293,7 @@ func User_POST_staging_resourcesHandler(ctx context.Context, request mcp.CallToo
 	resp, err := makeGraphRequest("POST", url, params)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -2200,7 +2313,7 @@ func User_GET_videosHandler(ctx context.Context, request mcp.CallToolRequest) (*
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -2229,7 +2342,7 @@ func User_GET_videosHandler(ctx context.Context, request mcp.CallToolRequest) (*
 	resp, err := makeGraphRequest("GET", baseURL, nil)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -2248,7 +2361,7 @@ func User_POST_videosHandler(ctx context.Context, request mcp.CallToolRequest) (
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -2259,7 +2372,7 @@ func User_POST_videosHandler(ctx context.Context, request mcp.CallToolRequest) (
 	resp, err := makeGraphRequest("POST", url, params)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -2279,7 +2392,7 @@ func User_DELETE_Handler(ctx context.Context, request mcp.CallToolRequest) (*mcp
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -2308,7 +2421,7 @@ func User_DELETE_Handler(ctx context.Context, request mcp.CallToolRequest) (*mcp
 	resp, err := makeGraphRequest("DELETE", baseURL, nil)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -2328,7 +2441,7 @@ func User_GET_Handler(ctx context.Context, request mcp.CallToolRequest) (*mcp.Ca
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -2357,7 +2470,7 @@ func User_GET_Handler(ctx context.Context, request mcp.CallToolRequest) (*mcp.Ca
 	resp, err := makeGraphRequest("GET", baseURL, nil)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -2376,7 +2489,7 @@ func User_POST_Handler(ctx context.Context, request mcp.CallToolRequest) (*mcp.C
 	// Extract ID
 	id, ok := params["id"].(string)
 	if !ok || id == "" {
-		return nil, fmt.Errorf("id is required")
+		return mcp.NewToolResultErrorf("id is required"), nil
 	}
 	delete(params, "id")
 
@@ -2387,7 +2500,7 @@ func User_POST_Handler(ctx context.Context, request mcp.CallToolRequest) (*mcp.C
 	resp, err := makeGraphRequest("POST", url, params)
 
 	if err != nil {
-		return nil, err
+		return mcp.NewToolResultErrorf("API request failed: %v", err), nil
 	}
 
 	return mcp.NewToolResultText(string(resp)), nil
@@ -2400,7 +2513,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"User_DELETE_access_tokens",
 			"DELETE access_tokens for User. Returns Object",
-			json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`),
+			User_DELETE_access_tokensSchema,
 		),
 		User_DELETE_access_tokensHandler,
 	)
@@ -2409,7 +2522,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"User_POST_access_tokens",
 			"POST access_tokens for User. Returns User. Parameters: business_app (string) [required], page_id (string), scope (list<string>), set_token_expires_in_60_days (bool)",
-			json.RawMessage(`{"additionalProperties":false,"properties":{"business_app":{"description":"business_app","type":"string"},"id":{"description":"User ID","type":"string"},"page_id":{"description":"page_id","type":"string"},"scope":{"description":"scope","items":{"type":"string"},"type":"array"},"set_token_expires_in_60_days":{"description":"set_token_expires_in_60_days","type":"boolean"}},"required":["id","business_app"],"type":"object"}`),
+			User_POST_access_tokensSchema,
 		),
 		User_POST_access_tokensHandler,
 	)
@@ -2418,7 +2531,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"User_GET_accounts",
 			"GET accounts for User. Returns Page. Parameters: ad_id (string), is_place (bool), is_promotable (bool)",
-			json.RawMessage(`{"additionalProperties":true,"properties":{"ad_id":{"description":"ad_id","type":"string"},"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"is_place":{"description":"is_place","type":"boolean"},"is_promotable":{"description":"is_promotable","type":"boolean"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`),
+			User_GET_accountsSchema,
 		),
 		User_GET_accountsHandler,
 	)
@@ -2427,7 +2540,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"User_POST_accounts",
 			"POST accounts for User. Returns Object. Parameters: about (string), address (string), category (int), category_enum (string), category_list (list<string>), city_id (string), coordinates (Object), cover_photo (Object), description (string), ignore_coordinate_warnings (bool), location (Object), name (string) [required], phone (string), picture (string), website (string), zip (string)",
-			json.RawMessage(`{"additionalProperties":false,"properties":{"about":{"description":"about","type":"string"},"address":{"description":"address","type":"string"},"category":{"description":"category","type":"integer"},"category_enum":{"description":"category_enum","type":"string"},"category_list":{"description":"category_list","items":{"type":"string"},"type":"array"},"city_id":{"description":"city_id","type":"string"},"coordinates":{"additionalProperties":true,"description":"coordinates","type":"object"},"cover_photo":{"additionalProperties":true,"description":"cover_photo","type":"object"},"description":{"description":"description","type":"string"},"id":{"description":"User ID","type":"string"},"ignore_coordinate_warnings":{"description":"ignore_coordinate_warnings","type":"boolean"},"location":{"additionalProperties":true,"description":"location","type":"object"},"name":{"description":"name","type":"string"},"phone":{"description":"phone","type":"string"},"picture":{"description":"picture","type":"string"},"website":{"description":"website","type":"string"},"zip":{"description":"zip","type":"string"}},"required":["id","name"],"type":"object"}`),
+			User_POST_accountsSchema,
 		),
 		User_POST_accountsHandler,
 	)
@@ -2436,7 +2549,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"User_GET_ad_studies",
 			"GET ad_studies for User. Returns AdStudy",
-			json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`),
+			User_GET_ad_studiesSchema,
 		),
 		User_GET_ad_studiesHandler,
 	)
@@ -2445,7 +2558,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"User_POST_ad_studies",
 			"POST ad_studies for User. Returns AdStudy. Parameters: cells (list<Object>), client_business (string), confidence_level (float), cooldown_start_time (int), description (string), end_time (int), name (string), objectives (list<Object>), observation_end_time (int), start_time (int), type (userad_studies_type_enum_param), viewers (list<int>)",
-			json.RawMessage(`{"additionalProperties":false,"properties":{"cells":{"description":"cells","items":{"additionalProperties":true,"type":"object"},"type":"array"},"client_business":{"description":"client_business","type":"string"},"confidence_level":{"description":"confidence_level","type":"number"},"cooldown_start_time":{"description":"cooldown_start_time","type":"integer"},"description":{"description":"description","type":"string"},"end_time":{"description":"end_time","type":"integer"},"id":{"description":"User ID","type":"string"},"name":{"description":"name","type":"string"},"objectives":{"description":"objectives","items":{"additionalProperties":true,"type":"object"},"type":"array"},"observation_end_time":{"description":"observation_end_time","type":"integer"},"start_time":{"description":"start_time","type":"integer"},"type":{"description":"type (enum: userad_studies_type_enum_param)","type":"string"},"viewers":{"description":"viewers","items":{"type":"integer"},"type":"array"}},"required":["id"],"type":"object"}`),
+			User_POST_ad_studiesSchema,
 		),
 		User_POST_ad_studiesHandler,
 	)
@@ -2454,7 +2567,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"User_GET_adaccounts",
 			"GET adaccounts for User. Returns AdAccount",
-			json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`),
+			User_GET_adaccountsSchema,
 		),
 		User_GET_adaccountsHandler,
 	)
@@ -2463,7 +2576,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"User_GET_albums",
 			"GET albums for User. Returns Album",
-			json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`),
+			User_GET_albumsSchema,
 		),
 		User_GET_albumsHandler,
 	)
@@ -2472,7 +2585,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"User_POST_applications",
 			"POST applications for User. Returns User. Parameters: business_app (int) [required]",
-			json.RawMessage(`{"additionalProperties":false,"properties":{"business_app":{"description":"business_app","type":"integer"},"id":{"description":"User ID","type":"string"}},"required":["id","business_app"],"type":"object"}`),
+			User_POST_applicationsSchema,
 		),
 		User_POST_applicationsHandler,
 	)
@@ -2481,7 +2594,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"User_GET_apprequestformerrecipients",
 			"GET apprequestformerrecipients for User. Returns AppRequestFormerRecipient",
-			json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"limit":{"description":"Maximum number of results","type":"integer"}},"type":"object"}`),
+			User_GET_apprequestformerrecipientsSchema,
 		),
 		User_GET_apprequestformerrecipientsHandler,
 	)
@@ -2490,7 +2603,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"User_GET_apprequests",
 			"GET apprequests for User. Returns AppRequest",
-			json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`),
+			User_GET_apprequestsSchema,
 		),
 		User_GET_apprequestsHandler,
 	)
@@ -2499,7 +2612,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"User_GET_assigned_ad_accounts",
 			"GET assigned_ad_accounts for User. Returns AdAccount",
-			json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`),
+			User_GET_assigned_ad_accountsSchema,
 		),
 		User_GET_assigned_ad_accountsHandler,
 	)
@@ -2508,7 +2621,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"User_GET_assigned_applications",
 			"GET assigned_applications for User. Returns Application",
-			json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`),
+			User_GET_assigned_applicationsSchema,
 		),
 		User_GET_assigned_applicationsHandler,
 	)
@@ -2517,7 +2630,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"User_GET_assigned_business_asset_groups",
 			"GET assigned_business_asset_groups for User. Returns BusinessAssetGroup. Parameters: contained_asset_id (string)",
-			json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"contained_asset_id":{"description":"contained_asset_id","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`),
+			User_GET_assigned_business_asset_groupsSchema,
 		),
 		User_GET_assigned_business_asset_groupsHandler,
 	)
@@ -2526,7 +2639,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"User_GET_assigned_pages",
 			"GET assigned_pages for User. Returns Page. Parameters: pages (list<unsigned int>)",
-			json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"pages":{"description":"pages","items":{"type":"integer"},"type":"array"}},"required":["id"],"type":"object"}`),
+			User_GET_assigned_pagesSchema,
 		),
 		User_GET_assigned_pagesHandler,
 	)
@@ -2535,7 +2648,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"User_GET_assigned_product_catalogs",
 			"GET assigned_product_catalogs for User. Returns ProductCatalog",
-			json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`),
+			User_GET_assigned_product_catalogsSchema,
 		),
 		User_GET_assigned_product_catalogsHandler,
 	)
@@ -2544,7 +2657,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"User_GET_avatars",
 			"GET avatars for User. Returns Avatar",
-			json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`),
+			User_GET_avatarsSchema,
 		),
 		User_GET_avatarsHandler,
 	)
@@ -2553,7 +2666,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"User_GET_business_users",
 			"GET business_users for User. Returns BusinessUser",
-			json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"limit":{"description":"Maximum number of results","type":"integer"}},"type":"object"}`),
+			User_GET_business_usersSchema,
 		),
 		User_GET_business_usersHandler,
 	)
@@ -2562,7 +2675,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"User_DELETE_businesses",
 			"DELETE businesses for User. Returns Object. Parameters: business (string)",
-			json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"business":{"description":"business","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`),
+			User_DELETE_businessesSchema,
 		),
 		User_DELETE_businessesHandler,
 	)
@@ -2571,7 +2684,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"User_GET_businesses",
 			"GET businesses for User. Returns Business",
-			json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`),
+			User_GET_businessesSchema,
 		),
 		User_GET_businessesHandler,
 	)
@@ -2580,7 +2693,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"User_POST_businesses",
 			"POST businesses for User. Returns Business. Parameters: child_business_external_id (string), email (string), name (string) [required], primary_page (string), sales_rep_email (string), survey_business_type (userbusinesses_survey_business_type_enum_param), survey_num_assets (unsigned int), survey_num_people (unsigned int), timezone_id (userbusinesses_timezone_id_enum_param), vertical (userbusinesses_vertical_enum_param) [required]",
-			json.RawMessage(`{"additionalProperties":false,"properties":{"child_business_external_id":{"description":"child_business_external_id","type":"string"},"email":{"description":"email","type":"string"},"id":{"description":"User ID","type":"string"},"name":{"description":"name","type":"string"},"primary_page":{"description":"primary_page","type":"string"},"sales_rep_email":{"description":"sales_rep_email","type":"string"},"survey_business_type":{"description":"survey_business_type (enum: userbusinesses_survey_business_type_enum_param)","type":"string"},"survey_num_assets":{"description":"survey_num_assets","type":"integer"},"survey_num_people":{"description":"survey_num_people","type":"integer"},"timezone_id":{"description":"timezone_id (enum: userbusinesses_timezone_id_enum_param)","type":"string"},"vertical":{"description":"vertical (enum: userbusinesses_vertical_enum_param)","type":"string"}},"required":["id","name","vertical"],"type":"object"}`),
+			User_POST_businessesSchema,
 		),
 		User_POST_businessesHandler,
 	)
@@ -2589,7 +2702,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"User_GET_conversations",
 			"GET conversations for User. Returns UnifiedThread. Parameters: folder (string), platform (userconversations_platform_enum_param), tags (list<string>), user_id (string)",
-			json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"folder":{"description":"folder","type":"string"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"platform":{"description":"platform (enum: userconversations_platform_enum_param)","type":"string"},"tags":{"description":"tags","items":{"type":"string"},"type":"array"},"user_id":{"description":"user_id","type":"string"}},"required":["id"],"type":"object"}`),
+			User_GET_conversationsSchema,
 		),
 		User_GET_conversationsHandler,
 	)
@@ -2598,7 +2711,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"User_GET_custom_labels",
 			"GET custom_labels for User. Returns PageUserMessageThreadLabel",
-			json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`),
+			User_GET_custom_labelsSchema,
 		),
 		User_GET_custom_labelsHandler,
 	)
@@ -2607,7 +2720,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"User_GET_events",
 			"GET events for User. Returns Event. Parameters: include_canceled (bool), type (userevents_type_enum_param)",
-			json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"include_canceled":{"description":"include_canceled","type":"boolean"},"limit":{"description":"Maximum number of results","type":"integer"},"type":{"description":"type (enum: userevents_type_enum_param)","type":"string"}},"required":["id"],"type":"object"}`),
+			User_GET_eventsSchema,
 		),
 		User_GET_eventsHandler,
 	)
@@ -2616,7 +2729,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"User_GET_feed",
 			"GET feed for User. Returns Post. Parameters: include_hidden (bool), q (string), show_expired (bool), since (datetime), until (datetime), with (string)",
-			json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"include_hidden":{"description":"include_hidden","type":"boolean"},"limit":{"description":"Maximum number of results","type":"integer"},"q":{"description":"q","type":"string"},"show_expired":{"description":"show_expired","type":"boolean"},"since":{"description":"since","type":"string"},"until":{"description":"until","type":"string"},"with":{"description":"with","type":"string"}},"required":["id"],"type":"object"}`),
+			User_GET_feedSchema,
 		),
 		User_GET_feedHandler,
 	)
@@ -2625,7 +2738,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"User_POST_feed",
 			"POST feed for User. Returns Post. Parameters: actions (Object), album_id (string), android_key_hash (string), application_id (string), asked_fun_fact_prompt_id (unsigned int), asset3d_id (string), associated_id (string), attach_place_suggestion (bool), attached_media (list<Object>), audience_exp (bool), backdated_time (datetime), backdated_time_granularity (userfeed_backdated_time_granularity_enum_param), breaking_news (bool), breaking_news_expiration (unsigned int), call_to_action (Object), caption (string), child_attachments (list<Object>), client_mutation_id (string), composer_entry_picker (string), composer_entry_point (string), composer_entry_time (unsigned int), composer_session_events_log (string), composer_session_id (string), composer_source_surface (string), composer_type (string), connection_class (string), content_attachment (string), coordinates (Object), cta_link (string), cta_type (string), description (string), direct_share_status (unsigned int), expanded_height (unsigned int), expanded_width (unsigned int), feed_targeting (Object), formatting (userfeed_formatting_enum_param), fun_fact_prompt_id (string), fun_fact_toastee_id (unsigned int), height (unsigned int), home_checkin_city_id (Object), image_crops (map), implicit_with_tags (list<int>), instant_game_entry_point_data (string), ios_bundle_id (string), is_backout_draft (bool), is_boost_intended (bool), is_explicit_location (bool), is_explicit_share (bool), is_group_linking_post (bool), is_photo_container (bool), link (string), location_source_id (string), manual_privacy (bool), message (string), multi_share_end_card (bool), multi_share_optimized (bool), name (string), nectar_module (string), object_attachment (string), og_action_type_id (string), og_hide_object_attachment (bool), og_icon_id (string), og_object_id (string), og_phrase (string), og_set_profile_badge (bool), og_suggestion_mechanism (string), page_recommendation (string), picture (string), place (Object), place_attachment_setting (userfeed_place_attachment_setting_enum_param), place_list (string), place_list_data (list), post_surfaces_blacklist (list<userfeed_post_surfaces_blacklist_enum_param>), posting_to_redspace (userfeed_posting_to_redspace_enum_param), privacy (string), prompt_id (string), prompt_tracking_string (string), properties (Object), proxied_app_id (string), publish_event_id (unsigned int), published (bool), quote (string), ref (list<string>), referenceable_image_ids (list<string>), referral_id (string), scheduled_publish_time (datetime), source (string), sponsor_id (string), sponsor_relationship (unsigned int), suggested_place_id (Object), tags (list<int>), target_surface (userfeed_target_surface_enum_param), targeting (Object), text_format_metadata (string), text_format_preset_id (string), text_only_place (string), thumbnail (file), time_since_original_post (unsigned int), title (string), tracking_info (string), unpublished_content_type (userfeed_unpublished_content_type_enum_param), user_selected_tags (bool), video_start_time_ms (unsigned int), viewer_coordinates (Object), width (unsigned int)",
-			json.RawMessage(`{"additionalProperties":false,"properties":{"actions":{"additionalProperties":true,"description":"actions","type":"object"},"album_id":{"description":"album_id","type":"string"},"android_key_hash":{"description":"android_key_hash","type":"string"},"application_id":{"description":"application_id","type":"string"},"asked_fun_fact_prompt_id":{"description":"asked_fun_fact_prompt_id","type":"integer"},"asset3d_id":{"description":"asset3d_id","type":"string"},"associated_id":{"description":"associated_id","type":"string"},"attach_place_suggestion":{"description":"attach_place_suggestion","type":"boolean"},"attached_media":{"description":"attached_media","items":{"additionalProperties":true,"type":"object"},"type":"array"},"audience_exp":{"description":"audience_exp","type":"boolean"},"backdated_time":{"description":"backdated_time","type":"string"},"backdated_time_granularity":{"description":"backdated_time_granularity (enum: userfeed_backdated_time_granularity_enum_param)","type":"string"},"breaking_news":{"description":"breaking_news","type":"boolean"},"breaking_news_expiration":{"description":"breaking_news_expiration","type":"integer"},"call_to_action":{"additionalProperties":true,"description":"call_to_action","type":"object"},"caption":{"description":"caption","type":"string"},"child_attachments":{"description":"child_attachments","items":{"additionalProperties":true,"type":"object"},"type":"array"},"client_mutation_id":{"description":"client_mutation_id","type":"string"},"composer_entry_picker":{"description":"composer_entry_picker","type":"string"},"composer_entry_point":{"description":"composer_entry_point","type":"string"},"composer_entry_time":{"description":"composer_entry_time","type":"integer"},"composer_session_events_log":{"description":"composer_session_events_log","type":"string"},"composer_session_id":{"description":"composer_session_id","type":"string"},"composer_source_surface":{"description":"composer_source_surface","type":"string"},"composer_type":{"description":"composer_type","type":"string"},"connection_class":{"description":"connection_class","type":"string"},"content_attachment":{"description":"content_attachment","type":"string"},"coordinates":{"additionalProperties":true,"description":"coordinates","type":"object"},"cta_link":{"description":"cta_link","type":"string"},"cta_type":{"description":"cta_type","type":"string"},"description":{"description":"description","type":"string"},"direct_share_status":{"description":"direct_share_status","type":"integer"},"expanded_height":{"description":"expanded_height","type":"integer"},"expanded_width":{"description":"expanded_width","type":"integer"},"feed_targeting":{"additionalProperties":true,"description":"feed_targeting","type":"object"},"formatting":{"description":"formatting (enum: userfeed_formatting_enum_param)","type":"string"},"fun_fact_prompt_id":{"description":"fun_fact_prompt_id","type":"string"},"fun_fact_toastee_id":{"description":"fun_fact_toastee_id","type":"integer"},"height":{"description":"height","type":"integer"},"home_checkin_city_id":{"additionalProperties":true,"description":"home_checkin_city_id","type":"object"},"id":{"description":"User ID","type":"string"},"image_crops":{"description":"image_crops","type":"string"},"implicit_with_tags":{"description":"implicit_with_tags","items":{"type":"integer"},"type":"array"},"instant_game_entry_point_data":{"description":"instant_game_entry_point_data","type":"string"},"ios_bundle_id":{"description":"ios_bundle_id","type":"string"},"is_backout_draft":{"description":"is_backout_draft","type":"boolean"},"is_boost_intended":{"description":"is_boost_intended","type":"boolean"},"is_explicit_location":{"description":"is_explicit_location","type":"boolean"},"is_explicit_share":{"description":"is_explicit_share","type":"boolean"},"is_group_linking_post":{"description":"is_group_linking_post","type":"boolean"},"is_photo_container":{"description":"is_photo_container","type":"boolean"},"link":{"description":"link","type":"string"},"location_source_id":{"description":"location_source_id","type":"string"},"manual_privacy":{"description":"manual_privacy","type":"boolean"},"message":{"description":"message","type":"string"},"multi_share_end_card":{"description":"multi_share_end_card","type":"boolean"},"multi_share_optimized":{"description":"multi_share_optimized","type":"boolean"},"name":{"description":"name","type":"string"},"nectar_module":{"description":"nectar_module","type":"string"},"object_attachment":{"description":"object_attachment","type":"string"},"og_action_type_id":{"description":"og_action_type_id","type":"string"},"og_hide_object_attachment":{"description":"og_hide_object_attachment","type":"boolean"},"og_icon_id":{"description":"og_icon_id","type":"string"},"og_object_id":{"description":"og_object_id","type":"string"},"og_phrase":{"description":"og_phrase","type":"string"},"og_set_profile_badge":{"description":"og_set_profile_badge","type":"boolean"},"og_suggestion_mechanism":{"description":"og_suggestion_mechanism","type":"string"},"page_recommendation":{"description":"page_recommendation","type":"string"},"picture":{"description":"picture","type":"string"},"place":{"additionalProperties":true,"description":"place","type":"object"},"place_attachment_setting":{"description":"place_attachment_setting (enum: userfeed_place_attachment_setting_enum_param)","type":"string"},"place_list":{"description":"place_list","type":"string"},"place_list_data":{"description":"place_list_data","type":"string"},"post_surfaces_blacklist":{"description":"post_surfaces_blacklist","items":{"type":"string"},"type":"array"},"posting_to_redspace":{"description":"posting_to_redspace (enum: userfeed_posting_to_redspace_enum_param)","type":"string"},"privacy":{"description":"privacy","type":"string"},"prompt_id":{"description":"prompt_id","type":"string"},"prompt_tracking_string":{"description":"prompt_tracking_string","type":"string"},"properties":{"additionalProperties":true,"description":"properties","type":"object"},"proxied_app_id":{"description":"proxied_app_id","type":"string"},"publish_event_id":{"description":"publish_event_id","type":"integer"},"published":{"description":"published","type":"boolean"},"quote":{"description":"quote","type":"string"},"ref":{"description":"ref","items":{"type":"string"},"type":"array"},"referenceable_image_ids":{"description":"referenceable_image_ids","items":{"type":"string"},"type":"array"},"referral_id":{"description":"referral_id","type":"string"},"scheduled_publish_time":{"description":"scheduled_publish_time","type":"string"},"source":{"description":"source","type":"string"},"sponsor_id":{"description":"sponsor_id","type":"string"},"sponsor_relationship":{"description":"sponsor_relationship","type":"integer"},"suggested_place_id":{"additionalProperties":true,"description":"suggested_place_id","type":"object"},"tags":{"description":"tags","items":{"type":"integer"},"type":"array"},"target_surface":{"description":"target_surface (enum: userfeed_target_surface_enum_param)","type":"string"},"targeting":{"additionalProperties":true,"description":"targeting","type":"object"},"text_format_metadata":{"description":"text_format_metadata","type":"string"},"text_format_preset_id":{"description":"text_format_preset_id","type":"string"},"text_only_place":{"description":"text_only_place","type":"string"},"thumbnail":{"description":"thumbnail","type":"string"},"time_since_original_post":{"description":"time_since_original_post","type":"integer"},"title":{"description":"title","type":"string"},"tracking_info":{"description":"tracking_info","type":"string"},"unpublished_content_type":{"description":"unpublished_content_type (enum: userfeed_unpublished_content_type_enum_param)","type":"string"},"user_selected_tags":{"description":"user_selected_tags","type":"boolean"},"video_start_time_ms":{"description":"video_start_time_ms","type":"integer"},"viewer_coordinates":{"additionalProperties":true,"description":"viewer_coordinates","type":"object"},"width":{"description":"width","type":"integer"}},"required":["id"],"type":"object"}`),
+			User_POST_feedSchema,
 		),
 		User_POST_feedHandler,
 	)
@@ -2634,7 +2747,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"User_GET_friends",
 			"GET friends for User. Returns User. Parameters: uid (int)",
-			json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"uid":{"description":"uid","type":"integer"}},"required":["id"],"type":"object"}`),
+			User_GET_friendsSchema,
 		),
 		User_GET_friendsHandler,
 	)
@@ -2643,7 +2756,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"User_GET_fundraisers",
 			"GET fundraisers for User. Returns FundraiserPersonToCharity",
-			json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`),
+			User_GET_fundraisersSchema,
 		),
 		User_GET_fundraisersHandler,
 	)
@@ -2652,7 +2765,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"User_POST_fundraisers",
 			"POST fundraisers for User. Returns FundraiserPersonToCharity. Parameters: charity_id (string), cover_photo (file), currency (string) [required], description (string) [required], end_time (datetime) [required], external_event_name (string), external_event_start_time (datetime), external_event_uri (string), external_fundraiser_uri (string), external_id (string) [required], fundraiser_type (userfundraisers_fundraiser_type_enum_param) [required], goal_amount (unsigned int) [required], name (string) [required], page_id (string)",
-			json.RawMessage(`{"additionalProperties":false,"properties":{"charity_id":{"description":"charity_id","type":"string"},"cover_photo":{"description":"cover_photo","type":"string"},"currency":{"description":"currency","type":"string"},"description":{"description":"description","type":"string"},"end_time":{"description":"end_time","type":"string"},"external_event_name":{"description":"external_event_name","type":"string"},"external_event_start_time":{"description":"external_event_start_time","type":"string"},"external_event_uri":{"description":"external_event_uri","type":"string"},"external_fundraiser_uri":{"description":"external_fundraiser_uri","type":"string"},"external_id":{"description":"external_id","type":"string"},"fundraiser_type":{"description":"fundraiser_type (enum: userfundraisers_fundraiser_type_enum_param)","type":"string"},"goal_amount":{"description":"goal_amount","type":"integer"},"id":{"description":"User ID","type":"string"},"name":{"description":"name","type":"string"},"page_id":{"description":"page_id","type":"string"}},"required":["id","currency","description","end_time","external_id","fundraiser_type","goal_amount","name"],"type":"object"}`),
+			User_POST_fundraisersSchema,
 		),
 		User_POST_fundraisersHandler,
 	)
@@ -2661,7 +2774,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"User_GET_groups",
 			"GET groups for User. Returns Group. Parameters: admin_only (bool), parent (string)",
-			json.RawMessage(`{"additionalProperties":true,"properties":{"admin_only":{"description":"admin_only","type":"boolean"},"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"parent":{"description":"parent","type":"string"}},"required":["id"],"type":"object"}`),
+			User_GET_groupsSchema,
 		),
 		User_GET_groupsHandler,
 	)
@@ -2670,7 +2783,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"User_GET_ids_for_apps",
 			"GET ids_for_apps for User. Returns UserIDForApp. Parameters: app (int)",
-			json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"app":{"description":"app","type":"integer"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`),
+			User_GET_ids_for_appsSchema,
 		),
 		User_GET_ids_for_appsHandler,
 	)
@@ -2679,7 +2792,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"User_GET_ids_for_business",
 			"GET ids_for_business for User. Returns UserIDForApp. Parameters: app (int)",
-			json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"app":{"description":"app","type":"integer"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`),
+			User_GET_ids_for_businessSchema,
 		),
 		User_GET_ids_for_businessHandler,
 	)
@@ -2688,7 +2801,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"User_GET_ids_for_pages",
 			"GET ids_for_pages for User. Returns UserIDForPage. Parameters: page (int)",
-			json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"page":{"description":"page","type":"integer"}},"required":["id"],"type":"object"}`),
+			User_GET_ids_for_pagesSchema,
 		),
 		User_GET_ids_for_pagesHandler,
 	)
@@ -2697,7 +2810,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"User_GET_likes",
 			"GET likes for User. Returns Page. Parameters: target_id (string)",
-			json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"target_id":{"description":"target_id","type":"string"}},"required":["id"],"type":"object"}`),
+			User_GET_likesSchema,
 		),
 		User_GET_likesHandler,
 	)
@@ -2706,7 +2819,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"User_GET_live_videos",
 			"GET live_videos for User. Returns LiveVideo. Parameters: broadcast_status (list<userlive_videos_broadcast_status_enum_param>), source (userlive_videos_source_enum_param)",
-			json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"broadcast_status":{"description":"broadcast_status","items":{"type":"string"},"type":"array"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"source":{"description":"source (enum: userlive_videos_source_enum_param)","type":"string"}},"required":["id"],"type":"object"}`),
+			User_GET_live_videosSchema,
 		),
 		User_GET_live_videosHandler,
 	)
@@ -2715,7 +2828,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"User_POST_live_videos",
 			"POST live_videos for User. Returns LiveVideo. Parameters: content_tags (list<string>), description (string), enable_backup_ingest (bool), encoding_settings (string), event_params (Object), fisheye_video_cropped (bool), front_z_rotation (float), is_audio_only (bool), is_spherical (bool), original_fov (unsigned int), privacy (string), projection (userlive_videos_projection_enum_param), published (bool), schedule_custom_profile_image (file), spatial_audio_format (userlive_videos_spatial_audio_format_enum_param), status (userlive_videos_status_enum_param), stereoscopic_mode (userlive_videos_stereoscopic_mode_enum_param), stop_on_delete_stream (bool), stream_type (userlive_videos_stream_type_enum_param), title (string)",
-			json.RawMessage(`{"additionalProperties":false,"properties":{"content_tags":{"description":"content_tags","items":{"type":"string"},"type":"array"},"description":{"description":"description","type":"string"},"enable_backup_ingest":{"description":"enable_backup_ingest","type":"boolean"},"encoding_settings":{"description":"encoding_settings","type":"string"},"event_params":{"additionalProperties":true,"description":"event_params","type":"object"},"fisheye_video_cropped":{"description":"fisheye_video_cropped","type":"boolean"},"front_z_rotation":{"description":"front_z_rotation","type":"number"},"id":{"description":"User ID","type":"string"},"is_audio_only":{"description":"is_audio_only","type":"boolean"},"is_spherical":{"description":"is_spherical","type":"boolean"},"original_fov":{"description":"original_fov","type":"integer"},"privacy":{"description":"privacy","type":"string"},"projection":{"description":"projection (enum: userlive_videos_projection_enum_param)","type":"string"},"published":{"description":"published","type":"boolean"},"schedule_custom_profile_image":{"description":"schedule_custom_profile_image","type":"string"},"spatial_audio_format":{"description":"spatial_audio_format (enum: userlive_videos_spatial_audio_format_enum_param)","type":"string"},"status":{"description":"status (enum: userlive_videos_status_enum_param)","type":"string"},"stereoscopic_mode":{"description":"stereoscopic_mode (enum: userlive_videos_stereoscopic_mode_enum_param)","type":"string"},"stop_on_delete_stream":{"description":"stop_on_delete_stream","type":"boolean"},"stream_type":{"description":"stream_type (enum: userlive_videos_stream_type_enum_param)","type":"string"},"title":{"description":"title","type":"string"}},"required":["id"],"type":"object"}`),
+			User_POST_live_videosSchema,
 		),
 		User_POST_live_videosHandler,
 	)
@@ -2724,7 +2837,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"User_POST_messenger_desktop_performance_traces",
 			"POST messenger_desktop_performance_traces for User. Returns User",
-			json.RawMessage(`{"additionalProperties":false,"properties":{},"type":"object"}`),
+			User_POST_messenger_desktop_performance_tracesSchema,
 		),
 		User_POST_messenger_desktop_performance_tracesHandler,
 	)
@@ -2733,7 +2846,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"User_POST_messenger_kids_accounts_unread_badge",
 			"POST messenger_kids_accounts_unread_badge for User. Returns User. Parameters: proxied_app_id (int) [required]",
-			json.RawMessage(`{"additionalProperties":false,"properties":{"proxied_app_id":{"description":"proxied_app_id","type":"integer"}},"required":["proxied_app_id"],"type":"object"}`),
+			User_POST_messenger_kids_accounts_unread_badgeSchema,
 		),
 		User_POST_messenger_kids_accounts_unread_badgeHandler,
 	)
@@ -2742,7 +2855,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"User_GET_music",
 			"GET music for User. Returns Page. Parameters: target_id (string)",
-			json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"target_id":{"description":"target_id","type":"string"}},"required":["id"],"type":"object"}`),
+			User_GET_musicSchema,
 		),
 		User_GET_musicHandler,
 	)
@@ -2751,7 +2864,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"User_POST_notifications",
 			"POST notifications for User. Returns User. Parameters: bot_message_payload_elements (string), filtering (list<usernotifications_filtering_enum_param>), href (Object), label (string), message (map), notif_ids (list<string>), payload (string), read (bool), ref (string), schedule_interval (unsigned int), seen (bool), template (Object), type (usernotifications_type_enum_param)",
-			json.RawMessage(`{"additionalProperties":false,"properties":{"bot_message_payload_elements":{"description":"bot_message_payload_elements","type":"string"},"filtering":{"description":"filtering","items":{"type":"string"},"type":"array"},"href":{"additionalProperties":true,"description":"href","type":"object"},"id":{"description":"User ID","type":"string"},"label":{"description":"label","type":"string"},"message":{"description":"message","type":"string"},"notif_ids":{"description":"notif_ids","items":{"type":"string"},"type":"array"},"payload":{"description":"payload","type":"string"},"read":{"description":"read","type":"boolean"},"ref":{"description":"ref","type":"string"},"schedule_interval":{"description":"schedule_interval","type":"integer"},"seen":{"description":"seen","type":"boolean"},"template":{"additionalProperties":true,"description":"template","type":"object"},"type":{"description":"type (enum: usernotifications_type_enum_param)","type":"string"}},"required":["id"],"type":"object"}`),
+			User_POST_notificationsSchema,
 		),
 		User_POST_notificationsHandler,
 	)
@@ -2760,7 +2873,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"User_GET_payment_transactions",
 			"GET payment_transactions for User. Returns PaymentEnginePayment",
-			json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"limit":{"description":"Maximum number of results","type":"integer"}},"type":"object"}`),
+			User_GET_payment_transactionsSchema,
 		),
 		User_GET_payment_transactionsHandler,
 	)
@@ -2769,7 +2882,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"User_DELETE_permissions",
 			"DELETE permissions for User. Returns Object. Parameters: permission (string)",
-			json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"permission":{"description":"permission","type":"string"}},"required":["id"],"type":"object"}`),
+			User_DELETE_permissionsSchema,
 		),
 		User_DELETE_permissionsHandler,
 	)
@@ -2778,7 +2891,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"User_GET_permissions",
 			"GET permissions for User. Returns Permission. Parameters: permission (string), status (userpermissions_status_enum_param)",
-			json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"permission":{"description":"permission","type":"string"},"status":{"description":"status (enum: userpermissions_status_enum_param)","type":"string"}},"required":["id"],"type":"object"}`),
+			User_GET_permissionsSchema,
 		),
 		User_GET_permissionsHandler,
 	)
@@ -2787,7 +2900,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"User_GET_personal_ad_accounts",
 			"GET personal_ad_accounts for User. Returns AdAccount",
-			json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`),
+			User_GET_personal_ad_accountsSchema,
 		),
 		User_GET_personal_ad_accountsHandler,
 	)
@@ -2796,7 +2909,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"User_GET_photos",
 			"GET photos for User. Returns Photo. Parameters: type (userphotos_type_enum_param)",
-			json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"type":{"description":"type (enum: userphotos_type_enum_param)","type":"string"}},"required":["id"],"type":"object"}`),
+			User_GET_photosSchema,
 		),
 		User_GET_photosHandler,
 	)
@@ -2805,7 +2918,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"User_POST_photos",
 			"POST photos for User. Returns Photo. Parameters: aid (string), allow_spherical_photo (bool), alt_text_custom (string), android_key_hash (string), application_id (string), attempt (unsigned int), audience_exp (bool), backdated_time (datetime), backdated_time_granularity (userphotos_backdated_time_granularity_enum_param), caption (string), composer_session_id (string), direct_share_status (unsigned int), feed_targeting (Object), filter_type (unsigned int), full_res_is_coming_later (bool), initial_view_heading_override_degrees (unsigned int), initial_view_pitch_override_degrees (unsigned int), initial_view_vertical_fov_override_degrees (unsigned int), ios_bundle_id (string), is_explicit_location (bool), is_explicit_place (bool), manual_privacy (bool), message (string), name (string), no_story (bool), offline_id (unsigned int), og_action_type_id (string), og_icon_id (string), og_object_id (string), og_phrase (string), og_set_profile_badge (bool), og_suggestion_mechanism (string), place (Object), privacy (string), profile_id (int), provenance_info (map), proxied_app_id (string), published (bool), qn (string), scheduled_publish_time (unsigned int), spherical_metadata (map), sponsor_id (string), sponsor_relationship (unsigned int), tags (list<Object>), target_id (int), targeting (Object), time_since_original_post (unsigned int), uid (int), unpublished_content_type (userphotos_unpublished_content_type_enum_param), url (string), user_selected_tags (bool), vault_image_id (string)",
-			json.RawMessage(`{"additionalProperties":false,"properties":{"aid":{"description":"aid","type":"string"},"allow_spherical_photo":{"description":"allow_spherical_photo","type":"boolean"},"alt_text_custom":{"description":"alt_text_custom","type":"string"},"android_key_hash":{"description":"android_key_hash","type":"string"},"application_id":{"description":"application_id","type":"string"},"attempt":{"description":"attempt","type":"integer"},"audience_exp":{"description":"audience_exp","type":"boolean"},"backdated_time":{"description":"backdated_time","type":"string"},"backdated_time_granularity":{"description":"backdated_time_granularity (enum: userphotos_backdated_time_granularity_enum_param)","type":"string"},"caption":{"description":"caption","type":"string"},"composer_session_id":{"description":"composer_session_id","type":"string"},"direct_share_status":{"description":"direct_share_status","type":"integer"},"feed_targeting":{"additionalProperties":true,"description":"feed_targeting","type":"object"},"filter_type":{"description":"filter_type","type":"integer"},"full_res_is_coming_later":{"description":"full_res_is_coming_later","type":"boolean"},"id":{"description":"User ID","type":"string"},"initial_view_heading_override_degrees":{"description":"initial_view_heading_override_degrees","type":"integer"},"initial_view_pitch_override_degrees":{"description":"initial_view_pitch_override_degrees","type":"integer"},"initial_view_vertical_fov_override_degrees":{"description":"initial_view_vertical_fov_override_degrees","type":"integer"},"ios_bundle_id":{"description":"ios_bundle_id","type":"string"},"is_explicit_location":{"description":"is_explicit_location","type":"boolean"},"is_explicit_place":{"description":"is_explicit_place","type":"boolean"},"manual_privacy":{"description":"manual_privacy","type":"boolean"},"message":{"description":"message","type":"string"},"name":{"description":"name","type":"string"},"no_story":{"description":"no_story","type":"boolean"},"offline_id":{"description":"offline_id","type":"integer"},"og_action_type_id":{"description":"og_action_type_id","type":"string"},"og_icon_id":{"description":"og_icon_id","type":"string"},"og_object_id":{"description":"og_object_id","type":"string"},"og_phrase":{"description":"og_phrase","type":"string"},"og_set_profile_badge":{"description":"og_set_profile_badge","type":"boolean"},"og_suggestion_mechanism":{"description":"og_suggestion_mechanism","type":"string"},"place":{"additionalProperties":true,"description":"place","type":"object"},"privacy":{"description":"privacy","type":"string"},"profile_id":{"description":"profile_id","type":"integer"},"provenance_info":{"description":"provenance_info","type":"string"},"proxied_app_id":{"description":"proxied_app_id","type":"string"},"published":{"description":"published","type":"boolean"},"qn":{"description":"qn","type":"string"},"scheduled_publish_time":{"description":"scheduled_publish_time","type":"integer"},"spherical_metadata":{"description":"spherical_metadata","type":"string"},"sponsor_id":{"description":"sponsor_id","type":"string"},"sponsor_relationship":{"description":"sponsor_relationship","type":"integer"},"tags":{"description":"tags","items":{"additionalProperties":true,"type":"object"},"type":"array"},"target_id":{"description":"target_id","type":"integer"},"targeting":{"additionalProperties":true,"description":"targeting","type":"object"},"time_since_original_post":{"description":"time_since_original_post","type":"integer"},"uid":{"description":"uid","type":"integer"},"unpublished_content_type":{"description":"unpublished_content_type (enum: userphotos_unpublished_content_type_enum_param)","type":"string"},"url":{"description":"url","type":"string"},"user_selected_tags":{"description":"user_selected_tags","type":"boolean"},"vault_image_id":{"description":"vault_image_id","type":"string"}},"required":["id"],"type":"object"}`),
+			User_POST_photosSchema,
 		),
 		User_POST_photosHandler,
 	)
@@ -2814,7 +2927,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"User_GET_picture",
 			"GET picture for User. Returns ProfilePictureSource. Parameters: height (int), redirect (bool), type (userpicture_type_enum_param), width (int)",
-			json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"height":{"description":"height","type":"integer"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"redirect":{"description":"redirect","type":"boolean"},"type":{"description":"type (enum: userpicture_type_enum_param)","type":"string"},"width":{"description":"width","type":"integer"}},"required":["id"],"type":"object"}`),
+			User_GET_pictureSchema,
 		),
 		User_GET_pictureHandler,
 	)
@@ -2823,7 +2936,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"User_GET_posts",
 			"GET posts for User. Returns Post. Parameters: include_hidden (bool), q (string), show_expired (bool), since (datetime), until (datetime), with (string)",
-			json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"include_hidden":{"description":"include_hidden","type":"boolean"},"limit":{"description":"Maximum number of results","type":"integer"},"q":{"description":"q","type":"string"},"show_expired":{"description":"show_expired","type":"boolean"},"since":{"description":"since","type":"string"},"until":{"description":"until","type":"string"},"with":{"description":"with","type":"string"}},"required":["id"],"type":"object"}`),
+			User_GET_postsSchema,
 		),
 		User_GET_postsHandler,
 	)
@@ -2832,7 +2945,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"User_GET_rich_media_documents",
 			"GET rich_media_documents for User. Returns Canvas. Parameters: query (string)",
-			json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"limit":{"description":"Maximum number of results","type":"integer"},"query":{"description":"query","type":"string"}},"type":"object"}`),
+			User_GET_rich_media_documentsSchema,
 		),
 		User_GET_rich_media_documentsHandler,
 	)
@@ -2841,7 +2954,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"User_POST_staging_resources",
 			"POST staging_resources for User. Returns User. Parameters: file (file)",
-			json.RawMessage(`{"additionalProperties":false,"properties":{"file":{"description":"file","type":"string"},"id":{"description":"User ID","type":"string"}},"required":["id"],"type":"object"}`),
+			User_POST_staging_resourcesSchema,
 		),
 		User_POST_staging_resourcesHandler,
 	)
@@ -2850,7 +2963,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"User_GET_videos",
 			"GET videos for User. Returns AdVideo. Parameters: type (uservideos_type_enum_param)",
-			json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"type":{"description":"type (enum: uservideos_type_enum_param)","type":"string"}},"required":["id"],"type":"object"}`),
+			User_GET_videosSchema,
 		),
 		User_GET_videosHandler,
 	)
@@ -2859,7 +2972,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"User_POST_videos",
 			"POST videos for User. Returns AdVideo. Parameters: application_id (string), asked_fun_fact_prompt_id (unsigned int), audio_story_wave_animation_handle (string), composer_entry_picker (string), composer_entry_point (string), composer_entry_time (unsigned int), composer_session_events_log (string), composer_session_id (string), composer_source_surface (string), composer_type (string), container_type (uservideos_container_type_enum_param), content_category (uservideos_content_category_enum_param), creative_tools (string), description (string), direct_share_status (unsigned int), embeddable (bool), end_offset (unsigned int), fbuploader_video_file_chunk (string), file_size (unsigned int), file_url (string), fisheye_video_cropped (bool), formatting (uservideos_formatting_enum_param), fov (unsigned int), front_z_rotation (float), fun_fact_prompt_id (string), fun_fact_toastee_id (unsigned int), guide (list<list<unsigned int>>), guide_enabled (bool), initial_heading (unsigned int), initial_pitch (unsigned int), instant_game_entry_point_data (string), is_boost_intended (bool), is_explicit_share (bool), is_group_linking_post (bool), is_partnership_ad (bool), is_voice_clip (bool), location_source_id (string), manual_privacy (bool), no_story (bool), og_action_type_id (string), og_icon_id (string), og_object_id (string), og_phrase (string), og_suggestion_mechanism (string), original_fov (unsigned int), original_projection_type (uservideos_original_projection_type_enum_param), partnership_ad_ad_code (string), privacy (string), publish_event_id (unsigned int), referenced_sticker_id (string), replace_video_id (string), slideshow_spec (map), source (string), source_instagram_media_id (string), spherical (bool), sponsor_id (string), start_offset (unsigned int), swap_mode (uservideos_swap_mode_enum_param), text_format_metadata (string), thumb (file), time_since_original_post (unsigned int), title (string), transcode_setting_properties (string), unpublished_content_type (uservideos_unpublished_content_type_enum_param), upload_phase (uservideos_upload_phase_enum_param), upload_session_id (string), upload_setting_properties (string), video_file_chunk (string), video_id_original (string), video_start_time_ms (unsigned int), waterfall_id (string)",
-			json.RawMessage(`{"additionalProperties":false,"properties":{"application_id":{"description":"application_id","type":"string"},"asked_fun_fact_prompt_id":{"description":"asked_fun_fact_prompt_id","type":"integer"},"audio_story_wave_animation_handle":{"description":"audio_story_wave_animation_handle","type":"string"},"composer_entry_picker":{"description":"composer_entry_picker","type":"string"},"composer_entry_point":{"description":"composer_entry_point","type":"string"},"composer_entry_time":{"description":"composer_entry_time","type":"integer"},"composer_session_events_log":{"description":"composer_session_events_log","type":"string"},"composer_session_id":{"description":"composer_session_id","type":"string"},"composer_source_surface":{"description":"composer_source_surface","type":"string"},"composer_type":{"description":"composer_type","type":"string"},"container_type":{"description":"container_type (enum: uservideos_container_type_enum_param)","type":"string"},"content_category":{"description":"content_category (enum: uservideos_content_category_enum_param)","type":"string"},"creative_tools":{"description":"creative_tools","type":"string"},"description":{"description":"description","type":"string"},"direct_share_status":{"description":"direct_share_status","type":"integer"},"embeddable":{"description":"embeddable","type":"boolean"},"end_offset":{"description":"end_offset","type":"integer"},"fbuploader_video_file_chunk":{"description":"fbuploader_video_file_chunk","type":"string"},"file_size":{"description":"file_size","type":"integer"},"file_url":{"description":"file_url","type":"string"},"fisheye_video_cropped":{"description":"fisheye_video_cropped","type":"boolean"},"formatting":{"description":"formatting (enum: uservideos_formatting_enum_param)","type":"string"},"fov":{"description":"fov","type":"integer"},"front_z_rotation":{"description":"front_z_rotation","type":"number"},"fun_fact_prompt_id":{"description":"fun_fact_prompt_id","type":"string"},"fun_fact_toastee_id":{"description":"fun_fact_toastee_id","type":"integer"},"guide":{"description":"guide","items":{"type":"string"},"type":"array"},"guide_enabled":{"description":"guide_enabled","type":"boolean"},"id":{"description":"User ID","type":"string"},"initial_heading":{"description":"initial_heading","type":"integer"},"initial_pitch":{"description":"initial_pitch","type":"integer"},"instant_game_entry_point_data":{"description":"instant_game_entry_point_data","type":"string"},"is_boost_intended":{"description":"is_boost_intended","type":"boolean"},"is_explicit_share":{"description":"is_explicit_share","type":"boolean"},"is_group_linking_post":{"description":"is_group_linking_post","type":"boolean"},"is_partnership_ad":{"description":"is_partnership_ad","type":"boolean"},"is_voice_clip":{"description":"is_voice_clip","type":"boolean"},"location_source_id":{"description":"location_source_id","type":"string"},"manual_privacy":{"description":"manual_privacy","type":"boolean"},"no_story":{"description":"no_story","type":"boolean"},"og_action_type_id":{"description":"og_action_type_id","type":"string"},"og_icon_id":{"description":"og_icon_id","type":"string"},"og_object_id":{"description":"og_object_id","type":"string"},"og_phrase":{"description":"og_phrase","type":"string"},"og_suggestion_mechanism":{"description":"og_suggestion_mechanism","type":"string"},"original_fov":{"description":"original_fov","type":"integer"},"original_projection_type":{"description":"original_projection_type (enum: uservideos_original_projection_type_enum_param)","type":"string"},"partnership_ad_ad_code":{"description":"partnership_ad_ad_code","type":"string"},"privacy":{"description":"privacy","type":"string"},"publish_event_id":{"description":"publish_event_id","type":"integer"},"referenced_sticker_id":{"description":"referenced_sticker_id","type":"string"},"replace_video_id":{"description":"replace_video_id","type":"string"},"slideshow_spec":{"description":"slideshow_spec","type":"string"},"source":{"description":"source","type":"string"},"source_instagram_media_id":{"description":"source_instagram_media_id","type":"string"},"spherical":{"description":"spherical","type":"boolean"},"sponsor_id":{"description":"sponsor_id","type":"string"},"start_offset":{"description":"start_offset","type":"integer"},"swap_mode":{"description":"swap_mode (enum: uservideos_swap_mode_enum_param)","type":"string"},"text_format_metadata":{"description":"text_format_metadata","type":"string"},"thumb":{"description":"thumb","type":"string"},"time_since_original_post":{"description":"time_since_original_post","type":"integer"},"title":{"description":"title","type":"string"},"transcode_setting_properties":{"description":"transcode_setting_properties","type":"string"},"unpublished_content_type":{"description":"unpublished_content_type (enum: uservideos_unpublished_content_type_enum_param)","type":"string"},"upload_phase":{"description":"upload_phase (enum: uservideos_upload_phase_enum_param)","type":"string"},"upload_session_id":{"description":"upload_session_id","type":"string"},"upload_setting_properties":{"description":"upload_setting_properties","type":"string"},"video_file_chunk":{"description":"video_file_chunk","type":"string"},"video_id_original":{"description":"video_id_original","type":"string"},"video_start_time_ms":{"description":"video_start_time_ms","type":"integer"},"waterfall_id":{"description":"waterfall_id","type":"string"}},"required":["id"],"type":"object"}`),
+			User_POST_videosSchema,
 		),
 		User_POST_videosHandler,
 	)
@@ -2868,7 +2981,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"User_DELETE_",
 			"DELETE  for User. Returns Object",
-			json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`),
+			User_DELETE_Schema,
 		),
 		User_DELETE_Handler,
 	)
@@ -2877,7 +2990,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"User_GET_",
 			"GET  for User. Returns User",
-			json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`),
+			User_GET_Schema,
 		),
 		User_GET_Handler,
 	)
@@ -2886,7 +2999,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 		mcp.NewToolWithRawSchema(
 			"User_POST_",
 			"POST  for User. Returns User. Parameters: emoji_color_pref (unsigned int), firstname (string), lastname (string), local_news_megaphone_dismiss_status (user_local_news_megaphone_dismiss_status), local_news_subscription_status (user_local_news_subscription_status), name (string), password (string)",
-			json.RawMessage(`{"additionalProperties":false,"properties":{"emoji_color_pref":{"description":"emoji_color_pref","type":"integer"},"firstname":{"description":"firstname","type":"string"},"id":{"description":"User ID","type":"string"},"lastname":{"description":"lastname","type":"string"},"local_news_megaphone_dismiss_status":{"description":"local_news_megaphone_dismiss_status (enum: user_local_news_megaphone_dismiss_status)","type":"string"},"local_news_subscription_status":{"description":"local_news_subscription_status (enum: user_local_news_subscription_status)","type":"string"},"name":{"description":"name","type":"string"},"password":{"description":"password","type":"string"}},"required":["id"],"type":"object"}`),
+			User_POST_Schema,
 		),
 		User_POST_Handler,
 	)

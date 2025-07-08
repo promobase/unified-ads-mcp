@@ -37,6 +37,12 @@ func makeGraphRequest(method, urlStr string, data map[string]interface{}) ([]byt
 	var req *http.Request
 	var err error
 	
+	// Check access token
+	accessToken := getAccessToken()
+	if accessToken == "" {
+		return nil, fmt.Errorf("FACEBOOK_ACCESS_TOKEN environment variable is not set")
+	}
+	
 	// Parse URL to add access token
 	parsedURL, err := url.Parse(urlStr)
 	if err != nil {
@@ -45,7 +51,7 @@ func makeGraphRequest(method, urlStr string, data map[string]interface{}) ([]byt
 	
 	// Add access token to query params
 	q := parsedURL.Query()
-	q.Set("access_token", getAccessToken())
+	q.Set("access_token", accessToken)
 	parsedURL.RawQuery = q.Encode()
 	
 	// Create request based on method
