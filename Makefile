@@ -13,7 +13,7 @@ build:
 	$(GOCMD) fmt ./...
 
 run: build
-	./$(BINARY_NAME)
+	./$(BINARY_NAME) -t http
 
 help: build
 	./$(BINARY_NAME) --help

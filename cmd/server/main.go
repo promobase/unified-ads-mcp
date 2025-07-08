@@ -14,6 +14,9 @@ import (
 )
 
 func NewFacebookMCPServer() *server.MCPServer {
+	if os.Getenv("FACEBOOK_ACCESS_TOKEN") == "" {
+		log.Fatal("FACEBOOK_ACCESS_TOKEN environment variable must be set")
+	}
 	// Create hooks for debugging (optional)
 	hooks := &server.Hooks{}
 
