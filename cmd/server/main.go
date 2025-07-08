@@ -8,6 +8,7 @@ import (
 
 	"unified-ads-mcp/internal/facebook/generated"
 	"unified-ads-mcp/internal/facebook/tools"
+	"unified-ads-mcp/internal/utils"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"github.com/mark3labs/mcp-go/server"
@@ -57,6 +58,8 @@ func main() {
 	flag.StringVar(&transport, "t", "stdio", "Transport type (stdio or http)")
 	flag.StringVar(&transport, "transport", "stdio", "Transport type (stdio or http)")
 	flag.Parse()
+
+	utils.LoadFacebookConfig()
 
 	// Check for Facebook access token
 	if os.Getenv("FACEBOOK_ACCESS_TOKEN") == "" {
