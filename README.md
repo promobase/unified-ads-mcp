@@ -1,122 +1,100 @@
 # Unified Ads MCP Server
 
-A Model Context Protocol (MCP) server implementation for managing advertisements across multiple platforms, starting with Facebook Business API.
-
-## Overview
-
-This project provides a unified interface for managing advertisements through MCP, enabling LLMs to perform CRUD operations on ads, campaigns, and ad management tasks. It uses code generation to transform API specifications into MCP tools.
-
-## Features
-
-- **Facebook Business API Integration**: Full support for Facebook Marketing API operations
-- **Code Generation**: Automatic generation of MCP tools from API specifications
-- **Type Safety**: Strongly typed Go implementations
-- **MCP Compliance**: Built using the mcp-go library for standard MCP protocol support
-
-## Architecture
-
-```
-unified-ads-mcp/
-├── cmd/facebook-mcp/      # Main executable
-├── internal/facebook/     # Facebook-specific implementation
-│   ├── api_specs/        # Facebook API specifications (JSON)
-│   ├── codegen/          # Code generation logic
-│   └── generated/        # Generated code (do not edit)
-│       ├── types/        # Generated type definitions
-│       ├── client/       # Generated client methods
-│       ├── tools/        # Generated MCP tools
-│       └── enums/        # Generated enum definitions
-└── go.mod
-```
+MCP (Model Context Protocol) server for Facebook Business API, with plans to expand to Google Ads and TikTok Business API.
 
 ## Prerequisites
 
-- Go 1.24 or later
-- Facebook Access Token with appropriate permissions
+1. Go 1.21 or higher
+2. Facebook Access Token (get from [Facebook Graph API Explorer](https://developers.facebook.com/tools/explorer/))
 
-## Installation
+## Setup
 
+1. Install dependencies:
 ```bash
-go get github.com/yourusername/unified-ads-mcp
+make deps
 ```
 
-## Usage
-
-### Running the MCP Server
-
+2. Generate the API tools:
 ```bash
-export FACEBOOK_ACCESS_TOKEN=your_access_token_here
-go run cmd/facebook-mcp/main.go
+make codegen
 ```
 
-### Using with Claude Desktop
-
-Add the following to your Claude Desktop configuration:
-
-```json
-{
-  "mcpServers": {
-    "facebook-ads": {
-      "command": "/path/to/unified-ads-mcp",
-      "env": {
-        "FACEBOOK_ACCESS_TOKEN": "your_access_token_here"
-      }
-    }
-  }
-}
-```
-
-### Code Generation
-
-To regenerate the code from Facebook API specifications:
-
+3. Set your Facebook access token:
 ```bash
-cd internal/facebook/codegen
-go run main.go ../api_specs/specs
+export FACEBOOK_ACCESS_TOKEN="your_access_token_here"
 ```
+
+## Running the Server
+
+### Stdio Mode (default)
+```bash
+make build
+./unified-ads-mcp
+```
+
+### HTTP Mode
+```bash
+./unified-ads-mcp --transport http
+```
+
+The HTTP server will listen on `:8080/mcp`
 
 ## Available Tools
 
-The server generates over 1400 tools from Facebook's API specifications, including:
+The server currently provides 162 tools for Facebook Business API core objects:
 
-- **Ad Management**: Create, read, update, delete ads
-- **Campaign Operations**: Manage campaigns and ad sets
-- **Insights**: Retrieve performance metrics and analytics
-- **Creative Management**: Handle ad creatives and assets
-- **Audience Targeting**: Configure targeting parameters
+- **AdAccount** (111 tools) - Manage ad accounts, campaigns, budgets, insights
+- **Campaign** (13 tools) - Create and manage campaigns
+- **AdSet** (19 tools) - Configure ad sets, targeting, budgets
+- **Ad** (13 tools) - Create and manage individual ads
+- **AdCreative** (6 tools) - Manage creative assets
 
-Example tools:
-- `facebook_ad_get_insights` - Get ad performance insights
-- `facebook_campaign_post_` - Create a new campaign
-- `facebook_adaccount_get_ads` - List ads in an account
+### Example Tool Names
+- `AdAccount_GET_campaigns` - List campaigns in an ad account
+- `Campaign_POST_` - Create or update a campaign
+- `AdSet_GET_insights` - Get performance insights for an ad set
+- `Ad_POST_adcreatives` - Attach creatives to an ad
+
+### Built-in Tools
+- `health_check` - Check if the server is running
+- `check_access_token` - Verify Facebook access token is configured
+
+## Using with Claude
+
+1. Install the MCP CLI tools
+2. Configure your Claude desktop app to use this server
+3. The tools will be available in your Claude conversation
 
 ## Development
 
-### Adding New Platforms
-
-To add support for new advertising platforms:
-
-1. Create a new directory under `internal/` (e.g., `internal/google-ads/`)
-2. Add API specifications
-3. Implement a code generator following the Facebook example
-4. Generate MCP tools and client code
-
-### Testing
-
-```bash
-go test ./...
+### Project Structure
+```
+unified-ads-mcp/
+├── cmd/server/          # Main server entry point
+├── internal/facebook/   # Facebook-specific implementation
+│   ├── api_specs/      # Facebook API specifications
+│   ├── codegen/        # Code generation tools
+│   └── generated/      # Generated API tools
+└── Makefile            # Build commands
 ```
 
-## Security
+### Regenerating Tools
+```bash
+make codegen
+```
 
-- Never commit access tokens or credentials
-- Use environment variables for sensitive configuration
-- Follow Facebook's API security best practices
+This will regenerate all tools from the Facebook API specifications.
 
-## License
+## Troubleshooting
 
-[Your License]
+1. **No access token error**: Set the `FACEBOOK_ACCESS_TOKEN` environment variable
+2. **API errors**: Check that your token has the necessary permissions
+3. **Build errors**: Run `make deps` to ensure all dependencies are installed
 
-## Contributing
+## Future Plans
 
-Contributions are welcome! Please read our contributing guidelines before submitting PRs.
+- Add Google Ads API support
+- Add TikTok Business API support
+- Implement authentication management
+- Add rate limiting and retry logic
+- Support for batch operations

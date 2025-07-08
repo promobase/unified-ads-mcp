@@ -158,11 +158,11 @@ func (g *ToolGenerator) generateToolsForObject(objectName string, spec *ToolSpec
 	for _, api := range spec.APIs {
 		toolName := g.generateToolName(objectName, api)
 		handlerName := toolName + "Handler"
-		
+
 		// Generate input schema based on method
 		inputSchema := g.generateInputSchema(objectName, api)
 		inputSchemaJSON, _ := json.Marshal(inputSchema)
-		
+
 		tools = append(tools, ToolData{
 			ObjectName:  objectName,
 			Method:      api.Method,
@@ -558,10 +558,10 @@ func (g *ToolGenerator) formatGeneratedFiles() error {
 	if err != nil {
 		return fmt.Errorf("go fmt failed: %w\nOutput: %s", err, string(output))
 	}
-	
+
 	if len(output) > 0 {
 		log.Printf("Formatted files: %s", string(output))
 	}
-	
+
 	return nil
 }

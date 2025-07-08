@@ -287,10 +287,10 @@ func (g *FieldGenerator) formatGeneratedFile() error {
 	if err != nil {
 		return fmt.Errorf("go fmt failed: %w\nOutput: %s", err, string(output))
 	}
-	
+
 	if len(output) > 0 {
 		log.Printf("Formatted: %s", string(output))
 	}
-	
+
 	return nil
 }
