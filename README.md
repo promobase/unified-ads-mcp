@@ -50,11 +50,8 @@
 <td width="33%" valign="top">
 
 ### Facebook Ads
-- **162+ Tools** for complete ad management
-- Campaign creation & optimization
-- Audience targeting & insights
-- Budget management
-- Performance analytics
+- Codegen from facebook business sdk for typesafety
+- core ads tools implemented
 
 </td>
 <td width="33%" valign="top">
@@ -62,16 +59,13 @@
 ### Coming Soon
 - **Google Ads** integration
 - **TikTok Business API** support
-- Unified dashboard
-- Cross-platform campaigns
-- Automated optimization
+- higher order tools for campaign orchestration & management
 
 </td>
 <td width="33%" valign="top">
 
-### AI-Powered
-- Natural language commands
-- Smart recommendations
+### Scalable & Robust
+- low level apis are code-generated from specs
 - Automated reporting
 - Performance predictions
 - Budget optimization
