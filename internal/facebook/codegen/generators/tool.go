@@ -125,6 +125,11 @@ func (g *ToolGenerator) Generate() error {
 		return fmt.Errorf("failed to generate common file: %w", err)
 	}
 
+	// Generate default fields file
+	if err := g.generateDefaultFieldsFile(); err != nil {
+		return fmt.Errorf("failed to generate default fields file: %w", err)
+	}
+
 	// Generate register_tools.go that imports all the tool files
 	if err := g.generateRegisterFile(coreObjects); err != nil {
 		return fmt.Errorf("failed to generate register file: %w", err)
@@ -219,6 +224,17 @@ func (g *ToolGenerator) generateCommonFile() error {
 
 	// Write the file as-is (no template variables needed)
 	return os.WriteFile(filepath.Join(g.outputPath, "tools_common.go"), tmplContent, 0o644)
+}
+
+func (g *ToolGenerator) generateDefaultFieldsFile() error {
+	// Load and execute template
+	tmplContent, err := os.ReadFile(filepath.Join(filepath.Dir(g.outputPath), "codegen", "templates", "default_fields.go.tmpl"))
+	if err != nil {
+		return fmt.Errorf("failed to read template: %w", err)
+	}
+
+	// Write the file as-is (no template variables needed)
+	return os.WriteFile(filepath.Join(g.outputPath, "default_fields.go"), tmplContent, 0o644)
 }
 
 func (g *ToolGenerator) generateRegisterFile(coreObjects map[string]bool) error {
@@ -345,27 +361,95 @@ func (g *ToolGenerator) generateToolName(objectName string, api API) string {
 }
 
 func (g *ToolGenerator) generateDescription(objectName string, api API) string {
-	desc := fmt.Sprintf("%s %s for %s", api.Method, api.Endpoint, objectName)
+	// Create human-readable description based on endpoint and method
+	action := g.getHumanReadableAction(api.Method, api.Endpoint, objectName)
 
-	if api.Return != "" {
-		desc += fmt.Sprintf(". Returns %s", api.Return)
+	desc := action
+
+	if api.Return != "" && api.Return != "Object" {
+		desc += fmt.Sprintf(" Returns %s.", api.Return)
 	}
 
-	// Document known parameters
-	if len(api.Params) > 0 {
-		desc += ". Parameters: "
-		paramDescs := []string{}
-		for _, param := range api.Params {
-			paramDesc := fmt.Sprintf("%s (%s)", param.Name, param.Type)
-			if param.Required {
-				paramDesc += " [required]"
+	// Document required parameters only
+	requiredParams := []string{}
+	for _, param := range api.Params {
+		if param.Required {
+			paramDesc := param.Name
+			if g.isEnumType(param.Type) {
+				paramDesc += " (enum)"
 			}
-			paramDescs = append(paramDescs, paramDesc)
+			requiredParams = append(requiredParams, paramDesc)
 		}
-		desc += strings.Join(paramDescs, ", ")
+	}
+
+	if len(requiredParams) > 0 {
+		desc += " Required: " + strings.Join(requiredParams, ", ")
 	}
 
 	return desc
+}
+
+func (g *ToolGenerator) getHumanReadableAction(method, endpoint, objectName string) string {
+	// Handle empty endpoint (CRUD on object itself)
+	if endpoint == "" {
+		switch method {
+		case "GET":
+			return fmt.Sprintf("Get details of a specific %s", objectName)
+		case "POST":
+			return fmt.Sprintf("Update a %s", objectName)
+		case "DELETE":
+			return fmt.Sprintf("Delete a %s", objectName)
+		default:
+			return fmt.Sprintf("%s a %s", strings.Title(strings.ToLower(method)), objectName)
+		}
+	}
+
+	// Handle specific endpoints with better descriptions
+	endpointLower := strings.ToLower(endpoint)
+
+	// Common patterns
+	switch {
+	case strings.HasSuffix(endpoint, "s") && method == "GET":
+		// Plural endpoints usually list related objects
+		return fmt.Sprintf("List %s for this %s", endpoint, objectName)
+
+	case endpoint == "insights":
+		if method == "GET" {
+			return fmt.Sprintf("Get analytics insights for this %s", objectName)
+		}
+		return fmt.Sprintf("Generate an insights report for this %s", objectName)
+
+	case endpoint == "copies":
+		if method == "GET" {
+			return fmt.Sprintf("List copies of this %s", objectName)
+		}
+		return fmt.Sprintf("Create a copy of this %s", objectName)
+
+	case strings.Contains(endpointLower, "preview"):
+		return fmt.Sprintf("Get preview of this %s", objectName)
+
+	case endpoint == "leads":
+		return fmt.Sprintf("Get lead information from this %s", objectName)
+
+	case strings.Contains(endpointLower, "targeting"):
+		return fmt.Sprintf("Get targeting information for this %s", objectName)
+
+	case method == "POST" && strings.HasPrefix(endpoint, "ad"):
+		return fmt.Sprintf("Associate %s with this %s", endpoint, objectName)
+
+	default:
+		// Generic description
+		switch method {
+		case "GET":
+			return fmt.Sprintf("Get %s data for this %s", endpoint, objectName)
+		case "POST":
+			return fmt.Sprintf("Create or update %s for this %s", endpoint, objectName)
+		case "DELETE":
+			return fmt.Sprintf("Remove %s from this %s", endpoint, objectName)
+		default:
+			return fmt.Sprintf("%s %s for this %s", strings.Title(strings.ToLower(method)), endpoint, objectName)
+		}
+	}
 }
 
 func (g *ToolGenerator) generateInputSchema(objectName string, api API) map[string]interface{} {

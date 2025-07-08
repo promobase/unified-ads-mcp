@@ -264,6 +264,12 @@ func AdAccount_GET_account_controlsHandler(ctx context.Context, request mcp.Call
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -343,6 +349,12 @@ func AdAccount_GET_activitiesHandler(ctx context.Context, request mcp.CallToolRe
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -392,6 +404,12 @@ func AdAccount_GET_ad_place_page_setsHandler(ctx context.Context, request mcp.Ca
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -501,6 +519,12 @@ func AdAccount_GET_ad_saved_keywordsHandler(ctx context.Context, request mcp.Cal
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -550,6 +574,12 @@ func AdAccount_GET_ad_studiesHandler(ctx context.Context, request mcp.CallToolRe
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -599,6 +629,12 @@ func AdAccount_GET_adcloudplayablesHandler(ctx context.Context, request mcp.Call
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -648,6 +684,12 @@ func AdAccount_GET_adcreativesHandler(ctx context.Context, request mcp.CallToolR
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -727,6 +769,12 @@ func AdAccount_GET_adcreativesbylabelsHandler(ctx context.Context, request mcp.C
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -776,6 +824,12 @@ func AdAccount_DELETE_adimagesHandler(ctx context.Context, request mcp.CallToolR
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -825,6 +879,12 @@ func AdAccount_GET_adimagesHandler(ctx context.Context, request mcp.CallToolRequ
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -904,6 +964,12 @@ func AdAccount_GET_adlabelsHandler(ctx context.Context, request mcp.CallToolRequ
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -983,6 +1049,12 @@ func AdAccount_GET_adplayablesHandler(ctx context.Context, request mcp.CallToolR
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -1062,6 +1134,12 @@ func AdAccount_GET_adrules_historyHandler(ctx context.Context, request mcp.CallT
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -1111,6 +1189,12 @@ func AdAccount_GET_adrules_libraryHandler(ctx context.Context, request mcp.CallT
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -1190,6 +1274,12 @@ func AdAccount_GET_adsHandler(ctx context.Context, request mcp.CallToolRequest) 
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -1269,6 +1359,12 @@ func AdAccount_GET_ads_reporting_mmm_reportsHandler(ctx context.Context, request
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -1318,6 +1414,12 @@ func AdAccount_GET_ads_reporting_mmm_schedulersHandler(ctx context.Context, requ
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -1362,6 +1464,12 @@ func AdAccount_GET_ads_volumeHandler(ctx context.Context, request mcp.CallToolRe
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -1411,6 +1519,12 @@ func AdAccount_GET_adsbylabelsHandler(ctx context.Context, request mcp.CallToolR
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -1460,6 +1574,12 @@ func AdAccount_GET_adsetsHandler(ctx context.Context, request mcp.CallToolReques
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -1539,6 +1659,12 @@ func AdAccount_GET_adsetsbylabelsHandler(ctx context.Context, request mcp.CallTo
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -1588,6 +1714,12 @@ func AdAccount_GET_adspixelsHandler(ctx context.Context, request mcp.CallToolReq
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -1667,6 +1799,12 @@ func AdAccount_GET_advertisable_applicationsHandler(ctx context.Context, request
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -1716,6 +1854,12 @@ func AdAccount_DELETE_advideosHandler(ctx context.Context, request mcp.CallToolR
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -1765,6 +1909,12 @@ func AdAccount_GET_advideosHandler(ctx context.Context, request mcp.CallToolRequ
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -1844,6 +1994,12 @@ func AdAccount_GET_affectedadsetsHandler(ctx context.Context, request mcp.CallTo
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -1893,6 +2049,12 @@ func AdAccount_DELETE_agenciesHandler(ctx context.Context, request mcp.CallToolR
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -1942,6 +2104,12 @@ func AdAccount_GET_agenciesHandler(ctx context.Context, request mcp.CallToolRequ
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -2021,6 +2189,12 @@ func AdAccount_GET_applicationsHandler(ctx context.Context, request mcp.CallTool
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -2070,6 +2244,12 @@ func AdAccount_DELETE_assigned_usersHandler(ctx context.Context, request mcp.Cal
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -2119,6 +2299,12 @@ func AdAccount_GET_assigned_usersHandler(ctx context.Context, request mcp.CallTo
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -2228,6 +2414,12 @@ func AdAccount_GET_async_requestsHandler(ctx context.Context, request mcp.CallTo
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -2277,6 +2469,12 @@ func AdAccount_GET_asyncadcreativesHandler(ctx context.Context, request mcp.Call
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -2356,6 +2554,12 @@ func AdAccount_GET_asyncadrequestsetsHandler(ctx context.Context, request mcp.Ca
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -2435,6 +2639,12 @@ func AdAccount_GET_audience_funnelHandler(ctx context.Context, request mcp.CallT
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -2544,6 +2754,12 @@ func AdAccount_GET_broadtargetingcategoriesHandler(ctx context.Context, request 
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -2593,6 +2809,12 @@ func AdAccount_GET_businessprojectsHandler(ctx context.Context, request mcp.Call
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -2642,6 +2864,12 @@ func AdAccount_DELETE_campaignsHandler(ctx context.Context, request mcp.CallTool
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -2691,6 +2919,12 @@ func AdAccount_GET_campaignsHandler(ctx context.Context, request mcp.CallToolReq
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -2770,6 +3004,12 @@ func AdAccount_GET_campaignsbylabelsHandler(ctx context.Context, request mcp.Cal
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -2819,6 +3059,12 @@ func AdAccount_GET_connected_instagram_accountsHandler(ctx context.Context, requ
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -2868,6 +3114,12 @@ func AdAccount_GET_connected_instagram_accounts_with_iabpHandler(ctx context.Con
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -2917,6 +3169,12 @@ func AdAccount_GET_conversion_goalsHandler(ctx context.Context, request mcp.Call
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -2966,6 +3224,12 @@ func AdAccount_GET_customaudiencesHandler(ctx context.Context, request mcp.CallT
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -3045,6 +3309,12 @@ func AdAccount_GET_customaudiencestosHandler(ctx context.Context, request mcp.Ca
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -3124,6 +3394,12 @@ func AdAccount_GET_customconversionsHandler(ctx context.Context, request mcp.Cal
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -3203,6 +3479,12 @@ func AdAccount_GET_delivery_estimateHandler(ctx context.Context, request mcp.Cal
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -3252,6 +3534,12 @@ func AdAccount_GET_deprecatedtargetingadsetsHandler(ctx context.Context, request
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -3296,6 +3584,12 @@ func AdAccount_GET_dsa_recommendationsHandler(ctx context.Context, request mcp.C
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -3345,6 +3639,12 @@ func AdAccount_GET_generatepreviewsHandler(ctx context.Context, request mcp.Call
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -3394,6 +3694,12 @@ func AdAccount_GET_impacting_ad_studiesHandler(ctx context.Context, request mcp.
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -3443,6 +3749,12 @@ func AdAccount_GET_insightsHandler(ctx context.Context, request mcp.CallToolRequ
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -3522,6 +3834,12 @@ func AdAccount_GET_instagram_accountsHandler(ctx context.Context, request mcp.Ca
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -3571,6 +3889,12 @@ func AdAccount_GET_ios_fourteen_campaign_limitsHandler(ctx context.Context, requ
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -3615,6 +3939,12 @@ func AdAccount_GET_matched_search_applicationsHandler(ctx context.Context, reque
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -3664,6 +3994,12 @@ func AdAccount_GET_max_bidHandler(ctx context.Context, request mcp.CallToolReque
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -3708,6 +4044,12 @@ func AdAccount_GET_mcmeconversionsHandler(ctx context.Context, request mcp.CallT
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -3757,6 +4099,12 @@ func AdAccount_GET_minimum_budgetsHandler(ctx context.Context, request mcp.CallT
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -3806,6 +4154,12 @@ func AdAccount_GET_onbehalf_requestsHandler(ctx context.Context, request mcp.Cal
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -3885,6 +4239,12 @@ func AdAccount_GET_promote_pagesHandler(ctx context.Context, request mcp.CallToo
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -3934,6 +4294,12 @@ func AdAccount_GET_publisher_block_listsHandler(ctx context.Context, request mcp
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -4013,6 +4379,12 @@ func AdAccount_GET_reachestimateHandler(ctx context.Context, request mcp.CallToo
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -4062,6 +4434,12 @@ func AdAccount_GET_reachfrequencypredictionsHandler(ctx context.Context, request
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -4136,6 +4514,12 @@ func AdAccount_GET_recommendationsHandler(ctx context.Context, request mcp.CallT
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -4210,6 +4594,12 @@ func AdAccount_GET_saved_audiencesHandler(ctx context.Context, request mcp.CallT
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -4259,6 +4649,12 @@ func AdAccount_DELETE_subscribed_appsHandler(ctx context.Context, request mcp.Ca
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -4308,6 +4704,12 @@ func AdAccount_GET_subscribed_appsHandler(ctx context.Context, request mcp.CallT
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -4387,6 +4789,12 @@ func AdAccount_GET_targetingbrowseHandler(ctx context.Context, request mcp.CallT
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -4431,6 +4839,12 @@ func AdAccount_GET_targetingsearchHandler(ctx context.Context, request mcp.CallT
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -4480,6 +4894,12 @@ func AdAccount_GET_targetingsentencelinesHandler(ctx context.Context, request mc
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -4529,6 +4949,12 @@ func AdAccount_GET_targetingsuggestionsHandler(ctx context.Context, request mcp.
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -4578,6 +5004,12 @@ func AdAccount_GET_targetingvalidationHandler(ctx context.Context, request mcp.C
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -4627,6 +5059,12 @@ func AdAccount_GET_trackingHandler(ctx context.Context, request mcp.CallToolRequ
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -4706,6 +5144,12 @@ func AdAccount_GET_usersHandler(ctx context.Context, request mcp.CallToolRequest
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -4755,6 +5199,12 @@ func AdAccount_DELETE_usersofanyaudienceHandler(ctx context.Context, request mcp
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -4804,6 +5254,12 @@ func AdAccount_GET_value_rule_setHandler(ctx context.Context, request mcp.CallTo
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -4883,6 +5339,12 @@ func AdAccount_GET_video_adsHandler(ctx context.Context, request mcp.CallToolReq
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -4962,6 +5424,12 @@ func AdAccount_GET_Handler(ctx context.Context, request mcp.CallToolRequest) (*m
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdAccount")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -5021,7 +5489,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_GET_account_controls",
-			"GET account_controls for AdAccount. Returns AdAccountBusinessConstraints",
+			"List account_controls for this AdAccount Returns AdAccountBusinessConstraints.",
 			AdAccount_GET_account_controlsSchema,
 		),
 		AdAccount_GET_account_controlsHandler,
@@ -5030,7 +5498,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_POST_account_controls",
-			"POST account_controls for AdAccount. Returns AdAccountBusinessConstraints. Parameters: audience_controls (Object) [required], placement_controls (Object)",
+			"Create or update account_controls for this AdAccount Returns AdAccountBusinessConstraints. Required: audience_controls",
 			AdAccount_POST_account_controlsSchema,
 		),
 		AdAccount_POST_account_controlsHandler,
@@ -5039,7 +5507,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_GET_activities",
-			"GET activities for AdAccount. Returns AdActivity. Parameters: add_children (bool), after (string), business_id (string), category (adaccountactivities_category_enum_param), data_source (adaccountactivities_data_source_enum_param), extra_oids (list<string>), limit (int), oid (string), since (datetime), uid (int), until (datetime)",
+			"List activities for this AdAccount Returns AdActivity.",
 			AdAccount_GET_activitiesSchema,
 		),
 		AdAccount_GET_activitiesHandler,
@@ -5048,7 +5516,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_GET_ad_place_page_sets",
-			"GET ad_place_page_sets for AdAccount. Returns AdPlacePageSet",
+			"List ad_place_page_sets for this AdAccount Returns AdPlacePageSet.",
 			AdAccount_GET_ad_place_page_setsSchema,
 		),
 		AdAccount_GET_ad_place_page_setsHandler,
@@ -5057,7 +5525,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_POST_ad_place_page_sets",
-			"POST ad_place_page_sets for AdAccount. Returns AdPlacePageSet. Parameters: location_types (list<adaccountad_place_page_sets_location_types_enum_param>), name (string) [required], parent_page (string) [required], targeted_area_type (adaccountad_place_page_sets_targeted_area_type_enum_param)",
+			"Associate ad_place_page_sets with this AdAccount Returns AdPlacePageSet. Required: name, parent_page",
 			AdAccount_POST_ad_place_page_setsSchema,
 		),
 		AdAccount_POST_ad_place_page_setsHandler,
@@ -5066,7 +5534,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_POST_ad_place_page_sets_async",
-			"POST ad_place_page_sets_async for AdAccount. Returns AdPlacePageSet. Parameters: location_types (list<adaccountad_place_page_sets_async_location_types_enum_param>), name (string) [required], parent_page (string) [required], targeted_area_type (adaccountad_place_page_sets_async_targeted_area_type_enum_param)",
+			"Associate ad_place_page_sets_async with this AdAccount Returns AdPlacePageSet. Required: name, parent_page",
 			AdAccount_POST_ad_place_page_sets_asyncSchema,
 		),
 		AdAccount_POST_ad_place_page_sets_asyncHandler,
@@ -5075,7 +5543,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_GET_ad_saved_keywords",
-			"GET ad_saved_keywords for AdAccount. Returns AdSavedKeywords. Parameters: fields (list<string>)",
+			"List ad_saved_keywords for this AdAccount Returns AdSavedKeywords.",
 			AdAccount_GET_ad_saved_keywordsSchema,
 		),
 		AdAccount_GET_ad_saved_keywordsHandler,
@@ -5084,7 +5552,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_GET_ad_studies",
-			"GET ad_studies for AdAccount. Returns AdStudy",
+			"List ad_studies for this AdAccount Returns AdStudy.",
 			AdAccount_GET_ad_studiesSchema,
 		),
 		AdAccount_GET_ad_studiesHandler,
@@ -5093,7 +5561,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_GET_adcloudplayables",
-			"GET adcloudplayables for AdAccount. Returns CloudGame",
+			"List adcloudplayables for this AdAccount Returns CloudGame.",
 			AdAccount_GET_adcloudplayablesSchema,
 		),
 		AdAccount_GET_adcloudplayablesHandler,
@@ -5102,7 +5570,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_GET_adcreatives",
-			"GET adcreatives for AdAccount. Returns AdCreative",
+			"List adcreatives for this AdAccount Returns AdCreative.",
 			AdAccount_GET_adcreativesSchema,
 		),
 		AdAccount_GET_adcreativesHandler,
@@ -5111,7 +5579,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_POST_adcreatives",
-			"POST adcreatives for AdAccount. Returns AdCreative. Parameters: actor_id (unsigned int), ad_disclaimer_spec (map), adlabels (list<Object>), applink_treatment (adaccountadcreatives_applink_treatment_enum_param), asset_feed_spec (Object), authorization_category (adaccountadcreatives_authorization_category_enum_param), body (string), branded_content (map), branded_content_sponsor_page_id (string), bundle_folder_id (string), call_to_action (Object), categorization_criteria (adaccountadcreatives_categorization_criteria_enum_param), category_media_source (adaccountadcreatives_category_media_source_enum_param), contextual_multi_ads (map), creative_sourcing_spec (map), degrees_of_freedom_spec (map), destination_set_id (string), dynamic_ad_voice (adaccountadcreatives_dynamic_ad_voice_enum_param), enable_launch_instant_app (bool), facebook_branded_content (map), image_crops (map), image_file (string), image_hash (string), image_url (string), instagram_branded_content (map), instagram_permalink_url (string), instagram_user_id (string), interactive_components_spec (map), is_dco_internal (bool), link_og_id (string), link_url (string), name (string), object_id (unsigned int), object_story_id (string), object_story_spec (AdCreativeObjectStorySpec), object_type (string), object_url (string), omnichannel_link_spec (map), page_welcome_message (string), place_page_set_id (string), platform_customizations (Object), playable_asset_id (string), portrait_customizations (map), product_set_id (string), recommender_settings (map), regional_regulation_disclaimer_spec (map), source_instagram_media_id (string), template_url (string), template_url_spec (string), thumbnail_url (string), title (string), url_tags (string), use_page_actor_override (bool)",
+			"Associate adcreatives with this AdAccount Returns AdCreative.",
 			AdAccount_POST_adcreativesSchema,
 		),
 		AdAccount_POST_adcreativesHandler,
@@ -5120,7 +5588,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_GET_adcreativesbylabels",
-			"GET adcreativesbylabels for AdAccount. Returns AdCreative. Parameters: ad_label_ids (list<string>) [required], operator (adaccountadcreativesbylabels_operator_enum_param)",
+			"List adcreativesbylabels for this AdAccount Returns AdCreative. Required: ad_label_ids",
 			AdAccount_GET_adcreativesbylabelsSchema,
 		),
 		AdAccount_GET_adcreativesbylabelsHandler,
@@ -5129,7 +5597,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_DELETE_adimages",
-			"DELETE adimages for AdAccount. Returns Object. Parameters: hash (string) [required]",
+			"Remove adimages from this AdAccount Required: hash",
 			AdAccount_DELETE_adimagesSchema,
 		),
 		AdAccount_DELETE_adimagesHandler,
@@ -5138,7 +5606,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_GET_adimages",
-			"GET adimages for AdAccount. Returns AdImage. Parameters: biz_tag_id (unsigned int), business_id (string), hashes (list<string>), minheight (unsigned int), minwidth (unsigned int), name (string), selected_hashes (list<string>)",
+			"List adimages for this AdAccount Returns AdImage.",
 			AdAccount_GET_adimagesSchema,
 		),
 		AdAccount_GET_adimagesHandler,
@@ -5147,7 +5615,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_POST_adimages",
-			"POST adimages for AdAccount. Returns Object. Parameters: bytes (string), copy_from (Object)",
+			"Associate adimages with this AdAccount",
 			AdAccount_POST_adimagesSchema,
 		),
 		AdAccount_POST_adimagesHandler,
@@ -5156,7 +5624,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_GET_adlabels",
-			"GET adlabels for AdAccount. Returns AdLabel",
+			"List adlabels for this AdAccount Returns AdLabel.",
 			AdAccount_GET_adlabelsSchema,
 		),
 		AdAccount_GET_adlabelsHandler,
@@ -5165,7 +5633,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_POST_adlabels",
-			"POST adlabels for AdAccount. Returns AdLabel. Parameters: name (string) [required]",
+			"Associate adlabels with this AdAccount Returns AdLabel. Required: name",
 			AdAccount_POST_adlabelsSchema,
 		),
 		AdAccount_POST_adlabelsHandler,
@@ -5174,7 +5642,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_GET_adplayables",
-			"GET adplayables for AdAccount. Returns PlayableContent",
+			"List adplayables for this AdAccount Returns PlayableContent.",
 			AdAccount_GET_adplayablesSchema,
 		),
 		AdAccount_GET_adplayablesHandler,
@@ -5183,7 +5651,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_POST_adplayables",
-			"POST adplayables for AdAccount. Returns PlayableContent. Parameters: app_id (string), name (string) [required], session_id (string), source (file), source_url (string), source_zip (file)",
+			"Associate adplayables with this AdAccount Returns PlayableContent. Required: name",
 			AdAccount_POST_adplayablesSchema,
 		),
 		AdAccount_POST_adplayablesHandler,
@@ -5192,7 +5660,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_GET_adrules_history",
-			"GET adrules_history for AdAccount. Returns AdAccountAdRulesHistory. Parameters: action (adaccountadrules_history_action_enum_param), evaluation_type (adaccountadrules_history_evaluation_type_enum_param), hide_no_changes (bool), object_id (string)",
+			"Get adrules_history data for this AdAccount Returns AdAccountAdRulesHistory.",
 			AdAccount_GET_adrules_historySchema,
 		),
 		AdAccount_GET_adrules_historyHandler,
@@ -5201,7 +5669,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_GET_adrules_library",
-			"GET adrules_library for AdAccount. Returns AdRule",
+			"Get adrules_library data for this AdAccount Returns AdRule.",
 			AdAccount_GET_adrules_librarySchema,
 		),
 		AdAccount_GET_adrules_libraryHandler,
@@ -5210,7 +5678,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_POST_adrules_library",
-			"POST adrules_library for AdAccount. Returns AdRule. Parameters: account_id (string), evaluation_spec (Object) [required], execution_spec (Object) [required], name (string) [required], schedule_spec (Object), status (adaccountadrules_library_status_enum_param), ui_creation_source (adaccountadrules_library_ui_creation_source_enum_param)",
+			"Associate adrules_library with this AdAccount Returns AdRule. Required: evaluation_spec, execution_spec, name",
 			AdAccount_POST_adrules_librarySchema,
 		),
 		AdAccount_POST_adrules_libraryHandler,
@@ -5219,7 +5687,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_GET_ads",
-			"GET ads for AdAccount. Returns Ad. Parameters: date_preset (adaccountads_date_preset_enum_param), effective_status (list<string>), time_range (map), updated_since (int)",
+			"List ads for this AdAccount Returns Ad.",
 			AdAccount_GET_adsSchema,
 		),
 		AdAccount_GET_adsHandler,
@@ -5228,7 +5696,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_POST_ads",
-			"POST ads for AdAccount. Returns Ad. Parameters: ad_schedule_end_time (datetime), ad_schedule_start_time (datetime), adlabels (list<Object>), adset_id (unsigned int), adset_spec (AdSet), audience_id (string), bid_amount (int), conversion_domain (string), creative (AdCreative) [required], creative_asset_groups_spec (Object), date_format (string), display_sequence (unsigned int), draft_adgroup_id (string), engagement_audience (bool), execution_options (list<adaccountads_execution_options_enum_param>), include_demolink_hashes (bool), name (string) [required], priority (unsigned int), source_ad_id (string), status (adaccountads_status_enum_param), tracking_specs (Object)",
+			"Associate ads with this AdAccount Returns Ad. Required: creative, name",
 			AdAccount_POST_adsSchema,
 		),
 		AdAccount_POST_adsHandler,
@@ -5237,7 +5705,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_GET_ads_reporting_mmm_reports",
-			"GET ads_reporting_mmm_reports for AdAccount. Returns AdsReportBuilderMMMReport. Parameters: filtering (list<map>)",
+			"List ads_reporting_mmm_reports for this AdAccount Returns AdsReportBuilderMMMReport.",
 			AdAccount_GET_ads_reporting_mmm_reportsSchema,
 		),
 		AdAccount_GET_ads_reporting_mmm_reportsHandler,
@@ -5246,7 +5714,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_GET_ads_reporting_mmm_schedulers",
-			"GET ads_reporting_mmm_schedulers for AdAccount. Returns AdsReportBuilderMMMReportScheduler",
+			"List ads_reporting_mmm_schedulers for this AdAccount Returns AdsReportBuilderMMMReportScheduler.",
 			AdAccount_GET_ads_reporting_mmm_schedulersSchema,
 		),
 		AdAccount_GET_ads_reporting_mmm_schedulersHandler,
@@ -5255,7 +5723,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_GET_ads_volume",
-			"GET ads_volume for AdAccount. Returns AdAccountAdVolume. Parameters: page_id (string), recommendation_type (adaccountads_volume_recommendation_type_enum_param), show_breakdown_by_actor (bool)",
+			"Get ads_volume data for this AdAccount Returns AdAccountAdVolume.",
 			AdAccount_GET_ads_volumeSchema,
 		),
 		AdAccount_GET_ads_volumeHandler,
@@ -5264,7 +5732,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_GET_adsbylabels",
-			"GET adsbylabels for AdAccount. Returns Ad. Parameters: ad_label_ids (list<string>) [required], operator (adaccountadsbylabels_operator_enum_param)",
+			"List adsbylabels for this AdAccount Returns Ad. Required: ad_label_ids",
 			AdAccount_GET_adsbylabelsSchema,
 		),
 		AdAccount_GET_adsbylabelsHandler,
@@ -5273,7 +5741,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_GET_adsets",
-			"GET adsets for AdAccount. Returns AdSet. Parameters: date_preset (adaccountadsets_date_preset_enum_param), effective_status (list<adaccountadsets_effective_status_enum_param>), is_completed (bool), time_range (map), updated_since (int)",
+			"List adsets for this AdAccount Returns AdSet.",
 			AdAccount_GET_adsetsSchema,
 		),
 		AdAccount_GET_adsetsHandler,
@@ -5282,7 +5750,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_POST_adsets",
-			"POST adsets for AdAccount. Returns AdSet. Parameters: adlabels (list<Object>), adset_schedule (list<Object>), attribution_spec (list<map>), bid_adjustments (Object), bid_amount (int), bid_constraints (map<string, Object>), bid_strategy (adaccountadsets_bid_strategy_enum_param), billing_event (adaccountadsets_billing_event_enum_param), budget_source (adaccountadsets_budget_source_enum_param), budget_split_set_id (string), campaign_attribution (Object), campaign_id (string), campaign_spec (Object), creative_sequence (list<string>), creative_sequence_repetition_pattern (adaccountadsets_creative_sequence_repetition_pattern_enum_param), daily_budget (unsigned int), daily_imps (unsigned int), daily_min_spend_target (unsigned int), daily_spend_cap (unsigned int), date_format (string), destination_type (adaccountadsets_destination_type_enum_param), dsa_beneficiary (string), dsa_payor (string), end_time (datetime), execution_options (list<adaccountadsets_execution_options_enum_param>), existing_customer_budget_percentage (unsigned int), frequency_control_specs (list<Object>), full_funnel_exploration_mode (adaccountadsets_full_funnel_exploration_mode_enum_param), is_ba_skip_delayed_eligible (bool), is_dynamic_creative (bool), is_incremental_attribution_enabled (bool), is_sac_cfca_terms_certified (bool), lifetime_budget (unsigned int), lifetime_imps (unsigned int), lifetime_min_spend_target (unsigned int), lifetime_spend_cap (unsigned int), line_number (unsigned int), max_budget_spend_percentage (unsigned int), min_budget_spend_percentage (unsigned int), multi_optimization_goal_weight (adaccountadsets_multi_optimization_goal_weight_enum_param), name (string) [required], optimization_goal (adaccountadsets_optimization_goal_enum_param), optimization_sub_event (adaccountadsets_optimization_sub_event_enum_param), pacing_type (list<string>), promoted_object (Object), rb_prediction_id (string), regional_regulated_categories (list<adaccountadsets_regional_regulated_categories_enum_param>), regional_regulation_identities (map), rf_prediction_id (string), source_adset_id (string), start_time (datetime), status (adaccountadsets_status_enum_param), targeting (Targeting), time_based_ad_rotation_id_blocks (list<list<unsigned int>>), time_based_ad_rotation_intervals (list<unsigned int>), time_start (datetime), time_stop (datetime), topline_id (string), tune_for_category (adaccountadsets_tune_for_category_enum_param)",
+			"Associate adsets with this AdAccount Returns AdSet. Required: name",
 			AdAccount_POST_adsetsSchema,
 		),
 		AdAccount_POST_adsetsHandler,
@@ -5291,7 +5759,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_GET_adsetsbylabels",
-			"GET adsetsbylabels for AdAccount. Returns AdSet. Parameters: ad_label_ids (list<string>) [required], operator (adaccountadsetsbylabels_operator_enum_param)",
+			"List adsetsbylabels for this AdAccount Returns AdSet. Required: ad_label_ids",
 			AdAccount_GET_adsetsbylabelsSchema,
 		),
 		AdAccount_GET_adsetsbylabelsHandler,
@@ -5300,7 +5768,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_GET_adspixels",
-			"GET adspixels for AdAccount. Returns AdsPixel. Parameters: sort_by (adaccountadspixels_sort_by_enum_param)",
+			"List adspixels for this AdAccount Returns AdsPixel.",
 			AdAccount_GET_adspixelsSchema,
 		),
 		AdAccount_GET_adspixelsHandler,
@@ -5309,7 +5777,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_POST_adspixels",
-			"POST adspixels for AdAccount. Returns AdsPixel. Parameters: name (string)",
+			"Associate adspixels with this AdAccount Returns AdsPixel.",
 			AdAccount_POST_adspixelsSchema,
 		),
 		AdAccount_POST_adspixelsHandler,
@@ -5318,7 +5786,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_GET_advertisable_applications",
-			"GET advertisable_applications for AdAccount. Returns Application. Parameters: app_id (string), business_id (string)",
+			"List advertisable_applications for this AdAccount Returns Application.",
 			AdAccount_GET_advertisable_applicationsSchema,
 		),
 		AdAccount_GET_advertisable_applicationsHandler,
@@ -5327,7 +5795,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_DELETE_advideos",
-			"DELETE advideos for AdAccount. Returns Object. Parameters: video_id (string) [required]",
+			"Remove advideos from this AdAccount Required: video_id",
 			AdAccount_DELETE_advideosSchema,
 		),
 		AdAccount_DELETE_advideosHandler,
@@ -5336,7 +5804,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_GET_advideos",
-			"GET advideos for AdAccount. Returns AdVideo. Parameters: max_aspect_ratio (float), maxheight (unsigned int), maxlength (unsigned int), maxwidth (unsigned int), min_aspect_ratio (float), minheight (unsigned int), minlength (unsigned int), minwidth (unsigned int), title (string)",
+			"List advideos for this AdAccount Returns AdVideo.",
 			AdAccount_GET_advideosSchema,
 		),
 		AdAccount_GET_advideosHandler,
@@ -5345,7 +5813,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_POST_advideos",
-			"POST advideos for AdAccount. Returns AdVideo. Parameters: application_id (string), asked_fun_fact_prompt_id (unsigned int), audio_story_wave_animation_handle (string), chunk_session_id (string), composer_entry_picker (string), composer_entry_point (string), composer_entry_time (unsigned int), composer_session_events_log (string), composer_session_id (string), composer_source_surface (string), composer_type (string), container_type (adaccountadvideos_container_type_enum_param), content_category (adaccountadvideos_content_category_enum_param), creative_tools (string), description (string), embeddable (bool), end_offset (unsigned int), fbuploader_video_file_chunk (string), file_size (unsigned int), file_url (string), fisheye_video_cropped (bool), formatting (adaccountadvideos_formatting_enum_param), fov (unsigned int), front_z_rotation (float), fun_fact_prompt_id (string), fun_fact_toastee_id (unsigned int), guide (list<list<unsigned int>>), guide_enabled (bool), initial_heading (unsigned int), initial_pitch (unsigned int), instant_game_entry_point_data (string), is_boost_intended (bool), is_group_linking_post (bool), is_partnership_ad (bool), is_voice_clip (bool), location_source_id (string), name (string), og_action_type_id (string), og_icon_id (string), og_object_id (string), og_phrase (string), og_suggestion_mechanism (string), original_fov (unsigned int), original_projection_type (adaccountadvideos_original_projection_type_enum_param), partnership_ad_ad_code (string), publish_event_id (unsigned int), referenced_sticker_id (string), replace_video_id (string), slideshow_spec (map), source (string), source_instagram_media_id (string), spherical (bool), start_offset (unsigned int), swap_mode (adaccountadvideos_swap_mode_enum_param), text_format_metadata (string), thumb (file), time_since_original_post (unsigned int), title (string), transcode_setting_properties (string), unpublished_content_type (adaccountadvideos_unpublished_content_type_enum_param), upload_phase (adaccountadvideos_upload_phase_enum_param), upload_session_id (string), upload_setting_properties (string), video_file_chunk (string), video_id_original (string), video_start_time_ms (unsigned int), waterfall_id (string)",
+			"Associate advideos with this AdAccount Returns AdVideo.",
 			AdAccount_POST_advideosSchema,
 		),
 		AdAccount_POST_advideosHandler,
@@ -5354,7 +5822,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_GET_affectedadsets",
-			"GET affectedadsets for AdAccount. Returns AdSet",
+			"List affectedadsets for this AdAccount Returns AdSet.",
 			AdAccount_GET_affectedadsetsSchema,
 		),
 		AdAccount_GET_affectedadsetsHandler,
@@ -5363,7 +5831,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_DELETE_agencies",
-			"DELETE agencies for AdAccount. Returns Object. Parameters: business (string) [required]",
+			"Remove agencies from this AdAccount Required: business",
 			AdAccount_DELETE_agenciesSchema,
 		),
 		AdAccount_DELETE_agenciesHandler,
@@ -5372,7 +5840,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_GET_agencies",
-			"GET agencies for AdAccount. Returns Business",
+			"List agencies for this AdAccount Returns Business.",
 			AdAccount_GET_agenciesSchema,
 		),
 		AdAccount_GET_agenciesHandler,
@@ -5381,7 +5849,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_POST_agencies",
-			"POST agencies for AdAccount. Returns AdAccount. Parameters: business (string) [required], permitted_tasks (list<adaccountagencies_permitted_tasks_enum_param>)",
+			"Create or update agencies for this AdAccount Returns AdAccount. Required: business",
 			AdAccount_POST_agenciesSchema,
 		),
 		AdAccount_POST_agenciesHandler,
@@ -5390,7 +5858,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_GET_applications",
-			"GET applications for AdAccount. Returns Application",
+			"List applications for this AdAccount Returns Application.",
 			AdAccount_GET_applicationsSchema,
 		),
 		AdAccount_GET_applicationsHandler,
@@ -5399,7 +5867,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_DELETE_assigned_users",
-			"DELETE assigned_users for AdAccount. Returns Object. Parameters: user (int) [required]",
+			"Remove assigned_users from this AdAccount Required: user",
 			AdAccount_DELETE_assigned_usersSchema,
 		),
 		AdAccount_DELETE_assigned_usersHandler,
@@ -5408,7 +5876,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_GET_assigned_users",
-			"GET assigned_users for AdAccount. Returns AssignedUser. Parameters: business (string) [required]",
+			"List assigned_users for this AdAccount Returns AssignedUser. Required: business",
 			AdAccount_GET_assigned_usersSchema,
 		),
 		AdAccount_GET_assigned_usersHandler,
@@ -5417,7 +5885,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_POST_assigned_users",
-			"POST assigned_users for AdAccount. Returns AdAccount. Parameters: tasks (list<adaccountassigned_users_tasks_enum_param>), user (int) [required]",
+			"Create or update assigned_users for this AdAccount Returns AdAccount. Required: user",
 			AdAccount_POST_assigned_usersSchema,
 		),
 		AdAccount_POST_assigned_usersHandler,
@@ -5426,7 +5894,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_POST_async_batch_requests",
-			"POST async_batch_requests for AdAccount. Returns Campaign. Parameters: adbatch (list<Object>) [required], name (string) [required]",
+			"Create or update async_batch_requests for this AdAccount Returns Campaign. Required: adbatch, name",
 			AdAccount_POST_async_batch_requestsSchema,
 		),
 		AdAccount_POST_async_batch_requestsHandler,
@@ -5435,7 +5903,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_GET_async_requests",
-			"GET async_requests for AdAccount. Returns AsyncRequest. Parameters: status (adaccountasync_requests_status_enum_param), type (adaccountasync_requests_type_enum_param)",
+			"List async_requests for this AdAccount Returns AsyncRequest.",
 			AdAccount_GET_async_requestsSchema,
 		),
 		AdAccount_GET_async_requestsHandler,
@@ -5444,7 +5912,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_GET_asyncadcreatives",
-			"GET asyncadcreatives for AdAccount. Returns AdAsyncRequestSet. Parameters: is_completed (bool)",
+			"List asyncadcreatives for this AdAccount Returns AdAsyncRequestSet.",
 			AdAccount_GET_asyncadcreativesSchema,
 		),
 		AdAccount_GET_asyncadcreativesHandler,
@@ -5453,7 +5921,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_POST_asyncadcreatives",
-			"POST asyncadcreatives for AdAccount. Returns AdAsyncRequestSet. Parameters: creative_spec (AdCreative) [required], name (string) [required], notification_mode (adaccountasyncadcreatives_notification_mode_enum_param), notification_uri (string)",
+			"Create or update asyncadcreatives for this AdAccount Returns AdAsyncRequestSet. Required: creative_spec, name",
 			AdAccount_POST_asyncadcreativesSchema,
 		),
 		AdAccount_POST_asyncadcreativesHandler,
@@ -5462,7 +5930,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_GET_asyncadrequestsets",
-			"GET asyncadrequestsets for AdAccount. Returns AdAsyncRequestSet. Parameters: is_completed (bool)",
+			"List asyncadrequestsets for this AdAccount Returns AdAsyncRequestSet.",
 			AdAccount_GET_asyncadrequestsetsSchema,
 		),
 		AdAccount_GET_asyncadrequestsetsHandler,
@@ -5471,7 +5939,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_POST_asyncadrequestsets",
-			"POST asyncadrequestsets for AdAccount. Returns AdAsyncRequestSet. Parameters: ad_specs (list<map>) [required], name (string) [required], notification_mode (adaccountasyncadrequestsets_notification_mode_enum_param), notification_uri (string)",
+			"Create or update asyncadrequestsets for this AdAccount Returns AdAsyncRequestSet. Required: ad_specs, name",
 			AdAccount_POST_asyncadrequestsetsSchema,
 		),
 		AdAccount_POST_asyncadrequestsetsHandler,
@@ -5480,7 +5948,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_GET_audience_funnel",
-			"GET audience_funnel for AdAccount. Returns AudienceFunnel",
+			"Get audience_funnel data for this AdAccount Returns AudienceFunnel.",
 			AdAccount_GET_audience_funnelSchema,
 		),
 		AdAccount_GET_audience_funnelHandler,
@@ -5489,7 +5957,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_POST_block_list_drafts",
-			"POST block_list_drafts for AdAccount. Returns AdAccount. Parameters: publisher_urls_file (file) [required]",
+			"Create or update block_list_drafts for this AdAccount Returns AdAccount. Required: publisher_urls_file",
 			AdAccount_POST_block_list_draftsSchema,
 		),
 		AdAccount_POST_block_list_draftsHandler,
@@ -5498,7 +5966,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_POST_brand_safety_content_filter_levels",
-			"POST brand_safety_content_filter_levels for AdAccount. Returns AdAccount. Parameters: brand_safety_content_filter_levels (list<adaccountbrand_safety_content_filter_levels_brand_safety_content_filter_levels_enum_param>) [required], business_id (string)",
+			"Create or update brand_safety_content_filter_levels for this AdAccount Returns AdAccount. Required: brand_safety_content_filter_levels",
 			AdAccount_POST_brand_safety_content_filter_levelsSchema,
 		),
 		AdAccount_POST_brand_safety_content_filter_levelsHandler,
@@ -5507,7 +5975,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_GET_broadtargetingcategories",
-			"GET broadtargetingcategories for AdAccount. Returns BroadTargetingCategories. Parameters: custom_categories_only (bool)",
+			"List broadtargetingcategories for this AdAccount Returns BroadTargetingCategories.",
 			AdAccount_GET_broadtargetingcategoriesSchema,
 		),
 		AdAccount_GET_broadtargetingcategoriesHandler,
@@ -5516,7 +5984,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_GET_businessprojects",
-			"GET businessprojects for AdAccount. Returns BusinessProject. Parameters: business (string)",
+			"List businessprojects for this AdAccount Returns BusinessProject.",
 			AdAccount_GET_businessprojectsSchema,
 		),
 		AdAccount_GET_businessprojectsHandler,
@@ -5525,7 +5993,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_DELETE_campaigns",
-			"DELETE campaigns for AdAccount. Returns Object. Parameters: before_date (datetime), delete_offset (unsigned int), delete_strategy (adaccountcampaigns_delete_strategy_enum_param) [required], object_count (int)",
+			"Remove campaigns from this AdAccount Required: delete_strategy (enum)",
 			AdAccount_DELETE_campaignsSchema,
 		),
 		AdAccount_DELETE_campaignsHandler,
@@ -5534,7 +6002,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_GET_campaigns",
-			"GET campaigns for AdAccount. Returns Campaign. Parameters: date_preset (adaccountcampaigns_date_preset_enum_param), effective_status (list<adaccountcampaigns_effective_status_enum_param>), is_completed (bool), time_range (map)",
+			"List campaigns for this AdAccount Returns Campaign.",
 			AdAccount_GET_campaignsSchema,
 		),
 		AdAccount_GET_campaignsHandler,
@@ -5543,7 +6011,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_POST_campaigns",
-			"POST campaigns for AdAccount. Returns Campaign. Parameters: adlabels (list<Object>), bid_strategy (adaccountcampaigns_bid_strategy_enum_param), buying_type (string), daily_budget (unsigned int), execution_options (list<adaccountcampaigns_execution_options_enum_param>), is_skadnetwork_attribution (bool), iterative_split_test_configs (list<Object>), lifetime_budget (unsigned int), name (string), objective (adaccountcampaigns_objective_enum_param), pacing_type (list<string>), promoted_object (Object), smart_promotion_type (adaccountcampaigns_smart_promotion_type_enum_param), source_campaign_id (string), special_ad_categories (list<adaccountcampaigns_special_ad_categories_enum_param>) [required], special_ad_category_country (list<adaccountcampaigns_special_ad_category_country_enum_param>), spend_cap (unsigned int), start_time (datetime), status (adaccountcampaigns_status_enum_param), stop_time (datetime), topline_id (string)",
+			"Create or update campaigns for this AdAccount Returns Campaign. Required: special_ad_categories",
 			AdAccount_POST_campaignsSchema,
 		),
 		AdAccount_POST_campaignsHandler,
@@ -5552,7 +6020,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_GET_campaignsbylabels",
-			"GET campaignsbylabels for AdAccount. Returns Campaign. Parameters: ad_label_ids (list<string>) [required], operator (adaccountcampaignsbylabels_operator_enum_param)",
+			"List campaignsbylabels for this AdAccount Returns Campaign. Required: ad_label_ids",
 			AdAccount_GET_campaignsbylabelsSchema,
 		),
 		AdAccount_GET_campaignsbylabelsHandler,
@@ -5561,7 +6029,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_GET_connected_instagram_accounts",
-			"GET connected_instagram_accounts for AdAccount. Returns IGUser",
+			"List connected_instagram_accounts for this AdAccount Returns IGUser.",
 			AdAccount_GET_connected_instagram_accountsSchema,
 		),
 		AdAccount_GET_connected_instagram_accountsHandler,
@@ -5570,7 +6038,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_GET_connected_instagram_accounts_with_iabp",
-			"GET connected_instagram_accounts_with_iabp for AdAccount. Returns IGUser. Parameters: business_id (string)",
+			"Get connected_instagram_accounts_with_iabp data for this AdAccount Returns IGUser.",
 			AdAccount_GET_connected_instagram_accounts_with_iabpSchema,
 		),
 		AdAccount_GET_connected_instagram_accounts_with_iabpHandler,
@@ -5579,7 +6047,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_GET_conversion_goals",
-			"GET conversion_goals for AdAccount. Returns AdsConversionGoal",
+			"List conversion_goals for this AdAccount Returns AdsConversionGoal.",
 			AdAccount_GET_conversion_goalsSchema,
 		),
 		AdAccount_GET_conversion_goalsHandler,
@@ -5588,7 +6056,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_GET_customaudiences",
-			"GET customaudiences for AdAccount. Returns CustomAudience. Parameters: business_id (string), fetch_primary_audience (bool), fields (list<string>), filtering (list<Object>), pixel_id (string)",
+			"List customaudiences for this AdAccount Returns CustomAudience.",
 			AdAccount_GET_customaudiencesSchema,
 		),
 		AdAccount_GET_customaudiencesHandler,
@@ -5597,7 +6065,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_POST_customaudiences",
-			"POST customaudiences for AdAccount. Returns CustomAudience. Parameters: allowed_domains (list<string>), associated_audience_id (unsigned int), claim_objective (adaccountcustomaudiences_claim_objective_enum_param), content_type (adaccountcustomaudiences_content_type_enum_param), countries (string), creation_params (map), customer_file_source (adaccountcustomaudiences_customer_file_source_enum_param), dataset_id (string), description (string), enable_fetch_or_create (bool), event_source_group (string), event_sources (list<map>), exclusions (list<Object>), facebook_page_id (string), inclusions (list<Object>), is_snapshot (bool), is_value_based (bool), list_of_accounts (list<unsigned int>), lookalike_spec (string), marketing_message_channels (Object), name (string), opt_out_link (string), origin_audience_id (string), parent_audience_id (unsigned int), partner_reference_key (string), pixel_id (string), prefill (bool), product_set_id (string), regulated_audience_spec (string), retention_days (unsigned int), rev_share_policy_id (unsigned int), rule (string), rule_aggregation (string), subscription_info (list<adaccountcustomaudiences_subscription_info_enum_param>), subtype (adaccountcustomaudiences_subtype_enum_param), use_for_products (list<adaccountcustomaudiences_use_for_products_enum_param>), use_in_campaigns (bool), video_group_ids (list<string>), whats_app_business_phone_number_id (string)",
+			"Create or update customaudiences for this AdAccount Returns CustomAudience.",
 			AdAccount_POST_customaudiencesSchema,
 		),
 		AdAccount_POST_customaudiencesHandler,
@@ -5606,7 +6074,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_GET_customaudiencestos",
-			"GET customaudiencestos for AdAccount. Returns CustomAudiencesTOS",
+			"List customaudiencestos for this AdAccount Returns CustomAudiencesTOS.",
 			AdAccount_GET_customaudiencestosSchema,
 		),
 		AdAccount_GET_customaudiencestosHandler,
@@ -5615,7 +6083,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_POST_customaudiencestos",
-			"POST customaudiencestos for AdAccount. Returns AdAccount. Parameters: business_id (string), tos_id (string) [required]",
+			"Create or update customaudiencestos for this AdAccount Returns AdAccount. Required: tos_id",
 			AdAccount_POST_customaudiencestosSchema,
 		),
 		AdAccount_POST_customaudiencestosHandler,
@@ -5624,7 +6092,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_GET_customconversions",
-			"GET customconversions for AdAccount. Returns CustomConversion",
+			"List customconversions for this AdAccount Returns CustomConversion.",
 			AdAccount_GET_customconversionsSchema,
 		),
 		AdAccount_GET_customconversionsHandler,
@@ -5633,7 +6101,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_POST_customconversions",
-			"POST customconversions for AdAccount. Returns CustomConversion. Parameters: action_source_type (adaccountcustomconversions_action_source_type_enum_param), advanced_rule (string), custom_event_type (adaccountcustomconversions_custom_event_type_enum_param), default_conversion_value (float), description (string), event_source_id (string), name (string) [required], rule (string)",
+			"Create or update customconversions for this AdAccount Returns CustomConversion. Required: name",
 			AdAccount_POST_customconversionsSchema,
 		),
 		AdAccount_POST_customconversionsHandler,
@@ -5642,7 +6110,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_GET_delivery_estimate",
-			"GET delivery_estimate for AdAccount. Returns AdAccountDeliveryEstimate. Parameters: optimization_goal (adaccountdelivery_estimate_optimization_goal_enum_param) [required], promoted_object (Object), targeting_spec (Targeting) [required]",
+			"Get delivery_estimate data for this AdAccount Returns AdAccountDeliveryEstimate. Required: optimization_goal (enum), targeting_spec",
 			AdAccount_GET_delivery_estimateSchema,
 		),
 		AdAccount_GET_delivery_estimateHandler,
@@ -5651,7 +6119,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_GET_deprecatedtargetingadsets",
-			"GET deprecatedtargetingadsets for AdAccount. Returns AdSet. Parameters: type (string)",
+			"List deprecatedtargetingadsets for this AdAccount Returns AdSet.",
 			AdAccount_GET_deprecatedtargetingadsetsSchema,
 		),
 		AdAccount_GET_deprecatedtargetingadsetsHandler,
@@ -5660,7 +6128,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_GET_dsa_recommendations",
-			"GET dsa_recommendations for AdAccount. Returns AdAccountDsaRecommendations",
+			"List dsa_recommendations for this AdAccount Returns AdAccountDsaRecommendations.",
 			AdAccount_GET_dsa_recommendationsSchema,
 		),
 		AdAccount_GET_dsa_recommendationsHandler,
@@ -5669,7 +6137,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_GET_generatepreviews",
-			"GET generatepreviews for AdAccount. Returns AdPreview. Parameters: ad_format (adaccountgeneratepreviews_ad_format_enum_param) [required], creative (AdCreative) [required], creative_feature (adaccountgeneratepreviews_creative_feature_enum_param), dynamic_asset_label (string), dynamic_creative_spec (Object), dynamic_customization (Object), end_date (datetime), height (unsigned int), locale (string), place_page_id (int), post (Object), product_item_ids (list<string>), render_type (adaccountgeneratepreviews_render_type_enum_param), start_date (datetime), width (unsigned int)",
+			"List generatepreviews for this AdAccount Returns AdPreview. Required: ad_format (enum), creative",
 			AdAccount_GET_generatepreviewsSchema,
 		),
 		AdAccount_GET_generatepreviewsHandler,
@@ -5678,7 +6146,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_GET_impacting_ad_studies",
-			"GET impacting_ad_studies for AdAccount. Returns AdStudy",
+			"List impacting_ad_studies for this AdAccount Returns AdStudy.",
 			AdAccount_GET_impacting_ad_studiesSchema,
 		),
 		AdAccount_GET_impacting_ad_studiesHandler,
@@ -5687,7 +6155,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_GET_insights",
-			"GET insights for AdAccount. Returns AdsInsights. Parameters: action_attribution_windows (list<adaccountinsights_action_attribution_windows_enum_param>), action_breakdowns (list<adaccountinsights_action_breakdowns_enum_param>), action_report_time (adaccountinsights_action_report_time_enum_param), breakdowns (list<adaccountinsights_breakdowns_enum_param>), date_preset (adaccountinsights_date_preset_enum_param), default_summary (bool), export_columns (list<string>), export_format (string), export_name (string), fields (list<string>), filtering (list<Object>), level (adaccountinsights_level_enum_param), limit (int), product_id_limit (int), sort (list<string>), summary (list<string>), summary_action_breakdowns (list<adaccountinsights_summary_action_breakdowns_enum_param>), time_increment (string), time_range (map), time_ranges (list<map>), use_account_attribution_setting (bool), use_unified_attribution_setting (bool)",
+			"List insights for this AdAccount Returns AdsInsights.",
 			AdAccount_GET_insightsSchema,
 		),
 		AdAccount_GET_insightsHandler,
@@ -5696,7 +6164,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_POST_insights",
-			"POST insights for AdAccount. Returns AdReportRun. Parameters: action_attribution_windows (list<adaccountinsights_action_attribution_windows_enum_param>), action_breakdowns (list<adaccountinsights_action_breakdowns_enum_param>), action_report_time (adaccountinsights_action_report_time_enum_param), breakdowns (list<adaccountinsights_breakdowns_enum_param>), date_preset (adaccountinsights_date_preset_enum_param), default_summary (bool), export_columns (list<string>), export_format (string), export_name (string), fields (list<string>), filtering (list<Object>), level (adaccountinsights_level_enum_param), limit (int), product_id_limit (int), sort (list<string>), summary (list<string>), summary_action_breakdowns (list<adaccountinsights_summary_action_breakdowns_enum_param>), time_increment (string), time_range (map), time_ranges (list<map>), use_account_attribution_setting (bool), use_unified_attribution_setting (bool)",
+			"Generate an insights report for this AdAccount Returns AdReportRun.",
 			AdAccount_POST_insightsSchema,
 		),
 		AdAccount_POST_insightsHandler,
@@ -5705,7 +6173,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_GET_instagram_accounts",
-			"GET instagram_accounts for AdAccount. Returns IGUser",
+			"List instagram_accounts for this AdAccount Returns IGUser.",
 			AdAccount_GET_instagram_accountsSchema,
 		),
 		AdAccount_GET_instagram_accountsHandler,
@@ -5714,7 +6182,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_GET_ios_fourteen_campaign_limits",
-			"GET ios_fourteen_campaign_limits for AdAccount. Returns AdAccountIosFourteenCampaignLimits. Parameters: app_id (string) [required]",
+			"List ios_fourteen_campaign_limits for this AdAccount Returns AdAccountIosFourteenCampaignLimits. Required: app_id",
 			AdAccount_GET_ios_fourteen_campaign_limitsSchema,
 		),
 		AdAccount_GET_ios_fourteen_campaign_limitsHandler,
@@ -5723,7 +6191,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_GET_matched_search_applications",
-			"GET matched_search_applications for AdAccount. Returns AdAccountMatchedSearchApplicationsEdgeData. Parameters: allow_incomplete_app (bool), app_store (adaccountmatched_search_applications_app_store_enum_param) [required], app_store_country (string), business_id (string), is_skadnetwork_search (bool), only_apps_with_permission (bool), query_term (string) [required]",
+			"List matched_search_applications for this AdAccount Returns AdAccountMatchedSearchApplicationsEdgeData. Required: app_store (enum), query_term",
 			AdAccount_GET_matched_search_applicationsSchema,
 		),
 		AdAccount_GET_matched_search_applicationsHandler,
@@ -5732,7 +6200,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_GET_max_bid",
-			"GET max_bid for AdAccount. Returns AdAccountMaxBid",
+			"Get max_bid data for this AdAccount Returns AdAccountMaxBid.",
 			AdAccount_GET_max_bidSchema,
 		),
 		AdAccount_GET_max_bidHandler,
@@ -5741,7 +6209,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_GET_mcmeconversions",
-			"GET mcmeconversions for AdAccount. Returns AdsMcmeConversion",
+			"List mcmeconversions for this AdAccount Returns AdsMcmeConversion.",
 			AdAccount_GET_mcmeconversionsSchema,
 		),
 		AdAccount_GET_mcmeconversionsHandler,
@@ -5750,7 +6218,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_GET_minimum_budgets",
-			"GET minimum_budgets for AdAccount. Returns MinimumBudget. Parameters: bid_amount (int)",
+			"List minimum_budgets for this AdAccount Returns MinimumBudget.",
 			AdAccount_GET_minimum_budgetsSchema,
 		),
 		AdAccount_GET_minimum_budgetsHandler,
@@ -5759,7 +6227,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_GET_onbehalf_requests",
-			"GET onbehalf_requests for AdAccount. Returns BusinessOwnedObjectOnBehalfOfRequest. Parameters: status (adaccountonbehalf_requests_status_enum_param)",
+			"List onbehalf_requests for this AdAccount Returns BusinessOwnedObjectOnBehalfOfRequest.",
 			AdAccount_GET_onbehalf_requestsSchema,
 		),
 		AdAccount_GET_onbehalf_requestsHandler,
@@ -5768,7 +6236,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_POST_product_audiences",
-			"POST product_audiences for AdAccount. Returns AdAccount. Parameters: allowed_domains (list<string>), associated_audience_id (unsigned int), claim_objective (adaccountproduct_audiences_claim_objective_enum_param), content_type (adaccountproduct_audiences_content_type_enum_param), creation_params (map), description (string), enable_fetch_or_create (bool), event_source_group (string), event_sources (list<map>), exclusions (list<Object>), inclusions (list<Object>), is_snapshot (bool), is_value_based (bool), name (string) [required], opt_out_link (string), parent_audience_id (unsigned int), product_set_id (string) [required], rev_share_policy_id (unsigned int), subtype (adaccountproduct_audiences_subtype_enum_param)",
+			"Create or update product_audiences for this AdAccount Returns AdAccount. Required: name, product_set_id",
 			AdAccount_POST_product_audiencesSchema,
 		),
 		AdAccount_POST_product_audiencesHandler,
@@ -5777,7 +6245,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_GET_promote_pages",
-			"GET promote_pages for AdAccount. Returns Page",
+			"List promote_pages for this AdAccount Returns Page.",
 			AdAccount_GET_promote_pagesSchema,
 		),
 		AdAccount_GET_promote_pagesHandler,
@@ -5786,7 +6254,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_GET_publisher_block_lists",
-			"GET publisher_block_lists for AdAccount. Returns PublisherBlockList",
+			"List publisher_block_lists for this AdAccount Returns PublisherBlockList.",
 			AdAccount_GET_publisher_block_listsSchema,
 		),
 		AdAccount_GET_publisher_block_listsHandler,
@@ -5795,7 +6263,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_POST_publisher_block_lists",
-			"POST publisher_block_lists for AdAccount. Returns PublisherBlockList. Parameters: name (string)",
+			"Create or update publisher_block_lists for this AdAccount Returns PublisherBlockList.",
 			AdAccount_POST_publisher_block_listsSchema,
 		),
 		AdAccount_POST_publisher_block_listsHandler,
@@ -5804,7 +6272,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_GET_reachestimate",
-			"GET reachestimate for AdAccount. Returns AdAccountReachEstimate. Parameters: adgroup_ids (list<string>), caller_id (string), concepts (string), creative_action_spec (string), is_debug (bool), object_store_url (string), targeting_spec (Targeting) [required]",
+			"Get reachestimate data for this AdAccount Returns AdAccountReachEstimate. Required: targeting_spec",
 			AdAccount_GET_reachestimateSchema,
 		),
 		AdAccount_GET_reachestimateHandler,
@@ -5813,7 +6281,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_GET_reachfrequencypredictions",
-			"GET reachfrequencypredictions for AdAccount. Returns ReachFrequencyPrediction",
+			"List reachfrequencypredictions for this AdAccount Returns ReachFrequencyPrediction.",
 			AdAccount_GET_reachfrequencypredictionsSchema,
 		),
 		AdAccount_GET_reachfrequencypredictionsHandler,
@@ -5822,7 +6290,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_POST_reachfrequencypredictions",
-			"POST reachfrequencypredictions for AdAccount. Returns ReachFrequencyPrediction. Parameters: action (adaccountreachfrequencypredictions_action_enum_param), ad_formats (list<map>), auction_entry_option_index (unsigned int), budget (unsigned int), buying_type (adaccountreachfrequencypredictions_buying_type_enum_param), campaign_group_id (string), day_parting_schedule (list<Object>), deal_id (string), destination_id (unsigned int), destination_ids (list<string>), end_time (unsigned int), exceptions (bool), existing_campaign_id (string), expiration_time (unsigned int), frequency_cap (unsigned int), grp_buying (bool), impression (unsigned int), instream_packages (list<adaccountreachfrequencypredictions_instream_packages_enum_param>), interval_frequency_cap_reset_period (unsigned int), is_balanced_frequency (bool), is_bonus_media (bool), is_conversion_goal (bool), is_full_view (bool), is_higher_average_frequency (bool), is_reach_and_frequency_io_buying (bool), is_reserved_buying (bool), num_curve_points (unsigned int), objective (string), optimization_goal (string), prediction_mode (unsigned int), reach (unsigned int), rf_prediction_id (string), rf_prediction_id_to_release (string), rf_prediction_id_to_share (string), start_time (unsigned int), stop_time (unsigned int), story_event_type (unsigned int), target_cpm (unsigned int), target_frequency (unsigned int), target_frequency_reset_period (unsigned int), target_spec (Targeting), video_view_length_constraint (unsigned int)",
+			"Create or update reachfrequencypredictions for this AdAccount Returns ReachFrequencyPrediction.",
 			AdAccount_POST_reachfrequencypredictionsSchema,
 		),
 		AdAccount_POST_reachfrequencypredictionsHandler,
@@ -5831,7 +6299,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_GET_recommendations",
-			"GET recommendations for AdAccount. Returns AdAccountRecommendations",
+			"List recommendations for this AdAccount Returns AdAccountRecommendations.",
 			AdAccount_GET_recommendationsSchema,
 		),
 		AdAccount_GET_recommendationsHandler,
@@ -5840,7 +6308,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_POST_recommendations",
-			"POST recommendations for AdAccount. Returns AdAccountRecommendations. Parameters: asc_fragmentation_parameters (map), autoflow_parameters (map), fragmentation_parameters (map), music_parameters (map), recommendation_signature (string) [required], scale_good_campaign_parameters (map)",
+			"Create or update recommendations for this AdAccount Returns AdAccountRecommendations. Required: recommendation_signature",
 			AdAccount_POST_recommendationsSchema,
 		),
 		AdAccount_POST_recommendationsHandler,
@@ -5849,7 +6317,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_GET_saved_audiences",
-			"GET saved_audiences for AdAccount. Returns SavedAudience. Parameters: business_id (string), fields (list<string>), filtering (list<Object>)",
+			"List saved_audiences for this AdAccount Returns SavedAudience.",
 			AdAccount_GET_saved_audiencesSchema,
 		),
 		AdAccount_GET_saved_audiencesHandler,
@@ -5858,7 +6326,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_DELETE_subscribed_apps",
-			"DELETE subscribed_apps for AdAccount. Returns Object. Parameters: app_id (string)",
+			"Remove subscribed_apps from this AdAccount",
 			AdAccount_DELETE_subscribed_appsSchema,
 		),
 		AdAccount_DELETE_subscribed_appsHandler,
@@ -5867,7 +6335,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_GET_subscribed_apps",
-			"GET subscribed_apps for AdAccount. Returns AdAccountSubscribedApps",
+			"List subscribed_apps for this AdAccount Returns AdAccountSubscribedApps.",
 			AdAccount_GET_subscribed_appsSchema,
 		),
 		AdAccount_GET_subscribed_appsHandler,
@@ -5876,7 +6344,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_POST_subscribed_apps",
-			"POST subscribed_apps for AdAccount. Returns AdAccountSubscribedApps. Parameters: app_id (string)",
+			"Create or update subscribed_apps for this AdAccount Returns AdAccountSubscribedApps.",
 			AdAccount_POST_subscribed_appsSchema,
 		),
 		AdAccount_POST_subscribed_appsHandler,
@@ -5885,7 +6353,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_GET_targetingbrowse",
-			"GET targetingbrowse for AdAccount. Returns AdAccountTargetingUnified. Parameters: excluded_category (string), include_nodes (bool), is_exclusion (bool), limit_type (adaccounttargetingbrowse_limit_type_enum_param), regulated_categories (list<adaccounttargetingbrowse_regulated_categories_enum_param>), regulated_countries (list<adaccounttargetingbrowse_regulated_countries_enum_param>), whitelisted_types (list<adaccounttargetingbrowse_whitelisted_types_enum_param>)",
+			"Get targeting information for this AdAccount Returns AdAccountTargetingUnified.",
 			AdAccount_GET_targetingbrowseSchema,
 		),
 		AdAccount_GET_targetingbrowseHandler,
@@ -5894,7 +6362,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_GET_targetingsearch",
-			"GET targetingsearch for AdAccount. Returns AdAccountTargetingUnified. Parameters: allow_only_fat_head_interests (bool), app_store (adaccounttargetingsearch_app_store_enum_param), countries (list<string>), is_account_level_brand_safety_exclusion (bool), is_account_level_employer_exclusion (bool), is_exclusion (bool), limit_type (adaccounttargetingsearch_limit_type_enum_param), objective (adaccounttargetingsearch_objective_enum_param), promoted_object (Object), q (string) [required], regulated_categories (list<adaccounttargetingsearch_regulated_categories_enum_param>), regulated_countries (list<adaccounttargetingsearch_regulated_countries_enum_param>), session_id (unsigned int), targeting_list (list<Object>), whitelisted_types (list<adaccounttargetingsearch_whitelisted_types_enum_param>)",
+			"Get targeting information for this AdAccount Returns AdAccountTargetingUnified. Required: q",
 			AdAccount_GET_targetingsearchSchema,
 		),
 		AdAccount_GET_targetingsearchHandler,
@@ -5903,7 +6371,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_GET_targetingsentencelines",
-			"GET targetingsentencelines for AdAccount. Returns TargetingSentenceLine. Parameters: discard_ages (bool), discard_placements (bool), hide_targeting_spec_from_return (bool), targeting_spec (Targeting) [required]",
+			"List targetingsentencelines for this AdAccount Returns TargetingSentenceLine. Required: targeting_spec",
 			AdAccount_GET_targetingsentencelinesSchema,
 		),
 		AdAccount_GET_targetingsentencelinesHandler,
@@ -5912,7 +6380,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_GET_targetingsuggestions",
-			"GET targetingsuggestions for AdAccount. Returns AdAccountTargetingUnified. Parameters: app_store (adaccounttargetingsuggestions_app_store_enum_param), countries (list<string>), limit_type (adaccounttargetingsuggestions_limit_type_enum_param), mode (adaccounttargetingsuggestions_mode_enum_param), objective (adaccounttargetingsuggestions_objective_enum_param), objects (Object), regulated_categories (list<adaccounttargetingsuggestions_regulated_categories_enum_param>), regulated_countries (list<adaccounttargetingsuggestions_regulated_countries_enum_param>), session_id (unsigned int), targeting_list (list<Object>), whitelisted_types (list<adaccounttargetingsuggestions_whitelisted_types_enum_param>)",
+			"List targetingsuggestions for this AdAccount Returns AdAccountTargetingUnified.",
 			AdAccount_GET_targetingsuggestionsSchema,
 		),
 		AdAccount_GET_targetingsuggestionsHandler,
@@ -5921,7 +6389,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_GET_targetingvalidation",
-			"GET targetingvalidation for AdAccount. Returns AdAccountTargetingUnified. Parameters: id_list (list<unsigned int>), is_exclusion (bool), name_list (list<string>), targeting_list (list<Object>)",
+			"Get targeting information for this AdAccount Returns AdAccountTargetingUnified.",
 			AdAccount_GET_targetingvalidationSchema,
 		),
 		AdAccount_GET_targetingvalidationHandler,
@@ -5930,7 +6398,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_GET_tracking",
-			"GET tracking for AdAccount. Returns AdAccountTrackingData",
+			"Get tracking data for this AdAccount Returns AdAccountTrackingData.",
 			AdAccount_GET_trackingSchema,
 		),
 		AdAccount_GET_trackingHandler,
@@ -5939,7 +6407,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_POST_tracking",
-			"POST tracking for AdAccount. Returns AdAccount. Parameters: tracking_specs (Object) [required]",
+			"Create or update tracking for this AdAccount Returns AdAccount. Required: tracking_specs",
 			AdAccount_POST_trackingSchema,
 		),
 		AdAccount_POST_trackingHandler,
@@ -5948,7 +6416,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_GET_users",
-			"GET users for AdAccount. Returns AdAccountUser",
+			"List users for this AdAccount Returns AdAccountUser.",
 			AdAccount_GET_usersSchema,
 		),
 		AdAccount_GET_usersHandler,
@@ -5957,7 +6425,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_DELETE_usersofanyaudience",
-			"DELETE usersofanyaudience for AdAccount. Returns Object. Parameters: namespace (string), payload (Object), session (Object)",
+			"Remove usersofanyaudience from this AdAccount",
 			AdAccount_DELETE_usersofanyaudienceSchema,
 		),
 		AdAccount_DELETE_usersofanyaudienceHandler,
@@ -5966,7 +6434,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_GET_value_rule_set",
-			"GET value_rule_set for AdAccount. Returns AdsValueAdjustmentRuleCollection. Parameters: product_type (adaccountvalue_rule_set_product_type_enum_param), status (adaccountvalue_rule_set_status_enum_param)",
+			"Get value_rule_set data for this AdAccount Returns AdsValueAdjustmentRuleCollection.",
 			AdAccount_GET_value_rule_setSchema,
 		),
 		AdAccount_GET_value_rule_setHandler,
@@ -5975,7 +6443,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_POST_value_rule_set",
-			"POST value_rule_set for AdAccount. Returns AdsValueAdjustmentRuleCollection. Parameters: name (string) [required], product_type (adaccountvalue_rule_set_product_type_enum_param), rules (list<map>) [required]",
+			"Create or update value_rule_set for this AdAccount Returns AdsValueAdjustmentRuleCollection. Required: name, rules",
 			AdAccount_POST_value_rule_setSchema,
 		),
 		AdAccount_POST_value_rule_setHandler,
@@ -5984,7 +6452,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_GET_video_ads",
-			"GET video_ads for AdAccount. Returns AdVideo. Parameters: since (datetime), until (datetime)",
+			"List video_ads for this AdAccount Returns AdVideo.",
 			AdAccount_GET_video_adsSchema,
 		),
 		AdAccount_GET_video_adsHandler,
@@ -5993,7 +6461,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_POST_video_ads",
-			"POST video_ads for AdAccount. Returns AdVideo. Parameters: description (string), privacy (string), title (string), upload_phase (adaccountvideo_ads_upload_phase_enum_param) [required], video_id (string), video_state (adaccountvideo_ads_video_state_enum_param)",
+			"Create or update video_ads for this AdAccount Returns AdVideo. Required: upload_phase (enum)",
 			AdAccount_POST_video_adsSchema,
 		),
 		AdAccount_POST_video_adsHandler,
@@ -6002,7 +6470,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_GET_",
-			"GET  for AdAccount. Returns AdAccount",
+			"Get details of a specific AdAccount Returns AdAccount.",
 			AdAccount_GET_Schema,
 		),
 		AdAccount_GET_Handler,
@@ -6011,7 +6479,7 @@ func RegisterAdAccountTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdAccount_POST_",
-			"POST  for AdAccount. Returns AdAccount. Parameters: agency_client_declaration (map), attribution_spec (list<Object>), business_info (map), currency (adaccount_currency), custom_audience_info (map), default_dsa_beneficiary (string), default_dsa_payor (string), end_advertiser (string), existing_customers (list<string>), is_ba_skip_delayed_eligible (bool), is_notifications_enabled (bool), media_agency (string), name (string), partner (string), spend_cap (float), spend_cap_action (string), timezone_id (unsigned int), tos_accepted (map)",
+			"Update a AdAccount Returns AdAccount.",
 			AdAccount_POST_Schema,
 		),
 		AdAccount_POST_Handler,

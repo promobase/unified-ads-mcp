@@ -152,6 +152,12 @@ func User_DELETE_access_tokensHandler(ctx context.Context, request mcp.CallToolR
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("User")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -231,6 +237,12 @@ func User_GET_accountsHandler(ctx context.Context, request mcp.CallToolRequest) 
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("User")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -310,6 +322,12 @@ func User_GET_ad_studiesHandler(ctx context.Context, request mcp.CallToolRequest
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("User")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -389,6 +407,12 @@ func User_GET_adaccountsHandler(ctx context.Context, request mcp.CallToolRequest
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("User")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -438,6 +462,12 @@ func User_GET_albumsHandler(ctx context.Context, request mcp.CallToolRequest) (*
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("User")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -512,6 +542,12 @@ func User_GET_apprequestformerrecipientsHandler(ctx context.Context, request mcp
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("User")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -561,6 +597,12 @@ func User_GET_apprequestsHandler(ctx context.Context, request mcp.CallToolReques
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("User")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -610,6 +652,12 @@ func User_GET_assigned_ad_accountsHandler(ctx context.Context, request mcp.CallT
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("User")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -659,6 +707,12 @@ func User_GET_assigned_applicationsHandler(ctx context.Context, request mcp.Call
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("User")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -708,6 +762,12 @@ func User_GET_assigned_business_asset_groupsHandler(ctx context.Context, request
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("User")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -757,6 +817,12 @@ func User_GET_assigned_pagesHandler(ctx context.Context, request mcp.CallToolReq
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("User")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -806,6 +872,12 @@ func User_GET_assigned_product_catalogsHandler(ctx context.Context, request mcp.
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("User")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -855,6 +927,12 @@ func User_GET_avatarsHandler(ctx context.Context, request mcp.CallToolRequest) (
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("User")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -899,6 +977,12 @@ func User_GET_business_usersHandler(ctx context.Context, request mcp.CallToolReq
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("User")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -948,6 +1032,12 @@ func User_DELETE_businessesHandler(ctx context.Context, request mcp.CallToolRequ
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("User")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -997,6 +1087,12 @@ func User_GET_businessesHandler(ctx context.Context, request mcp.CallToolRequest
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("User")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -1076,6 +1172,12 @@ func User_GET_conversationsHandler(ctx context.Context, request mcp.CallToolRequ
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("User")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -1125,6 +1227,12 @@ func User_GET_custom_labelsHandler(ctx context.Context, request mcp.CallToolRequ
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("User")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -1174,6 +1282,12 @@ func User_GET_eventsHandler(ctx context.Context, request mcp.CallToolRequest) (*
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("User")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -1223,6 +1337,12 @@ func User_GET_feedHandler(ctx context.Context, request mcp.CallToolRequest) (*mc
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("User")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -1302,6 +1422,12 @@ func User_GET_friendsHandler(ctx context.Context, request mcp.CallToolRequest) (
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("User")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -1351,6 +1477,12 @@ func User_GET_fundraisersHandler(ctx context.Context, request mcp.CallToolReques
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("User")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -1430,6 +1562,12 @@ func User_GET_groupsHandler(ctx context.Context, request mcp.CallToolRequest) (*
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("User")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -1479,6 +1617,12 @@ func User_GET_ids_for_appsHandler(ctx context.Context, request mcp.CallToolReque
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("User")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -1528,6 +1672,12 @@ func User_GET_ids_for_businessHandler(ctx context.Context, request mcp.CallToolR
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("User")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -1577,6 +1727,12 @@ func User_GET_ids_for_pagesHandler(ctx context.Context, request mcp.CallToolRequ
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("User")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -1626,6 +1782,12 @@ func User_GET_likesHandler(ctx context.Context, request mcp.CallToolRequest) (*m
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("User")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -1675,6 +1837,12 @@ func User_GET_live_videosHandler(ctx context.Context, request mcp.CallToolReques
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("User")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -1804,6 +1972,12 @@ func User_GET_musicHandler(ctx context.Context, request mcp.CallToolRequest) (*m
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("User")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -1878,6 +2052,12 @@ func User_GET_payment_transactionsHandler(ctx context.Context, request mcp.CallT
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("User")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -1927,6 +2107,12 @@ func User_DELETE_permissionsHandler(ctx context.Context, request mcp.CallToolReq
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("User")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -1976,6 +2162,12 @@ func User_GET_permissionsHandler(ctx context.Context, request mcp.CallToolReques
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("User")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -2025,6 +2217,12 @@ func User_GET_personal_ad_accountsHandler(ctx context.Context, request mcp.CallT
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("User")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -2074,6 +2272,12 @@ func User_GET_photosHandler(ctx context.Context, request mcp.CallToolRequest) (*
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("User")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -2153,6 +2357,12 @@ func User_GET_pictureHandler(ctx context.Context, request mcp.CallToolRequest) (
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("User")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -2202,6 +2412,12 @@ func User_GET_postsHandler(ctx context.Context, request mcp.CallToolRequest) (*m
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("User")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -2246,6 +2462,12 @@ func User_GET_rich_media_documentsHandler(ctx context.Context, request mcp.CallT
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("User")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -2325,6 +2547,12 @@ func User_GET_videosHandler(ctx context.Context, request mcp.CallToolRequest) (*
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("User")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -2404,6 +2632,12 @@ func User_DELETE_Handler(ctx context.Context, request mcp.CallToolRequest) (*mcp
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("User")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -2453,6 +2687,12 @@ func User_GET_Handler(ctx context.Context, request mcp.CallToolRequest) (*mcp.Ca
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("User")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -2512,7 +2752,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"User_DELETE_access_tokens",
-			"DELETE access_tokens for User. Returns Object",
+			"Remove access_tokens from this User",
 			User_DELETE_access_tokensSchema,
 		),
 		User_DELETE_access_tokensHandler,
@@ -2521,7 +2761,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"User_POST_access_tokens",
-			"POST access_tokens for User. Returns User. Parameters: business_app (string) [required], page_id (string), scope (list<string>), set_token_expires_in_60_days (bool)",
+			"Create or update access_tokens for this User Returns User. Required: business_app",
 			User_POST_access_tokensSchema,
 		),
 		User_POST_access_tokensHandler,
@@ -2530,7 +2770,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"User_GET_accounts",
-			"GET accounts for User. Returns Page. Parameters: ad_id (string), is_place (bool), is_promotable (bool)",
+			"List accounts for this User Returns Page.",
 			User_GET_accountsSchema,
 		),
 		User_GET_accountsHandler,
@@ -2539,7 +2779,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"User_POST_accounts",
-			"POST accounts for User. Returns Object. Parameters: about (string), address (string), category (int), category_enum (string), category_list (list<string>), city_id (string), coordinates (Object), cover_photo (Object), description (string), ignore_coordinate_warnings (bool), location (Object), name (string) [required], phone (string), picture (string), website (string), zip (string)",
+			"Create or update accounts for this User Required: name",
 			User_POST_accountsSchema,
 		),
 		User_POST_accountsHandler,
@@ -2548,7 +2788,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"User_GET_ad_studies",
-			"GET ad_studies for User. Returns AdStudy",
+			"List ad_studies for this User Returns AdStudy.",
 			User_GET_ad_studiesSchema,
 		),
 		User_GET_ad_studiesHandler,
@@ -2557,7 +2797,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"User_POST_ad_studies",
-			"POST ad_studies for User. Returns AdStudy. Parameters: cells (list<Object>), client_business (string), confidence_level (float), cooldown_start_time (int), description (string), end_time (int), name (string), objectives (list<Object>), observation_end_time (int), start_time (int), type (userad_studies_type_enum_param), viewers (list<int>)",
+			"Associate ad_studies with this User Returns AdStudy.",
 			User_POST_ad_studiesSchema,
 		),
 		User_POST_ad_studiesHandler,
@@ -2566,7 +2806,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"User_GET_adaccounts",
-			"GET adaccounts for User. Returns AdAccount",
+			"List adaccounts for this User Returns AdAccount.",
 			User_GET_adaccountsSchema,
 		),
 		User_GET_adaccountsHandler,
@@ -2575,7 +2815,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"User_GET_albums",
-			"GET albums for User. Returns Album",
+			"List albums for this User Returns Album.",
 			User_GET_albumsSchema,
 		),
 		User_GET_albumsHandler,
@@ -2584,7 +2824,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"User_POST_applications",
-			"POST applications for User. Returns User. Parameters: business_app (int) [required]",
+			"Create or update applications for this User Returns User. Required: business_app",
 			User_POST_applicationsSchema,
 		),
 		User_POST_applicationsHandler,
@@ -2593,7 +2833,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"User_GET_apprequestformerrecipients",
-			"GET apprequestformerrecipients for User. Returns AppRequestFormerRecipient",
+			"List apprequestformerrecipients for this User Returns AppRequestFormerRecipient.",
 			User_GET_apprequestformerrecipientsSchema,
 		),
 		User_GET_apprequestformerrecipientsHandler,
@@ -2602,7 +2842,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"User_GET_apprequests",
-			"GET apprequests for User. Returns AppRequest",
+			"List apprequests for this User Returns AppRequest.",
 			User_GET_apprequestsSchema,
 		),
 		User_GET_apprequestsHandler,
@@ -2611,7 +2851,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"User_GET_assigned_ad_accounts",
-			"GET assigned_ad_accounts for User. Returns AdAccount",
+			"List assigned_ad_accounts for this User Returns AdAccount.",
 			User_GET_assigned_ad_accountsSchema,
 		),
 		User_GET_assigned_ad_accountsHandler,
@@ -2620,7 +2860,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"User_GET_assigned_applications",
-			"GET assigned_applications for User. Returns Application",
+			"List assigned_applications for this User Returns Application.",
 			User_GET_assigned_applicationsSchema,
 		),
 		User_GET_assigned_applicationsHandler,
@@ -2629,7 +2869,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"User_GET_assigned_business_asset_groups",
-			"GET assigned_business_asset_groups for User. Returns BusinessAssetGroup. Parameters: contained_asset_id (string)",
+			"List assigned_business_asset_groups for this User Returns BusinessAssetGroup.",
 			User_GET_assigned_business_asset_groupsSchema,
 		),
 		User_GET_assigned_business_asset_groupsHandler,
@@ -2638,7 +2878,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"User_GET_assigned_pages",
-			"GET assigned_pages for User. Returns Page. Parameters: pages (list<unsigned int>)",
+			"List assigned_pages for this User Returns Page.",
 			User_GET_assigned_pagesSchema,
 		),
 		User_GET_assigned_pagesHandler,
@@ -2647,7 +2887,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"User_GET_assigned_product_catalogs",
-			"GET assigned_product_catalogs for User. Returns ProductCatalog",
+			"List assigned_product_catalogs for this User Returns ProductCatalog.",
 			User_GET_assigned_product_catalogsSchema,
 		),
 		User_GET_assigned_product_catalogsHandler,
@@ -2656,7 +2896,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"User_GET_avatars",
-			"GET avatars for User. Returns Avatar",
+			"List avatars for this User Returns Avatar.",
 			User_GET_avatarsSchema,
 		),
 		User_GET_avatarsHandler,
@@ -2665,7 +2905,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"User_GET_business_users",
-			"GET business_users for User. Returns BusinessUser",
+			"List business_users for this User Returns BusinessUser.",
 			User_GET_business_usersSchema,
 		),
 		User_GET_business_usersHandler,
@@ -2674,7 +2914,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"User_DELETE_businesses",
-			"DELETE businesses for User. Returns Object. Parameters: business (string)",
+			"Remove businesses from this User",
 			User_DELETE_businessesSchema,
 		),
 		User_DELETE_businessesHandler,
@@ -2683,7 +2923,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"User_GET_businesses",
-			"GET businesses for User. Returns Business",
+			"List businesses for this User Returns Business.",
 			User_GET_businessesSchema,
 		),
 		User_GET_businessesHandler,
@@ -2692,7 +2932,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"User_POST_businesses",
-			"POST businesses for User. Returns Business. Parameters: child_business_external_id (string), email (string), name (string) [required], primary_page (string), sales_rep_email (string), survey_business_type (userbusinesses_survey_business_type_enum_param), survey_num_assets (unsigned int), survey_num_people (unsigned int), timezone_id (userbusinesses_timezone_id_enum_param), vertical (userbusinesses_vertical_enum_param) [required]",
+			"Create or update businesses for this User Returns Business. Required: name, vertical (enum)",
 			User_POST_businessesSchema,
 		),
 		User_POST_businessesHandler,
@@ -2701,7 +2941,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"User_GET_conversations",
-			"GET conversations for User. Returns UnifiedThread. Parameters: folder (string), platform (userconversations_platform_enum_param), tags (list<string>), user_id (string)",
+			"List conversations for this User Returns UnifiedThread.",
 			User_GET_conversationsSchema,
 		),
 		User_GET_conversationsHandler,
@@ -2710,7 +2950,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"User_GET_custom_labels",
-			"GET custom_labels for User. Returns PageUserMessageThreadLabel",
+			"List custom_labels for this User Returns PageUserMessageThreadLabel.",
 			User_GET_custom_labelsSchema,
 		),
 		User_GET_custom_labelsHandler,
@@ -2719,7 +2959,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"User_GET_events",
-			"GET events for User. Returns Event. Parameters: include_canceled (bool), type (userevents_type_enum_param)",
+			"List events for this User Returns Event.",
 			User_GET_eventsSchema,
 		),
 		User_GET_eventsHandler,
@@ -2728,7 +2968,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"User_GET_feed",
-			"GET feed for User. Returns Post. Parameters: include_hidden (bool), q (string), show_expired (bool), since (datetime), until (datetime), with (string)",
+			"Get feed data for this User Returns Post.",
 			User_GET_feedSchema,
 		),
 		User_GET_feedHandler,
@@ -2737,7 +2977,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"User_POST_feed",
-			"POST feed for User. Returns Post. Parameters: actions (Object), album_id (string), android_key_hash (string), application_id (string), asked_fun_fact_prompt_id (unsigned int), asset3d_id (string), associated_id (string), attach_place_suggestion (bool), attached_media (list<Object>), audience_exp (bool), backdated_time (datetime), backdated_time_granularity (userfeed_backdated_time_granularity_enum_param), breaking_news (bool), breaking_news_expiration (unsigned int), call_to_action (Object), caption (string), child_attachments (list<Object>), client_mutation_id (string), composer_entry_picker (string), composer_entry_point (string), composer_entry_time (unsigned int), composer_session_events_log (string), composer_session_id (string), composer_source_surface (string), composer_type (string), connection_class (string), content_attachment (string), coordinates (Object), cta_link (string), cta_type (string), description (string), direct_share_status (unsigned int), expanded_height (unsigned int), expanded_width (unsigned int), feed_targeting (Object), formatting (userfeed_formatting_enum_param), fun_fact_prompt_id (string), fun_fact_toastee_id (unsigned int), height (unsigned int), home_checkin_city_id (Object), image_crops (map), implicit_with_tags (list<int>), instant_game_entry_point_data (string), ios_bundle_id (string), is_backout_draft (bool), is_boost_intended (bool), is_explicit_location (bool), is_explicit_share (bool), is_group_linking_post (bool), is_photo_container (bool), link (string), location_source_id (string), manual_privacy (bool), message (string), multi_share_end_card (bool), multi_share_optimized (bool), name (string), nectar_module (string), object_attachment (string), og_action_type_id (string), og_hide_object_attachment (bool), og_icon_id (string), og_object_id (string), og_phrase (string), og_set_profile_badge (bool), og_suggestion_mechanism (string), page_recommendation (string), picture (string), place (Object), place_attachment_setting (userfeed_place_attachment_setting_enum_param), place_list (string), place_list_data (list), post_surfaces_blacklist (list<userfeed_post_surfaces_blacklist_enum_param>), posting_to_redspace (userfeed_posting_to_redspace_enum_param), privacy (string), prompt_id (string), prompt_tracking_string (string), properties (Object), proxied_app_id (string), publish_event_id (unsigned int), published (bool), quote (string), ref (list<string>), referenceable_image_ids (list<string>), referral_id (string), scheduled_publish_time (datetime), source (string), sponsor_id (string), sponsor_relationship (unsigned int), suggested_place_id (Object), tags (list<int>), target_surface (userfeed_target_surface_enum_param), targeting (Object), text_format_metadata (string), text_format_preset_id (string), text_only_place (string), thumbnail (file), time_since_original_post (unsigned int), title (string), tracking_info (string), unpublished_content_type (userfeed_unpublished_content_type_enum_param), user_selected_tags (bool), video_start_time_ms (unsigned int), viewer_coordinates (Object), width (unsigned int)",
+			"Create or update feed for this User Returns Post.",
 			User_POST_feedSchema,
 		),
 		User_POST_feedHandler,
@@ -2746,7 +2986,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"User_GET_friends",
-			"GET friends for User. Returns User. Parameters: uid (int)",
+			"List friends for this User Returns User.",
 			User_GET_friendsSchema,
 		),
 		User_GET_friendsHandler,
@@ -2755,7 +2995,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"User_GET_fundraisers",
-			"GET fundraisers for User. Returns FundraiserPersonToCharity",
+			"List fundraisers for this User Returns FundraiserPersonToCharity.",
 			User_GET_fundraisersSchema,
 		),
 		User_GET_fundraisersHandler,
@@ -2764,7 +3004,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"User_POST_fundraisers",
-			"POST fundraisers for User. Returns FundraiserPersonToCharity. Parameters: charity_id (string), cover_photo (file), currency (string) [required], description (string) [required], end_time (datetime) [required], external_event_name (string), external_event_start_time (datetime), external_event_uri (string), external_fundraiser_uri (string), external_id (string) [required], fundraiser_type (userfundraisers_fundraiser_type_enum_param) [required], goal_amount (unsigned int) [required], name (string) [required], page_id (string)",
+			"Create or update fundraisers for this User Returns FundraiserPersonToCharity. Required: currency, description, end_time, external_id, fundraiser_type (enum), goal_amount, name",
 			User_POST_fundraisersSchema,
 		),
 		User_POST_fundraisersHandler,
@@ -2773,7 +3013,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"User_GET_groups",
-			"GET groups for User. Returns Group. Parameters: admin_only (bool), parent (string)",
+			"List groups for this User Returns Group.",
 			User_GET_groupsSchema,
 		),
 		User_GET_groupsHandler,
@@ -2782,7 +3022,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"User_GET_ids_for_apps",
-			"GET ids_for_apps for User. Returns UserIDForApp. Parameters: app (int)",
+			"List ids_for_apps for this User Returns UserIDForApp.",
 			User_GET_ids_for_appsSchema,
 		),
 		User_GET_ids_for_appsHandler,
@@ -2791,7 +3031,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"User_GET_ids_for_business",
-			"GET ids_for_business for User. Returns UserIDForApp. Parameters: app (int)",
+			"List ids_for_business for this User Returns UserIDForApp.",
 			User_GET_ids_for_businessSchema,
 		),
 		User_GET_ids_for_businessHandler,
@@ -2800,7 +3040,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"User_GET_ids_for_pages",
-			"GET ids_for_pages for User. Returns UserIDForPage. Parameters: page (int)",
+			"List ids_for_pages for this User Returns UserIDForPage.",
 			User_GET_ids_for_pagesSchema,
 		),
 		User_GET_ids_for_pagesHandler,
@@ -2809,7 +3049,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"User_GET_likes",
-			"GET likes for User. Returns Page. Parameters: target_id (string)",
+			"List likes for this User Returns Page.",
 			User_GET_likesSchema,
 		),
 		User_GET_likesHandler,
@@ -2818,7 +3058,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"User_GET_live_videos",
-			"GET live_videos for User. Returns LiveVideo. Parameters: broadcast_status (list<userlive_videos_broadcast_status_enum_param>), source (userlive_videos_source_enum_param)",
+			"List live_videos for this User Returns LiveVideo.",
 			User_GET_live_videosSchema,
 		),
 		User_GET_live_videosHandler,
@@ -2827,7 +3067,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"User_POST_live_videos",
-			"POST live_videos for User. Returns LiveVideo. Parameters: content_tags (list<string>), description (string), enable_backup_ingest (bool), encoding_settings (string), event_params (Object), fisheye_video_cropped (bool), front_z_rotation (float), is_audio_only (bool), is_spherical (bool), original_fov (unsigned int), privacy (string), projection (userlive_videos_projection_enum_param), published (bool), schedule_custom_profile_image (file), spatial_audio_format (userlive_videos_spatial_audio_format_enum_param), status (userlive_videos_status_enum_param), stereoscopic_mode (userlive_videos_stereoscopic_mode_enum_param), stop_on_delete_stream (bool), stream_type (userlive_videos_stream_type_enum_param), title (string)",
+			"Create or update live_videos for this User Returns LiveVideo.",
 			User_POST_live_videosSchema,
 		),
 		User_POST_live_videosHandler,
@@ -2836,7 +3076,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"User_POST_messenger_desktop_performance_traces",
-			"POST messenger_desktop_performance_traces for User. Returns User",
+			"Create or update messenger_desktop_performance_traces for this User Returns User.",
 			User_POST_messenger_desktop_performance_tracesSchema,
 		),
 		User_POST_messenger_desktop_performance_tracesHandler,
@@ -2845,7 +3085,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"User_POST_messenger_kids_accounts_unread_badge",
-			"POST messenger_kids_accounts_unread_badge for User. Returns User. Parameters: proxied_app_id (int) [required]",
+			"Create or update messenger_kids_accounts_unread_badge for this User Returns User. Required: proxied_app_id",
 			User_POST_messenger_kids_accounts_unread_badgeSchema,
 		),
 		User_POST_messenger_kids_accounts_unread_badgeHandler,
@@ -2854,7 +3094,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"User_GET_music",
-			"GET music for User. Returns Page. Parameters: target_id (string)",
+			"Get music data for this User Returns Page.",
 			User_GET_musicSchema,
 		),
 		User_GET_musicHandler,
@@ -2863,7 +3103,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"User_POST_notifications",
-			"POST notifications for User. Returns User. Parameters: bot_message_payload_elements (string), filtering (list<usernotifications_filtering_enum_param>), href (Object), label (string), message (map), notif_ids (list<string>), payload (string), read (bool), ref (string), schedule_interval (unsigned int), seen (bool), template (Object), type (usernotifications_type_enum_param)",
+			"Create or update notifications for this User Returns User.",
 			User_POST_notificationsSchema,
 		),
 		User_POST_notificationsHandler,
@@ -2872,7 +3112,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"User_GET_payment_transactions",
-			"GET payment_transactions for User. Returns PaymentEnginePayment",
+			"List payment_transactions for this User Returns PaymentEnginePayment.",
 			User_GET_payment_transactionsSchema,
 		),
 		User_GET_payment_transactionsHandler,
@@ -2881,7 +3121,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"User_DELETE_permissions",
-			"DELETE permissions for User. Returns Object. Parameters: permission (string)",
+			"Remove permissions from this User",
 			User_DELETE_permissionsSchema,
 		),
 		User_DELETE_permissionsHandler,
@@ -2890,7 +3130,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"User_GET_permissions",
-			"GET permissions for User. Returns Permission. Parameters: permission (string), status (userpermissions_status_enum_param)",
+			"List permissions for this User Returns Permission.",
 			User_GET_permissionsSchema,
 		),
 		User_GET_permissionsHandler,
@@ -2899,7 +3139,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"User_GET_personal_ad_accounts",
-			"GET personal_ad_accounts for User. Returns AdAccount",
+			"List personal_ad_accounts for this User Returns AdAccount.",
 			User_GET_personal_ad_accountsSchema,
 		),
 		User_GET_personal_ad_accountsHandler,
@@ -2908,7 +3148,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"User_GET_photos",
-			"GET photos for User. Returns Photo. Parameters: type (userphotos_type_enum_param)",
+			"List photos for this User Returns Photo.",
 			User_GET_photosSchema,
 		),
 		User_GET_photosHandler,
@@ -2917,7 +3157,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"User_POST_photos",
-			"POST photos for User. Returns Photo. Parameters: aid (string), allow_spherical_photo (bool), alt_text_custom (string), android_key_hash (string), application_id (string), attempt (unsigned int), audience_exp (bool), backdated_time (datetime), backdated_time_granularity (userphotos_backdated_time_granularity_enum_param), caption (string), composer_session_id (string), direct_share_status (unsigned int), feed_targeting (Object), filter_type (unsigned int), full_res_is_coming_later (bool), initial_view_heading_override_degrees (unsigned int), initial_view_pitch_override_degrees (unsigned int), initial_view_vertical_fov_override_degrees (unsigned int), ios_bundle_id (string), is_explicit_location (bool), is_explicit_place (bool), manual_privacy (bool), message (string), name (string), no_story (bool), offline_id (unsigned int), og_action_type_id (string), og_icon_id (string), og_object_id (string), og_phrase (string), og_set_profile_badge (bool), og_suggestion_mechanism (string), place (Object), privacy (string), profile_id (int), provenance_info (map), proxied_app_id (string), published (bool), qn (string), scheduled_publish_time (unsigned int), spherical_metadata (map), sponsor_id (string), sponsor_relationship (unsigned int), tags (list<Object>), target_id (int), targeting (Object), time_since_original_post (unsigned int), uid (int), unpublished_content_type (userphotos_unpublished_content_type_enum_param), url (string), user_selected_tags (bool), vault_image_id (string)",
+			"Create or update photos for this User Returns Photo.",
 			User_POST_photosSchema,
 		),
 		User_POST_photosHandler,
@@ -2926,7 +3166,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"User_GET_picture",
-			"GET picture for User. Returns ProfilePictureSource. Parameters: height (int), redirect (bool), type (userpicture_type_enum_param), width (int)",
+			"Get picture data for this User Returns ProfilePictureSource.",
 			User_GET_pictureSchema,
 		),
 		User_GET_pictureHandler,
@@ -2935,7 +3175,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"User_GET_posts",
-			"GET posts for User. Returns Post. Parameters: include_hidden (bool), q (string), show_expired (bool), since (datetime), until (datetime), with (string)",
+			"List posts for this User Returns Post.",
 			User_GET_postsSchema,
 		),
 		User_GET_postsHandler,
@@ -2944,7 +3184,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"User_GET_rich_media_documents",
-			"GET rich_media_documents for User. Returns Canvas. Parameters: query (string)",
+			"List rich_media_documents for this User Returns Canvas.",
 			User_GET_rich_media_documentsSchema,
 		),
 		User_GET_rich_media_documentsHandler,
@@ -2953,7 +3193,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"User_POST_staging_resources",
-			"POST staging_resources for User. Returns User. Parameters: file (file)",
+			"Create or update staging_resources for this User Returns User.",
 			User_POST_staging_resourcesSchema,
 		),
 		User_POST_staging_resourcesHandler,
@@ -2962,7 +3202,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"User_GET_videos",
-			"GET videos for User. Returns AdVideo. Parameters: type (uservideos_type_enum_param)",
+			"List videos for this User Returns AdVideo.",
 			User_GET_videosSchema,
 		),
 		User_GET_videosHandler,
@@ -2971,7 +3211,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"User_POST_videos",
-			"POST videos for User. Returns AdVideo. Parameters: application_id (string), asked_fun_fact_prompt_id (unsigned int), audio_story_wave_animation_handle (string), composer_entry_picker (string), composer_entry_point (string), composer_entry_time (unsigned int), composer_session_events_log (string), composer_session_id (string), composer_source_surface (string), composer_type (string), container_type (uservideos_container_type_enum_param), content_category (uservideos_content_category_enum_param), creative_tools (string), description (string), direct_share_status (unsigned int), embeddable (bool), end_offset (unsigned int), fbuploader_video_file_chunk (string), file_size (unsigned int), file_url (string), fisheye_video_cropped (bool), formatting (uservideos_formatting_enum_param), fov (unsigned int), front_z_rotation (float), fun_fact_prompt_id (string), fun_fact_toastee_id (unsigned int), guide (list<list<unsigned int>>), guide_enabled (bool), initial_heading (unsigned int), initial_pitch (unsigned int), instant_game_entry_point_data (string), is_boost_intended (bool), is_explicit_share (bool), is_group_linking_post (bool), is_partnership_ad (bool), is_voice_clip (bool), location_source_id (string), manual_privacy (bool), no_story (bool), og_action_type_id (string), og_icon_id (string), og_object_id (string), og_phrase (string), og_suggestion_mechanism (string), original_fov (unsigned int), original_projection_type (uservideos_original_projection_type_enum_param), partnership_ad_ad_code (string), privacy (string), publish_event_id (unsigned int), referenced_sticker_id (string), replace_video_id (string), slideshow_spec (map), source (string), source_instagram_media_id (string), spherical (bool), sponsor_id (string), start_offset (unsigned int), swap_mode (uservideos_swap_mode_enum_param), text_format_metadata (string), thumb (file), time_since_original_post (unsigned int), title (string), transcode_setting_properties (string), unpublished_content_type (uservideos_unpublished_content_type_enum_param), upload_phase (uservideos_upload_phase_enum_param), upload_session_id (string), upload_setting_properties (string), video_file_chunk (string), video_id_original (string), video_start_time_ms (unsigned int), waterfall_id (string)",
+			"Create or update videos for this User Returns AdVideo.",
 			User_POST_videosSchema,
 		),
 		User_POST_videosHandler,
@@ -2980,7 +3220,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"User_DELETE_",
-			"DELETE  for User. Returns Object",
+			"Delete a User",
 			User_DELETE_Schema,
 		),
 		User_DELETE_Handler,
@@ -2989,7 +3229,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"User_GET_",
-			"GET  for User. Returns User",
+			"Get details of a specific User Returns User.",
 			User_GET_Schema,
 		),
 		User_GET_Handler,
@@ -2998,7 +3238,7 @@ func RegisterUserTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"User_POST_",
-			"POST  for User. Returns User. Parameters: emoji_color_pref (unsigned int), firstname (string), lastname (string), local_news_megaphone_dismiss_status (user_local_news_megaphone_dismiss_status), local_news_subscription_status (user_local_news_subscription_status), name (string), password (string)",
+			"Update a User Returns User.",
 			User_POST_Schema,
 		),
 		User_POST_Handler,

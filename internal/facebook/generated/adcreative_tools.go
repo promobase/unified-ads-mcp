@@ -84,6 +84,12 @@ func AdCreative_GET_creative_insightsHandler(ctx context.Context, request mcp.Ca
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdCreative")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -133,6 +139,12 @@ func AdCreative_GET_previewsHandler(ctx context.Context, request mcp.CallToolReq
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdCreative")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -182,6 +194,12 @@ func AdCreative_DELETE_Handler(ctx context.Context, request mcp.CallToolRequest)
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdCreative")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -231,6 +249,12 @@ func AdCreative_GET_Handler(ctx context.Context, request mcp.CallToolRequest) (*
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdCreative")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -290,7 +314,7 @@ func RegisterAdCreativeTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdCreative_POST_adlabels",
-			"POST adlabels for AdCreative. Returns AdCreative. Parameters: adlabels (list<Object>) [required]",
+			"Associate adlabels with this AdCreative Returns AdCreative. Required: adlabels",
 			AdCreative_POST_adlabelsSchema,
 		),
 		AdCreative_POST_adlabelsHandler,
@@ -299,7 +323,7 @@ func RegisterAdCreativeTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdCreative_GET_creative_insights",
-			"GET creative_insights for AdCreative. Returns AdCreativeInsights",
+			"List creative_insights for this AdCreative Returns AdCreativeInsights.",
 			AdCreative_GET_creative_insightsSchema,
 		),
 		AdCreative_GET_creative_insightsHandler,
@@ -308,7 +332,7 @@ func RegisterAdCreativeTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdCreative_GET_previews",
-			"GET previews for AdCreative. Returns AdPreview. Parameters: ad_format (adcreativepreviews_ad_format_enum_param) [required], creative_feature (adcreativepreviews_creative_feature_enum_param), dynamic_asset_label (string), dynamic_creative_spec (Object), dynamic_customization (Object), end_date (datetime), height (unsigned int), locale (string), place_page_id (int), post (Object), product_item_ids (list<string>), render_type (adcreativepreviews_render_type_enum_param), start_date (datetime), width (unsigned int)",
+			"List previews for this AdCreative Returns AdPreview. Required: ad_format (enum)",
 			AdCreative_GET_previewsSchema,
 		),
 		AdCreative_GET_previewsHandler,
@@ -317,7 +341,7 @@ func RegisterAdCreativeTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdCreative_DELETE_",
-			"DELETE  for AdCreative. Returns Object. Parameters: account_id (string), adlabels (list<Object>), name (string), status (adcreative_status)",
+			"Delete a AdCreative",
 			AdCreative_DELETE_Schema,
 		),
 		AdCreative_DELETE_Handler,
@@ -326,7 +350,7 @@ func RegisterAdCreativeTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdCreative_GET_",
-			"GET  for AdCreative. Returns AdCreative. Parameters: thumbnail_height (unsigned int), thumbnail_width (unsigned int)",
+			"Get details of a specific AdCreative Returns AdCreative.",
 			AdCreative_GET_Schema,
 		),
 		AdCreative_GET_Handler,
@@ -335,7 +359,7 @@ func RegisterAdCreativeTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdCreative_POST_",
-			"POST  for AdCreative. Returns AdCreative. Parameters: account_id (string), adlabels (list<Object>), name (string), status (adcreative_status)",
+			"Update a AdCreative Returns AdCreative.",
 			AdCreative_POST_Schema,
 		),
 		AdCreative_POST_Handler,

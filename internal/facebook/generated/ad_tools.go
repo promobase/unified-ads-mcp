@@ -63,6 +63,12 @@ func Ad_GET_adcreativesHandler(ctx context.Context, request mcp.CallToolRequest)
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("Ad")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -132,6 +138,12 @@ func Ad_GET_adrules_governedHandler(ctx context.Context, request mcp.CallToolReq
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("Ad")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -181,6 +193,12 @@ func Ad_GET_copiesHandler(ctx context.Context, request mcp.CallToolRequest) (*mc
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("Ad")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -260,6 +278,12 @@ func Ad_GET_insightsHandler(ctx context.Context, request mcp.CallToolRequest) (*
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("Ad")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -334,6 +358,12 @@ func Ad_GET_leadsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("Ad")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -383,6 +413,12 @@ func Ad_GET_previewsHandler(ctx context.Context, request mcp.CallToolRequest) (*
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("Ad")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -432,6 +468,12 @@ func Ad_GET_targetingsentencelinesHandler(ctx context.Context, request mcp.CallT
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("Ad")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -481,6 +523,12 @@ func Ad_DELETE_Handler(ctx context.Context, request mcp.CallToolRequest) (*mcp.C
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("Ad")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -530,6 +578,12 @@ func Ad_GET_Handler(ctx context.Context, request mcp.CallToolRequest) (*mcp.Call
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("Ad")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -589,7 +643,7 @@ func RegisterAdTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"Ad_GET_adcreatives",
-			"GET adcreatives for Ad. Returns AdCreative",
+			"List adcreatives for this Ad Returns AdCreative.",
 			Ad_GET_adcreativesSchema,
 		),
 		Ad_GET_adcreativesHandler,
@@ -598,7 +652,7 @@ func RegisterAdTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"Ad_POST_adlabels",
-			"POST adlabels for Ad. Returns Ad. Parameters: adlabels (list<Object>) [required], execution_options (list<adgroupadlabels_execution_options_enum_param>)",
+			"Associate adlabels with this Ad Returns Ad. Required: adlabels",
 			Ad_POST_adlabelsSchema,
 		),
 		Ad_POST_adlabelsHandler,
@@ -607,7 +661,7 @@ func RegisterAdTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"Ad_GET_adrules_governed",
-			"GET adrules_governed for Ad. Returns AdRule. Parameters: pass_evaluation (bool)",
+			"Get adrules_governed data for this Ad Returns AdRule.",
 			Ad_GET_adrules_governedSchema,
 		),
 		Ad_GET_adrules_governedHandler,
@@ -616,7 +670,7 @@ func RegisterAdTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"Ad_GET_copies",
-			"GET copies for Ad. Returns Ad. Parameters: date_preset (adgroupcopies_date_preset_enum_param), effective_status (list<string>), time_range (map), updated_since (int)",
+			"List copies for this Ad Returns Ad.",
 			Ad_GET_copiesSchema,
 		),
 		Ad_GET_copiesHandler,
@@ -625,7 +679,7 @@ func RegisterAdTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"Ad_POST_copies",
-			"POST copies for Ad. Returns Ad. Parameters: adset_id (string), creative_parameters (AdCreative), rename_options (Object), status_option (adgroupcopies_status_option_enum_param)",
+			"Create a copy of this Ad Returns Ad.",
 			Ad_POST_copiesSchema,
 		),
 		Ad_POST_copiesHandler,
@@ -634,7 +688,7 @@ func RegisterAdTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"Ad_GET_insights",
-			"GET insights for Ad. Returns AdsInsights. Parameters: action_attribution_windows (list<adgroupinsights_action_attribution_windows_enum_param>), action_breakdowns (list<adgroupinsights_action_breakdowns_enum_param>), action_report_time (adgroupinsights_action_report_time_enum_param), breakdowns (list<adgroupinsights_breakdowns_enum_param>), date_preset (adgroupinsights_date_preset_enum_param), default_summary (bool), export_columns (list<string>), export_format (string), export_name (string), fields (list<string>), filtering (list<Object>), level (adgroupinsights_level_enum_param), limit (int), product_id_limit (int), sort (list<string>), summary (list<string>), summary_action_breakdowns (list<adgroupinsights_summary_action_breakdowns_enum_param>), time_increment (string), time_range (map), time_ranges (list<map>), use_account_attribution_setting (bool), use_unified_attribution_setting (bool)",
+			"List insights for this Ad Returns AdsInsights.",
 			Ad_GET_insightsSchema,
 		),
 		Ad_GET_insightsHandler,
@@ -643,7 +697,7 @@ func RegisterAdTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"Ad_POST_insights",
-			"POST insights for Ad. Returns AdReportRun. Parameters: action_attribution_windows (list<adgroupinsights_action_attribution_windows_enum_param>), action_breakdowns (list<adgroupinsights_action_breakdowns_enum_param>), action_report_time (adgroupinsights_action_report_time_enum_param), breakdowns (list<adgroupinsights_breakdowns_enum_param>), date_preset (adgroupinsights_date_preset_enum_param), default_summary (bool), export_columns (list<string>), export_format (string), export_name (string), fields (list<string>), filtering (list<Object>), level (adgroupinsights_level_enum_param), limit (int), product_id_limit (int), sort (list<string>), summary (list<string>), summary_action_breakdowns (list<adgroupinsights_summary_action_breakdowns_enum_param>), time_increment (string), time_range (map), time_ranges (list<map>), use_account_attribution_setting (bool), use_unified_attribution_setting (bool)",
+			"Generate an insights report for this Ad Returns AdReportRun.",
 			Ad_POST_insightsSchema,
 		),
 		Ad_POST_insightsHandler,
@@ -652,7 +706,7 @@ func RegisterAdTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"Ad_GET_leads",
-			"GET leads for Ad. Returns Lead",
+			"List leads for this Ad Returns Lead.",
 			Ad_GET_leadsSchema,
 		),
 		Ad_GET_leadsHandler,
@@ -661,7 +715,7 @@ func RegisterAdTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"Ad_GET_previews",
-			"GET previews for Ad. Returns AdPreview. Parameters: ad_format (adgrouppreviews_ad_format_enum_param) [required], creative_feature (adgrouppreviews_creative_feature_enum_param), dynamic_asset_label (string), dynamic_creative_spec (Object), dynamic_customization (Object), end_date (datetime), height (unsigned int), locale (string), place_page_id (int), post (Object), product_item_ids (list<string>), render_type (adgrouppreviews_render_type_enum_param), start_date (datetime), width (unsigned int)",
+			"List previews for this Ad Returns AdPreview. Required: ad_format (enum)",
 			Ad_GET_previewsSchema,
 		),
 		Ad_GET_previewsHandler,
@@ -670,7 +724,7 @@ func RegisterAdTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"Ad_GET_targetingsentencelines",
-			"GET targetingsentencelines for Ad. Returns TargetingSentenceLine",
+			"List targetingsentencelines for this Ad Returns TargetingSentenceLine.",
 			Ad_GET_targetingsentencelinesSchema,
 		),
 		Ad_GET_targetingsentencelinesHandler,
@@ -679,7 +733,7 @@ func RegisterAdTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"Ad_DELETE_",
-			"DELETE  for Ad. Returns Object",
+			"Delete a Ad",
 			Ad_DELETE_Schema,
 		),
 		Ad_DELETE_Handler,
@@ -688,7 +742,7 @@ func RegisterAdTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"Ad_GET_",
-			"GET  for Ad. Returns Ad. Parameters: am_call_tags (map), date_preset (adgroup_date_preset), from_adtable (bool), review_feedback_breakdown (bool), time_range (map)",
+			"Get details of a specific Ad Returns Ad.",
 			Ad_GET_Schema,
 		),
 		Ad_GET_Handler,
@@ -697,7 +751,7 @@ func RegisterAdTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"Ad_POST_",
-			"POST  for Ad. Returns Ad. Parameters: ad_schedule_end_time (datetime), ad_schedule_start_time (datetime), adlabels (list<Object>), adset_spec (AdSet), audience_id (string), bid_amount (int), conversion_domain (string), creative (AdCreative), creative_asset_groups_spec (Object), display_sequence (unsigned int), draft_adgroup_id (string), engagement_audience (bool), execution_options (list<adgroup_execution_options>), include_demolink_hashes (bool), name (string), priority (unsigned int), status (adgroup_status), tracking_specs (Object)",
+			"Update a Ad Returns Ad.",
 			Ad_POST_Schema,
 		),
 		Ad_POST_Handler,

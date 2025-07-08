@@ -51,6 +51,12 @@ func {{.HandlerName}}(ctx context.Context, request mcp.CallToolRequest) (*mcp.Ca
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("{{.ObjectName}}")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 	
 	// Add all other parameters to query

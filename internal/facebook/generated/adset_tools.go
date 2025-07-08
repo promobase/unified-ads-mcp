@@ -80,6 +80,12 @@ func AdSet_GET_activitiesHandler(ctx context.Context, request mcp.CallToolReques
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdSet")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -129,6 +135,12 @@ func AdSet_GET_ad_studiesHandler(ctx context.Context, request mcp.CallToolReques
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdSet")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -178,6 +190,12 @@ func AdSet_GET_adcreativesHandler(ctx context.Context, request mcp.CallToolReque
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdSet")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -227,6 +245,12 @@ func AdSet_DELETE_adlabelsHandler(ctx context.Context, request mcp.CallToolReque
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdSet")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -306,6 +330,12 @@ func AdSet_GET_adrules_governedHandler(ctx context.Context, request mcp.CallTool
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdSet")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -355,6 +385,12 @@ func AdSet_GET_adsHandler(ctx context.Context, request mcp.CallToolRequest) (*mc
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdSet")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -404,6 +440,12 @@ func AdSet_GET_asyncadrequestsHandler(ctx context.Context, request mcp.CallToolR
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdSet")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -483,6 +525,12 @@ func AdSet_GET_copiesHandler(ctx context.Context, request mcp.CallToolRequest) (
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdSet")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -562,6 +610,12 @@ func AdSet_GET_delivery_estimateHandler(ctx context.Context, request mcp.CallToo
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdSet")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -611,6 +665,12 @@ func AdSet_GET_insightsHandler(ctx context.Context, request mcp.CallToolRequest)
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdSet")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -685,6 +745,12 @@ func AdSet_GET_message_delivery_estimateHandler(ctx context.Context, request mcp
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdSet")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -734,6 +800,12 @@ func AdSet_GET_targetingsentencelinesHandler(ctx context.Context, request mcp.Ca
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdSet")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -783,6 +855,12 @@ func AdSet_DELETE_Handler(ctx context.Context, request mcp.CallToolRequest) (*mc
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdSet")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -832,6 +910,12 @@ func AdSet_GET_Handler(ctx context.Context, request mcp.CallToolRequest) (*mcp.C
 		}
 		query.Set("fields", strings.Join(fieldStrs, ","))
 		delete(params, "fields")
+	} else {
+		// Use default fields if none provided
+		defaultFields := GetDefaultFields("AdSet")
+		if len(defaultFields) > 0 {
+			query.Set("fields", strings.Join(defaultFields, ","))
+		}
 	}
 
 	// Add all other parameters to query
@@ -891,7 +975,7 @@ func RegisterAdSetTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdSet_GET_activities",
-			"GET activities for AdSet. Returns AdActivity. Parameters: after (string), business_id (string), category (adcampaignactivities_category_enum_param), limit (int), since (datetime), uid (int), until (datetime)",
+			"List activities for this AdSet Returns AdActivity.",
 			AdSet_GET_activitiesSchema,
 		),
 		AdSet_GET_activitiesHandler,
@@ -900,7 +984,7 @@ func RegisterAdSetTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdSet_GET_ad_studies",
-			"GET ad_studies for AdSet. Returns AdStudy",
+			"List ad_studies for this AdSet Returns AdStudy.",
 			AdSet_GET_ad_studiesSchema,
 		),
 		AdSet_GET_ad_studiesHandler,
@@ -909,7 +993,7 @@ func RegisterAdSetTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdSet_GET_adcreatives",
-			"GET adcreatives for AdSet. Returns AdCreative",
+			"List adcreatives for this AdSet Returns AdCreative.",
 			AdSet_GET_adcreativesSchema,
 		),
 		AdSet_GET_adcreativesHandler,
@@ -918,7 +1002,7 @@ func RegisterAdSetTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdSet_DELETE_adlabels",
-			"DELETE adlabels for AdSet. Returns Object. Parameters: adlabels (list<Object>) [required], execution_options (list<adcampaignadlabels_execution_options_enum_param>)",
+			"Remove adlabels from this AdSet Required: adlabels",
 			AdSet_DELETE_adlabelsSchema,
 		),
 		AdSet_DELETE_adlabelsHandler,
@@ -927,7 +1011,7 @@ func RegisterAdSetTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdSet_POST_adlabels",
-			"POST adlabels for AdSet. Returns AdSet. Parameters: adlabels (list<Object>) [required], execution_options (list<adcampaignadlabels_execution_options_enum_param>)",
+			"Associate adlabels with this AdSet Returns AdSet. Required: adlabels",
 			AdSet_POST_adlabelsSchema,
 		),
 		AdSet_POST_adlabelsHandler,
@@ -936,7 +1020,7 @@ func RegisterAdSetTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdSet_GET_adrules_governed",
-			"GET adrules_governed for AdSet. Returns AdRule. Parameters: pass_evaluation (bool)",
+			"Get adrules_governed data for this AdSet Returns AdRule.",
 			AdSet_GET_adrules_governedSchema,
 		),
 		AdSet_GET_adrules_governedHandler,
@@ -945,7 +1029,7 @@ func RegisterAdSetTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdSet_GET_ads",
-			"GET ads for AdSet. Returns Ad. Parameters: date_preset (adcampaignads_date_preset_enum_param), effective_status (list<string>), time_range (map), updated_since (int)",
+			"List ads for this AdSet Returns Ad.",
 			AdSet_GET_adsSchema,
 		),
 		AdSet_GET_adsHandler,
@@ -954,7 +1038,7 @@ func RegisterAdSetTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdSet_GET_asyncadrequests",
-			"GET asyncadrequests for AdSet. Returns AdAsyncRequest. Parameters: statuses (list<adcampaignasyncadrequests_statuses_enum_param>)",
+			"List asyncadrequests for this AdSet Returns AdAsyncRequest.",
 			AdSet_GET_asyncadrequestsSchema,
 		),
 		AdSet_GET_asyncadrequestsHandler,
@@ -963,7 +1047,7 @@ func RegisterAdSetTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdSet_POST_budget_schedules",
-			"POST budget_schedules for AdSet. Returns HighDemandPeriod. Parameters: budget_value (unsigned int) [required], budget_value_type (adcampaignbudget_schedules_budget_value_type_enum_param) [required], time_end (unsigned int) [required], time_start (unsigned int) [required]",
+			"Create or update budget_schedules for this AdSet Returns HighDemandPeriod. Required: budget_value, budget_value_type (enum), time_end, time_start",
 			AdSet_POST_budget_schedulesSchema,
 		),
 		AdSet_POST_budget_schedulesHandler,
@@ -972,7 +1056,7 @@ func RegisterAdSetTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdSet_GET_copies",
-			"GET copies for AdSet. Returns AdSet. Parameters: date_preset (adcampaigncopies_date_preset_enum_param), effective_status (list<adcampaigncopies_effective_status_enum_param>), is_completed (bool), time_range (map)",
+			"List copies for this AdSet Returns AdSet.",
 			AdSet_GET_copiesSchema,
 		),
 		AdSet_GET_copiesHandler,
@@ -981,7 +1065,7 @@ func RegisterAdSetTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdSet_POST_copies",
-			"POST copies for AdSet. Returns AdSet. Parameters: campaign_id (string), create_dco_adset (bool), deep_copy (bool), end_time (datetime), rename_options (Object), start_time (datetime), status_option (adcampaigncopies_status_option_enum_param)",
+			"Create a copy of this AdSet Returns AdSet.",
 			AdSet_POST_copiesSchema,
 		),
 		AdSet_POST_copiesHandler,
@@ -990,7 +1074,7 @@ func RegisterAdSetTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdSet_GET_delivery_estimate",
-			"GET delivery_estimate for AdSet. Returns AdCampaignDeliveryEstimate. Parameters: optimization_goal (adcampaigndelivery_estimate_optimization_goal_enum_param), promoted_object (Object), targeting_spec (Targeting)",
+			"Get delivery_estimate data for this AdSet Returns AdCampaignDeliveryEstimate.",
 			AdSet_GET_delivery_estimateSchema,
 		),
 		AdSet_GET_delivery_estimateHandler,
@@ -999,7 +1083,7 @@ func RegisterAdSetTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdSet_GET_insights",
-			"GET insights for AdSet. Returns AdsInsights. Parameters: action_attribution_windows (list<adcampaigninsights_action_attribution_windows_enum_param>), action_breakdowns (list<adcampaigninsights_action_breakdowns_enum_param>), action_report_time (adcampaigninsights_action_report_time_enum_param), breakdowns (list<adcampaigninsights_breakdowns_enum_param>), date_preset (adcampaigninsights_date_preset_enum_param), default_summary (bool), export_columns (list<string>), export_format (string), export_name (string), fields (list<string>), filtering (list<Object>), level (adcampaigninsights_level_enum_param), limit (int), product_id_limit (int), sort (list<string>), summary (list<string>), summary_action_breakdowns (list<adcampaigninsights_summary_action_breakdowns_enum_param>), time_increment (string), time_range (map), time_ranges (list<map>), use_account_attribution_setting (bool), use_unified_attribution_setting (bool)",
+			"List insights for this AdSet Returns AdsInsights.",
 			AdSet_GET_insightsSchema,
 		),
 		AdSet_GET_insightsHandler,
@@ -1008,7 +1092,7 @@ func RegisterAdSetTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdSet_POST_insights",
-			"POST insights for AdSet. Returns AdReportRun. Parameters: action_attribution_windows (list<adcampaigninsights_action_attribution_windows_enum_param>), action_breakdowns (list<adcampaigninsights_action_breakdowns_enum_param>), action_report_time (adcampaigninsights_action_report_time_enum_param), breakdowns (list<adcampaigninsights_breakdowns_enum_param>), date_preset (adcampaigninsights_date_preset_enum_param), default_summary (bool), export_columns (list<string>), export_format (string), export_name (string), fields (list<string>), filtering (list<Object>), level (adcampaigninsights_level_enum_param), limit (int), product_id_limit (int), sort (list<string>), summary (list<string>), summary_action_breakdowns (list<adcampaigninsights_summary_action_breakdowns_enum_param>), time_increment (string), time_range (map), time_ranges (list<map>), use_account_attribution_setting (bool), use_unified_attribution_setting (bool)",
+			"Generate an insights report for this AdSet Returns AdReportRun.",
 			AdSet_POST_insightsSchema,
 		),
 		AdSet_POST_insightsHandler,
@@ -1017,7 +1101,7 @@ func RegisterAdSetTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdSet_GET_message_delivery_estimate",
-			"GET message_delivery_estimate for AdSet. Returns MessageDeliveryEstimate. Parameters: bid_amount (unsigned int), daily_budget (unsigned int), is_direct_send_campaign (bool), lifetime_budget (unsigned int), lifetime_in_days (unsigned int), optimization_goal (adcampaignmessage_delivery_estimate_optimization_goal_enum_param), pacing_type (adcampaignmessage_delivery_estimate_pacing_type_enum_param), promoted_object (Object), targeting_spec (Targeting)",
+			"Get message_delivery_estimate data for this AdSet Returns MessageDeliveryEstimate.",
 			AdSet_GET_message_delivery_estimateSchema,
 		),
 		AdSet_GET_message_delivery_estimateHandler,
@@ -1026,7 +1110,7 @@ func RegisterAdSetTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdSet_GET_targetingsentencelines",
-			"GET targetingsentencelines for AdSet. Returns TargetingSentenceLine",
+			"List targetingsentencelines for this AdSet Returns TargetingSentenceLine.",
 			AdSet_GET_targetingsentencelinesSchema,
 		),
 		AdSet_GET_targetingsentencelinesHandler,
@@ -1035,7 +1119,7 @@ func RegisterAdSetTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdSet_DELETE_",
-			"DELETE  for AdSet. Returns Object",
+			"Delete a AdSet",
 			AdSet_DELETE_Schema,
 		),
 		AdSet_DELETE_Handler,
@@ -1044,7 +1128,7 @@ func RegisterAdSetTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdSet_GET_",
-			"GET  for AdSet. Returns AdSet. Parameters: am_call_tags (map), date_preset (adcampaign_date_preset), from_adtable (bool), time_range (map)",
+			"Get details of a specific AdSet Returns AdSet.",
 			AdSet_GET_Schema,
 		),
 		AdSet_GET_Handler,
@@ -1053,7 +1137,7 @@ func RegisterAdSetTools(s *server.MCPServer) error {
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
 			"AdSet_POST_",
-			"POST  for AdSet. Returns AdSet. Parameters: account_id (string), adlabels (list<Object>), adset_schedule (list<Object>), attribution_spec (list<map>), bid_adjustments (Object), bid_amount (int), bid_constraints (map<string, Object>), bid_strategy (adcampaign_bid_strategy), billing_event (adcampaign_billing_event), campaign_attribution (Object), campaign_spec (Object), creative_sequence (list<string>), creative_sequence_repetition_pattern (adcampaign_creative_sequence_repetition_pattern), daily_budget (unsigned int), daily_imps (unsigned int), daily_min_spend_target (unsigned int), daily_spend_cap (unsigned int), date_format (string), destination_type (adcampaign_destination_type), dsa_beneficiary (string), dsa_payor (string), end_time (datetime), execution_options (list<adcampaign_execution_options>), existing_customer_budget_percentage (unsigned int), full_funnel_exploration_mode (adcampaign_full_funnel_exploration_mode), is_ba_skip_delayed_eligible (bool), is_incremental_attribution_enabled (bool), is_sac_cfca_terms_certified (bool), lifetime_budget (unsigned int), lifetime_imps (unsigned int), lifetime_min_spend_target (unsigned int), lifetime_spend_cap (unsigned int), max_budget_spend_percentage (unsigned int), min_budget_spend_percentage (unsigned int), multi_optimization_goal_weight (adcampaign_multi_optimization_goal_weight), name (string), optimization_goal (adcampaign_optimization_goal), optimization_sub_event (adcampaign_optimization_sub_event), pacing_type (list<string>), promoted_object (Object), rb_prediction_id (string), regional_regulated_categories (list<adcampaign_regional_regulated_categories>), regional_regulation_identities (map), rf_prediction_id (string), start_time (datetime), status (adcampaign_status), targeting (Targeting), time_based_ad_rotation_id_blocks (list<list<unsigned int>>), time_based_ad_rotation_intervals (list<unsigned int>), time_start (datetime), time_stop (datetime), tune_for_category (adcampaign_tune_for_category)",
+			"Update a AdSet Returns AdSet.",
 			AdSet_POST_Schema,
 		),
 		AdSet_POST_Handler,
