@@ -156,9 +156,16 @@ This will regenerate all tools from the Facebook API specifications.
 
 ## Development
 
+### Versioning and Releases
+
+This project uses automatic versioning:
+
+- **Development builds**: Every commit to `main` creates a snapshot release with timestamp versioning
+- **Official releases**: Created by pushing version tags (e.g., `v1.0.0`)
+
 ### Creating Releases
 
-Releases are created manually using the release script:
+To create an official release:
 
 ```bash
 # Patch release (default) - v0.0.1 -> v0.0.2
@@ -171,13 +178,25 @@ Releases are created manually using the release script:
 ./scripts/release.sh --major
 ```
 
-This will:
-1. Increment the version
-2. Update the VERSION file
-3. Create a git tag
-4. Push the tag to trigger the release workflow
+This will create and push a git tag, triggering the release workflow.
 
-The GitHub Actions workflow will then automatically build binaries for all platforms and create a release.
+### Installing Development Snapshots
+
+To install the latest development snapshot:
+
+```bash
+curl -sSL https://raw.githubusercontent.com/promobase/unified-ads-mcp/main/install.sh | bash --snapshot
+```
+
+### Build Locally
+
+To build with proper version information:
+
+```bash
+make build
+```
+
+The version is dynamically calculated based on git tags and commit count.
 
 ## Future Plans
 

@@ -1,9 +1,14 @@
 name: publish
 
 on:
+  workflow_dispatch:
   push:
+    branches:
+      - main
     tags:
       - "v*"
+
+concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 permissions:
   contents: write
@@ -12,35 +17,37 @@ permissions:
 jobs:
   publish:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        include:
-          - os: ubuntu-latest
-            goos: linux
-            goarch: amd64
-            suffix: linux-amd64
-          - os: ubuntu-latest
-            goos: linux
-            goarch: arm64
-            suffix: linux-arm64
-          - os: ubuntu-latest
-            goos: darwin
-            goarch: amd64
-            suffix: darwin-amd64
-          - os: ubuntu-latest
-            goos: darwin
-            goarch: arm64
-            suffix: darwin-arm64
-
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
+      - run: git fetch --force --tags
+
       - uses: actions/setup-go@v5
         with:
           go-version: "1.24"
           cache: true
+
+      - name: Get version
+        id: version
+        run: |
+          if [[ "${{ github.ref }}" == "refs/tags/"* ]]; then
+            # For tags, use the exact tag
+            VERSION=${GITHUB_REF#refs/tags/}
+            echo "version=$VERSION" >> $GITHUB_OUTPUT
+            echo "version_short=${VERSION#v}" >> $GITHUB_OUTPUT
+            echo "is_release=true" >> $GITHUB_OUTPUT
+          else
+            # For commits, generate snapshot version
+            LATEST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0")
+            COMMITS=$(git rev-list --count ${LATEST_TAG}..HEAD)
+            TIMESTAMP=$(date -u +%Y%m%d%H%M%S)
+            VERSION="0.0.0-${TIMESTAMP}"
+            echo "version=v$VERSION" >> $GITHUB_OUTPUT
+            echo "version_short=$VERSION" >> $GITHUB_OUTPUT
+            echo "is_release=false" >> $GITHUB_OUTPUT
+          fi
 
       - name: Install dependencies
         run: make deps
@@ -48,62 +55,95 @@ jobs:
       - name: Run codegen
         run: make codegen
 
-      - name: Build binary
-        env:
-          GOOS: ${{ matrix.goos }}
-          GOARCH: ${{ matrix.goarch }}
-          CGO_ENABLED: 0
+      - name: Build binaries
         run: |
-          VERSION=${GITHUB_REF#refs/tags/}
-          go build -ldflags "-s -w -X main.version=$VERSION -X main.commit=$GITHUB_SHA -X main.date=$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
-            -o unified-ads-mcp-${{ matrix.suffix }} ./cmd/server
+          VERSION="${{ steps.version.outputs.version_short }}"
+          COMMIT=$(git rev-parse --short HEAD)
+          DATE=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+          
+          mkdir -p dist
+          
+          # Build for all platforms
+          for OS in linux darwin windows; do
+            for ARCH in amd64 arm64; do
+              # Skip windows arm64
+              if [[ "$OS" == "windows" && "$ARCH" == "arm64" ]]; then
+                continue
+              fi
+              
+              echo "Building for $OS-$ARCH..."
+              OUTPUT="unified-ads-mcp-$OS-$ARCH"
+              if [[ "$OS" == "windows" ]]; then
+                OUTPUT="${OUTPUT}.exe"
+              fi
+              
+              GOOS=$OS GOARCH=$ARCH CGO_ENABLED=0 go build \
+                -ldflags "-s -w -X main.version=$VERSION -X main.commit=$COMMIT -X main.date=$DATE" \
+                -o "dist/$OUTPUT" \
+                ./cmd/server
+            done
+          done
+
+      - name: Create archives
+        if: startsWith(github.ref, 'refs/tags/')
+        run: |
+          cd dist
+          for FILE in unified-ads-mcp-*; do
+            if [[ -f "$FILE" ]]; then
+              BASE="${FILE%.*}"
+              zip "${BASE}.zip" "$FILE"
+              rm "$FILE"
+            fi
+          done
+          
+          # Create checksums
+          sha256sum *.zip > checksums.txt
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: unified-ads-mcp-${{ matrix.suffix }}
-          path: unified-ads-mcp-${{ matrix.suffix }}
-
-  release:
-    needs: publish
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Download all artifacts
-        uses: actions/download-artifact@v4
-        with:
-          path: artifacts
-
-      - name: Create checksums
-        run: |
-          cd artifacts
-          find . -type f -name "unified-ads-mcp-*" -exec mv {} . \; 2>/dev/null || true
-          sha256sum unified-ads-mcp-* > checksums.txt
+          name: binaries-${{ github.sha }}
+          path: dist/
+          retention-days: 7
 
       - name: Create Release
+        if: startsWith(github.ref, 'refs/tags/')
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          VERSION=${GITHUB_REF#refs/tags/}
+          VERSION="${{ steps.version.outputs.version }}"
           
-          cat << 'EOF' > release_notes.md
-          ## Unified Ads MCP Server $VERSION
+          # Get previous release tag
+          PREVIOUS=$(gh release list --limit 10 | grep -v Pre-release | head -1 | awk '{print $3}' || echo "")
+          
+          # Generate release notes
+          if [[ -n "$PREVIOUS" ]]; then
+            COMMITS=$(git log --pretty=format:"- %s" ${PREVIOUS}..HEAD | grep -v -E "^- (ci:|chore:|docs:|test:|wip:|ignore:)" || echo "")
+          else
+            COMMITS=$(git log --pretty=format:"- %s" | head -20 | grep -v -E "^- (ci:|chore:|docs:|test:|wip:|ignore:)" || echo "")
+          fi
+          
+          cat << EOF > release_notes.md
+          ## Unified Ads MCP Server ${VERSION}
           
           MCP (Model Context Protocol) server for Facebook Business API.
           
+          ## What's Changed
+          
+          ${COMMITS:-No notable changes}
+          
           ## Quick Install
           
-          ```bash
+          \`\`\`bash
           curl -sSL https://raw.githubusercontent.com/${{ github.repository }}/main/install.sh | bash
-          ```
+          \`\`\`
           
           ## Manual Setup
           
           1. Download the binary for your platform below
-          2. Add to Claude Desktop config (`~/Library/Application Support/Claude/claude_desktop_config.json`):
+          2. Add to Claude Desktop config (\`~/Library/Application Support/Claude/claude_desktop_config.json\`):
           
-          ```json
+          \`\`\`json
           {
             "mcpServers": {
               "unified-ads": {
@@ -114,16 +154,48 @@ jobs:
               }
             }
           }
-          ```
+          \`\`\`
           
           Get your token at: https://developers.facebook.com/tools/explorer/
           EOF
           
-          # Replace $VERSION in release notes
-          sed -i "s/\$VERSION/$VERSION/g" release_notes.md
-          
           gh release create $VERSION \
             --title "Release $VERSION" \
             --notes-file release_notes.md \
-            artifacts/unified-ads-mcp-* \
-            artifacts/checksums.txt
+            dist/*.zip \
+            dist/checksums.txt
+
+      - name: Upload snapshot builds
+        if: "!startsWith(github.ref, 'refs/tags/')"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Create or update snapshot release
+          if gh release view snapshot 2>/dev/null; then
+            gh release delete snapshot --yes
+          fi
+          
+          cat << EOF > snapshot_notes.md
+          ## Development Snapshot
+          
+          This is an automatically generated snapshot from the latest commit on main branch.
+          
+          **Version**: ${{ steps.version.outputs.version_short }}
+          **Commit**: ${{ github.sha }}
+          **Date**: $(date -u +"%Y-%m-%d %H:%M:%S UTC")
+          
+          > ⚠️ **Warning**: This is a development build and may be unstable.
+          
+          ## Quick Install
+          
+          \`\`\`bash
+          curl -sSL https://raw.githubusercontent.com/${{ github.repository }}/main/install.sh | bash --snapshot
+          \`\`\`
+          EOF
+          
+          gh release create snapshot \
+            --title "Development Snapshot" \
+            --notes-file snapshot_notes.md \
+            --prerelease \
+            --target ${{ github.sha }} \
+            dist/*

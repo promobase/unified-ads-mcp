@@ -47,13 +47,18 @@ fi
 
 echo "New version: $new_version"
 
-# Update VERSION file
-echo "${new_version#v}" > VERSION
-
-# Commit the version update
-git add VERSION
-git commit -m "Release $new_version" || true
-
 # Create and push the tag
 git tag -a $new_version -m "Release $new_version"
-git push origin main --tags
+git push origin $new_version
+
+echo ""
+echo "✅ Tag $new_version created and pushed!"
+echo "🚀 GitHub Actions will now build and create the release."
+echo ""
+
+# Try to get GitHub repository from git remote
+GITHUB_REPO=$(git config --get remote.origin.url | sed -E 's/.*github.com[:/](.*)\.git/\1/' 2>/dev/null || echo "")
+if [ -n "$GITHUB_REPO" ]; then
+    echo "You can monitor the progress at:"
+    echo "https://github.com/$GITHUB_REPO/actions"
+fi

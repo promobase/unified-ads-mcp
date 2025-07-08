@@ -6,38 +6,61 @@ REPO="promobase/unified-ads-mcp"
 INSTALL_DIR="$HOME/.local/bin"
 BINARY_NAME="unified-ads-mcp"
 
+# Check for --snapshot flag
+SNAPSHOT=false
+if [[ "$*" == *"--snapshot"* ]]; then
+    SNAPSHOT=true
+fi
+
 # Detect OS and architecture
 OS=$(uname -s | tr '[:upper:]' '[:lower:]')
 ARCH=$(uname -m)
 
 case "$ARCH" in
-    x86_64) ARCH="x86_64" ;;
-    amd64) ARCH="x86_64" ;;
+    x86_64) ARCH="amd64" ;;
+    amd64) ARCH="amd64" ;;
     aarch64) ARCH="arm64" ;;
     arm64) ARCH="arm64" ;;
     *) echo "Unsupported architecture: $ARCH"; exit 1 ;;
 esac
 
-case "$OS" in
-    darwin) OS="macOS" ;;
-    linux) OS="Linux" ;;
-    *) echo "Unsupported OS: $OS"; exit 1 ;;
-esac
+# Determine release to download
+if [ "$SNAPSHOT" = true ]; then
+    echo "Installing development snapshot..."
+    RELEASE_TAG="snapshot"
+    RELEASE_URL="https://api.github.com/repos/$REPO/releases/tags/snapshot"
+else
+    echo "Fetching latest release..."
+    RELEASE_URL="https://api.github.com/repos/$REPO/releases/latest"
+fi
 
-# Get latest release
-echo "Fetching latest release..."
-LATEST_RELEASE=$(curl -s "https://api.github.com/repos/$REPO/releases/latest" | grep '"tag_name"' | sed -E 's/.*"([^"]+)".*/\1/')
+# Get release info
+RELEASE_INFO=$(curl -s "$RELEASE_URL")
+RELEASE_TAG=$(echo "$RELEASE_INFO" | grep '"tag_name"' | sed -E 's/.*"([^"]+)".*/\1/')
 
-if [ -z "$LATEST_RELEASE" ]; then
-    echo "Error: Could not fetch latest release"
+if [ -z "$RELEASE_TAG" ]; then
+    echo "Error: Could not fetch release information"
     exit 1
 fi
 
 # Download URL
-FILENAME="${BINARY_NAME}_${LATEST_RELEASE#v}_${OS}_${ARCH}.tar.gz"
-DOWNLOAD_URL="https://github.com/$REPO/releases/download/$LATEST_RELEASE/$FILENAME"
+FILENAME="${BINARY_NAME}-${OS}-${ARCH}"
+if [ "$OS" = "windows" ]; then
+    FILENAME="${FILENAME}.exe"
+fi
+FILENAME_ZIP="${FILENAME}.zip"
 
-echo "Downloading $BINARY_NAME $LATEST_RELEASE for $OS $ARCH..."
+# Get download URL from release assets
+DOWNLOAD_URL=$(echo "$RELEASE_INFO" | grep -o "\"browser_download_url\": \"[^\"]*${FILENAME_ZIP}\"" | sed 's/.*: "\(.*\)"/\1/')
+
+if [ -z "$DOWNLOAD_URL" ]; then
+    echo "Error: Could not find download URL for $FILENAME_ZIP"
+    echo "Available assets:"
+    echo "$RELEASE_INFO" | grep -o '"name": "[^"]*"' | sed 's/"name": "//g' | sed 's/"//g'
+    exit 1
+fi
+
+echo "Downloading $BINARY_NAME ($RELEASE_TAG) for $OS/$ARCH..."
 
 # Create install directory
 mkdir -p "$INSTALL_DIR"
@@ -46,14 +69,14 @@ mkdir -p "$INSTALL_DIR"
 TMP_DIR=$(mktemp -d)
 cd "$TMP_DIR"
 
-if ! curl -sL "$DOWNLOAD_URL" -o "$FILENAME"; then
+if ! curl -sL "$DOWNLOAD_URL" -o "$FILENAME_ZIP"; then
     echo "Error: Failed to download $DOWNLOAD_URL"
     exit 1
 fi
 
-tar -xzf "$FILENAME"
-chmod +x "$BINARY_NAME"
-mv "$BINARY_NAME" "$INSTALL_DIR/"
+unzip -q "$FILENAME_ZIP"
+chmod +x "$FILENAME"
+mv "$FILENAME" "$INSTALL_DIR/$BINARY_NAME"
 
 cd - > /dev/null
 rm -rf "$TMP_DIR"
