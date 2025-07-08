@@ -13,8 +13,8 @@ import (
 
 // create_ad_creative_adlabelArgs defines the typed arguments for create_ad_creative_adlabel
 type create_ad_creative_adlabelArgs struct {
-	ID       string                   `json:"id"`
-	Adlabels []map[string]interface{} `json:"adlabels"`
+	ID       string     `json:"id"`
+	Adlabels []*AdLabel `json:"adlabels"`
 }
 
 // list_ad_creative_creative_insightsArgs defines the typed arguments for list_ad_creative_creative_insights
@@ -38,24 +38,24 @@ type list_ad_creative_previewsArgs struct {
 	DynamicAssetLabel    string                 `json:"dynamic_asset_label,omitempty"`
 	DynamicCreativeSpec  map[string]interface{} `json:"dynamic_creative_spec,omitempty"`
 	DynamicCustomization map[string]interface{} `json:"dynamic_customization,omitempty"`
-	EndDate              interface{}            `json:"end_date,omitempty"`
+	EndDate              string                 `json:"end_date,omitempty"`
 	Height               int                    `json:"height,omitempty"`
 	Locale               string                 `json:"locale,omitempty"`
 	PlacePageId          int                    `json:"place_page_id,omitempty"`
 	Post                 map[string]interface{} `json:"post,omitempty"`
 	ProductItemIds       []string               `json:"product_item_ids,omitempty"`
 	RenderType           string                 `json:"render_type,omitempty"`
-	StartDate            interface{}            `json:"start_date,omitempty"`
+	StartDate            string                 `json:"start_date,omitempty"`
 	Width                int                    `json:"width,omitempty"`
 }
 
 // delete_ad_creativeArgs defines the typed arguments for delete_ad_creative
 type delete_ad_creativeArgs struct {
-	ID        string                   `json:"id"`
-	AccountId string                   `json:"account_id,omitempty"`
-	Adlabels  []map[string]interface{} `json:"adlabels,omitempty"`
-	Name      string                   `json:"name,omitempty"`
-	Status    string                   `json:"status,omitempty"`
+	ID        string     `json:"id"`
+	AccountId string     `json:"account_id,omitempty"`
+	Adlabels  []*AdLabel `json:"adlabels,omitempty"`
+	Name      string     `json:"name,omitempty"`
+	Status    string     `json:"status,omitempty"`
 }
 
 // get_ad_creativeArgs defines the typed arguments for get_ad_creative
@@ -71,11 +71,11 @@ type get_ad_creativeArgs struct {
 
 // update_ad_creativeArgs defines the typed arguments for update_ad_creative
 type update_ad_creativeArgs struct {
-	ID        string                   `json:"id"`
-	AccountId string                   `json:"account_id,omitempty"`
-	Adlabels  []map[string]interface{} `json:"adlabels,omitempty"`
-	Name      string                   `json:"name,omitempty"`
-	Status    string                   `json:"status,omitempty"`
+	ID        string     `json:"id"`
+	AccountId string     `json:"account_id,omitempty"`
+	Adlabels  []*AdLabel `json:"adlabels,omitempty"`
+	Name      string     `json:"name,omitempty"`
+	Status    string     `json:"status,omitempty"`
 }
 
 // CreateAdCreativeAdlabelHandler handles create_ad_creative_adlabel with typed arguments
@@ -209,6 +209,10 @@ func ListAdCreativePreviewsHandler(ctx context.Context, request mcp.CallToolRequ
 		query.Set(k, fmt.Sprintf("%v", v))
 	}
 
+	if args.EndDate != "" {
+		query.Set("end_date", args.EndDate)
+	}
+
 	if args.Height > 0 {
 		query.Set("height", fmt.Sprintf("%d", args.Height))
 	}
@@ -232,6 +236,10 @@ func ListAdCreativePreviewsHandler(ctx context.Context, request mcp.CallToolRequ
 
 	if args.RenderType != "" {
 		query.Set("render_type", args.RenderType)
+	}
+
+	if args.StartDate != "" {
+		query.Set("start_date", args.StartDate)
 	}
 
 	if args.Width > 0 {

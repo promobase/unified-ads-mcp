@@ -13,16 +13,16 @@ import (
 
 // list_ad_set_activitiesArgs defines the typed arguments for list_ad_set_activities
 type list_ad_set_activitiesArgs struct {
-	ID         string      `json:"id"`
-	Fields     []string    `json:"fields,omitempty"`
-	Limit      int         `json:"limit,omitempty"`
-	After      string      `json:"after,omitempty"`
-	Before     string      `json:"before,omitempty"`
-	BusinessId string      `json:"business_id,omitempty"`
-	Category   string      `json:"category,omitempty"`
-	Since      interface{} `json:"since,omitempty"`
-	Uid        int         `json:"uid,omitempty"`
-	Until      interface{} `json:"until,omitempty"`
+	ID         string   `json:"id"`
+	Fields     []string `json:"fields,omitempty"`
+	Limit      int      `json:"limit,omitempty"`
+	After      string   `json:"after,omitempty"`
+	Before     string   `json:"before,omitempty"`
+	BusinessId string   `json:"business_id,omitempty"`
+	Category   string   `json:"category,omitempty"`
+	Since      string   `json:"since,omitempty"`
+	Uid        int      `json:"uid,omitempty"`
+	Until      string   `json:"until,omitempty"`
 }
 
 // list_ad_set_ad_studiesArgs defines the typed arguments for list_ad_set_ad_studies
@@ -45,16 +45,16 @@ type list_ad_set_adcreativesArgs struct {
 
 // remove_adlabels_from_ad_setArgs defines the typed arguments for remove_adlabels_from_ad_set
 type remove_adlabels_from_ad_setArgs struct {
-	ID               string                   `json:"id"`
-	Adlabels         []map[string]interface{} `json:"adlabels"`
-	ExecutionOptions []interface{}            `json:"execution_options,omitempty"`
+	ID               string     `json:"id"`
+	Adlabels         []*AdLabel `json:"adlabels"`
+	ExecutionOptions []string   `json:"execution_options,omitempty"`
 }
 
 // create_ad_set_adlabelArgs defines the typed arguments for create_ad_set_adlabel
 type create_ad_set_adlabelArgs struct {
-	ID               string                   `json:"id"`
-	Adlabels         []map[string]interface{} `json:"adlabels"`
-	ExecutionOptions []interface{}            `json:"execution_options,omitempty"`
+	ID               string     `json:"id"`
+	Adlabels         []*AdLabel `json:"adlabels"`
+	ExecutionOptions []string   `json:"execution_options,omitempty"`
 }
 
 // get_ad_set_adrules_governedArgs defines the typed arguments for get_ad_set_adrules_governed
@@ -82,12 +82,12 @@ type list_ad_set_adsArgs struct {
 
 // list_ad_set_asyncadrequestsArgs defines the typed arguments for list_ad_set_asyncadrequests
 type list_ad_set_asyncadrequestsArgs struct {
-	ID       string        `json:"id"`
-	Fields   []string      `json:"fields,omitempty"`
-	Limit    int           `json:"limit,omitempty"`
-	After    string        `json:"after,omitempty"`
-	Before   string        `json:"before,omitempty"`
-	Statuses []interface{} `json:"statuses,omitempty"`
+	ID       string   `json:"id"`
+	Fields   []string `json:"fields,omitempty"`
+	Limit    int      `json:"limit,omitempty"`
+	After    string   `json:"after,omitempty"`
+	Before   string   `json:"before,omitempty"`
+	Statuses []string `json:"statuses,omitempty"`
 }
 
 // create_ad_set_budget_scheduleArgs defines the typed arguments for create_ad_set_budget_schedule
@@ -107,7 +107,7 @@ type list_ad_set_copiesArgs struct {
 	After           string                 `json:"after,omitempty"`
 	Before          string                 `json:"before,omitempty"`
 	DatePreset      string                 `json:"date_preset,omitempty"`
-	EffectiveStatus []interface{}          `json:"effective_status,omitempty"`
+	EffectiveStatus []string               `json:"effective_status,omitempty"`
 	IsCompleted     bool                   `json:"is_completed,omitempty"`
 	TimeRange       map[string]interface{} `json:"time_range,omitempty"`
 }
@@ -118,22 +118,22 @@ type create_ad_set_copieArgs struct {
 	CampaignId     string                 `json:"campaign_id,omitempty"`
 	CreateDcoAdset bool                   `json:"create_dco_adset,omitempty"`
 	DeepCopy       bool                   `json:"deep_copy,omitempty"`
-	EndTime        interface{}            `json:"end_time,omitempty"`
+	EndTime        string                 `json:"end_time,omitempty"`
 	RenameOptions  map[string]interface{} `json:"rename_options,omitempty"`
-	StartTime      interface{}            `json:"start_time,omitempty"`
+	StartTime      string                 `json:"start_time,omitempty"`
 	StatusOption   string                 `json:"status_option,omitempty"`
 }
 
 // get_ad_set_delivery_estimateArgs defines the typed arguments for get_ad_set_delivery_estimate
 type get_ad_set_delivery_estimateArgs struct {
-	ID               string                 `json:"id"`
-	Fields           []string               `json:"fields,omitempty"`
-	Limit            int                    `json:"limit,omitempty"`
-	After            string                 `json:"after,omitempty"`
-	Before           string                 `json:"before,omitempty"`
-	OptimizationGoal string                 `json:"optimization_goal,omitempty"`
-	PromotedObject   map[string]interface{} `json:"promoted_object,omitempty"`
-	TargetingSpec    interface{}            `json:"targeting_spec,omitempty"`
+	ID               string            `json:"id"`
+	Fields           []string          `json:"fields,omitempty"`
+	Limit            int               `json:"limit,omitempty"`
+	After            string            `json:"after,omitempty"`
+	Before           string            `json:"before,omitempty"`
+	OptimizationGoal string            `json:"optimization_goal,omitempty"`
+	PromotedObject   *AdPromotedObject `json:"promoted_object,omitempty"`
+	TargetingSpec    *Targeting        `json:"targeting_spec,omitempty"`
 }
 
 // get_ad_set_insightsArgs defines the typed arguments for get_ad_set_insights
@@ -143,10 +143,10 @@ type get_ad_set_insightsArgs struct {
 	Limit                        int                      `json:"limit,omitempty"`
 	After                        string                   `json:"after,omitempty"`
 	Before                       string                   `json:"before,omitempty"`
-	ActionAttributionWindows     []interface{}            `json:"action_attribution_windows,omitempty"`
-	ActionBreakdowns             []interface{}            `json:"action_breakdowns,omitempty"`
+	ActionAttributionWindows     []string                 `json:"action_attribution_windows,omitempty"`
+	ActionBreakdowns             []string                 `json:"action_breakdowns,omitempty"`
 	ActionReportTime             string                   `json:"action_report_time,omitempty"`
-	Breakdowns                   []interface{}            `json:"breakdowns,omitempty"`
+	Breakdowns                   []string                 `json:"breakdowns,omitempty"`
 	DatePreset                   string                   `json:"date_preset,omitempty"`
 	DefaultSummary               bool                     `json:"default_summary,omitempty"`
 	ExportColumns                []string                 `json:"export_columns,omitempty"`
@@ -157,7 +157,7 @@ type get_ad_set_insightsArgs struct {
 	ProductIdLimit               int                      `json:"product_id_limit,omitempty"`
 	Sort                         []string                 `json:"sort,omitempty"`
 	Summary                      []string                 `json:"summary,omitempty"`
-	SummaryActionBreakdowns      []interface{}            `json:"summary_action_breakdowns,omitempty"`
+	SummaryActionBreakdowns      []string                 `json:"summary_action_breakdowns,omitempty"`
 	TimeIncrement                string                   `json:"time_increment,omitempty"`
 	TimeRange                    map[string]interface{}   `json:"time_range,omitempty"`
 	TimeRanges                   []map[string]interface{} `json:"time_ranges,omitempty"`
@@ -168,10 +168,10 @@ type get_ad_set_insightsArgs struct {
 // create_ad_set_insights_reportArgs defines the typed arguments for create_ad_set_insights_report
 type create_ad_set_insights_reportArgs struct {
 	ID                           string                   `json:"id"`
-	ActionAttributionWindows     []interface{}            `json:"action_attribution_windows,omitempty"`
-	ActionBreakdowns             []interface{}            `json:"action_breakdowns,omitempty"`
+	ActionAttributionWindows     []string                 `json:"action_attribution_windows,omitempty"`
+	ActionBreakdowns             []string                 `json:"action_breakdowns,omitempty"`
 	ActionReportTime             string                   `json:"action_report_time,omitempty"`
-	Breakdowns                   []interface{}            `json:"breakdowns,omitempty"`
+	Breakdowns                   []string                 `json:"breakdowns,omitempty"`
 	DatePreset                   string                   `json:"date_preset,omitempty"`
 	DefaultSummary               bool                     `json:"default_summary,omitempty"`
 	ExportColumns                []string                 `json:"export_columns,omitempty"`
@@ -184,7 +184,7 @@ type create_ad_set_insights_reportArgs struct {
 	ProductIdLimit               int                      `json:"product_id_limit,omitempty"`
 	Sort                         []string                 `json:"sort,omitempty"`
 	Summary                      []string                 `json:"summary,omitempty"`
-	SummaryActionBreakdowns      []interface{}            `json:"summary_action_breakdowns,omitempty"`
+	SummaryActionBreakdowns      []string                 `json:"summary_action_breakdowns,omitempty"`
 	TimeIncrement                string                   `json:"time_increment,omitempty"`
 	TimeRange                    map[string]interface{}   `json:"time_range,omitempty"`
 	TimeRanges                   []map[string]interface{} `json:"time_ranges,omitempty"`
@@ -194,19 +194,19 @@ type create_ad_set_insights_reportArgs struct {
 
 // get_ad_set_message_delivery_estimateArgs defines the typed arguments for get_ad_set_message_delivery_estimate
 type get_ad_set_message_delivery_estimateArgs struct {
-	Fields               []string               `json:"fields,omitempty"`
-	Limit                int                    `json:"limit,omitempty"`
-	After                string                 `json:"after,omitempty"`
-	Before               string                 `json:"before,omitempty"`
-	BidAmount            int                    `json:"bid_amount,omitempty"`
-	DailyBudget          int                    `json:"daily_budget,omitempty"`
-	IsDirectSendCampaign bool                   `json:"is_direct_send_campaign,omitempty"`
-	LifetimeBudget       int                    `json:"lifetime_budget,omitempty"`
-	LifetimeInDays       int                    `json:"lifetime_in_days,omitempty"`
-	OptimizationGoal     string                 `json:"optimization_goal,omitempty"`
-	PacingType           string                 `json:"pacing_type,omitempty"`
-	PromotedObject       map[string]interface{} `json:"promoted_object,omitempty"`
-	TargetingSpec        interface{}            `json:"targeting_spec,omitempty"`
+	Fields               []string          `json:"fields,omitempty"`
+	Limit                int               `json:"limit,omitempty"`
+	After                string            `json:"after,omitempty"`
+	Before               string            `json:"before,omitempty"`
+	BidAmount            int               `json:"bid_amount,omitempty"`
+	DailyBudget          int               `json:"daily_budget,omitempty"`
+	IsDirectSendCampaign bool              `json:"is_direct_send_campaign,omitempty"`
+	LifetimeBudget       int               `json:"lifetime_budget,omitempty"`
+	LifetimeInDays       int               `json:"lifetime_in_days,omitempty"`
+	OptimizationGoal     string            `json:"optimization_goal,omitempty"`
+	PacingType           string            `json:"pacing_type,omitempty"`
+	PromotedObject       *AdPromotedObject `json:"promoted_object,omitempty"`
+	TargetingSpec        *Targeting        `json:"targeting_spec,omitempty"`
 }
 
 // list_ad_set_targetingsentencelinesArgs defines the typed arguments for list_ad_set_targetingsentencelines
@@ -240,7 +240,7 @@ type get_ad_setArgs struct {
 type update_ad_setArgs struct {
 	ID                                string                   `json:"id"`
 	AccountId                         string                   `json:"account_id,omitempty"`
-	Adlabels                          []map[string]interface{} `json:"adlabels,omitempty"`
+	Adlabels                          []*AdLabel               `json:"adlabels,omitempty"`
 	AdsetSchedule                     []map[string]interface{} `json:"adset_schedule,omitempty"`
 	AttributionSpec                   []map[string]interface{} `json:"attribution_spec,omitempty"`
 	BidAdjustments                    map[string]interface{}   `json:"bid_adjustments,omitempty"`
@@ -260,8 +260,8 @@ type update_ad_setArgs struct {
 	DestinationType                   string                   `json:"destination_type,omitempty"`
 	DsaBeneficiary                    string                   `json:"dsa_beneficiary,omitempty"`
 	DsaPayor                          string                   `json:"dsa_payor,omitempty"`
-	EndTime                           interface{}              `json:"end_time,omitempty"`
-	ExecutionOptions                  []interface{}            `json:"execution_options,omitempty"`
+	EndTime                           string                   `json:"end_time,omitempty"`
+	ExecutionOptions                  []string                 `json:"execution_options,omitempty"`
 	ExistingCustomerBudgetPercentage  int                      `json:"existing_customer_budget_percentage,omitempty"`
 	FullFunnelExplorationMode         string                   `json:"full_funnel_exploration_mode,omitempty"`
 	IsBaSkipDelayedEligible           bool                     `json:"is_ba_skip_delayed_eligible,omitempty"`
@@ -278,18 +278,18 @@ type update_ad_setArgs struct {
 	OptimizationGoal                  string                   `json:"optimization_goal,omitempty"`
 	OptimizationSubEvent              string                   `json:"optimization_sub_event,omitempty"`
 	PacingType                        []string                 `json:"pacing_type,omitempty"`
-	PromotedObject                    map[string]interface{}   `json:"promoted_object,omitempty"`
+	PromotedObject                    *AdPromotedObject        `json:"promoted_object,omitempty"`
 	RbPredictionId                    string                   `json:"rb_prediction_id,omitempty"`
-	RegionalRegulatedCategories       []interface{}            `json:"regional_regulated_categories,omitempty"`
+	RegionalRegulatedCategories       []string                 `json:"regional_regulated_categories,omitempty"`
 	RegionalRegulationIdentities      map[string]interface{}   `json:"regional_regulation_identities,omitempty"`
 	RfPredictionId                    string                   `json:"rf_prediction_id,omitempty"`
-	StartTime                         interface{}              `json:"start_time,omitempty"`
+	StartTime                         string                   `json:"start_time,omitempty"`
 	Status                            string                   `json:"status,omitempty"`
-	Targeting                         interface{}              `json:"targeting,omitempty"`
+	Targeting                         *Targeting               `json:"targeting,omitempty"`
 	TimeBasedAdRotationIdBlocks       []interface{}            `json:"time_based_ad_rotation_id_blocks,omitempty"`
 	TimeBasedAdRotationIntervals      []interface{}            `json:"time_based_ad_rotation_intervals,omitempty"`
-	TimeStart                         interface{}              `json:"time_start,omitempty"`
-	TimeStop                          interface{}              `json:"time_stop,omitempty"`
+	TimeStart                         string                   `json:"time_start,omitempty"`
+	TimeStop                          string                   `json:"time_stop,omitempty"`
 	TuneForCategory                   string                   `json:"tune_for_category,omitempty"`
 }
 
@@ -340,8 +340,16 @@ func ListAdSetActivitiesHandler(ctx context.Context, request mcp.CallToolRequest
 		query.Set("category", args.Category)
 	}
 
+	if args.Since != "" {
+		query.Set("since", args.Since)
+	}
+
 	if args.Uid > 0 {
 		query.Set("uid", fmt.Sprintf("%d", args.Uid))
+	}
+
+	if args.Until != "" {
+		query.Set("until", args.Until)
 	}
 
 	// Build URL and execute
@@ -474,6 +482,10 @@ func CreateAdSetAdlabelHandler(ctx context.Context, request mcp.CallToolRequest,
 
 	if len(args.Adlabels) > 0 {
 		body["adlabels"] = args.Adlabels
+	}
+
+	if len(args.ExecutionOptions) > 0 {
+		body["execution_options"] = args.ExecutionOptions
 	}
 
 	// Build URL and execute
@@ -637,6 +649,10 @@ func ListAdSetAsyncadrequestsHandler(ctx context.Context, request mcp.CallToolRe
 		query.Set("before", args.Before)
 	}
 
+	if len(args.Statuses) > 0 {
+		query.Set("statuses", strings.Join(args.Statuses, ","))
+	}
+
 	// Build URL and execute
 	baseURL := buildGraphURL(args.ID, "asyncadrequests")
 	fullURL := BuildURLWithQuery(baseURL, query)
@@ -723,6 +739,10 @@ func ListAdSetCopiesHandler(ctx context.Context, request mcp.CallToolRequest, ar
 		query.Set("date_preset", args.DatePreset)
 	}
 
+	if len(args.EffectiveStatus) > 0 {
+		query.Set("effective_status", strings.Join(args.EffectiveStatus, ","))
+	}
+
 	if args.IsCompleted {
 		query.Set("is_completed", "true")
 	}
@@ -760,8 +780,16 @@ func CreateAdSetCopieHandler(ctx context.Context, request mcp.CallToolRequest, a
 
 	body["deep_copy"] = args.DeepCopy
 
+	if args.EndTime != "" {
+		body["end_time"] = args.EndTime
+	}
+
 	if args.RenameOptions != nil {
 		body["rename_options"] = args.RenameOptions
+	}
+
+	if args.StartTime != "" {
+		body["start_time"] = args.StartTime
 	}
 
 	if args.StatusOption != "" {
@@ -818,11 +846,6 @@ func GetAdSetDeliveryEstimateHandler(ctx context.Context, request mcp.CallToolRe
 		query.Set("optimization_goal", args.OptimizationGoal)
 	}
 
-	// Handle PromotedObject map parameter
-	for k, v := range args.PromotedObject {
-		query.Set(k, fmt.Sprintf("%v", v))
-	}
-
 	// Build URL and execute
 	baseURL := buildGraphURL(args.ID, "delivery_estimate")
 	fullURL := BuildURLWithQuery(baseURL, query)
@@ -870,8 +893,20 @@ func GetAdSetInsightsHandler(ctx context.Context, request mcp.CallToolRequest, a
 		query.Set("before", args.Before)
 	}
 
+	if len(args.ActionAttributionWindows) > 0 {
+		query.Set("action_attribution_windows", strings.Join(args.ActionAttributionWindows, ","))
+	}
+
+	if len(args.ActionBreakdowns) > 0 {
+		query.Set("action_breakdowns", strings.Join(args.ActionBreakdowns, ","))
+	}
+
 	if args.ActionReportTime != "" {
 		query.Set("action_report_time", args.ActionReportTime)
+	}
+
+	if len(args.Breakdowns) > 0 {
+		query.Set("breakdowns", strings.Join(args.Breakdowns, ","))
 	}
 
 	if args.DatePreset != "" {
@@ -908,6 +943,10 @@ func GetAdSetInsightsHandler(ctx context.Context, request mcp.CallToolRequest, a
 
 	if len(args.Summary) > 0 {
 		query.Set("summary", strings.Join(args.Summary, ","))
+	}
+
+	if len(args.SummaryActionBreakdowns) > 0 {
+		query.Set("summary_action_breakdowns", strings.Join(args.SummaryActionBreakdowns, ","))
 	}
 
 	if args.TimeIncrement != "" {
@@ -947,8 +986,20 @@ func CreateAdSetInsightsReportHandler(ctx context.Context, request mcp.CallToolR
 
 	// Add parameters to body
 
+	if len(args.ActionAttributionWindows) > 0 {
+		body["action_attribution_windows"] = args.ActionAttributionWindows
+	}
+
+	if len(args.ActionBreakdowns) > 0 {
+		body["action_breakdowns"] = args.ActionBreakdowns
+	}
+
 	if args.ActionReportTime != "" {
 		body["action_report_time"] = args.ActionReportTime
+	}
+
+	if len(args.Breakdowns) > 0 {
+		body["breakdowns"] = args.Breakdowns
 	}
 
 	if args.DatePreset != "" {
@@ -995,6 +1046,10 @@ func CreateAdSetInsightsReportHandler(ctx context.Context, request mcp.CallToolR
 
 	if len(args.Summary) > 0 {
 		body["summary"] = args.Summary
+	}
+
+	if len(args.SummaryActionBreakdowns) > 0 {
+		body["summary_action_breakdowns"] = args.SummaryActionBreakdowns
 	}
 
 	if args.TimeIncrement != "" {
@@ -1081,11 +1136,6 @@ func GetAdSetMessageDeliveryEstimateHandler(ctx context.Context, request mcp.Cal
 
 	if args.PacingType != "" {
 		query.Set("pacing_type", args.PacingType)
-	}
-
-	// Handle PromotedObject map parameter
-	for k, v := range args.PromotedObject {
-		query.Set(k, fmt.Sprintf("%v", v))
 	}
 
 	// Build URL and execute
@@ -1318,6 +1368,14 @@ func UpdateAdSetHandler(ctx context.Context, request mcp.CallToolRequest, args u
 		body["dsa_payor"] = args.DsaPayor
 	}
 
+	if args.EndTime != "" {
+		body["end_time"] = args.EndTime
+	}
+
+	if len(args.ExecutionOptions) > 0 {
+		body["execution_options"] = args.ExecutionOptions
+	}
+
 	if args.ExistingCustomerBudgetPercentage > 0 {
 		body["existing_customer_budget_percentage"] = args.ExistingCustomerBudgetPercentage
 	}
@@ -1384,6 +1442,10 @@ func UpdateAdSetHandler(ctx context.Context, request mcp.CallToolRequest, args u
 		body["rb_prediction_id"] = args.RbPredictionId
 	}
 
+	if len(args.RegionalRegulatedCategories) > 0 {
+		body["regional_regulated_categories"] = args.RegionalRegulatedCategories
+	}
+
 	if args.RegionalRegulationIdentities != nil {
 		body["regional_regulation_identities"] = args.RegionalRegulationIdentities
 	}
@@ -1392,8 +1454,32 @@ func UpdateAdSetHandler(ctx context.Context, request mcp.CallToolRequest, args u
 		body["rf_prediction_id"] = args.RfPredictionId
 	}
 
+	if args.StartTime != "" {
+		body["start_time"] = args.StartTime
+	}
+
 	if args.Status != "" {
 		body["status"] = args.Status
+	}
+
+	if args.Targeting != nil {
+		body["targeting"] = args.Targeting
+	}
+
+	if args.TimeBasedAdRotationIdBlocks != nil {
+		body["time_based_ad_rotation_id_blocks"] = args.TimeBasedAdRotationIdBlocks
+	}
+
+	if args.TimeBasedAdRotationIntervals != nil {
+		body["time_based_ad_rotation_intervals"] = args.TimeBasedAdRotationIntervals
+	}
+
+	if args.TimeStart != "" {
+		body["time_start"] = args.TimeStart
+	}
+
+	if args.TimeStop != "" {
+		body["time_stop"] = args.TimeStop
 	}
 
 	if args.TuneForCategory != "" {

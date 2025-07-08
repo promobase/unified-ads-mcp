@@ -439,10 +439,10 @@ func TestCreateAdSetAdlabelHandler_Success(t *testing.T) {
 	// Create typed args
 	args := create_ad_set_adlabelArgs{
 		ID: "123456789",
-		Adlabels: []map[string]interface{}{
+		Adlabels: []*AdLabel{
 			{
-				"name": "Test Label",
-				"id":   "label_123",
+				Name: "Test Label",
+				ID:   "label_123",
 			},
 		},
 	}

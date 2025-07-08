@@ -31,9 +31,12 @@ type ToolSpec struct {
 }
 
 type ToolGenerator struct {
-	specs      map[string]*ToolSpec // Object name -> spec
-	enumTypes  map[string]bool
-	outputPath string
+	specs         map[string]*ToolSpec // Object name -> spec
+	enumTypes     map[string]bool      // Track which types are enums
+	outputPath    string
+	fieldSpecs    map[string]*APISpec // Object name -> field spec for struct generation
+	complexTypes  map[string]bool     // Track which types need struct definitions
+	enumTypeNames map[string]string   // Map from enum type to generated Go type name
 }
 
 type SchemaParam struct {
@@ -78,9 +81,12 @@ type ObjectGroup struct {
 
 func NewToolGenerator(outputPath string) *ToolGenerator {
 	return &ToolGenerator{
-		specs:      make(map[string]*ToolSpec),
-		enumTypes:  make(map[string]bool),
-		outputPath: outputPath,
+		specs:         make(map[string]*ToolSpec),
+		enumTypes:     make(map[string]bool),
+		outputPath:    outputPath,
+		fieldSpecs:    make(map[string]*APISpec),
+		complexTypes:  make(map[string]bool),
+		enumTypeNames: make(map[string]string),
 	}
 }
 
@@ -111,6 +117,7 @@ func (g *ToolGenerator) LoadAPISpecs(specsDir string) error {
 		return fmt.Errorf("failed to read specs directory: %w", err)
 	}
 
+	// First pass: load all specs
 	for _, entry := range entries {
 		if !entry.IsDir() && strings.HasSuffix(entry.Name(), ".json") && entry.Name() != "enum_types.json" {
 			specPath := filepath.Join(specsDir, entry.Name())
@@ -120,18 +127,31 @@ func (g *ToolGenerator) LoadAPISpecs(specsDir string) error {
 				continue
 			}
 
-			var spec ToolSpec
-			if err := json.Unmarshal(data, &spec); err != nil {
+			// Parse both APIs and fields
+			var fullSpec struct {
+				APIs   []API   `json:"apis"`
+				Fields []Field `json:"fields"`
+			}
+			if err := json.Unmarshal(data, &fullSpec); err != nil {
 				log.Printf("Warning: failed to parse %s: %v", specPath, err)
 				continue
 			}
 
 			objectName := strings.TrimSuffix(entry.Name(), ".json")
-			g.specs[objectName] = &spec
+			g.specs[objectName] = &ToolSpec{APIs: fullSpec.APIs}
+
+			// Store field specs for complex type detection
+			if len(fullSpec.Fields) > 0 {
+				g.fieldSpecs[objectName] = &APISpec{Fields: fullSpec.Fields}
+			}
 		}
 	}
 
+	// Second pass: identify complex types from field references
+	g.identifyComplexTypes()
+
 	log.Printf("Loaded %d API specs with endpoints", len(g.specs))
+	log.Printf("Identified %d complex types", len(g.complexTypes))
 	return nil
 }
 
@@ -886,7 +906,7 @@ func (g *ToolGenerator) convertToTypedParams(params []Param, method string) []Ty
 			continue
 		}
 
-		goType := g.mapParamToGoType(param.Type)
+		goType := g.mapParamToGoType(param.Type, param.Name)
 		goName := g.toCamelCase(param.Name)
 
 		typedParam := TypedParam{
@@ -908,18 +928,58 @@ func (g *ToolGenerator) convertToTypedParams(params []Param, method string) []Ty
 }
 
 // mapParamToGoType maps Facebook parameter types to Go types
-func (g *ToolGenerator) mapParamToGoType(fbType string) string {
+func (g *ToolGenerator) mapParamToGoType(fbType string, paramName string) string {
+	// Special case for known complex fields that use Object in API specs
+	if paramName == "adlabels" && fbType == "list<Object>" {
+		return "[]*AdLabel"
+	}
+	if paramName == "targeting" && fbType == "Targeting" {
+		return "*Targeting"
+	}
+	if paramName == "targeting_spec" && fbType == "Targeting" {
+		return "*Targeting"
+	}
+	if paramName == "promoted_object" && (fbType == "Object" || fbType == "AdPromotedObject") {
+		return "*AdPromotedObject"
+	}
+	if paramName == "creative" && fbType == "AdCreative" {
+		return "*AdCreative"
+	}
+	if paramName == "adset_spec" && fbType == "AdSet" {
+		return "*AdSet"
+	}
+	if paramName == "creative_parameters" && fbType == "AdCreative" {
+		return "*AdCreative"
+	}
 	switch {
 	case strings.HasPrefix(fbType, "list<"):
 		innerType := strings.TrimSuffix(strings.TrimPrefix(fbType, "list<"), ">")
-		if innerType == "Object" || strings.Contains(innerType, "map") {
-			return "[]map[string]interface{}"
-		} else if innerType == "string" {
-			return "[]string"
-		} else if innerType == "int" || innerType == "integer" {
-			return "[]int"
+
+		// Check if inner type is a known complex type (like AdLabel)
+		if g.isComplexType(innerType) {
+			return fmt.Sprintf("[]*%s", innerType)
 		}
-		return "[]interface{}"
+
+		// Check if inner type is an enum
+		if g.isEnumType(innerType) {
+			// For now, use string until we have proper enum type names
+			return "[]string"
+		}
+
+		// Handle basic types
+		switch innerType {
+		case "string":
+			return "[]string"
+		case "int", "integer":
+			return "[]int"
+		case "Object", "object":
+			return "[]map[string]interface{}"
+		default:
+			if strings.Contains(innerType, "map") {
+				return "[]map[string]interface{}"
+			}
+			return "[]interface{}"
+		}
 
 	case strings.HasPrefix(fbType, "map"):
 		return "map[string]interface{}"
@@ -927,20 +987,34 @@ func (g *ToolGenerator) mapParamToGoType(fbType string) string {
 	case fbType == "Object" || fbType == "object":
 		return "map[string]interface{}"
 
-	case fbType == "string" || g.isEnumType(fbType):
-		return "string"
-
-	case fbType == "int" || fbType == "integer" || fbType == "unsigned int":
-		return "int"
-
-	case fbType == "float" || fbType == "double":
-		return "float64"
-
-	case fbType == "bool" || fbType == "boolean":
-		return "bool"
-
 	default:
-		return "interface{}"
+		// Check if it's a known complex type
+		if g.isComplexType(fbType) {
+			return "*" + fbType
+		}
+
+		// Check if it's an enum
+		if g.isEnumType(fbType) {
+			// For now, return string for enums
+			// TODO: return proper enum type name when available
+			return "string"
+		}
+
+		// Basic types
+		switch fbType {
+		case "string":
+			return "string"
+		case "int", "integer", "unsigned int":
+			return "int"
+		case "float", "double":
+			return "float64"
+		case "bool", "boolean":
+			return "bool"
+		case "datetime", "timestamp":
+			return "string" // or time.Time with custom unmarshaling
+		default:
+			return "interface{}"
+		}
 	}
 }
 
@@ -1049,4 +1123,64 @@ func (g *ToolGenerator) mapParamToSchemaType(fbType string) (schemaType string, 
 	default:
 		return "string", ""
 	}
+}
+
+// isComplexType determines if a type requires a struct definition
+func (g *ToolGenerator) isComplexType(typeName string) bool {
+	// Check if it's in our automatically detected complex types
+	if g.complexTypes != nil {
+		return g.complexTypes[typeName]
+	}
+
+	// Fallback to known complex types
+	complexTypes := map[string]bool{
+		"AdLabel":          true,
+		"PromotedObject":   true,
+		"AdPromotedObject": true,
+		"Targeting":        true,
+		"AdCreative":       true,
+		// Add more as needed
+	}
+
+	return complexTypes[typeName]
+}
+
+// identifyComplexTypes analyzes field specs to identify which types are complex objects
+func (g *ToolGenerator) identifyComplexTypes() {
+	g.complexTypes = make(map[string]bool)
+
+	// Any type that appears as a field type and has its own field spec is a complex type
+	for objectName := range g.fieldSpecs {
+		g.complexTypes[objectName] = true
+	}
+
+	// Also check field references to identify complex types
+	for _, spec := range g.fieldSpecs {
+		for _, field := range spec.Fields {
+			fieldType := g.extractBaseType(field.Type)
+			// If this field type has its own spec, it's a complex type
+			if _, hasSpec := g.fieldSpecs[fieldType]; hasSpec {
+				g.complexTypes[fieldType] = true
+			}
+		}
+	}
+}
+
+// extractBaseType extracts the base type from complex type definitions
+func (g *ToolGenerator) extractBaseType(fieldType string) string {
+	// Handle list<Type>
+	if strings.HasPrefix(fieldType, "list<") && strings.HasSuffix(fieldType, ">") {
+		return strings.TrimSuffix(strings.TrimPrefix(fieldType, "list<"), ">")
+	}
+
+	// Handle map<string, Type>
+	if strings.HasPrefix(fieldType, "map<") && strings.HasSuffix(fieldType, ">") {
+		// Extract the value type from map<string, Type>
+		parts := strings.Split(strings.TrimSuffix(strings.TrimPrefix(fieldType, "map<"), ">"), ",")
+		if len(parts) == 2 {
+			return strings.TrimSpace(parts[1])
+		}
+	}
+
+	return fieldType
 }

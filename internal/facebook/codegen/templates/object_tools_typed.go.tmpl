@@ -83,11 +83,13 @@ func {{.HandlerName}}(ctx context.Context, request mcp.CallToolRequest, args {{.
 		body["{{.JSONName}}"] = args.{{.GoName}}
 	}{{else if eq .GoType "int"}}if args.{{.GoName}} > 0 {
 		body["{{.JSONName}}"] = args.{{.GoName}}
-	}{{else if eq .GoType "bool"}}body["{{.JSONName}}"] = args.{{.GoName}}{{else if eq .GoType "[]string"}}if len(args.{{.GoName}}) > 0 {
+	}{{else if eq .GoType "float64"}}if args.{{.GoName}} != 0 {
+		body["{{.JSONName}}"] = args.{{.GoName}}
+	}{{else if eq .GoType "bool"}}body["{{.JSONName}}"] = args.{{.GoName}}{{else if or (eq .GoType "[]string") (eq .GoType "[]*AdLabel")}}if len(args.{{.GoName}}) > 0 {
 		body["{{.JSONName}}"] = args.{{.GoName}}
 	}{{else if eq .GoType "[]map[string]interface{}"}}if len(args.{{.GoName}}) > 0 {
 		body["{{.JSONName}}"] = args.{{.GoName}}
-	}{{else if eq .GoType "map[string]interface{}"}}if args.{{.GoName}} != nil {
+	}{{else}}if args.{{.GoName}} != nil {
 		body["{{.JSONName}}"] = args.{{.GoName}}
 	}{{end}}
 	{{end}}

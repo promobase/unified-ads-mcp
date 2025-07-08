@@ -29,20 +29,20 @@ type create_ad_account_account_controlArgs struct {
 
 // list_ad_account_activitiesArgs defines the typed arguments for list_ad_account_activities
 type list_ad_account_activitiesArgs struct {
-	ID          string      `json:"id"`
-	Fields      []string    `json:"fields,omitempty"`
-	Limit       int         `json:"limit,omitempty"`
-	After       string      `json:"after,omitempty"`
-	Before      string      `json:"before,omitempty"`
-	AddChildren bool        `json:"add_children,omitempty"`
-	BusinessId  string      `json:"business_id,omitempty"`
-	Category    string      `json:"category,omitempty"`
-	DataSource  string      `json:"data_source,omitempty"`
-	ExtraOids   []string    `json:"extra_oids,omitempty"`
-	Oid         string      `json:"oid,omitempty"`
-	Since       interface{} `json:"since,omitempty"`
-	Uid         int         `json:"uid,omitempty"`
-	Until       interface{} `json:"until,omitempty"`
+	ID          string   `json:"id"`
+	Fields      []string `json:"fields,omitempty"`
+	Limit       int      `json:"limit,omitempty"`
+	After       string   `json:"after,omitempty"`
+	Before      string   `json:"before,omitempty"`
+	AddChildren bool     `json:"add_children,omitempty"`
+	BusinessId  string   `json:"business_id,omitempty"`
+	Category    string   `json:"category,omitempty"`
+	DataSource  string   `json:"data_source,omitempty"`
+	ExtraOids   []string `json:"extra_oids,omitempty"`
+	Oid         string   `json:"oid,omitempty"`
+	Since       string   `json:"since,omitempty"`
+	Uid         int      `json:"uid,omitempty"`
+	Until       string   `json:"until,omitempty"`
 }
 
 // list_ad_account_ad_place_page_setsArgs defines the typed arguments for list_ad_account_ad_place_page_sets
@@ -56,20 +56,20 @@ type list_ad_account_ad_place_page_setsArgs struct {
 
 // create_ad_account_ad_place_page_setArgs defines the typed arguments for create_ad_account_ad_place_page_set
 type create_ad_account_ad_place_page_setArgs struct {
-	ID               string        `json:"id"`
-	LocationTypes    []interface{} `json:"location_types,omitempty"`
-	Name             string        `json:"name"`
-	ParentPage       string        `json:"parent_page"`
-	TargetedAreaType string        `json:"targeted_area_type,omitempty"`
+	ID               string   `json:"id"`
+	LocationTypes    []string `json:"location_types,omitempty"`
+	Name             string   `json:"name"`
+	ParentPage       string   `json:"parent_page"`
+	TargetedAreaType string   `json:"targeted_area_type,omitempty"`
 }
 
 // update_ad_account_ad_place_page_sets_asyncArgs defines the typed arguments for update_ad_account_ad_place_page_sets_async
 type update_ad_account_ad_place_page_sets_asyncArgs struct {
-	ID               string        `json:"id"`
-	LocationTypes    []interface{} `json:"location_types,omitempty"`
-	Name             string        `json:"name"`
-	ParentPage       string        `json:"parent_page"`
-	TargetedAreaType string        `json:"targeted_area_type,omitempty"`
+	ID               string   `json:"id"`
+	LocationTypes    []string `json:"location_types,omitempty"`
+	Name             string   `json:"name"`
+	ParentPage       string   `json:"parent_page"`
+	TargetedAreaType string   `json:"targeted_area_type,omitempty"`
 }
 
 // list_ad_account_ad_saved_keywordsArgs defines the typed arguments for list_ad_account_ad_saved_keywords
@@ -110,60 +110,60 @@ type list_ad_account_adcreativesArgs struct {
 
 // create_ad_account_adcreativeArgs defines the typed arguments for create_ad_account_adcreative
 type create_ad_account_adcreativeArgs struct {
-	ID                               string                   `json:"id"`
-	ActorId                          int                      `json:"actor_id,omitempty"`
-	AdDisclaimerSpec                 map[string]interface{}   `json:"ad_disclaimer_spec,omitempty"`
-	Adlabels                         []map[string]interface{} `json:"adlabels,omitempty"`
-	ApplinkTreatment                 string                   `json:"applink_treatment,omitempty"`
-	AssetFeedSpec                    map[string]interface{}   `json:"asset_feed_spec,omitempty"`
-	AuthorizationCategory            string                   `json:"authorization_category,omitempty"`
-	Body                             string                   `json:"body,omitempty"`
-	BrandedContent                   map[string]interface{}   `json:"branded_content,omitempty"`
-	BrandedContentSponsorPageId      string                   `json:"branded_content_sponsor_page_id,omitempty"`
-	BundleFolderId                   string                   `json:"bundle_folder_id,omitempty"`
-	CallToAction                     map[string]interface{}   `json:"call_to_action,omitempty"`
-	CategorizationCriteria           string                   `json:"categorization_criteria,omitempty"`
-	CategoryMediaSource              string                   `json:"category_media_source,omitempty"`
-	ContextualMultiAds               map[string]interface{}   `json:"contextual_multi_ads,omitempty"`
-	CreativeSourcingSpec             map[string]interface{}   `json:"creative_sourcing_spec,omitempty"`
-	DegreesOfFreedomSpec             map[string]interface{}   `json:"degrees_of_freedom_spec,omitempty"`
-	DestinationSetId                 string                   `json:"destination_set_id,omitempty"`
-	DynamicAdVoice                   string                   `json:"dynamic_ad_voice,omitempty"`
-	EnableLaunchInstantApp           bool                     `json:"enable_launch_instant_app,omitempty"`
-	FacebookBrandedContent           map[string]interface{}   `json:"facebook_branded_content,omitempty"`
-	ImageCrops                       map[string]interface{}   `json:"image_crops,omitempty"`
-	ImageFile                        string                   `json:"image_file,omitempty"`
-	ImageHash                        string                   `json:"image_hash,omitempty"`
-	ImageUrl                         string                   `json:"image_url,omitempty"`
-	InstagramBrandedContent          map[string]interface{}   `json:"instagram_branded_content,omitempty"`
-	InstagramPermalinkUrl            string                   `json:"instagram_permalink_url,omitempty"`
-	InstagramUserId                  string                   `json:"instagram_user_id,omitempty"`
-	InteractiveComponentsSpec        map[string]interface{}   `json:"interactive_components_spec,omitempty"`
-	IsDcoInternal                    bool                     `json:"is_dco_internal,omitempty"`
-	LinkOgId                         string                   `json:"link_og_id,omitempty"`
-	LinkUrl                          string                   `json:"link_url,omitempty"`
-	Name                             string                   `json:"name,omitempty"`
-	ObjectId                         int                      `json:"object_id,omitempty"`
-	ObjectStoryId                    string                   `json:"object_story_id,omitempty"`
-	ObjectStorySpec                  interface{}              `json:"object_story_spec,omitempty"`
-	ObjectType                       string                   `json:"object_type,omitempty"`
-	ObjectUrl                        string                   `json:"object_url,omitempty"`
-	OmnichannelLinkSpec              map[string]interface{}   `json:"omnichannel_link_spec,omitempty"`
-	PageWelcomeMessage               string                   `json:"page_welcome_message,omitempty"`
-	PlacePageSetId                   string                   `json:"place_page_set_id,omitempty"`
-	PlatformCustomizations           map[string]interface{}   `json:"platform_customizations,omitempty"`
-	PlayableAssetId                  string                   `json:"playable_asset_id,omitempty"`
-	PortraitCustomizations           map[string]interface{}   `json:"portrait_customizations,omitempty"`
-	ProductSetId                     string                   `json:"product_set_id,omitempty"`
-	RecommenderSettings              map[string]interface{}   `json:"recommender_settings,omitempty"`
-	RegionalRegulationDisclaimerSpec map[string]interface{}   `json:"regional_regulation_disclaimer_spec,omitempty"`
-	SourceInstagramMediaId           string                   `json:"source_instagram_media_id,omitempty"`
-	TemplateUrl                      string                   `json:"template_url,omitempty"`
-	TemplateUrlSpec                  string                   `json:"template_url_spec,omitempty"`
-	ThumbnailUrl                     string                   `json:"thumbnail_url,omitempty"`
-	Title                            string                   `json:"title,omitempty"`
-	UrlTags                          string                   `json:"url_tags,omitempty"`
-	UsePageActorOverride             bool                     `json:"use_page_actor_override,omitempty"`
+	ID                               string                     `json:"id"`
+	ActorId                          int                        `json:"actor_id,omitempty"`
+	AdDisclaimerSpec                 map[string]interface{}     `json:"ad_disclaimer_spec,omitempty"`
+	Adlabels                         []*AdLabel                 `json:"adlabels,omitempty"`
+	ApplinkTreatment                 string                     `json:"applink_treatment,omitempty"`
+	AssetFeedSpec                    map[string]interface{}     `json:"asset_feed_spec,omitempty"`
+	AuthorizationCategory            string                     `json:"authorization_category,omitempty"`
+	Body                             string                     `json:"body,omitempty"`
+	BrandedContent                   map[string]interface{}     `json:"branded_content,omitempty"`
+	BrandedContentSponsorPageId      string                     `json:"branded_content_sponsor_page_id,omitempty"`
+	BundleFolderId                   string                     `json:"bundle_folder_id,omitempty"`
+	CallToAction                     map[string]interface{}     `json:"call_to_action,omitempty"`
+	CategorizationCriteria           string                     `json:"categorization_criteria,omitempty"`
+	CategoryMediaSource              string                     `json:"category_media_source,omitempty"`
+	ContextualMultiAds               map[string]interface{}     `json:"contextual_multi_ads,omitempty"`
+	CreativeSourcingSpec             map[string]interface{}     `json:"creative_sourcing_spec,omitempty"`
+	DegreesOfFreedomSpec             map[string]interface{}     `json:"degrees_of_freedom_spec,omitempty"`
+	DestinationSetId                 string                     `json:"destination_set_id,omitempty"`
+	DynamicAdVoice                   string                     `json:"dynamic_ad_voice,omitempty"`
+	EnableLaunchInstantApp           bool                       `json:"enable_launch_instant_app,omitempty"`
+	FacebookBrandedContent           map[string]interface{}     `json:"facebook_branded_content,omitempty"`
+	ImageCrops                       map[string]interface{}     `json:"image_crops,omitempty"`
+	ImageFile                        string                     `json:"image_file,omitempty"`
+	ImageHash                        string                     `json:"image_hash,omitempty"`
+	ImageUrl                         string                     `json:"image_url,omitempty"`
+	InstagramBrandedContent          map[string]interface{}     `json:"instagram_branded_content,omitempty"`
+	InstagramPermalinkUrl            string                     `json:"instagram_permalink_url,omitempty"`
+	InstagramUserId                  string                     `json:"instagram_user_id,omitempty"`
+	InteractiveComponentsSpec        map[string]interface{}     `json:"interactive_components_spec,omitempty"`
+	IsDcoInternal                    bool                       `json:"is_dco_internal,omitempty"`
+	LinkOgId                         string                     `json:"link_og_id,omitempty"`
+	LinkUrl                          string                     `json:"link_url,omitempty"`
+	Name                             string                     `json:"name,omitempty"`
+	ObjectId                         int                        `json:"object_id,omitempty"`
+	ObjectStoryId                    string                     `json:"object_story_id,omitempty"`
+	ObjectStorySpec                  *AdCreativeObjectStorySpec `json:"object_story_spec,omitempty"`
+	ObjectType                       string                     `json:"object_type,omitempty"`
+	ObjectUrl                        string                     `json:"object_url,omitempty"`
+	OmnichannelLinkSpec              map[string]interface{}     `json:"omnichannel_link_spec,omitempty"`
+	PageWelcomeMessage               string                     `json:"page_welcome_message,omitempty"`
+	PlacePageSetId                   string                     `json:"place_page_set_id,omitempty"`
+	PlatformCustomizations           map[string]interface{}     `json:"platform_customizations,omitempty"`
+	PlayableAssetId                  string                     `json:"playable_asset_id,omitempty"`
+	PortraitCustomizations           map[string]interface{}     `json:"portrait_customizations,omitempty"`
+	ProductSetId                     string                     `json:"product_set_id,omitempty"`
+	RecommenderSettings              map[string]interface{}     `json:"recommender_settings,omitempty"`
+	RegionalRegulationDisclaimerSpec map[string]interface{}     `json:"regional_regulation_disclaimer_spec,omitempty"`
+	SourceInstagramMediaId           string                     `json:"source_instagram_media_id,omitempty"`
+	TemplateUrl                      string                     `json:"template_url,omitempty"`
+	TemplateUrlSpec                  string                     `json:"template_url_spec,omitempty"`
+	ThumbnailUrl                     string                     `json:"thumbnail_url,omitempty"`
+	Title                            string                     `json:"title,omitempty"`
+	UrlTags                          string                     `json:"url_tags,omitempty"`
+	UsePageActorOverride             bool                       `json:"use_page_actor_override,omitempty"`
 }
 
 // list_ad_account_adcreativesbylabelsArgs defines the typed arguments for list_ad_account_adcreativesbylabels
@@ -290,28 +290,28 @@ type list_ad_account_adsArgs struct {
 
 // create_ad_account_adArgs defines the typed arguments for create_ad_account_ad
 type create_ad_account_adArgs struct {
-	ID                      string                   `json:"id"`
-	AdScheduleEndTime       interface{}              `json:"ad_schedule_end_time,omitempty"`
-	AdScheduleStartTime     interface{}              `json:"ad_schedule_start_time,omitempty"`
-	Adlabels                []map[string]interface{} `json:"adlabels,omitempty"`
-	AdsetId                 int                      `json:"adset_id,omitempty"`
-	AdsetSpec               interface{}              `json:"adset_spec,omitempty"`
-	AudienceId              string                   `json:"audience_id,omitempty"`
-	BidAmount               int                      `json:"bid_amount,omitempty"`
-	ConversionDomain        string                   `json:"conversion_domain,omitempty"`
-	Creative                interface{}              `json:"creative"`
-	CreativeAssetGroupsSpec map[string]interface{}   `json:"creative_asset_groups_spec,omitempty"`
-	DateFormat              string                   `json:"date_format,omitempty"`
-	DisplaySequence         int                      `json:"display_sequence,omitempty"`
-	DraftAdgroupId          string                   `json:"draft_adgroup_id,omitempty"`
-	EngagementAudience      bool                     `json:"engagement_audience,omitempty"`
-	ExecutionOptions        []interface{}            `json:"execution_options,omitempty"`
-	IncludeDemolinkHashes   bool                     `json:"include_demolink_hashes,omitempty"`
-	Name                    string                   `json:"name"`
-	Priority                int                      `json:"priority,omitempty"`
-	SourceAdId              string                   `json:"source_ad_id,omitempty"`
-	Status                  string                   `json:"status,omitempty"`
-	TrackingSpecs           map[string]interface{}   `json:"tracking_specs,omitempty"`
+	ID                      string                 `json:"id"`
+	AdScheduleEndTime       string                 `json:"ad_schedule_end_time,omitempty"`
+	AdScheduleStartTime     string                 `json:"ad_schedule_start_time,omitempty"`
+	Adlabels                []*AdLabel             `json:"adlabels,omitempty"`
+	AdsetId                 int                    `json:"adset_id,omitempty"`
+	AdsetSpec               *AdSet                 `json:"adset_spec,omitempty"`
+	AudienceId              string                 `json:"audience_id,omitempty"`
+	BidAmount               int                    `json:"bid_amount,omitempty"`
+	ConversionDomain        string                 `json:"conversion_domain,omitempty"`
+	Creative                *AdCreative            `json:"creative"`
+	CreativeAssetGroupsSpec map[string]interface{} `json:"creative_asset_groups_spec,omitempty"`
+	DateFormat              string                 `json:"date_format,omitempty"`
+	DisplaySequence         int                    `json:"display_sequence,omitempty"`
+	DraftAdgroupId          string                 `json:"draft_adgroup_id,omitempty"`
+	EngagementAudience      bool                   `json:"engagement_audience,omitempty"`
+	ExecutionOptions        []string               `json:"execution_options,omitempty"`
+	IncludeDemolinkHashes   bool                   `json:"include_demolink_hashes,omitempty"`
+	Name                    string                 `json:"name"`
+	Priority                int                    `json:"priority,omitempty"`
+	SourceAdId              string                 `json:"source_ad_id,omitempty"`
+	Status                  string                 `json:"status,omitempty"`
+	TrackingSpecs           map[string]interface{} `json:"tracking_specs,omitempty"`
 }
 
 // list_ad_account_ads_reporting_mmm_reportsArgs defines the typed arguments for list_ad_account_ads_reporting_mmm_reports
@@ -363,7 +363,7 @@ type list_ad_account_adsetsArgs struct {
 	After           string                 `json:"after,omitempty"`
 	Before          string                 `json:"before,omitempty"`
 	DatePreset      string                 `json:"date_preset,omitempty"`
-	EffectiveStatus []interface{}          `json:"effective_status,omitempty"`
+	EffectiveStatus []string               `json:"effective_status,omitempty"`
 	IsCompleted     bool                   `json:"is_completed,omitempty"`
 	TimeRange       map[string]interface{} `json:"time_range,omitempty"`
 	UpdatedSince    int                    `json:"updated_since,omitempty"`
@@ -372,7 +372,7 @@ type list_ad_account_adsetsArgs struct {
 // create_ad_account_adsetArgs defines the typed arguments for create_ad_account_adset
 type create_ad_account_adsetArgs struct {
 	ID                                string                   `json:"id"`
-	Adlabels                          []map[string]interface{} `json:"adlabels,omitempty"`
+	Adlabels                          []*AdLabel               `json:"adlabels,omitempty"`
 	AdsetSchedule                     []map[string]interface{} `json:"adset_schedule,omitempty"`
 	AttributionSpec                   []map[string]interface{} `json:"attribution_spec,omitempty"`
 	BidAdjustments                    map[string]interface{}   `json:"bid_adjustments,omitempty"`
@@ -395,8 +395,8 @@ type create_ad_account_adsetArgs struct {
 	DestinationType                   string                   `json:"destination_type,omitempty"`
 	DsaBeneficiary                    string                   `json:"dsa_beneficiary,omitempty"`
 	DsaPayor                          string                   `json:"dsa_payor,omitempty"`
-	EndTime                           interface{}              `json:"end_time,omitempty"`
-	ExecutionOptions                  []interface{}            `json:"execution_options,omitempty"`
+	EndTime                           string                   `json:"end_time,omitempty"`
+	ExecutionOptions                  []string                 `json:"execution_options,omitempty"`
 	ExistingCustomerBudgetPercentage  int                      `json:"existing_customer_budget_percentage,omitempty"`
 	FrequencyControlSpecs             []map[string]interface{} `json:"frequency_control_specs,omitempty"`
 	FullFunnelExplorationMode         string                   `json:"full_funnel_exploration_mode,omitempty"`
@@ -416,19 +416,19 @@ type create_ad_account_adsetArgs struct {
 	OptimizationGoal                  string                   `json:"optimization_goal,omitempty"`
 	OptimizationSubEvent              string                   `json:"optimization_sub_event,omitempty"`
 	PacingType                        []string                 `json:"pacing_type,omitempty"`
-	PromotedObject                    map[string]interface{}   `json:"promoted_object,omitempty"`
+	PromotedObject                    *AdPromotedObject        `json:"promoted_object,omitempty"`
 	RbPredictionId                    string                   `json:"rb_prediction_id,omitempty"`
-	RegionalRegulatedCategories       []interface{}            `json:"regional_regulated_categories,omitempty"`
+	RegionalRegulatedCategories       []string                 `json:"regional_regulated_categories,omitempty"`
 	RegionalRegulationIdentities      map[string]interface{}   `json:"regional_regulation_identities,omitempty"`
 	RfPredictionId                    string                   `json:"rf_prediction_id,omitempty"`
 	SourceAdsetId                     string                   `json:"source_adset_id,omitempty"`
-	StartTime                         interface{}              `json:"start_time,omitempty"`
+	StartTime                         string                   `json:"start_time,omitempty"`
 	Status                            string                   `json:"status,omitempty"`
-	Targeting                         interface{}              `json:"targeting,omitempty"`
+	Targeting                         *Targeting               `json:"targeting,omitempty"`
 	TimeBasedAdRotationIdBlocks       []interface{}            `json:"time_based_ad_rotation_id_blocks,omitempty"`
 	TimeBasedAdRotationIntervals      []interface{}            `json:"time_based_ad_rotation_intervals,omitempty"`
-	TimeStart                         interface{}              `json:"time_start,omitempty"`
-	TimeStop                          interface{}              `json:"time_stop,omitempty"`
+	TimeStart                         string                   `json:"time_start,omitempty"`
+	TimeStop                          string                   `json:"time_stop,omitempty"`
 	ToplineId                         string                   `json:"topline_id,omitempty"`
 	TuneForCategory                   string                   `json:"tune_for_category,omitempty"`
 }
@@ -593,9 +593,9 @@ type list_ad_account_agenciesArgs struct {
 
 // create_ad_account_agencieArgs defines the typed arguments for create_ad_account_agencie
 type create_ad_account_agencieArgs struct {
-	ID             string        `json:"id"`
-	Business       string        `json:"business"`
-	PermittedTasks []interface{} `json:"permitted_tasks,omitempty"`
+	ID             string   `json:"id"`
+	Business       string   `json:"business"`
+	PermittedTasks []string `json:"permitted_tasks,omitempty"`
 }
 
 // list_ad_account_applicationsArgs defines the typed arguments for list_ad_account_applications
@@ -625,9 +625,9 @@ type list_ad_account_assigned_usersArgs struct {
 
 // create_ad_account_assigned_userArgs defines the typed arguments for create_ad_account_assigned_user
 type create_ad_account_assigned_userArgs struct {
-	ID    string        `json:"id"`
-	Tasks []interface{} `json:"tasks,omitempty"`
-	User  int           `json:"user"`
+	ID    string   `json:"id"`
+	Tasks []string `json:"tasks,omitempty"`
+	User  int      `json:"user"`
 }
 
 // create_ad_account_async_batch_requestArgs defines the typed arguments for create_ad_account_async_batch_request
@@ -661,7 +661,7 @@ type list_ad_account_asyncadcreativesArgs struct {
 // create_ad_account_asyncadcreativeArgs defines the typed arguments for create_ad_account_asyncadcreative
 type create_ad_account_asyncadcreativeArgs struct {
 	ID               string      `json:"id"`
-	CreativeSpec     interface{} `json:"creative_spec"`
+	CreativeSpec     *AdCreative `json:"creative_spec"`
 	Name             string      `json:"name"`
 	NotificationMode string      `json:"notification_mode,omitempty"`
 	NotificationUri  string      `json:"notification_uri,omitempty"`
@@ -703,9 +703,9 @@ type create_ad_account_block_list_draftArgs struct {
 
 // create_ad_account_brand_safety_content_filter_levelArgs defines the typed arguments for create_ad_account_brand_safety_content_filter_level
 type create_ad_account_brand_safety_content_filter_levelArgs struct {
-	ID                             string        `json:"id"`
-	BrandSafetyContentFilterLevels []interface{} `json:"brand_safety_content_filter_levels"`
-	BusinessId                     string        `json:"business_id,omitempty"`
+	ID                             string   `json:"id"`
+	BrandSafetyContentFilterLevels []string `json:"brand_safety_content_filter_levels"`
+	BusinessId                     string   `json:"business_id,omitempty"`
 }
 
 // list_ad_account_broadtargetingcategoriesArgs defines the typed arguments for list_ad_account_broadtargetingcategories
@@ -730,11 +730,11 @@ type list_ad_account_businessprojectsArgs struct {
 
 // remove_campaigns_from_ad_accountArgs defines the typed arguments for remove_campaigns_from_ad_account
 type remove_campaigns_from_ad_accountArgs struct {
-	ID             string      `json:"id"`
-	BeforeDate     interface{} `json:"before_date,omitempty"`
-	DeleteOffset   int         `json:"delete_offset,omitempty"`
-	DeleteStrategy string      `json:"delete_strategy"`
-	ObjectCount    int         `json:"object_count,omitempty"`
+	ID             string `json:"id"`
+	BeforeDate     string `json:"before_date,omitempty"`
+	DeleteOffset   int    `json:"delete_offset,omitempty"`
+	DeleteStrategy string `json:"delete_strategy"`
+	ObjectCount    int    `json:"object_count,omitempty"`
 }
 
 // list_ad_account_campaignsArgs defines the typed arguments for list_ad_account_campaigns
@@ -745,7 +745,7 @@ type list_ad_account_campaignsArgs struct {
 	After           string                 `json:"after,omitempty"`
 	Before          string                 `json:"before,omitempty"`
 	DatePreset      string                 `json:"date_preset,omitempty"`
-	EffectiveStatus []interface{}          `json:"effective_status,omitempty"`
+	EffectiveStatus []string               `json:"effective_status,omitempty"`
 	IsCompleted     bool                   `json:"is_completed,omitempty"`
 	TimeRange       map[string]interface{} `json:"time_range,omitempty"`
 }
@@ -753,26 +753,26 @@ type list_ad_account_campaignsArgs struct {
 // create_ad_account_campaignArgs defines the typed arguments for create_ad_account_campaign
 type create_ad_account_campaignArgs struct {
 	ID                        string                   `json:"id"`
-	Adlabels                  []map[string]interface{} `json:"adlabels,omitempty"`
+	Adlabels                  []*AdLabel               `json:"adlabels,omitempty"`
 	BidStrategy               string                   `json:"bid_strategy,omitempty"`
 	BuyingType                string                   `json:"buying_type,omitempty"`
 	DailyBudget               int                      `json:"daily_budget,omitempty"`
-	ExecutionOptions          []interface{}            `json:"execution_options,omitempty"`
+	ExecutionOptions          []string                 `json:"execution_options,omitempty"`
 	IsSkadnetworkAttribution  bool                     `json:"is_skadnetwork_attribution,omitempty"`
 	IterativeSplitTestConfigs []map[string]interface{} `json:"iterative_split_test_configs,omitempty"`
 	LifetimeBudget            int                      `json:"lifetime_budget,omitempty"`
 	Name                      string                   `json:"name,omitempty"`
 	Objective                 string                   `json:"objective,omitempty"`
 	PacingType                []string                 `json:"pacing_type,omitempty"`
-	PromotedObject            map[string]interface{}   `json:"promoted_object,omitempty"`
+	PromotedObject            *AdPromotedObject        `json:"promoted_object,omitempty"`
 	SmartPromotionType        string                   `json:"smart_promotion_type,omitempty"`
 	SourceCampaignId          string                   `json:"source_campaign_id,omitempty"`
-	SpecialAdCategories       []interface{}            `json:"special_ad_categories"`
-	SpecialAdCategoryCountry  []interface{}            `json:"special_ad_category_country,omitempty"`
+	SpecialAdCategories       []string                 `json:"special_ad_categories"`
+	SpecialAdCategoryCountry  []string                 `json:"special_ad_category_country,omitempty"`
 	SpendCap                  int                      `json:"spend_cap,omitempty"`
-	StartTime                 interface{}              `json:"start_time,omitempty"`
+	StartTime                 string                   `json:"start_time,omitempty"`
 	Status                    string                   `json:"status,omitempty"`
-	StopTime                  interface{}              `json:"stop_time,omitempty"`
+	StopTime                  string                   `json:"stop_time,omitempty"`
 	ToplineId                 string                   `json:"topline_id,omitempty"`
 }
 
@@ -864,9 +864,9 @@ type create_ad_account_customaudienceArgs struct {
 	RevSharePolicyId              int                      `json:"rev_share_policy_id,omitempty"`
 	Rule                          string                   `json:"rule,omitempty"`
 	RuleAggregation               string                   `json:"rule_aggregation,omitempty"`
-	SubscriptionInfo              []interface{}            `json:"subscription_info,omitempty"`
+	SubscriptionInfo              []string                 `json:"subscription_info,omitempty"`
 	Subtype                       string                   `json:"subtype,omitempty"`
-	UseForProducts                []interface{}            `json:"use_for_products,omitempty"`
+	UseForProducts                []string                 `json:"use_for_products,omitempty"`
 	UseInCampaigns                bool                     `json:"use_in_campaigns,omitempty"`
 	VideoGroupIds                 []string                 `json:"video_group_ids,omitempty"`
 	WhatsAppBusinessPhoneNumberId string                   `json:"whats_app_business_phone_number_id,omitempty"`
@@ -912,14 +912,14 @@ type create_ad_account_customconversionArgs struct {
 
 // get_ad_account_delivery_estimateArgs defines the typed arguments for get_ad_account_delivery_estimate
 type get_ad_account_delivery_estimateArgs struct {
-	ID               string                 `json:"id"`
-	Fields           []string               `json:"fields,omitempty"`
-	Limit            int                    `json:"limit,omitempty"`
-	After            string                 `json:"after,omitempty"`
-	Before           string                 `json:"before,omitempty"`
-	OptimizationGoal string                 `json:"optimization_goal"`
-	PromotedObject   map[string]interface{} `json:"promoted_object,omitempty"`
-	TargetingSpec    interface{}            `json:"targeting_spec"`
+	ID               string            `json:"id"`
+	Fields           []string          `json:"fields,omitempty"`
+	Limit            int               `json:"limit,omitempty"`
+	After            string            `json:"after,omitempty"`
+	Before           string            `json:"before,omitempty"`
+	OptimizationGoal string            `json:"optimization_goal"`
+	PromotedObject   *AdPromotedObject `json:"promoted_object,omitempty"`
+	TargetingSpec    *Targeting        `json:"targeting_spec"`
 }
 
 // list_ad_account_deprecatedtargetingadsetsArgs defines the typed arguments for list_ad_account_deprecatedtargetingadsets
@@ -948,19 +948,19 @@ type list_ad_account_generatepreviewsArgs struct {
 	After                string                 `json:"after,omitempty"`
 	Before               string                 `json:"before,omitempty"`
 	AdFormat             string                 `json:"ad_format"`
-	Creative             interface{}            `json:"creative"`
+	Creative             *AdCreative            `json:"creative"`
 	CreativeFeature      string                 `json:"creative_feature,omitempty"`
 	DynamicAssetLabel    string                 `json:"dynamic_asset_label,omitempty"`
 	DynamicCreativeSpec  map[string]interface{} `json:"dynamic_creative_spec,omitempty"`
 	DynamicCustomization map[string]interface{} `json:"dynamic_customization,omitempty"`
-	EndDate              interface{}            `json:"end_date,omitempty"`
+	EndDate              string                 `json:"end_date,omitempty"`
 	Height               int                    `json:"height,omitempty"`
 	Locale               string                 `json:"locale,omitempty"`
 	PlacePageId          int                    `json:"place_page_id,omitempty"`
 	Post                 map[string]interface{} `json:"post,omitempty"`
 	ProductItemIds       []string               `json:"product_item_ids,omitempty"`
 	RenderType           string                 `json:"render_type,omitempty"`
-	StartDate            interface{}            `json:"start_date,omitempty"`
+	StartDate            string                 `json:"start_date,omitempty"`
 	Width                int                    `json:"width,omitempty"`
 }
 
@@ -980,10 +980,10 @@ type get_ad_account_insightsArgs struct {
 	Limit                        int                      `json:"limit,omitempty"`
 	After                        string                   `json:"after,omitempty"`
 	Before                       string                   `json:"before,omitempty"`
-	ActionAttributionWindows     []interface{}            `json:"action_attribution_windows,omitempty"`
-	ActionBreakdowns             []interface{}            `json:"action_breakdowns,omitempty"`
+	ActionAttributionWindows     []string                 `json:"action_attribution_windows,omitempty"`
+	ActionBreakdowns             []string                 `json:"action_breakdowns,omitempty"`
 	ActionReportTime             string                   `json:"action_report_time,omitempty"`
-	Breakdowns                   []interface{}            `json:"breakdowns,omitempty"`
+	Breakdowns                   []string                 `json:"breakdowns,omitempty"`
 	DatePreset                   string                   `json:"date_preset,omitempty"`
 	DefaultSummary               bool                     `json:"default_summary,omitempty"`
 	ExportColumns                []string                 `json:"export_columns,omitempty"`
@@ -994,7 +994,7 @@ type get_ad_account_insightsArgs struct {
 	ProductIdLimit               int                      `json:"product_id_limit,omitempty"`
 	Sort                         []string                 `json:"sort,omitempty"`
 	Summary                      []string                 `json:"summary,omitempty"`
-	SummaryActionBreakdowns      []interface{}            `json:"summary_action_breakdowns,omitempty"`
+	SummaryActionBreakdowns      []string                 `json:"summary_action_breakdowns,omitempty"`
 	TimeIncrement                string                   `json:"time_increment,omitempty"`
 	TimeRange                    map[string]interface{}   `json:"time_range,omitempty"`
 	TimeRanges                   []map[string]interface{} `json:"time_ranges,omitempty"`
@@ -1005,10 +1005,10 @@ type get_ad_account_insightsArgs struct {
 // create_ad_account_insights_reportArgs defines the typed arguments for create_ad_account_insights_report
 type create_ad_account_insights_reportArgs struct {
 	ID                           string                   `json:"id"`
-	ActionAttributionWindows     []interface{}            `json:"action_attribution_windows,omitempty"`
-	ActionBreakdowns             []interface{}            `json:"action_breakdowns,omitempty"`
+	ActionAttributionWindows     []string                 `json:"action_attribution_windows,omitempty"`
+	ActionBreakdowns             []string                 `json:"action_breakdowns,omitempty"`
 	ActionReportTime             string                   `json:"action_report_time,omitempty"`
-	Breakdowns                   []interface{}            `json:"breakdowns,omitempty"`
+	Breakdowns                   []string                 `json:"breakdowns,omitempty"`
 	DatePreset                   string                   `json:"date_preset,omitempty"`
 	DefaultSummary               bool                     `json:"default_summary,omitempty"`
 	ExportColumns                []string                 `json:"export_columns,omitempty"`
@@ -1021,7 +1021,7 @@ type create_ad_account_insights_reportArgs struct {
 	ProductIdLimit               int                      `json:"product_id_limit,omitempty"`
 	Sort                         []string                 `json:"sort,omitempty"`
 	Summary                      []string                 `json:"summary,omitempty"`
-	SummaryActionBreakdowns      []interface{}            `json:"summary_action_breakdowns,omitempty"`
+	SummaryActionBreakdowns      []string                 `json:"summary_action_breakdowns,omitempty"`
 	TimeIncrement                string                   `json:"time_increment,omitempty"`
 	TimeRange                    map[string]interface{}   `json:"time_range,omitempty"`
 	TimeRanges                   []map[string]interface{} `json:"time_ranges,omitempty"`
@@ -1150,18 +1150,18 @@ type create_ad_account_publisher_block_listArgs struct {
 
 // get_ad_account_reachestimateArgs defines the typed arguments for get_ad_account_reachestimate
 type get_ad_account_reachestimateArgs struct {
-	ID                 string      `json:"id"`
-	Fields             []string    `json:"fields,omitempty"`
-	Limit              int         `json:"limit,omitempty"`
-	After              string      `json:"after,omitempty"`
-	Before             string      `json:"before,omitempty"`
-	AdgroupIds         []string    `json:"adgroup_ids,omitempty"`
-	CallerId           string      `json:"caller_id,omitempty"`
-	Concepts           string      `json:"concepts,omitempty"`
-	CreativeActionSpec string      `json:"creative_action_spec,omitempty"`
-	IsDebug            bool        `json:"is_debug,omitempty"`
-	ObjectStoreUrl     string      `json:"object_store_url,omitempty"`
-	TargetingSpec      interface{} `json:"targeting_spec"`
+	ID                 string     `json:"id"`
+	Fields             []string   `json:"fields,omitempty"`
+	Limit              int        `json:"limit,omitempty"`
+	After              string     `json:"after,omitempty"`
+	Before             string     `json:"before,omitempty"`
+	AdgroupIds         []string   `json:"adgroup_ids,omitempty"`
+	CallerId           string     `json:"caller_id,omitempty"`
+	Concepts           string     `json:"concepts,omitempty"`
+	CreativeActionSpec string     `json:"creative_action_spec,omitempty"`
+	IsDebug            bool       `json:"is_debug,omitempty"`
+	ObjectStoreUrl     string     `json:"object_store_url,omitempty"`
+	TargetingSpec      *Targeting `json:"targeting_spec"`
 }
 
 // list_ad_account_reachfrequencypredictionsArgs defines the typed arguments for list_ad_account_reachfrequencypredictions
@@ -1193,7 +1193,7 @@ type create_ad_account_reachfrequencypredictionArgs struct {
 	FrequencyCap                    int                      `json:"frequency_cap,omitempty"`
 	GrpBuying                       bool                     `json:"grp_buying,omitempty"`
 	Impression                      int                      `json:"impression,omitempty"`
-	InstreamPackages                []interface{}            `json:"instream_packages,omitempty"`
+	InstreamPackages                []string                 `json:"instream_packages,omitempty"`
 	IntervalFrequencyCapResetPeriod int                      `json:"interval_frequency_cap_reset_period,omitempty"`
 	IsBalancedFrequency             bool                     `json:"is_balanced_frequency,omitempty"`
 	IsBonusMedia                    bool                     `json:"is_bonus_media,omitempty"`
@@ -1216,7 +1216,7 @@ type create_ad_account_reachfrequencypredictionArgs struct {
 	TargetCpm                       int                      `json:"target_cpm,omitempty"`
 	TargetFrequency                 int                      `json:"target_frequency,omitempty"`
 	TargetFrequencyResetPeriod      int                      `json:"target_frequency_reset_period,omitempty"`
-	TargetSpec                      interface{}              `json:"target_spec,omitempty"`
+	TargetSpec                      *Targeting               `json:"target_spec,omitempty"`
 	VideoViewLengthConstraint       int                      `json:"video_view_length_constraint,omitempty"`
 }
 
@@ -1272,18 +1272,18 @@ type create_ad_account_subscribed_appArgs struct {
 
 // get_ad_account_targetingbrowseArgs defines the typed arguments for get_ad_account_targetingbrowse
 type get_ad_account_targetingbrowseArgs struct {
-	ID                  string        `json:"id"`
-	Fields              []string      `json:"fields,omitempty"`
-	Limit               int           `json:"limit,omitempty"`
-	After               string        `json:"after,omitempty"`
-	Before              string        `json:"before,omitempty"`
-	ExcludedCategory    string        `json:"excluded_category,omitempty"`
-	IncludeNodes        bool          `json:"include_nodes,omitempty"`
-	IsExclusion         bool          `json:"is_exclusion,omitempty"`
-	LimitType           string        `json:"limit_type,omitempty"`
-	RegulatedCategories []interface{} `json:"regulated_categories,omitempty"`
-	RegulatedCountries  []interface{} `json:"regulated_countries,omitempty"`
-	WhitelistedTypes    []interface{} `json:"whitelisted_types,omitempty"`
+	ID                  string   `json:"id"`
+	Fields              []string `json:"fields,omitempty"`
+	Limit               int      `json:"limit,omitempty"`
+	After               string   `json:"after,omitempty"`
+	Before              string   `json:"before,omitempty"`
+	ExcludedCategory    string   `json:"excluded_category,omitempty"`
+	IncludeNodes        bool     `json:"include_nodes,omitempty"`
+	IsExclusion         bool     `json:"is_exclusion,omitempty"`
+	LimitType           string   `json:"limit_type,omitempty"`
+	RegulatedCategories []string `json:"regulated_categories,omitempty"`
+	RegulatedCountries  []string `json:"regulated_countries,omitempty"`
+	WhitelistedTypes    []string `json:"whitelisted_types,omitempty"`
 }
 
 // get_ad_account_targetingsearchArgs defines the typed arguments for get_ad_account_targetingsearch
@@ -1300,26 +1300,26 @@ type get_ad_account_targetingsearchArgs struct {
 	IsExclusion                        bool                     `json:"is_exclusion,omitempty"`
 	LimitType                          string                   `json:"limit_type,omitempty"`
 	Objective                          string                   `json:"objective,omitempty"`
-	PromotedObject                     map[string]interface{}   `json:"promoted_object,omitempty"`
+	PromotedObject                     *AdPromotedObject        `json:"promoted_object,omitempty"`
 	Q                                  string                   `json:"q"`
-	RegulatedCategories                []interface{}            `json:"regulated_categories,omitempty"`
-	RegulatedCountries                 []interface{}            `json:"regulated_countries,omitempty"`
+	RegulatedCategories                []string                 `json:"regulated_categories,omitempty"`
+	RegulatedCountries                 []string                 `json:"regulated_countries,omitempty"`
 	SessionId                          int                      `json:"session_id,omitempty"`
 	TargetingList                      []map[string]interface{} `json:"targeting_list,omitempty"`
-	WhitelistedTypes                   []interface{}            `json:"whitelisted_types,omitempty"`
+	WhitelistedTypes                   []string                 `json:"whitelisted_types,omitempty"`
 }
 
 // list_ad_account_targetingsentencelinesArgs defines the typed arguments for list_ad_account_targetingsentencelines
 type list_ad_account_targetingsentencelinesArgs struct {
-	ID                          string      `json:"id"`
-	Fields                      []string    `json:"fields,omitempty"`
-	Limit                       int         `json:"limit,omitempty"`
-	After                       string      `json:"after,omitempty"`
-	Before                      string      `json:"before,omitempty"`
-	DiscardAges                 bool        `json:"discard_ages,omitempty"`
-	DiscardPlacements           bool        `json:"discard_placements,omitempty"`
-	HideTargetingSpecFromReturn bool        `json:"hide_targeting_spec_from_return,omitempty"`
-	TargetingSpec               interface{} `json:"targeting_spec"`
+	ID                          string     `json:"id"`
+	Fields                      []string   `json:"fields,omitempty"`
+	Limit                       int        `json:"limit,omitempty"`
+	After                       string     `json:"after,omitempty"`
+	Before                      string     `json:"before,omitempty"`
+	DiscardAges                 bool       `json:"discard_ages,omitempty"`
+	DiscardPlacements           bool       `json:"discard_placements,omitempty"`
+	HideTargetingSpecFromReturn bool       `json:"hide_targeting_spec_from_return,omitempty"`
+	TargetingSpec               *Targeting `json:"targeting_spec"`
 }
 
 // list_ad_account_targetingsuggestionsArgs defines the typed arguments for list_ad_account_targetingsuggestions
@@ -1335,11 +1335,11 @@ type list_ad_account_targetingsuggestionsArgs struct {
 	Mode                string                   `json:"mode,omitempty"`
 	Objective           string                   `json:"objective,omitempty"`
 	Objects             map[string]interface{}   `json:"objects,omitempty"`
-	RegulatedCategories []interface{}            `json:"regulated_categories,omitempty"`
-	RegulatedCountries  []interface{}            `json:"regulated_countries,omitempty"`
+	RegulatedCategories []string                 `json:"regulated_categories,omitempty"`
+	RegulatedCountries  []string                 `json:"regulated_countries,omitempty"`
 	SessionId           int                      `json:"session_id,omitempty"`
 	TargetingList       []map[string]interface{} `json:"targeting_list,omitempty"`
-	WhitelistedTypes    []interface{}            `json:"whitelisted_types,omitempty"`
+	WhitelistedTypes    []string                 `json:"whitelisted_types,omitempty"`
 }
 
 // get_ad_account_targetingvalidationArgs defines the typed arguments for get_ad_account_targetingvalidation
@@ -1408,13 +1408,13 @@ type update_ad_account_value_rule_setArgs struct {
 
 // list_ad_account_video_adsArgs defines the typed arguments for list_ad_account_video_ads
 type list_ad_account_video_adsArgs struct {
-	ID     string      `json:"id"`
-	Fields []string    `json:"fields,omitempty"`
-	Limit  int         `json:"limit,omitempty"`
-	After  string      `json:"after,omitempty"`
-	Before string      `json:"before,omitempty"`
-	Since  interface{} `json:"since,omitempty"`
-	Until  interface{} `json:"until,omitempty"`
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
+	Since  string   `json:"since,omitempty"`
+	Until  string   `json:"until,omitempty"`
 }
 
 // create_ad_account_video_adArgs defines the typed arguments for create_ad_account_video_ad
@@ -1597,8 +1597,16 @@ func ListAdAccountActivitiesHandler(ctx context.Context, request mcp.CallToolReq
 		query.Set("oid", args.Oid)
 	}
 
+	if args.Since != "" {
+		query.Set("since", args.Since)
+	}
+
 	if args.Uid > 0 {
 		query.Set("uid", fmt.Sprintf("%d", args.Uid))
+	}
+
+	if args.Until != "" {
+		query.Set("until", args.Until)
 	}
 
 	// Build URL and execute
@@ -1668,6 +1676,10 @@ func CreateAdAccountAdPlacePageSetHandler(ctx context.Context, request mcp.CallT
 
 	// Add parameters to body
 
+	if len(args.LocationTypes) > 0 {
+		body["location_types"] = args.LocationTypes
+	}
+
 	if args.Name != "" {
 		body["name"] = args.Name
 	}
@@ -1698,6 +1710,10 @@ func UpdateAdAccountAdPlacePageSetsAsyncHandler(ctx context.Context, request mcp
 	}
 
 	// Add parameters to body
+
+	if len(args.LocationTypes) > 0 {
+		body["location_types"] = args.LocationTypes
+	}
 
 	if args.Name != "" {
 		body["name"] = args.Name
@@ -2048,6 +2064,10 @@ func CreateAdAccountAdcreativeHandler(ctx context.Context, request mcp.CallToolR
 
 	if args.ObjectStoryId != "" {
 		body["object_story_id"] = args.ObjectStoryId
+	}
+
+	if args.ObjectStorySpec != nil {
+		body["object_story_spec"] = args.ObjectStorySpec
 	}
 
 	if args.ObjectType != "" {
@@ -2439,8 +2459,16 @@ func CreateAdAccountAdplayableHandler(ctx context.Context, request mcp.CallToolR
 		body["session_id"] = args.SessionId
 	}
 
+	if args.Source != nil {
+		body["source"] = args.Source
+	}
+
 	if args.SourceUrl != "" {
 		body["source_url"] = args.SourceUrl
+	}
+
+	if args.SourceZip != nil {
+		body["source_zip"] = args.SourceZip
 	}
 
 	// Build URL and execute
@@ -2683,12 +2711,24 @@ func CreateAdAccountAdHandler(ctx context.Context, request mcp.CallToolRequest, 
 
 	// Add parameters to body
 
+	if args.AdScheduleEndTime != "" {
+		body["ad_schedule_end_time"] = args.AdScheduleEndTime
+	}
+
+	if args.AdScheduleStartTime != "" {
+		body["ad_schedule_start_time"] = args.AdScheduleStartTime
+	}
+
 	if len(args.Adlabels) > 0 {
 		body["adlabels"] = args.Adlabels
 	}
 
 	if args.AdsetId > 0 {
 		body["adset_id"] = args.AdsetId
+	}
+
+	if args.AdsetSpec != nil {
+		body["adset_spec"] = args.AdsetSpec
 	}
 
 	if args.AudienceId != "" {
@@ -2701,6 +2741,10 @@ func CreateAdAccountAdHandler(ctx context.Context, request mcp.CallToolRequest, 
 
 	if args.ConversionDomain != "" {
 		body["conversion_domain"] = args.ConversionDomain
+	}
+
+	if args.Creative != nil {
+		body["creative"] = args.Creative
 	}
 
 	if args.CreativeAssetGroupsSpec != nil {
@@ -2720,6 +2764,10 @@ func CreateAdAccountAdHandler(ctx context.Context, request mcp.CallToolRequest, 
 	}
 
 	body["engagement_audience"] = args.EngagementAudience
+
+	if len(args.ExecutionOptions) > 0 {
+		body["execution_options"] = args.ExecutionOptions
+	}
 
 	body["include_demolink_hashes"] = args.IncludeDemolinkHashes
 
@@ -2997,6 +3045,10 @@ func ListAdAccountAdsetsHandler(ctx context.Context, request mcp.CallToolRequest
 		query.Set("date_preset", args.DatePreset)
 	}
 
+	if len(args.EffectiveStatus) > 0 {
+		query.Set("effective_status", strings.Join(args.EffectiveStatus, ","))
+	}
+
 	if args.IsCompleted {
 		query.Set("is_completed", "true")
 	}
@@ -3122,6 +3174,14 @@ func CreateAdAccountAdsetHandler(ctx context.Context, request mcp.CallToolReques
 		body["dsa_payor"] = args.DsaPayor
 	}
 
+	if args.EndTime != "" {
+		body["end_time"] = args.EndTime
+	}
+
+	if len(args.ExecutionOptions) > 0 {
+		body["execution_options"] = args.ExecutionOptions
+	}
+
 	if args.ExistingCustomerBudgetPercentage > 0 {
 		body["existing_customer_budget_percentage"] = args.ExistingCustomerBudgetPercentage
 	}
@@ -3198,6 +3258,10 @@ func CreateAdAccountAdsetHandler(ctx context.Context, request mcp.CallToolReques
 		body["rb_prediction_id"] = args.RbPredictionId
 	}
 
+	if len(args.RegionalRegulatedCategories) > 0 {
+		body["regional_regulated_categories"] = args.RegionalRegulatedCategories
+	}
+
 	if args.RegionalRegulationIdentities != nil {
 		body["regional_regulation_identities"] = args.RegionalRegulationIdentities
 	}
@@ -3210,8 +3274,32 @@ func CreateAdAccountAdsetHandler(ctx context.Context, request mcp.CallToolReques
 		body["source_adset_id"] = args.SourceAdsetId
 	}
 
+	if args.StartTime != "" {
+		body["start_time"] = args.StartTime
+	}
+
 	if args.Status != "" {
 		body["status"] = args.Status
+	}
+
+	if args.Targeting != nil {
+		body["targeting"] = args.Targeting
+	}
+
+	if args.TimeBasedAdRotationIdBlocks != nil {
+		body["time_based_ad_rotation_id_blocks"] = args.TimeBasedAdRotationIdBlocks
+	}
+
+	if args.TimeBasedAdRotationIntervals != nil {
+		body["time_based_ad_rotation_intervals"] = args.TimeBasedAdRotationIntervals
+	}
+
+	if args.TimeStart != "" {
+		body["time_start"] = args.TimeStart
+	}
+
+	if args.TimeStop != "" {
+		body["time_stop"] = args.TimeStop
 	}
 
 	if args.ToplineId != "" {
@@ -3602,12 +3690,20 @@ func CreateAdAccountAdvideoHandler(ctx context.Context, request mcp.CallToolRequ
 		body["fov"] = args.Fov
 	}
 
+	if args.FrontZRotation != 0 {
+		body["front_z_rotation"] = args.FrontZRotation
+	}
+
 	if args.FunFactPromptId != "" {
 		body["fun_fact_prompt_id"] = args.FunFactPromptId
 	}
 
 	if args.FunFactToasteeId > 0 {
 		body["fun_fact_toastee_id"] = args.FunFactToasteeId
+	}
+
+	if args.Guide != nil {
+		body["guide"] = args.Guide
 	}
 
 	body["guide_enabled"] = args.GuideEnabled
@@ -3708,6 +3804,10 @@ func CreateAdAccountAdvideoHandler(ctx context.Context, request mcp.CallToolRequ
 
 	if args.TextFormatMetadata != "" {
 		body["text_format_metadata"] = args.TextFormatMetadata
+	}
+
+	if args.Thumb != nil {
+		body["thumb"] = args.Thumb
 	}
 
 	if args.TimeSinceOriginalPost > 0 {
@@ -3885,6 +3985,10 @@ func CreateAdAccountAgencieHandler(ctx context.Context, request mcp.CallToolRequ
 		body["business"] = args.Business
 	}
 
+	if len(args.PermittedTasks) > 0 {
+		body["permitted_tasks"] = args.PermittedTasks
+	}
+
 	// Build URL and execute
 	url := buildGraphURL(args.ID, "agencies")
 
@@ -4015,6 +4119,10 @@ func CreateAdAccountAssignedUserHandler(ctx context.Context, request mcp.CallToo
 	}
 
 	// Add parameters to body
+
+	if len(args.Tasks) > 0 {
+		body["tasks"] = args.Tasks
+	}
 
 	if args.User > 0 {
 		body["user"] = args.User
@@ -4171,6 +4279,10 @@ func CreateAdAccountAsyncadcreativeHandler(ctx context.Context, request mcp.Call
 	}
 
 	// Add parameters to body
+
+	if args.CreativeSpec != nil {
+		body["creative_spec"] = args.CreativeSpec
+	}
 
 	if args.Name != "" {
 		body["name"] = args.Name
@@ -4336,6 +4448,10 @@ func CreateAdAccountBlockListDraftHandler(ctx context.Context, request mcp.CallT
 
 	// Add parameters to body
 
+	if args.PublisherUrlsFile != nil {
+		body["publisher_urls_file"] = args.PublisherUrlsFile
+	}
+
 	// Build URL and execute
 	url := buildGraphURL(args.ID, "block_list_drafts")
 
@@ -4354,6 +4470,10 @@ func CreateAdAccountBrandSafetyContentFilterLevelHandler(ctx context.Context, re
 	}
 
 	// Add parameters to body
+
+	if len(args.BrandSafetyContentFilterLevels) > 0 {
+		body["brand_safety_content_filter_levels"] = args.BrandSafetyContentFilterLevels
+	}
 
 	if args.BusinessId != "" {
 		body["business_id"] = args.BusinessId
@@ -4525,6 +4645,10 @@ func ListAdAccountCampaignsHandler(ctx context.Context, request mcp.CallToolRequ
 		query.Set("date_preset", args.DatePreset)
 	}
 
+	if len(args.EffectiveStatus) > 0 {
+		query.Set("effective_status", strings.Join(args.EffectiveStatus, ","))
+	}
+
 	if args.IsCompleted {
 		query.Set("is_completed", "true")
 	}
@@ -4570,6 +4694,10 @@ func CreateAdAccountCampaignHandler(ctx context.Context, request mcp.CallToolReq
 		body["daily_budget"] = args.DailyBudget
 	}
 
+	if len(args.ExecutionOptions) > 0 {
+		body["execution_options"] = args.ExecutionOptions
+	}
+
 	body["is_skadnetwork_attribution"] = args.IsSkadnetworkAttribution
 
 	if len(args.IterativeSplitTestConfigs) > 0 {
@@ -4604,12 +4732,28 @@ func CreateAdAccountCampaignHandler(ctx context.Context, request mcp.CallToolReq
 		body["source_campaign_id"] = args.SourceCampaignId
 	}
 
+	if len(args.SpecialAdCategories) > 0 {
+		body["special_ad_categories"] = args.SpecialAdCategories
+	}
+
+	if len(args.SpecialAdCategoryCountry) > 0 {
+		body["special_ad_category_country"] = args.SpecialAdCategoryCountry
+	}
+
 	if args.SpendCap > 0 {
 		body["spend_cap"] = args.SpendCap
 	}
 
+	if args.StartTime != "" {
+		body["start_time"] = args.StartTime
+	}
+
 	if args.Status != "" {
 		body["status"] = args.Status
+	}
+
+	if args.StopTime != "" {
+		body["stop_time"] = args.StopTime
 	}
 
 	if args.ToplineId != "" {
@@ -4956,6 +5100,10 @@ func CreateAdAccountCustomaudienceHandler(ctx context.Context, request mcp.CallT
 
 	body["is_value_based"] = args.IsValueBased
 
+	if args.ListOfAccounts != nil {
+		body["list_of_accounts"] = args.ListOfAccounts
+	}
+
 	if args.LookalikeSpec != "" {
 		body["lookalike_spec"] = args.LookalikeSpec
 	}
@@ -5014,8 +5162,16 @@ func CreateAdAccountCustomaudienceHandler(ctx context.Context, request mcp.CallT
 		body["rule_aggregation"] = args.RuleAggregation
 	}
 
+	if len(args.SubscriptionInfo) > 0 {
+		body["subscription_info"] = args.SubscriptionInfo
+	}
+
 	if args.Subtype != "" {
 		body["subtype"] = args.Subtype
+	}
+
+	if len(args.UseForProducts) > 0 {
+		body["use_for_products"] = args.UseForProducts
 	}
 
 	body["use_in_campaigns"] = args.UseInCampaigns
@@ -5180,6 +5336,10 @@ func CreateAdAccountCustomconversionHandler(ctx context.Context, request mcp.Cal
 		body["custom_event_type"] = args.CustomEventType
 	}
 
+	if args.DefaultConversionValue != 0 {
+		body["default_conversion_value"] = args.DefaultConversionValue
+	}
+
 	if args.Description != "" {
 		body["description"] = args.Description
 	}
@@ -5244,11 +5404,6 @@ func GetAdAccountDeliveryEstimateHandler(ctx context.Context, request mcp.CallTo
 
 	if args.OptimizationGoal != "" {
 		query.Set("optimization_goal", args.OptimizationGoal)
-	}
-
-	// Handle PromotedObject map parameter
-	for k, v := range args.PromotedObject {
-		query.Set(k, fmt.Sprintf("%v", v))
 	}
 
 	// Build URL and execute
@@ -5414,6 +5569,10 @@ func ListAdAccountGeneratepreviewsHandler(ctx context.Context, request mcp.CallT
 		query.Set(k, fmt.Sprintf("%v", v))
 	}
 
+	if args.EndDate != "" {
+		query.Set("end_date", args.EndDate)
+	}
+
 	if args.Height > 0 {
 		query.Set("height", fmt.Sprintf("%d", args.Height))
 	}
@@ -5437,6 +5596,10 @@ func ListAdAccountGeneratepreviewsHandler(ctx context.Context, request mcp.CallT
 
 	if args.RenderType != "" {
 		query.Set("render_type", args.RenderType)
+	}
+
+	if args.StartDate != "" {
+		query.Set("start_date", args.StartDate)
 	}
 
 	if args.Width > 0 {
@@ -5537,8 +5700,20 @@ func GetAdAccountInsightsHandler(ctx context.Context, request mcp.CallToolReques
 		query.Set("before", args.Before)
 	}
 
+	if len(args.ActionAttributionWindows) > 0 {
+		query.Set("action_attribution_windows", strings.Join(args.ActionAttributionWindows, ","))
+	}
+
+	if len(args.ActionBreakdowns) > 0 {
+		query.Set("action_breakdowns", strings.Join(args.ActionBreakdowns, ","))
+	}
+
 	if args.ActionReportTime != "" {
 		query.Set("action_report_time", args.ActionReportTime)
+	}
+
+	if len(args.Breakdowns) > 0 {
+		query.Set("breakdowns", strings.Join(args.Breakdowns, ","))
 	}
 
 	if args.DatePreset != "" {
@@ -5575,6 +5750,10 @@ func GetAdAccountInsightsHandler(ctx context.Context, request mcp.CallToolReques
 
 	if len(args.Summary) > 0 {
 		query.Set("summary", strings.Join(args.Summary, ","))
+	}
+
+	if len(args.SummaryActionBreakdowns) > 0 {
+		query.Set("summary_action_breakdowns", strings.Join(args.SummaryActionBreakdowns, ","))
 	}
 
 	if args.TimeIncrement != "" {
@@ -5614,8 +5793,20 @@ func CreateAdAccountInsightsReportHandler(ctx context.Context, request mcp.CallT
 
 	// Add parameters to body
 
+	if len(args.ActionAttributionWindows) > 0 {
+		body["action_attribution_windows"] = args.ActionAttributionWindows
+	}
+
+	if len(args.ActionBreakdowns) > 0 {
+		body["action_breakdowns"] = args.ActionBreakdowns
+	}
+
 	if args.ActionReportTime != "" {
 		body["action_report_time"] = args.ActionReportTime
+	}
+
+	if len(args.Breakdowns) > 0 {
+		body["breakdowns"] = args.Breakdowns
 	}
 
 	if args.DatePreset != "" {
@@ -5662,6 +5853,10 @@ func CreateAdAccountInsightsReportHandler(ctx context.Context, request mcp.CallT
 
 	if len(args.Summary) > 0 {
 		body["summary"] = args.Summary
+	}
+
+	if len(args.SummaryActionBreakdowns) > 0 {
+		body["summary_action_breakdowns"] = args.SummaryActionBreakdowns
 	}
 
 	if args.TimeIncrement != "" {
@@ -6448,6 +6643,10 @@ func CreateAdAccountReachfrequencypredictionHandler(ctx context.Context, request
 		body["impression"] = args.Impression
 	}
 
+	if len(args.InstreamPackages) > 0 {
+		body["instream_packages"] = args.InstreamPackages
+	}
+
 	if args.IntervalFrequencyCapResetPeriod > 0 {
 		body["interval_frequency_cap_reset_period"] = args.IntervalFrequencyCapResetPeriod
 	}
@@ -6520,6 +6719,10 @@ func CreateAdAccountReachfrequencypredictionHandler(ctx context.Context, request
 
 	if args.TargetFrequencyResetPeriod > 0 {
 		body["target_frequency_reset_period"] = args.TargetFrequencyResetPeriod
+	}
+
+	if args.TargetSpec != nil {
+		body["target_spec"] = args.TargetSpec
 	}
 
 	if args.VideoViewLengthConstraint > 0 {
@@ -6805,6 +7008,18 @@ func GetAdAccountTargetingbrowseHandler(ctx context.Context, request mcp.CallToo
 		query.Set("limit_type", args.LimitType)
 	}
 
+	if len(args.RegulatedCategories) > 0 {
+		query.Set("regulated_categories", strings.Join(args.RegulatedCategories, ","))
+	}
+
+	if len(args.RegulatedCountries) > 0 {
+		query.Set("regulated_countries", strings.Join(args.RegulatedCountries, ","))
+	}
+
+	if len(args.WhitelistedTypes) > 0 {
+		query.Set("whitelisted_types", strings.Join(args.WhitelistedTypes, ","))
+	}
+
 	// Build URL and execute
 	baseURL := buildGraphURL(args.ID, "targetingbrowse")
 	fullURL := BuildURLWithQuery(baseURL, query)
@@ -6880,17 +7095,24 @@ func GetAdAccountTargetingsearchHandler(ctx context.Context, request mcp.CallToo
 		query.Set("objective", args.Objective)
 	}
 
-	// Handle PromotedObject map parameter
-	for k, v := range args.PromotedObject {
-		query.Set(k, fmt.Sprintf("%v", v))
-	}
-
 	if args.Q != "" {
 		query.Set("q", args.Q)
 	}
 
+	if len(args.RegulatedCategories) > 0 {
+		query.Set("regulated_categories", strings.Join(args.RegulatedCategories, ","))
+	}
+
+	if len(args.RegulatedCountries) > 0 {
+		query.Set("regulated_countries", strings.Join(args.RegulatedCountries, ","))
+	}
+
 	if args.SessionId > 0 {
 		query.Set("session_id", fmt.Sprintf("%d", args.SessionId))
+	}
+
+	if len(args.WhitelistedTypes) > 0 {
+		query.Set("whitelisted_types", strings.Join(args.WhitelistedTypes, ","))
 	}
 
 	// Build URL and execute
@@ -7024,8 +7246,20 @@ func ListAdAccountTargetingsuggestionsHandler(ctx context.Context, request mcp.C
 		query.Set(k, fmt.Sprintf("%v", v))
 	}
 
+	if len(args.RegulatedCategories) > 0 {
+		query.Set("regulated_categories", strings.Join(args.RegulatedCategories, ","))
+	}
+
+	if len(args.RegulatedCountries) > 0 {
+		query.Set("regulated_countries", strings.Join(args.RegulatedCountries, ","))
+	}
+
 	if args.SessionId > 0 {
 		query.Set("session_id", fmt.Sprintf("%d", args.SessionId))
+	}
+
+	if len(args.WhitelistedTypes) > 0 {
+		query.Set("whitelisted_types", strings.Join(args.WhitelistedTypes, ","))
 	}
 
 	// Build URL and execute
@@ -7347,6 +7581,14 @@ func ListAdAccountVideoAdsHandler(ctx context.Context, request mcp.CallToolReque
 		query.Set("before", args.Before)
 	}
 
+	if args.Since != "" {
+		query.Set("since", args.Since)
+	}
+
+	if args.Until != "" {
+		query.Set("until", args.Until)
+	}
+
 	// Build URL and execute
 	baseURL := buildGraphURL(args.ID, "video_ads")
 	fullURL := BuildURLWithQuery(baseURL, query)
@@ -7507,6 +7749,10 @@ func UpdateAdAccountHandler(ctx context.Context, request mcp.CallToolRequest, ar
 
 	if args.Partner != "" {
 		body["partner"] = args.Partner
+	}
+
+	if args.SpendCap != 0 {
+		body["spend_cap"] = args.SpendCap
 	}
 
 	if args.SpendCapAction != "" {

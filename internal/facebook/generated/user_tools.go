@@ -254,17 +254,17 @@ type list_user_eventsArgs struct {
 
 // get_user_feedArgs defines the typed arguments for get_user_feed
 type get_user_feedArgs struct {
-	ID            string      `json:"id"`
-	Fields        []string    `json:"fields,omitempty"`
-	Limit         int         `json:"limit,omitempty"`
-	After         string      `json:"after,omitempty"`
-	Before        string      `json:"before,omitempty"`
-	IncludeHidden bool        `json:"include_hidden,omitempty"`
-	Q             string      `json:"q,omitempty"`
-	ShowExpired   bool        `json:"show_expired,omitempty"`
-	Since         interface{} `json:"since,omitempty"`
-	Until         interface{} `json:"until,omitempty"`
-	With          string      `json:"with,omitempty"`
+	ID            string   `json:"id"`
+	Fields        []string `json:"fields,omitempty"`
+	Limit         int      `json:"limit,omitempty"`
+	After         string   `json:"after,omitempty"`
+	Before        string   `json:"before,omitempty"`
+	IncludeHidden bool     `json:"include_hidden,omitempty"`
+	Q             string   `json:"q,omitempty"`
+	ShowExpired   bool     `json:"show_expired,omitempty"`
+	Since         string   `json:"since,omitempty"`
+	Until         string   `json:"until,omitempty"`
+	With          string   `json:"with,omitempty"`
 }
 
 // update_user_feedArgs defines the typed arguments for update_user_feed
@@ -280,7 +280,7 @@ type update_user_feedArgs struct {
 	AttachPlaceSuggestion     bool                     `json:"attach_place_suggestion,omitempty"`
 	AttachedMedia             []map[string]interface{} `json:"attached_media,omitempty"`
 	AudienceExp               bool                     `json:"audience_exp,omitempty"`
-	BackdatedTime             interface{}              `json:"backdated_time,omitempty"`
+	BackdatedTime             string                   `json:"backdated_time,omitempty"`
 	BackdatedTimeGranularity  string                   `json:"backdated_time_granularity,omitempty"`
 	BreakingNews              bool                     `json:"breaking_news,omitempty"`
 	BreakingNewsExpiration    int                      `json:"breaking_news_expiration,omitempty"`
@@ -342,7 +342,7 @@ type update_user_feedArgs struct {
 	PlaceAttachmentSetting    string                   `json:"place_attachment_setting,omitempty"`
 	PlaceList                 string                   `json:"place_list,omitempty"`
 	PlaceListData             interface{}              `json:"place_list_data,omitempty"`
-	PostSurfacesBlacklist     []interface{}            `json:"post_surfaces_blacklist,omitempty"`
+	PostSurfacesBlacklist     []string                 `json:"post_surfaces_blacklist,omitempty"`
 	PostingToRedspace         string                   `json:"posting_to_redspace,omitempty"`
 	Privacy                   string                   `json:"privacy,omitempty"`
 	PromptId                  string                   `json:"prompt_id,omitempty"`
@@ -355,7 +355,7 @@ type update_user_feedArgs struct {
 	Ref                       []string                 `json:"ref,omitempty"`
 	ReferenceableImageIds     []string                 `json:"referenceable_image_ids,omitempty"`
 	ReferralId                string                   `json:"referral_id,omitempty"`
-	ScheduledPublishTime      interface{}              `json:"scheduled_publish_time,omitempty"`
+	ScheduledPublishTime      string                   `json:"scheduled_publish_time,omitempty"`
 	Source                    string                   `json:"source,omitempty"`
 	SponsorId                 string                   `json:"sponsor_id,omitempty"`
 	SponsorRelationship       int                      `json:"sponsor_relationship,omitempty"`
@@ -403,9 +403,9 @@ type create_user_fundraiserArgs struct {
 	CoverPhoto             interface{} `json:"cover_photo,omitempty"`
 	Currency               string      `json:"currency"`
 	Description            string      `json:"description"`
-	EndTime                interface{} `json:"end_time"`
+	EndTime                string      `json:"end_time"`
 	ExternalEventName      string      `json:"external_event_name,omitempty"`
-	ExternalEventStartTime interface{} `json:"external_event_start_time,omitempty"`
+	ExternalEventStartTime string      `json:"external_event_start_time,omitempty"`
 	ExternalEventUri       string      `json:"external_event_uri,omitempty"`
 	ExternalFundraiserUri  string      `json:"external_fundraiser_uri,omitempty"`
 	ExternalId             string      `json:"external_id"`
@@ -468,13 +468,13 @@ type list_user_likesArgs struct {
 
 // list_user_live_videosArgs defines the typed arguments for list_user_live_videos
 type list_user_live_videosArgs struct {
-	ID              string        `json:"id"`
-	Fields          []string      `json:"fields,omitempty"`
-	Limit           int           `json:"limit,omitempty"`
-	After           string        `json:"after,omitempty"`
-	Before          string        `json:"before,omitempty"`
-	BroadcastStatus []interface{} `json:"broadcast_status,omitempty"`
-	Source          string        `json:"source,omitempty"`
+	ID              string   `json:"id"`
+	Fields          []string `json:"fields,omitempty"`
+	Limit           int      `json:"limit,omitempty"`
+	After           string   `json:"after,omitempty"`
+	Before          string   `json:"before,omitempty"`
+	BroadcastStatus []string `json:"broadcast_status,omitempty"`
+	Source          string   `json:"source,omitempty"`
 }
 
 // create_user_live_videoArgs defines the typed arguments for create_user_live_video
@@ -525,7 +525,7 @@ type get_user_musicArgs struct {
 type create_user_notificationArgs struct {
 	ID                        string                 `json:"id"`
 	BotMessagePayloadElements string                 `json:"bot_message_payload_elements,omitempty"`
-	Filtering                 []interface{}          `json:"filtering,omitempty"`
+	Filtering                 []string               `json:"filtering,omitempty"`
 	Href                      map[string]interface{} `json:"href,omitempty"`
 	Label                     string                 `json:"label,omitempty"`
 	Message                   map[string]interface{} `json:"message,omitempty"`
@@ -593,7 +593,7 @@ type create_user_photoArgs struct {
 	ApplicationId                         string                   `json:"application_id,omitempty"`
 	Attempt                               int                      `json:"attempt,omitempty"`
 	AudienceExp                           bool                     `json:"audience_exp,omitempty"`
-	BackdatedTime                         interface{}              `json:"backdated_time,omitempty"`
+	BackdatedTime                         string                   `json:"backdated_time,omitempty"`
 	BackdatedTimeGranularity              string                   `json:"backdated_time_granularity,omitempty"`
 	Caption                               string                   `json:"caption,omitempty"`
 	ComposerSessionId                     string                   `json:"composer_session_id,omitempty"`
@@ -655,17 +655,17 @@ type get_user_pictureArgs struct {
 
 // list_user_postsArgs defines the typed arguments for list_user_posts
 type list_user_postsArgs struct {
-	ID            string      `json:"id"`
-	Fields        []string    `json:"fields,omitempty"`
-	Limit         int         `json:"limit,omitempty"`
-	After         string      `json:"after,omitempty"`
-	Before        string      `json:"before,omitempty"`
-	IncludeHidden bool        `json:"include_hidden,omitempty"`
-	Q             string      `json:"q,omitempty"`
-	ShowExpired   bool        `json:"show_expired,omitempty"`
-	Since         interface{} `json:"since,omitempty"`
-	Until         interface{} `json:"until,omitempty"`
-	With          string      `json:"with,omitempty"`
+	ID            string   `json:"id"`
+	Fields        []string `json:"fields,omitempty"`
+	Limit         int      `json:"limit,omitempty"`
+	After         string   `json:"after,omitempty"`
+	Before        string   `json:"before,omitempty"`
+	IncludeHidden bool     `json:"include_hidden,omitempty"`
+	Q             string   `json:"q,omitempty"`
+	ShowExpired   bool     `json:"show_expired,omitempty"`
+	Since         string   `json:"since,omitempty"`
+	Until         string   `json:"until,omitempty"`
+	With          string   `json:"with,omitempty"`
 }
 
 // list_user_rich_media_documentsArgs defines the typed arguments for list_user_rich_media_documents
@@ -1049,6 +1049,10 @@ func CreateUserAdStudieHandler(ctx context.Context, request mcp.CallToolRequest,
 		body["client_business"] = args.ClientBusiness
 	}
 
+	if args.ConfidenceLevel != 0 {
+		body["confidence_level"] = args.ConfidenceLevel
+	}
+
 	if args.CooldownStartTime > 0 {
 		body["cooldown_start_time"] = args.CooldownStartTime
 	}
@@ -1079,6 +1083,10 @@ func CreateUserAdStudieHandler(ctx context.Context, request mcp.CallToolRequest,
 
 	if args.Type != "" {
 		body["type"] = args.Type
+	}
+
+	if args.Viewers != nil {
+		body["viewers"] = args.Viewers
 	}
 
 	// Build URL and execute
@@ -1960,6 +1968,14 @@ func GetUserFeedHandler(ctx context.Context, request mcp.CallToolRequest, args g
 		query.Set("show_expired", "true")
 	}
 
+	if args.Since != "" {
+		query.Set("since", args.Since)
+	}
+
+	if args.Until != "" {
+		query.Set("until", args.Until)
+	}
+
 	if args.With != "" {
 		query.Set("with", args.With)
 	}
@@ -2019,6 +2035,10 @@ func UpdateUserFeedHandler(ctx context.Context, request mcp.CallToolRequest, arg
 	}
 
 	body["audience_exp"] = args.AudienceExp
+
+	if args.BackdatedTime != "" {
+		body["backdated_time"] = args.BackdatedTime
+	}
 
 	if args.BackdatedTimeGranularity != "" {
 		body["backdated_time_granularity"] = args.BackdatedTimeGranularity
@@ -2138,6 +2158,10 @@ func UpdateUserFeedHandler(ctx context.Context, request mcp.CallToolRequest, arg
 		body["image_crops"] = args.ImageCrops
 	}
 
+	if args.ImplicitWithTags != nil {
+		body["implicit_with_tags"] = args.ImplicitWithTags
+	}
+
 	if args.InstantGameEntryPointData != "" {
 		body["instant_game_entry_point_data"] = args.InstantGameEntryPointData
 	}
@@ -2232,6 +2256,14 @@ func UpdateUserFeedHandler(ctx context.Context, request mcp.CallToolRequest, arg
 		body["place_list"] = args.PlaceList
 	}
 
+	if args.PlaceListData != nil {
+		body["place_list_data"] = args.PlaceListData
+	}
+
+	if len(args.PostSurfacesBlacklist) > 0 {
+		body["post_surfaces_blacklist"] = args.PostSurfacesBlacklist
+	}
+
 	if args.PostingToRedspace != "" {
 		body["posting_to_redspace"] = args.PostingToRedspace
 	}
@@ -2278,6 +2310,10 @@ func UpdateUserFeedHandler(ctx context.Context, request mcp.CallToolRequest, arg
 		body["referral_id"] = args.ReferralId
 	}
 
+	if args.ScheduledPublishTime != "" {
+		body["scheduled_publish_time"] = args.ScheduledPublishTime
+	}
+
 	if args.Source != "" {
 		body["source"] = args.Source
 	}
@@ -2292,6 +2328,10 @@ func UpdateUserFeedHandler(ctx context.Context, request mcp.CallToolRequest, arg
 
 	if args.SuggestedPlaceId != nil {
 		body["suggested_place_id"] = args.SuggestedPlaceId
+	}
+
+	if args.Tags != nil {
+		body["tags"] = args.Tags
 	}
 
 	if args.TargetSurface != "" {
@@ -2312,6 +2352,10 @@ func UpdateUserFeedHandler(ctx context.Context, request mcp.CallToolRequest, arg
 
 	if args.TextOnlyPlace != "" {
 		body["text_only_place"] = args.TextOnlyPlace
+	}
+
+	if args.Thumbnail != nil {
+		body["thumbnail"] = args.Thumbnail
 	}
 
 	if args.TimeSinceOriginalPost > 0 {
@@ -2465,6 +2509,10 @@ func CreateUserFundraiserHandler(ctx context.Context, request mcp.CallToolReques
 		body["charity_id"] = args.CharityId
 	}
 
+	if args.CoverPhoto != nil {
+		body["cover_photo"] = args.CoverPhoto
+	}
+
 	if args.Currency != "" {
 		body["currency"] = args.Currency
 	}
@@ -2473,8 +2521,16 @@ func CreateUserFundraiserHandler(ctx context.Context, request mcp.CallToolReques
 		body["description"] = args.Description
 	}
 
+	if args.EndTime != "" {
+		body["end_time"] = args.EndTime
+	}
+
 	if args.ExternalEventName != "" {
 		body["external_event_name"] = args.ExternalEventName
+	}
+
+	if args.ExternalEventStartTime != "" {
+		body["external_event_start_time"] = args.ExternalEventStartTime
 	}
 
 	if args.ExternalEventUri != "" {
@@ -2810,6 +2866,10 @@ func ListUserLiveVideosHandler(ctx context.Context, request mcp.CallToolRequest,
 		query.Set("before", args.Before)
 	}
 
+	if len(args.BroadcastStatus) > 0 {
+		query.Set("broadcast_status", strings.Join(args.BroadcastStatus, ","))
+	}
+
 	if args.Source != "" {
 		query.Set("source", args.Source)
 	}
@@ -2854,6 +2914,10 @@ func CreateUserLiveVideoHandler(ctx context.Context, request mcp.CallToolRequest
 
 	body["fisheye_video_cropped"] = args.FisheyeVideoCropped
 
+	if args.FrontZRotation != 0 {
+		body["front_z_rotation"] = args.FrontZRotation
+	}
+
 	body["is_audio_only"] = args.IsAudioOnly
 
 	body["is_spherical"] = args.IsSpherical
@@ -2871,6 +2935,10 @@ func CreateUserLiveVideoHandler(ctx context.Context, request mcp.CallToolRequest
 	}
 
 	body["published"] = args.Published
+
+	if args.ScheduleCustomProfileImage != nil {
+		body["schedule_custom_profile_image"] = args.ScheduleCustomProfileImage
+	}
 
 	if args.SpatialAudioFormat != "" {
 		body["spatial_audio_format"] = args.SpatialAudioFormat
@@ -3000,6 +3068,10 @@ func CreateUserNotificationHandler(ctx context.Context, request mcp.CallToolRequ
 
 	if args.BotMessagePayloadElements != "" {
 		body["bot_message_payload_elements"] = args.BotMessagePayloadElements
+	}
+
+	if len(args.Filtering) > 0 {
+		body["filtering"] = args.Filtering
 	}
 
 	if args.Href != nil {
@@ -3295,6 +3367,10 @@ func CreateUserPhotoHandler(ctx context.Context, request mcp.CallToolRequest, ar
 
 	body["audience_exp"] = args.AudienceExp
 
+	if args.BackdatedTime != "" {
+		body["backdated_time"] = args.BackdatedTime
+	}
+
 	if args.BackdatedTimeGranularity != "" {
 		body["backdated_time_granularity"] = args.BackdatedTimeGranularity
 	}
@@ -3576,6 +3652,14 @@ func ListUserPostsHandler(ctx context.Context, request mcp.CallToolRequest, args
 		query.Set("show_expired", "true")
 	}
 
+	if args.Since != "" {
+		query.Set("since", args.Since)
+	}
+
+	if args.Until != "" {
+		query.Set("until", args.Until)
+	}
+
 	if args.With != "" {
 		query.Set("with", args.With)
 	}
@@ -3646,6 +3730,10 @@ func CreateUserStagingResourceHandler(ctx context.Context, request mcp.CallToolR
 	}
 
 	// Add parameters to body
+
+	if args.File != nil {
+		body["file"] = args.File
+	}
 
 	// Build URL and execute
 	url := buildGraphURL(args.ID, "staging_resources")
@@ -3805,12 +3893,20 @@ func CreateUserVideoHandler(ctx context.Context, request mcp.CallToolRequest, ar
 		body["fov"] = args.Fov
 	}
 
+	if args.FrontZRotation != 0 {
+		body["front_z_rotation"] = args.FrontZRotation
+	}
+
 	if args.FunFactPromptId != "" {
 		body["fun_fact_prompt_id"] = args.FunFactPromptId
 	}
 
 	if args.FunFactToasteeId > 0 {
 		body["fun_fact_toastee_id"] = args.FunFactToasteeId
+	}
+
+	if args.Guide != nil {
+		body["guide"] = args.Guide
 	}
 
 	body["guide_enabled"] = args.GuideEnabled
@@ -3921,6 +4017,10 @@ func CreateUserVideoHandler(ctx context.Context, request mcp.CallToolRequest, ar
 
 	if args.TextFormatMetadata != "" {
 		body["text_format_metadata"] = args.TextFormatMetadata
+	}
+
+	if args.Thumb != nil {
+		body["thumb"] = args.Thumb
 	}
 
 	if args.TimeSinceOriginalPost > 0 {
