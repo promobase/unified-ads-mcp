@@ -15,21 +15,21 @@ import (
 
 // Tool schemas for AdCreative
 var (
-	AdCreative_POST_adlabelsSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"adlabels":{"description":"adlabels","items":{"additionalProperties":true,"type":"object"},"type":"array"},"id":{"description":"AdCreative ID","type":"string"}},"required":["id","adlabels"],"type":"object"}`)
+	create_ad_creative_adlabelSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"adlabels":{"description":"adlabels","items":{"additionalProperties":true,"type":"object"},"type":"array"},"id":{"description":"AdCreative ID","type":"string"}},"required":["id","adlabels"],"type":"object"}`)
 
-	AdCreative_GET_creative_insightsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdCreative ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+	list_ad_creative_creative_insightsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdCreative ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
 
-	AdCreative_GET_previewsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"ad_format":{"description":"ad_format (enum: adcreativepreviews_ad_format_enum_param)","type":"string"},"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"creative_feature":{"description":"creative_feature (enum: adcreativepreviews_creative_feature_enum_param)","type":"string"},"dynamic_asset_label":{"description":"dynamic_asset_label","type":"string"},"dynamic_creative_spec":{"additionalProperties":true,"description":"dynamic_creative_spec","type":"object"},"dynamic_customization":{"additionalProperties":true,"description":"dynamic_customization","type":"object"},"end_date":{"description":"end_date","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"height":{"description":"height","type":"integer"},"id":{"description":"AdCreative ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"locale":{"description":"locale","type":"string"},"place_page_id":{"description":"place_page_id","type":"integer"},"post":{"additionalProperties":true,"description":"post","type":"object"},"product_item_ids":{"description":"product_item_ids","items":{"type":"string"},"type":"array"},"render_type":{"description":"render_type (enum: adcreativepreviews_render_type_enum_param)","type":"string"},"start_date":{"description":"start_date","type":"string"},"width":{"description":"width","type":"integer"}},"required":["id","ad_format"],"type":"object"}`)
+	list_ad_creative_previewsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"ad_format":{"description":"ad_format (enum: adcreativepreviews_ad_format_enum_param)","type":"string"},"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"creative_feature":{"description":"creative_feature (enum: adcreativepreviews_creative_feature_enum_param)","type":"string"},"dynamic_asset_label":{"description":"dynamic_asset_label","type":"string"},"dynamic_creative_spec":{"additionalProperties":true,"description":"dynamic_creative_spec","type":"object"},"dynamic_customization":{"additionalProperties":true,"description":"dynamic_customization","type":"object"},"end_date":{"description":"end_date","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"height":{"description":"height","type":"integer"},"id":{"description":"AdCreative ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"locale":{"description":"locale","type":"string"},"place_page_id":{"description":"place_page_id","type":"integer"},"post":{"additionalProperties":true,"description":"post","type":"object"},"product_item_ids":{"description":"product_item_ids","items":{"type":"string"},"type":"array"},"render_type":{"description":"render_type (enum: adcreativepreviews_render_type_enum_param)","type":"string"},"start_date":{"description":"start_date","type":"string"},"width":{"description":"width","type":"integer"}},"required":["id","ad_format"],"type":"object"}`)
 
-	AdCreative_DELETE_Schema = json.RawMessage(`{"additionalProperties":true,"properties":{"account_id":{"description":"account_id","type":"string"},"adlabels":{"description":"adlabels","items":{"additionalProperties":true,"type":"object"},"type":"array"},"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdCreative ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"name":{"description":"name","type":"string"},"status":{"description":"status (enum: adcreative_status)","type":"string"}},"required":["id"],"type":"object"}`)
+	delete_ad_creativeSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"account_id":{"description":"account_id","type":"string"},"adlabels":{"description":"adlabels","items":{"additionalProperties":true,"type":"object"},"type":"array"},"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdCreative ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"name":{"description":"name","type":"string"},"status":{"description":"status (enum: adcreative_status)","type":"string"}},"required":["id"],"type":"object"}`)
 
-	AdCreative_GET_Schema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdCreative ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"thumbnail_height":{"description":"thumbnail_height","type":"integer"},"thumbnail_width":{"description":"thumbnail_width","type":"integer"}},"required":["id"],"type":"object"}`)
+	get_ad_creativeSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdCreative ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"thumbnail_height":{"description":"thumbnail_height","type":"integer"},"thumbnail_width":{"description":"thumbnail_width","type":"integer"}},"required":["id"],"type":"object"}`)
 
-	AdCreative_POST_Schema = json.RawMessage(`{"additionalProperties":false,"properties":{"account_id":{"description":"account_id","type":"string"},"adlabels":{"description":"adlabels","items":{"additionalProperties":true,"type":"object"},"type":"array"},"id":{"description":"AdCreative ID","type":"string"},"name":{"description":"name","type":"string"},"status":{"description":"status (enum: adcreative_status)","type":"string"}},"required":["id"],"type":"object"}`)
+	update_ad_creativeSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"account_id":{"description":"account_id","type":"string"},"adlabels":{"description":"adlabels","items":{"additionalProperties":true,"type":"object"},"type":"array"},"id":{"description":"AdCreative ID","type":"string"},"name":{"description":"name","type":"string"},"status":{"description":"status (enum: adcreative_status)","type":"string"}},"required":["id"],"type":"object"}`)
 )
 
-// AdCreative_POST_adlabelsHandler handles AdCreative_POST_adlabels
-func AdCreative_POST_adlabelsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// CreateAdCreativeAdlabelHandler handles create_ad_creative_adlabel
+func CreateAdCreativeAdlabelHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -58,8 +58,8 @@ func AdCreative_POST_adlabelsHandler(ctx context.Context, request mcp.CallToolRe
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// AdCreative_GET_creative_insightsHandler handles AdCreative_GET_creative_insights
-func AdCreative_GET_creative_insightsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// ListAdCreativeCreativeInsightsHandler handles list_ad_creative_creative_insights
+func ListAdCreativeCreativeInsightsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -113,8 +113,8 @@ func AdCreative_GET_creative_insightsHandler(ctx context.Context, request mcp.Ca
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// AdCreative_GET_previewsHandler handles AdCreative_GET_previews
-func AdCreative_GET_previewsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// ListAdCreativePreviewsHandler handles list_ad_creative_previews
+func ListAdCreativePreviewsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -168,8 +168,8 @@ func AdCreative_GET_previewsHandler(ctx context.Context, request mcp.CallToolReq
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// AdCreative_DELETE_Handler handles AdCreative_DELETE_
-func AdCreative_DELETE_Handler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// DeleteAdCreativeHandler handles delete_ad_creative
+func DeleteAdCreativeHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -223,8 +223,8 @@ func AdCreative_DELETE_Handler(ctx context.Context, request mcp.CallToolRequest)
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// AdCreative_GET_Handler handles AdCreative_GET_
-func AdCreative_GET_Handler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// GetAdCreativeHandler handles get_ad_creative
+func GetAdCreativeHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -278,8 +278,8 @@ func AdCreative_GET_Handler(ctx context.Context, request mcp.CallToolRequest) (*
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// AdCreative_POST_Handler handles AdCreative_POST_
-func AdCreative_POST_Handler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// UpdateAdCreativeHandler handles update_ad_creative
+func UpdateAdCreativeHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -313,56 +313,56 @@ func RegisterAdCreativeTools(s *server.MCPServer) error {
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"AdCreative_POST_adlabels",
+			"create_ad_creative_adlabel",
 			"Associate adlabels with this AdCreative Returns AdCreative. Required: adlabels",
-			AdCreative_POST_adlabelsSchema,
+			create_ad_creative_adlabelSchema,
 		),
-		AdCreative_POST_adlabelsHandler,
+		CreateAdCreativeAdlabelHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"AdCreative_GET_creative_insights",
+			"list_ad_creative_creative_insights",
 			"List creative_insights for this AdCreative Returns AdCreativeInsights.",
-			AdCreative_GET_creative_insightsSchema,
+			list_ad_creative_creative_insightsSchema,
 		),
-		AdCreative_GET_creative_insightsHandler,
+		ListAdCreativeCreativeInsightsHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"AdCreative_GET_previews",
+			"list_ad_creative_previews",
 			"List previews for this AdCreative Returns AdPreview. Required: ad_format (enum)",
-			AdCreative_GET_previewsSchema,
+			list_ad_creative_previewsSchema,
 		),
-		AdCreative_GET_previewsHandler,
+		ListAdCreativePreviewsHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"AdCreative_DELETE_",
+			"delete_ad_creative",
 			"Delete a AdCreative",
-			AdCreative_DELETE_Schema,
+			delete_ad_creativeSchema,
 		),
-		AdCreative_DELETE_Handler,
+		DeleteAdCreativeHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"AdCreative_GET_",
+			"get_ad_creative",
 			"Get details of a specific AdCreative Returns AdCreative.",
-			AdCreative_GET_Schema,
+			get_ad_creativeSchema,
 		),
-		AdCreative_GET_Handler,
+		GetAdCreativeHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"AdCreative_POST_",
+			"update_ad_creative",
 			"Update a AdCreative Returns AdCreative.",
-			AdCreative_POST_Schema,
+			update_ad_creativeSchema,
 		),
-		AdCreative_POST_Handler,
+		UpdateAdCreativeHandler,
 	)
 
 	return nil

@@ -163,7 +163,8 @@ func (g *ToolGenerator) generateToolsForObject(objectName string, spec *ToolSpec
 	// Process APIs for this object
 	for _, api := range spec.APIs {
 		toolName := g.generateToolName(objectName, api)
-		handlerName := toolName + "Handler"
+		// Convert snake_case tool name to CamelCase for handler function name
+		handlerName := g.toCamelCase(toolName) + "Handler"
 
 		// Generate input schema based on method
 		inputSchema := g.generateInputSchema(objectName, api)
@@ -355,9 +356,48 @@ func (g *ToolGenerator) generateTools() error {
 }
 
 func (g *ToolGenerator) generateToolName(objectName string, api API) string {
-	// Format: ObjectName_METHOD_endpoint
-	endpoint := strings.ReplaceAll(api.Endpoint, "/", "_")
-	return fmt.Sprintf("%s_%s_%s", objectName, api.Method, endpoint)
+	// Generate more intuitive tool names based on action and endpoint
+
+	// Handle empty endpoint (CRUD on object itself)
+	if api.Endpoint == "" {
+		switch api.Method {
+		case "GET":
+			return fmt.Sprintf("get_%s", g.toSnakeCase(objectName))
+		case "POST":
+			return fmt.Sprintf("update_%s", g.toSnakeCase(objectName))
+		case "DELETE":
+			return fmt.Sprintf("delete_%s", g.toSnakeCase(objectName))
+		default:
+			return fmt.Sprintf("%s_%s", strings.ToLower(api.Method), g.toSnakeCase(objectName))
+		}
+	}
+
+	// For endpoints, create action-based names
+	endpoint := g.toSnakeCase(api.Endpoint)
+	objectSnake := g.toSnakeCase(objectName)
+
+	// Special cases for common patterns
+	switch {
+	case api.Endpoint == "insights" && api.Method == "GET":
+		return fmt.Sprintf("get_%s_insights", objectSnake)
+	case api.Endpoint == "insights" && api.Method == "POST":
+		return fmt.Sprintf("create_%s_insights_report", objectSnake)
+	case strings.HasSuffix(api.Endpoint, "s") && api.Method == "GET":
+		// Plural endpoints usually list related objects
+		return fmt.Sprintf("list_%s_%s", objectSnake, endpoint)
+	case api.Method == "POST" && strings.HasSuffix(api.Endpoint, "s"):
+		// POST to plural usually creates new items
+		singular := strings.TrimSuffix(endpoint, "s")
+		return fmt.Sprintf("create_%s_%s", objectSnake, singular)
+	case api.Method == "DELETE":
+		return fmt.Sprintf("remove_%s_from_%s", endpoint, objectSnake)
+	case api.Method == "GET":
+		return fmt.Sprintf("get_%s_%s", objectSnake, endpoint)
+	case api.Method == "POST":
+		return fmt.Sprintf("update_%s_%s", objectSnake, endpoint)
+	default:
+		return fmt.Sprintf("%s_%s_%s", strings.ToLower(api.Method), objectSnake, endpoint)
+	}
 }
 
 func (g *ToolGenerator) generateDescription(objectName string, api API) string {
@@ -649,4 +689,30 @@ func (g *ToolGenerator) formatGeneratedFiles() error {
 	}
 
 	return nil
+}
+
+// toSnakeCase converts CamelCase to snake_case
+func (g *ToolGenerator) toSnakeCase(s string) string {
+	var result []rune
+	for i, r := range s {
+		if i > 0 && r >= 'A' && r <= 'Z' {
+			// Add underscore before uppercase letter if previous char is lowercase
+			if prev := s[i-1]; prev >= 'a' && prev <= 'z' {
+				result = append(result, '_')
+			}
+		}
+		result = append(result, r)
+	}
+	return strings.ToLower(string(result))
+}
+
+// toCamelCase converts snake_case to CamelCase
+func (g *ToolGenerator) toCamelCase(s string) string {
+	parts := strings.Split(s, "_")
+	for i, part := range parts {
+		if len(part) > 0 {
+			parts[i] = strings.ToUpper(part[:1]) + part[1:]
+		}
+	}
+	return strings.Join(parts, "")
 }

@@ -15,35 +15,35 @@ import (
 
 // Tool schemas for Ad
 var (
-	Ad_GET_adcreativesSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"limit":{"description":"Maximum number of results","type":"integer"}},"type":"object"}`)
+	list_ad_adcreativesSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"limit":{"description":"Maximum number of results","type":"integer"}},"type":"object"}`)
 
-	Ad_POST_adlabelsSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"adlabels":{"description":"adlabels","items":{"additionalProperties":true,"type":"object"},"type":"array"},"execution_options":{"description":"execution_options","items":{"type":"string"},"type":"array"}},"required":["adlabels"],"type":"object"}`)
+	create_ad_adlabelSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"adlabels":{"description":"adlabels","items":{"additionalProperties":true,"type":"object"},"type":"array"},"execution_options":{"description":"execution_options","items":{"type":"string"},"type":"array"}},"required":["adlabels"],"type":"object"}`)
 
-	Ad_GET_adrules_governedSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"limit":{"description":"Maximum number of results","type":"integer"},"pass_evaluation":{"description":"pass_evaluation","type":"boolean"}},"type":"object"}`)
+	get_ad_adrules_governedSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"limit":{"description":"Maximum number of results","type":"integer"},"pass_evaluation":{"description":"pass_evaluation","type":"boolean"}},"type":"object"}`)
 
-	Ad_GET_copiesSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"date_preset":{"description":"date_preset (enum: adgroupcopies_date_preset_enum_param)","type":"string"},"effective_status":{"description":"effective_status","items":{"type":"string"},"type":"array"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"Ad ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"time_range":{"description":"time_range","type":"string"},"updated_since":{"description":"updated_since","type":"integer"}},"required":["id"],"type":"object"}`)
+	list_ad_copiesSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"date_preset":{"description":"date_preset (enum: adgroupcopies_date_preset_enum_param)","type":"string"},"effective_status":{"description":"effective_status","items":{"type":"string"},"type":"array"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"Ad ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"time_range":{"description":"time_range","type":"string"},"updated_since":{"description":"updated_since","type":"integer"}},"required":["id"],"type":"object"}`)
 
-	Ad_POST_copiesSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"adset_id":{"description":"adset_id","type":"string"},"creative_parameters":{"description":"creative_parameters","type":"string"},"id":{"description":"Ad ID","type":"string"},"rename_options":{"additionalProperties":true,"description":"rename_options","type":"object"},"status_option":{"description":"status_option (enum: adgroupcopies_status_option_enum_param)","type":"string"}},"required":["id"],"type":"object"}`)
+	create_ad_copieSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"adset_id":{"description":"adset_id","type":"string"},"creative_parameters":{"description":"creative_parameters","type":"string"},"id":{"description":"Ad ID","type":"string"},"rename_options":{"additionalProperties":true,"description":"rename_options","type":"object"},"status_option":{"description":"status_option (enum: adgroupcopies_status_option_enum_param)","type":"string"}},"required":["id"],"type":"object"}`)
 
-	Ad_GET_insightsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"action_attribution_windows":{"description":"action_attribution_windows","items":{"type":"string"},"type":"array"},"action_breakdowns":{"description":"action_breakdowns","items":{"type":"string"},"type":"array"},"action_report_time":{"description":"action_report_time (enum: adgroupinsights_action_report_time_enum_param)","type":"string"},"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"breakdowns":{"description":"breakdowns","items":{"type":"string"},"type":"array"},"date_preset":{"description":"date_preset (enum: adgroupinsights_date_preset_enum_param)","type":"string"},"default_summary":{"description":"default_summary","type":"boolean"},"export_columns":{"description":"export_columns","items":{"type":"string"},"type":"array"},"export_format":{"description":"export_format","type":"string"},"export_name":{"description":"export_name","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"filtering":{"description":"filtering","items":{"additionalProperties":true,"type":"object"},"type":"array"},"id":{"description":"Ad ID","type":"string"},"level":{"description":"level (enum: adgroupinsights_level_enum_param)","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"product_id_limit":{"description":"product_id_limit","type":"integer"},"sort":{"description":"sort","items":{"type":"string"},"type":"array"},"summary":{"description":"summary","items":{"type":"string"},"type":"array"},"summary_action_breakdowns":{"description":"summary_action_breakdowns","items":{"type":"string"},"type":"array"},"time_increment":{"description":"time_increment","type":"string"},"time_range":{"description":"time_range","type":"string"},"time_ranges":{"description":"time_ranges","items":{"additionalProperties":true,"type":"object"},"type":"array"},"use_account_attribution_setting":{"description":"use_account_attribution_setting","type":"boolean"},"use_unified_attribution_setting":{"description":"use_unified_attribution_setting","type":"boolean"}},"required":["id"],"type":"object"}`)
+	get_ad_insightsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"action_attribution_windows":{"description":"action_attribution_windows","items":{"type":"string"},"type":"array"},"action_breakdowns":{"description":"action_breakdowns","items":{"type":"string"},"type":"array"},"action_report_time":{"description":"action_report_time (enum: adgroupinsights_action_report_time_enum_param)","type":"string"},"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"breakdowns":{"description":"breakdowns","items":{"type":"string"},"type":"array"},"date_preset":{"description":"date_preset (enum: adgroupinsights_date_preset_enum_param)","type":"string"},"default_summary":{"description":"default_summary","type":"boolean"},"export_columns":{"description":"export_columns","items":{"type":"string"},"type":"array"},"export_format":{"description":"export_format","type":"string"},"export_name":{"description":"export_name","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"filtering":{"description":"filtering","items":{"additionalProperties":true,"type":"object"},"type":"array"},"id":{"description":"Ad ID","type":"string"},"level":{"description":"level (enum: adgroupinsights_level_enum_param)","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"product_id_limit":{"description":"product_id_limit","type":"integer"},"sort":{"description":"sort","items":{"type":"string"},"type":"array"},"summary":{"description":"summary","items":{"type":"string"},"type":"array"},"summary_action_breakdowns":{"description":"summary_action_breakdowns","items":{"type":"string"},"type":"array"},"time_increment":{"description":"time_increment","type":"string"},"time_range":{"description":"time_range","type":"string"},"time_ranges":{"description":"time_ranges","items":{"additionalProperties":true,"type":"object"},"type":"array"},"use_account_attribution_setting":{"description":"use_account_attribution_setting","type":"boolean"},"use_unified_attribution_setting":{"description":"use_unified_attribution_setting","type":"boolean"}},"required":["id"],"type":"object"}`)
 
-	Ad_POST_insightsSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"action_attribution_windows":{"description":"action_attribution_windows","items":{"type":"string"},"type":"array"},"action_breakdowns":{"description":"action_breakdowns","items":{"type":"string"},"type":"array"},"action_report_time":{"description":"action_report_time (enum: adgroupinsights_action_report_time_enum_param)","type":"string"},"breakdowns":{"description":"breakdowns","items":{"type":"string"},"type":"array"},"date_preset":{"description":"date_preset (enum: adgroupinsights_date_preset_enum_param)","type":"string"},"default_summary":{"description":"default_summary","type":"boolean"},"export_columns":{"description":"export_columns","items":{"type":"string"},"type":"array"},"export_format":{"description":"export_format","type":"string"},"export_name":{"description":"export_name","type":"string"},"fields":{"description":"fields","items":{"type":"string"},"type":"array"},"filtering":{"description":"filtering","items":{"additionalProperties":true,"type":"object"},"type":"array"},"id":{"description":"Ad ID","type":"string"},"level":{"description":"level (enum: adgroupinsights_level_enum_param)","type":"string"},"limit":{"description":"limit","type":"integer"},"product_id_limit":{"description":"product_id_limit","type":"integer"},"sort":{"description":"sort","items":{"type":"string"},"type":"array"},"summary":{"description":"summary","items":{"type":"string"},"type":"array"},"summary_action_breakdowns":{"description":"summary_action_breakdowns","items":{"type":"string"},"type":"array"},"time_increment":{"description":"time_increment","type":"string"},"time_range":{"description":"time_range","type":"string"},"time_ranges":{"description":"time_ranges","items":{"additionalProperties":true,"type":"object"},"type":"array"},"use_account_attribution_setting":{"description":"use_account_attribution_setting","type":"boolean"},"use_unified_attribution_setting":{"description":"use_unified_attribution_setting","type":"boolean"}},"required":["id"],"type":"object"}`)
+	create_ad_insights_reportSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"action_attribution_windows":{"description":"action_attribution_windows","items":{"type":"string"},"type":"array"},"action_breakdowns":{"description":"action_breakdowns","items":{"type":"string"},"type":"array"},"action_report_time":{"description":"action_report_time (enum: adgroupinsights_action_report_time_enum_param)","type":"string"},"breakdowns":{"description":"breakdowns","items":{"type":"string"},"type":"array"},"date_preset":{"description":"date_preset (enum: adgroupinsights_date_preset_enum_param)","type":"string"},"default_summary":{"description":"default_summary","type":"boolean"},"export_columns":{"description":"export_columns","items":{"type":"string"},"type":"array"},"export_format":{"description":"export_format","type":"string"},"export_name":{"description":"export_name","type":"string"},"fields":{"description":"fields","items":{"type":"string"},"type":"array"},"filtering":{"description":"filtering","items":{"additionalProperties":true,"type":"object"},"type":"array"},"id":{"description":"Ad ID","type":"string"},"level":{"description":"level (enum: adgroupinsights_level_enum_param)","type":"string"},"limit":{"description":"limit","type":"integer"},"product_id_limit":{"description":"product_id_limit","type":"integer"},"sort":{"description":"sort","items":{"type":"string"},"type":"array"},"summary":{"description":"summary","items":{"type":"string"},"type":"array"},"summary_action_breakdowns":{"description":"summary_action_breakdowns","items":{"type":"string"},"type":"array"},"time_increment":{"description":"time_increment","type":"string"},"time_range":{"description":"time_range","type":"string"},"time_ranges":{"description":"time_ranges","items":{"additionalProperties":true,"type":"object"},"type":"array"},"use_account_attribution_setting":{"description":"use_account_attribution_setting","type":"boolean"},"use_unified_attribution_setting":{"description":"use_unified_attribution_setting","type":"boolean"}},"required":["id"],"type":"object"}`)
 
-	Ad_GET_leadsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"limit":{"description":"Maximum number of results","type":"integer"}},"type":"object"}`)
+	list_ad_leadsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"limit":{"description":"Maximum number of results","type":"integer"}},"type":"object"}`)
 
-	Ad_GET_previewsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"ad_format":{"description":"ad_format (enum: adgrouppreviews_ad_format_enum_param)","type":"string"},"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"creative_feature":{"description":"creative_feature (enum: adgrouppreviews_creative_feature_enum_param)","type":"string"},"dynamic_asset_label":{"description":"dynamic_asset_label","type":"string"},"dynamic_creative_spec":{"additionalProperties":true,"description":"dynamic_creative_spec","type":"object"},"dynamic_customization":{"additionalProperties":true,"description":"dynamic_customization","type":"object"},"end_date":{"description":"end_date","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"height":{"description":"height","type":"integer"},"id":{"description":"Ad ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"locale":{"description":"locale","type":"string"},"place_page_id":{"description":"place_page_id","type":"integer"},"post":{"additionalProperties":true,"description":"post","type":"object"},"product_item_ids":{"description":"product_item_ids","items":{"type":"string"},"type":"array"},"render_type":{"description":"render_type (enum: adgrouppreviews_render_type_enum_param)","type":"string"},"start_date":{"description":"start_date","type":"string"},"width":{"description":"width","type":"integer"}},"required":["id","ad_format"],"type":"object"}`)
+	list_ad_previewsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"ad_format":{"description":"ad_format (enum: adgrouppreviews_ad_format_enum_param)","type":"string"},"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"creative_feature":{"description":"creative_feature (enum: adgrouppreviews_creative_feature_enum_param)","type":"string"},"dynamic_asset_label":{"description":"dynamic_asset_label","type":"string"},"dynamic_creative_spec":{"additionalProperties":true,"description":"dynamic_creative_spec","type":"object"},"dynamic_customization":{"additionalProperties":true,"description":"dynamic_customization","type":"object"},"end_date":{"description":"end_date","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"height":{"description":"height","type":"integer"},"id":{"description":"Ad ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"locale":{"description":"locale","type":"string"},"place_page_id":{"description":"place_page_id","type":"integer"},"post":{"additionalProperties":true,"description":"post","type":"object"},"product_item_ids":{"description":"product_item_ids","items":{"type":"string"},"type":"array"},"render_type":{"description":"render_type (enum: adgrouppreviews_render_type_enum_param)","type":"string"},"start_date":{"description":"start_date","type":"string"},"width":{"description":"width","type":"integer"}},"required":["id","ad_format"],"type":"object"}`)
 
-	Ad_GET_targetingsentencelinesSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"Ad ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+	list_ad_targetingsentencelinesSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"Ad ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
 
-	Ad_DELETE_Schema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"Ad ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+	delete_adSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"Ad ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
 
-	Ad_GET_Schema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"am_call_tags":{"description":"am_call_tags","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"date_preset":{"description":"date_preset (enum: adgroup_date_preset)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"from_adtable":{"description":"from_adtable","type":"boolean"},"id":{"description":"Ad ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"review_feedback_breakdown":{"description":"review_feedback_breakdown","type":"boolean"},"time_range":{"description":"time_range","type":"string"}},"required":["id"],"type":"object"}`)
+	get_adSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"am_call_tags":{"description":"am_call_tags","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"date_preset":{"description":"date_preset (enum: adgroup_date_preset)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"from_adtable":{"description":"from_adtable","type":"boolean"},"id":{"description":"Ad ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"review_feedback_breakdown":{"description":"review_feedback_breakdown","type":"boolean"},"time_range":{"description":"time_range","type":"string"}},"required":["id"],"type":"object"}`)
 
-	Ad_POST_Schema = json.RawMessage(`{"additionalProperties":false,"properties":{"ad_schedule_end_time":{"description":"ad_schedule_end_time","type":"string"},"ad_schedule_start_time":{"description":"ad_schedule_start_time","type":"string"},"adlabels":{"description":"adlabels","items":{"additionalProperties":true,"type":"object"},"type":"array"},"adset_spec":{"description":"adset_spec","type":"string"},"audience_id":{"description":"audience_id","type":"string"},"bid_amount":{"description":"bid_amount","type":"integer"},"conversion_domain":{"description":"conversion_domain","type":"string"},"creative":{"description":"creative","type":"string"},"creative_asset_groups_spec":{"additionalProperties":true,"description":"creative_asset_groups_spec","type":"object"},"display_sequence":{"description":"display_sequence","type":"integer"},"draft_adgroup_id":{"description":"draft_adgroup_id","type":"string"},"engagement_audience":{"description":"engagement_audience","type":"boolean"},"execution_options":{"description":"execution_options","items":{"type":"string"},"type":"array"},"id":{"description":"Ad ID","type":"string"},"include_demolink_hashes":{"description":"include_demolink_hashes","type":"boolean"},"name":{"description":"name","type":"string"},"priority":{"description":"priority","type":"integer"},"status":{"description":"status (enum: adgroup_status)","type":"string"},"tracking_specs":{"additionalProperties":true,"description":"tracking_specs","type":"object"}},"required":["id"],"type":"object"}`)
+	update_adSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"ad_schedule_end_time":{"description":"ad_schedule_end_time","type":"string"},"ad_schedule_start_time":{"description":"ad_schedule_start_time","type":"string"},"adlabels":{"description":"adlabels","items":{"additionalProperties":true,"type":"object"},"type":"array"},"adset_spec":{"description":"adset_spec","type":"string"},"audience_id":{"description":"audience_id","type":"string"},"bid_amount":{"description":"bid_amount","type":"integer"},"conversion_domain":{"description":"conversion_domain","type":"string"},"creative":{"description":"creative","type":"string"},"creative_asset_groups_spec":{"additionalProperties":true,"description":"creative_asset_groups_spec","type":"object"},"display_sequence":{"description":"display_sequence","type":"integer"},"draft_adgroup_id":{"description":"draft_adgroup_id","type":"string"},"engagement_audience":{"description":"engagement_audience","type":"boolean"},"execution_options":{"description":"execution_options","items":{"type":"string"},"type":"array"},"id":{"description":"Ad ID","type":"string"},"include_demolink_hashes":{"description":"include_demolink_hashes","type":"boolean"},"name":{"description":"name","type":"string"},"priority":{"description":"priority","type":"integer"},"status":{"description":"status (enum: adgroup_status)","type":"string"},"tracking_specs":{"additionalProperties":true,"description":"tracking_specs","type":"object"}},"required":["id"],"type":"object"}`)
 )
 
-// Ad_GET_adcreativesHandler handles Ad_GET_adcreatives
-func Ad_GET_adcreativesHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// ListAdAdcreativesHandler handles list_ad_adcreatives
+func ListAdAdcreativesHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -92,8 +92,8 @@ func Ad_GET_adcreativesHandler(ctx context.Context, request mcp.CallToolRequest)
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// Ad_POST_adlabelsHandler handles Ad_POST_adlabels
-func Ad_POST_adlabelsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// CreateAdAdlabelHandler handles create_ad_adlabel
+func CreateAdAdlabelHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -117,8 +117,8 @@ func Ad_POST_adlabelsHandler(ctx context.Context, request mcp.CallToolRequest) (
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// Ad_GET_adrules_governedHandler handles Ad_GET_adrules_governed
-func Ad_GET_adrules_governedHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// GetAdAdrulesGovernedHandler handles get_ad_adrules_governed
+func GetAdAdrulesGovernedHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -167,8 +167,8 @@ func Ad_GET_adrules_governedHandler(ctx context.Context, request mcp.CallToolReq
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// Ad_GET_copiesHandler handles Ad_GET_copies
-func Ad_GET_copiesHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// ListAdCopiesHandler handles list_ad_copies
+func ListAdCopiesHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -222,8 +222,8 @@ func Ad_GET_copiesHandler(ctx context.Context, request mcp.CallToolRequest) (*mc
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// Ad_POST_copiesHandler handles Ad_POST_copies
-func Ad_POST_copiesHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// CreateAdCopieHandler handles create_ad_copie
+func CreateAdCopieHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -252,8 +252,8 @@ func Ad_POST_copiesHandler(ctx context.Context, request mcp.CallToolRequest) (*m
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// Ad_GET_insightsHandler handles Ad_GET_insights
-func Ad_GET_insightsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// GetAdInsightsHandler handles get_ad_insights
+func GetAdInsightsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -307,8 +307,8 @@ func Ad_GET_insightsHandler(ctx context.Context, request mcp.CallToolRequest) (*
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// Ad_POST_insightsHandler handles Ad_POST_insights
-func Ad_POST_insightsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// CreateAdInsightsReportHandler handles create_ad_insights_report
+func CreateAdInsightsReportHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -337,8 +337,8 @@ func Ad_POST_insightsHandler(ctx context.Context, request mcp.CallToolRequest) (
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// Ad_GET_leadsHandler handles Ad_GET_leads
-func Ad_GET_leadsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// ListAdLeadsHandler handles list_ad_leads
+func ListAdLeadsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -387,8 +387,8 @@ func Ad_GET_leadsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// Ad_GET_previewsHandler handles Ad_GET_previews
-func Ad_GET_previewsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// ListAdPreviewsHandler handles list_ad_previews
+func ListAdPreviewsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -442,8 +442,8 @@ func Ad_GET_previewsHandler(ctx context.Context, request mcp.CallToolRequest) (*
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// Ad_GET_targetingsentencelinesHandler handles Ad_GET_targetingsentencelines
-func Ad_GET_targetingsentencelinesHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// ListAdTargetingsentencelinesHandler handles list_ad_targetingsentencelines
+func ListAdTargetingsentencelinesHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -497,8 +497,8 @@ func Ad_GET_targetingsentencelinesHandler(ctx context.Context, request mcp.CallT
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// Ad_DELETE_Handler handles Ad_DELETE_
-func Ad_DELETE_Handler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// DeleteAdHandler handles delete_ad
+func DeleteAdHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -552,8 +552,8 @@ func Ad_DELETE_Handler(ctx context.Context, request mcp.CallToolRequest) (*mcp.C
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// Ad_GET_Handler handles Ad_GET_
-func Ad_GET_Handler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// GetAdHandler handles get_ad
+func GetAdHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -607,8 +607,8 @@ func Ad_GET_Handler(ctx context.Context, request mcp.CallToolRequest) (*mcp.Call
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// Ad_POST_Handler handles Ad_POST_
-func Ad_POST_Handler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// UpdateAdHandler handles update_ad
+func UpdateAdHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -642,119 +642,119 @@ func RegisterAdTools(s *server.MCPServer) error {
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"Ad_GET_adcreatives",
+			"list_ad_adcreatives",
 			"List adcreatives for this Ad Returns AdCreative.",
-			Ad_GET_adcreativesSchema,
+			list_ad_adcreativesSchema,
 		),
-		Ad_GET_adcreativesHandler,
+		ListAdAdcreativesHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"Ad_POST_adlabels",
+			"create_ad_adlabel",
 			"Associate adlabels with this Ad Returns Ad. Required: adlabels",
-			Ad_POST_adlabelsSchema,
+			create_ad_adlabelSchema,
 		),
-		Ad_POST_adlabelsHandler,
+		CreateAdAdlabelHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"Ad_GET_adrules_governed",
+			"get_ad_adrules_governed",
 			"Get adrules_governed data for this Ad Returns AdRule.",
-			Ad_GET_adrules_governedSchema,
+			get_ad_adrules_governedSchema,
 		),
-		Ad_GET_adrules_governedHandler,
+		GetAdAdrulesGovernedHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"Ad_GET_copies",
+			"list_ad_copies",
 			"List copies for this Ad Returns Ad.",
-			Ad_GET_copiesSchema,
+			list_ad_copiesSchema,
 		),
-		Ad_GET_copiesHandler,
+		ListAdCopiesHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"Ad_POST_copies",
+			"create_ad_copie",
 			"Create a copy of this Ad Returns Ad.",
-			Ad_POST_copiesSchema,
+			create_ad_copieSchema,
 		),
-		Ad_POST_copiesHandler,
+		CreateAdCopieHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"Ad_GET_insights",
+			"get_ad_insights",
 			"List insights for this Ad Returns AdsInsights.",
-			Ad_GET_insightsSchema,
+			get_ad_insightsSchema,
 		),
-		Ad_GET_insightsHandler,
+		GetAdInsightsHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"Ad_POST_insights",
+			"create_ad_insights_report",
 			"Generate an insights report for this Ad Returns AdReportRun.",
-			Ad_POST_insightsSchema,
+			create_ad_insights_reportSchema,
 		),
-		Ad_POST_insightsHandler,
+		CreateAdInsightsReportHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"Ad_GET_leads",
+			"list_ad_leads",
 			"List leads for this Ad Returns Lead.",
-			Ad_GET_leadsSchema,
+			list_ad_leadsSchema,
 		),
-		Ad_GET_leadsHandler,
+		ListAdLeadsHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"Ad_GET_previews",
+			"list_ad_previews",
 			"List previews for this Ad Returns AdPreview. Required: ad_format (enum)",
-			Ad_GET_previewsSchema,
+			list_ad_previewsSchema,
 		),
-		Ad_GET_previewsHandler,
+		ListAdPreviewsHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"Ad_GET_targetingsentencelines",
+			"list_ad_targetingsentencelines",
 			"List targetingsentencelines for this Ad Returns TargetingSentenceLine.",
-			Ad_GET_targetingsentencelinesSchema,
+			list_ad_targetingsentencelinesSchema,
 		),
-		Ad_GET_targetingsentencelinesHandler,
+		ListAdTargetingsentencelinesHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"Ad_DELETE_",
+			"delete_ad",
 			"Delete a Ad",
-			Ad_DELETE_Schema,
+			delete_adSchema,
 		),
-		Ad_DELETE_Handler,
+		DeleteAdHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"Ad_GET_",
+			"get_ad",
 			"Get details of a specific Ad Returns Ad.",
-			Ad_GET_Schema,
+			get_adSchema,
 		),
-		Ad_GET_Handler,
+		GetAdHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"Ad_POST_",
+			"update_ad",
 			"Update a Ad Returns Ad.",
-			Ad_POST_Schema,
+			update_adSchema,
 		),
-		Ad_POST_Handler,
+		UpdateAdHandler,
 	)
 
 	return nil

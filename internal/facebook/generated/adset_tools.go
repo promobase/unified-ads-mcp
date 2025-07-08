@@ -15,47 +15,47 @@ import (
 
 // Tool schemas for AdSet
 var (
-	AdSet_GET_activitiesSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"business_id":{"description":"business_id","type":"string"},"category":{"description":"category (enum: adcampaignactivities_category_enum_param)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdSet ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"since":{"description":"since","type":"string"},"uid":{"description":"uid","type":"integer"},"until":{"description":"until","type":"string"}},"required":["id"],"type":"object"}`)
+	list_ad_set_activitiesSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"business_id":{"description":"business_id","type":"string"},"category":{"description":"category (enum: adcampaignactivities_category_enum_param)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdSet ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"since":{"description":"since","type":"string"},"uid":{"description":"uid","type":"integer"},"until":{"description":"until","type":"string"}},"required":["id"],"type":"object"}`)
 
-	AdSet_GET_ad_studiesSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdSet ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+	list_ad_set_ad_studiesSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdSet ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
 
-	AdSet_GET_adcreativesSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdSet ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+	list_ad_set_adcreativesSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdSet ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
 
-	AdSet_DELETE_adlabelsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"adlabels":{"description":"adlabels","items":{"additionalProperties":true,"type":"object"},"type":"array"},"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"execution_options":{"description":"execution_options","items":{"type":"string"},"type":"array"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdSet ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id","adlabels"],"type":"object"}`)
+	remove_adlabels_from_ad_setSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"adlabels":{"description":"adlabels","items":{"additionalProperties":true,"type":"object"},"type":"array"},"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"execution_options":{"description":"execution_options","items":{"type":"string"},"type":"array"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdSet ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id","adlabels"],"type":"object"}`)
 
-	AdSet_POST_adlabelsSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"adlabels":{"description":"adlabels","items":{"additionalProperties":true,"type":"object"},"type":"array"},"execution_options":{"description":"execution_options","items":{"type":"string"},"type":"array"},"id":{"description":"AdSet ID","type":"string"}},"required":["id","adlabels"],"type":"object"}`)
+	create_ad_set_adlabelSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"adlabels":{"description":"adlabels","items":{"additionalProperties":true,"type":"object"},"type":"array"},"execution_options":{"description":"execution_options","items":{"type":"string"},"type":"array"},"id":{"description":"AdSet ID","type":"string"}},"required":["id","adlabels"],"type":"object"}`)
 
-	AdSet_GET_adrules_governedSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdSet ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"pass_evaluation":{"description":"pass_evaluation","type":"boolean"}},"required":["id"],"type":"object"}`)
+	get_ad_set_adrules_governedSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdSet ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"pass_evaluation":{"description":"pass_evaluation","type":"boolean"}},"required":["id"],"type":"object"}`)
 
-	AdSet_GET_adsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"date_preset":{"description":"date_preset (enum: adcampaignads_date_preset_enum_param)","type":"string"},"effective_status":{"description":"effective_status","items":{"type":"string"},"type":"array"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdSet ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"time_range":{"description":"time_range","type":"string"},"updated_since":{"description":"updated_since","type":"integer"}},"required":["id"],"type":"object"}`)
+	list_ad_set_adsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"date_preset":{"description":"date_preset (enum: adcampaignads_date_preset_enum_param)","type":"string"},"effective_status":{"description":"effective_status","items":{"type":"string"},"type":"array"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdSet ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"time_range":{"description":"time_range","type":"string"},"updated_since":{"description":"updated_since","type":"integer"}},"required":["id"],"type":"object"}`)
 
-	AdSet_GET_asyncadrequestsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdSet ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"statuses":{"description":"statuses","items":{"type":"string"},"type":"array"}},"required":["id"],"type":"object"}`)
+	list_ad_set_asyncadrequestsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdSet ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"statuses":{"description":"statuses","items":{"type":"string"},"type":"array"}},"required":["id"],"type":"object"}`)
 
-	AdSet_POST_budget_schedulesSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"budget_value":{"description":"budget_value","type":"integer"},"budget_value_type":{"description":"budget_value_type (enum: adcampaignbudget_schedules_budget_value_type_enum_param)","type":"string"},"id":{"description":"AdSet ID","type":"string"},"time_end":{"description":"time_end","type":"integer"},"time_start":{"description":"time_start","type":"integer"}},"required":["id","budget_value","budget_value_type","time_end","time_start"],"type":"object"}`)
+	create_ad_set_budget_scheduleSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"budget_value":{"description":"budget_value","type":"integer"},"budget_value_type":{"description":"budget_value_type (enum: adcampaignbudget_schedules_budget_value_type_enum_param)","type":"string"},"id":{"description":"AdSet ID","type":"string"},"time_end":{"description":"time_end","type":"integer"},"time_start":{"description":"time_start","type":"integer"}},"required":["id","budget_value","budget_value_type","time_end","time_start"],"type":"object"}`)
 
-	AdSet_GET_copiesSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"date_preset":{"description":"date_preset (enum: adcampaigncopies_date_preset_enum_param)","type":"string"},"effective_status":{"description":"effective_status","items":{"type":"string"},"type":"array"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdSet ID","type":"string"},"is_completed":{"description":"is_completed","type":"boolean"},"limit":{"description":"Maximum number of results","type":"integer"},"time_range":{"description":"time_range","type":"string"}},"required":["id"],"type":"object"}`)
+	list_ad_set_copiesSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"date_preset":{"description":"date_preset (enum: adcampaigncopies_date_preset_enum_param)","type":"string"},"effective_status":{"description":"effective_status","items":{"type":"string"},"type":"array"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdSet ID","type":"string"},"is_completed":{"description":"is_completed","type":"boolean"},"limit":{"description":"Maximum number of results","type":"integer"},"time_range":{"description":"time_range","type":"string"}},"required":["id"],"type":"object"}`)
 
-	AdSet_POST_copiesSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"campaign_id":{"description":"campaign_id","type":"string"},"create_dco_adset":{"description":"create_dco_adset","type":"boolean"},"deep_copy":{"description":"deep_copy","type":"boolean"},"end_time":{"description":"end_time","type":"string"},"id":{"description":"AdSet ID","type":"string"},"rename_options":{"additionalProperties":true,"description":"rename_options","type":"object"},"start_time":{"description":"start_time","type":"string"},"status_option":{"description":"status_option (enum: adcampaigncopies_status_option_enum_param)","type":"string"}},"required":["id"],"type":"object"}`)
+	create_ad_set_copieSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"campaign_id":{"description":"campaign_id","type":"string"},"create_dco_adset":{"description":"create_dco_adset","type":"boolean"},"deep_copy":{"description":"deep_copy","type":"boolean"},"end_time":{"description":"end_time","type":"string"},"id":{"description":"AdSet ID","type":"string"},"rename_options":{"additionalProperties":true,"description":"rename_options","type":"object"},"start_time":{"description":"start_time","type":"string"},"status_option":{"description":"status_option (enum: adcampaigncopies_status_option_enum_param)","type":"string"}},"required":["id"],"type":"object"}`)
 
-	AdSet_GET_delivery_estimateSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdSet ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"optimization_goal":{"description":"optimization_goal (enum: adcampaigndelivery_estimate_optimization_goal_enum_param)","type":"string"},"promoted_object":{"additionalProperties":true,"description":"promoted_object","type":"object"},"targeting_spec":{"description":"targeting_spec","type":"string"}},"required":["id"],"type":"object"}`)
+	get_ad_set_delivery_estimateSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdSet ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"optimization_goal":{"description":"optimization_goal (enum: adcampaigndelivery_estimate_optimization_goal_enum_param)","type":"string"},"promoted_object":{"additionalProperties":true,"description":"promoted_object","type":"object"},"targeting_spec":{"description":"targeting_spec","type":"string"}},"required":["id"],"type":"object"}`)
 
-	AdSet_GET_insightsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"action_attribution_windows":{"description":"action_attribution_windows","items":{"type":"string"},"type":"array"},"action_breakdowns":{"description":"action_breakdowns","items":{"type":"string"},"type":"array"},"action_report_time":{"description":"action_report_time (enum: adcampaigninsights_action_report_time_enum_param)","type":"string"},"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"breakdowns":{"description":"breakdowns","items":{"type":"string"},"type":"array"},"date_preset":{"description":"date_preset (enum: adcampaigninsights_date_preset_enum_param)","type":"string"},"default_summary":{"description":"default_summary","type":"boolean"},"export_columns":{"description":"export_columns","items":{"type":"string"},"type":"array"},"export_format":{"description":"export_format","type":"string"},"export_name":{"description":"export_name","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"filtering":{"description":"filtering","items":{"additionalProperties":true,"type":"object"},"type":"array"},"id":{"description":"AdSet ID","type":"string"},"level":{"description":"level (enum: adcampaigninsights_level_enum_param)","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"product_id_limit":{"description":"product_id_limit","type":"integer"},"sort":{"description":"sort","items":{"type":"string"},"type":"array"},"summary":{"description":"summary","items":{"type":"string"},"type":"array"},"summary_action_breakdowns":{"description":"summary_action_breakdowns","items":{"type":"string"},"type":"array"},"time_increment":{"description":"time_increment","type":"string"},"time_range":{"description":"time_range","type":"string"},"time_ranges":{"description":"time_ranges","items":{"additionalProperties":true,"type":"object"},"type":"array"},"use_account_attribution_setting":{"description":"use_account_attribution_setting","type":"boolean"},"use_unified_attribution_setting":{"description":"use_unified_attribution_setting","type":"boolean"}},"required":["id"],"type":"object"}`)
+	get_ad_set_insightsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"action_attribution_windows":{"description":"action_attribution_windows","items":{"type":"string"},"type":"array"},"action_breakdowns":{"description":"action_breakdowns","items":{"type":"string"},"type":"array"},"action_report_time":{"description":"action_report_time (enum: adcampaigninsights_action_report_time_enum_param)","type":"string"},"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"breakdowns":{"description":"breakdowns","items":{"type":"string"},"type":"array"},"date_preset":{"description":"date_preset (enum: adcampaigninsights_date_preset_enum_param)","type":"string"},"default_summary":{"description":"default_summary","type":"boolean"},"export_columns":{"description":"export_columns","items":{"type":"string"},"type":"array"},"export_format":{"description":"export_format","type":"string"},"export_name":{"description":"export_name","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"filtering":{"description":"filtering","items":{"additionalProperties":true,"type":"object"},"type":"array"},"id":{"description":"AdSet ID","type":"string"},"level":{"description":"level (enum: adcampaigninsights_level_enum_param)","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"product_id_limit":{"description":"product_id_limit","type":"integer"},"sort":{"description":"sort","items":{"type":"string"},"type":"array"},"summary":{"description":"summary","items":{"type":"string"},"type":"array"},"summary_action_breakdowns":{"description":"summary_action_breakdowns","items":{"type":"string"},"type":"array"},"time_increment":{"description":"time_increment","type":"string"},"time_range":{"description":"time_range","type":"string"},"time_ranges":{"description":"time_ranges","items":{"additionalProperties":true,"type":"object"},"type":"array"},"use_account_attribution_setting":{"description":"use_account_attribution_setting","type":"boolean"},"use_unified_attribution_setting":{"description":"use_unified_attribution_setting","type":"boolean"}},"required":["id"],"type":"object"}`)
 
-	AdSet_POST_insightsSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"action_attribution_windows":{"description":"action_attribution_windows","items":{"type":"string"},"type":"array"},"action_breakdowns":{"description":"action_breakdowns","items":{"type":"string"},"type":"array"},"action_report_time":{"description":"action_report_time (enum: adcampaigninsights_action_report_time_enum_param)","type":"string"},"breakdowns":{"description":"breakdowns","items":{"type":"string"},"type":"array"},"date_preset":{"description":"date_preset (enum: adcampaigninsights_date_preset_enum_param)","type":"string"},"default_summary":{"description":"default_summary","type":"boolean"},"export_columns":{"description":"export_columns","items":{"type":"string"},"type":"array"},"export_format":{"description":"export_format","type":"string"},"export_name":{"description":"export_name","type":"string"},"fields":{"description":"fields","items":{"type":"string"},"type":"array"},"filtering":{"description":"filtering","items":{"additionalProperties":true,"type":"object"},"type":"array"},"id":{"description":"AdSet ID","type":"string"},"level":{"description":"level (enum: adcampaigninsights_level_enum_param)","type":"string"},"limit":{"description":"limit","type":"integer"},"product_id_limit":{"description":"product_id_limit","type":"integer"},"sort":{"description":"sort","items":{"type":"string"},"type":"array"},"summary":{"description":"summary","items":{"type":"string"},"type":"array"},"summary_action_breakdowns":{"description":"summary_action_breakdowns","items":{"type":"string"},"type":"array"},"time_increment":{"description":"time_increment","type":"string"},"time_range":{"description":"time_range","type":"string"},"time_ranges":{"description":"time_ranges","items":{"additionalProperties":true,"type":"object"},"type":"array"},"use_account_attribution_setting":{"description":"use_account_attribution_setting","type":"boolean"},"use_unified_attribution_setting":{"description":"use_unified_attribution_setting","type":"boolean"}},"required":["id"],"type":"object"}`)
+	create_ad_set_insights_reportSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"action_attribution_windows":{"description":"action_attribution_windows","items":{"type":"string"},"type":"array"},"action_breakdowns":{"description":"action_breakdowns","items":{"type":"string"},"type":"array"},"action_report_time":{"description":"action_report_time (enum: adcampaigninsights_action_report_time_enum_param)","type":"string"},"breakdowns":{"description":"breakdowns","items":{"type":"string"},"type":"array"},"date_preset":{"description":"date_preset (enum: adcampaigninsights_date_preset_enum_param)","type":"string"},"default_summary":{"description":"default_summary","type":"boolean"},"export_columns":{"description":"export_columns","items":{"type":"string"},"type":"array"},"export_format":{"description":"export_format","type":"string"},"export_name":{"description":"export_name","type":"string"},"fields":{"description":"fields","items":{"type":"string"},"type":"array"},"filtering":{"description":"filtering","items":{"additionalProperties":true,"type":"object"},"type":"array"},"id":{"description":"AdSet ID","type":"string"},"level":{"description":"level (enum: adcampaigninsights_level_enum_param)","type":"string"},"limit":{"description":"limit","type":"integer"},"product_id_limit":{"description":"product_id_limit","type":"integer"},"sort":{"description":"sort","items":{"type":"string"},"type":"array"},"summary":{"description":"summary","items":{"type":"string"},"type":"array"},"summary_action_breakdowns":{"description":"summary_action_breakdowns","items":{"type":"string"},"type":"array"},"time_increment":{"description":"time_increment","type":"string"},"time_range":{"description":"time_range","type":"string"},"time_ranges":{"description":"time_ranges","items":{"additionalProperties":true,"type":"object"},"type":"array"},"use_account_attribution_setting":{"description":"use_account_attribution_setting","type":"boolean"},"use_unified_attribution_setting":{"description":"use_unified_attribution_setting","type":"boolean"}},"required":["id"],"type":"object"}`)
 
-	AdSet_GET_message_delivery_estimateSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"bid_amount":{"description":"bid_amount","type":"integer"},"daily_budget":{"description":"daily_budget","type":"integer"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"is_direct_send_campaign":{"description":"is_direct_send_campaign","type":"boolean"},"lifetime_budget":{"description":"lifetime_budget","type":"integer"},"lifetime_in_days":{"description":"lifetime_in_days","type":"integer"},"limit":{"description":"Maximum number of results","type":"integer"},"optimization_goal":{"description":"optimization_goal (enum: adcampaignmessage_delivery_estimate_optimization_goal_enum_param)","type":"string"},"pacing_type":{"description":"pacing_type (enum: adcampaignmessage_delivery_estimate_pacing_type_enum_param)","type":"string"},"promoted_object":{"additionalProperties":true,"description":"promoted_object","type":"object"},"targeting_spec":{"description":"targeting_spec","type":"string"}},"type":"object"}`)
+	get_ad_set_message_delivery_estimateSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"bid_amount":{"description":"bid_amount","type":"integer"},"daily_budget":{"description":"daily_budget","type":"integer"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"is_direct_send_campaign":{"description":"is_direct_send_campaign","type":"boolean"},"lifetime_budget":{"description":"lifetime_budget","type":"integer"},"lifetime_in_days":{"description":"lifetime_in_days","type":"integer"},"limit":{"description":"Maximum number of results","type":"integer"},"optimization_goal":{"description":"optimization_goal (enum: adcampaignmessage_delivery_estimate_optimization_goal_enum_param)","type":"string"},"pacing_type":{"description":"pacing_type (enum: adcampaignmessage_delivery_estimate_pacing_type_enum_param)","type":"string"},"promoted_object":{"additionalProperties":true,"description":"promoted_object","type":"object"},"targeting_spec":{"description":"targeting_spec","type":"string"}},"type":"object"}`)
 
-	AdSet_GET_targetingsentencelinesSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdSet ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+	list_ad_set_targetingsentencelinesSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdSet ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
 
-	AdSet_DELETE_Schema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdSet ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+	delete_ad_setSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdSet ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
 
-	AdSet_GET_Schema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"am_call_tags":{"description":"am_call_tags","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"date_preset":{"description":"date_preset (enum: adcampaign_date_preset)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"from_adtable":{"description":"from_adtable","type":"boolean"},"id":{"description":"AdSet ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"time_range":{"description":"time_range","type":"string"}},"required":["id"],"type":"object"}`)
+	get_ad_setSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"am_call_tags":{"description":"am_call_tags","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"date_preset":{"description":"date_preset (enum: adcampaign_date_preset)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"from_adtable":{"description":"from_adtable","type":"boolean"},"id":{"description":"AdSet ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"time_range":{"description":"time_range","type":"string"}},"required":["id"],"type":"object"}`)
 
-	AdSet_POST_Schema = json.RawMessage(`{"additionalProperties":false,"properties":{"account_id":{"description":"account_id","type":"string"},"adlabels":{"description":"adlabels","items":{"additionalProperties":true,"type":"object"},"type":"array"},"adset_schedule":{"description":"adset_schedule","items":{"additionalProperties":true,"type":"object"},"type":"array"},"attribution_spec":{"description":"attribution_spec","items":{"additionalProperties":true,"type":"object"},"type":"array"},"bid_adjustments":{"additionalProperties":true,"description":"bid_adjustments","type":"object"},"bid_amount":{"description":"bid_amount","type":"integer"},"bid_constraints":{"additionalProperties":true,"description":"bid_constraints","type":"object"},"bid_strategy":{"description":"bid_strategy (enum: adcampaign_bid_strategy)","type":"string"},"billing_event":{"description":"billing_event (enum: adcampaign_billing_event)","type":"string"},"campaign_attribution":{"additionalProperties":true,"description":"campaign_attribution","type":"object"},"campaign_spec":{"additionalProperties":true,"description":"campaign_spec","type":"object"},"creative_sequence":{"description":"creative_sequence","items":{"type":"string"},"type":"array"},"creative_sequence_repetition_pattern":{"description":"creative_sequence_repetition_pattern (enum: adcampaign_creative_sequence_repetition_pattern)","type":"string"},"daily_budget":{"description":"daily_budget","type":"integer"},"daily_imps":{"description":"daily_imps","type":"integer"},"daily_min_spend_target":{"description":"daily_min_spend_target","type":"integer"},"daily_spend_cap":{"description":"daily_spend_cap","type":"integer"},"date_format":{"description":"date_format","type":"string"},"destination_type":{"description":"destination_type (enum: adcampaign_destination_type)","type":"string"},"dsa_beneficiary":{"description":"dsa_beneficiary","type":"string"},"dsa_payor":{"description":"dsa_payor","type":"string"},"end_time":{"description":"end_time","type":"string"},"execution_options":{"description":"execution_options","items":{"type":"string"},"type":"array"},"existing_customer_budget_percentage":{"description":"existing_customer_budget_percentage","type":"integer"},"full_funnel_exploration_mode":{"description":"full_funnel_exploration_mode (enum: adcampaign_full_funnel_exploration_mode)","type":"string"},"id":{"description":"AdSet ID","type":"string"},"is_ba_skip_delayed_eligible":{"description":"is_ba_skip_delayed_eligible","type":"boolean"},"is_incremental_attribution_enabled":{"description":"is_incremental_attribution_enabled","type":"boolean"},"is_sac_cfca_terms_certified":{"description":"is_sac_cfca_terms_certified","type":"boolean"},"lifetime_budget":{"description":"lifetime_budget","type":"integer"},"lifetime_imps":{"description":"lifetime_imps","type":"integer"},"lifetime_min_spend_target":{"description":"lifetime_min_spend_target","type":"integer"},"lifetime_spend_cap":{"description":"lifetime_spend_cap","type":"integer"},"max_budget_spend_percentage":{"description":"max_budget_spend_percentage","type":"integer"},"min_budget_spend_percentage":{"description":"min_budget_spend_percentage","type":"integer"},"multi_optimization_goal_weight":{"description":"multi_optimization_goal_weight (enum: adcampaign_multi_optimization_goal_weight)","type":"string"},"name":{"description":"name","type":"string"},"optimization_goal":{"description":"optimization_goal (enum: adcampaign_optimization_goal)","type":"string"},"optimization_sub_event":{"description":"optimization_sub_event (enum: adcampaign_optimization_sub_event)","type":"string"},"pacing_type":{"description":"pacing_type","items":{"type":"string"},"type":"array"},"promoted_object":{"additionalProperties":true,"description":"promoted_object","type":"object"},"rb_prediction_id":{"description":"rb_prediction_id","type":"string"},"regional_regulated_categories":{"description":"regional_regulated_categories","items":{"type":"string"},"type":"array"},"regional_regulation_identities":{"description":"regional_regulation_identities","type":"string"},"rf_prediction_id":{"description":"rf_prediction_id","type":"string"},"start_time":{"description":"start_time","type":"string"},"status":{"description":"status (enum: adcampaign_status)","type":"string"},"targeting":{"description":"targeting","type":"string"},"time_based_ad_rotation_id_blocks":{"description":"time_based_ad_rotation_id_blocks","items":{"type":"string"},"type":"array"},"time_based_ad_rotation_intervals":{"description":"time_based_ad_rotation_intervals","items":{"type":"integer"},"type":"array"},"time_start":{"description":"time_start","type":"string"},"time_stop":{"description":"time_stop","type":"string"},"tune_for_category":{"description":"tune_for_category (enum: adcampaign_tune_for_category)","type":"string"}},"required":["id"],"type":"object"}`)
+	update_ad_setSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"account_id":{"description":"account_id","type":"string"},"adlabels":{"description":"adlabels","items":{"additionalProperties":true,"type":"object"},"type":"array"},"adset_schedule":{"description":"adset_schedule","items":{"additionalProperties":true,"type":"object"},"type":"array"},"attribution_spec":{"description":"attribution_spec","items":{"additionalProperties":true,"type":"object"},"type":"array"},"bid_adjustments":{"additionalProperties":true,"description":"bid_adjustments","type":"object"},"bid_amount":{"description":"bid_amount","type":"integer"},"bid_constraints":{"additionalProperties":true,"description":"bid_constraints","type":"object"},"bid_strategy":{"description":"bid_strategy (enum: adcampaign_bid_strategy)","type":"string"},"billing_event":{"description":"billing_event (enum: adcampaign_billing_event)","type":"string"},"campaign_attribution":{"additionalProperties":true,"description":"campaign_attribution","type":"object"},"campaign_spec":{"additionalProperties":true,"description":"campaign_spec","type":"object"},"creative_sequence":{"description":"creative_sequence","items":{"type":"string"},"type":"array"},"creative_sequence_repetition_pattern":{"description":"creative_sequence_repetition_pattern (enum: adcampaign_creative_sequence_repetition_pattern)","type":"string"},"daily_budget":{"description":"daily_budget","type":"integer"},"daily_imps":{"description":"daily_imps","type":"integer"},"daily_min_spend_target":{"description":"daily_min_spend_target","type":"integer"},"daily_spend_cap":{"description":"daily_spend_cap","type":"integer"},"date_format":{"description":"date_format","type":"string"},"destination_type":{"description":"destination_type (enum: adcampaign_destination_type)","type":"string"},"dsa_beneficiary":{"description":"dsa_beneficiary","type":"string"},"dsa_payor":{"description":"dsa_payor","type":"string"},"end_time":{"description":"end_time","type":"string"},"execution_options":{"description":"execution_options","items":{"type":"string"},"type":"array"},"existing_customer_budget_percentage":{"description":"existing_customer_budget_percentage","type":"integer"},"full_funnel_exploration_mode":{"description":"full_funnel_exploration_mode (enum: adcampaign_full_funnel_exploration_mode)","type":"string"},"id":{"description":"AdSet ID","type":"string"},"is_ba_skip_delayed_eligible":{"description":"is_ba_skip_delayed_eligible","type":"boolean"},"is_incremental_attribution_enabled":{"description":"is_incremental_attribution_enabled","type":"boolean"},"is_sac_cfca_terms_certified":{"description":"is_sac_cfca_terms_certified","type":"boolean"},"lifetime_budget":{"description":"lifetime_budget","type":"integer"},"lifetime_imps":{"description":"lifetime_imps","type":"integer"},"lifetime_min_spend_target":{"description":"lifetime_min_spend_target","type":"integer"},"lifetime_spend_cap":{"description":"lifetime_spend_cap","type":"integer"},"max_budget_spend_percentage":{"description":"max_budget_spend_percentage","type":"integer"},"min_budget_spend_percentage":{"description":"min_budget_spend_percentage","type":"integer"},"multi_optimization_goal_weight":{"description":"multi_optimization_goal_weight (enum: adcampaign_multi_optimization_goal_weight)","type":"string"},"name":{"description":"name","type":"string"},"optimization_goal":{"description":"optimization_goal (enum: adcampaign_optimization_goal)","type":"string"},"optimization_sub_event":{"description":"optimization_sub_event (enum: adcampaign_optimization_sub_event)","type":"string"},"pacing_type":{"description":"pacing_type","items":{"type":"string"},"type":"array"},"promoted_object":{"additionalProperties":true,"description":"promoted_object","type":"object"},"rb_prediction_id":{"description":"rb_prediction_id","type":"string"},"regional_regulated_categories":{"description":"regional_regulated_categories","items":{"type":"string"},"type":"array"},"regional_regulation_identities":{"description":"regional_regulation_identities","type":"string"},"rf_prediction_id":{"description":"rf_prediction_id","type":"string"},"start_time":{"description":"start_time","type":"string"},"status":{"description":"status (enum: adcampaign_status)","type":"string"},"targeting":{"description":"targeting","type":"string"},"time_based_ad_rotation_id_blocks":{"description":"time_based_ad_rotation_id_blocks","items":{"type":"string"},"type":"array"},"time_based_ad_rotation_intervals":{"description":"time_based_ad_rotation_intervals","items":{"type":"integer"},"type":"array"},"time_start":{"description":"time_start","type":"string"},"time_stop":{"description":"time_stop","type":"string"},"tune_for_category":{"description":"tune_for_category (enum: adcampaign_tune_for_category)","type":"string"}},"required":["id"],"type":"object"}`)
 )
 
-// AdSet_GET_activitiesHandler handles AdSet_GET_activities
-func AdSet_GET_activitiesHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// ListAdSetActivitiesHandler handles list_ad_set_activities
+func ListAdSetActivitiesHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -109,8 +109,8 @@ func AdSet_GET_activitiesHandler(ctx context.Context, request mcp.CallToolReques
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// AdSet_GET_ad_studiesHandler handles AdSet_GET_ad_studies
-func AdSet_GET_ad_studiesHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// ListAdSetAdStudiesHandler handles list_ad_set_ad_studies
+func ListAdSetAdStudiesHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -164,8 +164,8 @@ func AdSet_GET_ad_studiesHandler(ctx context.Context, request mcp.CallToolReques
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// AdSet_GET_adcreativesHandler handles AdSet_GET_adcreatives
-func AdSet_GET_adcreativesHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// ListAdSetAdcreativesHandler handles list_ad_set_adcreatives
+func ListAdSetAdcreativesHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -219,8 +219,8 @@ func AdSet_GET_adcreativesHandler(ctx context.Context, request mcp.CallToolReque
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// AdSet_DELETE_adlabelsHandler handles AdSet_DELETE_adlabels
-func AdSet_DELETE_adlabelsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// RemoveAdlabelsFromAdSetHandler handles remove_adlabels_from_ad_set
+func RemoveAdlabelsFromAdSetHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -274,8 +274,8 @@ func AdSet_DELETE_adlabelsHandler(ctx context.Context, request mcp.CallToolReque
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// AdSet_POST_adlabelsHandler handles AdSet_POST_adlabels
-func AdSet_POST_adlabelsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// CreateAdSetAdlabelHandler handles create_ad_set_adlabel
+func CreateAdSetAdlabelHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -304,8 +304,8 @@ func AdSet_POST_adlabelsHandler(ctx context.Context, request mcp.CallToolRequest
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// AdSet_GET_adrules_governedHandler handles AdSet_GET_adrules_governed
-func AdSet_GET_adrules_governedHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// GetAdSetAdrulesGovernedHandler handles get_ad_set_adrules_governed
+func GetAdSetAdrulesGovernedHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -359,8 +359,8 @@ func AdSet_GET_adrules_governedHandler(ctx context.Context, request mcp.CallTool
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// AdSet_GET_adsHandler handles AdSet_GET_ads
-func AdSet_GET_adsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// ListAdSetAdsHandler handles list_ad_set_ads
+func ListAdSetAdsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -414,8 +414,8 @@ func AdSet_GET_adsHandler(ctx context.Context, request mcp.CallToolRequest) (*mc
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// AdSet_GET_asyncadrequestsHandler handles AdSet_GET_asyncadrequests
-func AdSet_GET_asyncadrequestsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// ListAdSetAsyncadrequestsHandler handles list_ad_set_asyncadrequests
+func ListAdSetAsyncadrequestsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -469,8 +469,8 @@ func AdSet_GET_asyncadrequestsHandler(ctx context.Context, request mcp.CallToolR
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// AdSet_POST_budget_schedulesHandler handles AdSet_POST_budget_schedules
-func AdSet_POST_budget_schedulesHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// CreateAdSetBudgetScheduleHandler handles create_ad_set_budget_schedule
+func CreateAdSetBudgetScheduleHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -499,8 +499,8 @@ func AdSet_POST_budget_schedulesHandler(ctx context.Context, request mcp.CallToo
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// AdSet_GET_copiesHandler handles AdSet_GET_copies
-func AdSet_GET_copiesHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// ListAdSetCopiesHandler handles list_ad_set_copies
+func ListAdSetCopiesHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -554,8 +554,8 @@ func AdSet_GET_copiesHandler(ctx context.Context, request mcp.CallToolRequest) (
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// AdSet_POST_copiesHandler handles AdSet_POST_copies
-func AdSet_POST_copiesHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// CreateAdSetCopieHandler handles create_ad_set_copie
+func CreateAdSetCopieHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -584,8 +584,8 @@ func AdSet_POST_copiesHandler(ctx context.Context, request mcp.CallToolRequest) 
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// AdSet_GET_delivery_estimateHandler handles AdSet_GET_delivery_estimate
-func AdSet_GET_delivery_estimateHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// GetAdSetDeliveryEstimateHandler handles get_ad_set_delivery_estimate
+func GetAdSetDeliveryEstimateHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -639,8 +639,8 @@ func AdSet_GET_delivery_estimateHandler(ctx context.Context, request mcp.CallToo
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// AdSet_GET_insightsHandler handles AdSet_GET_insights
-func AdSet_GET_insightsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// GetAdSetInsightsHandler handles get_ad_set_insights
+func GetAdSetInsightsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -694,8 +694,8 @@ func AdSet_GET_insightsHandler(ctx context.Context, request mcp.CallToolRequest)
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// AdSet_POST_insightsHandler handles AdSet_POST_insights
-func AdSet_POST_insightsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// CreateAdSetInsightsReportHandler handles create_ad_set_insights_report
+func CreateAdSetInsightsReportHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -724,8 +724,8 @@ func AdSet_POST_insightsHandler(ctx context.Context, request mcp.CallToolRequest
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// AdSet_GET_message_delivery_estimateHandler handles AdSet_GET_message_delivery_estimate
-func AdSet_GET_message_delivery_estimateHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// GetAdSetMessageDeliveryEstimateHandler handles get_ad_set_message_delivery_estimate
+func GetAdSetMessageDeliveryEstimateHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -774,8 +774,8 @@ func AdSet_GET_message_delivery_estimateHandler(ctx context.Context, request mcp
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// AdSet_GET_targetingsentencelinesHandler handles AdSet_GET_targetingsentencelines
-func AdSet_GET_targetingsentencelinesHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// ListAdSetTargetingsentencelinesHandler handles list_ad_set_targetingsentencelines
+func ListAdSetTargetingsentencelinesHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -829,8 +829,8 @@ func AdSet_GET_targetingsentencelinesHandler(ctx context.Context, request mcp.Ca
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// AdSet_DELETE_Handler handles AdSet_DELETE_
-func AdSet_DELETE_Handler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// DeleteAdSetHandler handles delete_ad_set
+func DeleteAdSetHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -884,8 +884,8 @@ func AdSet_DELETE_Handler(ctx context.Context, request mcp.CallToolRequest) (*mc
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// AdSet_GET_Handler handles AdSet_GET_
-func AdSet_GET_Handler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// GetAdSetHandler handles get_ad_set
+func GetAdSetHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -939,8 +939,8 @@ func AdSet_GET_Handler(ctx context.Context, request mcp.CallToolRequest) (*mcp.C
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// AdSet_POST_Handler handles AdSet_POST_
-func AdSet_POST_Handler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// UpdateAdSetHandler handles update_ad_set
+func UpdateAdSetHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -974,173 +974,173 @@ func RegisterAdSetTools(s *server.MCPServer) error {
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"AdSet_GET_activities",
+			"list_ad_set_activities",
 			"List activities for this AdSet Returns AdActivity.",
-			AdSet_GET_activitiesSchema,
+			list_ad_set_activitiesSchema,
 		),
-		AdSet_GET_activitiesHandler,
+		ListAdSetActivitiesHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"AdSet_GET_ad_studies",
+			"list_ad_set_ad_studies",
 			"List ad_studies for this AdSet Returns AdStudy.",
-			AdSet_GET_ad_studiesSchema,
+			list_ad_set_ad_studiesSchema,
 		),
-		AdSet_GET_ad_studiesHandler,
+		ListAdSetAdStudiesHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"AdSet_GET_adcreatives",
+			"list_ad_set_adcreatives",
 			"List adcreatives for this AdSet Returns AdCreative.",
-			AdSet_GET_adcreativesSchema,
+			list_ad_set_adcreativesSchema,
 		),
-		AdSet_GET_adcreativesHandler,
+		ListAdSetAdcreativesHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"AdSet_DELETE_adlabels",
+			"remove_adlabels_from_ad_set",
 			"Remove adlabels from this AdSet Required: adlabels",
-			AdSet_DELETE_adlabelsSchema,
+			remove_adlabels_from_ad_setSchema,
 		),
-		AdSet_DELETE_adlabelsHandler,
+		RemoveAdlabelsFromAdSetHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"AdSet_POST_adlabels",
+			"create_ad_set_adlabel",
 			"Associate adlabels with this AdSet Returns AdSet. Required: adlabels",
-			AdSet_POST_adlabelsSchema,
+			create_ad_set_adlabelSchema,
 		),
-		AdSet_POST_adlabelsHandler,
+		CreateAdSetAdlabelHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"AdSet_GET_adrules_governed",
+			"get_ad_set_adrules_governed",
 			"Get adrules_governed data for this AdSet Returns AdRule.",
-			AdSet_GET_adrules_governedSchema,
+			get_ad_set_adrules_governedSchema,
 		),
-		AdSet_GET_adrules_governedHandler,
+		GetAdSetAdrulesGovernedHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"AdSet_GET_ads",
+			"list_ad_set_ads",
 			"List ads for this AdSet Returns Ad.",
-			AdSet_GET_adsSchema,
+			list_ad_set_adsSchema,
 		),
-		AdSet_GET_adsHandler,
+		ListAdSetAdsHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"AdSet_GET_asyncadrequests",
+			"list_ad_set_asyncadrequests",
 			"List asyncadrequests for this AdSet Returns AdAsyncRequest.",
-			AdSet_GET_asyncadrequestsSchema,
+			list_ad_set_asyncadrequestsSchema,
 		),
-		AdSet_GET_asyncadrequestsHandler,
+		ListAdSetAsyncadrequestsHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"AdSet_POST_budget_schedules",
+			"create_ad_set_budget_schedule",
 			"Create or update budget_schedules for this AdSet Returns HighDemandPeriod. Required: budget_value, budget_value_type (enum), time_end, time_start",
-			AdSet_POST_budget_schedulesSchema,
+			create_ad_set_budget_scheduleSchema,
 		),
-		AdSet_POST_budget_schedulesHandler,
+		CreateAdSetBudgetScheduleHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"AdSet_GET_copies",
+			"list_ad_set_copies",
 			"List copies for this AdSet Returns AdSet.",
-			AdSet_GET_copiesSchema,
+			list_ad_set_copiesSchema,
 		),
-		AdSet_GET_copiesHandler,
+		ListAdSetCopiesHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"AdSet_POST_copies",
+			"create_ad_set_copie",
 			"Create a copy of this AdSet Returns AdSet.",
-			AdSet_POST_copiesSchema,
+			create_ad_set_copieSchema,
 		),
-		AdSet_POST_copiesHandler,
+		CreateAdSetCopieHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"AdSet_GET_delivery_estimate",
+			"get_ad_set_delivery_estimate",
 			"Get delivery_estimate data for this AdSet Returns AdCampaignDeliveryEstimate.",
-			AdSet_GET_delivery_estimateSchema,
+			get_ad_set_delivery_estimateSchema,
 		),
-		AdSet_GET_delivery_estimateHandler,
+		GetAdSetDeliveryEstimateHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"AdSet_GET_insights",
+			"get_ad_set_insights",
 			"List insights for this AdSet Returns AdsInsights.",
-			AdSet_GET_insightsSchema,
+			get_ad_set_insightsSchema,
 		),
-		AdSet_GET_insightsHandler,
+		GetAdSetInsightsHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"AdSet_POST_insights",
+			"create_ad_set_insights_report",
 			"Generate an insights report for this AdSet Returns AdReportRun.",
-			AdSet_POST_insightsSchema,
+			create_ad_set_insights_reportSchema,
 		),
-		AdSet_POST_insightsHandler,
+		CreateAdSetInsightsReportHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"AdSet_GET_message_delivery_estimate",
+			"get_ad_set_message_delivery_estimate",
 			"Get message_delivery_estimate data for this AdSet Returns MessageDeliveryEstimate.",
-			AdSet_GET_message_delivery_estimateSchema,
+			get_ad_set_message_delivery_estimateSchema,
 		),
-		AdSet_GET_message_delivery_estimateHandler,
+		GetAdSetMessageDeliveryEstimateHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"AdSet_GET_targetingsentencelines",
+			"list_ad_set_targetingsentencelines",
 			"List targetingsentencelines for this AdSet Returns TargetingSentenceLine.",
-			AdSet_GET_targetingsentencelinesSchema,
+			list_ad_set_targetingsentencelinesSchema,
 		),
-		AdSet_GET_targetingsentencelinesHandler,
+		ListAdSetTargetingsentencelinesHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"AdSet_DELETE_",
+			"delete_ad_set",
 			"Delete a AdSet",
-			AdSet_DELETE_Schema,
+			delete_ad_setSchema,
 		),
-		AdSet_DELETE_Handler,
+		DeleteAdSetHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"AdSet_GET_",
+			"get_ad_set",
 			"Get details of a specific AdSet Returns AdSet.",
-			AdSet_GET_Schema,
+			get_ad_setSchema,
 		),
-		AdSet_GET_Handler,
+		GetAdSetHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"AdSet_POST_",
+			"update_ad_set",
 			"Update a AdSet Returns AdSet.",
-			AdSet_POST_Schema,
+			update_ad_setSchema,
 		),
-		AdSet_POST_Handler,
+		UpdateAdSetHandler,
 	)
 
 	return nil

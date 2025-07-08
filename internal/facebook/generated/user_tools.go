@@ -15,119 +15,119 @@ import (
 
 // Tool schemas for User
 var (
-	User_DELETE_access_tokensSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+	remove_access_tokens_from_userSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
 
-	User_POST_access_tokensSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"business_app":{"description":"business_app","type":"string"},"id":{"description":"User ID","type":"string"},"page_id":{"description":"page_id","type":"string"},"scope":{"description":"scope","items":{"type":"string"},"type":"array"},"set_token_expires_in_60_days":{"description":"set_token_expires_in_60_days","type":"boolean"}},"required":["id","business_app"],"type":"object"}`)
+	create_user_access_tokenSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"business_app":{"description":"business_app","type":"string"},"id":{"description":"User ID","type":"string"},"page_id":{"description":"page_id","type":"string"},"scope":{"description":"scope","items":{"type":"string"},"type":"array"},"set_token_expires_in_60_days":{"description":"set_token_expires_in_60_days","type":"boolean"}},"required":["id","business_app"],"type":"object"}`)
 
-	User_GET_accountsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"ad_id":{"description":"ad_id","type":"string"},"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"is_place":{"description":"is_place","type":"boolean"},"is_promotable":{"description":"is_promotable","type":"boolean"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+	list_user_accountsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"ad_id":{"description":"ad_id","type":"string"},"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"is_place":{"description":"is_place","type":"boolean"},"is_promotable":{"description":"is_promotable","type":"boolean"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
 
-	User_POST_accountsSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"about":{"description":"about","type":"string"},"address":{"description":"address","type":"string"},"category":{"description":"category","type":"integer"},"category_enum":{"description":"category_enum","type":"string"},"category_list":{"description":"category_list","items":{"type":"string"},"type":"array"},"city_id":{"description":"city_id","type":"string"},"coordinates":{"additionalProperties":true,"description":"coordinates","type":"object"},"cover_photo":{"additionalProperties":true,"description":"cover_photo","type":"object"},"description":{"description":"description","type":"string"},"id":{"description":"User ID","type":"string"},"ignore_coordinate_warnings":{"description":"ignore_coordinate_warnings","type":"boolean"},"location":{"additionalProperties":true,"description":"location","type":"object"},"name":{"description":"name","type":"string"},"phone":{"description":"phone","type":"string"},"picture":{"description":"picture","type":"string"},"website":{"description":"website","type":"string"},"zip":{"description":"zip","type":"string"}},"required":["id","name"],"type":"object"}`)
+	create_user_accountSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"about":{"description":"about","type":"string"},"address":{"description":"address","type":"string"},"category":{"description":"category","type":"integer"},"category_enum":{"description":"category_enum","type":"string"},"category_list":{"description":"category_list","items":{"type":"string"},"type":"array"},"city_id":{"description":"city_id","type":"string"},"coordinates":{"additionalProperties":true,"description":"coordinates","type":"object"},"cover_photo":{"additionalProperties":true,"description":"cover_photo","type":"object"},"description":{"description":"description","type":"string"},"id":{"description":"User ID","type":"string"},"ignore_coordinate_warnings":{"description":"ignore_coordinate_warnings","type":"boolean"},"location":{"additionalProperties":true,"description":"location","type":"object"},"name":{"description":"name","type":"string"},"phone":{"description":"phone","type":"string"},"picture":{"description":"picture","type":"string"},"website":{"description":"website","type":"string"},"zip":{"description":"zip","type":"string"}},"required":["id","name"],"type":"object"}`)
 
-	User_GET_ad_studiesSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+	list_user_ad_studiesSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
 
-	User_POST_ad_studiesSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"cells":{"description":"cells","items":{"additionalProperties":true,"type":"object"},"type":"array"},"client_business":{"description":"client_business","type":"string"},"confidence_level":{"description":"confidence_level","type":"number"},"cooldown_start_time":{"description":"cooldown_start_time","type":"integer"},"description":{"description":"description","type":"string"},"end_time":{"description":"end_time","type":"integer"},"id":{"description":"User ID","type":"string"},"name":{"description":"name","type":"string"},"objectives":{"description":"objectives","items":{"additionalProperties":true,"type":"object"},"type":"array"},"observation_end_time":{"description":"observation_end_time","type":"integer"},"start_time":{"description":"start_time","type":"integer"},"type":{"description":"type (enum: userad_studies_type_enum_param)","type":"string"},"viewers":{"description":"viewers","items":{"type":"integer"},"type":"array"}},"required":["id"],"type":"object"}`)
+	create_user_ad_studieSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"cells":{"description":"cells","items":{"additionalProperties":true,"type":"object"},"type":"array"},"client_business":{"description":"client_business","type":"string"},"confidence_level":{"description":"confidence_level","type":"number"},"cooldown_start_time":{"description":"cooldown_start_time","type":"integer"},"description":{"description":"description","type":"string"},"end_time":{"description":"end_time","type":"integer"},"id":{"description":"User ID","type":"string"},"name":{"description":"name","type":"string"},"objectives":{"description":"objectives","items":{"additionalProperties":true,"type":"object"},"type":"array"},"observation_end_time":{"description":"observation_end_time","type":"integer"},"start_time":{"description":"start_time","type":"integer"},"type":{"description":"type (enum: userad_studies_type_enum_param)","type":"string"},"viewers":{"description":"viewers","items":{"type":"integer"},"type":"array"}},"required":["id"],"type":"object"}`)
 
-	User_GET_adaccountsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+	list_user_adaccountsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
 
-	User_GET_albumsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+	list_user_albumsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
 
-	User_POST_applicationsSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"business_app":{"description":"business_app","type":"integer"},"id":{"description":"User ID","type":"string"}},"required":["id","business_app"],"type":"object"}`)
+	create_user_applicationSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"business_app":{"description":"business_app","type":"integer"},"id":{"description":"User ID","type":"string"}},"required":["id","business_app"],"type":"object"}`)
 
-	User_GET_apprequestformerrecipientsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"limit":{"description":"Maximum number of results","type":"integer"}},"type":"object"}`)
+	list_user_apprequestformerrecipientsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"limit":{"description":"Maximum number of results","type":"integer"}},"type":"object"}`)
 
-	User_GET_apprequestsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+	list_user_apprequestsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
 
-	User_GET_assigned_ad_accountsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+	list_user_assigned_ad_accountsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
 
-	User_GET_assigned_applicationsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+	list_user_assigned_applicationsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
 
-	User_GET_assigned_business_asset_groupsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"contained_asset_id":{"description":"contained_asset_id","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+	list_user_assigned_business_asset_groupsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"contained_asset_id":{"description":"contained_asset_id","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
 
-	User_GET_assigned_pagesSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"pages":{"description":"pages","items":{"type":"integer"},"type":"array"}},"required":["id"],"type":"object"}`)
+	list_user_assigned_pagesSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"pages":{"description":"pages","items":{"type":"integer"},"type":"array"}},"required":["id"],"type":"object"}`)
 
-	User_GET_assigned_product_catalogsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+	list_user_assigned_product_catalogsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
 
-	User_GET_avatarsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+	list_user_avatarsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
 
-	User_GET_business_usersSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"limit":{"description":"Maximum number of results","type":"integer"}},"type":"object"}`)
+	list_user_business_usersSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"limit":{"description":"Maximum number of results","type":"integer"}},"type":"object"}`)
 
-	User_DELETE_businessesSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"business":{"description":"business","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+	remove_businesses_from_userSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"business":{"description":"business","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
 
-	User_GET_businessesSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+	list_user_businessesSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
 
-	User_POST_businessesSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"child_business_external_id":{"description":"child_business_external_id","type":"string"},"email":{"description":"email","type":"string"},"id":{"description":"User ID","type":"string"},"name":{"description":"name","type":"string"},"primary_page":{"description":"primary_page","type":"string"},"sales_rep_email":{"description":"sales_rep_email","type":"string"},"survey_business_type":{"description":"survey_business_type (enum: userbusinesses_survey_business_type_enum_param)","type":"string"},"survey_num_assets":{"description":"survey_num_assets","type":"integer"},"survey_num_people":{"description":"survey_num_people","type":"integer"},"timezone_id":{"description":"timezone_id (enum: userbusinesses_timezone_id_enum_param)","type":"string"},"vertical":{"description":"vertical (enum: userbusinesses_vertical_enum_param)","type":"string"}},"required":["id","name","vertical"],"type":"object"}`)
+	create_user_businesseSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"child_business_external_id":{"description":"child_business_external_id","type":"string"},"email":{"description":"email","type":"string"},"id":{"description":"User ID","type":"string"},"name":{"description":"name","type":"string"},"primary_page":{"description":"primary_page","type":"string"},"sales_rep_email":{"description":"sales_rep_email","type":"string"},"survey_business_type":{"description":"survey_business_type (enum: userbusinesses_survey_business_type_enum_param)","type":"string"},"survey_num_assets":{"description":"survey_num_assets","type":"integer"},"survey_num_people":{"description":"survey_num_people","type":"integer"},"timezone_id":{"description":"timezone_id (enum: userbusinesses_timezone_id_enum_param)","type":"string"},"vertical":{"description":"vertical (enum: userbusinesses_vertical_enum_param)","type":"string"}},"required":["id","name","vertical"],"type":"object"}`)
 
-	User_GET_conversationsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"folder":{"description":"folder","type":"string"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"platform":{"description":"platform (enum: userconversations_platform_enum_param)","type":"string"},"tags":{"description":"tags","items":{"type":"string"},"type":"array"},"user_id":{"description":"user_id","type":"string"}},"required":["id"],"type":"object"}`)
+	list_user_conversationsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"folder":{"description":"folder","type":"string"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"platform":{"description":"platform (enum: userconversations_platform_enum_param)","type":"string"},"tags":{"description":"tags","items":{"type":"string"},"type":"array"},"user_id":{"description":"user_id","type":"string"}},"required":["id"],"type":"object"}`)
 
-	User_GET_custom_labelsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+	list_user_custom_labelsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
 
-	User_GET_eventsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"include_canceled":{"description":"include_canceled","type":"boolean"},"limit":{"description":"Maximum number of results","type":"integer"},"type":{"description":"type (enum: userevents_type_enum_param)","type":"string"}},"required":["id"],"type":"object"}`)
+	list_user_eventsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"include_canceled":{"description":"include_canceled","type":"boolean"},"limit":{"description":"Maximum number of results","type":"integer"},"type":{"description":"type (enum: userevents_type_enum_param)","type":"string"}},"required":["id"],"type":"object"}`)
 
-	User_GET_feedSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"include_hidden":{"description":"include_hidden","type":"boolean"},"limit":{"description":"Maximum number of results","type":"integer"},"q":{"description":"q","type":"string"},"show_expired":{"description":"show_expired","type":"boolean"},"since":{"description":"since","type":"string"},"until":{"description":"until","type":"string"},"with":{"description":"with","type":"string"}},"required":["id"],"type":"object"}`)
+	get_user_feedSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"include_hidden":{"description":"include_hidden","type":"boolean"},"limit":{"description":"Maximum number of results","type":"integer"},"q":{"description":"q","type":"string"},"show_expired":{"description":"show_expired","type":"boolean"},"since":{"description":"since","type":"string"},"until":{"description":"until","type":"string"},"with":{"description":"with","type":"string"}},"required":["id"],"type":"object"}`)
 
-	User_POST_feedSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"actions":{"additionalProperties":true,"description":"actions","type":"object"},"album_id":{"description":"album_id","type":"string"},"android_key_hash":{"description":"android_key_hash","type":"string"},"application_id":{"description":"application_id","type":"string"},"asked_fun_fact_prompt_id":{"description":"asked_fun_fact_prompt_id","type":"integer"},"asset3d_id":{"description":"asset3d_id","type":"string"},"associated_id":{"description":"associated_id","type":"string"},"attach_place_suggestion":{"description":"attach_place_suggestion","type":"boolean"},"attached_media":{"description":"attached_media","items":{"additionalProperties":true,"type":"object"},"type":"array"},"audience_exp":{"description":"audience_exp","type":"boolean"},"backdated_time":{"description":"backdated_time","type":"string"},"backdated_time_granularity":{"description":"backdated_time_granularity (enum: userfeed_backdated_time_granularity_enum_param)","type":"string"},"breaking_news":{"description":"breaking_news","type":"boolean"},"breaking_news_expiration":{"description":"breaking_news_expiration","type":"integer"},"call_to_action":{"additionalProperties":true,"description":"call_to_action","type":"object"},"caption":{"description":"caption","type":"string"},"child_attachments":{"description":"child_attachments","items":{"additionalProperties":true,"type":"object"},"type":"array"},"client_mutation_id":{"description":"client_mutation_id","type":"string"},"composer_entry_picker":{"description":"composer_entry_picker","type":"string"},"composer_entry_point":{"description":"composer_entry_point","type":"string"},"composer_entry_time":{"description":"composer_entry_time","type":"integer"},"composer_session_events_log":{"description":"composer_session_events_log","type":"string"},"composer_session_id":{"description":"composer_session_id","type":"string"},"composer_source_surface":{"description":"composer_source_surface","type":"string"},"composer_type":{"description":"composer_type","type":"string"},"connection_class":{"description":"connection_class","type":"string"},"content_attachment":{"description":"content_attachment","type":"string"},"coordinates":{"additionalProperties":true,"description":"coordinates","type":"object"},"cta_link":{"description":"cta_link","type":"string"},"cta_type":{"description":"cta_type","type":"string"},"description":{"description":"description","type":"string"},"direct_share_status":{"description":"direct_share_status","type":"integer"},"expanded_height":{"description":"expanded_height","type":"integer"},"expanded_width":{"description":"expanded_width","type":"integer"},"feed_targeting":{"additionalProperties":true,"description":"feed_targeting","type":"object"},"formatting":{"description":"formatting (enum: userfeed_formatting_enum_param)","type":"string"},"fun_fact_prompt_id":{"description":"fun_fact_prompt_id","type":"string"},"fun_fact_toastee_id":{"description":"fun_fact_toastee_id","type":"integer"},"height":{"description":"height","type":"integer"},"home_checkin_city_id":{"additionalProperties":true,"description":"home_checkin_city_id","type":"object"},"id":{"description":"User ID","type":"string"},"image_crops":{"description":"image_crops","type":"string"},"implicit_with_tags":{"description":"implicit_with_tags","items":{"type":"integer"},"type":"array"},"instant_game_entry_point_data":{"description":"instant_game_entry_point_data","type":"string"},"ios_bundle_id":{"description":"ios_bundle_id","type":"string"},"is_backout_draft":{"description":"is_backout_draft","type":"boolean"},"is_boost_intended":{"description":"is_boost_intended","type":"boolean"},"is_explicit_location":{"description":"is_explicit_location","type":"boolean"},"is_explicit_share":{"description":"is_explicit_share","type":"boolean"},"is_group_linking_post":{"description":"is_group_linking_post","type":"boolean"},"is_photo_container":{"description":"is_photo_container","type":"boolean"},"link":{"description":"link","type":"string"},"location_source_id":{"description":"location_source_id","type":"string"},"manual_privacy":{"description":"manual_privacy","type":"boolean"},"message":{"description":"message","type":"string"},"multi_share_end_card":{"description":"multi_share_end_card","type":"boolean"},"multi_share_optimized":{"description":"multi_share_optimized","type":"boolean"},"name":{"description":"name","type":"string"},"nectar_module":{"description":"nectar_module","type":"string"},"object_attachment":{"description":"object_attachment","type":"string"},"og_action_type_id":{"description":"og_action_type_id","type":"string"},"og_hide_object_attachment":{"description":"og_hide_object_attachment","type":"boolean"},"og_icon_id":{"description":"og_icon_id","type":"string"},"og_object_id":{"description":"og_object_id","type":"string"},"og_phrase":{"description":"og_phrase","type":"string"},"og_set_profile_badge":{"description":"og_set_profile_badge","type":"boolean"},"og_suggestion_mechanism":{"description":"og_suggestion_mechanism","type":"string"},"page_recommendation":{"description":"page_recommendation","type":"string"},"picture":{"description":"picture","type":"string"},"place":{"additionalProperties":true,"description":"place","type":"object"},"place_attachment_setting":{"description":"place_attachment_setting (enum: userfeed_place_attachment_setting_enum_param)","type":"string"},"place_list":{"description":"place_list","type":"string"},"place_list_data":{"description":"place_list_data","type":"string"},"post_surfaces_blacklist":{"description":"post_surfaces_blacklist","items":{"type":"string"},"type":"array"},"posting_to_redspace":{"description":"posting_to_redspace (enum: userfeed_posting_to_redspace_enum_param)","type":"string"},"privacy":{"description":"privacy","type":"string"},"prompt_id":{"description":"prompt_id","type":"string"},"prompt_tracking_string":{"description":"prompt_tracking_string","type":"string"},"properties":{"additionalProperties":true,"description":"properties","type":"object"},"proxied_app_id":{"description":"proxied_app_id","type":"string"},"publish_event_id":{"description":"publish_event_id","type":"integer"},"published":{"description":"published","type":"boolean"},"quote":{"description":"quote","type":"string"},"ref":{"description":"ref","items":{"type":"string"},"type":"array"},"referenceable_image_ids":{"description":"referenceable_image_ids","items":{"type":"string"},"type":"array"},"referral_id":{"description":"referral_id","type":"string"},"scheduled_publish_time":{"description":"scheduled_publish_time","type":"string"},"source":{"description":"source","type":"string"},"sponsor_id":{"description":"sponsor_id","type":"string"},"sponsor_relationship":{"description":"sponsor_relationship","type":"integer"},"suggested_place_id":{"additionalProperties":true,"description":"suggested_place_id","type":"object"},"tags":{"description":"tags","items":{"type":"integer"},"type":"array"},"target_surface":{"description":"target_surface (enum: userfeed_target_surface_enum_param)","type":"string"},"targeting":{"additionalProperties":true,"description":"targeting","type":"object"},"text_format_metadata":{"description":"text_format_metadata","type":"string"},"text_format_preset_id":{"description":"text_format_preset_id","type":"string"},"text_only_place":{"description":"text_only_place","type":"string"},"thumbnail":{"description":"thumbnail","type":"string"},"time_since_original_post":{"description":"time_since_original_post","type":"integer"},"title":{"description":"title","type":"string"},"tracking_info":{"description":"tracking_info","type":"string"},"unpublished_content_type":{"description":"unpublished_content_type (enum: userfeed_unpublished_content_type_enum_param)","type":"string"},"user_selected_tags":{"description":"user_selected_tags","type":"boolean"},"video_start_time_ms":{"description":"video_start_time_ms","type":"integer"},"viewer_coordinates":{"additionalProperties":true,"description":"viewer_coordinates","type":"object"},"width":{"description":"width","type":"integer"}},"required":["id"],"type":"object"}`)
+	update_user_feedSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"actions":{"additionalProperties":true,"description":"actions","type":"object"},"album_id":{"description":"album_id","type":"string"},"android_key_hash":{"description":"android_key_hash","type":"string"},"application_id":{"description":"application_id","type":"string"},"asked_fun_fact_prompt_id":{"description":"asked_fun_fact_prompt_id","type":"integer"},"asset3d_id":{"description":"asset3d_id","type":"string"},"associated_id":{"description":"associated_id","type":"string"},"attach_place_suggestion":{"description":"attach_place_suggestion","type":"boolean"},"attached_media":{"description":"attached_media","items":{"additionalProperties":true,"type":"object"},"type":"array"},"audience_exp":{"description":"audience_exp","type":"boolean"},"backdated_time":{"description":"backdated_time","type":"string"},"backdated_time_granularity":{"description":"backdated_time_granularity (enum: userfeed_backdated_time_granularity_enum_param)","type":"string"},"breaking_news":{"description":"breaking_news","type":"boolean"},"breaking_news_expiration":{"description":"breaking_news_expiration","type":"integer"},"call_to_action":{"additionalProperties":true,"description":"call_to_action","type":"object"},"caption":{"description":"caption","type":"string"},"child_attachments":{"description":"child_attachments","items":{"additionalProperties":true,"type":"object"},"type":"array"},"client_mutation_id":{"description":"client_mutation_id","type":"string"},"composer_entry_picker":{"description":"composer_entry_picker","type":"string"},"composer_entry_point":{"description":"composer_entry_point","type":"string"},"composer_entry_time":{"description":"composer_entry_time","type":"integer"},"composer_session_events_log":{"description":"composer_session_events_log","type":"string"},"composer_session_id":{"description":"composer_session_id","type":"string"},"composer_source_surface":{"description":"composer_source_surface","type":"string"},"composer_type":{"description":"composer_type","type":"string"},"connection_class":{"description":"connection_class","type":"string"},"content_attachment":{"description":"content_attachment","type":"string"},"coordinates":{"additionalProperties":true,"description":"coordinates","type":"object"},"cta_link":{"description":"cta_link","type":"string"},"cta_type":{"description":"cta_type","type":"string"},"description":{"description":"description","type":"string"},"direct_share_status":{"description":"direct_share_status","type":"integer"},"expanded_height":{"description":"expanded_height","type":"integer"},"expanded_width":{"description":"expanded_width","type":"integer"},"feed_targeting":{"additionalProperties":true,"description":"feed_targeting","type":"object"},"formatting":{"description":"formatting (enum: userfeed_formatting_enum_param)","type":"string"},"fun_fact_prompt_id":{"description":"fun_fact_prompt_id","type":"string"},"fun_fact_toastee_id":{"description":"fun_fact_toastee_id","type":"integer"},"height":{"description":"height","type":"integer"},"home_checkin_city_id":{"additionalProperties":true,"description":"home_checkin_city_id","type":"object"},"id":{"description":"User ID","type":"string"},"image_crops":{"description":"image_crops","type":"string"},"implicit_with_tags":{"description":"implicit_with_tags","items":{"type":"integer"},"type":"array"},"instant_game_entry_point_data":{"description":"instant_game_entry_point_data","type":"string"},"ios_bundle_id":{"description":"ios_bundle_id","type":"string"},"is_backout_draft":{"description":"is_backout_draft","type":"boolean"},"is_boost_intended":{"description":"is_boost_intended","type":"boolean"},"is_explicit_location":{"description":"is_explicit_location","type":"boolean"},"is_explicit_share":{"description":"is_explicit_share","type":"boolean"},"is_group_linking_post":{"description":"is_group_linking_post","type":"boolean"},"is_photo_container":{"description":"is_photo_container","type":"boolean"},"link":{"description":"link","type":"string"},"location_source_id":{"description":"location_source_id","type":"string"},"manual_privacy":{"description":"manual_privacy","type":"boolean"},"message":{"description":"message","type":"string"},"multi_share_end_card":{"description":"multi_share_end_card","type":"boolean"},"multi_share_optimized":{"description":"multi_share_optimized","type":"boolean"},"name":{"description":"name","type":"string"},"nectar_module":{"description":"nectar_module","type":"string"},"object_attachment":{"description":"object_attachment","type":"string"},"og_action_type_id":{"description":"og_action_type_id","type":"string"},"og_hide_object_attachment":{"description":"og_hide_object_attachment","type":"boolean"},"og_icon_id":{"description":"og_icon_id","type":"string"},"og_object_id":{"description":"og_object_id","type":"string"},"og_phrase":{"description":"og_phrase","type":"string"},"og_set_profile_badge":{"description":"og_set_profile_badge","type":"boolean"},"og_suggestion_mechanism":{"description":"og_suggestion_mechanism","type":"string"},"page_recommendation":{"description":"page_recommendation","type":"string"},"picture":{"description":"picture","type":"string"},"place":{"additionalProperties":true,"description":"place","type":"object"},"place_attachment_setting":{"description":"place_attachment_setting (enum: userfeed_place_attachment_setting_enum_param)","type":"string"},"place_list":{"description":"place_list","type":"string"},"place_list_data":{"description":"place_list_data","type":"string"},"post_surfaces_blacklist":{"description":"post_surfaces_blacklist","items":{"type":"string"},"type":"array"},"posting_to_redspace":{"description":"posting_to_redspace (enum: userfeed_posting_to_redspace_enum_param)","type":"string"},"privacy":{"description":"privacy","type":"string"},"prompt_id":{"description":"prompt_id","type":"string"},"prompt_tracking_string":{"description":"prompt_tracking_string","type":"string"},"properties":{"additionalProperties":true,"description":"properties","type":"object"},"proxied_app_id":{"description":"proxied_app_id","type":"string"},"publish_event_id":{"description":"publish_event_id","type":"integer"},"published":{"description":"published","type":"boolean"},"quote":{"description":"quote","type":"string"},"ref":{"description":"ref","items":{"type":"string"},"type":"array"},"referenceable_image_ids":{"description":"referenceable_image_ids","items":{"type":"string"},"type":"array"},"referral_id":{"description":"referral_id","type":"string"},"scheduled_publish_time":{"description":"scheduled_publish_time","type":"string"},"source":{"description":"source","type":"string"},"sponsor_id":{"description":"sponsor_id","type":"string"},"sponsor_relationship":{"description":"sponsor_relationship","type":"integer"},"suggested_place_id":{"additionalProperties":true,"description":"suggested_place_id","type":"object"},"tags":{"description":"tags","items":{"type":"integer"},"type":"array"},"target_surface":{"description":"target_surface (enum: userfeed_target_surface_enum_param)","type":"string"},"targeting":{"additionalProperties":true,"description":"targeting","type":"object"},"text_format_metadata":{"description":"text_format_metadata","type":"string"},"text_format_preset_id":{"description":"text_format_preset_id","type":"string"},"text_only_place":{"description":"text_only_place","type":"string"},"thumbnail":{"description":"thumbnail","type":"string"},"time_since_original_post":{"description":"time_since_original_post","type":"integer"},"title":{"description":"title","type":"string"},"tracking_info":{"description":"tracking_info","type":"string"},"unpublished_content_type":{"description":"unpublished_content_type (enum: userfeed_unpublished_content_type_enum_param)","type":"string"},"user_selected_tags":{"description":"user_selected_tags","type":"boolean"},"video_start_time_ms":{"description":"video_start_time_ms","type":"integer"},"viewer_coordinates":{"additionalProperties":true,"description":"viewer_coordinates","type":"object"},"width":{"description":"width","type":"integer"}},"required":["id"],"type":"object"}`)
 
-	User_GET_friendsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"uid":{"description":"uid","type":"integer"}},"required":["id"],"type":"object"}`)
+	list_user_friendsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"uid":{"description":"uid","type":"integer"}},"required":["id"],"type":"object"}`)
 
-	User_GET_fundraisersSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+	list_user_fundraisersSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
 
-	User_POST_fundraisersSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"charity_id":{"description":"charity_id","type":"string"},"cover_photo":{"description":"cover_photo","type":"string"},"currency":{"description":"currency","type":"string"},"description":{"description":"description","type":"string"},"end_time":{"description":"end_time","type":"string"},"external_event_name":{"description":"external_event_name","type":"string"},"external_event_start_time":{"description":"external_event_start_time","type":"string"},"external_event_uri":{"description":"external_event_uri","type":"string"},"external_fundraiser_uri":{"description":"external_fundraiser_uri","type":"string"},"external_id":{"description":"external_id","type":"string"},"fundraiser_type":{"description":"fundraiser_type (enum: userfundraisers_fundraiser_type_enum_param)","type":"string"},"goal_amount":{"description":"goal_amount","type":"integer"},"id":{"description":"User ID","type":"string"},"name":{"description":"name","type":"string"},"page_id":{"description":"page_id","type":"string"}},"required":["id","currency","description","end_time","external_id","fundraiser_type","goal_amount","name"],"type":"object"}`)
+	create_user_fundraiserSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"charity_id":{"description":"charity_id","type":"string"},"cover_photo":{"description":"cover_photo","type":"string"},"currency":{"description":"currency","type":"string"},"description":{"description":"description","type":"string"},"end_time":{"description":"end_time","type":"string"},"external_event_name":{"description":"external_event_name","type":"string"},"external_event_start_time":{"description":"external_event_start_time","type":"string"},"external_event_uri":{"description":"external_event_uri","type":"string"},"external_fundraiser_uri":{"description":"external_fundraiser_uri","type":"string"},"external_id":{"description":"external_id","type":"string"},"fundraiser_type":{"description":"fundraiser_type (enum: userfundraisers_fundraiser_type_enum_param)","type":"string"},"goal_amount":{"description":"goal_amount","type":"integer"},"id":{"description":"User ID","type":"string"},"name":{"description":"name","type":"string"},"page_id":{"description":"page_id","type":"string"}},"required":["id","currency","description","end_time","external_id","fundraiser_type","goal_amount","name"],"type":"object"}`)
 
-	User_GET_groupsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"admin_only":{"description":"admin_only","type":"boolean"},"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"parent":{"description":"parent","type":"string"}},"required":["id"],"type":"object"}`)
+	list_user_groupsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"admin_only":{"description":"admin_only","type":"boolean"},"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"parent":{"description":"parent","type":"string"}},"required":["id"],"type":"object"}`)
 
-	User_GET_ids_for_appsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"app":{"description":"app","type":"integer"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+	list_user_ids_for_appsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"app":{"description":"app","type":"integer"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
 
-	User_GET_ids_for_businessSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"app":{"description":"app","type":"integer"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+	list_user_ids_for_businessSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"app":{"description":"app","type":"integer"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
 
-	User_GET_ids_for_pagesSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"page":{"description":"page","type":"integer"}},"required":["id"],"type":"object"}`)
+	list_user_ids_for_pagesSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"page":{"description":"page","type":"integer"}},"required":["id"],"type":"object"}`)
 
-	User_GET_likesSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"target_id":{"description":"target_id","type":"string"}},"required":["id"],"type":"object"}`)
+	list_user_likesSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"target_id":{"description":"target_id","type":"string"}},"required":["id"],"type":"object"}`)
 
-	User_GET_live_videosSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"broadcast_status":{"description":"broadcast_status","items":{"type":"string"},"type":"array"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"source":{"description":"source (enum: userlive_videos_source_enum_param)","type":"string"}},"required":["id"],"type":"object"}`)
+	list_user_live_videosSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"broadcast_status":{"description":"broadcast_status","items":{"type":"string"},"type":"array"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"source":{"description":"source (enum: userlive_videos_source_enum_param)","type":"string"}},"required":["id"],"type":"object"}`)
 
-	User_POST_live_videosSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"content_tags":{"description":"content_tags","items":{"type":"string"},"type":"array"},"description":{"description":"description","type":"string"},"enable_backup_ingest":{"description":"enable_backup_ingest","type":"boolean"},"encoding_settings":{"description":"encoding_settings","type":"string"},"event_params":{"additionalProperties":true,"description":"event_params","type":"object"},"fisheye_video_cropped":{"description":"fisheye_video_cropped","type":"boolean"},"front_z_rotation":{"description":"front_z_rotation","type":"number"},"id":{"description":"User ID","type":"string"},"is_audio_only":{"description":"is_audio_only","type":"boolean"},"is_spherical":{"description":"is_spherical","type":"boolean"},"original_fov":{"description":"original_fov","type":"integer"},"privacy":{"description":"privacy","type":"string"},"projection":{"description":"projection (enum: userlive_videos_projection_enum_param)","type":"string"},"published":{"description":"published","type":"boolean"},"schedule_custom_profile_image":{"description":"schedule_custom_profile_image","type":"string"},"spatial_audio_format":{"description":"spatial_audio_format (enum: userlive_videos_spatial_audio_format_enum_param)","type":"string"},"status":{"description":"status (enum: userlive_videos_status_enum_param)","type":"string"},"stereoscopic_mode":{"description":"stereoscopic_mode (enum: userlive_videos_stereoscopic_mode_enum_param)","type":"string"},"stop_on_delete_stream":{"description":"stop_on_delete_stream","type":"boolean"},"stream_type":{"description":"stream_type (enum: userlive_videos_stream_type_enum_param)","type":"string"},"title":{"description":"title","type":"string"}},"required":["id"],"type":"object"}`)
+	create_user_live_videoSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"content_tags":{"description":"content_tags","items":{"type":"string"},"type":"array"},"description":{"description":"description","type":"string"},"enable_backup_ingest":{"description":"enable_backup_ingest","type":"boolean"},"encoding_settings":{"description":"encoding_settings","type":"string"},"event_params":{"additionalProperties":true,"description":"event_params","type":"object"},"fisheye_video_cropped":{"description":"fisheye_video_cropped","type":"boolean"},"front_z_rotation":{"description":"front_z_rotation","type":"number"},"id":{"description":"User ID","type":"string"},"is_audio_only":{"description":"is_audio_only","type":"boolean"},"is_spherical":{"description":"is_spherical","type":"boolean"},"original_fov":{"description":"original_fov","type":"integer"},"privacy":{"description":"privacy","type":"string"},"projection":{"description":"projection (enum: userlive_videos_projection_enum_param)","type":"string"},"published":{"description":"published","type":"boolean"},"schedule_custom_profile_image":{"description":"schedule_custom_profile_image","type":"string"},"spatial_audio_format":{"description":"spatial_audio_format (enum: userlive_videos_spatial_audio_format_enum_param)","type":"string"},"status":{"description":"status (enum: userlive_videos_status_enum_param)","type":"string"},"stereoscopic_mode":{"description":"stereoscopic_mode (enum: userlive_videos_stereoscopic_mode_enum_param)","type":"string"},"stop_on_delete_stream":{"description":"stop_on_delete_stream","type":"boolean"},"stream_type":{"description":"stream_type (enum: userlive_videos_stream_type_enum_param)","type":"string"},"title":{"description":"title","type":"string"}},"required":["id"],"type":"object"}`)
 
-	User_POST_messenger_desktop_performance_tracesSchema = json.RawMessage(`{"additionalProperties":false,"properties":{},"type":"object"}`)
+	create_user_messenger_desktop_performance_traceSchema = json.RawMessage(`{"additionalProperties":false,"properties":{},"type":"object"}`)
 
-	User_POST_messenger_kids_accounts_unread_badgeSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"proxied_app_id":{"description":"proxied_app_id","type":"integer"}},"required":["proxied_app_id"],"type":"object"}`)
+	update_user_messenger_kids_accounts_unread_badgeSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"proxied_app_id":{"description":"proxied_app_id","type":"integer"}},"required":["proxied_app_id"],"type":"object"}`)
 
-	User_GET_musicSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"target_id":{"description":"target_id","type":"string"}},"required":["id"],"type":"object"}`)
+	get_user_musicSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"target_id":{"description":"target_id","type":"string"}},"required":["id"],"type":"object"}`)
 
-	User_POST_notificationsSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"bot_message_payload_elements":{"description":"bot_message_payload_elements","type":"string"},"filtering":{"description":"filtering","items":{"type":"string"},"type":"array"},"href":{"additionalProperties":true,"description":"href","type":"object"},"id":{"description":"User ID","type":"string"},"label":{"description":"label","type":"string"},"message":{"description":"message","type":"string"},"notif_ids":{"description":"notif_ids","items":{"type":"string"},"type":"array"},"payload":{"description":"payload","type":"string"},"read":{"description":"read","type":"boolean"},"ref":{"description":"ref","type":"string"},"schedule_interval":{"description":"schedule_interval","type":"integer"},"seen":{"description":"seen","type":"boolean"},"template":{"additionalProperties":true,"description":"template","type":"object"},"type":{"description":"type (enum: usernotifications_type_enum_param)","type":"string"}},"required":["id"],"type":"object"}`)
+	create_user_notificationSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"bot_message_payload_elements":{"description":"bot_message_payload_elements","type":"string"},"filtering":{"description":"filtering","items":{"type":"string"},"type":"array"},"href":{"additionalProperties":true,"description":"href","type":"object"},"id":{"description":"User ID","type":"string"},"label":{"description":"label","type":"string"},"message":{"description":"message","type":"string"},"notif_ids":{"description":"notif_ids","items":{"type":"string"},"type":"array"},"payload":{"description":"payload","type":"string"},"read":{"description":"read","type":"boolean"},"ref":{"description":"ref","type":"string"},"schedule_interval":{"description":"schedule_interval","type":"integer"},"seen":{"description":"seen","type":"boolean"},"template":{"additionalProperties":true,"description":"template","type":"object"},"type":{"description":"type (enum: usernotifications_type_enum_param)","type":"string"}},"required":["id"],"type":"object"}`)
 
-	User_GET_payment_transactionsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"limit":{"description":"Maximum number of results","type":"integer"}},"type":"object"}`)
+	list_user_payment_transactionsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"limit":{"description":"Maximum number of results","type":"integer"}},"type":"object"}`)
 
-	User_DELETE_permissionsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"permission":{"description":"permission","type":"string"}},"required":["id"],"type":"object"}`)
+	remove_permissions_from_userSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"permission":{"description":"permission","type":"string"}},"required":["id"],"type":"object"}`)
 
-	User_GET_permissionsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"permission":{"description":"permission","type":"string"},"status":{"description":"status (enum: userpermissions_status_enum_param)","type":"string"}},"required":["id"],"type":"object"}`)
+	list_user_permissionsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"permission":{"description":"permission","type":"string"},"status":{"description":"status (enum: userpermissions_status_enum_param)","type":"string"}},"required":["id"],"type":"object"}`)
 
-	User_GET_personal_ad_accountsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+	list_user_personal_ad_accountsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
 
-	User_GET_photosSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"type":{"description":"type (enum: userphotos_type_enum_param)","type":"string"}},"required":["id"],"type":"object"}`)
+	list_user_photosSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"type":{"description":"type (enum: userphotos_type_enum_param)","type":"string"}},"required":["id"],"type":"object"}`)
 
-	User_POST_photosSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"aid":{"description":"aid","type":"string"},"allow_spherical_photo":{"description":"allow_spherical_photo","type":"boolean"},"alt_text_custom":{"description":"alt_text_custom","type":"string"},"android_key_hash":{"description":"android_key_hash","type":"string"},"application_id":{"description":"application_id","type":"string"},"attempt":{"description":"attempt","type":"integer"},"audience_exp":{"description":"audience_exp","type":"boolean"},"backdated_time":{"description":"backdated_time","type":"string"},"backdated_time_granularity":{"description":"backdated_time_granularity (enum: userphotos_backdated_time_granularity_enum_param)","type":"string"},"caption":{"description":"caption","type":"string"},"composer_session_id":{"description":"composer_session_id","type":"string"},"direct_share_status":{"description":"direct_share_status","type":"integer"},"feed_targeting":{"additionalProperties":true,"description":"feed_targeting","type":"object"},"filter_type":{"description":"filter_type","type":"integer"},"full_res_is_coming_later":{"description":"full_res_is_coming_later","type":"boolean"},"id":{"description":"User ID","type":"string"},"initial_view_heading_override_degrees":{"description":"initial_view_heading_override_degrees","type":"integer"},"initial_view_pitch_override_degrees":{"description":"initial_view_pitch_override_degrees","type":"integer"},"initial_view_vertical_fov_override_degrees":{"description":"initial_view_vertical_fov_override_degrees","type":"integer"},"ios_bundle_id":{"description":"ios_bundle_id","type":"string"},"is_explicit_location":{"description":"is_explicit_location","type":"boolean"},"is_explicit_place":{"description":"is_explicit_place","type":"boolean"},"manual_privacy":{"description":"manual_privacy","type":"boolean"},"message":{"description":"message","type":"string"},"name":{"description":"name","type":"string"},"no_story":{"description":"no_story","type":"boolean"},"offline_id":{"description":"offline_id","type":"integer"},"og_action_type_id":{"description":"og_action_type_id","type":"string"},"og_icon_id":{"description":"og_icon_id","type":"string"},"og_object_id":{"description":"og_object_id","type":"string"},"og_phrase":{"description":"og_phrase","type":"string"},"og_set_profile_badge":{"description":"og_set_profile_badge","type":"boolean"},"og_suggestion_mechanism":{"description":"og_suggestion_mechanism","type":"string"},"place":{"additionalProperties":true,"description":"place","type":"object"},"privacy":{"description":"privacy","type":"string"},"profile_id":{"description":"profile_id","type":"integer"},"provenance_info":{"description":"provenance_info","type":"string"},"proxied_app_id":{"description":"proxied_app_id","type":"string"},"published":{"description":"published","type":"boolean"},"qn":{"description":"qn","type":"string"},"scheduled_publish_time":{"description":"scheduled_publish_time","type":"integer"},"spherical_metadata":{"description":"spherical_metadata","type":"string"},"sponsor_id":{"description":"sponsor_id","type":"string"},"sponsor_relationship":{"description":"sponsor_relationship","type":"integer"},"tags":{"description":"tags","items":{"additionalProperties":true,"type":"object"},"type":"array"},"target_id":{"description":"target_id","type":"integer"},"targeting":{"additionalProperties":true,"description":"targeting","type":"object"},"time_since_original_post":{"description":"time_since_original_post","type":"integer"},"uid":{"description":"uid","type":"integer"},"unpublished_content_type":{"description":"unpublished_content_type (enum: userphotos_unpublished_content_type_enum_param)","type":"string"},"url":{"description":"url","type":"string"},"user_selected_tags":{"description":"user_selected_tags","type":"boolean"},"vault_image_id":{"description":"vault_image_id","type":"string"}},"required":["id"],"type":"object"}`)
+	create_user_photoSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"aid":{"description":"aid","type":"string"},"allow_spherical_photo":{"description":"allow_spherical_photo","type":"boolean"},"alt_text_custom":{"description":"alt_text_custom","type":"string"},"android_key_hash":{"description":"android_key_hash","type":"string"},"application_id":{"description":"application_id","type":"string"},"attempt":{"description":"attempt","type":"integer"},"audience_exp":{"description":"audience_exp","type":"boolean"},"backdated_time":{"description":"backdated_time","type":"string"},"backdated_time_granularity":{"description":"backdated_time_granularity (enum: userphotos_backdated_time_granularity_enum_param)","type":"string"},"caption":{"description":"caption","type":"string"},"composer_session_id":{"description":"composer_session_id","type":"string"},"direct_share_status":{"description":"direct_share_status","type":"integer"},"feed_targeting":{"additionalProperties":true,"description":"feed_targeting","type":"object"},"filter_type":{"description":"filter_type","type":"integer"},"full_res_is_coming_later":{"description":"full_res_is_coming_later","type":"boolean"},"id":{"description":"User ID","type":"string"},"initial_view_heading_override_degrees":{"description":"initial_view_heading_override_degrees","type":"integer"},"initial_view_pitch_override_degrees":{"description":"initial_view_pitch_override_degrees","type":"integer"},"initial_view_vertical_fov_override_degrees":{"description":"initial_view_vertical_fov_override_degrees","type":"integer"},"ios_bundle_id":{"description":"ios_bundle_id","type":"string"},"is_explicit_location":{"description":"is_explicit_location","type":"boolean"},"is_explicit_place":{"description":"is_explicit_place","type":"boolean"},"manual_privacy":{"description":"manual_privacy","type":"boolean"},"message":{"description":"message","type":"string"},"name":{"description":"name","type":"string"},"no_story":{"description":"no_story","type":"boolean"},"offline_id":{"description":"offline_id","type":"integer"},"og_action_type_id":{"description":"og_action_type_id","type":"string"},"og_icon_id":{"description":"og_icon_id","type":"string"},"og_object_id":{"description":"og_object_id","type":"string"},"og_phrase":{"description":"og_phrase","type":"string"},"og_set_profile_badge":{"description":"og_set_profile_badge","type":"boolean"},"og_suggestion_mechanism":{"description":"og_suggestion_mechanism","type":"string"},"place":{"additionalProperties":true,"description":"place","type":"object"},"privacy":{"description":"privacy","type":"string"},"profile_id":{"description":"profile_id","type":"integer"},"provenance_info":{"description":"provenance_info","type":"string"},"proxied_app_id":{"description":"proxied_app_id","type":"string"},"published":{"description":"published","type":"boolean"},"qn":{"description":"qn","type":"string"},"scheduled_publish_time":{"description":"scheduled_publish_time","type":"integer"},"spherical_metadata":{"description":"spherical_metadata","type":"string"},"sponsor_id":{"description":"sponsor_id","type":"string"},"sponsor_relationship":{"description":"sponsor_relationship","type":"integer"},"tags":{"description":"tags","items":{"additionalProperties":true,"type":"object"},"type":"array"},"target_id":{"description":"target_id","type":"integer"},"targeting":{"additionalProperties":true,"description":"targeting","type":"object"},"time_since_original_post":{"description":"time_since_original_post","type":"integer"},"uid":{"description":"uid","type":"integer"},"unpublished_content_type":{"description":"unpublished_content_type (enum: userphotos_unpublished_content_type_enum_param)","type":"string"},"url":{"description":"url","type":"string"},"user_selected_tags":{"description":"user_selected_tags","type":"boolean"},"vault_image_id":{"description":"vault_image_id","type":"string"}},"required":["id"],"type":"object"}`)
 
-	User_GET_pictureSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"height":{"description":"height","type":"integer"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"redirect":{"description":"redirect","type":"boolean"},"type":{"description":"type (enum: userpicture_type_enum_param)","type":"string"},"width":{"description":"width","type":"integer"}},"required":["id"],"type":"object"}`)
+	get_user_pictureSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"height":{"description":"height","type":"integer"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"redirect":{"description":"redirect","type":"boolean"},"type":{"description":"type (enum: userpicture_type_enum_param)","type":"string"},"width":{"description":"width","type":"integer"}},"required":["id"],"type":"object"}`)
 
-	User_GET_postsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"include_hidden":{"description":"include_hidden","type":"boolean"},"limit":{"description":"Maximum number of results","type":"integer"},"q":{"description":"q","type":"string"},"show_expired":{"description":"show_expired","type":"boolean"},"since":{"description":"since","type":"string"},"until":{"description":"until","type":"string"},"with":{"description":"with","type":"string"}},"required":["id"],"type":"object"}`)
+	list_user_postsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"include_hidden":{"description":"include_hidden","type":"boolean"},"limit":{"description":"Maximum number of results","type":"integer"},"q":{"description":"q","type":"string"},"show_expired":{"description":"show_expired","type":"boolean"},"since":{"description":"since","type":"string"},"until":{"description":"until","type":"string"},"with":{"description":"with","type":"string"}},"required":["id"],"type":"object"}`)
 
-	User_GET_rich_media_documentsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"limit":{"description":"Maximum number of results","type":"integer"},"query":{"description":"query","type":"string"}},"type":"object"}`)
+	list_user_rich_media_documentsSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"limit":{"description":"Maximum number of results","type":"integer"},"query":{"description":"query","type":"string"}},"type":"object"}`)
 
-	User_POST_staging_resourcesSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"file":{"description":"file","type":"string"},"id":{"description":"User ID","type":"string"}},"required":["id"],"type":"object"}`)
+	create_user_staging_resourceSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"file":{"description":"file","type":"string"},"id":{"description":"User ID","type":"string"}},"required":["id"],"type":"object"}`)
 
-	User_GET_videosSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"type":{"description":"type (enum: uservideos_type_enum_param)","type":"string"}},"required":["id"],"type":"object"}`)
+	list_user_videosSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"},"type":{"description":"type (enum: uservideos_type_enum_param)","type":"string"}},"required":["id"],"type":"object"}`)
 
-	User_POST_videosSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"application_id":{"description":"application_id","type":"string"},"asked_fun_fact_prompt_id":{"description":"asked_fun_fact_prompt_id","type":"integer"},"audio_story_wave_animation_handle":{"description":"audio_story_wave_animation_handle","type":"string"},"composer_entry_picker":{"description":"composer_entry_picker","type":"string"},"composer_entry_point":{"description":"composer_entry_point","type":"string"},"composer_entry_time":{"description":"composer_entry_time","type":"integer"},"composer_session_events_log":{"description":"composer_session_events_log","type":"string"},"composer_session_id":{"description":"composer_session_id","type":"string"},"composer_source_surface":{"description":"composer_source_surface","type":"string"},"composer_type":{"description":"composer_type","type":"string"},"container_type":{"description":"container_type (enum: uservideos_container_type_enum_param)","type":"string"},"content_category":{"description":"content_category (enum: uservideos_content_category_enum_param)","type":"string"},"creative_tools":{"description":"creative_tools","type":"string"},"description":{"description":"description","type":"string"},"direct_share_status":{"description":"direct_share_status","type":"integer"},"embeddable":{"description":"embeddable","type":"boolean"},"end_offset":{"description":"end_offset","type":"integer"},"fbuploader_video_file_chunk":{"description":"fbuploader_video_file_chunk","type":"string"},"file_size":{"description":"file_size","type":"integer"},"file_url":{"description":"file_url","type":"string"},"fisheye_video_cropped":{"description":"fisheye_video_cropped","type":"boolean"},"formatting":{"description":"formatting (enum: uservideos_formatting_enum_param)","type":"string"},"fov":{"description":"fov","type":"integer"},"front_z_rotation":{"description":"front_z_rotation","type":"number"},"fun_fact_prompt_id":{"description":"fun_fact_prompt_id","type":"string"},"fun_fact_toastee_id":{"description":"fun_fact_toastee_id","type":"integer"},"guide":{"description":"guide","items":{"type":"string"},"type":"array"},"guide_enabled":{"description":"guide_enabled","type":"boolean"},"id":{"description":"User ID","type":"string"},"initial_heading":{"description":"initial_heading","type":"integer"},"initial_pitch":{"description":"initial_pitch","type":"integer"},"instant_game_entry_point_data":{"description":"instant_game_entry_point_data","type":"string"},"is_boost_intended":{"description":"is_boost_intended","type":"boolean"},"is_explicit_share":{"description":"is_explicit_share","type":"boolean"},"is_group_linking_post":{"description":"is_group_linking_post","type":"boolean"},"is_partnership_ad":{"description":"is_partnership_ad","type":"boolean"},"is_voice_clip":{"description":"is_voice_clip","type":"boolean"},"location_source_id":{"description":"location_source_id","type":"string"},"manual_privacy":{"description":"manual_privacy","type":"boolean"},"no_story":{"description":"no_story","type":"boolean"},"og_action_type_id":{"description":"og_action_type_id","type":"string"},"og_icon_id":{"description":"og_icon_id","type":"string"},"og_object_id":{"description":"og_object_id","type":"string"},"og_phrase":{"description":"og_phrase","type":"string"},"og_suggestion_mechanism":{"description":"og_suggestion_mechanism","type":"string"},"original_fov":{"description":"original_fov","type":"integer"},"original_projection_type":{"description":"original_projection_type (enum: uservideos_original_projection_type_enum_param)","type":"string"},"partnership_ad_ad_code":{"description":"partnership_ad_ad_code","type":"string"},"privacy":{"description":"privacy","type":"string"},"publish_event_id":{"description":"publish_event_id","type":"integer"},"referenced_sticker_id":{"description":"referenced_sticker_id","type":"string"},"replace_video_id":{"description":"replace_video_id","type":"string"},"slideshow_spec":{"description":"slideshow_spec","type":"string"},"source":{"description":"source","type":"string"},"source_instagram_media_id":{"description":"source_instagram_media_id","type":"string"},"spherical":{"description":"spherical","type":"boolean"},"sponsor_id":{"description":"sponsor_id","type":"string"},"start_offset":{"description":"start_offset","type":"integer"},"swap_mode":{"description":"swap_mode (enum: uservideos_swap_mode_enum_param)","type":"string"},"text_format_metadata":{"description":"text_format_metadata","type":"string"},"thumb":{"description":"thumb","type":"string"},"time_since_original_post":{"description":"time_since_original_post","type":"integer"},"title":{"description":"title","type":"string"},"transcode_setting_properties":{"description":"transcode_setting_properties","type":"string"},"unpublished_content_type":{"description":"unpublished_content_type (enum: uservideos_unpublished_content_type_enum_param)","type":"string"},"upload_phase":{"description":"upload_phase (enum: uservideos_upload_phase_enum_param)","type":"string"},"upload_session_id":{"description":"upload_session_id","type":"string"},"upload_setting_properties":{"description":"upload_setting_properties","type":"string"},"video_file_chunk":{"description":"video_file_chunk","type":"string"},"video_id_original":{"description":"video_id_original","type":"string"},"video_start_time_ms":{"description":"video_start_time_ms","type":"integer"},"waterfall_id":{"description":"waterfall_id","type":"string"}},"required":["id"],"type":"object"}`)
+	create_user_videoSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"application_id":{"description":"application_id","type":"string"},"asked_fun_fact_prompt_id":{"description":"asked_fun_fact_prompt_id","type":"integer"},"audio_story_wave_animation_handle":{"description":"audio_story_wave_animation_handle","type":"string"},"composer_entry_picker":{"description":"composer_entry_picker","type":"string"},"composer_entry_point":{"description":"composer_entry_point","type":"string"},"composer_entry_time":{"description":"composer_entry_time","type":"integer"},"composer_session_events_log":{"description":"composer_session_events_log","type":"string"},"composer_session_id":{"description":"composer_session_id","type":"string"},"composer_source_surface":{"description":"composer_source_surface","type":"string"},"composer_type":{"description":"composer_type","type":"string"},"container_type":{"description":"container_type (enum: uservideos_container_type_enum_param)","type":"string"},"content_category":{"description":"content_category (enum: uservideos_content_category_enum_param)","type":"string"},"creative_tools":{"description":"creative_tools","type":"string"},"description":{"description":"description","type":"string"},"direct_share_status":{"description":"direct_share_status","type":"integer"},"embeddable":{"description":"embeddable","type":"boolean"},"end_offset":{"description":"end_offset","type":"integer"},"fbuploader_video_file_chunk":{"description":"fbuploader_video_file_chunk","type":"string"},"file_size":{"description":"file_size","type":"integer"},"file_url":{"description":"file_url","type":"string"},"fisheye_video_cropped":{"description":"fisheye_video_cropped","type":"boolean"},"formatting":{"description":"formatting (enum: uservideos_formatting_enum_param)","type":"string"},"fov":{"description":"fov","type":"integer"},"front_z_rotation":{"description":"front_z_rotation","type":"number"},"fun_fact_prompt_id":{"description":"fun_fact_prompt_id","type":"string"},"fun_fact_toastee_id":{"description":"fun_fact_toastee_id","type":"integer"},"guide":{"description":"guide","items":{"type":"string"},"type":"array"},"guide_enabled":{"description":"guide_enabled","type":"boolean"},"id":{"description":"User ID","type":"string"},"initial_heading":{"description":"initial_heading","type":"integer"},"initial_pitch":{"description":"initial_pitch","type":"integer"},"instant_game_entry_point_data":{"description":"instant_game_entry_point_data","type":"string"},"is_boost_intended":{"description":"is_boost_intended","type":"boolean"},"is_explicit_share":{"description":"is_explicit_share","type":"boolean"},"is_group_linking_post":{"description":"is_group_linking_post","type":"boolean"},"is_partnership_ad":{"description":"is_partnership_ad","type":"boolean"},"is_voice_clip":{"description":"is_voice_clip","type":"boolean"},"location_source_id":{"description":"location_source_id","type":"string"},"manual_privacy":{"description":"manual_privacy","type":"boolean"},"no_story":{"description":"no_story","type":"boolean"},"og_action_type_id":{"description":"og_action_type_id","type":"string"},"og_icon_id":{"description":"og_icon_id","type":"string"},"og_object_id":{"description":"og_object_id","type":"string"},"og_phrase":{"description":"og_phrase","type":"string"},"og_suggestion_mechanism":{"description":"og_suggestion_mechanism","type":"string"},"original_fov":{"description":"original_fov","type":"integer"},"original_projection_type":{"description":"original_projection_type (enum: uservideos_original_projection_type_enum_param)","type":"string"},"partnership_ad_ad_code":{"description":"partnership_ad_ad_code","type":"string"},"privacy":{"description":"privacy","type":"string"},"publish_event_id":{"description":"publish_event_id","type":"integer"},"referenced_sticker_id":{"description":"referenced_sticker_id","type":"string"},"replace_video_id":{"description":"replace_video_id","type":"string"},"slideshow_spec":{"description":"slideshow_spec","type":"string"},"source":{"description":"source","type":"string"},"source_instagram_media_id":{"description":"source_instagram_media_id","type":"string"},"spherical":{"description":"spherical","type":"boolean"},"sponsor_id":{"description":"sponsor_id","type":"string"},"start_offset":{"description":"start_offset","type":"integer"},"swap_mode":{"description":"swap_mode (enum: uservideos_swap_mode_enum_param)","type":"string"},"text_format_metadata":{"description":"text_format_metadata","type":"string"},"thumb":{"description":"thumb","type":"string"},"time_since_original_post":{"description":"time_since_original_post","type":"integer"},"title":{"description":"title","type":"string"},"transcode_setting_properties":{"description":"transcode_setting_properties","type":"string"},"unpublished_content_type":{"description":"unpublished_content_type (enum: uservideos_unpublished_content_type_enum_param)","type":"string"},"upload_phase":{"description":"upload_phase (enum: uservideos_upload_phase_enum_param)","type":"string"},"upload_session_id":{"description":"upload_session_id","type":"string"},"upload_setting_properties":{"description":"upload_setting_properties","type":"string"},"video_file_chunk":{"description":"video_file_chunk","type":"string"},"video_id_original":{"description":"video_id_original","type":"string"},"video_start_time_ms":{"description":"video_start_time_ms","type":"integer"},"waterfall_id":{"description":"waterfall_id","type":"string"}},"required":["id"],"type":"object"}`)
 
-	User_DELETE_Schema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+	delete_userSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
 
-	User_GET_Schema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
+	get_userSchema = json.RawMessage(`{"additionalProperties":true,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","type":"string"},"limit":{"description":"Maximum number of results","type":"integer"}},"required":["id"],"type":"object"}`)
 
-	User_POST_Schema = json.RawMessage(`{"additionalProperties":false,"properties":{"emoji_color_pref":{"description":"emoji_color_pref","type":"integer"},"firstname":{"description":"firstname","type":"string"},"id":{"description":"User ID","type":"string"},"lastname":{"description":"lastname","type":"string"},"local_news_megaphone_dismiss_status":{"description":"local_news_megaphone_dismiss_status (enum: user_local_news_megaphone_dismiss_status)","type":"string"},"local_news_subscription_status":{"description":"local_news_subscription_status (enum: user_local_news_subscription_status)","type":"string"},"name":{"description":"name","type":"string"},"password":{"description":"password","type":"string"}},"required":["id"],"type":"object"}`)
+	update_userSchema = json.RawMessage(`{"additionalProperties":false,"properties":{"emoji_color_pref":{"description":"emoji_color_pref","type":"integer"},"firstname":{"description":"firstname","type":"string"},"id":{"description":"User ID","type":"string"},"lastname":{"description":"lastname","type":"string"},"local_news_megaphone_dismiss_status":{"description":"local_news_megaphone_dismiss_status (enum: user_local_news_megaphone_dismiss_status)","type":"string"},"local_news_subscription_status":{"description":"local_news_subscription_status (enum: user_local_news_subscription_status)","type":"string"},"name":{"description":"name","type":"string"},"password":{"description":"password","type":"string"}},"required":["id"],"type":"object"}`)
 )
 
-// User_DELETE_access_tokensHandler handles User_DELETE_access_tokens
-func User_DELETE_access_tokensHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// RemoveAccessTokensFromUserHandler handles remove_access_tokens_from_user
+func RemoveAccessTokensFromUserHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -181,8 +181,8 @@ func User_DELETE_access_tokensHandler(ctx context.Context, request mcp.CallToolR
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// User_POST_access_tokensHandler handles User_POST_access_tokens
-func User_POST_access_tokensHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// CreateUserAccessTokenHandler handles create_user_access_token
+func CreateUserAccessTokenHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -211,8 +211,8 @@ func User_POST_access_tokensHandler(ctx context.Context, request mcp.CallToolReq
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// User_GET_accountsHandler handles User_GET_accounts
-func User_GET_accountsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// ListUserAccountsHandler handles list_user_accounts
+func ListUserAccountsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -266,8 +266,8 @@ func User_GET_accountsHandler(ctx context.Context, request mcp.CallToolRequest) 
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// User_POST_accountsHandler handles User_POST_accounts
-func User_POST_accountsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// CreateUserAccountHandler handles create_user_account
+func CreateUserAccountHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -296,8 +296,8 @@ func User_POST_accountsHandler(ctx context.Context, request mcp.CallToolRequest)
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// User_GET_ad_studiesHandler handles User_GET_ad_studies
-func User_GET_ad_studiesHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// ListUserAdStudiesHandler handles list_user_ad_studies
+func ListUserAdStudiesHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -351,8 +351,8 @@ func User_GET_ad_studiesHandler(ctx context.Context, request mcp.CallToolRequest
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// User_POST_ad_studiesHandler handles User_POST_ad_studies
-func User_POST_ad_studiesHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// CreateUserAdStudieHandler handles create_user_ad_studie
+func CreateUserAdStudieHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -381,8 +381,8 @@ func User_POST_ad_studiesHandler(ctx context.Context, request mcp.CallToolReques
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// User_GET_adaccountsHandler handles User_GET_adaccounts
-func User_GET_adaccountsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// ListUserAdaccountsHandler handles list_user_adaccounts
+func ListUserAdaccountsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -436,8 +436,8 @@ func User_GET_adaccountsHandler(ctx context.Context, request mcp.CallToolRequest
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// User_GET_albumsHandler handles User_GET_albums
-func User_GET_albumsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// ListUserAlbumsHandler handles list_user_albums
+func ListUserAlbumsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -491,8 +491,8 @@ func User_GET_albumsHandler(ctx context.Context, request mcp.CallToolRequest) (*
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// User_POST_applicationsHandler handles User_POST_applications
-func User_POST_applicationsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// CreateUserApplicationHandler handles create_user_application
+func CreateUserApplicationHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -521,8 +521,8 @@ func User_POST_applicationsHandler(ctx context.Context, request mcp.CallToolRequ
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// User_GET_apprequestformerrecipientsHandler handles User_GET_apprequestformerrecipients
-func User_GET_apprequestformerrecipientsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// ListUserApprequestformerrecipientsHandler handles list_user_apprequestformerrecipients
+func ListUserApprequestformerrecipientsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -571,8 +571,8 @@ func User_GET_apprequestformerrecipientsHandler(ctx context.Context, request mcp
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// User_GET_apprequestsHandler handles User_GET_apprequests
-func User_GET_apprequestsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// ListUserApprequestsHandler handles list_user_apprequests
+func ListUserApprequestsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -626,8 +626,8 @@ func User_GET_apprequestsHandler(ctx context.Context, request mcp.CallToolReques
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// User_GET_assigned_ad_accountsHandler handles User_GET_assigned_ad_accounts
-func User_GET_assigned_ad_accountsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// ListUserAssignedAdAccountsHandler handles list_user_assigned_ad_accounts
+func ListUserAssignedAdAccountsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -681,8 +681,8 @@ func User_GET_assigned_ad_accountsHandler(ctx context.Context, request mcp.CallT
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// User_GET_assigned_applicationsHandler handles User_GET_assigned_applications
-func User_GET_assigned_applicationsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// ListUserAssignedApplicationsHandler handles list_user_assigned_applications
+func ListUserAssignedApplicationsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -736,8 +736,8 @@ func User_GET_assigned_applicationsHandler(ctx context.Context, request mcp.Call
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// User_GET_assigned_business_asset_groupsHandler handles User_GET_assigned_business_asset_groups
-func User_GET_assigned_business_asset_groupsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// ListUserAssignedBusinessAssetGroupsHandler handles list_user_assigned_business_asset_groups
+func ListUserAssignedBusinessAssetGroupsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -791,8 +791,8 @@ func User_GET_assigned_business_asset_groupsHandler(ctx context.Context, request
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// User_GET_assigned_pagesHandler handles User_GET_assigned_pages
-func User_GET_assigned_pagesHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// ListUserAssignedPagesHandler handles list_user_assigned_pages
+func ListUserAssignedPagesHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -846,8 +846,8 @@ func User_GET_assigned_pagesHandler(ctx context.Context, request mcp.CallToolReq
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// User_GET_assigned_product_catalogsHandler handles User_GET_assigned_product_catalogs
-func User_GET_assigned_product_catalogsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// ListUserAssignedProductCatalogsHandler handles list_user_assigned_product_catalogs
+func ListUserAssignedProductCatalogsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -901,8 +901,8 @@ func User_GET_assigned_product_catalogsHandler(ctx context.Context, request mcp.
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// User_GET_avatarsHandler handles User_GET_avatars
-func User_GET_avatarsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// ListUserAvatarsHandler handles list_user_avatars
+func ListUserAvatarsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -956,8 +956,8 @@ func User_GET_avatarsHandler(ctx context.Context, request mcp.CallToolRequest) (
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// User_GET_business_usersHandler handles User_GET_business_users
-func User_GET_business_usersHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// ListUserBusinessUsersHandler handles list_user_business_users
+func ListUserBusinessUsersHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -1006,8 +1006,8 @@ func User_GET_business_usersHandler(ctx context.Context, request mcp.CallToolReq
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// User_DELETE_businessesHandler handles User_DELETE_businesses
-func User_DELETE_businessesHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// RemoveBusinessesFromUserHandler handles remove_businesses_from_user
+func RemoveBusinessesFromUserHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -1061,8 +1061,8 @@ func User_DELETE_businessesHandler(ctx context.Context, request mcp.CallToolRequ
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// User_GET_businessesHandler handles User_GET_businesses
-func User_GET_businessesHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// ListUserBusinessesHandler handles list_user_businesses
+func ListUserBusinessesHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -1116,8 +1116,8 @@ func User_GET_businessesHandler(ctx context.Context, request mcp.CallToolRequest
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// User_POST_businessesHandler handles User_POST_businesses
-func User_POST_businessesHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// CreateUserBusinesseHandler handles create_user_businesse
+func CreateUserBusinesseHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -1146,8 +1146,8 @@ func User_POST_businessesHandler(ctx context.Context, request mcp.CallToolReques
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// User_GET_conversationsHandler handles User_GET_conversations
-func User_GET_conversationsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// ListUserConversationsHandler handles list_user_conversations
+func ListUserConversationsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -1201,8 +1201,8 @@ func User_GET_conversationsHandler(ctx context.Context, request mcp.CallToolRequ
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// User_GET_custom_labelsHandler handles User_GET_custom_labels
-func User_GET_custom_labelsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// ListUserCustomLabelsHandler handles list_user_custom_labels
+func ListUserCustomLabelsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -1256,8 +1256,8 @@ func User_GET_custom_labelsHandler(ctx context.Context, request mcp.CallToolRequ
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// User_GET_eventsHandler handles User_GET_events
-func User_GET_eventsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// ListUserEventsHandler handles list_user_events
+func ListUserEventsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -1311,8 +1311,8 @@ func User_GET_eventsHandler(ctx context.Context, request mcp.CallToolRequest) (*
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// User_GET_feedHandler handles User_GET_feed
-func User_GET_feedHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// GetUserFeedHandler handles get_user_feed
+func GetUserFeedHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -1366,8 +1366,8 @@ func User_GET_feedHandler(ctx context.Context, request mcp.CallToolRequest) (*mc
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// User_POST_feedHandler handles User_POST_feed
-func User_POST_feedHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// UpdateUserFeedHandler handles update_user_feed
+func UpdateUserFeedHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -1396,8 +1396,8 @@ func User_POST_feedHandler(ctx context.Context, request mcp.CallToolRequest) (*m
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// User_GET_friendsHandler handles User_GET_friends
-func User_GET_friendsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// ListUserFriendsHandler handles list_user_friends
+func ListUserFriendsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -1451,8 +1451,8 @@ func User_GET_friendsHandler(ctx context.Context, request mcp.CallToolRequest) (
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// User_GET_fundraisersHandler handles User_GET_fundraisers
-func User_GET_fundraisersHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// ListUserFundraisersHandler handles list_user_fundraisers
+func ListUserFundraisersHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -1506,8 +1506,8 @@ func User_GET_fundraisersHandler(ctx context.Context, request mcp.CallToolReques
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// User_POST_fundraisersHandler handles User_POST_fundraisers
-func User_POST_fundraisersHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// CreateUserFundraiserHandler handles create_user_fundraiser
+func CreateUserFundraiserHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -1536,8 +1536,8 @@ func User_POST_fundraisersHandler(ctx context.Context, request mcp.CallToolReque
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// User_GET_groupsHandler handles User_GET_groups
-func User_GET_groupsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// ListUserGroupsHandler handles list_user_groups
+func ListUserGroupsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -1591,8 +1591,8 @@ func User_GET_groupsHandler(ctx context.Context, request mcp.CallToolRequest) (*
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// User_GET_ids_for_appsHandler handles User_GET_ids_for_apps
-func User_GET_ids_for_appsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// ListUserIdsForAppsHandler handles list_user_ids_for_apps
+func ListUserIdsForAppsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -1646,8 +1646,8 @@ func User_GET_ids_for_appsHandler(ctx context.Context, request mcp.CallToolReque
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// User_GET_ids_for_businessHandler handles User_GET_ids_for_business
-func User_GET_ids_for_businessHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// ListUserIdsForBusinessHandler handles list_user_ids_for_business
+func ListUserIdsForBusinessHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -1701,8 +1701,8 @@ func User_GET_ids_for_businessHandler(ctx context.Context, request mcp.CallToolR
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// User_GET_ids_for_pagesHandler handles User_GET_ids_for_pages
-func User_GET_ids_for_pagesHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// ListUserIdsForPagesHandler handles list_user_ids_for_pages
+func ListUserIdsForPagesHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -1756,8 +1756,8 @@ func User_GET_ids_for_pagesHandler(ctx context.Context, request mcp.CallToolRequ
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// User_GET_likesHandler handles User_GET_likes
-func User_GET_likesHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// ListUserLikesHandler handles list_user_likes
+func ListUserLikesHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -1811,8 +1811,8 @@ func User_GET_likesHandler(ctx context.Context, request mcp.CallToolRequest) (*m
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// User_GET_live_videosHandler handles User_GET_live_videos
-func User_GET_live_videosHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// ListUserLiveVideosHandler handles list_user_live_videos
+func ListUserLiveVideosHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -1866,8 +1866,8 @@ func User_GET_live_videosHandler(ctx context.Context, request mcp.CallToolReques
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// User_POST_live_videosHandler handles User_POST_live_videos
-func User_POST_live_videosHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// CreateUserLiveVideoHandler handles create_user_live_video
+func CreateUserLiveVideoHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -1896,8 +1896,8 @@ func User_POST_live_videosHandler(ctx context.Context, request mcp.CallToolReque
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// User_POST_messenger_desktop_performance_tracesHandler handles User_POST_messenger_desktop_performance_traces
-func User_POST_messenger_desktop_performance_tracesHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// CreateUserMessengerDesktopPerformanceTraceHandler handles create_user_messenger_desktop_performance_trace
+func CreateUserMessengerDesktopPerformanceTraceHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -1921,8 +1921,8 @@ func User_POST_messenger_desktop_performance_tracesHandler(ctx context.Context, 
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// User_POST_messenger_kids_accounts_unread_badgeHandler handles User_POST_messenger_kids_accounts_unread_badge
-func User_POST_messenger_kids_accounts_unread_badgeHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// UpdateUserMessengerKidsAccountsUnreadBadgeHandler handles update_user_messenger_kids_accounts_unread_badge
+func UpdateUserMessengerKidsAccountsUnreadBadgeHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -1946,8 +1946,8 @@ func User_POST_messenger_kids_accounts_unread_badgeHandler(ctx context.Context, 
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// User_GET_musicHandler handles User_GET_music
-func User_GET_musicHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// GetUserMusicHandler handles get_user_music
+func GetUserMusicHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -2001,8 +2001,8 @@ func User_GET_musicHandler(ctx context.Context, request mcp.CallToolRequest) (*m
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// User_POST_notificationsHandler handles User_POST_notifications
-func User_POST_notificationsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// CreateUserNotificationHandler handles create_user_notification
+func CreateUserNotificationHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -2031,8 +2031,8 @@ func User_POST_notificationsHandler(ctx context.Context, request mcp.CallToolReq
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// User_GET_payment_transactionsHandler handles User_GET_payment_transactions
-func User_GET_payment_transactionsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// ListUserPaymentTransactionsHandler handles list_user_payment_transactions
+func ListUserPaymentTransactionsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -2081,8 +2081,8 @@ func User_GET_payment_transactionsHandler(ctx context.Context, request mcp.CallT
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// User_DELETE_permissionsHandler handles User_DELETE_permissions
-func User_DELETE_permissionsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// RemovePermissionsFromUserHandler handles remove_permissions_from_user
+func RemovePermissionsFromUserHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -2136,8 +2136,8 @@ func User_DELETE_permissionsHandler(ctx context.Context, request mcp.CallToolReq
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// User_GET_permissionsHandler handles User_GET_permissions
-func User_GET_permissionsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// ListUserPermissionsHandler handles list_user_permissions
+func ListUserPermissionsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -2191,8 +2191,8 @@ func User_GET_permissionsHandler(ctx context.Context, request mcp.CallToolReques
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// User_GET_personal_ad_accountsHandler handles User_GET_personal_ad_accounts
-func User_GET_personal_ad_accountsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// ListUserPersonalAdAccountsHandler handles list_user_personal_ad_accounts
+func ListUserPersonalAdAccountsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -2246,8 +2246,8 @@ func User_GET_personal_ad_accountsHandler(ctx context.Context, request mcp.CallT
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// User_GET_photosHandler handles User_GET_photos
-func User_GET_photosHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// ListUserPhotosHandler handles list_user_photos
+func ListUserPhotosHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -2301,8 +2301,8 @@ func User_GET_photosHandler(ctx context.Context, request mcp.CallToolRequest) (*
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// User_POST_photosHandler handles User_POST_photos
-func User_POST_photosHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// CreateUserPhotoHandler handles create_user_photo
+func CreateUserPhotoHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -2331,8 +2331,8 @@ func User_POST_photosHandler(ctx context.Context, request mcp.CallToolRequest) (
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// User_GET_pictureHandler handles User_GET_picture
-func User_GET_pictureHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// GetUserPictureHandler handles get_user_picture
+func GetUserPictureHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -2386,8 +2386,8 @@ func User_GET_pictureHandler(ctx context.Context, request mcp.CallToolRequest) (
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// User_GET_postsHandler handles User_GET_posts
-func User_GET_postsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// ListUserPostsHandler handles list_user_posts
+func ListUserPostsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -2441,8 +2441,8 @@ func User_GET_postsHandler(ctx context.Context, request mcp.CallToolRequest) (*m
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// User_GET_rich_media_documentsHandler handles User_GET_rich_media_documents
-func User_GET_rich_media_documentsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// ListUserRichMediaDocumentsHandler handles list_user_rich_media_documents
+func ListUserRichMediaDocumentsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -2491,8 +2491,8 @@ func User_GET_rich_media_documentsHandler(ctx context.Context, request mcp.CallT
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// User_POST_staging_resourcesHandler handles User_POST_staging_resources
-func User_POST_staging_resourcesHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// CreateUserStagingResourceHandler handles create_user_staging_resource
+func CreateUserStagingResourceHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -2521,8 +2521,8 @@ func User_POST_staging_resourcesHandler(ctx context.Context, request mcp.CallToo
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// User_GET_videosHandler handles User_GET_videos
-func User_GET_videosHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// ListUserVideosHandler handles list_user_videos
+func ListUserVideosHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -2576,8 +2576,8 @@ func User_GET_videosHandler(ctx context.Context, request mcp.CallToolRequest) (*
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// User_POST_videosHandler handles User_POST_videos
-func User_POST_videosHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// CreateUserVideoHandler handles create_user_video
+func CreateUserVideoHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -2606,8 +2606,8 @@ func User_POST_videosHandler(ctx context.Context, request mcp.CallToolRequest) (
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// User_DELETE_Handler handles User_DELETE_
-func User_DELETE_Handler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// DeleteUserHandler handles delete_user
+func DeleteUserHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -2661,8 +2661,8 @@ func User_DELETE_Handler(ctx context.Context, request mcp.CallToolRequest) (*mcp
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// User_GET_Handler handles User_GET_
-func User_GET_Handler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// GetUserHandler handles get_user
+func GetUserHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -2716,8 +2716,8 @@ func User_GET_Handler(ctx context.Context, request mcp.CallToolRequest) (*mcp.Ca
 	return mcp.NewToolResultText(string(resp)), nil
 }
 
-// User_POST_Handler handles User_POST_
-func User_POST_Handler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// UpdateUserHandler handles update_user
+func UpdateUserHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get parameters from the request
 	params := request.GetArguments()
 	if params == nil {
@@ -2751,497 +2751,497 @@ func RegisterUserTools(s *server.MCPServer) error {
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"User_DELETE_access_tokens",
+			"remove_access_tokens_from_user",
 			"Remove access_tokens from this User",
-			User_DELETE_access_tokensSchema,
+			remove_access_tokens_from_userSchema,
 		),
-		User_DELETE_access_tokensHandler,
+		RemoveAccessTokensFromUserHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"User_POST_access_tokens",
+			"create_user_access_token",
 			"Create or update access_tokens for this User Returns User. Required: business_app",
-			User_POST_access_tokensSchema,
+			create_user_access_tokenSchema,
 		),
-		User_POST_access_tokensHandler,
+		CreateUserAccessTokenHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"User_GET_accounts",
+			"list_user_accounts",
 			"List accounts for this User Returns Page.",
-			User_GET_accountsSchema,
+			list_user_accountsSchema,
 		),
-		User_GET_accountsHandler,
+		ListUserAccountsHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"User_POST_accounts",
+			"create_user_account",
 			"Create or update accounts for this User Required: name",
-			User_POST_accountsSchema,
+			create_user_accountSchema,
 		),
-		User_POST_accountsHandler,
+		CreateUserAccountHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"User_GET_ad_studies",
+			"list_user_ad_studies",
 			"List ad_studies for this User Returns AdStudy.",
-			User_GET_ad_studiesSchema,
+			list_user_ad_studiesSchema,
 		),
-		User_GET_ad_studiesHandler,
+		ListUserAdStudiesHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"User_POST_ad_studies",
+			"create_user_ad_studie",
 			"Associate ad_studies with this User Returns AdStudy.",
-			User_POST_ad_studiesSchema,
+			create_user_ad_studieSchema,
 		),
-		User_POST_ad_studiesHandler,
+		CreateUserAdStudieHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"User_GET_adaccounts",
+			"list_user_adaccounts",
 			"List adaccounts for this User Returns AdAccount.",
-			User_GET_adaccountsSchema,
+			list_user_adaccountsSchema,
 		),
-		User_GET_adaccountsHandler,
+		ListUserAdaccountsHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"User_GET_albums",
+			"list_user_albums",
 			"List albums for this User Returns Album.",
-			User_GET_albumsSchema,
+			list_user_albumsSchema,
 		),
-		User_GET_albumsHandler,
+		ListUserAlbumsHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"User_POST_applications",
+			"create_user_application",
 			"Create or update applications for this User Returns User. Required: business_app",
-			User_POST_applicationsSchema,
+			create_user_applicationSchema,
 		),
-		User_POST_applicationsHandler,
+		CreateUserApplicationHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"User_GET_apprequestformerrecipients",
+			"list_user_apprequestformerrecipients",
 			"List apprequestformerrecipients for this User Returns AppRequestFormerRecipient.",
-			User_GET_apprequestformerrecipientsSchema,
+			list_user_apprequestformerrecipientsSchema,
 		),
-		User_GET_apprequestformerrecipientsHandler,
+		ListUserApprequestformerrecipientsHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"User_GET_apprequests",
+			"list_user_apprequests",
 			"List apprequests for this User Returns AppRequest.",
-			User_GET_apprequestsSchema,
+			list_user_apprequestsSchema,
 		),
-		User_GET_apprequestsHandler,
+		ListUserApprequestsHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"User_GET_assigned_ad_accounts",
+			"list_user_assigned_ad_accounts",
 			"List assigned_ad_accounts for this User Returns AdAccount.",
-			User_GET_assigned_ad_accountsSchema,
+			list_user_assigned_ad_accountsSchema,
 		),
-		User_GET_assigned_ad_accountsHandler,
+		ListUserAssignedAdAccountsHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"User_GET_assigned_applications",
+			"list_user_assigned_applications",
 			"List assigned_applications for this User Returns Application.",
-			User_GET_assigned_applicationsSchema,
+			list_user_assigned_applicationsSchema,
 		),
-		User_GET_assigned_applicationsHandler,
+		ListUserAssignedApplicationsHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"User_GET_assigned_business_asset_groups",
+			"list_user_assigned_business_asset_groups",
 			"List assigned_business_asset_groups for this User Returns BusinessAssetGroup.",
-			User_GET_assigned_business_asset_groupsSchema,
+			list_user_assigned_business_asset_groupsSchema,
 		),
-		User_GET_assigned_business_asset_groupsHandler,
+		ListUserAssignedBusinessAssetGroupsHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"User_GET_assigned_pages",
+			"list_user_assigned_pages",
 			"List assigned_pages for this User Returns Page.",
-			User_GET_assigned_pagesSchema,
+			list_user_assigned_pagesSchema,
 		),
-		User_GET_assigned_pagesHandler,
+		ListUserAssignedPagesHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"User_GET_assigned_product_catalogs",
+			"list_user_assigned_product_catalogs",
 			"List assigned_product_catalogs for this User Returns ProductCatalog.",
-			User_GET_assigned_product_catalogsSchema,
+			list_user_assigned_product_catalogsSchema,
 		),
-		User_GET_assigned_product_catalogsHandler,
+		ListUserAssignedProductCatalogsHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"User_GET_avatars",
+			"list_user_avatars",
 			"List avatars for this User Returns Avatar.",
-			User_GET_avatarsSchema,
+			list_user_avatarsSchema,
 		),
-		User_GET_avatarsHandler,
+		ListUserAvatarsHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"User_GET_business_users",
+			"list_user_business_users",
 			"List business_users for this User Returns BusinessUser.",
-			User_GET_business_usersSchema,
+			list_user_business_usersSchema,
 		),
-		User_GET_business_usersHandler,
+		ListUserBusinessUsersHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"User_DELETE_businesses",
+			"remove_businesses_from_user",
 			"Remove businesses from this User",
-			User_DELETE_businessesSchema,
+			remove_businesses_from_userSchema,
 		),
-		User_DELETE_businessesHandler,
+		RemoveBusinessesFromUserHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"User_GET_businesses",
+			"list_user_businesses",
 			"List businesses for this User Returns Business.",
-			User_GET_businessesSchema,
+			list_user_businessesSchema,
 		),
-		User_GET_businessesHandler,
+		ListUserBusinessesHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"User_POST_businesses",
+			"create_user_businesse",
 			"Create or update businesses for this User Returns Business. Required: name, vertical (enum)",
-			User_POST_businessesSchema,
+			create_user_businesseSchema,
 		),
-		User_POST_businessesHandler,
+		CreateUserBusinesseHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"User_GET_conversations",
+			"list_user_conversations",
 			"List conversations for this User Returns UnifiedThread.",
-			User_GET_conversationsSchema,
+			list_user_conversationsSchema,
 		),
-		User_GET_conversationsHandler,
+		ListUserConversationsHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"User_GET_custom_labels",
+			"list_user_custom_labels",
 			"List custom_labels for this User Returns PageUserMessageThreadLabel.",
-			User_GET_custom_labelsSchema,
+			list_user_custom_labelsSchema,
 		),
-		User_GET_custom_labelsHandler,
+		ListUserCustomLabelsHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"User_GET_events",
+			"list_user_events",
 			"List events for this User Returns Event.",
-			User_GET_eventsSchema,
+			list_user_eventsSchema,
 		),
-		User_GET_eventsHandler,
+		ListUserEventsHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"User_GET_feed",
+			"get_user_feed",
 			"Get feed data for this User Returns Post.",
-			User_GET_feedSchema,
+			get_user_feedSchema,
 		),
-		User_GET_feedHandler,
+		GetUserFeedHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"User_POST_feed",
+			"update_user_feed",
 			"Create or update feed for this User Returns Post.",
-			User_POST_feedSchema,
+			update_user_feedSchema,
 		),
-		User_POST_feedHandler,
+		UpdateUserFeedHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"User_GET_friends",
+			"list_user_friends",
 			"List friends for this User Returns User.",
-			User_GET_friendsSchema,
+			list_user_friendsSchema,
 		),
-		User_GET_friendsHandler,
+		ListUserFriendsHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"User_GET_fundraisers",
+			"list_user_fundraisers",
 			"List fundraisers for this User Returns FundraiserPersonToCharity.",
-			User_GET_fundraisersSchema,
+			list_user_fundraisersSchema,
 		),
-		User_GET_fundraisersHandler,
+		ListUserFundraisersHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"User_POST_fundraisers",
+			"create_user_fundraiser",
 			"Create or update fundraisers for this User Returns FundraiserPersonToCharity. Required: currency, description, end_time, external_id, fundraiser_type (enum), goal_amount, name",
-			User_POST_fundraisersSchema,
+			create_user_fundraiserSchema,
 		),
-		User_POST_fundraisersHandler,
+		CreateUserFundraiserHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"User_GET_groups",
+			"list_user_groups",
 			"List groups for this User Returns Group.",
-			User_GET_groupsSchema,
+			list_user_groupsSchema,
 		),
-		User_GET_groupsHandler,
+		ListUserGroupsHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"User_GET_ids_for_apps",
+			"list_user_ids_for_apps",
 			"List ids_for_apps for this User Returns UserIDForApp.",
-			User_GET_ids_for_appsSchema,
+			list_user_ids_for_appsSchema,
 		),
-		User_GET_ids_for_appsHandler,
+		ListUserIdsForAppsHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"User_GET_ids_for_business",
+			"list_user_ids_for_business",
 			"List ids_for_business for this User Returns UserIDForApp.",
-			User_GET_ids_for_businessSchema,
+			list_user_ids_for_businessSchema,
 		),
-		User_GET_ids_for_businessHandler,
+		ListUserIdsForBusinessHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"User_GET_ids_for_pages",
+			"list_user_ids_for_pages",
 			"List ids_for_pages for this User Returns UserIDForPage.",
-			User_GET_ids_for_pagesSchema,
+			list_user_ids_for_pagesSchema,
 		),
-		User_GET_ids_for_pagesHandler,
+		ListUserIdsForPagesHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"User_GET_likes",
+			"list_user_likes",
 			"List likes for this User Returns Page.",
-			User_GET_likesSchema,
+			list_user_likesSchema,
 		),
-		User_GET_likesHandler,
+		ListUserLikesHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"User_GET_live_videos",
+			"list_user_live_videos",
 			"List live_videos for this User Returns LiveVideo.",
-			User_GET_live_videosSchema,
+			list_user_live_videosSchema,
 		),
-		User_GET_live_videosHandler,
+		ListUserLiveVideosHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"User_POST_live_videos",
+			"create_user_live_video",
 			"Create or update live_videos for this User Returns LiveVideo.",
-			User_POST_live_videosSchema,
+			create_user_live_videoSchema,
 		),
-		User_POST_live_videosHandler,
+		CreateUserLiveVideoHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"User_POST_messenger_desktop_performance_traces",
+			"create_user_messenger_desktop_performance_trace",
 			"Create or update messenger_desktop_performance_traces for this User Returns User.",
-			User_POST_messenger_desktop_performance_tracesSchema,
+			create_user_messenger_desktop_performance_traceSchema,
 		),
-		User_POST_messenger_desktop_performance_tracesHandler,
+		CreateUserMessengerDesktopPerformanceTraceHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"User_POST_messenger_kids_accounts_unread_badge",
+			"update_user_messenger_kids_accounts_unread_badge",
 			"Create or update messenger_kids_accounts_unread_badge for this User Returns User. Required: proxied_app_id",
-			User_POST_messenger_kids_accounts_unread_badgeSchema,
+			update_user_messenger_kids_accounts_unread_badgeSchema,
 		),
-		User_POST_messenger_kids_accounts_unread_badgeHandler,
+		UpdateUserMessengerKidsAccountsUnreadBadgeHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"User_GET_music",
+			"get_user_music",
 			"Get music data for this User Returns Page.",
-			User_GET_musicSchema,
+			get_user_musicSchema,
 		),
-		User_GET_musicHandler,
+		GetUserMusicHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"User_POST_notifications",
+			"create_user_notification",
 			"Create or update notifications for this User Returns User.",
-			User_POST_notificationsSchema,
+			create_user_notificationSchema,
 		),
-		User_POST_notificationsHandler,
+		CreateUserNotificationHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"User_GET_payment_transactions",
+			"list_user_payment_transactions",
 			"List payment_transactions for this User Returns PaymentEnginePayment.",
-			User_GET_payment_transactionsSchema,
+			list_user_payment_transactionsSchema,
 		),
-		User_GET_payment_transactionsHandler,
+		ListUserPaymentTransactionsHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"User_DELETE_permissions",
+			"remove_permissions_from_user",
 			"Remove permissions from this User",
-			User_DELETE_permissionsSchema,
+			remove_permissions_from_userSchema,
 		),
-		User_DELETE_permissionsHandler,
+		RemovePermissionsFromUserHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"User_GET_permissions",
+			"list_user_permissions",
 			"List permissions for this User Returns Permission.",
-			User_GET_permissionsSchema,
+			list_user_permissionsSchema,
 		),
-		User_GET_permissionsHandler,
+		ListUserPermissionsHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"User_GET_personal_ad_accounts",
+			"list_user_personal_ad_accounts",
 			"List personal_ad_accounts for this User Returns AdAccount.",
-			User_GET_personal_ad_accountsSchema,
+			list_user_personal_ad_accountsSchema,
 		),
-		User_GET_personal_ad_accountsHandler,
+		ListUserPersonalAdAccountsHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"User_GET_photos",
+			"list_user_photos",
 			"List photos for this User Returns Photo.",
-			User_GET_photosSchema,
+			list_user_photosSchema,
 		),
-		User_GET_photosHandler,
+		ListUserPhotosHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"User_POST_photos",
+			"create_user_photo",
 			"Create or update photos for this User Returns Photo.",
-			User_POST_photosSchema,
+			create_user_photoSchema,
 		),
-		User_POST_photosHandler,
+		CreateUserPhotoHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"User_GET_picture",
+			"get_user_picture",
 			"Get picture data for this User Returns ProfilePictureSource.",
-			User_GET_pictureSchema,
+			get_user_pictureSchema,
 		),
-		User_GET_pictureHandler,
+		GetUserPictureHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"User_GET_posts",
+			"list_user_posts",
 			"List posts for this User Returns Post.",
-			User_GET_postsSchema,
+			list_user_postsSchema,
 		),
-		User_GET_postsHandler,
+		ListUserPostsHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"User_GET_rich_media_documents",
+			"list_user_rich_media_documents",
 			"List rich_media_documents for this User Returns Canvas.",
-			User_GET_rich_media_documentsSchema,
+			list_user_rich_media_documentsSchema,
 		),
-		User_GET_rich_media_documentsHandler,
+		ListUserRichMediaDocumentsHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"User_POST_staging_resources",
+			"create_user_staging_resource",
 			"Create or update staging_resources for this User Returns User.",
-			User_POST_staging_resourcesSchema,
+			create_user_staging_resourceSchema,
 		),
-		User_POST_staging_resourcesHandler,
+		CreateUserStagingResourceHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"User_GET_videos",
+			"list_user_videos",
 			"List videos for this User Returns AdVideo.",
-			User_GET_videosSchema,
+			list_user_videosSchema,
 		),
-		User_GET_videosHandler,
+		ListUserVideosHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"User_POST_videos",
+			"create_user_video",
 			"Create or update videos for this User Returns AdVideo.",
-			User_POST_videosSchema,
+			create_user_videoSchema,
 		),
-		User_POST_videosHandler,
+		CreateUserVideoHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"User_DELETE_",
+			"delete_user",
 			"Delete a User",
-			User_DELETE_Schema,
+			delete_userSchema,
 		),
-		User_DELETE_Handler,
+		DeleteUserHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"User_GET_",
+			"get_user",
 			"Get details of a specific User Returns User.",
-			User_GET_Schema,
+			get_userSchema,
 		),
-		User_GET_Handler,
+		GetUserHandler,
 	)
 
 	s.AddTool(
 		mcp.NewToolWithRawSchema(
-			"User_POST_",
+			"update_user",
 			"Update a User Returns User.",
-			User_POST_Schema,
+			update_userSchema,
 		),
-		User_POST_Handler,
+		UpdateUserHandler,
 	)
 
 	return nil

@@ -9,7 +9,7 @@ import (
 	"github.com/mark3labs/mcp-go/mcp"
 )
 
-func TestAdAccountGETActivitiesHandler(t *testing.T) {
+func TestListAdAccountActivitiesHandler(t *testing.T) {
 	// Skip if no access token
 	if os.Getenv("FACEBOOK_ACCESS_TOKEN") == "" {
 		t.Skip("FACEBOOK_ACCESS_TOKEN not set")
@@ -32,7 +32,7 @@ func TestAdAccountGETActivitiesHandler(t *testing.T) {
 	}
 
 	// Call the handler
-	result, err := AdAccount_GET_activitiesHandler(context.Background(), request)
+	result, err := ListAdAccountActivitiesHandler(context.Background(), request)
 	if err != nil {
 		t.Errorf("Handler returned error: %v", err)
 	}
