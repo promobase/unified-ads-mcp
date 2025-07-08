@@ -3,7 +3,6 @@ package main
 import (
 	"context"
 	"flag"
-	"fmt"
 	"log"
 	"os"
 
@@ -54,26 +53,12 @@ func NewFacebookMCPServer() *server.MCPServer {
 	return mcpServer
 }
 
-var (
-	// These will be set by goreleaser
-	version = "dev"
-	commit  = "none"
-	date    = "unknown"
-)
-
 func main() {
 	var transport string
-	var showVersion bool
 
 	flag.StringVar(&transport, "t", "stdio", "Transport type (stdio or http)")
 	flag.StringVar(&transport, "transport", "stdio", "Transport type (stdio or http)")
-	flag.BoolVar(&showVersion, "version", false, "Show version information")
 	flag.Parse()
-
-	if showVersion {
-		fmt.Printf("unified-ads-mcp %s (commit: %s, built: %s)\n", version, commit, date)
-		os.Exit(0)
-	}
 
 	utils.LoadFacebookConfig()
 
