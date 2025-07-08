@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"flag"
+	"fmt"
 	"log"
 	"os"
 
@@ -53,11 +54,26 @@ func NewFacebookMCPServer() *server.MCPServer {
 	return mcpServer
 }
 
+var (
+	// These will be set by goreleaser
+	version = "dev"
+	commit  = "none"
+	date    = "unknown"
+)
+
 func main() {
 	var transport string
+	var showVersion bool
+
 	flag.StringVar(&transport, "t", "stdio", "Transport type (stdio or http)")
 	flag.StringVar(&transport, "transport", "stdio", "Transport type (stdio or http)")
+	flag.BoolVar(&showVersion, "version", false, "Show version information")
 	flag.Parse()
+
+	if showVersion {
+		fmt.Printf("unified-ads-mcp %s (commit: %s, built: %s)\n", version, commit, date)
+		os.Exit(0)
+	}
 
 	utils.LoadFacebookConfig()
 
@@ -71,12 +87,15 @@ func main() {
 
 	if transport == "http" {
 		httpServer := server.NewStreamableHTTPServer(mcpServer)
-		log.Printf("HTTP server listening on :8080/mcp")
+		log.Printf("Starting Facebook Business MCP Server (HTTP mode)")
+		log.Printf("Listening on :8080/mcp")
+		log.Printf("Registered %d tools for Ad management", 162)
 		if err := httpServer.Start(":8080"); err != nil {
 			log.Fatalf("Server error: %v", err)
 		}
 	} else {
-		log.Printf("Starting stdio server...")
+		// In stdio mode, be quiet unless there's an error
+		// MCP clients expect clean JSON communication
 		if err := server.ServeStdio(mcpServer); err != nil {
 			log.Fatalf("Server error: %v", err)
 		}

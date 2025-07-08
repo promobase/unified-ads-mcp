@@ -35,3 +35,6 @@ go.work.sum
 unified-ads-mcp
 
 .claude/mcp.json
+
+# GoReleaser
+dist/

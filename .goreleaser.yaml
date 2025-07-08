@@ -1,0 +1,99 @@
+version: 2
+
+project_name: unified-ads-mcp
+
+before:
+  hooks:
+    - go mod tidy
+    - make codegen
+
+builds:
+  - id: unified-ads-mcp
+    main: ./cmd/server
+    binary: unified-ads-mcp
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - darwin
+    goarch:
+      - amd64
+      - arm64
+    ldflags:
+      - -s -w -X main.version={{.Version}} -X main.commit={{.Commit}} -X main.date={{.Date}}
+
+archives:
+  - id: default
+    name_template: >-
+      {{ .ProjectName }}_
+      {{- .Version }}_
+      {{- title .Os }}_
+      {{- if eq .Arch "amd64" }}x86_64
+      {{- else if eq .Arch "386" }}i386
+      {{- else }}{{ .Arch }}{{ end }}
+    files:
+      - README.md
+      - LICENSE*
+
+checksum:
+  name_template: 'checksums.txt'
+
+snapshot:
+  name_template: "{{ incpatch .Version }}-next"
+
+changelog:
+  sort: asc
+  use: git
+  filters:
+    exclude:
+      - '^docs:'
+      - '^test:'
+      - '^chore:'
+      - '^ci:'
+      - Merge pull request
+      - Merge remote-tracking branch
+      - Merge branch
+
+release:
+  github:
+    owner: "{{ .Env.GITHUB_REPOSITORY_OWNER }}"
+    name: "{{ .ProjectName }}"
+  
+  # Release notes
+  header: |
+    ## Unified Ads MCP Server {{ .Tag }}
+    
+    MCP (Model Context Protocol) server for Facebook Business API, with plans to expand to Google Ads and TikTok Business API.
+  
+  footer: |
+    ## Quick Install
+    
+    ```bash
+    curl -sSL https://raw.githubusercontent.com/{{ .Env.GITHUB_REPOSITORY }}/main/install.sh | bash
+    ```
+    
+    This will install the binary and show you the Claude Desktop configuration.
+    
+    ## Manual Setup
+    
+    1. Download and extract the binary for your platform
+    2. Add to Claude Desktop config (`~/Library/Application Support/Claude/claude_desktop_config.json`):
+    
+    ```json
+    {
+      "mcpServers": {
+        "unified-ads": {
+          "command": "/path/to/unified-ads-mcp",
+          "env": {
+            "FACEBOOK_ACCESS_TOKEN": "your_token_here"
+          }
+        }
+      }
+    }
+    ```
+    
+    Get your token at: https://developers.facebook.com/tools/explorer/
+
+# Announce releases
+announce:
+  skip: "{{ gt .Patch 0 }}"

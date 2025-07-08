@@ -1,38 +1,101 @@
 # Unified Ads MCP Server
 
-MCP (Model Context Protocol) server for Facebook Business API, with plans to expand to Google Ads and TikTok Business API.
+An MCP (Model Context Protocol) server that enables Claude and other AI assistants to manage Facebook Ads programmatically. This server provides 160+ tools for comprehensive ad management, with plans to expand to Google Ads and TikTok Business API.
 
-## Prerequisites
+## What is MCP?
 
-1. Go 1.21 or higher
-2. Facebook Access Token (get from [Facebook Graph API Explorer](https://developers.facebook.com/tools/explorer/))
+The Model Context Protocol (MCP) allows AI assistants like Claude to interact with external services and tools. This server implements MCP to give Claude the ability to:
+- List and manage Facebook ad accounts
+- Create and optimize campaigns
+- Analyze ad performance and insights
+- Manage budgets and targeting
+- Handle creative assets
+
+## Installation
+
+### Quick Install (Recommended)
+
+```bash
+curl -sSL https://raw.githubusercontent.com/promobase/unified-ads-mcp/main/install.sh | bash
+```
+
+This will:
+- Download the latest binary for your platform
+- Install it to `~/.local/bin/unified-ads-mcp`
+- Automatically configure Claude Desktop (creates backup of existing config)
+- Prompt you to add your Facebook access token
+
+### Manual Download
+
+Download from the [releases page](https://github.com/promobase/unified-ads-mcp/releases)
+
+### Build from Source
+
+```bash
+git clone https://github.com/promobase/unified-ads-mcp
+cd unified-ads-mcp
+make deps
+make codegen
+make build
+```
 
 ## Setup
 
-1. Install dependencies:
-```bash
-make deps
+### 1. Get a Facebook Access Token
+
+1. Go to [Facebook Graph API Explorer](https://developers.facebook.com/tools/explorer/)
+2. Select your app or create a new one
+3. Add the following permissions:
+   - `ads_management`
+   - `ads_read`
+   - `business_management`
+   - `read_insights`
+4. Generate and copy your access token
+
+### 2. Configure Claude Desktop
+
+Add the server to your Claude Desktop configuration:
+
+**macOS**: `~/Library/Application Support/Claude/claude_desktop_config.json`
+**Windows**: `%APPDATA%\Claude\claude_desktop_config.json`
+**Linux**: `~/.config/Claude/claude_desktop_config.json`
+
+```json
+{
+  "mcpServers": {
+    "unified-ads": {
+      "command": "/absolute/path/to/unified-ads-mcp",
+      "env": {
+        "FACEBOOK_ACCESS_TOKEN": "your_access_token_here"
+      }
+    }
+  }
+}
 ```
 
-2. Generate the API tools:
-```bash
-make codegen
-```
+### 3. Restart Claude Desktop
 
-3. Set your Facebook access token:
+After updating the configuration, restart Claude Desktop to load the MCP server.
+
+## Usage in Claude
+
+Once configured, you can ask Claude to:
+
+- **List ad accounts**: "Show me all my Facebook ad accounts"
+- **Get campaign insights**: "Get performance data for my active campaigns"
+- **Create campaigns**: "Create a new campaign with a $50 daily budget"
+- **Manage ads**: "Pause all ads in campaign X"
+- **Analyze performance**: "Which ad sets are performing best this week?"
+
+## Running Standalone (for development)
+
+### Stdio Mode (default for MCP)
 ```bash
 export FACEBOOK_ACCESS_TOKEN="your_access_token_here"
-```
-
-## Running the Server
-
-### Stdio Mode (default)
-```bash
-make build
 ./unified-ads-mcp
 ```
 
-### HTTP Mode
+### HTTP Mode (for testing)
 ```bash
 ./unified-ads-mcp --transport http
 ```
@@ -90,6 +153,26 @@ This will regenerate all tools from the Facebook API specifications.
 1. **No access token error**: Set the `FACEBOOK_ACCESS_TOKEN` environment variable
 2. **API errors**: Check that your token has the necessary permissions
 3. **Build errors**: Run `make deps` to ensure all dependencies are installed
+
+## Development
+
+### Automatic Releases
+
+Every commit to the `main` branch automatically:
+1. Bumps the patch version
+2. Creates a new release with binaries for Linux and macOS
+3. Updates the install script to use the latest version
+
+**Note**: To enable automatic releases, create a Personal Access Token with `repo` scope and add it as `RELEASE_TOKEN` secret in your repository settings.
+
+### Manual Release
+
+To create a major or minor version bump:
+
+```bash
+git tag -a v1.0.0 -m 'Major release v1.0.0'
+git push origin v1.0.0
+```
 
 ## Future Plans
 

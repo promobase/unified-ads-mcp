@@ -3,7 +3,7 @@ FACEBOOK_BINARY=facebook-mcp
 GOCMD=go
 GENERATED_DIR=internal/facebook/generated
 
-.PHONY: build run codegen test fmt clean
+.PHONY: build run codegen test fmt clean deps
 
 all: build
 
@@ -33,7 +33,9 @@ fmt:
 
 clean:
 	rm -f $(BINARY_NAME) $(FACEBOOK_BINARY)
+	rm -rf dist/
 
 deps:
 	$(GOCMD) mod download
 	$(GOCMD) mod tidy
+
