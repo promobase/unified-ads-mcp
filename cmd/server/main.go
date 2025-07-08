@@ -14,9 +14,6 @@ import (
 )
 
 func NewFacebookMCPServer() *server.MCPServer {
-	if os.Getenv("FACEBOOK_ACCESS_TOKEN") == "" {
-		log.Fatal("FACEBOOK_ACCESS_TOKEN environment variable must be set")
-	}
 	// Create hooks for debugging (optional)
 	hooks := &server.Hooks{}
 
@@ -90,9 +87,7 @@ func main() {
 
 	// Check for Facebook access token
 	if os.Getenv("FACEBOOK_ACCESS_TOKEN") == "" {
-		log.Println("WARNING: FACEBOOK_ACCESS_TOKEN environment variable is not set")
-		log.Println("The server will start, but API calls will fail without a valid token")
-		log.Println("Get your token from: https://developers.facebook.com/tools/explorer/")
+		log.Fatalln("FACEBOOK_ACCESS_TOKEN environment variable must be set")
 	}
 
 	// Create and start the server
