@@ -87,36 +87,43 @@ jobs:
         run: |
           VERSION=${GITHUB_REF#refs/tags/}
           
+          cat << 'EOF' > release_notes.md
+          ## Unified Ads MCP Server $VERSION
+          
+          MCP (Model Context Protocol) server for Facebook Business API.
+          
+          ## Quick Install
+          
+          ```bash
+          curl -sSL https://raw.githubusercontent.com/${{ github.repository }}/main/install.sh | bash
+          ```
+          
+          ## Manual Setup
+          
+          1. Download the binary for your platform below
+          2. Add to Claude Desktop config (`~/Library/Application Support/Claude/claude_desktop_config.json`):
+          
+          ```json
+          {
+            "mcpServers": {
+              "unified-ads": {
+                "command": "/path/to/unified-ads-mcp",
+                "env": {
+                  "FACEBOOK_ACCESS_TOKEN": "your_token_here"
+                }
+              }
+            }
+          }
+          ```
+          
+          Get your token at: https://developers.facebook.com/tools/explorer/
+          EOF
+          
+          # Replace $VERSION in release notes
+          sed -i "s/\$VERSION/$VERSION/g" release_notes.md
+          
           gh release create $VERSION \
             --title "Release $VERSION" \
-            --notes "## Unified Ads MCP Server $VERSION
-
-MCP (Model Context Protocol) server for Facebook Business API.
-
-## Quick Install
-
-\`\`\`bash
-curl -sSL https://raw.githubusercontent.com/${{ github.repository }}/main/install.sh | bash
-\`\`\`
-
-## Manual Setup
-
-1. Download the binary for your platform below
-2. Add to Claude Desktop config (\`~/Library/Application Support/Claude/claude_desktop_config.json\`):
-
-\`\`\`json
-{
-  \"mcpServers\": {
-    \"unified-ads\": {
-      \"command\": \"/path/to/unified-ads-mcp\",
-      \"env\": {
-        \"FACEBOOK_ACCESS_TOKEN\": \"your_token_here\"
-      }
-    }
-  }
-}
-\`\`\`
-
-Get your token at: https://developers.facebook.com/tools/explorer/" \
+            --notes-file release_notes.md \
             artifacts/unified-ads-mcp-* \
             artifacts/checksums.txt
