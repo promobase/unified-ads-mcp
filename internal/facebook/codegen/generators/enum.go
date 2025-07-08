@@ -84,7 +84,7 @@ func (g *EnumGenerator) generateEnums() error {
 		Enums    []EnumType
 	}
 	var orderedEnumGroups []EnumGroup
-	
+
 	for _, typeName := range typeNames {
 		// Remove duplicate values within each enum
 		enums := enumsByTypeName[typeName]

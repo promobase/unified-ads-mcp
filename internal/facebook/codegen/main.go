@@ -23,7 +23,7 @@ func main() {
 	flag.StringVar(&config.specsDir, "specs", "", "Path to API specs directory (required)")
 	flag.StringVar(&config.outputPath, "output", "", "Output directory (optional, defaults to ../generated relative to specs)")
 	flag.StringVar(&config.genType, "type", "all", "Type of code to generate: all, enums, fields, tools")
-	
+
 	// Custom usage
 	flag.Usage = func() {
 		fmt.Fprintf(os.Stderr, "Facebook API Code Generator\n\n")
@@ -88,68 +88,84 @@ func main() {
 
 func generateAll(config Config) error {
 	log.Println("Generating all code...")
-	
+
 	// Generate enums first
 	if err := generateEnums(config); err != nil {
 		return fmt.Errorf("failed to generate enums: %w", err)
 	}
-	
+
 	// Generate fields
 	if err := generateFields(config); err != nil {
 		return fmt.Errorf("failed to generate fields: %w", err)
 	}
-	
+
 	// Generate tools
 	if err := generateTools(config); err != nil {
 		return fmt.Errorf("failed to generate tools: %w", err)
 	}
-	
+
 	return nil
 }
 
 func generateEnums(config Config) error {
 	log.Println("Generating enum types...")
-	
+
 	enumPath := filepath.Join(config.specsDir, "enum_types.json")
 	generator := generators.NewEnumGenerator(config.outputPath)
-	
+
 	if err := generator.LoadEnumTypes(enumPath); err != nil {
 		return fmt.Errorf("failed to load enum types: %w", err)
 	}
-	
+
 	if err := generator.Generate(); err != nil {
 		return fmt.Errorf("failed to generate enums: %w", err)
 	}
-	
+
 	return nil
 }
 
 func generateFields(config Config) error {
 	log.Println("Generating field types...")
-	
+
 	generator := generators.NewFieldGenerator(config.outputPath)
-	
+
 	// Load enum types first
 	enumPath := filepath.Join(config.specsDir, "enum_types.json")
 	if err := generator.LoadEnumTypes(enumPath); err != nil {
 		return fmt.Errorf("failed to load enum types: %w", err)
 	}
-	
+
 	// Load API specs
 	if err := generator.LoadAPISpecs(config.specsDir); err != nil {
 		return fmt.Errorf("failed to load API specs: %w", err)
 	}
-	
+
 	if err := generator.Generate(); err != nil {
 		return fmt.Errorf("failed to generate fields: %w", err)
 	}
-	
+
 	return nil
 }
 
 func generateTools(config Config) error {
 	log.Println("Generating MCP tools...")
-	// TODO: Implement tool generation
-	log.Println("Tool generation not yet implemented")
+
+	generator := generators.NewToolGenerator(config.outputPath)
+
+	// Load enum types first
+	enumPath := filepath.Join(config.specsDir, "enum_types.json")
+	if err := generator.LoadEnumTypes(enumPath); err != nil {
+		return fmt.Errorf("failed to load enum types: %w", err)
+	}
+
+	// Load API specs
+	if err := generator.LoadAPISpecs(config.specsDir); err != nil {
+		return fmt.Errorf("failed to load API specs: %w", err)
+	}
+
+	if err := generator.Generate(); err != nil {
+		return fmt.Errorf("failed to generate tools: %w", err)
+	}
+
 	return nil
 }

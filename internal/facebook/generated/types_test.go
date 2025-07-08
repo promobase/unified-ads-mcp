@@ -9,12 +9,12 @@ import (
 func TestAdMarshaling(t *testing.T) {
 	// Test creating and marshaling an Ad object
 	ad := &Ad{
-		ID:        "123456789",
-		Name:      "Test Ad",
-		AccountID: "act_987654321",
-		Status:    "ACTIVE",
-		CreatedTime: time.Now(),
-		BidAmount: 100,
+		ID:              "123456789",
+		Name:            "Test Ad",
+		AccountID:       "act_987654321",
+		Status:          "ACTIVE",
+		CreatedTime:     time.Now(),
+		BidAmount:       100,
 		EffectiveStatus: "ACTIVE",
 		Adlabels: []*AdLabel{
 			{
@@ -48,7 +48,7 @@ func TestAdMarshaling(t *testing.T) {
 func TestEnumTypes(t *testing.T) {
 	// Test enum types
 	var status AdStatus = "ACTIVE"
-	
+
 	// Should be able to use as string
 	if string(status) != "ACTIVE" {
 		t.Errorf("Enum conversion failed: got %s, want ACTIVE", status)
@@ -102,7 +102,7 @@ func TestComplexMapTypes(t *testing.T) {
 func TestFieldsWithNumbers(t *testing.T) {
 	// Test fields that start with numbers
 	stats := &AdsActionStats{
-		X1dClick: "100",
+		X1dClick:  "100",
 		X28dClick: "500",
 	}
 

@@ -17,3 +17,4 @@ we're in a new repo and start implementing mcp servers for facebook business api
 ## notes
 1. we use makefile to handle codegen, build, run. make sure your changes are validated.
 2. when using 3P libraries, always look up the docs/example code on using it, e.g. mcp-go docs can be done using `go doc ..`, etc. 
+3. for implementation/technical design, ALWAYS create high level plan & pseudo code, and iterate with me UNTIL i confirm that it's good to go to begin implementation.
