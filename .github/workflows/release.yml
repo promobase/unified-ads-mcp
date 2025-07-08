@@ -8,6 +8,11 @@ on:
 permissions:
   contents: write
 
+# Ensure only one release runs at a time
+concurrency:
+  group: release
+  cancel-in-progress: false
+
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -29,6 +34,9 @@ jobs:
       - name: Get next version
         id: get_version
         run: |
+          # Fetch all tags to ensure we have the latest
+          git fetch --tags
+          
           # Get the latest tag
           LATEST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0")
           echo "Latest tag: $LATEST_TAG"
@@ -44,6 +52,14 @@ jobs:
           
           # Create new version
           NEW_VERSION="v${MAJOR}.${MINOR}.${PATCH}"
+          
+          # Check if this version already exists (in case of race condition)
+          if git rev-parse "$NEW_VERSION" >/dev/null 2>&1; then
+            echo "Version $NEW_VERSION already exists, incrementing again..."
+            PATCH=$((PATCH + 1))
+            NEW_VERSION="v${MAJOR}.${MINOR}.${PATCH}"
+          fi
+          
           echo "New version: $NEW_VERSION"
           
           echo "new_version=$NEW_VERSION" >> $GITHUB_OUTPUT
@@ -56,7 +72,25 @@ jobs:
           git config user.email github-actions@github.com
           git add VERSION
           git diff --staged --quiet || git commit -m "ci: bump version to ${{ steps.get_version.outputs.new_version }}"
-          git push
+          
+          # Handle potential conflicts from concurrent commits
+          MAX_RETRIES=3
+          RETRY_COUNT=0
+          while [ $RETRY_COUNT -lt $MAX_RETRIES ]; do
+            if git push; then
+              echo "Successfully pushed VERSION update"
+              break
+            else
+              echo "Push failed, attempting to rebase..."
+              git pull --rebase
+              RETRY_COUNT=$((RETRY_COUNT + 1))
+            fi
+          done
+          
+          if [ $RETRY_COUNT -eq $MAX_RETRIES ]; then
+            echo "Failed to push after $MAX_RETRIES attempts"
+            exit 1
+          fi
 
       - name: Create tag
         run: |
