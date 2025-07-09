@@ -24,7 +24,7 @@ func main() {
 	flag.StringVar(&config.specsDir, "specs", "", "Path to API specs directory (required)")
 	flag.StringVar(&config.outputPath, "output", "", "Output directory (optional, defaults to ../generated relative to specs)")
 	flag.StringVar(&config.genType, "type", "all", "Type of code to generate: all, enums, fields, tools")
-	flag.BoolVar(&config.useSchema, "schema", true, "Use schema-based generation for enhanced type safety")
+	flag.BoolVar(&config.useSchema, "schema", false, "Use schema-based generation for enhanced type safety")
 
 	// Custom usage
 	flag.Usage = func() {

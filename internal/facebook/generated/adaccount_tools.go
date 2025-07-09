@@ -5,7 +5,6 @@ package generated
 import (
 	"context"
 	"fmt"
-	"reflect"
 	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
@@ -14,1676 +13,1452 @@ import (
 
 // list_ad_account_account_controlsArgs defines the typed arguments for list_ad_account_account_controls
 type list_ad_account_account_controlsArgs struct {
-	ID     string   `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After  string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
 }
 
 // create_ad_account_account_controlArgs defines the typed arguments for create_ad_account_account_control
 type create_ad_account_account_controlArgs struct {
-	ID                string                 `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	AudienceControls  map[string]interface{} `json:"audience_controls" jsonschema:"description=Audience Controls,required"`
-	PlacementControls map[string]interface{} `json:"placement_controls,omitempty" jsonschema:"description=Placement Controls"`
+	ID                string                 `json:"id"`
+	AudienceControls  map[string]interface{} `json:"audience_controls"`
+	PlacementControls map[string]interface{} `json:"placement_controls,omitempty"`
 }
 
 // list_ad_account_activitiesArgs defines the typed arguments for list_ad_account_activities
 type list_ad_account_activitiesArgs struct {
-	ID          string   `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Fields      []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit       int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After       string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before      string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
-	AddChildren bool     `json:"add_children,omitempty" jsonschema:"description=Add Children"`
-	BusinessId  string   `json:"business_id,omitempty" jsonschema:"description=ID of the Business,pattern=^[0-9]+$"`
-	Category    string   `json:"category,omitempty" jsonschema:"description=Category"`
-	DataSource  string   `json:"data_source,omitempty" jsonschema:"description=Data Source"`
-	ExtraOids   []string `json:"extra_oids,omitempty" jsonschema:"description=Extra Oids"`
-	Oid         string   `json:"oid,omitempty" jsonschema:"description=Oid"`
-	Since       string   `json:"since,omitempty" jsonschema:"description=Since,format=date-time"`
-	Uid         int      `json:"uid,omitempty" jsonschema:"description=Uid"`
-	Until       string   `json:"until,omitempty" jsonschema:"description=Until,format=date-time"`
+	ID          string   `json:"id"`
+	Fields      []string `json:"fields,omitempty"`
+	Limit       int      `json:"limit,omitempty"`
+	After       string   `json:"after,omitempty"`
+	Before      string   `json:"before,omitempty"`
+	AddChildren bool     `json:"add_children,omitempty"`
+	BusinessId  string   `json:"business_id,omitempty"`
+	Category    string   `json:"category,omitempty"`
+	DataSource  string   `json:"data_source,omitempty"`
+	ExtraOids   []string `json:"extra_oids,omitempty"`
+	Oid         string   `json:"oid,omitempty"`
+	Since       string   `json:"since,omitempty"`
+	Uid         int      `json:"uid,omitempty"`
+	Until       string   `json:"until,omitempty"`
 }
 
 // list_ad_account_ad_place_page_setsArgs defines the typed arguments for list_ad_account_ad_place_page_sets
 type list_ad_account_ad_place_page_setsArgs struct {
-	ID     string   `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After  string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
 }
 
 // create_ad_account_ad_place_page_setArgs defines the typed arguments for create_ad_account_ad_place_page_set
 type create_ad_account_ad_place_page_setArgs struct {
-	ID               string   `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	LocationTypes    []string `json:"location_types,omitempty" jsonschema:"description=Location Types"`
-	Name             string   `json:"name" jsonschema:"description=Name,required"`
-	ParentPage       string   `json:"parent_page" jsonschema:"description=Parent Page,required"`
-	TargetedAreaType string   `json:"targeted_area_type,omitempty" jsonschema:"description=Targeted Area Type"`
+	ID               string   `json:"id"`
+	LocationTypes    []string `json:"location_types,omitempty"`
+	Name             string   `json:"name"`
+	ParentPage       string   `json:"parent_page"`
+	TargetedAreaType string   `json:"targeted_area_type,omitempty"`
 }
 
 // update_ad_account_ad_place_page_sets_asyncArgs defines the typed arguments for update_ad_account_ad_place_page_sets_async
 type update_ad_account_ad_place_page_sets_asyncArgs struct {
-	ID               string   `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	LocationTypes    []string `json:"location_types,omitempty" jsonschema:"description=Location Types"`
-	Name             string   `json:"name" jsonschema:"description=Name,required"`
-	ParentPage       string   `json:"parent_page" jsonschema:"description=Parent Page,required"`
-	TargetedAreaType string   `json:"targeted_area_type,omitempty" jsonschema:"description=Targeted Area Type"`
+	ID               string   `json:"id"`
+	LocationTypes    []string `json:"location_types,omitempty"`
+	Name             string   `json:"name"`
+	ParentPage       string   `json:"parent_page"`
+	TargetedAreaType string   `json:"targeted_area_type,omitempty"`
 }
 
 // list_ad_account_ad_saved_keywordsArgs defines the typed arguments for list_ad_account_ad_saved_keywords
 type list_ad_account_ad_saved_keywordsArgs struct {
-	ID     string   `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After  string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
 }
 
 // list_ad_account_ad_studiesArgs defines the typed arguments for list_ad_account_ad_studies
 type list_ad_account_ad_studiesArgs struct {
-	ID     string   `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After  string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
 }
 
 // list_ad_account_adcloudplayablesArgs defines the typed arguments for list_ad_account_adcloudplayables
 type list_ad_account_adcloudplayablesArgs struct {
-	ID     string   `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After  string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
 }
 
 // list_ad_account_adcreativesArgs defines the typed arguments for list_ad_account_adcreatives
 type list_ad_account_adcreativesArgs struct {
-	ID     string   `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After  string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
 }
 
 // create_ad_account_adcreativeArgs defines the typed arguments for create_ad_account_adcreative
 type create_ad_account_adcreativeArgs struct {
-	ID                               string                     `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	ActorId                          int                        `json:"actor_id,omitempty" jsonschema:"description=ID of the Actor,pattern=^[0-9]+$"`
-	AdDisclaimerSpec                 map[string]interface{}     `json:"ad_disclaimer_spec,omitempty" jsonschema:"description=Ad Disclaimer Spec"`
-	Adlabels                         []*AdLabel                 `json:"adlabels,omitempty" jsonschema:"description=Adlabels"`
-	ApplinkTreatment                 string                     `json:"applink_treatment,omitempty" jsonschema:"description=Applink Treatment"`
-	AssetFeedSpec                    map[string]interface{}     `json:"asset_feed_spec,omitempty" jsonschema:"description=Asset Feed Spec"`
-	AuthorizationCategory            string                     `json:"authorization_category,omitempty" jsonschema:"description=Authorization Category"`
-	Body                             string                     `json:"body,omitempty" jsonschema:"description=Body"`
-	BrandedContent                   map[string]interface{}     `json:"branded_content,omitempty" jsonschema:"description=Branded Content"`
-	BrandedContentSponsorPageId      string                     `json:"branded_content_sponsor_page_id,omitempty" jsonschema:"description=ID of the Branded Content Sponsor Page,pattern=^[0-9]+$"`
-	BundleFolderId                   string                     `json:"bundle_folder_id,omitempty" jsonschema:"description=ID of the Bundle Folder,pattern=^[0-9]+$"`
-	CallToAction                     map[string]interface{}     `json:"call_to_action,omitempty" jsonschema:"description=Call To Action"`
-	CategorizationCriteria           string                     `json:"categorization_criteria,omitempty" jsonschema:"description=Categorization Criteria"`
-	CategoryMediaSource              string                     `json:"category_media_source,omitempty" jsonschema:"description=Category Media Source"`
-	ContextualMultiAds               map[string]interface{}     `json:"contextual_multi_ads,omitempty" jsonschema:"description=Contextual Multi Ads"`
-	CreativeSourcingSpec             map[string]interface{}     `json:"creative_sourcing_spec,omitempty" jsonschema:"description=Creative Sourcing Spec"`
-	DegreesOfFreedomSpec             map[string]interface{}     `json:"degrees_of_freedom_spec,omitempty" jsonschema:"description=Degrees Of Freedom Spec"`
-	DestinationSetId                 string                     `json:"destination_set_id,omitempty" jsonschema:"description=ID of the Destination Set,pattern=^[0-9]+$"`
-	DynamicAdVoice                   string                     `json:"dynamic_ad_voice,omitempty" jsonschema:"description=Dynamic Ad Voice"`
-	EnableLaunchInstantApp           bool                       `json:"enable_launch_instant_app,omitempty" jsonschema:"description=Enable Launch Instant App"`
-	FacebookBrandedContent           map[string]interface{}     `json:"facebook_branded_content,omitempty" jsonschema:"description=Facebook Branded Content"`
-	ImageCrops                       map[string]interface{}     `json:"image_crops,omitempty" jsonschema:"description=Image Crops,minimum=13,maximum=100"`
-	ImageFile                        string                     `json:"image_file,omitempty" jsonschema:"description=Image File"`
-	ImageHash                        string                     `json:"image_hash,omitempty" jsonschema:"description=Image Hash"`
-	ImageUrl                         string                     `json:"image_url,omitempty" jsonschema:"description=Image URL,format=uri"`
-	InstagramBrandedContent          map[string]interface{}     `json:"instagram_branded_content,omitempty" jsonschema:"description=Instagram Branded Content"`
-	InstagramPermalinkUrl            string                     `json:"instagram_permalink_url,omitempty" jsonschema:"description=Instagram Permalink URL,format=uri"`
-	InstagramUserId                  string                     `json:"instagram_user_id,omitempty" jsonschema:"description=ID of the Instagram User,pattern=^[0-9]+$"`
-	InteractiveComponentsSpec        map[string]interface{}     `json:"interactive_components_spec,omitempty" jsonschema:"description=Interactive Components Spec"`
-	IsDcoInternal                    bool                       `json:"is_dco_internal,omitempty" jsonschema:"description=Is Dco Internal"`
-	LinkOgId                         string                     `json:"link_og_id,omitempty" jsonschema:"description=ID of the Link Og,pattern=^[0-9]+$"`
-	LinkUrl                          string                     `json:"link_url,omitempty" jsonschema:"description=Link URL,format=uri"`
-	Name                             string                     `json:"name,omitempty" jsonschema:"description=Name"`
-	ObjectId                         int                        `json:"object_id,omitempty" jsonschema:"description=ID of the Object,pattern=^[0-9]+$"`
-	ObjectStoryId                    string                     `json:"object_story_id,omitempty" jsonschema:"description=ID of the Object Story,pattern=^[0-9]+$"`
-	ObjectStorySpec                  *AdCreativeObjectStorySpec `json:"object_story_spec,omitempty" jsonschema:"description=Object Story Spec"`
-	ObjectType                       string                     `json:"object_type,omitempty" jsonschema:"description=Object Type"`
-	ObjectUrl                        string                     `json:"object_url,omitempty" jsonschema:"description=Object URL,format=uri"`
-	OmnichannelLinkSpec              map[string]interface{}     `json:"omnichannel_link_spec,omitempty" jsonschema:"description=Omnichannel Link Spec"`
-	PageWelcomeMessage               string                     `json:"page_welcome_message,omitempty" jsonschema:"description=Page Welcome Message"`
-	PlacePageSetId                   string                     `json:"place_page_set_id,omitempty" jsonschema:"description=ID of the Place Page Set,pattern=^[0-9]+$"`
-	PlatformCustomizations           map[string]interface{}     `json:"platform_customizations,omitempty" jsonschema:"description=Platform Customizations"`
-	PlayableAssetId                  string                     `json:"playable_asset_id,omitempty" jsonschema:"description=ID of the Playable Asset,pattern=^[0-9]+$"`
-	PortraitCustomizations           map[string]interface{}     `json:"portrait_customizations,omitempty" jsonschema:"description=Portrait Customizations"`
-	ProductSetId                     string                     `json:"product_set_id,omitempty" jsonschema:"description=ID of the Product Set,pattern=^[0-9]+$"`
-	RecommenderSettings              map[string]interface{}     `json:"recommender_settings,omitempty" jsonschema:"description=Recommender Settings"`
-	RegionalRegulationDisclaimerSpec map[string]interface{}     `json:"regional_regulation_disclaimer_spec,omitempty" jsonschema:"description=Regional Regulation Disclaimer Spec"`
-	SourceInstagramMediaId           string                     `json:"source_instagram_media_id,omitempty" jsonschema:"description=ID of the Source Instagram Media,pattern=^[0-9]+$"`
-	TemplateUrl                      string                     `json:"template_url,omitempty" jsonschema:"description=Template URL,format=uri"`
-	TemplateUrlSpec                  string                     `json:"template_url_spec,omitempty" jsonschema:"description=Template URL Spec,format=uri"`
-	ThumbnailUrl                     string                     `json:"thumbnail_url,omitempty" jsonschema:"description=Thumbnail URL,format=uri"`
-	Title                            string                     `json:"title,omitempty" jsonschema:"description=Title"`
-	UrlTags                          string                     `json:"url_tags,omitempty" jsonschema:"description=URL Tags,format=uri"`
-	UsePageActorOverride             bool                       `json:"use_page_actor_override,omitempty" jsonschema:"description=Use Page Actor Override"`
+	ID                               string                     `json:"id"`
+	ActorId                          int                        `json:"actor_id,omitempty"`
+	AdDisclaimerSpec                 map[string]interface{}     `json:"ad_disclaimer_spec,omitempty"`
+	Adlabels                         []*AdLabel                 `json:"adlabels,omitempty"`
+	ApplinkTreatment                 string                     `json:"applink_treatment,omitempty"`
+	AssetFeedSpec                    map[string]interface{}     `json:"asset_feed_spec,omitempty"`
+	AuthorizationCategory            string                     `json:"authorization_category,omitempty"`
+	Body                             string                     `json:"body,omitempty"`
+	BrandedContent                   map[string]interface{}     `json:"branded_content,omitempty"`
+	BrandedContentSponsorPageId      string                     `json:"branded_content_sponsor_page_id,omitempty"`
+	BundleFolderId                   string                     `json:"bundle_folder_id,omitempty"`
+	CallToAction                     map[string]interface{}     `json:"call_to_action,omitempty"`
+	CategorizationCriteria           string                     `json:"categorization_criteria,omitempty"`
+	CategoryMediaSource              string                     `json:"category_media_source,omitempty"`
+	ContextualMultiAds               map[string]interface{}     `json:"contextual_multi_ads,omitempty"`
+	CreativeSourcingSpec             map[string]interface{}     `json:"creative_sourcing_spec,omitempty"`
+	DegreesOfFreedomSpec             map[string]interface{}     `json:"degrees_of_freedom_spec,omitempty"`
+	DestinationSetId                 string                     `json:"destination_set_id,omitempty"`
+	DynamicAdVoice                   string                     `json:"dynamic_ad_voice,omitempty"`
+	EnableLaunchInstantApp           bool                       `json:"enable_launch_instant_app,omitempty"`
+	FacebookBrandedContent           map[string]interface{}     `json:"facebook_branded_content,omitempty"`
+	ImageCrops                       map[string]interface{}     `json:"image_crops,omitempty"`
+	ImageFile                        string                     `json:"image_file,omitempty"`
+	ImageHash                        string                     `json:"image_hash,omitempty"`
+	ImageUrl                         string                     `json:"image_url,omitempty"`
+	InstagramBrandedContent          map[string]interface{}     `json:"instagram_branded_content,omitempty"`
+	InstagramPermalinkUrl            string                     `json:"instagram_permalink_url,omitempty"`
+	InstagramUserId                  string                     `json:"instagram_user_id,omitempty"`
+	InteractiveComponentsSpec        map[string]interface{}     `json:"interactive_components_spec,omitempty"`
+	IsDcoInternal                    bool                       `json:"is_dco_internal,omitempty"`
+	LinkOgId                         string                     `json:"link_og_id,omitempty"`
+	LinkUrl                          string                     `json:"link_url,omitempty"`
+	Name                             string                     `json:"name,omitempty"`
+	ObjectId                         int                        `json:"object_id,omitempty"`
+	ObjectStoryId                    string                     `json:"object_story_id,omitempty"`
+	ObjectStorySpec                  *AdCreativeObjectStorySpec `json:"object_story_spec,omitempty"`
+	ObjectType                       string                     `json:"object_type,omitempty"`
+	ObjectUrl                        string                     `json:"object_url,omitempty"`
+	OmnichannelLinkSpec              map[string]interface{}     `json:"omnichannel_link_spec,omitempty"`
+	PageWelcomeMessage               string                     `json:"page_welcome_message,omitempty"`
+	PlacePageSetId                   string                     `json:"place_page_set_id,omitempty"`
+	PlatformCustomizations           map[string]interface{}     `json:"platform_customizations,omitempty"`
+	PlayableAssetId                  string                     `json:"playable_asset_id,omitempty"`
+	PortraitCustomizations           map[string]interface{}     `json:"portrait_customizations,omitempty"`
+	ProductSetId                     string                     `json:"product_set_id,omitempty"`
+	RecommenderSettings              map[string]interface{}     `json:"recommender_settings,omitempty"`
+	RegionalRegulationDisclaimerSpec map[string]interface{}     `json:"regional_regulation_disclaimer_spec,omitempty"`
+	SourceInstagramMediaId           string                     `json:"source_instagram_media_id,omitempty"`
+	TemplateUrl                      string                     `json:"template_url,omitempty"`
+	TemplateUrlSpec                  string                     `json:"template_url_spec,omitempty"`
+	ThumbnailUrl                     string                     `json:"thumbnail_url,omitempty"`
+	Title                            string                     `json:"title,omitempty"`
+	UrlTags                          string                     `json:"url_tags,omitempty"`
+	UsePageActorOverride             bool                       `json:"use_page_actor_override,omitempty"`
 }
 
 // list_ad_account_adcreativesbylabelsArgs defines the typed arguments for list_ad_account_adcreativesbylabels
 type list_ad_account_adcreativesbylabelsArgs struct {
-	ID         string   `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Fields     []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit      int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After      string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before     string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
-	AdLabelIds []string `json:"ad_label_ids" jsonschema:"description=Ad Label Ids,required,pattern=^[0-9]+$"`
-	Operator   string   `json:"operator,omitempty" jsonschema:"description=Operator"`
+	ID         string   `json:"id"`
+	Fields     []string `json:"fields,omitempty"`
+	Limit      int      `json:"limit,omitempty"`
+	After      string   `json:"after,omitempty"`
+	Before     string   `json:"before,omitempty"`
+	AdLabelIds []string `json:"ad_label_ids"`
+	Operator   string   `json:"operator,omitempty"`
 }
 
 // remove_adimages_from_ad_accountArgs defines the typed arguments for remove_adimages_from_ad_account
 type remove_adimages_from_ad_accountArgs struct {
-	ID   string `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Hash string `json:"hash" jsonschema:"description=Hash,required"`
+	ID   string `json:"id"`
+	Hash string `json:"hash"`
 }
 
 // list_ad_account_adimagesArgs defines the typed arguments for list_ad_account_adimages
 type list_ad_account_adimagesArgs struct {
-	ID             string   `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Fields         []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit          int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After          string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before         string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
-	BizTagId       int      `json:"biz_tag_id,omitempty" jsonschema:"description=ID of the Biz Tag,pattern=^[0-9]+$"`
-	BusinessId     string   `json:"business_id,omitempty" jsonschema:"description=ID of the Business,pattern=^[0-9]+$"`
-	Hashes         []string `json:"hashes,omitempty" jsonschema:"description=Hashes"`
-	Minheight      int      `json:"minheight,omitempty" jsonschema:"description=Minheight"`
-	Minwidth       int      `json:"minwidth,omitempty" jsonschema:"description=Minwidth"`
-	Name           string   `json:"name,omitempty" jsonschema:"description=Name"`
-	SelectedHashes []string `json:"selected_hashes,omitempty" jsonschema:"description=Selected Hashes"`
+	ID             string   `json:"id"`
+	Fields         []string `json:"fields,omitempty"`
+	Limit          int      `json:"limit,omitempty"`
+	After          string   `json:"after,omitempty"`
+	Before         string   `json:"before,omitempty"`
+	BizTagId       int      `json:"biz_tag_id,omitempty"`
+	BusinessId     string   `json:"business_id,omitempty"`
+	Hashes         []string `json:"hashes,omitempty"`
+	Minheight      int      `json:"minheight,omitempty"`
+	Minwidth       int      `json:"minwidth,omitempty"`
+	Name           string   `json:"name,omitempty"`
+	SelectedHashes []string `json:"selected_hashes,omitempty"`
 }
 
 // create_ad_account_adimageArgs defines the typed arguments for create_ad_account_adimage
 type create_ad_account_adimageArgs struct {
-	ID       string                 `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Bytes    string                 `json:"bytes,omitempty" jsonschema:"description=Bytes"`
-	CopyFrom map[string]interface{} `json:"copy_from,omitempty" jsonschema:"description=Copy From"`
+	ID       string                 `json:"id"`
+	Bytes    string                 `json:"bytes,omitempty"`
+	CopyFrom map[string]interface{} `json:"copy_from,omitempty"`
 }
 
 // list_ad_account_adlabelsArgs defines the typed arguments for list_ad_account_adlabels
 type list_ad_account_adlabelsArgs struct {
-	ID     string   `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After  string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
 }
 
 // create_ad_account_adlabelArgs defines the typed arguments for create_ad_account_adlabel
 type create_ad_account_adlabelArgs struct {
-	ID   string `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Name string `json:"name" jsonschema:"description=Name,required"`
+	ID   string `json:"id"`
+	Name string `json:"name"`
 }
 
 // list_ad_account_adplayablesArgs defines the typed arguments for list_ad_account_adplayables
 type list_ad_account_adplayablesArgs struct {
-	ID     string   `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After  string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
 }
 
 // create_ad_account_adplayableArgs defines the typed arguments for create_ad_account_adplayable
 type create_ad_account_adplayableArgs struct {
-	ID        string      `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	AppId     string      `json:"app_id,omitempty" jsonschema:"description=ID of the App,pattern=^[0-9]+$"`
-	Name      string      `json:"name" jsonschema:"description=Name,required"`
-	SessionId string      `json:"session_id,omitempty" jsonschema:"description=ID of the Session,pattern=^[0-9]+$"`
-	Source    interface{} `json:"source,omitempty" jsonschema:"description=Source"`
-	SourceUrl string      `json:"source_url,omitempty" jsonschema:"description=Source URL,format=uri"`
-	SourceZip interface{} `json:"source_zip,omitempty" jsonschema:"description=Source Zip"`
+	ID        string      `json:"id"`
+	AppId     string      `json:"app_id,omitempty"`
+	Name      string      `json:"name"`
+	SessionId string      `json:"session_id,omitempty"`
+	Source    interface{} `json:"source,omitempty"`
+	SourceUrl string      `json:"source_url,omitempty"`
+	SourceZip interface{} `json:"source_zip,omitempty"`
 }
 
 // get_ad_account_adrules_historyArgs defines the typed arguments for get_ad_account_adrules_history
 type get_ad_account_adrules_historyArgs struct {
-	ID             string   `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Fields         []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit          int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After          string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before         string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
-	Action         string   `json:"action,omitempty" jsonschema:"description=Action"`
-	EvaluationType string   `json:"evaluation_type,omitempty" jsonschema:"description=Evaluation Type"`
-	HideNoChanges  bool     `json:"hide_no_changes,omitempty" jsonschema:"description=Hide No Changes"`
-	ObjectId       string   `json:"object_id,omitempty" jsonschema:"description=ID of the Object,pattern=^[0-9]+$"`
+	ID             string   `json:"id"`
+	Fields         []string `json:"fields,omitempty"`
+	Limit          int      `json:"limit,omitempty"`
+	After          string   `json:"after,omitempty"`
+	Before         string   `json:"before,omitempty"`
+	Action         string   `json:"action,omitempty"`
+	EvaluationType string   `json:"evaluation_type,omitempty"`
+	HideNoChanges  bool     `json:"hide_no_changes,omitempty"`
+	ObjectId       string   `json:"object_id,omitempty"`
 }
 
 // get_ad_account_adrules_libraryArgs defines the typed arguments for get_ad_account_adrules_library
 type get_ad_account_adrules_libraryArgs struct {
-	ID     string   `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After  string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
 }
 
 // update_ad_account_adrules_libraryArgs defines the typed arguments for update_ad_account_adrules_library
 type update_ad_account_adrules_libraryArgs struct {
-	ID               string                 `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	AccountId        string                 `json:"account_id,omitempty" jsonschema:"description=ID of the Account,pattern=^[0-9]+$"`
-	EvaluationSpec   map[string]interface{} `json:"evaluation_spec" jsonschema:"description=Evaluation Spec,required"`
-	ExecutionSpec    map[string]interface{} `json:"execution_spec" jsonschema:"description=Execution Spec,required"`
-	Name             string                 `json:"name" jsonschema:"description=Name,required"`
-	ScheduleSpec     map[string]interface{} `json:"schedule_spec,omitempty" jsonschema:"description=Schedule Spec"`
-	Status           string                 `json:"status,omitempty" jsonschema:"description=Status,enum=ACTIVE,enum=PAUSED,enum=DELETED,enum=ARCHIVED"`
-	UiCreationSource string                 `json:"ui_creation_source,omitempty" jsonschema:"description=Ui Creation Source"`
+	ID               string                 `json:"id"`
+	AccountId        string                 `json:"account_id,omitempty"`
+	EvaluationSpec   map[string]interface{} `json:"evaluation_spec"`
+	ExecutionSpec    map[string]interface{} `json:"execution_spec"`
+	Name             string                 `json:"name"`
+	ScheduleSpec     map[string]interface{} `json:"schedule_spec,omitempty"`
+	Status           string                 `json:"status,omitempty"`
+	UiCreationSource string                 `json:"ui_creation_source,omitempty"`
 }
 
 // list_ad_account_adsArgs defines the typed arguments for list_ad_account_ads
 type list_ad_account_adsArgs struct {
-	ID              string                 `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Fields          []string               `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit           int                    `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After           string                 `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before          string                 `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
-	DatePreset      string                 `json:"date_preset,omitempty" jsonschema:"description=Date Preset"`
-	EffectiveStatus []string               `json:"effective_status,omitempty" jsonschema:"description=Effective Status"`
-	TimeRange       map[string]interface{} `json:"time_range,omitempty" jsonschema:"description=Time Range"`
-	UpdatedSince    int                    `json:"updated_since,omitempty" jsonschema:"description=When last updated"`
+	ID              string                 `json:"id"`
+	Fields          []string               `json:"fields,omitempty"`
+	Limit           int                    `json:"limit,omitempty"`
+	After           string                 `json:"after,omitempty"`
+	Before          string                 `json:"before,omitempty"`
+	DatePreset      string                 `json:"date_preset,omitempty"`
+	EffectiveStatus []string               `json:"effective_status,omitempty"`
+	TimeRange       map[string]interface{} `json:"time_range,omitempty"`
+	UpdatedSince    int                    `json:"updated_since,omitempty"`
 }
 
 // create_ad_account_adArgs defines the typed arguments for create_ad_account_ad
 type create_ad_account_adArgs struct {
-	ID                      string                 `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	AdScheduleEndTime       string                 `json:"ad_schedule_end_time,omitempty" jsonschema:"description=Ad Schedule End Time,format=date-time"`
-	AdScheduleStartTime     string                 `json:"ad_schedule_start_time,omitempty" jsonschema:"description=Ad Schedule Start Time,format=date-time"`
-	Adlabels                []*AdLabel             `json:"adlabels,omitempty" jsonschema:"description=Adlabels"`
-	AdsetId                 int                    `json:"adset_id,omitempty" jsonschema:"description=ID of the Adset,pattern=^[0-9]+$"`
-	AdsetSpec               *AdSet                 `json:"adset_spec,omitempty" jsonschema:"description=Adset Spec"`
-	AudienceId              string                 `json:"audience_id,omitempty" jsonschema:"description=ID of the Audience,pattern=^[0-9]+$"`
-	BidAmount               int                    `json:"bid_amount,omitempty" jsonschema:"description=Bid Amount,minimum=1"`
-	ConversionDomain        string                 `json:"conversion_domain,omitempty" jsonschema:"description=Conversion Domain"`
-	Creative                *AdCreative            `json:"creative" jsonschema:"description=Creative,required"`
-	CreativeAssetGroupsSpec map[string]interface{} `json:"creative_asset_groups_spec,omitempty" jsonschema:"description=Creative Asset Groups Spec"`
-	DateFormat              string                 `json:"date_format,omitempty" jsonschema:"description=Date Format"`
-	DisplaySequence         int                    `json:"display_sequence,omitempty" jsonschema:"description=Display Sequence"`
-	DraftAdgroupId          string                 `json:"draft_adgroup_id,omitempty" jsonschema:"description=ID of the Draft Adgroup,pattern=^[0-9]+$"`
-	EngagementAudience      bool                   `json:"engagement_audience,omitempty" jsonschema:"description=Engagement Audience"`
-	ExecutionOptions        []string               `json:"execution_options,omitempty" jsonschema:"description=Execution Options"`
-	IncludeDemolinkHashes   bool                   `json:"include_demolink_hashes,omitempty" jsonschema:"description=Include Demolink Hashes"`
-	Name                    string                 `json:"name" jsonschema:"description=Name,required"`
-	Priority                int                    `json:"priority,omitempty" jsonschema:"description=Priority"`
-	SourceAdId              string                 `json:"source_ad_id,omitempty" jsonschema:"description=ID of the Source Ad,pattern=^[0-9]+$"`
-	Status                  string                 `json:"status,omitempty" jsonschema:"description=Status,enum=ACTIVE,enum=PAUSED,enum=DELETED,enum=ARCHIVED"`
-	TrackingSpecs           map[string]interface{} `json:"tracking_specs,omitempty" jsonschema:"description=Tracking Specs"`
+	ID                      string                 `json:"id"`
+	AdScheduleEndTime       string                 `json:"ad_schedule_end_time,omitempty"`
+	AdScheduleStartTime     string                 `json:"ad_schedule_start_time,omitempty"`
+	Adlabels                []*AdLabel             `json:"adlabels,omitempty"`
+	AdsetId                 int                    `json:"adset_id,omitempty"`
+	AdsetSpec               *AdSet                 `json:"adset_spec,omitempty"`
+	AudienceId              string                 `json:"audience_id,omitempty"`
+	BidAmount               int                    `json:"bid_amount,omitempty"`
+	ConversionDomain        string                 `json:"conversion_domain,omitempty"`
+	Creative                *AdCreative            `json:"creative"`
+	CreativeAssetGroupsSpec map[string]interface{} `json:"creative_asset_groups_spec,omitempty"`
+	DateFormat              string                 `json:"date_format,omitempty"`
+	DisplaySequence         int                    `json:"display_sequence,omitempty"`
+	DraftAdgroupId          string                 `json:"draft_adgroup_id,omitempty"`
+	EngagementAudience      bool                   `json:"engagement_audience,omitempty"`
+	ExecutionOptions        []string               `json:"execution_options,omitempty"`
+	IncludeDemolinkHashes   bool                   `json:"include_demolink_hashes,omitempty"`
+	Name                    string                 `json:"name"`
+	Priority                int                    `json:"priority,omitempty"`
+	SourceAdId              string                 `json:"source_ad_id,omitempty"`
+	Status                  string                 `json:"status,omitempty"`
+	TrackingSpecs           map[string]interface{} `json:"tracking_specs,omitempty"`
 }
 
 // list_ad_account_ads_reporting_mmm_reportsArgs defines the typed arguments for list_ad_account_ads_reporting_mmm_reports
 type list_ad_account_ads_reporting_mmm_reportsArgs struct {
-	ID        string                   `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Fields    []string                 `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit     int                      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After     string                   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before    string                   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
-	Filtering []map[string]interface{} `json:"filtering,omitempty" jsonschema:"description=Filtering"`
+	ID        string                   `json:"id"`
+	Fields    []string                 `json:"fields,omitempty"`
+	Limit     int                      `json:"limit,omitempty"`
+	After     string                   `json:"after,omitempty"`
+	Before    string                   `json:"before,omitempty"`
+	Filtering []map[string]interface{} `json:"filtering,omitempty"`
 }
 
 // list_ad_account_ads_reporting_mmm_schedulersArgs defines the typed arguments for list_ad_account_ads_reporting_mmm_schedulers
 type list_ad_account_ads_reporting_mmm_schedulersArgs struct {
-	ID     string   `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After  string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
 }
 
 // get_ad_account_ads_volumeArgs defines the typed arguments for get_ad_account_ads_volume
 type get_ad_account_ads_volumeArgs struct {
-	Fields               []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit                int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After                string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before               string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
-	PageId               string   `json:"page_id,omitempty" jsonschema:"description=ID of the Page,pattern=^[0-9]+$"`
-	RecommendationType   string   `json:"recommendation_type,omitempty" jsonschema:"description=Recommendation Type"`
-	ShowBreakdownByActor bool     `json:"show_breakdown_by_actor,omitempty" jsonschema:"description=Show Breakdown By Actor"`
+	Fields               []string `json:"fields,omitempty"`
+	Limit                int      `json:"limit,omitempty"`
+	After                string   `json:"after,omitempty"`
+	Before               string   `json:"before,omitempty"`
+	PageId               string   `json:"page_id,omitempty"`
+	RecommendationType   string   `json:"recommendation_type,omitempty"`
+	ShowBreakdownByActor bool     `json:"show_breakdown_by_actor,omitempty"`
 }
 
 // list_ad_account_adsbylabelsArgs defines the typed arguments for list_ad_account_adsbylabels
 type list_ad_account_adsbylabelsArgs struct {
-	ID         string   `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Fields     []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit      int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After      string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before     string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
-	AdLabelIds []string `json:"ad_label_ids" jsonschema:"description=Ad Label Ids,required,pattern=^[0-9]+$"`
-	Operator   string   `json:"operator,omitempty" jsonschema:"description=Operator"`
+	ID         string   `json:"id"`
+	Fields     []string `json:"fields,omitempty"`
+	Limit      int      `json:"limit,omitempty"`
+	After      string   `json:"after,omitempty"`
+	Before     string   `json:"before,omitempty"`
+	AdLabelIds []string `json:"ad_label_ids"`
+	Operator   string   `json:"operator,omitempty"`
 }
 
 // list_ad_account_adsetsArgs defines the typed arguments for list_ad_account_adsets
 type list_ad_account_adsetsArgs struct {
-	ID              string                 `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Fields          []string               `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit           int                    `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After           string                 `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before          string                 `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
-	DatePreset      string                 `json:"date_preset,omitempty" jsonschema:"description=Date Preset"`
-	EffectiveStatus []string               `json:"effective_status,omitempty" jsonschema:"description=Effective Status"`
-	IsCompleted     bool                   `json:"is_completed,omitempty" jsonschema:"description=Is Completed"`
-	TimeRange       map[string]interface{} `json:"time_range,omitempty" jsonschema:"description=Time Range"`
-	UpdatedSince    int                    `json:"updated_since,omitempty" jsonschema:"description=When last updated"`
+	ID              string                 `json:"id"`
+	Fields          []string               `json:"fields,omitempty"`
+	Limit           int                    `json:"limit,omitempty"`
+	After           string                 `json:"after,omitempty"`
+	Before          string                 `json:"before,omitempty"`
+	DatePreset      string                 `json:"date_preset,omitempty"`
+	EffectiveStatus []string               `json:"effective_status,omitempty"`
+	IsCompleted     bool                   `json:"is_completed,omitempty"`
+	TimeRange       map[string]interface{} `json:"time_range,omitempty"`
+	UpdatedSince    int                    `json:"updated_since,omitempty"`
 }
 
 // create_ad_account_adsetArgs defines the typed arguments for create_ad_account_adset
 type create_ad_account_adsetArgs struct {
-	ID                                string                   `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Adlabels                          []*AdLabel               `json:"adlabels,omitempty" jsonschema:"description=Adlabels"`
-	AdsetSchedule                     []map[string]interface{} `json:"adset_schedule,omitempty" jsonschema:"description=Adset Schedule"`
-	AttributionSpec                   []map[string]interface{} `json:"attribution_spec,omitempty" jsonschema:"description=Attribution Spec"`
-	BidAdjustments                    map[string]interface{}   `json:"bid_adjustments,omitempty" jsonschema:"description=Bid Adjustments"`
-	BidAmount                         int                      `json:"bid_amount,omitempty" jsonschema:"description=Bid Amount,minimum=1"`
-	BidConstraints                    map[string]interface{}   `json:"bid_constraints,omitempty" jsonschema:"description=Bid Constraints"`
-	BidStrategy                       string                   `json:"bid_strategy,omitempty" jsonschema:"description=Bid Strategy"`
-	BillingEvent                      string                   `json:"billing_event,omitempty" jsonschema:"description=Billing Event"`
-	BudgetSource                      string                   `json:"budget_source,omitempty" jsonschema:"description=Budget Source"`
-	BudgetSplitSetId                  string                   `json:"budget_split_set_id,omitempty" jsonschema:"description=ID of the Budget Split Set,pattern=^[0-9]+$"`
-	CampaignAttribution               map[string]interface{}   `json:"campaign_attribution,omitempty" jsonschema:"description=Campaign Attribution"`
-	CampaignId                        string                   `json:"campaign_id,omitempty" jsonschema:"description=ID of the Campaign,pattern=^[0-9]+$"`
-	CampaignSpec                      map[string]interface{}   `json:"campaign_spec,omitempty" jsonschema:"description=Campaign Spec"`
-	CreativeSequence                  []string                 `json:"creative_sequence,omitempty" jsonschema:"description=Creative Sequence"`
-	CreativeSequenceRepetitionPattern string                   `json:"creative_sequence_repetition_pattern,omitempty" jsonschema:"description=Creative Sequence Repetition Pattern"`
-	DailyBudget                       int                      `json:"daily_budget,omitempty" jsonschema:"description=Daily Budget,minimum=1"`
-	DailyImps                         int                      `json:"daily_imps,omitempty" jsonschema:"description=Daily Imps"`
-	DailyMinSpendTarget               int                      `json:"daily_min_spend_target,omitempty" jsonschema:"description=Daily Min Spend Target"`
-	DailySpendCap                     int                      `json:"daily_spend_cap,omitempty" jsonschema:"description=Daily Spend Cap"`
-	DateFormat                        string                   `json:"date_format,omitempty" jsonschema:"description=Date Format"`
-	DestinationType                   string                   `json:"destination_type,omitempty" jsonschema:"description=Destination Type"`
-	DsaBeneficiary                    string                   `json:"dsa_beneficiary,omitempty" jsonschema:"description=Dsa Beneficiary"`
-	DsaPayor                          string                   `json:"dsa_payor,omitempty" jsonschema:"description=Dsa Payor"`
-	EndTime                           string                   `json:"end_time,omitempty" jsonschema:"description=End Time,format=date-time"`
-	ExecutionOptions                  []string                 `json:"execution_options,omitempty" jsonschema:"description=Execution Options"`
-	ExistingCustomerBudgetPercentage  int                      `json:"existing_customer_budget_percentage,omitempty" jsonschema:"description=Existing Customer Budget Percentage,minimum=13,maximum=100"`
-	FrequencyControlSpecs             []map[string]interface{} `json:"frequency_control_specs,omitempty" jsonschema:"description=Frequency Control Specs"`
-	FullFunnelExplorationMode         string                   `json:"full_funnel_exploration_mode,omitempty" jsonschema:"description=Full Funnel Exploration Mode"`
-	IsBaSkipDelayedEligible           bool                     `json:"is_ba_skip_delayed_eligible,omitempty" jsonschema:"description=Is Ba Skip Delayed Eligible"`
-	IsDynamicCreative                 bool                     `json:"is_dynamic_creative,omitempty" jsonschema:"description=Is Dynamic Creative"`
-	IsIncrementalAttributionEnabled   bool                     `json:"is_incremental_attribution_enabled,omitempty" jsonschema:"description=Is Incremental Attribution Enabled"`
-	IsSacCfcaTermsCertified           bool                     `json:"is_sac_cfca_terms_certified,omitempty" jsonschema:"description=Is Sac Cfca Terms Certified"`
-	LifetimeBudget                    int                      `json:"lifetime_budget,omitempty" jsonschema:"description=Lifetime Budget,minimum=1"`
-	LifetimeImps                      int                      `json:"lifetime_imps,omitempty" jsonschema:"description=Lifetime Imps"`
-	LifetimeMinSpendTarget            int                      `json:"lifetime_min_spend_target,omitempty" jsonschema:"description=Lifetime Min Spend Target"`
-	LifetimeSpendCap                  int                      `json:"lifetime_spend_cap,omitempty" jsonschema:"description=Lifetime Spend Cap"`
-	LineNumber                        int                      `json:"line_number,omitempty" jsonschema:"description=Line Number"`
-	MaxBudgetSpendPercentage          int                      `json:"max_budget_spend_percentage,omitempty" jsonschema:"description=Max Budget Spend Percentage,minimum=13,maximum=100"`
-	MinBudgetSpendPercentage          int                      `json:"min_budget_spend_percentage,omitempty" jsonschema:"description=Min Budget Spend Percentage,minimum=13,maximum=100"`
-	MultiOptimizationGoalWeight       string                   `json:"multi_optimization_goal_weight,omitempty" jsonschema:"description=Multi Optimization Goal Weight"`
-	Name                              string                   `json:"name" jsonschema:"description=Name,required"`
-	OptimizationGoal                  string                   `json:"optimization_goal,omitempty" jsonschema:"description=Optimization Goal"`
-	OptimizationSubEvent              string                   `json:"optimization_sub_event,omitempty" jsonschema:"description=Optimization Sub Event"`
-	PacingType                        []string                 `json:"pacing_type,omitempty" jsonschema:"description=Pacing Type"`
-	PromotedObject                    *AdPromotedObject        `json:"promoted_object,omitempty" jsonschema:"description=Promoted Object"`
-	RbPredictionId                    string                   `json:"rb_prediction_id,omitempty" jsonschema:"description=ID of the Rb Prediction,pattern=^[0-9]+$"`
-	RegionalRegulatedCategories       []string                 `json:"regional_regulated_categories,omitempty" jsonschema:"description=Regional Regulated Categories"`
-	RegionalRegulationIdentities      map[string]interface{}   `json:"regional_regulation_identities,omitempty" jsonschema:"description=Regional Regulation Identities,pattern=^[0-9]+$"`
-	RfPredictionId                    string                   `json:"rf_prediction_id,omitempty" jsonschema:"description=ID of the Rf Prediction,pattern=^[0-9]+$"`
-	SourceAdsetId                     string                   `json:"source_adset_id,omitempty" jsonschema:"description=ID of the Source Adset,pattern=^[0-9]+$"`
-	StartTime                         string                   `json:"start_time,omitempty" jsonschema:"description=Start Time,format=date-time"`
-	Status                            string                   `json:"status,omitempty" jsonschema:"description=Status,enum=ACTIVE,enum=PAUSED,enum=DELETED,enum=ARCHIVED"`
-	Targeting                         *Targeting               `json:"targeting,omitempty" jsonschema:"description=Targeting"`
-	TimeBasedAdRotationIdBlocks       []interface{}            `json:"time_based_ad_rotation_id_blocks,omitempty" jsonschema:"description=Time Based Ad Rotation ID Blocks,pattern=^[0-9]+$"`
-	TimeBasedAdRotationIntervals      []interface{}            `json:"time_based_ad_rotation_intervals,omitempty" jsonschema:"description=Time Based Ad Rotation Intervals"`
-	TimeStart                         string                   `json:"time_start,omitempty" jsonschema:"description=Time Start,format=date-time"`
-	TimeStop                          string                   `json:"time_stop,omitempty" jsonschema:"description=Time Stop,format=date-time"`
-	ToplineId                         string                   `json:"topline_id,omitempty" jsonschema:"description=ID of the Topline,pattern=^[0-9]+$"`
-	TuneForCategory                   string                   `json:"tune_for_category,omitempty" jsonschema:"description=Tune For Category"`
+	ID                                string                   `json:"id"`
+	Adlabels                          []*AdLabel               `json:"adlabels,omitempty"`
+	AdsetSchedule                     []map[string]interface{} `json:"adset_schedule,omitempty"`
+	AttributionSpec                   []map[string]interface{} `json:"attribution_spec,omitempty"`
+	BidAdjustments                    map[string]interface{}   `json:"bid_adjustments,omitempty"`
+	BidAmount                         int                      `json:"bid_amount,omitempty"`
+	BidConstraints                    map[string]interface{}   `json:"bid_constraints,omitempty"`
+	BidStrategy                       string                   `json:"bid_strategy,omitempty"`
+	BillingEvent                      string                   `json:"billing_event,omitempty"`
+	BudgetSource                      string                   `json:"budget_source,omitempty"`
+	BudgetSplitSetId                  string                   `json:"budget_split_set_id,omitempty"`
+	CampaignAttribution               map[string]interface{}   `json:"campaign_attribution,omitempty"`
+	CampaignId                        string                   `json:"campaign_id,omitempty"`
+	CampaignSpec                      map[string]interface{}   `json:"campaign_spec,omitempty"`
+	CreativeSequence                  []string                 `json:"creative_sequence,omitempty"`
+	CreativeSequenceRepetitionPattern string                   `json:"creative_sequence_repetition_pattern,omitempty"`
+	DailyBudget                       int                      `json:"daily_budget,omitempty"`
+	DailyImps                         int                      `json:"daily_imps,omitempty"`
+	DailyMinSpendTarget               int                      `json:"daily_min_spend_target,omitempty"`
+	DailySpendCap                     int                      `json:"daily_spend_cap,omitempty"`
+	DateFormat                        string                   `json:"date_format,omitempty"`
+	DestinationType                   string                   `json:"destination_type,omitempty"`
+	DsaBeneficiary                    string                   `json:"dsa_beneficiary,omitempty"`
+	DsaPayor                          string                   `json:"dsa_payor,omitempty"`
+	EndTime                           string                   `json:"end_time,omitempty"`
+	ExecutionOptions                  []string                 `json:"execution_options,omitempty"`
+	ExistingCustomerBudgetPercentage  int                      `json:"existing_customer_budget_percentage,omitempty"`
+	FrequencyControlSpecs             []map[string]interface{} `json:"frequency_control_specs,omitempty"`
+	FullFunnelExplorationMode         string                   `json:"full_funnel_exploration_mode,omitempty"`
+	IsBaSkipDelayedEligible           bool                     `json:"is_ba_skip_delayed_eligible,omitempty"`
+	IsDynamicCreative                 bool                     `json:"is_dynamic_creative,omitempty"`
+	IsIncrementalAttributionEnabled   bool                     `json:"is_incremental_attribution_enabled,omitempty"`
+	IsSacCfcaTermsCertified           bool                     `json:"is_sac_cfca_terms_certified,omitempty"`
+	LifetimeBudget                    int                      `json:"lifetime_budget,omitempty"`
+	LifetimeImps                      int                      `json:"lifetime_imps,omitempty"`
+	LifetimeMinSpendTarget            int                      `json:"lifetime_min_spend_target,omitempty"`
+	LifetimeSpendCap                  int                      `json:"lifetime_spend_cap,omitempty"`
+	LineNumber                        int                      `json:"line_number,omitempty"`
+	MaxBudgetSpendPercentage          int                      `json:"max_budget_spend_percentage,omitempty"`
+	MinBudgetSpendPercentage          int                      `json:"min_budget_spend_percentage,omitempty"`
+	MultiOptimizationGoalWeight       string                   `json:"multi_optimization_goal_weight,omitempty"`
+	Name                              string                   `json:"name"`
+	OptimizationGoal                  string                   `json:"optimization_goal,omitempty"`
+	OptimizationSubEvent              string                   `json:"optimization_sub_event,omitempty"`
+	PacingType                        []string                 `json:"pacing_type,omitempty"`
+	PromotedObject                    *AdPromotedObject        `json:"promoted_object,omitempty"`
+	RbPredictionId                    string                   `json:"rb_prediction_id,omitempty"`
+	RegionalRegulatedCategories       []string                 `json:"regional_regulated_categories,omitempty"`
+	RegionalRegulationIdentities      map[string]interface{}   `json:"regional_regulation_identities,omitempty"`
+	RfPredictionId                    string                   `json:"rf_prediction_id,omitempty"`
+	SourceAdsetId                     string                   `json:"source_adset_id,omitempty"`
+	StartTime                         string                   `json:"start_time,omitempty"`
+	Status                            string                   `json:"status,omitempty"`
+	Targeting                         *Targeting               `json:"targeting,omitempty"`
+	TimeBasedAdRotationIdBlocks       []interface{}            `json:"time_based_ad_rotation_id_blocks,omitempty"`
+	TimeBasedAdRotationIntervals      []interface{}            `json:"time_based_ad_rotation_intervals,omitempty"`
+	TimeStart                         string                   `json:"time_start,omitempty"`
+	TimeStop                          string                   `json:"time_stop,omitempty"`
+	ToplineId                         string                   `json:"topline_id,omitempty"`
+	TuneForCategory                   string                   `json:"tune_for_category,omitempty"`
 }
 
 // list_ad_account_adsetsbylabelsArgs defines the typed arguments for list_ad_account_adsetsbylabels
 type list_ad_account_adsetsbylabelsArgs struct {
-	ID         string   `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Fields     []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit      int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After      string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before     string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
-	AdLabelIds []string `json:"ad_label_ids" jsonschema:"description=Ad Label Ids,required,pattern=^[0-9]+$"`
-	Operator   string   `json:"operator,omitempty" jsonschema:"description=Operator"`
+	ID         string   `json:"id"`
+	Fields     []string `json:"fields,omitempty"`
+	Limit      int      `json:"limit,omitempty"`
+	After      string   `json:"after,omitempty"`
+	Before     string   `json:"before,omitempty"`
+	AdLabelIds []string `json:"ad_label_ids"`
+	Operator   string   `json:"operator,omitempty"`
 }
 
 // list_ad_account_adspixelsArgs defines the typed arguments for list_ad_account_adspixels
 type list_ad_account_adspixelsArgs struct {
-	ID     string   `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After  string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
-	SortBy string   `json:"sort_by,omitempty" jsonschema:"description=Sort By"`
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
+	SortBy string   `json:"sort_by,omitempty"`
 }
 
 // create_ad_account_adspixelArgs defines the typed arguments for create_ad_account_adspixel
 type create_ad_account_adspixelArgs struct {
-	ID   string `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Name string `json:"name,omitempty" jsonschema:"description=Name"`
+	ID   string `json:"id"`
+	Name string `json:"name,omitempty"`
 }
 
 // list_ad_account_advertisable_applicationsArgs defines the typed arguments for list_ad_account_advertisable_applications
 type list_ad_account_advertisable_applicationsArgs struct {
-	ID         string   `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Fields     []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit      int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After      string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before     string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
-	AppId      string   `json:"app_id,omitempty" jsonschema:"description=ID of the App,pattern=^[0-9]+$"`
-	BusinessId string   `json:"business_id,omitempty" jsonschema:"description=ID of the Business,pattern=^[0-9]+$"`
+	ID         string   `json:"id"`
+	Fields     []string `json:"fields,omitempty"`
+	Limit      int      `json:"limit,omitempty"`
+	After      string   `json:"after,omitempty"`
+	Before     string   `json:"before,omitempty"`
+	AppId      string   `json:"app_id,omitempty"`
+	BusinessId string   `json:"business_id,omitempty"`
 }
 
 // remove_advideos_from_ad_accountArgs defines the typed arguments for remove_advideos_from_ad_account
 type remove_advideos_from_ad_accountArgs struct {
-	ID      string `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	VideoId string `json:"video_id" jsonschema:"description=ID of the Video,required,pattern=^[0-9]+$"`
+	ID      string `json:"id"`
+	VideoId string `json:"video_id"`
 }
 
 // list_ad_account_advideosArgs defines the typed arguments for list_ad_account_advideos
 type list_ad_account_advideosArgs struct {
-	ID             string   `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Fields         []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit          int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After          string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before         string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
-	MaxAspectRatio float64  `json:"max_aspect_ratio,omitempty" jsonschema:"description=Max Aspect Ratio"`
-	Maxheight      int      `json:"maxheight,omitempty" jsonschema:"description=Maxheight"`
-	Maxlength      int      `json:"maxlength,omitempty" jsonschema:"description=Maxlength"`
-	Maxwidth       int      `json:"maxwidth,omitempty" jsonschema:"description=Maxwidth"`
-	MinAspectRatio float64  `json:"min_aspect_ratio,omitempty" jsonschema:"description=Min Aspect Ratio"`
-	Minheight      int      `json:"minheight,omitempty" jsonschema:"description=Minheight"`
-	Minlength      int      `json:"minlength,omitempty" jsonschema:"description=Minlength"`
-	Minwidth       int      `json:"minwidth,omitempty" jsonschema:"description=Minwidth"`
-	Title          string   `json:"title,omitempty" jsonschema:"description=Title"`
+	ID             string   `json:"id"`
+	Fields         []string `json:"fields,omitempty"`
+	Limit          int      `json:"limit,omitempty"`
+	After          string   `json:"after,omitempty"`
+	Before         string   `json:"before,omitempty"`
+	MaxAspectRatio float64  `json:"max_aspect_ratio,omitempty"`
+	Maxheight      int      `json:"maxheight,omitempty"`
+	Maxlength      int      `json:"maxlength,omitempty"`
+	Maxwidth       int      `json:"maxwidth,omitempty"`
+	MinAspectRatio float64  `json:"min_aspect_ratio,omitempty"`
+	Minheight      int      `json:"minheight,omitempty"`
+	Minlength      int      `json:"minlength,omitempty"`
+	Minwidth       int      `json:"minwidth,omitempty"`
+	Title          string   `json:"title,omitempty"`
 }
 
 // create_ad_account_advideoArgs defines the typed arguments for create_ad_account_advideo
 type create_ad_account_advideoArgs struct {
-	ID                            string                 `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	ApplicationId                 string                 `json:"application_id,omitempty" jsonschema:"description=ID of the Application,pattern=^[0-9]+$"`
-	AskedFunFactPromptId          int                    `json:"asked_fun_fact_prompt_id,omitempty" jsonschema:"description=ID of the Asked Fun Fact Prompt,pattern=^[0-9]+$"`
-	AudioStoryWaveAnimationHandle string                 `json:"audio_story_wave_animation_handle,omitempty" jsonschema:"description=Audio Story Wave Animation Handle"`
-	ChunkSessionId                string                 `json:"chunk_session_id,omitempty" jsonschema:"description=ID of the Chunk Session,pattern=^[0-9]+$"`
-	ComposerEntryPicker           string                 `json:"composer_entry_picker,omitempty" jsonschema:"description=Composer Entry Picker"`
-	ComposerEntryPoint            string                 `json:"composer_entry_point,omitempty" jsonschema:"description=Composer Entry Point"`
-	ComposerEntryTime             int                    `json:"composer_entry_time,omitempty" jsonschema:"description=Composer Entry Time"`
-	ComposerSessionEventsLog      string                 `json:"composer_session_events_log,omitempty" jsonschema:"description=Composer Session Events Log"`
-	ComposerSessionId             string                 `json:"composer_session_id,omitempty" jsonschema:"description=ID of the Composer Session,pattern=^[0-9]+$"`
-	ComposerSourceSurface         string                 `json:"composer_source_surface,omitempty" jsonschema:"description=Composer Source Surface"`
-	ComposerType                  string                 `json:"composer_type,omitempty" jsonschema:"description=Composer Type"`
-	ContainerType                 string                 `json:"container_type,omitempty" jsonschema:"description=Container Type"`
-	ContentCategory               string                 `json:"content_category,omitempty" jsonschema:"description=Content Category"`
-	CreativeTools                 string                 `json:"creative_tools,omitempty" jsonschema:"description=Creative Tools"`
-	Description                   string                 `json:"description,omitempty" jsonschema:"description=Description"`
-	Embeddable                    bool                   `json:"embeddable,omitempty" jsonschema:"description=Embeddable"`
-	EndOffset                     int                    `json:"end_offset,omitempty" jsonschema:"description=End Offset"`
-	FbuploaderVideoFileChunk      string                 `json:"fbuploader_video_file_chunk,omitempty" jsonschema:"description=Fbuploader Video File Chunk"`
-	FileSize                      int                    `json:"file_size,omitempty" jsonschema:"description=File Size"`
-	FileUrl                       string                 `json:"file_url,omitempty" jsonschema:"description=File URL,format=uri"`
-	FisheyeVideoCropped           bool                   `json:"fisheye_video_cropped,omitempty" jsonschema:"description=Fisheye Video Cropped"`
-	Formatting                    string                 `json:"formatting,omitempty" jsonschema:"description=Formatting"`
-	Fov                           int                    `json:"fov,omitempty" jsonschema:"description=Fov"`
-	FrontZRotation                float64                `json:"front_z_rotation,omitempty" jsonschema:"description=Front Z Rotation"`
-	FunFactPromptId               string                 `json:"fun_fact_prompt_id,omitempty" jsonschema:"description=ID of the Fun Fact Prompt,pattern=^[0-9]+$"`
-	FunFactToasteeId              int                    `json:"fun_fact_toastee_id,omitempty" jsonschema:"description=ID of the Fun Fact Toastee,pattern=^[0-9]+$"`
-	Guide                         []interface{}          `json:"guide,omitempty" jsonschema:"description=Guide"`
-	GuideEnabled                  bool                   `json:"guide_enabled,omitempty" jsonschema:"description=Guide Enabled"`
-	InitialHeading                int                    `json:"initial_heading,omitempty" jsonschema:"description=Initial Heading"`
-	InitialPitch                  int                    `json:"initial_pitch,omitempty" jsonschema:"description=Initial Pitch"`
-	InstantGameEntryPointData     string                 `json:"instant_game_entry_point_data,omitempty" jsonschema:"description=Instant Game Entry Point Data"`
-	IsBoostIntended               bool                   `json:"is_boost_intended,omitempty" jsonschema:"description=Is Boost Intended"`
-	IsGroupLinkingPost            bool                   `json:"is_group_linking_post,omitempty" jsonschema:"description=Is Group Linking Post"`
-	IsPartnershipAd               bool                   `json:"is_partnership_ad,omitempty" jsonschema:"description=Is Partnership Ad"`
-	IsVoiceClip                   bool                   `json:"is_voice_clip,omitempty" jsonschema:"description=Is Voice Clip"`
-	LocationSourceId              string                 `json:"location_source_id,omitempty" jsonschema:"description=ID of the Location Source,pattern=^[0-9]+$"`
-	Name                          string                 `json:"name,omitempty" jsonschema:"description=Name"`
-	OgActionTypeId                string                 `json:"og_action_type_id,omitempty" jsonschema:"description=ID of the Og Action Type,pattern=^[0-9]+$"`
-	OgIconId                      string                 `json:"og_icon_id,omitempty" jsonschema:"description=ID of the Og Icon,pattern=^[0-9]+$"`
-	OgObjectId                    string                 `json:"og_object_id,omitempty" jsonschema:"description=ID of the Og Object,pattern=^[0-9]+$"`
-	OgPhrase                      string                 `json:"og_phrase,omitempty" jsonschema:"description=Og Phrase"`
-	OgSuggestionMechanism         string                 `json:"og_suggestion_mechanism,omitempty" jsonschema:"description=Og Suggestion Mechanism"`
-	OriginalFov                   int                    `json:"original_fov,omitempty" jsonschema:"description=Original Fov"`
-	OriginalProjectionType        string                 `json:"original_projection_type,omitempty" jsonschema:"description=Original Projection Type"`
-	PartnershipAdAdCode           string                 `json:"partnership_ad_ad_code,omitempty" jsonschema:"description=Partnership Ad Ad Code"`
-	PublishEventId                int                    `json:"publish_event_id,omitempty" jsonschema:"description=ID of the Publish Event,pattern=^[0-9]+$"`
-	ReferencedStickerId           string                 `json:"referenced_sticker_id,omitempty" jsonschema:"description=ID of the Referenced Sticker,pattern=^[0-9]+$"`
-	ReplaceVideoId                string                 `json:"replace_video_id,omitempty" jsonschema:"description=ID of the Replace Video,pattern=^[0-9]+$"`
-	SlideshowSpec                 map[string]interface{} `json:"slideshow_spec,omitempty" jsonschema:"description=Slideshow Spec"`
-	Source                        string                 `json:"source,omitempty" jsonschema:"description=Source"`
-	SourceInstagramMediaId        string                 `json:"source_instagram_media_id,omitempty" jsonschema:"description=ID of the Source Instagram Media,pattern=^[0-9]+$"`
-	Spherical                     bool                   `json:"spherical,omitempty" jsonschema:"description=Spherical"`
-	StartOffset                   int                    `json:"start_offset,omitempty" jsonschema:"description=Start Offset"`
-	SwapMode                      string                 `json:"swap_mode,omitempty" jsonschema:"description=Swap Mode"`
-	TextFormatMetadata            string                 `json:"text_format_metadata,omitempty" jsonschema:"description=Text Format Metadata"`
-	Thumb                         interface{}            `json:"thumb,omitempty" jsonschema:"description=Thumb"`
-	TimeSinceOriginalPost         int                    `json:"time_since_original_post,omitempty" jsonschema:"description=Time Since Original Post"`
-	Title                         string                 `json:"title,omitempty" jsonschema:"description=Title"`
-	TranscodeSettingProperties    string                 `json:"transcode_setting_properties,omitempty" jsonschema:"description=Transcode Setting Properties"`
-	UnpublishedContentType        string                 `json:"unpublished_content_type,omitempty" jsonschema:"description=Unpublished Content Type"`
-	UploadPhase                   string                 `json:"upload_phase,omitempty" jsonschema:"description=Upload Phase"`
-	UploadSessionId               string                 `json:"upload_session_id,omitempty" jsonschema:"description=ID of the Upload Session,pattern=^[0-9]+$"`
-	UploadSettingProperties       string                 `json:"upload_setting_properties,omitempty" jsonschema:"description=Upload Setting Properties"`
-	VideoFileChunk                string                 `json:"video_file_chunk,omitempty" jsonschema:"description=Video File Chunk"`
-	VideoIdOriginal               string                 `json:"video_id_original,omitempty" jsonschema:"description=Video ID Original,pattern=^[0-9]+$"`
-	VideoStartTimeMs              int                    `json:"video_start_time_ms,omitempty" jsonschema:"description=Video Start Time Ms"`
-	WaterfallId                   string                 `json:"waterfall_id,omitempty" jsonschema:"description=ID of the Waterfall,pattern=^[0-9]+$"`
+	ID                            string                 `json:"id"`
+	ApplicationId                 string                 `json:"application_id,omitempty"`
+	AskedFunFactPromptId          int                    `json:"asked_fun_fact_prompt_id,omitempty"`
+	AudioStoryWaveAnimationHandle string                 `json:"audio_story_wave_animation_handle,omitempty"`
+	ChunkSessionId                string                 `json:"chunk_session_id,omitempty"`
+	ComposerEntryPicker           string                 `json:"composer_entry_picker,omitempty"`
+	ComposerEntryPoint            string                 `json:"composer_entry_point,omitempty"`
+	ComposerEntryTime             int                    `json:"composer_entry_time,omitempty"`
+	ComposerSessionEventsLog      string                 `json:"composer_session_events_log,omitempty"`
+	ComposerSessionId             string                 `json:"composer_session_id,omitempty"`
+	ComposerSourceSurface         string                 `json:"composer_source_surface,omitempty"`
+	ComposerType                  string                 `json:"composer_type,omitempty"`
+	ContainerType                 string                 `json:"container_type,omitempty"`
+	ContentCategory               string                 `json:"content_category,omitempty"`
+	CreativeTools                 string                 `json:"creative_tools,omitempty"`
+	Description                   string                 `json:"description,omitempty"`
+	Embeddable                    bool                   `json:"embeddable,omitempty"`
+	EndOffset                     int                    `json:"end_offset,omitempty"`
+	FbuploaderVideoFileChunk      string                 `json:"fbuploader_video_file_chunk,omitempty"`
+	FileSize                      int                    `json:"file_size,omitempty"`
+	FileUrl                       string                 `json:"file_url,omitempty"`
+	FisheyeVideoCropped           bool                   `json:"fisheye_video_cropped,omitempty"`
+	Formatting                    string                 `json:"formatting,omitempty"`
+	Fov                           int                    `json:"fov,omitempty"`
+	FrontZRotation                float64                `json:"front_z_rotation,omitempty"`
+	FunFactPromptId               string                 `json:"fun_fact_prompt_id,omitempty"`
+	FunFactToasteeId              int                    `json:"fun_fact_toastee_id,omitempty"`
+	Guide                         []interface{}          `json:"guide,omitempty"`
+	GuideEnabled                  bool                   `json:"guide_enabled,omitempty"`
+	InitialHeading                int                    `json:"initial_heading,omitempty"`
+	InitialPitch                  int                    `json:"initial_pitch,omitempty"`
+	InstantGameEntryPointData     string                 `json:"instant_game_entry_point_data,omitempty"`
+	IsBoostIntended               bool                   `json:"is_boost_intended,omitempty"`
+	IsGroupLinkingPost            bool                   `json:"is_group_linking_post,omitempty"`
+	IsPartnershipAd               bool                   `json:"is_partnership_ad,omitempty"`
+	IsVoiceClip                   bool                   `json:"is_voice_clip,omitempty"`
+	LocationSourceId              string                 `json:"location_source_id,omitempty"`
+	Name                          string                 `json:"name,omitempty"`
+	OgActionTypeId                string                 `json:"og_action_type_id,omitempty"`
+	OgIconId                      string                 `json:"og_icon_id,omitempty"`
+	OgObjectId                    string                 `json:"og_object_id,omitempty"`
+	OgPhrase                      string                 `json:"og_phrase,omitempty"`
+	OgSuggestionMechanism         string                 `json:"og_suggestion_mechanism,omitempty"`
+	OriginalFov                   int                    `json:"original_fov,omitempty"`
+	OriginalProjectionType        string                 `json:"original_projection_type,omitempty"`
+	PartnershipAdAdCode           string                 `json:"partnership_ad_ad_code,omitempty"`
+	PublishEventId                int                    `json:"publish_event_id,omitempty"`
+	ReferencedStickerId           string                 `json:"referenced_sticker_id,omitempty"`
+	ReplaceVideoId                string                 `json:"replace_video_id,omitempty"`
+	SlideshowSpec                 map[string]interface{} `json:"slideshow_spec,omitempty"`
+	Source                        string                 `json:"source,omitempty"`
+	SourceInstagramMediaId        string                 `json:"source_instagram_media_id,omitempty"`
+	Spherical                     bool                   `json:"spherical,omitempty"`
+	StartOffset                   int                    `json:"start_offset,omitempty"`
+	SwapMode                      string                 `json:"swap_mode,omitempty"`
+	TextFormatMetadata            string                 `json:"text_format_metadata,omitempty"`
+	Thumb                         interface{}            `json:"thumb,omitempty"`
+	TimeSinceOriginalPost         int                    `json:"time_since_original_post,omitempty"`
+	Title                         string                 `json:"title,omitempty"`
+	TranscodeSettingProperties    string                 `json:"transcode_setting_properties,omitempty"`
+	UnpublishedContentType        string                 `json:"unpublished_content_type,omitempty"`
+	UploadPhase                   string                 `json:"upload_phase,omitempty"`
+	UploadSessionId               string                 `json:"upload_session_id,omitempty"`
+	UploadSettingProperties       string                 `json:"upload_setting_properties,omitempty"`
+	VideoFileChunk                string                 `json:"video_file_chunk,omitempty"`
+	VideoIdOriginal               string                 `json:"video_id_original,omitempty"`
+	VideoStartTimeMs              int                    `json:"video_start_time_ms,omitempty"`
+	WaterfallId                   string                 `json:"waterfall_id,omitempty"`
 }
 
 // list_ad_account_affectedadsetsArgs defines the typed arguments for list_ad_account_affectedadsets
 type list_ad_account_affectedadsetsArgs struct {
-	ID     string   `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After  string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
 }
 
 // remove_agencies_from_ad_accountArgs defines the typed arguments for remove_agencies_from_ad_account
 type remove_agencies_from_ad_accountArgs struct {
-	ID       string `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Business string `json:"business" jsonschema:"description=Business,required"`
+	ID       string `json:"id"`
+	Business string `json:"business"`
 }
 
 // list_ad_account_agenciesArgs defines the typed arguments for list_ad_account_agencies
 type list_ad_account_agenciesArgs struct {
-	ID     string   `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After  string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
 }
 
 // create_ad_account_agencieArgs defines the typed arguments for create_ad_account_agencie
 type create_ad_account_agencieArgs struct {
-	ID             string   `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Business       string   `json:"business" jsonschema:"description=Business,required"`
-	PermittedTasks []string `json:"permitted_tasks,omitempty" jsonschema:"description=Permitted Tasks"`
+	ID             string   `json:"id"`
+	Business       string   `json:"business"`
+	PermittedTasks []string `json:"permitted_tasks,omitempty"`
 }
 
 // list_ad_account_applicationsArgs defines the typed arguments for list_ad_account_applications
 type list_ad_account_applicationsArgs struct {
-	ID     string   `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After  string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
 }
 
 // remove_assigned_users_from_ad_accountArgs defines the typed arguments for remove_assigned_users_from_ad_account
 type remove_assigned_users_from_ad_accountArgs struct {
-	ID   string `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	User int    `json:"user" jsonschema:"description=User,required"`
+	ID   string `json:"id"`
+	User int    `json:"user"`
 }
 
 // list_ad_account_assigned_usersArgs defines the typed arguments for list_ad_account_assigned_users
 type list_ad_account_assigned_usersArgs struct {
-	ID       string   `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Fields   []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit    int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After    string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before   string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
-	Business string   `json:"business" jsonschema:"description=Business,required"`
+	ID       string   `json:"id"`
+	Fields   []string `json:"fields,omitempty"`
+	Limit    int      `json:"limit,omitempty"`
+	After    string   `json:"after,omitempty"`
+	Before   string   `json:"before,omitempty"`
+	Business string   `json:"business"`
 }
 
 // create_ad_account_assigned_userArgs defines the typed arguments for create_ad_account_assigned_user
 type create_ad_account_assigned_userArgs struct {
-	ID    string   `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Tasks []string `json:"tasks,omitempty" jsonschema:"description=Tasks"`
-	User  int      `json:"user" jsonschema:"description=User,required"`
+	ID    string   `json:"id"`
+	Tasks []string `json:"tasks,omitempty"`
+	User  int      `json:"user"`
 }
 
 // create_ad_account_async_batch_requestArgs defines the typed arguments for create_ad_account_async_batch_request
 type create_ad_account_async_batch_requestArgs struct {
-	ID      string                   `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Adbatch []map[string]interface{} `json:"adbatch" jsonschema:"description=Adbatch,required"`
-	Name    string                   `json:"name" jsonschema:"description=Name,required"`
+	ID      string                   `json:"id"`
+	Adbatch []map[string]interface{} `json:"adbatch"`
+	Name    string                   `json:"name"`
 }
 
 // list_ad_account_async_requestsArgs defines the typed arguments for list_ad_account_async_requests
 type list_ad_account_async_requestsArgs struct {
-	ID     string   `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After  string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
-	Status string   `json:"status,omitempty" jsonschema:"description=Status,enum=ACTIVE,enum=PAUSED,enum=DELETED,enum=ARCHIVED"`
-	Type   string   `json:"type,omitempty" jsonschema:"description=Type"`
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
+	Status string   `json:"status,omitempty"`
+	Type   string   `json:"type,omitempty"`
 }
 
 // list_ad_account_asyncadcreativesArgs defines the typed arguments for list_ad_account_asyncadcreatives
 type list_ad_account_asyncadcreativesArgs struct {
-	ID          string   `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Fields      []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit       int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After       string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before      string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
-	IsCompleted bool     `json:"is_completed,omitempty" jsonschema:"description=Is Completed"`
+	ID          string   `json:"id"`
+	Fields      []string `json:"fields,omitempty"`
+	Limit       int      `json:"limit,omitempty"`
+	After       string   `json:"after,omitempty"`
+	Before      string   `json:"before,omitempty"`
+	IsCompleted bool     `json:"is_completed,omitempty"`
 }
 
 // create_ad_account_asyncadcreativeArgs defines the typed arguments for create_ad_account_asyncadcreative
 type create_ad_account_asyncadcreativeArgs struct {
-	ID               string      `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	CreativeSpec     *AdCreative `json:"creative_spec" jsonschema:"description=Creative Spec,required"`
-	Name             string      `json:"name" jsonschema:"description=Name,required"`
-	NotificationMode string      `json:"notification_mode,omitempty" jsonschema:"description=Notification Mode"`
-	NotificationUri  string      `json:"notification_uri,omitempty" jsonschema:"description=Notification Uri"`
+	ID               string      `json:"id"`
+	CreativeSpec     *AdCreative `json:"creative_spec"`
+	Name             string      `json:"name"`
+	NotificationMode string      `json:"notification_mode,omitempty"`
+	NotificationUri  string      `json:"notification_uri,omitempty"`
 }
 
 // list_ad_account_asyncadrequestsetsArgs defines the typed arguments for list_ad_account_asyncadrequestsets
 type list_ad_account_asyncadrequestsetsArgs struct {
-	ID          string   `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Fields      []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit       int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After       string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before      string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
-	IsCompleted bool     `json:"is_completed,omitempty" jsonschema:"description=Is Completed"`
+	ID          string   `json:"id"`
+	Fields      []string `json:"fields,omitempty"`
+	Limit       int      `json:"limit,omitempty"`
+	After       string   `json:"after,omitempty"`
+	Before      string   `json:"before,omitempty"`
+	IsCompleted bool     `json:"is_completed,omitempty"`
 }
 
 // create_ad_account_asyncadrequestsetArgs defines the typed arguments for create_ad_account_asyncadrequestset
 type create_ad_account_asyncadrequestsetArgs struct {
-	ID               string                   `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	AdSpecs          []map[string]interface{} `json:"ad_specs" jsonschema:"description=Ad Specs,required"`
-	Name             string                   `json:"name" jsonschema:"description=Name,required"`
-	NotificationMode string                   `json:"notification_mode,omitempty" jsonschema:"description=Notification Mode"`
-	NotificationUri  string                   `json:"notification_uri,omitempty" jsonschema:"description=Notification Uri"`
+	ID               string                   `json:"id"`
+	AdSpecs          []map[string]interface{} `json:"ad_specs"`
+	Name             string                   `json:"name"`
+	NotificationMode string                   `json:"notification_mode,omitempty"`
+	NotificationUri  string                   `json:"notification_uri,omitempty"`
 }
 
 // get_ad_account_audience_funnelArgs defines the typed arguments for get_ad_account_audience_funnel
 type get_ad_account_audience_funnelArgs struct {
-	ID     string   `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After  string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
 }
 
 // create_ad_account_block_list_draftArgs defines the typed arguments for create_ad_account_block_list_draft
 type create_ad_account_block_list_draftArgs struct {
-	ID                string      `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	PublisherUrlsFile interface{} `json:"publisher_urls_file" jsonschema:"description=Publisher Urls File,required"`
+	ID                string      `json:"id"`
+	PublisherUrlsFile interface{} `json:"publisher_urls_file"`
 }
 
 // create_ad_account_brand_safety_content_filter_levelArgs defines the typed arguments for create_ad_account_brand_safety_content_filter_level
 type create_ad_account_brand_safety_content_filter_levelArgs struct {
-	ID                             string   `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	BrandSafetyContentFilterLevels []string `json:"brand_safety_content_filter_levels" jsonschema:"description=Brand Safety Content Filter Levels,required"`
-	BusinessId                     string   `json:"business_id,omitempty" jsonschema:"description=ID of the Business,pattern=^[0-9]+$"`
+	ID                             string   `json:"id"`
+	BrandSafetyContentFilterLevels []string `json:"brand_safety_content_filter_levels"`
+	BusinessId                     string   `json:"business_id,omitempty"`
 }
 
 // list_ad_account_broadtargetingcategoriesArgs defines the typed arguments for list_ad_account_broadtargetingcategories
 type list_ad_account_broadtargetingcategoriesArgs struct {
-	ID                   string   `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Fields               []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit                int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After                string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before               string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
-	CustomCategoriesOnly bool     `json:"custom_categories_only,omitempty" jsonschema:"description=Custom Categories Only"`
+	ID                   string   `json:"id"`
+	Fields               []string `json:"fields,omitempty"`
+	Limit                int      `json:"limit,omitempty"`
+	After                string   `json:"after,omitempty"`
+	Before               string   `json:"before,omitempty"`
+	CustomCategoriesOnly bool     `json:"custom_categories_only,omitempty"`
 }
 
 // list_ad_account_businessprojectsArgs defines the typed arguments for list_ad_account_businessprojects
 type list_ad_account_businessprojectsArgs struct {
-	ID       string   `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Fields   []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit    int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After    string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before   string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
-	Business string   `json:"business,omitempty" jsonschema:"description=Business"`
+	ID       string   `json:"id"`
+	Fields   []string `json:"fields,omitempty"`
+	Limit    int      `json:"limit,omitempty"`
+	After    string   `json:"after,omitempty"`
+	Before   string   `json:"before,omitempty"`
+	Business string   `json:"business,omitempty"`
 }
 
 // remove_campaigns_from_ad_accountArgs defines the typed arguments for remove_campaigns_from_ad_account
 type remove_campaigns_from_ad_accountArgs struct {
-	ID             string `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	BeforeDate     string `json:"before_date,omitempty" jsonschema:"description=Before Date,format=date-time"`
-	DeleteOffset   int    `json:"delete_offset,omitempty" jsonschema:"description=Delete Offset"`
-	DeleteStrategy string `json:"delete_strategy" jsonschema:"description=Delete Strategy,required"`
-	ObjectCount    int    `json:"object_count,omitempty" jsonschema:"description=Object Count"`
+	ID             string `json:"id"`
+	BeforeDate     string `json:"before_date,omitempty"`
+	DeleteOffset   int    `json:"delete_offset,omitempty"`
+	DeleteStrategy string `json:"delete_strategy"`
+	ObjectCount    int    `json:"object_count,omitempty"`
 }
 
 // list_ad_account_campaignsArgs defines the typed arguments for list_ad_account_campaigns
 type list_ad_account_campaignsArgs struct {
-	ID              string                 `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Fields          []string               `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit           int                    `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After           string                 `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before          string                 `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
-	DatePreset      string                 `json:"date_preset,omitempty" jsonschema:"description=Date Preset"`
-	EffectiveStatus []string               `json:"effective_status,omitempty" jsonschema:"description=Effective Status"`
-	IsCompleted     bool                   `json:"is_completed,omitempty" jsonschema:"description=Is Completed"`
-	TimeRange       map[string]interface{} `json:"time_range,omitempty" jsonschema:"description=Time Range"`
+	ID              string                 `json:"id"`
+	Fields          []string               `json:"fields,omitempty"`
+	Limit           int                    `json:"limit,omitempty"`
+	After           string                 `json:"after,omitempty"`
+	Before          string                 `json:"before,omitempty"`
+	DatePreset      string                 `json:"date_preset,omitempty"`
+	EffectiveStatus []string               `json:"effective_status,omitempty"`
+	IsCompleted     bool                   `json:"is_completed,omitempty"`
+	TimeRange       map[string]interface{} `json:"time_range,omitempty"`
 }
 
 // create_ad_account_campaignArgs defines the typed arguments for create_ad_account_campaign
 type create_ad_account_campaignArgs struct {
-	ID                        string                   `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Adlabels                  []*AdLabel               `json:"adlabels,omitempty" jsonschema:"description=Adlabels"`
-	BidStrategy               string                   `json:"bid_strategy,omitempty" jsonschema:"description=Bid Strategy"`
-	BuyingType                string                   `json:"buying_type,omitempty" jsonschema:"description=Buying Type"`
-	DailyBudget               int                      `json:"daily_budget,omitempty" jsonschema:"description=Daily Budget,minimum=1"`
-	ExecutionOptions          []string                 `json:"execution_options,omitempty" jsonschema:"description=Execution Options"`
-	IsSkadnetworkAttribution  bool                     `json:"is_skadnetwork_attribution,omitempty" jsonschema:"description=Is Skadnetwork Attribution"`
-	IterativeSplitTestConfigs []map[string]interface{} `json:"iterative_split_test_configs,omitempty" jsonschema:"description=Iterative Split Test Configs"`
-	LifetimeBudget            int                      `json:"lifetime_budget,omitempty" jsonschema:"description=Lifetime Budget,minimum=1"`
-	Name                      string                   `json:"name,omitempty" jsonschema:"description=Name"`
-	Objective                 string                   `json:"objective,omitempty" jsonschema:"description=Objective"`
-	PacingType                []string                 `json:"pacing_type,omitempty" jsonschema:"description=Pacing Type"`
-	PromotedObject            *AdPromotedObject        `json:"promoted_object,omitempty" jsonschema:"description=Promoted Object"`
-	SmartPromotionType        string                   `json:"smart_promotion_type,omitempty" jsonschema:"description=Smart Promotion Type"`
-	SourceCampaignId          string                   `json:"source_campaign_id,omitempty" jsonschema:"description=ID of the Source Campaign,pattern=^[0-9]+$"`
-	SpecialAdCategories       []string                 `json:"special_ad_categories" jsonschema:"description=Special Ad Categories,required"`
-	SpecialAdCategoryCountry  []string                 `json:"special_ad_category_country,omitempty" jsonschema:"description=Special Ad Category Country"`
-	SpendCap                  int                      `json:"spend_cap,omitempty" jsonschema:"description=Spend Cap"`
-	StartTime                 string                   `json:"start_time,omitempty" jsonschema:"description=Start Time,format=date-time"`
-	Status                    string                   `json:"status,omitempty" jsonschema:"description=Status,enum=ACTIVE,enum=PAUSED,enum=DELETED,enum=ARCHIVED"`
-	StopTime                  string                   `json:"stop_time,omitempty" jsonschema:"description=Stop Time,format=date-time"`
-	ToplineId                 string                   `json:"topline_id,omitempty" jsonschema:"description=ID of the Topline,pattern=^[0-9]+$"`
+	ID                        string                   `json:"id"`
+	Adlabels                  []*AdLabel               `json:"adlabels,omitempty"`
+	BidStrategy               string                   `json:"bid_strategy,omitempty"`
+	BuyingType                string                   `json:"buying_type,omitempty"`
+	DailyBudget               int                      `json:"daily_budget,omitempty"`
+	ExecutionOptions          []string                 `json:"execution_options,omitempty"`
+	IsSkadnetworkAttribution  bool                     `json:"is_skadnetwork_attribution,omitempty"`
+	IterativeSplitTestConfigs []map[string]interface{} `json:"iterative_split_test_configs,omitempty"`
+	LifetimeBudget            int                      `json:"lifetime_budget,omitempty"`
+	Name                      string                   `json:"name,omitempty"`
+	Objective                 string                   `json:"objective,omitempty"`
+	PacingType                []string                 `json:"pacing_type,omitempty"`
+	PromotedObject            *AdPromotedObject        `json:"promoted_object,omitempty"`
+	SmartPromotionType        string                   `json:"smart_promotion_type,omitempty"`
+	SourceCampaignId          string                   `json:"source_campaign_id,omitempty"`
+	SpecialAdCategories       []string                 `json:"special_ad_categories"`
+	SpecialAdCategoryCountry  []string                 `json:"special_ad_category_country,omitempty"`
+	SpendCap                  int                      `json:"spend_cap,omitempty"`
+	StartTime                 string                   `json:"start_time,omitempty"`
+	Status                    string                   `json:"status,omitempty"`
+	StopTime                  string                   `json:"stop_time,omitempty"`
+	ToplineId                 string                   `json:"topline_id,omitempty"`
 }
 
 // list_ad_account_campaignsbylabelsArgs defines the typed arguments for list_ad_account_campaignsbylabels
 type list_ad_account_campaignsbylabelsArgs struct {
-	ID         string   `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Fields     []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit      int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After      string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before     string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
-	AdLabelIds []string `json:"ad_label_ids" jsonschema:"description=Ad Label Ids,required,pattern=^[0-9]+$"`
-	Operator   string   `json:"operator,omitempty" jsonschema:"description=Operator"`
+	ID         string   `json:"id"`
+	Fields     []string `json:"fields,omitempty"`
+	Limit      int      `json:"limit,omitempty"`
+	After      string   `json:"after,omitempty"`
+	Before     string   `json:"before,omitempty"`
+	AdLabelIds []string `json:"ad_label_ids"`
+	Operator   string   `json:"operator,omitempty"`
 }
 
 // list_ad_account_connected_instagram_accountsArgs defines the typed arguments for list_ad_account_connected_instagram_accounts
 type list_ad_account_connected_instagram_accountsArgs struct {
-	ID     string   `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After  string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
 }
 
 // get_ad_account_connected_instagram_accounts_with_iabpArgs defines the typed arguments for get_ad_account_connected_instagram_accounts_with_iabp
 type get_ad_account_connected_instagram_accounts_with_iabpArgs struct {
-	ID         string   `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Fields     []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit      int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After      string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before     string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
-	BusinessId string   `json:"business_id,omitempty" jsonschema:"description=ID of the Business,pattern=^[0-9]+$"`
+	ID         string   `json:"id"`
+	Fields     []string `json:"fields,omitempty"`
+	Limit      int      `json:"limit,omitempty"`
+	After      string   `json:"after,omitempty"`
+	Before     string   `json:"before,omitempty"`
+	BusinessId string   `json:"business_id,omitempty"`
 }
 
 // list_ad_account_conversion_goalsArgs defines the typed arguments for list_ad_account_conversion_goals
 type list_ad_account_conversion_goalsArgs struct {
-	ID     string   `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After  string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
 }
 
 // list_ad_account_customaudiencesArgs defines the typed arguments for list_ad_account_customaudiences
 type list_ad_account_customaudiencesArgs struct {
-	ID                   string                   `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Fields               []string                 `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit                int                      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After                string                   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before               string                   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
-	BusinessId           string                   `json:"business_id,omitempty" jsonschema:"description=ID of the Business,pattern=^[0-9]+$"`
-	FetchPrimaryAudience bool                     `json:"fetch_primary_audience,omitempty" jsonschema:"description=Fetch Primary Audience"`
-	Filtering            []map[string]interface{} `json:"filtering,omitempty" jsonschema:"description=Filtering"`
-	PixelId              string                   `json:"pixel_id,omitempty" jsonschema:"description=ID of the Pixel,pattern=^[0-9]+$"`
+	ID                   string                   `json:"id"`
+	Fields               []string                 `json:"fields,omitempty"`
+	Limit                int                      `json:"limit,omitempty"`
+	After                string                   `json:"after,omitempty"`
+	Before               string                   `json:"before,omitempty"`
+	BusinessId           string                   `json:"business_id,omitempty"`
+	FetchPrimaryAudience bool                     `json:"fetch_primary_audience,omitempty"`
+	Filtering            []map[string]interface{} `json:"filtering,omitempty"`
+	PixelId              string                   `json:"pixel_id,omitempty"`
 }
 
 // create_ad_account_customaudienceArgs defines the typed arguments for create_ad_account_customaudience
 type create_ad_account_customaudienceArgs struct {
-	ID                            string                   `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	AllowedDomains                []string                 `json:"allowed_domains,omitempty" jsonschema:"description=Allowed Domains"`
-	AssociatedAudienceId          int                      `json:"associated_audience_id,omitempty" jsonschema:"description=ID of the Associated Audience,pattern=^[0-9]+$"`
-	ClaimObjective                string                   `json:"claim_objective,omitempty" jsonschema:"description=Claim Objective"`
-	ContentType                   string                   `json:"content_type,omitempty" jsonschema:"description=Content Type"`
-	Countries                     string                   `json:"countries,omitempty" jsonschema:"description=Countries"`
-	CreationParams                map[string]interface{}   `json:"creation_params,omitempty" jsonschema:"description=Creation Params"`
-	CustomerFileSource            string                   `json:"customer_file_source,omitempty" jsonschema:"description=Customer File Source"`
-	DatasetId                     string                   `json:"dataset_id,omitempty" jsonschema:"description=ID of the Dataset,pattern=^[0-9]+$"`
-	Description                   string                   `json:"description,omitempty" jsonschema:"description=Description"`
-	EnableFetchOrCreate           bool                     `json:"enable_fetch_or_create,omitempty" jsonschema:"description=Enable Fetch Or Create"`
-	EventSourceGroup              string                   `json:"event_source_group,omitempty" jsonschema:"description=Event Source Group"`
-	EventSources                  []map[string]interface{} `json:"event_sources,omitempty" jsonschema:"description=Event Sources"`
-	Exclusions                    []map[string]interface{} `json:"exclusions,omitempty" jsonschema:"description=Exclusions"`
-	FacebookPageId                string                   `json:"facebook_page_id,omitempty" jsonschema:"description=ID of the Facebook Page,pattern=^[0-9]+$"`
-	Inclusions                    []map[string]interface{} `json:"inclusions,omitempty" jsonschema:"description=Inclusions"`
-	IsSnapshot                    bool                     `json:"is_snapshot,omitempty" jsonschema:"description=Is Snapshot"`
-	IsValueBased                  bool                     `json:"is_value_based,omitempty" jsonschema:"description=Is Value Based"`
-	ListOfAccounts                []interface{}            `json:"list_of_accounts,omitempty" jsonschema:"description=List Of Accounts"`
-	LookalikeSpec                 string                   `json:"lookalike_spec,omitempty" jsonschema:"description=Lookalike Spec"`
-	MarketingMessageChannels      map[string]interface{}   `json:"marketing_message_channels,omitempty" jsonschema:"description=Marketing Message Channels,minimum=13,maximum=100"`
-	Name                          string                   `json:"name,omitempty" jsonschema:"description=Name"`
-	OptOutLink                    string                   `json:"opt_out_link,omitempty" jsonschema:"description=Opt Out Link"`
-	OriginAudienceId              string                   `json:"origin_audience_id,omitempty" jsonschema:"description=ID of the Origin Audience,pattern=^[0-9]+$"`
-	ParentAudienceId              int                      `json:"parent_audience_id,omitempty" jsonschema:"description=ID of the Parent Audience,pattern=^[0-9]+$"`
-	PartnerReferenceKey           string                   `json:"partner_reference_key,omitempty" jsonschema:"description=Partner Reference Key"`
-	PixelId                       string                   `json:"pixel_id,omitempty" jsonschema:"description=ID of the Pixel,pattern=^[0-9]+$"`
-	Prefill                       bool                     `json:"prefill,omitempty" jsonschema:"description=Prefill"`
-	ProductSetId                  string                   `json:"product_set_id,omitempty" jsonschema:"description=ID of the Product Set,pattern=^[0-9]+$"`
-	RegulatedAudienceSpec         string                   `json:"regulated_audience_spec,omitempty" jsonschema:"description=Regulated Audience Spec"`
-	RetentionDays                 int                      `json:"retention_days,omitempty" jsonschema:"description=Retention Days"`
-	RevSharePolicyId              int                      `json:"rev_share_policy_id,omitempty" jsonschema:"description=ID of the Rev Share Policy,pattern=^[0-9]+$"`
-	Rule                          string                   `json:"rule,omitempty" jsonschema:"description=Rule"`
-	RuleAggregation               string                   `json:"rule_aggregation,omitempty" jsonschema:"description=Rule Aggregation"`
-	SubscriptionInfo              []string                 `json:"subscription_info,omitempty" jsonschema:"description=Subscription Info"`
-	Subtype                       string                   `json:"subtype,omitempty" jsonschema:"description=Subtype"`
-	UseForProducts                []string                 `json:"use_for_products,omitempty" jsonschema:"description=Use For Products"`
-	UseInCampaigns                bool                     `json:"use_in_campaigns,omitempty" jsonschema:"description=Use In Campaigns"`
-	VideoGroupIds                 []string                 `json:"video_group_ids,omitempty" jsonschema:"description=Video Group Ids,pattern=^[0-9]+$"`
-	WhatsAppBusinessPhoneNumberId string                   `json:"whats_app_business_phone_number_id,omitempty" jsonschema:"description=ID of the Whats App Business Phone Number,pattern=^[0-9]+$"`
+	ID                            string                   `json:"id"`
+	AllowedDomains                []string                 `json:"allowed_domains,omitempty"`
+	AssociatedAudienceId          int                      `json:"associated_audience_id,omitempty"`
+	ClaimObjective                string                   `json:"claim_objective,omitempty"`
+	ContentType                   string                   `json:"content_type,omitempty"`
+	Countries                     string                   `json:"countries,omitempty"`
+	CreationParams                map[string]interface{}   `json:"creation_params,omitempty"`
+	CustomerFileSource            string                   `json:"customer_file_source,omitempty"`
+	DatasetId                     string                   `json:"dataset_id,omitempty"`
+	Description                   string                   `json:"description,omitempty"`
+	EnableFetchOrCreate           bool                     `json:"enable_fetch_or_create,omitempty"`
+	EventSourceGroup              string                   `json:"event_source_group,omitempty"`
+	EventSources                  []map[string]interface{} `json:"event_sources,omitempty"`
+	Exclusions                    []map[string]interface{} `json:"exclusions,omitempty"`
+	FacebookPageId                string                   `json:"facebook_page_id,omitempty"`
+	Inclusions                    []map[string]interface{} `json:"inclusions,omitempty"`
+	IsSnapshot                    bool                     `json:"is_snapshot,omitempty"`
+	IsValueBased                  bool                     `json:"is_value_based,omitempty"`
+	ListOfAccounts                []interface{}            `json:"list_of_accounts,omitempty"`
+	LookalikeSpec                 string                   `json:"lookalike_spec,omitempty"`
+	MarketingMessageChannels      map[string]interface{}   `json:"marketing_message_channels,omitempty"`
+	Name                          string                   `json:"name,omitempty"`
+	OptOutLink                    string                   `json:"opt_out_link,omitempty"`
+	OriginAudienceId              string                   `json:"origin_audience_id,omitempty"`
+	ParentAudienceId              int                      `json:"parent_audience_id,omitempty"`
+	PartnerReferenceKey           string                   `json:"partner_reference_key,omitempty"`
+	PixelId                       string                   `json:"pixel_id,omitempty"`
+	Prefill                       bool                     `json:"prefill,omitempty"`
+	ProductSetId                  string                   `json:"product_set_id,omitempty"`
+	RegulatedAudienceSpec         string                   `json:"regulated_audience_spec,omitempty"`
+	RetentionDays                 int                      `json:"retention_days,omitempty"`
+	RevSharePolicyId              int                      `json:"rev_share_policy_id,omitempty"`
+	Rule                          string                   `json:"rule,omitempty"`
+	RuleAggregation               string                   `json:"rule_aggregation,omitempty"`
+	SubscriptionInfo              []string                 `json:"subscription_info,omitempty"`
+	Subtype                       string                   `json:"subtype,omitempty"`
+	UseForProducts                []string                 `json:"use_for_products,omitempty"`
+	UseInCampaigns                bool                     `json:"use_in_campaigns,omitempty"`
+	VideoGroupIds                 []string                 `json:"video_group_ids,omitempty"`
+	WhatsAppBusinessPhoneNumberId string                   `json:"whats_app_business_phone_number_id,omitempty"`
 }
 
 // list_ad_account_customaudiencestosArgs defines the typed arguments for list_ad_account_customaudiencestos
 type list_ad_account_customaudiencestosArgs struct {
-	ID     string   `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After  string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
 }
 
 // create_ad_account_customaudiencestoArgs defines the typed arguments for create_ad_account_customaudiencesto
 type create_ad_account_customaudiencestoArgs struct {
-	ID         string `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	BusinessId string `json:"business_id,omitempty" jsonschema:"description=ID of the Business,pattern=^[0-9]+$"`
-	TosId      string `json:"tos_id" jsonschema:"description=ID of the Tos,required,pattern=^[0-9]+$"`
+	ID         string `json:"id"`
+	BusinessId string `json:"business_id,omitempty"`
+	TosId      string `json:"tos_id"`
 }
 
 // list_ad_account_customconversionsArgs defines the typed arguments for list_ad_account_customconversions
 type list_ad_account_customconversionsArgs struct {
-	ID     string   `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After  string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
 }
 
 // create_ad_account_customconversionArgs defines the typed arguments for create_ad_account_customconversion
 type create_ad_account_customconversionArgs struct {
-	ID                     string  `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	ActionSourceType       string  `json:"action_source_type,omitempty" jsonschema:"description=Action Source Type"`
-	AdvancedRule           string  `json:"advanced_rule,omitempty" jsonschema:"description=Advanced Rule"`
-	CustomEventType        string  `json:"custom_event_type,omitempty" jsonschema:"description=Custom Event Type"`
-	DefaultConversionValue float64 `json:"default_conversion_value,omitempty" jsonschema:"description=Default Conversion Value"`
-	Description            string  `json:"description,omitempty" jsonschema:"description=Description"`
-	EventSourceId          string  `json:"event_source_id,omitempty" jsonschema:"description=ID of the Event Source,pattern=^[0-9]+$"`
-	Name                   string  `json:"name" jsonschema:"description=Name,required"`
-	Rule                   string  `json:"rule,omitempty" jsonschema:"description=Rule"`
+	ID                     string  `json:"id"`
+	ActionSourceType       string  `json:"action_source_type,omitempty"`
+	AdvancedRule           string  `json:"advanced_rule,omitempty"`
+	CustomEventType        string  `json:"custom_event_type,omitempty"`
+	DefaultConversionValue float64 `json:"default_conversion_value,omitempty"`
+	Description            string  `json:"description,omitempty"`
+	EventSourceId          string  `json:"event_source_id,omitempty"`
+	Name                   string  `json:"name"`
+	Rule                   string  `json:"rule,omitempty"`
 }
 
 // get_ad_account_delivery_estimateArgs defines the typed arguments for get_ad_account_delivery_estimate
 type get_ad_account_delivery_estimateArgs struct {
-	ID               string            `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Fields           []string          `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit            int               `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After            string            `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before           string            `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
-	OptimizationGoal string            `json:"optimization_goal" jsonschema:"description=Optimization Goal,required"`
-	PromotedObject   *AdPromotedObject `json:"promoted_object,omitempty" jsonschema:"description=Promoted Object"`
-	TargetingSpec    *Targeting        `json:"targeting_spec" jsonschema:"description=Targeting Spec,required"`
+	ID               string            `json:"id"`
+	Fields           []string          `json:"fields,omitempty"`
+	Limit            int               `json:"limit,omitempty"`
+	After            string            `json:"after,omitempty"`
+	Before           string            `json:"before,omitempty"`
+	OptimizationGoal string            `json:"optimization_goal"`
+	PromotedObject   *AdPromotedObject `json:"promoted_object,omitempty"`
+	TargetingSpec    *Targeting        `json:"targeting_spec"`
 }
 
 // list_ad_account_deprecatedtargetingadsetsArgs defines the typed arguments for list_ad_account_deprecatedtargetingadsets
 type list_ad_account_deprecatedtargetingadsetsArgs struct {
-	ID     string   `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After  string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
-	Type   string   `json:"type,omitempty" jsonschema:"description=Type"`
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
+	Type   string   `json:"type,omitempty"`
 }
 
 // list_ad_account_dsa_recommendationsArgs defines the typed arguments for list_ad_account_dsa_recommendations
 type list_ad_account_dsa_recommendationsArgs struct {
-	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After  string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
 }
 
 // list_ad_account_generatepreviewsArgs defines the typed arguments for list_ad_account_generatepreviews
 type list_ad_account_generatepreviewsArgs struct {
-	ID                   string                 `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Fields               []string               `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit                int                    `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After                string                 `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before               string                 `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
-	AdFormat             string                 `json:"ad_format" jsonschema:"description=Ad Format,required"`
-	Creative             *AdCreative            `json:"creative" jsonschema:"description=Creative,required"`
-	CreativeFeature      string                 `json:"creative_feature,omitempty" jsonschema:"description=Creative Feature"`
-	DynamicAssetLabel    string                 `json:"dynamic_asset_label,omitempty" jsonschema:"description=Dynamic Asset Label"`
-	DynamicCreativeSpec  map[string]interface{} `json:"dynamic_creative_spec,omitempty" jsonschema:"description=Dynamic Creative Spec"`
-	DynamicCustomization map[string]interface{} `json:"dynamic_customization,omitempty" jsonschema:"description=Dynamic Customization"`
-	EndDate              string                 `json:"end_date,omitempty" jsonschema:"description=End Date,format=date-time"`
-	Height               int                    `json:"height,omitempty" jsonschema:"description=Height"`
-	Locale               string                 `json:"locale,omitempty" jsonschema:"description=Locale"`
-	PlacePageId          int                    `json:"place_page_id,omitempty" jsonschema:"description=ID of the Place Page,pattern=^[0-9]+$"`
-	Post                 map[string]interface{} `json:"post,omitempty" jsonschema:"description=Post"`
-	ProductItemIds       []string               `json:"product_item_ids,omitempty" jsonschema:"description=Product Item Ids,pattern=^[0-9]+$"`
-	RenderType           string                 `json:"render_type,omitempty" jsonschema:"description=Render Type"`
-	StartDate            string                 `json:"start_date,omitempty" jsonschema:"description=Start Date,format=date-time"`
-	Width                int                    `json:"width,omitempty" jsonschema:"description=Width"`
+	ID                   string                 `json:"id"`
+	Fields               []string               `json:"fields,omitempty"`
+	Limit                int                    `json:"limit,omitempty"`
+	After                string                 `json:"after,omitempty"`
+	Before               string                 `json:"before,omitempty"`
+	AdFormat             string                 `json:"ad_format"`
+	Creative             *AdCreative            `json:"creative"`
+	CreativeFeature      string                 `json:"creative_feature,omitempty"`
+	DynamicAssetLabel    string                 `json:"dynamic_asset_label,omitempty"`
+	DynamicCreativeSpec  map[string]interface{} `json:"dynamic_creative_spec,omitempty"`
+	DynamicCustomization map[string]interface{} `json:"dynamic_customization,omitempty"`
+	EndDate              string                 `json:"end_date,omitempty"`
+	Height               int                    `json:"height,omitempty"`
+	Locale               string                 `json:"locale,omitempty"`
+	PlacePageId          int                    `json:"place_page_id,omitempty"`
+	Post                 map[string]interface{} `json:"post,omitempty"`
+	ProductItemIds       []string               `json:"product_item_ids,omitempty"`
+	RenderType           string                 `json:"render_type,omitempty"`
+	StartDate            string                 `json:"start_date,omitempty"`
+	Width                int                    `json:"width,omitempty"`
 }
 
 // list_ad_account_impacting_ad_studiesArgs defines the typed arguments for list_ad_account_impacting_ad_studies
 type list_ad_account_impacting_ad_studiesArgs struct {
-	ID     string   `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After  string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
 }
 
 // get_ad_account_insightsArgs defines the typed arguments for get_ad_account_insights
 type get_ad_account_insightsArgs struct {
-	ID                           string                   `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Fields                       []string                 `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit                        int                      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After                        string                   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before                       string                   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
-	ActionAttributionWindows     []string                 `json:"action_attribution_windows,omitempty" jsonschema:"description=Action Attribution Windows"`
-	ActionBreakdowns             []string                 `json:"action_breakdowns,omitempty" jsonschema:"description=Action Breakdowns"`
-	ActionReportTime             string                   `json:"action_report_time,omitempty" jsonschema:"description=Action Report Time"`
-	Breakdowns                   []string                 `json:"breakdowns,omitempty" jsonschema:"description=Breakdowns"`
-	DatePreset                   string                   `json:"date_preset,omitempty" jsonschema:"description=Date Preset"`
-	DefaultSummary               bool                     `json:"default_summary,omitempty" jsonschema:"description=Default Summary"`
-	ExportColumns                []string                 `json:"export_columns,omitempty" jsonschema:"description=Export Columns"`
-	ExportFormat                 string                   `json:"export_format,omitempty" jsonschema:"description=Export Format"`
-	ExportName                   string                   `json:"export_name,omitempty" jsonschema:"description=Export Name"`
-	Filtering                    []map[string]interface{} `json:"filtering,omitempty" jsonschema:"description=Filtering"`
-	Level                        string                   `json:"level,omitempty" jsonschema:"description=Level"`
-	ProductIdLimit               int                      `json:"product_id_limit,omitempty" jsonschema:"description=Product ID Limit,pattern=^[0-9]+$"`
-	Sort                         []string                 `json:"sort,omitempty" jsonschema:"description=Sort"`
-	Summary                      []string                 `json:"summary,omitempty" jsonschema:"description=Summary"`
-	SummaryActionBreakdowns      []string                 `json:"summary_action_breakdowns,omitempty" jsonschema:"description=Summary Action Breakdowns"`
-	TimeIncrement                string                   `json:"time_increment,omitempty" jsonschema:"description=Time Increment"`
-	TimeRange                    map[string]interface{}   `json:"time_range,omitempty" jsonschema:"description=Time Range"`
-	TimeRanges                   []map[string]interface{} `json:"time_ranges,omitempty" jsonschema:"description=Time Ranges"`
-	UseAccountAttributionSetting bool                     `json:"use_account_attribution_setting,omitempty" jsonschema:"description=Use Account Attribution Setting"`
-	UseUnifiedAttributionSetting bool                     `json:"use_unified_attribution_setting,omitempty" jsonschema:"description=Use Unified Attribution Setting"`
+	ID                           string                   `json:"id"`
+	Fields                       []string                 `json:"fields,omitempty"`
+	Limit                        int                      `json:"limit,omitempty"`
+	After                        string                   `json:"after,omitempty"`
+	Before                       string                   `json:"before,omitempty"`
+	ActionAttributionWindows     []string                 `json:"action_attribution_windows,omitempty"`
+	ActionBreakdowns             []string                 `json:"action_breakdowns,omitempty"`
+	ActionReportTime             string                   `json:"action_report_time,omitempty"`
+	Breakdowns                   []string                 `json:"breakdowns,omitempty"`
+	DatePreset                   string                   `json:"date_preset,omitempty"`
+	DefaultSummary               bool                     `json:"default_summary,omitempty"`
+	ExportColumns                []string                 `json:"export_columns,omitempty"`
+	ExportFormat                 string                   `json:"export_format,omitempty"`
+	ExportName                   string                   `json:"export_name,omitempty"`
+	Filtering                    []map[string]interface{} `json:"filtering,omitempty"`
+	Level                        string                   `json:"level,omitempty"`
+	ProductIdLimit               int                      `json:"product_id_limit,omitempty"`
+	Sort                         []string                 `json:"sort,omitempty"`
+	Summary                      []string                 `json:"summary,omitempty"`
+	SummaryActionBreakdowns      []string                 `json:"summary_action_breakdowns,omitempty"`
+	TimeIncrement                string                   `json:"time_increment,omitempty"`
+	TimeRange                    map[string]interface{}   `json:"time_range,omitempty"`
+	TimeRanges                   []map[string]interface{} `json:"time_ranges,omitempty"`
+	UseAccountAttributionSetting bool                     `json:"use_account_attribution_setting,omitempty"`
+	UseUnifiedAttributionSetting bool                     `json:"use_unified_attribution_setting,omitempty"`
 }
 
 // create_ad_account_insights_reportArgs defines the typed arguments for create_ad_account_insights_report
 type create_ad_account_insights_reportArgs struct {
-	ID                           string                   `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	ActionAttributionWindows     []string                 `json:"action_attribution_windows,omitempty" jsonschema:"description=Action Attribution Windows"`
-	ActionBreakdowns             []string                 `json:"action_breakdowns,omitempty" jsonschema:"description=Action Breakdowns"`
-	ActionReportTime             string                   `json:"action_report_time,omitempty" jsonschema:"description=Action Report Time"`
-	Breakdowns                   []string                 `json:"breakdowns,omitempty" jsonschema:"description=Breakdowns"`
-	DatePreset                   string                   `json:"date_preset,omitempty" jsonschema:"description=Date Preset"`
-	DefaultSummary               bool                     `json:"default_summary,omitempty" jsonschema:"description=Default Summary"`
-	ExportColumns                []string                 `json:"export_columns,omitempty" jsonschema:"description=Export Columns"`
-	ExportFormat                 string                   `json:"export_format,omitempty" jsonschema:"description=Export Format"`
-	ExportName                   string                   `json:"export_name,omitempty" jsonschema:"description=Export Name"`
-	Fields                       []string                 `json:"fields,omitempty" jsonschema:"description=Fields"`
-	Filtering                    []map[string]interface{} `json:"filtering,omitempty" jsonschema:"description=Filtering"`
-	Level                        string                   `json:"level,omitempty" jsonschema:"description=Level"`
-	Limit                        int                      `json:"limit,omitempty" jsonschema:"description=Limit"`
-	ProductIdLimit               int                      `json:"product_id_limit,omitempty" jsonschema:"description=Product ID Limit,pattern=^[0-9]+$"`
-	Sort                         []string                 `json:"sort,omitempty" jsonschema:"description=Sort"`
-	Summary                      []string                 `json:"summary,omitempty" jsonschema:"description=Summary"`
-	SummaryActionBreakdowns      []string                 `json:"summary_action_breakdowns,omitempty" jsonschema:"description=Summary Action Breakdowns"`
-	TimeIncrement                string                   `json:"time_increment,omitempty" jsonschema:"description=Time Increment"`
-	TimeRange                    map[string]interface{}   `json:"time_range,omitempty" jsonschema:"description=Time Range"`
-	TimeRanges                   []map[string]interface{} `json:"time_ranges,omitempty" jsonschema:"description=Time Ranges"`
-	UseAccountAttributionSetting bool                     `json:"use_account_attribution_setting,omitempty" jsonschema:"description=Use Account Attribution Setting"`
-	UseUnifiedAttributionSetting bool                     `json:"use_unified_attribution_setting,omitempty" jsonschema:"description=Use Unified Attribution Setting"`
+	ID                           string                   `json:"id"`
+	ActionAttributionWindows     []string                 `json:"action_attribution_windows,omitempty"`
+	ActionBreakdowns             []string                 `json:"action_breakdowns,omitempty"`
+	ActionReportTime             string                   `json:"action_report_time,omitempty"`
+	Breakdowns                   []string                 `json:"breakdowns,omitempty"`
+	DatePreset                   string                   `json:"date_preset,omitempty"`
+	DefaultSummary               bool                     `json:"default_summary,omitempty"`
+	ExportColumns                []string                 `json:"export_columns,omitempty"`
+	ExportFormat                 string                   `json:"export_format,omitempty"`
+	ExportName                   string                   `json:"export_name,omitempty"`
+	Fields                       []string                 `json:"fields,omitempty"`
+	Filtering                    []map[string]interface{} `json:"filtering,omitempty"`
+	Level                        string                   `json:"level,omitempty"`
+	Limit                        int                      `json:"limit,omitempty"`
+	ProductIdLimit               int                      `json:"product_id_limit,omitempty"`
+	Sort                         []string                 `json:"sort,omitempty"`
+	Summary                      []string                 `json:"summary,omitempty"`
+	SummaryActionBreakdowns      []string                 `json:"summary_action_breakdowns,omitempty"`
+	TimeIncrement                string                   `json:"time_increment,omitempty"`
+	TimeRange                    map[string]interface{}   `json:"time_range,omitempty"`
+	TimeRanges                   []map[string]interface{} `json:"time_ranges,omitempty"`
+	UseAccountAttributionSetting bool                     `json:"use_account_attribution_setting,omitempty"`
+	UseUnifiedAttributionSetting bool                     `json:"use_unified_attribution_setting,omitempty"`
 }
 
 // list_ad_account_instagram_accountsArgs defines the typed arguments for list_ad_account_instagram_accounts
 type list_ad_account_instagram_accountsArgs struct {
-	ID     string   `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After  string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
 }
 
 // list_ad_account_ios_fourteen_campaign_limitsArgs defines the typed arguments for list_ad_account_ios_fourteen_campaign_limits
 type list_ad_account_ios_fourteen_campaign_limitsArgs struct {
-	ID     string   `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After  string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
-	AppId  string   `json:"app_id" jsonschema:"description=ID of the App,required,pattern=^[0-9]+$"`
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
+	AppId  string   `json:"app_id"`
 }
 
 // list_ad_account_matched_search_applicationsArgs defines the typed arguments for list_ad_account_matched_search_applications
 type list_ad_account_matched_search_applicationsArgs struct {
-	Fields                 []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit                  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After                  string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before                 string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
-	AllowIncompleteApp     bool     `json:"allow_incomplete_app,omitempty" jsonschema:"description=Allow Incomplete App"`
-	AppStore               string   `json:"app_store" jsonschema:"description=App Store,required"`
-	AppStoreCountry        string   `json:"app_store_country,omitempty" jsonschema:"description=App Store Country"`
-	BusinessId             string   `json:"business_id,omitempty" jsonschema:"description=ID of the Business,pattern=^[0-9]+$"`
-	IsSkadnetworkSearch    bool     `json:"is_skadnetwork_search,omitempty" jsonschema:"description=Is Skadnetwork Search"`
-	OnlyAppsWithPermission bool     `json:"only_apps_with_permission,omitempty" jsonschema:"description=Only Apps With Permission"`
-	QueryTerm              string   `json:"query_term" jsonschema:"description=Query Term,required"`
+	Fields                 []string `json:"fields,omitempty"`
+	Limit                  int      `json:"limit,omitempty"`
+	After                  string   `json:"after,omitempty"`
+	Before                 string   `json:"before,omitempty"`
+	AllowIncompleteApp     bool     `json:"allow_incomplete_app,omitempty"`
+	AppStore               string   `json:"app_store"`
+	AppStoreCountry        string   `json:"app_store_country,omitempty"`
+	BusinessId             string   `json:"business_id,omitempty"`
+	IsSkadnetworkSearch    bool     `json:"is_skadnetwork_search,omitempty"`
+	OnlyAppsWithPermission bool     `json:"only_apps_with_permission,omitempty"`
+	QueryTerm              string   `json:"query_term"`
 }
 
 // get_ad_account_max_bidArgs defines the typed arguments for get_ad_account_max_bid
 type get_ad_account_max_bidArgs struct {
-	ID     string   `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After  string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
 }
 
 // list_ad_account_mcmeconversionsArgs defines the typed arguments for list_ad_account_mcmeconversions
 type list_ad_account_mcmeconversionsArgs struct {
-	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After  string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
 }
 
 // list_ad_account_minimum_budgetsArgs defines the typed arguments for list_ad_account_minimum_budgets
 type list_ad_account_minimum_budgetsArgs struct {
-	ID        string   `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Fields    []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit     int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After     string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before    string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
-	BidAmount int      `json:"bid_amount,omitempty" jsonschema:"description=Bid Amount,minimum=1"`
+	ID        string   `json:"id"`
+	Fields    []string `json:"fields,omitempty"`
+	Limit     int      `json:"limit,omitempty"`
+	After     string   `json:"after,omitempty"`
+	Before    string   `json:"before,omitempty"`
+	BidAmount int      `json:"bid_amount,omitempty"`
 }
 
 // list_ad_account_onbehalf_requestsArgs defines the typed arguments for list_ad_account_onbehalf_requests
 type list_ad_account_onbehalf_requestsArgs struct {
-	ID     string   `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After  string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
-	Status string   `json:"status,omitempty" jsonschema:"description=Status,enum=ACTIVE,enum=PAUSED,enum=DELETED,enum=ARCHIVED"`
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
+	Status string   `json:"status,omitempty"`
 }
 
 // create_ad_account_product_audienceArgs defines the typed arguments for create_ad_account_product_audience
 type create_ad_account_product_audienceArgs struct {
-	ID                   string                   `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	AllowedDomains       []string                 `json:"allowed_domains,omitempty" jsonschema:"description=Allowed Domains"`
-	AssociatedAudienceId int                      `json:"associated_audience_id,omitempty" jsonschema:"description=ID of the Associated Audience,pattern=^[0-9]+$"`
-	ClaimObjective       string                   `json:"claim_objective,omitempty" jsonschema:"description=Claim Objective"`
-	ContentType          string                   `json:"content_type,omitempty" jsonschema:"description=Content Type"`
-	CreationParams       map[string]interface{}   `json:"creation_params,omitempty" jsonschema:"description=Creation Params"`
-	Description          string                   `json:"description,omitempty" jsonschema:"description=Description"`
-	EnableFetchOrCreate  bool                     `json:"enable_fetch_or_create,omitempty" jsonschema:"description=Enable Fetch Or Create"`
-	EventSourceGroup     string                   `json:"event_source_group,omitempty" jsonschema:"description=Event Source Group"`
-	EventSources         []map[string]interface{} `json:"event_sources,omitempty" jsonschema:"description=Event Sources"`
-	Exclusions           []map[string]interface{} `json:"exclusions,omitempty" jsonschema:"description=Exclusions"`
-	Inclusions           []map[string]interface{} `json:"inclusions,omitempty" jsonschema:"description=Inclusions"`
-	IsSnapshot           bool                     `json:"is_snapshot,omitempty" jsonschema:"description=Is Snapshot"`
-	IsValueBased         bool                     `json:"is_value_based,omitempty" jsonschema:"description=Is Value Based"`
-	Name                 string                   `json:"name" jsonschema:"description=Name,required"`
-	OptOutLink           string                   `json:"opt_out_link,omitempty" jsonschema:"description=Opt Out Link"`
-	ParentAudienceId     int                      `json:"parent_audience_id,omitempty" jsonschema:"description=ID of the Parent Audience,pattern=^[0-9]+$"`
-	ProductSetId         string                   `json:"product_set_id" jsonschema:"description=ID of the Product Set,required,pattern=^[0-9]+$"`
-	RevSharePolicyId     int                      `json:"rev_share_policy_id,omitempty" jsonschema:"description=ID of the Rev Share Policy,pattern=^[0-9]+$"`
-	Subtype              string                   `json:"subtype,omitempty" jsonschema:"description=Subtype"`
+	ID                   string                   `json:"id"`
+	AllowedDomains       []string                 `json:"allowed_domains,omitempty"`
+	AssociatedAudienceId int                      `json:"associated_audience_id,omitempty"`
+	ClaimObjective       string                   `json:"claim_objective,omitempty"`
+	ContentType          string                   `json:"content_type,omitempty"`
+	CreationParams       map[string]interface{}   `json:"creation_params,omitempty"`
+	Description          string                   `json:"description,omitempty"`
+	EnableFetchOrCreate  bool                     `json:"enable_fetch_or_create,omitempty"`
+	EventSourceGroup     string                   `json:"event_source_group,omitempty"`
+	EventSources         []map[string]interface{} `json:"event_sources,omitempty"`
+	Exclusions           []map[string]interface{} `json:"exclusions,omitempty"`
+	Inclusions           []map[string]interface{} `json:"inclusions,omitempty"`
+	IsSnapshot           bool                     `json:"is_snapshot,omitempty"`
+	IsValueBased         bool                     `json:"is_value_based,omitempty"`
+	Name                 string                   `json:"name"`
+	OptOutLink           string                   `json:"opt_out_link,omitempty"`
+	ParentAudienceId     int                      `json:"parent_audience_id,omitempty"`
+	ProductSetId         string                   `json:"product_set_id"`
+	RevSharePolicyId     int                      `json:"rev_share_policy_id,omitempty"`
+	Subtype              string                   `json:"subtype,omitempty"`
 }
 
 // list_ad_account_promote_pagesArgs defines the typed arguments for list_ad_account_promote_pages
 type list_ad_account_promote_pagesArgs struct {
-	ID     string   `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After  string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
 }
 
 // list_ad_account_publisher_block_listsArgs defines the typed arguments for list_ad_account_publisher_block_lists
 type list_ad_account_publisher_block_listsArgs struct {
-	ID     string   `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After  string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
 }
 
 // create_ad_account_publisher_block_listArgs defines the typed arguments for create_ad_account_publisher_block_list
 type create_ad_account_publisher_block_listArgs struct {
-	ID   string `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Name string `json:"name,omitempty" jsonschema:"description=Name"`
+	ID   string `json:"id"`
+	Name string `json:"name,omitempty"`
 }
 
 // get_ad_account_reachestimateArgs defines the typed arguments for get_ad_account_reachestimate
 type get_ad_account_reachestimateArgs struct {
-	ID                 string     `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Fields             []string   `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit              int        `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After              string     `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before             string     `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
-	AdgroupIds         []string   `json:"adgroup_ids,omitempty" jsonschema:"description=Adgroup Ids,pattern=^[0-9]+$"`
-	CallerId           string     `json:"caller_id,omitempty" jsonschema:"description=ID of the Caller,pattern=^[0-9]+$"`
-	Concepts           string     `json:"concepts,omitempty" jsonschema:"description=Concepts"`
-	CreativeActionSpec string     `json:"creative_action_spec,omitempty" jsonschema:"description=Creative Action Spec"`
-	IsDebug            bool       `json:"is_debug,omitempty" jsonschema:"description=Is Debug"`
-	ObjectStoreUrl     string     `json:"object_store_url,omitempty" jsonschema:"description=Object Store URL,format=uri"`
-	TargetingSpec      *Targeting `json:"targeting_spec" jsonschema:"description=Targeting Spec,required"`
+	ID                 string     `json:"id"`
+	Fields             []string   `json:"fields,omitempty"`
+	Limit              int        `json:"limit,omitempty"`
+	After              string     `json:"after,omitempty"`
+	Before             string     `json:"before,omitempty"`
+	AdgroupIds         []string   `json:"adgroup_ids,omitempty"`
+	CallerId           string     `json:"caller_id,omitempty"`
+	Concepts           string     `json:"concepts,omitempty"`
+	CreativeActionSpec string     `json:"creative_action_spec,omitempty"`
+	IsDebug            bool       `json:"is_debug,omitempty"`
+	ObjectStoreUrl     string     `json:"object_store_url,omitempty"`
+	TargetingSpec      *Targeting `json:"targeting_spec"`
 }
 
 // list_ad_account_reachfrequencypredictionsArgs defines the typed arguments for list_ad_account_reachfrequencypredictions
 type list_ad_account_reachfrequencypredictionsArgs struct {
-	ID     string   `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After  string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
 }
 
 // create_ad_account_reachfrequencypredictionArgs defines the typed arguments for create_ad_account_reachfrequencyprediction
 type create_ad_account_reachfrequencypredictionArgs struct {
-	ID                              string                   `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Action                          string                   `json:"action,omitempty" jsonschema:"description=Action"`
-	AdFormats                       []map[string]interface{} `json:"ad_formats,omitempty" jsonschema:"description=Ad Formats"`
-	AuctionEntryOptionIndex         int                      `json:"auction_entry_option_index,omitempty" jsonschema:"description=Auction Entry Option Index"`
-	Budget                          int                      `json:"budget,omitempty" jsonschema:"description=Budget,minimum=1"`
-	BuyingType                      string                   `json:"buying_type,omitempty" jsonschema:"description=Buying Type"`
-	CampaignGroupId                 string                   `json:"campaign_group_id,omitempty" jsonschema:"description=ID of the Campaign Group,pattern=^[0-9]+$"`
-	DayPartingSchedule              []map[string]interface{} `json:"day_parting_schedule,omitempty" jsonschema:"description=Day Parting Schedule"`
-	DealId                          string                   `json:"deal_id,omitempty" jsonschema:"description=ID of the Deal,pattern=^[0-9]+$"`
-	DestinationId                   int                      `json:"destination_id,omitempty" jsonschema:"description=ID of the Destination,pattern=^[0-9]+$"`
-	DestinationIds                  []string                 `json:"destination_ids,omitempty" jsonschema:"description=Destination Ids,pattern=^[0-9]+$"`
-	EndTime                         int                      `json:"end_time,omitempty" jsonschema:"description=End Time"`
-	Exceptions                      bool                     `json:"exceptions,omitempty" jsonschema:"description=Exceptions"`
-	ExistingCampaignId              string                   `json:"existing_campaign_id,omitempty" jsonschema:"description=ID of the Existing Campaign,pattern=^[0-9]+$"`
-	ExpirationTime                  int                      `json:"expiration_time,omitempty" jsonschema:"description=Expiration Time"`
-	FrequencyCap                    int                      `json:"frequency_cap,omitempty" jsonschema:"description=Frequency Cap"`
-	GrpBuying                       bool                     `json:"grp_buying,omitempty" jsonschema:"description=Grp Buying"`
-	Impression                      int                      `json:"impression,omitempty" jsonschema:"description=Impression"`
-	InstreamPackages                []string                 `json:"instream_packages,omitempty" jsonschema:"description=Instream Packages"`
-	IntervalFrequencyCapResetPeriod int                      `json:"interval_frequency_cap_reset_period,omitempty" jsonschema:"description=Interval Frequency Cap Reset Period"`
-	IsBalancedFrequency             bool                     `json:"is_balanced_frequency,omitempty" jsonschema:"description=Is Balanced Frequency"`
-	IsBonusMedia                    bool                     `json:"is_bonus_media,omitempty" jsonschema:"description=Is Bonus Media"`
-	IsConversionGoal                bool                     `json:"is_conversion_goal,omitempty" jsonschema:"description=Is Conversion Goal"`
-	IsFullView                      bool                     `json:"is_full_view,omitempty" jsonschema:"description=Is Full View"`
-	IsHigherAverageFrequency        bool                     `json:"is_higher_average_frequency,omitempty" jsonschema:"description=Is Higher Average Frequency"`
-	IsReachAndFrequencyIoBuying     bool                     `json:"is_reach_and_frequency_io_buying,omitempty" jsonschema:"description=Is Reach And Frequency Io Buying"`
-	IsReservedBuying                bool                     `json:"is_reserved_buying,omitempty" jsonschema:"description=Is Reserved Buying"`
-	NumCurvePoints                  int                      `json:"num_curve_points,omitempty" jsonschema:"description=Num Curve Points"`
-	Objective                       string                   `json:"objective,omitempty" jsonschema:"description=Objective"`
-	OptimizationGoal                string                   `json:"optimization_goal,omitempty" jsonschema:"description=Optimization Goal"`
-	PredictionMode                  int                      `json:"prediction_mode,omitempty" jsonschema:"description=Prediction Mode"`
-	Reach                           int                      `json:"reach,omitempty" jsonschema:"description=Reach"`
-	RfPredictionId                  string                   `json:"rf_prediction_id,omitempty" jsonschema:"description=ID of the Rf Prediction,pattern=^[0-9]+$"`
-	RfPredictionIdToRelease         string                   `json:"rf_prediction_id_to_release,omitempty" jsonschema:"description=Rf Prediction ID To Release,pattern=^[0-9]+$"`
-	RfPredictionIdToShare           string                   `json:"rf_prediction_id_to_share,omitempty" jsonschema:"description=Rf Prediction ID To Share,pattern=^[0-9]+$"`
-	StartTime                       int                      `json:"start_time,omitempty" jsonschema:"description=Start Time"`
-	StopTime                        int                      `json:"stop_time,omitempty" jsonschema:"description=Stop Time"`
-	StoryEventType                  int                      `json:"story_event_type,omitempty" jsonschema:"description=Story Event Type"`
-	TargetCpm                       int                      `json:"target_cpm,omitempty" jsonschema:"description=Target Cpm"`
-	TargetFrequency                 int                      `json:"target_frequency,omitempty" jsonschema:"description=Target Frequency"`
-	TargetFrequencyResetPeriod      int                      `json:"target_frequency_reset_period,omitempty" jsonschema:"description=Target Frequency Reset Period"`
-	TargetSpec                      *Targeting               `json:"target_spec,omitempty" jsonschema:"description=Target Spec"`
-	VideoViewLengthConstraint       int                      `json:"video_view_length_constraint,omitempty" jsonschema:"description=Video View Length Constraint"`
+	ID                              string                   `json:"id"`
+	Action                          string                   `json:"action,omitempty"`
+	AdFormats                       []map[string]interface{} `json:"ad_formats,omitempty"`
+	AuctionEntryOptionIndex         int                      `json:"auction_entry_option_index,omitempty"`
+	Budget                          int                      `json:"budget,omitempty"`
+	BuyingType                      string                   `json:"buying_type,omitempty"`
+	CampaignGroupId                 string                   `json:"campaign_group_id,omitempty"`
+	DayPartingSchedule              []map[string]interface{} `json:"day_parting_schedule,omitempty"`
+	DealId                          string                   `json:"deal_id,omitempty"`
+	DestinationId                   int                      `json:"destination_id,omitempty"`
+	DestinationIds                  []string                 `json:"destination_ids,omitempty"`
+	EndTime                         int                      `json:"end_time,omitempty"`
+	Exceptions                      bool                     `json:"exceptions,omitempty"`
+	ExistingCampaignId              string                   `json:"existing_campaign_id,omitempty"`
+	ExpirationTime                  int                      `json:"expiration_time,omitempty"`
+	FrequencyCap                    int                      `json:"frequency_cap,omitempty"`
+	GrpBuying                       bool                     `json:"grp_buying,omitempty"`
+	Impression                      int                      `json:"impression,omitempty"`
+	InstreamPackages                []string                 `json:"instream_packages,omitempty"`
+	IntervalFrequencyCapResetPeriod int                      `json:"interval_frequency_cap_reset_period,omitempty"`
+	IsBalancedFrequency             bool                     `json:"is_balanced_frequency,omitempty"`
+	IsBonusMedia                    bool                     `json:"is_bonus_media,omitempty"`
+	IsConversionGoal                bool                     `json:"is_conversion_goal,omitempty"`
+	IsFullView                      bool                     `json:"is_full_view,omitempty"`
+	IsHigherAverageFrequency        bool                     `json:"is_higher_average_frequency,omitempty"`
+	IsReachAndFrequencyIoBuying     bool                     `json:"is_reach_and_frequency_io_buying,omitempty"`
+	IsReservedBuying                bool                     `json:"is_reserved_buying,omitempty"`
+	NumCurvePoints                  int                      `json:"num_curve_points,omitempty"`
+	Objective                       string                   `json:"objective,omitempty"`
+	OptimizationGoal                string                   `json:"optimization_goal,omitempty"`
+	PredictionMode                  int                      `json:"prediction_mode,omitempty"`
+	Reach                           int                      `json:"reach,omitempty"`
+	RfPredictionId                  string                   `json:"rf_prediction_id,omitempty"`
+	RfPredictionIdToRelease         string                   `json:"rf_prediction_id_to_release,omitempty"`
+	RfPredictionIdToShare           string                   `json:"rf_prediction_id_to_share,omitempty"`
+	StartTime                       int                      `json:"start_time,omitempty"`
+	StopTime                        int                      `json:"stop_time,omitempty"`
+	StoryEventType                  int                      `json:"story_event_type,omitempty"`
+	TargetCpm                       int                      `json:"target_cpm,omitempty"`
+	TargetFrequency                 int                      `json:"target_frequency,omitempty"`
+	TargetFrequencyResetPeriod      int                      `json:"target_frequency_reset_period,omitempty"`
+	TargetSpec                      *Targeting               `json:"target_spec,omitempty"`
+	VideoViewLengthConstraint       int                      `json:"video_view_length_constraint,omitempty"`
 }
 
 // list_ad_account_recommendationsArgs defines the typed arguments for list_ad_account_recommendations
 type list_ad_account_recommendationsArgs struct {
-	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After  string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
 }
 
 // create_ad_account_recommendationArgs defines the typed arguments for create_ad_account_recommendation
 type create_ad_account_recommendationArgs struct {
-	AscFragmentationParameters  map[string]interface{} `json:"asc_fragmentation_parameters,omitempty" jsonschema:"description=Asc Fragmentation Parameters"`
-	AutoflowParameters          map[string]interface{} `json:"autoflow_parameters,omitempty" jsonschema:"description=Autoflow Parameters"`
-	FragmentationParameters     map[string]interface{} `json:"fragmentation_parameters,omitempty" jsonschema:"description=Fragmentation Parameters"`
-	MusicParameters             map[string]interface{} `json:"music_parameters,omitempty" jsonschema:"description=Music Parameters"`
-	RecommendationSignature     string                 `json:"recommendation_signature" jsonschema:"description=Recommendation Signature,required"`
-	ScaleGoodCampaignParameters map[string]interface{} `json:"scale_good_campaign_parameters,omitempty" jsonschema:"description=Scale Good Campaign Parameters"`
+	AscFragmentationParameters  map[string]interface{} `json:"asc_fragmentation_parameters,omitempty"`
+	AutoflowParameters          map[string]interface{} `json:"autoflow_parameters,omitempty"`
+	FragmentationParameters     map[string]interface{} `json:"fragmentation_parameters,omitempty"`
+	MusicParameters             map[string]interface{} `json:"music_parameters,omitempty"`
+	RecommendationSignature     string                 `json:"recommendation_signature"`
+	ScaleGoodCampaignParameters map[string]interface{} `json:"scale_good_campaign_parameters,omitempty"`
 }
 
 // list_ad_account_saved_audiencesArgs defines the typed arguments for list_ad_account_saved_audiences
 type list_ad_account_saved_audiencesArgs struct {
-	ID         string                   `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Fields     []string                 `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit      int                      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After      string                   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before     string                   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
-	BusinessId string                   `json:"business_id,omitempty" jsonschema:"description=ID of the Business,pattern=^[0-9]+$"`
-	Filtering  []map[string]interface{} `json:"filtering,omitempty" jsonschema:"description=Filtering"`
+	ID         string                   `json:"id"`
+	Fields     []string                 `json:"fields,omitempty"`
+	Limit      int                      `json:"limit,omitempty"`
+	After      string                   `json:"after,omitempty"`
+	Before     string                   `json:"before,omitempty"`
+	BusinessId string                   `json:"business_id,omitempty"`
+	Filtering  []map[string]interface{} `json:"filtering,omitempty"`
 }
 
 // remove_subscribed_apps_from_ad_accountArgs defines the typed arguments for remove_subscribed_apps_from_ad_account
 type remove_subscribed_apps_from_ad_accountArgs struct {
-	ID    string `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	AppId string `json:"app_id,omitempty" jsonschema:"description=ID of the App,pattern=^[0-9]+$"`
+	ID    string `json:"id"`
+	AppId string `json:"app_id,omitempty"`
 }
 
 // list_ad_account_subscribed_appsArgs defines the typed arguments for list_ad_account_subscribed_apps
 type list_ad_account_subscribed_appsArgs struct {
-	ID     string   `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After  string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
 }
 
 // create_ad_account_subscribed_appArgs defines the typed arguments for create_ad_account_subscribed_app
 type create_ad_account_subscribed_appArgs struct {
-	ID    string `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	AppId string `json:"app_id,omitempty" jsonschema:"description=ID of the App,pattern=^[0-9]+$"`
+	ID    string `json:"id"`
+	AppId string `json:"app_id,omitempty"`
 }
 
 // get_ad_account_targetingbrowseArgs defines the typed arguments for get_ad_account_targetingbrowse
 type get_ad_account_targetingbrowseArgs struct {
-	ID                  string   `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Fields              []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit               int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After               string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before              string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
-	ExcludedCategory    string   `json:"excluded_category,omitempty" jsonschema:"description=Excluded Category"`
-	IncludeNodes        bool     `json:"include_nodes,omitempty" jsonschema:"description=Include Nodes"`
-	IsExclusion         bool     `json:"is_exclusion,omitempty" jsonschema:"description=Is Exclusion"`
-	LimitType           string   `json:"limit_type,omitempty" jsonschema:"description=Limit Type"`
-	RegulatedCategories []string `json:"regulated_categories,omitempty" jsonschema:"description=Regulated Categories"`
-	RegulatedCountries  []string `json:"regulated_countries,omitempty" jsonschema:"description=Regulated Countries"`
-	WhitelistedTypes    []string `json:"whitelisted_types,omitempty" jsonschema:"description=Whitelisted Types"`
+	ID                  string   `json:"id"`
+	Fields              []string `json:"fields,omitempty"`
+	Limit               int      `json:"limit,omitempty"`
+	After               string   `json:"after,omitempty"`
+	Before              string   `json:"before,omitempty"`
+	ExcludedCategory    string   `json:"excluded_category,omitempty"`
+	IncludeNodes        bool     `json:"include_nodes,omitempty"`
+	IsExclusion         bool     `json:"is_exclusion,omitempty"`
+	LimitType           string   `json:"limit_type,omitempty"`
+	RegulatedCategories []string `json:"regulated_categories,omitempty"`
+	RegulatedCountries  []string `json:"regulated_countries,omitempty"`
+	WhitelistedTypes    []string `json:"whitelisted_types,omitempty"`
 }
 
 // get_ad_account_targetingsearchArgs defines the typed arguments for get_ad_account_targetingsearch
 type get_ad_account_targetingsearchArgs struct {
-	Fields                             []string                 `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit                              int                      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After                              string                   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before                             string                   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
-	AllowOnlyFatHeadInterests          bool                     `json:"allow_only_fat_head_interests,omitempty" jsonschema:"description=Allow Only Fat Head Interests"`
-	AppStore                           string                   `json:"app_store,omitempty" jsonschema:"description=App Store"`
-	Countries                          []string                 `json:"countries,omitempty" jsonschema:"description=Countries"`
-	IsAccountLevelBrandSafetyExclusion bool                     `json:"is_account_level_brand_safety_exclusion,omitempty" jsonschema:"description=Is Account Level Brand Safety Exclusion"`
-	IsAccountLevelEmployerExclusion    bool                     `json:"is_account_level_employer_exclusion,omitempty" jsonschema:"description=Is Account Level Employer Exclusion"`
-	IsExclusion                        bool                     `json:"is_exclusion,omitempty" jsonschema:"description=Is Exclusion"`
-	LimitType                          string                   `json:"limit_type,omitempty" jsonschema:"description=Limit Type"`
-	Objective                          string                   `json:"objective,omitempty" jsonschema:"description=Objective"`
-	PromotedObject                     *AdPromotedObject        `json:"promoted_object,omitempty" jsonschema:"description=Promoted Object"`
-	Q                                  string                   `json:"q" jsonschema:"description=Q,required"`
-	RegulatedCategories                []string                 `json:"regulated_categories,omitempty" jsonschema:"description=Regulated Categories"`
-	RegulatedCountries                 []string                 `json:"regulated_countries,omitempty" jsonschema:"description=Regulated Countries"`
-	SessionId                          int                      `json:"session_id,omitempty" jsonschema:"description=ID of the Session,pattern=^[0-9]+$"`
-	TargetingList                      []map[string]interface{} `json:"targeting_list,omitempty" jsonschema:"description=Targeting List"`
-	WhitelistedTypes                   []string                 `json:"whitelisted_types,omitempty" jsonschema:"description=Whitelisted Types"`
+	Fields                             []string                 `json:"fields,omitempty"`
+	Limit                              int                      `json:"limit,omitempty"`
+	After                              string                   `json:"after,omitempty"`
+	Before                             string                   `json:"before,omitempty"`
+	AllowOnlyFatHeadInterests          bool                     `json:"allow_only_fat_head_interests,omitempty"`
+	AppStore                           string                   `json:"app_store,omitempty"`
+	Countries                          []string                 `json:"countries,omitempty"`
+	IsAccountLevelBrandSafetyExclusion bool                     `json:"is_account_level_brand_safety_exclusion,omitempty"`
+	IsAccountLevelEmployerExclusion    bool                     `json:"is_account_level_employer_exclusion,omitempty"`
+	IsExclusion                        bool                     `json:"is_exclusion,omitempty"`
+	LimitType                          string                   `json:"limit_type,omitempty"`
+	Objective                          string                   `json:"objective,omitempty"`
+	PromotedObject                     *AdPromotedObject        `json:"promoted_object,omitempty"`
+	Q                                  string                   `json:"q"`
+	RegulatedCategories                []string                 `json:"regulated_categories,omitempty"`
+	RegulatedCountries                 []string                 `json:"regulated_countries,omitempty"`
+	SessionId                          int                      `json:"session_id,omitempty"`
+	TargetingList                      []map[string]interface{} `json:"targeting_list,omitempty"`
+	WhitelistedTypes                   []string                 `json:"whitelisted_types,omitempty"`
 }
 
 // list_ad_account_targetingsentencelinesArgs defines the typed arguments for list_ad_account_targetingsentencelines
 type list_ad_account_targetingsentencelinesArgs struct {
-	ID                          string     `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Fields                      []string   `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit                       int        `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After                       string     `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before                      string     `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
-	DiscardAges                 bool       `json:"discard_ages,omitempty" jsonschema:"description=Discard Ages"`
-	DiscardPlacements           bool       `json:"discard_placements,omitempty" jsonschema:"description=Discard Placements"`
-	HideTargetingSpecFromReturn bool       `json:"hide_targeting_spec_from_return,omitempty" jsonschema:"description=Hide Targeting Spec From Return"`
-	TargetingSpec               *Targeting `json:"targeting_spec" jsonschema:"description=Targeting Spec,required"`
+	ID                          string     `json:"id"`
+	Fields                      []string   `json:"fields,omitempty"`
+	Limit                       int        `json:"limit,omitempty"`
+	After                       string     `json:"after,omitempty"`
+	Before                      string     `json:"before,omitempty"`
+	DiscardAges                 bool       `json:"discard_ages,omitempty"`
+	DiscardPlacements           bool       `json:"discard_placements,omitempty"`
+	HideTargetingSpecFromReturn bool       `json:"hide_targeting_spec_from_return,omitempty"`
+	TargetingSpec               *Targeting `json:"targeting_spec"`
 }
 
 // list_ad_account_targetingsuggestionsArgs defines the typed arguments for list_ad_account_targetingsuggestions
 type list_ad_account_targetingsuggestionsArgs struct {
-	ID                  string                   `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Fields              []string                 `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit               int                      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After               string                   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before              string                   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
-	AppStore            string                   `json:"app_store,omitempty" jsonschema:"description=App Store"`
-	Countries           []string                 `json:"countries,omitempty" jsonschema:"description=Countries"`
-	LimitType           string                   `json:"limit_type,omitempty" jsonschema:"description=Limit Type"`
-	Mode                string                   `json:"mode,omitempty" jsonschema:"description=Mode"`
-	Objective           string                   `json:"objective,omitempty" jsonschema:"description=Objective"`
-	Objects             map[string]interface{}   `json:"objects,omitempty" jsonschema:"description=Objects"`
-	RegulatedCategories []string                 `json:"regulated_categories,omitempty" jsonschema:"description=Regulated Categories"`
-	RegulatedCountries  []string                 `json:"regulated_countries,omitempty" jsonschema:"description=Regulated Countries"`
-	SessionId           int                      `json:"session_id,omitempty" jsonschema:"description=ID of the Session,pattern=^[0-9]+$"`
-	TargetingList       []map[string]interface{} `json:"targeting_list,omitempty" jsonschema:"description=Targeting List"`
-	WhitelistedTypes    []string                 `json:"whitelisted_types,omitempty" jsonschema:"description=Whitelisted Types"`
+	ID                  string                   `json:"id"`
+	Fields              []string                 `json:"fields,omitempty"`
+	Limit               int                      `json:"limit,omitempty"`
+	After               string                   `json:"after,omitempty"`
+	Before              string                   `json:"before,omitempty"`
+	AppStore            string                   `json:"app_store,omitempty"`
+	Countries           []string                 `json:"countries,omitempty"`
+	LimitType           string                   `json:"limit_type,omitempty"`
+	Mode                string                   `json:"mode,omitempty"`
+	Objective           string                   `json:"objective,omitempty"`
+	Objects             map[string]interface{}   `json:"objects,omitempty"`
+	RegulatedCategories []string                 `json:"regulated_categories,omitempty"`
+	RegulatedCountries  []string                 `json:"regulated_countries,omitempty"`
+	SessionId           int                      `json:"session_id,omitempty"`
+	TargetingList       []map[string]interface{} `json:"targeting_list,omitempty"`
+	WhitelistedTypes    []string                 `json:"whitelisted_types,omitempty"`
 }
 
 // get_ad_account_targetingvalidationArgs defines the typed arguments for get_ad_account_targetingvalidation
 type get_ad_account_targetingvalidationArgs struct {
-	ID            string                   `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Fields        []string                 `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit         int                      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After         string                   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before        string                   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
-	IdList        []interface{}            `json:"id_list,omitempty" jsonschema:"description=ID List"`
-	IsExclusion   bool                     `json:"is_exclusion,omitempty" jsonschema:"description=Is Exclusion"`
-	NameList      []string                 `json:"name_list,omitempty" jsonschema:"description=Name List"`
-	TargetingList []map[string]interface{} `json:"targeting_list,omitempty" jsonschema:"description=Targeting List"`
+	ID            string                   `json:"id"`
+	Fields        []string                 `json:"fields,omitempty"`
+	Limit         int                      `json:"limit,omitempty"`
+	After         string                   `json:"after,omitempty"`
+	Before        string                   `json:"before,omitempty"`
+	IdList        []interface{}            `json:"id_list,omitempty"`
+	IsExclusion   bool                     `json:"is_exclusion,omitempty"`
+	NameList      []string                 `json:"name_list,omitempty"`
+	TargetingList []map[string]interface{} `json:"targeting_list,omitempty"`
 }
 
 // get_ad_account_trackingArgs defines the typed arguments for get_ad_account_tracking
 type get_ad_account_trackingArgs struct {
-	ID     string   `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After  string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
 }
 
 // update_ad_account_trackingArgs defines the typed arguments for update_ad_account_tracking
 type update_ad_account_trackingArgs struct {
-	ID            string                 `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	TrackingSpecs map[string]interface{} `json:"tracking_specs" jsonschema:"description=Tracking Specs,required"`
+	ID            string                 `json:"id"`
+	TrackingSpecs map[string]interface{} `json:"tracking_specs"`
 }
 
 // list_ad_account_usersArgs defines the typed arguments for list_ad_account_users
 type list_ad_account_usersArgs struct {
-	ID     string   `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After  string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
 }
 
 // remove_usersofanyaudience_from_ad_accountArgs defines the typed arguments for remove_usersofanyaudience_from_ad_account
 type remove_usersofanyaudience_from_ad_accountArgs struct {
-	ID        string                 `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Namespace string                 `json:"namespace,omitempty" jsonschema:"description=Namespace"`
-	Payload   map[string]interface{} `json:"payload,omitempty" jsonschema:"description=Payload"`
-	Session   map[string]interface{} `json:"session,omitempty" jsonschema:"description=Session"`
+	ID        string                 `json:"id"`
+	Namespace string                 `json:"namespace,omitempty"`
+	Payload   map[string]interface{} `json:"payload,omitempty"`
+	Session   map[string]interface{} `json:"session,omitempty"`
 }
 
 // get_ad_account_value_rule_setArgs defines the typed arguments for get_ad_account_value_rule_set
 type get_ad_account_value_rule_setArgs struct {
-	ID          string   `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Fields      []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit       int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After       string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before      string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
-	ProductType string   `json:"product_type,omitempty" jsonschema:"description=Product Type"`
-	Status      string   `json:"status,omitempty" jsonschema:"description=Status,enum=ACTIVE,enum=PAUSED,enum=DELETED,enum=ARCHIVED"`
+	ID          string   `json:"id"`
+	Fields      []string `json:"fields,omitempty"`
+	Limit       int      `json:"limit,omitempty"`
+	After       string   `json:"after,omitempty"`
+	Before      string   `json:"before,omitempty"`
+	ProductType string   `json:"product_type,omitempty"`
+	Status      string   `json:"status,omitempty"`
 }
 
 // update_ad_account_value_rule_setArgs defines the typed arguments for update_ad_account_value_rule_set
 type update_ad_account_value_rule_setArgs struct {
-	ID          string                   `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Name        string                   `json:"name" jsonschema:"description=Name,required"`
-	ProductType string                   `json:"product_type,omitempty" jsonschema:"description=Product Type"`
-	Rules       []map[string]interface{} `json:"rules" jsonschema:"description=Rules,required"`
+	ID          string                   `json:"id"`
+	Name        string                   `json:"name"`
+	ProductType string                   `json:"product_type,omitempty"`
+	Rules       []map[string]interface{} `json:"rules"`
 }
 
 // list_ad_account_video_adsArgs defines the typed arguments for list_ad_account_video_ads
 type list_ad_account_video_adsArgs struct {
-	ID     string   `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After  string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
-	Since  string   `json:"since,omitempty" jsonschema:"description=Since,format=date-time"`
-	Until  string   `json:"until,omitempty" jsonschema:"description=Until,format=date-time"`
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
+	Since  string   `json:"since,omitempty"`
+	Until  string   `json:"until,omitempty"`
 }
 
 // create_ad_account_video_adArgs defines the typed arguments for create_ad_account_video_ad
 type create_ad_account_video_adArgs struct {
-	ID          string `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Description string `json:"description,omitempty" jsonschema:"description=Description"`
-	Privacy     string `json:"privacy,omitempty" jsonschema:"description=Privacy"`
-	Title       string `json:"title,omitempty" jsonschema:"description=Title"`
-	UploadPhase string `json:"upload_phase" jsonschema:"description=Upload Phase,required"`
-	VideoId     string `json:"video_id,omitempty" jsonschema:"description=ID of the Video,pattern=^[0-9]+$"`
-	VideoState  string `json:"video_state,omitempty" jsonschema:"description=Video State"`
+	ID          string `json:"id"`
+	Description string `json:"description,omitempty"`
+	Privacy     string `json:"privacy,omitempty"`
+	Title       string `json:"title,omitempty"`
+	UploadPhase string `json:"upload_phase"`
+	VideoId     string `json:"video_id,omitempty"`
+	VideoState  string `json:"video_state,omitempty"`
 }
 
 // get_ad_accountArgs defines the typed arguments for get_ad_account
 type get_ad_accountArgs struct {
-	ID     string   `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After  string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
 }
 
 // update_ad_accountArgs defines the typed arguments for update_ad_account
 type update_ad_accountArgs struct {
-	ID                      string                   `json:"id" jsonschema:"required,description=AdAccount ID,pattern=^[0-9]+$"`
-	AgencyClientDeclaration map[string]interface{}   `json:"agency_client_declaration,omitempty" jsonschema:"description=Agency Client Declaration,minimum=13,maximum=100"`
-	AttributionSpec         []map[string]interface{} `json:"attribution_spec,omitempty" jsonschema:"description=Attribution Spec"`
-	BusinessInfo            map[string]interface{}   `json:"business_info,omitempty" jsonschema:"description=Business Info"`
-	Currency                string                   `json:"currency,omitempty" jsonschema:"description=Currency"`
-	CustomAudienceInfo      map[string]interface{}   `json:"custom_audience_info,omitempty" jsonschema:"description=Custom Audience Info"`
-	DefaultDsaBeneficiary   string                   `json:"default_dsa_beneficiary,omitempty" jsonschema:"description=Default Dsa Beneficiary"`
-	DefaultDsaPayor         string                   `json:"default_dsa_payor,omitempty" jsonschema:"description=Default Dsa Payor"`
-	EndAdvertiser           string                   `json:"end_advertiser,omitempty" jsonschema:"description=End Advertiser"`
-	ExistingCustomers       []string                 `json:"existing_customers,omitempty" jsonschema:"description=Existing Customers"`
-	IsBaSkipDelayedEligible bool                     `json:"is_ba_skip_delayed_eligible,omitempty" jsonschema:"description=Is Ba Skip Delayed Eligible"`
-	IsNotificationsEnabled  bool                     `json:"is_notifications_enabled,omitempty" jsonschema:"description=Is Notifications Enabled"`
-	MediaAgency             string                   `json:"media_agency,omitempty" jsonschema:"description=Media Agency"`
-	Name                    string                   `json:"name,omitempty" jsonschema:"description=Name"`
-	Partner                 string                   `json:"partner,omitempty" jsonschema:"description=Partner"`
-	SpendCap                float64                  `json:"spend_cap,omitempty" jsonschema:"description=Spend Cap"`
-	SpendCapAction          string                   `json:"spend_cap_action,omitempty" jsonschema:"description=Spend Cap Action"`
-	TimezoneId              int                      `json:"timezone_id,omitempty" jsonschema:"description=ID of the Timezone,pattern=^[0-9]+$"`
-	TosAccepted             map[string]interface{}   `json:"tos_accepted,omitempty" jsonschema:"description=Tos Accepted"`
+	ID                      string                   `json:"id"`
+	AgencyClientDeclaration map[string]interface{}   `json:"agency_client_declaration,omitempty"`
+	AttributionSpec         []map[string]interface{} `json:"attribution_spec,omitempty"`
+	BusinessInfo            map[string]interface{}   `json:"business_info,omitempty"`
+	Currency                string                   `json:"currency,omitempty"`
+	CustomAudienceInfo      map[string]interface{}   `json:"custom_audience_info,omitempty"`
+	DefaultDsaBeneficiary   string                   `json:"default_dsa_beneficiary,omitempty"`
+	DefaultDsaPayor         string                   `json:"default_dsa_payor,omitempty"`
+	EndAdvertiser           string                   `json:"end_advertiser,omitempty"`
+	ExistingCustomers       []string                 `json:"existing_customers,omitempty"`
+	IsBaSkipDelayedEligible bool                     `json:"is_ba_skip_delayed_eligible,omitempty"`
+	IsNotificationsEnabled  bool                     `json:"is_notifications_enabled,omitempty"`
+	MediaAgency             string                   `json:"media_agency,omitempty"`
+	Name                    string                   `json:"name,omitempty"`
+	Partner                 string                   `json:"partner,omitempty"`
+	SpendCap                float64                  `json:"spend_cap,omitempty"`
+	SpendCapAction          string                   `json:"spend_cap_action,omitempty"`
+	TimezoneId              int                      `json:"timezone_id,omitempty"`
+	TosAccepted             map[string]interface{}   `json:"tos_accepted,omitempty"`
 }
-
-var (
-	list_ad_account_account_controlsSchema = generateSchemaForType(reflect.TypeOf(list_ad_account_account_controlsArgs{}))
-
-	create_ad_account_account_controlSchema = generateSchemaForType(reflect.TypeOf(create_ad_account_account_controlArgs{}))
-
-	list_ad_account_activitiesSchema = generateSchemaForType(reflect.TypeOf(list_ad_account_activitiesArgs{}))
-
-	list_ad_account_ad_place_page_setsSchema = generateSchemaForType(reflect.TypeOf(list_ad_account_ad_place_page_setsArgs{}))
-
-	create_ad_account_ad_place_page_setSchema = generateSchemaForType(reflect.TypeOf(create_ad_account_ad_place_page_setArgs{}))
-
-	update_ad_account_ad_place_page_sets_asyncSchema = generateSchemaForType(reflect.TypeOf(update_ad_account_ad_place_page_sets_asyncArgs{}))
-
-	list_ad_account_ad_saved_keywordsSchema = generateSchemaForType(reflect.TypeOf(list_ad_account_ad_saved_keywordsArgs{}))
-
-	list_ad_account_ad_studiesSchema = generateSchemaForType(reflect.TypeOf(list_ad_account_ad_studiesArgs{}))
-
-	list_ad_account_adcloudplayablesSchema = generateSchemaForType(reflect.TypeOf(list_ad_account_adcloudplayablesArgs{}))
-
-	list_ad_account_adcreativesSchema = generateSchemaForType(reflect.TypeOf(list_ad_account_adcreativesArgs{}))
-
-	create_ad_account_adcreativeSchema = generateSchemaForType(reflect.TypeOf(create_ad_account_adcreativeArgs{}))
-
-	list_ad_account_adcreativesbylabelsSchema = generateSchemaForType(reflect.TypeOf(list_ad_account_adcreativesbylabelsArgs{}))
-
-	remove_adimages_from_ad_accountSchema = generateSchemaForType(reflect.TypeOf(remove_adimages_from_ad_accountArgs{}))
-
-	list_ad_account_adimagesSchema = generateSchemaForType(reflect.TypeOf(list_ad_account_adimagesArgs{}))
-
-	create_ad_account_adimageSchema = generateSchemaForType(reflect.TypeOf(create_ad_account_adimageArgs{}))
-
-	list_ad_account_adlabelsSchema = generateSchemaForType(reflect.TypeOf(list_ad_account_adlabelsArgs{}))
-
-	create_ad_account_adlabelSchema = generateSchemaForType(reflect.TypeOf(create_ad_account_adlabelArgs{}))
-
-	list_ad_account_adplayablesSchema = generateSchemaForType(reflect.TypeOf(list_ad_account_adplayablesArgs{}))
-
-	create_ad_account_adplayableSchema = generateSchemaForType(reflect.TypeOf(create_ad_account_adplayableArgs{}))
-
-	get_ad_account_adrules_historySchema = generateSchemaForType(reflect.TypeOf(get_ad_account_adrules_historyArgs{}))
-
-	get_ad_account_adrules_librarySchema = generateSchemaForType(reflect.TypeOf(get_ad_account_adrules_libraryArgs{}))
-
-	update_ad_account_adrules_librarySchema = generateSchemaForType(reflect.TypeOf(update_ad_account_adrules_libraryArgs{}))
-
-	list_ad_account_adsSchema = generateSchemaForType(reflect.TypeOf(list_ad_account_adsArgs{}))
-
-	create_ad_account_adSchema = generateSchemaForType(reflect.TypeOf(create_ad_account_adArgs{}))
-
-	list_ad_account_ads_reporting_mmm_reportsSchema = generateSchemaForType(reflect.TypeOf(list_ad_account_ads_reporting_mmm_reportsArgs{}))
-
-	list_ad_account_ads_reporting_mmm_schedulersSchema = generateSchemaForType(reflect.TypeOf(list_ad_account_ads_reporting_mmm_schedulersArgs{}))
-
-	get_ad_account_ads_volumeSchema = generateSchemaForType(reflect.TypeOf(get_ad_account_ads_volumeArgs{}))
-
-	list_ad_account_adsbylabelsSchema = generateSchemaForType(reflect.TypeOf(list_ad_account_adsbylabelsArgs{}))
-
-	list_ad_account_adsetsSchema = generateSchemaForType(reflect.TypeOf(list_ad_account_adsetsArgs{}))
-
-	create_ad_account_adsetSchema = generateSchemaForType(reflect.TypeOf(create_ad_account_adsetArgs{}))
-
-	list_ad_account_adsetsbylabelsSchema = generateSchemaForType(reflect.TypeOf(list_ad_account_adsetsbylabelsArgs{}))
-
-	list_ad_account_adspixelsSchema = generateSchemaForType(reflect.TypeOf(list_ad_account_adspixelsArgs{}))
-
-	create_ad_account_adspixelSchema = generateSchemaForType(reflect.TypeOf(create_ad_account_adspixelArgs{}))
-
-	list_ad_account_advertisable_applicationsSchema = generateSchemaForType(reflect.TypeOf(list_ad_account_advertisable_applicationsArgs{}))
-
-	remove_advideos_from_ad_accountSchema = generateSchemaForType(reflect.TypeOf(remove_advideos_from_ad_accountArgs{}))
-
-	list_ad_account_advideosSchema = generateSchemaForType(reflect.TypeOf(list_ad_account_advideosArgs{}))
-
-	create_ad_account_advideoSchema = generateSchemaForType(reflect.TypeOf(create_ad_account_advideoArgs{}))
-
-	list_ad_account_affectedadsetsSchema = generateSchemaForType(reflect.TypeOf(list_ad_account_affectedadsetsArgs{}))
-
-	remove_agencies_from_ad_accountSchema = generateSchemaForType(reflect.TypeOf(remove_agencies_from_ad_accountArgs{}))
-
-	list_ad_account_agenciesSchema = generateSchemaForType(reflect.TypeOf(list_ad_account_agenciesArgs{}))
-
-	create_ad_account_agencieSchema = generateSchemaForType(reflect.TypeOf(create_ad_account_agencieArgs{}))
-
-	list_ad_account_applicationsSchema = generateSchemaForType(reflect.TypeOf(list_ad_account_applicationsArgs{}))
-
-	remove_assigned_users_from_ad_accountSchema = generateSchemaForType(reflect.TypeOf(remove_assigned_users_from_ad_accountArgs{}))
-
-	list_ad_account_assigned_usersSchema = generateSchemaForType(reflect.TypeOf(list_ad_account_assigned_usersArgs{}))
-
-	create_ad_account_assigned_userSchema = generateSchemaForType(reflect.TypeOf(create_ad_account_assigned_userArgs{}))
-
-	create_ad_account_async_batch_requestSchema = generateSchemaForType(reflect.TypeOf(create_ad_account_async_batch_requestArgs{}))
-
-	list_ad_account_async_requestsSchema = generateSchemaForType(reflect.TypeOf(list_ad_account_async_requestsArgs{}))
-
-	list_ad_account_asyncadcreativesSchema = generateSchemaForType(reflect.TypeOf(list_ad_account_asyncadcreativesArgs{}))
-
-	create_ad_account_asyncadcreativeSchema = generateSchemaForType(reflect.TypeOf(create_ad_account_asyncadcreativeArgs{}))
-
-	list_ad_account_asyncadrequestsetsSchema = generateSchemaForType(reflect.TypeOf(list_ad_account_asyncadrequestsetsArgs{}))
-
-	create_ad_account_asyncadrequestsetSchema = generateSchemaForType(reflect.TypeOf(create_ad_account_asyncadrequestsetArgs{}))
-
-	get_ad_account_audience_funnelSchema = generateSchemaForType(reflect.TypeOf(get_ad_account_audience_funnelArgs{}))
-
-	create_ad_account_block_list_draftSchema = generateSchemaForType(reflect.TypeOf(create_ad_account_block_list_draftArgs{}))
-
-	create_ad_account_brand_safety_content_filter_levelSchema = generateSchemaForType(reflect.TypeOf(create_ad_account_brand_safety_content_filter_levelArgs{}))
-
-	list_ad_account_broadtargetingcategoriesSchema = generateSchemaForType(reflect.TypeOf(list_ad_account_broadtargetingcategoriesArgs{}))
-
-	list_ad_account_businessprojectsSchema = generateSchemaForType(reflect.TypeOf(list_ad_account_businessprojectsArgs{}))
-
-	remove_campaigns_from_ad_accountSchema = generateSchemaForType(reflect.TypeOf(remove_campaigns_from_ad_accountArgs{}))
-
-	list_ad_account_campaignsSchema = generateSchemaForType(reflect.TypeOf(list_ad_account_campaignsArgs{}))
-
-	create_ad_account_campaignSchema = generateSchemaForType(reflect.TypeOf(create_ad_account_campaignArgs{}))
-
-	list_ad_account_campaignsbylabelsSchema = generateSchemaForType(reflect.TypeOf(list_ad_account_campaignsbylabelsArgs{}))
-
-	list_ad_account_connected_instagram_accountsSchema = generateSchemaForType(reflect.TypeOf(list_ad_account_connected_instagram_accountsArgs{}))
-
-	get_ad_account_connected_instagram_accounts_with_iabpSchema = generateSchemaForType(reflect.TypeOf(get_ad_account_connected_instagram_accounts_with_iabpArgs{}))
-
-	list_ad_account_conversion_goalsSchema = generateSchemaForType(reflect.TypeOf(list_ad_account_conversion_goalsArgs{}))
-
-	list_ad_account_customaudiencesSchema = generateSchemaForType(reflect.TypeOf(list_ad_account_customaudiencesArgs{}))
-
-	create_ad_account_customaudienceSchema = generateSchemaForType(reflect.TypeOf(create_ad_account_customaudienceArgs{}))
-
-	list_ad_account_customaudiencestosSchema = generateSchemaForType(reflect.TypeOf(list_ad_account_customaudiencestosArgs{}))
-
-	create_ad_account_customaudiencestoSchema = generateSchemaForType(reflect.TypeOf(create_ad_account_customaudiencestoArgs{}))
-
-	list_ad_account_customconversionsSchema = generateSchemaForType(reflect.TypeOf(list_ad_account_customconversionsArgs{}))
-
-	create_ad_account_customconversionSchema = generateSchemaForType(reflect.TypeOf(create_ad_account_customconversionArgs{}))
-
-	get_ad_account_delivery_estimateSchema = generateSchemaForType(reflect.TypeOf(get_ad_account_delivery_estimateArgs{}))
-
-	list_ad_account_deprecatedtargetingadsetsSchema = generateSchemaForType(reflect.TypeOf(list_ad_account_deprecatedtargetingadsetsArgs{}))
-
-	list_ad_account_dsa_recommendationsSchema = generateSchemaForType(reflect.TypeOf(list_ad_account_dsa_recommendationsArgs{}))
-
-	list_ad_account_generatepreviewsSchema = generateSchemaForType(reflect.TypeOf(list_ad_account_generatepreviewsArgs{}))
-
-	list_ad_account_impacting_ad_studiesSchema = generateSchemaForType(reflect.TypeOf(list_ad_account_impacting_ad_studiesArgs{}))
-
-	get_ad_account_insightsSchema = generateSchemaForType(reflect.TypeOf(get_ad_account_insightsArgs{}))
-
-	create_ad_account_insights_reportSchema = generateSchemaForType(reflect.TypeOf(create_ad_account_insights_reportArgs{}))
-
-	list_ad_account_instagram_accountsSchema = generateSchemaForType(reflect.TypeOf(list_ad_account_instagram_accountsArgs{}))
-
-	list_ad_account_ios_fourteen_campaign_limitsSchema = generateSchemaForType(reflect.TypeOf(list_ad_account_ios_fourteen_campaign_limitsArgs{}))
-
-	list_ad_account_matched_search_applicationsSchema = generateSchemaForType(reflect.TypeOf(list_ad_account_matched_search_applicationsArgs{}))
-
-	get_ad_account_max_bidSchema = generateSchemaForType(reflect.TypeOf(get_ad_account_max_bidArgs{}))
-
-	list_ad_account_mcmeconversionsSchema = generateSchemaForType(reflect.TypeOf(list_ad_account_mcmeconversionsArgs{}))
-
-	list_ad_account_minimum_budgetsSchema = generateSchemaForType(reflect.TypeOf(list_ad_account_minimum_budgetsArgs{}))
-
-	list_ad_account_onbehalf_requestsSchema = generateSchemaForType(reflect.TypeOf(list_ad_account_onbehalf_requestsArgs{}))
-
-	create_ad_account_product_audienceSchema = generateSchemaForType(reflect.TypeOf(create_ad_account_product_audienceArgs{}))
-
-	list_ad_account_promote_pagesSchema = generateSchemaForType(reflect.TypeOf(list_ad_account_promote_pagesArgs{}))
-
-	list_ad_account_publisher_block_listsSchema = generateSchemaForType(reflect.TypeOf(list_ad_account_publisher_block_listsArgs{}))
-
-	create_ad_account_publisher_block_listSchema = generateSchemaForType(reflect.TypeOf(create_ad_account_publisher_block_listArgs{}))
-
-	get_ad_account_reachestimateSchema = generateSchemaForType(reflect.TypeOf(get_ad_account_reachestimateArgs{}))
-
-	list_ad_account_reachfrequencypredictionsSchema = generateSchemaForType(reflect.TypeOf(list_ad_account_reachfrequencypredictionsArgs{}))
-
-	create_ad_account_reachfrequencypredictionSchema = generateSchemaForType(reflect.TypeOf(create_ad_account_reachfrequencypredictionArgs{}))
-
-	list_ad_account_recommendationsSchema = generateSchemaForType(reflect.TypeOf(list_ad_account_recommendationsArgs{}))
-
-	create_ad_account_recommendationSchema = generateSchemaForType(reflect.TypeOf(create_ad_account_recommendationArgs{}))
-
-	list_ad_account_saved_audiencesSchema = generateSchemaForType(reflect.TypeOf(list_ad_account_saved_audiencesArgs{}))
-
-	remove_subscribed_apps_from_ad_accountSchema = generateSchemaForType(reflect.TypeOf(remove_subscribed_apps_from_ad_accountArgs{}))
-
-	list_ad_account_subscribed_appsSchema = generateSchemaForType(reflect.TypeOf(list_ad_account_subscribed_appsArgs{}))
-
-	create_ad_account_subscribed_appSchema = generateSchemaForType(reflect.TypeOf(create_ad_account_subscribed_appArgs{}))
-
-	get_ad_account_targetingbrowseSchema = generateSchemaForType(reflect.TypeOf(get_ad_account_targetingbrowseArgs{}))
-
-	get_ad_account_targetingsearchSchema = generateSchemaForType(reflect.TypeOf(get_ad_account_targetingsearchArgs{}))
-
-	list_ad_account_targetingsentencelinesSchema = generateSchemaForType(reflect.TypeOf(list_ad_account_targetingsentencelinesArgs{}))
-
-	list_ad_account_targetingsuggestionsSchema = generateSchemaForType(reflect.TypeOf(list_ad_account_targetingsuggestionsArgs{}))
-
-	get_ad_account_targetingvalidationSchema = generateSchemaForType(reflect.TypeOf(get_ad_account_targetingvalidationArgs{}))
-
-	get_ad_account_trackingSchema = generateSchemaForType(reflect.TypeOf(get_ad_account_trackingArgs{}))
-
-	update_ad_account_trackingSchema = generateSchemaForType(reflect.TypeOf(update_ad_account_trackingArgs{}))
-
-	list_ad_account_usersSchema = generateSchemaForType(reflect.TypeOf(list_ad_account_usersArgs{}))
-
-	remove_usersofanyaudience_from_ad_accountSchema = generateSchemaForType(reflect.TypeOf(remove_usersofanyaudience_from_ad_accountArgs{}))
-
-	get_ad_account_value_rule_setSchema = generateSchemaForType(reflect.TypeOf(get_ad_account_value_rule_setArgs{}))
-
-	update_ad_account_value_rule_setSchema = generateSchemaForType(reflect.TypeOf(update_ad_account_value_rule_setArgs{}))
-
-	list_ad_account_video_adsSchema = generateSchemaForType(reflect.TypeOf(list_ad_account_video_adsArgs{}))
-
-	create_ad_account_video_adSchema = generateSchemaForType(reflect.TypeOf(create_ad_account_video_adArgs{}))
-
-	get_ad_accountSchema = generateSchemaForType(reflect.TypeOf(get_ad_accountArgs{}))
-
-	update_ad_accountSchema = generateSchemaForType(reflect.TypeOf(update_ad_accountArgs{}))
-)
 
 // ListAdAccountAccountControlsHandler handles list_ad_account_account_controls with typed arguments
 func ListAdAccountAccountControlsHandler(ctx context.Context, request mcp.CallToolRequest, args list_ad_account_account_controlsArgs) (*mcp.CallToolResult, error) {
@@ -2434,7 +2209,9 @@ func RemoveAdimagesFromAdAccountHandler(ctx context.Context, request mcp.CallToo
 		return mcp.NewToolResultError("id is required"), nil
 	}
 
+	// Build URL and execute
 	url := buildGraphURL(args.ID, "adimages")
+
 	return ExecuteDELETERequest(ctx, url)
 
 }
@@ -3731,7 +3508,9 @@ func RemoveAdvideosFromAdAccountHandler(ctx context.Context, request mcp.CallToo
 		return mcp.NewToolResultError("id is required"), nil
 	}
 
+	// Build URL and execute
 	url := buildGraphURL(args.ID, "advideos")
+
 	return ExecuteDELETERequest(ctx, url)
 
 }
@@ -4136,7 +3915,9 @@ func RemoveAgenciesFromAdAccountHandler(ctx context.Context, request mcp.CallToo
 		return mcp.NewToolResultError("id is required"), nil
 	}
 
+	// Build URL and execute
 	url := buildGraphURL(args.ID, "agencies")
+
 	return ExecuteDELETERequest(ctx, url)
 
 }
@@ -4269,7 +4050,9 @@ func RemoveAssignedUsersFromAdAccountHandler(ctx context.Context, request mcp.Ca
 		return mcp.NewToolResultError("id is required"), nil
 	}
 
+	// Build URL and execute
 	url := buildGraphURL(args.ID, "assigned_users")
+
 	return ExecuteDELETERequest(ctx, url)
 
 }
@@ -4812,7 +4595,9 @@ func RemoveCampaignsFromAdAccountHandler(ctx context.Context, request mcp.CallTo
 		return mcp.NewToolResultError("id is required"), nil
 	}
 
+	// Build URL and execute
 	url := buildGraphURL(args.ID, "campaigns")
+
 	return ExecuteDELETERequest(ctx, url)
 
 }
@@ -7091,7 +6876,9 @@ func RemoveSubscribedAppsFromAdAccountHandler(ctx context.Context, request mcp.C
 		return mcp.NewToolResultError("id is required"), nil
 	}
 
+	// Build URL and execute
 	url := buildGraphURL(args.ID, "subscribed_apps")
+
 	return ExecuteDELETERequest(ctx, url)
 
 }
@@ -7662,7 +7449,9 @@ func RemoveUsersofanyaudienceFromAdAccountHandler(ctx context.Context, request m
 		return mcp.NewToolResultError("id is required"), nil
 	}
 
+	// Build URL and execute
 	url := buildGraphURL(args.ID, "usersofanyaudience")
+
 	return ExecuteDELETERequest(ctx, url)
 
 }
@@ -7985,674 +7774,4301 @@ func UpdateAdAccountHandler(ctx context.Context, request mcp.CallToolRequest, ar
 
 }
 
-// generateSchemaForType is implemented in tools_common.go to avoid redeclaration
-
 // RegisterAdAccountTools registers all AdAccount tools with the MCP server
 func RegisterAdAccountTools(s *server.MCPServer) error {
 
-	// Register list_ad_account_account_controls using raw schema
+	// Register list_ad_account_account_controls
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_ad_account_account_controls", "List account_controls for this AdAccount Returns AdAccountBusinessConstraints.", list_ad_account_account_controlsSchema),
+		mcp.NewTool("list_ad_account_account_controls",
+			mcp.WithDescription("List account_controls for this AdAccount Returns AdAccountBusinessConstraints."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListAdAccountAccountControlsHandler),
 	)
 
-	// Register create_ad_account_account_control using raw schema
+	// Register create_ad_account_account_control
 	s.AddTool(
-		mcp.NewToolWithRawSchema("create_ad_account_account_control", "Create or update account_controls for this AdAccount Returns AdAccountBusinessConstraints. Required: audience_controls", create_ad_account_account_controlSchema),
+		mcp.NewTool("create_ad_account_account_control",
+			mcp.WithDescription("Create or update account_controls for this AdAccount Returns AdAccountBusinessConstraints. Required: audience_controls"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithObject("audience_controls",
+				mcp.Required(),
+				mcp.Description("audience_controls"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithObject("placement_controls",
+				mcp.Description("placement_controls"),
+				mcp.AdditionalProperties(true),
+			),
+		),
 		mcp.NewTypedToolHandler(CreateAdAccountAccountControlHandler),
 	)
 
-	// Register list_ad_account_activities using raw schema
+	// Register list_ad_account_activities
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_ad_account_activities", "List activities for this AdAccount Returns AdActivity.", list_ad_account_activitiesSchema),
+		mcp.NewTool("list_ad_account_activities",
+			mcp.WithDescription("List activities for this AdAccount Returns AdActivity."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithBoolean("add_children",
+				mcp.Description("add_children"),
+			),
+			mcp.WithString("business_id",
+				mcp.Description("business_id"),
+			),
+			mcp.WithString("category",
+				mcp.Description("category (enum: adaccountactivities_category_enum_param)"),
+			),
+			mcp.WithString("data_source",
+				mcp.Description("data_source (enum: adaccountactivities_data_source_enum_param)"),
+			),
+			mcp.WithArray("extra_oids",
+				mcp.Description("extra_oids"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithString("oid",
+				mcp.Description("oid"),
+			),
+			mcp.WithString("since",
+				mcp.Description("since"),
+			),
+			mcp.WithNumber("uid",
+				mcp.Description("uid"),
+			),
+			mcp.WithString("until",
+				mcp.Description("until"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListAdAccountActivitiesHandler),
 	)
 
-	// Register list_ad_account_ad_place_page_sets using raw schema
+	// Register list_ad_account_ad_place_page_sets
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_ad_account_ad_place_page_sets", "List ad_place_page_sets for this AdAccount Returns AdPlacePageSet.", list_ad_account_ad_place_page_setsSchema),
+		mcp.NewTool("list_ad_account_ad_place_page_sets",
+			mcp.WithDescription("List ad_place_page_sets for this AdAccount Returns AdPlacePageSet."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListAdAccountAdPlacePageSetsHandler),
 	)
 
-	// Register create_ad_account_ad_place_page_set using raw schema
+	// Register create_ad_account_ad_place_page_set
 	s.AddTool(
-		mcp.NewToolWithRawSchema("create_ad_account_ad_place_page_set", "Associate ad_place_page_sets with this AdAccount Returns AdPlacePageSet. Required: name, parent_page", create_ad_account_ad_place_page_setSchema),
+		mcp.NewTool("create_ad_account_ad_place_page_set",
+			mcp.WithDescription("Associate ad_place_page_sets with this AdAccount Returns AdPlacePageSet. Required: name, parent_page"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("location_types",
+				mcp.Description("location_types"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithString("name",
+				mcp.Required(),
+				mcp.Description("name"),
+			),
+			mcp.WithString("parent_page",
+				mcp.Required(),
+				mcp.Description("parent_page"),
+			),
+			mcp.WithString("targeted_area_type",
+				mcp.Description("targeted_area_type (enum: adaccountad_place_page_sets_targeted_area_type_enum_param)"),
+			),
+		),
 		mcp.NewTypedToolHandler(CreateAdAccountAdPlacePageSetHandler),
 	)
 
-	// Register update_ad_account_ad_place_page_sets_async using raw schema
+	// Register update_ad_account_ad_place_page_sets_async
 	s.AddTool(
-		mcp.NewToolWithRawSchema("update_ad_account_ad_place_page_sets_async", "Associate ad_place_page_sets_async with this AdAccount Returns AdPlacePageSet. Required: name, parent_page", update_ad_account_ad_place_page_sets_asyncSchema),
+		mcp.NewTool("update_ad_account_ad_place_page_sets_async",
+			mcp.WithDescription("Associate ad_place_page_sets_async with this AdAccount Returns AdPlacePageSet. Required: name, parent_page"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("location_types",
+				mcp.Description("location_types"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithString("name",
+				mcp.Required(),
+				mcp.Description("name"),
+			),
+			mcp.WithString("parent_page",
+				mcp.Required(),
+				mcp.Description("parent_page"),
+			),
+			mcp.WithString("targeted_area_type",
+				mcp.Description("targeted_area_type (enum: adaccountad_place_page_sets_async_targeted_area_type_enum_param)"),
+			),
+		),
 		mcp.NewTypedToolHandler(UpdateAdAccountAdPlacePageSetsAsyncHandler),
 	)
 
-	// Register list_ad_account_ad_saved_keywords using raw schema
+	// Register list_ad_account_ad_saved_keywords
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_ad_account_ad_saved_keywords", "List ad_saved_keywords for this AdAccount Returns AdSavedKeywords.", list_ad_account_ad_saved_keywordsSchema),
+		mcp.NewTool("list_ad_account_ad_saved_keywords",
+			mcp.WithDescription("List ad_saved_keywords for this AdAccount Returns AdSavedKeywords."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListAdAccountAdSavedKeywordsHandler),
 	)
 
-	// Register list_ad_account_ad_studies using raw schema
+	// Register list_ad_account_ad_studies
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_ad_account_ad_studies", "List ad_studies for this AdAccount Returns AdStudy.", list_ad_account_ad_studiesSchema),
+		mcp.NewTool("list_ad_account_ad_studies",
+			mcp.WithDescription("List ad_studies for this AdAccount Returns AdStudy."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListAdAccountAdStudiesHandler),
 	)
 
-	// Register list_ad_account_adcloudplayables using raw schema
+	// Register list_ad_account_adcloudplayables
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_ad_account_adcloudplayables", "List adcloudplayables for this AdAccount Returns CloudGame.", list_ad_account_adcloudplayablesSchema),
+		mcp.NewTool("list_ad_account_adcloudplayables",
+			mcp.WithDescription("List adcloudplayables for this AdAccount Returns CloudGame."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListAdAccountAdcloudplayablesHandler),
 	)
 
-	// Register list_ad_account_adcreatives using raw schema
+	// Register list_ad_account_adcreatives
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_ad_account_adcreatives", "List adcreatives for this AdAccount Returns AdCreative.", list_ad_account_adcreativesSchema),
+		mcp.NewTool("list_ad_account_adcreatives",
+			mcp.WithDescription("List adcreatives for this AdAccount Returns AdCreative."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListAdAccountAdcreativesHandler),
 	)
 
-	// Register create_ad_account_adcreative using raw schema
+	// Register create_ad_account_adcreative
 	s.AddTool(
-		mcp.NewToolWithRawSchema("create_ad_account_adcreative", "Associate adcreatives with this AdAccount Returns AdCreative.", create_ad_account_adcreativeSchema),
+		mcp.NewTool("create_ad_account_adcreative",
+			mcp.WithDescription("Associate adcreatives with this AdAccount Returns AdCreative."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithNumber("actor_id",
+				mcp.Description("actor_id"),
+			),
+			mcp.WithObject("ad_disclaimer_spec",
+				mcp.Description("ad_disclaimer_spec"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithArray("adlabels",
+				mcp.Description("adlabels"),
+				mcp.Items(map[string]any{"type": "object"}),
+			),
+			mcp.WithString("applink_treatment",
+				mcp.Description("applink_treatment (enum: adaccountadcreatives_applink_treatment_enum_param)"),
+			),
+			mcp.WithObject("asset_feed_spec",
+				mcp.Description("asset_feed_spec"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("authorization_category",
+				mcp.Description("authorization_category (enum: adaccountadcreatives_authorization_category_enum_param)"),
+			),
+			mcp.WithString("body",
+				mcp.Description("body"),
+			),
+			mcp.WithObject("branded_content",
+				mcp.Description("branded_content"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("branded_content_sponsor_page_id",
+				mcp.Description("branded_content_sponsor_page_id"),
+			),
+			mcp.WithString("bundle_folder_id",
+				mcp.Description("bundle_folder_id"),
+			),
+			mcp.WithObject("call_to_action",
+				mcp.Description("call_to_action"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("categorization_criteria",
+				mcp.Description("categorization_criteria (enum: adaccountadcreatives_categorization_criteria_enum_param)"),
+			),
+			mcp.WithString("category_media_source",
+				mcp.Description("category_media_source (enum: adaccountadcreatives_category_media_source_enum_param)"),
+			),
+			mcp.WithObject("contextual_multi_ads",
+				mcp.Description("contextual_multi_ads"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithObject("creative_sourcing_spec",
+				mcp.Description("creative_sourcing_spec"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithObject("degrees_of_freedom_spec",
+				mcp.Description("degrees_of_freedom_spec"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("destination_set_id",
+				mcp.Description("destination_set_id"),
+			),
+			mcp.WithString("dynamic_ad_voice",
+				mcp.Description("dynamic_ad_voice (enum: adaccountadcreatives_dynamic_ad_voice_enum_param)"),
+			),
+			mcp.WithBoolean("enable_launch_instant_app",
+				mcp.Description("enable_launch_instant_app"),
+			),
+			mcp.WithObject("facebook_branded_content",
+				mcp.Description("facebook_branded_content"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithObject("image_crops",
+				mcp.Description("image_crops"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("image_file",
+				mcp.Description("image_file"),
+			),
+			mcp.WithString("image_hash",
+				mcp.Description("image_hash"),
+			),
+			mcp.WithString("image_url",
+				mcp.Description("image_url"),
+			),
+			mcp.WithObject("instagram_branded_content",
+				mcp.Description("instagram_branded_content"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("instagram_permalink_url",
+				mcp.Description("instagram_permalink_url"),
+			),
+			mcp.WithString("instagram_user_id",
+				mcp.Description("instagram_user_id"),
+			),
+			mcp.WithObject("interactive_components_spec",
+				mcp.Description("interactive_components_spec"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithBoolean("is_dco_internal",
+				mcp.Description("is_dco_internal"),
+			),
+			mcp.WithString("link_og_id",
+				mcp.Description("link_og_id"),
+			),
+			mcp.WithString("link_url",
+				mcp.Description("link_url"),
+			),
+			mcp.WithString("name",
+				mcp.Description("name"),
+			),
+			mcp.WithNumber("object_id",
+				mcp.Description("object_id"),
+			),
+			mcp.WithString("object_story_id",
+				mcp.Description("object_story_id"),
+			),
+			mcp.WithObject("object_story_spec",
+				mcp.Description("object_story_spec"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("object_type",
+				mcp.Description("object_type"),
+			),
+			mcp.WithString("object_url",
+				mcp.Description("object_url"),
+			),
+			mcp.WithObject("omnichannel_link_spec",
+				mcp.Description("omnichannel_link_spec"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("page_welcome_message",
+				mcp.Description("page_welcome_message"),
+			),
+			mcp.WithString("place_page_set_id",
+				mcp.Description("place_page_set_id"),
+			),
+			mcp.WithObject("platform_customizations",
+				mcp.Description("platform_customizations"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("playable_asset_id",
+				mcp.Description("playable_asset_id"),
+			),
+			mcp.WithObject("portrait_customizations",
+				mcp.Description("portrait_customizations"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("product_set_id",
+				mcp.Description("product_set_id"),
+			),
+			mcp.WithObject("recommender_settings",
+				mcp.Description("recommender_settings"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithObject("regional_regulation_disclaimer_spec",
+				mcp.Description("regional_regulation_disclaimer_spec"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("source_instagram_media_id",
+				mcp.Description("source_instagram_media_id"),
+			),
+			mcp.WithString("template_url",
+				mcp.Description("template_url"),
+			),
+			mcp.WithString("template_url_spec",
+				mcp.Description("template_url_spec"),
+			),
+			mcp.WithString("thumbnail_url",
+				mcp.Description("thumbnail_url"),
+			),
+			mcp.WithString("title",
+				mcp.Description("title"),
+			),
+			mcp.WithString("url_tags",
+				mcp.Description("url_tags"),
+			),
+			mcp.WithBoolean("use_page_actor_override",
+				mcp.Description("use_page_actor_override"),
+			),
+		),
 		mcp.NewTypedToolHandler(CreateAdAccountAdcreativeHandler),
 	)
 
-	// Register list_ad_account_adcreativesbylabels using raw schema
+	// Register list_ad_account_adcreativesbylabels
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_ad_account_adcreativesbylabels", "List adcreativesbylabels for this AdAccount Returns AdCreative. Required: ad_label_ids", list_ad_account_adcreativesbylabelsSchema),
+		mcp.NewTool("list_ad_account_adcreativesbylabels",
+			mcp.WithDescription("List adcreativesbylabels for this AdAccount Returns AdCreative. Required: ad_label_ids"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithArray("ad_label_ids",
+				mcp.Required(),
+				mcp.Description("ad_label_ids"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithString("operator",
+				mcp.Description("operator (enum: adaccountadcreativesbylabels_operator_enum_param)"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListAdAccountAdcreativesbylabelsHandler),
 	)
 
-	// Register remove_adimages_from_ad_account using raw schema
+	// Register remove_adimages_from_ad_account
 	s.AddTool(
-		mcp.NewToolWithRawSchema("remove_adimages_from_ad_account", "Remove adimages from this AdAccount Required: hash", remove_adimages_from_ad_accountSchema),
+		mcp.NewTool("remove_adimages_from_ad_account",
+			mcp.WithDescription("Remove adimages from this AdAccount Required: hash"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithString("hash",
+				mcp.Required(),
+				mcp.Description("hash"),
+			),
+		),
 		mcp.NewTypedToolHandler(RemoveAdimagesFromAdAccountHandler),
 	)
 
-	// Register list_ad_account_adimages using raw schema
+	// Register list_ad_account_adimages
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_ad_account_adimages", "List adimages for this AdAccount Returns AdImage.", list_ad_account_adimagesSchema),
+		mcp.NewTool("list_ad_account_adimages",
+			mcp.WithDescription("List adimages for this AdAccount Returns AdImage."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithNumber("biz_tag_id",
+				mcp.Description("biz_tag_id"),
+			),
+			mcp.WithString("business_id",
+				mcp.Description("business_id"),
+			),
+			mcp.WithArray("hashes",
+				mcp.Description("hashes"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("minheight",
+				mcp.Description("minheight"),
+			),
+			mcp.WithNumber("minwidth",
+				mcp.Description("minwidth"),
+			),
+			mcp.WithString("name",
+				mcp.Description("name"),
+			),
+			mcp.WithArray("selected_hashes",
+				mcp.Description("selected_hashes"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+		),
 		mcp.NewTypedToolHandler(ListAdAccountAdimagesHandler),
 	)
 
-	// Register create_ad_account_adimage using raw schema
+	// Register create_ad_account_adimage
 	s.AddTool(
-		mcp.NewToolWithRawSchema("create_ad_account_adimage", "Associate adimages with this AdAccount", create_ad_account_adimageSchema),
+		mcp.NewTool("create_ad_account_adimage",
+			mcp.WithDescription("Associate adimages with this AdAccount"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithString("bytes",
+				mcp.Description("bytes"),
+			),
+			mcp.WithObject("copy_from",
+				mcp.Description("copy_from"),
+				mcp.AdditionalProperties(true),
+			),
+		),
 		mcp.NewTypedToolHandler(CreateAdAccountAdimageHandler),
 	)
 
-	// Register list_ad_account_adlabels using raw schema
+	// Register list_ad_account_adlabels
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_ad_account_adlabels", "List adlabels for this AdAccount Returns AdLabel.", list_ad_account_adlabelsSchema),
+		mcp.NewTool("list_ad_account_adlabels",
+			mcp.WithDescription("List adlabels for this AdAccount Returns AdLabel."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListAdAccountAdlabelsHandler),
 	)
 
-	// Register create_ad_account_adlabel using raw schema
+	// Register create_ad_account_adlabel
 	s.AddTool(
-		mcp.NewToolWithRawSchema("create_ad_account_adlabel", "Associate adlabels with this AdAccount Returns AdLabel. Required: name", create_ad_account_adlabelSchema),
+		mcp.NewTool("create_ad_account_adlabel",
+			mcp.WithDescription("Associate adlabels with this AdAccount Returns AdLabel. Required: name"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithString("name",
+				mcp.Required(),
+				mcp.Description("name"),
+			),
+		),
 		mcp.NewTypedToolHandler(CreateAdAccountAdlabelHandler),
 	)
 
-	// Register list_ad_account_adplayables using raw schema
+	// Register list_ad_account_adplayables
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_ad_account_adplayables", "List adplayables for this AdAccount Returns PlayableContent.", list_ad_account_adplayablesSchema),
+		mcp.NewTool("list_ad_account_adplayables",
+			mcp.WithDescription("List adplayables for this AdAccount Returns PlayableContent."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListAdAccountAdplayablesHandler),
 	)
 
-	// Register create_ad_account_adplayable using raw schema
+	// Register create_ad_account_adplayable
 	s.AddTool(
-		mcp.NewToolWithRawSchema("create_ad_account_adplayable", "Associate adplayables with this AdAccount Returns PlayableContent. Required: name", create_ad_account_adplayableSchema),
+		mcp.NewTool("create_ad_account_adplayable",
+			mcp.WithDescription("Associate adplayables with this AdAccount Returns PlayableContent. Required: name"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithString("app_id",
+				mcp.Description("app_id"),
+			),
+			mcp.WithString("name",
+				mcp.Required(),
+				mcp.Description("name"),
+			),
+			mcp.WithString("session_id",
+				mcp.Description("session_id"),
+			),
+			mcp.WithString("source",
+				mcp.Description("source"),
+			),
+			mcp.WithString("source_url",
+				mcp.Description("source_url"),
+			),
+			mcp.WithString("source_zip",
+				mcp.Description("source_zip"),
+			),
+		),
 		mcp.NewTypedToolHandler(CreateAdAccountAdplayableHandler),
 	)
 
-	// Register get_ad_account_adrules_history using raw schema
+	// Register get_ad_account_adrules_history
 	s.AddTool(
-		mcp.NewToolWithRawSchema("get_ad_account_adrules_history", "Get adrules_history data for this AdAccount Returns AdAccountAdRulesHistory.", get_ad_account_adrules_historySchema),
+		mcp.NewTool("get_ad_account_adrules_history",
+			mcp.WithDescription("Get adrules_history data for this AdAccount Returns AdAccountAdRulesHistory."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithString("action",
+				mcp.Description("action (enum: adaccountadrules_history_action_enum_param)"),
+			),
+			mcp.WithString("evaluation_type",
+				mcp.Description("evaluation_type (enum: adaccountadrules_history_evaluation_type_enum_param)"),
+			),
+			mcp.WithBoolean("hide_no_changes",
+				mcp.Description("hide_no_changes"),
+			),
+			mcp.WithString("object_id",
+				mcp.Description("object_id"),
+			),
+		),
 		mcp.NewTypedToolHandler(GetAdAccountAdrulesHistoryHandler),
 	)
 
-	// Register get_ad_account_adrules_library using raw schema
+	// Register get_ad_account_adrules_library
 	s.AddTool(
-		mcp.NewToolWithRawSchema("get_ad_account_adrules_library", "Get adrules_library data for this AdAccount Returns AdRule.", get_ad_account_adrules_librarySchema),
+		mcp.NewTool("get_ad_account_adrules_library",
+			mcp.WithDescription("Get adrules_library data for this AdAccount Returns AdRule."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
 		mcp.NewTypedToolHandler(GetAdAccountAdrulesLibraryHandler),
 	)
 
-	// Register update_ad_account_adrules_library using raw schema
+	// Register update_ad_account_adrules_library
 	s.AddTool(
-		mcp.NewToolWithRawSchema("update_ad_account_adrules_library", "Associate adrules_library with this AdAccount Returns AdRule. Required: evaluation_spec, execution_spec, name", update_ad_account_adrules_librarySchema),
+		mcp.NewTool("update_ad_account_adrules_library",
+			mcp.WithDescription("Associate adrules_library with this AdAccount Returns AdRule. Required: evaluation_spec, execution_spec, name"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithString("account_id",
+				mcp.Description("account_id"),
+			),
+			mcp.WithObject("evaluation_spec",
+				mcp.Required(),
+				mcp.Description("evaluation_spec"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithObject("execution_spec",
+				mcp.Required(),
+				mcp.Description("execution_spec"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("name",
+				mcp.Required(),
+				mcp.Description("name"),
+			),
+			mcp.WithObject("schedule_spec",
+				mcp.Description("schedule_spec"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("status",
+				mcp.Description("status (enum: adaccountadrules_library_status_enum_param)"),
+			),
+			mcp.WithString("ui_creation_source",
+				mcp.Description("ui_creation_source (enum: adaccountadrules_library_ui_creation_source_enum_param)"),
+			),
+		),
 		mcp.NewTypedToolHandler(UpdateAdAccountAdrulesLibraryHandler),
 	)
 
-	// Register list_ad_account_ads using raw schema
+	// Register list_ad_account_ads
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_ad_account_ads", "List ads for this AdAccount Returns Ad.", list_ad_account_adsSchema),
+		mcp.NewTool("list_ad_account_ads",
+			mcp.WithDescription("List ads for this AdAccount Returns Ad."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithString("date_preset",
+				mcp.Description("date_preset (enum: adaccountads_date_preset_enum_param)"),
+			),
+			mcp.WithArray("effective_status",
+				mcp.Description("effective_status"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithObject("time_range",
+				mcp.Description("time_range"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithNumber("updated_since",
+				mcp.Description("updated_since"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListAdAccountAdsHandler),
 	)
 
-	// Register create_ad_account_ad using raw schema
+	// Register create_ad_account_ad
 	s.AddTool(
-		mcp.NewToolWithRawSchema("create_ad_account_ad", "Associate ads with this AdAccount Returns Ad. Required: creative, name", create_ad_account_adSchema),
+		mcp.NewTool("create_ad_account_ad",
+			mcp.WithDescription("Associate ads with this AdAccount Returns Ad. Required: creative, name"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithString("ad_schedule_end_time",
+				mcp.Description("ad_schedule_end_time"),
+			),
+			mcp.WithString("ad_schedule_start_time",
+				mcp.Description("ad_schedule_start_time"),
+			),
+			mcp.WithArray("adlabels",
+				mcp.Description("adlabels"),
+				mcp.Items(map[string]any{"type": "object"}),
+			),
+			mcp.WithNumber("adset_id",
+				mcp.Description("adset_id"),
+			),
+			mcp.WithObject("adset_spec",
+				mcp.Description("adset_spec"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("audience_id",
+				mcp.Description("audience_id"),
+			),
+			mcp.WithNumber("bid_amount",
+				mcp.Description("bid_amount"),
+			),
+			mcp.WithString("conversion_domain",
+				mcp.Description("conversion_domain"),
+			),
+			mcp.WithObject("creative",
+				mcp.Required(),
+				mcp.Description("creative"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithObject("creative_asset_groups_spec",
+				mcp.Description("creative_asset_groups_spec"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("date_format",
+				mcp.Description("date_format"),
+			),
+			mcp.WithNumber("display_sequence",
+				mcp.Description("display_sequence"),
+			),
+			mcp.WithString("draft_adgroup_id",
+				mcp.Description("draft_adgroup_id"),
+			),
+			mcp.WithBoolean("engagement_audience",
+				mcp.Description("engagement_audience"),
+			),
+			mcp.WithArray("execution_options",
+				mcp.Description("execution_options"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithBoolean("include_demolink_hashes",
+				mcp.Description("include_demolink_hashes"),
+			),
+			mcp.WithString("name",
+				mcp.Required(),
+				mcp.Description("name"),
+			),
+			mcp.WithNumber("priority",
+				mcp.Description("priority"),
+			),
+			mcp.WithString("source_ad_id",
+				mcp.Description("source_ad_id"),
+			),
+			mcp.WithString("status",
+				mcp.Description("status (enum: adaccountads_status_enum_param)"),
+			),
+			mcp.WithObject("tracking_specs",
+				mcp.Description("tracking_specs"),
+				mcp.AdditionalProperties(true),
+			),
+		),
 		mcp.NewTypedToolHandler(CreateAdAccountAdHandler),
 	)
 
-	// Register list_ad_account_ads_reporting_mmm_reports using raw schema
+	// Register list_ad_account_ads_reporting_mmm_reports
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_ad_account_ads_reporting_mmm_reports", "List ads_reporting_mmm_reports for this AdAccount Returns AdsReportBuilderMMMReport.", list_ad_account_ads_reporting_mmm_reportsSchema),
+		mcp.NewTool("list_ad_account_ads_reporting_mmm_reports",
+			mcp.WithDescription("List ads_reporting_mmm_reports for this AdAccount Returns AdsReportBuilderMMMReport."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithArray("filtering",
+				mcp.Description("filtering"),
+				mcp.Items(map[string]any{"type": "object"}),
+			),
+		),
 		mcp.NewTypedToolHandler(ListAdAccountAdsReportingMmmReportsHandler),
 	)
 
-	// Register list_ad_account_ads_reporting_mmm_schedulers using raw schema
+	// Register list_ad_account_ads_reporting_mmm_schedulers
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_ad_account_ads_reporting_mmm_schedulers", "List ads_reporting_mmm_schedulers for this AdAccount Returns AdsReportBuilderMMMReportScheduler.", list_ad_account_ads_reporting_mmm_schedulersSchema),
+		mcp.NewTool("list_ad_account_ads_reporting_mmm_schedulers",
+			mcp.WithDescription("List ads_reporting_mmm_schedulers for this AdAccount Returns AdsReportBuilderMMMReportScheduler."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListAdAccountAdsReportingMmmSchedulersHandler),
 	)
 
-	// Register get_ad_account_ads_volume using raw schema
+	// Register get_ad_account_ads_volume
 	s.AddTool(
-		mcp.NewToolWithRawSchema("get_ad_account_ads_volume", "Get ads_volume data for this AdAccount Returns AdAccountAdVolume.", get_ad_account_ads_volumeSchema),
+		mcp.NewTool("get_ad_account_ads_volume",
+			mcp.WithDescription("Get ads_volume data for this AdAccount Returns AdAccountAdVolume."),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithString("page_id",
+				mcp.Description("page_id"),
+			),
+			mcp.WithString("recommendation_type",
+				mcp.Description("recommendation_type (enum: adaccountads_volume_recommendation_type_enum_param)"),
+			),
+			mcp.WithBoolean("show_breakdown_by_actor",
+				mcp.Description("show_breakdown_by_actor"),
+			),
+		),
 		mcp.NewTypedToolHandler(GetAdAccountAdsVolumeHandler),
 	)
 
-	// Register list_ad_account_adsbylabels using raw schema
+	// Register list_ad_account_adsbylabels
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_ad_account_adsbylabels", "List adsbylabels for this AdAccount Returns Ad. Required: ad_label_ids", list_ad_account_adsbylabelsSchema),
+		mcp.NewTool("list_ad_account_adsbylabels",
+			mcp.WithDescription("List adsbylabels for this AdAccount Returns Ad. Required: ad_label_ids"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithArray("ad_label_ids",
+				mcp.Required(),
+				mcp.Description("ad_label_ids"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithString("operator",
+				mcp.Description("operator (enum: adaccountadsbylabels_operator_enum_param)"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListAdAccountAdsbylabelsHandler),
 	)
 
-	// Register list_ad_account_adsets using raw schema
+	// Register list_ad_account_adsets
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_ad_account_adsets", "List adsets for this AdAccount Returns AdSet.", list_ad_account_adsetsSchema),
+		mcp.NewTool("list_ad_account_adsets",
+			mcp.WithDescription("List adsets for this AdAccount Returns AdSet."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithString("date_preset",
+				mcp.Description("date_preset (enum: adaccountadsets_date_preset_enum_param)"),
+			),
+			mcp.WithArray("effective_status",
+				mcp.Description("effective_status"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithBoolean("is_completed",
+				mcp.Description("is_completed"),
+			),
+			mcp.WithObject("time_range",
+				mcp.Description("time_range"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithNumber("updated_since",
+				mcp.Description("updated_since"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListAdAccountAdsetsHandler),
 	)
 
-	// Register create_ad_account_adset using raw schema
+	// Register create_ad_account_adset
 	s.AddTool(
-		mcp.NewToolWithRawSchema("create_ad_account_adset", "Associate adsets with this AdAccount Returns AdSet. Required: name", create_ad_account_adsetSchema),
+		mcp.NewTool("create_ad_account_adset",
+			mcp.WithDescription("Associate adsets with this AdAccount Returns AdSet. Required: name"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("adlabels",
+				mcp.Description("adlabels"),
+				mcp.Items(map[string]any{"type": "object"}),
+			),
+			mcp.WithArray("adset_schedule",
+				mcp.Description("adset_schedule"),
+				mcp.Items(map[string]any{"type": "object"}),
+			),
+			mcp.WithArray("attribution_spec",
+				mcp.Description("attribution_spec"),
+				mcp.Items(map[string]any{"type": "object"}),
+			),
+			mcp.WithObject("bid_adjustments",
+				mcp.Description("bid_adjustments"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithNumber("bid_amount",
+				mcp.Description("bid_amount"),
+			),
+			mcp.WithObject("bid_constraints",
+				mcp.Description("bid_constraints"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("bid_strategy",
+				mcp.Description("bid_strategy (enum: adaccountadsets_bid_strategy_enum_param)"),
+			),
+			mcp.WithString("billing_event",
+				mcp.Description("billing_event (enum: adaccountadsets_billing_event_enum_param)"),
+			),
+			mcp.WithString("budget_source",
+				mcp.Description("budget_source (enum: adaccountadsets_budget_source_enum_param)"),
+			),
+			mcp.WithString("budget_split_set_id",
+				mcp.Description("budget_split_set_id"),
+			),
+			mcp.WithObject("campaign_attribution",
+				mcp.Description("campaign_attribution"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("campaign_id",
+				mcp.Description("campaign_id"),
+			),
+			mcp.WithObject("campaign_spec",
+				mcp.Description("campaign_spec"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithArray("creative_sequence",
+				mcp.Description("creative_sequence"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithString("creative_sequence_repetition_pattern",
+				mcp.Description("creative_sequence_repetition_pattern (enum: adaccountadsets_creative_sequence_repetition_pattern_enum_param)"),
+			),
+			mcp.WithNumber("daily_budget",
+				mcp.Description("daily_budget"),
+			),
+			mcp.WithNumber("daily_imps",
+				mcp.Description("daily_imps"),
+			),
+			mcp.WithNumber("daily_min_spend_target",
+				mcp.Description("daily_min_spend_target"),
+			),
+			mcp.WithNumber("daily_spend_cap",
+				mcp.Description("daily_spend_cap"),
+			),
+			mcp.WithString("date_format",
+				mcp.Description("date_format"),
+			),
+			mcp.WithString("destination_type",
+				mcp.Description("destination_type (enum: adaccountadsets_destination_type_enum_param)"),
+			),
+			mcp.WithString("dsa_beneficiary",
+				mcp.Description("dsa_beneficiary"),
+			),
+			mcp.WithString("dsa_payor",
+				mcp.Description("dsa_payor"),
+			),
+			mcp.WithString("end_time",
+				mcp.Description("end_time"),
+			),
+			mcp.WithArray("execution_options",
+				mcp.Description("execution_options"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("existing_customer_budget_percentage",
+				mcp.Description("existing_customer_budget_percentage"),
+			),
+			mcp.WithArray("frequency_control_specs",
+				mcp.Description("frequency_control_specs"),
+				mcp.Items(map[string]any{"type": "object"}),
+			),
+			mcp.WithString("full_funnel_exploration_mode",
+				mcp.Description("full_funnel_exploration_mode (enum: adaccountadsets_full_funnel_exploration_mode_enum_param)"),
+			),
+			mcp.WithBoolean("is_ba_skip_delayed_eligible",
+				mcp.Description("is_ba_skip_delayed_eligible"),
+			),
+			mcp.WithBoolean("is_dynamic_creative",
+				mcp.Description("is_dynamic_creative"),
+			),
+			mcp.WithBoolean("is_incremental_attribution_enabled",
+				mcp.Description("is_incremental_attribution_enabled"),
+			),
+			mcp.WithBoolean("is_sac_cfca_terms_certified",
+				mcp.Description("is_sac_cfca_terms_certified"),
+			),
+			mcp.WithNumber("lifetime_budget",
+				mcp.Description("lifetime_budget"),
+			),
+			mcp.WithNumber("lifetime_imps",
+				mcp.Description("lifetime_imps"),
+			),
+			mcp.WithNumber("lifetime_min_spend_target",
+				mcp.Description("lifetime_min_spend_target"),
+			),
+			mcp.WithNumber("lifetime_spend_cap",
+				mcp.Description("lifetime_spend_cap"),
+			),
+			mcp.WithNumber("line_number",
+				mcp.Description("line_number"),
+			),
+			mcp.WithNumber("max_budget_spend_percentage",
+				mcp.Description("max_budget_spend_percentage"),
+			),
+			mcp.WithNumber("min_budget_spend_percentage",
+				mcp.Description("min_budget_spend_percentage"),
+			),
+			mcp.WithString("multi_optimization_goal_weight",
+				mcp.Description("multi_optimization_goal_weight (enum: adaccountadsets_multi_optimization_goal_weight_enum_param)"),
+			),
+			mcp.WithString("name",
+				mcp.Required(),
+				mcp.Description("name"),
+			),
+			mcp.WithString("optimization_goal",
+				mcp.Description("optimization_goal (enum: adaccountadsets_optimization_goal_enum_param)"),
+			),
+			mcp.WithString("optimization_sub_event",
+				mcp.Description("optimization_sub_event (enum: adaccountadsets_optimization_sub_event_enum_param)"),
+			),
+			mcp.WithArray("pacing_type",
+				mcp.Description("pacing_type"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithObject("promoted_object",
+				mcp.Description("promoted_object"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("rb_prediction_id",
+				mcp.Description("rb_prediction_id"),
+			),
+			mcp.WithArray("regional_regulated_categories",
+				mcp.Description("regional_regulated_categories"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithObject("regional_regulation_identities",
+				mcp.Description("regional_regulation_identities"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("rf_prediction_id",
+				mcp.Description("rf_prediction_id"),
+			),
+			mcp.WithString("source_adset_id",
+				mcp.Description("source_adset_id"),
+			),
+			mcp.WithString("start_time",
+				mcp.Description("start_time"),
+			),
+			mcp.WithString("status",
+				mcp.Description("status (enum: adaccountadsets_status_enum_param)"),
+			),
+			mcp.WithObject("targeting",
+				mcp.Description("targeting"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithArray("time_based_ad_rotation_id_blocks",
+				mcp.Description("time_based_ad_rotation_id_blocks"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithArray("time_based_ad_rotation_intervals",
+				mcp.Description("time_based_ad_rotation_intervals"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithString("time_start",
+				mcp.Description("time_start"),
+			),
+			mcp.WithString("time_stop",
+				mcp.Description("time_stop"),
+			),
+			mcp.WithString("topline_id",
+				mcp.Description("topline_id"),
+			),
+			mcp.WithString("tune_for_category",
+				mcp.Description("tune_for_category (enum: adaccountadsets_tune_for_category_enum_param)"),
+			),
+		),
 		mcp.NewTypedToolHandler(CreateAdAccountAdsetHandler),
 	)
 
-	// Register list_ad_account_adsetsbylabels using raw schema
+	// Register list_ad_account_adsetsbylabels
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_ad_account_adsetsbylabels", "List adsetsbylabels for this AdAccount Returns AdSet. Required: ad_label_ids", list_ad_account_adsetsbylabelsSchema),
+		mcp.NewTool("list_ad_account_adsetsbylabels",
+			mcp.WithDescription("List adsetsbylabels for this AdAccount Returns AdSet. Required: ad_label_ids"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithArray("ad_label_ids",
+				mcp.Required(),
+				mcp.Description("ad_label_ids"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithString("operator",
+				mcp.Description("operator (enum: adaccountadsetsbylabels_operator_enum_param)"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListAdAccountAdsetsbylabelsHandler),
 	)
 
-	// Register list_ad_account_adspixels using raw schema
+	// Register list_ad_account_adspixels
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_ad_account_adspixels", "List adspixels for this AdAccount Returns AdsPixel.", list_ad_account_adspixelsSchema),
+		mcp.NewTool("list_ad_account_adspixels",
+			mcp.WithDescription("List adspixels for this AdAccount Returns AdsPixel."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithString("sort_by",
+				mcp.Description("sort_by (enum: adaccountadspixels_sort_by_enum_param)"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListAdAccountAdspixelsHandler),
 	)
 
-	// Register create_ad_account_adspixel using raw schema
+	// Register create_ad_account_adspixel
 	s.AddTool(
-		mcp.NewToolWithRawSchema("create_ad_account_adspixel", "Associate adspixels with this AdAccount Returns AdsPixel.", create_ad_account_adspixelSchema),
+		mcp.NewTool("create_ad_account_adspixel",
+			mcp.WithDescription("Associate adspixels with this AdAccount Returns AdsPixel."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithString("name",
+				mcp.Description("name"),
+			),
+		),
 		mcp.NewTypedToolHandler(CreateAdAccountAdspixelHandler),
 	)
 
-	// Register list_ad_account_advertisable_applications using raw schema
+	// Register list_ad_account_advertisable_applications
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_ad_account_advertisable_applications", "List advertisable_applications for this AdAccount Returns Application.", list_ad_account_advertisable_applicationsSchema),
+		mcp.NewTool("list_ad_account_advertisable_applications",
+			mcp.WithDescription("List advertisable_applications for this AdAccount Returns Application."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithString("app_id",
+				mcp.Description("app_id"),
+			),
+			mcp.WithString("business_id",
+				mcp.Description("business_id"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListAdAccountAdvertisableApplicationsHandler),
 	)
 
-	// Register remove_advideos_from_ad_account using raw schema
+	// Register remove_advideos_from_ad_account
 	s.AddTool(
-		mcp.NewToolWithRawSchema("remove_advideos_from_ad_account", "Remove advideos from this AdAccount Required: video_id", remove_advideos_from_ad_accountSchema),
+		mcp.NewTool("remove_advideos_from_ad_account",
+			mcp.WithDescription("Remove advideos from this AdAccount Required: video_id"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithString("video_id",
+				mcp.Required(),
+				mcp.Description("video_id"),
+			),
+		),
 		mcp.NewTypedToolHandler(RemoveAdvideosFromAdAccountHandler),
 	)
 
-	// Register list_ad_account_advideos using raw schema
+	// Register list_ad_account_advideos
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_ad_account_advideos", "List advideos for this AdAccount Returns AdVideo.", list_ad_account_advideosSchema),
+		mcp.NewTool("list_ad_account_advideos",
+			mcp.WithDescription("List advideos for this AdAccount Returns AdVideo."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithNumber("max_aspect_ratio",
+				mcp.Description("max_aspect_ratio"),
+			),
+			mcp.WithNumber("maxheight",
+				mcp.Description("maxheight"),
+			),
+			mcp.WithNumber("maxlength",
+				mcp.Description("maxlength"),
+			),
+			mcp.WithNumber("maxwidth",
+				mcp.Description("maxwidth"),
+			),
+			mcp.WithNumber("min_aspect_ratio",
+				mcp.Description("min_aspect_ratio"),
+			),
+			mcp.WithNumber("minheight",
+				mcp.Description("minheight"),
+			),
+			mcp.WithNumber("minlength",
+				mcp.Description("minlength"),
+			),
+			mcp.WithNumber("minwidth",
+				mcp.Description("minwidth"),
+			),
+			mcp.WithString("title",
+				mcp.Description("title"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListAdAccountAdvideosHandler),
 	)
 
-	// Register create_ad_account_advideo using raw schema
+	// Register create_ad_account_advideo
 	s.AddTool(
-		mcp.NewToolWithRawSchema("create_ad_account_advideo", "Associate advideos with this AdAccount Returns AdVideo.", create_ad_account_advideoSchema),
+		mcp.NewTool("create_ad_account_advideo",
+			mcp.WithDescription("Associate advideos with this AdAccount Returns AdVideo."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithString("application_id",
+				mcp.Description("application_id"),
+			),
+			mcp.WithNumber("asked_fun_fact_prompt_id",
+				mcp.Description("asked_fun_fact_prompt_id"),
+			),
+			mcp.WithString("audio_story_wave_animation_handle",
+				mcp.Description("audio_story_wave_animation_handle"),
+			),
+			mcp.WithString("chunk_session_id",
+				mcp.Description("chunk_session_id"),
+			),
+			mcp.WithString("composer_entry_picker",
+				mcp.Description("composer_entry_picker"),
+			),
+			mcp.WithString("composer_entry_point",
+				mcp.Description("composer_entry_point"),
+			),
+			mcp.WithNumber("composer_entry_time",
+				mcp.Description("composer_entry_time"),
+			),
+			mcp.WithString("composer_session_events_log",
+				mcp.Description("composer_session_events_log"),
+			),
+			mcp.WithString("composer_session_id",
+				mcp.Description("composer_session_id"),
+			),
+			mcp.WithString("composer_source_surface",
+				mcp.Description("composer_source_surface"),
+			),
+			mcp.WithString("composer_type",
+				mcp.Description("composer_type"),
+			),
+			mcp.WithString("container_type",
+				mcp.Description("container_type (enum: adaccountadvideos_container_type_enum_param)"),
+			),
+			mcp.WithString("content_category",
+				mcp.Description("content_category (enum: adaccountadvideos_content_category_enum_param)"),
+			),
+			mcp.WithString("creative_tools",
+				mcp.Description("creative_tools"),
+			),
+			mcp.WithString("description",
+				mcp.Description("description"),
+			),
+			mcp.WithBoolean("embeddable",
+				mcp.Description("embeddable"),
+			),
+			mcp.WithNumber("end_offset",
+				mcp.Description("end_offset"),
+			),
+			mcp.WithString("fbuploader_video_file_chunk",
+				mcp.Description("fbuploader_video_file_chunk"),
+			),
+			mcp.WithNumber("file_size",
+				mcp.Description("file_size"),
+			),
+			mcp.WithString("file_url",
+				mcp.Description("file_url"),
+			),
+			mcp.WithBoolean("fisheye_video_cropped",
+				mcp.Description("fisheye_video_cropped"),
+			),
+			mcp.WithString("formatting",
+				mcp.Description("formatting (enum: adaccountadvideos_formatting_enum_param)"),
+			),
+			mcp.WithNumber("fov",
+				mcp.Description("fov"),
+			),
+			mcp.WithNumber("front_z_rotation",
+				mcp.Description("front_z_rotation"),
+			),
+			mcp.WithString("fun_fact_prompt_id",
+				mcp.Description("fun_fact_prompt_id"),
+			),
+			mcp.WithNumber("fun_fact_toastee_id",
+				mcp.Description("fun_fact_toastee_id"),
+			),
+			mcp.WithArray("guide",
+				mcp.Description("guide"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithBoolean("guide_enabled",
+				mcp.Description("guide_enabled"),
+			),
+			mcp.WithNumber("initial_heading",
+				mcp.Description("initial_heading"),
+			),
+			mcp.WithNumber("initial_pitch",
+				mcp.Description("initial_pitch"),
+			),
+			mcp.WithString("instant_game_entry_point_data",
+				mcp.Description("instant_game_entry_point_data"),
+			),
+			mcp.WithBoolean("is_boost_intended",
+				mcp.Description("is_boost_intended"),
+			),
+			mcp.WithBoolean("is_group_linking_post",
+				mcp.Description("is_group_linking_post"),
+			),
+			mcp.WithBoolean("is_partnership_ad",
+				mcp.Description("is_partnership_ad"),
+			),
+			mcp.WithBoolean("is_voice_clip",
+				mcp.Description("is_voice_clip"),
+			),
+			mcp.WithString("location_source_id",
+				mcp.Description("location_source_id"),
+			),
+			mcp.WithString("name",
+				mcp.Description("name"),
+			),
+			mcp.WithString("og_action_type_id",
+				mcp.Description("og_action_type_id"),
+			),
+			mcp.WithString("og_icon_id",
+				mcp.Description("og_icon_id"),
+			),
+			mcp.WithString("og_object_id",
+				mcp.Description("og_object_id"),
+			),
+			mcp.WithString("og_phrase",
+				mcp.Description("og_phrase"),
+			),
+			mcp.WithString("og_suggestion_mechanism",
+				mcp.Description("og_suggestion_mechanism"),
+			),
+			mcp.WithNumber("original_fov",
+				mcp.Description("original_fov"),
+			),
+			mcp.WithString("original_projection_type",
+				mcp.Description("original_projection_type (enum: adaccountadvideos_original_projection_type_enum_param)"),
+			),
+			mcp.WithString("partnership_ad_ad_code",
+				mcp.Description("partnership_ad_ad_code"),
+			),
+			mcp.WithNumber("publish_event_id",
+				mcp.Description("publish_event_id"),
+			),
+			mcp.WithString("referenced_sticker_id",
+				mcp.Description("referenced_sticker_id"),
+			),
+			mcp.WithString("replace_video_id",
+				mcp.Description("replace_video_id"),
+			),
+			mcp.WithObject("slideshow_spec",
+				mcp.Description("slideshow_spec"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("source",
+				mcp.Description("source"),
+			),
+			mcp.WithString("source_instagram_media_id",
+				mcp.Description("source_instagram_media_id"),
+			),
+			mcp.WithBoolean("spherical",
+				mcp.Description("spherical"),
+			),
+			mcp.WithNumber("start_offset",
+				mcp.Description("start_offset"),
+			),
+			mcp.WithString("swap_mode",
+				mcp.Description("swap_mode (enum: adaccountadvideos_swap_mode_enum_param)"),
+			),
+			mcp.WithString("text_format_metadata",
+				mcp.Description("text_format_metadata"),
+			),
+			mcp.WithString("thumb",
+				mcp.Description("thumb"),
+			),
+			mcp.WithNumber("time_since_original_post",
+				mcp.Description("time_since_original_post"),
+			),
+			mcp.WithString("title",
+				mcp.Description("title"),
+			),
+			mcp.WithString("transcode_setting_properties",
+				mcp.Description("transcode_setting_properties"),
+			),
+			mcp.WithString("unpublished_content_type",
+				mcp.Description("unpublished_content_type (enum: adaccountadvideos_unpublished_content_type_enum_param)"),
+			),
+			mcp.WithString("upload_phase",
+				mcp.Description("upload_phase (enum: adaccountadvideos_upload_phase_enum_param)"),
+			),
+			mcp.WithString("upload_session_id",
+				mcp.Description("upload_session_id"),
+			),
+			mcp.WithString("upload_setting_properties",
+				mcp.Description("upload_setting_properties"),
+			),
+			mcp.WithString("video_file_chunk",
+				mcp.Description("video_file_chunk"),
+			),
+			mcp.WithString("video_id_original",
+				mcp.Description("video_id_original"),
+			),
+			mcp.WithNumber("video_start_time_ms",
+				mcp.Description("video_start_time_ms"),
+			),
+			mcp.WithString("waterfall_id",
+				mcp.Description("waterfall_id"),
+			),
+		),
 		mcp.NewTypedToolHandler(CreateAdAccountAdvideoHandler),
 	)
 
-	// Register list_ad_account_affectedadsets using raw schema
+	// Register list_ad_account_affectedadsets
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_ad_account_affectedadsets", "List affectedadsets for this AdAccount Returns AdSet.", list_ad_account_affectedadsetsSchema),
+		mcp.NewTool("list_ad_account_affectedadsets",
+			mcp.WithDescription("List affectedadsets for this AdAccount Returns AdSet."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListAdAccountAffectedadsetsHandler),
 	)
 
-	// Register remove_agencies_from_ad_account using raw schema
+	// Register remove_agencies_from_ad_account
 	s.AddTool(
-		mcp.NewToolWithRawSchema("remove_agencies_from_ad_account", "Remove agencies from this AdAccount Required: business", remove_agencies_from_ad_accountSchema),
+		mcp.NewTool("remove_agencies_from_ad_account",
+			mcp.WithDescription("Remove agencies from this AdAccount Required: business"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithString("business",
+				mcp.Required(),
+				mcp.Description("business"),
+			),
+		),
 		mcp.NewTypedToolHandler(RemoveAgenciesFromAdAccountHandler),
 	)
 
-	// Register list_ad_account_agencies using raw schema
+	// Register list_ad_account_agencies
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_ad_account_agencies", "List agencies for this AdAccount Returns Business.", list_ad_account_agenciesSchema),
+		mcp.NewTool("list_ad_account_agencies",
+			mcp.WithDescription("List agencies for this AdAccount Returns Business."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListAdAccountAgenciesHandler),
 	)
 
-	// Register create_ad_account_agencie using raw schema
+	// Register create_ad_account_agencie
 	s.AddTool(
-		mcp.NewToolWithRawSchema("create_ad_account_agencie", "Create or update agencies for this AdAccount Returns AdAccount. Required: business", create_ad_account_agencieSchema),
+		mcp.NewTool("create_ad_account_agencie",
+			mcp.WithDescription("Create or update agencies for this AdAccount Returns AdAccount. Required: business"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithString("business",
+				mcp.Required(),
+				mcp.Description("business"),
+			),
+			mcp.WithArray("permitted_tasks",
+				mcp.Description("permitted_tasks"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+		),
 		mcp.NewTypedToolHandler(CreateAdAccountAgencieHandler),
 	)
 
-	// Register list_ad_account_applications using raw schema
+	// Register list_ad_account_applications
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_ad_account_applications", "List applications for this AdAccount Returns Application.", list_ad_account_applicationsSchema),
+		mcp.NewTool("list_ad_account_applications",
+			mcp.WithDescription("List applications for this AdAccount Returns Application."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListAdAccountApplicationsHandler),
 	)
 
-	// Register remove_assigned_users_from_ad_account using raw schema
+	// Register remove_assigned_users_from_ad_account
 	s.AddTool(
-		mcp.NewToolWithRawSchema("remove_assigned_users_from_ad_account", "Remove assigned_users from this AdAccount Required: user", remove_assigned_users_from_ad_accountSchema),
+		mcp.NewTool("remove_assigned_users_from_ad_account",
+			mcp.WithDescription("Remove assigned_users from this AdAccount Required: user"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithNumber("user",
+				mcp.Required(),
+				mcp.Description("user"),
+			),
+		),
 		mcp.NewTypedToolHandler(RemoveAssignedUsersFromAdAccountHandler),
 	)
 
-	// Register list_ad_account_assigned_users using raw schema
+	// Register list_ad_account_assigned_users
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_ad_account_assigned_users", "List assigned_users for this AdAccount Returns AssignedUser. Required: business", list_ad_account_assigned_usersSchema),
+		mcp.NewTool("list_ad_account_assigned_users",
+			mcp.WithDescription("List assigned_users for this AdAccount Returns AssignedUser. Required: business"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithString("business",
+				mcp.Required(),
+				mcp.Description("business"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListAdAccountAssignedUsersHandler),
 	)
 
-	// Register create_ad_account_assigned_user using raw schema
+	// Register create_ad_account_assigned_user
 	s.AddTool(
-		mcp.NewToolWithRawSchema("create_ad_account_assigned_user", "Create or update assigned_users for this AdAccount Returns AdAccount. Required: user", create_ad_account_assigned_userSchema),
+		mcp.NewTool("create_ad_account_assigned_user",
+			mcp.WithDescription("Create or update assigned_users for this AdAccount Returns AdAccount. Required: user"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("tasks",
+				mcp.Description("tasks"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("user",
+				mcp.Required(),
+				mcp.Description("user"),
+			),
+		),
 		mcp.NewTypedToolHandler(CreateAdAccountAssignedUserHandler),
 	)
 
-	// Register create_ad_account_async_batch_request using raw schema
+	// Register create_ad_account_async_batch_request
 	s.AddTool(
-		mcp.NewToolWithRawSchema("create_ad_account_async_batch_request", "Create or update async_batch_requests for this AdAccount Returns Campaign. Required: adbatch, name", create_ad_account_async_batch_requestSchema),
+		mcp.NewTool("create_ad_account_async_batch_request",
+			mcp.WithDescription("Create or update async_batch_requests for this AdAccount Returns Campaign. Required: adbatch, name"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("adbatch",
+				mcp.Required(),
+				mcp.Description("adbatch"),
+				mcp.Items(map[string]any{"type": "object"}),
+			),
+			mcp.WithString("name",
+				mcp.Required(),
+				mcp.Description("name"),
+			),
+		),
 		mcp.NewTypedToolHandler(CreateAdAccountAsyncBatchRequestHandler),
 	)
 
-	// Register list_ad_account_async_requests using raw schema
+	// Register list_ad_account_async_requests
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_ad_account_async_requests", "List async_requests for this AdAccount Returns AsyncRequest.", list_ad_account_async_requestsSchema),
+		mcp.NewTool("list_ad_account_async_requests",
+			mcp.WithDescription("List async_requests for this AdAccount Returns AsyncRequest."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithString("status",
+				mcp.Description("status (enum: adaccountasync_requests_status_enum_param)"),
+			),
+			mcp.WithString("type",
+				mcp.Description("type (enum: adaccountasync_requests_type_enum_param)"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListAdAccountAsyncRequestsHandler),
 	)
 
-	// Register list_ad_account_asyncadcreatives using raw schema
+	// Register list_ad_account_asyncadcreatives
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_ad_account_asyncadcreatives", "List asyncadcreatives for this AdAccount Returns AdAsyncRequestSet.", list_ad_account_asyncadcreativesSchema),
+		mcp.NewTool("list_ad_account_asyncadcreatives",
+			mcp.WithDescription("List asyncadcreatives for this AdAccount Returns AdAsyncRequestSet."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithBoolean("is_completed",
+				mcp.Description("is_completed"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListAdAccountAsyncadcreativesHandler),
 	)
 
-	// Register create_ad_account_asyncadcreative using raw schema
+	// Register create_ad_account_asyncadcreative
 	s.AddTool(
-		mcp.NewToolWithRawSchema("create_ad_account_asyncadcreative", "Create or update asyncadcreatives for this AdAccount Returns AdAsyncRequestSet. Required: creative_spec, name", create_ad_account_asyncadcreativeSchema),
+		mcp.NewTool("create_ad_account_asyncadcreative",
+			mcp.WithDescription("Create or update asyncadcreatives for this AdAccount Returns AdAsyncRequestSet. Required: creative_spec, name"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithObject("creative_spec",
+				mcp.Required(),
+				mcp.Description("creative_spec"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("name",
+				mcp.Required(),
+				mcp.Description("name"),
+			),
+			mcp.WithString("notification_mode",
+				mcp.Description("notification_mode (enum: adaccountasyncadcreatives_notification_mode_enum_param)"),
+			),
+			mcp.WithString("notification_uri",
+				mcp.Description("notification_uri"),
+			),
+		),
 		mcp.NewTypedToolHandler(CreateAdAccountAsyncadcreativeHandler),
 	)
 
-	// Register list_ad_account_asyncadrequestsets using raw schema
+	// Register list_ad_account_asyncadrequestsets
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_ad_account_asyncadrequestsets", "List asyncadrequestsets for this AdAccount Returns AdAsyncRequestSet.", list_ad_account_asyncadrequestsetsSchema),
+		mcp.NewTool("list_ad_account_asyncadrequestsets",
+			mcp.WithDescription("List asyncadrequestsets for this AdAccount Returns AdAsyncRequestSet."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithBoolean("is_completed",
+				mcp.Description("is_completed"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListAdAccountAsyncadrequestsetsHandler),
 	)
 
-	// Register create_ad_account_asyncadrequestset using raw schema
+	// Register create_ad_account_asyncadrequestset
 	s.AddTool(
-		mcp.NewToolWithRawSchema("create_ad_account_asyncadrequestset", "Create or update asyncadrequestsets for this AdAccount Returns AdAsyncRequestSet. Required: ad_specs, name", create_ad_account_asyncadrequestsetSchema),
+		mcp.NewTool("create_ad_account_asyncadrequestset",
+			mcp.WithDescription("Create or update asyncadrequestsets for this AdAccount Returns AdAsyncRequestSet. Required: ad_specs, name"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("ad_specs",
+				mcp.Required(),
+				mcp.Description("ad_specs"),
+				mcp.Items(map[string]any{"type": "object"}),
+			),
+			mcp.WithString("name",
+				mcp.Required(),
+				mcp.Description("name"),
+			),
+			mcp.WithString("notification_mode",
+				mcp.Description("notification_mode (enum: adaccountasyncadrequestsets_notification_mode_enum_param)"),
+			),
+			mcp.WithString("notification_uri",
+				mcp.Description("notification_uri"),
+			),
+		),
 		mcp.NewTypedToolHandler(CreateAdAccountAsyncadrequestsetHandler),
 	)
 
-	// Register get_ad_account_audience_funnel using raw schema
+	// Register get_ad_account_audience_funnel
 	s.AddTool(
-		mcp.NewToolWithRawSchema("get_ad_account_audience_funnel", "Get audience_funnel data for this AdAccount Returns AudienceFunnel.", get_ad_account_audience_funnelSchema),
+		mcp.NewTool("get_ad_account_audience_funnel",
+			mcp.WithDescription("Get audience_funnel data for this AdAccount Returns AudienceFunnel."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
 		mcp.NewTypedToolHandler(GetAdAccountAudienceFunnelHandler),
 	)
 
-	// Register create_ad_account_block_list_draft using raw schema
+	// Register create_ad_account_block_list_draft
 	s.AddTool(
-		mcp.NewToolWithRawSchema("create_ad_account_block_list_draft", "Create or update block_list_drafts for this AdAccount Returns AdAccount. Required: publisher_urls_file", create_ad_account_block_list_draftSchema),
+		mcp.NewTool("create_ad_account_block_list_draft",
+			mcp.WithDescription("Create or update block_list_drafts for this AdAccount Returns AdAccount. Required: publisher_urls_file"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithString("publisher_urls_file",
+				mcp.Required(),
+				mcp.Description("publisher_urls_file"),
+			),
+		),
 		mcp.NewTypedToolHandler(CreateAdAccountBlockListDraftHandler),
 	)
 
-	// Register create_ad_account_brand_safety_content_filter_level using raw schema
+	// Register create_ad_account_brand_safety_content_filter_level
 	s.AddTool(
-		mcp.NewToolWithRawSchema("create_ad_account_brand_safety_content_filter_level", "Create or update brand_safety_content_filter_levels for this AdAccount Returns AdAccount. Required: brand_safety_content_filter_levels", create_ad_account_brand_safety_content_filter_levelSchema),
+		mcp.NewTool("create_ad_account_brand_safety_content_filter_level",
+			mcp.WithDescription("Create or update brand_safety_content_filter_levels for this AdAccount Returns AdAccount. Required: brand_safety_content_filter_levels"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("brand_safety_content_filter_levels",
+				mcp.Required(),
+				mcp.Description("brand_safety_content_filter_levels"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithString("business_id",
+				mcp.Description("business_id"),
+			),
+		),
 		mcp.NewTypedToolHandler(CreateAdAccountBrandSafetyContentFilterLevelHandler),
 	)
 
-	// Register list_ad_account_broadtargetingcategories using raw schema
+	// Register list_ad_account_broadtargetingcategories
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_ad_account_broadtargetingcategories", "List broadtargetingcategories for this AdAccount Returns BroadTargetingCategories.", list_ad_account_broadtargetingcategoriesSchema),
+		mcp.NewTool("list_ad_account_broadtargetingcategories",
+			mcp.WithDescription("List broadtargetingcategories for this AdAccount Returns BroadTargetingCategories."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithBoolean("custom_categories_only",
+				mcp.Description("custom_categories_only"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListAdAccountBroadtargetingcategoriesHandler),
 	)
 
-	// Register list_ad_account_businessprojects using raw schema
+	// Register list_ad_account_businessprojects
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_ad_account_businessprojects", "List businessprojects for this AdAccount Returns BusinessProject.", list_ad_account_businessprojectsSchema),
+		mcp.NewTool("list_ad_account_businessprojects",
+			mcp.WithDescription("List businessprojects for this AdAccount Returns BusinessProject."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithString("business",
+				mcp.Description("business"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListAdAccountBusinessprojectsHandler),
 	)
 
-	// Register remove_campaigns_from_ad_account using raw schema
+	// Register remove_campaigns_from_ad_account
 	s.AddTool(
-		mcp.NewToolWithRawSchema("remove_campaigns_from_ad_account", "Remove campaigns from this AdAccount Required: delete_strategy (enum)", remove_campaigns_from_ad_accountSchema),
+		mcp.NewTool("remove_campaigns_from_ad_account",
+			mcp.WithDescription("Remove campaigns from this AdAccount Required: delete_strategy (enum)"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithString("before_date",
+				mcp.Description("before_date"),
+			),
+			mcp.WithNumber("delete_offset",
+				mcp.Description("delete_offset"),
+			),
+			mcp.WithString("delete_strategy",
+				mcp.Required(),
+				mcp.Description("delete_strategy (enum: adaccountcampaigns_delete_strategy_enum_param)"),
+			),
+			mcp.WithNumber("object_count",
+				mcp.Description("object_count"),
+			),
+		),
 		mcp.NewTypedToolHandler(RemoveCampaignsFromAdAccountHandler),
 	)
 
-	// Register list_ad_account_campaigns using raw schema
+	// Register list_ad_account_campaigns
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_ad_account_campaigns", "List campaigns for this AdAccount Returns Campaign.", list_ad_account_campaignsSchema),
+		mcp.NewTool("list_ad_account_campaigns",
+			mcp.WithDescription("List campaigns for this AdAccount Returns Campaign."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithString("date_preset",
+				mcp.Description("date_preset (enum: adaccountcampaigns_date_preset_enum_param)"),
+			),
+			mcp.WithArray("effective_status",
+				mcp.Description("effective_status"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithBoolean("is_completed",
+				mcp.Description("is_completed"),
+			),
+			mcp.WithObject("time_range",
+				mcp.Description("time_range"),
+				mcp.AdditionalProperties(true),
+			),
+		),
 		mcp.NewTypedToolHandler(ListAdAccountCampaignsHandler),
 	)
 
-	// Register create_ad_account_campaign using raw schema
+	// Register create_ad_account_campaign
 	s.AddTool(
-		mcp.NewToolWithRawSchema("create_ad_account_campaign", "Create or update campaigns for this AdAccount Returns Campaign. Required: special_ad_categories", create_ad_account_campaignSchema),
+		mcp.NewTool("create_ad_account_campaign",
+			mcp.WithDescription("Create or update campaigns for this AdAccount Returns Campaign. Required: special_ad_categories"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("adlabels",
+				mcp.Description("adlabels"),
+				mcp.Items(map[string]any{"type": "object"}),
+			),
+			mcp.WithString("bid_strategy",
+				mcp.Description("bid_strategy (enum: adaccountcampaigns_bid_strategy_enum_param)"),
+			),
+			mcp.WithString("buying_type",
+				mcp.Description("buying_type"),
+			),
+			mcp.WithNumber("daily_budget",
+				mcp.Description("daily_budget"),
+			),
+			mcp.WithArray("execution_options",
+				mcp.Description("execution_options"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithBoolean("is_skadnetwork_attribution",
+				mcp.Description("is_skadnetwork_attribution"),
+			),
+			mcp.WithArray("iterative_split_test_configs",
+				mcp.Description("iterative_split_test_configs"),
+				mcp.Items(map[string]any{"type": "object"}),
+			),
+			mcp.WithNumber("lifetime_budget",
+				mcp.Description("lifetime_budget"),
+			),
+			mcp.WithString("name",
+				mcp.Description("name"),
+			),
+			mcp.WithString("objective",
+				mcp.Description("objective (enum: adaccountcampaigns_objective_enum_param)"),
+			),
+			mcp.WithArray("pacing_type",
+				mcp.Description("pacing_type"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithObject("promoted_object",
+				mcp.Description("promoted_object"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("smart_promotion_type",
+				mcp.Description("smart_promotion_type (enum: adaccountcampaigns_smart_promotion_type_enum_param)"),
+			),
+			mcp.WithString("source_campaign_id",
+				mcp.Description("source_campaign_id"),
+			),
+			mcp.WithArray("special_ad_categories",
+				mcp.Required(),
+				mcp.Description("special_ad_categories"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithArray("special_ad_category_country",
+				mcp.Description("special_ad_category_country"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("spend_cap",
+				mcp.Description("spend_cap"),
+			),
+			mcp.WithString("start_time",
+				mcp.Description("start_time"),
+			),
+			mcp.WithString("status",
+				mcp.Description("status (enum: adaccountcampaigns_status_enum_param)"),
+			),
+			mcp.WithString("stop_time",
+				mcp.Description("stop_time"),
+			),
+			mcp.WithString("topline_id",
+				mcp.Description("topline_id"),
+			),
+		),
 		mcp.NewTypedToolHandler(CreateAdAccountCampaignHandler),
 	)
 
-	// Register list_ad_account_campaignsbylabels using raw schema
+	// Register list_ad_account_campaignsbylabels
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_ad_account_campaignsbylabels", "List campaignsbylabels for this AdAccount Returns Campaign. Required: ad_label_ids", list_ad_account_campaignsbylabelsSchema),
+		mcp.NewTool("list_ad_account_campaignsbylabels",
+			mcp.WithDescription("List campaignsbylabels for this AdAccount Returns Campaign. Required: ad_label_ids"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithArray("ad_label_ids",
+				mcp.Required(),
+				mcp.Description("ad_label_ids"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithString("operator",
+				mcp.Description("operator (enum: adaccountcampaignsbylabels_operator_enum_param)"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListAdAccountCampaignsbylabelsHandler),
 	)
 
-	// Register list_ad_account_connected_instagram_accounts using raw schema
+	// Register list_ad_account_connected_instagram_accounts
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_ad_account_connected_instagram_accounts", "List connected_instagram_accounts for this AdAccount Returns IGUser.", list_ad_account_connected_instagram_accountsSchema),
+		mcp.NewTool("list_ad_account_connected_instagram_accounts",
+			mcp.WithDescription("List connected_instagram_accounts for this AdAccount Returns IGUser."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListAdAccountConnectedInstagramAccountsHandler),
 	)
 
-	// Register get_ad_account_connected_instagram_accounts_with_iabp using raw schema
+	// Register get_ad_account_connected_instagram_accounts_with_iabp
 	s.AddTool(
-		mcp.NewToolWithRawSchema("get_ad_account_connected_instagram_accounts_with_iabp", "Get connected_instagram_accounts_with_iabp data for this AdAccount Returns IGUser.", get_ad_account_connected_instagram_accounts_with_iabpSchema),
+		mcp.NewTool("get_ad_account_connected_instagram_accounts_with_iabp",
+			mcp.WithDescription("Get connected_instagram_accounts_with_iabp data for this AdAccount Returns IGUser."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithString("business_id",
+				mcp.Description("business_id"),
+			),
+		),
 		mcp.NewTypedToolHandler(GetAdAccountConnectedInstagramAccountsWithIabpHandler),
 	)
 
-	// Register list_ad_account_conversion_goals using raw schema
+	// Register list_ad_account_conversion_goals
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_ad_account_conversion_goals", "List conversion_goals for this AdAccount Returns AdsConversionGoal.", list_ad_account_conversion_goalsSchema),
+		mcp.NewTool("list_ad_account_conversion_goals",
+			mcp.WithDescription("List conversion_goals for this AdAccount Returns AdsConversionGoal."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListAdAccountConversionGoalsHandler),
 	)
 
-	// Register list_ad_account_customaudiences using raw schema
+	// Register list_ad_account_customaudiences
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_ad_account_customaudiences", "List customaudiences for this AdAccount Returns CustomAudience.", list_ad_account_customaudiencesSchema),
+		mcp.NewTool("list_ad_account_customaudiences",
+			mcp.WithDescription("List customaudiences for this AdAccount Returns CustomAudience."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithString("business_id",
+				mcp.Description("business_id"),
+			),
+			mcp.WithBoolean("fetch_primary_audience",
+				mcp.Description("fetch_primary_audience"),
+			),
+			mcp.WithArray("filtering",
+				mcp.Description("filtering"),
+				mcp.Items(map[string]any{"type": "object"}),
+			),
+			mcp.WithString("pixel_id",
+				mcp.Description("pixel_id"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListAdAccountCustomaudiencesHandler),
 	)
 
-	// Register create_ad_account_customaudience using raw schema
+	// Register create_ad_account_customaudience
 	s.AddTool(
-		mcp.NewToolWithRawSchema("create_ad_account_customaudience", "Create or update customaudiences for this AdAccount Returns CustomAudience.", create_ad_account_customaudienceSchema),
+		mcp.NewTool("create_ad_account_customaudience",
+			mcp.WithDescription("Create or update customaudiences for this AdAccount Returns CustomAudience."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("allowed_domains",
+				mcp.Description("allowed_domains"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("associated_audience_id",
+				mcp.Description("associated_audience_id"),
+			),
+			mcp.WithString("claim_objective",
+				mcp.Description("claim_objective (enum: adaccountcustomaudiences_claim_objective_enum_param)"),
+			),
+			mcp.WithString("content_type",
+				mcp.Description("content_type (enum: adaccountcustomaudiences_content_type_enum_param)"),
+			),
+			mcp.WithString("countries",
+				mcp.Description("countries"),
+			),
+			mcp.WithObject("creation_params",
+				mcp.Description("creation_params"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("customer_file_source",
+				mcp.Description("customer_file_source (enum: adaccountcustomaudiences_customer_file_source_enum_param)"),
+			),
+			mcp.WithString("dataset_id",
+				mcp.Description("dataset_id"),
+			),
+			mcp.WithString("description",
+				mcp.Description("description"),
+			),
+			mcp.WithBoolean("enable_fetch_or_create",
+				mcp.Description("enable_fetch_or_create"),
+			),
+			mcp.WithString("event_source_group",
+				mcp.Description("event_source_group"),
+			),
+			mcp.WithArray("event_sources",
+				mcp.Description("event_sources"),
+				mcp.Items(map[string]any{"type": "object"}),
+			),
+			mcp.WithArray("exclusions",
+				mcp.Description("exclusions"),
+				mcp.Items(map[string]any{"type": "object"}),
+			),
+			mcp.WithString("facebook_page_id",
+				mcp.Description("facebook_page_id"),
+			),
+			mcp.WithArray("inclusions",
+				mcp.Description("inclusions"),
+				mcp.Items(map[string]any{"type": "object"}),
+			),
+			mcp.WithBoolean("is_snapshot",
+				mcp.Description("is_snapshot"),
+			),
+			mcp.WithBoolean("is_value_based",
+				mcp.Description("is_value_based"),
+			),
+			mcp.WithArray("list_of_accounts",
+				mcp.Description("list_of_accounts"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithString("lookalike_spec",
+				mcp.Description("lookalike_spec"),
+			),
+			mcp.WithObject("marketing_message_channels",
+				mcp.Description("marketing_message_channels"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("name",
+				mcp.Description("name"),
+			),
+			mcp.WithString("opt_out_link",
+				mcp.Description("opt_out_link"),
+			),
+			mcp.WithString("origin_audience_id",
+				mcp.Description("origin_audience_id"),
+			),
+			mcp.WithNumber("parent_audience_id",
+				mcp.Description("parent_audience_id"),
+			),
+			mcp.WithString("partner_reference_key",
+				mcp.Description("partner_reference_key"),
+			),
+			mcp.WithString("pixel_id",
+				mcp.Description("pixel_id"),
+			),
+			mcp.WithBoolean("prefill",
+				mcp.Description("prefill"),
+			),
+			mcp.WithString("product_set_id",
+				mcp.Description("product_set_id"),
+			),
+			mcp.WithString("regulated_audience_spec",
+				mcp.Description("regulated_audience_spec"),
+			),
+			mcp.WithNumber("retention_days",
+				mcp.Description("retention_days"),
+			),
+			mcp.WithNumber("rev_share_policy_id",
+				mcp.Description("rev_share_policy_id"),
+			),
+			mcp.WithString("rule",
+				mcp.Description("rule"),
+			),
+			mcp.WithString("rule_aggregation",
+				mcp.Description("rule_aggregation"),
+			),
+			mcp.WithArray("subscription_info",
+				mcp.Description("subscription_info"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithString("subtype",
+				mcp.Description("subtype (enum: adaccountcustomaudiences_subtype_enum_param)"),
+			),
+			mcp.WithArray("use_for_products",
+				mcp.Description("use_for_products"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithBoolean("use_in_campaigns",
+				mcp.Description("use_in_campaigns"),
+			),
+			mcp.WithArray("video_group_ids",
+				mcp.Description("video_group_ids"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithString("whats_app_business_phone_number_id",
+				mcp.Description("whats_app_business_phone_number_id"),
+			),
+		),
 		mcp.NewTypedToolHandler(CreateAdAccountCustomaudienceHandler),
 	)
 
-	// Register list_ad_account_customaudiencestos using raw schema
+	// Register list_ad_account_customaudiencestos
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_ad_account_customaudiencestos", "List customaudiencestos for this AdAccount Returns CustomAudiencesTOS.", list_ad_account_customaudiencestosSchema),
+		mcp.NewTool("list_ad_account_customaudiencestos",
+			mcp.WithDescription("List customaudiencestos for this AdAccount Returns CustomAudiencesTOS."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListAdAccountCustomaudiencestosHandler),
 	)
 
-	// Register create_ad_account_customaudiencesto using raw schema
+	// Register create_ad_account_customaudiencesto
 	s.AddTool(
-		mcp.NewToolWithRawSchema("create_ad_account_customaudiencesto", "Create or update customaudiencestos for this AdAccount Returns AdAccount. Required: tos_id", create_ad_account_customaudiencestoSchema),
+		mcp.NewTool("create_ad_account_customaudiencesto",
+			mcp.WithDescription("Create or update customaudiencestos for this AdAccount Returns AdAccount. Required: tos_id"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithString("business_id",
+				mcp.Description("business_id"),
+			),
+			mcp.WithString("tos_id",
+				mcp.Required(),
+				mcp.Description("tos_id"),
+			),
+		),
 		mcp.NewTypedToolHandler(CreateAdAccountCustomaudiencestoHandler),
 	)
 
-	// Register list_ad_account_customconversions using raw schema
+	// Register list_ad_account_customconversions
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_ad_account_customconversions", "List customconversions for this AdAccount Returns CustomConversion.", list_ad_account_customconversionsSchema),
+		mcp.NewTool("list_ad_account_customconversions",
+			mcp.WithDescription("List customconversions for this AdAccount Returns CustomConversion."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListAdAccountCustomconversionsHandler),
 	)
 
-	// Register create_ad_account_customconversion using raw schema
+	// Register create_ad_account_customconversion
 	s.AddTool(
-		mcp.NewToolWithRawSchema("create_ad_account_customconversion", "Create or update customconversions for this AdAccount Returns CustomConversion. Required: name", create_ad_account_customconversionSchema),
+		mcp.NewTool("create_ad_account_customconversion",
+			mcp.WithDescription("Create or update customconversions for this AdAccount Returns CustomConversion. Required: name"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithString("action_source_type",
+				mcp.Description("action_source_type (enum: adaccountcustomconversions_action_source_type_enum_param)"),
+			),
+			mcp.WithString("advanced_rule",
+				mcp.Description("advanced_rule"),
+			),
+			mcp.WithString("custom_event_type",
+				mcp.Description("custom_event_type (enum: adaccountcustomconversions_custom_event_type_enum_param)"),
+			),
+			mcp.WithNumber("default_conversion_value",
+				mcp.Description("default_conversion_value"),
+			),
+			mcp.WithString("description",
+				mcp.Description("description"),
+			),
+			mcp.WithString("event_source_id",
+				mcp.Description("event_source_id"),
+			),
+			mcp.WithString("name",
+				mcp.Required(),
+				mcp.Description("name"),
+			),
+			mcp.WithString("rule",
+				mcp.Description("rule"),
+			),
+		),
 		mcp.NewTypedToolHandler(CreateAdAccountCustomconversionHandler),
 	)
 
-	// Register get_ad_account_delivery_estimate using raw schema
+	// Register get_ad_account_delivery_estimate
 	s.AddTool(
-		mcp.NewToolWithRawSchema("get_ad_account_delivery_estimate", "Get delivery_estimate data for this AdAccount Returns AdAccountDeliveryEstimate. Required: optimization_goal (enum), targeting_spec", get_ad_account_delivery_estimateSchema),
+		mcp.NewTool("get_ad_account_delivery_estimate",
+			mcp.WithDescription("Get delivery_estimate data for this AdAccount Returns AdAccountDeliveryEstimate. Required: optimization_goal (enum), targeting_spec"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithString("optimization_goal",
+				mcp.Required(),
+				mcp.Description("optimization_goal (enum: adaccountdelivery_estimate_optimization_goal_enum_param)"),
+			),
+			mcp.WithObject("promoted_object",
+				mcp.Description("promoted_object"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithObject("targeting_spec",
+				mcp.Required(),
+				mcp.Description("targeting_spec"),
+				mcp.AdditionalProperties(true),
+			),
+		),
 		mcp.NewTypedToolHandler(GetAdAccountDeliveryEstimateHandler),
 	)
 
-	// Register list_ad_account_deprecatedtargetingadsets using raw schema
+	// Register list_ad_account_deprecatedtargetingadsets
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_ad_account_deprecatedtargetingadsets", "List deprecatedtargetingadsets for this AdAccount Returns AdSet.", list_ad_account_deprecatedtargetingadsetsSchema),
+		mcp.NewTool("list_ad_account_deprecatedtargetingadsets",
+			mcp.WithDescription("List deprecatedtargetingadsets for this AdAccount Returns AdSet."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithString("type",
+				mcp.Description("type"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListAdAccountDeprecatedtargetingadsetsHandler),
 	)
 
-	// Register list_ad_account_dsa_recommendations using raw schema
+	// Register list_ad_account_dsa_recommendations
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_ad_account_dsa_recommendations", "List dsa_recommendations for this AdAccount Returns AdAccountDsaRecommendations.", list_ad_account_dsa_recommendationsSchema),
+		mcp.NewTool("list_ad_account_dsa_recommendations",
+			mcp.WithDescription("List dsa_recommendations for this AdAccount Returns AdAccountDsaRecommendations."),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListAdAccountDsaRecommendationsHandler),
 	)
 
-	// Register list_ad_account_generatepreviews using raw schema
+	// Register list_ad_account_generatepreviews
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_ad_account_generatepreviews", "List generatepreviews for this AdAccount Returns AdPreview. Required: ad_format (enum), creative", list_ad_account_generatepreviewsSchema),
+		mcp.NewTool("list_ad_account_generatepreviews",
+			mcp.WithDescription("List generatepreviews for this AdAccount Returns AdPreview. Required: ad_format (enum), creative"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithString("ad_format",
+				mcp.Required(),
+				mcp.Description("ad_format (enum: adaccountgeneratepreviews_ad_format_enum_param)"),
+			),
+			mcp.WithObject("creative",
+				mcp.Required(),
+				mcp.Description("creative"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("creative_feature",
+				mcp.Description("creative_feature (enum: adaccountgeneratepreviews_creative_feature_enum_param)"),
+			),
+			mcp.WithString("dynamic_asset_label",
+				mcp.Description("dynamic_asset_label"),
+			),
+			mcp.WithObject("dynamic_creative_spec",
+				mcp.Description("dynamic_creative_spec"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithObject("dynamic_customization",
+				mcp.Description("dynamic_customization"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("end_date",
+				mcp.Description("end_date"),
+			),
+			mcp.WithNumber("height",
+				mcp.Description("height"),
+			),
+			mcp.WithString("locale",
+				mcp.Description("locale"),
+			),
+			mcp.WithNumber("place_page_id",
+				mcp.Description("place_page_id"),
+			),
+			mcp.WithObject("post",
+				mcp.Description("post"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithArray("product_item_ids",
+				mcp.Description("product_item_ids"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithString("render_type",
+				mcp.Description("render_type (enum: adaccountgeneratepreviews_render_type_enum_param)"),
+			),
+			mcp.WithString("start_date",
+				mcp.Description("start_date"),
+			),
+			mcp.WithNumber("width",
+				mcp.Description("width"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListAdAccountGeneratepreviewsHandler),
 	)
 
-	// Register list_ad_account_impacting_ad_studies using raw schema
+	// Register list_ad_account_impacting_ad_studies
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_ad_account_impacting_ad_studies", "List impacting_ad_studies for this AdAccount Returns AdStudy.", list_ad_account_impacting_ad_studiesSchema),
+		mcp.NewTool("list_ad_account_impacting_ad_studies",
+			mcp.WithDescription("List impacting_ad_studies for this AdAccount Returns AdStudy."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListAdAccountImpactingAdStudiesHandler),
 	)
 
-	// Register get_ad_account_insights using raw schema
+	// Register get_ad_account_insights
 	s.AddTool(
-		mcp.NewToolWithRawSchema("get_ad_account_insights", "List insights for this AdAccount Returns AdsInsights.", get_ad_account_insightsSchema),
+		mcp.NewTool("get_ad_account_insights",
+			mcp.WithDescription("List insights for this AdAccount Returns AdsInsights."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithArray("action_attribution_windows",
+				mcp.Description("action_attribution_windows"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithArray("action_breakdowns",
+				mcp.Description("action_breakdowns"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithString("action_report_time",
+				mcp.Description("action_report_time (enum: adaccountinsights_action_report_time_enum_param)"),
+			),
+			mcp.WithArray("breakdowns",
+				mcp.Description("breakdowns"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithString("date_preset",
+				mcp.Description("date_preset (enum: adaccountinsights_date_preset_enum_param)"),
+			),
+			mcp.WithBoolean("default_summary",
+				mcp.Description("default_summary"),
+			),
+			mcp.WithArray("export_columns",
+				mcp.Description("export_columns"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithString("export_format",
+				mcp.Description("export_format"),
+			),
+			mcp.WithString("export_name",
+				mcp.Description("export_name"),
+			),
+			mcp.WithArray("filtering",
+				mcp.Description("filtering"),
+				mcp.Items(map[string]any{"type": "object"}),
+			),
+			mcp.WithString("level",
+				mcp.Description("level (enum: adaccountinsights_level_enum_param)"),
+			),
+			mcp.WithNumber("product_id_limit",
+				mcp.Description("product_id_limit"),
+			),
+			mcp.WithArray("sort",
+				mcp.Description("sort"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithArray("summary",
+				mcp.Description("summary"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithArray("summary_action_breakdowns",
+				mcp.Description("summary_action_breakdowns"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithString("time_increment",
+				mcp.Description("time_increment"),
+			),
+			mcp.WithObject("time_range",
+				mcp.Description("time_range"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithArray("time_ranges",
+				mcp.Description("time_ranges"),
+				mcp.Items(map[string]any{"type": "object"}),
+			),
+			mcp.WithBoolean("use_account_attribution_setting",
+				mcp.Description("use_account_attribution_setting"),
+			),
+			mcp.WithBoolean("use_unified_attribution_setting",
+				mcp.Description("use_unified_attribution_setting"),
+			),
+		),
 		mcp.NewTypedToolHandler(GetAdAccountInsightsHandler),
 	)
 
-	// Register create_ad_account_insights_report using raw schema
+	// Register create_ad_account_insights_report
 	s.AddTool(
-		mcp.NewToolWithRawSchema("create_ad_account_insights_report", "Generate an insights report for this AdAccount Returns AdReportRun.", create_ad_account_insights_reportSchema),
+		mcp.NewTool("create_ad_account_insights_report",
+			mcp.WithDescription("Generate an insights report for this AdAccount Returns AdReportRun."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("action_attribution_windows",
+				mcp.Description("action_attribution_windows"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithArray("action_breakdowns",
+				mcp.Description("action_breakdowns"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithString("action_report_time",
+				mcp.Description("action_report_time (enum: adaccountinsights_action_report_time_enum_param)"),
+			),
+			mcp.WithArray("breakdowns",
+				mcp.Description("breakdowns"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithString("date_preset",
+				mcp.Description("date_preset (enum: adaccountinsights_date_preset_enum_param)"),
+			),
+			mcp.WithBoolean("default_summary",
+				mcp.Description("default_summary"),
+			),
+			mcp.WithArray("export_columns",
+				mcp.Description("export_columns"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithString("export_format",
+				mcp.Description("export_format"),
+			),
+			mcp.WithString("export_name",
+				mcp.Description("export_name"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("fields"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithArray("filtering",
+				mcp.Description("filtering"),
+				mcp.Items(map[string]any{"type": "object"}),
+			),
+			mcp.WithString("level",
+				mcp.Description("level (enum: adaccountinsights_level_enum_param)"),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("limit"),
+			),
+			mcp.WithNumber("product_id_limit",
+				mcp.Description("product_id_limit"),
+			),
+			mcp.WithArray("sort",
+				mcp.Description("sort"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithArray("summary",
+				mcp.Description("summary"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithArray("summary_action_breakdowns",
+				mcp.Description("summary_action_breakdowns"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithString("time_increment",
+				mcp.Description("time_increment"),
+			),
+			mcp.WithObject("time_range",
+				mcp.Description("time_range"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithArray("time_ranges",
+				mcp.Description("time_ranges"),
+				mcp.Items(map[string]any{"type": "object"}),
+			),
+			mcp.WithBoolean("use_account_attribution_setting",
+				mcp.Description("use_account_attribution_setting"),
+			),
+			mcp.WithBoolean("use_unified_attribution_setting",
+				mcp.Description("use_unified_attribution_setting"),
+			),
+		),
 		mcp.NewTypedToolHandler(CreateAdAccountInsightsReportHandler),
 	)
 
-	// Register list_ad_account_instagram_accounts using raw schema
+	// Register list_ad_account_instagram_accounts
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_ad_account_instagram_accounts", "List instagram_accounts for this AdAccount Returns IGUser.", list_ad_account_instagram_accountsSchema),
+		mcp.NewTool("list_ad_account_instagram_accounts",
+			mcp.WithDescription("List instagram_accounts for this AdAccount Returns IGUser."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListAdAccountInstagramAccountsHandler),
 	)
 
-	// Register list_ad_account_ios_fourteen_campaign_limits using raw schema
+	// Register list_ad_account_ios_fourteen_campaign_limits
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_ad_account_ios_fourteen_campaign_limits", "List ios_fourteen_campaign_limits for this AdAccount Returns AdAccountIosFourteenCampaignLimits. Required: app_id", list_ad_account_ios_fourteen_campaign_limitsSchema),
+		mcp.NewTool("list_ad_account_ios_fourteen_campaign_limits",
+			mcp.WithDescription("List ios_fourteen_campaign_limits for this AdAccount Returns AdAccountIosFourteenCampaignLimits. Required: app_id"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithString("app_id",
+				mcp.Required(),
+				mcp.Description("app_id"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListAdAccountIosFourteenCampaignLimitsHandler),
 	)
 
-	// Register list_ad_account_matched_search_applications using raw schema
+	// Register list_ad_account_matched_search_applications
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_ad_account_matched_search_applications", "List matched_search_applications for this AdAccount Returns AdAccountMatchedSearchApplicationsEdgeData. Required: app_store (enum), query_term", list_ad_account_matched_search_applicationsSchema),
+		mcp.NewTool("list_ad_account_matched_search_applications",
+			mcp.WithDescription("List matched_search_applications for this AdAccount Returns AdAccountMatchedSearchApplicationsEdgeData. Required: app_store (enum), query_term"),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithBoolean("allow_incomplete_app",
+				mcp.Description("allow_incomplete_app"),
+			),
+			mcp.WithString("app_store",
+				mcp.Required(),
+				mcp.Description("app_store (enum: adaccountmatched_search_applications_app_store_enum_param)"),
+			),
+			mcp.WithString("app_store_country",
+				mcp.Description("app_store_country"),
+			),
+			mcp.WithString("business_id",
+				mcp.Description("business_id"),
+			),
+			mcp.WithBoolean("is_skadnetwork_search",
+				mcp.Description("is_skadnetwork_search"),
+			),
+			mcp.WithBoolean("only_apps_with_permission",
+				mcp.Description("only_apps_with_permission"),
+			),
+			mcp.WithString("query_term",
+				mcp.Required(),
+				mcp.Description("query_term"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListAdAccountMatchedSearchApplicationsHandler),
 	)
 
-	// Register get_ad_account_max_bid using raw schema
+	// Register get_ad_account_max_bid
 	s.AddTool(
-		mcp.NewToolWithRawSchema("get_ad_account_max_bid", "Get max_bid data for this AdAccount Returns AdAccountMaxBid.", get_ad_account_max_bidSchema),
+		mcp.NewTool("get_ad_account_max_bid",
+			mcp.WithDescription("Get max_bid data for this AdAccount Returns AdAccountMaxBid."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
 		mcp.NewTypedToolHandler(GetAdAccountMaxBidHandler),
 	)
 
-	// Register list_ad_account_mcmeconversions using raw schema
+	// Register list_ad_account_mcmeconversions
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_ad_account_mcmeconversions", "List mcmeconversions for this AdAccount Returns AdsMcmeConversion.", list_ad_account_mcmeconversionsSchema),
+		mcp.NewTool("list_ad_account_mcmeconversions",
+			mcp.WithDescription("List mcmeconversions for this AdAccount Returns AdsMcmeConversion."),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListAdAccountMcmeconversionsHandler),
 	)
 
-	// Register list_ad_account_minimum_budgets using raw schema
+	// Register list_ad_account_minimum_budgets
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_ad_account_minimum_budgets", "List minimum_budgets for this AdAccount Returns MinimumBudget.", list_ad_account_minimum_budgetsSchema),
+		mcp.NewTool("list_ad_account_minimum_budgets",
+			mcp.WithDescription("List minimum_budgets for this AdAccount Returns MinimumBudget."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithNumber("bid_amount",
+				mcp.Description("bid_amount"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListAdAccountMinimumBudgetsHandler),
 	)
 
-	// Register list_ad_account_onbehalf_requests using raw schema
+	// Register list_ad_account_onbehalf_requests
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_ad_account_onbehalf_requests", "List onbehalf_requests for this AdAccount Returns BusinessOwnedObjectOnBehalfOfRequest.", list_ad_account_onbehalf_requestsSchema),
+		mcp.NewTool("list_ad_account_onbehalf_requests",
+			mcp.WithDescription("List onbehalf_requests for this AdAccount Returns BusinessOwnedObjectOnBehalfOfRequest."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithString("status",
+				mcp.Description("status (enum: adaccountonbehalf_requests_status_enum_param)"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListAdAccountOnbehalfRequestsHandler),
 	)
 
-	// Register create_ad_account_product_audience using raw schema
+	// Register create_ad_account_product_audience
 	s.AddTool(
-		mcp.NewToolWithRawSchema("create_ad_account_product_audience", "Create or update product_audiences for this AdAccount Returns AdAccount. Required: name, product_set_id", create_ad_account_product_audienceSchema),
+		mcp.NewTool("create_ad_account_product_audience",
+			mcp.WithDescription("Create or update product_audiences for this AdAccount Returns AdAccount. Required: name, product_set_id"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("allowed_domains",
+				mcp.Description("allowed_domains"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("associated_audience_id",
+				mcp.Description("associated_audience_id"),
+			),
+			mcp.WithString("claim_objective",
+				mcp.Description("claim_objective (enum: adaccountproduct_audiences_claim_objective_enum_param)"),
+			),
+			mcp.WithString("content_type",
+				mcp.Description("content_type (enum: adaccountproduct_audiences_content_type_enum_param)"),
+			),
+			mcp.WithObject("creation_params",
+				mcp.Description("creation_params"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("description",
+				mcp.Description("description"),
+			),
+			mcp.WithBoolean("enable_fetch_or_create",
+				mcp.Description("enable_fetch_or_create"),
+			),
+			mcp.WithString("event_source_group",
+				mcp.Description("event_source_group"),
+			),
+			mcp.WithArray("event_sources",
+				mcp.Description("event_sources"),
+				mcp.Items(map[string]any{"type": "object"}),
+			),
+			mcp.WithArray("exclusions",
+				mcp.Description("exclusions"),
+				mcp.Items(map[string]any{"type": "object"}),
+			),
+			mcp.WithArray("inclusions",
+				mcp.Description("inclusions"),
+				mcp.Items(map[string]any{"type": "object"}),
+			),
+			mcp.WithBoolean("is_snapshot",
+				mcp.Description("is_snapshot"),
+			),
+			mcp.WithBoolean("is_value_based",
+				mcp.Description("is_value_based"),
+			),
+			mcp.WithString("name",
+				mcp.Required(),
+				mcp.Description("name"),
+			),
+			mcp.WithString("opt_out_link",
+				mcp.Description("opt_out_link"),
+			),
+			mcp.WithNumber("parent_audience_id",
+				mcp.Description("parent_audience_id"),
+			),
+			mcp.WithString("product_set_id",
+				mcp.Required(),
+				mcp.Description("product_set_id"),
+			),
+			mcp.WithNumber("rev_share_policy_id",
+				mcp.Description("rev_share_policy_id"),
+			),
+			mcp.WithString("subtype",
+				mcp.Description("subtype (enum: adaccountproduct_audiences_subtype_enum_param)"),
+			),
+		),
 		mcp.NewTypedToolHandler(CreateAdAccountProductAudienceHandler),
 	)
 
-	// Register list_ad_account_promote_pages using raw schema
+	// Register list_ad_account_promote_pages
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_ad_account_promote_pages", "List promote_pages for this AdAccount Returns Page.", list_ad_account_promote_pagesSchema),
+		mcp.NewTool("list_ad_account_promote_pages",
+			mcp.WithDescription("List promote_pages for this AdAccount Returns Page."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListAdAccountPromotePagesHandler),
 	)
 
-	// Register list_ad_account_publisher_block_lists using raw schema
+	// Register list_ad_account_publisher_block_lists
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_ad_account_publisher_block_lists", "List publisher_block_lists for this AdAccount Returns PublisherBlockList.", list_ad_account_publisher_block_listsSchema),
+		mcp.NewTool("list_ad_account_publisher_block_lists",
+			mcp.WithDescription("List publisher_block_lists for this AdAccount Returns PublisherBlockList."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListAdAccountPublisherBlockListsHandler),
 	)
 
-	// Register create_ad_account_publisher_block_list using raw schema
+	// Register create_ad_account_publisher_block_list
 	s.AddTool(
-		mcp.NewToolWithRawSchema("create_ad_account_publisher_block_list", "Create or update publisher_block_lists for this AdAccount Returns PublisherBlockList.", create_ad_account_publisher_block_listSchema),
+		mcp.NewTool("create_ad_account_publisher_block_list",
+			mcp.WithDescription("Create or update publisher_block_lists for this AdAccount Returns PublisherBlockList."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithString("name",
+				mcp.Description("name"),
+			),
+		),
 		mcp.NewTypedToolHandler(CreateAdAccountPublisherBlockListHandler),
 	)
 
-	// Register get_ad_account_reachestimate using raw schema
+	// Register get_ad_account_reachestimate
 	s.AddTool(
-		mcp.NewToolWithRawSchema("get_ad_account_reachestimate", "Get reachestimate data for this AdAccount Returns AdAccountReachEstimate. Required: targeting_spec", get_ad_account_reachestimateSchema),
+		mcp.NewTool("get_ad_account_reachestimate",
+			mcp.WithDescription("Get reachestimate data for this AdAccount Returns AdAccountReachEstimate. Required: targeting_spec"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithArray("adgroup_ids",
+				mcp.Description("adgroup_ids"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithString("caller_id",
+				mcp.Description("caller_id"),
+			),
+			mcp.WithString("concepts",
+				mcp.Description("concepts"),
+			),
+			mcp.WithString("creative_action_spec",
+				mcp.Description("creative_action_spec"),
+			),
+			mcp.WithBoolean("is_debug",
+				mcp.Description("is_debug"),
+			),
+			mcp.WithString("object_store_url",
+				mcp.Description("object_store_url"),
+			),
+			mcp.WithObject("targeting_spec",
+				mcp.Required(),
+				mcp.Description("targeting_spec"),
+				mcp.AdditionalProperties(true),
+			),
+		),
 		mcp.NewTypedToolHandler(GetAdAccountReachestimateHandler),
 	)
 
-	// Register list_ad_account_reachfrequencypredictions using raw schema
+	// Register list_ad_account_reachfrequencypredictions
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_ad_account_reachfrequencypredictions", "List reachfrequencypredictions for this AdAccount Returns ReachFrequencyPrediction.", list_ad_account_reachfrequencypredictionsSchema),
+		mcp.NewTool("list_ad_account_reachfrequencypredictions",
+			mcp.WithDescription("List reachfrequencypredictions for this AdAccount Returns ReachFrequencyPrediction."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListAdAccountReachfrequencypredictionsHandler),
 	)
 
-	// Register create_ad_account_reachfrequencyprediction using raw schema
+	// Register create_ad_account_reachfrequencyprediction
 	s.AddTool(
-		mcp.NewToolWithRawSchema("create_ad_account_reachfrequencyprediction", "Create or update reachfrequencypredictions for this AdAccount Returns ReachFrequencyPrediction.", create_ad_account_reachfrequencypredictionSchema),
+		mcp.NewTool("create_ad_account_reachfrequencyprediction",
+			mcp.WithDescription("Create or update reachfrequencypredictions for this AdAccount Returns ReachFrequencyPrediction."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithString("action",
+				mcp.Description("action (enum: adaccountreachfrequencypredictions_action_enum_param)"),
+			),
+			mcp.WithArray("ad_formats",
+				mcp.Description("ad_formats"),
+				mcp.Items(map[string]any{"type": "object"}),
+			),
+			mcp.WithNumber("auction_entry_option_index",
+				mcp.Description("auction_entry_option_index"),
+			),
+			mcp.WithNumber("budget",
+				mcp.Description("budget"),
+			),
+			mcp.WithString("buying_type",
+				mcp.Description("buying_type (enum: adaccountreachfrequencypredictions_buying_type_enum_param)"),
+			),
+			mcp.WithString("campaign_group_id",
+				mcp.Description("campaign_group_id"),
+			),
+			mcp.WithArray("day_parting_schedule",
+				mcp.Description("day_parting_schedule"),
+				mcp.Items(map[string]any{"type": "object"}),
+			),
+			mcp.WithString("deal_id",
+				mcp.Description("deal_id"),
+			),
+			mcp.WithNumber("destination_id",
+				mcp.Description("destination_id"),
+			),
+			mcp.WithArray("destination_ids",
+				mcp.Description("destination_ids"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("end_time",
+				mcp.Description("end_time"),
+			),
+			mcp.WithBoolean("exceptions",
+				mcp.Description("exceptions"),
+			),
+			mcp.WithString("existing_campaign_id",
+				mcp.Description("existing_campaign_id"),
+			),
+			mcp.WithNumber("expiration_time",
+				mcp.Description("expiration_time"),
+			),
+			mcp.WithNumber("frequency_cap",
+				mcp.Description("frequency_cap"),
+			),
+			mcp.WithBoolean("grp_buying",
+				mcp.Description("grp_buying"),
+			),
+			mcp.WithNumber("impression",
+				mcp.Description("impression"),
+			),
+			mcp.WithArray("instream_packages",
+				mcp.Description("instream_packages"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("interval_frequency_cap_reset_period",
+				mcp.Description("interval_frequency_cap_reset_period"),
+			),
+			mcp.WithBoolean("is_balanced_frequency",
+				mcp.Description("is_balanced_frequency"),
+			),
+			mcp.WithBoolean("is_bonus_media",
+				mcp.Description("is_bonus_media"),
+			),
+			mcp.WithBoolean("is_conversion_goal",
+				mcp.Description("is_conversion_goal"),
+			),
+			mcp.WithBoolean("is_full_view",
+				mcp.Description("is_full_view"),
+			),
+			mcp.WithBoolean("is_higher_average_frequency",
+				mcp.Description("is_higher_average_frequency"),
+			),
+			mcp.WithBoolean("is_reach_and_frequency_io_buying",
+				mcp.Description("is_reach_and_frequency_io_buying"),
+			),
+			mcp.WithBoolean("is_reserved_buying",
+				mcp.Description("is_reserved_buying"),
+			),
+			mcp.WithNumber("num_curve_points",
+				mcp.Description("num_curve_points"),
+			),
+			mcp.WithString("objective",
+				mcp.Description("objective"),
+			),
+			mcp.WithString("optimization_goal",
+				mcp.Description("optimization_goal"),
+			),
+			mcp.WithNumber("prediction_mode",
+				mcp.Description("prediction_mode"),
+			),
+			mcp.WithNumber("reach",
+				mcp.Description("reach"),
+			),
+			mcp.WithString("rf_prediction_id",
+				mcp.Description("rf_prediction_id"),
+			),
+			mcp.WithString("rf_prediction_id_to_release",
+				mcp.Description("rf_prediction_id_to_release"),
+			),
+			mcp.WithString("rf_prediction_id_to_share",
+				mcp.Description("rf_prediction_id_to_share"),
+			),
+			mcp.WithNumber("start_time",
+				mcp.Description("start_time"),
+			),
+			mcp.WithNumber("stop_time",
+				mcp.Description("stop_time"),
+			),
+			mcp.WithNumber("story_event_type",
+				mcp.Description("story_event_type"),
+			),
+			mcp.WithNumber("target_cpm",
+				mcp.Description("target_cpm"),
+			),
+			mcp.WithNumber("target_frequency",
+				mcp.Description("target_frequency"),
+			),
+			mcp.WithNumber("target_frequency_reset_period",
+				mcp.Description("target_frequency_reset_period"),
+			),
+			mcp.WithObject("target_spec",
+				mcp.Description("target_spec"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithNumber("video_view_length_constraint",
+				mcp.Description("video_view_length_constraint"),
+			),
+		),
 		mcp.NewTypedToolHandler(CreateAdAccountReachfrequencypredictionHandler),
 	)
 
-	// Register list_ad_account_recommendations using raw schema
+	// Register list_ad_account_recommendations
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_ad_account_recommendations", "List recommendations for this AdAccount Returns AdAccountRecommendations.", list_ad_account_recommendationsSchema),
+		mcp.NewTool("list_ad_account_recommendations",
+			mcp.WithDescription("List recommendations for this AdAccount Returns AdAccountRecommendations."),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListAdAccountRecommendationsHandler),
 	)
 
-	// Register create_ad_account_recommendation using raw schema
+	// Register create_ad_account_recommendation
 	s.AddTool(
-		mcp.NewToolWithRawSchema("create_ad_account_recommendation", "Create or update recommendations for this AdAccount Returns AdAccountRecommendations. Required: recommendation_signature", create_ad_account_recommendationSchema),
+		mcp.NewTool("create_ad_account_recommendation",
+			mcp.WithDescription("Create or update recommendations for this AdAccount Returns AdAccountRecommendations. Required: recommendation_signature"),
+			mcp.WithObject("asc_fragmentation_parameters",
+				mcp.Description("asc_fragmentation_parameters"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithObject("autoflow_parameters",
+				mcp.Description("autoflow_parameters"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithObject("fragmentation_parameters",
+				mcp.Description("fragmentation_parameters"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithObject("music_parameters",
+				mcp.Description("music_parameters"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("recommendation_signature",
+				mcp.Required(),
+				mcp.Description("recommendation_signature"),
+			),
+			mcp.WithObject("scale_good_campaign_parameters",
+				mcp.Description("scale_good_campaign_parameters"),
+				mcp.AdditionalProperties(true),
+			),
+		),
 		mcp.NewTypedToolHandler(CreateAdAccountRecommendationHandler),
 	)
 
-	// Register list_ad_account_saved_audiences using raw schema
+	// Register list_ad_account_saved_audiences
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_ad_account_saved_audiences", "List saved_audiences for this AdAccount Returns SavedAudience.", list_ad_account_saved_audiencesSchema),
+		mcp.NewTool("list_ad_account_saved_audiences",
+			mcp.WithDescription("List saved_audiences for this AdAccount Returns SavedAudience."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithString("business_id",
+				mcp.Description("business_id"),
+			),
+			mcp.WithArray("filtering",
+				mcp.Description("filtering"),
+				mcp.Items(map[string]any{"type": "object"}),
+			),
+		),
 		mcp.NewTypedToolHandler(ListAdAccountSavedAudiencesHandler),
 	)
 
-	// Register remove_subscribed_apps_from_ad_account using raw schema
+	// Register remove_subscribed_apps_from_ad_account
 	s.AddTool(
-		mcp.NewToolWithRawSchema("remove_subscribed_apps_from_ad_account", "Remove subscribed_apps from this AdAccount", remove_subscribed_apps_from_ad_accountSchema),
+		mcp.NewTool("remove_subscribed_apps_from_ad_account",
+			mcp.WithDescription("Remove subscribed_apps from this AdAccount"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithString("app_id",
+				mcp.Description("app_id"),
+			),
+		),
 		mcp.NewTypedToolHandler(RemoveSubscribedAppsFromAdAccountHandler),
 	)
 
-	// Register list_ad_account_subscribed_apps using raw schema
+	// Register list_ad_account_subscribed_apps
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_ad_account_subscribed_apps", "List subscribed_apps for this AdAccount Returns AdAccountSubscribedApps.", list_ad_account_subscribed_appsSchema),
+		mcp.NewTool("list_ad_account_subscribed_apps",
+			mcp.WithDescription("List subscribed_apps for this AdAccount Returns AdAccountSubscribedApps."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListAdAccountSubscribedAppsHandler),
 	)
 
-	// Register create_ad_account_subscribed_app using raw schema
+	// Register create_ad_account_subscribed_app
 	s.AddTool(
-		mcp.NewToolWithRawSchema("create_ad_account_subscribed_app", "Create or update subscribed_apps for this AdAccount Returns AdAccountSubscribedApps.", create_ad_account_subscribed_appSchema),
+		mcp.NewTool("create_ad_account_subscribed_app",
+			mcp.WithDescription("Create or update subscribed_apps for this AdAccount Returns AdAccountSubscribedApps."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithString("app_id",
+				mcp.Description("app_id"),
+			),
+		),
 		mcp.NewTypedToolHandler(CreateAdAccountSubscribedAppHandler),
 	)
 
-	// Register get_ad_account_targetingbrowse using raw schema
+	// Register get_ad_account_targetingbrowse
 	s.AddTool(
-		mcp.NewToolWithRawSchema("get_ad_account_targetingbrowse", "Get targeting information for this AdAccount Returns AdAccountTargetingUnified.", get_ad_account_targetingbrowseSchema),
+		mcp.NewTool("get_ad_account_targetingbrowse",
+			mcp.WithDescription("Get targeting information for this AdAccount Returns AdAccountTargetingUnified."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithString("excluded_category",
+				mcp.Description("excluded_category"),
+			),
+			mcp.WithBoolean("include_nodes",
+				mcp.Description("include_nodes"),
+			),
+			mcp.WithBoolean("is_exclusion",
+				mcp.Description("is_exclusion"),
+			),
+			mcp.WithString("limit_type",
+				mcp.Description("limit_type (enum: adaccounttargetingbrowse_limit_type_enum_param)"),
+			),
+			mcp.WithArray("regulated_categories",
+				mcp.Description("regulated_categories"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithArray("regulated_countries",
+				mcp.Description("regulated_countries"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithArray("whitelisted_types",
+				mcp.Description("whitelisted_types"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+		),
 		mcp.NewTypedToolHandler(GetAdAccountTargetingbrowseHandler),
 	)
 
-	// Register get_ad_account_targetingsearch using raw schema
+	// Register get_ad_account_targetingsearch
 	s.AddTool(
-		mcp.NewToolWithRawSchema("get_ad_account_targetingsearch", "Get targeting information for this AdAccount Returns AdAccountTargetingUnified. Required: q", get_ad_account_targetingsearchSchema),
+		mcp.NewTool("get_ad_account_targetingsearch",
+			mcp.WithDescription("Get targeting information for this AdAccount Returns AdAccountTargetingUnified. Required: q"),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithBoolean("allow_only_fat_head_interests",
+				mcp.Description("allow_only_fat_head_interests"),
+			),
+			mcp.WithString("app_store",
+				mcp.Description("app_store (enum: adaccounttargetingsearch_app_store_enum_param)"),
+			),
+			mcp.WithArray("countries",
+				mcp.Description("countries"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithBoolean("is_account_level_brand_safety_exclusion",
+				mcp.Description("is_account_level_brand_safety_exclusion"),
+			),
+			mcp.WithBoolean("is_account_level_employer_exclusion",
+				mcp.Description("is_account_level_employer_exclusion"),
+			),
+			mcp.WithBoolean("is_exclusion",
+				mcp.Description("is_exclusion"),
+			),
+			mcp.WithString("limit_type",
+				mcp.Description("limit_type (enum: adaccounttargetingsearch_limit_type_enum_param)"),
+			),
+			mcp.WithString("objective",
+				mcp.Description("objective (enum: adaccounttargetingsearch_objective_enum_param)"),
+			),
+			mcp.WithObject("promoted_object",
+				mcp.Description("promoted_object"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("q",
+				mcp.Required(),
+				mcp.Description("q"),
+			),
+			mcp.WithArray("regulated_categories",
+				mcp.Description("regulated_categories"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithArray("regulated_countries",
+				mcp.Description("regulated_countries"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("session_id",
+				mcp.Description("session_id"),
+			),
+			mcp.WithArray("targeting_list",
+				mcp.Description("targeting_list"),
+				mcp.Items(map[string]any{"type": "object"}),
+			),
+			mcp.WithArray("whitelisted_types",
+				mcp.Description("whitelisted_types"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+		),
 		mcp.NewTypedToolHandler(GetAdAccountTargetingsearchHandler),
 	)
 
-	// Register list_ad_account_targetingsentencelines using raw schema
+	// Register list_ad_account_targetingsentencelines
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_ad_account_targetingsentencelines", "List targetingsentencelines for this AdAccount Returns TargetingSentenceLine. Required: targeting_spec", list_ad_account_targetingsentencelinesSchema),
+		mcp.NewTool("list_ad_account_targetingsentencelines",
+			mcp.WithDescription("List targetingsentencelines for this AdAccount Returns TargetingSentenceLine. Required: targeting_spec"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithBoolean("discard_ages",
+				mcp.Description("discard_ages"),
+			),
+			mcp.WithBoolean("discard_placements",
+				mcp.Description("discard_placements"),
+			),
+			mcp.WithBoolean("hide_targeting_spec_from_return",
+				mcp.Description("hide_targeting_spec_from_return"),
+			),
+			mcp.WithObject("targeting_spec",
+				mcp.Required(),
+				mcp.Description("targeting_spec"),
+				mcp.AdditionalProperties(true),
+			),
+		),
 		mcp.NewTypedToolHandler(ListAdAccountTargetingsentencelinesHandler),
 	)
 
-	// Register list_ad_account_targetingsuggestions using raw schema
+	// Register list_ad_account_targetingsuggestions
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_ad_account_targetingsuggestions", "List targetingsuggestions for this AdAccount Returns AdAccountTargetingUnified.", list_ad_account_targetingsuggestionsSchema),
+		mcp.NewTool("list_ad_account_targetingsuggestions",
+			mcp.WithDescription("List targetingsuggestions for this AdAccount Returns AdAccountTargetingUnified."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithString("app_store",
+				mcp.Description("app_store (enum: adaccounttargetingsuggestions_app_store_enum_param)"),
+			),
+			mcp.WithArray("countries",
+				mcp.Description("countries"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithString("limit_type",
+				mcp.Description("limit_type (enum: adaccounttargetingsuggestions_limit_type_enum_param)"),
+			),
+			mcp.WithString("mode",
+				mcp.Description("mode (enum: adaccounttargetingsuggestions_mode_enum_param)"),
+			),
+			mcp.WithString("objective",
+				mcp.Description("objective (enum: adaccounttargetingsuggestions_objective_enum_param)"),
+			),
+			mcp.WithObject("objects",
+				mcp.Description("objects"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithArray("regulated_categories",
+				mcp.Description("regulated_categories"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithArray("regulated_countries",
+				mcp.Description("regulated_countries"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("session_id",
+				mcp.Description("session_id"),
+			),
+			mcp.WithArray("targeting_list",
+				mcp.Description("targeting_list"),
+				mcp.Items(map[string]any{"type": "object"}),
+			),
+			mcp.WithArray("whitelisted_types",
+				mcp.Description("whitelisted_types"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+		),
 		mcp.NewTypedToolHandler(ListAdAccountTargetingsuggestionsHandler),
 	)
 
-	// Register get_ad_account_targetingvalidation using raw schema
+	// Register get_ad_account_targetingvalidation
 	s.AddTool(
-		mcp.NewToolWithRawSchema("get_ad_account_targetingvalidation", "Get targeting information for this AdAccount Returns AdAccountTargetingUnified.", get_ad_account_targetingvalidationSchema),
+		mcp.NewTool("get_ad_account_targetingvalidation",
+			mcp.WithDescription("Get targeting information for this AdAccount Returns AdAccountTargetingUnified."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithArray("id_list",
+				mcp.Description("id_list"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithBoolean("is_exclusion",
+				mcp.Description("is_exclusion"),
+			),
+			mcp.WithArray("name_list",
+				mcp.Description("name_list"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithArray("targeting_list",
+				mcp.Description("targeting_list"),
+				mcp.Items(map[string]any{"type": "object"}),
+			),
+		),
 		mcp.NewTypedToolHandler(GetAdAccountTargetingvalidationHandler),
 	)
 
-	// Register get_ad_account_tracking using raw schema
+	// Register get_ad_account_tracking
 	s.AddTool(
-		mcp.NewToolWithRawSchema("get_ad_account_tracking", "Get tracking data for this AdAccount Returns AdAccountTrackingData.", get_ad_account_trackingSchema),
+		mcp.NewTool("get_ad_account_tracking",
+			mcp.WithDescription("Get tracking data for this AdAccount Returns AdAccountTrackingData."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
 		mcp.NewTypedToolHandler(GetAdAccountTrackingHandler),
 	)
 
-	// Register update_ad_account_tracking using raw schema
+	// Register update_ad_account_tracking
 	s.AddTool(
-		mcp.NewToolWithRawSchema("update_ad_account_tracking", "Create or update tracking for this AdAccount Returns AdAccount. Required: tracking_specs", update_ad_account_trackingSchema),
+		mcp.NewTool("update_ad_account_tracking",
+			mcp.WithDescription("Create or update tracking for this AdAccount Returns AdAccount. Required: tracking_specs"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithObject("tracking_specs",
+				mcp.Required(),
+				mcp.Description("tracking_specs"),
+				mcp.AdditionalProperties(true),
+			),
+		),
 		mcp.NewTypedToolHandler(UpdateAdAccountTrackingHandler),
 	)
 
-	// Register list_ad_account_users using raw schema
+	// Register list_ad_account_users
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_ad_account_users", "List users for this AdAccount Returns AdAccountUser.", list_ad_account_usersSchema),
+		mcp.NewTool("list_ad_account_users",
+			mcp.WithDescription("List users for this AdAccount Returns AdAccountUser."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListAdAccountUsersHandler),
 	)
 
-	// Register remove_usersofanyaudience_from_ad_account using raw schema
+	// Register remove_usersofanyaudience_from_ad_account
 	s.AddTool(
-		mcp.NewToolWithRawSchema("remove_usersofanyaudience_from_ad_account", "Remove usersofanyaudience from this AdAccount", remove_usersofanyaudience_from_ad_accountSchema),
+		mcp.NewTool("remove_usersofanyaudience_from_ad_account",
+			mcp.WithDescription("Remove usersofanyaudience from this AdAccount"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithString("namespace",
+				mcp.Description("namespace"),
+			),
+			mcp.WithObject("payload",
+				mcp.Description("payload"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithObject("session",
+				mcp.Description("session"),
+				mcp.AdditionalProperties(true),
+			),
+		),
 		mcp.NewTypedToolHandler(RemoveUsersofanyaudienceFromAdAccountHandler),
 	)
 
-	// Register get_ad_account_value_rule_set using raw schema
+	// Register get_ad_account_value_rule_set
 	s.AddTool(
-		mcp.NewToolWithRawSchema("get_ad_account_value_rule_set", "Get value_rule_set data for this AdAccount Returns AdsValueAdjustmentRuleCollection.", get_ad_account_value_rule_setSchema),
+		mcp.NewTool("get_ad_account_value_rule_set",
+			mcp.WithDescription("Get value_rule_set data for this AdAccount Returns AdsValueAdjustmentRuleCollection."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithString("product_type",
+				mcp.Description("product_type (enum: adaccountvalue_rule_set_product_type_enum_param)"),
+			),
+			mcp.WithString("status",
+				mcp.Description("status (enum: adaccountvalue_rule_set_status_enum_param)"),
+			),
+		),
 		mcp.NewTypedToolHandler(GetAdAccountValueRuleSetHandler),
 	)
 
-	// Register update_ad_account_value_rule_set using raw schema
+	// Register update_ad_account_value_rule_set
 	s.AddTool(
-		mcp.NewToolWithRawSchema("update_ad_account_value_rule_set", "Create or update value_rule_set for this AdAccount Returns AdsValueAdjustmentRuleCollection. Required: name, rules", update_ad_account_value_rule_setSchema),
+		mcp.NewTool("update_ad_account_value_rule_set",
+			mcp.WithDescription("Create or update value_rule_set for this AdAccount Returns AdsValueAdjustmentRuleCollection. Required: name, rules"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithString("name",
+				mcp.Required(),
+				mcp.Description("name"),
+			),
+			mcp.WithString("product_type",
+				mcp.Description("product_type (enum: adaccountvalue_rule_set_product_type_enum_param)"),
+			),
+			mcp.WithArray("rules",
+				mcp.Required(),
+				mcp.Description("rules"),
+				mcp.Items(map[string]any{"type": "object"}),
+			),
+		),
 		mcp.NewTypedToolHandler(UpdateAdAccountValueRuleSetHandler),
 	)
 
-	// Register list_ad_account_video_ads using raw schema
+	// Register list_ad_account_video_ads
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_ad_account_video_ads", "List video_ads for this AdAccount Returns AdVideo.", list_ad_account_video_adsSchema),
+		mcp.NewTool("list_ad_account_video_ads",
+			mcp.WithDescription("List video_ads for this AdAccount Returns AdVideo."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithString("since",
+				mcp.Description("since"),
+			),
+			mcp.WithString("until",
+				mcp.Description("until"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListAdAccountVideoAdsHandler),
 	)
 
-	// Register create_ad_account_video_ad using raw schema
+	// Register create_ad_account_video_ad
 	s.AddTool(
-		mcp.NewToolWithRawSchema("create_ad_account_video_ad", "Create or update video_ads for this AdAccount Returns AdVideo. Required: upload_phase (enum)", create_ad_account_video_adSchema),
+		mcp.NewTool("create_ad_account_video_ad",
+			mcp.WithDescription("Create or update video_ads for this AdAccount Returns AdVideo. Required: upload_phase (enum)"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithString("description",
+				mcp.Description("description"),
+			),
+			mcp.WithString("privacy",
+				mcp.Description("privacy"),
+			),
+			mcp.WithString("title",
+				mcp.Description("title"),
+			),
+			mcp.WithString("upload_phase",
+				mcp.Required(),
+				mcp.Description("upload_phase (enum: adaccountvideo_ads_upload_phase_enum_param)"),
+			),
+			mcp.WithString("video_id",
+				mcp.Description("video_id"),
+			),
+			mcp.WithString("video_state",
+				mcp.Description("video_state (enum: adaccountvideo_ads_video_state_enum_param)"),
+			),
+		),
 		mcp.NewTypedToolHandler(CreateAdAccountVideoAdHandler),
 	)
 
-	// Register get_ad_account using raw schema
+	// Register get_ad_account
 	s.AddTool(
-		mcp.NewToolWithRawSchema("get_ad_account", "Get details of a specific AdAccount Returns AdAccount.", get_ad_accountSchema),
+		mcp.NewTool("get_ad_account",
+			mcp.WithDescription("Get details of a specific AdAccount Returns AdAccount."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
 		mcp.NewTypedToolHandler(GetAdAccountHandler),
 	)
 
-	// Register update_ad_account using raw schema
+	// Register update_ad_account
 	s.AddTool(
-		mcp.NewToolWithRawSchema("update_ad_account", "Update a AdAccount Returns AdAccount.", update_ad_accountSchema),
+		mcp.NewTool("update_ad_account",
+			mcp.WithDescription("Update a AdAccount Returns AdAccount."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("AdAccount ID"),
+			),
+			mcp.WithObject("agency_client_declaration",
+				mcp.Description("agency_client_declaration"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithArray("attribution_spec",
+				mcp.Description("attribution_spec"),
+				mcp.Items(map[string]any{"type": "object"}),
+			),
+			mcp.WithObject("business_info",
+				mcp.Description("business_info"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("currency",
+				mcp.Description("currency (enum: adaccount_currency)"),
+			),
+			mcp.WithObject("custom_audience_info",
+				mcp.Description("custom_audience_info"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("default_dsa_beneficiary",
+				mcp.Description("default_dsa_beneficiary"),
+			),
+			mcp.WithString("default_dsa_payor",
+				mcp.Description("default_dsa_payor"),
+			),
+			mcp.WithString("end_advertiser",
+				mcp.Description("end_advertiser"),
+			),
+			mcp.WithArray("existing_customers",
+				mcp.Description("existing_customers"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithBoolean("is_ba_skip_delayed_eligible",
+				mcp.Description("is_ba_skip_delayed_eligible"),
+			),
+			mcp.WithBoolean("is_notifications_enabled",
+				mcp.Description("is_notifications_enabled"),
+			),
+			mcp.WithString("media_agency",
+				mcp.Description("media_agency"),
+			),
+			mcp.WithString("name",
+				mcp.Description("name"),
+			),
+			mcp.WithString("partner",
+				mcp.Description("partner"),
+			),
+			mcp.WithNumber("spend_cap",
+				mcp.Description("spend_cap"),
+			),
+			mcp.WithString("spend_cap_action",
+				mcp.Description("spend_cap_action"),
+			),
+			mcp.WithNumber("timezone_id",
+				mcp.Description("timezone_id"),
+			),
+			mcp.WithObject("tos_accepted",
+				mcp.Description("tos_accepted"),
+				mcp.AdditionalProperties(true),
+			),
+		),
 		mcp.NewTypedToolHandler(UpdateAdAccountHandler),
 	)
 

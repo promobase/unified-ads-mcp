@@ -5,7 +5,6 @@ package generated
 import (
 	"context"
 	"fmt"
-	"reflect"
 	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
@@ -14,493 +13,493 @@ import (
 
 // remove_access_tokens_from_userArgs defines the typed arguments for remove_access_tokens_from_user
 type remove_access_tokens_from_userArgs struct {
-	ID string `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
+	ID string `json:"id"`
 }
 
 // create_user_access_tokenArgs defines the typed arguments for create_user_access_token
 type create_user_access_tokenArgs struct {
-	ID                      string   `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
-	BusinessApp             string   `json:"business_app" jsonschema:"description=Business App,required"`
-	PageId                  string   `json:"page_id,omitempty" jsonschema:"description=ID of the Page,pattern=^[0-9]+$"`
-	Scope                   []string `json:"scope,omitempty" jsonschema:"description=Scope"`
-	SetTokenExpiresIn60Days bool     `json:"set_token_expires_in_60_days,omitempty" jsonschema:"description=Set Token Expires In 60 Days"`
+	ID                      string   `json:"id"`
+	BusinessApp             string   `json:"business_app"`
+	PageId                  string   `json:"page_id,omitempty"`
+	Scope                   []string `json:"scope,omitempty"`
+	SetTokenExpiresIn60Days bool     `json:"set_token_expires_in_60_days,omitempty"`
 }
 
 // list_user_accountsArgs defines the typed arguments for list_user_accounts
 type list_user_accountsArgs struct {
-	ID           string   `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
-	Fields       []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit        int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After        string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before       string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
-	AdId         string   `json:"ad_id,omitempty" jsonschema:"description=ID of the Ad,pattern=^[0-9]+$"`
-	IsPlace      bool     `json:"is_place,omitempty" jsonschema:"description=Is Place"`
-	IsPromotable bool     `json:"is_promotable,omitempty" jsonschema:"description=Is Promotable"`
+	ID           string   `json:"id"`
+	Fields       []string `json:"fields,omitempty"`
+	Limit        int      `json:"limit,omitempty"`
+	After        string   `json:"after,omitempty"`
+	Before       string   `json:"before,omitempty"`
+	AdId         string   `json:"ad_id,omitempty"`
+	IsPlace      bool     `json:"is_place,omitempty"`
+	IsPromotable bool     `json:"is_promotable,omitempty"`
 }
 
 // create_user_accountArgs defines the typed arguments for create_user_account
 type create_user_accountArgs struct {
-	ID                       string                 `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
-	About                    string                 `json:"about,omitempty" jsonschema:"description=About"`
-	Address                  string                 `json:"address,omitempty" jsonschema:"description=Address"`
-	Category                 int                    `json:"category,omitempty" jsonschema:"description=Category"`
-	CategoryEnum             string                 `json:"category_enum,omitempty" jsonschema:"description=Category Enum"`
-	CategoryList             []string               `json:"category_list,omitempty" jsonschema:"description=Category List"`
-	CityId                   string                 `json:"city_id,omitempty" jsonschema:"description=ID of the City,pattern=^[0-9]+$"`
-	Coordinates              map[string]interface{} `json:"coordinates,omitempty" jsonschema:"description=Coordinates"`
-	CoverPhoto               map[string]interface{} `json:"cover_photo,omitempty" jsonschema:"description=Cover Photo"`
-	Description              string                 `json:"description,omitempty" jsonschema:"description=Description"`
-	IgnoreCoordinateWarnings bool                   `json:"ignore_coordinate_warnings,omitempty" jsonschema:"description=Ignore Coordinate Warnings"`
-	Location                 map[string]interface{} `json:"location,omitempty" jsonschema:"description=Location"`
-	Name                     string                 `json:"name" jsonschema:"description=Name,required"`
-	Phone                    string                 `json:"phone,omitempty" jsonschema:"description=Phone"`
-	Picture                  string                 `json:"picture,omitempty" jsonschema:"description=Picture"`
-	Website                  string                 `json:"website,omitempty" jsonschema:"description=Website"`
-	Zip                      string                 `json:"zip,omitempty" jsonschema:"description=Zip"`
+	ID                       string                 `json:"id"`
+	About                    string                 `json:"about,omitempty"`
+	Address                  string                 `json:"address,omitempty"`
+	Category                 int                    `json:"category,omitempty"`
+	CategoryEnum             string                 `json:"category_enum,omitempty"`
+	CategoryList             []string               `json:"category_list,omitempty"`
+	CityId                   string                 `json:"city_id,omitempty"`
+	Coordinates              map[string]interface{} `json:"coordinates,omitempty"`
+	CoverPhoto               map[string]interface{} `json:"cover_photo,omitempty"`
+	Description              string                 `json:"description,omitempty"`
+	IgnoreCoordinateWarnings bool                   `json:"ignore_coordinate_warnings,omitempty"`
+	Location                 map[string]interface{} `json:"location,omitempty"`
+	Name                     string                 `json:"name"`
+	Phone                    string                 `json:"phone,omitempty"`
+	Picture                  string                 `json:"picture,omitempty"`
+	Website                  string                 `json:"website,omitempty"`
+	Zip                      string                 `json:"zip,omitempty"`
 }
 
 // list_user_ad_studiesArgs defines the typed arguments for list_user_ad_studies
 type list_user_ad_studiesArgs struct {
-	ID     string   `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
-	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After  string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
 }
 
 // create_user_ad_studieArgs defines the typed arguments for create_user_ad_studie
 type create_user_ad_studieArgs struct {
-	ID                 string                   `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
-	Cells              []map[string]interface{} `json:"cells,omitempty" jsonschema:"description=Cells"`
-	ClientBusiness     string                   `json:"client_business,omitempty" jsonschema:"description=Client Business"`
-	ConfidenceLevel    float64                  `json:"confidence_level,omitempty" jsonschema:"description=Confidence Level"`
-	CooldownStartTime  int                      `json:"cooldown_start_time,omitempty" jsonschema:"description=Cooldown Start Time"`
-	Description        string                   `json:"description,omitempty" jsonschema:"description=Description"`
-	EndTime            int                      `json:"end_time,omitempty" jsonschema:"description=End Time"`
-	Name               string                   `json:"name,omitempty" jsonschema:"description=Name"`
-	Objectives         []map[string]interface{} `json:"objectives,omitempty" jsonschema:"description=Objectives"`
-	ObservationEndTime int                      `json:"observation_end_time,omitempty" jsonschema:"description=Observation End Time"`
-	StartTime          int                      `json:"start_time,omitempty" jsonschema:"description=Start Time"`
-	Type               string                   `json:"type,omitempty" jsonschema:"description=Type"`
-	Viewers            []int                    `json:"viewers,omitempty" jsonschema:"description=Viewers"`
+	ID                 string                   `json:"id"`
+	Cells              []map[string]interface{} `json:"cells,omitempty"`
+	ClientBusiness     string                   `json:"client_business,omitempty"`
+	ConfidenceLevel    float64                  `json:"confidence_level,omitempty"`
+	CooldownStartTime  int                      `json:"cooldown_start_time,omitempty"`
+	Description        string                   `json:"description,omitempty"`
+	EndTime            int                      `json:"end_time,omitempty"`
+	Name               string                   `json:"name,omitempty"`
+	Objectives         []map[string]interface{} `json:"objectives,omitempty"`
+	ObservationEndTime int                      `json:"observation_end_time,omitempty"`
+	StartTime          int                      `json:"start_time,omitempty"`
+	Type               string                   `json:"type,omitempty"`
+	Viewers            []int                    `json:"viewers,omitempty"`
 }
 
 // list_user_adaccountsArgs defines the typed arguments for list_user_adaccounts
 type list_user_adaccountsArgs struct {
-	ID     string   `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
-	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After  string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
 }
 
 // list_user_albumsArgs defines the typed arguments for list_user_albums
 type list_user_albumsArgs struct {
-	ID     string   `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
-	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After  string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
 }
 
 // create_user_applicationArgs defines the typed arguments for create_user_application
 type create_user_applicationArgs struct {
-	ID          string `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
-	BusinessApp int    `json:"business_app" jsonschema:"description=Business App,required"`
+	ID          string `json:"id"`
+	BusinessApp int    `json:"business_app"`
 }
 
 // list_user_apprequestformerrecipientsArgs defines the typed arguments for list_user_apprequestformerrecipients
 type list_user_apprequestformerrecipientsArgs struct {
-	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After  string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
 }
 
 // list_user_apprequestsArgs defines the typed arguments for list_user_apprequests
 type list_user_apprequestsArgs struct {
-	ID     string   `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
-	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After  string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
 }
 
 // list_user_assigned_ad_accountsArgs defines the typed arguments for list_user_assigned_ad_accounts
 type list_user_assigned_ad_accountsArgs struct {
-	ID     string   `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
-	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After  string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
 }
 
 // list_user_assigned_applicationsArgs defines the typed arguments for list_user_assigned_applications
 type list_user_assigned_applicationsArgs struct {
-	ID     string   `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
-	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After  string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
 }
 
 // list_user_assigned_business_asset_groupsArgs defines the typed arguments for list_user_assigned_business_asset_groups
 type list_user_assigned_business_asset_groupsArgs struct {
-	ID               string   `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
-	Fields           []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit            int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After            string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before           string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
-	ContainedAssetId string   `json:"contained_asset_id,omitempty" jsonschema:"description=ID of the Contained Asset,pattern=^[0-9]+$"`
+	ID               string   `json:"id"`
+	Fields           []string `json:"fields,omitempty"`
+	Limit            int      `json:"limit,omitempty"`
+	After            string   `json:"after,omitempty"`
+	Before           string   `json:"before,omitempty"`
+	ContainedAssetId string   `json:"contained_asset_id,omitempty"`
 }
 
 // list_user_assigned_pagesArgs defines the typed arguments for list_user_assigned_pages
 type list_user_assigned_pagesArgs struct {
-	ID     string        `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
-	Fields []string      `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit  int           `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After  string        `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before string        `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
-	Pages  []interface{} `json:"pages,omitempty" jsonschema:"description=Pages,minimum=13,maximum=100"`
+	ID     string        `json:"id"`
+	Fields []string      `json:"fields,omitempty"`
+	Limit  int           `json:"limit,omitempty"`
+	After  string        `json:"after,omitempty"`
+	Before string        `json:"before,omitempty"`
+	Pages  []interface{} `json:"pages,omitempty"`
 }
 
 // list_user_assigned_product_catalogsArgs defines the typed arguments for list_user_assigned_product_catalogs
 type list_user_assigned_product_catalogsArgs struct {
-	ID     string   `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
-	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After  string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
 }
 
 // list_user_avatarsArgs defines the typed arguments for list_user_avatars
 type list_user_avatarsArgs struct {
-	ID     string   `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
-	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After  string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
 }
 
 // list_user_business_usersArgs defines the typed arguments for list_user_business_users
 type list_user_business_usersArgs struct {
-	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After  string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
 }
 
 // remove_businesses_from_userArgs defines the typed arguments for remove_businesses_from_user
 type remove_businesses_from_userArgs struct {
-	ID       string `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
-	Business string `json:"business,omitempty" jsonschema:"description=Business"`
+	ID       string `json:"id"`
+	Business string `json:"business,omitempty"`
 }
 
 // list_user_businessesArgs defines the typed arguments for list_user_businesses
 type list_user_businessesArgs struct {
-	ID     string   `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
-	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After  string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
 }
 
 // create_user_businesseArgs defines the typed arguments for create_user_businesse
 type create_user_businesseArgs struct {
-	ID                      string `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
-	ChildBusinessExternalId string `json:"child_business_external_id,omitempty" jsonschema:"description=ID of the Child Business External,pattern=^[0-9]+$"`
-	Email                   string `json:"email,omitempty" jsonschema:"description=Email"`
-	Name                    string `json:"name" jsonschema:"description=Name,required"`
-	PrimaryPage             string `json:"primary_page,omitempty" jsonschema:"description=Primary Page"`
-	SalesRepEmail           string `json:"sales_rep_email,omitempty" jsonschema:"description=Sales Rep Email"`
-	SurveyBusinessType      string `json:"survey_business_type,omitempty" jsonschema:"description=Survey Business Type"`
-	SurveyNumAssets         int    `json:"survey_num_assets,omitempty" jsonschema:"description=Survey Num Assets"`
-	SurveyNumPeople         int    `json:"survey_num_people,omitempty" jsonschema:"description=Survey Num People"`
-	TimezoneId              string `json:"timezone_id,omitempty" jsonschema:"description=ID of the Timezone,pattern=^[0-9]+$"`
-	Vertical                string `json:"vertical" jsonschema:"description=Vertical,required"`
+	ID                      string `json:"id"`
+	ChildBusinessExternalId string `json:"child_business_external_id,omitempty"`
+	Email                   string `json:"email,omitempty"`
+	Name                    string `json:"name"`
+	PrimaryPage             string `json:"primary_page,omitempty"`
+	SalesRepEmail           string `json:"sales_rep_email,omitempty"`
+	SurveyBusinessType      string `json:"survey_business_type,omitempty"`
+	SurveyNumAssets         int    `json:"survey_num_assets,omitempty"`
+	SurveyNumPeople         int    `json:"survey_num_people,omitempty"`
+	TimezoneId              string `json:"timezone_id,omitempty"`
+	Vertical                string `json:"vertical"`
 }
 
 // list_user_conversationsArgs defines the typed arguments for list_user_conversations
 type list_user_conversationsArgs struct {
-	ID       string   `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
-	Fields   []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit    int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After    string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before   string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
-	Folder   string   `json:"folder,omitempty" jsonschema:"description=Folder"`
-	Platform string   `json:"platform,omitempty" jsonschema:"description=Platform"`
-	Tags     []string `json:"tags,omitempty" jsonschema:"description=Tags"`
-	UserId   string   `json:"user_id,omitempty" jsonschema:"description=ID of the User,pattern=^[0-9]+$"`
+	ID       string   `json:"id"`
+	Fields   []string `json:"fields,omitempty"`
+	Limit    int      `json:"limit,omitempty"`
+	After    string   `json:"after,omitempty"`
+	Before   string   `json:"before,omitempty"`
+	Folder   string   `json:"folder,omitempty"`
+	Platform string   `json:"platform,omitempty"`
+	Tags     []string `json:"tags,omitempty"`
+	UserId   string   `json:"user_id,omitempty"`
 }
 
 // list_user_custom_labelsArgs defines the typed arguments for list_user_custom_labels
 type list_user_custom_labelsArgs struct {
-	ID     string   `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
-	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After  string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
 }
 
 // list_user_eventsArgs defines the typed arguments for list_user_events
 type list_user_eventsArgs struct {
-	ID              string   `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
-	Fields          []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit           int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After           string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before          string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
-	IncludeCanceled bool     `json:"include_canceled,omitempty" jsonschema:"description=Include Canceled"`
-	Type            string   `json:"type,omitempty" jsonschema:"description=Type"`
+	ID              string   `json:"id"`
+	Fields          []string `json:"fields,omitempty"`
+	Limit           int      `json:"limit,omitempty"`
+	After           string   `json:"after,omitempty"`
+	Before          string   `json:"before,omitempty"`
+	IncludeCanceled bool     `json:"include_canceled,omitempty"`
+	Type            string   `json:"type,omitempty"`
 }
 
 // get_user_feedArgs defines the typed arguments for get_user_feed
 type get_user_feedArgs struct {
-	ID            string   `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
-	Fields        []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit         int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After         string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before        string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
-	IncludeHidden bool     `json:"include_hidden,omitempty" jsonschema:"description=Include Hidden"`
-	Q             string   `json:"q,omitempty" jsonschema:"description=Q"`
-	ShowExpired   bool     `json:"show_expired,omitempty" jsonschema:"description=Show Expired"`
-	Since         string   `json:"since,omitempty" jsonschema:"description=Since,format=date-time"`
-	Until         string   `json:"until,omitempty" jsonschema:"description=Until,format=date-time"`
-	With          string   `json:"with,omitempty" jsonschema:"description=With"`
+	ID            string   `json:"id"`
+	Fields        []string `json:"fields,omitempty"`
+	Limit         int      `json:"limit,omitempty"`
+	After         string   `json:"after,omitempty"`
+	Before        string   `json:"before,omitempty"`
+	IncludeHidden bool     `json:"include_hidden,omitempty"`
+	Q             string   `json:"q,omitempty"`
+	ShowExpired   bool     `json:"show_expired,omitempty"`
+	Since         string   `json:"since,omitempty"`
+	Until         string   `json:"until,omitempty"`
+	With          string   `json:"with,omitempty"`
 }
 
 // update_user_feedArgs defines the typed arguments for update_user_feed
 type update_user_feedArgs struct {
-	ID                        string                   `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
-	Actions                   map[string]interface{}   `json:"actions,omitempty" jsonschema:"description=Actions"`
-	AlbumId                   string                   `json:"album_id,omitempty" jsonschema:"description=ID of the Album,pattern=^[0-9]+$"`
-	AndroidKeyHash            string                   `json:"android_key_hash,omitempty" jsonschema:"description=Android Key Hash"`
-	ApplicationId             string                   `json:"application_id,omitempty" jsonschema:"description=ID of the Application,pattern=^[0-9]+$"`
-	AskedFunFactPromptId      int                      `json:"asked_fun_fact_prompt_id,omitempty" jsonschema:"description=ID of the Asked Fun Fact Prompt,pattern=^[0-9]+$"`
-	Asset3dId                 string                   `json:"asset3d_id,omitempty" jsonschema:"description=ID of the Asset3d,pattern=^[0-9]+$"`
-	AssociatedId              string                   `json:"associated_id,omitempty" jsonschema:"description=ID of the Associated,pattern=^[0-9]+$"`
-	AttachPlaceSuggestion     bool                     `json:"attach_place_suggestion,omitempty" jsonschema:"description=Attach Place Suggestion"`
-	AttachedMedia             []map[string]interface{} `json:"attached_media,omitempty" jsonschema:"description=Attached Media"`
-	AudienceExp               bool                     `json:"audience_exp,omitempty" jsonschema:"description=Audience Exp"`
-	BackdatedTime             string                   `json:"backdated_time,omitempty" jsonschema:"description=Backdated Time,format=date-time"`
-	BackdatedTimeGranularity  string                   `json:"backdated_time_granularity,omitempty" jsonschema:"description=Backdated Time Granularity"`
-	BreakingNews              bool                     `json:"breaking_news,omitempty" jsonschema:"description=Breaking News"`
-	BreakingNewsExpiration    int                      `json:"breaking_news_expiration,omitempty" jsonschema:"description=Breaking News Expiration"`
-	CallToAction              map[string]interface{}   `json:"call_to_action,omitempty" jsonschema:"description=Call To Action"`
-	Caption                   string                   `json:"caption,omitempty" jsonschema:"description=Caption"`
-	ChildAttachments          []map[string]interface{} `json:"child_attachments,omitempty" jsonschema:"description=Child Attachments"`
-	ClientMutationId          string                   `json:"client_mutation_id,omitempty" jsonschema:"description=ID of the Client Mutation,pattern=^[0-9]+$"`
-	ComposerEntryPicker       string                   `json:"composer_entry_picker,omitempty" jsonschema:"description=Composer Entry Picker"`
-	ComposerEntryPoint        string                   `json:"composer_entry_point,omitempty" jsonschema:"description=Composer Entry Point"`
-	ComposerEntryTime         int                      `json:"composer_entry_time,omitempty" jsonschema:"description=Composer Entry Time"`
-	ComposerSessionEventsLog  string                   `json:"composer_session_events_log,omitempty" jsonschema:"description=Composer Session Events Log"`
-	ComposerSessionId         string                   `json:"composer_session_id,omitempty" jsonschema:"description=ID of the Composer Session,pattern=^[0-9]+$"`
-	ComposerSourceSurface     string                   `json:"composer_source_surface,omitempty" jsonschema:"description=Composer Source Surface"`
-	ComposerType              string                   `json:"composer_type,omitempty" jsonschema:"description=Composer Type"`
-	ConnectionClass           string                   `json:"connection_class,omitempty" jsonschema:"description=Connection Class"`
-	ContentAttachment         string                   `json:"content_attachment,omitempty" jsonschema:"description=Content Attachment"`
-	Coordinates               map[string]interface{}   `json:"coordinates,omitempty" jsonschema:"description=Coordinates"`
-	CtaLink                   string                   `json:"cta_link,omitempty" jsonschema:"description=Cta Link"`
-	CtaType                   string                   `json:"cta_type,omitempty" jsonschema:"description=Cta Type"`
-	Description               string                   `json:"description,omitempty" jsonschema:"description=Description"`
-	DirectShareStatus         int                      `json:"direct_share_status,omitempty" jsonschema:"description=Direct Share Status"`
-	ExpandedHeight            int                      `json:"expanded_height,omitempty" jsonschema:"description=Expanded Height"`
-	ExpandedWidth             int                      `json:"expanded_width,omitempty" jsonschema:"description=Expanded Width"`
-	FeedTargeting             map[string]interface{}   `json:"feed_targeting,omitempty" jsonschema:"description=Feed Targeting"`
-	Formatting                string                   `json:"formatting,omitempty" jsonschema:"description=Formatting"`
-	FunFactPromptId           string                   `json:"fun_fact_prompt_id,omitempty" jsonschema:"description=ID of the Fun Fact Prompt,pattern=^[0-9]+$"`
-	FunFactToasteeId          int                      `json:"fun_fact_toastee_id,omitempty" jsonschema:"description=ID of the Fun Fact Toastee,pattern=^[0-9]+$"`
-	Height                    int                      `json:"height,omitempty" jsonschema:"description=Height"`
-	HomeCheckinCityId         map[string]interface{}   `json:"home_checkin_city_id,omitempty" jsonschema:"description=ID of the Home Checkin City,pattern=^[0-9]+$"`
-	ImageCrops                map[string]interface{}   `json:"image_crops,omitempty" jsonschema:"description=Image Crops,minimum=13,maximum=100"`
-	ImplicitWithTags          []int                    `json:"implicit_with_tags,omitempty" jsonschema:"description=Implicit With Tags"`
-	InstantGameEntryPointData string                   `json:"instant_game_entry_point_data,omitempty" jsonschema:"description=Instant Game Entry Point Data"`
-	IosBundleId               string                   `json:"ios_bundle_id,omitempty" jsonschema:"description=ID of the Ios Bundle,pattern=^[0-9]+$"`
-	IsBackoutDraft            bool                     `json:"is_backout_draft,omitempty" jsonschema:"description=Is Backout Draft"`
-	IsBoostIntended           bool                     `json:"is_boost_intended,omitempty" jsonschema:"description=Is Boost Intended"`
-	IsExplicitLocation        bool                     `json:"is_explicit_location,omitempty" jsonschema:"description=Is Explicit Location"`
-	IsExplicitShare           bool                     `json:"is_explicit_share,omitempty" jsonschema:"description=Is Explicit Share"`
-	IsGroupLinkingPost        bool                     `json:"is_group_linking_post,omitempty" jsonschema:"description=Is Group Linking Post"`
-	IsPhotoContainer          bool                     `json:"is_photo_container,omitempty" jsonschema:"description=Is Photo Container"`
-	Link                      string                   `json:"link,omitempty" jsonschema:"description=Link"`
-	LocationSourceId          string                   `json:"location_source_id,omitempty" jsonschema:"description=ID of the Location Source,pattern=^[0-9]+$"`
-	ManualPrivacy             bool                     `json:"manual_privacy,omitempty" jsonschema:"description=Manual Privacy"`
-	Message                   string                   `json:"message,omitempty" jsonschema:"description=Message"`
-	MultiShareEndCard         bool                     `json:"multi_share_end_card,omitempty" jsonschema:"description=Multi Share End Card"`
-	MultiShareOptimized       bool                     `json:"multi_share_optimized,omitempty" jsonschema:"description=Multi Share Optimized"`
-	Name                      string                   `json:"name,omitempty" jsonschema:"description=Name"`
-	NectarModule              string                   `json:"nectar_module,omitempty" jsonschema:"description=Nectar Module"`
-	ObjectAttachment          string                   `json:"object_attachment,omitempty" jsonschema:"description=Object Attachment"`
-	OgActionTypeId            string                   `json:"og_action_type_id,omitempty" jsonschema:"description=ID of the Og Action Type,pattern=^[0-9]+$"`
-	OgHideObjectAttachment    bool                     `json:"og_hide_object_attachment,omitempty" jsonschema:"description=Og Hide Object Attachment"`
-	OgIconId                  string                   `json:"og_icon_id,omitempty" jsonschema:"description=ID of the Og Icon,pattern=^[0-9]+$"`
-	OgObjectId                string                   `json:"og_object_id,omitempty" jsonschema:"description=ID of the Og Object,pattern=^[0-9]+$"`
-	OgPhrase                  string                   `json:"og_phrase,omitempty" jsonschema:"description=Og Phrase"`
-	OgSetProfileBadge         bool                     `json:"og_set_profile_badge,omitempty" jsonschema:"description=Og Set Profile Badge"`
-	OgSuggestionMechanism     string                   `json:"og_suggestion_mechanism,omitempty" jsonschema:"description=Og Suggestion Mechanism"`
-	PageRecommendation        string                   `json:"page_recommendation,omitempty" jsonschema:"description=Page Recommendation"`
-	Picture                   string                   `json:"picture,omitempty" jsonschema:"description=Picture"`
-	Place                     map[string]interface{}   `json:"place,omitempty" jsonschema:"description=Place"`
-	PlaceAttachmentSetting    string                   `json:"place_attachment_setting,omitempty" jsonschema:"description=Place Attachment Setting"`
-	PlaceList                 string                   `json:"place_list,omitempty" jsonschema:"description=Place List"`
-	PlaceListData             interface{}              `json:"place_list_data,omitempty" jsonschema:"description=Place List Data"`
-	PostSurfacesBlacklist     []string                 `json:"post_surfaces_blacklist,omitempty" jsonschema:"description=Post Surfaces Blacklist"`
-	PostingToRedspace         string                   `json:"posting_to_redspace,omitempty" jsonschema:"description=Posting To Redspace"`
-	Privacy                   string                   `json:"privacy,omitempty" jsonschema:"description=Privacy"`
-	PromptId                  string                   `json:"prompt_id,omitempty" jsonschema:"description=ID of the Prompt,pattern=^[0-9]+$"`
-	PromptTrackingString      string                   `json:"prompt_tracking_string,omitempty" jsonschema:"description=Prompt Tracking String"`
-	Properties                map[string]interface{}   `json:"properties,omitempty" jsonschema:"description=Properties"`
-	ProxiedAppId              string                   `json:"proxied_app_id,omitempty" jsonschema:"description=ID of the Proxied App,pattern=^[0-9]+$"`
-	PublishEventId            int                      `json:"publish_event_id,omitempty" jsonschema:"description=ID of the Publish Event,pattern=^[0-9]+$"`
-	Published                 bool                     `json:"published,omitempty" jsonschema:"description=Published"`
-	Quote                     string                   `json:"quote,omitempty" jsonschema:"description=Quote"`
-	Ref                       []string                 `json:"ref,omitempty" jsonschema:"description=Ref"`
-	ReferenceableImageIds     []string                 `json:"referenceable_image_ids,omitempty" jsonschema:"description=Referenceable Image Ids,pattern=^[0-9]+$"`
-	ReferralId                string                   `json:"referral_id,omitempty" jsonschema:"description=ID of the Referral,pattern=^[0-9]+$"`
-	ScheduledPublishTime      string                   `json:"scheduled_publish_time,omitempty" jsonschema:"description=Scheduled Publish Time,format=date-time"`
-	Source                    string                   `json:"source,omitempty" jsonschema:"description=Source"`
-	SponsorId                 string                   `json:"sponsor_id,omitempty" jsonschema:"description=ID of the Sponsor,pattern=^[0-9]+$"`
-	SponsorRelationship       int                      `json:"sponsor_relationship,omitempty" jsonschema:"description=Sponsor Relationship"`
-	SuggestedPlaceId          map[string]interface{}   `json:"suggested_place_id,omitempty" jsonschema:"description=ID of the Suggested Place,pattern=^[0-9]+$"`
-	Tags                      []int                    `json:"tags,omitempty" jsonschema:"description=Tags"`
-	TargetSurface             string                   `json:"target_surface,omitempty" jsonschema:"description=Target Surface"`
-	Targeting                 map[string]interface{}   `json:"targeting,omitempty" jsonschema:"description=Targeting"`
-	TextFormatMetadata        string                   `json:"text_format_metadata,omitempty" jsonschema:"description=Text Format Metadata"`
-	TextFormatPresetId        string                   `json:"text_format_preset_id,omitempty" jsonschema:"description=ID of the Text Format Preset,pattern=^[0-9]+$"`
-	TextOnlyPlace             string                   `json:"text_only_place,omitempty" jsonschema:"description=Text Only Place"`
-	Thumbnail                 interface{}              `json:"thumbnail,omitempty" jsonschema:"description=Thumbnail"`
-	TimeSinceOriginalPost     int                      `json:"time_since_original_post,omitempty" jsonschema:"description=Time Since Original Post"`
-	Title                     string                   `json:"title,omitempty" jsonschema:"description=Title"`
-	TrackingInfo              string                   `json:"tracking_info,omitempty" jsonschema:"description=Tracking Info"`
-	UnpublishedContentType    string                   `json:"unpublished_content_type,omitempty" jsonschema:"description=Unpublished Content Type"`
-	UserSelectedTags          bool                     `json:"user_selected_tags,omitempty" jsonschema:"description=User Selected Tags"`
-	VideoStartTimeMs          int                      `json:"video_start_time_ms,omitempty" jsonschema:"description=Video Start Time Ms"`
-	ViewerCoordinates         map[string]interface{}   `json:"viewer_coordinates,omitempty" jsonschema:"description=Viewer Coordinates"`
-	Width                     int                      `json:"width,omitempty" jsonschema:"description=Width"`
+	ID                        string                   `json:"id"`
+	Actions                   map[string]interface{}   `json:"actions,omitempty"`
+	AlbumId                   string                   `json:"album_id,omitempty"`
+	AndroidKeyHash            string                   `json:"android_key_hash,omitempty"`
+	ApplicationId             string                   `json:"application_id,omitempty"`
+	AskedFunFactPromptId      int                      `json:"asked_fun_fact_prompt_id,omitempty"`
+	Asset3dId                 string                   `json:"asset3d_id,omitempty"`
+	AssociatedId              string                   `json:"associated_id,omitempty"`
+	AttachPlaceSuggestion     bool                     `json:"attach_place_suggestion,omitempty"`
+	AttachedMedia             []map[string]interface{} `json:"attached_media,omitempty"`
+	AudienceExp               bool                     `json:"audience_exp,omitempty"`
+	BackdatedTime             string                   `json:"backdated_time,omitempty"`
+	BackdatedTimeGranularity  string                   `json:"backdated_time_granularity,omitempty"`
+	BreakingNews              bool                     `json:"breaking_news,omitempty"`
+	BreakingNewsExpiration    int                      `json:"breaking_news_expiration,omitempty"`
+	CallToAction              map[string]interface{}   `json:"call_to_action,omitempty"`
+	Caption                   string                   `json:"caption,omitempty"`
+	ChildAttachments          []map[string]interface{} `json:"child_attachments,omitempty"`
+	ClientMutationId          string                   `json:"client_mutation_id,omitempty"`
+	ComposerEntryPicker       string                   `json:"composer_entry_picker,omitempty"`
+	ComposerEntryPoint        string                   `json:"composer_entry_point,omitempty"`
+	ComposerEntryTime         int                      `json:"composer_entry_time,omitempty"`
+	ComposerSessionEventsLog  string                   `json:"composer_session_events_log,omitempty"`
+	ComposerSessionId         string                   `json:"composer_session_id,omitempty"`
+	ComposerSourceSurface     string                   `json:"composer_source_surface,omitempty"`
+	ComposerType              string                   `json:"composer_type,omitempty"`
+	ConnectionClass           string                   `json:"connection_class,omitempty"`
+	ContentAttachment         string                   `json:"content_attachment,omitempty"`
+	Coordinates               map[string]interface{}   `json:"coordinates,omitempty"`
+	CtaLink                   string                   `json:"cta_link,omitempty"`
+	CtaType                   string                   `json:"cta_type,omitempty"`
+	Description               string                   `json:"description,omitempty"`
+	DirectShareStatus         int                      `json:"direct_share_status,omitempty"`
+	ExpandedHeight            int                      `json:"expanded_height,omitempty"`
+	ExpandedWidth             int                      `json:"expanded_width,omitempty"`
+	FeedTargeting             map[string]interface{}   `json:"feed_targeting,omitempty"`
+	Formatting                string                   `json:"formatting,omitempty"`
+	FunFactPromptId           string                   `json:"fun_fact_prompt_id,omitempty"`
+	FunFactToasteeId          int                      `json:"fun_fact_toastee_id,omitempty"`
+	Height                    int                      `json:"height,omitempty"`
+	HomeCheckinCityId         map[string]interface{}   `json:"home_checkin_city_id,omitempty"`
+	ImageCrops                map[string]interface{}   `json:"image_crops,omitempty"`
+	ImplicitWithTags          []int                    `json:"implicit_with_tags,omitempty"`
+	InstantGameEntryPointData string                   `json:"instant_game_entry_point_data,omitempty"`
+	IosBundleId               string                   `json:"ios_bundle_id,omitempty"`
+	IsBackoutDraft            bool                     `json:"is_backout_draft,omitempty"`
+	IsBoostIntended           bool                     `json:"is_boost_intended,omitempty"`
+	IsExplicitLocation        bool                     `json:"is_explicit_location,omitempty"`
+	IsExplicitShare           bool                     `json:"is_explicit_share,omitempty"`
+	IsGroupLinkingPost        bool                     `json:"is_group_linking_post,omitempty"`
+	IsPhotoContainer          bool                     `json:"is_photo_container,omitempty"`
+	Link                      string                   `json:"link,omitempty"`
+	LocationSourceId          string                   `json:"location_source_id,omitempty"`
+	ManualPrivacy             bool                     `json:"manual_privacy,omitempty"`
+	Message                   string                   `json:"message,omitempty"`
+	MultiShareEndCard         bool                     `json:"multi_share_end_card,omitempty"`
+	MultiShareOptimized       bool                     `json:"multi_share_optimized,omitempty"`
+	Name                      string                   `json:"name,omitempty"`
+	NectarModule              string                   `json:"nectar_module,omitempty"`
+	ObjectAttachment          string                   `json:"object_attachment,omitempty"`
+	OgActionTypeId            string                   `json:"og_action_type_id,omitempty"`
+	OgHideObjectAttachment    bool                     `json:"og_hide_object_attachment,omitempty"`
+	OgIconId                  string                   `json:"og_icon_id,omitempty"`
+	OgObjectId                string                   `json:"og_object_id,omitempty"`
+	OgPhrase                  string                   `json:"og_phrase,omitempty"`
+	OgSetProfileBadge         bool                     `json:"og_set_profile_badge,omitempty"`
+	OgSuggestionMechanism     string                   `json:"og_suggestion_mechanism,omitempty"`
+	PageRecommendation        string                   `json:"page_recommendation,omitempty"`
+	Picture                   string                   `json:"picture,omitempty"`
+	Place                     map[string]interface{}   `json:"place,omitempty"`
+	PlaceAttachmentSetting    string                   `json:"place_attachment_setting,omitempty"`
+	PlaceList                 string                   `json:"place_list,omitempty"`
+	PlaceListData             interface{}              `json:"place_list_data,omitempty"`
+	PostSurfacesBlacklist     []string                 `json:"post_surfaces_blacklist,omitempty"`
+	PostingToRedspace         string                   `json:"posting_to_redspace,omitempty"`
+	Privacy                   string                   `json:"privacy,omitempty"`
+	PromptId                  string                   `json:"prompt_id,omitempty"`
+	PromptTrackingString      string                   `json:"prompt_tracking_string,omitempty"`
+	Properties                map[string]interface{}   `json:"properties,omitempty"`
+	ProxiedAppId              string                   `json:"proxied_app_id,omitempty"`
+	PublishEventId            int                      `json:"publish_event_id,omitempty"`
+	Published                 bool                     `json:"published,omitempty"`
+	Quote                     string                   `json:"quote,omitempty"`
+	Ref                       []string                 `json:"ref,omitempty"`
+	ReferenceableImageIds     []string                 `json:"referenceable_image_ids,omitempty"`
+	ReferralId                string                   `json:"referral_id,omitempty"`
+	ScheduledPublishTime      string                   `json:"scheduled_publish_time,omitempty"`
+	Source                    string                   `json:"source,omitempty"`
+	SponsorId                 string                   `json:"sponsor_id,omitempty"`
+	SponsorRelationship       int                      `json:"sponsor_relationship,omitempty"`
+	SuggestedPlaceId          map[string]interface{}   `json:"suggested_place_id,omitempty"`
+	Tags                      []int                    `json:"tags,omitempty"`
+	TargetSurface             string                   `json:"target_surface,omitempty"`
+	Targeting                 map[string]interface{}   `json:"targeting,omitempty"`
+	TextFormatMetadata        string                   `json:"text_format_metadata,omitempty"`
+	TextFormatPresetId        string                   `json:"text_format_preset_id,omitempty"`
+	TextOnlyPlace             string                   `json:"text_only_place,omitempty"`
+	Thumbnail                 interface{}              `json:"thumbnail,omitempty"`
+	TimeSinceOriginalPost     int                      `json:"time_since_original_post,omitempty"`
+	Title                     string                   `json:"title,omitempty"`
+	TrackingInfo              string                   `json:"tracking_info,omitempty"`
+	UnpublishedContentType    string                   `json:"unpublished_content_type,omitempty"`
+	UserSelectedTags          bool                     `json:"user_selected_tags,omitempty"`
+	VideoStartTimeMs          int                      `json:"video_start_time_ms,omitempty"`
+	ViewerCoordinates         map[string]interface{}   `json:"viewer_coordinates,omitempty"`
+	Width                     int                      `json:"width,omitempty"`
 }
 
 // list_user_friendsArgs defines the typed arguments for list_user_friends
 type list_user_friendsArgs struct {
-	ID     string   `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
-	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After  string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
-	Uid    int      `json:"uid,omitempty" jsonschema:"description=Uid"`
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
+	Uid    int      `json:"uid,omitempty"`
 }
 
 // list_user_fundraisersArgs defines the typed arguments for list_user_fundraisers
 type list_user_fundraisersArgs struct {
-	ID     string   `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
-	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After  string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
 }
 
 // create_user_fundraiserArgs defines the typed arguments for create_user_fundraiser
 type create_user_fundraiserArgs struct {
-	ID                     string      `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
-	CharityId              string      `json:"charity_id,omitempty" jsonschema:"description=ID of the Charity,pattern=^[0-9]+$"`
-	CoverPhoto             interface{} `json:"cover_photo,omitempty" jsonschema:"description=Cover Photo"`
-	Currency               string      `json:"currency" jsonschema:"description=Currency,required"`
-	Description            string      `json:"description" jsonschema:"description=Description,required"`
-	EndTime                string      `json:"end_time" jsonschema:"description=End Time,required,format=date-time"`
-	ExternalEventName      string      `json:"external_event_name,omitempty" jsonschema:"description=External Event Name"`
-	ExternalEventStartTime string      `json:"external_event_start_time,omitempty" jsonschema:"description=External Event Start Time,format=date-time"`
-	ExternalEventUri       string      `json:"external_event_uri,omitempty" jsonschema:"description=External Event Uri"`
-	ExternalFundraiserUri  string      `json:"external_fundraiser_uri,omitempty" jsonschema:"description=External Fundraiser Uri"`
-	ExternalId             string      `json:"external_id" jsonschema:"description=ID of the External,required,pattern=^[0-9]+$"`
-	FundraiserType         string      `json:"fundraiser_type" jsonschema:"description=Fundraiser Type,required"`
-	GoalAmount             int         `json:"goal_amount" jsonschema:"description=Goal Amount,required,minimum=1"`
-	Name                   string      `json:"name" jsonschema:"description=Name,required"`
-	PageId                 string      `json:"page_id,omitempty" jsonschema:"description=ID of the Page,pattern=^[0-9]+$"`
+	ID                     string      `json:"id"`
+	CharityId              string      `json:"charity_id,omitempty"`
+	CoverPhoto             interface{} `json:"cover_photo,omitempty"`
+	Currency               string      `json:"currency"`
+	Description            string      `json:"description"`
+	EndTime                string      `json:"end_time"`
+	ExternalEventName      string      `json:"external_event_name,omitempty"`
+	ExternalEventStartTime string      `json:"external_event_start_time,omitempty"`
+	ExternalEventUri       string      `json:"external_event_uri,omitempty"`
+	ExternalFundraiserUri  string      `json:"external_fundraiser_uri,omitempty"`
+	ExternalId             string      `json:"external_id"`
+	FundraiserType         string      `json:"fundraiser_type"`
+	GoalAmount             int         `json:"goal_amount"`
+	Name                   string      `json:"name"`
+	PageId                 string      `json:"page_id,omitempty"`
 }
 
 // list_user_groupsArgs defines the typed arguments for list_user_groups
 type list_user_groupsArgs struct {
-	ID        string   `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
-	Fields    []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit     int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After     string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before    string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
-	AdminOnly bool     `json:"admin_only,omitempty" jsonschema:"description=Admin Only"`
-	Parent    string   `json:"parent,omitempty" jsonschema:"description=Parent"`
+	ID        string   `json:"id"`
+	Fields    []string `json:"fields,omitempty"`
+	Limit     int      `json:"limit,omitempty"`
+	After     string   `json:"after,omitempty"`
+	Before    string   `json:"before,omitempty"`
+	AdminOnly bool     `json:"admin_only,omitempty"`
+	Parent    string   `json:"parent,omitempty"`
 }
 
 // list_user_ids_for_appsArgs defines the typed arguments for list_user_ids_for_apps
 type list_user_ids_for_appsArgs struct {
-	ID     string   `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
-	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After  string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
-	App    int      `json:"app,omitempty" jsonschema:"description=App"`
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
+	App    int      `json:"app,omitempty"`
 }
 
 // list_user_ids_for_businessArgs defines the typed arguments for list_user_ids_for_business
 type list_user_ids_for_businessArgs struct {
-	ID     string   `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
-	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After  string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
-	App    int      `json:"app,omitempty" jsonschema:"description=App"`
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
+	App    int      `json:"app,omitempty"`
 }
 
 // list_user_ids_for_pagesArgs defines the typed arguments for list_user_ids_for_pages
 type list_user_ids_for_pagesArgs struct {
-	ID     string   `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
-	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After  string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
-	Page   int      `json:"page,omitempty" jsonschema:"description=Page,minimum=13,maximum=100"`
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
+	Page   int      `json:"page,omitempty"`
 }
 
 // list_user_likesArgs defines the typed arguments for list_user_likes
 type list_user_likesArgs struct {
-	ID       string   `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
-	Fields   []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit    int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After    string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before   string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
-	TargetId string   `json:"target_id,omitempty" jsonschema:"description=ID of the Target,pattern=^[0-9]+$"`
+	ID       string   `json:"id"`
+	Fields   []string `json:"fields,omitempty"`
+	Limit    int      `json:"limit,omitempty"`
+	After    string   `json:"after,omitempty"`
+	Before   string   `json:"before,omitempty"`
+	TargetId string   `json:"target_id,omitempty"`
 }
 
 // list_user_live_videosArgs defines the typed arguments for list_user_live_videos
 type list_user_live_videosArgs struct {
-	ID              string   `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
-	Fields          []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit           int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After           string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before          string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
-	BroadcastStatus []string `json:"broadcast_status,omitempty" jsonschema:"description=Broadcast Status"`
-	Source          string   `json:"source,omitempty" jsonschema:"description=Source"`
+	ID              string   `json:"id"`
+	Fields          []string `json:"fields,omitempty"`
+	Limit           int      `json:"limit,omitempty"`
+	After           string   `json:"after,omitempty"`
+	Before          string   `json:"before,omitempty"`
+	BroadcastStatus []string `json:"broadcast_status,omitempty"`
+	Source          string   `json:"source,omitempty"`
 }
 
 // create_user_live_videoArgs defines the typed arguments for create_user_live_video
 type create_user_live_videoArgs struct {
-	ID                         string                 `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
-	ContentTags                []string               `json:"content_tags,omitempty" jsonschema:"description=Content Tags"`
-	Description                string                 `json:"description,omitempty" jsonschema:"description=Description"`
-	EnableBackupIngest         bool                   `json:"enable_backup_ingest,omitempty" jsonschema:"description=Enable Backup Ingest"`
-	EncodingSettings           string                 `json:"encoding_settings,omitempty" jsonschema:"description=Encoding Settings"`
-	EventParams                map[string]interface{} `json:"event_params,omitempty" jsonschema:"description=Event Params"`
-	FisheyeVideoCropped        bool                   `json:"fisheye_video_cropped,omitempty" jsonschema:"description=Fisheye Video Cropped"`
-	FrontZRotation             float64                `json:"front_z_rotation,omitempty" jsonschema:"description=Front Z Rotation"`
-	IsAudioOnly                bool                   `json:"is_audio_only,omitempty" jsonschema:"description=Is Audio Only"`
-	IsSpherical                bool                   `json:"is_spherical,omitempty" jsonschema:"description=Is Spherical"`
-	OriginalFov                int                    `json:"original_fov,omitempty" jsonschema:"description=Original Fov"`
-	Privacy                    string                 `json:"privacy,omitempty" jsonschema:"description=Privacy"`
-	Projection                 string                 `json:"projection,omitempty" jsonschema:"description=Projection"`
-	Published                  bool                   `json:"published,omitempty" jsonschema:"description=Published"`
-	ScheduleCustomProfileImage interface{}            `json:"schedule_custom_profile_image,omitempty" jsonschema:"description=Schedule Custom Profile Image,minimum=13,maximum=100"`
-	SpatialAudioFormat         string                 `json:"spatial_audio_format,omitempty" jsonschema:"description=Spatial Audio Format"`
-	Status                     string                 `json:"status,omitempty" jsonschema:"description=Status,enum=ACTIVE,enum=PAUSED,enum=DELETED,enum=ARCHIVED"`
-	StereoscopicMode           string                 `json:"stereoscopic_mode,omitempty" jsonschema:"description=Stereoscopic Mode"`
-	StopOnDeleteStream         bool                   `json:"stop_on_delete_stream,omitempty" jsonschema:"description=Stop On Delete Stream"`
-	StreamType                 string                 `json:"stream_type,omitempty" jsonschema:"description=Stream Type"`
-	Title                      string                 `json:"title,omitempty" jsonschema:"description=Title"`
+	ID                         string                 `json:"id"`
+	ContentTags                []string               `json:"content_tags,omitempty"`
+	Description                string                 `json:"description,omitempty"`
+	EnableBackupIngest         bool                   `json:"enable_backup_ingest,omitempty"`
+	EncodingSettings           string                 `json:"encoding_settings,omitempty"`
+	EventParams                map[string]interface{} `json:"event_params,omitempty"`
+	FisheyeVideoCropped        bool                   `json:"fisheye_video_cropped,omitempty"`
+	FrontZRotation             float64                `json:"front_z_rotation,omitempty"`
+	IsAudioOnly                bool                   `json:"is_audio_only,omitempty"`
+	IsSpherical                bool                   `json:"is_spherical,omitempty"`
+	OriginalFov                int                    `json:"original_fov,omitempty"`
+	Privacy                    string                 `json:"privacy,omitempty"`
+	Projection                 string                 `json:"projection,omitempty"`
+	Published                  bool                   `json:"published,omitempty"`
+	ScheduleCustomProfileImage interface{}            `json:"schedule_custom_profile_image,omitempty"`
+	SpatialAudioFormat         string                 `json:"spatial_audio_format,omitempty"`
+	Status                     string                 `json:"status,omitempty"`
+	StereoscopicMode           string                 `json:"stereoscopic_mode,omitempty"`
+	StopOnDeleteStream         bool                   `json:"stop_on_delete_stream,omitempty"`
+	StreamType                 string                 `json:"stream_type,omitempty"`
+	Title                      string                 `json:"title,omitempty"`
 }
 
 // create_user_messenger_desktop_performance_traceArgs defines the typed arguments for create_user_messenger_desktop_performance_trace
@@ -509,404 +508,292 @@ type create_user_messenger_desktop_performance_traceArgs struct {
 
 // update_user_messenger_kids_accounts_unread_badgeArgs defines the typed arguments for update_user_messenger_kids_accounts_unread_badge
 type update_user_messenger_kids_accounts_unread_badgeArgs struct {
-	ProxiedAppId int `json:"proxied_app_id" jsonschema:"description=ID of the Proxied App,required,pattern=^[0-9]+$"`
+	ProxiedAppId int `json:"proxied_app_id"`
 }
 
 // get_user_musicArgs defines the typed arguments for get_user_music
 type get_user_musicArgs struct {
-	ID       string   `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
-	Fields   []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit    int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After    string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before   string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
-	TargetId string   `json:"target_id,omitempty" jsonschema:"description=ID of the Target,pattern=^[0-9]+$"`
+	ID       string   `json:"id"`
+	Fields   []string `json:"fields,omitempty"`
+	Limit    int      `json:"limit,omitempty"`
+	After    string   `json:"after,omitempty"`
+	Before   string   `json:"before,omitempty"`
+	TargetId string   `json:"target_id,omitempty"`
 }
 
 // create_user_notificationArgs defines the typed arguments for create_user_notification
 type create_user_notificationArgs struct {
-	ID                        string                 `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
-	BotMessagePayloadElements string                 `json:"bot_message_payload_elements,omitempty" jsonschema:"description=Bot Message Payload Elements"`
-	Filtering                 []string               `json:"filtering,omitempty" jsonschema:"description=Filtering"`
-	Href                      map[string]interface{} `json:"href,omitempty" jsonschema:"description=Href"`
-	Label                     string                 `json:"label,omitempty" jsonschema:"description=Label"`
-	Message                   map[string]interface{} `json:"message,omitempty" jsonschema:"description=Message,minimum=13,maximum=100"`
-	NotifIds                  []string               `json:"notif_ids,omitempty" jsonschema:"description=Notif Ids,pattern=^[0-9]+$"`
-	Payload                   string                 `json:"payload,omitempty" jsonschema:"description=Payload"`
-	Read                      bool                   `json:"read,omitempty" jsonschema:"description=Read"`
-	Ref                       string                 `json:"ref,omitempty" jsonschema:"description=Ref"`
-	ScheduleInterval          int                    `json:"schedule_interval,omitempty" jsonschema:"description=Schedule Interval"`
-	Seen                      bool                   `json:"seen,omitempty" jsonschema:"description=Seen"`
-	Template                  map[string]interface{} `json:"template,omitempty" jsonschema:"description=Template"`
-	Type                      string                 `json:"type,omitempty" jsonschema:"description=Type"`
+	ID                        string                 `json:"id"`
+	BotMessagePayloadElements string                 `json:"bot_message_payload_elements,omitempty"`
+	Filtering                 []string               `json:"filtering,omitempty"`
+	Href                      map[string]interface{} `json:"href,omitempty"`
+	Label                     string                 `json:"label,omitempty"`
+	Message                   map[string]interface{} `json:"message,omitempty"`
+	NotifIds                  []string               `json:"notif_ids,omitempty"`
+	Payload                   string                 `json:"payload,omitempty"`
+	Read                      bool                   `json:"read,omitempty"`
+	Ref                       string                 `json:"ref,omitempty"`
+	ScheduleInterval          int                    `json:"schedule_interval,omitempty"`
+	Seen                      bool                   `json:"seen,omitempty"`
+	Template                  map[string]interface{} `json:"template,omitempty"`
+	Type                      string                 `json:"type,omitempty"`
 }
 
 // list_user_payment_transactionsArgs defines the typed arguments for list_user_payment_transactions
 type list_user_payment_transactionsArgs struct {
-	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After  string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
 }
 
 // remove_permissions_from_userArgs defines the typed arguments for remove_permissions_from_user
 type remove_permissions_from_userArgs struct {
-	ID         string `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
-	Permission string `json:"permission,omitempty" jsonschema:"description=Permission"`
+	ID         string `json:"id"`
+	Permission string `json:"permission,omitempty"`
 }
 
 // list_user_permissionsArgs defines the typed arguments for list_user_permissions
 type list_user_permissionsArgs struct {
-	ID         string   `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
-	Fields     []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit      int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After      string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before     string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
-	Permission string   `json:"permission,omitempty" jsonschema:"description=Permission"`
-	Status     string   `json:"status,omitempty" jsonschema:"description=Status,enum=ACTIVE,enum=PAUSED,enum=DELETED,enum=ARCHIVED"`
+	ID         string   `json:"id"`
+	Fields     []string `json:"fields,omitempty"`
+	Limit      int      `json:"limit,omitempty"`
+	After      string   `json:"after,omitempty"`
+	Before     string   `json:"before,omitempty"`
+	Permission string   `json:"permission,omitempty"`
+	Status     string   `json:"status,omitempty"`
 }
 
 // list_user_personal_ad_accountsArgs defines the typed arguments for list_user_personal_ad_accounts
 type list_user_personal_ad_accountsArgs struct {
-	ID     string   `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
-	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After  string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
 }
 
 // list_user_photosArgs defines the typed arguments for list_user_photos
 type list_user_photosArgs struct {
-	ID     string   `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
-	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After  string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
-	Type   string   `json:"type,omitempty" jsonschema:"description=Type"`
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
+	Type   string   `json:"type,omitempty"`
 }
 
 // create_user_photoArgs defines the typed arguments for create_user_photo
 type create_user_photoArgs struct {
-	ID                                    string                   `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
-	Aid                                   string                   `json:"aid,omitempty" jsonschema:"description=Aid"`
-	AllowSphericalPhoto                   bool                     `json:"allow_spherical_photo,omitempty" jsonschema:"description=Allow Spherical Photo"`
-	AltTextCustom                         string                   `json:"alt_text_custom,omitempty" jsonschema:"description=Alt Text Custom"`
-	AndroidKeyHash                        string                   `json:"android_key_hash,omitempty" jsonschema:"description=Android Key Hash"`
-	ApplicationId                         string                   `json:"application_id,omitempty" jsonschema:"description=ID of the Application,pattern=^[0-9]+$"`
-	Attempt                               int                      `json:"attempt,omitempty" jsonschema:"description=Attempt"`
-	AudienceExp                           bool                     `json:"audience_exp,omitempty" jsonschema:"description=Audience Exp"`
-	BackdatedTime                         string                   `json:"backdated_time,omitempty" jsonschema:"description=Backdated Time,format=date-time"`
-	BackdatedTimeGranularity              string                   `json:"backdated_time_granularity,omitempty" jsonschema:"description=Backdated Time Granularity"`
-	Caption                               string                   `json:"caption,omitempty" jsonschema:"description=Caption"`
-	ComposerSessionId                     string                   `json:"composer_session_id,omitempty" jsonschema:"description=ID of the Composer Session,pattern=^[0-9]+$"`
-	DirectShareStatus                     int                      `json:"direct_share_status,omitempty" jsonschema:"description=Direct Share Status"`
-	FeedTargeting                         map[string]interface{}   `json:"feed_targeting,omitempty" jsonschema:"description=Feed Targeting"`
-	FilterType                            int                      `json:"filter_type,omitempty" jsonschema:"description=Filter Type"`
-	FullResIsComingLater                  bool                     `json:"full_res_is_coming_later,omitempty" jsonschema:"description=Full Res Is Coming Later"`
-	InitialViewHeadingOverrideDegrees     int                      `json:"initial_view_heading_override_degrees,omitempty" jsonschema:"description=Initial View Heading Override Degrees"`
-	InitialViewPitchOverrideDegrees       int                      `json:"initial_view_pitch_override_degrees,omitempty" jsonschema:"description=Initial View Pitch Override Degrees"`
-	InitialViewVerticalFovOverrideDegrees int                      `json:"initial_view_vertical_fov_override_degrees,omitempty" jsonschema:"description=Initial View Vertical Fov Override Degrees"`
-	IosBundleId                           string                   `json:"ios_bundle_id,omitempty" jsonschema:"description=ID of the Ios Bundle,pattern=^[0-9]+$"`
-	IsExplicitLocation                    bool                     `json:"is_explicit_location,omitempty" jsonschema:"description=Is Explicit Location"`
-	IsExplicitPlace                       bool                     `json:"is_explicit_place,omitempty" jsonschema:"description=Is Explicit Place"`
-	ManualPrivacy                         bool                     `json:"manual_privacy,omitempty" jsonschema:"description=Manual Privacy"`
-	Message                               string                   `json:"message,omitempty" jsonschema:"description=Message"`
-	Name                                  string                   `json:"name,omitempty" jsonschema:"description=Name"`
-	NoStory                               bool                     `json:"no_story,omitempty" jsonschema:"description=No Story"`
-	OfflineId                             int                      `json:"offline_id,omitempty" jsonschema:"description=ID of the Offline,pattern=^[0-9]+$"`
-	OgActionTypeId                        string                   `json:"og_action_type_id,omitempty" jsonschema:"description=ID of the Og Action Type,pattern=^[0-9]+$"`
-	OgIconId                              string                   `json:"og_icon_id,omitempty" jsonschema:"description=ID of the Og Icon,pattern=^[0-9]+$"`
-	OgObjectId                            string                   `json:"og_object_id,omitempty" jsonschema:"description=ID of the Og Object,pattern=^[0-9]+$"`
-	OgPhrase                              string                   `json:"og_phrase,omitempty" jsonschema:"description=Og Phrase"`
-	OgSetProfileBadge                     bool                     `json:"og_set_profile_badge,omitempty" jsonschema:"description=Og Set Profile Badge"`
-	OgSuggestionMechanism                 string                   `json:"og_suggestion_mechanism,omitempty" jsonschema:"description=Og Suggestion Mechanism"`
-	Place                                 map[string]interface{}   `json:"place,omitempty" jsonschema:"description=Place"`
-	Privacy                               string                   `json:"privacy,omitempty" jsonschema:"description=Privacy"`
-	ProfileId                             int                      `json:"profile_id,omitempty" jsonschema:"description=ID of the Profile,pattern=^[0-9]+$"`
-	ProvenanceInfo                        map[string]interface{}   `json:"provenance_info,omitempty" jsonschema:"description=Provenance Info"`
-	ProxiedAppId                          string                   `json:"proxied_app_id,omitempty" jsonschema:"description=ID of the Proxied App,pattern=^[0-9]+$"`
-	Published                             bool                     `json:"published,omitempty" jsonschema:"description=Published"`
-	Qn                                    string                   `json:"qn,omitempty" jsonschema:"description=Qn"`
-	ScheduledPublishTime                  int                      `json:"scheduled_publish_time,omitempty" jsonschema:"description=Scheduled Publish Time"`
-	SphericalMetadata                     map[string]interface{}   `json:"spherical_metadata,omitempty" jsonschema:"description=Spherical Metadata"`
-	SponsorId                             string                   `json:"sponsor_id,omitempty" jsonschema:"description=ID of the Sponsor,pattern=^[0-9]+$"`
-	SponsorRelationship                   int                      `json:"sponsor_relationship,omitempty" jsonschema:"description=Sponsor Relationship"`
-	Tags                                  []map[string]interface{} `json:"tags,omitempty" jsonschema:"description=Tags"`
-	TargetId                              int                      `json:"target_id,omitempty" jsonschema:"description=ID of the Target,pattern=^[0-9]+$"`
-	Targeting                             map[string]interface{}   `json:"targeting,omitempty" jsonschema:"description=Targeting"`
-	TimeSinceOriginalPost                 int                      `json:"time_since_original_post,omitempty" jsonschema:"description=Time Since Original Post"`
-	Uid                                   int                      `json:"uid,omitempty" jsonschema:"description=Uid"`
-	UnpublishedContentType                string                   `json:"unpublished_content_type,omitempty" jsonschema:"description=Unpublished Content Type"`
-	Url                                   string                   `json:"url,omitempty" jsonschema:"description=URL,format=uri"`
-	UserSelectedTags                      bool                     `json:"user_selected_tags,omitempty" jsonschema:"description=User Selected Tags"`
-	VaultImageId                          string                   `json:"vault_image_id,omitempty" jsonschema:"description=ID of the Vault Image,pattern=^[0-9]+$"`
+	ID                                    string                   `json:"id"`
+	Aid                                   string                   `json:"aid,omitempty"`
+	AllowSphericalPhoto                   bool                     `json:"allow_spherical_photo,omitempty"`
+	AltTextCustom                         string                   `json:"alt_text_custom,omitempty"`
+	AndroidKeyHash                        string                   `json:"android_key_hash,omitempty"`
+	ApplicationId                         string                   `json:"application_id,omitempty"`
+	Attempt                               int                      `json:"attempt,omitempty"`
+	AudienceExp                           bool                     `json:"audience_exp,omitempty"`
+	BackdatedTime                         string                   `json:"backdated_time,omitempty"`
+	BackdatedTimeGranularity              string                   `json:"backdated_time_granularity,omitempty"`
+	Caption                               string                   `json:"caption,omitempty"`
+	ComposerSessionId                     string                   `json:"composer_session_id,omitempty"`
+	DirectShareStatus                     int                      `json:"direct_share_status,omitempty"`
+	FeedTargeting                         map[string]interface{}   `json:"feed_targeting,omitempty"`
+	FilterType                            int                      `json:"filter_type,omitempty"`
+	FullResIsComingLater                  bool                     `json:"full_res_is_coming_later,omitempty"`
+	InitialViewHeadingOverrideDegrees     int                      `json:"initial_view_heading_override_degrees,omitempty"`
+	InitialViewPitchOverrideDegrees       int                      `json:"initial_view_pitch_override_degrees,omitempty"`
+	InitialViewVerticalFovOverrideDegrees int                      `json:"initial_view_vertical_fov_override_degrees,omitempty"`
+	IosBundleId                           string                   `json:"ios_bundle_id,omitempty"`
+	IsExplicitLocation                    bool                     `json:"is_explicit_location,omitempty"`
+	IsExplicitPlace                       bool                     `json:"is_explicit_place,omitempty"`
+	ManualPrivacy                         bool                     `json:"manual_privacy,omitempty"`
+	Message                               string                   `json:"message,omitempty"`
+	Name                                  string                   `json:"name,omitempty"`
+	NoStory                               bool                     `json:"no_story,omitempty"`
+	OfflineId                             int                      `json:"offline_id,omitempty"`
+	OgActionTypeId                        string                   `json:"og_action_type_id,omitempty"`
+	OgIconId                              string                   `json:"og_icon_id,omitempty"`
+	OgObjectId                            string                   `json:"og_object_id,omitempty"`
+	OgPhrase                              string                   `json:"og_phrase,omitempty"`
+	OgSetProfileBadge                     bool                     `json:"og_set_profile_badge,omitempty"`
+	OgSuggestionMechanism                 string                   `json:"og_suggestion_mechanism,omitempty"`
+	Place                                 map[string]interface{}   `json:"place,omitempty"`
+	Privacy                               string                   `json:"privacy,omitempty"`
+	ProfileId                             int                      `json:"profile_id,omitempty"`
+	ProvenanceInfo                        map[string]interface{}   `json:"provenance_info,omitempty"`
+	ProxiedAppId                          string                   `json:"proxied_app_id,omitempty"`
+	Published                             bool                     `json:"published,omitempty"`
+	Qn                                    string                   `json:"qn,omitempty"`
+	ScheduledPublishTime                  int                      `json:"scheduled_publish_time,omitempty"`
+	SphericalMetadata                     map[string]interface{}   `json:"spherical_metadata,omitempty"`
+	SponsorId                             string                   `json:"sponsor_id,omitempty"`
+	SponsorRelationship                   int                      `json:"sponsor_relationship,omitempty"`
+	Tags                                  []map[string]interface{} `json:"tags,omitempty"`
+	TargetId                              int                      `json:"target_id,omitempty"`
+	Targeting                             map[string]interface{}   `json:"targeting,omitempty"`
+	TimeSinceOriginalPost                 int                      `json:"time_since_original_post,omitempty"`
+	Uid                                   int                      `json:"uid,omitempty"`
+	UnpublishedContentType                string                   `json:"unpublished_content_type,omitempty"`
+	Url                                   string                   `json:"url,omitempty"`
+	UserSelectedTags                      bool                     `json:"user_selected_tags,omitempty"`
+	VaultImageId                          string                   `json:"vault_image_id,omitempty"`
 }
 
 // get_user_pictureArgs defines the typed arguments for get_user_picture
 type get_user_pictureArgs struct {
-	ID       string   `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
-	Fields   []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit    int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After    string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before   string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
-	Height   int      `json:"height,omitempty" jsonschema:"description=Height"`
-	Redirect bool     `json:"redirect,omitempty" jsonschema:"description=Redirect"`
-	Type     string   `json:"type,omitempty" jsonschema:"description=Type"`
-	Width    int      `json:"width,omitempty" jsonschema:"description=Width"`
+	ID       string   `json:"id"`
+	Fields   []string `json:"fields,omitempty"`
+	Limit    int      `json:"limit,omitempty"`
+	After    string   `json:"after,omitempty"`
+	Before   string   `json:"before,omitempty"`
+	Height   int      `json:"height,omitempty"`
+	Redirect bool     `json:"redirect,omitempty"`
+	Type     string   `json:"type,omitempty"`
+	Width    int      `json:"width,omitempty"`
 }
 
 // list_user_postsArgs defines the typed arguments for list_user_posts
 type list_user_postsArgs struct {
-	ID            string   `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
-	Fields        []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit         int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After         string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before        string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
-	IncludeHidden bool     `json:"include_hidden,omitempty" jsonschema:"description=Include Hidden"`
-	Q             string   `json:"q,omitempty" jsonschema:"description=Q"`
-	ShowExpired   bool     `json:"show_expired,omitempty" jsonschema:"description=Show Expired"`
-	Since         string   `json:"since,omitempty" jsonschema:"description=Since,format=date-time"`
-	Until         string   `json:"until,omitempty" jsonschema:"description=Until,format=date-time"`
-	With          string   `json:"with,omitempty" jsonschema:"description=With"`
+	ID            string   `json:"id"`
+	Fields        []string `json:"fields,omitempty"`
+	Limit         int      `json:"limit,omitempty"`
+	After         string   `json:"after,omitempty"`
+	Before        string   `json:"before,omitempty"`
+	IncludeHidden bool     `json:"include_hidden,omitempty"`
+	Q             string   `json:"q,omitempty"`
+	ShowExpired   bool     `json:"show_expired,omitempty"`
+	Since         string   `json:"since,omitempty"`
+	Until         string   `json:"until,omitempty"`
+	With          string   `json:"with,omitempty"`
 }
 
 // list_user_rich_media_documentsArgs defines the typed arguments for list_user_rich_media_documents
 type list_user_rich_media_documentsArgs struct {
-	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After  string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
-	Query  string   `json:"query,omitempty" jsonschema:"description=Query"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
+	Query  string   `json:"query,omitempty"`
 }
 
 // create_user_staging_resourceArgs defines the typed arguments for create_user_staging_resource
 type create_user_staging_resourceArgs struct {
-	ID   string      `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
-	File interface{} `json:"file,omitempty" jsonschema:"description=File"`
+	ID   string      `json:"id"`
+	File interface{} `json:"file,omitempty"`
 }
 
 // list_user_videosArgs defines the typed arguments for list_user_videos
 type list_user_videosArgs struct {
-	ID     string   `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
-	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After  string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
-	Type   string   `json:"type,omitempty" jsonschema:"description=Type"`
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
+	Type   string   `json:"type,omitempty"`
 }
 
 // create_user_videoArgs defines the typed arguments for create_user_video
 type create_user_videoArgs struct {
-	ID                            string                 `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
-	ApplicationId                 string                 `json:"application_id,omitempty" jsonschema:"description=ID of the Application,pattern=^[0-9]+$"`
-	AskedFunFactPromptId          int                    `json:"asked_fun_fact_prompt_id,omitempty" jsonschema:"description=ID of the Asked Fun Fact Prompt,pattern=^[0-9]+$"`
-	AudioStoryWaveAnimationHandle string                 `json:"audio_story_wave_animation_handle,omitempty" jsonschema:"description=Audio Story Wave Animation Handle"`
-	ComposerEntryPicker           string                 `json:"composer_entry_picker,omitempty" jsonschema:"description=Composer Entry Picker"`
-	ComposerEntryPoint            string                 `json:"composer_entry_point,omitempty" jsonschema:"description=Composer Entry Point"`
-	ComposerEntryTime             int                    `json:"composer_entry_time,omitempty" jsonschema:"description=Composer Entry Time"`
-	ComposerSessionEventsLog      string                 `json:"composer_session_events_log,omitempty" jsonschema:"description=Composer Session Events Log"`
-	ComposerSessionId             string                 `json:"composer_session_id,omitempty" jsonschema:"description=ID of the Composer Session,pattern=^[0-9]+$"`
-	ComposerSourceSurface         string                 `json:"composer_source_surface,omitempty" jsonschema:"description=Composer Source Surface"`
-	ComposerType                  string                 `json:"composer_type,omitempty" jsonschema:"description=Composer Type"`
-	ContainerType                 string                 `json:"container_type,omitempty" jsonschema:"description=Container Type"`
-	ContentCategory               string                 `json:"content_category,omitempty" jsonschema:"description=Content Category"`
-	CreativeTools                 string                 `json:"creative_tools,omitempty" jsonschema:"description=Creative Tools"`
-	Description                   string                 `json:"description,omitempty" jsonschema:"description=Description"`
-	DirectShareStatus             int                    `json:"direct_share_status,omitempty" jsonschema:"description=Direct Share Status"`
-	Embeddable                    bool                   `json:"embeddable,omitempty" jsonschema:"description=Embeddable"`
-	EndOffset                     int                    `json:"end_offset,omitempty" jsonschema:"description=End Offset"`
-	FbuploaderVideoFileChunk      string                 `json:"fbuploader_video_file_chunk,omitempty" jsonschema:"description=Fbuploader Video File Chunk"`
-	FileSize                      int                    `json:"file_size,omitempty" jsonschema:"description=File Size"`
-	FileUrl                       string                 `json:"file_url,omitempty" jsonschema:"description=File URL,format=uri"`
-	FisheyeVideoCropped           bool                   `json:"fisheye_video_cropped,omitempty" jsonschema:"description=Fisheye Video Cropped"`
-	Formatting                    string                 `json:"formatting,omitempty" jsonschema:"description=Formatting"`
-	Fov                           int                    `json:"fov,omitempty" jsonschema:"description=Fov"`
-	FrontZRotation                float64                `json:"front_z_rotation,omitempty" jsonschema:"description=Front Z Rotation"`
-	FunFactPromptId               string                 `json:"fun_fact_prompt_id,omitempty" jsonschema:"description=ID of the Fun Fact Prompt,pattern=^[0-9]+$"`
-	FunFactToasteeId              int                    `json:"fun_fact_toastee_id,omitempty" jsonschema:"description=ID of the Fun Fact Toastee,pattern=^[0-9]+$"`
-	Guide                         []interface{}          `json:"guide,omitempty" jsonschema:"description=Guide"`
-	GuideEnabled                  bool                   `json:"guide_enabled,omitempty" jsonschema:"description=Guide Enabled"`
-	InitialHeading                int                    `json:"initial_heading,omitempty" jsonschema:"description=Initial Heading"`
-	InitialPitch                  int                    `json:"initial_pitch,omitempty" jsonschema:"description=Initial Pitch"`
-	InstantGameEntryPointData     string                 `json:"instant_game_entry_point_data,omitempty" jsonschema:"description=Instant Game Entry Point Data"`
-	IsBoostIntended               bool                   `json:"is_boost_intended,omitempty" jsonschema:"description=Is Boost Intended"`
-	IsExplicitShare               bool                   `json:"is_explicit_share,omitempty" jsonschema:"description=Is Explicit Share"`
-	IsGroupLinkingPost            bool                   `json:"is_group_linking_post,omitempty" jsonschema:"description=Is Group Linking Post"`
-	IsPartnershipAd               bool                   `json:"is_partnership_ad,omitempty" jsonschema:"description=Is Partnership Ad"`
-	IsVoiceClip                   bool                   `json:"is_voice_clip,omitempty" jsonschema:"description=Is Voice Clip"`
-	LocationSourceId              string                 `json:"location_source_id,omitempty" jsonschema:"description=ID of the Location Source,pattern=^[0-9]+$"`
-	ManualPrivacy                 bool                   `json:"manual_privacy,omitempty" jsonschema:"description=Manual Privacy"`
-	NoStory                       bool                   `json:"no_story,omitempty" jsonschema:"description=No Story"`
-	OgActionTypeId                string                 `json:"og_action_type_id,omitempty" jsonschema:"description=ID of the Og Action Type,pattern=^[0-9]+$"`
-	OgIconId                      string                 `json:"og_icon_id,omitempty" jsonschema:"description=ID of the Og Icon,pattern=^[0-9]+$"`
-	OgObjectId                    string                 `json:"og_object_id,omitempty" jsonschema:"description=ID of the Og Object,pattern=^[0-9]+$"`
-	OgPhrase                      string                 `json:"og_phrase,omitempty" jsonschema:"description=Og Phrase"`
-	OgSuggestionMechanism         string                 `json:"og_suggestion_mechanism,omitempty" jsonschema:"description=Og Suggestion Mechanism"`
-	OriginalFov                   int                    `json:"original_fov,omitempty" jsonschema:"description=Original Fov"`
-	OriginalProjectionType        string                 `json:"original_projection_type,omitempty" jsonschema:"description=Original Projection Type"`
-	PartnershipAdAdCode           string                 `json:"partnership_ad_ad_code,omitempty" jsonschema:"description=Partnership Ad Ad Code"`
-	Privacy                       string                 `json:"privacy,omitempty" jsonschema:"description=Privacy"`
-	PublishEventId                int                    `json:"publish_event_id,omitempty" jsonschema:"description=ID of the Publish Event,pattern=^[0-9]+$"`
-	ReferencedStickerId           string                 `json:"referenced_sticker_id,omitempty" jsonschema:"description=ID of the Referenced Sticker,pattern=^[0-9]+$"`
-	ReplaceVideoId                string                 `json:"replace_video_id,omitempty" jsonschema:"description=ID of the Replace Video,pattern=^[0-9]+$"`
-	SlideshowSpec                 map[string]interface{} `json:"slideshow_spec,omitempty" jsonschema:"description=Slideshow Spec"`
-	Source                        string                 `json:"source,omitempty" jsonschema:"description=Source"`
-	SourceInstagramMediaId        string                 `json:"source_instagram_media_id,omitempty" jsonschema:"description=ID of the Source Instagram Media,pattern=^[0-9]+$"`
-	Spherical                     bool                   `json:"spherical,omitempty" jsonschema:"description=Spherical"`
-	SponsorId                     string                 `json:"sponsor_id,omitempty" jsonschema:"description=ID of the Sponsor,pattern=^[0-9]+$"`
-	StartOffset                   int                    `json:"start_offset,omitempty" jsonschema:"description=Start Offset"`
-	SwapMode                      string                 `json:"swap_mode,omitempty" jsonschema:"description=Swap Mode"`
-	TextFormatMetadata            string                 `json:"text_format_metadata,omitempty" jsonschema:"description=Text Format Metadata"`
-	Thumb                         interface{}            `json:"thumb,omitempty" jsonschema:"description=Thumb"`
-	TimeSinceOriginalPost         int                    `json:"time_since_original_post,omitempty" jsonschema:"description=Time Since Original Post"`
-	Title                         string                 `json:"title,omitempty" jsonschema:"description=Title"`
-	TranscodeSettingProperties    string                 `json:"transcode_setting_properties,omitempty" jsonschema:"description=Transcode Setting Properties"`
-	UnpublishedContentType        string                 `json:"unpublished_content_type,omitempty" jsonschema:"description=Unpublished Content Type"`
-	UploadPhase                   string                 `json:"upload_phase,omitempty" jsonschema:"description=Upload Phase"`
-	UploadSessionId               string                 `json:"upload_session_id,omitempty" jsonschema:"description=ID of the Upload Session,pattern=^[0-9]+$"`
-	UploadSettingProperties       string                 `json:"upload_setting_properties,omitempty" jsonschema:"description=Upload Setting Properties"`
-	VideoFileChunk                string                 `json:"video_file_chunk,omitempty" jsonschema:"description=Video File Chunk"`
-	VideoIdOriginal               string                 `json:"video_id_original,omitempty" jsonschema:"description=Video ID Original,pattern=^[0-9]+$"`
-	VideoStartTimeMs              int                    `json:"video_start_time_ms,omitempty" jsonschema:"description=Video Start Time Ms"`
-	WaterfallId                   string                 `json:"waterfall_id,omitempty" jsonschema:"description=ID of the Waterfall,pattern=^[0-9]+$"`
+	ID                            string                 `json:"id"`
+	ApplicationId                 string                 `json:"application_id,omitempty"`
+	AskedFunFactPromptId          int                    `json:"asked_fun_fact_prompt_id,omitempty"`
+	AudioStoryWaveAnimationHandle string                 `json:"audio_story_wave_animation_handle,omitempty"`
+	ComposerEntryPicker           string                 `json:"composer_entry_picker,omitempty"`
+	ComposerEntryPoint            string                 `json:"composer_entry_point,omitempty"`
+	ComposerEntryTime             int                    `json:"composer_entry_time,omitempty"`
+	ComposerSessionEventsLog      string                 `json:"composer_session_events_log,omitempty"`
+	ComposerSessionId             string                 `json:"composer_session_id,omitempty"`
+	ComposerSourceSurface         string                 `json:"composer_source_surface,omitempty"`
+	ComposerType                  string                 `json:"composer_type,omitempty"`
+	ContainerType                 string                 `json:"container_type,omitempty"`
+	ContentCategory               string                 `json:"content_category,omitempty"`
+	CreativeTools                 string                 `json:"creative_tools,omitempty"`
+	Description                   string                 `json:"description,omitempty"`
+	DirectShareStatus             int                    `json:"direct_share_status,omitempty"`
+	Embeddable                    bool                   `json:"embeddable,omitempty"`
+	EndOffset                     int                    `json:"end_offset,omitempty"`
+	FbuploaderVideoFileChunk      string                 `json:"fbuploader_video_file_chunk,omitempty"`
+	FileSize                      int                    `json:"file_size,omitempty"`
+	FileUrl                       string                 `json:"file_url,omitempty"`
+	FisheyeVideoCropped           bool                   `json:"fisheye_video_cropped,omitempty"`
+	Formatting                    string                 `json:"formatting,omitempty"`
+	Fov                           int                    `json:"fov,omitempty"`
+	FrontZRotation                float64                `json:"front_z_rotation,omitempty"`
+	FunFactPromptId               string                 `json:"fun_fact_prompt_id,omitempty"`
+	FunFactToasteeId              int                    `json:"fun_fact_toastee_id,omitempty"`
+	Guide                         []interface{}          `json:"guide,omitempty"`
+	GuideEnabled                  bool                   `json:"guide_enabled,omitempty"`
+	InitialHeading                int                    `json:"initial_heading,omitempty"`
+	InitialPitch                  int                    `json:"initial_pitch,omitempty"`
+	InstantGameEntryPointData     string                 `json:"instant_game_entry_point_data,omitempty"`
+	IsBoostIntended               bool                   `json:"is_boost_intended,omitempty"`
+	IsExplicitShare               bool                   `json:"is_explicit_share,omitempty"`
+	IsGroupLinkingPost            bool                   `json:"is_group_linking_post,omitempty"`
+	IsPartnershipAd               bool                   `json:"is_partnership_ad,omitempty"`
+	IsVoiceClip                   bool                   `json:"is_voice_clip,omitempty"`
+	LocationSourceId              string                 `json:"location_source_id,omitempty"`
+	ManualPrivacy                 bool                   `json:"manual_privacy,omitempty"`
+	NoStory                       bool                   `json:"no_story,omitempty"`
+	OgActionTypeId                string                 `json:"og_action_type_id,omitempty"`
+	OgIconId                      string                 `json:"og_icon_id,omitempty"`
+	OgObjectId                    string                 `json:"og_object_id,omitempty"`
+	OgPhrase                      string                 `json:"og_phrase,omitempty"`
+	OgSuggestionMechanism         string                 `json:"og_suggestion_mechanism,omitempty"`
+	OriginalFov                   int                    `json:"original_fov,omitempty"`
+	OriginalProjectionType        string                 `json:"original_projection_type,omitempty"`
+	PartnershipAdAdCode           string                 `json:"partnership_ad_ad_code,omitempty"`
+	Privacy                       string                 `json:"privacy,omitempty"`
+	PublishEventId                int                    `json:"publish_event_id,omitempty"`
+	ReferencedStickerId           string                 `json:"referenced_sticker_id,omitempty"`
+	ReplaceVideoId                string                 `json:"replace_video_id,omitempty"`
+	SlideshowSpec                 map[string]interface{} `json:"slideshow_spec,omitempty"`
+	Source                        string                 `json:"source,omitempty"`
+	SourceInstagramMediaId        string                 `json:"source_instagram_media_id,omitempty"`
+	Spherical                     bool                   `json:"spherical,omitempty"`
+	SponsorId                     string                 `json:"sponsor_id,omitempty"`
+	StartOffset                   int                    `json:"start_offset,omitempty"`
+	SwapMode                      string                 `json:"swap_mode,omitempty"`
+	TextFormatMetadata            string                 `json:"text_format_metadata,omitempty"`
+	Thumb                         interface{}            `json:"thumb,omitempty"`
+	TimeSinceOriginalPost         int                    `json:"time_since_original_post,omitempty"`
+	Title                         string                 `json:"title,omitempty"`
+	TranscodeSettingProperties    string                 `json:"transcode_setting_properties,omitempty"`
+	UnpublishedContentType        string                 `json:"unpublished_content_type,omitempty"`
+	UploadPhase                   string                 `json:"upload_phase,omitempty"`
+	UploadSessionId               string                 `json:"upload_session_id,omitempty"`
+	UploadSettingProperties       string                 `json:"upload_setting_properties,omitempty"`
+	VideoFileChunk                string                 `json:"video_file_chunk,omitempty"`
+	VideoIdOriginal               string                 `json:"video_id_original,omitempty"`
+	VideoStartTimeMs              int                    `json:"video_start_time_ms,omitempty"`
+	WaterfallId                   string                 `json:"waterfall_id,omitempty"`
 }
 
 // delete_userArgs defines the typed arguments for delete_user
 type delete_userArgs struct {
-	ID string `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
+	ID string `json:"id"`
 }
 
 // get_userArgs defines the typed arguments for get_user
 type get_userArgs struct {
-	ID     string   `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
-	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
-	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
-	After  string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
-	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
+	ID     string   `json:"id"`
+	Fields []string `json:"fields,omitempty"`
+	Limit  int      `json:"limit,omitempty"`
+	After  string   `json:"after,omitempty"`
+	Before string   `json:"before,omitempty"`
 }
 
 // update_userArgs defines the typed arguments for update_user
 type update_userArgs struct {
-	ID                              string `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
-	EmojiColorPref                  int    `json:"emoji_color_pref,omitempty" jsonschema:"description=Emoji Color Pref"`
-	Firstname                       string `json:"firstname,omitempty" jsonschema:"description=Firstname"`
-	Lastname                        string `json:"lastname,omitempty" jsonschema:"description=Lastname"`
-	LocalNewsMegaphoneDismissStatus string `json:"local_news_megaphone_dismiss_status,omitempty" jsonschema:"description=Local News Megaphone Dismiss Status"`
-	LocalNewsSubscriptionStatus     string `json:"local_news_subscription_status,omitempty" jsonschema:"description=Local News Subscription Status"`
-	Name                            string `json:"name,omitempty" jsonschema:"description=Name"`
-	Password                        string `json:"password,omitempty" jsonschema:"description=Password"`
+	ID                              string `json:"id"`
+	EmojiColorPref                  int    `json:"emoji_color_pref,omitempty"`
+	Firstname                       string `json:"firstname,omitempty"`
+	Lastname                        string `json:"lastname,omitempty"`
+	LocalNewsMegaphoneDismissStatus string `json:"local_news_megaphone_dismiss_status,omitempty"`
+	LocalNewsSubscriptionStatus     string `json:"local_news_subscription_status,omitempty"`
+	Name                            string `json:"name,omitempty"`
+	Password                        string `json:"password,omitempty"`
 }
-
-var (
-	remove_access_tokens_from_userSchema = generateSchemaForType(reflect.TypeOf(remove_access_tokens_from_userArgs{}))
-
-	create_user_access_tokenSchema = generateSchemaForType(reflect.TypeOf(create_user_access_tokenArgs{}))
-
-	list_user_accountsSchema = generateSchemaForType(reflect.TypeOf(list_user_accountsArgs{}))
-
-	create_user_accountSchema = generateSchemaForType(reflect.TypeOf(create_user_accountArgs{}))
-
-	list_user_ad_studiesSchema = generateSchemaForType(reflect.TypeOf(list_user_ad_studiesArgs{}))
-
-	create_user_ad_studieSchema = generateSchemaForType(reflect.TypeOf(create_user_ad_studieArgs{}))
-
-	list_user_adaccountsSchema = generateSchemaForType(reflect.TypeOf(list_user_adaccountsArgs{}))
-
-	list_user_albumsSchema = generateSchemaForType(reflect.TypeOf(list_user_albumsArgs{}))
-
-	create_user_applicationSchema = generateSchemaForType(reflect.TypeOf(create_user_applicationArgs{}))
-
-	list_user_apprequestformerrecipientsSchema = generateSchemaForType(reflect.TypeOf(list_user_apprequestformerrecipientsArgs{}))
-
-	list_user_apprequestsSchema = generateSchemaForType(reflect.TypeOf(list_user_apprequestsArgs{}))
-
-	list_user_assigned_ad_accountsSchema = generateSchemaForType(reflect.TypeOf(list_user_assigned_ad_accountsArgs{}))
-
-	list_user_assigned_applicationsSchema = generateSchemaForType(reflect.TypeOf(list_user_assigned_applicationsArgs{}))
-
-	list_user_assigned_business_asset_groupsSchema = generateSchemaForType(reflect.TypeOf(list_user_assigned_business_asset_groupsArgs{}))
-
-	list_user_assigned_pagesSchema = generateSchemaForType(reflect.TypeOf(list_user_assigned_pagesArgs{}))
-
-	list_user_assigned_product_catalogsSchema = generateSchemaForType(reflect.TypeOf(list_user_assigned_product_catalogsArgs{}))
-
-	list_user_avatarsSchema = generateSchemaForType(reflect.TypeOf(list_user_avatarsArgs{}))
-
-	list_user_business_usersSchema = generateSchemaForType(reflect.TypeOf(list_user_business_usersArgs{}))
-
-	remove_businesses_from_userSchema = generateSchemaForType(reflect.TypeOf(remove_businesses_from_userArgs{}))
-
-	list_user_businessesSchema = generateSchemaForType(reflect.TypeOf(list_user_businessesArgs{}))
-
-	create_user_businesseSchema = generateSchemaForType(reflect.TypeOf(create_user_businesseArgs{}))
-
-	list_user_conversationsSchema = generateSchemaForType(reflect.TypeOf(list_user_conversationsArgs{}))
-
-	list_user_custom_labelsSchema = generateSchemaForType(reflect.TypeOf(list_user_custom_labelsArgs{}))
-
-	list_user_eventsSchema = generateSchemaForType(reflect.TypeOf(list_user_eventsArgs{}))
-
-	get_user_feedSchema = generateSchemaForType(reflect.TypeOf(get_user_feedArgs{}))
-
-	update_user_feedSchema = generateSchemaForType(reflect.TypeOf(update_user_feedArgs{}))
-
-	list_user_friendsSchema = generateSchemaForType(reflect.TypeOf(list_user_friendsArgs{}))
-
-	list_user_fundraisersSchema = generateSchemaForType(reflect.TypeOf(list_user_fundraisersArgs{}))
-
-	create_user_fundraiserSchema = generateSchemaForType(reflect.TypeOf(create_user_fundraiserArgs{}))
-
-	list_user_groupsSchema = generateSchemaForType(reflect.TypeOf(list_user_groupsArgs{}))
-
-	list_user_ids_for_appsSchema = generateSchemaForType(reflect.TypeOf(list_user_ids_for_appsArgs{}))
-
-	list_user_ids_for_businessSchema = generateSchemaForType(reflect.TypeOf(list_user_ids_for_businessArgs{}))
-
-	list_user_ids_for_pagesSchema = generateSchemaForType(reflect.TypeOf(list_user_ids_for_pagesArgs{}))
-
-	list_user_likesSchema = generateSchemaForType(reflect.TypeOf(list_user_likesArgs{}))
-
-	list_user_live_videosSchema = generateSchemaForType(reflect.TypeOf(list_user_live_videosArgs{}))
-
-	create_user_live_videoSchema = generateSchemaForType(reflect.TypeOf(create_user_live_videoArgs{}))
-
-	create_user_messenger_desktop_performance_traceSchema = generateSchemaForType(reflect.TypeOf(create_user_messenger_desktop_performance_traceArgs{}))
-
-	update_user_messenger_kids_accounts_unread_badgeSchema = generateSchemaForType(reflect.TypeOf(update_user_messenger_kids_accounts_unread_badgeArgs{}))
-
-	get_user_musicSchema = generateSchemaForType(reflect.TypeOf(get_user_musicArgs{}))
-
-	create_user_notificationSchema = generateSchemaForType(reflect.TypeOf(create_user_notificationArgs{}))
-
-	list_user_payment_transactionsSchema = generateSchemaForType(reflect.TypeOf(list_user_payment_transactionsArgs{}))
-
-	remove_permissions_from_userSchema = generateSchemaForType(reflect.TypeOf(remove_permissions_from_userArgs{}))
-
-	list_user_permissionsSchema = generateSchemaForType(reflect.TypeOf(list_user_permissionsArgs{}))
-
-	list_user_personal_ad_accountsSchema = generateSchemaForType(reflect.TypeOf(list_user_personal_ad_accountsArgs{}))
-
-	list_user_photosSchema = generateSchemaForType(reflect.TypeOf(list_user_photosArgs{}))
-
-	create_user_photoSchema = generateSchemaForType(reflect.TypeOf(create_user_photoArgs{}))
-
-	get_user_pictureSchema = generateSchemaForType(reflect.TypeOf(get_user_pictureArgs{}))
-
-	list_user_postsSchema = generateSchemaForType(reflect.TypeOf(list_user_postsArgs{}))
-
-	list_user_rich_media_documentsSchema = generateSchemaForType(reflect.TypeOf(list_user_rich_media_documentsArgs{}))
-
-	create_user_staging_resourceSchema = generateSchemaForType(reflect.TypeOf(create_user_staging_resourceArgs{}))
-
-	list_user_videosSchema = generateSchemaForType(reflect.TypeOf(list_user_videosArgs{}))
-
-	create_user_videoSchema = generateSchemaForType(reflect.TypeOf(create_user_videoArgs{}))
-
-	delete_userSchema = generateSchemaForType(reflect.TypeOf(delete_userArgs{}))
-
-	get_userSchema = generateSchemaForType(reflect.TypeOf(get_userArgs{}))
-
-	update_userSchema = generateSchemaForType(reflect.TypeOf(update_userArgs{}))
-)
 
 // RemoveAccessTokensFromUserHandler handles remove_access_tokens_from_user with typed arguments
 func RemoveAccessTokensFromUserHandler(ctx context.Context, request mcp.CallToolRequest, args remove_access_tokens_from_userArgs) (*mcp.CallToolResult, error) {
@@ -915,7 +802,9 @@ func RemoveAccessTokensFromUserHandler(ctx context.Context, request mcp.CallTool
 		return mcp.NewToolResultError("id is required"), nil
 	}
 
+	// Build URL and execute
 	url := buildGraphURL(args.ID, "access_tokens")
+
 	return ExecuteDELETERequest(ctx, url)
 
 }
@@ -1750,7 +1639,9 @@ func RemoveBusinessesFromUserHandler(ctx context.Context, request mcp.CallToolRe
 		return mcp.NewToolResultError("id is required"), nil
 	}
 
+	// Build URL and execute
 	url := buildGraphURL(args.ID, "businesses")
+
 	return ExecuteDELETERequest(ctx, url)
 
 }
@@ -3280,7 +3171,9 @@ func RemovePermissionsFromUserHandler(ctx context.Context, request mcp.CallToolR
 		return mcp.NewToolResultError("id is required"), nil
 	}
 
+	// Build URL and execute
 	url := buildGraphURL(args.ID, "permissions")
+
 	return ExecuteDELETERequest(ctx, url)
 
 }
@@ -4188,7 +4081,9 @@ func DeleteUserHandler(ctx context.Context, request mcp.CallToolRequest, args de
 		return mcp.NewToolResultError("id is required"), nil
 	}
 
+	// Build URL and execute
 	url := buildGraphURL(args.ID, "")
+
 	return ExecuteDELETERequest(ctx, url)
 
 }
@@ -4287,338 +4182,2280 @@ func UpdateUserHandler(ctx context.Context, request mcp.CallToolRequest, args up
 
 }
 
-// generateSchemaForType is implemented in tools_common.go to avoid redeclaration
-
 // RegisterUserTools registers all User tools with the MCP server
 func RegisterUserTools(s *server.MCPServer) error {
 
-	// Register remove_access_tokens_from_user using raw schema
+	// Register remove_access_tokens_from_user
 	s.AddTool(
-		mcp.NewToolWithRawSchema("remove_access_tokens_from_user", "Remove access_tokens from this User", remove_access_tokens_from_userSchema),
+		mcp.NewTool("remove_access_tokens_from_user",
+			mcp.WithDescription("Remove access_tokens from this User"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+		),
 		mcp.NewTypedToolHandler(RemoveAccessTokensFromUserHandler),
 	)
 
-	// Register create_user_access_token using raw schema
+	// Register create_user_access_token
 	s.AddTool(
-		mcp.NewToolWithRawSchema("create_user_access_token", "Create or update access_tokens for this User Returns User. Required: business_app", create_user_access_tokenSchema),
+		mcp.NewTool("create_user_access_token",
+			mcp.WithDescription("Create or update access_tokens for this User Returns User. Required: business_app"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithString("business_app",
+				mcp.Required(),
+				mcp.Description("business_app"),
+			),
+			mcp.WithString("page_id",
+				mcp.Description("page_id"),
+			),
+			mcp.WithArray("scope",
+				mcp.Description("scope"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithBoolean("set_token_expires_in_60_days",
+				mcp.Description("set_token_expires_in_60_days"),
+			),
+		),
 		mcp.NewTypedToolHandler(CreateUserAccessTokenHandler),
 	)
 
-	// Register list_user_accounts using raw schema
+	// Register list_user_accounts
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_user_accounts", "List accounts for this User Returns Page.", list_user_accountsSchema),
+		mcp.NewTool("list_user_accounts",
+			mcp.WithDescription("List accounts for this User Returns Page."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithString("ad_id",
+				mcp.Description("ad_id"),
+			),
+			mcp.WithBoolean("is_place",
+				mcp.Description("is_place"),
+			),
+			mcp.WithBoolean("is_promotable",
+				mcp.Description("is_promotable"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListUserAccountsHandler),
 	)
 
-	// Register create_user_account using raw schema
+	// Register create_user_account
 	s.AddTool(
-		mcp.NewToolWithRawSchema("create_user_account", "Create or update accounts for this User Required: name", create_user_accountSchema),
+		mcp.NewTool("create_user_account",
+			mcp.WithDescription("Create or update accounts for this User Required: name"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithString("about",
+				mcp.Description("about"),
+			),
+			mcp.WithString("address",
+				mcp.Description("address"),
+			),
+			mcp.WithNumber("category",
+				mcp.Description("category"),
+			),
+			mcp.WithString("category_enum",
+				mcp.Description("category_enum"),
+			),
+			mcp.WithArray("category_list",
+				mcp.Description("category_list"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithString("city_id",
+				mcp.Description("city_id"),
+			),
+			mcp.WithObject("coordinates",
+				mcp.Description("coordinates"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithObject("cover_photo",
+				mcp.Description("cover_photo"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("description",
+				mcp.Description("description"),
+			),
+			mcp.WithBoolean("ignore_coordinate_warnings",
+				mcp.Description("ignore_coordinate_warnings"),
+			),
+			mcp.WithObject("location",
+				mcp.Description("location"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("name",
+				mcp.Required(),
+				mcp.Description("name"),
+			),
+			mcp.WithString("phone",
+				mcp.Description("phone"),
+			),
+			mcp.WithString("picture",
+				mcp.Description("picture"),
+			),
+			mcp.WithString("website",
+				mcp.Description("website"),
+			),
+			mcp.WithString("zip",
+				mcp.Description("zip"),
+			),
+		),
 		mcp.NewTypedToolHandler(CreateUserAccountHandler),
 	)
 
-	// Register list_user_ad_studies using raw schema
+	// Register list_user_ad_studies
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_user_ad_studies", "List ad_studies for this User Returns AdStudy.", list_user_ad_studiesSchema),
+		mcp.NewTool("list_user_ad_studies",
+			mcp.WithDescription("List ad_studies for this User Returns AdStudy."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListUserAdStudiesHandler),
 	)
 
-	// Register create_user_ad_studie using raw schema
+	// Register create_user_ad_studie
 	s.AddTool(
-		mcp.NewToolWithRawSchema("create_user_ad_studie", "Associate ad_studies with this User Returns AdStudy.", create_user_ad_studieSchema),
+		mcp.NewTool("create_user_ad_studie",
+			mcp.WithDescription("Associate ad_studies with this User Returns AdStudy."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithArray("cells",
+				mcp.Description("cells"),
+				mcp.Items(map[string]any{"type": "object"}),
+			),
+			mcp.WithString("client_business",
+				mcp.Description("client_business"),
+			),
+			mcp.WithNumber("confidence_level",
+				mcp.Description("confidence_level"),
+			),
+			mcp.WithNumber("cooldown_start_time",
+				mcp.Description("cooldown_start_time"),
+			),
+			mcp.WithString("description",
+				mcp.Description("description"),
+			),
+			mcp.WithNumber("end_time",
+				mcp.Description("end_time"),
+			),
+			mcp.WithString("name",
+				mcp.Description("name"),
+			),
+			mcp.WithArray("objectives",
+				mcp.Description("objectives"),
+				mcp.Items(map[string]any{"type": "object"}),
+			),
+			mcp.WithNumber("observation_end_time",
+				mcp.Description("observation_end_time"),
+			),
+			mcp.WithNumber("start_time",
+				mcp.Description("start_time"),
+			),
+			mcp.WithString("type",
+				mcp.Description("type (enum: userad_studies_type_enum_param)"),
+			),
+			mcp.WithArray("viewers",
+				mcp.Description("viewers"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+		),
 		mcp.NewTypedToolHandler(CreateUserAdStudieHandler),
 	)
 
-	// Register list_user_adaccounts using raw schema
+	// Register list_user_adaccounts
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_user_adaccounts", "List adaccounts for this User Returns AdAccount.", list_user_adaccountsSchema),
+		mcp.NewTool("list_user_adaccounts",
+			mcp.WithDescription("List adaccounts for this User Returns AdAccount."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListUserAdaccountsHandler),
 	)
 
-	// Register list_user_albums using raw schema
+	// Register list_user_albums
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_user_albums", "List albums for this User Returns Album.", list_user_albumsSchema),
+		mcp.NewTool("list_user_albums",
+			mcp.WithDescription("List albums for this User Returns Album."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListUserAlbumsHandler),
 	)
 
-	// Register create_user_application using raw schema
+	// Register create_user_application
 	s.AddTool(
-		mcp.NewToolWithRawSchema("create_user_application", "Create or update applications for this User Returns User. Required: business_app", create_user_applicationSchema),
+		mcp.NewTool("create_user_application",
+			mcp.WithDescription("Create or update applications for this User Returns User. Required: business_app"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithNumber("business_app",
+				mcp.Required(),
+				mcp.Description("business_app"),
+			),
+		),
 		mcp.NewTypedToolHandler(CreateUserApplicationHandler),
 	)
 
-	// Register list_user_apprequestformerrecipients using raw schema
+	// Register list_user_apprequestformerrecipients
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_user_apprequestformerrecipients", "List apprequestformerrecipients for this User Returns AppRequestFormerRecipient.", list_user_apprequestformerrecipientsSchema),
+		mcp.NewTool("list_user_apprequestformerrecipients",
+			mcp.WithDescription("List apprequestformerrecipients for this User Returns AppRequestFormerRecipient."),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListUserApprequestformerrecipientsHandler),
 	)
 
-	// Register list_user_apprequests using raw schema
+	// Register list_user_apprequests
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_user_apprequests", "List apprequests for this User Returns AppRequest.", list_user_apprequestsSchema),
+		mcp.NewTool("list_user_apprequests",
+			mcp.WithDescription("List apprequests for this User Returns AppRequest."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListUserApprequestsHandler),
 	)
 
-	// Register list_user_assigned_ad_accounts using raw schema
+	// Register list_user_assigned_ad_accounts
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_user_assigned_ad_accounts", "List assigned_ad_accounts for this User Returns AdAccount.", list_user_assigned_ad_accountsSchema),
+		mcp.NewTool("list_user_assigned_ad_accounts",
+			mcp.WithDescription("List assigned_ad_accounts for this User Returns AdAccount."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListUserAssignedAdAccountsHandler),
 	)
 
-	// Register list_user_assigned_applications using raw schema
+	// Register list_user_assigned_applications
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_user_assigned_applications", "List assigned_applications for this User Returns Application.", list_user_assigned_applicationsSchema),
+		mcp.NewTool("list_user_assigned_applications",
+			mcp.WithDescription("List assigned_applications for this User Returns Application."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListUserAssignedApplicationsHandler),
 	)
 
-	// Register list_user_assigned_business_asset_groups using raw schema
+	// Register list_user_assigned_business_asset_groups
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_user_assigned_business_asset_groups", "List assigned_business_asset_groups for this User Returns BusinessAssetGroup.", list_user_assigned_business_asset_groupsSchema),
+		mcp.NewTool("list_user_assigned_business_asset_groups",
+			mcp.WithDescription("List assigned_business_asset_groups for this User Returns BusinessAssetGroup."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithString("contained_asset_id",
+				mcp.Description("contained_asset_id"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListUserAssignedBusinessAssetGroupsHandler),
 	)
 
-	// Register list_user_assigned_pages using raw schema
+	// Register list_user_assigned_pages
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_user_assigned_pages", "List assigned_pages for this User Returns Page.", list_user_assigned_pagesSchema),
+		mcp.NewTool("list_user_assigned_pages",
+			mcp.WithDescription("List assigned_pages for this User Returns Page."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithArray("pages",
+				mcp.Description("pages"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+		),
 		mcp.NewTypedToolHandler(ListUserAssignedPagesHandler),
 	)
 
-	// Register list_user_assigned_product_catalogs using raw schema
+	// Register list_user_assigned_product_catalogs
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_user_assigned_product_catalogs", "List assigned_product_catalogs for this User Returns ProductCatalog.", list_user_assigned_product_catalogsSchema),
+		mcp.NewTool("list_user_assigned_product_catalogs",
+			mcp.WithDescription("List assigned_product_catalogs for this User Returns ProductCatalog."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListUserAssignedProductCatalogsHandler),
 	)
 
-	// Register list_user_avatars using raw schema
+	// Register list_user_avatars
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_user_avatars", "List avatars for this User Returns Avatar.", list_user_avatarsSchema),
+		mcp.NewTool("list_user_avatars",
+			mcp.WithDescription("List avatars for this User Returns Avatar."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListUserAvatarsHandler),
 	)
 
-	// Register list_user_business_users using raw schema
+	// Register list_user_business_users
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_user_business_users", "List business_users for this User Returns BusinessUser.", list_user_business_usersSchema),
+		mcp.NewTool("list_user_business_users",
+			mcp.WithDescription("List business_users for this User Returns BusinessUser."),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListUserBusinessUsersHandler),
 	)
 
-	// Register remove_businesses_from_user using raw schema
+	// Register remove_businesses_from_user
 	s.AddTool(
-		mcp.NewToolWithRawSchema("remove_businesses_from_user", "Remove businesses from this User", remove_businesses_from_userSchema),
+		mcp.NewTool("remove_businesses_from_user",
+			mcp.WithDescription("Remove businesses from this User"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithString("business",
+				mcp.Description("business"),
+			),
+		),
 		mcp.NewTypedToolHandler(RemoveBusinessesFromUserHandler),
 	)
 
-	// Register list_user_businesses using raw schema
+	// Register list_user_businesses
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_user_businesses", "List businesses for this User Returns Business.", list_user_businessesSchema),
+		mcp.NewTool("list_user_businesses",
+			mcp.WithDescription("List businesses for this User Returns Business."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListUserBusinessesHandler),
 	)
 
-	// Register create_user_businesse using raw schema
+	// Register create_user_businesse
 	s.AddTool(
-		mcp.NewToolWithRawSchema("create_user_businesse", "Create or update businesses for this User Returns Business. Required: name, vertical (enum)", create_user_businesseSchema),
+		mcp.NewTool("create_user_businesse",
+			mcp.WithDescription("Create or update businesses for this User Returns Business. Required: name, vertical (enum)"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithString("child_business_external_id",
+				mcp.Description("child_business_external_id"),
+			),
+			mcp.WithString("email",
+				mcp.Description("email"),
+			),
+			mcp.WithString("name",
+				mcp.Required(),
+				mcp.Description("name"),
+			),
+			mcp.WithString("primary_page",
+				mcp.Description("primary_page"),
+			),
+			mcp.WithString("sales_rep_email",
+				mcp.Description("sales_rep_email"),
+			),
+			mcp.WithString("survey_business_type",
+				mcp.Description("survey_business_type (enum: userbusinesses_survey_business_type_enum_param)"),
+			),
+			mcp.WithNumber("survey_num_assets",
+				mcp.Description("survey_num_assets"),
+			),
+			mcp.WithNumber("survey_num_people",
+				mcp.Description("survey_num_people"),
+			),
+			mcp.WithString("timezone_id",
+				mcp.Description("timezone_id (enum: userbusinesses_timezone_id_enum_param)"),
+			),
+			mcp.WithString("vertical",
+				mcp.Required(),
+				mcp.Description("vertical (enum: userbusinesses_vertical_enum_param)"),
+			),
+		),
 		mcp.NewTypedToolHandler(CreateUserBusinesseHandler),
 	)
 
-	// Register list_user_conversations using raw schema
+	// Register list_user_conversations
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_user_conversations", "List conversations for this User Returns UnifiedThread.", list_user_conversationsSchema),
+		mcp.NewTool("list_user_conversations",
+			mcp.WithDescription("List conversations for this User Returns UnifiedThread."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithString("folder",
+				mcp.Description("folder"),
+			),
+			mcp.WithString("platform",
+				mcp.Description("platform (enum: userconversations_platform_enum_param)"),
+			),
+			mcp.WithArray("tags",
+				mcp.Description("tags"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithString("user_id",
+				mcp.Description("user_id"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListUserConversationsHandler),
 	)
 
-	// Register list_user_custom_labels using raw schema
+	// Register list_user_custom_labels
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_user_custom_labels", "List custom_labels for this User Returns PageUserMessageThreadLabel.", list_user_custom_labelsSchema),
+		mcp.NewTool("list_user_custom_labels",
+			mcp.WithDescription("List custom_labels for this User Returns PageUserMessageThreadLabel."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListUserCustomLabelsHandler),
 	)
 
-	// Register list_user_events using raw schema
+	// Register list_user_events
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_user_events", "List events for this User Returns Event.", list_user_eventsSchema),
+		mcp.NewTool("list_user_events",
+			mcp.WithDescription("List events for this User Returns Event."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithBoolean("include_canceled",
+				mcp.Description("include_canceled"),
+			),
+			mcp.WithString("type",
+				mcp.Description("type (enum: userevents_type_enum_param)"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListUserEventsHandler),
 	)
 
-	// Register get_user_feed using raw schema
+	// Register get_user_feed
 	s.AddTool(
-		mcp.NewToolWithRawSchema("get_user_feed", "Get feed data for this User Returns Post.", get_user_feedSchema),
+		mcp.NewTool("get_user_feed",
+			mcp.WithDescription("Get feed data for this User Returns Post."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithBoolean("include_hidden",
+				mcp.Description("include_hidden"),
+			),
+			mcp.WithString("q",
+				mcp.Description("q"),
+			),
+			mcp.WithBoolean("show_expired",
+				mcp.Description("show_expired"),
+			),
+			mcp.WithString("since",
+				mcp.Description("since"),
+			),
+			mcp.WithString("until",
+				mcp.Description("until"),
+			),
+			mcp.WithString("with",
+				mcp.Description("with"),
+			),
+		),
 		mcp.NewTypedToolHandler(GetUserFeedHandler),
 	)
 
-	// Register update_user_feed using raw schema
+	// Register update_user_feed
 	s.AddTool(
-		mcp.NewToolWithRawSchema("update_user_feed", "Create or update feed for this User Returns Post.", update_user_feedSchema),
+		mcp.NewTool("update_user_feed",
+			mcp.WithDescription("Create or update feed for this User Returns Post."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithObject("actions",
+				mcp.Description("actions"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("album_id",
+				mcp.Description("album_id"),
+			),
+			mcp.WithString("android_key_hash",
+				mcp.Description("android_key_hash"),
+			),
+			mcp.WithString("application_id",
+				mcp.Description("application_id"),
+			),
+			mcp.WithNumber("asked_fun_fact_prompt_id",
+				mcp.Description("asked_fun_fact_prompt_id"),
+			),
+			mcp.WithString("asset3d_id",
+				mcp.Description("asset3d_id"),
+			),
+			mcp.WithString("associated_id",
+				mcp.Description("associated_id"),
+			),
+			mcp.WithBoolean("attach_place_suggestion",
+				mcp.Description("attach_place_suggestion"),
+			),
+			mcp.WithArray("attached_media",
+				mcp.Description("attached_media"),
+				mcp.Items(map[string]any{"type": "object"}),
+			),
+			mcp.WithBoolean("audience_exp",
+				mcp.Description("audience_exp"),
+			),
+			mcp.WithString("backdated_time",
+				mcp.Description("backdated_time"),
+			),
+			mcp.WithString("backdated_time_granularity",
+				mcp.Description("backdated_time_granularity (enum: userfeed_backdated_time_granularity_enum_param)"),
+			),
+			mcp.WithBoolean("breaking_news",
+				mcp.Description("breaking_news"),
+			),
+			mcp.WithNumber("breaking_news_expiration",
+				mcp.Description("breaking_news_expiration"),
+			),
+			mcp.WithObject("call_to_action",
+				mcp.Description("call_to_action"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("caption",
+				mcp.Description("caption"),
+			),
+			mcp.WithArray("child_attachments",
+				mcp.Description("child_attachments"),
+				mcp.Items(map[string]any{"type": "object"}),
+			),
+			mcp.WithString("client_mutation_id",
+				mcp.Description("client_mutation_id"),
+			),
+			mcp.WithString("composer_entry_picker",
+				mcp.Description("composer_entry_picker"),
+			),
+			mcp.WithString("composer_entry_point",
+				mcp.Description("composer_entry_point"),
+			),
+			mcp.WithNumber("composer_entry_time",
+				mcp.Description("composer_entry_time"),
+			),
+			mcp.WithString("composer_session_events_log",
+				mcp.Description("composer_session_events_log"),
+			),
+			mcp.WithString("composer_session_id",
+				mcp.Description("composer_session_id"),
+			),
+			mcp.WithString("composer_source_surface",
+				mcp.Description("composer_source_surface"),
+			),
+			mcp.WithString("composer_type",
+				mcp.Description("composer_type"),
+			),
+			mcp.WithString("connection_class",
+				mcp.Description("connection_class"),
+			),
+			mcp.WithString("content_attachment",
+				mcp.Description("content_attachment"),
+			),
+			mcp.WithObject("coordinates",
+				mcp.Description("coordinates"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("cta_link",
+				mcp.Description("cta_link"),
+			),
+			mcp.WithString("cta_type",
+				mcp.Description("cta_type"),
+			),
+			mcp.WithString("description",
+				mcp.Description("description"),
+			),
+			mcp.WithNumber("direct_share_status",
+				mcp.Description("direct_share_status"),
+			),
+			mcp.WithNumber("expanded_height",
+				mcp.Description("expanded_height"),
+			),
+			mcp.WithNumber("expanded_width",
+				mcp.Description("expanded_width"),
+			),
+			mcp.WithObject("feed_targeting",
+				mcp.Description("feed_targeting"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("formatting",
+				mcp.Description("formatting (enum: userfeed_formatting_enum_param)"),
+			),
+			mcp.WithString("fun_fact_prompt_id",
+				mcp.Description("fun_fact_prompt_id"),
+			),
+			mcp.WithNumber("fun_fact_toastee_id",
+				mcp.Description("fun_fact_toastee_id"),
+			),
+			mcp.WithNumber("height",
+				mcp.Description("height"),
+			),
+			mcp.WithObject("home_checkin_city_id",
+				mcp.Description("home_checkin_city_id"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithObject("image_crops",
+				mcp.Description("image_crops"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithArray("implicit_with_tags",
+				mcp.Description("implicit_with_tags"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithString("instant_game_entry_point_data",
+				mcp.Description("instant_game_entry_point_data"),
+			),
+			mcp.WithString("ios_bundle_id",
+				mcp.Description("ios_bundle_id"),
+			),
+			mcp.WithBoolean("is_backout_draft",
+				mcp.Description("is_backout_draft"),
+			),
+			mcp.WithBoolean("is_boost_intended",
+				mcp.Description("is_boost_intended"),
+			),
+			mcp.WithBoolean("is_explicit_location",
+				mcp.Description("is_explicit_location"),
+			),
+			mcp.WithBoolean("is_explicit_share",
+				mcp.Description("is_explicit_share"),
+			),
+			mcp.WithBoolean("is_group_linking_post",
+				mcp.Description("is_group_linking_post"),
+			),
+			mcp.WithBoolean("is_photo_container",
+				mcp.Description("is_photo_container"),
+			),
+			mcp.WithString("link",
+				mcp.Description("link"),
+			),
+			mcp.WithString("location_source_id",
+				mcp.Description("location_source_id"),
+			),
+			mcp.WithBoolean("manual_privacy",
+				mcp.Description("manual_privacy"),
+			),
+			mcp.WithString("message",
+				mcp.Description("message"),
+			),
+			mcp.WithBoolean("multi_share_end_card",
+				mcp.Description("multi_share_end_card"),
+			),
+			mcp.WithBoolean("multi_share_optimized",
+				mcp.Description("multi_share_optimized"),
+			),
+			mcp.WithString("name",
+				mcp.Description("name"),
+			),
+			mcp.WithString("nectar_module",
+				mcp.Description("nectar_module"),
+			),
+			mcp.WithString("object_attachment",
+				mcp.Description("object_attachment"),
+			),
+			mcp.WithString("og_action_type_id",
+				mcp.Description("og_action_type_id"),
+			),
+			mcp.WithBoolean("og_hide_object_attachment",
+				mcp.Description("og_hide_object_attachment"),
+			),
+			mcp.WithString("og_icon_id",
+				mcp.Description("og_icon_id"),
+			),
+			mcp.WithString("og_object_id",
+				mcp.Description("og_object_id"),
+			),
+			mcp.WithString("og_phrase",
+				mcp.Description("og_phrase"),
+			),
+			mcp.WithBoolean("og_set_profile_badge",
+				mcp.Description("og_set_profile_badge"),
+			),
+			mcp.WithString("og_suggestion_mechanism",
+				mcp.Description("og_suggestion_mechanism"),
+			),
+			mcp.WithString("page_recommendation",
+				mcp.Description("page_recommendation"),
+			),
+			mcp.WithString("picture",
+				mcp.Description("picture"),
+			),
+			mcp.WithObject("place",
+				mcp.Description("place"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("place_attachment_setting",
+				mcp.Description("place_attachment_setting (enum: userfeed_place_attachment_setting_enum_param)"),
+			),
+			mcp.WithString("place_list",
+				mcp.Description("place_list"),
+			),
+			mcp.WithString("place_list_data",
+				mcp.Description("place_list_data"),
+			),
+			mcp.WithArray("post_surfaces_blacklist",
+				mcp.Description("post_surfaces_blacklist"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithString("posting_to_redspace",
+				mcp.Description("posting_to_redspace (enum: userfeed_posting_to_redspace_enum_param)"),
+			),
+			mcp.WithString("privacy",
+				mcp.Description("privacy"),
+			),
+			mcp.WithString("prompt_id",
+				mcp.Description("prompt_id"),
+			),
+			mcp.WithString("prompt_tracking_string",
+				mcp.Description("prompt_tracking_string"),
+			),
+			mcp.WithObject("properties",
+				mcp.Description("properties"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("proxied_app_id",
+				mcp.Description("proxied_app_id"),
+			),
+			mcp.WithNumber("publish_event_id",
+				mcp.Description("publish_event_id"),
+			),
+			mcp.WithBoolean("published",
+				mcp.Description("published"),
+			),
+			mcp.WithString("quote",
+				mcp.Description("quote"),
+			),
+			mcp.WithArray("ref",
+				mcp.Description("ref"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithArray("referenceable_image_ids",
+				mcp.Description("referenceable_image_ids"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithString("referral_id",
+				mcp.Description("referral_id"),
+			),
+			mcp.WithString("scheduled_publish_time",
+				mcp.Description("scheduled_publish_time"),
+			),
+			mcp.WithString("source",
+				mcp.Description("source"),
+			),
+			mcp.WithString("sponsor_id",
+				mcp.Description("sponsor_id"),
+			),
+			mcp.WithNumber("sponsor_relationship",
+				mcp.Description("sponsor_relationship"),
+			),
+			mcp.WithObject("suggested_place_id",
+				mcp.Description("suggested_place_id"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithArray("tags",
+				mcp.Description("tags"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithString("target_surface",
+				mcp.Description("target_surface (enum: userfeed_target_surface_enum_param)"),
+			),
+			mcp.WithObject("targeting",
+				mcp.Description("targeting"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("text_format_metadata",
+				mcp.Description("text_format_metadata"),
+			),
+			mcp.WithString("text_format_preset_id",
+				mcp.Description("text_format_preset_id"),
+			),
+			mcp.WithString("text_only_place",
+				mcp.Description("text_only_place"),
+			),
+			mcp.WithString("thumbnail",
+				mcp.Description("thumbnail"),
+			),
+			mcp.WithNumber("time_since_original_post",
+				mcp.Description("time_since_original_post"),
+			),
+			mcp.WithString("title",
+				mcp.Description("title"),
+			),
+			mcp.WithString("tracking_info",
+				mcp.Description("tracking_info"),
+			),
+			mcp.WithString("unpublished_content_type",
+				mcp.Description("unpublished_content_type (enum: userfeed_unpublished_content_type_enum_param)"),
+			),
+			mcp.WithBoolean("user_selected_tags",
+				mcp.Description("user_selected_tags"),
+			),
+			mcp.WithNumber("video_start_time_ms",
+				mcp.Description("video_start_time_ms"),
+			),
+			mcp.WithObject("viewer_coordinates",
+				mcp.Description("viewer_coordinates"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithNumber("width",
+				mcp.Description("width"),
+			),
+		),
 		mcp.NewTypedToolHandler(UpdateUserFeedHandler),
 	)
 
-	// Register list_user_friends using raw schema
+	// Register list_user_friends
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_user_friends", "List friends for this User Returns User.", list_user_friendsSchema),
+		mcp.NewTool("list_user_friends",
+			mcp.WithDescription("List friends for this User Returns User."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithNumber("uid",
+				mcp.Description("uid"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListUserFriendsHandler),
 	)
 
-	// Register list_user_fundraisers using raw schema
+	// Register list_user_fundraisers
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_user_fundraisers", "List fundraisers for this User Returns FundraiserPersonToCharity.", list_user_fundraisersSchema),
+		mcp.NewTool("list_user_fundraisers",
+			mcp.WithDescription("List fundraisers for this User Returns FundraiserPersonToCharity."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListUserFundraisersHandler),
 	)
 
-	// Register create_user_fundraiser using raw schema
+	// Register create_user_fundraiser
 	s.AddTool(
-		mcp.NewToolWithRawSchema("create_user_fundraiser", "Create or update fundraisers for this User Returns FundraiserPersonToCharity. Required: currency, description, end_time, external_id, fundraiser_type (enum), goal_amount, name", create_user_fundraiserSchema),
+		mcp.NewTool("create_user_fundraiser",
+			mcp.WithDescription("Create or update fundraisers for this User Returns FundraiserPersonToCharity. Required: currency, description, end_time, external_id, fundraiser_type (enum), goal_amount, name"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithString("charity_id",
+				mcp.Description("charity_id"),
+			),
+			mcp.WithString("cover_photo",
+				mcp.Description("cover_photo"),
+			),
+			mcp.WithString("currency",
+				mcp.Required(),
+				mcp.Description("currency"),
+			),
+			mcp.WithString("description",
+				mcp.Required(),
+				mcp.Description("description"),
+			),
+			mcp.WithString("end_time",
+				mcp.Required(),
+				mcp.Description("end_time"),
+			),
+			mcp.WithString("external_event_name",
+				mcp.Description("external_event_name"),
+			),
+			mcp.WithString("external_event_start_time",
+				mcp.Description("external_event_start_time"),
+			),
+			mcp.WithString("external_event_uri",
+				mcp.Description("external_event_uri"),
+			),
+			mcp.WithString("external_fundraiser_uri",
+				mcp.Description("external_fundraiser_uri"),
+			),
+			mcp.WithString("external_id",
+				mcp.Required(),
+				mcp.Description("external_id"),
+			),
+			mcp.WithString("fundraiser_type",
+				mcp.Required(),
+				mcp.Description("fundraiser_type (enum: userfundraisers_fundraiser_type_enum_param)"),
+			),
+			mcp.WithNumber("goal_amount",
+				mcp.Required(),
+				mcp.Description("goal_amount"),
+			),
+			mcp.WithString("name",
+				mcp.Required(),
+				mcp.Description("name"),
+			),
+			mcp.WithString("page_id",
+				mcp.Description("page_id"),
+			),
+		),
 		mcp.NewTypedToolHandler(CreateUserFundraiserHandler),
 	)
 
-	// Register list_user_groups using raw schema
+	// Register list_user_groups
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_user_groups", "List groups for this User Returns Group.", list_user_groupsSchema),
+		mcp.NewTool("list_user_groups",
+			mcp.WithDescription("List groups for this User Returns Group."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithBoolean("admin_only",
+				mcp.Description("admin_only"),
+			),
+			mcp.WithString("parent",
+				mcp.Description("parent"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListUserGroupsHandler),
 	)
 
-	// Register list_user_ids_for_apps using raw schema
+	// Register list_user_ids_for_apps
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_user_ids_for_apps", "List ids_for_apps for this User Returns UserIDForApp.", list_user_ids_for_appsSchema),
+		mcp.NewTool("list_user_ids_for_apps",
+			mcp.WithDescription("List ids_for_apps for this User Returns UserIDForApp."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithNumber("app",
+				mcp.Description("app"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListUserIdsForAppsHandler),
 	)
 
-	// Register list_user_ids_for_business using raw schema
+	// Register list_user_ids_for_business
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_user_ids_for_business", "List ids_for_business for this User Returns UserIDForApp.", list_user_ids_for_businessSchema),
+		mcp.NewTool("list_user_ids_for_business",
+			mcp.WithDescription("List ids_for_business for this User Returns UserIDForApp."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithNumber("app",
+				mcp.Description("app"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListUserIdsForBusinessHandler),
 	)
 
-	// Register list_user_ids_for_pages using raw schema
+	// Register list_user_ids_for_pages
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_user_ids_for_pages", "List ids_for_pages for this User Returns UserIDForPage.", list_user_ids_for_pagesSchema),
+		mcp.NewTool("list_user_ids_for_pages",
+			mcp.WithDescription("List ids_for_pages for this User Returns UserIDForPage."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithNumber("page",
+				mcp.Description("page"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListUserIdsForPagesHandler),
 	)
 
-	// Register list_user_likes using raw schema
+	// Register list_user_likes
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_user_likes", "List likes for this User Returns Page.", list_user_likesSchema),
+		mcp.NewTool("list_user_likes",
+			mcp.WithDescription("List likes for this User Returns Page."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithString("target_id",
+				mcp.Description("target_id"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListUserLikesHandler),
 	)
 
-	// Register list_user_live_videos using raw schema
+	// Register list_user_live_videos
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_user_live_videos", "List live_videos for this User Returns LiveVideo.", list_user_live_videosSchema),
+		mcp.NewTool("list_user_live_videos",
+			mcp.WithDescription("List live_videos for this User Returns LiveVideo."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithArray("broadcast_status",
+				mcp.Description("broadcast_status"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithString("source",
+				mcp.Description("source (enum: userlive_videos_source_enum_param)"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListUserLiveVideosHandler),
 	)
 
-	// Register create_user_live_video using raw schema
+	// Register create_user_live_video
 	s.AddTool(
-		mcp.NewToolWithRawSchema("create_user_live_video", "Create or update live_videos for this User Returns LiveVideo.", create_user_live_videoSchema),
+		mcp.NewTool("create_user_live_video",
+			mcp.WithDescription("Create or update live_videos for this User Returns LiveVideo."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithArray("content_tags",
+				mcp.Description("content_tags"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithString("description",
+				mcp.Description("description"),
+			),
+			mcp.WithBoolean("enable_backup_ingest",
+				mcp.Description("enable_backup_ingest"),
+			),
+			mcp.WithString("encoding_settings",
+				mcp.Description("encoding_settings"),
+			),
+			mcp.WithObject("event_params",
+				mcp.Description("event_params"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithBoolean("fisheye_video_cropped",
+				mcp.Description("fisheye_video_cropped"),
+			),
+			mcp.WithNumber("front_z_rotation",
+				mcp.Description("front_z_rotation"),
+			),
+			mcp.WithBoolean("is_audio_only",
+				mcp.Description("is_audio_only"),
+			),
+			mcp.WithBoolean("is_spherical",
+				mcp.Description("is_spherical"),
+			),
+			mcp.WithNumber("original_fov",
+				mcp.Description("original_fov"),
+			),
+			mcp.WithString("privacy",
+				mcp.Description("privacy"),
+			),
+			mcp.WithString("projection",
+				mcp.Description("projection (enum: userlive_videos_projection_enum_param)"),
+			),
+			mcp.WithBoolean("published",
+				mcp.Description("published"),
+			),
+			mcp.WithString("schedule_custom_profile_image",
+				mcp.Description("schedule_custom_profile_image"),
+			),
+			mcp.WithString("spatial_audio_format",
+				mcp.Description("spatial_audio_format (enum: userlive_videos_spatial_audio_format_enum_param)"),
+			),
+			mcp.WithString("status",
+				mcp.Description("status (enum: userlive_videos_status_enum_param)"),
+			),
+			mcp.WithString("stereoscopic_mode",
+				mcp.Description("stereoscopic_mode (enum: userlive_videos_stereoscopic_mode_enum_param)"),
+			),
+			mcp.WithBoolean("stop_on_delete_stream",
+				mcp.Description("stop_on_delete_stream"),
+			),
+			mcp.WithString("stream_type",
+				mcp.Description("stream_type (enum: userlive_videos_stream_type_enum_param)"),
+			),
+			mcp.WithString("title",
+				mcp.Description("title"),
+			),
+		),
 		mcp.NewTypedToolHandler(CreateUserLiveVideoHandler),
 	)
 
-	// Register create_user_messenger_desktop_performance_trace using raw schema
+	// Register create_user_messenger_desktop_performance_trace
 	s.AddTool(
-		mcp.NewToolWithRawSchema("create_user_messenger_desktop_performance_trace", "Create or update messenger_desktop_performance_traces for this User Returns User.", create_user_messenger_desktop_performance_traceSchema),
+		mcp.NewTool("create_user_messenger_desktop_performance_trace",
+			mcp.WithDescription("Create or update messenger_desktop_performance_traces for this User Returns User."),
+		),
 		mcp.NewTypedToolHandler(CreateUserMessengerDesktopPerformanceTraceHandler),
 	)
 
-	// Register update_user_messenger_kids_accounts_unread_badge using raw schema
+	// Register update_user_messenger_kids_accounts_unread_badge
 	s.AddTool(
-		mcp.NewToolWithRawSchema("update_user_messenger_kids_accounts_unread_badge", "Create or update messenger_kids_accounts_unread_badge for this User Returns User. Required: proxied_app_id", update_user_messenger_kids_accounts_unread_badgeSchema),
+		mcp.NewTool("update_user_messenger_kids_accounts_unread_badge",
+			mcp.WithDescription("Create or update messenger_kids_accounts_unread_badge for this User Returns User. Required: proxied_app_id"),
+			mcp.WithNumber("proxied_app_id",
+				mcp.Required(),
+				mcp.Description("proxied_app_id"),
+			),
+		),
 		mcp.NewTypedToolHandler(UpdateUserMessengerKidsAccountsUnreadBadgeHandler),
 	)
 
-	// Register get_user_music using raw schema
+	// Register get_user_music
 	s.AddTool(
-		mcp.NewToolWithRawSchema("get_user_music", "Get music data for this User Returns Page.", get_user_musicSchema),
+		mcp.NewTool("get_user_music",
+			mcp.WithDescription("Get music data for this User Returns Page."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithString("target_id",
+				mcp.Description("target_id"),
+			),
+		),
 		mcp.NewTypedToolHandler(GetUserMusicHandler),
 	)
 
-	// Register create_user_notification using raw schema
+	// Register create_user_notification
 	s.AddTool(
-		mcp.NewToolWithRawSchema("create_user_notification", "Create or update notifications for this User Returns User.", create_user_notificationSchema),
+		mcp.NewTool("create_user_notification",
+			mcp.WithDescription("Create or update notifications for this User Returns User."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithString("bot_message_payload_elements",
+				mcp.Description("bot_message_payload_elements"),
+			),
+			mcp.WithArray("filtering",
+				mcp.Description("filtering"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithObject("href",
+				mcp.Description("href"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("label",
+				mcp.Description("label"),
+			),
+			mcp.WithObject("message",
+				mcp.Description("message"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithArray("notif_ids",
+				mcp.Description("notif_ids"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithString("payload",
+				mcp.Description("payload"),
+			),
+			mcp.WithBoolean("read",
+				mcp.Description("read"),
+			),
+			mcp.WithString("ref",
+				mcp.Description("ref"),
+			),
+			mcp.WithNumber("schedule_interval",
+				mcp.Description("schedule_interval"),
+			),
+			mcp.WithBoolean("seen",
+				mcp.Description("seen"),
+			),
+			mcp.WithObject("template",
+				mcp.Description("template"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("type",
+				mcp.Description("type (enum: usernotifications_type_enum_param)"),
+			),
+		),
 		mcp.NewTypedToolHandler(CreateUserNotificationHandler),
 	)
 
-	// Register list_user_payment_transactions using raw schema
+	// Register list_user_payment_transactions
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_user_payment_transactions", "List payment_transactions for this User Returns PaymentEnginePayment.", list_user_payment_transactionsSchema),
+		mcp.NewTool("list_user_payment_transactions",
+			mcp.WithDescription("List payment_transactions for this User Returns PaymentEnginePayment."),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListUserPaymentTransactionsHandler),
 	)
 
-	// Register remove_permissions_from_user using raw schema
+	// Register remove_permissions_from_user
 	s.AddTool(
-		mcp.NewToolWithRawSchema("remove_permissions_from_user", "Remove permissions from this User", remove_permissions_from_userSchema),
+		mcp.NewTool("remove_permissions_from_user",
+			mcp.WithDescription("Remove permissions from this User"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithString("permission",
+				mcp.Description("permission"),
+			),
+		),
 		mcp.NewTypedToolHandler(RemovePermissionsFromUserHandler),
 	)
 
-	// Register list_user_permissions using raw schema
+	// Register list_user_permissions
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_user_permissions", "List permissions for this User Returns Permission.", list_user_permissionsSchema),
+		mcp.NewTool("list_user_permissions",
+			mcp.WithDescription("List permissions for this User Returns Permission."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithString("permission",
+				mcp.Description("permission"),
+			),
+			mcp.WithString("status",
+				mcp.Description("status (enum: userpermissions_status_enum_param)"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListUserPermissionsHandler),
 	)
 
-	// Register list_user_personal_ad_accounts using raw schema
+	// Register list_user_personal_ad_accounts
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_user_personal_ad_accounts", "List personal_ad_accounts for this User Returns AdAccount.", list_user_personal_ad_accountsSchema),
+		mcp.NewTool("list_user_personal_ad_accounts",
+			mcp.WithDescription("List personal_ad_accounts for this User Returns AdAccount."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListUserPersonalAdAccountsHandler),
 	)
 
-	// Register list_user_photos using raw schema
+	// Register list_user_photos
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_user_photos", "List photos for this User Returns Photo.", list_user_photosSchema),
+		mcp.NewTool("list_user_photos",
+			mcp.WithDescription("List photos for this User Returns Photo."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithString("type",
+				mcp.Description("type (enum: userphotos_type_enum_param)"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListUserPhotosHandler),
 	)
 
-	// Register create_user_photo using raw schema
+	// Register create_user_photo
 	s.AddTool(
-		mcp.NewToolWithRawSchema("create_user_photo", "Create or update photos for this User Returns Photo.", create_user_photoSchema),
+		mcp.NewTool("create_user_photo",
+			mcp.WithDescription("Create or update photos for this User Returns Photo."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithString("aid",
+				mcp.Description("aid"),
+			),
+			mcp.WithBoolean("allow_spherical_photo",
+				mcp.Description("allow_spherical_photo"),
+			),
+			mcp.WithString("alt_text_custom",
+				mcp.Description("alt_text_custom"),
+			),
+			mcp.WithString("android_key_hash",
+				mcp.Description("android_key_hash"),
+			),
+			mcp.WithString("application_id",
+				mcp.Description("application_id"),
+			),
+			mcp.WithNumber("attempt",
+				mcp.Description("attempt"),
+			),
+			mcp.WithBoolean("audience_exp",
+				mcp.Description("audience_exp"),
+			),
+			mcp.WithString("backdated_time",
+				mcp.Description("backdated_time"),
+			),
+			mcp.WithString("backdated_time_granularity",
+				mcp.Description("backdated_time_granularity (enum: userphotos_backdated_time_granularity_enum_param)"),
+			),
+			mcp.WithString("caption",
+				mcp.Description("caption"),
+			),
+			mcp.WithString("composer_session_id",
+				mcp.Description("composer_session_id"),
+			),
+			mcp.WithNumber("direct_share_status",
+				mcp.Description("direct_share_status"),
+			),
+			mcp.WithObject("feed_targeting",
+				mcp.Description("feed_targeting"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithNumber("filter_type",
+				mcp.Description("filter_type"),
+			),
+			mcp.WithBoolean("full_res_is_coming_later",
+				mcp.Description("full_res_is_coming_later"),
+			),
+			mcp.WithNumber("initial_view_heading_override_degrees",
+				mcp.Description("initial_view_heading_override_degrees"),
+			),
+			mcp.WithNumber("initial_view_pitch_override_degrees",
+				mcp.Description("initial_view_pitch_override_degrees"),
+			),
+			mcp.WithNumber("initial_view_vertical_fov_override_degrees",
+				mcp.Description("initial_view_vertical_fov_override_degrees"),
+			),
+			mcp.WithString("ios_bundle_id",
+				mcp.Description("ios_bundle_id"),
+			),
+			mcp.WithBoolean("is_explicit_location",
+				mcp.Description("is_explicit_location"),
+			),
+			mcp.WithBoolean("is_explicit_place",
+				mcp.Description("is_explicit_place"),
+			),
+			mcp.WithBoolean("manual_privacy",
+				mcp.Description("manual_privacy"),
+			),
+			mcp.WithString("message",
+				mcp.Description("message"),
+			),
+			mcp.WithString("name",
+				mcp.Description("name"),
+			),
+			mcp.WithBoolean("no_story",
+				mcp.Description("no_story"),
+			),
+			mcp.WithNumber("offline_id",
+				mcp.Description("offline_id"),
+			),
+			mcp.WithString("og_action_type_id",
+				mcp.Description("og_action_type_id"),
+			),
+			mcp.WithString("og_icon_id",
+				mcp.Description("og_icon_id"),
+			),
+			mcp.WithString("og_object_id",
+				mcp.Description("og_object_id"),
+			),
+			mcp.WithString("og_phrase",
+				mcp.Description("og_phrase"),
+			),
+			mcp.WithBoolean("og_set_profile_badge",
+				mcp.Description("og_set_profile_badge"),
+			),
+			mcp.WithString("og_suggestion_mechanism",
+				mcp.Description("og_suggestion_mechanism"),
+			),
+			mcp.WithObject("place",
+				mcp.Description("place"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("privacy",
+				mcp.Description("privacy"),
+			),
+			mcp.WithNumber("profile_id",
+				mcp.Description("profile_id"),
+			),
+			mcp.WithObject("provenance_info",
+				mcp.Description("provenance_info"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("proxied_app_id",
+				mcp.Description("proxied_app_id"),
+			),
+			mcp.WithBoolean("published",
+				mcp.Description("published"),
+			),
+			mcp.WithString("qn",
+				mcp.Description("qn"),
+			),
+			mcp.WithNumber("scheduled_publish_time",
+				mcp.Description("scheduled_publish_time"),
+			),
+			mcp.WithObject("spherical_metadata",
+				mcp.Description("spherical_metadata"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("sponsor_id",
+				mcp.Description("sponsor_id"),
+			),
+			mcp.WithNumber("sponsor_relationship",
+				mcp.Description("sponsor_relationship"),
+			),
+			mcp.WithArray("tags",
+				mcp.Description("tags"),
+				mcp.Items(map[string]any{"type": "object"}),
+			),
+			mcp.WithNumber("target_id",
+				mcp.Description("target_id"),
+			),
+			mcp.WithObject("targeting",
+				mcp.Description("targeting"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithNumber("time_since_original_post",
+				mcp.Description("time_since_original_post"),
+			),
+			mcp.WithNumber("uid",
+				mcp.Description("uid"),
+			),
+			mcp.WithString("unpublished_content_type",
+				mcp.Description("unpublished_content_type (enum: userphotos_unpublished_content_type_enum_param)"),
+			),
+			mcp.WithString("url",
+				mcp.Description("url"),
+			),
+			mcp.WithBoolean("user_selected_tags",
+				mcp.Description("user_selected_tags"),
+			),
+			mcp.WithString("vault_image_id",
+				mcp.Description("vault_image_id"),
+			),
+		),
 		mcp.NewTypedToolHandler(CreateUserPhotoHandler),
 	)
 
-	// Register get_user_picture using raw schema
+	// Register get_user_picture
 	s.AddTool(
-		mcp.NewToolWithRawSchema("get_user_picture", "Get picture data for this User Returns ProfilePictureSource.", get_user_pictureSchema),
+		mcp.NewTool("get_user_picture",
+			mcp.WithDescription("Get picture data for this User Returns ProfilePictureSource."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithNumber("height",
+				mcp.Description("height"),
+			),
+			mcp.WithBoolean("redirect",
+				mcp.Description("redirect"),
+			),
+			mcp.WithString("type",
+				mcp.Description("type (enum: userpicture_type_enum_param)"),
+			),
+			mcp.WithNumber("width",
+				mcp.Description("width"),
+			),
+		),
 		mcp.NewTypedToolHandler(GetUserPictureHandler),
 	)
 
-	// Register list_user_posts using raw schema
+	// Register list_user_posts
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_user_posts", "List posts for this User Returns Post.", list_user_postsSchema),
+		mcp.NewTool("list_user_posts",
+			mcp.WithDescription("List posts for this User Returns Post."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithBoolean("include_hidden",
+				mcp.Description("include_hidden"),
+			),
+			mcp.WithString("q",
+				mcp.Description("q"),
+			),
+			mcp.WithBoolean("show_expired",
+				mcp.Description("show_expired"),
+			),
+			mcp.WithString("since",
+				mcp.Description("since"),
+			),
+			mcp.WithString("until",
+				mcp.Description("until"),
+			),
+			mcp.WithString("with",
+				mcp.Description("with"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListUserPostsHandler),
 	)
 
-	// Register list_user_rich_media_documents using raw schema
+	// Register list_user_rich_media_documents
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_user_rich_media_documents", "List rich_media_documents for this User Returns Canvas.", list_user_rich_media_documentsSchema),
+		mcp.NewTool("list_user_rich_media_documents",
+			mcp.WithDescription("List rich_media_documents for this User Returns Canvas."),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithString("query",
+				mcp.Description("query"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListUserRichMediaDocumentsHandler),
 	)
 
-	// Register create_user_staging_resource using raw schema
+	// Register create_user_staging_resource
 	s.AddTool(
-		mcp.NewToolWithRawSchema("create_user_staging_resource", "Create or update staging_resources for this User Returns User.", create_user_staging_resourceSchema),
+		mcp.NewTool("create_user_staging_resource",
+			mcp.WithDescription("Create or update staging_resources for this User Returns User."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithString("file",
+				mcp.Description("file"),
+			),
+		),
 		mcp.NewTypedToolHandler(CreateUserStagingResourceHandler),
 	)
 
-	// Register list_user_videos using raw schema
+	// Register list_user_videos
 	s.AddTool(
-		mcp.NewToolWithRawSchema("list_user_videos", "List videos for this User Returns AdVideo.", list_user_videosSchema),
+		mcp.NewTool("list_user_videos",
+			mcp.WithDescription("List videos for this User Returns AdVideo."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+			mcp.WithString("type",
+				mcp.Description("type (enum: uservideos_type_enum_param)"),
+			),
+		),
 		mcp.NewTypedToolHandler(ListUserVideosHandler),
 	)
 
-	// Register create_user_video using raw schema
+	// Register create_user_video
 	s.AddTool(
-		mcp.NewToolWithRawSchema("create_user_video", "Create or update videos for this User Returns AdVideo.", create_user_videoSchema),
+		mcp.NewTool("create_user_video",
+			mcp.WithDescription("Create or update videos for this User Returns AdVideo."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithString("application_id",
+				mcp.Description("application_id"),
+			),
+			mcp.WithNumber("asked_fun_fact_prompt_id",
+				mcp.Description("asked_fun_fact_prompt_id"),
+			),
+			mcp.WithString("audio_story_wave_animation_handle",
+				mcp.Description("audio_story_wave_animation_handle"),
+			),
+			mcp.WithString("composer_entry_picker",
+				mcp.Description("composer_entry_picker"),
+			),
+			mcp.WithString("composer_entry_point",
+				mcp.Description("composer_entry_point"),
+			),
+			mcp.WithNumber("composer_entry_time",
+				mcp.Description("composer_entry_time"),
+			),
+			mcp.WithString("composer_session_events_log",
+				mcp.Description("composer_session_events_log"),
+			),
+			mcp.WithString("composer_session_id",
+				mcp.Description("composer_session_id"),
+			),
+			mcp.WithString("composer_source_surface",
+				mcp.Description("composer_source_surface"),
+			),
+			mcp.WithString("composer_type",
+				mcp.Description("composer_type"),
+			),
+			mcp.WithString("container_type",
+				mcp.Description("container_type (enum: uservideos_container_type_enum_param)"),
+			),
+			mcp.WithString("content_category",
+				mcp.Description("content_category (enum: uservideos_content_category_enum_param)"),
+			),
+			mcp.WithString("creative_tools",
+				mcp.Description("creative_tools"),
+			),
+			mcp.WithString("description",
+				mcp.Description("description"),
+			),
+			mcp.WithNumber("direct_share_status",
+				mcp.Description("direct_share_status"),
+			),
+			mcp.WithBoolean("embeddable",
+				mcp.Description("embeddable"),
+			),
+			mcp.WithNumber("end_offset",
+				mcp.Description("end_offset"),
+			),
+			mcp.WithString("fbuploader_video_file_chunk",
+				mcp.Description("fbuploader_video_file_chunk"),
+			),
+			mcp.WithNumber("file_size",
+				mcp.Description("file_size"),
+			),
+			mcp.WithString("file_url",
+				mcp.Description("file_url"),
+			),
+			mcp.WithBoolean("fisheye_video_cropped",
+				mcp.Description("fisheye_video_cropped"),
+			),
+			mcp.WithString("formatting",
+				mcp.Description("formatting (enum: uservideos_formatting_enum_param)"),
+			),
+			mcp.WithNumber("fov",
+				mcp.Description("fov"),
+			),
+			mcp.WithNumber("front_z_rotation",
+				mcp.Description("front_z_rotation"),
+			),
+			mcp.WithString("fun_fact_prompt_id",
+				mcp.Description("fun_fact_prompt_id"),
+			),
+			mcp.WithNumber("fun_fact_toastee_id",
+				mcp.Description("fun_fact_toastee_id"),
+			),
+			mcp.WithArray("guide",
+				mcp.Description("guide"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithBoolean("guide_enabled",
+				mcp.Description("guide_enabled"),
+			),
+			mcp.WithNumber("initial_heading",
+				mcp.Description("initial_heading"),
+			),
+			mcp.WithNumber("initial_pitch",
+				mcp.Description("initial_pitch"),
+			),
+			mcp.WithString("instant_game_entry_point_data",
+				mcp.Description("instant_game_entry_point_data"),
+			),
+			mcp.WithBoolean("is_boost_intended",
+				mcp.Description("is_boost_intended"),
+			),
+			mcp.WithBoolean("is_explicit_share",
+				mcp.Description("is_explicit_share"),
+			),
+			mcp.WithBoolean("is_group_linking_post",
+				mcp.Description("is_group_linking_post"),
+			),
+			mcp.WithBoolean("is_partnership_ad",
+				mcp.Description("is_partnership_ad"),
+			),
+			mcp.WithBoolean("is_voice_clip",
+				mcp.Description("is_voice_clip"),
+			),
+			mcp.WithString("location_source_id",
+				mcp.Description("location_source_id"),
+			),
+			mcp.WithBoolean("manual_privacy",
+				mcp.Description("manual_privacy"),
+			),
+			mcp.WithBoolean("no_story",
+				mcp.Description("no_story"),
+			),
+			mcp.WithString("og_action_type_id",
+				mcp.Description("og_action_type_id"),
+			),
+			mcp.WithString("og_icon_id",
+				mcp.Description("og_icon_id"),
+			),
+			mcp.WithString("og_object_id",
+				mcp.Description("og_object_id"),
+			),
+			mcp.WithString("og_phrase",
+				mcp.Description("og_phrase"),
+			),
+			mcp.WithString("og_suggestion_mechanism",
+				mcp.Description("og_suggestion_mechanism"),
+			),
+			mcp.WithNumber("original_fov",
+				mcp.Description("original_fov"),
+			),
+			mcp.WithString("original_projection_type",
+				mcp.Description("original_projection_type (enum: uservideos_original_projection_type_enum_param)"),
+			),
+			mcp.WithString("partnership_ad_ad_code",
+				mcp.Description("partnership_ad_ad_code"),
+			),
+			mcp.WithString("privacy",
+				mcp.Description("privacy"),
+			),
+			mcp.WithNumber("publish_event_id",
+				mcp.Description("publish_event_id"),
+			),
+			mcp.WithString("referenced_sticker_id",
+				mcp.Description("referenced_sticker_id"),
+			),
+			mcp.WithString("replace_video_id",
+				mcp.Description("replace_video_id"),
+			),
+			mcp.WithObject("slideshow_spec",
+				mcp.Description("slideshow_spec"),
+				mcp.AdditionalProperties(true),
+			),
+			mcp.WithString("source",
+				mcp.Description("source"),
+			),
+			mcp.WithString("source_instagram_media_id",
+				mcp.Description("source_instagram_media_id"),
+			),
+			mcp.WithBoolean("spherical",
+				mcp.Description("spherical"),
+			),
+			mcp.WithString("sponsor_id",
+				mcp.Description("sponsor_id"),
+			),
+			mcp.WithNumber("start_offset",
+				mcp.Description("start_offset"),
+			),
+			mcp.WithString("swap_mode",
+				mcp.Description("swap_mode (enum: uservideos_swap_mode_enum_param)"),
+			),
+			mcp.WithString("text_format_metadata",
+				mcp.Description("text_format_metadata"),
+			),
+			mcp.WithString("thumb",
+				mcp.Description("thumb"),
+			),
+			mcp.WithNumber("time_since_original_post",
+				mcp.Description("time_since_original_post"),
+			),
+			mcp.WithString("title",
+				mcp.Description("title"),
+			),
+			mcp.WithString("transcode_setting_properties",
+				mcp.Description("transcode_setting_properties"),
+			),
+			mcp.WithString("unpublished_content_type",
+				mcp.Description("unpublished_content_type (enum: uservideos_unpublished_content_type_enum_param)"),
+			),
+			mcp.WithString("upload_phase",
+				mcp.Description("upload_phase (enum: uservideos_upload_phase_enum_param)"),
+			),
+			mcp.WithString("upload_session_id",
+				mcp.Description("upload_session_id"),
+			),
+			mcp.WithString("upload_setting_properties",
+				mcp.Description("upload_setting_properties"),
+			),
+			mcp.WithString("video_file_chunk",
+				mcp.Description("video_file_chunk"),
+			),
+			mcp.WithString("video_id_original",
+				mcp.Description("video_id_original"),
+			),
+			mcp.WithNumber("video_start_time_ms",
+				mcp.Description("video_start_time_ms"),
+			),
+			mcp.WithString("waterfall_id",
+				mcp.Description("waterfall_id"),
+			),
+		),
 		mcp.NewTypedToolHandler(CreateUserVideoHandler),
 	)
 
-	// Register delete_user using raw schema
+	// Register delete_user
 	s.AddTool(
-		mcp.NewToolWithRawSchema("delete_user", "Delete a User", delete_userSchema),
+		mcp.NewTool("delete_user",
+			mcp.WithDescription("Delete a User"),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+		),
 		mcp.NewTypedToolHandler(DeleteUserHandler),
 	)
 
-	// Register get_user using raw schema
+	// Register get_user
 	s.AddTool(
-		mcp.NewToolWithRawSchema("get_user", "Get details of a specific User Returns User.", get_userSchema),
+		mcp.NewTool("get_user",
+			mcp.WithDescription("Get details of a specific User Returns User."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithArray("fields",
+				mcp.Description("Fields to return"),
+				mcp.Items(map[string]any{"type": "string"}),
+			),
+			mcp.WithNumber("limit",
+				mcp.Description("Maximum number of results"),
+			),
+			mcp.WithString("after",
+				mcp.Description("Cursor for pagination (next page)"),
+			),
+			mcp.WithString("before",
+				mcp.Description("Cursor for pagination (previous page)"),
+			),
+		),
 		mcp.NewTypedToolHandler(GetUserHandler),
 	)
 
-	// Register update_user using raw schema
+	// Register update_user
 	s.AddTool(
-		mcp.NewToolWithRawSchema("update_user", "Update a User Returns User.", update_userSchema),
+		mcp.NewTool("update_user",
+			mcp.WithDescription("Update a User Returns User."),
+			mcp.WithString("id",
+				mcp.Required(),
+				mcp.Description("User ID"),
+			),
+			mcp.WithNumber("emoji_color_pref",
+				mcp.Description("emoji_color_pref"),
+			),
+			mcp.WithString("firstname",
+				mcp.Description("firstname"),
+			),
+			mcp.WithString("lastname",
+				mcp.Description("lastname"),
+			),
+			mcp.WithString("local_news_megaphone_dismiss_status",
+				mcp.Description("local_news_megaphone_dismiss_status (enum: user_local_news_megaphone_dismiss_status)"),
+			),
+			mcp.WithString("local_news_subscription_status",
+				mcp.Description("local_news_subscription_status (enum: user_local_news_subscription_status)"),
+			),
+			mcp.WithString("name",
+				mcp.Description("name"),
+			),
+			mcp.WithString("password",
+				mcp.Description("password"),
+			),
+		),
 		mcp.NewTypedToolHandler(UpdateUserHandler),
 	)
 
