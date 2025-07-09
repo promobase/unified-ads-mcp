@@ -56,13 +56,14 @@ func main() {
 
 	// Validate generation type
 	validTypes := map[string]bool{
-		"all":    true,
-		"enums":  true,
-		"fields": true,
-		"tools":  true,
+		"all":       true,
+		"enums":     true,
+		"fields":    true,
+		"tools":     true,
+		"constants": true,
 	}
 	if !validTypes[config.genType] {
-		log.Fatalf("Invalid generation type: %s. Must be one of: all, enums, fields, tools", config.genType)
+		log.Fatalf("Invalid generation type: %s. Must be one of: all, enums, fields, tools, constants", config.genType)
 	}
 
 	// Run generation based on type
@@ -82,6 +83,10 @@ func main() {
 	case "tools":
 		if err := generateTools(config); err != nil {
 			log.Fatalf("Failed to generate tools: %v", err)
+		}
+	case "constants":
+		if err := generateConstants(config); err != nil {
+			log.Fatalf("Failed to generate constants: %v", err)
 		}
 	}
 
@@ -110,6 +115,11 @@ func generateAll(config Config) error {
 	// Generate tools
 	if err := generateTools(config); err != nil {
 		return fmt.Errorf("failed to generate tools: %w", err)
+	}
+
+	// Generate constants
+	if err := generateConstants(config); err != nil {
+		return fmt.Errorf("failed to generate constants: %w", err)
 	}
 
 	return nil
@@ -189,6 +199,23 @@ func generateTools(config Config) error {
 
 	if err := generator.Generate(); err != nil {
 		return fmt.Errorf("failed to generate tools: %w", err)
+	}
+
+	return nil
+}
+
+func generateConstants(config Config) error {
+	log.Println("Generating field constants...")
+
+	generator := generators.NewConstantsGenerator(config.outputPath)
+
+	// Load API specs
+	if err := generator.LoadAPISpecs(config.specsDir); err != nil {
+		return fmt.Errorf("failed to load API specs: %w", err)
+	}
+
+	if err := generator.Generate(); err != nil {
+		return fmt.Errorf("failed to generate constants: %w", err)
 	}
 
 	return nil
