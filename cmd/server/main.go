@@ -35,9 +35,14 @@ func NewFacebookMCPServer() *server.MCPServer {
 		server.WithHooks(hooks),
 	)
 
-	// register low level tools
-	if err := generated.RegisterAllTools(mcpServer); err != nil {
-		log.Fatalf("Failed to register tools: %v", err)
+	// Register scope selector tool (manages dynamic tool registration)
+	if err := tools.RegisterScopeSelectorTool(mcpServer); err != nil {
+		log.Fatalf("Failed to register scope selector tool: %v", err)
+	}
+
+	// Register only adaccount tools by default
+	if err := generated.RegisterAdAccountTools(mcpServer); err != nil {
+		log.Fatalf("Failed to register adaccount tools: %v", err)
 	}
 
 	// ---- High level tools ----
