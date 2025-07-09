@@ -1,4 +1,4 @@
-package tools
+package generated
 
 import (
 	"context"

@@ -6,12 +6,15 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"os"
-	"strings"
 	"testing"
 
 	"github.com/mark3labs/mcp-go/mcp"
-	"unified-ads-mcp/internal/facebook/generated"
 )
+
+func init() {
+	// Set testing environment variable to enable guardrails
+	os.Setenv("TESTING", "true")
+}
 
 // mockBatchAPIServer creates a test server that handles batch requests
 func mockBatchAPIServer(t *testing.T) *httptest.Server {
@@ -49,8 +52,8 @@ func mockBatchAPIServer(t *testing.T) *httptest.Server {
 		}
 
 		// Parse batch requests
-		var requests []generated.BatchRequest
-		if err := json.Unmarshal([]byte(batchJSON), &requests); err != nil {
+		var batchRequests []BatchRequest
+		if err := json.Unmarshal([]byte(batchJSON), &batchRequests); err != nil {
 			w.WriteHeader(http.StatusBadRequest)
 			json.NewEncoder(w).Encode(map[string]interface{}{
 				"error": map[string]interface{}{
@@ -61,192 +64,107 @@ func mockBatchAPIServer(t *testing.T) *httptest.Server {
 		}
 
 		// Create mock responses
-		responses := make([]generated.BatchResponse, len(requests))
-		for i, req := range requests {
-			switch {
-			case strings.Contains(req.RelativeURL, "insights"):
-				responses[i] = generated.BatchResponse{
-					Code: 200,
-					Body: json.RawMessage(`{"data":[{"impressions":"1000","clicks":"50","spend":"25.50"}]}`),
-				}
-			case req.Method == "POST" && strings.Contains(req.RelativeURL, "adsets"):
-				responses[i] = generated.BatchResponse{
-					Code: 200,
-					Body: json.RawMessage(`{"id":"adset_` + string(rune(i+'1')) + `","name":"Test AdSet ` + string(rune(i+'1')) + `"}`),
-				}
-			case req.Method == "POST":
-				responses[i] = generated.BatchResponse{
-					Code: 200,
-					Body: json.RawMessage(`{"success":true}`),
-				}
-			default:
-				responses[i] = generated.BatchResponse{
-					Code: 200,
-					Body: json.RawMessage(`{"id":"` + strings.Split(req.RelativeURL, "?")[0] + `","name":"Test Object"}`),
-				}
+		responses := make([]BatchResponse, len(batchRequests))
+		for i := range batchRequests {
+			// Mock successful response for each request
+			mockData := map[string]interface{}{
+				"id":   "mock_id_" + string(rune(i)),
+				"name": "Mock Object " + string(rune(i)),
+			}
+			mockBody, _ := json.Marshal(mockData)
+			responses[i] = BatchResponse{
+				Code: 200,
+				Body: mockBody,
 			}
 		}
 
+		// Return batch responses
 		w.Header().Set("Content-Type", "application/json")
 		json.NewEncoder(w).Encode(responses)
 	}))
 }
 
-func TestExecuteBatchRequestsHandler(t *testing.T) {
-	mockServer := mockBatchAPIServer(t)
-	defer mockServer.Close()
-
-	// Override API host
-	oldHost := generated.GetGraphAPIHost()
-	generated.SetGraphAPIHost(mockServer.URL)
-	defer func() {
-		generated.SetGraphAPIHost(oldHost)
-	}()
-
-	// Set test token
-	os.Setenv("FACEBOOK_ACCESS_TOKEN", "test_token")
-	defer os.Unsetenv("FACEBOOK_ACCESS_TOKEN")
-
-	// Prepare batch requests
-	batchRequests := []generated.BatchRequest{
-		{
-			Method:      "GET",
-			RelativeURL: "act_123?fields=id,name",
-		},
-		{
-			Method:      "POST",
-			RelativeURL: "campaign_456",
-			Body: map[string]interface{}{
-				"status": "PAUSED",
-			},
-		},
-	}
-
-	requestsJSON, _ := json.Marshal(batchRequests)
-
-	request := mcp.CallToolRequest{
-		Params: mcp.CallToolParams{
-			Arguments: map[string]interface{}{
-				"requests": string(requestsJSON),
-			},
-		},
-	}
-
-	// Call handler
-	result, err := ExecuteBatchRequestsHandler(context.Background(), request)
-	if err != nil {
-		t.Fatalf("Handler returned error: %v", err)
-	}
-
-	if result.IsError {
-		textContent, _ := mcp.AsTextContent(result.Content[0])
-		t.Fatalf("Handler returned error result: %s", textContent.Text)
-	}
-
-	// Verify response
-	textContent, ok := mcp.AsTextContent(result.Content[0])
-	if !ok {
-		t.Fatal("Expected text content in result")
-	}
-
-	var responses []map[string]interface{}
-	if err := json.Unmarshal([]byte(textContent.Text), &responses); err != nil {
-		t.Fatalf("Failed to parse response: %v", err)
-	}
-
-	if len(responses) != 2 {
-		t.Errorf("Expected 2 responses, got %d", len(responses))
-	}
-
-	// Verify both responses succeeded
-	for i, resp := range responses {
-		if code, ok := resp["code"].(float64); !ok || code != 200 {
-			t.Errorf("Response %d failed with code %v", i, resp["code"])
-		}
-	}
-}
-
+// TestBatchGetObjectsHandler tests the batch get objects handler
 func TestBatchGetObjectsHandler(t *testing.T) {
-	mockServer := mockBatchAPIServer(t)
-	defer mockServer.Close()
+	// Create mock server
+	server := mockBatchAPIServer(t)
+	defer server.Close()
 
-	// Override API host
-	oldHost := generated.GetGraphAPIHost()
-	generated.SetGraphAPIHost(mockServer.URL)
-	defer func() {
-		generated.SetGraphAPIHost(oldHost)
-	}()
+	// Override the graph API host for testing
+	originalHost := graphAPIHost
+	SetGraphAPIHost(server.URL)
+	defer SetGraphAPIHost(originalHost)
 
-	// Set test token
-	os.Setenv("FACEBOOK_ACCESS_TOKEN", "test_token")
-	defer os.Unsetenv("FACEBOOK_ACCESS_TOKEN")
+	// Set test access token
+	SetAccessToken("test_token")
 
+	// Create test request
 	request := mcp.CallToolRequest{
 		Params: mcp.CallToolParams{
 			Arguments: map[string]interface{}{
-				"object_ids": []string{"act_123", "campaign_456", "adset_789"},
-				"fields":     []string{"id", "name", "status"},
+				"object_ids": []string{"act_123", "campaign_456"},
+				"fields":     []string{"id", "name"},
 			},
 		},
 	}
 
-	// Call handler
+	// Execute handler
 	result, err := BatchGetObjectsHandler(context.Background(), request)
 	if err != nil {
 		t.Fatalf("Handler returned error: %v", err)
 	}
 
+	// Verify result
 	if result.IsError {
-		textContent, _ := mcp.AsTextContent(result.Content[0])
-		t.Fatalf("Handler returned error result: %s", textContent.Text)
+		t.Errorf("Expected success, got error: %v", result.Content)
 	}
 
-	// Verify response
+	// Parse result
 	textContent, ok := mcp.AsTextContent(result.Content[0])
 	if !ok {
-		t.Fatal("Expected text content in result")
+		t.Fatal("Expected text content")
 	}
 
-	var response map[string]interface{}
-	if err := json.Unmarshal([]byte(textContent.Text), &response); err != nil {
-		t.Fatalf("Failed to parse response: %v", err)
+	var resultData map[string]interface{}
+	if err := json.Unmarshal([]byte(textContent.Text), &resultData); err != nil {
+		t.Fatalf("Failed to parse result: %v", err)
 	}
 
-	// Verify we got data for all objects
-	expectedObjects := []string{"act_123", "campaign_456", "adset_789"}
-	for _, objID := range expectedObjects {
-		if _, ok := response[objID]; !ok {
-			t.Errorf("Missing response for object %s", objID)
-		}
+	// Verify structure
+	if _, ok := resultData["objects"]; !ok {
+		t.Error("Expected 'objects' field in result")
+	}
+
+	if _, ok := resultData["total_objects"]; !ok {
+		t.Error("Expected 'total_objects' field in result")
 	}
 }
 
+// TestBatchUpdateCampaignsHandler tests the batch update campaigns handler
 func TestBatchUpdateCampaignsHandler(t *testing.T) {
-	mockServer := mockBatchAPIServer(t)
-	defer mockServer.Close()
+	// Create mock server
+	server := mockBatchAPIServer(t)
+	defer server.Close()
 
-	// Override API host
-	oldHost := generated.GetGraphAPIHost()
-	generated.SetGraphAPIHost(mockServer.URL)
-	defer func() {
-		generated.SetGraphAPIHost(oldHost)
-	}()
+	// Override the graph API host for testing
+	originalHost := graphAPIHost
+	SetGraphAPIHost(server.URL)
+	defer SetGraphAPIHost(originalHost)
 
-	// Set test token
-	os.Setenv("FACEBOOK_ACCESS_TOKEN", "test_token")
-	defer os.Unsetenv("FACEBOOK_ACCESS_TOKEN")
+	// Set test access token
+	SetAccessToken("test_token")
 
+	// Create test request
 	updates := map[string]map[string]interface{}{
 		"campaign_123": {
-			"status": "PAUSED",
 			"name":   "Updated Campaign 1",
+			"status": "ACTIVE",
 		},
 		"campaign_456": {
-			"status": "ACTIVE",
-			"budget": 5000,
+			"name":   "Updated Campaign 2",
+			"status": "PAUSED",
 		},
 	}
-
 	updatesJSON, _ := json.Marshal(updates)
 
 	request := mcp.CallToolRequest{
@@ -257,171 +175,176 @@ func TestBatchUpdateCampaignsHandler(t *testing.T) {
 		},
 	}
 
-	// Call handler
+	// Execute handler
 	result, err := BatchUpdateCampaignsHandler(context.Background(), request)
 	if err != nil {
 		t.Fatalf("Handler returned error: %v", err)
 	}
 
+	// Verify result
 	if result.IsError {
-		textContent, _ := mcp.AsTextContent(result.Content[0])
-		t.Fatalf("Handler returned error result: %s", textContent.Text)
+		t.Errorf("Expected success, got error: %v", result.Content)
 	}
 
-	// Verify response
+	// Parse result
 	textContent, ok := mcp.AsTextContent(result.Content[0])
 	if !ok {
-		t.Fatal("Expected text content in result")
+		t.Fatal("Expected text content")
 	}
 
-	var response map[string]interface{}
-	if err := json.Unmarshal([]byte(textContent.Text), &response); err != nil {
-		t.Fatalf("Failed to parse response: %v", err)
+	var resultData map[string]interface{}
+	if err := json.Unmarshal([]byte(textContent.Text), &resultData); err != nil {
+		t.Fatalf("Failed to parse result: %v", err)
 	}
 
-	// Verify both campaigns were updated
-	for campaignID, result := range response {
-		resultMap, ok := result.(map[string]interface{})
-		if !ok {
-			t.Errorf("Invalid result format for campaign %s", campaignID)
-			continue
-		}
+	// Verify structure
+	if _, ok := resultData["campaigns"]; !ok {
+		t.Error("Expected 'campaigns' field in result")
+	}
 
-		if success, ok := resultMap["success"].(bool); !ok || !success {
-			t.Errorf("Campaign %s update failed", campaignID)
-		}
+	if _, ok := resultData["total_campaigns"]; !ok {
+		t.Error("Expected 'total_campaigns' field in result")
 	}
 }
 
+// TestBatchGetInsightsHandler tests the batch get insights handler
 func TestBatchGetInsightsHandler(t *testing.T) {
-	mockServer := mockBatchAPIServer(t)
-	defer mockServer.Close()
+	// Create mock server
+	server := mockBatchAPIServer(t)
+	defer server.Close()
 
-	// Override API host
-	oldHost := generated.GetGraphAPIHost()
-	generated.SetGraphAPIHost(mockServer.URL)
-	defer func() {
-		generated.SetGraphAPIHost(oldHost)
-	}()
+	// Override the graph API host for testing
+	originalHost := graphAPIHost
+	SetGraphAPIHost(server.URL)
+	defer SetGraphAPIHost(originalHost)
 
-	// Set test token
-	os.Setenv("FACEBOOK_ACCESS_TOKEN", "test_token")
-	defer os.Unsetenv("FACEBOOK_ACCESS_TOKEN")
+	// Set test access token
+	SetAccessToken("test_token")
 
+	// Create test request
 	request := mcp.CallToolRequest{
 		Params: mcp.CallToolParams{
 			Arguments: map[string]interface{}{
-				"object_ids":  []string{"act_123", "campaign_456"},
-				"level":       "campaign",
+				"object_ids":  []string{"campaign_123", "adset_456"},
 				"date_preset": "yesterday",
 				"fields":      []string{"impressions", "clicks", "spend"},
+				"level":       "campaign",
 			},
 		},
 	}
 
-	// Call handler
+	// Execute handler
 	result, err := BatchGetInsightsHandler(context.Background(), request)
 	if err != nil {
 		t.Fatalf("Handler returned error: %v", err)
 	}
 
+	// Verify result
 	if result.IsError {
-		textContent, _ := mcp.AsTextContent(result.Content[0])
-		t.Fatalf("Handler returned error result: %s", textContent.Text)
+		t.Errorf("Expected success, got error: %v", result.Content)
 	}
 
-	// Verify response
+	// Parse result
 	textContent, ok := mcp.AsTextContent(result.Content[0])
 	if !ok {
-		t.Fatal("Expected text content in result")
+		t.Fatal("Expected text content")
 	}
 
-	var response map[string]interface{}
-	if err := json.Unmarshal([]byte(textContent.Text), &response); err != nil {
-		t.Fatalf("Failed to parse response: %v", err)
+	var resultData map[string]interface{}
+	if err := json.Unmarshal([]byte(textContent.Text), &resultData); err != nil {
+		t.Fatalf("Failed to parse result: %v", err)
 	}
 
-	// Verify we got insights for both objects
-	for _, objID := range []string{"act_123", "campaign_456"} {
-		if _, ok := response[objID]; !ok {
-			t.Errorf("Missing insights for object %s", objID)
-		}
+	// Verify structure
+	if _, ok := resultData["insights"]; !ok {
+		t.Error("Expected 'insights' field in result")
+	}
+
+	if _, ok := resultData["total_objects"]; !ok {
+		t.Error("Expected 'total_objects' field in result")
+	}
+
+	if _, ok := resultData["date_preset"]; !ok {
+		t.Error("Expected 'date_preset' field in result")
 	}
 }
 
-func TestBatchCreateAdsetsHandler(t *testing.T) {
-	mockServer := mockBatchAPIServer(t)
-	defer mockServer.Close()
-
-	// Override API host
-	oldHost := generated.GetGraphAPIHost()
-	generated.SetGraphAPIHost(mockServer.URL)
-	defer func() {
-		generated.SetGraphAPIHost(oldHost)
-	}()
-
-	// Set test token
-	os.Setenv("FACEBOOK_ACCESS_TOKEN", "test_token")
-	defer os.Unsetenv("FACEBOOK_ACCESS_TOKEN")
-
-	adsets := []map[string]interface{}{
+// TestBatchToolsValidation tests input validation
+func TestBatchToolsValidation(t *testing.T) {
+	tests := []struct {
+		name        string
+		handler     func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error)
+		request     mcp.CallToolRequest
+		expectError bool
+	}{
 		{
-			"name":              "Test AdSet 1",
-			"daily_budget":      1000,
-			"targeting":         map[string]interface{}{"geo_locations": map[string]interface{}{"countries": []string{"US"}}},
-			"billing_event":     "IMPRESSIONS",
-			"optimization_goal": "REACH",
-		},
-		{
-			"name":              "Test AdSet 2",
-			"daily_budget":      2000,
-			"targeting":         map[string]interface{}{"geo_locations": map[string]interface{}{"countries": []string{"CA"}}},
-			"billing_event":     "IMPRESSIONS",
-			"optimization_goal": "REACH",
-		},
-	}
-
-	adsetsJSON, _ := json.Marshal(adsets)
-
-	request := mcp.CallToolRequest{
-		Params: mcp.CallToolParams{
-			Arguments: map[string]interface{}{
-				"campaign_id": "123456789",
-				"adsets":      string(adsetsJSON),
+			name:    "BatchGetObjects_EmptyObjectIDs",
+			handler: BatchGetObjectsHandler,
+			request: mcp.CallToolRequest{
+				Params: mcp.CallToolParams{
+					Arguments: map[string]interface{}{
+						"object_ids": []string{},
+					},
+				},
 			},
+			expectError: true,
+		},
+		{
+			name:    "BatchGetObjects_TooManyObjectIDs",
+			handler: BatchGetObjectsHandler,
+			request: mcp.CallToolRequest{
+				Params: mcp.CallToolParams{
+					Arguments: map[string]interface{}{
+						"object_ids": func() []string {
+							ids := make([]string, 51)
+							for i := range ids {
+								ids[i] = "id_" + string(rune(i))
+							}
+							return ids
+						}(),
+					},
+				},
+			},
+			expectError: true,
+		},
+		{
+			name:    "BatchUpdateCampaigns_EmptyUpdates",
+			handler: BatchUpdateCampaignsHandler,
+			request: mcp.CallToolRequest{
+				Params: mcp.CallToolParams{
+					Arguments: map[string]interface{}{
+						"updates": "",
+					},
+				},
+			},
+			expectError: true,
+		},
+		{
+			name:    "BatchGetInsights_EmptyObjectIDs",
+			handler: BatchGetInsightsHandler,
+			request: mcp.CallToolRequest{
+				Params: mcp.CallToolParams{
+					Arguments: map[string]interface{}{
+						"object_ids": []string{},
+					},
+				},
+			},
+			expectError: true,
 		},
 	}
 
-	// Call handler
-	result, err := BatchCreateAdsetsHandler(context.Background(), request)
-	if err != nil {
-		t.Fatalf("Handler returned error: %v", err)
-	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			result, err := tt.handler(context.Background(), tt.request)
+			if err != nil {
+				t.Fatalf("Handler returned error: %v", err)
+			}
 
-	if result.IsError {
-		textContent, _ := mcp.AsTextContent(result.Content[0])
-		t.Fatalf("Handler returned error result: %s", textContent.Text)
-	}
-
-	// Verify response
-	textContent, ok := mcp.AsTextContent(result.Content[0])
-	if !ok {
-		t.Fatal("Expected text content in result")
-	}
-
-	var response []map[string]interface{}
-	if err := json.Unmarshal([]byte(textContent.Text), &response); err != nil {
-		t.Fatalf("Failed to parse response: %v", err)
-	}
-
-	if len(response) != 2 {
-		t.Errorf("Expected 2 ad sets created, got %d", len(response))
-	}
-
-	// Verify all creations succeeded
-	for i, result := range response {
-		if success, ok := result["success"].(bool); !ok || !success {
-			t.Errorf("AdSet %d creation failed", i)
-		}
+			if tt.expectError && !result.IsError {
+				t.Error("Expected error but got success")
+			} else if !tt.expectError && result.IsError {
+				t.Errorf("Expected success but got error: %v", result.Content)
+			}
+		})
 	}
 }

@@ -1,4 +1,4 @@
-package tools
+package generated
 
 import (
 	"context"
@@ -7,8 +7,6 @@ import (
 	"sort"
 	"strings"
 	"sync"
-
-	"unified-ads-mcp/internal/facebook/generated"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"github.com/mark3labs/mcp-go/server"
@@ -116,17 +114,17 @@ func (sm *ScopeManager) RemoveDomains(domains []string) error {
 func (sm *ScopeManager) registerDomain(domain string) error {
 	switch domain {
 	case "ad":
-		return generated.RegisterAdTools(sm.server)
+		return RegisterAdTools(sm.server)
 	case "adaccount":
-		return generated.RegisterAdAccountTools(sm.server)
+		return RegisterAdAccountTools(sm.server)
 	case "adcreative":
-		return generated.RegisterAdCreativeTools(sm.server)
+		return RegisterAdCreativeTools(sm.server)
 	case "adset":
-		return generated.RegisterAdSetTools(sm.server)
+		return RegisterAdSetTools(sm.server)
 	case "campaign":
-		return generated.RegisterCampaignTools(sm.server)
+		return RegisterCampaignTools(sm.server)
 	case "user":
-		return generated.RegisterUserTools(sm.server)
+		return RegisterUserTools(sm.server)
 	default:
 		return fmt.Errorf("unknown domain: %s", domain)
 	}

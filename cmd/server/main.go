@@ -36,7 +36,7 @@ func NewFacebookMCPServer() *server.MCPServer {
 	)
 
 	// Register scope selector tool (manages dynamic tool registration)
-	if err := tools.RegisterScopeSelectorTool(mcpServer); err != nil {
+	if err := generated.RegisterScopeSelectorTool(mcpServer); err != nil {
 		log.Fatalf("Failed to register scope selector tool: %v", err)
 	}
 
@@ -49,7 +49,11 @@ func NewFacebookMCPServer() *server.MCPServer {
 	if err := tools.RegisterAccountTools(mcpServer); err != nil {
 		log.Fatalf("Failed to register account tools: %v", err)
 	}
-	tools.RegisterBatchTools(mcpServer)
+
+	// Register batch tools
+	if err := tools.RegisterBatchTools(mcpServer); err != nil {
+		log.Fatalf("Failed to register batch tools: %v", err)
+	}
 
 	return mcpServer
 }

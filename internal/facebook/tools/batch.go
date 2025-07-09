@@ -4,26 +4,20 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"github.com/mark3labs/mcp-go/server"
-	"unified-ads-mcp/internal/facebook/generated"
 )
 
 // RegisterBatchTools registers batch-related tools with the MCP server
-func RegisterBatchTools(s *server.MCPServer) {
-	// Execute batch requests tool
-	s.AddTool(
-		mcp.NewTool(
-			"execute_batch_requests",
-			mcp.WithDescription("Execute multiple Facebook Graph API requests in a single batch. Maximum 50 requests per batch."),
-			mcp.WithString("requests",
-				mcp.Required(),
-				mcp.Description("JSON array of batch requests. Each request should have: method, relative_url, and optional body/name fields"),
-			),
-		),
-		ExecuteBatchRequestsHandler,
-	)
+func RegisterBatchTools(s *server.MCPServer) error {
+	// Register the core batch tool first
+	if err := RegisterCoreBatchTools(s); err != nil {
+		return err
+	}
+
+	// Register convenience tools that build on top of the main batch tool
 
 	// Batch get multiple objects
 	s.AddTool(
@@ -56,24 +50,7 @@ func RegisterBatchTools(s *server.MCPServer) {
 		BatchUpdateCampaignsHandler,
 	)
 
-	// Batch create ad sets
-	s.AddTool(
-		mcp.NewTool(
-			"batch_create_adsets",
-			mcp.WithDescription("Create multiple ad sets in a single batch request"),
-			mcp.WithString("campaign_id",
-				mcp.Required(),
-				mcp.Description("Campaign ID to create ad sets under"),
-			),
-			mcp.WithString("adsets",
-				mcp.Required(),
-				mcp.Description("JSON array of ad set configurations"),
-			),
-		),
-		BatchCreateAdsetsHandler,
-	)
-
-	// Batch insights requests
+	// Batch get insights
 	s.AddTool(
 		mcp.NewTool(
 			"batch_get_insights",
@@ -96,114 +73,101 @@ func RegisterBatchTools(s *server.MCPServer) {
 		),
 		BatchGetInsightsHandler,
 	)
-}
 
-// ExecuteBatchRequestsHandler handles generic batch requests
-func ExecuteBatchRequestsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get the requests parameter
-	requestsJSON := request.GetString("requests", "")
-	if requestsJSON == "" {
-		return mcp.NewToolResultErrorf("requests parameter is required"), nil
-	}
-
-	// Parse the requests
-	var batchRequests []generated.BatchRequest
-	if err := json.Unmarshal([]byte(requestsJSON), &batchRequests); err != nil {
-		return mcp.NewToolResultErrorf("invalid requests JSON: %v", err), nil
-	}
-
-	// Validate request count
-	if len(batchRequests) == 0 {
-		return mcp.NewToolResultErrorf("at least one request is required"), nil
-	}
-	if len(batchRequests) > 50 {
-		return mcp.NewToolResultErrorf("maximum 50 requests allowed, got %d", len(batchRequests)), nil
-	}
-
-	// Execute batch request
-	responses, err := generated.MakeBatchRequest(batchRequests)
-	if err != nil {
-		return mcp.NewToolResultErrorf("batch request failed: %v", err), nil
-	}
-
-	// Format responses
-	result := make([]map[string]interface{}, len(responses))
-	for i, resp := range responses {
-		resultItem := map[string]interface{}{
-			"code": resp.Code,
-		}
-
-		if resp.Headers != nil {
-			resultItem["headers"] = resp.Headers
-		}
-
-		if resp.Body != nil {
-			var bodyData interface{}
-			if err := json.Unmarshal(resp.Body, &bodyData); err == nil {
-				resultItem["body"] = bodyData
-			} else {
-				resultItem["body"] = string(resp.Body)
-			}
-		}
-
-		result[i] = resultItem
-	}
-
-	// Return as JSON
-	resultJSON, _ := json.Marshal(result)
-	return mcp.NewToolResultText(string(resultJSON)), nil
+	return nil
 }
 
 // BatchGetObjectsHandler handles batch GET requests for multiple objects
+// This is now a convenience wrapper around the main facebook_batch tool
 func BatchGetObjectsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	objectIDs := request.GetStringSlice("object_ids", nil)
 	if len(objectIDs) == 0 {
 		return mcp.NewToolResultErrorf("object_ids is required"), nil
 	}
 
-	fields := request.GetStringSlice("fields", nil)
-
-	// Build batch requests
-	builder := generated.NewBatchRequestBuilder()
-
-	for i, objectID := range objectIDs {
-		params := make(map[string]interface{})
-		if len(fields) > 0 {
-			params["fields"] = fields
-		}
-
-		builder.AddGET(objectID, "", params, fmt.Sprintf("get_%d", i))
+	if len(objectIDs) > 50 {
+		return mcp.NewToolResultErrorf("maximum 50 object IDs allowed, got %d", len(objectIDs)), nil
 	}
 
-	// Execute batch
-	responses, err := builder.Execute()
+	fields := request.GetStringSlice("fields", nil)
+
+	// Build operations for the new batch framework
+	operations := make([]BatchOperationArgs, len(objectIDs))
+	for i, objectID := range objectIDs {
+		relativeURL := objectID
+		if len(fields) > 0 {
+			relativeURL = fmt.Sprintf("%s?fields=%s", objectID, strings.Join(fields, ","))
+		}
+
+		operations[i] = BatchOperationArgs{
+			Method:      "GET",
+			RelativeURL: relativeURL,
+			Name:        fmt.Sprintf("get_%s", objectID),
+		}
+	}
+
+	// Create batch request
+	batchArgs := BatchRequestArgs{
+		Operations: operations,
+	}
+
+	// Execute using the new batch handler
+	batchRequest := mcp.CallToolRequest{
+		Params: mcp.CallToolParams{
+			Arguments: map[string]interface{}{
+				"operations": operations,
+			},
+		},
+	}
+
+	result, err := FacebookBatchHandler(ctx, batchRequest, batchArgs)
 	if err != nil {
 		return mcp.NewToolResultErrorf("batch request failed: %v", err), nil
 	}
 
-	// Format responses
-	result := make(map[string]interface{})
-	for i, resp := range responses {
+	// Parse the result to extract object data
+	var batchResult BatchResult
+
+	// Extract text content from the result
+	if len(result.Content) == 0 {
+		return mcp.NewToolResultErrorf("no content in batch result"), nil
+	}
+
+	textContent, ok := mcp.AsTextContent(result.Content[0])
+	if !ok {
+		return mcp.NewToolResultErrorf("expected text content in batch result"), nil
+	}
+
+	if err := json.Unmarshal([]byte(textContent.Text), &batchResult); err != nil {
+		return mcp.NewToolResultErrorf("failed to parse batch result: %v", err), nil
+	}
+
+	// Format as object ID -> data mapping
+	objectResults := make(map[string]interface{})
+	for i, opResult := range batchResult.Results {
 		if i < len(objectIDs) {
-			if resp.Code == 200 && resp.Body != nil {
-				var data interface{}
-				if err := json.Unmarshal(resp.Body, &data); err == nil {
-					result[objectIDs[i]] = data
-				} else {
-					result[objectIDs[i]] = map[string]interface{}{
-						"error": fmt.Sprintf("failed to parse response: %v", err),
-					}
-				}
+			objectID := objectIDs[i]
+			if opResult.Success {
+				objectResults[objectID] = opResult.ParsedBody
 			} else {
-				result[objectIDs[i]] = map[string]interface{}{
-					"error": fmt.Sprintf("request failed with code %d", resp.Code),
-					"body":  string(resp.Body),
+				objectResults[objectID] = map[string]interface{}{
+					"error": opResult.Error,
+					"code":  opResult.Code,
 				}
 			}
 		}
 	}
 
-	resultJSON, _ := json.Marshal(result)
+	// Add summary information
+	summary := map[string]interface{}{
+		"total_objects":      len(objectIDs),
+		"successful_objects": batchResult.SuccessfulOperations,
+		"failed_objects":     batchResult.FailedOperations,
+		"success_rate":       batchResult.Summary["success_rate"],
+		"objects":            objectResults,
+	}
+
+	resultJSON, _ := json.Marshal(summary)
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
@@ -224,117 +188,91 @@ func BatchUpdateCampaignsHandler(ctx context.Context, request mcp.CallToolReques
 		return mcp.NewToolResultErrorf("at least one update is required"), nil
 	}
 
-	// Build batch requests
-	builder := generated.NewBatchRequestBuilder()
+	if len(updates) > 50 {
+		return mcp.NewToolResultErrorf("maximum 50 updates allowed, got %d", len(updates)), nil
+	}
+
+	// Build operations for the new batch framework
+	operations := make([]BatchOperationArgs, 0, len(updates))
 	campaignIDs := make([]string, 0, len(updates))
 
 	for campaignID, updateParams := range updates {
 		campaignIDs = append(campaignIDs, campaignID)
-		builder.AddPOST(campaignID, "", updateParams, fmt.Sprintf("update_%s", campaignID))
+		operations = append(operations, BatchOperationArgs{
+			Method:      "POST",
+			RelativeURL: campaignID,
+			Body:        updateParams,
+			Name:        fmt.Sprintf("update_%s", campaignID),
+		})
 	}
 
-	// Execute batch
-	responses, err := builder.Execute()
+	// Create batch request
+	batchArgs := BatchRequestArgs{
+		Operations: operations,
+	}
+
+	// Execute using the new batch handler
+	batchRequest := mcp.CallToolRequest{
+		Params: mcp.CallToolParams{
+			Arguments: map[string]interface{}{
+				"operations": operations,
+			},
+		},
+	}
+
+	result, err := FacebookBatchHandler(ctx, batchRequest, batchArgs)
 	if err != nil {
 		return mcp.NewToolResultErrorf("batch request failed: %v", err), nil
 	}
 
-	// Format responses
-	result := make(map[string]interface{})
-	for i, resp := range responses {
+	// Parse the result to extract campaign update results
+	var batchResult BatchResult
+
+	// Extract text content from the result
+	if len(result.Content) == 0 {
+		return mcp.NewToolResultErrorf("no content in batch result"), nil
+	}
+
+	textContent, ok := mcp.AsTextContent(result.Content[0])
+	if !ok {
+		return mcp.NewToolResultErrorf("expected text content in batch result"), nil
+	}
+
+	if err := json.Unmarshal([]byte(textContent.Text), &batchResult); err != nil {
+		return mcp.NewToolResultErrorf("failed to parse batch result: %v", err), nil
+	}
+
+	// Format as campaign ID -> update result mapping
+	campaignResults := make(map[string]interface{})
+	for i, opResult := range batchResult.Results {
 		if i < len(campaignIDs) {
 			campaignID := campaignIDs[i]
-			if resp.Code == 200 {
-				result[campaignID] = map[string]interface{}{
+			if opResult.Success {
+				campaignResults[campaignID] = map[string]interface{}{
 					"success": true,
-					"code":    resp.Code,
+					"code":    opResult.Code,
+					"data":    opResult.ParsedBody,
 				}
 			} else {
-				var errorData interface{}
-				if resp.Body != nil {
-					json.Unmarshal(resp.Body, &errorData)
-				}
-				result[campaignID] = map[string]interface{}{
+				campaignResults[campaignID] = map[string]interface{}{
 					"success": false,
-					"code":    resp.Code,
-					"error":   errorData,
+					"error":   opResult.Error,
+					"code":    opResult.Code,
 				}
 			}
 		}
 	}
 
-	resultJSON, _ := json.Marshal(result)
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// BatchCreateAdsetsHandler handles batch creation of ad sets
-func BatchCreateAdsetsHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	campaignID := request.GetString("campaign_id", "")
-	if campaignID == "" {
-		return mcp.NewToolResultErrorf("campaign_id is required"), nil
+	// Add summary information
+	summary := map[string]interface{}{
+		"total_campaigns":      len(campaignIDs),
+		"successful_campaigns": batchResult.SuccessfulOperations,
+		"failed_campaigns":     batchResult.FailedOperations,
+		"success_rate":         batchResult.Summary["success_rate"],
+		"campaigns":            campaignResults,
 	}
 
-	adsetsJSON := request.GetString("adsets", "")
-	if adsetsJSON == "" {
-		return mcp.NewToolResultErrorf("adsets parameter is required"), nil
-	}
-
-	// Parse ad sets
-	var adsets []map[string]interface{}
-	if err := json.Unmarshal([]byte(adsetsJSON), &adsets); err != nil {
-		return mcp.NewToolResultErrorf("invalid adsets JSON: %v", err), nil
-	}
-
-	if len(adsets) == 0 {
-		return mcp.NewToolResultErrorf("at least one ad set is required"), nil
-	}
-
-	// Build batch requests
-	builder := generated.NewBatchRequestBuilder()
-
-	for i, adset := range adsets {
-		// Add campaign_id to each ad set
-		adset["campaign_id"] = campaignID
-		builder.AddPOST("act_"+campaignID, "adsets", adset, fmt.Sprintf("create_adset_%d", i))
-	}
-
-	// Execute batch
-	responses, err := builder.Execute()
-	if err != nil {
-		return mcp.NewToolResultErrorf("batch request failed: %v", err), nil
-	}
-
-	// Format responses
-	result := make([]map[string]interface{}, len(responses))
-	for i, resp := range responses {
-		if resp.Code == 200 && resp.Body != nil {
-			var data map[string]interface{}
-			if err := json.Unmarshal(resp.Body, &data); err == nil {
-				result[i] = map[string]interface{}{
-					"success": true,
-					"id":      data["id"],
-					"data":    data,
-				}
-			} else {
-				result[i] = map[string]interface{}{
-					"success": false,
-					"error":   "failed to parse response",
-				}
-			}
-		} else {
-			var errorData interface{}
-			if resp.Body != nil {
-				json.Unmarshal(resp.Body, &errorData)
-			}
-			result[i] = map[string]interface{}{
-				"success": false,
-				"code":    resp.Code,
-				"error":   errorData,
-			}
-		}
-	}
-
-	resultJSON, _ := json.Marshal(result)
+	resultJSON, _ := json.Marshal(summary)
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
@@ -345,57 +283,99 @@ func BatchGetInsightsHandler(ctx context.Context, request mcp.CallToolRequest) (
 		return mcp.NewToolResultErrorf("object_ids is required"), nil
 	}
 
+	if len(objectIDs) > 50 {
+		return mcp.NewToolResultErrorf("maximum 50 object IDs allowed, got %d", len(objectIDs)), nil
+	}
+
 	level := request.GetString("level", "")
 	datePreset := request.GetString("date_preset", "yesterday")
 	fields := request.GetStringSlice("fields", []string{"impressions", "clicks", "spend", "reach"})
 
-	// Build batch requests
-	builder := generated.NewBatchRequestBuilder()
-
+	// Build operations for the new batch framework
+	operations := make([]BatchOperationArgs, len(objectIDs))
 	for i, objectID := range objectIDs {
-		params := map[string]interface{}{
-			"fields":      fields,
-			"date_preset": datePreset,
+		// Build query parameters
+		params := []string{
+			fmt.Sprintf("fields=%s", strings.Join(fields, ",")),
+			fmt.Sprintf("date_preset=%s", datePreset),
 		}
 		if level != "" {
-			params["level"] = level
+			params = append(params, fmt.Sprintf("level=%s", level))
 		}
 
-		builder.AddGET(objectID, "insights", params, fmt.Sprintf("insights_%d", i))
+		relativeURL := fmt.Sprintf("%s/insights?%s", objectID, strings.Join(params, "&"))
+
+		operations[i] = BatchOperationArgs{
+			Method:      "GET",
+			RelativeURL: relativeURL,
+			Name:        fmt.Sprintf("insights_%s", objectID),
+		}
 	}
 
-	// Execute batch
-	responses, err := builder.Execute()
+	// Create batch request
+	batchArgs := BatchRequestArgs{
+		Operations: operations,
+	}
+
+	// Execute using the new batch handler
+	batchRequest := mcp.CallToolRequest{
+		Params: mcp.CallToolParams{
+			Arguments: map[string]interface{}{
+				"operations": operations,
+			},
+		},
+	}
+
+	result, err := FacebookBatchHandler(ctx, batchRequest, batchArgs)
 	if err != nil {
 		return mcp.NewToolResultErrorf("batch request failed: %v", err), nil
 	}
 
-	// Format responses
-	result := make(map[string]interface{})
-	for i, resp := range responses {
+	// Parse the result to extract insights data
+	var batchResult BatchResult
+
+	// Extract text content from the result
+	if len(result.Content) == 0 {
+		return mcp.NewToolResultErrorf("no content in batch result"), nil
+	}
+
+	textContent, ok := mcp.AsTextContent(result.Content[0])
+	if !ok {
+		return mcp.NewToolResultErrorf("expected text content in batch result"), nil
+	}
+
+	if err := json.Unmarshal([]byte(textContent.Text), &batchResult); err != nil {
+		return mcp.NewToolResultErrorf("failed to parse batch result: %v", err), nil
+	}
+
+	// Format as object ID -> insights data mapping
+	insightsResults := make(map[string]interface{})
+	for i, opResult := range batchResult.Results {
 		if i < len(objectIDs) {
-			if resp.Code == 200 && resp.Body != nil {
-				var data interface{}
-				if err := json.Unmarshal(resp.Body, &data); err == nil {
-					result[objectIDs[i]] = data
-				} else {
-					result[objectIDs[i]] = map[string]interface{}{
-						"error": fmt.Sprintf("failed to parse response: %v", err),
-					}
-				}
+			objectID := objectIDs[i]
+			if opResult.Success {
+				insightsResults[objectID] = opResult.ParsedBody
 			} else {
-				var errorData interface{}
-				if resp.Body != nil {
-					json.Unmarshal(resp.Body, &errorData)
-				}
-				result[objectIDs[i]] = map[string]interface{}{
-					"error": errorData,
-					"code":  resp.Code,
+				insightsResults[objectID] = map[string]interface{}{
+					"error": opResult.Error,
+					"code":  opResult.Code,
 				}
 			}
 		}
 	}
 
-	resultJSON, _ := json.Marshal(result)
+	// Add summary information
+	summary := map[string]interface{}{
+		"total_objects":      len(objectIDs),
+		"successful_objects": batchResult.SuccessfulOperations,
+		"failed_objects":     batchResult.FailedOperations,
+		"success_rate":       batchResult.Summary["success_rate"],
+		"date_preset":        datePreset,
+		"level":              level,
+		"fields":             fields,
+		"insights":           insightsResults,
+	}
+
+	resultJSON, _ := json.Marshal(summary)
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
