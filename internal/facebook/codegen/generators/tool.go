@@ -33,6 +33,7 @@ type ToolSpec struct {
 type ToolGenerator struct {
 	specs         map[string]*ToolSpec // Object name -> spec
 	enumTypes     map[string]bool      // Track which types are enums
+	enumValues    map[string][]string  // Map from enum type to its values
 	outputPath    string
 	fieldSpecs    map[string]*APISpec // Object name -> field spec for struct generation
 	complexTypes  map[string]bool     // Track which types need struct definitions
@@ -87,6 +88,7 @@ func NewToolGenerator(outputPath string) *ToolGenerator {
 	return &ToolGenerator{
 		specs:         make(map[string]*ToolSpec),
 		enumTypes:     make(map[string]bool),
+		enumValues:    make(map[string][]string),
 		outputPath:    outputPath,
 		fieldSpecs:    make(map[string]*APISpec),
 		complexTypes:  make(map[string]bool),
@@ -116,7 +118,8 @@ func (g *ToolGenerator) LoadEnumTypes(path string) error {
 	}
 
 	var enums []struct {
-		Name string `json:"name"`
+		Name   string   `json:"name"`
+		Values []string `json:"values"`
 	}
 	if err := json.Unmarshal(data, &enums); err != nil {
 		return fmt.Errorf("failed to parse enum types: %w", err)
@@ -124,6 +127,7 @@ func (g *ToolGenerator) LoadEnumTypes(path string) error {
 
 	for _, enum := range enums {
 		g.enumTypes[enum.Name] = true
+		g.enumValues[enum.Name] = enum.Values
 	}
 
 	log.Printf("Loaded %d enum types for tool generation", len(g.enumTypes))
@@ -1112,8 +1116,9 @@ func (g *ToolGenerator) generateParamDescription(paramName, paramType string) st
 
 // getEnumValues returns possible enum values for a type
 func (g *ToolGenerator) getEnumValues(typeName string) []string {
-	// This would be populated from enum_types.json
-	// For now, return empty - the actual implementation would look up the values
+	if values, exists := g.enumValues[typeName]; exists {
+		return values
+	}
 	return []string{}
 }
 
