@@ -52,15 +52,10 @@ func getAccessToken() string {
 
 // buildGraphURL constructs the Facebook Graph API URL
 func buildGraphURL(objectID, endpoint string) string {
-	baseURL := baseGraphURL
-	if baseURL == "" {
-		baseURL = graphAPIHost
-	}
-
 	if objectID != "" {
-		return fmt.Sprintf("%s/%s/%s/%s", baseURL, graphAPIVersion, objectID, endpoint)
+		return fmt.Sprintf("%s/%s/%s/%s", graphAPIHost, graphAPIVersion, objectID, endpoint)
 	}
-	return fmt.Sprintf("%s/%s/%s", baseURL, graphAPIVersion, endpoint)
+	return fmt.Sprintf("%s/%s/%s", graphAPIHost, graphAPIVersion, endpoint)
 }
 
 // makeGraphRequest performs an HTTP request to the Facebook Graph API

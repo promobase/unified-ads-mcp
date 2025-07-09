@@ -291,7 +291,7 @@ func (g *ToolGenerator) generateCommonFile() error {
 	tmplContent, err := os.ReadFile(filepath.Join(filepath.Dir(g.outputPath), "codegen", "templates", "tools_common_with_utils.go.tmpl"))
 	if err != nil {
 		// Fallback to original template
-		tmplContent, err = os.ReadFile(filepath.Join(filepath.Dir(g.outputPath), "codegen", "templates", "tools_common.go.tmpl"))
+		tmplContent, err = os.ReadFile(filepath.Join(filepath.Dir(g.outputPath), "codegen", "templates", "tools_common_with_utils.go.tmpl"))
 	}
 	if err != nil {
 		return fmt.Errorf("failed to read template: %w", err)
@@ -1098,9 +1098,13 @@ func (g *ToolGenerator) convertToSchemaParams(params []Param, needsID bool, meth
 // mapParamToSchemaType maps Facebook types to JSON schema types
 func (g *ToolGenerator) mapParamToSchemaType(fbType string) (schemaType string, itemsType string) {
 	switch {
+	case g.isComplexType(fbType):
+		// Complex types (like Targeting, AdLabel, etc.) should be objects
+		return "object", ""
+
 	case strings.HasPrefix(fbType, "list<"):
 		innerType := strings.TrimSuffix(strings.TrimPrefix(fbType, "list<"), ">")
-		if innerType == "Object" || strings.Contains(innerType, "map") {
+		if innerType == "Object" || strings.Contains(innerType, "map") || g.isComplexType(innerType) {
 			return "array", "object"
 		}
 		return "array", "string"
