@@ -37,6 +37,8 @@ type ToolGenerator struct {
 	fieldSpecs    map[string]*APISpec // Object name -> field spec for struct generation
 	complexTypes  map[string]bool     // Track which types need struct definitions
 	enumTypeNames map[string]string   // Map from enum type to generated Go type name
+	useSchema     bool                // Use schema-based generation
+	schemaGen     *SchemaGenerator    // Schema generator for enhanced type handling
 }
 
 type SchemaParam struct {
@@ -51,10 +53,11 @@ type SchemaParam struct {
 }
 
 type TypedParam struct {
-	GoName   string // Go struct field name (capitalized)
-	GoType   string // Go type (string, int, bool, []string, etc.)
-	JSONName string // JSON field name
-	JSONTag  string // Additional JSON tags like omitempty
+	GoName        string // Go struct field name (capitalized)
+	GoType        string // Go type (string, int, bool, []string, etc.)
+	JSONName      string // JSON field name
+	JSONTag       string // Additional JSON tags like omitempty
+	JSONSchemaTag string // JSONSchema tag for validation and documentation
 }
 
 type ToolData struct {
@@ -87,6 +90,21 @@ func NewToolGenerator(outputPath string) *ToolGenerator {
 		fieldSpecs:    make(map[string]*APISpec),
 		complexTypes:  make(map[string]bool),
 		enumTypeNames: make(map[string]string),
+		useSchema:     false,
+		schemaGen:     nil,
+	}
+}
+
+// EnableSchemaGeneration enables schema-based tool generation
+func (g *ToolGenerator) EnableSchemaGeneration() {
+	g.useSchema = true
+	g.schemaGen = NewSchemaGenerator()
+
+	// Load enum definitions if available
+	if len(g.enumTypes) > 0 {
+		enumDefs := make(map[string][]string)
+		// TODO: Convert enumTypes to enumDefs format
+		g.schemaGen.LoadEnumDefinitions(enumDefs)
 	}
 }
 
@@ -214,8 +232,27 @@ func (g *ToolGenerator) generateToolsForObject(objectName string, spec *ToolSpec
 		handlerName := g.toCamelCase(toolName) + "Handler"
 
 		// Generate input schema based on method
-		inputSchema := g.generateInputSchema(objectName, api)
-		inputSchemaJSON, _ := json.Marshal(inputSchema)
+		var inputSchemaJSON []byte
+		var schemaParams []SchemaParam
+
+		if g.useSchema && g.schemaGen != nil && g.canUseSchemaGeneration(objectName, api) {
+			// Try schema-based generation for better type handling
+			schema, params, err := g.generateSchemaForAPI(objectName, api)
+			if err == nil {
+				inputSchemaJSON = schema
+				schemaParams = params
+				log.Printf("Using schema-based generation for %s", toolName)
+			} else {
+				log.Printf("Falling back to parameter-based generation for %s: %v", toolName, err)
+			}
+		}
+
+		// Fall back to original generation if schema not used or failed
+		if inputSchemaJSON == nil {
+			inputSchema := g.generateInputSchema(objectName, api)
+			inputSchemaJSON, _ = json.Marshal(inputSchema)
+			schemaParams = g.convertToSchemaParams(api.Params, g.needsObjectID(objectName, api.Endpoint), api.Method)
+		}
 
 		// Determine if handler needs custom logic
 		hasComplexLogic := g.hasComplexLogic(api)
@@ -224,7 +261,6 @@ func (g *ToolGenerator) generateToolsForObject(objectName string, spec *ToolSpec
 
 		// Convert to typed params
 		typedParams := g.convertToTypedParams(api.Params, api.Method)
-		schemaParams := g.convertToSchemaParams(api.Params, needsID, api.Method)
 
 		tools = append(tools, ToolData{
 			ObjectName:      objectName,
@@ -256,16 +292,29 @@ func (g *ToolGenerator) generateToolsForObject(objectName string, spec *ToolSpec
 	}
 
 	// Load and execute template
-	// Use typed template for type-safe handlers
-	tmplContent, err := os.ReadFile(filepath.Join(filepath.Dir(g.outputPath), "codegen", "templates", "object_tools_typed.go.tmpl"))
-	if err != nil {
-		// Fallback to refactored template if typed doesn't exist
-		tmplContent, err = os.ReadFile(filepath.Join(filepath.Dir(g.outputPath), "codegen", "templates", "object_tools_refactored.go.tmpl"))
+	var tmplContent []byte
+	var err error
+
+	// Use schema template when schema generation is enabled
+	if g.useSchema {
+		tmplContent, err = os.ReadFile(filepath.Join(filepath.Dir(g.outputPath), "codegen", "templates", "object_tools_with_schema.go.tmpl"))
 		if err != nil {
-			// Fallback to original template
-			tmplContent, err = os.ReadFile(filepath.Join(filepath.Dir(g.outputPath), "codegen", "templates", "object_tools.go.tmpl"))
+			log.Printf("Schema template not found, falling back to typed template: %v", err)
+		}
+	}
+
+	// Fallback to typed template if schema template not available or not enabled
+	if tmplContent == nil {
+		tmplContent, err = os.ReadFile(filepath.Join(filepath.Dir(g.outputPath), "codegen", "templates", "object_tools_typed.go.tmpl"))
+		if err != nil {
+			// Fallback to refactored template if typed doesn't exist
+			tmplContent, err = os.ReadFile(filepath.Join(filepath.Dir(g.outputPath), "codegen", "templates", "object_tools_refactored.go.tmpl"))
 			if err != nil {
-				return fmt.Errorf("failed to read template: %w", err)
+				// Fallback to original template
+				tmplContent, err = os.ReadFile(filepath.Join(filepath.Dir(g.outputPath), "codegen", "templates", "object_tools.go.tmpl"))
+				if err != nil {
+					return fmt.Errorf("failed to read template: %w", err)
+				}
 			}
 		}
 	}
@@ -775,15 +824,23 @@ func (g *ToolGenerator) needsObjectID(objectName string, endpoint string) bool {
 }
 
 func (g *ToolGenerator) formatGeneratedFiles() error {
-	// Run go fmt on the output directory
-	cmd := exec.Command("go", "fmt", g.outputPath)
-	output, err := cmd.CombinedOutput()
+	// Get all .go files in the output directory
+	files, err := filepath.Glob(filepath.Join(g.outputPath, "*.go"))
 	if err != nil {
-		return fmt.Errorf("go fmt failed: %w\nOutput: %s", err, string(output))
+		return fmt.Errorf("failed to glob files: %w", err)
 	}
 
-	if len(output) > 0 {
-		log.Printf("Formatted files: %s", string(output))
+	// Run go fmt on each file
+	for _, file := range files {
+		cmd := exec.Command("go", "fmt", file)
+		output, err := cmd.CombinedOutput()
+		if err != nil {
+			return fmt.Errorf("go fmt failed on %s: %w\nOutput: %s", file, err, string(output))
+		}
+
+		if len(output) > 0 {
+			log.Printf("Formatted %s: %s", file, string(output))
+		}
 	}
 
 	return nil
@@ -867,34 +924,38 @@ func (g *ToolGenerator) convertToTypedParams(params []Param, method string) []Ty
 	// Add common GET parameters if GET method
 	if method == "GET" {
 		typedParams = append(typedParams, TypedParam{
-			GoName:   "Fields",
-			GoType:   "[]string",
-			JSONName: "fields",
-			JSONTag:  "omitempty",
+			GoName:        "Fields",
+			GoType:        "[]string",
+			JSONName:      "fields",
+			JSONTag:       "omitempty",
+			JSONSchemaTag: "description=Fields to return",
 		})
 		seen["fields"] = true
 
 		typedParams = append(typedParams, TypedParam{
-			GoName:   "Limit",
-			GoType:   "int",
-			JSONName: "limit",
-			JSONTag:  "omitempty",
+			GoName:        "Limit",
+			GoType:        "int",
+			JSONName:      "limit",
+			JSONTag:       "omitempty",
+			JSONSchemaTag: "description=Maximum number of results,minimum=1,maximum=100",
 		})
 		seen["limit"] = true
 
 		typedParams = append(typedParams, TypedParam{
-			GoName:   "After",
-			GoType:   "string",
-			JSONName: "after",
-			JSONTag:  "omitempty",
+			GoName:        "After",
+			GoType:        "string",
+			JSONName:      "after",
+			JSONTag:       "omitempty",
+			JSONSchemaTag: "description=Cursor for pagination (next page)",
 		})
 		seen["after"] = true
 
 		typedParams = append(typedParams, TypedParam{
-			GoName:   "Before",
-			GoType:   "string",
-			JSONName: "before",
-			JSONTag:  "omitempty",
+			GoName:        "Before",
+			GoType:        "string",
+			JSONName:      "before",
+			JSONTag:       "omitempty",
+			JSONSchemaTag: "description=Cursor for pagination (previous page)",
 		})
 		seen["before"] = true
 	}
@@ -910,9 +971,10 @@ func (g *ToolGenerator) convertToTypedParams(params []Param, method string) []Ty
 		goName := g.toCamelCase(param.Name)
 
 		typedParam := TypedParam{
-			GoName:   goName,
-			GoType:   goType,
-			JSONName: param.Name,
+			GoName:        goName,
+			GoType:        goType,
+			JSONName:      param.Name,
+			JSONSchemaTag: g.generateJSONSchemaTag(param, goType),
 		}
 
 		// Add omitempty for optional params
@@ -925,6 +987,110 @@ func (g *ToolGenerator) convertToTypedParams(params []Param, method string) []Ty
 	}
 
 	return typedParams
+}
+
+// generateJSONSchemaTag generates a jsonschema tag for a parameter
+func (g *ToolGenerator) generateJSONSchemaTag(param Param, goType string) string {
+	var tags []string
+
+	// Add description
+	desc := g.generateParamDescription(param.Name, param.Type)
+	if desc != "" {
+		tags = append(tags, fmt.Sprintf("description=%s", desc))
+	}
+
+	// Add required if needed
+	if param.Required {
+		tags = append(tags, "required")
+	}
+
+	// Add type-specific validations
+	switch {
+	case strings.Contains(param.Name, "_id") || param.Name == "id":
+		// Facebook IDs are numeric strings
+		tags = append(tags, `pattern=^[0-9]+$`)
+
+	case strings.Contains(goType, "int") || param.Type == "integer":
+		// Add reasonable bounds for common integer fields
+		if strings.Contains(param.Name, "age") {
+			tags = append(tags, "minimum=13", "maximum=100")
+		} else if strings.Contains(param.Name, "budget") || strings.Contains(param.Name, "amount") {
+			tags = append(tags, "minimum=1")
+		}
+
+	case param.Type == "string" && g.isEnumType(param.Type):
+		// Add enum values if available
+		if enumValues := g.getEnumValues(param.Type); len(enumValues) > 0 {
+			for _, v := range enumValues {
+				tags = append(tags, fmt.Sprintf("enum=%s", v))
+			}
+		}
+
+	case param.Name == "status":
+		// Common status values
+		tags = append(tags, "enum=ACTIVE", "enum=PAUSED", "enum=DELETED", "enum=ARCHIVED")
+
+	case strings.Contains(param.Name, "url"):
+		// URL fields
+		tags = append(tags, "format=uri")
+
+	case param.Type == "datetime" || param.Type == "timestamp":
+		// Date/time fields
+		tags = append(tags, "format=date-time")
+	}
+
+	if len(tags) > 0 {
+		return strings.Join(tags, ",")
+	}
+	return ""
+}
+
+// generateParamDescription generates a human-readable description for a parameter
+func (g *ToolGenerator) generateParamDescription(paramName, paramType string) string {
+	// Convert snake_case to human readable
+	words := strings.Split(paramName, "_")
+	for i, word := range words {
+		if word != "" {
+			// Handle common abbreviations
+			switch strings.ToLower(word) {
+			case "id":
+				words[i] = "ID"
+			case "url":
+				words[i] = "URL"
+			case "api":
+				words[i] = "API"
+			default:
+				words[i] = strings.Title(word)
+			}
+		}
+	}
+
+	desc := strings.Join(words, " ")
+
+	// Add context based on field patterns
+	switch {
+	case paramName == "id":
+		return "ID"
+	case strings.HasSuffix(paramName, "_id"):
+		return fmt.Sprintf("ID of the %s", strings.TrimSuffix(desc, " ID"))
+	case paramName == "name":
+		return "Name"
+	case paramName == "status":
+		return "Status"
+	case strings.Contains(paramName, "created"):
+		return "When created"
+	case strings.Contains(paramName, "updated"):
+		return "When last updated"
+	default:
+		return desc
+	}
+}
+
+// getEnumValues returns possible enum values for a type
+func (g *ToolGenerator) getEnumValues(typeName string) []string {
+	// This would be populated from enum_types.json
+	// For now, return empty - the actual implementation would look up the values
+	return []string{}
 }
 
 // mapParamToGoType maps Facebook parameter types to Go types
@@ -1187,4 +1353,86 @@ func (g *ToolGenerator) extractBaseType(fieldType string) string {
 	}
 
 	return fieldType
+}
+
+// canUseSchemaGeneration checks if we can use schema-based generation for this API
+func (g *ToolGenerator) canUseSchemaGeneration(objectName string, api API) bool {
+	// Check if we have field specs for complex parameters
+	for _, param := range api.Params {
+		if g.isComplexType(param.Type) {
+			if _, hasFieldSpec := g.fieldSpecs[param.Type]; !hasFieldSpec {
+				return false
+			}
+		}
+	}
+	return true
+}
+
+// generateSchemaForAPI generates JSON schema for an API endpoint using reflection
+func (g *ToolGenerator) generateSchemaForAPI(objectName string, api API) ([]byte, []SchemaParam, error) {
+	if g.schemaGen == nil {
+		return nil, nil, fmt.Errorf("schema generator not initialized")
+	}
+
+	// Build a struct representation of the API parameters
+	structFields := make(map[string]interface{})
+
+	// Add ID field if needed
+	if g.needsObjectID(objectName, api.Endpoint) {
+		structFields["id"] = struct {
+			Type        string `json:"type"`
+			Description string `json:"description"`
+			Pattern     string `json:"pattern,omitempty"`
+		}{
+			Type:        "string",
+			Description: fmt.Sprintf("%s ID", objectName),
+			Pattern:     "^[0-9]+$",
+		}
+	}
+
+	// Build schema properties from parameters
+	properties := make(map[string]interface{})
+	required := []string{}
+
+	for _, param := range api.Params {
+		propSchema := g.generateParamSchema(param)
+		properties[param.Name] = propSchema
+		if param.Required {
+			required = append(required, param.Name)
+		}
+	}
+
+	// Add common GET parameters if applicable
+	if api.Method == "GET" {
+		properties["fields"] = map[string]interface{}{
+			"type":        "array",
+			"items":       map[string]interface{}{"type": "string"},
+			"description": "Fields to return",
+		}
+		properties["limit"] = map[string]interface{}{
+			"type":        "integer",
+			"description": "Maximum number of results",
+		}
+	}
+
+	// Create the schema
+	schema := map[string]interface{}{
+		"type":       "object",
+		"properties": properties,
+	}
+
+	if len(required) > 0 {
+		schema["required"] = required
+	}
+
+	// Convert to JSON
+	schemaJSON, err := json.Marshal(schema)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	// Generate schema params
+	schemaParams := g.convertToSchemaParams(api.Params, g.needsObjectID(objectName, api.Endpoint), api.Method)
+
+	return schemaJSON, schemaParams, nil
 }

@@ -12,8 +12,10 @@ import (
 	"net/http"
 	"net/url"
 	"os"
+	"reflect"
 	"strings"
 
+	"github.com/invopop/jsonschema"
 	"github.com/mark3labs/mcp-go/mcp"
 )
 
@@ -40,6 +42,22 @@ func GetGraphAPIHost() string {
 // SetAccessToken sets the access token for testing purposes
 func SetAccessToken(token string) {
 	accessToken = token
+}
+
+// generateSchemaForType generates JSON schema for a given type
+func generateSchemaForType(t reflect.Type) json.RawMessage {
+	reflector := jsonschema.Reflector{
+		AllowAdditionalProperties: false,
+		DoNotReference:            true,
+	}
+	schema := reflector.Reflect(t)
+	
+	schemaBytes, err := json.Marshal(schema)
+	if err != nil {
+		panic(fmt.Sprintf("failed to marshal schema for type %v: %v", t, err))
+	}
+	
+	return json.RawMessage(schemaBytes)
 }
 
 // getAccessToken retrieves the Facebook access token from environment or test setting

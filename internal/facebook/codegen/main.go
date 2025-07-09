@@ -14,6 +14,7 @@ type Config struct {
 	specsDir   string
 	outputPath string
 	genType    string
+	useSchema  bool // Use schema-based generation
 }
 
 func main() {
@@ -23,6 +24,7 @@ func main() {
 	flag.StringVar(&config.specsDir, "specs", "", "Path to API specs directory (required)")
 	flag.StringVar(&config.outputPath, "output", "", "Output directory (optional, defaults to ../generated relative to specs)")
 	flag.StringVar(&config.genType, "type", "all", "Type of code to generate: all, enums, fields, tools")
+	flag.BoolVar(&config.useSchema, "schema", true, "Use schema-based generation for enhanced type safety")
 
 	// Custom usage
 	flag.Usage = func() {
@@ -33,10 +35,10 @@ func main() {
 		fmt.Fprintf(os.Stderr, "\nExamples:\n")
 		fmt.Fprintf(os.Stderr, "  # Generate all code\n")
 		fmt.Fprintf(os.Stderr, "  %s -specs ../api_specs/specs\n\n", os.Args[0])
-		fmt.Fprintf(os.Stderr, "  # Generate only enums\n")
-		fmt.Fprintf(os.Stderr, "  %s -specs ../api_specs/specs -type enums\n\n", os.Args[0])
-		fmt.Fprintf(os.Stderr, "  # Generate only fields\n")
-		fmt.Fprintf(os.Stderr, "  %s -specs ../api_specs/specs -type fields\n\n", os.Args[0])
+		fmt.Fprintf(os.Stderr, "  # Generate with schema support (recommended)\n")
+		fmt.Fprintf(os.Stderr, "  %s -specs ../api_specs/specs -schema\n\n", os.Args[0])
+		fmt.Fprintf(os.Stderr, "  # Generate only fields with jsonschema tags\n")
+		fmt.Fprintf(os.Stderr, "  %s -specs ../api_specs/specs -type fields -schema\n\n", os.Args[0])
 	}
 
 	flag.Parse()
@@ -84,10 +86,16 @@ func main() {
 	}
 
 	log.Printf("Code generation completed successfully. Output in: %s", config.outputPath)
+	if config.useSchema {
+		log.Printf("Schema-based generation was used for enhanced type safety")
+	}
 }
 
 func generateAll(config Config) error {
 	log.Println("Generating all code...")
+	if config.useSchema {
+		log.Println("Schema-based generation enabled for better type safety")
+	}
 
 	// Generate enums first
 	if err := generateEnums(config); err != nil {
@@ -126,8 +134,16 @@ func generateEnums(config Config) error {
 
 func generateFields(config Config) error {
 	log.Println("Generating field types...")
+	if config.useSchema {
+		log.Println("Using schema-based generation with jsonschema tags")
+	}
 
 	generator := generators.NewFieldGenerator(config.outputPath)
+
+	// Enable schema generation if requested
+	if config.useSchema {
+		generator.EnableSchemaGeneration()
+	}
 
 	// Load enum types first
 	enumPath := filepath.Join(config.specsDir, "enum_types.json")
@@ -149,8 +165,16 @@ func generateFields(config Config) error {
 
 func generateTools(config Config) error {
 	log.Println("Generating MCP tools...")
+	if config.useSchema {
+		log.Println("Using schema-based tool generation for proper type handling")
+	}
 
 	generator := generators.NewToolGenerator(config.outputPath)
+
+	// Enable schema generation if requested
+	if config.useSchema {
+		generator.EnableSchemaGeneration()
+	}
 
 	// Load enum types first
 	enumPath := filepath.Join(config.specsDir, "enum_types.json")

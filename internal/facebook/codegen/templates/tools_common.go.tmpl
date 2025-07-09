@@ -11,12 +11,31 @@ import (
 	"net/http"
 	"net/url"
 	"os"
+	"reflect"
+
+	"github.com/invopop/jsonschema"
 )
 
 const (
 	graphAPIVersion = "v23.0"
 	graphAPIHost    = "https://graph.facebook.com"
 )
+
+// generateSchemaForType generates JSON schema for a given type
+func generateSchemaForType(t reflect.Type) json.RawMessage {
+	reflector := jsonschema.Reflector{
+		AllowAdditionalProperties: false,
+		DoNotReference:            true,
+	}
+	schema := reflector.Reflect(t)
+	
+	schemaBytes, err := json.Marshal(schema)
+	if err != nil {
+		panic(fmt.Sprintf("failed to marshal schema for type %v: %v", t, err))
+	}
+	
+	return json.RawMessage(schemaBytes)
+}
 
 // getAccessToken retrieves the Facebook access token from environment
 func getAccessToken() string {

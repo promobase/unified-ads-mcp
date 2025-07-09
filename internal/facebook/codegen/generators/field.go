@@ -23,17 +23,24 @@ type APISpec struct {
 }
 
 type FieldGenerator struct {
-	specs      map[string]*APISpec
-	enumTypes  map[string]bool
-	outputPath string
+	specs             map[string]*APISpec
+	enumTypes         map[string]bool
+	outputPath        string
+	useSchemaTemplate bool // Flag to use template with jsonschema tags
 }
 
 func NewFieldGenerator(outputPath string) *FieldGenerator {
 	return &FieldGenerator{
-		specs:      make(map[string]*APISpec),
-		enumTypes:  make(map[string]bool),
-		outputPath: outputPath,
+		specs:             make(map[string]*APISpec),
+		enumTypes:         make(map[string]bool),
+		outputPath:        outputPath,
+		useSchemaTemplate: false,
 	}
+}
+
+// EnableSchemaGeneration enables generation with jsonschema tags
+func (g *FieldGenerator) EnableSchemaGeneration() {
+	g.useSchemaTemplate = true
 }
 
 func (g *FieldGenerator) LoadEnumTypes(path string) error {
@@ -154,15 +161,28 @@ func (g *FieldGenerator) generateFields() error {
 	}
 
 	// Load and execute template
-	tmplContent, err := os.ReadFile(filepath.Join(filepath.Dir(g.outputPath), "codegen", "templates", "fields.go.tmpl"))
+	tmplFile := "fields.go.tmpl"
+	if g.useSchemaTemplate {
+		tmplFile = "fields_with_schema.go.tmpl"
+	}
+	tmplContent, err := os.ReadFile(filepath.Join(filepath.Dir(g.outputPath), "codegen", "templates", tmplFile))
 	if err != nil {
 		return fmt.Errorf("failed to read template: %w", err)
 	}
 
-	tmpl, err := template.New("fields").Funcs(template.FuncMap{
+	funcMap := template.FuncMap{
 		"toGoFieldName": toGoFieldName,
 		"mapFieldType":  g.mapFieldType,
-	}).Parse(string(tmplContent))
+	}
+
+	// Add schema generation function if enabled
+	if g.useSchemaTemplate {
+		funcMap["generateJSONSchemaTag"] = func(field Field, objectName string) string {
+			return g.GenerateJSONSchemaTag(field, objectName)
+		}
+	}
+
+	tmpl, err := template.New("fields").Funcs(funcMap).Parse(string(tmplContent))
 	if err != nil {
 		return fmt.Errorf("failed to parse template: %w", err)
 	}
@@ -293,4 +313,138 @@ func (g *FieldGenerator) formatGeneratedFile() error {
 	}
 
 	return nil
+}
+
+// GenerateJSONSchemaTag generates jsonschema tag for a field
+func (g *FieldGenerator) GenerateJSONSchemaTag(field Field, objectName string) string {
+	var tags []string
+
+	// Add description based on field name and object
+	desc := g.generateFieldDescription(field.Name, objectName)
+	if desc != "" {
+		tags = append(tags, fmt.Sprintf("description=%s", desc))
+	}
+
+	// Handle required fields based on common patterns
+	if g.isRequiredField(field.Name, objectName) {
+		tags = append(tags, "required")
+	}
+
+	// Add type-specific validations
+	switch {
+	case strings.Contains(field.Name, "_id") || field.Name == "id":
+		// Facebook IDs are numeric strings
+		tags = append(tags, `pattern=^[0-9]+$`)
+
+	case strings.Contains(field.Type, "int") || field.Type == "integer":
+		// Add reasonable bounds for common integer fields
+		if strings.Contains(field.Name, "age") {
+			tags = append(tags, "minimum=13", "maximum=100")
+		} else if strings.Contains(field.Name, "budget") || strings.Contains(field.Name, "amount") {
+			tags = append(tags, "minimum=1")
+		}
+
+	case field.Type == "string" && g.isEnumType(field.Type):
+		// Add enum values if available
+		if enumValues := g.getEnumValues(field.Type); len(enumValues) > 0 {
+			for _, v := range enumValues {
+				tags = append(tags, fmt.Sprintf("enum=%s", v))
+			}
+		}
+
+	case field.Name == "status":
+		// Common status values
+		tags = append(tags, "enum=ACTIVE", "enum=PAUSED", "enum=DELETED", "enum=ARCHIVED")
+
+	case strings.Contains(field.Name, "url"):
+		// URL fields
+		tags = append(tags, "format=uri")
+
+	case field.Type == "datetime" || field.Type == "timestamp":
+		// Date/time fields
+		tags = append(tags, "format=date-time")
+	}
+
+	if len(tags) > 0 {
+		return fmt.Sprintf(`jsonschema:"%s"`, strings.Join(tags, ","))
+	}
+	return ""
+}
+
+// generateFieldDescription generates a human-readable description for a field
+func (g *FieldGenerator) generateFieldDescription(fieldName, objectName string) string {
+	// Convert snake_case to human readable
+	words := strings.Split(fieldName, "_")
+	for i, word := range words {
+		if word != "" {
+			// Handle common abbreviations
+			switch strings.ToLower(word) {
+			case "id":
+				words[i] = "ID"
+			case "url":
+				words[i] = "URL"
+			case "api":
+				words[i] = "API"
+			default:
+				words[i] = strings.Title(word)
+			}
+		}
+	}
+
+	desc := strings.Join(words, " ")
+
+	// Add context based on field patterns
+	switch {
+	case fieldName == "id":
+		return fmt.Sprintf("%s ID", objectName)
+	case strings.HasSuffix(fieldName, "_id"):
+		return fmt.Sprintf("ID of the %s", strings.TrimSuffix(desc, " ID"))
+	case fieldName == "name":
+		return fmt.Sprintf("Name of the %s", objectName)
+	case fieldName == "status":
+		return fmt.Sprintf("Current status of the %s", objectName)
+	case strings.Contains(fieldName, "created"):
+		return fmt.Sprintf("When the %s was created", objectName)
+	case strings.Contains(fieldName, "updated"):
+		return fmt.Sprintf("When the %s was last updated", objectName)
+	default:
+		return desc
+	}
+}
+
+// isRequiredField determines if a field should be marked as required
+func (g *FieldGenerator) isRequiredField(fieldName, objectName string) bool {
+	// Common required fields
+	requiredFields := map[string]bool{
+		"id":   true,
+		"name": true,
+	}
+
+	// Object-specific required fields
+	switch objectName {
+	case "AdSet":
+		switch fieldName {
+		case "campaign_id", "optimization_goal", "billing_event", "targeting":
+			return true
+		}
+	case "Campaign":
+		switch fieldName {
+		case "objective", "status":
+			return true
+		}
+	case "Ad":
+		switch fieldName {
+		case "adset_id", "creative", "status":
+			return true
+		}
+	}
+
+	return requiredFields[fieldName]
+}
+
+// getEnumValues returns possible enum values for a type
+func (g *FieldGenerator) getEnumValues(typeName string) []string {
+	// This would be populated from enum_types.json
+	// For now, return empty - the actual implementation would look up the values
+	return []string{}
 }

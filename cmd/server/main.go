@@ -70,7 +70,6 @@ func main() {
 		httpServer := server.NewStreamableHTTPServer(mcpServer)
 		log.Printf("Starting Facebook Business MCP Server (HTTP mode)")
 		log.Printf("Listening on :8080/mcp")
-		log.Printf("Registered %d tools for Ad management", 162)
 		if err := httpServer.Start(":8080"); err != nil {
 			log.Fatalf("Server error: %v", err)
 		}

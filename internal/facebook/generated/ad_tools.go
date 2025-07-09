@@ -5,6 +5,7 @@ package generated
 import (
 	"context"
 	"fmt"
+	"reflect"
 	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
@@ -13,186 +14,214 @@ import (
 
 // list_ad_adcreativesArgs defines the typed arguments for list_ad_adcreatives
 type list_ad_adcreativesArgs struct {
-	Fields []string `json:"fields,omitempty"`
-	Limit  int      `json:"limit,omitempty"`
-	After  string   `json:"after,omitempty"`
-	Before string   `json:"before,omitempty"`
+	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
+	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
+	After  string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
+	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
 }
 
 // create_ad_adlabelArgs defines the typed arguments for create_ad_adlabel
 type create_ad_adlabelArgs struct {
-	Adlabels         []*AdLabel `json:"adlabels"`
-	ExecutionOptions []string   `json:"execution_options,omitempty"`
+	Adlabels         []*AdLabel `json:"adlabels" jsonschema:"description=Adlabels,required"`
+	ExecutionOptions []string   `json:"execution_options,omitempty" jsonschema:"description=Execution Options"`
 }
 
 // get_ad_adrules_governedArgs defines the typed arguments for get_ad_adrules_governed
 type get_ad_adrules_governedArgs struct {
-	Fields         []string `json:"fields,omitempty"`
-	Limit          int      `json:"limit,omitempty"`
-	After          string   `json:"after,omitempty"`
-	Before         string   `json:"before,omitempty"`
-	PassEvaluation bool     `json:"pass_evaluation,omitempty"`
+	Fields         []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
+	Limit          int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
+	After          string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
+	Before         string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
+	PassEvaluation bool     `json:"pass_evaluation,omitempty" jsonschema:"description=Pass Evaluation"`
 }
 
 // list_ad_copiesArgs defines the typed arguments for list_ad_copies
 type list_ad_copiesArgs struct {
-	ID              string                 `json:"id"`
-	Fields          []string               `json:"fields,omitempty"`
-	Limit           int                    `json:"limit,omitempty"`
-	After           string                 `json:"after,omitempty"`
-	Before          string                 `json:"before,omitempty"`
-	DatePreset      string                 `json:"date_preset,omitempty"`
-	EffectiveStatus []string               `json:"effective_status,omitempty"`
-	TimeRange       map[string]interface{} `json:"time_range,omitempty"`
-	UpdatedSince    int                    `json:"updated_since,omitempty"`
+	ID              string                 `json:"id" jsonschema:"required,description=Ad ID,pattern=^[0-9]+$"`
+	Fields          []string               `json:"fields,omitempty" jsonschema:"description=Fields to return"`
+	Limit           int                    `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
+	After           string                 `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
+	Before          string                 `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
+	DatePreset      string                 `json:"date_preset,omitempty" jsonschema:"description=Date Preset"`
+	EffectiveStatus []string               `json:"effective_status,omitempty" jsonschema:"description=Effective Status"`
+	TimeRange       map[string]interface{} `json:"time_range,omitempty" jsonschema:"description=Time Range"`
+	UpdatedSince    int                    `json:"updated_since,omitempty" jsonschema:"description=When last updated"`
 }
 
 // create_ad_copieArgs defines the typed arguments for create_ad_copie
 type create_ad_copieArgs struct {
-	ID                 string                 `json:"id"`
-	AdsetId            string                 `json:"adset_id,omitempty"`
-	CreativeParameters *AdCreative            `json:"creative_parameters,omitempty"`
-	RenameOptions      map[string]interface{} `json:"rename_options,omitempty"`
-	StatusOption       string                 `json:"status_option,omitempty"`
+	ID                 string                 `json:"id" jsonschema:"required,description=Ad ID,pattern=^[0-9]+$"`
+	AdsetId            string                 `json:"adset_id,omitempty" jsonschema:"description=ID of the Adset,pattern=^[0-9]+$"`
+	CreativeParameters *AdCreative            `json:"creative_parameters,omitempty" jsonschema:"description=Creative Parameters"`
+	RenameOptions      map[string]interface{} `json:"rename_options,omitempty" jsonschema:"description=Rename Options"`
+	StatusOption       string                 `json:"status_option,omitempty" jsonschema:"description=Status Option"`
 }
 
 // get_ad_insightsArgs defines the typed arguments for get_ad_insights
 type get_ad_insightsArgs struct {
-	ID                           string                   `json:"id"`
-	Fields                       []string                 `json:"fields,omitempty"`
-	Limit                        int                      `json:"limit,omitempty"`
-	After                        string                   `json:"after,omitempty"`
-	Before                       string                   `json:"before,omitempty"`
-	ActionAttributionWindows     []string                 `json:"action_attribution_windows,omitempty"`
-	ActionBreakdowns             []string                 `json:"action_breakdowns,omitempty"`
-	ActionReportTime             string                   `json:"action_report_time,omitempty"`
-	Breakdowns                   []string                 `json:"breakdowns,omitempty"`
-	DatePreset                   string                   `json:"date_preset,omitempty"`
-	DefaultSummary               bool                     `json:"default_summary,omitempty"`
-	ExportColumns                []string                 `json:"export_columns,omitempty"`
-	ExportFormat                 string                   `json:"export_format,omitempty"`
-	ExportName                   string                   `json:"export_name,omitempty"`
-	Filtering                    []map[string]interface{} `json:"filtering,omitempty"`
-	Level                        string                   `json:"level,omitempty"`
-	ProductIdLimit               int                      `json:"product_id_limit,omitempty"`
-	Sort                         []string                 `json:"sort,omitempty"`
-	Summary                      []string                 `json:"summary,omitempty"`
-	SummaryActionBreakdowns      []string                 `json:"summary_action_breakdowns,omitempty"`
-	TimeIncrement                string                   `json:"time_increment,omitempty"`
-	TimeRange                    map[string]interface{}   `json:"time_range,omitempty"`
-	TimeRanges                   []map[string]interface{} `json:"time_ranges,omitempty"`
-	UseAccountAttributionSetting bool                     `json:"use_account_attribution_setting,omitempty"`
-	UseUnifiedAttributionSetting bool                     `json:"use_unified_attribution_setting,omitempty"`
+	ID                           string                   `json:"id" jsonschema:"required,description=Ad ID,pattern=^[0-9]+$"`
+	Fields                       []string                 `json:"fields,omitempty" jsonschema:"description=Fields to return"`
+	Limit                        int                      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
+	After                        string                   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
+	Before                       string                   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
+	ActionAttributionWindows     []string                 `json:"action_attribution_windows,omitempty" jsonschema:"description=Action Attribution Windows"`
+	ActionBreakdowns             []string                 `json:"action_breakdowns,omitempty" jsonschema:"description=Action Breakdowns"`
+	ActionReportTime             string                   `json:"action_report_time,omitempty" jsonschema:"description=Action Report Time"`
+	Breakdowns                   []string                 `json:"breakdowns,omitempty" jsonschema:"description=Breakdowns"`
+	DatePreset                   string                   `json:"date_preset,omitempty" jsonschema:"description=Date Preset"`
+	DefaultSummary               bool                     `json:"default_summary,omitempty" jsonschema:"description=Default Summary"`
+	ExportColumns                []string                 `json:"export_columns,omitempty" jsonschema:"description=Export Columns"`
+	ExportFormat                 string                   `json:"export_format,omitempty" jsonschema:"description=Export Format"`
+	ExportName                   string                   `json:"export_name,omitempty" jsonschema:"description=Export Name"`
+	Filtering                    []map[string]interface{} `json:"filtering,omitempty" jsonschema:"description=Filtering"`
+	Level                        string                   `json:"level,omitempty" jsonschema:"description=Level"`
+	ProductIdLimit               int                      `json:"product_id_limit,omitempty" jsonschema:"description=Product ID Limit,pattern=^[0-9]+$"`
+	Sort                         []string                 `json:"sort,omitempty" jsonschema:"description=Sort"`
+	Summary                      []string                 `json:"summary,omitempty" jsonschema:"description=Summary"`
+	SummaryActionBreakdowns      []string                 `json:"summary_action_breakdowns,omitempty" jsonschema:"description=Summary Action Breakdowns"`
+	TimeIncrement                string                   `json:"time_increment,omitempty" jsonschema:"description=Time Increment"`
+	TimeRange                    map[string]interface{}   `json:"time_range,omitempty" jsonschema:"description=Time Range"`
+	TimeRanges                   []map[string]interface{} `json:"time_ranges,omitempty" jsonschema:"description=Time Ranges"`
+	UseAccountAttributionSetting bool                     `json:"use_account_attribution_setting,omitempty" jsonschema:"description=Use Account Attribution Setting"`
+	UseUnifiedAttributionSetting bool                     `json:"use_unified_attribution_setting,omitempty" jsonschema:"description=Use Unified Attribution Setting"`
 }
 
 // create_ad_insights_reportArgs defines the typed arguments for create_ad_insights_report
 type create_ad_insights_reportArgs struct {
-	ID                           string                   `json:"id"`
-	ActionAttributionWindows     []string                 `json:"action_attribution_windows,omitempty"`
-	ActionBreakdowns             []string                 `json:"action_breakdowns,omitempty"`
-	ActionReportTime             string                   `json:"action_report_time,omitempty"`
-	Breakdowns                   []string                 `json:"breakdowns,omitempty"`
-	DatePreset                   string                   `json:"date_preset,omitempty"`
-	DefaultSummary               bool                     `json:"default_summary,omitempty"`
-	ExportColumns                []string                 `json:"export_columns,omitempty"`
-	ExportFormat                 string                   `json:"export_format,omitempty"`
-	ExportName                   string                   `json:"export_name,omitempty"`
-	Fields                       []string                 `json:"fields,omitempty"`
-	Filtering                    []map[string]interface{} `json:"filtering,omitempty"`
-	Level                        string                   `json:"level,omitempty"`
-	Limit                        int                      `json:"limit,omitempty"`
-	ProductIdLimit               int                      `json:"product_id_limit,omitempty"`
-	Sort                         []string                 `json:"sort,omitempty"`
-	Summary                      []string                 `json:"summary,omitempty"`
-	SummaryActionBreakdowns      []string                 `json:"summary_action_breakdowns,omitempty"`
-	TimeIncrement                string                   `json:"time_increment,omitempty"`
-	TimeRange                    map[string]interface{}   `json:"time_range,omitempty"`
-	TimeRanges                   []map[string]interface{} `json:"time_ranges,omitempty"`
-	UseAccountAttributionSetting bool                     `json:"use_account_attribution_setting,omitempty"`
-	UseUnifiedAttributionSetting bool                     `json:"use_unified_attribution_setting,omitempty"`
+	ID                           string                   `json:"id" jsonschema:"required,description=Ad ID,pattern=^[0-9]+$"`
+	ActionAttributionWindows     []string                 `json:"action_attribution_windows,omitempty" jsonschema:"description=Action Attribution Windows"`
+	ActionBreakdowns             []string                 `json:"action_breakdowns,omitempty" jsonschema:"description=Action Breakdowns"`
+	ActionReportTime             string                   `json:"action_report_time,omitempty" jsonschema:"description=Action Report Time"`
+	Breakdowns                   []string                 `json:"breakdowns,omitempty" jsonschema:"description=Breakdowns"`
+	DatePreset                   string                   `json:"date_preset,omitempty" jsonschema:"description=Date Preset"`
+	DefaultSummary               bool                     `json:"default_summary,omitempty" jsonschema:"description=Default Summary"`
+	ExportColumns                []string                 `json:"export_columns,omitempty" jsonschema:"description=Export Columns"`
+	ExportFormat                 string                   `json:"export_format,omitempty" jsonschema:"description=Export Format"`
+	ExportName                   string                   `json:"export_name,omitempty" jsonschema:"description=Export Name"`
+	Fields                       []string                 `json:"fields,omitempty" jsonschema:"description=Fields"`
+	Filtering                    []map[string]interface{} `json:"filtering,omitempty" jsonschema:"description=Filtering"`
+	Level                        string                   `json:"level,omitempty" jsonschema:"description=Level"`
+	Limit                        int                      `json:"limit,omitempty" jsonschema:"description=Limit"`
+	ProductIdLimit               int                      `json:"product_id_limit,omitempty" jsonschema:"description=Product ID Limit,pattern=^[0-9]+$"`
+	Sort                         []string                 `json:"sort,omitempty" jsonschema:"description=Sort"`
+	Summary                      []string                 `json:"summary,omitempty" jsonschema:"description=Summary"`
+	SummaryActionBreakdowns      []string                 `json:"summary_action_breakdowns,omitempty" jsonschema:"description=Summary Action Breakdowns"`
+	TimeIncrement                string                   `json:"time_increment,omitempty" jsonschema:"description=Time Increment"`
+	TimeRange                    map[string]interface{}   `json:"time_range,omitempty" jsonschema:"description=Time Range"`
+	TimeRanges                   []map[string]interface{} `json:"time_ranges,omitempty" jsonschema:"description=Time Ranges"`
+	UseAccountAttributionSetting bool                     `json:"use_account_attribution_setting,omitempty" jsonschema:"description=Use Account Attribution Setting"`
+	UseUnifiedAttributionSetting bool                     `json:"use_unified_attribution_setting,omitempty" jsonschema:"description=Use Unified Attribution Setting"`
 }
 
 // list_ad_leadsArgs defines the typed arguments for list_ad_leads
 type list_ad_leadsArgs struct {
-	Fields []string `json:"fields,omitempty"`
-	Limit  int      `json:"limit,omitempty"`
-	After  string   `json:"after,omitempty"`
-	Before string   `json:"before,omitempty"`
+	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
+	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
+	After  string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
+	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
 }
 
 // list_ad_previewsArgs defines the typed arguments for list_ad_previews
 type list_ad_previewsArgs struct {
-	ID                   string                 `json:"id"`
-	Fields               []string               `json:"fields,omitempty"`
-	Limit                int                    `json:"limit,omitempty"`
-	After                string                 `json:"after,omitempty"`
-	Before               string                 `json:"before,omitempty"`
-	AdFormat             string                 `json:"ad_format"`
-	CreativeFeature      string                 `json:"creative_feature,omitempty"`
-	DynamicAssetLabel    string                 `json:"dynamic_asset_label,omitempty"`
-	DynamicCreativeSpec  map[string]interface{} `json:"dynamic_creative_spec,omitempty"`
-	DynamicCustomization map[string]interface{} `json:"dynamic_customization,omitempty"`
-	EndDate              string                 `json:"end_date,omitempty"`
-	Height               int                    `json:"height,omitempty"`
-	Locale               string                 `json:"locale,omitempty"`
-	PlacePageId          int                    `json:"place_page_id,omitempty"`
-	Post                 map[string]interface{} `json:"post,omitempty"`
-	ProductItemIds       []string               `json:"product_item_ids,omitempty"`
-	RenderType           string                 `json:"render_type,omitempty"`
-	StartDate            string                 `json:"start_date,omitempty"`
-	Width                int                    `json:"width,omitempty"`
+	ID                   string                 `json:"id" jsonschema:"required,description=Ad ID,pattern=^[0-9]+$"`
+	Fields               []string               `json:"fields,omitempty" jsonschema:"description=Fields to return"`
+	Limit                int                    `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
+	After                string                 `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
+	Before               string                 `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
+	AdFormat             string                 `json:"ad_format" jsonschema:"description=Ad Format,required"`
+	CreativeFeature      string                 `json:"creative_feature,omitempty" jsonschema:"description=Creative Feature"`
+	DynamicAssetLabel    string                 `json:"dynamic_asset_label,omitempty" jsonschema:"description=Dynamic Asset Label"`
+	DynamicCreativeSpec  map[string]interface{} `json:"dynamic_creative_spec,omitempty" jsonschema:"description=Dynamic Creative Spec"`
+	DynamicCustomization map[string]interface{} `json:"dynamic_customization,omitempty" jsonschema:"description=Dynamic Customization"`
+	EndDate              string                 `json:"end_date,omitempty" jsonschema:"description=End Date,format=date-time"`
+	Height               int                    `json:"height,omitempty" jsonschema:"description=Height"`
+	Locale               string                 `json:"locale,omitempty" jsonschema:"description=Locale"`
+	PlacePageId          int                    `json:"place_page_id,omitempty" jsonschema:"description=ID of the Place Page,pattern=^[0-9]+$"`
+	Post                 map[string]interface{} `json:"post,omitempty" jsonschema:"description=Post"`
+	ProductItemIds       []string               `json:"product_item_ids,omitempty" jsonschema:"description=Product Item Ids,pattern=^[0-9]+$"`
+	RenderType           string                 `json:"render_type,omitempty" jsonschema:"description=Render Type"`
+	StartDate            string                 `json:"start_date,omitempty" jsonschema:"description=Start Date,format=date-time"`
+	Width                int                    `json:"width,omitempty" jsonschema:"description=Width"`
 }
 
 // list_ad_targetingsentencelinesArgs defines the typed arguments for list_ad_targetingsentencelines
 type list_ad_targetingsentencelinesArgs struct {
-	ID     string   `json:"id"`
-	Fields []string `json:"fields,omitempty"`
-	Limit  int      `json:"limit,omitempty"`
-	After  string   `json:"after,omitempty"`
-	Before string   `json:"before,omitempty"`
+	ID     string   `json:"id" jsonschema:"required,description=Ad ID,pattern=^[0-9]+$"`
+	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
+	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
+	After  string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
+	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
 }
 
 // delete_adArgs defines the typed arguments for delete_ad
 type delete_adArgs struct {
-	ID string `json:"id"`
+	ID string `json:"id" jsonschema:"required,description=Ad ID,pattern=^[0-9]+$"`
 }
 
 // get_adArgs defines the typed arguments for get_ad
 type get_adArgs struct {
-	ID                      string                 `json:"id"`
-	Fields                  []string               `json:"fields,omitempty"`
-	Limit                   int                    `json:"limit,omitempty"`
-	After                   string                 `json:"after,omitempty"`
-	Before                  string                 `json:"before,omitempty"`
-	AmCallTags              map[string]interface{} `json:"am_call_tags,omitempty"`
-	DatePreset              string                 `json:"date_preset,omitempty"`
-	FromAdtable             bool                   `json:"from_adtable,omitempty"`
-	ReviewFeedbackBreakdown bool                   `json:"review_feedback_breakdown,omitempty"`
-	TimeRange               map[string]interface{} `json:"time_range,omitempty"`
+	ID                      string                 `json:"id" jsonschema:"required,description=Ad ID,pattern=^[0-9]+$"`
+	Fields                  []string               `json:"fields,omitempty" jsonschema:"description=Fields to return"`
+	Limit                   int                    `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
+	After                   string                 `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
+	Before                  string                 `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
+	AmCallTags              map[string]interface{} `json:"am_call_tags,omitempty" jsonschema:"description=Am Call Tags"`
+	DatePreset              string                 `json:"date_preset,omitempty" jsonschema:"description=Date Preset"`
+	FromAdtable             bool                   `json:"from_adtable,omitempty" jsonschema:"description=From Adtable"`
+	ReviewFeedbackBreakdown bool                   `json:"review_feedback_breakdown,omitempty" jsonschema:"description=Review Feedback Breakdown"`
+	TimeRange               map[string]interface{} `json:"time_range,omitempty" jsonschema:"description=Time Range"`
 }
 
 // update_adArgs defines the typed arguments for update_ad
 type update_adArgs struct {
-	ID                      string                 `json:"id"`
-	AdScheduleEndTime       string                 `json:"ad_schedule_end_time,omitempty"`
-	AdScheduleStartTime     string                 `json:"ad_schedule_start_time,omitempty"`
-	Adlabels                []*AdLabel             `json:"adlabels,omitempty"`
-	AdsetSpec               *AdSet                 `json:"adset_spec,omitempty"`
-	AudienceId              string                 `json:"audience_id,omitempty"`
-	BidAmount               int                    `json:"bid_amount,omitempty"`
-	ConversionDomain        string                 `json:"conversion_domain,omitempty"`
-	Creative                *AdCreative            `json:"creative,omitempty"`
-	CreativeAssetGroupsSpec map[string]interface{} `json:"creative_asset_groups_spec,omitempty"`
-	DisplaySequence         int                    `json:"display_sequence,omitempty"`
-	DraftAdgroupId          string                 `json:"draft_adgroup_id,omitempty"`
-	EngagementAudience      bool                   `json:"engagement_audience,omitempty"`
-	ExecutionOptions        []string               `json:"execution_options,omitempty"`
-	IncludeDemolinkHashes   bool                   `json:"include_demolink_hashes,omitempty"`
-	Name                    string                 `json:"name,omitempty"`
-	Priority                int                    `json:"priority,omitempty"`
-	Status                  string                 `json:"status,omitempty"`
-	TrackingSpecs           map[string]interface{} `json:"tracking_specs,omitempty"`
+	ID                      string                 `json:"id" jsonschema:"required,description=Ad ID,pattern=^[0-9]+$"`
+	AdScheduleEndTime       string                 `json:"ad_schedule_end_time,omitempty" jsonschema:"description=Ad Schedule End Time,format=date-time"`
+	AdScheduleStartTime     string                 `json:"ad_schedule_start_time,omitempty" jsonschema:"description=Ad Schedule Start Time,format=date-time"`
+	Adlabels                []*AdLabel             `json:"adlabels,omitempty" jsonschema:"description=Adlabels"`
+	AdsetSpec               *AdSet                 `json:"adset_spec,omitempty" jsonschema:"description=Adset Spec"`
+	AudienceId              string                 `json:"audience_id,omitempty" jsonschema:"description=ID of the Audience,pattern=^[0-9]+$"`
+	BidAmount               int                    `json:"bid_amount,omitempty" jsonschema:"description=Bid Amount,minimum=1"`
+	ConversionDomain        string                 `json:"conversion_domain,omitempty" jsonschema:"description=Conversion Domain"`
+	Creative                *AdCreative            `json:"creative,omitempty" jsonschema:"description=Creative"`
+	CreativeAssetGroupsSpec map[string]interface{} `json:"creative_asset_groups_spec,omitempty" jsonschema:"description=Creative Asset Groups Spec"`
+	DisplaySequence         int                    `json:"display_sequence,omitempty" jsonschema:"description=Display Sequence"`
+	DraftAdgroupId          string                 `json:"draft_adgroup_id,omitempty" jsonschema:"description=ID of the Draft Adgroup,pattern=^[0-9]+$"`
+	EngagementAudience      bool                   `json:"engagement_audience,omitempty" jsonschema:"description=Engagement Audience"`
+	ExecutionOptions        []string               `json:"execution_options,omitempty" jsonschema:"description=Execution Options"`
+	IncludeDemolinkHashes   bool                   `json:"include_demolink_hashes,omitempty" jsonschema:"description=Include Demolink Hashes"`
+	Name                    string                 `json:"name,omitempty" jsonschema:"description=Name"`
+	Priority                int                    `json:"priority,omitempty" jsonschema:"description=Priority"`
+	Status                  string                 `json:"status,omitempty" jsonschema:"description=Status,enum=ACTIVE,enum=PAUSED,enum=DELETED,enum=ARCHIVED"`
+	TrackingSpecs           map[string]interface{} `json:"tracking_specs,omitempty" jsonschema:"description=Tracking Specs"`
 }
+
+var (
+	list_ad_adcreativesSchema = generateSchemaForType(reflect.TypeOf(list_ad_adcreativesArgs{}))
+
+	create_ad_adlabelSchema = generateSchemaForType(reflect.TypeOf(create_ad_adlabelArgs{}))
+
+	get_ad_adrules_governedSchema = generateSchemaForType(reflect.TypeOf(get_ad_adrules_governedArgs{}))
+
+	list_ad_copiesSchema = generateSchemaForType(reflect.TypeOf(list_ad_copiesArgs{}))
+
+	create_ad_copieSchema = generateSchemaForType(reflect.TypeOf(create_ad_copieArgs{}))
+
+	get_ad_insightsSchema = generateSchemaForType(reflect.TypeOf(get_ad_insightsArgs{}))
+
+	create_ad_insights_reportSchema = generateSchemaForType(reflect.TypeOf(create_ad_insights_reportArgs{}))
+
+	list_ad_leadsSchema = generateSchemaForType(reflect.TypeOf(list_ad_leadsArgs{}))
+
+	list_ad_previewsSchema = generateSchemaForType(reflect.TypeOf(list_ad_previewsArgs{}))
+
+	list_ad_targetingsentencelinesSchema = generateSchemaForType(reflect.TypeOf(list_ad_targetingsentencelinesArgs{}))
+
+	delete_adSchema = generateSchemaForType(reflect.TypeOf(delete_adArgs{}))
+
+	get_adSchema = generateSchemaForType(reflect.TypeOf(get_adArgs{}))
+
+	update_adSchema = generateSchemaForType(reflect.TypeOf(update_adArgs{}))
+)
 
 // ListAdAdcreativesHandler handles list_ad_adcreatives with typed arguments
 func ListAdAdcreativesHandler(ctx context.Context, request mcp.CallToolRequest, args list_ad_adcreativesArgs) (*mcp.CallToolResult, error) {
@@ -830,9 +859,7 @@ func DeleteAdHandler(ctx context.Context, request mcp.CallToolRequest, args dele
 		return mcp.NewToolResultError("id is required"), nil
 	}
 
-	// Build URL and execute
 	url := buildGraphURL(args.ID, "")
-
 	return ExecuteDELETERequest(ctx, url)
 
 }
@@ -993,561 +1020,86 @@ func UpdateAdHandler(ctx context.Context, request mcp.CallToolRequest, args upda
 
 }
 
+// generateSchemaForType is implemented in tools_common.go to avoid redeclaration
+
 // RegisterAdTools registers all Ad tools with the MCP server
 func RegisterAdTools(s *server.MCPServer) error {
 
-	// Register list_ad_adcreatives
+	// Register list_ad_adcreatives using raw schema
 	s.AddTool(
-		mcp.NewTool("list_ad_adcreatives",
-			mcp.WithDescription("List adcreatives for this Ad Returns AdCreative."),
-			mcp.WithArray("fields",
-				mcp.Description("Fields to return"),
-				mcp.Items(map[string]any{"type": "string"}),
-			),
-			mcp.WithNumber("limit",
-				mcp.Description("Maximum number of results"),
-			),
-			mcp.WithString("after",
-				mcp.Description("Cursor for pagination (next page)"),
-			),
-			mcp.WithString("before",
-				mcp.Description("Cursor for pagination (previous page)"),
-			),
-		),
+		mcp.NewToolWithRawSchema("list_ad_adcreatives", "List adcreatives for this Ad Returns AdCreative.", list_ad_adcreativesSchema),
 		mcp.NewTypedToolHandler(ListAdAdcreativesHandler),
 	)
 
-	// Register create_ad_adlabel
+	// Register create_ad_adlabel using raw schema
 	s.AddTool(
-		mcp.NewTool("create_ad_adlabel",
-			mcp.WithDescription("Associate adlabels with this Ad Returns Ad. Required: adlabels"),
-			mcp.WithArray("adlabels",
-				mcp.Required(),
-				mcp.Description("adlabels"),
-				mcp.Items(map[string]any{"type": "object"}),
-			),
-			mcp.WithArray("execution_options",
-				mcp.Description("execution_options"),
-				mcp.Items(map[string]any{"type": "string"}),
-			),
-		),
+		mcp.NewToolWithRawSchema("create_ad_adlabel", "Associate adlabels with this Ad Returns Ad. Required: adlabels", create_ad_adlabelSchema),
 		mcp.NewTypedToolHandler(CreateAdAdlabelHandler),
 	)
 
-	// Register get_ad_adrules_governed
+	// Register get_ad_adrules_governed using raw schema
 	s.AddTool(
-		mcp.NewTool("get_ad_adrules_governed",
-			mcp.WithDescription("Get adrules_governed data for this Ad Returns AdRule."),
-			mcp.WithArray("fields",
-				mcp.Description("Fields to return"),
-				mcp.Items(map[string]any{"type": "string"}),
-			),
-			mcp.WithNumber("limit",
-				mcp.Description("Maximum number of results"),
-			),
-			mcp.WithString("after",
-				mcp.Description("Cursor for pagination (next page)"),
-			),
-			mcp.WithString("before",
-				mcp.Description("Cursor for pagination (previous page)"),
-			),
-			mcp.WithBoolean("pass_evaluation",
-				mcp.Description("pass_evaluation"),
-			),
-		),
+		mcp.NewToolWithRawSchema("get_ad_adrules_governed", "Get adrules_governed data for this Ad Returns AdRule.", get_ad_adrules_governedSchema),
 		mcp.NewTypedToolHandler(GetAdAdrulesGovernedHandler),
 	)
 
-	// Register list_ad_copies
+	// Register list_ad_copies using raw schema
 	s.AddTool(
-		mcp.NewTool("list_ad_copies",
-			mcp.WithDescription("List copies for this Ad Returns Ad."),
-			mcp.WithString("id",
-				mcp.Required(),
-				mcp.Description("Ad ID"),
-			),
-			mcp.WithArray("fields",
-				mcp.Description("Fields to return"),
-				mcp.Items(map[string]any{"type": "string"}),
-			),
-			mcp.WithNumber("limit",
-				mcp.Description("Maximum number of results"),
-			),
-			mcp.WithString("after",
-				mcp.Description("Cursor for pagination (next page)"),
-			),
-			mcp.WithString("before",
-				mcp.Description("Cursor for pagination (previous page)"),
-			),
-			mcp.WithString("date_preset",
-				mcp.Description("date_preset (enum: adgroupcopies_date_preset_enum_param)"),
-			),
-			mcp.WithArray("effective_status",
-				mcp.Description("effective_status"),
-				mcp.Items(map[string]any{"type": "string"}),
-			),
-			mcp.WithObject("time_range",
-				mcp.Description("time_range"),
-				mcp.AdditionalProperties(true),
-			),
-			mcp.WithNumber("updated_since",
-				mcp.Description("updated_since"),
-			),
-		),
+		mcp.NewToolWithRawSchema("list_ad_copies", "List copies for this Ad Returns Ad.", list_ad_copiesSchema),
 		mcp.NewTypedToolHandler(ListAdCopiesHandler),
 	)
 
-	// Register create_ad_copie
+	// Register create_ad_copie using raw schema
 	s.AddTool(
-		mcp.NewTool("create_ad_copie",
-			mcp.WithDescription("Create a copy of this Ad Returns Ad."),
-			mcp.WithString("id",
-				mcp.Required(),
-				mcp.Description("Ad ID"),
-			),
-			mcp.WithString("adset_id",
-				mcp.Description("adset_id"),
-			),
-			mcp.WithObject("creative_parameters",
-				mcp.Description("creative_parameters"),
-				mcp.AdditionalProperties(true),
-			),
-			mcp.WithObject("rename_options",
-				mcp.Description("rename_options"),
-				mcp.AdditionalProperties(true),
-			),
-			mcp.WithString("status_option",
-				mcp.Description("status_option (enum: adgroupcopies_status_option_enum_param)"),
-			),
-		),
+		mcp.NewToolWithRawSchema("create_ad_copie", "Create a copy of this Ad Returns Ad.", create_ad_copieSchema),
 		mcp.NewTypedToolHandler(CreateAdCopieHandler),
 	)
 
-	// Register get_ad_insights
+	// Register get_ad_insights using raw schema
 	s.AddTool(
-		mcp.NewTool("get_ad_insights",
-			mcp.WithDescription("List insights for this Ad Returns AdsInsights."),
-			mcp.WithString("id",
-				mcp.Required(),
-				mcp.Description("Ad ID"),
-			),
-			mcp.WithArray("fields",
-				mcp.Description("Fields to return"),
-				mcp.Items(map[string]any{"type": "string"}),
-			),
-			mcp.WithNumber("limit",
-				mcp.Description("Maximum number of results"),
-			),
-			mcp.WithString("after",
-				mcp.Description("Cursor for pagination (next page)"),
-			),
-			mcp.WithString("before",
-				mcp.Description("Cursor for pagination (previous page)"),
-			),
-			mcp.WithArray("action_attribution_windows",
-				mcp.Description("action_attribution_windows"),
-				mcp.Items(map[string]any{"type": "string"}),
-			),
-			mcp.WithArray("action_breakdowns",
-				mcp.Description("action_breakdowns"),
-				mcp.Items(map[string]any{"type": "string"}),
-			),
-			mcp.WithString("action_report_time",
-				mcp.Description("action_report_time (enum: adgroupinsights_action_report_time_enum_param)"),
-			),
-			mcp.WithArray("breakdowns",
-				mcp.Description("breakdowns"),
-				mcp.Items(map[string]any{"type": "string"}),
-			),
-			mcp.WithString("date_preset",
-				mcp.Description("date_preset (enum: adgroupinsights_date_preset_enum_param)"),
-			),
-			mcp.WithBoolean("default_summary",
-				mcp.Description("default_summary"),
-			),
-			mcp.WithArray("export_columns",
-				mcp.Description("export_columns"),
-				mcp.Items(map[string]any{"type": "string"}),
-			),
-			mcp.WithString("export_format",
-				mcp.Description("export_format"),
-			),
-			mcp.WithString("export_name",
-				mcp.Description("export_name"),
-			),
-			mcp.WithArray("filtering",
-				mcp.Description("filtering"),
-				mcp.Items(map[string]any{"type": "object"}),
-			),
-			mcp.WithString("level",
-				mcp.Description("level (enum: adgroupinsights_level_enum_param)"),
-			),
-			mcp.WithNumber("product_id_limit",
-				mcp.Description("product_id_limit"),
-			),
-			mcp.WithArray("sort",
-				mcp.Description("sort"),
-				mcp.Items(map[string]any{"type": "string"}),
-			),
-			mcp.WithArray("summary",
-				mcp.Description("summary"),
-				mcp.Items(map[string]any{"type": "string"}),
-			),
-			mcp.WithArray("summary_action_breakdowns",
-				mcp.Description("summary_action_breakdowns"),
-				mcp.Items(map[string]any{"type": "string"}),
-			),
-			mcp.WithString("time_increment",
-				mcp.Description("time_increment"),
-			),
-			mcp.WithObject("time_range",
-				mcp.Description("time_range"),
-				mcp.AdditionalProperties(true),
-			),
-			mcp.WithArray("time_ranges",
-				mcp.Description("time_ranges"),
-				mcp.Items(map[string]any{"type": "object"}),
-			),
-			mcp.WithBoolean("use_account_attribution_setting",
-				mcp.Description("use_account_attribution_setting"),
-			),
-			mcp.WithBoolean("use_unified_attribution_setting",
-				mcp.Description("use_unified_attribution_setting"),
-			),
-		),
+		mcp.NewToolWithRawSchema("get_ad_insights", "List insights for this Ad Returns AdsInsights.", get_ad_insightsSchema),
 		mcp.NewTypedToolHandler(GetAdInsightsHandler),
 	)
 
-	// Register create_ad_insights_report
+	// Register create_ad_insights_report using raw schema
 	s.AddTool(
-		mcp.NewTool("create_ad_insights_report",
-			mcp.WithDescription("Generate an insights report for this Ad Returns AdReportRun."),
-			mcp.WithString("id",
-				mcp.Required(),
-				mcp.Description("Ad ID"),
-			),
-			mcp.WithArray("action_attribution_windows",
-				mcp.Description("action_attribution_windows"),
-				mcp.Items(map[string]any{"type": "string"}),
-			),
-			mcp.WithArray("action_breakdowns",
-				mcp.Description("action_breakdowns"),
-				mcp.Items(map[string]any{"type": "string"}),
-			),
-			mcp.WithString("action_report_time",
-				mcp.Description("action_report_time (enum: adgroupinsights_action_report_time_enum_param)"),
-			),
-			mcp.WithArray("breakdowns",
-				mcp.Description("breakdowns"),
-				mcp.Items(map[string]any{"type": "string"}),
-			),
-			mcp.WithString("date_preset",
-				mcp.Description("date_preset (enum: adgroupinsights_date_preset_enum_param)"),
-			),
-			mcp.WithBoolean("default_summary",
-				mcp.Description("default_summary"),
-			),
-			mcp.WithArray("export_columns",
-				mcp.Description("export_columns"),
-				mcp.Items(map[string]any{"type": "string"}),
-			),
-			mcp.WithString("export_format",
-				mcp.Description("export_format"),
-			),
-			mcp.WithString("export_name",
-				mcp.Description("export_name"),
-			),
-			mcp.WithArray("fields",
-				mcp.Description("fields"),
-				mcp.Items(map[string]any{"type": "string"}),
-			),
-			mcp.WithArray("filtering",
-				mcp.Description("filtering"),
-				mcp.Items(map[string]any{"type": "object"}),
-			),
-			mcp.WithString("level",
-				mcp.Description("level (enum: adgroupinsights_level_enum_param)"),
-			),
-			mcp.WithNumber("limit",
-				mcp.Description("limit"),
-			),
-			mcp.WithNumber("product_id_limit",
-				mcp.Description("product_id_limit"),
-			),
-			mcp.WithArray("sort",
-				mcp.Description("sort"),
-				mcp.Items(map[string]any{"type": "string"}),
-			),
-			mcp.WithArray("summary",
-				mcp.Description("summary"),
-				mcp.Items(map[string]any{"type": "string"}),
-			),
-			mcp.WithArray("summary_action_breakdowns",
-				mcp.Description("summary_action_breakdowns"),
-				mcp.Items(map[string]any{"type": "string"}),
-			),
-			mcp.WithString("time_increment",
-				mcp.Description("time_increment"),
-			),
-			mcp.WithObject("time_range",
-				mcp.Description("time_range"),
-				mcp.AdditionalProperties(true),
-			),
-			mcp.WithArray("time_ranges",
-				mcp.Description("time_ranges"),
-				mcp.Items(map[string]any{"type": "object"}),
-			),
-			mcp.WithBoolean("use_account_attribution_setting",
-				mcp.Description("use_account_attribution_setting"),
-			),
-			mcp.WithBoolean("use_unified_attribution_setting",
-				mcp.Description("use_unified_attribution_setting"),
-			),
-		),
+		mcp.NewToolWithRawSchema("create_ad_insights_report", "Generate an insights report for this Ad Returns AdReportRun.", create_ad_insights_reportSchema),
 		mcp.NewTypedToolHandler(CreateAdInsightsReportHandler),
 	)
 
-	// Register list_ad_leads
+	// Register list_ad_leads using raw schema
 	s.AddTool(
-		mcp.NewTool("list_ad_leads",
-			mcp.WithDescription("List leads for this Ad Returns Lead."),
-			mcp.WithArray("fields",
-				mcp.Description("Fields to return"),
-				mcp.Items(map[string]any{"type": "string"}),
-			),
-			mcp.WithNumber("limit",
-				mcp.Description("Maximum number of results"),
-			),
-			mcp.WithString("after",
-				mcp.Description("Cursor for pagination (next page)"),
-			),
-			mcp.WithString("before",
-				mcp.Description("Cursor for pagination (previous page)"),
-			),
-		),
+		mcp.NewToolWithRawSchema("list_ad_leads", "List leads for this Ad Returns Lead.", list_ad_leadsSchema),
 		mcp.NewTypedToolHandler(ListAdLeadsHandler),
 	)
 
-	// Register list_ad_previews
+	// Register list_ad_previews using raw schema
 	s.AddTool(
-		mcp.NewTool("list_ad_previews",
-			mcp.WithDescription("List previews for this Ad Returns AdPreview. Required: ad_format (enum)"),
-			mcp.WithString("id",
-				mcp.Required(),
-				mcp.Description("Ad ID"),
-			),
-			mcp.WithArray("fields",
-				mcp.Description("Fields to return"),
-				mcp.Items(map[string]any{"type": "string"}),
-			),
-			mcp.WithNumber("limit",
-				mcp.Description("Maximum number of results"),
-			),
-			mcp.WithString("after",
-				mcp.Description("Cursor for pagination (next page)"),
-			),
-			mcp.WithString("before",
-				mcp.Description("Cursor for pagination (previous page)"),
-			),
-			mcp.WithString("ad_format",
-				mcp.Required(),
-				mcp.Description("ad_format (enum: adgrouppreviews_ad_format_enum_param)"),
-			),
-			mcp.WithString("creative_feature",
-				mcp.Description("creative_feature (enum: adgrouppreviews_creative_feature_enum_param)"),
-			),
-			mcp.WithString("dynamic_asset_label",
-				mcp.Description("dynamic_asset_label"),
-			),
-			mcp.WithObject("dynamic_creative_spec",
-				mcp.Description("dynamic_creative_spec"),
-				mcp.AdditionalProperties(true),
-			),
-			mcp.WithObject("dynamic_customization",
-				mcp.Description("dynamic_customization"),
-				mcp.AdditionalProperties(true),
-			),
-			mcp.WithString("end_date",
-				mcp.Description("end_date"),
-			),
-			mcp.WithNumber("height",
-				mcp.Description("height"),
-			),
-			mcp.WithString("locale",
-				mcp.Description("locale"),
-			),
-			mcp.WithNumber("place_page_id",
-				mcp.Description("place_page_id"),
-			),
-			mcp.WithObject("post",
-				mcp.Description("post"),
-				mcp.AdditionalProperties(true),
-			),
-			mcp.WithArray("product_item_ids",
-				mcp.Description("product_item_ids"),
-				mcp.Items(map[string]any{"type": "string"}),
-			),
-			mcp.WithString("render_type",
-				mcp.Description("render_type (enum: adgrouppreviews_render_type_enum_param)"),
-			),
-			mcp.WithString("start_date",
-				mcp.Description("start_date"),
-			),
-			mcp.WithNumber("width",
-				mcp.Description("width"),
-			),
-		),
+		mcp.NewToolWithRawSchema("list_ad_previews", "List previews for this Ad Returns AdPreview. Required: ad_format (enum)", list_ad_previewsSchema),
 		mcp.NewTypedToolHandler(ListAdPreviewsHandler),
 	)
 
-	// Register list_ad_targetingsentencelines
+	// Register list_ad_targetingsentencelines using raw schema
 	s.AddTool(
-		mcp.NewTool("list_ad_targetingsentencelines",
-			mcp.WithDescription("List targetingsentencelines for this Ad Returns TargetingSentenceLine."),
-			mcp.WithString("id",
-				mcp.Required(),
-				mcp.Description("Ad ID"),
-			),
-			mcp.WithArray("fields",
-				mcp.Description("Fields to return"),
-				mcp.Items(map[string]any{"type": "string"}),
-			),
-			mcp.WithNumber("limit",
-				mcp.Description("Maximum number of results"),
-			),
-			mcp.WithString("after",
-				mcp.Description("Cursor for pagination (next page)"),
-			),
-			mcp.WithString("before",
-				mcp.Description("Cursor for pagination (previous page)"),
-			),
-		),
+		mcp.NewToolWithRawSchema("list_ad_targetingsentencelines", "List targetingsentencelines for this Ad Returns TargetingSentenceLine.", list_ad_targetingsentencelinesSchema),
 		mcp.NewTypedToolHandler(ListAdTargetingsentencelinesHandler),
 	)
 
-	// Register delete_ad
+	// Register delete_ad using raw schema
 	s.AddTool(
-		mcp.NewTool("delete_ad",
-			mcp.WithDescription("Delete a Ad"),
-			mcp.WithString("id",
-				mcp.Required(),
-				mcp.Description("Ad ID"),
-			),
-		),
+		mcp.NewToolWithRawSchema("delete_ad", "Delete a Ad", delete_adSchema),
 		mcp.NewTypedToolHandler(DeleteAdHandler),
 	)
 
-	// Register get_ad
+	// Register get_ad using raw schema
 	s.AddTool(
-		mcp.NewTool("get_ad",
-			mcp.WithDescription("Get details of a specific Ad Returns Ad."),
-			mcp.WithString("id",
-				mcp.Required(),
-				mcp.Description("Ad ID"),
-			),
-			mcp.WithArray("fields",
-				mcp.Description("Fields to return"),
-				mcp.Items(map[string]any{"type": "string"}),
-			),
-			mcp.WithNumber("limit",
-				mcp.Description("Maximum number of results"),
-			),
-			mcp.WithString("after",
-				mcp.Description("Cursor for pagination (next page)"),
-			),
-			mcp.WithString("before",
-				mcp.Description("Cursor for pagination (previous page)"),
-			),
-			mcp.WithObject("am_call_tags",
-				mcp.Description("am_call_tags"),
-				mcp.AdditionalProperties(true),
-			),
-			mcp.WithString("date_preset",
-				mcp.Description("date_preset (enum: adgroup_date_preset)"),
-			),
-			mcp.WithBoolean("from_adtable",
-				mcp.Description("from_adtable"),
-			),
-			mcp.WithBoolean("review_feedback_breakdown",
-				mcp.Description("review_feedback_breakdown"),
-			),
-			mcp.WithObject("time_range",
-				mcp.Description("time_range"),
-				mcp.AdditionalProperties(true),
-			),
-		),
+		mcp.NewToolWithRawSchema("get_ad", "Get details of a specific Ad Returns Ad.", get_adSchema),
 		mcp.NewTypedToolHandler(GetAdHandler),
 	)
 
-	// Register update_ad
+	// Register update_ad using raw schema
 	s.AddTool(
-		mcp.NewTool("update_ad",
-			mcp.WithDescription("Update a Ad Returns Ad."),
-			mcp.WithString("id",
-				mcp.Required(),
-				mcp.Description("Ad ID"),
-			),
-			mcp.WithString("ad_schedule_end_time",
-				mcp.Description("ad_schedule_end_time"),
-			),
-			mcp.WithString("ad_schedule_start_time",
-				mcp.Description("ad_schedule_start_time"),
-			),
-			mcp.WithArray("adlabels",
-				mcp.Description("adlabels"),
-				mcp.Items(map[string]any{"type": "object"}),
-			),
-			mcp.WithObject("adset_spec",
-				mcp.Description("adset_spec"),
-				mcp.AdditionalProperties(true),
-			),
-			mcp.WithString("audience_id",
-				mcp.Description("audience_id"),
-			),
-			mcp.WithNumber("bid_amount",
-				mcp.Description("bid_amount"),
-			),
-			mcp.WithString("conversion_domain",
-				mcp.Description("conversion_domain"),
-			),
-			mcp.WithObject("creative",
-				mcp.Description("creative"),
-				mcp.AdditionalProperties(true),
-			),
-			mcp.WithObject("creative_asset_groups_spec",
-				mcp.Description("creative_asset_groups_spec"),
-				mcp.AdditionalProperties(true),
-			),
-			mcp.WithNumber("display_sequence",
-				mcp.Description("display_sequence"),
-			),
-			mcp.WithString("draft_adgroup_id",
-				mcp.Description("draft_adgroup_id"),
-			),
-			mcp.WithBoolean("engagement_audience",
-				mcp.Description("engagement_audience"),
-			),
-			mcp.WithArray("execution_options",
-				mcp.Description("execution_options"),
-				mcp.Items(map[string]any{"type": "string"}),
-			),
-			mcp.WithBoolean("include_demolink_hashes",
-				mcp.Description("include_demolink_hashes"),
-			),
-			mcp.WithString("name",
-				mcp.Description("name"),
-			),
-			mcp.WithNumber("priority",
-				mcp.Description("priority"),
-			),
-			mcp.WithString("status",
-				mcp.Description("status (enum: adgroup_status)"),
-			),
-			mcp.WithObject("tracking_specs",
-				mcp.Description("tracking_specs"),
-				mcp.AdditionalProperties(true),
-			),
-		),
+		mcp.NewToolWithRawSchema("update_ad", "Update a Ad Returns Ad.", update_adSchema),
 		mcp.NewTypedToolHandler(UpdateAdHandler),
 	)
 
