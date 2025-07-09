@@ -68,7 +68,8 @@ type ToolData struct {
 	ToolName        string
 	HandlerName     string
 	Description     string
-	InputSchema     string // JSON string
+	InputSchema     string // JSON string (deprecated, use RawSchema)
+	RawSchema       string // Raw JSON schema for mcp.NewToolWithRawSchema
 	NeedsID         bool
 	Params          []Param
 	HasComplexLogic bool          // Whether handler needs custom logic
@@ -233,21 +234,31 @@ func (g *ToolGenerator) generateToolsForObject(objectName string, spec *ToolSpec
 
 		// Generate input schema based on method
 		var inputSchemaJSON []byte
+		var rawSchemaJSON string
 		var schemaParams []SchemaParam
 
+		// Always try raw schema generation first for better type safety
+		if rawSchema, err := g.generateRawSchema(objectName, api); err == nil {
+			rawSchemaJSON = rawSchema
+			log.Printf("Using raw schema generation for %s", toolName)
+		} else {
+			log.Printf("Raw schema generation failed for %s: %v", toolName, err)
+		}
+
+		// Try enhanced schema generation if enabled
 		if g.useSchema && g.schemaGen != nil && g.canUseSchemaGeneration(objectName, api) {
 			// Try schema-based generation for better type handling
 			schema, params, err := g.generateSchemaForAPI(objectName, api)
 			if err == nil {
 				inputSchemaJSON = schema
 				schemaParams = params
-				log.Printf("Using schema-based generation for %s", toolName)
+				log.Printf("Using enhanced schema-based generation for %s", toolName)
 			} else {
-				log.Printf("Falling back to parameter-based generation for %s: %v", toolName, err)
+				log.Printf("Enhanced schema generation failed for %s: %v", toolName, err)
 			}
 		}
 
-		// Fall back to original generation if schema not used or failed
+		// Fall back to original generation if enhanced schema not used or failed
 		if inputSchemaJSON == nil {
 			inputSchema := g.generateInputSchema(objectName, api)
 			inputSchemaJSON, _ = json.Marshal(inputSchema)
@@ -271,6 +282,7 @@ func (g *ToolGenerator) generateToolsForObject(objectName string, spec *ToolSpec
 			HandlerName:     handlerName,
 			Description:     strings.ReplaceAll(g.generateDescription(objectName, api), `"`, `\"`),
 			InputSchema:     string(inputSchemaJSON),
+			RawSchema:       rawSchemaJSON,
 			NeedsID:         needsID,
 			Params:          api.Params,
 			HasComplexLogic: hasComplexLogic,
@@ -295,25 +307,33 @@ func (g *ToolGenerator) generateToolsForObject(objectName string, spec *ToolSpec
 	var tmplContent []byte
 	var err error
 
-	// Use schema template when schema generation is enabled
-	if g.useSchema {
-		tmplContent, err = os.ReadFile(filepath.Join(filepath.Dir(g.outputPath), "codegen", "templates", "object_tools_with_schema.go.tmpl"))
-		if err != nil {
-			log.Printf("Schema template not found, falling back to typed template: %v", err)
-		}
-	}
+	// Try raw schema template first (best type safety)
+	tmplContent, err = os.ReadFile(filepath.Join(filepath.Dir(g.outputPath), "codegen", "templates", "object_tools_raw_schema.go.tmpl"))
+	if err == nil {
+		log.Printf("Using raw schema template for %s", objectName)
+	} else {
+		log.Printf("Raw schema template not found, falling back: %v", err)
 
-	// Fallback to typed template if schema template not available or not enabled
-	if tmplContent == nil {
-		tmplContent, err = os.ReadFile(filepath.Join(filepath.Dir(g.outputPath), "codegen", "templates", "object_tools_typed.go.tmpl"))
-		if err != nil {
-			// Fallback to refactored template if typed doesn't exist
-			tmplContent, err = os.ReadFile(filepath.Join(filepath.Dir(g.outputPath), "codegen", "templates", "object_tools_refactored.go.tmpl"))
+		// Use schema template when schema generation is enabled
+		if g.useSchema {
+			tmplContent, err = os.ReadFile(filepath.Join(filepath.Dir(g.outputPath), "codegen", "templates", "object_tools_with_schema.go.tmpl"))
 			if err != nil {
-				// Fallback to original template
-				tmplContent, err = os.ReadFile(filepath.Join(filepath.Dir(g.outputPath), "codegen", "templates", "object_tools.go.tmpl"))
+				log.Printf("Schema template not found, falling back to typed template: %v", err)
+			}
+		}
+
+		// Fallback to typed template if schema template not available or not enabled
+		if tmplContent == nil {
+			tmplContent, err = os.ReadFile(filepath.Join(filepath.Dir(g.outputPath), "codegen", "templates", "object_tools_typed.go.tmpl"))
+			if err != nil {
+				// Fallback to refactored template if typed doesn't exist
+				tmplContent, err = os.ReadFile(filepath.Join(filepath.Dir(g.outputPath), "codegen", "templates", "object_tools_refactored.go.tmpl"))
 				if err != nil {
-					return fmt.Errorf("failed to read template: %w", err)
+					// Fallback to original template
+					tmplContent, err = os.ReadFile(filepath.Join(filepath.Dir(g.outputPath), "codegen", "templates", "object_tools.go.tmpl"))
+					if err != nil {
+						return fmt.Errorf("failed to read template: %w", err)
+					}
 				}
 			}
 		}
@@ -431,6 +451,9 @@ func (g *ToolGenerator) generateTools() error {
 			schemaParams := g.convertToSchemaParams(api.Params, g.needsObjectID(objectName, api.Endpoint), api.Method)
 			typedParams := g.convertToTypedParams(api.Params, api.Method)
 
+			// Generate raw schema for this tool
+			rawSchema, _ := g.generateRawSchema(objectName, api)
+
 			tools = append(tools, ToolData{
 				ObjectName:      objectName,
 				Method:          api.Method,
@@ -440,6 +463,7 @@ func (g *ToolGenerator) generateTools() error {
 				HandlerName:     handlerName,
 				Description:     strings.ReplaceAll(g.generateDescription(objectName, api), `"`, `\"`),
 				InputSchema:     string(inputSchemaJSON),
+				RawSchema:       rawSchema,
 				NeedsID:         g.needsObjectID(objectName, api.Endpoint),
 				Params:          api.Params,
 				HasComplexLogic: hasComplexLogic,
@@ -1435,4 +1459,375 @@ func (g *ToolGenerator) generateSchemaForAPI(objectName string, api API) ([]byte
 	schemaParams := g.convertToSchemaParams(api.Params, g.needsObjectID(objectName, api.Endpoint), api.Method)
 
 	return schemaJSON, schemaParams, nil
+}
+
+// generateRawSchema generates a complete JSON schema for use with mcp.NewToolWithRawSchema
+func (g *ToolGenerator) generateRawSchema(objectName string, api API) (string, error) {
+	// Initialize cycle detection for this schema generation
+	visited := make(map[string]bool)
+
+	schema := map[string]interface{}{
+		"type":                 "object",
+		"properties":           make(map[string]interface{}),
+		"required":             []string{},
+		"additionalProperties": false,
+	}
+
+	properties := schema["properties"].(map[string]interface{})
+	required := schema["required"].([]string)
+
+	// Add ID field if needed
+	if g.needsObjectID(objectName, api.Endpoint) {
+		properties["id"] = map[string]interface{}{
+			"type":        "string",
+			"description": fmt.Sprintf("%s ID", objectName),
+			"pattern":     "^[0-9]+$",
+		}
+		required = append(required, "id")
+	}
+
+	// Process each parameter with enhanced complex type handling
+	for _, param := range api.Params {
+		propSchema, err := g.generateComplexParamSchemaWithCycleDetection(param, visited)
+		if err != nil {
+			return "", fmt.Errorf("failed to generate schema for param %s: %w", param.Name, err)
+		}
+		properties[param.Name] = propSchema
+
+		if param.Required {
+			required = append(required, param.Name)
+		}
+	}
+
+	// Add common GET parameters
+	if api.Method == "GET" {
+		g.addCommonGetParams(properties)
+	}
+
+	// Update required array
+	schema["required"] = required
+
+	// Marshal to JSON
+	schemaJSON, err := json.Marshal(schema)
+	if err != nil {
+		return "", fmt.Errorf("failed to marshal schema: %w", err)
+	}
+
+	return string(schemaJSON), nil
+}
+
+// generateComplexParamSchemaWithCycleDetection generates schema for a parameter with cycle detection
+func (g *ToolGenerator) generateComplexParamSchemaWithCycleDetection(param Param, visited map[string]bool) (map[string]interface{}, error) {
+	schema := make(map[string]interface{})
+
+	// Add description
+	desc := g.generateParamDescription(param.Name, param.Type)
+	if g.isEnumType(param.Type) {
+		desc = fmt.Sprintf("%s (enum: %s)", desc, param.Type)
+	}
+	schema["description"] = desc
+
+	// Handle different parameter types
+	switch {
+	case strings.HasPrefix(param.Type, "list<"):
+		return g.generateListSchemaWithCycleDetection(param, visited)
+
+	case strings.HasPrefix(param.Type, "map<"):
+		return g.generateMapSchemaWithCycleDetection(param, visited)
+
+	case param.Type == "Object" || param.Type == "object":
+		schema["type"] = "object"
+		schema["additionalProperties"] = true
+
+	case g.isComplexType(param.Type):
+		return g.generateComplexTypeSchemaWithCycleDetection(param.Type, param.Name, visited)
+
+	case g.isEnumType(param.Type):
+		schema["type"] = "string"
+		// Add enum values if available
+		if enumValues := g.getEnumValues(param.Type); len(enumValues) > 0 {
+			schema["enum"] = enumValues
+		}
+
+	default:
+		schema["type"] = g.mapBasicType(param.Type)
+		g.addTypeSpecificValidation(schema, param)
+	}
+
+	return schema, nil
+}
+
+// generateComplexParamSchema generates schema for a parameter with recursive complex type handling (legacy)
+func (g *ToolGenerator) generateComplexParamSchema(param Param) (map[string]interface{}, error) {
+	visited := make(map[string]bool)
+	return g.generateComplexParamSchemaWithCycleDetection(param, visited)
+}
+
+// generateListSchemaWithCycleDetection generates schema for list types with cycle detection
+func (g *ToolGenerator) generateListSchemaWithCycleDetection(param Param, visited map[string]bool) (map[string]interface{}, error) {
+	innerType := strings.TrimSuffix(strings.TrimPrefix(param.Type, "list<"), ">")
+	schema := map[string]interface{}{
+		"type":        "array",
+		"description": g.generateParamDescription(param.Name, param.Type),
+	}
+
+	// Generate items schema based on inner type
+	if g.isComplexType(innerType) {
+		itemSchema, err := g.generateComplexTypeSchemaWithCycleDetection(innerType, param.Name, visited)
+		if err != nil {
+			return nil, fmt.Errorf("failed to generate schema for list item type %s: %w", innerType, err)
+		}
+		schema["items"] = itemSchema
+	} else if innerType == "Object" || strings.Contains(innerType, "map") {
+		schema["items"] = map[string]interface{}{
+			"type":                 "object",
+			"additionalProperties": true,
+		}
+	} else {
+		schema["items"] = map[string]interface{}{
+			"type": g.mapBasicType(innerType),
+		}
+	}
+
+	return schema, nil
+}
+
+// generateListSchema generates schema for list types (legacy)
+func (g *ToolGenerator) generateListSchema(param Param) (map[string]interface{}, error) {
+	visited := make(map[string]bool)
+	return g.generateListSchemaWithCycleDetection(param, visited)
+}
+
+// generateMapSchemaWithCycleDetection generates schema for map types with cycle detection
+func (g *ToolGenerator) generateMapSchemaWithCycleDetection(param Param, visited map[string]bool) (map[string]interface{}, error) {
+	schema := map[string]interface{}{
+		"type":                 "object",
+		"description":          g.generateParamDescription(param.Name, param.Type),
+		"additionalProperties": true,
+	}
+
+	// Extract value type from map<key, value>
+	if strings.HasPrefix(param.Type, "map<") && strings.HasSuffix(param.Type, ">") {
+		parts := strings.Split(strings.TrimSuffix(strings.TrimPrefix(param.Type, "map<"), ">"), ",")
+		if len(parts) == 2 {
+			valueType := strings.TrimSpace(parts[1])
+			if g.isComplexType(valueType) {
+				valueSchema, err := g.generateComplexTypeSchemaWithCycleDetection(valueType, param.Name, visited)
+				if err != nil {
+					return nil, fmt.Errorf("failed to generate schema for map value type %s: %w", valueType, err)
+				}
+				schema["additionalProperties"] = valueSchema
+			} else {
+				schema["additionalProperties"] = map[string]interface{}{
+					"type": g.mapBasicType(valueType),
+				}
+			}
+		}
+	}
+
+	return schema, nil
+}
+
+// generateMapSchema generates schema for map types (legacy)
+func (g *ToolGenerator) generateMapSchema(param Param) (map[string]interface{}, error) {
+	visited := make(map[string]bool)
+	return g.generateMapSchemaWithCycleDetection(param, visited)
+}
+
+// generateComplexTypeSchemaWithCycleDetection generates schema for complex types with cycle detection
+func (g *ToolGenerator) generateComplexTypeSchemaWithCycleDetection(typeName string, paramName string, visited map[string]bool) (map[string]interface{}, error) {
+	// Check for circular reference
+	if visited[typeName] {
+		log.Printf("Circular reference detected for type %s, using reference", typeName)
+		return map[string]interface{}{
+			"type":                 "object",
+			"description":          fmt.Sprintf("%s object (circular reference)", typeName),
+			"additionalProperties": true,
+		}, nil
+	}
+
+	// Mark as visited
+	visited[typeName] = true
+	defer func() {
+		delete(visited, typeName)
+	}()
+
+	schema := map[string]interface{}{
+		"type":        "object",
+		"description": fmt.Sprintf("%s object", typeName),
+	}
+
+	// Check if we have field specs for this type
+	if fieldSpec, exists := g.fieldSpecs[typeName]; exists {
+		properties := make(map[string]interface{})
+		required := []string{}
+
+		for _, field := range fieldSpec.Fields {
+			fieldSchema, err := g.generateFieldSchemaWithCycleDetection(field, visited)
+			if err != nil {
+				return nil, fmt.Errorf("failed to generate schema for field %s.%s: %w", typeName, field.Name, err)
+			}
+			properties[field.Name] = fieldSchema
+
+			// Check if field is required based on common patterns
+			if g.isFieldRequired(field.Name, typeName) {
+				required = append(required, field.Name)
+			}
+		}
+
+		schema["properties"] = properties
+		if len(required) > 0 {
+			schema["required"] = required
+		}
+		schema["additionalProperties"] = false
+	} else {
+		// Fallback to generic object for unknown complex types
+		log.Printf("Warning: No field spec found for complex type %s, using generic object", typeName)
+		schema["additionalProperties"] = true
+	}
+
+	return schema, nil
+}
+
+// generateComplexTypeSchema generates schema for complex types using field definitions (legacy)
+func (g *ToolGenerator) generateComplexTypeSchema(typeName string, paramName string) (map[string]interface{}, error) {
+	visited := make(map[string]bool)
+	return g.generateComplexTypeSchemaWithCycleDetection(typeName, paramName, visited)
+}
+
+// generateFieldSchemaWithCycleDetection generates schema for a field with cycle detection
+func (g *ToolGenerator) generateFieldSchemaWithCycleDetection(field Field, visited map[string]bool) (map[string]interface{}, error) {
+	schema := make(map[string]interface{})
+
+	// Add description
+	schema["description"] = g.generateParamDescription(field.Name, field.Type)
+
+	// Handle different field types recursively
+	switch {
+	case strings.HasPrefix(field.Type, "list<"):
+		innerType := strings.TrimSuffix(strings.TrimPrefix(field.Type, "list<"), ">")
+		schema["type"] = "array"
+		if g.isComplexType(innerType) {
+			itemSchema, err := g.generateComplexTypeSchemaWithCycleDetection(innerType, field.Name, visited)
+			if err != nil {
+				return nil, err
+			}
+			schema["items"] = itemSchema
+		} else {
+			schema["items"] = map[string]interface{}{
+				"type": g.mapBasicType(innerType),
+			}
+		}
+
+	case strings.HasPrefix(field.Type, "map<"):
+		schema["type"] = "object"
+		schema["additionalProperties"] = true
+
+	case field.Type == "Object" || field.Type == "object":
+		schema["type"] = "object"
+		schema["additionalProperties"] = true
+
+	case g.isComplexType(field.Type):
+		return g.generateComplexTypeSchemaWithCycleDetection(field.Type, field.Name, visited)
+
+	case g.isEnumType(field.Type):
+		schema["type"] = "string"
+		if enumValues := g.getEnumValues(field.Type); len(enumValues) > 0 {
+			schema["enum"] = enumValues
+		}
+
+	default:
+		schema["type"] = g.mapBasicType(field.Type)
+	}
+
+	return schema, nil
+}
+
+// generateFieldSchema generates schema for a field from field specifications (legacy)
+func (g *ToolGenerator) generateFieldSchema(field Field) (map[string]interface{}, error) {
+	visited := make(map[string]bool)
+	return g.generateFieldSchemaWithCycleDetection(field, visited)
+}
+
+// addCommonGetParams adds common GET parameters to the schema properties
+func (g *ToolGenerator) addCommonGetParams(properties map[string]interface{}) {
+	properties["fields"] = map[string]interface{}{
+		"type": "array",
+		"items": map[string]interface{}{
+			"type": "string",
+		},
+		"description": "Fields to return",
+	}
+	properties["limit"] = map[string]interface{}{
+		"type":        "integer",
+		"description": "Maximum number of results",
+		"minimum":     1,
+		"maximum":     100,
+	}
+	properties["after"] = map[string]interface{}{
+		"type":        "string",
+		"description": "Cursor for pagination (next page)",
+	}
+	properties["before"] = map[string]interface{}{
+		"type":        "string",
+		"description": "Cursor for pagination (previous page)",
+	}
+}
+
+// addTypeSpecificValidation adds type-specific validation to schema
+func (g *ToolGenerator) addTypeSpecificValidation(schema map[string]interface{}, param Param) {
+	switch {
+	case strings.Contains(param.Name, "_id") || param.Name == "id":
+		schema["pattern"] = "^[0-9]+$"
+
+	case param.Type == "integer" || param.Type == "int":
+		if strings.Contains(param.Name, "age") {
+			schema["minimum"] = 13
+			schema["maximum"] = 100
+		} else if strings.Contains(param.Name, "budget") || strings.Contains(param.Name, "amount") {
+			schema["minimum"] = 1
+		}
+
+	case param.Type == "string":
+		if strings.Contains(param.Name, "url") {
+			schema["format"] = "uri"
+		} else if param.Type == "datetime" || param.Type == "timestamp" {
+			schema["format"] = "date-time"
+		}
+	}
+}
+
+// isFieldRequired determines if a field should be marked as required based on common patterns
+func (g *ToolGenerator) isFieldRequired(fieldName, typeName string) bool {
+	// Common required fields
+	requiredFields := map[string]bool{
+		"id":   true,
+		"name": true,
+	}
+
+	// Type-specific required fields
+	switch typeName {
+	case "AdSet":
+		switch fieldName {
+		case "campaign_id", "optimization_goal", "billing_event", "targeting":
+			return true
+		}
+	case "Campaign":
+		switch fieldName {
+		case "objective", "status":
+			return true
+		}
+	case "Ad":
+		switch fieldName {
+		case "adset_id", "creative", "status":
+			return true
+		}
+	case "Targeting":
+		switch fieldName {
+		case "geo_locations":
+			return true
+		}
+	}
+
+	return requiredFields[fieldName]
 }

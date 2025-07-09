@@ -4,8 +4,8 @@ package generated
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
-	"log"
 	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
@@ -14,288 +14,289 @@ import (
 
 // list_ad_set_activitiesArgs defines the typed arguments for list_ad_set_activities
 type list_ad_set_activitiesArgs struct {
-	ID         string   `json:"id"`
-	Fields     []string `json:"fields,omitempty"`
-	Limit      int      `json:"limit,omitempty"`
-	After      string   `json:"after,omitempty"`
-	Before     string   `json:"before,omitempty"`
-	BusinessId string   `json:"business_id,omitempty"`
-	Category   string   `json:"category,omitempty"`
-	Since      string   `json:"since,omitempty"`
-	Uid        int      `json:"uid,omitempty"`
-	Until      string   `json:"until,omitempty"`
+	ID         string   `json:"id" jsonschema:"required,description=AdSet ID,pattern=^[0-9]+$"`
+	Fields     []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
+	Limit      int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
+	After      string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
+	Before     string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
+	BusinessId string   `json:"business_id,omitempty" jsonschema:"description=ID of the Business,pattern=^[0-9]+$"`
+	Category   string   `json:"category,omitempty" jsonschema:"description=Category"`
+	Since      string   `json:"since,omitempty" jsonschema:"description=Since,format=date-time"`
+	Uid        int      `json:"uid,omitempty" jsonschema:"description=Uid"`
+	Until      string   `json:"until,omitempty" jsonschema:"description=Until,format=date-time"`
 }
 
 // list_ad_set_ad_studiesArgs defines the typed arguments for list_ad_set_ad_studies
 type list_ad_set_ad_studiesArgs struct {
-	ID     string   `json:"id"`
-	Fields []string `json:"fields,omitempty"`
-	Limit  int      `json:"limit,omitempty"`
-	After  string   `json:"after,omitempty"`
-	Before string   `json:"before,omitempty"`
+	ID     string   `json:"id" jsonschema:"required,description=AdSet ID,pattern=^[0-9]+$"`
+	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
+	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
+	After  string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
+	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
 }
 
 // list_ad_set_adcreativesArgs defines the typed arguments for list_ad_set_adcreatives
 type list_ad_set_adcreativesArgs struct {
-	ID     string   `json:"id"`
-	Fields []string `json:"fields,omitempty"`
-	Limit  int      `json:"limit,omitempty"`
-	After  string   `json:"after,omitempty"`
-	Before string   `json:"before,omitempty"`
+	ID     string   `json:"id" jsonschema:"required,description=AdSet ID,pattern=^[0-9]+$"`
+	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
+	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
+	After  string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
+	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
 }
 
 // remove_adlabels_from_ad_setArgs defines the typed arguments for remove_adlabels_from_ad_set
 type remove_adlabels_from_ad_setArgs struct {
-	ID               string     `json:"id"`
-	Adlabels         []*AdLabel `json:"adlabels"`
-	ExecutionOptions []string   `json:"execution_options,omitempty"`
+	ID               string     `json:"id" jsonschema:"required,description=AdSet ID,pattern=^[0-9]+$"`
+	Adlabels         []*AdLabel `json:"adlabels" jsonschema:"description=Adlabels,required"`
+	ExecutionOptions []string   `json:"execution_options,omitempty" jsonschema:"description=Execution Options"`
 }
 
 // create_ad_set_adlabelArgs defines the typed arguments for create_ad_set_adlabel
 type create_ad_set_adlabelArgs struct {
-	ID               string     `json:"id"`
-	Adlabels         []*AdLabel `json:"adlabels"`
-	ExecutionOptions []string   `json:"execution_options,omitempty"`
+	ID               string     `json:"id" jsonschema:"required,description=AdSet ID,pattern=^[0-9]+$"`
+	Adlabels         []*AdLabel `json:"adlabels" jsonschema:"description=Adlabels,required"`
+	ExecutionOptions []string   `json:"execution_options,omitempty" jsonschema:"description=Execution Options"`
 }
 
 // get_ad_set_adrules_governedArgs defines the typed arguments for get_ad_set_adrules_governed
 type get_ad_set_adrules_governedArgs struct {
-	ID             string   `json:"id"`
-	Fields         []string `json:"fields,omitempty"`
-	Limit          int      `json:"limit,omitempty"`
-	After          string   `json:"after,omitempty"`
-	Before         string   `json:"before,omitempty"`
-	PassEvaluation bool     `json:"pass_evaluation,omitempty"`
+	ID             string   `json:"id" jsonschema:"required,description=AdSet ID,pattern=^[0-9]+$"`
+	Fields         []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
+	Limit          int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
+	After          string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
+	Before         string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
+	PassEvaluation bool     `json:"pass_evaluation,omitempty" jsonschema:"description=Pass Evaluation"`
 }
 
 // list_ad_set_adsArgs defines the typed arguments for list_ad_set_ads
 type list_ad_set_adsArgs struct {
-	ID              string                 `json:"id"`
-	Fields          []string               `json:"fields,omitempty"`
-	Limit           int                    `json:"limit,omitempty"`
-	After           string                 `json:"after,omitempty"`
-	Before          string                 `json:"before,omitempty"`
-	DatePreset      string                 `json:"date_preset,omitempty"`
-	EffectiveStatus []string               `json:"effective_status,omitempty"`
-	TimeRange       map[string]interface{} `json:"time_range,omitempty"`
-	UpdatedSince    int                    `json:"updated_since,omitempty"`
+	ID              string                 `json:"id" jsonschema:"required,description=AdSet ID,pattern=^[0-9]+$"`
+	Fields          []string               `json:"fields,omitempty" jsonschema:"description=Fields to return"`
+	Limit           int                    `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
+	After           string                 `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
+	Before          string                 `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
+	DatePreset      string                 `json:"date_preset,omitempty" jsonschema:"description=Date Preset"`
+	EffectiveStatus []string               `json:"effective_status,omitempty" jsonschema:"description=Effective Status"`
+	TimeRange       map[string]interface{} `json:"time_range,omitempty" jsonschema:"description=Time Range"`
+	UpdatedSince    int                    `json:"updated_since,omitempty" jsonschema:"description=When last updated"`
 }
 
 // list_ad_set_asyncadrequestsArgs defines the typed arguments for list_ad_set_asyncadrequests
 type list_ad_set_asyncadrequestsArgs struct {
-	ID       string   `json:"id"`
-	Fields   []string `json:"fields,omitempty"`
-	Limit    int      `json:"limit,omitempty"`
-	After    string   `json:"after,omitempty"`
-	Before   string   `json:"before,omitempty"`
-	Statuses []string `json:"statuses,omitempty"`
+	ID       string   `json:"id" jsonschema:"required,description=AdSet ID,pattern=^[0-9]+$"`
+	Fields   []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
+	Limit    int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
+	After    string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
+	Before   string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
+	Statuses []string `json:"statuses,omitempty" jsonschema:"description=Statuses"`
 }
 
 // create_ad_set_budget_scheduleArgs defines the typed arguments for create_ad_set_budget_schedule
 type create_ad_set_budget_scheduleArgs struct {
-	ID              string `json:"id"`
-	BudgetValue     int    `json:"budget_value"`
-	BudgetValueType string `json:"budget_value_type"`
-	TimeEnd         int    `json:"time_end"`
-	TimeStart       int    `json:"time_start"`
+	ID              string `json:"id" jsonschema:"required,description=AdSet ID,pattern=^[0-9]+$"`
+	BudgetValue     int    `json:"budget_value" jsonschema:"description=Budget Value,required,minimum=1"`
+	BudgetValueType string `json:"budget_value_type" jsonschema:"description=Budget Value Type,required"`
+	TimeEnd         int    `json:"time_end" jsonschema:"description=Time End,required"`
+	TimeStart       int    `json:"time_start" jsonschema:"description=Time Start,required"`
 }
 
 // list_ad_set_copiesArgs defines the typed arguments for list_ad_set_copies
 type list_ad_set_copiesArgs struct {
-	ID              string                 `json:"id"`
-	Fields          []string               `json:"fields,omitempty"`
-	Limit           int                    `json:"limit,omitempty"`
-	After           string                 `json:"after,omitempty"`
-	Before          string                 `json:"before,omitempty"`
-	DatePreset      string                 `json:"date_preset,omitempty"`
-	EffectiveStatus []string               `json:"effective_status,omitempty"`
-	IsCompleted     bool                   `json:"is_completed,omitempty"`
-	TimeRange       map[string]interface{} `json:"time_range,omitempty"`
+	ID              string                 `json:"id" jsonschema:"required,description=AdSet ID,pattern=^[0-9]+$"`
+	Fields          []string               `json:"fields,omitempty" jsonschema:"description=Fields to return"`
+	Limit           int                    `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
+	After           string                 `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
+	Before          string                 `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
+	DatePreset      string                 `json:"date_preset,omitempty" jsonschema:"description=Date Preset"`
+	EffectiveStatus []string               `json:"effective_status,omitempty" jsonschema:"description=Effective Status"`
+	IsCompleted     bool                   `json:"is_completed,omitempty" jsonschema:"description=Is Completed"`
+	TimeRange       map[string]interface{} `json:"time_range,omitempty" jsonschema:"description=Time Range"`
 }
 
 // create_ad_set_copieArgs defines the typed arguments for create_ad_set_copie
 type create_ad_set_copieArgs struct {
-	ID             string                 `json:"id"`
-	CampaignId     string                 `json:"campaign_id,omitempty"`
-	CreateDcoAdset bool                   `json:"create_dco_adset,omitempty"`
-	DeepCopy       bool                   `json:"deep_copy,omitempty"`
-	EndTime        string                 `json:"end_time,omitempty"`
-	RenameOptions  map[string]interface{} `json:"rename_options,omitempty"`
-	StartTime      string                 `json:"start_time,omitempty"`
-	StatusOption   string                 `json:"status_option,omitempty"`
+	ID             string                 `json:"id" jsonschema:"required,description=AdSet ID,pattern=^[0-9]+$"`
+	CampaignId     string                 `json:"campaign_id,omitempty" jsonschema:"description=ID of the Campaign,pattern=^[0-9]+$"`
+	CreateDcoAdset bool                   `json:"create_dco_adset,omitempty" jsonschema:"description=Create Dco Adset"`
+	DeepCopy       bool                   `json:"deep_copy,omitempty" jsonschema:"description=Deep Copy"`
+	EndTime        string                 `json:"end_time,omitempty" jsonschema:"description=End Time,format=date-time"`
+	RenameOptions  map[string]interface{} `json:"rename_options,omitempty" jsonschema:"description=Rename Options"`
+	StartTime      string                 `json:"start_time,omitempty" jsonschema:"description=Start Time,format=date-time"`
+	StatusOption   string                 `json:"status_option,omitempty" jsonschema:"description=Status Option"`
 }
 
 // get_ad_set_delivery_estimateArgs defines the typed arguments for get_ad_set_delivery_estimate
 type get_ad_set_delivery_estimateArgs struct {
-	ID               string            `json:"id"`
-	Fields           []string          `json:"fields,omitempty"`
-	Limit            int               `json:"limit,omitempty"`
-	After            string            `json:"after,omitempty"`
-	Before           string            `json:"before,omitempty"`
-	OptimizationGoal string            `json:"optimization_goal,omitempty"`
-	PromotedObject   *AdPromotedObject `json:"promoted_object,omitempty"`
-	TargetingSpec    *Targeting        `json:"targeting_spec,omitempty"`
+	ID               string            `json:"id" jsonschema:"required,description=AdSet ID,pattern=^[0-9]+$"`
+	Fields           []string          `json:"fields,omitempty" jsonschema:"description=Fields to return"`
+	Limit            int               `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
+	After            string            `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
+	Before           string            `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
+	OptimizationGoal string            `json:"optimization_goal,omitempty" jsonschema:"description=Optimization Goal"`
+	PromotedObject   *AdPromotedObject `json:"promoted_object,omitempty" jsonschema:"description=Promoted Object"`
+	TargetingSpec    *Targeting        `json:"targeting_spec,omitempty" jsonschema:"description=Targeting Spec"`
 }
 
 // get_ad_set_insightsArgs defines the typed arguments for get_ad_set_insights
 type get_ad_set_insightsArgs struct {
-	ID                           string                   `json:"id"`
-	Fields                       []string                 `json:"fields,omitempty"`
-	Limit                        int                      `json:"limit,omitempty"`
-	After                        string                   `json:"after,omitempty"`
-	Before                       string                   `json:"before,omitempty"`
-	ActionAttributionWindows     []string                 `json:"action_attribution_windows,omitempty"`
-	ActionBreakdowns             []string                 `json:"action_breakdowns,omitempty"`
-	ActionReportTime             string                   `json:"action_report_time,omitempty"`
-	Breakdowns                   []string                 `json:"breakdowns,omitempty"`
-	DatePreset                   string                   `json:"date_preset,omitempty"`
-	DefaultSummary               bool                     `json:"default_summary,omitempty"`
-	ExportColumns                []string                 `json:"export_columns,omitempty"`
-	ExportFormat                 string                   `json:"export_format,omitempty"`
-	ExportName                   string                   `json:"export_name,omitempty"`
-	Filtering                    []map[string]interface{} `json:"filtering,omitempty"`
-	Level                        string                   `json:"level,omitempty"`
-	ProductIdLimit               int                      `json:"product_id_limit,omitempty"`
-	Sort                         []string                 `json:"sort,omitempty"`
-	Summary                      []string                 `json:"summary,omitempty"`
-	SummaryActionBreakdowns      []string                 `json:"summary_action_breakdowns,omitempty"`
-	TimeIncrement                string                   `json:"time_increment,omitempty"`
-	TimeRange                    map[string]interface{}   `json:"time_range,omitempty"`
-	TimeRanges                   []map[string]interface{} `json:"time_ranges,omitempty"`
-	UseAccountAttributionSetting bool                     `json:"use_account_attribution_setting,omitempty"`
-	UseUnifiedAttributionSetting bool                     `json:"use_unified_attribution_setting,omitempty"`
+	ID                           string                   `json:"id" jsonschema:"required,description=AdSet ID,pattern=^[0-9]+$"`
+	Fields                       []string                 `json:"fields,omitempty" jsonschema:"description=Fields to return"`
+	Limit                        int                      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
+	After                        string                   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
+	Before                       string                   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
+	ActionAttributionWindows     []string                 `json:"action_attribution_windows,omitempty" jsonschema:"description=Action Attribution Windows"`
+	ActionBreakdowns             []string                 `json:"action_breakdowns,omitempty" jsonschema:"description=Action Breakdowns"`
+	ActionReportTime             string                   `json:"action_report_time,omitempty" jsonschema:"description=Action Report Time"`
+	Breakdowns                   []string                 `json:"breakdowns,omitempty" jsonschema:"description=Breakdowns"`
+	DatePreset                   string                   `json:"date_preset,omitempty" jsonschema:"description=Date Preset"`
+	DefaultSummary               bool                     `json:"default_summary,omitempty" jsonschema:"description=Default Summary"`
+	ExportColumns                []string                 `json:"export_columns,omitempty" jsonschema:"description=Export Columns"`
+	ExportFormat                 string                   `json:"export_format,omitempty" jsonschema:"description=Export Format"`
+	ExportName                   string                   `json:"export_name,omitempty" jsonschema:"description=Export Name"`
+	Filtering                    []map[string]interface{} `json:"filtering,omitempty" jsonschema:"description=Filtering"`
+	Level                        string                   `json:"level,omitempty" jsonschema:"description=Level"`
+	ProductIdLimit               int                      `json:"product_id_limit,omitempty" jsonschema:"description=Product ID Limit,pattern=^[0-9]+$"`
+	Sort                         []string                 `json:"sort,omitempty" jsonschema:"description=Sort"`
+	Summary                      []string                 `json:"summary,omitempty" jsonschema:"description=Summary"`
+	SummaryActionBreakdowns      []string                 `json:"summary_action_breakdowns,omitempty" jsonschema:"description=Summary Action Breakdowns"`
+	TimeIncrement                string                   `json:"time_increment,omitempty" jsonschema:"description=Time Increment"`
+	TimeRange                    map[string]interface{}   `json:"time_range,omitempty" jsonschema:"description=Time Range"`
+	TimeRanges                   []map[string]interface{} `json:"time_ranges,omitempty" jsonschema:"description=Time Ranges"`
+	UseAccountAttributionSetting bool                     `json:"use_account_attribution_setting,omitempty" jsonschema:"description=Use Account Attribution Setting"`
+	UseUnifiedAttributionSetting bool                     `json:"use_unified_attribution_setting,omitempty" jsonschema:"description=Use Unified Attribution Setting"`
 }
 
 // create_ad_set_insights_reportArgs defines the typed arguments for create_ad_set_insights_report
 type create_ad_set_insights_reportArgs struct {
-	ID                           string                   `json:"id"`
-	ActionAttributionWindows     []string                 `json:"action_attribution_windows,omitempty"`
-	ActionBreakdowns             []string                 `json:"action_breakdowns,omitempty"`
-	ActionReportTime             string                   `json:"action_report_time,omitempty"`
-	Breakdowns                   []string                 `json:"breakdowns,omitempty"`
-	DatePreset                   string                   `json:"date_preset,omitempty"`
-	DefaultSummary               bool                     `json:"default_summary,omitempty"`
-	ExportColumns                []string                 `json:"export_columns,omitempty"`
-	ExportFormat                 string                   `json:"export_format,omitempty"`
-	ExportName                   string                   `json:"export_name,omitempty"`
-	Fields                       []string                 `json:"fields,omitempty"`
-	Filtering                    []map[string]interface{} `json:"filtering,omitempty"`
-	Level                        string                   `json:"level,omitempty"`
-	Limit                        int                      `json:"limit,omitempty"`
-	ProductIdLimit               int                      `json:"product_id_limit,omitempty"`
-	Sort                         []string                 `json:"sort,omitempty"`
-	Summary                      []string                 `json:"summary,omitempty"`
-	SummaryActionBreakdowns      []string                 `json:"summary_action_breakdowns,omitempty"`
-	TimeIncrement                string                   `json:"time_increment,omitempty"`
-	TimeRange                    map[string]interface{}   `json:"time_range,omitempty"`
-	TimeRanges                   []map[string]interface{} `json:"time_ranges,omitempty"`
-	UseAccountAttributionSetting bool                     `json:"use_account_attribution_setting,omitempty"`
-	UseUnifiedAttributionSetting bool                     `json:"use_unified_attribution_setting,omitempty"`
+	ID                           string                   `json:"id" jsonschema:"required,description=AdSet ID,pattern=^[0-9]+$"`
+	ActionAttributionWindows     []string                 `json:"action_attribution_windows,omitempty" jsonschema:"description=Action Attribution Windows"`
+	ActionBreakdowns             []string                 `json:"action_breakdowns,omitempty" jsonschema:"description=Action Breakdowns"`
+	ActionReportTime             string                   `json:"action_report_time,omitempty" jsonschema:"description=Action Report Time"`
+	Breakdowns                   []string                 `json:"breakdowns,omitempty" jsonschema:"description=Breakdowns"`
+	DatePreset                   string                   `json:"date_preset,omitempty" jsonschema:"description=Date Preset"`
+	DefaultSummary               bool                     `json:"default_summary,omitempty" jsonschema:"description=Default Summary"`
+	ExportColumns                []string                 `json:"export_columns,omitempty" jsonschema:"description=Export Columns"`
+	ExportFormat                 string                   `json:"export_format,omitempty" jsonschema:"description=Export Format"`
+	ExportName                   string                   `json:"export_name,omitempty" jsonschema:"description=Export Name"`
+	Fields                       []string                 `json:"fields,omitempty" jsonschema:"description=Fields"`
+	Filtering                    []map[string]interface{} `json:"filtering,omitempty" jsonschema:"description=Filtering"`
+	Level                        string                   `json:"level,omitempty" jsonschema:"description=Level"`
+	Limit                        int                      `json:"limit,omitempty" jsonschema:"description=Limit"`
+	ProductIdLimit               int                      `json:"product_id_limit,omitempty" jsonschema:"description=Product ID Limit,pattern=^[0-9]+$"`
+	Sort                         []string                 `json:"sort,omitempty" jsonschema:"description=Sort"`
+	Summary                      []string                 `json:"summary,omitempty" jsonschema:"description=Summary"`
+	SummaryActionBreakdowns      []string                 `json:"summary_action_breakdowns,omitempty" jsonschema:"description=Summary Action Breakdowns"`
+	TimeIncrement                string                   `json:"time_increment,omitempty" jsonschema:"description=Time Increment"`
+	TimeRange                    map[string]interface{}   `json:"time_range,omitempty" jsonschema:"description=Time Range"`
+	TimeRanges                   []map[string]interface{} `json:"time_ranges,omitempty" jsonschema:"description=Time Ranges"`
+	UseAccountAttributionSetting bool                     `json:"use_account_attribution_setting,omitempty" jsonschema:"description=Use Account Attribution Setting"`
+	UseUnifiedAttributionSetting bool                     `json:"use_unified_attribution_setting,omitempty" jsonschema:"description=Use Unified Attribution Setting"`
 }
 
 // get_ad_set_message_delivery_estimateArgs defines the typed arguments for get_ad_set_message_delivery_estimate
 type get_ad_set_message_delivery_estimateArgs struct {
-	Fields               []string          `json:"fields,omitempty"`
-	Limit                int               `json:"limit,omitempty"`
-	After                string            `json:"after,omitempty"`
-	Before               string            `json:"before,omitempty"`
-	BidAmount            int               `json:"bid_amount,omitempty"`
-	DailyBudget          int               `json:"daily_budget,omitempty"`
-	IsDirectSendCampaign bool              `json:"is_direct_send_campaign,omitempty"`
-	LifetimeBudget       int               `json:"lifetime_budget,omitempty"`
-	LifetimeInDays       int               `json:"lifetime_in_days,omitempty"`
-	OptimizationGoal     string            `json:"optimization_goal,omitempty"`
-	PacingType           string            `json:"pacing_type,omitempty"`
-	PromotedObject       *AdPromotedObject `json:"promoted_object,omitempty"`
-	TargetingSpec        *Targeting        `json:"targeting_spec,omitempty"`
+	Fields               []string          `json:"fields,omitempty" jsonschema:"description=Fields to return"`
+	Limit                int               `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
+	After                string            `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
+	Before               string            `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
+	BidAmount            int               `json:"bid_amount,omitempty" jsonschema:"description=Bid Amount,minimum=1"`
+	DailyBudget          int               `json:"daily_budget,omitempty" jsonschema:"description=Daily Budget,minimum=1"`
+	IsDirectSendCampaign bool              `json:"is_direct_send_campaign,omitempty" jsonschema:"description=Is Direct Send Campaign"`
+	LifetimeBudget       int               `json:"lifetime_budget,omitempty" jsonschema:"description=Lifetime Budget,minimum=1"`
+	LifetimeInDays       int               `json:"lifetime_in_days,omitempty" jsonschema:"description=Lifetime In Days"`
+	OptimizationGoal     string            `json:"optimization_goal,omitempty" jsonschema:"description=Optimization Goal"`
+	PacingType           string            `json:"pacing_type,omitempty" jsonschema:"description=Pacing Type"`
+	PromotedObject       *AdPromotedObject `json:"promoted_object,omitempty" jsonschema:"description=Promoted Object"`
+	TargetingSpec        *Targeting        `json:"targeting_spec,omitempty" jsonschema:"description=Targeting Spec"`
 }
 
 // list_ad_set_targetingsentencelinesArgs defines the typed arguments for list_ad_set_targetingsentencelines
 type list_ad_set_targetingsentencelinesArgs struct {
-	ID     string   `json:"id"`
-	Fields []string `json:"fields,omitempty"`
-	Limit  int      `json:"limit,omitempty"`
-	After  string   `json:"after,omitempty"`
-	Before string   `json:"before,omitempty"`
+	ID     string   `json:"id" jsonschema:"required,description=AdSet ID,pattern=^[0-9]+$"`
+	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
+	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
+	After  string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
+	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
 }
 
 // delete_ad_setArgs defines the typed arguments for delete_ad_set
 type delete_ad_setArgs struct {
-	ID string `json:"id"`
+	ID string `json:"id" jsonschema:"required,description=AdSet ID,pattern=^[0-9]+$"`
 }
 
 // get_ad_setArgs defines the typed arguments for get_ad_set
 type get_ad_setArgs struct {
-	ID          string                 `json:"id"`
-	Fields      []string               `json:"fields,omitempty"`
-	Limit       int                    `json:"limit,omitempty"`
-	After       string                 `json:"after,omitempty"`
-	Before      string                 `json:"before,omitempty"`
-	AmCallTags  map[string]interface{} `json:"am_call_tags,omitempty"`
-	DatePreset  string                 `json:"date_preset,omitempty"`
-	FromAdtable bool                   `json:"from_adtable,omitempty"`
-	TimeRange   map[string]interface{} `json:"time_range,omitempty"`
+	ID          string                 `json:"id" jsonschema:"required,description=AdSet ID,pattern=^[0-9]+$"`
+	Fields      []string               `json:"fields,omitempty" jsonschema:"description=Fields to return"`
+	Limit       int                    `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
+	After       string                 `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
+	Before      string                 `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
+	AmCallTags  map[string]interface{} `json:"am_call_tags,omitempty" jsonschema:"description=Am Call Tags"`
+	DatePreset  string                 `json:"date_preset,omitempty" jsonschema:"description=Date Preset"`
+	FromAdtable bool                   `json:"from_adtable,omitempty" jsonschema:"description=From Adtable"`
+	TimeRange   map[string]interface{} `json:"time_range,omitempty" jsonschema:"description=Time Range"`
 }
 
 // update_ad_setArgs defines the typed arguments for update_ad_set
 type update_ad_setArgs struct {
-	ID                                string                   `json:"id"`
-	AccountId                         string                   `json:"account_id,omitempty"`
-	Adlabels                          []*AdLabel               `json:"adlabels,omitempty"`
-	AdsetSchedule                     []map[string]interface{} `json:"adset_schedule,omitempty"`
-	AttributionSpec                   []map[string]interface{} `json:"attribution_spec,omitempty"`
-	BidAdjustments                    map[string]interface{}   `json:"bid_adjustments,omitempty"`
-	BidAmount                         int                      `json:"bid_amount,omitempty"`
-	BidConstraints                    map[string]interface{}   `json:"bid_constraints,omitempty"`
-	BidStrategy                       string                   `json:"bid_strategy,omitempty"`
-	BillingEvent                      string                   `json:"billing_event,omitempty"`
-	CampaignAttribution               map[string]interface{}   `json:"campaign_attribution,omitempty"`
-	CampaignSpec                      map[string]interface{}   `json:"campaign_spec,omitempty"`
-	CreativeSequence                  []string                 `json:"creative_sequence,omitempty"`
-	CreativeSequenceRepetitionPattern string                   `json:"creative_sequence_repetition_pattern,omitempty"`
-	DailyBudget                       int                      `json:"daily_budget,omitempty"`
-	DailyImps                         int                      `json:"daily_imps,omitempty"`
-	DailyMinSpendTarget               int                      `json:"daily_min_spend_target,omitempty"`
-	DailySpendCap                     int                      `json:"daily_spend_cap,omitempty"`
-	DateFormat                        string                   `json:"date_format,omitempty"`
-	DestinationType                   string                   `json:"destination_type,omitempty"`
-	DsaBeneficiary                    string                   `json:"dsa_beneficiary,omitempty"`
-	DsaPayor                          string                   `json:"dsa_payor,omitempty"`
-	EndTime                           string                   `json:"end_time,omitempty"`
-	ExecutionOptions                  []string                 `json:"execution_options,omitempty"`
-	ExistingCustomerBudgetPercentage  int                      `json:"existing_customer_budget_percentage,omitempty"`
-	FullFunnelExplorationMode         string                   `json:"full_funnel_exploration_mode,omitempty"`
-	IsBaSkipDelayedEligible           bool                     `json:"is_ba_skip_delayed_eligible,omitempty"`
-	IsIncrementalAttributionEnabled   bool                     `json:"is_incremental_attribution_enabled,omitempty"`
-	IsSacCfcaTermsCertified           bool                     `json:"is_sac_cfca_terms_certified,omitempty"`
-	LifetimeBudget                    int                      `json:"lifetime_budget,omitempty"`
-	LifetimeImps                      int                      `json:"lifetime_imps,omitempty"`
-	LifetimeMinSpendTarget            int                      `json:"lifetime_min_spend_target,omitempty"`
-	LifetimeSpendCap                  int                      `json:"lifetime_spend_cap,omitempty"`
-	MaxBudgetSpendPercentage          int                      `json:"max_budget_spend_percentage,omitempty"`
-	MinBudgetSpendPercentage          int                      `json:"min_budget_spend_percentage,omitempty"`
-	MultiOptimizationGoalWeight       string                   `json:"multi_optimization_goal_weight,omitempty"`
-	Name                              string                   `json:"name,omitempty"`
-	OptimizationGoal                  string                   `json:"optimization_goal,omitempty"`
-	OptimizationSubEvent              string                   `json:"optimization_sub_event,omitempty"`
-	PacingType                        []string                 `json:"pacing_type,omitempty"`
-	PromotedObject                    *AdPromotedObject        `json:"promoted_object,omitempty"`
-	RbPredictionId                    string                   `json:"rb_prediction_id,omitempty"`
-	RegionalRegulatedCategories       []string                 `json:"regional_regulated_categories,omitempty"`
-	RegionalRegulationIdentities      map[string]interface{}   `json:"regional_regulation_identities,omitempty"`
-	RfPredictionId                    string                   `json:"rf_prediction_id,omitempty"`
-	StartTime                         string                   `json:"start_time,omitempty"`
-	Status                            string                   `json:"status,omitempty"`
-	Targeting                         *Targeting               `json:"targeting,omitempty"`
-	TimeBasedAdRotationIdBlocks       []interface{}            `json:"time_based_ad_rotation_id_blocks,omitempty"`
-	TimeBasedAdRotationIntervals      []interface{}            `json:"time_based_ad_rotation_intervals,omitempty"`
-	TimeStart                         string                   `json:"time_start,omitempty"`
-	TimeStop                          string                   `json:"time_stop,omitempty"`
-	TuneForCategory                   string                   `json:"tune_for_category,omitempty"`
+	ID                                string                   `json:"id" jsonschema:"required,description=AdSet ID,pattern=^[0-9]+$"`
+	AccountId                         string                   `json:"account_id,omitempty" jsonschema:"description=ID of the Account,pattern=^[0-9]+$"`
+	Adlabels                          []*AdLabel               `json:"adlabels,omitempty" jsonschema:"description=Adlabels"`
+	AdsetSchedule                     []map[string]interface{} `json:"adset_schedule,omitempty" jsonschema:"description=Adset Schedule"`
+	AttributionSpec                   []map[string]interface{} `json:"attribution_spec,omitempty" jsonschema:"description=Attribution Spec"`
+	BidAdjustments                    map[string]interface{}   `json:"bid_adjustments,omitempty" jsonschema:"description=Bid Adjustments"`
+	BidAmount                         int                      `json:"bid_amount,omitempty" jsonschema:"description=Bid Amount,minimum=1"`
+	BidConstraints                    map[string]interface{}   `json:"bid_constraints,omitempty" jsonschema:"description=Bid Constraints"`
+	BidStrategy                       string                   `json:"bid_strategy,omitempty" jsonschema:"description=Bid Strategy"`
+	BillingEvent                      string                   `json:"billing_event,omitempty" jsonschema:"description=Billing Event"`
+	CampaignAttribution               map[string]interface{}   `json:"campaign_attribution,omitempty" jsonschema:"description=Campaign Attribution"`
+	CampaignSpec                      map[string]interface{}   `json:"campaign_spec,omitempty" jsonschema:"description=Campaign Spec"`
+	CreativeSequence                  []string                 `json:"creative_sequence,omitempty" jsonschema:"description=Creative Sequence"`
+	CreativeSequenceRepetitionPattern string                   `json:"creative_sequence_repetition_pattern,omitempty" jsonschema:"description=Creative Sequence Repetition Pattern"`
+	DailyBudget                       int                      `json:"daily_budget,omitempty" jsonschema:"description=Daily Budget,minimum=1"`
+	DailyImps                         int                      `json:"daily_imps,omitempty" jsonschema:"description=Daily Imps"`
+	DailyMinSpendTarget               int                      `json:"daily_min_spend_target,omitempty" jsonschema:"description=Daily Min Spend Target"`
+	DailySpendCap                     int                      `json:"daily_spend_cap,omitempty" jsonschema:"description=Daily Spend Cap"`
+	DateFormat                        string                   `json:"date_format,omitempty" jsonschema:"description=Date Format"`
+	DestinationType                   string                   `json:"destination_type,omitempty" jsonschema:"description=Destination Type"`
+	DsaBeneficiary                    string                   `json:"dsa_beneficiary,omitempty" jsonschema:"description=Dsa Beneficiary"`
+	DsaPayor                          string                   `json:"dsa_payor,omitempty" jsonschema:"description=Dsa Payor"`
+	EndTime                           string                   `json:"end_time,omitempty" jsonschema:"description=End Time,format=date-time"`
+	ExecutionOptions                  []string                 `json:"execution_options,omitempty" jsonschema:"description=Execution Options"`
+	ExistingCustomerBudgetPercentage  int                      `json:"existing_customer_budget_percentage,omitempty" jsonschema:"description=Existing Customer Budget Percentage,minimum=13,maximum=100"`
+	FullFunnelExplorationMode         string                   `json:"full_funnel_exploration_mode,omitempty" jsonschema:"description=Full Funnel Exploration Mode"`
+	IsBaSkipDelayedEligible           bool                     `json:"is_ba_skip_delayed_eligible,omitempty" jsonschema:"description=Is Ba Skip Delayed Eligible"`
+	IsIncrementalAttributionEnabled   bool                     `json:"is_incremental_attribution_enabled,omitempty" jsonschema:"description=Is Incremental Attribution Enabled"`
+	IsSacCfcaTermsCertified           bool                     `json:"is_sac_cfca_terms_certified,omitempty" jsonschema:"description=Is Sac Cfca Terms Certified"`
+	LifetimeBudget                    int                      `json:"lifetime_budget,omitempty" jsonschema:"description=Lifetime Budget,minimum=1"`
+	LifetimeImps                      int                      `json:"lifetime_imps,omitempty" jsonschema:"description=Lifetime Imps"`
+	LifetimeMinSpendTarget            int                      `json:"lifetime_min_spend_target,omitempty" jsonschema:"description=Lifetime Min Spend Target"`
+	LifetimeSpendCap                  int                      `json:"lifetime_spend_cap,omitempty" jsonschema:"description=Lifetime Spend Cap"`
+	MaxBudgetSpendPercentage          int                      `json:"max_budget_spend_percentage,omitempty" jsonschema:"description=Max Budget Spend Percentage,minimum=13,maximum=100"`
+	MinBudgetSpendPercentage          int                      `json:"min_budget_spend_percentage,omitempty" jsonschema:"description=Min Budget Spend Percentage,minimum=13,maximum=100"`
+	MultiOptimizationGoalWeight       string                   `json:"multi_optimization_goal_weight,omitempty" jsonschema:"description=Multi Optimization Goal Weight"`
+	Name                              string                   `json:"name,omitempty" jsonschema:"description=Name"`
+	OptimizationGoal                  string                   `json:"optimization_goal,omitempty" jsonschema:"description=Optimization Goal"`
+	OptimizationSubEvent              string                   `json:"optimization_sub_event,omitempty" jsonschema:"description=Optimization Sub Event"`
+	PacingType                        []string                 `json:"pacing_type,omitempty" jsonschema:"description=Pacing Type"`
+	PromotedObject                    *AdPromotedObject        `json:"promoted_object,omitempty" jsonschema:"description=Promoted Object"`
+	RbPredictionId                    string                   `json:"rb_prediction_id,omitempty" jsonschema:"description=ID of the Rb Prediction,pattern=^[0-9]+$"`
+	RegionalRegulatedCategories       []string                 `json:"regional_regulated_categories,omitempty" jsonschema:"description=Regional Regulated Categories"`
+	RegionalRegulationIdentities      map[string]interface{}   `json:"regional_regulation_identities,omitempty" jsonschema:"description=Regional Regulation Identities,pattern=^[0-9]+$"`
+	RfPredictionId                    string                   `json:"rf_prediction_id,omitempty" jsonschema:"description=ID of the Rf Prediction,pattern=^[0-9]+$"`
+	StartTime                         string                   `json:"start_time,omitempty" jsonschema:"description=Start Time,format=date-time"`
+	Status                            string                   `json:"status,omitempty" jsonschema:"description=Status,enum=ACTIVE,enum=PAUSED,enum=DELETED,enum=ARCHIVED"`
+	Targeting                         *Targeting               `json:"targeting,omitempty" jsonschema:"description=Targeting"`
+	TimeBasedAdRotationIdBlocks       []interface{}            `json:"time_based_ad_rotation_id_blocks,omitempty" jsonschema:"description=Time Based Ad Rotation ID Blocks,pattern=^[0-9]+$"`
+	TimeBasedAdRotationIntervals      []interface{}            `json:"time_based_ad_rotation_intervals,omitempty" jsonschema:"description=Time Based Ad Rotation Intervals"`
+	TimeStart                         string                   `json:"time_start,omitempty" jsonschema:"description=Time Start,format=date-time"`
+	TimeStop                          string                   `json:"time_stop,omitempty" jsonschema:"description=Time Stop,format=date-time"`
+	TuneForCategory                   string                   `json:"tune_for_category,omitempty" jsonschema:"description=Tune For Category"`
 }
 
-// ListAdSetActivitiesHandler handles list_ad_set_activities with typed arguments
+// ListAdSetActivitiesHandler handles list_ad_set_activities with raw schema validation
 func ListAdSetActivitiesHandler(ctx context.Context, request mcp.CallToolRequest, args list_ad_set_activitiesArgs) (*mcp.CallToolResult, error) {
+	// Arguments are explicitly passed as typed struct
 
 	// Build query parameters
 	query := BuildQueryParameters()
@@ -308,9 +309,8 @@ func ListAdSetActivitiesHandler(ctx context.Context, request mcp.CallToolRequest
 	if len(args.Fields) > 0 {
 		query.Set("fields", strings.Join(args.Fields, ","))
 	} else {
-		// Use default fields for the return type
+		// Use default fields
 		defaultFields := GetDefaultFields("AdActivity")
-		log.Printf("Using default fields for AdActivity (return type): %v", defaultFields)
 		if len(defaultFields) > 0 {
 			query.Set("fields", strings.Join(defaultFields, ","))
 		}
@@ -362,8 +362,9 @@ func ListAdSetActivitiesHandler(ctx context.Context, request mcp.CallToolRequest
 
 }
 
-// ListAdSetAdStudiesHandler handles list_ad_set_ad_studies with typed arguments
+// ListAdSetAdStudiesHandler handles list_ad_set_ad_studies with raw schema validation
 func ListAdSetAdStudiesHandler(ctx context.Context, request mcp.CallToolRequest, args list_ad_set_ad_studiesArgs) (*mcp.CallToolResult, error) {
+	// Arguments are explicitly passed as typed struct
 
 	// Build query parameters
 	query := BuildQueryParameters()
@@ -376,9 +377,8 @@ func ListAdSetAdStudiesHandler(ctx context.Context, request mcp.CallToolRequest,
 	if len(args.Fields) > 0 {
 		query.Set("fields", strings.Join(args.Fields, ","))
 	} else {
-		// Use default fields for the return type
+		// Use default fields
 		defaultFields := GetDefaultFields("AdStudy")
-		log.Printf("Using default fields for AdStudy (return type): %v", defaultFields)
 		if len(defaultFields) > 0 {
 			query.Set("fields", strings.Join(defaultFields, ","))
 		}
@@ -410,8 +410,9 @@ func ListAdSetAdStudiesHandler(ctx context.Context, request mcp.CallToolRequest,
 
 }
 
-// ListAdSetAdcreativesHandler handles list_ad_set_adcreatives with typed arguments
+// ListAdSetAdcreativesHandler handles list_ad_set_adcreatives with raw schema validation
 func ListAdSetAdcreativesHandler(ctx context.Context, request mcp.CallToolRequest, args list_ad_set_adcreativesArgs) (*mcp.CallToolResult, error) {
+	// Arguments are explicitly passed as typed struct
 
 	// Build query parameters
 	query := BuildQueryParameters()
@@ -424,9 +425,8 @@ func ListAdSetAdcreativesHandler(ctx context.Context, request mcp.CallToolReques
 	if len(args.Fields) > 0 {
 		query.Set("fields", strings.Join(args.Fields, ","))
 	} else {
-		// Use default fields for the return type
+		// Use default fields
 		defaultFields := GetDefaultFields("AdCreative")
-		log.Printf("Using default fields for AdCreative (return type): %v", defaultFields)
 		if len(defaultFields) > 0 {
 			query.Set("fields", strings.Join(defaultFields, ","))
 		}
@@ -458,22 +458,22 @@ func ListAdSetAdcreativesHandler(ctx context.Context, request mcp.CallToolReques
 
 }
 
-// RemoveAdlabelsFromAdSetHandler handles remove_adlabels_from_ad_set with typed arguments
+// RemoveAdlabelsFromAdSetHandler handles remove_adlabels_from_ad_set with raw schema validation
 func RemoveAdlabelsFromAdSetHandler(ctx context.Context, request mcp.CallToolRequest, args remove_adlabels_from_ad_setArgs) (*mcp.CallToolResult, error) {
+	// Arguments are explicitly passed as typed struct
 
 	if args.ID == "" {
 		return mcp.NewToolResultError("id is required"), nil
 	}
 
-	// Build URL and execute
 	url := buildGraphURL(args.ID, "adlabels")
-
 	return ExecuteDELETERequest(ctx, url)
 
 }
 
-// CreateAdSetAdlabelHandler handles create_ad_set_adlabel with typed arguments
+// CreateAdSetAdlabelHandler handles create_ad_set_adlabel with raw schema validation
 func CreateAdSetAdlabelHandler(ctx context.Context, request mcp.CallToolRequest, args create_ad_set_adlabelArgs) (*mcp.CallToolResult, error) {
+	// Arguments are explicitly passed as typed struct
 
 	// Build request body
 	body := make(map[string]interface{})
@@ -499,8 +499,9 @@ func CreateAdSetAdlabelHandler(ctx context.Context, request mcp.CallToolRequest,
 
 }
 
-// GetAdSetAdrulesGovernedHandler handles get_ad_set_adrules_governed with typed arguments
+// GetAdSetAdrulesGovernedHandler handles get_ad_set_adrules_governed with raw schema validation
 func GetAdSetAdrulesGovernedHandler(ctx context.Context, request mcp.CallToolRequest, args get_ad_set_adrules_governedArgs) (*mcp.CallToolResult, error) {
+	// Arguments are explicitly passed as typed struct
 
 	// Build query parameters
 	query := BuildQueryParameters()
@@ -513,9 +514,8 @@ func GetAdSetAdrulesGovernedHandler(ctx context.Context, request mcp.CallToolReq
 	if len(args.Fields) > 0 {
 		query.Set("fields", strings.Join(args.Fields, ","))
 	} else {
-		// Use default fields for the return type
+		// Use default fields
 		defaultFields := GetDefaultFields("AdRule")
-		log.Printf("Using default fields for AdRule (return type): %v", defaultFields)
 		if len(defaultFields) > 0 {
 			query.Set("fields", strings.Join(defaultFields, ","))
 		}
@@ -551,8 +551,9 @@ func GetAdSetAdrulesGovernedHandler(ctx context.Context, request mcp.CallToolReq
 
 }
 
-// ListAdSetAdsHandler handles list_ad_set_ads with typed arguments
+// ListAdSetAdsHandler handles list_ad_set_ads with raw schema validation
 func ListAdSetAdsHandler(ctx context.Context, request mcp.CallToolRequest, args list_ad_set_adsArgs) (*mcp.CallToolResult, error) {
+	// Arguments are explicitly passed as typed struct
 
 	// Build query parameters
 	query := BuildQueryParameters()
@@ -565,9 +566,8 @@ func ListAdSetAdsHandler(ctx context.Context, request mcp.CallToolRequest, args 
 	if len(args.Fields) > 0 {
 		query.Set("fields", strings.Join(args.Fields, ","))
 	} else {
-		// Use default fields for the return type
+		// Use default fields
 		defaultFields := GetDefaultFields("Ad")
-		log.Printf("Using default fields for Ad (return type): %v", defaultFields)
 		if len(defaultFields) > 0 {
 			query.Set("fields", strings.Join(defaultFields, ","))
 		}
@@ -616,8 +616,9 @@ func ListAdSetAdsHandler(ctx context.Context, request mcp.CallToolRequest, args 
 
 }
 
-// ListAdSetAsyncadrequestsHandler handles list_ad_set_asyncadrequests with typed arguments
+// ListAdSetAsyncadrequestsHandler handles list_ad_set_asyncadrequests with raw schema validation
 func ListAdSetAsyncadrequestsHandler(ctx context.Context, request mcp.CallToolRequest, args list_ad_set_asyncadrequestsArgs) (*mcp.CallToolResult, error) {
+	// Arguments are explicitly passed as typed struct
 
 	// Build query parameters
 	query := BuildQueryParameters()
@@ -630,9 +631,8 @@ func ListAdSetAsyncadrequestsHandler(ctx context.Context, request mcp.CallToolRe
 	if len(args.Fields) > 0 {
 		query.Set("fields", strings.Join(args.Fields, ","))
 	} else {
-		// Use default fields for the return type
+		// Use default fields
 		defaultFields := GetDefaultFields("AdAsyncRequest")
-		log.Printf("Using default fields for AdAsyncRequest (return type): %v", defaultFields)
 		if len(defaultFields) > 0 {
 			query.Set("fields", strings.Join(defaultFields, ","))
 		}
@@ -668,8 +668,9 @@ func ListAdSetAsyncadrequestsHandler(ctx context.Context, request mcp.CallToolRe
 
 }
 
-// CreateAdSetBudgetScheduleHandler handles create_ad_set_budget_schedule with typed arguments
+// CreateAdSetBudgetScheduleHandler handles create_ad_set_budget_schedule with raw schema validation
 func CreateAdSetBudgetScheduleHandler(ctx context.Context, request mcp.CallToolRequest, args create_ad_set_budget_scheduleArgs) (*mcp.CallToolResult, error) {
+	// Arguments are explicitly passed as typed struct
 
 	// Build request body
 	body := make(map[string]interface{})
@@ -703,8 +704,9 @@ func CreateAdSetBudgetScheduleHandler(ctx context.Context, request mcp.CallToolR
 
 }
 
-// ListAdSetCopiesHandler handles list_ad_set_copies with typed arguments
+// ListAdSetCopiesHandler handles list_ad_set_copies with raw schema validation
 func ListAdSetCopiesHandler(ctx context.Context, request mcp.CallToolRequest, args list_ad_set_copiesArgs) (*mcp.CallToolResult, error) {
+	// Arguments are explicitly passed as typed struct
 
 	// Build query parameters
 	query := BuildQueryParameters()
@@ -717,9 +719,8 @@ func ListAdSetCopiesHandler(ctx context.Context, request mcp.CallToolRequest, ar
 	if len(args.Fields) > 0 {
 		query.Set("fields", strings.Join(args.Fields, ","))
 	} else {
-		// Use default fields for the return type
+		// Use default fields
 		defaultFields := GetDefaultFields("AdSet")
-		log.Printf("Using default fields for AdSet (return type): %v", defaultFields)
 		if len(defaultFields) > 0 {
 			query.Set("fields", strings.Join(defaultFields, ","))
 		}
@@ -768,8 +769,9 @@ func ListAdSetCopiesHandler(ctx context.Context, request mcp.CallToolRequest, ar
 
 }
 
-// CreateAdSetCopieHandler handles create_ad_set_copie with typed arguments
+// CreateAdSetCopieHandler handles create_ad_set_copie with raw schema validation
 func CreateAdSetCopieHandler(ctx context.Context, request mcp.CallToolRequest, args create_ad_set_copieArgs) (*mcp.CallToolResult, error) {
+	// Arguments are explicitly passed as typed struct
 
 	// Build request body
 	body := make(map[string]interface{})
@@ -811,8 +813,9 @@ func CreateAdSetCopieHandler(ctx context.Context, request mcp.CallToolRequest, a
 
 }
 
-// GetAdSetDeliveryEstimateHandler handles get_ad_set_delivery_estimate with typed arguments
+// GetAdSetDeliveryEstimateHandler handles get_ad_set_delivery_estimate with raw schema validation
 func GetAdSetDeliveryEstimateHandler(ctx context.Context, request mcp.CallToolRequest, args get_ad_set_delivery_estimateArgs) (*mcp.CallToolResult, error) {
+	// Arguments are explicitly passed as typed struct
 
 	// Build query parameters
 	query := BuildQueryParameters()
@@ -825,9 +828,8 @@ func GetAdSetDeliveryEstimateHandler(ctx context.Context, request mcp.CallToolRe
 	if len(args.Fields) > 0 {
 		query.Set("fields", strings.Join(args.Fields, ","))
 	} else {
-		// Use default fields for the return type
+		// Use default fields
 		defaultFields := GetDefaultFields("AdCampaignDeliveryEstimate")
-		log.Printf("Using default fields for AdCampaignDeliveryEstimate (return type): %v", defaultFields)
 		if len(defaultFields) > 0 {
 			query.Set("fields", strings.Join(defaultFields, ","))
 		}
@@ -863,8 +865,9 @@ func GetAdSetDeliveryEstimateHandler(ctx context.Context, request mcp.CallToolRe
 
 }
 
-// GetAdSetInsightsHandler handles get_ad_set_insights with typed arguments
+// GetAdSetInsightsHandler handles get_ad_set_insights with raw schema validation
 func GetAdSetInsightsHandler(ctx context.Context, request mcp.CallToolRequest, args get_ad_set_insightsArgs) (*mcp.CallToolResult, error) {
+	// Arguments are explicitly passed as typed struct
 
 	// Build query parameters
 	query := BuildQueryParameters()
@@ -877,9 +880,8 @@ func GetAdSetInsightsHandler(ctx context.Context, request mcp.CallToolRequest, a
 	if len(args.Fields) > 0 {
 		query.Set("fields", strings.Join(args.Fields, ","))
 	} else {
-		// Use default fields for the return type
+		// Use default fields
 		defaultFields := GetDefaultFields("AdsInsights")
-		log.Printf("Using default fields for AdsInsights (return type): %v", defaultFields)
 		if len(defaultFields) > 0 {
 			query.Set("fields", strings.Join(defaultFields, ","))
 		}
@@ -984,8 +986,9 @@ func GetAdSetInsightsHandler(ctx context.Context, request mcp.CallToolRequest, a
 
 }
 
-// CreateAdSetInsightsReportHandler handles create_ad_set_insights_report with typed arguments
+// CreateAdSetInsightsReportHandler handles create_ad_set_insights_report with raw schema validation
 func CreateAdSetInsightsReportHandler(ctx context.Context, request mcp.CallToolRequest, args create_ad_set_insights_reportArgs) (*mcp.CallToolResult, error) {
+	// Arguments are explicitly passed as typed struct
 
 	// Build request body
 	body := make(map[string]interface{})
@@ -1085,8 +1088,9 @@ func CreateAdSetInsightsReportHandler(ctx context.Context, request mcp.CallToolR
 
 }
 
-// GetAdSetMessageDeliveryEstimateHandler handles get_ad_set_message_delivery_estimate with typed arguments
+// GetAdSetMessageDeliveryEstimateHandler handles get_ad_set_message_delivery_estimate with raw schema validation
 func GetAdSetMessageDeliveryEstimateHandler(ctx context.Context, request mcp.CallToolRequest, args get_ad_set_message_delivery_estimateArgs) (*mcp.CallToolResult, error) {
+	// Arguments are explicitly passed as typed struct
 
 	// Build query parameters
 	query := BuildQueryParameters()
@@ -1095,9 +1099,8 @@ func GetAdSetMessageDeliveryEstimateHandler(ctx context.Context, request mcp.Cal
 	if len(args.Fields) > 0 {
 		query.Set("fields", strings.Join(args.Fields, ","))
 	} else {
-		// Use default fields for the return type
+		// Use default fields
 		defaultFields := GetDefaultFields("MessageDeliveryEstimate")
-		log.Printf("Using default fields for MessageDeliveryEstimate (return type): %v", defaultFields)
 		if len(defaultFields) > 0 {
 			query.Set("fields", strings.Join(defaultFields, ","))
 		}
@@ -1157,8 +1160,9 @@ func GetAdSetMessageDeliveryEstimateHandler(ctx context.Context, request mcp.Cal
 
 }
 
-// ListAdSetTargetingsentencelinesHandler handles list_ad_set_targetingsentencelines with typed arguments
+// ListAdSetTargetingsentencelinesHandler handles list_ad_set_targetingsentencelines with raw schema validation
 func ListAdSetTargetingsentencelinesHandler(ctx context.Context, request mcp.CallToolRequest, args list_ad_set_targetingsentencelinesArgs) (*mcp.CallToolResult, error) {
+	// Arguments are explicitly passed as typed struct
 
 	// Build query parameters
 	query := BuildQueryParameters()
@@ -1171,9 +1175,8 @@ func ListAdSetTargetingsentencelinesHandler(ctx context.Context, request mcp.Cal
 	if len(args.Fields) > 0 {
 		query.Set("fields", strings.Join(args.Fields, ","))
 	} else {
-		// Use default fields for the return type
+		// Use default fields
 		defaultFields := GetDefaultFields("TargetingSentenceLine")
-		log.Printf("Using default fields for TargetingSentenceLine (return type): %v", defaultFields)
 		if len(defaultFields) > 0 {
 			query.Set("fields", strings.Join(defaultFields, ","))
 		}
@@ -1205,22 +1208,22 @@ func ListAdSetTargetingsentencelinesHandler(ctx context.Context, request mcp.Cal
 
 }
 
-// DeleteAdSetHandler handles delete_ad_set with typed arguments
+// DeleteAdSetHandler handles delete_ad_set with raw schema validation
 func DeleteAdSetHandler(ctx context.Context, request mcp.CallToolRequest, args delete_ad_setArgs) (*mcp.CallToolResult, error) {
+	// Arguments are explicitly passed as typed struct
 
 	if args.ID == "" {
 		return mcp.NewToolResultError("id is required"), nil
 	}
 
-	// Build URL and execute
 	url := buildGraphURL(args.ID, "")
-
 	return ExecuteDELETERequest(ctx, url)
 
 }
 
-// GetAdSetHandler handles get_ad_set with typed arguments
+// GetAdSetHandler handles get_ad_set with raw schema validation
 func GetAdSetHandler(ctx context.Context, request mcp.CallToolRequest, args get_ad_setArgs) (*mcp.CallToolResult, error) {
+	// Arguments are explicitly passed as typed struct
 
 	// Build query parameters
 	query := BuildQueryParameters()
@@ -1233,9 +1236,8 @@ func GetAdSetHandler(ctx context.Context, request mcp.CallToolRequest, args get_
 	if len(args.Fields) > 0 {
 		query.Set("fields", strings.Join(args.Fields, ","))
 	} else {
-		// Use default fields for the return type
+		// Use default fields
 		defaultFields := GetDefaultFields("AdSet")
-		log.Printf("Using default fields for AdSet (return type): %v", defaultFields)
 		if len(defaultFields) > 0 {
 			query.Set("fields", strings.Join(defaultFields, ","))
 		}
@@ -1285,8 +1287,9 @@ func GetAdSetHandler(ctx context.Context, request mcp.CallToolRequest, args get_
 
 }
 
-// UpdateAdSetHandler handles update_ad_set with typed arguments
+// UpdateAdSetHandler handles update_ad_set with raw schema validation
 func UpdateAdSetHandler(ctx context.Context, request mcp.CallToolRequest, args update_ad_setArgs) (*mcp.CallToolResult, error) {
+	// Arguments are explicitly passed as typed struct
 
 	// Build request body
 	body := make(map[string]interface{})
@@ -1509,864 +1512,290 @@ func UpdateAdSetHandler(ctx context.Context, request mcp.CallToolRequest, args u
 // RegisterAdSetTools registers all AdSet tools with the MCP server
 func RegisterAdSetTools(s *server.MCPServer) error {
 
-	// Register list_ad_set_activities
-	s.AddTool(
-		mcp.NewTool("list_ad_set_activities",
-			mcp.WithDescription("List activities for this AdSet Returns AdActivity."),
-			mcp.WithString("id",
-				mcp.Required(),
-				mcp.Description("AdSet ID"),
-			),
-			mcp.WithArray("fields",
-				mcp.Description("Fields to return"),
-				mcp.Items(map[string]any{"type": "string"}),
-			),
-			mcp.WithNumber("limit",
-				mcp.Description("Maximum number of results"),
-			),
-			mcp.WithString("after",
-				mcp.Description("Cursor for pagination (next page)"),
-			),
-			mcp.WithString("before",
-				mcp.Description("Cursor for pagination (previous page)"),
-			),
-			mcp.WithString("business_id",
-				mcp.Description("business_id"),
-			),
-			mcp.WithString("category",
-				mcp.Description("category (enum: adcampaignactivities_category_enum_param)"),
-			),
-			mcp.WithString("since",
-				mcp.Description("since"),
-			),
-			mcp.WithNumber("uid",
-				mcp.Description("uid"),
-			),
-			mcp.WithString("until",
-				mcp.Description("until"),
-			),
-		),
-		mcp.NewTypedToolHandler(ListAdSetActivitiesHandler),
+	// Register list_ad_set_activities using raw JSON schema
+	list_ad_set_activitiesTool := mcp.NewToolWithRawSchema(
+		"list_ad_set_activities",
+		"List activities for this AdSet Returns AdActivity.",
+		json.RawMessage(`{"additionalProperties":false,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"business_id":{"description":"ID of the Business","pattern":"^[0-9]+$","type":"string"},"category":{"description":"Category (enum: adcampaignactivities_category_enum_param)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdSet ID","pattern":"^[0-9]+$","type":"string"},"limit":{"description":"Maximum number of results","maximum":100,"minimum":1,"type":"integer"},"since":{"description":"Since","type":"string"},"uid":{"description":"Uid","type":"integer"},"until":{"description":"Until","type":"string"}},"required":["id"],"type":"object"}`),
 	)
+	s.AddTool(list_ad_set_activitiesTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+		// Parse arguments using the built-in type-safe binding
+		var args list_ad_set_activitiesArgs
+		if err := request.BindArguments(&args); err != nil {
+			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
+		}
+		return ListAdSetActivitiesHandler(ctx, request, args)
+	})
 
-	// Register list_ad_set_ad_studies
-	s.AddTool(
-		mcp.NewTool("list_ad_set_ad_studies",
-			mcp.WithDescription("List ad_studies for this AdSet Returns AdStudy."),
-			mcp.WithString("id",
-				mcp.Required(),
-				mcp.Description("AdSet ID"),
-			),
-			mcp.WithArray("fields",
-				mcp.Description("Fields to return"),
-				mcp.Items(map[string]any{"type": "string"}),
-			),
-			mcp.WithNumber("limit",
-				mcp.Description("Maximum number of results"),
-			),
-			mcp.WithString("after",
-				mcp.Description("Cursor for pagination (next page)"),
-			),
-			mcp.WithString("before",
-				mcp.Description("Cursor for pagination (previous page)"),
-			),
-		),
-		mcp.NewTypedToolHandler(ListAdSetAdStudiesHandler),
+	// Register list_ad_set_ad_studies using raw JSON schema
+	list_ad_set_ad_studiesTool := mcp.NewToolWithRawSchema(
+		"list_ad_set_ad_studies",
+		"List ad_studies for this AdSet Returns AdStudy.",
+		json.RawMessage(`{"additionalProperties":false,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdSet ID","pattern":"^[0-9]+$","type":"string"},"limit":{"description":"Maximum number of results","maximum":100,"minimum":1,"type":"integer"}},"required":["id"],"type":"object"}`),
 	)
+	s.AddTool(list_ad_set_ad_studiesTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+		// Parse arguments using the built-in type-safe binding
+		var args list_ad_set_ad_studiesArgs
+		if err := request.BindArguments(&args); err != nil {
+			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
+		}
+		return ListAdSetAdStudiesHandler(ctx, request, args)
+	})
 
-	// Register list_ad_set_adcreatives
-	s.AddTool(
-		mcp.NewTool("list_ad_set_adcreatives",
-			mcp.WithDescription("List adcreatives for this AdSet Returns AdCreative."),
-			mcp.WithString("id",
-				mcp.Required(),
-				mcp.Description("AdSet ID"),
-			),
-			mcp.WithArray("fields",
-				mcp.Description("Fields to return"),
-				mcp.Items(map[string]any{"type": "string"}),
-			),
-			mcp.WithNumber("limit",
-				mcp.Description("Maximum number of results"),
-			),
-			mcp.WithString("after",
-				mcp.Description("Cursor for pagination (next page)"),
-			),
-			mcp.WithString("before",
-				mcp.Description("Cursor for pagination (previous page)"),
-			),
-		),
-		mcp.NewTypedToolHandler(ListAdSetAdcreativesHandler),
+	// Register list_ad_set_adcreatives using raw JSON schema
+	list_ad_set_adcreativesTool := mcp.NewToolWithRawSchema(
+		"list_ad_set_adcreatives",
+		"List adcreatives for this AdSet Returns AdCreative.",
+		json.RawMessage(`{"additionalProperties":false,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdSet ID","pattern":"^[0-9]+$","type":"string"},"limit":{"description":"Maximum number of results","maximum":100,"minimum":1,"type":"integer"}},"required":["id"],"type":"object"}`),
 	)
+	s.AddTool(list_ad_set_adcreativesTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+		// Parse arguments using the built-in type-safe binding
+		var args list_ad_set_adcreativesArgs
+		if err := request.BindArguments(&args); err != nil {
+			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
+		}
+		return ListAdSetAdcreativesHandler(ctx, request, args)
+	})
 
-	// Register remove_adlabels_from_ad_set
-	s.AddTool(
-		mcp.NewTool("remove_adlabels_from_ad_set",
-			mcp.WithDescription("Remove adlabels from this AdSet Required: adlabels"),
-			mcp.WithString("id",
-				mcp.Required(),
-				mcp.Description("AdSet ID"),
-			),
-			mcp.WithArray("adlabels",
-				mcp.Required(),
-				mcp.Description("adlabels"),
-				mcp.Items(map[string]any{"type": "object"}),
-			),
-			mcp.WithArray("execution_options",
-				mcp.Description("execution_options"),
-				mcp.Items(map[string]any{"type": "string"}),
-			),
-		),
-		mcp.NewTypedToolHandler(RemoveAdlabelsFromAdSetHandler),
+	// Register remove_adlabels_from_ad_set using raw JSON schema
+	remove_adlabels_from_ad_setTool := mcp.NewToolWithRawSchema(
+		"remove_adlabels_from_ad_set",
+		"Remove adlabels from this AdSet Required: adlabels",
+		json.RawMessage(`{"additionalProperties":false,"properties":{"adlabels":{"description":"Adlabels","items":{"additionalProperties":true,"type":"object"},"type":"array"},"execution_options":{"description":"Execution Options","items":{"type":"string"},"type":"array"},"id":{"description":"AdSet ID","pattern":"^[0-9]+$","type":"string"}},"required":["id","adlabels"],"type":"object"}`),
 	)
+	s.AddTool(remove_adlabels_from_ad_setTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+		// Parse arguments using the built-in type-safe binding
+		var args remove_adlabels_from_ad_setArgs
+		if err := request.BindArguments(&args); err != nil {
+			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
+		}
+		return RemoveAdlabelsFromAdSetHandler(ctx, request, args)
+	})
 
-	// Register create_ad_set_adlabel
-	s.AddTool(
-		mcp.NewTool("create_ad_set_adlabel",
-			mcp.WithDescription("Associate adlabels with this AdSet Returns AdSet. Required: adlabels"),
-			mcp.WithString("id",
-				mcp.Required(),
-				mcp.Description("AdSet ID"),
-			),
-			mcp.WithArray("adlabels",
-				mcp.Required(),
-				mcp.Description("adlabels"),
-				mcp.Items(map[string]any{"type": "object"}),
-			),
-			mcp.WithArray("execution_options",
-				mcp.Description("execution_options"),
-				mcp.Items(map[string]any{"type": "string"}),
-			),
-		),
-		mcp.NewTypedToolHandler(CreateAdSetAdlabelHandler),
+	// Register create_ad_set_adlabel using raw JSON schema
+	create_ad_set_adlabelTool := mcp.NewToolWithRawSchema(
+		"create_ad_set_adlabel",
+		"Associate adlabels with this AdSet Returns AdSet. Required: adlabels",
+		json.RawMessage(`{"additionalProperties":false,"properties":{"adlabels":{"description":"Adlabels","items":{"additionalProperties":true,"type":"object"},"type":"array"},"execution_options":{"description":"Execution Options","items":{"type":"string"},"type":"array"},"id":{"description":"AdSet ID","pattern":"^[0-9]+$","type":"string"}},"required":["id","adlabels"],"type":"object"}`),
 	)
+	s.AddTool(create_ad_set_adlabelTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+		// Parse arguments using the built-in type-safe binding
+		var args create_ad_set_adlabelArgs
+		if err := request.BindArguments(&args); err != nil {
+			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
+		}
+		return CreateAdSetAdlabelHandler(ctx, request, args)
+	})
 
-	// Register get_ad_set_adrules_governed
-	s.AddTool(
-		mcp.NewTool("get_ad_set_adrules_governed",
-			mcp.WithDescription("Get adrules_governed data for this AdSet Returns AdRule."),
-			mcp.WithString("id",
-				mcp.Required(),
-				mcp.Description("AdSet ID"),
-			),
-			mcp.WithArray("fields",
-				mcp.Description("Fields to return"),
-				mcp.Items(map[string]any{"type": "string"}),
-			),
-			mcp.WithNumber("limit",
-				mcp.Description("Maximum number of results"),
-			),
-			mcp.WithString("after",
-				mcp.Description("Cursor for pagination (next page)"),
-			),
-			mcp.WithString("before",
-				mcp.Description("Cursor for pagination (previous page)"),
-			),
-			mcp.WithBoolean("pass_evaluation",
-				mcp.Description("pass_evaluation"),
-			),
-		),
-		mcp.NewTypedToolHandler(GetAdSetAdrulesGovernedHandler),
+	// Register get_ad_set_adrules_governed using raw JSON schema
+	get_ad_set_adrules_governedTool := mcp.NewToolWithRawSchema(
+		"get_ad_set_adrules_governed",
+		"Get adrules_governed data for this AdSet Returns AdRule.",
+		json.RawMessage(`{"additionalProperties":false,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdSet ID","pattern":"^[0-9]+$","type":"string"},"limit":{"description":"Maximum number of results","maximum":100,"minimum":1,"type":"integer"},"pass_evaluation":{"description":"Pass Evaluation","type":"boolean"}},"required":["id"],"type":"object"}`),
 	)
+	s.AddTool(get_ad_set_adrules_governedTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+		// Parse arguments using the built-in type-safe binding
+		var args get_ad_set_adrules_governedArgs
+		if err := request.BindArguments(&args); err != nil {
+			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
+		}
+		return GetAdSetAdrulesGovernedHandler(ctx, request, args)
+	})
 
-	// Register list_ad_set_ads
-	s.AddTool(
-		mcp.NewTool("list_ad_set_ads",
-			mcp.WithDescription("List ads for this AdSet Returns Ad."),
-			mcp.WithString("id",
-				mcp.Required(),
-				mcp.Description("AdSet ID"),
-			),
-			mcp.WithArray("fields",
-				mcp.Description("Fields to return"),
-				mcp.Items(map[string]any{"type": "string"}),
-			),
-			mcp.WithNumber("limit",
-				mcp.Description("Maximum number of results"),
-			),
-			mcp.WithString("after",
-				mcp.Description("Cursor for pagination (next page)"),
-			),
-			mcp.WithString("before",
-				mcp.Description("Cursor for pagination (previous page)"),
-			),
-			mcp.WithString("date_preset",
-				mcp.Description("date_preset (enum: adcampaignads_date_preset_enum_param)"),
-			),
-			mcp.WithArray("effective_status",
-				mcp.Description("effective_status"),
-				mcp.Items(map[string]any{"type": "string"}),
-			),
-			mcp.WithObject("time_range",
-				mcp.Description("time_range"),
-				mcp.AdditionalProperties(true),
-			),
-			mcp.WithNumber("updated_since",
-				mcp.Description("updated_since"),
-			),
-		),
-		mcp.NewTypedToolHandler(ListAdSetAdsHandler),
+	// Register list_ad_set_ads using raw JSON schema
+	list_ad_set_adsTool := mcp.NewToolWithRawSchema(
+		"list_ad_set_ads",
+		"List ads for this AdSet Returns Ad.",
+		json.RawMessage(`{"additionalProperties":false,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"date_preset":{"description":"Date Preset (enum: adcampaignads_date_preset_enum_param)","type":"string"},"effective_status":{"description":"Effective Status","items":{"type":"string"},"type":"array"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdSet ID","pattern":"^[0-9]+$","type":"string"},"limit":{"description":"Maximum number of results","maximum":100,"minimum":1,"type":"integer"},"time_range":{"description":"Time Range","type":"string"},"updated_since":{"description":"When last updated","type":"integer"}},"required":["id"],"type":"object"}`),
 	)
+	s.AddTool(list_ad_set_adsTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+		// Parse arguments using the built-in type-safe binding
+		var args list_ad_set_adsArgs
+		if err := request.BindArguments(&args); err != nil {
+			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
+		}
+		return ListAdSetAdsHandler(ctx, request, args)
+	})
 
-	// Register list_ad_set_asyncadrequests
-	s.AddTool(
-		mcp.NewTool("list_ad_set_asyncadrequests",
-			mcp.WithDescription("List asyncadrequests for this AdSet Returns AdAsyncRequest."),
-			mcp.WithString("id",
-				mcp.Required(),
-				mcp.Description("AdSet ID"),
-			),
-			mcp.WithArray("fields",
-				mcp.Description("Fields to return"),
-				mcp.Items(map[string]any{"type": "string"}),
-			),
-			mcp.WithNumber("limit",
-				mcp.Description("Maximum number of results"),
-			),
-			mcp.WithString("after",
-				mcp.Description("Cursor for pagination (next page)"),
-			),
-			mcp.WithString("before",
-				mcp.Description("Cursor for pagination (previous page)"),
-			),
-			mcp.WithArray("statuses",
-				mcp.Description("statuses"),
-				mcp.Items(map[string]any{"type": "string"}),
-			),
-		),
-		mcp.NewTypedToolHandler(ListAdSetAsyncadrequestsHandler),
+	// Register list_ad_set_asyncadrequests using raw JSON schema
+	list_ad_set_asyncadrequestsTool := mcp.NewToolWithRawSchema(
+		"list_ad_set_asyncadrequests",
+		"List asyncadrequests for this AdSet Returns AdAsyncRequest.",
+		json.RawMessage(`{"additionalProperties":false,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdSet ID","pattern":"^[0-9]+$","type":"string"},"limit":{"description":"Maximum number of results","maximum":100,"minimum":1,"type":"integer"},"statuses":{"description":"Statuses","items":{"type":"string"},"type":"array"}},"required":["id"],"type":"object"}`),
 	)
+	s.AddTool(list_ad_set_asyncadrequestsTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+		// Parse arguments using the built-in type-safe binding
+		var args list_ad_set_asyncadrequestsArgs
+		if err := request.BindArguments(&args); err != nil {
+			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
+		}
+		return ListAdSetAsyncadrequestsHandler(ctx, request, args)
+	})
 
-	// Register create_ad_set_budget_schedule
-	s.AddTool(
-		mcp.NewTool("create_ad_set_budget_schedule",
-			mcp.WithDescription("Create or update budget_schedules for this AdSet Returns HighDemandPeriod. Required: budget_value, budget_value_type (enum), time_end, time_start"),
-			mcp.WithString("id",
-				mcp.Required(),
-				mcp.Description("AdSet ID"),
-			),
-			mcp.WithNumber("budget_value",
-				mcp.Required(),
-				mcp.Description("budget_value"),
-			),
-			mcp.WithString("budget_value_type",
-				mcp.Required(),
-				mcp.Description("budget_value_type (enum: adcampaignbudget_schedules_budget_value_type_enum_param)"),
-			),
-			mcp.WithNumber("time_end",
-				mcp.Required(),
-				mcp.Description("time_end"),
-			),
-			mcp.WithNumber("time_start",
-				mcp.Required(),
-				mcp.Description("time_start"),
-			),
-		),
-		mcp.NewTypedToolHandler(CreateAdSetBudgetScheduleHandler),
+	// Register create_ad_set_budget_schedule using raw JSON schema
+	create_ad_set_budget_scheduleTool := mcp.NewToolWithRawSchema(
+		"create_ad_set_budget_schedule",
+		"Create or update budget_schedules for this AdSet Returns HighDemandPeriod. Required: budget_value, budget_value_type (enum), time_end, time_start",
+		json.RawMessage(`{"additionalProperties":false,"properties":{"budget_value":{"description":"Budget Value","type":"integer"},"budget_value_type":{"description":"Budget Value Type (enum: adcampaignbudget_schedules_budget_value_type_enum_param)","type":"string"},"id":{"description":"AdSet ID","pattern":"^[0-9]+$","type":"string"},"time_end":{"description":"Time End","type":"integer"},"time_start":{"description":"Time Start","type":"integer"}},"required":["id","budget_value","budget_value_type","time_end","time_start"],"type":"object"}`),
 	)
+	s.AddTool(create_ad_set_budget_scheduleTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+		// Parse arguments using the built-in type-safe binding
+		var args create_ad_set_budget_scheduleArgs
+		if err := request.BindArguments(&args); err != nil {
+			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
+		}
+		return CreateAdSetBudgetScheduleHandler(ctx, request, args)
+	})
 
-	// Register list_ad_set_copies
-	s.AddTool(
-		mcp.NewTool("list_ad_set_copies",
-			mcp.WithDescription("List copies for this AdSet Returns AdSet."),
-			mcp.WithString("id",
-				mcp.Required(),
-				mcp.Description("AdSet ID"),
-			),
-			mcp.WithArray("fields",
-				mcp.Description("Fields to return"),
-				mcp.Items(map[string]any{"type": "string"}),
-			),
-			mcp.WithNumber("limit",
-				mcp.Description("Maximum number of results"),
-			),
-			mcp.WithString("after",
-				mcp.Description("Cursor for pagination (next page)"),
-			),
-			mcp.WithString("before",
-				mcp.Description("Cursor for pagination (previous page)"),
-			),
-			mcp.WithString("date_preset",
-				mcp.Description("date_preset (enum: adcampaigncopies_date_preset_enum_param)"),
-			),
-			mcp.WithArray("effective_status",
-				mcp.Description("effective_status"),
-				mcp.Items(map[string]any{"type": "string"}),
-			),
-			mcp.WithBoolean("is_completed",
-				mcp.Description("is_completed"),
-			),
-			mcp.WithObject("time_range",
-				mcp.Description("time_range"),
-				mcp.AdditionalProperties(true),
-			),
-		),
-		mcp.NewTypedToolHandler(ListAdSetCopiesHandler),
+	// Register list_ad_set_copies using raw JSON schema
+	list_ad_set_copiesTool := mcp.NewToolWithRawSchema(
+		"list_ad_set_copies",
+		"List copies for this AdSet Returns AdSet.",
+		json.RawMessage(`{"additionalProperties":false,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"date_preset":{"description":"Date Preset (enum: adcampaigncopies_date_preset_enum_param)","type":"string"},"effective_status":{"description":"Effective Status","items":{"type":"string"},"type":"array"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdSet ID","pattern":"^[0-9]+$","type":"string"},"is_completed":{"description":"Is Completed","type":"boolean"},"limit":{"description":"Maximum number of results","maximum":100,"minimum":1,"type":"integer"},"time_range":{"description":"Time Range","type":"string"}},"required":["id"],"type":"object"}`),
 	)
+	s.AddTool(list_ad_set_copiesTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+		// Parse arguments using the built-in type-safe binding
+		var args list_ad_set_copiesArgs
+		if err := request.BindArguments(&args); err != nil {
+			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
+		}
+		return ListAdSetCopiesHandler(ctx, request, args)
+	})
 
-	// Register create_ad_set_copie
-	s.AddTool(
-		mcp.NewTool("create_ad_set_copie",
-			mcp.WithDescription("Create a copy of this AdSet Returns AdSet."),
-			mcp.WithString("id",
-				mcp.Required(),
-				mcp.Description("AdSet ID"),
-			),
-			mcp.WithString("campaign_id",
-				mcp.Description("campaign_id"),
-			),
-			mcp.WithBoolean("create_dco_adset",
-				mcp.Description("create_dco_adset"),
-			),
-			mcp.WithBoolean("deep_copy",
-				mcp.Description("deep_copy"),
-			),
-			mcp.WithString("end_time",
-				mcp.Description("end_time"),
-			),
-			mcp.WithObject("rename_options",
-				mcp.Description("rename_options"),
-				mcp.AdditionalProperties(true),
-			),
-			mcp.WithString("start_time",
-				mcp.Description("start_time"),
-			),
-			mcp.WithString("status_option",
-				mcp.Description("status_option (enum: adcampaigncopies_status_option_enum_param)"),
-			),
-		),
-		mcp.NewTypedToolHandler(CreateAdSetCopieHandler),
+	// Register create_ad_set_copie using raw JSON schema
+	create_ad_set_copieTool := mcp.NewToolWithRawSchema(
+		"create_ad_set_copie",
+		"Create a copy of this AdSet Returns AdSet.",
+		json.RawMessage(`{"additionalProperties":false,"properties":{"campaign_id":{"description":"ID of the Campaign","pattern":"^[0-9]+$","type":"string"},"create_dco_adset":{"description":"Create Dco Adset","type":"boolean"},"deep_copy":{"description":"Deep Copy","type":"boolean"},"end_time":{"description":"End Time","type":"string"},"id":{"description":"AdSet ID","pattern":"^[0-9]+$","type":"string"},"rename_options":{"additionalProperties":true,"description":"Rename Options","type":"object"},"start_time":{"description":"Start Time","type":"string"},"status_option":{"description":"Status Option (enum: adcampaigncopies_status_option_enum_param)","type":"string"}},"required":["id"],"type":"object"}`),
 	)
+	s.AddTool(create_ad_set_copieTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+		// Parse arguments using the built-in type-safe binding
+		var args create_ad_set_copieArgs
+		if err := request.BindArguments(&args); err != nil {
+			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
+		}
+		return CreateAdSetCopieHandler(ctx, request, args)
+	})
 
-	// Register get_ad_set_delivery_estimate
-	s.AddTool(
-		mcp.NewTool("get_ad_set_delivery_estimate",
-			mcp.WithDescription("Get delivery_estimate data for this AdSet Returns AdCampaignDeliveryEstimate."),
-			mcp.WithString("id",
-				mcp.Required(),
-				mcp.Description("AdSet ID"),
-			),
-			mcp.WithArray("fields",
-				mcp.Description("Fields to return"),
-				mcp.Items(map[string]any{"type": "string"}),
-			),
-			mcp.WithNumber("limit",
-				mcp.Description("Maximum number of results"),
-			),
-			mcp.WithString("after",
-				mcp.Description("Cursor for pagination (next page)"),
-			),
-			mcp.WithString("before",
-				mcp.Description("Cursor for pagination (previous page)"),
-			),
-			mcp.WithString("optimization_goal",
-				mcp.Description("optimization_goal (enum: adcampaigndelivery_estimate_optimization_goal_enum_param)"),
-			),
-			mcp.WithObject("promoted_object",
-				mcp.Description("promoted_object"),
-				mcp.AdditionalProperties(true),
-			),
-			mcp.WithObject("targeting_spec",
-				mcp.Description("targeting_spec"),
-				mcp.AdditionalProperties(true),
-			),
-		),
-		mcp.NewTypedToolHandler(GetAdSetDeliveryEstimateHandler),
+	// Register get_ad_set_delivery_estimate using raw JSON schema
+	get_ad_set_delivery_estimateTool := mcp.NewToolWithRawSchema(
+		"get_ad_set_delivery_estimate",
+		"Get delivery_estimate data for this AdSet Returns AdCampaignDeliveryEstimate.",
+		json.RawMessage(`{"additionalProperties":false,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdSet ID","pattern":"^[0-9]+$","type":"string"},"limit":{"description":"Maximum number of results","maximum":100,"minimum":1,"type":"integer"},"optimization_goal":{"description":"Optimization Goal (enum: adcampaigndelivery_estimate_optimization_goal_enum_param)","type":"string"},"promoted_object":{"additionalProperties":true,"description":"Promoted Object","type":"object"},"targeting_spec":{"additionalProperties":false,"description":"Targeting object","properties":{"adgroup_id":{"description":"ID of the Adgroup","type":"string"},"age_max":{"description":"Age Max","type":"integer"},"age_min":{"description":"Age Min","type":"integer"},"age_range":{"description":"Age Range","items":{"type":"integer"},"type":"array"},"alternate_auto_targeting_option":{"description":"Alternate Auto Targeting Option","type":"string"},"app_install_state":{"description":"App Install State","type":"string"},"audience_network_positions":{"description":"Audience Network Positions","items":{"type":"string"},"type":"array"},"behaviors":{"description":"Behaviors","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"brand_safety_content_filter_levels":{"description":"Brand Safety Content Filter Levels","items":{"type":"string"},"type":"array"},"catalog_based_targeting":{"additionalProperties":false,"description":"CatalogBasedTargeting object","properties":{"geo_targeting_type":{"description":"Geo Targeting Type","type":"string"}},"type":"object"},"cities":{"description":"Cities","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"college_years":{"description":"College Years","items":{"type":"integer"},"type":"array"},"connections":{"description":"Connections","items":{"additionalProperties":false,"description":"ConnectionsTargeting object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"contextual_targeting_categories":{"description":"Contextual Targeting Categories","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"countries":{"description":"Countries","items":{"type":"string"},"type":"array"},"country":{"description":"Country","items":{"type":"string"},"type":"array"},"country_groups":{"description":"Country Groups","items":{"type":"string"},"type":"array"},"custom_audiences":{"description":"Custom Audiences","items":{"additionalProperties":false,"description":"RawCustomAudience object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"device_platforms":{"description":"Device Platforms","items":{"type":"string"},"type":"array"},"direct_install_devices":{"description":"Direct Install Devices","type":"boolean"},"dynamic_audience_ids":{"description":"Dynamic Audience Ids","items":{"type":"string"},"type":"array"},"education_majors":{"description":"Education Majors","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"education_schools":{"description":"Education Schools","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"education_statuses":{"description":"Education Statuses","items":{"type":"integer"},"type":"array"},"effective_audience_network_positions":{"description":"Effective Audience Network Positions","items":{"type":"string"},"type":"array"},"effective_device_platforms":{"description":"Effective Device Platforms","items":{"type":"string"},"type":"array"},"effective_facebook_positions":{"description":"Effective Facebook Positions","items":{"type":"string"},"type":"array"},"effective_instagram_positions":{"description":"Effective Instagram Positions","items":{"type":"string"},"type":"array"},"effective_messenger_positions":{"description":"Effective Messenger Positions","items":{"type":"string"},"type":"array"},"effective_publisher_platforms":{"description":"Effective Publisher Platforms","items":{"type":"string"},"type":"array"},"effective_threads_positions":{"description":"Effective Threads Positions","items":{"type":"string"},"type":"array"},"engagement_specs":{"description":"Engagement Specs","items":{"additionalProperties":false,"description":"TargetingDynamicRule object","properties":{"action.type":{"description":"Action.Type","type":"string"},"ad_group_id":{"description":"ID of the Ad Group","type":"string"},"campaign_group_id":{"description":"ID of the Campaign Group","type":"string"},"campaign_id":{"description":"ID of the Campaign","type":"string"},"impression_count":{"description":"Impression Count","type":"string"},"page_id":{"description":"ID of the Page","type":"string"},"post":{"description":"Post","type":"string"},"retention_seconds":{"description":"Retention Seconds","type":"string"}},"type":"object"},"type":"array"},"ethnic_affinity":{"description":"Ethnic Affinity","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"exclude_reached_since":{"description":"Exclude Reached Since","items":{"type":"string"},"type":"array"},"excluded_brand_safety_content_types":{"description":"Excluded Brand Safety Content Types","items":{"type":"string"},"type":"array"},"excluded_connections":{"description":"Excluded Connections","items":{"additionalProperties":false,"description":"ConnectionsTargeting object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"excluded_custom_audiences":{"description":"Excluded Custom Audiences","items":{"additionalProperties":false,"description":"RawCustomAudience object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"excluded_dynamic_audience_ids":{"description":"Excluded Dynamic Audience Ids","items":{"type":"string"},"type":"array"},"excluded_engagement_specs":{"description":"Excluded Engagement Specs","items":{"additionalProperties":false,"description":"TargetingDynamicRule object","properties":{"action.type":{"description":"Action.Type","type":"string"},"ad_group_id":{"description":"ID of the Ad Group","type":"string"},"campaign_group_id":{"description":"ID of the Campaign Group","type":"string"},"campaign_id":{"description":"ID of the Campaign","type":"string"},"impression_count":{"description":"Impression Count","type":"string"},"page_id":{"description":"ID of the Page","type":"string"},"post":{"description":"Post","type":"string"},"retention_seconds":{"description":"Retention Seconds","type":"string"}},"type":"object"},"type":"array"},"excluded_geo_locations":{"additionalProperties":false,"description":"TargetingGeoLocation object","properties":{"cities":{"description":"Cities","items":{"additionalProperties":false,"description":"TargetingGeoLocationCity object","properties":{"country":{"description":"Country","type":"string"},"distance_unit":{"description":"Distance Unit","type":"string"},"key":{"description":"Key","type":"string"},"name":{"description":"Name","type":"string"},"radius":{"description":"Radius","type":"integer"},"region":{"description":"Region","type":"string"},"region_id":{"description":"ID of the Region","type":"string"}},"required":["name"],"type":"object"},"type":"array"},"countries":{"description":"Countries","items":{"type":"string"},"type":"array"},"country_groups":{"description":"Country Groups","items":{"type":"string"},"type":"array"},"custom_locations":{"description":"Custom Locations","items":{"additionalProperties":false,"description":"TargetingGeoLocationCustomLocation object","properties":{"address_string":{"description":"Address String","type":"string"},"country":{"description":"Country","type":"string"},"country_group":{"description":"Country Group","type":"string"},"custom_type":{"description":"Custom Type","type":"string"},"distance_unit":{"description":"Distance Unit","type":"string"},"key":{"description":"Key","type":"string"},"latitude":{"description":"Latitude","type":"number"},"longitude":{"description":"Longitude","type":"number"},"max_population":{"description":"Max Population","type":"integer"},"min_population":{"description":"Min Population","type":"integer"},"name":{"description":"Name","type":"string"},"primary_city_id":{"description":"ID of the Primary City","type":"integer"},"radius":{"description":"Radius","type":"number"},"region_id":{"description":"ID of the Region","type":"integer"}},"required":["name"],"type":"object"},"type":"array"},"electoral_districts":{"description":"Electoral Districts","items":{"additionalProperties":false,"description":"TargetingGeoLocationElectoralDistrict object","properties":{"country":{"description":"Country","type":"string"},"deprecation_code":{"description":"Deprecation Code","type":"string"},"electoral_district":{"description":"Electoral District","type":"string"},"key":{"description":"Key","type":"string"},"name":{"description":"Name","type":"string"}},"required":["name"],"type":"object"},"type":"array"},"geo_markets":{"description":"Geo Markets","items":{"additionalProperties":false,"description":"TargetingGeoLocationMarket object","properties":{"country":{"description":"Country","type":"string"},"key":{"description":"Key","type":"string"},"market_type":{"description":"Market Type","type":"string"},"name":{"description":"Name","type":"string"}},"required":["name"],"type":"object"},"type":"array"},"large_geo_areas":{"description":"Large Geo Areas","items":{"additionalProperties":false,"description":"TargetingGeoLocationGeoEntities object","properties":{"country":{"description":"Country","type":"string"},"key":{"description":"Key","type":"string"},"name":{"description":"Name","type":"string"},"region":{"description":"Region","type":"string"},"region_id":{"description":"ID of the Region","type":"string"}},"required":["name"],"type":"object"},"type":"array"},"location_cluster_ids":{"description":"Location Cluster Ids","items":{"additionalProperties":false,"description":"TargetingGeoLocationLocationCluster object","properties":{"key":{"description":"Key","type":"integer"}},"type":"object"},"type":"array"},"location_types":{"description":"Location Types","items":{"type":"string"},"type":"array"},"medium_geo_areas":{"description":"Medium Geo Areas","items":{"additionalProperties":false,"description":"TargetingGeoLocationGeoEntities object","properties":{"country":{"description":"Country","type":"string"},"key":{"description":"Key","type":"string"},"name":{"description":"Name","type":"string"},"region":{"description":"Region","type":"string"},"region_id":{"description":"ID of the Region","type":"string"}},"required":["name"],"type":"object"},"type":"array"},"metro_areas":{"description":"Metro Areas","items":{"additionalProperties":false,"description":"TargetingGeoLocationGeoEntities object","properties":{"country":{"description":"Country","type":"string"},"key":{"description":"Key","type":"string"},"name":{"description":"Name","type":"string"},"region":{"description":"Region","type":"string"},"region_id":{"description":"ID of the Region","type":"string"}},"required":["name"],"type":"object"},"type":"array"},"neighborhoods":{"description":"Neighborhoods","items":{"additionalProperties":false,"description":"TargetingGeoLocationGeoEntities object","properties":{"country":{"description":"Country","type":"string"},"key":{"description":"Key","type":"string"},"name":{"description":"Name","type":"string"},"region":{"description":"Region","type":"string"},"region_id":{"description":"ID of the Region","type":"string"}},"required":["name"],"type":"object"},"type":"array"},"places":{"description":"Places","items":{"additionalProperties":false,"description":"TargetingGeoLocationPlace object","properties":{"country":{"description":"Country","type":"string"},"distance_unit":{"description":"Distance Unit","type":"string"},"key":{"description":"Key","type":"string"},"latitude":{"description":"Latitude","type":"number"},"longitude":{"description":"Longitude","type":"number"},"name":{"description":"Name","type":"string"},"primary_city_id":{"description":"ID of the Primary City","type":"integer"},"radius":{"description":"Radius","type":"number"},"region_id":{"description":"ID of the Region","type":"integer"}},"required":["name"],"type":"object"},"type":"array"},"political_districts":{"description":"Political Districts","items":{"additionalProperties":false,"description":"TargetingGeoLocationPoliticalDistrict object","properties":{"country":{"description":"Country","type":"string"},"key":{"description":"Key","type":"string"},"name":{"description":"Name","type":"string"},"political_district":{"description":"Political District","type":"string"}},"required":["name"],"type":"object"},"type":"array"},"regions":{"description":"Regions","items":{"additionalProperties":false,"description":"TargetingGeoLocationRegion object","properties":{"country":{"description":"Country","type":"string"},"key":{"description":"Key","type":"string"},"name":{"description":"Name","type":"string"}},"required":["name"],"type":"object"},"type":"array"},"small_geo_areas":{"description":"Small Geo Areas","items":{"additionalProperties":false,"description":"TargetingGeoLocationGeoEntities object","properties":{"country":{"description":"Country","type":"string"},"key":{"description":"Key","type":"string"},"name":{"description":"Name","type":"string"},"region":{"description":"Region","type":"string"},"region_id":{"description":"ID of the Region","type":"string"}},"required":["name"],"type":"object"},"type":"array"},"subcities":{"description":"Subcities","items":{"additionalProperties":false,"description":"TargetingGeoLocationGeoEntities object","properties":{"country":{"description":"Country","type":"string"},"key":{"description":"Key","type":"string"},"name":{"description":"Name","type":"string"},"region":{"description":"Region","type":"string"},"region_id":{"description":"ID of the Region","type":"string"}},"required":["name"],"type":"object"},"type":"array"},"subneighborhoods":{"description":"Subneighborhoods","items":{"additionalProperties":false,"description":"TargetingGeoLocationGeoEntities object","properties":{"country":{"description":"Country","type":"string"},"key":{"description":"Key","type":"string"},"name":{"description":"Name","type":"string"},"region":{"description":"Region","type":"string"},"region_id":{"description":"ID of the Region","type":"string"}},"required":["name"],"type":"object"},"type":"array"},"zips":{"description":"Zips","items":{"additionalProperties":false,"description":"TargetingGeoLocationZip object","properties":{"country":{"description":"Country","type":"string"},"key":{"description":"Key","type":"string"},"name":{"description":"Name","type":"string"},"primary_city_id":{"description":"ID of the Primary City","type":"integer"},"region_id":{"description":"ID of the Region","type":"integer"}},"required":["name"],"type":"object"},"type":"array"}},"type":"object"},"excluded_mobile_device_model":{"description":"Excluded Mobile Device Model","items":{"type":"string"},"type":"array"},"excluded_product_audience_specs":{"description":"Excluded Product Audience Specs","items":{"additionalProperties":false,"description":"TargetingProductAudienceSpec object","properties":{"exclusions":{"description":"Exclusions","items":{"additionalProperties":false,"description":"TargetingProductAudienceSubSpec object","properties":{"retention_seconds":{"description":"Retention Seconds","type":"string"},"rule":{"description":"Rule","type":"string"}},"type":"object"},"type":"array"},"inclusions":{"description":"Inclusions","items":{"additionalProperties":false,"description":"TargetingProductAudienceSubSpec object","properties":{"retention_seconds":{"description":"Retention Seconds","type":"string"},"rule":{"description":"Rule","type":"string"}},"type":"object"},"type":"array"},"product_set_id":{"description":"ID of the Product Set","type":"string"}},"type":"object"},"type":"array"},"excluded_publisher_categories":{"description":"Excluded Publisher Categories","items":{"type":"string"},"type":"array"},"excluded_publisher_list_ids":{"description":"Excluded Publisher List Ids","items":{"type":"string"},"type":"array"},"excluded_user_device":{"description":"Excluded User Device","items":{"type":"string"},"type":"array"},"exclusions":{"additionalProperties":false,"description":"FlexibleTargeting object","properties":{"behaviors":{"description":"Behaviors","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"college_years":{"description":"College Years","items":{"type":"integer"},"type":"array"},"connections":{"description":"Connections","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"custom_audiences":{"description":"Custom Audiences","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"education_majors":{"description":"Education Majors","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"education_schools":{"description":"Education Schools","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"education_statuses":{"description":"Education Statuses","items":{"type":"integer"},"type":"array"},"ethnic_affinity":{"description":"Ethnic Affinity","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"family_statuses":{"description":"Family Statuses","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"friends_of_connections":{"description":"Friends Of Connections","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"generation":{"description":"Generation","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"home_ownership":{"description":"Home Ownership","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"home_type":{"description":"Home Type","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"home_value":{"description":"Home Value","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"household_composition":{"description":"Household Composition","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"income":{"description":"Income","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"industries":{"description":"Industries","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"interested_in":{"description":"Interested In","items":{"type":"integer"},"type":"array"},"interests":{"description":"Interests","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"life_events":{"description":"Life Events","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"moms":{"description":"Moms","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"net_worth":{"description":"Net Worth","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"office_type":{"description":"Office Type","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"politics":{"description":"Politics","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"relationship_statuses":{"description":"Relationship Statuses","items":{"type":"integer"},"type":"array"},"user_adclusters":{"description":"User Adclusters","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"work_employers":{"description":"Work Employers","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"work_positions":{"description":"Work Positions","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"}},"type":"object"},"facebook_positions":{"description":"Facebook Positions","items":{"type":"string"},"type":"array"},"family_statuses":{"description":"Family Statuses","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"fb_deal_id":{"description":"ID of the Fb Deal","type":"string"},"flexible_spec":{"description":"Flexible Spec","items":{"additionalProperties":false,"description":"FlexibleTargeting object","properties":{"behaviors":{"description":"Behaviors","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"college_years":{"description":"College Years","items":{"type":"integer"},"type":"array"},"connections":{"description":"Connections","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"custom_audiences":{"description":"Custom Audiences","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"education_majors":{"description":"Education Majors","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"education_schools":{"description":"Education Schools","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"education_statuses":{"description":"Education Statuses","items":{"type":"integer"},"type":"array"},"ethnic_affinity":{"description":"Ethnic Affinity","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"family_statuses":{"description":"Family Statuses","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"friends_of_connections":{"description":"Friends Of Connections","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"generation":{"description":"Generation","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"home_ownership":{"description":"Home Ownership","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"home_type":{"description":"Home Type","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"home_value":{"description":"Home Value","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"household_composition":{"description":"Household Composition","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"income":{"description":"Income","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"industries":{"description":"Industries","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"interested_in":{"description":"Interested In","items":{"type":"integer"},"type":"array"},"interests":{"description":"Interests","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"life_events":{"description":"Life Events","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"moms":{"description":"Moms","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"net_worth":{"description":"Net Worth","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"office_type":{"description":"Office Type","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"politics":{"description":"Politics","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"relationship_statuses":{"description":"Relationship Statuses","items":{"type":"integer"},"type":"array"},"user_adclusters":{"description":"User Adclusters","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"work_employers":{"description":"Work Employers","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"work_positions":{"description":"Work Positions","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"}},"type":"object"},"type":"array"},"friends_of_connections":{"description":"Friends Of Connections","items":{"additionalProperties":false,"description":"ConnectionsTargeting object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"genders":{"description":"Genders","items":{"type":"integer"},"type":"array"},"generation":{"description":"Generation","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"geo_locations":{"additionalProperties":false,"description":"TargetingGeoLocation object","properties":{"cities":{"description":"Cities","items":{"additionalProperties":false,"description":"TargetingGeoLocationCity object","properties":{"country":{"description":"Country","type":"string"},"distance_unit":{"description":"Distance Unit","type":"string"},"key":{"description":"Key","type":"string"},"name":{"description":"Name","type":"string"},"radius":{"description":"Radius","type":"integer"},"region":{"description":"Region","type":"string"},"region_id":{"description":"ID of the Region","type":"string"}},"required":["name"],"type":"object"},"type":"array"},"countries":{"description":"Countries","items":{"type":"string"},"type":"array"},"country_groups":{"description":"Country Groups","items":{"type":"string"},"type":"array"},"custom_locations":{"description":"Custom Locations","items":{"additionalProperties":false,"description":"TargetingGeoLocationCustomLocation object","properties":{"address_string":{"description":"Address String","type":"string"},"country":{"description":"Country","type":"string"},"country_group":{"description":"Country Group","type":"string"},"custom_type":{"description":"Custom Type","type":"string"},"distance_unit":{"description":"Distance Unit","type":"string"},"key":{"description":"Key","type":"string"},"latitude":{"description":"Latitude","type":"number"},"longitude":{"description":"Longitude","type":"number"},"max_population":{"description":"Max Population","type":"integer"},"min_population":{"description":"Min Population","type":"integer"},"name":{"description":"Name","type":"string"},"primary_city_id":{"description":"ID of the Primary City","type":"integer"},"radius":{"description":"Radius","type":"number"},"region_id":{"description":"ID of the Region","type":"integer"}},"required":["name"],"type":"object"},"type":"array"},"electoral_districts":{"description":"Electoral Districts","items":{"additionalProperties":false,"description":"TargetingGeoLocationElectoralDistrict object","properties":{"country":{"description":"Country","type":"string"},"deprecation_code":{"description":"Deprecation Code","type":"string"},"electoral_district":{"description":"Electoral District","type":"string"},"key":{"description":"Key","type":"string"},"name":{"description":"Name","type":"string"}},"required":["name"],"type":"object"},"type":"array"},"geo_markets":{"description":"Geo Markets","items":{"additionalProperties":false,"description":"TargetingGeoLocationMarket object","properties":{"country":{"description":"Country","type":"string"},"key":{"description":"Key","type":"string"},"market_type":{"description":"Market Type","type":"string"},"name":{"description":"Name","type":"string"}},"required":["name"],"type":"object"},"type":"array"},"large_geo_areas":{"description":"Large Geo Areas","items":{"additionalProperties":false,"description":"TargetingGeoLocationGeoEntities object","properties":{"country":{"description":"Country","type":"string"},"key":{"description":"Key","type":"string"},"name":{"description":"Name","type":"string"},"region":{"description":"Region","type":"string"},"region_id":{"description":"ID of the Region","type":"string"}},"required":["name"],"type":"object"},"type":"array"},"location_cluster_ids":{"description":"Location Cluster Ids","items":{"additionalProperties":false,"description":"TargetingGeoLocationLocationCluster object","properties":{"key":{"description":"Key","type":"integer"}},"type":"object"},"type":"array"},"location_types":{"description":"Location Types","items":{"type":"string"},"type":"array"},"medium_geo_areas":{"description":"Medium Geo Areas","items":{"additionalProperties":false,"description":"TargetingGeoLocationGeoEntities object","properties":{"country":{"description":"Country","type":"string"},"key":{"description":"Key","type":"string"},"name":{"description":"Name","type":"string"},"region":{"description":"Region","type":"string"},"region_id":{"description":"ID of the Region","type":"string"}},"required":["name"],"type":"object"},"type":"array"},"metro_areas":{"description":"Metro Areas","items":{"additionalProperties":false,"description":"TargetingGeoLocationGeoEntities object","properties":{"country":{"description":"Country","type":"string"},"key":{"description":"Key","type":"string"},"name":{"description":"Name","type":"string"},"region":{"description":"Region","type":"string"},"region_id":{"description":"ID of the Region","type":"string"}},"required":["name"],"type":"object"},"type":"array"},"neighborhoods":{"description":"Neighborhoods","items":{"additionalProperties":false,"description":"TargetingGeoLocationGeoEntities object","properties":{"country":{"description":"Country","type":"string"},"key":{"description":"Key","type":"string"},"name":{"description":"Name","type":"string"},"region":{"description":"Region","type":"string"},"region_id":{"description":"ID of the Region","type":"string"}},"required":["name"],"type":"object"},"type":"array"},"places":{"description":"Places","items":{"additionalProperties":false,"description":"TargetingGeoLocationPlace object","properties":{"country":{"description":"Country","type":"string"},"distance_unit":{"description":"Distance Unit","type":"string"},"key":{"description":"Key","type":"string"},"latitude":{"description":"Latitude","type":"number"},"longitude":{"description":"Longitude","type":"number"},"name":{"description":"Name","type":"string"},"primary_city_id":{"description":"ID of the Primary City","type":"integer"},"radius":{"description":"Radius","type":"number"},"region_id":{"description":"ID of the Region","type":"integer"}},"required":["name"],"type":"object"},"type":"array"},"political_districts":{"description":"Political Districts","items":{"additionalProperties":false,"description":"TargetingGeoLocationPoliticalDistrict object","properties":{"country":{"description":"Country","type":"string"},"key":{"description":"Key","type":"string"},"name":{"description":"Name","type":"string"},"political_district":{"description":"Political District","type":"string"}},"required":["name"],"type":"object"},"type":"array"},"regions":{"description":"Regions","items":{"additionalProperties":false,"description":"TargetingGeoLocationRegion object","properties":{"country":{"description":"Country","type":"string"},"key":{"description":"Key","type":"string"},"name":{"description":"Name","type":"string"}},"required":["name"],"type":"object"},"type":"array"},"small_geo_areas":{"description":"Small Geo Areas","items":{"additionalProperties":false,"description":"TargetingGeoLocationGeoEntities object","properties":{"country":{"description":"Country","type":"string"},"key":{"description":"Key","type":"string"},"name":{"description":"Name","type":"string"},"region":{"description":"Region","type":"string"},"region_id":{"description":"ID of the Region","type":"string"}},"required":["name"],"type":"object"},"type":"array"},"subcities":{"description":"Subcities","items":{"additionalProperties":false,"description":"TargetingGeoLocationGeoEntities object","properties":{"country":{"description":"Country","type":"string"},"key":{"description":"Key","type":"string"},"name":{"description":"Name","type":"string"},"region":{"description":"Region","type":"string"},"region_id":{"description":"ID of the Region","type":"string"}},"required":["name"],"type":"object"},"type":"array"},"subneighborhoods":{"description":"Subneighborhoods","items":{"additionalProperties":false,"description":"TargetingGeoLocationGeoEntities object","properties":{"country":{"description":"Country","type":"string"},"key":{"description":"Key","type":"string"},"name":{"description":"Name","type":"string"},"region":{"description":"Region","type":"string"},"region_id":{"description":"ID of the Region","type":"string"}},"required":["name"],"type":"object"},"type":"array"},"zips":{"description":"Zips","items":{"additionalProperties":false,"description":"TargetingGeoLocationZip object","properties":{"country":{"description":"Country","type":"string"},"key":{"description":"Key","type":"string"},"name":{"description":"Name","type":"string"},"primary_city_id":{"description":"ID of the Primary City","type":"integer"},"region_id":{"description":"ID of the Region","type":"integer"}},"required":["name"],"type":"object"},"type":"array"}},"type":"object"},"home_ownership":{"description":"Home Ownership","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"home_type":{"description":"Home Type","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"home_value":{"description":"Home Value","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"household_composition":{"description":"Household Composition","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"income":{"description":"Income","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"industries":{"description":"Industries","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"instagram_positions":{"description":"Instagram Positions","items":{"type":"string"},"type":"array"},"instream_video_skippable_excluded":{"description":"Instream Video Skippable Excluded","type":"boolean"},"interested_in":{"description":"Interested In","items":{"type":"integer"},"type":"array"},"interests":{"description":"Interests","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"is_whatsapp_destination_ad":{"description":"Is Whatsapp Destination Ad","type":"boolean"},"keywords":{"description":"Keywords","items":{"type":"string"},"type":"array"},"life_events":{"description":"Life Events","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"locales":{"description":"Locales","items":{"type":"integer"},"type":"array"},"messenger_positions":{"description":"Messenger Positions","items":{"type":"string"},"type":"array"},"moms":{"description":"Moms","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"net_worth":{"description":"Net Worth","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"office_type":{"description":"Office Type","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"place_page_set_ids":{"description":"Place Page Set Ids","items":{"type":"string"},"type":"array"},"political_views":{"description":"Political Views","items":{"type":"integer"},"type":"array"},"politics":{"description":"Politics","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"product_audience_specs":{"description":"Product Audience Specs","items":{"additionalProperties":false,"description":"TargetingProductAudienceSpec object","properties":{"exclusions":{"description":"Exclusions","items":{"additionalProperties":false,"description":"TargetingProductAudienceSubSpec object","properties":{"retention_seconds":{"description":"Retention Seconds","type":"string"},"rule":{"description":"Rule","type":"string"}},"type":"object"},"type":"array"},"inclusions":{"description":"Inclusions","items":{"additionalProperties":false,"description":"TargetingProductAudienceSubSpec object","properties":{"retention_seconds":{"description":"Retention Seconds","type":"string"},"rule":{"description":"Rule","type":"string"}},"type":"object"},"type":"array"},"product_set_id":{"description":"ID of the Product Set","type":"string"}},"type":"object"},"type":"array"},"prospecting_audience":{"additionalProperties":false,"description":"TargetingProspectingAudience object","properties":{"sources":{"description":"Sources","items":{"type":"string"},"type":"array"}},"type":"object"},"publisher_platforms":{"description":"Publisher Platforms","items":{"type":"string"},"type":"array"},"radius":{"description":"Radius","type":"string"},"regions":{"description":"Regions","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"relationship_statuses":{"description":"Relationship Statuses","items":{"type":"integer"},"type":"array"},"site_category":{"description":"Site Category","items":{"type":"string"},"type":"array"},"targeting_automation":{"additionalProperties":false,"description":"TargetingAutomation object","properties":{"advantage_audience":{"description":"Advantage Audience","type":"integer"},"individual_setting":{"additionalProperties":true,"description":"Individual Setting","type":"object"},"shared_audiences":{"description":"Shared Audiences","type":"integer"},"value_expression":{"description":"Value Expression","type":"integer"}},"type":"object"},"targeting_optimization":{"description":"Targeting Optimization","type":"string"},"targeting_relaxation_types":{"additionalProperties":false,"description":"TargetingRelaxation object","properties":{"custom_audience":{"description":"Custom Audience","type":"integer"},"lookalike":{"description":"Lookalike","type":"integer"}},"type":"object"},"threads_positions":{"description":"Threads Positions","items":{"type":"string"},"type":"array"},"user_adclusters":{"description":"User Adclusters","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"user_device":{"description":"User Device","items":{"type":"string"},"type":"array"},"user_event":{"description":"User Event","items":{"type":"integer"},"type":"array"},"user_os":{"description":"User Os","items":{"type":"string"},"type":"array"},"wireless_carrier":{"description":"Wireless Carrier","items":{"type":"string"},"type":"array"},"work_employers":{"description":"Work Employers","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"work_positions":{"description":"Work Positions","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"zips":{"description":"Zips","items":{"type":"string"},"type":"array"}},"required":["geo_locations"],"type":"object"}},"required":["id"],"type":"object"}`),
 	)
+	s.AddTool(get_ad_set_delivery_estimateTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+		// Parse arguments using the built-in type-safe binding
+		var args get_ad_set_delivery_estimateArgs
+		if err := request.BindArguments(&args); err != nil {
+			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
+		}
+		return GetAdSetDeliveryEstimateHandler(ctx, request, args)
+	})
 
-	// Register get_ad_set_insights
-	s.AddTool(
-		mcp.NewTool("get_ad_set_insights",
-			mcp.WithDescription("List insights for this AdSet Returns AdsInsights."),
-			mcp.WithString("id",
-				mcp.Required(),
-				mcp.Description("AdSet ID"),
-			),
-			mcp.WithArray("fields",
-				mcp.Description("Fields to return"),
-				mcp.Items(map[string]any{"type": "string"}),
-			),
-			mcp.WithNumber("limit",
-				mcp.Description("Maximum number of results"),
-			),
-			mcp.WithString("after",
-				mcp.Description("Cursor for pagination (next page)"),
-			),
-			mcp.WithString("before",
-				mcp.Description("Cursor for pagination (previous page)"),
-			),
-			mcp.WithArray("action_attribution_windows",
-				mcp.Description("action_attribution_windows"),
-				mcp.Items(map[string]any{"type": "string"}),
-			),
-			mcp.WithArray("action_breakdowns",
-				mcp.Description("action_breakdowns"),
-				mcp.Items(map[string]any{"type": "string"}),
-			),
-			mcp.WithString("action_report_time",
-				mcp.Description("action_report_time (enum: adcampaigninsights_action_report_time_enum_param)"),
-			),
-			mcp.WithArray("breakdowns",
-				mcp.Description("breakdowns"),
-				mcp.Items(map[string]any{"type": "string"}),
-			),
-			mcp.WithString("date_preset",
-				mcp.Description("date_preset (enum: adcampaigninsights_date_preset_enum_param)"),
-			),
-			mcp.WithBoolean("default_summary",
-				mcp.Description("default_summary"),
-			),
-			mcp.WithArray("export_columns",
-				mcp.Description("export_columns"),
-				mcp.Items(map[string]any{"type": "string"}),
-			),
-			mcp.WithString("export_format",
-				mcp.Description("export_format"),
-			),
-			mcp.WithString("export_name",
-				mcp.Description("export_name"),
-			),
-			mcp.WithArray("filtering",
-				mcp.Description("filtering"),
-				mcp.Items(map[string]any{"type": "object"}),
-			),
-			mcp.WithString("level",
-				mcp.Description("level (enum: adcampaigninsights_level_enum_param)"),
-			),
-			mcp.WithNumber("product_id_limit",
-				mcp.Description("product_id_limit"),
-			),
-			mcp.WithArray("sort",
-				mcp.Description("sort"),
-				mcp.Items(map[string]any{"type": "string"}),
-			),
-			mcp.WithArray("summary",
-				mcp.Description("summary"),
-				mcp.Items(map[string]any{"type": "string"}),
-			),
-			mcp.WithArray("summary_action_breakdowns",
-				mcp.Description("summary_action_breakdowns"),
-				mcp.Items(map[string]any{"type": "string"}),
-			),
-			mcp.WithString("time_increment",
-				mcp.Description("time_increment"),
-			),
-			mcp.WithObject("time_range",
-				mcp.Description("time_range"),
-				mcp.AdditionalProperties(true),
-			),
-			mcp.WithArray("time_ranges",
-				mcp.Description("time_ranges"),
-				mcp.Items(map[string]any{"type": "object"}),
-			),
-			mcp.WithBoolean("use_account_attribution_setting",
-				mcp.Description("use_account_attribution_setting"),
-			),
-			mcp.WithBoolean("use_unified_attribution_setting",
-				mcp.Description("use_unified_attribution_setting"),
-			),
-		),
-		mcp.NewTypedToolHandler(GetAdSetInsightsHandler),
+	// Register get_ad_set_insights using raw JSON schema
+	get_ad_set_insightsTool := mcp.NewToolWithRawSchema(
+		"get_ad_set_insights",
+		"List insights for this AdSet Returns AdsInsights.",
+		json.RawMessage(`{"additionalProperties":false,"properties":{"action_attribution_windows":{"description":"Action Attribution Windows","items":{"type":"string"},"type":"array"},"action_breakdowns":{"description":"Action Breakdowns","items":{"type":"string"},"type":"array"},"action_report_time":{"description":"Action Report Time (enum: adcampaigninsights_action_report_time_enum_param)","type":"string"},"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"breakdowns":{"description":"Breakdowns","items":{"type":"string"},"type":"array"},"date_preset":{"description":"Date Preset (enum: adcampaigninsights_date_preset_enum_param)","type":"string"},"default_summary":{"description":"Default Summary","type":"boolean"},"export_columns":{"description":"Export Columns","items":{"type":"string"},"type":"array"},"export_format":{"description":"Export Format","type":"string"},"export_name":{"description":"Export Name","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"filtering":{"description":"Filtering","items":{"additionalProperties":true,"type":"object"},"type":"array"},"id":{"description":"AdSet ID","pattern":"^[0-9]+$","type":"string"},"level":{"description":"Level (enum: adcampaigninsights_level_enum_param)","type":"string"},"limit":{"description":"Maximum number of results","maximum":100,"minimum":1,"type":"integer"},"product_id_limit":{"description":"Product ID Limit","pattern":"^[0-9]+$","type":"integer"},"sort":{"description":"Sort","items":{"type":"string"},"type":"array"},"summary":{"description":"Summary","items":{"type":"string"},"type":"array"},"summary_action_breakdowns":{"description":"Summary Action Breakdowns","items":{"type":"string"},"type":"array"},"time_increment":{"description":"Time Increment","type":"string"},"time_range":{"description":"Time Range","type":"string"},"time_ranges":{"description":"Time Ranges","items":{"additionalProperties":true,"type":"object"},"type":"array"},"use_account_attribution_setting":{"description":"Use Account Attribution Setting","type":"boolean"},"use_unified_attribution_setting":{"description":"Use Unified Attribution Setting","type":"boolean"}},"required":["id"],"type":"object"}`),
 	)
+	s.AddTool(get_ad_set_insightsTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+		// Parse arguments using the built-in type-safe binding
+		var args get_ad_set_insightsArgs
+		if err := request.BindArguments(&args); err != nil {
+			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
+		}
+		return GetAdSetInsightsHandler(ctx, request, args)
+	})
 
-	// Register create_ad_set_insights_report
-	s.AddTool(
-		mcp.NewTool("create_ad_set_insights_report",
-			mcp.WithDescription("Generate an insights report for this AdSet Returns AdReportRun."),
-			mcp.WithString("id",
-				mcp.Required(),
-				mcp.Description("AdSet ID"),
-			),
-			mcp.WithArray("action_attribution_windows",
-				mcp.Description("action_attribution_windows"),
-				mcp.Items(map[string]any{"type": "string"}),
-			),
-			mcp.WithArray("action_breakdowns",
-				mcp.Description("action_breakdowns"),
-				mcp.Items(map[string]any{"type": "string"}),
-			),
-			mcp.WithString("action_report_time",
-				mcp.Description("action_report_time (enum: adcampaigninsights_action_report_time_enum_param)"),
-			),
-			mcp.WithArray("breakdowns",
-				mcp.Description("breakdowns"),
-				mcp.Items(map[string]any{"type": "string"}),
-			),
-			mcp.WithString("date_preset",
-				mcp.Description("date_preset (enum: adcampaigninsights_date_preset_enum_param)"),
-			),
-			mcp.WithBoolean("default_summary",
-				mcp.Description("default_summary"),
-			),
-			mcp.WithArray("export_columns",
-				mcp.Description("export_columns"),
-				mcp.Items(map[string]any{"type": "string"}),
-			),
-			mcp.WithString("export_format",
-				mcp.Description("export_format"),
-			),
-			mcp.WithString("export_name",
-				mcp.Description("export_name"),
-			),
-			mcp.WithArray("fields",
-				mcp.Description("fields"),
-				mcp.Items(map[string]any{"type": "string"}),
-			),
-			mcp.WithArray("filtering",
-				mcp.Description("filtering"),
-				mcp.Items(map[string]any{"type": "object"}),
-			),
-			mcp.WithString("level",
-				mcp.Description("level (enum: adcampaigninsights_level_enum_param)"),
-			),
-			mcp.WithNumber("limit",
-				mcp.Description("limit"),
-			),
-			mcp.WithNumber("product_id_limit",
-				mcp.Description("product_id_limit"),
-			),
-			mcp.WithArray("sort",
-				mcp.Description("sort"),
-				mcp.Items(map[string]any{"type": "string"}),
-			),
-			mcp.WithArray("summary",
-				mcp.Description("summary"),
-				mcp.Items(map[string]any{"type": "string"}),
-			),
-			mcp.WithArray("summary_action_breakdowns",
-				mcp.Description("summary_action_breakdowns"),
-				mcp.Items(map[string]any{"type": "string"}),
-			),
-			mcp.WithString("time_increment",
-				mcp.Description("time_increment"),
-			),
-			mcp.WithObject("time_range",
-				mcp.Description("time_range"),
-				mcp.AdditionalProperties(true),
-			),
-			mcp.WithArray("time_ranges",
-				mcp.Description("time_ranges"),
-				mcp.Items(map[string]any{"type": "object"}),
-			),
-			mcp.WithBoolean("use_account_attribution_setting",
-				mcp.Description("use_account_attribution_setting"),
-			),
-			mcp.WithBoolean("use_unified_attribution_setting",
-				mcp.Description("use_unified_attribution_setting"),
-			),
-		),
-		mcp.NewTypedToolHandler(CreateAdSetInsightsReportHandler),
+	// Register create_ad_set_insights_report using raw JSON schema
+	create_ad_set_insights_reportTool := mcp.NewToolWithRawSchema(
+		"create_ad_set_insights_report",
+		"Generate an insights report for this AdSet Returns AdReportRun.",
+		json.RawMessage(`{"additionalProperties":false,"properties":{"action_attribution_windows":{"description":"Action Attribution Windows","items":{"type":"string"},"type":"array"},"action_breakdowns":{"description":"Action Breakdowns","items":{"type":"string"},"type":"array"},"action_report_time":{"description":"Action Report Time (enum: adcampaigninsights_action_report_time_enum_param)","type":"string"},"breakdowns":{"description":"Breakdowns","items":{"type":"string"},"type":"array"},"date_preset":{"description":"Date Preset (enum: adcampaigninsights_date_preset_enum_param)","type":"string"},"default_summary":{"description":"Default Summary","type":"boolean"},"export_columns":{"description":"Export Columns","items":{"type":"string"},"type":"array"},"export_format":{"description":"Export Format","type":"string"},"export_name":{"description":"Export Name","type":"string"},"fields":{"description":"Fields","items":{"type":"string"},"type":"array"},"filtering":{"description":"Filtering","items":{"additionalProperties":true,"type":"object"},"type":"array"},"id":{"description":"AdSet ID","pattern":"^[0-9]+$","type":"string"},"level":{"description":"Level (enum: adcampaigninsights_level_enum_param)","type":"string"},"limit":{"description":"Limit","type":"integer"},"product_id_limit":{"description":"Product ID Limit","pattern":"^[0-9]+$","type":"integer"},"sort":{"description":"Sort","items":{"type":"string"},"type":"array"},"summary":{"description":"Summary","items":{"type":"string"},"type":"array"},"summary_action_breakdowns":{"description":"Summary Action Breakdowns","items":{"type":"string"},"type":"array"},"time_increment":{"description":"Time Increment","type":"string"},"time_range":{"description":"Time Range","type":"string"},"time_ranges":{"description":"Time Ranges","items":{"additionalProperties":true,"type":"object"},"type":"array"},"use_account_attribution_setting":{"description":"Use Account Attribution Setting","type":"boolean"},"use_unified_attribution_setting":{"description":"Use Unified Attribution Setting","type":"boolean"}},"required":["id"],"type":"object"}`),
 	)
+	s.AddTool(create_ad_set_insights_reportTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+		// Parse arguments using the built-in type-safe binding
+		var args create_ad_set_insights_reportArgs
+		if err := request.BindArguments(&args); err != nil {
+			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
+		}
+		return CreateAdSetInsightsReportHandler(ctx, request, args)
+	})
 
-	// Register get_ad_set_message_delivery_estimate
-	s.AddTool(
-		mcp.NewTool("get_ad_set_message_delivery_estimate",
-			mcp.WithDescription("Get message_delivery_estimate data for this AdSet Returns MessageDeliveryEstimate."),
-			mcp.WithArray("fields",
-				mcp.Description("Fields to return"),
-				mcp.Items(map[string]any{"type": "string"}),
-			),
-			mcp.WithNumber("limit",
-				mcp.Description("Maximum number of results"),
-			),
-			mcp.WithString("after",
-				mcp.Description("Cursor for pagination (next page)"),
-			),
-			mcp.WithString("before",
-				mcp.Description("Cursor for pagination (previous page)"),
-			),
-			mcp.WithNumber("bid_amount",
-				mcp.Description("bid_amount"),
-			),
-			mcp.WithNumber("daily_budget",
-				mcp.Description("daily_budget"),
-			),
-			mcp.WithBoolean("is_direct_send_campaign",
-				mcp.Description("is_direct_send_campaign"),
-			),
-			mcp.WithNumber("lifetime_budget",
-				mcp.Description("lifetime_budget"),
-			),
-			mcp.WithNumber("lifetime_in_days",
-				mcp.Description("lifetime_in_days"),
-			),
-			mcp.WithString("optimization_goal",
-				mcp.Description("optimization_goal (enum: adcampaignmessage_delivery_estimate_optimization_goal_enum_param)"),
-			),
-			mcp.WithString("pacing_type",
-				mcp.Description("pacing_type (enum: adcampaignmessage_delivery_estimate_pacing_type_enum_param)"),
-			),
-			mcp.WithObject("promoted_object",
-				mcp.Description("promoted_object"),
-				mcp.AdditionalProperties(true),
-			),
-			mcp.WithObject("targeting_spec",
-				mcp.Description("targeting_spec"),
-				mcp.AdditionalProperties(true),
-			),
-		),
-		mcp.NewTypedToolHandler(GetAdSetMessageDeliveryEstimateHandler),
+	// Register get_ad_set_message_delivery_estimate using raw JSON schema
+	get_ad_set_message_delivery_estimateTool := mcp.NewToolWithRawSchema(
+		"get_ad_set_message_delivery_estimate",
+		"Get message_delivery_estimate data for this AdSet Returns MessageDeliveryEstimate.",
+		json.RawMessage(`{"additionalProperties":false,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"bid_amount":{"description":"Bid Amount","type":"integer"},"daily_budget":{"description":"Daily Budget","type":"integer"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"is_direct_send_campaign":{"description":"Is Direct Send Campaign","type":"boolean"},"lifetime_budget":{"description":"Lifetime Budget","type":"integer"},"lifetime_in_days":{"description":"Lifetime In Days","type":"integer"},"limit":{"description":"Maximum number of results","maximum":100,"minimum":1,"type":"integer"},"optimization_goal":{"description":"Optimization Goal (enum: adcampaignmessage_delivery_estimate_optimization_goal_enum_param)","type":"string"},"pacing_type":{"description":"Pacing Type (enum: adcampaignmessage_delivery_estimate_pacing_type_enum_param)","type":"string"},"promoted_object":{"additionalProperties":true,"description":"Promoted Object","type":"object"},"targeting_spec":{"additionalProperties":false,"description":"Targeting object","properties":{"adgroup_id":{"description":"ID of the Adgroup","type":"string"},"age_max":{"description":"Age Max","type":"integer"},"age_min":{"description":"Age Min","type":"integer"},"age_range":{"description":"Age Range","items":{"type":"integer"},"type":"array"},"alternate_auto_targeting_option":{"description":"Alternate Auto Targeting Option","type":"string"},"app_install_state":{"description":"App Install State","type":"string"},"audience_network_positions":{"description":"Audience Network Positions","items":{"type":"string"},"type":"array"},"behaviors":{"description":"Behaviors","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"brand_safety_content_filter_levels":{"description":"Brand Safety Content Filter Levels","items":{"type":"string"},"type":"array"},"catalog_based_targeting":{"additionalProperties":false,"description":"CatalogBasedTargeting object","properties":{"geo_targeting_type":{"description":"Geo Targeting Type","type":"string"}},"type":"object"},"cities":{"description":"Cities","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"college_years":{"description":"College Years","items":{"type":"integer"},"type":"array"},"connections":{"description":"Connections","items":{"additionalProperties":false,"description":"ConnectionsTargeting object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"contextual_targeting_categories":{"description":"Contextual Targeting Categories","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"countries":{"description":"Countries","items":{"type":"string"},"type":"array"},"country":{"description":"Country","items":{"type":"string"},"type":"array"},"country_groups":{"description":"Country Groups","items":{"type":"string"},"type":"array"},"custom_audiences":{"description":"Custom Audiences","items":{"additionalProperties":false,"description":"RawCustomAudience object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"device_platforms":{"description":"Device Platforms","items":{"type":"string"},"type":"array"},"direct_install_devices":{"description":"Direct Install Devices","type":"boolean"},"dynamic_audience_ids":{"description":"Dynamic Audience Ids","items":{"type":"string"},"type":"array"},"education_majors":{"description":"Education Majors","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"education_schools":{"description":"Education Schools","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"education_statuses":{"description":"Education Statuses","items":{"type":"integer"},"type":"array"},"effective_audience_network_positions":{"description":"Effective Audience Network Positions","items":{"type":"string"},"type":"array"},"effective_device_platforms":{"description":"Effective Device Platforms","items":{"type":"string"},"type":"array"},"effective_facebook_positions":{"description":"Effective Facebook Positions","items":{"type":"string"},"type":"array"},"effective_instagram_positions":{"description":"Effective Instagram Positions","items":{"type":"string"},"type":"array"},"effective_messenger_positions":{"description":"Effective Messenger Positions","items":{"type":"string"},"type":"array"},"effective_publisher_platforms":{"description":"Effective Publisher Platforms","items":{"type":"string"},"type":"array"},"effective_threads_positions":{"description":"Effective Threads Positions","items":{"type":"string"},"type":"array"},"engagement_specs":{"description":"Engagement Specs","items":{"additionalProperties":false,"description":"TargetingDynamicRule object","properties":{"action.type":{"description":"Action.Type","type":"string"},"ad_group_id":{"description":"ID of the Ad Group","type":"string"},"campaign_group_id":{"description":"ID of the Campaign Group","type":"string"},"campaign_id":{"description":"ID of the Campaign","type":"string"},"impression_count":{"description":"Impression Count","type":"string"},"page_id":{"description":"ID of the Page","type":"string"},"post":{"description":"Post","type":"string"},"retention_seconds":{"description":"Retention Seconds","type":"string"}},"type":"object"},"type":"array"},"ethnic_affinity":{"description":"Ethnic Affinity","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"exclude_reached_since":{"description":"Exclude Reached Since","items":{"type":"string"},"type":"array"},"excluded_brand_safety_content_types":{"description":"Excluded Brand Safety Content Types","items":{"type":"string"},"type":"array"},"excluded_connections":{"description":"Excluded Connections","items":{"additionalProperties":false,"description":"ConnectionsTargeting object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"excluded_custom_audiences":{"description":"Excluded Custom Audiences","items":{"additionalProperties":false,"description":"RawCustomAudience object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"excluded_dynamic_audience_ids":{"description":"Excluded Dynamic Audience Ids","items":{"type":"string"},"type":"array"},"excluded_engagement_specs":{"description":"Excluded Engagement Specs","items":{"additionalProperties":false,"description":"TargetingDynamicRule object","properties":{"action.type":{"description":"Action.Type","type":"string"},"ad_group_id":{"description":"ID of the Ad Group","type":"string"},"campaign_group_id":{"description":"ID of the Campaign Group","type":"string"},"campaign_id":{"description":"ID of the Campaign","type":"string"},"impression_count":{"description":"Impression Count","type":"string"},"page_id":{"description":"ID of the Page","type":"string"},"post":{"description":"Post","type":"string"},"retention_seconds":{"description":"Retention Seconds","type":"string"}},"type":"object"},"type":"array"},"excluded_geo_locations":{"additionalProperties":false,"description":"TargetingGeoLocation object","properties":{"cities":{"description":"Cities","items":{"additionalProperties":false,"description":"TargetingGeoLocationCity object","properties":{"country":{"description":"Country","type":"string"},"distance_unit":{"description":"Distance Unit","type":"string"},"key":{"description":"Key","type":"string"},"name":{"description":"Name","type":"string"},"radius":{"description":"Radius","type":"integer"},"region":{"description":"Region","type":"string"},"region_id":{"description":"ID of the Region","type":"string"}},"required":["name"],"type":"object"},"type":"array"},"countries":{"description":"Countries","items":{"type":"string"},"type":"array"},"country_groups":{"description":"Country Groups","items":{"type":"string"},"type":"array"},"custom_locations":{"description":"Custom Locations","items":{"additionalProperties":false,"description":"TargetingGeoLocationCustomLocation object","properties":{"address_string":{"description":"Address String","type":"string"},"country":{"description":"Country","type":"string"},"country_group":{"description":"Country Group","type":"string"},"custom_type":{"description":"Custom Type","type":"string"},"distance_unit":{"description":"Distance Unit","type":"string"},"key":{"description":"Key","type":"string"},"latitude":{"description":"Latitude","type":"number"},"longitude":{"description":"Longitude","type":"number"},"max_population":{"description":"Max Population","type":"integer"},"min_population":{"description":"Min Population","type":"integer"},"name":{"description":"Name","type":"string"},"primary_city_id":{"description":"ID of the Primary City","type":"integer"},"radius":{"description":"Radius","type":"number"},"region_id":{"description":"ID of the Region","type":"integer"}},"required":["name"],"type":"object"},"type":"array"},"electoral_districts":{"description":"Electoral Districts","items":{"additionalProperties":false,"description":"TargetingGeoLocationElectoralDistrict object","properties":{"country":{"description":"Country","type":"string"},"deprecation_code":{"description":"Deprecation Code","type":"string"},"electoral_district":{"description":"Electoral District","type":"string"},"key":{"description":"Key","type":"string"},"name":{"description":"Name","type":"string"}},"required":["name"],"type":"object"},"type":"array"},"geo_markets":{"description":"Geo Markets","items":{"additionalProperties":false,"description":"TargetingGeoLocationMarket object","properties":{"country":{"description":"Country","type":"string"},"key":{"description":"Key","type":"string"},"market_type":{"description":"Market Type","type":"string"},"name":{"description":"Name","type":"string"}},"required":["name"],"type":"object"},"type":"array"},"large_geo_areas":{"description":"Large Geo Areas","items":{"additionalProperties":false,"description":"TargetingGeoLocationGeoEntities object","properties":{"country":{"description":"Country","type":"string"},"key":{"description":"Key","type":"string"},"name":{"description":"Name","type":"string"},"region":{"description":"Region","type":"string"},"region_id":{"description":"ID of the Region","type":"string"}},"required":["name"],"type":"object"},"type":"array"},"location_cluster_ids":{"description":"Location Cluster Ids","items":{"additionalProperties":false,"description":"TargetingGeoLocationLocationCluster object","properties":{"key":{"description":"Key","type":"integer"}},"type":"object"},"type":"array"},"location_types":{"description":"Location Types","items":{"type":"string"},"type":"array"},"medium_geo_areas":{"description":"Medium Geo Areas","items":{"additionalProperties":false,"description":"TargetingGeoLocationGeoEntities object","properties":{"country":{"description":"Country","type":"string"},"key":{"description":"Key","type":"string"},"name":{"description":"Name","type":"string"},"region":{"description":"Region","type":"string"},"region_id":{"description":"ID of the Region","type":"string"}},"required":["name"],"type":"object"},"type":"array"},"metro_areas":{"description":"Metro Areas","items":{"additionalProperties":false,"description":"TargetingGeoLocationGeoEntities object","properties":{"country":{"description":"Country","type":"string"},"key":{"description":"Key","type":"string"},"name":{"description":"Name","type":"string"},"region":{"description":"Region","type":"string"},"region_id":{"description":"ID of the Region","type":"string"}},"required":["name"],"type":"object"},"type":"array"},"neighborhoods":{"description":"Neighborhoods","items":{"additionalProperties":false,"description":"TargetingGeoLocationGeoEntities object","properties":{"country":{"description":"Country","type":"string"},"key":{"description":"Key","type":"string"},"name":{"description":"Name","type":"string"},"region":{"description":"Region","type":"string"},"region_id":{"description":"ID of the Region","type":"string"}},"required":["name"],"type":"object"},"type":"array"},"places":{"description":"Places","items":{"additionalProperties":false,"description":"TargetingGeoLocationPlace object","properties":{"country":{"description":"Country","type":"string"},"distance_unit":{"description":"Distance Unit","type":"string"},"key":{"description":"Key","type":"string"},"latitude":{"description":"Latitude","type":"number"},"longitude":{"description":"Longitude","type":"number"},"name":{"description":"Name","type":"string"},"primary_city_id":{"description":"ID of the Primary City","type":"integer"},"radius":{"description":"Radius","type":"number"},"region_id":{"description":"ID of the Region","type":"integer"}},"required":["name"],"type":"object"},"type":"array"},"political_districts":{"description":"Political Districts","items":{"additionalProperties":false,"description":"TargetingGeoLocationPoliticalDistrict object","properties":{"country":{"description":"Country","type":"string"},"key":{"description":"Key","type":"string"},"name":{"description":"Name","type":"string"},"political_district":{"description":"Political District","type":"string"}},"required":["name"],"type":"object"},"type":"array"},"regions":{"description":"Regions","items":{"additionalProperties":false,"description":"TargetingGeoLocationRegion object","properties":{"country":{"description":"Country","type":"string"},"key":{"description":"Key","type":"string"},"name":{"description":"Name","type":"string"}},"required":["name"],"type":"object"},"type":"array"},"small_geo_areas":{"description":"Small Geo Areas","items":{"additionalProperties":false,"description":"TargetingGeoLocationGeoEntities object","properties":{"country":{"description":"Country","type":"string"},"key":{"description":"Key","type":"string"},"name":{"description":"Name","type":"string"},"region":{"description":"Region","type":"string"},"region_id":{"description":"ID of the Region","type":"string"}},"required":["name"],"type":"object"},"type":"array"},"subcities":{"description":"Subcities","items":{"additionalProperties":false,"description":"TargetingGeoLocationGeoEntities object","properties":{"country":{"description":"Country","type":"string"},"key":{"description":"Key","type":"string"},"name":{"description":"Name","type":"string"},"region":{"description":"Region","type":"string"},"region_id":{"description":"ID of the Region","type":"string"}},"required":["name"],"type":"object"},"type":"array"},"subneighborhoods":{"description":"Subneighborhoods","items":{"additionalProperties":false,"description":"TargetingGeoLocationGeoEntities object","properties":{"country":{"description":"Country","type":"string"},"key":{"description":"Key","type":"string"},"name":{"description":"Name","type":"string"},"region":{"description":"Region","type":"string"},"region_id":{"description":"ID of the Region","type":"string"}},"required":["name"],"type":"object"},"type":"array"},"zips":{"description":"Zips","items":{"additionalProperties":false,"description":"TargetingGeoLocationZip object","properties":{"country":{"description":"Country","type":"string"},"key":{"description":"Key","type":"string"},"name":{"description":"Name","type":"string"},"primary_city_id":{"description":"ID of the Primary City","type":"integer"},"region_id":{"description":"ID of the Region","type":"integer"}},"required":["name"],"type":"object"},"type":"array"}},"type":"object"},"excluded_mobile_device_model":{"description":"Excluded Mobile Device Model","items":{"type":"string"},"type":"array"},"excluded_product_audience_specs":{"description":"Excluded Product Audience Specs","items":{"additionalProperties":false,"description":"TargetingProductAudienceSpec object","properties":{"exclusions":{"description":"Exclusions","items":{"additionalProperties":false,"description":"TargetingProductAudienceSubSpec object","properties":{"retention_seconds":{"description":"Retention Seconds","type":"string"},"rule":{"description":"Rule","type":"string"}},"type":"object"},"type":"array"},"inclusions":{"description":"Inclusions","items":{"additionalProperties":false,"description":"TargetingProductAudienceSubSpec object","properties":{"retention_seconds":{"description":"Retention Seconds","type":"string"},"rule":{"description":"Rule","type":"string"}},"type":"object"},"type":"array"},"product_set_id":{"description":"ID of the Product Set","type":"string"}},"type":"object"},"type":"array"},"excluded_publisher_categories":{"description":"Excluded Publisher Categories","items":{"type":"string"},"type":"array"},"excluded_publisher_list_ids":{"description":"Excluded Publisher List Ids","items":{"type":"string"},"type":"array"},"excluded_user_device":{"description":"Excluded User Device","items":{"type":"string"},"type":"array"},"exclusions":{"additionalProperties":false,"description":"FlexibleTargeting object","properties":{"behaviors":{"description":"Behaviors","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"college_years":{"description":"College Years","items":{"type":"integer"},"type":"array"},"connections":{"description":"Connections","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"custom_audiences":{"description":"Custom Audiences","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"education_majors":{"description":"Education Majors","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"education_schools":{"description":"Education Schools","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"education_statuses":{"description":"Education Statuses","items":{"type":"integer"},"type":"array"},"ethnic_affinity":{"description":"Ethnic Affinity","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"family_statuses":{"description":"Family Statuses","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"friends_of_connections":{"description":"Friends Of Connections","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"generation":{"description":"Generation","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"home_ownership":{"description":"Home Ownership","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"home_type":{"description":"Home Type","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"home_value":{"description":"Home Value","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"household_composition":{"description":"Household Composition","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"income":{"description":"Income","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"industries":{"description":"Industries","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"interested_in":{"description":"Interested In","items":{"type":"integer"},"type":"array"},"interests":{"description":"Interests","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"life_events":{"description":"Life Events","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"moms":{"description":"Moms","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"net_worth":{"description":"Net Worth","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"office_type":{"description":"Office Type","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"politics":{"description":"Politics","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"relationship_statuses":{"description":"Relationship Statuses","items":{"type":"integer"},"type":"array"},"user_adclusters":{"description":"User Adclusters","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"work_employers":{"description":"Work Employers","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"work_positions":{"description":"Work Positions","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"}},"type":"object"},"facebook_positions":{"description":"Facebook Positions","items":{"type":"string"},"type":"array"},"family_statuses":{"description":"Family Statuses","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"fb_deal_id":{"description":"ID of the Fb Deal","type":"string"},"flexible_spec":{"description":"Flexible Spec","items":{"additionalProperties":false,"description":"FlexibleTargeting object","properties":{"behaviors":{"description":"Behaviors","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"college_years":{"description":"College Years","items":{"type":"integer"},"type":"array"},"connections":{"description":"Connections","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"custom_audiences":{"description":"Custom Audiences","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"education_majors":{"description":"Education Majors","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"education_schools":{"description":"Education Schools","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"education_statuses":{"description":"Education Statuses","items":{"type":"integer"},"type":"array"},"ethnic_affinity":{"description":"Ethnic Affinity","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"family_statuses":{"description":"Family Statuses","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"friends_of_connections":{"description":"Friends Of Connections","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"generation":{"description":"Generation","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"home_ownership":{"description":"Home Ownership","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"home_type":{"description":"Home Type","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"home_value":{"description":"Home Value","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"household_composition":{"description":"Household Composition","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"income":{"description":"Income","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"industries":{"description":"Industries","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"interested_in":{"description":"Interested In","items":{"type":"integer"},"type":"array"},"interests":{"description":"Interests","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"life_events":{"description":"Life Events","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"moms":{"description":"Moms","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"net_worth":{"description":"Net Worth","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"office_type":{"description":"Office Type","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"politics":{"description":"Politics","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"relationship_statuses":{"description":"Relationship Statuses","items":{"type":"integer"},"type":"array"},"user_adclusters":{"description":"User Adclusters","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"work_employers":{"description":"Work Employers","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"work_positions":{"description":"Work Positions","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"}},"type":"object"},"type":"array"},"friends_of_connections":{"description":"Friends Of Connections","items":{"additionalProperties":false,"description":"ConnectionsTargeting object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"genders":{"description":"Genders","items":{"type":"integer"},"type":"array"},"generation":{"description":"Generation","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"geo_locations":{"additionalProperties":false,"description":"TargetingGeoLocation object","properties":{"cities":{"description":"Cities","items":{"additionalProperties":false,"description":"TargetingGeoLocationCity object","properties":{"country":{"description":"Country","type":"string"},"distance_unit":{"description":"Distance Unit","type":"string"},"key":{"description":"Key","type":"string"},"name":{"description":"Name","type":"string"},"radius":{"description":"Radius","type":"integer"},"region":{"description":"Region","type":"string"},"region_id":{"description":"ID of the Region","type":"string"}},"required":["name"],"type":"object"},"type":"array"},"countries":{"description":"Countries","items":{"type":"string"},"type":"array"},"country_groups":{"description":"Country Groups","items":{"type":"string"},"type":"array"},"custom_locations":{"description":"Custom Locations","items":{"additionalProperties":false,"description":"TargetingGeoLocationCustomLocation object","properties":{"address_string":{"description":"Address String","type":"string"},"country":{"description":"Country","type":"string"},"country_group":{"description":"Country Group","type":"string"},"custom_type":{"description":"Custom Type","type":"string"},"distance_unit":{"description":"Distance Unit","type":"string"},"key":{"description":"Key","type":"string"},"latitude":{"description":"Latitude","type":"number"},"longitude":{"description":"Longitude","type":"number"},"max_population":{"description":"Max Population","type":"integer"},"min_population":{"description":"Min Population","type":"integer"},"name":{"description":"Name","type":"string"},"primary_city_id":{"description":"ID of the Primary City","type":"integer"},"radius":{"description":"Radius","type":"number"},"region_id":{"description":"ID of the Region","type":"integer"}},"required":["name"],"type":"object"},"type":"array"},"electoral_districts":{"description":"Electoral Districts","items":{"additionalProperties":false,"description":"TargetingGeoLocationElectoralDistrict object","properties":{"country":{"description":"Country","type":"string"},"deprecation_code":{"description":"Deprecation Code","type":"string"},"electoral_district":{"description":"Electoral District","type":"string"},"key":{"description":"Key","type":"string"},"name":{"description":"Name","type":"string"}},"required":["name"],"type":"object"},"type":"array"},"geo_markets":{"description":"Geo Markets","items":{"additionalProperties":false,"description":"TargetingGeoLocationMarket object","properties":{"country":{"description":"Country","type":"string"},"key":{"description":"Key","type":"string"},"market_type":{"description":"Market Type","type":"string"},"name":{"description":"Name","type":"string"}},"required":["name"],"type":"object"},"type":"array"},"large_geo_areas":{"description":"Large Geo Areas","items":{"additionalProperties":false,"description":"TargetingGeoLocationGeoEntities object","properties":{"country":{"description":"Country","type":"string"},"key":{"description":"Key","type":"string"},"name":{"description":"Name","type":"string"},"region":{"description":"Region","type":"string"},"region_id":{"description":"ID of the Region","type":"string"}},"required":["name"],"type":"object"},"type":"array"},"location_cluster_ids":{"description":"Location Cluster Ids","items":{"additionalProperties":false,"description":"TargetingGeoLocationLocationCluster object","properties":{"key":{"description":"Key","type":"integer"}},"type":"object"},"type":"array"},"location_types":{"description":"Location Types","items":{"type":"string"},"type":"array"},"medium_geo_areas":{"description":"Medium Geo Areas","items":{"additionalProperties":false,"description":"TargetingGeoLocationGeoEntities object","properties":{"country":{"description":"Country","type":"string"},"key":{"description":"Key","type":"string"},"name":{"description":"Name","type":"string"},"region":{"description":"Region","type":"string"},"region_id":{"description":"ID of the Region","type":"string"}},"required":["name"],"type":"object"},"type":"array"},"metro_areas":{"description":"Metro Areas","items":{"additionalProperties":false,"description":"TargetingGeoLocationGeoEntities object","properties":{"country":{"description":"Country","type":"string"},"key":{"description":"Key","type":"string"},"name":{"description":"Name","type":"string"},"region":{"description":"Region","type":"string"},"region_id":{"description":"ID of the Region","type":"string"}},"required":["name"],"type":"object"},"type":"array"},"neighborhoods":{"description":"Neighborhoods","items":{"additionalProperties":false,"description":"TargetingGeoLocationGeoEntities object","properties":{"country":{"description":"Country","type":"string"},"key":{"description":"Key","type":"string"},"name":{"description":"Name","type":"string"},"region":{"description":"Region","type":"string"},"region_id":{"description":"ID of the Region","type":"string"}},"required":["name"],"type":"object"},"type":"array"},"places":{"description":"Places","items":{"additionalProperties":false,"description":"TargetingGeoLocationPlace object","properties":{"country":{"description":"Country","type":"string"},"distance_unit":{"description":"Distance Unit","type":"string"},"key":{"description":"Key","type":"string"},"latitude":{"description":"Latitude","type":"number"},"longitude":{"description":"Longitude","type":"number"},"name":{"description":"Name","type":"string"},"primary_city_id":{"description":"ID of the Primary City","type":"integer"},"radius":{"description":"Radius","type":"number"},"region_id":{"description":"ID of the Region","type":"integer"}},"required":["name"],"type":"object"},"type":"array"},"political_districts":{"description":"Political Districts","items":{"additionalProperties":false,"description":"TargetingGeoLocationPoliticalDistrict object","properties":{"country":{"description":"Country","type":"string"},"key":{"description":"Key","type":"string"},"name":{"description":"Name","type":"string"},"political_district":{"description":"Political District","type":"string"}},"required":["name"],"type":"object"},"type":"array"},"regions":{"description":"Regions","items":{"additionalProperties":false,"description":"TargetingGeoLocationRegion object","properties":{"country":{"description":"Country","type":"string"},"key":{"description":"Key","type":"string"},"name":{"description":"Name","type":"string"}},"required":["name"],"type":"object"},"type":"array"},"small_geo_areas":{"description":"Small Geo Areas","items":{"additionalProperties":false,"description":"TargetingGeoLocationGeoEntities object","properties":{"country":{"description":"Country","type":"string"},"key":{"description":"Key","type":"string"},"name":{"description":"Name","type":"string"},"region":{"description":"Region","type":"string"},"region_id":{"description":"ID of the Region","type":"string"}},"required":["name"],"type":"object"},"type":"array"},"subcities":{"description":"Subcities","items":{"additionalProperties":false,"description":"TargetingGeoLocationGeoEntities object","properties":{"country":{"description":"Country","type":"string"},"key":{"description":"Key","type":"string"},"name":{"description":"Name","type":"string"},"region":{"description":"Region","type":"string"},"region_id":{"description":"ID of the Region","type":"string"}},"required":["name"],"type":"object"},"type":"array"},"subneighborhoods":{"description":"Subneighborhoods","items":{"additionalProperties":false,"description":"TargetingGeoLocationGeoEntities object","properties":{"country":{"description":"Country","type":"string"},"key":{"description":"Key","type":"string"},"name":{"description":"Name","type":"string"},"region":{"description":"Region","type":"string"},"region_id":{"description":"ID of the Region","type":"string"}},"required":["name"],"type":"object"},"type":"array"},"zips":{"description":"Zips","items":{"additionalProperties":false,"description":"TargetingGeoLocationZip object","properties":{"country":{"description":"Country","type":"string"},"key":{"description":"Key","type":"string"},"name":{"description":"Name","type":"string"},"primary_city_id":{"description":"ID of the Primary City","type":"integer"},"region_id":{"description":"ID of the Region","type":"integer"}},"required":["name"],"type":"object"},"type":"array"}},"type":"object"},"home_ownership":{"description":"Home Ownership","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"home_type":{"description":"Home Type","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"home_value":{"description":"Home Value","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"household_composition":{"description":"Household Composition","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"income":{"description":"Income","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"industries":{"description":"Industries","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"instagram_positions":{"description":"Instagram Positions","items":{"type":"string"},"type":"array"},"instream_video_skippable_excluded":{"description":"Instream Video Skippable Excluded","type":"boolean"},"interested_in":{"description":"Interested In","items":{"type":"integer"},"type":"array"},"interests":{"description":"Interests","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"is_whatsapp_destination_ad":{"description":"Is Whatsapp Destination Ad","type":"boolean"},"keywords":{"description":"Keywords","items":{"type":"string"},"type":"array"},"life_events":{"description":"Life Events","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"locales":{"description":"Locales","items":{"type":"integer"},"type":"array"},"messenger_positions":{"description":"Messenger Positions","items":{"type":"string"},"type":"array"},"moms":{"description":"Moms","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"net_worth":{"description":"Net Worth","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"office_type":{"description":"Office Type","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"place_page_set_ids":{"description":"Place Page Set Ids","items":{"type":"string"},"type":"array"},"political_views":{"description":"Political Views","items":{"type":"integer"},"type":"array"},"politics":{"description":"Politics","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"product_audience_specs":{"description":"Product Audience Specs","items":{"additionalProperties":false,"description":"TargetingProductAudienceSpec object","properties":{"exclusions":{"description":"Exclusions","items":{"additionalProperties":false,"description":"TargetingProductAudienceSubSpec object","properties":{"retention_seconds":{"description":"Retention Seconds","type":"string"},"rule":{"description":"Rule","type":"string"}},"type":"object"},"type":"array"},"inclusions":{"description":"Inclusions","items":{"additionalProperties":false,"description":"TargetingProductAudienceSubSpec object","properties":{"retention_seconds":{"description":"Retention Seconds","type":"string"},"rule":{"description":"Rule","type":"string"}},"type":"object"},"type":"array"},"product_set_id":{"description":"ID of the Product Set","type":"string"}},"type":"object"},"type":"array"},"prospecting_audience":{"additionalProperties":false,"description":"TargetingProspectingAudience object","properties":{"sources":{"description":"Sources","items":{"type":"string"},"type":"array"}},"type":"object"},"publisher_platforms":{"description":"Publisher Platforms","items":{"type":"string"},"type":"array"},"radius":{"description":"Radius","type":"string"},"regions":{"description":"Regions","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"relationship_statuses":{"description":"Relationship Statuses","items":{"type":"integer"},"type":"array"},"site_category":{"description":"Site Category","items":{"type":"string"},"type":"array"},"targeting_automation":{"additionalProperties":false,"description":"TargetingAutomation object","properties":{"advantage_audience":{"description":"Advantage Audience","type":"integer"},"individual_setting":{"additionalProperties":true,"description":"Individual Setting","type":"object"},"shared_audiences":{"description":"Shared Audiences","type":"integer"},"value_expression":{"description":"Value Expression","type":"integer"}},"type":"object"},"targeting_optimization":{"description":"Targeting Optimization","type":"string"},"targeting_relaxation_types":{"additionalProperties":false,"description":"TargetingRelaxation object","properties":{"custom_audience":{"description":"Custom Audience","type":"integer"},"lookalike":{"description":"Lookalike","type":"integer"}},"type":"object"},"threads_positions":{"description":"Threads Positions","items":{"type":"string"},"type":"array"},"user_adclusters":{"description":"User Adclusters","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"user_device":{"description":"User Device","items":{"type":"string"},"type":"array"},"user_event":{"description":"User Event","items":{"type":"integer"},"type":"array"},"user_os":{"description":"User Os","items":{"type":"string"},"type":"array"},"wireless_carrier":{"description":"Wireless Carrier","items":{"type":"string"},"type":"array"},"work_employers":{"description":"Work Employers","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"work_positions":{"description":"Work Positions","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"zips":{"description":"Zips","items":{"type":"string"},"type":"array"}},"required":["geo_locations"],"type":"object"}},"required":[],"type":"object"}`),
 	)
+	s.AddTool(get_ad_set_message_delivery_estimateTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+		// Parse arguments using the built-in type-safe binding
+		var args get_ad_set_message_delivery_estimateArgs
+		if err := request.BindArguments(&args); err != nil {
+			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
+		}
+		return GetAdSetMessageDeliveryEstimateHandler(ctx, request, args)
+	})
 
-	// Register list_ad_set_targetingsentencelines
-	s.AddTool(
-		mcp.NewTool("list_ad_set_targetingsentencelines",
-			mcp.WithDescription("List targetingsentencelines for this AdSet Returns TargetingSentenceLine."),
-			mcp.WithString("id",
-				mcp.Required(),
-				mcp.Description("AdSet ID"),
-			),
-			mcp.WithArray("fields",
-				mcp.Description("Fields to return"),
-				mcp.Items(map[string]any{"type": "string"}),
-			),
-			mcp.WithNumber("limit",
-				mcp.Description("Maximum number of results"),
-			),
-			mcp.WithString("after",
-				mcp.Description("Cursor for pagination (next page)"),
-			),
-			mcp.WithString("before",
-				mcp.Description("Cursor for pagination (previous page)"),
-			),
-		),
-		mcp.NewTypedToolHandler(ListAdSetTargetingsentencelinesHandler),
+	// Register list_ad_set_targetingsentencelines using raw JSON schema
+	list_ad_set_targetingsentencelinesTool := mcp.NewToolWithRawSchema(
+		"list_ad_set_targetingsentencelines",
+		"List targetingsentencelines for this AdSet Returns TargetingSentenceLine.",
+		json.RawMessage(`{"additionalProperties":false,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdSet ID","pattern":"^[0-9]+$","type":"string"},"limit":{"description":"Maximum number of results","maximum":100,"minimum":1,"type":"integer"}},"required":["id"],"type":"object"}`),
 	)
+	s.AddTool(list_ad_set_targetingsentencelinesTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+		// Parse arguments using the built-in type-safe binding
+		var args list_ad_set_targetingsentencelinesArgs
+		if err := request.BindArguments(&args); err != nil {
+			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
+		}
+		return ListAdSetTargetingsentencelinesHandler(ctx, request, args)
+	})
 
-	// Register delete_ad_set
-	s.AddTool(
-		mcp.NewTool("delete_ad_set",
-			mcp.WithDescription("Delete a AdSet"),
-			mcp.WithString("id",
-				mcp.Required(),
-				mcp.Description("AdSet ID"),
-			),
-		),
-		mcp.NewTypedToolHandler(DeleteAdSetHandler),
+	// Register delete_ad_set using raw JSON schema
+	delete_ad_setTool := mcp.NewToolWithRawSchema(
+		"delete_ad_set",
+		"Delete a AdSet",
+		json.RawMessage(`{"additionalProperties":false,"properties":{"id":{"description":"AdSet ID","pattern":"^[0-9]+$","type":"string"}},"required":["id"],"type":"object"}`),
 	)
+	s.AddTool(delete_ad_setTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+		// Parse arguments using the built-in type-safe binding
+		var args delete_ad_setArgs
+		if err := request.BindArguments(&args); err != nil {
+			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
+		}
+		return DeleteAdSetHandler(ctx, request, args)
+	})
 
-	// Register get_ad_set
-	s.AddTool(
-		mcp.NewTool("get_ad_set",
-			mcp.WithDescription("Get details of a specific AdSet Returns AdSet."),
-			mcp.WithString("id",
-				mcp.Required(),
-				mcp.Description("AdSet ID"),
-			),
-			mcp.WithArray("fields",
-				mcp.Description("Fields to return"),
-				mcp.Items(map[string]any{"type": "string"}),
-			),
-			mcp.WithNumber("limit",
-				mcp.Description("Maximum number of results"),
-			),
-			mcp.WithString("after",
-				mcp.Description("Cursor for pagination (next page)"),
-			),
-			mcp.WithString("before",
-				mcp.Description("Cursor for pagination (previous page)"),
-			),
-			mcp.WithObject("am_call_tags",
-				mcp.Description("am_call_tags"),
-				mcp.AdditionalProperties(true),
-			),
-			mcp.WithString("date_preset",
-				mcp.Description("date_preset (enum: adcampaign_date_preset)"),
-			),
-			mcp.WithBoolean("from_adtable",
-				mcp.Description("from_adtable"),
-			),
-			mcp.WithObject("time_range",
-				mcp.Description("time_range"),
-				mcp.AdditionalProperties(true),
-			),
-		),
-		mcp.NewTypedToolHandler(GetAdSetHandler),
+	// Register get_ad_set using raw JSON schema
+	get_ad_setTool := mcp.NewToolWithRawSchema(
+		"get_ad_set",
+		"Get details of a specific AdSet Returns AdSet.",
+		json.RawMessage(`{"additionalProperties":false,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"am_call_tags":{"description":"Am Call Tags","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"date_preset":{"description":"Date Preset (enum: adcampaign_date_preset)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"from_adtable":{"description":"From Adtable","type":"boolean"},"id":{"description":"AdSet ID","pattern":"^[0-9]+$","type":"string"},"limit":{"description":"Maximum number of results","maximum":100,"minimum":1,"type":"integer"},"time_range":{"description":"Time Range","type":"string"}},"required":["id"],"type":"object"}`),
 	)
+	s.AddTool(get_ad_setTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+		// Parse arguments using the built-in type-safe binding
+		var args get_ad_setArgs
+		if err := request.BindArguments(&args); err != nil {
+			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
+		}
+		return GetAdSetHandler(ctx, request, args)
+	})
 
-	// Register update_ad_set
-	s.AddTool(
-		mcp.NewTool("update_ad_set",
-			mcp.WithDescription("Update a AdSet Returns AdSet."),
-			mcp.WithString("id",
-				mcp.Required(),
-				mcp.Description("AdSet ID"),
-			),
-			mcp.WithString("account_id",
-				mcp.Description("account_id"),
-			),
-			mcp.WithArray("adlabels",
-				mcp.Description("adlabels"),
-				mcp.Items(map[string]any{"type": "object"}),
-			),
-			mcp.WithArray("adset_schedule",
-				mcp.Description("adset_schedule"),
-				mcp.Items(map[string]any{"type": "object"}),
-			),
-			mcp.WithArray("attribution_spec",
-				mcp.Description("attribution_spec"),
-				mcp.Items(map[string]any{"type": "object"}),
-			),
-			mcp.WithObject("bid_adjustments",
-				mcp.Description("bid_adjustments"),
-				mcp.AdditionalProperties(true),
-			),
-			mcp.WithNumber("bid_amount",
-				mcp.Description("bid_amount"),
-			),
-			mcp.WithObject("bid_constraints",
-				mcp.Description("bid_constraints"),
-				mcp.AdditionalProperties(true),
-			),
-			mcp.WithString("bid_strategy",
-				mcp.Description("bid_strategy (enum: adcampaign_bid_strategy)"),
-			),
-			mcp.WithString("billing_event",
-				mcp.Description("billing_event (enum: adcampaign_billing_event)"),
-			),
-			mcp.WithObject("campaign_attribution",
-				mcp.Description("campaign_attribution"),
-				mcp.AdditionalProperties(true),
-			),
-			mcp.WithObject("campaign_spec",
-				mcp.Description("campaign_spec"),
-				mcp.AdditionalProperties(true),
-			),
-			mcp.WithArray("creative_sequence",
-				mcp.Description("creative_sequence"),
-				mcp.Items(map[string]any{"type": "string"}),
-			),
-			mcp.WithString("creative_sequence_repetition_pattern",
-				mcp.Description("creative_sequence_repetition_pattern (enum: adcampaign_creative_sequence_repetition_pattern)"),
-			),
-			mcp.WithNumber("daily_budget",
-				mcp.Description("daily_budget"),
-			),
-			mcp.WithNumber("daily_imps",
-				mcp.Description("daily_imps"),
-			),
-			mcp.WithNumber("daily_min_spend_target",
-				mcp.Description("daily_min_spend_target"),
-			),
-			mcp.WithNumber("daily_spend_cap",
-				mcp.Description("daily_spend_cap"),
-			),
-			mcp.WithString("date_format",
-				mcp.Description("date_format"),
-			),
-			mcp.WithString("destination_type",
-				mcp.Description("destination_type (enum: adcampaign_destination_type)"),
-			),
-			mcp.WithString("dsa_beneficiary",
-				mcp.Description("dsa_beneficiary"),
-			),
-			mcp.WithString("dsa_payor",
-				mcp.Description("dsa_payor"),
-			),
-			mcp.WithString("end_time",
-				mcp.Description("end_time"),
-			),
-			mcp.WithArray("execution_options",
-				mcp.Description("execution_options"),
-				mcp.Items(map[string]any{"type": "string"}),
-			),
-			mcp.WithNumber("existing_customer_budget_percentage",
-				mcp.Description("existing_customer_budget_percentage"),
-			),
-			mcp.WithString("full_funnel_exploration_mode",
-				mcp.Description("full_funnel_exploration_mode (enum: adcampaign_full_funnel_exploration_mode)"),
-			),
-			mcp.WithBoolean("is_ba_skip_delayed_eligible",
-				mcp.Description("is_ba_skip_delayed_eligible"),
-			),
-			mcp.WithBoolean("is_incremental_attribution_enabled",
-				mcp.Description("is_incremental_attribution_enabled"),
-			),
-			mcp.WithBoolean("is_sac_cfca_terms_certified",
-				mcp.Description("is_sac_cfca_terms_certified"),
-			),
-			mcp.WithNumber("lifetime_budget",
-				mcp.Description("lifetime_budget"),
-			),
-			mcp.WithNumber("lifetime_imps",
-				mcp.Description("lifetime_imps"),
-			),
-			mcp.WithNumber("lifetime_min_spend_target",
-				mcp.Description("lifetime_min_spend_target"),
-			),
-			mcp.WithNumber("lifetime_spend_cap",
-				mcp.Description("lifetime_spend_cap"),
-			),
-			mcp.WithNumber("max_budget_spend_percentage",
-				mcp.Description("max_budget_spend_percentage"),
-			),
-			mcp.WithNumber("min_budget_spend_percentage",
-				mcp.Description("min_budget_spend_percentage"),
-			),
-			mcp.WithString("multi_optimization_goal_weight",
-				mcp.Description("multi_optimization_goal_weight (enum: adcampaign_multi_optimization_goal_weight)"),
-			),
-			mcp.WithString("name",
-				mcp.Description("name"),
-			),
-			mcp.WithString("optimization_goal",
-				mcp.Description("optimization_goal (enum: adcampaign_optimization_goal)"),
-			),
-			mcp.WithString("optimization_sub_event",
-				mcp.Description("optimization_sub_event (enum: adcampaign_optimization_sub_event)"),
-			),
-			mcp.WithArray("pacing_type",
-				mcp.Description("pacing_type"),
-				mcp.Items(map[string]any{"type": "string"}),
-			),
-			mcp.WithObject("promoted_object",
-				mcp.Description("promoted_object"),
-				mcp.AdditionalProperties(true),
-			),
-			mcp.WithString("rb_prediction_id",
-				mcp.Description("rb_prediction_id"),
-			),
-			mcp.WithArray("regional_regulated_categories",
-				mcp.Description("regional_regulated_categories"),
-				mcp.Items(map[string]any{"type": "string"}),
-			),
-			mcp.WithObject("regional_regulation_identities",
-				mcp.Description("regional_regulation_identities"),
-				mcp.AdditionalProperties(true),
-			),
-			mcp.WithString("rf_prediction_id",
-				mcp.Description("rf_prediction_id"),
-			),
-			mcp.WithString("start_time",
-				mcp.Description("start_time"),
-			),
-			mcp.WithString("status",
-				mcp.Description("status (enum: adcampaign_status)"),
-			),
-			mcp.WithObject("targeting",
-				mcp.Description("targeting"),
-				mcp.AdditionalProperties(true),
-			),
-			mcp.WithArray("time_based_ad_rotation_id_blocks",
-				mcp.Description("time_based_ad_rotation_id_blocks"),
-				mcp.Items(map[string]any{"type": "string"}),
-			),
-			mcp.WithArray("time_based_ad_rotation_intervals",
-				mcp.Description("time_based_ad_rotation_intervals"),
-				mcp.Items(map[string]any{"type": "string"}),
-			),
-			mcp.WithString("time_start",
-				mcp.Description("time_start"),
-			),
-			mcp.WithString("time_stop",
-				mcp.Description("time_stop"),
-			),
-			mcp.WithString("tune_for_category",
-				mcp.Description("tune_for_category (enum: adcampaign_tune_for_category)"),
-			),
-		),
-		mcp.NewTypedToolHandler(UpdateAdSetHandler),
+	// Register update_ad_set using raw JSON schema
+	update_ad_setTool := mcp.NewToolWithRawSchema(
+		"update_ad_set",
+		"Update a AdSet Returns AdSet.",
+		json.RawMessage(`{"additionalProperties":false,"properties":{"account_id":{"description":"ID of the Account","pattern":"^[0-9]+$","type":"string"},"adlabels":{"description":"Adlabels","items":{"additionalProperties":true,"type":"object"},"type":"array"},"adset_schedule":{"description":"Adset Schedule","items":{"additionalProperties":true,"type":"object"},"type":"array"},"attribution_spec":{"description":"Attribution Spec","items":{"additionalProperties":true,"type":"object"},"type":"array"},"bid_adjustments":{"additionalProperties":true,"description":"Bid Adjustments","type":"object"},"bid_amount":{"description":"Bid Amount","minimum":1,"type":"integer"},"bid_constraints":{"additionalProperties":{"type":"string"},"description":"Bid Constraints","type":"object"},"bid_strategy":{"description":"Bid Strategy (enum: adcampaign_bid_strategy)","type":"string"},"billing_event":{"description":"Billing Event (enum: adcampaign_billing_event)","type":"string"},"campaign_attribution":{"additionalProperties":true,"description":"Campaign Attribution","type":"object"},"campaign_spec":{"additionalProperties":true,"description":"Campaign Spec","type":"object"},"creative_sequence":{"description":"Creative Sequence","items":{"type":"string"},"type":"array"},"creative_sequence_repetition_pattern":{"description":"Creative Sequence Repetition Pattern (enum: adcampaign_creative_sequence_repetition_pattern)","type":"string"},"daily_budget":{"description":"Daily Budget","type":"integer"},"daily_imps":{"description":"Daily Imps","type":"integer"},"daily_min_spend_target":{"description":"Daily Min Spend Target","type":"integer"},"daily_spend_cap":{"description":"Daily Spend Cap","type":"integer"},"date_format":{"description":"Date Format","type":"string"},"destination_type":{"description":"Destination Type (enum: adcampaign_destination_type)","type":"string"},"dsa_beneficiary":{"description":"Dsa Beneficiary","type":"string"},"dsa_payor":{"description":"Dsa Payor","type":"string"},"end_time":{"description":"End Time","type":"string"},"execution_options":{"description":"Execution Options","items":{"type":"string"},"type":"array"},"existing_customer_budget_percentage":{"description":"Existing Customer Budget Percentage","type":"integer"},"full_funnel_exploration_mode":{"description":"Full Funnel Exploration Mode (enum: adcampaign_full_funnel_exploration_mode)","type":"string"},"id":{"description":"AdSet ID","pattern":"^[0-9]+$","type":"string"},"is_ba_skip_delayed_eligible":{"description":"Is Ba Skip Delayed Eligible","type":"boolean"},"is_incremental_attribution_enabled":{"description":"Is Incremental Attribution Enabled","type":"boolean"},"is_sac_cfca_terms_certified":{"description":"Is Sac Cfca Terms Certified","type":"boolean"},"lifetime_budget":{"description":"Lifetime Budget","type":"integer"},"lifetime_imps":{"description":"Lifetime Imps","type":"integer"},"lifetime_min_spend_target":{"description":"Lifetime Min Spend Target","type":"integer"},"lifetime_spend_cap":{"description":"Lifetime Spend Cap","type":"integer"},"max_budget_spend_percentage":{"description":"Max Budget Spend Percentage","type":"integer"},"min_budget_spend_percentage":{"description":"Min Budget Spend Percentage","type":"integer"},"multi_optimization_goal_weight":{"description":"Multi Optimization Goal Weight (enum: adcampaign_multi_optimization_goal_weight)","type":"string"},"name":{"description":"Name","type":"string"},"optimization_goal":{"description":"Optimization Goal (enum: adcampaign_optimization_goal)","type":"string"},"optimization_sub_event":{"description":"Optimization Sub Event (enum: adcampaign_optimization_sub_event)","type":"string"},"pacing_type":{"description":"Pacing Type","items":{"type":"string"},"type":"array"},"promoted_object":{"additionalProperties":true,"description":"Promoted Object","type":"object"},"rb_prediction_id":{"description":"ID of the Rb Prediction","pattern":"^[0-9]+$","type":"string"},"regional_regulated_categories":{"description":"Regional Regulated Categories","items":{"type":"string"},"type":"array"},"regional_regulation_identities":{"description":"Regional Regulation Identities","pattern":"^[0-9]+$","type":"string"},"rf_prediction_id":{"description":"ID of the Rf Prediction","pattern":"^[0-9]+$","type":"string"},"start_time":{"description":"Start Time","type":"string"},"status":{"description":"Status (enum: adcampaign_status)","type":"string"},"targeting":{"additionalProperties":false,"description":"Targeting object","properties":{"adgroup_id":{"description":"ID of the Adgroup","type":"string"},"age_max":{"description":"Age Max","type":"integer"},"age_min":{"description":"Age Min","type":"integer"},"age_range":{"description":"Age Range","items":{"type":"integer"},"type":"array"},"alternate_auto_targeting_option":{"description":"Alternate Auto Targeting Option","type":"string"},"app_install_state":{"description":"App Install State","type":"string"},"audience_network_positions":{"description":"Audience Network Positions","items":{"type":"string"},"type":"array"},"behaviors":{"description":"Behaviors","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"brand_safety_content_filter_levels":{"description":"Brand Safety Content Filter Levels","items":{"type":"string"},"type":"array"},"catalog_based_targeting":{"additionalProperties":false,"description":"CatalogBasedTargeting object","properties":{"geo_targeting_type":{"description":"Geo Targeting Type","type":"string"}},"type":"object"},"cities":{"description":"Cities","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"college_years":{"description":"College Years","items":{"type":"integer"},"type":"array"},"connections":{"description":"Connections","items":{"additionalProperties":false,"description":"ConnectionsTargeting object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"contextual_targeting_categories":{"description":"Contextual Targeting Categories","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"countries":{"description":"Countries","items":{"type":"string"},"type":"array"},"country":{"description":"Country","items":{"type":"string"},"type":"array"},"country_groups":{"description":"Country Groups","items":{"type":"string"},"type":"array"},"custom_audiences":{"description":"Custom Audiences","items":{"additionalProperties":false,"description":"RawCustomAudience object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"device_platforms":{"description":"Device Platforms","items":{"type":"string"},"type":"array"},"direct_install_devices":{"description":"Direct Install Devices","type":"boolean"},"dynamic_audience_ids":{"description":"Dynamic Audience Ids","items":{"type":"string"},"type":"array"},"education_majors":{"description":"Education Majors","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"education_schools":{"description":"Education Schools","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"education_statuses":{"description":"Education Statuses","items":{"type":"integer"},"type":"array"},"effective_audience_network_positions":{"description":"Effective Audience Network Positions","items":{"type":"string"},"type":"array"},"effective_device_platforms":{"description":"Effective Device Platforms","items":{"type":"string"},"type":"array"},"effective_facebook_positions":{"description":"Effective Facebook Positions","items":{"type":"string"},"type":"array"},"effective_instagram_positions":{"description":"Effective Instagram Positions","items":{"type":"string"},"type":"array"},"effective_messenger_positions":{"description":"Effective Messenger Positions","items":{"type":"string"},"type":"array"},"effective_publisher_platforms":{"description":"Effective Publisher Platforms","items":{"type":"string"},"type":"array"},"effective_threads_positions":{"description":"Effective Threads Positions","items":{"type":"string"},"type":"array"},"engagement_specs":{"description":"Engagement Specs","items":{"additionalProperties":false,"description":"TargetingDynamicRule object","properties":{"action.type":{"description":"Action.Type","type":"string"},"ad_group_id":{"description":"ID of the Ad Group","type":"string"},"campaign_group_id":{"description":"ID of the Campaign Group","type":"string"},"campaign_id":{"description":"ID of the Campaign","type":"string"},"impression_count":{"description":"Impression Count","type":"string"},"page_id":{"description":"ID of the Page","type":"string"},"post":{"description":"Post","type":"string"},"retention_seconds":{"description":"Retention Seconds","type":"string"}},"type":"object"},"type":"array"},"ethnic_affinity":{"description":"Ethnic Affinity","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"exclude_reached_since":{"description":"Exclude Reached Since","items":{"type":"string"},"type":"array"},"excluded_brand_safety_content_types":{"description":"Excluded Brand Safety Content Types","items":{"type":"string"},"type":"array"},"excluded_connections":{"description":"Excluded Connections","items":{"additionalProperties":false,"description":"ConnectionsTargeting object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"excluded_custom_audiences":{"description":"Excluded Custom Audiences","items":{"additionalProperties":false,"description":"RawCustomAudience object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"excluded_dynamic_audience_ids":{"description":"Excluded Dynamic Audience Ids","items":{"type":"string"},"type":"array"},"excluded_engagement_specs":{"description":"Excluded Engagement Specs","items":{"additionalProperties":false,"description":"TargetingDynamicRule object","properties":{"action.type":{"description":"Action.Type","type":"string"},"ad_group_id":{"description":"ID of the Ad Group","type":"string"},"campaign_group_id":{"description":"ID of the Campaign Group","type":"string"},"campaign_id":{"description":"ID of the Campaign","type":"string"},"impression_count":{"description":"Impression Count","type":"string"},"page_id":{"description":"ID of the Page","type":"string"},"post":{"description":"Post","type":"string"},"retention_seconds":{"description":"Retention Seconds","type":"string"}},"type":"object"},"type":"array"},"excluded_geo_locations":{"additionalProperties":false,"description":"TargetingGeoLocation object","properties":{"cities":{"description":"Cities","items":{"additionalProperties":false,"description":"TargetingGeoLocationCity object","properties":{"country":{"description":"Country","type":"string"},"distance_unit":{"description":"Distance Unit","type":"string"},"key":{"description":"Key","type":"string"},"name":{"description":"Name","type":"string"},"radius":{"description":"Radius","type":"integer"},"region":{"description":"Region","type":"string"},"region_id":{"description":"ID of the Region","type":"string"}},"required":["name"],"type":"object"},"type":"array"},"countries":{"description":"Countries","items":{"type":"string"},"type":"array"},"country_groups":{"description":"Country Groups","items":{"type":"string"},"type":"array"},"custom_locations":{"description":"Custom Locations","items":{"additionalProperties":false,"description":"TargetingGeoLocationCustomLocation object","properties":{"address_string":{"description":"Address String","type":"string"},"country":{"description":"Country","type":"string"},"country_group":{"description":"Country Group","type":"string"},"custom_type":{"description":"Custom Type","type":"string"},"distance_unit":{"description":"Distance Unit","type":"string"},"key":{"description":"Key","type":"string"},"latitude":{"description":"Latitude","type":"number"},"longitude":{"description":"Longitude","type":"number"},"max_population":{"description":"Max Population","type":"integer"},"min_population":{"description":"Min Population","type":"integer"},"name":{"description":"Name","type":"string"},"primary_city_id":{"description":"ID of the Primary City","type":"integer"},"radius":{"description":"Radius","type":"number"},"region_id":{"description":"ID of the Region","type":"integer"}},"required":["name"],"type":"object"},"type":"array"},"electoral_districts":{"description":"Electoral Districts","items":{"additionalProperties":false,"description":"TargetingGeoLocationElectoralDistrict object","properties":{"country":{"description":"Country","type":"string"},"deprecation_code":{"description":"Deprecation Code","type":"string"},"electoral_district":{"description":"Electoral District","type":"string"},"key":{"description":"Key","type":"string"},"name":{"description":"Name","type":"string"}},"required":["name"],"type":"object"},"type":"array"},"geo_markets":{"description":"Geo Markets","items":{"additionalProperties":false,"description":"TargetingGeoLocationMarket object","properties":{"country":{"description":"Country","type":"string"},"key":{"description":"Key","type":"string"},"market_type":{"description":"Market Type","type":"string"},"name":{"description":"Name","type":"string"}},"required":["name"],"type":"object"},"type":"array"},"large_geo_areas":{"description":"Large Geo Areas","items":{"additionalProperties":false,"description":"TargetingGeoLocationGeoEntities object","properties":{"country":{"description":"Country","type":"string"},"key":{"description":"Key","type":"string"},"name":{"description":"Name","type":"string"},"region":{"description":"Region","type":"string"},"region_id":{"description":"ID of the Region","type":"string"}},"required":["name"],"type":"object"},"type":"array"},"location_cluster_ids":{"description":"Location Cluster Ids","items":{"additionalProperties":false,"description":"TargetingGeoLocationLocationCluster object","properties":{"key":{"description":"Key","type":"integer"}},"type":"object"},"type":"array"},"location_types":{"description":"Location Types","items":{"type":"string"},"type":"array"},"medium_geo_areas":{"description":"Medium Geo Areas","items":{"additionalProperties":false,"description":"TargetingGeoLocationGeoEntities object","properties":{"country":{"description":"Country","type":"string"},"key":{"description":"Key","type":"string"},"name":{"description":"Name","type":"string"},"region":{"description":"Region","type":"string"},"region_id":{"description":"ID of the Region","type":"string"}},"required":["name"],"type":"object"},"type":"array"},"metro_areas":{"description":"Metro Areas","items":{"additionalProperties":false,"description":"TargetingGeoLocationGeoEntities object","properties":{"country":{"description":"Country","type":"string"},"key":{"description":"Key","type":"string"},"name":{"description":"Name","type":"string"},"region":{"description":"Region","type":"string"},"region_id":{"description":"ID of the Region","type":"string"}},"required":["name"],"type":"object"},"type":"array"},"neighborhoods":{"description":"Neighborhoods","items":{"additionalProperties":false,"description":"TargetingGeoLocationGeoEntities object","properties":{"country":{"description":"Country","type":"string"},"key":{"description":"Key","type":"string"},"name":{"description":"Name","type":"string"},"region":{"description":"Region","type":"string"},"region_id":{"description":"ID of the Region","type":"string"}},"required":["name"],"type":"object"},"type":"array"},"places":{"description":"Places","items":{"additionalProperties":false,"description":"TargetingGeoLocationPlace object","properties":{"country":{"description":"Country","type":"string"},"distance_unit":{"description":"Distance Unit","type":"string"},"key":{"description":"Key","type":"string"},"latitude":{"description":"Latitude","type":"number"},"longitude":{"description":"Longitude","type":"number"},"name":{"description":"Name","type":"string"},"primary_city_id":{"description":"ID of the Primary City","type":"integer"},"radius":{"description":"Radius","type":"number"},"region_id":{"description":"ID of the Region","type":"integer"}},"required":["name"],"type":"object"},"type":"array"},"political_districts":{"description":"Political Districts","items":{"additionalProperties":false,"description":"TargetingGeoLocationPoliticalDistrict object","properties":{"country":{"description":"Country","type":"string"},"key":{"description":"Key","type":"string"},"name":{"description":"Name","type":"string"},"political_district":{"description":"Political District","type":"string"}},"required":["name"],"type":"object"},"type":"array"},"regions":{"description":"Regions","items":{"additionalProperties":false,"description":"TargetingGeoLocationRegion object","properties":{"country":{"description":"Country","type":"string"},"key":{"description":"Key","type":"string"},"name":{"description":"Name","type":"string"}},"required":["name"],"type":"object"},"type":"array"},"small_geo_areas":{"description":"Small Geo Areas","items":{"additionalProperties":false,"description":"TargetingGeoLocationGeoEntities object","properties":{"country":{"description":"Country","type":"string"},"key":{"description":"Key","type":"string"},"name":{"description":"Name","type":"string"},"region":{"description":"Region","type":"string"},"region_id":{"description":"ID of the Region","type":"string"}},"required":["name"],"type":"object"},"type":"array"},"subcities":{"description":"Subcities","items":{"additionalProperties":false,"description":"TargetingGeoLocationGeoEntities object","properties":{"country":{"description":"Country","type":"string"},"key":{"description":"Key","type":"string"},"name":{"description":"Name","type":"string"},"region":{"description":"Region","type":"string"},"region_id":{"description":"ID of the Region","type":"string"}},"required":["name"],"type":"object"},"type":"array"},"subneighborhoods":{"description":"Subneighborhoods","items":{"additionalProperties":false,"description":"TargetingGeoLocationGeoEntities object","properties":{"country":{"description":"Country","type":"string"},"key":{"description":"Key","type":"string"},"name":{"description":"Name","type":"string"},"region":{"description":"Region","type":"string"},"region_id":{"description":"ID of the Region","type":"string"}},"required":["name"],"type":"object"},"type":"array"},"zips":{"description":"Zips","items":{"additionalProperties":false,"description":"TargetingGeoLocationZip object","properties":{"country":{"description":"Country","type":"string"},"key":{"description":"Key","type":"string"},"name":{"description":"Name","type":"string"},"primary_city_id":{"description":"ID of the Primary City","type":"integer"},"region_id":{"description":"ID of the Region","type":"integer"}},"required":["name"],"type":"object"},"type":"array"}},"type":"object"},"excluded_mobile_device_model":{"description":"Excluded Mobile Device Model","items":{"type":"string"},"type":"array"},"excluded_product_audience_specs":{"description":"Excluded Product Audience Specs","items":{"additionalProperties":false,"description":"TargetingProductAudienceSpec object","properties":{"exclusions":{"description":"Exclusions","items":{"additionalProperties":false,"description":"TargetingProductAudienceSubSpec object","properties":{"retention_seconds":{"description":"Retention Seconds","type":"string"},"rule":{"description":"Rule","type":"string"}},"type":"object"},"type":"array"},"inclusions":{"description":"Inclusions","items":{"additionalProperties":false,"description":"TargetingProductAudienceSubSpec object","properties":{"retention_seconds":{"description":"Retention Seconds","type":"string"},"rule":{"description":"Rule","type":"string"}},"type":"object"},"type":"array"},"product_set_id":{"description":"ID of the Product Set","type":"string"}},"type":"object"},"type":"array"},"excluded_publisher_categories":{"description":"Excluded Publisher Categories","items":{"type":"string"},"type":"array"},"excluded_publisher_list_ids":{"description":"Excluded Publisher List Ids","items":{"type":"string"},"type":"array"},"excluded_user_device":{"description":"Excluded User Device","items":{"type":"string"},"type":"array"},"exclusions":{"additionalProperties":false,"description":"FlexibleTargeting object","properties":{"behaviors":{"description":"Behaviors","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"college_years":{"description":"College Years","items":{"type":"integer"},"type":"array"},"connections":{"description":"Connections","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"custom_audiences":{"description":"Custom Audiences","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"education_majors":{"description":"Education Majors","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"education_schools":{"description":"Education Schools","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"education_statuses":{"description":"Education Statuses","items":{"type":"integer"},"type":"array"},"ethnic_affinity":{"description":"Ethnic Affinity","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"family_statuses":{"description":"Family Statuses","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"friends_of_connections":{"description":"Friends Of Connections","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"generation":{"description":"Generation","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"home_ownership":{"description":"Home Ownership","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"home_type":{"description":"Home Type","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"home_value":{"description":"Home Value","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"household_composition":{"description":"Household Composition","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"income":{"description":"Income","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"industries":{"description":"Industries","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"interested_in":{"description":"Interested In","items":{"type":"integer"},"type":"array"},"interests":{"description":"Interests","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"life_events":{"description":"Life Events","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"moms":{"description":"Moms","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"net_worth":{"description":"Net Worth","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"office_type":{"description":"Office Type","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"politics":{"description":"Politics","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"relationship_statuses":{"description":"Relationship Statuses","items":{"type":"integer"},"type":"array"},"user_adclusters":{"description":"User Adclusters","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"work_employers":{"description":"Work Employers","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"work_positions":{"description":"Work Positions","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"}},"type":"object"},"facebook_positions":{"description":"Facebook Positions","items":{"type":"string"},"type":"array"},"family_statuses":{"description":"Family Statuses","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"fb_deal_id":{"description":"ID of the Fb Deal","type":"string"},"flexible_spec":{"description":"Flexible Spec","items":{"additionalProperties":false,"description":"FlexibleTargeting object","properties":{"behaviors":{"description":"Behaviors","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"college_years":{"description":"College Years","items":{"type":"integer"},"type":"array"},"connections":{"description":"Connections","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"custom_audiences":{"description":"Custom Audiences","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"education_majors":{"description":"Education Majors","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"education_schools":{"description":"Education Schools","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"education_statuses":{"description":"Education Statuses","items":{"type":"integer"},"type":"array"},"ethnic_affinity":{"description":"Ethnic Affinity","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"family_statuses":{"description":"Family Statuses","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"friends_of_connections":{"description":"Friends Of Connections","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"generation":{"description":"Generation","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"home_ownership":{"description":"Home Ownership","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"home_type":{"description":"Home Type","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"home_value":{"description":"Home Value","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"household_composition":{"description":"Household Composition","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"income":{"description":"Income","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"industries":{"description":"Industries","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"interested_in":{"description":"Interested In","items":{"type":"integer"},"type":"array"},"interests":{"description":"Interests","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"life_events":{"description":"Life Events","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"moms":{"description":"Moms","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"net_worth":{"description":"Net Worth","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"office_type":{"description":"Office Type","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"politics":{"description":"Politics","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"relationship_statuses":{"description":"Relationship Statuses","items":{"type":"integer"},"type":"array"},"user_adclusters":{"description":"User Adclusters","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"work_employers":{"description":"Work Employers","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"work_positions":{"description":"Work Positions","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"}},"type":"object"},"type":"array"},"friends_of_connections":{"description":"Friends Of Connections","items":{"additionalProperties":false,"description":"ConnectionsTargeting object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"genders":{"description":"Genders","items":{"type":"integer"},"type":"array"},"generation":{"description":"Generation","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"geo_locations":{"additionalProperties":false,"description":"TargetingGeoLocation object","properties":{"cities":{"description":"Cities","items":{"additionalProperties":false,"description":"TargetingGeoLocationCity object","properties":{"country":{"description":"Country","type":"string"},"distance_unit":{"description":"Distance Unit","type":"string"},"key":{"description":"Key","type":"string"},"name":{"description":"Name","type":"string"},"radius":{"description":"Radius","type":"integer"},"region":{"description":"Region","type":"string"},"region_id":{"description":"ID of the Region","type":"string"}},"required":["name"],"type":"object"},"type":"array"},"countries":{"description":"Countries","items":{"type":"string"},"type":"array"},"country_groups":{"description":"Country Groups","items":{"type":"string"},"type":"array"},"custom_locations":{"description":"Custom Locations","items":{"additionalProperties":false,"description":"TargetingGeoLocationCustomLocation object","properties":{"address_string":{"description":"Address String","type":"string"},"country":{"description":"Country","type":"string"},"country_group":{"description":"Country Group","type":"string"},"custom_type":{"description":"Custom Type","type":"string"},"distance_unit":{"description":"Distance Unit","type":"string"},"key":{"description":"Key","type":"string"},"latitude":{"description":"Latitude","type":"number"},"longitude":{"description":"Longitude","type":"number"},"max_population":{"description":"Max Population","type":"integer"},"min_population":{"description":"Min Population","type":"integer"},"name":{"description":"Name","type":"string"},"primary_city_id":{"description":"ID of the Primary City","type":"integer"},"radius":{"description":"Radius","type":"number"},"region_id":{"description":"ID of the Region","type":"integer"}},"required":["name"],"type":"object"},"type":"array"},"electoral_districts":{"description":"Electoral Districts","items":{"additionalProperties":false,"description":"TargetingGeoLocationElectoralDistrict object","properties":{"country":{"description":"Country","type":"string"},"deprecation_code":{"description":"Deprecation Code","type":"string"},"electoral_district":{"description":"Electoral District","type":"string"},"key":{"description":"Key","type":"string"},"name":{"description":"Name","type":"string"}},"required":["name"],"type":"object"},"type":"array"},"geo_markets":{"description":"Geo Markets","items":{"additionalProperties":false,"description":"TargetingGeoLocationMarket object","properties":{"country":{"description":"Country","type":"string"},"key":{"description":"Key","type":"string"},"market_type":{"description":"Market Type","type":"string"},"name":{"description":"Name","type":"string"}},"required":["name"],"type":"object"},"type":"array"},"large_geo_areas":{"description":"Large Geo Areas","items":{"additionalProperties":false,"description":"TargetingGeoLocationGeoEntities object","properties":{"country":{"description":"Country","type":"string"},"key":{"description":"Key","type":"string"},"name":{"description":"Name","type":"string"},"region":{"description":"Region","type":"string"},"region_id":{"description":"ID of the Region","type":"string"}},"required":["name"],"type":"object"},"type":"array"},"location_cluster_ids":{"description":"Location Cluster Ids","items":{"additionalProperties":false,"description":"TargetingGeoLocationLocationCluster object","properties":{"key":{"description":"Key","type":"integer"}},"type":"object"},"type":"array"},"location_types":{"description":"Location Types","items":{"type":"string"},"type":"array"},"medium_geo_areas":{"description":"Medium Geo Areas","items":{"additionalProperties":false,"description":"TargetingGeoLocationGeoEntities object","properties":{"country":{"description":"Country","type":"string"},"key":{"description":"Key","type":"string"},"name":{"description":"Name","type":"string"},"region":{"description":"Region","type":"string"},"region_id":{"description":"ID of the Region","type":"string"}},"required":["name"],"type":"object"},"type":"array"},"metro_areas":{"description":"Metro Areas","items":{"additionalProperties":false,"description":"TargetingGeoLocationGeoEntities object","properties":{"country":{"description":"Country","type":"string"},"key":{"description":"Key","type":"string"},"name":{"description":"Name","type":"string"},"region":{"description":"Region","type":"string"},"region_id":{"description":"ID of the Region","type":"string"}},"required":["name"],"type":"object"},"type":"array"},"neighborhoods":{"description":"Neighborhoods","items":{"additionalProperties":false,"description":"TargetingGeoLocationGeoEntities object","properties":{"country":{"description":"Country","type":"string"},"key":{"description":"Key","type":"string"},"name":{"description":"Name","type":"string"},"region":{"description":"Region","type":"string"},"region_id":{"description":"ID of the Region","type":"string"}},"required":["name"],"type":"object"},"type":"array"},"places":{"description":"Places","items":{"additionalProperties":false,"description":"TargetingGeoLocationPlace object","properties":{"country":{"description":"Country","type":"string"},"distance_unit":{"description":"Distance Unit","type":"string"},"key":{"description":"Key","type":"string"},"latitude":{"description":"Latitude","type":"number"},"longitude":{"description":"Longitude","type":"number"},"name":{"description":"Name","type":"string"},"primary_city_id":{"description":"ID of the Primary City","type":"integer"},"radius":{"description":"Radius","type":"number"},"region_id":{"description":"ID of the Region","type":"integer"}},"required":["name"],"type":"object"},"type":"array"},"political_districts":{"description":"Political Districts","items":{"additionalProperties":false,"description":"TargetingGeoLocationPoliticalDistrict object","properties":{"country":{"description":"Country","type":"string"},"key":{"description":"Key","type":"string"},"name":{"description":"Name","type":"string"},"political_district":{"description":"Political District","type":"string"}},"required":["name"],"type":"object"},"type":"array"},"regions":{"description":"Regions","items":{"additionalProperties":false,"description":"TargetingGeoLocationRegion object","properties":{"country":{"description":"Country","type":"string"},"key":{"description":"Key","type":"string"},"name":{"description":"Name","type":"string"}},"required":["name"],"type":"object"},"type":"array"},"small_geo_areas":{"description":"Small Geo Areas","items":{"additionalProperties":false,"description":"TargetingGeoLocationGeoEntities object","properties":{"country":{"description":"Country","type":"string"},"key":{"description":"Key","type":"string"},"name":{"description":"Name","type":"string"},"region":{"description":"Region","type":"string"},"region_id":{"description":"ID of the Region","type":"string"}},"required":["name"],"type":"object"},"type":"array"},"subcities":{"description":"Subcities","items":{"additionalProperties":false,"description":"TargetingGeoLocationGeoEntities object","properties":{"country":{"description":"Country","type":"string"},"key":{"description":"Key","type":"string"},"name":{"description":"Name","type":"string"},"region":{"description":"Region","type":"string"},"region_id":{"description":"ID of the Region","type":"string"}},"required":["name"],"type":"object"},"type":"array"},"subneighborhoods":{"description":"Subneighborhoods","items":{"additionalProperties":false,"description":"TargetingGeoLocationGeoEntities object","properties":{"country":{"description":"Country","type":"string"},"key":{"description":"Key","type":"string"},"name":{"description":"Name","type":"string"},"region":{"description":"Region","type":"string"},"region_id":{"description":"ID of the Region","type":"string"}},"required":["name"],"type":"object"},"type":"array"},"zips":{"description":"Zips","items":{"additionalProperties":false,"description":"TargetingGeoLocationZip object","properties":{"country":{"description":"Country","type":"string"},"key":{"description":"Key","type":"string"},"name":{"description":"Name","type":"string"},"primary_city_id":{"description":"ID of the Primary City","type":"integer"},"region_id":{"description":"ID of the Region","type":"integer"}},"required":["name"],"type":"object"},"type":"array"}},"type":"object"},"home_ownership":{"description":"Home Ownership","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"home_type":{"description":"Home Type","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"home_value":{"description":"Home Value","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"household_composition":{"description":"Household Composition","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"income":{"description":"Income","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"industries":{"description":"Industries","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"instagram_positions":{"description":"Instagram Positions","items":{"type":"string"},"type":"array"},"instream_video_skippable_excluded":{"description":"Instream Video Skippable Excluded","type":"boolean"},"interested_in":{"description":"Interested In","items":{"type":"integer"},"type":"array"},"interests":{"description":"Interests","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"is_whatsapp_destination_ad":{"description":"Is Whatsapp Destination Ad","type":"boolean"},"keywords":{"description":"Keywords","items":{"type":"string"},"type":"array"},"life_events":{"description":"Life Events","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"locales":{"description":"Locales","items":{"type":"integer"},"type":"array"},"messenger_positions":{"description":"Messenger Positions","items":{"type":"string"},"type":"array"},"moms":{"description":"Moms","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"net_worth":{"description":"Net Worth","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"office_type":{"description":"Office Type","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"place_page_set_ids":{"description":"Place Page Set Ids","items":{"type":"string"},"type":"array"},"political_views":{"description":"Political Views","items":{"type":"integer"},"type":"array"},"politics":{"description":"Politics","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"product_audience_specs":{"description":"Product Audience Specs","items":{"additionalProperties":false,"description":"TargetingProductAudienceSpec object","properties":{"exclusions":{"description":"Exclusions","items":{"additionalProperties":false,"description":"TargetingProductAudienceSubSpec object","properties":{"retention_seconds":{"description":"Retention Seconds","type":"string"},"rule":{"description":"Rule","type":"string"}},"type":"object"},"type":"array"},"inclusions":{"description":"Inclusions","items":{"additionalProperties":false,"description":"TargetingProductAudienceSubSpec object","properties":{"retention_seconds":{"description":"Retention Seconds","type":"string"},"rule":{"description":"Rule","type":"string"}},"type":"object"},"type":"array"},"product_set_id":{"description":"ID of the Product Set","type":"string"}},"type":"object"},"type":"array"},"prospecting_audience":{"additionalProperties":false,"description":"TargetingProspectingAudience object","properties":{"sources":{"description":"Sources","items":{"type":"string"},"type":"array"}},"type":"object"},"publisher_platforms":{"description":"Publisher Platforms","items":{"type":"string"},"type":"array"},"radius":{"description":"Radius","type":"string"},"regions":{"description":"Regions","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"relationship_statuses":{"description":"Relationship Statuses","items":{"type":"integer"},"type":"array"},"site_category":{"description":"Site Category","items":{"type":"string"},"type":"array"},"targeting_automation":{"additionalProperties":false,"description":"TargetingAutomation object","properties":{"advantage_audience":{"description":"Advantage Audience","type":"integer"},"individual_setting":{"additionalProperties":true,"description":"Individual Setting","type":"object"},"shared_audiences":{"description":"Shared Audiences","type":"integer"},"value_expression":{"description":"Value Expression","type":"integer"}},"type":"object"},"targeting_optimization":{"description":"Targeting Optimization","type":"string"},"targeting_relaxation_types":{"additionalProperties":false,"description":"TargetingRelaxation object","properties":{"custom_audience":{"description":"Custom Audience","type":"integer"},"lookalike":{"description":"Lookalike","type":"integer"}},"type":"object"},"threads_positions":{"description":"Threads Positions","items":{"type":"string"},"type":"array"},"user_adclusters":{"description":"User Adclusters","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"user_device":{"description":"User Device","items":{"type":"string"},"type":"array"},"user_event":{"description":"User Event","items":{"type":"integer"},"type":"array"},"user_os":{"description":"User Os","items":{"type":"string"},"type":"array"},"wireless_carrier":{"description":"Wireless Carrier","items":{"type":"string"},"type":"array"},"work_employers":{"description":"Work Employers","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"work_positions":{"description":"Work Positions","items":{"additionalProperties":false,"description":"IDName object","properties":{"id":{"description":"ID","type":"string"},"name":{"description":"Name","type":"string"}},"required":["id","name"],"type":"object"},"type":"array"},"zips":{"description":"Zips","items":{"type":"string"},"type":"array"}},"required":["geo_locations"],"type":"object"},"time_based_ad_rotation_id_blocks":{"description":"Time Based Ad Rotation ID Blocks","items":{"type":"string"},"type":"array"},"time_based_ad_rotation_intervals":{"description":"Time Based Ad Rotation Intervals","items":{"type":"integer"},"type":"array"},"time_start":{"description":"Time Start","type":"string"},"time_stop":{"description":"Time Stop","type":"string"},"tune_for_category":{"description":"Tune For Category (enum: adcampaign_tune_for_category)","type":"string"}},"required":["id"],"type":"object"}`),
 	)
+	s.AddTool(update_ad_setTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+		// Parse arguments using the built-in type-safe binding
+		var args update_ad_setArgs
+		if err := request.BindArguments(&args); err != nil {
+			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
+		}
+		return UpdateAdSetHandler(ctx, request, args)
+	})
 
 	return nil
 }

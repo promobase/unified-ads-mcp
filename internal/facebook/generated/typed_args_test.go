@@ -334,12 +334,17 @@ func TestRequiredFieldValidation(t *testing.T) {
 
 	t.Run("RequiredIDValidation", func(t *testing.T) {
 		ctx := context.Background()
-		request := mcp.CallToolRequest{}
 
 		// Test with empty required ID
 		args := get_campaignArgs{
 			ID:     "", // Required but empty
 			Fields: []string{"name"},
+		}
+
+		request := mcp.CallToolRequest{
+			Params: mcp.CallToolParams{
+				Arguments: args,
+			},
 		}
 
 		result, err := GetCampaignHandler(ctx, request, args)
