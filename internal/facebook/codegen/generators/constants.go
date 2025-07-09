@@ -155,12 +155,12 @@ func (g *ConstantsGenerator) generateFile(outputFile string, data ConstantData) 
 func toConstantName(fieldName string) string {
 	parts := strings.Split(fieldName, "_")
 	var result strings.Builder
-	
+
 	for _, part := range parts {
 		if part == "" {
 			continue
 		}
-		
+
 		// Handle common abbreviations
 		switch strings.ToLower(part) {
 		case "id":
@@ -206,6 +206,6 @@ func toConstantName(fieldName string) string {
 			}
 		}
 	}
-	
+
 	return result.String()
 }
