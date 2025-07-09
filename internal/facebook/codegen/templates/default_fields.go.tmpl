@@ -14,85 +14,220 @@ import (
 // DefaultFields contains commonly used fields for each object type
 var DefaultFields = map[string][]string{
 	"Ad": {
+		// Basic info
 		ad.ID,
 		ad.Name,
 		ad.Status,
 		ad.EffectiveStatus,
-		ad.Creative,
+		ad.ConfiguredStatus,
+		// Relationships
+		ad.AccountID,
 		ad.AdsetID,
 		ad.CampaignID,
-		ad.AccountID,
+		ad.Creative,
+		// Performance & Delivery
+		ad.BidAmount,
+		ad.BidType,
+		ad.Targeting,
+		ad.TrackingSpecs,
+		// Labels & Organization
+		ad.Adlabels,
+		// Timestamps
 		ad.CreatedTime,
 		ad.UpdatedTime,
+		// Issues & Recommendations
+		ad.IssuesInfo,
+		ad.Recommendations,
 	},
 	"AdAccount": {
+		// Basic info
 		adaccount.ID,
 		adaccount.AccountID,
 		adaccount.Name,
 		adaccount.AccountStatus,
+		// Financial
 		adaccount.Currency,
+		adaccount.Balance,
+		adaccount.AmountSpent,
+		adaccount.SpendCap,
+		adaccount.MinDailyBudget,
+		// Business info
+		adaccount.Business,
+		adaccount.BusinessName,
+		adaccount.BusinessCity,
+		adaccount.BusinessCountryCode,
+		// Settings
 		adaccount.TimezoneName,
 		adaccount.TimezoneOffsetHoursUtc,
-		adaccount.Business,
+		adaccount.DisableReason,
+		// Capabilities
+		adaccount.Capabilities,
+		adaccount.AllCapabilities,
+		// Timestamps
 		adaccount.CreatedTime,
-		adaccount.SpendCap,
-		adaccount.AmountSpent,
-		adaccount.Balance,
+		adaccount.EndAdvertiser,
+		adaccount.FundingSource,
 	},
 	"Campaign": {
+		// Basic info
 		campaign.ID,
 		campaign.Name,
 		campaign.Status,
 		campaign.EffectiveStatus,
+		campaign.ConfiguredStatus,
+		// Objective & Strategy
 		campaign.Objective,
 		campaign.BuyingType,
-		campaign.BudgetRemaining,
+		campaign.BidStrategy,
+		// Budget
 		campaign.DailyBudget,
 		campaign.LifetimeBudget,
+		campaign.BudgetRemaining,
+		campaign.SpendCap,
+		// Optimization
+		campaign.PromotedObject,
+		campaign.PacingType,
+		// Labels & Attribution
+		campaign.Adlabels,
+		campaign.SourceCampaignID,
+		// Special categories
+		campaign.SpecialAdCategories,
+		campaign.SpecialAdCategory,
+		campaign.SpecialAdCategoryCountry,
+		// Timestamps
 		campaign.CreatedTime,
 		campaign.UpdatedTime,
 		campaign.StartTime,
 		campaign.StopTime,
+		// Issues & Recommendations
+		campaign.IssuesInfo,
+		campaign.Recommendations,
+		// Additional flags
+		campaign.BudgetRebalanceFlag,
+		campaign.IsSkadnetworkAttribution,
+		campaign.IsBudgetScheduleEnabled,
 	},
 	"AdSet": {
+		// Basic info
 		adset.ID,
 		adset.Name,
 		adset.Status,
 		adset.EffectiveStatus,
+		adset.ConfiguredStatus,
+		// Relationships
+		adset.AccountID,
 		adset.CampaignID,
+		// Budget & Billing
 		adset.DailyBudget,
 		adset.LifetimeBudget,
 		adset.BudgetRemaining,
 		adset.BillingEvent,
+		adset.BidAmount,
+		adset.BidStrategy,
+		// Optimization
 		adset.OptimizationGoal,
+		adset.OptimizationSubEvent,
+		adset.PromotedObject,
+		// Targeting
 		adset.Targeting,
-		adset.CreatedTime,
-		adset.UpdatedTime,
+		adset.TargetingOptimizationTypes,
+		// Delivery
+		adset.PacingType,
+		adset.DestinationType,
+		adset.FrequencyControlSpecs,
+		// Creative
+		adset.CreativeSequence,
+		adset.AssetFeedID,
+		// Schedule
 		adset.StartTime,
 		adset.EndTime,
+		adset.AdsetSchedule,
+		// Labels
+		adset.Adlabels,
+		// Attribution
+		adset.AttributionSpec,
+		adset.CampaignAttribution,
+		// Timestamps
+		adset.CreatedTime,
+		adset.UpdatedTime,
+		// Issues & Learning
+		adset.IssuesInfo,
+		adset.LearningStageInfo,
+		adset.Recommendations,
+		// Flags
+		adset.IsDynamicCreative,
+		adset.UseNewAppClick,
 	},
 	"AdCreative": {
+		// Basic info
 		adcreative.ID,
 		adcreative.Name,
 		adcreative.Status,
-		adcreative.ObjectStorySpec,
+		adcreative.AccountID,
+		// Creative content
 		adcreative.Title,
 		adcreative.Body,
+		adcreative.ObjectStorySpec,
+		adcreative.ObjectType,
+		// Media
 		adcreative.ImageURL,
+		adcreative.ImageHash,
 		adcreative.VideoID,
+		adcreative.ThumbnailURL,
+		// Links & CTA
 		adcreative.LinkURL,
+		adcreative.LinkOGID,
 		adcreative.CallToActionType,
+		adcreative.CallToAction,
+		// Instagram
+		adcreative.InstagramPermalinkURL,
+		adcreative.InstagramUserID,
+		adcreative.EffectiveInstagramMediaID,
+		// Facebook
+		adcreative.EffectiveObjectStoryID,
+		adcreative.SourceFacebookPostID,
+		// Product & Dynamic
+		adcreative.ProductSetID,
+		adcreative.AssetFeedSpec,
+		adcreative.DynamicAdVoice,
+		// Labels & Actor
+		adcreative.Adlabels,
+		adcreative.ActorID,
+		// Platform customizations
+		adcreative.PlatformCustomizations,
+		adcreative.PortraitCustomizations,
+		// Compliance
+		adcreative.AuthorizationCategory,
+		adcreative.EffectiveAuthorizationCategory,
 	},
 	"User": {
+		// Basic info
 		user.ID,
 		user.Name,
-		user.Email,
 		user.FirstName,
 		user.LastName,
+		user.MiddleName,
+		// Contact
+		user.Email,
+		user.Link,
+		// Profile
 		user.ProfilePic,
+		user.Cover,
+		user.AgeRange,
+		user.Birthday,
+		user.Gender,
+		// Location & Language
+		user.Locale,
+		user.Location,
 		user.Timezone,
 		user.Currency,
-		user.Locale,
+		// Business
+		user.TokenForBusiness,
+		user.ClientBusinessID,
+		user.IsWorkAccount,
+		// Verification
+		user.Verified,
+		user.UpdatedTime,
 	},
 }
 

@@ -5,6 +5,7 @@ package generated
 import (
 	"context"
 	"fmt"
+	"log"
 	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
@@ -856,8 +857,9 @@ func ListUserAccountsHandler(ctx context.Context, request mcp.CallToolRequest, a
 	if len(args.Fields) > 0 {
 		query.Set("fields", strings.Join(args.Fields, ","))
 	} else {
-		// Use default fields
-		defaultFields := GetDefaultFields("User")
+		// Use default fields for the return type
+		defaultFields := GetDefaultFields("Page")
+		log.Printf("Using default fields for Page (return type): %v", defaultFields)
 		if len(defaultFields) > 0 {
 			query.Set("fields", strings.Join(defaultFields, ","))
 		}
@@ -996,8 +998,9 @@ func ListUserAdStudiesHandler(ctx context.Context, request mcp.CallToolRequest, 
 	if len(args.Fields) > 0 {
 		query.Set("fields", strings.Join(args.Fields, ","))
 	} else {
-		// Use default fields
-		defaultFields := GetDefaultFields("User")
+		// Use default fields for the return type
+		defaultFields := GetDefaultFields("AdStudy")
+		log.Printf("Using default fields for AdStudy (return type): %v", defaultFields)
 		if len(defaultFields) > 0 {
 			query.Set("fields", strings.Join(defaultFields, ","))
 		}
@@ -1110,8 +1113,9 @@ func ListUserAdaccountsHandler(ctx context.Context, request mcp.CallToolRequest,
 	if len(args.Fields) > 0 {
 		query.Set("fields", strings.Join(args.Fields, ","))
 	} else {
-		// Use default fields
-		defaultFields := GetDefaultFields("User")
+		// Use default fields for the return type
+		defaultFields := GetDefaultFields("AdAccount")
+		log.Printf("Using default fields for AdAccount (return type): %v", defaultFields)
 		if len(defaultFields) > 0 {
 			query.Set("fields", strings.Join(defaultFields, ","))
 		}
@@ -1157,8 +1161,9 @@ func ListUserAlbumsHandler(ctx context.Context, request mcp.CallToolRequest, arg
 	if len(args.Fields) > 0 {
 		query.Set("fields", strings.Join(args.Fields, ","))
 	} else {
-		// Use default fields
-		defaultFields := GetDefaultFields("User")
+		// Use default fields for the return type
+		defaultFields := GetDefaultFields("Album")
+		log.Printf("Using default fields for Album (return type): %v", defaultFields)
 		if len(defaultFields) > 0 {
 			query.Set("fields", strings.Join(defaultFields, ","))
 		}
@@ -1223,8 +1228,9 @@ func ListUserApprequestformerrecipientsHandler(ctx context.Context, request mcp.
 	if len(args.Fields) > 0 {
 		query.Set("fields", strings.Join(args.Fields, ","))
 	} else {
-		// Use default fields
-		defaultFields := GetDefaultFields("User")
+		// Use default fields for the return type
+		defaultFields := GetDefaultFields("AppRequestFormerRecipient")
+		log.Printf("Using default fields for AppRequestFormerRecipient (return type): %v", defaultFields)
 		if len(defaultFields) > 0 {
 			query.Set("fields", strings.Join(defaultFields, ","))
 		}
@@ -1270,8 +1276,9 @@ func ListUserApprequestsHandler(ctx context.Context, request mcp.CallToolRequest
 	if len(args.Fields) > 0 {
 		query.Set("fields", strings.Join(args.Fields, ","))
 	} else {
-		// Use default fields
-		defaultFields := GetDefaultFields("User")
+		// Use default fields for the return type
+		defaultFields := GetDefaultFields("AppRequest")
+		log.Printf("Using default fields for AppRequest (return type): %v", defaultFields)
 		if len(defaultFields) > 0 {
 			query.Set("fields", strings.Join(defaultFields, ","))
 		}
@@ -1317,8 +1324,9 @@ func ListUserAssignedAdAccountsHandler(ctx context.Context, request mcp.CallTool
 	if len(args.Fields) > 0 {
 		query.Set("fields", strings.Join(args.Fields, ","))
 	} else {
-		// Use default fields
-		defaultFields := GetDefaultFields("User")
+		// Use default fields for the return type
+		defaultFields := GetDefaultFields("AdAccount")
+		log.Printf("Using default fields for AdAccount (return type): %v", defaultFields)
 		if len(defaultFields) > 0 {
 			query.Set("fields", strings.Join(defaultFields, ","))
 		}
@@ -1364,8 +1372,9 @@ func ListUserAssignedApplicationsHandler(ctx context.Context, request mcp.CallTo
 	if len(args.Fields) > 0 {
 		query.Set("fields", strings.Join(args.Fields, ","))
 	} else {
-		// Use default fields
-		defaultFields := GetDefaultFields("User")
+		// Use default fields for the return type
+		defaultFields := GetDefaultFields("Application")
+		log.Printf("Using default fields for Application (return type): %v", defaultFields)
 		if len(defaultFields) > 0 {
 			query.Set("fields", strings.Join(defaultFields, ","))
 		}
@@ -1411,8 +1420,9 @@ func ListUserAssignedBusinessAssetGroupsHandler(ctx context.Context, request mcp
 	if len(args.Fields) > 0 {
 		query.Set("fields", strings.Join(args.Fields, ","))
 	} else {
-		// Use default fields
-		defaultFields := GetDefaultFields("User")
+		// Use default fields for the return type
+		defaultFields := GetDefaultFields("BusinessAssetGroup")
+		log.Printf("Using default fields for BusinessAssetGroup (return type): %v", defaultFields)
 		if len(defaultFields) > 0 {
 			query.Set("fields", strings.Join(defaultFields, ","))
 		}
@@ -1462,8 +1472,9 @@ func ListUserAssignedPagesHandler(ctx context.Context, request mcp.CallToolReque
 	if len(args.Fields) > 0 {
 		query.Set("fields", strings.Join(args.Fields, ","))
 	} else {
-		// Use default fields
-		defaultFields := GetDefaultFields("User")
+		// Use default fields for the return type
+		defaultFields := GetDefaultFields("Page")
+		log.Printf("Using default fields for Page (return type): %v", defaultFields)
 		if len(defaultFields) > 0 {
 			query.Set("fields", strings.Join(defaultFields, ","))
 		}
@@ -1509,8 +1520,9 @@ func ListUserAssignedProductCatalogsHandler(ctx context.Context, request mcp.Cal
 	if len(args.Fields) > 0 {
 		query.Set("fields", strings.Join(args.Fields, ","))
 	} else {
-		// Use default fields
-		defaultFields := GetDefaultFields("User")
+		// Use default fields for the return type
+		defaultFields := GetDefaultFields("ProductCatalog")
+		log.Printf("Using default fields for ProductCatalog (return type): %v", defaultFields)
 		if len(defaultFields) > 0 {
 			query.Set("fields", strings.Join(defaultFields, ","))
 		}
@@ -1556,8 +1568,9 @@ func ListUserAvatarsHandler(ctx context.Context, request mcp.CallToolRequest, ar
 	if len(args.Fields) > 0 {
 		query.Set("fields", strings.Join(args.Fields, ","))
 	} else {
-		// Use default fields
-		defaultFields := GetDefaultFields("User")
+		// Use default fields for the return type
+		defaultFields := GetDefaultFields("Avatar")
+		log.Printf("Using default fields for Avatar (return type): %v", defaultFields)
 		if len(defaultFields) > 0 {
 			query.Set("fields", strings.Join(defaultFields, ","))
 		}
@@ -1599,8 +1612,9 @@ func ListUserBusinessUsersHandler(ctx context.Context, request mcp.CallToolReque
 	if len(args.Fields) > 0 {
 		query.Set("fields", strings.Join(args.Fields, ","))
 	} else {
-		// Use default fields
-		defaultFields := GetDefaultFields("User")
+		// Use default fields for the return type
+		defaultFields := GetDefaultFields("BusinessUser")
+		log.Printf("Using default fields for BusinessUser (return type): %v", defaultFields)
 		if len(defaultFields) > 0 {
 			query.Set("fields", strings.Join(defaultFields, ","))
 		}
@@ -1660,8 +1674,9 @@ func ListUserBusinessesHandler(ctx context.Context, request mcp.CallToolRequest,
 	if len(args.Fields) > 0 {
 		query.Set("fields", strings.Join(args.Fields, ","))
 	} else {
-		// Use default fields
-		defaultFields := GetDefaultFields("User")
+		// Use default fields for the return type
+		defaultFields := GetDefaultFields("Business")
+		log.Printf("Using default fields for Business (return type): %v", defaultFields)
 		if len(defaultFields) > 0 {
 			query.Set("fields", strings.Join(defaultFields, ","))
 		}
@@ -1766,8 +1781,9 @@ func ListUserConversationsHandler(ctx context.Context, request mcp.CallToolReque
 	if len(args.Fields) > 0 {
 		query.Set("fields", strings.Join(args.Fields, ","))
 	} else {
-		// Use default fields
-		defaultFields := GetDefaultFields("User")
+		// Use default fields for the return type
+		defaultFields := GetDefaultFields("UnifiedThread")
+		log.Printf("Using default fields for UnifiedThread (return type): %v", defaultFields)
 		if len(defaultFields) > 0 {
 			query.Set("fields", strings.Join(defaultFields, ","))
 		}
@@ -1829,8 +1845,9 @@ func ListUserCustomLabelsHandler(ctx context.Context, request mcp.CallToolReques
 	if len(args.Fields) > 0 {
 		query.Set("fields", strings.Join(args.Fields, ","))
 	} else {
-		// Use default fields
-		defaultFields := GetDefaultFields("User")
+		// Use default fields for the return type
+		defaultFields := GetDefaultFields("PageUserMessageThreadLabel")
+		log.Printf("Using default fields for PageUserMessageThreadLabel (return type): %v", defaultFields)
 		if len(defaultFields) > 0 {
 			query.Set("fields", strings.Join(defaultFields, ","))
 		}
@@ -1876,8 +1893,9 @@ func ListUserEventsHandler(ctx context.Context, request mcp.CallToolRequest, arg
 	if len(args.Fields) > 0 {
 		query.Set("fields", strings.Join(args.Fields, ","))
 	} else {
-		// Use default fields
-		defaultFields := GetDefaultFields("User")
+		// Use default fields for the return type
+		defaultFields := GetDefaultFields("Event")
+		log.Printf("Using default fields for Event (return type): %v", defaultFields)
 		if len(defaultFields) > 0 {
 			query.Set("fields", strings.Join(defaultFields, ","))
 		}
@@ -1931,8 +1949,9 @@ func GetUserFeedHandler(ctx context.Context, request mcp.CallToolRequest, args g
 	if len(args.Fields) > 0 {
 		query.Set("fields", strings.Join(args.Fields, ","))
 	} else {
-		// Use default fields
-		defaultFields := GetDefaultFields("User")
+		// Use default fields for the return type
+		defaultFields := GetDefaultFields("Post")
+		log.Printf("Using default fields for Post (return type): %v", defaultFields)
 		if len(defaultFields) > 0 {
 			query.Set("fields", strings.Join(defaultFields, ","))
 		}
@@ -2409,8 +2428,9 @@ func ListUserFriendsHandler(ctx context.Context, request mcp.CallToolRequest, ar
 	if len(args.Fields) > 0 {
 		query.Set("fields", strings.Join(args.Fields, ","))
 	} else {
-		// Use default fields
+		// Use default fields for the return type
 		defaultFields := GetDefaultFields("User")
+		log.Printf("Using default fields for User (return type): %v", defaultFields)
 		if len(defaultFields) > 0 {
 			query.Set("fields", strings.Join(defaultFields, ","))
 		}
@@ -2460,8 +2480,9 @@ func ListUserFundraisersHandler(ctx context.Context, request mcp.CallToolRequest
 	if len(args.Fields) > 0 {
 		query.Set("fields", strings.Join(args.Fields, ","))
 	} else {
-		// Use default fields
-		defaultFields := GetDefaultFields("User")
+		// Use default fields for the return type
+		defaultFields := GetDefaultFields("FundraiserPersonToCharity")
+		log.Printf("Using default fields for FundraiserPersonToCharity (return type): %v", defaultFields)
 		if len(defaultFields) > 0 {
 			query.Set("fields", strings.Join(defaultFields, ","))
 		}
@@ -2582,8 +2603,9 @@ func ListUserGroupsHandler(ctx context.Context, request mcp.CallToolRequest, arg
 	if len(args.Fields) > 0 {
 		query.Set("fields", strings.Join(args.Fields, ","))
 	} else {
-		// Use default fields
-		defaultFields := GetDefaultFields("User")
+		// Use default fields for the return type
+		defaultFields := GetDefaultFields("Group")
+		log.Printf("Using default fields for Group (return type): %v", defaultFields)
 		if len(defaultFields) > 0 {
 			query.Set("fields", strings.Join(defaultFields, ","))
 		}
@@ -2637,8 +2659,9 @@ func ListUserIdsForAppsHandler(ctx context.Context, request mcp.CallToolRequest,
 	if len(args.Fields) > 0 {
 		query.Set("fields", strings.Join(args.Fields, ","))
 	} else {
-		// Use default fields
-		defaultFields := GetDefaultFields("User")
+		// Use default fields for the return type
+		defaultFields := GetDefaultFields("UserIDForApp")
+		log.Printf("Using default fields for UserIDForApp (return type): %v", defaultFields)
 		if len(defaultFields) > 0 {
 			query.Set("fields", strings.Join(defaultFields, ","))
 		}
@@ -2688,8 +2711,9 @@ func ListUserIdsForBusinessHandler(ctx context.Context, request mcp.CallToolRequ
 	if len(args.Fields) > 0 {
 		query.Set("fields", strings.Join(args.Fields, ","))
 	} else {
-		// Use default fields
-		defaultFields := GetDefaultFields("User")
+		// Use default fields for the return type
+		defaultFields := GetDefaultFields("UserIDForApp")
+		log.Printf("Using default fields for UserIDForApp (return type): %v", defaultFields)
 		if len(defaultFields) > 0 {
 			query.Set("fields", strings.Join(defaultFields, ","))
 		}
@@ -2739,8 +2763,9 @@ func ListUserIdsForPagesHandler(ctx context.Context, request mcp.CallToolRequest
 	if len(args.Fields) > 0 {
 		query.Set("fields", strings.Join(args.Fields, ","))
 	} else {
-		// Use default fields
-		defaultFields := GetDefaultFields("User")
+		// Use default fields for the return type
+		defaultFields := GetDefaultFields("UserIDForPage")
+		log.Printf("Using default fields for UserIDForPage (return type): %v", defaultFields)
 		if len(defaultFields) > 0 {
 			query.Set("fields", strings.Join(defaultFields, ","))
 		}
@@ -2790,8 +2815,9 @@ func ListUserLikesHandler(ctx context.Context, request mcp.CallToolRequest, args
 	if len(args.Fields) > 0 {
 		query.Set("fields", strings.Join(args.Fields, ","))
 	} else {
-		// Use default fields
-		defaultFields := GetDefaultFields("User")
+		// Use default fields for the return type
+		defaultFields := GetDefaultFields("Page")
+		log.Printf("Using default fields for Page (return type): %v", defaultFields)
 		if len(defaultFields) > 0 {
 			query.Set("fields", strings.Join(defaultFields, ","))
 		}
@@ -2841,8 +2867,9 @@ func ListUserLiveVideosHandler(ctx context.Context, request mcp.CallToolRequest,
 	if len(args.Fields) > 0 {
 		query.Set("fields", strings.Join(args.Fields, ","))
 	} else {
-		// Use default fields
-		defaultFields := GetDefaultFields("User")
+		// Use default fields for the return type
+		defaultFields := GetDefaultFields("LiveVideo")
+		log.Printf("Using default fields for LiveVideo (return type): %v", defaultFields)
 		if len(defaultFields) > 0 {
 			query.Set("fields", strings.Join(defaultFields, ","))
 		}
@@ -3017,8 +3044,9 @@ func GetUserMusicHandler(ctx context.Context, request mcp.CallToolRequest, args 
 	if len(args.Fields) > 0 {
 		query.Set("fields", strings.Join(args.Fields, ","))
 	} else {
-		// Use default fields
-		defaultFields := GetDefaultFields("User")
+		// Use default fields for the return type
+		defaultFields := GetDefaultFields("Page")
+		log.Printf("Using default fields for Page (return type): %v", defaultFields)
 		if len(defaultFields) > 0 {
 			query.Set("fields", strings.Join(defaultFields, ","))
 		}
@@ -3131,8 +3159,9 @@ func ListUserPaymentTransactionsHandler(ctx context.Context, request mcp.CallToo
 	if len(args.Fields) > 0 {
 		query.Set("fields", strings.Join(args.Fields, ","))
 	} else {
-		// Use default fields
-		defaultFields := GetDefaultFields("User")
+		// Use default fields for the return type
+		defaultFields := GetDefaultFields("PaymentEnginePayment")
+		log.Printf("Using default fields for PaymentEnginePayment (return type): %v", defaultFields)
 		if len(defaultFields) > 0 {
 			query.Set("fields", strings.Join(defaultFields, ","))
 		}
@@ -3192,8 +3221,9 @@ func ListUserPermissionsHandler(ctx context.Context, request mcp.CallToolRequest
 	if len(args.Fields) > 0 {
 		query.Set("fields", strings.Join(args.Fields, ","))
 	} else {
-		// Use default fields
-		defaultFields := GetDefaultFields("User")
+		// Use default fields for the return type
+		defaultFields := GetDefaultFields("Permission")
+		log.Printf("Using default fields for Permission (return type): %v", defaultFields)
 		if len(defaultFields) > 0 {
 			query.Set("fields", strings.Join(defaultFields, ","))
 		}
@@ -3247,8 +3277,9 @@ func ListUserPersonalAdAccountsHandler(ctx context.Context, request mcp.CallTool
 	if len(args.Fields) > 0 {
 		query.Set("fields", strings.Join(args.Fields, ","))
 	} else {
-		// Use default fields
-		defaultFields := GetDefaultFields("User")
+		// Use default fields for the return type
+		defaultFields := GetDefaultFields("AdAccount")
+		log.Printf("Using default fields for AdAccount (return type): %v", defaultFields)
 		if len(defaultFields) > 0 {
 			query.Set("fields", strings.Join(defaultFields, ","))
 		}
@@ -3294,8 +3325,9 @@ func ListUserPhotosHandler(ctx context.Context, request mcp.CallToolRequest, arg
 	if len(args.Fields) > 0 {
 		query.Set("fields", strings.Join(args.Fields, ","))
 	} else {
-		// Use default fields
-		defaultFields := GetDefaultFields("User")
+		// Use default fields for the return type
+		defaultFields := GetDefaultFields("Photo")
+		log.Printf("Using default fields for Photo (return type): %v", defaultFields)
 		if len(defaultFields) > 0 {
 			query.Set("fields", strings.Join(defaultFields, ","))
 		}
@@ -3552,8 +3584,9 @@ func GetUserPictureHandler(ctx context.Context, request mcp.CallToolRequest, arg
 	if len(args.Fields) > 0 {
 		query.Set("fields", strings.Join(args.Fields, ","))
 	} else {
-		// Use default fields
-		defaultFields := GetDefaultFields("User")
+		// Use default fields for the return type
+		defaultFields := GetDefaultFields("ProfilePictureSource")
+		log.Printf("Using default fields for ProfilePictureSource (return type): %v", defaultFields)
 		if len(defaultFields) > 0 {
 			query.Set("fields", strings.Join(defaultFields, ","))
 		}
@@ -3615,8 +3648,9 @@ func ListUserPostsHandler(ctx context.Context, request mcp.CallToolRequest, args
 	if len(args.Fields) > 0 {
 		query.Set("fields", strings.Join(args.Fields, ","))
 	} else {
-		// Use default fields
-		defaultFields := GetDefaultFields("User")
+		// Use default fields for the return type
+		defaultFields := GetDefaultFields("Post")
+		log.Printf("Using default fields for Post (return type): %v", defaultFields)
 		if len(defaultFields) > 0 {
 			query.Set("fields", strings.Join(defaultFields, ","))
 		}
@@ -3682,8 +3716,9 @@ func ListUserRichMediaDocumentsHandler(ctx context.Context, request mcp.CallTool
 	if len(args.Fields) > 0 {
 		query.Set("fields", strings.Join(args.Fields, ","))
 	} else {
-		// Use default fields
-		defaultFields := GetDefaultFields("User")
+		// Use default fields for the return type
+		defaultFields := GetDefaultFields("Canvas")
+		log.Printf("Using default fields for Canvas (return type): %v", defaultFields)
 		if len(defaultFields) > 0 {
 			query.Set("fields", strings.Join(defaultFields, ","))
 		}
@@ -3756,8 +3791,9 @@ func ListUserVideosHandler(ctx context.Context, request mcp.CallToolRequest, arg
 	if len(args.Fields) > 0 {
 		query.Set("fields", strings.Join(args.Fields, ","))
 	} else {
-		// Use default fields
-		defaultFields := GetDefaultFields("User")
+		// Use default fields for the return type
+		defaultFields := GetDefaultFields("AdVideo")
+		log.Printf("Using default fields for AdVideo (return type): %v", defaultFields)
 		if len(defaultFields) > 0 {
 			query.Set("fields", strings.Join(defaultFields, ","))
 		}
@@ -4102,8 +4138,9 @@ func GetUserHandler(ctx context.Context, request mcp.CallToolRequest, args get_u
 	if len(args.Fields) > 0 {
 		query.Set("fields", strings.Join(args.Fields, ","))
 	} else {
-		// Use default fields
+		// Use default fields for the return type
 		defaultFields := GetDefaultFields("User")
+		log.Printf("Using default fields for User (return type): %v", defaultFields)
 		if len(defaultFields) > 0 {
 			query.Set("fields", strings.Join(defaultFields, ","))
 		}

@@ -5,6 +5,7 @@ package generated
 import (
 	"context"
 	"fmt"
+	"log"
 	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
@@ -204,8 +205,9 @@ func ListAdAdcreativesHandler(ctx context.Context, request mcp.CallToolRequest, 
 	if len(args.Fields) > 0 {
 		query.Set("fields", strings.Join(args.Fields, ","))
 	} else {
-		// Use default fields
-		defaultFields := GetDefaultFields("Ad")
+		// Use default fields for the return type
+		defaultFields := GetDefaultFields("AdCreative")
+		log.Printf("Using default fields for AdCreative (return type): %v", defaultFields)
 		if len(defaultFields) > 0 {
 			query.Set("fields", strings.Join(defaultFields, ","))
 		}
@@ -270,8 +272,9 @@ func GetAdAdrulesGovernedHandler(ctx context.Context, request mcp.CallToolReques
 	if len(args.Fields) > 0 {
 		query.Set("fields", strings.Join(args.Fields, ","))
 	} else {
-		// Use default fields
-		defaultFields := GetDefaultFields("Ad")
+		// Use default fields for the return type
+		defaultFields := GetDefaultFields("AdRule")
+		log.Printf("Using default fields for AdRule (return type): %v", defaultFields)
 		if len(defaultFields) > 0 {
 			query.Set("fields", strings.Join(defaultFields, ","))
 		}
@@ -321,8 +324,9 @@ func ListAdCopiesHandler(ctx context.Context, request mcp.CallToolRequest, args 
 	if len(args.Fields) > 0 {
 		query.Set("fields", strings.Join(args.Fields, ","))
 	} else {
-		// Use default fields
+		// Use default fields for the return type
 		defaultFields := GetDefaultFields("Ad")
+		log.Printf("Using default fields for Ad (return type): %v", defaultFields)
 		if len(defaultFields) > 0 {
 			query.Set("fields", strings.Join(defaultFields, ","))
 		}
@@ -420,8 +424,9 @@ func GetAdInsightsHandler(ctx context.Context, request mcp.CallToolRequest, args
 	if len(args.Fields) > 0 {
 		query.Set("fields", strings.Join(args.Fields, ","))
 	} else {
-		// Use default fields
-		defaultFields := GetDefaultFields("Ad")
+		// Use default fields for the return type
+		defaultFields := GetDefaultFields("AdsInsights")
+		log.Printf("Using default fields for AdsInsights (return type): %v", defaultFields)
 		if len(defaultFields) > 0 {
 			query.Set("fields", strings.Join(defaultFields, ","))
 		}
@@ -637,8 +642,9 @@ func ListAdLeadsHandler(ctx context.Context, request mcp.CallToolRequest, args l
 	if len(args.Fields) > 0 {
 		query.Set("fields", strings.Join(args.Fields, ","))
 	} else {
-		// Use default fields
-		defaultFields := GetDefaultFields("Ad")
+		// Use default fields for the return type
+		defaultFields := GetDefaultFields("Lead")
+		log.Printf("Using default fields for Lead (return type): %v", defaultFields)
 		if len(defaultFields) > 0 {
 			query.Set("fields", strings.Join(defaultFields, ","))
 		}
@@ -684,8 +690,9 @@ func ListAdPreviewsHandler(ctx context.Context, request mcp.CallToolRequest, arg
 	if len(args.Fields) > 0 {
 		query.Set("fields", strings.Join(args.Fields, ","))
 	} else {
-		// Use default fields
-		defaultFields := GetDefaultFields("Ad")
+		// Use default fields for the return type
+		defaultFields := GetDefaultFields("AdPreview")
+		log.Printf("Using default fields for AdPreview (return type): %v", defaultFields)
 		if len(defaultFields) > 0 {
 			query.Set("fields", strings.Join(defaultFields, ","))
 		}
@@ -790,8 +797,9 @@ func ListAdTargetingsentencelinesHandler(ctx context.Context, request mcp.CallTo
 	if len(args.Fields) > 0 {
 		query.Set("fields", strings.Join(args.Fields, ","))
 	} else {
-		// Use default fields
-		defaultFields := GetDefaultFields("Ad")
+		// Use default fields for the return type
+		defaultFields := GetDefaultFields("TargetingSentenceLine")
+		log.Printf("Using default fields for TargetingSentenceLine (return type): %v", defaultFields)
 		if len(defaultFields) > 0 {
 			query.Set("fields", strings.Join(defaultFields, ","))
 		}
@@ -851,8 +859,9 @@ func GetAdHandler(ctx context.Context, request mcp.CallToolRequest, args get_adA
 	if len(args.Fields) > 0 {
 		query.Set("fields", strings.Join(args.Fields, ","))
 	} else {
-		// Use default fields
+		// Use default fields for the return type
 		defaultFields := GetDefaultFields("Ad")
+		log.Printf("Using default fields for Ad (return type): %v", defaultFields)
 		if len(defaultFields) > 0 {
 			query.Set("fields", strings.Join(defaultFields, ","))
 		}

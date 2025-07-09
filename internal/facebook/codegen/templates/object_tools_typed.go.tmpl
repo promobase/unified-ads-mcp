@@ -5,6 +5,7 @@ package generated
 import (
 	"context"
 	"fmt"
+	"log"
 	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
@@ -39,8 +40,10 @@ func {{.HandlerName}}(ctx context.Context, request mcp.CallToolRequest, args {{.
 	if len(args.Fields) > 0 {
 		query.Set("fields", strings.Join(args.Fields, ","))
 	} else {
-		// Use default fields
-		defaultFields := GetDefaultFields("{{.ObjectName}}")
+		// Use default fields for the return type
+		{{if and .Return (ne .Return "") (ne .Return "Object")}}defaultFields := GetDefaultFields("{{.Return}}")
+		log.Printf("Using default fields for {{.Return}} (return type): %v", defaultFields){{else}}defaultFields := GetDefaultFields("{{.ObjectName}}")
+		log.Printf("Using default fields for {{.ObjectName}} (object type): %v", defaultFields){{end}}
 		if len(defaultFields) > 0 {
 			query.Set("fields", strings.Join(defaultFields, ","))
 		}

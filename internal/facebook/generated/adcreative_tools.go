@@ -5,6 +5,7 @@ package generated
 import (
 	"context"
 	"fmt"
+	"log"
 	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
@@ -115,8 +116,9 @@ func ListAdCreativeCreativeInsightsHandler(ctx context.Context, request mcp.Call
 	if len(args.Fields) > 0 {
 		query.Set("fields", strings.Join(args.Fields, ","))
 	} else {
-		// Use default fields
-		defaultFields := GetDefaultFields("AdCreative")
+		// Use default fields for the return type
+		defaultFields := GetDefaultFields("AdCreativeInsights")
+		log.Printf("Using default fields for AdCreativeInsights (return type): %v", defaultFields)
 		if len(defaultFields) > 0 {
 			query.Set("fields", strings.Join(defaultFields, ","))
 		}
@@ -162,8 +164,9 @@ func ListAdCreativePreviewsHandler(ctx context.Context, request mcp.CallToolRequ
 	if len(args.Fields) > 0 {
 		query.Set("fields", strings.Join(args.Fields, ","))
 	} else {
-		// Use default fields
-		defaultFields := GetDefaultFields("AdCreative")
+		// Use default fields for the return type
+		defaultFields := GetDefaultFields("AdPreview")
+		log.Printf("Using default fields for AdPreview (return type): %v", defaultFields)
 		if len(defaultFields) > 0 {
 			query.Set("fields", strings.Join(defaultFields, ","))
 		}
@@ -282,8 +285,9 @@ func GetAdCreativeHandler(ctx context.Context, request mcp.CallToolRequest, args
 	if len(args.Fields) > 0 {
 		query.Set("fields", strings.Join(args.Fields, ","))
 	} else {
-		// Use default fields
+		// Use default fields for the return type
 		defaultFields := GetDefaultFields("AdCreative")
+		log.Printf("Using default fields for AdCreative (return type): %v", defaultFields)
 		if len(defaultFields) > 0 {
 			query.Set("fields", strings.Join(defaultFields, ","))
 		}
