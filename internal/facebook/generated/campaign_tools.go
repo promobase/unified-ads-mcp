@@ -12,8 +12,8 @@ import (
 	"github.com/mark3labs/mcp-go/server"
 )
 
-// list_campaign_ad_studiesArgs defines the typed arguments for list_campaign_ad_studies
-type list_campaign_ad_studiesArgs struct {
+// campaign_list_ad_studiesArgs defines the typed arguments for campaign_list_ad_studies
+type campaign_list_ad_studiesArgs struct {
 	ID     string   `json:"id" jsonschema:"required,description=Campaign ID,pattern=^[0-9]+$"`
 	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
 	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
@@ -21,15 +21,15 @@ type list_campaign_ad_studiesArgs struct {
 	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
 }
 
-// create_campaign_adlabelArgs defines the typed arguments for create_campaign_adlabel
-type create_campaign_adlabelArgs struct {
+// campaign_create_adlabelArgs defines the typed arguments for campaign_create_adlabel
+type campaign_create_adlabelArgs struct {
 	ID               string     `json:"id" jsonschema:"required,description=Campaign ID,pattern=^[0-9]+$"`
 	Adlabels         []*AdLabel `json:"adlabels" jsonschema:"description=Adlabels,required"`
 	ExecutionOptions []string   `json:"execution_options,omitempty" jsonschema:"description=Execution Options"`
 }
 
-// get_campaign_adrules_governedArgs defines the typed arguments for get_campaign_adrules_governed
-type get_campaign_adrules_governedArgs struct {
+// campaign_get_adrules_governedArgs defines the typed arguments for campaign_get_adrules_governed
+type campaign_get_adrules_governedArgs struct {
 	ID             string   `json:"id" jsonschema:"required,description=Campaign ID,pattern=^[0-9]+$"`
 	Fields         []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
 	Limit          int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
@@ -38,8 +38,8 @@ type get_campaign_adrules_governedArgs struct {
 	PassEvaluation bool     `json:"pass_evaluation,omitempty" jsonschema:"description=Pass Evaluation"`
 }
 
-// list_campaign_adsArgs defines the typed arguments for list_campaign_ads
-type list_campaign_adsArgs struct {
+// campaign_list_adsArgs defines the typed arguments for campaign_list_ads
+type campaign_list_adsArgs struct {
 	ID              string                 `json:"id" jsonschema:"required,description=Campaign ID,pattern=^[0-9]+$"`
 	Fields          []string               `json:"fields,omitempty" jsonschema:"description=Fields to return"`
 	Limit           int                    `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
@@ -51,8 +51,8 @@ type list_campaign_adsArgs struct {
 	UpdatedSince    int                    `json:"updated_since,omitempty" jsonschema:"description=When last updated"`
 }
 
-// list_campaign_adsetsArgs defines the typed arguments for list_campaign_adsets
-type list_campaign_adsetsArgs struct {
+// campaign_list_adsetsArgs defines the typed arguments for campaign_list_adsets
+type campaign_list_adsetsArgs struct {
 	ID              string                 `json:"id" jsonschema:"required,description=Campaign ID,pattern=^[0-9]+$"`
 	Fields          []string               `json:"fields,omitempty" jsonschema:"description=Fields to return"`
 	Limit           int                    `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
@@ -64,8 +64,8 @@ type list_campaign_adsetsArgs struct {
 	TimeRange       map[string]interface{} `json:"time_range,omitempty" jsonschema:"description=Time Range"`
 }
 
-// create_campaign_budget_scheduleArgs defines the typed arguments for create_campaign_budget_schedule
-type create_campaign_budget_scheduleArgs struct {
+// campaign_create_budget_scheduleArgs defines the typed arguments for campaign_create_budget_schedule
+type campaign_create_budget_scheduleArgs struct {
 	ID              string `json:"id" jsonschema:"required,description=Campaign ID,pattern=^[0-9]+$"`
 	BudgetValue     int    `json:"budget_value" jsonschema:"description=Budget Value,required,minimum=1"`
 	BudgetValueType string `json:"budget_value_type" jsonschema:"description=Budget Value Type,required"`
@@ -73,8 +73,8 @@ type create_campaign_budget_scheduleArgs struct {
 	TimeStart       int    `json:"time_start" jsonschema:"description=Time Start,required"`
 }
 
-// list_campaign_copiesArgs defines the typed arguments for list_campaign_copies
-type list_campaign_copiesArgs struct {
+// campaign_list_copiesArgs defines the typed arguments for campaign_list_copies
+type campaign_list_copiesArgs struct {
 	ID              string                 `json:"id" jsonschema:"required,description=Campaign ID,pattern=^[0-9]+$"`
 	Fields          []string               `json:"fields,omitempty" jsonschema:"description=Fields to return"`
 	Limit           int                    `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
@@ -86,8 +86,8 @@ type list_campaign_copiesArgs struct {
 	TimeRange       map[string]interface{} `json:"time_range,omitempty" jsonschema:"description=Time Range"`
 }
 
-// create_campaign_copieArgs defines the typed arguments for create_campaign_copie
-type create_campaign_copieArgs struct {
+// campaign_create_copieArgs defines the typed arguments for campaign_create_copie
+type campaign_create_copieArgs struct {
 	ID            string                 `json:"id" jsonschema:"required,description=Campaign ID,pattern=^[0-9]+$"`
 	DeepCopy      bool                   `json:"deep_copy,omitempty" jsonschema:"description=Deep Copy"`
 	EndTime       string                 `json:"end_time,omitempty" jsonschema:"description=End Time,format=date-time"`
@@ -96,8 +96,8 @@ type create_campaign_copieArgs struct {
 	StatusOption  string                 `json:"status_option,omitempty" jsonschema:"description=Status Option"`
 }
 
-// get_campaign_insightsArgs defines the typed arguments for get_campaign_insights
-type get_campaign_insightsArgs struct {
+// campaign_get_insightsArgs defines the typed arguments for campaign_get_insights
+type campaign_get_insightsArgs struct {
 	ID                           string                   `json:"id" jsonschema:"required,description=Campaign ID,pattern=^[0-9]+$"`
 	Fields                       []string                 `json:"fields,omitempty" jsonschema:"description=Fields to return"`
 	Limit                        int                      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
@@ -125,8 +125,8 @@ type get_campaign_insightsArgs struct {
 	UseUnifiedAttributionSetting bool                     `json:"use_unified_attribution_setting,omitempty" jsonschema:"description=Use Unified Attribution Setting"`
 }
 
-// create_campaign_insights_reportArgs defines the typed arguments for create_campaign_insights_report
-type create_campaign_insights_reportArgs struct {
+// campaign_create_insights_reportArgs defines the typed arguments for campaign_create_insights_report
+type campaign_create_insights_reportArgs struct {
 	ID                           string                   `json:"id" jsonschema:"required,description=Campaign ID,pattern=^[0-9]+$"`
 	ActionAttributionWindows     []string                 `json:"action_attribution_windows,omitempty" jsonschema:"description=Action Attribution Windows"`
 	ActionBreakdowns             []string                 `json:"action_breakdowns,omitempty" jsonschema:"description=Action Breakdowns"`
@@ -152,13 +152,13 @@ type create_campaign_insights_reportArgs struct {
 	UseUnifiedAttributionSetting bool                     `json:"use_unified_attribution_setting,omitempty" jsonschema:"description=Use Unified Attribution Setting"`
 }
 
-// delete_campaignArgs defines the typed arguments for delete_campaign
-type delete_campaignArgs struct {
+// campaign_deleteArgs defines the typed arguments for campaign_delete
+type campaign_deleteArgs struct {
 	ID string `json:"id" jsonschema:"required,description=Campaign ID,pattern=^[0-9]+$"`
 }
 
-// get_campaignArgs defines the typed arguments for get_campaign
-type get_campaignArgs struct {
+// campaign_getArgs defines the typed arguments for campaign_get
+type campaign_getArgs struct {
 	ID          string                 `json:"id" jsonschema:"required,description=Campaign ID,pattern=^[0-9]+$"`
 	Fields      []string               `json:"fields,omitempty" jsonschema:"description=Fields to return"`
 	Limit       int                    `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
@@ -170,8 +170,8 @@ type get_campaignArgs struct {
 	TimeRange   map[string]interface{} `json:"time_range,omitempty" jsonschema:"description=Time Range"`
 }
 
-// update_campaignArgs defines the typed arguments for update_campaign
-type update_campaignArgs struct {
+// campaign_updateArgs defines the typed arguments for campaign_update
+type campaign_updateArgs struct {
 	ID                        string                   `json:"id" jsonschema:"required,description=Campaign ID,pattern=^[0-9]+$"`
 	Adlabels                  []*AdLabel               `json:"adlabels,omitempty" jsonschema:"description=Adlabels"`
 	AdsetBidAmounts           map[string]interface{}   `json:"adset_bid_amounts,omitempty" jsonschema:"description=Adset Bid Amounts,minimum=1"`
@@ -197,8 +197,8 @@ type update_campaignArgs struct {
 	StopTime                  string                   `json:"stop_time,omitempty" jsonschema:"description=Stop Time,format=date-time"`
 }
 
-// ListCampaignAdStudiesHandler handles list_campaign_ad_studies with raw schema validation
-func ListCampaignAdStudiesHandler(ctx context.Context, request mcp.CallToolRequest, args list_campaign_ad_studiesArgs) (*mcp.CallToolResult, error) {
+// CampaignListAdStudiesHandler handles campaign_list_ad_studies with raw schema validation
+func CampaignListAdStudiesHandler(ctx context.Context, request mcp.CallToolRequest, args campaign_list_ad_studiesArgs) (*mcp.CallToolResult, error) {
 	// Arguments are explicitly passed as typed struct
 
 	// Build query parameters
@@ -245,8 +245,8 @@ func ListCampaignAdStudiesHandler(ctx context.Context, request mcp.CallToolReque
 
 }
 
-// CreateCampaignAdlabelHandler handles create_campaign_adlabel with raw schema validation
-func CreateCampaignAdlabelHandler(ctx context.Context, request mcp.CallToolRequest, args create_campaign_adlabelArgs) (*mcp.CallToolResult, error) {
+// CampaignCreateAdlabelHandler handles campaign_create_adlabel with raw schema validation
+func CampaignCreateAdlabelHandler(ctx context.Context, request mcp.CallToolRequest, args campaign_create_adlabelArgs) (*mcp.CallToolResult, error) {
 	// Arguments are explicitly passed as typed struct
 
 	// Build request body
@@ -273,8 +273,8 @@ func CreateCampaignAdlabelHandler(ctx context.Context, request mcp.CallToolReque
 
 }
 
-// GetCampaignAdrulesGovernedHandler handles get_campaign_adrules_governed with raw schema validation
-func GetCampaignAdrulesGovernedHandler(ctx context.Context, request mcp.CallToolRequest, args get_campaign_adrules_governedArgs) (*mcp.CallToolResult, error) {
+// CampaignGetAdrulesGovernedHandler handles campaign_get_adrules_governed with raw schema validation
+func CampaignGetAdrulesGovernedHandler(ctx context.Context, request mcp.CallToolRequest, args campaign_get_adrules_governedArgs) (*mcp.CallToolResult, error) {
 	// Arguments are explicitly passed as typed struct
 
 	// Build query parameters
@@ -325,8 +325,8 @@ func GetCampaignAdrulesGovernedHandler(ctx context.Context, request mcp.CallTool
 
 }
 
-// ListCampaignAdsHandler handles list_campaign_ads with raw schema validation
-func ListCampaignAdsHandler(ctx context.Context, request mcp.CallToolRequest, args list_campaign_adsArgs) (*mcp.CallToolResult, error) {
+// CampaignListAdsHandler handles campaign_list_ads with raw schema validation
+func CampaignListAdsHandler(ctx context.Context, request mcp.CallToolRequest, args campaign_list_adsArgs) (*mcp.CallToolResult, error) {
 	// Arguments are explicitly passed as typed struct
 
 	// Build query parameters
@@ -390,8 +390,8 @@ func ListCampaignAdsHandler(ctx context.Context, request mcp.CallToolRequest, ar
 
 }
 
-// ListCampaignAdsetsHandler handles list_campaign_adsets with raw schema validation
-func ListCampaignAdsetsHandler(ctx context.Context, request mcp.CallToolRequest, args list_campaign_adsetsArgs) (*mcp.CallToolResult, error) {
+// CampaignListAdsetsHandler handles campaign_list_adsets with raw schema validation
+func CampaignListAdsetsHandler(ctx context.Context, request mcp.CallToolRequest, args campaign_list_adsetsArgs) (*mcp.CallToolResult, error) {
 	// Arguments are explicitly passed as typed struct
 
 	// Build query parameters
@@ -455,8 +455,8 @@ func ListCampaignAdsetsHandler(ctx context.Context, request mcp.CallToolRequest,
 
 }
 
-// CreateCampaignBudgetScheduleHandler handles create_campaign_budget_schedule with raw schema validation
-func CreateCampaignBudgetScheduleHandler(ctx context.Context, request mcp.CallToolRequest, args create_campaign_budget_scheduleArgs) (*mcp.CallToolResult, error) {
+// CampaignCreateBudgetScheduleHandler handles campaign_create_budget_schedule with raw schema validation
+func CampaignCreateBudgetScheduleHandler(ctx context.Context, request mcp.CallToolRequest, args campaign_create_budget_scheduleArgs) (*mcp.CallToolResult, error) {
 	// Arguments are explicitly passed as typed struct
 
 	// Build request body
@@ -491,8 +491,8 @@ func CreateCampaignBudgetScheduleHandler(ctx context.Context, request mcp.CallTo
 
 }
 
-// ListCampaignCopiesHandler handles list_campaign_copies with raw schema validation
-func ListCampaignCopiesHandler(ctx context.Context, request mcp.CallToolRequest, args list_campaign_copiesArgs) (*mcp.CallToolResult, error) {
+// CampaignListCopiesHandler handles campaign_list_copies with raw schema validation
+func CampaignListCopiesHandler(ctx context.Context, request mcp.CallToolRequest, args campaign_list_copiesArgs) (*mcp.CallToolResult, error) {
 	// Arguments are explicitly passed as typed struct
 
 	// Build query parameters
@@ -556,8 +556,8 @@ func ListCampaignCopiesHandler(ctx context.Context, request mcp.CallToolRequest,
 
 }
 
-// CreateCampaignCopieHandler handles create_campaign_copie with raw schema validation
-func CreateCampaignCopieHandler(ctx context.Context, request mcp.CallToolRequest, args create_campaign_copieArgs) (*mcp.CallToolResult, error) {
+// CampaignCreateCopieHandler handles campaign_create_copie with raw schema validation
+func CampaignCreateCopieHandler(ctx context.Context, request mcp.CallToolRequest, args campaign_create_copieArgs) (*mcp.CallToolResult, error) {
 	// Arguments are explicitly passed as typed struct
 
 	// Build request body
@@ -594,8 +594,8 @@ func CreateCampaignCopieHandler(ctx context.Context, request mcp.CallToolRequest
 
 }
 
-// GetCampaignInsightsHandler handles get_campaign_insights with raw schema validation
-func GetCampaignInsightsHandler(ctx context.Context, request mcp.CallToolRequest, args get_campaign_insightsArgs) (*mcp.CallToolResult, error) {
+// CampaignGetInsightsHandler handles campaign_get_insights with raw schema validation
+func CampaignGetInsightsHandler(ctx context.Context, request mcp.CallToolRequest, args campaign_get_insightsArgs) (*mcp.CallToolResult, error) {
 	// Arguments are explicitly passed as typed struct
 
 	// Build query parameters
@@ -715,8 +715,8 @@ func GetCampaignInsightsHandler(ctx context.Context, request mcp.CallToolRequest
 
 }
 
-// CreateCampaignInsightsReportHandler handles create_campaign_insights_report with raw schema validation
-func CreateCampaignInsightsReportHandler(ctx context.Context, request mcp.CallToolRequest, args create_campaign_insights_reportArgs) (*mcp.CallToolResult, error) {
+// CampaignCreateInsightsReportHandler handles campaign_create_insights_report with raw schema validation
+func CampaignCreateInsightsReportHandler(ctx context.Context, request mcp.CallToolRequest, args campaign_create_insights_reportArgs) (*mcp.CallToolResult, error) {
 	// Arguments are explicitly passed as typed struct
 
 	// Build request body
@@ -817,8 +817,8 @@ func CreateCampaignInsightsReportHandler(ctx context.Context, request mcp.CallTo
 
 }
 
-// DeleteCampaignHandler handles delete_campaign with raw schema validation
-func DeleteCampaignHandler(ctx context.Context, request mcp.CallToolRequest, args delete_campaignArgs) (*mcp.CallToolResult, error) {
+// CampaignDeleteHandler handles campaign_delete with raw schema validation
+func CampaignDeleteHandler(ctx context.Context, request mcp.CallToolRequest, args campaign_deleteArgs) (*mcp.CallToolResult, error) {
 	// Arguments are explicitly passed as typed struct
 
 	if args.ID == "" {
@@ -830,8 +830,8 @@ func DeleteCampaignHandler(ctx context.Context, request mcp.CallToolRequest, arg
 
 }
 
-// GetCampaignHandler handles get_campaign with raw schema validation
-func GetCampaignHandler(ctx context.Context, request mcp.CallToolRequest, args get_campaignArgs) (*mcp.CallToolResult, error) {
+// CampaignGetHandler handles campaign_get with raw schema validation
+func CampaignGetHandler(ctx context.Context, request mcp.CallToolRequest, args campaign_getArgs) (*mcp.CallToolResult, error) {
 	// Arguments are explicitly passed as typed struct
 
 	// Build query parameters
@@ -896,8 +896,8 @@ func GetCampaignHandler(ctx context.Context, request mcp.CallToolRequest, args g
 
 }
 
-// UpdateCampaignHandler handles update_campaign with raw schema validation
-func UpdateCampaignHandler(ctx context.Context, request mcp.CallToolRequest, args update_campaignArgs) (*mcp.CallToolResult, error) {
+// CampaignUpdateHandler handles campaign_update with raw schema validation
+func CampaignUpdateHandler(ctx context.Context, request mcp.CallToolRequest, args campaign_updateArgs) (*mcp.CallToolResult, error) {
 	// Arguments are explicitly passed as typed struct
 
 	// Build request body
@@ -1003,199 +1003,199 @@ func UpdateCampaignHandler(ctx context.Context, request mcp.CallToolRequest, arg
 // RegisterCampaignTools registers all Campaign tools with the MCP server
 func RegisterCampaignTools(s *server.MCPServer) error {
 
-	// Register list_campaign_ad_studies using raw JSON schema
-	list_campaign_ad_studiesTool := mcp.NewToolWithRawSchema(
-		"list_campaign_ad_studies",
+	// Register campaign_list_ad_studies using raw JSON schema
+	campaign_list_ad_studiesTool := mcp.NewToolWithRawSchema(
+		"campaign_list_ad_studies",
 		"List ad_studies for this Campaign Returns AdStudy.",
 		json.RawMessage(`{"additionalProperties":false,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"Campaign ID","pattern":"^[0-9]+$","type":"string"},"limit":{"description":"Maximum number of results","maximum":100,"minimum":1,"type":"integer"}},"required":["id"],"type":"object"}`),
 	)
-	s.AddTool(list_campaign_ad_studiesTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	s.AddTool(campaign_list_ad_studiesTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		// Parse arguments using the built-in type-safe binding
-		var args list_campaign_ad_studiesArgs
+		var args campaign_list_ad_studiesArgs
 		if err := request.BindArguments(&args); err != nil {
 			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
 		}
-		return ListCampaignAdStudiesHandler(ctx, request, args)
+		return CampaignListAdStudiesHandler(ctx, request, args)
 	})
 
-	// Register create_campaign_adlabel using raw JSON schema
-	create_campaign_adlabelTool := mcp.NewToolWithRawSchema(
-		"create_campaign_adlabel",
+	// Register campaign_create_adlabel using raw JSON schema
+	campaign_create_adlabelTool := mcp.NewToolWithRawSchema(
+		"campaign_create_adlabel",
 		"Associate adlabels with this Campaign Returns Campaign. Required: adlabels",
 		json.RawMessage(`{"additionalProperties":false,"properties":{"adlabels":{"description":"Adlabels","items":{"additionalProperties":true,"type":"object"},"type":"array"},"execution_options":{"description":"Execution Options","items":{"type":"string"},"type":"array"},"id":{"description":"Campaign ID","pattern":"^[0-9]+$","type":"string"}},"required":["id","adlabels"],"type":"object"}`),
 	)
-	s.AddTool(create_campaign_adlabelTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	s.AddTool(campaign_create_adlabelTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		// Parse arguments using the built-in type-safe binding
-		var args create_campaign_adlabelArgs
+		var args campaign_create_adlabelArgs
 		if err := request.BindArguments(&args); err != nil {
 			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
 		}
-		return CreateCampaignAdlabelHandler(ctx, request, args)
+		return CampaignCreateAdlabelHandler(ctx, request, args)
 	})
 
-	// Register get_campaign_adrules_governed using raw JSON schema
-	get_campaign_adrules_governedTool := mcp.NewToolWithRawSchema(
-		"get_campaign_adrules_governed",
+	// Register campaign_get_adrules_governed using raw JSON schema
+	campaign_get_adrules_governedTool := mcp.NewToolWithRawSchema(
+		"campaign_get_adrules_governed",
 		"Get adrules_governed data for this Campaign Returns AdRule.",
 		json.RawMessage(`{"additionalProperties":false,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"Campaign ID","pattern":"^[0-9]+$","type":"string"},"limit":{"description":"Maximum number of results","maximum":100,"minimum":1,"type":"integer"},"pass_evaluation":{"description":"Pass Evaluation","type":"boolean"}},"required":["id"],"type":"object"}`),
 	)
-	s.AddTool(get_campaign_adrules_governedTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	s.AddTool(campaign_get_adrules_governedTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		// Parse arguments using the built-in type-safe binding
-		var args get_campaign_adrules_governedArgs
+		var args campaign_get_adrules_governedArgs
 		if err := request.BindArguments(&args); err != nil {
 			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
 		}
-		return GetCampaignAdrulesGovernedHandler(ctx, request, args)
+		return CampaignGetAdrulesGovernedHandler(ctx, request, args)
 	})
 
-	// Register list_campaign_ads using raw JSON schema
-	list_campaign_adsTool := mcp.NewToolWithRawSchema(
-		"list_campaign_ads",
+	// Register campaign_list_ads using raw JSON schema
+	campaign_list_adsTool := mcp.NewToolWithRawSchema(
+		"campaign_list_ads",
 		"List ads for this Campaign Returns Ad.",
 		json.RawMessage(`{"additionalProperties":false,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"date_preset":{"description":"Date Preset (enum: adcampaigngroupads_date_preset_enum_param)","enum":["data_maximum","last_14d","last_28d","last_30d","last_3d","last_7d","last_90d","last_month","last_quarter","last_week_mon_sun","last_week_sun_sat","last_year","maximum","this_month","this_quarter","this_week_mon_today","this_week_sun_today","this_year","today","yesterday"],"type":"string"},"effective_status":{"description":"Effective Status","items":{"type":"string"},"type":"array"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"Campaign ID","pattern":"^[0-9]+$","type":"string"},"limit":{"description":"Maximum number of results","maximum":100,"minimum":1,"type":"integer"},"time_range":{"description":"Time Range","type":"string"},"updated_since":{"description":"When last updated","type":"integer"}},"required":["id"],"type":"object"}`),
 	)
-	s.AddTool(list_campaign_adsTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	s.AddTool(campaign_list_adsTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		// Parse arguments using the built-in type-safe binding
-		var args list_campaign_adsArgs
+		var args campaign_list_adsArgs
 		if err := request.BindArguments(&args); err != nil {
 			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
 		}
-		return ListCampaignAdsHandler(ctx, request, args)
+		return CampaignListAdsHandler(ctx, request, args)
 	})
 
-	// Register list_campaign_adsets using raw JSON schema
-	list_campaign_adsetsTool := mcp.NewToolWithRawSchema(
-		"list_campaign_adsets",
+	// Register campaign_list_adsets using raw JSON schema
+	campaign_list_adsetsTool := mcp.NewToolWithRawSchema(
+		"campaign_list_adsets",
 		"List adsets for this Campaign Returns AdSet.",
 		json.RawMessage(`{"additionalProperties":false,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"date_preset":{"description":"Date Preset (enum: adcampaigngroupadsets_date_preset_enum_param)","enum":["data_maximum","last_14d","last_28d","last_30d","last_3d","last_7d","last_90d","last_month","last_quarter","last_week_mon_sun","last_week_sun_sat","last_year","maximum","this_month","this_quarter","this_week_mon_today","this_week_sun_today","this_year","today","yesterday"],"type":"string"},"effective_status":{"description":"Effective Status","items":{"type":"string"},"type":"array"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"Campaign ID","pattern":"^[0-9]+$","type":"string"},"is_completed":{"description":"Is Completed","type":"boolean"},"limit":{"description":"Maximum number of results","maximum":100,"minimum":1,"type":"integer"},"time_range":{"description":"Time Range","type":"string"}},"required":["id"],"type":"object"}`),
 	)
-	s.AddTool(list_campaign_adsetsTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	s.AddTool(campaign_list_adsetsTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		// Parse arguments using the built-in type-safe binding
-		var args list_campaign_adsetsArgs
+		var args campaign_list_adsetsArgs
 		if err := request.BindArguments(&args); err != nil {
 			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
 		}
-		return ListCampaignAdsetsHandler(ctx, request, args)
+		return CampaignListAdsetsHandler(ctx, request, args)
 	})
 
-	// Register create_campaign_budget_schedule using raw JSON schema
-	create_campaign_budget_scheduleTool := mcp.NewToolWithRawSchema(
-		"create_campaign_budget_schedule",
+	// Register campaign_create_budget_schedule using raw JSON schema
+	campaign_create_budget_scheduleTool := mcp.NewToolWithRawSchema(
+		"campaign_create_budget_schedule",
 		"Create or update budget_schedules for this Campaign Returns HighDemandPeriod. Required: budget_value, budget_value_type (enum), time_end, time_start",
 		json.RawMessage(`{"additionalProperties":false,"properties":{"budget_value":{"description":"Budget Value","type":"integer"},"budget_value_type":{"description":"Budget Value Type (enum: adcampaigngroupbudget_schedules_budget_value_type_enum_param)","enum":["ABSOLUTE","MULTIPLIER"],"type":"string"},"id":{"description":"Campaign ID","pattern":"^[0-9]+$","type":"string"},"time_end":{"description":"Time End","type":"integer"},"time_start":{"description":"Time Start","type":"integer"}},"required":["id","budget_value","budget_value_type","time_end","time_start"],"type":"object"}`),
 	)
-	s.AddTool(create_campaign_budget_scheduleTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	s.AddTool(campaign_create_budget_scheduleTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		// Parse arguments using the built-in type-safe binding
-		var args create_campaign_budget_scheduleArgs
+		var args campaign_create_budget_scheduleArgs
 		if err := request.BindArguments(&args); err != nil {
 			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
 		}
-		return CreateCampaignBudgetScheduleHandler(ctx, request, args)
+		return CampaignCreateBudgetScheduleHandler(ctx, request, args)
 	})
 
-	// Register list_campaign_copies using raw JSON schema
-	list_campaign_copiesTool := mcp.NewToolWithRawSchema(
-		"list_campaign_copies",
+	// Register campaign_list_copies using raw JSON schema
+	campaign_list_copiesTool := mcp.NewToolWithRawSchema(
+		"campaign_list_copies",
 		"List copies for this Campaign Returns Campaign.",
 		json.RawMessage(`{"additionalProperties":false,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"date_preset":{"description":"Date Preset (enum: adcampaigngroupcopies_date_preset_enum_param)","enum":["data_maximum","last_14d","last_28d","last_30d","last_3d","last_7d","last_90d","last_month","last_quarter","last_week_mon_sun","last_week_sun_sat","last_year","maximum","this_month","this_quarter","this_week_mon_today","this_week_sun_today","this_year","today","yesterday"],"type":"string"},"effective_status":{"description":"Effective Status","items":{"type":"string"},"type":"array"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"Campaign ID","pattern":"^[0-9]+$","type":"string"},"is_completed":{"description":"Is Completed","type":"boolean"},"limit":{"description":"Maximum number of results","maximum":100,"minimum":1,"type":"integer"},"time_range":{"description":"Time Range","type":"string"}},"required":["id"],"type":"object"}`),
 	)
-	s.AddTool(list_campaign_copiesTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	s.AddTool(campaign_list_copiesTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		// Parse arguments using the built-in type-safe binding
-		var args list_campaign_copiesArgs
+		var args campaign_list_copiesArgs
 		if err := request.BindArguments(&args); err != nil {
 			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
 		}
-		return ListCampaignCopiesHandler(ctx, request, args)
+		return CampaignListCopiesHandler(ctx, request, args)
 	})
 
-	// Register create_campaign_copie using raw JSON schema
-	create_campaign_copieTool := mcp.NewToolWithRawSchema(
-		"create_campaign_copie",
+	// Register campaign_create_copie using raw JSON schema
+	campaign_create_copieTool := mcp.NewToolWithRawSchema(
+		"campaign_create_copie",
 		"Create a copy of this Campaign Returns Campaign.",
 		json.RawMessage(`{"additionalProperties":false,"properties":{"deep_copy":{"description":"Deep Copy","type":"boolean"},"end_time":{"description":"End Time","type":"string"},"id":{"description":"Campaign ID","pattern":"^[0-9]+$","type":"string"},"rename_options":{"additionalProperties":true,"description":"Rename Options","type":"object"},"start_time":{"description":"Start Time","type":"string"},"status_option":{"description":"Status Option (enum: adcampaigngroupcopies_status_option_enum_param)","enum":["ACTIVE","INHERITED_FROM_SOURCE","PAUSED"],"type":"string"}},"required":["id"],"type":"object"}`),
 	)
-	s.AddTool(create_campaign_copieTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	s.AddTool(campaign_create_copieTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		// Parse arguments using the built-in type-safe binding
-		var args create_campaign_copieArgs
+		var args campaign_create_copieArgs
 		if err := request.BindArguments(&args); err != nil {
 			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
 		}
-		return CreateCampaignCopieHandler(ctx, request, args)
+		return CampaignCreateCopieHandler(ctx, request, args)
 	})
 
-	// Register get_campaign_insights using raw JSON schema
-	get_campaign_insightsTool := mcp.NewToolWithRawSchema(
-		"get_campaign_insights",
+	// Register campaign_get_insights using raw JSON schema
+	campaign_get_insightsTool := mcp.NewToolWithRawSchema(
+		"campaign_get_insights",
 		"List insights for this Campaign Returns AdsInsights.",
 		json.RawMessage(`{"additionalProperties":false,"properties":{"action_attribution_windows":{"description":"Action Attribution Windows","items":{"type":"string"},"type":"array"},"action_breakdowns":{"description":"Action Breakdowns","items":{"type":"string"},"type":"array"},"action_report_time":{"description":"Action Report Time (enum: adcampaigngroupinsights_action_report_time_enum_param)","enum":["conversion","impression","lifetime","mixed"],"type":"string"},"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"breakdowns":{"description":"Breakdowns","items":{"type":"string"},"type":"array"},"date_preset":{"description":"Date Preset (enum: adcampaigngroupinsights_date_preset_enum_param)","enum":["data_maximum","last_14d","last_28d","last_30d","last_3d","last_7d","last_90d","last_month","last_quarter","last_week_mon_sun","last_week_sun_sat","last_year","maximum","this_month","this_quarter","this_week_mon_today","this_week_sun_today","this_year","today","yesterday"],"type":"string"},"default_summary":{"description":"Default Summary","type":"boolean"},"export_columns":{"description":"Export Columns","items":{"type":"string"},"type":"array"},"export_format":{"description":"Export Format","type":"string"},"export_name":{"description":"Export Name","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"filtering":{"description":"Filtering","items":{"additionalProperties":true,"type":"object"},"type":"array"},"id":{"description":"Campaign ID","pattern":"^[0-9]+$","type":"string"},"level":{"description":"Level (enum: adcampaigngroupinsights_level_enum_param)","enum":["account","ad","adset","campaign"],"type":"string"},"limit":{"description":"Maximum number of results","maximum":100,"minimum":1,"type":"integer"},"product_id_limit":{"description":"Product ID Limit","pattern":"^[0-9]+$","type":"integer"},"sort":{"description":"Sort","items":{"type":"string"},"type":"array"},"summary":{"description":"Summary","items":{"type":"string"},"type":"array"},"summary_action_breakdowns":{"description":"Summary Action Breakdowns","items":{"type":"string"},"type":"array"},"time_increment":{"description":"Time Increment","type":"string"},"time_range":{"description":"Time Range","type":"string"},"time_ranges":{"description":"Time Ranges","items":{"additionalProperties":true,"type":"object"},"type":"array"},"use_account_attribution_setting":{"description":"Use Account Attribution Setting","type":"boolean"},"use_unified_attribution_setting":{"description":"Use Unified Attribution Setting","type":"boolean"}},"required":["id"],"type":"object"}`),
 	)
-	s.AddTool(get_campaign_insightsTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	s.AddTool(campaign_get_insightsTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		// Parse arguments using the built-in type-safe binding
-		var args get_campaign_insightsArgs
+		var args campaign_get_insightsArgs
 		if err := request.BindArguments(&args); err != nil {
 			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
 		}
-		return GetCampaignInsightsHandler(ctx, request, args)
+		return CampaignGetInsightsHandler(ctx, request, args)
 	})
 
-	// Register create_campaign_insights_report using raw JSON schema
-	create_campaign_insights_reportTool := mcp.NewToolWithRawSchema(
-		"create_campaign_insights_report",
+	// Register campaign_create_insights_report using raw JSON schema
+	campaign_create_insights_reportTool := mcp.NewToolWithRawSchema(
+		"campaign_create_insights_report",
 		"Generate an insights report for this Campaign Returns AdReportRun.",
 		json.RawMessage(`{"additionalProperties":false,"properties":{"action_attribution_windows":{"description":"Action Attribution Windows","items":{"type":"string"},"type":"array"},"action_breakdowns":{"description":"Action Breakdowns","items":{"type":"string"},"type":"array"},"action_report_time":{"description":"Action Report Time (enum: adcampaigngroupinsights_action_report_time_enum_param)","enum":["conversion","impression","lifetime","mixed"],"type":"string"},"breakdowns":{"description":"Breakdowns","items":{"type":"string"},"type":"array"},"date_preset":{"description":"Date Preset (enum: adcampaigngroupinsights_date_preset_enum_param)","enum":["data_maximum","last_14d","last_28d","last_30d","last_3d","last_7d","last_90d","last_month","last_quarter","last_week_mon_sun","last_week_sun_sat","last_year","maximum","this_month","this_quarter","this_week_mon_today","this_week_sun_today","this_year","today","yesterday"],"type":"string"},"default_summary":{"description":"Default Summary","type":"boolean"},"export_columns":{"description":"Export Columns","items":{"type":"string"},"type":"array"},"export_format":{"description":"Export Format","type":"string"},"export_name":{"description":"Export Name","type":"string"},"fields":{"description":"Fields","items":{"type":"string"},"type":"array"},"filtering":{"description":"Filtering","items":{"additionalProperties":true,"type":"object"},"type":"array"},"id":{"description":"Campaign ID","pattern":"^[0-9]+$","type":"string"},"level":{"description":"Level (enum: adcampaigngroupinsights_level_enum_param)","enum":["account","ad","adset","campaign"],"type":"string"},"limit":{"description":"Limit","type":"integer"},"product_id_limit":{"description":"Product ID Limit","pattern":"^[0-9]+$","type":"integer"},"sort":{"description":"Sort","items":{"type":"string"},"type":"array"},"summary":{"description":"Summary","items":{"type":"string"},"type":"array"},"summary_action_breakdowns":{"description":"Summary Action Breakdowns","items":{"type":"string"},"type":"array"},"time_increment":{"description":"Time Increment","type":"string"},"time_range":{"description":"Time Range","type":"string"},"time_ranges":{"description":"Time Ranges","items":{"additionalProperties":true,"type":"object"},"type":"array"},"use_account_attribution_setting":{"description":"Use Account Attribution Setting","type":"boolean"},"use_unified_attribution_setting":{"description":"Use Unified Attribution Setting","type":"boolean"}},"required":["id"],"type":"object"}`),
 	)
-	s.AddTool(create_campaign_insights_reportTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	s.AddTool(campaign_create_insights_reportTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		// Parse arguments using the built-in type-safe binding
-		var args create_campaign_insights_reportArgs
+		var args campaign_create_insights_reportArgs
 		if err := request.BindArguments(&args); err != nil {
 			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
 		}
-		return CreateCampaignInsightsReportHandler(ctx, request, args)
+		return CampaignCreateInsightsReportHandler(ctx, request, args)
 	})
 
-	// Register delete_campaign using raw JSON schema
-	delete_campaignTool := mcp.NewToolWithRawSchema(
-		"delete_campaign",
+	// Register campaign_delete using raw JSON schema
+	campaign_deleteTool := mcp.NewToolWithRawSchema(
+		"campaign_delete",
 		"Delete a Campaign",
 		json.RawMessage(`{"additionalProperties":false,"properties":{"id":{"description":"Campaign ID","pattern":"^[0-9]+$","type":"string"}},"required":["id"],"type":"object"}`),
 	)
-	s.AddTool(delete_campaignTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	s.AddTool(campaign_deleteTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		// Parse arguments using the built-in type-safe binding
-		var args delete_campaignArgs
+		var args campaign_deleteArgs
 		if err := request.BindArguments(&args); err != nil {
 			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
 		}
-		return DeleteCampaignHandler(ctx, request, args)
+		return CampaignDeleteHandler(ctx, request, args)
 	})
 
-	// Register get_campaign using raw JSON schema
-	get_campaignTool := mcp.NewToolWithRawSchema(
-		"get_campaign",
+	// Register campaign_get using raw JSON schema
+	campaign_getTool := mcp.NewToolWithRawSchema(
+		"campaign_get",
 		"Get details of a specific Campaign Returns Campaign.",
 		json.RawMessage(`{"additionalProperties":false,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"am_call_tags":{"description":"Am Call Tags","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"date_preset":{"description":"Date Preset (enum: adcampaigngroup_date_preset)","enum":["data_maximum","last_14d","last_28d","last_30d","last_3d","last_7d","last_90d","last_month","last_quarter","last_week_mon_sun","last_week_sun_sat","last_year","maximum","this_month","this_quarter","this_week_mon_today","this_week_sun_today","this_year","today","yesterday"],"type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"from_adtable":{"description":"From Adtable","type":"boolean"},"id":{"description":"Campaign ID","pattern":"^[0-9]+$","type":"string"},"limit":{"description":"Maximum number of results","maximum":100,"minimum":1,"type":"integer"},"time_range":{"description":"Time Range","type":"string"}},"required":["id"],"type":"object"}`),
 	)
-	s.AddTool(get_campaignTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	s.AddTool(campaign_getTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		// Parse arguments using the built-in type-safe binding
-		var args get_campaignArgs
+		var args campaign_getArgs
 		if err := request.BindArguments(&args); err != nil {
 			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
 		}
-		return GetCampaignHandler(ctx, request, args)
+		return CampaignGetHandler(ctx, request, args)
 	})
 
-	// Register update_campaign using raw JSON schema
-	update_campaignTool := mcp.NewToolWithRawSchema(
-		"update_campaign",
+	// Register campaign_update using raw JSON schema
+	campaign_updateTool := mcp.NewToolWithRawSchema(
+		"campaign_update",
 		"Update a Campaign Returns Campaign.",
 		json.RawMessage(`{"additionalProperties":false,"properties":{"adlabels":{"description":"Adlabels","items":{"additionalProperties":true,"type":"object"},"type":"array"},"adset_bid_amounts":{"description":"Adset Bid Amounts","type":"string"},"adset_budgets":{"description":"Adset Budgets","items":{"additionalProperties":true,"type":"object"},"type":"array"},"bid_strategy":{"description":"Bid Strategy (enum: adcampaigngroup_bid_strategy)","enum":["COST_CAP","LOWEST_COST_WITHOUT_CAP","LOWEST_COST_WITH_BID_CAP","LOWEST_COST_WITH_MIN_ROAS"],"type":"string"},"budget_rebalance_flag":{"description":"Budget Rebalance Flag","type":"boolean"},"daily_budget":{"description":"Daily Budget","type":"integer"},"execution_options":{"description":"Execution Options","items":{"type":"string"},"type":"array"},"id":{"description":"Campaign ID","pattern":"^[0-9]+$","type":"string"},"is_skadnetwork_attribution":{"description":"Is Skadnetwork Attribution","type":"boolean"},"iterative_split_test_configs":{"description":"Iterative Split Test Configs","items":{"additionalProperties":true,"type":"object"},"type":"array"},"lifetime_budget":{"description":"Lifetime Budget","type":"integer"},"name":{"description":"Name","type":"string"},"objective":{"description":"Objective (enum: adcampaigngroup_objective)","enum":["APP_INSTALLS","BRAND_AWARENESS","CONVERSIONS","EVENT_RESPONSES","LEAD_GENERATION","LINK_CLICKS","LOCAL_AWARENESS","MESSAGES","OFFER_CLAIMS","OUTCOME_APP_PROMOTION","OUTCOME_AWARENESS","OUTCOME_ENGAGEMENT","OUTCOME_LEADS","OUTCOME_SALES","OUTCOME_TRAFFIC","PAGE_LIKES","POST_ENGAGEMENT","PRODUCT_CATALOG_SALES","REACH","STORE_VISITS","VIDEO_VIEWS"],"type":"string"},"pacing_type":{"description":"Pacing Type","items":{"type":"string"},"type":"array"},"promoted_object":{"additionalProperties":true,"description":"Promoted Object","type":"object"},"smart_promotion_type":{"description":"Smart Promotion Type (enum: adcampaigngroup_smart_promotion_type)","enum":["GUIDED_CREATION","SMART_APP_PROMOTION"],"type":"string"},"special_ad_categories":{"description":"Special Ad Categories","items":{"type":"string"},"type":"array"},"special_ad_category":{"description":"Special Ad Category (enum: adcampaigngroup_special_ad_category)","enum":["CREDIT","EMPLOYMENT","FINANCIAL_PRODUCTS_SERVICES","HOUSING","ISSUES_ELECTIONS_POLITICS","NONE","ONLINE_GAMBLING_AND_GAMING"],"type":"string"},"special_ad_category_country":{"description":"Special Ad Category Country","items":{"type":"string"},"type":"array"},"spend_cap":{"description":"Spend Cap","type":"integer"},"start_time":{"description":"Start Time","type":"string"},"status":{"description":"Status (enum: adcampaigngroup_status)","enum":["ACTIVE","ARCHIVED","DELETED","PAUSED"],"type":"string"},"stop_time":{"description":"Stop Time","type":"string"}},"required":["id"],"type":"object"}`),
 	)
-	s.AddTool(update_campaignTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	s.AddTool(campaign_updateTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		// Parse arguments using the built-in type-safe binding
-		var args update_campaignArgs
+		var args campaign_updateArgs
 		if err := request.BindArguments(&args); err != nil {
 			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
 		}
-		return UpdateCampaignHandler(ctx, request, args)
+		return CampaignUpdateHandler(ctx, request, args)
 	})
 
 	return nil

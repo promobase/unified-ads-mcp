@@ -531,47 +531,48 @@ func (g *ToolGenerator) generateTools() error {
 }
 
 func (g *ToolGenerator) generateToolName(objectName string, api API) string {
-	// Generate more intuitive tool names based on action and endpoint
+	// Generate tool names with domain as prefix (e.g., campaign_get, ad_list_insights, etc.)
+
+	objectSnake := g.toSnakeCase(objectName)
 
 	// Handle empty endpoint (CRUD on object itself)
 	if api.Endpoint == "" {
 		switch api.Method {
 		case "GET":
-			return fmt.Sprintf("get_%s", g.toSnakeCase(objectName))
+			return fmt.Sprintf("%s_get", objectSnake)
 		case "POST":
-			return fmt.Sprintf("update_%s", g.toSnakeCase(objectName))
+			return fmt.Sprintf("%s_update", objectSnake)
 		case "DELETE":
-			return fmt.Sprintf("delete_%s", g.toSnakeCase(objectName))
+			return fmt.Sprintf("%s_delete", objectSnake)
 		default:
-			return fmt.Sprintf("%s_%s", strings.ToLower(api.Method), g.toSnakeCase(objectName))
+			return fmt.Sprintf("%s_%s", objectSnake, strings.ToLower(api.Method))
 		}
 	}
 
-	// For endpoints, create action-based names
+	// For endpoints, create domain-prefixed names
 	endpoint := g.toSnakeCase(api.Endpoint)
-	objectSnake := g.toSnakeCase(objectName)
 
 	// Special cases for common patterns
 	switch {
 	case api.Endpoint == "insights" && api.Method == "GET":
-		return fmt.Sprintf("get_%s_insights", objectSnake)
+		return fmt.Sprintf("%s_get_insights", objectSnake)
 	case api.Endpoint == "insights" && api.Method == "POST":
-		return fmt.Sprintf("create_%s_insights_report", objectSnake)
+		return fmt.Sprintf("%s_create_insights_report", objectSnake)
 	case strings.HasSuffix(api.Endpoint, "s") && api.Method == "GET":
 		// Plural endpoints usually list related objects
-		return fmt.Sprintf("list_%s_%s", objectSnake, endpoint)
+		return fmt.Sprintf("%s_list_%s", objectSnake, endpoint)
 	case api.Method == "POST" && strings.HasSuffix(api.Endpoint, "s"):
 		// POST to plural usually creates new items
 		singular := strings.TrimSuffix(endpoint, "s")
-		return fmt.Sprintf("create_%s_%s", objectSnake, singular)
+		return fmt.Sprintf("%s_create_%s", objectSnake, singular)
 	case api.Method == "DELETE":
-		return fmt.Sprintf("remove_%s_from_%s", endpoint, objectSnake)
+		return fmt.Sprintf("%s_remove_%s", objectSnake, endpoint)
 	case api.Method == "GET":
-		return fmt.Sprintf("get_%s_%s", objectSnake, endpoint)
+		return fmt.Sprintf("%s_get_%s", objectSnake, endpoint)
 	case api.Method == "POST":
-		return fmt.Sprintf("update_%s_%s", objectSnake, endpoint)
+		return fmt.Sprintf("%s_update_%s", objectSnake, endpoint)
 	default:
-		return fmt.Sprintf("%s_%s_%s", strings.ToLower(api.Method), objectSnake, endpoint)
+		return fmt.Sprintf("%s_%s_%s", objectSnake, strings.ToLower(api.Method), endpoint)
 	}
 }
 

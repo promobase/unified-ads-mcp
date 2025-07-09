@@ -132,14 +132,59 @@ func (sm *ScopeManager) registerDomain(domain string) error {
 	}
 }
 
+// getDomainToolNames returns the list of tool names for a given domain
+func getDomainToolNames(domain string) []string {
+	switch domain {
+	case "ad":
+		return []string{
+			"ad_get", "ad_update", "ad_delete", "ad_list_adlabels", "ad_create_adlabel",
+			"ad_get_insights", "ad_create_insights_report", "ad_list_previews", "ad_create_preview",
+		}
+	case "adaccount":
+		return []string{
+			"ad_account_get", "ad_account_update", "ad_account_list_activities", "ad_account_list_ad_creatives",
+			"ad_account_create_ad_creative", "ad_account_list_ads", "ad_account_create_ad", "ad_account_list_adsets",
+			"ad_account_create_adset", "ad_account_list_campaigns", "ad_account_create_campaign",
+			"ad_account_list_custom_audiences", "ad_account_create_custom_audience",
+		}
+	case "adcreative":
+		return []string{
+			"ad_creative_get", "ad_creative_update", "ad_creative_delete", "ad_creative_list_previews",
+			"ad_creative_create_preview",
+		}
+	case "adset":
+		return []string{
+			"ad_set_get", "ad_set_update", "ad_set_delete", "ad_set_list_ads", "ad_set_create_ad",
+			"ad_set_list_adlabels", "ad_set_create_adlabel", "ad_set_get_insights", "ad_set_create_insights_report",
+		}
+	case "campaign":
+		return []string{
+			"campaign_get", "campaign_update", "campaign_delete", "campaign_list_ads", "campaign_list_adsets",
+			"campaign_list_ad_studies", "campaign_create_adlabel", "campaign_get_adrules_governed",
+			"campaign_create_budget_schedule", "campaign_list_copies", "campaign_create_copie",
+			"campaign_get_insights", "campaign_create_insights_report",
+		}
+	case "user":
+		return []string{
+			"user_get", "user_list_ad_accounts", "user_list_pages",
+		}
+	default:
+		return []string{}
+	}
+}
+
 // unregisterDomain unregisters tools for a specific domain
 func (sm *ScopeManager) unregisterDomain(domain string) error {
-	// Note: mcp-go doesn't have a built-in unregister mechanism,
-	// so we'll need to implement this by recreating the server or
-	// keeping track of tool names and removing them manually
-	// For now, we'll just log that the domain would be unregistered
-	// This is a limitation of the current mcp-go implementation
-	fmt.Printf("Note: Domain '%s' would be unregistered (not implemented in mcp-go)\n", domain)
+	// Get the list of tool names for this domain
+	toolNames := getDomainToolNames(domain)
+	if len(toolNames) == 0 {
+		return fmt.Errorf("no tools found for domain: %s", domain)
+	}
+
+	// Remove tools from the server using the DeleteTools method
+	// This will also send a tools list changed notification to clients
+	sm.server.DeleteTools(toolNames...)
+
 	return nil
 }
 
@@ -200,8 +245,9 @@ func ScopeSelectorHandler(ctx context.Context, request mcp.CallToolRequest, args
 			return mcp.NewToolResultError(fmt.Sprintf("failed to remove domains: %v", err)), nil
 		}
 		result := map[string]interface{}{
-			"action":         "remove_scopes",
-			"active_domains": globalScopeManager.GetActiveDomains(),
+			"action":          "remove_scopes",
+			"removed_domains": args.Domains,
+			"active_domains":  globalScopeManager.GetActiveDomains(),
 		}
 		return mcp.NewToolResultText(formatScopeResult(result)), nil
 
@@ -216,6 +262,10 @@ func formatScopeResult(result map[string]interface{}) string {
 
 	if action, ok := result["action"].(string); ok {
 		sb.WriteString(fmt.Sprintf("Action: %s\n", action))
+	}
+
+	if removedDomains, ok := result["removed_domains"].([]string); ok {
+		sb.WriteString(fmt.Sprintf("Removed domains: %s\n", strings.Join(removedDomains, ", ")))
 	}
 
 	if activeDomains, ok := result["active_domains"].([]string); ok {

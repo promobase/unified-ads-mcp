@@ -12,14 +12,14 @@ import (
 	"github.com/mark3labs/mcp-go/server"
 )
 
-// create_ad_creative_adlabelArgs defines the typed arguments for create_ad_creative_adlabel
-type create_ad_creative_adlabelArgs struct {
+// ad_creative_create_adlabelArgs defines the typed arguments for ad_creative_create_adlabel
+type ad_creative_create_adlabelArgs struct {
 	ID       string     `json:"id" jsonschema:"required,description=AdCreative ID,pattern=^[0-9]+$"`
 	Adlabels []*AdLabel `json:"adlabels" jsonschema:"description=Adlabels,required"`
 }
 
-// list_ad_creative_creative_insightsArgs defines the typed arguments for list_ad_creative_creative_insights
-type list_ad_creative_creative_insightsArgs struct {
+// ad_creative_list_creative_insightsArgs defines the typed arguments for ad_creative_list_creative_insights
+type ad_creative_list_creative_insightsArgs struct {
 	ID     string   `json:"id" jsonschema:"required,description=AdCreative ID,pattern=^[0-9]+$"`
 	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
 	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
@@ -27,8 +27,8 @@ type list_ad_creative_creative_insightsArgs struct {
 	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
 }
 
-// list_ad_creative_previewsArgs defines the typed arguments for list_ad_creative_previews
-type list_ad_creative_previewsArgs struct {
+// ad_creative_list_previewsArgs defines the typed arguments for ad_creative_list_previews
+type ad_creative_list_previewsArgs struct {
 	ID                   string                 `json:"id" jsonschema:"required,description=AdCreative ID,pattern=^[0-9]+$"`
 	Fields               []string               `json:"fields,omitempty" jsonschema:"description=Fields to return"`
 	Limit                int                    `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
@@ -50,8 +50,8 @@ type list_ad_creative_previewsArgs struct {
 	Width                int                    `json:"width,omitempty" jsonschema:"description=Width"`
 }
 
-// delete_ad_creativeArgs defines the typed arguments for delete_ad_creative
-type delete_ad_creativeArgs struct {
+// ad_creative_deleteArgs defines the typed arguments for ad_creative_delete
+type ad_creative_deleteArgs struct {
 	ID        string     `json:"id" jsonschema:"required,description=AdCreative ID,pattern=^[0-9]+$"`
 	AccountId string     `json:"account_id,omitempty" jsonschema:"description=ID of the Account,pattern=^[0-9]+$"`
 	Adlabels  []*AdLabel `json:"adlabels,omitempty" jsonschema:"description=Adlabels"`
@@ -59,8 +59,8 @@ type delete_ad_creativeArgs struct {
 	Status    string     `json:"status,omitempty" jsonschema:"description=Status,enum=ACTIVE,enum=PAUSED,enum=DELETED,enum=ARCHIVED"`
 }
 
-// get_ad_creativeArgs defines the typed arguments for get_ad_creative
-type get_ad_creativeArgs struct {
+// ad_creative_getArgs defines the typed arguments for ad_creative_get
+type ad_creative_getArgs struct {
 	ID              string   `json:"id" jsonschema:"required,description=AdCreative ID,pattern=^[0-9]+$"`
 	Fields          []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
 	Limit           int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
@@ -70,8 +70,8 @@ type get_ad_creativeArgs struct {
 	ThumbnailWidth  int      `json:"thumbnail_width,omitempty" jsonschema:"description=Thumbnail Width"`
 }
 
-// update_ad_creativeArgs defines the typed arguments for update_ad_creative
-type update_ad_creativeArgs struct {
+// ad_creative_updateArgs defines the typed arguments for ad_creative_update
+type ad_creative_updateArgs struct {
 	ID        string     `json:"id" jsonschema:"required,description=AdCreative ID,pattern=^[0-9]+$"`
 	AccountId string     `json:"account_id,omitempty" jsonschema:"description=ID of the Account,pattern=^[0-9]+$"`
 	Adlabels  []*AdLabel `json:"adlabels,omitempty" jsonschema:"description=Adlabels"`
@@ -79,8 +79,8 @@ type update_ad_creativeArgs struct {
 	Status    string     `json:"status,omitempty" jsonschema:"description=Status,enum=ACTIVE,enum=PAUSED,enum=DELETED,enum=ARCHIVED"`
 }
 
-// CreateAdCreativeAdlabelHandler handles create_ad_creative_adlabel with raw schema validation
-func CreateAdCreativeAdlabelHandler(ctx context.Context, request mcp.CallToolRequest, args create_ad_creative_adlabelArgs) (*mcp.CallToolResult, error) {
+// AdCreativeCreateAdlabelHandler handles ad_creative_create_adlabel with raw schema validation
+func AdCreativeCreateAdlabelHandler(ctx context.Context, request mcp.CallToolRequest, args ad_creative_create_adlabelArgs) (*mcp.CallToolResult, error) {
 	// Arguments are explicitly passed as typed struct
 
 	// Build request body
@@ -103,8 +103,8 @@ func CreateAdCreativeAdlabelHandler(ctx context.Context, request mcp.CallToolReq
 
 }
 
-// ListAdCreativeCreativeInsightsHandler handles list_ad_creative_creative_insights with raw schema validation
-func ListAdCreativeCreativeInsightsHandler(ctx context.Context, request mcp.CallToolRequest, args list_ad_creative_creative_insightsArgs) (*mcp.CallToolResult, error) {
+// AdCreativeListCreativeInsightsHandler handles ad_creative_list_creative_insights with raw schema validation
+func AdCreativeListCreativeInsightsHandler(ctx context.Context, request mcp.CallToolRequest, args ad_creative_list_creative_insightsArgs) (*mcp.CallToolResult, error) {
 	// Arguments are explicitly passed as typed struct
 
 	// Build query parameters
@@ -151,8 +151,8 @@ func ListAdCreativeCreativeInsightsHandler(ctx context.Context, request mcp.Call
 
 }
 
-// ListAdCreativePreviewsHandler handles list_ad_creative_previews with raw schema validation
-func ListAdCreativePreviewsHandler(ctx context.Context, request mcp.CallToolRequest, args list_ad_creative_previewsArgs) (*mcp.CallToolResult, error) {
+// AdCreativeListPreviewsHandler handles ad_creative_list_previews with raw schema validation
+func AdCreativeListPreviewsHandler(ctx context.Context, request mcp.CallToolRequest, args ad_creative_list_previewsArgs) (*mcp.CallToolResult, error) {
 	// Arguments are explicitly passed as typed struct
 
 	// Build query parameters
@@ -258,8 +258,8 @@ func ListAdCreativePreviewsHandler(ctx context.Context, request mcp.CallToolRequ
 
 }
 
-// DeleteAdCreativeHandler handles delete_ad_creative with raw schema validation
-func DeleteAdCreativeHandler(ctx context.Context, request mcp.CallToolRequest, args delete_ad_creativeArgs) (*mcp.CallToolResult, error) {
+// AdCreativeDeleteHandler handles ad_creative_delete with raw schema validation
+func AdCreativeDeleteHandler(ctx context.Context, request mcp.CallToolRequest, args ad_creative_deleteArgs) (*mcp.CallToolResult, error) {
 	// Arguments are explicitly passed as typed struct
 
 	if args.ID == "" {
@@ -271,8 +271,8 @@ func DeleteAdCreativeHandler(ctx context.Context, request mcp.CallToolRequest, a
 
 }
 
-// GetAdCreativeHandler handles get_ad_creative with raw schema validation
-func GetAdCreativeHandler(ctx context.Context, request mcp.CallToolRequest, args get_ad_creativeArgs) (*mcp.CallToolResult, error) {
+// AdCreativeGetHandler handles ad_creative_get with raw schema validation
+func AdCreativeGetHandler(ctx context.Context, request mcp.CallToolRequest, args ad_creative_getArgs) (*mcp.CallToolResult, error) {
 	// Arguments are explicitly passed as typed struct
 
 	// Build query parameters
@@ -327,8 +327,8 @@ func GetAdCreativeHandler(ctx context.Context, request mcp.CallToolRequest, args
 
 }
 
-// UpdateAdCreativeHandler handles update_ad_creative with raw schema validation
-func UpdateAdCreativeHandler(ctx context.Context, request mcp.CallToolRequest, args update_ad_creativeArgs) (*mcp.CallToolResult, error) {
+// AdCreativeUpdateHandler handles ad_creative_update with raw schema validation
+func AdCreativeUpdateHandler(ctx context.Context, request mcp.CallToolRequest, args ad_creative_updateArgs) (*mcp.CallToolResult, error) {
 	// Arguments are explicitly passed as typed struct
 
 	// Build request body
@@ -366,94 +366,94 @@ func UpdateAdCreativeHandler(ctx context.Context, request mcp.CallToolRequest, a
 // RegisterAdCreativeTools registers all AdCreative tools with the MCP server
 func RegisterAdCreativeTools(s *server.MCPServer) error {
 
-	// Register create_ad_creative_adlabel using raw JSON schema
-	create_ad_creative_adlabelTool := mcp.NewToolWithRawSchema(
-		"create_ad_creative_adlabel",
+	// Register ad_creative_create_adlabel using raw JSON schema
+	ad_creative_create_adlabelTool := mcp.NewToolWithRawSchema(
+		"ad_creative_create_adlabel",
 		"Associate adlabels with this AdCreative Returns AdCreative. Required: adlabels",
 		json.RawMessage(`{"additionalProperties":false,"properties":{"adlabels":{"description":"Adlabels","items":{"additionalProperties":true,"type":"object"},"type":"array"},"id":{"description":"AdCreative ID","pattern":"^[0-9]+$","type":"string"}},"required":["id","adlabels"],"type":"object"}`),
 	)
-	s.AddTool(create_ad_creative_adlabelTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	s.AddTool(ad_creative_create_adlabelTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		// Parse arguments using the built-in type-safe binding
-		var args create_ad_creative_adlabelArgs
+		var args ad_creative_create_adlabelArgs
 		if err := request.BindArguments(&args); err != nil {
 			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
 		}
-		return CreateAdCreativeAdlabelHandler(ctx, request, args)
+		return AdCreativeCreateAdlabelHandler(ctx, request, args)
 	})
 
-	// Register list_ad_creative_creative_insights using raw JSON schema
-	list_ad_creative_creative_insightsTool := mcp.NewToolWithRawSchema(
-		"list_ad_creative_creative_insights",
+	// Register ad_creative_list_creative_insights using raw JSON schema
+	ad_creative_list_creative_insightsTool := mcp.NewToolWithRawSchema(
+		"ad_creative_list_creative_insights",
 		"List creative_insights for this AdCreative Returns AdCreativeInsights.",
 		json.RawMessage(`{"additionalProperties":false,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdCreative ID","pattern":"^[0-9]+$","type":"string"},"limit":{"description":"Maximum number of results","maximum":100,"minimum":1,"type":"integer"}},"required":["id"],"type":"object"}`),
 	)
-	s.AddTool(list_ad_creative_creative_insightsTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	s.AddTool(ad_creative_list_creative_insightsTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		// Parse arguments using the built-in type-safe binding
-		var args list_ad_creative_creative_insightsArgs
+		var args ad_creative_list_creative_insightsArgs
 		if err := request.BindArguments(&args); err != nil {
 			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
 		}
-		return ListAdCreativeCreativeInsightsHandler(ctx, request, args)
+		return AdCreativeListCreativeInsightsHandler(ctx, request, args)
 	})
 
-	// Register list_ad_creative_previews using raw JSON schema
-	list_ad_creative_previewsTool := mcp.NewToolWithRawSchema(
-		"list_ad_creative_previews",
+	// Register ad_creative_list_previews using raw JSON schema
+	ad_creative_list_previewsTool := mcp.NewToolWithRawSchema(
+		"ad_creative_list_previews",
 		"List previews for this AdCreative Returns AdPreview. Required: ad_format (enum)",
 		json.RawMessage(`{"additionalProperties":false,"properties":{"ad_format":{"description":"Ad Format (enum: adcreativepreviews_ad_format_enum_param)","enum":["AUDIENCE_NETWORK_INSTREAM_VIDEO","AUDIENCE_NETWORK_INSTREAM_VIDEO_MOBILE","AUDIENCE_NETWORK_OUTSTREAM_VIDEO","AUDIENCE_NETWORK_REWARDED_VIDEO","BIZ_DISCO_FEED_MOBILE","DESKTOP_FEED_STANDARD","FACEBOOK_PROFILE_FEED_DESKTOP","FACEBOOK_PROFILE_FEED_MOBILE","FACEBOOK_PROFILE_REELS_MOBILE","FACEBOOK_REELS_BANNER","FACEBOOK_REELS_BANNER_DESKTOP","FACEBOOK_REELS_BANNER_FULLSCREEN_IOS","FACEBOOK_REELS_BANNER_FULLSCREEN_MOBILE","FACEBOOK_REELS_MOBILE","FACEBOOK_REELS_POSTLOOP","FACEBOOK_REELS_STICKER","FACEBOOK_STORY_MOBILE","FACEBOOK_STORY_STICKER_MOBILE","INSTAGRAM_EXPLORE_CONTEXTUAL","INSTAGRAM_EXPLORE_GRID_HOME","INSTAGRAM_EXPLORE_IMMERSIVE","INSTAGRAM_FEED_WEB","INSTAGRAM_FEED_WEB_M_SITE","INSTAGRAM_LEAD_GEN_MULTI_SUBMIT_ADS","INSTAGRAM_PROFILE_FEED","INSTAGRAM_PROFILE_REELS","INSTAGRAM_REELS","INSTAGRAM_REELS_OVERLAY","INSTAGRAM_SEARCH_CHAIN","INSTAGRAM_SEARCH_GRID","INSTAGRAM_STANDARD","INSTAGRAM_STORY","INSTAGRAM_STORY_EFFECT_TRAY","INSTAGRAM_STORY_WEB","INSTAGRAM_STORY_WEB_M_SITE","INSTANT_ARTICLE_RECIRCULATION_AD","INSTANT_ARTICLE_STANDARD","INSTREAM_BANNER_DESKTOP","INSTREAM_BANNER_FULLSCREEN_IOS","INSTREAM_BANNER_FULLSCREEN_MOBILE","INSTREAM_BANNER_IMMERSIVE_MOBILE","INSTREAM_BANNER_MOBILE","INSTREAM_VIDEO_DESKTOP","INSTREAM_VIDEO_FULLSCREEN_IOS","INSTREAM_VIDEO_FULLSCREEN_MOBILE","INSTREAM_VIDEO_IMAGE","INSTREAM_VIDEO_IMMERSIVE_MOBILE","INSTREAM_VIDEO_MOBILE","JOB_BROWSER_DESKTOP","JOB_BROWSER_MOBILE","MARKETPLACE_MOBILE","MESSENGER_MOBILE_INBOX_MEDIA","MESSENGER_MOBILE_STORY_MEDIA","MOBILE_BANNER","MOBILE_FEED_BASIC","MOBILE_FEED_STANDARD","MOBILE_FULLWIDTH","MOBILE_INTERSTITIAL","MOBILE_MEDIUM_RECTANGLE","MOBILE_NATIVE","RIGHT_COLUMN_STANDARD","SUGGESTED_VIDEO_DESKTOP","SUGGESTED_VIDEO_FULLSCREEN_MOBILE","SUGGESTED_VIDEO_IMMERSIVE_MOBILE","SUGGESTED_VIDEO_MOBILE","WATCH_FEED_HOME","WATCH_FEED_MOBILE"],"type":"string"},"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"creative_feature":{"description":"Creative Feature (enum: adcreativepreviews_creative_feature_enum_param)","enum":["product_metadata_automation","profile_card","standard_enhancements_catalog","video_to_image"],"type":"string"},"dynamic_asset_label":{"description":"Dynamic Asset Label","type":"string"},"dynamic_creative_spec":{"additionalProperties":true,"description":"Dynamic Creative Spec","type":"object"},"dynamic_customization":{"additionalProperties":true,"description":"Dynamic Customization","type":"object"},"end_date":{"description":"End Date","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"height":{"description":"Height","type":"integer"},"id":{"description":"AdCreative ID","pattern":"^[0-9]+$","type":"string"},"limit":{"description":"Maximum number of results","maximum":100,"minimum":1,"type":"integer"},"locale":{"description":"Locale","type":"string"},"place_page_id":{"description":"ID of the Place Page","pattern":"^[0-9]+$","type":"integer"},"post":{"additionalProperties":true,"description":"Post","type":"object"},"product_item_ids":{"description":"Product Item Ids","items":{"type":"string"},"type":"array"},"render_type":{"description":"Render Type (enum: adcreativepreviews_render_type_enum_param)","enum":["FALLBACK"],"type":"string"},"start_date":{"description":"Start Date","type":"string"},"width":{"description":"Width","type":"integer"}},"required":["id","ad_format"],"type":"object"}`),
 	)
-	s.AddTool(list_ad_creative_previewsTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	s.AddTool(ad_creative_list_previewsTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		// Parse arguments using the built-in type-safe binding
-		var args list_ad_creative_previewsArgs
+		var args ad_creative_list_previewsArgs
 		if err := request.BindArguments(&args); err != nil {
 			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
 		}
-		return ListAdCreativePreviewsHandler(ctx, request, args)
+		return AdCreativeListPreviewsHandler(ctx, request, args)
 	})
 
-	// Register delete_ad_creative using raw JSON schema
-	delete_ad_creativeTool := mcp.NewToolWithRawSchema(
-		"delete_ad_creative",
+	// Register ad_creative_delete using raw JSON schema
+	ad_creative_deleteTool := mcp.NewToolWithRawSchema(
+		"ad_creative_delete",
 		"Delete a AdCreative",
 		json.RawMessage(`{"additionalProperties":false,"properties":{"account_id":{"description":"ID of the Account","pattern":"^[0-9]+$","type":"string"},"adlabels":{"description":"Adlabels","items":{"additionalProperties":true,"type":"object"},"type":"array"},"id":{"description":"AdCreative ID","pattern":"^[0-9]+$","type":"string"},"name":{"description":"Name","type":"string"},"status":{"description":"Status (enum: adcreative_status)","enum":["ACTIVE","DELETED","IN_PROCESS","WITH_ISSUES"],"type":"string"}},"required":["id"],"type":"object"}`),
 	)
-	s.AddTool(delete_ad_creativeTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	s.AddTool(ad_creative_deleteTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		// Parse arguments using the built-in type-safe binding
-		var args delete_ad_creativeArgs
+		var args ad_creative_deleteArgs
 		if err := request.BindArguments(&args); err != nil {
 			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
 		}
-		return DeleteAdCreativeHandler(ctx, request, args)
+		return AdCreativeDeleteHandler(ctx, request, args)
 	})
 
-	// Register get_ad_creative using raw JSON schema
-	get_ad_creativeTool := mcp.NewToolWithRawSchema(
-		"get_ad_creative",
+	// Register ad_creative_get using raw JSON schema
+	ad_creative_getTool := mcp.NewToolWithRawSchema(
+		"ad_creative_get",
 		"Get details of a specific AdCreative Returns AdCreative.",
 		json.RawMessage(`{"additionalProperties":false,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"AdCreative ID","pattern":"^[0-9]+$","type":"string"},"limit":{"description":"Maximum number of results","maximum":100,"minimum":1,"type":"integer"},"thumbnail_height":{"description":"Thumbnail Height","type":"integer"},"thumbnail_width":{"description":"Thumbnail Width","type":"integer"}},"required":["id"],"type":"object"}`),
 	)
-	s.AddTool(get_ad_creativeTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	s.AddTool(ad_creative_getTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		// Parse arguments using the built-in type-safe binding
-		var args get_ad_creativeArgs
+		var args ad_creative_getArgs
 		if err := request.BindArguments(&args); err != nil {
 			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
 		}
-		return GetAdCreativeHandler(ctx, request, args)
+		return AdCreativeGetHandler(ctx, request, args)
 	})
 
-	// Register update_ad_creative using raw JSON schema
-	update_ad_creativeTool := mcp.NewToolWithRawSchema(
-		"update_ad_creative",
+	// Register ad_creative_update using raw JSON schema
+	ad_creative_updateTool := mcp.NewToolWithRawSchema(
+		"ad_creative_update",
 		"Update a AdCreative Returns AdCreative.",
 		json.RawMessage(`{"additionalProperties":false,"properties":{"account_id":{"description":"ID of the Account","pattern":"^[0-9]+$","type":"string"},"adlabels":{"description":"Adlabels","items":{"additionalProperties":true,"type":"object"},"type":"array"},"id":{"description":"AdCreative ID","pattern":"^[0-9]+$","type":"string"},"name":{"description":"Name","type":"string"},"status":{"description":"Status (enum: adcreative_status)","enum":["ACTIVE","DELETED","IN_PROCESS","WITH_ISSUES"],"type":"string"}},"required":["id"],"type":"object"}`),
 	)
-	s.AddTool(update_ad_creativeTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	s.AddTool(ad_creative_updateTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		// Parse arguments using the built-in type-safe binding
-		var args update_ad_creativeArgs
+		var args ad_creative_updateArgs
 		if err := request.BindArguments(&args); err != nil {
 			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
 		}
-		return UpdateAdCreativeHandler(ctx, request, args)
+		return AdCreativeUpdateHandler(ctx, request, args)
 	})
 
 	return nil

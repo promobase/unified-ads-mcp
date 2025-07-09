@@ -12,13 +12,13 @@ import (
 	"github.com/mark3labs/mcp-go/server"
 )
 
-// remove_access_tokens_from_userArgs defines the typed arguments for remove_access_tokens_from_user
-type remove_access_tokens_from_userArgs struct {
+// user_remove_access_tokensArgs defines the typed arguments for user_remove_access_tokens
+type user_remove_access_tokensArgs struct {
 	ID string `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
 }
 
-// create_user_access_tokenArgs defines the typed arguments for create_user_access_token
-type create_user_access_tokenArgs struct {
+// user_create_access_tokenArgs defines the typed arguments for user_create_access_token
+type user_create_access_tokenArgs struct {
 	ID                      string   `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
 	BusinessApp             string   `json:"business_app" jsonschema:"description=Business App,required"`
 	PageId                  string   `json:"page_id,omitempty" jsonschema:"description=ID of the Page,pattern=^[0-9]+$"`
@@ -26,8 +26,8 @@ type create_user_access_tokenArgs struct {
 	SetTokenExpiresIn60Days bool     `json:"set_token_expires_in_60_days,omitempty" jsonschema:"description=Set Token Expires In 60 Days"`
 }
 
-// list_user_accountsArgs defines the typed arguments for list_user_accounts
-type list_user_accountsArgs struct {
+// user_list_accountsArgs defines the typed arguments for user_list_accounts
+type user_list_accountsArgs struct {
 	ID           string   `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
 	Fields       []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
 	Limit        int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
@@ -38,8 +38,8 @@ type list_user_accountsArgs struct {
 	IsPromotable bool     `json:"is_promotable,omitempty" jsonschema:"description=Is Promotable"`
 }
 
-// create_user_accountArgs defines the typed arguments for create_user_account
-type create_user_accountArgs struct {
+// user_create_accountArgs defines the typed arguments for user_create_account
+type user_create_accountArgs struct {
 	ID                       string                 `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
 	About                    string                 `json:"about,omitempty" jsonschema:"description=About"`
 	Address                  string                 `json:"address,omitempty" jsonschema:"description=Address"`
@@ -59,8 +59,8 @@ type create_user_accountArgs struct {
 	Zip                      string                 `json:"zip,omitempty" jsonschema:"description=Zip"`
 }
 
-// list_user_ad_studiesArgs defines the typed arguments for list_user_ad_studies
-type list_user_ad_studiesArgs struct {
+// user_list_ad_studiesArgs defines the typed arguments for user_list_ad_studies
+type user_list_ad_studiesArgs struct {
 	ID     string   `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
 	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
 	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
@@ -68,8 +68,8 @@ type list_user_ad_studiesArgs struct {
 	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
 }
 
-// create_user_ad_studieArgs defines the typed arguments for create_user_ad_studie
-type create_user_ad_studieArgs struct {
+// user_create_ad_studieArgs defines the typed arguments for user_create_ad_studie
+type user_create_ad_studieArgs struct {
 	ID                 string                   `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
 	Cells              []map[string]interface{} `json:"cells,omitempty" jsonschema:"description=Cells"`
 	ClientBusiness     string                   `json:"client_business,omitempty" jsonschema:"description=Client Business"`
@@ -85,8 +85,8 @@ type create_user_ad_studieArgs struct {
 	Viewers            []int                    `json:"viewers,omitempty" jsonschema:"description=Viewers"`
 }
 
-// list_user_adaccountsArgs defines the typed arguments for list_user_adaccounts
-type list_user_adaccountsArgs struct {
+// user_list_adaccountsArgs defines the typed arguments for user_list_adaccounts
+type user_list_adaccountsArgs struct {
 	ID     string   `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
 	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
 	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
@@ -94,8 +94,8 @@ type list_user_adaccountsArgs struct {
 	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
 }
 
-// list_user_albumsArgs defines the typed arguments for list_user_albums
-type list_user_albumsArgs struct {
+// user_list_albumsArgs defines the typed arguments for user_list_albums
+type user_list_albumsArgs struct {
 	ID     string   `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
 	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
 	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
@@ -103,22 +103,22 @@ type list_user_albumsArgs struct {
 	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
 }
 
-// create_user_applicationArgs defines the typed arguments for create_user_application
-type create_user_applicationArgs struct {
+// user_create_applicationArgs defines the typed arguments for user_create_application
+type user_create_applicationArgs struct {
 	ID          string `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
 	BusinessApp int    `json:"business_app" jsonschema:"description=Business App,required"`
 }
 
-// list_user_apprequestformerrecipientsArgs defines the typed arguments for list_user_apprequestformerrecipients
-type list_user_apprequestformerrecipientsArgs struct {
+// user_list_apprequestformerrecipientsArgs defines the typed arguments for user_list_apprequestformerrecipients
+type user_list_apprequestformerrecipientsArgs struct {
 	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
 	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
 	After  string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
 	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
 }
 
-// list_user_apprequestsArgs defines the typed arguments for list_user_apprequests
-type list_user_apprequestsArgs struct {
+// user_list_apprequestsArgs defines the typed arguments for user_list_apprequests
+type user_list_apprequestsArgs struct {
 	ID     string   `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
 	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
 	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
@@ -126,8 +126,8 @@ type list_user_apprequestsArgs struct {
 	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
 }
 
-// list_user_assigned_ad_accountsArgs defines the typed arguments for list_user_assigned_ad_accounts
-type list_user_assigned_ad_accountsArgs struct {
+// user_list_assigned_ad_accountsArgs defines the typed arguments for user_list_assigned_ad_accounts
+type user_list_assigned_ad_accountsArgs struct {
 	ID     string   `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
 	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
 	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
@@ -135,8 +135,8 @@ type list_user_assigned_ad_accountsArgs struct {
 	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
 }
 
-// list_user_assigned_applicationsArgs defines the typed arguments for list_user_assigned_applications
-type list_user_assigned_applicationsArgs struct {
+// user_list_assigned_applicationsArgs defines the typed arguments for user_list_assigned_applications
+type user_list_assigned_applicationsArgs struct {
 	ID     string   `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
 	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
 	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
@@ -144,8 +144,8 @@ type list_user_assigned_applicationsArgs struct {
 	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
 }
 
-// list_user_assigned_business_asset_groupsArgs defines the typed arguments for list_user_assigned_business_asset_groups
-type list_user_assigned_business_asset_groupsArgs struct {
+// user_list_assigned_business_asset_groupsArgs defines the typed arguments for user_list_assigned_business_asset_groups
+type user_list_assigned_business_asset_groupsArgs struct {
 	ID               string   `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
 	Fields           []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
 	Limit            int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
@@ -154,8 +154,8 @@ type list_user_assigned_business_asset_groupsArgs struct {
 	ContainedAssetId string   `json:"contained_asset_id,omitempty" jsonschema:"description=ID of the Contained Asset,pattern=^[0-9]+$"`
 }
 
-// list_user_assigned_pagesArgs defines the typed arguments for list_user_assigned_pages
-type list_user_assigned_pagesArgs struct {
+// user_list_assigned_pagesArgs defines the typed arguments for user_list_assigned_pages
+type user_list_assigned_pagesArgs struct {
 	ID     string        `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
 	Fields []string      `json:"fields,omitempty" jsonschema:"description=Fields to return"`
 	Limit  int           `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
@@ -164,8 +164,8 @@ type list_user_assigned_pagesArgs struct {
 	Pages  []interface{} `json:"pages,omitempty" jsonschema:"description=Pages,minimum=13,maximum=100"`
 }
 
-// list_user_assigned_product_catalogsArgs defines the typed arguments for list_user_assigned_product_catalogs
-type list_user_assigned_product_catalogsArgs struct {
+// user_list_assigned_product_catalogsArgs defines the typed arguments for user_list_assigned_product_catalogs
+type user_list_assigned_product_catalogsArgs struct {
 	ID     string   `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
 	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
 	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
@@ -173,8 +173,8 @@ type list_user_assigned_product_catalogsArgs struct {
 	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
 }
 
-// list_user_avatarsArgs defines the typed arguments for list_user_avatars
-type list_user_avatarsArgs struct {
+// user_list_avatarsArgs defines the typed arguments for user_list_avatars
+type user_list_avatarsArgs struct {
 	ID     string   `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
 	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
 	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
@@ -182,22 +182,22 @@ type list_user_avatarsArgs struct {
 	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
 }
 
-// list_user_business_usersArgs defines the typed arguments for list_user_business_users
-type list_user_business_usersArgs struct {
+// user_list_business_usersArgs defines the typed arguments for user_list_business_users
+type user_list_business_usersArgs struct {
 	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
 	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
 	After  string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
 	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
 }
 
-// remove_businesses_from_userArgs defines the typed arguments for remove_businesses_from_user
-type remove_businesses_from_userArgs struct {
+// user_remove_businessesArgs defines the typed arguments for user_remove_businesses
+type user_remove_businessesArgs struct {
 	ID       string `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
 	Business string `json:"business,omitempty" jsonschema:"description=Business"`
 }
 
-// list_user_businessesArgs defines the typed arguments for list_user_businesses
-type list_user_businessesArgs struct {
+// user_list_businessesArgs defines the typed arguments for user_list_businesses
+type user_list_businessesArgs struct {
 	ID     string   `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
 	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
 	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
@@ -205,8 +205,8 @@ type list_user_businessesArgs struct {
 	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
 }
 
-// create_user_businesseArgs defines the typed arguments for create_user_businesse
-type create_user_businesseArgs struct {
+// user_create_businesseArgs defines the typed arguments for user_create_businesse
+type user_create_businesseArgs struct {
 	ID                      string `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
 	ChildBusinessExternalId string `json:"child_business_external_id,omitempty" jsonschema:"description=ID of the Child Business External,pattern=^[0-9]+$"`
 	Email                   string `json:"email,omitempty" jsonschema:"description=Email"`
@@ -220,8 +220,8 @@ type create_user_businesseArgs struct {
 	Vertical                string `json:"vertical" jsonschema:"description=Vertical,required"`
 }
 
-// list_user_conversationsArgs defines the typed arguments for list_user_conversations
-type list_user_conversationsArgs struct {
+// user_list_conversationsArgs defines the typed arguments for user_list_conversations
+type user_list_conversationsArgs struct {
 	ID       string   `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
 	Fields   []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
 	Limit    int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
@@ -233,8 +233,8 @@ type list_user_conversationsArgs struct {
 	UserId   string   `json:"user_id,omitempty" jsonschema:"description=ID of the User,pattern=^[0-9]+$"`
 }
 
-// list_user_custom_labelsArgs defines the typed arguments for list_user_custom_labels
-type list_user_custom_labelsArgs struct {
+// user_list_custom_labelsArgs defines the typed arguments for user_list_custom_labels
+type user_list_custom_labelsArgs struct {
 	ID     string   `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
 	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
 	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
@@ -242,8 +242,8 @@ type list_user_custom_labelsArgs struct {
 	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
 }
 
-// list_user_eventsArgs defines the typed arguments for list_user_events
-type list_user_eventsArgs struct {
+// user_list_eventsArgs defines the typed arguments for user_list_events
+type user_list_eventsArgs struct {
 	ID              string   `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
 	Fields          []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
 	Limit           int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
@@ -253,8 +253,8 @@ type list_user_eventsArgs struct {
 	Type            string   `json:"type,omitempty" jsonschema:"description=Type"`
 }
 
-// get_user_feedArgs defines the typed arguments for get_user_feed
-type get_user_feedArgs struct {
+// user_get_feedArgs defines the typed arguments for user_get_feed
+type user_get_feedArgs struct {
 	ID            string   `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
 	Fields        []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
 	Limit         int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
@@ -268,8 +268,8 @@ type get_user_feedArgs struct {
 	With          string   `json:"with,omitempty" jsonschema:"description=With"`
 }
 
-// update_user_feedArgs defines the typed arguments for update_user_feed
-type update_user_feedArgs struct {
+// user_update_feedArgs defines the typed arguments for user_update_feed
+type user_update_feedArgs struct {
 	ID                        string                   `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
 	Actions                   map[string]interface{}   `json:"actions,omitempty" jsonschema:"description=Actions"`
 	AlbumId                   string                   `json:"album_id,omitempty" jsonschema:"description=ID of the Album,pattern=^[0-9]+$"`
@@ -378,8 +378,8 @@ type update_user_feedArgs struct {
 	Width                     int                      `json:"width,omitempty" jsonschema:"description=Width"`
 }
 
-// list_user_friendsArgs defines the typed arguments for list_user_friends
-type list_user_friendsArgs struct {
+// user_list_friendsArgs defines the typed arguments for user_list_friends
+type user_list_friendsArgs struct {
 	ID     string   `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
 	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
 	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
@@ -388,8 +388,8 @@ type list_user_friendsArgs struct {
 	Uid    int      `json:"uid,omitempty" jsonschema:"description=Uid"`
 }
 
-// list_user_fundraisersArgs defines the typed arguments for list_user_fundraisers
-type list_user_fundraisersArgs struct {
+// user_list_fundraisersArgs defines the typed arguments for user_list_fundraisers
+type user_list_fundraisersArgs struct {
 	ID     string   `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
 	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
 	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
@@ -397,8 +397,8 @@ type list_user_fundraisersArgs struct {
 	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
 }
 
-// create_user_fundraiserArgs defines the typed arguments for create_user_fundraiser
-type create_user_fundraiserArgs struct {
+// user_create_fundraiserArgs defines the typed arguments for user_create_fundraiser
+type user_create_fundraiserArgs struct {
 	ID                     string      `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
 	CharityId              string      `json:"charity_id,omitempty" jsonschema:"description=ID of the Charity,pattern=^[0-9]+$"`
 	CoverPhoto             interface{} `json:"cover_photo,omitempty" jsonschema:"description=Cover Photo"`
@@ -416,8 +416,8 @@ type create_user_fundraiserArgs struct {
 	PageId                 string      `json:"page_id,omitempty" jsonschema:"description=ID of the Page,pattern=^[0-9]+$"`
 }
 
-// list_user_groupsArgs defines the typed arguments for list_user_groups
-type list_user_groupsArgs struct {
+// user_list_groupsArgs defines the typed arguments for user_list_groups
+type user_list_groupsArgs struct {
 	ID        string   `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
 	Fields    []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
 	Limit     int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
@@ -427,8 +427,8 @@ type list_user_groupsArgs struct {
 	Parent    string   `json:"parent,omitempty" jsonschema:"description=Parent"`
 }
 
-// list_user_ids_for_appsArgs defines the typed arguments for list_user_ids_for_apps
-type list_user_ids_for_appsArgs struct {
+// user_list_ids_for_appsArgs defines the typed arguments for user_list_ids_for_apps
+type user_list_ids_for_appsArgs struct {
 	ID     string   `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
 	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
 	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
@@ -437,8 +437,8 @@ type list_user_ids_for_appsArgs struct {
 	App    int      `json:"app,omitempty" jsonschema:"description=App"`
 }
 
-// list_user_ids_for_businessArgs defines the typed arguments for list_user_ids_for_business
-type list_user_ids_for_businessArgs struct {
+// user_list_ids_for_businessArgs defines the typed arguments for user_list_ids_for_business
+type user_list_ids_for_businessArgs struct {
 	ID     string   `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
 	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
 	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
@@ -447,8 +447,8 @@ type list_user_ids_for_businessArgs struct {
 	App    int      `json:"app,omitempty" jsonschema:"description=App"`
 }
 
-// list_user_ids_for_pagesArgs defines the typed arguments for list_user_ids_for_pages
-type list_user_ids_for_pagesArgs struct {
+// user_list_ids_for_pagesArgs defines the typed arguments for user_list_ids_for_pages
+type user_list_ids_for_pagesArgs struct {
 	ID     string   `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
 	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
 	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
@@ -457,8 +457,8 @@ type list_user_ids_for_pagesArgs struct {
 	Page   int      `json:"page,omitempty" jsonschema:"description=Page,minimum=13,maximum=100"`
 }
 
-// list_user_likesArgs defines the typed arguments for list_user_likes
-type list_user_likesArgs struct {
+// user_list_likesArgs defines the typed arguments for user_list_likes
+type user_list_likesArgs struct {
 	ID       string   `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
 	Fields   []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
 	Limit    int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
@@ -467,8 +467,8 @@ type list_user_likesArgs struct {
 	TargetId string   `json:"target_id,omitempty" jsonschema:"description=ID of the Target,pattern=^[0-9]+$"`
 }
 
-// list_user_live_videosArgs defines the typed arguments for list_user_live_videos
-type list_user_live_videosArgs struct {
+// user_list_live_videosArgs defines the typed arguments for user_list_live_videos
+type user_list_live_videosArgs struct {
 	ID              string   `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
 	Fields          []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
 	Limit           int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
@@ -478,8 +478,8 @@ type list_user_live_videosArgs struct {
 	Source          string   `json:"source,omitempty" jsonschema:"description=Source"`
 }
 
-// create_user_live_videoArgs defines the typed arguments for create_user_live_video
-type create_user_live_videoArgs struct {
+// user_create_live_videoArgs defines the typed arguments for user_create_live_video
+type user_create_live_videoArgs struct {
 	ID                         string                 `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
 	ContentTags                []string               `json:"content_tags,omitempty" jsonschema:"description=Content Tags"`
 	Description                string                 `json:"description,omitempty" jsonschema:"description=Description"`
@@ -503,17 +503,17 @@ type create_user_live_videoArgs struct {
 	Title                      string                 `json:"title,omitempty" jsonschema:"description=Title"`
 }
 
-// create_user_messenger_desktop_performance_traceArgs defines the typed arguments for create_user_messenger_desktop_performance_trace
-type create_user_messenger_desktop_performance_traceArgs struct {
+// user_create_messenger_desktop_performance_traceArgs defines the typed arguments for user_create_messenger_desktop_performance_trace
+type user_create_messenger_desktop_performance_traceArgs struct {
 }
 
-// update_user_messenger_kids_accounts_unread_badgeArgs defines the typed arguments for update_user_messenger_kids_accounts_unread_badge
-type update_user_messenger_kids_accounts_unread_badgeArgs struct {
+// user_update_messenger_kids_accounts_unread_badgeArgs defines the typed arguments for user_update_messenger_kids_accounts_unread_badge
+type user_update_messenger_kids_accounts_unread_badgeArgs struct {
 	ProxiedAppId int `json:"proxied_app_id" jsonschema:"description=ID of the Proxied App,required,pattern=^[0-9]+$"`
 }
 
-// get_user_musicArgs defines the typed arguments for get_user_music
-type get_user_musicArgs struct {
+// user_get_musicArgs defines the typed arguments for user_get_music
+type user_get_musicArgs struct {
 	ID       string   `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
 	Fields   []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
 	Limit    int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
@@ -522,8 +522,8 @@ type get_user_musicArgs struct {
 	TargetId string   `json:"target_id,omitempty" jsonschema:"description=ID of the Target,pattern=^[0-9]+$"`
 }
 
-// create_user_notificationArgs defines the typed arguments for create_user_notification
-type create_user_notificationArgs struct {
+// user_create_notificationArgs defines the typed arguments for user_create_notification
+type user_create_notificationArgs struct {
 	ID                        string                 `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
 	BotMessagePayloadElements string                 `json:"bot_message_payload_elements,omitempty" jsonschema:"description=Bot Message Payload Elements"`
 	Filtering                 []string               `json:"filtering,omitempty" jsonschema:"description=Filtering"`
@@ -540,22 +540,22 @@ type create_user_notificationArgs struct {
 	Type                      string                 `json:"type,omitempty" jsonschema:"description=Type"`
 }
 
-// list_user_payment_transactionsArgs defines the typed arguments for list_user_payment_transactions
-type list_user_payment_transactionsArgs struct {
+// user_list_payment_transactionsArgs defines the typed arguments for user_list_payment_transactions
+type user_list_payment_transactionsArgs struct {
 	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
 	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
 	After  string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
 	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
 }
 
-// remove_permissions_from_userArgs defines the typed arguments for remove_permissions_from_user
-type remove_permissions_from_userArgs struct {
+// user_remove_permissionsArgs defines the typed arguments for user_remove_permissions
+type user_remove_permissionsArgs struct {
 	ID         string `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
 	Permission string `json:"permission,omitempty" jsonschema:"description=Permission"`
 }
 
-// list_user_permissionsArgs defines the typed arguments for list_user_permissions
-type list_user_permissionsArgs struct {
+// user_list_permissionsArgs defines the typed arguments for user_list_permissions
+type user_list_permissionsArgs struct {
 	ID         string   `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
 	Fields     []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
 	Limit      int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
@@ -565,8 +565,8 @@ type list_user_permissionsArgs struct {
 	Status     string   `json:"status,omitempty" jsonschema:"description=Status,enum=ACTIVE,enum=PAUSED,enum=DELETED,enum=ARCHIVED"`
 }
 
-// list_user_personal_ad_accountsArgs defines the typed arguments for list_user_personal_ad_accounts
-type list_user_personal_ad_accountsArgs struct {
+// user_list_personal_ad_accountsArgs defines the typed arguments for user_list_personal_ad_accounts
+type user_list_personal_ad_accountsArgs struct {
 	ID     string   `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
 	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
 	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
@@ -574,8 +574,8 @@ type list_user_personal_ad_accountsArgs struct {
 	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
 }
 
-// list_user_photosArgs defines the typed arguments for list_user_photos
-type list_user_photosArgs struct {
+// user_list_photosArgs defines the typed arguments for user_list_photos
+type user_list_photosArgs struct {
 	ID     string   `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
 	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
 	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
@@ -584,8 +584,8 @@ type list_user_photosArgs struct {
 	Type   string   `json:"type,omitempty" jsonschema:"description=Type"`
 }
 
-// create_user_photoArgs defines the typed arguments for create_user_photo
-type create_user_photoArgs struct {
+// user_create_photoArgs defines the typed arguments for user_create_photo
+type user_create_photoArgs struct {
 	ID                                    string                   `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
 	Aid                                   string                   `json:"aid,omitempty" jsonschema:"description=Aid"`
 	AllowSphericalPhoto                   bool                     `json:"allow_spherical_photo,omitempty" jsonschema:"description=Allow Spherical Photo"`
@@ -641,8 +641,8 @@ type create_user_photoArgs struct {
 	VaultImageId                          string                   `json:"vault_image_id,omitempty" jsonschema:"description=ID of the Vault Image,pattern=^[0-9]+$"`
 }
 
-// get_user_pictureArgs defines the typed arguments for get_user_picture
-type get_user_pictureArgs struct {
+// user_get_pictureArgs defines the typed arguments for user_get_picture
+type user_get_pictureArgs struct {
 	ID       string   `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
 	Fields   []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
 	Limit    int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
@@ -654,8 +654,8 @@ type get_user_pictureArgs struct {
 	Width    int      `json:"width,omitempty" jsonschema:"description=Width"`
 }
 
-// list_user_postsArgs defines the typed arguments for list_user_posts
-type list_user_postsArgs struct {
+// user_list_postsArgs defines the typed arguments for user_list_posts
+type user_list_postsArgs struct {
 	ID            string   `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
 	Fields        []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
 	Limit         int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
@@ -669,8 +669,8 @@ type list_user_postsArgs struct {
 	With          string   `json:"with,omitempty" jsonschema:"description=With"`
 }
 
-// list_user_rich_media_documentsArgs defines the typed arguments for list_user_rich_media_documents
-type list_user_rich_media_documentsArgs struct {
+// user_list_rich_media_documentsArgs defines the typed arguments for user_list_rich_media_documents
+type user_list_rich_media_documentsArgs struct {
 	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
 	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
 	After  string   `json:"after,omitempty" jsonschema:"description=Cursor for pagination (next page)"`
@@ -678,14 +678,14 @@ type list_user_rich_media_documentsArgs struct {
 	Query  string   `json:"query,omitempty" jsonschema:"description=Query"`
 }
 
-// create_user_staging_resourceArgs defines the typed arguments for create_user_staging_resource
-type create_user_staging_resourceArgs struct {
+// user_create_staging_resourceArgs defines the typed arguments for user_create_staging_resource
+type user_create_staging_resourceArgs struct {
 	ID   string      `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
 	File interface{} `json:"file,omitempty" jsonschema:"description=File"`
 }
 
-// list_user_videosArgs defines the typed arguments for list_user_videos
-type list_user_videosArgs struct {
+// user_list_videosArgs defines the typed arguments for user_list_videos
+type user_list_videosArgs struct {
 	ID     string   `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
 	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
 	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
@@ -694,8 +694,8 @@ type list_user_videosArgs struct {
 	Type   string   `json:"type,omitempty" jsonschema:"description=Type"`
 }
 
-// create_user_videoArgs defines the typed arguments for create_user_video
-type create_user_videoArgs struct {
+// user_create_videoArgs defines the typed arguments for user_create_video
+type user_create_videoArgs struct {
 	ID                            string                 `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
 	ApplicationId                 string                 `json:"application_id,omitempty" jsonschema:"description=ID of the Application,pattern=^[0-9]+$"`
 	AskedFunFactPromptId          int                    `json:"asked_fun_fact_prompt_id,omitempty" jsonschema:"description=ID of the Asked Fun Fact Prompt,pattern=^[0-9]+$"`
@@ -770,13 +770,13 @@ type create_user_videoArgs struct {
 	WaterfallId                   string                 `json:"waterfall_id,omitempty" jsonschema:"description=ID of the Waterfall,pattern=^[0-9]+$"`
 }
 
-// delete_userArgs defines the typed arguments for delete_user
-type delete_userArgs struct {
+// user_deleteArgs defines the typed arguments for user_delete
+type user_deleteArgs struct {
 	ID string `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
 }
 
-// get_userArgs defines the typed arguments for get_user
-type get_userArgs struct {
+// user_getArgs defines the typed arguments for user_get
+type user_getArgs struct {
 	ID     string   `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
 	Fields []string `json:"fields,omitempty" jsonschema:"description=Fields to return"`
 	Limit  int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results,minimum=1,maximum=100"`
@@ -784,8 +784,8 @@ type get_userArgs struct {
 	Before string   `json:"before,omitempty" jsonschema:"description=Cursor for pagination (previous page)"`
 }
 
-// update_userArgs defines the typed arguments for update_user
-type update_userArgs struct {
+// user_updateArgs defines the typed arguments for user_update
+type user_updateArgs struct {
 	ID                              string `json:"id" jsonschema:"required,description=User ID,pattern=^[0-9]+$"`
 	EmojiColorPref                  int    `json:"emoji_color_pref,omitempty" jsonschema:"description=Emoji Color Pref"`
 	Firstname                       string `json:"firstname,omitempty" jsonschema:"description=Firstname"`
@@ -796,8 +796,8 @@ type update_userArgs struct {
 	Password                        string `json:"password,omitempty" jsonschema:"description=Password"`
 }
 
-// RemoveAccessTokensFromUserHandler handles remove_access_tokens_from_user with raw schema validation
-func RemoveAccessTokensFromUserHandler(ctx context.Context, request mcp.CallToolRequest, args remove_access_tokens_from_userArgs) (*mcp.CallToolResult, error) {
+// UserRemoveAccessTokensHandler handles user_remove_access_tokens with raw schema validation
+func UserRemoveAccessTokensHandler(ctx context.Context, request mcp.CallToolRequest, args user_remove_access_tokensArgs) (*mcp.CallToolResult, error) {
 	// Arguments are explicitly passed as typed struct
 
 	if args.ID == "" {
@@ -809,8 +809,8 @@ func RemoveAccessTokensFromUserHandler(ctx context.Context, request mcp.CallTool
 
 }
 
-// CreateUserAccessTokenHandler handles create_user_access_token with raw schema validation
-func CreateUserAccessTokenHandler(ctx context.Context, request mcp.CallToolRequest, args create_user_access_tokenArgs) (*mcp.CallToolResult, error) {
+// UserCreateAccessTokenHandler handles user_create_access_token with raw schema validation
+func UserCreateAccessTokenHandler(ctx context.Context, request mcp.CallToolRequest, args user_create_access_tokenArgs) (*mcp.CallToolResult, error) {
 	// Arguments are explicitly passed as typed struct
 
 	// Build request body
@@ -843,8 +843,8 @@ func CreateUserAccessTokenHandler(ctx context.Context, request mcp.CallToolReque
 
 }
 
-// ListUserAccountsHandler handles list_user_accounts with raw schema validation
-func ListUserAccountsHandler(ctx context.Context, request mcp.CallToolRequest, args list_user_accountsArgs) (*mcp.CallToolResult, error) {
+// UserListAccountsHandler handles user_list_accounts with raw schema validation
+func UserListAccountsHandler(ctx context.Context, request mcp.CallToolRequest, args user_list_accountsArgs) (*mcp.CallToolResult, error) {
 	// Arguments are explicitly passed as typed struct
 
 	// Build query parameters
@@ -903,8 +903,8 @@ func ListUserAccountsHandler(ctx context.Context, request mcp.CallToolRequest, a
 
 }
 
-// CreateUserAccountHandler handles create_user_account with raw schema validation
-func CreateUserAccountHandler(ctx context.Context, request mcp.CallToolRequest, args create_user_accountArgs) (*mcp.CallToolResult, error) {
+// UserCreateAccountHandler handles user_create_account with raw schema validation
+func UserCreateAccountHandler(ctx context.Context, request mcp.CallToolRequest, args user_create_accountArgs) (*mcp.CallToolResult, error) {
 	// Arguments are explicitly passed as typed struct
 
 	// Build request body
@@ -985,8 +985,8 @@ func CreateUserAccountHandler(ctx context.Context, request mcp.CallToolRequest, 
 
 }
 
-// ListUserAdStudiesHandler handles list_user_ad_studies with raw schema validation
-func ListUserAdStudiesHandler(ctx context.Context, request mcp.CallToolRequest, args list_user_ad_studiesArgs) (*mcp.CallToolResult, error) {
+// UserListAdStudiesHandler handles user_list_ad_studies with raw schema validation
+func UserListAdStudiesHandler(ctx context.Context, request mcp.CallToolRequest, args user_list_ad_studiesArgs) (*mcp.CallToolResult, error) {
 	// Arguments are explicitly passed as typed struct
 
 	// Build query parameters
@@ -1033,8 +1033,8 @@ func ListUserAdStudiesHandler(ctx context.Context, request mcp.CallToolRequest, 
 
 }
 
-// CreateUserAdStudieHandler handles create_user_ad_studie with raw schema validation
-func CreateUserAdStudieHandler(ctx context.Context, request mcp.CallToolRequest, args create_user_ad_studieArgs) (*mcp.CallToolResult, error) {
+// UserCreateAdStudieHandler handles user_create_ad_studie with raw schema validation
+func UserCreateAdStudieHandler(ctx context.Context, request mcp.CallToolRequest, args user_create_ad_studieArgs) (*mcp.CallToolResult, error) {
 	// Arguments are explicitly passed as typed struct
 
 	// Build request body
@@ -1101,8 +1101,8 @@ func CreateUserAdStudieHandler(ctx context.Context, request mcp.CallToolRequest,
 
 }
 
-// ListUserAdaccountsHandler handles list_user_adaccounts with raw schema validation
-func ListUserAdaccountsHandler(ctx context.Context, request mcp.CallToolRequest, args list_user_adaccountsArgs) (*mcp.CallToolResult, error) {
+// UserListAdaccountsHandler handles user_list_adaccounts with raw schema validation
+func UserListAdaccountsHandler(ctx context.Context, request mcp.CallToolRequest, args user_list_adaccountsArgs) (*mcp.CallToolResult, error) {
 	// Arguments are explicitly passed as typed struct
 
 	// Build query parameters
@@ -1149,8 +1149,8 @@ func ListUserAdaccountsHandler(ctx context.Context, request mcp.CallToolRequest,
 
 }
 
-// ListUserAlbumsHandler handles list_user_albums with raw schema validation
-func ListUserAlbumsHandler(ctx context.Context, request mcp.CallToolRequest, args list_user_albumsArgs) (*mcp.CallToolResult, error) {
+// UserListAlbumsHandler handles user_list_albums with raw schema validation
+func UserListAlbumsHandler(ctx context.Context, request mcp.CallToolRequest, args user_list_albumsArgs) (*mcp.CallToolResult, error) {
 	// Arguments are explicitly passed as typed struct
 
 	// Build query parameters
@@ -1197,8 +1197,8 @@ func ListUserAlbumsHandler(ctx context.Context, request mcp.CallToolRequest, arg
 
 }
 
-// CreateUserApplicationHandler handles create_user_application with raw schema validation
-func CreateUserApplicationHandler(ctx context.Context, request mcp.CallToolRequest, args create_user_applicationArgs) (*mcp.CallToolResult, error) {
+// UserCreateApplicationHandler handles user_create_application with raw schema validation
+func UserCreateApplicationHandler(ctx context.Context, request mcp.CallToolRequest, args user_create_applicationArgs) (*mcp.CallToolResult, error) {
 	// Arguments are explicitly passed as typed struct
 
 	// Build request body
@@ -1221,8 +1221,8 @@ func CreateUserApplicationHandler(ctx context.Context, request mcp.CallToolReque
 
 }
 
-// ListUserApprequestformerrecipientsHandler handles list_user_apprequestformerrecipients with raw schema validation
-func ListUserApprequestformerrecipientsHandler(ctx context.Context, request mcp.CallToolRequest, args list_user_apprequestformerrecipientsArgs) (*mcp.CallToolResult, error) {
+// UserListApprequestformerrecipientsHandler handles user_list_apprequestformerrecipients with raw schema validation
+func UserListApprequestformerrecipientsHandler(ctx context.Context, request mcp.CallToolRequest, args user_list_apprequestformerrecipientsArgs) (*mcp.CallToolResult, error) {
 	// Arguments are explicitly passed as typed struct
 
 	// Build query parameters
@@ -1265,8 +1265,8 @@ func ListUserApprequestformerrecipientsHandler(ctx context.Context, request mcp.
 
 }
 
-// ListUserApprequestsHandler handles list_user_apprequests with raw schema validation
-func ListUserApprequestsHandler(ctx context.Context, request mcp.CallToolRequest, args list_user_apprequestsArgs) (*mcp.CallToolResult, error) {
+// UserListApprequestsHandler handles user_list_apprequests with raw schema validation
+func UserListApprequestsHandler(ctx context.Context, request mcp.CallToolRequest, args user_list_apprequestsArgs) (*mcp.CallToolResult, error) {
 	// Arguments are explicitly passed as typed struct
 
 	// Build query parameters
@@ -1313,8 +1313,8 @@ func ListUserApprequestsHandler(ctx context.Context, request mcp.CallToolRequest
 
 }
 
-// ListUserAssignedAdAccountsHandler handles list_user_assigned_ad_accounts with raw schema validation
-func ListUserAssignedAdAccountsHandler(ctx context.Context, request mcp.CallToolRequest, args list_user_assigned_ad_accountsArgs) (*mcp.CallToolResult, error) {
+// UserListAssignedAdAccountsHandler handles user_list_assigned_ad_accounts with raw schema validation
+func UserListAssignedAdAccountsHandler(ctx context.Context, request mcp.CallToolRequest, args user_list_assigned_ad_accountsArgs) (*mcp.CallToolResult, error) {
 	// Arguments are explicitly passed as typed struct
 
 	// Build query parameters
@@ -1361,8 +1361,8 @@ func ListUserAssignedAdAccountsHandler(ctx context.Context, request mcp.CallTool
 
 }
 
-// ListUserAssignedApplicationsHandler handles list_user_assigned_applications with raw schema validation
-func ListUserAssignedApplicationsHandler(ctx context.Context, request mcp.CallToolRequest, args list_user_assigned_applicationsArgs) (*mcp.CallToolResult, error) {
+// UserListAssignedApplicationsHandler handles user_list_assigned_applications with raw schema validation
+func UserListAssignedApplicationsHandler(ctx context.Context, request mcp.CallToolRequest, args user_list_assigned_applicationsArgs) (*mcp.CallToolResult, error) {
 	// Arguments are explicitly passed as typed struct
 
 	// Build query parameters
@@ -1409,8 +1409,8 @@ func ListUserAssignedApplicationsHandler(ctx context.Context, request mcp.CallTo
 
 }
 
-// ListUserAssignedBusinessAssetGroupsHandler handles list_user_assigned_business_asset_groups with raw schema validation
-func ListUserAssignedBusinessAssetGroupsHandler(ctx context.Context, request mcp.CallToolRequest, args list_user_assigned_business_asset_groupsArgs) (*mcp.CallToolResult, error) {
+// UserListAssignedBusinessAssetGroupsHandler handles user_list_assigned_business_asset_groups with raw schema validation
+func UserListAssignedBusinessAssetGroupsHandler(ctx context.Context, request mcp.CallToolRequest, args user_list_assigned_business_asset_groupsArgs) (*mcp.CallToolResult, error) {
 	// Arguments are explicitly passed as typed struct
 
 	// Build query parameters
@@ -1461,8 +1461,8 @@ func ListUserAssignedBusinessAssetGroupsHandler(ctx context.Context, request mcp
 
 }
 
-// ListUserAssignedPagesHandler handles list_user_assigned_pages with raw schema validation
-func ListUserAssignedPagesHandler(ctx context.Context, request mcp.CallToolRequest, args list_user_assigned_pagesArgs) (*mcp.CallToolResult, error) {
+// UserListAssignedPagesHandler handles user_list_assigned_pages with raw schema validation
+func UserListAssignedPagesHandler(ctx context.Context, request mcp.CallToolRequest, args user_list_assigned_pagesArgs) (*mcp.CallToolResult, error) {
 	// Arguments are explicitly passed as typed struct
 
 	// Build query parameters
@@ -1509,8 +1509,8 @@ func ListUserAssignedPagesHandler(ctx context.Context, request mcp.CallToolReque
 
 }
 
-// ListUserAssignedProductCatalogsHandler handles list_user_assigned_product_catalogs with raw schema validation
-func ListUserAssignedProductCatalogsHandler(ctx context.Context, request mcp.CallToolRequest, args list_user_assigned_product_catalogsArgs) (*mcp.CallToolResult, error) {
+// UserListAssignedProductCatalogsHandler handles user_list_assigned_product_catalogs with raw schema validation
+func UserListAssignedProductCatalogsHandler(ctx context.Context, request mcp.CallToolRequest, args user_list_assigned_product_catalogsArgs) (*mcp.CallToolResult, error) {
 	// Arguments are explicitly passed as typed struct
 
 	// Build query parameters
@@ -1557,8 +1557,8 @@ func ListUserAssignedProductCatalogsHandler(ctx context.Context, request mcp.Cal
 
 }
 
-// ListUserAvatarsHandler handles list_user_avatars with raw schema validation
-func ListUserAvatarsHandler(ctx context.Context, request mcp.CallToolRequest, args list_user_avatarsArgs) (*mcp.CallToolResult, error) {
+// UserListAvatarsHandler handles user_list_avatars with raw schema validation
+func UserListAvatarsHandler(ctx context.Context, request mcp.CallToolRequest, args user_list_avatarsArgs) (*mcp.CallToolResult, error) {
 	// Arguments are explicitly passed as typed struct
 
 	// Build query parameters
@@ -1605,8 +1605,8 @@ func ListUserAvatarsHandler(ctx context.Context, request mcp.CallToolRequest, ar
 
 }
 
-// ListUserBusinessUsersHandler handles list_user_business_users with raw schema validation
-func ListUserBusinessUsersHandler(ctx context.Context, request mcp.CallToolRequest, args list_user_business_usersArgs) (*mcp.CallToolResult, error) {
+// UserListBusinessUsersHandler handles user_list_business_users with raw schema validation
+func UserListBusinessUsersHandler(ctx context.Context, request mcp.CallToolRequest, args user_list_business_usersArgs) (*mcp.CallToolResult, error) {
 	// Arguments are explicitly passed as typed struct
 
 	// Build query parameters
@@ -1649,8 +1649,8 @@ func ListUserBusinessUsersHandler(ctx context.Context, request mcp.CallToolReque
 
 }
 
-// RemoveBusinessesFromUserHandler handles remove_businesses_from_user with raw schema validation
-func RemoveBusinessesFromUserHandler(ctx context.Context, request mcp.CallToolRequest, args remove_businesses_from_userArgs) (*mcp.CallToolResult, error) {
+// UserRemoveBusinessesHandler handles user_remove_businesses with raw schema validation
+func UserRemoveBusinessesHandler(ctx context.Context, request mcp.CallToolRequest, args user_remove_businessesArgs) (*mcp.CallToolResult, error) {
 	// Arguments are explicitly passed as typed struct
 
 	if args.ID == "" {
@@ -1662,8 +1662,8 @@ func RemoveBusinessesFromUserHandler(ctx context.Context, request mcp.CallToolRe
 
 }
 
-// ListUserBusinessesHandler handles list_user_businesses with raw schema validation
-func ListUserBusinessesHandler(ctx context.Context, request mcp.CallToolRequest, args list_user_businessesArgs) (*mcp.CallToolResult, error) {
+// UserListBusinessesHandler handles user_list_businesses with raw schema validation
+func UserListBusinessesHandler(ctx context.Context, request mcp.CallToolRequest, args user_list_businessesArgs) (*mcp.CallToolResult, error) {
 	// Arguments are explicitly passed as typed struct
 
 	// Build query parameters
@@ -1710,8 +1710,8 @@ func ListUserBusinessesHandler(ctx context.Context, request mcp.CallToolRequest,
 
 }
 
-// CreateUserBusinesseHandler handles create_user_businesse with raw schema validation
-func CreateUserBusinesseHandler(ctx context.Context, request mcp.CallToolRequest, args create_user_businesseArgs) (*mcp.CallToolResult, error) {
+// UserCreateBusinesseHandler handles user_create_businesse with raw schema validation
+func UserCreateBusinesseHandler(ctx context.Context, request mcp.CallToolRequest, args user_create_businesseArgs) (*mcp.CallToolResult, error) {
 	// Arguments are explicitly passed as typed struct
 
 	// Build request body
@@ -1770,8 +1770,8 @@ func CreateUserBusinesseHandler(ctx context.Context, request mcp.CallToolRequest
 
 }
 
-// ListUserConversationsHandler handles list_user_conversations with raw schema validation
-func ListUserConversationsHandler(ctx context.Context, request mcp.CallToolRequest, args list_user_conversationsArgs) (*mcp.CallToolResult, error) {
+// UserListConversationsHandler handles user_list_conversations with raw schema validation
+func UserListConversationsHandler(ctx context.Context, request mcp.CallToolRequest, args user_list_conversationsArgs) (*mcp.CallToolResult, error) {
 	// Arguments are explicitly passed as typed struct
 
 	// Build query parameters
@@ -1834,8 +1834,8 @@ func ListUserConversationsHandler(ctx context.Context, request mcp.CallToolReque
 
 }
 
-// ListUserCustomLabelsHandler handles list_user_custom_labels with raw schema validation
-func ListUserCustomLabelsHandler(ctx context.Context, request mcp.CallToolRequest, args list_user_custom_labelsArgs) (*mcp.CallToolResult, error) {
+// UserListCustomLabelsHandler handles user_list_custom_labels with raw schema validation
+func UserListCustomLabelsHandler(ctx context.Context, request mcp.CallToolRequest, args user_list_custom_labelsArgs) (*mcp.CallToolResult, error) {
 	// Arguments are explicitly passed as typed struct
 
 	// Build query parameters
@@ -1882,8 +1882,8 @@ func ListUserCustomLabelsHandler(ctx context.Context, request mcp.CallToolReques
 
 }
 
-// ListUserEventsHandler handles list_user_events with raw schema validation
-func ListUserEventsHandler(ctx context.Context, request mcp.CallToolRequest, args list_user_eventsArgs) (*mcp.CallToolResult, error) {
+// UserListEventsHandler handles user_list_events with raw schema validation
+func UserListEventsHandler(ctx context.Context, request mcp.CallToolRequest, args user_list_eventsArgs) (*mcp.CallToolResult, error) {
 	// Arguments are explicitly passed as typed struct
 
 	// Build query parameters
@@ -1938,8 +1938,8 @@ func ListUserEventsHandler(ctx context.Context, request mcp.CallToolRequest, arg
 
 }
 
-// GetUserFeedHandler handles get_user_feed with raw schema validation
-func GetUserFeedHandler(ctx context.Context, request mcp.CallToolRequest, args get_user_feedArgs) (*mcp.CallToolResult, error) {
+// UserGetFeedHandler handles user_get_feed with raw schema validation
+func UserGetFeedHandler(ctx context.Context, request mcp.CallToolRequest, args user_get_feedArgs) (*mcp.CallToolResult, error) {
 	// Arguments are explicitly passed as typed struct
 
 	// Build query parameters
@@ -2010,8 +2010,8 @@ func GetUserFeedHandler(ctx context.Context, request mcp.CallToolRequest, args g
 
 }
 
-// UpdateUserFeedHandler handles update_user_feed with raw schema validation
-func UpdateUserFeedHandler(ctx context.Context, request mcp.CallToolRequest, args update_user_feedArgs) (*mcp.CallToolResult, error) {
+// UserUpdateFeedHandler handles user_update_feed with raw schema validation
+func UserUpdateFeedHandler(ctx context.Context, request mcp.CallToolRequest, args user_update_feedArgs) (*mcp.CallToolResult, error) {
 	// Arguments are explicitly passed as typed struct
 
 	// Build request body
@@ -2418,8 +2418,8 @@ func UpdateUserFeedHandler(ctx context.Context, request mcp.CallToolRequest, arg
 
 }
 
-// ListUserFriendsHandler handles list_user_friends with raw schema validation
-func ListUserFriendsHandler(ctx context.Context, request mcp.CallToolRequest, args list_user_friendsArgs) (*mcp.CallToolResult, error) {
+// UserListFriendsHandler handles user_list_friends with raw schema validation
+func UserListFriendsHandler(ctx context.Context, request mcp.CallToolRequest, args user_list_friendsArgs) (*mcp.CallToolResult, error) {
 	// Arguments are explicitly passed as typed struct
 
 	// Build query parameters
@@ -2470,8 +2470,8 @@ func ListUserFriendsHandler(ctx context.Context, request mcp.CallToolRequest, ar
 
 }
 
-// ListUserFundraisersHandler handles list_user_fundraisers with raw schema validation
-func ListUserFundraisersHandler(ctx context.Context, request mcp.CallToolRequest, args list_user_fundraisersArgs) (*mcp.CallToolResult, error) {
+// UserListFundraisersHandler handles user_list_fundraisers with raw schema validation
+func UserListFundraisersHandler(ctx context.Context, request mcp.CallToolRequest, args user_list_fundraisersArgs) (*mcp.CallToolResult, error) {
 	// Arguments are explicitly passed as typed struct
 
 	// Build query parameters
@@ -2518,8 +2518,8 @@ func ListUserFundraisersHandler(ctx context.Context, request mcp.CallToolRequest
 
 }
 
-// CreateUserFundraiserHandler handles create_user_fundraiser with raw schema validation
-func CreateUserFundraiserHandler(ctx context.Context, request mcp.CallToolRequest, args create_user_fundraiserArgs) (*mcp.CallToolResult, error) {
+// UserCreateFundraiserHandler handles user_create_fundraiser with raw schema validation
+func UserCreateFundraiserHandler(ctx context.Context, request mcp.CallToolRequest, args user_create_fundraiserArgs) (*mcp.CallToolResult, error) {
 	// Arguments are explicitly passed as typed struct
 
 	// Build request body
@@ -2594,8 +2594,8 @@ func CreateUserFundraiserHandler(ctx context.Context, request mcp.CallToolReques
 
 }
 
-// ListUserGroupsHandler handles list_user_groups with raw schema validation
-func ListUserGroupsHandler(ctx context.Context, request mcp.CallToolRequest, args list_user_groupsArgs) (*mcp.CallToolResult, error) {
+// UserListGroupsHandler handles user_list_groups with raw schema validation
+func UserListGroupsHandler(ctx context.Context, request mcp.CallToolRequest, args user_list_groupsArgs) (*mcp.CallToolResult, error) {
 	// Arguments are explicitly passed as typed struct
 
 	// Build query parameters
@@ -2650,8 +2650,8 @@ func ListUserGroupsHandler(ctx context.Context, request mcp.CallToolRequest, arg
 
 }
 
-// ListUserIdsForAppsHandler handles list_user_ids_for_apps with raw schema validation
-func ListUserIdsForAppsHandler(ctx context.Context, request mcp.CallToolRequest, args list_user_ids_for_appsArgs) (*mcp.CallToolResult, error) {
+// UserListIdsForAppsHandler handles user_list_ids_for_apps with raw schema validation
+func UserListIdsForAppsHandler(ctx context.Context, request mcp.CallToolRequest, args user_list_ids_for_appsArgs) (*mcp.CallToolResult, error) {
 	// Arguments are explicitly passed as typed struct
 
 	// Build query parameters
@@ -2702,8 +2702,8 @@ func ListUserIdsForAppsHandler(ctx context.Context, request mcp.CallToolRequest,
 
 }
 
-// ListUserIdsForBusinessHandler handles list_user_ids_for_business with raw schema validation
-func ListUserIdsForBusinessHandler(ctx context.Context, request mcp.CallToolRequest, args list_user_ids_for_businessArgs) (*mcp.CallToolResult, error) {
+// UserListIdsForBusinessHandler handles user_list_ids_for_business with raw schema validation
+func UserListIdsForBusinessHandler(ctx context.Context, request mcp.CallToolRequest, args user_list_ids_for_businessArgs) (*mcp.CallToolResult, error) {
 	// Arguments are explicitly passed as typed struct
 
 	// Build query parameters
@@ -2754,8 +2754,8 @@ func ListUserIdsForBusinessHandler(ctx context.Context, request mcp.CallToolRequ
 
 }
 
-// ListUserIdsForPagesHandler handles list_user_ids_for_pages with raw schema validation
-func ListUserIdsForPagesHandler(ctx context.Context, request mcp.CallToolRequest, args list_user_ids_for_pagesArgs) (*mcp.CallToolResult, error) {
+// UserListIdsForPagesHandler handles user_list_ids_for_pages with raw schema validation
+func UserListIdsForPagesHandler(ctx context.Context, request mcp.CallToolRequest, args user_list_ids_for_pagesArgs) (*mcp.CallToolResult, error) {
 	// Arguments are explicitly passed as typed struct
 
 	// Build query parameters
@@ -2806,8 +2806,8 @@ func ListUserIdsForPagesHandler(ctx context.Context, request mcp.CallToolRequest
 
 }
 
-// ListUserLikesHandler handles list_user_likes with raw schema validation
-func ListUserLikesHandler(ctx context.Context, request mcp.CallToolRequest, args list_user_likesArgs) (*mcp.CallToolResult, error) {
+// UserListLikesHandler handles user_list_likes with raw schema validation
+func UserListLikesHandler(ctx context.Context, request mcp.CallToolRequest, args user_list_likesArgs) (*mcp.CallToolResult, error) {
 	// Arguments are explicitly passed as typed struct
 
 	// Build query parameters
@@ -2858,8 +2858,8 @@ func ListUserLikesHandler(ctx context.Context, request mcp.CallToolRequest, args
 
 }
 
-// ListUserLiveVideosHandler handles list_user_live_videos with raw schema validation
-func ListUserLiveVideosHandler(ctx context.Context, request mcp.CallToolRequest, args list_user_live_videosArgs) (*mcp.CallToolResult, error) {
+// UserListLiveVideosHandler handles user_list_live_videos with raw schema validation
+func UserListLiveVideosHandler(ctx context.Context, request mcp.CallToolRequest, args user_list_live_videosArgs) (*mcp.CallToolResult, error) {
 	// Arguments are explicitly passed as typed struct
 
 	// Build query parameters
@@ -2914,8 +2914,8 @@ func ListUserLiveVideosHandler(ctx context.Context, request mcp.CallToolRequest,
 
 }
 
-// CreateUserLiveVideoHandler handles create_user_live_video with raw schema validation
-func CreateUserLiveVideoHandler(ctx context.Context, request mcp.CallToolRequest, args create_user_live_videoArgs) (*mcp.CallToolResult, error) {
+// UserCreateLiveVideoHandler handles user_create_live_video with raw schema validation
+func UserCreateLiveVideoHandler(ctx context.Context, request mcp.CallToolRequest, args user_create_live_videoArgs) (*mcp.CallToolResult, error) {
 	// Arguments are explicitly passed as typed struct
 
 	// Build request body
@@ -3002,8 +3002,8 @@ func CreateUserLiveVideoHandler(ctx context.Context, request mcp.CallToolRequest
 
 }
 
-// CreateUserMessengerDesktopPerformanceTraceHandler handles create_user_messenger_desktop_performance_trace with raw schema validation
-func CreateUserMessengerDesktopPerformanceTraceHandler(ctx context.Context, request mcp.CallToolRequest, args create_user_messenger_desktop_performance_traceArgs) (*mcp.CallToolResult, error) {
+// UserCreateMessengerDesktopPerformanceTraceHandler handles user_create_messenger_desktop_performance_trace with raw schema validation
+func UserCreateMessengerDesktopPerformanceTraceHandler(ctx context.Context, request mcp.CallToolRequest, args user_create_messenger_desktop_performance_traceArgs) (*mcp.CallToolResult, error) {
 	// Arguments are explicitly passed as typed struct
 
 	// Build request body
@@ -3018,8 +3018,8 @@ func CreateUserMessengerDesktopPerformanceTraceHandler(ctx context.Context, requ
 
 }
 
-// UpdateUserMessengerKidsAccountsUnreadBadgeHandler handles update_user_messenger_kids_accounts_unread_badge with raw schema validation
-func UpdateUserMessengerKidsAccountsUnreadBadgeHandler(ctx context.Context, request mcp.CallToolRequest, args update_user_messenger_kids_accounts_unread_badgeArgs) (*mcp.CallToolResult, error) {
+// UserUpdateMessengerKidsAccountsUnreadBadgeHandler handles user_update_messenger_kids_accounts_unread_badge with raw schema validation
+func UserUpdateMessengerKidsAccountsUnreadBadgeHandler(ctx context.Context, request mcp.CallToolRequest, args user_update_messenger_kids_accounts_unread_badgeArgs) (*mcp.CallToolResult, error) {
 	// Arguments are explicitly passed as typed struct
 
 	// Build request body
@@ -3038,8 +3038,8 @@ func UpdateUserMessengerKidsAccountsUnreadBadgeHandler(ctx context.Context, requ
 
 }
 
-// GetUserMusicHandler handles get_user_music with raw schema validation
-func GetUserMusicHandler(ctx context.Context, request mcp.CallToolRequest, args get_user_musicArgs) (*mcp.CallToolResult, error) {
+// UserGetMusicHandler handles user_get_music with raw schema validation
+func UserGetMusicHandler(ctx context.Context, request mcp.CallToolRequest, args user_get_musicArgs) (*mcp.CallToolResult, error) {
 	// Arguments are explicitly passed as typed struct
 
 	// Build query parameters
@@ -3090,8 +3090,8 @@ func GetUserMusicHandler(ctx context.Context, request mcp.CallToolRequest, args 
 
 }
 
-// CreateUserNotificationHandler handles create_user_notification with raw schema validation
-func CreateUserNotificationHandler(ctx context.Context, request mcp.CallToolRequest, args create_user_notificationArgs) (*mcp.CallToolResult, error) {
+// UserCreateNotificationHandler handles user_create_notification with raw schema validation
+func UserCreateNotificationHandler(ctx context.Context, request mcp.CallToolRequest, args user_create_notificationArgs) (*mcp.CallToolResult, error) {
 	// Arguments are explicitly passed as typed struct
 
 	// Build request body
@@ -3158,8 +3158,8 @@ func CreateUserNotificationHandler(ctx context.Context, request mcp.CallToolRequ
 
 }
 
-// ListUserPaymentTransactionsHandler handles list_user_payment_transactions with raw schema validation
-func ListUserPaymentTransactionsHandler(ctx context.Context, request mcp.CallToolRequest, args list_user_payment_transactionsArgs) (*mcp.CallToolResult, error) {
+// UserListPaymentTransactionsHandler handles user_list_payment_transactions with raw schema validation
+func UserListPaymentTransactionsHandler(ctx context.Context, request mcp.CallToolRequest, args user_list_payment_transactionsArgs) (*mcp.CallToolResult, error) {
 	// Arguments are explicitly passed as typed struct
 
 	// Build query parameters
@@ -3202,8 +3202,8 @@ func ListUserPaymentTransactionsHandler(ctx context.Context, request mcp.CallToo
 
 }
 
-// RemovePermissionsFromUserHandler handles remove_permissions_from_user with raw schema validation
-func RemovePermissionsFromUserHandler(ctx context.Context, request mcp.CallToolRequest, args remove_permissions_from_userArgs) (*mcp.CallToolResult, error) {
+// UserRemovePermissionsHandler handles user_remove_permissions with raw schema validation
+func UserRemovePermissionsHandler(ctx context.Context, request mcp.CallToolRequest, args user_remove_permissionsArgs) (*mcp.CallToolResult, error) {
 	// Arguments are explicitly passed as typed struct
 
 	if args.ID == "" {
@@ -3215,8 +3215,8 @@ func RemovePermissionsFromUserHandler(ctx context.Context, request mcp.CallToolR
 
 }
 
-// ListUserPermissionsHandler handles list_user_permissions with raw schema validation
-func ListUserPermissionsHandler(ctx context.Context, request mcp.CallToolRequest, args list_user_permissionsArgs) (*mcp.CallToolResult, error) {
+// UserListPermissionsHandler handles user_list_permissions with raw schema validation
+func UserListPermissionsHandler(ctx context.Context, request mcp.CallToolRequest, args user_list_permissionsArgs) (*mcp.CallToolResult, error) {
 	// Arguments are explicitly passed as typed struct
 
 	// Build query parameters
@@ -3271,8 +3271,8 @@ func ListUserPermissionsHandler(ctx context.Context, request mcp.CallToolRequest
 
 }
 
-// ListUserPersonalAdAccountsHandler handles list_user_personal_ad_accounts with raw schema validation
-func ListUserPersonalAdAccountsHandler(ctx context.Context, request mcp.CallToolRequest, args list_user_personal_ad_accountsArgs) (*mcp.CallToolResult, error) {
+// UserListPersonalAdAccountsHandler handles user_list_personal_ad_accounts with raw schema validation
+func UserListPersonalAdAccountsHandler(ctx context.Context, request mcp.CallToolRequest, args user_list_personal_ad_accountsArgs) (*mcp.CallToolResult, error) {
 	// Arguments are explicitly passed as typed struct
 
 	// Build query parameters
@@ -3319,8 +3319,8 @@ func ListUserPersonalAdAccountsHandler(ctx context.Context, request mcp.CallTool
 
 }
 
-// ListUserPhotosHandler handles list_user_photos with raw schema validation
-func ListUserPhotosHandler(ctx context.Context, request mcp.CallToolRequest, args list_user_photosArgs) (*mcp.CallToolResult, error) {
+// UserListPhotosHandler handles user_list_photos with raw schema validation
+func UserListPhotosHandler(ctx context.Context, request mcp.CallToolRequest, args user_list_photosArgs) (*mcp.CallToolResult, error) {
 	// Arguments are explicitly passed as typed struct
 
 	// Build query parameters
@@ -3371,8 +3371,8 @@ func ListUserPhotosHandler(ctx context.Context, request mcp.CallToolRequest, arg
 
 }
 
-// CreateUserPhotoHandler handles create_user_photo with raw schema validation
-func CreateUserPhotoHandler(ctx context.Context, request mcp.CallToolRequest, args create_user_photoArgs) (*mcp.CallToolResult, error) {
+// UserCreatePhotoHandler handles user_create_photo with raw schema validation
+func UserCreatePhotoHandler(ctx context.Context, request mcp.CallToolRequest, args user_create_photoArgs) (*mcp.CallToolResult, error) {
 	// Arguments are explicitly passed as typed struct
 
 	// Build request body
@@ -3579,8 +3579,8 @@ func CreateUserPhotoHandler(ctx context.Context, request mcp.CallToolRequest, ar
 
 }
 
-// GetUserPictureHandler handles get_user_picture with raw schema validation
-func GetUserPictureHandler(ctx context.Context, request mcp.CallToolRequest, args get_user_pictureArgs) (*mcp.CallToolResult, error) {
+// UserGetPictureHandler handles user_get_picture with raw schema validation
+func UserGetPictureHandler(ctx context.Context, request mcp.CallToolRequest, args user_get_pictureArgs) (*mcp.CallToolResult, error) {
 	// Arguments are explicitly passed as typed struct
 
 	// Build query parameters
@@ -3643,8 +3643,8 @@ func GetUserPictureHandler(ctx context.Context, request mcp.CallToolRequest, arg
 
 }
 
-// ListUserPostsHandler handles list_user_posts with raw schema validation
-func ListUserPostsHandler(ctx context.Context, request mcp.CallToolRequest, args list_user_postsArgs) (*mcp.CallToolResult, error) {
+// UserListPostsHandler handles user_list_posts with raw schema validation
+func UserListPostsHandler(ctx context.Context, request mcp.CallToolRequest, args user_list_postsArgs) (*mcp.CallToolResult, error) {
 	// Arguments are explicitly passed as typed struct
 
 	// Build query parameters
@@ -3715,8 +3715,8 @@ func ListUserPostsHandler(ctx context.Context, request mcp.CallToolRequest, args
 
 }
 
-// ListUserRichMediaDocumentsHandler handles list_user_rich_media_documents with raw schema validation
-func ListUserRichMediaDocumentsHandler(ctx context.Context, request mcp.CallToolRequest, args list_user_rich_media_documentsArgs) (*mcp.CallToolResult, error) {
+// UserListRichMediaDocumentsHandler handles user_list_rich_media_documents with raw schema validation
+func UserListRichMediaDocumentsHandler(ctx context.Context, request mcp.CallToolRequest, args user_list_rich_media_documentsArgs) (*mcp.CallToolResult, error) {
 	// Arguments are explicitly passed as typed struct
 
 	// Build query parameters
@@ -3763,8 +3763,8 @@ func ListUserRichMediaDocumentsHandler(ctx context.Context, request mcp.CallTool
 
 }
 
-// CreateUserStagingResourceHandler handles create_user_staging_resource with raw schema validation
-func CreateUserStagingResourceHandler(ctx context.Context, request mcp.CallToolRequest, args create_user_staging_resourceArgs) (*mcp.CallToolResult, error) {
+// UserCreateStagingResourceHandler handles user_create_staging_resource with raw schema validation
+func UserCreateStagingResourceHandler(ctx context.Context, request mcp.CallToolRequest, args user_create_staging_resourceArgs) (*mcp.CallToolResult, error) {
 	// Arguments are explicitly passed as typed struct
 
 	// Build request body
@@ -3787,8 +3787,8 @@ func CreateUserStagingResourceHandler(ctx context.Context, request mcp.CallToolR
 
 }
 
-// ListUserVideosHandler handles list_user_videos with raw schema validation
-func ListUserVideosHandler(ctx context.Context, request mcp.CallToolRequest, args list_user_videosArgs) (*mcp.CallToolResult, error) {
+// UserListVideosHandler handles user_list_videos with raw schema validation
+func UserListVideosHandler(ctx context.Context, request mcp.CallToolRequest, args user_list_videosArgs) (*mcp.CallToolResult, error) {
 	// Arguments are explicitly passed as typed struct
 
 	// Build query parameters
@@ -3839,8 +3839,8 @@ func ListUserVideosHandler(ctx context.Context, request mcp.CallToolRequest, arg
 
 }
 
-// CreateUserVideoHandler handles create_user_video with raw schema validation
-func CreateUserVideoHandler(ctx context.Context, request mcp.CallToolRequest, args create_user_videoArgs) (*mcp.CallToolResult, error) {
+// UserCreateVideoHandler handles user_create_video with raw schema validation
+func UserCreateVideoHandler(ctx context.Context, request mcp.CallToolRequest, args user_create_videoArgs) (*mcp.CallToolResult, error) {
 	// Arguments are explicitly passed as typed struct
 
 	// Build request body
@@ -4121,8 +4121,8 @@ func CreateUserVideoHandler(ctx context.Context, request mcp.CallToolRequest, ar
 
 }
 
-// DeleteUserHandler handles delete_user with raw schema validation
-func DeleteUserHandler(ctx context.Context, request mcp.CallToolRequest, args delete_userArgs) (*mcp.CallToolResult, error) {
+// UserDeleteHandler handles user_delete with raw schema validation
+func UserDeleteHandler(ctx context.Context, request mcp.CallToolRequest, args user_deleteArgs) (*mcp.CallToolResult, error) {
 	// Arguments are explicitly passed as typed struct
 
 	if args.ID == "" {
@@ -4134,8 +4134,8 @@ func DeleteUserHandler(ctx context.Context, request mcp.CallToolRequest, args de
 
 }
 
-// GetUserHandler handles get_user with raw schema validation
-func GetUserHandler(ctx context.Context, request mcp.CallToolRequest, args get_userArgs) (*mcp.CallToolResult, error) {
+// UserGetHandler handles user_get with raw schema validation
+func UserGetHandler(ctx context.Context, request mcp.CallToolRequest, args user_getArgs) (*mcp.CallToolResult, error) {
 	// Arguments are explicitly passed as typed struct
 
 	// Build query parameters
@@ -4182,8 +4182,8 @@ func GetUserHandler(ctx context.Context, request mcp.CallToolRequest, args get_u
 
 }
 
-// UpdateUserHandler handles update_user with raw schema validation
-func UpdateUserHandler(ctx context.Context, request mcp.CallToolRequest, args update_userArgs) (*mcp.CallToolResult, error) {
+// UserUpdateHandler handles user_update with raw schema validation
+func UserUpdateHandler(ctx context.Context, request mcp.CallToolRequest, args user_updateArgs) (*mcp.CallToolResult, error) {
 	// Arguments are explicitly passed as typed struct
 
 	// Build request body
@@ -4233,829 +4233,829 @@ func UpdateUserHandler(ctx context.Context, request mcp.CallToolRequest, args up
 // RegisterUserTools registers all User tools with the MCP server
 func RegisterUserTools(s *server.MCPServer) error {
 
-	// Register remove_access_tokens_from_user using raw JSON schema
-	remove_access_tokens_from_userTool := mcp.NewToolWithRawSchema(
-		"remove_access_tokens_from_user",
+	// Register user_remove_access_tokens using raw JSON schema
+	user_remove_access_tokensTool := mcp.NewToolWithRawSchema(
+		"user_remove_access_tokens",
 		"Remove access_tokens from this User",
 		json.RawMessage(`{"additionalProperties":false,"properties":{"id":{"description":"User ID","pattern":"^[0-9]+$","type":"string"}},"required":["id"],"type":"object"}`),
 	)
-	s.AddTool(remove_access_tokens_from_userTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	s.AddTool(user_remove_access_tokensTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		// Parse arguments using the built-in type-safe binding
-		var args remove_access_tokens_from_userArgs
+		var args user_remove_access_tokensArgs
 		if err := request.BindArguments(&args); err != nil {
 			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
 		}
-		return RemoveAccessTokensFromUserHandler(ctx, request, args)
+		return UserRemoveAccessTokensHandler(ctx, request, args)
 	})
 
-	// Register create_user_access_token using raw JSON schema
-	create_user_access_tokenTool := mcp.NewToolWithRawSchema(
-		"create_user_access_token",
+	// Register user_create_access_token using raw JSON schema
+	user_create_access_tokenTool := mcp.NewToolWithRawSchema(
+		"user_create_access_token",
 		"Create or update access_tokens for this User Returns User. Required: business_app",
 		json.RawMessage(`{"additionalProperties":false,"properties":{"business_app":{"description":"Business App","type":"string"},"id":{"description":"User ID","pattern":"^[0-9]+$","type":"string"},"page_id":{"description":"ID of the Page","pattern":"^[0-9]+$","type":"string"},"scope":{"description":"Scope","items":{"type":"string"},"type":"array"},"set_token_expires_in_60_days":{"description":"Set Token Expires In 60 Days","type":"boolean"}},"required":["id","business_app"],"type":"object"}`),
 	)
-	s.AddTool(create_user_access_tokenTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	s.AddTool(user_create_access_tokenTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		// Parse arguments using the built-in type-safe binding
-		var args create_user_access_tokenArgs
+		var args user_create_access_tokenArgs
 		if err := request.BindArguments(&args); err != nil {
 			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
 		}
-		return CreateUserAccessTokenHandler(ctx, request, args)
+		return UserCreateAccessTokenHandler(ctx, request, args)
 	})
 
-	// Register list_user_accounts using raw JSON schema
-	list_user_accountsTool := mcp.NewToolWithRawSchema(
-		"list_user_accounts",
+	// Register user_list_accounts using raw JSON schema
+	user_list_accountsTool := mcp.NewToolWithRawSchema(
+		"user_list_accounts",
 		"List accounts for this User Returns Page.",
 		json.RawMessage(`{"additionalProperties":false,"properties":{"ad_id":{"description":"ID of the Ad","pattern":"^[0-9]+$","type":"string"},"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","pattern":"^[0-9]+$","type":"string"},"is_place":{"description":"Is Place","type":"boolean"},"is_promotable":{"description":"Is Promotable","type":"boolean"},"limit":{"description":"Maximum number of results","maximum":100,"minimum":1,"type":"integer"}},"required":["id"],"type":"object"}`),
 	)
-	s.AddTool(list_user_accountsTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	s.AddTool(user_list_accountsTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		// Parse arguments using the built-in type-safe binding
-		var args list_user_accountsArgs
+		var args user_list_accountsArgs
 		if err := request.BindArguments(&args); err != nil {
 			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
 		}
-		return ListUserAccountsHandler(ctx, request, args)
+		return UserListAccountsHandler(ctx, request, args)
 	})
 
-	// Register create_user_account using raw JSON schema
-	create_user_accountTool := mcp.NewToolWithRawSchema(
-		"create_user_account",
+	// Register user_create_account using raw JSON schema
+	user_create_accountTool := mcp.NewToolWithRawSchema(
+		"user_create_account",
 		"Create or update accounts for this User Required: name",
 		json.RawMessage(`{"additionalProperties":false,"properties":{"about":{"description":"About","type":"string"},"address":{"description":"Address","type":"string"},"category":{"description":"Category","type":"integer"},"category_enum":{"description":"Category Enum","type":"string"},"category_list":{"description":"Category List","items":{"type":"string"},"type":"array"},"city_id":{"description":"ID of the City","pattern":"^[0-9]+$","type":"string"},"coordinates":{"additionalProperties":true,"description":"Coordinates","type":"object"},"cover_photo":{"additionalProperties":true,"description":"Cover Photo","type":"object"},"description":{"description":"Description","type":"string"},"id":{"description":"User ID","pattern":"^[0-9]+$","type":"string"},"ignore_coordinate_warnings":{"description":"Ignore Coordinate Warnings","type":"boolean"},"location":{"additionalProperties":true,"description":"Location","type":"object"},"name":{"description":"Name","type":"string"},"phone":{"description":"Phone","type":"string"},"picture":{"description":"Picture","type":"string"},"website":{"description":"Website","type":"string"},"zip":{"description":"Zip","type":"string"}},"required":["id","name"],"type":"object"}`),
 	)
-	s.AddTool(create_user_accountTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	s.AddTool(user_create_accountTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		// Parse arguments using the built-in type-safe binding
-		var args create_user_accountArgs
+		var args user_create_accountArgs
 		if err := request.BindArguments(&args); err != nil {
 			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
 		}
-		return CreateUserAccountHandler(ctx, request, args)
+		return UserCreateAccountHandler(ctx, request, args)
 	})
 
-	// Register list_user_ad_studies using raw JSON schema
-	list_user_ad_studiesTool := mcp.NewToolWithRawSchema(
-		"list_user_ad_studies",
+	// Register user_list_ad_studies using raw JSON schema
+	user_list_ad_studiesTool := mcp.NewToolWithRawSchema(
+		"user_list_ad_studies",
 		"List ad_studies for this User Returns AdStudy.",
 		json.RawMessage(`{"additionalProperties":false,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","pattern":"^[0-9]+$","type":"string"},"limit":{"description":"Maximum number of results","maximum":100,"minimum":1,"type":"integer"}},"required":["id"],"type":"object"}`),
 	)
-	s.AddTool(list_user_ad_studiesTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	s.AddTool(user_list_ad_studiesTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		// Parse arguments using the built-in type-safe binding
-		var args list_user_ad_studiesArgs
+		var args user_list_ad_studiesArgs
 		if err := request.BindArguments(&args); err != nil {
 			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
 		}
-		return ListUserAdStudiesHandler(ctx, request, args)
+		return UserListAdStudiesHandler(ctx, request, args)
 	})
 
-	// Register create_user_ad_studie using raw JSON schema
-	create_user_ad_studieTool := mcp.NewToolWithRawSchema(
-		"create_user_ad_studie",
+	// Register user_create_ad_studie using raw JSON schema
+	user_create_ad_studieTool := mcp.NewToolWithRawSchema(
+		"user_create_ad_studie",
 		"Associate ad_studies with this User Returns AdStudy.",
 		json.RawMessage(`{"additionalProperties":false,"properties":{"cells":{"description":"Cells","items":{"additionalProperties":true,"type":"object"},"type":"array"},"client_business":{"description":"Client Business","type":"string"},"confidence_level":{"description":"Confidence Level","type":"number"},"cooldown_start_time":{"description":"Cooldown Start Time","type":"integer"},"description":{"description":"Description","type":"string"},"end_time":{"description":"End Time","type":"integer"},"id":{"description":"User ID","pattern":"^[0-9]+$","type":"string"},"name":{"description":"Name","type":"string"},"objectives":{"description":"Objectives","items":{"additionalProperties":true,"type":"object"},"type":"array"},"observation_end_time":{"description":"Observation End Time","type":"integer"},"start_time":{"description":"Start Time","type":"integer"},"type":{"description":"Type (enum: userad_studies_type_enum_param)","enum":["BACKEND_AB_TESTING","CONTINUOUS_LIFT_CONFIG","GEO_LIFT","LIFT","SPLIT_TEST"],"type":"string"},"viewers":{"description":"Viewers","items":{"type":"integer"},"type":"array"}},"required":["id"],"type":"object"}`),
 	)
-	s.AddTool(create_user_ad_studieTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	s.AddTool(user_create_ad_studieTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		// Parse arguments using the built-in type-safe binding
-		var args create_user_ad_studieArgs
+		var args user_create_ad_studieArgs
 		if err := request.BindArguments(&args); err != nil {
 			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
 		}
-		return CreateUserAdStudieHandler(ctx, request, args)
+		return UserCreateAdStudieHandler(ctx, request, args)
 	})
 
-	// Register list_user_adaccounts using raw JSON schema
-	list_user_adaccountsTool := mcp.NewToolWithRawSchema(
-		"list_user_adaccounts",
+	// Register user_list_adaccounts using raw JSON schema
+	user_list_adaccountsTool := mcp.NewToolWithRawSchema(
+		"user_list_adaccounts",
 		"List adaccounts for this User Returns AdAccount.",
 		json.RawMessage(`{"additionalProperties":false,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","pattern":"^[0-9]+$","type":"string"},"limit":{"description":"Maximum number of results","maximum":100,"minimum":1,"type":"integer"}},"required":["id"],"type":"object"}`),
 	)
-	s.AddTool(list_user_adaccountsTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	s.AddTool(user_list_adaccountsTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		// Parse arguments using the built-in type-safe binding
-		var args list_user_adaccountsArgs
+		var args user_list_adaccountsArgs
 		if err := request.BindArguments(&args); err != nil {
 			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
 		}
-		return ListUserAdaccountsHandler(ctx, request, args)
+		return UserListAdaccountsHandler(ctx, request, args)
 	})
 
-	// Register list_user_albums using raw JSON schema
-	list_user_albumsTool := mcp.NewToolWithRawSchema(
-		"list_user_albums",
+	// Register user_list_albums using raw JSON schema
+	user_list_albumsTool := mcp.NewToolWithRawSchema(
+		"user_list_albums",
 		"List albums for this User Returns Album.",
 		json.RawMessage(`{"additionalProperties":false,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","pattern":"^[0-9]+$","type":"string"},"limit":{"description":"Maximum number of results","maximum":100,"minimum":1,"type":"integer"}},"required":["id"],"type":"object"}`),
 	)
-	s.AddTool(list_user_albumsTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	s.AddTool(user_list_albumsTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		// Parse arguments using the built-in type-safe binding
-		var args list_user_albumsArgs
+		var args user_list_albumsArgs
 		if err := request.BindArguments(&args); err != nil {
 			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
 		}
-		return ListUserAlbumsHandler(ctx, request, args)
+		return UserListAlbumsHandler(ctx, request, args)
 	})
 
-	// Register create_user_application using raw JSON schema
-	create_user_applicationTool := mcp.NewToolWithRawSchema(
-		"create_user_application",
+	// Register user_create_application using raw JSON schema
+	user_create_applicationTool := mcp.NewToolWithRawSchema(
+		"user_create_application",
 		"Create or update applications for this User Returns User. Required: business_app",
 		json.RawMessage(`{"additionalProperties":false,"properties":{"business_app":{"description":"Business App","type":"integer"},"id":{"description":"User ID","pattern":"^[0-9]+$","type":"string"}},"required":["id","business_app"],"type":"object"}`),
 	)
-	s.AddTool(create_user_applicationTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	s.AddTool(user_create_applicationTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		// Parse arguments using the built-in type-safe binding
-		var args create_user_applicationArgs
+		var args user_create_applicationArgs
 		if err := request.BindArguments(&args); err != nil {
 			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
 		}
-		return CreateUserApplicationHandler(ctx, request, args)
+		return UserCreateApplicationHandler(ctx, request, args)
 	})
 
-	// Register list_user_apprequestformerrecipients using raw JSON schema
-	list_user_apprequestformerrecipientsTool := mcp.NewToolWithRawSchema(
-		"list_user_apprequestformerrecipients",
+	// Register user_list_apprequestformerrecipients using raw JSON schema
+	user_list_apprequestformerrecipientsTool := mcp.NewToolWithRawSchema(
+		"user_list_apprequestformerrecipients",
 		"List apprequestformerrecipients for this User Returns AppRequestFormerRecipient.",
 		json.RawMessage(`{"additionalProperties":false,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"limit":{"description":"Maximum number of results","maximum":100,"minimum":1,"type":"integer"}},"required":[],"type":"object"}`),
 	)
-	s.AddTool(list_user_apprequestformerrecipientsTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	s.AddTool(user_list_apprequestformerrecipientsTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		// Parse arguments using the built-in type-safe binding
-		var args list_user_apprequestformerrecipientsArgs
+		var args user_list_apprequestformerrecipientsArgs
 		if err := request.BindArguments(&args); err != nil {
 			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
 		}
-		return ListUserApprequestformerrecipientsHandler(ctx, request, args)
+		return UserListApprequestformerrecipientsHandler(ctx, request, args)
 	})
 
-	// Register list_user_apprequests using raw JSON schema
-	list_user_apprequestsTool := mcp.NewToolWithRawSchema(
-		"list_user_apprequests",
+	// Register user_list_apprequests using raw JSON schema
+	user_list_apprequestsTool := mcp.NewToolWithRawSchema(
+		"user_list_apprequests",
 		"List apprequests for this User Returns AppRequest.",
 		json.RawMessage(`{"additionalProperties":false,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","pattern":"^[0-9]+$","type":"string"},"limit":{"description":"Maximum number of results","maximum":100,"minimum":1,"type":"integer"}},"required":["id"],"type":"object"}`),
 	)
-	s.AddTool(list_user_apprequestsTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	s.AddTool(user_list_apprequestsTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		// Parse arguments using the built-in type-safe binding
-		var args list_user_apprequestsArgs
+		var args user_list_apprequestsArgs
 		if err := request.BindArguments(&args); err != nil {
 			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
 		}
-		return ListUserApprequestsHandler(ctx, request, args)
+		return UserListApprequestsHandler(ctx, request, args)
 	})
 
-	// Register list_user_assigned_ad_accounts using raw JSON schema
-	list_user_assigned_ad_accountsTool := mcp.NewToolWithRawSchema(
-		"list_user_assigned_ad_accounts",
+	// Register user_list_assigned_ad_accounts using raw JSON schema
+	user_list_assigned_ad_accountsTool := mcp.NewToolWithRawSchema(
+		"user_list_assigned_ad_accounts",
 		"List assigned_ad_accounts for this User Returns AdAccount.",
 		json.RawMessage(`{"additionalProperties":false,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","pattern":"^[0-9]+$","type":"string"},"limit":{"description":"Maximum number of results","maximum":100,"minimum":1,"type":"integer"}},"required":["id"],"type":"object"}`),
 	)
-	s.AddTool(list_user_assigned_ad_accountsTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	s.AddTool(user_list_assigned_ad_accountsTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		// Parse arguments using the built-in type-safe binding
-		var args list_user_assigned_ad_accountsArgs
+		var args user_list_assigned_ad_accountsArgs
 		if err := request.BindArguments(&args); err != nil {
 			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
 		}
-		return ListUserAssignedAdAccountsHandler(ctx, request, args)
+		return UserListAssignedAdAccountsHandler(ctx, request, args)
 	})
 
-	// Register list_user_assigned_applications using raw JSON schema
-	list_user_assigned_applicationsTool := mcp.NewToolWithRawSchema(
-		"list_user_assigned_applications",
+	// Register user_list_assigned_applications using raw JSON schema
+	user_list_assigned_applicationsTool := mcp.NewToolWithRawSchema(
+		"user_list_assigned_applications",
 		"List assigned_applications for this User Returns Application.",
 		json.RawMessage(`{"additionalProperties":false,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","pattern":"^[0-9]+$","type":"string"},"limit":{"description":"Maximum number of results","maximum":100,"minimum":1,"type":"integer"}},"required":["id"],"type":"object"}`),
 	)
-	s.AddTool(list_user_assigned_applicationsTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	s.AddTool(user_list_assigned_applicationsTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		// Parse arguments using the built-in type-safe binding
-		var args list_user_assigned_applicationsArgs
+		var args user_list_assigned_applicationsArgs
 		if err := request.BindArguments(&args); err != nil {
 			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
 		}
-		return ListUserAssignedApplicationsHandler(ctx, request, args)
+		return UserListAssignedApplicationsHandler(ctx, request, args)
 	})
 
-	// Register list_user_assigned_business_asset_groups using raw JSON schema
-	list_user_assigned_business_asset_groupsTool := mcp.NewToolWithRawSchema(
-		"list_user_assigned_business_asset_groups",
+	// Register user_list_assigned_business_asset_groups using raw JSON schema
+	user_list_assigned_business_asset_groupsTool := mcp.NewToolWithRawSchema(
+		"user_list_assigned_business_asset_groups",
 		"List assigned_business_asset_groups for this User Returns BusinessAssetGroup.",
 		json.RawMessage(`{"additionalProperties":false,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"contained_asset_id":{"description":"ID of the Contained Asset","pattern":"^[0-9]+$","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","pattern":"^[0-9]+$","type":"string"},"limit":{"description":"Maximum number of results","maximum":100,"minimum":1,"type":"integer"}},"required":["id"],"type":"object"}`),
 	)
-	s.AddTool(list_user_assigned_business_asset_groupsTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	s.AddTool(user_list_assigned_business_asset_groupsTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		// Parse arguments using the built-in type-safe binding
-		var args list_user_assigned_business_asset_groupsArgs
+		var args user_list_assigned_business_asset_groupsArgs
 		if err := request.BindArguments(&args); err != nil {
 			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
 		}
-		return ListUserAssignedBusinessAssetGroupsHandler(ctx, request, args)
+		return UserListAssignedBusinessAssetGroupsHandler(ctx, request, args)
 	})
 
-	// Register list_user_assigned_pages using raw JSON schema
-	list_user_assigned_pagesTool := mcp.NewToolWithRawSchema(
-		"list_user_assigned_pages",
+	// Register user_list_assigned_pages using raw JSON schema
+	user_list_assigned_pagesTool := mcp.NewToolWithRawSchema(
+		"user_list_assigned_pages",
 		"List assigned_pages for this User Returns Page.",
 		json.RawMessage(`{"additionalProperties":false,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","pattern":"^[0-9]+$","type":"string"},"limit":{"description":"Maximum number of results","maximum":100,"minimum":1,"type":"integer"},"pages":{"description":"Pages","items":{"type":"integer"},"type":"array"}},"required":["id"],"type":"object"}`),
 	)
-	s.AddTool(list_user_assigned_pagesTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	s.AddTool(user_list_assigned_pagesTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		// Parse arguments using the built-in type-safe binding
-		var args list_user_assigned_pagesArgs
+		var args user_list_assigned_pagesArgs
 		if err := request.BindArguments(&args); err != nil {
 			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
 		}
-		return ListUserAssignedPagesHandler(ctx, request, args)
+		return UserListAssignedPagesHandler(ctx, request, args)
 	})
 
-	// Register list_user_assigned_product_catalogs using raw JSON schema
-	list_user_assigned_product_catalogsTool := mcp.NewToolWithRawSchema(
-		"list_user_assigned_product_catalogs",
+	// Register user_list_assigned_product_catalogs using raw JSON schema
+	user_list_assigned_product_catalogsTool := mcp.NewToolWithRawSchema(
+		"user_list_assigned_product_catalogs",
 		"List assigned_product_catalogs for this User Returns ProductCatalog.",
 		json.RawMessage(`{"additionalProperties":false,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","pattern":"^[0-9]+$","type":"string"},"limit":{"description":"Maximum number of results","maximum":100,"minimum":1,"type":"integer"}},"required":["id"],"type":"object"}`),
 	)
-	s.AddTool(list_user_assigned_product_catalogsTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	s.AddTool(user_list_assigned_product_catalogsTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		// Parse arguments using the built-in type-safe binding
-		var args list_user_assigned_product_catalogsArgs
+		var args user_list_assigned_product_catalogsArgs
 		if err := request.BindArguments(&args); err != nil {
 			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
 		}
-		return ListUserAssignedProductCatalogsHandler(ctx, request, args)
+		return UserListAssignedProductCatalogsHandler(ctx, request, args)
 	})
 
-	// Register list_user_avatars using raw JSON schema
-	list_user_avatarsTool := mcp.NewToolWithRawSchema(
-		"list_user_avatars",
+	// Register user_list_avatars using raw JSON schema
+	user_list_avatarsTool := mcp.NewToolWithRawSchema(
+		"user_list_avatars",
 		"List avatars for this User Returns Avatar.",
 		json.RawMessage(`{"additionalProperties":false,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","pattern":"^[0-9]+$","type":"string"},"limit":{"description":"Maximum number of results","maximum":100,"minimum":1,"type":"integer"}},"required":["id"],"type":"object"}`),
 	)
-	s.AddTool(list_user_avatarsTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	s.AddTool(user_list_avatarsTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		// Parse arguments using the built-in type-safe binding
-		var args list_user_avatarsArgs
+		var args user_list_avatarsArgs
 		if err := request.BindArguments(&args); err != nil {
 			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
 		}
-		return ListUserAvatarsHandler(ctx, request, args)
+		return UserListAvatarsHandler(ctx, request, args)
 	})
 
-	// Register list_user_business_users using raw JSON schema
-	list_user_business_usersTool := mcp.NewToolWithRawSchema(
-		"list_user_business_users",
+	// Register user_list_business_users using raw JSON schema
+	user_list_business_usersTool := mcp.NewToolWithRawSchema(
+		"user_list_business_users",
 		"List business_users for this User Returns BusinessUser.",
 		json.RawMessage(`{"additionalProperties":false,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"limit":{"description":"Maximum number of results","maximum":100,"minimum":1,"type":"integer"}},"required":[],"type":"object"}`),
 	)
-	s.AddTool(list_user_business_usersTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	s.AddTool(user_list_business_usersTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		// Parse arguments using the built-in type-safe binding
-		var args list_user_business_usersArgs
+		var args user_list_business_usersArgs
 		if err := request.BindArguments(&args); err != nil {
 			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
 		}
-		return ListUserBusinessUsersHandler(ctx, request, args)
+		return UserListBusinessUsersHandler(ctx, request, args)
 	})
 
-	// Register remove_businesses_from_user using raw JSON schema
-	remove_businesses_from_userTool := mcp.NewToolWithRawSchema(
-		"remove_businesses_from_user",
+	// Register user_remove_businesses using raw JSON schema
+	user_remove_businessesTool := mcp.NewToolWithRawSchema(
+		"user_remove_businesses",
 		"Remove businesses from this User",
 		json.RawMessage(`{"additionalProperties":false,"properties":{"business":{"description":"Business","type":"string"},"id":{"description":"User ID","pattern":"^[0-9]+$","type":"string"}},"required":["id"],"type":"object"}`),
 	)
-	s.AddTool(remove_businesses_from_userTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	s.AddTool(user_remove_businessesTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		// Parse arguments using the built-in type-safe binding
-		var args remove_businesses_from_userArgs
+		var args user_remove_businessesArgs
 		if err := request.BindArguments(&args); err != nil {
 			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
 		}
-		return RemoveBusinessesFromUserHandler(ctx, request, args)
+		return UserRemoveBusinessesHandler(ctx, request, args)
 	})
 
-	// Register list_user_businesses using raw JSON schema
-	list_user_businessesTool := mcp.NewToolWithRawSchema(
-		"list_user_businesses",
+	// Register user_list_businesses using raw JSON schema
+	user_list_businessesTool := mcp.NewToolWithRawSchema(
+		"user_list_businesses",
 		"List businesses for this User Returns Business.",
 		json.RawMessage(`{"additionalProperties":false,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","pattern":"^[0-9]+$","type":"string"},"limit":{"description":"Maximum number of results","maximum":100,"minimum":1,"type":"integer"}},"required":["id"],"type":"object"}`),
 	)
-	s.AddTool(list_user_businessesTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	s.AddTool(user_list_businessesTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		// Parse arguments using the built-in type-safe binding
-		var args list_user_businessesArgs
+		var args user_list_businessesArgs
 		if err := request.BindArguments(&args); err != nil {
 			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
 		}
-		return ListUserBusinessesHandler(ctx, request, args)
+		return UserListBusinessesHandler(ctx, request, args)
 	})
 
-	// Register create_user_businesse using raw JSON schema
-	create_user_businesseTool := mcp.NewToolWithRawSchema(
-		"create_user_businesse",
+	// Register user_create_businesse using raw JSON schema
+	user_create_businesseTool := mcp.NewToolWithRawSchema(
+		"user_create_businesse",
 		"Create or update businesses for this User Returns Business. Required: name, vertical (enum)",
 		json.RawMessage(`{"additionalProperties":false,"properties":{"child_business_external_id":{"description":"ID of the Child Business External","pattern":"^[0-9]+$","type":"string"},"email":{"description":"Email","type":"string"},"id":{"description":"User ID","pattern":"^[0-9]+$","type":"string"},"name":{"description":"Name","type":"string"},"primary_page":{"description":"Primary Page","type":"string"},"sales_rep_email":{"description":"Sales Rep Email","type":"string"},"survey_business_type":{"description":"Survey Business Type (enum: userbusinesses_survey_business_type_enum_param)","enum":["ADVERTISER","AGENCY","APP_DEVELOPER","PUBLISHER"],"type":"string"},"survey_num_assets":{"description":"Survey Num Assets","type":"integer"},"survey_num_people":{"description":"Survey Num People","type":"integer"},"timezone_id":{"description":"ID of the Timezone (enum: userbusinesses_timezone_id_enum_param)","enum":["0","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99","100","101","102","103","104","105","106","107","108","109","110","111","112","113","114","115","116","117","118","119","120","121","122","123","124","125","126","127","128","129","130","131","132","133","134","135","136","137","138","139","140","141","142","143","144","145","146","147","148","149","150","151","152","153","154","155","156","157","158","159","160","161","162","163","164","165","166","167","168","169","170","171","172","173","174","175","176","177","178","179","180","181","182","183","184","185","186","187","188","189","190","191","192","193","194","195","196","197","198","199","200","201","202","203","204","205","206","207","208","209","210","211","212","213","214","215","216","217","218","219","220","221","222","223","224","225","226","227","228","229","230","231","232","233","234","235","236","237","238","239","240","241","242","243","244","245","246","247","248","249","250","251","252","253","254","255","256","257","258","259","260","261","262","263","264","265","266","267","268","269","270","271","272","273","274","275","276","277","278","279","280","281","282","283","284","285","286","287","288","289","290","291","292","293","294","295","296","297","298","299","300","301","302","303","304","305","306","307","308","309","310","311","312","313","314","315","316","317","318","319","320","321","322","323","324","325","326","327","328","329","330","331","332","333","334","335","336","337","338","339","340","341","342","343","344","345","346","347","348","349","350","351","352","353","354","355","356","357","358","359","360","361","362","363","364","365","366","367","368","369","370","371","372","373","374","375","376","377","378","379","380","381","382","383","384","385","386","387","388","389","390","391","392","393","394","395","396","397","398","399","400","401","402","403","404","405","406","407","408","409","410","411","412","413","414","415","416","417","418","419","420","421","422","423","424","425","426","427","428","429","430","431","432","433","434","435","436","437","438","439","440","441","442","443","444","445","446","447","448","449","450","451","452","453","454","455","456","457","458","459","460","461","462","463","464","465","466","467","468","469","470","471","472","473","474","475","476","477","478","479","480"],"type":"string"},"vertical":{"description":"Vertical (enum: userbusinesses_vertical_enum_param)","enum":["ADVERTISING","AUTOMOTIVE","CONSUMER_PACKAGED_GOODS","ECOMMERCE","EDUCATION","ENERGY_AND_UTILITIES","ENTERTAINMENT_AND_MEDIA","FINANCIAL_SERVICES","GAMING","GOVERNMENT_AND_POLITICS","HEALTH","LUXURY","MARKETING","NON_PROFIT","NOT_SET","ORGANIZATIONS_AND_ASSOCIATIONS","OTHER","PROFESSIONAL_SERVICES","RESTAURANT","RETAIL","TECHNOLOGY","TELECOM","TRAVEL"],"type":"string"}},"required":["id","name","vertical"],"type":"object"}`),
 	)
-	s.AddTool(create_user_businesseTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	s.AddTool(user_create_businesseTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		// Parse arguments using the built-in type-safe binding
-		var args create_user_businesseArgs
+		var args user_create_businesseArgs
 		if err := request.BindArguments(&args); err != nil {
 			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
 		}
-		return CreateUserBusinesseHandler(ctx, request, args)
+		return UserCreateBusinesseHandler(ctx, request, args)
 	})
 
-	// Register list_user_conversations using raw JSON schema
-	list_user_conversationsTool := mcp.NewToolWithRawSchema(
-		"list_user_conversations",
+	// Register user_list_conversations using raw JSON schema
+	user_list_conversationsTool := mcp.NewToolWithRawSchema(
+		"user_list_conversations",
 		"List conversations for this User Returns UnifiedThread.",
 		json.RawMessage(`{"additionalProperties":false,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"folder":{"description":"Folder","type":"string"},"id":{"description":"User ID","pattern":"^[0-9]+$","type":"string"},"limit":{"description":"Maximum number of results","maximum":100,"minimum":1,"type":"integer"},"platform":{"description":"Platform (enum: userconversations_platform_enum_param)","enum":["INSTAGRAM","MESSENGER"],"type":"string"},"tags":{"description":"Tags","items":{"type":"string"},"type":"array"},"user_id":{"description":"ID of the User","pattern":"^[0-9]+$","type":"string"}},"required":["id"],"type":"object"}`),
 	)
-	s.AddTool(list_user_conversationsTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	s.AddTool(user_list_conversationsTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		// Parse arguments using the built-in type-safe binding
-		var args list_user_conversationsArgs
+		var args user_list_conversationsArgs
 		if err := request.BindArguments(&args); err != nil {
 			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
 		}
-		return ListUserConversationsHandler(ctx, request, args)
+		return UserListConversationsHandler(ctx, request, args)
 	})
 
-	// Register list_user_custom_labels using raw JSON schema
-	list_user_custom_labelsTool := mcp.NewToolWithRawSchema(
-		"list_user_custom_labels",
+	// Register user_list_custom_labels using raw JSON schema
+	user_list_custom_labelsTool := mcp.NewToolWithRawSchema(
+		"user_list_custom_labels",
 		"List custom_labels for this User Returns PageUserMessageThreadLabel.",
 		json.RawMessage(`{"additionalProperties":false,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","pattern":"^[0-9]+$","type":"string"},"limit":{"description":"Maximum number of results","maximum":100,"minimum":1,"type":"integer"}},"required":["id"],"type":"object"}`),
 	)
-	s.AddTool(list_user_custom_labelsTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	s.AddTool(user_list_custom_labelsTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		// Parse arguments using the built-in type-safe binding
-		var args list_user_custom_labelsArgs
+		var args user_list_custom_labelsArgs
 		if err := request.BindArguments(&args); err != nil {
 			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
 		}
-		return ListUserCustomLabelsHandler(ctx, request, args)
+		return UserListCustomLabelsHandler(ctx, request, args)
 	})
 
-	// Register list_user_events using raw JSON schema
-	list_user_eventsTool := mcp.NewToolWithRawSchema(
-		"list_user_events",
+	// Register user_list_events using raw JSON schema
+	user_list_eventsTool := mcp.NewToolWithRawSchema(
+		"user_list_events",
 		"List events for this User Returns Event.",
 		json.RawMessage(`{"additionalProperties":false,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","pattern":"^[0-9]+$","type":"string"},"include_canceled":{"description":"Include Canceled","type":"boolean"},"limit":{"description":"Maximum number of results","maximum":100,"minimum":1,"type":"integer"},"type":{"description":"Type (enum: userevents_type_enum_param)","enum":["attending","created","declined","maybe","not_replied"],"type":"string"}},"required":["id"],"type":"object"}`),
 	)
-	s.AddTool(list_user_eventsTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	s.AddTool(user_list_eventsTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		// Parse arguments using the built-in type-safe binding
-		var args list_user_eventsArgs
+		var args user_list_eventsArgs
 		if err := request.BindArguments(&args); err != nil {
 			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
 		}
-		return ListUserEventsHandler(ctx, request, args)
+		return UserListEventsHandler(ctx, request, args)
 	})
 
-	// Register get_user_feed using raw JSON schema
-	get_user_feedTool := mcp.NewToolWithRawSchema(
-		"get_user_feed",
+	// Register user_get_feed using raw JSON schema
+	user_get_feedTool := mcp.NewToolWithRawSchema(
+		"user_get_feed",
 		"Get feed data for this User Returns Post.",
 		json.RawMessage(`{"additionalProperties":false,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","pattern":"^[0-9]+$","type":"string"},"include_hidden":{"description":"Include Hidden","type":"boolean"},"limit":{"description":"Maximum number of results","maximum":100,"minimum":1,"type":"integer"},"q":{"description":"Q","type":"string"},"show_expired":{"description":"Show Expired","type":"boolean"},"since":{"description":"Since","type":"string"},"until":{"description":"Until","type":"string"},"with":{"description":"With","type":"string"}},"required":["id"],"type":"object"}`),
 	)
-	s.AddTool(get_user_feedTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	s.AddTool(user_get_feedTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		// Parse arguments using the built-in type-safe binding
-		var args get_user_feedArgs
+		var args user_get_feedArgs
 		if err := request.BindArguments(&args); err != nil {
 			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
 		}
-		return GetUserFeedHandler(ctx, request, args)
+		return UserGetFeedHandler(ctx, request, args)
 	})
 
-	// Register update_user_feed using raw JSON schema
-	update_user_feedTool := mcp.NewToolWithRawSchema(
-		"update_user_feed",
+	// Register user_update_feed using raw JSON schema
+	user_update_feedTool := mcp.NewToolWithRawSchema(
+		"user_update_feed",
 		"Create or update feed for this User Returns Post.",
 		json.RawMessage(`{"additionalProperties":false,"properties":{"actions":{"additionalProperties":true,"description":"Actions","type":"object"},"album_id":{"description":"ID of the Album","pattern":"^[0-9]+$","type":"string"},"android_key_hash":{"description":"Android Key Hash","type":"string"},"application_id":{"description":"ID of the Application","pattern":"^[0-9]+$","type":"string"},"asked_fun_fact_prompt_id":{"description":"ID of the Asked Fun Fact Prompt","pattern":"^[0-9]+$","type":"integer"},"asset3d_id":{"description":"ID of the Asset3d","pattern":"^[0-9]+$","type":"string"},"associated_id":{"description":"ID of the Associated","pattern":"^[0-9]+$","type":"string"},"attach_place_suggestion":{"description":"Attach Place Suggestion","type":"boolean"},"attached_media":{"description":"Attached Media","items":{"additionalProperties":true,"type":"object"},"type":"array"},"audience_exp":{"description":"Audience Exp","type":"boolean"},"backdated_time":{"description":"Backdated Time","type":"string"},"backdated_time_granularity":{"description":"Backdated Time Granularity (enum: userfeed_backdated_time_granularity_enum_param)","enum":["day","hour","min","month","none","year"],"type":"string"},"breaking_news":{"description":"Breaking News","type":"boolean"},"breaking_news_expiration":{"description":"Breaking News Expiration","type":"integer"},"call_to_action":{"additionalProperties":true,"description":"Call To Action","type":"object"},"caption":{"description":"Caption","type":"string"},"child_attachments":{"description":"Child Attachments","items":{"additionalProperties":true,"type":"object"},"type":"array"},"client_mutation_id":{"description":"ID of the Client Mutation","pattern":"^[0-9]+$","type":"string"},"composer_entry_picker":{"description":"Composer Entry Picker","type":"string"},"composer_entry_point":{"description":"Composer Entry Point","type":"string"},"composer_entry_time":{"description":"Composer Entry Time","type":"integer"},"composer_session_events_log":{"description":"Composer Session Events Log","type":"string"},"composer_session_id":{"description":"ID of the Composer Session","pattern":"^[0-9]+$","type":"string"},"composer_source_surface":{"description":"Composer Source Surface","type":"string"},"composer_type":{"description":"Composer Type","type":"string"},"connection_class":{"description":"Connection Class","type":"string"},"content_attachment":{"description":"Content Attachment","type":"string"},"coordinates":{"additionalProperties":true,"description":"Coordinates","type":"object"},"cta_link":{"description":"Cta Link","type":"string"},"cta_type":{"description":"Cta Type","type":"string"},"description":{"description":"Description","type":"string"},"direct_share_status":{"description":"Direct Share Status","type":"integer"},"expanded_height":{"description":"Expanded Height","type":"integer"},"expanded_width":{"description":"Expanded Width","type":"integer"},"feed_targeting":{"additionalProperties":true,"description":"Feed Targeting","type":"object"},"formatting":{"description":"Formatting (enum: userfeed_formatting_enum_param)","enum":["MARKDOWN","PLAINTEXT"],"type":"string"},"fun_fact_prompt_id":{"description":"ID of the Fun Fact Prompt","pattern":"^[0-9]+$","type":"string"},"fun_fact_toastee_id":{"description":"ID of the Fun Fact Toastee","pattern":"^[0-9]+$","type":"integer"},"height":{"description":"Height","type":"integer"},"home_checkin_city_id":{"additionalProperties":true,"description":"ID of the Home Checkin City","type":"object"},"id":{"description":"User ID","pattern":"^[0-9]+$","type":"string"},"image_crops":{"description":"Image Crops","type":"string"},"implicit_with_tags":{"description":"Implicit With Tags","items":{"type":"integer"},"type":"array"},"instant_game_entry_point_data":{"description":"Instant Game Entry Point Data","type":"string"},"ios_bundle_id":{"description":"ID of the Ios Bundle","pattern":"^[0-9]+$","type":"string"},"is_backout_draft":{"description":"Is Backout Draft","type":"boolean"},"is_boost_intended":{"description":"Is Boost Intended","type":"boolean"},"is_explicit_location":{"description":"Is Explicit Location","type":"boolean"},"is_explicit_share":{"description":"Is Explicit Share","type":"boolean"},"is_group_linking_post":{"description":"Is Group Linking Post","type":"boolean"},"is_photo_container":{"description":"Is Photo Container","type":"boolean"},"link":{"description":"Link","type":"string"},"location_source_id":{"description":"ID of the Location Source","pattern":"^[0-9]+$","type":"string"},"manual_privacy":{"description":"Manual Privacy","type":"boolean"},"message":{"description":"Message","type":"string"},"multi_share_end_card":{"description":"Multi Share End Card","type":"boolean"},"multi_share_optimized":{"description":"Multi Share Optimized","type":"boolean"},"name":{"description":"Name","type":"string"},"nectar_module":{"description":"Nectar Module","type":"string"},"object_attachment":{"description":"Object Attachment","type":"string"},"og_action_type_id":{"description":"ID of the Og Action Type","pattern":"^[0-9]+$","type":"string"},"og_hide_object_attachment":{"description":"Og Hide Object Attachment","type":"boolean"},"og_icon_id":{"description":"ID of the Og Icon","pattern":"^[0-9]+$","type":"string"},"og_object_id":{"description":"ID of the Og Object","pattern":"^[0-9]+$","type":"string"},"og_phrase":{"description":"Og Phrase","type":"string"},"og_set_profile_badge":{"description":"Og Set Profile Badge","type":"boolean"},"og_suggestion_mechanism":{"description":"Og Suggestion Mechanism","type":"string"},"page_recommendation":{"description":"Page Recommendation","type":"string"},"picture":{"description":"Picture","type":"string"},"place":{"additionalProperties":true,"description":"Place","type":"object"},"place_attachment_setting":{"description":"Place Attachment Setting (enum: userfeed_place_attachment_setting_enum_param)","enum":["1","2"],"type":"string"},"place_list":{"description":"Place List","type":"string"},"place_list_data":{"description":"Place List Data","type":"string"},"post_surfaces_blacklist":{"description":"Post Surfaces Blacklist","items":{"type":"string"},"type":"array"},"posting_to_redspace":{"description":"Posting To Redspace (enum: userfeed_posting_to_redspace_enum_param)","enum":["disabled","enabled"],"type":"string"},"privacy":{"description":"Privacy","type":"string"},"prompt_id":{"description":"ID of the Prompt","pattern":"^[0-9]+$","type":"string"},"prompt_tracking_string":{"description":"Prompt Tracking String","type":"string"},"properties":{"additionalProperties":true,"description":"Properties","type":"object"},"proxied_app_id":{"description":"ID of the Proxied App","pattern":"^[0-9]+$","type":"string"},"publish_event_id":{"description":"ID of the Publish Event","pattern":"^[0-9]+$","type":"integer"},"published":{"description":"Published","type":"boolean"},"quote":{"description":"Quote","type":"string"},"ref":{"description":"Ref","items":{"type":"string"},"type":"array"},"referenceable_image_ids":{"description":"Referenceable Image Ids","items":{"type":"string"},"type":"array"},"referral_id":{"description":"ID of the Referral","pattern":"^[0-9]+$","type":"string"},"scheduled_publish_time":{"description":"Scheduled Publish Time","type":"string"},"source":{"description":"Source","type":"string"},"sponsor_id":{"description":"ID of the Sponsor","pattern":"^[0-9]+$","type":"string"},"sponsor_relationship":{"description":"Sponsor Relationship","type":"integer"},"suggested_place_id":{"additionalProperties":true,"description":"ID of the Suggested Place","type":"object"},"tags":{"description":"Tags","items":{"type":"integer"},"type":"array"},"target_surface":{"description":"Target Surface (enum: userfeed_target_surface_enum_param)","enum":["STORY","TIMELINE"],"type":"string"},"targeting":{"additionalProperties":true,"description":"Targeting","type":"object"},"text_format_metadata":{"description":"Text Format Metadata","type":"string"},"text_format_preset_id":{"description":"ID of the Text Format Preset","pattern":"^[0-9]+$","type":"string"},"text_only_place":{"description":"Text Only Place","type":"string"},"thumbnail":{"description":"Thumbnail","type":"string"},"time_since_original_post":{"description":"Time Since Original Post","type":"integer"},"title":{"description":"Title","type":"string"},"tracking_info":{"description":"Tracking Info","type":"string"},"unpublished_content_type":{"description":"Unpublished Content Type (enum: userfeed_unpublished_content_type_enum_param)","enum":["ADS_POST","DRAFT","INLINE_CREATED","PUBLISHED","REVIEWABLE_BRANDED_CONTENT","SCHEDULED","SCHEDULED_RECURRING"],"type":"string"},"user_selected_tags":{"description":"User Selected Tags","type":"boolean"},"video_start_time_ms":{"description":"Video Start Time Ms","type":"integer"},"viewer_coordinates":{"additionalProperties":true,"description":"Viewer Coordinates","type":"object"},"width":{"description":"Width","type":"integer"}},"required":["id"],"type":"object"}`),
 	)
-	s.AddTool(update_user_feedTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	s.AddTool(user_update_feedTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		// Parse arguments using the built-in type-safe binding
-		var args update_user_feedArgs
+		var args user_update_feedArgs
 		if err := request.BindArguments(&args); err != nil {
 			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
 		}
-		return UpdateUserFeedHandler(ctx, request, args)
+		return UserUpdateFeedHandler(ctx, request, args)
 	})
 
-	// Register list_user_friends using raw JSON schema
-	list_user_friendsTool := mcp.NewToolWithRawSchema(
-		"list_user_friends",
+	// Register user_list_friends using raw JSON schema
+	user_list_friendsTool := mcp.NewToolWithRawSchema(
+		"user_list_friends",
 		"List friends for this User Returns User.",
 		json.RawMessage(`{"additionalProperties":false,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","pattern":"^[0-9]+$","type":"string"},"limit":{"description":"Maximum number of results","maximum":100,"minimum":1,"type":"integer"},"uid":{"description":"Uid","type":"integer"}},"required":["id"],"type":"object"}`),
 	)
-	s.AddTool(list_user_friendsTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	s.AddTool(user_list_friendsTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		// Parse arguments using the built-in type-safe binding
-		var args list_user_friendsArgs
+		var args user_list_friendsArgs
 		if err := request.BindArguments(&args); err != nil {
 			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
 		}
-		return ListUserFriendsHandler(ctx, request, args)
+		return UserListFriendsHandler(ctx, request, args)
 	})
 
-	// Register list_user_fundraisers using raw JSON schema
-	list_user_fundraisersTool := mcp.NewToolWithRawSchema(
-		"list_user_fundraisers",
+	// Register user_list_fundraisers using raw JSON schema
+	user_list_fundraisersTool := mcp.NewToolWithRawSchema(
+		"user_list_fundraisers",
 		"List fundraisers for this User Returns FundraiserPersonToCharity.",
 		json.RawMessage(`{"additionalProperties":false,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","pattern":"^[0-9]+$","type":"string"},"limit":{"description":"Maximum number of results","maximum":100,"minimum":1,"type":"integer"}},"required":["id"],"type":"object"}`),
 	)
-	s.AddTool(list_user_fundraisersTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	s.AddTool(user_list_fundraisersTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		// Parse arguments using the built-in type-safe binding
-		var args list_user_fundraisersArgs
+		var args user_list_fundraisersArgs
 		if err := request.BindArguments(&args); err != nil {
 			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
 		}
-		return ListUserFundraisersHandler(ctx, request, args)
+		return UserListFundraisersHandler(ctx, request, args)
 	})
 
-	// Register create_user_fundraiser using raw JSON schema
-	create_user_fundraiserTool := mcp.NewToolWithRawSchema(
-		"create_user_fundraiser",
+	// Register user_create_fundraiser using raw JSON schema
+	user_create_fundraiserTool := mcp.NewToolWithRawSchema(
+		"user_create_fundraiser",
 		"Create or update fundraisers for this User Returns FundraiserPersonToCharity. Required: currency, description, end_time, external_id, fundraiser_type (enum), goal_amount, name",
 		json.RawMessage(`{"additionalProperties":false,"properties":{"charity_id":{"description":"ID of the Charity","pattern":"^[0-9]+$","type":"string"},"cover_photo":{"description":"Cover Photo","type":"string"},"currency":{"description":"Currency","type":"string"},"description":{"description":"Description","type":"string"},"end_time":{"description":"End Time","type":"string"},"external_event_name":{"description":"External Event Name","type":"string"},"external_event_start_time":{"description":"External Event Start Time","type":"string"},"external_event_uri":{"description":"External Event Uri","type":"string"},"external_fundraiser_uri":{"description":"External Fundraiser Uri","type":"string"},"external_id":{"description":"ID of the External","pattern":"^[0-9]+$","type":"string"},"fundraiser_type":{"description":"Fundraiser Type (enum: userfundraisers_fundraiser_type_enum_param)","enum":["person_for_charity"],"type":"string"},"goal_amount":{"description":"Goal Amount","type":"integer"},"id":{"description":"User ID","pattern":"^[0-9]+$","type":"string"},"name":{"description":"Name","type":"string"},"page_id":{"description":"ID of the Page","pattern":"^[0-9]+$","type":"string"}},"required":["id","currency","description","end_time","external_id","fundraiser_type","goal_amount","name"],"type":"object"}`),
 	)
-	s.AddTool(create_user_fundraiserTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	s.AddTool(user_create_fundraiserTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		// Parse arguments using the built-in type-safe binding
-		var args create_user_fundraiserArgs
+		var args user_create_fundraiserArgs
 		if err := request.BindArguments(&args); err != nil {
 			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
 		}
-		return CreateUserFundraiserHandler(ctx, request, args)
+		return UserCreateFundraiserHandler(ctx, request, args)
 	})
 
-	// Register list_user_groups using raw JSON schema
-	list_user_groupsTool := mcp.NewToolWithRawSchema(
-		"list_user_groups",
+	// Register user_list_groups using raw JSON schema
+	user_list_groupsTool := mcp.NewToolWithRawSchema(
+		"user_list_groups",
 		"List groups for this User Returns Group.",
 		json.RawMessage(`{"additionalProperties":false,"properties":{"admin_only":{"description":"Admin Only","type":"boolean"},"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","pattern":"^[0-9]+$","type":"string"},"limit":{"description":"Maximum number of results","maximum":100,"minimum":1,"type":"integer"},"parent":{"description":"Parent","type":"string"}},"required":["id"],"type":"object"}`),
 	)
-	s.AddTool(list_user_groupsTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	s.AddTool(user_list_groupsTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		// Parse arguments using the built-in type-safe binding
-		var args list_user_groupsArgs
+		var args user_list_groupsArgs
 		if err := request.BindArguments(&args); err != nil {
 			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
 		}
-		return ListUserGroupsHandler(ctx, request, args)
+		return UserListGroupsHandler(ctx, request, args)
 	})
 
-	// Register list_user_ids_for_apps using raw JSON schema
-	list_user_ids_for_appsTool := mcp.NewToolWithRawSchema(
-		"list_user_ids_for_apps",
+	// Register user_list_ids_for_apps using raw JSON schema
+	user_list_ids_for_appsTool := mcp.NewToolWithRawSchema(
+		"user_list_ids_for_apps",
 		"List ids_for_apps for this User Returns UserIDForApp.",
 		json.RawMessage(`{"additionalProperties":false,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"app":{"description":"App","type":"integer"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","pattern":"^[0-9]+$","type":"string"},"limit":{"description":"Maximum number of results","maximum":100,"minimum":1,"type":"integer"}},"required":["id"],"type":"object"}`),
 	)
-	s.AddTool(list_user_ids_for_appsTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	s.AddTool(user_list_ids_for_appsTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		// Parse arguments using the built-in type-safe binding
-		var args list_user_ids_for_appsArgs
+		var args user_list_ids_for_appsArgs
 		if err := request.BindArguments(&args); err != nil {
 			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
 		}
-		return ListUserIdsForAppsHandler(ctx, request, args)
+		return UserListIdsForAppsHandler(ctx, request, args)
 	})
 
-	// Register list_user_ids_for_business using raw JSON schema
-	list_user_ids_for_businessTool := mcp.NewToolWithRawSchema(
-		"list_user_ids_for_business",
+	// Register user_list_ids_for_business using raw JSON schema
+	user_list_ids_for_businessTool := mcp.NewToolWithRawSchema(
+		"user_list_ids_for_business",
 		"List ids_for_business for this User Returns UserIDForApp.",
 		json.RawMessage(`{"additionalProperties":false,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"app":{"description":"App","type":"integer"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","pattern":"^[0-9]+$","type":"string"},"limit":{"description":"Maximum number of results","maximum":100,"minimum":1,"type":"integer"}},"required":["id"],"type":"object"}`),
 	)
-	s.AddTool(list_user_ids_for_businessTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	s.AddTool(user_list_ids_for_businessTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		// Parse arguments using the built-in type-safe binding
-		var args list_user_ids_for_businessArgs
+		var args user_list_ids_for_businessArgs
 		if err := request.BindArguments(&args); err != nil {
 			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
 		}
-		return ListUserIdsForBusinessHandler(ctx, request, args)
+		return UserListIdsForBusinessHandler(ctx, request, args)
 	})
 
-	// Register list_user_ids_for_pages using raw JSON schema
-	list_user_ids_for_pagesTool := mcp.NewToolWithRawSchema(
-		"list_user_ids_for_pages",
+	// Register user_list_ids_for_pages using raw JSON schema
+	user_list_ids_for_pagesTool := mcp.NewToolWithRawSchema(
+		"user_list_ids_for_pages",
 		"List ids_for_pages for this User Returns UserIDForPage.",
 		json.RawMessage(`{"additionalProperties":false,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","pattern":"^[0-9]+$","type":"string"},"limit":{"description":"Maximum number of results","maximum":100,"minimum":1,"type":"integer"},"page":{"description":"Page","maximum":100,"minimum":13,"type":"integer"}},"required":["id"],"type":"object"}`),
 	)
-	s.AddTool(list_user_ids_for_pagesTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	s.AddTool(user_list_ids_for_pagesTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		// Parse arguments using the built-in type-safe binding
-		var args list_user_ids_for_pagesArgs
+		var args user_list_ids_for_pagesArgs
 		if err := request.BindArguments(&args); err != nil {
 			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
 		}
-		return ListUserIdsForPagesHandler(ctx, request, args)
+		return UserListIdsForPagesHandler(ctx, request, args)
 	})
 
-	// Register list_user_likes using raw JSON schema
-	list_user_likesTool := mcp.NewToolWithRawSchema(
-		"list_user_likes",
+	// Register user_list_likes using raw JSON schema
+	user_list_likesTool := mcp.NewToolWithRawSchema(
+		"user_list_likes",
 		"List likes for this User Returns Page.",
 		json.RawMessage(`{"additionalProperties":false,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","pattern":"^[0-9]+$","type":"string"},"limit":{"description":"Maximum number of results","maximum":100,"minimum":1,"type":"integer"},"target_id":{"description":"ID of the Target","pattern":"^[0-9]+$","type":"string"}},"required":["id"],"type":"object"}`),
 	)
-	s.AddTool(list_user_likesTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	s.AddTool(user_list_likesTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		// Parse arguments using the built-in type-safe binding
-		var args list_user_likesArgs
+		var args user_list_likesArgs
 		if err := request.BindArguments(&args); err != nil {
 			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
 		}
-		return ListUserLikesHandler(ctx, request, args)
+		return UserListLikesHandler(ctx, request, args)
 	})
 
-	// Register list_user_live_videos using raw JSON schema
-	list_user_live_videosTool := mcp.NewToolWithRawSchema(
-		"list_user_live_videos",
+	// Register user_list_live_videos using raw JSON schema
+	user_list_live_videosTool := mcp.NewToolWithRawSchema(
+		"user_list_live_videos",
 		"List live_videos for this User Returns LiveVideo.",
 		json.RawMessage(`{"additionalProperties":false,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"broadcast_status":{"description":"Broadcast Status","items":{"type":"string"},"type":"array"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","pattern":"^[0-9]+$","type":"string"},"limit":{"description":"Maximum number of results","maximum":100,"minimum":1,"type":"integer"},"source":{"description":"Source (enum: userlive_videos_source_enum_param)","enum":["owner","target"],"type":"string"}},"required":["id"],"type":"object"}`),
 	)
-	s.AddTool(list_user_live_videosTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	s.AddTool(user_list_live_videosTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		// Parse arguments using the built-in type-safe binding
-		var args list_user_live_videosArgs
+		var args user_list_live_videosArgs
 		if err := request.BindArguments(&args); err != nil {
 			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
 		}
-		return ListUserLiveVideosHandler(ctx, request, args)
+		return UserListLiveVideosHandler(ctx, request, args)
 	})
 
-	// Register create_user_live_video using raw JSON schema
-	create_user_live_videoTool := mcp.NewToolWithRawSchema(
-		"create_user_live_video",
+	// Register user_create_live_video using raw JSON schema
+	user_create_live_videoTool := mcp.NewToolWithRawSchema(
+		"user_create_live_video",
 		"Create or update live_videos for this User Returns LiveVideo.",
 		json.RawMessage(`{"additionalProperties":false,"properties":{"content_tags":{"description":"Content Tags","items":{"type":"string"},"type":"array"},"description":{"description":"Description","type":"string"},"enable_backup_ingest":{"description":"Enable Backup Ingest","type":"boolean"},"encoding_settings":{"description":"Encoding Settings","type":"string"},"event_params":{"additionalProperties":true,"description":"Event Params","type":"object"},"fisheye_video_cropped":{"description":"Fisheye Video Cropped","type":"boolean"},"front_z_rotation":{"description":"Front Z Rotation","type":"number"},"id":{"description":"User ID","pattern":"^[0-9]+$","type":"string"},"is_audio_only":{"description":"Is Audio Only","type":"boolean"},"is_spherical":{"description":"Is Spherical","type":"boolean"},"original_fov":{"description":"Original Fov","type":"integer"},"privacy":{"description":"Privacy","type":"string"},"projection":{"description":"Projection (enum: userlive_videos_projection_enum_param)","enum":["CUBEMAP","EQUIRECTANGULAR","HALF_EQUIRECTANGULAR"],"type":"string"},"published":{"description":"Published","type":"boolean"},"schedule_custom_profile_image":{"description":"Schedule Custom Profile Image","type":"string"},"spatial_audio_format":{"description":"Spatial Audio Format (enum: userlive_videos_spatial_audio_format_enum_param)","enum":["ambiX_4"],"type":"string"},"status":{"description":"Status (enum: userlive_videos_status_enum_param)","enum":["LIVE_NOW","SCHEDULED_CANCELED","SCHEDULED_LIVE","SCHEDULED_UNPUBLISHED","UNPUBLISHED"],"type":"string"},"stereoscopic_mode":{"description":"Stereoscopic Mode (enum: userlive_videos_stereoscopic_mode_enum_param)","enum":["LEFT_RIGHT","MONO","TOP_BOTTOM"],"type":"string"},"stop_on_delete_stream":{"description":"Stop On Delete Stream","type":"boolean"},"stream_type":{"description":"Stream Type (enum: userlive_videos_stream_type_enum_param)","enum":["AMBIENT","REGULAR"],"type":"string"},"title":{"description":"Title","type":"string"}},"required":["id"],"type":"object"}`),
 	)
-	s.AddTool(create_user_live_videoTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	s.AddTool(user_create_live_videoTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		// Parse arguments using the built-in type-safe binding
-		var args create_user_live_videoArgs
+		var args user_create_live_videoArgs
 		if err := request.BindArguments(&args); err != nil {
 			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
 		}
-		return CreateUserLiveVideoHandler(ctx, request, args)
+		return UserCreateLiveVideoHandler(ctx, request, args)
 	})
 
-	// Register create_user_messenger_desktop_performance_trace using raw JSON schema
-	create_user_messenger_desktop_performance_traceTool := mcp.NewToolWithRawSchema(
-		"create_user_messenger_desktop_performance_trace",
+	// Register user_create_messenger_desktop_performance_trace using raw JSON schema
+	user_create_messenger_desktop_performance_traceTool := mcp.NewToolWithRawSchema(
+		"user_create_messenger_desktop_performance_trace",
 		"Create or update messenger_desktop_performance_traces for this User Returns User.",
 		json.RawMessage(`{"additionalProperties":false,"properties":{},"required":[],"type":"object"}`),
 	)
-	s.AddTool(create_user_messenger_desktop_performance_traceTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	s.AddTool(user_create_messenger_desktop_performance_traceTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		// Parse arguments using the built-in type-safe binding
-		var args create_user_messenger_desktop_performance_traceArgs
+		var args user_create_messenger_desktop_performance_traceArgs
 		if err := request.BindArguments(&args); err != nil {
 			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
 		}
-		return CreateUserMessengerDesktopPerformanceTraceHandler(ctx, request, args)
+		return UserCreateMessengerDesktopPerformanceTraceHandler(ctx, request, args)
 	})
 
-	// Register update_user_messenger_kids_accounts_unread_badge using raw JSON schema
-	update_user_messenger_kids_accounts_unread_badgeTool := mcp.NewToolWithRawSchema(
-		"update_user_messenger_kids_accounts_unread_badge",
+	// Register user_update_messenger_kids_accounts_unread_badge using raw JSON schema
+	user_update_messenger_kids_accounts_unread_badgeTool := mcp.NewToolWithRawSchema(
+		"user_update_messenger_kids_accounts_unread_badge",
 		"Create or update messenger_kids_accounts_unread_badge for this User Returns User. Required: proxied_app_id",
 		json.RawMessage(`{"additionalProperties":false,"properties":{"proxied_app_id":{"description":"ID of the Proxied App","pattern":"^[0-9]+$","type":"integer"}},"required":["proxied_app_id"],"type":"object"}`),
 	)
-	s.AddTool(update_user_messenger_kids_accounts_unread_badgeTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	s.AddTool(user_update_messenger_kids_accounts_unread_badgeTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		// Parse arguments using the built-in type-safe binding
-		var args update_user_messenger_kids_accounts_unread_badgeArgs
+		var args user_update_messenger_kids_accounts_unread_badgeArgs
 		if err := request.BindArguments(&args); err != nil {
 			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
 		}
-		return UpdateUserMessengerKidsAccountsUnreadBadgeHandler(ctx, request, args)
+		return UserUpdateMessengerKidsAccountsUnreadBadgeHandler(ctx, request, args)
 	})
 
-	// Register get_user_music using raw JSON schema
-	get_user_musicTool := mcp.NewToolWithRawSchema(
-		"get_user_music",
+	// Register user_get_music using raw JSON schema
+	user_get_musicTool := mcp.NewToolWithRawSchema(
+		"user_get_music",
 		"Get music data for this User Returns Page.",
 		json.RawMessage(`{"additionalProperties":false,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","pattern":"^[0-9]+$","type":"string"},"limit":{"description":"Maximum number of results","maximum":100,"minimum":1,"type":"integer"},"target_id":{"description":"ID of the Target","pattern":"^[0-9]+$","type":"string"}},"required":["id"],"type":"object"}`),
 	)
-	s.AddTool(get_user_musicTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	s.AddTool(user_get_musicTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		// Parse arguments using the built-in type-safe binding
-		var args get_user_musicArgs
+		var args user_get_musicArgs
 		if err := request.BindArguments(&args); err != nil {
 			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
 		}
-		return GetUserMusicHandler(ctx, request, args)
+		return UserGetMusicHandler(ctx, request, args)
 	})
 
-	// Register create_user_notification using raw JSON schema
-	create_user_notificationTool := mcp.NewToolWithRawSchema(
-		"create_user_notification",
+	// Register user_create_notification using raw JSON schema
+	user_create_notificationTool := mcp.NewToolWithRawSchema(
+		"user_create_notification",
 		"Create or update notifications for this User Returns User.",
 		json.RawMessage(`{"additionalProperties":false,"properties":{"bot_message_payload_elements":{"description":"Bot Message Payload Elements","type":"string"},"filtering":{"description":"Filtering","items":{"type":"string"},"type":"array"},"href":{"additionalProperties":true,"description":"Href","type":"object"},"id":{"description":"User ID","pattern":"^[0-9]+$","type":"string"},"label":{"description":"Label","type":"string"},"message":{"description":"Message","type":"string"},"notif_ids":{"description":"Notif Ids","items":{"type":"string"},"type":"array"},"payload":{"description":"Payload","type":"string"},"read":{"description":"Read","type":"boolean"},"ref":{"description":"Ref","type":"string"},"schedule_interval":{"description":"Schedule Interval","type":"integer"},"seen":{"description":"Seen","type":"boolean"},"template":{"additionalProperties":true,"description":"Template","type":"object"},"type":{"description":"Type (enum: usernotifications_type_enum_param)","enum":["content_update","generic"],"type":"string"}},"required":["id"],"type":"object"}`),
 	)
-	s.AddTool(create_user_notificationTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	s.AddTool(user_create_notificationTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		// Parse arguments using the built-in type-safe binding
-		var args create_user_notificationArgs
+		var args user_create_notificationArgs
 		if err := request.BindArguments(&args); err != nil {
 			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
 		}
-		return CreateUserNotificationHandler(ctx, request, args)
+		return UserCreateNotificationHandler(ctx, request, args)
 	})
 
-	// Register list_user_payment_transactions using raw JSON schema
-	list_user_payment_transactionsTool := mcp.NewToolWithRawSchema(
-		"list_user_payment_transactions",
+	// Register user_list_payment_transactions using raw JSON schema
+	user_list_payment_transactionsTool := mcp.NewToolWithRawSchema(
+		"user_list_payment_transactions",
 		"List payment_transactions for this User Returns PaymentEnginePayment.",
 		json.RawMessage(`{"additionalProperties":false,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"limit":{"description":"Maximum number of results","maximum":100,"minimum":1,"type":"integer"}},"required":[],"type":"object"}`),
 	)
-	s.AddTool(list_user_payment_transactionsTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	s.AddTool(user_list_payment_transactionsTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		// Parse arguments using the built-in type-safe binding
-		var args list_user_payment_transactionsArgs
+		var args user_list_payment_transactionsArgs
 		if err := request.BindArguments(&args); err != nil {
 			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
 		}
-		return ListUserPaymentTransactionsHandler(ctx, request, args)
+		return UserListPaymentTransactionsHandler(ctx, request, args)
 	})
 
-	// Register remove_permissions_from_user using raw JSON schema
-	remove_permissions_from_userTool := mcp.NewToolWithRawSchema(
-		"remove_permissions_from_user",
+	// Register user_remove_permissions using raw JSON schema
+	user_remove_permissionsTool := mcp.NewToolWithRawSchema(
+		"user_remove_permissions",
 		"Remove permissions from this User",
 		json.RawMessage(`{"additionalProperties":false,"properties":{"id":{"description":"User ID","pattern":"^[0-9]+$","type":"string"},"permission":{"description":"Permission","type":"string"}},"required":["id"],"type":"object"}`),
 	)
-	s.AddTool(remove_permissions_from_userTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	s.AddTool(user_remove_permissionsTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		// Parse arguments using the built-in type-safe binding
-		var args remove_permissions_from_userArgs
+		var args user_remove_permissionsArgs
 		if err := request.BindArguments(&args); err != nil {
 			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
 		}
-		return RemovePermissionsFromUserHandler(ctx, request, args)
+		return UserRemovePermissionsHandler(ctx, request, args)
 	})
 
-	// Register list_user_permissions using raw JSON schema
-	list_user_permissionsTool := mcp.NewToolWithRawSchema(
-		"list_user_permissions",
+	// Register user_list_permissions using raw JSON schema
+	user_list_permissionsTool := mcp.NewToolWithRawSchema(
+		"user_list_permissions",
 		"List permissions for this User Returns Permission.",
 		json.RawMessage(`{"additionalProperties":false,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","pattern":"^[0-9]+$","type":"string"},"limit":{"description":"Maximum number of results","maximum":100,"minimum":1,"type":"integer"},"permission":{"description":"Permission","type":"string"},"status":{"description":"Status (enum: userpermissions_status_enum_param)","enum":["declined","expired","granted"],"type":"string"}},"required":["id"],"type":"object"}`),
 	)
-	s.AddTool(list_user_permissionsTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	s.AddTool(user_list_permissionsTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		// Parse arguments using the built-in type-safe binding
-		var args list_user_permissionsArgs
+		var args user_list_permissionsArgs
 		if err := request.BindArguments(&args); err != nil {
 			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
 		}
-		return ListUserPermissionsHandler(ctx, request, args)
+		return UserListPermissionsHandler(ctx, request, args)
 	})
 
-	// Register list_user_personal_ad_accounts using raw JSON schema
-	list_user_personal_ad_accountsTool := mcp.NewToolWithRawSchema(
-		"list_user_personal_ad_accounts",
+	// Register user_list_personal_ad_accounts using raw JSON schema
+	user_list_personal_ad_accountsTool := mcp.NewToolWithRawSchema(
+		"user_list_personal_ad_accounts",
 		"List personal_ad_accounts for this User Returns AdAccount.",
 		json.RawMessage(`{"additionalProperties":false,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","pattern":"^[0-9]+$","type":"string"},"limit":{"description":"Maximum number of results","maximum":100,"minimum":1,"type":"integer"}},"required":["id"],"type":"object"}`),
 	)
-	s.AddTool(list_user_personal_ad_accountsTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	s.AddTool(user_list_personal_ad_accountsTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		// Parse arguments using the built-in type-safe binding
-		var args list_user_personal_ad_accountsArgs
+		var args user_list_personal_ad_accountsArgs
 		if err := request.BindArguments(&args); err != nil {
 			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
 		}
-		return ListUserPersonalAdAccountsHandler(ctx, request, args)
+		return UserListPersonalAdAccountsHandler(ctx, request, args)
 	})
 
-	// Register list_user_photos using raw JSON schema
-	list_user_photosTool := mcp.NewToolWithRawSchema(
-		"list_user_photos",
+	// Register user_list_photos using raw JSON schema
+	user_list_photosTool := mcp.NewToolWithRawSchema(
+		"user_list_photos",
 		"List photos for this User Returns Photo.",
 		json.RawMessage(`{"additionalProperties":false,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","pattern":"^[0-9]+$","type":"string"},"limit":{"description":"Maximum number of results","maximum":100,"minimum":1,"type":"integer"},"type":{"description":"Type (enum: userphotos_type_enum_param)","enum":["tagged","uploaded"],"type":"string"}},"required":["id"],"type":"object"}`),
 	)
-	s.AddTool(list_user_photosTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	s.AddTool(user_list_photosTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		// Parse arguments using the built-in type-safe binding
-		var args list_user_photosArgs
+		var args user_list_photosArgs
 		if err := request.BindArguments(&args); err != nil {
 			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
 		}
-		return ListUserPhotosHandler(ctx, request, args)
+		return UserListPhotosHandler(ctx, request, args)
 	})
 
-	// Register create_user_photo using raw JSON schema
-	create_user_photoTool := mcp.NewToolWithRawSchema(
-		"create_user_photo",
+	// Register user_create_photo using raw JSON schema
+	user_create_photoTool := mcp.NewToolWithRawSchema(
+		"user_create_photo",
 		"Create or update photos for this User Returns Photo.",
 		json.RawMessage(`{"additionalProperties":false,"properties":{"aid":{"description":"Aid","type":"string"},"allow_spherical_photo":{"description":"Allow Spherical Photo","type":"boolean"},"alt_text_custom":{"description":"Alt Text Custom","type":"string"},"android_key_hash":{"description":"Android Key Hash","type":"string"},"application_id":{"description":"ID of the Application","pattern":"^[0-9]+$","type":"string"},"attempt":{"description":"Attempt","type":"integer"},"audience_exp":{"description":"Audience Exp","type":"boolean"},"backdated_time":{"description":"Backdated Time","type":"string"},"backdated_time_granularity":{"description":"Backdated Time Granularity (enum: userphotos_backdated_time_granularity_enum_param)","enum":["day","hour","min","month","none","year"],"type":"string"},"caption":{"description":"Caption","type":"string"},"composer_session_id":{"description":"ID of the Composer Session","pattern":"^[0-9]+$","type":"string"},"direct_share_status":{"description":"Direct Share Status","type":"integer"},"feed_targeting":{"additionalProperties":true,"description":"Feed Targeting","type":"object"},"filter_type":{"description":"Filter Type","type":"integer"},"full_res_is_coming_later":{"description":"Full Res Is Coming Later","type":"boolean"},"id":{"description":"User ID","pattern":"^[0-9]+$","type":"string"},"initial_view_heading_override_degrees":{"description":"Initial View Heading Override Degrees","type":"integer"},"initial_view_pitch_override_degrees":{"description":"Initial View Pitch Override Degrees","type":"integer"},"initial_view_vertical_fov_override_degrees":{"description":"Initial View Vertical Fov Override Degrees","type":"integer"},"ios_bundle_id":{"description":"ID of the Ios Bundle","pattern":"^[0-9]+$","type":"string"},"is_explicit_location":{"description":"Is Explicit Location","type":"boolean"},"is_explicit_place":{"description":"Is Explicit Place","type":"boolean"},"manual_privacy":{"description":"Manual Privacy","type":"boolean"},"message":{"description":"Message","type":"string"},"name":{"description":"Name","type":"string"},"no_story":{"description":"No Story","type":"boolean"},"offline_id":{"description":"ID of the Offline","pattern":"^[0-9]+$","type":"integer"},"og_action_type_id":{"description":"ID of the Og Action Type","pattern":"^[0-9]+$","type":"string"},"og_icon_id":{"description":"ID of the Og Icon","pattern":"^[0-9]+$","type":"string"},"og_object_id":{"description":"ID of the Og Object","pattern":"^[0-9]+$","type":"string"},"og_phrase":{"description":"Og Phrase","type":"string"},"og_set_profile_badge":{"description":"Og Set Profile Badge","type":"boolean"},"og_suggestion_mechanism":{"description":"Og Suggestion Mechanism","type":"string"},"place":{"additionalProperties":true,"description":"Place","type":"object"},"privacy":{"description":"Privacy","type":"string"},"profile_id":{"description":"ID of the Profile","pattern":"^[0-9]+$","type":"integer"},"provenance_info":{"description":"Provenance Info","type":"string"},"proxied_app_id":{"description":"ID of the Proxied App","pattern":"^[0-9]+$","type":"string"},"published":{"description":"Published","type":"boolean"},"qn":{"description":"Qn","type":"string"},"scheduled_publish_time":{"description":"Scheduled Publish Time","type":"integer"},"spherical_metadata":{"description":"Spherical Metadata","type":"string"},"sponsor_id":{"description":"ID of the Sponsor","pattern":"^[0-9]+$","type":"string"},"sponsor_relationship":{"description":"Sponsor Relationship","type":"integer"},"tags":{"description":"Tags","items":{"additionalProperties":true,"type":"object"},"type":"array"},"target_id":{"description":"ID of the Target","pattern":"^[0-9]+$","type":"integer"},"targeting":{"additionalProperties":true,"description":"Targeting","type":"object"},"time_since_original_post":{"description":"Time Since Original Post","type":"integer"},"uid":{"description":"Uid","type":"integer"},"unpublished_content_type":{"description":"Unpublished Content Type (enum: userphotos_unpublished_content_type_enum_param)","enum":["ADS_POST","DRAFT","INLINE_CREATED","PUBLISHED","REVIEWABLE_BRANDED_CONTENT","SCHEDULED","SCHEDULED_RECURRING"],"type":"string"},"url":{"description":"URL","format":"uri","type":"string"},"user_selected_tags":{"description":"User Selected Tags","type":"boolean"},"vault_image_id":{"description":"ID of the Vault Image","pattern":"^[0-9]+$","type":"string"}},"required":["id"],"type":"object"}`),
 	)
-	s.AddTool(create_user_photoTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	s.AddTool(user_create_photoTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		// Parse arguments using the built-in type-safe binding
-		var args create_user_photoArgs
+		var args user_create_photoArgs
 		if err := request.BindArguments(&args); err != nil {
 			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
 		}
-		return CreateUserPhotoHandler(ctx, request, args)
+		return UserCreatePhotoHandler(ctx, request, args)
 	})
 
-	// Register get_user_picture using raw JSON schema
-	get_user_pictureTool := mcp.NewToolWithRawSchema(
-		"get_user_picture",
+	// Register user_get_picture using raw JSON schema
+	user_get_pictureTool := mcp.NewToolWithRawSchema(
+		"user_get_picture",
 		"Get picture data for this User Returns ProfilePictureSource.",
 		json.RawMessage(`{"additionalProperties":false,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"height":{"description":"Height","type":"integer"},"id":{"description":"User ID","pattern":"^[0-9]+$","type":"string"},"limit":{"description":"Maximum number of results","maximum":100,"minimum":1,"type":"integer"},"redirect":{"description":"Redirect","type":"boolean"},"type":{"description":"Type (enum: userpicture_type_enum_param)","enum":["album","large","normal","small","square"],"type":"string"},"width":{"description":"Width","type":"integer"}},"required":["id"],"type":"object"}`),
 	)
-	s.AddTool(get_user_pictureTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	s.AddTool(user_get_pictureTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		// Parse arguments using the built-in type-safe binding
-		var args get_user_pictureArgs
+		var args user_get_pictureArgs
 		if err := request.BindArguments(&args); err != nil {
 			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
 		}
-		return GetUserPictureHandler(ctx, request, args)
+		return UserGetPictureHandler(ctx, request, args)
 	})
 
-	// Register list_user_posts using raw JSON schema
-	list_user_postsTool := mcp.NewToolWithRawSchema(
-		"list_user_posts",
+	// Register user_list_posts using raw JSON schema
+	user_list_postsTool := mcp.NewToolWithRawSchema(
+		"user_list_posts",
 		"List posts for this User Returns Post.",
 		json.RawMessage(`{"additionalProperties":false,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","pattern":"^[0-9]+$","type":"string"},"include_hidden":{"description":"Include Hidden","type":"boolean"},"limit":{"description":"Maximum number of results","maximum":100,"minimum":1,"type":"integer"},"q":{"description":"Q","type":"string"},"show_expired":{"description":"Show Expired","type":"boolean"},"since":{"description":"Since","type":"string"},"until":{"description":"Until","type":"string"},"with":{"description":"With","type":"string"}},"required":["id"],"type":"object"}`),
 	)
-	s.AddTool(list_user_postsTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	s.AddTool(user_list_postsTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		// Parse arguments using the built-in type-safe binding
-		var args list_user_postsArgs
+		var args user_list_postsArgs
 		if err := request.BindArguments(&args); err != nil {
 			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
 		}
-		return ListUserPostsHandler(ctx, request, args)
+		return UserListPostsHandler(ctx, request, args)
 	})
 
-	// Register list_user_rich_media_documents using raw JSON schema
-	list_user_rich_media_documentsTool := mcp.NewToolWithRawSchema(
-		"list_user_rich_media_documents",
+	// Register user_list_rich_media_documents using raw JSON schema
+	user_list_rich_media_documentsTool := mcp.NewToolWithRawSchema(
+		"user_list_rich_media_documents",
 		"List rich_media_documents for this User Returns Canvas.",
 		json.RawMessage(`{"additionalProperties":false,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"limit":{"description":"Maximum number of results","maximum":100,"minimum":1,"type":"integer"},"query":{"description":"Query","type":"string"}},"required":[],"type":"object"}`),
 	)
-	s.AddTool(list_user_rich_media_documentsTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	s.AddTool(user_list_rich_media_documentsTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		// Parse arguments using the built-in type-safe binding
-		var args list_user_rich_media_documentsArgs
+		var args user_list_rich_media_documentsArgs
 		if err := request.BindArguments(&args); err != nil {
 			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
 		}
-		return ListUserRichMediaDocumentsHandler(ctx, request, args)
+		return UserListRichMediaDocumentsHandler(ctx, request, args)
 	})
 
-	// Register create_user_staging_resource using raw JSON schema
-	create_user_staging_resourceTool := mcp.NewToolWithRawSchema(
-		"create_user_staging_resource",
+	// Register user_create_staging_resource using raw JSON schema
+	user_create_staging_resourceTool := mcp.NewToolWithRawSchema(
+		"user_create_staging_resource",
 		"Create or update staging_resources for this User Returns User.",
 		json.RawMessage(`{"additionalProperties":false,"properties":{"file":{"description":"File","type":"string"},"id":{"description":"User ID","pattern":"^[0-9]+$","type":"string"}},"required":["id"],"type":"object"}`),
 	)
-	s.AddTool(create_user_staging_resourceTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	s.AddTool(user_create_staging_resourceTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		// Parse arguments using the built-in type-safe binding
-		var args create_user_staging_resourceArgs
+		var args user_create_staging_resourceArgs
 		if err := request.BindArguments(&args); err != nil {
 			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
 		}
-		return CreateUserStagingResourceHandler(ctx, request, args)
+		return UserCreateStagingResourceHandler(ctx, request, args)
 	})
 
-	// Register list_user_videos using raw JSON schema
-	list_user_videosTool := mcp.NewToolWithRawSchema(
-		"list_user_videos",
+	// Register user_list_videos using raw JSON schema
+	user_list_videosTool := mcp.NewToolWithRawSchema(
+		"user_list_videos",
 		"List videos for this User Returns AdVideo.",
 		json.RawMessage(`{"additionalProperties":false,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","pattern":"^[0-9]+$","type":"string"},"limit":{"description":"Maximum number of results","maximum":100,"minimum":1,"type":"integer"},"type":{"description":"Type (enum: uservideos_type_enum_param)","enum":["TAGGED","UPLOADED"],"type":"string"}},"required":["id"],"type":"object"}`),
 	)
-	s.AddTool(list_user_videosTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	s.AddTool(user_list_videosTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		// Parse arguments using the built-in type-safe binding
-		var args list_user_videosArgs
+		var args user_list_videosArgs
 		if err := request.BindArguments(&args); err != nil {
 			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
 		}
-		return ListUserVideosHandler(ctx, request, args)
+		return UserListVideosHandler(ctx, request, args)
 	})
 
-	// Register create_user_video using raw JSON schema
-	create_user_videoTool := mcp.NewToolWithRawSchema(
-		"create_user_video",
+	// Register user_create_video using raw JSON schema
+	user_create_videoTool := mcp.NewToolWithRawSchema(
+		"user_create_video",
 		"Create or update videos for this User Returns AdVideo.",
 		json.RawMessage(`{"additionalProperties":false,"properties":{"application_id":{"description":"ID of the Application","pattern":"^[0-9]+$","type":"string"},"asked_fun_fact_prompt_id":{"description":"ID of the Asked Fun Fact Prompt","pattern":"^[0-9]+$","type":"integer"},"audio_story_wave_animation_handle":{"description":"Audio Story Wave Animation Handle","type":"string"},"composer_entry_picker":{"description":"Composer Entry Picker","type":"string"},"composer_entry_point":{"description":"Composer Entry Point","type":"string"},"composer_entry_time":{"description":"Composer Entry Time","type":"integer"},"composer_session_events_log":{"description":"Composer Session Events Log","type":"string"},"composer_session_id":{"description":"ID of the Composer Session","pattern":"^[0-9]+$","type":"string"},"composer_source_surface":{"description":"Composer Source Surface","type":"string"},"composer_type":{"description":"Composer Type","type":"string"},"container_type":{"description":"Container Type (enum: uservideos_container_type_enum_param)","enum":["ACO_VIDEO_VARIATION","ADS_AI_GENERATED","AD_BREAK_PREVIEW","AD_DERIVATIVE","AD_LIBRARY_WATERMARK","ALBUM_MULTIMEDIA_POST","ALOHA_SUPERFRAME","APP_REREVIEW_SCREENCAST","APP_REVIEW_SCREENCAST","ASSET_MANAGER","ATLAS_VIDEO","AUDIO_BROADCAST","AUDIO_COMMENT","BROADCAST","CANVAS","CMS_MEDIA_MANAGER","CONTAINED_POST_ATTACHMENT","CONTAINED_POST_AUDIO_BROADCAST","CONTAINED_POST_COPYRIGHT_REFERENCE_BROADCAST","COPYRIGHT_REFERENCE_BROADCAST","COPYRIGHT_REFERENCE_IG_XPOST_VIDEO","COPYRIGHT_REFERENCE_VIDEO","CREATION_ML_PRECREATION","CREATOR_FAN_CHALLENGE","CREATOR_STOREFRONT_PERSONALIZED_VIDEO","DATAGENIX_VIDEO","DCO_AD_ASSET_FEED","DCO_AUTOGEN_VIDEO","DCO_TRIMMED_VIDEO","DIM_SUM","DIRECTED_POST_ATTACHMENT","DIRECT_INBOX","DROPS_SHOPPING_EVENT_PAGE","DYNAMIC_ITEM_VIDEO","DYNAMIC_TEMPLATE_VIDEO","EVENT_COVER_VIDEO","EVENT_TOUR","FACECAST_DVR","FB_AVATAR_ANIMATED_SATP","FB_COLLECTIBLE_VIDEO","FB_SHORTS","FB_SHORTS_CONTENT_REMIXABLE","FB_SHORTS_GROUP_POST","FB_SHORTS_LINKED_PRODUCT","FB_SHORTS_PMV_POST","FB_SHORTS_POST","FB_SHORTS_REMIX_POST","FUNDRAISER_COVER_VIDEO","GAME_CLIP","GIF_TO_VIDEO","GOODWILL_ANNIVERSARY_DEPRECATED","GOODWILL_ANNIVERSARY_PROMOTION_DEPRECATED","GOODWILL_VIDEO_CONTAINED_SHARE","GOODWILL_VIDEO_PROMOTION","GOODWILL_VIDEO_SHARE","GOODWILL_VIDEO_TOKEN_REQUIRED","GROUP_POST","HEURISTIC_CLUSTER_VIDEO","HIGHLIGHT_CLIP_VIDEO","HORIZON_WORLDS_TV","HUDDLE_BROADCAST","IG_REELS_XPV","IG_STORIES_READER","INJECTABLE","INSPIRATION_VIDEO","INSTAGRAM_VIDEO_COPY","INSTANT_APPLICATION_PREVIEW","INSTANT_ARTICLE","ISSUE_MODULE","LEARN","LEGACY","LEGACY_CONTAINED_POST_BROADCAST","LIVE_AUDIO_ROOM_BROADCAST","LIVE_CLIP_PREVIEW","LIVE_CLIP_WORKCHAT","LIVE_CREATIVE_KIT_VIDEO","LIVE_PHOTO","LOOK_NOW_DEPRECATED","MARKETPLACE_LISTING_VIDEO","MARKETPLACE_PRE_RECORDED_VIDEO","MOMENTS_VIDEO","MUSIC_CLIP","MUSIC_CLIP_IN_COMMENT","MUSIC_CLIP_IN_LIGHTWEIGHT_STATUS","MUSIC_CLIP_IN_MSGR_NOTE","MUSIC_CLIP_IN_POLL_OPTION","MUSIC_CLIP_ON_DATING_PROFILE","NEO_ASYNC_GAME_VIDEO","NEW_CONTAINED_POST_BROADCAST","NO_STORY","OCULUS_CREATOR_PORTAL","OCULUS_VENUES_BROADCAST","ORIGINALITY_SELF_ADVOCACY","PAGES_COVER_VIDEO","PAGE_REVIEW_SCREENCAST","PAGE_SLIDESHOW_VIDEO","PAID_CONTENT_PREVIEW","PAID_CONTENT_VIDEO","PAID_CONTENT_VIDEO__POST","PIXELCLOUD","PODCAST_HIGHLIGHT","PODCAST_ML_PREVIEW","PODCAST_ML_PREVIEW_NO_NEWSFEED_STORY","PODCAST_RSS","PODCAST_RSS_EPHEMERAL","PODCAST_RSS_NO_NEWSFEED_STORY","PODCAST_VOICES","PODCAST_VOICES_NO_NEWSFEED_STORY","PREMIERE_SOURCE","PREMIUM_MUSIC_VIDEO_CLIP","PREMIUM_MUSIC_VIDEO_CROPPED_CLIP","PREMIUM_MUSIC_VIDEO_NO_NEWSFEED_STORY","PREMIUM_MUSIC_VIDEO_WITH_NEWSFEED_STORY","PRIVATE_GALLERY_VIDEO","PRODUCT_VIDEO","PROFILE_COVER_VIDEO","PROFILE_INTRO_CARD","PROFILE_VIDEO","PROTON","QUICK_CLIP_WORKPLACE_POST","QUICK_PROMOTION","REPLACE_VIDEO","SALES_CLIENT_INTERACTION","SHOWREEL_NATIVE_DUMMY_VIDEO","SLIDESHOW_ANIMOTO","SLIDESHOW_SHAKR","SLIDESHOW_VARIATION_VIDEO","SOUND_PLATFORM_STREAM","SRT_ATTACHMENT","STORIES_VIDEO","STORYLINE","STORYLINE_WITH_EXTERNAL_MUSIC","STORY_ARCHIVE_VIDEO","STORY_CARD_TEMPLATE","STREAM_HIGHLIGHTS_VIDEO","TAROT_DIGEST","TEMPORARY_UNLISTED","TEMP_VIDEO_COPYRIGHT_SCAN","UNLISTED","UNLISTED_OCULUS","VIDEO_COMMENT","VIDEO_COMPOSITION_VARIATION","VIDEO_CREATIVE_EDITOR_AUTOGEN_AD_VIDEO","VIDEO_SUPERRES","VOICES_ARTICLE_VIDEO","VU_GENERATED_VIDEO","WOODHENGE","WORK_KNOWLEDGE_VIDEO","YOUR_DAY"],"type":"string"},"content_category":{"description":"Content Category (enum: uservideos_content_category_enum_param)","enum":["BEAUTY_FASHION","BUSINESS","CARS_TRUCKS","COMEDY","CUTE_ANIMALS","ENTERTAINMENT","FAMILY","FOOD_HEALTH","HOME","LIFESTYLE","MUSIC","NEWS","OTHER","POLITICS","SCIENCE","SPORTS","TECHNOLOGY","VIDEO_GAMING"],"type":"string"},"creative_tools":{"description":"Creative Tools","type":"string"},"description":{"description":"Description","type":"string"},"direct_share_status":{"description":"Direct Share Status","type":"integer"},"embeddable":{"description":"Embeddable","type":"boolean"},"end_offset":{"description":"End Offset","type":"integer"},"fbuploader_video_file_chunk":{"description":"Fbuploader Video File Chunk","type":"string"},"file_size":{"description":"File Size","type":"integer"},"file_url":{"description":"File URL","format":"uri","type":"string"},"fisheye_video_cropped":{"description":"Fisheye Video Cropped","type":"boolean"},"formatting":{"description":"Formatting (enum: uservideos_formatting_enum_param)","enum":["MARKDOWN","PLAINTEXT"],"type":"string"},"fov":{"description":"Fov","type":"integer"},"front_z_rotation":{"description":"Front Z Rotation","type":"number"},"fun_fact_prompt_id":{"description":"ID of the Fun Fact Prompt","pattern":"^[0-9]+$","type":"string"},"fun_fact_toastee_id":{"description":"ID of the Fun Fact Toastee","pattern":"^[0-9]+$","type":"integer"},"guide":{"description":"Guide","items":{"type":"string"},"type":"array"},"guide_enabled":{"description":"Guide Enabled","type":"boolean"},"id":{"description":"User ID","pattern":"^[0-9]+$","type":"string"},"initial_heading":{"description":"Initial Heading","type":"integer"},"initial_pitch":{"description":"Initial Pitch","type":"integer"},"instant_game_entry_point_data":{"description":"Instant Game Entry Point Data","type":"string"},"is_boost_intended":{"description":"Is Boost Intended","type":"boolean"},"is_explicit_share":{"description":"Is Explicit Share","type":"boolean"},"is_group_linking_post":{"description":"Is Group Linking Post","type":"boolean"},"is_partnership_ad":{"description":"Is Partnership Ad","type":"boolean"},"is_voice_clip":{"description":"Is Voice Clip","type":"boolean"},"location_source_id":{"description":"ID of the Location Source","pattern":"^[0-9]+$","type":"string"},"manual_privacy":{"description":"Manual Privacy","type":"boolean"},"no_story":{"description":"No Story","type":"boolean"},"og_action_type_id":{"description":"ID of the Og Action Type","pattern":"^[0-9]+$","type":"string"},"og_icon_id":{"description":"ID of the Og Icon","pattern":"^[0-9]+$","type":"string"},"og_object_id":{"description":"ID of the Og Object","pattern":"^[0-9]+$","type":"string"},"og_phrase":{"description":"Og Phrase","type":"string"},"og_suggestion_mechanism":{"description":"Og Suggestion Mechanism","type":"string"},"original_fov":{"description":"Original Fov","type":"integer"},"original_projection_type":{"description":"Original Projection Type (enum: uservideos_original_projection_type_enum_param)","enum":["cubemap","equirectangular","half_equirectangular"],"type":"string"},"partnership_ad_ad_code":{"description":"Partnership Ad Ad Code","type":"string"},"privacy":{"description":"Privacy","type":"string"},"publish_event_id":{"description":"ID of the Publish Event","pattern":"^[0-9]+$","type":"integer"},"referenced_sticker_id":{"description":"ID of the Referenced Sticker","pattern":"^[0-9]+$","type":"string"},"replace_video_id":{"description":"ID of the Replace Video","pattern":"^[0-9]+$","type":"string"},"slideshow_spec":{"description":"Slideshow Spec","type":"string"},"source":{"description":"Source","type":"string"},"source_instagram_media_id":{"description":"ID of the Source Instagram Media","pattern":"^[0-9]+$","type":"string"},"spherical":{"description":"Spherical","type":"boolean"},"sponsor_id":{"description":"ID of the Sponsor","pattern":"^[0-9]+$","type":"string"},"start_offset":{"description":"Start Offset","type":"integer"},"swap_mode":{"description":"Swap Mode (enum: uservideos_swap_mode_enum_param)","enum":["replace"],"type":"string"},"text_format_metadata":{"description":"Text Format Metadata","type":"string"},"thumb":{"description":"Thumb","type":"string"},"time_since_original_post":{"description":"Time Since Original Post","type":"integer"},"title":{"description":"Title","type":"string"},"transcode_setting_properties":{"description":"Transcode Setting Properties","type":"string"},"unpublished_content_type":{"description":"Unpublished Content Type (enum: uservideos_unpublished_content_type_enum_param)","enum":["ADS_POST","DRAFT","INLINE_CREATED","PUBLISHED","REVIEWABLE_BRANDED_CONTENT","SCHEDULED","SCHEDULED_RECURRING"],"type":"string"},"upload_phase":{"description":"Upload Phase (enum: uservideos_upload_phase_enum_param)","enum":["cancel","finish","start","transfer"],"type":"string"},"upload_session_id":{"description":"ID of the Upload Session","pattern":"^[0-9]+$","type":"string"},"upload_setting_properties":{"description":"Upload Setting Properties","type":"string"},"video_file_chunk":{"description":"Video File Chunk","type":"string"},"video_id_original":{"description":"Video ID Original","pattern":"^[0-9]+$","type":"string"},"video_start_time_ms":{"description":"Video Start Time Ms","type":"integer"},"waterfall_id":{"description":"ID of the Waterfall","pattern":"^[0-9]+$","type":"string"}},"required":["id"],"type":"object"}`),
 	)
-	s.AddTool(create_user_videoTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	s.AddTool(user_create_videoTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		// Parse arguments using the built-in type-safe binding
-		var args create_user_videoArgs
+		var args user_create_videoArgs
 		if err := request.BindArguments(&args); err != nil {
 			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
 		}
-		return CreateUserVideoHandler(ctx, request, args)
+		return UserCreateVideoHandler(ctx, request, args)
 	})
 
-	// Register delete_user using raw JSON schema
-	delete_userTool := mcp.NewToolWithRawSchema(
-		"delete_user",
+	// Register user_delete using raw JSON schema
+	user_deleteTool := mcp.NewToolWithRawSchema(
+		"user_delete",
 		"Delete a User",
 		json.RawMessage(`{"additionalProperties":false,"properties":{"id":{"description":"User ID","pattern":"^[0-9]+$","type":"string"}},"required":["id"],"type":"object"}`),
 	)
-	s.AddTool(delete_userTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	s.AddTool(user_deleteTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		// Parse arguments using the built-in type-safe binding
-		var args delete_userArgs
+		var args user_deleteArgs
 		if err := request.BindArguments(&args); err != nil {
 			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
 		}
-		return DeleteUserHandler(ctx, request, args)
+		return UserDeleteHandler(ctx, request, args)
 	})
 
-	// Register get_user using raw JSON schema
-	get_userTool := mcp.NewToolWithRawSchema(
-		"get_user",
+	// Register user_get using raw JSON schema
+	user_getTool := mcp.NewToolWithRawSchema(
+		"user_get",
 		"Get details of a specific User Returns User.",
 		json.RawMessage(`{"additionalProperties":false,"properties":{"after":{"description":"Cursor for pagination (next page)","type":"string"},"before":{"description":"Cursor for pagination (previous page)","type":"string"},"fields":{"description":"Fields to return","items":{"type":"string"},"type":"array"},"id":{"description":"User ID","pattern":"^[0-9]+$","type":"string"},"limit":{"description":"Maximum number of results","maximum":100,"minimum":1,"type":"integer"}},"required":["id"],"type":"object"}`),
 	)
-	s.AddTool(get_userTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	s.AddTool(user_getTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		// Parse arguments using the built-in type-safe binding
-		var args get_userArgs
+		var args user_getArgs
 		if err := request.BindArguments(&args); err != nil {
 			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
 		}
-		return GetUserHandler(ctx, request, args)
+		return UserGetHandler(ctx, request, args)
 	})
 
-	// Register update_user using raw JSON schema
-	update_userTool := mcp.NewToolWithRawSchema(
-		"update_user",
+	// Register user_update using raw JSON schema
+	user_updateTool := mcp.NewToolWithRawSchema(
+		"user_update",
 		"Update a User Returns User.",
 		json.RawMessage(`{"additionalProperties":false,"properties":{"emoji_color_pref":{"description":"Emoji Color Pref","type":"integer"},"firstname":{"description":"Firstname","type":"string"},"id":{"description":"User ID","pattern":"^[0-9]+$","type":"string"},"lastname":{"description":"Lastname","type":"string"},"local_news_megaphone_dismiss_status":{"description":"Local News Megaphone Dismiss Status (enum: user_local_news_megaphone_dismiss_status)","enum":["NO","YES"],"type":"string"},"local_news_subscription_status":{"description":"Local News Subscription Status (enum: user_local_news_subscription_status)","enum":["STATUS_OFF","STATUS_ON"],"type":"string"},"name":{"description":"Name","type":"string"},"password":{"description":"Password","type":"string"}},"required":["id"],"type":"object"}`),
 	)
-	s.AddTool(update_userTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	s.AddTool(user_updateTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		// Parse arguments using the built-in type-safe binding
-		var args update_userArgs
+		var args user_updateArgs
 		if err := request.BindArguments(&args); err != nil {
 			return mcp.NewToolResultError(fmt.Sprintf("Invalid arguments: %v", err)), nil
 		}
-		return UpdateUserHandler(ctx, request, args)
+		return UserUpdateHandler(ctx, request, args)
 	})
 
 	return nil

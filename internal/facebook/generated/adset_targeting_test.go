@@ -7,8 +7,9 @@ import (
 	"os"
 	"testing"
 
-	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/testutil"
+
+	"github.com/mark3labs/mcp-go/mcp"
 )
 
 func init() {
@@ -82,7 +83,7 @@ func TestCreateAdSetWithTargeting(t *testing.T) {
 	}{
 		{
 			name: "Valid targeting as struct",
-			args: create_ad_account_adsetArgs{
+			args: ad_account_create_adsetArgs{
 				ID:               "act_123456789",
 				Name:             "Test Ad Set",
 				CampaignId:       "120229333949190588",
@@ -103,7 +104,7 @@ func TestCreateAdSetWithTargeting(t *testing.T) {
 		},
 		{
 			name: "Valid targeting with cities",
-			args: create_ad_account_adsetArgs{
+			args: ad_account_create_adsetArgs{
 				ID:               "act_123456789",
 				Name:             "Test Ad Set with Cities",
 				CampaignId:       "120229333949190588",
@@ -133,7 +134,7 @@ func TestCreateAdSetWithTargeting(t *testing.T) {
 		},
 		{
 			name: "Missing required targeting",
-			args: create_ad_account_adsetArgs{
+			args: ad_account_create_adsetArgs{
 				ID:               "act_123456789",
 				Name:             "Test Ad Set",
 				CampaignId:       "120229333949190588",
@@ -150,7 +151,7 @@ func TestCreateAdSetWithTargeting(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			args := tt.args.(create_ad_account_adsetArgs)
+			args := tt.args.(ad_account_create_adsetArgs)
 
 			// Create request
 			request := mcp.CallToolRequest{
@@ -170,7 +171,7 @@ func TestCreateAdSetWithTargeting(t *testing.T) {
 			}
 
 			// Execute handler
-			result, err := CreateAdAccountAdsetHandler(context.Background(), request, args)
+			result, err := AdAccountCreateAdsetHandler(context.Background(), request, args)
 			if err != nil {
 				t.Fatalf("Handler returned error: %v", err)
 			}
@@ -302,7 +303,7 @@ func TestCreateAdSetIntegrationExample(t *testing.T) {
 	t.Skip("This is an example test showing proper usage")
 
 	// Example of how to properly create an ad set with targeting
-	args := create_ad_account_adsetArgs{
+	args := ad_account_create_adsetArgs{
 		ID:               "act_648073588254125",
 		Name:             "Test Ad Set",
 		CampaignId:       "120229333949190588",

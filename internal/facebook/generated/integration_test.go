@@ -6,8 +6,9 @@ import (
 	"os"
 	"testing"
 
-	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/testutil"
+
+	"github.com/mark3labs/mcp-go/mcp"
 )
 
 func init() {
@@ -35,7 +36,7 @@ func TestGetCampaignIntegration_WithFramework(t *testing.T) {
 	graphAPIHost = env.Server().URL
 	baseGraphURL = env.Server().URL
 
-	args := get_campaignArgs{
+	args := campaign_getArgs{
 		ID: testutil.TestCampaignID,
 		Fields: []string{
 			"id", "name", "status", "objective", "daily_budget",
@@ -45,7 +46,7 @@ func TestGetCampaignIntegration_WithFramework(t *testing.T) {
 
 	request := mcp.CallToolRequest{
 		Params: mcp.CallToolParams{
-			Name: "get_campaign",
+			Name: "campaign_get",
 			Arguments: map[string]interface{}{
 				"id":     args.ID,
 				"fields": args.Fields,
@@ -54,7 +55,7 @@ func TestGetCampaignIntegration_WithFramework(t *testing.T) {
 	}
 
 	// Execute
-	result, err := GetCampaignHandler(context.Background(), request, args)
+	result, err := CampaignGetHandler(context.Background(), request, args)
 	if err != nil {
 		t.Fatalf("GetCampaignHandler failed: %v", err)
 	}
@@ -116,7 +117,7 @@ func TestUpdateCampaignWithTypedArgsIntegration_WithFramework(t *testing.T) {
 	baseGraphURL = env.Server().URL
 
 	// Test typed arguments with complex types
-	args := update_campaignArgs{
+	args := campaign_updateArgs{
 		ID:          testutil.TestCampaignID,
 		Name:        "Updated Campaign Name",
 		Status:      "ACTIVE",
@@ -135,7 +136,7 @@ func TestUpdateCampaignWithTypedArgsIntegration_WithFramework(t *testing.T) {
 
 	request := mcp.CallToolRequest{
 		Params: mcp.CallToolParams{
-			Name: "update_campaign",
+			Name: "campaign_update",
 			Arguments: map[string]interface{}{
 				"id":           args.ID,
 				"name":         args.Name,
@@ -156,7 +157,7 @@ func TestUpdateCampaignWithTypedArgsIntegration_WithFramework(t *testing.T) {
 	}
 
 	// Execute
-	result, err := UpdateCampaignHandler(context.Background(), request, args)
+	result, err := CampaignUpdateHandler(context.Background(), request, args)
 	if err != nil {
 		t.Fatalf("UpdateCampaignHandler failed: %v", err)
 	}
@@ -194,7 +195,7 @@ func TestCreateCampaignAdlabelWithValidationIntegration_WithFramework(t *testing
 	graphAPIHost = env.Server().URL
 	baseGraphURL = env.Server().URL
 
-	args := create_campaign_adlabelArgs{
+	args := campaign_create_adlabelArgs{
 		ID: testutil.TestCampaignID,
 		Adlabels: []*AdLabel{
 			{
@@ -230,7 +231,7 @@ func TestCreateCampaignAdlabelWithValidationIntegration_WithFramework(t *testing
 	}
 
 	// Execute
-	result, err := CreateCampaignAdlabelHandler(context.Background(), request, args)
+	result, err := CampaignCreateAdlabelHandler(context.Background(), request, args)
 	if err != nil {
 		t.Fatalf("CreateCampaignAdlabelHandler failed: %v", err)
 	}
@@ -261,7 +262,7 @@ func TestCampaignHandlerValidationErrors_WithFramework(t *testing.T) {
 	baseGraphURL = env.Server().URL
 
 	// Test missing required ID
-	args := get_campaignArgs{
+	args := campaign_getArgs{
 		ID:     "", // Missing required ID
 		Fields: []string{"name"},
 	}
@@ -276,7 +277,7 @@ func TestCampaignHandlerValidationErrors_WithFramework(t *testing.T) {
 	}
 
 	// Execute
-	result, err := GetCampaignHandler(context.Background(), request, args)
+	result, err := CampaignGetHandler(context.Background(), request, args)
 	if err != nil {
 		t.Fatalf("Expected validation error in result, not handler error: %v", err)
 	}
@@ -307,7 +308,7 @@ func TestGetAdSetWithComplexTypesIntegration_WithFramework(t *testing.T) {
 	graphAPIHost = env.Server().URL
 	baseGraphURL = env.Server().URL
 
-	args := get_ad_setArgs{
+	args := ad_set_getArgs{
 		ID: testutil.TestAdsetID,
 		Fields: []string{
 			"id", "name", "status", "targeting", "promoted_object", "adlabels",
@@ -325,7 +326,7 @@ func TestGetAdSetWithComplexTypesIntegration_WithFramework(t *testing.T) {
 	}
 
 	// Execute
-	result, err := GetAdSetHandler(context.Background(), request, args)
+	result, err := AdSetGetHandler(context.Background(), request, args)
 	if err != nil {
 		t.Fatalf("GetAdSetHandler failed: %v", err)
 	}
@@ -374,7 +375,7 @@ func TestCampaignLifecycleIntegration_WithFramework(t *testing.T) {
 			env.Server().WriteSuccess(w, testutil.CreateMockCampaignResponse(testutil.TestCampaignID))
 		})
 
-		args := get_campaignArgs{
+		args := campaign_getArgs{
 			ID:     testutil.TestCampaignID,
 			Fields: []string{"id", "name", "status"},
 		}
@@ -388,7 +389,7 @@ func TestCampaignLifecycleIntegration_WithFramework(t *testing.T) {
 			},
 		}
 
-		result, err := GetCampaignHandler(context.Background(), request, args)
+		result, err := CampaignGetHandler(context.Background(), request, args)
 		if err != nil {
 			t.Fatalf("Get campaign failed: %v", err)
 		}
@@ -402,7 +403,7 @@ func TestCampaignLifecycleIntegration_WithFramework(t *testing.T) {
 			env.Server().WriteSuccess(w, testutil.CreateSuccessResponse(testutil.TestCampaignID))
 		})
 
-		args := update_campaignArgs{
+		args := campaign_updateArgs{
 			ID:     testutil.TestCampaignID,
 			Name:   "Updated Name",
 			Status: "ACTIVE",
@@ -418,7 +419,7 @@ func TestCampaignLifecycleIntegration_WithFramework(t *testing.T) {
 			},
 		}
 
-		result, err := UpdateCampaignHandler(context.Background(), request, args)
+		result, err := CampaignUpdateHandler(context.Background(), request, args)
 		if err != nil {
 			t.Fatalf("Update campaign failed: %v", err)
 		}
@@ -432,7 +433,7 @@ func TestCampaignLifecycleIntegration_WithFramework(t *testing.T) {
 			env.Server().WriteSuccess(w, testutil.CreateMockInsightsResponse())
 		})
 
-		args := get_campaign_insightsArgs{
+		args := campaign_get_insightsArgs{
 			ID:         testutil.TestCampaignID,
 			Fields:     []string{"campaign_id", "impressions", "clicks", "spend"},
 			DatePreset: "last_30d",
@@ -448,7 +449,7 @@ func TestCampaignLifecycleIntegration_WithFramework(t *testing.T) {
 			},
 		}
 
-		result, err := GetCampaignInsightsHandler(context.Background(), request, args)
+		result, err := CampaignGetInsightsHandler(context.Background(), request, args)
 		if err != nil {
 			t.Fatalf("Get campaign insights failed: %v", err)
 		}
@@ -494,7 +495,7 @@ func TestErrorHandlingIntegration_WithFramework(t *testing.T) {
 	graphAPIHost = env.Server().URL
 	baseGraphURL = env.Server().URL
 
-	args := get_campaignArgs{
+	args := campaign_getArgs{
 		ID:     "invalid_id",
 		Fields: []string{"id"},
 	}
@@ -509,7 +510,7 @@ func TestErrorHandlingIntegration_WithFramework(t *testing.T) {
 	}
 
 	// Execute
-	result, err := GetCampaignHandler(context.Background(), request, args)
+	result, err := CampaignGetHandler(context.Background(), request, args)
 	if err != nil {
 		t.Fatalf("Expected error in result, not handler error: %v", err)
 	}
@@ -534,7 +535,7 @@ func BenchmarkGetCampaignHandler_WithFramework(b *testing.B) {
 	graphAPIHost = env.Server().URL
 	baseGraphURL = env.Server().URL
 
-	args := get_campaignArgs{
+	args := campaign_getArgs{
 		ID:     testutil.TestCampaignID,
 		Fields: []string{"id", "name", "status"},
 	}
@@ -550,7 +551,7 @@ func BenchmarkGetCampaignHandler_WithFramework(b *testing.B) {
 
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
-		_, err := GetCampaignHandler(context.Background(), request, args)
+		_, err := CampaignGetHandler(context.Background(), request, args)
 		if err != nil {
 			b.Fatalf("Handler failed: %v", err)
 		}

@@ -8,8 +8,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/testutil"
+
+	"github.com/mark3labs/mcp-go/mcp"
 )
 
 func init() {
@@ -172,7 +173,7 @@ func TestTypedArgumentsInHandlers(t *testing.T) {
 			name: "CampaignUpdateWithTypedArgs",
 			testFunc: func(t *testing.T) {
 				// Arrange
-				args := update_campaignArgs{
+				args := campaign_updateArgs{
 					ID:          "123456789",
 					Name:        "Test Campaign",
 					Status:      "PAUSED",
@@ -234,7 +235,7 @@ func TestTypedArgumentsInHandlers(t *testing.T) {
 			name: "AdSetUpdateWithComplexTargeting",
 			testFunc: func(t *testing.T) {
 				// Arrange
-				args := update_ad_setArgs{
+				args := ad_set_updateArgs{
 					ID:          "adset_123",
 					Name:        "Test AdSet",
 					DailyBudget: 50,
@@ -336,7 +337,7 @@ func TestRequiredFieldValidation(t *testing.T) {
 		ctx := context.Background()
 
 		// Test with empty required ID
-		args := get_campaignArgs{
+		args := campaign_getArgs{
 			ID:     "", // Required but empty
 			Fields: []string{"name"},
 		}
@@ -347,7 +348,7 @@ func TestRequiredFieldValidation(t *testing.T) {
 			},
 		}
 
-		result, err := GetCampaignHandler(ctx, request, args)
+		result, err := CampaignGetHandler(ctx, request, args)
 		if err != nil {
 			t.Fatalf("Expected validation error in result, not handler error: %v", err)
 		}
@@ -361,7 +362,7 @@ func TestRequiredFieldValidation(t *testing.T) {
 
 	t.Run("RequiredAdlabelsValidation", func(t *testing.T) {
 		// Test with missing required adlabels
-		args := create_campaign_adlabelArgs{
+		args := campaign_create_adlabelArgs{
 			ID:       "123456789",
 			Adlabels: nil, // Required but nil
 		}
@@ -399,7 +400,7 @@ func TestTypeConversionEdgeCases(t *testing.T) {
 			name: "NilPointerHandling",
 			testFunc: func(t *testing.T) {
 				// Test with nil complex types
-				args := update_campaignArgs{
+				args := campaign_updateArgs{
 					ID:             "123",
 					PromotedObject: nil, // Nil pointer
 					Adlabels:       nil, // Nil slice
@@ -429,7 +430,7 @@ func TestTypeConversionEdgeCases(t *testing.T) {
 			name: "NumberTypeHandling",
 			testFunc: func(t *testing.T) {
 				// Test various number types
-				args := update_campaignArgs{
+				args := campaign_updateArgs{
 					ID:             "123",
 					DailyBudget:    0,     // Zero value
 					LifetimeBudget: 10000, // Positive value
@@ -460,7 +461,7 @@ func TestTypeConversionEdgeCases(t *testing.T) {
 			name: "StringSliceHandling",
 			testFunc: func(t *testing.T) {
 				// Test string slices with various values
-				args := update_campaignArgs{
+				args := campaign_updateArgs{
 					ID:                  "123",
 					ExecutionOptions:    []string{"include_recommendations", "validate_only"},
 					SpecialAdCategories: []string{},           // Empty slice
@@ -505,7 +506,7 @@ func TestTypeConversionEdgeCases(t *testing.T) {
 // TestPerformanceOfTypedArgs benchmarks typed argument handling
 func BenchmarkTypedArgumentsSerialization(b *testing.B) {
 	// Create a complex args structure
-	args := update_campaignArgs{
+	args := campaign_updateArgs{
 		ID:          "123456789",
 		Name:        "Performance Campaign",
 		Status:      "ACTIVE",
@@ -533,7 +534,7 @@ func BenchmarkTypedArgumentsSerialization(b *testing.B) {
 
 func BenchmarkTypedArgumentsDeserialization(b *testing.B) {
 	// Pre-serialize the data
-	args := update_campaignArgs{
+	args := campaign_updateArgs{
 		ID:          "123456789",
 		Name:        "Performance Campaign",
 		Status:      "ACTIVE",
@@ -554,7 +555,7 @@ func BenchmarkTypedArgumentsDeserialization(b *testing.B) {
 
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
-		var result update_campaignArgs
+		var result campaign_updateArgs
 		err := json.Unmarshal(data, &result)
 		if err != nil {
 			b.Fatalf("Unmarshal failed: %v", err)

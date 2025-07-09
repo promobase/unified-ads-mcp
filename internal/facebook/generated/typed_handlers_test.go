@@ -6,8 +6,9 @@ import (
 	"os"
 	"testing"
 
-	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/testutil"
+
+	"github.com/mark3labs/mcp-go/mcp"
 )
 
 func init() {
@@ -45,7 +46,7 @@ func TestTypedHandlers_WithFramework(t *testing.T) {
 	baseGraphURL = env.Server().URL
 
 	t.Run("GetAdHandler with typed arguments", func(t *testing.T) {
-		args := get_adArgs{
+		args := ad_getArgs{
 			ID:     "123456789",
 			Fields: []string{"id", "name", "status"},
 			Limit:  10,
@@ -65,7 +66,7 @@ func TestTypedHandlers_WithFramework(t *testing.T) {
 		oldToken := os.Getenv("FACEBOOK_ACCESS_TOKEN")
 		os.Unsetenv("FACEBOOK_ACCESS_TOKEN")
 
-		result, err := GetAdHandler(context.Background(), request, args)
+		result, err := AdGetHandler(context.Background(), request, args)
 		if err != nil {
 			t.Fatalf("Handler returned error: %v", err)
 		}
@@ -85,7 +86,7 @@ func TestTypedHandlers_WithFramework(t *testing.T) {
 			}
 		}()
 
-		result2, err := GetAdHandler(context.Background(), request, args)
+		result2, err := AdGetHandler(context.Background(), request, args)
 		if err != nil {
 			t.Fatalf("Handler returned error with token: %v", err)
 		}
@@ -103,7 +104,7 @@ func TestTypedHandlers_WithFramework(t *testing.T) {
 
 func TestTypedBatchHandler_WithFramework(t *testing.T) {
 	// Test that we can create typed args
-	args := get_adArgs{
+	args := ad_getArgs{
 		ID:     "test123",
 		Fields: []string{"id", "name"},
 		Limit:  5,
@@ -129,7 +130,7 @@ func TestTypedHandlersTableDriven_WithFramework(t *testing.T) {
 		setupServer   func(*testutil.TestServer)
 		setupEnv      func()
 		cleanupEnv    func()
-		args          get_adArgs
+		args          ad_getArgs
 		wantError     bool
 		errorContains string
 		validate      func(*testing.T, map[string]interface{})
@@ -141,7 +142,7 @@ func TestTypedHandlersTableDriven_WithFramework(t *testing.T) {
 					s.WriteSuccess(w, testutil.CreateMockAdResponse("test_ad_123"))
 				})
 			},
-			args: get_adArgs{
+			args: ad_getArgs{
 				ID:     "test_ad_123",
 				Fields: []string{"id", "name", "status", "creative", "adlabels"},
 			},
@@ -168,7 +169,7 @@ func TestTypedHandlersTableDriven_WithFramework(t *testing.T) {
 					s.WriteError(w, 400, "GraphMethodException", "Invalid ad ID")
 				})
 			},
-			args: get_adArgs{
+			args: ad_getArgs{
 				ID: "invalid_id",
 			},
 			wantError:     true,
@@ -182,7 +183,7 @@ func TestTypedHandlersTableDriven_WithFramework(t *testing.T) {
 			cleanupEnv: func() {
 				os.Setenv("FACEBOOK_ACCESS_TOKEN", testutil.TestAccessToken)
 			},
-			args: get_adArgs{
+			args: ad_getArgs{
 				ID: "123",
 			},
 			wantError:     true,
@@ -230,7 +231,7 @@ func TestTypedHandlersTableDriven_WithFramework(t *testing.T) {
 			}
 
 			// Execute
-			result, err := GetAdHandler(context.Background(), request, tt.args)
+			result, err := AdGetHandler(context.Background(), request, tt.args)
 			if err != nil {
 				t.Fatalf("Handler returned error: %v", err)
 			}
@@ -272,7 +273,7 @@ func TestComplexTypedArgs_WithFramework(t *testing.T) {
 	baseGraphURL = env.Server().URL
 
 	// Test with complex typed arguments
-	args := update_campaignArgs{
+	args := campaign_updateArgs{
 		ID:          "test_campaign",
 		Name:        "Updated Campaign",
 		Status:      "ACTIVE",
@@ -315,7 +316,7 @@ func TestComplexTypedArgs_WithFramework(t *testing.T) {
 	}
 
 	// Execute
-	result, err := UpdateCampaignHandler(context.Background(), request, args)
+	result, err := CampaignUpdateHandler(context.Background(), request, args)
 	if err != nil {
 		t.Fatalf("Handler returned error: %v", err)
 	}

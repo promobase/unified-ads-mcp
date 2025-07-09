@@ -8,8 +8,9 @@ import (
 	"os"
 	"testing"
 
-	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/testutil"
+
+	"github.com/mark3labs/mcp-go/mcp"
 )
 
 func init() {
@@ -62,14 +63,14 @@ func TestListAdAccountActivitiesHandler_WithFramework(t *testing.T) {
 
 	tests := []struct {
 		name           string
-		args           list_ad_account_activitiesArgs
+		args           ad_account_list_activitiesArgs
 		wantError      bool
 		errorContains  string
 		validateResult func(*testing.T, map[string]interface{})
 	}{
 		{
 			name: "Success",
-			args: list_ad_account_activitiesArgs{
+			args: ad_account_list_activitiesArgs{
 				ID:     "act_123456789",
 				Limit:  10,
 				Fields: []string{"event_time", "event_type", "extra_data"},
@@ -87,7 +88,7 @@ func TestListAdAccountActivitiesHandler_WithFramework(t *testing.T) {
 		},
 		{
 			name: "MissingID",
-			args: list_ad_account_activitiesArgs{
+			args: ad_account_list_activitiesArgs{
 				ID: "",
 			},
 			wantError:     true,
@@ -107,7 +108,7 @@ func TestListAdAccountActivitiesHandler_WithFramework(t *testing.T) {
 				},
 			}
 
-			result, err := ListAdAccountActivitiesHandler(context.Background(), request, tt.args)
+			result, err := AdAccountListActivitiesHandler(context.Background(), request, tt.args)
 			if err != nil {
 				t.Fatalf("Handler returned error: %v", err)
 			}
@@ -147,7 +148,7 @@ func TestGetAdSetInsightsHandler_WithFramework(t *testing.T) {
 	graphAPIHost = env.Server().URL
 	baseGraphURL = env.Server().URL
 
-	args := get_ad_set_insightsArgs{
+	args := ad_set_get_insightsArgs{
 		ID:         "123456789",
 		DatePreset: "yesterday",
 		Fields:     []string{"impressions", "clicks", "spend", "reach", "frequency"},
@@ -165,7 +166,7 @@ func TestGetAdSetInsightsHandler_WithFramework(t *testing.T) {
 		},
 	}
 
-	result, err := GetAdSetInsightsHandler(context.Background(), request, args)
+	result, err := AdSetGetInsightsHandler(context.Background(), request, args)
 	if err != nil {
 		t.Fatalf("Handler returned error: %v", err)
 	}
@@ -214,7 +215,7 @@ func TestCreateAdSetAdlabelHandler_WithFramework(t *testing.T) {
 	graphAPIHost = env.Server().URL
 	baseGraphURL = env.Server().URL
 
-	args := create_ad_set_adlabelArgs{
+	args := ad_set_create_adlabelArgs{
 		ID: "123456789",
 		Adlabels: []*AdLabel{
 			{
@@ -238,7 +239,7 @@ func TestCreateAdSetAdlabelHandler_WithFramework(t *testing.T) {
 		},
 	}
 
-	result, err := CreateAdSetAdlabelHandler(context.Background(), request, args)
+	result, err := AdSetCreateAdlabelHandler(context.Background(), request, args)
 	if err != nil {
 		t.Fatalf("Handler returned error: %v", err)
 	}
@@ -272,7 +273,7 @@ func TestAPIErrorHandling_WithFramework(t *testing.T) {
 	graphAPIHost = env.Server().URL
 	baseGraphURL = env.Server().URL
 
-	args := get_ad_setArgs{
+	args := ad_set_getArgs{
 		ID: "invalid_id",
 	}
 
@@ -284,7 +285,7 @@ func TestAPIErrorHandling_WithFramework(t *testing.T) {
 		},
 	}
 
-	result, err := GetAdSetHandler(context.Background(), request, args)
+	result, err := AdSetGetHandler(context.Background(), request, args)
 	if err != nil {
 		t.Fatalf("Handler returned error: %v", err)
 	}
@@ -321,7 +322,7 @@ func TestNoAccessToken_WithFramework(t *testing.T) {
 		accessToken = oldAccessToken
 	}()
 
-	args := list_ad_account_activitiesArgs{
+	args := ad_account_list_activitiesArgs{
 		ID: "act_123456789",
 	}
 
@@ -333,7 +334,7 @@ func TestNoAccessToken_WithFramework(t *testing.T) {
 		},
 	}
 
-	result, err := ListAdAccountActivitiesHandler(context.Background(), request, args)
+	result, err := AdAccountListActivitiesHandler(context.Background(), request, args)
 	if err != nil {
 		t.Fatalf("Handler returned error: %v", err)
 	}
@@ -367,7 +368,7 @@ func BenchmarkListAdAccountActivitiesHandler_WithFramework(b *testing.B) {
 	graphAPIHost = env.Server().URL
 	baseGraphURL = env.Server().URL
 
-	args := list_ad_account_activitiesArgs{
+	args := ad_account_list_activitiesArgs{
 		ID:     "act_123456789",
 		Limit:  10,
 		Fields: []string{"event_time", "event_type", "extra_data"},
@@ -385,6 +386,6 @@ func BenchmarkListAdAccountActivitiesHandler_WithFramework(b *testing.B) {
 
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
-		_, _ = ListAdAccountActivitiesHandler(context.Background(), request, args)
+		_, _ = AdAccountListActivitiesHandler(context.Background(), request, args)
 	}
 }
