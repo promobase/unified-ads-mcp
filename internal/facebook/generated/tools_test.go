@@ -3,423 +3,150 @@ package generated
 import (
 	"context"
 	"encoding/json"
-	"fmt"
 	"io"
 	"net/http"
-	"net/http/httptest"
 	"os"
-	"strings"
 	"testing"
 
 	"github.com/mark3labs/mcp-go/mcp"
+	"unified-ads-mcp/internal/facebook/testutil"
 )
 
 func init() {
 	// Set testing environment variable to enable guardrails
 	os.Setenv("TESTING", "true")
-
-	// Ensure we never use real Facebook URLs during tests
-	if graphAPIHost == "https://graph.facebook.com" {
-		graphAPIHost = "http://test-mock-server"
-	}
-	if baseGraphURL == "https://graph.facebook.com" {
-		baseGraphURL = "http://test-mock-server"
-	}
 }
 
-// TestMain provides test setup and teardown
-func TestMain(m *testing.M) {
-	// Ensure testing flag is set
-	os.Setenv("TESTING", "true")
+func TestListAdAccountActivitiesHandler_WithFramework(t *testing.T) {
+	env := testutil.NewTestEnvironment(t)
+	defer env.Teardown()
 
-	// Store original values
-	originalHost := graphAPIHost
-	originalBase := baseGraphURL
-
-	// Run tests
-	code := m.Run()
-
-	// Cleanup - restore original values and remove testing flag
-	graphAPIHost = originalHost
-	baseGraphURL = originalBase
-	os.Unsetenv("TESTING")
-
-	os.Exit(code)
-}
-
-// mockGraphAPIServer creates a test server that mocks Facebook Graph API responses
-func mockGraphAPIServer(t *testing.T) *httptest.Server {
-	return httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		// Log the request for debugging
-		t.Logf("Mock API request: %s %s", r.Method, r.URL.Path)
-
-		// Handle batch requests differently - they use form data for auth
-		if r.Method == "POST" && strings.HasSuffix(r.URL.Path, fmt.Sprintf("/%s/", graphAPIVersion)) {
-			// For batch requests, don't check auth here - it's handled in the switch below
-		} else {
-			// Extract access token to verify it's being sent
-			accessToken := r.URL.Query().Get("access_token")
-			if accessToken == "" {
-				w.WriteHeader(http.StatusUnauthorized)
-				json.NewEncoder(w).Encode(map[string]interface{}{
-					"error": map[string]interface{}{
-						"type":    "OAuthException",
-						"message": "An access token is required to request this resource.",
+	// Setup mock response
+	env.Server().AddRoute("GET", "/v23.0/act_123456789/activities", func(w http.ResponseWriter, r *http.Request) {
+		env.Server().WriteSuccess(w, map[string]interface{}{
+			"data": []map[string]interface{}{
+				{
+					"event_time": "2024-01-01T12:00:00+0000",
+					"event_type": "update_status",
+					"extra_data": map[string]interface{}{
+						"old_status": "ACTIVE",
+						"new_status": "PAUSED",
 					},
-				})
-				return
-			}
-		}
-
-		// Mock different endpoints
-		switch {
-		case r.Method == "POST" && strings.HasSuffix(r.URL.Path, fmt.Sprintf("/%s/", graphAPIVersion)):
-			// This is a batch request
-			// Parse form data
-			if err := r.ParseForm(); err != nil {
-				w.WriteHeader(http.StatusBadRequest)
-				json.NewEncoder(w).Encode(map[string]interface{}{
-					"error": map[string]interface{}{
-						"message": "Failed to parse form",
+				},
+				{
+					"event_time": "2024-01-01T11:00:00+0000",
+					"event_type": "create_campaign",
+					"extra_data": map[string]interface{}{
+						"campaign_id": "123456789",
 					},
-				})
-				return
-			}
+				},
+			},
+			"paging": map[string]interface{}{
+				"cursors": map[string]string{
+					"before": "BEFORE_CURSOR",
+					"after":  "AFTER_CURSOR",
+				},
+			},
+		})
+	})
 
-			// Check access token in form data
-			accessToken := r.FormValue("access_token")
-			if accessToken == "" {
-				w.WriteHeader(http.StatusUnauthorized)
-				json.NewEncoder(w).Encode(map[string]interface{}{
-					"error": map[string]interface{}{
-						"type":    "OAuthException",
-						"message": "An access token is required to request this resource.",
-					},
-				})
-				return
-			}
+	// Override URLs
+	oldHost := graphAPIHost
+	oldBase := baseGraphURL
+	defer func() {
+		graphAPIHost = oldHost
+		baseGraphURL = oldBase
+	}()
+	graphAPIHost = env.Server().URL
+	baseGraphURL = env.Server().URL
 
-			// Get batch parameter
-			batchJSON := r.FormValue("batch")
-			if batchJSON == "" {
-				w.WriteHeader(http.StatusBadRequest)
-				json.NewEncoder(w).Encode(map[string]interface{}{
-					"error": map[string]interface{}{
-						"message": "Missing batch parameter",
-					},
-				})
-				return
-			}
+	tests := []struct {
+		name           string
+		args           list_ad_account_activitiesArgs
+		wantError      bool
+		errorContains  string
+		validateResult func(*testing.T, map[string]interface{})
+	}{
+		{
+			name: "Success",
+			args: list_ad_account_activitiesArgs{
+				ID:     "act_123456789",
+				Limit:  10,
+				Fields: []string{"event_time", "event_type", "extra_data"},
+			},
+			validateResult: func(t *testing.T, data map[string]interface{}) {
+				activities, ok := data["data"].([]interface{})
+				if !ok {
+					t.Error("Response missing 'data' field")
+					return
+				}
+				if len(activities) != 2 {
+					t.Errorf("Expected 2 activities, got %d", len(activities))
+				}
+			},
+		},
+		{
+			name: "MissingID",
+			args: list_ad_account_activitiesArgs{
+				ID: "",
+			},
+			wantError:     true,
+			errorContains: "id is required",
+		},
+	}
 
-			// Parse batch requests
-			var requests []BatchRequest
-			if err := json.Unmarshal([]byte(batchJSON), &requests); err != nil {
-				w.WriteHeader(http.StatusBadRequest)
-				json.NewEncoder(w).Encode(map[string]interface{}{
-					"error": map[string]interface{}{
-						"message": "Invalid batch JSON",
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			request := mcp.CallToolRequest{
+				Params: mcp.CallToolParams{
+					Arguments: map[string]interface{}{
+						"id":     tt.args.ID,
+						"limit":  tt.args.Limit,
+						"fields": tt.args.Fields,
 					},
-				})
-				return
+				},
 			}
 
-			// Create responses
-			responses := make([]BatchResponse, len(requests))
-			for i, req := range requests {
-				if strings.Contains(req.RelativeURL, "activities") {
-					responses[i] = BatchResponse{
-						Code: 200,
-						Body: json.RawMessage(`{"data":[{"event_time":"2024-01-01T12:00:00+0000","event_type":"update_status"}]}`),
-					}
-				} else if strings.Contains(req.RelativeURL, "insights") {
-					responses[i] = BatchResponse{
-						Code: 200,
-						Body: json.RawMessage(`{"data":[{"impressions":"1000","clicks":"50","spend":"25.50"}]}`),
-					}
-				} else {
-					responses[i] = BatchResponse{
-						Code: 200,
-						Body: json.RawMessage(`{"id":"` + strings.Split(req.RelativeURL, "?")[0] + `","name":"Test Object"}`),
-					}
+			result, err := ListAdAccountActivitiesHandler(context.Background(), request, tt.args)
+			if err != nil {
+				t.Fatalf("Handler returned error: %v", err)
+			}
+
+			assertion := testutil.AssertResult(t, result)
+			if tt.wantError {
+				assertion.IsError()
+				if tt.errorContains != "" {
+					assertion.HasErrorContaining(tt.errorContains)
+				}
+			} else {
+				data := assertion.IsSuccess().ParseJSON()
+				if tt.validateResult != nil {
+					tt.validateResult(t, data)
 				}
 			}
-
-			w.Header().Set("Content-Type", "application/json")
-			json.NewEncoder(w).Encode(responses)
-			return
-
-		case strings.Contains(r.URL.Path, "/activities"):
-			// Mock activities endpoint
-			w.Header().Set("Content-Type", "application/json")
-			json.NewEncoder(w).Encode(map[string]interface{}{
-				"data": []map[string]interface{}{
-					{
-						"event_time": "2024-01-01T12:00:00+0000",
-						"event_type": "update_status",
-						"extra_data": map[string]interface{}{
-							"old_status": "ACTIVE",
-							"new_status": "PAUSED",
-						},
-					},
-					{
-						"event_time": "2024-01-01T11:00:00+0000",
-						"event_type": "create_campaign",
-						"extra_data": map[string]interface{}{
-							"campaign_id": "123456789",
-						},
-					},
-				},
-				"paging": map[string]interface{}{
-					"cursors": map[string]string{
-						"before": "BEFORE_CURSOR",
-						"after":  "AFTER_CURSOR",
-					},
-				},
-			})
-
-		case strings.Contains(r.URL.Path, "/insights"):
-			// Mock insights endpoint
-			w.Header().Set("Content-Type", "application/json")
-			json.NewEncoder(w).Encode(map[string]interface{}{
-				"data": []map[string]interface{}{
-					{
-						"date_start":   "2024-01-01",
-						"date_stop":    "2024-01-01",
-						"impressions":  "1000",
-						"clicks":       "50",
-						"spend":        "25.50",
-						"reach":        "800",
-						"frequency":    "1.25",
-						"account_id":   "act_123456789",
-						"account_name": "Test Account",
-					},
-				},
-				"paging": map[string]interface{}{
-					"cursors": map[string]string{
-						"before": "BEFORE_CURSOR",
-						"after":  "AFTER_CURSOR",
-					},
-				},
-			})
-
-		case r.Method == "POST" && strings.Contains(r.URL.Path, "/adlabels"):
-			// Mock creating adlabels
-			body, _ := io.ReadAll(r.Body)
-			var params map[string]interface{}
-			json.Unmarshal(body, &params)
-
-			w.Header().Set("Content-Type", "application/json")
-			json.NewEncoder(w).Encode(map[string]interface{}{
-				"success":  true,
-				"adlabels": params["adlabels"],
-			})
-
-		case r.Method == "DELETE":
-			// Mock delete operations
-			w.Header().Set("Content-Type", "application/json")
-			json.NewEncoder(w).Encode(map[string]interface{}{
-				"success": true,
-			})
-
-		default:
-			// Default response for unhandled endpoints
-			w.Header().Set("Content-Type", "application/json")
-			json.NewEncoder(w).Encode(map[string]interface{}{
-				"id":   "123456789",
-				"name": "Test Object",
-			})
-		}
-	}))
-}
-
-func TestListAdAccountActivitiesHandler_Success(t *testing.T) {
-	// Create mock server
-	mockServer := mockGraphAPIServer(t)
-	defer mockServer.Close()
-
-	// Override the Graph API host for testing
-	oldHost := graphAPIHost
-	oldBaseURL := baseGraphURL
-	defer func() {
-		graphAPIHost = oldHost
-		baseGraphURL = oldBaseURL
-	}()
-	graphAPIHost = mockServer.URL
-	baseGraphURL = mockServer.URL
-
-	// Set a test access token
-	oldToken := os.Getenv("FACEBOOK_ACCESS_TOKEN")
-	os.Setenv("FACEBOOK_ACCESS_TOKEN", "test_token_123")
-	defer func() {
-		if oldToken != "" {
-			os.Setenv("FACEBOOK_ACCESS_TOKEN", oldToken)
-		} else {
-			os.Unsetenv("FACEBOOK_ACCESS_TOKEN")
-		}
-	}()
-
-	// Create test request
-	params := map[string]interface{}{
-		"id":     "act_123456789",
-		"limit":  10,
-		"fields": []string{"event_time", "event_type", "extra_data"},
-	}
-
-	request := mcp.CallToolRequest{
-		Params: mcp.CallToolParams{
-			Arguments: params,
-		},
-	}
-
-	// Create typed args
-	args := list_ad_account_activitiesArgs{
-		ID:     "act_123456789",
-		Limit:  10,
-		Fields: []string{"event_time", "event_type", "extra_data"},
-	}
-
-	// Call the handler
-	result, err := ListAdAccountActivitiesHandler(context.Background(), request, args)
-	if err != nil {
-		t.Fatalf("Handler returned error: %v", err)
-	}
-
-	// Verify result
-	if result == nil {
-		t.Fatal("Handler returned nil result")
-	}
-
-	// Debug: Check if it's an error
-	if result.IsError {
-		textContent, _ := mcp.AsTextContent(result.Content[0])
-		t.Fatalf("Handler returned error result: %s", textContent.Text)
-	}
-
-	// Parse the result to verify it's valid JSON
-	var responseData map[string]interface{}
-	// Extract text content from the first content item
-	textContent, ok := mcp.AsTextContent(result.Content[0])
-	if !ok {
-		t.Fatal("Expected text content in result")
-	}
-	resultText := textContent.Text
-	if err := json.Unmarshal([]byte(resultText), &responseData); err != nil {
-		t.Errorf("Result is not valid JSON: %v", err)
-	}
-
-	// Verify the response structure
-	if data, ok := responseData["data"].([]interface{}); !ok {
-		t.Error("Response missing 'data' field")
-	} else if len(data) != 2 {
-		t.Errorf("Expected 2 activities, got %d", len(data))
-	}
-
-	t.Logf("Successfully received activities: %s", resultText)
-}
-
-func TestListAdAccountActivitiesHandler_NoAccessToken(t *testing.T) {
-	// Create mock server - even for no-token test we need a mock server
-	mockServer := mockGraphAPIServer(t)
-	defer mockServer.Close()
-
-	// Override the Graph API host for testing
-	oldHost := graphAPIHost
-	oldBaseURL := baseGraphURL
-	defer func() {
-		graphAPIHost = oldHost
-		baseGraphURL = oldBaseURL
-	}()
-	graphAPIHost = mockServer.URL
-	baseGraphURL = mockServer.URL
-
-	// Ensure no access token is set
-	oldToken := os.Getenv("FACEBOOK_ACCESS_TOKEN")
-	os.Unsetenv("FACEBOOK_ACCESS_TOKEN")
-	// Also clear the accessToken variable
-	oldAccessToken := accessToken
-	accessToken = ""
-	defer func() {
-		if oldToken != "" {
-			os.Setenv("FACEBOOK_ACCESS_TOKEN", oldToken)
-		}
-		accessToken = oldAccessToken
-	}()
-
-	// Create test request
-	params := map[string]interface{}{
-		"id": "act_123456789",
-	}
-
-	request := mcp.CallToolRequest{
-		Params: mcp.CallToolParams{
-			Arguments: params,
-		},
-	}
-
-	// Create typed args
-	args := list_ad_account_activitiesArgs{
-		ID: "act_123456789",
-	}
-
-	// Call the handler
-	result, err := ListAdAccountActivitiesHandler(context.Background(), request, args)
-	if err != nil {
-		t.Fatalf("Handler returned error: %v", err)
-	}
-
-	// Verify error result
-	if result == nil {
-		t.Fatal("Handler returned nil result")
-	}
-
-	// Check that it's an error result
-	if !result.IsError {
-		t.Error("Expected error result for missing access token")
-	}
-
-	textContent, ok := mcp.AsTextContent(result.Content[0])
-	if !ok {
-		t.Fatal("Expected text content in error result")
-	}
-	if !strings.Contains(textContent.Text, "FACEBOOK_ACCESS_TOKEN") {
-		t.Errorf("Error message should mention missing access token, got: %s", textContent.Text)
+		})
 	}
 }
 
-func TestGetAdSetInsightsHandler_Success(t *testing.T) {
-	// Create mock server
-	mockServer := mockGraphAPIServer(t)
-	defer mockServer.Close()
+func TestGetAdSetInsightsHandler_WithFramework(t *testing.T) {
+	env := testutil.NewTestEnvironment(t)
+	defer env.Teardown()
 
-	// Override the Graph API host for testing
+	// Setup mock insights response
+	env.Server().AddRoute("GET", "/v23.0/123456789/insights", func(w http.ResponseWriter, r *http.Request) {
+		env.Server().WriteSuccess(w, testutil.CreateMockInsightsResponse())
+	})
+
+	// Override URLs
 	oldHost := graphAPIHost
-	oldBaseURL := baseGraphURL
+	oldBase := baseGraphURL
 	defer func() {
 		graphAPIHost = oldHost
-		baseGraphURL = oldBaseURL
+		baseGraphURL = oldBase
 	}()
-	graphAPIHost = mockServer.URL
-	baseGraphURL = mockServer.URL
+	graphAPIHost = env.Server().URL
+	baseGraphURL = env.Server().URL
 
-	// Set a test access token
-	os.Setenv("FACEBOOK_ACCESS_TOKEN", "test_token_123")
-	defer os.Unsetenv("FACEBOOK_ACCESS_TOKEN")
-
-	// Create test request for insights
-	params := map[string]interface{}{
-		"id":          "123456789",
-		"date_preset": "yesterday",
-		"fields":      []string{"impressions", "clicks", "spend", "reach", "frequency"},
-		"level":       "adset",
-	}
-
-	request := mcp.CallToolRequest{
-		Params: mcp.CallToolParams{
-			Arguments: params,
-		},
-	}
-
-	// Create typed args
 	args := get_ad_set_insightsArgs{
 		ID:         "123456789",
 		DatePreset: "yesterday",
@@ -427,34 +154,31 @@ func TestGetAdSetInsightsHandler_Success(t *testing.T) {
 		Level:      "adset",
 	}
 
-	// Call the handler
+	request := mcp.CallToolRequest{
+		Params: mcp.CallToolParams{
+			Arguments: map[string]interface{}{
+				"id":          args.ID,
+				"date_preset": args.DatePreset,
+				"fields":      args.Fields,
+				"level":       args.Level,
+			},
+		},
+	}
+
 	result, err := GetAdSetInsightsHandler(context.Background(), request, args)
 	if err != nil {
 		t.Fatalf("Handler returned error: %v", err)
 	}
 
-	// Verify result
-	if result == nil {
-		t.Fatal("Handler returned nil result")
-	}
-
-	// Parse and verify the insights data
-	var responseData map[string]interface{}
-	textContent, ok := mcp.AsTextContent(result.Content[0])
-	if !ok {
-		t.Fatal("Expected text content in result")
-	}
-	resultText := textContent.Text
-	if err := json.Unmarshal([]byte(resultText), &responseData); err != nil {
-		t.Errorf("Result is not valid JSON: %v", err)
-	}
+	data := testutil.AssertResult(t, result).
+		IsSuccess().
+		ParseJSON()
 
 	// Verify insights data
-	if data, ok := responseData["data"].([]interface{}); !ok {
+	if insights, ok := data["data"].([]interface{}); !ok {
 		t.Error("Response missing 'data' field")
-	} else if len(data) > 0 {
-		insight := data[0].(map[string]interface{})
-		// Verify expected fields
+	} else if len(insights) > 0 {
+		insight := insights[0].(map[string]interface{})
 		expectedFields := []string{"impressions", "clicks", "spend", "reach", "frequency"}
 		for _, field := range expectedFields {
 			if _, exists := insight[field]; !exists {
@@ -462,47 +186,34 @@ func TestGetAdSetInsightsHandler_Success(t *testing.T) {
 			}
 		}
 	}
-
-	t.Logf("Successfully received insights: %s", resultText)
 }
 
-func TestCreateAdSetAdlabelHandler_Success(t *testing.T) {
-	// Create mock server
-	mockServer := mockGraphAPIServer(t)
-	defer mockServer.Close()
+func TestCreateAdSetAdlabelHandler_WithFramework(t *testing.T) {
+	env := testutil.NewTestEnvironment(t)
+	defer env.Teardown()
 
-	// Override the Graph API host for testing
+	// Setup mock response
+	env.Server().AddRoute("POST", "/v23.0/123456789/adlabels", func(w http.ResponseWriter, r *http.Request) {
+		body, _ := io.ReadAll(r.Body)
+		var params map[string]interface{}
+		json.Unmarshal(body, &params)
+
+		env.Server().WriteSuccess(w, map[string]interface{}{
+			"success":  true,
+			"adlabels": params["adlabels"],
+		})
+	})
+
+	// Override URLs
 	oldHost := graphAPIHost
-	oldBaseURL := baseGraphURL
+	oldBase := baseGraphURL
 	defer func() {
 		graphAPIHost = oldHost
-		baseGraphURL = oldBaseURL
+		baseGraphURL = oldBase
 	}()
-	graphAPIHost = mockServer.URL
-	baseGraphURL = mockServer.URL
+	graphAPIHost = env.Server().URL
+	baseGraphURL = env.Server().URL
 
-	// Set a test access token
-	os.Setenv("FACEBOOK_ACCESS_TOKEN", "test_token_123")
-	defer os.Unsetenv("FACEBOOK_ACCESS_TOKEN")
-
-	// Create test request for creating adlabels
-	params := map[string]interface{}{
-		"id": "123456789",
-		"adlabels": []map[string]interface{}{
-			{
-				"name": "Test Label",
-				"id":   "label_123",
-			},
-		},
-	}
-
-	request := mcp.CallToolRequest{
-		Params: mcp.CallToolParams{
-			Arguments: params,
-		},
-	}
-
-	// Create typed args
 	args := create_ad_set_adlabelArgs{
 		ID: "123456789",
 		Adlabels: []*AdLabel{
@@ -513,200 +224,165 @@ func TestCreateAdSetAdlabelHandler_Success(t *testing.T) {
 		},
 	}
 
-	// Call the handler
+	request := mcp.CallToolRequest{
+		Params: mcp.CallToolParams{
+			Arguments: map[string]interface{}{
+				"id": args.ID,
+				"adlabels": []map[string]interface{}{
+					{
+						"name": "Test Label",
+						"id":   "label_123",
+					},
+				},
+			},
+		},
+	}
+
 	result, err := CreateAdSetAdlabelHandler(context.Background(), request, args)
 	if err != nil {
 		t.Fatalf("Handler returned error: %v", err)
 	}
 
-	// Verify result
-	if result == nil {
-		t.Fatal("Handler returned nil result")
-	}
-
-	// Parse and verify the response
-	var responseData map[string]interface{}
-	textContent, ok := mcp.AsTextContent(result.Content[0])
-	if !ok {
-		t.Fatal("Expected text content in result")
-	}
-	resultText := textContent.Text
-	if err := json.Unmarshal([]byte(resultText), &responseData); err != nil {
-		t.Errorf("Result is not valid JSON: %v", err)
-	}
+	data := testutil.AssertResult(t, result).
+		IsSuccess().
+		ParseJSON()
 
 	// Verify success
-	if success, ok := responseData["success"].(bool); !ok || !success {
+	if success, ok := data["success"].(bool); !ok || !success {
 		t.Error("Expected success=true in response")
 	}
-
-	t.Logf("Successfully created adlabels: %s", resultText)
 }
 
-func TestAPIErrorHandling(t *testing.T) {
-	// Create a mock server that returns API errors
-	errorServer := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		w.WriteHeader(http.StatusBadRequest)
-		json.NewEncoder(w).Encode(map[string]interface{}{
-			"error": map[string]interface{}{
-				"type":    "GraphMethodException",
-				"message": "Invalid parameter",
-				"code":    100,
-			},
-		})
-	}))
-	defer errorServer.Close()
+func TestAPIErrorHandling_WithFramework(t *testing.T) {
+	env := testutil.NewTestEnvironment(t)
+	defer env.Teardown()
 
-	// Override the Graph API host
+	// Setup error response
+	env.Server().SetDefaultHandler(func(w http.ResponseWriter, r *http.Request) {
+		env.Server().WriteError(w, 400, "GraphMethodException", "Invalid parameter")
+	})
+
+	// Override URLs
 	oldHost := graphAPIHost
-	oldBaseURL := baseGraphURL
+	oldBase := baseGraphURL
 	defer func() {
 		graphAPIHost = oldHost
-		baseGraphURL = oldBaseURL
+		baseGraphURL = oldBase
 	}()
-	graphAPIHost = errorServer.URL
-	baseGraphURL = errorServer.URL
+	graphAPIHost = env.Server().URL
+	baseGraphURL = env.Server().URL
 
-	// Set a test access token
-	os.Setenv("FACEBOOK_ACCESS_TOKEN", "test_token_123")
-	defer os.Unsetenv("FACEBOOK_ACCESS_TOKEN")
-
-	// Create test request
-	params := map[string]interface{}{
-		"id": "invalid_id",
-	}
-
-	request := mcp.CallToolRequest{
-		Params: mcp.CallToolParams{
-			Arguments: params,
-		},
-	}
-
-	// Create typed args
 	args := get_ad_setArgs{
 		ID: "invalid_id",
 	}
 
-	// Call the handler
+	request := mcp.CallToolRequest{
+		Params: mcp.CallToolParams{
+			Arguments: map[string]interface{}{
+				"id": args.ID,
+			},
+		},
+	}
+
 	result, err := GetAdSetHandler(context.Background(), request, args)
 	if err != nil {
 		t.Fatalf("Handler returned error: %v", err)
 	}
 
-	// Verify error result
-	if result == nil {
-		t.Fatal("Handler returned nil result")
-	}
-
-	// Check that it's an error result
-	if !result.IsError {
-		t.Error("Expected error result for API error")
-	}
-
-	// Verify error message contains API error details
-	textContent, ok := mcp.AsTextContent(result.Content[0])
-	if !ok {
-		t.Fatal("Expected text content in error result")
-	}
-	errorMsg := textContent.Text
-	if !strings.Contains(errorMsg, "GraphMethodException") || !strings.Contains(errorMsg, "Invalid parameter") {
-		t.Errorf("Error message should contain API error details, got: %s", errorMsg)
-	}
+	testutil.AssertResult(t, result).
+		IsError().
+		HasErrorContaining("GraphMethodException").
+		HasErrorContaining("Invalid parameter")
 }
 
-// TestToolResultFormat verifies that successful and error results follow the correct MCP format
-func TestToolResultFormat(t *testing.T) {
-	// Test data
-	successResponse := []byte(`{"data": [{"id": "123", "name": "Test"}]}`)
-	errorMessage := "Test error message"
+func TestNoAccessToken_WithFramework(t *testing.T) {
+	env := testutil.NewTestEnvironment(t)
+	defer env.Teardown()
 
-	// Test successful result format
-	t.Run("Success Result Format", func(t *testing.T) {
-		// Simulate what handlers do for success
-		result := mcp.NewToolResultText(string(successResponse))
-
-		if result.IsError {
-			t.Error("Success result should not be marked as error")
-		}
-
-		if len(result.Content) != 1 {
-			t.Errorf("Expected 1 content item, got %d", len(result.Content))
-		}
-
-		textContent, ok := mcp.AsTextContent(result.Content[0])
-		if !ok {
-			t.Error("Expected text content in result")
-		}
-
-		if textContent.Type != "text" {
-			t.Errorf("Expected content type 'text', got %s", textContent.Type)
-		}
-
-		if textContent.Text != string(successResponse) {
-			t.Error("Content text doesn't match expected response")
-		}
-	})
-
-	// Test error result format
-	t.Run("Error Result Format", func(t *testing.T) {
-		// Simulate what handlers do for errors
-		result := mcp.NewToolResultErrorf("API request failed: %v", fmt.Errorf("%s", errorMessage))
-
-		if !result.IsError {
-			t.Error("Error result should be marked as error")
-		}
-
-		if len(result.Content) != 1 {
-			t.Errorf("Expected 1 content item, got %d", len(result.Content))
-		}
-
-		textContent, ok := mcp.AsTextContent(result.Content[0])
-		if !ok {
-			t.Error("Expected text content in error result")
-		}
-
-		expectedError := fmt.Sprintf("API request failed: %s", errorMessage)
-		if textContent.Text != expectedError {
-			t.Errorf("Error message mismatch: got %s, want %s", textContent.Text, expectedError)
-		}
-	})
-}
-
-// Benchmark test to ensure performance
-func BenchmarkListAdAccountActivitiesHandler(b *testing.B) {
-	// Create mock server
-	mockServer := mockGraphAPIServer(&testing.T{})
-	defer mockServer.Close()
-
-	// Override the Graph API host
+	// Override URLs
 	oldHost := graphAPIHost
-	defer func() { graphAPIHost = oldHost }()
-	graphAPIHost = mockServer.URL
+	oldBase := baseGraphURL
+	defer func() {
+		graphAPIHost = oldHost
+		baseGraphURL = oldBase
+	}()
+	graphAPIHost = env.Server().URL
+	baseGraphURL = env.Server().URL
 
-	// Set access token
-	os.Setenv("FACEBOOK_ACCESS_TOKEN", "test_token_123")
-	defer os.Unsetenv("FACEBOOK_ACCESS_TOKEN")
+	// Clear access token
+	oldToken := os.Getenv("FACEBOOK_ACCESS_TOKEN")
+	os.Unsetenv("FACEBOOK_ACCESS_TOKEN")
+	oldAccessToken := accessToken
+	accessToken = ""
+	defer func() {
+		if oldToken != "" {
+			os.Setenv("FACEBOOK_ACCESS_TOKEN", oldToken)
+		}
+		accessToken = oldAccessToken
+	}()
 
-	// Prepare request
-	params := map[string]interface{}{
-		"id":     "act_123456789",
-		"limit":  10,
-		"fields": []string{"event_time", "event_type", "extra_data"},
+	args := list_ad_account_activitiesArgs{
+		ID: "act_123456789",
 	}
+
 	request := mcp.CallToolRequest{
 		Params: mcp.CallToolParams{
-			Arguments: params,
+			Arguments: map[string]interface{}{
+				"id": args.ID,
+			},
 		},
 	}
 
-	// Create typed args
+	result, err := ListAdAccountActivitiesHandler(context.Background(), request, args)
+	if err != nil {
+		t.Fatalf("Handler returned error: %v", err)
+	}
+
+	testutil.AssertResult(t, result).
+		IsError().
+		HasErrorContaining("FACEBOOK_ACCESS_TOKEN")
+}
+
+// Benchmark test using the framework
+func BenchmarkListAdAccountActivitiesHandler_WithFramework(b *testing.B) {
+	env := testutil.NewTestEnvironment(&testing.T{})
+	defer env.Teardown()
+
+	// Setup mock response
+	env.Server().AddRoute("GET", "/v23.0/act_123456789/activities", func(w http.ResponseWriter, r *http.Request) {
+		env.Server().WriteSuccess(w, map[string]interface{}{
+			"data": []map[string]interface{}{
+				{"event_time": "2024-01-01T12:00:00+0000", "event_type": "update_status"},
+			},
+		})
+	})
+
+	// Override URLs
+	oldHost := graphAPIHost
+	oldBase := baseGraphURL
+	defer func() {
+		graphAPIHost = oldHost
+		baseGraphURL = oldBase
+	}()
+	graphAPIHost = env.Server().URL
+	baseGraphURL = env.Server().URL
+
 	args := list_ad_account_activitiesArgs{
 		ID:     "act_123456789",
 		Limit:  10,
 		Fields: []string{"event_time", "event_type", "extra_data"},
 	}
 
-	// Run benchmark
+	request := mcp.CallToolRequest{
+		Params: mcp.CallToolParams{
+			Arguments: map[string]interface{}{
+				"id":     args.ID,
+				"limit":  args.Limit,
+				"fields": args.Fields,
+			},
+		},
+	}
+
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		_, _ = ListAdAccountActivitiesHandler(context.Background(), request, args)
