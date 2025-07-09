@@ -14,6 +14,39 @@ import (
 	"github.com/mark3labs/mcp-go/mcp"
 )
 
+func init() {
+	// Set testing environment variable to enable guardrails
+	os.Setenv("TESTING", "true")
+
+	// Ensure we never use real Facebook URLs during tests
+	if graphAPIHost == "https://graph.facebook.com" {
+		graphAPIHost = "http://test-mock-server"
+	}
+	if baseGraphURL == "https://graph.facebook.com" {
+		baseGraphURL = "http://test-mock-server"
+	}
+}
+
+// TestMain provides test setup and teardown
+func TestMain(m *testing.M) {
+	// Ensure testing flag is set
+	os.Setenv("TESTING", "true")
+
+	// Store original values
+	originalHost := graphAPIHost
+	originalBase := baseGraphURL
+
+	// Run tests
+	code := m.Run()
+
+	// Cleanup - restore original values and remove testing flag
+	graphAPIHost = originalHost
+	baseGraphURL = originalBase
+	os.Unsetenv("TESTING")
+
+	os.Exit(code)
+}
+
 // mockGraphAPIServer creates a test server that mocks Facebook Graph API responses
 func mockGraphAPIServer(t *testing.T) *httptest.Server {
 	return httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
@@ -206,8 +239,13 @@ func TestListAdAccountActivitiesHandler_Success(t *testing.T) {
 
 	// Override the Graph API host for testing
 	oldHost := graphAPIHost
-	defer func() { graphAPIHost = oldHost }()
+	oldBaseURL := baseGraphURL
+	defer func() {
+		graphAPIHost = oldHost
+		baseGraphURL = oldBaseURL
+	}()
 	graphAPIHost = mockServer.URL
+	baseGraphURL = mockServer.URL
 
 	// Set a test access token
 	oldToken := os.Getenv("FACEBOOK_ACCESS_TOKEN")
@@ -280,13 +318,31 @@ func TestListAdAccountActivitiesHandler_Success(t *testing.T) {
 }
 
 func TestListAdAccountActivitiesHandler_NoAccessToken(t *testing.T) {
+	// Create mock server - even for no-token test we need a mock server
+	mockServer := mockGraphAPIServer(t)
+	defer mockServer.Close()
+
+	// Override the Graph API host for testing
+	oldHost := graphAPIHost
+	oldBaseURL := baseGraphURL
+	defer func() {
+		graphAPIHost = oldHost
+		baseGraphURL = oldBaseURL
+	}()
+	graphAPIHost = mockServer.URL
+	baseGraphURL = mockServer.URL
+
 	// Ensure no access token is set
 	oldToken := os.Getenv("FACEBOOK_ACCESS_TOKEN")
 	os.Unsetenv("FACEBOOK_ACCESS_TOKEN")
+	// Also clear the accessToken variable
+	oldAccessToken := accessToken
+	accessToken = ""
 	defer func() {
 		if oldToken != "" {
 			os.Setenv("FACEBOOK_ACCESS_TOKEN", oldToken)
 		}
+		accessToken = oldAccessToken
 	}()
 
 	// Create test request
@@ -337,8 +393,13 @@ func TestGetAdSetInsightsHandler_Success(t *testing.T) {
 
 	// Override the Graph API host for testing
 	oldHost := graphAPIHost
-	defer func() { graphAPIHost = oldHost }()
+	oldBaseURL := baseGraphURL
+	defer func() {
+		graphAPIHost = oldHost
+		baseGraphURL = oldBaseURL
+	}()
 	graphAPIHost = mockServer.URL
+	baseGraphURL = mockServer.URL
 
 	// Set a test access token
 	os.Setenv("FACEBOOK_ACCESS_TOKEN", "test_token_123")
@@ -412,8 +473,13 @@ func TestCreateAdSetAdlabelHandler_Success(t *testing.T) {
 
 	// Override the Graph API host for testing
 	oldHost := graphAPIHost
-	defer func() { graphAPIHost = oldHost }()
+	oldBaseURL := baseGraphURL
+	defer func() {
+		graphAPIHost = oldHost
+		baseGraphURL = oldBaseURL
+	}()
 	graphAPIHost = mockServer.URL
+	baseGraphURL = mockServer.URL
 
 	// Set a test access token
 	os.Setenv("FACEBOOK_ACCESS_TOKEN", "test_token_123")
@@ -493,8 +559,13 @@ func TestAPIErrorHandling(t *testing.T) {
 
 	// Override the Graph API host
 	oldHost := graphAPIHost
-	defer func() { graphAPIHost = oldHost }()
+	oldBaseURL := baseGraphURL
+	defer func() {
+		graphAPIHost = oldHost
+		baseGraphURL = oldBaseURL
+	}()
 	graphAPIHost = errorServer.URL
+	baseGraphURL = errorServer.URL
 
 	// Set a test access token
 	os.Setenv("FACEBOOK_ACCESS_TOKEN", "test_token_123")

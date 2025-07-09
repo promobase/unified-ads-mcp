@@ -23,6 +23,8 @@ const (
 
 var (
 	graphAPIHost = "https://graph.facebook.com"
+	baseGraphURL = "https://graph.facebook.com"
+	accessToken  = ""
 )
 
 // SetGraphAPIHost sets the Graph API host for testing purposes
@@ -35,21 +37,39 @@ func GetGraphAPIHost() string {
 	return graphAPIHost
 }
 
-// getAccessToken retrieves the Facebook access token from environment
+// SetAccessToken sets the access token for testing purposes
+func SetAccessToken(token string) {
+	accessToken = token
+}
+
+// getAccessToken retrieves the Facebook access token from environment or test setting
 func getAccessToken() string {
+	if accessToken != "" {
+		return accessToken
+	}
 	return os.Getenv("FACEBOOK_ACCESS_TOKEN")
 }
 
 // buildGraphURL constructs the Facebook Graph API URL
 func buildGraphURL(objectID, endpoint string) string {
-	if objectID != "" {
-		return fmt.Sprintf("%s/%s/%s/%s", graphAPIHost, graphAPIVersion, objectID, endpoint)
+	baseURL := baseGraphURL
+	if baseURL == "" {
+		baseURL = graphAPIHost
 	}
-	return fmt.Sprintf("%s/%s/%s", graphAPIHost, graphAPIVersion, endpoint)
+
+	if objectID != "" {
+		return fmt.Sprintf("%s/%s/%s/%s", baseURL, graphAPIVersion, objectID, endpoint)
+	}
+	return fmt.Sprintf("%s/%s/%s", baseURL, graphAPIVersion, endpoint)
 }
 
 // makeGraphRequest performs an HTTP request to the Facebook Graph API
 func makeGraphRequest(method, urlStr string, data map[string]interface{}) ([]byte, error) {
+	// Test guardrail: panic if hitting real Facebook API during tests
+	if strings.Contains(urlStr, "facebook.com") && os.Getenv("TESTING") == "true" {
+		panic(fmt.Sprintf("TEST GUARDRAIL: Attempted to hit real Facebook API during tests! URL: %s", urlStr))
+	}
+
 	client := &http.Client{}
 
 	var req *http.Request
