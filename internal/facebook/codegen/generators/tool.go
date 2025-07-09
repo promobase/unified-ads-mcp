@@ -186,12 +186,13 @@ func (g *ToolGenerator) Generate() error {
 
 	// Define core objects to generate
 	coreObjects := map[string]bool{
-		"AdAccount":  true,
-		"Campaign":   true,
-		"AdSet":      true,
-		"AdCreative": true,
-		"Ad":         true,
-		"User":       true,
+		"AdAccount":      true,
+		"Campaign":       true,
+		"AdSet":          true,
+		"AdCreative":     true,
+		"Ad":             true,
+		"User":           true,
+		"CustomAudience": true,
 	}
 
 	// Generate separate file for each core object

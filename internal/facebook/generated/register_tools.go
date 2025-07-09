@@ -29,6 +29,10 @@ func RegisterAllTools(s *server.MCPServer) error {
 		return err
 	}
 
+	if err := RegisterCustomAudienceTools(s); err != nil {
+		return err
+	}
+
 	if err := RegisterUserTools(s); err != nil {
 		return err
 	}
