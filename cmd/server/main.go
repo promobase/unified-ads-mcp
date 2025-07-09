@@ -35,22 +35,15 @@ func NewFacebookMCPServer() *server.MCPServer {
 		server.WithHooks(hooks),
 	)
 
-	// Register all Facebook Business API tools
+	// register low level tools
 	if err := generated.RegisterAllTools(mcpServer); err != nil {
 		log.Fatalf("Failed to register tools: %v", err)
 	}
 
-	// Register custom health and diagnostic tools
-	if err := tools.RegisterHealthTools(mcpServer); err != nil {
-		log.Fatalf("Failed to register health tools: %v", err)
-	}
-
-	// Register account tools
+	// ---- High level tools ----
 	if err := tools.RegisterAccountTools(mcpServer); err != nil {
 		log.Fatalf("Failed to register account tools: %v", err)
 	}
-
-	// Register batch tools
 	tools.RegisterBatchTools(mcpServer)
 
 	return mcpServer
@@ -84,6 +77,7 @@ func main() {
 	} else {
 		// In stdio mode, be quiet unless there's an error
 		// MCP clients expect clean JSON communication
+		log.Printf("Starting Facebook Business MCP Server (stdio mode)")
 		if err := server.ServeStdio(mcpServer); err != nil {
 			log.Fatalf("Server error: %v", err)
 		}
