@@ -54,6 +54,7 @@ var availableScopes = []string{
 	"audience",
 	"creative",
 	"optimization",
+	"video",
 }
 
 const (

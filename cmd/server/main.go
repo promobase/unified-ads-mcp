@@ -221,6 +221,25 @@ func NewFacebookMCPServer(logger *ProductionLogger, debugMode bool) *server.MCPS
 		logger.Info("✓ Batch tools registered")
 	}
 
+	// Register video tools
+	if err := tools.RegisterVideoUploadTool(mcpServer); err != nil {
+		logger.Error("Failed to register video upload tool: %v", err)
+	} else {
+		logger.Info("✓ Video upload tool registered")
+	}
+
+	if err := tools.RegisterVideoStatusTool(mcpServer); err != nil {
+		logger.Error("Failed to register video status tool: %v", err)
+	} else {
+		logger.Info("✓ Video status tool registered")
+	}
+
+	if err := tools.RegisterVideoUploadBatchTool(mcpServer); err != nil {
+		logger.Error("Failed to register video batch upload tool: %v", err)
+	} else {
+		logger.Info("✓ Video batch upload tool registered")
+	}
+
 	// Add health check tool
 	healthCheckTool := mcp.NewTool(
 		"health_check",

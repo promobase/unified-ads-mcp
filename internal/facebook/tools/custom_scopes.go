@@ -42,13 +42,18 @@ var customScopes = map[string]CustomScope{
 	},
 	"creative": {
 		Name:        "creative",
-		Description: "[CONTENT] Creative assets, images, videos, and ad preview management (12 tools)",
+		Description: "[CONTENT] Creative assets, images, videos, and ad preview management (15 tools)",
 		RegisterFn:  registerCreativeScope,
 	},
 	"optimization": {
 		Name:        "optimization",
 		Description: "[PERFORMANCE] Optimization tools - delivery estimates, recommendations, budgets, and bidding (10 tools)",
 		RegisterFn:  registerOptimizationScope,
+	},
+	"video": {
+		Name:        "video",
+		Description: "[VIDEO] Video upload and management tools - upload single or batch videos, check encoding status (3 tools)",
+		RegisterFn:  registerVideoScope,
 	},
 }
 
@@ -320,6 +325,17 @@ func registerCreativeScope(s *server.MCPServer) error {
 		return fmt.Errorf("failed to register ad_account_list_generatepreviews: %w", err)
 	}
 
+	// Video tools (also in creative scope)
+	if err := RegisterVideoUploadTool(s); err != nil {
+		return fmt.Errorf("failed to register video upload tool: %w", err)
+	}
+	if err := RegisterVideoStatusTool(s); err != nil {
+		return fmt.Errorf("failed to register video status tool: %w", err)
+	}
+	if err := RegisterVideoUploadBatchTool(s); err != nil {
+		return fmt.Errorf("failed to register video batch upload tool: %w", err)
+	}
+
 	return nil
 }
 
@@ -395,4 +411,20 @@ func getCustomScopeDescriptions() map[string]string {
 		descriptions[name] = scope.Description
 	}
 	return descriptions
+}
+
+// registerVideoScope loads video upload and management tools
+func registerVideoScope(s *server.MCPServer) error {
+	// Video upload tools
+	if err := RegisterVideoUploadTool(s); err != nil {
+		return fmt.Errorf("failed to register video upload tool: %w", err)
+	}
+	if err := RegisterVideoStatusTool(s); err != nil {
+		return fmt.Errorf("failed to register video status tool: %w", err)
+	}
+	if err := RegisterVideoUploadBatchTool(s); err != nil {
+		return fmt.Errorf("failed to register video batch upload tool: %w", err)
+	}
+
+	return nil
 }
