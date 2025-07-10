@@ -1,4 +1,3 @@
-// env
 package utils
 
 import (

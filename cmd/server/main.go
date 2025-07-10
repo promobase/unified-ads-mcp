@@ -4,7 +4,6 @@ import (
 	"context"
 	"flag"
 	"log"
-	"os"
 
 	"unified-ads-mcp/internal/facebook/generated"
 	"unified-ads-mcp/internal/facebook/tools"
@@ -35,22 +34,18 @@ func NewFacebookMCPServer() *server.MCPServer {
 		server.WithHooks(hooks),
 	)
 
-	// Register scope selector tool (manages dynamic tool registration)
-	if err := generated.RegisterScopeSelectorTool(mcpServer); err != nil {
-		log.Fatalf("Failed to register scope selector tool: %v", err)
-	}
-
 	// Register only adaccount tools by default
 	if err := generated.RegisterAdAccountTools(mcpServer); err != nil {
 		log.Fatalf("Failed to register adaccount tools: %v", err)
 	}
 
 	// ---- High level tools ----
+	if err := generated.RegisterScopeSelectorTool(mcpServer); err != nil {
+		log.Fatalf("Failed to register scope selector tool: %v", err)
+	}
 	if err := tools.RegisterAccountTools(mcpServer); err != nil {
 		log.Fatalf("Failed to register account tools: %v", err)
 	}
-
-	// Register batch tools
 	if err := tools.RegisterBatchTools(mcpServer); err != nil {
 		log.Fatalf("Failed to register batch tools: %v", err)
 	}
@@ -66,12 +61,6 @@ func main() {
 	flag.Parse()
 
 	utils.LoadFacebookConfig()
-
-	// Check for Facebook access token
-	if os.Getenv("FACEBOOK_ACCESS_TOKEN") == "" {
-		log.Fatalln("FACEBOOK_ACCESS_TOKEN environment variable must be set")
-	}
-
 	// Create and start the server
 	mcpServer := NewFacebookMCPServer()
 
