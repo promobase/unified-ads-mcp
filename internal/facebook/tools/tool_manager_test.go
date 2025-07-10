@@ -26,19 +26,19 @@ func TestToolManager(t *testing.T) {
 
 	ctx := context.Background()
 
-	t.Run("List available scopes", func(t *testing.T) {
+	t.Run("Get available scopes", func(t *testing.T) {
 		req := mcp.CallToolRequest{
 			Params: mcp.CallToolParams{
 				Name: "tool_manager",
 				Arguments: map[string]interface{}{
-					"action": "list",
+					"action": "get",
 				},
 			},
 		}
 
 		result, err := handleToolManager(ctx, req)
 		if err != nil {
-			t.Fatalf("Failed to list scopes: %v", err)
+			t.Fatalf("Failed to get scopes: %v", err)
 		}
 
 		if len(result.Content) == 0 {
@@ -61,36 +61,12 @@ func TestToolManager(t *testing.T) {
 		}
 	})
 
-	t.Run("Get loaded scopes (initially empty)", func(t *testing.T) {
+	t.Run("Set scopes", func(t *testing.T) {
 		req := mcp.CallToolRequest{
 			Params: mcp.CallToolParams{
 				Name: "tool_manager",
 				Arguments: map[string]interface{}{
-					"action": "get",
-				},
-			},
-		}
-
-		result, err := handleToolManager(ctx, req)
-		if err != nil {
-			t.Fatalf("Failed to get scopes: %v", err)
-		}
-
-		content := result.Content[0].(mcp.TextContent).Text
-		var data map[string]interface{}
-		json.Unmarshal([]byte(content), &data)
-
-		if data["total_loaded"].(float64) != 0 {
-			t.Error("Expected no loaded scopes initially")
-		}
-	})
-
-	t.Run("Add scopes", func(t *testing.T) {
-		req := mcp.CallToolRequest{
-			Params: mcp.CallToolParams{
-				Name: "tool_manager",
-				Arguments: map[string]interface{}{
-					"action": "add",
+					"action": "set",
 					"scopes": []string{"campaign", "adset"},
 				},
 			},
@@ -98,7 +74,7 @@ func TestToolManager(t *testing.T) {
 
 		result, err := handleToolManager(ctx, req)
 		if err != nil {
-			t.Fatalf("Failed to add scopes: %v", err)
+			t.Fatalf("Failed to set scopes: %v", err)
 		}
 
 		content := result.Content[0].(mcp.TextContent).Text
@@ -108,28 +84,6 @@ func TestToolManager(t *testing.T) {
 		added := data["added"].([]interface{})
 		if len(added) != 2 {
 			t.Errorf("Expected 2 scopes added, got %d", len(added))
-		}
-	})
-
-	t.Run("Remove scopes", func(t *testing.T) {
-		req := mcp.CallToolRequest{
-			Params: mcp.CallToolParams{
-				Name: "tool_manager",
-				Arguments: map[string]interface{}{
-					"action": "remove",
-					"scopes": []string{"campaign"},
-				},
-			},
-		}
-
-		result, err := handleToolManager(ctx, req)
-		if err != nil {
-			t.Fatalf("Failed to remove scopes: %v", err)
-		}
-
-		content := result.Content[0].(mcp.TextContent).Text
-		if !strings.Contains(content, "removed") {
-			t.Error("Expected removed in result")
 		}
 	})
 
@@ -153,12 +107,12 @@ func TestToolManager(t *testing.T) {
 		}
 	})
 
-	t.Run("Add custom scope", func(t *testing.T) {
+	t.Run("Set custom scope", func(t *testing.T) {
 		req := mcp.CallToolRequest{
 			Params: mcp.CallToolParams{
 				Name: "tool_manager",
 				Arguments: map[string]interface{}{
-					"action": "add",
+					"action": "set",
 					"scopes": []string{"essentials"},
 				},
 			},
@@ -166,7 +120,7 @@ func TestToolManager(t *testing.T) {
 
 		result, err := handleToolManager(ctx, req)
 		if err != nil {
-			t.Fatalf("Failed to add custom scope: %v", err)
+			t.Fatalf("Failed to set custom scope: %v", err)
 		}
 
 		content := result.Content[0].(mcp.TextContent).Text
@@ -179,30 +133,48 @@ func TestToolManager(t *testing.T) {
 		}
 	})
 
-	t.Run("List shows custom scopes", func(t *testing.T) {
+	t.Run("Get shows loaded scopes", func(t *testing.T) {
 		req := mcp.CallToolRequest{
 			Params: mcp.CallToolParams{
 				Name: "tool_manager",
 				Arguments: map[string]interface{}{
-					"action": "list",
+					"action": "get",
 				},
 			},
 		}
 
 		result, err := handleToolManager(ctx, req)
 		if err != nil {
-			t.Fatalf("Failed to list scopes: %v", err)
+			t.Fatalf("Failed to get scopes: %v", err)
 		}
 
 		content := result.Content[0].(mcp.TextContent).Text
-		if !strings.Contains(content, "custom_scopes") {
-			t.Error("Expected custom_scopes in result")
+		if !strings.Contains(content, "loaded_scopes") {
+			t.Error("Expected loaded_scopes in result")
 		}
 		if !strings.Contains(content, "essentials") {
-			t.Error("Expected essentials in custom scopes")
+			t.Error("Expected essentials in loaded scopes")
 		}
-		if !strings.Contains(content, "campaign_management") {
-			t.Error("Expected campaign_management in custom scopes")
+	})
+
+	t.Run("Set empty scopes error", func(t *testing.T) {
+		req := mcp.CallToolRequest{
+			Params: mcp.CallToolParams{
+				Name: "tool_manager",
+				Arguments: map[string]interface{}{
+					"action": "set",
+					"scopes": []string{},
+				},
+			},
+		}
+
+		result, err := handleToolManager(ctx, req)
+		if err != nil {
+			t.Fatalf("Unexpected error: %v", err)
+		}
+
+		if !result.IsError {
+			t.Error("Expected error result for empty scopes")
 		}
 	})
 }

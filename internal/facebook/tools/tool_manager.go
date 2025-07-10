@@ -7,8 +7,6 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/mark3labs/mcp-go/mcp"
-	"github.com/mark3labs/mcp-go/server"
 	"unified-ads-mcp/internal/facebook/generated/ad"
 	"unified-ads-mcp/internal/facebook/generated/adaccount"
 	"unified-ads-mcp/internal/facebook/generated/adcreative"
@@ -16,6 +14,9 @@ import (
 	"unified-ads-mcp/internal/facebook/generated/campaign"
 	"unified-ads-mcp/internal/facebook/generated/customaudience"
 	"unified-ads-mcp/internal/facebook/generated/user"
+
+	"github.com/mark3labs/mcp-go/mcp"
+	"github.com/mark3labs/mcp-go/server"
 )
 
 // ToolManager manages the dynamic loading and unloading of tools
@@ -55,6 +56,13 @@ var availableScopes = []string{
 	"optimization",
 }
 
+const (
+	ActionSet = "set"
+	ActionGet = "get"
+)
+
+var ToolManagerActions = []string{ActionGet, ActionSet}
+
 // RegisterToolManagerTool registers the tool manager tool
 func RegisterToolManagerTool(s *server.MCPServer) error {
 	// Initialize the tool manager
@@ -62,11 +70,11 @@ func RegisterToolManagerTool(s *server.MCPServer) error {
 
 	tool := mcp.NewTool(
 		"tool_manager",
-		mcp.WithDescription("Manage which Facebook API tool sets are loaded. This allows efficient memory usage by only loading the tools you need. RECOMMENDED: Use custom scopes (essentials, campaign_management, reporting, etc.) for common workflows. Codegen scopes load ALL tools for an object type and should only be used when you need comprehensive access. Actions: 'get' (list loaded scopes), 'add' (load tool scopes), 'remove' (unload tool scopes), 'list' (show available scopes)."),
+		mcp.WithDescription("Manage which Facebook API tool sets are loaded. This allows efficient memory usage by only loading the tools you need. RECOMMENDED: Use custom scopes (essentials, campaign_management, reporting, etc.) for common workflows. Codegen scopes load ALL tools for an object type and should only be used when you need comprehensive access. "),
 		mcp.WithString("action",
 			mcp.Required(),
-			mcp.Description("Action to perform: 'get' (list loaded scopes), 'add' (load tool scopes), 'remove' (unload tool scopes), 'list' (show available scopes)"),
-			mcp.Enum("get", "add", "remove", "list"),
+			mcp.Description("Action to perform"),
+			mcp.Enum(ToolManagerActions...),
 		),
 		mcp.WithArray("scopes",
 			mcp.Description("Tool scopes to add or remove. PREFER CUSTOM SCOPES: 'essentials', 'campaign_management', 'reporting', 'audience', 'creative', 'optimization'. Codegen scopes ('ad', 'adaccount', etc.) load ALL tools and should be used sparingly."),
@@ -96,35 +104,13 @@ func handleToolManager(ctx context.Context, request mcp.CallToolRequest) (*mcp.C
 	}
 
 	switch args.Action {
-	case "get":
-		return handleGetScopes()
-	case "add":
-		return handleAddScopes(args.Scopes)
-	case "remove":
-		return handleRemoveScopes(args.Scopes)
-	case "list":
+	case ActionGet:
 		return handleListAvailableScopes()
+	case ActionSet:
+		return handleSetScopes(args.Scopes)
 	default:
-		return mcp.NewToolResultErrorf("Invalid action: %s. Use 'get', 'add', 'remove', or 'list'", args.Action), nil
+		return mcp.NewToolResultErrorf("Invalid action: %s. Valid actions are: %s", args.Action, strings.Join(ToolManagerActions, ", ")), nil
 	}
-}
-
-func handleGetScopes() (*mcp.CallToolResult, error) {
-	toolManager.mu.RLock()
-	defer toolManager.mu.RUnlock()
-
-	loaded := make([]string, 0, len(toolManager.loadedScopes))
-	for scope := range toolManager.loadedScopes {
-		loaded = append(loaded, scope)
-	}
-
-	result := map[string]interface{}{
-		"loaded_scopes": loaded,
-		"total_loaded":  len(loaded),
-	}
-
-	resultJSON, _ := json.MarshalIndent(result, "", "  ")
-	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
 func handleListAvailableScopes() (*mcp.CallToolResult, error) {
@@ -158,7 +144,8 @@ func handleListAvailableScopes() (*mcp.CallToolResult, error) {
 	customScopesList := getCustomScopeNames()
 
 	result := map[string]interface{}{
-		"recommendation":        "Use custom scopes for most workflows. They provide curated tool sets optimized for specific tasks.",
+		"recommendation": "Use custom scopes for most workflows. They provide curated tool sets optimized for specific tasks.",
+
 		"custom_scopes":         customScopesList,
 		"codegen_scopes":        generatedScopes,
 		"loaded_scopes":         loaded,
@@ -171,16 +158,18 @@ func handleListAvailableScopes() (*mcp.CallToolResult, error) {
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-func handleAddScopes(scopes []string) (*mcp.CallToolResult, error) {
+func handleSetScopes(scopes []string) (*mcp.CallToolResult, error) {
 	if len(scopes) == 0 {
 		return mcp.NewToolResultError("No scopes provided to add"), nil
 	}
-
+	// lock
 	toolManager.mu.Lock()
 	defer toolManager.mu.Unlock()
+	// reset server tools
+	toolManager.server.SetTools()
+	toolManager.loadedScopes = make(map[string]bool)
 
 	added := []string{}
-	alreadyLoaded := []string{}
 	errors := []string{}
 	codegenWarnings := []string{}
 
@@ -191,26 +180,6 @@ func handleAddScopes(scopes []string) (*mcp.CallToolResult, error) {
 		if !isValidScope(scope) {
 			errors = append(errors, fmt.Sprintf("Invalid scope: %s", scope))
 			continue
-		}
-
-		// Check if already loaded
-		if toolManager.loadedScopes[scope] {
-			alreadyLoaded = append(alreadyLoaded, scope)
-			continue
-		}
-
-		// Warn about codegen scopes
-		if !isCustomScope(scope) {
-			switch scope {
-			case "adaccount":
-				codegenWarnings = append(codegenWarnings, fmt.Sprintf("WARNING: '%s' loads 120+ tools! Consider using custom scopes like 'essentials' or 'campaign_management' instead", scope))
-			case "ad", "campaign", "adset":
-				codegenWarnings = append(codegenWarnings, fmt.Sprintf("NOTE: '%s' is a low-level scope. Consider using 'essentials' or 'campaign_management' for common workflows", scope))
-			case "adcreative":
-				codegenWarnings = append(codegenWarnings, fmt.Sprintf("NOTE: '%s' is a low-level scope. Consider using 'creative' scope instead", scope))
-			case "customaudience":
-				codegenWarnings = append(codegenWarnings, fmt.Sprintf("NOTE: '%s' is a low-level scope. Consider using 'audience' scope instead", scope))
-			}
 		}
 
 		// Load the scope
@@ -225,52 +194,15 @@ func handleAddScopes(scopes []string) (*mcp.CallToolResult, error) {
 	}
 
 	result := map[string]interface{}{
-		"added":          added,
-		"already_loaded": alreadyLoaded,
-		"errors":         errors,
-		"warnings":       codegenWarnings,
-		"total_loaded":   len(toolManager.loadedScopes),
+		"added":        added,
+		"errors":       errors,
+		"warnings":     codegenWarnings,
+		"total_loaded": len(toolManager.loadedScopes),
 	}
 
 	// Add recommendation if codegen scopes were loaded
 	if len(codegenWarnings) > 0 {
 		result["recommendation"] = "TIP: Use 'tool_manager action=list' to see available custom scopes optimized for specific workflows"
-	}
-
-	resultJSON, _ := json.MarshalIndent(result, "", "  ")
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-func handleRemoveScopes(scopes []string) (*mcp.CallToolResult, error) {
-	if len(scopes) == 0 {
-		return mcp.NewToolResultError("No scopes provided to remove"), nil
-	}
-
-	toolManager.mu.Lock()
-	defer toolManager.mu.Unlock()
-
-	removed := []string{}
-	notLoaded := []string{}
-
-	for _, scope := range scopes {
-		scope = strings.ToLower(strings.TrimSpace(scope))
-
-		if !toolManager.loadedScopes[scope] {
-			notLoaded = append(notLoaded, scope)
-			continue
-		}
-
-		// Note: MCP doesn't support unloading tools at runtime
-		// We track the state but can't actually remove them
-		delete(toolManager.loadedScopes, scope)
-		removed = append(removed, scope)
-	}
-
-	result := map[string]interface{}{
-		"removed":      removed,
-		"not_loaded":   notLoaded,
-		"total_loaded": len(toolManager.loadedScopes),
-		"note":         "Tools are marked as unloaded but remain available until server restart",
 	}
 
 	resultJSON, _ := json.MarshalIndent(result, "", "  ")
