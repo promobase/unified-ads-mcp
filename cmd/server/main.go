@@ -17,11 +17,11 @@ func NewFacebookMCPServer() *server.MCPServer {
 	hooks := &server.Hooks{}
 
 	hooks.AddBeforeAny(func(ctx context.Context, id any, method mcp.MCPMethod, message any) {
-		log.Printf("[DEBUG] Before %s: %v", method, id)
+		log.Printf("[DEBUG] Before %s: %v, %v", method, id, message)
 	})
 
 	hooks.AddOnError(func(ctx context.Context, id any, method mcp.MCPMethod, message any, err error) {
-		log.Printf("[ERROR] %s failed: %v", method, err)
+		log.Printf("[ERROR] %s failed: %v, %v", method, message, err)
 	})
 
 	// Create the MCP server
