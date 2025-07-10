@@ -12,7 +12,7 @@ build:
 	@$(GOCMD) build ./... || (echo "ERROR: Build failed for packages" && exit 1)
 	@echo "Package compilation successful"
 	@echo "Checking test compilation..."
-	@$(GOCMD) test -c ./... > /dev/null 2>&1 || (echo "ERROR: Test compilation failed. Run 'go test -c ./...' to see errors" && exit 1)
+	@$(GOCMD) test -run=xxxxx ./... > /dev/null 2>&1 || (echo "ERROR: Test compilation failed" && exit 1)
 	@echo "Test compilation successful"
 	@echo "Building unified-ads-mcp server..."
 	@$(GOCMD) build -ldflags "-s -w" -o $(BINARY_NAME) ./cmd/server || (echo "ERROR: Failed to build server" && exit 1)

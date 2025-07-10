@@ -5,7 +5,7 @@ import (
 	"flag"
 	"log"
 
-	"unified-ads-mcp/internal/facebook/generated"
+	"unified-ads-mcp/internal/facebook/generated/adaccount"
 	"unified-ads-mcp/internal/facebook/tools"
 	"unified-ads-mcp/internal/utils"
 
@@ -35,14 +35,12 @@ func NewFacebookMCPServer() *server.MCPServer {
 	)
 
 	// Register only adaccount tools by default
-	if err := generated.RegisterAdAccountTools(mcpServer); err != nil {
+	if err := adaccount.RegisterAllAdAccountTools(mcpServer); err != nil {
 		log.Fatalf("Failed to register adaccount tools: %v", err)
 	}
 
 	// ---- High level tools ----
-	if err := generated.RegisterScopeSelectorTool(mcpServer); err != nil {
-		log.Fatalf("Failed to register scope selector tool: %v", err)
-	}
+	// TODO: Implement scope selector tool if needed
 	if err := tools.RegisterAccountTools(mcpServer); err != nil {
 		log.Fatalf("Failed to register account tools: %v", err)
 	}

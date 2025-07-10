@@ -140,7 +140,16 @@ func (g *EnumGenerator) generateEnums() error {
 		return fmt.Errorf("failed to execute template: %w", err)
 	}
 
-	return os.WriteFile(filepath.Join(g.outputPath, "enums.go"), buf.Bytes(), 0644)
+	// Create common directory
+	commonPath := filepath.Join(g.outputPath, "common")
+	if err := os.MkdirAll(commonPath, 0o755); err != nil {
+		return fmt.Errorf("failed to create common directory: %w", err)
+	}
+
+	// Update package name
+	content := strings.Replace(buf.String(), "package generated", "package common", 1)
+
+	return os.WriteFile(filepath.Join(commonPath, "enums.go"), []byte(content), 0644)
 }
 
 // ToGoTypeName converts enum names to Go type names
@@ -217,8 +226,8 @@ func ToGoConstName(s string) string {
 }
 
 func (g *EnumGenerator) formatGeneratedFile() error {
-	// Run go fmt on the generated enums.go file
-	enumFile := filepath.Join(g.outputPath, "enums.go")
+	// Run go fmt on the generated enums.go file in common directory
+	enumFile := filepath.Join(g.outputPath, "common", "enums.go")
 	cmd := exec.Command("go", "fmt", enumFile)
 	output, err := cmd.CombinedOutput()
 	if err != nil {

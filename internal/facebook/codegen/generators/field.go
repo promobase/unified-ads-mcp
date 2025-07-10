@@ -192,7 +192,16 @@ func (g *FieldGenerator) generateFields() error {
 		return fmt.Errorf("failed to execute template: %w", err)
 	}
 
-	return os.WriteFile(filepath.Join(g.outputPath, "fields.go"), buf.Bytes(), 0644)
+	// Create common directory
+	commonPath := filepath.Join(g.outputPath, "common")
+	if err := os.MkdirAll(commonPath, 0o755); err != nil {
+		return fmt.Errorf("failed to create common directory: %w", err)
+	}
+
+	// Update package name
+	content := strings.Replace(buf.String(), "package generated", "package common", 1)
+
+	return os.WriteFile(filepath.Join(commonPath, "fields.go"), []byte(content), 0644)
 }
 
 func (g *FieldGenerator) mapFieldType(fieldType string) string {
@@ -300,8 +309,8 @@ func toGoFieldName(s string) string {
 }
 
 func (g *FieldGenerator) formatGeneratedFile() error {
-	// Run go fmt on the generated fields.go file
-	fieldsFile := filepath.Join(g.outputPath, "fields.go")
+	// Run go fmt on the generated fields.go file in common directory
+	fieldsFile := filepath.Join(g.outputPath, "common", "fields.go")
 	cmd := exec.Command("go", "fmt", fieldsFile)
 	output, err := cmd.CombinedOutput()
 	if err != nil {
